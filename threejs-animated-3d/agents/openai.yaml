@@ -1,0 +1,4 @@
+interface:
+  display_name: "Three.js Animated 3D"
+  short_description: "Validated Three.js scenes and galleries"
+  default_prompt: "Use $threejs-animated-3d to build and verify a responsive animated Three.js gallery with replayable WebGL scenes."

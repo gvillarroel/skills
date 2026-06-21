@@ -1,0 +1,25 @@
+<svg class="anime-svg-asset anime-svg-motion-orbit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="motion-orbit-title motion-orbit-desc">
+  <title id="motion-orbit-title">Motion orbit asset</title>
+  <desc id="motion-orbit-desc">A path-following SVG with an orbit route, traveler group, pulses, and rings for Anime.js motion path animation.</desc>
+  <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
+  <g class="orbit-field" transform="translate(480 270)">
+    <ellipse class="orbit-ring ring-blue" cx="0" cy="0" rx="318" ry="120" fill="none" stroke="#cdf3ff" stroke-width="5"/>
+    <ellipse class="orbit-ring ring-green" cx="0" cy="0" rx="250" ry="170" fill="none" stroke="#dbffcc" stroke-width="5" transform="rotate(-28)"/>
+    <ellipse class="orbit-ring ring-amber" cx="0" cy="0" rx="190" ry="88" fill="none" stroke="#fde68a" stroke-width="5" transform="rotate(42)"/>
+  </g>
+  <path id="orbit-path" class="svg-drawable orbit-path" d="M126 292 C194 88 388 92 470 250 S700 452 826 176" fill="none" stroke="#828282" stroke-width="10" stroke-linecap="round"/>
+  <g class="orbit-pulses" data-anime-group="pulses">
+    <circle class="orbit-pulse" cx="190" cy="164" r="24" fill="#cdf3ff"/>
+    <circle class="orbit-pulse" cx="484" cy="264" r="30" fill="#dbffcc"/>
+    <circle class="orbit-pulse" cx="754" cy="264" r="26" fill="#fff4cc"/>
+  </g>
+  <g id="orbit-traveler" class="svg-traveler orbit-traveler" data-anime-target="traveler">
+    <circle cx="0" cy="0" r="26" fill="#9e1b32"/>
+    <path d="M-10 -10 L16 0 L-10 10 Z" fill="#ffffff"/>
+    <circle cx="-2" cy="0" r="6" fill="#9e1b32"/>
+  </g>
+  <g class="orbit-labels" fill="#4f4f4f" font-family="Open Sans, Arial, sans-serif" font-size="24" font-weight="750">
+    <text x="112" y="420">route draw</text>
+    <text x="684" y="420">path follower</text>
+  </g>
+</svg>

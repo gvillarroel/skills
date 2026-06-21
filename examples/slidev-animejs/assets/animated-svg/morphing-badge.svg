@@ -1,0 +1,23 @@
+<svg class="anime-svg-asset anime-svg-morphing-badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="morphing-badge-title morphing-badge-desc">
+  <title id="morphing-badge-title">Morphing badge asset</title>
+  <desc id="morphing-badge-desc">A central path with hidden target paths that can be morphed with Anime.js svg.morphTo.</desc>
+  <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
+  <g class="badge-rays" data-anime-group="rays" stroke-linecap="round">
+    <path class="badge-spark" d="M480 76 L480 120" stroke="#007298" stroke-width="10"/>
+    <path class="badge-spark" d="M638 118 L610 154" stroke="#45842a" stroke-width="10"/>
+    <path class="badge-spark" d="M716 270 L666 270" stroke="#e77204" stroke-width="10"/>
+    <path class="badge-spark" d="M638 422 L610 386" stroke="#9e1b32" stroke-width="10"/>
+    <path class="badge-spark" d="M480 464 L480 420" stroke="#007298" stroke-width="10"/>
+    <path class="badge-spark" d="M322 422 L350 386" stroke="#45842a" stroke-width="10"/>
+    <path class="badge-spark" d="M244 270 L294 270" stroke="#e77204" stroke-width="10"/>
+    <path class="badge-spark" d="M322 118 L350 154" stroke="#9e1b32" stroke-width="10"/>
+  </g>
+  <path id="badge-source" class="badge-source" data-anime-target="morph-source" d="M480 118 C562 118 632 188 632 270 C632 352 562 422 480 422 C398 422 328 352 328 270 C328 188 398 118 480 118 Z" fill="#45842a" stroke="#333e48" stroke-width="8"/>
+  <path id="badge-target-star" class="badge-target" data-anime-target="morph-target" d="M480 104 C508 184 580 178 644 166 C596 226 638 286 688 338 C606 328 568 392 548 464 C506 394 432 404 362 438 C382 358 326 314 258 270 C334 236 352 164 356 88 C416 136 448 144 480 104 Z" fill="none" opacity="0"/>
+  <path id="badge-target-wave" class="badge-target" data-anime-target="morph-target" d="M288 278 C312 170 400 142 470 182 C544 224 606 128 674 198 C746 274 664 392 548 378 C462 366 438 444 358 402 C302 372 266 334 288 278 Z" fill="none" opacity="0"/>
+  <path id="badge-target-diamond" class="badge-target" data-anime-target="morph-target" d="M480 86 C526 152 598 180 686 270 C600 354 526 388 480 454 C432 388 360 354 274 270 C360 180 432 152 480 86 Z" fill="none" opacity="0"/>
+  <g class="badge-center-mark" fill="#ffffff" font-family="Open Sans, Arial, sans-serif" text-anchor="middle">
+    <text x="480" y="258" font-size="42" font-weight="850">SVG</text>
+    <text x="480" y="298" font-size="22" font-weight="750">morph hooks</text>
+  </g>
+</svg>

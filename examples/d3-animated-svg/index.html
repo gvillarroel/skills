@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3 Animated SVG Examples</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,0&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --font-primary: "Open Sans", Arial, sans-serif;
+      --font-icons: "Material Symbols Rounded";
+      --brand-primary: #9e1b32;
+      --brand-neutral: #333e48;
+      --ink: #333e48;
+      --muted: #696969;
+      --line: #cfcfcf;
+      --line-soft: #e7e7e7;
+      --gray-700: #4f4f4f;
+      --surface: #ffffff;
+      --page: #f7f7f7;
+      --red: #9e1b32;
+      --orange: #e77204;
+      --yellow: #f1c319;
+      --green: #45842a;
+      --blue: #007298;
+      --purple: #652f6c;
+      --focus: #cfcfcf;
+      --blue-hover: #004d66;
+      --blue-highlight: #cdf3ff;
+      --red-highlight: #ffccd5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: var(--font-primary);
+      line-height: 1.45;
+    }
+
+    .page-shell {
+      width: min(1680px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      padding: 4px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--brand-primary);
+      font-size: 30px;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .intro {
+      margin: 6px 0 0;
+      max-width: 920px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .header-actions {
+      display: grid;
+      gap: 12px;
+      justify-items: end;
+      align-items: center;
+    }
+
+    .summary {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .summary strong {
+      display: block;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.05;
+    }
+
+    .card-replay-button {
+      appearance: none;
+      flex: 0 0 auto;
+      min-height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0 10px;
+    }
+
+    .card-replay-button:hover {
+      border-color: var(--blue);
+      background: var(--blue-highlight);
+      color: var(--blue-hover);
+    }
+
+    .card-replay-button:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .card-replay-button .material-symbols-rounded {
+      font-family: var(--font-icons);
+      font-size: 16px;
+      font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 20;
+      line-height: 1;
+    }
+
+    .example-card[data-replay-state="running"] .card-replay-button {
+      border-color: var(--blue);
+      background: var(--blue-highlight);
+      color: var(--blue-hover);
+    }
+
+    .example-card[data-replay-state="running"] .viz-frame {
+      box-shadow: inset 0 0 0 2px rgba(0, 114, 152, .24);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      padding-top: 18px;
+    }
+
+    .example-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      overflow: hidden;
+      box-shadow: 0 8px 22px rgba(51, 62, 72, .08);
+    }
+
+    .example-header {
+      min-height: 118px;
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid #e7e7e7;
+    }
+
+    .example-header-top {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .example-kicker {
+      min-width: 0;
+      margin: 0;
+      color: var(--brand-primary);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: 0;
+      line-height: 1.15;
+    }
+
+    .example-copy {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .viz-frame {
+      aspect-ratio: 1.34;
+      background: #ffffff;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .axis path,
+    .axis line {
+      stroke: #9c9c9c;
+    }
+
+    .axis text,
+    .caption,
+    .label {
+      fill: #4f4f4f;
+      font-size: 12px;
+    }
+
+    .grid line {
+      stroke: #e7e7e7;
+      stroke-dasharray: 3 5;
+    }
+
+    .caption,
+    .label,
+    .mark-label {
+      paint-order: stroke;
+      stroke: #ffffff;
+      stroke-width: 3px;
+      stroke-linejoin: round;
+    }
+
+    .mark-label {
+      fill: #333e48;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    @media (max-width: 1380px) {
+      .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 980px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page-shell {
+        width: min(100% - 20px, 720px);
+        padding-top: 16px;
+      }
+
+      header {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      .header-actions {
+        justify-items: start;
+      }
+
+      .summary {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        white-space: normal;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .example-header {
+        min-height: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <header>
+      <div>
+        <h1>D3 Animated SVG Examples</h1>
+        <p class="intro">A broad D3 SVG gallery inspired by official D3 examples and graph-gallery taxonomies, focused on visual forms that Mermaid does not express well.</p>
+      </div>
+      <div class="header-actions">
+        <div class="summary" aria-label="Gallery summary">
+          <span><strong id="example-count">0</strong> visual forms</span>
+          <span><strong>SVG</strong> output</span>
+          <span><strong>D3</strong> generated</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="gallery" id="gallery" aria-label="D3 visualization examples"></section>
+  </main>
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+  <script src="./node_modules/d3-sankey/dist/d3-sankey.min.js"></script>
+  <script src="./gallery.js"></script>
+</body>
+</html>

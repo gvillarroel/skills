@@ -1,0 +1,20 @@
+{
+  "name": "ai-concept-videos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "python -m http.server 4188",
+    "validate": "node scripts/validate-concepts.mjs",
+    "render": "node scripts/render-videos.mjs",
+    "render:quick": "node scripts/render-videos.mjs --fps 6 --quality 24",
+    "review": "node scripts/review-videos.mjs"
+  },
+  "dependencies": {
+    "animejs": "4.4.1",
+    "d3": "7.9.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

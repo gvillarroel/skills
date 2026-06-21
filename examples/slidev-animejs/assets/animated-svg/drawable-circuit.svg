@@ -1,0 +1,32 @@
+<svg class="anime-svg-asset anime-svg-drawable-circuit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="drawable-circuit-title drawable-circuit-desc">
+  <title id="drawable-circuit-title">Drawable circuit asset</title>
+  <desc id="drawable-circuit-desc">A circuit-style SVG with independent path and node hooks for Anime.js draw-on and stagger animations.</desc>
+  <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
+  <g class="circuit-panels" data-anime-group="panels">
+    <rect class="circuit-panel" x="78" y="96" width="164" height="112" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>
+    <rect class="circuit-panel" x="716" y="92" width="168" height="122" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>
+    <rect class="circuit-panel" x="376" y="334" width="206" height="98" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>
+  </g>
+  <g data-anime-group="drawables" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path id="circuit-main-a" class="svg-drawable circuit-line primary" d="M158 208 C158 284 262 292 318 238 S454 142 524 212 S690 304 798 214" stroke="#007298" stroke-width="13"/>
+    <path id="circuit-main-b" class="svg-drawable circuit-line accent" d="M242 152 C330 120 384 158 430 236 C476 314 542 338 646 306 C712 286 752 310 800 374" stroke="#45842a" stroke-width="10"/>
+    <path id="circuit-main-c" class="svg-drawable circuit-line warm" d="M112 374 C198 314 282 388 358 350 C454 302 484 406 594 372 C694 342 760 408 850 328" stroke="#e77204" stroke-width="9"/>
+    <path id="circuit-spark" class="svg-drawable circuit-line rose" d="M480 94 L514 132 L486 166 L526 206" stroke="#9e1b32" stroke-width="8"/>
+  </g>
+  <g data-anime-group="nodes">
+    <circle class="svg-node node-primary" cx="158" cy="208" r="18" fill="#007298"/>
+    <circle class="svg-node node-primary" cx="318" cy="238" r="14" fill="#007298"/>
+    <circle class="svg-node node-primary" cx="524" cy="212" r="16" fill="#007298"/>
+    <circle class="svg-node node-primary" cx="798" cy="214" r="18" fill="#007298"/>
+    <circle class="svg-node node-accent" cx="242" cy="152" r="13" fill="#45842a"/>
+    <circle class="svg-node node-accent" cx="646" cy="306" r="15" fill="#45842a"/>
+    <circle class="svg-node node-warm" cx="112" cy="374" r="13" fill="#e77204"/>
+    <circle class="svg-node node-warm" cx="850" cy="328" r="15" fill="#e77204"/>
+    <circle class="svg-node node-rose" cx="526" cy="206" r="13" fill="#9e1b32"/>
+  </g>
+  <g class="circuit-labels" fill="#696969" font-family="Open Sans, Arial, sans-serif" font-size="24" font-weight="700">
+    <text x="112" y="160">input</text>
+    <text x="742" y="166">signal</text>
+    <text x="418" y="392">output</text>
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+{
+  "geoJson": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": { "name": "North Hub" },
+        "geometry": { "type": "Polygon", "coordinates": [[[-100, 40], [-92, 40], [-92, 48], [-100, 48], [-100, 40]]] }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "West Hub" },
+        "geometry": { "type": "Polygon", "coordinates": [[[-112, 32], [-102, 32], [-102, 40], [-112, 40], [-112, 32]]] }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "Central Hub" },
+        "geometry": { "type": "Polygon", "coordinates": [[[-102, 32], [-92, 32], [-92, 40], [-102, 40], [-102, 32]]] }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "East Hub" },
+        "geometry": { "type": "Polygon", "coordinates": [[[-92, 32], [-82, 32], [-82, 40], [-92, 40], [-92, 32]]] }
+      }
+    ]
+  },
+  "mapValues": [
+    { "name": "North Hub", "value": 72, "next": 84 },
+    { "name": "West Hub", "value": 64, "next": 76 },
+    { "name": "Central Hub", "value": 58, "next": 70 },
+    { "name": "East Hub", "value": 81, "next": 88 }
+  ],
+  "routes": [
+    { "name": "West to Central", "coords": [[0, 22], [28, 44]], "value": 24 },
+    { "name": "Central to East", "coords": [[28, 44], [62, 58]], "value": 32 },
+    { "name": "North to East", "coords": [[18, 78], [62, 58]], "value": 18 },
+    { "name": "Product to North", "coords": [[8, 15], [18, 78]], "value": 14 }
+  ]
+}

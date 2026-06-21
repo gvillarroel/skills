@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Concept Series Videos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,0&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="video-frame" aria-label="AI concept video">
+    <header class="top-bar">
+      <div class="series-lockup">
+        <span class="material-symbols-rounded" aria-hidden="true">hub</span>
+        <span>AI Concept Series</span>
+      </div>
+      <div class="source-lockup" id="source-lockup">Research checked 2026-06-20</div>
+      <div class="timer" id="timer">00:00 / 02:00</div>
+    </header>
+
+    <section class="title-band">
+      <div>
+        <p id="concept-index" class="eyebrow">Concept 01</p>
+        <h1 id="concept-title">What Is an LLM?</h1>
+      </div>
+      <p id="core-idea" class="core-idea">A text-first foundation model predicts useful continuations one token at a time.</p>
+    </section>
+
+    <section class="content-grid">
+      <aside class="script-panel" aria-label="Script beat">
+        <div class="beat-label" id="beat-label">Hook</div>
+        <h2 id="scene-headline">Not a perfect lookup table</h2>
+        <ul id="scene-bullets"></ul>
+        <p id="scene-callout" class="scene-callout">LLM = context plus ranked next-token choices</p>
+      </aside>
+
+      <section class="visual-panel" aria-label="Animated concept visualization">
+        <svg id="concept-svg" viewBox="0 0 760 448" role="img" aria-labelledby="svg-title svg-desc">
+          <title id="svg-title">AI concept visualization</title>
+          <desc id="svg-desc">A D3-generated animated explanation frame.</desc>
+        </svg>
+      </section>
+
+      <aside class="metrics-panel" aria-label="Concept metrics">
+        <h2>Signal Map</h2>
+        <div id="metrics"></div>
+        <div class="source-card">
+          <div class="source-card-label">Current references</div>
+          <div id="source-tags" class="source-tags"></div>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="timeline-footer">
+      <div class="beat-track" id="beat-track"></div>
+      <div class="handoff-line" id="handoff-line">The meter wraps the work.</div>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@4.4.1/dist/bundles/anime.umd.min.js"></script>
+  <script type="module" src="./renderer.js"></script>
+</body>
+</html>

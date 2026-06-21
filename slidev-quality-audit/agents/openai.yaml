@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slidev Quality Audit"
+  short_description: "Audit Slidev decks for layout quality"
+  default_prompt: "Use $slidev-quality-audit to audit a Slidev deck for off-screen, hidden, overlapping, contrast, and rendering issues."

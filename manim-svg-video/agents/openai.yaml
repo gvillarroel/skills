@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manim SVG Video"
+  short_description: "Compose animated SVGs into Manim videos"
+  default_prompt: "Use $manim-svg-video to compose multiple SVG animations into a timed Manim video."

@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Local browser/runtime caches
+.playwright-cli/
+playwright-report/
+test-results/
+.cache/
+.vite/
+**/.vite/
+
+# Python/tooling caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# Environment and logs
+.env
+.env.*
+!.env.example
+*.log
+
+# Generated verification output and local builds
+output/
+dist/
+examples/**/dist/
+
+# Rendered media should be published outside git.
+*.mp4
+*.webm
+*.mov
+*.avi
+*.mkv
+*.gif
+*.apng
+
+# OS metadata
+.DS_Store
+Thumbs.db

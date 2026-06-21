@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTML D3 Anime Video Workflow"
+  short_description: "Coordinate web animation video pipelines"
+  default_prompt: "Use $html-d3-anime-video-workflow to plan, generate, improve, and validate a research-backed HTML+D3+Anime.js video production pipeline."

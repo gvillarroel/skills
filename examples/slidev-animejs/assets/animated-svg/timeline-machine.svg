@@ -1,0 +1,29 @@
+<svg class="anime-svg-asset anime-svg-timeline-machine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="timeline-machine-title timeline-machine-desc">
+  <title id="timeline-machine-title">Timeline machine asset</title>
+  <desc id="timeline-machine-desc">A machine-themed SVG with cable paths, gears, a conveyor block, and signals for Anime.js timeline sequencing.</desc>
+  <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
+  <g class="machine-rails" fill="none" stroke-linecap="round">
+    <path class="machine-cable machine-cable-main" d="M126 178 C246 116 342 126 420 204 S596 318 800 184" stroke="#007298" stroke-width="12"/>
+    <path class="machine-cable machine-cable-secondary" d="M126 346 C244 292 350 318 452 366 S664 410 808 312" stroke="#45842a" stroke-width="10"/>
+  </g>
+  <g class="machine-stations" data-anime-group="stations">
+    <rect x="96" y="132" width="112" height="92" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>
+    <rect x="756" y="140" width="112" height="92" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>
+    <rect x="96" y="300" width="112" height="92" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>
+    <rect x="756" y="276" width="112" height="92" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>
+  </g>
+  <g class="machine-gears" transform="translate(480 270)">
+    <path class="machine-gear gear-blue" d="M0 -62 L14 -38 L42 -44 L38 -16 L62 0 L38 16 L42 44 L14 38 L0 62 L-14 38 L-42 44 L-38 16 L-62 0 L-38 -16 L-42 -44 L-14 -38 Z" fill="#cdf3ff" stroke="#007298" stroke-width="6"/>
+    <circle cx="0" cy="0" r="22" fill="#007298"/>
+  </g>
+  <g class="machine-conveyor" data-anime-group="conveyor">
+    <path d="M268 438 H692" stroke="#9c9c9c" stroke-width="12" stroke-linecap="round"/>
+    <rect class="machine-block" x="294" y="402" width="86" height="64" rx="14" fill="#fff4cc" stroke="#e77204" stroke-width="5"/>
+  </g>
+  <g class="machine-signals" data-anime-group="signals">
+    <circle class="machine-signal" cx="152" cy="178" r="18" fill="#9e1b32"/>
+    <circle class="machine-signal" cx="812" cy="186" r="18" fill="#007298"/>
+    <circle class="machine-signal" cx="152" cy="346" r="18" fill="#45842a"/>
+    <circle class="machine-signal" cx="812" cy="322" r="18" fill="#e77204"/>
+  </g>
+</svg>

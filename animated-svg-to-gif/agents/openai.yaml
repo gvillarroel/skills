@@ -1,0 +1,4 @@
+interface:
+  display_name: "Animated SVG to GIF"
+  short_description: "Convert animated SVGs to polished GIFs"
+  default_prompt: "Use $animated-svg-to-gif to convert these animated SVG files into high-quality GIFs."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "ECharts Animated SVG"
+  short_description: "Replayable animations for ECharts SVG output"
+  default_prompt: "Use $echarts-animated-svg to animate rendered ECharts SVG charts and build a replayable HTML gallery."

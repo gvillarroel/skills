@@ -1,0 +1,25 @@
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.pdf binary
+
+*.svg text eol=lf
+*.md text eol=lf
+*.mmd text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
+*.vue text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.py text eol=lf
+
+# Generated browser bundles are checked by browser smoke tests, not text diffs.
+docs/examples/threejs-animated-3d/assets/*.js binary

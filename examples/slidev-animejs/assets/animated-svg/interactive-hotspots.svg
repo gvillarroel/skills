@@ -1,0 +1,33 @@
+<svg class="anime-svg-asset anime-svg-interactive-hotspots" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="interactive-hotspots-title interactive-hotspots-desc">
+  <title id="interactive-hotspots-title">Interactive hotspots asset</title>
+  <desc id="interactive-hotspots-desc">A map-like SVG with route, hotspot, and callout hooks for Anime.js stagger, draw, and click-state animations.</desc>
+  <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
+  <path class="map-region region-blue" d="M112 158 C214 78 330 124 366 220 C394 294 328 370 206 358 C122 350 58 244 112 158 Z" fill="#cdf3ff" stroke="#00ace6" stroke-width="5"/>
+  <path class="map-region region-green" d="M412 118 C526 72 650 124 676 234 C704 348 604 438 474 394 C376 360 314 184 412 118 Z" fill="#dbffcc" stroke="#36b300" stroke-width="5"/>
+  <path class="map-region region-amber" d="M668 186 C746 116 872 146 898 250 C926 362 826 432 724 398 C634 368 594 252 668 186 Z" fill="#fff4cc" stroke="#fcd34d" stroke-width="5"/>
+  <path class="map-route" d="M184 272 C292 186 366 298 470 246 S650 168 768 292" fill="none" stroke="#4f4f4f" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <g class="map-hotspots" data-anime-group="hotspots">
+    <g class="map-hotspot" data-region="west" transform="translate(184 272)">
+      <circle r="28" fill="#007298"/>
+      <circle r="10" fill="#ffffff"/>
+    </g>
+    <g class="map-hotspot" data-region="center" transform="translate(470 246)">
+      <circle r="28" fill="#45842a"/>
+      <circle r="10" fill="#ffffff"/>
+    </g>
+    <g class="map-hotspot" data-region="east" transform="translate(768 292)">
+      <circle r="28" fill="#e77204"/>
+      <circle r="10" fill="#ffffff"/>
+    </g>
+  </g>
+  <g class="map-callouts" fill="#ffffff" stroke="#cfcfcf" stroke-width="4" data-anime-group="callouts">
+    <rect class="map-callout" x="98" y="390" width="174" height="64" rx="14"/>
+    <rect class="map-callout" x="384" y="58" width="174" height="64" rx="14"/>
+    <rect class="map-callout" x="682" y="390" width="174" height="64" rx="14"/>
+  </g>
+  <g class="map-labels" fill="#4f4f4f" font-family="Open Sans, Arial, sans-serif" font-size="22" font-weight="750">
+    <text x="132" y="430">hotspot A</text>
+    <text x="418" y="98">hotspot B</text>
+    <text x="716" y="430">hotspot C</text>
+  </g>
+</svg>
