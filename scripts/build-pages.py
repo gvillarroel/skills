@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import shutil
 import sys
+import time
 from pathlib import Path
 
 
@@ -302,7 +303,17 @@ def normalize_text_file(path: Path) -> None:
     lines = [line.rstrip(" \t") for line in content.splitlines()]
     while lines and lines[-1] == "":
         lines.pop()
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+    normalized = "\n".join(lines) + "\n"
+    if normalized == content:
+        return
+    for attempt in range(5):
+        try:
+            path.write_text(normalized, encoding="utf-8", newline="\n")
+            return
+        except OSError:
+            if attempt == 4:
+                raise
+            time.sleep(0.1)
 
 
 def normalize_text_tree(root: Path) -> None:

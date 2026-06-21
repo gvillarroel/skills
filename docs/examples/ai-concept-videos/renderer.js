@@ -1,4 +1,6 @@
 import { beats, concepts, palette, researchNotes } from "./concepts.js";
+import { drawGenericConceptVisualOnly } from "./scenes/generic-visuals.js";
+import { drawLlmHandoffVisualOnly } from "./scenes/llm-handoff.js";
 import { drawLlmImplicationVisualOnly } from "./scenes/llm-implication.js";
 import { drawLlmMechanismVisualOnly } from "./scenes/llm-mechanism.js";
 
@@ -56,6 +58,10 @@ function selectConcept(id) {
     return concepts[numeric - 1];
   }
   return concepts.find((item) => item.id === id || item.shortTitle.toLowerCase() === String(id).toLowerCase()) ?? concepts[0];
+}
+
+function isVisualOnlyConcept(concept) {
+  return concept.visualOnly === true || concept.kind !== "llm";
 }
 
 function setText(id, value) {
@@ -186,7 +192,7 @@ function runAnimeCue() {
 }
 
 function prepareSvg(concept, seconds) {
-  const visualOnly = concept.visualOnly === true;
+  const visualOnly = isVisualOnlyConcept(concept);
   const frameWidth = visualOnly ? 1280 : SVG_WIDTH;
   const frameHeight = visualOnly ? 720 : SVG_HEIGHT;
   svg.selectAll("*").remove();
@@ -1332,6 +1338,45 @@ function drawLlmVisualOnly(g, seconds, sceneProgress, stageIndex, pulse, moving)
     });
     return;
   }
+  if (stage === 4) {
+    const previousFrameSeconds = 100 - 1 / 30;
+    const previousFrameProgress = (previousFrameSeconds - 66) / 34;
+    const previousFramePulse = 0.84 + Math.sin(previousFrameSeconds * 0.16) * 0.16;
+    const handoffSeconds = sceneProgress * 20;
+    const introP = easeOut((handoffSeconds - 0.3) / 1.55);
+    if (introP < 0.999) {
+      const previousGroup = g.append("g").attr("opacity", 1 - introP);
+      drawLlmImplicationVisualOnly(previousGroup, {
+        palette,
+        hookTokens,
+        sceneProgress: previousFrameProgress,
+        pulse: previousFramePulse,
+        clamp,
+        easeInOut,
+        easeOut,
+        lerp,
+        drawHookText,
+        drawHookCard,
+        tokenCardGeometry
+      });
+    }
+    if (introP <= 0.001) return;
+    const handoffGroup = g.append("g").attr("opacity", introP);
+    drawLlmHandoffVisualOnly(handoffGroup, {
+      palette,
+      hookTokens,
+      sceneProgress,
+      pulse,
+      clamp,
+      easeInOut,
+      easeOut,
+      lerp,
+      drawHookText,
+      drawHookCard,
+      tokenCardGeometry
+    });
+    return;
+  }
 
   const colors = [palette.blue, palette.green, palette.orange, palette.red, palette.purple, palette.yellow];
   const fades = {
@@ -2257,8 +2302,22 @@ function drawAlternatives(g, seconds, sceneProgress) {
 
 function drawConceptVisual(concept, seconds) {
   prepareSvg(concept, seconds);
-  const { progress } = sceneForTime(concept, seconds);
+  const { beat, progress } = sceneForTime(concept, seconds);
   const g = svg.append("g");
+  if (concept.kind !== "llm" && isVisualOnlyConcept(concept)) {
+    drawGenericConceptVisualOnly(g, concept, {
+      palette,
+      beat,
+      sceneProgress: progress,
+      seconds,
+      clamp,
+      easeInOut,
+      easeOut,
+      lerp,
+      drawHookText
+    });
+    return;
+  }
   switch (concept.kind) {
     case "llm":
       drawLlm(g, seconds, progress);
@@ -2303,7 +2362,7 @@ export function renderConceptFrame(conceptId, seconds, options = {}) {
   currentConcept = concept;
   const time = clamp(Number(seconds) || 0, 0, DURATION);
   if (options.capture) document.body.dataset.capture = "1";
-  document.body.classList.toggle("visual-only", concept.visualOnly === true);
+  document.body.classList.toggle("visual-only", isVisualOnlyConcept(concept));
   setInterface(concept, time);
   drawConceptVisual(concept, time);
   return {
