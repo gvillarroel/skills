@@ -29,6 +29,16 @@ Each backlog item should include:
 
 Update the backlog whenever a skill is added, removed, renamed, rejected, or validated.
 
+## Continuation Workflow
+
+When continuing this repository, start from [SKILLS.md](SKILLS.md), especially the backlog table and recent validation notes. Treat each backlog row as the current state record for that skill.
+
+- Move the skill status forward as work progresses, and leave open questions in the validation notes when a follow-up agent needs context.
+- Keep acceptance fixtures under `examples/` and reusable skill instructions under the matching top-level skill directory.
+- Regenerate GitHub Pages examples with `uv run --script scripts/build-pages.py` after changing examples that should be published.
+- Keep generated media, local build output, screenshots, and large verification artifacts out of git unless they are intentionally small static examples for Pages.
+- Before handing off, run the repo validator and payload check, then record any skill-specific validation commands in [SKILLS.md](SKILLS.md).
+
 ## Slidev ECharts Track
 
 - Keep the reusable skill in `slidev-echarts/`.
