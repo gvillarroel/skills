@@ -30,7 +30,7 @@ Use this index when the task names a chart type or when choosing a chart grammar
 
 ## Shared Example Fixture
 
-The validation deck in `examples/slidev-echarts/` uses shared synthetic data files:
+The validation deck in `slidev-echarts/assets/examples/slidev-echarts/` uses shared synthetic data files:
 
 - `data/time-series.json` for line, bar, route context, and temporal examples.
 - `data/categorical.json` for bar, pie, funnel, gauge, and pictorial bar.

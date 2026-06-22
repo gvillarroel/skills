@@ -183,4 +183,4 @@ output/<project>/
   smoke/
 ```
 
-Keep example source under `examples/<project>/` and generated artifacts out of skill directories.
+Keep reusable example source under the owning skill's `assets/examples/<project>/` directory and generated video artifacts under `output/`.

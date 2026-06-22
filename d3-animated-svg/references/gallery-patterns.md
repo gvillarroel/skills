@@ -99,6 +99,6 @@ For gallery updates, verify:
 Use the gallery verifier for deterministic checks:
 
 ```powershell
-uv run --script d3-animated-svg/scripts/verify_d3_gallery.py examples/d3-animated-svg/index.html --screenshot output/d3-animated-svg/gallery.png --wait-ms 2200
+uv run --script d3-animated-svg/scripts/verify_d3_gallery.py d3-animated-svg/assets/examples/d3-animated-svg/index.html --screenshot output/d3-animated-svg/gallery.png --wait-ms 2200
 uv run --script d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --viewport 390x900 --screenshot output/d3-animated-svg/gallery-mobile.png --wait-ms 2200
 ```

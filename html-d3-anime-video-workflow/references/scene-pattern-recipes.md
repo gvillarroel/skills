@@ -1,6 +1,6 @@
 # Scene Pattern Recipes
 
-Use this reference when preserving an approved HTML+D3+Anime.js scene pattern from `examples/ai-concept-videos` or adapting one into a new concept video.
+Use this reference when preserving an approved HTML+D3+Anime.js scene pattern from `html-d3-anime-video-workflow/assets/examples/ai-concept-videos` or adapting one into a new concept video.
 
 ## Approved Pattern Capture
 
@@ -14,7 +14,7 @@ When a scene works, store the transferable part in the skill before starting the
 
 ## Shared Model Box
 
-Source helper: `examples/ai-concept-videos/scenes/llm-model-box.js`.
+Source helper: `html-d3-anime-video-workflow/assets/examples/ai-concept-videos/scenes/llm-model-box.js`.
 
 Use when a model, grader, evaluator, or processor should appear as the same visual object across beats.
 
@@ -26,7 +26,7 @@ Use when a model, grader, evaluator, or processor should appear as the same visu
 
 ## Beat Module Split
 
-Source pattern: `examples/ai-concept-videos/scenes/evaluation.js` plus one file per beat and `evaluation-shared.js`.
+Source pattern: `html-d3-anime-video-workflow/assets/examples/ai-concept-videos/scenes/evaluation.js` plus one file per beat and `evaluation-shared.js`.
 
 Use when a concept needs different visual metaphors across hook, definition, mechanism, handoff, and implication beats.
 
@@ -38,7 +38,7 @@ Use when a concept needs different visual metaphors across hook, definition, mec
 
 ## Generic Visual Renderer Gate
 
-Source pattern: `examples/ai-concept-videos/scenes/generic-visuals.js`.
+Source pattern: `html-d3-anime-video-workflow/assets/examples/ai-concept-videos/scenes/generic-visuals.js`.
 
 Use the generic renderer only when the new concept shares the same mechanic as the existing pattern.
 
@@ -60,7 +60,7 @@ Use when the video needs current pricing or cost comparison without making movin
 
 ## Evaluation Scene Pattern
 
-Source pattern: `examples/ai-concept-videos/scenes/evaluation-*.js`.
+Source pattern: `html-d3-anime-video-workflow/assets/examples/ai-concept-videos/scenes/evaluation-*.js`.
 
 Use when the concept is evaluation, grading, pass/fail, pass@k, or benchmark comparison.
 
@@ -71,7 +71,7 @@ Use when the concept is evaluation, grading, pass/fail, pass@k, or benchmark com
 
 ## Render Presets
 
-Source script: `examples/ai-concept-videos/scripts/render-videos.mjs`.
+Source script: `html-d3-anime-video-workflow/assets/examples/ai-concept-videos/scripts/render-videos.mjs`.
 
 Use explicit presets instead of editing capture settings ad hoc:
 

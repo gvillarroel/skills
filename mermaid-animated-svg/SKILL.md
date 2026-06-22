@@ -32,7 +32,7 @@ uv run --script mermaid-animated-svg/scripts/animate_mermaid_svg.py diagram.mmd 
 Render a Mermaid source that contains `%% @animate` comments:
 
 ```powershell
-uv run --script mermaid-animated-svg/scripts/animate_mermaid_svg.py examples/mermaid-animation-directives/flowchart-token-routing.mmd -o output/mermaid-animation-directives/flowchart-token-routing.animated.svg --static-output output/mermaid-animation-directives/flowchart-token-routing.static.svg
+uv run --script mermaid-animated-svg/scripts/animate_mermaid_svg.py mermaid-animated-svg/assets/examples/mermaid-animation-directives/flowchart-token-routing.mmd -o output/mermaid-animation-directives/flowchart-token-routing.animated.svg --static-output output/mermaid-animation-directives/flowchart-token-routing.static.svg
 ```
 
 Use a pre-rendered Mermaid SVG:

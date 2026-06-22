@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import shutil
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -14,6 +15,27 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
+EXAMPLE_SOURCES = {
+    "ai-concept-videos": ROOT / "html-d3-anime-video-workflow" / "assets" / "examples" / "ai-concept-videos",
+    "d3-animated-svg": ROOT / "d3-animated-svg" / "assets" / "examples" / "d3-animated-svg",
+    "echarts-animated-svg": ROOT / "echarts-animated-svg" / "assets" / "examples" / "echarts-animated-svg",
+    "mermaid": ROOT / "mermaid-animated-svg" / "assets" / "examples" / "mermaid",
+    "mermaid-animation-directives": ROOT
+    / "mermaid-animated-svg"
+    / "assets"
+    / "examples"
+    / "mermaid-animation-directives",
+    "mermaid-directive-frames": ROOT
+    / "mermaid-animated-svg"
+    / "assets"
+    / "examples"
+    / "playwright"
+    / "mermaid-animation-directives",
+    "mermaid-svg-animated": ROOT / "mermaid-animated-svg" / "assets" / "examples" / "mermaid-svg-animated",
+    "slidev-animejs": ROOT / "slidev-animejs" / "assets" / "examples" / "slidev-animejs",
+    "slidev-echarts": ROOT / "slidev-echarts" / "assets" / "examples" / "slidev-echarts",
+    "threejs-animated-3d": ROOT / "threejs-animated-3d" / "assets" / "examples" / "threejs-animated-3d",
+}
 MEDIA_EXTENSIONS = {
     ".mp4",
     ".webm",
@@ -44,6 +66,31 @@ def require_path(path: Path) -> Path:
     if not path.exists():
         raise FileNotFoundError(f"Required Pages source is missing: {path.relative_to(ROOT).as_posix()}")
     return path
+
+
+def example_source(name: str) -> Path:
+    return require_path(EXAMPLE_SOURCES[name])
+
+
+def npm_executable() -> str:
+    return "npm.cmd" if sys.platform == "win32" else "npm"
+
+
+def run_command(args: list[str], cwd: Path) -> None:
+    print(f"Running {' '.join(args)} in {cwd.relative_to(ROOT).as_posix()}", flush=True)
+    subprocess.run(args, cwd=cwd, check=True)
+
+
+def ensure_node_dependencies(project: Path) -> None:
+    require_path(project / "package-lock.json")
+    if (project / "node_modules").exists():
+        return
+    run_command([npm_executable(), "ci", "--no-audit", "--no-fund"], project)
+
+
+def run_npm_script(project: Path, script: str) -> None:
+    ensure_node_dependencies(project)
+    run_command([npm_executable(), "run", script], project)
 
 
 def copy_file(src: Path, dst: Path) -> None:
@@ -328,9 +375,9 @@ def build_docs() -> None:
     DOCS.mkdir(parents=True)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
 
-    copy_tree(ROOT / "examples" / "echarts-animated-svg", DOCS / "examples" / "echarts-animated-svg")
+    copy_tree(example_source("echarts-animated-svg"), DOCS / "examples" / "echarts-animated-svg")
 
-    copy_tree(ROOT / "examples" / "d3-animated-svg", DOCS / "examples" / "d3-animated-svg")
+    copy_tree(example_source("d3-animated-svg"), DOCS / "examples" / "d3-animated-svg")
     patch_file(
         DOCS / "examples" / "d3-animated-svg" / "index.html",
         {
@@ -343,20 +390,31 @@ def build_docs() -> None:
         {"./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"},
     )
 
-    copy_tree(ROOT / "examples" / "mermaid", DOCS / "examples" / "mermaid")
-    copy_tree(ROOT / "examples" / "mermaid-svg-animated", DOCS / "examples" / "mermaid-svg-animated")
-    copy_tree(ROOT / "examples" / "mermaid-animation-directives", DOCS / "examples" / "mermaid-animation-directives")
-    copy_tree(ROOT / "output" / "mermaid-animation-directives", DOCS / "examples" / "mermaid-animation-directives")
+    copy_tree(example_source("mermaid"), DOCS / "examples" / "mermaid")
+    copy_tree(example_source("mermaid-svg-animated"), DOCS / "examples" / "mermaid-svg-animated")
+    copy_tree(example_source("mermaid-animation-directives"), DOCS / "examples" / "mermaid-animation-directives")
     copy_tree(
-        ROOT / "output" / "playwright" / "mermaid-animation-directives",
+        example_source("mermaid-directive-frames"),
         DOCS / "examples" / "playwright" / "mermaid-animation-directives",
     )
 
-    copy_tree(ROOT / "examples" / "threejs-animated-3d" / "dist", DOCS / "examples" / "threejs-animated-3d")
-    copy_tree(ROOT / "output" / "slidev-echarts" / "html", DOCS / "examples" / "slidev-echarts")
-    copy_tree(ROOT / "output" / "slidev-animejs" / "static-html", DOCS / "examples" / "slidev-animejs")
+    threejs_project = example_source("threejs-animated-3d")
+    slidev_echarts_project = example_source("slidev-echarts")
+    slidev_animejs_project = example_source("slidev-animejs")
+    slidev_echarts_html = ROOT / "output" / "slidev-echarts" / "html"
+    slidev_animejs_html = ROOT / "output" / "slidev-animejs" / "static-html"
 
-    copy_tree(ROOT / "examples" / "ai-concept-videos", DOCS / "examples" / "ai-concept-videos")
+    run_npm_script(threejs_project, "build")
+    shutil.rmtree(slidev_echarts_html, ignore_errors=True)
+    shutil.rmtree(slidev_animejs_html, ignore_errors=True)
+    run_npm_script(slidev_echarts_project, "build:html")
+    run_npm_script(slidev_animejs_project, "export:html")
+
+    copy_tree(threejs_project / "dist", DOCS / "examples" / "threejs-animated-3d")
+    copy_tree(slidev_echarts_html, DOCS / "examples" / "slidev-echarts")
+    copy_tree(slidev_animejs_html, DOCS / "examples" / "slidev-animejs")
+
+    copy_tree(example_source("ai-concept-videos"), DOCS / "examples" / "ai-concept-videos")
     patch_file(
         DOCS / "examples" / "ai-concept-videos" / "index.html",
         {

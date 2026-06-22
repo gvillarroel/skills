@@ -24,7 +24,7 @@ Read `references/animation-type-index.md` when the task names a specific Anime.j
 
 Read `references/assets/animated-svg-assets.md` when the task asks for SVGs that Anime.js can animate. It documents the generated SVG asset pack, stable selectors, and the Slidev fixture component that exercises each asset.
 
-The runnable validation fixture lives in `examples/slidev-animejs/`. Keep one slide per tested animation type and keep the matching reference file updated whenever the fixture behavior changes.
+The runnable validation fixture lives in `slidev-animejs/assets/examples/slidev-animejs/`. Keep one slide per tested animation type and keep the matching reference file updated whenever the fixture behavior changes.
 
 ## Visual Tokens
 

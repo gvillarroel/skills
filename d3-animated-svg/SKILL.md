@@ -33,14 +33,14 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
 Install and verify the included deterministic D3 fixture:
 
 ```powershell
-npm install --prefix examples/d3-animated-svg
-npm run verify --prefix examples/d3-animated-svg
+npm install --prefix d3-animated-svg/assets/examples/d3-animated-svg
+npm run verify --prefix d3-animated-svg/assets/examples/d3-animated-svg
 ```
 
 Capture any D3-generated SVG from an HTML page:
 
 ```powershell
-uv run --script d3-animated-svg/scripts/render_d3_svg.py examples/d3-animated-svg/force-beeswarm.html -o output/d3-animated-svg/force-beeswarm.svg --screenshot output/d3-animated-svg/force-beeswarm.png --wait-ms 1800
+uv run --script d3-animated-svg/scripts/render_d3_svg.py d3-animated-svg/assets/examples/d3-animated-svg/force-beeswarm.html -o output/d3-animated-svg/force-beeswarm.svg --screenshot output/d3-animated-svg/force-beeswarm.png --wait-ms 1800
 ```
 
 Use a custom SVG selector:
@@ -63,7 +63,7 @@ Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating examples, galler
 
 ## Pattern Promotion
 
-When a gallery card or standalone SVG pattern proves reusable, update `references/example-pattern-recipes.md` before finishing. Capture the stable `d3-pattern-*` ID, trigger, data contract, geometry contract, animation contract, semantic color roles, and validation hooks. For patterns expected to work in isolated skill-only workspaces, include a minimal standalone implementation recipe that does not depend on `examples/`.
+When a gallery card or standalone SVG pattern proves reusable, update `references/example-pattern-recipes.md` before finishing. Capture the stable `d3-pattern-*` ID, trigger, data contract, geometry contract, animation contract, semantic color roles, and validation hooks. For patterns expected to work in isolated skill-only workspaces, include a minimal standalone implementation recipe that does not depend on reading the gallery source.
 
 ## Validation
 

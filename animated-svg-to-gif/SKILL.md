@@ -24,7 +24,7 @@ uv run --script animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py input
 Convert a folder of animated SVGs:
 
 ```powershell
-uv run --script animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py examples/mermaid-svg-animated/animated --output-dir output/animated-svg-to-gif/mermaid --fps 24 --max-width 1280 --scale 2
+uv run --script animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py mermaid-animated-svg/assets/examples/mermaid-svg-animated/animated --output-dir output/animated-svg-to-gif/mermaid --fps 24 --max-width 1280 --scale 2
 ```
 
 Force timing and dimensions for a delivery target:

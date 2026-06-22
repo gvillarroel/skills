@@ -4,7 +4,7 @@ Use this reference when recreating a D3-generated SVG from the gallery, adapting
 
 ## Replication Workflow
 
-1. Identify the gallery card `id` and its `render*` function in `examples/d3-animated-svg/gallery.js`.
+1. Identify the gallery card `id` and its `render*` function in `d3-animated-svg/assets/examples/d3-animated-svg/gallery.js`.
 2. Copy only the required data, scales, layout code, and local helpers. Do not copy unrelated renderers.
 3. Preserve the output contract: fixed `viewBox`, `role="img"`, `title`, `desc`, scoped IDs, deterministic data, and final attributes that already encode the settled state.
 4. Use D3 for geometry and joins. Use inline SVG `animate`, `animateTransform`, `animateMotion`, or CSS keyframes for portable animation.
@@ -249,7 +249,7 @@ Run syntax and gallery validation after edits:
 
 ```powershell
 node --check examples\d3-animated-svg\gallery.js
-npm run verify --prefix examples/d3-animated-svg
+npm run verify --prefix d3-animated-svg/assets/examples/d3-animated-svg
 uv run --script scripts/validate-skills.py
 ```
 

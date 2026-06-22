@@ -46,9 +46,9 @@ uv run --script echarts-animated-svg/scripts/animate_echarts_svg.py chart.static
 Build and verify the bundled gallery fixture:
 
 ```powershell
-npm install --prefix examples/echarts-animated-svg
-npm run build --prefix examples/echarts-animated-svg
-npm run verify --prefix examples/echarts-animated-svg
+npm install --prefix echarts-animated-svg/assets/examples/echarts-animated-svg
+npm run build --prefix echarts-animated-svg/assets/examples/echarts-animated-svg
+npm run verify --prefix echarts-animated-svg/assets/examples/echarts-animated-svg
 ```
 
 ## Validation

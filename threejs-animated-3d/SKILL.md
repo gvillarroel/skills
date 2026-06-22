@@ -27,15 +27,15 @@ description: "Build, animate, troubleshoot, and validate Three.js/WebGL 3D scene
 Install and verify the included Three.js gallery fixture:
 
 ```powershell
-npm install --prefix examples/threejs-animated-3d
-npm run build --prefix examples/threejs-animated-3d
-npm run verify --prefix examples/threejs-animated-3d
+npm install --prefix threejs-animated-3d/assets/examples/threejs-animated-3d
+npm run build --prefix threejs-animated-3d/assets/examples/threejs-animated-3d
+npm run verify --prefix threejs-animated-3d/assets/examples/threejs-animated-3d
 ```
 
 Run the example page locally:
 
 ```powershell
-npm run dev --prefix examples/threejs-animated-3d
+npm run dev --prefix threejs-animated-3d/assets/examples/threejs-animated-3d
 ```
 
 ## Complementarity Rules

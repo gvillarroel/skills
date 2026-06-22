@@ -1,0 +1,25 @@
+{
+  "name": "slidev-echarts-example",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev",
+    "build": "slidev build --base ./",
+    "build:html": "cross-env SLIDEV_SINGLE_FILE=1 slidev build --base ./ --router-mode hash --out ../../../../output/slidev-echarts/html",
+    "export": "slidev export",
+    "video": "node scripts/record-video.mjs",
+    "verify:video": "node scripts/record-video.mjs --skip-video"
+  },
+  "dependencies": {
+    "@slidev/cli": "52.16.0",
+    "@slidev/theme-default": "0.25.0",
+    "echarts": "6.1.0",
+    "vue": "3.5.38"
+  },
+  "devDependencies": {
+    "cross-env": "10.1.0",
+    "playwright": "1.60.0",
+    "vite-plugin-singlefile": "2.3.3"
+  }
+}

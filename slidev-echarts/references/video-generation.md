@@ -82,7 +82,7 @@ Do not commit generated videos or screenshots unless the repository explicitly t
 
 ## Example Deck Commands
 
-The validation deck in `examples/slidev-echarts/` exposes:
+The validation deck in `slidev-echarts/assets/examples/slidev-echarts/` exposes:
 
 ```powershell
 npm run verify:video

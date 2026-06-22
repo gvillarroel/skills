@@ -206,15 +206,15 @@ Verification hooks:
 - Every path should have a non-empty `d` attribute containing one `Q` command.
 - Endpoint count should match the number of phases.
 - Browser validation should confirm nonblank rendered pixels and at least one animated path.
-- In an isolated skill-only test, copy only `d3-animated-svg/` plus a new empty workspace; do not read `examples/d3-animated-svg/gallery.js`.
+- In an isolated skill-only test, copy only `d3-animated-svg/` plus a new empty workspace; do not read `d3-animated-svg/assets/examples/d3-animated-svg/gallery.js`.
 
 ## Adaptation Checklist
 
 Before committing an adapted pattern:
 
-- Search `examples/d3-animated-svg/gallery.js` for the source pattern ID and render function.
+- Search `d3-animated-svg/assets/examples/d3-animated-svg/gallery.js` for the source pattern ID and render function.
 - Copy only the required helpers, data shape, and geometry.
 - Preserve semantic roles for shapes, colors, and motion.
 - Add or update the stable `d3-pattern-*` ID if it becomes a gallery card.
-- Run `npm run verify --prefix examples/d3-animated-svg` for gallery changes.
+- Run `npm run verify --prefix d3-animated-svg/assets/examples/d3-animated-svg` for gallery changes.
 - For served or Pages behavior, verify through HTTP so CDN/local asset assumptions are tested.

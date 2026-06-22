@@ -1,6 +1,6 @@
 # Animated SVG Asset Pack
 
-Use these generated SVG files when a Slidev Anime.js deck needs vector artwork that can be animated without redrawing the asset in JavaScript. The assets live in `examples/slidev-animejs/assets/animated-svg/` and are imported with Vite `?raw` so their internal SVG nodes are available to Anime.js selectors.
+Use these generated SVG files when a Slidev Anime.js deck needs vector artwork that can be animated without redrawing the asset in JavaScript. The assets live in `slidev-animejs/assets/examples/slidev-animejs/assets/animated-svg/` and are imported with Vite `?raw` so their internal SVG nodes are available to Anime.js selectors.
 
 ## Integration Pattern
 
@@ -24,7 +24,7 @@ Use these generated SVG files when a Slidev Anime.js deck needs vector artwork t
 
 ## Slidev Fixture
 
-The fixture component is `examples/slidev-animejs/components/SvgAssetSlide.vue`. It imports each asset as raw SVG from `examples/slidev-animejs/lib/svg-assets.js`, injects it into a fixed stage, and runs one Anime.js animation recipe per asset.
+The fixture component is `slidev-animejs/assets/examples/slidev-animejs/components/SvgAssetSlide.vue`. It imports each asset as raw SVG from `slidev-animejs/assets/examples/slidev-animejs/lib/svg-assets.js`, injects it into a fixed stage, and runs one Anime.js animation recipe per asset.
 
 Use it in `slides.md` with a clamped click state:
 

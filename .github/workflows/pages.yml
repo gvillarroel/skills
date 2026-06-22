@@ -34,6 +34,9 @@ jobs:
       - name: Check repository payload
         run: uv run --script scripts/check-repo-payload.py
 
+      - name: Build Pages from skill assets
+        run: uv run --script scripts/build-pages.py
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

@@ -38,7 +38,7 @@ uv run --script manim-svg-video/scripts/compose_svg_video.py --discover-root . -
 Render a faster smoke test with only a few assets:
 
 ```powershell
-uv run --script manim-svg-video/scripts/compose_svg_video.py --discover-root examples/mermaid-svg-animated/animated --out output/manim-svg-video/smoke --duration 12 --max-assets 6 --render --quality l --fps 5 --resolution 640,360
+uv run --script manim-svg-video/scripts/compose_svg_video.py --discover-root mermaid-animated-svg/assets/examples/mermaid-svg-animated/animated --out output/manim-svg-video/smoke --duration 12 --max-assets 6 --render --quality l --fps 5 --resolution 640,360
 ```
 
 ## Operating Notes

@@ -1,0 +1,198 @@
+[
+  {
+    "slug": "architecture-service-pipeline",
+    "type": "Architecture",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/architecture.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/architecture-service-pipeline.mmd",
+    "critique": "Strong example because architecture aliases produce stable service and edge IDs; grouped source/markdown reveal avoids overlapping fixtures."
+  },
+  {
+    "slug": "block-diagram-directive-selectors",
+    "type": "Block",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/block-diagram.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/block-diagram-directive-selectors.mmd",
+    "critique": "Uses stable rendered block IDs and one connection ID; it intentionally avoids role:edge for precise connector movement."
+  },
+  {
+    "slug": "c4-context-message-flow",
+    "type": "C4",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/c4-diagram.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/c4-context-message-flow.mmd",
+    "critique": "Good for box-level orchestration, but C4 relationship selection is still coarse because Mermaid renders all relation lines as one candidate."
+  },
+  {
+    "slug": "class-relation-token",
+    "type": "Class",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/class-diagram.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/class-relation-token.mmd",
+    "critique": "Uses exact class and relation IDs, which is safer than substring text matching for class names."
+  },
+  {
+    "slug": "er-relationship-trace",
+    "type": "Entity Relationship",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/entity-relationship-diagram.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/er-relationship-trace.mmd",
+    "critique": "Strong current-language example: exact entity and relationship IDs give stable anchors and path tracing."
+  },
+  {
+    "slug": "event-modeling-causality",
+    "type": "Event Modeling",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/event-modeling.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/event-modeling-causality.mmd",
+    "critique": "Shows the right workaround for missing per-edge selectors: keep swimlanes static and animate causality with marks."
+  },
+  {
+    "slug": "flowchart-branch-review",
+    "type": "Flowchart",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/flowchart.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/flowchart-branch-review.mmd",
+    "critique": "Readable node selectors work well; broad edge tracing remains the main limitation until edge:A->B exists."
+  },
+  {
+    "slug": "gantt-progress-lane",
+    "type": "Gantt",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/gantt.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/gantt-progress-lane.mmd",
+    "critique": "Preserves date geometry by moving a mark rather than moving task bars."
+  },
+  {
+    "slug": "gitgraph-release-flow",
+    "type": "GitGraph",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/gitgraph-diagram.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/gitgraph-release-flow.mmd",
+    "critique": "Uses stable commit label text for point anchors and avoids hash-like generated classes; some commit classes resolve both outer and inner shapes."
+  },
+  {
+    "slug": "ishikawa-root-cause",
+    "type": "Ishikawa",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/ishikawa.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/ishikawa-root-cause.mmd",
+    "critique": "Branch labels are easy to select by text, but exact per-branch line selection still needs future cause/branch syntax."
+  },
+  {
+    "slug": "kanban-card-flow",
+    "type": "Kanban",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/kanban.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/kanban-card-flow.mmd",
+    "critique": "Uses stable card and column IDs; movement is carried by an overlay mark so the board layout remains true."
+  },
+  {
+    "slug": "mindmap-branch-focus",
+    "type": "Mindmap",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/mindmap.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/mindmap-branch-focus.mmd",
+    "critique": "Combines readable node text with explicit generated edge IDs, which is the safest current branch-level pattern."
+  },
+  {
+    "slug": "packet-field-scan",
+    "type": "Packet",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/packet-diagram.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/packet-field-scan.mmd",
+    "critique": "Uses full row text plus absolute field centers because packet fields have no semantic IDs yet."
+  },
+  {
+    "slug": "pie-segment-callout",
+    "type": "Pie",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/pie-chart.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/pie-segment-callout.mmd",
+    "critique": "Segment classes are compact, but each category selector intentionally affects wedge, percentage, and legend together."
+  },
+  {
+    "slug": "quadrant-point-routing",
+    "type": "Quadrant",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/quadrant-chart.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/quadrant-point-routing.mmd",
+    "critique": "Uses text labels for exact point selection; plot-space selectors remain future syntax."
+  },
+  {
+    "slug": "radar-series-layering",
+    "type": "Radar",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/radar.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/radar-series-layering.mmd",
+    "critique": "Series-level CSS selectors work; per-axis and per-vertex domain selectors remain missing."
+  },
+  {
+    "slug": "requirement-traceability-thread",
+    "type": "Requirement",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/requirement-diagram.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/requirement-traceability-thread.mmd",
+    "critique": "Exact requirement and relation IDs make this a good candidate for current directive syntax, but edge direction must be taken from --list-elements."
+  },
+  {
+    "slug": "sankey-flow-handoff",
+    "type": "Sankey",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/sankey.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/sankey-flow-handoff.mmd",
+    "critique": "Uses node IDs and all-flow tracing; precise individual link syntax is still a gap."
+  },
+  {
+    "slug": "sequence-message-token",
+    "type": "Sequence",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/sequence-diagram.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/sequence-message-token.mmd",
+    "critique": "Uses broad message tracing and explicit points, because current sequence SVG does not expose semantic message selectors."
+  },
+  {
+    "slug": "state-dwell-token",
+    "type": "State",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/state-diagram.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/state-dwell-token.mmd",
+    "critique": "Demonstrates dwell with marks and color; future wait/dwell verbs would reduce directive count."
+  },
+  {
+    "slug": "timeline-milestone-scan",
+    "type": "Timeline",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/timeline.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/timeline-milestone-scan.mmd",
+    "critique": "Uses visible timeline labels and generated timeline classes; dense timelines need shorter gaps."
+  },
+  {
+    "slug": "treemap-hierarchy-focus",
+    "type": "Treemap",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/treemap.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/treemap-hierarchy-focus.mmd",
+    "critique": "Label selectors work for readable sections/leaves; tiny hidden leaves are intentionally not emphasized."
+  },
+  {
+    "slug": "treeview-directory-scan",
+    "type": "Treeview",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/treeview.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/treeview-directory-scan.mmd",
+    "critique": "Labels are exact text targets; branch lines are only emphasized as a group because text-selected folder candidates can overlap line containers."
+  },
+  {
+    "slug": "journey-stage-progress",
+    "type": "Journey",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/user-journey.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/journey-stage-progress.mmd",
+    "critique": "Uses exact task/section text; no stable IDs are emitted, so broad column classes remain group-only tools."
+  },
+  {
+    "slug": "venn-coverage-focus",
+    "type": "Venn",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/venn.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/venn-coverage-focus.mmd",
+    "critique": "Generated .venn-sets-* classes are strong current syntax for set/intersection choreography."
+  },
+  {
+    "slug": "wardley-value-chain",
+    "type": "Wardley",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/wardley.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/wardley-value-chain.mmd",
+    "critique": "Uses text labels for components and xy points for precise symbols because component IDs are absent."
+  },
+  {
+    "slug": "xy-chart-series-reveal",
+    "type": "XY Chart",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/xy-chart.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/xy-chart-series-reveal.mmd",
+    "critique": "Uses chart-level roles and xy points because individual bars and plot-domain points are not addressable yet."
+  },
+  {
+    "slug": "zenuml-frontmatter-render",
+    "type": "ZenUML",
+    "source": "mermaid-animated-svg/assets/examples/mermaid/zenuml.mmd",
+    "directiveSource": "mermaid-animated-svg/assets/examples/mermaid-animation-directives/by-type/zenuml-frontmatter-render.mmd",
+    "critique": "Relies on explicit xy points and broad item/message groups because data-participant attributes are not selectable yet."
+  }
+]
