@@ -12,6 +12,7 @@ Use this reference for standalone HTML+D3+Anime.js video pipelines that are not 
 
 - Start with the concept's causal mechanic, not with the last successful scene or the nearest gallery component.
 - Read `visual-metaphor-design.md` for new concept videos, weak beats, or feedback that the video copied an old pattern without explaining the new idea.
+- Read `scene-pattern-recipes.md` after a metaphor is chosen and before reusing an approved scene, shared helper, or example module.
 - Generate multiple candidate metaphors and reject the weaker ones before writing scene code.
 - Define a local visual vocabulary: which shapes are nouns, which motions are verbs, and which colors or state changes are adjectives.
 - Reuse a previous scene pattern only when the repeated marks keep the same semantic role. Reuse helpers freely, but do not reuse a matrix, meter, loop, or machine box as a generic placeholder.

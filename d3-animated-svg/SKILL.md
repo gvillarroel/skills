@@ -25,6 +25,7 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
 - `references/layout-patterns.md`: read when implementing D3 layouts, scales, projections, hierarchy, force simulations, or data joins.
 - `references/animation-patterns.md`: read when making portable SVG animation, staged reveals, path drawing, motion tokens, morphs, or final-frame verification.
 - `references/gallery-patterns.md`: read when extending a multi-example gallery with card conventions, per-card replay controls, and gallery-level verification.
+- `references/example-pattern-recipes.md`: read when turning a successful gallery example into a reusable implementation pattern or adapting one of the approved pattern IDs.
 - `references/svg-replication.md`: read when replicating, extracting, or adapting a D3-generated SVG from this repository, especially when the user asks for exact colors, portable animation code, or a reusable implementation recipe.
 
 ## Common Commands

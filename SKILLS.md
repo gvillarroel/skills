@@ -29,6 +29,8 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- `html-d3-anime-video-workflow`: Added `references/scene-pattern-recipes.md` so approved AI concept scene patterns, shared model boxes, beat-module splits, render presets, and validation gates are stored in the skill instead of only in examples. Passed repo validation with `uv run --script scripts/validate-skills.py`.
+- `d3-animated-svg`: Added `references/example-pattern-recipes.md` so promoted gallery examples document how to recreate document token quality blocks, extraction buckets, image partial covers, inline bar tables, sketchy overlays, model execution boxes, and token roulette sampling from stable `d3-pattern-*` IDs. Passed repo validation with `uv run --script scripts/validate-skills.py`.
 - `d3-animated-svg`: Expanded the examples gallery to 202 cards with `Agent Loop Partial Covers`, an image-backed SVG pattern that keeps a source diagram visible while animated translucent covers and sweep lines partially cover selected regions.
 - `d3-animated-svg`: Polished `d3-pattern-document-token-extraction-buckets` by replacing brace-like curved extraction connectors with subtle straight guide lanes from the source page into each bucket.
 - `d3-animated-svg`: Expanded the examples gallery to 201 cards with `Document Extraction Buckets`, a single-page document pattern where colored word blocks are scanned in writing order, extracted into filler/correct/wrong buckets, and summarized with calculated unit totals, percentages, and block counts.

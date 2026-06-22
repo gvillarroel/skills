@@ -30,7 +30,7 @@ Pick metaphors that expose causality, not merely activity.
 - Use a **loop** when repeated observation, retry, or context growth matters.
 - Use **layers** when enclosure, runtime boundaries, or responsibility separation matters.
 
-This is not a D3 taxonomy. After selecting the metaphor, use the D3 skill to choose the exact visualization primitive or gallery example.
+This is not a D3 taxonomy. After selecting the metaphor, use the D3 skill to choose the exact visualization primitive or gallery example, then use `scene-pattern-recipes.md` when an approved video scene pattern should be reused or extracted into a shared helper.
 
 ## Visual Vocabulary Rules
 
