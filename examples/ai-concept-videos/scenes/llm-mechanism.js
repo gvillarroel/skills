@@ -1,3 +1,5 @@
+import { drawLlmModelBox } from "./llm-model-box.js";
+
 const baseContinuationToken = { raw: " tests", piece: "tests", color: "#652f6c" };
 
 const generationSteps = [
@@ -116,67 +118,10 @@ function drawTokenTrail(g, tokens, visibleCount, ctx) {
 }
 
 function drawLlmMachine(g, llm, activation, ctx) {
-  const { palette, drawHookText, pulse, lerp } = ctx;
-  const textOpacity = ctx.machineTextOpacity ?? 1;
-  const textMorph = ctx.machineTextMorph ?? 1;
-  const group = g.append("g");
-  group.append("rect")
-    .attr("x", llm.x)
-    .attr("y", llm.y)
-    .attr("width", llm.w)
-    .attr("height", llm.h)
-    .attr("rx", 0)
-    .attr("fill", "#ffffff")
-    .attr("stroke", palette.brandPrimary)
-    .attr("stroke-width", 4);
-
-  ["Large", "Language", "Model"].forEach((word, index) => {
-    drawHookText(group, word, llm.x + llm.w / 2, lerp(llm.y + 100 + index * 39, llm.y + 84 + index * 32, textMorph), {
-      size: lerp(36, 29, textMorph),
-      weight: 870,
-      fill: palette.brandNeutral,
-      opacity: 0.96 * textOpacity
-    });
-  });
-
-  const mlp = {
-    x: llm.x + 170,
-    y: llm.y + 188,
-    layerGap: 28,
-    nodeGap: 17,
-    layers: [3, 4, 3]
-  };
-  const network = group.append("g").attr("opacity", 0.28 + activation * 0.34);
-  for (let layer = 0; layer < mlp.layers.length - 1; layer += 1) {
-    const fromCount = mlp.layers[layer];
-    const toCount = mlp.layers[layer + 1];
-    const fromX = mlp.x + layer * mlp.layerGap;
-    const toX = mlp.x + (layer + 1) * mlp.layerGap;
-    for (let a = 0; a < fromCount; a += 1) {
-      for (let b = 0; b < toCount; b += 1) {
-        network.append("line")
-          .attr("x1", fromX)
-          .attr("y1", mlp.y + a * mlp.nodeGap + (4 - fromCount) * 5)
-          .attr("x2", toX)
-          .attr("y2", mlp.y + b * mlp.nodeGap + (4 - toCount) * 5)
-          .attr("stroke", activation > 0.35 ? palette.blue : palette.gray400)
-          .attr("stroke-width", 1.2 + activation * 1.2)
-          .attr("opacity", 0.42 + activation * 0.32);
-      }
-    }
-  }
-  mlp.layers.forEach((count, layer) => {
-    const x = mlp.x + layer * mlp.layerGap;
-    for (let node = 0; node < count; node += 1) {
-      network.append("circle")
-        .attr("cx", x)
-        .attr("cy", mlp.y + node * mlp.nodeGap + (4 - count) * 5)
-        .attr("r", 4.3 + activation * 2.2 + pulse * 0.45)
-        .attr("fill", activation > 0.45 ? palette.blue : palette.gray600)
-        .attr("stroke", "#ffffff")
-        .attr("stroke-width", 1.3)
-        .attr("opacity", 0.7 + activation * 0.22);
-    }
+  drawLlmModelBox(g, llm, ctx, {
+    activation,
+    activationClock: ctx.sceneProgress * 30,
+    textOpacity: ctx.machineTextOpacity ?? 1
   });
 }
 

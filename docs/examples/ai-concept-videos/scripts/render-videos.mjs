@@ -13,7 +13,58 @@ const deckDir = resolve(__dirname, "..");
 const repoRoot = resolve(deckDir, "..", "..");
 const defaultOutput = resolve(repoRoot, "output", "ai-concept-videos");
 
+const encoderPresets = new Set(["ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow", "placebo"]);
+const renderPresets = {
+  quick: {
+    fps: 6,
+    quality: 24,
+    deviceScaleFactor: 1,
+    encoderPreset: "veryfast",
+    contactSheet: false
+  },
+  draft: {
+    fps: 12,
+    quality: 24,
+    deviceScaleFactor: 1,
+    encoderPreset: "veryfast",
+    contactSheet: false
+  },
+  motion: {
+    fps: 30,
+    quality: 20,
+    deviceScaleFactor: 1,
+    encoderPreset: "faster",
+    contactSheet: true
+  },
+  fast: {
+    fps: 30,
+    quality: 16,
+    deviceScaleFactor: 2,
+    encoderPreset: "veryfast",
+    contactSheet: false
+  },
+  final: {
+    fps: 30,
+    quality: 16,
+    deviceScaleFactor: 2,
+    encoderPreset: "slow",
+    contactSheet: true
+  }
+};
+
+function findPresetName(argv) {
+  for (let i = 0; i < argv.length; i += 1) {
+    if (argv[i] === "--preset") return argv[i + 1];
+  }
+  return null;
+}
+
 function parseArgs(argv) {
+  const presetName = findPresetName(argv);
+  if (presetName && !renderPresets[presetName]) {
+    throw new Error(`Unknown preset: ${presetName}. Use one of: ${Object.keys(renderPresets).join(", ")}.`);
+  }
+  const labelWasExplicit = argv.includes("--label");
   const args = {
     fps: 30,
     quality: 16,
@@ -22,31 +73,44 @@ function parseArgs(argv) {
     deviceScaleFactor: 1,
     out: defaultOutput,
     concept: "all",
-    label: "final",
+    label: labelWasExplicit ? "final" : (presetName ?? "final"),
     start: 0,
     duration: null,
     keepFrames: false,
-    append: false
+    append: false,
+    preset: presetName ?? "custom",
+    encoderPreset: "slow",
+    contactSheet: true,
+    ...renderPresets[presetName]
   };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
-    if (arg === "--fps") args.fps = Number(argv[++i]);
+    if (arg === "--preset") i += 1;
+    else if (arg === "--fps") args.fps = Number(argv[++i]);
     else if (arg === "--quality") args.quality = Number(argv[++i]);
     else if (arg === "--width") args.width = Number(argv[++i]);
     else if (arg === "--height") args.height = Number(argv[++i]);
     else if (arg === "--device-scale-factor") args.deviceScaleFactor = Number(argv[++i]);
+    else if (arg === "--encoder-preset") args.encoderPreset = argv[++i];
     else if (arg === "--out") args.out = resolve(argv[++i]);
     else if (arg === "--concept") args.concept = argv[++i];
     else if (arg === "--label") args.label = argv[++i];
     else if (arg === "--start") args.start = Number(argv[++i]);
     else if (arg === "--duration") args.duration = Number(argv[++i]);
     else if (arg === "--keep-frames") args.keepFrames = true;
+    else if (arg === "--contact-sheet") args.contactSheet = true;
+    else if (arg === "--no-contact-sheet") args.contactSheet = false;
     else if (arg === "--append") args.append = true;
     else throw new Error(`Unknown argument: ${arg}`);
   }
   if (!Number.isFinite(args.fps) || args.fps <= 0) throw new Error("--fps must be a positive number.");
   if (!Number.isFinite(args.quality) || args.quality < 0 || args.quality > 51) throw new Error("--quality must be between 0 and 51.");
+  if (!Number.isFinite(args.width) || args.width <= 0) throw new Error("--width must be a positive number.");
+  if (!Number.isFinite(args.height) || args.height <= 0) throw new Error("--height must be a positive number.");
   if (!Number.isFinite(args.deviceScaleFactor) || args.deviceScaleFactor <= 0) throw new Error("--device-scale-factor must be a positive number.");
+  if (!encoderPresets.has(args.encoderPreset)) {
+    throw new Error(`--encoder-preset must be one of: ${[...encoderPresets].join(", ")}.`);
+  }
   if (!Number.isFinite(args.start) || args.start < 0) throw new Error("--start must be zero or a positive number.");
   if (args.duration !== null && (!Number.isFinite(args.duration) || args.duration <= 0)) throw new Error("--duration must be a positive number.");
   return args;
@@ -141,13 +205,13 @@ async function captureFrames(page, concept, frameDir, fps, start, duration) {
   return { frameCount, stats };
 }
 
-function encodeVideo(frameDir, outputFile, fps, quality) {
+function encodeVideo(frameDir, outputFile, fps, quality, encoderPreset) {
   run("ffmpeg", [
     "-y",
     "-framerate", String(fps),
     "-i", join(frameDir, "frame_%05d.png"),
     "-c:v", "libx264",
-    "-preset", "slow",
+    "-preset", encoderPreset,
     "-tune", "animation",
     "-pix_fmt", "yuv420p",
     "-vf", "scale=1280:720:flags=lanczos",
@@ -202,11 +266,14 @@ async function main() {
   const manifest = args.append && existsSync(manifestFile) ? JSON.parse(readFileSync(manifestFile, "utf8")) : {
     generatedAt: new Date().toISOString(),
     label: args.label,
+    preset: args.preset,
     fps: args.fps,
     quality: args.quality,
     width: args.width,
     height: args.height,
     deviceScaleFactor: args.deviceScaleFactor,
+    encoderPreset: args.encoderPreset,
+    contactSheet: args.contactSheet,
     videos: []
   };
   manifest.updatedAt = new Date().toISOString();
@@ -217,7 +284,7 @@ async function main() {
       const renderDuration = args.duration ?? (concept.runtimeSeconds - renderStart);
       if (renderStart >= concept.runtimeSeconds) throw new Error(`--start is outside ${concept.id} duration.`);
       if (renderStart + renderDuration > concept.runtimeSeconds + 0.0001) throw new Error(`Requested segment exceeds ${concept.id} duration.`);
-      console.log(`Rendering ${concept.id} from ${renderStart}s for ${renderDuration}s at ${args.fps} fps.`);
+      console.log(`Rendering ${concept.id} from ${renderStart}s for ${renderDuration}s at ${args.fps} fps (${args.preset}, ${args.encoderPreset}).`);
       const frameDir = join(frameRoot, concept.id);
       mkdirSync(frameDir, { recursive: true });
       const url = `${staticServer.url}/index.html?concept=${encodeURIComponent(concept.id)}&t=0`;
@@ -227,9 +294,9 @@ async function main() {
       });
       const capture = await captureFrames(page, concept, frameDir, args.fps, renderStart, renderDuration);
       const outputFile = join(videoRoot, `${concept.id}.mp4`);
-      encodeVideo(frameDir, outputFile, args.fps, args.quality);
-      const sheetFile = join(reviewRoot, `${concept.id}-contact-sheet.png`);
-      createContactSheet(outputFile, sheetFile, renderDuration);
+      encodeVideo(frameDir, outputFile, args.fps, args.quality, args.encoderPreset);
+      const sheetFile = args.contactSheet ? join(reviewRoot, `${concept.id}-contact-sheet.png`) : null;
+      if (sheetFile) createContactSheet(outputFile, sheetFile, renderDuration);
       const probe = probeVideo(outputFile);
       manifest.videos = manifest.videos.filter((video) => video.id !== concept.id);
       manifest.videos.push({

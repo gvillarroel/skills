@@ -102,6 +102,52 @@ def main() -> int:
             if id_report["mismatches"]:
                 raise SystemExit(f"Card/SVG ID mismatches found in gallery: {id_report['mismatches']}")
 
+            pattern_report = page.evaluate(
+                """() => {
+                    const cards = Array.from(document.querySelectorAll("[data-example]"));
+                    const seen = new Set();
+                    const duplicates = new Set();
+                    const missing = [];
+                    const mismatches = [];
+                    const invalid = [];
+                    for (const card of cards) {
+                        const exampleId = card.getAttribute("data-example");
+                        const patternId = card.getAttribute("data-pattern-id");
+                        const svgPatternId = card.querySelector("svg")?.getAttribute("data-pattern-id");
+                        if (!patternId) {
+                            missing.push(exampleId);
+                            continue;
+                        }
+                        if (!/^[a-z0-9][a-z0-9-]*$/.test(patternId)) {
+                            invalid.push({ exampleId, patternId });
+                        }
+                        if (seen.has(patternId)) duplicates.add(patternId);
+                        seen.add(patternId);
+                        if (card.id !== patternId || svgPatternId !== patternId) {
+                            mismatches.push({ exampleId, cardId: card.id, patternId, svgPatternId });
+                        }
+                    }
+                    return {
+                        count: seen.size,
+                        duplicates: Array.from(duplicates),
+                        missing,
+                        mismatches,
+                        invalid
+                    };
+                }"""
+            )
+            if pattern_report["missing"]:
+                raise SystemExit(f"Example cards missing data-pattern-id: {pattern_report['missing']}")
+            if pattern_report["invalid"]:
+                raise SystemExit(f"Invalid pattern IDs found: {pattern_report['invalid']}")
+            if pattern_report["duplicates"]:
+                raise SystemExit(f"Duplicate pattern IDs found: {pattern_report['duplicates']}")
+            if pattern_report["mismatches"]:
+                raise SystemExit(f"Pattern ID mismatches found: {pattern_report['mismatches']}")
+            if pattern_report["count"] != expected:
+                raise SystemExit(f"Expected {expected} unique pattern IDs, found {pattern_report['count']}.")
+            pattern_id_count = pattern_report["count"]
+
             reports = page.locator("[data-example] svg").evaluate_all(
                 """svgs => svgs.map(svg => {
                     const box = svg.getBoundingClientRect();
@@ -206,6 +252,7 @@ def main() -> int:
         return 1
 
     print(f"Verified examples: {example_count}")
+    print(f"Verified unique pattern IDs: {pattern_id_count}")
     print(f"Verified per-card replay buttons: {replay_button_count}; sampled {len(replay_reports)}")
     for item in reports:
         print(

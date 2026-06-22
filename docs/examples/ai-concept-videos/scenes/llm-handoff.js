@@ -1,460 +1,508 @@
-const promptTokens = [
-  { piece: "AI", color: "#007298" },
-  { piece: "tools", color: "#45842a" },
-  { piece: "write", color: "#e77204" },
-  { piece: "code", color: "#9e1b32" }
-];
+import { drawLlmModelBox } from "./llm-model-box.js";
 
-const outputTokens = [
-  { piece: "tests", color: "#652f6c" },
-  { piece: "pass", color: "#45842a" },
-  { piece: ".", color: "#9e1b32" }
-];
+const tokenColors = ["#007298", "#652f6c", "#45842a", "#e77204", "#9e1b32", "#f1c319"];
+const gemmaPricePerMillion = {
+  input: 0.07,
+  output: 0.34
+};
 
-const retryTokens = [
-  { piece: "fix", color: "#e77204" },
-  { piece: "edge", color: "#007298" },
-  { piece: "case", color: "#652f6c" }
-];
-
-function drawText(g, text, x, y, ctx, options = {}) {
-  ctx.drawHookText(g, text, x, y, {
-    size: options.size ?? 18,
-    weight: options.weight ?? 820,
-    fill: options.fill ?? ctx.palette.brandNeutral,
-    opacity: options.opacity ?? 1,
-    anchor: options.anchor,
-    baseline: options.baseline
-  });
+function p01(t, start, duration, ctx) {
+  return ctx.clamp((t - start) / duration, 0, 1);
 }
 
-function tokenWidth(piece, scale = 1) {
-  return Math.max(32 * scale, piece.length * 10.5 * scale + 22 * scale);
+function easeP(t, start, duration, ctx) {
+  return ctx.easeOut(p01(t, start, duration, ctx));
 }
 
-function drawMiniToken(g, token, x, y, ctx, options = {}) {
-  const scale = options.scale ?? 1;
-  const width = options.width ?? tokenWidth(token.piece, scale);
-  const height = 28 * scale;
-  const opacity = options.opacity ?? 1;
-  const solid = options.solid ?? false;
+function windowP(t, start, end, ctx, ramp = 0.55) {
+  const rise = ctx.easeInOut(p01(t, start, ramp, ctx));
+  const fall = 1 - ctx.easeInOut(p01(t, end, ramp, ctx));
+  return ctx.clamp(rise * fall, 0, 1);
+}
+
+function drawTokenSquare(g, x, y, size, color, opacity, options = {}) {
+  if (opacity <= 0.01) return;
   g.append("rect")
     .attr("x", x)
     .attr("y", y)
-    .attr("width", width)
-    .attr("height", height)
-    .attr("rx", 6 * scale)
-    .attr("fill", solid ? token.color : "#ffffff")
-    .attr("stroke", solid ? "none" : token.color)
-    .attr("stroke-width", 2 * scale)
-    .attr("opacity", opacity);
-  drawText(g, token.piece, x + width / 2, y + height / 2 + 1, ctx, {
-    size: 13 * scale,
-    weight: 850,
-    fill: solid ? "#ffffff" : token.color,
-    opacity
-  });
-  return { x, y, width, height };
-}
-
-function drawTokenRow(g, tokens, centerX, y, ctx, options = {}) {
-  const scale = options.scale ?? 1;
-  const gap = 8 * scale;
-  const widths = tokens.map((token) => tokenWidth(token.piece, scale));
-  const total = widths.reduce((sum, width) => sum + width, 0) + gap * (tokens.length - 1);
-  let x = centerX - total / 2;
-  return tokens.map((token, index) => {
-    const box = drawMiniToken(g, token, x, y, ctx, {
-      scale,
-      opacity: options.opacity ?? 1,
-      solid: options.solid ?? false
-    });
-    x += widths[index] + gap;
-    return box;
-  });
-}
-
-function drawArrowLine(g, from, to, color, opacity, width = 3) {
-  g.append("line")
-    .attr("x1", from.x)
-    .attr("y1", from.y)
-    .attr("x2", to.x)
-    .attr("y2", to.y)
-    .attr("stroke", color)
-    .attr("stroke-width", width)
-    .attr("stroke-linecap", "round")
-    .attr("opacity", opacity);
-  const angle = Math.atan2(to.y - from.y, to.x - from.x);
-  const size = 10 + width;
-  const left = {
-    x: to.x - Math.cos(angle - Math.PI / 6) * size,
-    y: to.y - Math.sin(angle - Math.PI / 6) * size
-  };
-  const right = {
-    x: to.x - Math.cos(angle + Math.PI / 6) * size,
-    y: to.y - Math.sin(angle + Math.PI / 6) * size
-  };
-  g.append("path")
-    .attr("d", `M${to.x},${to.y} L${left.x},${left.y} L${right.x},${right.y} Z`)
+    .attr("width", size)
+    .attr("height", size)
+    .attr("rx", options.rx ?? 3)
     .attr("fill", color)
+    .attr("stroke", "#ffffff")
+    .attr("stroke-width", options.strokeWidth ?? 1.2)
     .attr("opacity", opacity);
 }
 
-function drawConsistentLlmBox(g, box, activation, ctx) {
-  const { palette, pulse } = ctx;
-  const group = g.append("g");
-  group.append("rect")
-    .attr("x", box.x)
-    .attr("y", box.y)
-    .attr("width", box.w)
-    .attr("height", box.h)
-    .attr("rx", 0)
-    .attr("fill", "#ffffff")
-    .attr("stroke", palette.brandPrimary)
-    .attr("stroke-width", 3.6)
-    .attr("opacity", 0.98);
-
-  ["Large", "Language", "Model"].forEach((word, index) => {
-    drawText(group, word, box.x + box.w / 2, box.y + 100 + index * 39, ctx, {
-      size: 36,
-      weight: 870,
-      fill: palette.brandNeutral,
-      opacity: 0.96
-    });
-  });
-
-  const layers = [3, 4, 3];
-  const nodeMax = Math.max(...layers);
-  const origin = {
-    x: box.x + 178,
-    y: box.y + 190,
-    layerGap: 28,
-    nodeGap: 17
-  };
-  const nodePositions = layers.map((count, layer) => {
-    const x = origin.x + layer * origin.layerGap;
-    const startY = origin.y + ((nodeMax - count) * origin.nodeGap) / 2;
-    return Array.from({ length: count }, (_, index) => ({
-      x,
-      y: startY + index * origin.nodeGap
-    }));
-  });
-
-  for (let layer = 0; layer < nodePositions.length - 1; layer += 1) {
-    nodePositions[layer].forEach((from, fromIndex) => {
-      nodePositions[layer + 1].forEach((to, toIndex) => {
-        const phase = (fromIndex + toIndex + layer) % 3;
-        group.append("line")
-          .attr("x1", from.x)
-          .attr("y1", from.y)
-          .attr("x2", to.x)
-          .attr("y2", to.y)
-          .attr("stroke", activation > 0.35 ? palette.blue : palette.gray400)
-          .attr("stroke-width", 1.2 + activation * 0.8)
-          .attr("opacity", 0.34 + activation * (phase === 0 ? 0.24 : 0.12));
-      });
-    });
-  }
-
-  nodePositions.flat().forEach((node, index) => {
-    group.append("circle")
-      .attr("cx", node.x)
-      .attr("cy", node.y)
-      .attr("r", 4.4 + activation * 1.4 + pulse * 0.35)
-      .attr("fill", activation > 0.4 ? palette.blue : palette.gray600)
-      .attr("stroke", "#ffffff")
-      .attr("stroke-width", 1.4)
-      .attr("opacity", 0.62 + activation * 0.22 - (index % 2) * 0.05);
-  });
-}
-
-function matrixLayout(box, cols = 8, rows = 8) {
-  const gap = 8;
-  const cell = Math.floor(Math.min((box.w - gap * (cols - 1)) / cols, (box.h - gap * (rows - 1)) / rows));
-  const width = cols * cell + (cols - 1) * gap;
-  const height = rows * cell + (rows - 1) * gap;
-  const grid = {
-    x: box.x + (box.w - width) / 2,
-    y: box.y + (box.h - height) / 2
-  };
+function gridMetrics(cols, rows, cell = 16, gap = 6) {
   return {
     cols,
     rows,
     cell,
     gap,
-    grid,
-    slot(index) {
-      return {
-        x: grid.x + (index % cols) * (cell + gap),
-        y: grid.y + Math.floor(index / cols) * (cell + gap),
-        w: cell,
-        h: cell
-      };
-    }
+    w: cols * cell + (cols - 1) * gap,
+    h: rows * cell + (rows - 1) * gap
   };
 }
 
-function drawContextMatrix(g, box, tokens, ctx, options = {}) {
-  const { palette } = ctx;
-  const opacity = options.opacity ?? 1;
-  const layout = matrixLayout(box, options.cols ?? 8, options.rows ?? 8);
-  g.append("rect")
-    .attr("x", box.x)
-    .attr("y", box.y)
-    .attr("width", box.w)
-    .attr("height", box.h)
-    .attr("rx", 16)
-    .attr("fill", "#ffffff")
-    .attr("stroke", "none")
-    .attr("opacity", opacity * 0.94);
-  d3.range(layout.cols * layout.rows).forEach((index) => {
-    const slot = layout.slot(index);
-    g.append("rect")
-      .attr("x", slot.x)
-      .attr("y", slot.y)
-      .attr("width", slot.w)
-      .attr("height", slot.h)
-      .attr("rx", 4)
-      .attr("fill", palette.gray100)
-      .attr("stroke", "#ffffff")
-      .attr("stroke-width", 1.6)
-      .attr("opacity", opacity * 0.74);
-  });
-  tokens.forEach((token, index) => {
-    const slot = layout.slot(index);
-    g.append("rect")
-      .attr("x", slot.x)
-      .attr("y", slot.y)
-      .attr("width", slot.w)
-      .attr("height", slot.h)
-      .attr("rx", 4)
-      .attr("fill", token.color)
-      .attr("stroke", "#ffffff")
-      .attr("stroke-width", 1.8)
-      .attr("opacity", opacity * (token.opacity ?? 0.95));
-  });
-  return layout;
-}
-
-function drawTokenParticle(g, from, to, progress, token, ctx, options = {}) {
-  const p = ctx.easeInOut(progress);
-  if (p <= 0 || p >= 1) return;
-  const x = ctx.lerp(from.x, to.x, p);
-  const y = ctx.lerp(from.y, to.y, p) + Math.sin(p * Math.PI) * (options.arc ?? 0);
-  g.append("rect")
-    .attr("x", x - 8)
-    .attr("y", y - 8)
-    .attr("width", 16)
-    .attr("height", 16)
-    .attr("rx", 4)
-    .attr("fill", token.color)
-    .attr("stroke", "#ffffff")
-    .attr("stroke-width", 1.6)
-    .attr("opacity", options.opacity ?? 0.9);
-}
-
-function drawMeter(g, box, t, ctx) {
+function drawTokenGrid(g, box, count, ctx, options = {}) {
   const { palette, clamp, easeOut } = ctx;
-  const group = g.append("g");
-  const fillP = easeOut((t - 5.0) / 12.0);
-  group.append("rect")
-    .attr("x", box.x)
-    .attr("y", box.y)
-    .attr("width", box.w)
-    .attr("height", box.h)
-    .attr("rx", 18)
+  const cols = options.cols ?? 6;
+  const rows = options.rows ?? 2;
+  const cell = options.cell ?? 16;
+  const gap = options.gap ?? 6;
+  const total = cols * rows;
+  const opacity = options.opacity ?? 1;
+  const color = options.color ?? ((index) => tokenColors[index % tokenColors.length]);
+  const emptyFill = options.emptyFill ?? palette.gray100;
+  const activeOpacity = options.activeOpacity ?? 0.88;
+  const emptyOpacity = options.emptyOpacity ?? 0.56;
+
+  for (let index = 0; index < total; index += 1) {
+    const active = index < count;
+    const reveal = active ? easeOut(clamp(count - index, 0, 6) / 6) : 0;
+    drawTokenSquare(
+      g,
+      box.x + (index % cols) * (cell + gap),
+      box.y + Math.floor(index / cols) * (cell + gap),
+      cell,
+      active ? color(index) : emptyFill,
+      opacity * (active ? 0.48 + reveal * activeOpacity : emptyOpacity),
+      { rx: options.rx ?? 3, strokeWidth: 1.15 }
+    );
+  }
+}
+
+function drawRetryMark(g, x, y, opacity, ctx) {
+  if (opacity <= 0.01) return;
+  const { palette } = ctx;
+  const r = 22;
+  const arc = globalThis.d3.arc()
+    .innerRadius(r - 3)
+    .outerRadius(r)
+    .startAngle(-Math.PI * 0.88)
+    .endAngle(Math.PI * 0.74);
+  g.append("path")
+    .attr("d", arc)
+    .attr("transform", `translate(${x},${y})`)
+    .attr("fill", palette.orange)
+    .attr("opacity", opacity * 0.8);
+  const angle = Math.PI * 0.74;
+  const tip = { x: x + Math.sin(angle) * r, y: y - Math.cos(angle) * r };
+  g.append("path")
+    .attr("d", `M${tip.x},${tip.y} l-12,-4 l5,12 Z`)
+    .attr("fill", palette.orange)
+    .attr("opacity", opacity * 0.85);
+}
+
+function drawInputRun(g, run, llmBox, t, ctx) {
+  const { clamp, easeInOut, lerp, palette } = ctx;
+  const metrics = gridMetrics(run.cols, run.rows, run.cell, run.gap);
+  const travel = easeInOut(p01(t, run.start, run.inputDuration, ctx));
+  const baseOpacity = windowP(t, run.start - 0.25, run.start + run.inputDuration + 0.7, ctx, 0.45);
+  if (baseOpacity <= 0.01) return;
+
+  const x = lerp(run.x, llmBox.x - metrics.w * 0.34, travel);
+  const y = run.y;
+  const fadeIntoModel = 1 - clamp((travel - 0.82) / 0.18, 0, 1) * 0.82;
+  const opacity = baseOpacity * fadeIntoModel;
+
+  if (run.retry) {
+    drawRetryMark(g, x - 28, y + metrics.h / 2, opacity, ctx);
+  }
+
+  g.append("rect")
+    .attr("x", x - 10)
+    .attr("y", y - 10)
+    .attr("width", metrics.w + 20)
+    .attr("height", metrics.h + 20)
+    .attr("fill", run.long ? "#ffffff" : palette.gray100)
+    .attr("opacity", opacity * (run.long ? 0.72 : 0.42));
+
+  drawTokenGrid(g, { x, y }, run.inputCount, ctx, {
+    cols: run.cols,
+    rows: run.rows,
+    cell: run.cell,
+    gap: run.gap,
+    opacity,
+    activeOpacity: run.long ? 0.7 : 0.84,
+    color: (index) => {
+      if (run.retry) return [palette.orange, palette.blue, palette.purple][index % 3];
+      if (run.long) return [palette.gray700, palette.blue, palette.green, palette.purple][index % 4];
+      return tokenColors[index % tokenColors.length];
+    }
+  });
+}
+
+function drawOutputRun(g, run, llmBox, t, ctx) {
+  const { easeInOut, easeOut, lerp, palette } = ctx;
+  const metrics = gridMetrics(run.outCols, run.outRows, run.outCell, run.outGap);
+  const start = run.start + run.outputDelay;
+  const p = easeInOut(p01(t, start, run.outputDuration, ctx));
+  const visible = Math.floor(run.outputCount * easeOut(p01(t, start, run.outputDuration * 0.82, ctx)));
+  const opacity = windowP(t, start - 0.1, start + run.outputDuration + run.hold, ctx, 0.45);
+  if (opacity <= 0.01) return;
+
+  const x = lerp(llmBox.x + llmBox.w - metrics.w * 0.2, run.outX, p);
+  const y = run.outY;
+  const colorSet = run.retry
+    ? [palette.orange, palette.purple, palette.blue]
+    : run.long
+      ? [palette.gray700, palette.blue, palette.purple]
+      : [palette.purple, palette.blue, palette.green, palette.red];
+
+  g.append("rect")
+    .attr("x", x - 10)
+    .attr("y", y - 10)
+    .attr("width", metrics.w + 20)
+    .attr("height", metrics.h + 20)
+    .attr("fill", palette.gray100)
+    .attr("opacity", opacity * 0.42);
+
+  drawTokenGrid(g, { x, y }, visible, ctx, {
+    cols: run.outCols,
+    rows: run.outRows,
+    cell: run.outCell,
+    gap: run.outGap,
+    opacity,
+    activeOpacity: 0.82,
+    emptyOpacity: 0.5,
+    emptyFill: palette.gray200,
+    color: (index) => colorSet[index % colorSet.length]
+  });
+}
+
+function workProgress(t, ctx) {
+  const runs = [
+    { start: 0.9, duration: 3.2, amount: 0.16 },
+    { start: 4.4, duration: 3.4, amount: 0.25 },
+    { start: 8.2, duration: 3.3, amount: 0.23 },
+    { start: 12.2, duration: 5.0, amount: 0.33 }
+  ];
+  return ctx.clamp(
+    0.02 + runs.reduce((total, run) => total + easeP(t, run.start, run.duration, ctx) * run.amount, 0),
+    0,
+    0.99
+  );
+}
+
+function costState(t, ctx) {
+  const inputs = [
+    { start: 0.9, duration: 1.55, tokens: 8 },
+    { start: 4.35, duration: 1.45, tokens: 8 },
+    { start: 8.25, duration: 1.45, tokens: 8 },
+    { start: 12.15, duration: 2.35, tokens: 54 }
+  ];
+  const outputs = [
+    { start: 2.25, duration: 1.48, tokens: 5 },
+    { start: 5.6, duration: 1.93, tokens: 16 },
+    { start: 9.5, duration: 1.68, tokens: 10 },
+    { start: 14.15, duration: 1.68, tokens: 8 }
+  ];
+  const inputTokens = inputs.reduce((total, item) => total + item.tokens * easeP(t, item.start, item.duration, ctx), 0);
+  const outputTokens = outputs.reduce((total, item) => total + item.tokens * easeP(t, item.start, item.duration, ctx), 0);
+  const cost = (inputTokens / 1_000_000) * gemmaPricePerMillion.input
+    + (outputTokens / 1_000_000) * gemmaPricePerMillion.output;
+  return { inputTokens, outputTokens, cost };
+}
+
+function pointOnPerimeter(box, p) {
+  const pad = 26;
+  const left = box.x - pad;
+  const right = box.x + box.w + pad;
+  const top = box.y - pad;
+  const bottom = box.y + box.h + pad;
+  const w = right - left;
+  const h = bottom - top;
+  const perimeter = 2 * (w + h);
+  let d = p * perimeter;
+  if (d <= w) return { x: left + d, y: top, angle: 0 };
+  d -= w;
+  if (d <= h) return { x: right, y: top + d, angle: 90 };
+  d -= h;
+  if (d <= w) return { x: right - d, y: bottom, angle: 180 };
+  d -= w;
+  return { x: left, y: bottom - d, angle: 270 };
+}
+
+function drawWorkTicks(g, box, t, ctx) {
+  const { palette, clamp, easeOut } = ctx;
+  const progress = workProgress(t, ctx);
+  const total = 70;
+  for (let index = 0; index < total; index += 1) {
+    const tickP = index / total;
+    const active = clamp(progress * total - index + 0.75, 0, 1);
+    const pt = pointOnPerimeter(box, tickP);
+    const longTick = index % 5 === 0;
+    const len = longTick ? 12 : 8;
+    const thickness = longTick ? 3.6 : 2.6;
+    const color = active > 0 ? palette.brandPrimary : palette.gray200;
+    const opacity = active > 0 ? 0.28 + easeOut(active) * 0.62 : 0.58;
+
+    g.append("rect")
+      .attr("x", pt.x - len / 2)
+      .attr("y", pt.y - thickness / 2)
+      .attr("width", len)
+      .attr("height", thickness)
+      .attr("rx", thickness / 2)
+      .attr("fill", color)
+      .attr("opacity", opacity)
+      .attr("transform", `rotate(${pt.angle} ${pt.x} ${pt.y})`);
+  }
+
+  const last = pointOnPerimeter(box, progress);
+  g.append("circle")
+    .attr("cx", last.x)
+    .attr("cy", last.y)
+    .attr("r", 7)
+    .attr("fill", palette.brandPrimary)
+    .attr("opacity", 0.82);
+}
+
+function drawPriceTable(g, x, y, t, ctx) {
+  const { palette, easeOut } = ctx;
+  const opacity = easeOut(p01(t, 0.9, 1.2, ctx));
+  if (opacity <= 0.01) return;
+  const width = 230;
+  const rowH = 30;
+  const headerH = 30;
+  const table = g.append("g").attr("opacity", opacity);
+
+  table.append("rect")
+    .attr("x", x)
+    .attr("y", y)
+    .attr("width", width)
+    .attr("height", headerH + rowH * 2)
+    .attr("rx", 0)
     .attr("fill", "#ffffff")
     .attr("stroke", palette.gray200)
-    .attr("stroke-width", 2)
-    .attr("opacity", 0.95);
-
-  const rows = [
-    { color: palette.blue, start: 5.0, cells: 7 },
-    { color: palette.purple, start: 7.6, cells: 6 },
-    { color: palette.orange, start: 10.1, cells: 7 },
-    { color: palette.green, start: 13.0, cells: 10 }
-  ];
-  const cell = 16;
-  const gap = 7;
-  rows.forEach((row, rowIndex) => {
-    const rowP = easeOut((t - row.start) / 2.4);
-    const count = Math.floor(row.cells * rowP + 0.001);
-    const y = box.y + 46 + rowIndex * 54;
-    for (let index = 0; index < row.cells; index += 1) {
-      const active = index < count;
-      group.append("rect")
-        .attr("x", box.x + 28 + index * (cell + gap))
-        .attr("y", y)
-        .attr("width", cell)
-        .attr("height", cell)
-        .attr("rx", 4)
-        .attr("fill", active ? row.color : palette.gray100)
-        .attr("stroke", "#ffffff")
-        .attr("stroke-width", 1.2)
-        .attr("opacity", active ? 0.86 : 0.66);
-    }
-  });
-
-  const gauge = {
-    cx: box.x + box.w / 2,
-    cy: box.y + box.h - 72,
-    r: 54
-  };
-  const arc = d3.arc()
-    .innerRadius(gauge.r - 11)
-    .outerRadius(gauge.r)
-    .startAngle(-Math.PI * 0.72)
-    .endAngle(-Math.PI * 0.72 + Math.PI * 1.44 * fillP);
-  group.append("circle")
-    .attr("cx", gauge.cx)
-    .attr("cy", gauge.cy)
-    .attr("r", gauge.r)
+    .attr("stroke-width", 1.2);
+  table.append("rect")
+    .attr("x", x)
+    .attr("y", y)
+    .attr("width", width)
+    .attr("height", headerH)
     .attr("fill", palette.gray100)
     .attr("opacity", 0.92);
-  group.append("path")
-    .attr("d", arc)
-    .attr("transform", `translate(${gauge.cx},${gauge.cy})`)
-    .attr("fill", palette.brandPrimary)
-    .attr("opacity", 0.9);
-  drawText(group, "$", gauge.cx, gauge.cy + 2, ctx, {
-    size: 46,
-    weight: 900,
-    fill: palette.brandPrimary,
-    opacity: 0.92
+
+  ctx.drawHookText(table, "Gemma 4 26B", x + 16, y + 21, {
+    size: 15,
+    weight: 880,
+    fill: palette.brandNeutral,
+    anchor: "start",
+    opacity: 0.96
   });
 
-  d3.range(4).forEach((index) => {
-    const phase = clamp((t - 16.0 - index * 0.2) / 1.8, 0, 1);
-    if (phase <= 0.01 || phase >= 1) return;
-    group.append("circle")
-      .attr("cx", gauge.cx)
-      .attr("cy", gauge.cy)
-      .attr("r", gauge.r + phase * 46)
-      .attr("fill", "none")
-      .attr("stroke", [palette.blue, palette.purple, palette.orange, palette.green][index])
-      .attr("stroke-width", 3)
-      .attr("opacity", (1 - phase) * 0.32);
+  const rows = [
+    { label: "Input", value: `$${gemmaPricePerMillion.input.toFixed(2)} / 1M` },
+    { label: "Output", value: `$${gemmaPricePerMillion.output.toFixed(2)} / 1M` }
+  ];
+  rows.forEach((row, index) => {
+    const rowY = y + headerH + index * rowH;
+    if (index > 0) {
+      table.append("line")
+        .attr("x1", x)
+        .attr("y1", rowY)
+        .attr("x2", x + width)
+        .attr("y2", rowY)
+        .attr("stroke", palette.gray200)
+        .attr("stroke-width", 1);
+    }
+    ctx.drawHookText(table, row.label, x + 16, rowY + 22, {
+      size: 14,
+      weight: 800,
+      fill: palette.gray700,
+      anchor: "start",
+      opacity: 0.94
+    });
+    ctx.drawHookText(table, row.value, x + width - 16, rowY + 22, {
+      size: 14,
+      weight: 850,
+      fill: palette.brandPrimary,
+      anchor: "end",
+      opacity: 0.96
+    });
   });
+}
+
+function drawCostReadout(g, x, y, t, ctx) {
+  const { palette, easeOut } = ctx;
+  const opacity = easeOut(p01(t, 1.1, 1.1, ctx));
+  if (opacity <= 0.01) return;
+  const width = 230;
+  const height = 46;
+  const cost = costState(t, ctx).cost;
+  const readout = g.append("g").attr("opacity", opacity);
+
+  readout.append("rect")
+    .attr("x", x)
+    .attr("y", y)
+    .attr("width", width)
+    .attr("height", height)
+    .attr("rx", 0)
+    .attr("fill", "#ffffff")
+    .attr("stroke", palette.gray200)
+    .attr("stroke-width", 1.2);
+  readout.append("rect")
+    .attr("x", x)
+    .attr("y", y)
+    .attr("width", 48)
+    .attr("height", height)
+    .attr("fill", palette.gray100)
+    .attr("opacity", 0.9);
+  ctx.drawHookText(readout, "$", x + 24, y + 30, {
+    size: 28,
+    weight: 900,
+    fill: palette.brandPrimary,
+    opacity: 0.96
+  });
+  ctx.drawHookText(readout, cost.toFixed(6), x + width - 16, y + 29, {
+    size: 20,
+    weight: 860,
+    fill: palette.brandNeutral,
+    anchor: "end",
+    opacity: 0.95
+  });
+}
+
+function drawAnswerInvalidation(g, t, ctx) {
+  const { palette, clamp, easeOut } = ctx;
+  const p = easeOut(p01(t, 7.45, 0.9, ctx)) * (1 - easeOut(p01(t, 9.1, 0.8, ctx)));
+  if (p <= 0.01) return;
+  const x = 882;
+  const y = 214;
+  for (let index = 0; index < 14; index += 1) {
+    const col = index % 7;
+    const row = Math.floor(index / 7);
+    drawTokenSquare(g, x + col * 20, y + row * 20, 14, palette.gray300, p * 0.34, { rx: 3 });
+  }
+  drawRetryMark(g, x - 30, y + 19, p * 0.56, ctx);
 }
 
 export function drawLlmHandoffVisualOnly(g, ctx) {
-  const { palette, sceneProgress, pulse, clamp, easeOut, easeInOut } = ctx;
+  const { palette, sceneProgress, pulse, clamp, easeOut } = ctx;
   const t = sceneProgress * 20;
-  const sceneOpacity = easeOut(t / 1.15);
-  const llmBox = { x: 505, y: 210, w: 270, h: 270 };
-  const matrixBox = { x: 74, y: 210, w: 300, h: 300 };
-  const meterBox = { x: 924, y: 152, w: 260, h: 430 };
-  const group = g.append("g").attr("opacity", sceneOpacity);
+  const group = g.append("g").attr("opacity", easeOut(t / 1.1));
 
-  const baseTokens = [...promptTokens];
-  const answerCount = Math.floor(outputTokens.length * easeOut((t - 6.8) / 2.2));
-  const retryCount = Math.floor(retryTokens.length * easeOut((t - 10.4) / 2.2));
-  const longContext = d3.range(Math.floor(24 * easeOut((t - 12.6) / 4.5))).map((index) => ({
-    color: [palette.gray300, palette.blue, palette.green, palette.orange, palette.purple][index % 5],
-    opacity: index % 5 === 0 ? 0.58 : 0.78
-  }));
-  const matrixTokens = [
-    ...baseTokens,
-    ...outputTokens.slice(0, answerCount),
-    ...retryTokens.slice(0, retryCount),
-    ...longContext
+  const llmBox = { x: 502, y: 214, w: 276, h: 276 };
+  const runs = [
+    {
+      start: 0.9,
+      x: 112,
+      y: 238,
+      cols: 6,
+      rows: 2,
+      cell: 16,
+      gap: 6,
+      inputCount: 8,
+      inputDuration: 1.55,
+      outputDelay: 1.35,
+      outputDuration: 1.8,
+      hold: 0.75,
+      outX: 882,
+      outY: 238,
+      outCols: 5,
+      outRows: 1,
+      outCell: 15,
+      outGap: 6,
+      outputCount: 5
+    },
+    {
+      start: 4.35,
+      x: 112,
+      y: 326,
+      cols: 6,
+      rows: 2,
+      cell: 16,
+      gap: 6,
+      inputCount: 8,
+      inputDuration: 1.45,
+      outputDelay: 1.25,
+      outputDuration: 2.35,
+      hold: 0.5,
+      outX: 882,
+      outY: 298,
+      outCols: 8,
+      outRows: 2,
+      outCell: 14,
+      outGap: 5,
+      outputCount: 16
+    },
+    {
+      start: 8.25,
+      x: 112,
+      y: 326,
+      cols: 6,
+      rows: 2,
+      cell: 16,
+      gap: 6,
+      inputCount: 8,
+      inputDuration: 1.45,
+      outputDelay: 1.25,
+      outputDuration: 2.05,
+      hold: 0.5,
+      outX: 882,
+      outY: 382,
+      outCols: 6,
+      outRows: 2,
+      outCell: 14,
+      outGap: 5,
+      outputCount: 10,
+      retry: true
+    },
+    {
+      start: 12.15,
+      x: 82,
+      y: 198,
+      cols: 10,
+      rows: 6,
+      cell: 15,
+      gap: 5,
+      inputCount: 54,
+      inputDuration: 2.35,
+      outputDelay: 2.0,
+      outputDuration: 2.05,
+      hold: 1.45,
+      outX: 882,
+      outY: 462,
+      outCols: 6,
+      outRows: 2,
+      outCell: 14,
+      outGap: 5,
+      outputCount: 8,
+      long: true
+    }
   ];
-  const layout = drawContextMatrix(group, matrixBox, matrixTokens, ctx, { opacity: 0.98 });
-  drawConsistentLlmBox(group, llmBox, clamp((Math.sin(t * 1.8) + 1) / 2, 0, 1) * 0.75 + pulse * 0.25, ctx);
-  drawMeter(group, meterBox, t, ctx);
 
-  const promptP = easeInOut((t - 1.0) / 3.2);
-  const outputP = easeInOut((t - 5.0) / 3.0);
-  const retryP = easeInOut((t - 8.4) / 3.8);
-  const longP = easeInOut((t - 12.2) / 5.0);
-  const matrixMid = { x: matrixBox.x + matrixBox.w, y: matrixBox.y + matrixBox.h / 2 };
-  const llmLeft = { x: llmBox.x, y: llmBox.y + llmBox.h / 2 };
-  const llmRight = { x: llmBox.x + llmBox.w, y: llmBox.y + llmBox.h / 2 };
-  const meterLeft = { x: meterBox.x, y: meterBox.y + 188 };
-  drawArrowLine(group, matrixMid, llmLeft, palette.blue, Math.min(promptP, 1 - longP * 0.3) * 0.42, 3.2);
-  drawArrowLine(group, llmRight, meterLeft, palette.brandPrimary, outputP * 0.42, 3.2);
+  const flowLayer = group.append("g");
+  runs.forEach((run) => drawInputRun(flowLayer, run, llmBox, t, ctx));
+  drawAnswerInvalidation(flowLayer, t, ctx);
+  runs.forEach((run) => drawOutputRun(flowLayer, run, llmBox, t, ctx));
 
-  if (promptP < 0.98) {
-    promptTokens.forEach((token, index) => {
-      const fromSlot = layout.slot(index);
-      drawTokenParticle(group, {
-        x: fromSlot.x + fromSlot.w / 2,
-        y: fromSlot.y + fromSlot.h / 2
-      }, {
-        x: llmBox.x + 16,
-        y: llmBox.y + 74 + index * 26
-      }, promptP - index * 0.07, token, ctx, { arc: -26 });
-    });
-  }
+  const activation = clamp(
+    0.08
+      + Math.max(
+        windowP(t, 0.95, 3.85, ctx) * 0.64,
+        windowP(t, 4.4, 7.6, ctx) * 0.76,
+        windowP(t, 8.25, 11.35, ctx) * 0.7,
+        windowP(t, 12.15, 17.25, ctx) * 0.94
+      )
+      + pulse * 0.08,
+    0,
+    1
+  );
 
-  if (outputP > 0.02 && outputP < 0.98) {
-    outputTokens.forEach((token, index) => {
-      drawTokenParticle(group, {
-        x: llmBox.x + llmBox.w - 12,
-        y: llmBox.y + 126 + index * 28
-      }, {
-        x: meterBox.x + 40 + index * 32,
-        y: meterBox.y + 102
-      }, outputP - index * 0.08, token, ctx, { arc: -18 });
-    });
-  }
+  drawWorkTicks(group, llmBox, t, ctx);
+  drawLlmModelBox(group, llmBox, ctx, {
+    labelLines: ["Gemma", "4"],
+    labelSize: 42,
+    labelGap: 44,
+    labelY: llmBox.y + llmBox.h / 2 - 28,
+    activation,
+    activationClock: t,
+    opacity: 1
+  });
 
-  const loopOpacity = easeOut((t - 8.0) / 1.6) * clamp((14.3 - t) / 2.6, 0, 1);
-  if (loopOpacity > 0.02) {
-    const loop = group.append("g").attr("opacity", loopOpacity);
-    loop.append("path")
-      .attr("d", `M${meterBox.x + 18},${meterBox.y + 302} C${840},${665} ${410},${665} ${matrixBox.x + matrixBox.w - 12},${matrixBox.y + matrixBox.h - 16}`)
-      .attr("fill", "none")
-      .attr("stroke", palette.orange)
-      .attr("stroke-width", 3.2)
-      .attr("stroke-linecap", "round")
-      .attr("stroke-dasharray", "10 10")
-      .attr("opacity", 0.46);
-    retryTokens.forEach((token, index) => {
-      const p = retryP - index * 0.08;
-      drawTokenParticle(loop, {
-        x: meterBox.x + 26,
-        y: meterBox.y + 302
-      }, {
-        x: llmBox.x + 16,
-        y: llmBox.y + 202 + index * 21
-      }, p, token, ctx, { arc: 76, opacity: 0.86 });
-    });
-  }
-
-  if (longP > 0.02) {
-    d3.range(10).forEach((index) => {
-      const p = easeInOut(longP - index * 0.045);
-      if (p <= 0.01 || p >= 1) return;
-      const slot = layout.slot(12 + index);
-      drawTokenParticle(group, {
-        x: slot.x + slot.w / 2,
-        y: slot.y + slot.h / 2
-      }, {
-        x: meterBox.x + 56 + index * 17,
-        y: meterBox.y + 210
-      }, p, { color: [palette.green, palette.blue, palette.purple, palette.orange][index % 4] }, ctx, { arc: -44, opacity: 0.72 });
-    });
-  }
-
-  const finalP = easeOut((t - 16.8) / 2.4);
-  if (finalP > 0.01) {
-    const outputGroup = group.append("g").attr("opacity", finalP);
-    drawTokenRow(outputGroup, outputTokens, llmBox.x + llmBox.w / 2, llmBox.y + llmBox.h + 34, ctx, {
-      scale: 0.9,
-      solid: true,
-      opacity: 0.9
-    });
-    d3.range(5).forEach((index) => {
-      const p = (Math.sin(t * 1.6 + index * 1.1) + 1) / 2;
-      outputGroup.append("rect")
-        .attr("x", meterBox.x + 66 + index * 26)
-        .attr("y", meterBox.y + meterBox.h + 22)
-        .attr("width", 15)
-        .attr("height", 15)
-        .attr("rx", 4)
-        .attr("fill", [palette.blue, palette.purple, palette.orange, palette.green, palette.red][index])
-        .attr("opacity", 0.35 + p * 0.45);
-    });
-  }
+  drawPriceTable(group, 928, 72, t, ctx);
+  drawCostReadout(group, 928, 174, t, ctx);
 }

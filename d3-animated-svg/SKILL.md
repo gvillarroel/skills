@@ -15,6 +15,7 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
 4. Keep data deterministic. Inline small data, load local files for larger data, and seed or pre-tick force layouts so exported geometry is reproducible.
 5. Build the SVG with a stable `viewBox`, `title`, `desc`, semantic groups, stable IDs/classes, and fixed dimensions. Ensure the final frame is a faithful data state, not only an animation midpoint.
 6. Apply the visual token system before capture. Keep text neutral and readable, use white halos when labels sit on marks, reserve red for change/risk/emphasis, and prefer tokenized quantize/threshold ramps over raw D3 interpolator palettes when the output belongs to this repository.
+   - When a sketchy rendering is requested, treat sketchiness as a reusable mark-rendering overlay for any D3 pattern, including scorecards, comparison cards, tables, model diagrams, and statistical charts. Preserve data geometry; roughen marks, axes, links, and containers with seeded jitter, double strokes, and optional hachures while keeping text crisp.
 7. Use `scripts/render_d3_svg.py` to open D3 HTML in Chromium, wait for the generated SVG, export the SVG markup, and optionally capture a screenshot for visual QA.
 8. Verify that the SVG is nonblank, text fits, labels remain readable, animation starts from a meaningful state, and the final frame matches the intended values.
 

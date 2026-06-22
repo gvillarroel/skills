@@ -111,10 +111,13 @@
     { id: "force-network", kicker: "Simulation", title: "Force Network", copy: "Clustered topology with collision and link tension.", render: renderForceNetwork },
     { id: "radial-hierarchy", kicker: "Hierarchy", title: "Radial Hierarchy", copy: "A tree layout with curved parent-child paths.", render: renderRadialHierarchy },
     { id: "beeswarm", kicker: "Distribution", title: "Beeswarm", copy: "Individual observations settle into grouped swarms.", render: renderBeeswarm },
+    { id: "sketchy-beeswarm", kicker: "Sketchy", title: "Sketchy Beeswarm", copy: "The beeswarm distribution is redrawn with seeded hand-sketched dots and axes.", render: renderSketchyBeeswarm },
     { id: "streamgraph", kicker: "Temporal", title: "Streamgraph", copy: "Layered composition changes across time.", render: renderStreamgraph },
+    { id: "sketchy-streamgraph", kicker: "Sketchy", title: "Sketchy Streamgraph", copy: "Stacked areas keep their D3 geometry while rough outlines and fills add drawn texture.", render: renderSketchyStreamgraph },
     { id: "voronoi", kicker: "Proximity", title: "Voronoi Field", copy: "Nearest-neighbor cells around point anchors.", render: renderVoronoi },
     { id: "chord", kicker: "Flow", title: "Chord Ribbons", copy: "Reciprocal category-to-category volume.", render: renderChord },
     { id: "treemap", kicker: "Hierarchy", title: "Treemap", copy: "Nested area allocation with readable groups.", render: renderTreemap },
+    { id: "sketchy-treemap", kicker: "Sketchy", title: "Sketchy Treemap", copy: "A treemap keeps exact rectangular allocation but draws each cell as a rough marker block.", render: renderSketchyTreemap },
     { id: "circle-pack", kicker: "Hierarchy", title: "Circle Packing", copy: "Containment and relative area in packed circles.", render: renderCirclePack },
     { id: "sunburst", kicker: "Hierarchy", title: "Sunburst", copy: "Radial partition for nested composition.", render: renderSunburst },
     { id: "icicle", kicker: "Hierarchy", title: "Icicle", copy: "Rectangular partition for drilldown paths.", render: renderIcicle },
@@ -123,11 +126,15 @@
     { id: "arc-diagram", kicker: "Network", title: "Arc Diagram", copy: "Ordered dependencies shown as curved arcs.", render: renderArcDiagram },
     { id: "adjacency-matrix", kicker: "Network", title: "Adjacency Matrix", copy: "Dense relationships as a sortable grid.", render: renderAdjacencyMatrix },
     { id: "data-table-grid", kicker: "Table", title: "Data Table Grid", copy: "Rows, typed columns, status chips, and row focus composed as SVG marks.", render: renderDataTableGrid },
-    { id: "inline-bar-table", kicker: "Table", title: "Inline Bar Table", copy: "A compact table embeds quantitative bars directly inside numeric cells.", render: renderInlineBarTable },
+    { id: "inline-bar-table", kicker: "Table", title: "Inline Bar Table", copy: "A compact token-price table embeds bars directly inside input and output cost cells.", render: renderInlineBarTable },
     { id: "pivot-heat-table", kicker: "Table", title: "Pivot Heat Table", copy: "A cross-tab table uses ordered color and totals to expose segment patterns.", render: renderPivotHeatTable },
     { id: "sortable-rank-table", kicker: "Table", title: "Sortable Rank Table", copy: "Rows animate from input order into a score-sorted analytical table.", render: renderSortableRankTable },
     { id: "sparkline-table", kicker: "Table", title: "Sparkline Table", copy: "Each table row carries a mini trend line, final value, and directional delta.", render: renderSparklineTable },
     { id: "column-profile-table", kicker: "Table", title: "Column Profile Table", copy: "Column-level data quality, cardinality, and distributions are rendered as row profiles.", render: renderColumnProfileTable },
+    { id: "document-token-quality", kicker: "Document", title: "Document Token Quality", copy: "Three document blocks encode correct, filler, and wrong word-length shares at 20/70/10, 10/85/5, and 70/10/20.", render: renderDocumentTokenQuality },
+    { id: "document-token-quality-red", kicker: "Document", title: "Document Token Quality Red", copy: "The same document-quality pattern uses red for wrong spans while preserving the length-weighted ratios and paragraph spacing.", render: renderDocumentTokenQualityRed },
+    { id: "document-token-extraction-buckets", kicker: "Document", title: "Document Extraction Buckets", copy: "A single page is scanned in writing order, then colored word blocks split into filler, correct, and wrong buckets with calculated totals.", render: renderDocumentTokenExtractionBuckets },
+    { id: "agent-loop-partial-covers", kicker: "Image Overlay", title: "Agent Loop Partial Covers", copy: "A source diagram remains visible while animated translucent covers selectively pass over key areas.", render: renderAgentLoopPartialCovers },
     { id: "sankey", kicker: "Flow", title: "Sankey Pipeline", copy: "Weighted handoffs across ordered stages.", render: renderSankey },
     { id: "d3-flowchart-dag", kicker: "Diagram", title: "D3 Flowchart DAG", copy: "Mermaid-style process logic drawn as explicit D3 nodes, links, and decisions.", render: renderD3FlowchartDag },
     { id: "d3-sequence-lifelines", kicker: "Diagram", title: "D3 Sequence Lifelines", copy: "Actor boxes, lifelines, activations, and replies composed directly in SVG.", render: renderD3SequenceLifelines },
@@ -141,7 +148,11 @@
     { id: "bubble-scatter", kicker: "Correlation", title: "Bubble Scatter", copy: "Position, radius, and group encoded together.", render: renderBubbleScatter },
     { id: "point-cloud", kicker: "Distribution", title: "Point Cloud", copy: "Small gray circles float around an invisible horizontal line.", render: renderPointCloud },
     { id: "connected-scatter", kicker: "Correlation", title: "Connected Scatter", copy: "Trajectory across two changing measures.", render: renderConnectedScatter },
+    { id: "sketchy-line-chart", kicker: "Sketchy", title: "Sketchy Line Chart", copy: "A connected scatter path is rendered as a seeded double-stroke hand sketch.", render: renderSketchyLineChart },
     { id: "histogram", kicker: "Distribution", title: "Histogram", copy: "Binned frequency with animated bars.", render: renderHistogram },
+    { id: "sketchy-histogram", kicker: "Sketchy", title: "Sketchy Histogram", copy: "Histogram bins use rough rectangular marks and light hachure fills.", render: renderSketchyHistogram },
+    { id: "sketchy-gemma-comparison", kicker: "Sketchy AI", title: "Sketchy Gemma Compare", copy: "Two Gemma sizes balance benchmark strength against memory and cloud hardware cost.", render: renderSketchyGemmaComparison },
+    { id: "gemma-comparison", kicker: "AI Model", title: "Gemma Compare", copy: "A clean model scorecard compares two Gemma sizes across quality, memory, and GPU cost.", render: renderGemmaComparison },
     { id: "boxplot", kicker: "Distribution", title: "Box Plot", copy: "Quartiles, whiskers, and outliers per group.", render: renderBoxPlot },
     { id: "violin", kicker: "Distribution", title: "Violin Plot", copy: "Mirrored density shape for each group.", render: renderViolin },
     { id: "ridgeline", kicker: "Distribution", title: "Ridgeline", copy: "Stacked density curves for group comparison.", render: renderRidgeline },
@@ -212,6 +223,7 @@
     { id: "pen-curve-study", kicker: "Drawing", title: "Pen Curve Study", copy: "A precise pen point lays pressure-modulated calligraphic curves.", render: renderPenCurveStudy },
     { id: "critical-path", kicker: "Flow", title: "Critical Path DAG", copy: "Weighted dependencies reveal the bottleneck route.", render: renderCriticalPath },
     { id: "mlp-simple", kicker: "AI", title: "MLP Simple", copy: "Gray neurons pulse red one layer at a time.", render: renderMlpSimple },
+    { id: "deep-learning-model-execution", kicker: "AI", title: "Deep Learning Model Execution", copy: "A square model frame contains only an internal MLP pulsing through execution.", render: renderDeepLearningModelExecution },
     { id: "mlp-internals", kicker: "AI", title: "MLP Internals", copy: "A forward pass pulses neurons while x, z, a, W, b, and y_hat stay visible.", render: renderMlpInternals },
     { id: "binary-classifier", kicker: "AI", title: "Binary Classifier", copy: "A forward pass routes one sample into one of two outcomes.", render: renderBinaryClassifier },
     { id: "binary-classifier-labeled", kicker: "AI", title: "Binary Classifier Labels", copy: "The same binary decision includes feature, probability, and class labels.", render: renderBinaryClassifierLabeled },
@@ -222,6 +234,7 @@
     { id: "vaccine-impact", kicker: "Public health", title: "Vaccine Impact", copy: "Disease incidence collapses after intervention markers.", render: renderVaccineImpact },
     { id: "word-cloud", kicker: "Text", title: "Word Cloud", copy: "Weighted terms occupy an animated text layout.", render: renderWordCloud },
     { id: "voronoi-stippling", kicker: "Sampling", title: "Voronoi Stippling", copy: "Points and cells approximate a continuous intensity field.", render: renderVoronoiStippling },
+    { id: "pocket-monster-stippling", kicker: "Sampling", title: "Pocket Monster Stippling", copy: "Weighted Voronoi stipples settle into a stylized electric creature silhouette.", render: renderPocketMonsterStippling },
     { id: "tanglegram", kicker: "Comparison", title: "Tanglegram", copy: "Two trees connect matched leaves across the middle.", render: renderTanglegram },
     { id: "scatterplot-tour", kicker: "Projection", title: "Scatterplot Tour", copy: "Stable points move between two analytical projections.", render: renderScatterplotTour },
     { id: "zoom-to-bounds", kicker: "Focus", title: "Zoom to Bounds", copy: "A selected region expands into a linked detail panel.", render: renderZoomToBounds },
@@ -299,6 +312,20 @@
     { id: "epicyclic-gearing", kicker: "Geometry", title: "Epicyclic Gearing", copy: "Nested circular motion traces gear-like paths.", render: renderEpicyclicGearing }
   ];
 
+  function assignPatternIds() {
+    const seen = new Set();
+    examples.forEach(example => {
+      example.patternId = example.patternId || `d3-pattern-${example.id}`;
+      if (!/^[a-z0-9][a-z0-9-]*$/.test(example.patternId)) {
+        throw new Error(`Invalid pattern ID for ${example.id}: ${example.patternId}`);
+      }
+      if (seen.has(example.patternId)) {
+        throw new Error(`Duplicate pattern ID: ${example.patternId}`);
+      }
+      seen.add(example.patternId);
+    });
+  }
+
   function createCards() {
     const gallery = d3.select("#gallery");
     gallery.selectAll("*").remove();
@@ -306,7 +333,9 @@
       .data(examples)
       .join("article")
       .attr("class", "example-card")
+      .attr("id", d => d.patternId)
       .attr("data-example", d => d.id)
+      .attr("data-pattern-id", d => d.patternId)
       .html(d => `
         <div class="example-header">
           <div class="example-header-top">
@@ -314,9 +343,10 @@
             <button class="card-replay-button" type="button" data-replay="${d.id}" aria-label="Replay ${d.title} animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
           </div>
           <h2>${d.title}</h2>
+          <p class="example-pattern-id">${d.patternId}</p>
           <p class="example-copy">${d.copy}</p>
         </div>
-        <div class="viz-frame"><svg id="${d.id}" role="img"></svg></div>
+        <div class="viz-frame"><svg id="${d.id}" data-pattern-id="${d.patternId}" role="img"></svg></div>
       `);
 
     d3.select("#example-count").text(examples.length);
@@ -371,6 +401,198 @@
         .attr("dur", `${dur}s`)
         .attr("begin", `${delay}s`)
         .attr("fill", "freeze");
+    });
+  }
+
+  function sketchUnit(seed, index = 0) {
+    const raw = Math.sin((seed + 1) * 127.1 + (index + 3) * 311.7) * 43758.5453123;
+    return raw - Math.floor(raw);
+  }
+
+  function sketchJitter(seed, index, amount) {
+    return (sketchUnit(seed, index) - .5) * 2 * amount;
+  }
+
+  function sketchPathD(points, seed, roughness = 1.5, curve = d3.curveLinear, closed = false) {
+    const jittered = points.map(([x, y], i) => [
+      x + sketchJitter(seed, i * 2, roughness),
+      y + sketchJitter(seed, i * 2 + 1, roughness)
+    ]);
+    return d3.line().curve(closed ? d3.curveLinearClosed : curve)(jittered);
+  }
+
+  function sketchRectPoints(x, y, w, h, segments = 4) {
+    const points = [];
+    for (let i = 0; i <= segments; i += 1) points.push([x + w * (i / segments), y]);
+    for (let i = 1; i <= segments; i += 1) points.push([x + w, y + h * (i / segments)]);
+    for (let i = 1; i <= segments; i += 1) points.push([x + w - w * (i / segments), y + h]);
+    for (let i = 1; i < segments; i += 1) points.push([x, y + h - h * (i / segments)]);
+    return points;
+  }
+
+  function appendSketchStroke(parent, points, options = {}) {
+    const {
+      className = "sketch-stroke",
+      stroke = palette.ink,
+      strokeWidth = 2,
+      opacity = .92,
+      seed = 1,
+      roughness = 1.4,
+      delay = .08,
+      dur = .9,
+      curve = d3.curveLinear
+    } = options;
+    const group = parent.append("g").attr("class", className);
+    const paths = group.selectAll("path")
+      .data([0, 1])
+      .join("path")
+      .attr("d", layer => sketchPathD(points, seed + layer * 19, roughness * (layer ? .72 : 1), curve, false))
+      .attr("fill", "none")
+      .attr("stroke", stroke)
+      .attr("stroke-width", (d, i) => strokeWidth * (i ? .68 : 1))
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-opacity", (d, i) => opacity * (i ? .58 : 1));
+    drawPath(paths, delay, dur);
+    return group;
+  }
+
+  function appendSketchClosedShape(parent, points, options = {}) {
+    const {
+      className = "sketch-shape",
+      fill = palette.blueHighlight,
+      fillOpacity = .55,
+      stroke = palette.ink,
+      strokeWidth = 1.8,
+      opacity = 1,
+      seed = 1,
+      roughness = 1.6,
+      delay = .08,
+      dur = .75
+    } = options;
+    const group = parent.append("g").attr("class", className);
+    const fillPath = group.append("path")
+      .attr("d", sketchPathD(points, seed, roughness, d3.curveLinear, true))
+      .attr("fill", fill)
+      .attr("fill-opacity", fillOpacity)
+      .attr("stroke", "none")
+      .attr("opacity", opacity);
+    fadeIn(fillPath, delay, dur);
+    const outlines = group.selectAll("path.sketch-outline")
+      .data([0, 1])
+      .join("path")
+      .attr("class", "sketch-outline")
+      .attr("d", layer => sketchPathD(points, seed + 31 + layer * 17, roughness * (layer ? .76 : 1), d3.curveLinear, true))
+      .attr("fill", "none")
+      .attr("stroke", stroke)
+      .attr("stroke-width", (d, i) => strokeWidth * (i ? .64 : 1))
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-opacity", (d, i) => (i ? .48 : .82) * opacity);
+    drawPath(outlines, delay + .06, dur + .2);
+    return group;
+  }
+
+  function appendSketchHachures(parent, x, y, w, h, options = {}) {
+    const {
+      stroke = palette.ink,
+      strokeWidth = .9,
+      opacity = .22,
+      spacing = 12,
+      seed = 1,
+      roughness = .65,
+      delay = .2,
+      dur = .55
+    } = options;
+    if (w < 12 || h < 12) return parent.append("g");
+    const lines = [];
+    for (let s = x - h; s <= x + w; s += spacing) {
+      const startX = Math.max(x, s);
+      const endX = Math.min(x + w, s + h);
+      const startY = y + h - (startX - s);
+      const endY = y + h - (endX - s);
+      if (startY >= y && startY <= y + h && endY >= y && endY <= y + h) {
+        lines.push([[startX, startY], [endX, endY]]);
+      }
+    }
+    const marks = parent.append("g").attr("class", "sketch-hachures").selectAll("path")
+      .data(lines)
+      .join("path")
+      .attr("d", (line, i) => sketchPathD(line, seed + i * 7, roughness, d3.curveLinear, false))
+      .attr("fill", "none")
+      .attr("stroke", stroke)
+      .attr("stroke-width", strokeWidth)
+      .attr("stroke-linecap", "round")
+      .attr("stroke-opacity", opacity);
+    drawPath(marks, delay, dur);
+    return marks;
+  }
+
+  function appendSketchRect(parent, x, y, w, h, options = {}) {
+    const group = appendSketchClosedShape(parent, sketchRectPoints(x, y, w, h, options.segments || 4), options);
+    if (options.hachure !== false) {
+      appendSketchHachures(group, x, y, w, h, {
+        stroke: options.hachureStroke || options.stroke || palette.ink,
+        opacity: options.hachureOpacity ?? .18,
+        seed: (options.seed || 1) + 211,
+        delay: (options.delay || .08) + .18,
+        spacing: options.hachureSpacing || 13
+      });
+    }
+    return group;
+  }
+
+  function appendSketchBlob(parent, cx, cy, r, options = {}) {
+    const count = options.points || 18;
+    const seed = options.seed || 1;
+    const roughness = options.roughness || .16;
+    const points = d3.range(count).map(i => {
+      const angle = (i / count) * Math.PI * 2;
+      const radial = r * (1 + sketchJitter(seed, i, roughness));
+      return [cx + Math.cos(angle) * radial, cy + Math.sin(angle) * radial];
+    });
+    return appendSketchClosedShape(parent, points, {
+      fill: options.fill || palette.blue,
+      fillOpacity: options.fillOpacity ?? .75,
+      stroke: options.stroke || palette.surface,
+      strokeWidth: options.strokeWidth || 1.2,
+      opacity: options.opacity ?? 1,
+      seed: seed + 79,
+      roughness: (options.edgeRoughness || 1.1),
+      delay: options.delay || .08,
+      dur: options.dur || .62
+    });
+  }
+
+  function appendSketchHorizontalAxis(svg, scale, y, ticks = 5, seed = 1) {
+    const [x0, x1] = scale.range();
+    appendSketchStroke(svg, [[x0, y], [x1, y]], { stroke: palette.gray500, strokeWidth: 1.25, seed, roughness: .9, delay: .02, dur: .55 });
+    const tickValues = scale.ticks ? scale.ticks(ticks) : scale.domain();
+    tickValues.forEach((tick, i) => {
+      const x = scale(tick);
+      appendSketchStroke(svg, [[x, y], [x, y + 7]], { stroke: palette.gray500, strokeWidth: 1, seed: seed + 20 + i, roughness: .5, delay: .04, dur: .45 });
+      svg.append("text")
+        .attr("class", "caption")
+        .attr("x", x)
+        .attr("y", y + 23)
+        .attr("text-anchor", "middle")
+        .text(typeof tick === "number" ? d3.format("~s")(tick) : tick);
+    });
+  }
+
+  function appendSketchVerticalAxis(svg, scale, x, ticks = 5, seed = 1) {
+    const [y0, y1] = scale.range();
+    appendSketchStroke(svg, [[x, y0], [x, y1]], { stroke: palette.gray500, strokeWidth: 1.25, seed, roughness: .9, delay: .02, dur: .55 });
+    const tickValues = scale.ticks ? scale.ticks(ticks) : scale.domain();
+    tickValues.forEach((tick, i) => {
+      const y = scale(tick);
+      appendSketchStroke(svg, [[x - 7, y], [x, y]], { stroke: palette.gray500, strokeWidth: 1, seed: seed + 40 + i, roughness: .5, delay: .04, dur: .45 });
+      svg.append("text")
+        .attr("class", "caption")
+        .attr("x", x - 11)
+        .attr("y", y + 4)
+        .attr("text-anchor", "end")
+        .text(typeof tick === "number" ? d3.format("~s")(tick) : tick);
     });
   }
 
@@ -897,53 +1119,72 @@
   }
 
   function renderInlineBarTable() {
-    const svg = prepareSvg("inline-bar-table", "Inline bar table", "A D3 SVG table with embedded bars inside value cells.");
-    const x0 = 38, y0 = 86, rowH = 34;
+    const svg = prepareSvg("inline-bar-table", "Inline bar table", "A D3 SVG table with embedded bars inside input and output token-price cells.");
+    const x0 = 34, y0 = 76, rowH = 30;
     const rows = [
-      { channel: "Search", leads: 1240, conv: 0.18, arr: 420 },
-      { channel: "Direct", leads: 860, conv: 0.24, arr: 380 },
-      { channel: "Partner", leads: 540, conv: 0.31, arr: 350 },
-      { channel: "Email", leads: 720, conv: 0.14, arr: 190 },
-      { channel: "Social", leads: 980, conv: 0.09, arr: 150 },
-      { channel: "Events", leads: 310, conv: 0.27, arr: 210 }
+      { model: "Gemma 4 E4B", provider: "Google API", input: 0.2, output: 0.2, color: palette.blue },
+      { model: "Gemma 4 31B", provider: "Google API", input: 0.12, output: 0.35, color: palette.purple },
+      { model: "Gemini 3.5 Flash", provider: "Google", input: 1.5, output: 9, color: palette.red },
+      { model: "Gemini 3.1 Pro", provider: "Google", input: 2, output: 12, color: palette.blue },
+      { model: "GPT-5.5", provider: "OpenAI", input: 5, output: 30, color: palette.green },
+      { model: "Opus 4.7", provider: "Anthropic", input: 5, output: 25, color: palette.orange }
     ];
+    const visibleRows = rows.filter(row => row.visible !== false);
+    const price = value => value === 0 ? "$0" : value < 0.1 ? `$${value.toFixed(3)}` : value < 1 ? `$${value.toFixed(2)}` : `$${value.toFixed(2)}`;
     const columns = [
-      { label: "Channel", x: 0 },
-      { label: "Leads", x: 132 },
-      { label: "Conv", x: 270 },
-      { label: "ARR", x: 402 }
+      { label: "Model", x: 0 },
+      { label: "Input / 1M", x: 190 },
+      { label: "Output / 1M", x: 350 }
     ];
-    const leads = d3.scaleLinear().domain([0, d3.max(rows, d => d.leads)]).range([0, 106]);
-    const conv = d3.scaleLinear().domain([0, .34]).range([0, 96]);
-    const arr = d3.scaleLinear().domain([0, d3.max(rows, d => d.arr)]).range([0, 88]);
-    svg.append("rect").attr("x", x0 - 10).attr("y", y0 - 58).attr("width", 492).attr("height", 276).attr("rx", 8).attr("fill", palette.surface).attr("stroke", "none");
+    const metricConfigs = [
+      { key: "input", x: 188, barWidth: 86, fill: () => palette.blue, labelX: 282, text: d => price(d.input), opacity: 1 },
+      { key: "output", x: 350, barWidth: 86, fill: () => palette.purple, labelX: 444, text: d => price(d.output), opacity: 1 }
+    ];
+    const metrics = metricConfigs.map(metric => {
+      const columnMax = d3.max(visibleRows, d => d[metric.key]) || 1;
+      return {
+        ...metric,
+        columnMax,
+        scale: d3.scaleLinear().domain([0, columnMax]).range([0, metric.barWidth])
+      };
+    });
+    svg.append("rect").attr("x", x0 - 10).attr("y", y0 - 48).attr("width", 504).attr("height", 232).attr("rx", 8).attr("fill", palette.surface).attr("stroke", "none");
     svg.append("g").selectAll("text").data(columns).join("text")
       .attr("class", "caption")
       .attr("x", d => x0 + d.x)
-      .attr("y", y0 - 28)
+      .attr("y", y0 - 24)
       .attr("font-weight", 800)
       .attr("font-size", 11.5)
       .text(d => d.label);
     const g = svg.append("g").selectAll("g.inline-row").data(rows).join("g")
       .attr("class", "inline-row")
       .attr("transform", (d, i) => `translate(${x0},${y0 + i * rowH})`);
-    g.append("rect").attr("x", -10).attr("y", -18).attr("width", 492).attr("height", rowH).attr("fill", (d, i) => i % 2 ? palette.gray50 : palette.surface);
+    g.append("rect").attr("x", -10).attr("y", -18).attr("width", 504).attr("height", rowH).attr("fill", (d, i) => i % 2 ? palette.gray50 : palette.surface);
     addSoftTableRules(
       svg,
       x0 - 10,
-      x0 + 482,
+      x0 + 494,
       y0 - 18,
       y0 + rows.length * rowH - 18,
       d3.range(1, rows.length).map(i => y0 - 18 + i * rowH)
     );
-    g.append("text").attr("class", "mark-label").attr("y", 7).attr("font-weight", 700).attr("font-size", 11.5).text(d => d.channel);
-    [
-      { key: "leads", x: 132, barWidth: 76, scale: leads.range([0, 76]), fill: palette.blue, labelX: 214, text: d => d3.format(".2s")(d.leads) },
-      { key: "conv", x: 264, barWidth: 70, scale: conv.range([0, 70]), fill: palette.green, labelX: 340, text: d => d3.format(".0%")(d.conv) },
-      { key: "arr", x: 386, barWidth: 62, scale: arr.range([0, 62]), fill: palette.orange, labelX: 456, text: d => `$${d.arr}k` }
-    ].forEach(metric => {
+    g.append("circle").attr("cx", 4).attr("cy", 1).attr("r", 3.2).attr("fill", d => d.color).attr("fill-opacity", .86);
+    g.append("text").attr("class", "mark-label").attr("x", 14).attr("y", 1).attr("font-weight", 700).attr("font-size", 11.5).text(d => d.model);
+    g.append("text").attr("class", "caption").attr("x", 14).attr("y", 14).attr("font-weight", 700).attr("font-size", 9.2).attr("fill", palette.gray600).text(d => d.provider);
+    metrics.forEach(metric => {
       g.append("rect").attr("x", metric.x).attr("y", -9).attr("width", metric.barWidth).attr("height", 18).attr("rx", 5).attr("fill", palette.gray100);
-      const bars = g.append("rect").attr("x", metric.x).attr("y", -9).attr("height", 18).attr("rx", 5).attr("fill", metric.fill).attr("fill-opacity", .84).attr("stroke", palette.surface).attr("stroke-width", .9);
+      const bars = g.append("rect")
+        .attr("class", "inline-bar")
+        .attr("data-metric-key", metric.key)
+        .attr("data-value", d => d[metric.key])
+        .attr("data-column-max", metric.columnMax)
+        .attr("data-bar-width", metric.barWidth)
+        .attr("x", metric.x)
+        .attr("y", -9)
+        .attr("height", 18)
+        .attr("rx", 5)
+        .attr("fill", metric.fill)
+        .attr("fill-opacity", metric.opacity);
       grow(bars, "width", 0, d => metric.scale(d[metric.key]), .12, .58);
       g.append("text").attr("class", "mark-label").attr("x", metric.labelX).attr("y", 6).attr("text-anchor", "start").attr("font-size", 11).text(metric.text);
     });
@@ -1172,6 +1413,756 @@
       fadeIn(bars, .18, .45);
     });
     fadeIn(groups, .04, .45);
+  }
+
+  function renderDocumentTokenQuality() {
+    renderDocumentTokenQualityVariant(
+      "document-token-quality",
+      "Document token quality",
+      "Document word blocks encode correct, filler, and wrong spans by accumulated word length.",
+      { wrong: { fill: palette.gold, stroke: palette.yellowHover } }
+    );
+  }
+
+  function renderDocumentTokenQualityRed() {
+    renderDocumentTokenQualityVariant(
+      "document-token-quality-red",
+      "Document token quality red",
+      "Document word blocks encode correct, filler, and red wrong spans by accumulated word length.",
+      { wrong: { fill: palette.red, stroke: palette.redHover } }
+    );
+  }
+
+  function renderDocumentTokenQualityVariant(exampleId, title, description, overrides = {}) {
+    const svg = prepareSvg(exampleId, title, description);
+    const categories = {
+      correct: overrides.correct || { fill: palette.green, stroke: palette.greenHover },
+      filler: overrides.filler || { fill: palette.gray500, stroke: palette.gray600 },
+      wrong: overrides.wrong || { fill: palette.gold, stroke: palette.yellowHover }
+    };
+    const documents = [
+      { id: "correct-20-filler-70-wrong-10", ratios: { correct: .2, filler: .7, wrong: .1 }, x: 42, y: 58 },
+      { id: "correct-10-filler-85-wrong-05", ratios: { correct: .1, filler: .85, wrong: .05 }, x: 211, y: 58 },
+      { id: "correct-70-filler-10-wrong-20", ratios: { correct: .7, filler: .1, wrong: .2 }, x: 380, y: 58 }
+    ];
+    const docW = 138;
+    const docH = 296;
+    const innerPadX = 14;
+    const innerTop = 34;
+    const rowGap = 20;
+    const wordGap = 3.4;
+    const wordHeight = 7;
+    const totalUnits = 420;
+    const unitPx = 1.78;
+    const order = ["correct", "filler", "wrong"];
+    const linePlans = [
+      { row: 0, fill: .98 },
+      { row: 1, fill: .94 },
+      { row: 2, fill: .66 },
+      { row: 4, fill: .99 },
+      { row: 5, fill: .96 },
+      { row: 6, fill: .94 },
+      { row: 7, fill: .72 },
+      { row: 9, fill: .96 },
+      { row: 10, fill: .92 },
+      { row: 11, fill: .58 },
+      { row: 12, fill: .5 }
+    ];
+    const seeded01 = value => {
+      const raw = Math.sin(value * 12.9898 + 78.233) * 43758.5453;
+      return raw - Math.floor(raw);
+    };
+    const splitUnits = (units, salt) => {
+      let remaining = units;
+      const chunks = [];
+      while (remaining > 0) {
+        let length = 4 + Math.floor(seeded01(salt + chunks.length * 17) * 10);
+        if (remaining <= 13) length = remaining;
+        else if (remaining - length > 0 && remaining - length < 4) length = remaining;
+        chunks.push(Math.min(length, remaining));
+        remaining -= chunks.at(-1);
+      }
+      return chunks;
+    };
+    const documentWords = (doc, docIndex) => {
+      const correctUnits = Math.round(totalUnits * doc.ratios.correct);
+      const wrongUnits = Math.round(totalUnits * doc.ratios.wrong);
+      const fillerUnits = totalUnits - correctUnits - wrongUnits;
+      const budgets = { correct: correctUnits, filler: fillerUnits, wrong: wrongUnits };
+      const tokens = order.flatMap((kind, kindIndex) => splitUnits(budgets[kind], 100 + docIndex * 73 + kindIndex * 41).map((units, index) => ({
+        id: `${doc.id}-${kind}-${index}`,
+        docId: doc.id,
+        docIndex,
+        kind,
+        units,
+        w: Math.max(5, units * unitPx),
+        sort: seeded01((docIndex + 1) * 211 + kindIndex * 43 + index * 19)
+      }))).sort((a, b) => d3.ascending(a.sort, b.sort));
+      const innerX = doc.x + innerPadX;
+      const innerW = docW - innerPadX * 2;
+      const remaining = tokens.slice();
+      const lines = [];
+      linePlans.forEach((linePlan, lineOrder) => {
+        const target = innerW * linePlan.fill;
+        const rowWords = [];
+        let used = 0;
+        while (remaining.length) {
+          const gap = rowWords.length ? wordGap : 0;
+          const available = target - used - gap;
+          const localWindow = remaining.slice(0, Math.min(remaining.length, 14));
+          let candidates = localWindow
+            .map((token, index) => ({ token, index }))
+            .filter(candidate => candidate.token.w <= available)
+            .sort((a, b) => d3.descending(a.token.w, b.token.w) || d3.ascending(a.index, b.index));
+          if (!candidates.length) {
+            candidates = remaining
+              .map((token, index) => ({ token, index }))
+              .filter(candidate => candidate.token.w <= available)
+              .sort((a, b) => d3.ascending(a.index, b.index));
+          }
+          if (!candidates.length) break;
+          const candidate = candidates[0];
+          remaining.splice(candidate.index, 1);
+          rowWords.push(candidate.token);
+          used += gap + candidate.token.w;
+        }
+        if (!rowWords.length) return;
+        let cursorX = innerX;
+        rowWords.forEach((token, wordOrder) => {
+          token.x = cursorX;
+          token.y = doc.y + innerTop + linePlan.row * rowGap - wordHeight / 2;
+          token.row = linePlan.row;
+          token.lineOrder = lineOrder;
+          token.wordOrder = wordOrder;
+          token.lineFill = used / innerW;
+          token.wordGap = wordGap;
+          cursorX += token.w + wordGap;
+        });
+        lines.push({
+          docId: doc.id,
+          docIndex,
+          row: linePlan.row,
+          lineOrder,
+          x1: innerX,
+          x2: innerX + used,
+          y: doc.y + innerTop + linePlan.row * rowGap + wordHeight + 3,
+          fill: used / innerW,
+          wordCount: rowWords.length
+        });
+      });
+      return { words: tokens.filter(token => Number.isFinite(token.x)), lines };
+    };
+    const layouts = documents.map((doc, docIndex) => ({ ...doc, ...documentWords(doc, docIndex) }));
+    const visualWords = layouts.flatMap(layout => layout.words)
+      .sort((a, b) => d3.ascending(a.docIndex, b.docIndex)
+        || d3.ascending(a.lineOrder, b.lineOrder)
+        || d3.ascending(a.x, b.x));
+    visualWords.forEach((token, writingIndex) => {
+      token.writingIndex = writingIndex;
+      token.writingDelay = .12 + writingIndex * .018;
+    });
+    const firstWordDelay = new Map();
+    visualWords.forEach(token => {
+      const key = `${token.docIndex}-${token.lineOrder}`;
+      if (!firstWordDelay.has(key)) firstWordDelay.set(key, token.writingDelay);
+    });
+    const visualLines = layouts.flatMap(layout => layout.lines)
+      .sort((a, b) => d3.ascending(a.docIndex, b.docIndex)
+        || d3.ascending(a.lineOrder, b.lineOrder));
+    visualLines.forEach((line, writingIndex) => {
+      line.writingIndex = writingIndex;
+      line.writingDelay = Math.max(.04, (firstWordDelay.get(`${line.docIndex}-${line.lineOrder}`) || .12) - .045);
+    });
+
+    const docGroups = svg.append("g").selectAll("g.document-quality-page").data(layouts).join("g")
+      .attr("class", "document-quality-page")
+      .attr("data-target-correct", d => d.ratios.correct)
+      .attr("data-target-filler", d => d.ratios.filler)
+      .attr("data-target-wrong", d => d.ratios.wrong)
+      .attr("transform", d => `translate(${d.x},${d.y})`);
+    docGroups.append("rect")
+      .attr("width", docW)
+      .attr("height", docH)
+      .attr("rx", 6)
+      .attr("fill", palette.gray50)
+      .attr("stroke", palette.gray300)
+      .attr("stroke-width", 2);
+
+    const rules = svg.append("g").selectAll("line.document-rule")
+      .data(visualLines)
+      .join("line")
+      .attr("class", "document-rule")
+      .attr("data-doc-index", d => d.docIndex)
+      .attr("data-line-order", d => d.lineOrder)
+      .attr("data-writing-index", d => d.writingIndex)
+      .attr("data-writing-delay", d => d.writingDelay.toFixed(3))
+      .attr("data-line-fill", d => d.fill)
+      .attr("data-word-count", d => d.wordCount)
+      .attr("x1", d => d.x1)
+      .attr("x2", d => d.x2)
+      .attr("y1", d => d.y)
+      .attr("y2", d => d.y)
+      .attr("stroke", palette.gray300)
+      .attr("stroke-width", .85)
+      .attr("stroke-linecap", "round");
+    rules.each(function (d) {
+      const line = d3.select(this);
+      line.append("set")
+        .attr("attributeName", "x2")
+        .attr("to", d.x1)
+        .attr("begin", "0s")
+        .attr("dur", `${d.writingDelay}s`);
+      line.append("animate")
+        .attr("attributeName", "x2")
+        .attr("from", d.x1)
+        .attr("to", d.x2)
+        .attr("dur", ".22s")
+        .attr("begin", `${d.writingDelay}s`)
+        .attr("fill", "freeze");
+    });
+
+    const words = svg.append("g").selectAll("rect.document-word")
+      .data(visualWords)
+      .join("rect")
+      .attr("class", "document-word")
+      .attr("data-doc-id", d => d.docId)
+      .attr("data-doc-index", d => d.docIndex)
+      .attr("data-line-order", d => d.lineOrder)
+      .attr("data-word-order", d => d.wordOrder)
+      .attr("data-writing-index", d => d.writingIndex)
+      .attr("data-writing-delay", d => d.writingDelay.toFixed(3))
+      .attr("data-kind", d => d.kind)
+      .attr("data-units", d => d.units)
+      .attr("data-word-width", d => d.w)
+      .attr("data-word-gap", d => d.wordGap)
+      .attr("data-line-fill", d => d.lineFill)
+      .attr("x", d => d.x)
+      .attr("y", d => d.y)
+      .attr("height", wordHeight)
+      .attr("rx", 2.5)
+      .attr("fill", d => categories[d.kind].fill)
+      .attr("stroke", d => categories[d.kind].stroke)
+      .attr("stroke-width", .4);
+    words.each(function (d) {
+      const word = d3.select(this);
+      word.append("set")
+        .attr("attributeName", "width")
+        .attr("to", 0)
+        .attr("begin", "0s")
+        .attr("dur", `${d.writingDelay}s`);
+      word.append("animate")
+        .attr("attributeName", "width")
+        .attr("from", 0)
+        .attr("to", d.w)
+        .attr("dur", ".34s")
+        .attr("begin", `${d.writingDelay}s`)
+        .attr("fill", "freeze");
+    });
+    fadeIn(docGroups, .04, .34);
+  }
+
+  function renderDocumentTokenExtractionBuckets() {
+    const svg = prepareSvg("document-token-extraction-buckets", "Document token extraction buckets", "A single colored document page is extracted into filler, correct, and wrong buckets with calculated totals.");
+    const totalUnits = 420;
+    const wordHeight = 7;
+    const wordGap = 3.3;
+    const unitPx = 1.58;
+    const doc = { x: 40, y: 58, w: 148, h: 302 };
+    const categories = {
+      filler: { label: "Filler", fill: palette.gray500, stroke: palette.gray600, light: palette.gray100, ratio: .7 },
+      correct: { label: "Correct", fill: palette.green, stroke: palette.greenHover, light: palette.greenHighlight, ratio: .2 },
+      wrong: { label: "Wrong", fill: palette.red, stroke: palette.redHover, light: palette.redHighlight, ratio: .1 }
+    };
+    const buckets = [
+      { kind: "filler", x: 238, y: 62, w: 282, h: 82 },
+      { kind: "correct", x: 238, y: 171, w: 282, h: 82 },
+      { kind: "wrong", x: 238, y: 280, w: 282, h: 82 }
+    ];
+    const seeded01 = value => {
+      const raw = Math.sin(value * 12.9898 + 78.233) * 43758.5453;
+      return raw - Math.floor(raw);
+    };
+    const splitUnits = (units, salt) => {
+      let remaining = units;
+      const chunks = [];
+      while (remaining > 0) {
+        let length = 4 + Math.floor(seeded01(salt + chunks.length * 17) * 10);
+        if (remaining <= 13) length = remaining;
+        else if (remaining - length > 0 && remaining - length < 4) length = remaining;
+        chunks.push(Math.min(length, remaining));
+        remaining -= chunks.at(-1);
+      }
+      return chunks;
+    };
+    const budgets = {
+      filler: Math.round(totalUnits * categories.filler.ratio),
+      correct: Math.round(totalUnits * categories.correct.ratio)
+    };
+    budgets.wrong = totalUnits - budgets.filler - budgets.correct;
+    const kindOrder = ["filler", "correct", "wrong"];
+    const tokens = kindOrder.flatMap((kind, kindIndex) => splitUnits(budgets[kind], 200 + kindIndex * 57).map((units, index) => ({
+      id: `${kind}-${index}`,
+      kind,
+      units,
+      w: Math.max(5.2, units * unitPx),
+      sort: seeded01((kindIndex + 1) * 311 + index * 23)
+    }))).sort((a, b) => d3.ascending(a.sort, b.sort));
+    const innerX = doc.x + 14;
+    const innerW = doc.w - 28;
+    const linePlans = [
+      { row: 0, fill: .98 },
+      { row: 1, fill: .92 },
+      { row: 2, fill: .7 },
+      { row: 4, fill: .97 },
+      { row: 5, fill: .96 },
+      { row: 6, fill: .74 },
+      { row: 8, fill: .95 },
+      { row: 9, fill: .9 },
+      { row: 10, fill: .58 },
+      { row: 12, fill: .62 }
+    ];
+    const remaining = tokens.slice();
+    const sourceLines = [];
+    linePlans.forEach((linePlan, lineOrder) => {
+      const target = innerW * linePlan.fill;
+      const rowWords = [];
+      let used = 0;
+      while (remaining.length) {
+        const gap = rowWords.length ? wordGap : 0;
+        const available = target - used - gap;
+        const localWindow = remaining.slice(0, Math.min(remaining.length, 14));
+        let candidates = localWindow
+          .map((token, index) => ({ token, index }))
+          .filter(candidate => candidate.token.w <= available)
+          .sort((a, b) => d3.descending(a.token.w, b.token.w) || d3.ascending(a.index, b.index));
+        if (!candidates.length) {
+          candidates = remaining
+            .map((token, index) => ({ token, index }))
+            .filter(candidate => candidate.token.w <= available)
+            .sort((a, b) => d3.ascending(a.index, b.index));
+        }
+        if (!candidates.length) break;
+        const candidate = candidates[0];
+        remaining.splice(candidate.index, 1);
+        rowWords.push(candidate.token);
+        used += gap + candidate.token.w;
+      }
+      if (!rowWords.length) return;
+      let cursorX = innerX;
+      rowWords.forEach((token, wordOrder) => {
+        token.sourceX = cursorX;
+        token.sourceY = doc.y + 36 + linePlan.row * 18 - wordHeight / 2;
+        token.lineOrder = lineOrder;
+        token.wordOrder = wordOrder;
+        cursorX += token.w + wordGap;
+      });
+      sourceLines.push({
+        lineOrder,
+        x1: innerX,
+        x2: innerX + used,
+        y: doc.y + 36 + linePlan.row * 18 + wordHeight + 3,
+        fill: used / innerW,
+        wordCount: rowWords.length
+      });
+    });
+    const sourceTokens = tokens.filter(token => Number.isFinite(token.sourceX))
+      .sort((a, b) => d3.ascending(a.lineOrder, b.lineOrder) || d3.ascending(a.sourceX, b.sourceX));
+    sourceTokens.forEach((token, writingIndex) => {
+      token.writingIndex = writingIndex;
+      token.writeDelay = .08 + writingIndex * .006;
+      token.extractDelay = .82 + writingIndex * .012;
+    });
+
+    const bucketByKind = new Map(buckets.map(bucket => [bucket.kind, bucket]));
+    kindOrder.forEach(kind => {
+      const bucket = bucketByKind.get(kind);
+      const list = sourceTokens.filter(token => token.kind === kind).sort((a, b) => d3.ascending(a.writingIndex, b.writingIndex));
+      const x0 = bucket.x + 14;
+      const maxX = bucket.x + bucket.w - 14;
+      let x = x0;
+      let y = bucket.y + 38;
+      list.forEach((token, index) => {
+        if (x > x0 && x + token.w > maxX) {
+          x = x0;
+          y += 11;
+        }
+        token.bucketIndex = index;
+        token.targetX = x;
+        token.targetY = y;
+        x += token.w + 2.2;
+      });
+    });
+    const summaries = buckets.map(bucket => {
+      const words = sourceTokens.filter(token => token.kind === bucket.kind);
+      const units = d3.sum(words, d => d.units);
+      return {
+        ...bucket,
+        ...categories[bucket.kind],
+        units,
+        tokens: words.length,
+        ratio: units / totalUnits
+      };
+    });
+
+    svg.append("rect")
+      .attr("x", doc.x)
+      .attr("y", doc.y)
+      .attr("width", doc.w)
+      .attr("height", doc.h)
+      .attr("rx", 7)
+      .attr("fill", palette.gray50)
+      .attr("stroke", palette.gray300)
+      .attr("stroke-width", 2);
+    svg.append("g").selectAll("line.extraction-source-rule")
+      .data(sourceLines)
+      .join("line")
+      .attr("class", "extraction-source-rule")
+      .attr("data-line-order", d => d.lineOrder)
+      .attr("data-line-fill", d => d.fill)
+      .attr("data-word-count", d => d.wordCount)
+      .attr("x1", d => d.x1)
+      .attr("x2", d => d.x2)
+      .attr("y1", d => d.y)
+      .attr("y2", d => d.y)
+      .attr("stroke", palette.gray300)
+      .attr("stroke-width", .85)
+      .attr("stroke-linecap", "round");
+
+    const route = svg.append("g").selectAll("path.extraction-route")
+      .data(summaries)
+      .join("path")
+      .attr("class", "extraction-route")
+      .attr("data-kind", d => d.kind)
+      .attr("d", d => `M${doc.x + doc.w + 10},${d.y + d.h / 2}H${d.x - 12}`)
+      .attr("fill", "none")
+      .attr("stroke", d => d.stroke)
+      .attr("stroke-width", 1.15)
+      .attr("stroke-opacity", .18)
+      .attr("stroke-linecap", "round");
+    drawPath(route, .72, .55);
+
+    const bucketGroups = svg.append("g").selectAll("g.extraction-bucket")
+      .data(summaries)
+      .join("g")
+      .attr("class", "extraction-bucket")
+      .attr("data-kind", d => d.kind)
+      .attr("data-total-units", d => d.units)
+      .attr("data-total-ratio", d => d.ratio.toFixed(3))
+      .attr("data-token-count", d => d.tokens);
+    bucketGroups.append("rect")
+      .attr("x", d => d.x)
+      .attr("y", d => d.y)
+      .attr("width", d => d.w)
+      .attr("height", d => d.h)
+      .attr("rx", 8)
+      .attr("fill", palette.surface)
+      .attr("stroke", d => d.stroke)
+      .attr("stroke-width", 1.5);
+    bucketGroups.append("text")
+      .attr("class", "label")
+      .attr("x", d => d.x + 14)
+      .attr("y", d => d.y + 21)
+      .attr("fill", d => d.stroke)
+      .attr("font-weight", 800)
+      .text(d => d.label);
+    bucketGroups.append("text")
+      .attr("class", "mark-label")
+      .attr("x", d => d.x + d.w - 14)
+      .attr("y", d => d.y + 21)
+      .attr("text-anchor", "end")
+      .attr("fill", palette.ink)
+      .text(d => `${d.units} / ${totalUnits}`);
+    bucketGroups.append("text")
+      .attr("class", "mark-label")
+      .attr("x", d => d.x + d.w - 14)
+      .attr("y", d => d.y + 36)
+      .attr("text-anchor", "end")
+      .attr("fill", palette.muted)
+      .text(d => `${d3.format(".0%")(d.ratio)} · ${d.tokens}`);
+    bucketGroups.append("rect")
+      .attr("x", d => d.x + 14)
+      .attr("y", d => d.y + d.h - 13)
+      .attr("width", d => d.w - 28)
+      .attr("height", 5)
+      .attr("rx", 2.5)
+      .attr("fill", palette.gray100);
+    const bucketBars = bucketGroups.append("rect")
+      .attr("class", "extraction-bucket-bar")
+      .attr("data-kind", d => d.kind)
+      .attr("data-units", d => d.units)
+      .attr("data-total-units", totalUnits)
+      .attr("data-ratio", d => d.ratio.toFixed(3))
+      .attr("x", d => d.x + 14)
+      .attr("y", d => d.y + d.h - 13)
+      .attr("width", d => (d.w - 28) * d.ratio)
+      .attr("height", 5)
+      .attr("rx", 2.5)
+      .attr("fill", d => d.fill);
+    grow(bucketBars, "width", 0, d => (d.w - 28) * d.ratio, 1.64, .42);
+
+    const sourceWords = svg.append("g").selectAll("rect.extraction-source-word")
+      .data(sourceTokens)
+      .join("rect")
+      .attr("class", "extraction-source-word")
+      .attr("data-kind", d => d.kind)
+      .attr("data-units", d => d.units)
+      .attr("data-writing-index", d => d.writingIndex)
+      .attr("data-writing-delay", d => d.writeDelay.toFixed(3))
+      .attr("data-extract-delay", d => d.extractDelay.toFixed(3))
+      .attr("x", d => d.sourceX)
+      .attr("y", d => d.sourceY)
+      .attr("height", wordHeight)
+      .attr("rx", 2.5)
+      .attr("width", d => d.w)
+      .attr("fill", d => categories[d.kind].fill)
+      .attr("stroke", d => categories[d.kind].stroke)
+      .attr("stroke-width", .35);
+    sourceWords.each(function (d) {
+      const word = d3.select(this);
+      word.append("set")
+        .attr("attributeName", "width")
+        .attr("to", 0)
+        .attr("begin", "0s")
+        .attr("dur", `${d.writeDelay}s`);
+      word.append("animate")
+        .attr("attributeName", "width")
+        .attr("from", 0)
+        .attr("to", d.w)
+        .attr("dur", ".2s")
+        .attr("begin", `${d.writeDelay}s`)
+        .attr("fill", "freeze");
+      word.append("animate")
+        .attr("attributeName", "opacity")
+        .attr("from", 1)
+        .attr("to", .18)
+        .attr("dur", ".26s")
+        .attr("begin", `${d.extractDelay + .08}s`)
+        .attr("fill", "freeze");
+    });
+
+    const movers = svg.append("g").selectAll("g.extracted-token")
+      .data(sourceTokens)
+      .join("g")
+      .attr("class", "extracted-token")
+      .attr("data-kind", d => d.kind)
+      .attr("data-units", d => d.units)
+      .attr("data-writing-index", d => d.writingIndex)
+      .attr("data-bucket-index", d => d.bucketIndex)
+      .attr("data-source-x", d => d.sourceX)
+      .attr("data-source-y", d => d.sourceY)
+      .attr("data-target-x", d => d.targetX)
+      .attr("data-target-y", d => d.targetY)
+      .attr("transform", d => `translate(${d.targetX},${d.targetY})`)
+      .attr("opacity", 0);
+    movers.append("rect")
+      .attr("width", d => d.w)
+      .attr("height", wordHeight)
+      .attr("rx", 2.5)
+      .attr("fill", d => categories[d.kind].fill)
+      .attr("stroke", d => categories[d.kind].stroke)
+      .attr("stroke-width", .35);
+    movers.each(function (d) {
+      const mover = d3.select(this);
+      mover.append("animate")
+        .attr("attributeName", "opacity")
+        .attr("from", 0)
+        .attr("to", 1)
+        .attr("dur", ".16s")
+        .attr("begin", `${d.extractDelay}s`)
+        .attr("fill", "freeze");
+      mover.append("animateTransform")
+        .attr("attributeName", "transform")
+        .attr("type", "translate")
+        .attr("additive", "sum")
+        .attr("from", `${d.sourceX - d.targetX} ${d.sourceY - d.targetY}`)
+        .attr("to", "0 0")
+        .attr("dur", ".52s")
+        .attr("begin", `${d.extractDelay}s`)
+        .attr("calcMode", "spline")
+        .attr("keySplines", ".2 .7 .2 1")
+        .attr("fill", "freeze");
+    });
+  }
+
+  function renderAgentLoopPartialCovers() {
+    const svg = prepareSvg("agent-loop-partial-covers", "Agent loop partial covers", "An image-backed SVG with animated partial covers over selected regions of the agent loop diagram.");
+    const image = { x: 16, y: 34, w: 528, h: 333 };
+    const source = { w: 980, h: 618 };
+    const sx = image.w / source.w;
+    const sy = image.h / source.h;
+    const mapRegion = region => ({
+      ...region,
+      x: image.x + region.x * sx,
+      y: image.y + region.y * sy,
+      w: region.w * sx,
+      h: region.h * sy
+    });
+    const regions = [
+      { id: "main-loop", x: 38, y: 82, w: 272, h: 488, cover: .34, fill: palette.orange, stroke: palette.orangeHover, delay: .1 },
+      { id: "prompt-builder", x: 354, y: 68, w: 586, h: 98, cover: .62, fill: palette.purple, stroke: palette.purpleHover, delay: .48 },
+      { id: "tool-system", x: 354, y: 220, w: 382, h: 236, cover: .5, fill: palette.green, stroke: palette.greenHover, delay: .86 },
+      { id: "sub-agents", x: 752, y: 220, w: 192, h: 232, cover: .55, fill: palette.blue, stroke: palette.blueHover, delay: 1.24 },
+      { id: "compaction", x: 354, y: 512, w: 590, h: 94, cover: .58, fill: palette.gold, stroke: palette.yellowHover, delay: 1.62 }
+    ].map(mapRegion);
+
+    svg.append("rect")
+      .attr("x", image.x - 8)
+      .attr("y", image.y - 8)
+      .attr("width", image.w + 16)
+      .attr("height", image.h + 16)
+      .attr("rx", 10)
+      .attr("fill", palette.surface)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", 1.4);
+
+    svg.append("clipPath")
+      .attr("id", "agent-loop-partial-covers-clip")
+      .append("rect")
+      .attr("x", image.x)
+      .attr("y", image.y)
+      .attr("width", image.w)
+      .attr("height", image.h)
+      .attr("rx", 8);
+
+    svg.append("image")
+      .attr("href", "assets/agent-loop-reference.png")
+      .attr("x", image.x)
+      .attr("y", image.y)
+      .attr("width", image.w)
+      .attr("height", image.h)
+      .attr("preserveAspectRatio", "xMidYMid meet")
+      .attr("clip-path", "url(#agent-loop-partial-covers-clip)")
+      .attr("opacity", .72);
+
+    svg.append("rect")
+      .attr("x", image.x)
+      .attr("y", image.y)
+      .attr("width", image.w)
+      .attr("height", image.h)
+      .attr("rx", 8)
+      .attr("fill", palette.surface)
+      .attr("opacity", .08)
+      .attr("clip-path", "url(#agent-loop-partial-covers-clip)");
+
+    const coverGroups = svg.append("g")
+      .attr("clip-path", "url(#agent-loop-partial-covers-clip)")
+      .selectAll("g.agent-cover")
+      .data(regions)
+      .join("g")
+      .attr("class", "agent-cover")
+      .attr("data-region", d => d.id)
+      .attr("data-cover-ratio", d => d.cover)
+      .attr("data-target-width", d => (d.w * d.cover).toFixed(2));
+
+    const covers = coverGroups.append("rect")
+      .attr("class", "agent-cover-fill")
+      .attr("x", d => d.x)
+      .attr("y", d => d.y)
+      .attr("width", d => d.w * d.cover)
+      .attr("height", d => d.h)
+      .attr("rx", 7)
+      .attr("fill", d => d.fill)
+      .attr("fill-opacity", .19)
+      .attr("stroke", d => d.stroke)
+      .attr("stroke-width", 1.4)
+      .attr("stroke-opacity", .78)
+      .attr("stroke-dasharray", "6 5");
+    covers.each(function (d) {
+      const cover = d3.select(this);
+      const targetWidth = d.w * d.cover;
+      cover.append("set")
+        .attr("attributeName", "width")
+        .attr("to", 0)
+        .attr("begin", "0s")
+        .attr("dur", `${d.delay}s`);
+      cover.append("animate")
+        .attr("attributeName", "width")
+        .attr("from", 0)
+        .attr("to", targetWidth)
+        .attr("dur", ".58s")
+        .attr("begin", `${d.delay}s`)
+        .attr("calcMode", "spline")
+        .attr("keySplines", ".2 .7 .2 1")
+        .attr("fill", "freeze");
+      cover.append("animate")
+        .attr("attributeName", "fill-opacity")
+        .attr("values", ".08;.23;.19")
+        .attr("dur", ".9s")
+        .attr("begin", `${d.delay}s`)
+        .attr("fill", "freeze");
+    });
+
+    const sweeps = coverGroups.append("line")
+      .attr("class", "agent-cover-sweep")
+      .attr("x1", d => d.x)
+      .attr("x2", d => d.x)
+      .attr("y1", d => d.y + 4)
+      .attr("y2", d => d.y + d.h - 4)
+      .attr("stroke", d => d.stroke)
+      .attr("stroke-width", 2.2)
+      .attr("stroke-opacity", 0)
+      .attr("stroke-linecap", "round");
+    sweeps.each(function (d) {
+      const sweep = d3.select(this);
+      const end = d.x + d.w * d.cover;
+      sweep.append("animate")
+        .attr("attributeName", "x1")
+        .attr("from", d.x)
+        .attr("to", end)
+        .attr("dur", ".58s")
+        .attr("begin", `${d.delay}s`)
+        .attr("fill", "freeze");
+      sweep.append("animate")
+        .attr("attributeName", "x2")
+        .attr("from", d.x)
+        .attr("to", end)
+        .attr("dur", ".58s")
+        .attr("begin", `${d.delay}s`)
+        .attr("fill", "freeze");
+      sweep.append("animate")
+        .attr("attributeName", "stroke-opacity")
+        .attr("values", "0;.85;0")
+        .attr("dur", ".7s")
+        .attr("begin", `${d.delay}s`)
+        .attr("fill", "freeze");
+    });
+
+    const outlineData = regions.map(region => ({
+      ...region,
+      points: [
+        [region.x, region.y],
+        [region.x + region.w, region.y],
+        [region.x + region.w, region.y + region.h],
+        [region.x, region.y + region.h],
+        [region.x, region.y]
+      ]
+    }));
+    const outlines = svg.append("g")
+      .attr("clip-path", "url(#agent-loop-partial-covers-clip)")
+      .selectAll("path.agent-cover-outline")
+      .data(outlineData)
+      .join("path")
+      .attr("class", "agent-cover-outline")
+      .attr("data-region", d => d.id)
+      .attr("d", d => d3.line()(d.points))
+      .attr("fill", "none")
+      .attr("stroke", d => d.stroke)
+      .attr("stroke-width", 1)
+      .attr("stroke-opacity", .5)
+      .attr("stroke-dasharray", "4 6");
+    outlines.each(function (d) {
+      const length = this.getTotalLength();
+      d3.select(this)
+        .attr("stroke-dasharray", `${length} ${length}`)
+        .attr("stroke-dashoffset", 0)
+        .append("animate")
+        .attr("attributeName", "stroke-dashoffset")
+        .attr("from", length)
+        .attr("to", 0)
+        .attr("dur", ".74s")
+        .attr("begin", `${d.delay + .12}s`)
+        .attr("fill", "freeze");
+    });
   }
 
   function renderSankey() {
@@ -1797,6 +2788,749 @@
       .attr("x", d => x(d.x0) + 1).attr("y", d => y(d.length)).attr("width", d => Math.max(1, x(d.x1) - x(d.x0) - 2))
       .attr("height", d => y(0) - y(d.length)).attr("fill", palette.blue).attr("rx", 2);
     fadeIn(bars, .05, .7);
+  }
+
+  function renderSketchyLineChart() {
+    const svg = prepareSvg("sketchy-line-chart", "Sketchy line chart", "A connected scatter path is drawn with deterministic rough strokes.");
+    const data = d3.range(10).map(i => ({ t: i, x: 20 + i * 8 + Math.sin(i) * 5, y: 25 + i * 6 + Math.cos(i * .8) * 16 }));
+    const margin = { top: 36, right: 36, bottom: 52, left: 58 };
+    const x = d3.scaleLinear().domain([15, 100]).range([margin.left, width - margin.right]);
+    const y = d3.scaleLinear().domain([10, 100]).range([height - margin.bottom, margin.top]);
+
+    x.ticks(5).forEach((tick, i) => {
+      appendSketchStroke(svg, [[x(tick), margin.top], [x(tick), height - margin.bottom]], {
+        stroke: palette.gray100,
+        strokeWidth: 1,
+        opacity: .62,
+        seed: 620 + i,
+        roughness: .75,
+        delay: .02,
+        dur: .45
+      });
+    });
+    y.ticks(4).forEach((tick, i) => {
+      appendSketchStroke(svg, [[margin.left, y(tick)], [width - margin.right, y(tick)]], {
+        stroke: palette.gray100,
+        strokeWidth: 1,
+        opacity: .62,
+        seed: 640 + i,
+        roughness: .75,
+        delay: .02,
+        dur: .45
+      });
+    });
+    appendSketchHorizontalAxis(svg, x, height - margin.bottom, 5, 660);
+    appendSketchVerticalAxis(svg, y, margin.left, 4, 680);
+
+    const points = data.map(d => [x(d.x), y(d.y)]);
+    appendSketchStroke(svg, points, {
+      stroke: palette.purple,
+      strokeWidth: 3.4,
+      opacity: .94,
+      seed: 700,
+      roughness: 2.2,
+      curve: d3.curveCatmullRom.alpha(.55),
+      delay: .18,
+      dur: 1.25
+    });
+    data.forEach((d, i) => {
+      appendSketchBlob(svg, x(d.x), y(d.y), 6.4, {
+        fill: palette.orange,
+        fillOpacity: .78,
+        stroke: palette.surface,
+        strokeWidth: 1.3,
+        seed: 730 + i * 11,
+        delay: .34 + i * .035,
+        dur: .5
+      });
+    });
+  }
+
+  function renderSketchyHistogram() {
+    const svg = prepareSvg("sketchy-histogram", "Sketchy histogram", "Continuous values are binned into rough marker-like rectangles.");
+    const values = d3.range(90).map(i => 42 + Math.sin(i * .31) * 18 + Math.cos(i * .17) * 13 + (i % 7));
+    const margin = { top: 38, right: 30, bottom: 52, left: 52 };
+    const x = d3.scaleLinear().domain(d3.extent(values)).nice().range([margin.left, width - margin.right]);
+    const bins = d3.bin().domain(x.domain()).thresholds(12)(values);
+    const y = d3.scaleLinear().domain([0, d3.max(bins, d => d.length)]).nice().range([height - margin.bottom, margin.top]);
+
+    y.ticks(4).forEach((tick, i) => {
+      appendSketchStroke(svg, [[margin.left, y(tick)], [width - margin.right, y(tick)]], {
+        stroke: palette.gray100,
+        strokeWidth: 1,
+        opacity: .6,
+        seed: 760 + i,
+        roughness: .65,
+        delay: .02,
+        dur: .45
+      });
+    });
+    appendSketchHorizontalAxis(svg, x, height - margin.bottom, 5, 780);
+    appendSketchVerticalAxis(svg, y, margin.left, 4, 800);
+
+    bins.forEach((bin, i) => {
+      const barX = x(bin.x0) + 2;
+      const barY = y(bin.length);
+      const barW = Math.max(2, x(bin.x1) - x(bin.x0) - 4);
+      const barH = y(0) - y(bin.length);
+      appendSketchRect(svg, barX, barY, barW, barH, {
+        fill: palette.blueHighlight,
+        fillOpacity: .64,
+        stroke: palette.blue,
+        strokeWidth: 1.8,
+        seed: 830 + i * 13,
+        roughness: 1.35,
+        delay: .1 + i * .025,
+        dur: .58,
+        hachureStroke: palette.blueHover,
+        hachureOpacity: .22,
+        hachureSpacing: 10
+      });
+    });
+  }
+
+  function renderSketchyBeeswarm() {
+    const svg = prepareSvg("sketchy-beeswarm", "Sketchy beeswarm", "Individual observations settle into grouped swarms with seeded rough dots.");
+    const data = [
+      ["Baseline", 34], ["Baseline", 41], ["Baseline", 46], ["Baseline", 52], ["Baseline", 57], ["Baseline", 63], ["Baseline", 69], ["Baseline", 74],
+      ["Pilot", 39], ["Pilot", 48], ["Pilot", 54], ["Pilot", 59], ["Pilot", 67], ["Pilot", 73], ["Pilot", 81], ["Pilot", 86],
+      ["Scaled", 45], ["Scaled", 53], ["Scaled", 61], ["Scaled", 68], ["Scaled", 76], ["Scaled", 83], ["Scaled", 88], ["Scaled", 92]
+    ].map((d, i) => ({ id: `sp${i}`, group: d[0], score: d[1] }));
+    const margin = { top: 42, right: 30, bottom: 58, left: 84 };
+    const x = d3.scaleLinear().domain([30, 95]).range([margin.left, width - margin.right]);
+    const y = d3.scalePoint().domain(["Baseline", "Pilot", "Scaled"]).range([96, 302]).padding(.5);
+    const groupColor = new Map([["Baseline", palette.blue], ["Pilot", palette.orange], ["Scaled", palette.green]]);
+    const nodes = data.map(d => ({ ...d, x: x(d.score), y: y(d.group) }));
+    const simulation = d3.forceSimulation(nodes).randomSource(d3.randomLcg(0.42))
+      .force("x", d3.forceX(d => x(d.score)).strength(.95))
+      .force("y", d3.forceY(d => y(d.group)).strength(.25))
+      .force("collide", d3.forceCollide(11)).stop();
+    for (let i = 0; i < 160; i += 1) simulation.tick();
+
+    x.ticks(6).forEach((tick, i) => {
+      appendSketchStroke(svg, [[x(tick), 76], [x(tick), 322]], {
+        stroke: palette.gray100,
+        strokeWidth: 1,
+        opacity: .62,
+        seed: 860 + i,
+        roughness: .65,
+        delay: .02,
+        dur: .45
+      });
+    });
+    appendSketchHorizontalAxis(svg, x, 322, 6, 880);
+    y.domain().forEach((group, i) => {
+      appendSketchStroke(svg, [[margin.left, y(group)], [width - margin.right, y(group)]], {
+        stroke: palette.gray200,
+        strokeWidth: 1.25,
+        opacity: .56,
+        seed: 900 + i,
+        roughness: .9,
+        delay: .04,
+        dur: .5
+      });
+      svg.append("text")
+        .attr("class", "label")
+        .attr("x", margin.left - 18)
+        .attr("y", y(group) + 4)
+        .attr("text-anchor", "end")
+        .text(group);
+    });
+
+    nodes.sort((a, b) => a.score - b.score).forEach((d, i) => {
+      appendSketchBlob(svg, d.x, d.y, 8.6, {
+        fill: groupColor.get(d.group),
+        fillOpacity: .72,
+        stroke: palette.surface,
+        strokeWidth: 1.2,
+        seed: 930 + i * 17,
+        roughness: .18,
+        edgeRoughness: 1.15,
+        delay: .12 + i * .018,
+        dur: .5
+      });
+    });
+  }
+
+  function renderSketchyStreamgraph() {
+    const svg = prepareSvg("sketchy-streamgraph", "Sketchy streamgraph", "Stacked areas keep their data shape while rendered as rough filled bands.");
+    const keys = ["Search", "Assist", "Automate", "Review"];
+    const color = d3.scaleOrdinal(keys, [palette.blue, palette.green, palette.orange, palette.purple]);
+    const data = d3.range(12).map(i => ({
+      month: i,
+      Search: 20 + Math.sin(i / 1.6) * 8 + i * 1.2,
+      Assist: 18 + Math.cos(i / 2.2) * 7 + i * .8,
+      Automate: 10 + Math.sin(i / 1.3 + 1) * 6 + i * 1.4,
+      Review: 12 + Math.cos(i / 1.9 + 2) * 5 + i * .5
+    }));
+    const margin = { top: 42, right: 34, bottom: 50, left: 30 };
+    const series = d3.stack().keys(keys).offset(d3.stackOffsetWiggle).order(d3.stackOrderInsideOut)(data);
+    const x = d3.scaleLinear().domain(d3.extent(data, d => d.month)).range([margin.left, width - margin.right]);
+    const y = d3.scaleLinear()
+      .domain([d3.min(series, s => d3.min(s, d => d[0])), d3.max(series, s => d3.max(s, d => d[1]))])
+      .range([height - margin.bottom, margin.top]);
+
+    appendSketchHorizontalAxis(svg, x, height - margin.bottom, 6, 980);
+    const legend = svg.append("g").attr("transform", "translate(46,24)");
+    keys.forEach((key, i) => {
+      const lx = i * 118;
+      appendSketchStroke(legend, [[lx, 0], [lx + 20, 0]], {
+        stroke: color(key),
+        strokeWidth: 3.4,
+        seed: 990 + i * 13,
+        roughness: .7,
+        delay: .04,
+        dur: .45
+      });
+      legend.append("text")
+        .attr("class", "caption")
+        .attr("x", lx + 27)
+        .attr("y", 4)
+        .attr("font-weight", 700)
+        .text(key);
+    });
+    series.forEach((layer, layerIndex) => {
+      const top = layer.map(d => [x(d.data.month), y(d[1])]);
+      const bottom = layer.slice().reverse().map(d => [x(d.data.month), y(d[0])]);
+      const areaPoints = top.concat(bottom);
+      const layerColor = color(layer.key);
+      appendSketchClosedShape(svg, areaPoints, {
+        fill: layerColor,
+        fillOpacity: .42,
+        stroke: d3.color(layerColor).darker(.55).formatHex(),
+        strokeWidth: 2,
+        seed: 1000 + layerIndex * 41,
+        roughness: 2.1,
+        delay: .1 + layerIndex * .08,
+        dur: .78
+      });
+    });
+  }
+
+  function renderSketchyTreemap() {
+    const svg = prepareSvg("sketchy-treemap", "Sketchy treemap", "Nested area allocation is rendered with rough rectangular cells.");
+    const root = d3.hierarchy(hierarchyData()).sum(d => d.value || 0).sort((a, b) => b.value - a.value);
+    d3.treemap().size([width - 50, height - 62]).paddingOuter(6).paddingTop(22).paddingInner(4).round(true)(root);
+    const g = svg.append("g").attr("transform", "translate(25,31)");
+    const color = d3.scaleOrdinal(root.children.map(d => d.data.name), colors);
+    const branchName = d => d.depth === 1 ? d.data.name : d.parent.data.name;
+    const nodes = root.descendants().filter(d => d.depth);
+    nodes.filter(d => d.children).forEach((d, i) => {
+      appendSketchRect(g, d.x0, d.y0, Math.max(0, d.x1 - d.x0), Math.max(0, d.y1 - d.y0), {
+        fill: color(branchName(d)),
+        fillOpacity: .13,
+        stroke: d3.color(color(branchName(d))).darker(.75).formatHex(),
+        strokeWidth: 1.5,
+        seed: 1060 + i * 23,
+        roughness: 1.5,
+        delay: .08 + i * .04,
+        dur: .62,
+        hachure: false
+      });
+    });
+    nodes.filter(d => !d.children).forEach((d, i) => {
+      const w = Math.max(0, d.x1 - d.x0);
+      const h = Math.max(0, d.y1 - d.y0);
+      appendSketchRect(g, d.x0, d.y0, w, h, {
+        fill: color(branchName(d)),
+        fillOpacity: .54,
+        stroke: d3.color(color(branchName(d))).darker(.72).formatHex(),
+        strokeWidth: 1.6,
+        seed: 1100 + i * 29,
+        roughness: 1.55,
+        delay: .18 + i * .035,
+        dur: .58,
+        hachureStroke: d3.color(color(branchName(d))).darker(.75).formatHex(),
+        hachureOpacity: .16,
+        hachureSpacing: 14
+      });
+      if (w > 56 && h > 26) {
+        g.append("text")
+          .attr("class", "mark-label")
+          .attr("x", d.x0 + 7)
+          .attr("y", d.y0 + 18)
+          .attr("font-size", 11.5)
+          .text(d.data.name);
+      }
+    });
+    nodes.filter(d => d.children && (d.x1 - d.x0) > 70).forEach(d => {
+      g.append("text")
+        .attr("class", "label")
+        .attr("x", d.x0 + 8)
+        .attr("y", d.y0 + 16)
+        .attr("font-weight", 800)
+        .text(d.data.name);
+    });
+  }
+
+  function gemmaComparisonData() {
+    // Current-source examples: benchmark/spec and memory data come from Google Gemma 4 docs.
+    // VM prices are approximate on-demand examples and should be refreshed before budgeting.
+    const tokens = {
+      e4b: palette.blue,
+      e4bLight: palette.blueHighlight,
+      large: palette.purple,
+      largeLight: palette.purpleHighlight,
+      grid: palette.gray100,
+      axis: palette.gray400,
+      connector: palette.gray400,
+      sketchPanel: palette.gray50,
+      sketchPanelStroke: palette.gray300,
+      panel: palette.surface,
+      panelStroke: palette.gray200,
+      q4Fill: palette.gray100,
+      q4Stroke: palette.gray600,
+      costFill: palette.orangeHighlight,
+      costStroke: palette.orange
+    };
+    const models = [
+      {
+        id: "e4b",
+        name: "Gemma 4 E4B",
+        short: "E4B",
+        params: "4.5B eff / 8B total",
+        context: "128K ctx",
+        modalities: "text image audio",
+        bf16: 17.9,
+        q4: 4.5,
+        hardware: "L4 24GB",
+        instance: "g2-standard-4",
+        cost: .707,
+        color: tokens.e4b,
+        light: tokens.e4bLight,
+        metrics: { mmlu: 69.4, gpqa: 58.6, code: 52.0, aime: 42.5 }
+      },
+      {
+        id: "31b",
+        name: "Gemma 4 31B",
+        short: "31B",
+        params: "30.7B dense",
+        context: "256K ctx",
+        modalities: "text image",
+        bf16: 69.9,
+        q4: 17.5,
+        hardware: "A100 80GB",
+        instance: "a2-ultragpu-1g",
+        cost: 5.058,
+        color: tokens.large,
+        light: tokens.largeLight,
+        metrics: { mmlu: 85.2, gpqa: 84.3, code: 80.0, aime: 89.2 }
+      }
+    ];
+    const metricRows = [
+      { key: "mmlu", label: "MMLU Pro" },
+      { key: "gpqa", label: "GPQA" },
+      { key: "code", label: "LiveCode" },
+      { key: "aime", label: "AIME" }
+    ];
+    return { models, metricRows, tokens };
+  }
+
+  function renderSketchyGemmaComparison() {
+    const svg = prepareSvg("sketchy-gemma-comparison", "Sketchy Gemma comparison", "Two Google Gemma model sizes compared by benchmark score, memory footprint, hardware fit, and estimated GPU VM cost.");
+    const { models, metricRows, tokens } = gemmaComparisonData();
+    const score = d3.scaleLinear().domain([35, 92]).range([152, 498]);
+    const mem = d3.scaleLinear().domain([0, 80]).range([0, 118]);
+    const price = d3.scaleLinear().domain([0, 6]).range([0, 118]);
+    const fmtScore = d3.format(".1f");
+
+    const topCards = [
+      { model: models[0], x: 42, y: 28, w: 224, h: 76 },
+      { model: models[1], x: 294, y: 28, w: 224, h: 76 }
+    ];
+    topCards.forEach((card, i) => {
+      appendSketchRect(svg, card.x, card.y, card.w, card.h, {
+        fill: card.model.light,
+        fillOpacity: .36,
+        stroke: card.model.color,
+        strokeWidth: 1.7,
+        seed: 1360 + i * 31,
+        roughness: 1.2,
+        delay: .03 + i * .04,
+        dur: .58,
+        hachure: false
+      });
+      const text = svg.append("g").attr("transform", `translate(${card.x + 14},${card.y + 22})`);
+      text.append("text")
+        .attr("class", "mark-label")
+        .attr("font-size", 14)
+        .attr("font-weight", 800)
+        .attr("fill", card.model.color)
+        .text(card.model.name);
+      text.append("text")
+        .attr("class", "caption")
+        .attr("y", 22)
+        .text(`${card.model.params} / ${card.model.context}`);
+      text.append("text")
+        .attr("class", "caption")
+        .attr("y", 42)
+        .text(card.model.modalities);
+      fadeIn(text.selectAll("text"), .08 + i * .05, .48);
+    });
+
+    metricRows.forEach((row, i) => {
+      const y = 142 + i * 32;
+      appendSketchStroke(svg, [[score(35), y], [score(92), y]], {
+        stroke: tokens.grid,
+        strokeWidth: 1.1,
+        opacity: .78,
+        seed: 1420 + i,
+        roughness: .55,
+        delay: .08,
+        dur: .44
+      });
+      svg.append("text")
+        .attr("class", "label")
+        .attr("x", 52)
+        .attr("y", y + 4)
+        .attr("font-size", 11.4)
+        .text(row.label);
+      appendSketchStroke(svg, models.map(model => [score(model.metrics[row.key]), y]), {
+        stroke: tokens.connector,
+        strokeWidth: 1.45,
+        opacity: .7,
+        seed: 1460 + i * 13,
+        roughness: .9,
+        delay: .22 + i * .08,
+        dur: .55
+      });
+      models.forEach((model, mi) => {
+        const x = score(model.metrics[row.key]);
+        appendSketchBlob(svg, x, y, 5.7, {
+          fill: model.color,
+          fillOpacity: .84,
+          stroke: palette.surface,
+          strokeWidth: 1.1,
+          seed: 1500 + i * 29 + mi * 11,
+          roughness: .12,
+          edgeRoughness: .72,
+          delay: .32 + i * .08 + mi * .04,
+          dur: .42
+        });
+        svg.append("text")
+          .attr("class", "caption")
+          .attr("x", x + (mi === 0 ? -9 : 9))
+          .attr("y", y + (mi === 0 ? -8 : 15))
+          .attr("text-anchor", mi === 0 ? "end" : "start")
+          .attr("font-size", 10.2)
+          .attr("font-weight", 700)
+          .attr("fill", model.color)
+          .text(fmtScore(model.metrics[row.key]));
+      });
+    });
+    [40, 60, 80].forEach((tick, i) => {
+      const x = score(tick);
+      appendSketchStroke(svg, [[x, 270], [x, 278]], {
+        stroke: tokens.axis,
+        strokeWidth: 1,
+        seed: 1580 + i,
+        roughness: .45,
+        delay: .18,
+        dur: .35
+      });
+      svg.append("text")
+        .attr("class", "caption")
+        .attr("x", x)
+        .attr("y", 294)
+        .attr("text-anchor", "middle")
+        .attr("font-size", 10.5)
+        .text(tick);
+    });
+    appendSketchStroke(svg, [[score(35), 274], [score(92), 274]], {
+      stroke: tokens.axis,
+      strokeWidth: 1.1,
+      seed: 1590,
+      roughness: .6,
+      delay: .14,
+      dur: .45
+    });
+    svg.append("text")
+      .attr("class", "caption")
+      .attr("x", 502)
+      .attr("y", 294)
+      .attr("text-anchor", "end")
+      .attr("font-size", 10.5)
+      .text("score %");
+
+    const footprintCards = [
+      { model: models[0], x: 42, y: 316, w: 224, h: 70 },
+      { model: models[1], x: 294, y: 316, w: 224, h: 70 }
+    ];
+    footprintCards.forEach((card, i) => {
+      appendSketchRect(svg, card.x, card.y, card.w, card.h, {
+        fill: tokens.sketchPanel,
+        fillOpacity: .9,
+        stroke: tokens.sketchPanelStroke,
+        strokeWidth: 1.3,
+        seed: 1620 + i * 31,
+        roughness: 1.05,
+        delay: .46 + i * .04,
+        dur: .52,
+        hachure: false
+      });
+      const barX = card.x + 58;
+      const rows = [
+        { label: "BF16", value: card.model.bf16, max: mem, suffix: " GB", y: card.y + 20, fill: card.model.light, stroke: card.model.color },
+        { label: "Q4", value: card.model.q4, max: mem, suffix: " GB", y: card.y + 40, fill: tokens.q4Fill, stroke: tokens.q4Stroke },
+        { label: "VM", value: card.model.cost, max: price, suffix: "/h", y: card.y + 60, fill: tokens.costFill, stroke: tokens.costStroke }
+      ];
+      rows.forEach((row, ri) => {
+        svg.append("text")
+          .attr("class", "caption")
+          .attr("x", card.x + 14)
+          .attr("y", row.y + 4)
+          .attr("font-size", 10.6)
+          .attr("font-weight", 700)
+          .text(row.label);
+        appendSketchRect(svg, barX, row.y - 8, row.max(row.value), 10, {
+          fill: row.fill,
+          fillOpacity: .72,
+          stroke: row.stroke,
+          strokeWidth: 1.1,
+          seed: 1680 + i * 41 + ri * 11,
+          roughness: .55,
+          delay: .54 + i * .04 + ri * .05,
+          dur: .42,
+          hachure: false
+        });
+        svg.append("text")
+          .attr("class", "caption")
+          .attr("x", card.x + card.w - 14)
+          .attr("y", row.y + 4)
+          .attr("text-anchor", "end")
+          .attr("font-size", 10.6)
+          .attr("font-weight", 700)
+          .text(row.label === "VM" ? `$${row.value.toFixed(row.value < 1 ? 3 : 2)}${row.suffix}` : `${row.value}${row.suffix}`);
+      });
+      svg.append("text")
+        .attr("class", "caption")
+        .attr("x", card.x + card.w - 14)
+        .attr("y", card.y - 7)
+        .attr("text-anchor", "end")
+        .attr("font-size", 10.4)
+        .attr("font-weight", 700)
+        .attr("fill", card.model.color)
+        .text(`${card.model.hardware} / ${card.model.instance}`);
+    });
+  }
+
+  function renderGemmaComparison() {
+    const svg = prepareSvg("gemma-comparison", "Gemma model comparison", "Two Google Gemma model sizes compared by benchmark score, memory footprint, hardware fit, and estimated GPU VM cost.");
+    const { models, metricRows, tokens } = gemmaComparisonData();
+    const score = d3.scaleLinear().domain([35, 92]).range([150, 502]);
+    const mem = d3.scaleLinear().domain([0, 80]).range([0, 120]);
+    const price = d3.scaleLinear().domain([0, 6]).range([0, 120]);
+    const fmtScore = d3.format(".1f");
+
+    const modelCards = [
+      { model: models[0], x: 38, y: 30, w: 232, h: 78 },
+      { model: models[1], x: 290, y: 30, w: 232, h: 78 }
+    ];
+    const cards = svg.append("g").selectAll("g.model-card")
+      .data(modelCards)
+      .join("g")
+      .attr("class", "model-card");
+    cards.append("rect")
+      .attr("x", d => d.x)
+      .attr("y", d => d.y)
+      .attr("width", d => d.w)
+      .attr("height", d => d.h)
+      .attr("rx", 7)
+      .attr("fill", tokens.panel)
+      .attr("fill-opacity", .88)
+      .attr("stroke", tokens.panelStroke)
+      .attr("stroke-width", .85);
+    cards.append("circle")
+      .attr("cx", d => d.x + 15)
+      .attr("cy", d => d.y + 23)
+      .attr("r", 3.8)
+      .attr("fill", d => d.model.color)
+      .each(function (d, i) {
+        d3.select(this).append("animate")
+          .attr("attributeName", "r")
+          .attr("from", 0)
+          .attr("to", 3.8)
+          .attr("dur", ".38s")
+          .attr("begin", `${.05 + i * .08}s`)
+          .attr("fill", "freeze");
+      });
+    cards.append("text")
+      .attr("class", "mark-label")
+      .attr("x", d => d.x + 25)
+      .attr("y", d => d.y + 27)
+      .attr("font-size", 14)
+      .attr("font-weight", 800)
+      .attr("fill", palette.ink)
+      .text(d => d.model.name);
+    cards.append("text")
+      .attr("class", "caption")
+      .attr("x", d => d.x + 14)
+      .attr("y", d => d.y + 47)
+      .attr("font-size", 10.8)
+      .text(d => `${d.model.params} / ${d.model.context}`);
+    cards.append("text")
+      .attr("class", "caption")
+      .attr("x", d => d.x + 14)
+      .attr("y", d => d.y + 65)
+      .attr("font-size", 10.8)
+      .text(d => d.model.modalities);
+    fadeIn(cards.selectAll("rect, text"), .04, .48);
+
+    const benchmarkGroup = svg.append("g");
+    metricRows.forEach((row, i) => {
+      const y = 144 + i * 32;
+      benchmarkGroup.append("line")
+        .attr("x1", score(35))
+        .attr("x2", score(92))
+        .attr("y1", y)
+        .attr("y2", y)
+        .attr("stroke", tokens.grid)
+        .attr("stroke-width", 1);
+      benchmarkGroup.append("text")
+        .attr("class", "label")
+        .attr("x", 50)
+        .attr("y", y + 4)
+        .attr("font-size", 11.2)
+        .text(row.label);
+      const connector = benchmarkGroup.append("path")
+        .attr("d", `M${score(models[0].metrics[row.key])},${y}L${score(models[1].metrics[row.key])},${y}`)
+        .attr("fill", "none")
+        .attr("stroke", tokens.connector)
+        .attr("stroke-width", 2)
+        .attr("stroke-linecap", "round");
+      drawPath(connector, .18 + i * .07, .48);
+      models.forEach((model, mi) => {
+        const x = score(model.metrics[row.key]);
+        const dot = benchmarkGroup.append("circle")
+          .attr("cx", x)
+          .attr("cy", y)
+          .attr("r", 5.8)
+          .attr("fill", model.color)
+          .attr("stroke", palette.surface)
+          .attr("stroke-width", 1.2);
+        dot.append("animate")
+          .attr("attributeName", "r")
+          .attr("from", 0)
+          .attr("to", 5.8)
+          .attr("dur", ".38s")
+          .attr("begin", `${.28 + i * .07 + mi * .05}s`)
+          .attr("fill", "freeze");
+        const value = benchmarkGroup.append("text")
+          .attr("class", "caption")
+          .attr("x", x + (mi === 0 ? -9 : 9))
+          .attr("y", y + (mi === 0 ? -8 : 15))
+          .attr("text-anchor", mi === 0 ? "end" : "start")
+          .attr("font-size", 10.2)
+          .attr("font-weight", 700)
+          .attr("fill", model.color)
+          .text(fmtScore(model.metrics[row.key]));
+        fadeIn(value, .34 + i * .07 + mi * .05, .35);
+      });
+    });
+    [40, 60, 80].forEach(tick => {
+      const x = score(tick);
+      benchmarkGroup.append("line")
+        .attr("x1", x)
+        .attr("x2", x)
+        .attr("y1", 269)
+        .attr("y2", 277)
+        .attr("stroke", tokens.axis)
+        .attr("stroke-width", 1);
+      benchmarkGroup.append("text")
+        .attr("class", "caption")
+        .attr("x", x)
+        .attr("y", 294)
+        .attr("text-anchor", "middle")
+        .attr("font-size", 10.5)
+        .text(tick);
+    });
+    benchmarkGroup.append("line")
+      .attr("x1", score(35))
+      .attr("x2", score(92))
+      .attr("y1", 273)
+      .attr("y2", 273)
+      .attr("stroke", tokens.axis)
+      .attr("stroke-width", 1.1);
+    benchmarkGroup.append("text")
+      .attr("class", "caption")
+      .attr("x", 502)
+      .attr("y", 294)
+      .attr("text-anchor", "end")
+      .attr("font-size", 10.5)
+      .text("score %");
+
+    const footprintCards = [
+      { model: models[0], x: 38, y: 316, w: 232, h: 72 },
+      { model: models[1], x: 290, y: 316, w: 232, h: 72 }
+    ];
+    const footprint = svg.append("g").selectAll("g.footprint-card")
+      .data(footprintCards)
+      .join("g")
+      .attr("class", "footprint-card");
+    footprint.append("rect")
+      .attr("x", d => d.x)
+      .attr("y", d => d.y)
+      .attr("width", d => d.w)
+      .attr("height", d => d.h)
+      .attr("rx", 7)
+      .attr("fill", tokens.panel)
+      .attr("stroke", tokens.panelStroke)
+      .attr("stroke-width", 1.1);
+    footprint.append("text")
+      .attr("class", "caption")
+      .attr("x", d => d.x + d.w - 12)
+      .attr("y", d => d.y - 8)
+      .attr("text-anchor", "end")
+      .attr("font-size", 10.4)
+      .attr("font-weight", 700)
+      .attr("fill", palette.gray700)
+      .text(d => `${d.model.hardware} / ${d.model.instance}`);
+
+    footprint.each(function (card, cardIndex) {
+      const group = d3.select(this);
+      const barX = card.x + 58;
+      const rows = [
+        { label: "BF16", value: card.model.bf16, scale: mem, suffix: " GB", y: card.y + 20, fill: card.model.light, stroke: card.model.color },
+        { label: "Q4", value: card.model.q4, scale: mem, suffix: " GB", y: card.y + 41, fill: tokens.q4Fill, stroke: tokens.q4Stroke },
+        { label: "VM", value: card.model.cost, scale: price, suffix: "/h", y: card.y + 62, fill: tokens.costFill, stroke: tokens.costStroke }
+      ];
+      rows.forEach((row, rowIndex) => {
+        group.append("text")
+          .attr("class", "caption")
+          .attr("x", card.x + 14)
+          .attr("y", row.y + 4)
+          .attr("font-size", 10.6)
+          .attr("font-weight", 700)
+          .text(row.label);
+        group.append("rect")
+          .attr("x", barX)
+          .attr("y", row.y - 8)
+          .attr("width", row.scale(row.value))
+          .attr("height", 10)
+          .attr("rx", 2)
+          .attr("fill", row.fill)
+          .attr("fill-opacity", .78)
+          .attr("stroke", "none")
+          .each(function () {
+            d3.select(this).append("animate")
+              .attr("attributeName", "width")
+              .attr("from", 0)
+              .attr("to", row.scale(row.value))
+              .attr("dur", ".54s")
+              .attr("begin", `${.48 + cardIndex * .08 + rowIndex * .06}s`)
+              .attr("fill", "freeze");
+          });
+        group.append("text")
+          .attr("class", "caption")
+          .attr("x", card.x + card.w - 12)
+          .attr("y", row.y + 4)
+          .attr("text-anchor", "end")
+          .attr("font-size", 10.6)
+          .attr("font-weight", 700)
+          .text(row.label === "VM" ? `$${row.value.toFixed(row.value < 1 ? 3 : 2)}${row.suffix}` : `${row.value}${row.suffix}`);
+      });
+    });
+    fadeIn(svg.selectAll(".footprint-card text, .footprint-card > rect"), .38, .42);
   }
 
   function renderBoxPlot() {
@@ -3624,9 +5358,9 @@
     const rejectedPath = line(["draft3", "draft4", "target"].map(id => byId.get(id)));
 
     svg.append("rect").attr("x", 52).attr("y", 62).attr("width", 456).attr("height", 44).attr("rx", 10).attr("fill", palette.yellowHighlight).attr("stroke", palette.gold).attr("stroke-width", 2);
-    svg.append("text").attr("class", "mark-label").attr("x", 280).attr("y", 90).attr("text-anchor", "middle").attr("font-weight", 800).text("target model verifies draft tokens in parallel");
-    const sweep = svg.append("rect").attr("x", 66).attr("y", 72).attr("width", 396).attr("height", 24).attr("rx", 6).attr("fill", palette.gold).attr("fill-opacity", .18);
+    const sweep = svg.append("rect").attr("x", 66).attr("y", 72).attr("width", 396).attr("height", 24).attr("rx", 6).attr("fill", palette.gold);
     sweep.append("animate").attr("attributeName", "width").attr("from", 0).attr("to", 396).attr("dur", "1.15s").attr("begin", ".8s").attr("fill", "freeze");
+    svg.append("text").attr("class", "mark-label").attr("x", 280).attr("y", 90).attr("text-anchor", "middle").attr("font-weight", 800).text("target model verifies draft tokens in parallel");
 
     const branchLinks = [
       ["draft1", "alt2", palette.gray300],
@@ -3689,8 +5423,7 @@
       .attr("height", 34)
       .attr("rx", 8)
       .attr("fill", d => d.status === "branch" ? palette.gray100 : d.color)
-      .attr("fill-opacity", d => d.status === "branch" ? .7 : .82)
-      .attr("stroke", d => d.status === "reject" ? palette.red : palette.surface)
+      .attr("stroke", d => d.status === "reject" ? palette.redHover : palette.surface)
       .attr("stroke-width", d => d.status === "reject" ? 2.4 : 1.4);
     nodeGroups.append("text")
       .attr("class", d => d.status === "branch" ? "mark-label" : "reverse-label")
@@ -3710,7 +5443,7 @@
     ].forEach((badge, i) => {
       const node = byId.get(badge.id);
       const group = svg.append("g").attr("transform", `translate(${node.x},${node.y + 43})`);
-      group.append("rect").attr("x", -22).attr("y", -13).attr("width", 44).attr("height", 21).attr("rx", 7).attr("fill", badge.color).attr("fill-opacity", .86);
+      group.append("rect").attr("x", -22).attr("y", -13).attr("width", 44).attr("height", 21).attr("rx", 7).attr("fill", badge.color);
       group.append("text").attr("class", "reverse-label").attr("x", 0).attr("y", 2).attr("text-anchor", "middle").style("font-size", "9px").text(badge.text);
       fadeIn(group, 1.2 + i * .12, .24);
     });
@@ -5915,6 +7648,97 @@
     pulseMlpNodes(circles, delayForLayer);
   }
 
+  function renderDeepLearningModelExecution() {
+    const svg = prepareSvg("deep-learning-model-execution", "Deep learning model execution", "A square model frame contains only an internal multilayer network pulsing through execution.");
+    const model = { x: 150, y: 80, size: 260 };
+    const network = {
+      x0: model.x + 52,
+      x1: model.x + model.size - 52,
+      y0: model.y + 58,
+      y1: model.y + model.size - 58,
+      layers: [4, 5, 5, 3]
+    };
+
+    const modelGroup = svg.append("g").attr("class", "model-execution-square");
+    modelGroup.append("rect")
+      .attr("x", model.x)
+      .attr("y", model.y)
+      .attr("width", model.size)
+      .attr("height", model.size)
+      .attr("rx", 0)
+      .attr("fill", palette.surface)
+      .attr("stroke", palette.red)
+      .attr("stroke-width", 4);
+
+    const xScale = d3.scalePoint().domain(d3.range(network.layers.length)).range([network.x0, network.x1]);
+    const nodes = network.layers.flatMap((count, layer) => {
+      const yScale = d3.scalePoint().domain(d3.range(count)).range([network.y0, network.y1]);
+      return d3.range(count).map(index => ({
+        id: `${layer}-${index}`,
+        layer,
+        index,
+        x: xScale(layer),
+        y: yScale(index)
+      }));
+    });
+    const byLayer = d3.group(nodes, d => d.layer);
+    const links = [];
+    for (let layer = 0; layer < network.layers.length - 1; layer += 1) {
+      byLayer.get(layer).forEach(source => {
+        byLayer.get(layer + 1).forEach(target => links.push({ source, target, layer: layer + 1 }));
+      });
+    }
+    const networkGroup = modelGroup.append("g").attr("class", "model-execution-network");
+    networkGroup.selectAll("line")
+      .data(links)
+      .join("line")
+      .attr("x1", d => d.source.x)
+      .attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x)
+      .attr("y2", d => d.target.y)
+      .attr("stroke", palette.gray300)
+      .attr("stroke-width", 1.45)
+      .attr("stroke-opacity", .72)
+      .attr("stroke-linecap", "round");
+    networkGroup.selectAll("circle")
+      .data(nodes)
+      .join("circle")
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("r", 9.2)
+      .attr("fill", palette.gray200)
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", 2);
+
+    const activeNodes = modelGroup.append("g").selectAll("circle")
+      .data(nodes)
+      .join("circle")
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("r", 9.2)
+      .attr("fill", palette.red)
+      .attr("stroke", palette.red)
+      .attr("stroke-width", 2)
+      .attr("opacity", 0);
+    activeNodes.each(function (d) {
+      const node = d3.select(this);
+      node.append("animate")
+        .attr("attributeName", "opacity")
+        .attr("values", "0;1;1;0")
+        .attr("keyTimes", "0;.18;.62;1")
+        .attr("dur", "1.05s")
+        .attr("begin", `${.35 + d.layer * .5}s`)
+        .attr("repeatCount", "indefinite");
+      node.append("animate")
+        .attr("attributeName", "r")
+        .attr("values", "9.2;14.8;11;9.2")
+        .attr("keyTimes", "0;.18;.62;1")
+        .attr("dur", "1.05s")
+        .attr("begin", `${.35 + d.layer * .5}s`)
+        .attr("repeatCount", "indefinite");
+    });
+  }
+
   function renderMlpInternals() {
     const svg = prepareSvg("mlp-internals", "MLP internal variables", "A multilayer perceptron reveals internal variables during layer activation.");
     const layout = mlpLayout([3, 4, 3, 2], [78, width - 68], [120, 294]);
@@ -6281,7 +8105,7 @@
     const xPositions = [34, 122, 212, 316, 430, 518];
     const generationStartY = [60, 118, 178, 222, 292, 342];
     const rowGap = [0, 34, 20, 18, 18, 22];
-    const bundleColors = [palette.blue, palette.orange, palette.purple, palette.green, palette.red, palette.gray700, palette.gold, palette.cyan];
+    const bundleColors = [palette.blue, palette.orange, palette.purple, palette.green, palette.red, palette.gray700, palette.gold, palette.blueHover];
     const nodeRadius = 4.2;
     const nodes = generations.flatMap((generation, layer) => generation.map((node, index) => ({
       ...node,
@@ -6348,41 +8172,6 @@
         `H${xt}`
       ].join(" ");
     };
-
-    const bundles = svg.append("g").selectAll("path.bundle-stem").data(familyList).join("path")
-      .attr("class", "bundle-stem")
-      .attr("d", d => {
-        const ys = d3.extent([
-          ...d.parents.map(parentId => byId.get(parentId)?.y).filter(Number.isFinite),
-          ...d.children.map(child => child.y)
-        ]);
-        return `M${d.bundleX},${ys[0]} L${d.bundleX},${ys[1]}`;
-      })
-      .attr("fill", "none")
-      .attr("stroke", d => d.color)
-      .attr("stroke-width", 2.6)
-      .attr("stroke-opacity", 0)
-      .attr("stroke-linecap", "round");
-    bundles.each(function (d) {
-      const length = this.getTotalLength ? this.getTotalLength() : 90;
-      d3.select(this)
-        .attr("stroke-dasharray", `${length} ${length}`)
-        .attr("stroke-dashoffset", length);
-      d3.select(this).append("animate")
-        .attr("attributeName", "stroke-dashoffset")
-        .attr("from", length)
-        .attr("to", 0)
-        .attr("dur", ".48s")
-        .attr("begin", `${linkDelay(d.layer)}s`)
-        .attr("fill", "freeze");
-      d3.select(this).append("animate")
-        .attr("attributeName", "stroke-opacity")
-        .attr("from", 0)
-        .attr("to", .32)
-        .attr("dur", ".2s")
-        .attr("begin", `${linkDelay(d.layer)}s`)
-        .attr("fill", "freeze");
-    });
 
     const haloLinks = svg.append("g")
       .attr("fill", "none")
@@ -6622,6 +8411,226 @@
       .attr("stroke", palette.orange)
       .attr("stroke-width", 2.2)
       .attr("stroke-dasharray", "6 7");
+  }
+
+  function renderPocketMonsterStippling() {
+    const svg = prepareSvg("pocket-monster-stippling", "Pocket monster Voronoi stippling", "Weighted centroidal Voronoi stipples form a stylized electric pocket creature silhouette.");
+    const bounds = [70, 34, width - 58, height - 36];
+    const leftEar = [[218, 132], [178, 42], [252, 103], [244, 146]];
+    const rightEar = [[342, 132], [384, 42], [308, 103], [316, 146]];
+    const leftTip = [[178, 42], [197, 83], [229, 85], [204, 55]];
+    const rightTip = [[384, 42], [364, 83], [331, 85], [356, 55]];
+    const tail = [[374, 232], [438, 184], [422, 224], [486, 218], [424, 280], [440, 238], [386, 260]];
+    const sampleStep = 5.4;
+
+    function polygonPath(points) {
+      return `M${points.map(point => point.join(",")).join("L")}Z`;
+    }
+
+    function pointInPolygon(x, y, polygon) {
+      let inside = false;
+      for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+        const [xi, yi] = polygon[i];
+        const [xj, yj] = polygon[j];
+        const intersects = ((yi > y) !== (yj > y)) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+        if (intersects) inside = !inside;
+      }
+      return inside;
+    }
+
+    function ellipseScore(x, y, cx, cy, rx, ry) {
+      const value = 1 - (((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2);
+      return Math.max(0, value);
+    }
+
+    function segmentDistance(px, py, ax, ay, bx, by) {
+      const dx = bx - ax;
+      const dy = by - ay;
+      const length2 = dx * dx + dy * dy;
+      const t = length2 === 0 ? 0 : Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / length2));
+      const x = ax + t * dx;
+      const y = ay + t * dy;
+      return Math.hypot(px - x, py - y);
+    }
+
+    function creatureSignal(x, y) {
+      const head = ellipseScore(x, y, 280, 184, 100, 84);
+      const body = ellipseScore(x, y, 280, 260, 94, 88);
+      const leftFoot = ellipseScore(x, y, 238, 330, 38, 18);
+      const rightFoot = ellipseScore(x, y, 322, 330, 38, 18);
+      const inLeftEar = pointInPolygon(x, y, leftEar);
+      const inRightEar = pointInPolygon(x, y, rightEar);
+      const inTail = pointInPolygon(x, y, tail);
+      const cheek = Math.max(ellipseScore(x, y, 228, 214, 22, 16), ellipseScore(x, y, 332, 214, 22, 16));
+      const eye = Math.max(ellipseScore(x, y, 252, 174, 9, 13), ellipseScore(x, y, 308, 174, 9, 13));
+      const nose = ellipseScore(x, y, 280, 196, 5.5, 4.2);
+      const mouth = Math.min(segmentDistance(x, y, 280, 202, 268, 216), segmentDistance(x, y, 280, 202, 292, 216)) < 4.2 ? 1 : 0;
+      const tip = pointInPolygon(x, y, leftTip) || pointInPolygon(x, y, rightTip);
+      const silhouette = Math.max(
+        head * .9,
+        body * .82,
+        leftFoot * .46,
+        rightFoot * .46,
+        inLeftEar ? .74 : 0,
+        inRightEar ? .74 : 0,
+        inTail ? .62 : 0
+      );
+
+      if (tip) return { density: .98, region: "tip" };
+      if (eye || nose || mouth) return { density: 1, region: "ink" };
+      if (cheek) return { density: .94, region: "cheek" };
+      if (inTail) return { density: .72, region: "tail" };
+      if (silhouette > 0) return { density: Math.min(1, .34 + silhouette * .62), region: "body" };
+      return { density: 0, region: "none" };
+    }
+
+    const samples = [];
+    for (let y = bounds[1]; y <= bounds[3]; y += sampleStep) {
+      for (let x = bounds[0]; x <= bounds[2]; x += sampleStep) {
+        const signal = creatureSignal(x, y);
+        if (signal.density > .2) {
+          samples.push({ x, y, weight: signal.density ** 1.55, region: signal.region });
+        }
+      }
+    }
+
+    let totalWeight = 0;
+    const cumulative = samples.map(sample => {
+      totalWeight += sample.weight;
+      return totalWeight;
+    });
+    const seeded01 = value => {
+      const raw = Math.sin(value * 12.9898 + 78.233) * 43758.5453;
+      return raw - Math.floor(raw);
+    };
+    const sampleAt = value => samples[Math.min(samples.length - 1, d3.bisectLeft(cumulative, value))];
+    let points = d3.range(158).map(i => {
+      const sample = sampleAt(((i * .61803398875 + .17) % 1) * totalWeight);
+      const jitterX = (seeded01(i + 11) - .5) * sampleStep * .9;
+      const jitterY = (seeded01(i + 29) - .5) * sampleStep * .9;
+      const candidateX = sample.x + jitterX;
+      const candidateY = sample.y + jitterY;
+      const signal = creatureSignal(candidateX, candidateY);
+      const x = signal.density > .18 ? candidateX : sample.x;
+      const y = signal.density > .18 ? candidateY : sample.y;
+      return { x, y, x0: x, y0: y, region: signal.density > .18 ? signal.region : sample.region };
+    });
+
+    for (let iteration = 0; iteration < 6; iteration++) {
+      const delaunay = d3.Delaunay.from(points, d => d.x, d => d.y);
+      const accumulators = points.map(() => ({ x: 0, y: 0, weight: 0 }));
+      samples.forEach(sample => {
+        const index = delaunay.find(sample.x, sample.y);
+        const accumulator = accumulators[index];
+        accumulator.x += sample.x * sample.weight;
+        accumulator.y += sample.y * sample.weight;
+        accumulator.weight += sample.weight;
+      });
+      points = points.map((point, index) => {
+        const accumulator = accumulators[index];
+        if (!accumulator.weight) return point;
+        return {
+          ...point,
+          x: accumulator.x / accumulator.weight,
+          y: accumulator.y / accumulator.weight
+        };
+      });
+    }
+
+    points.forEach((point, index) => {
+      const signal = creatureSignal(point.x, point.y);
+      point.region = signal.region === "none" ? point.region : signal.region;
+      point.weight = Math.max(.22, signal.density);
+      point.cellIndex = index;
+    });
+
+    const defs = svg.append("defs");
+    const clipId = "pocket-monster-stippling-clip";
+    const clip = defs.append("clipPath").attr("id", clipId);
+    clip.append("path").attr("d", polygonPath(leftEar));
+    clip.append("path").attr("d", polygonPath(rightEar));
+    clip.append("path").attr("d", polygonPath(tail));
+    clip.append("ellipse").attr("cx", 280).attr("cy", 184).attr("rx", 100).attr("ry", 84);
+    clip.append("ellipse").attr("cx", 280).attr("cy", 260).attr("rx", 94).attr("ry", 88);
+    clip.append("ellipse").attr("cx", 238).attr("cy", 330).attr("rx", 38).attr("ry", 18);
+    clip.append("ellipse").attr("cx", 322).attr("cy", 330).attr("rx", 38).attr("ry", 18);
+
+    const dotFill = {
+      body: palette.gold,
+      tail: palette.orange,
+      cheek: palette.red,
+      ink: palette.gray900,
+      tip: palette.gray900
+    };
+    const cellFill = {
+      body: palette.yellowHighlight,
+      tail: palette.orangeHighlight,
+      cheek: palette.redHighlight,
+      ink: palette.gray800,
+      tip: palette.gray800
+    };
+    const orderedPoints = points.slice().sort((a, b) => (a.y - b.y) || (a.x - b.x));
+    const delaunay = d3.Delaunay.from(points, d => d.x, d => d.y);
+    const voronoi = delaunay.voronoi(bounds);
+
+    const cells = svg.append("g")
+      .attr("clip-path", `url(#${clipId})`)
+      .selectAll("path")
+      .data(orderedPoints)
+      .join("path")
+      .attr("d", d => voronoi.renderCell(d.cellIndex))
+      .attr("fill", d => cellFill[d.region] || palette.yellowHighlight)
+      .attr("fill-opacity", d => d.region === "ink" || d.region === "tip" ? .22 : .58)
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", .95)
+      .attr("opacity", .96);
+
+    cells.each(function (_, i) {
+      d3.select(this).append("animate")
+        .attr("attributeName", "opacity")
+        .attr("from", 0)
+        .attr("to", .96)
+        .attr("dur", ".72s")
+        .attr("begin", `${i * .006}s`)
+        .attr("fill", "freeze");
+    });
+
+    const dots = svg.append("g")
+      .selectAll("circle")
+      .data(orderedPoints)
+      .join("circle")
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("r", d => d.region === "ink" || d.region === "tip" ? 2.9 + d.weight * 2.4 : 2.1 + d.weight * 2.1)
+      .attr("fill", d => dotFill[d.region] || palette.gold)
+      .attr("fill-opacity", d => d.region === "body" ? .78 : .92);
+
+    dots.each(function (d, i) {
+      const delay = .16 + i * .006;
+      const radius = d.region === "ink" || d.region === "tip" ? 2.9 + d.weight * 2.4 : 2.1 + d.weight * 2.1;
+      const dot = d3.select(this);
+      dot.append("animate")
+        .attr("attributeName", "cx")
+        .attr("from", d.x0)
+        .attr("to", d.x)
+        .attr("dur", ".96s")
+        .attr("begin", `${delay}s`)
+        .attr("fill", "freeze");
+      dot.append("animate")
+        .attr("attributeName", "cy")
+        .attr("from", d.y0)
+        .attr("to", d.y)
+        .attr("dur", ".96s")
+        .attr("begin", `${delay}s`)
+        .attr("fill", "freeze");
+      dot.append("animate")
+        .attr("attributeName", "r")
+        .attr("from", .4)
+        .attr("to", radius)
+        .attr("dur", ".64s")
+        .attr("begin", `${delay}s`)
+        .attr("fill", "freeze");
+    });
   }
 
   function renderTanglegram() {
@@ -8351,7 +10360,10 @@
       svgNode.getBoundingClientRect();
       requestAnimationFrame(() => {
         svgNode.setCurrentTime(0);
-        svgNode.unpauseAnimations();
+        window.setTimeout(() => {
+          svgNode.setCurrentTime(0);
+          svgNode.unpauseAnimations();
+        }, 70);
       });
       return;
     }
@@ -8403,6 +10415,7 @@
     renderExample(example, renderPass, true);
   }
 
+  assignPatternIds();
   createCards();
   document.getElementById("gallery").addEventListener("click", event => {
     const button = event.target.closest("[data-replay]");

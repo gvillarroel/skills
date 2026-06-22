@@ -8,7 +8,16 @@ Use this reference for standalone HTML+D3+Anime.js video pipelines that are not 
 - Prefer primary sources and record the exact check date in production notes.
 - Keep unstable claims conservative in the rendered video. Put exact live pricing or plan limits in notes unless the user explicitly asks for them on-screen.
 
-## 2. Storyboard Mechanisms Before Text
+## 2. Design The Visual Metaphor Before Reuse
+
+- Start with the concept's causal mechanic, not with the last successful scene or the nearest gallery component.
+- Read `visual-metaphor-design.md` for new concept videos, weak beats, or feedback that the video copied an old pattern without explaining the new idea.
+- Generate multiple candidate metaphors and reject the weaker ones before writing scene code.
+- Define a local visual vocabulary: which shapes are nouns, which motions are verbs, and which colors or state changes are adjectives.
+- Reuse a previous scene pattern only when the repeated marks keep the same semantic role. Reuse helpers freely, but do not reuse a matrix, meter, loop, or machine box as a generic placeholder.
+- The selected metaphor should let a viewer infer the mechanic with narration muted. If it cannot, improve the metaphor before adding labels or legends.
+
+## 3. Storyboard Mechanisms Before Text
 
 - Start each beat with the visible mechanism: what enters, splits, moves, stacks, ranks, branches, blocks, transforms, repeats, or exits.
 - For narrated explainers, render no visible explanatory text by default. Avoid titles, bullets, labels, captions, legends, and callouts unless the user explicitly asks for on-screen words.
@@ -22,14 +31,19 @@ Before coding a beat, answer or ask concise visual preference questions:
 - What shape metaphor should carry the idea: matrix, wheel, queue, stack, network, path, meter, grid, or layered machine?
 - What can narration say so the frame can omit it?
 - Which on-screen words are data or unavoidable labels, and which are explanatory text that should be removed?
-- Which existing D3/gallery/example component is closest to the needed motion before building a custom version?
+- Which existing D3/gallery/example component can express the chosen metaphor after it is selected?
 - What must the first and last frame match if this beat touches an adjacent approved segment?
 
 For layout and motion:
 
 - Define layout regions first, such as full-height rows, horizontal columns, or quadrants. Then scale objects to those regions instead of placing unrelated coordinates by hand.
 - Keep peer objects on shared baselines with matching visual weight when the scene compares or connects them.
+- Treat approved recurring marks as visual-language components, not redraw suggestions. When a model box, matrix, roulette, meter, or other semantic object is approved and will appear in another beat, extract it into a shared helper before the next segment render. Remove local variants that change geometry, color, internal placement, or activation style unless the semantic role intentionally changes.
 - Prefer direct mechanical paths over decorative curves. If a guide line accompanies a moving object, make the line share the same source, target, timing, and fade as the object.
+- Avoid persistent motion trails when the moving object already explains the transformation. A trail must be a semantic mark, not residue; if it survives arrival or shows up as a visible streak in contact sheets, remove it or fade it to zero before landing.
+- When a model or processor box becomes active, animate the internal mechanism instead of adding a generic glow. For neural-network metaphors, adapt an existing D3 MLP activation pattern: keep the primary label centered, keep the network small and secondary, pulse nodes and links by layer, and use a soft translucent brand color so activation reads as work without competing with the main concept.
+- For model-as-enclosure scenes, draw flow objects that enter or exit the model on a lower layer than the model box, border, label, and internal activation. The enclosing box should hide tokens while they are inside it, so output appears from the model boundary rather than floating over the box. Inspect full-size frames, not only contact sheets, for z-order leaks.
+- Keep exact numeric readouts, prices, or cost totals in fixed secondary panels aligned to their reference table. Let meters, ticks, and accumulated marks carry the mechanic; avoid attaching precise numbers to moving dots or tokens unless the number itself is the object being tracked.
 - Keep legends compact and inside the semantic region of the mark they explain. Avoid adding a legend when color or order can explain the state directly.
 - For repeated loops, make the same data object visibly re-enter the system and append to the accumulated state. Add a short pulse on the newly occupied state cell after append; this often explains growth more clearly than a label.
 - In probability or ranking scenes, show relative magnitude with bars, wedges, ordering, or area before showing numbers. Remove percentages when narration can explain probability and the visual ordering is unambiguous.
@@ -41,7 +55,7 @@ For tokenizer or context-window scenes:
 - Show the mechanical chain as token boxes -> numeric ID boxes -> colored square cells. Make each element keep identity through the transformation.
 - Use a square neutral context-window matrix for capacity. Fill occupied cells left-to-right, top-to-bottom in concept order, and avoid decorative outer borders unless the border itself is part of the model.
 
-## 3. Build One Data Model
+## 4. Build One Data Model
 
 Create one structured module for:
 
@@ -57,7 +71,7 @@ Avoid scattering script text across HTML, renderer code, and export scripts.
 
 For long videos, keep one orchestrating entry point but split implementation by approved beat or substantial subscene. Use shared modules for palette tokens, timing helpers, token geometry, matrix geometry, and layout regions. New work should usually start in a new beat file once the previous beat is approved, so late-video iteration does not require editing one oversized renderer.
 
-## 4. Use Deterministic Timestamp Rendering
+## 5. Use Deterministic Timestamp Rendering
 
 For final export, expose a browser callable function similar to:
 
@@ -73,7 +87,7 @@ Make the rendered frame depend on `conceptId` and `seconds`, not wall-clock anim
 
 Use Anime.js for live preview cues, authoring ergonomics, or interaction demos. Do not make final capture depend on Anime.js timers unless the export script can seek them deterministically.
 
-## 5. Serve HTML Over Local HTTP
+## 6. Serve HTML Over Local HTTP
 
 Do not rely on `file://` for ES modules. Chromium blocks module loading from `file://` in common capture paths. Use a local static server inside the export script or run an explicit local preview server.
 
@@ -84,7 +98,7 @@ For export scripts:
 - serve only the intended deck or example root
 - close the server in a `finally` block
 
-## 6. Capture Frames, Then Encode
+## 7. Capture Frames, Then Encode
 
 For deterministic standalone web videos:
 
@@ -106,19 +120,41 @@ For final quality:
 - Encode diagram-heavy motion with a slow preset and animation tuning when ffmpeg supports it.
 - Check the final MP4 at normal playback speed, not only contact sheets; contact sheets hide temporal stutter.
 
+For faster iteration, expose explicit render tiers instead of making every preview pay final-render cost:
+
+- `quick`: 6 fps, CRF 24, device scale 1, veryfast encoding, no contact sheet. Use only for storyboard timing and rough layout.
+- `draft`: 12 fps, CRF 24, device scale 1, veryfast encoding, no contact sheet. Use for most visual-shape iterations before judging smoothness.
+- `motion`: 30 fps, CRF 20, device scale 1, faster encoding, contact sheet enabled. Use when the animation timing or stutter is the thing being reviewed.
+- `fast`: 30 fps, CRF 16, device scale 2, veryfast encoding, no contact sheet. Use when the user needs a near-final-looking segment without paying for slow encoding or review artifacts.
+- `final`: 30 fps, CRF 16, device scale 2, slow encoding, contact sheet enabled. Use for approved segments and deliverables.
+
+Prefer rendering only the changed time range with `--start` and `--duration`. Render full videos only for continuity checks, final review, or when a change touches shared helpers across multiple beats.
+
+When using npm scripts with extra renderer flags in PowerShell, pass a double separator so npm does not consume option names:
+
+```powershell
+npm run render:fast -- -- --concept 01-what-is-an-llm --start 36 --duration 30
+```
+
+Calling the renderer directly is also valid for segment work:
+
+```powershell
+node scripts/render-videos.mjs --preset fast --concept 01-what-is-an-llm --start 36 --duration 30
+```
+
 For separately rendered or separately authored segments, lock continuity at boundaries. Render both adjacent segments with raw frames kept, then compare the previous segment's last intended frame (`duration * fps - 1`) against the next segment's first frame by hash or pixel diff. Treat a mismatch as a visual bug unless the cut is intentionally visible.
 
-## 7. Review In Three Passes
+## 8. Review In Three Passes
 
 Apply at least three concrete improvement passes before final delivery:
 
-- Pass 1: source and storyboard. Verify references, simplify claims, align the data model, and ensure every video has the expected beat structure.
+- Pass 1: source, metaphor, and storyboard. Verify references, simplify claims, align the data model, decide the visual metaphor, and ensure every video has the expected beat structure.
 - Pass 2: coordinated animation. Add at least two simultaneous animation systems per concept, such as D3 visual motion, metric updates, beat progress, token/packet movement, or HTML panel reveals.
 - Pass 3: visual QA polish. Review contact sheets, fix text fit, balance palette use, remove clutter, and verify the output does not read as static.
 
 Record the passes in production notes with one row per video.
 
-## 8. Automated Review Gate
+## 9. Automated Review Gate
 
 Use `ffprobe` and `ffmpeg` checks before delivery:
 
@@ -131,7 +167,7 @@ Use `ffprobe` and `ffmpeg` checks before delivery:
 
 Treat failures as blocking unless the user explicitly accepts them.
 
-## 9. Output Layout
+## 10. Output Layout
 
 Use `output/<project>/` for generated artifacts:
 

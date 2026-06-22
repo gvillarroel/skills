@@ -226,16 +226,46 @@ function drawCore(g, spec, t, ctx) {
     });
   }
   nodePositions.flat().forEach((item, index) => {
+    const pulse = (Math.sin((ctx.seconds ?? 0) * 1.9 + index * 0.8) + 1) / 2;
     g.append("circle")
       .attr("cx", item.x)
       .attr("cy", item.y)
-      .attr("r", 5.2)
+      .attr("r", 4.8 + pulse * 1.2)
       .attr("fill", index % 3 === 0 ? spec.color : palette.gray600)
       .attr("stroke", "#ffffff")
       .attr("stroke-width", 1.5)
-      .attr("opacity", 0.58 + active * 0.24);
+      .attr("opacity", 0.55 + active * 0.2 + pulse * 0.12);
   });
   return box;
+}
+
+function drawAmbientFlow(g, coreBox, spec, ctx) {
+  const { palette, seconds, easeInOut } = ctx;
+  const colors = spec.rows.map((row) => row.color);
+  const lanes = [
+    { from: { x: 310, y: 120 }, to: { x: 970, y: 120 }, arc: 0 },
+    { from: { x: 970, y: 610 }, to: { x: 310, y: 610 }, arc: 0 },
+    { from: { x: coreBox.x - 42, y: coreBox.y + 64 }, to: { x: coreBox.x + coreBox.w + 42, y: coreBox.y + 64 }, arc: -18 },
+    { from: { x: coreBox.x + coreBox.w + 42, y: coreBox.y + 204 }, to: { x: coreBox.x - 42, y: coreBox.y + 204 }, arc: 18 }
+  ];
+  lanes.forEach((lane, laneIndex) => {
+    d3.range(3).forEach((index) => {
+      const raw = ((seconds * (0.06 + laneIndex * 0.012) + index / 3 + laneIndex * 0.11) % 1);
+      const p = easeInOut(raw);
+      const x = lane.from.x + (lane.to.x - lane.from.x) * p;
+      const y = lane.from.y + (lane.to.y - lane.from.y) * p + Math.sin(p * Math.PI) * lane.arc;
+      g.append("rect")
+        .attr("x", x - 5)
+        .attr("y", y - 5)
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("rx", 3)
+        .attr("fill", colors[(index + laneIndex) % colors.length] ?? palette.blue)
+        .attr("stroke", "#ffffff")
+        .attr("stroke-width", 1.1)
+        .attr("opacity", 0.36);
+    });
+  });
 }
 
 function drawMatrix(g, x, y, cols, rows, progress, colors, ctx) {
@@ -448,6 +478,7 @@ export function drawGenericConceptVisualOnly(g, concept, ctx) {
   const t = sceneProgress * (beat.end - beat.start);
   const sceneGroup = g.append("g");
   const coreBox = drawCore(sceneGroup, spec, t + beatIndex * 0.5, ctx);
+  drawAmbientFlow(sceneGroup, coreBox, spec, ctx);
 
   if (beatIndex === 0) {
     drawSideNodes(sceneGroup, spec, t, ctx);

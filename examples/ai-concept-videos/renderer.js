@@ -1,8 +1,10 @@
 import { beats, concepts, palette, researchNotes } from "./concepts.js";
+import { drawEvaluationVisualOnly } from "./scenes/evaluation.js";
 import { drawGenericConceptVisualOnly } from "./scenes/generic-visuals.js";
 import { drawLlmHandoffVisualOnly } from "./scenes/llm-handoff.js";
 import { drawLlmImplicationVisualOnly } from "./scenes/llm-implication.js";
 import { drawLlmMechanismVisualOnly } from "./scenes/llm-mechanism.js";
+import { drawLlmModelBox } from "./scenes/llm-model-box.js";
 
 const SVG_WIDTH = 760;
 const SVG_HEIGHT = 448;
@@ -543,26 +545,6 @@ function llmDefinitionDecisionLayout() {
   };
 }
 
-function drawTokenFlowLine(g, from, to, color, progress, opacity) {
-  const p = clamp(progress, 0, 1);
-  if (p <= 0) return;
-  const x1 = from.x + from.w / 2;
-  const y1 = from.y + from.h + 8;
-  const x2 = to.x + to.w / 2;
-  const y2 = to.y - 8;
-  const midY = lerp(y1, y2, 0.58);
-  const path = `M${x1},${y1} C${x1},${midY} ${x2},${midY} ${x2},${y2}`;
-  const length = 280;
-  g.append("path")
-    .attr("d", path)
-    .attr("fill", "none")
-    .attr("stroke", color)
-    .attr("stroke-width", 3.2)
-    .attr("stroke-linecap", "round")
-    .attr("stroke-dasharray", `${length * p} ${length}`)
-    .attr("opacity", opacity);
-}
-
 function contextMatrixLayout(matrix, options = {}) {
   const cols = options.cols ?? 8;
   const rows = options.rows ?? 8;
@@ -814,9 +796,6 @@ function drawLlmHookVisualOnly(g, seconds, sceneProgress, pulse) {
     const idTarget = idTargets[index];
     const matrixTarget = matrixTargets[index];
 
-    drawTokenFlowLine(g, source, tokenTarget, token.color, liftReveal, 0.24 * liftReveal * (1 - matrixReveal));
-    drawTokenFlowLine(g, idTarget, matrixTarget, token.color, matrixReveal, 0.22 * matrixReveal);
-
     const lifted = tokenCardGeometry(source, tokenTarget, liftReveal);
     const numbered = tokenCardGeometry(lifted, idTarget, idReveal);
     const finalCard = tokenCardGeometry(numbered, matrixTarget, matrixReveal);
@@ -962,66 +941,12 @@ function drawProbabilityDecision(g, matrix, layout, phaseSeconds, pulse, options
   ];
   const selectedIndex = 0;
 
-  const llmGroup = g.append("g").attr("opacity", llmP);
-  llmGroup.append("rect")
-    .attr("x", llm.x)
-    .attr("y", llm.y)
-    .attr("width", llm.w)
-    .attr("height", llm.h)
-    .attr("rx", 0)
-    .attr("fill", "#ffffff")
-    .attr("stroke", palette.brandPrimary)
-    .attr("stroke-width", 4);
-
-  const ghostMlp = {
-    x: llm.x + 178,
-    y: llm.y + 190,
-    layerGap: 27,
-    nodeGap: 17,
-    layers: [3, 4, 3]
-  };
-  const ghostGroup = llmGroup.append("g").attr("opacity", 0.34);
-  for (let layer = 0; layer < ghostMlp.layers.length - 1; layer += 1) {
-    const fromCount = ghostMlp.layers[layer];
-    const toCount = ghostMlp.layers[layer + 1];
-    const fromX = ghostMlp.x + layer * ghostMlp.layerGap;
-    const toX = ghostMlp.x + (layer + 1) * ghostMlp.layerGap;
-    for (let a = 0; a < fromCount; a += 1) {
-      for (let b = 0; b < toCount; b += 1) {
-        const y1 = ghostMlp.y + a * ghostMlp.nodeGap + (4 - fromCount) * 5;
-        const y2 = ghostMlp.y + b * ghostMlp.nodeGap + (4 - toCount) * 5;
-        ghostGroup.append("line")
-          .attr("x1", fromX)
-          .attr("y1", y1)
-          .attr("x2", toX)
-          .attr("y2", y2)
-          .attr("stroke", palette.gray400)
-          .attr("stroke-width", 1.4)
-          .attr("opacity", 0.56);
-      }
-    }
-  }
-  ghostMlp.layers.forEach((count, layer) => {
-    const x = ghostMlp.x + layer * ghostMlp.layerGap;
-    d3.range(count).forEach((node) => {
-      ghostGroup.append("circle")
-        .attr("cx", x)
-        .attr("cy", ghostMlp.y + node * ghostMlp.nodeGap + (4 - count) * 5)
-        .attr("r", 4.6)
-        .attr("fill", palette.gray600)
-        .attr("stroke", "#ffffff")
-        .attr("stroke-width", 1.5)
-        .attr("opacity", 0.82);
-    });
-  });
-
-  ["Large", "Language", "Model"].forEach((word, index) => {
-    drawHookText(llmGroup, word, llm.x + llm.w / 2, llm.y + 100 + index * 39, {
-      size: 36,
-      weight: 870,
-      fill: palette.brandNeutral,
-      opacity: llmP * (options.llmTextOpacity ?? 1)
-    });
+  const activationAmount = chartP * easeOut((phaseSeconds - 0.6) / 0.65) * (1 - 0.42 * easeInOut((phaseSeconds - 7.6) / 3.4));
+  drawLlmModelBox(g, llm, { palette, drawHookText, clamp, easeOut }, {
+    opacity: llmP,
+    textOpacity: options.llmTextOpacity ?? 1,
+    activation: activationAmount,
+    activationClock: phaseSeconds - 0.58
   });
 
   if (chartP <= 0.01) return { llm, chart, candidates, selectedIndex };
@@ -2304,6 +2229,21 @@ function drawConceptVisual(concept, seconds) {
   prepareSvg(concept, seconds);
   const { beat, progress } = sceneForTime(concept, seconds);
   const g = svg.append("g");
+  if (concept.kind === "evaluation") {
+    drawEvaluationVisualOnly(g, {
+      palette,
+      beat,
+      sceneProgress: progress,
+      seconds,
+      pulse: 0.84 + Math.sin(seconds * 0.16) * 0.16,
+      clamp,
+      easeInOut,
+      easeOut,
+      lerp,
+      drawHookText
+    });
+    return;
+  }
   if (concept.kind !== "llm" && isVisualOnlyConcept(concept)) {
     drawGenericConceptVisualOnly(g, concept, {
       palette,

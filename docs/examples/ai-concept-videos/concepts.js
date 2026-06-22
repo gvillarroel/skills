@@ -84,6 +84,60 @@ export const researchNotes = [
     checked: "2026-06-21"
   },
   {
+    topic: "Gemma 4 model specs and memory",
+    note: "Google's Gemma 4 documentation lists E4B, 31B, 26B A4B, 12B, and E2B variants; small models use 128K context, medium models use 256K, and the published inference memory table lists E4B at 17.9GB BF16 / 4.5GB Q4 and 31B at 69.9GB BF16 / 17.5GB Q4.",
+    url: "https://ai.google.dev/gemma/docs/core",
+    checked: "2026-06-21"
+  },
+  {
+    topic: "Gemma 4 benchmark comparison",
+    note: "Google's Gemma 4 model card reports instruction-tuned benchmark results including MMLU Pro, GPQA Diamond, LiveCodeBench v6, and AIME 2026 for Gemma 4 E4B and 31B.",
+    url: "https://ai.google.dev/gemma/docs/core/model_card_4",
+    checked: "2026-06-21"
+  },
+  {
+    topic: "Gemma 4 model comparison chart",
+    note: "Artificial Analysis lists Gemma 4 E4B and 31B reasoning variants with Intelligence Index, context window, token-use, price, speed, and model-size comparison sections; a cropped PNG from the Gemma 4 31B page is saved in the video assets.",
+    url: "https://artificialanalysis.ai/models/gemma-4-31b",
+    checked: "2026-06-21"
+  },
+  {
+    topic: "Gemma 4 31B API price tracker",
+    note: "PricePerToken currently lists Gemma 4 31B Instruct at $0.120 input, $0.060 cached, and $0.350 output per 1M tokens.",
+    url: "https://pricepertoken.com/pricing-page/model/google-gemma-4-31b-it",
+    checked: "2026-06-21"
+  },
+  {
+    topic: "Gemma 4 E4B API price tracker",
+    note: "PricePerToken currently lists Gemma 4 E4B IT at $0.200 input, $0.100 cached, and $0.200 output per 1M tokens.",
+    url: "https://pricepertoken.com/pricing-page/model/google-gemma-4-e4b-it",
+    checked: "2026-06-21"
+  },
+  {
+    topic: "Google AI token pricing",
+    note: "The Gemini API pricing page lists Gemini 3.5 Flash standard pricing at $1.50 input and $9.00 output per 1M tokens, and Gemini 3.1 Pro Preview standard pricing at $2.00 input and $12.00 output per 1M tokens for prompts up to 200k tokens.",
+    url: "https://ai.google.dev/gemini-api/docs/pricing",
+    checked: "2026-06-21"
+  },
+  {
+    topic: "GPT-5.5 API pricing",
+    note: "OpenAI's API pricing page lists GPT-5.5 at $5.00 input, $0.50 cached input, and $30.00 output per 1M tokens in standard processing.",
+    url: "https://openai.com/api/pricing/",
+    checked: "2026-06-21"
+  },
+  {
+    topic: "Claude Opus 4.7 API pricing",
+    note: "Anthropic's Claude API pricing page lists Claude Opus 4.7 at $5 input and $25 output per million tokens, with separate prompt-cache write and cache-hit prices.",
+    url: "https://platform.claude.com/docs/en/about-claude/pricing",
+    checked: "2026-06-21"
+  },
+  {
+    topic: "DeepSWE v1.1 aggregate benchmark data",
+    note: "DeepSWE v1.1 publishes aggregate leaderboard rows with pass@1, average cost, average input and output tokens, steps, context, and duration across 113 software engineering tasks; the implication scene uses the leaderboard-live artifact to draw a cost-versus-pass-rate chart.",
+    url: "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json",
+    checked: "2026-06-21"
+  },
+  {
     topic: "Llama 4 Scout and Maverick size",
     note: "Meta describes Llama 4 Scout as 109B total parameters with 17B active parameters and 16 experts, and Llama 4 Maverick as 400B total parameters with 17B active parameters and 128 experts.",
     url: "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
@@ -115,15 +169,21 @@ export const researchNotes = [
   },
   {
     topic: "Evaluation framing",
-    note: "OpenAI positions evals as structured tests for variable generative systems; the Evals platform has a published transition timeline, so videos avoid vendor-specific long-term UI claims.",
-    url: "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
-    checked: "2026-06-20"
+    note: "OpenAI's current Evals guide frames evaluation as datasets plus graders, including string, text-similarity, Python, score-model, label-model, and multi graders.",
+    url: "https://developers.openai.com/api/docs/guides/evals",
+    checked: "2026-06-21"
+  },
+  {
+    topic: "pass@k estimator",
+    note: "The Codex HumanEval paper estimates pass@k with 1 - C(n-c,k) / C(n,k) for n sampled completions and c correct completions, which avoids a naive independent-trial shortcut.",
+    url: "https://arxiv.org/pdf/2107.03374",
+    checked: "2026-06-21"
   },
   {
     topic: "Agent workflow evaluation",
-    note: "OpenAI recommends traces, graders, datasets, and eval runs for agent workflow quality, including tool-call and guardrail traces.",
-    url: "https://developers.openai.com/api/docs/guides/agent-evals",
-    checked: "2026-06-20"
+    note: "Anthropic describes agent evals as extending ordinary input-plus-grader checks into multi-turn environments where traces, tool use, and policy adherence need to be graded.",
+    url: "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+    checked: "2026-06-21"
   },
   {
     topic: "Agent architecture",
@@ -272,6 +332,15 @@ export const concepts = [
       "https://arxiv.org/abs/2203.15556",
       "https://developers.openai.com/api/docs/models",
       "https://developer.nvidia.com/blog/llm-benchmarking-fundamental-concepts/",
+      "https://ai.google.dev/gemma/docs/core",
+      "https://ai.google.dev/gemma/docs/core/model_card_4",
+      "https://artificialanalysis.ai/models/gemma-4-31b",
+      "https://pricepertoken.com/pricing-page/model/google-gemma-4-31b-it",
+      "https://pricepertoken.com/pricing-page/model/google-gemma-4-e4b-it",
+      "https://ai.google.dev/gemini-api/docs/pricing",
+      "https://openai.com/api/pricing/",
+      "https://platform.claude.com/docs/en/about-claude/pricing",
+      "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json",
       "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
       "https://www.llama.com/docs/model-cards-and-prompt-formats/llama4/",
       "https://www.together.ai/models/llama-4-scout",
@@ -382,8 +451,7 @@ export const concepts = [
     ],
     references: [
       "https://arxiv.org/pdf/2107.03374",
-      "https://developers.openai.com/api/docs/guides/evaluation-best-practices",
-      "https://developers.openai.com/api/docs/guides/agent-evals",
+      "https://developers.openai.com/api/docs/guides/evals",
       "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
     ]
   },
