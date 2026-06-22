@@ -51,3 +51,7 @@ uv run --script manim-svg-video/scripts/compose_svg_video.py --discover-root exa
 - Use the default vector import for portability. Use image import only when ImageMagick, `rsvg-convert`, or Inkscape is available and raster fidelity matters more than vector editability.
 - Keep long renders low resolution and low fps during validation, then increase quality only when the scene is correct.
 - Treat `SVGMobject` text warnings as expected for SVGs with text nodes; switch to `--import-mode image` only when a rasterizer is installed and text fidelity is more important than vector import.
+
+## Pattern Promotion
+
+When a composition layout, source discovery rule, SVG import workaround, duration repair, or mosaic/replacement behavior proves reusable, update the owning reference before finishing. Use `references/composition-config.md` for layout and manifest patterns, and `references/manim-svg-import.md` for import/text/rasterization patterns. Include trigger, command, source contract, layout contract, validation checks, and any renderer limitation.

@@ -61,6 +61,10 @@ uv run --script d3-animated-svg/scripts/render_d3_svg.py scene.html --selector "
 
 Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating examples, galleries, or exported SVG fixtures. Use Open Sans for text, Material Symbols Rounded for system icons, and the documented brand palette for editable D3 marks, UI controls, replay states, and page surfaces.
 
+## Pattern Promotion
+
+When a gallery card or standalone SVG pattern proves reusable, update `references/example-pattern-recipes.md` before finishing. Capture the stable `d3-pattern-*` ID, trigger, data contract, geometry contract, animation contract, semantic color roles, and validation hooks. For patterns expected to work in isolated skill-only workspaces, include a minimal standalone implementation recipe that does not depend on `examples/`.
+
 ## Validation
 
 After changing this skill, its references, scripts, or examples, run:

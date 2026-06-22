@@ -58,6 +58,10 @@ uv run --script mermaid-animated-svg/scripts/animate_mermaid_svg.py diagram.mmd 
 
 Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating examples, galleries, custom Mermaid themes, overlay marks, or replay controls. Preserve Mermaid-rendered geometry, but use Open Sans, Material Symbols Rounded system icons, and the documented brand palette for editable theme variables, page chrome, controls, overlays, highlights, and generated gallery UI.
 
+## Pattern Promotion
+
+When a diagram-specific choreography, directive style, selector strategy, or ordering rule proves reusable, update the owning reference before finishing. Use `references/diagram-directive-notes.md` for diagram-type patterns, `references/animation-directives.md` for directive syntax, and `references/cli-animation-controls.md` for timing or order controls. Include the diagram type, trigger, selectors, directive example, validation command, and any Mermaid renderer pitfalls.
+
 ## Validation
 
 After changing the skill, scripts, examples, or generated outputs, run the relevant render command and then:

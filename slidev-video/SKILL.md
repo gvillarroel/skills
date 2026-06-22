@@ -21,3 +21,7 @@ description: Record, export, and validate Slidev decks as video artifacts. Use w
 - Read `references/video-quality.md` when the task cares about polished transitions, timing, MP4 start trimming, final artifact review, or deck preparation for video.
 - Read `references/troubleshooting.md` when the server fails, Playwright cannot launch, slides are blank, MP4 conversion fails, or the manifest reports failures.
 - Run `scripts/record-slidev-video.ts` directly. Read or patch the script only when changing recorder behavior or diagnosing a script bug.
+
+## Pattern Promotion
+
+When a recording workflow, deck-shape workaround, transition-preserving navigation pattern, manifest expectation, or MP4 quality fix proves reusable, update the owning reference before finishing. Use `references/recording-workflow.md` for process patterns, `references/recorder-options.md` for CLI/config patterns, `references/video-quality.md` for review and encoding patterns, and `references/troubleshooting.md` for failure signatures. Include trigger, command, expected manifest fields, validation checks, and output location.

@@ -74,3 +74,7 @@ Prefer local markers over broad threshold changes:
 ## References
 
 Read `references/audit-rules.md` when deciding whether a finding is a real defect, tuning thresholds for a deck style, or explaining a recommendation to a user.
+
+## Pattern Promotion
+
+When an audit finding, exception marker, threshold rule, false-positive case, or remediation pattern proves reusable, update `references/audit-rules.md` before finishing. Capture the symptom, detection signal, likely cause, accepted exception marker, fix pattern, and validation command. Keep deck-specific screenshots and reports in `output/`, not in the skill.

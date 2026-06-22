@@ -50,6 +50,10 @@ npm run dev --prefix examples/threejs-animated-3d
 
 Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating examples, galleries, captures, or user-facing controls. Use Open Sans for page text, Material Symbols Rounded for replay/reset icons, and the documented brand palette for editable scene materials, page chrome, controls, highlights, and replay states.
 
+## Pattern Promotion
+
+When a Three.js scene, material setup, camera move, interaction, or replay behavior proves reusable, update `references/scene-patterns.md` before finishing. Capture the scene pattern name, trigger, geometry/data contract, camera and lighting setup, animation clock, replay/reset API, responsive sizing rules, and validation checks. Put browser and canvas-pixel verification lessons in `references/validation.md`.
+
 ## Validation
 
 After changing this skill, its references, or examples, run:

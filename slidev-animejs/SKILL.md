@@ -29,3 +29,7 @@ The runnable validation fixture lives in `examples/slidev-animejs/`. Keep one sl
 ## Visual Tokens
 
 Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating animated Slidev examples, generated SVG assets, controls, or export fixtures. Use Open Sans for slide and SVG text, Material Symbols Rounded for system icons, and the documented brand palette for editable marks, stages, controls, highlight states, and generated assets.
+
+## Pattern Promotion
+
+When an Anime.js animation pattern, SVG asset hook, or Slidev lifecycle pattern proves reusable, update the owning reference before finishing. Use `references/animation-type-index.md` and the dedicated animation files for API-specific patterns, `references/integration-patterns.md` for Vue/Slidev lifecycle and `$clicks`, and `references/assets/animated-svg-assets.md` for SVG selector contracts. Include trigger, DOM contract, Anime.js API, cleanup/replay behavior, and validation command.

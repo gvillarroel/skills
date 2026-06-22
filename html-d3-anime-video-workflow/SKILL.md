@@ -40,6 +40,10 @@ description: Improve and run end-to-end video production workflows built from HT
 - Store workflow lessons here only when they affect the cross-stack production process.
 - If a lesson is specific to D3 SVG extraction, Anime.js lifecycle, Slidev recording, or GIF encoding, update that owning skill instead of adding it here.
 
+## Pattern Promotion
+
+When an approved scene, shared helper, render preset, storyboard gate, production loop, or validation routine proves reusable, update `references/scene-pattern-recipes.md`, `references/visual-metaphor-design.md`, or `references/production-loop.md` before finishing. If the pattern is component-local, update the owning component skill instead. Include trigger, visual metaphor, data/timing contract, implementation steps, validation command, and isolated-workspace caveats when relevant.
+
 ## Validation
 
 After changing this skill, run:

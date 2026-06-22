@@ -48,6 +48,10 @@ uv run --script animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py diagr
 - Use `--duration` when the source uses infinite loaders, JavaScript timelines, or CSS animations that do not expose useful timing metadata.
 - Pass `--include-static` only when the user intentionally wants a GIF wrapper around a static SVG.
 
+## Pattern Promotion
+
+When a source family or conversion preset proves reusable, update this skill before finishing. Capture the source pattern, trigger context, recommended flags, output constraints, verification commands, and pitfalls such as static SVG skipping or duration inference. If the pattern grows beyond this file, create `references/pattern-recipes.md` and link it here.
+
 ## Validation
 
 After changing the skill or script, run:

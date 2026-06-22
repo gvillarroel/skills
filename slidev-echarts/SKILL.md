@@ -29,3 +29,7 @@ Read `references/video-generation.md` when the task asks for an automated video,
 ## Visual Tokens
 
 Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating animated Slidev/ECharts examples, generated SVG motion slides, controls, or export fixtures. Use Open Sans for slide and chart text, Material Symbols Rounded for system icons, and the documented brand palette for editable chart options, UI controls, callouts, highlights, and generated assets.
+
+## Pattern Promotion
+
+When a Slidev/ECharts pattern proves reusable, update the owning reference before finishing. Use `references/chart-type-index.md` and the chart-specific files for chart data, modules, animation, and pitfalls; use `references/integration-patterns.md` for wrapper, lifecycle, click-story, or sizing patterns; use `references/video-generation.md` for recording patterns. Include trigger, props/data contract, implementation steps, validation commands, and any export caveats.

@@ -25,6 +25,10 @@ description: Animate already-rendered Apache ECharts SVG output and build replay
 
 Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating ECharts animation examples or replayable galleries. Use Open Sans for page and SVG text, Material Symbols Rounded for replay/reset icons, and the documented brand palette for editable chart options, page chrome, controls, highlights, and replay states.
 
+## Pattern Promotion
+
+When an ECharts chart animation pattern proves reusable, update `references/chart-animation-profiles.md` before finishing. Capture chart type, trigger, SVG target selectors, reveal order, timing, replay behavior, final-frame expectation, and verification command. Put gallery UI or palette lessons in `references/design-system.md`, and SVG reset/targeting pitfalls in `references/svg-targeting-and-replay.md`.
+
 ## Common Commands
 
 Animate a pre-rendered SVG:

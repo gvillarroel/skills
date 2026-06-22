@@ -64,6 +64,16 @@ When continuing this repository, start from [SKILLS.md](SKILLS.md), especially t
 - Do not add auxiliary documentation inside a skill such as `README.md`, `INSTALLATION_GUIDE.md`, `QUICK_REFERENCE.md`, or `CHANGELOG.md` unless the user explicitly asks for it.
 - Keep `agents/openai.yaml`, when present, aligned with `SKILL.md`.
 
+## Pattern Promotion Rules
+
+When an example, fixture, scene, chart, conversion setting, recording flow, audit rule, or troubleshooting path becomes reusable, update the owning skill before finishing the work.
+
+- Store the transferable pattern in the skill directory, preferably in an existing `references/` file or a direct `references/pattern-recipes.md` file when no better owner exists.
+- Keep examples as acceptance fixtures, not as the only source of reusable knowledge.
+- Document enough for an isolated skill-only workspace to recreate the pattern when practical: pattern name or ID, trigger context, input/data contract, implementation steps, validation command, and known pitfalls.
+- Update [SKILLS.md](SKILLS.md) recent validation notes when a pattern is promoted, renamed, validated, or rejected.
+- If a pattern belongs to another skill, update that owning skill instead of duplicating the guidance locally.
+
 ## Script Rules
 
 Scripts may be TypeScript or `uv` Python.

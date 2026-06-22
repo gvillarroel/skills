@@ -29,6 +29,7 @@ Use this file as the canonical list of skills to create, improve, or validate in
 
 ## Recent Validation Notes
 
+- Repository-wide: Added mandatory pattern-promotion guidance to `AGENTS.md` and every existing `SKILL.md`, so reusable examples, fixtures, scene patterns, chart profiles, recording flows, audit rules, and conversion presets must be promoted into the owning skill references before handoff. Passed repo validation with `uv run --script scripts/validate-skills.py`.
 - `d3-animated-svg`: Added a self-contained `d3-pattern-parabolic-arcs` recipe for SDLC task dependency arcs so isolated skill-only workspaces can recreate the pattern without reading gallery source. Passed repo validation with `uv run --script scripts/validate-skills.py`.
 - `html-d3-anime-video-workflow`: Added `references/scene-pattern-recipes.md` so approved AI concept scene patterns, shared model boxes, beat-module splits, render presets, and validation gates are stored in the skill instead of only in examples. Passed repo validation with `uv run --script scripts/validate-skills.py`.
 - `d3-animated-svg`: Added `references/example-pattern-recipes.md` so promoted gallery examples document how to recreate document token quality blocks, extraction buckets, image partial covers, inline bar tables, sketchy overlays, model execution boxes, and token roulette sampling from stable `d3-pattern-*` IDs. Passed repo validation with `uv run --script scripts/validate-skills.py`.
