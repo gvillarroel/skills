@@ -358,6 +358,7 @@
     svg.selectAll("*").remove();
     svg
       .attr("viewBox", `0 0 ${width} ${height}`)
+      .attr("font-family", "Open Sans, Arial, sans-serif")
       .attr("aria-labelledby", `${id}-title ${id}-desc`);
     svg.append("title").attr("id", `${id}-title`).text(title);
     svg.append("desc").attr("id", `${id}-desc`).text(desc);
@@ -6124,7 +6125,7 @@
     lane.append("text")
       .attr("class", "mark-label")
       .attr("text-anchor", "end")
-      .attr("x", 68)
+      .attr("x", 74)
       .attr("y", 4)
       .attr("font-size", 10)
       .text(d => d);
@@ -8341,7 +8342,7 @@
       ["paths", 43], ["axis", 38], ["hierarchy", 36], ["voronoi", 34], ["motion", 31], ["shape", 29],
       ["data", 27], ["brush", 25], ["ticks", 23], ["ribbon", 21], ["cells", 19], ["labels", 18]
     ].map(([text, value], i) => ({ text, value, i }));
-    const size = d3.scaleSqrt().domain(d3.extent(terms, d => d.value)).range([14, 54]);
+    const size = d3.scaleSqrt().domain(d3.extent(terms, d => d.value)).range([10, 24]);
     const color = d3.scaleOrdinal(terms.map(d => d.text), [palette.ink, palette.blue, palette.red, palette.orange, palette.green, palette.purple, palette.gray700]);
     const placed = terms.map((d, i) => {
       const angle = i * 2.32;
@@ -9783,7 +9784,7 @@
     ];
     const group = svg.append("g").selectAll("g").data(metrics).join("g").attr("transform", (d, i) => `translate(${122 + i * 158},${height / 2})`);
     group.append("circle").attr("r", 56).attr("fill", d => d.fill).attr("fill-opacity", .78).attr("stroke", d => d.c).attr("stroke-width", 2.8);
-    const text = group.append("text").attr("text-anchor", "middle").attr("dy", ".18em").attr("font-size", 32).attr("font-weight", 800).attr("fill", palette.ink).text(d => d.to);
+    const text = group.append("text").attr("text-anchor", "middle").attr("dy", ".18em").attr("font-size", 24).attr("font-weight", 800).attr("fill", palette.ink).text(d => d.to);
     text.each(function (d, i) {
       const node = d3.select(this);
       node.append("animate").attr("attributeName", "opacity").attr("from", 0).attr("to", 1).attr("dur", ".25s").attr("begin", `${.08 + i * .08}s`).attr("fill", "freeze");

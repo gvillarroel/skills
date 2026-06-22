@@ -91,14 +91,17 @@ For gallery updates, verify:
 - package or CI commands pin `--expected` to the intended card count instead of relying only on the page-generated count
 - every card contains exactly one SVG and one replay control
 - every SVG has positive dimensions, nontrivial element count, and animation nodes
+- every SVG sets an exportable root `font-family` matching `Open Sans, Arial, sans-serif`
+- every visible SVG `text` node uses the shared family, stays within 7-24 px, and remains inside the SVG viewport
 - replay works on multiple sampled cards and updates only the targeted card render pass
 - sampled replay resets the SVG timeline near zero and the timeline advances after the click
 - repeated replay does not leave duplicated marks or empty SVGs
 - desktop and mobile screenshots preserve readable card headers, replay controls, labels, and SVG framing
 
-Use the gallery verifier for deterministic checks:
+Use the gallery verifiers for deterministic checks. Run the visual audit after any gallery-wide style, text, animation, or replay change; it audits every card rather than sampling:
 
 ```powershell
 uv run --script d3-animated-svg/scripts/verify_d3_gallery.py d3-animated-svg/assets/examples/d3-animated-svg/index.html --screenshot output/d3-animated-svg/gallery.png --wait-ms 2200
+uv run --script d3-animated-svg/scripts/audit_d3_gallery_visuals.py d3-animated-svg/assets/examples/d3-animated-svg/index.html --expected 202 --wait-ms 4500 --report output/d3-animated-svg/gallery-visual-audit.json
 uv run --script d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --viewport 390x900 --screenshot output/d3-animated-svg/gallery-mobile.png --wait-ms 2200
 ```

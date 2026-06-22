@@ -2,9 +2,10 @@
   "name": "d3-animated-svg",
   "private": true,
   "scripts": {
-    "verify": "npm run verify:beeswarm && npm run verify:gallery",
+    "verify": "npm run verify:beeswarm && npm run verify:gallery && npm run verify:visuals",
     "verify:beeswarm": "uv run --script ../../../scripts/render_d3_svg.py force-beeswarm.html -o ../../../../output/d3-animated-svg/force-beeswarm.svg --screenshot ../../../../output/d3-animated-svg/force-beeswarm.png --wait-ms 1800",
     "verify:gallery": "uv run --script ../../../scripts/verify_d3_gallery.py index.html --expected 202 --screenshot ../../../../output/d3-animated-svg/gallery.png --wait-ms 2200",
+    "verify:visuals": "uv run --script ../../../scripts/audit_d3_gallery_visuals.py index.html --expected 202 --wait-ms 4500 --report ../../../../output/d3-animated-svg/gallery-visual-audit.json",
     "serve": "python -m http.server 4177"
   },
   "dependencies": {

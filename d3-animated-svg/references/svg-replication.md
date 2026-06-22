@@ -1,6 +1,6 @@
 # Replicating D3-Generated SVGs
 
-Use this reference when recreating a D3-generated SVG from the gallery, adapting one into a standalone artifact, or building a new SVG that must match this repository's visual system.
+Use this reference when recreating a D3-generated SVG from the gallery, adapting one into a standalone artifact, reverse-engineering an arbitrary source SVG into a new-data D3 reconstruction, or building a new SVG that must match this repository's visual system.
 
 ## Replication Workflow
 
@@ -10,6 +10,84 @@ Use this reference when recreating a D3-generated SVG from the gallery, adapting
 4. Use D3 for geometry and joins. Use inline SVG `animate`, `animateTransform`, `animateMotion`, or CSS keyframes for portable animation.
 5. Apply the token palette below. Keep text outside dense marks when possible; otherwise use `mark-label` halos or `reverse-label` only on dark fills.
 6. Verify with the gallery verifier or `render_d3_svg.py`, then inspect the screenshot for label collisions, contrast, clipped text, and replay behavior.
+
+## Unknown Source SVG Workflow
+
+Use this path when the user provides an SVG and asks for a recreated pattern with new data, or when forward-testing the skill with `pi` from a temp workspace.
+
+1. Treat the source SVG as visual grammar, not as data to preserve. Inspect the `viewBox`, rendered size, top-level groups, mark types, shape counts, palette roles, labels, legends, and any `animate`, `animateTransform`, `animateMotion`, CSS keyframe, `clipPath`, mask, or filter usage.
+2. Write a short grammar and style inventory before coding: layout frame, core marks, data entities, scale or ordering rules, color-role mapping, exact color set, exact font family, exact font-size bins, stroke widths, opacity values, label placement, animation sequence, and what must visibly change in the new data.
+3. Synthesize a new dataset with different labels and values. Preserve counts, density, or ordering only when those properties define the visual grammar, such as a 20 by 10 waffle grid, a six-row table, an ordered dependency baseline, or a document-like token field.
+4. Recreate the geometry with D3 joins and shape generators. Do not paste the source SVG body as the output. Reuse the source color set and semantic color roles exactly unless the user asks for a different palette; do not introduce a new saturated color just because the new data names changed.
+5. Preserve the source's shape and style language: grid dimensions, rounded-cell rhythm, table banding, arc height logic, page-block proportions, guide lanes, label halos, legend placement, exact type scale, stroke widths, opacity values, and staged reveal timing. Change the topic, labels, values, and category names so the result is recognizably new data.
+6. Encode animation inside the SVG with SMIL or CSS. D3 transitions may help live previews, but extracted SVGs must retain meaningful initial and final frames without JavaScript.
+7. Render source and reconstruction screenshots side by side. Accept the result only when it reads as the same pattern family, uses visibly different data, has no obvious clipping or label collisions, passes a nonblank browser capture, and passes `scripts/compare_svg_style_signatures.py`.
+
+## Style Signature Equivalence Gate
+
+Before saying a recreated SVG is ready, compare the source and candidate:
+
+```powershell
+uv run --script C:\Users\villa\dev\skills\d3-animated-svg\scripts\compare_svg_style_signatures.py --pair source\example.svg=expected\example-recreated.svg --report output\style-compare.json
+```
+
+Treat failures as implementation defects, not as acceptable variation. Fix the D3 code until the comparison passes. The gate checks:
+
+- root `font-family` is explicit on the candidate and compatible with the source
+- visible text uses the source font-size bins instead of invented title, caption, or legend sizes
+- candidate colors are drawn from the source color set and prominent source colors remain present
+- stroke widths, opacity values, and dash patterns stay in the source profile
+- animation node counts remain compatible when the source is animated
+- viewBox dimensions and aspect ratio stay equivalent
+
+When the source SVG lacks embedded CSS but uses repository classes such as `mark-label`, `caption`, `label`, or `reverse-label`, infer the repository class defaults instead of inventing new text sizes. If the comparison reports extra font sizes or colors, update the reconstruction to reuse the source bins and palette roles.
+
+Do not collapse dense sources into simplified summaries. Sketchy charts, stippled fields, calendars, heatmaps, token grids, and per-mark reveal animations often depend on hundreds of paths, cells, or animation nodes. Preserve the source's approximate rendered tag counts and animation-node counts; a candidate with the right palette but far fewer paths or animations is not equivalent.
+
+## Template-First Forward Tests
+
+Use source-derived templates when evaluating whether an isolated agent can recreate arbitrary SVG patterns at scale. The template step converts the hard task from open-ended visual reconstruction into constrained data/text editing:
+
+1. Export or copy source SVGs into a temporary workspace outside this repository.
+2. Run `scripts/prepare_svg_recreation_templates.py` for each source. It writes a seeded SVG under `expected/`, a browser-openable template HTML file, a style signature JSON file, and an inventory of text replacements and required visual counts.
+3. Give `pi` only the inventory files and seeded `expected/*.svg` candidates. Do not attach the source SVG in template mode; keep the source available only to the outer comparison script.
+4. Require `pi` to preserve the seeded structure and edit only text/data plus `output/index.html` and `output/NOTES.md`. If it is uncertain, it should leave the seeded SVG structure byte-for-byte.
+5. Run `compare_svg_style_signatures.py` externally after each attempt. Accept the batch only when every source/candidate pair passes.
+
+Template mode is the preferred gate for 200+ pattern sweeps because it preserves colors, font-size bins, animation nodes, dense mark counts, and layout proportions before the model starts deciding what to change. Use from-scratch mode only as a separate regression probe.
+
+Prepare one template manually:
+
+```powershell
+uv run --script C:\Users\villa\dev\skills\d3-animated-svg\scripts\prepare_svg_recreation_templates.py source\example.svg --template-dir template --expected-dir expected --manifest output\template-manifest.json
+```
+
+For `pi` forward tests, run from a temporary directory outside this repository and load the skill explicitly:
+
+```powershell
+pi --no-session --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --tools read,write --skill C:\Users\villa\dev\skills\d3-animated-svg --model openai-codex/gpt-5.4 --thinking medium -p @prompt.md @source\example.svg
+```
+
+Use `--no-skills` together with explicit `--skill`; `pi` preserves CLI-provided skill paths while disabling discovered skills. Use `--tools read,write` for isolation so `pi` cannot search the filesystem or run shell commands for extra context. The prompt should require a D3 implementation, new data, a browser-openable output file, and notes describing preserved grammar and data changes. The outer harness should run `compare_svg_style_signatures.py` against every source SVG after `pi` writes candidates. Do not accept the `pi` result until that external comparison passes for every source/candidate pair.
+
+For all-gallery forward tests, export the gallery first, then run the batch harness from a temp workspace:
+
+```powershell
+$root = "$env:TEMP\pi-d3-svg-gallery"
+uv run --script C:\Users\villa\dev\skills\d3-animated-svg\scripts\export_d3_gallery_svgs.py C:\Users\villa\dev\skills\d3-animated-svg\assets\examples\d3-animated-svg\index.html --out-dir "$root\source-all" --manifest "$root\source-manifest.json" --expected 202 --wait-ms 4500
+uv run --script C:\Users\villa\dev\skills\d3-animated-svg\scripts\run_pi_svg_gallery_recreation.py --source-dir "$root\source-all" --manifest "$root\source-manifest.json" --work-dir "$root\pi-run" --batch-size 4 --retries 1 --timeout-seconds 900
+```
+
+The harness writes one batch directory per `pi` call with `source/`, `template/`, `expected/`, logs, style reports, and a resumable `run-manifest.json`. Template mode is enabled by default; pass `--no-templates` only when intentionally testing from-scratch reconstruction. Use `--offset`, `--limit`, and separate `--work-dir` values for non-overlapping parallel ranges. Count a batch as accepted only when the manifest marks it `ok` and every expected SVG passes the style-signature comparison.
+
+## New-Data Acceptance Rubric
+
+- The reconstruction keeps the source pattern's visual identity: same mark family, layout rhythm, approximate density, shape proportions, color-role hierarchy, and animation style.
+- The reconstruction changes the data: no copied domain labels, row names, exact numeric values, or source-specific prose unless the user explicitly asks to preserve them.
+- The implementation is generative D3, not copied SVG markup with edited text.
+- The root SVG has `viewBox`, `role="img"`, `title`, `desc`, a stable ID, explicit font family, and semantic classes or data attributes.
+- The source/candidate pair passes `scripts/compare_svg_style_signatures.py` with no style-signature errors.
+- Browser capture shows a nonblank SVG, readable text, no incoherent overlap, no clipped labels, and animation nodes or CSS keyframes when motion is part of the source pattern.
 
 ## Required Palette
 
@@ -60,6 +138,7 @@ function prepareSvg(id, title, desc) {
   svg
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("role", "img")
+    .attr("font-family", "Open Sans, Arial, sans-serif")
     .attr("aria-labelledby", `${id}-title ${id}-desc`);
   svg.append("title").attr("id", `${id}-title`).text(title);
   svg.append("desc").attr("id", `${id}-desc`).text(desc);
@@ -248,8 +327,9 @@ function renderContextWindowMatrix() {
 Run syntax and gallery validation after edits:
 
 ```powershell
-node --check examples\d3-animated-svg\gallery.js
+node --check d3-animated-svg\assets\examples\d3-animated-svg\gallery.js
 npm run verify --prefix d3-animated-svg/assets/examples/d3-animated-svg
+uv run --script d3-animated-svg/scripts/compare_svg_style_signatures.py --pair source.svg=recreated.svg --report output/d3-animated-svg/style-compare.json
 uv run --script scripts/validate-skills.py
 ```
 
