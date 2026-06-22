@@ -100,6 +100,114 @@ Use when weighted chance and final selection are the concept.
 - Use bars only when the user wants ranking instead of sampling.
 - Keep a compact result mark only if it clarifies the selected token.
 
+## Parabolic Arcs For SDLC Tasks
+
+Pattern ID: `d3-pattern-parabolic-arcs`.
+
+Use when ordered SDLC phases or milestones need cross-phase dependency links, handoffs, or task flows. The baseline represents lifecycle order; arc height represents dependency strength, risk, effort, or coordination cost.
+
+Recommended SDLC data contract:
+
+```js
+const phases = ["Discover", "Design", "Build", "Test", "Release", "Operate"];
+const links = [
+  { from: "Discover", to: "Build", label: "Backlog clarification", value: 72, kind: "dependency" },
+  { from: "Design", to: "Test", label: "Acceptance criteria", value: 96, kind: "quality" },
+  { from: "Build", to: "Release", label: "CI/CD packaging", value: 64, kind: "delivery" }
+];
+```
+
+Geometry contract:
+
+- Use a single horizontal baseline with one endpoint per SDLC phase.
+- Use `d3.scalePoint().domain(phases).range([left, right])` so phase spacing remains stable.
+- Draw each task link as a quadratic curve: `M x0,baseline Q mid,baseline - height x1,baseline`.
+- Derive `height` from `value` with a bounded linear scale. Keep the shortest visible arc tall enough to distinguish from the baseline.
+- If `from` is after `to`, draw the arc in the opposite direction but keep endpoints on the same baseline; do not reorder the data silently.
+- Label phases on the baseline. Label tasks only when there is enough space; otherwise expose labels through `<title>` or a compact legend.
+
+Semantic color roles:
+
+- Use blue for dependencies or normal handoffs.
+- Use green for quality, validation, or acceptance work.
+- Use orange for release, delivery, or operational coordination.
+- Use red only for high-risk or blocking work.
+- Use purple for discovery, architecture, or cross-team planning.
+
+Animation contract:
+
+- Draw the baseline first.
+- Draw arcs with a path-draw animation (`stroke-dasharray` and `stroke-dashoffset`) in task order or by descending `value`.
+- Grow endpoint dots after arcs begin so the viewer sees the lifecycle anchors.
+- Keep final path attributes complete; the SVG must still show all links after animation ends.
+
+Minimal standalone renderer:
+
+```js
+const width = 760;
+const height = 430;
+const baseline = 330;
+const left = 70;
+const right = width - 70;
+const x = d3.scalePoint().domain(phases).range([left, right]);
+const heightFor = d3.scaleLinear()
+  .domain(d3.extent(links, d => d.value))
+  .range([56, 138]);
+
+function arcPath(link) {
+  const x0 = x(link.from);
+  const x1 = x(link.to);
+  const mid = (x0 + x1) / 2;
+  return `M${x0},${baseline}Q${mid},${baseline - heightFor(link.value)} ${x1},${baseline}`;
+}
+
+const svg = d3.select("svg")
+  .attr("viewBox", `0 0 ${width} ${height}`)
+  .attr("data-pattern-id", "d3-pattern-parabolic-arcs")
+  .attr("role", "img");
+
+svg.append("line")
+  .attr("x1", left - 18)
+  .attr("x2", right + 18)
+  .attr("y1", baseline)
+  .attr("y2", baseline)
+  .attr("stroke", palette.gray300)
+  .attr("stroke-width", 2);
+
+const paths = svg.append("g")
+  .attr("fill", "none")
+  .selectAll("path")
+  .data(links)
+  .join("path")
+  .attr("d", arcPath)
+  .attr("stroke", d => colorForKind[d.kind] ?? palette.blue)
+  .attr("stroke-width", d => 2 + heightFor(d.value) / 55)
+  .attr("stroke-linecap", "round")
+  .attr("opacity", 0.9);
+
+paths.each(function (_, index) {
+  const length = this.getTotalLength();
+  d3.select(this)
+    .attr("stroke-dasharray", `${length} ${length}`)
+    .attr("stroke-dashoffset", 0)
+    .append("animate")
+    .attr("attributeName", "stroke-dashoffset")
+    .attr("from", length)
+    .attr("to", 0)
+    .attr("dur", "1.05s")
+    .attr("begin", `${0.08 + index * 0.08}s`)
+    .attr("fill", "freeze");
+});
+```
+
+Verification hooks:
+
+- The root SVG or card must expose `data-pattern-id="d3-pattern-parabolic-arcs"`.
+- Every path should have a non-empty `d` attribute containing one `Q` command.
+- Endpoint count should match the number of phases.
+- Browser validation should confirm nonblank rendered pixels and at least one animated path.
+- In an isolated skill-only test, copy only `d3-animated-svg/` plus a new empty workspace; do not read `examples/d3-animated-svg/gallery.js`.
+
 ## Adaptation Checklist
 
 Before committing an adapted pattern:
