@@ -12,8 +12,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_DIR = ROOT / "mermaid-animated-svg" / "assets" / "examples" / "mermaid"
-OUTPUT_DIR = ROOT / "mermaid-animated-svg" / "assets" / "examples" / "mermaid-animation-directives" / "by-type"
+SKILLS = ROOT / ".agents" / "skills"
+SOURCE_DIR = SKILLS / "mermaid-animated-svg" / "assets" / "examples" / "mermaid"
+OUTPUT_DIR = SKILLS / "mermaid-animated-svg" / "assets" / "examples" / "mermaid-animation-directives" / "by-type"
 
 
 EXAMPLES = [
@@ -772,9 +773,9 @@ def write_manifest() -> None:
         {
             "slug": example["slug"],
             "type": example["type"],
-            "source": f"mermaid-animated-svg/assets/examples/mermaid/{example['source']}.mmd",
+            "source": f".agents/skills/mermaid-animated-svg/assets/examples/mermaid/{example['source']}.mmd",
             "directiveSource": (
-                "mermaid-animated-svg/assets/examples/"
+                ".agents/skills/mermaid-animated-svg/assets/examples/"
                 f"mermaid-animation-directives/by-type/{example['slug']}.mmd"
             ),
             "critique": example["critique"],

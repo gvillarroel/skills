@@ -19,6 +19,7 @@ import yaml
 
 
 ROOT_IGNORE_DIRS = {
+    ".agents",
     ".git",
     ".github",
     ".pytest_cache",
@@ -26,10 +27,12 @@ ROOT_IGNORE_DIRS = {
     ".venv",
     "__pycache__",
     "docs",
+    "evaluations",
     "examples",
     "node_modules",
     "output",
     "scripts",
+    "videos",
 }
 SKILL_ALLOWED_DIRS = {"agents", "assets", "references", "scripts"}
 DISALLOWED_SKILL_DOCS = {
@@ -208,9 +211,16 @@ def validate_script_tree(script_dir: Path, root: Path, findings: list[Finding]) 
             add(findings, script, "scripts must be TypeScript (.ts) or uv Python (.py)")
 
 
+def skills_root(root: Path) -> Path:
+    return root / ".agents" / "skills"
+
+
 def skill_directories(root: Path) -> Iterable[Path]:
-    for child in sorted(root.iterdir()):
-        if child.is_dir() and child.name not in ROOT_IGNORE_DIRS and not child.name.startswith("."):
+    container = skills_root(root)
+    if not container.exists():
+        return
+    for child in sorted(container.iterdir()):
+        if child.is_dir() and not child.name.startswith("."):
             yield child
 
 
@@ -221,8 +231,14 @@ def validate_repo(root: Path) -> list[Finding]:
         add(findings, root / "AGENTS.md", "AGENTS.md is required")
     if not (root / "SKILLS.md").exists():
         add(findings, root / "SKILLS.md", "SKILLS.md backlog is required")
+    if not skills_root(root).exists():
+        add(findings, skills_root(root), "skills root .agents/skills is required")
 
     validate_script_tree(root / "scripts", root, findings)
+
+    for child in root.iterdir():
+        if child.is_dir() and (child / "SKILL.md").exists():
+            add(findings, child, "skill directories must live under .agents/skills")
 
     for skill_dir in skill_directories(root):
         validate_skill_dir(skill_dir, root, findings)

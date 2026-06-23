@@ -5,7 +5,7 @@
 This repository is the source of truth for a backlog of Codex skills to create, improve, and validate.
 
 - Keep planned work in [SKILLS.md](SKILLS.md).
-- Keep one concrete skill per top-level directory, named with the skill name.
+- Keep one concrete skill per directory under `.agents/skills/`, named with the skill name.
 - Treat skill validation as part of the work, not an optional follow-up.
 
 ## Language Rules
@@ -34,24 +34,26 @@ Update the backlog whenever a skill is added, removed, renamed, rejected, or val
 When continuing this repository, start from [SKILLS.md](SKILLS.md), especially the backlog table and recent validation notes. Treat each backlog row as the current state record for that skill.
 
 - Move the skill status forward as work progresses, and leave open questions in the validation notes when a follow-up agent needs context.
-- Keep acceptance fixtures and GitHub Pages example sources under the owning skill's `assets/examples/` directory, and keep reusable skill instructions under the matching top-level skill directory.
+- Keep acceptance fixtures and GitHub Pages example sources under the owning skill's `assets/examples/` directory, and keep reusable skill instructions under the matching `.agents/skills/<skill-name>/` directory.
 - Regenerate GitHub Pages examples with `uv run --script scripts/build-pages.py` after changing examples that should be published.
 - Keep generated media, local build output, screenshots, and large verification artifacts out of git unless they are intentionally small static examples stored under the owning skill's `assets/examples/` for Pages.
+- Keep reusable or summarized skill evaluation material under `evaluations/`. Store bulky local evaluation runs under `evaluations/runs/`, which is ignored by git.
+- Keep private, non-published video production scripts under `videos/<video-id>/`. Use one subdirectory per video or video series, and keep rendered media under `output/`.
 - Before handing off, run the repo validator and payload check, then record any skill-specific validation commands in [SKILLS.md](SKILLS.md).
 
 ## Slidev ECharts Track
 
-- Keep the reusable skill in `slidev-echarts/`.
-- Keep the runnable validation deck in `slidev-echarts/assets/examples/slidev-echarts/`.
+- Keep the reusable skill in `.agents/skills/slidev-echarts/`.
+- Keep the runnable validation deck in `.agents/skills/slidev-echarts/assets/examples/slidev-echarts/`.
 - Treat the example deck as the acceptance fixture for the skill. When the skill guidance changes, update the deck if needed and validate that it still builds and renders charts.
-- For chart-type coverage, keep one dedicated reference file per chart type under `slidev-echarts/references/charts/` and use shared synthetic data files under `slidev-echarts/assets/examples/slidev-echarts/data/`.
+- For chart-type coverage, keep one dedicated reference file per chart type under `.agents/skills/slidev-echarts/references/charts/` and use shared synthetic data files under `.agents/skills/slidev-echarts/assets/examples/slidev-echarts/data/`.
 - Keep generated Slidev build output, screenshots, and other transient verification artifacts out of skill directories. Use `output/` for verification artifacts that should be kept.
 
 ## Skill Authoring Rules
 
-- Use one top-level directory per skill.
+- Use one `.agents/skills/<skill-name>/` directory per skill.
 - Use the owning skill's `assets/examples/` for acceptance fixtures and Pages example sources; do not add a new top-level `examples/` source tree.
-- Name skill directories with lowercase letters, digits, and hyphens only.
+- Name directories under `.agents/skills/` with lowercase letters, digits, and hyphens only.
 - Keep skill names under 64 characters.
 - Every skill directory must contain `SKILL.md`.
 - In new skills, `SKILL.md` frontmatter must contain only `name` and `description`.
@@ -80,6 +82,7 @@ Scripts may be TypeScript or `uv` Python.
 
 - Put repo-level scripts in `scripts/`.
 - Put skill-specific scripts in the relevant skill's `scripts/` directory.
+- Put private video-production scripts in `videos/<video-id>/scripts/` when they are not intended to ship as skill resources or GitHub Pages examples.
 - Python scripts must use `uv` script metadata and a shebang that defines the runtime:
 
 ```python

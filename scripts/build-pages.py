@@ -15,26 +15,43 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
+SKILLS = ROOT / ".agents" / "skills"
 EXAMPLE_SOURCES = {
-    "ai-concept-videos": ROOT / "html-d3-anime-video-workflow" / "assets" / "examples" / "ai-concept-videos",
-    "d3-animated-svg": ROOT / "d3-animated-svg" / "assets" / "examples" / "d3-animated-svg",
-    "echarts-animated-svg": ROOT / "echarts-animated-svg" / "assets" / "examples" / "echarts-animated-svg",
-    "mermaid": ROOT / "mermaid-animated-svg" / "assets" / "examples" / "mermaid",
-    "mermaid-animation-directives": ROOT
+    "ai-concept-videos": SKILLS
+    / "html-d3-anime-video-workflow"
+    / "assets"
+    / "examples"
+    / "ai-concept-videos",
+    "d3-animated-svg": SKILLS / "d3-animated-svg" / "assets" / "examples" / "d3-animated-svg",
+    "echarts-animated-svg": SKILLS
+    / "echarts-animated-svg"
+    / "assets"
+    / "examples"
+    / "echarts-animated-svg",
+    "mermaid": SKILLS / "mermaid-animated-svg" / "assets" / "examples" / "mermaid",
+    "mermaid-animation-directives": SKILLS
     / "mermaid-animated-svg"
     / "assets"
     / "examples"
     / "mermaid-animation-directives",
-    "mermaid-directive-frames": ROOT
+    "mermaid-directive-frames": SKILLS
     / "mermaid-animated-svg"
     / "assets"
     / "examples"
     / "playwright"
     / "mermaid-animation-directives",
-    "mermaid-svg-animated": ROOT / "mermaid-animated-svg" / "assets" / "examples" / "mermaid-svg-animated",
-    "slidev-animejs": ROOT / "slidev-animejs" / "assets" / "examples" / "slidev-animejs",
-    "slidev-echarts": ROOT / "slidev-echarts" / "assets" / "examples" / "slidev-echarts",
-    "threejs-animated-3d": ROOT / "threejs-animated-3d" / "assets" / "examples" / "threejs-animated-3d",
+    "mermaid-svg-animated": SKILLS
+    / "mermaid-animated-svg"
+    / "assets"
+    / "examples"
+    / "mermaid-svg-animated",
+    "slidev-animejs": SKILLS / "slidev-animejs" / "assets" / "examples" / "slidev-animejs",
+    "slidev-echarts": SKILLS / "slidev-echarts" / "assets" / "examples" / "slidev-echarts",
+    "threejs-animated-3d": SKILLS
+    / "threejs-animated-3d"
+    / "assets"
+    / "examples"
+    / "threejs-animated-3d",
 }
 MEDIA_EXTENSIONS = {
     ".mp4",

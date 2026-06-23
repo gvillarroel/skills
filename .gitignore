@@ -24,10 +24,20 @@ __pycache__/
 *.log
 
 # Generated verification output and local builds
-output/
-docs/
-examples/
+/output/
+/docs/
+/examples/
 dist/
+
+# Local evaluation runs
+/results/
+/evaluations/runs/
+
+# Private video production intermediates
+videos/**/frames/
+videos/**/review/
+videos/**/renders/
+videos/**/videos/
 
 # Rendered media should be published outside git.
 *.mp4

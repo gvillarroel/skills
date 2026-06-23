@@ -1,0 +1,37 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Open Sans, Arial, sans-serif", "primaryColor": "#dbffcc", "primaryTextColor": "#333e48", "primaryBorderColor": "#45842a", "lineColor": "#696969", "secondaryColor": "#cdf3ff", "tertiaryColor": "#ffe5cc"}} }%%
+flowchart TD
+  Backlog["Backlog row<br/>SKILLS.md"]:::doc
+  Skill["Skill source<br/>.agents/skills/&lt;skill&gt;/SKILL.md"]:::skill
+  Resources["Bundled resources<br/>references, scripts, assets"]:::skill
+  Fixtures["Acceptance fixtures<br/>assets/examples"]:::fixture
+  EvalNotes["Evaluation notes<br/>evaluations/"]:::eval
+  PrivateVideo["Private video scripts<br/>videos/&lt;video-id&gt;/"]:::video
+  RepoValidate["Repo validation<br/>uv run --script scripts/validate-skills.py"]:::check
+  SpecificChecks["Representative checks<br/>npm, Playwright, render smoke tests"]:::check
+  Payload["Payload check<br/>uv run --script scripts/check-repo-payload.py"]:::check
+  Readme["README and diagrams<br/>animated SVG overview"]:::doc
+  Push["Commit and push"]:::ship
+
+  Backlog --> Skill
+  Skill --> Resources
+  Skill --> Fixtures
+  Resources --> SpecificChecks
+  Fixtures --> SpecificChecks
+  SpecificChecks --> EvalNotes
+  PrivateVideo --> SpecificChecks
+  EvalNotes --> RepoValidate
+  Readme --> RepoValidate
+  RepoValidate --> Payload
+  Payload --> Push
+
+  Backlog -. "status moves forward" .-> EvalNotes
+  Fixtures -. "generated media stays out of git" .-> Payload
+  PrivateVideo -. "renders go to output/" .-> Payload
+
+  classDef doc fill:#fff4cc,color:#333e48,stroke:#f1c319,stroke-width:2px
+  classDef skill fill:#cdf3ff,color:#333e48,stroke:#007298,stroke-width:2px
+  classDef fixture fill:#dbffcc,color:#333e48,stroke:#45842a,stroke-width:2px
+  classDef eval fill:#f9ccff,color:#333e48,stroke:#652f6c,stroke-width:2px
+  classDef video fill:#ffe5cc,color:#333e48,stroke:#e77204,stroke-width:2px
+  classDef check fill:#ffffff,color:#333e48,stroke:#333e48,stroke-width:2px
+  classDef ship fill:#9e1b32,color:#ffffff,stroke:#6d1222,stroke-width:2px

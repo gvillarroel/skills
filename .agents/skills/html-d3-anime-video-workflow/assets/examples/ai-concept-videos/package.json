@@ -1,0 +1,24 @@
+{
+  "name": "ai-concept-videos",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "python -m http.server 4188",
+    "validate": "node ../../../../../../videos/ai-concept-videos/scripts/validate-concepts.mjs",
+    "render": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs",
+    "render:quick": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs --preset quick",
+    "render:draft": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs --preset draft",
+    "render:motion": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs --preset motion",
+    "render:fast": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs --preset fast",
+    "render:final": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs --preset final",
+    "review": "node ../../../../../../videos/ai-concept-videos/scripts/review-videos.mjs"
+  },
+  "dependencies": {
+    "animejs": "4.4.1",
+    "d3": "7.9.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}
