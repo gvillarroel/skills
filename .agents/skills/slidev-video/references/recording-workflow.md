@@ -19,7 +19,7 @@ npx tsx C:\path\to\.agents\skills\slidev-video\scripts\record-slidev-video.ts --
 Record final video artifacts:
 
 ```powershell
-npx tsx C:\path\to\.agents\skills\slidev-video\scripts\record-slidev-video.ts --deck C:\path\to\deck --out C:\path\to\output\deck-video
+npx tsx C:\path\to\.agents\skills\slidev-video\scripts\record-slidev-video.ts --deck C:\path\to\deck --out C:\path\to\projects\deck-video\artifacts\videos
 ```
 
 ## Requirements

@@ -1,5 +1,5 @@
 #!/usr/bin/env -S npx tsx
-// Run: npx tsx ./.agents/skills/slidev-quality-audit/scripts/audit-slidev-quality.ts --deck ./examples/slidev-echarts --out ./output/slidev-quality-audit/slidev-echarts
+// Run: npx tsx ./.agents/skills/slidev-quality-audit/scripts/audit-slidev-quality.ts --deck ./examples/slidev-echarts --out ./projects/slidev-quality-audits/artifacts/reports/slidev-echarts
 // Dependencies: tsx, playwright in the target Slidev project, @slidev/cli in the target Slidev project.
 
 import { spawn, spawnSync, type ChildProcess } from 'node:child_process'
@@ -424,7 +424,7 @@ function normalizeOptions(parsed: Record<string, string | boolean>): Options {
   const slidesValue = parsed.slides === undefined ? resolve(deckDir, 'slides.md') : String(parsed.slides)
   const slidesFile = isAbsolute(slidesValue) ? slidesValue : resolve(deckDir, slidesValue)
   const name = sanitizeName(String(parsed.name ?? (basename(deckDir) || 'slidev-deck')))
-  const outDir = resolve(invocationCwd, String(parsed.out ?? resolve('output', 'slidev-quality-audit', name)))
+  const outDir = resolve(invocationCwd, String(parsed.out ?? resolve('projects', 'slidev-quality-audits', 'artifacts', 'reports', name)))
   const waitUntil = String(parsed.waitUntil ?? 'networkidle') as WaitUntil
   const screenshots = String(parsed.screenshots ?? 'issues') as Options['screenshots']
 

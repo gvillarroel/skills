@@ -69,7 +69,7 @@ Keep each composition useful as a final still frame. The recorder should pause a
 Keep video artifacts outside skill directories:
 
 ```text
-output/slidev-echarts/video/
+projects/slidev-echarts-validation/artifacts/videos/
   slidev-echarts-auto.mp4
   slidev-echarts-auto.webm
   recording-manifest.json
@@ -78,7 +78,7 @@ output/slidev-echarts/video/
     slide-001.png
 ```
 
-Do not commit generated videos or screenshots unless the repository explicitly treats `output/` artifacts as keepable validation evidence.
+Do not commit generated videos or screenshots unless the repository explicitly treats the relevant `projects/<project-id>/artifacts/` output as keepable validation evidence.
 
 ## Example Deck Commands
 

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "slidev",
     "build": "slidev build --base ./",
-    "export:html": "slidev build --base ./ --router-mode hash --out ../../../../../../output/slidev-animejs/static-html",
+    "export:html": "slidev build --base ./ --router-mode hash --out ../../../../../../projects/slidev-animejs-validation/artifacts/html",
     "export": "slidev export"
   },
   "dependencies": {

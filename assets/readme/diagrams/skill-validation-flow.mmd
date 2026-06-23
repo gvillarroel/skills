@@ -5,7 +5,8 @@ flowchart TD
   Resources["Bundled resources<br/>references, scripts, assets"]:::skill
   Fixtures["Acceptance fixtures<br/>assets/examples"]:::fixture
   EvalNotes["Evaluation notes<br/>evaluations/"]:::eval
-  PrivateVideo["Private video scripts<br/>videos/&lt;video-id&gt;/"]:::video
+  Project["Project workspace<br/>projects/&lt;project-id&gt;/"]:::project
+  ProjectArtifacts["Project artifacts<br/>documents, videos, SVGs, GIFs"]:::project
   RepoValidate["Repo validation<br/>uv run --script scripts/validate-skills.py"]:::check
   SpecificChecks["Representative checks<br/>npm, Playwright, render smoke tests"]:::check
   Payload["Payload check<br/>uv run --script scripts/check-repo-payload.py"]:::check
@@ -17,8 +18,9 @@ flowchart TD
   Skill --> Fixtures
   Resources --> SpecificChecks
   Fixtures --> SpecificChecks
+  Project --> ProjectArtifacts
+  ProjectArtifacts --> SpecificChecks
   SpecificChecks --> EvalNotes
-  PrivateVideo --> SpecificChecks
   EvalNotes --> RepoValidate
   Readme --> RepoValidate
   RepoValidate --> Payload
@@ -26,12 +28,12 @@ flowchart TD
 
   Backlog -. "status moves forward" .-> EvalNotes
   Fixtures -. "generated media stays out of git" .-> Payload
-  PrivateVideo -. "renders go to output/" .-> Payload
+  ProjectArtifacts -. "ignored under projects/&lt;project-id&gt;/artifacts/" .-> Payload
 
   classDef doc fill:#fff4cc,color:#333e48,stroke:#f1c319,stroke-width:2px
   classDef skill fill:#cdf3ff,color:#333e48,stroke:#007298,stroke-width:2px
   classDef fixture fill:#dbffcc,color:#333e48,stroke:#45842a,stroke-width:2px
   classDef eval fill:#f9ccff,color:#333e48,stroke:#652f6c,stroke-width:2px
-  classDef video fill:#ffe5cc,color:#333e48,stroke:#e77204,stroke-width:2px
+  classDef project fill:#ffe5cc,color:#333e48,stroke:#e77204,stroke-width:2px
   classDef check fill:#ffffff,color:#333e48,stroke:#333e48,stroke-width:2px
   classDef ship fill:#9e1b32,color:#ffffff,stroke:#6d1222,stroke-width:2px

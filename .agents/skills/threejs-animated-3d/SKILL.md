@@ -62,4 +62,4 @@ After changing this skill, its references, or examples, run:
 uv run --script scripts/validate-skills.py
 ```
 
-When changing the example gallery, also run the `Common Commands` build and verify steps. Inspect generated screenshots under `output/threejs-animated-3d/` and confirm all canvases are nonblank, animated, color-tokened, responsive, and interactive.
+When changing the example gallery, also run the `Common Commands` build and verify steps. Inspect generated screenshots under `projects/threejs-animated-3d-validation/artifacts/screenshots/` and confirm all canvases are nonblank, animated, color-tokened, responsive, and interactive.

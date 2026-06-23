@@ -7,8 +7,10 @@ flowchart LR
   Scripts["scripts/<br/>Repo validators and builders"]:::tool
   Evaluations["evaluations/<br/>Tracked summaries"]:::eval
   Runs["evaluations/runs/<br/>Ignored local runs"]:::ignored
-  Videos["videos/<br/>Private video scripts"]:::video
-  Output["output/<br/>Ignored generated artifacts"]:::ignored
+  Projects["projects/&lt;project-id&gt;<br/>Project workspaces"]:::project
+  Artifacts["artifacts/<br/>Ignored generated outputs"]:::ignored
+  ArtifactTypes["documents, videos, SVGs, GIFs<br/>screenshots, data, manifests, reviews"]:::project
+  Output["output/<br/>Disposable legacy scratch"]:::ignored
   Docs["docs/<br/>Generated GitHub Pages output"]:::ignored
   Assets["assets/readme/diagrams/<br/>README Mermaid sources and SVGs"]:::doc
 
@@ -17,12 +19,13 @@ flowchart LR
   Root --> Agents
   Root --> Scripts
   Root --> Evaluations
-  Root --> Videos
+  Root --> Projects
   Root --> Assets
   Scripts --> Docs
-  Scripts --> Output
+  Scripts -. "scratch only" .-> Output
   Evaluations --> Runs
-  Videos --> Output
+  Projects --> Artifacts
+  Artifacts --> ArtifactTypes
   Assets --> Readme
 
   subgraph SkillFamilies["Skill families under .agents/skills"]
@@ -36,13 +39,14 @@ flowchart LR
   Agents --> Web3D
   SVG --> Scripts
   Slidev --> Scripts
-  Web3D --> Videos
-  Web3D --> Output
+  Web3D --> Projects
+  SVG --> Projects
+  Slidev --> Projects
 
   classDef root fill:#333e48,color:#ffffff,stroke:#333e48,stroke-width:2px
   classDef skills fill:#cdf3ff,color:#333e48,stroke:#007298,stroke-width:2px
   classDef doc fill:#fff4cc,color:#333e48,stroke:#f1c319,stroke-width:2px
   classDef tool fill:#dbffcc,color:#333e48,stroke:#45842a,stroke-width:2px
   classDef eval fill:#f9ccff,color:#333e48,stroke:#652f6c,stroke-width:2px
-  classDef video fill:#ffe5cc,color:#333e48,stroke:#e77204,stroke-width:2px
+  classDef project fill:#ffe5cc,color:#333e48,stroke:#e77204,stroke-width:2px
   classDef ignored fill:#e7e7e7,color:#4f4f4f,stroke:#9c9c9c,stroke-dasharray: 4 4

@@ -10,7 +10,7 @@ When a scene works, store the transferable part in the skill before starting the
 - State the mechanic it explains.
 - Identify which shapes, colors, and motions have fixed semantic roles.
 - Extract repeated marks into shared helpers when they will appear in more than one beat.
-- Keep generated videos and raw frames in `output/`, not in the skill or example source.
+- Keep generated videos and raw frames in `projects/<project-id>/artifacts/`, not in the skill or example source.
 
 ## Shared Model Box
 
@@ -71,7 +71,7 @@ Use when the concept is evaluation, grading, pass/fail, pass@k, or benchmark com
 
 ## Render Presets
 
-Source script: `videos/ai-concept-videos/scripts/render-videos.mjs`.
+Source script: `projects/ai-concept-videos/scripts/render-videos.mjs`.
 
 Use explicit presets instead of editing capture settings ad hoc:
 

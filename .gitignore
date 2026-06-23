@@ -33,11 +33,10 @@ dist/
 /results/
 /evaluations/runs/
 
-# Private video production intermediates
-videos/**/frames/
-videos/**/review/
-videos/**/renders/
-videos/**/videos/
+# Project-scoped generated artifacts
+/projects/*/artifacts/
+/projects/*/work/
+/projects/*/cache/
 
 # Rendered media should be published outside git.
 *.mp4

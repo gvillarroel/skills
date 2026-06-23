@@ -8,7 +8,7 @@ description: Record, export, and validate Slidev decks as video artifacts. Use w
 ## Core Workflow
 
 1. Locate the Slidev deck root, usually the directory containing `package.json` and `slides.md`.
-2. Prefer the bundled Playwright recorder over manual screen capture. Keep generated artifacts outside skill directories, typically under `output/`.
+2. Prefer the bundled Playwright recorder over manual screen capture. Keep generated artifacts outside skill directories, typically under `projects/<project-id>/artifacts/videos/`.
 3. Start unfamiliar or high-stakes decks with a no-video validation pass, then record MP4/WebM after the manifest is clean.
 4. Treat non-empty `recording-manifest.json` failures as blocking unless the user explicitly accepts them.
 5. For final videos, preserve deck transitions with native navigation. Use direct route jumps only for focused debugging or non-contiguous spot checks.

@@ -5,9 +5,9 @@ import { chromium } from 'playwright'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const exampleRoot = resolve(__dirname, '..')
-const repoRoot = resolve(exampleRoot, '..', '..', '..', '..')
+const repoRoot = resolve(exampleRoot, '..', '..', '..', '..', '..', '..')
 const indexPath = resolve(exampleRoot, 'index.html')
-const screenshotPath = resolve(repoRoot, 'output', 'echarts-animated-svg', 'gallery.png')
+const screenshotPath = resolve(repoRoot, 'projects', 'echarts-animated-svg-validation', 'artifacts', 'screenshots', 'gallery.png')
 
 await mkdir(dirname(screenshotPath), { recursive: true })
 

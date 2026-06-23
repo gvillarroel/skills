@@ -27,4 +27,4 @@ Hash a downsampled image from each canvas, wait 500 to 800 milliseconds, then ha
 
 ## Screenshot Output
 
-Store verification screenshots in `output/threejs-animated-3d/`. Keep generated screenshots and build artifacts out of the skill directory.
+Store verification screenshots in `projects/<project-id>/artifacts/screenshots/`, or in `projects/threejs-animated-3d-validation/artifacts/screenshots/` for this repository's validation fixture. Keep generated screenshots and build artifacts out of the skill directory.

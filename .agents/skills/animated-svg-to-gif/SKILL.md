@@ -10,7 +10,7 @@ description: Convert animated SVG files into high-quality GIFs by rendering brow
 1. Use `scripts/convert_animated_svg_to_gif.py` for conversion instead of static SVG rasterizers. Browser capture preserves CSS keyframes, SMIL timing, foreignObject labels, filters, markers, and SVG text rendering.
 2. Prefer explicit output settings for deliverables: set `--fps`, `--width` or `--max-width`, `--scale`, and `--duration` when the target channel has size or timing constraints.
 3. Let the script infer duration for generated animated SVGs that use `--am-delay` and `--am-duration`; override with `--duration` when animations are JavaScript-driven, looped, or intentionally longer.
-4. Keep generated GIFs and manifests under `output/animated-svg-to-gif/` unless the user names another destination.
+4. Keep generated GIFs and manifests under `projects/<project-id>/artifacts/gifs/` unless the user names another destination.
 5. Verify every important GIF with `ffprobe` and a visual preview or contact sheet before delivery.
 
 ## Quick Commands
@@ -18,13 +18,13 @@ description: Convert animated SVG files into high-quality GIFs by rendering brow
 Convert one SVG:
 
 ```powershell
-uv run --script .agents/skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py input.animated.svg --output-dir output/animated-svg-to-gif --fps 24 --scale 2
+uv run --script .agents/skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py input.animated.svg --output-dir projects/<project-id>/artifacts/gifs --fps 24 --scale 2
 ```
 
 Convert a folder of animated SVGs:
 
 ```powershell
-uv run --script .agents/skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py .agents/skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/animated --output-dir output/animated-svg-to-gif/mermaid --fps 24 --max-width 1280 --scale 2
+uv run --script .agents/skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py .agents/skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/animated --output-dir projects/<project-id>/artifacts/gifs/mermaid --fps 24 --max-width 1280 --scale 2
 ```
 
 Force timing and dimensions for a delivery target:

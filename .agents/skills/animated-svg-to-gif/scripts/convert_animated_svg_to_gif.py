@@ -26,7 +26,7 @@ from playwright.sync_api import Error as PlaywrightError
 from playwright.sync_api import sync_playwright
 
 
-DEFAULT_OUTPUT_DIR = Path("output/animated-svg-to-gif")
+DEFAULT_OUTPUT_DIR = Path("projects/animated-svg-to-gif/artifacts/gifs")
 DEFAULT_FPS = 24.0
 DEFAULT_SCALE = 2.0
 DEFAULT_MAX_WIDTH = 1280

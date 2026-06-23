@@ -40,13 +40,13 @@ npm run verify --prefix .agents/skills/d3-animated-svg/assets/examples/d3-animat
 Capture any D3-generated SVG from an HTML page:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/render_d3_svg.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/force-beeswarm.html -o output/d3-animated-svg/force-beeswarm.svg --screenshot output/d3-animated-svg/force-beeswarm.png --wait-ms 1800
+uv run --script .agents/skills/d3-animated-svg/scripts/render_d3_svg.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/force-beeswarm.html -o projects/<project-id>/artifacts/svgs/force-beeswarm.svg --screenshot projects/<project-id>/artifacts/screenshots/force-beeswarm.png --wait-ms 1800
 ```
 
 Use a custom SVG selector:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/render_d3_svg.py scene.html --selector "svg#viz" -o output/scene.svg --wait-ms 2500
+uv run --script .agents/skills/d3-animated-svg/scripts/render_d3_svg.py scene.html --selector "svg#viz" -o projects/<project-id>/artifacts/svgs/scene.svg --wait-ms 2500
 ```
 
 ## Complementarity Rules

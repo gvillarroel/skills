@@ -38,7 +38,9 @@ When continuing this repository, start from [SKILLS.md](SKILLS.md), especially t
 - Regenerate GitHub Pages examples with `uv run --script scripts/build-pages.py` after changing examples that should be published.
 - Keep generated media, local build output, screenshots, and large verification artifacts out of git unless they are intentionally small static examples stored under the owning skill's `assets/examples/` for Pages.
 - Keep reusable or summarized skill evaluation material under `evaluations/`. Store bulky local evaluation runs under `evaluations/runs/`, which is ignored by git.
-- Keep private, non-published video production scripts under `videos/<video-id>/`. Use one subdirectory per video or video series, and keep rendered media under `output/`.
+- Keep project-scoped scripts, notes, source material, and non-published deliverables under `projects/<project-id>/`. Use one stable lowercase hyphen-case project ID per subdirectory.
+- Put generated project artifacts under `projects/<project-id>/artifacts/`, grouped by type such as `documents/`, `videos/`, `svgs/`, `gifs/`, `images/`, `screenshots/`, `data/`, `manifests/`, and `reviews/`. This folder is ignored by git.
+- Use `output/` only for disposable legacy scratch output or tool build output that cannot reasonably be tied to a project.
 - Before handing off, run the repo validator and payload check, then record any skill-specific validation commands in [SKILLS.md](SKILLS.md).
 
 ## Slidev ECharts Track
@@ -47,7 +49,7 @@ When continuing this repository, start from [SKILLS.md](SKILLS.md), especially t
 - Keep the runnable validation deck in `.agents/skills/slidev-echarts/assets/examples/slidev-echarts/`.
 - Treat the example deck as the acceptance fixture for the skill. When the skill guidance changes, update the deck if needed and validate that it still builds and renders charts.
 - For chart-type coverage, keep one dedicated reference file per chart type under `.agents/skills/slidev-echarts/references/charts/` and use shared synthetic data files under `.agents/skills/slidev-echarts/assets/examples/slidev-echarts/data/`.
-- Keep generated Slidev build output, screenshots, and other transient verification artifacts out of skill directories. Use `output/` for verification artifacts that should be kept.
+- Keep generated Slidev build output, screenshots, and other transient verification artifacts out of skill directories. Use `projects/<project-id>/artifacts/` for project-specific verification artifacts that should be kept locally.
 
 ## Skill Authoring Rules
 
@@ -82,7 +84,7 @@ Scripts may be TypeScript or `uv` Python.
 
 - Put repo-level scripts in `scripts/`.
 - Put skill-specific scripts in the relevant skill's `scripts/` directory.
-- Put private video-production scripts in `videos/<video-id>/scripts/` when they are not intended to ship as skill resources or GitHub Pages examples.
+- Put project-specific scripts in `projects/<project-id>/scripts/` when they are not intended to ship as skill resources or GitHub Pages examples.
 - Python scripts must use `uv` script metadata and a shebang that defines the runtime:
 
 ```python

@@ -1,5 +1,5 @@
 #!/usr/bin/env -S npx tsx
-// Run: npx tsx ./.agents/skills/slidev-video/scripts/record-slidev-video.ts --deck ./examples/slidev-echarts --out ./output/slidev-video/slidev-echarts
+// Run: npx tsx ./.agents/skills/slidev-video/scripts/record-slidev-video.ts --deck ./examples/slidev-echarts --out ./projects/slidev-video-recordings/artifacts/videos/slidev-echarts
 // Dependencies: tsx, playwright in the target Slidev project, @slidev/cli in the target Slidev project, optional ffmpeg on PATH.
 
 import { spawn, spawnSync, type ChildProcess } from 'node:child_process'
@@ -356,7 +356,7 @@ function normalizeOptions(parsed: Record<string, string | boolean>): Options {
   const slidesValue = parsed.slides === undefined ? resolve(deckDir, 'slides.md') : String(parsed.slides)
   const slidesFile = isAbsolute(slidesValue) ? slidesValue : resolve(deckDir, slidesValue)
   const name = sanitizeName(String(parsed.name ?? (basename(deckDir) || 'slidev-deck')))
-  const outDir = resolve(invocationCwd, String(parsed.out ?? resolve('output', 'slidev-video', name)))
+  const outDir = resolve(invocationCwd, String(parsed.out ?? resolve('projects', 'slidev-video-recordings', 'artifacts', 'videos', name)))
   const waitUntil = String(parsed.waitUntil ?? 'networkidle') as WaitUntil
   const navigationMode = String(parsed.navigation ?? 'native') as NavigationMode
   const trimStartMs = parseTrimStart(parsed.trimStart)

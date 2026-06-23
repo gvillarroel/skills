@@ -17,7 +17,7 @@ const defaults = {
   height: 720,
   dwellMs: 650,
   clickDwellMs: 900,
-  outDir: resolve(repoRoot, 'output', 'slidev-echarts', 'video'),
+  outDir: resolve(repoRoot, 'projects', 'slidev-echarts-validation', 'artifacts', 'videos'),
   channel: process.env.PLAYWRIGHT_CHANNEL || 'msedge',
   maxClicks: undefined,
   skipVideo: false,

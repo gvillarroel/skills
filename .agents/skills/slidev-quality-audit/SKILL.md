@@ -17,7 +17,7 @@ description: Audit Slidev decks for visual quality regressions with automated Pl
 3. Run the bundled quality audit. Keep generated artifacts outside skill directories:
 
    ```powershell
-   npx tsx /path/to/.agents/skills/slidev-quality-audit/scripts/audit-slidev-quality.ts --deck /path/to/deck --out /path/to/output/deck-quality
+   npx tsx /path/to/.agents/skills/slidev-quality-audit/scripts/audit-slidev-quality.ts --deck /path/to/deck --out /path/to/projects/<project-id>/artifacts/reports/deck-quality
    ```
 
 4. Read `quality-report.md` first, then inspect `quality-report.json` for exact selectors, bounding boxes, and thresholds.
@@ -33,7 +33,7 @@ Common options:
 ```powershell
 npx tsx /path/to/.agents/skills/slidev-quality-audit/scripts/audit-slidev-quality.ts `
   --deck /path/to/deck `
-  --out /path/to/output/deck-quality `
+  --out /path/to/projects/<project-id>/artifacts/reports/deck-quality `
   --range 1,4-8 `
   --max-clicks 3
 ```
@@ -77,4 +77,4 @@ Read `references/audit-rules.md` when deciding whether a finding is a real defec
 
 ## Pattern Promotion
 
-When an audit finding, exception marker, threshold rule, false-positive case, or remediation pattern proves reusable, update `references/audit-rules.md` before finishing. Capture the symptom, detection signal, likely cause, accepted exception marker, fix pattern, and validation command. Keep deck-specific screenshots and reports in `output/`, not in the skill.
+When an audit finding, exception marker, threshold rule, false-positive case, or remediation pattern proves reusable, update `references/audit-rules.md` before finishing. Capture the symptom, detection signal, likely cause, accepted exception marker, fix pattern, and validation command. Keep deck-specific screenshots and reports in `projects/<project-id>/artifacts/reports/`, not in the skill.

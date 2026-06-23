@@ -5,14 +5,14 @@
   "type": "module",
   "scripts": {
     "serve": "python -m http.server 4188",
-    "validate": "node ../../../../../../videos/ai-concept-videos/scripts/validate-concepts.mjs",
-    "render": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs",
-    "render:quick": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs --preset quick",
-    "render:draft": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs --preset draft",
-    "render:motion": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs --preset motion",
-    "render:fast": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs --preset fast",
-    "render:final": "node ../../../../../../videos/ai-concept-videos/scripts/render-videos.mjs --preset final",
-    "review": "node ../../../../../../videos/ai-concept-videos/scripts/review-videos.mjs"
+    "validate": "node ../../../../../../projects/ai-concept-videos/scripts/validate-concepts.mjs",
+    "render": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs",
+    "render:quick": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset quick",
+    "render:draft": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset draft",
+    "render:motion": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset motion",
+    "render:fast": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset fast",
+    "render:final": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset final",
+    "review": "node ../../../../../../projects/ai-concept-videos/scripts/review-videos.mjs"
   },
   "dependencies": {
     "animejs": "4.4.1",

@@ -12,9 +12,9 @@ This repository is the source of truth for a curated backlog of Codex skills, th
 | `SKILLS.md` | Backlog, status, expected resources, and validation notes for every skill. |
 | `scripts/` | Repository-level validators and builders. |
 | `evaluations/` | Durable evaluation notes and summaries. Local bulky runs stay ignored under `evaluations/runs/`. |
-| `videos/` | Private video production scripts that are not published as reusable skill resources. |
+| `projects/` | Project-scoped private workspaces. Each subfolder is a stable project ID with scripts, source notes, and generated artifacts under `artifacts/`. |
 | `assets/readme/diagrams/` | Mermaid sources plus generated static and animated SVG diagrams used by this README. |
-| `output/`, `docs/`, `examples/` | Generated local artifacts or GitHub Pages output; these are ignored by git. |
+| `output/`, `docs/`, `examples/` | Disposable legacy scratch output or generated GitHub Pages output; these are ignored by git. |
 
 ## Skill Status
 
@@ -45,12 +45,12 @@ uv run --script scripts/validate-skills.py
 uv run --script scripts/check-repo-payload.py
 ```
 
-Run skill-specific checks whenever a skill, fixture, or script changes. For private AI concept video scripts, use:
+Run skill-specific checks whenever a skill, fixture, or script changes. For the AI concept video project scripts, use:
 
 ```powershell
-node videos/ai-concept-videos/scripts/validate-concepts.mjs
+node projects/ai-concept-videos/scripts/validate-concepts.mjs
 ```
 
 ## Publishing Notes
 
-Use `uv run --script scripts/build-pages.py` after changing examples that should be published to GitHub Pages. Keep generated media, screenshots, local builds, and heavyweight evaluation runs out of git unless they are intentionally small fixture assets.
+Use `uv run --script scripts/build-pages.py` after changing examples that should be published to GitHub Pages. Keep generated media, screenshots, local builds, and heavyweight evaluation runs out of git unless they are intentionally small fixture assets. Project deliverables belong under `projects/<project-id>/artifacts/`.

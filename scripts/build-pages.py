@@ -418,8 +418,8 @@ def build_docs() -> None:
     threejs_project = example_source("threejs-animated-3d")
     slidev_echarts_project = example_source("slidev-echarts")
     slidev_animejs_project = example_source("slidev-animejs")
-    slidev_echarts_html = ROOT / "output" / "slidev-echarts" / "html"
-    slidev_animejs_html = ROOT / "output" / "slidev-animejs" / "static-html"
+    slidev_echarts_html = ROOT / "projects" / "slidev-echarts-validation" / "artifacts" / "html"
+    slidev_animejs_html = ROOT / "projects" / "slidev-animejs-validation" / "artifacts" / "html"
 
     run_npm_script(threejs_project, "build")
     shutil.rmtree(slidev_echarts_html, ignore_errors=True)

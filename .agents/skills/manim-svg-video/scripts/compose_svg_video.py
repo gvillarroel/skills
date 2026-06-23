@@ -38,7 +38,7 @@ DEFAULTS: dict[str, Any] = {
     "include": None,
     "exclude": None,
     "from_list": None,
-    "out": Path("output/manim-svg-video/composition"),
+    "out": Path("projects/manim-svg-video/artifacts/videos/composition"),
     "name": "manim-svg-video",
     "title": "Animated SVG Sequence",
     "duration": 600.0,

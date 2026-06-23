@@ -60,4 +60,4 @@ Each run writes:
 - `media/`: Manim output, including MP4 after `--render`.
 - `rendered_video_raw` in the manifest when the raw Manim MP4 required duration repair.
 
-Keep all of these under `output/` for repository validation hygiene.
+Keep all of these under `projects/<project-id>/artifacts/videos/` for project-scoped validation hygiene.

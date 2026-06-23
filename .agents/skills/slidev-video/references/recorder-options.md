@@ -6,7 +6,7 @@ Use this reference when tuning recorder flags or adapting the command to a speci
 
 - `--deck <dir>`: target deck directory. Defaults to the current directory.
 - `--slides <file>`: Markdown entry file. Defaults to `<deck>/slides.md`.
-- `--out <dir>`: artifact directory. Defaults to `output/slidev-video/<deck-name>` under the current directory.
+- `--out <dir>`: artifact directory. Defaults to `projects/slidev-video-recordings/artifacts/videos/<deck-name>` under the current directory.
 - `--name <name>`: base filename for WebM and MP4.
 
 ## Viewport And Timing

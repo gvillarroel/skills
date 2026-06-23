@@ -140,7 +140,7 @@ npm run render:fast -- -- --concept 01-what-is-an-llm --start 36 --duration 30
 Calling the renderer directly is also valid for segment work:
 
 ```powershell
-node videos/ai-concept-videos/scripts/render-videos.mjs --preset fast --concept 01-what-is-an-llm --start 36 --duration 30
+node projects/ai-concept-videos/scripts/render-videos.mjs --preset fast --concept 01-what-is-an-llm --start 36 --duration 30
 ```
 
 For separately rendered or separately authored segments, lock continuity at boundaries. Render both adjacent segments with raw frames kept, then compare the previous segment's last intended frame (`duration * fps - 1`) against the next segment's first frame by hash or pixel diff. Treat a mismatch as a visual bug unless the cut is intentionally visible.
@@ -170,10 +170,36 @@ Treat failures as blocking unless the user explicitly accepts them.
 
 ## 10. Output Layout
 
-Use `output/<project>/` for generated artifacts:
+Use `projects/<project-id>/artifacts/` for generated artifacts:
 
 ```text
-output/<project>/
+projects/<project-id>/
+  scripts/
+  source/
+  artifacts/
+    documents/
+    svgs/
+    gifs/
+    images/
+    data/
+    manifests/
+    video-renders/
+      final/
+        videos/
+        review/
+        render-manifest.json
+        production-notes.md
+      draft-pass/
+      smoke/
+    videos/
+    screenshots/
+    reviews/
+```
+
+For the AI concept video project, the default renderer layout is:
+
+```text
+projects/ai-concept-videos/artifacts/video-renders/
   final/
     videos/
     review/
@@ -183,4 +209,4 @@ output/<project>/
   smoke/
 ```
 
-Keep reusable example source under the owning skill's `assets/examples/<project>/` directory, private video-production scripts under `videos/<video-id>/scripts/`, and generated video artifacts under `output/`.
+Keep reusable example source under the owning skill's `assets/examples/<project>/` directory, project-specific automation under `projects/<project-id>/scripts/`, and generated documents, videos, SVGs, GIFs, screenshots, manifests, review output, and data under `projects/<project-id>/artifacts/`.

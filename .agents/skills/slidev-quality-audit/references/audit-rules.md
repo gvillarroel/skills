@@ -47,8 +47,8 @@ Do not lower thresholds globally when only one decorative or animated element is
 
 ## Validation Pattern
 
-1. Run the audit on the current deck and save the report under `output/`.
+1. Run the audit on the current deck and save the report under `projects/<project-id>/artifacts/reports/`.
 2. Fix the highest-severity real issues first.
 3. Re-run the same command.
 4. Confirm that the affected rule counts dropped and no new findings appeared on nearby slides.
-5. Keep the before/after reports only under `output/` when they are useful validation artifacts.
+5. Keep the before/after reports only under `projects/<project-id>/artifacts/reports/` when they are useful validation artifacts.

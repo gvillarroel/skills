@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "slidev",
     "build": "slidev build --base ./",
-    "build:html": "cross-env SLIDEV_SINGLE_FILE=1 slidev build --base ./ --router-mode hash --out ../../../../../../output/slidev-echarts/html",
+    "build:html": "cross-env SLIDEV_SINGLE_FILE=1 slidev build --base ./ --router-mode hash --out ../../../../../../projects/slidev-echarts-validation/artifacts/html",
     "export": "slidev export",
     "video": "node scripts/record-video.mjs",
     "verify:video": "node scripts/record-video.mjs --skip-video"

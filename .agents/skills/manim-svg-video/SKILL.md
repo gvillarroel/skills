@@ -7,7 +7,7 @@ description: Compose many SVG or animated-SVG assets into one configurable Manim
 
 ## Core Workflow
 
-1. Discover source SVGs first, normally with `**/*.animated.svg`, and keep generated artifacts outside skill directories under `output/`.
+1. Discover source SVGs first, normally with `**/*.animated.svg`, and keep generated artifacts outside skill directories under `projects/<project-id>/artifacts/videos/`.
 2. Prefer `scripts/compose_svg_video.py` for video generation. It writes a manifest, rasterizes SVGs when needed, generates a Manim scene, and optionally renders MP4.
 3. Use `--duration 600` for a 10-minute video. Use `--layout replace --active-slots 1` for one full-screen SVG at a time, `--active-slots 2` for two half-screen SVGs, or `--active-slots 4` for four quarter-screen SVGs.
 4. Use `replace` when each completed SVG animation should leave and be replaced by the next source. Use `mosaic` only when completed SVGs should accumulate and remain visible in their final positions.
@@ -26,19 +26,19 @@ description: Compose many SVG or animated-SVG assets into one configurable Manim
 Generate a manifest and Manim scene without rendering:
 
 ```powershell
-uv run --script .agents/skills/manim-svg-video/scripts/compose_svg_video.py --discover-root . --out output/manim-svg-video/repo-animated-svg-10min --duration 600 --dry-run
+uv run --script .agents/skills/manim-svg-video/scripts/compose_svg_video.py --discover-root . --out projects/<project-id>/artifacts/videos/repo-animated-svg-10min --duration 600 --dry-run
 ```
 
 Render a 10-minute MP4 from repository animated SVGs:
 
 ```powershell
-uv run --script .agents/skills/manim-svg-video/scripts/compose_svg_video.py --discover-root . --out output/manim-svg-video/repo-animated-svg-10min-replace-white --duration 600 --layout replace --active-slots 4 --import-mode svg --render --quality l --fps 5 --resolution 854,480
+uv run --script .agents/skills/manim-svg-video/scripts/compose_svg_video.py --discover-root . --out projects/<project-id>/artifacts/videos/repo-animated-svg-10min-replace-white --duration 600 --layout replace --active-slots 4 --import-mode svg --render --quality l --fps 5 --resolution 854,480
 ```
 
 Render a faster smoke test with only a few assets:
 
 ```powershell
-uv run --script .agents/skills/manim-svg-video/scripts/compose_svg_video.py --discover-root .agents/skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/animated --out output/manim-svg-video/smoke --duration 12 --max-assets 6 --render --quality l --fps 5 --resolution 640,360
+uv run --script .agents/skills/manim-svg-video/scripts/compose_svg_video.py --discover-root .agents/skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/animated --out projects/<project-id>/artifacts/videos/smoke --duration 12 --max-assets 6 --render --quality l --fps 5 --resolution 640,360
 ```
 
 ## Operating Notes
