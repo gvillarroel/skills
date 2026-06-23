@@ -2,6 +2,8 @@
 
 Use this reference when extending a gallery of multiple D3-generated SVG examples or building a browsable examples page.
 
+Do not read this as the default workflow for ordinary user deliverables. The skill gallery under `assets/examples/` is a validation fixture. For a user's requested visualization, read `user-artifact-workflow.md`, create or generate a new artifact in the user's output directory, and use the gallery only as read-only pattern reference unless the user explicitly asks to update the skill gallery.
+
 ## Card Contract
 
 - Keep one data record per example with `id`, `kicker`, `title`, `copy`, and `render`.

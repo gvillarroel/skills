@@ -25,6 +25,7 @@ __pycache__/
 
 # Generated verification output and local builds
 output/
+results/
 docs/
 examples/
 dist/

@@ -26,9 +26,11 @@ ROOT_IGNORE_DIRS = {
     ".venv",
     "__pycache__",
     "docs",
+    "evaluations",
     "examples",
     "node_modules",
     "output",
+    "results",
     "scripts",
 }
 SKILL_ALLOWED_DIRS = {"agents", "assets", "references", "scripts"}

@@ -11,19 +11,21 @@ description: "Create, animate, troubleshoot, validate, and adapt D3-generated SV
 2. Choose the output contract before coding:
    - For live interactive artifacts, deliver HTML with D3 transitions, zoom, drag, filters, or tooltips.
    - For portable animated SVG, use D3 to compute geometry and write inline SVG, CSS, or SMIL animation. Do not rely on D3 transitions to survive extraction into a standalone SVG.
-3. Before hand-rolling a micro-visualization, search the existing D3 examples/gallery for the closest geometry, interaction, or sampling pattern and adapt that component's data semantics first. When the source is an arbitrary SVG, read `references/svg-replication.md` and treat the source as a visual grammar to recreate with new data, not as markup to copy.
-4. Keep data deterministic. Inline small data, load local files for larger data, and seed or pre-tick force layouts so exported geometry is reproducible.
-5. Build the SVG with a stable `viewBox`, `title`, `desc`, semantic groups, stable IDs/classes, and fixed dimensions. Ensure the final frame is a faithful data state, not only an animation midpoint.
-6. Apply the visual token system before capture. Keep text neutral and readable, use white halos when labels sit on marks, reserve red for change/risk/emphasis, and prefer tokenized quantize/threshold ramps over raw D3 interpolator palettes when the output belongs to this repository.
+3. Decide whether this is a user deliverable or skill maintenance. For user deliverables, write a new self-contained artifact in the requested output directory, or `output/d3-animated-svg/<task-slug>/` when no path is given. Treat this skill's `assets/examples/` gallery as read-only unless the user explicitly asks to improve the skill, add a gallery fixture, or update validation examples. Read `references/user-artifact-workflow.md` before creating user-owned code.
+4. Before hand-rolling a micro-visualization, search the existing D3 examples/gallery for the closest geometry, interaction, or sampling pattern and adapt that component's data semantics into a new user artifact. Do not edit the gallery for ordinary user deliverables. When the source is an arbitrary SVG, read `references/svg-replication.md` and treat the source as a visual grammar to recreate with new data, not as markup to copy.
+5. Keep data deterministic. Inline small data, load local files for larger data, and seed or pre-tick force layouts so exported geometry is reproducible.
+6. Build the SVG with a stable `viewBox`, `title`, `desc`, semantic groups, stable IDs/classes, and fixed dimensions. Ensure the final frame is a faithful data state, not only an animation midpoint.
+7. Apply the appropriate visual token system before capture. For ordinary user deliverables, use the portable token defaults in `references/user-artifact-workflow.md` unless the user or project provides a palette. For repository-owned examples, galleries, and exported fixtures, use the repository token file. Keep text neutral and readable, use white halos when labels sit on marks, reserve red for change/risk/emphasis, and prefer tokenized quantize/threshold ramps over raw D3 interpolator palettes when the output belongs to this repository.
    - When a sketchy rendering is requested, treat sketchiness as a reusable mark-rendering overlay for any D3 pattern, including scorecards, comparison cards, tables, model diagrams, and statistical charts. Preserve data geometry; roughen marks, axes, links, and containers with seeded jitter, double strokes, and optional hachures while keeping text crisp.
-7. Use `scripts/render_d3_svg.py` to open D3 HTML in Chromium, wait for the generated SVG, export the SVG markup, and optionally capture a screenshot for visual QA.
-8. Verify that the SVG is nonblank, text fits, labels remain readable, animation starts from a meaningful state, and the final frame matches the intended values. When recreating a source SVG with new data, run `scripts/compare_svg_style_signatures.py` against source and reconstruction and iterate until it passes. For large or adversarial forward tests, reduce agent decisions by generating source-derived templates first with `scripts/prepare_svg_recreation_templates.py`, then let the agent edit only seeded text/data and notes.
+8. Use `scripts/render_d3_svg.py` to open D3 HTML in Chromium, wait for the generated SVG, export the SVG markup, and optionally capture a screenshot for visual QA.
+9. Verify that the SVG is nonblank, text fits, labels remain readable, animation starts from a meaningful state, and the final frame matches the intended values. When recreating a source SVG with new data, run `scripts/compare_svg_style_signatures.py` against source and reconstruction and iterate until it passes. For large or adversarial forward tests, reduce agent decisions by generating source-derived templates first with `scripts/prepare_svg_recreation_templates.py`, then let the agent edit only seeded text/data and notes.
 
 ## Progressive Disclosure Map
 
 - `references/visualization-type-index.md`: read when choosing a D3 visualization form or when the user asks for alternatives to Mermaid.
 - `references/layout-patterns.md`: read when implementing D3 layouts, scales, projections, hierarchy, force simulations, or data joins.
 - `references/animation-patterns.md`: read when making portable SVG animation, staged reveals, path drawing, motion tokens, morphs, or final-frame verification.
+- `references/user-artifact-workflow.md`: read before creating user-owned D3 code, choosing an output directory, using starter generation, or adapting gallery patterns without editing the skill's fixtures.
 - `references/gallery-patterns.md`: read when extending a multi-example gallery with card conventions, per-card replay controls, and gallery-level verification.
 - `references/example-pattern-recipes.md`: read when turning a successful gallery example into a reusable implementation pattern or adapting one of the approved pattern IDs.
 - `references/svg-replication.md`: read when replicating, extracting, or adapting a D3-generated SVG from this repository or an arbitrary source SVG, especially when the user asks for exact colors, portable animation code, new-data pattern recreation, or a reusable implementation recipe.
@@ -47,6 +49,13 @@ Use a custom SVG selector:
 
 ```powershell
 uv run --script d3-animated-svg/scripts/render_d3_svg.py scene.html --selector "svg#viz" -o output/scene.svg --wait-ms 2500
+```
+
+Create a new editable D3 starter artifact outside the skill directory:
+
+```powershell
+uv run --script d3-animated-svg/scripts/create_d3_svg_starter.py --pattern inline-bar-table --out output/d3-animated-svg/my-viz --title "My D3 visual"
+uv run --script d3-animated-svg/scripts/create_d3_svg_starter.py --pattern operational-dashboard --out output/d3-animated-svg/dashboard --title "Operational dashboard"
 ```
 
 Compare a source SVG with a new-data reconstruction before calling it equivalent:
@@ -84,11 +93,11 @@ uv run --script d3-animated-svg/scripts/run_pi_svg_gallery_recreation.py --sourc
 
 ## Visual Tokens
 
-Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating examples, galleries, or exported SVG fixtures. Use Open Sans for text, Material Symbols Rounded for system icons, and the documented brand palette for editable D3 marks, UI controls, replay states, and page surfaces.
+For ordinary user deliverables, do not read `../ANIMATED_VISUAL_TOKENS.md`; use the portable token defaults in `references/user-artifact-workflow.md` or the user's own project palette. Read `../ANIMATED_VISUAL_TOKENS.md` only before creating or updating repository-owned examples, galleries, or exported SVG fixtures. Use Open Sans for text, Material Symbols Rounded for system icons, and the documented brand palette for editable D3 marks, UI controls, replay states, and page surfaces.
 
 ## Pattern Promotion
 
-When a gallery card or standalone SVG pattern proves reusable, update `references/example-pattern-recipes.md` before finishing. Capture the stable `d3-pattern-*` ID, trigger, data contract, geometry contract, animation contract, semantic color roles, and validation hooks. For patterns expected to work in isolated skill-only workspaces, include a minimal standalone implementation recipe that does not depend on reading the gallery source.
+When a user artifact proves reusable across future tasks, promote only the transferable pattern back into `references/example-pattern-recipes.md` before finishing. Do not move ordinary user deliverables into `assets/examples/`. Capture the stable `d3-pattern-*` ID, trigger, data contract, geometry contract, animation contract, semantic color roles, and validation hooks. For patterns expected to work in isolated skill-only workspaces, include a minimal standalone implementation recipe that does not depend on reading the gallery source.
 
 ## Validation
 
