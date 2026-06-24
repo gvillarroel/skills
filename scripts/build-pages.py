@@ -53,6 +53,77 @@ EXAMPLE_SOURCES = {
     / "examples"
     / "threejs-animated-3d",
 }
+UNLISTED_EXAMPLE_SOURCES = {
+    # Raw source folders copied for linked galleries or verification assets, not standalone landing pages.
+    "mermaid",
+    "mermaid-directive-frames",
+}
+PUBLISHED_EXAMPLE_SETS = [
+    {
+        "id": "echarts-animated-svg",
+        "source": "echarts-animated-svg",
+        "title": "ECharts Animated SVG Gallery",
+        "href": "examples/echarts-animated-svg/",
+        "kind": "Inline SVG",
+        "description": "Replayable ECharts chart-type examples rendered as portable SVG.",
+    },
+    {
+        "id": "d3-animated-svg",
+        "source": "d3-animated-svg",
+        "title": "D3 Animated SVG Gallery",
+        "href": "examples/d3-animated-svg/",
+        "kind": "D3",
+        "description": "A broad gallery of D3-generated SVG forms with replay controls.",
+    },
+    {
+        "id": "mermaid-svg-animated",
+        "source": "mermaid-svg-animated",
+        "title": "Mermaid Animated SVG Gallery",
+        "href": "examples/mermaid-svg-animated/",
+        "kind": "Mermaid",
+        "description": "Animated and static SVG pairs for supported Mermaid diagram types.",
+    },
+    {
+        "id": "mermaid-animation-directives",
+        "source": "mermaid-animation-directives",
+        "title": "Mermaid Animation Directives",
+        "href": "examples/mermaid-animation-directives/",
+        "kind": "Directive demos",
+        "description": "Generated directive examples with animated, static, and inspected frames.",
+    },
+    {
+        "id": "threejs-animated-3d",
+        "source": "threejs-animated-3d",
+        "title": "Three.js Animated 3D Examples",
+        "href": "examples/threejs-animated-3d/",
+        "kind": "WebGL",
+        "description": "Browser-rendered 3D scenes built from the reusable Three.js skill patterns.",
+    },
+    {
+        "id": "slidev-echarts",
+        "source": "slidev-echarts",
+        "title": "Slidev ECharts Chart-Type Lab",
+        "href": "examples/slidev-echarts/",
+        "kind": "Slidev",
+        "description": "A single-file validation deck for ECharts chart coverage inside Slidev.",
+    },
+    {
+        "id": "slidev-animejs",
+        "source": "slidev-animejs",
+        "title": "Slidev Anime.js Animation Lab",
+        "href": "examples/slidev-animejs/",
+        "kind": "Slidev",
+        "description": "A built Slidev deck covering Anime.js animation patterns and SVG assets.",
+    },
+    {
+        "id": "ai-concept-videos",
+        "source": "ai-concept-videos",
+        "title": "AI Concept Scene Preview",
+        "href": "examples/ai-concept-videos/",
+        "kind": "Interactive scene",
+        "description": "The source scene preview for the video workflow, published without rendered videos.",
+    },
+]
 MEDIA_EXTENSIONS = {
     ".mp4",
     ".webm",
@@ -144,63 +215,14 @@ def patch_file(path: Path, replacements: dict[str, str]) -> None:
 
 
 def write_index() -> None:
-    cards = [
-        {
-            "title": "ECharts Animated SVG Gallery",
-            "href": "examples/echarts-animated-svg/",
-            "kind": "Inline SVG",
-            "description": "Replayable ECharts chart-type examples rendered as portable SVG.",
-        },
-        {
-            "title": "D3 Animated SVG Gallery",
-            "href": "examples/d3-animated-svg/",
-            "kind": "D3",
-            "description": "A broad gallery of D3-generated SVG forms with replay controls.",
-        },
-        {
-            "title": "Mermaid Animated SVG Gallery",
-            "href": "examples/mermaid-svg-animated/",
-            "kind": "Mermaid",
-            "description": "Animated and static SVG pairs for supported Mermaid diagram types.",
-        },
-        {
-            "title": "Mermaid Animation Directives",
-            "href": "examples/mermaid-animation-directives/",
-            "kind": "Directive demos",
-            "description": "Generated directive examples with animated, static, and inspected frames.",
-        },
-        {
-            "title": "Three.js Animated 3D Examples",
-            "href": "examples/threejs-animated-3d/",
-            "kind": "WebGL",
-            "description": "Browser-rendered 3D scenes built from the reusable Three.js skill patterns.",
-        },
-        {
-            "title": "Slidev ECharts Chart-Type Lab",
-            "href": "examples/slidev-echarts/",
-            "kind": "Slidev",
-            "description": "A single-file validation deck for ECharts chart coverage inside Slidev.",
-        },
-        {
-            "title": "Slidev Anime.js Animation Lab",
-            "href": "examples/slidev-animejs/",
-            "kind": "Slidev",
-            "description": "A built Slidev deck covering Anime.js animation patterns and SVG assets.",
-        },
-        {
-            "title": "AI Concept Scene Preview",
-            "href": "examples/ai-concept-videos/",
-            "kind": "Interactive scene",
-            "description": "The source scene preview for the video workflow, published without rendered videos.",
-        },
-    ]
     links = "\n".join(
-        f"""        <a class="card" href="{card['href']}">
+        f"""        <a class="card" id="example-set-{card['id']}" data-example-id="{card['id']}" data-example-source="{card['source']}" href="{card['href']}">
           <span class="kind">{card['kind']}</span>
           <strong>{card['title']}</strong>
+          <code>{card['id']}</code>
           <span>{card['description']}</span>
         </a>"""
-        for card in cards
+        for card in PUBLISHED_EXAMPLE_SETS
     )
     index = f"""<!doctype html>
 <html lang="en">
@@ -312,6 +334,16 @@ def write_index() -> None:
       line-height: 1.18;
       letter-spacing: 0;
     }}
+    .card code {{
+      width: max-content;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f9fafb;
+      color: var(--muted);
+      padding: 3px 6px;
+      font: 700 12px/1.2 Consolas, "Liberation Mono", "Courier New", monospace;
+      overflow-wrap: anywhere;
+    }}
     .card span:last-child {{
       color: var(--muted);
     }}
@@ -339,7 +371,7 @@ def write_index() -> None:
         <p class="lede">Generated example galleries and validation fixtures for the skills in this repository. Rendered videos and bulky local artifacts are intentionally excluded.</p>
       </div>
       <div class="summary" aria-label="Published artifact summary">
-        <span class="pill">8 example sets</span>
+        <span class="pill">{len(PUBLISHED_EXAMPLE_SETS)} example sets</span>
         <span class="pill">No videos</span>
         <span class="pill">Static Pages</span>
       </div>
@@ -355,6 +387,23 @@ def write_index() -> None:
 </html>
 """
     (DOCS / "index.html").write_text(index, encoding="utf-8", newline="\n")
+
+
+def write_catalog() -> None:
+    catalog = "[\n"
+    catalog += ",\n".join(
+        "  {\n"
+        f"    \"id\": \"{card['id']}\",\n"
+        f"    \"source\": \"{card['source']}\",\n"
+        f"    \"title\": \"{card['title']}\",\n"
+        f"    \"href\": \"{card['href']}\",\n"
+        f"    \"kind\": \"{card['kind']}\",\n"
+        f"    \"description\": \"{card['description']}\"\n"
+        "  }"
+        for card in PUBLISHED_EXAMPLE_SETS
+    )
+    catalog += "\n]\n"
+    (DOCS / "example-catalog.json").write_text(catalog, encoding="utf-8", newline="\n")
 
 
 def normalize_text_file(path: Path) -> None:
@@ -406,11 +455,6 @@ def build_docs() -> None:
         DOCS / "examples" / "d3-animated-svg" / "force-beeswarm.html",
         {"./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"},
     )
-    patch_file(
-        DOCS / "examples" / "d3-animated-svg" / "venn-examples.html",
-        {"./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"},
-    )
-
     copy_tree(example_source("mermaid"), DOCS / "examples" / "mermaid")
     copy_tree(example_source("mermaid-svg-animated"), DOCS / "examples" / "mermaid-svg-animated")
     copy_tree(example_source("mermaid-animation-directives"), DOCS / "examples" / "mermaid-animation-directives")
@@ -445,6 +489,7 @@ def build_docs() -> None:
     )
 
     write_index()
+    write_catalog()
     normalize_text_tree(DOCS)
 
 

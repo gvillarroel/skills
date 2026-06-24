@@ -53,6 +53,33 @@ Use when the source material is an image or screenshot that should remain inspec
 - Scope clip IDs and overlay classes to the pattern ID.
 - Verify that the page still works from `docs/` without local `node_modules`.
 
+## Asymmetric Task Overlap
+
+Pattern ID: `d3-pattern-asymmetric-task-overlap`.
+
+Use when tasks, backlog items, risks, or work units belong to one scope, two shared scopes, or three-or-more overlapping scopes.
+
+- Use fixed asymmetric circle geometry instead of a force simulation so overlap regions remain deterministic and auditable.
+- Keep scope circles translucent and draw task leader lines, label backplates, labels, and dots above them.
+- Expose circles as `.overlap-circle` with `data-set-id`.
+- Expose tasks as `.task-dot` and `.task-label` with `data-task-id`, `data-memberships`, and `data-membership-count`.
+- Encode membership count consistently: one scope in blue, two scopes in orange, and three-or-more scopes in red.
+- For the default gallery fixture, validate `data-circle-count="9"`, `data-target-count="20"`, 9 circles, 20 task dots, and 20 task labels.
+
+## Venn Overlap Family
+
+Pattern IDs: `d3-pattern-venn-three-circle`, `d3-pattern-venn-five-overlap`, `d3-pattern-venn-seven-overlap`, `d3-pattern-symmetric-three-circle-rosette`, `d3-pattern-symmetric-five-circle-rosette`, `d3-pattern-symmetric-seven-circle-flower`, `d3-pattern-asymmetric-three-circle-chain`, `d3-pattern-asymmetric-five-circle-cluster`, `d3-pattern-asymmetric-seven-circle-bridge`.
+
+Use when a concept explainer needs reusable overlapping circles rather than a mathematically complete Venn diagram with every possible region.
+
+- Use fixed circle geometry so the intended overlap story is deterministic and replayable.
+- Expose every circle as `.venn-circle` with `data-set-id` and `data-set-code`.
+- Expose the root SVG with `data-pattern-family="venn-overlap"`, `data-layout`, and `data-circle-count`.
+- Keep the card ID, card `data-pattern-id`, and SVG `data-pattern-id` equal to the stable `d3-pattern-*` ID.
+- Use three visual subfamilies: classic shared-center overlap, rotationally symmetric rosettes, and asymmetric bridge/cluster layouts.
+- For asymmetric 7-circle bridge layouts, preserve the 3+1+3 structure: three circles in one block, one bridge circle, and three circles in the second block.
+- Animate circle radius and fill-opacity with SVG animation nodes so replay works from the shared gallery button.
+
 ## Inline Bar Tables
 
 Pattern ID: `d3-pattern-inline-bar-table`.
@@ -206,13 +233,14 @@ Verification hooks:
 - Every path should have a non-empty `d` attribute containing one `Q` command.
 - Endpoint count should match the number of phases.
 - Browser validation should confirm nonblank rendered pixels and at least one animated path.
-- In an isolated skill-only test, copy only `d3-animated-svg/` plus a new empty workspace; do not read `.agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/gallery.js`.
+- In an isolated skill-only test, copy only `d3-animated-svg/` plus a new empty workspace; do not read the gallery fixture.
 
 ## Adaptation Checklist
 
 Before committing an adapted pattern:
 
-- Search `.agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/gallery.js` for the source pattern ID and render function.
+- Search `references/pattern-index.md` for the source pattern ID and read the matching `references/patterns/<id>.md` file.
+- Read the gallery fixture only when changing or validating the gallery fixture itself.
 - Copy only the required helpers, data shape, and geometry.
 - Preserve semantic roles for shapes, colors, and motion.
 - Add or update the stable `d3-pattern-*` ID if it becomes a gallery card.

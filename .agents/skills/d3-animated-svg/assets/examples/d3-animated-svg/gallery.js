@@ -135,6 +135,16 @@
     { id: "document-token-quality-red", kicker: "Document", title: "Document Token Quality Red", copy: "The same document-quality pattern uses red for wrong spans while preserving the length-weighted ratios and paragraph spacing.", render: renderDocumentTokenQualityRed },
     { id: "document-token-extraction-buckets", kicker: "Document", title: "Document Extraction Buckets", copy: "A single page is scanned in writing order, then colored word blocks split into filler, correct, and wrong buckets with calculated totals.", render: renderDocumentTokenExtractionBuckets },
     { id: "agent-loop-partial-covers", kicker: "Image Overlay", title: "Agent Loop Partial Covers", copy: "A source diagram remains visible while animated translucent covers selectively pass over key areas.", render: renderAgentLoopPartialCovers },
+    { id: "asymmetric-task-overlap", kicker: "Set Overlap", title: "Asymmetric Task Overlap", copy: "Nine uneven scope circles hold 20 task dots, including single-scope and shared multi-scope work.", render: renderAsymmetricTaskOverlap },
+    { id: "venn-three-circle", kicker: "Set Overlap", title: "Venn Three Circle", copy: "Three peer concepts reveal single, pairwise, and shared center intersections.", render: renderVennThreeCircle },
+    { id: "venn-five-overlap", kicker: "Set Overlap", title: "Venn Five Overlap", copy: "Five domains converge around a shared center with labeled outer roles.", render: renderVennFiveOverlap },
+    { id: "venn-seven-overlap", kicker: "Set Overlap", title: "Venn Seven Overlap", copy: "Seven LLM workstreams overlap around a central alignment zone.", render: renderVennSevenOverlap },
+    { id: "symmetric-three-circle-rosette", kicker: "Symmetric Overlap", title: "Symmetric Three Circle Rosette", copy: "Three equal circles use 120-degree rotational symmetry for balanced concepts.", render: renderSymmetricThreeCircleRosette },
+    { id: "symmetric-five-circle-rosette", kicker: "Symmetric Overlap", title: "Symmetric Five Circle Rosette", copy: "Five equal circles form a peer-level rosette around one shared center.", render: renderSymmetricFiveCircleRosette },
+    { id: "symmetric-seven-circle-flower", kicker: "Symmetric Overlap", title: "Symmetric Seven Circle Flower", copy: "A center circle plus six equal neighbors forms a stable flower layout.", render: renderSymmetricSevenCircleFlower },
+    { id: "asymmetric-three-circle-chain", kicker: "Asymmetric Overlap", title: "Asymmetric Three Circle Chain", copy: "One bridge circle links two endpoints while the endpoints remain mostly separate.", render: renderAsymmetricThreeCircleChain },
+    { id: "asymmetric-five-circle-cluster", kicker: "Asymmetric Overlap", title: "Asymmetric Five Circle Cluster", copy: "A primary block of three circles gains two adjacent context circles.", render: renderAsymmetricFiveCircleCluster },
+    { id: "asymmetric-seven-circle-bridge", kicker: "Asymmetric Overlap", title: "Asymmetric Seven Circle Bridge", copy: "Two blocks of three circles are joined by one bridge circle in a 3+1+3 structure.", render: renderAsymmetricSevenCircleBridge },
     { id: "sankey", kicker: "Flow", title: "Sankey Pipeline", copy: "Weighted handoffs across ordered stages.", render: renderSankey },
     { id: "d3-flowchart-dag", kicker: "Diagram", title: "D3 Flowchart DAG", copy: "Mermaid-style process logic drawn as explicit D3 nodes, links, and decisions.", render: renderD3FlowchartDag },
     { id: "d3-sequence-lifelines", kicker: "Diagram", title: "D3 Sequence Lifelines", copy: "Actor boxes, lifelines, activations, and replies composed directly in SVG.", render: renderD3SequenceLifelines },
@@ -2162,6 +2172,566 @@
         .attr("dur", ".74s")
         .attr("begin", `${d.delay + .12}s`)
         .attr("fill", "freeze");
+    });
+  }
+
+  function renderAsymmetricTaskOverlap() {
+    const svg = prepareSvg("asymmetric-task-overlap", "Asymmetric task overlap", "Nine asymmetric scope circles with 20 labeled task dots distributed across single and shared memberships.");
+    svg.attr("data-target-count", 20).attr("data-circle-count", 9);
+    const circles = [
+      { id: "backlog", label: "Backlog", cx: 150, cy: 135, r: 74, fill: palette.blueHighlight, stroke: palette.blue, lx: 82, ly: 58 },
+      { id: "ux", label: "UX", cx: 232, cy: 100, r: 66, fill: palette.orangeHighlight, stroke: palette.orange, lx: 218, ly: 42 },
+      { id: "api", label: "API", cx: 326, cy: 135, r: 76, fill: palette.greenHighlight, stroke: palette.green, lx: 344, ly: 58 },
+      { id: "security", label: "Security", cx: 414, cy: 100, r: 58, fill: palette.redHighlight, stroke: palette.red, lx: 416, ly: 42 },
+      { id: "docs", label: "Docs", cx: 96, cy: 215, r: 62, fill: palette.purpleHighlight, stroke: palette.purple, lx: 48, ly: 167 },
+      { id: "data", label: "Data", cx: 232, cy: 206, r: 86, fill: palette.yellowHighlight, stroke: palette.yellowHover, lx: 214, ly: 204 },
+      { id: "qa", label: "QA", cx: 344, cy: 228, r: 74, fill: palette.blueHighlight, stroke: palette.blueHover, lx: 378, ly: 214 },
+      { id: "release", label: "Release", cx: 160, cy: 280, r: 68, fill: palette.greenHighlight, stroke: palette.greenHover, lx: 102, ly: 346 },
+      { id: "ops", label: "Ops", cx: 420, cy: 290, r: 60, fill: palette.orangeHighlight, stroke: palette.orangeHover, lx: 444, ly: 356 }
+    ];
+    const tasks = [
+      { id: "T01", label: "T01 Intake", x: 132, y: 124, lx: 54, ly: 96, memberships: ["backlog"] },
+      { id: "T02", label: "T02 Copy", x: 226, y: 77, lx: 196, ly: 58, memberships: ["ux"] },
+      { id: "T03", label: "T03 API", x: 336, y: 124, lx: 358, ly: 106, memberships: ["api"] },
+      { id: "T04", label: "T04 Dataset", x: 226, y: 236, lx: 162, ly: 236, memberships: ["data"] },
+      { id: "T05", label: "T05 Smoke", x: 365, y: 245, lx: 388, ly: 236, memberships: ["qa"] },
+      { id: "T06", label: "T06 Cutover", x: 160, y: 306, lx: 70, ly: 332, memberships: ["release"] },
+      { id: "T07", label: "T07 FAQ", x: 78, y: 212, lx: 42, ly: 194, memberships: ["docs"] },
+      { id: "T08", label: "T08 Threat", x: 422, y: 76, lx: 430, ly: 68, memberships: ["security"] },
+      { id: "T09", label: "T09 Runbook", x: 430, y: 310, lx: 442, ly: 322, memberships: ["ops"] },
+      { id: "T10", label: "T10 UX copy", x: 188, y: 108, lx: 140, ly: 82, memberships: ["backlog", "ux"] },
+      { id: "T11", label: "T11 Schema", x: 298, y: 172, lx: 320, ly: 166, memberships: ["api", "data"] },
+      { id: "T12", label: "T12 Test seed", x: 292, y: 222, lx: 298, ly: 246, memberships: ["data", "qa"] },
+      { id: "T13", label: "T13 Ops QA", x: 382, y: 262, lx: 402, ly: 262, memberships: ["qa", "ops"] },
+      { id: "T14", label: "T14 Release doc", x: 118, y: 258, lx: 44, ly: 262, memberships: ["docs", "release"] },
+      { id: "T15", label: "T15 Auth risk", x: 374, y: 118, lx: 396, ly: 128, memberships: ["api", "security"] },
+      { id: "T16", label: "T16 QA gate", x: 240, y: 280, lx: 242, ly: 318, memberships: ["data", "qa", "release"] },
+      { id: "T17", label: "T17 Criteria", x: 212, y: 150, lx: 154, ly: 148, memberships: ["backlog", "ux", "data"] },
+      { id: "T18", label: "T18 Migration", x: 326, y: 196, lx: 350, ly: 204, memberships: ["api", "data", "qa"] },
+      { id: "T19", label: "T19 Notes", x: 206, y: 252, lx: 158, ly: 356, memberships: ["docs", "data", "release"] },
+      { id: "T20", label: "T20 Drill", x: 360, y: 286, lx: 356, ly: 344, memberships: ["data", "qa", "ops"] }
+    ];
+    const labelWidth = d => Math.max(46, d.label.length * 5.4 + 12);
+    const dotColor = d => d.memberships.length === 1 ? palette.blue : d.memberships.length === 2 ? palette.orange : palette.red;
+    const labelEdgeX = d => d.lx < d.x ? d.lx + labelWidth(d) : d.lx;
+
+    svg.append("rect")
+      .attr("x", 24)
+      .attr("y", 30)
+      .attr("width", 512)
+      .attr("height", 352)
+      .attr("rx", 10)
+      .attr("fill", palette.surface)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", 1.2);
+
+    const circleLayer = svg.append("g").attr("class", "overlap-circle-layer");
+    const overlapCircles = circleLayer.selectAll("circle.overlap-circle")
+      .data(circles)
+      .join("circle")
+      .attr("class", "overlap-circle")
+      .attr("data-set-id", d => d.id)
+      .attr("cx", d => d.cx)
+      .attr("cy", d => d.cy)
+      .attr("fill", d => d.fill)
+      .attr("fill-opacity", .24)
+      .attr("stroke", d => d.stroke)
+      .attr("stroke-width", 2)
+      .attr("stroke-opacity", .9);
+    grow(overlapCircles, "r", 4, d => d.r, .05, .7);
+
+    const circleLabels = circleLayer.selectAll("text.overlap-circle-label")
+      .data(circles)
+      .join("text")
+      .attr("class", "caption overlap-circle-label")
+      .attr("x", d => d.lx)
+      .attr("y", d => d.ly)
+      .attr("text-anchor", "middle")
+      .attr("font-weight", 800)
+      .attr("fill", palette.gray700)
+      .text(d => d.label);
+    fadeIn(circleLabels, .28, .45);
+
+    const leader = svg.append("g")
+      .attr("class", "task-leader-layer")
+      .attr("stroke", palette.gray500)
+      .attr("stroke-opacity", .55)
+      .attr("stroke-width", .9)
+      .selectAll("line.task-leader")
+      .data(tasks)
+      .join("line")
+      .attr("class", "task-leader")
+      .attr("data-task-id", d => d.id)
+      .attr("x1", d => d.x)
+      .attr("y1", d => d.y)
+      .attr("x2", d => labelEdgeX(d))
+      .attr("y2", d => d.ly - 3);
+    fadeIn(leader, .35, .5);
+
+    const taskGroups = svg.append("g")
+      .attr("class", "task-layer")
+      .selectAll("g.task")
+      .data(tasks)
+      .join("g")
+      .attr("class", "task")
+      .attr("data-task-id", d => d.id)
+      .attr("data-memberships", d => d.memberships.join(" "))
+      .attr("data-membership-count", d => d.memberships.length);
+
+    const labelBoxes = taskGroups.append("rect")
+      .attr("class", "task-label-bg")
+      .attr("x", d => d.lx)
+      .attr("y", d => d.ly - 12)
+      .attr("width", d => labelWidth(d))
+      .attr("height", 17)
+      .attr("rx", 5)
+      .attr("fill", palette.surface)
+      .attr("fill-opacity", .9)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", .8);
+    fadeIn(labelBoxes, .42, .45);
+
+    const labels = taskGroups.append("text")
+      .attr("class", "task-label mark-label")
+      .attr("x", d => d.lx + 6)
+      .attr("y", d => d.ly)
+      .attr("font-size", 8.8)
+      .attr("font-weight", 700)
+      .attr("fill", palette.ink)
+      .text(d => d.label);
+    fadeIn(labels, .5, .45);
+
+    const dots = taskGroups.append("circle")
+      .attr("class", "task-dot")
+      .attr("data-task-id", d => d.id)
+      .attr("data-memberships", d => d.memberships.join(" "))
+      .attr("data-membership-count", d => d.memberships.length)
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("fill", dotColor)
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", 1.5);
+    grow(dots, "r", 1.2, 4.2, .62, .48);
+
+    const legend = [
+      { label: "1 scope", fill: palette.blue },
+      { label: "2 scopes", fill: palette.orange },
+      { label: "3+ scopes", fill: palette.red }
+    ];
+    const legendGroup = svg.append("g").attr("transform", "translate(330,366)");
+    const legendItems = legendGroup.selectAll("g").data(legend).join("g").attr("transform", (_, i) => `translate(${i * 66},0)`);
+    legendItems.append("circle").attr("r", 4.2).attr("cx", 0).attr("cy", 0).attr("fill", d => d.fill).attr("stroke", palette.surface).attr("stroke-width", 1.5);
+    legendItems.append("text").attr("class", "caption").attr("x", 8).attr("y", 4).attr("font-size", 9).text(d => d.label);
+    fadeIn(legendItems, .72, .45);
+
+    svg.append("text")
+      .attr("class", "caption")
+      .attr("x", 34)
+      .attr("y", 370)
+      .attr("font-weight", 800)
+      .text("20 tasks across 9 asymmetric scopes");
+  }
+
+  function vennCircleReveal(selection, delay = .08, opacity = .38) {
+    selection.each(function (d, i) {
+      const circle = d3.select(this)
+        .attr("r", d.r)
+        .attr("fill-opacity", opacity)
+        .attr("opacity", 1);
+      circle.append("animate")
+        .attr("attributeName", "r")
+        .attr("from", 4)
+        .attr("to", d.r)
+        .attr("dur", ".72s")
+        .attr("begin", `${delay + i * .08}s`)
+        .attr("calcMode", "spline")
+        .attr("keySplines", ".2 .8 .2 1")
+        .attr("fill", "freeze");
+      circle.append("animate")
+        .attr("attributeName", "fill-opacity")
+        .attr("from", 0)
+        .attr("to", opacity)
+        .attr("dur", ".62s")
+        .attr("begin", `${delay + i * .08}s`)
+        .attr("fill", "freeze");
+    });
+  }
+
+  function vennSetLabel(parent, item, delay) {
+    const label = parent.append("g")
+      .attr("class", "venn-set-label")
+      .attr("data-set-id", item.id)
+      .attr("transform", `translate(${item.lx},${item.ly})`);
+    label.append("circle")
+      .attr("r", 15)
+      .attr("fill", item.color)
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", 2);
+    label.append("text")
+      .attr("text-anchor", "middle")
+      .attr("dominant-baseline", "middle")
+      .attr("font-size", 10.5)
+      .attr("font-weight", 900)
+      .attr("fill", palette.surface)
+      .text(item.code);
+    label.append("text")
+      .attr("class", "caption")
+      .attr("x", 0)
+      .attr("y", 31)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 10)
+      .attr("font-weight", 800)
+      .attr("fill", item.color)
+      .text(item.label);
+    fadeIn(label, delay, .45);
+  }
+
+  function vennTextBlock(parent, lines, x, y, options = {}) {
+    const group = parent.append("g")
+      .attr("class", options.className || "venn-note")
+      .attr("transform", `translate(${x},${y})`);
+    group.selectAll("text")
+      .data(Array.isArray(lines) ? lines : [lines])
+      .join("text")
+      .attr("class", options.textClass || "mark-label")
+      .attr("x", 0)
+      .attr("y", (_, i) => i * (options.lineHeight || 16))
+      .attr("text-anchor", options.anchor || "middle")
+      .attr("font-size", options.fontSize || 12)
+      .attr("font-weight", options.fontWeight || 800)
+      .attr("fill", options.fill || palette.ink)
+      .text(d => d);
+    fadeIn(group, options.delay || .66, .42);
+    return group;
+  }
+
+  function vennRosettePoints(count, center, ringRadius, startAngle = -Math.PI / 2) {
+    return d3.range(count).map(index => {
+      const angle = startAngle + index * Math.PI * 2 / count;
+      return {
+        x: center.x + Math.cos(angle) * ringRadius,
+        y: center.y + Math.sin(angle) * ringRadius,
+        angle
+      };
+    });
+  }
+
+  function renderVennPattern(id, title, desc, options) {
+    const svg = prepareSvg(id, title, desc);
+    const circles = options.circles;
+    svg
+      .attr("data-pattern-family", "venn-overlap")
+      .attr("data-layout", options.layout)
+      .attr("data-circle-count", circles.length);
+
+    svg.append("rect")
+      .attr("x", 28)
+      .attr("y", 34)
+      .attr("width", width - 56)
+      .attr("height", height - 72)
+      .attr("rx", 10)
+      .attr("fill", palette.surface)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", 1.1);
+
+    if (options.guideCircle) {
+      svg.append("circle")
+        .attr("cx", options.guideCircle.x)
+        .attr("cy", options.guideCircle.y)
+        .attr("r", options.guideCircle.r)
+        .attr("fill", "none")
+        .attr("stroke", palette.gray200)
+        .attr("stroke-dasharray", "5 6")
+        .attr("stroke-width", 1.2)
+        .attr("opacity", .8);
+    }
+
+    const circleLayer = svg.append("g")
+      .attr("class", "venn-circle-layer")
+      .attr("style", "isolation:isolate");
+    const marks = circleLayer.selectAll("circle.venn-circle")
+      .data(circles)
+      .join("circle")
+      .attr("class", "venn-circle")
+      .attr("data-set-id", d => d.id)
+      .attr("data-set-code", d => d.code)
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("fill", d => d.color)
+      .attr("stroke", d => d.stroke || d.color)
+      .attr("stroke-width", d => d.center ? 2.6 : 2)
+      .attr("stroke-opacity", .88)
+      .attr("style", "mix-blend-mode:multiply");
+    vennCircleReveal(marks, .08, options.opacity || .34);
+
+    const center = options.center || { x: width / 2, y: height / 2 };
+    if (options.centerLabel) {
+      const core = svg.append("g")
+        .attr("class", "venn-core-label")
+        .attr("transform", `translate(${center.x},${center.y})`);
+      core.append("circle")
+        .attr("r", options.coreRadius || 34)
+        .attr("fill", palette.surface)
+        .attr("stroke", palette.ink)
+        .attr("stroke-width", 1.6)
+        .attr("fill-opacity", .86);
+      vennTextBlock(core, options.centerLabel, 0, -5, {
+        className: "venn-core-text",
+        fontSize: 11,
+        lineHeight: 14,
+        delay: .58
+      });
+      core.select("circle").append("animate")
+        .attr("attributeName", "r")
+        .attr("values", `${options.coreRadius || 34};${(options.coreRadius || 34) + 5};${options.coreRadius || 34}`)
+        .attr("dur", "1.4s")
+        .attr("begin", ".65s")
+        .attr("repeatCount", "indefinite");
+      fadeIn(core, .5, .35);
+    }
+
+    const labelLayer = svg.append("g").attr("class", "venn-label-layer");
+    circles.forEach((item, index) => vennSetLabel(labelLayer, item, .38 + index * .04));
+    if (options.note) {
+      vennTextBlock(svg, options.note, width / 2, height - 38, {
+        textClass: "caption",
+        fontSize: 11,
+        fontWeight: 800,
+        delay: .74
+      });
+    }
+  }
+
+  function makeVennCircle(id, code, label, x, y, r, color, lx, ly, extra = {}) {
+    return { id, code, label, x, y, r, color, lx, ly, ...extra };
+  }
+
+  function renderVennThreeCircle() {
+    renderVennPattern("venn-three-circle", "Venn three circle", "Three peer concepts with single, pairwise, and central shared regions.", {
+      layout: "three-circle-classic",
+      center: { x: 280, y: 214 },
+      coreRadius: 31,
+      centerLabel: ["shared", "meaning"],
+      note: "classic three-set overlap",
+      circles: [
+        makeVennCircle("prompt", "PR", "Prompt", 232, 174, 92, palette.blue, 154, 80),
+        makeVennCircle("data", "DA", "Data", 328, 174, 92, palette.orange, 406, 80),
+        makeVennCircle("model", "MO", "Model", 280, 252, 92, palette.green, 280, 334)
+      ]
+    });
+  }
+
+  function renderVennFiveOverlap() {
+    const center = { x: 280, y: 210 };
+    const labels = [
+      ["data", "DA", "Data", palette.blue],
+      ["model", "MO", "Model", palette.orange],
+      ["eval", "EV", "Eval", palette.green],
+      ["product", "PD", "Product", palette.purple],
+      ["policy", "PL", "Policy", palette.red]
+    ];
+    const points = vennRosettePoints(5, center, 64);
+    renderVennPattern("venn-five-overlap", "Venn five overlap", "Five domains converge around a shared center with direct labels.", {
+      layout: "five-circle-shared-center",
+      center,
+      guideCircle: { ...center, r: 66 },
+      coreRadius: 34,
+      centerLabel: ["shared", "pilot"],
+      note: "five domains, one shared center",
+      opacity: .3,
+      circles: labels.map((item, index) => makeVennCircle(
+        item[0],
+        item[1],
+        item[2],
+        points[index].x,
+        points[index].y,
+        98,
+        item[3],
+        center.x + Math.cos(points[index].angle) * 196,
+        center.y + Math.sin(points[index].angle) * 146
+      ))
+    });
+  }
+
+  function renderVennSevenOverlap() {
+    const center = { x: 280, y: 206 };
+    const labels = [
+      ["prompting", "PR", "Prompt", palette.blue],
+      ["retrieval", "RT", "Retrieval", palette.orange],
+      ["memory", "ME", "Memory", palette.green],
+      ["tooling", "TL", "Tools", palette.purple],
+      ["evals", "EV", "Evals", palette.red],
+      ["safety", "SF", "Safety", palette.blueHover],
+      ["product", "PD", "Product", palette.orangeHover]
+    ];
+    const points = vennRosettePoints(7, center, 75);
+    renderVennPattern("venn-seven-overlap", "Venn seven overlap", "Seven LLM workstreams overlap around a central alignment zone.", {
+      layout: "seven-circle-ecosystem",
+      center,
+      guideCircle: { ...center, r: 78 },
+      coreRadius: 38,
+      centerLabel: ["LLM", "alignment"],
+      note: "ecosystem convergence",
+      opacity: .25,
+      circles: labels.map((item, index) => makeVennCircle(
+        item[0],
+        item[1],
+        item[2],
+        points[index].x,
+        points[index].y,
+        85,
+        item[3],
+        center.x + Math.cos(points[index].angle) * 214,
+        center.y + Math.sin(points[index].angle) * 152
+      ))
+    });
+  }
+
+  function renderSymmetricThreeCircleRosette() {
+    const center = { x: 280, y: 210 };
+    const labels = [
+      ["syntax", "SY", "Syntax", palette.blue],
+      ["semantics", "SE", "Meaning", palette.orange],
+      ["context", "CX", "Context", palette.green]
+    ];
+    const points = vennRosettePoints(3, center, 56);
+    renderVennPattern("symmetric-three-circle-rosette", "Symmetric three circle rosette", "Three equal circles arranged with 120-degree rotational symmetry.", {
+      layout: "symmetric-3-rosette",
+      center,
+      guideCircle: { ...center, r: 58 },
+      centerLabel: ["balanced", "center"],
+      note: "120-degree rotational symmetry",
+      opacity: .33,
+      circles: labels.map((item, index) => makeVennCircle(
+        item[0],
+        item[1],
+        item[2],
+        points[index].x,
+        points[index].y,
+        108,
+        item[3],
+        center.x + Math.cos(points[index].angle) * 188,
+        center.y + Math.sin(points[index].angle) * 138
+      ))
+    });
+  }
+
+  function renderSymmetricFiveCircleRosette() {
+    const center = { x: 280, y: 210 };
+    const labels = [
+      ["product", "PD", "Product", palette.blue],
+      ["research", "RS", "Research", palette.orange],
+      ["infra", "IN", "Infra", palette.green],
+      ["design", "DG", "Design", palette.purple],
+      ["risk", "RK", "Risk", palette.red]
+    ];
+    const points = vennRosettePoints(5, center, 66);
+    renderVennPattern("symmetric-five-circle-rosette", "Symmetric five circle rosette", "Five equal circles arranged with 72-degree rotational symmetry.", {
+      layout: "symmetric-5-rosette",
+      center,
+      guideCircle: { ...center, r: 68 },
+      centerLabel: ["shared", "strategy"],
+      note: "72-degree rotational symmetry",
+      opacity: .3,
+      circles: labels.map((item, index) => makeVennCircle(
+        item[0],
+        item[1],
+        item[2],
+        points[index].x,
+        points[index].y,
+        96,
+        item[3],
+        center.x + Math.cos(points[index].angle) * 202,
+        center.y + Math.sin(points[index].angle) * 148
+      ))
+    });
+  }
+
+  function renderSymmetricSevenCircleFlower() {
+    const center = { x: 280, y: 210 };
+    const outer = [
+      ["input", "IN", "Input", palette.blue],
+      ["embed", "EM", "Embed", palette.orange],
+      ["attend", "AT", "Attend", palette.green],
+      ["route", "RT", "Route", palette.purple],
+      ["decode", "DC", "Decode", palette.red],
+      ["eval", "EV", "Eval", palette.blueHover]
+    ];
+    const ring = vennRosettePoints(6, center, 82);
+    const circles = [
+      makeVennCircle("core", "LL", "Core", center.x, center.y, 82, palette.gold, center.x, center.y - 138, { center: true })
+    ].concat(outer.map((item, index) => makeVennCircle(
+      item[0],
+      item[1],
+      item[2],
+      ring[index].x,
+      ring[index].y,
+      82,
+      item[3],
+      center.x + Math.cos(ring[index].angle) * 210,
+      center.y + Math.sin(ring[index].angle) * 148
+    )));
+    renderVennPattern("symmetric-seven-circle-flower", "Symmetric seven circle flower", "A center circle plus six equal neighboring domains in a stable flower pattern.", {
+      layout: "symmetric-7-flower",
+      center,
+      guideCircle: { ...center, r: 82 },
+      centerLabel: ["center", "+ six"],
+      note: "one center with six equal neighbors",
+      opacity: .27,
+      circles
+    });
+  }
+
+  function renderAsymmetricThreeCircleChain() {
+    renderVennPattern("asymmetric-three-circle-chain", "Asymmetric three circle chain", "A middle concept bridges two endpoints while the endpoints stay mostly separate.", {
+      layout: "asymmetric-3-chain",
+      center: { x: 280, y: 214 },
+      centerLabel: ["bridge", "set"],
+      note: "A overlaps B, B overlaps C",
+      opacity: .34,
+      circles: [
+        makeVennCircle("source", "SO", "Source", 184, 214, 84, palette.blue, 102, 126),
+        makeVennCircle("bridge", "BR", "Bridge", 280, 214, 84, palette.orange, 280, 102),
+        makeVennCircle("target", "TG", "Target", 376, 214, 84, palette.green, 458, 126)
+      ]
+    });
+  }
+
+  function renderAsymmetricFiveCircleCluster() {
+    renderVennPattern("asymmetric-five-circle-cluster", "Asymmetric five circle cluster", "Three primary circles form the main block and two secondary circles attach as context.", {
+      layout: "asymmetric-5-cluster",
+      center: { x: 258, y: 208 },
+      coreRadius: 30,
+      centerLabel: ["main", "block"],
+      note: "3+2 attached context",
+      opacity: .32,
+      circles: [
+        makeVennCircle("prompt", "PR", "Prompt", 190, 178, 78, palette.blue, 98, 104),
+        makeVennCircle("model", "MO", "Model", 268, 166, 82, palette.orange, 280, 72),
+        makeVennCircle("data", "DA", "Data", 236, 252, 80, palette.green, 154, 332),
+        makeVennCircle("eval", "EV", "Eval", 334, 244, 72, palette.purple, 420, 318),
+        makeVennCircle("policy", "PL", "Policy", 390, 168, 64, palette.red, 458, 106)
+      ]
+    });
+  }
+
+  function renderAsymmetricSevenCircleBridge() {
+    renderVennPattern("asymmetric-seven-circle-bridge", "Asymmetric seven circle bridge", "Two blocks of three circles connected by one bridge circle in a 3+1+3 structure.", {
+      layout: "asymmetric-7-bridge-3-1-3",
+      center: { x: 280, y: 206 },
+      coreRadius: 31,
+      centerLabel: ["bridge", "circle"],
+      note: "left block 3 + bridge 1 + right block 3",
+      opacity: .31,
+      circles: [
+        makeVennCircle("left-a", "LA", "Left A", 158, 176, 66, palette.blue, 72, 102),
+        makeVennCircle("left-b", "LB", "Left B", 214, 144, 66, palette.orange, 196, 66),
+        makeVennCircle("left-c", "LC", "Left C", 214, 226, 66, palette.green, 98, 318),
+        makeVennCircle("bridge", "BR", "Bridge", 280, 202, 66, palette.gold, 280, 106),
+        makeVennCircle("right-a", "RA", "Right A", 346, 144, 66, palette.purple, 364, 66),
+        makeVennCircle("right-b", "RB", "Right B", 402, 176, 66, palette.red, 488, 102),
+        makeVennCircle("right-c", "RC", "Right C", 346, 226, 66, palette.blueHover, 462, 318)
+      ]
     });
   }
 
