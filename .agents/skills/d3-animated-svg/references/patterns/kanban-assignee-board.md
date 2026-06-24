@@ -10,7 +10,7 @@
 
 - Use this file as the pattern source in isolated skill-only workspaces; read the gallery fixture only when maintaining that fixture.
 - Keep data deterministic and inline small datasets.
-- Preserve the five-column board geometry, one visible title per task card, square card and column edges, bottom-right floating assignee dots, and legend mapping each dot color to a person.
+- Preserve the five-column board geometry, one visible title per task card with 1-3 wrapped lines, square card and column edges, bottom-right floating assignee dots, and legend mapping each dot color to a person.
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
 - Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
 
@@ -38,7 +38,7 @@ function renderKanbanAssigneeBoard() {
     ];
     const tasks = [
       { col: "Intake", title: "Brief", assignees: ["AM", "BR"] },
-      { col: "Intake", title: "Map", assignees: ["CL"] },
+      { col: "Intake", title: "Map release\nnotes draft", assignees: ["CL"], expectedLines: 2 },
       { col: "Intake", title: "Risks", assignees: ["DN", "ES"] },
       { col: "Ready", title: "Spec", assignees: ["AM", "CL"] },
       { col: "Ready", title: "Copy", assignees: ["BR"] },
@@ -46,7 +46,7 @@ function renderKanbanAssigneeBoard() {
       { col: "Ready", title: "API", assignees: ["ES", "CL"] },
       { col: "Build", title: "Data", assignees: ["CL", "ES"] },
       { col: "Build", title: "UI", assignees: ["AM", "DN"] },
-      { col: "Build", title: "Sync", assignees: ["BR", "CL", "ES"] },
+      { col: "Build", title: "Reconcile\nmobile check\nstates", assignees: ["BR", "CL", "ES"], expectedLines: 3 },
       { col: "Build", title: "Tests", assignees: ["DN"] },
       { col: "Build", title: "Fixes", assignees: ["AM", "BR"] },
       { col: "Review", title: "QA", assignees: ["ES", "DN"] },
@@ -64,6 +64,67 @@ function renderKanbanAssigneeBoard() {
     const cardH = 58;
     const cardGap = 4;
     const boardY = 48;
+    const titleX = 6;
+    const titleY = 12.4;
+    const titleLineHeight = 10.1;
+    const titleMaxLines = 3;
+    const titleFullWidth = cardW - titleX * 2;
+    const titleDotSafeWidth = cardW - 60;
+
+    function fitKanbanTitleLine(probe, value, width) {
+      let fitted = value.trim();
+      probe.text(fitted);
+      if (probe.node().getComputedTextLength() <= width) return fitted;
+      while (fitted.length > 1) {
+        fitted = fitted.slice(0, -1).trimEnd();
+        probe.text(`${fitted}...`);
+        if (probe.node().getComputedTextLength() <= width) return `${fitted}...`;
+      }
+      return "...";
+    }
+
+    function wrapKanbanTitle(text, title) {
+      const widthForLine = index => index >= titleMaxLines - 1 ? titleDotSafeWidth : titleFullWidth;
+      const raw = String(title);
+      const probe = text.append("tspan").attr("visibility", "hidden").attr("x", -999);
+      let lines;
+      if (raw.includes("\n")) {
+        const hardLines = raw.split(/\n/).map(line => line.trim()).filter(Boolean);
+        lines = hardLines.slice(0, titleMaxLines);
+        if (hardLines.length > titleMaxLines) {
+          lines[titleMaxLines - 1] = `${lines[titleMaxLines - 1]} ${hardLines.slice(titleMaxLines).join(" ")}`;
+        }
+        lines = lines.map((line, index) => fitKanbanTitleLine(probe, line, widthForLine(index)));
+      } else {
+        const words = raw.split(/\s+/).filter(Boolean);
+        lines = [];
+        let current = "";
+        for (let i = 0; i < words.length; i += 1) {
+          const candidate = current ? `${current} ${words[i]}` : words[i];
+          probe.text(candidate);
+          if (!current || probe.node().getComputedTextLength() <= widthForLine(lines.length)) {
+            current = candidate;
+          } else {
+            lines.push(current);
+            current = words[i];
+            if (lines.length === titleMaxLines - 1) {
+              current = [current, ...words.slice(i + 1)].join(" ");
+              break;
+            }
+          }
+        }
+        if (current && lines.length < titleMaxLines) lines.push(current);
+        lines = lines.map((line, index) => fitKanbanTitleLine(probe, line, widthForLine(index)));
+      }
+      probe.remove();
+      text.attr("data-line-count", lines.length)
+        .selectAll("tspan")
+        .data(lines)
+        .join("tspan")
+        .attr("x", titleX)
+        .attr("y", (_, index) => titleY + index * titleLineHeight)
+        .text(d => d);
+    }
 
     const legend = svg.append("g").attr("class", "kanban-assignee-legend")
       .selectAll("g")
@@ -131,6 +192,7 @@ function renderKanbanAssigneeBoard() {
       .attr("class", "kanban-assignee-card")
       .attr("data-column", d => d.col)
       .attr("data-task-title", d => d.title)
+      .attr("data-expected-lines", d => d.expectedLines || 1)
       .attr("data-assignees", d => d.assignees.join(","))
       .attr("transform", d => `translate(${d.x},${d.y})`);
     cardGroups.append("rect")
@@ -141,11 +203,12 @@ function renderKanbanAssigneeBoard() {
       .attr("stroke-width", 1.15);
     cardGroups.append("text")
       .attr("class", "mark-label")
-      .attr("x", 6)
-      .attr("y", 17)
-      .attr("font-size", 10.6)
+      .attr("x", titleX)
+      .attr("font-size", 9.7)
       .attr("font-weight", 850)
-      .text(d => d.title);
+      .each(function (task) {
+        wrapKanbanTitle(d3.select(this), task.title);
+      });
     cardGroups.each(function (task) {
       const stack = d3.select(this).append("g").attr("class", "assignee-dots");
       const dots = task.assignees.map((id, index) => ({
@@ -154,7 +217,7 @@ function renderKanbanAssigneeBoard() {
       }));
       const dotGroups = stack.selectAll("g.assignee-dot").data(dots).join("g")
         .attr("class", "assignee-dot")
-        .attr("transform", d => `translate(${d.x},42.5)`);
+        .attr("transform", d => `translate(${d.x},46.5)`);
       dotGroups.append("circle")
         .attr("fill", d => d.color)
         .attr("stroke", palette.surface)
