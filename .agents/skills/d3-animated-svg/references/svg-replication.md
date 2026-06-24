@@ -256,6 +256,6 @@ uv run --script scripts/validate-skills.py
 For served gallery checks:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 202 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-202-http.png --wait-ms 2200
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 202 --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-202-mobile.png --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 215 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-215-http.png --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 215 --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-215-mobile.png --wait-ms 2200
 ```

@@ -55,7 +55,7 @@ Use when the source material is an image or screenshot that should remain inspec
 
 ## Asymmetric Task Overlap
 
-Pattern ID: `d3-pattern-asymmetric-task-overlap`.
+Pattern IDs: `d3-pattern-asymmetric-task-overlap`, `d3-pattern-asymmetric-task-overlap-saturated`.
 
 Use when tasks, backlog items, risks, or work units belong to one scope, two shared scopes, or three-or-more overlapping scopes.
 
@@ -65,6 +65,7 @@ Use when tasks, backlog items, risks, or work units belong to one scope, two sha
 - Expose tasks as `.task-dot` and `.task-label` with `data-task-id`, `data-memberships`, and `data-membership-count`.
 - Encode membership count consistently: one scope in blue, two scopes in orange, and three-or-more scopes in red.
 - For the default gallery fixture, validate `data-circle-count="9"`, `data-target-count="20"`, 9 circles, 20 task dots, and 20 task labels.
+- For the saturated 100-task fixture, regenerate label positions with `scripts/layout_task_overlap_labels.py`, load the generated `task-overlap-layouts.js`, and validate `data-target-count="100"`, 100 task dots, 100 task labels, and `data-label-overlap-count="0"`.
 
 ## Venn Overlap Family
 

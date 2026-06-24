@@ -16,6 +16,7 @@ Use this index to choose visual forms that complement Mermaid instead of duplica
 - Text and semantic layouts: word clouds, weighted labels, term clusters, and annotation constellations.
 - Mosaic and matrix forms: Marimekko, waffle grids, context-window token matrices, token-to-slot transformations, tile maps, adjacency matrices, calendar year grids, and public-health heatmaps where area, time, capacity, or unit counts carry the message.
 - SVG data tables: typed row grids, inline bars, pivot heat tables, sortable ranking rows, sparkline rows, and column profiles when cell-level animation or embedded quantitative marks matter.
+- Set-overlap task maps: fixed asymmetric circles with small labeled task dots when work items belong to one, two, or three-or-more scopes and exact membership counts matter.
 - Matrix diagnostics: scatterplot matrices, pairwise comparison grids, and small-multiple correlation panels.
 - Hybrid matrices: correlograms with diagonal histograms, lower-triangle scatter panels, and upper-triangle correlation cells.
 - Spatial indexing and search: quadtrees, nearest-neighbor lookups, partition cells, and query overlays.
@@ -39,6 +40,7 @@ Use these tags to avoid adding near-duplicates to an examples gallery:
 | Simulation | force, collision, pack | settle or staged reveal | nodes return to deterministic positions |
 | Hierarchy | tree, cluster, partition, treemap | parent-to-child expansion | descendants and labels reappear once |
 | Flow | sankey, chord, ribbon, path | ribbon fade, path draw, motion token | paths preserve weight and direction |
+| Set overlap | asymmetric task circles, shared membership dots | circle grow, leader fade, task-dot reveal | set counts and membership attributes match the requested tasks |
 | Proximity | Voronoi, Delaunay, hulls | cell, mesh, or hull reveal | points remain visible as anchors |
 | Sampling | stippling, weighted point fields, Voronoi cells | cells then dots | point density follows the underlying field |
 | Distribution | bins, density, quantiles | bar grow, contour sweep, mark reveal | axes and summaries stay stable |

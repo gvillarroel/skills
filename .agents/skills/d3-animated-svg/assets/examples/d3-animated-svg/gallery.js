@@ -136,6 +136,7 @@
     { id: "document-token-extraction-buckets", kicker: "Document", title: "Document Extraction Buckets", copy: "A single page is scanned in writing order, then colored word blocks split into filler, correct, and wrong buckets with calculated totals.", render: renderDocumentTokenExtractionBuckets },
     { id: "agent-loop-partial-covers", kicker: "Image Overlay", title: "Agent Loop Partial Covers", copy: "A source diagram remains visible while animated translucent covers selectively pass over key areas.", render: renderAgentLoopPartialCovers },
     { id: "asymmetric-task-overlap", kicker: "Set Overlap", title: "Asymmetric Task Overlap", copy: "Nine uneven scope circles hold 20 task dots, including single-scope and shared multi-scope work.", render: renderAsymmetricTaskOverlap },
+    { id: "asymmetric-task-overlap-saturated", kicker: "Set Overlap", title: "Saturated Task Overlap", copy: "Nine asymmetric scope circles hold 100 task dots with collision-audited labels placed on readable lanes.", render: renderAsymmetricTaskOverlapSaturated },
     { id: "venn-three-circle", kicker: "Set Overlap", title: "Venn Three Circle", copy: "Three peer concepts reveal single, pairwise, and shared center intersections.", render: renderVennThreeCircle },
     { id: "venn-five-overlap", kicker: "Set Overlap", title: "Venn Five Overlap", copy: "Five domains converge around a shared center with labeled outer roles.", render: renderVennFiveOverlap },
     { id: "venn-seven-overlap", kicker: "Set Overlap", title: "Venn Seven Overlap", copy: "Seven LLM workstreams overlap around a central alignment zone.", render: renderVennSevenOverlap },
@@ -398,6 +399,20 @@
         .attr("begin", `${delay + i * 0.025}s`)
         .attr("fill", "freeze");
     });
+  }
+
+  function estimateSvgTextWidth(text, fontSize = 10) {
+    return Array.from(String(text)).reduce((sum, char) => {
+      if ("MW@#%".includes(char)) return sum + fontSize * .92;
+      if ("ABCDEFGHKNOPQRSTUVWXYZ0123456789".includes(char)) return sum + fontSize * .68;
+      if ("ilI.,:;!|".includes(char)) return sum + fontSize * .34;
+      if (char === " ") return sum + fontSize * .32;
+      return sum + fontSize * .56;
+    }, 0);
+  }
+
+  function taskLabelBoxWidth(label, fontSize = 8.8, padding = 16, minWidth = 46) {
+    return Math.ceil(Math.max(minWidth, estimateSvgTextWidth(label, fontSize) + padding));
   }
 
   function drawPath(selection, delay = 0, dur = 1.1) {
@@ -2213,7 +2228,7 @@
       { id: "T19", label: "T19 Notes", x: 206, y: 252, lx: 158, ly: 356, memberships: ["docs", "data", "release"] },
       { id: "T20", label: "T20 Drill", x: 360, y: 286, lx: 356, ly: 344, memberships: ["data", "qa", "ops"] }
     ];
-    const labelWidth = d => Math.max(46, d.label.length * 5.4 + 12);
+    const labelWidth = d => taskLabelBoxWidth(d.label, 8.8, 16, 50);
     const dotColor = d => d.memberships.length === 1 ? palette.blue : d.memberships.length === 2 ? palette.orange : palette.red;
     const labelEdgeX = d => d.lx < d.x ? d.lx + labelWidth(d) : d.lx;
 
@@ -2300,6 +2315,8 @@
       .attr("font-size", 8.8)
       .attr("font-weight", 700)
       .attr("fill", palette.ink)
+      .style("font-size", "8.8px")
+      .style("font-weight", 700)
       .text(d => d.label);
     fadeIn(labels, .5, .45);
 
@@ -2332,6 +2349,166 @@
       .attr("y", 370)
       .attr("font-weight", 800)
       .text("20 tasks across 9 asymmetric scopes");
+  }
+
+  function renderAsymmetricTaskOverlapSaturated() {
+    const layout = window.D3_TASK_OVERLAP_LAYOUTS && window.D3_TASK_OVERLAP_LAYOUTS.saturated;
+    const svg = prepareSvg("asymmetric-task-overlap-saturated", "Saturated task overlap", "Nine asymmetric scope circles with 100 task dots and collision-audited direct labels.");
+    if (!layout) {
+      svg.append("text")
+        .attr("class", "mark-label")
+        .attr("x", 36)
+        .attr("y", 70)
+        .text("Missing generated task-overlap layout.");
+      return;
+    }
+
+    svg
+      .attr("data-target-count", layout.targetCount)
+      .attr("data-circle-count", layout.circleCount)
+      .attr("data-label-count", layout.tasks.length)
+      .attr("data-label-algorithm", layout.labelAlgorithm)
+      .attr("data-label-overlap-count", layout.labelOverlapCount)
+      .attr("data-membership-buckets", Object.entries(layout.membershipBuckets).map(([key, value]) => `${key}:${value}`).join(" "));
+
+    const circles = layout.circles.map(circle => ({
+      ...circle,
+      fillColor: palette[circle.fill] || circle.fill,
+      strokeColor: palette[circle.stroke] || circle.stroke
+    }));
+    const tasks = layout.tasks;
+    const dotColor = d => d.membershipCount === 1 ? palette.blue : d.membershipCount === 2 ? palette.orange : palette.red;
+    const labelEdgeX = d => d.labelX < d.x ? d.labelX + d.labelWidth : d.labelX;
+    const labelEdgeY = d => d.labelY + d.labelHeight / 2;
+
+    svg.append("rect")
+      .attr("x", 24)
+      .attr("y", 30)
+      .attr("width", 512)
+      .attr("height", 352)
+      .attr("rx", 10)
+      .attr("fill", palette.surface)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", 1.2);
+
+    const overlapCircles = svg.append("g")
+      .attr("class", "overlap-circle-layer")
+      .selectAll("circle.overlap-circle")
+      .data(circles)
+      .join("circle")
+      .attr("class", "overlap-circle")
+      .attr("data-set-id", d => d.id)
+      .attr("cx", d => d.cx)
+      .attr("cy", d => d.cy)
+      .attr("fill", d => d.fillColor)
+      .attr("fill-opacity", .18)
+      .attr("stroke", d => d.strokeColor)
+      .attr("stroke-width", 1.7)
+      .attr("stroke-opacity", .78);
+    grow(overlapCircles, "r", 4, d => d.r, .05, .7);
+
+    const circleLabels = svg.append("g")
+      .attr("class", "overlap-circle-label-layer")
+      .selectAll("text.overlap-circle-label")
+      .data(circles)
+      .join("text")
+      .attr("class", "caption overlap-circle-label")
+      .attr("x", d => d.lx)
+      .attr("y", d => d.ly)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 8.5)
+      .attr("font-weight", 800)
+      .attr("fill", palette.gray700)
+      .text(d => d.label);
+    fadeIn(circleLabels, .22, .42);
+
+    const leaders = svg.append("g")
+      .attr("class", "task-leader-layer")
+      .attr("stroke", palette.gray500)
+      .attr("stroke-opacity", .28)
+      .attr("stroke-width", .55)
+      .selectAll("line.task-leader")
+      .data(tasks)
+      .join("line")
+      .attr("class", "task-leader")
+      .attr("data-task-id", d => d.id)
+      .attr("x1", d => d.x)
+      .attr("y1", d => d.y)
+      .attr("x2", d => labelEdgeX(d))
+      .attr("y2", labelEdgeY);
+    fadeIn(leaders, .28, .4);
+
+    const dots = svg.append("g")
+      .attr("class", "task-dot-layer")
+      .selectAll("circle.task-dot")
+      .data(tasks)
+      .join("circle")
+      .attr("class", "task-dot")
+      .attr("data-task-id", d => d.id)
+      .attr("data-memberships", d => d.memberships.join(" "))
+      .attr("data-membership-count", d => d.membershipCount)
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("fill", dotColor)
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", .9);
+    dots.append("title").text(d => `${d.id}: ${d.memberships.join(", ")}`);
+    grow(dots, "r", .7, layout.dotRadius, .42, .5);
+
+    const labelGroups = svg.append("g")
+      .attr("class", "task-label-layer")
+      .selectAll("g.task-label-group")
+      .data(tasks)
+      .join("g")
+      .attr("class", "task-label-group")
+      .attr("data-task-id", d => d.id)
+      .attr("data-memberships", d => d.memberships.join(" "))
+      .attr("data-membership-count", d => d.membershipCount)
+      .attr("data-label-lane", d => d.labelLane)
+      .attr("data-label-side", d => d.labelSide);
+
+    const labelBoxes = labelGroups.append("rect")
+      .attr("class", "task-label-bg")
+      .attr("x", d => d.labelX)
+      .attr("y", d => d.labelY)
+      .attr("width", d => d.labelWidth)
+      .attr("height", d => d.labelHeight)
+      .attr("rx", 3.6)
+      .attr("fill", palette.surface)
+      .attr("fill-opacity", .96)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", .65);
+    fadeIn(labelBoxes, .5, .42);
+
+    const labels = labelGroups.append("text")
+      .attr("class", "task-label mark-label")
+      .attr("x", d => d.labelX + 4.4)
+      .attr("y", d => d.labelY + d.labelHeight - 3.1)
+      .attr("font-size", layout.labelFontSize)
+      .attr("font-weight", 800)
+      .attr("fill", palette.ink)
+      .style("font-size", `${layout.labelFontSize}px`)
+      .style("font-weight", 800)
+      .text(d => d.label);
+    fadeIn(labels, .56, .42);
+
+    const legend = [
+      { label: "1 scope", fill: palette.blue },
+      { label: "2 scopes", fill: palette.orange },
+      { label: "3+ scopes", fill: palette.red }
+    ];
+    const legendGroup = svg.append("g").attr("transform", "translate(332,396)");
+    const legendItems = legendGroup.selectAll("g").data(legend).join("g").attr("transform", (_, i) => `translate(${i * 66},0)`);
+    legendItems.append("circle").attr("r", 3.6).attr("cx", 0).attr("cy", 0).attr("fill", d => d.fill).attr("stroke", palette.surface).attr("stroke-width", 1.1);
+    legendItems.append("text").attr("class", "caption").attr("x", 7).attr("y", 3.5).attr("font-size", 8.4).text(d => d.label);
+    fadeIn(legendItems, .76, .42);
+
+    svg.append("text")
+      .attr("class", "caption")
+      .attr("x", 34)
+      .attr("y", 398)
+      .attr("font-weight", 800)
+      .text("100 tasks, 9 scopes, 0 label overlaps");
   }
 
   function vennCircleReveal(selection, delay = .08, opacity = .38) {
