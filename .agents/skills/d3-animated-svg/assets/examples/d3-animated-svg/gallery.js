@@ -3157,11 +3157,11 @@
     ];
     const personById = new Map(people.map(person => [person.id, person]));
     const columns = [
-      { id: "Intake", x: 13, color: palette.blue },
-      { id: "Ready", x: 120, color: palette.green },
-      { id: "Build", x: 227, color: palette.orange },
-      { id: "Review", x: 334, color: palette.purple },
-      { id: "Ship", x: 441, color: palette.cyan }
+      { id: "Intake", x: 8, color: palette.blue },
+      { id: "Ready", x: 117, color: palette.green },
+      { id: "Build", x: 226, color: palette.orange },
+      { id: "Review", x: 335, color: palette.purple },
+      { id: "Ship", x: 444, color: palette.cyan }
     ];
     const tasks = [
       { col: "Intake", title: "Brief", assignees: ["AM", "BR"] },
@@ -3184,18 +3184,19 @@
       { col: "Ship", title: "Monitor", assignees: ["CL", "DN"] },
       { col: "Ship", title: "Retro", assignees: ["BR", "ES", "AM"] }
     ];
-    const colW = 100;
-    const colH = 306;
-    const cardW = colW - 12;
-    const cardH = 43;
-    const cardGap = 8;
-    const boardY = 72;
+    const taskCountByColumn = new Map(columns.map(column => [column.id, tasks.filter(task => task.col === column.id).length]));
+    const colW = 105;
+    const headerH = 24;
+    const cardW = colW - 8;
+    const cardH = 58;
+    const cardGap = 4;
+    const boardY = 48;
 
     const legend = svg.append("g").attr("class", "kanban-assignee-legend")
       .selectAll("g")
       .data(people)
       .join("g")
-      .attr("transform", (_, i) => `translate(${22 + i * 106},30)`);
+      .attr("transform", (_, i) => `translate(${22 + i * 106},22)`);
     legend.append("circle")
       .attr("fill", d => d.color)
       .attr("stroke", palette.surface)
@@ -3223,20 +3224,18 @@
       .attr("transform", d => `translate(${d.x},${boardY})`);
     colGroups.append("rect")
       .attr("width", colW)
-      .attr("height", colH)
-      .attr("rx", 9)
+      .attr("height", d => headerH + 16 + taskCountByColumn.get(d.id) * cardH + Math.max(0, taskCountByColumn.get(d.id) - 1) * cardGap)
       .attr("fill", palette.gray50)
       .attr("stroke", palette.gray200);
     colGroups.append("rect")
       .attr("width", colW)
-      .attr("height", 30)
-      .attr("rx", 9)
+      .attr("height", headerH)
       .attr("fill", d => d.color)
       .attr("fill-opacity", .88);
     colGroups.append("text")
       .attr("class", "reverse-label")
       .attr("x", colW / 2)
-      .attr("y", 20)
+      .attr("y", 16)
       .attr("text-anchor", "middle")
       .attr("font-size", 11)
       .attr("font-weight", 850)
@@ -3250,8 +3249,8 @@
       const column = colById.get(task.col);
       return {
         ...task,
-        x: column.x + 6,
-        y: boardY + 39 + order * (cardH + cardGap),
+        x: column.x + 4,
+        y: boardY + headerH + 8 + order * (cardH + cardGap),
         order
       };
     });
@@ -3264,33 +3263,25 @@
     cardGroups.append("rect")
       .attr("width", cardW)
       .attr("height", cardH)
-      .attr("rx", 7)
       .attr("fill", palette.surface)
       .attr("stroke", palette.gray300)
       .attr("stroke-width", 1.15);
     cardGroups.append("text")
       .attr("class", "mark-label")
-      .attr("x", 8)
-      .attr("y", 35)
-      .attr("font-size", 10.2)
+      .attr("x", 6)
+      .attr("y", 17)
+      .attr("font-size", 10.6)
       .attr("font-weight", 850)
       .text(d => d.title);
-    cardGroups.append("line")
-      .attr("x1", 8)
-      .attr("x2", cardW - 8)
-      .attr("y1", 24)
-      .attr("y2", 24)
-      .attr("stroke", palette.gray100)
-      .attr("stroke-width", 1);
     cardGroups.each(function (task) {
       const stack = d3.select(this).append("g").attr("class", "assignee-dots");
       const dots = task.assignees.map((id, index) => ({
         ...personById.get(id),
-        x: cardW - 10 - (task.assignees.length - 1 - index) * 18
+        x: cardW - 12 - (task.assignees.length - 1 - index) * 18
       }));
       const dotGroups = stack.selectAll("g.assignee-dot").data(dots).join("g")
         .attr("class", "assignee-dot")
-        .attr("transform", d => `translate(${d.x},13.5)`);
+        .attr("transform", d => `translate(${d.x},42.5)`);
       dotGroups.append("circle")
         .attr("fill", d => d.color)
         .attr("stroke", palette.surface)
