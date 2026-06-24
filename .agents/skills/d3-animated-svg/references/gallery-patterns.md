@@ -95,6 +95,7 @@ For gallery updates, verify:
 - sampled replay resets the SVG timeline near zero and the timeline advances after the click
 - repeated replay does not leave duplicated marks or empty SVGs
 - desktop and mobile screenshots preserve readable card headers, replay controls, labels, and SVG framing
+- publication is completed, not just built locally: run `uv run --script scripts/build-pages.py`, commit the updated gallery source and pattern references, push the Pages-deploying branch, then verify the GitHub Pages workflow before relying on the new `d3-pattern-*` URL in another task
 
 Use the gallery verifier for deterministic checks:
 

@@ -4,7 +4,7 @@
   "scripts": {
     "verify": "npm run verify:beeswarm && npm run verify:gallery",
     "verify:beeswarm": "uv run --script ../../../scripts/render_d3_svg.py force-beeswarm.html -o ../../../../../../projects/d3-animated-svg-validation/artifacts/svgs/force-beeswarm.svg --screenshot ../../../../../../projects/d3-animated-svg-validation/artifacts/screenshots/force-beeswarm.png --wait-ms 1800",
-    "verify:gallery": "uv run --script ../../../scripts/verify_d3_gallery.py index.html --expected 202 --screenshot ../../../../../../projects/d3-animated-svg-validation/artifacts/screenshots/gallery.png --wait-ms 2200",
+    "verify:gallery": "uv run --script ../../../scripts/verify_d3_gallery.py index.html --expected 214 --screenshot ../../../../../../projects/d3-animated-svg-validation/artifacts/screenshots/gallery.png --wait-ms 2200",
     "serve": "python -m http.server 4177"
   },
   "dependencies": {

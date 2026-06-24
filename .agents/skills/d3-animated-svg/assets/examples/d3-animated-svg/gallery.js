@@ -153,6 +153,7 @@
     { id: "d3-gantt-rollout", kicker: "Diagram", title: "D3 Gantt Rollout", copy: "Time-scaled tasks, sections, dependencies, milestones, and today marker.", render: renderD3GanttRollout },
     { id: "d3-git-graph", kicker: "Diagram", title: "D3 Git Graph", copy: "Branches, commits, merge curves, and commit labels as SVG geometry.", render: renderD3GitGraph },
     { id: "d3-kanban-board", kicker: "Diagram", title: "D3 Kanban Board", copy: "Columns and ticket cards recreated with D3 joins and staged reveal.", render: renderD3KanbanBoard },
+    { id: "kanban-assignee-board", kicker: "Diagram", title: "Kanban Assignee Board", copy: "Five Kanban columns show compact task titles with two-letter colored assignee dots and a legend.", render: renderKanbanAssigneeBoard },
     { id: "d3-user-journey", kicker: "Diagram", title: "D3 User Journey", copy: "Journey sections, steps, actors, and satisfaction scores as a custom chart.", render: renderD3UserJourney },
     { id: "parallel-coordinates", kicker: "Multivariate", title: "Parallel Coordinates", copy: "Many-dimensional profiles as polylines.", render: renderParallelCoordinates },
     { id: "bubble-scatter", kicker: "Correlation", title: "Bubble Scatter", copy: "Position, radius, and group encoded together.", render: renderBubbleScatter },
@@ -231,6 +232,7 @@
     { id: "freehand-trace", kicker: "Motion", title: "Freehand Trace", copy: "A red point draws a loose hand stroke and leaves ink behind.", render: renderFreehandTrace },
     { id: "ai-line-writing", kicker: "Motion", title: "AI Line Writing", copy: "Monoline strokes write AI Generated one letter at a time.", render: renderAiLineWriting },
     { id: "pen-curve-study", kicker: "Drawing", title: "Pen Curve Study", copy: "A precise pen point lays pressure-modulated calligraphic curves.", render: renderPenCurveStudy },
+    { id: "pen-label-optimizer", kicker: "Labels", title: "Pen Label Optimizer", copy: "Dense pen-like points compare label placement strategies and keep the annealed readable subset.", render: renderPenLabelOptimizer },
     { id: "critical-path", kicker: "Flow", title: "Critical Path DAG", copy: "Weighted dependencies reveal the bottleneck route.", render: renderCriticalPath },
     { id: "mlp-simple", kicker: "AI", title: "MLP Simple", copy: "Gray neurons pulse red one layer at a time.", render: renderMlpSimple },
     { id: "deep-learning-model-execution", kicker: "AI", title: "Deep Learning Model Execution", copy: "A square model frame contains only an internal MLP pulsing through execution.", render: renderDeepLearningModelExecution },
@@ -3142,6 +3144,168 @@
     cardGroups.append("text").attr("class", "caption").attr("x", 16).attr("y", 43).text(d => d.ticket);
     cardGroups.append("text").attr("class", "caption").attr("x", 16).attr("y", 61).text(d => `${d.owner} / ${d.priority}`);
     fadeIn(cardGroups, .18, .45);
+  }
+
+  function renderKanbanAssigneeBoard() {
+    const svg = prepareSvg("kanban-assignee-board", "Kanban assignee board", "Five Kanban columns with task cards, colored assignee dots, and a compact team legend.");
+    const people = [
+      { id: "AM", name: "Avery", color: palette.blue },
+      { id: "BR", name: "Blair", color: palette.orange },
+      { id: "CL", name: "Chen", color: palette.green },
+      { id: "DN", name: "Dana", color: palette.purple },
+      { id: "ES", name: "Ellis", color: palette.cyan }
+    ];
+    const personById = new Map(people.map(person => [person.id, person]));
+    const columns = [
+      { id: "Intake", x: 13, color: palette.blue },
+      { id: "Ready", x: 120, color: palette.green },
+      { id: "Build", x: 227, color: palette.orange },
+      { id: "Review", x: 334, color: palette.purple },
+      { id: "Ship", x: 441, color: palette.cyan }
+    ];
+    const tasks = [
+      { col: "Intake", title: "Brief", assignees: ["AM", "BR"] },
+      { col: "Intake", title: "Map", assignees: ["CL"] },
+      { col: "Intake", title: "Risks", assignees: ["DN", "ES"] },
+      { col: "Ready", title: "Spec", assignees: ["AM", "CL"] },
+      { col: "Ready", title: "Copy", assignees: ["BR"] },
+      { col: "Ready", title: "Flow", assignees: ["DN", "AM"] },
+      { col: "Ready", title: "API", assignees: ["ES", "CL"] },
+      { col: "Build", title: "Data", assignees: ["CL", "ES"] },
+      { col: "Build", title: "UI", assignees: ["AM", "DN"] },
+      { col: "Build", title: "Sync", assignees: ["BR", "CL", "ES"] },
+      { col: "Build", title: "Tests", assignees: ["DN"] },
+      { col: "Build", title: "Fixes", assignees: ["AM", "BR"] },
+      { col: "Review", title: "QA", assignees: ["ES", "DN"] },
+      { col: "Review", title: "Legal", assignees: ["BR"] },
+      { col: "Review", title: "Perf", assignees: ["CL", "AM"] },
+      { col: "Review", title: "Docs", assignees: ["DN", "BR"] },
+      { col: "Ship", title: "Launch", assignees: ["AM", "ES"] },
+      { col: "Ship", title: "Monitor", assignees: ["CL", "DN"] },
+      { col: "Ship", title: "Retro", assignees: ["BR", "ES", "AM"] }
+    ];
+    const colW = 100;
+    const colH = 306;
+    const cardW = colW - 12;
+    const cardH = 43;
+    const cardGap = 8;
+    const boardY = 72;
+
+    const legend = svg.append("g").attr("class", "kanban-assignee-legend")
+      .selectAll("g")
+      .data(people)
+      .join("g")
+      .attr("transform", (_, i) => `translate(${22 + i * 106},30)`);
+    legend.append("circle")
+      .attr("fill", d => d.color)
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", 1.7);
+    grow(legend.selectAll("circle"), "r", 2, 10.2, .04, .35);
+    legend.append("text")
+      .attr("class", "reverse-label")
+      .attr("x", 0)
+      .attr("y", 3.5)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 7.2)
+      .attr("font-weight", 900)
+      .text(d => d.id);
+    legend.append("text")
+      .attr("class", "caption")
+      .attr("x", 16)
+      .attr("y", 4)
+      .attr("font-size", 10.5)
+      .attr("font-weight", 800)
+      .text(d => d.name);
+
+    const colById = new Map(columns.map(column => [column.id, column]));
+    const colGroups = svg.append("g").selectAll("g.kanban-assignee-column").data(columns).join("g")
+      .attr("class", "kanban-assignee-column")
+      .attr("transform", d => `translate(${d.x},${boardY})`);
+    colGroups.append("rect")
+      .attr("width", colW)
+      .attr("height", colH)
+      .attr("rx", 9)
+      .attr("fill", palette.gray50)
+      .attr("stroke", palette.gray200);
+    colGroups.append("rect")
+      .attr("width", colW)
+      .attr("height", 30)
+      .attr("rx", 9)
+      .attr("fill", d => d.color)
+      .attr("fill-opacity", .88);
+    colGroups.append("text")
+      .attr("class", "reverse-label")
+      .attr("x", colW / 2)
+      .attr("y", 20)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 11)
+      .attr("font-weight", 850)
+      .text(d => d.id);
+    fadeIn(colGroups, .08, .34);
+
+    const counts = new Map();
+    const indexed = tasks.map(task => {
+      const order = counts.get(task.col) || 0;
+      counts.set(task.col, order + 1);
+      const column = colById.get(task.col);
+      return {
+        ...task,
+        x: column.x + 6,
+        y: boardY + 39 + order * (cardH + cardGap),
+        order
+      };
+    });
+    const cardGroups = svg.append("g").selectAll("g.kanban-assignee-card").data(indexed).join("g")
+      .attr("class", "kanban-assignee-card")
+      .attr("data-column", d => d.col)
+      .attr("data-task-title", d => d.title)
+      .attr("data-assignees", d => d.assignees.join(","))
+      .attr("transform", d => `translate(${d.x},${d.y})`);
+    cardGroups.append("rect")
+      .attr("width", cardW)
+      .attr("height", cardH)
+      .attr("rx", 7)
+      .attr("fill", palette.surface)
+      .attr("stroke", palette.gray300)
+      .attr("stroke-width", 1.15);
+    cardGroups.append("text")
+      .attr("class", "mark-label")
+      .attr("x", 8)
+      .attr("y", 35)
+      .attr("font-size", 10.2)
+      .attr("font-weight", 850)
+      .text(d => d.title);
+    cardGroups.append("line")
+      .attr("x1", 8)
+      .attr("x2", cardW - 8)
+      .attr("y1", 24)
+      .attr("y2", 24)
+      .attr("stroke", palette.gray100)
+      .attr("stroke-width", 1);
+    cardGroups.each(function (task) {
+      const stack = d3.select(this).append("g").attr("class", "assignee-dots");
+      const dots = task.assignees.map((id, index) => ({
+        ...personById.get(id),
+        x: cardW - 10 - (task.assignees.length - 1 - index) * 18
+      }));
+      const dotGroups = stack.selectAll("g.assignee-dot").data(dots).join("g")
+        .attr("class", "assignee-dot")
+        .attr("transform", d => `translate(${d.x},13.5)`);
+      dotGroups.append("circle")
+        .attr("fill", d => d.color)
+        .attr("stroke", palette.surface)
+        .attr("stroke-width", 1.6);
+      grow(dotGroups.selectAll("circle"), "r", 2, 9.4, .24 + task.order * .035, .34);
+      dotGroups.append("text")
+        .attr("fill", palette.surface)
+        .attr("x", 0)
+        .attr("y", 2.9)
+        .attr("text-anchor", "middle")
+        .attr("font-size", 6.4)
+        .attr("font-weight", 900)
+        .text(d => d.id);
+    });
+    fadeIn(cardGroups, .16, .42);
   }
 
   function renderD3UserJourney() {
@@ -8073,6 +8237,385 @@
       .attr("keyPoints", keyPoints.map(value => Math.max(0, Math.min(1, value)).toFixed(4)).join(";"))
       .append("mpath")
       .attr("href", "#pen-curve-study-pen-path");
+  }
+
+  function renderPenLabelOptimizer() {
+    const svg = prepareSvg("pen-label-optimizer", "Pen label optimizer", "Dense pen-like points use candidate positions and simulated annealing to maximize readable labels.");
+    const plot = { x0: 34, y0: 50, x1: 392, y1: 356 };
+    const labelCount = 64;
+    const clusters = [
+      { cx: 172, cy: 168, rx: 78, ry: 56 },
+      { cx: 255, cy: 188, rx: 82, ry: 62 },
+      { cx: 204, cy: 248, rx: 96, ry: 48 },
+      { cx: 306, cy: 264, rx: 58, ry: 60 }
+    ];
+    const points = d3.range(labelCount).map(i => {
+      const cluster = clusters[i % clusters.length];
+      const angle = i * 2.399963 + (i % 7) * .31;
+      const radius = .22 + ((i * 37) % 78) / 100;
+      return {
+        id: `P${String(i + 1).padStart(2, "0")}`,
+        label: `P${String(i + 1).padStart(2, "0")}`,
+        x: Math.max(plot.x0 + 10, Math.min(plot.x1 - 10, cluster.cx + Math.cos(angle) * cluster.rx * radius + Math.sin(i * .9) * 10)),
+        y: Math.max(plot.y0 + 10, Math.min(plot.y1 - 10, cluster.cy + Math.sin(angle) * cluster.ry * radius + Math.cos(i * .6) * 8)),
+        priority: 100 - i + ((i * 13) % 19) / 20
+      };
+    }).sort((a, b) => d3.descending(a.priority, b.priority));
+    const labelSize = d => ({ w: 28 + d.label.length * 4.7, h: 14 });
+    const directions = [
+      { dx: 1, dy: -1, anchor: "start" },
+      { dx: 1, dy: 0, anchor: "start" },
+      { dx: 1, dy: 1, anchor: "start" },
+      { dx: -1, dy: -1, anchor: "end" },
+      { dx: -1, dy: 0, anchor: "end" },
+      { dx: -1, dy: 1, anchor: "end" },
+      { dx: 0, dy: -1, anchor: "middle" },
+      { dx: 0, dy: 1, anchor: "middle" }
+    ];
+    const offsets = [10, 24, 38, 54];
+    const candidatesFor = d => {
+      const { w, h } = labelSize(d);
+      return directions.flatMap((direction, directionIndex) => offsets.map((offset, offsetIndex) => {
+        const cx = d.x + direction.dx * offset;
+        const cy = d.y + direction.dy * offset;
+        let x0 = cx;
+        if (direction.anchor === "middle") x0 = cx - w / 2;
+        if (direction.anchor === "end") x0 = cx - w;
+        const y0 = cy - h / 2;
+        return {
+          x0,
+          y0,
+          x1: x0 + w,
+          y1: y0 + h,
+          w,
+          h,
+          anchor: direction.anchor,
+          textX: direction.anchor === "end" ? x0 + w : direction.anchor === "middle" ? x0 + w / 2 : x0,
+          textY: y0 + h - 3,
+          offset,
+          directionIndex,
+          offsetIndex
+        };
+      }));
+    };
+    const overlapArea = (a, b) => Math.max(0, Math.min(a.x1, b.x1) - Math.max(a.x0, b.x0)) * Math.max(0, Math.min(a.y1, b.y1) - Math.max(a.y0, b.y0));
+    const outsideArea = box => {
+      const ix0 = Math.max(box.x0, plot.x0);
+      const iy0 = Math.max(box.y0, plot.y0);
+      const ix1 = Math.min(box.x1, plot.x1);
+      const iy1 = Math.min(box.y1, plot.y1);
+      const inside = Math.max(0, ix1 - ix0) * Math.max(0, iy1 - iy0);
+      return (box.x1 - box.x0) * (box.y1 - box.y0) - inside;
+    };
+    const intersects = (a, b, pad = 2) => !(a.x1 + pad < b.x0 || a.x0 - pad > b.x1 || a.y1 + pad < b.y0 || a.y0 - pad > b.y1);
+    const labelDistance = (point, box) => {
+      const cx = Math.max(box.x0, Math.min(point.x, box.x1));
+      const cy = Math.max(box.y0, Math.min(point.y, box.y1));
+      return Math.hypot(cx - point.x, cy - point.y);
+    };
+    const summarizePlacements = (name, placements) => {
+      let pairOverlap = 0;
+      let overlap = 0;
+      placements.forEach((a, i) => {
+        placements.slice(i + 1).forEach(b => {
+          const area = overlapArea(a.box, b.box);
+          if (area > 0) {
+            pairOverlap += 1;
+            overlap += area;
+          }
+        });
+      });
+      const visible = [];
+      placements.slice().sort((a, b) => d3.descending(a.point.priority, b.point.priority)).forEach(item => {
+        if (outsideArea(item.box) === 0 && !visible.some(kept => intersects(item.box, kept.box, 1))) {
+          visible.push(item);
+        }
+      });
+      return {
+        name,
+        placements,
+        visible,
+        readable: visible.length,
+        pairOverlap,
+        overlapArea: Math.round(overlap),
+        meanDistance: d3.mean(placements, item => labelDistance(item.point, item.box))
+      };
+    };
+    const baselineLayout = () => summarizePlacements("Radial", points.map(point => ({ point, box: candidatesFor(point)[0] })));
+    const greedyLayout = () => {
+      const kept = [];
+      const placements = [];
+      points.forEach(point => {
+        const best = candidatesFor(point)
+          .map(box => ({
+            box,
+            cost: outsideArea(box) * 999 + d3.sum(kept, keptItem => overlapArea(box, keptItem.box) * 999) + labelDistance(point, box) * .25 + box.offset * .07
+          }))
+          .sort((a, b) => d3.ascending(a.cost, b.cost))[0].box;
+        const placement = { point, box: best };
+        placements.push(placement);
+        if (outsideArea(best) === 0 && !kept.some(keptItem => intersects(best, keptItem.box, 1))) {
+          kept.push(placement);
+        }
+      });
+      return summarizePlacements("Greedy", placements);
+    };
+    const forceLayout = () => {
+      const labels = points.map(point => {
+        const size = labelSize(point);
+        return { point, w: size.w, h: size.h, cx: point.x + 12, cy: point.y - 12 };
+      });
+      for (let iteration = 0; iteration < 260; iteration += 1) {
+        for (let i = 0; i < labels.length; i += 1) {
+          const a = labels[i];
+          a.cx += (a.point.x + 12 - a.cx) * .025;
+          a.cy += (a.point.y - 12 - a.cy) * .025;
+          const box = { x0: a.cx - a.w / 2, x1: a.cx + a.w / 2, y0: a.cy - a.h / 2, y1: a.cy + a.h / 2 };
+          if (box.x0 < plot.x0) a.cx += (plot.x0 - box.x0) * .4;
+          if (box.x1 > plot.x1) a.cx -= (box.x1 - plot.x1) * .4;
+          if (box.y0 < plot.y0) a.cy += (plot.y0 - box.y0) * .4;
+          if (box.y1 > plot.y1) a.cy -= (box.y1 - plot.y1) * .4;
+          for (let j = i + 1; j < labels.length; j += 1) {
+            const b = labels[j];
+            const dx = a.cx - b.cx || .01;
+            const dy = a.cy - b.cy || .01;
+            const ox = (a.w + b.w) / 2 + 4 - Math.abs(dx);
+            const oy = (a.h + b.h) / 2 + 4 - Math.abs(dy);
+            if (ox > 0 && oy > 0) {
+              const push = Math.min(ox, oy) * .025;
+              const sx = dx < 0 ? -1 : 1;
+              const sy = dy < 0 ? -1 : 1;
+              if (ox < oy) {
+                a.cx += sx * push;
+                b.cx -= sx * push;
+              } else {
+                a.cy += sy * push;
+                b.cy -= sy * push;
+              }
+            }
+          }
+        }
+      }
+      return summarizePlacements("Force", labels.map(item => ({
+        point: item.point,
+        box: {
+          x0: item.cx - item.w / 2,
+          y0: item.cy - item.h / 2,
+          x1: item.cx + item.w / 2,
+          y1: item.cy + item.h / 2,
+          w: item.w,
+          h: item.h,
+          textX: item.cx,
+          textY: item.cy + 4,
+          anchor: "middle"
+        }
+      })));
+    };
+    const annealedLayout = () => {
+      const candidatesByPoint = points.map(candidatesFor);
+      let assignment = points.map(() => 0);
+      const placed = [];
+      points.forEach((point, pointIndex) => {
+        const best = candidatesByPoint[pointIndex]
+          .map((box, boxIndex) => ({
+            boxIndex,
+            cost: outsideArea(box) * 999 + d3.sum(placed, placedBox => overlapArea(box, placedBox) * 999) + labelDistance(point, box) * .18 + box.offset * .05
+          }))
+          .sort((a, b) => d3.ascending(a.cost, b.cost))[0].boxIndex;
+        assignment[pointIndex] = best;
+        placed.push(candidatesByPoint[pointIndex][best]);
+      });
+      const energy = trial => {
+        const boxes = trial.map((boxIndex, pointIndex) => candidatesByPoint[pointIndex][boxIndex]);
+        let score = 0;
+        boxes.forEach((box, i) => {
+          score += outsideArea(box) * 1200;
+          score += labelDistance(points[i], box) * .45;
+          score += box.offset * .08;
+          for (let j = i + 1; j < boxes.length; j += 1) {
+            score += overlapArea(box, boxes[j]) * 34;
+          }
+        });
+        return score;
+      };
+      let bestAssignment = assignment.slice();
+      let currentEnergy = energy(assignment);
+      let bestEnergy = currentEnergy;
+      let seed = 17;
+      const random = () => {
+        seed = (seed * 1664525 + 1013904223) >>> 0;
+        return seed / 4294967296;
+      };
+      for (let iteration = 0; iteration < 5200; iteration += 1) {
+        const pointIndex = Math.floor(random() * points.length);
+        const trial = assignment.slice();
+        trial[pointIndex] = Math.floor(random() * candidatesByPoint[pointIndex].length);
+        const trialEnergy = energy(trial);
+        const temperature = 34 * Math.pow(.996, iteration) + .08;
+        if (trialEnergy < currentEnergy || Math.exp((currentEnergy - trialEnergy) / temperature) > random()) {
+          assignment = trial;
+          currentEnergy = trialEnergy;
+          if (trialEnergy < bestEnergy) {
+            bestEnergy = trialEnergy;
+            bestAssignment = trial.slice();
+          }
+        }
+      }
+      return summarizePlacements("Anneal", bestAssignment.map((boxIndex, pointIndex) => ({
+        point: points[pointIndex],
+        box: candidatesByPoint[pointIndex][boxIndex]
+      })));
+    };
+
+    const results = [baselineLayout(), greedyLayout(), forceLayout(), annealedLayout()];
+    const best = results.slice().sort((a, b) => d3.descending(a.readable, b.readable) || d3.ascending(a.meanDistance, b.meanDistance))[0];
+    const visibleIds = new Set(best.visible.map(item => item.point.id));
+    svg
+      .attr("data-pattern-family", "label-placement")
+      .attr("data-label-count", labelCount)
+      .attr("data-best-algorithm", best.name.toLowerCase())
+      .attr("data-readable-labels", best.readable)
+      .attr("data-baseline-readable", results[0].readable)
+      .attr("data-greedy-readable", results[1].readable)
+      .attr("data-force-readable", results[2].readable)
+      .attr("data-anneal-readable", results[3].readable);
+
+    svg.append("rect")
+      .attr("x", plot.x0)
+      .attr("y", plot.y0)
+      .attr("width", plot.x1 - plot.x0)
+      .attr("height", plot.y1 - plot.y0)
+      .attr("rx", 8)
+      .attr("fill", palette.gray50)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", 1.2);
+    clusters.forEach(cluster => {
+      svg.append("ellipse")
+        .attr("cx", cluster.cx)
+        .attr("cy", cluster.cy)
+        .attr("rx", cluster.rx)
+        .attr("ry", cluster.ry)
+        .attr("fill", palette.blueHighlight)
+        .attr("fill-opacity", .12)
+        .attr("stroke", palette.gray200)
+        .attr("stroke-dasharray", "4 5");
+    });
+    const marks = svg.append("g").selectAll("circle.pen-label-point")
+      .data(points)
+      .join("circle")
+      .attr("class", "pen-label-point")
+      .attr("data-point-id", d => d.id)
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("fill", d => visibleIds.has(d.id) ? palette.blue : palette.gray300)
+      .attr("fill-opacity", d => visibleIds.has(d.id) ? .82 : .5)
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", 1);
+    grow(marks, "r", 1, d => visibleIds.has(d.id) ? 3.6 : 2.2, .05, .45);
+
+    const leaderGroup = svg.append("g")
+      .attr("class", "pen-label-leaders")
+      .attr("stroke", palette.gray500)
+      .attr("stroke-opacity", .46)
+      .attr("stroke-width", .85);
+    const leaders = leaderGroup.selectAll("line")
+      .data(best.visible)
+      .join("line")
+      .attr("data-point-id", d => d.point.id)
+      .attr("x1", d => d.point.x)
+      .attr("y1", d => d.point.y)
+      .attr("x2", d => d.box.anchor === "end" ? d.box.x1 : d.box.anchor === "middle" ? (d.box.x0 + d.box.x1) / 2 : d.box.x0)
+      .attr("y2", d => (d.box.y0 + d.box.y1) / 2);
+    fadeIn(leaders, .28, .45);
+
+    const labelGroups = svg.append("g")
+      .attr("class", "pen-label-layer")
+      .selectAll("g.pen-label")
+      .data(best.visible)
+      .join("g")
+      .attr("class", "pen-label")
+      .attr("data-point-id", d => d.point.id)
+      .attr("data-priority", d => d.point.priority.toFixed(2))
+      .attr("transform", d => `translate(${d.box.x0},${d.box.y0})`);
+    labelGroups.append("rect")
+      .attr("width", d => d.box.w)
+      .attr("height", d => d.box.h)
+      .attr("rx", 4)
+      .attr("fill", palette.surface)
+      .attr("fill-opacity", .94)
+      .attr("stroke", d => d.point.priority > 76 ? palette.blue : palette.gray200)
+      .attr("stroke-width", .85);
+    labelGroups.append("text")
+      .attr("class", "mark-label")
+      .attr("x", d => d.box.anchor === "end" ? d.box.w - 4 : d.box.anchor === "middle" ? d.box.w / 2 : 4)
+      .attr("y", 10.5)
+      .attr("text-anchor", d => d.box.anchor)
+      .attr("font-size", 8.8)
+      .attr("font-weight", d => d.point.priority > 76 ? 900 : 700)
+      .attr("fill", palette.ink)
+      .text(d => d.point.label);
+    fadeIn(labelGroups, .42, .55);
+
+    const summary = svg.append("g").attr("transform", "translate(414,58)");
+    summary.append("text")
+      .attr("class", "mark-label")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("font-size", 12)
+      .attr("font-weight", 900)
+      .text("64 dense labels");
+    summary.append("text")
+      .attr("class", "caption")
+      .attr("x", 0)
+      .attr("y", 18)
+      .attr("font-size", 10)
+      .text("winner: annealing");
+    const rows = summary.selectAll("g.pen-label-score")
+      .data(results)
+      .join("g")
+      .attr("class", "pen-label-score")
+      .attr("data-algorithm", d => d.name.toLowerCase())
+      .attr("data-readable", d => d.readable)
+      .attr("data-overlap-area", d => d.overlapArea)
+      .attr("transform", (d, i) => `translate(0,${44 + i * 36})`);
+    rows.append("rect")
+      .attr("x", 0)
+      .attr("y", -13)
+      .attr("width", 116)
+      .attr("height", 27)
+      .attr("rx", 5)
+      .attr("fill", d => d.name === best.name ? palette.greenHighlight : palette.surface)
+      .attr("stroke", d => d.name === best.name ? palette.green : palette.gray200);
+    rows.append("text")
+      .attr("class", "mark-label")
+      .attr("x", 8)
+      .attr("y", -1)
+      .attr("font-size", 9.5)
+      .attr("font-weight", 850)
+      .text(d => d.name);
+    rows.append("text")
+      .attr("class", "caption")
+      .attr("x", 8)
+      .attr("y", 10)
+      .attr("font-size", 8.5)
+      .text(d => `${d.readable}/64 readable`);
+    rows.append("rect")
+      .attr("x", 72)
+      .attr("y", -4)
+      .attr("width", d => d.readable / labelCount * 36)
+      .attr("height", 6)
+      .attr("rx", 3)
+      .attr("fill", d => d.name === best.name ? palette.green : palette.blue)
+      .attr("fill-opacity", .78);
+    fadeIn(rows, .58, .5);
+
+    svg.append("text")
+      .attr("class", "caption")
+      .attr("x", plot.x0)
+      .attr("y", 382)
+      .attr("font-size", 10)
+      .attr("font-weight", 800)
+      .text(`anneal kept ${best.readable} readable labels; radial kept ${results[0].readable}`);
   }
 
   function renderCriticalPath() {
