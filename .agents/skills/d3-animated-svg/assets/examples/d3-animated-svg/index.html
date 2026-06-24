@@ -82,6 +82,39 @@
       align-items: center;
     }
 
+    .page-link {
+      min-height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 12px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .page-link:hover {
+      border-color: var(--blue);
+      background: var(--blue-highlight);
+      color: var(--blue-hover);
+    }
+
+    .page-link:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .page-link .material-symbols-rounded {
+      font-family: var(--font-icons);
+      font-size: 18px;
+      font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 20;
+      line-height: 1;
+    }
+
     .summary {
       display: grid;
       grid-auto-flow: column;
@@ -307,6 +340,10 @@
         <p class="intro">A broad D3 SVG gallery inspired by official D3 examples and graph-gallery taxonomies, focused on visual forms that Mermaid does not express well.</p>
       </div>
       <div class="header-actions">
+        <a class="page-link" href="./venn-examples.html">
+          <span class="material-symbols-rounded" aria-hidden="true">join_inner</span>
+          Venn examples
+        </a>
         <div class="summary" aria-label="Gallery summary">
           <span><strong id="example-count">0</strong> visual forms</span>
           <span><strong>SVG</strong> output</span>
