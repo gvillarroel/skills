@@ -65,6 +65,8 @@ For token probability selection, prefer the `Token Roulette Sampler` pattern whe
 
 For inline bar tables, scale each embedded bar against the largest visible numeric value in its own column, not against a global table maximum. Keep a separate linear scale per metric column and expose enough data attributes to audit the rendered ratio. When the table compares live model/API pricing or current product metrics, curate rows to current, directly comparable entries with verified values, omit rows with missing/no-data prices, avoid stale model families in the comparison set, and use solid bars when the point is magnitude comparison rather than secondary background texture.
 
+For Kanban boards with assignee dots, choose a legend layout before drawing columns. Use a top-row legend for maximum card width, a virtual legend column when symmetry matters more than card width, or distributed footer legend chips when the board has spare column height. Preserve square column/card edges, content-sized task cards, bottom-right assignee dots, and `data-legend-mode` / `data-legend-placement` hooks for browser validation.
+
 For sketchy variants, preserve the existing chart or diagram's data semantics and use a seeded rough renderer so replay and exported SVGs are stable. Treat sketchiness as an overlay that can be applied to quantitative charts, maps, tables, model scorecards, comparison cards, and explanatory diagrams. Prefer reusable helpers for rough paths, rough rectangles, rough blobs, sketch axes, and hachure fills. Keep labels crisp and readable; apply sketchiness to marks, grids, axes, links, containers, and outlines rather than distorting text.
 
 ## Visual Critique Pass

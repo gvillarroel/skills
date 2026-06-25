@@ -44,6 +44,8 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-pattern-d3-git-graph` | Diagram | D3 Git Graph | `references/patterns/d3-git-graph.md` |
 | `d3-pattern-d3-kanban-board` | Diagram | D3 Kanban Board | `references/patterns/d3-kanban-board.md` |
 | `d3-pattern-kanban-assignee-board` | Diagram | Kanban Assignee Board | `references/patterns/kanban-assignee-board.md` |
+| `d3-pattern-kanban-assignee-virtual-legend` | Diagram | Kanban Virtual Legend | `references/patterns/kanban-assignee-virtual-legend.md` |
+| `d3-pattern-kanban-assignee-distributed-legend` | Diagram | Kanban Distributed Legend | `references/patterns/kanban-assignee-distributed-legend.md` |
 | `d3-pattern-d3-user-journey` | Diagram | D3 User Journey | `references/patterns/d3-user-journey.md` |
 | `d3-pattern-parallel-coordinates` | Multivariate | Parallel Coordinates | `references/patterns/parallel-coordinates.md` |
 | `d3-pattern-bubble-scatter` | Correlation | Bubble Scatter | `references/patterns/bubble-scatter.md` |

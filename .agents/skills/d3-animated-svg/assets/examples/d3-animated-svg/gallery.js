@@ -155,6 +155,8 @@
     { id: "d3-git-graph", kicker: "Diagram", title: "D3 Git Graph", copy: "Branches, commits, merge curves, and commit labels as SVG geometry.", render: renderD3GitGraph },
     { id: "d3-kanban-board", kicker: "Diagram", title: "D3 Kanban Board", copy: "Columns and ticket cards recreated with D3 joins and staged reveal.", render: renderD3KanbanBoard },
     { id: "kanban-assignee-board", kicker: "Diagram", title: "Kanban Assignee Board", copy: "Five Kanban columns show compact task titles with two-letter colored assignee dots and a legend.", render: renderKanbanAssigneeBoard },
+    { id: "kanban-assignee-virtual-legend", kicker: "Diagram", title: "Kanban Virtual Legend", copy: "A five-column Kanban board keeps symmetry by rendering the people legend as a virtual sixth column.", render: renderKanbanAssigneeBoardVirtualLegend },
+    { id: "kanban-assignee-distributed-legend", kicker: "Diagram", title: "Kanban Distributed Legend", copy: "A five-column Kanban board distributes person legend chips through the spare footer space in each column.", render: renderKanbanAssigneeBoardDistributedLegend },
     { id: "d3-user-journey", kicker: "Diagram", title: "D3 User Journey", copy: "Journey sections, steps, actors, and satisfaction scores as a custom chart.", render: renderD3UserJourney },
     { id: "parallel-coordinates", kicker: "Multivariate", title: "Parallel Coordinates", copy: "Many-dimensional profiles as polylines.", render: renderParallelCoordinates },
     { id: "bubble-scatter", kicker: "Correlation", title: "Bubble Scatter", copy: "Position, radius, and group encoded together.", render: renderBubbleScatter },
@@ -3403,7 +3405,38 @@
   }
 
   function renderKanbanAssigneeBoard() {
-    const svg = prepareSvg("kanban-assignee-board", "Kanban assignee board", "Five Kanban columns with task cards, colored assignee dots, and a compact team legend.");
+    renderKanbanAssigneeBoardVariant({
+      id: "kanban-assignee-board",
+      title: "Kanban assignee board",
+      desc: "Five Kanban columns with task cards, colored assignee dots, and a compact team legend.",
+      legendMode: "top-row"
+    });
+  }
+
+  function renderKanbanAssigneeBoardVirtualLegend() {
+    renderKanbanAssigneeBoardVariant({
+      id: "kanban-assignee-virtual-legend",
+      title: "Kanban virtual legend",
+      desc: "Five Kanban columns with task cards and a person legend rendered as a virtual sixth column.",
+      legendMode: "virtual-column"
+    });
+  }
+
+  function renderKanbanAssigneeBoardDistributedLegend() {
+    renderKanbanAssigneeBoardVariant({
+      id: "kanban-assignee-distributed-legend",
+      title: "Kanban distributed legend",
+      desc: "Five Kanban columns with task cards and person legend chips distributed through spare column footer space.",
+      legendMode: "distributed-columns"
+    });
+  }
+
+  function renderKanbanAssigneeBoardVariant({ id, title, desc, legendMode }) {
+    const svg = prepareSvg(id, title, desc)
+      .attr("data-pattern-family", "kanban-assignee-board")
+      .attr("data-legend-mode", legendMode)
+      .attr("data-column-count", 5)
+      .attr("data-assignee-count", 5);
     const people = [
       { id: "AM", name: "Avery", color: palette.blue },
       { id: "BR", name: "Blair", color: palette.orange },
@@ -3412,13 +3445,6 @@
       { id: "ES", name: "Ellis", color: palette.cyan }
     ];
     const personById = new Map(people.map(person => [person.id, person]));
-    const columns = [
-      { id: "Intake", x: 8, color: palette.blue },
-      { id: "Ready", x: 117, color: palette.green },
-      { id: "Build", x: 226, color: palette.orange },
-      { id: "Review", x: 335, color: palette.purple },
-      { id: "Ship", x: 444, color: palette.cyan }
-    ];
     const tasks = [
       { col: "Intake", title: "Brief", assignees: ["AM", "BR"] },
       { col: "Intake", title: "Map release\nnotes draft", assignees: ["CL"], expectedLines: 2 },
@@ -3440,20 +3466,38 @@
       { col: "Ship", title: "Monitor", assignees: ["CL", "DN"] },
       { col: "Ship", title: "Retro", assignees: ["BR", "ES", "AM"] }
     ];
-    const colW = 105;
+    const isVirtualColumn = legendMode === "virtual-column";
+    const isDistributed = legendMode === "distributed-columns";
+    const colW = isVirtualColumn ? 85 : 105;
+    const columnGap = 4;
+    const leftX = isVirtualColumn ? 6 : 8;
+    const columns = [
+      { id: "Intake", color: palette.blue },
+      { id: "Ready", color: palette.green },
+      { id: "Build", color: palette.orange },
+      { id: "Review", color: palette.purple },
+      { id: "Ship", color: palette.cyan }
+    ].map((column, index) => ({
+      ...column,
+      x: leftX + index * (colW + columnGap)
+    }));
     const headerH = 24;
     const cardW = colW - 8;
     const cardGap = 4;
-    const boardY = 48;
+    const boardY = legendMode === "top-row" ? 48 : 34;
     const titleX = 6;
     const titleY = 12.4;
-    const titleLineHeight = 10.1;
-    const titleFontSize = 9.7;
+    const titleLineHeight = isVirtualColumn ? 9.7 : 10.1;
+    const titleFontSize = isVirtualColumn ? 8.9 : 9.7;
     const titleFontWeight = 850;
     const titleMaxLines = 3;
     const titleFullWidth = cardW - titleX * 2;
-    const titleDotSafeWidth = cardW - 60;
+    const titleDotSafeWidth = Math.max(30, cardW - (isVirtualColumn ? 54 : 60));
     const cardHeightForLines = lineCount => 34 + Math.min(titleMaxLines, Math.max(1, lineCount)) * 8;
+    const dotRadius = isVirtualColumn ? 7.7 : 9.4;
+    const dotSpacing = isVirtualColumn ? 15.2 : 18;
+    const dotRight = isVirtualColumn ? 9.5 : 12;
+    const dotFontSize = isVirtualColumn ? 5.7 : 6.4;
 
     function fitKanbanTitleLine(probe, value, width) {
       let fitted = value.trim();
@@ -3526,6 +3570,13 @@
       const columnTasks = tasksByColumn.get(column.id) || [];
       return headerH + 16 + d3.sum(columnTasks, task => task.cardH) + Math.max(0, columnTasks.length - 1) * cardGap;
     };
+    const maxCompactColumnH = d3.max(columns, column => columnHeight(column));
+    const unifiedColumnH = isDistributed
+      ? maxCompactColumnH + 34
+      : isVirtualColumn
+        ? Math.max(maxCompactColumnH, headerH + 18 + people.length * 37)
+        : null;
+    const displayColumnHeight = column => unifiedColumnH || columnHeight(column);
 
     function wrapKanbanTitle(text, lines) {
       text.attr("data-line-count", lines.length)
@@ -3537,45 +3588,57 @@
         .text(d => d);
     }
 
-    const legendGroup = svg.append("g")
-      .attr("class", "kanban-assignee-legend")
-      .attr("data-legend", "assignee");
-    const legend = legendGroup
-      .selectAll("g")
-      .data(people)
-      .join("g")
-      .attr("transform", (_, i) => `translate(${22 + i * 106},22)`);
-    legend.append("circle")
-      .attr("fill", d => d.color)
-      .attr("stroke", palette.surface)
-      .attr("stroke-width", 1.7);
-    grow(legend.selectAll("circle"), "r", 2, 10.2, .04, .35);
-    legend.append("text")
-      .attr("class", "reverse-label")
-      .attr("x", 0)
-      .attr("y", 3.5)
-      .attr("text-anchor", "middle")
-      .attr("font-size", 7.2)
-      .attr("font-weight", 900)
-      .text(d => d.id);
-    legend.append("text")
-      .attr("class", "caption")
-      .attr("x", 16)
-      .attr("y", 4)
-      .attr("font-size", 10.5)
-      .attr("font-weight", 800)
-      .text(d => d.name);
-    revealIn(legendGroup, .06, .3);
+    function drawLegendChips(chips, options = {}) {
+      const radius = options.radius || 9.2;
+      chips.append("circle")
+        .attr("fill", d => d.color)
+        .attr("stroke", palette.surface)
+        .attr("stroke-width", options.strokeWidth || 1.6);
+      grow(chips.selectAll("circle"), "r", 2, radius, options.delay || .04, .35);
+      chips.append("text")
+        .attr("class", "reverse-label")
+        .attr("x", 0)
+        .attr("y", options.idY || 3.2)
+        .attr("text-anchor", "middle")
+        .attr("font-size", options.idFontSize || 6.8)
+        .attr("font-weight", 900)
+        .text(d => d.id);
+      chips.append("text")
+        .attr("class", "caption")
+        .attr("x", options.nameX || 15)
+        .attr("y", options.nameY || 3.8)
+        .attr("font-size", options.nameFontSize || 10)
+        .attr("font-weight", 800)
+        .text(d => d.name);
+    }
+
+    if (legendMode === "top-row") {
+      const legendGroup = svg.append("g")
+        .attr("class", "kanban-assignee-legend")
+        .attr("data-legend", "assignee")
+        .attr("data-legend-mode", legendMode);
+      const legend = legendGroup.selectAll("g.legend-chip")
+        .data(people)
+        .join("g")
+        .attr("class", "legend-chip")
+        .attr("data-person-id", d => d.id)
+        .attr("data-legend-placement", "top-row")
+        .attr("transform", (_, i) => `translate(${22 + i * 106},22)`);
+      drawLegendChips(legend, { radius: 10.2, strokeWidth: 1.7, idFontSize: 7.2, idY: 3.5, nameX: 16, nameY: 4, nameFontSize: 10.5 });
+      revealIn(legendGroup, .06, .3);
+    }
 
     const colById = new Map(columns.map(column => [column.id, column]));
     const columnOrder = new Map(columns.map((column, index) => [column.id, index]));
     const colGroups = svg.append("g").selectAll("g.kanban-assignee-column").data(columns).join("g")
       .attr("class", "kanban-assignee-column")
       .attr("data-column-order", d => columnOrder.get(d.id))
+      .attr("data-column", d => d.id)
+      .attr("data-display-height", d => displayColumnHeight(d))
       .attr("transform", d => `translate(${d.x},${boardY})`);
     colGroups.append("rect")
       .attr("width", colW)
-      .attr("height", columnHeight)
+      .attr("height", displayColumnHeight)
       .attr("fill", palette.gray50)
       .attr("stroke", palette.gray200);
     colGroups.append("rect")
@@ -3592,6 +3655,44 @@
       .attr("font-weight", 850)
       .text(d => d.id);
     revealIn(colGroups, (_, i) => .08 + i * .035, .34);
+
+    if (isVirtualColumn) {
+      const legendX = leftX + columns.length * (colW + columnGap);
+      const legendW = width - legendX - 7;
+      const legendColumn = svg.append("g")
+        .attr("class", "kanban-assignee-legend kanban-assignee-legend-column")
+        .attr("data-legend-mode", legendMode)
+        .attr("data-legend-placement", "virtual-column")
+        .attr("data-display-height", unifiedColumnH)
+        .attr("transform", `translate(${legendX},${boardY})`);
+      legendColumn.append("rect")
+        .attr("width", legendW)
+        .attr("height", unifiedColumnH)
+        .attr("fill", palette.gray50)
+        .attr("stroke", palette.gray200);
+      legendColumn.append("rect")
+        .attr("width", legendW)
+        .attr("height", headerH)
+        .attr("fill", palette.gray800)
+        .attr("fill-opacity", .9);
+      legendColumn.append("text")
+        .attr("class", "reverse-label")
+        .attr("x", legendW / 2)
+        .attr("y", 16)
+        .attr("text-anchor", "middle")
+        .attr("font-size", 10.5)
+        .attr("font-weight", 850)
+        .text("Team");
+      const chips = legendColumn.selectAll("g.legend-chip")
+        .data(people)
+        .join("g")
+        .attr("class", "legend-chip")
+        .attr("data-person-id", d => d.id)
+        .attr("data-legend-placement", "virtual-column")
+        .attr("transform", (_, i) => `translate(17,${headerH + 22 + i * 36})`);
+      drawLegendChips(chips, { radius: 8.8, idFontSize: 6.4, nameX: 14, nameY: 3.6, nameFontSize: 9.7 });
+      revealIn(legendColumn, .1, .34);
+    }
 
     const counts = new Map();
     const offsets = new Map();
@@ -3646,7 +3747,7 @@
       const stack = d3.select(this).append("g").attr("class", "assignee-dots");
       const dots = task.assignees.map((id, index) => ({
         ...personById.get(id),
-        x: cardW - 12 - (task.assignees.length - 1 - index) * 18
+        x: cardW - dotRight - (task.assignees.length - 1 - index) * dotSpacing
       }));
       const dotGroups = stack.selectAll("g.assignee-dot").data(dots).join("g")
         .attr("class", "assignee-dot")
@@ -3655,17 +3756,43 @@
         .attr("fill", d => d.color)
         .attr("stroke", palette.surface)
         .attr("stroke-width", 1.6);
-      grow(dotGroups.selectAll("circle"), "r", 2, 9.4, cardRevealStart + task.revealOrder * cardRevealGap + .2, .32);
+      grow(dotGroups.selectAll("circle"), "r", 2, dotRadius, cardRevealStart + task.revealOrder * cardRevealGap + .2, .32);
       dotGroups.append("text")
         .attr("fill", palette.surface)
         .attr("x", 0)
         .attr("y", 2.9)
         .attr("text-anchor", "middle")
-        .attr("font-size", 6.4)
+        .attr("font-size", dotFontSize)
         .attr("font-weight", 900)
         .text(d => d.id);
     });
     revealIn(cardGroups, d => cardRevealStart + d.revealOrder * cardRevealGap, .32);
+
+    if (isDistributed) {
+      const placements = people.map((person, index) => {
+        const column = columns[index % columns.length];
+        return {
+          ...person,
+          column: column.id,
+          x: column.x + 13,
+          y: boardY + unifiedColumnH - 16
+        };
+      });
+      const legendGroup = svg.append("g")
+        .attr("class", "kanban-assignee-legend")
+        .attr("data-legend", "assignee")
+        .attr("data-legend-mode", legendMode);
+      const legend = legendGroup.selectAll("g.legend-chip")
+        .data(placements)
+        .join("g")
+        .attr("class", "legend-chip")
+        .attr("data-person-id", d => d.id)
+        .attr("data-column", d => d.column)
+        .attr("data-legend-placement", "column-footer")
+        .attr("transform", d => `translate(${d.x},${d.y})`);
+      drawLegendChips(legend, { radius: 8.8, idFontSize: 6.4, nameX: 15, nameY: 3.7, nameFontSize: 9.5, delay: .12 });
+      revealIn(legendGroup, .12, .3);
+    }
   }
 
   function renderD3UserJourney() {

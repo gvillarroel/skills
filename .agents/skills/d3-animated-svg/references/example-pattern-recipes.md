@@ -82,6 +82,20 @@ Use when a concept explainer needs reusable overlapping circles rather than a ma
 - For asymmetric 7-circle bridge layouts, preserve the 3+1+3 structure: three circles in one block, one bridge circle, and three circles in the second block.
 - Animate circle radius and fill-opacity with SVG animation nodes so replay works from the shared gallery button.
 
+## Kanban Assignee Legend Modes
+
+Pattern IDs: `d3-pattern-kanban-assignee-board`, `d3-pattern-kanban-assignee-virtual-legend`, `d3-pattern-kanban-assignee-distributed-legend`.
+
+Use when a Kanban board needs one-title task cards, bottom-right two-letter assignee dots, and a people legend that can move to fit the available board geometry.
+
+- Model people as `{ id, name, color }` and tasks as `{ col, title, assignees, expectedLines? }`; keep `id` to two letters for dot labels.
+- Keep cards content-sized by measured title lines: one-line cards at the smallest height, two-line and three-line titles only adding the vertical space they need.
+- Preserve square card and column edges. Do not add rounded corners when the board is meant to read as a dense operational surface.
+- Use `legendMode: "top-row"` for maximum task-card width and a compact legend above the columns.
+- Use `legendMode: "virtual-column"` when symmetry matters: shrink task columns if needed, add a same-height legend column, and expose legend chips with `data-legend-placement="virtual-column"`.
+- Use `legendMode: "distributed-columns"` when spare vertical space exists in the columns: use one unified column height, reserve a footer band below the task stack, and place one legend chip per column with `data-legend-placement="column-footer"`.
+- Validate `data-legend-mode`, task card heights, title line counts, 19 task cards, 5 task columns, 5 legend chips, bottom-right assignee dots, and no overlap between legend chips and task cards.
+
 ## Pen Label Optimizer
 
 Pattern ID: `d3-pattern-pen-label-optimizer`.
