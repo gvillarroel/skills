@@ -233,7 +233,7 @@
     { id: "freehand-trace", kicker: "Motion", title: "Freehand Trace", copy: "A red point draws a loose hand stroke and leaves ink behind.", render: renderFreehandTrace },
     { id: "ai-line-writing", kicker: "Motion", title: "AI Line Writing", copy: "Monoline strokes write AI Generated one letter at a time.", render: renderAiLineWriting },
     { id: "pen-curve-study", kicker: "Drawing", title: "Pen Curve Study", copy: "A precise pen point lays pressure-modulated calligraphic curves.", render: renderPenCurveStudy },
-    { id: "pen-label-optimizer", kicker: "Labels", title: "Pen Label Optimizer", copy: "Dense pen-like points compare label placement strategies and keep the annealed readable subset.", render: renderPenLabelOptimizer },
+    { id: "pen-label-optimizer", kicker: "Labels", title: "Pen Label Optimizer", copy: "Dense mixed-length labels compare placement strategies and keep the best readable subset.", render: renderPenLabelOptimizer },
     { id: "critical-path", kicker: "Flow", title: "Critical Path DAG", copy: "Weighted dependencies reveal the bottleneck route.", render: renderCriticalPath },
     { id: "mlp-simple", kicker: "AI", title: "MLP Simple", copy: "Gray neurons pulse red one layer at a time.", render: renderMlpSimple },
     { id: "deep-learning-model-execution", kicker: "AI", title: "Deep Learning Model Execution", copy: "A square model frame contains only an internal MLP pulsing through execution.", render: renderDeepLearningModelExecution },
@@ -8503,9 +8503,19 @@
   }
 
   function renderPenLabelOptimizer() {
-    const svg = prepareSvg("pen-label-optimizer", "Pen label optimizer", "Dense pen-like points use candidate positions and simulated annealing to maximize readable labels.");
+    const svg = prepareSvg("pen-label-optimizer", "Pen label optimizer", "Dense pen-like points use measured mixed-length labels, candidate positions, and simulated annealing to maximize readable labels.");
     const plot = { x0: 34, y0: 50, x1: 392, y1: 356 };
-    const labelCount = 64;
+    const labelTexts = [
+      "QK", "Tokenizer", "KV cache", "GPU batch", "Attention head", "Logit lens", "RoPE phase", "MoE router",
+      "Beam-4", "Prompt span", "Long context", "Cache page", "Draft token", "Verifier", "RMS norm", "SwiGLU gate",
+      "LoRA rank", "Softmax tail", "Top-p cutoff", "Temp 0.8", "Embedding", "Head merge", "Matmul tile", "Residual",
+      "Query", "Key vector", "Value vector", "Pos enc", "FFN up", "FFN down", "Spec decode", "Block mask",
+      "Memory tier", "Token 42", "Batch slot", "Rank update", "Context ring", "Layer 07", "Shard A", "Expert 12",
+      "Router cap", "EOS prob", "Safety tag", "Chunk id", "Page fault", "Latency p95", "Throughput", "Warm cache",
+      "Cold start", "Loss curve", "Gradient", "Adapter", "Quant Q4", "FP8 block", "GPU lane", "Host queue",
+      "Stream id", "Tool call", "JSON field", "System msg", "User intent", "Answer span", "Citation", "Stop seq"
+    ];
+    const labelCount = labelTexts.length;
     const clusters = [
       { cx: 172, cy: 168, rx: 78, ry: 56 },
       { cx: 255, cy: 188, rx: 82, ry: 62 },
@@ -8518,13 +8528,42 @@
       const radius = .22 + ((i * 37) % 78) / 100;
       return {
         id: `P${String(i + 1).padStart(2, "0")}`,
-        label: `P${String(i + 1).padStart(2, "0")}`,
+        label: labelTexts[i],
         x: Math.max(plot.x0 + 10, Math.min(plot.x1 - 10, cluster.cx + Math.cos(angle) * cluster.rx * radius + Math.sin(i * .9) * 10)),
         y: Math.max(plot.y0 + 10, Math.min(plot.y1 - 10, cluster.cy + Math.sin(angle) * cluster.ry * radius + Math.cos(i * .6) * 8)),
         priority: 100 - i + ((i * 13) % 19) / 20
       };
     }).sort((a, b) => d3.descending(a.priority, b.priority));
-    const labelSize = d => ({ w: 28 + d.label.length * 4.7, h: 14 });
+    const estimateLabelWidth = text => Array.from(text).reduce((sum, char) => {
+      if (char === " ") return sum + 3.2;
+      if ("MW@#%".includes(char)) return sum + 8.1;
+      if ("ilI1|.,:;".includes(char)) return sum + 3.2;
+      if (/[A-Z0-9]/.test(char)) return sum + 6.2;
+      return sum + 5.2;
+    }, 0);
+    const measureLayer = svg.append("g")
+      .attr("class", "pen-label-measure")
+      .attr("opacity", 0)
+      .attr("pointer-events", "none");
+    measureLayer.selectAll("text")
+      .data(points)
+      .join("text")
+      .attr("class", "mark-label")
+      .attr("x", -900)
+      .attr("y", -900)
+      .attr("font-size", 8.8)
+      .attr("font-weight", d => d.priority > 76 ? 900 : 700)
+      .text(d => d.label)
+      .each(function (d) {
+        const measured = typeof this.getComputedTextLength === "function" ? this.getComputedTextLength() : 0;
+        const boxWidth = typeof this.getBBox === "function" ? this.getBBox().width : 0;
+        d.labelWidth = Math.ceil(Math.max(measured || 0, boxWidth || 0, estimateLabelWidth(d.label)));
+        d.labelLength = d.label.length;
+      });
+    measureLayer.remove();
+    const labelLengthExtent = d3.extent(points, d => d.labelLength);
+    const labelWidthExtent = d3.extent(points, d => d.labelWidth);
+    const labelSize = d => ({ w: Math.max(22, d.labelWidth + 10), h: 17 });
     const directions = [
       { dx: 1, dy: -1, anchor: "start" },
       { dx: 1, dy: 0, anchor: "start" },
@@ -8535,7 +8574,7 @@
       { dx: 0, dy: -1, anchor: "middle" },
       { dx: 0, dy: 1, anchor: "middle" }
     ];
-    const offsets = [10, 24, 38, 54];
+    const offsets = [12, 28, 46, 68, 92];
     const candidatesFor = d => {
       const { w, h } = labelSize(d);
       return directions.flatMap((direction, directionIndex) => offsets.map((offset, offsetIndex) => {
@@ -8736,6 +8775,11 @@
     svg
       .attr("data-pattern-family", "label-placement")
       .attr("data-label-count", labelCount)
+      .attr("data-variable-labels", "true")
+      .attr("data-min-label-length", labelLengthExtent[0])
+      .attr("data-max-label-length", labelLengthExtent[1])
+      .attr("data-min-label-width", Math.round(labelWidthExtent[0]))
+      .attr("data-max-label-width", Math.round(labelWidthExtent[1]))
       .attr("data-best-algorithm", best.name.toLowerCase())
       .attr("data-readable-labels", best.readable)
       .attr("data-baseline-readable", results[0].readable)
@@ -8798,6 +8842,9 @@
       .join("g")
       .attr("class", "pen-label")
       .attr("data-point-id", d => d.point.id)
+      .attr("data-label-text", d => d.point.label)
+      .attr("data-label-length", d => d.point.labelLength)
+      .attr("data-label-width", d => d.point.labelWidth)
       .attr("data-priority", d => d.point.priority.toFixed(2))
       .attr("transform", d => `translate(${d.box.x0},${d.box.y0})`);
     labelGroups.append("rect")
@@ -8811,7 +8858,7 @@
     labelGroups.append("text")
       .attr("class", "mark-label")
       .attr("x", d => d.box.anchor === "end" ? d.box.w - 4 : d.box.anchor === "middle" ? d.box.w / 2 : 4)
-      .attr("y", 10.5)
+      .attr("y", 12)
       .attr("text-anchor", d => d.box.anchor)
       .attr("font-size", 8.8)
       .attr("font-weight", d => d.point.priority > 76 ? 900 : 700)
@@ -8826,13 +8873,13 @@
       .attr("y", 0)
       .attr("font-size", 12)
       .attr("font-weight", 900)
-      .text("64 dense labels");
+      .text(`${labelCount} mixed labels`);
     summary.append("text")
       .attr("class", "caption")
       .attr("x", 0)
       .attr("y", 18)
       .attr("font-size", 10)
-      .text("winner: annealing");
+      .text(`${labelLengthExtent[0]}-${labelLengthExtent[1]} chars measured`);
     const rows = summary.selectAll("g.pen-label-score")
       .data(results)
       .join("g")
@@ -8878,7 +8925,7 @@
       .attr("y", 382)
       .attr("font-size", 10)
       .attr("font-weight", 800)
-      .text(`anneal kept ${best.readable} readable labels; radial kept ${results[0].readable}`);
+      .text(`${best.name.toLowerCase()} kept ${best.readable} readable mixed labels; radial kept ${results[0].readable}`);
   }
 
   function renderCriticalPath() {

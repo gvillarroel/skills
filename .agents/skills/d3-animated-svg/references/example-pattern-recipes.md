@@ -88,11 +88,12 @@ Pattern ID: `d3-pattern-pen-label-optimizer`.
 Use when many labeled points crowd a pen/scatter-style view and direct labels saturate part of the drawing.
 
 - Generate deterministic candidate rectangles around each point using several directions and offsets.
+- Validate with mixed short, medium, and long labels. Measure SVG text widths before candidate generation when a browser is available; use conservative character-width estimates only as fallback.
 - Score candidates by overlap area, outside-frame area, and leader-line distance.
 - Compare simple radial placement, greedy candidate placement, force/collision relaxation, and simulated annealing.
 - Use simulated annealing plus a final priority-ordered visibility pass when it keeps the most readable labels.
 - Expose the SVG with `data-pattern-family="label-placement"`, `data-label-count`, `data-best-algorithm`, and per-algorithm readable counts.
-- Draw only the readable subset as `.pen-label` groups and keep all source points visible as `.pen-label-point` marks.
+- Draw only the readable subset as `.pen-label` groups and keep all source points visible as `.pen-label-point` marks. Expose label text, length, and measured width as data attributes for browser audits.
 - Add leader lines from labels to points so displaced labels remain attributable.
 
 ## Inline Bar Tables
