@@ -30,16 +30,18 @@ DEFAULT_OUTPUT = (
     / "task-overlap-layouts.js"
 )
 
-WIDTH = 560
-HEIGHT = 420
+WIDTH = 880
+HEIGHT = 450
+CIRCLE_FIELD_OFFSET_X = 180
 LABEL_FONT_SIZE = 7.8
 LABEL_PADDING_X = 13.0
 LABEL_TEXT_PADDING_X = 4.6
-LABEL_ROW_START = 38.5
-LABEL_ROW_STEP = 14.0
+LABEL_ROW_START = 20.0
+LABEL_ROW_STEP = 16.5
 LABEL_ROW_COUNT = 25
 MAX_LABEL_WIDTH = 88.0
 DOT_MIN_DISTANCE = 4.8
+DOT_RADIUS = 2.25
 TASK_COUNT = 100
 SEED = 20260624
 
@@ -170,6 +172,10 @@ CIRCLES: list[dict[str, Any]] = [
     },
 ]
 
+for circle in CIRCLES:
+    circle["cx"] += CIRCLE_FIELD_OFFSET_X
+    circle["lx"] += CIRCLE_FIELD_OFFSET_X
+
 
 @dataclass(frozen=True)
 class LabelSlot:
@@ -197,7 +203,7 @@ def estimate_text_width(text: str, font_size: float = LABEL_FONT_SIZE) -> float:
 
 
 def label_height(font_size: float) -> float:
-    return round(font_size + 4.2, 2)
+    return round(font_size + 5.0, 2)
 
 
 def label_width(label: str, font_size: float) -> float:
@@ -253,8 +259,10 @@ def memberships_for_point(x: float, y: float) -> list[str]:
 def generate_candidates(seed: int) -> list[tuple[float, float, list[str]]]:
     rng = random.Random(seed)
     candidates: list[tuple[float, float, list[str]]] = []
+    min_x = CIRCLE_FIELD_OFFSET_X + 42
+    max_x = CIRCLE_FIELD_OFFSET_X + 510
     for _ in range(24_000):
-        x = rng.uniform(42, 510)
+        x = rng.uniform(min_x, max_x)
         y = rng.uniform(48, 352)
         memberships = memberships_for_point(x, y)
         if memberships:
@@ -309,14 +317,17 @@ def select_tasks(seed: int, task_count: int) -> list[dict[str, Any]]:
 
 
 def label_slots() -> list[LabelSlot]:
-    rows = [LABEL_ROW_START + index * LABEL_ROW_STEP for index in range(LABEL_ROW_COUNT)]
     lanes = [
-        ("left", 20, 0),
-        ("left", 112, 1),
-        ("right", 340, 2),
-        ("right", 432, 3),
+        ("left", 10, 0, LABEL_ROW_STEP / 2),
+        ("left", 106, 1, 0),
+        ("right", 684, 2, 0),
+        ("right", 780, 3, LABEL_ROW_STEP / 2),
     ]
-    return [LabelSlot(x=x, y=y, lane=lane, side=side) for side, x, lane in lanes for y in rows]
+    slots = []
+    for side, x, lane, row_offset in lanes:
+        rows = [LABEL_ROW_START + row_offset + index * LABEL_ROW_STEP for index in range(LABEL_ROW_COUNT)]
+        slots.extend(LabelSlot(x=x, y=y, lane=lane, side=side) for y in rows)
+    return slots
 
 
 def box_for(task: dict[str, Any], slot: LabelSlot) -> dict[str, float]:
@@ -340,9 +351,9 @@ def slot_cost(task: dict[str, Any], slot: LabelSlot) -> float:
     cy = (box["y0"] + box["y1"]) / 2
     distance = math.hypot(cx - task["x"], cy - task["y"])
     side_penalty = 90 if slot.side != preferred_side(task) else 0
-    inner_lane = slot.lane in (2, 3)
-    outer_lane = slot.lane in (0, 5)
-    centrality = 1 - min(1, math.hypot(task["x"] - 280, task["y"] - 210) / 250)
+    inner_lane = slot.lane in (1, 2)
+    outer_lane = slot.lane in (0, 3)
+    centrality = 1 - min(1, math.hypot(task["x"] - WIDTH / 2, task["y"] - HEIGHT / 2) / 250)
     lane_penalty = (0 if inner_lane else 13 if outer_lane else 7) * centrality
     vertical_penalty = abs(cy - task["y"]) * 0.12
     return distance + side_penalty + lane_penalty + vertical_penalty
@@ -355,7 +366,7 @@ def assign_slots(tasks: list[dict[str, Any]], seed: int) -> None:
         range(len(tasks)),
         key=lambda idx: (
             -min(3, tasks[idx]["membershipCount"]),
-            math.hypot(tasks[idx]["x"] - 280, tasks[idx]["y"] - 210),
+            math.hypot(tasks[idx]["x"] - WIDTH / 2, tasks[idx]["y"] - HEIGHT / 2),
         ),
     )
     assignment: dict[int, int] = {}
@@ -411,7 +422,93 @@ def overlap_count(tasks: list[dict[str, Any]], pad: float = 1.0) -> int:
     return count
 
 
+def label_box(task: dict[str, Any], pad: float = 0) -> dict[str, float]:
+    return {
+        "x0": task["labelX"] - pad,
+        "y0": task["labelY"] - pad,
+        "x1": task["labelX"] + task["labelWidth"] + pad,
+        "y1": task["labelY"] + task["labelHeight"] + pad,
+    }
+
+
+def rect_intersects_circle(rect: dict[str, float], circle: dict[str, Any], pad: float = 0) -> bool:
+    closest_x = min(max(circle["cx"], rect["x0"]), rect["x1"])
+    closest_y = min(max(circle["cy"], rect["y0"]), rect["y1"])
+    radius = circle["r"] + pad
+    return (closest_x - circle["cx"]) ** 2 + (closest_y - circle["cy"]) ** 2 < radius * radius
+
+
+def label_circle_overlap_count(tasks: list[dict[str, Any]], pad: float = 1.5) -> int:
+    count = 0
+    for task in tasks:
+        rect = label_box(task, pad)
+        for circle in CIRCLES:
+            if rect_intersects_circle(rect, circle):
+                count += 1
+    return count
+
+
+def label_dot_overlap_count(tasks: list[dict[str, Any]], pad: float = 1.0) -> int:
+    count = 0
+    dot_pad = DOT_RADIUS + pad
+    for label_task in tasks:
+        rect = label_box(label_task, dot_pad)
+        for dot_task in tasks:
+            if rect["x0"] <= dot_task["x"] <= rect["x1"] and rect["y0"] <= dot_task["y"] <= rect["y1"]:
+                count += 1
+    return count
+
+
+def leader_spine_x(side: str) -> float:
+    if side == "left":
+        return round(min(circle["cx"] - circle["r"] for circle in CIRCLES) - 12, 2)
+    return round(max(circle["cx"] + circle["r"] for circle in CIRCLES) + 12, 2)
+
+
+def label_edge(task: dict[str, Any]) -> tuple[float, float]:
+    edge_x = task["labelX"] + task["labelWidth"] if task["labelSide"] == "left" else task["labelX"]
+    edge_y = task["labelY"] + task["labelHeight"] / 2
+    return edge_x, edge_y
+
+
+def leader_segments(task: dict[str, Any]) -> list[tuple[tuple[float, float], tuple[float, float]]]:
+    spine_x = leader_spine_x(task["labelSide"])
+    edge_x, edge_y = label_edge(task)
+    return [
+        ((task["x"], task["y"]), (spine_x, task["y"])),
+        ((spine_x, task["y"]), (spine_x, edge_y)),
+        ((spine_x, edge_y), (edge_x, edge_y)),
+    ]
+
+
+def axis_segment_intersects_rect(
+    segment: tuple[tuple[float, float], tuple[float, float]], rect: dict[str, float]
+) -> bool:
+    (x0, y0), (x1, y1) = segment
+    if abs(y0 - y1) < 1e-9:
+        min_x, max_x = sorted((x0, x1))
+        return rect["y0"] < y0 < rect["y1"] and max(min_x, rect["x0"]) < min(max_x, rect["x1"])
+    if abs(x0 - x1) < 1e-9:
+        min_y, max_y = sorted((y0, y1))
+        return rect["x0"] < x0 < rect["x1"] and max(min_y, rect["y0"]) < min(max_y, rect["y1"])
+    raise ValueError("Leader audit expects axis-aligned segments.")
+
+
+def label_leader_overlap_count(tasks: list[dict[str, Any]], pad: float = 0.2) -> int:
+    count = 0
+    boxes = [label_box(task, pad) for task in tasks]
+    for leader_index, task in enumerate(tasks):
+        for segment in leader_segments(task):
+            for label_index, rect in enumerate(boxes):
+                if label_index == leader_index:
+                    continue
+                if axis_segment_intersects_rect(segment, rect):
+                    count += 1
+    return count
+
+
 def rounded_task(task: dict[str, Any]) -> dict[str, Any]:
+    edge_x, edge_y = label_edge(task)
     return {
         "id": task["id"],
         "label": task["label"],
@@ -428,6 +525,9 @@ def rounded_task(task: dict[str, Any]) -> dict[str, Any]:
         "labelTextPaddingX": task["labelTextPaddingX"],
         "labelLane": task["labelLane"],
         "labelSide": task["labelSide"],
+        "labelEdgeX": round(edge_x, 2),
+        "labelEdgeY": round(edge_y, 2),
+        "leaderSpineX": leader_spine_x(task["labelSide"]),
     }
 
 
@@ -435,8 +535,16 @@ def build_payload(seed: int, task_count: int) -> dict[str, Any]:
     tasks = select_tasks(seed, task_count)
     assign_slots(tasks, seed)
     overlaps = overlap_count(tasks)
+    circle_overlaps = label_circle_overlap_count(tasks)
+    dot_overlaps = label_dot_overlap_count(tasks)
+    leader_overlaps = label_leader_overlap_count(tasks)
     if overlaps:
         raise RuntimeError(f"Generated label layout still has {overlaps} overlaps")
+    if circle_overlaps or dot_overlaps or leader_overlaps:
+        raise RuntimeError(
+            "Generated label layout has non-label overlaps: "
+            f"circles={circle_overlaps}, dots={dot_overlaps}, leaders={leader_overlaps}"
+        )
 
     buckets: dict[str, int] = {"1": 0, "2": 0, "3+": 0}
     for task in tasks:
@@ -453,11 +561,16 @@ def build_payload(seed: int, task_count: int) -> dict[str, Any]:
         "saturated": {
             "id": "asymmetric-task-overlap-saturated",
             "patternId": "d3-pattern-asymmetric-task-overlap-saturated",
-            "labelAlgorithm": "candidate-slot-anneal",
+            "labelAlgorithm": "external-lane-gutter-anneal",
             "seed": seed,
+            "width": WIDTH,
+            "height": HEIGHT,
             "circleCount": len(CIRCLES),
             "targetCount": task_count,
             "labelOverlapCount": overlaps,
+            "labelCircleOverlapCount": circle_overlaps,
+            "labelDotOverlapCount": dot_overlaps,
+            "labelLeaderOverlapCount": leader_overlaps,
             "membershipBuckets": buckets,
             "labelLengthBuckets": length_buckets,
             "labelFontSize": LABEL_FONT_SIZE,
@@ -465,7 +578,7 @@ def build_payload(seed: int, task_count: int) -> dict[str, Any]:
             "labelHeightRange": {"min": min(label_heights), "max": max(label_heights)},
             "maxLabelWidth": MAX_LABEL_WIDTH,
             "longestLabel": longest_label,
-            "dotRadius": 2.25,
+            "dotRadius": DOT_RADIUS,
             "circles": CIRCLES,
             "tasks": [rounded_task(task) for task in tasks],
         }
@@ -503,6 +616,9 @@ def main() -> int:
         "Generated saturated task-overlap layout: "
         f"{saturated['targetCount']} tasks, {saturated['circleCount']} circles, "
         f"{saturated['labelOverlapCount']} label overlaps, "
+        f"non_label_overlaps={{'circles': {saturated['labelCircleOverlapCount']}, "
+        f"'dots': {saturated['labelDotOverlapCount']}, "
+        f"'leaders': {saturated['labelLeaderOverlapCount']}}}, "
         f"buckets={saturated['membershipBuckets']}, "
         f"label_buckets={saturated['labelLengthBuckets']}, "
         f"font_range={saturated['labelFontRange']}"
