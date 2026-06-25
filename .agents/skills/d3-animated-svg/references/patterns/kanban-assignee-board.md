@@ -11,12 +11,14 @@
 - Use this file as the pattern source in isolated skill-only workspaces; read the gallery fixture only when maintaining that fixture.
 - Keep data deterministic and inline small datasets.
 - Preserve the five-column board geometry, one visible title per task card with 1-3 wrapped lines, content-sized card heights, square card and column edges, bottom-right floating assignee dots, and legend mapping each dot color to a person.
+- Show the board scaffold first: columns and the assignee legend reveal before task cards.
+- Reveal task cards one at a time in left-to-right board order. Expose `data-column-order`, `data-task-order`, `data-reveal-order`, and `data-reveal-begin-ms` on cards so browser checks can audit the sequence.
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
 - Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
 
 ## Source Excerpt
 
-The excerpt below is the compact renderer source for this pattern. If it references helpers such as `prepareSvg`, `fadeIn`, `grow`, `drawPath`, `palette`, `ramps`, `axisBottom`, or `axisLeft`, read `references/shared-renderer-helpers.md` and recreate only the needed helper behavior in the final artifact.
+The excerpt below is the compact renderer source for this pattern. If it references helpers such as `prepareSvg`, `fadeIn`, `revealIn`, `grow`, `drawPath`, `palette`, `ramps`, `axisBottom`, or `axisLeft`, read `references/shared-renderer-helpers.md` and recreate only the needed helper behavior in the final artifact.
 
 ```js
 function renderKanbanAssigneeBoard() {
@@ -154,7 +156,10 @@ function renderKanbanAssigneeBoard() {
         .text(d => d);
     }
 
-    const legend = svg.append("g").attr("class", "kanban-assignee-legend")
+    const legendGroup = svg.append("g")
+      .attr("class", "kanban-assignee-legend")
+      .attr("data-legend", "assignee");
+    const legend = legendGroup
       .selectAll("g")
       .data(people)
       .join("g")
@@ -179,10 +184,13 @@ function renderKanbanAssigneeBoard() {
       .attr("font-size", 10.5)
       .attr("font-weight", 800)
       .text(d => d.name);
+    revealIn(legendGroup, .06, .3);
 
     const colById = new Map(columns.map(column => [column.id, column]));
+    const columnOrder = new Map(columns.map((column, index) => [column.id, index]));
     const colGroups = svg.append("g").selectAll("g.kanban-assignee-column").data(columns).join("g")
       .attr("class", "kanban-assignee-column")
+      .attr("data-column-order", d => columnOrder.get(d.id))
       .attr("transform", d => `translate(${d.x},${boardY})`);
     colGroups.append("rect")
       .attr("width", colW)
@@ -202,7 +210,7 @@ function renderKanbanAssigneeBoard() {
       .attr("font-size", 11)
       .attr("font-weight", 850)
       .text(d => d.id);
-    fadeIn(colGroups, .08, .34);
+    revealIn(colGroups, (_, i) => .08 + i * .035, .34);
 
     const counts = new Map();
     const offsets = new Map();
@@ -216,12 +224,24 @@ function renderKanbanAssigneeBoard() {
         ...task,
         x: column.x + 4,
         y: boardY + headerH + 8 + offset,
+        columnOrder: columnOrder.get(task.col),
         order
       };
     });
+    [...indexed]
+      .sort((a, b) => d3.ascending(a.x, b.x) || d3.ascending(a.y, b.y))
+      .forEach((task, revealOrder) => {
+        task.revealOrder = revealOrder;
+      });
+    const cardRevealStart = .66;
+    const cardRevealGap = .115;
     const cardGroups = svg.append("g").selectAll("g.kanban-assignee-card").data(indexed).join("g")
       .attr("class", "kanban-assignee-card")
       .attr("data-column", d => d.col)
+      .attr("data-column-order", d => d.columnOrder)
+      .attr("data-task-order", d => d.order)
+      .attr("data-reveal-order", d => d.revealOrder)
+      .attr("data-reveal-begin-ms", d => Math.round((cardRevealStart + d.revealOrder * cardRevealGap) * 1000))
       .attr("data-task-title", d => d.title)
       .attr("data-expected-lines", d => d.expectedLines || d.lineCount)
       .attr("data-card-height", d => d.cardH)
@@ -254,7 +274,7 @@ function renderKanbanAssigneeBoard() {
         .attr("fill", d => d.color)
         .attr("stroke", palette.surface)
         .attr("stroke-width", 1.6);
-      grow(dotGroups.selectAll("circle"), "r", 2, 9.4, .24 + task.order * .035, .34);
+      grow(dotGroups.selectAll("circle"), "r", 2, 9.4, cardRevealStart + task.revealOrder * cardRevealGap + .2, .32);
       dotGroups.append("text")
         .attr("fill", palette.surface)
         .attr("x", 0)
@@ -264,6 +284,6 @@ function renderKanbanAssigneeBoard() {
         .attr("font-weight", 900)
         .text(d => d.id);
     });
-    fadeIn(cardGroups, .16, .42);
+    revealIn(cardGroups, d => cardRevealStart + d.revealOrder * cardRevealGap, .32);
   }
 ```

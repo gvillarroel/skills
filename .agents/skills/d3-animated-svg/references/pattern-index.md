@@ -81,6 +81,7 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-pattern-temperature-softmax` | LLM | Temperature Softmax | `references/patterns/temperature-softmax.md` |
 | `d3-pattern-nucleus-sampling` | LLM | Nucleus Sampling | `references/patterns/nucleus-sampling.md` |
 | `d3-pattern-attention-routing` | LLM | Attention Routing | `references/patterns/attention-routing.md` |
+| `d3-pattern-attention-arc-decoding` | LLM | Attention Arc Decoding | `references/patterns/attention-arc-decoding.md` |
 | `d3-pattern-embedding-neighborhood` | LLM | Embedding Neighborhood | `references/patterns/embedding-neighborhood.md` |
 | `d3-pattern-kv-cache-growth` | LLM | KV Cache Growth | `references/patterns/kv-cache-growth.md` |
 | `d3-pattern-attention-matrix-tiles` | LLM | Attention Matrix Tiles | `references/patterns/attention-matrix-tiles.md` |

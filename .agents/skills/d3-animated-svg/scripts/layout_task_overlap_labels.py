@@ -33,11 +33,39 @@ DEFAULT_OUTPUT = (
 WIDTH = 560
 HEIGHT = 420
 LABEL_FONT_SIZE = 7.8
-LABEL_HEIGHT = 12.0
-LABEL_PADDING_X = 9.0
+LABEL_PADDING_X = 13.0
+LABEL_TEXT_PADDING_X = 4.6
+LABEL_ROW_START = 38.5
+LABEL_ROW_STEP = 14.0
+LABEL_ROW_COUNT = 25
+MAX_LABEL_WIDTH = 88.0
 DOT_MIN_DISTANCE = 4.8
 TASK_COUNT = 100
 SEED = 20260624
+
+SCOPE_CODES = {
+    "backlog": "BL",
+    "ux": "UX",
+    "api": "API",
+    "security": "SEC",
+    "docs": "DOC",
+    "data": "DATA",
+    "qa": "QA",
+    "release": "REL",
+    "ops": "OPS",
+}
+
+SCOPE_TERMS = {
+    "backlog": "intake",
+    "ux": "copy",
+    "api": "schema",
+    "security": "auth",
+    "docs": "guide",
+    "data": "seed",
+    "qa": "smoke",
+    "release": "cutover",
+    "ops": "runbook",
+}
 
 
 CIRCLES: list[dict[str, Any]] = [
@@ -168,8 +196,50 @@ def estimate_text_width(text: str, font_size: float = LABEL_FONT_SIZE) -> float:
     return total * font_size
 
 
-def label_width(label: str) -> float:
-    return round(max(28.0, estimate_text_width(label) + LABEL_PADDING_X), 2)
+def label_height(font_size: float) -> float:
+    return round(font_size + 4.2, 2)
+
+
+def label_width(label: str, font_size: float) -> float:
+    return round(max(28.0, estimate_text_width(label, font_size) + LABEL_PADDING_X), 2)
+
+
+def task_label_spec(task_id: str, memberships: list[str], index: int) -> dict[str, Any]:
+    primary = memberships[0]
+    secondary = memberships[1] if len(memberships) > 1 else primary
+    long_label = f"{task_id} {SCOPE_TERMS[primary]} {SCOPE_TERMS[secondary]}"
+    medium_label = f"{task_id} {SCOPE_TERMS[primary]}"
+    code_label = f"{task_id} {SCOPE_CODES[primary]}"
+
+    if index % 4 == 0:
+        label = long_label
+        font_size = 6.6
+        bucket = "long"
+    elif index % 3 == 0:
+        label = medium_label
+        font_size = 7.2
+        bucket = "medium"
+    elif index % 5 == 0:
+        label = code_label
+        font_size = 7.8
+        bucket = "medium"
+    else:
+        label = task_id
+        font_size = 8.4
+        bucket = "short"
+
+    width = label_width(label, font_size)
+    if width > MAX_LABEL_WIDTH:
+        raise RuntimeError(f"Label is too wide for the lane contract: {label!r} => {width}")
+
+    return {
+        "label": label,
+        "labelFontSize": font_size,
+        "labelHeight": label_height(font_size),
+        "labelWidth": width,
+        "labelLengthBucket": bucket,
+        "labelTextPaddingX": LABEL_TEXT_PADDING_X,
+    }
 
 
 def memberships_for_point(x: float, y: float) -> list[str]:
@@ -233,22 +303,18 @@ def select_tasks(seed: int, task_count: int) -> list[dict[str, Any]]:
     selected.sort(key=lambda item: (item["y"], item["x"]))
     for index, task in enumerate(selected, start=1):
         task["id"] = f"T{index:03d}"
-        task["label"] = task["id"]
         task["membershipCount"] = len(task["memberships"])
-        task["labelWidth"] = label_width(task["label"])
-        task["labelHeight"] = LABEL_HEIGHT
+        task.update(task_label_spec(task["id"], task["memberships"], index))
     return selected
 
 
 def label_slots() -> list[LabelSlot]:
-    rows = [48 + index * 13 for index in range(24)]
+    rows = [LABEL_ROW_START + index * LABEL_ROW_STEP for index in range(LABEL_ROW_COUNT)]
     lanes = [
-        ("left", 28, 0),
-        ("left", 65, 1),
-        ("left", 102, 2),
-        ("right", 406, 3),
-        ("right", 443, 4),
-        ("right", 480, 5),
+        ("left", 20, 0),
+        ("left", 112, 1),
+        ("right", 340, 2),
+        ("right", 432, 3),
     ]
     return [LabelSlot(x=x, y=y, lane=lane, side=side) for side, x, lane in lanes for y in rows]
 
@@ -357,6 +423,9 @@ def rounded_task(task: dict[str, Any]) -> dict[str, Any]:
         "labelY": task["labelY"],
         "labelWidth": task["labelWidth"],
         "labelHeight": task["labelHeight"],
+        "labelFontSize": task["labelFontSize"],
+        "labelLengthBucket": task["labelLengthBucket"],
+        "labelTextPaddingX": task["labelTextPaddingX"],
         "labelLane": task["labelLane"],
         "labelSide": task["labelSide"],
     }
@@ -373,6 +442,12 @@ def build_payload(seed: int, task_count: int) -> dict[str, Any]:
     for task in tasks:
         key = "3+" if task["membershipCount"] >= 3 else str(task["membershipCount"])
         buckets[key] += 1
+    length_buckets = {"short": 0, "medium": 0, "long": 0}
+    for task in tasks:
+        length_buckets[task["labelLengthBucket"]] += 1
+    font_sizes = [task["labelFontSize"] for task in tasks]
+    label_heights = [task["labelHeight"] for task in tasks]
+    longest_label = max(tasks, key=lambda task: len(task["label"]))["label"]
 
     return {
         "saturated": {
@@ -384,8 +459,12 @@ def build_payload(seed: int, task_count: int) -> dict[str, Any]:
             "targetCount": task_count,
             "labelOverlapCount": overlaps,
             "membershipBuckets": buckets,
+            "labelLengthBuckets": length_buckets,
             "labelFontSize": LABEL_FONT_SIZE,
-            "labelHeight": LABEL_HEIGHT,
+            "labelFontRange": {"min": min(font_sizes), "max": max(font_sizes)},
+            "labelHeightRange": {"min": min(label_heights), "max": max(label_heights)},
+            "maxLabelWidth": MAX_LABEL_WIDTH,
+            "longestLabel": longest_label,
             "dotRadius": 2.25,
             "circles": CIRCLES,
             "tasks": [rounded_task(task) for task in tasks],
@@ -424,7 +503,9 @@ def main() -> int:
         "Generated saturated task-overlap layout: "
         f"{saturated['targetCount']} tasks, {saturated['circleCount']} circles, "
         f"{saturated['labelOverlapCount']} label overlaps, "
-        f"buckets={saturated['membershipBuckets']}"
+        f"buckets={saturated['membershipBuckets']}, "
+        f"label_buckets={saturated['labelLengthBuckets']}, "
+        f"font_range={saturated['labelFontRange']}"
     )
     if not args.dry_run:
         print(f"Output: {args.output}")

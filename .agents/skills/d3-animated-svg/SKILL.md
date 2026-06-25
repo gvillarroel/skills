@@ -11,6 +11,7 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
 2. Choose the output contract before coding:
    - For live interactive artifacts, deliver HTML with D3 transitions, zoom, drag, filters, or tooltips.
    - For portable animated SVG, use D3 to compute geometry and write inline SVG, CSS, or SMIL animation. Do not rely on D3 transitions to survive extraction into a standalone SVG.
+   - If the request names an exact output file or path, write that exact path. Do not derive a replacement filename from a `d3-pattern-*` ID, title, or chart family.
    - For self-contained, standalone, offline, or portable HTML deliverables, do not use CDN scripts, remote fonts, or empty SVGs populated by runtime JavaScript. Read `references/self-contained-output.md`, start from `assets/templates/self-contained-animated-svg.html` when useful, and validate with `scripts/check_self_contained_html.py`.
    - If the request provides JSON, YAML, a table, or another structured output contract with IDs, counts, classes, or data values, treat that structure as the source of truth. Copy numeric counts exactly; do not replace them with nicer, denser, rounded, or approximate values.
 3. Before hand-rolling a micro-visualization, use the pattern references:

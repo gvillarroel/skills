@@ -162,6 +162,15 @@
       box-shadow: 0 8px 22px rgba(51, 62, 72, .08);
     }
 
+    .example-card--wide {
+      grid-column: span 2;
+      overflow-x: auto;
+    }
+
+    .example-card--wide .viz-frame {
+      min-width: 680px;
+    }
+
     .example-header {
       min-height: 118px;
       padding: 16px 16px 12px;
@@ -291,6 +300,10 @@
 
       .gallery {
         grid-template-columns: 1fr;
+      }
+
+      .example-card--wide {
+        grid-column: span 1;
       }
 
       .example-header {

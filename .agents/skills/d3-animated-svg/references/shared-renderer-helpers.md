@@ -89,6 +89,27 @@ function fadeIn(selection, delay = 0, dur = 0.7) {
     .attr("fill", "freeze");
 }
 
+function revealIn(selection, delay = 0, dur = 0.7) {
+  selection.attr("opacity", 1).each(function (d, i) {
+    const resolvedDelay = typeof delay === "function" ? Number(delay(d, i)) : Number(delay);
+    const resolvedDur = typeof dur === "function" ? Number(dur(d, i)) : Number(dur);
+    const safeDelay = Number.isFinite(resolvedDelay) ? Math.max(0, resolvedDelay) : 0;
+    const safeDur = Number.isFinite(resolvedDur) ? Math.max(0.001, resolvedDur) : 0.7;
+    const animation = d3.select(this).append("animate")
+      .attr("attributeName", "opacity")
+      .attr("dur", `${safeDelay + safeDur}s`)
+      .attr("begin", "0s")
+      .attr("fill", "freeze");
+    if (safeDelay > 0) {
+      animation
+        .attr("values", "0;0;1")
+        .attr("keyTimes", `0;${(safeDelay / (safeDelay + safeDur)).toFixed(3)};1`);
+    } else {
+      animation.attr("from", 0).attr("to", 1);
+    }
+  });
+}
+
 function grow(selection, attr, from, to, delay = 0, dur = 0.7) {
   selection.attr(attr, to)
     .append("animate")

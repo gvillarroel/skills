@@ -136,7 +136,7 @@
     { id: "document-token-extraction-buckets", kicker: "Document", title: "Document Extraction Buckets", copy: "A single page is scanned in writing order, then colored word blocks split into filler, correct, and wrong buckets with calculated totals.", render: renderDocumentTokenExtractionBuckets },
     { id: "agent-loop-partial-covers", kicker: "Image Overlay", title: "Agent Loop Partial Covers", copy: "A source diagram remains visible while animated translucent covers selectively pass over key areas.", render: renderAgentLoopPartialCovers },
     { id: "asymmetric-task-overlap", kicker: "Set Overlap", title: "Asymmetric Task Overlap", copy: "Nine uneven scope circles hold 20 task dots, including single-scope and shared multi-scope work.", render: renderAsymmetricTaskOverlap },
-    { id: "asymmetric-task-overlap-saturated", kicker: "Set Overlap", title: "Saturated Task Overlap", copy: "Nine asymmetric scope circles hold 100 task dots with collision-audited labels placed on readable lanes.", render: renderAsymmetricTaskOverlapSaturated },
+    { id: "asymmetric-task-overlap-saturated", kicker: "Set Overlap", title: "Saturated Task Overlap", copy: "Nine asymmetric scope circles hold 100 task dots with mixed-length, mixed-size labels placed on collision-audited lanes.", render: renderAsymmetricTaskOverlapSaturated, size: "wide" },
     { id: "venn-three-circle", kicker: "Set Overlap", title: "Venn Three Circle", copy: "Three peer concepts reveal single, pairwise, and shared center intersections.", render: renderVennThreeCircle },
     { id: "venn-five-overlap", kicker: "Set Overlap", title: "Venn Five Overlap", copy: "Five domains converge around a shared center with labeled outer roles.", render: renderVennFiveOverlap },
     { id: "venn-seven-overlap", kicker: "Set Overlap", title: "Venn Seven Overlap", copy: "Seven LLM workstreams overlap around a central alignment zone.", render: renderVennSevenOverlap },
@@ -192,6 +192,7 @@
     { id: "temperature-softmax", kicker: "LLM", title: "Temperature Softmax", copy: "The same logits sharpen or flatten as temperature changes.", render: renderTemperatureSoftmax },
     { id: "nucleus-sampling", kicker: "LLM", title: "Nucleus Sampling", copy: "Top-p keeps the smallest token set whose cumulative probability crosses a threshold.", render: renderNucleusSampling },
     { id: "attention-routing", kicker: "LLM", title: "Attention Routing", copy: "A query token distributes attention across earlier context tokens.", render: renderAttentionRouting },
+    { id: "attention-arc-decoding", kicker: "LLM", title: "Attention Arc Decoding", copy: "Attention arcs target an empty slot; each generated token joins the context for the next decode step.", render: renderAttentionArcDecoding },
     { id: "embedding-neighborhood", kicker: "LLM", title: "Embedding Neighborhood", copy: "Nearby vectors form semantic neighborhoods around a query.", render: renderEmbeddingNeighborhood },
     { id: "kv-cache-growth", kicker: "LLM", title: "KV Cache Growth", copy: "Generated tokens append reusable key-value columns while the active query advances.", render: renderKvCacheGrowth },
     { id: "attention-matrix-tiles", kicker: "LLM", title: "Attention Matrix Tiles", copy: "Causal attention scores become tiled rows, query focus, and masked future tokens.", render: renderAttentionMatrixTiles },
@@ -345,7 +346,7 @@
     gallery.selectAll("article")
       .data(examples)
       .join("article")
-      .attr("class", "example-card")
+      .attr("class", d => `example-card${d.size === "wide" ? " example-card--wide" : ""}`)
       .attr("id", d => d.patternId)
       .attr("data-example", d => d.id)
       .attr("data-pattern-id", d => d.patternId)
@@ -386,6 +387,29 @@
         .attr("dur", `${dur}s`)
         .attr("begin", `${delay}s`)
         .attr("fill", "freeze");
+    });
+  }
+
+  function revealIn(selection, delay = 0, dur = 0.7) {
+    selection.attr("opacity", 1).each(function (d, i) {
+      const resolvedDelay = typeof delay === "function" ? Number(delay(d, i)) : Number(delay);
+      const resolvedDur = typeof dur === "function" ? Number(dur(d, i)) : Number(dur);
+      const safeDelay = Number.isFinite(resolvedDelay) ? Math.max(0, resolvedDelay) : 0;
+      const safeDur = Number.isFinite(resolvedDur) ? Math.max(0.001, resolvedDur) : 0.7;
+      const animation = d3.select(this).append("animate")
+        .attr("attributeName", "opacity")
+        .attr("dur", `${safeDelay + safeDur}s`)
+        .attr("begin", "0s")
+        .attr("fill", "freeze");
+      if (safeDelay > 0) {
+        animation
+          .attr("values", "0;0;1")
+          .attr("keyTimes", `0;${(safeDelay / (safeDelay + safeDur)).toFixed(3)};1`);
+      } else {
+        animation
+          .attr("from", 0)
+          .attr("to", 1);
+      }
     });
   }
 
@@ -2353,7 +2377,7 @@
 
   function renderAsymmetricTaskOverlapSaturated() {
     const layout = window.D3_TASK_OVERLAP_LAYOUTS && window.D3_TASK_OVERLAP_LAYOUTS.saturated;
-    const svg = prepareSvg("asymmetric-task-overlap-saturated", "Saturated task overlap", "Nine asymmetric scope circles with 100 task dots and collision-audited direct labels.");
+    const svg = prepareSvg("asymmetric-task-overlap-saturated", "Saturated task overlap", "Nine asymmetric scope circles with 100 task dots and collision-audited direct labels of mixed length and font size.");
     if (!layout) {
       svg.append("text")
         .attr("class", "mark-label")
@@ -2369,7 +2393,10 @@
       .attr("data-label-count", layout.tasks.length)
       .attr("data-label-algorithm", layout.labelAlgorithm)
       .attr("data-label-overlap-count", layout.labelOverlapCount)
-      .attr("data-membership-buckets", Object.entries(layout.membershipBuckets).map(([key, value]) => `${key}:${value}`).join(" "));
+      .attr("data-membership-buckets", Object.entries(layout.membershipBuckets).map(([key, value]) => `${key}:${value}`).join(" "))
+      .attr("data-label-length-buckets", Object.entries(layout.labelLengthBuckets || {}).map(([key, value]) => `${key}:${value}`).join(" "))
+      .attr("data-label-font-range", layout.labelFontRange ? `${layout.labelFontRange.min}-${layout.labelFontRange.max}` : layout.labelFontSize)
+      .attr("data-longest-label", layout.longestLabel || "");
 
     const circles = layout.circles.map(circle => ({
       ...circle,
@@ -2465,7 +2492,9 @@
       .attr("data-memberships", d => d.memberships.join(" "))
       .attr("data-membership-count", d => d.membershipCount)
       .attr("data-label-lane", d => d.labelLane)
-      .attr("data-label-side", d => d.labelSide);
+      .attr("data-label-side", d => d.labelSide)
+      .attr("data-label-length-bucket", d => d.labelLengthBucket)
+      .attr("data-label-font-size", d => d.labelFontSize || layout.labelFontSize);
 
     const labelBoxes = labelGroups.append("rect")
       .attr("class", "task-label-bg")
@@ -2482,12 +2511,12 @@
 
     const labels = labelGroups.append("text")
       .attr("class", "task-label mark-label")
-      .attr("x", d => d.labelX + 4.4)
-      .attr("y", d => d.labelY + d.labelHeight - 3.1)
-      .attr("font-size", layout.labelFontSize)
+      .attr("x", d => d.labelX + (d.labelTextPaddingX || 4.4))
+      .attr("y", d => d.labelY + d.labelHeight / 2 + (d.labelFontSize || layout.labelFontSize) * .36)
+      .attr("font-size", d => d.labelFontSize || layout.labelFontSize)
       .attr("font-weight", 800)
       .attr("fill", palette.ink)
-      .style("font-size", `${layout.labelFontSize}px`)
+      .style("font-size", d => `${d.labelFontSize || layout.labelFontSize}px`)
       .style("font-weight", 800)
       .text(d => d.label);
     fadeIn(labels, .56, .42);
@@ -2508,7 +2537,7 @@
       .attr("x", 34)
       .attr("y", 398)
       .attr("font-weight", 800)
-      .text("100 tasks, 9 scopes, 0 label overlaps");
+      .text("100 tasks, mixed labels, 0 label overlaps");
   }
 
   function vennCircleReveal(selection, delay = .08, opacity = .38) {
@@ -3300,27 +3329,77 @@
     const colW = 150;
     const cardH = 70;
     const priorityColor = { "Very High": palette.red, High: palette.orange, Low: palette.green };
+    const priorityLegend = [
+      { label: "Very High", color: priorityColor["Very High"] },
+      { label: "High", color: priorityColor.High },
+      { label: "Low", color: priorityColor.Low }
+    ];
     const colById = new Map(columns.map(d => [d.id, d]));
+    const columnOrder = new Map(columns.map((d, i) => [d.id, i]));
+    const legendGroup = svg.append("g")
+      .attr("class", "kanban-priority-legend")
+      .attr("data-legend", "priority");
+    legendGroup.append("text")
+      .attr("class", "caption")
+      .attr("x", 32)
+      .attr("y", 35)
+      .attr("font-size", 10.5)
+      .attr("font-weight", 850)
+      .text("Priority");
+    const priorityItems = legendGroup.selectAll("g.kanban-priority-item")
+      .data(priorityLegend)
+      .join("g")
+      .attr("class", "kanban-priority-item")
+      .attr("data-priority", d => d.label)
+      .attr("transform", (_, i) => `translate(${102 + i * 112},31)`);
+    priorityItems.append("rect")
+      .attr("x", 0)
+      .attr("y", -9)
+      .attr("width", 12)
+      .attr("height", 12)
+      .attr("rx", 3)
+      .attr("fill", d => d.color);
+    priorityItems.append("text")
+      .attr("class", "caption")
+      .attr("x", 18)
+      .attr("y", 1.5)
+      .attr("font-size", 10.5)
+      .attr("font-weight", 750)
+      .text(d => d.label);
+    revealIn(legendGroup, .06, .3);
     const colGroups = svg.append("g").selectAll("g.kanban-column").data(columns).join("g")
       .attr("class", "kanban-column")
+      .attr("data-column-order", d => columnOrder.get(d.id))
       .attr("transform", d => `translate(${d.x},54)`);
     colGroups.append("rect").attr("width", colW).attr("height", 310).attr("rx", 10).attr("fill", palette.gray50).attr("stroke", palette.gray200);
     colGroups.append("rect").attr("width", colW).attr("height", 34).attr("rx", 10).attr("fill", d => d.color).attr("fill-opacity", .86);
     colGroups.append("text").attr("class", "reverse-label").attr("x", colW / 2).attr("y", 22).attr("text-anchor", "middle").attr("font-weight", 800).text(d => d.id);
-    fadeIn(colGroups, .05, .35);
+    revealIn(colGroups, (_, i) => .08 + i * .04, .34);
+    const counts = new Map();
     const indexed = cards.map(card => {
-      const preceding = cards.filter(d => d.col === card.col).indexOf(card);
-      return { ...card, x: colById.get(card.col).x + 10, y: 104 + preceding * 92 };
+      const preceding = counts.get(card.col) || 0;
+      counts.set(card.col, preceding + 1);
+      return { ...card, x: colById.get(card.col).x + 10, y: 104 + preceding * 92, columnOrder: columnOrder.get(card.col), order: preceding };
     });
+    [...indexed]
+      .sort((a, b) => d3.ascending(a.x, b.x) || d3.ascending(a.y, b.y))
+      .forEach((card, revealOrder) => {
+        card.revealOrder = revealOrder;
+      });
+    const cardRevealStart = .62;
+    const cardRevealGap = .16;
     const cardGroups = svg.append("g").selectAll("g.kanban-card").data(indexed).join("g")
       .attr("class", "kanban-card")
+      .attr("data-column", d => d.col)
+      .attr("data-reveal-order", d => d.revealOrder)
+      .attr("data-reveal-begin-ms", d => Math.round((cardRevealStart + d.revealOrder * cardRevealGap) * 1000))
       .attr("transform", d => `translate(${d.x},${d.y})`);
     cardGroups.append("rect").attr("width", colW - 20).attr("height", cardH).attr("rx", 8).attr("fill", palette.surface).attr("stroke", palette.gray300).attr("stroke-width", 1.3);
     cardGroups.append("rect").attr("x", 0).attr("y", 0).attr("width", 6).attr("height", cardH).attr("rx", 3).attr("fill", d => priorityColor[d.priority]);
     cardGroups.append("text").attr("class", "mark-label").attr("x", 16).attr("y", 21).attr("font-weight", 800).text(d => d.title);
     cardGroups.append("text").attr("class", "caption").attr("x", 16).attr("y", 43).text(d => d.ticket);
     cardGroups.append("text").attr("class", "caption").attr("x", 16).attr("y", 61).text(d => `${d.owner} / ${d.priority}`);
-    fadeIn(cardGroups, .18, .45);
+    revealIn(cardGroups, d => cardRevealStart + d.revealOrder * cardRevealGap, .34);
   }
 
   function renderKanbanAssigneeBoard() {
@@ -3458,7 +3537,10 @@
         .text(d => d);
     }
 
-    const legend = svg.append("g").attr("class", "kanban-assignee-legend")
+    const legendGroup = svg.append("g")
+      .attr("class", "kanban-assignee-legend")
+      .attr("data-legend", "assignee");
+    const legend = legendGroup
       .selectAll("g")
       .data(people)
       .join("g")
@@ -3483,10 +3565,13 @@
       .attr("font-size", 10.5)
       .attr("font-weight", 800)
       .text(d => d.name);
+    revealIn(legendGroup, .06, .3);
 
     const colById = new Map(columns.map(column => [column.id, column]));
+    const columnOrder = new Map(columns.map((column, index) => [column.id, index]));
     const colGroups = svg.append("g").selectAll("g.kanban-assignee-column").data(columns).join("g")
       .attr("class", "kanban-assignee-column")
+      .attr("data-column-order", d => columnOrder.get(d.id))
       .attr("transform", d => `translate(${d.x},${boardY})`);
     colGroups.append("rect")
       .attr("width", colW)
@@ -3506,7 +3591,7 @@
       .attr("font-size", 11)
       .attr("font-weight", 850)
       .text(d => d.id);
-    fadeIn(colGroups, .08, .34);
+    revealIn(colGroups, (_, i) => .08 + i * .035, .34);
 
     const counts = new Map();
     const offsets = new Map();
@@ -3520,12 +3605,24 @@
         ...task,
         x: column.x + 4,
         y: boardY + headerH + 8 + offset,
+        columnOrder: columnOrder.get(task.col),
         order
       };
     });
+    [...indexed]
+      .sort((a, b) => d3.ascending(a.x, b.x) || d3.ascending(a.y, b.y))
+      .forEach((task, revealOrder) => {
+        task.revealOrder = revealOrder;
+      });
+    const cardRevealStart = .66;
+    const cardRevealGap = .115;
     const cardGroups = svg.append("g").selectAll("g.kanban-assignee-card").data(indexed).join("g")
       .attr("class", "kanban-assignee-card")
       .attr("data-column", d => d.col)
+      .attr("data-column-order", d => d.columnOrder)
+      .attr("data-task-order", d => d.order)
+      .attr("data-reveal-order", d => d.revealOrder)
+      .attr("data-reveal-begin-ms", d => Math.round((cardRevealStart + d.revealOrder * cardRevealGap) * 1000))
       .attr("data-task-title", d => d.title)
       .attr("data-expected-lines", d => d.expectedLines || d.lineCount)
       .attr("data-card-height", d => d.cardH)
@@ -3558,7 +3655,7 @@
         .attr("fill", d => d.color)
         .attr("stroke", palette.surface)
         .attr("stroke-width", 1.6);
-      grow(dotGroups.selectAll("circle"), "r", 2, 9.4, .24 + task.order * .035, .34);
+      grow(dotGroups.selectAll("circle"), "r", 2, 9.4, cardRevealStart + task.revealOrder * cardRevealGap + .2, .32);
       dotGroups.append("text")
         .attr("fill", palette.surface)
         .attr("x", 0)
@@ -3568,7 +3665,7 @@
         .attr("font-weight", 900)
         .text(d => d.id);
     });
-    fadeIn(cardGroups, .16, .42);
+    revealIn(cardGroups, d => cardRevealStart + d.revealOrder * cardRevealGap, .32);
   }
 
   function renderD3UserJourney() {
@@ -5768,6 +5865,222 @@
         .attr("text-anchor", "middle")
         .text(`${Math.round(token.weight * 100)}%`);
     });
+  }
+
+  function renderAttentionArcDecoding() {
+    const svg = prepareSvg("attention-arc-decoding", "Attention arc decoding", "Autoregressive decoding draws attention arcs into empty slots before revealing three generated tokens.");
+    const tokenY = 244;
+    const tokenH = 40;
+    const gap = 10;
+    const tokens = [
+      { text: "The", kind: "prompt", w: 52 },
+      { text: "model", kind: "prompt", w: 74 },
+      { text: "predicts", kind: "prompt", w: 90 },
+      { text: "the", kind: "generated", w: 54, step: 0, color: palette.red, fill: palette.redHighlight },
+      { text: "next", kind: "generated", w: 62, step: 1, color: palette.orange, fill: palette.orangeHighlight },
+      { text: "word", kind: "generated", w: 62, step: 2, color: palette.purple, fill: palette.purpleHighlight }
+    ];
+    const totalW = d3.sum(tokens, d => d.w) + gap * (tokens.length - 1);
+    let cursor = (width - totalW) / 2;
+    tokens.forEach((token, index) => {
+      token.index = index;
+      token.x = cursor;
+      token.y = tokenY;
+      token.cx = cursor + token.w / 2;
+      token.generated = token.kind === "generated";
+      cursor += token.w + gap;
+    });
+    const steps = [
+      { step: 1, target: 3, begin: .18, color: palette.red, weights: [.18, .30, .52] },
+      { step: 2, target: 4, begin: .86, color: palette.orange, weights: [.10, .16, .26, .48] },
+      { step: 3, target: 5, begin: 1.54, color: palette.purple, weights: [.08, .12, .18, .25, .37] }
+    ];
+    const stage = svg.append("g").attr("class", "attention-arc-decoding-stage");
+    stage.append("rect")
+      .attr("x", 34)
+      .attr("y", 82)
+      .attr("width", 492)
+      .attr("height", 260)
+      .attr("rx", 14)
+      .attr("fill", palette.gray50)
+      .attr("stroke", palette.gray200);
+    stage.append("path")
+      .attr("d", `M${tokens[0].x},${tokenY + tokenH + 22}H${tokens[5].x + tokens[5].w}`)
+      .attr("stroke", palette.gray300)
+      .attr("stroke-width", 2)
+      .attr("stroke-linecap", "round")
+      .attr("stroke-dasharray", "5 7");
+    stage.append("text")
+      .attr("class", "caption")
+      .attr("x", tokens[0].x)
+      .attr("y", tokenY + tokenH + 48)
+      .text("context grows left to right");
+
+    const haloLayer = stage.append("g").attr("class", "attention-arc-context-halos");
+    steps.forEach(step => {
+      tokens.slice(0, step.target).forEach((source, sourceIndex) => {
+        const halo = haloLayer.append("rect")
+          .attr("x", source.x - 4)
+          .attr("y", source.y - 4)
+          .attr("width", source.w + 8)
+          .attr("height", tokenH + 8)
+          .attr("rx", 10)
+          .attr("fill", source.generated ? source.fill : palette.blueHighlight)
+          .attr("opacity", 0);
+        halo.append("animate")
+          .attr("attributeName", "opacity")
+          .attr("values", "0;.28;.08")
+          .attr("keyTimes", "0;.42;1")
+          .attr("dur", ".48s")
+          .attr("begin", `${step.begin + sourceIndex * .018}s`)
+          .attr("fill", "freeze");
+      });
+    });
+
+    const arcLayer = stage.append("g").attr("class", "attention-arc-layer");
+    const arcPath = (source, target, stepIndex) => {
+      const distance = Math.abs(target.index - source.index);
+      const apexY = tokenY - 48 - distance * 10 - stepIndex * 7;
+      return `M${source.cx},${tokenY + 2}C${source.cx},${apexY} ${target.cx},${apexY} ${target.cx},${tokenY + 2}`;
+    };
+    steps.forEach(step => {
+      const target = tokens[step.target];
+      const sources = tokens.slice(0, step.target).map((source, sourceIndex) => ({
+        source,
+        target,
+        weight: step.weights[sourceIndex],
+        step
+      }));
+      const paths = arcLayer.selectAll(`path.decode-step-${step.step}`)
+        .data(sources)
+        .join("path")
+        .attr("id", d => `attention-arc-decoding-step-${d.step.step}-source-${d.source.index}`)
+        .attr("class", `attention-arc decode-step-${step.step}`)
+        .attr("data-decode-step", step.step)
+        .attr("data-source-token", d => d.source.text)
+        .attr("data-target-token", d => d.target.text)
+        .attr("data-attention-weight", d => d.weight.toFixed(2))
+        .attr("d", d => arcPath(d.source, d.target, step.step))
+        .attr("fill", "none")
+        .attr("stroke", d => d.source.generated ? d.source.color : d.weight > .28 ? step.color : palette.blue)
+        .attr("stroke-width", d => 1.2 + d.weight * 7.2)
+        .attr("stroke-opacity", d => .22 + d.weight * .95)
+        .attr("stroke-linecap", "round");
+      paths.each(function (d, i) {
+        const length = this.getTotalLength();
+        d3.select(this)
+          .attr("stroke-dasharray", `${length} ${length}`)
+          .attr("stroke-dashoffset", 0)
+          .append("animate")
+          .attr("attributeName", "stroke-dashoffset")
+          .attr("from", length)
+          .attr("to", 0)
+          .attr("dur", ".42s")
+          .attr("begin", `${d.step.begin + i * .014}s`)
+          .attr("fill", "freeze");
+      });
+      const query = stage.append("g")
+        .attr("class", "decode-query-cursor")
+        .attr("transform", `translate(${target.cx},${tokenY - 24})`)
+        .attr("opacity", 0);
+      query.append("circle")
+        .attr("r", 12)
+        .attr("fill", palette.surface)
+        .attr("stroke", step.color)
+        .attr("stroke-width", 2.2);
+      query.append("text")
+        .attr("class", "mark-label")
+        .attr("x", 0)
+        .attr("y", 4)
+        .attr("text-anchor", "middle")
+        .attr("font-size", 11)
+        .attr("font-weight", 800)
+        .text("Q");
+      query.append("animate")
+        .attr("attributeName", "opacity")
+        .attr("values", "0;1;1;0")
+        .attr("keyTimes", "0;.2;.78;1")
+        .attr("dur", ".58s")
+        .attr("begin", `${step.begin - .04}s`)
+        .attr("fill", "freeze");
+    });
+
+    const tokenLayer = stage.append("g").attr("class", "attention-arc-token-layer");
+    const tokenGroups = tokenLayer.selectAll("g.attention-arc-token")
+      .data(tokens)
+      .join("g")
+      .attr("class", d => `attention-arc-token ${d.kind}`)
+      .attr("transform", d => `translate(${d.x},${d.y})`);
+    tokenGroups.append("rect")
+      .attr("width", d => d.w)
+      .attr("height", tokenH)
+      .attr("rx", 9)
+      .attr("fill", d => d.generated ? palette.surface : palette.surface)
+      .attr("stroke", d => d.generated ? palette.gray300 : palette.gray400)
+      .attr("stroke-width", d => d.generated ? 1.4 : 1.6)
+      .attr("stroke-dasharray", d => d.generated ? "5 5" : null);
+    tokenGroups.filter(d => !d.generated).append("text")
+      .attr("class", "mark-label")
+      .attr("x", d => d.w / 2)
+      .attr("y", 25)
+      .attr("text-anchor", "middle")
+      .attr("font-weight", 760)
+      .text(d => d.text);
+    const generated = tokenGroups.filter(d => d.generated);
+    generated.append("rect")
+      .attr("width", d => d.w)
+      .attr("height", tokenH)
+      .attr("rx", 9)
+      .attr("fill", d => d.fill)
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", 2.2)
+      .attr("opacity", 0)
+      .each(function (d) {
+        const begin = steps[d.step].begin + .46;
+        d3.select(this).append("animate")
+          .attr("attributeName", "opacity")
+          .attr("from", 0)
+          .attr("to", 1)
+          .attr("dur", ".22s")
+          .attr("begin", `${begin}s`)
+          .attr("fill", "freeze");
+      });
+    generated.append("text")
+      .attr("class", "mark-label")
+      .attr("x", d => d.w / 2)
+      .attr("y", 25)
+      .attr("text-anchor", "middle")
+      .attr("font-weight", 820)
+      .attr("opacity", 0)
+      .text(d => d.text)
+      .each(function (d) {
+        const begin = steps[d.step].begin + .50;
+        d3.select(this).append("animate")
+          .attr("attributeName", "opacity")
+          .attr("from", 0)
+          .attr("to", 1)
+          .attr("dur", ".18s")
+          .attr("begin", `${begin}s`)
+          .attr("fill", "freeze");
+      });
+    generated.append("text")
+      .attr("class", "caption")
+      .attr("x", d => d.w / 2)
+      .attr("y", 58)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 10)
+      .attr("opacity", 0)
+      .text((d, i) => `step ${i + 1}`)
+      .each(function (d) {
+        const begin = steps[d.step].begin + .55;
+        d3.select(this).append("animate")
+          .attr("attributeName", "opacity")
+          .attr("from", 0)
+          .attr("to", .9)
+          .attr("dur", ".18s")
+          .attr("begin", `${begin}s`)
+          .attr("fill", "freeze");
+      });
   }
 
   function renderEmbeddingNeighborhood() {

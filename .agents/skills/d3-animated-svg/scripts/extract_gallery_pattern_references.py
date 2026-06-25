@@ -265,8 +265,8 @@ def main() -> int:
     args = parser.parse_args()
 
     examples = parse_examples(args.gallery)
-    if len(examples) != 214:
-        print(f"Expected 214 examples, found {len(examples)}", file=sys.stderr)
+    if len(examples) != 216:
+        print(f"Expected 216 examples, found {len(examples)}", file=sys.stderr)
         return 1
     if len({example.id for example in examples}) != len(examples):
         print("Duplicate example IDs found", file=sys.stderr)
