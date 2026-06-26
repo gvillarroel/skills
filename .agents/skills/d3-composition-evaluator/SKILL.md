@@ -13,8 +13,9 @@ description: Evaluate D3 or SVG composition quality using dynamic symmetry, bala
 2. Render or inspect the actual SVG before judging it. Prefer a browser screenshot or SVG export when local tooling is available; do not evaluate only from source text when the request is visual.
 3. Check the contract first: every evaluated pattern should have a visible nonblank SVG, `title` and `desc`, stable IDs, and enough attributes to connect the composition variant back to the source pattern.
 4. Evaluate the composition with the rubric in `references/evaluation-rubric.md`. Treat data truth as a constraint: improve placement, grouping, guides, labels, and hierarchy without falsifying quantitative geometry.
-5. Report concrete findings first. Reference exact selectors, IDs, files, or card names when available, then list the minimum fixes required.
-6. When the pattern needs to be reimagined into a different composition instead of only critiqued, hand off to `$d3-composition-recomposer`.
+5. For a composition-variant gallery, run `scripts/evaluate_composition_variants.py` when a base gallery is available. Use it to score both source-pattern closeness and target-composition fit from rendered SVGs.
+6. Report concrete findings first. Reference exact selectors, IDs, files, or card names when available, then list the minimum fixes required.
+7. When the pattern needs to be reimagined into a different composition instead of only critiqued, hand off to `$d3-composition-recomposer`.
 
 ## Output Shape
 
@@ -26,3 +27,18 @@ description: Evaluate D3 or SVG composition quality using dynamic symmetry, bala
 ## Progressive Disclosure
 
 Read `references/evaluation-rubric.md` when the task involves scoring, comparing multiple variants, auditing dynamic-symmetry alignment, or deciding whether a variant is good enough to publish.
+
+## Scripted Variant Evaluation
+
+Use the gallery-level evaluator when the artifact has both composition variants and a base gallery:
+
+```powershell
+uv run --script .agents/skills/d3-composition-evaluator/scripts/evaluate_composition_variants.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --base-gallery .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --output projects/d3-animated-svg-validation/artifacts/data/composition-eval-all.json --report projects/d3-animated-svg-validation/artifacts/reviews/composition-eval-all.md --screenshot-dir projects/d3-animated-svg-validation/artifacts/screenshots/composition-eval-all --expect-clean
+```
+
+The script opens both pages in Chromium, extracts rendered SVG mark profiles, and scores:
+
+- source closeness: traceability to the base pattern, renderer continuity, mark profile similarity, palette overlap, source signature, and title trace.
+- composition fit: contract completeness plus target-specific armature metrics for balance, diagonal, golden/root split, grid, radial, flow spine, and dense-label lanes.
+
+Review the generated worst-score screenshots before changing thresholds or declaring the gallery clean.

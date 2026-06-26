@@ -27,12 +27,33 @@ Use this rubric to evaluate a rendered D3 or SVG pattern, composition variant, o
 - Prefer a small set of strongly placed anchors over forcing every minor point to a guide line.
 - A publishable variant should be understandable from the SVG preview before opening the source gallery.
 
+## Source-Closeness Checks
+
+Use these when evaluating a recomposed variant against the source pattern that generated it:
+
+- The card, SVG, and link expose the original source example ID and stable `d3-pattern-*` ID.
+- The visible source signature or title trace makes the base pattern identifiable without opening the source gallery.
+- The preview renderer is compatible with the source pattern kind. For example, a source network can become balanced, diagonal, or radial, but it should still read as nodes and links.
+- The simplified preview keeps a reasonable mark vocabulary from the base SVG: node-link patterns keep circles and connectors, matrices keep cells, flows keep connectors, dense-label views keep labels and leaders.
+- Lower source-closeness scores are acceptable for highly abstract previews, but the score should explain what became more generic.
+
+## Scripted Scoring
+
+For gallery-level composition sheets, prefer `scripts/evaluate_composition_variants.py` after basic render validation. It opens the rendered composition sheet and base gallery in Chromium and reports:
+
+- `sourceClosenessScore`: traceability, renderer continuity, mark profile similarity, palette overlap, source signature, title trace, and contract health.
+- `compositionScore`: contract health plus target-specific metrics for balance, diagonal, golden/root split, thirds/fifths grid, radial/rosette, flow spine, and dense-label lanes.
+- `overallScore`: weighted source closeness plus composition fit.
+
+Use the JSON output for regression checks and the generated worst-score screenshots for visual calibration. Do not rely on scores alone when a score conflicts with obvious visual evidence.
+
 ## Reporting
 
 Report findings in this order:
 
 1. Blocking contract failures: blank SVG, missing ID, missing source link, broken render, or clipped content.
-2. Composition failures: weak armature, unclear center, poor visual weight, broken reading path, or bad label lanes.
-3. Refinements: palette balance, guide contrast, secondary label placement, or spacing adjustments.
+2. Source-closeness failures: missing base trace, incompatible renderer, or mark vocabulary that no longer resembles the source pattern.
+3. Composition failures: weak armature, unclear center, poor visual weight, broken reading path, or bad label lanes.
+4. Refinements: palette balance, guide contrast, secondary label placement, or spacing adjustments.
 
 For each finding, name the affected selector, pattern ID, composition ID, or file path when available.
