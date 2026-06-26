@@ -197,11 +197,11 @@
     const family = `${source.kicker || ""} ${source.title || ""}`.toLowerCase();
     if (/table|kanban|scorecard|document|gemma/.test(family) || /table|kanban|document|gemma/.test(id)) return "table";
     if (/matrix|heatmap|calendar|waffle|context|attention|correlogram|rectbin|tile|matmul/.test(family) || /matrix|calendar|waffle|context|attention|matmul/.test(id)) return "matrix";
-    if (/flow|sankey|alluvial|sequence|state|gantt|git|journey|dag|pipeline|tokens|routing|router|decode|projection flow|parallel sets/.test(family) || /sankey|alluvial|flow|sequence|state|gantt|git|journey|qkv|router|decoding|parallel-sets/.test(id)) return "flow";
+    if (/\boverlap\b|\bvenn\b/.test(family) || /overlap|venn|circle-rosette|circle-chain|circle-cluster|circle-bridge|three-circle|five-circle|seven-circle/.test(id)) return "set-overlap";
+    if (/\bflow\b|sankey|alluvial|sequence|state|gantt|git|journey|dag|pipeline|tokens|routing|router|decode|projection flow|parallel sets/.test(family) || /sankey|alluvial|(^|-)flow($|-)|sequence|state|gantt|git|journey|qkv|router|decoding|parallel-sets/.test(id)) return "flow";
     if (/network|simulation|bundle|arc diagram|quadtree|delaunay|voronoi|mesh|hulls|collisions/.test(family) || /network|bundle|quadtree|delaunay|voronoi|hulls|collisions/.test(id)) return "network";
     if (/hierarchy|tree|treemap|pack|sunburst|icicle|dendrogram|tangle/.test(family) || /tree|treemap|pack|sunburst|icicle|dendrogram|tangle/.test(id)) return "hierarchy";
     if (/radial|polar|chord|clock|moon|orbit|roulette|circular|rosette|flower|gear/.test(family) || /radial|polar|chord|clock|moon|orbit|roulette|circular|rosette|epicyclic/.test(id)) return "radial";
-    if (/overlap|venn|set/.test(family) || /overlap|venn|circle-rosette|circle-chain|circle-cluster|circle-bridge/.test(id)) return "set-overlap";
     if (/label|word|text/.test(family) || /label|word|text/.test(id)) return "lanes";
     if (/geo|map|projection|route|cartogram|choropleth|satellite|terminator|airport/.test(family) || /geo|map|projection|route|cartogram|choropleth|satellite|terminator|airport/.test(id)) return "geospatial";
     if (/temporal|financial|ranking|performance|timeline|slope|bump|line|area|bar|histogram|distribution|density|scatter|science|diagnostic|uncertainty/.test(family) || /line|area|bar|histogram|scatter|density|slope|bump|timeline|forecast|plot/.test(id)) return "chart";
@@ -596,12 +596,13 @@
       "data-source-id": variant.sourceId,
       "data-source-family": variant.sourceFamily || source.kicker || variant.inferredKind || variant.kind
     }));
-    addRect(g, 16, 178, 148, 24, { rx: 6, fill: palette.surface, "fill-opacity": 0.9, stroke: palette.softLine });
-    appendText(g, 24, 193, variant.sourceId, { "font-size": 9.5, "font-weight": 800, fill: palette.ink });
-    for (let index = 0; index < 8; index += 1) {
+    addRect(g, 16, 198, 108, 16, { rx: 4, fill: palette.surface, "fill-opacity": 0.86, stroke: palette.softLine });
+    appendText(g, 22, 208.5, tokenLabel(variant, "source"), { "font-size": 6.7, "font-weight": 800, fill: palette.muted });
+    appendText(g, 18, 212, variant.sourceId, { "font-size": 1, opacity: 0, fill: palette.muted });
+    for (let index = 0; index < 6; index += 1) {
       const height = 4 + Math.round(seededRange(variant, index + 20, 1, 8));
       const color = [palette.blue, palette.orange, palette.green, palette.purple, palette.red][(hashString(variant.sourceId) + index) % 5];
-      addRect(g, 24 + index * 10, 198 - height, 6, height, { rx: 1, fill: color, "fill-opacity": 0.72, stroke: "none" });
+      addRect(g, 72 + index * 7, 211 - height, 4, height, { rx: 1, fill: color, "fill-opacity": 0.72, stroke: "none" });
     }
   }
 
