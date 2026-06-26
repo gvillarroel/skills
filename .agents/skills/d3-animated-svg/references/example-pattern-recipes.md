@@ -66,8 +66,8 @@ Use when tasks, backlog items, risks, or work units belong to one scope, two sha
 - Encode membership count consistently: one scope in blue, two scopes in orange, and three-or-more scopes in red.
 - For the default gallery fixture, validate `data-circle-count="9"`, `data-target-count="20"`, 9 circles, 20 task dots, and 20 task labels.
 - For the saturated 100-task fixture, regenerate label positions with `scripts/layout_task_overlap_labels.py`, load the generated `task-overlap-layouts.js`, keep labels in external lanes outside the circle field, and validate `data-target-count="100"`, 100 task dots, 100 task labels, and `data-label-overlap-count="0"`.
-- Stress the saturated fixture with mixed label lengths and font sizes. Validate `data-label-length-buckets`, at least three distinct `data-label-font-size` values, zero undersized `.task-label-bg` rectangles in both width and height, zero label overlaps against circles/dots/leaders/anchors, and a wide enough presentation for inspection.
-- Use orthogonal gutter leaders for the saturated fixture. Color them by membership count, texture them with solid/dash/dot styles, draw white halos behind them, add small edge anchors, and expose `data-leader-route="orthogonal-gutter"` plus the zero non-label overlap counts on the root SVG.
+- Stress the saturated fixture with mixed label lengths and font sizes. Validate `data-label-length-buckets`, at least three distinct `data-label-font-size` values, zero undersized `.task-label-bg` rectangles in both width and height, zero label overlaps against other labels, circles, and dots, and a wide enough presentation for inspection.
+- Use direct solid leaders for the saturated fixture when readability benefits from simpler lines. Color leaders from the generated direct-line crossing graph rather than by membership count; expose `data-leader-route="direct"`, `data-leader-color-count`, `data-leader-crossing-count`, and `data-same-color-leader-crossing-count`. Draw white halos behind leaders, but do not add leader anchors or lateral label accents in this simplified variant.
 
 ## Venn Overlap Family
 

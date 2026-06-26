@@ -61,6 +61,14 @@ AUDIT_JS = r"""
   const leaderStyles = Array.from(new Set(leaders.map(path => path.dataset.leaderStyle))).sort();
   const leaderColors = Array.from(new Set(leaders.map(path => path.getAttribute('stroke')))).sort();
   const stylesWithDash = leaders.filter(path => path.getAttribute('stroke-dasharray')).length;
+  const leaderSegments = leaders.map(line => ({
+    id: line.dataset.taskId,
+    color: line.getAttribute('stroke'),
+    x1: Number(line.getAttribute('x1')),
+    y1: Number(line.getAttribute('y1')),
+    x2: Number(line.getAttribute('x2')),
+    y2: Number(line.getAttribute('y2'))
+  }));
   function rectsOverlap(a, b, pad = 0.1) {
     return Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) > pad &&
       Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) > pad;
@@ -69,6 +77,44 @@ AUDIT_JS = r"""
     const closestX = Math.min(Math.max(circle.cx, rect.x - pad), rect.x + rect.w + pad);
     const closestY = Math.min(Math.max(circle.cy, rect.y - pad), rect.y + rect.h + pad);
     return (closestX - circle.cx) ** 2 + (closestY - circle.cy) ** 2 < (circle.r + pad) ** 2;
+  }
+  function orientation(a, b, c) {
+    return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+  }
+  function pointOnSegment(point, segment) {
+    return Math.min(segment.a.x, segment.b.x) - 1e-9 <= point.x &&
+      point.x <= Math.max(segment.a.x, segment.b.x) + 1e-9 &&
+      Math.min(segment.a.y, segment.b.y) - 1e-9 <= point.y &&
+      point.y <= Math.max(segment.a.y, segment.b.y) + 1e-9 &&
+      Math.abs(orientation(segment.a, segment.b, point)) < 1e-9;
+  }
+  function segmentsIntersect(left, right) {
+    const oa0 = orientation(left.a, left.b, right.a);
+    const oa1 = orientation(left.a, left.b, right.b);
+    const ob0 = orientation(right.a, right.b, left.a);
+    const ob1 = orientation(right.a, right.b, left.b);
+    if (oa0 * oa1 < 0 && ob0 * ob1 < 0) return true;
+    return Math.abs(oa0) < 1e-9 && pointOnSegment(right.a, left) ||
+      Math.abs(oa1) < 1e-9 && pointOnSegment(right.b, left) ||
+      Math.abs(ob0) < 1e-9 && pointOnSegment(left.a, right) ||
+      Math.abs(ob1) < 1e-9 && pointOnSegment(left.b, right);
+  }
+  function lineToSegment(line) {
+    return { a: { x: line.x1, y: line.y1 }, b: { x: line.x2, y: line.y2 } };
+  }
+  function pointInRect(point, rect) {
+    return point.x > rect.x && point.x < rect.x + rect.w && point.y > rect.y && point.y < rect.y + rect.h;
+  }
+  function segmentIntersectsRect(segment, rect) {
+    if (pointInRect(segment.a, rect) || pointInRect(segment.b, rect)) return true;
+    const corners = [
+      { x: rect.x, y: rect.y },
+      { x: rect.x + rect.w, y: rect.y },
+      { x: rect.x + rect.w, y: rect.y + rect.h },
+      { x: rect.x, y: rect.y + rect.h }
+    ];
+    const edges = corners.map((corner, index) => ({ a: corner, b: corners[(index + 1) % corners.length] }));
+    return edges.some(edge => segmentsIntersect(segment, edge));
   }
   let labelLabelOverlaps = 0;
   for (let i = 0; i < boxes.length; i += 1) {
@@ -83,21 +129,21 @@ AUDIT_JS = r"""
   let labelAnchorOverlaps = 0;
   for (const box of boxes) for (const anchor of anchors) if (rectCircleOverlap(box, anchor, 0.25)) labelAnchorOverlaps += 1;
   let leaderLabelOverlaps = 0;
-  for (const path of leaders) {
-    const own = path.dataset.taskId;
-    const length = path.getTotalLength();
-    const steps = Math.max(8, Math.ceil(length / 1.5));
+  for (const line of leaderSegments) {
+    const segment = lineToSegment(line);
     for (const box of boxes) {
-      if (box.id === own) continue;
-      let hit = false;
-      for (let i = 0; i <= steps; i += 1) {
-        const point = path.getPointAtLength(length * i / steps);
-        if (point.x > box.x + 0.25 && point.x < box.x + box.w - 0.25 && point.y > box.y + 0.25 && point.y < box.y + box.h - 0.25) {
-          hit = true;
-          break;
-        }
+      if (box.id === line.id) continue;
+      if (segmentIntersectsRect(segment, box)) leaderLabelOverlaps += 1;
+    }
+  }
+  let leaderCrossings = 0;
+  let sameColorLeaderCrossings = 0;
+  for (let i = 0; i < leaderSegments.length; i += 1) {
+    for (let j = i + 1; j < leaderSegments.length; j += 1) {
+      if (segmentsIntersect(lineToSegment(leaderSegments[i]), lineToSegment(leaderSegments[j]))) {
+        leaderCrossings += 1;
+        if (leaderSegments[i].color === leaderSegments[j].color) sameColorLeaderCrossings += 1;
       }
-      if (hit) leaderLabelOverlaps += 1;
     }
   }
   let tooSmallWidth = 0;
@@ -121,11 +167,10 @@ AUDIT_JS = r"""
   const svgRect = root.getBoundingClientRect();
   const cardRect = card.getBoundingClientRect();
   const frameRect = frame.getBoundingClientRect();
-    const clean = labelLabelOverlaps === 0 &&
+  const sameColorRate = leaderCrossings ? sameColorLeaderCrossings / leaderCrossings : 0;
+  const clean = labelLabelOverlaps === 0 &&
     labelCircleOverlaps === 0 &&
     labelDotOverlaps === 0 &&
-    labelAnchorOverlaps === 0 &&
-    leaderLabelOverlaps === 0 &&
     tooSmallWidth === 0 &&
     tooSmallHeight === 0 &&
     boxes.length === 100 &&
@@ -133,12 +178,17 @@ AUDIT_JS = r"""
     dots.length === 100 &&
     leaders.length === 100 &&
     halos.length === 100 &&
-    anchors.length === 100 &&
-    accents.length === 100 &&
-    leaderStyles.length === 3 &&
-    stylesWithDash > 0 &&
+    anchors.length === 0 &&
+    accents.length === 0 &&
+    leaderStyles.length === 1 &&
+    leaderStyles[0] === 'solid' &&
+    stylesWithDash === 0 &&
+    leaderColors.length >= 5 &&
+    leaderCrossings === Number(root.dataset.leaderCrossingCount) &&
+    sameColorLeaderCrossings === Number(root.dataset.sameColorLeaderCrossingCount) &&
+    sameColorRate <= 0.2 &&
     root.dataset.labelPlacement === 'external-lanes' &&
-    root.dataset.leaderRoute === 'orthogonal-gutter';
+    root.dataset.leaderRoute === 'direct';
   return {
     clean,
     rootOverlapAttrs: {
@@ -146,14 +196,19 @@ AUDIT_JS = r"""
       circle: root.dataset.labelCircleOverlapCount,
       dot: root.dataset.labelDotOverlapCount,
       leader: root.dataset.labelLeaderOverlapCount,
+      leaderUnderpass: root.dataset.labelLeaderUnderpassCount,
       nonLabel: root.dataset.labelNonlabelOverlapCount,
       placement: root.dataset.labelPlacement,
       clearancePolicy: root.dataset.labelClearancePolicy,
       leaderRoute: root.dataset.leaderRoute,
-      leaderStyleCount: root.dataset.leaderStyleCount
+      leaderStyleCount: root.dataset.leaderStyleCount,
+      leaderColorCount: root.dataset.leaderColorCount,
+      leaderCrossingCount: root.dataset.leaderCrossingCount,
+      sameColorLeaderCrossingCount: root.dataset.sameColorLeaderCrossingCount
     },
     counts: { labels: boxes.length, circles: circles.length, dots: dots.length, leaders: leaders.length, halos: halos.length, anchors: anchors.length, accents: accents.length },
     overlaps: { labelLabel: labelLabelOverlaps, labelCircle: labelCircleOverlaps, labelDot: labelDotOverlaps, labelAnchor: labelAnchorOverlaps, leaderLabel: leaderLabelOverlaps },
+    leaderCrossings: { total: leaderCrossings, sameColor: sameColorLeaderCrossings, sameColorRate },
     labelBackgrounds: { tooSmallWidth, tooSmallHeight, minWidthSlack, minHeightSlack, minRenderedTextHeight, maxRenderedTextHeight },
     leaderStyles,
     leaderColors,

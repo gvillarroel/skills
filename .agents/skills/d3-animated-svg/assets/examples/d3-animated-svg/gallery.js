@@ -136,7 +136,7 @@
     { id: "document-token-extraction-buckets", kicker: "Document", title: "Document Extraction Buckets", copy: "A single page is scanned in writing order, then colored word blocks split into filler, correct, and wrong buckets with calculated totals.", render: renderDocumentTokenExtractionBuckets },
     { id: "agent-loop-partial-covers", kicker: "Image Overlay", title: "Agent Loop Partial Covers", copy: "A source diagram remains visible while animated translucent covers selectively pass over key areas.", render: renderAgentLoopPartialCovers },
     { id: "asymmetric-task-overlap", kicker: "Set Overlap", title: "Asymmetric Task Overlap", copy: "Nine uneven scope circles hold 20 task dots, including single-scope and shared multi-scope work.", render: renderAsymmetricTaskOverlap },
-    { id: "asymmetric-task-overlap-saturated", kicker: "Set Overlap", title: "Saturated Task Overlap", copy: "Nine asymmetric scope circles hold 100 task dots with external mixed-length labels and colored, textured leader paths.", render: renderAsymmetricTaskOverlapSaturated, size: "wide" },
+    { id: "asymmetric-task-overlap-saturated", kicker: "Set Overlap", title: "Saturated Task Overlap", copy: "Nine asymmetric scope circles hold 100 task dots with external labels and direct color-optimized leader lines.", render: renderAsymmetricTaskOverlapSaturated, size: "wide" },
     { id: "venn-three-circle", kicker: "Set Overlap", title: "Venn Three Circle", copy: "Three peer concepts reveal single, pairwise, and shared center intersections.", render: renderVennThreeCircle },
     { id: "venn-five-overlap", kicker: "Set Overlap", title: "Venn Five Overlap", copy: "Five domains converge around a shared center with labeled outer roles.", render: renderVennFiveOverlap },
     { id: "venn-seven-overlap", kicker: "Set Overlap", title: "Venn Seven Overlap", copy: "Seven LLM workstreams overlap around a central alignment zone.", render: renderVennSevenOverlap },
@@ -2379,7 +2379,7 @@
 
   function renderAsymmetricTaskOverlapSaturated() {
     const layout = window.D3_TASK_OVERLAP_LAYOUTS && window.D3_TASK_OVERLAP_LAYOUTS.saturated;
-    const svg = prepareSvg("asymmetric-task-overlap-saturated", "Saturated task overlap", "Nine asymmetric scope circles with 100 task dots, external collision-audited labels, and differentiated leader paths.");
+    const svg = prepareSvg("asymmetric-task-overlap-saturated", "Saturated task overlap", "Nine asymmetric scope circles with 100 task dots, external collision-audited labels, and direct leader lines colored to reduce same-color crossings.");
     if (!layout) {
       svg.append("text")
         .attr("class", "mark-label")
@@ -2401,12 +2401,15 @@
       .attr("data-label-circle-overlap-count", layout.labelCircleOverlapCount)
       .attr("data-label-dot-overlap-count", layout.labelDotOverlapCount)
       .attr("data-label-leader-overlap-count", layout.labelLeaderOverlapCount)
-      .attr("data-label-nonlabel-overlap-count", (layout.labelCircleOverlapCount || 0) + (layout.labelDotOverlapCount || 0) + (layout.labelLeaderOverlapCount || 0))
+      .attr("data-label-leader-underpass-count", layout.labelLeaderOverlapCount)
+      .attr("data-label-nonlabel-overlap-count", (layout.labelCircleOverlapCount || 0) + (layout.labelDotOverlapCount || 0))
       .attr("data-label-placement", "external-lanes")
-      .attr("data-label-clearance-policy", "no-label-label-circle-dot-leader-anchor-overlap")
-      .attr("data-leader-route", "orthogonal-gutter")
-      .attr("data-leader-style-count", 3)
-      .attr("data-leader-anchor-count", layout.tasks.length)
+      .attr("data-label-clearance-policy", "no-label-label-circle-dot-overlap")
+      .attr("data-leader-route", layout.leaderRoute || "direct")
+      .attr("data-leader-style-count", 1)
+      .attr("data-leader-color-count", (layout.leaderColorKeys || []).length)
+      .attr("data-leader-crossing-count", layout.leaderCrossingCount)
+      .attr("data-same-color-leader-crossing-count", layout.sameColorLeaderCrossingCount)
       .attr("data-membership-buckets", Object.entries(layout.membershipBuckets).map(([key, value]) => `${key}:${value}`).join(" "))
       .attr("data-label-length-buckets", Object.entries(layout.labelLengthBuckets || {}).map(([key, value]) => `${key}:${value}`).join(" "))
       .attr("data-label-font-range", layout.labelFontRange ? `${layout.labelFontRange.min}-${layout.labelFontRange.max}` : layout.labelFontSize)
@@ -2419,20 +2422,9 @@
     }));
     const tasks = layout.tasks;
     const dotColor = d => d.membershipCount === 1 ? palette.blue : d.membershipCount === 2 ? palette.orange : palette.red;
-    const leaderColor = d => d.membershipCount === 1 ? palette.blue : d.membershipCount === 2 ? palette.orange : palette.red;
-    const leaderDash = d => d.membershipCount === 1 ? null : d.membershipCount === 2 ? "6 4" : "1.4 4";
-    const leaderStyle = d => d.membershipCount === 1 ? "solid" : d.membershipCount === 2 ? "dash" : "dot";
+    const leaderColor = d => palette[d.leaderColorKey] || dotColor(d);
     const labelEdgeX = d => d.labelEdgeX ?? (d.labelX < d.x ? d.labelX + d.labelWidth : d.labelX);
     const labelEdgeY = d => d.labelEdgeY ?? (d.labelY + d.labelHeight / 2);
-    const leaderAnchorX = d => labelEdgeX(d) + (d.labelSide === "left" ? 3.2 : -3.2);
-    const leaderPath = d => {
-      const spineX = d.leaderSpineX ?? (d.labelSide === "left"
-        ? d3.min(circles, circle => circle.cx - circle.r) - 12
-        : d3.max(circles, circle => circle.cx + circle.r) + 12);
-      const edgeX = labelEdgeX(d);
-      const edgeY = labelEdgeY(d);
-      return `M${d.x},${d.y}L${spineX},${d.y}L${spineX},${edgeY}L${edgeX},${edgeY}`;
-    };
 
     svg.append("rect")
       .attr("x", 8)
@@ -2477,47 +2469,38 @@
 
     const leaderLayer = svg.append("g")
       .attr("class", "task-leader-layer")
-      .attr("fill", "none")
-      .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round");
 
-    const leaderHalos = leaderLayer.selectAll("path.task-leader-halo")
+    const leaderHalos = leaderLayer.selectAll("line.task-leader-halo")
       .data(tasks)
-      .join("path")
+      .join("line")
       .attr("class", "task-leader-halo")
-      .attr("d", leaderPath)
+      .attr("x1", d => d.x)
+      .attr("y1", d => d.y)
+      .attr("x2", labelEdgeX)
+      .attr("y2", labelEdgeY)
       .attr("stroke", palette.surface)
-      .attr("stroke-opacity", .95)
-      .attr("stroke-width", 3.4);
+      .attr("stroke-opacity", .86)
+      .attr("stroke-width", 2.2);
     fadeIn(leaderHalos, .26, .38);
 
-    const leaders = leaderLayer.selectAll("path.task-leader")
+    const leaders = leaderLayer.selectAll("line.task-leader")
       .data(tasks)
-      .join("path")
+      .join("line")
       .attr("class", "task-leader")
       .attr("data-task-id", d => d.id)
       .attr("data-membership-count", d => d.membershipCount)
-      .attr("data-leader-style", leaderStyle)
-      .attr("d", leaderPath)
+      .attr("data-leader-style", "solid")
+      .attr("data-leader-color-key", d => d.leaderColorKey)
+      .attr("data-leader-conflict-degree", d => d.leaderConflictDegree)
+      .attr("x1", d => d.x)
+      .attr("y1", d => d.y)
+      .attr("x2", labelEdgeX)
+      .attr("y2", labelEdgeY)
       .attr("stroke", leaderColor)
-      .attr("stroke-opacity", .82)
-      .attr("stroke-width", .95)
-      .attr("stroke-dasharray", leaderDash);
+      .attr("stroke-opacity", .74)
+      .attr("stroke-width", .9);
     fadeIn(leaders, .28, .4);
-
-    const leaderAnchors = leaderLayer.selectAll("circle.task-leader-anchor")
-      .data(tasks)
-      .join("circle")
-      .attr("class", "task-leader-anchor")
-      .attr("data-task-id", d => d.id)
-      .attr("cx", leaderAnchorX)
-      .attr("cy", labelEdgeY)
-      .attr("r", 1.55)
-      .attr("fill", leaderColor)
-      .attr("stroke", palette.surface)
-      .attr("stroke-width", .75)
-      .attr("opacity", .95);
-    fadeIn(leaderAnchors, .34, .38);
 
     const dots = svg.append("g")
       .attr("class", "task-dot-layer")
@@ -2563,17 +2546,6 @@
       .attr("stroke-width", .65);
     fadeIn(labelBoxes, .5, .42);
 
-    const labelAccents = labelGroups.append("rect")
-      .attr("class", "task-label-accent")
-      .attr("x", d => d.labelX + 1.1)
-      .attr("y", d => d.labelY + 2.2)
-      .attr("width", 2.4)
-      .attr("height", d => Math.max(2, d.labelHeight - 4.4))
-      .attr("rx", 1.2)
-      .attr("fill", dotColor)
-      .attr("opacity", .88);
-    fadeIn(labelAccents, .53, .38);
-
     const labels = labelGroups.append("text")
       .attr("class", "task-label mark-label")
       .attr("x", d => d.labelX + (d.labelTextPaddingX || 4.4))
@@ -2602,7 +2574,7 @@
       .attr("x", svgWidth / 2 - 205)
       .attr("y", svgHeight - 22)
       .attr("font-weight", 800)
-      .text("100 tasks, external labels, 0 label collisions");
+      .text("100 tasks, direct leaders, 0 label collisions");
   }
 
   function vennCircleReveal(selection, delay = .08, opacity = .38) {

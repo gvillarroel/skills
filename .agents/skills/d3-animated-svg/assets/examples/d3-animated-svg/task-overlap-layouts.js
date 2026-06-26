@@ -13,7 +13,18 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
     "labelOverlapCount": 0,
     "labelCircleOverlapCount": 0,
     "labelDotOverlapCount": 0,
-    "labelLeaderOverlapCount": 0,
+    "labelLeaderOverlapCount": 83,
+    "leaderRoute": "direct",
+    "leaderColorKeys": [
+      "blue",
+      "orange",
+      "green",
+      "purple",
+      "red",
+      "cyan"
+    ],
+    "leaderCrossingCount": 39,
+    "sameColorLeaderCrossingCount": 0,
     "membershipBuckets": {
       "1": 36,
       "2": 36,
@@ -158,7 +169,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 141.85,
         "labelEdgeY": 26.7,
-        "leaderSpineX": 202
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T002",
@@ -180,7 +193,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 51.45,
-        "leaderSpineX": 672
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 2
       },
       {
         "id": "T003",
@@ -202,7 +217,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 61.02,
         "labelEdgeY": 34.35,
-        "leaderSpineX": 202
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T004",
@@ -224,7 +241,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 25.8,
-        "leaderSpineX": 672
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T005",
@@ -246,7 +265,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 34.65,
-        "leaderSpineX": 672
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T006",
@@ -268,7 +289,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 157.02,
         "labelEdgeY": 42.6,
-        "leaderSpineX": 202
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T007",
@@ -290,7 +313,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 67.95,
-        "leaderSpineX": 672
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T008",
@@ -312,7 +337,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 86.62,
         "labelEdgeY": 50.55,
-        "leaderSpineX": 202
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T009",
@@ -334,7 +361,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 59.1,
-        "leaderSpineX": 672
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T010",
@@ -357,7 +386,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 42.9,
-        "leaderSpineX": 672
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T011",
@@ -380,7 +411,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 76.2,
-        "leaderSpineX": 672
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T012",
@@ -402,7 +435,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 83.55,
-        "leaderSpineX": 672
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T013",
@@ -425,7 +460,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 100.95,
-        "leaderSpineX": 672
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 2
       },
       {
         "id": "T014",
@@ -448,7 +485,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 92.7,
-        "leaderSpineX": 672
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T015",
@@ -470,7 +509,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 67.5,
         "labelEdgeY": 83.85,
-        "leaderSpineX": 202
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 3
       },
       {
         "id": "T016",
@@ -493,7 +534,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 116.55,
-        "leaderSpineX": 672
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T017",
@@ -516,7 +559,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 45.85,
         "labelEdgeY": 67.95,
-        "leaderSpineX": 202
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 2
       },
       {
         "id": "T018",
@@ -538,7 +583,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 133.35,
-        "leaderSpineX": 672
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T019",
@@ -560,7 +607,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 45.85,
         "labelEdgeY": 100.95,
-        "leaderSpineX": 202
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T020",
@@ -584,7 +633,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 176.68,
         "labelEdgeY": 58.8,
-        "leaderSpineX": 202
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T021",
@@ -606,7 +657,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 108.6,
-        "leaderSpineX": 672
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T022",
@@ -629,7 +682,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 125.7,
-        "leaderSpineX": 672
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T023",
@@ -653,7 +708,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 150.45,
-        "leaderSpineX": 672
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T024",
@@ -677,7 +734,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 176.68,
         "labelEdgeY": 91.8,
-        "leaderSpineX": 202
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 2
       },
       {
         "id": "T025",
@@ -701,7 +760,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 141.9,
-        "leaderSpineX": 672
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T026",
@@ -725,7 +786,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 166.95,
-        "leaderSpineX": 672
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T027",
@@ -749,7 +812,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 163.5,
         "labelEdgeY": 108.6,
-        "leaderSpineX": 202
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T028",
@@ -773,7 +838,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 80.68,
         "labelEdgeY": 116.55,
-        "leaderSpineX": 202
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T029",
@@ -796,7 +863,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 141.85,
         "labelEdgeY": 76.2,
-        "leaderSpineX": 202
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 3
       },
       {
         "id": "T030",
@@ -819,7 +888,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 158.1,
-        "leaderSpineX": 672
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T031",
@@ -843,7 +914,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 45.85,
         "labelEdgeY": 133.95,
-        "leaderSpineX": 202
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T032",
@@ -867,7 +940,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 176.68,
         "labelEdgeY": 124.8,
-        "leaderSpineX": 202
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T033",
@@ -891,7 +966,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 199.35,
-        "leaderSpineX": 672
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T034",
@@ -915,7 +992,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 141.85,
         "labelEdgeY": 142.2,
-        "leaderSpineX": 202
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T035",
@@ -939,7 +1018,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 174.9,
-        "leaderSpineX": 672
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T036",
@@ -963,7 +1044,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 176.68,
         "labelEdgeY": 157.8,
-        "leaderSpineX": 202
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T037",
@@ -985,7 +1068,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 183.45,
-        "leaderSpineX": 672
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T038",
@@ -1009,7 +1094,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 45.85,
         "labelEdgeY": 150.45,
-        "leaderSpineX": 202
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T039",
@@ -1033,7 +1120,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 163.5,
         "labelEdgeY": 207.6,
-        "leaderSpineX": 202
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T040",
@@ -1057,7 +1146,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 207.3,
-        "leaderSpineX": 672
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T041",
@@ -1080,7 +1171,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 331.95,
-        "leaderSpineX": 672
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T042",
@@ -1104,7 +1197,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 163.5,
         "labelEdgeY": 174.6,
-        "leaderSpineX": 202
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T043",
@@ -1126,7 +1221,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 45.85,
         "labelEdgeY": 166.95,
-        "leaderSpineX": 202
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T044",
@@ -1149,7 +1246,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 80.68,
         "labelEdgeY": 182.55,
-        "leaderSpineX": 202
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T045",
@@ -1172,7 +1271,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 215.85,
-        "leaderSpineX": 672
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T046",
@@ -1196,7 +1297,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 224.7,
-        "leaderSpineX": 672
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T047",
@@ -1219,7 +1322,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 191.7,
-        "leaderSpineX": 672
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T048",
@@ -1243,7 +1348,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 176.68,
         "labelEdgeY": 240.3,
-        "leaderSpineX": 202
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T049",
@@ -1266,7 +1373,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 141.85,
         "labelEdgeY": 191.7,
-        "leaderSpineX": 202
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T050",
@@ -1289,7 +1398,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 56.38,
         "labelEdgeY": 249.15,
-        "leaderSpineX": 202
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T051",
@@ -1312,7 +1423,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 67.5,
         "labelEdgeY": 215.85,
-        "leaderSpineX": 202
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T052",
@@ -1336,7 +1449,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 256.8,
-        "leaderSpineX": 672
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T053",
@@ -1358,7 +1473,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 45.85,
         "labelEdgeY": 199.95,
-        "leaderSpineX": 202
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T054",
@@ -1381,7 +1498,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 248.85,
-        "leaderSpineX": 672
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 2
       },
       {
         "id": "T055",
@@ -1404,7 +1523,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 56.38,
         "labelEdgeY": 232.65,
-        "leaderSpineX": 202
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T056",
@@ -1427,7 +1548,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 178.93,
         "labelEdgeY": 223.8,
-        "leaderSpineX": 202
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T057",
@@ -1450,7 +1573,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 240.6,
-        "leaderSpineX": 672
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T058",
@@ -1472,7 +1597,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 232.95,
-        "leaderSpineX": 672
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T059",
@@ -1495,7 +1622,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 141.85,
         "labelEdgeY": 257.7,
-        "leaderSpineX": 202
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T060",
@@ -1518,7 +1647,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 298.05,
-        "leaderSpineX": 672
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 2
       },
       {
         "id": "T061",
@@ -1542,7 +1673,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 274.2,
-        "leaderSpineX": 672
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T062",
@@ -1565,7 +1698,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 282.45,
-        "leaderSpineX": 672
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T063",
@@ -1589,7 +1724,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 290.1,
-        "leaderSpineX": 672
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 3
       },
       {
         "id": "T064",
@@ -1611,7 +1748,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 79.23,
         "labelEdgeY": 265.05,
-        "leaderSpineX": 202
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T065",
@@ -1635,7 +1774,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 306.9,
-        "leaderSpineX": 672
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T066",
@@ -1658,7 +1799,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 314.85,
-        "leaderSpineX": 672
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T067",
@@ -1680,7 +1823,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 265.95,
-        "leaderSpineX": 672
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T068",
@@ -1704,7 +1849,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 322.8,
-        "leaderSpineX": 672
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 2
       },
       {
         "id": "T069",
@@ -1728,7 +1875,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 339.6,
-        "leaderSpineX": 672
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T070",
@@ -1750,7 +1899,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 62.62,
         "labelEdgeY": 282.15,
-        "leaderSpineX": 202
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T071",
@@ -1773,7 +1924,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 45.85,
         "labelEdgeY": 298.95,
-        "leaderSpineX": 202
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T072",
@@ -1797,7 +1950,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 178.93,
         "labelEdgeY": 273.3,
-        "leaderSpineX": 202
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T073",
@@ -1819,7 +1974,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 141.85,
         "labelEdgeY": 323.7,
-        "leaderSpineX": 202
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T074",
@@ -1842,7 +1999,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 356.7,
-        "leaderSpineX": 672
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T075",
@@ -1866,7 +2025,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 63.46,
         "labelEdgeY": 314.85,
-        "leaderSpineX": 202
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T076",
@@ -1889,7 +2050,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 181.83,
         "labelEdgeY": 289.8,
-        "leaderSpineX": 202
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T077",
@@ -1912,7 +2075,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 141.85,
         "labelEdgeY": 307.2,
-        "leaderSpineX": 202
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T078",
@@ -1934,7 +2099,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 347.85,
-        "leaderSpineX": 672
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T079",
@@ -1956,7 +2123,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 373.2,
-        "leaderSpineX": 672
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T080",
@@ -1980,7 +2149,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 76.99,
         "labelEdgeY": 347.55,
-        "leaderSpineX": 202
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T081",
@@ -2003,7 +2174,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 63.46,
         "labelEdgeY": 331.35,
-        "leaderSpineX": 202
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T082",
@@ -2026,7 +2199,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 141.85,
         "labelEdgeY": 340.2,
-        "leaderSpineX": 202
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T083",
@@ -2049,7 +2224,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 389.7,
-        "leaderSpineX": 672
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T084",
@@ -2071,7 +2248,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 170.74,
         "labelEdgeY": 388.8,
-        "leaderSpineX": 202
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T085",
@@ -2094,7 +2273,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 62.62,
         "labelEdgeY": 381.15,
-        "leaderSpineX": 202
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T086",
@@ -2116,7 +2297,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 45.85,
         "labelEdgeY": 364.95,
-        "leaderSpineX": 202
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T087",
@@ -2139,7 +2322,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 157.02,
         "labelEdgeY": 372.6,
-        "leaderSpineX": 202
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T088",
@@ -2162,7 +2347,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 413.55,
-        "leaderSpineX": 672
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T089",
@@ -2184,7 +2371,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 381.45,
-        "leaderSpineX": 672
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T090",
@@ -2207,7 +2396,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 157.02,
         "labelEdgeY": 356.1,
-        "leaderSpineX": 202
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T091",
@@ -2229,7 +2420,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 422.7,
-        "leaderSpineX": 672
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T092",
@@ -2251,7 +2444,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 397.05,
-        "leaderSpineX": 672
+        "leaderColorKey": "red",
+        "leaderColorIndex": 4,
+        "leaderConflictDegree": 2
       },
       {
         "id": "T093",
@@ -2273,7 +2468,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 364.35,
-        "leaderSpineX": 672
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T094",
@@ -2295,7 +2492,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 45.85,
         "labelEdgeY": 414.45,
-        "leaderSpineX": 202
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T095",
@@ -2318,7 +2517,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 163.93,
         "labelEdgeY": 422.4,
-        "leaderSpineX": 202
+        "leaderColorKey": "blue",
+        "leaderColorIndex": 0,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T096",
@@ -2340,7 +2541,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 780,
         "labelEdgeY": 430.05,
-        "leaderSpineX": 672
+        "leaderColorKey": "orange",
+        "leaderColorIndex": 1,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T097",
@@ -2362,7 +2565,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 45.85,
         "labelEdgeY": 397.95,
-        "leaderSpineX": 202
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T098",
@@ -2384,7 +2589,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "right",
         "labelEdgeX": 684,
         "labelEdgeY": 406.2,
-        "leaderSpineX": 672
+        "leaderColorKey": "purple",
+        "leaderColorIndex": 3,
+        "leaderConflictDegree": 0
       },
       {
         "id": "T099",
@@ -2406,7 +2613,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 169.11,
         "labelEdgeY": 405.6,
-        "leaderSpineX": 202
+        "leaderColorKey": "green",
+        "leaderColorIndex": 2,
+        "leaderConflictDegree": 1
       },
       {
         "id": "T100",
@@ -2428,7 +2637,9 @@ window.D3_TASK_OVERLAP_LAYOUTS = {
         "labelSide": "left",
         "labelEdgeX": 96.92,
         "labelEdgeY": 430.05,
-        "leaderSpineX": 202
+        "leaderColorKey": "cyan",
+        "leaderColorIndex": 5,
+        "leaderConflictDegree": 2
       }
     ]
   }

@@ -79,7 +79,7 @@ Generate the collision-audited saturated task-overlap label layout:
 uv run --script .agents/skills/d3-animated-svg/scripts/layout_task_overlap_labels.py
 ```
 
-Audit the saturated task-overlap labels, leader routes, and background fit in Chromium:
+Audit the saturated task-overlap labels, direct leader colors, and background fit in Chromium:
 
 ```powershell
 uv run --script .agents/skills/d3-animated-svg/scripts/audit_saturated_task_overlap.py --expect-clean

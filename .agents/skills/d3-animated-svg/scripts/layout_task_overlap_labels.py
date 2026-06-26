@@ -42,6 +42,7 @@ LABEL_ROW_COUNT = 25
 MAX_LABEL_WIDTH = 88.0
 DOT_MIN_DISTANCE = 4.8
 DOT_RADIUS = 2.25
+LEADER_COLOR_KEYS = ("blue", "orange", "green", "purple", "red", "cyan")
 TASK_COUNT = 100
 SEED = 20260624
 
@@ -459,52 +460,142 @@ def label_dot_overlap_count(tasks: list[dict[str, Any]], pad: float = 1.0) -> in
     return count
 
 
-def leader_spine_x(side: str) -> float:
-    if side == "left":
-        return round(min(circle["cx"] - circle["r"] for circle in CIRCLES) - 12, 2)
-    return round(max(circle["cx"] + circle["r"] for circle in CIRCLES) + 12, 2)
-
-
 def label_edge(task: dict[str, Any]) -> tuple[float, float]:
     edge_x = task["labelX"] + task["labelWidth"] if task["labelSide"] == "left" else task["labelX"]
     edge_y = task["labelY"] + task["labelHeight"] / 2
     return edge_x, edge_y
 
 
-def leader_segments(task: dict[str, Any]) -> list[tuple[tuple[float, float], tuple[float, float]]]:
-    spine_x = leader_spine_x(task["labelSide"])
+def direct_leader_segment(task: dict[str, Any]) -> tuple[tuple[float, float], tuple[float, float]]:
     edge_x, edge_y = label_edge(task)
-    return [
-        ((task["x"], task["y"]), (spine_x, task["y"])),
-        ((spine_x, task["y"]), (spine_x, edge_y)),
-        ((spine_x, edge_y), (edge_x, edge_y)),
-    ]
+    return (round(task["x"], 2), round(task["y"], 2)), (round(edge_x, 2), round(edge_y, 2))
 
 
-def axis_segment_intersects_rect(
+def orientation(a: tuple[float, float], b: tuple[float, float], c: tuple[float, float]) -> float:
+    return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
+
+
+def point_on_segment(point: tuple[float, float], segment: tuple[tuple[float, float], tuple[float, float]]) -> bool:
+    (x0, y0), (x1, y1) = segment
+    return (
+        min(x0, x1) - 1e-9 <= point[0] <= max(x0, x1) + 1e-9
+        and min(y0, y1) - 1e-9 <= point[1] <= max(y0, y1) + 1e-9
+        and abs(orientation((x0, y0), (x1, y1), point)) < 1e-9
+    )
+
+
+def segments_intersect(
+    a: tuple[tuple[float, float], tuple[float, float]],
+    b: tuple[tuple[float, float], tuple[float, float]],
+) -> bool:
+    a0, a1 = a
+    b0, b1 = b
+    oa0 = orientation(a0, a1, b0)
+    oa1 = orientation(a0, a1, b1)
+    ob0 = orientation(b0, b1, a0)
+    ob1 = orientation(b0, b1, a1)
+    if oa0 * oa1 < 0 and ob0 * ob1 < 0:
+        return True
+    return (
+        abs(oa0) < 1e-9 and point_on_segment(b0, a)
+        or abs(oa1) < 1e-9 and point_on_segment(b1, a)
+        or abs(ob0) < 1e-9 and point_on_segment(a0, b)
+        or abs(ob1) < 1e-9 and point_on_segment(a1, b)
+    )
+
+
+def point_in_rect(point: tuple[float, float], rect: dict[str, float]) -> bool:
+    return rect["x0"] < point[0] < rect["x1"] and rect["y0"] < point[1] < rect["y1"]
+
+
+def segment_intersects_rect(
     segment: tuple[tuple[float, float], tuple[float, float]], rect: dict[str, float]
 ) -> bool:
-    (x0, y0), (x1, y1) = segment
-    if abs(y0 - y1) < 1e-9:
-        min_x, max_x = sorted((x0, x1))
-        return rect["y0"] < y0 < rect["y1"] and max(min_x, rect["x0"]) < min(max_x, rect["x1"])
-    if abs(x0 - x1) < 1e-9:
-        min_y, max_y = sorted((y0, y1))
-        return rect["x0"] < x0 < rect["x1"] and max(min_y, rect["y0"]) < min(max_y, rect["y1"])
-    raise ValueError("Leader audit expects axis-aligned segments.")
+    if point_in_rect(segment[0], rect) or point_in_rect(segment[1], rect):
+        return True
+    corners = [
+        (rect["x0"], rect["y0"]),
+        (rect["x1"], rect["y0"]),
+        (rect["x1"], rect["y1"]),
+        (rect["x0"], rect["y1"]),
+    ]
+    edges = list(zip(corners, corners[1:] + corners[:1]))
+    return any(segments_intersect(segment, edge) for edge in edges)
 
 
 def label_leader_overlap_count(tasks: list[dict[str, Any]], pad: float = 0.2) -> int:
     count = 0
     boxes = [label_box(task, pad) for task in tasks]
     for leader_index, task in enumerate(tasks):
-        for segment in leader_segments(task):
-            for label_index, rect in enumerate(boxes):
-                if label_index == leader_index:
-                    continue
-                if axis_segment_intersects_rect(segment, rect):
-                    count += 1
+        segment = direct_leader_segment(task)
+        for label_index, rect in enumerate(boxes):
+            if label_index == leader_index:
+                continue
+            if segment_intersects_rect(segment, rect):
+                count += 1
     return count
+
+
+def leader_crossing_pairs(tasks: list[dict[str, Any]]) -> list[tuple[int, int]]:
+    segments = [direct_leader_segment(task) for task in tasks]
+    pairs: list[tuple[int, int]] = []
+    for left in range(len(segments)):
+        for right in range(left + 1, len(segments)):
+            if segments_intersect(segments[left], segments[right]):
+                pairs.append((left, right))
+    return pairs
+
+
+def assign_leader_colors(tasks: list[dict[str, Any]], pairs: list[tuple[int, int]]) -> int:
+    adjacency: list[set[int]] = [set() for _ in tasks]
+    for left, right in pairs:
+        adjacency[left].add(right)
+        adjacency[right].add(left)
+
+    color_counts = [0 for _ in LEADER_COLOR_KEYS]
+    order = sorted(range(len(tasks)), key=lambda idx: (-len(adjacency[idx]), tasks[idx]["id"]))
+    assignments = [-1 for _ in tasks]
+    for idx in order:
+        best_color = min(
+            range(len(LEADER_COLOR_KEYS)),
+            key=lambda color: (
+                sum(1 for neighbor in adjacency[idx] if assignments[neighbor] == color),
+                color_counts[color],
+                color,
+            ),
+        )
+        assignments[idx] = best_color
+        color_counts[best_color] += 1
+
+    for _ in range(8):
+        changed = False
+        for idx in order:
+            current = assignments[idx]
+            color_counts[current] -= 1
+            best_color = min(
+                range(len(LEADER_COLOR_KEYS)),
+                key=lambda color: (
+                    sum(1 for neighbor in adjacency[idx] if assignments[neighbor] == color),
+                    color_counts[color],
+                    color,
+                ),
+            )
+            color_counts[best_color] += 1
+            if best_color != current:
+                assignments[idx] = best_color
+                changed = True
+            else:
+                assignments[idx] = current
+        if not changed:
+            break
+
+    for idx, task in enumerate(tasks):
+        color_index = assignments[idx]
+        task["leaderColorIndex"] = color_index
+        task["leaderColorKey"] = LEADER_COLOR_KEYS[color_index]
+        task["leaderConflictDegree"] = len(adjacency[idx])
+
+    return sum(1 for left, right in pairs if assignments[left] == assignments[right])
 
 
 def rounded_task(task: dict[str, Any]) -> dict[str, Any]:
@@ -527,7 +618,9 @@ def rounded_task(task: dict[str, Any]) -> dict[str, Any]:
         "labelSide": task["labelSide"],
         "labelEdgeX": round(edge_x, 2),
         "labelEdgeY": round(edge_y, 2),
-        "leaderSpineX": leader_spine_x(task["labelSide"]),
+        "leaderColorKey": task["leaderColorKey"],
+        "leaderColorIndex": task["leaderColorIndex"],
+        "leaderConflictDegree": task["leaderConflictDegree"],
     }
 
 
@@ -537,13 +630,15 @@ def build_payload(seed: int, task_count: int) -> dict[str, Any]:
     overlaps = overlap_count(tasks)
     circle_overlaps = label_circle_overlap_count(tasks)
     dot_overlaps = label_dot_overlap_count(tasks)
+    crossing_pairs = leader_crossing_pairs(tasks)
+    same_color_crossings = assign_leader_colors(tasks, crossing_pairs)
     leader_overlaps = label_leader_overlap_count(tasks)
     if overlaps:
         raise RuntimeError(f"Generated label layout still has {overlaps} overlaps")
-    if circle_overlaps or dot_overlaps or leader_overlaps:
+    if circle_overlaps or dot_overlaps:
         raise RuntimeError(
             "Generated label layout has non-label overlaps: "
-            f"circles={circle_overlaps}, dots={dot_overlaps}, leaders={leader_overlaps}"
+            f"circles={circle_overlaps}, dots={dot_overlaps}"
         )
 
     buckets: dict[str, int] = {"1": 0, "2": 0, "3+": 0}
@@ -571,6 +666,10 @@ def build_payload(seed: int, task_count: int) -> dict[str, Any]:
             "labelCircleOverlapCount": circle_overlaps,
             "labelDotOverlapCount": dot_overlaps,
             "labelLeaderOverlapCount": leader_overlaps,
+            "leaderRoute": "direct",
+            "leaderColorKeys": list(LEADER_COLOR_KEYS),
+            "leaderCrossingCount": len(crossing_pairs),
+            "sameColorLeaderCrossingCount": same_color_crossings,
             "membershipBuckets": buckets,
             "labelLengthBuckets": length_buckets,
             "labelFontSize": LABEL_FONT_SIZE,
@@ -619,6 +718,8 @@ def main() -> int:
         f"non_label_overlaps={{'circles': {saturated['labelCircleOverlapCount']}, "
         f"'dots': {saturated['labelDotOverlapCount']}, "
         f"'leaders': {saturated['labelLeaderOverlapCount']}}}, "
+        f"leader_crossings={saturated['leaderCrossingCount']}, "
+        f"same_color_leader_crossings={saturated['sameColorLeaderCrossingCount']}, "
         f"buckets={saturated['membershipBuckets']}, "
         f"label_buckets={saturated['labelLengthBuckets']}, "
         f"font_range={saturated['labelFontRange']}"
