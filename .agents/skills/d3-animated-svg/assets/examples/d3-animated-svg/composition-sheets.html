@@ -295,10 +295,19 @@
     }
 
     .pattern-copy,
-    .plan-text {
+    .plan-text,
+    .armature-meta,
+    .quadrant-meta {
       margin: 0;
       color: var(--muted);
       font-size: 12px;
+    }
+
+    .armature-meta,
+    .quadrant-meta {
+      border-left: 3px solid var(--line);
+      padding-left: 8px;
+      font-size: 11px;
     }
 
     .composition-id {
@@ -383,6 +392,7 @@
         <div class="summary" aria-label="Composition sheet summary">
           <span><span class="summary-value" id="sheet-count">0</span> sheets</span>
           <span><span class="summary-value" id="variant-count">0</span> variants</span>
+          <span><span class="summary-value" id="reviewed-count">0</span> reviewed</span>
           <span><span class="summary-value">SVG</span> previews</span>
         </div>
       </div>

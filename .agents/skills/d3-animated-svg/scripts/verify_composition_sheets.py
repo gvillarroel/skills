@@ -21,10 +21,11 @@ SKILL_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = SKILL_ROOT / "assets" / "examples" / "d3-animated-svg" / "composition-sheets.html"
 
 VERIFY_JS = r"""
-async ({ expectedSheets, minVariants, requiredVariant }) => {
+async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns }) => {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   const sheets = window.D3_COMPOSITION_SHEETS || [];
   const variants = window.D3_COMPOSITION_VARIANTS || [];
+  const reviews = window.D3_COMPOSITION_REVIEW || [];
   const metadata = window.D3_ANIMATED_SVG_EXAMPLES || [];
   const sheetIds = sheets.map(sheet => sheet.id);
   const metadataIds = new Set(metadata.map(item => item.id));
@@ -35,11 +36,29 @@ async ({ expectedSheets, minVariants, requiredVariant }) => {
   if (variants.length < minVariants) {
     findings.push(`Expected at least ${minVariants} variants, found ${variants.length}.`);
   }
+  if (expectedReviewedPatterns && reviews.length !== expectedReviewedPatterns) {
+    findings.push(`Expected ${expectedReviewedPatterns} reviewed patterns, found ${reviews.length}.`);
+  }
+  if (metadata.length && reviews.length !== metadata.length) {
+    findings.push(`Review count ${reviews.length} does not match metadata count ${metadata.length}.`);
+  }
+  const reviewedIds = new Set(reviews.map(review => review.sourceId));
+  const missingReviews = metadata.filter(item => !reviewedIds.has(item.id)).map(item => item.id);
+  if (missingReviews.length) {
+    findings.push(`Patterns without composition review: ${missingReviews.slice(0, 8).join(", ")}.`);
+  }
+  const weakReviews = reviews.filter(review => !review.reviewed || !Array.isArray(review.targets) || review.targets.length < 1);
+  if (weakReviews.length) {
+    findings.push(`Reviews without useful targets: ${weakReviews.slice(0, 8).map(review => review.sourceId).join(", ")}.`);
+  }
   if (document.body.dataset.compositionSheetCount !== String(expectedSheets)) {
     findings.push(`Body composition sheet count is ${document.body.dataset.compositionSheetCount}.`);
   }
   if (Number(document.body.dataset.compositionVariantCount || 0) !== variants.length) {
     findings.push(`Body composition variant count is ${document.body.dataset.compositionVariantCount}; script has ${variants.length}.`);
+  }
+  if (Number(document.body.dataset.compositionReviewedPatternCount || 0) !== reviews.length) {
+    findings.push(`Body reviewed pattern count is ${document.body.dataset.compositionReviewedPatternCount}; script has ${reviews.length}.`);
   }
   const ids = variants.map(variant => variant.id);
   const uniqueIds = new Set(ids);
@@ -53,6 +72,10 @@ async ({ expectedSheets, minVariants, requiredVariant }) => {
   const missingSources = variants.filter(variant => !metadataIds.has(variant.sourceId)).map(variant => variant.sourceId);
   if (missingSources.length) {
     findings.push(`Variants reference missing source patterns: ${Array.from(new Set(missingSources)).slice(0, 8).join(", ")}.`);
+  }
+  const weakVariantRecords = variants.filter(variant => !variant.reviewed || !variant.renderer || !variant.armatureLines || !variant.quadrants || !variant.sourceFamily);
+  if (weakVariantRecords.length) {
+    findings.push(`Variant records missing review metadata: ${weakVariantRecords.slice(0, 8).map(variant => variant.id).join(", ")}.`);
   }
   if (requiredVariant && !uniqueIds.has(requiredVariant)) {
     findings.push(`Missing required variant ${requiredVariant}.`);
@@ -94,6 +117,10 @@ async ({ expectedSheets, minVariants, requiredVariant }) => {
     if (strayFit) {
       findings.push(`${sheetId} still exposes fit badges or data-fit on ${strayFit} rows.`);
     }
+    const missingReviewAttrs = rows.filter(row => row.dataset.reviewed !== "true" || !row.dataset.armatureLines || !row.dataset.quadrants || !row.dataset.sourceFamily).length;
+    if (missingReviewAttrs) {
+      findings.push(`${sheetId} has ${missingReviewAttrs} rows without review, armature, quadrant, or family attributes.`);
+    }
     const missingLinks = rows.filter(row => !row.querySelector(`a[href*="${row.dataset.patternId}"]`)).length;
     if (missingLinks) {
       findings.push(`${sheetId} has ${missingLinks} rows without a base pattern link.`);
@@ -103,9 +130,13 @@ async ({ expectedSheets, minVariants, requiredVariant }) => {
       const elements = svg ? svg.querySelectorAll("*").length : 0;
       const marks = svg ? svg.querySelectorAll("circle,rect,path,line,polygon,polyline,text").length : 0;
       const title = svg ? svg.querySelector("title")?.textContent || "" : "";
-      return { id: row.dataset.compositionPatternId, elements, marks, title };
+      const compositionLines = svg ? svg.querySelectorAll(".composition-line").length : 0;
+      const quadrantFields = svg ? svg.querySelectorAll(".quadrant-field").length : 0;
+      const hasSignature = Boolean(svg?.querySelector(".base-signature"));
+      const hasSourceTitle = Boolean(svg?.dataset.basePatternTitle);
+      return { id: row.dataset.compositionPatternId, elements, marks, title, compositionLines, quadrantFields, hasSignature, hasSourceTitle };
     });
-    const blankSvgs = svgReports.filter(report => report.marks < 8 || !report.title);
+    const blankSvgs = svgReports.filter(report => report.marks < 8 || !report.title || report.compositionLines < 2 || report.quadrantFields < 4 || !report.hasSignature || !report.hasSourceTitle);
     if (blankSvgs.length) {
       findings.push(`${sheetId} has blank or weak SVG previews: ${blankSvgs.slice(0, 5).map(report => report.id).join(", ")}.`);
     }
@@ -121,6 +152,8 @@ async ({ expectedSheets, minVariants, requiredVariant }) => {
       uniqueCompositionIds: new Set(rowIds).size,
       previewMarksMin: Math.min(...svgReports.map(report => report.marks)),
       previewMarksMax: Math.max(...svgReports.map(report => report.marks)),
+      compositionLinesMin: Math.min(...svgReports.map(report => report.compositionLines)),
+      quadrantFieldsMin: Math.min(...svgReports.map(report => report.quadrantFields)),
       armatureElements: armature ? armature.querySelectorAll("*").length : 0
     });
   }
@@ -142,6 +175,7 @@ async ({ expectedSheets, minVariants, requiredVariant }) => {
     findings,
     sheetCount: sheets.length,
     variantCount: variants.length,
+    reviewedPatternCount: reviews.length,
     metadataPatternCount: metadata.length,
     sheetReports,
     filteredVisibleCount: filteredVisible.length,
@@ -168,7 +202,8 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", nargs="?", default=str(DEFAULT_SOURCE), help="Composition sheets HTML file, file URL, or HTTP URL.")
     parser.add_argument("--expected-sheets", type=int, default=7)
-    parser.add_argument("--min-variants", type=int, default=50)
+    parser.add_argument("--min-variants", type=int, default=180)
+    parser.add_argument("--expected-reviewed-patterns", type=int, default=218)
     parser.add_argument("--required-variant", default="d3-composition-radial-rosette-force-network")
     parser.add_argument("--viewport", type=parse_viewport, default=(1366, 900))
     parser.add_argument("--wait-ms", type=int, default=600)
@@ -191,6 +226,7 @@ def main() -> int:
                 "expectedSheets": args.expected_sheets,
                 "minVariants": args.min_variants,
                 "requiredVariant": args.required_variant,
+                "expectedReviewedPatterns": args.expected_reviewed_patterns,
             },
         )
         if args.screenshot:

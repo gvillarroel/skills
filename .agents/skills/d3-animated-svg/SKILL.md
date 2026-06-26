@@ -79,7 +79,7 @@ uv run --script .agents/skills/d3-animated-svg/scripts/audit_dynamic_symmetry.py
 Verify the composition variant sheets expose curated SVG variants with stable composition IDs:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 50 --required-variant d3-composition-radial-rosette-force-network --expect-clean
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 180 --expected-reviewed-patterns 218 --required-variant d3-composition-radial-rosette-force-network --expect-clean
 ```
 
 Generate small/medium/large force-network or beeswarm variants from a JSON spec:
@@ -130,6 +130,6 @@ When changing the capture script or example fixture, also run the smoke command 
 
 When changing the examples gallery, read `references/gallery-patterns.md` and run the gallery verifier documented there. Verify that all cards render, each card has exactly one replay control, sampled replay buttons restart only their target card, repeated replay does not duplicate marks or listeners, and desktop plus mobile screenshots keep text and controls readable.
 
-When changing the composition sheets, run `scripts/verify_composition_sheets.py` and confirm every curated variant has an inline SVG preview plus stable `data-composition-id`, `data-example-id`, `data-pattern-id`, and `data-composition-pattern-id` attributes. Keep only variants that work well for the selected composition; do not restore fit classes such as `support` tiers or duplicate every pattern into every sheet.
+When changing the composition sheets, run `scripts/verify_composition_sheets.py` and confirm every current gallery pattern is reviewed, every curated variant has an inline SVG preview plus stable `data-composition-id`, `data-example-id`, `data-pattern-id`, `data-composition-pattern-id`, `data-armature-lines`, `data-quadrants`, and `data-reviewed` attributes, and each SVG includes visible composition lines, quadrant fields, and a source-pattern signature. Keep only variants that work well for the selected composition; do not restore fit classes such as `support` tiers or duplicate every pattern into every sheet.
 
 For large galleries, create contact sheets and run an explicit visual critique pass by example or batch before final validation. Integrate the critique centrally when possible: shared token ramps, label halos, axis/grid contrast, and replay-safe post-render polish should handle recurring issues before adding one-off chart fixes.

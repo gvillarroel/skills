@@ -54,7 +54,7 @@ For dense patterns, improve the most structural anchors rather than every small 
 
 ## Composition Variant Sheets
 
-Use `assets/examples/d3-animated-svg/composition-sheets.html` when a user wants pages or sheets organized by composition type instead of visualization type. Each sheet is a curated set of good SVG variants, not a repeated copy of the full D3 gallery. Only add a source pattern to a sheet when the pattern can express that composition clearly.
+Use `assets/examples/d3-animated-svg/composition-sheets.html` when a user wants pages or sheets organized by composition type instead of visualization type. The sheet generator reviews every current source pattern from `window.D3_ANIMATED_SVG_EXAMPLES`, assigns only the useful target compositions for that pattern, and renders optimized variants with visible lines and quadrant use. Each sheet is a curated set of good SVG variants, not a repeated copy of the full D3 gallery. Only add a source pattern to a sheet when the pattern can express that composition clearly.
 
 Current sheet IDs:
 
@@ -84,6 +84,12 @@ Each rendered card must include an inline SVG preview and expose:
 - `data-example-id`: the gallery source example ID.
 - `data-pattern-id`: the stable `d3-pattern-*` ID.
 - `data-composition-pattern-id`: the stable composition-specific variant ID.
+- `data-source-family`: the source gallery family or inferred family.
+- `data-armature-lines`: the lines used to optimize the target composition.
+- `data-quadrants`: the quadrant roles used by the optimized variant.
+- `data-reviewed`: `true` after the pattern has been reviewed.
+
+Each inline SVG preview must include visible `.composition-line` elements, at least four `.quadrant-field` regions, and a `.base-signature` group that identifies the source pattern used for the recomposition.
 
 Do not use `data-fit`, fit badges, or `strong` / `support` tiers. The sheet membership itself means the variant is good enough for that composition.
 
@@ -98,5 +104,5 @@ When adding a variant:
 Validate the sheets after adding, removing, or renaming D3 patterns:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 50 --required-variant d3-composition-radial-rosette-force-network --expect-clean
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 180 --expected-reviewed-patterns 218 --required-variant d3-composition-radial-rosette-force-network --expect-clean
 ```
