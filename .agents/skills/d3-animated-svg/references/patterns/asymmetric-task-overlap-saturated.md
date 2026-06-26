@@ -90,4 +90,5 @@ This approach is deliberately stricter than browser-time force relaxation: the g
 - Browser validation should confirm `.task-label-bg` rectangles do not overlap scope circles or task dots. Direct leaders may pass behind opaque label backgrounds; track that as `data-label-leader-underpass-count`, not as a label collision.
 - Browser validation should confirm each `.task-label-bg` is at least as wide and tall as its paired `.task-label` text.
 - Browser validation should verify the gallery card is wide enough for the saturated case; the current fixture renders the wide SVG at 880 by 450 px in mobile scroll mode and about 882 by 451 px on desktop, with browser-rendered label text heights around 9 to 11 px and no undersized label backgrounds.
+- Dynamic-symmetry validation should use `scripts/audit_dynamic_symmetry.py` with selector `svg#asymmetric-task-overlap-saturated` to inspect the final browser-resolved points against the SVG frame armature before making further composition changes.
 - Use `scripts/audit_saturated_task_overlap.py --expect-clean` for the targeted browser audit, and repeat with `--viewport 390x900` before publishing.

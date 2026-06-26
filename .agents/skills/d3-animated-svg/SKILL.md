@@ -27,6 +27,7 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
    - When a sketchy rendering is requested, treat sketchiness as a reusable mark-rendering overlay for any D3 pattern, including scorecards, comparison cards, tables, model diagrams, and statistical charts. Preserve data geometry; roughen marks, axes, links, and containers with seeded jitter, double strokes, and optional hachures while keeping text crisp.
 7. Use `scripts/render_d3_svg.py` to open D3 HTML in Chromium, wait for the generated SVG, export the SVG markup, and optionally capture a screenshot for visual QA.
 8. Verify that the SVG is nonblank, text fits, labels remain readable, moving marks do not cross readable text, animation starts from a meaningful state, and the final frame matches the intended values.
+   - When the request asks for dynamic symmetry, point verification, balance, or compositional improvement, read `references/composition-audit.md` and run `scripts/audit_dynamic_symmetry.py` on the current SVG or selected object.
 
 ## Progressive Disclosure Map
 
@@ -34,6 +35,7 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
 - `references/layout-patterns.md`: read when implementing D3 layouts, scales, projections, hierarchy, force simulations, or data joins.
 - `references/animation-patterns.md`: read when making portable SVG animation, staged reveals, path drawing, motion tokens, morphs, or final-frame verification.
 - `references/gallery-patterns.md`: read when extending a multi-example gallery with card conventions, per-card replay controls, and gallery-level verification.
+- `references/composition-audit.md`: read when analyzing point placement, dynamic symmetry, armature alignment, balance, or composition quality for an SVG pattern.
 - `references/cardinality-generalization.md`: read when adapting a pattern to fewer or more elements, generating small/medium/large variants, or satisfying exact SVG IDs, mark classes, and target counts.
 - `references/example-pattern-recipes.md`: read when turning a successful gallery example into a reusable implementation pattern or adapting one of the approved pattern IDs.
 - `references/pattern-index.md`: search/read when the user asks to adapt a gallery pattern without naming an exact ID. If the user names an exact `d3-pattern-*`, skip the index and read `references/patterns/<pattern-id-without-prefix>.md` directly.
@@ -65,6 +67,18 @@ Check an HTML artifact against explicit SVG IDs, metadata, and mark counts:
 
 ```powershell
 node .agents/skills/d3-animated-svg/scripts/check_svg_contract.ts artifact.html svg-contract.json
+```
+
+Audit SVG points against a dynamic-symmetry composition armature:
+
+```powershell
+uv run --script .agents/skills/d3-animated-svg/scripts/audit_dynamic_symmetry.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --selector "svg#asymmetric-task-overlap-saturated" --output projects/d3-animated-svg-validation/artifacts/data/asymmetric-task-overlap-saturated-dynamic-symmetry.json
+```
+
+Verify the composition sheets expose every D3 pattern on every sheet:
+
+```powershell
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --expected-patterns 218 --expect-clean
 ```
 
 Generate small/medium/large force-network or beeswarm variants from a JSON spec:
@@ -114,5 +128,7 @@ uv run --script scripts/validate-skills.py
 When changing the capture script or example fixture, also run the smoke command from `Common Commands` and inspect the generated screenshot.
 
 When changing the examples gallery, read `references/gallery-patterns.md` and run the gallery verifier documented there. Verify that all cards render, each card has exactly one replay control, sampled replay buttons restart only their target card, repeated replay does not duplicate marks or listeners, and desktop plus mobile screenshots keep text and controls readable.
+
+When changing the composition sheets, run `scripts/verify_composition_sheets.py` and confirm every sheet still exposes the full current pattern count with stable `data-composition-id`, `data-example-id`, and `data-pattern-id` attributes.
 
 For large galleries, create contact sheets and run an explicit visual critique pass by example or batch before final validation. Integrate the critique centrally when possible: shared token ramps, label halos, axis/grid contrast, and replay-safe post-render polish should handle recurring issues before adding one-off chart fixes.

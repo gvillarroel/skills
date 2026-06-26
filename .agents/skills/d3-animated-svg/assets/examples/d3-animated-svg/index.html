@@ -82,6 +82,34 @@
       align-items: center;
     }
 
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      min-height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--blue-hover);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 10px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .nav-link:hover {
+      border-color: var(--blue);
+      background: var(--blue-highlight);
+    }
+
     .summary {
       display: grid;
       grid-auto-flow: column;
@@ -327,6 +355,9 @@
         <p class="intro">A broad D3 SVG gallery inspired by official D3 examples and graph-gallery taxonomies, focused on visual forms that Mermaid does not express well.</p>
       </div>
       <div class="header-actions">
+        <nav class="nav-links" aria-label="D3 gallery views">
+          <a class="nav-link" href="./composition-sheets.html">Composition Sheets</a>
+        </nav>
         <div class="summary" aria-label="Gallery summary">
           <span><strong id="example-count">0</strong> visual forms</span>
           <span><strong>SVG</strong> output</span>

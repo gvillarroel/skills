@@ -342,6 +342,17 @@
     });
   }
 
+  function exposeExampleMetadata() {
+    window.D3_ANIMATED_SVG_EXAMPLES = examples.map(({ id, kicker, title, copy, patternId, size }) => ({
+      id,
+      kicker,
+      title,
+      copy,
+      patternId,
+      size: size || "standard"
+    }));
+  }
+
   function createCards() {
     const gallery = d3.select("#gallery");
     gallery.selectAll("*").remove();
@@ -12313,11 +12324,15 @@
   }
 
   assignPatternIds();
-  createCards();
-  document.getElementById("gallery").addEventListener("click", event => {
-    const button = event.target.closest("[data-replay]");
-    if (!button) return;
-    replayExample(button.dataset.replay);
-  });
-  renderAll();
+  exposeExampleMetadata();
+  const galleryElement = document.getElementById("gallery");
+  if (galleryElement) {
+    createCards();
+    galleryElement.addEventListener("click", event => {
+      const button = event.target.closest("[data-replay]");
+      if (!button) return;
+      replayExample(button.dataset.replay);
+    });
+    renderAll();
+  }
 })();

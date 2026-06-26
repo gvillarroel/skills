@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>D3 Composition Sheets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --font-primary: "Open Sans", Arial, sans-serif;
+      --brand-primary: #9e1b32;
+      --brand-neutral: #333e48;
+      --ink: #333e48;
+      --muted: #696969;
+      --line: #cfcfcf;
+      --line-soft: #e7e7e7;
+      --surface: #ffffff;
+      --page: #f7f7f7;
+      --red: #9e1b32;
+      --orange: #e77204;
+      --yellow: #f1c319;
+      --green: #45842a;
+      --blue: #007298;
+      --purple: #652f6c;
+      --blue-hover: #004d66;
+      --blue-highlight: #cdf3ff;
+      --yellow-highlight: #fff4cc;
+      --green-highlight: #dbffcc;
+      --purple-highlight: #f9ccff;
+      --red-highlight: #ffccd5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--page);
+      color: var(--ink);
+      font-family: var(--font-primary);
+      line-height: 1.45;
+    }
+
+    .page-shell {
+      width: min(1680px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 42px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      padding: 4px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--brand-primary);
+      font-size: 30px;
+      font-weight: 760;
+      letter-spacing: 0;
+      line-height: 1.08;
+    }
+
+    .intro {
+      margin: 6px 0 0;
+      max-width: 940px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .header-actions {
+      display: grid;
+      gap: 12px;
+      justify-items: end;
+    }
+
+    .nav-link,
+    .sheet-tab {
+      min-height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--blue-hover);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 10px;
+      text-decoration: none;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .nav-link:hover,
+    .sheet-tab:hover,
+    .sheet-tab[aria-selected="true"] {
+      border-color: var(--blue);
+      background: var(--blue-highlight);
+    }
+
+    .summary {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .summary strong {
+      display: block;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.05;
+    }
+
+    .sheet-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 18px 0 12px;
+    }
+
+    .sheet-overview {
+      display: grid;
+      grid-template-columns: minmax(280px, 440px) minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+    }
+
+    .armature-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .armature-panel svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1.6;
+    }
+
+    .sheet-copy {
+      display: grid;
+      align-content: center;
+      gap: 10px;
+    }
+
+    .sheet-kicker {
+      margin: 0;
+      color: var(--brand-primary);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .sheet-copy p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .sheet-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      padding: 7px 9px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .metric strong {
+      color: var(--ink);
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(240px, 420px) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 16px 0 12px;
+    }
+
+    .search-input {
+      width: 100%;
+      min-height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--ink);
+      font: inherit;
+      padding: 0 12px;
+    }
+
+    .search-input:focus {
+      outline: 3px solid var(--line);
+      outline-offset: 2px;
+    }
+
+    .fit-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .fit-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--line);
+    }
+
+    .dot-strong {
+      background: var(--green);
+    }
+
+    .dot-ready {
+      background: var(--blue);
+    }
+
+    .dot-support {
+      background: var(--orange);
+    }
+
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .pattern-row {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 10px;
+      padding: 14px;
+    }
+
+    .pattern-row[data-fit="strong"] {
+      border-color: #a9c79e;
+    }
+
+    .pattern-row[data-fit="ready"] {
+      border-color: #99ccdd;
+    }
+
+    .pattern-row[data-fit="support"] {
+      border-color: #e8be91;
+    }
+
+    .pattern-header {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: start;
+    }
+
+    .pattern-kicker {
+      margin: 0 0 4px;
+      color: var(--brand-primary);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .fit-badge {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      color: #ffffff;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .fit-badge[data-fit="strong"] {
+      background: var(--green);
+    }
+
+    .fit-badge[data-fit="ready"] {
+      background: var(--blue);
+    }
+
+    .fit-badge[data-fit="support"] {
+      background: var(--orange);
+    }
+
+    .pattern-copy,
+    .plan-text,
+    .macro-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .plan-text strong,
+    .macro-text strong {
+      color: var(--ink);
+    }
+
+    .pattern-id {
+      color: var(--muted);
+      font-family: Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 10.5px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .pattern-link {
+      width: max-content;
+      color: var(--blue-hover);
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .pattern-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1380px) {
+      .sheet-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 980px) {
+      header,
+      .sheet-overview,
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .header-actions,
+      .fit-legend {
+        justify-items: start;
+        justify-content: flex-start;
+      }
+
+      .sheet-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page-shell {
+        width: min(100% - 20px, 720px);
+        padding-top: 16px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+
+      .summary {
+        grid-auto-flow: row;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        white-space: normal;
+      }
+
+      .sheet-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <header>
+      <div>
+        <h1>D3 Composition Sheets</h1>
+        <p class="intro">Composition-first pages for applying the full D3 pattern catalog to larger layouts without losing the original pattern IDs.</p>
+      </div>
+      <div class="header-actions">
+        <a class="nav-link" href="./index.html">D3 Gallery</a>
+        <div class="summary" aria-label="Composition sheet summary">
+          <span><strong id="sheet-count">0</strong> sheets</span>
+          <span><strong id="pattern-count">0</strong> patterns</span>
+          <span><strong>SVG</strong> armatures</span>
+        </div>
+      </div>
+    </header>
+
+    <nav class="sheet-tabs" id="sheet-tabs" aria-label="Composition sheets"></nav>
+
+    <section class="sheet-overview" id="sheet-overview" aria-live="polite"></section>
+
+    <div class="toolbar">
+      <input class="search-input" id="pattern-search" type="search" placeholder="Filter by pattern ID, title, family, or composition role" aria-label="Filter patterns">
+      <div class="fit-legend" aria-label="Fit legend">
+        <span><i class="dot dot-strong"></i> Strong</span>
+        <span><i class="dot dot-ready"></i> Ready</span>
+        <span><i class="dot dot-support"></i> Support</span>
+      </div>
+    </div>
+
+    <section class="sheet-grid" id="sheet-grid" aria-label="Composition pattern plans"></section>
+  </main>
+
+  <script src="./gallery.js"></script>
+  <script src="./composition-sheets.js"></script>
+</body>
+</html>
