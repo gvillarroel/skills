@@ -36,6 +36,7 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
 - `references/animation-patterns.md`: read when making portable SVG animation, staged reveals, path drawing, motion tokens, morphs, or final-frame verification.
 - `references/gallery-patterns.md`: read when extending a multi-example gallery with card conventions, per-card replay controls, and gallery-level verification.
 - `references/composition-audit.md`: read when analyzing point placement, dynamic symmetry, armature alignment, balance, or composition quality for an SVG pattern.
+- `references/composition-variants.md`: read when maintaining the composition sheets or adding curated `d3-composition-*` SVG preview variants.
 - `references/cardinality-generalization.md`: read when adapting a pattern to fewer or more elements, generating small/medium/large variants, or satisfying exact SVG IDs, mark classes, and target counts.
 - `references/example-pattern-recipes.md`: read when turning a successful gallery example into a reusable implementation pattern or adapting one of the approved pattern IDs.
 - `references/pattern-index.md`: search/read when the user asks to adapt a gallery pattern without naming an exact ID. If the user names an exact `d3-pattern-*`, skip the index and read `references/patterns/<pattern-id-without-prefix>.md` directly.
@@ -75,10 +76,10 @@ Audit SVG points against a dynamic-symmetry composition armature:
 uv run --script .agents/skills/d3-animated-svg/scripts/audit_dynamic_symmetry.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --selector "svg#asymmetric-task-overlap-saturated" --output projects/d3-animated-svg-validation/artifacts/data/asymmetric-task-overlap-saturated-dynamic-symmetry.json
 ```
 
-Verify the composition sheets expose every D3 pattern on every sheet:
+Verify the composition variant sheets expose curated SVG variants with stable composition IDs:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --expected-patterns 218 --expect-clean
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 50 --required-variant d3-composition-radial-rosette-force-network --expect-clean
 ```
 
 Generate small/medium/large force-network or beeswarm variants from a JSON spec:
@@ -129,6 +130,6 @@ When changing the capture script or example fixture, also run the smoke command 
 
 When changing the examples gallery, read `references/gallery-patterns.md` and run the gallery verifier documented there. Verify that all cards render, each card has exactly one replay control, sampled replay buttons restart only their target card, repeated replay does not duplicate marks or listeners, and desktop plus mobile screenshots keep text and controls readable.
 
-When changing the composition sheets, run `scripts/verify_composition_sheets.py` and confirm every sheet still exposes the full current pattern count with stable `data-composition-id`, `data-example-id`, and `data-pattern-id` attributes.
+When changing the composition sheets, run `scripts/verify_composition_sheets.py` and confirm every curated variant has an inline SVG preview plus stable `data-composition-id`, `data-example-id`, `data-pattern-id`, and `data-composition-pattern-id` attributes. Keep only variants that work well for the selected composition; do not restore fit classes such as `support` tiers or duplicate every pattern into every sheet.
 
 For large galleries, create contact sheets and run an explicit visual critique pass by example or batch before final validation. Integrate the critique centrally when possible: shared token ramps, label halos, axis/grid contrast, and replay-safe post-render polish should handle recurring issues before adding one-off chart fixes.

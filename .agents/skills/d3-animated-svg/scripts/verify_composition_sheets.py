@@ -4,7 +4,7 @@
 # dependencies = ["playwright"]
 # ///
 
-"""Verify the D3 composition-sheets page."""
+"""Verify the D3 composition-variants page."""
 
 from __future__ import annotations
 
@@ -21,23 +21,41 @@ SKILL_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = SKILL_ROOT / "assets" / "examples" / "d3-animated-svg" / "composition-sheets.html"
 
 VERIFY_JS = r"""
-async ({ expectedSheets, expectedPatterns }) => {
+async ({ expectedSheets, minVariants, requiredVariant }) => {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   const sheets = window.D3_COMPOSITION_SHEETS || [];
+  const variants = window.D3_COMPOSITION_VARIANTS || [];
   const metadata = window.D3_ANIMATED_SVG_EXAMPLES || [];
   const sheetIds = sheets.map(sheet => sheet.id);
+  const metadataIds = new Set(metadata.map(item => item.id));
   const findings = [];
   if (sheets.length !== expectedSheets) {
     findings.push(`Expected ${expectedSheets} sheets, found ${sheets.length}.`);
   }
-  if (metadata.length !== expectedPatterns) {
-    findings.push(`Expected ${expectedPatterns} metadata patterns, found ${metadata.length}.`);
+  if (variants.length < minVariants) {
+    findings.push(`Expected at least ${minVariants} variants, found ${variants.length}.`);
   }
   if (document.body.dataset.compositionSheetCount !== String(expectedSheets)) {
     findings.push(`Body composition sheet count is ${document.body.dataset.compositionSheetCount}.`);
   }
-  if (document.body.dataset.patternCount !== String(expectedPatterns)) {
-    findings.push(`Body pattern count is ${document.body.dataset.patternCount}.`);
+  if (Number(document.body.dataset.compositionVariantCount || 0) !== variants.length) {
+    findings.push(`Body composition variant count is ${document.body.dataset.compositionVariantCount}; script has ${variants.length}.`);
+  }
+  const ids = variants.map(variant => variant.id);
+  const uniqueIds = new Set(ids);
+  if (uniqueIds.size !== ids.length) {
+    findings.push("Composition variants contain duplicate IDs.");
+  }
+  const invalidIds = ids.filter(id => !/^d3-composition-[a-z0-9][a-z0-9-]*-[a-z0-9][a-z0-9-]*$/.test(id || ""));
+  if (invalidIds.length) {
+    findings.push(`Invalid composition IDs: ${invalidIds.slice(0, 5).join(", ")}.`);
+  }
+  const missingSources = variants.filter(variant => !metadataIds.has(variant.sourceId)).map(variant => variant.sourceId);
+  if (missingSources.length) {
+    findings.push(`Variants reference missing source patterns: ${Array.from(new Set(missingSources)).slice(0, 8).join(", ")}.`);
+  }
+  if (requiredVariant && !uniqueIds.has(requiredVariant)) {
+    findings.push(`Missing required variant ${requiredVariant}.`);
   }
   const tabIds = Array.from(document.querySelectorAll("[data-sheet-tab]")).map(tab => tab.dataset.sheetTab);
   if (tabIds.length !== expectedSheets) {
@@ -45,44 +63,51 @@ async ({ expectedSheets, expectedPatterns }) => {
   }
   const sheetReports = [];
   for (const sheetId of sheetIds) {
+    const expectedRows = variants.filter(variant => variant.compositionId === sheetId).length;
     const tab = document.querySelector(`[data-sheet-tab="${sheetId}"]`);
     if (!tab) {
       findings.push(`Missing tab for ${sheetId}.`);
       continue;
     }
     tab.click();
-    await sleep(80);
+    await sleep(120);
     const active = document.body.dataset.activeCompositionSheet;
     if (active !== sheetId) {
       findings.push(`Active sheet after clicking ${sheetId} is ${active}.`);
     }
-    const rows = Array.from(document.querySelectorAll(`.pattern-row[data-composition-id="${sheetId}"]`));
+    const rows = Array.from(document.querySelectorAll(`.composition-card[data-composition-id="${sheetId}"]`));
     const visibleRows = rows.filter(row => !row.hidden);
-    const ids = rows.map(row => row.dataset.patternId);
-    const uniqueIds = new Set(ids);
-    if (rows.length !== expectedPatterns) {
-      findings.push(`${sheetId} has ${rows.length} rows, expected ${expectedPatterns}.`);
+    if (expectedRows < 5) {
+      findings.push(`${sheetId} has only ${expectedRows} curated variants.`);
     }
-    if (visibleRows.length !== expectedPatterns) {
-      findings.push(`${sheetId} has ${visibleRows.length} visible rows, expected ${expectedPatterns}.`);
+    if (rows.length !== expectedRows) {
+      findings.push(`${sheetId} has ${rows.length} rows, expected ${expectedRows}.`);
     }
-    if (uniqueIds.size !== rows.length) {
-      findings.push(`${sheetId} has duplicated pattern IDs.`);
+    if (visibleRows.length !== expectedRows) {
+      findings.push(`${sheetId} has ${visibleRows.length} visible rows, expected ${expectedRows}.`);
     }
-    const invalidIds = ids.filter(id => !/^d3-pattern-[a-z0-9][a-z0-9-]*$/.test(id || ""));
-    if (invalidIds.length) {
-      findings.push(`${sheetId} has invalid pattern IDs: ${invalidIds.slice(0, 5).join(", ")}.`);
+    const rowIds = rows.map(row => row.dataset.compositionPatternId);
+    if (new Set(rowIds).size !== rowIds.length) {
+      findings.push(`${sheetId} has duplicated composition pattern IDs.`);
+    }
+    const strayFit = rows.filter(row => row.hasAttribute("data-fit") || row.querySelector(".fit-badge")).length;
+    if (strayFit) {
+      findings.push(`${sheetId} still exposes fit badges or data-fit on ${strayFit} rows.`);
     }
     const missingLinks = rows.filter(row => !row.querySelector(`a[href*="${row.dataset.patternId}"]`)).length;
     if (missingLinks) {
-      findings.push(`${sheetId} has ${missingLinks} rows without a gallery link.`);
+      findings.push(`${sheetId} has ${missingLinks} rows without a base pattern link.`);
     }
-    const fitCounts = rows.reduce((acc, row) => {
-      acc[row.dataset.fit] = (acc[row.dataset.fit] || 0) + 1;
-      return acc;
-    }, {});
-    for (const fit of ["strong", "ready", "support"]) {
-      if (!fitCounts[fit]) findings.push(`${sheetId} has no ${fit} examples.`);
+    const svgReports = rows.map(row => {
+      const svg = row.querySelector("svg[data-composition-pattern-id]");
+      const elements = svg ? svg.querySelectorAll("*").length : 0;
+      const marks = svg ? svg.querySelectorAll("circle,rect,path,line,polygon,polyline,text").length : 0;
+      const title = svg ? svg.querySelector("title")?.textContent || "" : "";
+      return { id: row.dataset.compositionPatternId, elements, marks, title };
+    });
+    const blankSvgs = svgReports.filter(report => report.marks < 8 || !report.title);
+    if (blankSvgs.length) {
+      findings.push(`${sheetId} has blank or weak SVG previews: ${blankSvgs.slice(0, 5).map(report => report.id).join(", ")}.`);
     }
     const armature = document.querySelector("#sheet-overview svg");
     if (!armature) {
@@ -90,26 +115,34 @@ async ({ expectedSheets, expectedPatterns }) => {
     }
     sheetReports.push({
       id: sheetId,
+      expectedRows,
       rows: rows.length,
       visibleRows: visibleRows.length,
-      uniquePatternIds: uniqueIds.size,
-      fitCounts,
+      uniqueCompositionIds: new Set(rowIds).size,
+      previewMarksMin: Math.min(...svgReports.map(report => report.marks)),
+      previewMarksMax: Math.max(...svgReports.map(report => report.marks)),
       armatureElements: armature ? armature.querySelectorAll("*").length : 0
     });
   }
+  const requiredRecord = variants.find(variant => variant.id === requiredVariant);
+  if (requiredRecord && document.body.dataset.activeCompositionSheet !== requiredRecord.compositionId) {
+    document.querySelector(`[data-sheet-tab="${requiredRecord.compositionId}"]`)?.click();
+    await sleep(120);
+  }
   const search = document.querySelector("#pattern-search");
-  search.value = "asymmetric-task-overlap-saturated";
+  search.value = requiredVariant || "force-network";
   search.dispatchEvent(new Event("input", { bubbles: true }));
   await sleep(80);
-  const filteredVisible = Array.from(document.querySelectorAll(".pattern-row")).filter(row => !row.hidden);
-  if (!filteredVisible.some(row => row.dataset.patternId === "d3-pattern-asymmetric-task-overlap-saturated")) {
-    findings.push("Search filter did not expose d3-pattern-asymmetric-task-overlap-saturated.");
+  const filteredVisible = Array.from(document.querySelectorAll(".composition-card")).filter(row => !row.hidden);
+  if (requiredVariant && !filteredVisible.some(row => row.dataset.compositionPatternId === requiredVariant)) {
+    findings.push(`Search filter did not expose ${requiredVariant}.`);
   }
   return {
     clean: findings.length === 0,
     findings,
     sheetCount: sheets.length,
-    patternCount: metadata.length,
+    variantCount: variants.length,
+    metadataPatternCount: metadata.length,
     sheetReports,
     filteredVisibleCount: filteredVisible.length,
     viewport: { width: window.innerWidth, height: window.innerHeight }
@@ -135,7 +168,8 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", nargs="?", default=str(DEFAULT_SOURCE), help="Composition sheets HTML file, file URL, or HTTP URL.")
     parser.add_argument("--expected-sheets", type=int, default=7)
-    parser.add_argument("--expected-patterns", type=int, default=218)
+    parser.add_argument("--min-variants", type=int, default=50)
+    parser.add_argument("--required-variant", default="d3-composition-radial-rosette-force-network")
     parser.add_argument("--viewport", type=parse_viewport, default=(1366, 900))
     parser.add_argument("--wait-ms", type=int, default=600)
     parser.add_argument("--screenshot", type=Path)
@@ -153,7 +187,11 @@ def main() -> int:
         page.wait_for_timeout(max(args.wait_ms, 0))
         result: dict[str, Any] = page.evaluate(
             VERIFY_JS,
-            {"expectedSheets": args.expected_sheets, "expectedPatterns": args.expected_patterns},
+            {
+                "expectedSheets": args.expected_sheets,
+                "minVariants": args.min_variants,
+                "requiredVariant": args.required_variant,
+            },
         )
         if args.screenshot:
             args.screenshot.parent.mkdir(parents=True, exist_ok=True)

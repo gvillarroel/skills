@@ -52,9 +52,9 @@ Use `--expect-min-score` or `--expect-min-line-rate` only when a pattern has a k
 
 For dense patterns, improve the most structural anchors rather than every small point. A handful of strongly aligned centers or terminals can improve visual order without making the output look mechanically gridded.
 
-## Composition Sheets
+## Composition Variant Sheets
 
-Use `assets/examples/d3-animated-svg/composition-sheets.html` when a user wants pages or sheets organized by composition type instead of visualization type. Each sheet must keep the full current D3 pattern catalog so a larger composition can be assembled from any pattern family without losing the stable `d3-pattern-*` IDs.
+Use `assets/examples/d3-animated-svg/composition-sheets.html` when a user wants pages or sheets organized by composition type instead of visualization type. Each sheet is a curated set of good SVG variants, not a repeated copy of the full D3 gallery. Only add a source pattern to a sheet when the pattern can express that composition clearly.
 
 Current sheet IDs:
 
@@ -66,15 +66,37 @@ Current sheet IDs:
 - `flow-spine`: source, transform, checkpoint, and output roles.
 - `dense-label-lanes`: external lanes, clearance bands, and leader underpasses.
 
-Each rendered row must expose:
+Each variant must expose a stable composition-specific ID:
+
+```text
+d3-composition-<composition-id>-<source-example-id>
+```
+
+Examples:
+
+- `d3-composition-balance-symmetry-force-network`
+- `d3-composition-diagonal-armature-force-network`
+- `d3-composition-radial-rosette-force-network`
+
+Each rendered card must include an inline SVG preview and expose:
 
 - `data-composition-id`: the active sheet ID.
 - `data-example-id`: the gallery source example ID.
 - `data-pattern-id`: the stable `d3-pattern-*` ID.
-- `data-fit`: `strong`, `ready`, or `support`.
+- `data-composition-pattern-id`: the stable composition-specific variant ID.
+
+Do not use `data-fit`, fit badges, or `strong` / `support` tiers. The sheet membership itself means the variant is good enough for that composition.
+
+When adding a variant:
+
+1. Preserve the source pattern's data semantics.
+2. Recompose the geometry toward the sheet armature: center balance, diagonal movement, golden/root split, modular grid, radial rings, process spine, or label lanes.
+3. Render a nonblank SVG preview on the card so the composition can be visually inspected without opening the base gallery.
+4. Keep the base pattern link so the original `d3-pattern-*` ID remains discoverable.
+5. Search by the composition ID, source pattern ID, title, or role should reveal the card.
 
 Validate the sheets after adding, removing, or renaming D3 patterns:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --expected-patterns 218 --expect-clean
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 50 --required-variant d3-composition-radial-rosette-force-network --expect-clean
 ```

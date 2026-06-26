@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>D3 Composition Sheets</title>
+  <title>D3 Composition Variants</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -102,6 +102,15 @@
       line-height: 1;
     }
 
+    .sheet-tab .count-badge {
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      padding: 2px 6px;
+      font-size: 11px;
+      line-height: 1;
+    }
+
     .nav-link:hover,
     .sheet-tab:hover,
     .sheet-tab[aria-selected="true"] {
@@ -119,7 +128,7 @@
       white-space: nowrap;
     }
 
-    .summary strong {
+    .summary-value {
       display: block;
       color: var(--ink);
       font-size: 22px;
@@ -200,7 +209,7 @@
       font-weight: 700;
     }
 
-    .metric strong {
+    .metric .count-value {
       color: var(--ink);
     }
 
@@ -228,48 +237,20 @@
       outline-offset: 2px;
     }
 
-    .fit-legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: flex-end;
+    .toolbar-note {
       color: var(--muted);
       font-size: 12px;
       font-weight: 700;
-    }
-
-    .fit-legend span {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--line);
-    }
-
-    .dot-strong {
-      background: var(--green);
-    }
-
-    .dot-ready {
-      background: var(--blue);
-    }
-
-    .dot-support {
-      background: var(--orange);
+      text-align: right;
     }
 
     .sheet-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
     }
 
-    .pattern-row {
+    .composition-card {
       min-width: 0;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -277,30 +258,29 @@
       display: grid;
       grid-template-rows: auto 1fr auto;
       gap: 10px;
-      padding: 14px;
+      overflow: hidden;
     }
 
-    .pattern-row[data-fit="strong"] {
-      border-color: #a9c79e;
+    .preview-frame {
+      aspect-ratio: 1.64;
+      border-bottom: 1px solid var(--line-soft);
+      background: #ffffff;
     }
 
-    .pattern-row[data-fit="ready"] {
-      border-color: #99ccdd;
+    .preview-frame svg {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
-    .pattern-row[data-fit="support"] {
-      border-color: #e8be91;
-    }
-
-    .pattern-header {
-      display: flex;
-      gap: 10px;
-      justify-content: space-between;
-      align-items: start;
+    .composition-card-body {
+      display: grid;
+      gap: 7px;
+      padding: 0 14px;
     }
 
     .pattern-kicker {
-      margin: 0 0 4px;
+      margin: 0;
       color: var(--brand-primary);
       font-size: 11px;
       font-weight: 800;
@@ -314,42 +294,15 @@
       letter-spacing: 0;
     }
 
-    .fit-badge {
-      flex: 0 0 auto;
-      border-radius: 999px;
-      color: #ffffff;
-      padding: 4px 8px;
-      font-size: 11px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .fit-badge[data-fit="strong"] {
-      background: var(--green);
-    }
-
-    .fit-badge[data-fit="ready"] {
-      background: var(--blue);
-    }
-
-    .fit-badge[data-fit="support"] {
-      background: var(--orange);
-    }
-
     .pattern-copy,
-    .plan-text,
-    .macro-text {
+    .plan-text {
       margin: 0;
       color: var(--muted);
       font-size: 12px;
     }
 
-    .plan-text strong,
-    .macro-text strong {
-      color: var(--ink);
-    }
-
-    .pattern-id {
+    .composition-id {
+      margin: 0;
       color: var(--muted);
       font-family: Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 10.5px;
@@ -363,6 +316,7 @@
       font-size: 12px;
       font-weight: 800;
       text-decoration: none;
+      margin: 0 14px 14px;
     }
 
     .pattern-link:hover {
@@ -371,7 +325,7 @@
 
     @media (max-width: 1380px) {
       .sheet-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -383,13 +337,14 @@
       }
 
       .header-actions,
-      .fit-legend {
+      .toolbar-note {
         justify-items: start;
         justify-content: flex-start;
+        text-align: left;
       }
 
       .sheet-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
       }
     }
 
@@ -413,9 +368,6 @@
         white-space: normal;
       }
 
-      .sheet-grid {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -423,15 +375,15 @@
   <main class="page-shell">
     <header>
       <div>
-        <h1>D3 Composition Sheets</h1>
-        <p class="intro">Composition-first pages for applying the full D3 pattern catalog to larger layouts without losing the original pattern IDs.</p>
+        <h1>D3 Composition Variants</h1>
+        <p class="intro">Composition-first SVG variants that reimagine selected D3 patterns for balance, diagonal, proportional, grid, radial, flow, and dense-label layouts.</p>
       </div>
       <div class="header-actions">
         <a class="nav-link" href="./index.html">D3 Gallery</a>
         <div class="summary" aria-label="Composition sheet summary">
-          <span><strong id="sheet-count">0</strong> sheets</span>
-          <span><strong id="pattern-count">0</strong> patterns</span>
-          <span><strong>SVG</strong> armatures</span>
+          <span><span class="summary-value" id="sheet-count">0</span> sheets</span>
+          <span><span class="summary-value" id="variant-count">0</span> variants</span>
+          <span><span class="summary-value">SVG</span> previews</span>
         </div>
       </div>
     </header>
@@ -441,15 +393,11 @@
     <section class="sheet-overview" id="sheet-overview" aria-live="polite"></section>
 
     <div class="toolbar">
-      <input class="search-input" id="pattern-search" type="search" placeholder="Filter by pattern ID, title, family, or composition role" aria-label="Filter patterns">
-      <div class="fit-legend" aria-label="Fit legend">
-        <span><i class="dot dot-strong"></i> Strong</span>
-        <span><i class="dot dot-ready"></i> Ready</span>
-        <span><i class="dot dot-support"></i> Support</span>
-      </div>
+      <input class="search-input" id="pattern-search" type="search" placeholder="Filter by composition ID, base pattern, title, or role" aria-label="Filter composition variants">
+      <div class="toolbar-note">Only curated variants that work for the selected composition are shown.</div>
     </div>
 
-    <section class="sheet-grid" id="sheet-grid" aria-label="Composition pattern plans"></section>
+    <section class="sheet-grid" id="sheet-grid" aria-label="Composition variant previews"></section>
   </main>
 
   <script src="./gallery.js"></script>

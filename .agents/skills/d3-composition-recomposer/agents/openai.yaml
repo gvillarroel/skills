@@ -1,0 +1,4 @@
+interface:
+  display_name: "D3 Composition Recomposer"
+  short_description: "Recompose D3 patterns for new armatures"
+  default_prompt: "Use $d3-composition-recomposer to recompose this D3 pattern into the requested composition armature."

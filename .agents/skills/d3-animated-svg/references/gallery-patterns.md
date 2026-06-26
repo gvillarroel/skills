@@ -7,7 +7,7 @@ Use this reference when extending a gallery of multiple D3-generated SVG example
 - Keep one data record per example with `id`, `kicker`, `title`, `copy`, and `render`.
 - Use the `id` for the card `data-example`, the SVG `id`, and the per-card replay target.
 - Derive a stable `patternId` as `d3-pattern-${id}` unless a specific stable override is required. Expose it on the card `id`, the card `data-pattern-id`, the SVG `data-pattern-id`, and a compact visible card label so examples can be referenced later as reusable patterns.
-- Keep `window.D3_ANIMATED_SVG_EXAMPLES` in sync with gallery metadata. Derived pages such as `composition-sheets.html` depend on it to list every pattern without duplicating renderer code.
+- Keep `window.D3_ANIMATED_SVG_EXAMPLES` in sync with gallery metadata. Derived pages such as `composition-sheets.html` depend on it for source titles, base `d3-pattern-*` IDs, and links, while rendering their own curated composition SVG previews.
 - Keep card headers compact and stable. Do not let replay controls resize the visualization frame.
 - Keep every SVG self-contained with a unique `title`, `desc`, and scoped IDs for definitions.
 
@@ -91,7 +91,7 @@ Integrate repeated findings through shared CSS, token ramps, and a gallery-level
 For gallery updates, verify:
 
 - the expected card count matches `body[data-example-count]`
-- derived composition pages still expose the same pattern count on every sheet
+- derived composition pages expose curated SVG variants with stable `d3-composition-<composition-id>-<source-id>` IDs instead of repeating every pattern on every sheet
 - every card exposes one unique pattern ID, and the card plus SVG agree on that pattern ID
 - package or CI commands pin `--expected` to the intended card count instead of relying only on the page-generated count
 - every card contains exactly one SVG and one replay control
