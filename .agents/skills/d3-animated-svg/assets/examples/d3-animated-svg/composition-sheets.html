@@ -250,6 +250,18 @@
       gap: 14px;
     }
 
+    .source-gallery-cache {
+      position: absolute;
+      left: -20000px;
+      top: 0;
+      width: 900px;
+      height: 900px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+
     .composition-card {
       min-width: 0;
       border: 1px solid var(--line);
@@ -408,8 +420,12 @@
     </div>
 
     <section class="sheet-grid" id="sheet-grid" aria-label="Composition variant previews"></section>
+    <section class="source-gallery-cache" id="gallery" aria-hidden="true"></section>
   </main>
 
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+  <script src="./node_modules/d3-sankey/dist/d3-sankey.min.js"></script>
+  <script src="./task-overlap-layouts.js"></script>
   <script src="./gallery.js"></script>
   <script src="./composition-sheets.js"></script>
 </body>

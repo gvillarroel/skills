@@ -38,7 +38,7 @@ uv run --script .agents/skills/d3-composition-evaluator/scripts/evaluate_composi
 
 The script opens both pages in Chromium, extracts rendered SVG mark profiles, and scores:
 
-- source closeness: traceability to the base pattern, renderer continuity, mark profile similarity, palette overlap, source signature, and title trace.
+- source closeness: traceability to the base pattern, renderer continuity, mark profile similarity, palette overlap, source signature, and title trace, measured from the recomposed source content rather than composition-only cues.
 - composition fit: contract completeness plus target-specific armature metrics for balance, diagonal, golden/root split, grid, radial, flow spine, and dense-label lanes.
 
 Review the generated worst-score screenshots before changing thresholds or declaring the gallery clean.

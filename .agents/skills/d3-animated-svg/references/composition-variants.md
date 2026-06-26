@@ -38,7 +38,7 @@ Each card renders an inline SVG preview and exposes:
 - `data-quadrants`
 - `data-reviewed`
 
-Each preview SVG must expose the same composition/source attributes, include visible `.composition-line` guides, at least four `.quadrant-field` regions, and a `.base-signature` group that ties the optimized variant back to the original source pattern.
+Each preview SVG must expose the same composition/source attributes, include visible `.composition-line` guides, at least four `.quadrant-field` regions, a `.source-pattern-recomposition` group cloned from the rendered base SVG, and a `.base-signature` group that ties the optimized variant back to the original source pattern. Generic renderer families are fallback scaffolds only; published cards should preserve the base SVG's mark vocabulary before adding composition-specific anchors.
 
 Do not use fit tiers or fit badges. Keep only variants that are useful for the selected composition.
 
@@ -46,7 +46,7 @@ Do not use fit tiers or fit badges. Keep only variants that are useful for the s
 
 1. Review every current source pattern before publishing the sheets.
 2. Add a target only when the source pattern can visibly express the target armature.
-3. Preserve the source pattern's semantic meaning while changing placement, guides, grouping, hierarchy, lines, and quadrant use.
+3. Preserve the source pattern's semantic meaning by cloning or faithfully recreating the rendered base SVG geometry before changing placement, guides, grouping, hierarchy, lines, and quadrant use.
 4. Keep the preview SVG nonblank and specific enough to evaluate the composition without opening the base gallery.
 5. Keep the base pattern link intact so the source `d3-pattern-*` ID remains reachable.
 6. Validate after changes:

@@ -33,6 +33,7 @@ Use these when evaluating a recomposed variant against the source pattern that g
 
 - The card, SVG, and link expose the original source example ID and stable `d3-pattern-*` ID.
 - The visible source signature or title trace makes the base pattern identifiable without opening the source gallery.
+- Source-closeness scoring should compare the recomposed source content against the base SVG, excluding composition-only anchors such as guide lines, lane labels, context panels, or radial/grid cues.
 - The preview renderer is compatible with the source pattern kind. For example, a source network can become balanced, diagonal, or radial, but it should still read as nodes and links.
 - The simplified preview keeps a reasonable mark vocabulary from the base SVG: node-link patterns keep circles and connectors, matrices keep cells, flows keep connectors, dense-label views keep labels and leaders.
 - Lower source-closeness scores are acceptable for highly abstract previews, but the score should explain what became more generic.
@@ -45,7 +46,7 @@ For gallery-level composition sheets, prefer `scripts/evaluate_composition_varia
 - `compositionScore`: contract health plus target-specific metrics for balance, diagonal, golden/root split, thirds/fifths grid, radial/rosette, flow spine, and dense-label lanes.
 - `overallScore`: weighted source closeness plus composition fit.
 
-Use the JSON output for regression checks and the generated worst-score screenshots for visual calibration. Do not rely on scores alone when a score conflicts with obvious visual evidence.
+The evaluator should resolve rendered transforms before extracting mark centers. Use the JSON output for regression checks and the generated worst-score screenshots for visual calibration. Do not rely on scores alone when a score conflicts with obvious visual evidence.
 
 ## Reporting
 

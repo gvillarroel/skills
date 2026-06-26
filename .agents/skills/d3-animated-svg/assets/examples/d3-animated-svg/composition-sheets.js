@@ -392,6 +392,164 @@
     return parent.appendChild(el("path", { d, ...attrs }));
   }
 
+  function cssEscape(value) {
+    if (window.CSS && typeof window.CSS.escape === "function") return window.CSS.escape(String(value));
+    return String(value).replace(/[^a-zA-Z0-9_-]/g, "\\$&");
+  }
+
+  function parseViewBox(value) {
+    const parts = String(value || "").trim().split(/[\s,]+/).map(Number);
+    if (parts.length !== 4 || parts.some(part => !Number.isFinite(part))) return [0, 0, 560, 420];
+    return parts;
+  }
+
+  function sourceSvgForVariant(variant) {
+    return document.querySelector(`.source-gallery-cache svg#${cssEscape(variant.sourceId)}`);
+  }
+
+  function compositionSourceFrame(compositionId) {
+    const frames = {
+      "balance-symmetry": { x: 36, y: 34, width: 288, height: 150, rotate: 0 },
+      "diagonal-armature": { x: 48, y: 42, width: 264, height: 134, rotate: -8 },
+      "golden-root": { x: 36, y: 38, width: 188, height: 132, rotate: 0 },
+      "thirds-fifths-grid": { x: 42, y: 38, width: 276, height: 136, rotate: 0 },
+      "radial-rosette": { x: 58, y: 26, width: 244, height: 168, rotate: 0 },
+      "flow-spine": { x: 38, y: 48, width: 284, height: 124, rotate: 0 },
+      "dense-label-lanes": { x: 104, y: 34, width: 152, height: 150, rotate: 0 }
+    };
+    return frames[compositionId] || frames["balance-symmetry"];
+  }
+
+  function prefixClonedIds(root, prefix) {
+    const idMap = new Map();
+    root.querySelectorAll("[id]").forEach(node => {
+      const oldId = node.getAttribute("id");
+      const nextId = `${prefix}-${oldId}`;
+      idMap.set(oldId, nextId);
+      node.setAttribute("id", nextId);
+    });
+    const attrs = ["href", "xlink:href", "clip-path", "mask", "filter", "fill", "stroke", "marker-start", "marker-mid", "marker-end"];
+    root.querySelectorAll("*").forEach(node => {
+      attrs.forEach(attr => {
+        const value = node.getAttribute(attr);
+        if (!value) return;
+        let next = value.replace(/url\(#([^)]+)\)/g, (match, id) => `url(#${idMap.get(id) || id})`);
+        if (next.startsWith("#")) {
+          const id = next.slice(1);
+          next = `#${idMap.get(id) || id}`;
+        }
+        if (next !== value) node.setAttribute(attr, next);
+      });
+    });
+  }
+
+  function removeRuntimeAnimation(root) {
+    root.querySelectorAll("animate, animateMotion, animateTransform, script").forEach(node => node.remove());
+    root.querySelectorAll("[opacity='0']").forEach(node => {
+      if (!node.querySelector("animate, animateMotion, animateTransform")) node.setAttribute("opacity", "1");
+    });
+  }
+
+  function addSourceField(svg, frame, compositionId) {
+    addRect(svg, frame.x, frame.y, frame.width, frame.height, {
+      class: "source-pattern-field",
+      rx: compositionId === "radial-rosette" ? 72 : 6,
+      fill: "none",
+      stroke: palette.ink,
+      "stroke-width": 1.1,
+      "stroke-opacity": 0.28
+    });
+  }
+
+  function addSourceAdaptationCues(svg, variant, frame) {
+    const g = svg.appendChild(el("g", { class: "source-adaptation-cues", "stroke-linecap": "round" }));
+    if (variant.compositionId === "golden-root") {
+      addRect(g, 244, 54, 66, 82, { rx: 8, fill: palette.yellowHighlight, "fill-opacity": 0.72, stroke: palette.orange, "stroke-width": 1.4 });
+      for (let row = 0; row < 5; row += 1) {
+        for (let col = 0; col < 5; col += 1) {
+          const fill = (row + col) % 3 === 0 ? palette.orange : palette.surface;
+          addRect(g, 253 + col * 9, 62 + row * 9, 5.5, 5.5, { rx: 1.2, fill, "fill-opacity": fill === palette.surface ? 0.86 : 0.58, stroke: palette.orange, "stroke-width": 0.45, "stroke-opacity": 0.55 });
+        }
+      }
+      appendText(g, 277, 96, tokenLabel(variant, "context"), { "text-anchor": "middle", "font-size": 9.5, "font-weight": 800, fill: palette.ink });
+    } else if (variant.compositionId === "flow-spine") {
+      [[44, 110], [116, 82], [180, 112], [252, 142], [318, 92]].forEach((point, index, points) => {
+        if (index > 0) {
+          const prev = points[index - 1];
+          addPath(g, `M${prev[0]} ${prev[1]} C${(prev[0] + point[0]) / 2} ${prev[1] - 18}, ${(prev[0] + point[0]) / 2} ${point[1] + 18}, ${point[0]} ${point[1]}`, { fill: "none", stroke: palette.red, "stroke-width": 1.8, "stroke-opacity": 0.46 });
+        }
+        addCircle(g, point[0], point[1], index === 0 || index === points.length - 1 ? 4.8 : 3.4, { fill: palette.surface, stroke: palette.red, "stroke-width": 1.4 });
+      });
+    } else if (variant.compositionId === "dense-label-lanes") {
+      [38, 286].forEach((x, side) => {
+        for (let index = 0; index < 5; index += 1) {
+          const y = 42 + index * 27;
+          addRect(g, x, y, 42, 9, { rx: 3, fill: palette.surface, stroke: palette.line, "stroke-width": 1 });
+          appendText(g, side ? x + 36 : x + 6, y + 6.8, tokenLabel(variant, "label", index + side * 5), { "text-anchor": side ? "end" : "start", "font-size": 6.3, "font-weight": 800, fill: palette.muted });
+          addLine(g, side ? 256 : 104, 58 + index * 24, x + (side ? 0 : 42), y + 4.5, { stroke: palette.blue, "stroke-width": 1, "stroke-opacity": 0.35 });
+        }
+      });
+    } else if (variant.compositionId === "diagonal-armature") {
+      addPath(g, "M54 170 L306 48", { fill: "none", stroke: palette.red, "stroke-width": 2.2, "stroke-opacity": 0.42 });
+      [[62, 166], [116, 142], [180, 110], [244, 78], [304, 50]].forEach((point, index) => {
+        addCircle(g, point[0], point[1], index === 0 || index === 4 ? 5.2 : 3.8, { fill: palette.surface, stroke: palette.red, "stroke-width": 1.5, "fill-opacity": 0.92 });
+      });
+    } else if (variant.compositionId === "radial-rosette") {
+      addCircle(g, 180, 110, Math.min(frame.width, frame.height) * 0.38, { fill: "none", stroke: palette.red, "stroke-width": 1.5, "stroke-opacity": 0.42 });
+      for (let index = 0; index < 8; index += 1) {
+        const angle = (Math.PI * 2 * index) / 8 - Math.PI / 2;
+        const x = 180 + Math.cos(angle) * 58;
+        const y = 110 + Math.sin(angle) * 58;
+        addLine(g, 180, 110, x, y, { stroke: palette.blue, "stroke-width": 0.8, "stroke-opacity": 0.24 });
+        addCircle(g, x, y, 2.8, { fill: palette.surface, stroke: palette.red, "stroke-width": 1.1, "stroke-opacity": 0.72 });
+      }
+      addCircle(g, 180, 110, 4.5, { fill: palette.red, stroke: palette.surface, "stroke-width": 1.2 });
+    } else if (variant.compositionId === "thirds-fifths-grid") {
+      [74, 137, 180, 223, 286].forEach(x => addLine(g, x, frame.y, x, frame.y + frame.height, { stroke: palette.blue, "stroke-width": 0.8, "stroke-opacity": 0.28 }));
+      [74, 137, 180, 223, 286].forEach((x, xi) => {
+        [66, 110, 154].forEach((y, yi) => {
+          const active = (xi + yi) % 2 === 0;
+          addRect(g, x - 3, y - 3, 6, 6, { rx: 1.5, fill: active ? palette.surface : palette.blueHighlight, "fill-opacity": active ? 1 : 0.52, stroke: palette.blue, "stroke-width": 1, "stroke-opacity": active ? 0.62 : 0.36 });
+        });
+      });
+    } else if (variant.compositionId === "balance-symmetry") {
+      [[126, 76], [234, 76], [126, 144], [234, 144], [180, 110]].forEach((point, index) => {
+        addCircle(g, point[0], point[1], index === 4 ? 5.5 : 4, { fill: index === 4 ? palette.redHighlight : palette.surface, stroke: index === 4 ? palette.red : palette.blue, "stroke-width": 1.4, "stroke-opacity": 0.68 });
+      });
+      addLine(g, 126, 76, 234, 144, { stroke: palette.blue, "stroke-width": 1, "stroke-opacity": 0.22 });
+      addLine(g, 126, 144, 234, 76, { stroke: palette.blue, "stroke-width": 1, "stroke-opacity": 0.22 });
+    }
+  }
+
+  function renderSourceBasedVariant(svg, variant) {
+    const sourceSvg = sourceSvgForVariant(variant);
+    if (!sourceSvg) return false;
+    const frame = compositionSourceFrame(variant.compositionId);
+    const [vx, vy, vw, vh] = parseViewBox(sourceSvg.getAttribute("viewBox"));
+    const scale = Math.min(frame.width / vw, frame.height / vh);
+    const tx = frame.x + (frame.width - vw * scale) / 2 - vx * scale;
+    const ty = frame.y + (frame.height - vh * scale) / 2 - vy * scale;
+    addSourceField(svg, frame, variant.compositionId);
+    const outer = svg.appendChild(el("g", {
+      class: "source-pattern-recomposition",
+      "data-source-svg-id": variant.sourceId,
+      "data-source-view-box": sourceSvg.getAttribute("viewBox") || "",
+      transform: frame.rotate ? `rotate(${frame.rotate} 180 110)` : undefined
+    }));
+    const content = outer.appendChild(el("g", {
+      class: "source-pattern-content",
+      transform: `translate(${tx.toFixed(3)} ${ty.toFixed(3)}) scale(${scale.toFixed(5)})`
+    }));
+    Array.from(sourceSvg.childNodes).forEach(child => {
+      if (child.nodeType === Node.ELEMENT_NODE && ["title", "desc"].includes(child.tagName.toLowerCase())) return;
+      content.appendChild(child.cloneNode(true));
+    });
+    removeRuntimeAnimation(content);
+    prefixClonedIds(content, `${variant.id}-source`);
+    addSourceAdaptationCues(svg, variant, frame);
+    return true;
+  }
+
   const palette = {
     red: "#9e1b32",
     orange: "#e77204",
@@ -622,6 +780,10 @@
   }
 
   function renderVariantMarks(svg, variant) {
+    if (renderSourceBasedVariant(svg, variant)) {
+      addPatternSignature(svg, variant);
+      return;
+    }
     const renderer = variant.renderer || variant.kind;
     if (renderer === "network") renderNetwork(svg, variant);
     else if (renderer === "flow" || renderer === "route") renderFlow(svg, variant);

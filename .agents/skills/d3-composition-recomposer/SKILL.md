@@ -12,7 +12,7 @@ description: Recompose an existing D3 or SVG pattern into a requested compositio
    - In skill-only or isolated validation, treat the prompt as complete unless it names a local artifact to inspect. Do not search parent repositories, sibling skills, evaluation prompt folders, or gallery fixtures for extra context.
 2. Assign the variant ID before editing: `d3-composition-<composition-id>-<source-id>`.
 3. Choose a recipe from `references/recomposition-recipes.md` and map the source pattern's primary marks to the target armature.
-4. Preserve the source pattern's meaning. Recompose position, grouping, guides, annotation lanes, and visual hierarchy; do not fabricate different data or change quantitative relationships without a clear request.
+4. Preserve the source pattern's meaning and visual vocabulary. When a rendered source SVG is available, start from that geometry or a faithful clone before adding the target armature; do not replace it with a generic renderer, fabricate different data, or change quantitative relationships without a clear request.
 5. Build or update a visible SVG preview for the variant. Include `title`, `desc`, stable IDs, `data-composition-id`, `data-example-id`, `data-pattern-id`, and `data-composition-pattern-id` when the output is a gallery card.
 6. Validate in a real browser when possible. Check that the SVG is nonblank, labels fit, the composition ID is searchable, and the source pattern remains discoverable.
 

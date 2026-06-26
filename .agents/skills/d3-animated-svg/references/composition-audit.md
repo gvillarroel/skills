@@ -89,14 +89,14 @@ Each rendered card must include an inline SVG preview and expose:
 - `data-quadrants`: the quadrant roles used by the optimized variant.
 - `data-reviewed`: `true` after the pattern has been reviewed.
 
-Each inline SVG preview must include visible `.composition-line` elements, at least four `.quadrant-field` regions, and a `.base-signature` group that identifies the source pattern used for the recomposition.
+Each inline SVG preview must include visible `.composition-line` elements, at least four `.quadrant-field` regions, a `.source-pattern-recomposition` group cloned from the rendered base SVG, and a `.base-signature` group that identifies the source pattern used for the recomposition. Composition anchors, lane labels, rings, grid cells, or context panels may be added around the clone, but they should strengthen the requested armature without replacing the source pattern.
 
 Do not use `data-fit`, fit badges, or `strong` / `support` tiers. The sheet membership itself means the variant is good enough for that composition.
 
 When adding a variant:
 
 1. Preserve the source pattern's data semantics.
-2. Recompose the geometry toward the sheet armature: center balance, diagonal movement, golden/root split, modular grid, radial rings, process spine, or label lanes.
+2. Start from the rendered source SVG geometry, then recompose the preview toward the sheet armature: center balance, diagonal movement, golden/root split, modular grid, radial rings, process spine, or label lanes.
 3. Render a nonblank SVG preview on the card so the composition can be visually inspected without opening the base gallery.
 4. Keep the base pattern link so the original `d3-pattern-*` ID remains discoverable.
 5. Search by the composition ID, source pattern ID, title, or role should reveal the card.

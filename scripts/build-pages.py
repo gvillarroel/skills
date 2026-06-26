@@ -452,6 +452,13 @@ def build_docs() -> None:
         },
     )
     patch_file(
+        DOCS / "examples" / "d3-animated-svg" / "composition-sheets.html",
+        {
+            "./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
+            "./node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
+        },
+    )
+    patch_file(
         DOCS / "examples" / "d3-animated-svg" / "force-beeswarm.html",
         {"./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"},
     )

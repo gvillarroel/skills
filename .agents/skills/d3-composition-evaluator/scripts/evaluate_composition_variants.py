@@ -79,14 +79,29 @@ EXTRACT_BASE_JS = r"""
       try {
         const box = node.getBBox();
         if (Number.isFinite(box.x) && Number.isFinite(box.y) && box.width >= 0 && box.height >= 0) {
-          const area = Math.max(1, box.width * box.height);
+          const rootMatrix = svg.getScreenCTM();
+          const nodeMatrix = node.getScreenCTM();
+          const matrix = rootMatrix && nodeMatrix ? rootMatrix.inverse().multiply(nodeMatrix) : node.getCTM();
+          const corners = [
+            new DOMPoint(box.x, box.y),
+            new DOMPoint(box.x + box.width, box.y),
+            new DOMPoint(box.x + box.width, box.y + box.height),
+            new DOMPoint(box.x, box.y + box.height)
+          ].map(point => matrix ? point.matrixTransform(matrix) : point);
+          const xs = corners.map(point => point.x);
+          const ys = corners.map(point => point.y);
+          const x = Math.min(...xs);
+          const y = Math.min(...ys);
+          const width = Math.max(...xs) - x;
+          const height = Math.max(...ys) - y;
+          const area = Math.max(1, width * height);
           centers.push({
             tag,
             className: node.getAttribute("class") || "",
-            x: box.x + box.width / 2,
-            y: box.y + box.height / 2,
-            width: box.width,
-            height: box.height,
+            x: x + width / 2,
+            y: y + height / 2,
+            width,
+            height,
             area
           });
         }
@@ -143,9 +158,9 @@ async ({ onlyIds }) => {
     return String(value).replace(/[^a-zA-Z0-9_-]/g, "\\$&");
   }
 
-  function collectFeatures(svg) {
+  function collectFeatures(svg, options = {}) {
     if (!svg) return null;
-    const ignoredSelectors = [".composition-guide", ".base-signature", "defs"];
+    const ignoredSelectors = options.ignoreSelectors || [".composition-guide", ".base-signature", "defs"];
     const ignored = node => ignoredSelectors.some(selector => node.closest(selector));
     const tags = ["circle", "ellipse", "rect", "path", "line", "polygon", "polyline", "text"];
     const tagCounts = Object.fromEntries(tags.map(tag => [tag, 0]));
@@ -172,14 +187,29 @@ async ({ onlyIds }) => {
       try {
         const box = node.getBBox();
         if (Number.isFinite(box.x) && Number.isFinite(box.y) && box.width >= 0 && box.height >= 0) {
-          const area = Math.max(1, box.width * box.height);
+          const rootMatrix = svg.getScreenCTM();
+          const nodeMatrix = node.getScreenCTM();
+          const matrix = rootMatrix && nodeMatrix ? rootMatrix.inverse().multiply(nodeMatrix) : node.getCTM();
+          const corners = [
+            new DOMPoint(box.x, box.y),
+            new DOMPoint(box.x + box.width, box.y),
+            new DOMPoint(box.x + box.width, box.y + box.height),
+            new DOMPoint(box.x, box.y + box.height)
+          ].map(point => matrix ? point.matrixTransform(matrix) : point);
+          const xs = corners.map(point => point.x);
+          const ys = corners.map(point => point.y);
+          const x = Math.min(...xs);
+          const y = Math.min(...ys);
+          const width = Math.max(...xs) - x;
+          const height = Math.max(...ys) - y;
+          const area = Math.max(1, width * height);
           centers.push({
             tag,
             className: node.getAttribute("class") || "",
-            x: box.x + box.width / 2,
-            y: box.y + box.height / 2,
-            width: box.width,
-            height: box.height,
+            x: x + width / 2,
+            y: y + height / 2,
+            width,
+            height,
             area
           });
         }
@@ -234,7 +264,8 @@ async ({ onlyIds }) => {
         quadrantFieldCount: svg ? svg.querySelectorAll(".quadrant-field").length : 0,
         hasBaseSignature: Boolean(svg?.querySelector(".base-signature")),
         baseSignatureText: svg?.querySelector(".base-signature")?.textContent?.replace(/\s+/g, " ").trim() || "",
-        feature: collectFeatures(svg)
+        feature: collectFeatures(svg),
+        sourceFeature: collectFeatures(svg, { ignoreSelectors: [".composition-guide", ".base-signature", ".source-adaptation-cues", ".source-pattern-field", "defs"] })
       });
     }
   }
@@ -394,7 +425,7 @@ def score_source_closeness(
     contract: float,
 ) -> tuple[float, dict[str, float], list[str]]:
     base_features = (base or {}).get("features") or {}
-    variant_features = row.get("feature") or {}
+    variant_features = row.get("sourceFeature") or row.get("feature") or {}
     source_id = variant.get("sourceId") or row.get("sourceId") or ""
     base_title = (base or {}).get("title") or source_id
 
@@ -537,11 +568,10 @@ def score_lanes(points: list[dict[str, Any]], feature: dict[str, Any]) -> tuple[
     if not points:
         return 0.0, {}
     text_points = [point for point in points if point.get("tag") == "text"]
-    data_points = [point for point in points if point.get("tag") != "text"]
     lane_text = [point for point in text_points if point["x"] < 110 or point["x"] > 250]
-    center_data = [point for point in data_points if 105 <= point["x"] <= 255 and 35 <= point["y"] <= 185]
-    text_lane_score = len(lane_text) / max(1, len(text_points)) if text_points else 0.65
-    data_field_score = len(center_data) / max(1, len(data_points)) if data_points else 0.0
+    center_marks = [point for point in points if 105 <= point["x"] <= 255 and 35 <= point["y"] <= 185]
+    text_lane_score = min(1.0, len(lane_text) / 8) if text_points else 0.65
+    data_field_score = len(center_marks) / max(1, len(points))
     connector_share = ((feature.get("tagCounts") or {}).get("line", 0) + (feature.get("tagCounts") or {}).get("path", 0)) / max(1, feature.get("markCount") or 1)
     score = weighted_average([(text_lane_score, 0.36), (data_field_score, 0.34), (clamp(connector_share * 3.0), 0.20), (1.0, 0.10)])
     return score, {"textLaneShare": text_lane_score, "dataFieldShare": data_field_score, "connectorShare": connector_share}

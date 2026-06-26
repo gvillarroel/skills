@@ -19,6 +19,8 @@ Expose these fields when the variant appears in a gallery card:
 
 When the user gives only a pattern family or source ID, build a small representative structure that preserves the family semantics instead of searching a gallery fixture. For example, a force-network placeholder should remain a node-link graph with at least seven nodes and enough links to show clusters, bridges, and the requested armature.
 
+When the rendered source SVG is available, prefer cloning or faithfully adapting its marks first, then add composition-specific anchors such as balance nodes, diagonal stations, golden/root context panels, grid cells, radial spokes, flow stations, or label lanes. The variant should still be recognizable as the source pattern before the composition overlay is considered.
+
 ## Balance and Symmetry
 
 Use for comparison, calm dashboards, mirrored categories, and centered system maps.
