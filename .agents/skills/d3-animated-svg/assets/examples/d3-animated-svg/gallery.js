@@ -2433,8 +2433,7 @@
       .attr("height", svgHeight - 28)
       .attr("rx", 10)
       .attr("fill", palette.surface)
-      .attr("stroke", palette.gray200)
-      .attr("stroke-width", 1.2);
+      .attr("stroke", "none");
 
     const overlapCircles = svg.append("g")
       .attr("class", "overlap-circle-layer")
@@ -2480,8 +2479,8 @@
       .attr("x2", labelEdgeX)
       .attr("y2", labelEdgeY)
       .attr("stroke", palette.surface)
-      .attr("stroke-opacity", .86)
-      .attr("stroke-width", 2.2);
+      .attr("stroke-opacity", .42)
+      .attr("stroke-width", 1.8);
     fadeIn(leaderHalos, .26, .38);
 
     const leaders = leaderLayer.selectAll("line.task-leader")
@@ -2498,8 +2497,8 @@
       .attr("x2", labelEdgeX)
       .attr("y2", labelEdgeY)
       .attr("stroke", leaderColor)
-      .attr("stroke-opacity", .74)
-      .attr("stroke-width", .9);
+      .attr("stroke-opacity", .46)
+      .attr("stroke-width", .82);
     fadeIn(leaders, .28, .4);
 
     const dots = svg.append("g")

@@ -59,11 +59,12 @@ This approach is deliberately stricter than browser-time force relaxation: the g
 
 - Use an 880 by 450 viewBox for the saturated fixture. Keep circles in the central field and reserve external lanes for labels.
 - Draw circles first with translucent token highlight fills.
-- Draw direct solid `.task-leader` lines from every dot to the nearest label box edge.
+- Draw direct solid `.task-leader` lines from every dot to the nearest label box edge, using semitransparent strokes so the dense leader field remains readable.
 - Color leader lines from the generated crossing-graph assignment, not from membership count. Use the six token color keys emitted by the layout fixture, and prefer assignments that avoid same-color crossings.
-- Draw a subtle white `.task-leader-halo` behind each colored line so direct leaders remain visible over circles and dots.
+- Draw a subtle semitransparent white `.task-leader-halo` behind each colored line so direct leaders remain visible over circles and dots without creating heavy opaque routes.
 - Draw small colored task dots above circles and below labels.
 - Draw every label with an opaque white `.task-label-bg` rectangle sized from the generated `labelWidth`. Do not add lateral color accents inside labels for this dense fixture.
+- Do not draw an outer gray frame stroke around the SVG background; keep the inspection area open outside the labels.
 - If labels use the shared `.mark-label` class, set the generated `labelFontSize` as an inline style or a more-specific CSS rule so global gallery CSS cannot enlarge text beyond the audited rectangle.
 - Encode membership count with dot color: one scope in blue, two scopes in orange, and three-or-more scopes in red.
 - When publishing this dense fixture in a gallery card, use a wider card layout or equivalent presentation so the smallest rendered label height stays inspectable.
