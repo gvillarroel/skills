@@ -450,6 +450,453 @@
     });
   }
 
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function numericAttr(node, attr, fallback = 0) {
+    const value = Number(node.getAttribute(attr));
+    return Number.isFinite(value) ? value : fallback;
+  }
+
+  function renderedPaint(node, attr, fallback) {
+    const direct = node.getAttribute(attr);
+    if (direct && direct !== "none" && !direct.startsWith("url(")) return direct;
+    const style = window.getComputedStyle ? window.getComputedStyle(node) : null;
+    const computed = style ? style.getPropertyValue(attr) : "";
+    if (computed && computed !== "none" && computed !== "rgba(0, 0, 0, 0)") return computed;
+    return fallback;
+  }
+
+  function pointInSourceSvg(sourceSvg, node, x, y) {
+    const point = sourceSvg.createSVGPoint ? sourceSvg.createSVGPoint() : new DOMPoint(x, y);
+    point.x = x;
+    point.y = y;
+    try {
+      const sourceMatrix = sourceSvg.getScreenCTM && sourceSvg.getScreenCTM();
+      const nodeMatrix = node.getScreenCTM && node.getScreenCTM();
+      if (sourceMatrix && nodeMatrix) {
+        return point.matrixTransform(sourceMatrix.inverse().multiply(nodeMatrix));
+      }
+    } catch (_) {
+      // Fall back to local SVG coordinates below.
+    }
+    try {
+      const matrix = node.getCTM && node.getCTM();
+      if (matrix) return point.matrixTransform(matrix);
+    } catch (_) {
+      // Keep the untransformed point when the browser cannot resolve matrices.
+    }
+    return { x, y };
+  }
+
+  function elementCenterInSource(sourceSvg, node) {
+    try {
+      const box = node.getBBox();
+      const center = pointInSourceSvg(sourceSvg, node, box.x + box.width / 2, box.y + box.height / 2);
+      const edge = pointInSourceSvg(sourceSvg, node, box.x + box.width, box.y + box.height / 2);
+      const radius = Math.hypot(edge.x - center.x, edge.y - center.y);
+      return { x: center.x, y: center.y, r: radius, width: box.width, height: box.height };
+    } catch (_) {
+      const cx = numericAttr(node, "cx", 0);
+      const cy = numericAttr(node, "cy", 0);
+      return { x: cx, y: cy, r: numericAttr(node, "r", 3), width: 0, height: 0 };
+    }
+  }
+
+  function circleLabel(circle) {
+    const parent = circle.parentElement;
+    const scoped = parent ? parent.querySelector("text") : null;
+    const value = scoped?.textContent?.trim() || "";
+    if (!value || value.length > 18) return "";
+    return value;
+  }
+
+  function nodeBounds(nodes) {
+    const xs = nodes.map(node => node.x);
+    const ys = nodes.map(node => node.y);
+    const minX = Math.min(...xs);
+    const maxX = Math.max(...xs);
+    const minY = Math.min(...ys);
+    const maxY = Math.max(...ys);
+    return {
+      minX,
+      maxX,
+      minY,
+      maxY,
+      width: Math.max(1, maxX - minX),
+      height: Math.max(1, maxY - minY),
+      cx: (minX + maxX) / 2,
+      cy: (minY + maxY) / 2
+    };
+  }
+
+  function nearestSourceNode(nodes, point, maxDistance) {
+    let best = -1;
+    let bestDistance = Infinity;
+    nodes.forEach((node, index) => {
+      const distance = Math.hypot(node.x - point.x, node.y - point.y);
+      if (distance < bestDistance) {
+        best = index;
+        bestDistance = distance;
+      }
+    });
+    return bestDistance <= maxDistance ? best : -1;
+  }
+
+  function addUniqueEdge(edges, seen, a, b, attrs = {}) {
+    if (a < 0 || b < 0 || a === b) return;
+    const key = a < b ? `${a}:${b}` : `${b}:${a}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    edges.push({ source: a, target: b, ...attrs });
+  }
+
+  function extractPathEndpoint(sourceSvg, path, atEnd) {
+    try {
+      const length = path.getTotalLength();
+      if (!Number.isFinite(length) || length <= 0) return null;
+      const point = path.getPointAtLength(atEnd ? length : 0);
+      return pointInSourceSvg(sourceSvg, path, point.x, point.y);
+    } catch (_) {
+      const numbers = String(path.getAttribute("d") || "").match(/-?\d*\.?\d+(?:e[-+]?\d+)?/gi);
+      if (!numbers || numbers.length < 4) return null;
+      const index = atEnd ? numbers.length - 2 : 0;
+      return pointInSourceSvg(sourceSvg, path, Number(numbers[index]), Number(numbers[index + 1]));
+    }
+  }
+
+  function sourceCircleNodes(sourceSvg) {
+    const circles = Array.from(sourceSvg.querySelectorAll("circle"));
+    const nodes = circles.map((circle, index) => {
+      const center = elementCenterInSource(sourceSvg, circle);
+      const directRadius = numericAttr(circle, "r", center.r || 0);
+      const radius = Math.max(center.r || 0, directRadius);
+      return {
+        index,
+        x: center.x,
+        y: center.y,
+        sourceR: radius,
+        fill: renderedPaint(circle, "fill", palette.blue),
+        stroke: renderedPaint(circle, "stroke", palette.surface),
+        strokeWidth: numericAttr(circle, "stroke-width", 1.4),
+        opacity: circle.getAttribute("opacity") || circle.style.opacity || "1",
+        label: circleLabel(circle),
+        className: circle.getAttribute("class") || ""
+      };
+    }).filter(node => Number.isFinite(node.x) && Number.isFinite(node.y) && node.sourceR >= 2.2);
+    return nodes;
+  }
+
+  function sourceTextNodes(sourceSvg) {
+    const labels = Array.from(sourceSvg.querySelectorAll("text"));
+    return labels.map((label, index) => {
+      const value = label.textContent?.trim() || "";
+      if (!value || value.length > 18) return null;
+      const center = elementCenterInSource(sourceSvg, label);
+      return {
+        index,
+        x: center.x,
+        y: center.y,
+        sourceR: Math.max(3, Math.min(7, Math.max(center.width, center.height) / 5)),
+        fill: palette.surface,
+        stroke: renderedPaint(label, "fill", palette.purple),
+        strokeWidth: 1.4,
+        opacity: label.getAttribute("opacity") || label.style.opacity || "1",
+        label: value,
+        className: label.getAttribute("class") || ""
+      };
+    }).filter(Boolean).filter(node => Number.isFinite(node.x) && Number.isFinite(node.y));
+  }
+
+  function sourceLineEdges(sourceSvg, nodes) {
+    const edges = [];
+    const seen = new Set();
+    const bounds = nodeBounds(nodes);
+    const maxDistance = Math.max(bounds.width, bounds.height) * 0.12 + 12;
+    Array.from(sourceSvg.querySelectorAll("line")).forEach(line => {
+      const start = pointInSourceSvg(sourceSvg, line, numericAttr(line, "x1"), numericAttr(line, "y1"));
+      const end = pointInSourceSvg(sourceSvg, line, numericAttr(line, "x2"), numericAttr(line, "y2"));
+      const a = nearestSourceNode(nodes, start, maxDistance);
+      const b = nearestSourceNode(nodes, end, maxDistance);
+      addUniqueEdge(edges, seen, a, b, {
+        mark: "line",
+        stroke: renderedPaint(line, "stroke", palette.line),
+        strokeWidth: numericAttr(line, "stroke-width", 1.4),
+        opacity: line.getAttribute("stroke-opacity") || line.getAttribute("opacity") || "0.64"
+      });
+    });
+    Array.from(sourceSvg.querySelectorAll("path")).forEach(path => {
+      const d = String(path.getAttribute("d") || "");
+      if (!d || /z\s*$/i.test(d)) return;
+      const start = extractPathEndpoint(sourceSvg, path, false);
+      const end = extractPathEndpoint(sourceSvg, path, true);
+      if (!start || !end || Math.hypot(start.x - end.x, start.y - end.y) < 1) return;
+      const a = nearestSourceNode(nodes, start, maxDistance);
+      const b = nearestSourceNode(nodes, end, maxDistance);
+      addUniqueEdge(edges, seen, a, b, {
+        mark: "path",
+        stroke: renderedPaint(path, "stroke", palette.line),
+        strokeWidth: numericAttr(path, "stroke-width", 1.2),
+        opacity: path.getAttribute("stroke-opacity") || path.getAttribute("opacity") || "0.46"
+      });
+    });
+    return { edges, seen };
+  }
+
+  function fallbackNetworkEdges(nodes, seen = new Set()) {
+    const edges = [];
+    const neighborCount = nodes.length > 34 ? 2 : 3;
+    nodes.forEach((node, index) => {
+      const candidates = nodes
+        .map((other, otherIndex) => {
+          const colorPenalty = node.fill === other.fill ? 0 : 3200;
+          return { index: otherIndex, distance: Math.hypot(node.x - other.x, node.y - other.y) + colorPenalty };
+        })
+        .filter(candidate => candidate.index !== index)
+        .sort((a, b) => a.distance - b.distance)
+        .slice(0, neighborCount);
+      candidates.forEach(candidate => addUniqueEdge(edges, seen, index, candidate.index, {
+        mark: "line",
+        stroke: node.fill === nodes[candidate.index].fill ? node.fill : palette.line,
+        strokeWidth: 1.1,
+        opacity: node.fill === nodes[candidate.index].fill ? "0.28" : "0.2"
+      }));
+    });
+    return edges;
+  }
+
+  function extractSourceNetwork(sourceSvg) {
+    const circleNodes = sourceCircleNodes(sourceSvg);
+    const nodes = circleNodes.length >= 5 ? circleNodes : sourceTextNodes(sourceSvg);
+    if (nodes.length < 5) return null;
+    const maxRadius = Math.max(...nodes.map(node => node.sourceR), 1);
+    const bounds = nodeBounds(nodes);
+    nodes.forEach((node, index) => {
+      node.order = index;
+      node.normX = (node.x - bounds.minX) / bounds.width;
+      node.normY = (node.y - bounds.minY) / bounds.height;
+      node.angle = Math.atan2(node.y - bounds.cy, node.x - bounds.cx);
+      node.previewR = clamp(2.9 + (node.sourceR / maxRadius) * (nodes.length > 24 ? 3.1 : 5.4), 2.9, nodes.length > 24 ? 6 : 8.4);
+    });
+    const extracted = sourceLineEdges(sourceSvg, nodes);
+    const minimumEdgeCount = Math.min(nodes.length - 1, 8);
+    const fallback = extracted.edges.length >= minimumEdgeCount ? [] : fallbackNetworkEdges(nodes, extracted.seen);
+    const edges = extracted.edges.concat(fallback).slice(0, nodes.length > 42 ? 88 : 72);
+    const degree = new Map(nodes.map((_, index) => [index, 0]));
+    edges.forEach(edge => {
+      degree.set(edge.source, (degree.get(edge.source) || 0) + 1);
+      degree.set(edge.target, (degree.get(edge.target) || 0) + 1);
+    });
+    nodes.forEach((node, index) => {
+      node.degree = degree.get(index) || 0;
+    });
+    return { nodes, edges, bounds };
+  }
+
+  function semanticNetworkLayout(graph, variant) {
+    const nodes = graph.nodes.map(node => ({ ...node }));
+    if (variant.compositionId === "diagonal-armature") return diagonalNetworkLayout(nodes, variant);
+    if (variant.compositionId === "radial-rosette") return radialNetworkLayout(nodes, graph.edges, variant);
+    return balancedNetworkLayout(nodes, variant);
+  }
+
+  function balancedNetworkLayout(nodes, variant) {
+    const byDegree = [...nodes].sort((a, b) => b.degree - a.degree || a.order - b.order);
+    const centerCount = nodes.length > 24 ? 3 : nodes.length > 10 ? 2 : 1;
+    const centerIds = new Set(byDegree.slice(0, centerCount).map(node => node.index));
+    const remaining = nodes.filter(node => !centerIds.has(node.index)).sort((a, b) => a.normX - b.normX || a.normY - b.normY);
+    const left = [];
+    const right = [];
+    remaining.forEach((node, index) => {
+      if (left.length <= right.length) left.push(node);
+      else right.push(node);
+      if (index % 2 === 1 && left.length !== right.length) {
+        const source = left.length > right.length ? left : right;
+        const target = left.length > right.length ? right : left;
+        target.push(source.pop());
+      }
+    });
+    const placeSide = (items, side) => {
+      items.sort((a, b) => a.normY - b.normY || a.normX - b.normX).forEach((node, index) => {
+        const t = (index + 0.5) / Math.max(items.length, 1);
+        const bow = Math.sin(t * Math.PI);
+        const jitter = seededRange(variant, node.order + (side < 0 ? 100 : 200), -5, 5);
+        node.x = 180 + side * (48 + bow * 34) + jitter;
+        node.y = 52 + t * 116 + seededRange(variant, node.order + 300, -3, 3);
+      });
+    };
+    placeSide(left, -1);
+    placeSide(right, 1);
+    byDegree.slice(0, centerCount).forEach((node, index) => {
+      const target = nodes.find(item => item.index === node.index);
+      const offset = (index - (centerCount - 1) / 2) * 16;
+      target.x = 180;
+      target.y = 110 + offset;
+      target.previewR = Math.min(10, target.previewR + 2);
+    });
+    return nodes;
+  }
+
+  function diagonalNetworkLayout(nodes, variant) {
+    const sorted = [...nodes].sort((a, b) => (a.normX + (1 - a.normY)) - (b.normX + (1 - b.normY)) || a.order - b.order);
+    const start = { x: 58, y: 170 };
+    const end = { x: 306, y: 48 };
+    const dx = end.x - start.x;
+    const dy = end.y - start.y;
+    const length = Math.hypot(dx, dy);
+    const normal = { x: -dy / length, y: dx / length };
+    sorted.forEach((node, rank) => {
+      const t = (rank + 0.5) / Math.max(sorted.length, 1);
+      const spread = nodes.length > 26 ? 24 : 38;
+      const sourceOffset = (node.normY - 0.5) * spread + seededRange(variant, node.order + 400, -4, 4);
+      node.x = start.x + dx * t + normal.x * sourceOffset;
+      node.y = start.y + dy * t + normal.y * sourceOffset;
+      if (rank === 0 || rank === sorted.length - 1) node.previewR = Math.min(9.5, node.previewR + 1.7);
+    });
+    return nodes;
+  }
+
+  function radialNetworkLayout(nodes, edges, variant) {
+    const hub = [...nodes].sort((a, b) => b.degree - a.degree || a.order - b.order)[0] || nodes[0];
+    const hubId = hub.index;
+    const neighbors = new Set();
+    edges.forEach(edge => {
+      if (edge.source === hubId) neighbors.add(edge.target);
+      if (edge.target === hubId) neighbors.add(edge.source);
+    });
+    const orbit = nodes.filter(node => node.index !== hubId).sort((a, b) => a.angle - b.angle || a.order - b.order);
+    orbit.forEach((node, rank) => {
+      const angle = -Math.PI / 2 + (Math.PI * 2 * rank) / Math.max(orbit.length, 1);
+      const ring = neighbors.has(node.index)
+        ? (nodes.length > 24 ? 44 : 48)
+        : (nodes.length > 24 ? 76 - (rank % 2) * 13 : 74);
+      const jitter = seededRange(variant, node.order + 500, -3, 3);
+      node.x = 180 + Math.cos(angle + jitter * 0.01) * ring;
+      node.y = 110 + Math.sin(angle + jitter * 0.01) * ring;
+    });
+    const center = nodes.find(node => node.index === hubId);
+    center.x = 180;
+    center.y = 110;
+    center.previewR = Math.min(11, center.previewR + 2.6);
+    return nodes;
+  }
+
+  function semanticEdgePath(a, b, compositionId, index) {
+    if (compositionId !== "radial-rosette") return "";
+    const mx = (a.x + b.x) / 2;
+    const my = (a.y + b.y) / 2;
+    const pull = index % 2 ? 0.18 : -0.14;
+    const cx = mx + (180 - mx) * pull;
+    const cy = my + (110 - my) * pull;
+    return `M${a.x.toFixed(2)} ${a.y.toFixed(2)} Q${cx.toFixed(2)} ${cy.toFixed(2)} ${b.x.toFixed(2)} ${b.y.toFixed(2)}`;
+  }
+
+  function semanticNetworkLabelPosition(node, index, compositionId) {
+    if (compositionId === "diagonal-armature") {
+      const normal = { x: 0.441, y: 0.897 };
+      const direction = index % 2 ? -1 : 1;
+      const x = clamp(node.x + normal.x * direction * 19, 52, 308);
+      return {
+        x,
+        y: clamp(node.y + normal.y * direction * 19 + 3, 36, 186),
+        anchor: x < 70 ? "start" : x > 290 ? "end" : "middle"
+      };
+    }
+    if (compositionId === "radial-rosette") {
+      const dx = node.x - 180;
+      const dy = node.y - 110;
+      const distance = Math.hypot(dx, dy);
+      if (distance < 10) {
+        return { x: node.x, y: node.y + node.previewR + 14, anchor: "middle" };
+      }
+      const ux = dx / distance;
+      const uy = dy / distance;
+      return {
+        x: clamp(node.x + ux * (node.previewR + 8), 36, 324),
+        y: clamp(node.y + uy * (node.previewR + 8) + 3, 36, 186),
+        anchor: ux < -0.24 ? "end" : ux > 0.24 ? "start" : "middle"
+      };
+    }
+    if (Math.abs(node.x - 180) < 12) {
+      return { x: node.x, y: node.y + node.previewR + 13, anchor: "middle" };
+    }
+    const side = node.x < 180 ? -1 : 1;
+    return {
+      x: clamp(node.x + side * (node.previewR + 6), 42, 318),
+      y: clamp(node.y + 3, 44, 178),
+      anchor: side < 0 ? "end" : "start"
+    };
+  }
+
+  function renderSemanticNetworkVariant(svg, variant) {
+    if (variant.renderer !== "network" && variant.inferredKind !== "network") return false;
+    if (!["balance-symmetry", "diagonal-armature", "radial-rosette"].includes(variant.compositionId)) return false;
+    const sourceSvg = sourceSvgForVariant(variant);
+    if (!sourceSvg) return false;
+    const graph = extractSourceNetwork(sourceSvg);
+    if (!graph) return false;
+    const frame = compositionSourceFrame(variant.compositionId);
+    const layout = semanticNetworkLayout(graph, variant);
+    const byIndex = new Map(layout.map(node => [node.index, node]));
+    addSourceField(svg, frame, variant.compositionId);
+    const group = svg.appendChild(el("g", {
+      class: "source-pattern-recomposition semantic-network-recomposition",
+      "data-source-svg-id": variant.sourceId,
+      "data-source-view-box": sourceSvg.getAttribute("viewBox") || "",
+      "data-recomposition-mode": `semantic-network-${variant.compositionId}`,
+      "data-source-node-count": graph.nodes.length,
+      "data-source-edge-count": graph.edges.length
+    }));
+    const edges = group.appendChild(el("g", { class: "semantic-network-links", fill: "none", "stroke-linecap": "round" }));
+    graph.edges.forEach((edge, index) => {
+      const a = byIndex.get(edge.source);
+      const b = byIndex.get(edge.target);
+      if (!a || !b) return;
+      const attrs = {
+        class: "semantic-network-link",
+        stroke: edge.stroke || palette.line,
+        "stroke-width": clamp(edge.strokeWidth || 1.2, 0.8, graph.nodes.length > 28 ? 1.45 : 2.2),
+        "stroke-opacity": edge.opacity || "0.54"
+      };
+      const path = edge.mark === "path" ? semanticEdgePath(a, b, variant.compositionId, index) : "";
+      if (path) addPath(edges, path, attrs);
+      else addLine(edges, a.x, a.y, b.x, b.y, attrs);
+    });
+    const marks = group.appendChild(el("g", { class: "semantic-network-nodes" }));
+    layout.forEach(node => {
+      addCircle(marks, node.x, node.y, node.previewR, {
+        class: `semantic-network-node ${node.className}`.trim(),
+        fill: node.fill,
+        "fill-opacity": clamp(Number(node.opacity) || 1, 0.35, 1),
+        stroke: node.stroke || palette.surface,
+        "stroke-width": clamp(node.strokeWidth || 1.4, 1, 2.2),
+        "data-source-node-index": node.index,
+        "data-source-label": node.label || undefined
+      });
+    });
+    const labeled = layout.filter(node => node.label);
+    if (labeled.length && labeled.length <= 14) {
+      const labels = group.appendChild(el("g", { class: "semantic-network-labels" }));
+      labeled.forEach((node, index) => {
+        const label = semanticNetworkLabelPosition(node, index, variant.compositionId);
+        appendText(labels, label.x, label.y, node.label, {
+          class: "semantic-network-label",
+          "text-anchor": label.anchor,
+          "font-size": 7.3,
+          "font-weight": 800,
+          fill: palette.ink,
+          stroke: palette.surface,
+          "stroke-width": 2.4,
+          "paint-order": "stroke",
+          "stroke-linejoin": "round"
+        });
+      });
+    }
+    addSourceAdaptationCues(svg, variant, frame);
+    return true;
+  }
+
   function addSourceField(svg, frame, compositionId) {
     addRect(svg, frame.x, frame.y, frame.width, frame.height, {
       class: "source-pattern-field",
@@ -781,6 +1228,10 @@
   }
 
   function renderVariantMarks(svg, variant) {
+    if (renderSemanticNetworkVariant(svg, variant)) {
+      addPatternSignature(svg, variant);
+      return;
+    }
     if (renderSourceBasedVariant(svg, variant)) {
       addPatternSignature(svg, variant);
       return;
