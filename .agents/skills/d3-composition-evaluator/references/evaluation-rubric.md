@@ -12,6 +12,10 @@ Use this rubric to evaluate a rendered D3 or SVG pattern, composition variant, o
 
 ## Composition Checks
 
+- Evaluate composition from the relevant source-derived components, not from every SVG primitive. Choose the focus set by pattern family: graph nodes plus links, grid/table cells, flow stations plus connectors, chart data marks, radial rings/segments, hierarchy nodes plus branches, and dense-label lane text plus leaders.
+- Ignore composition guides, quadrant fields, source signatures, hidden source caches, and explanatory overlays when measuring placement. These can satisfy a contract check, but they must not create the composition score.
+- Check where the focus components land against the intended attention points and armature lines. The primary question is placement: center, balance, diagonal proximity, grid track alignment, radial sector/ring placement, flow start/output positions, or lane/field separation.
+- Check how focus components relate to each other. Graph links, hierarchy branches, flow paths, and label leaders should align organically with the selected armature; unsupported or decorative connectors should not inflate the score.
 - Balance and symmetry: primary masses counterweight across a center axis or central frame without dead corners.
 - Diagonal armature: source, transition, and outcome points form a readable diagonal or reciprocal diagonal path.
 - Golden/root split: the dominant visual field and supporting context field have clear proportional roles.
@@ -23,6 +27,7 @@ Use this rubric to evaluate a rendered D3 or SVG pattern, composition variant, o
 ## Quality Checks
 
 - Preserve data truth. Do not bend quantitative positions, areas, ranks, or relationships merely to improve an armature score.
+- For charts and maps, identify which elements are compositional emphasis marks versus protected data geometry before scoring. Do not reward moving axes, scales, geographic shapes, or quantitative positions only to hit a symmetry guide.
 - Check text fit, overlap, label contrast, and leader-line ambiguity at desktop and mobile sizes when the artifact is responsive.
 - Prefer a small set of strongly placed anchors over forcing every minor point to a guide line.
 - A publishable variant should be understandable from the SVG preview before opening the source gallery.
@@ -42,8 +47,8 @@ Use these when evaluating a recomposed variant against the source pattern that g
 
 For gallery-level composition sheets, prefer `scripts/evaluate_composition_variants.py` after basic render validation. It opens the rendered composition sheet and base gallery in Chromium and reports:
 
-- `sourceClosenessScore`: traceability, renderer continuity, mark profile similarity, palette overlap, source signature, title trace, and contract health.
-- `compositionScore`: contract health plus target-specific metrics for balance, diagonal, golden/root split, thirds/fifths grid, radial/rosette, flow spine, and dense-label lanes.
+- `sourceClosenessScore`: traceability, renderer continuity, mark profile similarity, palette overlap, source signature, title trace, protected chart/map geometry, and contract health.
+- `compositionScore`: contract health plus target-specific placement and relationship metrics for balance, diagonal, golden/root split, thirds/fifths grid, radial/rosette, flow spine, and dense-label lanes. The metric uses a focus filter so charts are scored from data marks, graphs from nodes and links, grids from cells, flows from stations/connectors, and lanes from labels/leaders.
 - `overallScore`: weighted source closeness plus composition fit.
 
 The evaluator should resolve rendered transforms before extracting mark centers. Use the JSON output for regression checks and the generated worst-score screenshots for visual calibration. Do not rely on scores alone when a score conflicts with obvious visual evidence.

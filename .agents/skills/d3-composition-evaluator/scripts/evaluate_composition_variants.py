@@ -160,16 +160,81 @@ async ({ onlyIds }) => {
 
   function collectFeatures(svg, options = {}) {
     if (!svg) return null;
-    const ignoredSelectors = options.ignoreSelectors || [".composition-guide", ".base-signature", "defs"];
+    const ignoredSelectors = options.ignoreSelectors || [
+      ".composition-guide",
+      ".composition-line",
+      ".quadrant-field",
+      ".base-signature",
+      ".source-pattern-field",
+      ".source-adaptation-cues",
+      "defs"
+    ];
     const ignored = node => ignoredSelectors.some(selector => node.closest(selector));
     const tags = ["circle", "ellipse", "rect", "path", "line", "polygon", "polyline", "text"];
     const tagCounts = Object.fromEntries(tags.map(tag => [tag, 0]));
     const classTokens = {};
     const colors = {};
     const centers = [];
+    const segments = [];
+    const isVisible = node => {
+      const style = window.getComputedStyle(node);
+      if (!style || style.display === "none" || style.visibility === "hidden") return false;
+      const opacity = Number(style.opacity || node.getAttribute("opacity") || 1);
+      if (Number.isFinite(opacity) && opacity <= 0.025) return false;
+      return true;
+    };
+    const pointInSvgSpace = (node, x, y) => {
+      const rootMatrix = svg.getScreenCTM();
+      const nodeMatrix = node.getScreenCTM();
+      const matrix = rootMatrix && nodeMatrix ? rootMatrix.inverse().multiply(nodeMatrix) : node.getCTM();
+      const point = new DOMPoint(x, y);
+      return matrix ? point.matrixTransform(matrix) : point;
+    };
+    const addSegment = (node, a, b) => {
+      const length = Math.hypot(b.x - a.x, b.y - a.y);
+      if (!Number.isFinite(length) || length < 2) return;
+      segments.push({
+        tag: node.tagName.toLowerCase(),
+        className: node.getAttribute("class") || "",
+        x1: a.x,
+        y1: a.y,
+        x2: b.x,
+        y2: b.y,
+        midX: (a.x + b.x) / 2,
+        midY: (a.y + b.y) / 2,
+        length,
+        stroke: node.getAttribute("stroke") || ""
+      });
+    };
+    const collectSegments = node => {
+      const tag = node.tagName.toLowerCase();
+      try {
+        if (tag === "line") {
+          addSegment(
+            node,
+            pointInSvgSpace(node, Number(node.getAttribute("x1") || 0), Number(node.getAttribute("y1") || 0)),
+            pointInSvgSpace(node, Number(node.getAttribute("x2") || 0), Number(node.getAttribute("y2") || 0))
+          );
+        } else if (tag === "path") {
+          const length = node.getTotalLength();
+          if (Number.isFinite(length) && length > 2) {
+            const start = node.getPointAtLength(0);
+            const end = node.getPointAtLength(length);
+            addSegment(node, pointInSvgSpace(node, start.x, start.y), pointInSvgSpace(node, end.x, end.y));
+          }
+        } else if (tag === "polyline" || tag === "polygon") {
+          const values = Array.from(node.points || []).map(point => pointInSvgSpace(node, point.x, point.y));
+          for (let index = 1; index < values.length; index += 1) addSegment(node, values[index - 1], values[index]);
+          if (tag === "polygon" && values.length > 2) addSegment(node, values[values.length - 1], values[0]);
+        }
+      } catch (error) {
+        // Segment extraction is best effort; the center still participates.
+      }
+    };
     const visibleNodes = Array.from(svg.querySelectorAll(tags.join(","))).filter(node => {
       if (ignored(node)) return false;
       if (node.closest("defs,title,desc")) return false;
+      if (!isVisible(node)) return false;
       return true;
     });
     for (const node of visibleNodes) {
@@ -216,6 +281,7 @@ async ({ onlyIds }) => {
       } catch (error) {
         // Browser-computed boxes are best effort for path-heavy generated SVGs.
       }
+      collectSegments(node);
     }
     const box = svg.getBoundingClientRect();
     return {
@@ -231,6 +297,7 @@ async ({ onlyIds }) => {
       classTokens,
       colors,
       centers,
+      segments,
       text: (svg.textContent || "").replace(/\s+/g, " ").trim()
     };
   }
@@ -265,7 +332,7 @@ async ({ onlyIds }) => {
         hasBaseSignature: Boolean(svg?.querySelector(".base-signature")),
         baseSignatureText: svg?.querySelector(".base-signature")?.textContent?.replace(/\s+/g, " ").trim() || "",
         feature: collectFeatures(svg),
-        sourceFeature: collectFeatures(svg, { ignoreSelectors: [".composition-guide", ".base-signature", ".source-adaptation-cues", ".source-pattern-field", "defs"] })
+        sourceFeature: collectFeatures(svg, { ignoreSelectors: [".composition-guide", ".composition-line", ".quadrant-field", ".base-signature", ".source-adaptation-cues", ".source-pattern-field", "defs"] })
       });
     }
   }
@@ -351,6 +418,120 @@ def centers(feature: dict[str, Any] | None, tags: set[str] | None = None) -> lis
     return [item for item in values if item.get("tag") in tags]
 
 
+def feature_segments(feature: dict[str, Any] | None, tags: set[str] | None = None) -> list[dict[str, Any]]:
+    if not feature:
+        return []
+    values = feature.get("segments") or []
+    if tags is None:
+        return values
+    return [item for item in values if item.get("tag") in tags]
+
+
+def class_has(item: dict[str, Any], *tokens: str) -> bool:
+    class_name = f" {item.get('className') or ''} "
+    return any(f" {token} " in class_name for token in tokens)
+
+
+def focus_family(variant: dict[str, Any]) -> str:
+    renderer = variant.get("renderer") or variant.get("kind") or ""
+    inferred = variant.get("inferredKind") or variant.get("kind") or ""
+    composition_id = variant.get("compositionId") or ""
+    if composition_id == "dense-label-lanes":
+        return "lanes"
+    if renderer in {"network", "flow", "set-overlap", "radial", "hierarchy", "scatter"}:
+        return renderer
+    if renderer in {"matrix", "table", "bar", "document"}:
+        return "grid"
+    if inferred in {"network", "flow", "set-overlap", "radial", "hierarchy", "lanes", "chart", "geospatial"}:
+        return "scatter" if inferred == "chart" else inferred
+    return renderer or inferred or "generic"
+
+
+def relevant_focus_points(feature: dict[str, Any], variant: dict[str, Any]) -> tuple[str, list[dict[str, Any]]]:
+    family = focus_family(variant)
+    points = centers(feature)
+    source_id = variant.get("sourceId") or ""
+
+    if family == "network":
+        selected = [point for point in points if class_has(point, "semantic-network-node") or point.get("tag") in {"circle", "ellipse"}]
+    elif family == "flow":
+        selected = [point for point in points if class_has(point, "semantic-flow-station") or point.get("tag") in {"circle", "ellipse"}]
+        if len(selected) < 3:
+            selected = [point for point in points if point.get("tag") in {"circle", "ellipse", "text"}]
+    elif family == "set-overlap":
+        selected = [point for point in points if class_has(point, "semantic-set-circle") or point.get("tag") in {"circle", "ellipse"}]
+    elif family == "grid":
+        selected = [point for point in points if class_has(point, "semantic-grid-cell") or point.get("tag") == "rect"]
+    elif family == "lanes":
+        selected = [
+            point for point in points
+            if point.get("tag") in {"text", "circle", "ellipse", "rect"}
+            or class_has(point, "semantic-lane-mark")
+        ]
+    elif family == "radial":
+        selected = [
+            point for point in points
+            if class_has(point, "semantic-radial-segment", "semantic-radial-center")
+            or point.get("tag") in {"path", "circle", "ellipse", "rect"}
+        ]
+    elif family == "hierarchy":
+        selected = [point for point in points if point.get("tag") in {"circle", "ellipse", "rect", "text"}]
+    elif family in {"scatter", "geospatial", "geometry"}:
+        selected = [point for point in points if class_has(point, "semantic-scatter-mark") or point.get("tag") in {"circle", "ellipse", "rect"}]
+        if len(selected) < 3 and re.search(r"line|area|slope|connected|path|bump|moving|index|forecast|cursor|ecdf", source_id):
+            selected = [point for point in points if point.get("tag") in {"path", "line", "polyline", "circle", "ellipse", "rect"}]
+    else:
+        selected = [point for point in points if point.get("tag") != "text"]
+
+    if not selected:
+        selected = points
+    return family, selected
+
+
+def relevant_focus_segments(feature: dict[str, Any], family: str) -> list[dict[str, Any]]:
+    segments = feature_segments(feature, {"line", "path", "polyline", "polygon"})
+    if family == "network":
+        filtered = [segment for segment in segments if class_has(segment, "semantic-network-link") or segment.get("tag") in {"line", "path"}]
+    elif family == "flow":
+        filtered = [segment for segment in segments if class_has(segment, "semantic-flow-link") or segment.get("tag") in {"path", "line"}]
+    elif family == "lanes":
+        filtered = [segment for segment in segments if class_has(segment, "semantic-lane-leader") or segment.get("tag") in {"line", "path"}]
+    elif family == "hierarchy":
+        filtered = [segment for segment in segments if segment.get("tag") in {"line", "path", "polyline"}]
+    elif family == "radial":
+        filtered = [segment for segment in segments if segment.get("tag") in {"path", "line", "polyline", "polygon"}]
+    else:
+        filtered = segments
+    return filtered or segments
+
+
+def focus_visibility_score(points: list[dict[str, Any]], family: str) -> float:
+    minimums = {
+        "network": 7,
+        "flow": 4,
+        "set-overlap": 3,
+        "grid": 9,
+        "lanes": 8,
+        "radial": 6,
+        "hierarchy": 5,
+        "scatter": 6,
+        "geospatial": 5,
+        "geometry": 5,
+    }
+    return clamp(len(points) / minimums.get(family, 5))
+
+
+def focus_feature(points: list[dict[str, Any]], segments: list[dict[str, Any]]) -> dict[str, Any]:
+    tag_counts = Counter(point.get("tag") or "" for point in points)
+    for segment in segments:
+        tag_counts[segment.get("tag") or ""] += 1
+    return {
+        "tagCounts": dict(tag_counts),
+        "markCount": len(points) + len(segments),
+        "segmentCount": len(segments),
+    }
+
+
 def weighted_center(points: list[dict[str, Any]]) -> tuple[float, float]:
     if not points:
         return 180.0, 110.0
@@ -370,6 +551,127 @@ def line_distance(point: dict[str, Any], start: tuple[float, float], end: tuple[
     numerator = abs((y2 - y1) * px - (x2 - x1) * py + x2 * y1 - y2 * x1)
     denominator = math.hypot(y2 - y1, x2 - x1)
     return numerator / denominator if denominator else 0.0
+
+
+def segment_midpoint(segment: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "x": float(segment.get("midX", (float(segment.get("x1", 0)) + float(segment.get("x2", 0))) / 2)),
+        "y": float(segment.get("midY", (float(segment.get("y1", 0)) + float(segment.get("y2", 0))) / 2)),
+        "area": max(float(segment.get("length") or 1), 1),
+        "tag": segment.get("tag", "line"),
+        "className": segment.get("className", ""),
+    }
+
+
+def segment_angle(segment: dict[str, Any]) -> float:
+    return math.atan2(float(segment.get("y2", 0)) - float(segment.get("y1", 0)), float(segment.get("x2", 0)) - float(segment.get("x1", 0)))
+
+
+def angle_similarity(angle: float, target: float) -> float:
+    # Directionless segment alignment: a line can be drawn either way and still follow an armature.
+    diff = abs((angle - target + math.pi / 2) % math.pi - math.pi / 2)
+    return 1 - clamp(diff / (math.pi / 2))
+
+
+def score_segment_diagonal(segments: list[dict[str, Any]]) -> float:
+    if not segments:
+        return 0.35
+    target = math.atan2(34 - 186, 326 - 34)
+    values = []
+    for segment in segments:
+        mid = segment_midpoint(segment)
+        proximity = 1 - clamp(line_distance(mid, (34, 186), (326, 34)) / 92)
+        alignment = angle_similarity(segment_angle(segment), target)
+        values.append(weighted_average([(proximity, 0.55), (alignment, 0.45)]))
+    return mean(values)
+
+
+def score_segment_grid(segments: list[dict[str, Any]]) -> float:
+    if not segments:
+        return 0.62
+    values = []
+    for segment in segments:
+        angle = segment_angle(segment)
+        values.append(max(angle_similarity(angle, 0), angle_similarity(angle, math.pi / 2)))
+    return mean(values)
+
+
+def score_segment_flow(segments: list[dict[str, Any]]) -> float:
+    if not segments:
+        return 0.35
+    values = []
+    for segment in segments:
+        dx = abs(float(segment.get("x2", 0)) - float(segment.get("x1", 0)))
+        dy = abs(float(segment.get("y2", 0)) - float(segment.get("y1", 0)))
+        horizontal = clamp(dx / max(dx + dy, 1))
+        span = clamp(dx / 72)
+        compact = 1 - clamp(dy / 120)
+        values.append(weighted_average([(horizontal, 0.42), (span, 0.34), (compact, 0.24)]))
+    return mean(values)
+
+
+def score_segment_radial(segments: list[dict[str, Any]]) -> float:
+    if not segments:
+        return 0.45
+    values = []
+    for segment in segments:
+        mid = segment_midpoint(segment)
+        radial_angle = math.atan2(float(mid["y"]) - 110, float(mid["x"]) - 180)
+        angle = segment_angle(segment)
+        radial = angle_similarity(angle, radial_angle)
+        tangent = angle_similarity(angle, radial_angle + math.pi / 2)
+        radius = math.hypot(float(mid["x"]) - 180, float(mid["y"]) - 110)
+        ring_presence = 1.0 if radius > 18 else 0.45
+        values.append(weighted_average([(max(radial, tangent), 0.72), (ring_presence, 0.28)]))
+    return mean(values)
+
+
+def score_segment_lanes(segments: list[dict[str, Any]]) -> float:
+    if not segments:
+        return 0.35
+    values = []
+    for segment in segments:
+        x1 = float(segment.get("x1", 0))
+        x2 = float(segment.get("x2", 0))
+        y1 = float(segment.get("y1", 0))
+        y2 = float(segment.get("y2", 0))
+        endpoint_in_lane = (x1 < 110 or x1 > 250) or (x2 < 110 or x2 > 250)
+        endpoint_in_field = (105 <= x1 <= 255) or (105 <= x2 <= 255)
+        useful_bridge = 1.0 if endpoint_in_lane and endpoint_in_field else 0.35
+        readable = 1 - clamp(abs(y2 - y1) / 150)
+        values.append(weighted_average([(useful_bridge, 0.68), (readable, 0.32)]))
+    return mean(values)
+
+
+def score_relationships(
+    composition_id: str,
+    family: str,
+    segments: list[dict[str, Any]],
+    points: list[dict[str, Any]],
+) -> tuple[float, dict[str, float]]:
+    if composition_id == "diagonal-armature":
+        value = score_segment_diagonal(segments)
+    elif composition_id == "flow-spine":
+        value = score_segment_flow(segments)
+    elif composition_id == "thirds-fifths-grid":
+        value = score_segment_grid(segments)
+    elif composition_id == "radial-rosette":
+        value = score_segment_radial(segments)
+    elif composition_id == "dense-label-lanes":
+        value = score_segment_lanes(segments)
+    elif composition_id == "balance-symmetry":
+        midpoints = [segment_midpoint(segment) for segment in segments]
+        value = score_balance(midpoints or points)[0] if (midpoints or points) else 0.0
+    elif composition_id == "golden-root":
+        midpoints = [segment_midpoint(segment) for segment in segments]
+        value = score_golden(midpoints or points)[0] if (midpoints or points) else 0.62
+    else:
+        value = 0.5
+
+    required_relationships = family in {"network", "flow", "lanes", "hierarchy"}
+    if not segments and not required_relationships:
+        value = max(value, 0.65)
+    return value, {"relationshipAlignment": value, "relationshipSegmentCount": float(len(segments))}
 
 
 def axis_correlation(points: list[dict[str, Any]]) -> float:
@@ -443,6 +745,7 @@ def score_source_closeness(
         1.0 if row.get("sourceFamily") else 0.0,
     ])
     renderer = renderer_score(variant)
+    geometry = protected_geometry_score(base_features, variant_features, variant)
 
     components = {
         "metadataTrace": metadata_trace,
@@ -452,17 +755,19 @@ def score_source_closeness(
         "paletteOverlap": color_similarity,
         "sourceSignature": signature,
         "titleTrace": title_trace,
+        "protectedGeometry": geometry,
         "contract": contract,
     }
     score = weighted_average([
-        (metadata_trace, 0.22),
-        (renderer, 0.23),
-        (tag_similarity, 0.18),
-        (dominant_match, 0.10),
-        (color_similarity, 0.07),
-        (signature, 0.10),
-        (title_trace, 0.05),
-        (contract, 0.05),
+        (metadata_trace, 0.20),
+        (renderer, 0.21),
+        (tag_similarity, 0.17),
+        (dominant_match, 0.09),
+        (color_similarity, 0.06),
+        (signature, 0.09),
+        (title_trace, 0.04),
+        (geometry, 0.10),
+        (contract, 0.04),
     ])
     notes: list[str] = []
     if tag_similarity < 0.35:
@@ -471,6 +776,8 @@ def score_source_closeness(
         notes.append("renderer is weakly compatible with inferred source kind")
     if signature < 1:
         notes.append("missing source-pattern signature")
+    if geometry < 0.5:
+        notes.append("protected chart/map geometry changed substantially")
     return score, components, notes
 
 
@@ -479,6 +786,51 @@ def dominant_tag(counts: dict[str, int]) -> str:
     if not filtered:
         return ""
     return max(filtered.items(), key=lambda item: item[1])[0]
+
+
+def protected_geometry_points(feature: dict[str, Any], source_kind: str) -> list[dict[str, Any]]:
+    values = centers(feature)
+    if source_kind == "chart":
+        selected = [point for point in values if point.get("tag") in {"circle", "ellipse", "rect", "path", "line", "polyline"}]
+    elif source_kind == "geospatial":
+        selected = [point for point in values if point.get("tag") in {"path", "polygon", "polyline", "circle", "ellipse"}]
+    else:
+        selected = []
+    return selected
+
+
+def spatial_profile(points: list[dict[str, Any]], bins: int = 4) -> dict[str, int]:
+    if not points:
+        return {}
+    xs = [float(point["x"]) for point in points]
+    ys = [float(point["y"]) for point in points]
+    min_x, max_x = min(xs), max(xs)
+    min_y, max_y = min(ys), max(ys)
+    width = max(max_x - min_x, 1)
+    height = max(max_y - min_y, 1)
+    profile: Counter[str] = Counter()
+    for point in points:
+        bx = min(bins - 1, max(0, int(((float(point["x"]) - min_x) / width) * bins)))
+        by = min(bins - 1, max(0, int(((float(point["y"]) - min_y) / height) * bins)))
+        profile[f"{bx}:{by}"] += 1
+    return dict(profile)
+
+
+def protected_geometry_score(
+    base_features: dict[str, Any],
+    variant_features: dict[str, Any],
+    variant: dict[str, Any],
+) -> float:
+    source_kind = variant.get("inferredKind") or variant.get("kind") or ""
+    if source_kind not in {"chart", "geospatial"}:
+        return 1.0
+    base_points = protected_geometry_points(base_features, source_kind)
+    variant_points = protected_geometry_points(variant_features, source_kind)
+    if len(base_points) < 4 or len(variant_points) < 4:
+        return 0.72
+    count_score = 1 - clamp(abs(len(base_points) - len(variant_points)) / max(len(base_points), len(variant_points), 1))
+    distribution_score = vector_cosine(spatial_profile(base_points), spatial_profile(variant_points))
+    return weighted_average([(count_score, 0.36), (distribution_score, 0.64)])
 
 
 def score_balance(points: list[dict[str, Any]]) -> tuple[float, dict[str, float]]:
@@ -578,8 +930,10 @@ def score_lanes(points: list[dict[str, Any]], feature: dict[str, Any]) -> tuple[
 
 
 def score_composition(row: dict[str, Any], variant: dict[str, Any], contract: float) -> tuple[float, dict[str, float], list[str]]:
-    feature = row.get("feature") or {}
-    points = centers(feature)
+    feature = row.get("sourceFeature") or row.get("feature") or {}
+    family, points = relevant_focus_points(feature, variant)
+    segment_values = relevant_focus_segments(feature, family)
+    selected_feature = focus_feature(points, segment_values)
     composition_id = variant.get("compositionId") or row.get("compositionId")
     if composition_id == "balance-symmetry":
         armature, metrics = score_balance(points)
@@ -588,15 +942,17 @@ def score_composition(row: dict[str, Any], variant: dict[str, Any], contract: fl
     elif composition_id == "golden-root":
         armature, metrics = score_golden(points)
     elif composition_id == "thirds-fifths-grid":
-        armature, metrics = score_grid(points, feature)
+        armature, metrics = score_grid(points, selected_feature)
     elif composition_id == "radial-rosette":
         armature, metrics = score_radial(points)
     elif composition_id == "flow-spine":
-        armature, metrics = score_flow(points, feature)
+        armature, metrics = score_flow(points, selected_feature)
     elif composition_id == "dense-label-lanes":
-        armature, metrics = score_lanes(points, feature)
+        armature, metrics = score_lanes(points, selected_feature)
     else:
         armature, metrics = 0.0, {}
+    relationship, relationship_metrics = score_relationships(composition_id, family, segment_values, points)
+    visibility = focus_visibility_score(points, family)
     line_score = clamp(row.get("compositionLineCount", 0) / 4)
     quadrant_score = clamp(row.get("quadrantFieldCount", 0) / 4)
     metadata_score = mean([
@@ -604,13 +960,33 @@ def score_composition(row: dict[str, Any], variant: dict[str, Any], contract: fl
         1.0 if variant.get("quadrants") else 0.0,
         1.0 if variant.get("compositionId") == row.get("compositionId") else 0.0,
     ])
-    score = weighted_average([(armature, 0.56), (contract, 0.16), (line_score, 0.10), (quadrant_score, 0.08), (metadata_score, 0.10)])
+    score = weighted_average([
+        (armature, 0.48),
+        (relationship, 0.18),
+        (visibility, 0.10),
+        (contract, 0.10),
+        (line_score, 0.04),
+        (quadrant_score, 0.03),
+        (metadata_score, 0.07),
+    ])
     notes: list[str] = []
     if armature < 0.55:
         notes.append(f"weak {composition_id} armature metric")
+    if visibility < 0.75:
+        notes.append("too few visible focus marks for the source family")
+    if relationship < 0.45 and family in {"network", "flow", "lanes", "hierarchy"}:
+        notes.append("weak relationship alignment for the selected focus marks")
     if contract < 0.9:
         notes.append("composition contract is incomplete")
-    metrics.update({"armatureMetric": armature, "lineScore": line_score, "quadrantScore": quadrant_score, "metadataScore": metadata_score})
+    metrics.update(relationship_metrics)
+    metrics.update({
+        "armatureMetric": armature,
+        "focusVisibility": visibility,
+        "evaluatedFocusMarkCount": float(len(points)),
+        "lineScore": line_score,
+        "quadrantScore": quadrant_score,
+        "metadataScore": metadata_score,
+    })
     return score, metrics, notes
 
 
