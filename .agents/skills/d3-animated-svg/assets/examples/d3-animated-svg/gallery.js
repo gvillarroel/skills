@@ -109,6 +109,7 @@
 
   const examples = [
     { id: "force-network", kicker: "Simulation", title: "Force Network", copy: "Clustered topology with collision and link tension.", render: renderForceNetwork },
+    { id: "category-burst", kicker: "Network", title: "Category Burst", copy: "A central category blooms into subcategory spokes that float outward and settle.", render: renderCategoryBurst },
     { id: "radial-hierarchy", kicker: "Hierarchy", title: "Radial Hierarchy", copy: "A tree layout with curved parent-child paths.", render: renderRadialHierarchy },
     { id: "beeswarm", kicker: "Distribution", title: "Beeswarm", copy: "Individual observations settle into grouped swarms.", render: renderBeeswarm },
     { id: "sketchy-beeswarm", kicker: "Sketchy", title: "Sketchy Beeswarm", copy: "The beeswarm distribution is redrawn with seeded hand-sketched dots and axes.", render: renderSketchyBeeswarm },
@@ -824,6 +825,234 @@
     grow(circles, "r", 3, 18, .15, .8);
     node.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("dy", 35).text(d => d.id);
     fadeIn(node.selectAll("text"), .7, .45);
+  }
+
+  function renderCategoryBurst() {
+    const svg = prepareSvg("category-burst", "Category burst", "A central category blooms into floating subcategory nodes, then settles into a radial map.");
+    const center = { x: width / 2, y: height / 2 + 4 };
+    const toRadians = degrees => (degrees - 90) * Math.PI / 180;
+    const spokes = [
+      { id: "scope", label: "Scope", angle: 0, distance: 132, color: palette.blue, fill: palette.blueHighlight, r: 22 },
+      { id: "inputs", label: "Inputs", angle: 42, distance: 142, color: palette.green, fill: palette.greenHighlight, r: 19 },
+      { id: "people", label: "People", angle: 90, distance: 148, color: palette.orange, fill: palette.orangeHighlight, r: 21 },
+      { id: "process", label: "Process", angle: 138, distance: 142, color: palette.purple, fill: palette.purpleHighlight, r: 19 },
+      { id: "tools", label: "Tools", angle: 180, distance: 132, color: palette.red, fill: palette.redHighlight, r: 21 },
+      { id: "outputs", label: "Outputs", angle: 222, distance: 142, color: palette.blueHover, fill: palette.blueHighlight, r: 20 },
+      { id: "signals", label: "Signals", angle: 270, distance: 148, color: palette.greenHover, fill: palette.greenHighlight, r: 19 },
+      { id: "risks", label: "Risks", angle: 318, distance: 142, color: palette.orangeHover, fill: palette.orangeHighlight, r: 18 }
+    ].map((d, index) => {
+      const angle = toRadians(d.angle);
+      const radialX = Math.cos(angle);
+      const radialY = Math.sin(angle);
+      const tangentX = -radialY;
+      const tangentY = radialX;
+      const wobble = index % 2 === 0 ? 18 : -18;
+      return {
+        ...d,
+        index,
+        angle,
+        radialX,
+        radialY,
+        x: center.x + radialX * d.distance,
+        y: center.y + radialY * d.distance,
+        floatX: center.x + radialX * (d.distance * .78) + tangentX * wobble,
+        floatY: center.y + radialY * (d.distance * .78) + tangentY * wobble,
+        delay: .72 + index * .075
+      };
+    });
+
+    const defs = svg.append("defs");
+    const glow = defs.append("filter")
+      .attr("id", "category-burst-soft-shadow")
+      .attr("x", "-30%")
+      .attr("y", "-30%")
+      .attr("width", "160%")
+      .attr("height", "160%");
+    glow.append("feDropShadow")
+      .attr("dx", 0)
+      .attr("dy", 4)
+      .attr("stdDeviation", 5)
+      .attr("flood-color", palette.gray700)
+      .attr("flood-opacity", .18);
+
+    svg.append("circle")
+      .attr("cx", center.x)
+      .attr("cy", center.y)
+      .attr("r", 152)
+      .attr("fill", "none")
+      .attr("stroke", palette.gray100)
+      .attr("stroke-width", 1.2)
+      .attr("stroke-dasharray", "4 8")
+      .attr("opacity", .72);
+
+    const rootHalo = svg.append("circle")
+      .attr("cx", center.x)
+      .attr("cy", center.y)
+      .attr("r", 12)
+      .attr("fill", "none")
+      .attr("stroke", palette.blueHighlight)
+      .attr("stroke-width", 12)
+      .attr("opacity", .55);
+    rootHalo.append("animate")
+      .attr("attributeName", "r")
+      .attr("from", 12)
+      .attr("to", 54)
+      .attr("dur", ".85s")
+      .attr("begin", "0s")
+      .attr("fill", "freeze");
+    rootHalo.append("animate")
+      .attr("attributeName", "opacity")
+      .attr("from", .55)
+      .attr("to", 0)
+      .attr("dur", ".85s")
+      .attr("begin", "0s")
+      .attr("fill", "freeze");
+
+    const links = svg.append("g")
+      .attr("class", "category-burst-links")
+      .attr("fill", "none")
+      .attr("stroke-linecap", "round")
+      .selectAll("path")
+      .data(spokes, d => d.id)
+      .join("path")
+      .attr("class", "category-burst-link")
+      .attr("data-subcategory-id", d => d.id)
+      .attr("d", d => {
+        const bend = d.index % 2 === 0 ? 20 : -20;
+        const c1x = center.x + d.radialX * 54 - d.radialY * bend;
+        const c1y = center.y + d.radialY * 54 + d.radialX * bend;
+        const c2x = center.x + d.radialX * (d.distance * .62) + d.radialY * bend * .75;
+        const c2y = center.y + d.radialY * (d.distance * .62) - d.radialX * bend * .75;
+        return `M${center.x},${center.y} C${c1x},${c1y} ${c2x},${c2y} ${d.x},${d.y}`;
+      })
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", 2.2)
+      .attr("stroke-opacity", .68);
+    links.each(function (d) {
+      const length = this.getTotalLength ? this.getTotalLength() : d.distance;
+      const delay = .52 + d.index * .07;
+      const dur = 1.1;
+      d3.select(this)
+        .attr("stroke-dasharray", `${length} ${length}`)
+        .attr("stroke-dashoffset", 0)
+        .append("animate")
+        .attr("attributeName", "stroke-dashoffset")
+        .attr("values", `${length};${length};0`)
+        .attr("keyTimes", `0;${(delay / (delay + dur)).toFixed(3)};1`)
+        .attr("dur", `${delay + dur}s`)
+        .attr("begin", "0s")
+        .attr("fill", "freeze");
+    });
+
+    const root = svg.append("g")
+      .attr("class", "category-burst-root")
+      .attr("data-node-role", "root")
+      .attr("transform", `translate(${center.x},${center.y})`)
+      .attr("filter", "url(#category-burst-soft-shadow)");
+    const rootCircle = root.append("circle")
+      .attr("r", 36)
+      .attr("fill", palette.ink)
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", 3);
+    rootCircle.append("animate")
+      .attr("attributeName", "r")
+      .attr("values", "0;36")
+      .attr("dur", ".56s")
+      .attr("begin", "0s")
+      .attr("fill", "freeze")
+      .attr("calcMode", "spline")
+      .attr("keySplines", ".2 .8 .2 1");
+    root.append("text")
+      .attr("class", "reverse-label")
+      .attr("text-anchor", "middle")
+      .attr("y", -4)
+      .attr("font-size", 12)
+      .attr("font-weight", 800)
+      .text("Main");
+    root.append("text")
+      .attr("class", "reverse-label")
+      .attr("text-anchor", "middle")
+      .attr("y", 12)
+      .attr("font-size", 9)
+      .attr("font-weight", 700)
+      .text("category");
+
+    const nodeGroups = svg.append("g")
+      .attr("class", "category-burst-nodes")
+      .selectAll("g")
+      .data(spokes, d => d.id)
+      .join("g")
+      .attr("class", "category-burst-node")
+      .attr("data-node-role", "subcategory")
+      .attr("data-subcategory-id", d => d.id)
+      .attr("transform", d => `translate(${d.x},${d.y})`)
+      .attr("opacity", 1);
+    nodeGroups.each(function (d) {
+      const total = d.delay + 1.65;
+      const floatAt = (d.delay + 1.16) / total;
+      const group = d3.select(this);
+      group.append("animateTransform")
+        .attr("attributeName", "transform")
+        .attr("type", "translate")
+        .attr("values", `${center.x} ${center.y};${center.x} ${center.y};${d.floatX} ${d.floatY};${d.x} ${d.y}`)
+        .attr("keyTimes", `0;${(d.delay / total).toFixed(3)};${floatAt.toFixed(3)};1`)
+        .attr("dur", `${total}s`)
+        .attr("begin", "0s")
+        .attr("fill", "freeze")
+        .attr("calcMode", "spline")
+        .attr("keySplines", ".4 0 .2 1;.22 .82 .22 1;.3 0 .1 1");
+      group.append("animate")
+        .attr("attributeName", "opacity")
+        .attr("values", "0;0;1")
+        .attr("keyTimes", `0;${(d.delay / (d.delay + .42)).toFixed(3)};1`)
+        .attr("dur", `${d.delay + .42}s`)
+        .attr("begin", "0s")
+        .attr("fill", "freeze");
+    });
+    const satelliteCircles = nodeGroups.append("circle")
+      .attr("r", d => d.r)
+      .attr("fill", d => d.fill)
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", 2.4);
+    satelliteCircles.each(function (d) {
+      d3.select(this).append("animate")
+        .attr("attributeName", "r")
+        .attr("values", `5;${d.r + 2};${d.r}`)
+        .attr("dur", ".72s")
+        .attr("begin", `${d.delay + .28}s`)
+        .attr("fill", "freeze")
+        .attr("calcMode", "spline")
+        .attr("keySplines", ".2 .8 .2 1;.28 0 .22 1");
+    });
+    nodeGroups.append("circle")
+      .attr("r", d => d.r + 5)
+      .attr("fill", "none")
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", 1.4)
+      .attr("stroke-opacity", .18);
+
+    const labels = nodeGroups.append("text")
+      .attr("class", "mark-label")
+      .attr("x", d => d.radialX * (d.r + 16))
+      .attr("y", d => d.radialY * (d.r + 16) + 4)
+      .attr("text-anchor", d => {
+        if (Math.abs(d.radialX) < .24) return "middle";
+        return d.radialX > 0 ? "start" : "end";
+      })
+      .attr("font-size", 11.2)
+      .attr("font-weight", 800)
+      .text(d => d.label);
+    labels.each(function (d) {
+      const delay = d.delay + 1.1;
+      const dur = .42;
+      d3.select(this).append("animate")
+        .attr("attributeName", "opacity")
+        .attr("values", "0;0;1")
+        .attr("keyTimes", `0;${(delay / (delay + dur)).toFixed(3)};1`)
+        .attr("dur", `${delay + dur}s`)
+        .attr("begin", "0s")
+        .attr("fill", "freeze");
+    });
   }
 
   function renderRadialHierarchy() {

@@ -153,6 +153,84 @@
     "d3-composition-radial-rosette-shape-tween"
   ]);
 
+  const curatedCompositionVariantIds = new Set([
+    "d3-composition-balance-symmetry-population-pyramid",
+    "d3-composition-balance-symmetry-category-burst",
+    "d3-composition-balance-symmetry-diverging-stack",
+    "d3-composition-balance-symmetry-mirrored-beeswarm",
+    "d3-composition-balance-symmetry-vaccine-impact",
+    "d3-composition-balance-symmetry-venn-three-circle",
+    "d3-composition-balance-symmetry-bullet",
+    "d3-composition-balance-symmetry-force-network",
+    "d3-composition-diagonal-armature-geo-route",
+    "d3-composition-diagonal-armature-qkv-projection-flow",
+    "d3-composition-diagonal-armature-waterfall",
+    "d3-composition-diagonal-armature-connected-scatter",
+    "d3-composition-diagonal-armature-critical-path",
+    "d3-composition-diagonal-armature-token-boxes-to-context-window",
+    "d3-composition-diagonal-armature-web-load-timeline",
+    "d3-composition-diagonal-armature-attention-arc-decoding",
+    "d3-composition-diagonal-armature-forecast-fan",
+    "d3-composition-diagonal-armature-marey-trains",
+    "d3-composition-diagonal-armature-slope",
+    "d3-composition-diagonal-armature-world-tour",
+    "d3-composition-golden-root-treemap",
+    "d3-composition-golden-root-token-probability-sampler",
+    "d3-composition-golden-root-tangled-tree",
+    "d3-composition-golden-root-document-token-extraction-buckets",
+    "d3-composition-golden-root-gemma-comparison",
+    "d3-composition-golden-root-focus-context",
+    "d3-composition-golden-root-column-profile-table",
+    "d3-composition-thirds-fifths-grid-kanban-assignee-board",
+    "d3-composition-thirds-fifths-grid-calendar-year",
+    "d3-composition-thirds-fifths-grid-scatterplot-matrix",
+    "d3-composition-thirds-fifths-grid-adjacency-matrix",
+    "d3-composition-thirds-fifths-grid-attention-matrix-tiles",
+    "d3-composition-thirds-fifths-grid-correlogram-histogram",
+    "d3-composition-thirds-fifths-grid-data-table-grid",
+    "d3-composition-thirds-fifths-grid-sortable-rank-table",
+    "d3-composition-thirds-fifths-grid-tile-choropleth",
+    "d3-composition-thirds-fifths-grid-waffle",
+    "d3-composition-radial-rosette-moon-phases",
+    "d3-composition-radial-rosette-radar",
+    "d3-composition-radial-rosette-chord",
+    "d3-composition-radial-rosette-burtin-antibiotics",
+    "d3-composition-radial-rosette-category-burst",
+    "d3-composition-radial-rosette-directed-chord",
+    "d3-composition-radial-rosette-force-network",
+    "d3-composition-radial-rosette-orthographic-shading",
+    "d3-composition-radial-rosette-radial-hierarchy",
+    "d3-composition-radial-rosette-radial-stacked-bars",
+    "d3-composition-radial-rosette-solar-terminator",
+    "d3-composition-radial-rosette-sunburst",
+    "d3-composition-radial-rosette-token-roulette-sampler",
+    "d3-composition-flow-spine-alluvial",
+    "d3-composition-flow-spine-qkv-projection-flow",
+    "d3-composition-flow-spine-d3-sequence-lifelines",
+    "d3-composition-flow-spine-d3-git-graph",
+    "d3-composition-flow-spine-d3-state-machine",
+    "d3-composition-flow-spine-token-boxes-to-context-window",
+    "d3-composition-flow-spine-web-load-timeline",
+    "d3-composition-flow-spine-kv-cache-growth",
+    "d3-composition-flow-spine-moe-router-capacity",
+    "d3-composition-flow-spine-parallel-sets",
+    "d3-composition-flow-spine-sankey",
+    "d3-composition-flow-spine-speculative-decoding-verify",
+    "d3-composition-dense-label-lanes-airports-voronoi",
+    "d3-composition-dense-label-lanes-word-cloud",
+    "d3-composition-dense-label-lanes-bubble-scatter",
+    "d3-composition-dense-label-lanes-asymmetric-task-overlap-saturated",
+    "d3-composition-dense-label-lanes-hr-diagram",
+    "d3-composition-dense-label-lanes-hexbin-map",
+    "d3-composition-dense-label-lanes-quadtree-search",
+    "d3-composition-dense-label-lanes-occlusion-labels",
+    "d3-composition-dense-label-lanes-pen-label-optimizer",
+    "d3-composition-dense-label-lanes-star-map",
+    "d3-composition-dense-label-lanes-tile-choropleth",
+    "d3-composition-dense-label-lanes-tissot-indicatrix",
+  ]);
+  const curatedVariantOrder = new Map(Array.from(curatedCompositionVariantIds).map((id, index) => [id, index]));
+
   const metadata = (window.D3_ANIMATED_SVG_EXAMPLES || []).map((example, index) => ({ ...example, index }));
   const sourceById = new Map(metadata.map(example => [example.id, example]));
   const reviewedPatterns = metadata.map(reviewPatternForComposition);
@@ -288,6 +366,7 @@
 
     if (is(
       "force-network",
+      "category-burst",
       "beeswarm",
       "sketchy-beeswarm",
       "boxplot",
@@ -456,7 +535,7 @@
     )) {
       add("radial-rosette", has(/hierarchy|sunburst/) ? "hierarchy" : "radial", "the base pattern has a real center, cycle, orbit, or spoke relationship");
     }
-    if (is("embedding-neighborhood", "cluster-hulls", "force-network", "temporal-network")) {
+    if (is("category-burst", "embedding-neighborhood", "cluster-hulls", "force-network", "temporal-network")) {
       add("radial-rosette", "network", "a hub-and-neighborhood story can use rings to separate core, peers, and outliers");
     }
 
@@ -563,6 +642,7 @@
       review.targets.forEach(target => {
         const id = `d3-composition-${target.compositionId}-${review.sourceId}`;
         if (semanticVariantExclusions.has(id)) return;
+        if (!curatedCompositionVariantIds.has(id)) return;
         const generated = {
           id,
           compositionId: target.compositionId,
@@ -590,7 +670,8 @@
     variants.push(...generatedVariants);
     variants.sort((a, b) => {
       const sheetOrder = sheets.findIndex(sheet => sheet.id === a.compositionId) - sheets.findIndex(sheet => sheet.id === b.compositionId);
-      return sheetOrder || a.sourceId.localeCompare(b.sourceId);
+      const curatedOrder = (curatedVariantOrder.get(a.id) ?? Number.MAX_SAFE_INTEGER) - (curatedVariantOrder.get(b.id) ?? Number.MAX_SAFE_INTEGER);
+      return sheetOrder || curatedOrder || a.sourceId.localeCompare(b.sourceId);
     });
   }
 
@@ -628,6 +709,11 @@
 
   function addPath(parent, d, attrs = {}) {
     return parent.appendChild(el("path", { d, ...attrs }));
+  }
+
+  function addPolygon(parent, points, attrs = {}) {
+    const value = points.map(point => `${Number(point[0]).toFixed(1)},${Number(point[1]).toFixed(1)}`).join(" ");
+    return parent.appendChild(el("polygon", { points: value, ...attrs }));
   }
 
   function cssEscape(value) {
@@ -1321,6 +1407,267 @@
     return `M${a[0]} ${a[1] + offset} C${(a[0] + b[0]) / 2} ${a[1] - 34 + offset}, ${(a[0] + b[0]) / 2} ${b[1] + 34 + offset}, ${b[0]} ${b[1] + offset}`;
   }
 
+  function renderBandFlow(group, variant, paths, labels) {
+    const stages = [52, 126, 204, 286];
+    stages.forEach((x, index) => {
+      addRect(group, x - 8, 56 + (index % 2) * 18, 16, 86, {
+        class: "semantic-flow-stage",
+        rx: 4,
+        fill: index === 0 ? palette.blueHighlight : index === stages.length - 1 ? palette.greenHighlight : palette.surface,
+        stroke: palette.line
+      });
+    });
+    const bands = Array.from({ length: 5 }, (_, index) => ({
+      y: 74 + index * 15,
+      width: 9 - index * 0.8,
+      color: paths[index]?.stroke || [palette.blue, palette.orange, palette.green, palette.purple, palette.red][index % 5]
+    }));
+    bands.forEach((band, index) => {
+      addPath(group, `M60 ${band.y} C112 ${band.y - 26}, 166 ${band.y + 28}, 204 ${band.y + 4} S266 ${band.y - 18}, 294 ${band.y + 2}`, {
+        class: "semantic-flow-band",
+        fill: "none",
+        stroke: band.color,
+        "stroke-width": band.width,
+        "stroke-opacity": 0.48,
+        "stroke-linecap": "round"
+      });
+    });
+    stages.forEach((x, index) => {
+      appendText(group, x, 164, labels[index]?.text || tokenLabel(variant, "stage", index), {
+        class: "semantic-flow-label",
+        "text-anchor": "middle",
+        "font-size": 6.8,
+        "font-weight": 800,
+        fill: palette.ink,
+        stroke: palette.surface,
+        "stroke-width": 2,
+        "paint-order": "stroke"
+      });
+    });
+    return true;
+  }
+
+  function renderLaneFlow(group, variant, labels) {
+    if (/sequence/.test(variant.sourceId)) {
+      [70, 140, 210, 280].forEach((x, index) => {
+        addLine(group, x, 50, x, 158, { class: "semantic-sequence-life", stroke: palette.line, "stroke-width": 1.2, "stroke-dasharray": "4 5" });
+        appendText(group, x, 38, labels[index]?.text || tokenLabel(variant, "actor", index), { "text-anchor": "middle", "font-size": 6.5, "font-weight": 800, fill: palette.ink });
+      });
+      [[70, 140, 66], [140, 210, 92], [210, 140, 118], [140, 280, 144]].forEach((msg, index) => {
+        addLine(group, msg[0], msg[2], msg[1], msg[2], { class: "semantic-sequence-message", stroke: [palette.blue, palette.orange, palette.green, palette.purple][index], "stroke-width": 1.8, "marker-end": "" });
+        addCircle(group, msg[1], msg[2], 3.2, { fill: [palette.blue, palette.orange, palette.green, palette.purple][index], stroke: palette.surface, "stroke-width": 0.8 });
+      });
+      return true;
+    }
+    if (/gantt/.test(variant.sourceId)) {
+      Array.from({ length: 5 }, (_, index) => {
+        const y = 55 + index * 24;
+        addLine(group, 54, y + 11, 310, y + 11, { class: "semantic-gantt-row", stroke: palette.softLine, "stroke-width": 1 });
+        addRect(group, 66 + index * 22, y, 68 + (index % 3) * 22, 14, { class: "semantic-gantt-bar", rx: 4, fill: [palette.blue, palette.green, palette.orange, palette.purple, palette.red][index], "fill-opacity": 0.68, stroke: "none" });
+        appendText(group, 42, y + 10, labels[index]?.text || tokenLabel(variant, "task", index), { "text-anchor": "end", "font-size": 6.3, "font-weight": 800, fill: palette.muted });
+      });
+      return true;
+    }
+    if (/git/.test(variant.sourceId)) {
+      const commits = [[62, 126], [102, 126], [142, 98], [182, 98], [222, 126], [262, 126], [302, 92]];
+      commits.forEach((commit, index) => {
+        if (index > 0) {
+          const prev = commits[index - 1];
+          addPath(group, `M${prev[0]} ${prev[1]} C${(prev[0] + commit[0]) / 2} ${prev[1]}, ${(prev[0] + commit[0]) / 2} ${commit[1]}, ${commit[0]} ${commit[1]}`, { class: "semantic-git-link", fill: "none", stroke: index === 2 || index === 4 ? palette.orange : palette.blue, "stroke-width": 1.7, "stroke-opacity": 0.58 });
+        }
+        addCircle(group, commit[0], commit[1], 6, { class: "semantic-git-commit", fill: index === commits.length - 1 ? palette.greenHighlight : palette.surface, stroke: [palette.blue, palette.orange, palette.green][index % 3], "stroke-width": 1.6 });
+      });
+      appendText(group, 68, 152, "main", { "font-size": 6.5, "font-weight": 800, fill: palette.muted });
+      appendText(group, 148, 83, "branch", { "font-size": 6.5, "font-weight": 800, fill: palette.muted });
+      return true;
+    }
+    if (/state/.test(variant.sourceId)) {
+      const nodes = [[76, 110, "start"], [152, 76, "wait"], [224, 116, "check"], [288, 78, "done"]];
+      nodes.forEach((node, index) => {
+        if (index > 0) {
+          const prev = nodes[index - 1];
+          addPath(group, `M${prev[0] + 16} ${prev[1]} C${prev[0] + 42} ${prev[1] - 18}, ${node[0] - 38} ${node[1] + 18}, ${node[0] - 16} ${node[1]}`, { class: "semantic-state-link", fill: "none", stroke: palette.blue, "stroke-width": 1.7, "stroke-opacity": 0.58 });
+        }
+        addRect(group, node[0] - 22, node[1] - 12, 44, 24, { class: "semantic-state-node", rx: 12, fill: index === nodes.length - 1 ? palette.greenHighlight : palette.surface, stroke: index === 0 ? palette.red : palette.blue, "stroke-width": 1.4 });
+        appendText(group, node[0], node[1] + 3, labels[index]?.text || node[2], { "text-anchor": "middle", "font-size": 6.1, "font-weight": 800, fill: palette.ink });
+      });
+      return true;
+    }
+    const lanes = /sequence|gantt|git/.test(variant.sourceId) ? 4 : 3;
+    Array.from({ length: lanes }, (_, lane) => {
+      const y = 62 + lane * 33;
+      addLine(group, 48, y, 312, y, { class: "semantic-flow-lane", stroke: palette.softLine, "stroke-width": 1.2 });
+      appendText(group, 38, y + 3, labels[lane]?.text || tokenLabel(variant, "lane", lane), {
+        class: "semantic-flow-lane-label",
+        "text-anchor": "end",
+        "font-size": 6.5,
+        "font-weight": 800,
+        fill: palette.muted
+      });
+    });
+    const nodes = Array.from({ length: /git/.test(variant.sourceId) ? 9 : 7 }, (_, index) => ({
+      x: 66 + index * 34,
+      y: 62 + (index % lanes) * 33,
+      r: /git/.test(variant.sourceId) ? 5 : 7
+    }));
+    nodes.forEach((node, index) => {
+      if (index > 0) {
+        const prev = nodes[index - 1];
+        addPath(group, `M${prev.x} ${prev.y} C${(prev.x + node.x) / 2} ${prev.y}, ${(prev.x + node.x) / 2} ${node.y}, ${node.x} ${node.y}`, {
+          class: "semantic-flow-lane-link",
+          fill: "none",
+          stroke: index % 3 ? palette.blue : palette.orange,
+          "stroke-width": 1.5,
+          "stroke-opacity": 0.56
+        });
+      }
+      if (/flowchart|state/.test(variant.sourceId)) {
+        addRect(group, node.x - 12, node.y - 8, 24, 16, { class: "semantic-flow-node", rx: index % 3 === 1 ? 8 : 4, fill: index === nodes.length - 1 ? palette.greenHighlight : palette.surface, stroke: index === 0 ? palette.red : palette.blue, "stroke-width": 1.3 });
+      } else {
+        addCircle(group, node.x, node.y, node.r, { class: "semantic-flow-node", fill: index === 0 ? palette.redHighlight : index === nodes.length - 1 ? palette.greenHighlight : palette.blueHighlight, stroke: palette.blue, "stroke-width": 1.2 });
+      }
+    });
+    return true;
+  }
+
+  function renderTokenFlow(group, variant, labels) {
+    if (/qkv/.test(variant.sourceId)) {
+      addRect(group, 44, 90, 42, 30, { class: "semantic-flow-block", rx: 6, fill: palette.blueHighlight, stroke: palette.blue });
+      appendText(group, 65, 109, "X", { "text-anchor": "middle", "font-size": 8, "font-weight": 800, fill: palette.ink });
+      ["Q", "K", "V"].forEach((label, index) => {
+        const y = 58 + index * 44;
+        addRect(group, 134, y - 15, 44, 30, { class: "semantic-flow-block", rx: 6, fill: [palette.redHighlight, palette.yellowHighlight, palette.greenHighlight][index], stroke: [palette.red, palette.orange, palette.green][index] });
+        appendText(group, 156, y + 3, label, { "text-anchor": "middle", "font-size": 8, "font-weight": 800, fill: palette.ink });
+        addPath(group, `M86 105 C108 ${105}, 116 ${y}, 134 ${y}`, { class: "semantic-flow-link", fill: "none", stroke: [palette.red, palette.orange, palette.green][index], "stroke-width": 2, "stroke-opacity": 0.56 });
+        addPath(group, `M178 ${y} C216 ${y}, 226 105, 262 105`, { class: "semantic-flow-link", fill: "none", stroke: [palette.red, palette.orange, palette.green][index], "stroke-width": 2, "stroke-opacity": 0.56 });
+      });
+      addRect(group, 262, 84, 52, 42, { class: "semantic-flow-block", rx: 6, fill: palette.purpleHighlight, stroke: palette.purple });
+      appendText(group, 288, 109, "attn", { "text-anchor": "middle", "font-size": 7, "font-weight": 800, fill: palette.ink });
+      return true;
+    }
+    if (/moe/.test(variant.sourceId)) {
+      Array.from({ length: 10 }, (_, index) => addRect(group, 44 + (index % 2) * 16, 58 + Math.floor(index / 2) * 19, 11, 11, { class: "semantic-flow-token", rx: 2, fill: [palette.blue, palette.orange, palette.green, palette.purple][index % 4], "fill-opacity": 0.74, stroke: "none" }));
+      [116, 168, 220, 272].forEach((x, index) => {
+        addRect(group, x, 52, 34, 102, { class: "semantic-flow-expert", rx: 6, fill: index === 3 ? palette.redHighlight : palette.surface, stroke: index === 3 ? palette.red : palette.line });
+        appendText(group, x + 17, 44, `E${index + 1}`, { "text-anchor": "middle", "font-size": 7, "font-weight": 800, fill: palette.ink });
+        addRect(group, x + 8, 134 - index * 10, 18, 12 + index * 10, { class: "semantic-flow-capacity", rx: 3, fill: [palette.blue, palette.green, palette.orange, palette.purple][index], "fill-opacity": 0.66, stroke: "none" });
+      });
+      Array.from({ length: 10 }, (_, index) => {
+        const sx = 60 + (index % 2) * 16;
+        const sy = 64 + Math.floor(index / 2) * 19;
+        const tx = [133, 185, 237, 289][index % 4];
+        addPath(group, `M${sx} ${sy} C92 ${sy}, 88 ${82 + (index % 4) * 17}, ${tx} ${82 + (index % 4) * 17}`, { class: "semantic-flow-link", fill: "none", stroke: palette.blue, "stroke-width": 0.9, "stroke-opacity": 0.24 });
+      });
+      return true;
+    }
+    if (/token-boxes/.test(variant.sourceId)) {
+      Array.from({ length: 8 }, (_, index) => addRect(group, 46, 52 + index * 14, 36, 10, { class: "semantic-flow-token", rx: 2, fill: [palette.blue, palette.orange, palette.green, palette.purple][index % 4], "fill-opacity": 0.68, stroke: "none" }));
+      Array.from({ length: 24 }, (_, index) => addRect(group, 190 + (index % 6) * 17, 58 + Math.floor(index / 6) * 18, 13, 13, { class: "semantic-flow-context-cell", rx: 2, fill: index < 12 ? palette.blueHighlight : palette.softLine, stroke: palette.surface }));
+      addPath(group, "M88 102 C126 68 148 72 178 84", { class: "semantic-flow-link", fill: "none", stroke: palette.red, "stroke-width": 2.2, "stroke-opacity": 0.56 });
+      addPath(group, "M88 118 C126 150 152 144 178 126", { class: "semantic-flow-link", fill: "none", stroke: palette.green, "stroke-width": 2.2, "stroke-opacity": 0.56 });
+      return true;
+    }
+    if (/speculative/.test(variant.sourceId)) {
+      ["draft", "accept", "reject", "target"].forEach((label, index) => {
+        const x = 54 + index * 70;
+        addRect(group, x - 18, 84, 36, 24, { class: "semantic-flow-block", rx: 5, fill: index === 2 ? palette.redHighlight : index === 1 ? palette.greenHighlight : palette.surface, stroke: index === 2 ? palette.red : index === 1 ? palette.green : palette.line });
+        appendText(group, x, 99, label, { "text-anchor": "middle", "font-size": 6.3, "font-weight": 800, fill: palette.ink });
+        if (index > 0) addPath(group, `M${x - 52} 96 C${x - 38} ${index === 2 ? 126 : 68}, ${x - 28} ${index === 2 ? 126 : 68}, ${x - 18} 96`, { class: "semantic-flow-link", fill: "none", stroke: index === 2 ? palette.red : palette.blue, "stroke-width": 1.8, "stroke-opacity": 0.56 });
+      });
+      Array.from({ length: 9 }, (_, index) => addRect(group, 46 + index * 26, 132, 16, 10, { class: "semantic-flow-token", rx: 2, fill: index === 5 ? palette.red : palette.green, "fill-opacity": index === 5 ? 0.76 : 0.46, stroke: "none" }));
+      return true;
+    }
+    if (/attention/.test(variant.sourceId)) {
+      const xs = [58, 102, 146, 190, 234, 278];
+      xs.forEach((x, index) => {
+        addRect(group, x - 15, 128, 30, 18, { class: "semantic-flow-token", rx: 4, fill: index === xs.length - 1 ? palette.greenHighlight : palette.surface, stroke: index === xs.length - 1 ? palette.green : palette.line });
+        appendText(group, x, 140, labels[index]?.text || tokenLabel(variant, "tok", index), { "text-anchor": "middle", "font-size": 5.8, "font-weight": 800, fill: palette.ink });
+      });
+      xs.slice(0, -1).forEach((x, index) => {
+        const target = xs[xs.length - 1];
+        const height = 30 + index * 8;
+        addPath(group, `M${x} 126 C${x + 14} ${82 - height * 0.2}, ${target - 20} ${82 - height * 0.2}, ${target} 126`, { class: "semantic-flow-link", fill: "none", stroke: [palette.blue, palette.orange, palette.green, palette.purple, palette.red][index % 5], "stroke-width": 1.2 + index * 0.35, "stroke-opacity": 0.42 });
+      });
+      return true;
+    }
+    if (/scaled|multi-head/.test(variant.sourceId)) {
+      [52, 144].forEach((x, block) => {
+        Array.from({ length: 25 }, (_, index) => {
+          const col = index % 5;
+          const row = Math.floor(index / 5);
+          addRect(group, x + col * 12, 56 + row * 12, 10, 10, { class: "semantic-flow-matrix-cell", rx: 1.2, fill: (row + col + block) % 3 ? palette.blueHighlight : palette.orange, "fill-opacity": (row + col + block) % 3 ? 0.54 : 0.72, stroke: "none" });
+        });
+      });
+      addPath(group, "M116 86 C126 86 132 86 144 86", { class: "semantic-flow-link", fill: "none", stroke: palette.red, "stroke-width": 2.1, "stroke-opacity": 0.58 });
+      addRect(group, 248, 72, 50, 46, { class: "semantic-flow-block", rx: 7, fill: palette.purpleHighlight, stroke: palette.purple });
+      addPath(group, "M204 86 C224 86 224 95 248 95", { class: "semantic-flow-link", fill: "none", stroke: palette.green, "stroke-width": 2.1, "stroke-opacity": 0.58 });
+      return true;
+    }
+    const stages = [
+      { x: 52, y: 118, w: 44, h: 28, label: labels[0]?.text || tokenLabel(variant, "input", 0), fill: palette.blueHighlight },
+      { x: 128, y: 70, w: 54, h: 42, label: labels[1]?.text || tokenLabel(variant, "split", 1), fill: palette.yellowHighlight },
+      { x: 206, y: 118, w: 54, h: 42, label: labels[2]?.text || tokenLabel(variant, "route", 2), fill: palette.purpleHighlight },
+      { x: 288, y: 78, w: 42, h: 28, label: labels[3]?.text || tokenLabel(variant, "out", 3), fill: palette.greenHighlight }
+    ];
+    stages.forEach(stage => {
+      addRect(group, stage.x - stage.w / 2, stage.y - stage.h / 2, stage.w, stage.h, {
+        class: "semantic-flow-block",
+        rx: 6,
+        fill: stage.fill,
+        stroke: palette.line
+      });
+      appendText(group, stage.x, stage.y + 3, stage.label, { class: "semantic-flow-label", "text-anchor": "middle", "font-size": 6.5, "font-weight": 800, fill: palette.ink });
+    });
+    const routes = [
+      [74, 118, 118, 90, 154, 90],
+      [154, 90, 190, 88, 206, 118],
+      [206, 118, 244, 138, 286, 92],
+      [128, 112, 172, 148, 206, 140]
+    ];
+    routes.forEach((route, index) => {
+      addPath(group, `M${route[0]} ${route[1]} C${route[2]} ${route[3]}, ${route[4]} ${route[5]}, ${route[4]} ${route[5]}`, {
+        class: "semantic-flow-link",
+        fill: "none",
+        stroke: [palette.red, palette.blue, palette.green, palette.orange][index % 4],
+        "stroke-width": 2 + (index % 2),
+        "stroke-opacity": 0.54,
+        "stroke-linecap": "round"
+      });
+    });
+    Array.from({ length: 12 }, (_, index) => {
+      const x = 64 + index * 18;
+      const y = 146 + Math.sin(index * 1.2) * 9;
+      addRect(group, x, y, 10, 8, { class: "semantic-flow-token", rx: 2, fill: [palette.blue, palette.orange, palette.green, palette.purple][index % 4], "fill-opacity": 0.72, stroke: "none" });
+    });
+    return true;
+  }
+
+  function renderTimelineFlow(group, variant, labels) {
+    const y = 112;
+    addLine(group, 46, y, 314, y, { class: "semantic-flow-timeline", stroke: palette.ink, "stroke-width": 1.6, "stroke-opacity": 0.42 });
+    Array.from({ length: 6 }, (_, index) => {
+      const x = 58 + index * 50;
+      const height = 18 + seededRange(variant, index, 0, 44);
+      addRect(group, x - 13, y - height, 26, height, {
+        class: "semantic-flow-duration",
+        rx: 4,
+        fill: [palette.blueHighlight, palette.greenHighlight, palette.yellowHighlight, palette.purpleHighlight][index % 4],
+        stroke: [palette.blue, palette.green, palette.orange, palette.purple][index % 4],
+        "stroke-width": 1.2
+      });
+      appendText(group, x, y + 18, labels[index]?.text || tokenLabel(variant, "step", index), { class: "semantic-flow-label", "text-anchor": "middle", "font-size": 6.4, "font-weight": 800, fill: palette.ink });
+    });
+    return true;
+  }
+
+  function renderSpecializedFlow(group, variant, paths, labels) {
+    if (/sankey|alluvial|parallel-sets/.test(variant.sourceId)) return renderBandFlow(group, variant, paths, labels);
+    if (/flowchart|sequence|state|gantt|git|journey/.test(variant.sourceId)) return renderLaneFlow(group, variant, labels);
+    if (/attention|qkv|token|moe|speculative|scaled|multi-head/.test(variant.sourceId)) return renderTokenFlow(group, variant, labels);
+    if (/web-load|kv-cache|flow-tokens/.test(variant.sourceId)) return renderTimelineFlow(group, variant, labels);
+    return false;
+  }
+
   function renderSemanticGeospatialDiagonalVariant(svg, variant) {
     if (variant.compositionId !== "diagonal-armature") return false;
     if (variant.renderer !== "route" && variant.inferredKind !== "geospatial") return false;
@@ -1420,6 +1767,7 @@
       "data-source-path-count": paths.length,
       "data-source-label-count": labels.length
     }));
+    if (variant.compositionId === "flow-spine" && renderSpecializedFlow(group, variant, paths, labels)) return true;
     const stationCount = clamp(Math.max(labels.length, Math.min(paths.length + 1, 6), 4), 4, 7);
     const stations = flowStations(variant.compositionId, stationCount);
     const pathCount = Math.max(paths.length, stationCount - 1);
@@ -1484,6 +1832,324 @@
     };
   }
 
+  function renderKanbanGrid(group, variant, labels) {
+    const cols = 4;
+    Array.from({ length: cols }, (_, col) => {
+      const x = 46 + col * 68;
+      addRect(group, x, 42, 56, 116, { class: "semantic-grid-kanban-column", rx: 5, fill: col % 2 ? palette.surface : palette.blueHighlight, "fill-opacity": col % 2 ? 1 : 0.38, stroke: palette.line });
+      appendText(group, x + 28, 57, labels[col]?.text || tokenLabel(variant, "lane", col), { class: "semantic-grid-label", "text-anchor": "middle", "font-size": 6.5, "font-weight": 800, fill: palette.ink });
+      Array.from({ length: 3 }, (_, row) => {
+        const y = 68 + row * 27 + (col % 2) * 4;
+        addRect(group, x + 7, y, 42, 18, { class: "semantic-grid-card", rx: 4, fill: palette.surface, stroke: palette.softLine });
+        addCircle(group, x + 42, y + 13, 3.5, { class: "semantic-grid-assignee", fill: [palette.blue, palette.orange, palette.green, palette.purple][(row + col) % 4], stroke: "none" });
+      });
+    });
+    return true;
+  }
+
+  function renderTableGrid(group, variant, labels) {
+    const x = variant.compositionId === "golden-root" ? 46 : 50;
+    const y = 48;
+    const width = variant.compositionId === "golden-root" ? 170 : 248;
+    const rows = variant.compositionId === "golden-root" ? 5 : 6;
+    Array.from({ length: rows }, (_, row) => {
+      const yy = y + row * 22;
+      addRect(group, x, yy, width, 17, { class: "semantic-grid-row", rx: 3, fill: row % 2 ? palette.surface : palette.blueHighlight, "fill-opacity": row % 2 ? 1 : 0.32, stroke: palette.softLine });
+      appendText(group, x + 8, yy + 11.5, labels[row]?.text || tokenLabel(variant, "row", row), { class: "semantic-grid-label", "font-size": 6.7, "font-weight": 800, fill: palette.ink });
+      addRect(group, x + width - 82, yy + 5, 18 + seededRange(variant, row, 12, 58), 5, { class: "semantic-grid-row-bar", rx: 2, fill: [palette.blue, palette.green, palette.orange, palette.purple][row % 4], "fill-opacity": 0.72, stroke: "none" });
+    });
+    if (variant.compositionId === "golden-root") {
+      addRect(group, 244, 54, 66, 76, { class: "semantic-grid-side-summary", rx: 6, fill: palette.yellowHighlight, stroke: palette.orange, "stroke-width": 1.2 });
+      appendText(group, 277, 90, tokenLabel(variant, "summary"), { class: "semantic-grid-label", "text-anchor": "middle", "font-size": 8, "font-weight": 800, fill: palette.ink });
+    }
+    return true;
+  }
+
+  function renderGoldenContext(group, variant, labels, options = {}) {
+    const rows = options.rows || 4;
+    const x = options.x || 238;
+    const y = options.y || 52;
+    const width = options.width || 76;
+    const height = options.height || 20;
+    Array.from({ length: rows }, (_, index) => {
+      const yy = y + index * (height + 8);
+      addRect(group, x, yy, width, height, {
+        class: "semantic-grid-cell semantic-golden-context-card",
+        rx: 5,
+        fill: index === 0 ? palette.yellowHighlight : palette.surface,
+        stroke: index === 0 ? palette.orange : palette.softLine,
+        "stroke-width": index === 0 ? 1.2 : 1
+      });
+      addRect(group, x + width - 24, yy + 7, 10 + seededRange(variant, index + 700, 4, 16), 4, {
+        class: "semantic-grid-cell semantic-golden-context-metric",
+        rx: 2,
+        fill: [palette.blue, palette.green, palette.orange, palette.purple][index % 4],
+        "fill-opacity": 0.58,
+        stroke: "none"
+      });
+      appendText(group, x + 8, yy + 13, labels[index]?.text || tokenLabel(variant, "note", index), {
+        class: "semantic-grid-label",
+        "font-size": 6.6,
+        "font-weight": 800,
+        fill: palette.ink
+      });
+    });
+  }
+
+  function renderGoldenTreemap(group, variant, rects, labels) {
+    const tiles = [
+      [42, 44, 78, 62, palette.blueHighlight],
+      [124, 44, 88, 34, palette.greenHighlight],
+      [124, 82, 48, 55, palette.yellowHighlight],
+      [176, 82, 36, 55, palette.purpleHighlight],
+      [42, 110, 48, 49, palette.orangeHighlight],
+      [94, 110, 78, 49, palette.redHighlight]
+    ];
+    tiles.forEach((tile, index) => {
+      addRect(group, tile[0], tile[1], tile[2], tile[3], {
+        class: "semantic-grid-cell semantic-golden-treemap-tile",
+        rx: 5,
+        fill: rects[index]?.fill || tile[4],
+        "fill-opacity": clamp(Number(rects[index]?.opacity) || 0.78, 0.35, 0.92),
+        stroke: palette.surface,
+        "stroke-width": 1.4
+      });
+    });
+    renderGoldenContext(group, variant, labels, { rows: 4 });
+    return true;
+  }
+
+  function renderGoldenDocument(group, variant, labels) {
+    addRect(group, 48, 42, 164, 126, {
+      class: "semantic-grid-cell semantic-golden-document",
+      rx: 7,
+      fill: palette.surface,
+      stroke: palette.line,
+      "stroke-width": 1.2
+    });
+    Array.from({ length: 7 }, (_, index) => {
+      const yy = 58 + index * 13;
+      addRect(group, 62, yy, 118 - (index % 3) * 20, 5, {
+        class: "semantic-grid-cell semantic-golden-document-line",
+        rx: 2.5,
+        fill: [palette.blueHighlight, palette.greenHighlight, palette.yellowHighlight][index % 3],
+        stroke: "none"
+      });
+    });
+    Array.from({ length: 4 }, (_, index) => {
+      const x = 70 + (index % 2) * 62;
+      const y = 130 + Math.floor(index / 2) * 17;
+      addRect(group, x, y, 48, 10, {
+        class: "semantic-grid-cell semantic-golden-document-bucket",
+        rx: 4,
+        fill: [palette.blue, palette.green, palette.orange, palette.purple][index],
+        "fill-opacity": 0.5,
+        stroke: "none"
+      });
+    });
+    renderGoldenContext(group, variant, labels, { rows: 4, y: 48 });
+    return true;
+  }
+
+  function renderGoldenProbability(group, variant, labels) {
+    const rows = 6;
+    Array.from({ length: rows }, (_, index) => {
+      const y = 50 + index * 18;
+      const width = 132 - index * 13 + seededRange(variant, index + 600, -5, 6);
+      addRect(group, 52, y, 156, 11, {
+        class: "semantic-grid-cell semantic-golden-probability-track",
+        rx: 5,
+        fill: palette.surface,
+        stroke: palette.softLine
+      });
+      addRect(group, 52, y, width, 11, {
+        class: "semantic-grid-cell semantic-golden-probability-bar",
+        rx: 5,
+        fill: [palette.blue, palette.green, palette.orange, palette.purple, palette.red][index % 5],
+        "fill-opacity": 0.62,
+        stroke: "none"
+      });
+      appendText(group, 44, y + 8, labels[index]?.text || tokenLabel(variant, "tok", index), {
+        class: "semantic-grid-label",
+        "text-anchor": "end",
+        "font-size": 6.3,
+        "font-weight": 800,
+        fill: palette.muted
+      });
+    });
+    addRect(group, 238, 58, 76, 52, {
+      class: "semantic-grid-cell semantic-golden-selected-token",
+      rx: 8,
+      fill: palette.redHighlight,
+      stroke: palette.red,
+      "stroke-width": 1.3
+    });
+    appendText(group, 276, 87, labels[0]?.text || tokenLabel(variant, "pick"), {
+      class: "semantic-grid-label",
+      "text-anchor": "middle",
+      "font-size": 8,
+      "font-weight": 800,
+      fill: palette.ink
+    });
+    renderGoldenContext(group, variant, labels.slice(1), { rows: 3, y: 124, height: 16 });
+    return true;
+  }
+
+  function renderGoldenComparison(group, variant, labels) {
+    [
+      [48, 52, 156, 42, palette.blueHighlight],
+      [48, 112, 156, 42, palette.greenHighlight]
+    ].forEach((box, index) => {
+      addRect(group, box[0], box[1], box[2], box[3], {
+        class: "semantic-grid-cell semantic-golden-comparison-card",
+        rx: 7,
+        fill: box[4],
+        "fill-opacity": 0.48,
+        stroke: index ? palette.green : palette.blue,
+        "stroke-width": 1.2
+      });
+      appendText(group, box[0] + 12, box[1] + 17, labels[index]?.text || tokenLabel(variant, "model", index), {
+        class: "semantic-grid-label",
+        "font-size": 7.2,
+        "font-weight": 800,
+        fill: palette.ink
+      });
+      Array.from({ length: 3 }, (_, metric) => {
+        addRect(group, box[0] + 14 + metric * 42, box[1] + 27, 24 + metric * 5, 5, {
+          class: "semantic-grid-cell semantic-golden-comparison-metric",
+          rx: 2,
+          fill: [palette.blue, palette.orange, palette.green][metric],
+          "fill-opacity": 0.58,
+          stroke: "none"
+        });
+      });
+    });
+    renderGoldenContext(group, variant, labels.slice(2), { rows: 4 });
+    return true;
+  }
+
+  function renderGoldenTable(group, variant, labels) {
+    Array.from({ length: 5 }, (_, row) => {
+      const y = 48 + row * 22;
+      addRect(group, 48, y, 164, 16, {
+        class: "semantic-grid-cell semantic-golden-table-row",
+        rx: 4,
+        fill: row % 2 ? palette.surface : palette.blueHighlight,
+        "fill-opacity": row % 2 ? 1 : 0.32,
+        stroke: palette.softLine
+      });
+      addRect(group, 142, y + 5, 24 + seededRange(variant, row + 800, 8, 42), 5, {
+        class: "semantic-grid-cell semantic-golden-table-bar",
+        rx: 2.5,
+        fill: [palette.blue, palette.green, palette.orange, palette.purple][row % 4],
+        "fill-opacity": 0.64,
+        stroke: "none"
+      });
+      appendText(group, 58, y + 11, labels[row]?.text || tokenLabel(variant, "row", row), {
+        class: "semantic-grid-label",
+        "font-size": 6.6,
+        "font-weight": 800,
+        fill: palette.ink
+      });
+    });
+    renderGoldenContext(group, variant, labels.slice(5), { rows: 4 });
+    return true;
+  }
+
+  function renderGoldenRootGrid(group, variant, rects, labels) {
+    if (/treemap/.test(variant.sourceId)) return renderGoldenTreemap(group, variant, rects, labels);
+    if (/document|extraction|quality/.test(variant.sourceId)) return renderGoldenDocument(group, variant, labels);
+    if (/probability|sampler|softmax/.test(variant.sourceId)) return renderGoldenProbability(group, variant, labels);
+    if (/gemma|comparison|focus-context/.test(variant.sourceId)) return renderGoldenComparison(group, variant, labels);
+    return renderGoldenTable(group, variant, labels);
+  }
+
+  function renderCalendarGrid(group, variant) {
+    Array.from({ length: 12 }, (_, month) => {
+      const x = 48 + (month % 6) * 42;
+      const y = 44 + Math.floor(month / 6) * 66;
+      appendText(group, x + 17, y - 5, tokenLabel(variant, "mo", month), { class: "semantic-grid-label", "text-anchor": "middle", "font-size": 6.2, "font-weight": 800, fill: palette.muted });
+      Array.from({ length: 21 }, (_, day) => {
+        const dx = day % 7;
+        const dy = Math.floor(day / 7);
+        addRect(group, x + dx * 5, y + dy * 7, 4, 5, {
+          class: "semantic-grid-calendar-day",
+          rx: 0.8,
+          fill: [palette.blueHighlight, palette.greenHighlight, palette.yellowHighlight, palette.redHighlight][(day + month) % 4],
+          stroke: "none",
+          "fill-opacity": 0.7
+        });
+      });
+    });
+    return true;
+  }
+
+  function renderMatrixBlocks(group, variant, rects) {
+    const size = /attention|matmul|multi-head|flashattention|scaled/.test(variant.sourceId) ? 9 : 10;
+    const cols = /scatterplot|correlogram/.test(variant.sourceId) ? 7 : 12;
+    const rows = Math.ceil(Math.min(rects.length, cols * 8) / cols);
+    Array.from({ length: rows * cols }, (_, index) => {
+      const col = index % cols;
+      const row = Math.floor(index / cols);
+      const distance = Math.abs(col - row);
+      const active = /attention|matmul|multi-head|scaled/.test(variant.sourceId) ? distance <= 1 || (row + col) % 7 === 0 : (row * 3 + col) % 5 < 2;
+      addRect(group, 52 + col * (size + 2), 46 + row * (size + 2), size, size, {
+        class: "semantic-grid-matrix-cell",
+        rx: 1.2,
+        fill: active ? [palette.blue, palette.green, palette.orange, palette.purple][(row + col) % 4] : palette.softLine,
+        "fill-opacity": active ? 0.68 : 0.45,
+        stroke: "none"
+      });
+    });
+    if (/attention|matmul|multi-head|scaled/.test(variant.sourceId)) {
+      addRect(group, 222, 58, 76, 78, { class: "semantic-grid-attention-block", rx: 6, fill: palette.surface, stroke: palette.line });
+      Array.from({ length: 4 }, (_, index) => addRect(group, 236, 73 + index * 14, 34 + index * 7, 5, { class: "semantic-grid-mini-bar", rx: 2, fill: [palette.red, palette.blue, palette.green, palette.orange][index], "fill-opacity": 0.7, stroke: "none" }));
+    }
+    return true;
+  }
+
+  function renderSmallMultipleGrid(group, variant) {
+    Array.from({ length: 6 }, (_, index) => {
+      const x = 52 + (index % 3) * 86;
+      const y = 52 + Math.floor(index / 3) * 60;
+      addRect(group, x, y, 64, 42, { class: "semantic-grid-panel", rx: 4, fill: palette.surface, stroke: palette.softLine });
+      const d = Array.from({ length: 5 }, (_, point) => {
+        const px = x + 8 + point * 12;
+        const py = y + 30 - seededRange(variant, index * 10 + point, 2, 24);
+        return `${point ? "L" : "M"}${px.toFixed(1)} ${py.toFixed(1)}`;
+      }).join(" ");
+      addPath(group, d, { class: "semantic-grid-sparkline", fill: "none", stroke: [palette.blue, palette.green, palette.orange, palette.purple, palette.red][index % 5], "stroke-width": 1.7, "stroke-linecap": "round", "stroke-linejoin": "round" });
+    });
+    return true;
+  }
+
+  function renderWaffleGrid(group, variant) {
+    Array.from({ length: 100 }, (_, index) => {
+      const col = index % 20;
+      const row = Math.floor(index / 20);
+      const filled = index < 63 + (hashString(variant.sourceId) % 17);
+      addRect(group, 58 + col * 11.5, 56 + row * 16, 9, 12, {
+        class: "semantic-grid-waffle-cell",
+        rx: 1.4,
+        fill: filled ? [palette.blue, palette.green, palette.orange, palette.purple][Math.floor(index / 10) % 4] : palette.softLine,
+        "fill-opacity": filled ? 0.78 : 0.48,
+        stroke: "none"
+      });
+    });
+    return true;
+  }
+
+  function renderSpecializedGrid(group, variant, rects, labels) {
+    if (variant.compositionId === "golden-root") return renderGoldenRootGrid(group, variant, rects, labels);
+    if (/kanban/.test(variant.sourceId)) return renderKanbanGrid(group, variant, labels);
+    if (/table|profile|rank|pivot|document|gemma/.test(variant.sourceId)) return renderTableGrid(group, variant, labels);
+    if (/calendar/.test(variant.sourceId)) return renderCalendarGrid(group, variant);
+    if (/waffle/.test(variant.sourceId)) return renderWaffleGrid(group, variant);
+    if (/matrix|attention|matmul|multi-head|flashattention|scaled|correlogram|adjacency|context/.test(variant.sourceId)) return renderMatrixBlocks(group, variant, rects);
+    if (/projection|rectbin|donut|marimekko|choropleth/.test(variant.sourceId)) return renderSmallMultipleGrid(group, variant);
+    return false;
+  }
+
   function renderSemanticGridVariant(svg, variant) {
     if (!["matrix", "table", "bar", "document"].includes(variant.renderer)) return false;
     if (!["thirds-fifths-grid", "golden-root"].includes(variant.compositionId)) return false;
@@ -1527,6 +2193,8 @@
       "data-recomposition-mode": `semantic-grid-${variant.compositionId}`,
       "data-source-rect-count": rects.length
     }));
+    const labels = visibleTextMarks(sourceSvg, variant.compositionId === "golden-root" ? 6 : 8);
+    if (renderSpecializedGrid(group, variant, rects, labels)) return true;
     rects.forEach((rect, index) => {
       const cell = gridCellGeometry(variant.compositionId, index, rects.length);
       addRect(group, cell.x, cell.y, cell.width, cell.height, {
@@ -1539,7 +2207,6 @@
         "stroke-opacity": 0.72
       });
     });
-    const labels = visibleTextMarks(sourceSvg, variant.compositionId === "golden-root" ? 4 : 6);
     if (variant.compositionId === "golden-root") {
       const contextRows = labels.length ? labels : Array.from({ length: 5 }, (_, index) => ({ text: tokenLabel(variant, "context", index) }));
       contextRows.slice(0, 5).forEach((label, index) => {
@@ -1561,6 +2228,111 @@
     return true;
   }
 
+  function renderWordLane(group, variant, labels) {
+    const words = labels.length ? labels : titleWords(sourceForVariant(variant)).map(text => ({ text }));
+    words.concat(words).slice(0, 12).forEach((label, index) => {
+      const x = 84 + (index % 4) * 48 + seededRange(variant, index, -6, 6);
+      const y = 58 + Math.floor(index / 4) * 31 + seededRange(variant, index + 20, -5, 5);
+      appendText(group, x, y, label.text || tokenLabel(variant, "word", index), {
+        class: "semantic-word-lane-word",
+        "text-anchor": "middle",
+        "font-size": index < 4 ? 13 : 8.5,
+        "font-weight": index < 4 ? 800 : 700,
+        fill: [palette.red, palette.blue, palette.green, palette.purple][index % 4],
+        stroke: palette.surface,
+        "stroke-width": 2.4,
+        "paint-order": "stroke"
+      });
+    });
+    [42, 318].forEach((x, side) => {
+      Array.from({ length: 4 }, (_, index) => {
+        const y = 58 + index * 30;
+        addLine(group, side ? x - 46 : x + 46, y, 164 + (index % 2) * 28, y + 8, { class: "semantic-lane-leader", stroke: palette.line, "stroke-width": 0.9 });
+        addRect(group, side ? x - 46 : x, y - 8, 46, 14, { class: "semantic-word-lane-chip", rx: 4, fill: palette.surface, stroke: palette.softLine });
+      });
+    });
+    return true;
+  }
+
+  function renderMapLane(group, variant, circles, rects, paths, labels) {
+    const marks = circles.length ? circles : rects.length ? rects : paths;
+    const bounds = nodeBounds(marks.map(mark => ({ x: mark.x, y: mark.y })));
+    addPath(group, "M102 70 C128 38 176 48 198 72 C230 64 260 86 252 120 C230 154 174 160 142 142 C102 150 82 112 102 70", {
+      class: "semantic-map-lane-region",
+      fill: palette.blueHighlight,
+      "fill-opacity": 0.28,
+      stroke: palette.blue,
+      "stroke-width": 1,
+      "stroke-opacity": 0.42
+    });
+    marks.slice(0, 44).forEach((mark, index) => {
+      const x = 108 + ((mark.x - bounds.minX) / bounds.width) * 150;
+      const y = 56 + ((mark.y - bounds.minY) / bounds.height) * 106;
+      addCircle(group, x, y, clamp((mark.radius || mark.width || mark.strokeWidth || 9) * 0.2, 2.2, 7), {
+        class: "semantic-map-lane-mark",
+        fill: mark.fill && mark.fill !== "none" ? mark.fill : mark.stroke || palette.orange,
+        "fill-opacity": 0.76,
+        stroke: palette.surface,
+        "stroke-width": 0.8
+      });
+    });
+    (labels.length ? labels : Array.from({ length: 8 }, (_, index) => ({ text: tokenLabel(variant, "place", index) }))).slice(0, 8).forEach((label, index) => {
+      const left = index % 2 === 0;
+      const x = left ? 32 : 286;
+      const y = 42 + Math.floor(index / 2) * 31;
+      const targetX = 130 + (index % 4) * 32;
+      const targetY = 64 + (index % 5) * 21;
+      addLine(group, left ? x + 50 : x, y, targetX, targetY, { class: "semantic-lane-leader", stroke: palette.blue, "stroke-width": 0.9, "stroke-opacity": 0.34 });
+      addRect(group, x, y - 8, 50, 14, { class: "semantic-map-lane-label", rx: 4, fill: palette.surface, stroke: palette.softLine });
+      appendText(group, left ? x + 5 : x + 45, y + 2, label.text, { "text-anchor": left ? "start" : "end", "font-size": 6.7, "font-weight": 800, fill: palette.ink });
+    });
+    return true;
+  }
+
+  function renderParallelLane(group, variant, labels) {
+    const xs = [82, 132, 182, 232, 282];
+    xs.forEach((x, index) => {
+      addLine(group, x, 46, x, 164, { class: "semantic-parallel-axis", stroke: palette.line, "stroke-width": 1.1 });
+      appendText(group, x, 36, labels[index]?.text || tokenLabel(variant, "axis", index), { class: "semantic-parallel-label", "text-anchor": "middle", "font-size": 6.3, "font-weight": 800, fill: palette.muted });
+    });
+    Array.from({ length: 12 }, (_, row) => {
+      const d = xs.map((x, index) => {
+        const y = 52 + seededRange(variant, row * 8 + index, 0, 104);
+        return `${index ? "L" : "M"}${x} ${y.toFixed(1)}`;
+      }).join(" ");
+      addPath(group, d, { class: "semantic-parallel-line", fill: "none", stroke: [palette.blue, palette.green, palette.orange, palette.purple][row % 4], "stroke-width": row % 5 === 0 ? 2.1 : 1, "stroke-opacity": 0.34 });
+    });
+    return true;
+  }
+
+  function renderContourLane(group, variant, labels) {
+    Array.from({ length: 7 }, (_, index) => {
+      const r = 18 + index * 8;
+      addPath(group, `M${180 - r} ${110} C${150 - r * 0.25} ${78 - index * 2}, ${208 + r * 0.35} ${72 + index * 5}, ${180 + r} ${110} C${212 + r * 0.2} ${148 - index * 2}, ${146 - r * 0.2} ${154 + index * 3}, ${180 - r} ${110}`, {
+        class: "semantic-contour-lane-line",
+        fill: "none",
+        stroke: [palette.blue, palette.green, palette.orange, palette.purple][index % 4],
+        "stroke-width": 1.1,
+        "stroke-opacity": 0.28 + index * 0.06
+      });
+    });
+    (labels.length ? labels : Array.from({ length: 6 }, (_, index) => ({ text: tokenLabel(variant, "level", index) }))).slice(0, 6).forEach((label, index) => {
+      const x = index % 2 ? 286 : 34;
+      const y = 56 + Math.floor(index / 2) * 35;
+      addRect(group, x, y - 8, 48, 14, { class: "semantic-contour-label", rx: 4, fill: palette.surface, stroke: palette.softLine });
+      appendText(group, index % 2 ? x + 43 : x + 5, y + 2, label.text, { "text-anchor": index % 2 ? "end" : "start", "font-size": 6.7, "font-weight": 800, fill: palette.ink });
+    });
+    return true;
+  }
+
+  function renderSpecializedLane(group, variant, circles, rects, paths, labels) {
+    if (/word-cloud/.test(variant.sourceId)) return renderWordLane(group, variant, labels);
+    if (/parallel-coordinates/.test(variant.sourceId)) return renderParallelLane(group, variant, labels);
+    if (/contours|terrain|volcano/.test(variant.sourceId)) return renderContourLane(group, variant, labels);
+    if (/airport|map|cartogram|choropleth|tissot|dorling|hexbin-map|star-map/.test(variant.sourceId)) return renderMapLane(group, variant, circles, rects, paths, labels);
+    return false;
+  }
+
   function renderSemanticLaneVariant(svg, variant) {
     if (!["lanes", "labels"].includes(variant.renderer) && variant.compositionId !== "dense-label-lanes") return false;
     if (variant.compositionId !== "dense-label-lanes") return false;
@@ -1580,6 +2352,7 @@
       "data-source-mark-count": circles.length + rects.length + paths.length,
       "data-source-label-count": labels.length
     }));
+    if (renderSpecializedLane(group, variant, circles, rects, paths, labels)) return true;
     const sourceMarks = circles.length ? circles : rects.length ? rects : paths;
     const bounds = nodeBounds(sourceMarks.map(mark => ({ x: mark.x, y: mark.y })));
     circles.forEach((circle, index) => {
@@ -1658,6 +2431,131 @@
     return paths.length >= 3 ? normalizedMarks(paths) : [];
   }
 
+  function renderBalancedBarComparison(group, variant, marks, labels) {
+    if (/population-pyramid/.test(variant.sourceId)) {
+      Array.from({ length: 6 }, (_, index) => {
+        const y = 48 + index * 20;
+        const leftWidth = 42 + seededRange(variant, index + 1100, 18, 60);
+        const rightWidth = 42 + seededRange(variant, index + 1200, 18, 60);
+        addRect(group, 180 - leftWidth, y, leftWidth, 11, {
+          class: "semantic-scatter-mark semantic-balance-bar",
+          rx: 5,
+          fill: palette.blue,
+          "fill-opacity": 0.58,
+          stroke: "none"
+        });
+        addRect(group, 180, y, rightWidth, 11, {
+          class: "semantic-scatter-mark semantic-balance-bar",
+          rx: 5,
+          fill: palette.orange,
+          "fill-opacity": 0.58,
+          stroke: "none"
+        });
+        appendText(group, 180, y + 8.5, labels[index]?.text || tokenLabel(variant, "age", index), {
+          class: "semantic-balance-axis-label",
+          "text-anchor": "middle",
+          "font-size": 5.8,
+          "font-weight": 800,
+          fill: palette.ink,
+          stroke: palette.surface,
+          "stroke-width": 1.8,
+          "paint-order": "stroke"
+        });
+      });
+      addLine(group, 180, 42, 180, 166, { class: "semantic-balance-baseline", stroke: palette.ink, "stroke-width": 1.2, "stroke-opacity": 0.34 });
+      return true;
+    }
+    if (/diverging-stack/.test(variant.sourceId)) {
+      Array.from({ length: 4 }, (_, row) => {
+        const y = 56 + row * 28;
+        let leftCursor = 180;
+        let rightCursor = 180;
+        Array.from({ length: 3 }, (_, segment) => {
+          const leftWidth = 18 + seededRange(variant, row * 8 + segment, 8, 26);
+          const rightWidth = 18 + seededRange(variant, row * 8 + segment + 60, 8, 26);
+          leftCursor -= leftWidth;
+          addRect(group, leftCursor, y, leftWidth - 1, 13, {
+            class: "semantic-scatter-mark semantic-balance-stack",
+            rx: segment === 0 ? 5 : 1.5,
+            fill: [palette.blue, palette.green, palette.purple][segment],
+            "fill-opacity": 0.58,
+            stroke: "none"
+          });
+          addRect(group, rightCursor, y, rightWidth - 1, 13, {
+            class: "semantic-scatter-mark semantic-balance-stack",
+            rx: segment === 2 ? 5 : 1.5,
+            fill: [palette.orange, palette.red, palette.yellow][segment],
+            "fill-opacity": 0.58,
+            stroke: "none"
+          });
+          rightCursor += rightWidth;
+        });
+        appendText(group, 180, y + 9.5, labels[row]?.text || tokenLabel(variant, "group", row), {
+          class: "semantic-balance-axis-label",
+          "text-anchor": "middle",
+          "font-size": 6,
+          "font-weight": 800,
+          fill: palette.ink,
+          stroke: palette.surface,
+          "stroke-width": 1.8,
+          "paint-order": "stroke"
+        });
+      });
+      addLine(group, 180, 48, 180, 156, { class: "semantic-balance-baseline", stroke: palette.ink, "stroke-width": 1.1, "stroke-opacity": 0.34 });
+      return true;
+    }
+    if (/bullet|vaccine-impact/.test(variant.sourceId)) {
+      const rows = /vaccine/.test(variant.sourceId) ? 5 : 4;
+      Array.from({ length: rows }, (_, row) => {
+        const y = 50 + row * (rows === 5 ? 21 : 27);
+        addRect(group, 68, y, 92, 12, {
+          class: "semantic-scatter-mark semantic-balance-track",
+          rx: 6,
+          fill: palette.blueHighlight,
+          stroke: palette.softLine
+        });
+        addRect(group, 200, y, 92, 12, {
+          class: "semantic-scatter-mark semantic-balance-track",
+          rx: 6,
+          fill: palette.greenHighlight,
+          stroke: palette.softLine
+        });
+        addRect(group, 68, y, 34 + seededRange(variant, row + 1300, 10, 46), 12, {
+          class: "semantic-scatter-mark semantic-balance-measure",
+          rx: 6,
+          fill: palette.blue,
+          "fill-opacity": 0.62,
+          stroke: "none"
+        });
+        addRect(group, 200, y, 34 + seededRange(variant, row + 1400, 10, 46), 12, {
+          class: "semantic-scatter-mark semantic-balance-measure",
+          rx: 6,
+          fill: /vaccine/.test(variant.sourceId) ? palette.red : palette.green,
+          "fill-opacity": 0.62,
+          stroke: "none"
+        });
+        appendText(group, 180, y + 9.2, labels[row]?.text || tokenLabel(variant, "metric", row), {
+          class: "semantic-balance-axis-label",
+          "text-anchor": "middle",
+          "font-size": 5.9,
+          "font-weight": 800,
+          fill: palette.ink,
+          stroke: palette.surface,
+          "stroke-width": 1.8,
+          "paint-order": "stroke"
+        });
+      });
+      addCircle(group, 180, 110, 8, {
+        class: "semantic-scatter-mark semantic-balance-center",
+        fill: palette.surface,
+        stroke: palette.red,
+        "stroke-width": 1.6
+      });
+      return true;
+    }
+    return false;
+  }
+
   function scatterLayout(mark, variant, count) {
     if (variant.compositionId === "diagonal-armature") {
       const t = (mark.order + 0.5) / Math.max(count, 1);
@@ -1673,11 +2571,19 @@
         y: start.y + dy * t + normal.y * offset
       };
     }
-    const side = mark.normX < 0.5 ? -1 : 1;
-    const distance = 30 + Math.abs(mark.normX - 0.5) * 128;
+    const quadrants = [
+      [-1, -1],
+      [1, -1],
+      [-1, 1],
+      [1, 1]
+    ];
+    const quadrant = quadrants[mark.order % quadrants.length];
+    const ring = Math.floor(mark.order / quadrants.length);
+    const xDistance = 34 + (ring % 4) * 20 + seededRange(variant, mark.order + 900, -4, 4);
+    const yDistance = 20 + (Math.floor(ring / 4) % 3) * 18 + seededRange(variant, mark.order + 1000, -3, 3);
     return {
-      x: 180 + side * distance,
-      y: 48 + mark.normY * 124
+      x: 180 + quadrant[0] * xDistance,
+      y: 110 + quadrant[1] * yDistance
     };
   }
 
@@ -1697,6 +2603,8 @@
       "data-recomposition-mode": `semantic-scatter-${variant.compositionId}`,
       "data-source-mark-count": marks.length
     }));
+    const labels = visibleTextMarks(sourceSvg, 8);
+    if (variant.compositionId === "balance-symmetry" && renderBalancedBarComparison(group, variant, marks, labels)) return true;
     const layout = marks.map(mark => ({ ...mark, ...scatterLayout(mark, variant, marks.length) }));
     if (/line|area|slope|connected|path|bump|moving|index|forecast|cursor|ecdf/.test(variant.sourceId)) {
       const ordered = [...layout].sort((a, b) => a.x - b.x);
@@ -1732,7 +2640,7 @@
         });
       }
     });
-    visibleTextMarks(sourceSvg, 4).forEach((label, index) => {
+    labels.slice(0, 4).forEach((label, index) => {
       const x = variant.compositionId === "diagonal-armature" ? 72 + index * 68 : index % 2 ? 254 : 106;
       const y = variant.compositionId === "diagonal-armature" ? 184 - index * 36 : 54 + Math.floor(index / 2) * 108;
       appendText(group, x, y, label.text, {
@@ -1757,6 +2665,175 @@
     return `M${p0[0].toFixed(2)} ${p0[1].toFixed(2)} A${outerRadius} ${outerRadius} 0 ${large} 1 ${p1[0].toFixed(2)} ${p1[1].toFixed(2)} L${p2[0].toFixed(2)} ${p2[1].toFixed(2)} A${innerRadius} ${innerRadius} 0 ${large} 0 ${p3[0].toFixed(2)} ${p3[1].toFixed(2)} Z`;
   }
 
+  function polarPoint(cx, cy, radius, angle) {
+    return [cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius];
+  }
+
+  function radialPaint(marks, index, fallback = palette.blue) {
+    const mark = marks[index % Math.max(marks.length, 1)] || {};
+    return mark.fill && mark.fill !== "none" ? mark.fill : mark.stroke || fallback;
+  }
+
+  function renderChordRadial(group, variant, marks) {
+    const count = /directed/.test(variant.sourceId) ? 9 : 8;
+    const radius = 72;
+    const nodes = Array.from({ length: count }, (_, index) => {
+      const angle = -Math.PI / 2 + Math.PI * 2 * index / count;
+      const [x, y] = polarPoint(180, 110, radius, angle);
+      return { x, y, angle };
+    });
+    addCircle(group, 180, 110, radius, { class: "semantic-radial-ring", fill: "none", stroke: palette.softLine, "stroke-width": 1.2 });
+    nodes.forEach((node, index) => {
+      const end = nodes[(index * 3 + 2) % count];
+      const bend = index % 2 ? 18 : -18;
+      addPath(group, `M${node.x.toFixed(1)} ${node.y.toFixed(1)} Q${180 + bend} ${110 - bend}, ${end.x.toFixed(1)} ${end.y.toFixed(1)}`, {
+        class: "semantic-radial-chord",
+        fill: "none",
+        stroke: radialPaint(marks, index, palette.blue),
+        "stroke-width": index % 3 === 0 ? 5.4 : 3.2,
+        "stroke-opacity": 0.42,
+        "stroke-linecap": "round"
+      });
+    });
+    nodes.forEach((node, index) => {
+      addCircle(group, node.x, node.y, 6.2, {
+        class: "semantic-radial-node",
+        fill: radialPaint(marks, index, palette.blueHighlight),
+        stroke: palette.surface,
+        "stroke-width": 1.4
+      });
+      if (/directed/.test(variant.sourceId) && index % 3 === 0) {
+        const tip = polarPoint(180, 110, radius + 10, node.angle);
+        const left = polarPoint(180, 110, radius + 2, node.angle - 0.05);
+        const right = polarPoint(180, 110, radius + 2, node.angle + 0.05);
+        addPolygon(group, [tip, left, right], { class: "semantic-radial-arrow", fill: palette.red, "fill-opacity": 0.78 });
+      }
+    });
+    return true;
+  }
+
+  function renderRouletteRadial(group, variant, marks) {
+    const weights = [0.24, 0.19, 0.17, 0.14, 0.11, 0.08, 0.07];
+    let cursor = -Math.PI / 2;
+    weights.forEach((weight, index) => {
+      const next = cursor + Math.PI * 2 * weight;
+      addPath(group, arcPath(180, 110, 24, 72, cursor, next - 0.02), {
+        class: "semantic-radial-wheel-slice",
+        fill: radialPaint(marks, index, [palette.blue, palette.green, palette.orange, palette.purple, palette.red][index % 5]),
+        "fill-opacity": 0.72,
+        stroke: palette.surface,
+        "stroke-width": 1
+      });
+      cursor = next;
+    });
+    addPolygon(group, [[180, 28], [172, 45], [188, 45]], { class: "semantic-radial-pointer", fill: palette.red });
+    addCircle(group, 180, 110, 23, { class: "semantic-radial-center", fill: palette.surface, stroke: palette.ink, "stroke-width": 1.6 });
+    appendText(group, 180, 114, tokenLabel(variant, "token"), { "text-anchor": "middle", "font-size": 8, "font-weight": 800, fill: palette.ink });
+    return true;
+  }
+
+  function renderMoonRadial(group, variant) {
+    addCircle(group, 180, 110, 62, { class: "semantic-radial-orbit", fill: "none", stroke: palette.softLine, "stroke-width": 1.2 });
+    Array.from({ length: 8 }, (_, index) => {
+      const angle = -Math.PI / 2 + index * Math.PI * 2 / 8;
+      const [x, y] = polarPoint(180, 110, 62, angle);
+      addCircle(group, x, y, 11, { class: "semantic-moon-disc", fill: palette.yellowHighlight, stroke: palette.line, "stroke-width": 1 });
+      addCircle(group, x + (index - 3.5) * 1.6, y, 11, { class: "semantic-moon-shadow", fill: palette.surface, "fill-opacity": 0.88, stroke: "none" });
+    });
+    addCircle(group, 180, 110, 18, { class: "semantic-radial-center", fill: palette.blueHighlight, stroke: palette.blue, "stroke-width": 1.6 });
+    return true;
+  }
+
+  function renderClockRadial(group, variant, marks) {
+    addCircle(group, 180, 110, 70, { class: "semantic-clock-face", fill: palette.surface, stroke: palette.line, "stroke-width": 1.5 });
+    Array.from({ length: 12 }, (_, index) => {
+      const angle = -Math.PI / 2 + index * Math.PI * 2 / 12;
+      const a = polarPoint(180, 110, 58, angle);
+      const b = polarPoint(180, 110, 67, angle);
+      addLine(group, a[0], a[1], b[0], b[1], { class: "semantic-clock-tick", stroke: index % 3 === 0 ? palette.ink : palette.line, "stroke-width": index % 3 === 0 ? 1.8 : 1 });
+    });
+    addPath(group, arcPath(180, 110, 46, 53, -Math.PI / 2, Math.PI * 0.72), { class: "semantic-clock-progress", fill: radialPaint(marks, 0, palette.blue), "fill-opacity": 0.68, stroke: "none" });
+    addLine(group, 180, 110, 180, 60, { class: "semantic-clock-hand", stroke: palette.red, "stroke-width": 2.4, "stroke-linecap": "round" });
+    addLine(group, 180, 110, 222, 123, { class: "semantic-clock-hand", stroke: palette.ink, "stroke-width": 1.7, "stroke-linecap": "round" });
+    addCircle(group, 180, 110, 5, { class: "semantic-clock-hub", fill: palette.red, stroke: palette.surface, "stroke-width": 1 });
+    return true;
+  }
+
+  function renderOrbitRadial(group, variant, marks) {
+    const rings = /rope|solar/.test(variant.sourceId) ? [28, 45, 62, 78] : [32, 52, 73];
+    rings.forEach((radius, index) => {
+      addCircle(group, 180, 110, radius, { class: "semantic-orbit-ring", fill: "none", stroke: index % 2 ? palette.blue : palette.line, "stroke-width": index % 2 ? 1.3 : 1, "stroke-opacity": 0.62 });
+      const angle = -Math.PI / 2 + seededUnit(variant, index) * Math.PI * 2;
+      const [x, y] = polarPoint(180, 110, radius, angle);
+      addCircle(group, x, y, index === 0 ? 6.5 : 5, { class: "semantic-orbit-body", fill: radialPaint(marks, index, palette.orange), stroke: palette.surface, "stroke-width": 1.2 });
+    });
+    addCircle(group, 180, 110, 14, { class: "semantic-orbit-center", fill: palette.yellowHighlight, stroke: palette.orange, "stroke-width": 1.6 });
+    return true;
+  }
+
+  function renderRadarRadial(group, variant, marks) {
+    const count = 7;
+    [28, 48, 68].forEach(radius => {
+      const ring = Array.from({ length: count }, (_, index) => polarPoint(180, 110, radius, -Math.PI / 2 + index * Math.PI * 2 / count));
+      addPolygon(group, ring, { class: "semantic-radar-ring", fill: "none", stroke: palette.softLine, "stroke-width": 1 });
+    });
+    const profile = Array.from({ length: count }, (_, index) => {
+      const radius = 36 + seededRange(variant, index, 0, 34);
+      const angle = -Math.PI / 2 + index * Math.PI * 2 / count;
+      const point = polarPoint(180, 110, radius, angle);
+      addLine(group, 180, 110, ...polarPoint(180, 110, 72, angle), { class: "semantic-radar-spoke", stroke: palette.line, "stroke-width": 0.9 });
+      return point;
+    });
+    addPolygon(group, profile, { class: "semantic-radar-profile", fill: radialPaint(marks, 0, palette.blue), "fill-opacity": 0.28, stroke: palette.red, "stroke-width": 2 });
+    profile.forEach((point, index) => addCircle(group, point[0], point[1], 3.4, { class: "semantic-radar-point", fill: radialPaint(marks, index, palette.blue), stroke: palette.surface, "stroke-width": 0.8 }));
+    return true;
+  }
+
+  function renderGlobeRadial(group, variant, marks) {
+    addCircle(group, 180, 110, 68, { class: "semantic-globe-disc", fill: palette.blueHighlight, "fill-opacity": 0.44, stroke: palette.blue, "stroke-width": 1.5 });
+    [-36, 0, 36].forEach(offset => {
+      addPath(group, `M${180 + offset} 45 C${180 + offset * 0.25} 82 ${180 + offset * 0.25} 138 ${180 + offset} 175`, { class: "semantic-globe-meridian", fill: "none", stroke: palette.line, "stroke-width": 1, "stroke-opacity": 0.72 });
+    });
+    addPath(group, "M136 64 C168 86 196 126 224 158 C202 174 160 166 132 138 C116 111 118 83 136 64", {
+      class: "semantic-globe-terminator",
+      fill: /terminator|shading/.test(variant.sourceId) ? palette.ink : radialPaint(marks, 0, palette.green),
+      "fill-opacity": /terminator|shading/.test(variant.sourceId) ? 0.16 : 0.28,
+      stroke: "none"
+    });
+    addCircle(group, 210, 78, 5, { class: "semantic-globe-mark", fill: palette.red, stroke: palette.surface, "stroke-width": 1 });
+    addCircle(group, 151, 133, 4, { class: "semantic-globe-mark", fill: palette.orange, stroke: palette.surface, "stroke-width": 1 });
+    return true;
+  }
+
+  function renderRadialBars(group, variant, marks) {
+    const count = /burtin|antibiotics/.test(variant.sourceId) ? 16 : 12;
+    for (let index = 0; index < count; index += 1) {
+      const start = -Math.PI / 2 + index * Math.PI * 2 / count;
+      const value = 24 + seededRange(variant, index, 0, 36);
+      addPath(group, arcPath(180, 110, 32, 32 + value, start, start + Math.PI * 1.55 / count), {
+        class: "semantic-radial-bar",
+        fill: radialPaint(marks, index, [palette.blue, palette.green, palette.orange, palette.purple][index % 4]),
+        "fill-opacity": 0.74,
+        stroke: palette.surface,
+        "stroke-width": 0.8
+      });
+    }
+    addCircle(group, 180, 110, 22, { class: "semantic-radial-center", fill: palette.surface, stroke: palette.line, "stroke-width": 1.2 });
+    return true;
+  }
+
+  function renderSpecializedRadial(group, variant, marks, paths, circles) {
+    if (/chord/.test(variant.sourceId)) return renderChordRadial(group, variant, marks);
+    if (/roulette/.test(variant.sourceId)) return renderRouletteRadial(group, variant, marks);
+    if (/moon/.test(variant.sourceId)) return renderMoonRadial(group, variant);
+    if (/clock/.test(variant.sourceId)) return renderClockRadial(group, variant, marks);
+    if (/orbit|exoplanet|rope|solar-path/.test(variant.sourceId)) return renderOrbitRadial(group, variant, marks);
+    if (/radar/.test(variant.sourceId)) return renderRadarRadial(group, variant, marks);
+    if (/orthographic|terminator/.test(variant.sourceId)) return renderGlobeRadial(group, variant, marks);
+    if (/burtin|antibiotics|bar|polar|area|stacked/.test(variant.sourceId)) return renderRadialBars(group, variant, marks);
+    return false;
+  }
+
   function renderSemanticRadialVariant(svg, variant) {
     if (variant.renderer !== "radial") return false;
     if (!["radial-rosette", "balance-symmetry"].includes(variant.compositionId)) return false;
@@ -1774,6 +2851,7 @@
       "data-recomposition-mode": `semantic-radial-${variant.compositionId}`,
       "data-source-radial-mark-count": marks.length
     }));
+    if (renderSpecializedRadial(group, variant, marks, paths, circles)) return true;
     const count = clamp(Math.max(marks.length, 6), 6, 18);
     for (let index = 0; index < count; index += 1) {
       const source = marks[index % marks.length];
@@ -1819,6 +2897,68 @@
     return titleWords(sourceForVariant({ sourceId: sourceSvg.id })).map((word, index) => ({ text: word, index }));
   }
 
+  function renderGoldenHierarchy(group, variant, labels) {
+    const trunk = (labels.length ? labels : Array.from({ length: 8 }, (_, index) => ({ text: tokenLabel(variant, "node", index) }))).slice(0, 8);
+    const nodes = [
+      [86, 58, 62, 22, 0],
+      [62, 104, 56, 20, 1],
+      [142, 104, 56, 20, 2],
+      [84, 148, 52, 18, 3],
+      [164, 148, 52, 18, 4]
+    ];
+    addLine(group, 86, 80, 62, 94, { class: "semantic-hierarchy-link", stroke: palette.line, "stroke-width": 1.3 });
+    addLine(group, 86, 80, 142, 94, { class: "semantic-hierarchy-link", stroke: palette.line, "stroke-width": 1.3 });
+    addLine(group, 142, 124, 84, 139, { class: "semantic-hierarchy-link", stroke: palette.line, "stroke-width": 1.1 });
+    addLine(group, 142, 124, 164, 139, { class: "semantic-hierarchy-link", stroke: palette.line, "stroke-width": 1.1 });
+    nodes.forEach((node, index) => {
+      addRect(group, node[0] - node[2] / 2, node[1] - node[3] / 2, node[2], node[3], {
+        class: "semantic-hierarchy-node semantic-golden-root-node",
+        rx: index === 0 ? 8 : 5,
+        fill: index === 0 ? palette.blueHighlight : palette.surface,
+        stroke: index === 0 ? palette.blue : palette.softLine,
+        "stroke-width": index === 0 ? 1.4 : 1
+      });
+      appendText(group, node[0], node[1] + 3, trunk[node[4]]?.text || tokenLabel(variant, "node", index), {
+        class: "semantic-hierarchy-label",
+        "text-anchor": "middle",
+        "font-size": 6.2,
+        "font-weight": 800,
+        fill: palette.ink
+      });
+    });
+    trunk.slice(5, 8).forEach((label, index) => {
+      const y = 60 + index * 34;
+      addRect(group, 238, y - 12, 76, 24, {
+        class: "semantic-hierarchy-node semantic-golden-context-card",
+        rx: 6,
+        fill: index === 0 ? palette.yellowHighlight : palette.surface,
+        stroke: index === 0 ? palette.orange : palette.softLine,
+        "stroke-width": index === 0 ? 1.2 : 1
+      });
+      addRect(group, 294, y - 3, 8 + seededRange(variant, index + 1500, 4, 16), 5, {
+        class: "semantic-hierarchy-node semantic-golden-context-metric",
+        rx: 2.5,
+        fill: [palette.green, palette.orange, palette.purple][index % 3],
+        "fill-opacity": 0.6,
+        stroke: "none"
+      });
+      appendText(group, 246, y + 3, label.text || tokenLabel(variant, "context", index), {
+        class: "semantic-hierarchy-label",
+        "font-size": 6.3,
+        "font-weight": 800,
+        fill: palette.ink
+      });
+      addPath(group, `M190 ${92 + index * 20} C214 ${92 + index * 20}, 218 ${y}, 238 ${y}`, {
+        class: "semantic-hierarchy-link",
+        fill: "none",
+        stroke: palette.line,
+        "stroke-width": 1,
+        "stroke-opacity": 0.52
+      });
+    });
+    return true;
+  }
+
   function renderSemanticHierarchyVariant(svg, variant) {
     if (variant.renderer !== "hierarchy") return false;
     if (!["radial-rosette", "golden-root", "thirds-fifths-grid"].includes(variant.compositionId)) return false;
@@ -1848,28 +2988,8 @@
         appendText(group, x, y + (Math.sin(angle) > 0.65 ? 20 : -13), label.text, { "text-anchor": "middle", "font-size": 6.7, "font-weight": 800, fill: palette.ink, stroke: palette.surface, "stroke-width": 2, "paint-order": "stroke" });
       });
     } else if (variant.compositionId === "golden-root") {
-      const trunk = labels.slice(0, 5);
-      trunk.forEach((label, index) => {
-        const x = 70 + index * 34;
-        const y = 62 + index * 20;
-        if (index > 0) addLine(group, 70 + (index - 1) * 34, 62 + (index - 1) * 20, x, y, { stroke: palette.line, "stroke-width": 1.3 });
-        addRect(group, x - 22, y - 10, 44, 20, { rx: 5, fill: index === 0 ? palette.blueHighlight : palette.surface, stroke: palette.blue, "stroke-width": 1.3 });
-        appendText(group, x, y + 3, label.text, { "text-anchor": "middle", "font-size": 6.7, "font-weight": 800, fill: palette.ink });
-      });
-      const context = labels.slice(5, 10);
-      const contextRows = (context.length ? context : labels.slice(1, 6)).concat(
-        Array.from({ length: 5 }, (_, index) => ({ text: tokenLabel(variant, "branch", index + 1) }))
-      ).slice(0, 5);
-      contextRows.forEach((label, index) => {
-        addRect(group, 246, 54 + index * 22, 68, 16, { rx: 4, fill: palette.surface, stroke: palette.softLine });
-        addRect(group, 292, 59 + index * 22, 8 + ((hashString(`${variant.sourceId}:hierarchy:${index}`) % 16)), 3.5, {
-          rx: 1.8,
-          fill: [palette.blue, palette.green, palette.orange, palette.purple, palette.red][index % 5],
-          "fill-opacity": 0.52,
-          stroke: "none"
-        });
-        appendText(group, 280, 65 + index * 22, label.text, { "text-anchor": "middle", "font-size": 6.5, "font-weight": 800, fill: palette.muted });
-      });
+      if (/treemap/.test(variant.sourceId)) renderGoldenTreemap(group, variant, sourceRectMarks(sourceSvg, 12), labels);
+      else renderGoldenHierarchy(group, variant, labels);
     } else {
       labels.slice(0, 12).forEach((label, index) => {
         const col = index % 4;

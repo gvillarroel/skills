@@ -56,8 +56,9 @@ Do not use fit tiers or fit badges. Keep only variants that are useful for the s
 3. Preserve the source pattern's semantic meaning by faithfully recreating the rendered base SVG marks. When a target composition requires it, re-layout those marks, links, labels, and groups instead of only rotating, scaling, or placing composition indicators over the original SVG.
 4. Keep the preview SVG nonblank and specific enough to evaluate the composition without opening the base gallery. Do not draw borders, guide lines, or direction cues unless they are source-derived marks, label leaders, route paths, process links, or another narrative element.
 5. Keep the base pattern link intact so the source `d3-pattern-*` ID remains reachable.
-6. Validate after changes:
+6. Order published variants by curated visual diversity, not source ID. The first visible row of each sheet should mix renderer families or narrative structures when possible, such as route plus flow plus chart for diagonal, or treemap plus probability plus hierarchy for golden/root.
+7. Validate after changes:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 180 --expected-reviewed-patterns 218 --required-variant d3-composition-radial-rosette-force-network --expect-clean
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 70 --expected-reviewed-patterns 219 --required-variant d3-composition-radial-rosette-force-network --expect-clean
 ```

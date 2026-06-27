@@ -7,6 +7,7 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | Pattern ID | Family | Title | Pattern Reference |
 | --- | --- | --- | --- |
 | `d3-pattern-force-network` | Simulation | Force Network | `references/patterns/force-network.md` |
+| `d3-pattern-category-burst` | Network | Category Burst | `references/patterns/category-burst.md` |
 | `d3-pattern-radial-hierarchy` | Hierarchy | Radial Hierarchy | `references/patterns/radial-hierarchy.md` |
 | `d3-pattern-beeswarm` | Distribution | Beeswarm | `references/patterns/beeswarm.md` |
 | `d3-pattern-sketchy-beeswarm` | Sketchy | Sketchy Beeswarm | `references/patterns/sketchy-beeswarm.md` |

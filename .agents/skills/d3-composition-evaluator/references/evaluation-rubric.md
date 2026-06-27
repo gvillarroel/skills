@@ -56,6 +56,8 @@ For gallery-level composition sheets, prefer `scripts/evaluate_composition_varia
 
 The evaluator should resolve rendered transforms before extracting mark centers. Use the JSON output for regression checks and the generated worst-score screenshots for visual calibration. Do not rely on scores alone when a score conflicts with obvious visual evidence.
 
+When evaluating galleries with replay or entrance animation, score the settled frame after the active tab has finished animating. Measuring immediately after a tab change can undercount source-derived marks that are still transparent and produce false composition failures.
+
 ## Reporting
 
 Report findings in this order:

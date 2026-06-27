@@ -309,7 +309,7 @@ async ({ onlyIds }) => {
   const rows = [];
   for (const sheet of sheets) {
     document.querySelector(`[data-sheet-tab="${cssEscape(sheet.id)}"]`)?.click();
-    await sleep(80);
+    await sleep(1500);
     for (const row of Array.from(document.querySelectorAll(`.composition-card[data-composition-id="${cssEscape(sheet.id)}"]`))) {
       const variantId = row.dataset.compositionPatternId || "";
       if (!shouldKeep(variantId)) continue;
@@ -1064,7 +1064,7 @@ def capture_samples(page: Any, variants: list[dict[str, Any]], output_dir: Path,
     selected = selected[: max(0, limit)]
     for item in selected:
         page.locator(f'[data-sheet-tab="{item["compositionId"]}"]').click()
-        page.wait_for_timeout(80)
+        page.wait_for_timeout(1500)
         card = page.locator(f'[data-composition-pattern-id="{item["id"]}"]').first
         path = output_dir / f"{item['id']}.png"
         card.screenshot(path=path)
