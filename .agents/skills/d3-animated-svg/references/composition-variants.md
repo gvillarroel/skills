@@ -10,6 +10,8 @@ Composition variants are visual-first examples that show how an existing D3 patt
 - `d3-composition-diagonal-armature-force-network`
 - `d3-composition-radial-rosette-force-network`
 
+Target selection must pass a narrative-fit gate before a geometry-fit gate. Do not publish a variant merely because the marks can be moved onto balance axes, a diagonal, a grid, or a ring. Publish it only when the composition clarifies the source story: comparison, route/change, dominant artifact plus context, modular repetition, real center/cycle, source-to-output handoff, or dense-label readability. If no target passes, keep the source pattern reviewed and record a `rejectedReason` instead of forcing a weak card.
+
 ## Variant Record
 
 Each generated record in `composition-sheets.js` uses:
@@ -24,7 +26,9 @@ Each generated record in `composition-sheets.js` uses:
 - `recipe`: one-sentence recomposition instruction.
 - `armatureLines`: the composition lines used by the target.
 - `quadrants`: how the target composition uses Q1-Q4 or equivalent fields.
+- `reason`: visible narrative-fit rationale for why this source belongs in that composition.
 - `reviewed`: `true` after the source pattern has passed the per-pattern review.
+- `rejectedReason`: for reviewed source patterns with no publishable target.
 - `id`: generated as `d3-composition-${compositionId}-${sourceId}`.
 
 Each card renders an inline SVG preview and exposes:
@@ -37,6 +41,7 @@ Each card renders an inline SVG preview and exposes:
 - `data-armature-lines`
 - `data-quadrants`
 - `data-reviewed`
+- preview SVG `data-narrative-fit`
 
 Each preview SVG must expose the same composition/source attributes, include visible `.composition-line` guides, at least four `.quadrant-field` regions, a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` group that ties the optimized variant back to the original source pattern. Published cards must use a semantic recomposition mode such as `semantic-network-*`, `semantic-flow-*`, or `semantic-grid-*`; source-clone fallback and `.source-adaptation-cues` overlays are not publishable examples.
 
@@ -45,7 +50,7 @@ Do not use fit tiers or fit badges. Keep only variants that are useful for the s
 ## Maintenance Rules
 
 1. Review every current source pattern before publishing the sheets.
-2. Add a target only when the source pattern can visibly express the target armature.
+2. Add a target only when the source pattern can visibly express the target armature and the armature improves the narrative. For example, an airport or route pattern can use diagonal direction only if relative place spacing remains meaningful; do not turn spatial locations into equal-distance stations unless the data says they are equal.
 3. Preserve the source pattern's semantic meaning by faithfully recreating the rendered base SVG marks. When a target composition requires it, re-layout those marks, links, labels, and groups instead of only rotating, scaling, or placing composition indicators over the original SVG.
 4. Keep the preview SVG nonblank and specific enough to evaluate the composition without opening the base gallery.
 5. Keep the base pattern link intact so the source `d3-pattern-*` ID remains reachable.

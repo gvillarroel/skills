@@ -206,6 +206,7 @@
   function inferPatternKind(source) {
     const id = source.id || "";
     const family = `${source.kicker || ""} ${source.title || ""}`.toLowerCase();
+    if (/airport/.test(family) || /airport/.test(id)) return "geospatial";
     if (/table|kanban|scorecard|document|gemma/.test(family) || /table|kanban|document|gemma/.test(id)) return "table";
     if (/matrix|heatmap|calendar|waffle|context|attention|correlogram|rectbin|tile|matmul/.test(family) || /matrix|calendar|waffle|context|attention|matmul/.test(id)) return "matrix";
     if (/\boverlap\b|\bvenn\b/.test(family) || /overlap|venn|circle-rosette|circle-chain|circle-cluster|circle-bridge|three-circle|five-circle|seven-circle/.test(id)) return "set-overlap";
@@ -268,6 +269,267 @@
     return { compositionId, renderer, reason, ...details };
   }
 
+  function sourceNarrativeText(source, kind) {
+    return [
+      source.id,
+      source.kicker,
+      source.title,
+      source.copy,
+      kind
+    ].filter(Boolean).join(" ").toLowerCase();
+  }
+
+  function addNarrativeTargets(source, kind, add) {
+    const id = source.id || "";
+    const text = sourceNarrativeText(source, kind);
+    const is = (...ids) => ids.includes(id);
+    const has = regex => regex.test(id) || regex.test(text);
+
+    if (is(
+      "force-network",
+      "beeswarm",
+      "sketchy-beeswarm",
+      "boxplot",
+      "violin",
+      "mirrored-beeswarm",
+      "population-pyramid",
+      "diverging-stack",
+      "gemma-comparison",
+      "sketchy-gemma-comparison",
+      "projection-comparison",
+      "tanglegram",
+      "vaccine-impact",
+      "binary-classifier",
+      "binary-classifier-labeled"
+    )) {
+      add("balance-symmetry", "scatter", "the story is comparative, so the composition should expose counterweight across the center");
+    }
+    if (is(
+      "asymmetric-task-overlap",
+      "venn-three-circle",
+      "venn-five-overlap",
+      "venn-seven-overlap",
+      "asymmetric-three-circle-chain",
+      "asymmetric-five-circle-cluster",
+      "asymmetric-seven-circle-bridge"
+    )) {
+      add("balance-symmetry", "set-overlap", "overlap strength is judged by visible mass on both sides of the shared center");
+    }
+    if (is("symmetric-three-circle-rosette", "symmetric-five-circle-rosette", "symmetric-seven-circle-flower")) {
+      add("balance-symmetry", "set-overlap", "equal peer sets need stable quadrant weight before the shared center can read clearly");
+      add("radial-rosette", "set-overlap", "equal peer sets have a real orbital center instead of a forced decorative circle");
+    }
+    if (is("chord", "directed-chord")) {
+      add("balance-symmetry", "radial", "reciprocal ribbons need quadrant balance so dominant exchanges do not visually collapse to one side");
+    }
+    if (is("parallel-coordinates", "ternary", "point-range", "bullet")) {
+      add("balance-symmetry", "scatter", "the marks compare opposing ranges, targets, or mixtures around a central decision line");
+    }
+
+    if (is(
+      "connected-scatter",
+      "sketchy-line-chart",
+      "slope",
+      "bump",
+      "waterfall",
+      "event-cascade",
+      "difference-chart",
+      "moving-average",
+      "index-chart",
+      "forecast-fan",
+      "line-missing-data",
+      "area-missing-data",
+      "variable-color-line",
+      "line-cursor",
+      "you-draw-it",
+      "bar-race",
+      "logit-lens-rank-bump",
+      "web-load-timeline",
+      "marey-trains"
+    )) {
+      add("diagonal-armature", "scatter", "the reading path is a change over time or rank, so diagonal rise/fall clarifies direction");
+    }
+    if (is("geo-route", "world-tour", "satellite-projection", "solar-path")) {
+      add("diagonal-armature", "route", "the spatial path has an origin and destination, so the diagonal can carry travel direction");
+    }
+    if (is("airports-voronoi")) {
+      add("diagonal-armature", "route", "airport points keep relative spacing while the diagonal reads as near-to-far service reach");
+    }
+    if (is("freehand-trace", "ai-line-writing", "pen-curve-study", "path-tween", "arc-tween")) {
+      add("diagonal-armature", "flow", "the motion trace has a natural handoff direction that benefits from a visible ascent");
+    }
+    if (is("critical-path", "attention-arc-decoding", "qkv-projection-flow", "token-boxes-to-context-window")) {
+      add("diagonal-armature", "flow", "the component already describes staged transformation, so the diagonal can show escalation toward output");
+    }
+
+    if (is(
+      "document-token-quality",
+      "document-token-quality-red",
+      "document-token-extraction-buckets",
+      "agent-loop-partial-covers",
+      "gemma-comparison",
+      "sketchy-gemma-comparison",
+      "inline-bar-table",
+      "column-profile-table",
+      "focus-context",
+      "hierarchical-bars",
+      "treemap",
+      "sketchy-treemap",
+      "circle-pack",
+      "tidy-tree",
+      "cluster-dendrogram",
+      "tangled-tree",
+      "tangled-tree-levels",
+      "token-probability-sampler",
+      "temperature-softmax",
+      "nucleus-sampling",
+      "logit-lens-rank-bump",
+      "candlestick",
+      "bollinger-bands"
+    )) {
+      add("golden-root", has(/tree|treemap|pack|dendrogram|tangle/) ? "hierarchy" : kind === "table" ? "table" : "matrix", "one dominant artifact needs a smaller context field for explanation, legend, or comparison");
+    }
+
+    if (is(
+      "adjacency-matrix",
+      "data-table-grid",
+      "inline-bar-table",
+      "pivot-heat-table",
+      "sortable-rank-table",
+      "sparkline-table",
+      "column-profile-table",
+      "document-token-extraction-buckets",
+      "d3-er-schema",
+      "d3-kanban-board",
+      "kanban-assignee-board",
+      "kanban-assignee-virtual-legend",
+      "kanban-assignee-distributed-legend",
+      "calendar",
+      "calendar-year",
+      "waffle",
+      "context-window-matrix",
+      "attention-matrix-tiles",
+      "flashattention-blocks",
+      "matmul-tile-accumulation",
+      "scaled-dot-product-attention",
+      "multi-head-attention-merge",
+      "paged-kv-cache",
+      "tile-choropleth",
+      "facets",
+      "scatterplot-matrix",
+      "bivariate-choropleth",
+      "projection-comparison",
+      "sized-donut-multiples",
+      "correlogram-histogram",
+      "rectbin-density",
+      "hierarchical-bars",
+      "stacked-grouped-bars",
+      "dot-plot",
+      "lollipop",
+      "bar-race",
+      "marimekko"
+    )) {
+      add("thirds-fifths-grid", kind === "table" ? "table" : "matrix", "the information is modular, so rows, columns, and repeated panels carry the message better than a free layout");
+    }
+
+    if (is(
+      "radial-hierarchy",
+      "sunburst",
+      "chord",
+      "directed-chord",
+      "circular-bar",
+      "radar",
+      "polar-area",
+      "token-roulette-sampler",
+      "rope-position-rotation",
+      "radial-stacked-bars",
+      "polar-clock",
+      "moon-phases",
+      "radial-area",
+      "burtin-antibiotics",
+      "exoplanet-orbits",
+      "epicyclic-gearing",
+      "orthographic-shading",
+      "solar-terminator",
+      "solar-path"
+    )) {
+      add("radial-rosette", has(/hierarchy|sunburst/) ? "hierarchy" : "radial", "the base pattern has a real center, cycle, orbit, or spoke relationship");
+    }
+    if (is("embedding-neighborhood", "cluster-hulls", "force-network", "temporal-network")) {
+      add("radial-rosette", "network", "a hub-and-neighborhood story can use rings to separate core, peers, and outliers");
+    }
+
+    if (is(
+      "sankey",
+      "alluvial",
+      "parallel-sets",
+      "d3-flowchart-dag",
+      "d3-sequence-lifelines",
+      "d3-state-machine",
+      "d3-gantt-rollout",
+      "d3-git-graph",
+      "d3-user-journey",
+      "flow-tokens",
+      "token-boxes-to-context-window",
+      "token-probability-sampler",
+      "temperature-softmax",
+      "nucleus-sampling",
+      "attention-routing",
+      "attention-arc-decoding",
+      "qkv-projection-flow",
+      "moe-router-capacity",
+      "speculative-decoding-verify",
+      "scaled-dot-product-attention",
+      "multi-head-attention-merge",
+      "residual-rmsnorm-stream",
+      "swiglu-feed-forward",
+      "kv-cache-growth",
+      "paged-kv-cache",
+      "web-load-timeline",
+      "event-cascade",
+      "critical-path",
+      "mlp-simple",
+      "deep-learning-model-execution",
+      "mlp-internals",
+      "binary-classifier",
+      "binary-classifier-labeled"
+    )) {
+      add("flow-spine", "flow", "the marks describe a source-to-transform-to-output chain, so branches should return to a readable spine");
+    }
+
+    if (is(
+      "asymmetric-task-overlap-saturated",
+      "bubble-scatter",
+      "point-cloud",
+      "contours",
+      "hexbin",
+      "embedding-neighborhood",
+      "dorling",
+      "quadtree-search",
+      "geofence-join",
+      "isoline-terrain",
+      "pen-label-optimizer",
+      "word-cloud",
+      "voronoi-stippling",
+      "pocket-monster-stippling",
+      "tissot-indicatrix",
+      "star-map",
+      "spike-map",
+      "bubble-map",
+      "volcano-contours",
+      "hr-diagram",
+      "hexbin-map",
+      "airports-voronoi",
+      "occlusion-labels",
+      "non-contiguous-cartogram",
+      "tile-choropleth",
+      "parallel-coordinates",
+      "scatterplot-tour"
+    )) {
+      add("dense-label-lanes", "lanes", "the composition problem is mark density, so labels and callouts need external lanes without moving the data field");
+    }
+  }
+
   function reviewPatternForComposition(source) {
     const kind = inferPatternKind(source);
     const id = source.id;
@@ -279,46 +541,8 @@
       }
     };
 
-    if (kind === "network") {
-      add("balance-symmetry", "network", "cluster center of mass can be balanced");
-      add("diagonal-armature", "network", "links can become a directional bridge");
-      if (/force|temporal|voronoi|hulls|delaunay|quadtree/.test(id)) add("radial-rosette", "network", "neighbors can orbit a hub or query");
-    } else if (kind === "hierarchy") {
-      add("golden-root", "hierarchy", "dominant branch and context branch can be split");
-      add("radial-rosette", "hierarchy", "root and children can use rings/spokes");
-      add("thirds-fifths-grid", "hierarchy", "levels can align into modular bands");
-    } else if (kind === "flow") {
-      add("flow-spine", "flow", "stage order is inherent");
-      add("diagonal-armature", "flow", "handoffs can climb the major diagonal");
-      if (/matrix|blocks|attention/.test(id)) add("thirds-fifths-grid", "matrix", "blocks can snap to modules");
-    } else if (kind === "table" || kind === "matrix") {
-      add("thirds-fifths-grid", kind === "table" ? "table" : "matrix", "rows and cells benefit from modular tracks");
-      add("golden-root", kind === "table" ? "table" : "matrix", "metrics can dominate while notes sit in a context field");
-    } else if (kind === "set-overlap") {
-      add("balance-symmetry", "set-overlap", "circle mass needs quadrant balance");
-      if (/symmetric|rosette|flower|venn/.test(id)) add("radial-rosette", "set-overlap", "equal sets can orbit a shared center");
-      if (/saturated|asymmetric/.test(id)) add("dense-label-lanes", "lanes", "labels need lanes outside the overlap field");
-    } else if (kind === "radial") {
-      add("radial-rosette", "radial", "base pattern already has cyclic or spoke geometry");
-      if (/chord|directed|polar|circular|radial-stacked|roulette/.test(id)) add("balance-symmetry", "radial", "radial weights can be checked by quadrant");
-    } else if (kind === "geospatial") {
-      add("diagonal-armature", "route", "routes and projected paths can align to directional diagonals");
-      add("dense-label-lanes", "lanes", "map labels and callouts need margins");
-      if (/orthographic|satellite|terminator|world/.test(id)) add("radial-rosette", "radial", "globe views can use rings and center");
-    } else if (kind === "lanes") {
-      add("dense-label-lanes", "lanes", "text is the core readability problem");
-      add("thirds-fifths-grid", "table", "labels can become organized bands");
-    } else if (kind === "geometry") {
-      add("diagonal-armature", "flow", "motion or morph path can use the major diagonal");
-      add("radial-rosette", "radial", "curves or circular motion can orbit a center");
-    } else {
-      add("balance-symmetry", "scatter", "marks can be weighed by quadrant");
-      if (/connected|slope|line|path|route|bump|moving|index|difference|fan|cursor|cascade/.test(id)) add("diagonal-armature", "scatter", "trajectory can climb or cross a diagonal");
-      if (/histogram|bar|rank|dot|lollipop|calendar|facet|waffle/.test(id)) add("thirds-fifths-grid", "bar", "bins, ranks, or panels can snap to modules");
-      if (/scatter|point|cloud|density|hexbin|contour|star|hr|stippling|label/.test(id)) add("dense-label-lanes", "lanes", "dense marks need external labels");
-    }
-
-    if (!targets.length) add("balance-symmetry", "scatter", "fallback composition review");
+    addNarrativeTargets(source, kind, add);
+    const usefulTargets = targets.slice(0, /force-network|sankey|radial-hierarchy|asymmetric-task-overlap|airports-voronoi|token-boxes-to-context-window|gemma-comparison/.test(id) ? 3 : 2);
     return {
       sourceId: id,
       patternId: source.patternId || `d3-pattern-${id}`,
@@ -326,7 +550,8 @@
       family,
       kind,
       reviewed: true,
-      targets: targets.slice(0, /force-network|sankey|radial-hierarchy|asymmetric-task-overlap/.test(id) ? 3 : 2)
+      rejectedReason: usefulTargets.length ? "" : "No published composition target improved the base pattern narrative without distorting the data marks.",
+      targets: usefulTargets
     };
   }
 
@@ -1095,6 +1320,116 @@
     return `M${a[0]} ${a[1] + offset} C${(a[0] + b[0]) / 2} ${a[1] - 34 + offset}, ${(a[0] + b[0]) / 2} ${b[1] + 34 + offset}, ${b[0]} ${b[1] + offset}`;
   }
 
+  function renderSemanticGeospatialDiagonalVariant(svg, variant) {
+    if (variant.compositionId !== "diagonal-armature") return false;
+    if (variant.renderer !== "route" && variant.inferredKind !== "geospatial") return false;
+    const sourceSvg = sourceSvgForVariant(variant);
+    if (!sourceSvg) return false;
+    const marks = scatterSourceMarks(sourceSvg).slice(0, 64);
+    if (marks.length < 4) return false;
+    const frame = compositionSourceFrame(variant.compositionId);
+    addSourceField(svg, frame, variant.compositionId);
+    const group = svg.appendChild(el("g", {
+      class: "source-pattern-recomposition semantic-geospatial-diagonal-recomposition",
+      "data-source-svg-id": variant.sourceId,
+      "data-recomposition-mode": "semantic-geospatial-diagonal",
+      "data-source-mark-count": marks.length
+    }));
+    const start = { x: 48, y: 170 };
+    const end = { x: 312, y: 46 };
+    const dx = end.x - start.x;
+    const dy = end.y - start.y;
+    const length = Math.hypot(dx, dy);
+    const normal = { x: -dy / length, y: dx / length };
+    addPath(group, `M${start.x} ${start.y} C112 138, 220 96, ${end.x} ${end.y}`, {
+      class: "semantic-geo-distance-spine",
+      fill: "none",
+      stroke: palette.blue,
+      "stroke-width": 18,
+      "stroke-linecap": "round",
+      "stroke-opacity": 0.08
+    });
+    const layout = marks.map(mark => {
+      const spatialT = clamp(mark.normX * 0.68 + (1 - mark.normY) * 0.32, 0, 1);
+      const t = 0.05 + spatialT * 0.9;
+      const offset = (mark.normY - 0.5) * (marks.length > 34 ? 42 : 58) + seededRange(variant, mark.order + 720, -3, 3);
+      return {
+        ...mark,
+        distanceT: spatialT,
+        x: start.x + dx * t + normal.x * offset,
+        y: start.y + dy * t + normal.y * offset
+      };
+    });
+    const ordered = [...layout].sort((a, b) => a.distanceT - b.distanceT || a.order - b.order);
+    if (/route|tour|path|solar|satellite/.test(variant.sourceId)) {
+      const d = ordered.map((mark, index) => `${index ? "L" : "M"}${mark.x.toFixed(1)} ${mark.y.toFixed(1)}`).join(" ");
+      addPath(group, d, {
+        class: "semantic-geo-route",
+        fill: "none",
+        stroke: palette.red,
+        "stroke-width": 2.2,
+        "stroke-opacity": 0.52,
+        "stroke-linejoin": "round",
+        "stroke-linecap": "round"
+      });
+    } else {
+      ordered.forEach((mark, index) => {
+        if (index === 0) return;
+        const previous = ordered[index - 1];
+        const distanceGap = Math.hypot(mark.x - previous.x, mark.y - previous.y);
+        if (distanceGap > 76) return;
+        addLine(group, previous.x, previous.y, mark.x, mark.y, {
+          class: "semantic-geo-neighbor-distance",
+          stroke: palette.line,
+          "stroke-width": 0.9,
+          "stroke-opacity": 0.24,
+          "stroke-dasharray": "3 5"
+        });
+      });
+    }
+    layout.forEach(mark => {
+      const radius = clamp((mark.size || mark.radius || 7) * 0.26, 2.8, marks.length > 34 ? 5.4 : 7.8);
+      addLine(group, mark.x - normal.x * 14, mark.y - normal.y * 14, mark.x + normal.x * 14, mark.y + normal.y * 14, {
+        class: "semantic-geo-altitude-tick",
+        stroke: palette.line,
+        "stroke-width": 0.8,
+        "stroke-opacity": 0.22
+      });
+      addCircle(group, mark.x, mark.y, radius, {
+        class: "semantic-geo-mark",
+        fill: mark.fill || mark.stroke || palette.blue,
+        "fill-opacity": clamp(Number(mark.opacity) || 0.72, 0.34, 0.92),
+        stroke: mark.stroke === "none" ? palette.surface : mark.stroke,
+        "stroke-width": 1
+      });
+    });
+    const labels = visibleTextMarks(sourceSvg, 8);
+    const labelMarks = ordered.filter((_, index) => index % Math.max(1, Math.floor(ordered.length / 7)) === 0).slice(0, 7);
+    labelMarks.forEach((mark, index) => {
+      const label = labels[index]?.text || tokenLabel(variant, "place", index);
+      const side = index % 2 ? -1 : 1;
+      const lx = mark.x + normal.x * side * 24;
+      const ly = mark.y + normal.y * side * 24;
+      addLine(group, mark.x, mark.y, lx, ly, {
+        class: "semantic-geo-label-leader",
+        stroke: palette.blue,
+        "stroke-width": 0.9,
+        "stroke-opacity": 0.34
+      });
+      appendText(group, lx, ly + 2, label, {
+        class: "semantic-geo-label",
+        "text-anchor": side > 0 ? "start" : "end",
+        "font-size": 6.8,
+        "font-weight": 800,
+        fill: palette.ink,
+        stroke: palette.surface,
+        "stroke-width": 2.2,
+        "paint-order": "stroke"
+      });
+    });
+    return true;
+  }
+
   function renderSemanticFlowVariant(svg, variant) {
     if (!["flow", "route"].includes(variant.renderer) && !["flow", "geospatial", "geometry"].includes(variant.inferredKind)) return false;
     if (!["flow-spine", "diagonal-armature"].includes(variant.compositionId)) return false;
@@ -1755,6 +2090,7 @@
             <h3>${escapeHtml(title)}</h3>
             <p class="composition-id">${escapeHtml(variant.id)}</p>
             <p class="pattern-copy">${escapeHtml(variant.variantTitle)}</p>
+            <p class="reason-text">${escapeHtml(variant.reason || "Composition selected for semantic fit.")}</p>
             <p class="plan-text">${escapeHtml(variant.recipe)}</p>
             <p class="armature-meta">${escapeHtml(variant.armatureLines || "")}</p>
             <p class="quadrant-meta">${escapeHtml(variant.quadrants || "")}</p>
@@ -1780,10 +2116,11 @@
       svg.setAttribute("data-source-family", variant.sourceFamily || source.kicker || variant.kind);
       svg.setAttribute("data-armature-lines", variant.armatureLines || "");
       svg.setAttribute("data-quadrants", variant.quadrants || "");
+      svg.setAttribute("data-narrative-fit", variant.reason || "");
       svg.setAttribute("data-base-pattern-title", sourceTitle(source));
       svg.setAttribute("aria-labelledby", `${variant.id}-title ${variant.id}-desc`);
       svg.appendChild(el("title", { id: `${variant.id}-title` }, [textNode(`${source.title || variant.sourceId} ${variant.variantTitle}`)]));
-      svg.appendChild(el("desc", { id: `${variant.id}-desc` }, [textNode(`${variant.recipe} Lines: ${variant.armatureLines}. Quadrants: ${variant.quadrants}.`)]));
+      svg.appendChild(el("desc", { id: `${variant.id}-desc` }, [textNode(`${variant.reason || ""} ${variant.recipe} Lines: ${variant.armatureLines}. Quadrants: ${variant.quadrants}.`)]));
       addRect(svg, 8, 8, 344, 204, { rx: 8, fill: palette.surface, stroke: palette.softLine });
       addGuideLayer(svg, variant.compositionId);
       renderVariantMarks(svg, variant);
@@ -1851,6 +2188,10 @@
       return;
     }
     if (renderSemanticSetOverlapVariant(svg, variant)) {
+      addPatternSignature(svg, variant);
+      return;
+    }
+    if (renderSemanticGeospatialDiagonalVariant(svg, variant)) {
       addPatternSignature(svg, variant);
       return;
     }

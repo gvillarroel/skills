@@ -56,6 +56,8 @@ For dense patterns, improve the most structural anchors rather than every small 
 
 Use `assets/examples/d3-animated-svg/composition-sheets.html` when a user wants pages or sheets organized by composition type instead of visualization type. The sheet generator reviews every current source pattern from `window.D3_ANIMATED_SVG_EXAMPLES`, assigns only the useful target compositions for that pattern, and renders optimized variants with visible lines and quadrant use. Each sheet is a curated set of good SVG variants, not a repeated copy of the full D3 gallery. Only add a source pattern to a sheet when the pattern can express that composition clearly.
 
+Composition membership is a narrative decision before it is a geometry decision. Reject a target when it only proves that marks can be arranged on a guide. Keep the source pattern reviewed and record a rejection reason when no armature makes the data story clearer without distorting protected geometry.
+
 Current sheet IDs:
 
 - `balance-symmetry`: center axes, mirrored weight, and quadrant balance.
@@ -88,6 +90,7 @@ Each rendered card must include an inline SVG preview and expose:
 - `data-armature-lines`: the lines used to optimize the target composition.
 - `data-quadrants`: the quadrant roles used by the optimized variant.
 - `data-reviewed`: `true` after the pattern has been reviewed.
+- preview SVG `data-narrative-fit`: the visible reason the target composition helps the source story.
 
 Each inline SVG preview must include visible `.composition-line` elements, at least four `.quadrant-field` regions, a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` group that identifies the source pattern used for the recomposition. The composition must be carried by the recomposed source marks themselves; source-clone fallback and `.source-adaptation-cues` overlays are critique failures.
 
@@ -97,9 +100,10 @@ When adding a variant:
 
 1. Preserve the source pattern's data semantics.
 2. Start from the rendered source SVG geometry or a faithful extraction of its marks, then recompose the preview toward the sheet armature: center balance, diagonal movement, golden/root split, modular grid, radial rings, process spine, or label lanes.
-3. Render a nonblank SVG preview on the card so the composition can be visually inspected without opening the base gallery.
-4. Keep the base pattern link so the original `d3-pattern-*` ID remains discoverable.
-5. Search by the composition ID, source pattern ID, title, or role should reveal the card.
+3. For geospatial diagonal variants, preserve relative spacing between places and use diagonal height/direction to express route, reach, or distance; do not equalize airports or regions into generic stations.
+4. Render a nonblank SVG preview on the card so the composition can be visually inspected without opening the base gallery.
+5. Keep the base pattern link so the original `d3-pattern-*` ID remains discoverable.
+6. Search by the composition ID, source pattern ID, title, or role should reveal the card.
 
 Validate the sheets after adding, removing, or renaming D3 patterns:
 

@@ -9,6 +9,7 @@ Use this rubric to evaluate a rendered D3 or SVG pattern, composition variant, o
 - A composition variant uses `d3-composition-<composition-id>-<source-id>` as its stable ID.
 - The variant exposes enough metadata to trace it back to the base pattern, such as source example ID and `d3-pattern-*` ID.
 - The card shows the SVG preview directly; text-only cards are not sufficient for composition review.
+- If a reviewed source pattern is not published in any composition sheet, the review records an explicit rejection reason. Missing targets without a rejection reason are an audit failure.
 
 ## Composition Checks
 
@@ -16,6 +17,7 @@ Use this rubric to evaluate a rendered D3 or SVG pattern, composition variant, o
 - Ignore composition guides, quadrant fields, source signatures, hidden source caches, and explanatory overlays when measuring placement. These can satisfy a contract check, but they must not create the composition score.
 - Check where the focus components land against the intended attention points and armature lines. The primary question is placement: center, balance, diagonal proximity, grid track alignment, radial sector/ring placement, flow start/output positions, or lane/field separation.
 - Check how focus components relate to each other. Graph links, hierarchy branches, flow paths, and label leaders should align organically with the selected armature; unsupported or decorative connectors should not inflate the score.
+- Check the narrative fit before rewarding the geometry. A publishable composition should explain why that armature clarifies the source: comparison, route/change, dominant artifact plus context, modular repetition, real center/cycle, source-to-output handoff, or dense-label readability.
 - Balance and symmetry: primary masses counterweight across a center axis or central frame without dead corners.
 - Diagonal armature: source, transition, and outcome points form a readable diagonal or reciprocal diagonal path.
 - Golden/root split: the dominant visual field and supporting context field have clear proportional roles.

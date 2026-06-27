@@ -19,9 +19,11 @@ description: Recompose an existing D3 or SVG pattern into a requested compositio
 ## Gallery Variant Rules
 
 - Do not add every source pattern to every composition. Add only variants that work well for that armature.
+- Choose targets by narrative fit before geometric fit. The composition should make the source story clearer: comparison for balance, change or route distance for diagonal, dominant artifact plus context for golden/root, modular repetition for grid, real cycles or hubs for radial, handoffs for flow, and density/readability for label lanes.
 - Do not use `strong`, `support`, or other fit tiers. Curated membership means the variant is good enough to show.
 - Keep each card visual-first: the SVG preview should explain the composition before the text does.
 - If multiple variants share a source pattern, each variant must have a different composition-specific ID.
+- If a reviewed source pattern has no target that improves the story without distorting its data marks, record an explicit rejection reason instead of publishing a forced variant.
 
 ## Progressive Disclosure
 

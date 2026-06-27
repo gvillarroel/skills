@@ -47,9 +47,9 @@ async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns 
   if (missingReviews.length) {
     findings.push(`Patterns without composition review: ${missingReviews.slice(0, 8).join(", ")}.`);
   }
-  const weakReviews = reviews.filter(review => !review.reviewed || !Array.isArray(review.targets) || review.targets.length < 1);
+  const weakReviews = reviews.filter(review => !review.reviewed || !Array.isArray(review.targets) || (review.targets.length < 1 && !review.rejectedReason));
   if (weakReviews.length) {
-    findings.push(`Reviews without useful targets: ${weakReviews.slice(0, 8).map(review => review.sourceId).join(", ")}.`);
+    findings.push(`Reviews without useful targets or explicit rejection: ${weakReviews.slice(0, 8).map(review => review.sourceId).join(", ")}.`);
   }
   if (document.body.dataset.compositionSheetCount !== String(expectedSheets)) {
     findings.push(`Body composition sheet count is ${document.body.dataset.compositionSheetCount}.`);
