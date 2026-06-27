@@ -1341,14 +1341,6 @@
     const dy = end.y - start.y;
     const length = Math.hypot(dx, dy);
     const normal = { x: -dy / length, y: dx / length };
-    addPath(group, `M${start.x} ${start.y} C112 138, 220 96, ${end.x} ${end.y}`, {
-      class: "semantic-geo-distance-spine",
-      fill: "none",
-      stroke: palette.blue,
-      "stroke-width": 18,
-      "stroke-linecap": "round",
-      "stroke-opacity": 0.08
-    });
     const layout = marks.map(mark => {
       const spatialT = clamp(mark.normX * 0.68 + (1 - mark.normY) * 0.32, 0, 1);
       const t = 0.05 + spatialT * 0.9;
@@ -1372,29 +1364,9 @@
         "stroke-linejoin": "round",
         "stroke-linecap": "round"
       });
-    } else {
-      ordered.forEach((mark, index) => {
-        if (index === 0) return;
-        const previous = ordered[index - 1];
-        const distanceGap = Math.hypot(mark.x - previous.x, mark.y - previous.y);
-        if (distanceGap > 76) return;
-        addLine(group, previous.x, previous.y, mark.x, mark.y, {
-          class: "semantic-geo-neighbor-distance",
-          stroke: palette.line,
-          "stroke-width": 0.9,
-          "stroke-opacity": 0.24,
-          "stroke-dasharray": "3 5"
-        });
-      });
     }
     layout.forEach(mark => {
       const radius = clamp((mark.size || mark.radius || 7) * 0.26, 2.8, marks.length > 34 ? 5.4 : 7.8);
-      addLine(group, mark.x - normal.x * 14, mark.y - normal.y * 14, mark.x + normal.x * 14, mark.y + normal.y * 14, {
-        class: "semantic-geo-altitude-tick",
-        stroke: palette.line,
-        "stroke-width": 0.8,
-        "stroke-opacity": 0.22
-      });
       addCircle(group, mark.x, mark.y, radius, {
         class: "semantic-geo-mark",
         fill: mark.fill || mark.stroke || palette.blue,
@@ -1916,9 +1888,9 @@
       class: "source-pattern-field",
       rx: compositionId === "radial-rosette" ? 72 : 6,
       fill: "none",
-      stroke: palette.ink,
-      "stroke-width": 1.1,
-      "stroke-opacity": 0.28
+      stroke: "none",
+      "stroke-width": 0,
+      "stroke-opacity": 0
     });
   }
 
@@ -1996,14 +1968,7 @@
       "data-source-id": variant.sourceId,
       "data-source-family": variant.sourceFamily || source.kicker || variant.inferredKind || variant.kind
     }));
-    addRect(g, 16, 198, 108, 16, { rx: 4, fill: palette.surface, "fill-opacity": 0.86, stroke: palette.softLine });
-    appendText(g, 22, 208.5, tokenLabel(variant, "source"), { "font-size": 6.7, "font-weight": 800, fill: palette.muted });
     appendText(g, 18, 212, variant.sourceId, { "font-size": 1, opacity: 0, fill: palette.muted });
-    for (let index = 0; index < 6; index += 1) {
-      const height = 4 + Math.round(seededRange(variant, index + 20, 1, 8));
-      const color = [palette.blue, palette.orange, palette.green, palette.purple, palette.red][(hashString(variant.sourceId) + index) % 5];
-      addRect(g, 72 + index * 7, 211 - height, 4, height, { rx: 1, fill: color, "fill-opacity": 0.72, stroke: "none" });
-    }
   }
 
   function renderTabs() {
@@ -2092,8 +2057,6 @@
             <p class="pattern-copy">${escapeHtml(variant.variantTitle)}</p>
             <p class="reason-text">${escapeHtml(variant.reason || "Composition selected for semantic fit.")}</p>
             <p class="plan-text">${escapeHtml(variant.recipe)}</p>
-            <p class="armature-meta">${escapeHtml(variant.armatureLines || "")}</p>
-            <p class="quadrant-meta">${escapeHtml(variant.quadrants || "")}</p>
           </div>
           <a class="pattern-link" href="./index.html#${encodeURIComponent(patternId)}">Open base pattern</a>
         </article>
@@ -2120,9 +2083,8 @@
       svg.setAttribute("data-base-pattern-title", sourceTitle(source));
       svg.setAttribute("aria-labelledby", `${variant.id}-title ${variant.id}-desc`);
       svg.appendChild(el("title", { id: `${variant.id}-title` }, [textNode(`${source.title || variant.sourceId} ${variant.variantTitle}`)]));
-      svg.appendChild(el("desc", { id: `${variant.id}-desc` }, [textNode(`${variant.reason || ""} ${variant.recipe} Lines: ${variant.armatureLines}. Quadrants: ${variant.quadrants}.`)]));
-      addRect(svg, 8, 8, 344, 204, { rx: 8, fill: palette.surface, stroke: palette.softLine });
-      addGuideLayer(svg, variant.compositionId);
+      svg.appendChild(el("desc", { id: `${variant.id}-desc` }, [textNode(`${variant.reason || ""} ${variant.recipe}`)]));
+      addRect(svg, 8, 8, 344, 204, { rx: 8, fill: palette.surface, stroke: "none" });
       renderVariantMarks(svg, variant);
     });
   }

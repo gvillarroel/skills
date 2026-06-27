@@ -10,11 +10,12 @@ Use this rubric to evaluate a rendered D3 or SVG pattern, composition variant, o
 - The variant exposes enough metadata to trace it back to the base pattern, such as source example ID and `d3-pattern-*` ID.
 - The card shows the SVG preview directly; text-only cards are not sufficient for composition review.
 - If a reviewed source pattern is not published in any composition sheet, the review records an explicit rejection reason. Missing targets without a rejection reason are an audit failure.
+- Card previews should not rely on visible composition scaffolding. Visible guide lines, quadrant overlays, source-field borders, signature boxes, or direction cues are failures unless they are source-derived data marks, route paths, flow links, label leaders, or another narrative element.
 
 ## Composition Checks
 
 - Evaluate composition from the relevant source-derived components, not from every SVG primitive. Choose the focus set by pattern family: graph nodes plus links, grid/table cells, flow stations plus connectors, chart data marks, radial rings/segments, hierarchy nodes plus branches, and dense-label lane text plus leaders.
-- Ignore composition guides, quadrant fields, source signatures, hidden source caches, and explanatory overlays when measuring placement. These can satisfy a contract check, but they must not create the composition score.
+- Ignore composition guides, quadrant fields, source signatures, hidden source caches, and explanatory overlays when measuring placement. In card previews, visible guide overlays should be reported as visual defects instead of counted as composition evidence.
 - Check where the focus components land against the intended attention points and armature lines. The primary question is placement: center, balance, diagonal proximity, grid track alignment, radial sector/ring placement, flow start/output positions, or lane/field separation.
 - Check how focus components relate to each other. Graph links, hierarchy branches, flow paths, and label leaders should align organically with the selected armature; unsupported or decorative connectors should not inflate the score.
 - Check the narrative fit before rewarding the geometry. A publishable composition should explain why that armature clarifies the source: comparison, route/change, dominant artifact plus context, modular repetition, real center/cycle, source-to-output handoff, or dense-label readability.

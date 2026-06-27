@@ -43,7 +43,7 @@ Each card renders an inline SVG preview and exposes:
 - `data-reviewed`
 - preview SVG `data-narrative-fit`
 
-Each preview SVG must expose the same composition/source attributes, include visible `.composition-line` guides, at least four `.quadrant-field` regions, a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` group that ties the optimized variant back to the original source pattern. Published cards must use a semantic recomposition mode such as `semantic-network-*`, `semantic-flow-*`, or `semantic-grid-*`; source-clone fallback and `.source-adaptation-cues` overlays are not publishable examples.
+Each preview SVG must expose the same composition/source attributes, a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` metadata group that ties the optimized variant back to the original source pattern without adding visible decoration. Keep composition armature diagrams in the sheet overview or metadata, not inside each card preview. Published cards must use a semantic recomposition mode such as `semantic-network-*`, `semantic-flow-*`, or `semantic-grid-*`; source-clone fallback, `.source-adaptation-cues` overlays, visible `.composition-line` guides, `.quadrant-field` overlays, visible source-field borders, and visible signature boxes are not publishable examples.
 
 Do not use fit tiers or fit badges. Keep only variants that are useful for the selected composition.
 
@@ -52,7 +52,7 @@ Do not use fit tiers or fit badges. Keep only variants that are useful for the s
 1. Review every current source pattern before publishing the sheets.
 2. Add a target only when the source pattern can visibly express the target armature and the armature improves the narrative. For example, an airport or route pattern can use diagonal direction only if relative place spacing remains meaningful; do not turn spatial locations into equal-distance stations unless the data says they are equal.
 3. Preserve the source pattern's semantic meaning by faithfully recreating the rendered base SVG marks. When a target composition requires it, re-layout those marks, links, labels, and groups instead of only rotating, scaling, or placing composition indicators over the original SVG.
-4. Keep the preview SVG nonblank and specific enough to evaluate the composition without opening the base gallery.
+4. Keep the preview SVG nonblank and specific enough to evaluate the composition without opening the base gallery. Do not draw borders, guide lines, or direction cues unless they are source-derived marks, label leaders, route paths, process links, or another narrative element.
 5. Keep the base pattern link intact so the source `d3-pattern-*` ID remains reachable.
 6. Validate after changes:
 

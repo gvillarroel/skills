@@ -54,7 +54,7 @@ For dense patterns, improve the most structural anchors rather than every small 
 
 ## Composition Variant Sheets
 
-Use `assets/examples/d3-animated-svg/composition-sheets.html` when a user wants pages or sheets organized by composition type instead of visualization type. The sheet generator reviews every current source pattern from `window.D3_ANIMATED_SVG_EXAMPLES`, assigns only the useful target compositions for that pattern, and renders optimized variants with visible lines and quadrant use. Each sheet is a curated set of good SVG variants, not a repeated copy of the full D3 gallery. Only add a source pattern to a sheet when the pattern can express that composition clearly.
+Use `assets/examples/d3-animated-svg/composition-sheets.html` when a user wants pages or sheets organized by composition type instead of visualization type. The sheet generator reviews every current source pattern from `window.D3_ANIMATED_SVG_EXAMPLES`, assigns only the useful target compositions for that pattern, and renders optimized variants whose source-derived marks carry the composition. Each sheet is a curated set of good SVG variants, not a repeated copy of the full D3 gallery. Only add a source pattern to a sheet when the pattern can express that composition clearly.
 
 Composition membership is a narrative decision before it is a geometry decision. Reject a target when it only proves that marks can be arranged on a guide. Keep the source pattern reviewed and record a rejection reason when no armature makes the data story clearer without distorting protected geometry.
 
@@ -92,7 +92,7 @@ Each rendered card must include an inline SVG preview and expose:
 - `data-reviewed`: `true` after the pattern has been reviewed.
 - preview SVG `data-narrative-fit`: the visible reason the target composition helps the source story.
 
-Each inline SVG preview must include visible `.composition-line` elements, at least four `.quadrant-field` regions, a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` group that identifies the source pattern used for the recomposition. The composition must be carried by the recomposed source marks themselves; source-clone fallback and `.source-adaptation-cues` overlays are critique failures.
+Each inline SVG preview must include a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` metadata group that identifies the source pattern used for the recomposition without adding visible decoration. Keep armature diagrams in the sheet overview or hidden metadata. The card preview should not show `.composition-line` guides, `.quadrant-field` overlays, visible source-field borders, visible signature boxes, or direction cues that are not data marks, route paths, flow links, label leaders, or another narrative element. The composition must be carried by the recomposed source marks themselves; source-clone fallback and `.source-adaptation-cues` overlays are critique failures.
 
 Do not use `data-fit`, fit badges, or `strong` / `support` tiers. The sheet membership itself means the variant is good enough for that composition.
 

@@ -139,11 +139,28 @@ async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns 
       const hasSemanticRecomposition = recompositionMode.startsWith("semantic-");
       const adaptationCues = svg ? svg.querySelectorAll(".source-adaptation-cues").length : 0;
       const hasSourceTitle = Boolean(svg?.dataset.basePatternTitle);
-      return { id: row.dataset.compositionPatternId, elements, marks, title, compositionLines, quadrantFields, hasSignature, hasSourceRecomposition, hasSemanticRecomposition, adaptationCues, hasSourceTitle };
+      const visibleSourceFields = Array.from(svg?.querySelectorAll(".source-pattern-field") || []).filter(field => {
+        const stroke = field.getAttribute("stroke") || "";
+        const strokeOpacity = Number(field.getAttribute("stroke-opacity") ?? "1");
+        const fill = field.getAttribute("fill") || "";
+        const fillOpacity = Number(field.getAttribute("fill-opacity") ?? "1");
+        return (stroke && stroke !== "none" && strokeOpacity > 0.02) || (fill && fill !== "none" && fillOpacity > 0.02);
+      }).length;
+      const visibleSignatureMarks = Array.from(svg?.querySelectorAll(".base-signature *") || []).filter(mark => {
+        const opacity = Number(mark.getAttribute("opacity") ?? "1");
+        const tag = mark.tagName.toLowerCase();
+        const fontSize = Number(mark.getAttribute("font-size") || 0);
+        return opacity > 0.02 && !(tag === "text" && fontSize <= 1.5);
+      }).length;
+      return { id: row.dataset.compositionPatternId, elements, marks, title, compositionLines, quadrantFields, visibleSourceFields, visibleSignatureMarks, hasSignature, hasSourceRecomposition, hasSemanticRecomposition, adaptationCues, hasSourceTitle };
     });
-    const blankSvgs = svgReports.filter(report => report.marks < 8 || !report.title || report.compositionLines < 2 || report.quadrantFields < 4 || !report.hasSignature || !report.hasSourceRecomposition || !report.hasSemanticRecomposition || report.adaptationCues || !report.hasSourceTitle);
+    const blankSvgs = svgReports.filter(report => report.marks < 8 || !report.title || !report.hasSignature || !report.hasSourceRecomposition || !report.hasSemanticRecomposition || report.adaptationCues || !report.hasSourceTitle);
     if (blankSvgs.length) {
       findings.push(`${sheetId} has blank, cloned, cue-overlaid, or weak SVG previews: ${blankSvgs.slice(0, 5).map(report => report.id).join(", ")}.`);
+    }
+    const artificialGuides = svgReports.filter(report => report.compositionLines || report.quadrantFields || report.visibleSourceFields || report.visibleSignatureMarks);
+    if (artificialGuides.length) {
+      findings.push(`${sheetId} has artificial guide overlays, visible source-field borders, or visible signature boxes inside card previews: ${artificialGuides.slice(0, 5).map(report => report.id).join(", ")}.`);
     }
     const armature = document.querySelector("#sheet-overview svg");
     if (!armature) {
@@ -157,8 +174,9 @@ async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns 
       uniqueCompositionIds: new Set(rowIds).size,
       previewMarksMin: Math.min(...svgReports.map(report => report.marks)),
       previewMarksMax: Math.max(...svgReports.map(report => report.marks)),
-      compositionLinesMin: Math.min(...svgReports.map(report => report.compositionLines)),
-      quadrantFieldsMin: Math.min(...svgReports.map(report => report.quadrantFields)),
+      compositionGuideOverlaysMax: Math.max(...svgReports.map(report => report.compositionLines + report.quadrantFields)),
+      visibleSourceFieldsMax: Math.max(...svgReports.map(report => report.visibleSourceFields)),
+      visibleSignatureMarksMax: Math.max(...svgReports.map(report => report.visibleSignatureMarks)),
       armatureElements: armature ? armature.querySelectorAll("*").length : 0
     });
   }

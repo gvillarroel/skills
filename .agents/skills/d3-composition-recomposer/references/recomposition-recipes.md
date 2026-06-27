@@ -21,6 +21,8 @@ When the user gives only a pattern family or source ID, build a small representa
 
 When the rendered source SVG is available, faithfully adapt its marks and data vocabulary first. If the requested armature changes how the component should read, re-layout the component's internal marks, links, labels, and groups instead of only rotating, scaling, translating, or placing composition indicators over the whole SVG. The variant should still be recognizable as the source pattern without relying on an overlay that explains the composition.
 
+For gallery cards, do not draw the composition scaffold over the preview. Borders, diagonals, quadrant fills, frame lines, or direction arrows are acceptable only when they are source-derived data marks, route paths, process links, label leaders, or another element with narrative meaning. Keep armature diagrams in overview panels or metadata.
+
 ## Narrative Fit Gate
 
 Apply this gate before selecting any target composition. A pattern can be geometrically compatible with many armatures, but publish or generate only the variants where the armature strengthens the message:
