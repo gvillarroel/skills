@@ -1,5 +1,6 @@
 (function () {
   const SVG_NS = "http://www.w3.org/2000/svg";
+  const replayTimers = new Map();
 
   const sheets = [
     {
@@ -2048,7 +2049,11 @@
       return `
         <article class="composition-card" id="${variant.id}" data-composition-id="${variant.compositionId}" data-example-id="${variant.sourceId}" data-pattern-id="${patternId}" data-composition-pattern-id="${variant.id}" data-kind="${variant.kind}" data-source-family="${escapeHtml(variant.sourceFamily || source.kicker || variant.kind)}" data-armature-lines="${escapeHtml(variant.armatureLines || "")}" data-quadrants="${escapeHtml(variant.quadrants || "")}" data-reviewed="${variant.reviewed ? "true" : "false"}" data-search="${escapeHtml(search)}">
           <div class="preview-frame">
-            <svg id="${variant.id}-svg" data-composition-pattern-id="${variant.id}" data-pattern-id="${patternId}" role="img"></svg>
+            <svg id="${variant.id}-svg" class="composition-preview" data-composition-pattern-id="${variant.id}" data-pattern-id="${patternId}" role="img"></svg>
+            <button class="replay-button" type="button" data-replay-composition="${variant.id}" aria-label="Replay animation for ${escapeHtml(title)} ${escapeHtml(variant.variantTitle)}">
+              <span class="material-symbols-rounded" aria-hidden="true">replay</span>
+              <span>Replay</span>
+            </button>
           </div>
           <div class="composition-card-body">
             <p class="pattern-kicker">${escapeHtml(sheet.tab)} / ${escapeHtml(source.kicker || variant.kind)}</p>
@@ -2063,6 +2068,7 @@
       `;
     }).join("");
     renderPreviews(sheetVariants);
+    startSheetAnimations(sheetVariants);
     applyFilter();
   }
 
@@ -2082,10 +2088,99 @@
       svg.setAttribute("data-narrative-fit", variant.reason || "");
       svg.setAttribute("data-base-pattern-title", sourceTitle(source));
       svg.setAttribute("aria-labelledby", `${variant.id}-title ${variant.id}-desc`);
+      svg.dataset.animationState = "idle";
       svg.appendChild(el("title", { id: `${variant.id}-title` }, [textNode(`${source.title || variant.sourceId} ${variant.variantTitle}`)]));
       svg.appendChild(el("desc", { id: `${variant.id}-desc` }, [textNode(`${variant.reason || ""} ${variant.recipe}`)]));
       addRect(svg, 8, 8, 344, 204, { rx: 8, fill: palette.surface, stroke: "none" });
       renderVariantMarks(svg, variant);
+      prepareReplayAnimation(svg);
+    });
+  }
+
+  function isVisibleReplayMark(mark) {
+    if (mark.closest(".base-signature") || mark.classList.contains("source-pattern-field")) return false;
+    const opacity = Number(mark.getAttribute("opacity") ?? "1");
+    const fillOpacity = Number(mark.getAttribute("fill-opacity") ?? "1");
+    const strokeOpacity = Number(mark.getAttribute("stroke-opacity") ?? "1");
+    if (opacity <= 0.02 || (fillOpacity <= 0.02 && strokeOpacity <= 0.02)) return false;
+    const tag = mark.tagName.toLowerCase();
+    if (tag === "text" && Number(mark.getAttribute("font-size") || "10") <= 1.5) return false;
+    return true;
+  }
+
+  function isReplayPath(mark) {
+    const tag = mark.tagName.toLowerCase();
+    if (!["path", "line", "polyline", "polygon"].includes(tag)) return false;
+    const stroke = mark.getAttribute("stroke") || "";
+    const fill = mark.getAttribute("fill") || "none";
+    const fillOpacity = Number(mark.getAttribute("fill-opacity") ?? "1");
+    return Boolean(stroke && stroke !== "none") && (fill === "none" || fillOpacity <= 0.05);
+  }
+
+  function prepareReplayAnimation(svg) {
+    const targets = Array.from(svg.querySelectorAll(".source-pattern-recomposition circle, .source-pattern-recomposition rect, .source-pattern-recomposition path, .source-pattern-recomposition line, .source-pattern-recomposition polygon, .source-pattern-recomposition polyline, .source-pattern-recomposition text"))
+      .filter(isVisibleReplayMark);
+    targets.forEach((target, index) => {
+      target.dataset.replayTarget = "true";
+      target.style.setProperty("--replay-delay", `${Math.min(index * 18, 720)}ms`);
+      target.removeAttribute("data-replay-path");
+      target.style.removeProperty("--path-length");
+      if (isReplayPath(target) && typeof target.getTotalLength === "function") {
+        try {
+          const length = Math.max(8, Math.ceil(target.getTotalLength()));
+          target.dataset.replayPath = "true";
+          target.style.setProperty("--path-length", String(length));
+        } catch (error) {
+          target.removeAttribute("data-replay-path");
+        }
+      }
+    });
+    svg.dataset.animationReady = targets.length ? "true" : "false";
+    svg.dataset.animationTargetCount = String(targets.length);
+    svg.dataset.renderPass = String(Number(svg.dataset.renderPass || "0") + 1);
+  }
+
+  function replayVariantAnimation(variantId, options = {}) {
+    const start = () => {
+      const svg = document.getElementById(`${variantId}-svg`);
+      if (!svg || svg.dataset.animationReady !== "true") return;
+      clearTimeout(replayTimers.get(variantId));
+      svg.classList.remove("is-replaying");
+      svg.dataset.animationState = "idle";
+      void svg.getBoundingClientRect();
+      svg.classList.add("is-replaying");
+      svg.dataset.animationState = "running";
+      const timer = window.setTimeout(() => {
+        svg.classList.remove("is-replaying");
+        svg.dataset.animationState = "idle";
+        replayTimers.delete(variantId);
+      }, options.durationMs || 1720);
+      replayTimers.set(variantId, timer);
+    };
+    if (options.delay) {
+      window.setTimeout(start, options.delay);
+    } else {
+      start();
+    }
+  }
+
+  function startSheetAnimations(sheetVariants) {
+    sheetVariants.forEach((variant, index) => {
+      replayVariantAnimation(variant.id, {
+        delay: Math.min(index, 18) * 26,
+        durationMs: 1740
+      });
+    });
+  }
+
+  function bindReplayEvents() {
+    const grid = document.getElementById("sheet-grid");
+    if (!grid || grid.dataset.replayBound === "true") return;
+    grid.dataset.replayBound = "true";
+    grid.addEventListener("click", event => {
+      const button = event.target.closest("[data-replay-composition]");
+      if (!button) return;
+      replayVariantAnimation(button.dataset.replayComposition);
     });
   }
 
@@ -2441,6 +2536,7 @@
   }
 
   function bindEvents() {
+    bindReplayEvents();
     document.getElementById("sheet-tabs").addEventListener("click", event => {
       const button = event.target.closest("[data-sheet-tab]");
       if (!button) return;

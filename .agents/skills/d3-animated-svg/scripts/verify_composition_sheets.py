@@ -127,6 +127,8 @@ async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns 
     }
     const svgReports = rows.map(row => {
       const svg = row.querySelector("svg[data-composition-pattern-id]");
+      const replayButtons = row.querySelectorAll("[data-replay-composition]").length;
+      const matchingReplayButton = row.querySelector(`button[data-replay-composition="${row.dataset.compositionPatternId}"]`);
       const elements = svg ? svg.querySelectorAll("*").length : 0;
       const marks = svg ? svg.querySelectorAll("circle,rect,path,line,polygon,polyline,text").length : 0;
       const title = svg ? svg.querySelector("title")?.textContent || "" : "";
@@ -152,7 +154,12 @@ async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns 
         const fontSize = Number(mark.getAttribute("font-size") || 0);
         return opacity > 0.02 && !(tag === "text" && fontSize <= 1.5);
       }).length;
-      return { id: row.dataset.compositionPatternId, elements, marks, title, compositionLines, quadrantFields, visibleSourceFields, visibleSignatureMarks, hasSignature, hasSourceRecomposition, hasSemanticRecomposition, adaptationCues, hasSourceTitle };
+      const replayTargetCount = svg ? svg.querySelectorAll('[data-replay-target="true"]').length : 0;
+      const pathAnimationTargets = svg ? svg.querySelectorAll('[data-replay-path="true"]').length : 0;
+      const animationTargetCount = Number(svg?.dataset.animationTargetCount || 0);
+      const animationReady = svg?.dataset.animationReady === "true";
+      const renderPass = Number(svg?.dataset.renderPass || 0);
+      return { id: row.dataset.compositionPatternId, elements, marks, title, compositionLines, quadrantFields, visibleSourceFields, visibleSignatureMarks, hasSignature, hasSourceRecomposition, hasSemanticRecomposition, adaptationCues, hasSourceTitle, replayButtons, matchingReplayButton: Boolean(matchingReplayButton), replayTargetCount, pathAnimationTargets, animationTargetCount, animationReady, renderPass };
     });
     const blankSvgs = svgReports.filter(report => report.marks < 8 || !report.title || !report.hasSignature || !report.hasSourceRecomposition || !report.hasSemanticRecomposition || report.adaptationCues || !report.hasSourceTitle);
     if (blankSvgs.length) {
@@ -161,6 +168,30 @@ async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns 
     const artificialGuides = svgReports.filter(report => report.compositionLines || report.quadrantFields || report.visibleSourceFields || report.visibleSignatureMarks);
     if (artificialGuides.length) {
       findings.push(`${sheetId} has artificial guide overlays, visible source-field borders, or visible signature boxes inside card previews: ${artificialGuides.slice(0, 5).map(report => report.id).join(", ")}.`);
+    }
+    const replayContractFailures = svgReports.filter(report => report.replayButtons !== 1 || !report.matchingReplayButton || !report.animationReady || report.replayTargetCount < 6 || report.replayTargetCount !== report.animationTargetCount || report.renderPass < 1);
+    if (replayContractFailures.length) {
+      findings.push(`${sheetId} has missing replay controls or weak animation targets: ${replayContractFailures.slice(0, 5).map(report => report.id).join(", ")}.`);
+    }
+    await sleep(1880);
+    const replaySample = rows.find(row => row.querySelector("button[data-replay-composition]") && row.querySelector("svg[data-composition-pattern-id]"));
+    let sampleReplayState = "not-tested";
+    if (replaySample) {
+      const sampleSvg = replaySample.querySelector("svg[data-composition-pattern-id]");
+      const samplePass = sampleSvg?.dataset.renderPass || "";
+      const otherRows = rows.filter(row => row !== replaySample);
+      const otherPasses = otherRows.map(row => row.querySelector("svg[data-composition-pattern-id]")?.dataset.renderPass || "");
+      replaySample.querySelector("button[data-replay-composition]").click();
+      await sleep(90);
+      const targetRunning = sampleSvg?.dataset.animationState === "running" && sampleSvg?.classList.contains("is-replaying");
+      const targetRebuilt = sampleSvg?.dataset.renderPass !== samplePass;
+      const otherRebuilt = otherRows.some((row, index) => (row.querySelector("svg[data-composition-pattern-id]")?.dataset.renderPass || "") !== otherPasses[index]);
+      sampleReplayState = targetRunning && !targetRebuilt && !otherRebuilt ? "running-target-only" : "failed";
+      if (sampleReplayState === "failed") {
+        findings.push(`${sheetId} replay button did not restart only the target SVG animation.`);
+      }
+    } else {
+      findings.push(`${sheetId} has no replay sample to click.`);
     }
     const armature = document.querySelector("#sheet-overview svg");
     if (!armature) {
@@ -177,6 +208,11 @@ async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns 
       compositionGuideOverlaysMax: Math.max(...svgReports.map(report => report.compositionLines + report.quadrantFields)),
       visibleSourceFieldsMax: Math.max(...svgReports.map(report => report.visibleSourceFields)),
       visibleSignatureMarksMax: Math.max(...svgReports.map(report => report.visibleSignatureMarks)),
+      replayButtons: svgReports.reduce((sum, report) => sum + report.replayButtons, 0),
+      animationTargetsMin: Math.min(...svgReports.map(report => report.replayTargetCount)),
+      animationTargetsMax: Math.max(...svgReports.map(report => report.replayTargetCount)),
+      pathAnimationTargetsMax: Math.max(...svgReports.map(report => report.pathAnimationTargets)),
+      sampleReplayState,
       armatureElements: armature ? armature.querySelectorAll("*").length : 0
     });
   }

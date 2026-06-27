@@ -45,6 +45,8 @@ Each card renders an inline SVG preview and exposes:
 
 Each preview SVG must expose the same composition/source attributes, a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` metadata group that ties the optimized variant back to the original source pattern without adding visible decoration. Keep composition armature diagrams in the sheet overview or metadata, not inside each card preview. Published cards must use a semantic recomposition mode such as `semantic-network-*`, `semantic-flow-*`, or `semantic-grid-*`; source-clone fallback, `.source-adaptation-cues` overlays, visible `.composition-line` guides, `.quadrant-field` overlays, visible source-field borders, and visible signature boxes are not publishable examples.
 
+Each published card must also include one compact replay button scoped to that card. Mark visible source-derived SVG elements inside `.source-pattern-recomposition` with replay metadata, animate those elements on load and on click, and keep final geometry encoded in normal SVG attributes so the settled frame remains a valid composition preview. Replay controls must not add artificial direction lines, guide overlays, or duplicated marks.
+
 Do not use fit tiers or fit badges. Keep only variants that are useful for the selected composition.
 
 ## Maintenance Rules
