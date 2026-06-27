@@ -38,7 +38,7 @@ Each card renders an inline SVG preview and exposes:
 - `data-quadrants`
 - `data-reviewed`
 
-Each preview SVG must expose the same composition/source attributes, include visible `.composition-line` guides, at least four `.quadrant-field` regions, a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` group that ties the optimized variant back to the original source pattern. Generic renderer families are fallback scaffolds only; published cards should preserve the base SVG's mark vocabulary before adding composition-specific anchors.
+Each preview SVG must expose the same composition/source attributes, include visible `.composition-line` guides, at least four `.quadrant-field` regions, a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` group that ties the optimized variant back to the original source pattern. Published cards must use a semantic recomposition mode such as `semantic-network-*`, `semantic-flow-*`, or `semantic-grid-*`; source-clone fallback and `.source-adaptation-cues` overlays are not publishable examples.
 
 Do not use fit tiers or fit badges. Keep only variants that are useful for the selected composition.
 
@@ -46,7 +46,7 @@ Do not use fit tiers or fit badges. Keep only variants that are useful for the s
 
 1. Review every current source pattern before publishing the sheets.
 2. Add a target only when the source pattern can visibly express the target armature.
-3. Preserve the source pattern's semantic meaning by cloning or faithfully recreating the rendered base SVG marks. When a target composition requires it, re-layout those marks, links, labels, and groups instead of only rotating or scaling the original SVG.
+3. Preserve the source pattern's semantic meaning by faithfully recreating the rendered base SVG marks. When a target composition requires it, re-layout those marks, links, labels, and groups instead of only rotating, scaling, or placing composition indicators over the original SVG.
 4. Keep the preview SVG nonblank and specific enough to evaluate the composition without opening the base gallery.
 5. Keep the base pattern link intact so the source `d3-pattern-*` ID remains reachable.
 6. Validate after changes:

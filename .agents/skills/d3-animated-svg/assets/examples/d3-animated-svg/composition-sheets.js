@@ -141,6 +141,17 @@
     id: `d3-composition-${compositionId}-${sourceId}`
   }));
 
+  const semanticVariantExclusions = new Set([
+    "d3-composition-diagonal-armature-apollonius-circles",
+    "d3-composition-diagonal-armature-smooth-zoom",
+    "d3-composition-diagonal-armature-xy-zoom",
+    "d3-composition-golden-root-context-to-curve",
+    "d3-composition-thirds-fifths-grid-context-to-curve",
+    "d3-composition-radial-rosette-epicyclic-gearing",
+    "d3-composition-radial-rosette-lasso-selection",
+    "d3-composition-radial-rosette-shape-tween"
+  ]);
+
   const metadata = (window.D3_ANIMATED_SVG_EXAMPLES || []).map((example, index) => ({ ...example, index }));
   const sourceById = new Map(metadata.map(example => [example.id, example]));
   const reviewedPatterns = metadata.map(reviewPatternForComposition);
@@ -325,6 +336,7 @@
     reviews.forEach(review => {
       review.targets.forEach(target => {
         const id = `d3-composition-${target.compositionId}-${review.sourceId}`;
+        if (semanticVariantExclusions.has(id)) return;
         const generated = {
           id,
           compositionId: target.compositionId,
@@ -893,7 +905,674 @@
         });
       });
     }
-    addSourceAdaptationCues(svg, variant, frame);
+    return true;
+  }
+
+  function visibleTextMarks(sourceSvg, limit = 18) {
+    return Array.from(sourceSvg.querySelectorAll("text"))
+      .map((label, index) => {
+        const value = label.textContent?.trim() || "";
+        if (!value || value.length > 22) return null;
+        const center = elementCenterInSource(sourceSvg, label);
+        return {
+          index,
+          x: center.x,
+          y: center.y,
+          text: value,
+          fill: renderedPaint(label, "fill", palette.ink),
+          className: label.getAttribute("class") || ""
+        };
+      })
+      .filter(Boolean)
+      .filter(mark => Number.isFinite(mark.x) && Number.isFinite(mark.y))
+      .slice(0, limit);
+  }
+
+  function sourceRectMarks(sourceSvg, limit = 120) {
+    const [vx, vy, vw, vh] = parseViewBox(sourceSvg.getAttribute("viewBox"));
+    const frameArea = vw * vh;
+    return Array.from(sourceSvg.querySelectorAll("rect"))
+      .map((rect, index) => {
+        const box = elementCenterInSource(sourceSvg, rect);
+        const width = Math.max(box.width || numericAttr(rect, "width", 0), 0);
+        const height = Math.max(box.height || numericAttr(rect, "height", 0), 0);
+        const area = width * height;
+        if (width < 2 || height < 2 || area > frameArea * 0.82) return null;
+        return {
+          index,
+          x: box.x,
+          y: box.y,
+          width,
+          height,
+          area,
+          fill: renderedPaint(rect, "fill", palette.blueHighlight),
+          stroke: renderedPaint(rect, "stroke", "none"),
+          opacity: rect.getAttribute("fill-opacity") || rect.getAttribute("opacity") || "1",
+          rx: numericAttr(rect, "rx", 1.5)
+        };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.area - a.area)
+      .slice(0, limit)
+      .sort((a, b) => a.y - b.y || a.x - b.x);
+  }
+
+  function sourceCircleLikeMarks(sourceSvg, limit = 36) {
+    const circles = Array.from(sourceSvg.querySelectorAll("circle,ellipse"))
+      .map((mark, index) => {
+        const center = elementCenterInSource(sourceSvg, mark);
+        const tag = mark.tagName.toLowerCase();
+        const rx = tag === "ellipse" ? numericAttr(mark, "rx", center.r || 4) : numericAttr(mark, "r", center.r || 4);
+        const ry = tag === "ellipse" ? numericAttr(mark, "ry", center.r || 4) : rx;
+        return {
+          index,
+          x: center.x,
+          y: center.y,
+          rx: Math.max(rx, center.r || 0),
+          ry: Math.max(ry, center.r || 0),
+          radius: Math.max(rx, ry, center.r || 0),
+          fill: renderedPaint(mark, "fill", palette.blueHighlight),
+          stroke: renderedPaint(mark, "stroke", palette.blue),
+          opacity: mark.getAttribute("fill-opacity") || mark.getAttribute("opacity") || "0.72",
+          strokeWidth: numericAttr(mark, "stroke-width", 1.3)
+        };
+      })
+      .filter(mark => Number.isFinite(mark.x) && Number.isFinite(mark.y) && mark.radius > 2);
+    return circles.sort((a, b) => b.radius - a.radius).slice(0, limit).sort((a, b) => a.index - b.index);
+  }
+
+  function sourcePathMarks(sourceSvg, limit = 36) {
+    const pathMarks = Array.from(sourceSvg.querySelectorAll("path,line,polyline,polygon"))
+      .map((mark, index) => {
+        const tag = mark.tagName.toLowerCase();
+        const center = elementCenterInSource(sourceSvg, mark);
+        const stroke = renderedPaint(mark, "stroke", palette.blue);
+        const fill = renderedPaint(mark, "fill", "none");
+        const strokeWidth = numericAttr(mark, "stroke-width", 1.5);
+        if (tag === "path" && !String(mark.getAttribute("d") || "").trim()) return null;
+        if (stroke === "none" && fill === "none") return null;
+        return {
+          index,
+          tag,
+          x: center.x,
+          y: center.y,
+          stroke,
+          fill,
+          strokeWidth,
+          opacity: mark.getAttribute("stroke-opacity") || mark.getAttribute("opacity") || "0.58"
+        };
+      })
+      .filter(Boolean);
+    return pathMarks.slice(0, limit);
+  }
+
+  function fitRadius(mark, target) {
+    return clamp(Math.sqrt(Math.max(mark.radius || mark.area || 16, 16)) * 0.62, target.min, target.max);
+  }
+
+  function renderSemanticSetOverlapVariant(svg, variant) {
+    if (variant.renderer !== "set-overlap" && variant.inferredKind !== "set-overlap") return false;
+    if (!["balance-symmetry", "radial-rosette"].includes(variant.compositionId)) return false;
+    const sourceSvg = sourceSvgForVariant(variant);
+    if (!sourceSvg) return false;
+    const circles = sourceCircleLikeMarks(sourceSvg, 9).filter(mark => mark.radius > 14);
+    if (circles.length < 3) return false;
+    const frame = compositionSourceFrame(variant.compositionId);
+    addSourceField(svg, frame, variant.compositionId);
+    const group = svg.appendChild(el("g", {
+      class: "source-pattern-recomposition semantic-set-recomposition",
+      "data-source-svg-id": variant.sourceId,
+      "data-recomposition-mode": `semantic-set-${variant.compositionId}`,
+      "data-source-circle-count": circles.length
+    }));
+    const center = { x: 180, y: 110 };
+    circles.forEach((circle, index) => {
+      let x;
+      let y;
+      let r;
+      if (variant.compositionId === "radial-rosette") {
+        if (index === 0 && !/rosette|flower|five|seven|three|venn/.test(variant.sourceId)) {
+          x = center.x;
+          y = center.y;
+          r = 42;
+        } else {
+          const petalIndex = index === 0 ? 0 : index - 1;
+          const petals = Math.max(circles.length - 1, 3);
+          const angle = -Math.PI / 2 + (Math.PI * 2 * petalIndex) / petals;
+          x = center.x + Math.cos(angle) * 44;
+          y = center.y + Math.sin(angle) * 44;
+          r = clamp(31 + (circle.radius % 11), 28, 41);
+        }
+      } else {
+        const positions = [
+          [180, 110], [145, 88], [215, 88], [145, 132], [215, 132],
+          [180, 76], [180, 144], [118, 110], [242, 110]
+        ];
+        [x, y] = positions[index % positions.length];
+        r = clamp(30 + (circle.radius % 13), 26, 43);
+      }
+      addCircle(group, x, y, r, {
+        class: "semantic-set-circle",
+        fill: circle.fill,
+        "fill-opacity": clamp(Number(circle.opacity) || 0.55, 0.18, 0.58),
+        stroke: circle.stroke || palette.blue,
+        "stroke-width": clamp(circle.strokeWidth || 1.4, 1, 2.4)
+      });
+    });
+    visibleTextMarks(sourceSvg, 6).forEach((label, index) => {
+      const x = index % 2 ? 250 : 110;
+      const y = 56 + Math.floor(index / 2) * 24;
+      appendText(group, x, y, label.text, {
+        class: "semantic-set-label",
+        "text-anchor": index % 2 ? "start" : "end",
+        "font-size": 7.2,
+        "font-weight": 800,
+        fill: palette.ink,
+        stroke: palette.surface,
+        "stroke-width": 2.2,
+        "paint-order": "stroke"
+      });
+    });
+    return true;
+  }
+
+  function flowStations(compositionId, count) {
+    const base = compositionId === "diagonal-armature"
+      ? [[54, 168], [112, 143], [180, 110], [248, 76], [310, 48]]
+      : [[44, 128], [112, 82], [180, 112], [248, 144], [316, 90]];
+    if (count <= base.length) return base.slice(0, count);
+    return Array.from({ length: count }, (_, index) => {
+      const t = index / Math.max(count - 1, 1);
+      if (compositionId === "diagonal-armature") return [54 + t * 256, 168 - t * 120];
+      return [44 + t * 272, 112 + Math.sin(t * Math.PI * 2 - 0.6) * 30];
+    });
+  }
+
+  function flowPathD(a, b, compositionId, offset = 0) {
+    if (compositionId === "diagonal-armature") {
+      return `M${a[0]} ${a[1] + offset} C${(a[0] + b[0]) / 2} ${a[1] + offset - 18}, ${(a[0] + b[0]) / 2} ${b[1] + offset + 18}, ${b[0]} ${b[1] + offset}`;
+    }
+    return `M${a[0]} ${a[1] + offset} C${(a[0] + b[0]) / 2} ${a[1] - 34 + offset}, ${(a[0] + b[0]) / 2} ${b[1] + 34 + offset}, ${b[0]} ${b[1] + offset}`;
+  }
+
+  function renderSemanticFlowVariant(svg, variant) {
+    if (!["flow", "route"].includes(variant.renderer) && !["flow", "geospatial", "geometry"].includes(variant.inferredKind)) return false;
+    if (!["flow-spine", "diagonal-armature"].includes(variant.compositionId)) return false;
+    const sourceSvg = sourceSvgForVariant(variant);
+    if (!sourceSvg) return false;
+    const paths = sourcePathMarks(sourceSvg, 18);
+    const labels = visibleTextMarks(sourceSvg, 7);
+    if (paths.length < 1 && labels.length < 3) return false;
+    const frame = compositionSourceFrame(variant.compositionId);
+    addSourceField(svg, frame, variant.compositionId);
+    const group = svg.appendChild(el("g", {
+      class: "source-pattern-recomposition semantic-flow-recomposition",
+      "data-source-svg-id": variant.sourceId,
+      "data-recomposition-mode": `semantic-flow-${variant.compositionId}`,
+      "data-source-path-count": paths.length,
+      "data-source-label-count": labels.length
+    }));
+    const stationCount = clamp(Math.max(labels.length, Math.min(paths.length + 1, 6), 4), 4, 7);
+    const stations = flowStations(variant.compositionId, stationCount);
+    const pathCount = Math.max(paths.length, stationCount - 1);
+    for (let index = 0; index < pathCount; index += 1) {
+      const sourcePath = paths[index % Math.max(paths.length, 1)] || {};
+      const a = stations[index % (stationCount - 1)];
+      const b = stations[(index % (stationCount - 1)) + 1];
+      const offset = (index - (pathCount - 1) / 2) * (pathCount > 8 ? 1.8 : 3.2);
+      addPath(group, flowPathD(a, b, variant.compositionId, offset), {
+        class: "semantic-flow-link",
+        fill: "none",
+        stroke: sourcePath.stroke || sourcePath.fill || palette.blue,
+        "stroke-width": clamp(sourcePath.strokeWidth || 2, 1.4, 7),
+        "stroke-opacity": clamp(Number(sourcePath.opacity) || 0.52, 0.22, 0.72),
+        "stroke-linecap": "round"
+      });
+    }
+    stations.forEach((station, index) => {
+      const sourcePath = paths[index % Math.max(paths.length, 1)] || {};
+      addCircle(group, station[0], station[1], index === 0 || index === stations.length - 1 ? 8.5 : 6.2, {
+        class: "semantic-flow-station",
+        fill: palette.surface,
+        stroke: sourcePath.stroke || palette.red,
+        "stroke-width": 1.8
+      });
+      const label = labels[index]?.text || tokenLabel(variant, index === 0 ? "source" : "stage", index);
+      appendText(group, station[0], station[1] + (variant.compositionId === "diagonal-armature" ? 22 : 28), label, {
+        class: "semantic-flow-label",
+        "text-anchor": "middle",
+        "font-size": 7.1,
+        "font-weight": 800,
+        fill: palette.ink,
+        stroke: palette.surface,
+        "stroke-width": 2.2,
+        "paint-order": "stroke"
+      });
+    });
+    return true;
+  }
+
+  function gridCellGeometry(compositionId, index, total) {
+    if (compositionId === "golden-root") {
+      const cols = 8;
+      const rows = Math.ceil(Math.min(total, 72) / cols);
+      const cell = Math.min(17, 112 / Math.max(rows, 1));
+      return {
+        x: 46 + (index % cols) * cell,
+        y: 48 + Math.floor(index / cols) * cell,
+        width: cell - 3,
+        height: cell - 3
+      };
+    }
+    const cols = 12;
+    const rows = Math.ceil(Math.min(total, 120) / cols);
+    const cellW = 236 / cols;
+    const cellH = Math.min(13, 124 / Math.max(rows, 1));
+    return {
+      x: 62 + (index % cols) * cellW,
+      y: 44 + Math.floor(index / cols) * cellH,
+      width: cellW - 2.2,
+      height: cellH - 2.2
+    };
+  }
+
+  function renderSemanticGridVariant(svg, variant) {
+    if (!["matrix", "table", "bar", "document"].includes(variant.renderer)) return false;
+    if (!["thirds-fifths-grid", "golden-root"].includes(variant.compositionId)) return false;
+    const sourceSvg = sourceSvgForVariant(variant);
+    if (!sourceSvg) return false;
+    let rects = sourceRectMarks(sourceSvg, variant.compositionId === "golden-root" ? 72 : 120);
+    if (rects.length < 6) {
+      rects = sourcePathMarks(sourceSvg, variant.compositionId === "golden-root" ? 72 : 120).map((mark, index) => ({
+        index,
+        x: mark.x,
+        y: mark.y,
+        width: 8,
+        height: 8,
+        area: 64,
+        fill: mark.fill && mark.fill !== "none" ? mark.fill : mark.stroke,
+        stroke: mark.stroke,
+        opacity: mark.opacity,
+        rx: 1.5
+      }));
+    }
+    if (rects.length < 6) {
+      rects = visibleTextMarks(sourceSvg, 40).map((mark, index) => ({
+        index,
+        x: mark.x || index,
+        y: mark.y || index,
+        width: 18,
+        height: 8,
+        area: 144,
+        fill: [palette.blueHighlight, palette.greenHighlight, palette.yellowHighlight, palette.purpleHighlight][index % 4],
+        stroke: palette.softLine,
+        opacity: "0.86",
+        rx: 2
+      }));
+    }
+    if (rects.length < 6) return false;
+    const frame = compositionSourceFrame(variant.compositionId);
+    addSourceField(svg, frame, variant.compositionId);
+    const group = svg.appendChild(el("g", {
+      class: "source-pattern-recomposition semantic-grid-recomposition",
+      "data-source-svg-id": variant.sourceId,
+      "data-recomposition-mode": `semantic-grid-${variant.compositionId}`,
+      "data-source-rect-count": rects.length
+    }));
+    rects.forEach((rect, index) => {
+      const cell = gridCellGeometry(variant.compositionId, index, rects.length);
+      addRect(group, cell.x, cell.y, cell.width, cell.height, {
+        class: "semantic-grid-cell",
+        rx: Math.min(3, rect.rx || 1.5),
+        fill: rect.fill,
+        "fill-opacity": clamp(Number(rect.opacity) || 0.86, 0.22, 1),
+        stroke: rect.stroke === "none" ? palette.surface : rect.stroke,
+        "stroke-width": 0.7,
+        "stroke-opacity": 0.72
+      });
+    });
+    const labels = visibleTextMarks(sourceSvg, variant.compositionId === "golden-root" ? 4 : 6);
+    if (variant.compositionId === "golden-root") {
+      const contextRows = labels.length ? labels : Array.from({ length: 5 }, (_, index) => ({ text: tokenLabel(variant, "context", index) }));
+      contextRows.slice(0, 5).forEach((label, index) => {
+        const y = 58 + index * 24;
+        addRect(group, 244, y - 10, 70, 16, { rx: 4, fill: palette.surface, stroke: palette.softLine });
+        addRect(group, 292, y - 4, 8 + ((hashString(`${variant.sourceId}:${index}`) % 16)), 4, {
+          rx: 2,
+          fill: [palette.blue, palette.green, palette.orange, palette.purple, palette.red][index % 5],
+          "fill-opacity": 0.58,
+          stroke: "none"
+        });
+        appendText(group, 250, y + 1.5, label.text, { "font-size": 7, "font-weight": 800, fill: palette.ink });
+      });
+    } else {
+      labels.slice(0, 4).forEach((label, index) => {
+        appendText(group, 72 + index * 58, 33, label.text, { "font-size": 7, "font-weight": 800, fill: palette.muted });
+      });
+    }
+    return true;
+  }
+
+  function renderSemanticLaneVariant(svg, variant) {
+    if (!["lanes", "labels"].includes(variant.renderer) && variant.compositionId !== "dense-label-lanes") return false;
+    if (variant.compositionId !== "dense-label-lanes") return false;
+    const sourceSvg = sourceSvgForVariant(variant);
+    if (!sourceSvg) return false;
+    const circles = sourceCircleLikeMarks(sourceSvg, 70);
+    const rects = sourceRectMarks(sourceSvg, 40);
+    const paths = sourcePathMarks(sourceSvg, 70);
+    const labels = visibleTextMarks(sourceSvg, 10);
+    if (circles.length + rects.length + paths.length < 5 && labels.length < 4) return false;
+    const frame = compositionSourceFrame(variant.compositionId);
+    addSourceField(svg, frame, variant.compositionId);
+    const group = svg.appendChild(el("g", {
+      class: "source-pattern-recomposition semantic-lane-recomposition",
+      "data-source-svg-id": variant.sourceId,
+      "data-recomposition-mode": "semantic-lanes-dense-label-lanes",
+      "data-source-mark-count": circles.length + rects.length + paths.length,
+      "data-source-label-count": labels.length
+    }));
+    const sourceMarks = circles.length ? circles : rects.length ? rects : paths;
+    const bounds = nodeBounds(sourceMarks.map(mark => ({ x: mark.x, y: mark.y })));
+    circles.forEach((circle, index) => {
+      const x = 118 + ((circle.x - bounds.minX) / bounds.width) * 124;
+      const y = 50 + ((circle.y - bounds.minY) / bounds.height) * 118;
+      addCircle(group, x, y, clamp(circle.radius * 0.18, 2.2, 6.5), {
+        class: "semantic-lane-mark",
+        fill: circle.fill,
+        "fill-opacity": clamp(Number(circle.opacity) || 0.72, 0.3, 0.9),
+        stroke: circle.stroke || palette.surface,
+        "stroke-width": 0.8
+      });
+    });
+    rects.slice(0, Math.max(0, 60 - circles.length)).forEach((rect, index) => {
+      const x = 118 + ((rect.x - bounds.minX) / bounds.width) * 124;
+      const y = 50 + ((rect.y - bounds.minY) / bounds.height) * 118;
+      addRect(group, x - 2.2, y - 2.2, 4.4, 4.4, {
+        class: "semantic-lane-mark",
+        rx: 1,
+        fill: rect.fill,
+        "fill-opacity": clamp(Number(rect.opacity) || 0.7, 0.22, 0.9),
+        stroke: "none"
+      });
+    });
+    paths.slice(0, Math.max(0, 60 - circles.length - rects.length)).forEach((path, index) => {
+      const x = 118 + ((path.x - bounds.minX) / bounds.width) * 124;
+      const y = 50 + ((path.y - bounds.minY) / bounds.height) * 118;
+      addCircle(group, x, y, 2.5, {
+        class: "semantic-lane-mark",
+        fill: path.fill && path.fill !== "none" ? path.fill : path.stroke || palette.blue,
+        "fill-opacity": clamp(Number(path.opacity) || 0.62, 0.24, 0.82),
+        stroke: "none"
+      });
+    });
+    const laneLabels = labels.length ? labels : Array.from({ length: 8 }, (_, index) => ({ text: tokenLabel(variant, "label", index) }));
+    laneLabels.slice(0, 10).forEach((label, index) => {
+      const left = index % 2 === 0;
+      const laneIndex = Math.floor(index / 2);
+      const x = left ? 38 : 286;
+      const y = 48 + laneIndex * 25;
+      const targetX = 136 + (laneIndex % 3) * 34;
+      const targetY = 58 + laneIndex * 24;
+      addRect(group, x, y - 8, 46, 14, { rx: 4, fill: palette.surface, stroke: palette.softLine });
+      appendText(group, left ? x + 6 : x + 40, y + 2, label.text, {
+        "text-anchor": left ? "start" : "end",
+        "font-size": 6.8,
+        "font-weight": 800,
+        fill: palette.ink
+      });
+      addLine(group, left ? x + 46 : x, y - 1, targetX, targetY, {
+        class: "semantic-lane-leader",
+        stroke: palette.blue,
+        "stroke-width": 0.9,
+        "stroke-opacity": 0.34
+      });
+    });
+    return true;
+  }
+
+  function normalizedMarks(marks) {
+    const bounds = nodeBounds(marks.map(mark => ({ x: mark.x, y: mark.y })));
+    return marks.map((mark, index) => ({
+      ...mark,
+      order: index,
+      normX: (mark.x - bounds.minX) / bounds.width,
+      normY: (mark.y - bounds.minY) / bounds.height
+    }));
+  }
+
+  function scatterSourceMarks(sourceSvg) {
+    const circles = sourceCircleLikeMarks(sourceSvg, 90).map(mark => ({ ...mark, shape: "circle", size: mark.radius }));
+    if (circles.length >= 5) return normalizedMarks(circles);
+    const rects = sourceRectMarks(sourceSvg, 90).map(mark => ({ ...mark, shape: "rect", size: Math.sqrt(mark.area) }));
+    if (rects.length >= 5) return normalizedMarks(rects);
+    const paths = sourcePathMarks(sourceSvg, 44).map(mark => ({ ...mark, shape: "path", size: Math.max(4, mark.strokeWidth * 2) }));
+    return paths.length >= 3 ? normalizedMarks(paths) : [];
+  }
+
+  function scatterLayout(mark, variant, count) {
+    if (variant.compositionId === "diagonal-armature") {
+      const t = (mark.order + 0.5) / Math.max(count, 1);
+      const start = { x: 56, y: 170 };
+      const end = { x: 306, y: 48 };
+      const dx = end.x - start.x;
+      const dy = end.y - start.y;
+      const length = Math.hypot(dx, dy);
+      const normal = { x: -dy / length, y: dx / length };
+      const offset = (mark.normY - 0.5) * (count > 45 ? 34 : 52);
+      return {
+        x: start.x + dx * t + normal.x * offset,
+        y: start.y + dy * t + normal.y * offset
+      };
+    }
+    const side = mark.normX < 0.5 ? -1 : 1;
+    const distance = 30 + Math.abs(mark.normX - 0.5) * 128;
+    return {
+      x: 180 + side * distance,
+      y: 48 + mark.normY * 124
+    };
+  }
+
+  function renderSemanticScatterVariant(svg, variant) {
+    if (variant.renderer !== "scatter" && !(variant.inferredKind === "chart" && ["balance-symmetry", "diagonal-armature"].includes(variant.compositionId))) return false;
+    if (!["balance-symmetry", "diagonal-armature"].includes(variant.compositionId)) return false;
+    const sourceSvg = sourceSvgForVariant(variant);
+    if (!sourceSvg) return false;
+    const marks = scatterSourceMarks(sourceSvg).slice(0, 88);
+    if (marks.length < 3) return false;
+    const paths = sourcePathMarks(sourceSvg, 8);
+    const frame = compositionSourceFrame(variant.compositionId);
+    addSourceField(svg, frame, variant.compositionId);
+    const group = svg.appendChild(el("g", {
+      class: "source-pattern-recomposition semantic-scatter-recomposition",
+      "data-source-svg-id": variant.sourceId,
+      "data-recomposition-mode": `semantic-scatter-${variant.compositionId}`,
+      "data-source-mark-count": marks.length
+    }));
+    const layout = marks.map(mark => ({ ...mark, ...scatterLayout(mark, variant, marks.length) }));
+    if (/line|area|slope|connected|path|bump|moving|index|forecast|cursor|ecdf/.test(variant.sourceId)) {
+      const ordered = [...layout].sort((a, b) => a.x - b.x);
+      const d = ordered.map((mark, index) => `${index ? "L" : "M"}${mark.x.toFixed(1)} ${mark.y.toFixed(1)}`).join(" ");
+      addPath(group, d, {
+        class: "semantic-scatter-trajectory",
+        fill: "none",
+        stroke: paths[0]?.stroke || palette.blue,
+        "stroke-width": clamp(paths[0]?.strokeWidth || 2, 1.2, 4),
+        "stroke-opacity": 0.58,
+        "stroke-linejoin": "round",
+        "stroke-linecap": "round"
+      });
+    }
+    layout.forEach(mark => {
+      const radius = clamp((mark.size || 6) * 0.28, 2.4, marks.length > 45 ? 4.6 : 7.2);
+      if (mark.shape === "rect") {
+        addRect(group, mark.x - radius, mark.y - radius, radius * 2, radius * 2, {
+          class: "semantic-scatter-mark",
+          rx: 1.4,
+          fill: mark.fill,
+          "fill-opacity": clamp(Number(mark.opacity) || 0.76, 0.3, 0.94),
+          stroke: mark.stroke === "none" ? palette.surface : mark.stroke,
+          "stroke-width": 0.8
+        });
+      } else {
+        addCircle(group, mark.x, mark.y, radius, {
+          class: "semantic-scatter-mark",
+          fill: mark.fill || mark.stroke || palette.blue,
+          "fill-opacity": clamp(Number(mark.opacity) || 0.76, 0.32, 0.94),
+          stroke: mark.stroke || palette.surface,
+          "stroke-width": 0.9
+        });
+      }
+    });
+    visibleTextMarks(sourceSvg, 4).forEach((label, index) => {
+      const x = variant.compositionId === "diagonal-armature" ? 72 + index * 68 : index % 2 ? 254 : 106;
+      const y = variant.compositionId === "diagonal-armature" ? 184 - index * 36 : 54 + Math.floor(index / 2) * 108;
+      appendText(group, x, y, label.text, {
+        "text-anchor": "middle",
+        "font-size": 7.2,
+        "font-weight": 800,
+        fill: palette.ink,
+        stroke: palette.surface,
+        "stroke-width": 2.2,
+        "paint-order": "stroke"
+      });
+    });
+    return true;
+  }
+
+  function arcPath(cx, cy, innerRadius, outerRadius, startAngle, endAngle) {
+    const large = endAngle - startAngle > Math.PI ? 1 : 0;
+    const p0 = [cx + Math.cos(startAngle) * outerRadius, cy + Math.sin(startAngle) * outerRadius];
+    const p1 = [cx + Math.cos(endAngle) * outerRadius, cy + Math.sin(endAngle) * outerRadius];
+    const p2 = [cx + Math.cos(endAngle) * innerRadius, cy + Math.sin(endAngle) * innerRadius];
+    const p3 = [cx + Math.cos(startAngle) * innerRadius, cy + Math.sin(startAngle) * innerRadius];
+    return `M${p0[0].toFixed(2)} ${p0[1].toFixed(2)} A${outerRadius} ${outerRadius} 0 ${large} 1 ${p1[0].toFixed(2)} ${p1[1].toFixed(2)} L${p2[0].toFixed(2)} ${p2[1].toFixed(2)} A${innerRadius} ${innerRadius} 0 ${large} 0 ${p3[0].toFixed(2)} ${p3[1].toFixed(2)} Z`;
+  }
+
+  function renderSemanticRadialVariant(svg, variant) {
+    if (variant.renderer !== "radial") return false;
+    if (!["radial-rosette", "balance-symmetry"].includes(variant.compositionId)) return false;
+    const sourceSvg = sourceSvgForVariant(variant);
+    if (!sourceSvg) return false;
+    const paths = sourcePathMarks(sourceSvg, 28);
+    const circles = sourceCircleLikeMarks(sourceSvg, 20);
+    const marks = paths.length ? paths : circles;
+    if (marks.length < 2) return false;
+    const frame = compositionSourceFrame(variant.compositionId);
+    addSourceField(svg, frame, variant.compositionId);
+    const group = svg.appendChild(el("g", {
+      class: "source-pattern-recomposition semantic-radial-recomposition",
+      "data-source-svg-id": variant.sourceId,
+      "data-recomposition-mode": `semantic-radial-${variant.compositionId}`,
+      "data-source-radial-mark-count": marks.length
+    }));
+    const count = clamp(Math.max(marks.length, 6), 6, 18);
+    for (let index = 0; index < count; index += 1) {
+      const source = marks[index % marks.length];
+      const start = -Math.PI / 2 + (Math.PI * 2 * index) / count;
+      const end = -Math.PI / 2 + (Math.PI * 2 * (index + 0.82)) / count;
+      const ring = index % 3;
+      const inner = variant.compositionId === "balance-symmetry" ? 35 + ring * 16 : 31 + ring * 18;
+      const outer = inner + 12 + (index % 2) * 4;
+      addPath(group, arcPath(180, 110, inner, outer, start, end), {
+        class: "semantic-radial-segment",
+        fill: source.fill && source.fill !== "none" ? source.fill : source.stroke || palette.blue,
+        "fill-opacity": clamp(Number(source.opacity) || 0.72, 0.34, 0.86),
+        stroke: palette.surface,
+        "stroke-width": 0.8
+      });
+    }
+    addCircle(group, 180, 110, 16, {
+      class: "semantic-radial-center",
+      fill: circles[0]?.fill || palette.surface,
+      stroke: paths[0]?.stroke || circles[0]?.stroke || palette.red,
+      "stroke-width": 2
+    });
+    visibleTextMarks(sourceSvg, 6).forEach((label, index) => {
+      const angle = -Math.PI / 2 + (Math.PI * 2 * index) / 6;
+      const x = 180 + Math.cos(angle) * 84;
+      const y = 110 + Math.sin(angle) * 84 + 3;
+      appendText(group, x, y, label.text, {
+        "text-anchor": Math.cos(angle) < -0.25 ? "end" : Math.cos(angle) > 0.25 ? "start" : "middle",
+        "font-size": 7,
+        "font-weight": 800,
+        fill: palette.ink,
+        stroke: palette.surface,
+        "stroke-width": 2.1,
+        "paint-order": "stroke"
+      });
+    });
+    return true;
+  }
+
+  function hierarchyLabels(sourceSvg) {
+    const labels = visibleTextMarks(sourceSvg, 18);
+    if (labels.length >= 4) return labels;
+    return titleWords(sourceForVariant({ sourceId: sourceSvg.id })).map((word, index) => ({ text: word, index }));
+  }
+
+  function renderSemanticHierarchyVariant(svg, variant) {
+    if (variant.renderer !== "hierarchy") return false;
+    if (!["radial-rosette", "golden-root", "thirds-fifths-grid"].includes(variant.compositionId)) return false;
+    const sourceSvg = sourceSvgForVariant(variant);
+    if (!sourceSvg) return false;
+    const labels = hierarchyLabels(sourceSvg).slice(0, 14);
+    const marks = sourceCircleLikeMarks(sourceSvg, 20).concat(sourceRectMarks(sourceSvg, 20));
+    if (labels.length < 3 && marks.length < 4) return false;
+    const frame = compositionSourceFrame(variant.compositionId);
+    addSourceField(svg, frame, variant.compositionId);
+    const group = svg.appendChild(el("g", {
+      class: "source-pattern-recomposition semantic-hierarchy-recomposition",
+      "data-source-svg-id": variant.sourceId,
+      "data-recomposition-mode": `semantic-hierarchy-${variant.compositionId}`,
+      "data-source-label-count": labels.length
+    }));
+    if (variant.compositionId === "radial-rosette") {
+      addCircle(group, 180, 110, 16, { fill: palette.redHighlight, stroke: palette.red, "stroke-width": 2 });
+      appendText(group, 180, 114, labels[0]?.text || tokenLabel(variant, "root"), { "text-anchor": "middle", "font-size": 6.8, "font-weight": 800, fill: palette.ink });
+      labels.slice(1, 11).forEach((label, index, peers) => {
+        const angle = -Math.PI / 2 + (Math.PI * 2 * index) / Math.max(peers.length, 1);
+        const radius = index % 2 ? 68 : 50;
+        const x = 180 + Math.cos(angle) * radius;
+        const y = 110 + Math.sin(angle) * radius;
+        addLine(group, 180, 110, x, y, { stroke: palette.line, "stroke-width": 1.2, "stroke-opacity": 0.54 });
+        addCircle(group, x, y, 8, { fill: [palette.blueHighlight, palette.greenHighlight, palette.orangeHighlight, palette.purpleHighlight][index % 4], stroke: palette.blue, "stroke-width": 1.4 });
+        appendText(group, x, y + (Math.sin(angle) > 0.65 ? 20 : -13), label.text, { "text-anchor": "middle", "font-size": 6.7, "font-weight": 800, fill: palette.ink, stroke: palette.surface, "stroke-width": 2, "paint-order": "stroke" });
+      });
+    } else if (variant.compositionId === "golden-root") {
+      const trunk = labels.slice(0, 5);
+      trunk.forEach((label, index) => {
+        const x = 70 + index * 34;
+        const y = 62 + index * 20;
+        if (index > 0) addLine(group, 70 + (index - 1) * 34, 62 + (index - 1) * 20, x, y, { stroke: palette.line, "stroke-width": 1.3 });
+        addRect(group, x - 22, y - 10, 44, 20, { rx: 5, fill: index === 0 ? palette.blueHighlight : palette.surface, stroke: palette.blue, "stroke-width": 1.3 });
+        appendText(group, x, y + 3, label.text, { "text-anchor": "middle", "font-size": 6.7, "font-weight": 800, fill: palette.ink });
+      });
+      const context = labels.slice(5, 10);
+      const contextRows = (context.length ? context : labels.slice(1, 6)).concat(
+        Array.from({ length: 5 }, (_, index) => ({ text: tokenLabel(variant, "branch", index + 1) }))
+      ).slice(0, 5);
+      contextRows.forEach((label, index) => {
+        addRect(group, 246, 54 + index * 22, 68, 16, { rx: 4, fill: palette.surface, stroke: palette.softLine });
+        addRect(group, 292, 59 + index * 22, 8 + ((hashString(`${variant.sourceId}:hierarchy:${index}`) % 16)), 3.5, {
+          rx: 1.8,
+          fill: [palette.blue, palette.green, palette.orange, palette.purple, palette.red][index % 5],
+          "fill-opacity": 0.52,
+          stroke: "none"
+        });
+        appendText(group, 280, 65 + index * 22, label.text, { "text-anchor": "middle", "font-size": 6.5, "font-weight": 800, fill: palette.muted });
+      });
+    } else {
+      labels.slice(0, 12).forEach((label, index) => {
+        const col = index % 4;
+        const row = Math.floor(index / 4);
+        const x = 66 + col * 72;
+        const y = 58 + row * 45;
+        if (row > 0) addLine(group, x, y - 22, x, y - 10, { stroke: palette.line, "stroke-width": 1 });
+        addRect(group, x - 28, y - 11, 56, 22, { rx: 5, fill: [palette.blueHighlight, palette.yellowHighlight, palette.greenHighlight][row % 3], "fill-opacity": 0.72, stroke: palette.blue, "stroke-width": 1.1 });
+        appendText(group, x, y + 3, label.text, { "text-anchor": "middle", "font-size": 6.4, "font-weight": 800, fill: palette.ink });
+      });
+    }
     return true;
   }
 
@@ -906,66 +1585,6 @@
       "stroke-width": 1.1,
       "stroke-opacity": 0.28
     });
-  }
-
-  function addSourceAdaptationCues(svg, variant, frame) {
-    const g = svg.appendChild(el("g", { class: "source-adaptation-cues", "stroke-linecap": "round" }));
-    if (variant.compositionId === "golden-root") {
-      addRect(g, 244, 54, 66, 82, { rx: 8, fill: palette.yellowHighlight, "fill-opacity": 0.72, stroke: palette.orange, "stroke-width": 1.4 });
-      for (let row = 0; row < 5; row += 1) {
-        for (let col = 0; col < 5; col += 1) {
-          const fill = (row + col) % 3 === 0 ? palette.orange : palette.surface;
-          addRect(g, 253 + col * 9, 62 + row * 9, 5.5, 5.5, { rx: 1.2, fill, "fill-opacity": fill === palette.surface ? 0.86 : 0.58, stroke: palette.orange, "stroke-width": 0.45, "stroke-opacity": 0.55 });
-        }
-      }
-      appendText(g, 277, 96, tokenLabel(variant, "context"), { "text-anchor": "middle", "font-size": 9.5, "font-weight": 800, fill: palette.ink });
-    } else if (variant.compositionId === "flow-spine") {
-      [[44, 110], [116, 82], [180, 112], [252, 142], [318, 92]].forEach((point, index, points) => {
-        if (index > 0) {
-          const prev = points[index - 1];
-          addPath(g, `M${prev[0]} ${prev[1]} C${(prev[0] + point[0]) / 2} ${prev[1] - 18}, ${(prev[0] + point[0]) / 2} ${point[1] + 18}, ${point[0]} ${point[1]}`, { fill: "none", stroke: palette.red, "stroke-width": 1.8, "stroke-opacity": 0.46 });
-        }
-        addCircle(g, point[0], point[1], index === 0 || index === points.length - 1 ? 4.8 : 3.4, { fill: palette.surface, stroke: palette.red, "stroke-width": 1.4 });
-      });
-    } else if (variant.compositionId === "dense-label-lanes") {
-      [38, 286].forEach((x, side) => {
-        for (let index = 0; index < 5; index += 1) {
-          const y = 42 + index * 27;
-          addRect(g, x, y, 42, 9, { rx: 3, fill: palette.surface, stroke: palette.line, "stroke-width": 1 });
-          appendText(g, side ? x + 36 : x + 6, y + 6.8, tokenLabel(variant, "label", index + side * 5), { "text-anchor": side ? "end" : "start", "font-size": 6.3, "font-weight": 800, fill: palette.muted });
-          addLine(g, side ? 256 : 104, 58 + index * 24, x + (side ? 0 : 42), y + 4.5, { stroke: palette.blue, "stroke-width": 1, "stroke-opacity": 0.35 });
-        }
-      });
-    } else if (variant.compositionId === "diagonal-armature") {
-      addPath(g, "M54 170 L306 48", { fill: "none", stroke: palette.red, "stroke-width": 2.2, "stroke-opacity": 0.42 });
-      [[62, 166], [116, 142], [180, 110], [244, 78], [304, 50]].forEach((point, index) => {
-        addCircle(g, point[0], point[1], index === 0 || index === 4 ? 5.2 : 3.8, { fill: palette.surface, stroke: palette.red, "stroke-width": 1.5, "fill-opacity": 0.92 });
-      });
-    } else if (variant.compositionId === "radial-rosette") {
-      addCircle(g, 180, 110, Math.min(frame.width, frame.height) * 0.38, { fill: "none", stroke: palette.red, "stroke-width": 1.5, "stroke-opacity": 0.42 });
-      for (let index = 0; index < 8; index += 1) {
-        const angle = (Math.PI * 2 * index) / 8 - Math.PI / 2;
-        const x = 180 + Math.cos(angle) * 58;
-        const y = 110 + Math.sin(angle) * 58;
-        addLine(g, 180, 110, x, y, { stroke: palette.blue, "stroke-width": 0.8, "stroke-opacity": 0.24 });
-        addCircle(g, x, y, 2.8, { fill: palette.surface, stroke: palette.red, "stroke-width": 1.1, "stroke-opacity": 0.72 });
-      }
-      addCircle(g, 180, 110, 4.5, { fill: palette.red, stroke: palette.surface, "stroke-width": 1.2 });
-    } else if (variant.compositionId === "thirds-fifths-grid") {
-      [74, 137, 180, 223, 286].forEach(x => addLine(g, x, frame.y, x, frame.y + frame.height, { stroke: palette.blue, "stroke-width": 0.8, "stroke-opacity": 0.28 }));
-      [74, 137, 180, 223, 286].forEach((x, xi) => {
-        [66, 110, 154].forEach((y, yi) => {
-          const active = (xi + yi) % 2 === 0;
-          addRect(g, x - 3, y - 3, 6, 6, { rx: 1.5, fill: active ? palette.surface : palette.blueHighlight, "fill-opacity": active ? 1 : 0.52, stroke: palette.blue, "stroke-width": 1, "stroke-opacity": active ? 0.62 : 0.36 });
-        });
-      });
-    } else if (variant.compositionId === "balance-symmetry") {
-      [[126, 76], [234, 76], [126, 144], [234, 144], [180, 110]].forEach((point, index) => {
-        addCircle(g, point[0], point[1], index === 4 ? 5.5 : 4, { fill: index === 4 ? palette.redHighlight : palette.surface, stroke: index === 4 ? palette.red : palette.blue, "stroke-width": 1.4, "stroke-opacity": 0.68 });
-      });
-      addLine(g, 126, 76, 234, 144, { stroke: palette.blue, "stroke-width": 1, "stroke-opacity": 0.22 });
-      addLine(g, 126, 144, 234, 76, { stroke: palette.blue, "stroke-width": 1, "stroke-opacity": 0.22 });
-    }
   }
 
   function renderSourceBasedVariant(svg, variant) {
@@ -993,7 +1612,6 @@
     });
     removeRuntimeAnimation(content);
     prefixClonedIds(content, `${variant.id}-source`);
-    addSourceAdaptationCues(svg, variant, frame);
     return true;
   }
 
@@ -1184,12 +1802,12 @@
       addRect(g, quadrant.x, quadrant.y, quadrant.width, quadrant.height, {
         class: `quadrant-field quadrant-${quadrant.id}`,
         fill: quadrant.fill,
-        "fill-opacity": 0.18,
+        "fill-opacity": 0.06,
         stroke: "none"
       });
     });
-    const guide = { class: "composition-line", stroke: palette.line, "stroke-width": 1, "stroke-dasharray": "4 6", "stroke-opacity": 0.72 };
-    const redGuide = { ...guide, class: "composition-line composition-line-primary", stroke: palette.red, "stroke-opacity": 0.62 };
+    const guide = { class: "composition-line", stroke: palette.line, "stroke-width": 1, "stroke-dasharray": "4 6", "stroke-opacity": 0.24 };
+    const redGuide = { ...guide, class: "composition-line composition-line-primary", stroke: palette.red, "stroke-opacity": 0.3 };
     if (compositionId === "balance-symmetry") {
       addLine(g, 180, 18, 180, 202, guide);
       addLine(g, 22, 110, 338, 110, guide);
@@ -1209,8 +1827,8 @@
       [74, 137, 180, 223, 286].forEach(x => addLine(g, x, 22, x, 198, guide));
       [66, 110, 154].forEach(y => addLine(g, 22, y, 338, y, guide));
     } else if (compositionId === "radial-rosette") {
-      addCircle(g, 180, 110, 72, { class: "composition-line", fill: "none", stroke: palette.line, "stroke-dasharray": "4 6", "stroke-opacity": 0.72 });
-      addCircle(g, 180, 110, 34, { class: "composition-line", fill: "none", stroke: palette.line, "stroke-dasharray": "4 6", "stroke-opacity": 0.72 });
+      addCircle(g, 180, 110, 72, { class: "composition-line", fill: "none", stroke: palette.line, "stroke-dasharray": "4 6", "stroke-opacity": 0.24 });
+      addCircle(g, 180, 110, 34, { class: "composition-line", fill: "none", stroke: palette.line, "stroke-dasharray": "4 6", "stroke-opacity": 0.24 });
       for (let i = 0; i < 8; i += 1) {
         const angle = i * Math.PI / 4;
         addLine(g, 180, 110, 180 + Math.cos(angle) * 92, 110 + Math.sin(angle) * 92, guide);
@@ -1229,6 +1847,34 @@
 
   function renderVariantMarks(svg, variant) {
     if (renderSemanticNetworkVariant(svg, variant)) {
+      addPatternSignature(svg, variant);
+      return;
+    }
+    if (renderSemanticSetOverlapVariant(svg, variant)) {
+      addPatternSignature(svg, variant);
+      return;
+    }
+    if (renderSemanticFlowVariant(svg, variant)) {
+      addPatternSignature(svg, variant);
+      return;
+    }
+    if (renderSemanticGridVariant(svg, variant)) {
+      addPatternSignature(svg, variant);
+      return;
+    }
+    if (renderSemanticLaneVariant(svg, variant)) {
+      addPatternSignature(svg, variant);
+      return;
+    }
+    if (renderSemanticScatterVariant(svg, variant)) {
+      addPatternSignature(svg, variant);
+      return;
+    }
+    if (renderSemanticRadialVariant(svg, variant)) {
+      addPatternSignature(svg, variant);
+      return;
+    }
+    if (renderSemanticHierarchyVariant(svg, variant)) {
       addPatternSignature(svg, variant);
       return;
     }

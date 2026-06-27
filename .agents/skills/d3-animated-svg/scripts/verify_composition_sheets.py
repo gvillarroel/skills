@@ -133,13 +133,17 @@ async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns 
       const compositionLines = svg ? svg.querySelectorAll(".composition-line").length : 0;
       const quadrantFields = svg ? svg.querySelectorAll(".quadrant-field").length : 0;
       const hasSignature = Boolean(svg?.querySelector(".base-signature"));
-      const hasSourceRecomposition = Boolean(svg?.querySelector(".source-pattern-recomposition"));
+      const sourceRecomposition = svg?.querySelector(".source-pattern-recomposition");
+      const hasSourceRecomposition = Boolean(sourceRecomposition);
+      const recompositionMode = sourceRecomposition?.dataset.recompositionMode || "";
+      const hasSemanticRecomposition = recompositionMode.startsWith("semantic-");
+      const adaptationCues = svg ? svg.querySelectorAll(".source-adaptation-cues").length : 0;
       const hasSourceTitle = Boolean(svg?.dataset.basePatternTitle);
-      return { id: row.dataset.compositionPatternId, elements, marks, title, compositionLines, quadrantFields, hasSignature, hasSourceRecomposition, hasSourceTitle };
+      return { id: row.dataset.compositionPatternId, elements, marks, title, compositionLines, quadrantFields, hasSignature, hasSourceRecomposition, hasSemanticRecomposition, adaptationCues, hasSourceTitle };
     });
-    const blankSvgs = svgReports.filter(report => report.marks < 8 || !report.title || report.compositionLines < 2 || report.quadrantFields < 4 || !report.hasSignature || !report.hasSourceRecomposition || !report.hasSourceTitle);
+    const blankSvgs = svgReports.filter(report => report.marks < 8 || !report.title || report.compositionLines < 2 || report.quadrantFields < 4 || !report.hasSignature || !report.hasSourceRecomposition || !report.hasSemanticRecomposition || report.adaptationCues || !report.hasSourceTitle);
     if (blankSvgs.length) {
-      findings.push(`${sheetId} has blank or weak SVG previews: ${blankSvgs.slice(0, 5).map(report => report.id).join(", ")}.`);
+      findings.push(`${sheetId} has blank, cloned, cue-overlaid, or weak SVG previews: ${blankSvgs.slice(0, 5).map(report => report.id).join(", ")}.`);
     }
     const armature = document.querySelector("#sheet-overview svg");
     if (!armature) {

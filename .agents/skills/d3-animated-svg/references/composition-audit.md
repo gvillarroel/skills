@@ -89,7 +89,7 @@ Each rendered card must include an inline SVG preview and expose:
 - `data-quadrants`: the quadrant roles used by the optimized variant.
 - `data-reviewed`: `true` after the pattern has been reviewed.
 
-Each inline SVG preview must include visible `.composition-line` elements, at least four `.quadrant-field` regions, a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` group that identifies the source pattern used for the recomposition. Composition anchors, lane labels, rings, grid cells, or context panels may be added around the recomposed source marks, but they should strengthen the requested armature without replacing the source pattern.
+Each inline SVG preview must include visible `.composition-line` elements, at least four `.quadrant-field` regions, a `.source-pattern-recomposition` group that preserves or faithfully recreates the rendered base marks, and a `.base-signature` group that identifies the source pattern used for the recomposition. The composition must be carried by the recomposed source marks themselves; source-clone fallback and `.source-adaptation-cues` overlays are critique failures.
 
 Do not use `data-fit`, fit badges, or `strong` / `support` tiers. The sheet membership itself means the variant is good enough for that composition.
 
