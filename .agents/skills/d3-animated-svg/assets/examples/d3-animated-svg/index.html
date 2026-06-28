@@ -206,6 +206,14 @@
       border-bottom: 0;
     }
 
+    .example-card--full {
+      grid-column: 1 / -1;
+    }
+
+    .example-card--full .viz-frame {
+      aspect-ratio: 1.956;
+    }
+
     .example-header {
       min-height: 118px;
       padding: 16px 16px 12px;
@@ -339,6 +347,15 @@
 
       .example-card--wide {
         grid-column: span 1;
+      }
+
+      .example-card--full {
+        grid-column: span 1;
+        overflow-x: auto;
+      }
+
+      .example-card--full .viz-frame {
+        min-width: 880px;
       }
 
       .example-header {

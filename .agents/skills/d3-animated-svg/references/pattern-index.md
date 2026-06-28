@@ -107,6 +107,8 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-pattern-candlestick` | Financial | Candlestick | `references/patterns/candlestick.md` |
 | `d3-pattern-flow-tokens` | Flow | Flow Tokens | `references/patterns/flow-tokens.md` |
 | `d3-pattern-circuit-signal-traces` | Circuit | Circuit Signal Traces | `references/patterns/circuit-signal-traces.md` |
+| `d3-pattern-process-pid-control-loop` | Process engineering | P&ID Control Loop | `references/patterns/process-pid-control-loop.md` |
+| `d3-pattern-natural-math-archetypes` | Natural math | Natural Math Archetypes | `references/patterns/natural-math-archetypes.md` |
 | `d3-pattern-dorling` | Geospatial | Dorling Cartogram | `references/patterns/dorling.md` |
 | `d3-pattern-bar-race` | Ranking | Bar Race | `references/patterns/bar-race.md` |
 | `d3-pattern-focus-context` | Interaction | Focus Context | `references/patterns/focus-context.md` |
@@ -131,6 +133,7 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-pattern-critical-path` | Flow | Critical Path DAG | `references/patterns/critical-path.md` |
 | `d3-pattern-critical-chain-buffer` | Critical | Critical Chain Buffer | `references/patterns/critical-chain-buffer.md` |
 | `d3-pattern-critical-incident-escalation` | Critical | Critical Incident Escalation | `references/patterns/critical-incident-escalation.md` |
+| `d3-pattern-critical-fault-tree` | Critical | Critical Fault Tree | `references/patterns/critical-fault-tree.md` |
 | `d3-pattern-critical-slo-burn-rate` | Critical | Critical SLO Burn Rate | `references/patterns/critical-slo-burn-rate.md` |
 | `d3-pattern-critical-queue-backpressure` | Critical | Critical Queue Backpressure | `references/patterns/critical-queue-backpressure.md` |
 | `d3-pattern-critical-cache-stampede` | Critical | Critical Cache Stampede | `references/patterns/critical-cache-stampede.md` |

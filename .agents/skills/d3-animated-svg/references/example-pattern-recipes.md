@@ -207,6 +207,19 @@ Use when the critical story is incident response rather than project scheduling:
 - Expose `data-pattern-family="critical-incident"`, `data-event-count`, `data-escalation-count`, `data-critical-escalation-count`, `data-phase-count`, `data-team-count`, `data-mitigation-count`, `data-communication-count`, `data-status-card-count`, `.critical-incident-event`, `.escalation-link`, `.critical-escalation`, `.escalation-pulse`, `.response-team`, `.mitigation-step`, `.communication-beat`, and `.incident-status-card` for audits.
 - Prefer `scripts/build_critical_incident_escalation.py` for a self-contained standalone HTML starting point in isolated workspaces.
 
+## Critical Fault Tree
+
+Pattern ID: `d3-pattern-critical-fault-tree`.
+
+Use when a D3/SVG artifact needs a fault tree analysis view for safety, reliability, process, aerospace, nuclear, or operations risk: top event, AND/OR failure gates, basic events, undeveloped events, minimal cut sets, and risk contribution.
+
+- Keep the top event centered and visually dominant; place OR/AND gates directly on the causal path instead of turning the tree into a generic org chart.
+- Use recognizable fault-tree marks: rectangular event boxes, OR/AND gate symbols, circular basic events, diamond undeveloped events, and minimal cut badges.
+- Use red only for the critical top event and dominant single-event cut, orange for redundant equipment failures, purple for protection logic or bypass failures, and neutral gray for screened context.
+- Animate minimal cut evidence upward along hidden motion paths that avoid readable labels.
+- Expose `data-pattern-family="critical-fault-tree"`, `data-event-count`, `data-basic-event-count`, `data-gate-count`, `data-minimal-cut-count`, `data-risk-panel-count`, `.fault-event-box`, `.basic-event`, `.undeveloped-event`, `.fault-gate`, `.fault-link`, `.minimal-cut-link`, `.fault-cut-pulse`, and `.fault-risk-card` for audits.
+- Prefer `scripts/build_critical_fault_tree.py` for a self-contained standalone HTML starting point in isolated workspaces.
+
 ## Critical SLO Burn Rate
 
 Pattern ID: `d3-pattern-critical-slo-burn-rate`.
@@ -381,6 +394,33 @@ Use when a D3/SVG artifact needs organic, botanical, cellular, coral-like, liche
 - Use `.organic-seed`, `.organic-branch`, `.organic-rd-cell`, `.organic-aggregate-particle`, and `.organic-dla-link` hooks so browser audits can prove the intended model survived adaptation.
 - Animate growth in model order: seed index, grammar path order, field sweep, or DLA attachment order.
 - Prefer `scripts/build_organic_growth_patterns.py` for a self-contained standalone HTML starting point in isolated workspaces.
+
+## Natural Math Archetypes
+
+Pattern ID: `d3-pattern-natural-math-archetypes`.
+
+Use when a concept explainer needs mathematically defensible archetypes from nature organized around the theory-of-three contract: invariant, generative rule, and natural expression.
+
+- Keep one panel per archetype. The current reusable set is golden-angle phyllotaxis, pi circular waves, logarithmic spirals, fractal branching, hexagonal packing, and Voronoi cell fields.
+- Expose root constants for audits: `data-phi`, `data-pi`, `data-golden-angle-degrees`, and `data-hex-circle-packing-density`.
+- Avoid popular but weak claims. Do not imply all shells are golden spirals, all plants follow Fibonacci counts, or honeycomb perimeter optimality is the same as circle-packing density.
+- Draw every archetype from a deterministic formula or construction. Use no decorative random blobs.
+- Keep the three readable roles consistent across panels: invariant, rule, and nature.
+- Expose `.natural-archetype`, `.archetype-visual`, `.natural-seed`, `.natural-wave-ring`, `.natural-log-spiral`, `.fractal-branch`, `.hex-pack-cell`, `.voronoi-leaf-cell`, and `.voronoi-site` hooks.
+- Prefer `scripts/build_natural_math_archetypes.py` for a self-contained standalone HTML starting point in isolated workspaces.
+
+## Process P&ID Control Loop
+
+Pattern ID: `d3-pattern-process-pid-control-loop`.
+
+Use when a D3/SVG artifact needs a process-engineering P&ID style diagram: process equipment, pipe runs, valves, instrument bubbles, dashed control signals, safety interlocks, and utility lines.
+
+- Build around a stable left-to-right process pipe; place control logic above or near the controlled equipment instead of turning the diagram into a generic flowchart.
+- Use simplified but recognizable P&ID symbols: vertical vessels/tanks, pump circles with impeller wedges, exchanger bodies with coils, bowtie valve symbols, and round instrument bubbles with tag plus loop number.
+- Keep color mostly functional: blue process flow, orange utility/temperature duty, green level control, purple flow control, red only for high-high trip or safety shutdown, and neutral grays for equipment shells.
+- Preserve dash semantics. Do not run a path-draw helper that replaces dashed signal-line stroke patterns unless the final dash pattern is restored.
+- Expose `.pid-equipment`, `.pid-valve`, `.pid-instrument`, `.pid-process-line`, `.pid-signal-line`, `.pid-trip-line`, `.pid-flow-pulse`, and count attributes for audits.
+- Prefer `scripts/build_process_pid_control_loop.py` for a self-contained standalone HTML starting point in isolated workspaces.
 
 ## Parabolic Arcs For SDLC Tasks
 

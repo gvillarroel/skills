@@ -92,6 +92,7 @@
     ["flow-spine", "flow-tokens", "flow", "token stream", "Use moving tokens along the spine to show cadence and direction."],
     ["flow-spine", "critical-path", "flow", "critical path spine", "Place dependencies on a clear process spine and reserve branches for risks."],
     ["diagonal-armature", "critical-path", "flow", "diagonal critical path", "Put the critical dependency path on the major diagonal."],
+    ["balance-symmetry", "critical-fault-tree", "hierarchy", "balanced fault tree", "Keep the top event centered while AND/OR branches counterweight minimal cut sets."],
     ["thirds-fifths-grid", "data-table-grid", "table", "structured table grid", "Use row bands and column fifths for scan-friendly tabular comparison."],
     ["golden-root", "inline-bar-table", "table", "dominant table field", "Let values use the long field and keep notes in the short field."],
     ["thirds-fifths-grid", "pivot-heat-table", "table", "modular heat table", "Snap heat cells to a modular grid so totals and rows align."],
@@ -162,6 +163,7 @@
     "d3-composition-balance-symmetry-venn-three-circle",
     "d3-composition-balance-symmetry-bullet",
     "d3-composition-balance-symmetry-force-network",
+    "d3-composition-balance-symmetry-critical-fault-tree",
     "d3-composition-diagonal-armature-geo-route",
     "d3-composition-diagonal-armature-qkv-projection-flow",
     "d3-composition-diagonal-armature-waterfall",
@@ -188,6 +190,7 @@
     "d3-composition-thirds-fifths-grid-attention-matrix-tiles",
     "d3-composition-thirds-fifths-grid-correlogram-histogram",
     "d3-composition-thirds-fifths-grid-data-table-grid",
+    "d3-composition-thirds-fifths-grid-natural-math-archetypes",
     "d3-composition-thirds-fifths-grid-sortable-rank-table",
     "d3-composition-thirds-fifths-grid-tile-choropleth",
     "d3-composition-thirds-fifths-grid-waffle",
@@ -214,6 +217,7 @@
     "d3-composition-flow-spine-kv-cache-growth",
     "d3-composition-flow-spine-moe-router-capacity",
     "d3-composition-flow-spine-parallel-sets",
+    "d3-composition-flow-spine-process-pid-control-loop",
     "d3-composition-flow-spine-sankey",
     "d3-composition-flow-spine-speculative-decoding-verify",
     "d3-composition-dense-label-lanes-airports-voronoi",
@@ -286,10 +290,11 @@
     const id = source.id || "";
     const family = `${source.kicker || ""} ${source.title || ""}`.toLowerCase();
     if (/airport/.test(family) || /airport/.test(id)) return "geospatial";
+    if (/natural math|archetype|phyllotaxis|hexagonal packing|voronoi cell/.test(family) || /natural-math-archetypes/.test(id)) return "matrix";
     if (/table|kanban|scorecard|document|gemma/.test(family) || /table|kanban|document|gemma/.test(id)) return "table";
     if (/matrix|heatmap|calendar|waffle|context|attention|correlogram|rectbin|tile|matmul/.test(family) || /matrix|calendar|waffle|context|attention|matmul/.test(id)) return "matrix";
     if (/\boverlap\b|\bvenn\b/.test(family) || /overlap|venn|circle-rosette|circle-chain|circle-cluster|circle-bridge|three-circle|five-circle|seven-circle/.test(id)) return "set-overlap";
-    if (/\bflow\b|sankey|alluvial|sequence|state|gantt|git|journey|dag|pipeline|tokens|routing|router|decode|projection flow|parallel sets/.test(family) || /sankey|alluvial|(^|-)flow($|-)|sequence|state|gantt|git|journey|qkv|router|decoding|parallel-sets/.test(id)) return "flow";
+    if (/\bflow\b|sankey|alluvial|sequence|state|gantt|git|journey|dag|pipeline|tokens|routing|router|decode|projection flow|parallel sets|process engineering|control loop|p&id/.test(family) || /sankey|alluvial|(^|-)flow($|-)|sequence|state|gantt|git|journey|qkv|router|decoding|parallel-sets|process-pid-control-loop/.test(id)) return "flow";
     if (/network|simulation|bundle|arc diagram|quadtree|delaunay|voronoi|mesh|hulls|collisions/.test(family) || /network|bundle|quadtree|delaunay|voronoi|hulls|collisions/.test(id)) return "network";
     if (/hierarchy|tree|treemap|pack|sunburst|icicle|dendrogram|tangle/.test(family) || /tree|treemap|pack|sunburst|icicle|dendrogram|tangle/.test(id)) return "hierarchy";
     if (/radial|polar|chord|clock|moon|orbit|roulette|circular|rosette|flower|gear/.test(family) || /radial|polar|chord|clock|moon|orbit|roulette|circular|rosette|epicyclic/.test(id)) return "radial";
@@ -507,7 +512,8 @@
       "dot-plot",
       "lollipop",
       "bar-race",
-      "marimekko"
+      "marimekko",
+      "natural-math-archetypes"
     )) {
       add("thirds-fifths-grid", kind === "table" ? "table" : "matrix", "the information is modular, so rows, columns, and repeated panels carry the message better than a free layout");
     }
@@ -568,6 +574,7 @@
       "web-load-timeline",
       "event-cascade",
       "critical-path",
+      "process-pid-control-loop",
       "mlp-simple",
       "deep-learning-model-execution",
       "mlp-internals",

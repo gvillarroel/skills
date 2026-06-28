@@ -217,6 +217,8 @@
     { id: "spiral-timeline", kicker: "Temporal", title: "Spiral Timeline", copy: "Long sequences wrapped into cyclic space.", render: renderSpiralTimeline },
     { id: "candlestick", kicker: "Financial", title: "Candlestick", copy: "Open-high-low-close movement with wicks.", render: renderCandlestick },
     { id: "flow-tokens", kicker: "Flow", title: "Flow Tokens", copy: "Moving particles reveal direction and cadence.", render: renderFlowTokens },
+    { id: "process-pid-control-loop", kicker: "Process Engineering", title: "P&ID Control Loop", copy: "A process vessel, pump, exchanger, valves, instrument bubbles, dashed signal lines, interlock, and flow pulses form a P&ID-style control loop.", render: renderProcessPidControlLoop, size: "wide" },
+    { id: "natural-math-archetypes", kicker: "Natural Math", title: "Natural Math Archetypes", copy: "Six archetypes connect a mathematical invariant, a generative rule, and a natural expression for the theory of three.", render: renderNaturalMathArchetypes, size: "full" },
     { id: "dorling", kicker: "Geospatial", title: "Dorling Cartogram", copy: "Values collide around geographic anchors.", render: renderDorlingCartogram },
     { id: "bar-race", kicker: "Ranking", title: "Bar Race", copy: "Ranks and magnitudes animate between states.", render: renderBarRace },
     { id: "focus-context", kicker: "Interaction", title: "Focus Context", copy: "A selected window links overview and detail.", render: renderFocusContext },
@@ -240,6 +242,7 @@
     { id: "pen-label-optimizer", kicker: "Labels", title: "Pen Label Optimizer", copy: "Dense mixed-length labels compare placement strategies and keep the best readable subset.", render: renderPenLabelOptimizer },
     { id: "critical-path", kicker: "Flow", title: "Critical Path DAG", copy: "Weighted dependencies reveal the bottleneck route.", render: renderCriticalPath },
     { id: "critical-incident-escalation", kicker: "Critical", title: "Critical Incident Escalation", copy: "A SEV response timeline shows detection, command, comms, SLA pressure, mitigation, and recovery.", render: renderCriticalIncidentEscalation, size: "wide" },
+    { id: "critical-fault-tree", kicker: "Critical", title: "Critical Fault Tree", copy: "A safety fault tree traces a top event through OR and AND gates, basic events, minimal cut sets, and risk contribution.", render: renderCriticalFaultTree, size: "wide" },
     { id: "mlp-simple", kicker: "AI", title: "MLP Simple", copy: "Gray neurons pulse red one layer at a time.", render: renderMlpSimple },
     { id: "deep-learning-model-execution", kicker: "AI", title: "Deep Learning Model Execution", copy: "A square model frame contains only an internal MLP pulsing through execution.", render: renderDeepLearningModelExecution },
     { id: "mlp-internals", kicker: "AI", title: "MLP Internals", copy: "A forward pass pulses neurons while x, z, a, W, b, and y_hat stay visible.", render: renderMlpInternals },
@@ -361,7 +364,7 @@
     gallery.selectAll("article")
       .data(examples)
       .join("article")
-      .attr("class", d => `example-card${d.size === "wide" ? " example-card--wide" : ""}`)
+      .attr("class", d => `example-card${d.size === "wide" ? " example-card--wide" : ""}${d.size === "full" ? " example-card--full" : ""}`)
       .attr("id", d => d.patternId)
       .attr("data-example", d => d.id)
       .attr("data-pattern-id", d => d.patternId)
@@ -8108,6 +8111,454 @@
     });
   }
 
+  function renderProcessPidControlLoop() {
+    const svg = prepareSvg("process-pid-control-loop", "P&ID control loop", "A process engineering piping and instrumentation diagram with equipment, valves, instruments, signal lines, interlock logic, and animated flow.");
+    svg
+      .attr("data-pattern-family", "process-engineering")
+      .attr("data-equipment-count", 4)
+      .attr("data-valve-count", 3)
+      .attr("data-instrument-count", 4)
+      .attr("data-signal-line-count", 5)
+      .attr("data-process-line-count", 3);
+
+    const flowArrow = addArrowMarker(svg, "process-pid-control-loop-flow", palette.blue);
+    const signalArrow = addArrowMarker(svg, "process-pid-control-loop-signal", palette.purple);
+    const tripArrow = addArrowMarker(svg, "process-pid-control-loop-trip", palette.red);
+    const shell = svg.append("g").attr("class", "pid-shell");
+    shell.append("rect")
+      .attr("x", 24)
+      .attr("y", 28)
+      .attr("width", 512)
+      .attr("height", 374)
+      .attr("rx", 8)
+      .attr("fill", palette.surface)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", 1.4);
+    shell.append("text").attr("class", "caption").attr("x", 40).attr("y", 54).text("P&ID 101 - reactor feed control");
+
+    const grid = svg.append("g")
+      .attr("class", "pid-grid")
+      .attr("stroke", palette.gray100)
+      .attr("stroke-width", .8);
+    d3.range(64, 500, 44).forEach(x => grid.append("line").attr("x1", x).attr("x2", x).attr("y1", 72).attr("y2", 348));
+    d3.range(88, 348, 44).forEach(y => grid.append("line").attr("x1", 42).attr("x2", 518).attr("y1", y).attr("y2", y));
+
+    const pipeLayer = svg.append("g").attr("class", "pid-process-lines");
+    const route = [
+      { id: "feed-main", kind: "process", d: "M40,262H136H180H252H286H374H414H496H536", color: palette.blue, width: 5, dash: "" },
+      { id: "steam-utility", kind: "utility", d: "M304,344V292H326V282", color: palette.orange, width: 3.4, dash: "8 6" },
+      { id: "drain", kind: "drain", d: "M448,306V342H484", color: palette.gray600, width: 2.4, dash: "5 5" }
+    ];
+    const processPaths = pipeLayer.selectAll("path.pid-process-line")
+      .data(route)
+      .join("path")
+      .attr("id", d => `pid-route-${d.id}`)
+      .attr("class", "pid-process-line")
+      .attr("data-line-id", d => d.id)
+      .attr("data-line-kind", d => d.kind)
+      .attr("d", d => d.d)
+      .attr("fill", "none")
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", d => d.width)
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-dasharray", d => d.dash)
+      .attr("marker-end", d => d.id === "feed-main" ? flowArrow : null);
+    drawPath(processPaths.filter(d => !d.dash), .08, 1.12);
+    fadeIn(processPaths.filter(d => d.dash), .18, .62);
+
+    const equipmentLayer = svg.append("g").attr("class", "pid-equipment-layer");
+    function label(x, y, text, anchor = "middle") {
+      return equipmentLayer.append("text")
+        .attr("class", "mark-label")
+        .attr("x", x)
+        .attr("y", y)
+        .attr("text-anchor", anchor)
+        .attr("font-size", 9)
+        .text(text);
+    }
+
+    const tank = equipmentLayer.append("g").attr("class", "pid-equipment pid-vessel").attr("data-equipment-id", "t-101");
+    tank.append("rect").attr("x", 70).attr("y", 170).attr("width", 58).attr("height", 106).attr("fill", palette.gray50).attr("stroke", palette.ink).attr("stroke-width", 1.7);
+    tank.append("ellipse").attr("cx", 99).attr("cy", 170).attr("rx", 29).attr("ry", 9).attr("fill", palette.surface).attr("stroke", palette.ink).attr("stroke-width", 1.7);
+    tank.append("ellipse").attr("cx", 99).attr("cy", 276).attr("rx", 29).attr("ry", 9).attr("fill", palette.gray100).attr("stroke", palette.ink).attr("stroke-width", 1.4);
+    tank.append("rect").attr("x", 76).attr("y", 220).attr("width", 46).attr("height", 48).attr("fill", palette.blueHighlight).attr("fill-opacity", .55).attr("stroke", "none");
+    tank.append("line").attr("x1", 76).attr("x2", 122).attr("y1", 220).attr("y2", 220).attr("stroke", palette.blue).attr("stroke-width", 2);
+    label(99, 300, "T-101 feed");
+
+    const pump = equipmentLayer.append("g").attr("class", "pid-equipment pid-pump").attr("data-equipment-id", "p-101").attr("transform", "translate(204 262)");
+    pump.append("circle").attr("r", 22).attr("fill", palette.gray50).attr("stroke", palette.ink).attr("stroke-width", 1.8);
+    pump.append("path").attr("d", "M-8,-10L14,0L-8,10Z").attr("fill", palette.blueHighlight).attr("stroke", palette.blue).attr("stroke-width", 1.4);
+    label(204, 300, "P-101");
+
+    const exchanger = equipmentLayer.append("g").attr("class", "pid-equipment pid-heat-exchanger").attr("data-equipment-id", "e-101");
+    exchanger.append("rect").attr("x", 286).attr("y", 218).attr("width", 82).attr("height", 58).attr("rx", 6).attr("fill", palette.gray50).attr("stroke", palette.ink).attr("stroke-width", 1.7);
+    exchanger.append("path").attr("d", "M298,248C306,226 320,226 328,248S350,270 358,248").attr("fill", "none").attr("stroke", palette.orange).attr("stroke-width", 2.4).attr("stroke-linecap", "round");
+    exchanger.append("line").attr("x1", 286).attr("x2", 368).attr("y1", 247).attr("y2", 247).attr("stroke", palette.gray300).attr("stroke-width", 1);
+    label(327, 300, "E-101 HX");
+
+    const reactor = equipmentLayer.append("g").attr("class", "pid-equipment pid-reactor").attr("data-equipment-id", "r-101");
+    reactor.append("rect").attr("x", 412).attr("y", 154).attr("width", 72).attr("height", 142).attr("fill", palette.gray50).attr("stroke", palette.ink).attr("stroke-width", 1.8);
+    reactor.append("ellipse").attr("cx", 448).attr("cy", 154).attr("rx", 36).attr("ry", 10).attr("fill", palette.surface).attr("stroke", palette.ink).attr("stroke-width", 1.8);
+    reactor.append("ellipse").attr("cx", 448).attr("cy", 296).attr("rx", 36).attr("ry", 10).attr("fill", palette.gray100).attr("stroke", palette.ink).attr("stroke-width", 1.4);
+    reactor.append("path").attr("d", "M432,188H464M432,220H464M432,252H464").attr("stroke", palette.gray300).attr("stroke-width", 1.2).attr("stroke-dasharray", "4 4");
+    label(448, 322, "R-101 reactor");
+
+    function drawValve(data) {
+      const g = svg.append("g")
+        .attr("class", `pid-valve ${data.kind}`)
+        .attr("data-valve-id", data.id)
+        .attr("transform", `translate(${data.x} ${data.y})`);
+      g.append("path")
+        .attr("d", "M-15,-10L0,0L-15,10ZM15,-10L0,0L15,10Z")
+        .attr("fill", data.fill)
+        .attr("stroke", data.color)
+        .attr("stroke-width", 1.8)
+        .attr("stroke-linejoin", "round");
+      g.append("line").attr("x1", 0).attr("x2", 0).attr("y1", -18).attr("y2", -3).attr("stroke", data.color).attr("stroke-width", 1.4);
+      g.append("rect").attr("x", -10).attr("y", -32).attr("width", 20).attr("height", 10).attr("rx", 3).attr("fill", palette.surface).attr("stroke", data.color).attr("stroke-width", 1.2);
+      g.append("text")
+        .attr("class", "mark-label")
+        .attr("x", data.labelX || 0)
+        .attr("y", data.labelY || 28)
+        .attr("text-anchor", data.labelAnchor || "middle")
+        .attr("font-size", 8.4)
+        .text(data.label);
+      return g;
+    }
+    const valves = [
+      { id: "lv-101", label: "LV-101", x: 146, y: 262, color: palette.green, fill: palette.greenHighlight, kind: "level-control" },
+      { id: "tv-102", label: "TV-102", x: 304, y: 344, color: palette.orange, fill: palette.orangeHighlight, kind: "temperature-control", labelX: 36, labelY: 5, labelAnchor: "start" },
+      { id: "fv-103", label: "FV-103", x: 506, y: 262, color: palette.purple, fill: palette.purpleHighlight, kind: "flow-control" }
+    ];
+    const valveMarks = valves.map(drawValve);
+
+    const instruments = [
+      { id: "lic-101", tag: "LIC", loop: "101", x: 98, y: 104, color: palette.green, target: [146, 230], note: "level" },
+      { id: "tic-102", tag: "TIC", loop: "102", x: 326, y: 96, color: palette.orange, target: [304, 312], note: "heat duty" },
+      { id: "fic-103", tag: "FIC", loop: "103", x: 506, y: 108, color: palette.purple, target: [506, 230], note: "outlet flow" },
+      { id: "hs-104", tag: "HS", loop: "104", x: 430, y: 72, color: palette.red, target: [488, 238], note: "HH trip" }
+    ];
+    const instrumentLayer = svg.append("g").attr("class", "pid-instrument-layer");
+    const instrumentGroups = instrumentLayer.selectAll("g.pid-instrument")
+      .data(instruments)
+      .join("g")
+      .attr("class", "pid-instrument")
+      .attr("data-instrument-id", d => d.id)
+      .attr("data-loop", d => d.loop)
+      .attr("transform", d => `translate(${d.x} ${d.y})`);
+    instrumentGroups.append("circle").attr("r", 22).attr("fill", palette.surface).attr("stroke", d => d.color).attr("stroke-width", 1.8);
+    instrumentGroups.append("line").attr("x1", -16).attr("x2", 16).attr("y1", 1).attr("y2", 1).attr("stroke", palette.gray300).attr("stroke-width", 1);
+    instrumentGroups.append("text").attr("class", "mark-label").attr("x", 0).attr("y", -5).attr("text-anchor", "middle").attr("font-size", 8.5).text(d => d.tag);
+    instrumentGroups.append("text").attr("class", "mark-label").attr("x", 0).attr("y", 12).attr("text-anchor", "middle").attr("font-size", 8.2).text(d => d.loop);
+    grow(instrumentGroups.select("circle"), "r", 5, 22, .18, .55);
+
+    const signals = [
+      { id: "lic-to-lv", source: "lic-101", d: "M98,126V152H146V230", color: palette.green, target: "lv-101" },
+      { id: "tic-to-tv", source: "tic-102", d: "M326,118V184H304V312", color: palette.orange, target: "tv-102" },
+      { id: "fic-to-fv", source: "fic-103", d: "M506,130V230", color: palette.purple, target: "fv-103" },
+      { id: "reactor-temp", source: "r-101", d: "M448,154V116H350", color: palette.orange, target: "tic-102" },
+      { id: "high-high-trip", source: "hs-104", d: "M430,94H482V238", color: palette.red, target: "fv-103", trip: true }
+    ];
+    const signalPaths = svg.append("g").attr("class", "pid-signal-lines").selectAll("path.pid-signal-line")
+      .data(signals)
+      .join("path")
+      .attr("id", d => `pid-signal-${d.id}`)
+      .attr("class", d => `pid-signal-line${d.trip ? " pid-trip-line" : ""}`)
+      .attr("data-signal-id", d => d.id)
+      .attr("data-source", d => d.source)
+      .attr("data-target", d => d.target)
+      .attr("d", d => d.d)
+      .attr("fill", "none")
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", d => d.trip ? 2 : 1.55)
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-dasharray", d => d.trip ? "8 5" : "4 5")
+      .attr("marker-end", d => d.trip ? tripArrow : signalArrow);
+    fadeIn(signalPaths, .28, .62);
+
+    const pulseLayer = svg.append("g").attr("class", "pid-flow-pulses");
+    [0, .9, 1.8].forEach((begin, index) => {
+      const pulse = pulseLayer.append("circle")
+        .attr("class", "pid-flow-pulse")
+        .attr("data-pulse-index", index)
+        .attr("r", 5)
+        .attr("fill", palette.blue)
+        .attr("stroke", palette.surface)
+        .attr("stroke-width", 1.4);
+      pulse.append("animateMotion")
+        .attr("dur", "3.8s")
+        .attr("begin", `${begin}s`)
+        .attr("repeatCount", "indefinite")
+        .attr("rotate", "auto")
+        .append("mpath")
+        .attr("href", "#pid-route-feed-main");
+    });
+    const steamPulse = pulseLayer.append("circle")
+      .attr("class", "pid-utility-pulse")
+      .attr("r", 4.6)
+      .attr("fill", palette.orange)
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", 1.3);
+    steamPulse.append("animateMotion").attr("dur", "2.8s").attr("begin", ".75s").attr("repeatCount", "indefinite").append("mpath").attr("href", "#pid-route-steam-utility");
+
+    const trip = svg.append("g").attr("class", "pid-safety-interlock").attr("data-interlock-id", "hh-104-shutdown");
+    trip.append("rect").attr("x", 372).attr("y", 26).attr("width", 98).attr("height", 24).attr("rx", 5).attr("fill", palette.redHighlight).attr("stroke", palette.red).attr("stroke-width", 1.3);
+    trip.append("text").attr("class", "mark-label").attr("x", 421).attr("y", 42).attr("text-anchor", "middle").attr("font-size", 8.2).text("HH closes FV");
+
+    const legend = svg.append("g").attr("class", "pid-legend").attr("transform", "translate(58 386)");
+    [
+      { label: "process pipe", color: palette.blue, dash: "" },
+      { label: "control signal", color: palette.purple, dash: "4 5" },
+      { label: "safety trip", color: palette.red, dash: "8 5" }
+    ].forEach((item, index) => {
+      const x = index * 150;
+      legend.append("line").attr("x1", x).attr("x2", x + 34).attr("y1", 0).attr("y2", 0).attr("stroke", item.color).attr("stroke-width", 2.4).attr("stroke-dasharray", item.dash);
+      legend.append("text").attr("class", "caption").attr("x", x + 42).attr("y", 4).text(item.label);
+    });
+
+    fadeIn(equipmentLayer.selectAll(".pid-equipment"), .1, .55);
+    fadeIn(d3.selectAll(valveMarks.map(mark => mark.node())), .18, .55);
+    fadeIn(trip, .38, .5);
+  }
+
+  function renderNaturalMathArchetypes() {
+    const svg = prepareSvg("natural-math-archetypes", "Natural math archetypes", "Six mathematically specified nature patterns arranged as invariant, generative rule, and natural expression.");
+    const phi = (1 + Math.sqrt(5)) / 2;
+    const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+    const hexDensity = Math.PI / (2 * Math.sqrt(3));
+    svg
+      .attr("data-pattern-family", "natural-math")
+      .attr("data-archetype-count", 6)
+      .attr("data-theory-of-three", "invariant-rule-nature")
+      .attr("data-phi", phi.toFixed(12))
+      .attr("data-pi", Math.PI.toFixed(12))
+      .attr("data-golden-angle-degrees", (goldenAngle * 180 / Math.PI).toFixed(9))
+      .attr("data-hex-circle-packing-density", hexDensity.toFixed(12));
+
+    const panels = [
+      { id: "golden-angle-phyllotaxis", title: "Golden-angle phyllotaxis", invariant: "phi, 137.508 deg", rule: "theta=n*golden angle", nature: "seed head or rosette", x: 20, y: 44 },
+      { id: "pi-circular-wave", title: "Pi circular wave", invariant: "C=2*pi*r", rule: "radius expands evenly", nature: "ripples or rings", x: 194, y: 44 },
+      { id: "logarithmic-spiral-shell", title: "Logarithmic spiral", invariant: "r=a*exp(b*t)", rule: "equiangular growth", nature: "shell-like growth", x: 368, y: 44 },
+      { id: "fractal-branching", title: "Fractal branching", invariant: "scale repeats", rule: "recursive branches", nature: "ferns, trees, rivers", x: 20, y: 226 },
+      { id: "hexagonal-packing", title: "Hexagonal packing", invariant: "density .9069", rule: "120 deg neighbors", nature: "honeycomb cells", x: 194, y: 226 },
+      { id: "voronoi-leaf-cells", title: "Voronoi cell field", invariant: "nearest boundary", rule: "bisectors split cells", nature: "leaf pavement cells", x: 368, y: 226 }
+    ];
+    const panelWidth = 162;
+    const panelHeight = 154;
+    const panelMap = new Map();
+
+    panels.forEach(panel => {
+      const group = svg.append("g")
+        .attr("class", "natural-archetype")
+        .attr("data-archetype-id", panel.id)
+        .attr("transform", `translate(${panel.x},${panel.y})`);
+      panelMap.set(panel.id, group);
+      group.append("rect")
+        .attr("width", panelWidth)
+        .attr("height", panelHeight)
+        .attr("rx", 8)
+        .attr("fill", palette.surface)
+        .attr("stroke", palette.gray200)
+        .attr("stroke-width", 1.15);
+      group.append("text")
+        .attr("class", "mark-label")
+        .attr("x", 10)
+        .attr("y", 18)
+        .attr("font-size", 9.2)
+        .attr("font-weight", 850)
+        .text(panel.title);
+      [
+        ["Invariant", panel.invariant, palette.blueHighlight, palette.blue],
+        ["Rule", panel.rule, palette.greenHighlight, palette.green],
+        ["Nature", panel.nature, palette.purpleHighlight, palette.purple]
+      ].forEach(([label, value, fill, stroke], index) => {
+        const y = 110 + index * 13;
+        group.append("rect")
+          .attr("class", "archetype-chip")
+          .attr("data-chip-role", label.toLowerCase())
+          .attr("x", 9)
+          .attr("y", y - 9)
+          .attr("width", 144)
+          .attr("height", 11)
+          .attr("rx", 4)
+          .attr("fill", fill)
+          .attr("stroke", stroke)
+          .attr("stroke-opacity", .42);
+        group.append("text")
+          .attr("class", "mark-label")
+          .attr("x", 14)
+          .attr("y", y)
+          .style("font-size", "5.7px")
+          .style("font-weight", "780")
+          .text(`${label}: ${value}`);
+      });
+    });
+
+    const phyllo = panelMap.get("golden-angle-phyllotaxis").append("g")
+      .attr("class", "archetype-visual phyllotaxis-visual")
+      .attr("data-model", "phyllotaxis")
+      .attr("data-phi", phi.toFixed(12))
+      .attr("data-golden-angle-radians", goldenAngle.toFixed(12))
+      .attr("data-golden-angle-degrees", (goldenAngle * 180 / Math.PI).toFixed(9));
+    phyllo.append("circle").attr("cx", 81).attr("cy", 62).attr("r", 41).attr("fill", palette.yellowHighlight).attr("stroke", palette.gray200);
+    const seeds = d3.range(64).map(i => {
+      const theta = i * goldenAngle;
+      const r = 3.65 * Math.sqrt(i);
+      return { i, x: 81 + Math.cos(theta) * r, y: 62 + Math.sin(theta) * r, radius: 1.55 + (1 - i / 64) * .55 };
+    });
+    const seedMarks = phyllo.selectAll("circle.natural-seed").data(seeds).join("circle")
+      .attr("class", "natural-seed")
+      .attr("data-seed-index", d => d.i)
+      .attr("data-divergence-degrees", (goldenAngle * 180 / Math.PI).toFixed(6))
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("fill", d => [palette.blue, palette.green, palette.orange, palette.purple][Math.floor(d.i / 10) % 4])
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", .38);
+    grow(seedMarks, "r", 0, d => d.radius, .04, .34);
+
+    const waves = panelMap.get("pi-circular-wave").append("g")
+      .attr("class", "archetype-visual pi-circular-wave-visual")
+      .attr("data-model", "circle-wave")
+      .attr("data-pi", Math.PI.toFixed(12));
+    [12, 23, 34, 45].forEach((radius, index) => {
+      const ring = waves.append("circle")
+        .attr("class", "natural-wave-ring")
+        .attr("data-radius", radius)
+        .attr("data-circumference", (2 * Math.PI * radius).toFixed(6))
+        .attr("cx", 81)
+        .attr("cy", 62)
+        .attr("r", radius)
+        .attr("fill", "none")
+        .attr("stroke", palette.blue)
+        .attr("stroke-width", 2.4 - index * .3)
+        .attr("stroke-opacity", .72 - index * .1);
+      ring.append("animate").attr("attributeName", "stroke-opacity").attr("values", ".16;.86;.5").attr("dur", "1.3s").attr("begin", `${index * .16}s`).attr("fill", "freeze");
+    });
+    waves.append("circle").attr("cx", 81).attr("cy", 62).attr("r", 4.3).attr("fill", palette.orange).attr("stroke", palette.surface).attr("stroke-width", 1.2);
+
+    const spiral = panelMap.get("logarithmic-spiral-shell").append("g")
+      .attr("class", "archetype-visual logarithmic-spiral-visual")
+      .attr("data-model", "logarithmic-spiral")
+      .attr("data-spiral-a", 4.4)
+      .attr("data-spiral-b", .178);
+    const spiralPoints = d3.range(104).map(i => {
+      const theta = i * .13;
+      const r = 4.4 * Math.exp(.178 * theta);
+      return [81 + Math.cos(theta) * r, 64 + Math.sin(theta) * r, theta, r];
+    });
+    const spiralPath = spiral.append("path")
+      .attr("class", "natural-log-spiral")
+      .attr("d", d3.line().x(d => d[0]).y(d => d[1])(spiralPoints))
+      .attr("fill", "none")
+      .attr("stroke", palette.orange)
+      .attr("stroke-width", 3)
+      .attr("stroke-linecap", "round");
+    drawPath(spiralPath, .08, 1.18);
+    spiral.selectAll("circle.spiral-growth-sample").data(spiralPoints.filter((_, i) => i % 10 === 0)).join("circle")
+      .attr("class", "spiral-growth-sample")
+      .attr("data-theta", d => d[2].toFixed(3))
+      .attr("data-radius", d => d[3].toFixed(3))
+      .attr("cx", d => d[0])
+      .attr("cy", d => d[1])
+      .attr("r", (_, i) => 2 + i * .28)
+      .attr("fill", palette.orangeHighlight)
+      .attr("stroke", palette.orange)
+      .attr("stroke-width", .85);
+
+    const branching = panelMap.get("fractal-branching").append("g")
+      .attr("class", "archetype-visual fractal-branching-visual")
+      .attr("data-model", "recursive-branching")
+      .attr("data-fractal-depth", 4);
+    const branches = [];
+    function branch(x, y, length, angle, depth) {
+      const x2 = x + Math.cos(angle) * length;
+      const y2 = y + Math.sin(angle) * length;
+      branches.push({ x1: x, y1: y, x2, y2, depth, index: branches.length });
+      if (depth <= 0) return;
+      branch(x2, y2, length * .67, angle - Math.PI / 6.4, depth - 1);
+      branch(x2, y2, length * .61, angle + Math.PI / 5.3, depth - 1);
+      if (depth >= 2) branch(x2, y2, length * .46, angle + Math.PI / 36, depth - 1);
+    }
+    branch(81, 94, 23, -Math.PI / 2, 4);
+    branching.attr("data-branch-count", branches.length);
+    branching.append("line").attr("x1", 38).attr("x2", 124).attr("y1", 96).attr("y2", 96).attr("stroke", palette.gray200);
+    const branchPaths = branching.selectAll("path.fractal-branch").data(branches).join("path")
+      .attr("class", "fractal-branch")
+      .attr("data-branch-index", d => d.index)
+      .attr("data-depth", d => d.depth)
+      .attr("d", d => `M${d.x1},${d.y1}L${d.x2},${d.y2}`)
+      .attr("fill", "none")
+      .attr("stroke", d => d.depth < 2 ? palette.green : palette.blue)
+      .attr("stroke-width", d => 1 + d.depth * .42)
+      .attr("stroke-linecap", "round");
+    branchPaths.each(function (d) {
+      const length = Math.hypot(d.x2 - d.x1, d.y2 - d.y1);
+      d3.select(this).attr("pathLength", length.toFixed(3)).attr("stroke-dasharray", `${length} ${length}`).attr("stroke-dashoffset", 0)
+        .append("animate").attr("attributeName", "stroke-dashoffset").attr("values", `${length};0`).attr("dur", ".48s").attr("begin", `${d.index * .012}s`).attr("fill", "freeze");
+    });
+
+    const hexes = panelMap.get("hexagonal-packing").append("g")
+      .attr("class", "archetype-visual hexagonal-packing-visual")
+      .attr("data-model", "hexagonal-packing")
+      .attr("data-neighbor-angle-degrees", 120)
+      .attr("data-circle-packing-density", hexDensity.toFixed(12));
+    function hexPoints(cx, cy, r) {
+      return d3.range(6).map(i => {
+        const a = Math.PI / 180 * (60 * i + 30);
+        return `${(cx + Math.cos(a) * r).toFixed(1)},${(cy + Math.sin(a) * r).toFixed(1)}`;
+      }).join(" ");
+    }
+    const hexData = [];
+    d3.range(4).forEach(row => {
+      d3.range(5).forEach(col => {
+        if ((row === 0 || row === 3) && (col === 0 || col === 4)) return;
+        hexData.push({ row, col, i: hexData.length, x: 45 + col * 17.4 + (row % 2) * 8.7, y: 35 + row * 15.2 });
+      });
+    });
+    const hexMarks = hexes.selectAll("polygon.hex-pack-cell").data(hexData).join("polygon")
+      .attr("class", "hex-pack-cell")
+      .attr("data-cell-index", d => d.i)
+      .attr("points", d => hexPoints(d.x, d.y, 10.1))
+      .attr("fill", palette.yellowHighlight)
+      .attr("stroke", palette.gold)
+      .attr("stroke-width", 1.05);
+    fadeIn(hexMarks, .04, .5);
+
+    const voronoiPanel = panelMap.get("voronoi-leaf-cells").append("g")
+      .attr("class", "archetype-visual voronoi-leaf-cells-visual")
+      .attr("data-model", "voronoi");
+    const leafPath = "M18,55C29,25 132,23 146,55C129,89 32,87 18,55Z";
+    voronoiPanel.append("clipPath").attr("id", "natural-math-leaf-clip").append("path").attr("d", leafPath);
+    voronoiPanel.append("path").attr("d", leafPath).attr("fill", palette.greenHighlight).attr("stroke", palette.green).attr("stroke-width", 1.2);
+    const sites = [[28, 46], [49, 58], [62, 36], [82, 53], [101, 34], [123, 56], [137, 45], [44, 74], [76, 76], [112, 72]];
+    voronoiPanel.attr("data-site-count", sites.length);
+    const delaunay = d3.Delaunay.from(sites);
+    const voronoi = delaunay.voronoi([16, 24, 148, 88]);
+    const cellGroup = voronoiPanel.append("g").attr("clip-path", "url(#natural-math-leaf-clip)");
+    const cells = cellGroup.selectAll("path.voronoi-leaf-cell").data(sites).join("path")
+      .attr("class", "voronoi-leaf-cell")
+      .attr("data-cell-index", (_, i) => i)
+      .attr("d", (_, i) => voronoi.renderCell(i))
+      .attr("fill", (_, i) => [palette.blueHighlight, palette.greenHighlight, palette.orangeHighlight, palette.purpleHighlight][i % 4])
+      .attr("stroke", palette.green)
+      .attr("stroke-width", .8)
+      .attr("opacity", .92);
+    fadeIn(cells, .05, .48);
+    voronoiPanel.selectAll("circle.voronoi-site").data(sites).join("circle")
+      .attr("class", "voronoi-site")
+      .attr("data-site-index", (_, i) => i)
+      .attr("cx", d => d[0])
+      .attr("cy", d => d[1])
+      .attr("r", 1.9)
+      .attr("fill", palette.green);
+    voronoiPanel.append("path").attr("d", "M27,55C57,51 102,62 138,54").attr("fill", "none").attr("stroke", palette.green).attr("stroke-width", 1).attr("stroke-dasharray", "4 5");
+
+    fadeIn(svg.selectAll(".natural-archetype > rect, .natural-archetype > text, .archetype-chip"), .03, .46);
+  }
+
   function renderDorlingCartogram() {
     const svg = prepareSvg("dorling", "Dorling cartogram", "D3 force collision places value circles near geographic anchors.");
     const projection = d3.geoNaturalEarth1().fitExtent([[42, 48], [width - 42, height - 56]], { type: "Sphere" });
@@ -10114,6 +10565,327 @@
     teamGroups.append("text").attr("class", "mark-label").attr("x", 23).attr("y", 10.5).attr("font-size", 8.1).attr("font-weight", 900).text(d => d.label);
     teamGroups.append("text").attr("class", "caption").attr("x", 23).attr("y", 20).attr("font-size", 7.1).attr("font-weight", 820).text(d => d.status);
     fadeIn(teamGroups, 1.6, .35);
+  }
+
+  function renderCriticalFaultTree() {
+    const chartWidth = 760;
+    const chartHeight = 450;
+    const svg = prepareSvg(
+      "critical-fault-tree",
+      "Critical fault tree",
+      "A safety fault tree traces a critical top event through OR and AND gates, basic events, minimal cut sets, and risk contribution."
+    )
+      .attr("viewBox", `0 0 ${chartWidth} ${chartHeight}`)
+      .attr("data-pattern-family", "critical-fault-tree")
+      .attr("data-event-count", 10)
+      .attr("data-basic-event-count", 5)
+      .attr("data-gate-count", 4)
+      .attr("data-minimal-cut-count", 3)
+      .attr("data-risk-panel-count", 3)
+      .attr("data-top-event-probability", "2.4e-4");
+
+    const shell = svg.append("g").attr("class", "fault-tree-shell");
+    shell.append("rect")
+      .attr("x", 18)
+      .attr("y", 22)
+      .attr("width", 724)
+      .attr("height", 420)
+      .attr("rx", 8)
+      .attr("fill", palette.surface)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", 1.2);
+    shell.append("text").attr("class", "caption").attr("x", 36).attr("y", 48).text("FTA - critical cooling unavailable");
+
+    const hazardBand = svg.append("g").attr("class", "fault-hazard-band");
+    hazardBand.append("rect")
+      .attr("x", 548)
+      .attr("y", 48)
+      .attr("width", 170)
+      .attr("height", 90)
+      .attr("rx", 7)
+      .attr("fill", palette.redHighlight)
+      .attr("stroke", palette.red)
+      .attr("stroke-width", 1.3);
+    hazardBand.append("text").attr("class", "mark-label").attr("x", 563).attr("y", 70).attr("font-size", 9.5).attr("font-weight", 850).text("Top event probability");
+    hazardBand.append("text").attr("class", "label").attr("x", 563).attr("y", 96).attr("font-size", 18).attr("font-weight", 900).attr("fill", palette.red).text("2.4e-4 / hr");
+    hazardBand.append("text").attr("class", "caption").attr("x", 563).attr("y", 120).text("driven by 3 minimal cuts");
+
+    const eventData = [
+      { id: "top", type: "top", x: 346, y: 72, w: 168, h: 42, lines: ["Critical cooling", "unavailable"], color: palette.red, fill: palette.redHighlight, probability: "2.4e-4" },
+      { id: "pump-train", type: "intermediate", x: 158, y: 202, w: 136, h: 38, lines: ["Pump train", "unavailable"], color: palette.orange, fill: palette.orangeHighlight, probability: "1.1e-6" },
+      { id: "cooling-path", type: "intermediate", x: 346, y: 202, w: 138, h: 38, lines: ["Cooling path", "blocked"], color: palette.red, fill: palette.redHighlight, probability: "2.0e-4" },
+      { id: "trip-inhibited", type: "intermediate", x: 534, y: 202, w: 138, h: 38, lines: ["Trip logic", "inhibited"], color: palette.purple, fill: palette.purpleHighlight, probability: "4.8e-5" },
+      { id: "pump-a", type: "basic", x: 92, y: 340, label: "Pump A fails", code: "P-101A", color: palette.orange, fill: palette.orangeHighlight, probability: "1.2e-3", cut: "C1" },
+      { id: "pump-b", type: "basic", x: 224, y: 340, label: "Pump B fails", code: "P-101B", color: palette.orange, fill: palette.orangeHighlight, probability: "9.0e-4", cut: "C1" },
+      { id: "valve-stuck", type: "basic", x: 346, y: 340, label: "Valve stuck shut", code: "V-201", color: palette.red, fill: palette.redHighlight, probability: "2.0e-4", cut: "C2" },
+      { id: "sensor-fails", type: "basic", x: 486, y: 340, label: "Temp sensor fails", code: "TT-301", color: palette.purple, fill: palette.purpleHighlight, probability: "8.0e-4", cut: "C3" },
+      { id: "bypass-left", type: "basic", x: 612, y: 340, label: "Interlock bypassed", code: "BYP-4", color: palette.purple, fill: palette.purpleHighlight, probability: "6.0e-2", cut: "C3" },
+      { id: "common-cause", type: "undeveloped", x: 690, y: 266, label: "Common cause", code: "CCF", color: palette.gray600, fill: palette.gray100, probability: "screened" }
+    ];
+    const eventById = new Map(eventData.map(d => [d.id, d]));
+    const gates = [
+      { id: "top-or", kind: "OR", x: 346, y: 150, color: palette.red },
+      { id: "pump-and", kind: "AND", x: 158, y: 270, color: palette.orange },
+      { id: "path-or", kind: "OR", x: 346, y: 270, color: palette.red },
+      { id: "trip-and", kind: "AND", x: 534, y: 270, color: palette.purple }
+    ];
+    const gateById = new Map(gates.map(d => [d.id, d]));
+    const links = [
+      { id: "top-to-or", source: "top", target: "top-or", kind: "event-gate", color: palette.red, cut: "" },
+      { id: "or-to-pump", source: "top-or", target: "pump-train", kind: "gate-event", color: palette.orange, cut: "C1" },
+      { id: "or-to-path", source: "top-or", target: "cooling-path", kind: "gate-event", color: palette.red, cut: "C2" },
+      { id: "or-to-trip", source: "top-or", target: "trip-inhibited", kind: "gate-event", color: palette.purple, cut: "C3" },
+      { id: "pump-to-and", source: "pump-train", target: "pump-and", kind: "event-gate", color: palette.orange, cut: "C1" },
+      { id: "and-to-pump-a", source: "pump-and", target: "pump-a", kind: "gate-event", color: palette.orange, cut: "C1" },
+      { id: "and-to-pump-b", source: "pump-and", target: "pump-b", kind: "gate-event", color: palette.orange, cut: "C1" },
+      { id: "path-to-or", source: "cooling-path", target: "path-or", kind: "event-gate", color: palette.red, cut: "C2" },
+      { id: "or-to-valve", source: "path-or", target: "valve-stuck", kind: "gate-event", color: palette.red, cut: "C2" },
+      { id: "trip-to-and", source: "trip-inhibited", target: "trip-and", kind: "event-gate", color: palette.purple, cut: "C3" },
+      { id: "and-to-sensor", source: "trip-and", target: "sensor-fails", kind: "gate-event", color: palette.purple, cut: "C3" },
+      { id: "and-to-bypass", source: "trip-and", target: "bypass-left", kind: "gate-event", color: palette.purple, cut: "C3" },
+      { id: "trip-to-common", source: "trip-inhibited", target: "common-cause", kind: "screened", color: palette.gray600, cut: "" }
+    ];
+
+    function anchor(recordId, role) {
+      const event = eventById.get(recordId);
+      if (event) {
+        if (event.type === "basic" || event.type === "undeveloped") {
+          return { x: event.x, y: role === "top" ? event.y - 22 : event.y + 22 };
+        }
+        return { x: event.x, y: role === "top" ? event.y - event.h / 2 : event.y + event.h / 2 };
+      }
+      const gate = gateById.get(recordId);
+      return { x: gate.x, y: role === "top" ? gate.y - 20 : gate.y + 20 };
+    }
+
+    function faultLinkPath(link) {
+      const start = anchor(link.source, "bottom");
+      const end = anchor(link.target, "top");
+      const mid = (start.y + end.y) / 2;
+      return `M${start.x},${start.y}V${mid}H${end.x}V${end.y}`;
+    }
+
+    const linkPaths = svg.append("g")
+      .attr("class", "fault-tree-links")
+      .selectAll("path.fault-link")
+      .data(links)
+      .join("path")
+      .attr("id", d => `fault-link-${d.id}`)
+      .attr("class", d => `fault-link${d.cut ? " minimal-cut-link" : ""}${d.kind === "screened" ? " screened-link" : ""}`)
+      .attr("data-link-id", d => d.id)
+      .attr("data-source-id", d => d.source)
+      .attr("data-target-id", d => d.target)
+      .attr("data-minimal-cut", d => d.cut)
+      .attr("d", faultLinkPath)
+      .attr("fill", "none")
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", d => d.cut ? 2.6 : 1.5)
+      .attr("stroke-opacity", d => d.cut ? .82 : .42)
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-dasharray", d => d.kind === "screened" ? "4 5" : "");
+    drawPath(linkPaths.filter(d => d.kind !== "screened"), .1, .9);
+    fadeIn(linkPaths.filter(d => d.kind === "screened"), .35, .45);
+
+    const gateGroups = svg.append("g")
+      .attr("class", "fault-gates")
+      .selectAll("g.fault-gate")
+      .data(gates)
+      .join("g")
+      .attr("class", d => `fault-gate ${d.kind.toLowerCase()}-gate`)
+      .attr("data-gate-id", d => d.id)
+      .attr("data-gate-kind", d => d.kind)
+      .attr("transform", d => `translate(${d.x} ${d.y})`);
+    gateGroups.append("path")
+      .attr("class", "fault-gate-symbol")
+      .attr("d", d => d.kind === "AND"
+        ? "M-30,20V2C-30,-19 30,-19 30,2V20Z"
+        : "M-32,20C-20,-14 20,-14 32,20C18,10 -18,10 -32,20Z")
+      .attr("fill", d => d.kind === "AND" ? palette.gray50 : palette.surface)
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", 1.7)
+      .attr("stroke-linejoin", "round");
+    gateGroups.append("text")
+      .attr("class", "mark-label")
+      .attr("text-anchor", "middle")
+      .attr("y", 12)
+      .attr("font-size", 9)
+      .attr("font-weight", 900)
+      .text(d => d.kind);
+    fadeIn(gateGroups, .18, .5);
+
+    const eventLayer = svg.append("g").attr("class", "fault-events");
+    const intermediateEvents = eventLayer.selectAll("g.fault-event-box")
+      .data(eventData.filter(d => d.type === "top" || d.type === "intermediate"))
+      .join("g")
+      .attr("class", d => `fault-event fault-event-box ${d.type === "top" ? "top-event" : "intermediate-event"}`)
+      .attr("data-event-id", d => d.id)
+      .attr("data-event-type", d => d.type)
+      .attr("data-probability", d => d.probability)
+      .attr("transform", d => `translate(${d.x} ${d.y})`);
+    intermediateEvents.append("rect")
+      .attr("x", d => -d.w / 2)
+      .attr("y", d => -d.h / 2)
+      .attr("width", d => d.w)
+      .attr("height", d => d.h)
+      .attr("rx", d => d.type === "top" ? 7 : 5)
+      .attr("fill", d => d.fill)
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", d => d.type === "top" ? 2.1 : 1.4);
+    intermediateEvents.each(function (d) {
+      const group = d3.select(this);
+      d.lines.forEach((line, index) => {
+        group.append("text")
+          .attr("class", "mark-label")
+          .attr("text-anchor", "middle")
+          .attr("x", 0)
+          .attr("y", -5 + index * 13)
+          .attr("font-size", d.type === "top" ? 10.3 : 9.2)
+          .attr("font-weight", d.type === "top" ? 900 : 800)
+          .text(line);
+      });
+      group.append("text")
+        .attr("class", "caption")
+        .attr("text-anchor", "start")
+        .attr("x", d.w / 2 + 6)
+        .attr("y", 5)
+        .attr("font-size", 7.8)
+        .text(`p=${d.probability}`);
+    });
+    fadeIn(intermediateEvents, .05, .5);
+
+    const basicEvents = eventLayer.selectAll("g.basic-event")
+      .data(eventData.filter(d => d.type === "basic"))
+      .join("g")
+      .attr("class", "fault-event basic-event")
+      .attr("data-event-id", d => d.id)
+      .attr("data-event-code", d => d.code)
+      .attr("data-minimal-cut", d => d.cut)
+      .attr("data-probability", d => d.probability)
+      .attr("transform", d => `translate(${d.x} ${d.y})`);
+    basicEvents.append("circle")
+      .attr("r", 23)
+      .attr("fill", d => d.fill)
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", 1.7);
+    basicEvents.append("text")
+      .attr("class", "mark-label")
+      .attr("text-anchor", "middle")
+      .attr("y", -5)
+      .attr("font-size", 8.1)
+      .attr("font-weight", 850)
+      .text(d => d.code);
+    basicEvents.append("text")
+      .attr("class", "caption")
+      .attr("text-anchor", "middle")
+      .attr("y", 8)
+      .attr("font-size", 6.9)
+      .text(d => d.probability);
+    basicEvents.append("text")
+      .attr("class", "caption")
+      .attr("text-anchor", "middle")
+      .attr("y", 38)
+      .attr("font-size", 7.4)
+      .text(d => d.label);
+    basicEvents.append("rect")
+      .attr("class", "minimal-cut-badge")
+      .attr("x", 16)
+      .attr("y", -31)
+      .attr("width", 22)
+      .attr("height", 14)
+      .attr("rx", 4)
+      .attr("fill", palette.surface)
+      .attr("stroke", d => d.color);
+    basicEvents.append("text")
+      .attr("class", "mark-label")
+      .attr("x", 27)
+      .attr("y", -21)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 7.4)
+      .text(d => d.cut);
+    grow(basicEvents.select("circle"), "r", 4, 23, .22, .52);
+
+    const undeveloped = eventLayer.selectAll("g.undeveloped-event")
+      .data(eventData.filter(d => d.type === "undeveloped"))
+      .join("g")
+      .attr("class", "fault-event undeveloped-event")
+      .attr("data-event-id", d => d.id)
+      .attr("data-event-code", d => d.code)
+      .attr("data-probability", d => d.probability)
+      .attr("transform", d => `translate(${d.x} ${d.y})`);
+    undeveloped.append("path")
+      .attr("d", "M0,-21L26,0L0,21L-26,0Z")
+      .attr("fill", d => d.fill)
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", 1.4);
+    undeveloped.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("y", 3).attr("font-size", 8).text("CCF");
+    undeveloped.append("text").attr("class", "caption").attr("text-anchor", "middle").attr("y", 34).attr("font-size", 7.2).text("screened");
+    fadeIn(undeveloped, .32, .42);
+
+    const cutPaths = [
+      { id: "c1", label: "C1", color: palette.orange, d: "M92,340V304H158V270V221H158V202V176H346V130V72" },
+      { id: "c2", label: "C2", color: palette.red, d: "M346,340V270V221H346V202V176H346V130V72" },
+      { id: "c3", label: "C3", color: palette.purple, d: "M612,340V304H534V270V221H534V202V176H346V130V72" }
+    ];
+    svg.append("g")
+      .attr("class", "minimal-cut-motion-paths")
+      .selectAll("path")
+      .data(cutPaths)
+      .join("path")
+      .attr("id", d => `fault-minimal-cut-path-${d.id}`)
+      .attr("class", "minimal-cut-motion-path")
+      .attr("d", d => d.d)
+      .attr("fill", "none")
+      .attr("stroke", "none");
+    const pulseLayer = svg.append("g").attr("class", "fault-cut-pulses");
+    cutPaths.forEach((cut, index) => {
+      const pulse = pulseLayer.append("circle")
+        .attr("class", "fault-cut-pulse")
+        .attr("data-minimal-cut", cut.label)
+        .attr("r", 5.4)
+        .attr("fill", cut.color)
+        .attr("stroke", palette.surface)
+        .attr("stroke-width", 1.4);
+      pulse.append("animateMotion")
+        .attr("dur", "3.2s")
+        .attr("begin", `${.5 + index * .7}s`)
+        .attr("repeatCount", "indefinite")
+        .append("mpath")
+        .attr("href", `#fault-minimal-cut-path-${cut.id}`);
+    });
+
+    const riskCards = [
+      { id: "c2", label: "C2 valve", value: "83%", note: "single basic event", color: palette.red, fill: palette.redHighlight },
+      { id: "c3", label: "C3 trip", value: "16%", note: "sensor + bypass", color: palette.purple, fill: palette.purpleHighlight },
+      { id: "c1", label: "C1 pumps", value: "<1%", note: "redundant train", color: palette.orange, fill: palette.orangeHighlight }
+    ];
+    const riskPanel = svg.append("g").attr("class", "fault-risk-panel").attr("transform", "translate(44 400)");
+    riskCards.forEach((card, index) => {
+      const x = index * 154;
+      const group = riskPanel.append("g")
+        .attr("class", "fault-risk-card")
+        .attr("data-minimal-cut", card.id.toUpperCase())
+        .attr("transform", `translate(${x} 0)`);
+      group.append("rect").attr("width", 138).attr("height", 28).attr("rx", 6).attr("fill", card.fill).attr("stroke", card.color).attr("stroke-width", 1);
+      group.append("text").attr("class", "mark-label").attr("x", 10).attr("y", 11).attr("font-size", 7.7).text(card.label);
+      group.append("text").attr("class", "label").attr("x", 10).attr("y", 24).attr("font-size", 12).attr("font-weight", 900).attr("fill", card.color).text(card.value);
+      group.append("text").attr("class", "caption").attr("x", 52).attr("y", 23).attr("font-size", 7.2).text(card.note);
+    });
+    fadeIn(riskPanel.selectAll(".fault-risk-card"), .42, .5);
+
+    const legend = svg.append("g").attr("class", "fault-tree-legend").attr("transform", "translate(548 400)");
+    [
+      { label: "rectangle = event", shape: "rect", color: palette.red },
+      { label: "circle = basic event", shape: "circle", color: palette.orange },
+      { label: "diamond = undeveloped", shape: "diamond", color: palette.gray600 }
+    ].forEach((item, index) => {
+      const y = index * 15;
+      if (item.shape === "circle") legend.append("circle").attr("cx", 8).attr("cy", y).attr("r", 5).attr("fill", palette.surface).attr("stroke", item.color);
+      else if (item.shape === "diamond") legend.append("path").attr("d", `M8,${y - 6}L15,${y}L8,${y + 6}L1,${y}Z`).attr("fill", palette.surface).attr("stroke", item.color);
+      else legend.append("rect").attr("x", 1).attr("y", y - 5).attr("width", 14).attr("height", 10).attr("rx", 2).attr("fill", palette.surface).attr("stroke", item.color);
+      legend.append("text").attr("class", "caption").attr("x", 22).attr("y", y + 3).attr("font-size", 7.4).text(item.label);
+    });
+    fadeIn(legend, .46, .45);
   }
 
   function mlpLayout(architecture, xRange = [76, width - 76], yRange = [82, 318]) {
