@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "sourceId": "agent-harnesses-explainer",
+  "route": "topic-explainer",
+  "createdFor": "Crea un video explicando lo que son los harness de agentes de, ayudantes de codificación.",
+  "deliverables": [
+    "projects/agent-harnesses-explainer/artifacts/videos/agent-harnesses-explainer.mp4",
+    "projects/agent-harnesses-explainer/artifacts/review/contact-sheet.jpg",
+    "projects/agent-harnesses-explainer/artifacts/manifests/render-manifest.json"
+  ],
+  "constraints": {
+    "durationSeconds": 52,
+    "aspect": "16:9",
+    "resolution": "1280x720",
+    "language": "Spanish",
+    "audience": "People evaluating or building coding assistants",
+    "style": "Clean technical motion graphic with diagrammatic SVG scenes",
+    "audio": "silent; Spanish on-screen explanation"
+  },
+  "facts": [
+    {
+      "id": "not-the-model",
+      "value": "A harness is not the language model; it is the runtime structure around an agent.",
+      "source": "engineering background",
+      "useInVideo": "opening definition"
+    },
+    {
+      "id": "runtime-loop",
+      "value": "Agent harnesses organize controlled observe, decide, act, and verify cycles.",
+      "source": "engineering background",
+      "useInVideo": "agent loop scene"
+    },
+    {
+      "id": "coding-tools",
+      "value": "For coding assistants, the harness connects the agent to repository context, editing, terminal commands, tests, and review traces.",
+      "source": "engineering background",
+      "useInVideo": "coding workflow scene"
+    },
+    {
+      "id": "quality-boundary",
+      "value": "The harness sets boundaries such as sandboxing, tool permissions, reproducible prompts, logs, and evaluation gates.",
+      "source": "engineering background",
+      "useInVideo": "safety and reliability scene"
+    },
+    {
+      "id": "term-varies",
+      "value": "Teams may use related words such as runtime, eval harness, agent framework, or orchestration layer; the shared idea is the controlled system that lets the agent operate.",
+      "source": "engineering background",
+      "useInVideo": "closing caveat"
+    }
+  ],
+  "literalAnchors": [
+    "harness",
+    "agente",
+    "ayudante de codificación",
+    "modelo",
+    "herramientas",
+    "pruebas",
+    "trazas",
+    "sandbox",
+    "evaluación"
+  ],
+  "assets": [],
+  "missingFacts": [],
+  "risks": [
+    "The word harness is used differently across teams, so the video defines the operational meaning instead of claiming a universal standard.",
+    "No Spanish SAPI voice is installed locally, so the deliverable is silent with Spanish on-screen explanation."
+  ]
+}

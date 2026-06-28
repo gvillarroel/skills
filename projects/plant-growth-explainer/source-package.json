@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "sourceId": "plant-growth-explainer",
+  "route": "topic-explainer",
+  "createdFor": "Generate a video that explains how plants grow.",
+  "deliverables": [
+    "storyboard.md",
+    "shot-contract.json",
+    "projects/plant-growth-explainer/artifacts/videos/plant-growth-explainer.mp4"
+  ],
+  "constraints": {
+    "durationSeconds": 48,
+    "aspect": "16:9",
+    "resolution": "1280x720",
+    "audience": "General learners",
+    "style": "Clean educational diagram with mechanical cause-and-effect motion",
+    "audio": "silent",
+    "language": "English on-screen labels"
+  },
+  "facts": [
+    {
+      "id": "germination-inputs",
+      "value": "A seed begins germination when it has water, oxygen, and suitable warmth.",
+      "source": "general biology knowledge",
+      "useInVideo": "opening seed activation sequence"
+    },
+    {
+      "id": "root-role",
+      "value": "Roots anchor the plant and absorb water plus dissolved minerals from soil.",
+      "source": "general biology knowledge",
+      "useInVideo": "root network scene"
+    },
+    {
+      "id": "shoot-role",
+      "value": "The shoot grows upward and leaves unfold to capture light.",
+      "source": "general biology knowledge",
+      "useInVideo": "shoot and leaf emergence scene"
+    },
+    {
+      "id": "photosynthesis",
+      "value": "Leaves use light energy, carbon dioxide, and water to make sugars and release oxygen.",
+      "source": "general biology knowledge",
+      "useInVideo": "leaf conversion scene"
+    },
+    {
+      "id": "transport",
+      "value": "Water moves upward through xylem, while sugars move from leaves to growing tissues through phloem.",
+      "source": "general biology knowledge",
+      "useInVideo": "growth allocation scene"
+    },
+    {
+      "id": "new-cells",
+      "value": "Plant growth happens as cells divide and enlarge at growing tips and other active tissues.",
+      "source": "general biology knowledge",
+      "useInVideo": "cell expansion and meristem scene"
+    },
+    {
+      "id": "life-cycle",
+      "value": "Mature plants can produce flowers, fruits, and seeds that continue the life cycle.",
+      "source": "general biology knowledge",
+      "useInVideo": "closing cycle scene"
+    }
+  ],
+  "literalAnchors": [
+    "seed",
+    "water",
+    "oxygen",
+    "warmth",
+    "roots",
+    "minerals",
+    "leaves",
+    "light",
+    "CO2",
+    "sugars",
+    "O2",
+    "xylem",
+    "phloem",
+    "new cells",
+    "seeds"
+  ],
+  "assets": [],
+  "missingFacts": [],
+  "risks": [
+    "A silent video needs concise on-screen labels, so the visual design must avoid turning into text-heavy slides.",
+    "The topic is broad; this version explains the core growth cycle rather than all plant physiology details."
+  ]
+}

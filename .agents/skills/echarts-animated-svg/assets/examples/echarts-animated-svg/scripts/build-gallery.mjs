@@ -1679,8 +1679,9 @@ const galleryDefinitions = [...chartDefinitions, ...extraChartDefinitions]
 
 const cards = galleryDefinitions.map((definition) => {
   const svg = renderSvg(definition)
+  const exampleId = slug(definition.type)
   return `
-    <article class="chart-card is-playing" data-chart-type="${escapeHtml(definition.type)}" data-replay-count="0">
+    <article class="chart-card is-playing" id="example-${escapeHtml(exampleId)}" data-example-id="${escapeHtml(exampleId)}" data-chart-type="${escapeHtml(definition.type)}" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>${escapeHtml(definition.title)}</h2>

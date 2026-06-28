@@ -1,0 +1,102 @@
+{
+  "projectId": "ai-code-assistant-concepts",
+  "videoId": "07-what-is-a-harness-hook",
+  "runtimeSeconds": 42,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "primaryObjective": "A hook is an event-driven interception point inside the harness lifecycle.",
+  "shots": [
+    {
+      "id": "07-what-is-a-harness-hook-shot-1",
+      "timeRange": "0.0-8.4s",
+      "beat": "open",
+      "requiredOnScreenText": [
+        "An event fires",
+        "event",
+        "lifecycle",
+        "payload"
+      ],
+      "visualFocus": "hook metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "07-what-is-a-harness-hook-shot-2",
+      "timeRange": "8.4-16.8s",
+      "beat": "define",
+      "requiredOnScreenText": [
+        "Custom logic inspects the payload",
+        "inspect",
+        "decide",
+        "record"
+      ],
+      "visualFocus": "hook metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "07-what-is-a-harness-hook-shot-3",
+      "timeRange": "16.8-25.2s",
+      "beat": "mechanism",
+      "requiredOnScreenText": [
+        "Hooks turn policy into execution",
+        "secrets",
+        "format",
+        "shape"
+      ],
+      "visualFocus": "hook metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "07-what-is-a-harness-hook-shot-4",
+      "timeRange": "25.2-33.6s",
+      "beat": "tradeoff",
+      "requiredOnScreenText": [
+        "Latency is part of the design",
+        "latency",
+        "scope",
+        "fail"
+      ],
+      "visualFocus": "hook metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "07-what-is-a-harness-hook-shot-5",
+      "timeRange": "33.6-42.0s",
+      "beat": "landing",
+      "requiredOnScreenText": [
+        "Package useful hooks for reuse",
+        "reuse",
+        "plugin",
+        "skill"
+      ],
+      "visualFocus": "hook metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    }
+  ]
+}

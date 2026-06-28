@@ -112,6 +112,16 @@ async function verifyViewport({ browser, url, label, viewport, screenshot, exerc
       replayIcons: document.querySelectorAll('.material-symbols-rounded').length,
       fontFamily: getComputedStyle(document.body).fontFamily,
       headings: cards.map((card) => card.querySelector('h2')?.textContent?.trim()),
+      invalidExampleIds: cards
+        .map((card) => card.dataset.exampleId || '')
+        .filter((id) => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)),
+      duplicateExampleIds: cards.length - new Set(cards.map((card) => card.dataset.exampleId || '')).size,
+      cardsWithoutDomId: cards
+        .filter((card) => card.id !== `example-${card.dataset.exampleId}`)
+        .map((card) => card.dataset.sceneId),
+      mismatchedSceneIds: cards
+        .filter((card) => card.dataset.exampleId !== card.dataset.sceneId)
+        .map((card) => card.dataset.sceneId),
       duplicateSceneIds: canvases.length - new Set(canvases.map((canvas) => canvas.dataset.sceneId)).size,
       smallFrames: canvases
         .filter((canvas) => {
@@ -132,6 +142,14 @@ async function verifyViewport({ browser, url, label, viewport, screenshot, exerc
     throw new Error(`${label}: expected Material Symbols icons on every replay control, saw ${initial.replayIcons}.`)
   if (!initial.fontFamily.includes('Open Sans'))
     throw new Error(`${label}: expected Open Sans as the page font, saw ${initial.fontFamily}.`)
+  if (initial.invalidExampleIds.length)
+    throw new Error(`${label}: invalid example ids: ${initial.invalidExampleIds.join(', ')}.`)
+  if (initial.duplicateExampleIds)
+    throw new Error(`${label}: found duplicate example ids.`)
+  if (initial.cardsWithoutDomId.length)
+    throw new Error(`${label}: cards without matching DOM ids: ${initial.cardsWithoutDomId.join(', ')}.`)
+  if (initial.mismatchedSceneIds.length)
+    throw new Error(`${label}: cards with mismatched scene ids: ${initial.mismatchedSceneIds.join(', ')}.`)
   if (initial.duplicateSceneIds)
     throw new Error(`${label}: found duplicate scene canvas ids.`)
   if (initial.smallFrames.length)

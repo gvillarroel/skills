@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="240" viewBox="0 0 360 240" role="img" aria-label="Pulse animation">
+  <style>
+    :root { --am-duration: 2s; }
+    .pulse { transform-origin: 180px 112px; animation: pulse-scale 2s ease-in-out infinite; }
+    @keyframes pulse-scale {
+      0%, 100% { transform: scale(0.82); opacity: 0.72; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+  </style>
+  <rect width="360" height="240" fill="#ffffff"/>
+  <circle class="pulse" cx="180" cy="112" r="46" fill="#38BDF8" stroke="#0F172A" stroke-width="4"/>
+  <text x="180" y="194" text-anchor="middle" font-family="Open Sans, Arial, sans-serif" font-size="24" fill="#0F172A">Pulse</text>
+</svg>

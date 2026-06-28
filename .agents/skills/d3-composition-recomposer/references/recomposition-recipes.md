@@ -23,6 +23,8 @@ When the rendered source SVG is available, faithfully adapt its marks and data v
 
 For gallery cards, do not draw the composition scaffold over the preview. Borders, diagonals, quadrant fills, frame lines, or direction arrows are acceptable only when they are source-derived data marks, route paths, process links, label leaders, or another element with narrative meaning. Keep armature diagrams in overview panels or metadata.
 
+For video or scene-series variants, use different `d3-composition-*` armatures when scene jobs differ, and keep continuity through the source vocabulary, palette, tracked objects, and motion verbs. Avoid a shared validation-only background motion across variants. If a rendered video needs more movement, add scene-local semantic motion such as a routed packet, branch split, proportional bar fill, radial completion, rank change, or label-lane reveal.
+
 ## Narrative Fit Gate
 
 Apply this gate before selecting any target composition. A pattern can be geometrically compatible with many armatures, but publish or generate only the variants where the armature strengthens the message:

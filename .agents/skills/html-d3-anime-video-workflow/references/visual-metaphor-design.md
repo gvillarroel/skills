@@ -35,6 +35,7 @@ This is not a D3 taxonomy. After selecting the metaphor, use the D3 skill to cho
 ## Visual Vocabulary Rules
 
 - Assign one semantic meaning to each recurring shape within a video. If a square matrix means context, do not later use the same square matrix as a generic decoration.
+- Assign one semantic meaning to recurring motion as well as recurring shapes. A sweep, pulse, orbit, cursor, or flow token may repeat only when it keeps the same narrative role; otherwise choose scene-specific movement from the local diagram.
 - Reuse color by role, not by preference. A color can mean source, selected item, blocked path, accumulated work, or model family, but it should not change meaning without a visible reset.
 - Preserve object identity through transformations. A token, packet, trace, or request should keep enough color/order/shape continuity for the viewer to track it.
 - Prefer visible cause/effect verbs: enter, split, rank, sample, append, block, retry, cache, evict, meter, branch, merge.
@@ -47,6 +48,7 @@ Before reusing an earlier scene or generic renderer, answer:
 - Does the old visual pattern express the same mechanic, or only the same aesthetic?
 - Would a viewer infer the new concept if the labels were removed?
 - Is the repeated object keeping the same role across beats?
+- Is any repeated background or validation motion keeping the same role, or only keeping pixels changing?
 - Does the scene add a new visual verb needed by this concept?
 - Is there a better metaphor even if it requires new geometry?
 
@@ -57,6 +59,7 @@ If the answer is weak, design a new metaphor first and only reuse low-level help
 During contact-sheet and playback review, flag:
 
 - motion that looks busy but does not change state
+- recurring background motion that makes unrelated scenes feel structurally identical
 - diagrams that only work because labels explain them
 - reused structures with changed meaning
 - legends added because the metaphor is unclear

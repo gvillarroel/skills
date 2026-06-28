@@ -1,0 +1,102 @@
+{
+  "projectId": "ai-code-assistant-concepts",
+  "videoId": "15-data-governance",
+  "runtimeSeconds": 42,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "primaryObjective": "Data governance decides what the assistant may see, retain, train on, and reveal.",
+  "shots": [
+    {
+      "id": "15-data-governance-shot-1",
+      "timeRange": "0.0-8.4s",
+      "beat": "open",
+      "requiredOnScreenText": [
+        "Context is data movement",
+        "data",
+        "context",
+        "boundary"
+      ],
+      "visualFocus": "governance metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "15-data-governance-shot-2",
+      "timeRange": "8.4-16.8s",
+      "beat": "define",
+      "requiredOnScreenText": [
+        "Permissions should follow the user",
+        "identity",
+        "access",
+        "sync"
+      ],
+      "visualFocus": "governance metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "15-data-governance-shot-3",
+      "timeRange": "16.8-25.2s",
+      "beat": "mechanism",
+      "requiredOnScreenText": [
+        "Retention and training policies matter",
+        "retention",
+        "logs",
+        "training"
+      ],
+      "visualFocus": "governance metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "15-data-governance-shot-4",
+      "timeRange": "25.2-33.6s",
+      "beat": "tradeoff",
+      "requiredOnScreenText": [
+        "Connectors inherit source-system risk",
+        "connector",
+        "scope",
+        "leak"
+      ],
+      "visualFocus": "governance metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "15-data-governance-shot-5",
+      "timeRange": "33.6-42.0s",
+      "beat": "landing",
+      "requiredOnScreenText": [
+        "Governance is part of product selection",
+        "controls",
+        "policy",
+        "fit"
+      ],
+      "visualFocus": "governance metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scene Transition Director"
+  short_description: "Design memorable scene transitions"
+  default_prompt: "Use $scene-transition-director to plan transitions from the current prompt or ../prompt.md."

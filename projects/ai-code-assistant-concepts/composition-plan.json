@@ -1,0 +1,138 @@
+{
+  "projectId": "ai-code-assistant-concepts",
+  "narrativeContinuity": "One work packet travels through models, runtimes, controls, connectors, and governance.",
+  "recurringSymbols": [
+    {
+      "id": "work-packet",
+      "meaning": "a user task, prompt, or data unit moving through the system"
+    },
+    {
+      "id": "blue-context-box",
+      "meaning": "the visible context available to the model or agent"
+    },
+    {
+      "id": "green-check",
+      "meaning": "verified output or allowed action"
+    },
+    {
+      "id": "red-shield",
+      "meaning": "policy, permission, guardrail, or governance boundary"
+    },
+    {
+      "id": "teal-bus",
+      "meaning": "standardized connection surface such as MCP"
+    },
+    {
+      "id": "amber-meter",
+      "meaning": "cost, latency, or operational load"
+    }
+  ],
+  "compositionSystem": "Left visual metaphor plus right explanatory panel plus bottom series rail.",
+  "videos": [
+    {
+      "id": "01-what-is-an-llm",
+      "title": "What Is an LLM?",
+      "kind": "llm",
+      "accent": "#1b72a6",
+      "objective": "A large language model predicts tokens from context; it is not a database lookup."
+    },
+    {
+      "id": "02-llm-billing",
+      "title": "LLM Billing",
+      "kind": "billing",
+      "accent": "#d58922",
+      "objective": "Cost follows model work, even when a product wraps usage as seats, credits, or subscriptions."
+    },
+    {
+      "id": "03-probabilities-and-evaluation",
+      "title": "Probabilities and Evaluation",
+      "kind": "evaluation",
+      "accent": "#3c8a48",
+      "objective": "LLM output is sampled from probabilities; evaluation decides whether the sample is good enough."
+    },
+    {
+      "id": "04-what-is-an-agent",
+      "title": "What Is an Agent?",
+      "kind": "agent",
+      "accent": "#7650a6",
+      "objective": "An agent is a goal-directed loop that observes, acts, reads results, and continues until it should stop."
+    },
+    {
+      "id": "05-what-is-a-guardrail",
+      "title": "What Is a Guardrail?",
+      "kind": "guardrail",
+      "accent": "#b84545",
+      "objective": "A guardrail enforces policy around inputs, outputs, or actions."
+    },
+    {
+      "id": "06-what-is-a-harness",
+      "title": "What Is a Harness?",
+      "kind": "harness",
+      "accent": "#35475c",
+      "objective": "A harness is the runtime shell that turns a raw model into a usable assistant or agent."
+    },
+    {
+      "id": "07-what-is-a-harness-hook",
+      "title": "What Is a Harness Hook?",
+      "kind": "hook",
+      "accent": "#7650a6",
+      "objective": "A hook is an event-driven interception point inside the harness lifecycle."
+    },
+    {
+      "id": "08-what-is-a-harness-plugin",
+      "title": "What Is a Harness Plugin?",
+      "kind": "plugin",
+      "accent": "#168980",
+      "objective": "A plugin packages reusable harness behavior so teams can install and govern it."
+    },
+    {
+      "id": "09-what-is-a-skill",
+      "title": "What Is a Skill?",
+      "kind": "skill",
+      "accent": "#3c8a48",
+      "objective": "A skill is on-demand domain expertise: instructions, resources, and scripts for a repeatable task."
+    },
+    {
+      "id": "10-what-is-an-mcp",
+      "title": "What Is MCP?",
+      "kind": "mcp",
+      "accent": "#168980",
+      "objective": "Model Context Protocol is standardized plumbing between AI clients and external tools or data."
+    },
+    {
+      "id": "11-ai-alternatives",
+      "title": "AI Alternatives",
+      "kind": "alternatives",
+      "accent": "#1b72a6",
+      "objective": "Choose assistants by workflow gravity: where context lives, what actions matter, and how control works."
+    },
+    {
+      "id": "12-observability",
+      "title": "Observability",
+      "kind": "observability",
+      "accent": "#7650a6",
+      "objective": "Observability makes agent behavior inspectable through traces, spans, events, costs, and outcomes."
+    },
+    {
+      "id": "13-instruction-layers",
+      "title": "Instruction Layers",
+      "kind": "instructions",
+      "accent": "#35475c",
+      "objective": "Instruction layers are the rule stack that shapes behavior before the model sees the task."
+    },
+    {
+      "id": "14-tools-and-permissions",
+      "title": "Tools and Permissions",
+      "kind": "permissions",
+      "accent": "#b84545",
+      "objective": "Tool permission is the boundary between helpful suggestion and real-world action."
+    },
+    {
+      "id": "15-data-governance",
+      "title": "Data Governance",
+      "kind": "governance",
+      "accent": "#168980",
+      "objective": "Data governance decides what the assistant may see, retain, train on, and reveal."
+    }
+  ]
+}

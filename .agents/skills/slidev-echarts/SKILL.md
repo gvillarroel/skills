@@ -28,7 +28,7 @@ Read `references/video-generation.md` when the task asks for an automated video,
 
 ## Visual Tokens
 
-Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating animated Slidev/ECharts examples, generated SVG motion slides, controls, or export fixtures. Use Open Sans for slide and chart text, Material Symbols Rounded for system icons, and the documented brand palette for editable chart options, UI controls, callouts, highlights, and generated assets.
+Read `references/visual-tokens.md` before creating or updating animated Slidev/ECharts examples, generated SVG motion slides, controls, or export fixtures. Use Open Sans for slide and chart text, Material Symbols Rounded for system icons, and the documented brand palette for editable chart options, UI controls, callouts, highlights, and generated assets.
 
 ## Pattern Promotion
 

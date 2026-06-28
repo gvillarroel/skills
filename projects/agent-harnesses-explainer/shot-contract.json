@@ -1,0 +1,270 @@
+{
+  "version": 1,
+  "sourcePackage": "source-package.json",
+  "durationSeconds": 52,
+  "aspect": "16:9",
+  "rendering": {
+    "engine": "unspecified",
+    "seekDeterministic": true,
+    "forbiddenDependencies": [
+      "gsap"
+    ]
+  },
+  "shots": [
+    {
+      "id": "s01-model-vs-harness",
+      "start": 0,
+      "duration": 9,
+      "purpose": "Separate the model from the operational wrapper around it.",
+      "sourceAnchors": [
+        "harness",
+        "modelo",
+        "herramientas",
+        "pruebas"
+      ],
+      "visual": {
+        "heroFrame": "A central model core is enclosed by a harness frame with tool, memory, policy, and test modules.",
+        "roles": [
+          "model core",
+          "harness frame",
+          "tool module",
+          "memory module",
+          "policy module",
+          "test module",
+          "task packet"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "reveal",
+          "subject": "model core",
+          "target": "center",
+          "timing": "0.0-2.0s"
+        },
+        {
+          "verb": "enclose",
+          "subject": "harness frame",
+          "target": "model core",
+          "timing": "2.0-5.0s"
+        },
+        {
+          "verb": "route",
+          "subject": "task packet",
+          "target": "patch output",
+          "timing": "5.0-9.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "Spanish text distinguishes model and harness",
+        "module labels remain readable"
+      ]
+    },
+    {
+      "id": "s02-agent-loop",
+      "start": 9,
+      "duration": 11,
+      "purpose": "Show the controlled cycles that make an agent operational.",
+      "sourceAnchors": [
+        "agente",
+        "trazas"
+      ],
+      "visual": {
+        "heroFrame": "Four loop nodes form an observe, decide, act, verify cycle around a trace stack.",
+        "roles": [
+          "observe node",
+          "decide node",
+          "act node",
+          "verify node",
+          "moving packet",
+          "trace stack"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "circulate",
+          "subject": "packet",
+          "target": "loop nodes",
+          "timing": "9.5-19.0s"
+        },
+        {
+          "verb": "append",
+          "subject": "trace card",
+          "target": "trace stack",
+          "timing": "11.0-20.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "Loop direction is visible",
+        "Trace stack grows over time"
+      ]
+    },
+    {
+      "id": "s03-coding-workflow",
+      "start": 20,
+      "duration": 12,
+      "purpose": "Show how a coding harness connects the agent to repository work.",
+      "sourceAnchors": [
+        "ayudante de codificación",
+        "herramientas",
+        "pruebas"
+      ],
+      "visual": {
+        "heroFrame": "A coding task routes through repo context, editor, terminal, and tests before producing a validated patch.",
+        "roles": [
+          "task card",
+          "repository panel",
+          "editor diff",
+          "terminal panel",
+          "test gate",
+          "patch card"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "route",
+          "subject": "task packet",
+          "target": "tool chain",
+          "timing": "20.5-29.0s"
+        },
+        {
+          "verb": "verify",
+          "subject": "test gate",
+          "target": "patch card",
+          "timing": "29.0-32.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "All coding tool roles are represented",
+        "The patch only exits after the test gate"
+      ]
+    },
+    {
+      "id": "s04-boundaries-evidence",
+      "start": 32,
+      "duration": 11,
+      "purpose": "Explain boundaries, traces, and evaluation benefits.",
+      "sourceAnchors": [
+        "sandbox",
+        "trazas",
+        "evaluación"
+      ],
+      "visual": {
+        "heroFrame": "A two-column comparison shows a chat-only model versus a model with harness gates.",
+        "roles": [
+          "solo model column",
+          "harness column",
+          "risky command",
+          "sandbox gate",
+          "trace log",
+          "evaluation score"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "compare",
+          "subject": "two columns",
+          "target": "viewer",
+          "timing": "32.0-34.0s"
+        },
+        {
+          "verb": "block",
+          "subject": "sandbox gate",
+          "target": "risky command",
+          "timing": "34.5-38.0s"
+        },
+        {
+          "verb": "stamp",
+          "subject": "trace and evaluation cards",
+          "target": "harness column",
+          "timing": "38.0-43.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "Sandbox block is unambiguous",
+        "Trace and evaluation are distinct outputs"
+      ]
+    },
+    {
+      "id": "s05-closing-formula",
+      "start": 43,
+      "duration": 9,
+      "purpose": "Leave a compact definition of an agent harness for coding assistants.",
+      "sourceAnchors": [
+        "harness",
+        "ayudante de codificación",
+        "modelo",
+        "herramientas",
+        "pruebas"
+      ],
+      "visual": {
+        "heroFrame": "Model plus harness becomes a reliable coding assistant, with a concise final definition.",
+        "roles": [
+          "model tile",
+          "harness tile",
+          "coding assistant tile",
+          "final definition"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "merge",
+          "subject": "model and harness tiles",
+          "target": "coding assistant",
+          "timing": "43.5-48.0s"
+        },
+        {
+          "verb": "hold",
+          "subject": "final definition",
+          "target": "viewer",
+          "timing": "48.0-52.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "Final statement is readable for the hold",
+        "The closing formula preserves the distinction between model and harness"
+      ]
+    }
+  ],
+  "literalAnchors": [
+    "harness",
+    "agente",
+    "ayudante de codificación",
+    "modelo",
+    "herramientas",
+    "pruebas",
+    "trazas",
+    "sandbox",
+    "evaluación"
+  ],
+  "missingFacts": []
+}

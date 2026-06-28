@@ -1,0 +1,4 @@
+interface:
+  display_name: "Source To Video Director"
+  short_description: "Create engine-agnostic video contracts"
+  default_prompt: "Use $source-to-video-director to turn this source material into a frozen video source package, storyboard, and shot contract."

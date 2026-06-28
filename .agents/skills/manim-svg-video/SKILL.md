@@ -46,7 +46,7 @@ uv run --script .agents/skills/manim-svg-video/scripts/compose_svg_video.py --di
 - Manim controls the timeline and coexistence choreography. Browser-native CSS or SMIL animation inside an SVG is not executed by `SVGMobject`; use Manim animations for video motion.
 - Prefer static companion SVGs such as `.static.svg` for final-frame fidelity when composing from `.animated.svg`; the script resolves companions automatically when possible.
 - Use the default white background and light tile palette unless the user asks for another style. Tune `--background`, `--tile-fill`, `--tile-stroke`, and `--title-color` together so titles and frames remain visible.
-- Read `../ANIMATED_VISUAL_TOKENS.md` before changing default video palettes or title styling. Use the documented brand neutral for text, page/video background defaults where appropriate, and the brand palette for editable tile, highlight, and title colors.
+- Read `references/visual-tokens.md` before changing default video palettes or title styling. Use the documented brand neutral for text, page/video background defaults where appropriate, and the brand palette for editable tile, highlight, and title colors.
 - Use `--layout replace --active-slots 1|2|4` for full-screen, half-screen, or quarter-screen replacement videos.
 - Use the default vector import for portability. Use image import only when ImageMagick, `rsvg-convert`, or Inkscape is available and raster fidelity matters more than vector editability.
 - Keep long renders low resolution and low fps during validation, then increase quality only when the scene is correct.

@@ -39,6 +39,14 @@ const initial = await page.evaluate(() => {
     fontFamily: getComputedStyle(document.documentElement).fontFamily,
     replayIconCount: document.querySelectorAll('.material-symbols-rounded').length,
     oldPaletteHits: [...document.documentElement.outerHTML.matchAll(/#(?:2563eb|0f766e|f59e0b|be123c|7c3aed|64748b|475569|0f172a|334155|e2e8f0|dbeafe|f8fafc)/gi)].length,
+    exampleIds: cards.map((card) => card.dataset.exampleId || ''),
+    invalidExampleIds: cards
+      .map((card) => card.dataset.exampleId || '')
+      .filter((id) => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)),
+    duplicateExampleIds: cards.length - new Set(cards.map((card) => card.dataset.exampleId || '')).size,
+    cardsWithoutDomId: cards
+      .filter((card) => card.id !== `example-${card.dataset.exampleId}`)
+      .map((card) => card.dataset.chartType),
     missingMarks: cards
       .filter((card) => !card.querySelector('svg .easv-mark'))
       .map((card) => card.dataset.chartType),
@@ -63,6 +71,12 @@ if (initial.replayIconCount < initial.expectedCards + 1)
   throw new Error(`Expected Material Symbols replay icons for every replay control, saw ${initial.replayIconCount}.`)
 if (initial.oldPaletteHits)
   throw new Error(`Found ${initial.oldPaletteHits} old palette token(s) in the generated page.`)
+if (initial.invalidExampleIds.length)
+  throw new Error(`Invalid chart example ids: ${initial.invalidExampleIds.join(', ')}`)
+if (initial.duplicateExampleIds)
+  throw new Error('Found duplicate chart example ids.')
+if (initial.cardsWithoutDomId.length)
+  throw new Error(`Cards without matching DOM ids: ${initial.cardsWithoutDomId.join(', ')}`)
 if (initial.missingMarks.length)
   throw new Error(`Charts missing animated marks: ${initial.missingMarks.join(', ')}`)
 if (initial.smallSvgs.length)

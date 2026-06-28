@@ -1,0 +1,102 @@
+{
+  "projectId": "ai-code-assistant-concepts",
+  "videoId": "04-what-is-an-agent",
+  "runtimeSeconds": 42,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "primaryObjective": "An agent is a goal-directed loop that observes, acts, reads results, and continues until it should stop.",
+  "shots": [
+    {
+      "id": "04-what-is-an-agent-shot-1",
+      "timeRange": "0.0-8.4s",
+      "beat": "open",
+      "requiredOnScreenText": [
+        "A prompt answers; an agent pursues",
+        "goal",
+        "state",
+        "loop"
+      ],
+      "visualFocus": "agent metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "04-what-is-an-agent-shot-2",
+      "timeRange": "8.4-16.8s",
+      "beat": "define",
+      "requiredOnScreenText": [
+        "Context defines what it sees",
+        "context",
+        "memory",
+        "rules"
+      ],
+      "visualFocus": "agent metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "04-what-is-an-agent-shot-3",
+      "timeRange": "16.8-25.2s",
+      "beat": "mechanism",
+      "requiredOnScreenText": [
+        "Tools define what it can change",
+        "tools",
+        "action",
+        "effect"
+      ],
+      "visualFocus": "agent metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "04-what-is-an-agent-shot-4",
+      "timeRange": "25.2-33.6s",
+      "beat": "tradeoff",
+      "requiredOnScreenText": [
+        "Stop conditions keep work bounded",
+        "done",
+        "ask",
+        "handoff"
+      ],
+      "visualFocus": "agent metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "04-what-is-an-agent-shot-5",
+      "timeRange": "33.6-42.0s",
+      "beat": "landing",
+      "requiredOnScreenText": [
+        "Autonomy requires controls",
+        "autonomy",
+        "control",
+        "eval"
+      ],
+      "visualFocus": "agent metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    }
+  ]
+}

@@ -36,6 +36,10 @@ Keep standalone SVG animation separate from HTML gallery replay behavior. A gall
 - **Path morphing:** Only morph paths with compatible point counts and semantics. If that is fragile, deliver live HTML with D3 interpolation instead of standalone SVG.
 - **Annotation choreography:** Use rings, arrows, halos, or callout lines as separate overlay groups. Do not mutate the underlying data marks just to highlight them.
 
+## Video Capture Motion
+
+When D3 SVG scenes are captured into MP4, automated freeze detection can tempt agents to add unrelated ambient motion. Prefer semantic pixel change instead: extend a route token, reveal branch lanes, move a proof cursor, fill proportional marks, or complete radial/checklist marks. Do not repeat the same background sweep across unrelated scenes unless the sweep itself is a stable data object with the same role in every scene.
+
 ## CSS Skeleton
 
 ```css

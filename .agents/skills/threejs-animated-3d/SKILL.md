@@ -5,6 +5,16 @@ description: "Build, animate, troubleshoot, and validate Three.js/WebGL 3D scene
 
 # Three.js Animated 3D
 
+## Exact Output Contract
+
+When a task names a specific output file, treat that path as fixed. Before coding, capture it:
+
+```powershell
+$OutputHtml = "scene.html"
+```
+
+Replace the example value with the exact requested path. Do not substitute descriptive names such as `portable-3d-scene.html`, `three-scene.html`, or `index.html`, even if the task description says "portable" or "3D scene". When the task forbids network access or package installation, copy `assets/templates/self-contained-token-orbit.html` to the exact requested path and use only the bundled local vendor files under `assets/vendor/`; do not use CDN scripts, remote fonts, import maps that point to the network, `npm install`, or a copied vendor file in the workspace root.
+
 ## Core Workflow
 
 1. Decide whether the request needs real 3D. Use Mermaid for notation-first diagrams, D3 for bespoke SVG geometry, ECharts for standard chart dashboards, and Three.js when depth, perspective, lighting, camera motion, meshes, materials, particles, or WebGL interaction are central to the result.
@@ -21,8 +31,21 @@ description: "Build, animate, troubleshoot, and validate Three.js/WebGL 3D scene
 
 - `references/scene-patterns.md`: read when choosing scene types, structuring a Three.js gallery, or implementing cameras, lights, materials, particles, and resize-safe renderers.
 - `references/validation.md`: read when writing Playwright checks, canvas pixel probes, movement checks, replay checks, or screenshot verification for Three.js output.
+- `assets/templates/self-contained-token-orbit.html`: use for isolated runtime smoke tests or any task that needs a portable no-network HTML scene.
+- `assets/vendor/three.module.min.js` and `assets/vendor/three.core.min.js`: bundled local Three.js runtime for no-network HTML.
 
 ## Common Commands
+
+Create a no-network runtime scene with an exact output path:
+
+```powershell
+$OutputHtml = "scene.html"
+Copy-Item skills/threejs-animated-3d/assets/templates/self-contained-token-orbit.html $OutputHtml
+if (!(Test-Path -LiteralPath $OutputHtml)) { throw "Missing requested Three.js HTML output path." }
+if (Test-Path -LiteralPath "portable-3d-scene.html") { throw "Wrong output filename: use the exact requested path." }
+if (Test-Path -LiteralPath "three.module.min.js") { throw "Do not copy vendor files to the workspace root." }
+Select-String -Path $OutputHtml -Pattern "https?://|//cdn|unpkg|jsdelivr|esm.sh" -Quiet | ForEach-Object { if ($_) { throw "External network reference found." } }
+```
 
 Install and verify the included Three.js gallery fixture:
 
@@ -48,7 +71,7 @@ npm run dev --prefix .agents/skills/threejs-animated-3d/assets/examples/threejs-
 
 ## Visual Tokens
 
-Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating examples, galleries, captures, or user-facing controls. Use Open Sans for page text, Material Symbols Rounded for replay/reset icons, and the documented brand palette for editable scene materials, page chrome, controls, highlights, and replay states.
+Read `references/visual-tokens.md` before creating or updating examples, galleries, captures, or user-facing controls. Use Open Sans for page text, Material Symbols Rounded for replay/reset icons, and the documented brand palette for editable scene materials, page chrome, controls, highlights, and replay states.
 
 ## Pattern Promotion
 

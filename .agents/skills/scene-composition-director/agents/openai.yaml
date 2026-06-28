@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scene Composition Director"
+  short_description: "Plan visual composition for each scene"
+  default_prompt: "Use $scene-composition-director to turn the current prompt or ../prompt.md into scene-by-scene composition briefs."

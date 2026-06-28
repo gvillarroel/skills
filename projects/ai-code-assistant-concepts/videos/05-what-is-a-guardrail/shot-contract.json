@@ -1,0 +1,102 @@
+{
+  "projectId": "ai-code-assistant-concepts",
+  "videoId": "05-what-is-a-guardrail",
+  "runtimeSeconds": 42,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "primaryObjective": "A guardrail enforces policy around inputs, outputs, or actions.",
+  "shots": [
+    {
+      "id": "05-what-is-a-guardrail-shot-1",
+      "timeRange": "0.0-8.4s",
+      "beat": "open",
+      "requiredOnScreenText": [
+        "Prompting asks; guardrails enforce",
+        "policy",
+        "block",
+        "review"
+      ],
+      "visualFocus": "guardrail metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "05-what-is-a-guardrail-shot-2",
+      "timeRange": "8.4-16.8s",
+      "beat": "define",
+      "requiredOnScreenText": [
+        "Check ingress and egress separately",
+        "input",
+        "output",
+        "action"
+      ],
+      "visualFocus": "guardrail metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "05-what-is-a-guardrail-shot-3",
+      "timeRange": "16.8-25.2s",
+      "beat": "mechanism",
+      "requiredOnScreenText": [
+        "Protect secrets and destructive actions",
+        "secrets",
+        "delete",
+        "deploy"
+      ],
+      "visualFocus": "guardrail metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "05-what-is-a-guardrail-shot-4",
+      "timeRange": "25.2-33.6s",
+      "beat": "tradeoff",
+      "requiredOnScreenText": [
+        "Precision matters",
+        "precision",
+        "recall",
+        "friction"
+      ],
+      "visualFocus": "guardrail metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "05-what-is-a-guardrail-shot-5",
+      "timeRange": "33.6-42.0s",
+      "beat": "landing",
+      "requiredOnScreenText": [
+        "Log decisions for improvement",
+        "log",
+        "audit",
+        "tune"
+      ],
+      "visualFocus": "guardrail metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    }
+  ]
+}

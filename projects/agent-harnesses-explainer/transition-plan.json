@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "videoId": "agent-harnesses-explainer",
+  "persistentElement": {
+    "name": "work packet",
+    "role": "viewer-tracked work item that evolves from task to loop packet, tool request, checked action, and final proof",
+    "states": [
+      "task entering the harness",
+      "loop packet in the agent cycle",
+      "tool request moving through coding tools",
+      "candidate action checked by the harness",
+      "proof packet landing in the final formula"
+    ]
+  },
+  "transitions": [
+    {
+      "id": "t01-harness-to-loop",
+      "fromScene": "s01-model-vs-harness",
+      "toScene": "s02-agent-loop",
+      "start": 8.25,
+      "duration": 1.5,
+      "family": "static anchor sweep",
+      "mechanic": "static-anchor-sweep",
+      "supportCue": "scene-exit-and-entry",
+      "surprise": "The harness frame stays fixed while the rest of the scene is swept off-screen and the loop world slides in.",
+      "outgoingState": "The harness enclosure is the one stable element at the end of the model-versus-harness scene.",
+      "bridgeAction": "Hold a static anchor sweep: the teal harness frame remains locked in screen space while surrounding modules move away and the next scene enters.",
+      "incomingState": "The radial loop appears behind the same fixed harness idea, so the viewer sees a change of environment rather than a thrown object.",
+      "compositionShift": "Centered runtime enclosure is held as an anchor while radial process space replaces everything around it.",
+      "colorShift": "Teal stays as the continuity color while the white background and scene contents reset.",
+      "cameraShift": "Full-scene lateral sweep replaces the subtle packet camera move.",
+      "spaceShift": "External harness chassis changes into internal process loop space by moving the whole scene, not by launching a packet.",
+      "validationChecks": [
+        "static anchor sweep keeps the harness frame stable",
+        "surrounding scene content moves off-screen before the loop scene lands"
+      ]
+    },
+    {
+      "id": "t02-loop-to-tools",
+      "fromScene": "s02-agent-loop",
+      "toScene": "s03-coding-workflow",
+      "start": 19.25,
+      "duration": 1.5,
+      "family": "spatial portal reveal",
+      "mechanic": "center-portal-reveal",
+      "supportCue": "blue-tool-corridor-aperture",
+      "surprise": "The loop is interrupted by a blue action corridor that opens across the center, previews tool cards, and expands into the coding workflow without hiding the whole screen.",
+      "outgoingState": "The trace stack and loop action state are visible as the source of the blue cover.",
+      "bridgeAction": "Open a blue portal corridor over the loop, show a lightweight preview of repo, editor, terminal, and pruebas, then let the destination tool workflow take over under the same blue route.",
+      "incomingState": "The tool corridor appears through the portal, with the action color inherited by the route.",
+      "compositionShift": "Radial loop is interrupted by a horizontal corridor aperture that matches the destination flow spine.",
+      "colorShift": "Blue stays as an action-route color instead of becoming an opaque screen.",
+      "cameraShift": "Outgoing scene compresses slightly as the corridor opens; incoming scene appears through the same corridor.",
+      "spaceShift": "Process loop space becomes repository/tool space by opening a destination window, not by blanking the frame.",
+      "validationChecks": [
+        "center portal reveal does not hide the whole frame",
+        "ACCION label stays attached to the portal, not a blank title card",
+        "tool corridor preview appears before the destination scene settles",
+        "destination space returns with tool-route blue"
+      ]
+    },
+    {
+      "id": "t03-tools-to-boundaries",
+      "fromScene": "s03-coding-workflow",
+      "toScene": "s04-boundaries-evidence",
+      "start": 31.2,
+      "duration": 1.6,
+      "family": "extreme zoom reframe",
+      "mechanic": "extreme-zoom-reframe",
+      "supportCue": "zoom-through-check-to-policy",
+      "surprise": "The validated patch check grows so large that it becomes a new space, then a red POLITICA card interrupts before the camera pulls back into the policy boundary scene.",
+      "outgoingState": "The patch and green check are the highest-confidence marks in the coding workflow.",
+      "bridgeAction": "Zoom through the check until it fills the frame, then flash a red POLITICA card and let policy bars cut across the zoom as the scene reframes.",
+      "incomingState": "The boundary/evidence scene appears from the zoom-out with the blocked action already framed by policy.",
+      "compositionShift": "Horizontal tool flow becomes a split-screen boundary composition through an extreme scale change.",
+      "colorShift": "Validation green swells first, then red policy overlays it.",
+      "cameraShift": "Extreme zoom-in and zoom-out replace object travel.",
+      "spaceShift": "Tool chain space becomes safety/evidence space by entering and exiting a magnified verdict mark.",
+      "validationChecks": [
+        "extreme zoom reframe fills the frame with the validation mark",
+        "red POLITICA card and policy bars appear before the new scene settles"
+      ]
+    },
+    {
+      "id": "t04-evidence-to-formula",
+      "fromScene": "s04-boundaries-evidence",
+      "toScene": "s05-closing-formula",
+      "start": 42.25,
+      "duration": 1.5,
+      "family": "full-screen color card",
+      "mechanic": "full-screen-color-card",
+      "supportCue": "green-proof-to-white-reset",
+      "surprise": "The proof state takes over the entire screen as a green card, then collapses back to white with ghost formula tiles before a different final composition.",
+      "outgoingState": "Trace and evaluation cards make green proof the final state of the boundary scene.",
+      "bridgeAction": "Use a full-screen color card: green fills the frame, VALIDADO appears, then a white reset previews formula tiles before opening into the final formula.",
+      "incomingState": "The final formula appears after the color card, not as a continuation of a moving object.",
+      "compositionShift": "Split-screen comparison is erased by a full-screen proof card and replaced by centered formula.",
+      "colorShift": "Evaluation green becomes the entire screen, then resolves to a light final scene with green proof accents.",
+      "cameraShift": "No travel path; the transition relies on full-frame color and reset timing.",
+      "spaceShift": "Audit space is deliberately broken by the proof card before definition space appears.",
+      "validationChecks": [
+        "full-screen color card briefly dominates the frame",
+        "VALIDADO message appears inside the green proof state",
+        "ghost formula tiles appear during the white reset",
+        "final definition remains readable after the white reset"
+      ]
+    }
+  ]
+}

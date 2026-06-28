@@ -1,0 +1,102 @@
+{
+  "projectId": "ai-code-assistant-concepts",
+  "videoId": "12-observability",
+  "runtimeSeconds": 42,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "primaryObjective": "Observability makes agent behavior inspectable through traces, spans, events, costs, and outcomes.",
+  "shots": [
+    {
+      "id": "12-observability-shot-1",
+      "timeRange": "0.0-8.4s",
+      "beat": "open",
+      "requiredOnScreenText": [
+        "You cannot improve what you cannot inspect",
+        "trace",
+        "span",
+        "event"
+      ],
+      "visualFocus": "observability metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "12-observability-shot-2",
+      "timeRange": "8.4-16.8s",
+      "beat": "define",
+      "requiredOnScreenText": [
+        "Record the run tree",
+        "model",
+        "tool",
+        "cost"
+      ],
+      "visualFocus": "observability metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "12-observability-shot-3",
+      "timeRange": "16.8-25.2s",
+      "beat": "mechanism",
+      "requiredOnScreenText": [
+        "Grade traces, not only answers",
+        "path",
+        "risk",
+        "waste"
+      ],
+      "visualFocus": "observability metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "12-observability-shot-4",
+      "timeRange": "25.2-33.6s",
+      "beat": "tradeoff",
+      "requiredOnScreenText": [
+        "Find regressions over time",
+        "version",
+        "drift",
+        "rate"
+      ],
+      "visualFocus": "observability metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    },
+    {
+      "id": "12-observability-shot-5",
+      "timeRange": "33.6-42.0s",
+      "beat": "landing",
+      "requiredOnScreenText": [
+        "Feed learning back into skills and hooks",
+        "learn",
+        "skill",
+        "hook"
+      ],
+      "visualFocus": "observability metaphor with shared work packet and concept rail",
+      "acceptance": [
+        "Frame is nonblank and uses the active concept accent.",
+        "Headline and three term chips are visible.",
+        "Shared work packet appears before the bottom concept rail.",
+        "The scene can be understood without voiceover."
+      ]
+    }
+  ]
+}

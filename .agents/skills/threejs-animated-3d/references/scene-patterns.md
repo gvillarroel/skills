@@ -32,7 +32,7 @@ Use a shared renderer harness for canvas setup, resizing, camera aspect updates,
 
 ## Materials And Color
 
-- Use token colors from `ANIMATED_VISUAL_TOKENS.md`: red `#9e1b32`, orange `#e77204`, yellow `#f1c319`, green `#45842a`, blue `#007298`, purple `#652f6c`, black, white, and grays.
+- Use token colors from `references/visual-tokens.md`: red `#9e1b32`, orange `#e77204`, yellow `#f1c319`, green `#45842a`, blue `#007298`, purple `#652f6c`, black, white, and grays.
 - Use `MeshStandardMaterial` with ambient and directional lights for most scenes.
 - Use `PointsMaterial` with vertex colors for particles.
 - Keep clear colors white or light neutral unless the scene requires a dark inspection environment.

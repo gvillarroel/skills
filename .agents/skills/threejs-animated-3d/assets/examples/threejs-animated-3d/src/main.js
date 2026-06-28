@@ -210,6 +210,8 @@ document.querySelector('#example-count').textContent = String(examples.length)
 for (const [index, example] of examples.entries()) {
   const card = document.createElement('article')
   card.className = 'example-card'
+  card.id = `example-${example.id}`
+  card.dataset.exampleId = example.id
   card.dataset.sceneId = example.id
   card.dataset.replayCount = '0'
   card.dataset.dragCount = '0'

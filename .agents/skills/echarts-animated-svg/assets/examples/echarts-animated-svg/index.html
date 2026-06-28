@@ -158,7 +158,7 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
       </div>
     </header>
     <section class="gallery" aria-label="Animated ECharts SVG examples">
-      <article class="chart-card is-playing" data-chart-type="line" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-line" data-example-id="line" data-chart-type="line" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Line</h2>
@@ -256,7 +256,7 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="bar" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-bar" data-example-id="bar" data-chart-type="bar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Bar</h2>
@@ -307,7 +307,7 @@ fill:rgba(0,125,167,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="pie" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-pie" data-example-id="pie" data-chart-type="pie" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Pie</h2>
@@ -397,7 +397,7 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="scatter" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-scatter" data-example-id="scatter" data-chart-type="scatter" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Scatter</h2>
@@ -492,7 +492,7 @@ fill:rgba(105,141,39,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="radar" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-radar" data-example-id="radar" data-chart-type="radar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Radar</h2>
@@ -571,7 +571,7 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="map" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-map" data-example-id="map" data-chart-type="map" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Map</h2>
@@ -605,7 +605,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="tree" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-tree" data-example-id="tree" data-chart-type="tree" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Tree</h2>
@@ -663,7 +663,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="treemap" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-treemap" data-example-id="treemap" data-chart-type="treemap" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Treemap</h2>
@@ -738,7 +738,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="graph" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-graph" data-example-id="graph" data-chart-type="graph" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Graph</h2>
@@ -815,7 +815,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="chord" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-chord" data-example-id="chord" data-chart-type="chord" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Chord</h2>
@@ -879,7 +879,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="gauge" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-gauge" data-example-id="gauge" data-chart-type="gauge" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Gauge</h2>
@@ -1005,7 +1005,7 @@ fill:rgba(75,145,46,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="funnel" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-funnel" data-example-id="funnel" data-chart-type="funnel" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Funnel</h2>
@@ -1058,7 +1058,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="parallel" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-parallel" data-example-id="parallel" data-chart-type="parallel" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Parallel</h2>
@@ -1168,7 +1168,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="sankey" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-sankey" data-example-id="sankey" data-chart-type="sankey" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Sankey</h2>
@@ -1266,7 +1266,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="boxplot" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-boxplot" data-example-id="boxplot" data-chart-type="boxplot" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Boxplot</h2>
@@ -1323,7 +1323,7 @@ fill:rgba(254,125,4,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="candlestick" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-candlestick" data-example-id="candlestick" data-chart-type="candlestick" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Candlestick</h2>
@@ -1383,7 +1383,7 @@ stroke-width:2;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="effectScatter" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-effect-scatter" data-example-id="effect-scatter" data-chart-type="effectScatter" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Effect Scatter</h2>
@@ -1666,7 +1666,7 @@ opacity:0;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="lines" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-lines" data-example-id="lines" data-chart-type="lines" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Lines</h2>
@@ -1758,7 +1758,7 @@ fill:rgba(173,29,55,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="heatmap" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-heatmap" data-example-id="heatmap" data-chart-type="heatmap" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Heatmap</h2>
@@ -1888,7 +1888,7 @@ fill:rgba(173,29,55,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="pictorialBar" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-pictorial-bar" data-example-id="pictorial-bar" data-chart-type="pictorialBar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Pictorial Bar</h2>
@@ -1973,7 +1973,7 @@ fill:rgba(75,145,46,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="themeRiver" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-theme-river" data-example-id="theme-river" data-chart-type="themeRiver" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Theme River</h2>
@@ -2038,7 +2038,7 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="sunburst" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-sunburst" data-example-id="sunburst" data-chart-type="sunburst" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Sunburst</h2>
@@ -2098,7 +2098,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="custom" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-custom" data-example-id="custom" data-chart-type="custom" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Custom</h2>
@@ -2159,7 +2159,7 @@ fill:rgba(75,145,46,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="stacked-area-line" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-stacked-area-line" data-example-id="stacked-area-line" data-chart-type="stacked-area-line" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Stacked Area Line</h2>
@@ -2287,7 +2287,7 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="waterfall-bar" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-waterfall-bar" data-example-id="waterfall-bar" data-chart-type="waterfall-bar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Waterfall Bar</h2>
@@ -2362,7 +2362,7 @@ fill:rgba(173,29,55,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="diverging-bar" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-diverging-bar" data-example-id="diverging-bar" data-chart-type="diverging-bar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Diverging Bar</h2>
@@ -2422,7 +2422,7 @@ fill:rgba(0,125,167,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="nested-donut" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-nested-donut" data-example-id="nested-donut" data-chart-type="nested-donut" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Nested Donut</h2>
@@ -2510,7 +2510,7 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="bubble-quadrant" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-bubble-quadrant" data-example-id="bubble-quadrant" data-chart-type="bubble-quadrant" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Bubble Quadrant</h2>
@@ -2609,7 +2609,7 @@ fill:rgba(25,132,126,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="segmented-gauge" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-segmented-gauge" data-example-id="segmented-gauge" data-chart-type="segmented-gauge" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Segmented Gauge</h2>
@@ -2735,7 +2735,7 @@ fill:rgba(75,145,46,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="hub-graph" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-hub-graph" data-example-id="hub-graph" data-chart-type="hub-graph" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Hub Graph</h2>
@@ -2799,7 +2799,7 @@ fill:rgba(255,255,255,0.9);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="conversion-sankey" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-conversion-sankey" data-example-id="conversion-sankey" data-chart-type="conversion-sankey" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Conversion Sankey</h2>
@@ -2901,7 +2901,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="calendar-heatmap" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-calendar-heatmap" data-example-id="calendar-heatmap" data-chart-type="calendar-heatmap" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Calendar Heatmap</h2>
@@ -3352,7 +3352,7 @@ fill:[object Object];
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="polar-bar" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-polar-bar" data-example-id="polar-bar" data-chart-type="polar-bar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Polar Bar</h2>
@@ -3426,7 +3426,7 @@ fill:rgba(111,51,118,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="radar-delta" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-radar-delta" data-example-id="radar-delta" data-chart-type="radar-delta" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Radar Delta</h2>
@@ -3519,7 +3519,7 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="timeline-ranges" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-timeline-ranges" data-example-id="timeline-ranges" data-chart-type="timeline-ranges" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Timeline Ranges</h2>
@@ -3580,7 +3580,7 @@ fill:rgba(75,145,46,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="step-threshold-line" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-step-threshold-line" data-example-id="step-threshold-line" data-chart-type="step-threshold-line" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Step Threshold Line</h2>
@@ -3682,7 +3682,7 @@ stroke-width:3;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="horizontal-stacked-bar" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-horizontal-stacked-bar" data-example-id="horizontal-stacked-bar" data-chart-type="horizontal-stacked-bar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Horizontal Stacked Bar</h2>
@@ -3771,7 +3771,7 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="rose-area-donut" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-rose-area-donut" data-example-id="rose-area-donut" data-chart-type="rose-area-donut" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Rose Area Donut</h2>
@@ -3856,7 +3856,7 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="matrix-heatmap" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-matrix-heatmap" data-example-id="matrix-heatmap" data-chart-type="matrix-heatmap" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Matrix Heatmap</h2>
@@ -4070,7 +4070,7 @@ fill:rgba(114,50,115,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="scatter-regression" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-scatter-regression" data-example-id="scatter-regression" data-chart-type="scatter-regression" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Scatter Regression</h2>
@@ -4160,7 +4160,7 @@ cursor:pointer;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="dual-ring-gauge" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-dual-ring-gauge" data-example-id="dual-ring-gauge" data-chart-type="dual-ring-gauge" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Dual Ring Gauge</h2>
@@ -4200,7 +4200,7 @@ fill:rgba(254,125,4,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="parallel-scenarios" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-parallel-scenarios" data-example-id="parallel-scenarios" data-chart-type="parallel-scenarios" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Parallel Scenarios</h2>
@@ -4322,7 +4322,7 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" data-chart-type="nested-treemap-drilldown" data-replay-count="0">
+      <article class="chart-card is-playing" id="example-nested-treemap-drilldown" data-example-id="nested-treemap-drilldown" data-chart-type="nested-treemap-drilldown" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Nested Treemap Drilldown</h2>

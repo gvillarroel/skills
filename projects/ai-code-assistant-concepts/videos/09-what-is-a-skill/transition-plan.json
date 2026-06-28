@@ -1,0 +1,40 @@
+{
+  "projectId": "ai-code-assistant-concepts",
+  "videoId": "09-what-is-a-skill",
+  "recurringTransitionDevice": "The work packet persists while the main metaphor changes.",
+  "internalTransitions": [
+    {
+      "fromBeat": "open",
+      "toBeat": "define",
+      "time": "8.4s",
+      "action": "Retain title, concept rail, and work packet; update the main metaphor and right-panel copy.",
+      "validation": "A screenshot 0.3 seconds before and after the transition should show continuity rather than a visual reset."
+    },
+    {
+      "fromBeat": "define",
+      "toBeat": "mechanism",
+      "time": "16.8s",
+      "action": "Retain title, concept rail, and work packet; update the main metaphor and right-panel copy.",
+      "validation": "A screenshot 0.3 seconds before and after the transition should show continuity rather than a visual reset."
+    },
+    {
+      "fromBeat": "mechanism",
+      "toBeat": "tradeoff",
+      "time": "25.2s",
+      "action": "Retain title, concept rail, and work packet; update the main metaphor and right-panel copy.",
+      "validation": "A screenshot 0.3 seconds before and after the transition should show continuity rather than a visual reset."
+    },
+    {
+      "fromBeat": "tradeoff",
+      "toBeat": "landing",
+      "time": "33.6s",
+      "action": "Retain title, concept rail, and work packet; update the main metaphor and right-panel copy.",
+      "validation": "A screenshot 0.3 seconds before and after the transition should show continuity rather than a visual reset."
+    }
+  ],
+  "crossVideoTransition": {
+    "from": "08-what-is-a-harness-plugin",
+    "to": "10-what-is-an-mcp",
+    "action": "The same work packet and bottom sequence rail establish continuity across modules."
+  }
+}

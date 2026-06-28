@@ -1,0 +1,1542 @@
+{
+  "projectId": "ai-code-assistant-concepts",
+  "runtimePerVideoSeconds": 42,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "videoCount": 15,
+  "totalRuntimeSeconds": 630,
+  "videos": [
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "01-what-is-an-llm",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "A large language model predicts tokens from context; it is not a database lookup.",
+      "shots": [
+        {
+          "id": "01-what-is-an-llm-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "Text becomes tokens",
+            "tokens",
+            "context",
+            "input"
+          ],
+          "visualFocus": "llm metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "01-what-is-an-llm-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "The model ranks next tokens",
+            "rank",
+            "score",
+            "next"
+          ],
+          "visualFocus": "llm metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "01-what-is-an-llm-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Output loops back",
+            "append",
+            "repeat",
+            "sequence"
+          ],
+          "visualFocus": "llm metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "01-what-is-an-llm-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Size is not the same as truth",
+            "parameters",
+            "window",
+            "verify"
+          ],
+          "visualFocus": "llm metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "01-what-is-an-llm-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Better context changes odds",
+            "prompt",
+            "examples",
+            "constraints"
+          ],
+          "visualFocus": "llm metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "02-llm-billing",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "Cost follows model work, even when a product wraps usage as seats, credits, or subscriptions.",
+      "shots": [
+        {
+          "id": "02-llm-billing-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "The same work can wear different price labels",
+            "seat",
+            "credit",
+            "API"
+          ],
+          "visualFocus": "billing metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "02-llm-billing-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Input and output both matter",
+            "input",
+            "output",
+            "retry"
+          ],
+          "visualFocus": "billing metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "02-llm-billing-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Model choice changes the meter",
+            "model",
+            "latency",
+            "success"
+          ],
+          "visualFocus": "billing metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "02-llm-billing-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Cache and trim before scaling",
+            "cache",
+            "trim",
+            "reuse"
+          ],
+          "visualFocus": "billing metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "02-llm-billing-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Track cost per accepted result",
+            "accepted",
+            "task",
+            "budget"
+          ],
+          "visualFocus": "billing metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "03-probabilities-and-evaluation",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "LLM output is sampled from probabilities; evaluation decides whether the sample is good enough.",
+      "shots": [
+        {
+          "id": "03-probabilities-and-evaluation-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "Likely is not guaranteed",
+            "probability",
+            "sample",
+            "variance"
+          ],
+          "visualFocus": "evaluation metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "03-probabilities-and-evaluation-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Context reshapes the distribution",
+            "context",
+            "examples",
+            "odds"
+          ],
+          "visualFocus": "evaluation metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "03-probabilities-and-evaluation-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Tests beat vibes when possible",
+            "tests",
+            "schema",
+            "parser"
+          ],
+          "visualFocus": "evaluation metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "03-probabilities-and-evaluation-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "pass@N trades attempts for cost",
+            "pass@N",
+            "attempts",
+            "cost"
+          ],
+          "visualFocus": "evaluation metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "03-probabilities-and-evaluation-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Agent evals need traces",
+            "trace",
+            "grader",
+            "regression"
+          ],
+          "visualFocus": "evaluation metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "04-what-is-an-agent",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "An agent is a goal-directed loop that observes, acts, reads results, and continues until it should stop.",
+      "shots": [
+        {
+          "id": "04-what-is-an-agent-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "A prompt answers; an agent pursues",
+            "goal",
+            "state",
+            "loop"
+          ],
+          "visualFocus": "agent metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "04-what-is-an-agent-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Context defines what it sees",
+            "context",
+            "memory",
+            "rules"
+          ],
+          "visualFocus": "agent metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "04-what-is-an-agent-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Tools define what it can change",
+            "tools",
+            "action",
+            "effect"
+          ],
+          "visualFocus": "agent metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "04-what-is-an-agent-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Stop conditions keep work bounded",
+            "done",
+            "ask",
+            "handoff"
+          ],
+          "visualFocus": "agent metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "04-what-is-an-agent-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Autonomy requires controls",
+            "autonomy",
+            "control",
+            "eval"
+          ],
+          "visualFocus": "agent metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "05-what-is-a-guardrail",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "A guardrail enforces policy around inputs, outputs, or actions.",
+      "shots": [
+        {
+          "id": "05-what-is-a-guardrail-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "Prompting asks; guardrails enforce",
+            "policy",
+            "block",
+            "review"
+          ],
+          "visualFocus": "guardrail metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "05-what-is-a-guardrail-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Check ingress and egress separately",
+            "input",
+            "output",
+            "action"
+          ],
+          "visualFocus": "guardrail metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "05-what-is-a-guardrail-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Protect secrets and destructive actions",
+            "secrets",
+            "delete",
+            "deploy"
+          ],
+          "visualFocus": "guardrail metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "05-what-is-a-guardrail-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Precision matters",
+            "precision",
+            "recall",
+            "friction"
+          ],
+          "visualFocus": "guardrail metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "05-what-is-a-guardrail-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Log decisions for improvement",
+            "log",
+            "audit",
+            "tune"
+          ],
+          "visualFocus": "guardrail metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "06-what-is-a-harness",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "A harness is the runtime shell that turns a raw model into a usable assistant or agent.",
+      "shots": [
+        {
+          "id": "06-what-is-a-harness-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "The product is not just the model",
+            "runtime",
+            "tools",
+            "rules"
+          ],
+          "visualFocus": "harness metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "06-what-is-a-harness-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Instruction layers set priorities",
+            "system",
+            "repo",
+            "user"
+          ],
+          "visualFocus": "harness metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "06-what-is-a-harness-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "The harness mediates actions",
+            "route",
+            "execute",
+            "observe"
+          ],
+          "visualFocus": "harness metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "06-what-is-a-harness-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Defaults change cost and risk",
+            "context",
+            "tooling",
+            "budget"
+          ],
+          "visualFocus": "harness metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "06-what-is-a-harness-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Choose the shell for the job",
+            "fit",
+            "controls",
+            "workflow"
+          ],
+          "visualFocus": "harness metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "07-what-is-a-harness-hook",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "A hook is an event-driven interception point inside the harness lifecycle.",
+      "shots": [
+        {
+          "id": "07-what-is-a-harness-hook-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "An event fires",
+            "event",
+            "lifecycle",
+            "payload"
+          ],
+          "visualFocus": "hook metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "07-what-is-a-harness-hook-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Custom logic inspects the payload",
+            "inspect",
+            "decide",
+            "record"
+          ],
+          "visualFocus": "hook metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "07-what-is-a-harness-hook-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Hooks turn policy into execution",
+            "secrets",
+            "format",
+            "shape"
+          ],
+          "visualFocus": "hook metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "07-what-is-a-harness-hook-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Latency is part of the design",
+            "latency",
+            "scope",
+            "fail"
+          ],
+          "visualFocus": "hook metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "07-what-is-a-harness-hook-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Package useful hooks for reuse",
+            "reuse",
+            "plugin",
+            "skill"
+          ],
+          "visualFocus": "hook metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "08-what-is-a-harness-plugin",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "A plugin packages reusable harness behavior so teams can install and govern it.",
+      "shots": [
+        {
+          "id": "08-what-is-a-harness-plugin-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "Plugins turn setup into a package",
+            "package",
+            "install",
+            "share"
+          ],
+          "visualFocus": "plugin metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "08-what-is-a-harness-plugin-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Bundles can contain runtime pieces",
+            "skills",
+            "hooks",
+            "MCP"
+          ],
+          "visualFocus": "plugin metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "08-what-is-a-harness-plugin-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Manifest plus permissions",
+            "manifest",
+            "scope",
+            "allow"
+          ],
+          "visualFocus": "plugin metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "08-what-is-a-harness-plugin-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Distribution is governance",
+            "version",
+            "review",
+            "rollback"
+          ],
+          "visualFocus": "plugin metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "08-what-is-a-harness-plugin-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Good plugins reduce drift",
+            "defaults",
+            "teams",
+            "reuse"
+          ],
+          "visualFocus": "plugin metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "09-what-is-a-skill",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "A skill is on-demand domain expertise: instructions, resources, and scripts for a repeatable task.",
+      "shots": [
+        {
+          "id": "09-what-is-a-skill-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "Stop pasting the same checklist",
+            "workflow",
+            "trigger",
+            "repeat"
+          ],
+          "visualFocus": "skill metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "09-what-is-a-skill-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Keep the core concise",
+            "concise",
+            "route",
+            "load"
+          ],
+          "visualFocus": "skill metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "09-what-is-a-skill-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Progressive disclosure saves context",
+            "context",
+            "on-demand",
+            "cheap"
+          ],
+          "visualFocus": "skill metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "09-what-is-a-skill-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Scripts make the process repeatable",
+            "script",
+            "fixture",
+            "validate"
+          ],
+          "visualFocus": "skill metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "09-what-is-a-skill-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Validate the skill alone",
+            "isolated",
+            "harness",
+            "proof"
+          ],
+          "visualFocus": "skill metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "10-what-is-an-mcp",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "Model Context Protocol is standardized plumbing between AI clients and external tools or data.",
+      "shots": [
+        {
+          "id": "10-what-is-an-mcp-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "MCP replaces bespoke glue",
+            "client",
+            "server",
+            "standard"
+          ],
+          "visualFocus": "mcp metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "10-what-is-an-mcp-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Servers expose capabilities",
+            "tools",
+            "resources",
+            "prompts"
+          ],
+          "visualFocus": "mcp metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "10-what-is-an-mcp-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "The host still controls policy",
+            "auth",
+            "approval",
+            "least"
+          ],
+          "visualFocus": "mcp metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "10-what-is-an-mcp-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Tool sprawl creates cost and risk",
+            "sprawl",
+            "surface",
+            "budget"
+          ],
+          "visualFocus": "mcp metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "10-what-is-an-mcp-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Start narrow and read-only",
+            "read-only",
+            "audit",
+            "expand"
+          ],
+          "visualFocus": "mcp metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "11-ai-alternatives",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "Choose assistants by workflow gravity: where context lives, what actions matter, and how control works.",
+      "shots": [
+        {
+          "id": "11-ai-alternatives-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "There is no universal winner",
+            "job",
+            "context",
+            "action"
+          ],
+          "visualFocus": "alternatives metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "11-ai-alternatives-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Products have centers of gravity",
+            "knowledge",
+            "coding",
+            "suite"
+          ],
+          "visualFocus": "alternatives metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "11-ai-alternatives-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Use the same checklist",
+            "context",
+            "tools",
+            "billing"
+          ],
+          "visualFocus": "alternatives metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "11-ai-alternatives-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Pilot with real tasks",
+            "pilot",
+            "accepted",
+            "friction"
+          ],
+          "visualFocus": "alternatives metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "11-ai-alternatives-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Live plan facts change",
+            "plans",
+            "limits",
+            "verify"
+          ],
+          "visualFocus": "alternatives metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "12-observability",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "Observability makes agent behavior inspectable through traces, spans, events, costs, and outcomes.",
+      "shots": [
+        {
+          "id": "12-observability-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "You cannot improve what you cannot inspect",
+            "trace",
+            "span",
+            "event"
+          ],
+          "visualFocus": "observability metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "12-observability-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Record the run tree",
+            "model",
+            "tool",
+            "cost"
+          ],
+          "visualFocus": "observability metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "12-observability-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Grade traces, not only answers",
+            "path",
+            "risk",
+            "waste"
+          ],
+          "visualFocus": "observability metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "12-observability-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Find regressions over time",
+            "version",
+            "drift",
+            "rate"
+          ],
+          "visualFocus": "observability metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "12-observability-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Feed learning back into skills and hooks",
+            "learn",
+            "skill",
+            "hook"
+          ],
+          "visualFocus": "observability metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "13-instruction-layers",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "Instruction layers are the rule stack that shapes behavior before the model sees the task.",
+      "shots": [
+        {
+          "id": "13-instruction-layers-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "Instructions have precedence",
+            "system",
+            "project",
+            "user"
+          ],
+          "visualFocus": "instructions metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "13-instruction-layers-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Conflicts must be explicit",
+            "conflict",
+            "priority",
+            "resolve"
+          ],
+          "visualFocus": "instructions metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "13-instruction-layers-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Local rules encode local reality",
+            "repo",
+            "style",
+            "tests"
+          ],
+          "visualFocus": "instructions metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "13-instruction-layers-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Too many rules create fog",
+            "stale",
+            "noise",
+            "route"
+          ],
+          "visualFocus": "instructions metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "13-instruction-layers-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Promote stable patterns into skills",
+            "pattern",
+            "skill",
+            "scope"
+          ],
+          "visualFocus": "instructions metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "14-tools-and-permissions",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "Tool permission is the boundary between helpful suggestion and real-world action.",
+      "shots": [
+        {
+          "id": "14-tools-and-permissions-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "Tools change the environment",
+            "read",
+            "write",
+            "run"
+          ],
+          "visualFocus": "permissions metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "14-tools-and-permissions-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Default to least privilege",
+            "least",
+            "scope",
+            "allow"
+          ],
+          "visualFocus": "permissions metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "14-tools-and-permissions-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Approve high-impact actions",
+            "delete",
+            "prod",
+            "send"
+          ],
+          "visualFocus": "permissions metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "14-tools-and-permissions-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Permission prompts need context",
+            "target",
+            "reason",
+            "radius"
+          ],
+          "visualFocus": "permissions metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "14-tools-and-permissions-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Audit what actually happened",
+            "history",
+            "audit",
+            "evidence"
+          ],
+          "visualFocus": "permissions metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    },
+    {
+      "projectId": "ai-code-assistant-concepts",
+      "videoId": "15-data-governance",
+      "runtimeSeconds": 42,
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "primaryObjective": "Data governance decides what the assistant may see, retain, train on, and reveal.",
+      "shots": [
+        {
+          "id": "15-data-governance-shot-1",
+          "timeRange": "0.0-8.4s",
+          "beat": "open",
+          "requiredOnScreenText": [
+            "Context is data movement",
+            "data",
+            "context",
+            "boundary"
+          ],
+          "visualFocus": "governance metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "15-data-governance-shot-2",
+          "timeRange": "8.4-16.8s",
+          "beat": "define",
+          "requiredOnScreenText": [
+            "Permissions should follow the user",
+            "identity",
+            "access",
+            "sync"
+          ],
+          "visualFocus": "governance metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "15-data-governance-shot-3",
+          "timeRange": "16.8-25.2s",
+          "beat": "mechanism",
+          "requiredOnScreenText": [
+            "Retention and training policies matter",
+            "retention",
+            "logs",
+            "training"
+          ],
+          "visualFocus": "governance metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "15-data-governance-shot-4",
+          "timeRange": "25.2-33.6s",
+          "beat": "tradeoff",
+          "requiredOnScreenText": [
+            "Connectors inherit source-system risk",
+            "connector",
+            "scope",
+            "leak"
+          ],
+          "visualFocus": "governance metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        },
+        {
+          "id": "15-data-governance-shot-5",
+          "timeRange": "33.6-42.0s",
+          "beat": "landing",
+          "requiredOnScreenText": [
+            "Governance is part of product selection",
+            "controls",
+            "policy",
+            "fit"
+          ],
+          "visualFocus": "governance metaphor with shared work packet and concept rail",
+          "acceptance": [
+            "Frame is nonblank and uses the active concept accent.",
+            "Headline and three term chips are visible.",
+            "Shared work packet appears before the bottom concept rail.",
+            "The scene can be understood without voiceover."
+          ]
+        }
+      ]
+    }
+  ]
+}

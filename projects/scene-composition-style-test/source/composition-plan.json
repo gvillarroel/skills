@@ -1,0 +1,229 @@
+{
+  "version": 1,
+  "format": "1280x720",
+  "videoDirection": {
+    "sourceAnchors": [
+      "cache hit rate",
+      "37 ms",
+      "before/after diff",
+      "final CTA",
+      "D3",
+      "Anime.js"
+    ],
+    "paletteTypeSource": "Quiet technical product explainer: light canvas, ink structure, D3-generated links/bars/arcs, teal request token, blue/green proof, coral fallback, yellow decision accents.",
+    "safeZones": "Keep all critical text inside 80px margins and above the bottom 108px caption-safe band.",
+    "captionPolicy": "No captions in this style test, but bottom band remains clear.",
+    "rhythm": "Four 3-second scenes with visible entrance, development, and settle phases.",
+    "heldScenes": [
+      "scene-04-cta"
+    ],
+    "negativeList": [
+      "Anime.js only for preview/runtime choreography",
+      "No decorative chrome",
+      "No repeated background sweep across all scenes",
+      "No visible progress bar",
+      "No text-only slide"
+    ]
+  },
+  "scenes": [
+    {
+      "id": "scene-01-hook",
+      "title": "Unclear cache policy impact",
+      "duration": "3s",
+      "sceneJob": "Hook",
+      "viewerTask": "Read one unresolved issue while seeing the system context.",
+      "compositionChoice": "Rule Of Thirds / Force Network",
+      "choiceRationale": "The hook needs one dominant problem card and a secondary service network that makes the unknown cache policy feel contextual instead of decorative.",
+      "focal": "Cache policy question card",
+      "roles": {
+        "foregroundSubject": "right-third problem card",
+        "background": "technical grid",
+        "supporting": "D3 force-network service graph and request route"
+      },
+      "armature": "d3-composition-thirds-force-network-cache-policy",
+      "layout": "Context left, problem card upper-right, clear caption band",
+      "hierarchy": "Large problem card first, request stream second",
+      "safeZones": "No text below y=612",
+      "depthLayers": [
+        "background grid",
+        "D3 network links",
+        "service nodes",
+        "foreground card and token"
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "0.0-0.8s",
+          "visualChange": "D3 network links and system nodes resolve",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "development",
+          "cue": "0.8-2.2s",
+          "visualChange": "Request token approaches the unresolved card",
+          "motionVerb": "route"
+        },
+        {
+          "name": "settle",
+          "cue": "2.2-3.0s",
+          "visualChange": "Question mark pulses once and holds",
+          "motionVerb": "pulse"
+        }
+      ],
+      "rendererHandoff": "Anime.js-ready preview; deterministic frame renderer controls final export.",
+      "validationChecks": [
+        "Problem card is the largest object",
+        "Bottom caption-safe band remains empty"
+      ]
+    },
+    {
+      "id": "scene-02-mechanism",
+      "title": "Cache lookup branch",
+      "duration": "3s",
+      "sceneJob": "Mechanism",
+      "viewerTask": "Trace one request into hit or origin fallback.",
+      "compositionChoice": "Flow Spine / Branch",
+      "choiceRationale": "The viewer needs a shared lookup spine that visibly splits into cache hit and origin fallback outcomes.",
+      "focal": "Branching request token",
+      "roles": {
+        "foregroundSubject": "request token",
+        "leftField": "cache hit lane",
+        "rightField": "origin fallback lane"
+      },
+      "armature": "d3-composition-flow-spine-router-branch",
+      "layout": "Cache lane left, origin lane right, decision point top center",
+      "hierarchy": "Moving request token first, lane outcomes second",
+      "safeZones": "Lane labels stay above caption-safe band",
+      "depthLayers": [
+        "background split fields",
+        "D3 linkHorizontal path rails",
+        "request token and outcome badges"
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "3.0-3.7s",
+          "visualChange": "Token reaches lookup gate",
+          "motionVerb": "enter"
+        },
+        {
+          "name": "development",
+          "cue": "3.7-5.2s",
+          "visualChange": "Token branches to cache and origin lanes",
+          "motionVerb": "split"
+        },
+        {
+          "name": "settle",
+          "cue": "5.2-6.0s",
+          "visualChange": "Hit and fallback outcomes hold",
+          "motionVerb": "hold"
+        }
+      ],
+      "rendererHandoff": "Use Anime.js for live branch preview if needed; final capture uses timestamp state.",
+      "validationChecks": [
+        "Two outcomes are balanced",
+        "Path distinction is visible without explanatory paragraph"
+      ]
+    },
+    {
+      "id": "scene-03-proof",
+      "title": "Before/after proof",
+      "duration": "3s",
+      "sceneJob": "Proof",
+      "viewerTask": "Compare before/after diff and see metric improvement.",
+      "compositionChoice": "Golden Or Root Split / Before-After Bars",
+      "choiceRationale": "The before/after diff is the dominant proof while metrics stay subordinate in a stable rail; D3 scales keep the proof proportional.",
+      "focal": "Before/after diff panel",
+      "roles": {
+        "foregroundSubject": "diff panel",
+        "supportingField": "metric rail",
+        "background": "subtle continuation track"
+      },
+      "armature": "d3-composition-golden-root-before-after-bars",
+      "layout": "Metric rail left, proof panel right",
+      "hierarchy": "Diff panel first, 37 ms and cache hit rate second",
+      "safeZones": "All metrics above caption-safe band",
+      "depthLayers": [
+        "background continuation track",
+        "D3 scaled before/after bars",
+        "metric badges"
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "6.0-6.8s",
+          "visualChange": "Proof panel draws on",
+          "motionVerb": "draw"
+        },
+        {
+          "name": "development",
+          "cue": "6.8-8.2s",
+          "visualChange": "Bars and metric badges reveal",
+          "motionVerb": "fill"
+        },
+        {
+          "name": "settle",
+          "cue": "8.2-9.0s",
+          "visualChange": "Before/after and metrics hold",
+          "motionVerb": "lock"
+        }
+      ],
+      "rendererHandoff": "Anime.js may animate metric reveals in implementation; final export is deterministic.",
+      "validationChecks": [
+        "37 ms is readable",
+        "cache hit rate is readable",
+        "before/after diff remains dominant"
+      ]
+    },
+    {
+      "id": "scene-04-cta",
+      "title": "Rollout checklist CTA",
+      "duration": "3s",
+      "sceneJob": "CTA",
+      "viewerTask": "Read the final action.",
+      "compositionChoice": "Radial Rosette / Centered CTA",
+      "choiceRationale": "A final CTA needs immediate clarity, while the radial checklist turns the held final beat into a semantic completion structure.",
+      "focal": "Review rollout checklist CTA",
+      "roles": {
+        "foregroundSubject": "CTA lockup",
+        "supporting": "D3 radial checklist arcs",
+        "background": "quiet structural grid"
+      },
+      "armature": "d3-composition-radial-rosette-rollout-checklist",
+      "layout": "CTA in upper-middle, checklist ticks below, bottom band clear",
+      "hierarchy": "CTA first, ticks second",
+      "safeZones": "CTA remains above y=560",
+      "depthLayers": [
+        "background grid",
+        "D3 radial rosette arcs",
+        "center CTA panel",
+        "foreground tick marks"
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "9.0-9.8s",
+          "visualChange": "CTA scales in",
+          "motionVerb": "introduce"
+        },
+        {
+          "name": "development",
+          "cue": "9.8-11.0s",
+          "visualChange": "Checklist ticks lock in",
+          "motionVerb": "lock"
+        },
+        {
+          "name": "settle",
+          "cue": "11.0-12.0s",
+          "visualChange": "Final CTA holds still",
+          "motionVerb": "hold"
+        }
+      ],
+      "rendererHandoff": "Anime.js-ready close state with deterministic timestamp rendering.",
+      "validationChecks": [
+        "final CTA is readable",
+        "The held final frame is stable"
+      ]
+    }
+  ]
+}

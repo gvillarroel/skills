@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How Plants Grow</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f7f7;
+        --ink: #333e48;
+        --muted: #696969;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: var(--bg);
+        font-family: "Open Sans", Arial, sans-serif;
+      }
+
+      #stage {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        background: var(--bg);
+      }
+
+      .label {
+        fill: var(--ink);
+        font-family: "Open Sans", Arial, sans-serif;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .small-label {
+        fill: var(--muted);
+        font-family: "Open Sans", Arial, sans-serif;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+
+      .micro-label {
+        fill: #4f4f4f;
+        font-family: "Open Sans", Arial, sans-serif;
+        font-weight: 700;
+        letter-spacing: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="stage" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="How plants grow explainer"></svg>
+    <script src="./node_modules/d3/dist/d3.min.js"></script>
+    <script type="module" src="./src/render.js"></script>
+  </body>
+</html>

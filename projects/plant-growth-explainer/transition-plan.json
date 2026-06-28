@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "videoId": "plant-growth-explainer",
+  "persistentElement": {
+    "name": "growth pulse",
+    "role": "viewer-tracked signal showing where resources are becoming plant growth",
+    "states": [
+      "activation pulse inside seed",
+      "uptake pulse in root stream",
+      "shoot pulse rising toward light",
+      "sugar pulse leaving leaf",
+      "cell-growth pulse at tips",
+      "seed-return pulse in lifecycle ring"
+    ]
+  },
+  "transitions": [
+    {
+      "id": "t01-seed-to-roots",
+      "fromScene": "s01-seed-awakens",
+      "toScene": "s02-roots-feed",
+      "start": 7.2,
+      "duration": 1.2,
+      "family": "persistent object",
+      "surprise": "The activation pulse exits the cracked seed and becomes the first visible root uptake pulse.",
+      "outgoingState": "The pulse sits at the new root tip below the seed.",
+      "bridgeAction": "The pulse travels downward through the root path as the frame deepens into soil.",
+      "incomingState": "The pulse lands on the taproot where water and minerals begin entering.",
+      "compositionShift": "Centered seed cutaway becomes vertical root flow spine.",
+      "colorShift": "Warm activation yellow gains blue and purple resource companions.",
+      "cameraShift": "Subtle downward pan into soil.",
+      "spaceShift": "Seed interior gives way to root-zone soil.",
+      "validationChecks": [
+        "growth pulse appears on both sides",
+        "viewer attention lands on taproot"
+      ]
+    },
+    {
+      "id": "t02-roots-to-shoot",
+      "fromScene": "s02-roots-feed",
+      "toScene": "s03-shoot-finds-light",
+      "start": 15.2,
+      "duration": 1.2,
+      "family": "camera move",
+      "surprise": "The upward water stream pulls the camera above the soil line into the shoot.",
+      "outgoingState": "Particles flow upward through the root spine.",
+      "bridgeAction": "The stream continues past the soil boundary and becomes a green shoot pulse.",
+      "incomingState": "The pulse rides the rising shoot toward the light rays.",
+      "compositionShift": "Vertical root spine becomes diagonal upward armature.",
+      "colorShift": "Blue intake stream hands off to green shoot growth.",
+      "cameraShift": "Upward pan and slight pullback.",
+      "spaceShift": "Underground soil becomes open air above the soil line.",
+      "validationChecks": [
+        "upward flow direction survives the cut",
+        "shoot appears from the same soil baseline"
+      ]
+    },
+    {
+      "id": "t03-shoot-to-leaf",
+      "fromScene": "s03-shoot-finds-light",
+      "toScene": "s04-leaf-makes-sugar",
+      "start": 23.2,
+      "duration": 1.2,
+      "family": "extreme zoom reframe",
+      "surprise": "The camera dives into one opened leaf and reveals it as a conversion chamber.",
+      "outgoingState": "The leaf has intercepted light rays.",
+      "bridgeAction": "A leaf surface expands until veins fill the frame.",
+      "incomingState": "The large leaf receives light, CO2, and water as separate inputs.",
+      "compositionShift": "Diagonal growth armature becomes asymmetric leaf chamber.",
+      "colorShift": "Green leaf surface keeps identity while yellow, blue, and neutral air particles appear.",
+      "cameraShift": "Zoom into the leaf, then settle on the conversion view.",
+      "spaceShift": "Whole plant becomes a leaf-level close-up.",
+      "validationChecks": [
+        "leaf identity is preserved through the zoom",
+        "inputs appear only after the chamber lands"
+      ]
+    },
+    {
+      "id": "t04-leaf-to-growth-zones",
+      "fromScene": "s04-leaf-makes-sugar",
+      "toScene": "s05-growth-zones",
+      "start": 33.0,
+      "duration": 1.2,
+      "family": "morph",
+      "surprise": "The sugars stream stretches into phloem routes that point at growing tips.",
+      "outgoingState": "Sugars leave the leaf veins as purple packets.",
+      "bridgeAction": "The packets align into purple transport lines while blue water lines separate upward.",
+      "incomingState": "The lines feed the shoot and root cell panels.",
+      "compositionShift": "Leaf close-up becomes full plant plus magnified growth zones.",
+      "colorShift": "Purple remains sugar/phloem; blue remains water/xylem.",
+      "cameraShift": "Pull back from leaf to whole plant.",
+      "spaceShift": "Leaf interior becomes plant-wide transport map.",
+      "validationChecks": [
+        "sugar packets keep purple identity",
+        "xylem and phloem are separate after the pullback"
+      ]
+    },
+    {
+      "id": "t05-growth-to-cycle",
+      "fromScene": "s05-growth-zones",
+      "toScene": "s06-cycle-continues",
+      "start": 41.2,
+      "duration": 1.0,
+      "family": "match cut axis",
+      "surprise": "A growth-zone pulse becomes the first seed packet on the lifecycle ring.",
+      "outgoingState": "New cell tiles pulse at the growing tips.",
+      "bridgeAction": "The strongest pulse detaches and arcs around the mature plant.",
+      "incomingState": "The pulse lands on the seed node and starts the circular return.",
+      "compositionShift": "Plant plus magnifiers becomes radial lifecycle.",
+      "colorShift": "Growth green stays as plant tissue; seed yellow returns as continuation state.",
+      "cameraShift": "Small pullback to fit the full ring.",
+      "spaceShift": "Plant-scale growth map becomes lifecycle map.",
+      "validationChecks": [
+        "cycle ring grows from a real growth-zone pulse",
+        "final attention lands on seed node"
+      ]
+    }
+  ]
+}

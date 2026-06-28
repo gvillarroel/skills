@@ -1,0 +1,16 @@
+{
+  "name": "scene-composition-style-test",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "node scripts/render-video.mjs",
+    "render:smoke": "node scripts/render-video.mjs --preset smoke",
+    "render:final": "node scripts/render-video.mjs --preset final"
+  },
+  "dependencies": {
+    "animejs": "^4.2.2",
+    "d3": "^7.9.0",
+    "playwright": "^1.57.0"
+  }
+}

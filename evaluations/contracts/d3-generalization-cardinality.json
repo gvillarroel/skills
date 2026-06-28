@@ -1,0 +1,68 @@
+{
+  "requireReducedMotion": true,
+  "forbidRemote": true,
+  "svgs": [
+    {
+      "id": "force-small",
+      "patternId": "d3-pattern-force-network",
+      "size": "small",
+      "targetCount": 5,
+      "marks": {
+        "node": { "equals": 5 },
+        "link": { "min": 5 }
+      }
+    },
+    {
+      "id": "force-medium",
+      "patternId": "d3-pattern-force-network",
+      "size": "medium",
+      "targetCount": 12,
+      "marks": {
+        "node": { "equals": 12 },
+        "link": { "min": 16 }
+      }
+    },
+    {
+      "id": "force-large",
+      "patternId": "d3-pattern-force-network",
+      "size": "large",
+      "targetCount": 36,
+      "marks": {
+        "node": { "equals": 36 },
+        "link": { "min": 45 }
+      }
+    },
+    {
+      "id": "beeswarm-small",
+      "patternId": "d3-pattern-beeswarm",
+      "size": "small",
+      "targetCount": 9,
+      "marks": {
+        "dot": { "equals": 9 }
+      }
+    },
+    {
+      "id": "beeswarm-medium",
+      "patternId": "d3-pattern-beeswarm",
+      "size": "medium",
+      "targetCount": 30,
+      "marks": {
+        "dot": { "equals": 30 }
+      }
+    },
+    {
+      "id": "beeswarm-large",
+      "patternId": "d3-pattern-beeswarm",
+      "size": "large",
+      "targetCount": 90,
+      "marks": {
+        "dot": { "equals": 90 }
+      }
+    }
+  ],
+  "monotonic": [
+    { "ids": ["force-small", "force-medium", "force-large"], "mark": "node" },
+    { "ids": ["force-small", "force-medium", "force-large"], "mark": "link" },
+    { "ids": ["beeswarm-small", "beeswarm-medium", "beeswarm-large"], "mark": "dot" }
+  ]
+}

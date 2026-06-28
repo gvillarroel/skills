@@ -1,0 +1,353 @@
+{
+  "version": 1,
+  "sourcePackage": "source-package.json",
+  "durationSeconds": 48,
+  "aspect": "16:9",
+  "rendering": {
+    "engine": "standalone HTML SVG with deterministic timestamp rendering",
+    "seekDeterministic": true,
+    "forbiddenDependencies": [
+      "gsap"
+    ]
+  },
+  "shots": [
+    {
+      "id": "s01-seed-awakens",
+      "start": 0,
+      "duration": 8,
+      "purpose": "Show that a seed starts germination when water, oxygen, and warmth reach it.",
+      "sourceAnchors": [
+        "seed",
+        "water",
+        "oxygen",
+        "warmth"
+      ],
+      "visual": {
+        "heroFrame": "Large seed in soil cutaway with input particles converging.",
+        "roles": [
+          "seed",
+          "soil",
+          "water",
+          "oxygen",
+          "warmth",
+          "first root"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "enter",
+          "subject": "water droplets",
+          "target": "seed",
+          "timing": "0.8-3.0s"
+        },
+        {
+          "verb": "swell",
+          "subject": "seed",
+          "target": "seed coat",
+          "timing": "2.0-5.0s"
+        },
+        {
+          "verb": "emerge",
+          "subject": "root tip",
+          "target": "lower soil",
+          "timing": "4.0-8.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "Seed is the focal object",
+        "Input particles enter the seed",
+        "Root tip appears by the end"
+      ]
+    },
+    {
+      "id": "s02-roots-feed",
+      "start": 8,
+      "duration": 8,
+      "purpose": "Show roots absorbing water and minerals while anchoring the plant.",
+      "sourceAnchors": [
+        "roots",
+        "water",
+        "minerals"
+      ],
+      "visual": {
+        "heroFrame": "Root system fills the lower frame with particles entering root hairs.",
+        "roles": [
+          "taproot",
+          "branch roots",
+          "root hairs",
+          "water",
+          "minerals",
+          "upward stream"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "extend",
+          "subject": "taproot",
+          "target": "deeper soil",
+          "timing": "8.3-11.5s"
+        },
+        {
+          "verb": "split",
+          "subject": "branch roots",
+          "target": "nearby water and minerals",
+          "timing": "9.6-14.0s"
+        },
+        {
+          "verb": "flow",
+          "subject": "absorbed particles",
+          "target": "stem base",
+          "timing": "11.0-16.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "Roots look anchored in soil",
+        "Water and minerals enter from outside root hairs",
+        "An upward stream begins"
+      ]
+    },
+    {
+      "id": "s03-shoot-finds-light",
+      "start": 16,
+      "duration": 8,
+      "purpose": "Show the shoot rising and leaves unfolding toward light.",
+      "sourceAnchors": [
+        "shoot",
+        "leaves",
+        "light"
+      ],
+      "visual": {
+        "heroFrame": "Stem rises diagonally into a sunlit upper field with leaves opening.",
+        "roles": [
+          "shoot",
+          "stem",
+          "leaves",
+          "light rays",
+          "soil baseline"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "rise",
+          "subject": "shoot",
+          "target": "upper frame",
+          "timing": "16.2-20.0s"
+        },
+        {
+          "verb": "unfold",
+          "subject": "leaves",
+          "target": "light rays",
+          "timing": "18.5-23.0s"
+        },
+        {
+          "verb": "intercept",
+          "subject": "leaves",
+          "target": "light",
+          "timing": "20.0-24.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "Shoot visibly grows upward",
+        "Leaves unfold instead of appearing fully formed",
+        "Light rays reach leaves"
+      ]
+    },
+    {
+      "id": "s04-leaf-makes-sugar",
+      "start": 24,
+      "duration": 10,
+      "purpose": "Show leaves converting light, CO2, and water into sugars while releasing O2.",
+      "sourceAnchors": [
+        "light",
+        "CO2",
+        "water",
+        "sugars",
+        "O2"
+      ],
+      "visual": {
+        "heroFrame": "Large leaf conversion chamber with inputs entering and outputs leaving.",
+        "roles": [
+          "leaf",
+          "veins",
+          "photons",
+          "CO2",
+          "water",
+          "sugars",
+          "O2"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "enter",
+          "subject": "light, CO2, and water",
+          "target": "leaf",
+          "timing": "24.2-28.0s"
+        },
+        {
+          "verb": "assemble",
+          "subject": "sugar packets",
+          "target": "leaf veins",
+          "timing": "27.0-31.0s"
+        },
+        {
+          "verb": "exit",
+          "subject": "O2 particles",
+          "target": "air",
+          "timing": "29.0-34.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "Inputs enter from separate directions",
+        "Sugars and O2 leave as distinct outputs",
+        "The leaf remains the conversion focal object"
+      ]
+    },
+    {
+      "id": "s05-growth-zones",
+      "start": 34,
+      "duration": 8,
+      "purpose": "Show transport streams supporting cell division and enlargement at growth zones.",
+      "sourceAnchors": [
+        "xylem",
+        "phloem",
+        "new cells"
+      ],
+      "visual": {
+        "heroFrame": "Full plant plus magnified shoot and root tip cell grids.",
+        "roles": [
+          "xylem stream",
+          "phloem stream",
+          "shoot tip",
+          "root tip",
+          "new cells",
+          "sugar packets"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "flow",
+          "subject": "xylem",
+          "target": "leaves",
+          "timing": "34.2-38.5s"
+        },
+        {
+          "verb": "route",
+          "subject": "sugars",
+          "target": "growth zones",
+          "timing": "35.5-41.0s"
+        },
+        {
+          "verb": "divide",
+          "subject": "cell tiles",
+          "target": "new cells",
+          "timing": "36.5-42.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "Xylem and phloem directions are separate",
+        "New cells appear at both shoot and root tips",
+        "Transport connects leaves to growing zones"
+      ]
+    },
+    {
+      "id": "s06-cycle-continues",
+      "start": 42,
+      "duration": 6,
+      "purpose": "Show mature plants making seeds that continue the growth cycle.",
+      "sourceAnchors": [
+        "flower",
+        "fruit",
+        "seeds"
+      ],
+      "visual": {
+        "heroFrame": "Radial life cycle from seed to sprout to mature plant to flower/fruit back to seeds.",
+        "roles": [
+          "seed node",
+          "sprout node",
+          "plant node",
+          "flower node",
+          "seed return path"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "open",
+          "subject": "flower",
+          "target": "mature plant",
+          "timing": "42.2-44.0s"
+        },
+        {
+          "verb": "form",
+          "subject": "seeds",
+          "target": "fruit",
+          "timing": "43.4-46.0s"
+        },
+        {
+          "verb": "complete",
+          "subject": "cycle ring",
+          "target": "seed node",
+          "timing": "45.0-48.0s"
+        }
+      ],
+      "media": {
+        "narration": null,
+        "music": null,
+        "captions": false,
+        "assets": []
+      },
+      "validation": [
+        "The final state is cyclic",
+        "Seeds visibly return to the start",
+        "The plant is not presented as a linear endpoint"
+      ]
+    }
+  ],
+  "literalAnchors": [
+    "seed",
+    "water",
+    "oxygen",
+    "warmth",
+    "roots",
+    "minerals",
+    "leaves",
+    "light",
+    "CO2",
+    "sugars",
+    "O2",
+    "xylem",
+    "phloem",
+    "new cells",
+    "seeds"
+  ],
+  "missingFacts": []
+}

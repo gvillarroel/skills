@@ -1,0 +1,24 @@
+{
+  "name": "plant-growth-explainer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:contract": "uv run --script ../../.agents/skills/source-to-video-director/scripts/validate_video_contract.py --source-package source-package.json --storyboard storyboard.md --shot-contract shot-contract.json --forbid gsap --require-anchor seed --require-anchor water --require-anchor oxygen --require-anchor warmth --require-anchor roots --require-anchor minerals --require-anchor leaves --require-anchor light --require-anchor CO2 --require-anchor sugars --require-anchor O2 --require-anchor xylem --require-anchor phloem --require-anchor \"new cells\" --require-anchor seeds --expect-shots 6",
+    "validate:composition": "uv run --script ../../.agents/skills/scene-composition-director/scripts/validate_scene_composition_plan.py --plan composition-plan.json --expect-scenes 6 --require-anchor seed --require-anchor water --require-anchor roots --require-anchor light --require-anchor sugars --require-anchor \"new cells\" --forbid gsap",
+    "validate:transitions": "uv run --script ../../.agents/skills/scene-transition-director/scripts/validate_transition_plan.py --plan transition-plan.json --expect-transitions 5 --expect-persistent-name \"growth pulse\" --expect-chain s01-seed-awakens,s02-roots-feed,s03-shoot-finds-light,s04-leaf-makes-sugar,s05-growth-zones,s06-cycle-continues --require-anchor seed --require-anchor roots --require-anchor leaf --require-anchor sugars --forbid gsap",
+    "smoke": "node scripts/smoke-render.mjs",
+    "render:quick": "node scripts/render-video.mjs --preset quick",
+    "render:draft": "node scripts/render-video.mjs --preset draft",
+    "render:motion": "node scripts/render-video.mjs --preset motion",
+    "render:fast": "node scripts/render-video.mjs --preset fast",
+    "render:final": "node scripts/render-video.mjs --preset final",
+    "review": "node scripts/review-video.mjs"
+  },
+  "dependencies": {
+    "d3": "7.9.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

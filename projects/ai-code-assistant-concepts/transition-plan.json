@@ -1,0 +1,81 @@
+{
+  "projectId": "ai-code-assistant-concepts",
+  "transitionThesis": "Continuity comes from retaining the work packet, top identity, and bottom rail while changing the domain metaphor.",
+  "betweenVideos": [
+    {
+      "from": "01-what-is-an-llm",
+      "to": "02-llm-billing",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "02-llm-billing",
+      "to": "03-probabilities-and-evaluation",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "03-probabilities-and-evaluation",
+      "to": "04-what-is-an-agent",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "04-what-is-an-agent",
+      "to": "05-what-is-a-guardrail",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "05-what-is-a-guardrail",
+      "to": "06-what-is-a-harness",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "06-what-is-a-harness",
+      "to": "07-what-is-a-harness-hook",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "07-what-is-a-harness-hook",
+      "to": "08-what-is-a-harness-plugin",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "08-what-is-a-harness-plugin",
+      "to": "09-what-is-a-skill",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "09-what-is-a-skill",
+      "to": "10-what-is-an-mcp",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "10-what-is-an-mcp",
+      "to": "11-ai-alternatives",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "11-ai-alternatives",
+      "to": "12-observability",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "12-observability",
+      "to": "13-instruction-layers",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "13-instruction-layers",
+      "to": "14-tools-and-permissions",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "14-tools-and-permissions",
+      "to": "15-data-governance",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    },
+    {
+      "from": "15-data-governance",
+      "to": "series end",
+      "device": "The bottom rail advances one node and the work packet reappears in the new metaphor."
+    }
+  ]
+}

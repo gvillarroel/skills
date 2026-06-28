@@ -1,0 +1,81 @@
+{
+  "projectId": "ai-code-assistant-concepts",
+  "videoId": "03-probabilities-and-evaluation",
+  "compositionArmature": "dominant left visual, right explanation panel, bottom sequence rail",
+  "hierarchy": [
+    "Concept title and current beat",
+    "Main visual metaphor",
+    "Right-side headline and microcopy",
+    "Term chips and shared concept rail"
+  ],
+  "reusableAssets": [
+    {
+      "id": "work-packet",
+      "meaning": "a user task, prompt, or data unit moving through the system"
+    },
+    {
+      "id": "blue-context-box",
+      "meaning": "the visible context available to the model or agent"
+    },
+    {
+      "id": "green-check",
+      "meaning": "verified output or allowed action"
+    },
+    {
+      "id": "red-shield",
+      "meaning": "policy, permission, guardrail, or governance boundary"
+    },
+    {
+      "id": "teal-bus",
+      "meaning": "standardized connection surface such as MCP"
+    },
+    {
+      "id": "amber-meter",
+      "meaning": "cost, latency, or operational load"
+    }
+  ],
+  "sceneComposition": [
+    {
+      "sceneId": "03-probabilities-and-evaluation-scene-1",
+      "timeRange": "0.0-8.4s",
+      "focalObject": "Likely is not guaranteed",
+      "motionCue": "The work packet or active node moves to the next relevant boundary.",
+      "contrastCue": "Active state uses Evaluation accent; inactive states use neutral line work."
+    },
+    {
+      "sceneId": "03-probabilities-and-evaluation-scene-2",
+      "timeRange": "8.4-16.8s",
+      "focalObject": "Context reshapes the distribution",
+      "motionCue": "The work packet or active node moves to the next relevant boundary.",
+      "contrastCue": "Active state uses Evaluation accent; inactive states use neutral line work."
+    },
+    {
+      "sceneId": "03-probabilities-and-evaluation-scene-3",
+      "timeRange": "16.8-25.2s",
+      "focalObject": "Tests beat vibes when possible",
+      "motionCue": "The work packet or active node moves to the next relevant boundary.",
+      "contrastCue": "Active state uses Evaluation accent; inactive states use neutral line work."
+    },
+    {
+      "sceneId": "03-probabilities-and-evaluation-scene-4",
+      "timeRange": "25.2-33.6s",
+      "focalObject": "pass@N trades attempts for cost",
+      "motionCue": "The work packet or active node moves to the next relevant boundary.",
+      "contrastCue": "Active state uses Evaluation accent; inactive states use neutral line work."
+    },
+    {
+      "sceneId": "03-probabilities-and-evaluation-scene-5",
+      "timeRange": "33.6-42.0s",
+      "focalObject": "Agent evals need traces",
+      "motionCue": "The work packet or active node moves to the next relevant boundary.",
+      "contrastCue": "Active state uses Evaluation accent; inactive states use neutral line work."
+    }
+  ],
+  "critiqueChecklist": [
+    "No text depends on voiceover to be understandable.",
+    "The active visual focus matches the current beat.",
+    "Recurring symbols keep the same meaning across all videos.",
+    "The right panel does not compete with the main visual.",
+    "The bottom rail identifies the module without becoming a second narrative."
+  ]
+}

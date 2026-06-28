@@ -7,6 +7,7 @@ Use this reference to avoid duplicating guidance already owned by another skill.
 Use `html-d3-anime-video-workflow` for:
 
 - research-backed multi-video planning
+- source-package and storyboard orchestration for standalone HTML videos
 - deciding between Slidev recording and standalone timestamp rendering
 - coordinating HTML layout, D3 SVG redraws, Anime.js preview cues, Playwright capture, ffmpeg encoding, and contact-sheet review
 - production manifests and review notes
@@ -44,6 +45,8 @@ Use `manim-svg-video` when the requested artifact is a Manim video composed from
 
 - If the output is a Slidev deck, start with the Slidev skills.
 - If the output is a standalone HTML animation video, start here, then load D3 or Anime.js skills only for component-specific detail.
+- If the input is a website/product, PR/code change, article/topic, music track, or existing footage, first build the matching source package described in `html-video-orchestration-patterns.md`; do not let scene HTML be the first source of truth.
+- If the request is a short unnarrated motion-first artifact, keep this skill's plan compact and validate one finished shot instead of expanding it into a multi-scene explainer.
 - If the user asks to improve the video production process after a completed run, store the cross-stack lesson here and update the owning component skill only for component-local lessons.
 - If a pipeline needs exact per-frame reproducibility, prefer timestamp rendering over real-time browser recording.
 - If the video value depends on native Slidev transitions, prefer `slidev-video` recording rather than rebuilding the deck as standalone HTML.

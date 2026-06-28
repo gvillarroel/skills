@@ -1,0 +1,430 @@
+{
+  "version": 1,
+  "format": "1280x720",
+  "videoDirection": {
+    "sourceAnchors": [
+      "seed",
+      "water",
+      "oxygen",
+      "warmth",
+      "roots",
+      "minerals",
+      "leaves",
+      "light",
+      "CO2",
+      "sugars",
+      "O2",
+      "xylem",
+      "phloem",
+      "new cells",
+      "seeds"
+    ],
+    "paletteTypeSource": "Repository visual tokens with neutral background, green plant tissue, blue water, yellow light, orange/purple minerals and sugars.",
+    "safeZones": "Keep all labels inside a 64 px edge margin; reserve the top-left corner for a small topic label only.",
+    "captionPolicy": "No captions; silent video with concise diagram labels.",
+    "rhythm": "Every shot has entrance, development, and settle phases; avoid static holds longer than two seconds.",
+    "heldScenes": [
+      "The final cycle holds briefly after the seed return path completes."
+    ],
+    "negativeList": [
+      "no decorative progress bar",
+      "no paragraph text",
+      "no generic ambient motion"
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01-seed-awakens",
+      "title": "Seed Awakens",
+      "duration": "0-8s",
+      "sourceAnchors": [
+        "seed",
+        "water",
+        "oxygen",
+        "warmth"
+      ],
+      "sceneJob": "hook and activation",
+      "viewerTask": "see inputs reach the seed and trigger the first root",
+      "compositionChoice": "centered hero",
+      "rejectedAlternatives": [
+        "radial hub would imply a full cycle too early",
+        "split screen would weaken the seed as the focal object"
+      ],
+      "choiceRationale": "The seed must pass the squint test as the single origin of the process.",
+      "focal": "swelling seed with emerging root tip",
+      "roles": {
+        "foreground": "seed, crack, root tip",
+        "midground": "water, oxygen, warmth inputs",
+        "background": "soil cutaway and root-safe space"
+      },
+      "armature": "centered vertical cutaway",
+      "layout": "Seed centered slightly below midline, input particles above and around it, soil band in the lower half.",
+      "hierarchy": "Seed is largest; input particles are smaller and motion-led.",
+      "density": "low",
+      "safeZones": "Labels stay outside the seed ellipse and inside 80 px margins.",
+      "depthLayers": [
+        "soft background field",
+        "soil cross-section",
+        "seed and input particles",
+        "root tip foreground"
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "0-2s",
+          "visualChange": "water and oxygen approach the seed",
+          "motionVerb": "enter"
+        },
+        {
+          "name": "development",
+          "cue": "2-5s",
+          "visualChange": "seed swells and coat cracks",
+          "motionVerb": "swell"
+        },
+        {
+          "name": "settle",
+          "cue": "5-8s",
+          "visualChange": "root tip emerges into soil",
+          "motionVerb": "emerge"
+        }
+      ],
+      "captionPlan": "none",
+      "rendererHandoff": "HTML/SVG/D3 deterministic renderer",
+      "validationChecks": [
+        "seed is readable in contact sheet",
+        "root tip is visible by final frame",
+        "input particles do not collide with labels"
+      ],
+      "risks": [
+        "Inputs could look decorative if they do not enter the seed."
+      ]
+    },
+    {
+      "id": "s02-roots-feed",
+      "title": "Roots Feed",
+      "duration": "8-16s",
+      "sourceAnchors": [
+        "roots",
+        "water",
+        "minerals"
+      ],
+      "sceneJob": "mechanism",
+      "viewerTask": "trace particles from soil into roots",
+      "compositionChoice": "flow spine",
+      "rejectedAlternatives": [
+        "grid board would hide the branching root mechanic",
+        "centered hero would not show enough soil reach"
+      ],
+      "choiceRationale": "A vertical spine lets the taproot anchor the scene while branches collect resources.",
+      "focal": "taproot with branching uptake paths",
+      "roles": {
+        "foreground": "root paths and moving particles",
+        "midground": "soil mineral field",
+        "background": "subtle soil strata"
+      },
+      "armature": "vertical flow spine with branch lanes",
+      "layout": "Root spine centered; branch roots spread left and right; resource dots live in outer soil lanes.",
+      "hierarchy": "Root spine first, moving uptake particles second.",
+      "density": "medium",
+      "safeZones": "Outer labels stay above branch endpoints and do not overlap root hairs.",
+      "depthLayers": [
+        "soil strata",
+        "resource dots",
+        "root network",
+        "moving intake particles"
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "8-10s",
+          "visualChange": "root spine extends downward",
+          "motionVerb": "extend"
+        },
+        {
+          "name": "development",
+          "cue": "10-14s",
+          "visualChange": "branch roots split toward resources",
+          "motionVerb": "split"
+        },
+        {
+          "name": "settle",
+          "cue": "14-16s",
+          "visualChange": "water and minerals flow upward",
+          "motionVerb": "flow"
+        }
+      ],
+      "captionPlan": "none",
+      "rendererHandoff": "HTML/SVG/D3 deterministic renderer",
+      "validationChecks": [
+        "particles visibly enter root hair regions",
+        "root branches remain inside frame",
+        "upward stream is distinguishable from downward growth"
+      ],
+      "risks": [
+        "Too many root hairs could turn into visual noise."
+      ]
+    },
+    {
+      "id": "s03-shoot-finds-light",
+      "title": "Shoot Finds Light",
+      "duration": "16-24s",
+      "sourceAnchors": [
+        "shoot",
+        "leaves",
+        "light"
+      ],
+      "sceneJob": "transformation",
+      "viewerTask": "watch the plant move from underground start to light capture",
+      "compositionChoice": "diagonal armature",
+      "rejectedAlternatives": [
+        "centered hero would feel static",
+        "split screen would separate shoot and light even though the mechanic is reaching"
+      ],
+      "choiceRationale": "The diagonal from lower-left root base to upper-right light makes upward growth directional.",
+      "focal": "stem rising and leaves unfolding",
+      "roles": {
+        "foreground": "stem and leaves",
+        "midground": "light rays",
+        "background": "air field and soil baseline"
+      },
+      "armature": "lower-left to upper-right diagonal",
+      "layout": "Stem starts near lower center and rises into upper-right sun rays; leaves unfold near the ray field.",
+      "hierarchy": "Stem motion first, leaf unfolding second, light rays third.",
+      "density": "low",
+      "safeZones": "Sun rays do not cover leaf labels; leaves stay below the top 64 px margin.",
+      "depthLayers": [
+        "air background",
+        "sun ray field",
+        "stem",
+        "leaf foreground"
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "16-18s",
+          "visualChange": "shoot pierces the soil line",
+          "motionVerb": "rise"
+        },
+        {
+          "name": "development",
+          "cue": "18-22s",
+          "visualChange": "leaves unfold toward the rays",
+          "motionVerb": "unfold"
+        },
+        {
+          "name": "settle",
+          "cue": "22-24s",
+          "visualChange": "light particles land on leaf surfaces",
+          "motionVerb": "intercept"
+        }
+      ],
+      "captionPlan": "none",
+      "rendererHandoff": "HTML/SVG/D3 deterministic renderer",
+      "validationChecks": [
+        "direction of growth reads upward",
+        "leaves are not fully visible in the first third of the shot",
+        "light rays land on leaves"
+      ],
+      "risks": [
+        "Sun rays could dominate the focal plant if too saturated."
+      ]
+    },
+    {
+      "id": "s04-leaf-makes-sugar",
+      "title": "Leaf Makes Sugar",
+      "duration": "24-34s",
+      "sourceAnchors": [
+        "light",
+        "CO2",
+        "water",
+        "sugars",
+        "O2"
+      ],
+      "sceneJob": "conversion mechanism",
+      "viewerTask": "follow inputs into the leaf and outputs away from it",
+      "compositionChoice": "asymmetric editorial",
+      "rejectedAlternatives": [
+        "full-width strip would flatten the conversion chamber",
+        "radial hub would make inputs and outputs look equivalent"
+      ],
+      "choiceRationale": "A large leaf can dominate the left/center while output lanes occupy the right side.",
+      "focal": "leaf conversion chamber",
+      "roles": {
+        "foreground": "leaf and vein network",
+        "midground": "input streams and sugar assembly",
+        "background": "air and water route lanes"
+      },
+      "armature": "70/30 asymmetric split",
+      "layout": "Large leaf spans left and center; inputs enter from top/left/bottom; output lanes leave to the right.",
+      "hierarchy": "Leaf first, moving packets second, small labels third.",
+      "density": "medium",
+      "safeZones": "Formula label stays in a fixed lower-right panel and does not cover output packets.",
+      "depthLayers": [
+        "air background",
+        "input lanes",
+        "leaf body and veins",
+        "sugar and oxygen outputs"
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "24-27s",
+          "visualChange": "light, CO2, and water enter leaf",
+          "motionVerb": "enter"
+        },
+        {
+          "name": "development",
+          "cue": "27-31s",
+          "visualChange": "sugar packets assemble inside veins",
+          "motionVerb": "assemble"
+        },
+        {
+          "name": "settle",
+          "cue": "31-34s",
+          "visualChange": "sugars leave through veins and O2 exits to air",
+          "motionVerb": "exit"
+        }
+      ],
+      "captionPlan": "none",
+      "rendererHandoff": "HTML/SVG/D3 deterministic renderer",
+      "validationChecks": [
+        "CO2 and O2 directions are not confused",
+        "sugar packets do not cover the fixed formula panel",
+        "leaf remains readable after compression"
+      ],
+      "risks": [
+        "Photosynthesis can become text-heavy if the conversion is not spatially clear."
+      ]
+    },
+    {
+      "id": "s05-growth-zones",
+      "title": "Growth Zones",
+      "duration": "34-42s",
+      "sourceAnchors": [
+        "xylem",
+        "phloem",
+        "new cells"
+      ],
+      "sceneJob": "allocation and proof",
+      "viewerTask": "see transport routes feed new cell growth",
+      "compositionChoice": "golden or root split",
+      "rejectedAlternatives": [
+        "centered full plant would hide the cell-level proof",
+        "grid board would lose transport direction"
+      ],
+      "choiceRationale": "The plant remains the hero while magnified tips prove where growth happens.",
+      "focal": "full plant plus magnified growth zones",
+      "roles": {
+        "foreground": "xylem, phloem, sugar packets",
+        "midground": "full plant and magnifier rings",
+        "background": "cell grids in side panels"
+      },
+      "armature": "dominant plant field with two supporting magnifier fields",
+      "layout": "Plant occupies left/center; two cell magnifier panels sit right-top and right-bottom.",
+      "hierarchy": "Transport routes first, cell division second, whole plant third.",
+      "density": "medium",
+      "safeZones": "Cell panels keep labels inside their borders with 16 px internal padding.",
+      "depthLayers": [
+        "neutral background",
+        "plant silhouette",
+        "transport streams",
+        "magnified cell panels"
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "34-36s",
+          "visualChange": "xylem and phloem streams appear with direction",
+          "motionVerb": "flow"
+        },
+        {
+          "name": "development",
+          "cue": "36-40s",
+          "visualChange": "sugar packets route to shoot and root tips",
+          "motionVerb": "route"
+        },
+        {
+          "name": "settle",
+          "cue": "39-42s",
+          "visualChange": "cell tiles split and enlarge in both panels",
+          "motionVerb": "divide"
+        }
+      ],
+      "captionPlan": "none",
+      "rendererHandoff": "HTML/SVG/D3 deterministic renderer",
+      "validationChecks": [
+        "xylem arrows go up and phloem arrows route away from leaves",
+        "new cell tiles animate in both panels",
+        "side panels do not read as unrelated cards"
+      ],
+      "risks": [
+        "Side panels could feel like UI cards if over-bordered."
+      ]
+    },
+    {
+      "id": "s06-cycle-continues",
+      "title": "Cycle Continues",
+      "duration": "42-48s",
+      "sourceAnchors": [
+        "flower",
+        "fruit",
+        "seeds"
+      ],
+      "sceneJob": "closing loop",
+      "viewerTask": "understand that mature plants make seeds and restart the cycle",
+      "compositionChoice": "radial or hub",
+      "rejectedAlternatives": [
+        "linear timeline would imply a terminal endpoint",
+        "centered hero would not show return"
+      ],
+      "choiceRationale": "The radial cycle is only used when continuation is the lesson.",
+      "focal": "completed seed return path",
+      "roles": {
+        "foreground": "cycle ring and seed packets",
+        "midground": "stage nodes",
+        "background": "mature plant silhouette"
+      },
+      "armature": "radial lifecycle ring around the plant",
+      "layout": "Cycle nodes sit around the center plant; final seed packets travel back to the seed node.",
+      "hierarchy": "Cycle ring first, mature plant second, labels third.",
+      "density": "medium",
+      "safeZones": "Radial labels sit inside the ring and stay clear of frame edges.",
+      "depthLayers": [
+        "light background",
+        "plant silhouette",
+        "cycle ring",
+        "moving seed packets"
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "42-44s",
+          "visualChange": "flower opens on the plant",
+          "motionVerb": "open"
+        },
+        {
+          "name": "development",
+          "cue": "44-46s",
+          "visualChange": "fruit and seeds form",
+          "motionVerb": "form"
+        },
+        {
+          "name": "settle",
+          "cue": "46-48s",
+          "visualChange": "seed packets complete the cycle ring",
+          "motionVerb": "complete"
+        }
+      ],
+      "captionPlan": "none",
+      "rendererHandoff": "HTML/SVG/D3 deterministic renderer",
+      "validationChecks": [
+        "final path returns to seed node",
+        "cycle is not introduced before the closing shot",
+        "final hold is brief but readable"
+      ],
+      "risks": [
+        "The radial ring can become decorative if seed packets do not complete it."
+      ]
+    }
+  ]
+}

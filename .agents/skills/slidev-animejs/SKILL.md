@@ -28,7 +28,7 @@ The runnable validation fixture lives in `.agents/skills/slidev-animejs/assets/e
 
 ## Visual Tokens
 
-Read `../ANIMATED_VISUAL_TOKENS.md` before creating or updating animated Slidev examples, generated SVG assets, controls, or export fixtures. Use Open Sans for slide and SVG text, Material Symbols Rounded for system icons, and the documented brand palette for editable marks, stages, controls, highlight states, and generated assets.
+Read `references/visual-tokens.md` before creating or updating animated Slidev examples, generated SVG assets, controls, or export fixtures. Use Open Sans for slide and SVG text, Material Symbols Rounded for system icons, and the documented brand palette for editable marks, stages, controls, highlight states, and generated assets.
 
 ## Pattern Promotion
 

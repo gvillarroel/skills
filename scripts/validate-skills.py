@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import re
 import sys
 from dataclasses import dataclass
@@ -42,6 +43,7 @@ DISALLOWED_SKILL_DOCS = {
     "CHANGELOG.md",
 }
 SKILL_NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+EXAMPLE_ID_RE = SKILL_NAME_RE
 MAX_SKILL_NAME_LENGTH = 64
 
 
@@ -211,6 +213,109 @@ def validate_script_tree(script_dir: Path, root: Path, findings: list[Finding]) 
             add(findings, script, "scripts must be TypeScript (.ts) or uv Python (.py)")
 
 
+def load_build_pages_module(root: Path):
+    script = root / "scripts" / "build-pages.py"
+    if not script.exists():
+        return None, "scripts/build-pages.py is required"
+
+    spec = importlib.util.spec_from_file_location("skills_repo_build_pages", script)
+    if spec is None or spec.loader is None:
+        return None, "could not load scripts/build-pages.py"
+
+    module = importlib.util.module_from_spec(spec)
+    try:
+        spec.loader.exec_module(module)
+    except Exception as error:
+        return None, f"could not import scripts/build-pages.py: {error}"
+    return module, None
+
+
+def validate_example_catalog(root: Path, findings: list[Finding]) -> None:
+    build_pages, error = load_build_pages_module(root)
+    script = root / "scripts" / "build-pages.py"
+    if error:
+        add(findings, script, error)
+        return
+
+    sources = getattr(build_pages, "EXAMPLE_SOURCES", None)
+    published = getattr(build_pages, "PUBLISHED_EXAMPLE_SETS", None)
+    unlisted = getattr(build_pages, "UNLISTED_EXAMPLE_SOURCES", set())
+
+    if not isinstance(sources, dict):
+        add(findings, script, "EXAMPLE_SOURCES must be a mapping")
+        return
+    if not isinstance(published, list):
+        add(findings, script, "PUBLISHED_EXAMPLE_SETS must be a list")
+        return
+    if not isinstance(unlisted, set):
+        add(findings, script, "UNLISTED_EXAMPLE_SOURCES must be a set")
+        return
+
+    source_names = set(sources)
+    published_ids: set[str] = set()
+    published_sources: set[str] = set()
+    published_hrefs: set[str] = set()
+    required_fields = {"id", "source", "title", "href", "kind", "description"}
+
+    for index, card in enumerate(published, start=1):
+        if not isinstance(card, dict):
+            add(findings, script, f"PUBLISHED_EXAMPLE_SETS entry {index} must be a mapping")
+            continue
+
+        missing = sorted(required_fields - set(card))
+        if missing:
+            add(findings, script, f"PUBLISHED_EXAMPLE_SETS entry {index} is missing: {', '.join(missing)}")
+            continue
+
+        example_id = card.get("id")
+        source = card.get("source")
+        href = card.get("href")
+        title = card.get("title")
+        kind = card.get("kind")
+        description = card.get("description")
+
+        if not isinstance(example_id, str) or not EXAMPLE_ID_RE.fullmatch(example_id):
+            add(findings, script, f"PUBLISHED_EXAMPLE_SETS entry {index} id must be lowercase hyphen-case")
+        elif example_id in published_ids:
+            add(findings, script, f"duplicate published example id: {example_id}")
+        else:
+            published_ids.add(example_id)
+
+        if not isinstance(source, str) or source not in sources:
+            add(findings, script, f"PUBLISHED_EXAMPLE_SETS entry {index} source must match EXAMPLE_SOURCES")
+        else:
+            published_sources.add(source)
+            source_path = sources[source]
+            if not isinstance(source_path, Path):
+                add(findings, script, f"EXAMPLE_SOURCES['{source}'] must be a Path")
+            elif not source_path.exists():
+                add(findings, source_path, "published example source path does not exist")
+
+        if not isinstance(href, str) or not href.startswith("examples/") or not href.endswith("/"):
+            add(findings, script, f"PUBLISHED_EXAMPLE_SETS entry {index} href must be an examples/.../ directory URL")
+        elif href in published_hrefs:
+            add(findings, script, f"duplicate published example href: {href}")
+        else:
+            published_hrefs.add(href)
+
+        for field_name, value in {"title": title, "kind": kind, "description": description}.items():
+            if not isinstance(value, str) or not value.strip():
+                add(findings, script, f"PUBLISHED_EXAMPLE_SETS entry {index} {field_name} must be a non-empty string")
+
+    unknown_unlisted = sorted(unlisted - source_names)
+    if unknown_unlisted:
+        add(findings, script, f"UNLISTED_EXAMPLE_SOURCES contains unknown sources: {', '.join(unknown_unlisted)}")
+
+    missing_from_main_page = sorted(source_names - published_sources - unlisted)
+    if missing_from_main_page:
+        add(
+            findings,
+            script,
+            "publishable example sources must be listed in PUBLISHED_EXAMPLE_SETS: "
+            + ", ".join(missing_from_main_page),
+        )
+
+
 def skills_root(root: Path) -> Path:
     return root / ".agents" / "skills"
 
@@ -235,6 +340,7 @@ def validate_repo(root: Path) -> list[Finding]:
         add(findings, skills_root(root), "skills root .agents/skills is required")
 
     validate_script_tree(root / "scripts", root, findings)
+    validate_example_catalog(root, findings)
 
     for child in root.iterdir():
         if child.is_dir() and (child / "SKILL.md").exists():
