@@ -60,5 +60,5 @@ Do not use fit tiers or fit badges. Keep only variants that are useful for the s
 7. Validate after changes:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 70 --expected-reviewed-patterns 223 --required-variant d3-composition-radial-rosette-force-network --expect-clean
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 70 --expected-reviewed-patterns 224 --required-variant d3-composition-radial-rosette-force-network --expect-clean
 ```

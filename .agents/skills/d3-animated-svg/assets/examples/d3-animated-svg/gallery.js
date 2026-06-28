@@ -243,6 +243,7 @@
     { id: "critical-path", kicker: "Flow", title: "Critical Path DAG", copy: "Weighted dependencies reveal the bottleneck route.", render: renderCriticalPath },
     { id: "critical-incident-escalation", kicker: "Critical", title: "Critical Incident Escalation", copy: "A SEV response timeline shows detection, command, comms, SLA pressure, mitigation, and recovery.", render: renderCriticalIncidentEscalation, size: "wide" },
     { id: "critical-fault-tree", kicker: "Critical", title: "Critical Fault Tree", copy: "A safety fault tree traces a top event through OR and AND gates, basic events, minimal cut sets, and risk contribution.", render: renderCriticalFaultTree, size: "wide" },
+    { id: "critical-bowtie-barrier", kicker: "Critical", title: "Critical Bowtie Barrier", copy: "A safety bowtie maps threats, the top event, preventive barriers, consequences, mitigative barriers, and degraded controls.", render: renderCriticalBowtieBarrier, size: "wide" },
     { id: "mlp-simple", kicker: "AI", title: "MLP Simple", copy: "Gray neurons pulse red one layer at a time.", render: renderMlpSimple },
     { id: "deep-learning-model-execution", kicker: "AI", title: "Deep Learning Model Execution", copy: "A square model frame contains only an internal MLP pulsing through execution.", render: renderDeepLearningModelExecution },
     { id: "mlp-internals", kicker: "AI", title: "MLP Internals", copy: "A forward pass pulses neurons while x, z, a, W, b, and y_hat stay visible.", render: renderMlpInternals },
@@ -10886,6 +10887,356 @@
       legend.append("text").attr("class", "caption").attr("x", 22).attr("y", y + 3).attr("font-size", 7.4).text(item.label);
     });
     fadeIn(legend, .46, .45);
+  }
+
+  function renderCriticalBowtieBarrier() {
+    const chartWidth = 820;
+    const chartHeight = 450;
+    const svg = prepareSvg(
+      "critical-bowtie-barrier",
+      "Critical bowtie barrier",
+      "A safety bowtie maps threats, the top event, preventive barriers, consequences, mitigative barriers, and degraded controls."
+    )
+      .attr("viewBox", `0 0 ${chartWidth} ${chartHeight}`)
+      .attr("data-pattern-family", "critical-bowtie-barrier")
+      .attr("data-threat-count", 4)
+      .attr("data-preventive-barrier-count", 4)
+      .attr("data-mitigative-barrier-count", 4)
+      .attr("data-consequence-count", 4)
+      .attr("data-barrier-count", 8)
+      .attr("data-critical-gap-count", 2)
+      .attr("data-degradation-control-count", 3)
+      .attr("data-top-event", "loss-of-containment");
+
+    const threatArrow = addArrowMarker(svg, "critical-bowtie-threat", palette.orange);
+    const consequenceArrow = addArrowMarker(svg, "critical-bowtie-consequence", palette.purple);
+    const gapArrow = addArrowMarker(svg, "critical-bowtie-gap", palette.red);
+
+    const shell = svg.append("g").attr("class", "bowtie-shell");
+    shell.append("rect")
+      .attr("x", 18)
+      .attr("y", 22)
+      .attr("width", 784)
+      .attr("height", 410)
+      .attr("rx", 8)
+      .attr("fill", palette.surface)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", 1.2);
+    shell.append("text").attr("class", "caption").attr("x", 36).attr("y", 48).text("Bowtie - pressure release risk");
+    shell.append("text").attr("class", "caption").attr("x", 93).attr("y", 68).attr("text-anchor", "middle").text("Threats");
+    shell.append("text").attr("class", "caption").attr("x", 252).attr("y", 68).attr("text-anchor", "middle").text("Preventive barriers");
+    shell.append("text").attr("class", "caption").attr("x", 568).attr("y", 68).attr("text-anchor", "middle").text("Mitigative barriers");
+    shell.append("text").attr("class", "caption").attr("x", 728).attr("y", 86).attr("text-anchor", "middle").text("Consequences");
+
+    const hazard = svg.append("g").attr("class", "bowtie-hazard").attr("transform", "translate(328 42)");
+    hazard.append("rect")
+      .attr("width", 164)
+      .attr("height", 42)
+      .attr("rx", 7)
+      .attr("fill", palette.redHighlight)
+      .attr("stroke", palette.red)
+      .attr("stroke-width", 1.4);
+    hazard.append("text").attr("class", "mark-label").attr("x", 82).attr("y", 17).attr("text-anchor", "middle").attr("font-size", 8.2).text("Hazard");
+    hazard.append("text").attr("class", "caption").attr("x", 82).attr("y", 31).attr("text-anchor", "middle").attr("font-size", 7.6).text("pressurized ammonia");
+    fadeIn(hazard, .08, .42);
+
+    const healthPanel = svg.append("g").attr("class", "bowtie-health-panel").attr("transform", "translate(650 30)");
+    healthPanel.append("rect").attr("width", 132).attr("height", 34).attr("rx", 7).attr("fill", palette.gray50).attr("stroke", palette.gray200);
+    healthPanel.append("text").attr("class", "caption").attr("x", 10).attr("y", 13).attr("font-size", 7.4).text("Barrier health");
+    healthPanel.append("text").attr("class", "label").attr("x", 10).attr("y", 28).attr("font-size", 12).attr("font-weight", 900).attr("fill", palette.green).text("6 OK");
+    healthPanel.append("text").attr("class", "label").attr("x", 54).attr("y", 28).attr("font-size", 12).attr("font-weight", 900).attr("fill", palette.red).text("2 weak");
+    fadeIn(healthPanel, .18, .42);
+
+    const center = { x: 410, y: 216, w: 142, h: 58 };
+    const topEntries = [194, 208, 224, 238];
+    const topExits = [194, 208, 224, 238];
+    const rows = [128, 182, 236, 290];
+    const boxW = 116;
+    const boxH = 34;
+    const barrierW = 112;
+    const barrierH = 38;
+
+    const threats = [
+      { id: "corrosion-growth", label: ["Corrosion", "growth"], x: 96, y: rows[0], severity: "high" },
+      { id: "overpressure", label: ["Overpressure", "spike"], x: 96, y: rows[1], severity: "critical" },
+      { id: "seal-failure", label: ["Seal", "failure"], x: 96, y: rows[2], severity: "high" },
+      { id: "operator-error", label: ["Operator", "error"], x: 96, y: rows[3], severity: "medium" }
+    ];
+    const preventive = [
+      { id: "inspection-program", label: ["Inspection", "program"], x: 252, y: rows[0], code: "B1", status: "weak", gap: true },
+      { id: "relief-valve", label: ["Relief", "valve"], x: 252, y: rows[1], code: "B2", status: "healthy", gap: false },
+      { id: "seal-plan", label: ["Seal plan", "flush"], x: 252, y: rows[2], code: "B3", status: "healthy", gap: false },
+      { id: "permit-check", label: ["Permit", "check"], x: 252, y: rows[3], code: "B4", status: "healthy", gap: false }
+    ];
+    const mitigative = [
+      { id: "gas-detection", label: ["Gas", "detection"], x: 568, y: rows[0], code: "M1", status: "healthy", gap: false },
+      { id: "deluge-system", label: ["Deluge", "system"], x: 568, y: rows[1], code: "M2", status: "weak", gap: true },
+      { id: "isolation-valves", label: ["Remote", "isolation"], x: 568, y: rows[2], code: "M3", status: "healthy", gap: false },
+      { id: "evacuation-plan", label: ["Evacuation", "plan"], x: 568, y: rows[3], code: "M4", status: "healthy", gap: false }
+    ];
+    const consequences = [
+      { id: "personnel-exposure", label: ["Personnel", "exposure"], x: 728, y: rows[0], severity: "critical" },
+      { id: "fire-escalation", label: ["Fire", "escalation"], x: 728, y: rows[1], severity: "critical" },
+      { id: "environmental-release", label: ["Environmental", "release"], x: 728, y: rows[2], severity: "high" },
+      { id: "production-outage", label: ["Production", "outage"], x: 728, y: rows[3], severity: "medium" }
+    ];
+    const controls = [
+      { id: "barrier-audit", label: "Barrier audit", value: "14 d", x: 216, color: palette.blue },
+      { id: "proof-test", label: "Proof test", value: "due", x: 410, color: palette.red },
+      { id: "override-review", label: "Override review", value: "open", x: 604, color: palette.purple }
+    ];
+    const gaps = [
+      { id: "inspection-gap", barrierId: "inspection-program", label: "inspection overdue", x: 252, y: 96, targetX: 252, targetY: rows[0] - 22 },
+      { id: "deluge-gap", barrierId: "deluge-system", label: "deluge offline", x: 568, y: 96, targetX: 568, targetY: rows[1] - 22, viaX: 502 }
+    ];
+
+    function labelLines(group, lines, x, y, fontSize = 8.4, cls = "mark-label") {
+      lines.forEach((line, index) => {
+        group.append("text")
+          .attr("class", cls)
+          .attr("x", x)
+          .attr("y", y + index * (fontSize + 2.8))
+          .attr("text-anchor", "middle")
+          .attr("font-size", fontSize)
+          .attr("font-weight", cls === "caption" ? 760 : 850)
+          .text(line);
+      });
+    }
+
+    function sidePath(fromX, fromY, toX, toY, bend) {
+      return `M${fromX},${fromY}C${fromX + bend},${fromY} ${toX - bend},${toY} ${toX},${toY}`;
+    }
+
+    const linkLayer = svg.append("g").attr("class", "bowtie-links");
+    const leftLinks = threats.map((threat, index) => {
+      const barrier = preventive[index];
+      return [
+        { id: `${threat.id}-to-${barrier.id}`, kind: "threat-to-barrier", source: threat.id, target: barrier.id, d: `M${threat.x + boxW / 2},${threat.y}H${barrier.x - barrierW / 2}`, color: palette.orange, width: 1.7, marker: threatArrow },
+        { id: `${barrier.id}-to-top`, kind: "barrier-to-top", source: barrier.id, target: "loss-of-containment", d: sidePath(barrier.x + barrierW / 2, barrier.y, center.x - center.w / 2, topEntries[index], 72), color: barrier.gap ? palette.red : palette.orange, width: barrier.gap ? 2.8 : 2.1, marker: threatArrow }
+      ];
+    }).flat();
+    const rightLinks = consequences.map((consequence, index) => {
+      const barrier = mitigative[index];
+      return [
+        { id: `top-to-${barrier.id}`, kind: "top-to-barrier", source: "loss-of-containment", target: barrier.id, d: sidePath(center.x + center.w / 2, topExits[index], barrier.x - barrierW / 2, barrier.y, 72), color: barrier.gap ? palette.red : palette.purple, width: barrier.gap ? 2.8 : 2.1, marker: consequenceArrow },
+        { id: `${barrier.id}-to-${consequence.id}`, kind: "barrier-to-consequence", source: barrier.id, target: consequence.id, d: `M${barrier.x + barrierW / 2},${barrier.y}H${consequence.x - boxW / 2}`, color: palette.purple, width: 1.7, marker: consequenceArrow }
+      ];
+    }).flat();
+    const linkPaths = linkLayer.selectAll("path.bowtie-link")
+      .data([...leftLinks, ...rightLinks])
+      .join("path")
+      .attr("id", d => `bowtie-link-${d.id}`)
+      .attr("class", d => `bowtie-link ${d.kind}${d.color === palette.red ? " critical-gap-link" : ""}`)
+      .attr("data-link-id", d => d.id)
+      .attr("data-source-id", d => d.source)
+      .attr("data-target-id", d => d.target)
+      .attr("d", d => d.d)
+      .attr("fill", "none")
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", d => d.width)
+      .attr("stroke-opacity", d => d.color === palette.red ? .86 : .58)
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round")
+      .attr("marker-end", d => d.marker);
+    drawPath(linkPaths, .12, .72);
+
+    const motionLayer = svg.append("g").attr("class", "bowtie-motion-paths");
+    threats.forEach((threat, index) => {
+      const barrier = preventive[index];
+      motionLayer.append("path")
+        .attr("id", `bowtie-threat-motion-${threat.id}`)
+        .attr("d", `M${threat.x + boxW / 2},${threat.y}H${barrier.x}H${barrier.x + barrierW / 2}${sidePath(barrier.x + barrierW / 2, barrier.y, center.x - center.w / 2, topEntries[index], 72).replace(/^M[^C]+/, "")}`)
+        .attr("fill", "none")
+        .attr("stroke", "none");
+    });
+    consequences.forEach((consequence, index) => {
+      const barrier = mitigative[index];
+      motionLayer.append("path")
+        .attr("id", `bowtie-consequence-motion-${consequence.id}`)
+        .attr("d", `${sidePath(center.x + center.w / 2, topExits[index], barrier.x - barrierW / 2, barrier.y, 72)}H${barrier.x + barrierW / 2}H${consequence.x - boxW / 2}`)
+        .attr("fill", "none")
+        .attr("stroke", "none");
+    });
+    const pulseLayer = svg.append("g").attr("class", "bowtie-pulses");
+    threats.forEach((threat, index) => {
+      const pulse = pulseLayer.append("circle")
+        .attr("class", "bowtie-threat-pulse")
+        .attr("data-threat-id", threat.id)
+        .attr("r", preventive[index].gap ? 5.4 : 4.4)
+        .attr("fill", preventive[index].gap ? palette.red : palette.orange)
+        .attr("stroke", palette.surface)
+        .attr("stroke-width", 1.2);
+      pulse.append("animateMotion")
+        .attr("dur", "3.2s")
+        .attr("begin", `${.42 + index * .34}s`)
+        .attr("repeatCount", "indefinite")
+        .append("mpath")
+        .attr("href", `#bowtie-threat-motion-${threat.id}`);
+    });
+    consequences.forEach((consequence, index) => {
+      const pulse = pulseLayer.append("circle")
+        .attr("class", "bowtie-consequence-pulse")
+        .attr("data-consequence-id", consequence.id)
+        .attr("r", mitigative[index].gap ? 5.4 : 4.4)
+        .attr("fill", mitigative[index].gap ? palette.red : palette.purple)
+        .attr("stroke", palette.surface)
+        .attr("stroke-width", 1.2);
+      pulse.append("animateMotion")
+        .attr("dur", "3.4s")
+        .attr("begin", `${.74 + index * .34}s`)
+        .attr("repeatCount", "indefinite")
+        .append("mpath")
+        .attr("href", `#bowtie-consequence-motion-${consequence.id}`);
+    });
+
+    const topEvent = svg.append("g")
+      .attr("class", "bowtie-top-event")
+      .attr("data-event-id", "loss-of-containment")
+      .attr("transform", `translate(${center.x} ${center.y})`);
+    topEvent.append("rect")
+      .attr("x", -center.w / 2)
+      .attr("y", -center.h / 2)
+      .attr("width", center.w)
+      .attr("height", center.h)
+      .attr("rx", 8)
+      .attr("fill", palette.redHighlight)
+      .attr("stroke", palette.red)
+      .attr("stroke-width", 2.2);
+    topEvent.append("text").attr("class", "caption").attr("x", 0).attr("y", -10).attr("text-anchor", "middle").attr("font-size", 7.6).text("TOP EVENT");
+    topEvent.append("text").attr("class", "mark-label").attr("x", 0).attr("y", 5).attr("text-anchor", "middle").attr("font-size", 10.1).attr("font-weight", 900).text("Loss of");
+    topEvent.append("text").attr("class", "mark-label").attr("x", 0).attr("y", 19).attr("text-anchor", "middle").attr("font-size", 10.1).attr("font-weight", 900).text("containment");
+    fadeIn(topEvent, .2, .45);
+
+    function renderEndpoint(records, className, color, fill) {
+      const groups = svg.append("g")
+        .attr("class", `${className}s`)
+        .selectAll(`g.${className}`)
+        .data(records)
+        .join("g")
+        .attr("class", className)
+        .attr("data-node-id", d => d.id)
+        .attr("data-severity", d => d.severity)
+        .attr("transform", d => `translate(${d.x} ${d.y})`);
+      groups.append("rect")
+        .attr("x", -boxW / 2)
+        .attr("y", -boxH / 2)
+        .attr("width", boxW)
+        .attr("height", boxH)
+        .attr("rx", 6)
+        .attr("fill", fill)
+        .attr("stroke", color)
+        .attr("stroke-width", d => d.severity === "critical" ? 1.8 : 1.2);
+      groups.each(function (d) {
+        labelLines(d3.select(this), d.label, 0, -3, 8.2);
+      });
+      fadeIn(groups, .28, .42);
+    }
+    renderEndpoint(threats, "bowtie-threat", palette.orange, palette.orangeHighlight);
+    renderEndpoint(consequences, "bowtie-consequence", palette.purple, palette.purpleHighlight);
+
+    function renderBarriers(records, className, color) {
+      const groups = svg.append("g")
+        .attr("class", `${className}s`)
+        .selectAll(`g.${className}`)
+        .data(records)
+        .join("g")
+        .attr("class", d => `bowtie-barrier ${className}${d.gap ? " degraded-barrier" : ""}`)
+        .attr("data-barrier-id", d => d.id)
+        .attr("data-barrier-code", d => d.code)
+        .attr("data-barrier-side", className.includes("preventive") ? "preventive" : "mitigative")
+        .attr("data-status", d => d.status)
+        .attr("data-critical-gap", d => d.gap ? "true" : "false")
+        .attr("transform", d => `translate(${d.x} ${d.y})`);
+      groups.append("rect")
+        .attr("x", -barrierW / 2)
+        .attr("y", -barrierH / 2)
+        .attr("width", barrierW)
+        .attr("height", barrierH)
+        .attr("rx", 6)
+        .attr("fill", d => d.gap ? palette.redHighlight : palette.gray50)
+        .attr("stroke", d => d.gap ? palette.red : color)
+        .attr("stroke-width", d => d.gap ? 2 : 1.4)
+        .attr("stroke-dasharray", d => d.gap ? "5 3" : "");
+      groups.append("rect")
+        .attr("x", -barrierW / 2)
+        .attr("y", -barrierH / 2)
+        .attr("width", 9)
+        .attr("height", barrierH)
+        .attr("rx", 4)
+        .attr("fill", d => d.gap ? palette.red : palette.green);
+      groups.append("circle")
+        .attr("cx", barrierW / 2 - 13)
+        .attr("cy", -barrierH / 2 + 11)
+        .attr("r", 4.2)
+        .attr("fill", d => d.gap ? palette.red : palette.green)
+        .attr("stroke", palette.surface)
+        .attr("stroke-width", 1);
+      groups.append("text").attr("class", "caption").attr("x", -barrierW / 2 + 16).attr("y", -6).attr("font-size", 7.2).attr("font-weight", 850).text(d => d.code);
+      groups.each(function (d) {
+        labelLines(d3.select(this), d.label, 0, 4, 7.8);
+      });
+      fadeIn(groups, .34, .44);
+    }
+    renderBarriers(preventive, "preventive-barrier", palette.blue);
+    renderBarriers(mitigative, "mitigative-barrier", palette.purple);
+
+    const gapLayer = svg.append("g").attr("class", "critical-barrier-gaps");
+    const gapGroups = gapLayer.selectAll("g.critical-barrier-gap")
+      .data(gaps)
+      .join("g")
+      .attr("class", "critical-barrier-gap")
+      .attr("data-gap-id", d => d.id)
+      .attr("data-barrier-id", d => d.barrierId);
+    gapGroups.append("path")
+      .attr("d", d => d.viaX
+        ? `M${d.x},${d.y + 12}H${d.viaX}V${d.targetY}H${d.targetX}`
+        : `M${d.x},${d.y + 12}L${d.targetX},${d.targetY}`)
+      .attr("fill", "none")
+      .attr("stroke", palette.red)
+      .attr("stroke-width", 1.2)
+      .attr("stroke-dasharray", "3 3")
+      .attr("marker-end", gapArrow);
+    gapGroups.append("rect")
+      .attr("x", d => d.x - 52)
+      .attr("y", d => d.y - 11)
+      .attr("width", 104)
+      .attr("height", 22)
+      .attr("rx", 6)
+      .attr("fill", palette.surface)
+      .attr("stroke", palette.red)
+      .attr("stroke-width", 1.1);
+    gapGroups.append("text")
+      .attr("class", "caption")
+      .attr("x", d => d.x)
+      .attr("y", d => d.y + 4)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 7.2)
+      .attr("font-weight", 850)
+      .attr("fill", palette.red)
+      .text(d => d.label);
+    fadeIn(gapGroups, .68, .42);
+
+    const controlLayer = svg.append("g").attr("class", "degradation-controls");
+    controlLayer.append("text").attr("class", "caption").attr("x", 56).attr("y", 376).text("Degradation controls");
+    const controlGroups = controlLayer.selectAll("g.degradation-control")
+      .data(controls)
+      .join("g")
+      .attr("class", "degradation-control")
+      .attr("data-control-id", d => d.id)
+      .attr("transform", d => `translate(${d.x} 386)`);
+    controlGroups.append("rect")
+      .attr("x", -72)
+      .attr("y", -12)
+      .attr("width", 144)
+      .attr("height", 34)
+      .attr("rx", 6)
+      .attr("fill", palette.gray50)
+      .attr("stroke", d => d.color)
+      .attr("stroke-width", 1.1);
+    controlGroups.append("circle").attr("cx", -56).attr("cy", 5).attr("r", 5).attr("fill", d => d.color);
+    controlGroups.append("text").attr("class", "mark-label").attr("x", -44).attr("y", 1).attr("font-size", 7.6).text(d => d.label);
+    controlGroups.append("text").attr("class", "caption").attr("x", -44).attr("y", 15).attr("font-size", 7.2).text(d => `status: ${d.value}`);
+    fadeIn(controlGroups, .76, .4);
   }
 
   function mlpLayout(architecture, xRange = [76, width - 76], yRange = [82, 318]) {

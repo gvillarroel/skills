@@ -93,6 +93,7 @@
     ["flow-spine", "critical-path", "flow", "critical path spine", "Place dependencies on a clear process spine and reserve branches for risks."],
     ["diagonal-armature", "critical-path", "flow", "diagonal critical path", "Put the critical dependency path on the major diagonal."],
     ["balance-symmetry", "critical-fault-tree", "hierarchy", "balanced fault tree", "Keep the top event centered while AND/OR branches counterweight minimal cut sets."],
+    ["balance-symmetry", "critical-bowtie-barrier", "flow", "balanced bowtie barrier", "Counterweight threats and preventive barriers against consequences and mitigative barriers around the top event."],
     ["thirds-fifths-grid", "data-table-grid", "table", "structured table grid", "Use row bands and column fifths for scan-friendly tabular comparison."],
     ["golden-root", "inline-bar-table", "table", "dominant table field", "Let values use the long field and keep notes in the short field."],
     ["thirds-fifths-grid", "pivot-heat-table", "table", "modular heat table", "Snap heat cells to a modular grid so totals and rows align."],
@@ -164,6 +165,7 @@
     "d3-composition-balance-symmetry-bullet",
     "d3-composition-balance-symmetry-force-network",
     "d3-composition-balance-symmetry-critical-fault-tree",
+    "d3-composition-balance-symmetry-critical-bowtie-barrier",
     "d3-composition-diagonal-armature-geo-route",
     "d3-composition-diagonal-armature-qkv-projection-flow",
     "d3-composition-diagonal-armature-waterfall",
@@ -389,6 +391,9 @@
     )) {
       add("balance-symmetry", "scatter", "the story is comparative, so the composition should expose counterweight across the center");
     }
+    if (is("critical-bowtie-barrier")) {
+      add("balance-symmetry", "flow", "threats and preventive barriers must counterweight consequences and mitigative barriers around one top event");
+    }
     if (is(
       "asymmetric-task-overlap",
       "venn-three-circle",
@@ -574,6 +579,7 @@
       "web-load-timeline",
       "event-cascade",
       "critical-path",
+      "critical-bowtie-barrier",
       "process-pid-control-loop",
       "mlp-simple",
       "deep-learning-model-execution",
@@ -1757,9 +1763,183 @@
     return true;
   }
 
+  function renderCriticalBowtieBalance(group, variant) {
+    const rows = [58, 88, 118, 148];
+    const threatX = 52;
+    const preventiveX = 118;
+    const topX = 180;
+    const mitigativeX = 242;
+    const consequenceX = 308;
+
+    appendText(group, threatX, 34, "threats", {
+      class: "semantic-flow-label",
+      "text-anchor": "middle",
+      "font-size": 6.4,
+      "font-weight": 800,
+      fill: palette.ink
+    });
+    appendText(group, preventiveX, 34, "preventive", {
+      class: "semantic-flow-label",
+      "text-anchor": "middle",
+      "font-size": 6.4,
+      "font-weight": 800,
+      fill: palette.ink
+    });
+    appendText(group, mitigativeX, 34, "mitigative", {
+      class: "semantic-flow-label",
+      "text-anchor": "middle",
+      "font-size": 6.4,
+      "font-weight": 800,
+      fill: palette.ink
+    });
+    appendText(group, consequenceX, 34, "consequences", {
+      class: "semantic-flow-label",
+      "text-anchor": "middle",
+      "font-size": 6.4,
+      "font-weight": 800,
+      fill: palette.ink
+    });
+
+    rows.forEach((y, index) => {
+      const weakLeft = index === 0;
+      const weakRight = index === 1;
+      addRect(group, threatX - 23, y - 8, 46, 16, {
+        class: "semantic-flow-station bowtie-balance-threat",
+        rx: 4,
+        fill: palette.orangeHighlight,
+        stroke: palette.orange,
+        "stroke-width": 1.1
+      });
+      addRect(group, preventiveX - 20, y - 8, 40, 16, {
+        class: `semantic-flow-station bowtie-balance-barrier${weakLeft ? " degraded" : ""}`,
+        rx: 4,
+        fill: weakLeft ? palette.redHighlight : palette.surface,
+        stroke: weakLeft ? palette.red : palette.blue,
+        "stroke-width": weakLeft ? 1.5 : 1.1,
+        "stroke-dasharray": weakLeft ? "4 2" : ""
+      });
+      addRect(group, mitigativeX - 20, y - 8, 40, 16, {
+        class: `semantic-flow-station bowtie-balance-barrier${weakRight ? " degraded" : ""}`,
+        rx: 4,
+        fill: weakRight ? palette.redHighlight : palette.surface,
+        stroke: weakRight ? palette.red : palette.purple,
+        "stroke-width": weakRight ? 1.5 : 1.1,
+        "stroke-dasharray": weakRight ? "4 2" : ""
+      });
+      addRect(group, consequenceX - 23, y - 8, 46, 16, {
+        class: "semantic-flow-station bowtie-balance-consequence",
+        rx: 4,
+        fill: palette.purpleHighlight,
+        stroke: palette.purple,
+        "stroke-width": 1.1
+      });
+
+      addPath(group, `M${threatX + 23} ${y}H${preventiveX - 20}`, {
+        class: "semantic-flow-link bowtie-balance-link",
+        fill: "none",
+        stroke: palette.orange,
+        "stroke-width": 1.3,
+        "stroke-opacity": 0.62,
+        "stroke-linecap": "round"
+      });
+      addPath(group, `M${preventiveX + 20} ${y}C${preventiveX + 46} ${y} ${topX - 50} ${92 + index * 10} ${topX - 31} ${92 + index * 10}`, {
+        class: "semantic-flow-link bowtie-balance-link",
+        fill: "none",
+        stroke: weakLeft ? palette.red : palette.orange,
+        "stroke-width": weakLeft ? 1.9 : 1.3,
+        "stroke-opacity": weakLeft ? 0.72 : 0.52,
+        "stroke-linecap": "round"
+      });
+      addPath(group, `M${topX + 31} ${92 + index * 10}C${topX + 50} ${92 + index * 10} ${mitigativeX - 46} ${y} ${mitigativeX - 20} ${y}`, {
+        class: "semantic-flow-link bowtie-balance-link",
+        fill: "none",
+        stroke: weakRight ? palette.red : palette.purple,
+        "stroke-width": weakRight ? 1.9 : 1.3,
+        "stroke-opacity": weakRight ? 0.72 : 0.52,
+        "stroke-linecap": "round"
+      });
+      addPath(group, `M${mitigativeX + 20} ${y}H${consequenceX - 23}`, {
+        class: "semantic-flow-link bowtie-balance-link",
+        fill: "none",
+        stroke: palette.purple,
+        "stroke-width": 1.3,
+        "stroke-opacity": 0.62,
+        "stroke-linecap": "round"
+      });
+      addCircle(group, preventiveX + 15, y - 3, 2.4, {
+        class: "semantic-flow-token bowtie-balance-health",
+        fill: weakLeft ? palette.red : palette.green,
+        stroke: palette.surface,
+        "stroke-width": 0.8
+      });
+      addCircle(group, mitigativeX + 15, y - 3, 2.4, {
+        class: "semantic-flow-token bowtie-balance-health",
+        fill: weakRight ? palette.red : palette.green,
+        stroke: palette.surface,
+        "stroke-width": 0.8
+      });
+    });
+
+    addRect(group, topX - 34, 86, 68, 44, {
+      class: "semantic-flow-station bowtie-balance-top-event",
+      rx: 6,
+      fill: palette.redHighlight,
+      stroke: palette.red,
+      "stroke-width": 1.8
+    });
+    appendText(group, topX, 104, "top", {
+      class: "semantic-flow-label",
+      "text-anchor": "middle",
+      "font-size": 7.3,
+      "font-weight": 900,
+      fill: palette.ink,
+      stroke: palette.surface,
+      "stroke-width": 1.6,
+      "paint-order": "stroke"
+    });
+    appendText(group, topX, 116, "event", {
+      class: "semantic-flow-label",
+      "text-anchor": "middle",
+      "font-size": 7.3,
+      "font-weight": 900,
+      fill: palette.ink,
+      stroke: palette.surface,
+      "stroke-width": 1.6,
+      "paint-order": "stroke"
+    });
+    [
+      { x: preventiveX, y: 42, label: "gap", targetY: rows[0] - 9 },
+      { x: mitigativeX, y: 42, label: "gap", targetY: rows[1] - 9 }
+    ].forEach(gap => {
+      addRect(group, gap.x - 14, gap.y - 6, 28, 12, {
+        class: "semantic-flow-station bowtie-balance-gap",
+        rx: 4,
+        fill: palette.surface,
+        stroke: palette.red,
+        "stroke-width": 0.9
+      });
+      appendText(group, gap.x, gap.y + 2, gap.label, {
+        class: "semantic-flow-label",
+        "text-anchor": "middle",
+        "font-size": 5.8,
+        "font-weight": 850,
+        fill: palette.red
+      });
+      addPath(group, `M${gap.x} ${gap.y + 6}V${gap.targetY}`, {
+        class: "semantic-flow-link bowtie-balance-gap-leader",
+        fill: "none",
+        stroke: palette.red,
+        "stroke-width": 0.8,
+        "stroke-opacity": 0.7,
+        "stroke-dasharray": "2 2"
+      });
+    });
+    return true;
+  }
+
   function renderSemanticFlowVariant(svg, variant) {
     if (!["flow", "route"].includes(variant.renderer) && !["flow", "geospatial", "geometry"].includes(variant.inferredKind)) return false;
-    if (!["flow-spine", "diagonal-armature"].includes(variant.compositionId)) return false;
+    if (!["flow-spine", "diagonal-armature"].includes(variant.compositionId) && !(variant.compositionId === "balance-symmetry" && variant.sourceId === "critical-bowtie-barrier")) return false;
     const sourceSvg = sourceSvgForVariant(variant);
     if (!sourceSvg) return false;
     const paths = sourcePathMarks(sourceSvg, 18);
@@ -1774,6 +1954,7 @@
       "data-source-path-count": paths.length,
       "data-source-label-count": labels.length
     }));
+    if (variant.compositionId === "balance-symmetry" && variant.sourceId === "critical-bowtie-barrier") return renderCriticalBowtieBalance(group, variant);
     if (variant.compositionId === "flow-spine" && renderSpecializedFlow(group, variant, paths, labels)) return true;
     const stationCount = clamp(Math.max(labels.length, Math.min(paths.length + 1, 6), 4), 4, 7);
     const stations = flowStations(variant.compositionId, stationCount);

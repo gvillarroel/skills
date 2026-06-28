@@ -220,6 +220,20 @@ Use when a D3/SVG artifact needs a fault tree analysis view for safety, reliabil
 - Expose `data-pattern-family="critical-fault-tree"`, `data-event-count`, `data-basic-event-count`, `data-gate-count`, `data-minimal-cut-count`, `data-risk-panel-count`, `.fault-event-box`, `.basic-event`, `.undeveloped-event`, `.fault-gate`, `.fault-link`, `.minimal-cut-link`, `.fault-cut-pulse`, and `.fault-risk-card` for audits.
 - Prefer `scripts/build_critical_fault_tree.py` for a self-contained standalone HTML starting point in isolated workspaces.
 
+## Critical Bowtie Barrier
+
+Pattern ID: `d3-pattern-critical-bowtie-barrier`.
+
+Use when the critical story is barrier management around a top event rather than logic-gate failure decomposition: threats, preventive barriers, top event, mitigative barriers, consequences, degraded barriers, and degradation controls.
+
+- Keep the top event centered; put threats and preventive barriers on the left, mitigative barriers and consequences on the right.
+- Model threats and consequences as ordered row records so each scenario has a clean path into or out of the top event.
+- Model barriers with `id`, `label`, `side`, `status`, and `criticalGap`; show weak barriers directly on the barrier rather than only in a legend.
+- Add `.critical-barrier-gap` badges with leaders to degraded barriers, then add `.degradation-control` cards for audits, proof tests, override reviews, or maintenance actions.
+- Use red only for the top event and weak/missing barrier states, orange for incoming threats, blue for preventive controls, purple for outgoing consequence paths, and green for healthy barriers.
+- Expose `data-pattern-family="critical-bowtie-barrier"`, `data-threat-count`, `data-preventive-barrier-count`, `data-mitigative-barrier-count`, `data-consequence-count`, `data-barrier-count`, `data-critical-gap-count`, `data-degradation-control-count`, `.bowtie-threat`, `.bowtie-consequence`, `.bowtie-barrier`, `.degraded-barrier`, `.bowtie-link`, `.bowtie-threat-pulse`, `.bowtie-consequence-pulse`, `.critical-barrier-gap`, and `.degradation-control` for audits.
+- Prefer `scripts/build_critical_bowtie_barrier.py` for self-contained standalone HTML in isolated workspaces.
+
 ## Critical SLO Burn Rate
 
 Pattern ID: `d3-pattern-critical-slo-burn-rate`.

@@ -134,6 +134,7 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-pattern-critical-chain-buffer` | Critical | Critical Chain Buffer | `references/patterns/critical-chain-buffer.md` |
 | `d3-pattern-critical-incident-escalation` | Critical | Critical Incident Escalation | `references/patterns/critical-incident-escalation.md` |
 | `d3-pattern-critical-fault-tree` | Critical | Critical Fault Tree | `references/patterns/critical-fault-tree.md` |
+| `d3-pattern-critical-bowtie-barrier` | Critical | Critical Bowtie Barrier | `references/patterns/critical-bowtie-barrier.md` |
 | `d3-pattern-critical-slo-burn-rate` | Critical | Critical SLO Burn Rate | `references/patterns/critical-slo-burn-rate.md` |
 | `d3-pattern-critical-queue-backpressure` | Critical | Critical Queue Backpressure | `references/patterns/critical-queue-backpressure.md` |
 | `d3-pattern-critical-cache-stampede` | Critical | Critical Cache Stampede | `references/patterns/critical-cache-stampede.md` |
