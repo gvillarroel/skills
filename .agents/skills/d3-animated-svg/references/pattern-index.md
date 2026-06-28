@@ -106,6 +106,7 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-pattern-spiral-timeline` | Temporal | Spiral Timeline | `references/patterns/spiral-timeline.md` |
 | `d3-pattern-candlestick` | Financial | Candlestick | `references/patterns/candlestick.md` |
 | `d3-pattern-flow-tokens` | Flow | Flow Tokens | `references/patterns/flow-tokens.md` |
+| `d3-pattern-circuit-signal-traces` | Circuit | Circuit Signal Traces | `references/patterns/circuit-signal-traces.md` |
 | `d3-pattern-dorling` | Geospatial | Dorling Cartogram | `references/patterns/dorling.md` |
 | `d3-pattern-bar-race` | Ranking | Bar Race | `references/patterns/bar-race.md` |
 | `d3-pattern-focus-context` | Interaction | Focus Context | `references/patterns/focus-context.md` |
@@ -128,6 +129,17 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-pattern-pen-curve-study` | Drawing | Pen Curve Study | `references/patterns/pen-curve-study.md` |
 | `d3-pattern-pen-label-optimizer` | Labels | Pen Label Optimizer | `references/patterns/pen-label-optimizer.md` |
 | `d3-pattern-critical-path` | Flow | Critical Path DAG | `references/patterns/critical-path.md` |
+| `d3-pattern-critical-chain-buffer` | Critical | Critical Chain Buffer | `references/patterns/critical-chain-buffer.md` |
+| `d3-pattern-critical-incident-escalation` | Critical | Critical Incident Escalation | `references/patterns/critical-incident-escalation.md` |
+| `d3-pattern-critical-slo-burn-rate` | Critical | Critical SLO Burn Rate | `references/patterns/critical-slo-burn-rate.md` |
+| `d3-pattern-critical-queue-backpressure` | Critical | Critical Queue Backpressure | `references/patterns/critical-queue-backpressure.md` |
+| `d3-pattern-critical-cache-stampede` | Critical | Critical Cache Stampede | `references/patterns/critical-cache-stampede.md` |
+| `d3-pattern-critical-circuit-breaker` | Critical | Critical Circuit Breaker | `references/patterns/critical-circuit-breaker.md` |
+| `d3-pattern-critical-bulkhead-isolation` | Critical | Critical Bulkhead Isolation | `references/patterns/critical-bulkhead-isolation.md` |
+| `d3-pattern-critical-rate-limit-token-bucket` | Critical | Critical Rate Limit Token Bucket | `references/patterns/critical-rate-limit-token-bucket.md` |
+| `d3-pattern-critical-idempotency-replay-guard` | Critical | Critical Idempotency Replay Guard | `references/patterns/critical-idempotency-replay-guard.md` |
+| `d3-pattern-critical-replication-failover` | Critical | Critical Replication Failover | `references/patterns/critical-replication-failover.md` |
+| `d3-pattern-critical-dependency-blast-radius` | Critical | Critical Dependency Blast Radius | `references/patterns/critical-dependency-blast-radius.md` |
 | `d3-pattern-mlp-simple` | AI | MLP Simple | `references/patterns/mlp-simple.md` |
 | `d3-pattern-deep-learning-model-execution` | AI | Deep Learning Model Execution | `references/patterns/deep-learning-model-execution.md` |
 | `d3-pattern-mlp-internals` | AI | MLP Internals | `references/patterns/mlp-internals.md` |
@@ -216,3 +228,8 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-pattern-satellite-projection` | Projection | Satellite Projection | `references/patterns/satellite-projection.md` |
 | `d3-pattern-exoplanet-orbits` | Science | Exoplanet Orbits | `references/patterns/exoplanet-orbits.md` |
 | `d3-pattern-epicyclic-gearing` | Geometry | Epicyclic Gearing | `references/patterns/epicyclic-gearing.md` |
+| `d3-pattern-organic-growth-patterns` | Organic growth | Organic Growth Patterns | `references/patterns/organic-growth-patterns.md` |
+| `d3-pattern-phyllotaxis-seed-head` | Organic growth | Phyllotaxis Seed Head | `references/patterns/organic-growth-patterns.md` |
+| `d3-pattern-lsystem-canopy` | Organic growth | L-system Canopy | `references/patterns/organic-growth-patterns.md` |
+| `d3-pattern-reaction-diffusion-field` | Organic growth | Reaction Diffusion Field | `references/patterns/organic-growth-patterns.md` |
+| `d3-pattern-diffusion-limited-aggregation` | Organic growth | Diffusion-limited Aggregation | `references/patterns/organic-growth-patterns.md` |

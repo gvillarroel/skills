@@ -1,0 +1,7 @@
+Use the loaded D3 Animated SVG skill to create a self-contained HTML file named `cache.html` in the current workspace.
+
+Before running any builder, read this exact pattern reference: `skills/d3-animated-svg/references/patterns/critical-cache-stampede.md`.
+
+The artifact must use the exact pattern `d3-pattern-critical-cache-stampede` and render one inline SVG showing deterministic hot-key cache expiration, request sources, cache flow paths, animated request pulses, a stampede wave toward origin, single-flight lock, request-collapse gate, stale response path, origin shield, TTL markers, hit-ratio and origin-load trend lines, mitigation steps, and status cards. Use portable SVG animation, title/desc accessibility nodes, stable SVG data attributes, `data-hot-key`, `data-soft-ttl-seconds`, `data-hard-ttl-seconds`, `data-stale-window-seconds`, `data-stampede-rate`, `data-coalesced-origin-calls`, `data-origin-load-peak`, `.cache-request-source`, `.cache-layer`, `.cache-hot-key`, `.cache-flow-path`, `.cache-request-pulse`, `.stampede-wave`, `.singleflight-lock`, `.request-collapse-gate`, `.stale-response-path`, `.origin-shield`, `.ttl-marker`, `.hit-ratio-line`, `.hit-ratio-point`, `.origin-load-line`, `.origin-load-point`, `.cache-mitigation-step`, and `.cache-status-card` classes.
+
+If the skill includes a bundled builder for this pattern, use it. Do not read files outside the current workspace.

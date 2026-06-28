@@ -159,6 +159,229 @@ Use when weighted chance and final selection are the concept.
 - Use bars only when the user wants ranking instead of sampling.
 - Keep a compact result mark only if it clarifies the selected token.
 
+## Circuit Signal Traces
+
+Pattern ID: `d3-pattern-circuit-signal-traces`.
+
+Use when a circuit-board metaphor needs to show animated propagation, request/acknowledge handshakes, fault isolation, or a fallback route without turning into a generic network graph.
+
+- Keep traces rectilinear on a visible grid. The circuit look comes from orthogonal paths, pads, vias, and layered traces, not from random angled links.
+- Model nodes as stable pads with `id`, `label`, `role`, `x`, `y`, and semantic `color`; model traces as ordered point arrays with `signal`, `mode`, `cadence`, and `phase`.
+- Use blue for normal data, purple for control or clock signals, green for acknowledgement or healthy delivery, orange for fallback/reroute paths, and red only for faults or blocked segments.
+- Draw passive traces before pulses. Use native path drawing for trace reveal and `<animateMotion>` for `.circuit-pulse` marks.
+- For `bus-handshake`, show request and acknowledge on separate lanes or distinct phases so directionality is legible.
+- For `fault-isolation`, show the red blocked segment first, then draw the orange reroute path after the fault is visible.
+- Expose `data-pattern-family="circuit"`, `data-node-count`, `data-trace-count`, `.circuit-trace`, `.circuit-node`, `.circuit-via`, and `.circuit-pulse` for browser audits.
+- Prefer `scripts/build_circuit_signal_traces.py` for a self-contained standalone HTML starting point in isolated workspaces.
+
+## Critical Chain Buffer
+
+Pattern ID: `d3-pattern-critical-chain-buffer`.
+
+Use when a critical path needs schedule context, feeding dependencies, resource-readiness alerts, consumed buffer, remaining project buffer, a buffer fever view, and deadline risk rather than only a DAG route.
+
+- Keep time horizontal and workstreams as lanes. This avoids implying arbitrary graph structure when duration and sequence are the message.
+- Model tasks with `id`, `label`, `lane`, `start`, `duration`, `critical`, and semantic `color`.
+- Model dependencies separately with `source`, `target`, `critical`, and optional `feedsCritical`; compute dependency curves from final task boxes.
+- Draw context tasks and dependencies first, then draw the critical chain in causal order with stronger red strokes and `.dependency-pulse` markers.
+- Use orange for consumed or feeding buffer risk and green for remaining buffer. Reserve red for the controlling chain and deadline risk.
+- Use `.resource-buffer` triangle markers for readiness alerts that protect critical tasks, and expose their protected task through `data-task-id`.
+- Add `.fever-chart`, `.fever-line`, and `.fever-point` marks when risk status matters; expose `data-chain-complete` and `data-buffer-consumed` on the chart and points.
+- Expose `data-pattern-family="critical-chain"`, `data-task-count`, `data-critical-task-count`, `data-dependency-count`, `data-buffer-count`, `data-resource-buffer-count`, `.critical-chain-task`, `.critical-chain-dependency`, `.critical-buffer`, `.critical-dependency`, `.dependency-pulse`, `.resource-buffer`, and `.fever-chart` for audits.
+- Prefer `scripts/build_critical_chain_buffer.py` for a self-contained standalone HTML starting point in isolated workspaces.
+
+## Critical Incident Escalation
+
+Pattern ID: `d3-pattern-critical-incident-escalation`.
+
+Use when the critical story is incident response rather than project scheduling: alert, impact confirmation, incident command, escalation, communication cadence, mitigation, validation, recovery, post-incident learning, and SLA pressure.
+
+- Keep time horizontal in minutes from detection; use fixed lanes for signal, command, and mitigation.
+- Model events with `id`, `label`, `minute`, `lane`, `severity`, `owner`, and semantic `color`.
+- Model escalations separately with `source`, `target`, `kind`, and `critical`; compute paths from final event positions.
+- Draw severity phase bands first, then time ticks, event nodes, escalation paths, and `.escalation-pulse` markers.
+- Use one `.sla-countdown` and one `.incident-clock` to show the response against the SLA deadline.
+- Add `.communication-beat` marks when stakeholder update cadence matters, and keep them in their own row.
+- Add `.incident-status-card` marks in a command-state panel for current severity, owner, customer impact, and next update.
+- Use red for SEV-1 and breach risk, orange for containment/mitigation pressure, green for recovery, blue for telemetry, and purple for command/comms ownership.
+- Expose `data-pattern-family="critical-incident"`, `data-event-count`, `data-escalation-count`, `data-critical-escalation-count`, `data-phase-count`, `data-team-count`, `data-mitigation-count`, `data-communication-count`, `data-status-card-count`, `.critical-incident-event`, `.escalation-link`, `.critical-escalation`, `.escalation-pulse`, `.response-team`, `.mitigation-step`, `.communication-beat`, and `.incident-status-card` for audits.
+- Prefer `scripts/build_critical_incident_escalation.py` for a self-contained standalone HTML starting point in isolated workspaces.
+
+## Critical SLO Burn Rate
+
+Pattern ID: `d3-pattern-critical-slo-burn-rate`.
+
+Use when the critical story is reliability alerting before or during service degradation: SLO target, remaining error budget, multi-window burn-rate thresholds, page/ticket levels, and time-to-exhaust action.
+
+- Keep budget remaining as a left-side percent-over-time chart; do not encode budget as another bar in the burn-rate rows.
+- Model budget samples with `hour`, `remaining`, and optional `label`.
+- Model burn windows with `id`, `label`, `current`, `threshold`, `notification`, `severity`, and semantic `color`.
+- Draw `.slo-threshold-band` regions before `.slo-budget-line`, then `.slo-budget-point` marks, `.slo-now-marker`, `.slo-exhaustion-projection`, `.burn-rate-pulse` markers, `.slo-burn-window` rows, and `.slo-action-step` cards.
+- Keep page-level critical rows visibly stronger than ticket/watch rows; expose the notification level in `.slo-alert-state`.
+- Show current time and projected budget exhaustion explicitly; do not rely on users inferring time-to-exhaust from slope alone.
+- Use red for page-level burn breaches and budget exhaustion risk, orange for ticket-level pressure, green for safe budget, blue for telemetry, and purple for release-policy action.
+- Expose `data-pattern-family="critical-slo"`, `data-budget-point-count`, `data-window-count`, `data-threshold-band-count`, `data-action-count`, `data-summary-card-count`, `data-pulse-count`, `data-time-to-exhaust-hours`, `.slo-budget-line`, `.slo-budget-point`, `.slo-threshold-band`, `.slo-now-marker`, `.slo-exhaustion-projection`, `.slo-burn-window`, `.burn-rate-bar`, `.burn-threshold-marker`, `.slo-alert-state`, `.slo-action-step`, `.slo-summary-card`, and `.burn-rate-pulse` for audits.
+- Prefer `scripts/build_critical_slo_burn_rate.py` for self-contained standalone HTML in isolated workspaces.
+
+## Critical Queue Backpressure
+
+Pattern ID: `d3-pattern-critical-queue-backpressure`.
+
+Use when the critical story is overload control rather than incident timeline, dependency mapping, or SLO burn: bounded queue depth, message age, producer throttling, retry pressure, saturated consumers, load shedding, dead-letter/sideline routing, and recovery after backpressure.
+
+- Keep producers on the left, the bounded queue in the center, and competing consumers on the right.
+- Model producers with `id`, `label`, `rate`, `priority`, and semantic `color`.
+- Model consumers with `id`, `label`, `state`, `capacity`, and semantic `color`.
+- Model controls with `id`, `label`, `state`, and semantic `color`; place `.backpressure-gate` controls upstream of the queue.
+- Draw `.queue-flow-path` routes before `.queue-message-pulse` marks, and keep pulses away from label text.
+- Use `.queue-segment` slots inside `.bounded-queue` to make headroom and saturation visible; pair it with a `.queue-depth-line` trend and `.queue-capacity-marker`.
+- Add one `.queue-age-guard` when oldest-message age exceeds useful TTL, and route stale work toward the sideline/dead-letter mark instead of normal workers.
+- Use `.load-shed-path` and `.dead-letter-bin` marks for stale or sidelined work; do not hide shedding as a generic failed edge.
+- Use red for critical backlog or dropped work, orange for throttling/backpressure, green for healthy drain/recovery, blue for normal ingress/worker flow, and purple for retry or priority shaping.
+- Expose `data-pattern-family="critical-queue"`, `data-producer-count`, `data-consumer-count`, `data-queue-segment-count`, `data-control-count`, `data-shed-count`, `data-backlog-point-count`, `data-status-card-count`, `data-pulse-count`, `data-current-depth`, `data-backpressure-threshold`, `data-oldest-message-minutes`, `.producer-source`, `.bounded-queue`, `.queue-segment`, `.queue-flow-path`, `.consumer-worker`, `.backpressure-gate`, `.load-shed-path`, `.dead-letter-bin`, `.queue-age-guard`, `.queue-depth-line`, `.queue-capacity-marker`, `.queue-depth-point`, `.queue-status-card`, and `.queue-message-pulse` for audits.
+- Prefer `scripts/build_critical_queue_backpressure.py` for self-contained standalone HTML in isolated workspaces.
+
+## Critical Cache Stampede
+
+Pattern ID: `d3-pattern-critical-cache-stampede`.
+
+Use when the critical story is hot-key cache expiry rather than general queue overload or service failover: cache stampede, thundering herd, dogpile effect, stale-while-revalidate, soft TTL, hard TTL, TTL jitter, request coalescing, single-flight refresh, origin shielding, cache warming, hit-ratio collapse, and origin load spike.
+
+- Keep request sources on the left, the cache/hot-key state in the center, and origin services on the right.
+- Model request sources with `id`, `label`, `rate`, `kind`, and semantic `color`.
+- Model cache state with `key`, `state`, `softTtlSeconds`, `hardTtlSeconds`, `staleWindowSeconds`, `stampedeRate`, `coalescedOriginCalls`, and `lockState`.
+- Draw `.cache-flow-path` routes before `.cache-request-pulse` marks. Keep pulses on lanes and away from text.
+- Draw one `.cache-hot-key` inside `.cache-layer`, one `.stampede-wave` toward origin, one `.singleflight-lock`, one `.request-collapse-gate`, and one `.origin-shield`.
+- Use `.stale-response-path` to show protected stale responses while one refresh proceeds to origin.
+- Add `.ttl-marker` marks for soft TTL, hard TTL, and TTL jitter or refresh spread.
+- Pair `.hit-ratio-line` with `.origin-load-line` so the miss storm and recovery are visible together.
+- Add `.cache-mitigation-step` cards for coalescing, serving stale, refreshing one copy, and jittering or warming hot keys.
+- Use red for hot-key expiry and origin saturation, orange for TTL warning and miss pressure, green for stale response and recovery, blue for normal cache traffic, and purple for locks/coalescing/warming.
+- Expose `data-pattern-family="critical-cache"`, `data-request-source-count`, `data-cache-flow-count`, `data-cache-pulse-count`, `data-hit-ratio-point-count`, `data-origin-load-point-count`, `data-ttl-marker-count`, `data-mitigation-count`, `data-status-card-count`, `data-hot-key`, `data-soft-ttl-seconds`, `data-hard-ttl-seconds`, `data-stale-window-seconds`, `data-stampede-rate`, `data-coalesced-origin-calls`, `data-origin-load-peak`, `.cache-request-source`, `.cache-layer`, `.cache-hot-key`, `.cache-flow-path`, `.cache-request-pulse`, `.stampede-wave`, `.singleflight-lock`, `.request-collapse-gate`, `.stale-response-path`, `.origin-shield`, `.ttl-marker`, `.hit-ratio-line`, `.hit-ratio-point`, `.origin-load-line`, `.origin-load-point`, `.cache-mitigation-step`, and `.cache-status-card` for audits.
+- Prefer `scripts/build_critical_cache_stampede.py` for self-contained standalone HTML in isolated workspaces.
+
+## Critical Circuit Breaker
+
+Pattern ID: `d3-pattern-critical-circuit-breaker`.
+
+Use when the critical story is cascading-failure prevention around a degraded dependency rather than a generic service map: circuit breaker, closed/open/half-open states, failure threshold, reset timeout, fast fail, fallback response, retry isolation, and recovery probe.
+
+- Keep clients on the left, the caller service and retry guard in the middle-left, the circuit breaker in the center, and the downstream dependency plus fallback response on the right.
+- Model clients with `id`, `label`, `rate`, `kind`, and semantic `color`.
+- Model breaker state with `state`, `failureThreshold`, `currentFailureRate`, `openWindowSeconds`, `timeoutMs`, `retryBudget`, and `probeCount`.
+- Draw `.breaker-flow-path` routes before `.breaker-request-pulse` marks. Keep pulses on lanes and away from text.
+- Draw one `.caller-service`, one `.circuit-breaker`, one `.downstream-service`, one `.fallback-service`, one `.retry-suppression-gate`, one `.open-circuit-barrier`, one `.fallback-path`, one `.fail-fast-path`, and one `.probe-path`.
+- Draw `.breaker-state-node` marks for closed, open, half-open, and closed/recovered. Keep the active open state visually dominant.
+- Pair `.trip-threshold-line` with `.breaker-failure-line`, `.breaker-latency-line`, `.breaker-failure-point`, and `.breaker-latency-point` samples so the trip is tied to a measured failure window.
+- Add `.breaker-mitigation-step` cards for setting a timeout, tripping on threshold, failing fast to fallback, and probing before close.
+- Use red for open breaker and downstream failure, orange for timeout pressure and retry budget warning, green for fallback/recovery, blue for normal caller traffic, and purple for half-open probes or coordination.
+- Expose `data-pattern-family="critical-resilience"`, `data-client-count`, `data-flow-count`, `data-pulse-count`, `data-state-count`, `data-failure-point-count`, `data-latency-point-count`, `data-mitigation-count`, `data-status-card-count`, `data-breaker-state`, `data-failure-threshold`, `data-current-failure-rate`, `data-open-window-seconds`, `data-timeout-ms`, `data-retry-budget`, `data-probe-count`, `.breaker-client`, `.caller-service`, `.circuit-breaker`, `.downstream-service`, `.fallback-service`, `.breaker-flow-path`, `.breaker-request-pulse`, `.open-circuit-barrier`, `.retry-suppression-gate`, `.fail-fast-path`, `.fallback-path`, `.probe-path`, `.half-open-probe`, `.breaker-state-node`, `.trip-threshold-line`, `.breaker-failure-line`, `.breaker-latency-line`, `.breaker-failure-point`, `.breaker-latency-point`, `.breaker-mitigation-step`, and `.breaker-status-card` for audits.
+- Prefer `scripts/build_critical_circuit_breaker.py` for self-contained standalone HTML in isolated workspaces.
+
+## Critical Bulkhead Isolation
+
+Pattern ID: `d3-pattern-critical-bulkhead-isolation`.
+
+Use when the critical story is resource isolation rather than a generic dependency outage: bulkheads, isolated cells, noisy-neighbor containment, tenant partitioning, dedicated thread or connection pools, isolated queues, concurrency caps, and overflow shedding.
+
+- Keep clients on the left, a partition router in the middle-left, and isolated resource cells across the center-right.
+- Model clients with `id`, `label`, `rate`, `cell`, and semantic `color`.
+- Model cells with `id`, `label`, `pool`, `usedSlots`, `totalSlots`, `utilization`, and semantic `color`.
+- Draw `.bulkhead-flow-path` routes before `.bulkhead-request-pulse` marks. Keep pulses on lanes and away from text.
+- Draw one `.bulkhead-router`, three `.bulkhead-cell` compartments, one `.resource-pool` per cell, and `.pool-slot` marks that make saturation visible.
+- Draw `.bulkhead-wall` boundaries between cells and one `.isolation-boundary` around the cell region.
+- Use one `.saturation-wave` inside the noisy cell and one `.shed-path` toward `.overflow-shed`; do not imply overflow can consume healthy cells.
+- Pair `.cell-health-line` with `.cell-health-point` samples so only the noisy cell crosses capacity while protected cells remain below threshold.
+- Add `.bulkhead-policy-step` cards for partitioning by key, capping concurrency, isolating queues, and shedding overflow.
+- Use red for saturated/rejected work, orange for shed pressure, green for protected critical capacity, blue for normal isolated traffic, and purple for partition routing.
+- Expose `data-pattern-family="critical-bulkhead"`, `data-client-count`, `data-cell-count`, `data-pool-slot-count`, `data-flow-count`, `data-pulse-count`, `data-wall-count`, `data-health-line-count`, `data-health-point-count`, `data-policy-step-count`, `data-status-card-count`, `data-saturated-cell`, `data-shed-rate`, `data-protected-cell-count`, `data-partition-key`, `data-concurrency-limit`, `.bulkhead-client`, `.bulkhead-router`, `.bulkhead-cell`, `.resource-pool`, `.pool-slot`, `.bulkhead-wall`, `.isolation-boundary`, `.bulkhead-flow-path`, `.bulkhead-request-pulse`, `.saturation-wave`, `.shed-path`, `.overflow-shed`, `.cell-health-line`, `.cell-health-point`, `.bulkhead-policy-step`, and `.bulkhead-status-card` for audits.
+- Prefer `scripts/build_critical_bulkhead_isolation.py` for self-contained standalone HTML in isolated workspaces.
+
+## Critical Rate Limit Token Bucket
+
+Pattern ID: `d3-pattern-critical-rate-limit-token-bucket`.
+
+Use when the critical story is admission control before overload rather than queue recovery: token bucket, rate limit, burst cap, API throttling, quota keys, 429 Too Many Requests, Retry-After, allowed vs rejected traffic, and backend protection.
+
+- Keep clients on the left, one API gateway before admission, the token bucket in the center, and backend plus Retry-After response on the right.
+- Model clients with `id`, `label`, `rate`, `quotaKey`, and semantic `color`.
+- Model bucket state with `capacity`, `currentTokens`, `refillRate`, `burstLimit`, `retryAfterSeconds`, `allowedRate`, and `throttledRate`.
+- Draw `.rate-limit-flow-path` routes before `.rate-limit-request-pulse` marks. Keep pulses on lanes and away from text.
+- Draw one `.api-gateway`, one `.token-bucket`, exactly 12 `.token-slot` marks for the default contract, one `.refill-clock`, one `.allowed-path`, one `.throttled-path`, one `.protected-backend`, and one `.retry-after-response`.
+- Use `.token-slot[data-state="available"]` and `.token-slot[data-state="empty"]` so remaining capacity is explicit.
+- Pair `.rate-limit-metric-line` with `.rate-limit-metric-point` samples for incoming, admitted, and rejected traffic; include one `.limit-threshold-line`.
+- Add `.rate-limit-policy-step` cards for refill rate, burst cap, 429 response, and jitter/backoff retries.
+- Use red for over-limit incoming pressure and exhausted tokens, orange for throttled/Retry-After work, green for admitted/protected backend traffic, blue for normal clients, and purple for quota/refill coordination.
+- Expose `data-pattern-family="critical-rate-limit"`, `data-client-count`, `data-flow-count`, `data-pulse-count`, `data-token-count`, `data-metric-line-count`, `data-metric-point-count`, `data-policy-step-count`, `data-status-card-count`, `data-bucket-capacity`, `data-current-tokens`, `data-refill-rate`, `data-burst-limit`, `data-retry-after-seconds`, `data-allowed-rate`, `data-throttled-rate`, `.rate-limit-client`, `.api-gateway`, `.token-bucket`, `.token-slot`, `.refill-clock`, `.rate-limit-flow-path`, `.rate-limit-request-pulse`, `.allowed-path`, `.throttled-path`, `.retry-after-response`, `.protected-backend`, `.rate-limit-metric-line`, `.rate-limit-metric-point`, `.limit-threshold-line`, `.rate-limit-policy-step`, and `.rate-limit-status-card` for audits.
+- Prefer `scripts/build_critical_rate_limit_token_bucket.py` for self-contained standalone HTML in isolated workspaces.
+
+## Critical Idempotency Replay Guard
+
+Pattern ID: `d3-pattern-critical-idempotency-replay-guard`.
+
+Use when the critical story is safe retry behavior rather than only throttling or queueing: idempotency keys, duplicate suppression, replaying the first stored response, comparing request fingerprints, rejecting changed payloads that reuse a key, retaining keys for a TTL window, and preventing duplicate side effects in payment/order flows.
+
+- Keep retrying clients on the left, one idempotency-aware gateway before side effects, the idempotency ledger in the center, and side-effect, stored-response, and rejection outcomes on the right.
+- Model attempts with `id`, `label`, `key`, `fingerprint`, `action`, and semantic `color`.
+- Model ledger rows with `id`, `key`, `fingerprint`, `outcome`, `response`, and semantic `color`.
+- Draw `.idempotency-flow-path` routes before `.idempotency-request-pulse` marks. Keep pulses on lanes and away from text.
+- Draw one `.duplicate-guard` before the ledger and one `.ttl-window-marker` inside or beside the ledger.
+- Draw `.idempotency-ledger-row` entries that distinguish the first write, same-fingerprint replays, and one fingerprint mismatch.
+- Use `.side-effect-path` for the one committed side effect, `.response-replay-path` for stored response replay, and `.mismatch-reject-path` for changed payload rejection.
+- Pair `.idempotency-metric-line` with `.idempotency-metric-point` samples for attempts, side effects, and duplicate suppression so attempts can rise while side effects stay flat.
+- Add `.idempotency-policy-step` cards for requiring a key, fingerprinting payloads, storing the first response, and replaying or rejecting later attempts.
+- Use red for mismatched payloads and duplicate-side-effect risk, orange for retry/suppression pressure, green for committed side effects and safe replay, blue for normal first traffic, and purple for key/fingerprint/ledger coordination.
+- Expose `data-pattern-family="critical-idempotency"`, `data-client-count`, `data-retry-count`, `data-duplicate-count`, `data-flow-count`, `data-pulse-count`, `data-ledger-row-count`, `data-side-effect-count`, `data-replay-count`, `data-mismatch-count`, `data-metric-line-count`, `data-metric-point-count`, `data-policy-step-count`, `data-status-card-count`, `data-idempotency-key`, `data-idempotency-ttl-hours`, `data-duplicate-suppressed`, `data-side-effects-created`, `data-replayed-response-code`, `.idempotency-client`, `.idempotency-gateway`, `.idempotency-ledger`, `.idempotency-ledger-row`, `.idempotency-key`, `.request-fingerprint`, `.duplicate-guard`, `.side-effect-path`, `.response-replay-path`, `.mismatch-reject-path`, `.idempotency-flow-path`, `.idempotency-request-pulse`, `.side-effect-target`, `.stored-response`, `.ttl-window-marker`, `.idempotency-metric-line`, `.idempotency-metric-point`, `.idempotency-policy-step`, and `.idempotency-status-card` for audits.
+- Prefer `scripts/build_critical_idempotency_replay_guard.py` for self-contained standalone HTML in isolated workspaces.
+
+## Critical Replication Failover
+
+Pattern ID: `d3-pattern-critical-replication-failover`.
+
+Use when the critical story is database or stateful-service failover rather than a generic outage timeline: primary degradation, replication lag, old-writer fencing, quorum, split-brain prevention, RPO exposure, RTO target, promotion candidate, and traffic reroute.
+
+- Keep the degraded primary on the left, replicas in a middle vertical column, and witness/quorum or routing control on the right.
+- Model nodes with `id`, `label`, `role`, `state`, `lag`, `color`, `x`, and `y`.
+- Model replication links separately with `id`, `source`, `target`, `kind`, `lag`, and semantic `color`; compute edge-to-edge paths from final node cards.
+- Draw `.replication-link` paths before `.replication-pulse` marks. Keep pulses on lanes and away from text.
+- Add one `.write-fence` mark before promotion so the old primary is visibly prevented from accepting writes.
+- Use one `.promotion-path` for the selected lowest-lag replica; do not imply that the old primary and promoted replica both accept writes.
+- Draw `.traffic-reroute` and `.traffic-reroute-path` from quorum/control-plane toward the writer endpoint after promotion.
+- Add `.lag-threshold-band`, `.lag-chart-line`, `.lag-sample-point`, and `.rpo-gap` marks so the data-loss exposure is explicit.
+- Add `.quorum-vote` marks for accepted and rejected votes, including stale replicas or frozen writers.
+- Add `.failover-step` cards for freeze writes, verify quorum, promote replica, and reroute traffic.
+- Use red for degraded primary, stale replica, rejected vote, and RPO exposure; orange for warning lag and transition pressure; green for the promotion candidate and restored route; blue for normal replication; purple for quorum/control-plane decisions.
+- Expose `data-pattern-family="critical-replication"`, `data-node-count`, `data-replication-link-count`, `data-lag-sample-count`, `data-quorum-vote-count`, `data-failover-step-count`, `data-status-card-count`, `data-pulse-count`, `data-rpo-events-at-risk`, `data-rto-target-seconds`, `data-write-fence-count`, `data-traffic-reroute-count`, `.replication-node`, `.primary-node`, `.replica-node`, `.witness-node`, `.replication-link`, `.replication-pulse`, `.lag-chart-line`, `.lag-threshold-band`, `.lag-sample-point`, `.quorum-vote`, `.write-fence`, `.failover-step`, `.promotion-path`, `.traffic-reroute`, `.traffic-reroute-path`, `.rpo-gap`, and `.replication-status-card` for audits.
+- Prefer `scripts/build_critical_replication_failover.py` for self-contained standalone HTML in isolated workspaces.
+
+## Critical Dependency Blast Radius
+
+Pattern ID: `d3-pattern-critical-dependency-blast-radius`.
+
+Use when the critical story is architecture impact rather than project schedule or incident timeline: central service, hard dependencies, affected surfaces, failover routes, and blast-radius tiers.
+
+- Keep the critical service centered; put hard dependencies left/top-left and affected surfaces right/bottom-right.
+- Model nodes with `id`, `label`, `role`, `x`, `y`, `status`, and semantic `color`.
+- Model links with `source`, `target`, `kind`, `severity`, and optional `critical`; compute curves from final node positions.
+- Draw `.blast-radius-ring` tiers before links, then nodes, then `.dependency-pulse` markers and `.blast-wave`.
+- Use `.failover-path` dashed green routes for protected capacity; reveal them after the blast wave so the risk is visible before the mitigation.
+- Add `.blast-tier-label` marks so ring meaning is visible, and `.blast-status-card` marks for the current critical input, blast radius, and mitigation.
+- Expose `data-pattern-family="critical-dependency"`, `data-node-count`, `data-link-count`, `data-critical-link-count`, `data-impact-count`, `data-ring-count`, `data-tier-label-count`, `data-failover-count`, `data-status-card-count`, `.critical-dependency-node`, `.dependency-link`, `.critical-dependency-link`, `.dependency-pulse`, `.blast-radius-ring`, `.blast-tier-label`, `.blast-wave`, `.impact-surface`, `.failover-path`, and `.blast-status-card` for audits.
+- Prefer `scripts/build_critical_dependency_blast_radius.py` for self-contained standalone HTML in isolated workspaces.
+
+## Organic Growth Patterns
+
+Pattern IDs: `d3-pattern-organic-growth-patterns`, `d3-pattern-phyllotaxis-seed-head`, `d3-pattern-lsystem-canopy`, `d3-pattern-reaction-diffusion-field`, `d3-pattern-diffusion-limited-aggregation`.
+
+Use when a D3/SVG artifact needs organic, botanical, cellular, coral-like, lichen-like, mineral, or dendritic form without becoming decorative random noise.
+
+- Pick the mathematical rule before drawing: phyllotaxis for packed radial growth, L-systems for recursive branching, reaction-diffusion for spots/stripes/activator fields, or DLA for accretive random-walk clusters.
+- Keep every variant deterministic through formulas, grammar iterations, fixed simulation parameters, or a seeded random generator.
+- Expose the root as `data-pattern-id="d3-pattern-organic-growth-patterns"` and each variant as an `.organic-variant` with its exact `d3-pattern-*` ID.
+- Use `.organic-seed`, `.organic-branch`, `.organic-rd-cell`, `.organic-aggregate-particle`, and `.organic-dla-link` hooks so browser audits can prove the intended model survived adaptation.
+- Animate growth in model order: seed index, grammar path order, field sweep, or DLA attachment order.
+- Prefer `scripts/build_organic_growth_patterns.py` for a self-contained standalone HTML starting point in isolated workspaces.
+
 ## Parabolic Arcs For SDLC Tasks
 
 Pattern ID: `d3-pattern-parabolic-arcs`.
