@@ -39,6 +39,8 @@ EDITORIAL_PATTERNS = [
     re.compile(r"draft\s+visual\s+strategy", re.IGNORECASE),
 ]
 
+FONT_FAMILY_PATTERN = re.compile(r"font-family\s*:\s*([^;}]+)", re.IGNORECASE)
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -51,6 +53,12 @@ def parse_args() -> argparse.Namespace:
         "--allow-colorset2",
         action="store_true",
         help="Allow non-colorset1 colors when a project explicitly chose colorset2.",
+    )
+    parser.add_argument(
+        "--require-open-sans",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Require the Metro source CSS to use the colorset1 Open Sans font stack.",
     )
     return parser.parse_args()
 
@@ -78,6 +86,24 @@ def main() -> int:
                     "message": pattern.pattern,
                 }
             )
+    font_families = [match.group(1).strip() for match in FONT_FAMILY_PATTERN.finditer(html)]
+    if args.require_open_sans:
+        if not font_families:
+            findings.append(
+                {
+                    "code": "missing-open-sans-font",
+                    "path": args.html.as_posix(),
+                    "message": "No CSS font-family declaration was found.",
+                }
+            )
+        elif not any("open sans" in family.lower() for family in font_families):
+            findings.append(
+                {
+                    "code": "wrong-metro-font-stack",
+                    "path": args.html.as_posix(),
+                    "message": "; ".join(font_families[:4]),
+                }
+            )
     if args.source_package and args.source_package.exists():
         data = json.loads(args.source_package.read_text(encoding="utf-8"))
         anchors = data.get("strategyAnchors", [])
@@ -94,6 +120,8 @@ def main() -> int:
         "html": args.html.as_posix(),
         "colors": colors,
         "colorset": "colorset1" if not args.allow_colorset2 else "colorset1-or-colorset2",
+        "fontFamilies": font_families,
+        "requireOpenSans": args.require_open_sans,
         "findings": findings,
     }
     if args.output:

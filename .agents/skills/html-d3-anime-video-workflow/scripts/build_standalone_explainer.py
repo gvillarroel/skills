@@ -6032,7 +6032,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{args.title}</title>
   <style>
-    html, body {{ margin: 0; background: {PALETTE["paper"]}; font-family: Segoe UI, Arial, sans-serif; }}
+    html, body {{ margin: 0; background: {PALETTE["paper"]}; font-family: 'Open Sans', Arial, sans-serif; }}
     #stage {{ width: {args.width}px; height: {args.height}px; display: block; background: {PALETTE["paper"]}; }}
     text {{ paint-order: stroke; stroke: {PALETTE["paper"]}; stroke-width: 4px; }}
   </style>
@@ -6481,7 +6481,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
       drawMetroMegacanvasBase(Math.floor(clamp(p) * 5), p);
       if (PACKAGE.visualPattern === "systems-flow") {{
         const component = (x, y, w, h, name, stroke = palette.line, fill = grayLevel(1)) => {{
-          el("rect", {{ x, y, width: w, height: h, rx: masonryRequired ? 0 : 14, fill, stroke, "stroke-width": 2 }});
+          el("rect", {{ x, y, width: w, height: h, rx: 0, fill, stroke, "stroke-width": 2 }});
           if (masonryRequired) {{
             const rightBandX = x + w - 8;
             el("rect", {{ x, y, width: 8, height: h, rx: 0, fill: stroke === "none" ? grayLevel(4) : stroke, stroke: "none" }});
@@ -7548,7 +7548,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
       }}
       if (PACKAGE.visualPattern === "metric-dashboard") {{
         const component = (x, y, w, h, nameText, stroke = palette.line, fill = "#fff") => {{
-          el("rect", {{ x, y, width: w, height: h, rx: masonryRequired ? 0 : 14, fill, stroke, "stroke-width": 3 }});
+          el("rect", {{ x, y, width: w, height: h, rx: 0, fill, stroke, "stroke-width": 3 }});
           if (masonryRequired) {{
             const rightBandX = x + w - 8;
             el("rect", {{ x, y, width: 8, height: h, rx: 0, fill: stroke === "none" ? grayLevel(4) : stroke, stroke: "none" }});
@@ -7872,7 +7872,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           return points[points.length - 1];
         }};
         const node = (x, y, name, stroke, fill = "#fff") => {{
-          el("rect", {{ x: x - 62, y: y - 34, width: 124, height: 68, rx: masonryRequired ? 0 : 16, fill, stroke, "stroke-width": 3 }});
+          el("rect", {{ x: x - 62, y: y - 34, width: 124, height: 68, rx: 0, fill, stroke, "stroke-width": 3 }});
           if (masonryRequired) {{
             const leftBandX = x - 62;
             const rightBandX = x + 54;

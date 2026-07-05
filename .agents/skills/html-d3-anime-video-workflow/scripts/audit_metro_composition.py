@@ -94,6 +94,10 @@ def extract_nonzero_rounding(html: str) -> list[dict[str, object]]:
     patterns = [
         ("rx-object", rf"\brx:\s*({NUMBER})"),
         ("ry-object", rf"\bry:\s*({NUMBER})"),
+        ("rx-dynamic-object", rf"\brx:\s*[^,\n{{}}]*\?\s*0\s*:\s*({NUMBER})"),
+        ("ry-dynamic-object", rf"\bry:\s*[^,\n{{}}]*\?\s*0\s*:\s*({NUMBER})"),
+        ("rx-dynamic-object-alt", rf"\brx:\s*[^,\n{{}}]*\?\s*({NUMBER})\s*:\s*0"),
+        ("ry-dynamic-object-alt", rf"\bry:\s*[^,\n{{}}]*\?\s*({NUMBER})\s*:\s*0"),
         ("rx-attr", rf"\brx=['\"]({NUMBER})['\"]"),
         ("ry-attr", rf"\bry=['\"]({NUMBER})['\"]"),
         ("border-radius", rf"border-radius\s*:\s*({NUMBER})(?:px)?"),

@@ -74,7 +74,10 @@ def rendered_fixture_html(
     fill_h = 104 if padded else 128
     third_panel_gray = 0 if weak_gray or tiny_gray_swatches else 2
     fourth_panel_gray = 1 if weak_gray or tiny_gray_swatches else 3
-    css = "<style>#stage rect { rx: 8px; ry: 8px; }</style>" if css_rounded else ""
+    css_rules = ["html, body { font-family: 'Open Sans', Arial, sans-serif; }"]
+    if css_rounded:
+        css_rules.append("#stage rect { rx: 8px; ry: 8px; }")
+    css = f"<style>{' '.join(css_rules)}</style>"
     return f"""<!doctype html>
 <html>
 <body>
@@ -203,6 +206,21 @@ def composition_fixture_html(*, gap: bool = False, padding: bool = False) -> str
   <rect x="0" y="128" width="128" height="128" rx="0" fill="#e7e7e7"/>
   <rect x="128" y="128" width="128" height="128" rx="0" fill="#cfcfcf"/>
 </svg>
+"""
+
+
+def composition_dynamic_rounding_fixture_html() -> str:
+    return """<!doctype html>
+<svg id="stage" data-edge-style="square" data-box-interior-policy="zero" data-internal-padding-px="0" data-gray-levels="#ffffff,#f7f7f7,#e7e7e7,#cfcfcf">
+</svg>
+<script>
+const masonryRequired = true;
+function el(name, attrs) {}
+el("rect", { x: 0, y: 0, width: 128, height: 128, rx: masonryRequired ? 0 : 14, fill: "#ffffff" });
+el("rect", { x: 128, y: 0, width: 128, height: 128, rx: 0, fill: "#f7f7f7" });
+el("rect", { x: 0, y: 128, width: 128, height: 128, rx: 0, fill: "#e7e7e7" });
+el("rect", { x: 128, y: 128, width: 128, height: 128, rx: 0, fill: "#cfcfcf" });
+</script>
 """
 
 
@@ -780,11 +798,13 @@ def run_validation(workdir: Path, *, install_browser: bool, timeout_seconds: int
     html_bad_ellipsized_text = workdir / "rendered-bad-ellipsized-text.html"
     html_bad_text_only_motion = workdir / "rendered-bad-text-only-motion.html"
     html_bad_red_dominant = workdir / "rendered-bad-red-dominant.html"
+    html_bad_font = workdir / "rendered-bad-font.html"
     video_composition_good = workdir / "video-composition-good.mp4"
     video_composition_slide_like = workdir / "video-composition-slide-like.mp4"
     video_composition_red_dominant = workdir / "video-composition-red-dominant.mp4"
     html_gap = workdir / "composition-gap.html"
     html_bad_padding_source = workdir / "composition-bad-padding.html"
+    html_bad_dynamic_rounding = workdir / "composition-bad-dynamic-rounding.html"
     write_text(html_good, rendered_fixture_html())
     write_text(html_masonry_good, masonry_fixture_html())
     write_text(html_masonry_bad, masonry_fixture_html(weak=True))
@@ -804,8 +824,10 @@ def run_validation(workdir: Path, *, install_browser: bool, timeout_seconds: int
     write_text(html_bad_ellipsized_text, rendered_fixture_html(ellipsized_text=True))
     write_text(html_bad_text_only_motion, rendered_fixture_html(text_only_motion=True))
     write_text(html_bad_red_dominant, rendered_fixture_html(red_dominant=True))
+    write_text(html_bad_font, rendered_fixture_html().replace("Open Sans", "Segoe UI"))
     write_text(html_gap, composition_fixture_html(gap=True))
     write_text(html_bad_padding_source, composition_fixture_html(padding=True))
+    write_text(html_bad_dynamic_rounding, composition_dynamic_rounding_fixture_html())
     make_video_composition_fixture(video_composition_good, slide_like=False)
     make_video_composition_fixture(video_composition_slide_like, slide_like=True)
     make_video_composition_fixture(video_composition_red_dominant, slide_like=False, red_dominant=True)
@@ -836,6 +858,40 @@ def run_validation(workdir: Path, *, install_browser: bool, timeout_seconds: int
 
     cases = [
         run_case(
+            name="tonal-open-sans-good-passes",
+            command=[
+                sys.executable,
+                str(SCRIPT_DIR / "audit_metro_tonal_style.py"),
+                "--html",
+                html_good.as_posix(),
+                "--source-package",
+                source.as_posix(),
+                "--output",
+                (workdir / "tonal-open-sans-good.json").as_posix(),
+            ],
+            manifest=workdir / "tonal-open-sans-good.json",
+            expect_pass=True,
+            expected_codes=None,
+            timeout_seconds=timeout_seconds,
+        ),
+        run_case(
+            name="tonal-wrong-font-fails",
+            command=[
+                sys.executable,
+                str(SCRIPT_DIR / "audit_metro_tonal_style.py"),
+                "--html",
+                html_bad_font.as_posix(),
+                "--source-package",
+                source.as_posix(),
+                "--output",
+                (workdir / "tonal-bad-font.json").as_posix(),
+            ],
+            manifest=workdir / "tonal-bad-font.json",
+            expect_pass=False,
+            expected_codes=["wrong-metro-font-stack"],
+            timeout_seconds=timeout_seconds,
+        ),
+        run_case(
             name="composition-gap-gutter-passes",
             command=[
                 sys.executable,
@@ -863,6 +919,21 @@ def run_validation(workdir: Path, *, install_browser: bool, timeout_seconds: int
             manifest=workdir / "composition-bad-padding.json",
             expect_pass=False,
             expected_codes=["box-padding-signals"],
+            timeout_seconds=timeout_seconds,
+        ),
+        run_case(
+            name="composition-dynamic-rounded-fails",
+            command=[
+                sys.executable,
+                str(SCRIPT_DIR / "audit_metro_composition.py"),
+                "--html",
+                html_bad_dynamic_rounding.as_posix(),
+                "--output",
+                (workdir / "composition-bad-dynamic-rounding.json").as_posix(),
+            ],
+            manifest=workdir / "composition-bad-dynamic-rounding.json",
+            expect_pass=False,
+            expected_codes=["rounded-borders"],
             timeout_seconds=timeout_seconds,
         ),
         run_case(
