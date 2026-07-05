@@ -197,8 +197,27 @@ function prepareSvg(concept, seconds) {
   const visualOnly = isVisualOnlyConcept(concept);
   const frameWidth = visualOnly ? 1280 : SVG_WIDTH;
   const frameHeight = visualOnly ? 720 : SVG_HEIGHT;
+  const { beat } = sceneForTime(concept, seconds);
+  const patternId = `ai-concept-pattern-${concept.id}`;
+  document.body.dataset.exampleId = "ai-concept-videos";
+  document.body.dataset.patternId = patternId;
+  document.body.dataset.patternPage = "true";
+  document.body.dataset.conceptId = concept.id;
+  document.body.dataset.beatId = beat.id;
+  const frame = document.querySelector(".video-frame");
+  if (frame) {
+    frame.dataset.exampleId = "ai-concept-videos";
+    frame.dataset.patternId = patternId;
+    frame.dataset.patternPage = "true";
+    frame.dataset.conceptId = concept.id;
+    frame.dataset.beatId = beat.id;
+  }
   svg.selectAll("*").remove();
   svg.attr("aria-label", concept.title);
+  svg.attr("data-example-id", "ai-concept-videos");
+  svg.attr("data-pattern-id", patternId);
+  svg.attr("data-concept-id", concept.id);
+  svg.attr("data-beat-id", beat.id);
   svg.attr("viewBox", `0 0 ${frameWidth} ${frameHeight}`);
 
   const defs = svg.append("defs");
@@ -2307,6 +2326,7 @@ export function renderConceptFrame(conceptId, seconds, options = {}) {
   drawConceptVisual(concept, time);
   return {
     conceptId: concept.id,
+    patternId: `ai-concept-pattern-${concept.id}`,
     time,
     beat: sceneForTime(concept, time).beat.id,
     svgElementCount: svg.selectAll("*").size(),

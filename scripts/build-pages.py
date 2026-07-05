@@ -10,6 +10,7 @@ import shutil
 import subprocess
 import sys
 import time
+import re
 from pathlib import Path
 
 
@@ -268,9 +269,45 @@ def patch_file(path: Path, replacements: dict[str, str]) -> None:
     path.write_text(content, encoding="utf-8", newline="\n")
 
 
+def ensure_html_head_meta(content: str, example_id: str) -> str:
+    meta = (
+        f'  <meta name="example-id" content="{example_id}">\n'
+        f'  <meta name="pattern-id" content="{example_id}">\n'
+        '  <meta name="pattern-page" content="true">\n'
+    )
+    if 'name="pattern-id"' in content:
+        return content
+    if "</head>" not in content:
+        return content
+    return content.replace("</head>", f"{meta}</head>", 1)
+
+
+def ensure_body_attribute(content: str, name: str, value: str) -> str:
+    match = re.search(r"<body\b([^>]*)>", content)
+    if not match:
+        return content
+    body_attributes = match.group(1)
+    if re.search(rf"\b{name}=", body_attributes):
+        return content
+    updated = f"<body{body_attributes} {name}=\"{value}\">"
+    return content[: match.start()] + updated + content[match.end() :]
+
+
+def patch_page_metadata(example_id: str, index_path: Path) -> None:
+    content = index_path.read_text(encoding="utf-8")
+    content = ensure_html_head_meta(content, example_id)
+    for name, value in {
+        "data-example-id": example_id,
+        "data-pattern-id": example_id,
+        "data-pattern-page": "true",
+    }.items():
+        content = ensure_body_attribute(content, name, value)
+    index_path.write_text(content, encoding="utf-8", newline="\n")
+
+
 def write_index() -> None:
     links = "\n".join(
-        f"""        <a class="card" id="example-set-{card['id']}" data-example-id="{card['id']}" data-example-source="{card['source']}" href="{card['href']}">
+        f"""        <a class="card" id="example-set-{card['id']}" data-example-id="{card['id']}" data-pattern-id="{card['id']}" data-example-source="{card['source']}" href="{card['href']}">
           <span class="kind">{card['kind']}</span>
           <strong>{card['title']}</strong>
           <code>{card['id']}</code>
@@ -417,7 +454,7 @@ def write_index() -> None:
     }}
   </style>
 </head>
-<body>
+<body data-example-id="codex-skills-examples" data-pattern-id="codex-skills-examples" data-pattern-page="catalog">
   <header>
     <div class="wrap hero">
       <div>
@@ -452,6 +489,8 @@ def write_catalog() -> None:
         f"    \"title\": \"{card['title']}\",\n"
         f"    \"href\": \"{card['href']}\",\n"
         f"    \"kind\": \"{card['kind']}\",\n"
+        f"    \"patternId\": \"{card['id']}\",\n"
+        "    \"pageFormat\": \"pattern-gallery\",\n"
         f"    \"description\": \"{card['description']}\"\n"
         "  }"
         for card in PUBLISHED_EXAMPLE_SETS
@@ -565,6 +604,12 @@ def build_docs() -> None:
             "./node_modules/animejs/dist/bundles/anime.umd.min.js": "https://cdn.jsdelivr.net/npm/animejs@4.4.1/dist/bundles/anime.umd.min.js",
         },
     )
+
+    for card in PUBLISHED_EXAMPLE_SETS:
+        index_path = DOCS / card["href"] / "index.html"
+        if not index_path.exists():
+            raise FileNotFoundError(f"Published example page is missing: {index_path.relative_to(ROOT).as_posix()}")
+        patch_page_metadata(card["id"], index_path)
 
     write_index()
     write_catalog()

@@ -58,6 +58,11 @@
   const galleryPaletteName = galleryStyleConfig.paletteName || (galleryStyleVersion === "colorset2" ? "full-color-style" : "base");
   const galleryStyleAlignment = galleryStyleConfig.styleName || (galleryStyleVersion === "colorset2" ? "metro-minimal-tonal-motion" : null);
   const galleryAssetBase = window.D3_GALLERY_ASSET_BASE || "";
+  const galleryExampleSetId = {
+    base: "d3-animated-svg",
+    cs1: "d3-animated-svg-cs1",
+    colorset2: "d3-animated-svg-colorset2"
+  }[galleryStyleVersion] || "d3-animated-svg";
   const styleAllowedColors = new Set((galleryStyleConfig.allowedColors || Object.values(palette)).map(value => String(value).toLowerCase()));
   const styleAllowedColorList = Array.from(styleAllowedColors);
   const namedColorMap = new Map([
@@ -414,6 +419,7 @@
       .attr("class", d => `example-card${d.size === "wide" ? " example-card--wide" : ""}${d.size === "full" ? " example-card--full" : ""}`)
       .attr("id", d => d.patternId)
       .attr("data-example", d => d.id)
+      .attr("data-example-id", d => d.id)
       .attr("data-pattern-id", d => d.patternId)
       .attr("data-base-pattern-id", d => d.basePatternId)
       .attr("data-style-version", galleryStyleVersion)
@@ -432,6 +438,9 @@
 
     d3.select("#example-count").text(examples.length);
     document.body.dataset.exampleCount = String(examples.length);
+    document.body.dataset.exampleId = galleryExampleSetId;
+    document.body.dataset.patternId = galleryExampleSetId;
+    document.body.dataset.patternPage = "true";
     document.body.dataset.styleVersion = galleryStyleVersion;
     document.body.dataset.colorSet = galleryColorSet;
     document.body.dataset.paletteName = galleryPaletteName;

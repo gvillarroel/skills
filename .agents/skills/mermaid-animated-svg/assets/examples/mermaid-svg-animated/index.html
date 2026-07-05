@@ -111,6 +111,19 @@
       letter-spacing: 0;
     }
 
+    .pattern-id {
+      width: max-content;
+      max-width: 100%;
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f8fafc;
+      color: var(--muted);
+      padding: 3px 6px;
+      font: 700 12px/1.2 Consolas, "Liberation Mono", "Courier New", monospace;
+      overflow-wrap: anywhere;
+    }
+
     .details {
       display: flex;
       flex-wrap: wrap;
@@ -155,7 +168,7 @@
     }
   </style>
 </head>
-<body>
+<body data-example-id="mermaid-svg-animated" data-pattern-id="mermaid-svg-animated" data-pattern-page="true">
   <header>
     <h1>Animated Mermaid SVG Examples</h1>
     <div class="summary">
@@ -220,12 +233,20 @@
 
     for (const [name, animation, elements, staticName = name] of examples) {
       const article = document.createElement("article");
+      const patternId = `mermaid-pattern-${name}`;
+      article.className = "gallery-card";
+      article.id = patternId;
+      article.dataset.exampleId = name;
+      article.dataset.patternId = patternId;
+      article.dataset.diagramType = staticName;
+      article.dataset.animationProfile = animation;
       article.innerHTML = `
         <div class="frame">
-          <img src="animated/${name}.animated.svg" alt="${titleCase(name)} animated SVG">
+          <img src="animated/${name}.animated.svg" data-example-id="${name}" data-pattern-id="${patternId}" alt="${titleCase(name)} animated SVG">
         </div>
         <div class="meta">
           <h2>${titleCase(name)}</h2>
+          <p class="pattern-id">${patternId}</p>
           <div class="details">
             <span>${animation}</span>
             <span>${elements} targets</span>

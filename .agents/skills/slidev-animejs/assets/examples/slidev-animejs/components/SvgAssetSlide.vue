@@ -1,5 +1,5 @@
 <template>
-  <section ref="root" class="svg-asset-slide" :data-asset="spec.slug">
+  <section ref="root" class="svg-asset-slide" data-example-id="slidev-animejs" data-pattern-page="true" :data-asset="spec.slug" :data-pattern-id="`slidev-animejs-svg-asset-${spec.slug}`">
     <div class="svg-asset-header">
       <div>
         <p class="eyebrow">generated svg asset</p>
@@ -9,7 +9,7 @@
     </div>
 
     <div class="svg-asset-body">
-      <div class="svg-asset-stage" :class="`stage-${spec.slug}`" v-html="svgMarkup"></div>
+      <div class="svg-asset-stage" data-example-id="slidev-animejs" :data-pattern-id="`slidev-animejs-svg-asset-${spec.slug}`" :class="`stage-${spec.slug}`" v-html="svgMarkup"></div>
       <aside class="svg-asset-notes">
         <div>
           <h3>Source File</h3>

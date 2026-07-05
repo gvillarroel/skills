@@ -1,5 +1,5 @@
 <template>
-  <section class="dashboard-demo">
+  <section class="dashboard-demo" data-example-id="slidev-echarts" data-pattern-page="true" data-pattern-id="slidev-echarts-executive-dashboard">
     <div class="dashboard-heading">
       <div>
         <p class="eyebrow">Dashboard slide</p>

@@ -1,5 +1,5 @@
 <template>
-  <section class="generated-svg-slide">
+  <section class="generated-svg-slide" data-example-id="slidev-echarts" data-pattern-page="true" :data-pattern-id="`slidev-echarts-generated-svg-${mode}`">
     <div class="generated-svg-header">
       <div>
         <p class="eyebrow">{{ spec.type }}</p>
@@ -22,6 +22,8 @@
         class="generated-svg-frame"
         :class="{ 'is-replaying': isReplaying }"
         data-generated-svg-demo="true"
+        data-example-id="slidev-echarts"
+        :data-pattern-id="`slidev-echarts-generated-svg-${mode}`"
         data-renderer="vue-svg"
         data-svg-replayable="true"
       >

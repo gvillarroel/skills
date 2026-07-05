@@ -140,6 +140,19 @@ h2 {
   letter-spacing: 0;
 }
 
+.example-pattern-id {
+  width: max-content;
+  max-width: 100%;
+  margin: 6px 0 0;
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  background: var(--page);
+  color: var(--muted);
+  padding: 3px 6px;
+  font: 800 11px/1.2 Consolas, "Liberation Mono", "Courier New", monospace;
+  overflow-wrap: anywhere;
+}
+
 .example-copy {
   margin: 8px 0 0;
   color: var(--muted);

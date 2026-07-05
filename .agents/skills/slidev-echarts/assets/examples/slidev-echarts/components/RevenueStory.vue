@@ -1,5 +1,5 @@
 <template>
-  <section class="revenue-story">
+  <section class="revenue-story" data-example-id="slidev-echarts" data-pattern-page="true" data-pattern-id="slidev-echarts-revenue-story">
     <div class="story-header">
       <div>
         <p class="eyebrow">Click story</p>

@@ -1,5 +1,5 @@
 <template>
-  <section ref="root" class="anime-feature-slide" :data-feature="spec.type">
+  <section ref="root" class="anime-feature-slide" data-example-id="slidev-animejs" data-pattern-page="true" :data-feature="spec.type" :data-pattern-id="`slidev-animejs-feature-${spec.type}`">
     <div class="anime-feature-header">
       <div>
         <p class="eyebrow">{{ spec.type }}</p>

@@ -1,5 +1,5 @@
 <template>
-  <section class="composition-scene" :class="scene">
+  <section class="composition-scene" :class="scene" data-example-id="slidev-echarts" data-pattern-page="true" :data-pattern-id="`slidev-echarts-composition-${scene}`">
     <template v-if="scene === 'spotlight'">
       <div class="composition-copy">
         <p class="eyebrow">Spotlight composition</p>

@@ -160,6 +160,23 @@
         gap: 12px;
       }
 
+      .pattern-id {
+        width: max-content;
+        max-width: 100%;
+        margin: 0;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #f8fafc;
+        color: var(--muted);
+        padding: 3px 6px;
+        font:
+          700 12px/1.2 Consolas,
+          "Liberation Mono",
+          "Courier New",
+          monospace;
+        overflow-wrap: anywhere;
+      }
+
       .tabs {
         display: flex;
         align-items: center;
@@ -356,7 +373,7 @@
       }
     </style>
   </head>
-  <body>
+  <body data-example-id="mermaid-animation-directives" data-pattern-id="mermaid-animation-directives" data-pattern-page="true">
     <header>
       <div class="bar">
         <div>
@@ -439,6 +456,7 @@
               <button type="button" data-action="restart">Restart</button>
             </div>
           </div>
+          <p class="pattern-id"></p>
           <p class="note"></p>
         </div>
         <div class="stage">
@@ -611,18 +629,26 @@
         mid,
         final,
         className = "",
+        patternId,
+        exampleId,
       }) {
         const node = template.content.cloneNode(true);
         const article = node.querySelector("article");
         const titleNode = node.querySelector("h3");
+        const patternIdNode = node.querySelector(".pattern-id");
         const noteNode = node.querySelector(".note");
         const restart = node.querySelector("button[data-action='restart']");
         const views = { animated, static: statik, mid, final };
+        const resolvedExampleId = exampleId || patternId;
 
         if (className) {
           article.className = className;
         }
+        article.id = patternId;
+        article.dataset.exampleId = resolvedExampleId;
+        article.dataset.patternId = patternId;
         titleNode.textContent = title;
+        patternIdNode.textContent = patternId;
         noteNode.textContent = note;
 
         const animatedPanel = node.querySelector("[data-panel='animated']");
@@ -635,6 +661,8 @@
             continue;
           }
           panel.src = src;
+          panel.dataset.exampleId = resolvedExampleId;
+          panel.dataset.patternId = patternId;
           panel.alt = `${title} ${view === "static" ? "static SVG" : view === "animated" ? "animated SVG" : `${view} animation frame`}`;
         }
 
@@ -687,6 +715,8 @@
           source: `../../examples/mermaid-animation-directives/${item.name}.mmd`,
           mid: item.frames === false ? undefined : `../playwright/mermaid-animation-directives/${item.name}.mid.png`,
           final: item.frames === false ? undefined : `../playwright/mermaid-animation-directives/${item.name}.final.png`,
+          patternId: `mermaid-directive-${item.name}`,
+          exampleId: item.name,
         }));
       }
 
@@ -709,6 +739,8 @@
           mid: `../playwright/mermaid-animation-directives/by-type/${name}.mid.png`,
           final: `../playwright/mermaid-animation-directives/by-type/${name}.final.png`,
           className: "gallery-card",
+          patternId: `mermaid-directive-${name}`,
+          exampleId: name,
         }));
       }
 
@@ -721,6 +753,8 @@
           statik: `../../examples/mermaid-svg-animated/static/${staticName}.static.svg`,
           source: `../../examples/mermaid/${staticName}.mmd`,
           className: "gallery-card",
+          patternId: `mermaid-pattern-${name}`,
+          exampleId: name,
         }));
       }
     </script>

@@ -1,5 +1,5 @@
 <template>
-  <section class="chart-type-slide">
+  <section class="chart-type-slide" data-example-id="slidev-echarts" data-pattern-page="true" :data-chart-type="spec.type" :data-pattern-id="`slidev-echarts-chart-${spec.type}`">
     <div class="chart-type-header">
       <div>
         <p class="eyebrow">{{ spec.type }}</p>

@@ -206,12 +206,15 @@ sharedRenderer.setClearColor(COLOR_OBJECTS.white, 1)
 sharedRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
 
 document.querySelector('#example-count').textContent = String(examples.length)
+document.body.dataset.exampleCount = String(examples.length)
 
 for (const [index, example] of examples.entries()) {
   const card = document.createElement('article')
+  const patternId = `threejs-pattern-${example.id}`
   card.className = 'example-card'
   card.id = `example-${example.id}`
   card.dataset.exampleId = example.id
+  card.dataset.patternId = patternId
   card.dataset.sceneId = example.id
   card.dataset.replayCount = '0'
   card.dataset.dragCount = '0'
@@ -225,10 +228,11 @@ for (const [index, example] of examples.entries()) {
         </button>
       </div>
       <h2>${example.title}</h2>
+      <p class="example-pattern-id">${patternId}</p>
       <p class="example-copy">${example.description}</p>
     </div>
     <div class="scene-frame">
-      <canvas class="three-canvas" data-scene-id="${example.id}" aria-label="${example.title} canvas" tabindex="0"></canvas>
+      <canvas class="three-canvas" data-example-id="${example.id}" data-pattern-id="${patternId}" data-scene-id="${example.id}" aria-label="${example.title} canvas" tabindex="0"></canvas>
     </div>
   `
 

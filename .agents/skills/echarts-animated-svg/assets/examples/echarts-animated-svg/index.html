@@ -94,6 +94,18 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
 }
 .card-header h2 { margin: 0 0 4px; font-size: 17px; line-height: 1.2; letter-spacing: 0; }
 .card-header p { margin: 0; color: var(--brand-gray-60); line-height: 1.35; font-size: 13px; }
+.card-header .pattern-id {
+  width: max-content;
+  max-width: 100%;
+  margin-top: 6px;
+  border: 1px solid var(--brand-gray-10);
+  border-radius: 6px;
+  background: var(--brand-background);
+  color: var(--brand-gray-60);
+  padding: 3px 6px;
+  font: 800 11px/1.2 Consolas, "Liberation Mono", "Courier New", monospace;
+  overflow-wrap: anywhere;
+}
 .chart-stage { padding: 8px 10px 12px; background: #ffffff; }
 .chart-stage svg { display: block; width: 100%; height: auto; overflow: visible; }
 .easv-svg .easv-mark {
@@ -146,8 +158,8 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
   }
 }</style>
 </head>
-<body>
-  <main class="page-shell" data-expected-cards="43" data-core-chart-count="23" data-extra-example-count="20">
+<body data-example-id="echarts-animated-svg" data-pattern-id="echarts-animated-svg" data-pattern-page="true">
+  <main class="page-shell" data-example-id="echarts-animated-svg" data-pattern-id="echarts-animated-svg" data-pattern-page="true" data-expected-cards="43" data-core-chart-count="23" data-extra-example-count="20">
     <header class="topbar">
       <div>
         <h1>ECharts Animated SVG Gallery</h1>
@@ -4412,7 +4424,30 @@ pointer-events:none;
     </article>
     </section>
   </main>
-  <script>function replayCard(card) {
+  <script>function normalizePatternMetadata() {
+  document.querySelectorAll('.chart-card').forEach((card) => {
+    const exampleId = card.dataset.exampleId || card.dataset.chartType || card.id.replace(/^example-/, '')
+    const patternId = `echarts-pattern-${exampleId}`
+    card.dataset.exampleId = exampleId
+    card.dataset.patternId = patternId
+    const svg = card.querySelector('svg')
+    if (svg) {
+      svg.dataset.exampleId = exampleId
+      svg.dataset.patternId = patternId
+    }
+    const headerContent = card.querySelector('.card-header > div')
+    if (headerContent && !headerContent.querySelector('.pattern-id')) {
+      const node = document.createElement('p')
+      node.className = 'pattern-id'
+      node.textContent = patternId
+      headerContent.appendChild(node)
+    }
+  })
+}
+
+normalizePatternMetadata()
+
+function replayCard(card) {
   card.classList.remove('is-playing')
   void card.offsetWidth
   card.dataset.replayCount = String(Number(card.dataset.replayCount || 0) + 1)
