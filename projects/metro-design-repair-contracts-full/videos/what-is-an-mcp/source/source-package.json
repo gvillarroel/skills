@@ -1,0 +1,614 @@
+{
+  "title": "What is an MCP",
+  "topic": "What is an MCP",
+  "checkedDate": "2026-07-05",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "dependency-map",
+  "visualZones": [
+    {
+      "id": "dependency-map-orientation-zone",
+      "role": "opening anchor plane",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "grayLevel": 1,
+      "sourceAnchors": [
+        "json { \"server\": \"issue-tracker\", \"auth\": \"oauth\", \"tools\": [\"list_issues\", \"get_issue\", \"comment_issue\"], \"policy\": { \"allow_write\": false, \"require_approval_for\": [\"comment_issue\"] } }",
+        "Open standard, strict permissions",
+        "credit_meter to show context and external API costs rising with tool sprawl",
+        "masonry-wall"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "dependency-map-primary-system-zone",
+      "role": "main mechanism plane",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 400,
+        "height": 280
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "The teaching point is that MCP integration is not just connectivity. It is capability exposure plus policy. Good MCP setup means least privilege, approved registries, and deliberate tool surface design. citeturn10view4turn7search10turn7search21turn25search11 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"MCP stands for Model Context Protocol. It is an open standard for connecting AI applications to external systems.\" |",
+        "mcp_bus as the core visual identity for all integrations",
+        "End with a least-privilege checklist over the MCP bus",
+        "dependency-map"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "dependency-map-secondary-system-zone",
+      "role": "support mechanism plane",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 400,
+        "height": 580
+      },
+      "grayLevel": 3,
+      "sourceAnchors": [
+        "with multiple client and server ports | | 0:15-0:30 | \"Instead of building one custom integration per assistant, MCP gives clients and servers a shared protocol.\" | One-to-many connector diagram replaces spaghetti lines | | 0:30-0:45 | \"An MCP server can expose tools, resources, and prompts. That means an assistant can read data, execute actions, or import structured workflows.\" | Three lanes labeled **Tools / Resources / Prompts** | | 0:45-1:00 | \"Today MCP is supported across major clients, including Claude, ChatGPT-related ecosystems, VS Code, and GitHub Copilot.\" | Client logos or neutral platform cards connect to the bus | | 1:00-1:15 | \"But power creates risk. Authentication and authorization matter because MCP can expose real systems, not just toy tools.\" | Lock icons appear on the bus | | 1:15-1:30 | \"That is why registries, allowlists, and approval policies matter. GitHub already lets organizations control registry URLs and server access.\" | Registry gate animation | | 1:30-1:45 | \"MCP also affects cost. Every discovered tool, every tool description, and every tool call can add context or external API spend.\" | Context meter and external-billing icons rise | | 1:45-2:00 | \"So define MCP as the standard plumbing for AI tools and context-but use least privilege, approval, and narrow tool design.\" | Final stamp: **Open standard, strict permissions** | Reference basis for narration: official MCP intro/spec docs, GitHub Copilot MCP docs and policy docs, Claude Code MCP docs, and VS Code MCP docs. citeturn38view3turn25search3turn25search9turn10view4turn8search17turn37search14turn7search10turn7search21turn25search11 #### Shot and animation plan - Reuse",
+        "Show one messy point-to-point integration map transforming into one protocol bus",
+        "circuit-signal-traces",
+        "critical-bowtie-barrier"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "dependency-map-control-risk-zone",
+      "role": "control and risk plane",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 580
+      },
+      "grayLevel": 4,
+      "sourceAnchors": [
+        "as the core visual identity for all integrations. - Show one messy point-to-point integration map transforming into one protocol bus. - Animate tools, resources, and prompts as different bus passengers. - Add a registry gate and approval shield before write-capable servers. - Reuse",
+        "Animate tools",
+        "flow-tokens"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "dependency-map-evidence-feedback-zone",
+      "role": "evidence and feedback plane",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 580
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "Tools / Resources / Prompts",
+        "Add a registry gate and approval shield before write-capable servers",
+        "risk-bowtie"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "masonryLayout": {
+    "required": true,
+    "moduleCount": 12,
+    "transitionType": "masonry-construction"
+  },
+  "masonryModules": [
+    {
+      "id": "masonry-module-01",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "zoneIndex": 0,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-02",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 180,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-03",
+      "bounds": {
+        "x": 228,
+        "y": 388,
+        "width": 220,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-04",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 220,
+        "height": 180
+      },
+      "zoneIndex": 2,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-05",
+      "bounds": {
+        "x": 668,
+        "y": 88,
+        "width": 180,
+        "height": 300
+      },
+      "zoneIndex": 2,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-06",
+      "bounds": {
+        "x": 448,
+        "y": 268,
+        "width": 400,
+        "height": 400
+      },
+      "zoneIndex": 2,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-07",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 300
+      },
+      "zoneIndex": 3,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-08",
+      "bounds": {
+        "x": 848,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-09",
+      "bounds": {
+        "x": 1020,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-10",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 244
+      },
+      "zoneIndex": 4,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-11",
+      "bounds": {
+        "x": 1192,
+        "y": 332,
+        "width": 172,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-12",
+      "bounds": {
+        "x": 1364,
+        "y": 332,
+        "width": 188,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 3
+    }
+  ],
+  "durationSeconds": 6.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 6
+  },
+  "outputId": "what-is-an-mcp",
+  "outputVideo": "projects/metro-design-repair-contracts-full/videos/what-is-an-mcp/artifacts/video-renders/draft/videos/what-is-an-mcp.mp4",
+  "sourceFacts": [
+    "Model Context Protocol, or MCP, is an open standard for connecting AI clients to external systems such as tools, resources, and prompts.",
+    "Official MCP documentation describes it as a standardized way for AI applications like Claude or ChatGPT to connect to data sources, tools, and workflows, and current ecosystem documentation shows support across clients including Claude, ChatGPT, VS Code, and GitHub Copilot.",
+    "The practical risks are authentication, authorization, registry hygiene, and context sprawl: an MCP server that exposes too many tools or broad permissions can increase both attack surface and cost."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [
+    "json { \"server\": \"issue-tracker\", \"auth\": \"oauth\", \"tools\": [\"list_issues\", \"get_issue\", \"comment_issue\"], \"policy\": { \"allow_write\": false, \"require_approval_for\": [\"comment_issue\"] } }",
+    "The teaching point is that MCP integration is not just connectivity. It is capability exposure plus policy. Good MCP setup means least privilege, approved registries, and deliberate tool surface design. citeturn10view4turn7search10turn7search21turn25search11 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"MCP stands for Model Context Protocol. It is an open standard for connecting AI applications to external systems.\" |",
+    "with multiple client and server ports | | 0:15-0:30 | \"Instead of building one custom integration per assistant, MCP gives clients and servers a shared protocol.\" | One-to-many connector diagram replaces spaghetti lines | | 0:30-0:45 | \"An MCP server can expose tools, resources, and prompts. That means an assistant can read data, execute actions, or import structured workflows.\" | Three lanes labeled **Tools / Resources / Prompts** | | 0:45-1:00 | \"Today MCP is supported across major clients, including Claude, ChatGPT-related ecosystems, VS Code, and GitHub Copilot.\" | Client logos or neutral platform cards connect to the bus | | 1:00-1:15 | \"But power creates risk. Authentication and authorization matter because MCP can expose real systems, not just toy tools.\" | Lock icons appear on the bus | | 1:15-1:30 | \"That is why registries, allowlists, and approval policies matter. GitHub already lets organizations control registry URLs and server access.\" | Registry gate animation | | 1:30-1:45 | \"MCP also affects cost. Every discovered tool, every tool description, and every tool call can add context or external API spend.\" | Context meter and external-billing icons rise | | 1:45-2:00 | \"So define MCP as the standard plumbing for AI tools and context-but use least privilege, approval, and narrow tool design.\" | Final stamp: **Open standard, strict permissions** | Reference basis for narration: official MCP intro/spec docs, GitHub Copilot MCP docs and policy docs, Claude Code MCP docs, and VS Code MCP docs. citeturn38view3turn25search3turn25search9turn10view4turn8search17turn37search14turn7search10turn7search21turn25search11 #### Shot and animation plan - Reuse",
+    "as the core visual identity for all integrations. - Show one messy point-to-point integration map transforming into one protocol bus. - Animate tools, resources, and prompts as different bus passengers. - Add a registry gate and approval shield before write-capable servers. - Reuse",
+    "Tools / Resources / Prompts",
+    "Open standard, strict permissions",
+    "mcp_bus as the core visual identity for all integrations",
+    "Show one messy point-to-point integration map transforming into one protocol bus"
+  ],
+  "clusterLabels": [
+    "sources",
+    "integration layer",
+    "release boundary"
+  ],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "json { \"server\": \"issue-tracker\", \"auth\": \"oauth\", \"tools\": [\"list_issues\", \"get_issue\", \"comment_issue\"], \"policy\": { \"allow_write\": false, \"require_approval_for\": [\"comment_issue\"] } }",
+    "The teaching point is that MCP integration is not just connectivity. It is capability exposure plus policy. Good MCP setup means least privilege, approved registries, and deliberate tool surface design. citeturn10view4turn7search10turn7search21turn25search11 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"MCP stands for Model Context Protocol. It is an open standard for connecting AI applications to external systems.\" |",
+    "with multiple client and server ports | | 0:15-0:30 | \"Instead of building one custom integration per assistant, MCP gives clients and servers a shared protocol.\" | One-to-many connector diagram replaces spaghetti lines | | 0:30-0:45 | \"An MCP server can expose tools, resources, and prompts. That means an assistant can read data, execute actions, or import structured workflows.\" | Three lanes labeled **Tools / Resources / Prompts** | | 0:45-1:00 | \"Today MCP is supported across major clients, including Claude, ChatGPT-related ecosystems, VS Code, and GitHub Copilot.\" | Client logos or neutral platform cards connect to the bus | | 1:00-1:15 | \"But power creates risk. Authentication and authorization matter because MCP can expose real systems, not just toy tools.\" | Lock icons appear on the bus | | 1:15-1:30 | \"That is why registries, allowlists, and approval policies matter. GitHub already lets organizations control registry URLs and server access.\" | Registry gate animation | | 1:30-1:45 | \"MCP also affects cost. Every discovered tool, every tool description, and every tool call can add context or external API spend.\" | Context meter and external-billing icons rise | | 1:45-2:00 | \"So define MCP as the standard plumbing for AI tools and context-but use least privilege, approval, and narrow tool design.\" | Final stamp: **Open standard, strict permissions** | Reference basis for narration: official MCP intro/spec docs, GitHub Copilot MCP docs and policy docs, Claude Code MCP docs, and VS Code MCP docs. citeturn38view3turn25search3turn25search9turn10view4turn8search17turn37search14turn7search10turn7search21turn25search11 #### Shot and animation plan - Reuse",
+    "as the core visual identity for all integrations. - Show one messy point-to-point integration map transforming into one protocol bus. - Animate tools, resources, and prompts as different bus passengers. - Add a registry gate and approval shield before write-capable servers. - Reuse",
+    "Tools / Resources / Prompts",
+    "Open standard, strict permissions",
+    "mcp_bus as the core visual identity for all integrations",
+    "Show one messy point-to-point integration map transforming into one protocol bus",
+    "Animate tools",
+    "Add a registry gate and approval shield before write-capable servers",
+    "credit_meter to show context and external API costs rising with tool sprawl",
+    "End with a least-privilege checklist over the MCP bus",
+    "circuit-signal-traces",
+    "flow-tokens",
+    "risk-bowtie",
+    "masonry-wall",
+    "dependency-map",
+    "critical-bowtie-barrier"
+  ],
+  "semanticBindings": [
+    {
+      "id": "binding-01",
+      "sourceAnchor": "json { \"server\": \"issue-tracker\", \"auth\": \"oauth\", \"tools\": [\"list_issues\", \"get_issue\", \"comment_issue\"], \"policy\": { \"allow_write\": false, \"require_approval_for\": [\"comment_issue\"] } }",
+      "zoneId": "dependency-map-orientation-zone",
+      "zoneRole": "opening anchor plane",
+      "mechanismId": "mechanism-01",
+      "mechanism": "source dependencies converge into an integration layer before release is allowed",
+      "stateKey": "edgeCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-02",
+      "sourceAnchor": "The teaching point is that MCP integration is not just connectivity. It is capability exposure plus policy. Good MCP setup means least privilege, approved registries, and deliberate tool surface design. citeturn10view4turn7search10turn7search21turn25search11 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"MCP stands for Model Context Protocol. It is an open standard for connecting AI applications to external systems.\" |",
+      "zoneId": "dependency-map-primary-system-zone",
+      "zoneRole": "main mechanism plane",
+      "mechanismId": "mechanism-02",
+      "mechanism": "risk edge and bottleneck callouts appear as separate mechanisms instead of generic warnings",
+      "stateKey": "riskVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-03",
+      "sourceAnchor": "with multiple client and server ports | | 0:15-0:30 | \"Instead of building one custom integration per assistant, MCP gives clients and servers a shared protocol.\" | One-to-many connector diagram replaces spaghetti lines | | 0:30-0:45 | \"An MCP server can expose tools, resources, and prompts. That means an assistant can read data, execute actions, or import structured workflows.\" | Three lanes labeled **Tools / Resources / Prompts** | | 0:45-1:00 | \"Today MCP is supported across major clients, including Claude, ChatGPT-related ecosystems, VS Code, and GitHub Copilot.\" | Client logos or neutral platform cards connect to the bus | | 1:00-1:15 | \"But power creates risk. Authentication and authorization matter because MCP can expose real systems, not just toy tools.\" | Lock icons appear on the bus | | 1:15-1:30 | \"That is why registries, allowlists, and approval policies matter. GitHub already lets organizations control registry URLs and server access.\" | Registry gate animation | | 1:30-1:45 | \"MCP also affects cost. Every discovered tool, every tool description, and every tool call can add context or external API spend.\" | Context meter and external-billing icons rise | | 1:45-2:00 | \"So define MCP as the standard plumbing for AI tools and context-but use least privilege, approval, and narrow tool design.\" | Final stamp: **Open standard, strict permissions** | Reference basis for narration: official MCP intro/spec docs, GitHub Copilot MCP docs and policy docs, Claude Code MCP docs, and VS Code MCP docs. citeturn38view3turn25search3turn25search9turn10view4turn8search17turn37search14turn7search10turn7search21turn25search11 #### Shot and animation plan - Reuse",
+      "zoneId": "dependency-map-secondary-system-zone",
+      "zoneRole": "support mechanism plane",
+      "mechanismId": "mechanism-03",
+      "mechanism": "cutover gate waits for upstream proof before the release path is highlighted",
+      "stateKey": "bottleneckVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-04",
+      "sourceAnchor": "as the core visual identity for all integrations. - Show one messy point-to-point integration map transforming into one protocol bus. - Animate tools, resources, and prompts as different bus passengers. - Add a registry gate and approval shield before write-capable servers. - Reuse",
+      "zoneId": "dependency-map-control-risk-zone",
+      "zoneRole": "control and risk plane",
+      "mechanismId": "mechanism-04",
+      "mechanism": "fallback path appears late as an explicit safety route rather than a text-only caveat",
+      "stateKey": "cutoverVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-05",
+      "sourceAnchor": "Tools / Resources / Prompts",
+      "zoneId": "dependency-map-evidence-feedback-zone",
+      "zoneRole": "evidence and feedback plane",
+      "mechanismId": "mechanism-01",
+      "mechanism": "source dependencies converge into an integration layer before release is allowed",
+      "stateKey": "fallbackVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-06",
+      "sourceAnchor": "Open standard, strict permissions",
+      "zoneId": "dependency-map-orientation-zone",
+      "zoneRole": "opening anchor plane",
+      "mechanismId": "mechanism-02",
+      "mechanism": "risk edge and bottleneck callouts appear as separate mechanisms instead of generic warnings",
+      "stateKey": "edgeCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-07",
+      "sourceAnchor": "mcp_bus as the core visual identity for all integrations",
+      "zoneId": "dependency-map-primary-system-zone",
+      "zoneRole": "main mechanism plane",
+      "mechanismId": "mechanism-03",
+      "mechanism": "cutover gate waits for upstream proof before the release path is highlighted",
+      "stateKey": "riskVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-08",
+      "sourceAnchor": "Show one messy point-to-point integration map transforming into one protocol bus",
+      "zoneId": "dependency-map-secondary-system-zone",
+      "zoneRole": "support mechanism plane",
+      "mechanismId": "mechanism-04",
+      "mechanism": "fallback path appears late as an explicit safety route rather than a text-only caveat",
+      "stateKey": "bottleneckVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-09",
+      "sourceAnchor": "Animate tools",
+      "zoneId": "dependency-map-control-risk-zone",
+      "zoneRole": "control and risk plane",
+      "mechanismId": "mechanism-01",
+      "mechanism": "source dependencies converge into an integration layer before release is allowed",
+      "stateKey": "cutoverVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-10",
+      "sourceAnchor": "Add a registry gate and approval shield before write-capable servers",
+      "zoneId": "dependency-map-evidence-feedback-zone",
+      "zoneRole": "evidence and feedback plane",
+      "mechanismId": "mechanism-02",
+      "mechanism": "risk edge and bottleneck callouts appear as separate mechanisms instead of generic warnings",
+      "stateKey": "fallbackVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-11",
+      "sourceAnchor": "credit_meter to show context and external API costs rising with tool sprawl",
+      "zoneId": "dependency-map-orientation-zone",
+      "zoneRole": "opening anchor plane",
+      "mechanismId": "mechanism-03",
+      "mechanism": "cutover gate waits for upstream proof before the release path is highlighted",
+      "stateKey": "edgeCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-12",
+      "sourceAnchor": "End with a least-privilege checklist over the MCP bus",
+      "zoneId": "dependency-map-primary-system-zone",
+      "zoneRole": "main mechanism plane",
+      "mechanismId": "mechanism-04",
+      "mechanism": "fallback path appears late as an explicit safety route rather than a text-only caveat",
+      "stateKey": "riskVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-13",
+      "sourceAnchor": "circuit-signal-traces",
+      "zoneId": "dependency-map-secondary-system-zone",
+      "zoneRole": "support mechanism plane",
+      "mechanismId": "mechanism-01",
+      "mechanism": "source dependencies converge into an integration layer before release is allowed",
+      "stateKey": "bottleneckVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-14",
+      "sourceAnchor": "flow-tokens",
+      "zoneId": "dependency-map-control-risk-zone",
+      "zoneRole": "control and risk plane",
+      "mechanismId": "mechanism-02",
+      "mechanism": "risk edge and bottleneck callouts appear as separate mechanisms instead of generic warnings",
+      "stateKey": "cutoverVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-15",
+      "sourceAnchor": "risk-bowtie",
+      "zoneId": "dependency-map-evidence-feedback-zone",
+      "zoneRole": "evidence and feedback plane",
+      "mechanismId": "mechanism-03",
+      "mechanism": "cutover gate waits for upstream proof before the release path is highlighted",
+      "stateKey": "fallbackVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-16",
+      "sourceAnchor": "masonry-wall",
+      "zoneId": "dependency-map-orientation-zone",
+      "zoneRole": "opening anchor plane",
+      "mechanismId": "mechanism-04",
+      "mechanism": "fallback path appears late as an explicit safety route rather than a text-only caveat",
+      "stateKey": "edgeCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-17",
+      "sourceAnchor": "dependency-map",
+      "zoneId": "dependency-map-primary-system-zone",
+      "zoneRole": "main mechanism plane",
+      "mechanismId": "mechanism-01",
+      "mechanism": "source dependencies converge into an integration layer before release is allowed",
+      "stateKey": "riskVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-18",
+      "sourceAnchor": "critical-bowtie-barrier",
+      "zoneId": "dependency-map-secondary-system-zone",
+      "zoneRole": "support mechanism plane",
+      "mechanismId": "mechanism-02",
+      "mechanism": "risk edge and bottleneck callouts appear as separate mechanisms instead of generic warnings",
+      "stateKey": "bottleneckVisible",
+      "visualRole": "data-bearing-zone"
+    }
+  ],
+  "visualMechanismAnchors": [
+    {
+      "id": "mechanism-01",
+      "mechanism": "source dependencies converge into an integration layer before release is allowed",
+      "sourceAnchors": [
+        "json { \"server\": \"issue-tracker\", \"auth\": \"oauth\", \"tools\": [\"list_issues\", \"get_issue\", \"comment_issue\"], \"policy\": { \"allow_write\": false, \"require_approval_for\": [\"comment_issue\"] } }",
+        "Tools / Resources / Prompts",
+        "Animate tools",
+        "circuit-signal-traces",
+        "dependency-map"
+      ]
+    },
+    {
+      "id": "mechanism-02",
+      "mechanism": "risk edge and bottleneck callouts appear as separate mechanisms instead of generic warnings",
+      "sourceAnchors": [
+        "The teaching point is that MCP integration is not just connectivity. It is capability exposure plus policy. Good MCP setup means least privilege, approved registries, and deliberate tool surface design. citeturn10view4turn7search10turn7search21turn25search11 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"MCP stands for Model Context Protocol. It is an open standard for connecting AI applications to external systems.\" |",
+        "Open standard, strict permissions",
+        "Add a registry gate and approval shield before write-capable servers",
+        "flow-tokens",
+        "critical-bowtie-barrier"
+      ]
+    },
+    {
+      "id": "mechanism-03",
+      "mechanism": "cutover gate waits for upstream proof before the release path is highlighted",
+      "sourceAnchors": [
+        "with multiple client and server ports | | 0:15-0:30 | \"Instead of building one custom integration per assistant, MCP gives clients and servers a shared protocol.\" | One-to-many connector diagram replaces spaghetti lines | | 0:30-0:45 | \"An MCP server can expose tools, resources, and prompts. That means an assistant can read data, execute actions, or import structured workflows.\" | Three lanes labeled **Tools / Resources / Prompts** | | 0:45-1:00 | \"Today MCP is supported across major clients, including Claude, ChatGPT-related ecosystems, VS Code, and GitHub Copilot.\" | Client logos or neutral platform cards connect to the bus | | 1:00-1:15 | \"But power creates risk. Authentication and authorization matter because MCP can expose real systems, not just toy tools.\" | Lock icons appear on the bus | | 1:15-1:30 | \"That is why registries, allowlists, and approval policies matter. GitHub already lets organizations control registry URLs and server access.\" | Registry gate animation | | 1:30-1:45 | \"MCP also affects cost. Every discovered tool, every tool description, and every tool call can add context or external API spend.\" | Context meter and external-billing icons rise | | 1:45-2:00 | \"So define MCP as the standard plumbing for AI tools and context-but use least privilege, approval, and narrow tool design.\" | Final stamp: **Open standard, strict permissions** | Reference basis for narration: official MCP intro/spec docs, GitHub Copilot MCP docs and policy docs, Claude Code MCP docs, and VS Code MCP docs. citeturn38view3turn25search3turn25search9turn10view4turn8search17turn37search14turn7search10turn7search21turn25search11 #### Shot and animation plan - Reuse",
+        "mcp_bus as the core visual identity for all integrations",
+        "credit_meter to show context and external API costs rising with tool sprawl",
+        "risk-bowtie"
+      ]
+    },
+    {
+      "id": "mechanism-04",
+      "mechanism": "fallback path appears late as an explicit safety route rather than a text-only caveat",
+      "sourceAnchors": [
+        "as the core visual identity for all integrations. - Show one messy point-to-point integration map transforming into one protocol bus. - Animate tools, resources, and prompts as different bus passengers. - Add a registry gate and approval shield before write-capable servers. - Reuse",
+        "Show one messy point-to-point integration map transforming into one protocol bus",
+        "End with a least-privilege checklist over the MCP bus",
+        "masonry-wall"
+      ]
+    }
+  ],
+  "sourceAnchorCoverage": {
+    "expectedCount": 18,
+    "zoneCoveredCount": 18,
+    "mechanismCoveredCount": 18,
+    "coveredCount": 18,
+    "uncoveredAnchors": [],
+    "zoneUncoveredAnchors": [],
+    "mechanismUncoveredAnchors": []
+  },
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "source dependencies converge into an integration layer before release is allowed",
+    "risk edge and bottleneck callouts appear as separate mechanisms instead of generic warnings",
+    "cutover gate waits for upstream proof before the release path is highlighted",
+    "fallback path appears late as an explicit safety route rather than a text-only caveat"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

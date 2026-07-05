@@ -1,0 +1,174 @@
+{
+  "passed": false,
+  "toolCounts": {
+    "read": 7,
+    "bash": 4
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2369
+    },
+    {
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-15-json/skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 251
+    },
+    {
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-15-json/workspace/skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 23738
+    },
+    {
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/prompt-contract-build.json",
+      "calls": 1,
+      "resultBytes": 15019
+    },
+    {
+      "path": "projects/zero-padding-gray-video/source/production-notes.md",
+      "calls": 1,
+      "resultBytes": 1887
+    },
+    {
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/self-review.md",
+      "calls": 1,
+      "resultBytes": 2066
+    },
+    {
+      "path": "projects/zero-padding-gray-video/source/source-package.json",
+      "calls": 1,
+      "resultBytes": 3505
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2369
+    },
+    {
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-15-json/skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 251
+    },
+    {
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-15-json/workspace/skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 23738
+    },
+    {
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/prompt-contract-build.json",
+      "calls": 1,
+      "resultBytes": 15019
+    },
+    {
+      "path": "projects/zero-padding-gray-video/source/production-notes.md",
+      "calls": 1,
+      "resultBytes": 1887
+    },
+    {
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/self-review.md",
+      "calls": 1,
+      "resultBytes": 2066
+    },
+    {
+      "path": "projects/zero-padding-gray-video/source/source-package.json",
+      "calls": 1,
+      "resultBytes": 3505
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "isError": false,
+      "resultBytes": 2369
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-15-json/skills/html-d3-anime-video-workflow/SKILL.md",
+      "isError": true,
+      "resultBytes": 251
+    },
+    {
+      "line": 40,
+      "tool": "read",
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-15-json/workspace/skills/html-d3-anime-video-workflow/SKILL.md",
+      "isError": false,
+      "resultBytes": 23738
+    },
+    {
+      "line": 56,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 19740
+    },
+    {
+      "line": 72,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 15023
+    },
+    {
+      "line": 88,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 744
+    },
+    {
+      "line": 113,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/prompt-contract-build.json",
+      "isError": false,
+      "resultBytes": 15019
+    },
+    {
+      "line": 114,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/source/production-notes.md",
+      "isError": false,
+      "resultBytes": 1887
+    },
+    {
+      "line": 115,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/self-review.md",
+      "isError": false,
+      "resultBytes": 2066
+    },
+    {
+      "line": 116,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/source/source-package.json",
+      "isError": false,
+      "resultBytes": 3505
+    },
+    {
+      "line": 138,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 794
+    }
+  ],
+  "findings": [
+    {
+      "code": "tool-error",
+      "line": 27,
+      "tool": "read",
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-15-json/skills/html-d3-anime-video-workflow/SKILL.md"
+    },
+    {
+      "code": "tool-error",
+      "line": 56,
+      "tool": "bash",
+      "path": null
+    }
+  ]
+}

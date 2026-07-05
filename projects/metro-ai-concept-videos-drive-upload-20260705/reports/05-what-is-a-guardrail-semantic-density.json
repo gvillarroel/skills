@@ -1,0 +1,229 @@
+{
+  "passed": true,
+  "inputs": {
+    "wrapperReport": "projects\\metro-ai-concept-videos-regenerated-20260705\\what-is-a-guardrail\\artifacts\\reviews\\prompt-contract-build-delivery.json",
+    "stateManifest": "projects\\metro-ai-concept-videos-regenerated-20260705\\what-is-a-guardrail\\artifacts\\reviews\\render-state-check.json",
+    "contactSheetManifest": "projects\\metro-ai-concept-videos-regenerated-20260705\\what-is-a-guardrail\\artifacts\\video-renders\\draft\\review\\what-is-a-guardrail-contact-sheet.json",
+    "metroAuditSuite": "projects\\metro-ai-concept-videos-regenerated-20260705\\what-is-a-guardrail\\artifacts\\reviews\\metro-audit-suite-delivery.json",
+    "metroPatternMix": "wrapper.metroPatternMix",
+    "sourcePackage": "projects\\metro-ai-concept-videos-regenerated-20260705\\what-is-a-guardrail\\source\\source-package.json",
+    "metroRenderedFrameAudit": "projects\\metro-ai-concept-videos-regenerated-20260705\\what-is-a-guardrail\\artifacts\\reviews\\metro-rendered-frame-audit.json",
+    "metroMuteTestAudit": "projects\\metro-ai-concept-videos-regenerated-20260705\\what-is-a-guardrail\\artifacts\\reviews\\metro-mute-test-audit-direct.json"
+  },
+  "thresholds": {
+    "minMechanismDistinct": 5,
+    "minMechanismMax": 5,
+    "minDynamicStateKeys": 4,
+    "requireCameraMotion": true,
+    "minCameraDistinct": 3,
+    "minContactSamples": 6,
+    "minChangingPairs": 4,
+    "maxLowChangePairs": 1,
+    "minTileColorBuckets": 24,
+    "minMedianNonbackgroundRatio": 0.08,
+    "minSourceVisualMechanisms": 3,
+    "minSourceAnchors": 4,
+    "minSourceVisualZones": 5,
+    "minSourceGrayLevels": 4,
+    "minStateVisibleZones": 5,
+    "minActiveZoneDistinct": 3,
+    "minRenderedRectEdges": 96,
+    "minRenderedSharedEdgeRatio": 0.5,
+    "maxRenderedOffgridRatio": 0.02,
+    "minRenderedMedianGrayLevels": 4,
+    "minRenderedFinalGrayLevels": 4,
+    "minRenderedGraySamplePassRatio": 0.5,
+    "maxRenderedInternalPaddingPx": 0.5,
+    "minRenderedSampleRects": 12,
+    "minRenderedSampleLines": 4,
+    "minRenderedZoneElements": 5,
+    "maxRenderedMedianTextAreaRatio": 0.14,
+    "maxRenderedLargestTextBoxAreaRatio": 0.08,
+    "minRenderedMedianMarkToTextRatio": 1.5,
+    "maxRenderedTitleBandTextCount": 0,
+    "maxRenderedEllipsizedTextCount": 0,
+    "minMuteHiddenChangingPairs": 3,
+    "minMuteMedianHiddenChangeRatio": 0.0012,
+    "minMuteHiddenToFullChangeRatio": 0.35,
+    "minMuteHiddenNonbackgroundRatio": 0.08,
+    "minMuteHiddenMarkCount": 24,
+    "minMuteHiddenZoneElements": 5,
+    "minMuteHiddenGrayLevels": 4,
+    "requireMetroPatternMix": true,
+    "minMixPatterns": 6,
+    "minMixUsedPatterns": 3,
+    "minMixFunctionalZones": 5,
+    "minMixMotionSystems": 4,
+    "minMixCameraEvents": 3,
+    "minMixTransitions": 3,
+    "minMixTransitionTypes": 2,
+    "requireModularTransition": true,
+    "minContinuitySamples": 6,
+    "minContinuityZoneChanges": 3,
+    "minContinuityCameraCoupledChanges": 3,
+    "minContinuityCameraDeltaPx": 2.0,
+    "minContinuityCameraScaleDelta": 0.01,
+    "requireMixAntiPatternRisk": [
+      "boxes-plus-labels",
+      "title-led-slide",
+      "padded-rounded-cards",
+      "weak-gray-hierarchy",
+      "generic-transition"
+    ]
+  },
+  "evidence": {
+    "visibleMechanismCount": {
+      "distinctCount": 6,
+      "max": 7.0
+    },
+    "renderState": {
+      "visibleZoneCountMax": 5.0,
+      "activeZoneDistinct": 5
+    },
+    "dynamicStateKeys": [
+      "actionVisible",
+      "activeThreatCount",
+      "activeZoneId",
+      "activeZoneRole",
+      "consequenceVisible",
+      "degradedVisible",
+      "mitigativeVisible",
+      "preventiveVisible",
+      "topEventVisible",
+      "visibleMechanismCount"
+    ],
+    "camera": {
+      "cameraMovingDistinct": 2,
+      "cameraMovingMax": 1.0,
+      "cameraXDistinct": 4,
+      "cameraYDistinct": 5,
+      "cameraScaleDistinct": 6
+    },
+    "contactSheet": {
+      "samples": 6,
+      "changingPairs": 5,
+      "lowChangePairs": 0,
+      "minTileColorBuckets": 51,
+      "medianTileNonbackgroundRatio": 0.7160944835680751,
+      "openingTileWeak": false
+    },
+    "sourcePackage": {
+      "visualPattern": "risk-bowtie",
+      "visualMechanismCount": 4,
+      "strategyAnchorCount": 10,
+      "visualZoneCount": 5,
+      "visualZoneIds": [
+        "risk-bowtie-orientation-zone",
+        "risk-bowtie-primary-system-zone",
+        "risk-bowtie-secondary-system-zone",
+        "risk-bowtie-control-risk-zone",
+        "risk-bowtie-evidence-feedback-zone"
+      ],
+      "zoneBoxModelViolations": [],
+      "visualPolicy": {
+        "edgeStyle": "square",
+        "boxInteriorPolicy": "zero",
+        "internalPaddingPx": 0,
+        "grayLevelCount": 6
+      }
+    },
+    "renderedFrameAudit": {
+      "rectEdgeCount": 796.0,
+      "minSharedEdgeRatio": 0.8823529411764706,
+      "offgridRatio": 0.0,
+      "medianGrayLevelCount": 5.0,
+      "finalGrayLevelCount": 5.0,
+      "graySamplePassRatio": 1.0,
+      "maxRenderedInternalPaddingPx": 0.0,
+      "medianTextAreaRatio": 0.0523490375753915,
+      "maxLargestTextBoxAreaRatio": 0.00597736398379008,
+      "medianMarkToTextRatio": 3.162337662337662,
+      "titleBandTextCount": 0.0,
+      "ellipsizedTextCount": 0.0,
+      "maxZoneElementCount": 10.0,
+      "maxZoneIdCount": 5.0,
+      "maxActiveZoneCount": 1.0,
+      "sampleCount": 6,
+      "minSampleRectCount": 32,
+      "minSampleLineLikeCount": 30,
+      "minSampleGrayLevelCount": 5
+    },
+    "muteTestAudit": {
+      "hiddenChangingPairs": 3.0,
+      "medianHiddenChangeRatio": 0.35765082465277775,
+      "medianHiddenToFullChangeRatio": 0.9251023745666251,
+      "medianHiddenNonbackgroundRatio": 0.3482557508680556,
+      "minHiddenColorBuckets": 6.0,
+      "medianHiddenMarkCount": 74.0,
+      "maxHiddenZoneElementCount": 10.0,
+      "medianHiddenGrayLevelCount": 5.0,
+      "sampleCount": 4
+    },
+    "continuityPath": {
+      "sampleCount": 6,
+      "activeZoneSequence": [
+        "risk-bowtie-orientation-zone",
+        "risk-bowtie-orientation-zone",
+        "risk-bowtie-primary-system-zone",
+        "risk-bowtie-secondary-system-zone",
+        "risk-bowtie-control-risk-zone",
+        "risk-bowtie-evidence-feedback-zone"
+      ],
+      "beatSequence": [
+        0,
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "visibleMechanismSequence": [
+        0.0,
+        1.0,
+        3.0,
+        4.0,
+        6.0,
+        7.0
+      ],
+      "adjacentZoneChanges": 4,
+      "adjacentBeatChanges": 4,
+      "cameraAdjacentChanges": 5,
+      "zoneCameraCoupledChanges": 4,
+      "transitionContractCount": 3,
+      "transitionCoverageRatio": 1.3333333333333333,
+      "cameraCouplingRatio": 1.0
+    },
+    "metroPatternMix": {
+      "passed": true,
+      "helperPattern": "risk-bowtie",
+      "renderedPattern": "risk-bowtie",
+      "primaryPattern": "flow-tokens",
+      "secondaryPattern": "risk-bowtie",
+      "patternIdsNamed": 6,
+      "patternsUsed": 3,
+      "functionalZones": 5,
+      "semanticMotionSystems": 4,
+      "cameraEvents": 4,
+      "transitionContracts": 3,
+      "transitionTypes": [
+        "camera-pan",
+        "tile-morph",
+        "masked-reframe"
+      ],
+      "distinctTransitionTypeCount": 3,
+      "modularTransitionTypes": [
+        "masked-reframe",
+        "tile-morph"
+      ],
+      "antiPatternRisks": [
+        "boxes-plus-labels",
+        "generic-transition",
+        "padded-rounded-cards",
+        "title-led-slide",
+        "weak-gray-hierarchy"
+      ],
+      "zoneBoxModelViolations": []
+    }
+  },
+  "findings": []
+}

@@ -11,7 +11,8 @@ Write a short design note before implementation:
 - **Candidate metaphors:** Generate two or three plausible visual metaphors. Reject at least one with a concrete reason.
 - **Chosen metaphor:** Explain why it reveals the mechanic better than the rejected alternatives.
 - **Visual vocabulary:** Define repeated roles for shapes, colors, motion, scale, layout regions, and state changes.
-- **Reuse decision:** Name any reused D3/gallery/component pattern and state which semantic role it preserves. Do not reuse a prior pattern only because it looked good.
+- **Composition contract:** Define the grid, shared baselines, edge/corner policy, and focal armature before drawing details.
+- **Reuse decision:** Name any reused D3/gallery/component pattern and state which semantic role and source anchors it preserves. Do not reuse a prior pattern only because it looked good.
 - **Narration split:** List which facts narration will carry so the frame can stay mostly diagrammatic.
 
 Keep the note concise. Its purpose is to prevent coding before the explanatory model is clear.
@@ -30,7 +31,7 @@ Pick metaphors that expose causality, not merely activity.
 - Use a **loop** when repeated observation, retry, or context growth matters.
 - Use **layers** when enclosure, runtime boundaries, or responsibility separation matters.
 
-This is not a D3 taxonomy. After selecting the metaphor, use the D3 skill to choose the exact visualization primitive or gallery example, then use `scene-pattern-recipes.md` when an approved video scene pattern should be reused or extracted into a shared helper.
+This is not a D3 taxonomy. After selecting the metaphor, read `visual-density-pattern-bank.md` when the video needs richer, more dynamic, lower-text structure; use the D3 skill to choose the exact visualization primitive or gallery example when available; then use `scene-pattern-recipes.md` when an approved video scene pattern should be reused or extracted into a shared helper.
 
 ## Visual Vocabulary Rules
 
@@ -40,6 +41,11 @@ This is not a D3 taxonomy. After selecting the metaphor, use the D3 skill to cho
 - Preserve object identity through transformations. A token, packet, trace, or request should keep enough color/order/shape continuity for the viewer to track it.
 - Prefer visible cause/effect verbs: enter, split, rank, sample, append, block, retry, cache, evict, meter, branch, merge.
 - Build a local grammar before building a scene: nouns are shapes, verbs are motions, adjectives are state changes such as opacity, scale, fill, stroke, or position.
+- For Metro Minimal Tonal Motion, start from a modular megacanvas: define multiple functional zones, the camera path between them, and the block or tile transition that preserves continuity. Do not reserve visible title, subtitle, caption, checked-date, or draft bands; keep those outside the frame in source packages, filenames, manifests, or post-production copy.
+- For Metro, technical, editorial-grid, terminal, blueprint, or hard-edge styles, make rectangles square/0-radius by default, snap major bounds to a grid, and avoid pills, blobs, soft panels, or rounded portals unless they are source-native.
+- For no-padding box critiques, treat the rectangle edge as the content boundary. Do not create inset bars, padded labels, inner chips, or nested panels inside a box. Put labels on the boundary, on an adjacent lane, or in a separate flush rectangle. Use gutters outside boxes for separation.
+- For level or hierarchy critiques, assign each semantic level a distinct grayscale value and keep those levels stable across scenes. Use hue for state or role, not as the only hierarchy signal.
+- For Metro design feedback, load `metro-minimal-tonal-motion.md` and treat its rejection gate as blocking. A video that passes render-state, contact-sheet, and Metro audit JSON can still fail if it reads as slides with labels instead of a navigable modular object.
 
 ## Reuse Gate
 
@@ -51,6 +57,10 @@ Before reusing an earlier scene or generic renderer, answer:
 - Is any repeated background or validation motion keeping the same role, or only keeping pixels changing?
 - Does the scene add a new visual verb needed by this concept?
 - Is there a better metaphor even if it requires new geometry?
+- Does the frame have a named grid, baseline, or armature that major objects attach to?
+- Does the edge/corner policy match the requested aesthetic and remain stable through motion?
+- Are boxes flush with zero internal padding, and are hierarchy levels distinguishable by grayscale values rather than extra padded interiors?
+- Did you select a visual-density pattern family for complex videos, and does that pattern add encoded marks or state rather than more text?
 
 If the answer is weak, design a new metaphor first and only reuse low-level helpers such as palette, typography, timing, matrix layout, token geometry, or capture scripts.
 

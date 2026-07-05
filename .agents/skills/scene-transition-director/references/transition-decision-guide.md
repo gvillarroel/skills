@@ -104,6 +104,19 @@ For each recurring element, record:
 
 If the element does not change state or guide attention, remove it.
 
+## Alignment And Square-Edge Continuity
+
+For strict alignment, Metro, terminal, blueprint, technical, editorial-grid, or hard-edge styles:
+
+- Keep the handoff path grid-locked, orthogonal, or anchored to a named axis.
+- Use square apertures, rectangular masks, shutters, panels, or hard-edge crops.
+- Preserve stroke widths, corner radius, and panel geometry across the midpoint.
+- Preserve zero internal box padding across the midpoint; do not add padded chips, inset bars, or nested panels during the transition.
+- Preserve hierarchy with distinct grayscale levels in outgoing, bridge, and incoming states. Use hue only for semantic state changes, not as the only level signal.
+- Keep the outgoing focal point and incoming landing point on shared baselines or grid intersections.
+- Avoid soft-corner portals, organic blobs, pills, soft cards, and curved masks unless the source asset itself has that geometry.
+- If a morph is needed, morph rectangular bounds into rectangular bounds and make the state change visible through scale, position, fill, or internal mechanism rather than corner softening.
+
 ## Cut Quality Checks
 
 Flag a transition when:
@@ -116,6 +129,13 @@ Flag a transition when:
 - all transitions use the same family
 - the transition completes in the first few frames and then the scene holds static
 - the implementation shows only a generic persistent-object pulse when the plan promised a camera move, portal, morph, color wash, or other scene-level transition family
+- the bridge action could apply to any adjacent scene pair without changing meaning
+- the persistent element only glides, pulses, or scales but does not change state, attention, abstraction, space, or rhythm
+- a camera move changes screen position but not conceptual distance
+- a wipe or color cover hides that no object, state, or focus was handed off
+- the cut violates the declared alignment grid, edge policy, or corner radius before landing
+- the cut introduces internal padding inside boxes, cards, masks, or apertures
+- hierarchy collapses to one gray level or depends only on hue
 
 ## Renderer Handoff Notes
 

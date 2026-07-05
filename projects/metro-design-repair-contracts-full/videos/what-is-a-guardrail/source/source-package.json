@@ -1,0 +1,624 @@
+{
+  "title": "What is a Guardrail",
+  "topic": "What is a Guardrail",
+  "checkedDate": "2026-07-05",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "risk-bowtie",
+  "visualZones": [
+    {
+      "id": "risk-bowtie-shield-agent-zone",
+      "role": "shield gate over agent loop zone",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "grayLevel": 1,
+      "sourceAnchors": [
+        "The pattern above matches current platform guidance: automatic validation first, human approval for sensitive actions, then continuation only if policy passes. citeturn22search9turn22search15turn22search4turn22search20 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A guardrail is a control layer around an agent. Its job is not to do the task. Its job is to decide whether the task should proceed.\" |",
+        "closes over the agent loop | | 0:15-0:30 | \"Guardrails can inspect user prompts, model outputs, and tool calls. Then they can block, redact, route, or escalate.\" | Three gates labeled **Input / Output / Action** | | 0:30-0:45 | \"That makes them different from prompting. A prompt suggests behavior. A guardrail enforces a policy.\" | Split screen: prompt bubble vs hard gate | | 0:45-1:00 | \"Google Model Armor is a strong example. It can screen for prompt injection, jailbreaks, sensitive data, and malicious URLs.\" | Model Armor filters fan out as colored lanes | | 1:00-1:15 | \"OpenAI's guidance uses the same design idea: run automatic checks, and pause for human review before risky work continues.\" | Human approval button appears over a deploy action | | 1:15-1:30 | \"For code assistants, guardrails often protect secrets, production systems, or destructive commands.\" |",
+        ",",
+        "shield_gate around the agent_loop_ring",
+        "critical-bowtie-barrier"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "risk-bowtie-inspection-gates-zone",
+      "role": "input output action inspection gate zone",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 400,
+        "height": 280
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "python # Pseudocode: input and action guardrail risk = model_armor.scan(prompt) if risk.prompt_injection >= HIGH: return block(\"Prompt injection risk too high\") if risk.sensitive_data_detected: prompt = redact(prompt) if action in {\"deploy\", \"delete\", \"write_prod\"}: return require_human_approval(action) return continue_run(prompt)",
+        ", and deploy icons light up red | | 1:30-1:45 | \"Good guardrails reduce risk and wasted retries. Bad guardrails create false positives and slow teams down.\" | Balance scale: safety vs friction | | 1:45-2:00 | \"So define guardrails as enforceable policies over input, output, and actions, not as just another prompt trick.\" | Recap card: **Policy checks over agent behavior** | Reference basis for narration: OpenAI guardrail guidance and Google Model Armor product and docs. citeturn22search9turn22search2turn22search1turn22search4turn22search0turn22search13 #### Shot and animation plan - Reuse",
+        "around the",
+        "- Show three inspection layers: incoming prompt, generated text, outgoing tool call. - Animate one positive case and one blocked case so the gate feels functional. - Reuse a",
+        "Input / Output / Action"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "risk-bowtie-policy-outcomes-zone",
+      "role": "risk score and block redact route escalate zone",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 400,
+        "height": 580
+      },
+      "grayLevel": 3,
+      "sourceAnchors": [
+        "bar derived from",
+        "Animate one positive case and one blocked case so the gate feels functional",
+        "a risk_score bar derived from probability_bars"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "risk-bowtie-approval-actions-zone",
+      "role": "human approval and protected action zone",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 580
+      },
+      "grayLevel": 4,
+      "sourceAnchors": [
+        "Show three inspection layers: incoming prompt",
+        "Add a human approval modal for a production deploy",
+        "End with a green-yellow-red policy matrix that can be reused in hooks and permissions modules"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "risk-bowtie-policy-matrix-zone",
+      "role": "policy matrix and safety friction balance zone",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 580
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "Policy checks over agent behavior",
+        "risk-bowtie"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "masonryLayout": {
+    "required": true,
+    "moduleCount": 12,
+    "transitionType": "masonry-construction"
+  },
+  "masonryModules": [
+    {
+      "id": "masonry-module-01",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "zoneIndex": 0,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-02",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 180,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-03",
+      "bounds": {
+        "x": 228,
+        "y": 388,
+        "width": 220,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-04",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 220,
+        "height": 180
+      },
+      "zoneIndex": 2,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-05",
+      "bounds": {
+        "x": 668,
+        "y": 88,
+        "width": 180,
+        "height": 300
+      },
+      "zoneIndex": 2,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-06",
+      "bounds": {
+        "x": 448,
+        "y": 268,
+        "width": 400,
+        "height": 400
+      },
+      "zoneIndex": 2,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-07",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 300
+      },
+      "zoneIndex": 3,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-08",
+      "bounds": {
+        "x": 848,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-09",
+      "bounds": {
+        "x": 1020,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-10",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 244
+      },
+      "zoneIndex": 4,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-11",
+      "bounds": {
+        "x": 1192,
+        "y": 332,
+        "width": 172,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-12",
+      "bounds": {
+        "x": 1364,
+        "y": 332,
+        "width": 188,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 3
+    }
+  ],
+  "durationSeconds": 6.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 6
+  },
+  "outputId": "what-is-a-guardrail",
+  "outputVideo": "projects/metro-design-repair-contracts-full/videos/what-is-a-guardrail/artifacts/video-renders/draft/videos/what-is-a-guardrail.mp4",
+  "sourceFacts": [
+    "A guardrail is a control layer that checks inputs, outputs, or tool behavior and then blocks, routes, redacts, or escalates based on policy.",
+    "Official guidance from both OpenAI and Google frames guardrails as validation and governance mechanisms rather than as \u201cmagic safety.\u201d Google Cloud Model Armor is a particularly concrete example because it can screen prompts and responses for prompt injection, jailbreaks, sensitive data, malicious URLs, and related risks; it has a free tier up to two million tokens per month and then usage pricing beyond that."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [
+    "python # Pseudocode: input and action guardrail risk = model_armor.scan(prompt) if risk.prompt_injection >= HIGH: return block(\"Prompt injection risk too high\") if risk.sensitive_data_detected: prompt = redact(prompt) if action in {\"deploy\", \"delete\", \"write_prod\"}: return require_human_approval(action) return continue_run(prompt)",
+    "The pattern above matches current platform guidance: automatic validation first, human approval for sensitive actions, then continuation only if policy passes. citeturn22search9turn22search15turn22search4turn22search20 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A guardrail is a control layer around an agent. Its job is not to do the task. Its job is to decide whether the task should proceed.\" |",
+    "closes over the agent loop | | 0:15-0:30 | \"Guardrails can inspect user prompts, model outputs, and tool calls. Then they can block, redact, route, or escalate.\" | Three gates labeled **Input / Output / Action** | | 0:30-0:45 | \"That makes them different from prompting. A prompt suggests behavior. A guardrail enforces a policy.\" | Split screen: prompt bubble vs hard gate | | 0:45-1:00 | \"Google Model Armor is a strong example. It can screen for prompt injection, jailbreaks, sensitive data, and malicious URLs.\" | Model Armor filters fan out as colored lanes | | 1:00-1:15 | \"OpenAI's guidance uses the same design idea: run automatic checks, and pause for human review before risky work continues.\" | Human approval button appears over a deploy action | | 1:15-1:30 | \"For code assistants, guardrails often protect secrets, production systems, or destructive commands.\" |",
+    ","
+  ],
+  "barrierLabels": [
+    "detect",
+    "validate",
+    "isolate",
+    "contain",
+    "recover",
+    "learn"
+  ],
+  "consequenceLabels": [
+    "impact A",
+    "impact B",
+    "impact C",
+    "impact D"
+  ],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "python # Pseudocode: input and action guardrail risk = model_armor.scan(prompt) if risk.prompt_injection >= HIGH: return block(\"Prompt injection risk too high\") if risk.sensitive_data_detected: prompt = redact(prompt) if action in {\"deploy\", \"delete\", \"write_prod\"}: return require_human_approval(action) return continue_run(prompt)",
+    "The pattern above matches current platform guidance: automatic validation first, human approval for sensitive actions, then continuation only if policy passes. citeturn22search9turn22search15turn22search4turn22search20 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A guardrail is a control layer around an agent. Its job is not to do the task. Its job is to decide whether the task should proceed.\" |",
+    "closes over the agent loop | | 0:15-0:30 | \"Guardrails can inspect user prompts, model outputs, and tool calls. Then they can block, redact, route, or escalate.\" | Three gates labeled **Input / Output / Action** | | 0:30-0:45 | \"That makes them different from prompting. A prompt suggests behavior. A guardrail enforces a policy.\" | Split screen: prompt bubble vs hard gate | | 0:45-1:00 | \"Google Model Armor is a strong example. It can screen for prompt injection, jailbreaks, sensitive data, and malicious URLs.\" | Model Armor filters fan out as colored lanes | | 1:00-1:15 | \"OpenAI's guidance uses the same design idea: run automatic checks, and pause for human review before risky work continues.\" | Human approval button appears over a deploy action | | 1:15-1:30 | \"For code assistants, guardrails often protect secrets, production systems, or destructive commands.\" |",
+    ",",
+    ", and deploy icons light up red | | 1:30-1:45 | \"Good guardrails reduce risk and wasted retries. Bad guardrails create false positives and slow teams down.\" | Balance scale: safety vs friction | | 1:45-2:00 | \"So define guardrails as enforceable policies over input, output, and actions, not as just another prompt trick.\" | Recap card: **Policy checks over agent behavior** | Reference basis for narration: OpenAI guardrail guidance and Google Model Armor product and docs. citeturn22search9turn22search2turn22search1turn22search4turn22search0turn22search13 #### Shot and animation plan - Reuse",
+    "around the",
+    "- Show three inspection layers: incoming prompt, generated text, outgoing tool call. - Animate one positive case and one blocked case so the gate feels functional. - Reuse a",
+    "bar derived from",
+    "Input / Output / Action",
+    "Policy checks over agent behavior",
+    "shield_gate around the agent_loop_ring",
+    "Show three inspection layers: incoming prompt",
+    "Animate one positive case and one blocked case so the gate feels functional",
+    "a risk_score bar derived from probability_bars",
+    "Add a human approval modal for a production deploy",
+    "End with a green-yellow-red policy matrix that can be reused in hooks and permissions modules",
+    "risk-bowtie",
+    "critical-bowtie-barrier"
+  ],
+  "semanticBindings": [
+    {
+      "id": "binding-01",
+      "sourceAnchor": "python # Pseudocode: input and action guardrail risk = model_armor.scan(prompt) if risk.prompt_injection >= HIGH: return block(\"Prompt injection risk too high\") if risk.sensitive_data_detected: prompt = redact(prompt) if action in {\"deploy\", \"delete\", \"write_prod\"}: return require_human_approval(action) return continue_run(prompt)",
+      "zoneId": "risk-bowtie-inspection-gates-zone",
+      "zoneRole": "input output action inspection gate zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "input, output, and action gates inspect separate streams instead of collapsing into one warning",
+      "stateKey": "guardrailShieldGateVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-02",
+      "sourceAnchor": "The pattern above matches current platform guidance: automatic validation first, human approval for sensitive actions, then continuation only if policy passes. citeturn22search9turn22search15turn22search4turn22search20 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A guardrail is a control layer around an agent. Its job is not to do the task. Its job is to decide whether the task should proceed.\" |",
+      "zoneId": "risk-bowtie-shield-agent-zone",
+      "zoneRole": "shield gate over agent loop zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "a hard shield gate closes over the agent loop before policy decisions appear",
+      "stateKey": "inputGateVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-03",
+      "sourceAnchor": "closes over the agent loop | | 0:15-0:30 | \"Guardrails can inspect user prompts, model outputs, and tool calls. Then they can block, redact, route, or escalate.\" | Three gates labeled **Input / Output / Action** | | 0:30-0:45 | \"That makes them different from prompting. A prompt suggests behavior. A guardrail enforces a policy.\" | Split screen: prompt bubble vs hard gate | | 0:45-1:00 | \"Google Model Armor is a strong example. It can screen for prompt injection, jailbreaks, sensitive data, and malicious URLs.\" | Model Armor filters fan out as colored lanes | | 1:00-1:15 | \"OpenAI's guidance uses the same design idea: run automatic checks, and pause for human review before risky work continues.\" | Human approval button appears over a deploy action | | 1:15-1:30 | \"For code assistants, guardrails often protect secrets, production systems, or destructive commands.\" |",
+      "zoneId": "risk-bowtie-shield-agent-zone",
+      "zoneRole": "shield gate over agent loop zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "a hard shield gate closes over the agent loop before policy decisions appear",
+      "stateKey": "outputGateVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-04",
+      "sourceAnchor": ",",
+      "zoneId": "risk-bowtie-shield-agent-zone",
+      "zoneRole": "shield gate over agent loop zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "a hard shield gate closes over the agent loop before policy decisions appear",
+      "stateKey": "actionGateVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-05",
+      "sourceAnchor": ", and deploy icons light up red | | 1:30-1:45 | \"Good guardrails reduce risk and wasted retries. Bad guardrails create false positives and slow teams down.\" | Balance scale: safety vs friction | | 1:45-2:00 | \"So define guardrails as enforceable policies over input, output, and actions, not as just another prompt trick.\" | Recap card: **Policy checks over agent behavior** | Reference basis for narration: OpenAI guardrail guidance and Google Model Armor product and docs. citeturn22search9turn22search2turn22search1turn22search4turn22search0turn22search13 #### Shot and animation plan - Reuse",
+      "zoneId": "risk-bowtie-inspection-gates-zone",
+      "zoneRole": "input output action inspection gate zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "input, output, and action gates inspect separate streams instead of collapsing into one warning",
+      "stateKey": "promptInspectionActive",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-06",
+      "sourceAnchor": "around the",
+      "zoneId": "risk-bowtie-inspection-gates-zone",
+      "zoneRole": "input output action inspection gate zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "input, output, and action gates inspect separate streams instead of collapsing into one warning",
+      "stateKey": "outputInspectionActive",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-07",
+      "sourceAnchor": "- Show three inspection layers: incoming prompt, generated text, outgoing tool call. - Animate one positive case and one blocked case so the gate feels functional. - Reuse a",
+      "zoneId": "risk-bowtie-inspection-gates-zone",
+      "zoneRole": "input output action inspection gate zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "input, output, and action gates inspect separate streams instead of collapsing into one warning",
+      "stateKey": "toolCallInspectionActive",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-08",
+      "sourceAnchor": "bar derived from",
+      "zoneId": "risk-bowtie-policy-outcomes-zone",
+      "zoneRole": "risk score and block redact route escalate zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "risk score, Model Armor lanes, and block-redact-route-escalate outcomes convert policy into state changes",
+      "stateKey": "riskScoreVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-09",
+      "sourceAnchor": "Input / Output / Action",
+      "zoneId": "risk-bowtie-inspection-gates-zone",
+      "zoneRole": "input output action inspection gate zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "input, output, and action gates inspect separate streams instead of collapsing into one warning",
+      "stateKey": "policyMatrixVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-10",
+      "sourceAnchor": "Policy checks over agent behavior",
+      "zoneId": "risk-bowtie-policy-matrix-zone",
+      "zoneRole": "policy matrix and safety friction balance zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "policy matrix and safety-friction balance remain visible so strictness and false-positive cost are separate",
+      "stateKey": "blockStateActive",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-11",
+      "sourceAnchor": "shield_gate around the agent_loop_ring",
+      "zoneId": "risk-bowtie-shield-agent-zone",
+      "zoneRole": "shield gate over agent loop zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "a hard shield gate closes over the agent loop before policy decisions appear",
+      "stateKey": "redactStateActive",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-12",
+      "sourceAnchor": "Show three inspection layers: incoming prompt",
+      "zoneId": "risk-bowtie-approval-actions-zone",
+      "zoneRole": "human approval and protected action zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "human approval pauses protected deploy, secret, and destructive-command actions before continuation",
+      "stateKey": "routeStateActive",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-13",
+      "sourceAnchor": "Animate one positive case and one blocked case so the gate feels functional",
+      "zoneId": "risk-bowtie-policy-outcomes-zone",
+      "zoneRole": "risk score and block redact route escalate zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "risk score, Model Armor lanes, and block-redact-route-escalate outcomes convert policy into state changes",
+      "stateKey": "escalateStateActive",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-14",
+      "sourceAnchor": "a risk_score bar derived from probability_bars",
+      "zoneId": "risk-bowtie-policy-outcomes-zone",
+      "zoneRole": "risk score and block redact route escalate zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "risk score, Model Armor lanes, and block-redact-route-escalate outcomes convert policy into state changes",
+      "stateKey": "humanApprovalRequired",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-15",
+      "sourceAnchor": "Add a human approval modal for a production deploy",
+      "zoneId": "risk-bowtie-approval-actions-zone",
+      "zoneRole": "human approval and protected action zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "human approval pauses protected deploy, secret, and destructive-command actions before continuation",
+      "stateKey": "positiveCasePasses",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-16",
+      "sourceAnchor": "End with a green-yellow-red policy matrix that can be reused in hooks and permissions modules",
+      "zoneId": "risk-bowtie-approval-actions-zone",
+      "zoneRole": "human approval and protected action zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "human approval pauses protected deploy, secret, and destructive-command actions before continuation",
+      "stateKey": "blockedCaseStops",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-17",
+      "sourceAnchor": "risk-bowtie",
+      "zoneId": "risk-bowtie-policy-matrix-zone",
+      "zoneRole": "policy matrix and safety friction balance zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "policy matrix and safety-friction balance remain visible so strictness and false-positive cost are separate",
+      "stateKey": "secretRiskActive",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-18",
+      "sourceAnchor": "critical-bowtie-barrier",
+      "zoneId": "risk-bowtie-shield-agent-zone",
+      "zoneRole": "shield gate over agent loop zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "a hard shield gate closes over the agent loop before policy decisions appear",
+      "stateKey": "destructiveCommandRiskActive",
+      "visualRole": "data-bearing-zone"
+    }
+  ],
+  "visualMechanismAnchors": [
+    {
+      "id": "mechanism-01",
+      "mechanism": "a hard shield gate closes over the agent loop before policy decisions appear",
+      "sourceAnchors": [
+        "The pattern above matches current platform guidance: automatic validation first, human approval for sensitive actions, then continuation only if policy passes. citeturn22search9turn22search15turn22search4turn22search20 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A guardrail is a control layer around an agent. Its job is not to do the task. Its job is to decide whether the task should proceed.\" |",
+        "closes over the agent loop | | 0:15-0:30 | \"Guardrails can inspect user prompts, model outputs, and tool calls. Then they can block, redact, route, or escalate.\" | Three gates labeled **Input / Output / Action** | | 0:30-0:45 | \"That makes them different from prompting. A prompt suggests behavior. A guardrail enforces a policy.\" | Split screen: prompt bubble vs hard gate | | 0:45-1:00 | \"Google Model Armor is a strong example. It can screen for prompt injection, jailbreaks, sensitive data, and malicious URLs.\" | Model Armor filters fan out as colored lanes | | 1:00-1:15 | \"OpenAI's guidance uses the same design idea: run automatic checks, and pause for human review before risky work continues.\" | Human approval button appears over a deploy action | | 1:15-1:30 | \"For code assistants, guardrails often protect secrets, production systems, or destructive commands.\" |",
+        ",",
+        "shield_gate around the agent_loop_ring",
+        "critical-bowtie-barrier"
+      ]
+    },
+    {
+      "id": "mechanism-02",
+      "mechanism": "input, output, and action gates inspect separate streams instead of collapsing into one warning",
+      "sourceAnchors": [
+        "python # Pseudocode: input and action guardrail risk = model_armor.scan(prompt) if risk.prompt_injection >= HIGH: return block(\"Prompt injection risk too high\") if risk.sensitive_data_detected: prompt = redact(prompt) if action in {\"deploy\", \"delete\", \"write_prod\"}: return require_human_approval(action) return continue_run(prompt)",
+        ", and deploy icons light up red | | 1:30-1:45 | \"Good guardrails reduce risk and wasted retries. Bad guardrails create false positives and slow teams down.\" | Balance scale: safety vs friction | | 1:45-2:00 | \"So define guardrails as enforceable policies over input, output, and actions, not as just another prompt trick.\" | Recap card: **Policy checks over agent behavior** | Reference basis for narration: OpenAI guardrail guidance and Google Model Armor product and docs. citeturn22search9turn22search2turn22search1turn22search4turn22search0turn22search13 #### Shot and animation plan - Reuse",
+        "around the",
+        "- Show three inspection layers: incoming prompt, generated text, outgoing tool call. - Animate one positive case and one blocked case so the gate feels functional. - Reuse a",
+        "Input / Output / Action"
+      ]
+    },
+    {
+      "id": "mechanism-03",
+      "mechanism": "risk score, Model Armor lanes, and block-redact-route-escalate outcomes convert policy into state changes",
+      "sourceAnchors": [
+        "bar derived from",
+        "Animate one positive case and one blocked case so the gate feels functional",
+        "a risk_score bar derived from probability_bars"
+      ]
+    },
+    {
+      "id": "mechanism-04",
+      "mechanism": "human approval pauses protected deploy, secret, and destructive-command actions before continuation",
+      "sourceAnchors": [
+        "Show three inspection layers: incoming prompt",
+        "Add a human approval modal for a production deploy",
+        "End with a green-yellow-red policy matrix that can be reused in hooks and permissions modules"
+      ]
+    },
+    {
+      "id": "mechanism-05",
+      "mechanism": "policy matrix and safety-friction balance remain visible so strictness and false-positive cost are separate",
+      "sourceAnchors": [
+        "Policy checks over agent behavior",
+        "risk-bowtie"
+      ]
+    }
+  ],
+  "sourceAnchorCoverage": {
+    "expectedCount": 18,
+    "zoneCoveredCount": 18,
+    "mechanismCoveredCount": 18,
+    "coveredCount": 18,
+    "uncoveredAnchors": [],
+    "zoneUncoveredAnchors": [],
+    "mechanismUncoveredAnchors": []
+  },
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "a hard shield gate closes over the agent loop before policy decisions appear",
+    "input, output, and action gates inspect separate streams instead of collapsing into one warning",
+    "risk score, Model Armor lanes, and block-redact-route-escalate outcomes convert policy into state changes",
+    "human approval pauses protected deploy, secret, and destructive-command actions before continuation",
+    "policy matrix and safety-friction balance remain visible so strictness and false-positive cost are separate"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

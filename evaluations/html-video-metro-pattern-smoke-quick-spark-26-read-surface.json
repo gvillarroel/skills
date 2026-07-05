@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 2,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1157
+    },
+    {
+      "path": "projects/metro-pattern-smoke-quick/artifacts/reviews/metro-pattern-smoke.json",
+      "calls": 1,
+      "resultBytes": 8380
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1157
+    },
+    {
+      "path": "projects/metro-pattern-smoke-quick/artifacts/reviews/metro-pattern-smoke.json",
+      "calls": 1,
+      "resultBytes": 8380
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1157
+    },
+    {
+      "line": 30,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/html-d3-anime-video-workflow/scripts/validate_metro_pattern_smoke.py --patterns dependency-map,evidence-ladder --output projects/metro-pattern-smoke-quick/artifacts/reviews/metro-pattern-smoke.json --workdir projects/",
+      "isError": false,
+      "resultBytes": 8415
+    },
+    {
+      "line": 43,
+      "tool": "read",
+      "path": "projects/metro-pattern-smoke-quick/artifacts/reviews/metro-pattern-smoke.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8380
+    }
+  ],
+  "findings": []
+}

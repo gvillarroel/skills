@@ -37,6 +37,10 @@ dist/
 /projects/*/artifacts/
 /projects/*/work/
 /projects/*/cache/
+/projects/**/artifacts/
+/projects/**/work/
+/projects/**/cache/
+/projects/**/contact-sheets/
 
 # Rendered media should be published outside git.
 *.mp4

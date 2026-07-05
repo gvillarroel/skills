@@ -1,0 +1,217 @@
+{
+  "title": "What is a Harness Hook",
+  "topic": "What is a Harness Hook",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "state-machine",
+  "visualZones": [
+    {
+      "id": "state-machine-orientation-zone",
+      "role": "opening anchor plane",
+      "bounds": {
+        "x": 44,
+        "y": 96,
+        "width": 304,
+        "height": 248
+      },
+      "grayLevel": 1,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "state-machine-primary-system-zone",
+      "role": "main mechanism plane",
+      "bounds": {
+        "x": 44,
+        "y": 344,
+        "width": 304,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "state-machine-secondary-system-zone",
+      "role": "support mechanism plane",
+      "bounds": {
+        "x": 348,
+        "y": 96,
+        "width": 520,
+        "height": 508
+      },
+      "grayLevel": 3,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "state-machine-control-risk-zone",
+      "role": "control and risk plane",
+      "bounds": {
+        "x": 868,
+        "y": 96,
+        "width": 368,
+        "height": 248
+      },
+      "grayLevel": 4,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "state-machine-evidence-feedback-zone",
+      "role": "evidence and feedback plane",
+      "bounds": {
+        "x": 868,
+        "y": 344,
+        "width": 368,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "durationSeconds": 120.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "what-is-a-harness-hook",
+  "outputVideo": "projects/metro-ai-concept-videos/what-is-a-harness-hook/artifacts/video-renders/draft/videos/what-is-a-harness-hook.mp4",
+  "sourceFacts": [
+    "A harness hook is an active interception point in the runtime lifecycle.",
+    "Hooks run custom logic when an important runtime event occurs.",
+    "Hooks are active guardrails because they run during execution, not only before a session begins.",
+    "GitHub Copilot hooks can execute external commands at lifecycle points like session start, prompt submit, tool calls, and agent stop.",
+    "Claude Code hooks can be shell commands, HTTP endpoints, or LLM prompts.",
+    "OpenCode exposes comparable event-driven control through plugin events.",
+    "Typical hook jobs include formatting, validation, secret protection, audit logging, notifications, and narrowing huge data before the model sees it.",
+    "Hooks can lower cost by preprocessing and shrinking context, but they can raise latency or cost if they trigger slow services too often."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "event timeline",
+    "lifecycle pulse",
+    "shield gate overlay",
+    "pre-tool checkpoint",
+    "post-tool checkpoint",
+    "permission request",
+    "session start",
+    "agent stop",
+    "command block",
+    "context shrinking counter",
+    "cost versus latency slider"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [
+    "Event",
+    "Precheck",
+    "Command",
+    "Result",
+    "Postcheck",
+    "done"
+  ],
+  "guardLabels": [
+    "Policy",
+    "Pre-hook",
+    "Post-hook",
+    "Allow",
+    "Ask",
+    "Deny",
+    "Session start",
+    "Prompt submit",
+    "Tool call",
+    "Agent stop",
+    "Audit log",
+    "Context filter"
+  ],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "state cards activate in order along a deterministic lifecycle path",
+    "guard panels become visible before state transitions commit",
+    "rollback and compensation route away from the main success path",
+    "terminal-state panel separates done work from parked or failed work"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

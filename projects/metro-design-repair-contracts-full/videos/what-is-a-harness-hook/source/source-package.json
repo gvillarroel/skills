@@ -1,0 +1,621 @@
+{
+  "title": "What is a Harness Hook",
+  "topic": "What is a Harness Hook",
+  "checkedDate": "2026-07-05",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "systems-flow",
+  "visualZones": [
+    {
+      "id": "systems-flow-hook-events-zone",
+      "role": "event timeline and moving lifecycle pulse zone",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "grayLevel": 1,
+      "sourceAnchors": [
+        "That pattern is directly aligned with GitHub and Claude hook use cases: validation, audit, and execution control around tool calls. citeturn10view1turn10view0turn9view3 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A harness hook is an event-driven interception point. Something important happens in the runtime, and your custom logic gets a chance to react.\" |",
+        "lights up event nodes | | 0:15-0:30 | \"Hooks are active guardrails because they run during execution, not just before a session begins.\" | Timeline overlays the",
+        "| | 0:30-0:45 | \"GitHub Copilot hooks execute external commands at lifecycle points like session start, prompt submit, tool calls, and agent stop.\" | GitHub hook events appear as badges | | 0:45-1:00 | \"Claude Code hooks go even wider. They can be shell commands, HTTP endpoints, or LLM prompts, and they cover session, turn, tool, compaction, and more.\" | Claude event cloud expands around the loop | | 1:00-1:15 | \"OpenCode expresses similar control through plugin events such as tool execute before and after, shell environment injection, and session idle.\" | OpenCode event list animates vertically | | 1:15-1:30 | \"Typical hook jobs are formatting, validation, secret protection, audit logging, notifications, and narrowing huge data before the model sees it.\" | Examples cascade across the screen | | 1:30-1:45 | \"Hooks can lower cost by shrinking context. But they can raise cost or delay work if they call slow services or trigger too often.\" | Speed-vs-cost slider | | 1:45-2:00 | \"So use hooks for enforcement and preprocessing at clear lifecycle boundaries, not as a place to hide random business logic.\" | Final rule card: **hooks = lifecycle controls** | Reference basis for narration: GitHub hooks docs and reference, Claude Code hooks reference, OpenCode event system. citeturn10view0turn10view1turn9view3turn8search13turn12view4turn12view5 #### Shot and animation plan - Reuse",
+        "and",
+        "hooks = lifecycle controls",
+        "event_timeline and shield_gate",
+        "Show a bright pulse moving through lifecycle events",
+        "End with a \"hooks are for lifecycle boundaries\" stamp",
+        "circuit-signal-traces"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-policy-gate-zone",
+      "role": "shield gate and dangerous command interception zone",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 400,
+        "height": 280
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "bash # Pseudocode hook: block dangerous commands before tool use event = read_json() if event.type == \"PreToolUse\" and event.tool == \"Bash\": if matches(event.command, [\"rm -rf\", \"kubectl delete\", \"terraform destroy\"]): deny(\"Blocked by repository hook policy\") else: allow()",
+        "attention-matrix-tiles"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-provider-events-zone",
+      "role": "GitHub Claude Code and OpenCode hook event surfaces zone",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 400,
+        "height": 580
+      },
+      "grayLevel": 3,
+      "sourceAnchors": [
+        "Animate GitHub",
+        "swimlane-handoff"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-preprocess-jobs-zone",
+      "role": "format validate secret audit notify and context-filter jobs zone",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 580
+      },
+      "grayLevel": 4,
+      "sourceAnchors": [
+        "Visualize one hook blocking a command and another filtering log output",
+        "Add a token-savings counter when preprocessing reduces context",
+        "masonry-wall"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-cost-boundary-zone",
+      "role": "token savings latency cost and lifecycle-control boundary zone",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 580
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "flow-tokens",
+        "risk-bowtie"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "masonryLayout": {
+    "required": true,
+    "moduleCount": 12,
+    "transitionType": "masonry-construction"
+  },
+  "masonryModules": [
+    {
+      "id": "masonry-module-01",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "zoneIndex": 0,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-02",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 180,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-03",
+      "bounds": {
+        "x": 228,
+        "y": 388,
+        "width": 220,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-04",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 220,
+        "height": 180
+      },
+      "zoneIndex": 2,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-05",
+      "bounds": {
+        "x": 668,
+        "y": 88,
+        "width": 180,
+        "height": 300
+      },
+      "zoneIndex": 2,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-06",
+      "bounds": {
+        "x": 448,
+        "y": 268,
+        "width": 400,
+        "height": 400
+      },
+      "zoneIndex": 2,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-07",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 300
+      },
+      "zoneIndex": 3,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-08",
+      "bounds": {
+        "x": 848,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-09",
+      "bounds": {
+        "x": 1020,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-10",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 244
+      },
+      "zoneIndex": 4,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-11",
+      "bounds": {
+        "x": 1192,
+        "y": 332,
+        "width": 172,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-12",
+      "bounds": {
+        "x": 1364,
+        "y": 332,
+        "width": 188,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 3
+    }
+  ],
+  "durationSeconds": 6.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 6
+  },
+  "outputId": "what-is-a-harness-hook",
+  "outputVideo": "projects/metro-design-repair-contracts-full/videos/what-is-a-harness-hook/artifacts/video-renders/draft/videos/what-is-a-harness-hook.mp4",
+  "sourceFacts": [
+    "A harness hook is an active interception point in the runtime lifecycle.",
+    "Hooks are where policy becomes executable: before or after tool use, at session start or stop, on permission requests, during compaction, or when notifications fire.",
+    "GitHub Copilot and Claude Code both expose first-class hook systems, while OpenCode exposes comparable event-driven interception through plugin events.",
+    "Good hooks can reduce cost by preprocessing data and avoiding bad runs; poor hooks can increase latency or produce unnecessary extra work."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [
+    "bash # Pseudocode hook: block dangerous commands before tool use event = read_json() if event.type == \"PreToolUse\" and event.tool == \"Bash\": if matches(event.command, [\"rm -rf\", \"kubectl delete\", \"terraform destroy\"]): deny(\"Blocked by repository hook policy\") else: allow()",
+    "That pattern is directly aligned with GitHub and Claude hook use cases: validation, audit, and execution control around tool calls. citeturn10view1turn10view0turn9view3 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A harness hook is an event-driven interception point. Something important happens in the runtime, and your custom logic gets a chance to react.\" |",
+    "lights up event nodes | | 0:15-0:30 | \"Hooks are active guardrails because they run during execution, not just before a session begins.\" | Timeline overlays the",
+    "| | 0:30-0:45 | \"GitHub Copilot hooks execute external commands at lifecycle points like session start, prompt submit, tool calls, and agent stop.\" | GitHub hook events appear as badges | | 0:45-1:00 | \"Claude Code hooks go even wider. They can be shell commands, HTTP endpoints, or LLM prompts, and they cover session, turn, tool, compaction, and more.\" | Claude event cloud expands around the loop | | 1:00-1:15 | \"OpenCode expresses similar control through plugin events such as tool execute before and after, shell environment injection, and session idle.\" | OpenCode event list animates vertically | | 1:15-1:30 | \"Typical hook jobs are formatting, validation, secret protection, audit logging, notifications, and narrowing huge data before the model sees it.\" | Examples cascade across the screen | | 1:30-1:45 | \"Hooks can lower cost by shrinking context. But they can raise cost or delay work if they call slow services or trigger too often.\" | Speed-vs-cost slider | | 1:45-2:00 | \"So use hooks for enforcement and preprocessing at clear lifecycle boundaries, not as a place to hide random business logic.\" | Final rule card: **hooks = lifecycle controls** | Reference basis for narration: GitHub hooks docs and reference, Claude Code hooks reference, OpenCode event system. citeturn10view0turn10view1turn9view3turn8search13turn12view4turn12view5 #### Shot and animation plan - Reuse",
+    "and",
+    "hooks = lifecycle controls",
+    "event_timeline and shield_gate",
+    "Show a bright pulse moving through lifecycle events",
+    "dead-letter",
+    "throughput",
+    "throttle"
+  ],
+  "strategyAnchors": [
+    "bash # Pseudocode hook: block dangerous commands before tool use event = read_json() if event.type == \"PreToolUse\" and event.tool == \"Bash\": if matches(event.command, [\"rm -rf\", \"kubectl delete\", \"terraform destroy\"]): deny(\"Blocked by repository hook policy\") else: allow()",
+    "That pattern is directly aligned with GitHub and Claude hook use cases: validation, audit, and execution control around tool calls. citeturn10view1turn10view0turn9view3 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A harness hook is an event-driven interception point. Something important happens in the runtime, and your custom logic gets a chance to react.\" |",
+    "lights up event nodes | | 0:15-0:30 | \"Hooks are active guardrails because they run during execution, not just before a session begins.\" | Timeline overlays the",
+    "| | 0:30-0:45 | \"GitHub Copilot hooks execute external commands at lifecycle points like session start, prompt submit, tool calls, and agent stop.\" | GitHub hook events appear as badges | | 0:45-1:00 | \"Claude Code hooks go even wider. They can be shell commands, HTTP endpoints, or LLM prompts, and they cover session, turn, tool, compaction, and more.\" | Claude event cloud expands around the loop | | 1:00-1:15 | \"OpenCode expresses similar control through plugin events such as tool execute before and after, shell environment injection, and session idle.\" | OpenCode event list animates vertically | | 1:15-1:30 | \"Typical hook jobs are formatting, validation, secret protection, audit logging, notifications, and narrowing huge data before the model sees it.\" | Examples cascade across the screen | | 1:30-1:45 | \"Hooks can lower cost by shrinking context. But they can raise cost or delay work if they call slow services or trigger too often.\" | Speed-vs-cost slider | | 1:45-2:00 | \"So use hooks for enforcement and preprocessing at clear lifecycle boundaries, not as a place to hide random business logic.\" | Final rule card: **hooks = lifecycle controls** | Reference basis for narration: GitHub hooks docs and reference, Claude Code hooks reference, OpenCode event system. citeturn10view0turn10view1turn9view3turn8search13turn12view4turn12view5 #### Shot and animation plan - Reuse",
+    "and",
+    "hooks = lifecycle controls",
+    "event_timeline and shield_gate",
+    "Show a bright pulse moving through lifecycle events",
+    "Visualize one hook blocking a command and another filtering log output",
+    "Animate GitHub",
+    "Add a token-savings counter when preprocessing reduces context",
+    "End with a \"hooks are for lifecycle boundaries\" stamp",
+    "flow-tokens",
+    "attention-matrix-tiles",
+    "swimlane-handoff",
+    "masonry-wall",
+    "risk-bowtie",
+    "circuit-signal-traces"
+  ],
+  "semanticBindings": [
+    {
+      "id": "binding-01",
+      "sourceAnchor": "bash # Pseudocode hook: block dangerous commands before tool use event = read_json() if event.type == \"PreToolUse\" and event.tool == \"Bash\": if matches(event.command, [\"rm -rf\", \"kubectl delete\", \"terraform destroy\"]): deny(\"Blocked by repository hook policy\") else: allow()",
+      "zoneId": "systems-flow-policy-gate-zone",
+      "zoneRole": "shield gate and dangerous command interception zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "shield gate overlays the timeline and converts passive lifecycle events into active executable policy",
+      "stateKey": "eventTimelineVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-02",
+      "sourceAnchor": "That pattern is directly aligned with GitHub and Claude hook use cases: validation, audit, and execution control around tool calls. citeturn10view1turn10view0turn9view3 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A harness hook is an event-driven interception point. Something important happens in the runtime, and your custom logic gets a chance to react.\" |",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "shieldGateOverlayVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-03",
+      "sourceAnchor": "lights up event nodes | | 0:15-0:30 | \"Hooks are active guardrails because they run during execution, not just before a session begins.\" | Timeline overlays the",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "githubHookBadgesVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-04",
+      "sourceAnchor": "| | 0:30-0:45 | \"GitHub Copilot hooks execute external commands at lifecycle points like session start, prompt submit, tool calls, and agent stop.\" | GitHub hook events appear as badges | | 0:45-1:00 | \"Claude Code hooks go even wider. They can be shell commands, HTTP endpoints, or LLM prompts, and they cover session, turn, tool, compaction, and more.\" | Claude event cloud expands around the loop | | 1:00-1:15 | \"OpenCode expresses similar control through plugin events such as tool execute before and after, shell environment injection, and session idle.\" | OpenCode event list animates vertically | | 1:15-1:30 | \"Typical hook jobs are formatting, validation, secret protection, audit logging, notifications, and narrowing huge data before the model sees it.\" | Examples cascade across the screen | | 1:30-1:45 | \"Hooks can lower cost by shrinking context. But they can raise cost or delay work if they call slow services or trigger too often.\" | Speed-vs-cost slider | | 1:45-2:00 | \"So use hooks for enforcement and preprocessing at clear lifecycle boundaries, not as a place to hide random business logic.\" | Final rule card: **hooks = lifecycle controls** | Reference basis for narration: GitHub hooks docs and reference, Claude Code hooks reference, OpenCode event system. citeturn10view0turn10view1turn9view3turn8search13turn12view4turn12view5 #### Shot and animation plan - Reuse",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "claudeEventCloudVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-05",
+      "sourceAnchor": "and",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "opencodeEventListVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-06",
+      "sourceAnchor": "hooks = lifecycle controls",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "hookJobCascadeVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-07",
+      "sourceAnchor": "event_timeline and shield_gate",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "commandBlockPathVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-08",
+      "sourceAnchor": "Show a bright pulse moving through lifecycle events",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "logFilterPathVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-09",
+      "sourceAnchor": "Visualize one hook blocking a command and another filtering log output",
+      "zoneId": "systems-flow-preprocess-jobs-zone",
+      "zoneRole": "format validate secret audit notify and context-filter jobs zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "one PreToolUse command path blocks destructive Bash actions while another filter path shrinks noisy logs before model context",
+      "stateKey": "tokenSavingsCounterVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-10",
+      "sourceAnchor": "Animate GitHub",
+      "zoneId": "systems-flow-provider-events-zone",
+      "zoneRole": "GitHub Claude Code and OpenCode hook event surfaces zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "GitHub Claude Code and OpenCode surfaces show comparable hook/event lanes without becoming feature cards",
+      "stateKey": "costLatencyTradeoffVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-11",
+      "sourceAnchor": "Add a token-savings counter when preprocessing reduces context",
+      "zoneId": "systems-flow-preprocess-jobs-zone",
+      "zoneRole": "format validate secret audit notify and context-filter jobs zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "one PreToolUse command path blocks destructive Bash actions while another filter path shrinks noisy logs before model context",
+      "stateKey": "lifecycleRuleStampVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-12",
+      "sourceAnchor": "End with a \"hooks are for lifecycle boundaries\" stamp",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "activeHookEventCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-13",
+      "sourceAnchor": "flow-tokens",
+      "zoneId": "systems-flow-cost-boundary-zone",
+      "zoneRole": "token savings latency cost and lifecycle-control boundary zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "token savings and latency cost meters move in opposite directions before a lifecycle-control boundary closes the lesson",
+      "stateKey": "providerLaneCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-14",
+      "sourceAnchor": "attention-matrix-tiles",
+      "zoneId": "systems-flow-policy-gate-zone",
+      "zoneRole": "shield gate and dangerous command interception zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "shield gate overlays the timeline and converts passive lifecycle events into active executable policy",
+      "stateKey": "policyTokenCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-15",
+      "sourceAnchor": "swimlane-handoff",
+      "zoneId": "systems-flow-provider-events-zone",
+      "zoneRole": "GitHub Claude Code and OpenCode hook event surfaces zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "GitHub Claude Code and OpenCode surfaces show comparable hook/event lanes without becoming feature cards",
+      "stateKey": "tokenSavingsLevel",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-16",
+      "sourceAnchor": "masonry-wall",
+      "zoneId": "systems-flow-preprocess-jobs-zone",
+      "zoneRole": "format validate secret audit notify and context-filter jobs zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "one PreToolUse command path blocks destructive Bash actions while another filter path shrinks noisy logs before model context",
+      "stateKey": "latencyCostLevel",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-17",
+      "sourceAnchor": "risk-bowtie",
+      "zoneId": "systems-flow-cost-boundary-zone",
+      "zoneRole": "token savings latency cost and lifecycle-control boundary zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "token savings and latency cost meters move in opposite directions before a lifecycle-control boundary closes the lesson",
+      "stateKey": "eventTimelineVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-18",
+      "sourceAnchor": "circuit-signal-traces",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "shieldGateOverlayVisible",
+      "visualRole": "data-bearing-zone"
+    }
+  ],
+  "visualMechanismAnchors": [
+    {
+      "id": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "sourceAnchors": [
+        "That pattern is directly aligned with GitHub and Claude hook use cases: validation, audit, and execution control around tool calls. citeturn10view1turn10view0turn9view3 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A harness hook is an event-driven interception point. Something important happens in the runtime, and your custom logic gets a chance to react.\" |",
+        "lights up event nodes | | 0:15-0:30 | \"Hooks are active guardrails because they run during execution, not just before a session begins.\" | Timeline overlays the",
+        "| | 0:30-0:45 | \"GitHub Copilot hooks execute external commands at lifecycle points like session start, prompt submit, tool calls, and agent stop.\" | GitHub hook events appear as badges | | 0:45-1:00 | \"Claude Code hooks go even wider. They can be shell commands, HTTP endpoints, or LLM prompts, and they cover session, turn, tool, compaction, and more.\" | Claude event cloud expands around the loop | | 1:00-1:15 | \"OpenCode expresses similar control through plugin events such as tool execute before and after, shell environment injection, and session idle.\" | OpenCode event list animates vertically | | 1:15-1:30 | \"Typical hook jobs are formatting, validation, secret protection, audit logging, notifications, and narrowing huge data before the model sees it.\" | Examples cascade across the screen | | 1:30-1:45 | \"Hooks can lower cost by shrinking context. But they can raise cost or delay work if they call slow services or trigger too often.\" | Speed-vs-cost slider | | 1:45-2:00 | \"So use hooks for enforcement and preprocessing at clear lifecycle boundaries, not as a place to hide random business logic.\" | Final rule card: **hooks = lifecycle controls** | Reference basis for narration: GitHub hooks docs and reference, Claude Code hooks reference, OpenCode event system. citeturn10view0turn10view1turn9view3turn8search13turn12view4turn12view5 #### Shot and animation plan - Reuse",
+        "and",
+        "hooks = lifecycle controls",
+        "event_timeline and shield_gate",
+        "Show a bright pulse moving through lifecycle events",
+        "End with a \"hooks are for lifecycle boundaries\" stamp",
+        "circuit-signal-traces"
+      ]
+    },
+    {
+      "id": "mechanism-02",
+      "mechanism": "shield gate overlays the timeline and converts passive lifecycle events into active executable policy",
+      "sourceAnchors": [
+        "bash # Pseudocode hook: block dangerous commands before tool use event = read_json() if event.type == \"PreToolUse\" and event.tool == \"Bash\": if matches(event.command, [\"rm -rf\", \"kubectl delete\", \"terraform destroy\"]): deny(\"Blocked by repository hook policy\") else: allow()",
+        "attention-matrix-tiles"
+      ]
+    },
+    {
+      "id": "mechanism-03",
+      "mechanism": "GitHub Claude Code and OpenCode surfaces show comparable hook/event lanes without becoming feature cards",
+      "sourceAnchors": [
+        "Animate GitHub",
+        "swimlane-handoff"
+      ]
+    },
+    {
+      "id": "mechanism-04",
+      "mechanism": "one PreToolUse command path blocks destructive Bash actions while another filter path shrinks noisy logs before model context",
+      "sourceAnchors": [
+        "Visualize one hook blocking a command and another filtering log output",
+        "Add a token-savings counter when preprocessing reduces context",
+        "masonry-wall"
+      ]
+    },
+    {
+      "id": "mechanism-05",
+      "mechanism": "token savings and latency cost meters move in opposite directions before a lifecycle-control boundary closes the lesson",
+      "sourceAnchors": [
+        "flow-tokens",
+        "risk-bowtie"
+      ]
+    }
+  ],
+  "sourceAnchorCoverage": {
+    "expectedCount": 18,
+    "zoneCoveredCount": 18,
+    "mechanismCoveredCount": 18,
+    "coveredCount": 18,
+    "uncoveredAnchors": [],
+    "zoneUncoveredAnchors": [],
+    "mechanismUncoveredAnchors": []
+  },
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+    "shield gate overlays the timeline and converts passive lifecycle events into active executable policy",
+    "GitHub Claude Code and OpenCode surfaces show comparable hook/event lanes without becoming feature cards",
+    "one PreToolUse command path blocks destructive Bash actions while another filter path shrinks noisy logs before model context",
+    "token savings and latency cost meters move in opposite directions before a lifecycle-control boundary closes the lesson"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "title": "LLM Billing",
+  "topic": "LLM Billing",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "metric-dashboard",
+  "visualZones": [
+    {
+      "id": "metric-dashboard-orientation-zone",
+      "role": "opening anchor plane",
+      "bounds": {
+        "x": 44,
+        "y": 96,
+        "width": 304,
+        "height": 248
+      },
+      "grayLevel": 1,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "metric-dashboard-primary-system-zone",
+      "role": "main mechanism plane",
+      "bounds": {
+        "x": 44,
+        "y": 344,
+        "width": 304,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "metric-dashboard-secondary-system-zone",
+      "role": "support mechanism plane",
+      "bounds": {
+        "x": 348,
+        "y": 96,
+        "width": 520,
+        "height": 508
+      },
+      "grayLevel": 3,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "metric-dashboard-control-risk-zone",
+      "role": "control and risk plane",
+      "bounds": {
+        "x": 868,
+        "y": 96,
+        "width": 368,
+        "height": 248
+      },
+      "grayLevel": 4,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "metric-dashboard-evidence-feedback-zone",
+      "role": "evidence and feedback plane",
+      "bounds": {
+        "x": 868,
+        "y": 344,
+        "width": 368,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "durationSeconds": 120.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "llm-billing",
+  "outputVideo": "projects/metro-ai-concept-videos/llm-billing/artifacts/video-renders/draft/videos/llm-billing.mp4",
+  "sourceFacts": [
+    "LLM billing reduces to model selected, input tokens, output tokens, and whether usage is wrapped in a subscription.",
+    "GitHub Copilot meters usage in AI credits, where 1 AI credit equals $0.01.",
+    "Token usage converts into credits based on the selected model.",
+    "Copilot Pro includes 1,500 AI credits per month, and Business includes 1,900 credits per seat in a pooled organization bucket.",
+    "Claude API pricing is direct per million input, cached-input, and output tokens.",
+    "Claude subscriptions package the underlying usage instead of removing the usage cost.",
+    "Local models are not free because electricity, hardware life, and developer time still have costs.",
+    "Better prompts, smaller sufficient models, hooks, and skills usually reduce wasted retries and cost."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [
+    "selected model",
+    "input tokens",
+    "output tokens",
+    "AI credits",
+    "cached input",
+    "subscription allowance",
+    "local electricity",
+    "hardware amortization",
+    "developer time",
+    "retry waste"
+  ],
+  "thresholdLabels": [
+    "1 AI credit = $0.01",
+    "Pro 1,500 credits/month",
+    "Business 1,900 credits/seat",
+    "60 AI credits example",
+    "Claude per million tokens",
+    "local is not free",
+    "fewer wasted loops"
+  ],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "credit meter",
+    "token stream converting into dollars or credits",
+    "individual versus pooled bucket split",
+    "Claude pricing table cards",
+    "subscription layers over raw token meter",
+    "GPU rack with power meter and clock",
+    "retry spiral",
+    "optimized cost waterfall",
+    "final cost scorecard"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "trend line reveals before any interpretation panel appears",
+    "healthy, warning, and action thresholds convert the chart into an operating rule",
+    "anomaly marker names the risk metric instead of relying on color alone",
+    "forecast cone and decision panel appear late so action follows evidence"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

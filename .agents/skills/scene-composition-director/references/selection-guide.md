@@ -11,8 +11,9 @@ Choose in this order:
 3. **Source strength**: real product footage/screenshot, supplied image, code/data, narration-only idea, text quote, or no asset.
 4. **Information density**: one hero idea, 2-3 grouped ideas, 4-8 items, dense labels/data, or multi-stage process.
 5. **Frame constraints**: landscape, portrait, square, captions, brand palette, legibility, and any keep-out regions.
-6. **Sequence context**: previous and next scene. Vary armature unless repetition is the point.
-7. **Motion need**: reveal to narration, demonstrate transformation, land a held read, or create a transition-ready handoff.
+6. **Alignment and edge policy**: grid, baselines, axes, corner radius, mask shape, box interior padding, grayscale hierarchy levels, hard-edge versus source-native softness, and prohibited motifs.
+7. **Sequence context**: previous and next scene. Vary armature unless repetition is the point.
+8. **Motion need**: reveal to narration, demonstrate transformation, land a held read, or create a transition-ready handoff.
 
 ## Composition Families
 
@@ -46,6 +47,28 @@ Use for feature sets, logo walls, checklists, dashboards, matrices, sortable mod
 
 Choose when the viewer needs to scan peers. Reject when the scene has a single emotional focal point. Use stable tracks and gutters so motion cannot resize the composition.
 
+For hard-edge, Metro, terminal, blueprint, technical, or editorial-grid styles, make this a modular board rather than a stack of soft cards. Use 0-radius panels, shared x/y edges, repeated external gutters, visible or implied baselines, and zero internal padding inside boxes. Reject rounded cards, padded chips, inset bars, blobs, and decorative floating modules unless they are literal source assets. Use distinct grayscale levels for hierarchy instead of padded interiors.
+
+### Tonal Surface Megacanvas
+
+Use for Metro Minimal Tonal Motion, technical explainers, dashboards, system maps, concept maps, and dense narrated videos where the camera should explore one large visual object.
+
+Choose when the output should feel continuous instead of slide-like. Define the full map, section bounds, overview frame, detail frames, and camera path before choosing individual crops. Reject when the scene is truly a single held poster frame.
+
+The composition should be complete without title, subtitle, caption, date, or editorial bands. Text is only allowed when it is a functional label, axis, value, node name, state, table cell, or data-bearing mark. Use grayscale surface levels to separate hierarchy before hue.
+
+### Metro Block Board
+
+Use when emphasis, verdicts, states, key metrics, or modules need strong presence inside a hard-edge grid.
+
+Choose when blocks can act as both content and transition devices. Use 0-radius rectangles, shared edges, external gutters, no internal padding, flush labels or adjacent lanes, and red only for state, alert, selection, or primary flow. Reject if the plan uses rounded cards, padded chips, or decorative brand panels.
+
+### Masonry Megacanvas
+
+Use when several concepts, evidence fragments, data marks, mini charts, states, or modules should fit together like a constructed wall.
+
+Choose when the viewer should see blocks enter, fit, push, reveal, expand, or collapse within one modular object. Require varied block sizes, shared grid edges, visible fitting order, and a camera path through the wall. Reject if modules are disconnected rectangles, equal-size cards, or labels without visual state.
+
 ### Full-Width Strip
 
 Use for timelines, pipelines, number lines, route maps, subtitles as structure, or horizontal process beats.
@@ -63,6 +86,8 @@ Choose when mood and spatial travel matter. Reject when the viewer must read man
 Use for change, escalation, conflict, progress, transformation, critical paths, and before-to-after stories.
 
 Choose when the scene has direction. Put source or old state low-left and outcome or target high-right. Reject for calm comparison or centered brand lockups.
+
+Lock the start, midpoint, and endpoint to clear axes or grid intersections. A diagonal can cut across a square grid, but its source and destination should still land on deliberate anchors.
 
 ### Radial Or Hub
 
@@ -101,7 +126,7 @@ When the smaller field is a magnified detail or proof panel, connect it to the s
 ## Aspect Ratio Choices
 
 - **Landscape**: supports split screen, wide strip, asymmetric 60/40, grids, and panoramic flow.
-- **Portrait**: stack vertically. Convert split screen to top/bottom, full-width strip to vertical spine, and grid to fewer columns. Keep the hero around the upper-middle, leaving bottom caption space.
+- **Portrait**: stack vertically. Convert split screen to top/bottom, full-width strip to vertical spine, and grid to fewer columns. Keep the hero around the upper-middle. Leave bottom caption space only when captions are explicitly part of the deliverable; for Metro/design-repair prompts, do not reserve editorial or subtitle space.
 - **Square**: supports centered hero, two-column split for compact peers, radial, grid, and layered depth. Avoid wide timelines unless simplified.
 
 ## Motion And Rhythm Choices
@@ -117,6 +142,20 @@ When the smaller field is a magnified detail or proof panel, connect it to the s
 
 When a sequence is meant to test or show composition range, name a distinct armature per scene and preserve continuity through lower-level vocabulary such as palette, token identity, type, spacing, or motion verbs. Do not make a validation-only motion layer the cross-scene connector. If automated video checks need more pixel change, add semantic movement inside each scene's diagram rather than a shared decorative background.
 
+## Armature Strength Test
+
+Before accepting a scene, name the governing geometry and attach the focal object to it. Strong options include orthogonal grid, axis-locked split, triangular hierarchy, Z-path, vanishing-point depth, modular hard-edge board, diagonal progression, radial hub, and flow spine. Reject scenes where major objects float independently, where panels only align by visual guess, or where a decorative sweep is the only reading path.
+
+For strict technical aesthetics, add these checks:
+
+- Major bounds share at least one x or y edge with related objects.
+- Peer objects sit on common baselines or columns.
+- Masks and panels keep the declared corner radius through motion.
+- Box content is flush to the declared bounds; separation comes from external gutters, not padding.
+- Hierarchy levels are carried by distinct grayscale values, not by nested padded boxes.
+- Negative space is an intentional band, gutter, lane, or safe zone.
+- The transition handoff point is already aligned in the outgoing frame.
+
 ## Validation Questions
 
 Before finalizing each scene, answer:
@@ -129,3 +168,10 @@ Before finalizing each scene, answer:
 - Which visual pieces appear in each phase, and what changes mid-shot?
 - Which nearby composition did you reject, and why?
 - Does any repeated motion carry the same role in every scene, or is it only keeping the frame active?
+- What exact alignment grid, baseline, or axis organizes the scene?
+- What is the edge/corner policy, and where is it verified?
+- What is the zero-padding box policy, and where is `internalPaddingPx: 0` verified?
+- Which grayscale values define hierarchy levels?
+- Which object bounds should a renderer or screenshot audit inspect?
+- For Metro or Masonry, what are the full megacanvas bounds, functional zones, camera path, and modular construction order?
+- Which visible marks carry meaning without labels, and what text has been removed because narration carries it?

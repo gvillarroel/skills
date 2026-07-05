@@ -1,0 +1,207 @@
+{
+  "title": "What is an Agent",
+  "topic": "What is an Agent",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "state-machine",
+  "visualZones": [
+    {
+      "id": "state-machine-orientation-zone",
+      "role": "opening anchor plane",
+      "bounds": {
+        "x": 44,
+        "y": 96,
+        "width": 304,
+        "height": 248
+      },
+      "grayLevel": 1,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "state-machine-primary-system-zone",
+      "role": "main mechanism plane",
+      "bounds": {
+        "x": 44,
+        "y": 344,
+        "width": 304,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "state-machine-secondary-system-zone",
+      "role": "support mechanism plane",
+      "bounds": {
+        "x": 348,
+        "y": 96,
+        "width": 520,
+        "height": 508
+      },
+      "grayLevel": 3,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "state-machine-control-risk-zone",
+      "role": "control and risk plane",
+      "bounds": {
+        "x": 868,
+        "y": 96,
+        "width": 368,
+        "height": 248
+      },
+      "grayLevel": 4,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "state-machine-evidence-feedback-zone",
+      "role": "evidence and feedback plane",
+      "bounds": {
+        "x": 868,
+        "y": 344,
+        "width": 368,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "durationSeconds": 120.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "what-is-an-agent",
+  "outputVideo": "projects/metro-ai-concept-videos/what-is-an-agent/artifacts/video-renders/draft/videos/what-is-an-agent.mp4",
+  "sourceFacts": [
+    "An agentic system combines a model with tools, state or memory, and orchestration.",
+    "An agent does more than answer once: it can observe context, take actions, inspect results, and continue in a loop.",
+    "A minimal teaching decomposition is context, environment, actions, and a loop or policy.",
+    "Context can include chat history, files, instructions, memory, and tool outputs.",
+    "Environment is the system the agent can inspect or affect, such as a repo, terminal, browser, ticket system, docs, or database.",
+    "Actions can include reading files, running tests, searching docs, calling APIs, or asking for approval.",
+    "The loop or policy decides whether to keep exploring, execute a tool, or stop.",
+    "A workflow follows predefined steps, while an agent adapts based on what it finds."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "agent loop ring",
+    "Observe / Act / Check / Continue loop",
+    "four labeled component cards",
+    "stacked context panes",
+    "environment blocks for repo, terminal, browser, tickets, docs, and database",
+    "tool icons around the loop",
+    "policy decision fork",
+    "fixed workflow lane",
+    "adaptive agent lane",
+    "final Model + Tools + State + Loop badge"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [
+    "observe",
+    "context",
+    "action",
+    "check",
+    "continue",
+    "stop"
+  ],
+  "guardLabels": [
+    "tool permission",
+    "state memory",
+    "environment result"
+  ],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "state cards activate in order along a deterministic lifecycle path",
+    "guard panels become visible before state transitions commit",
+    "rollback and compensation route away from the main success path",
+    "terminal-state panel separates done work from parked or failed work"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

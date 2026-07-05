@@ -1,0 +1,144 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 6,
+    "write": 1,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2380
+    },
+    {
+      "path": "skills/scene-composition-director/SKILL.md",
+      "calls": 1,
+      "resultBytes": 7724
+    },
+    {
+      "path": "skills/scene-composition-director/references/source-preservation.md",
+      "calls": 1,
+      "resultBytes": 3992
+    },
+    {
+      "path": "skills/scene-composition-director/references/selection-guide.md",
+      "calls": 1,
+      "resultBytes": 13436
+    },
+    {
+      "path": "skills/scene-composition-director/references/composition-brief-contract.md",
+      "calls": 1,
+      "resultBytes": 10904
+    },
+    {
+      "path": "skills/scene-composition-director/scripts/validate_scene_composition_plan.py",
+      "calls": 1,
+      "resultBytes": 19465
+    },
+    {
+      "path": "projects/metro-composition-director-validation/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 145
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2380
+    },
+    {
+      "path": "skills/scene-composition-director/SKILL.md",
+      "calls": 1,
+      "resultBytes": 7724
+    },
+    {
+      "path": "skills/scene-composition-director/references/source-preservation.md",
+      "calls": 1,
+      "resultBytes": 3992
+    },
+    {
+      "path": "skills/scene-composition-director/references/selection-guide.md",
+      "calls": 1,
+      "resultBytes": 13436
+    },
+    {
+      "path": "skills/scene-composition-director/references/composition-brief-contract.md",
+      "calls": 1,
+      "resultBytes": 10904
+    },
+    {
+      "path": "skills/scene-composition-director/scripts/validate_scene_composition_plan.py",
+      "calls": 1,
+      "resultBytes": 19465
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2380
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/scene-composition-director/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7724
+    },
+    {
+      "line": 48,
+      "tool": "read",
+      "path": "skills/scene-composition-director/references/source-preservation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3992
+    },
+    {
+      "line": 49,
+      "tool": "read",
+      "path": "skills/scene-composition-director/references/selection-guide.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 13436
+    },
+    {
+      "line": 50,
+      "tool": "read",
+      "path": "skills/scene-composition-director/references/composition-brief-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10904
+    },
+    {
+      "line": 67,
+      "tool": "read",
+      "path": "skills/scene-composition-director/scripts/validate_scene_composition_plan.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 19465
+    },
+    {
+      "line": 80,
+      "tool": "write",
+      "path": "projects/metro-composition-director-validation/composition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 145
+    },
+    {
+      "line": 95,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/scene-composition-director/scripts/validate_scene_composition_plan.py --plan projects/metro-composition-director-validation/composition-plan.json --expect-scenes 2 --require-anchor \"bounded queue\" --require-anchor \"fe",
+      "isError": false,
+      "resultBytes": 95
+    }
+  ],
+  "findings": []
+}

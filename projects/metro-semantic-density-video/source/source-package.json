@@ -1,0 +1,489 @@
+{
+  "title": "Metro Semantic Density Validation",
+  "topic": "semantic-density proof for Metro video-generation skill validation",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "systems-flow",
+  "visualZones": [
+    {
+      "id": "systems-flow-intake-zone",
+      "role": "input contract zone",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "grayLevel": 1,
+      "sourceAnchors": [
+        "modular megacanvas",
+        "feedback throttle"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-pipeline-zone",
+      "role": "queue and transform zone",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 400,
+        "height": 280
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "semantic density",
+        "camera exploration"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-control-zone",
+      "role": "retry and failure-control zone",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 400,
+        "height": 580
+      },
+      "grayLevel": 3,
+      "sourceAnchors": [
+        "queue fill",
+        "contact-sheet progression"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-feedback-zone",
+      "role": "throughput feedback zone",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 580
+      },
+      "grayLevel": 4,
+      "sourceAnchors": [
+        "retry branch"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-transaction-zone",
+      "role": "active transaction path zone",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 580
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "dead-letter branch"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "masonryLayout": {
+    "required": true,
+    "moduleCount": 12,
+    "transitionType": "masonry-construction"
+  },
+  "masonryModules": [
+    {
+      "id": "masonry-module-01",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "zoneIndex": 0,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-02",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 180,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-03",
+      "bounds": {
+        "x": 228,
+        "y": 388,
+        "width": 220,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-04",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 220,
+        "height": 180
+      },
+      "zoneIndex": 2,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-05",
+      "bounds": {
+        "x": 668,
+        "y": 88,
+        "width": 180,
+        "height": 300
+      },
+      "zoneIndex": 2,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-06",
+      "bounds": {
+        "x": 448,
+        "y": 268,
+        "width": 400,
+        "height": 400
+      },
+      "zoneIndex": 2,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-07",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 300
+      },
+      "zoneIndex": 3,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-08",
+      "bounds": {
+        "x": 848,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-09",
+      "bounds": {
+        "x": 1020,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-10",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 244
+      },
+      "zoneIndex": 4,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-11",
+      "bounds": {
+        "x": 1192,
+        "y": 332,
+        "width": 172,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-12",
+      "bounds": {
+        "x": 1364,
+        "y": 332,
+        "width": 188,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 3
+    }
+  ],
+  "durationSeconds": 6.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "metro-semantic-density",
+  "outputVideo": "projects/metro-semantic-density-video/artifacts/video-renders/draft/videos/metro-semantic-density.mp4",
+  "sourceFacts": [
+    "The video must show a navigable modular megacanvas rather than labeled slides.",
+    "Camera movement must be visible through render-state diversity.",
+    "Camera movement must show meaningful travel and zoom depth, not tiny decorative nudges.",
+    "Queue fill, retry, dead-letter, and feedback throttle must all appear as late mechanisms.",
+    "Contact-sheet frames must change enough to prove visual progression.",
+    "Hiding all SVG text must still leave enough visible mark motion, zones, gray hierarchy, and nonbackground area for the mute test to pass.",
+    "The semantic-density audit must show a continuity path through zones, not only distinct state-summary values.",
+    "The semantic-density audit must prove every visual anchor is bound through source package, rendered DOM, and render-state evidence.",
+    "The semantic-density audit must pass after the wrapper, state check, contact sheet, Metro audit suite, mute-test audit, and encoded-MP4 composition audit."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [
+    "Gateway",
+    "Event bus",
+    "Queue",
+    "Worker pool",
+    "Retry policy",
+    "Dead letter",
+    "Metrics",
+    "Throttle",
+    "dead-letter",
+    "throughput",
+    "throttle"
+  ],
+  "strategyAnchors": [
+    "modular megacanvas",
+    "semantic density",
+    "queue fill",
+    "retry branch",
+    "dead-letter branch",
+    "feedback throttle",
+    "camera exploration",
+    "contact-sheet progression"
+  ],
+  "semanticBindings": [
+    {
+      "id": "binding-01",
+      "sourceAnchor": "modular megacanvas",
+      "zoneId": "systems-flow-intake-zone",
+      "zoneRole": "input contract zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event packets route from sources through a bus into a bounded queue",
+      "stateKey": "queueSlots",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-02",
+      "sourceAnchor": "semantic density",
+      "zoneId": "systems-flow-pipeline-zone",
+      "zoneRole": "queue and transform zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "queue slots fill while worker nodes pulse to show transformation capacity",
+      "stateKey": "retryVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-03",
+      "sourceAnchor": "queue fill",
+      "zoneId": "systems-flow-control-zone",
+      "zoneRole": "retry and failure-control zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "retry and dead-letter branches split failed work into explicit control paths",
+      "stateKey": "deadLetterVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-04",
+      "sourceAnchor": "retry branch",
+      "zoneId": "systems-flow-feedback-zone",
+      "zoneRole": "throughput feedback zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "throughput and feedback-control layers move separately from the main packet path",
+      "stateKey": "feedbackVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-05",
+      "sourceAnchor": "dead-letter branch",
+      "zoneId": "systems-flow-transaction-zone",
+      "zoneRole": "active transaction path zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event packets route from sources through a bus into a bounded queue",
+      "stateKey": "workerActive",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-06",
+      "sourceAnchor": "feedback throttle",
+      "zoneId": "systems-flow-intake-zone",
+      "zoneRole": "input contract zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "queue slots fill while worker nodes pulse to show transformation capacity",
+      "stateKey": "queueSlots",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-07",
+      "sourceAnchor": "camera exploration",
+      "zoneId": "systems-flow-pipeline-zone",
+      "zoneRole": "queue and transform zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "retry and dead-letter branches split failed work into explicit control paths",
+      "stateKey": "retryVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-08",
+      "sourceAnchor": "contact-sheet progression",
+      "zoneId": "systems-flow-control-zone",
+      "zoneRole": "retry and failure-control zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "throughput and feedback-control layers move separately from the main packet path",
+      "stateKey": "deadLetterVisible",
+      "visualRole": "data-bearing-zone"
+    }
+  ],
+  "visualMechanismAnchors": [
+    {
+      "id": "mechanism-01",
+      "mechanism": "event packets route from sources through a bus into a bounded queue",
+      "sourceAnchors": [
+        "modular megacanvas",
+        "dead-letter branch"
+      ]
+    },
+    {
+      "id": "mechanism-02",
+      "mechanism": "queue slots fill while worker nodes pulse to show transformation capacity",
+      "sourceAnchors": [
+        "semantic density",
+        "feedback throttle"
+      ]
+    },
+    {
+      "id": "mechanism-03",
+      "mechanism": "retry and dead-letter branches split failed work into explicit control paths",
+      "sourceAnchors": [
+        "queue fill",
+        "camera exploration"
+      ]
+    },
+    {
+      "id": "mechanism-04",
+      "mechanism": "throughput and feedback-control layers move separately from the main packet path",
+      "sourceAnchors": [
+        "retry branch",
+        "contact-sheet progression"
+      ]
+    }
+  ],
+  "sourceAnchorCoverage": {
+    "expectedCount": 8,
+    "zoneCoveredCount": 8,
+    "mechanismCoveredCount": 8,
+    "coveredCount": 8,
+    "uncoveredAnchors": [],
+    "zoneUncoveredAnchors": [],
+    "mechanismUncoveredAnchors": []
+  },
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "event packets route from sources through a bus into a bounded queue",
+    "queue slots fill while worker nodes pulse to show transformation capacity",
+    "retry and dead-letter branches split failed work into explicit control paths",
+    "throughput and feedback-control layers move separately from the main packet path"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

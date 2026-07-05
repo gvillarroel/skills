@@ -80,6 +80,11 @@ Create one structured storyboard or data module before HTML:
 - source assets or source facts used by the beat
 - transition intent
 - validation cues, such as poster time, key moment, or expected visible state
+- functional zones or megacanvas region used by the beat
+- camera path, reframe, tile morph, surface wipe, or explicit reason camera movement is not needed
+- text role: data label, object name, value, axis, legend, or narration-only fact
+- semantic motion systems: primary mechanism, secondary state or metric, and transition or camera system
+- muted-playback inference: what a viewer should understand without narration
 
 For multi-scene work, approve or lock the storyboard before building. For small edits or one-shot motion graphics, the contract can be a compact JSON object or a short note, but it should still name the source, duration, visual mechanic, and validation target.
 
@@ -125,7 +130,7 @@ Live Anime.js previews are fine for authoring, but the exported frames should be
 
 Before coding motion, assign each meaningful element a verb: enter, split, route, append, rank, sample, count, fill, lock, pulse, sweep, reveal, block, merge, or exit.
 
-Use two to four motion systems per substantial beat, such as:
+Use two to four motion systems per substantial beat, and require at least three for polished Metro or complex low-text explainers. Examples:
 
 - a primary object transformation
 - a secondary metric, meter, or state update

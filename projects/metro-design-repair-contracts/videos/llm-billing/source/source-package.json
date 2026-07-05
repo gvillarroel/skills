@@ -1,0 +1,609 @@
+{
+  "title": "LLM Billing",
+  "topic": "LLM Billing",
+  "checkedDate": "2026-07-05",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "sankey-flow",
+  "visualZones": [
+    {
+      "id": "sankey-flow-input-zone",
+      "role": "input volume zone",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "grayLevel": 1,
+      "sourceAnchors": [
+        "(0.12 3) + (0.02 15)",
+        "0.17 22",
+        "token_stream",
+        "Use a split panel for **API**"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "sankey-flow-split-zone",
+      "role": "split and loss zone",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 400,
+        "height": 280
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "(0.12 5) + (0.02 25)",
+        "1600 / 24",
+        "power_curve",
+        "Animate one costly \"retry spiral\" to show how bad prompting turns into real spend"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "sankey-flow-transform-zone",
+      "role": "parallel transform zone",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 400,
+        "height": 580
+      },
+      "grayLevel": 3,
+      "sourceAnchors": [
+        "(0.12 2.5) + (0.02 15)",
+        "(10/60) 80 22",
+        "1 AI credit = $0.01",
+        "gpu_rack and power_curve for local cost"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "sankey-flow-merge-zone",
+      "role": "merge bottleneck zone",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 580
+      },
+      "grayLevel": 4,
+      "sourceAnchors": [
+        "1500 / 60",
+        "credit_meter",
+        "$ / latency / retries / human time"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "sankey-flow-output-zone",
+      "role": "output contract zone",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 580
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "0.45 2 0.1883",
+        "gpu_rack",
+        "credit_meter and token_stream"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "masonryLayout": {
+    "required": true,
+    "moduleCount": 12,
+    "transitionType": "masonry-construction"
+  },
+  "masonryModules": [
+    {
+      "id": "masonry-module-01",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "zoneIndex": 0,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-02",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 180,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-03",
+      "bounds": {
+        "x": 228,
+        "y": 388,
+        "width": 220,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-04",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 220,
+        "height": 180
+      },
+      "zoneIndex": 2,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-05",
+      "bounds": {
+        "x": 668,
+        "y": 88,
+        "width": 180,
+        "height": 300
+      },
+      "zoneIndex": 2,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-06",
+      "bounds": {
+        "x": 448,
+        "y": 268,
+        "width": 400,
+        "height": 400
+      },
+      "zoneIndex": 2,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-07",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 300
+      },
+      "zoneIndex": 3,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-08",
+      "bounds": {
+        "x": 848,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-09",
+      "bounds": {
+        "x": 1020,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-10",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 244
+      },
+      "zoneIndex": 4,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-11",
+      "bounds": {
+        "x": 1192,
+        "y": 332,
+        "width": 172,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-12",
+      "bounds": {
+        "x": 1364,
+        "y": 332,
+        "width": 188,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 3
+    }
+  ],
+  "durationSeconds": 6.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 6
+  },
+  "outputId": "llm-billing",
+  "outputVideo": "projects/metro-design-repair-contracts/videos/llm-billing/artifacts/video-renders/draft/videos/llm-billing.mp4",
+  "sourceFacts": [
+    "LLM billing is best understood as \u201ctokens in, tokens out, model selected, extras enabled.\u201d GitHub Copilot now meters usage in AI credits where 1 credit equals $0.01 and actual spend depends on token counts and model rates; Anthropic\u2019s API prices Claude models directly per million input, cached-input, and output tokens, while Claude subscriptions bundle or cap usage in different ways.",
+    "Even \u201clocal\u201d models are not free: they consume electricity, hardware life, and developer time, so local inference should be compared against API cost, latency, and opportunity cost instead of being treated as zero-cost."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [
+    "(0.12 3) + (0.02 15)",
+    "(0.12 5) + (0.02 25)",
+    "(0.12 2.5) + (0.02 15)",
+    "1500 / 60",
+    "0.45 2 0.1883",
+    "0.17 22",
+    "1600 / 24",
+    "(10/60) 80 22"
+  ],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "(0.12 3) + (0.02 15)",
+    "(0.12 5) + (0.02 25)",
+    "(0.12 2.5) + (0.02 15)",
+    "1500 / 60",
+    "0.45 2 0.1883",
+    "0.17 22",
+    "1600 / 24",
+    "(10/60) 80 22",
+    "credit_meter",
+    "gpu_rack",
+    "token_stream",
+    "power_curve",
+    "1 AI credit = $0.01",
+    "$ / latency / retries / human time",
+    "credit_meter and token_stream",
+    "Use a split panel for **API**",
+    "Animate one costly \"retry spiral\" to show how bad prompting turns into real spend",
+    "gpu_rack and power_curve for local cost"
+  ],
+  "semanticBindings": [
+    {
+      "id": "binding-01",
+      "sourceAnchor": "(0.12 3) + (0.02 15)",
+      "zoneId": "sankey-flow-input-zone",
+      "zoneRole": "input volume zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "one input stream splits into retained value and explicit loss branches",
+      "stateKey": "activeFlowCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-02",
+      "sourceAnchor": "(0.12 5) + (0.02 25)",
+      "zoneId": "sankey-flow-split-zone",
+      "zoneRole": "split and loss zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "parallel transform lanes carry separate portions of the value flow",
+      "stateKey": "splitVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-03",
+      "sourceAnchor": "(0.12 2.5) + (0.02 15)",
+      "zoneId": "sankey-flow-transform-zone",
+      "zoneRole": "parallel transform zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "merge and bottleneck states appear before final output readiness",
+      "stateKey": "lossVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-04",
+      "sourceAnchor": "1500 / 60",
+      "zoneId": "sankey-flow-merge-zone",
+      "zoneRole": "merge bottleneck zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "input, retained value, and output readiness meters progress separately",
+      "stateKey": "bottleneckVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-05",
+      "sourceAnchor": "0.45 2 0.1883",
+      "zoneId": "sankey-flow-output-zone",
+      "zoneRole": "output contract zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "one input stream splits into retained value and explicit loss branches",
+      "stateKey": "mergeVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-06",
+      "sourceAnchor": "0.17 22",
+      "zoneId": "sankey-flow-input-zone",
+      "zoneRole": "input volume zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "parallel transform lanes carry separate portions of the value flow",
+      "stateKey": "outputVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-07",
+      "sourceAnchor": "1600 / 24",
+      "zoneId": "sankey-flow-split-zone",
+      "zoneRole": "split and loss zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "merge and bottleneck states appear before final output readiness",
+      "stateKey": "activeFlowCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-08",
+      "sourceAnchor": "(10/60) 80 22",
+      "zoneId": "sankey-flow-transform-zone",
+      "zoneRole": "parallel transform zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "input, retained value, and output readiness meters progress separately",
+      "stateKey": "splitVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-09",
+      "sourceAnchor": "credit_meter",
+      "zoneId": "sankey-flow-merge-zone",
+      "zoneRole": "merge bottleneck zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "one input stream splits into retained value and explicit loss branches",
+      "stateKey": "lossVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-10",
+      "sourceAnchor": "gpu_rack",
+      "zoneId": "sankey-flow-output-zone",
+      "zoneRole": "output contract zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "parallel transform lanes carry separate portions of the value flow",
+      "stateKey": "bottleneckVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-11",
+      "sourceAnchor": "token_stream",
+      "zoneId": "sankey-flow-input-zone",
+      "zoneRole": "input volume zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "merge and bottleneck states appear before final output readiness",
+      "stateKey": "mergeVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-12",
+      "sourceAnchor": "power_curve",
+      "zoneId": "sankey-flow-split-zone",
+      "zoneRole": "split and loss zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "input, retained value, and output readiness meters progress separately",
+      "stateKey": "outputVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-13",
+      "sourceAnchor": "1 AI credit = $0.01",
+      "zoneId": "sankey-flow-transform-zone",
+      "zoneRole": "parallel transform zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "one input stream splits into retained value and explicit loss branches",
+      "stateKey": "activeFlowCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-14",
+      "sourceAnchor": "$ / latency / retries / human time",
+      "zoneId": "sankey-flow-merge-zone",
+      "zoneRole": "merge bottleneck zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "parallel transform lanes carry separate portions of the value flow",
+      "stateKey": "splitVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-15",
+      "sourceAnchor": "credit_meter and token_stream",
+      "zoneId": "sankey-flow-output-zone",
+      "zoneRole": "output contract zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "merge and bottleneck states appear before final output readiness",
+      "stateKey": "lossVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-16",
+      "sourceAnchor": "Use a split panel for **API**",
+      "zoneId": "sankey-flow-input-zone",
+      "zoneRole": "input volume zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "input, retained value, and output readiness meters progress separately",
+      "stateKey": "bottleneckVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-17",
+      "sourceAnchor": "Animate one costly \"retry spiral\" to show how bad prompting turns into real spend",
+      "zoneId": "sankey-flow-split-zone",
+      "zoneRole": "split and loss zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "one input stream splits into retained value and explicit loss branches",
+      "stateKey": "mergeVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-18",
+      "sourceAnchor": "gpu_rack and power_curve for local cost",
+      "zoneId": "sankey-flow-transform-zone",
+      "zoneRole": "parallel transform zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "parallel transform lanes carry separate portions of the value flow",
+      "stateKey": "outputVisible",
+      "visualRole": "data-bearing-zone"
+    }
+  ],
+  "visualMechanismAnchors": [
+    {
+      "id": "mechanism-01",
+      "mechanism": "one input stream splits into retained value and explicit loss branches",
+      "sourceAnchors": [
+        "(0.12 3) + (0.02 15)",
+        "0.45 2 0.1883",
+        "credit_meter",
+        "1 AI credit = $0.01",
+        "Animate one costly \"retry spiral\" to show how bad prompting turns into real spend"
+      ]
+    },
+    {
+      "id": "mechanism-02",
+      "mechanism": "parallel transform lanes carry separate portions of the value flow",
+      "sourceAnchors": [
+        "(0.12 5) + (0.02 25)",
+        "0.17 22",
+        "gpu_rack",
+        "$ / latency / retries / human time",
+        "gpu_rack and power_curve for local cost"
+      ]
+    },
+    {
+      "id": "mechanism-03",
+      "mechanism": "merge and bottleneck states appear before final output readiness",
+      "sourceAnchors": [
+        "(0.12 2.5) + (0.02 15)",
+        "1600 / 24",
+        "token_stream",
+        "credit_meter and token_stream"
+      ]
+    },
+    {
+      "id": "mechanism-04",
+      "mechanism": "input, retained value, and output readiness meters progress separately",
+      "sourceAnchors": [
+        "1500 / 60",
+        "(10/60) 80 22",
+        "power_curve",
+        "Use a split panel for **API**"
+      ]
+    }
+  ],
+  "sourceAnchorCoverage": {
+    "expectedCount": 18,
+    "zoneCoveredCount": 18,
+    "mechanismCoveredCount": 18,
+    "coveredCount": 18,
+    "uncoveredAnchors": [],
+    "zoneUncoveredAnchors": [],
+    "mechanismUncoveredAnchors": []
+  },
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "one input stream splits into retained value and explicit loss branches",
+    "parallel transform lanes carry separate portions of the value flow",
+    "merge and bottleneck states appear before final output readiness",
+    "input, retained value, and output readiness meters progress separately"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

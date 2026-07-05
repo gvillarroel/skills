@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "videoId": "zero-padding-transition",
+  "persistentElement": {
+    "name": "work packet",
+    "role": "viewer-tracked unit of work",
+    "states": ["queued", "bridge", "validated"]
+  },
+  "transitions": [
+    {
+      "id": "t01",
+      "fromScene": "s01",
+      "toScene": "s02",
+      "start": 1.0,
+      "duration": 0.8,
+      "family": "morph continuity",
+      "semanticPurpose": "Carry the work packet from the source board into the validation board without changing the visual contract.",
+      "stateChange": "The packet changes from queued to validated while keeping its rectangular hard-edge geometry.",
+      "attentionHandoff": "The packet starts on the outgoing row baseline and lands on the incoming row baseline.",
+      "styleContinuity": "Square rectangles, 0-radius masks, zero-padding boxes, and grayscale hierarchy persist through the midpoint.",
+      "alignmentRule": "Outgoing and incoming packets share a grid row baseline and orthogonal path.",
+      "edgeRule": "All masks and panels remain square, rectangular, hard-edge, and 0-radius.",
+      "boxPaddingRule": "All boxes keep internalPaddingPx 0; content remains flush to bounds with external gutters only.",
+      "grayscaleHierarchyRule": "Outgoing, bridge, and incoming hierarchy use #333333, #696969, and #9c9c9c; hue only marks semantic state.",
+      "grayscaleHierarchy": [
+        { "level": 0, "role": "primary focal", "grayHex": "#333333" },
+        { "level": 1, "role": "secondary support", "grayHex": "#696969" },
+        { "level": 2, "role": "tertiary structure", "grayHex": "#9c9c9c" }
+      ],
+      "genericMotionRejected": "A generic slide would move the packet but would not preserve the zero-padding box contract or show validation state change.",
+      "surprise": "The packet becomes the validation row instead of entering a padded card.",
+      "outgoingState": "Queued work packet is visible on the source board.",
+      "bridgeAction": "Rectangular packet stretches along the grid baseline with flush bounds.",
+      "incomingState": "Validated packet lands as the primary rectangle on the target board.",
+      "compositionShift": "Left board becomes right board through shared grid baseline.",
+      "colorShift": "Hue marks validated state only; grayscale still carries hierarchy.",
+      "cameraShift": "No camera move; orthogonal morph holds scale.",
+      "spaceShift": "Source board becomes validation board.",
+      "validationFrames": [
+        {
+          "time": "transition midpoint",
+          "target": "packet rectangle and board masks",
+          "passCriterion": "All boxes have zero internal padding and use the declared grayscale hierarchy."
+        }
+      ],
+      "validationChecks": [
+        {
+          "method": "midpoint-frame-review",
+          "target": "t01 midpoint",
+          "passCriterion": "Packet, mask, and destination stay square, flush, and grayscale-level consistent."
+        }
+      ]
+    }
+  ]
+}

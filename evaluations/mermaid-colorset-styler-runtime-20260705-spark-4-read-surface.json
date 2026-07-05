@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 6,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2350
+    },
+    {
+      "path": "styled-report.json",
+      "calls": 1,
+      "resultBytes": 3805
+    },
+    {
+      "path": "styled-check.json",
+      "calls": 1,
+      "resultBytes": 3729
+    },
+    {
+      "path": "source/base-state.mmd",
+      "calls": 1,
+      "resultBytes": 3763
+    },
+    {
+      "path": "source/notes.md",
+      "calls": 1,
+      "resultBytes": 6936
+    },
+    {
+      "path": "source/base-flow.mmd",
+      "calls": 1,
+      "resultBytes": 3989
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2350
+    },
+    {
+      "path": "styled-report.json",
+      "calls": 1,
+      "resultBytes": 3805
+    },
+    {
+      "path": "styled-check.json",
+      "calls": 1,
+      "resultBytes": 3729
+    },
+    {
+      "path": "source/base-state.mmd",
+      "calls": 1,
+      "resultBytes": 3763
+    },
+    {
+      "path": "source/notes.md",
+      "calls": 1,
+      "resultBytes": 6936
+    },
+    {
+      "path": "source/base-flow.mmd",
+      "calls": 1,
+      "resultBytes": 3989
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2350
+    },
+    {
+      "line": 28,
+      "tool": "bash",
+      "path": null,
+      "command": "mkdir -p source\ncat > source/base-flow.mmd <<'EOF'\nflowchart LR\n  Intake[Request]:::csPrimary --> Review{Review}:::csWarning\n  Review -->|approve| Ship[Ship]:::csSuccess\n  Review -->|reject| Fix[Fix]:::csCritical\n  Ship e1@--> Done[Done]:::",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 41,
+      "tool": "read",
+      "path": "styled-report.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3805
+    },
+    {
+      "line": 54,
+      "tool": "read",
+      "path": "styled-check.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3729
+    },
+    {
+      "line": 75,
+      "tool": "read",
+      "path": "source/base-state.mmd",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3763
+    },
+    {
+      "line": 76,
+      "tool": "read",
+      "path": "source/notes.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6936
+    },
+    {
+      "line": 77,
+      "tool": "read",
+      "path": "source/base-flow.mmd",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3989
+    }
+  ],
+  "findings": []
+}

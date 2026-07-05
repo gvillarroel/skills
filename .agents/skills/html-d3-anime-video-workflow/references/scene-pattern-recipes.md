@@ -46,6 +46,21 @@ Use the generic renderer only when the new concept shares the same mechanic as t
 - Do not use ambient motion as decoration. Moving packets or lanes must represent transfer, pressure, routing, or accumulation.
 - If the concept needs a different causal model, create a dedicated beat module instead.
 
+## Metro Scaffold Hardening
+
+Use when a helper or existing pattern produces technically valid output that still looks like labeled boxes, static panels, padded cards, or disconnected slides.
+
+- Treat helper output as a starter scaffold, not a final Metro video.
+- Convert panels into functional zones inside one megacanvas.
+- Remove visible title, subtitle, caption, checked-date, and draft/scaffold bands.
+- Replace explanatory labels with stateful marks, object-local labels, axes, table cells, route names, or narration-only facts.
+- Add camera-driven exploration: overview, zoom or pan to detail, return or transition through a block.
+- Add at least three semantic motion systems, such as route motion, matrix fill, queue growth, meter shift, edge draw, table-to-chart transform, or block construction.
+- Enforce hard 0-radius blocks, shared 4 px grid edges, no internal padding, and stable grayscale hierarchy.
+- Use `visual-density-pattern-bank.md` to select stronger structures before adding text.
+
+Validate hardened output with a contact sheet, Metro audit suite, muted-playback review, and a self-review that names any remaining design defects.
+
 ## Cost And Pricing Handoff
 
 Source patterns: LLM billing handoff and implication scenes.

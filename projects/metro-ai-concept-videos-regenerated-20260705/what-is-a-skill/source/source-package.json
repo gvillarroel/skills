@@ -1,0 +1,211 @@
+{
+  "title": "What is a Skill",
+  "topic": "What is a Skill",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "dependency-map",
+  "visualZones": [
+    {
+      "id": "dependency-map-orientation-zone",
+      "role": "opening anchor plane",
+      "bounds": {
+        "x": 44,
+        "y": 96,
+        "width": 304,
+        "height": 248
+      },
+      "grayLevel": 1,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "dependency-map-primary-system-zone",
+      "role": "main mechanism plane",
+      "bounds": {
+        "x": 44,
+        "y": 344,
+        "width": 304,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "dependency-map-secondary-system-zone",
+      "role": "support mechanism plane",
+      "bounds": {
+        "x": 348,
+        "y": 96,
+        "width": 520,
+        "height": 508
+      },
+      "grayLevel": 3,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "dependency-map-control-risk-zone",
+      "role": "control and risk plane",
+      "bounds": {
+        "x": 868,
+        "y": 96,
+        "width": 368,
+        "height": 248
+      },
+      "grayLevel": 4,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "dependency-map-evidence-feedback-zone",
+      "role": "evidence and feedback plane",
+      "bounds": {
+        "x": 868,
+        "y": 344,
+        "width": 368,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "durationSeconds": 120.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "what-is-a-skill",
+  "outputVideo": "projects/metro-ai-concept-videos/what-is-a-skill/artifacts/video-renders/draft/videos/what-is-a-skill.mp4",
+  "sourceFacts": [
+    "A skill is a reusable capability package for specialized tasks.",
+    "A skill gives the harness structured instructions, scripts, and supporting resources.",
+    "Skills support progressive disclosure because they load when relevant instead of forcing long procedures into every prompt.",
+    "GitHub Copilot describes skills as folders of instructions, scripts, and resources.",
+    "Claude Code says long reference material in a skill costs almost nothing until it is needed.",
+    "OpenCode loads SKILL.md-based skills on demand.",
+    "Skills are useful for deploy checklists, debugging routines, architecture explainers, onboarding flows, and codebase maps.",
+    "The common mistake is making a skill too broad, verbose, or always relevant."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [
+    "Trigger",
+    "SKILL.md",
+    "References",
+    "Scripts",
+    "Assets",
+    "integration",
+    "release gate",
+    "fallback path"
+  ],
+  "clusterLabels": [
+    "Progressive disclosure",
+    "Validation",
+    "Tool instructions",
+    "Runtime load",
+    "Reusable workflow",
+    "Scope boundary",
+    "Cost control"
+  ],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "skill card stack",
+    "long prompt wall shrinking into one skill card",
+    "compatible folder structures",
+    "cost meter staying flat until activation",
+    "example skill cards",
+    "tool badges snapping onto the skill card",
+    "bloated card being trimmed down",
+    "progressive disclosure callout"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "source dependencies converge into an integration layer before release is allowed",
+    "risk edge and bottleneck callouts appear as separate mechanisms instead of generic warnings",
+    "cutover gate waits for upstream proof before the release path is highlighted",
+    "fallback path appears late as an explicit safety route rather than a text-only caveat"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

@@ -1,0 +1,470 @@
+{
+  "passed": true,
+  "date": "2026-07-05",
+  "configFormat": "yaml-frontmatter",
+  "mermaidCliPackage": "@mermaid-js/mermaid-cli@11.16.0",
+  "exampleCount": 40,
+  "approvedExampleCount": 40,
+  "officialDeclarationCount": 40,
+  "colorsetsReviewed": [
+    "colorset1",
+    "colorset2"
+  ],
+  "renderedSvgCount": 80,
+  "missingDeclarations": [],
+  "duplicateDeclarations": [],
+  "missingColorClasses": [],
+  "findingCount": 0,
+  "syntaxErrorSvgCheck": true,
+  "yamlFrontmatterCheck": true,
+  "visualContactSheets": [
+    "projects/mermaid-colorset-styler-review/artifacts/yaml-render-approval/contact-sheet-01.png",
+    "projects/mermaid-colorset-styler-review/artifacts/yaml-render-approval/contact-sheet-02.png",
+    "projects/mermaid-colorset-styler-review/artifacts/yaml-render-approval/contact-sheet-03.png",
+    "projects/mermaid-colorset-styler-review/artifacts/yaml-render-approval/contact-sheet-04.png"
+  ],
+  "maintainedBehaviors": [
+    "Generated config is Mermaid YAML frontmatter under config.theme and config.themeVariables",
+    "Previous generated JSON init directives are migrated away",
+    "Existing YAML frontmatter is merged; non-style config such as layout is preserved",
+    "Only referenced class definitions are inserted for class-capable Mermaid families"
+  ],
+  "approvedExamples": [
+    {
+      "id": "01-flowchart",
+      "declaration": "flowchart",
+      "family": "flowchart",
+      "classable": true,
+      "referencedClasses": [
+        "csPrimary",
+        "csAccent",
+        "csMuted",
+        "csCritical",
+        "csWarning",
+        "csSuccess",
+        "csInfo",
+        "csSpecial",
+        "csNeutral"
+      ],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "02-graph",
+      "declaration": "graph",
+      "family": "flowchart",
+      "classable": true,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "03-swimlane-beta",
+      "declaration": "swimlane-beta",
+      "family": "swimlane",
+      "classable": true,
+      "referencedClasses": [
+        "csPrimary",
+        "csAccent",
+        "csWarning",
+        "csSuccess"
+      ],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "04-sequencediagram",
+      "declaration": "sequenceDiagram",
+      "family": "sequenceDiagram",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 31,
+      "colorset2ThemeVariableCount": 31,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "05-classdiagram",
+      "declaration": "classDiagram",
+      "family": "classDiagram",
+      "classable": true,
+      "referencedClasses": [
+        "csPrimary",
+        "csAccent",
+        "csCritical"
+      ],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "06-statediagram-v2",
+      "declaration": "stateDiagram-v2",
+      "family": "stateDiagram",
+      "classable": true,
+      "referencedClasses": [
+        "csPrimary",
+        "csWarning",
+        "csSuccess"
+      ],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "07-statediagram",
+      "declaration": "stateDiagram",
+      "family": "stateDiagram",
+      "classable": true,
+      "referencedClasses": [
+        "csCritical",
+        "csInfo"
+      ],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "08-erdiagram",
+      "declaration": "erDiagram",
+      "family": "erDiagram",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "09-journey",
+      "declaration": "journey",
+      "family": "journey",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "10-gantt",
+      "declaration": "gantt",
+      "family": "gantt",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "11-pie",
+      "declaration": "pie",
+      "family": "pie",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 36,
+      "colorset2ThemeVariableCount": 36,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "12-quadrantchart",
+      "declaration": "quadrantChart",
+      "family": "quadrantChart",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 28,
+      "colorset2ThemeVariableCount": 28,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "13-requirementdiagram",
+      "declaration": "requirementDiagram",
+      "family": "requirementDiagram",
+      "classable": true,
+      "referencedClasses": [
+        "csPrimary",
+        "csAccent"
+      ],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "14-gitgraph",
+      "declaration": "gitGraph",
+      "family": "gitGraph",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 36,
+      "colorset2ThemeVariableCount": 36,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "15-c4context",
+      "declaration": "C4Context",
+      "family": "c4",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "16-c4container",
+      "declaration": "C4Container",
+      "family": "c4",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "17-c4component",
+      "declaration": "C4Component",
+      "family": "c4",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "18-c4dynamic",
+      "declaration": "C4Dynamic",
+      "family": "c4",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "19-c4deployment",
+      "declaration": "C4Deployment",
+      "family": "c4",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "20-mindmap",
+      "declaration": "mindmap",
+      "family": "mindmap",
+      "classable": false,
+      "referencedClasses": [
+        "csPrimary",
+        "csAccent"
+      ],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "21-timeline",
+      "declaration": "timeline",
+      "family": "timeline",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "22-zenuml",
+      "declaration": "zenuml",
+      "family": "zenuml",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "23-sankey-beta",
+      "declaration": "sankey-beta",
+      "family": "sankey",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 28,
+      "colorset2ThemeVariableCount": 28,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "24-xychart-beta",
+      "declaration": "xychart-beta",
+      "family": "xyChart",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "25-block-beta",
+      "declaration": "block-beta",
+      "family": "block",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "26-packet",
+      "declaration": "packet",
+      "family": "packet",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "27-kanban",
+      "declaration": "kanban",
+      "family": "kanban",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "28-architecture-beta",
+      "declaration": "architecture-beta",
+      "family": "architecture",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "29-radar-beta",
+      "declaration": "radar-beta",
+      "family": "radar",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "30-eventmodeling",
+      "declaration": "eventmodeling",
+      "family": "eventmodeling",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "31-treemap-beta",
+      "declaration": "treemap-beta",
+      "family": "treemap",
+      "classable": true,
+      "referencedClasses": [
+        "csPrimary",
+        "csAccent",
+        "csCritical"
+      ],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "32-venn-beta",
+      "declaration": "venn-beta",
+      "family": "venn",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "33-ishikawa-beta",
+      "declaration": "ishikawa-beta",
+      "family": "ishikawa",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "34-wardley-beta",
+      "declaration": "wardley-beta",
+      "family": "wardley",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "35-cynefin-beta",
+      "declaration": "cynefin-beta",
+      "family": "cynefin",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 21,
+      "colorset2ThemeVariableCount": 21,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "36-treeview-beta",
+      "declaration": "treeView-beta",
+      "family": "treeView",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "37-railroad-beta",
+      "declaration": "railroad-beta",
+      "family": "railroad",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "38-railroad-ebnf-beta",
+      "declaration": "railroad-ebnf-beta",
+      "family": "railroad",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "39-railroad-abnf-beta",
+      "declaration": "railroad-abnf-beta",
+      "family": "railroad",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    },
+    {
+      "id": "40-railroad-peg-beta",
+      "declaration": "railroad-peg-beta",
+      "family": "railroad",
+      "classable": false,
+      "referencedClasses": [],
+      "colorset1ThemeVariableCount": 20,
+      "colorset2ThemeVariableCount": 20,
+      "usesYamlFrontmatter": true
+    }
+  ]
+}

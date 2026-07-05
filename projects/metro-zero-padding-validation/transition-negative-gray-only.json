@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "videoId": "negative-gray-transition",
+  "persistentElement": {
+    "name": "work packet",
+    "role": "viewer-tracked unit of work",
+    "states": ["queued", "validated"]
+  },
+  "transitions": [
+    {
+      "id": "t01",
+      "fromScene": "s01",
+      "toScene": "s02",
+      "start": 1.0,
+      "duration": 0.8,
+      "family": "morph continuity",
+      "semanticPurpose": "Carry the work packet across boards.",
+      "stateChange": "The work packet changes from queued to validated.",
+      "attentionHandoff": "The viewer follows the work packet along a shared grid baseline.",
+      "styleContinuity": "Square rectangles, hard-edge masks, zero-padding boxes, and grayscale hierarchy persist.",
+      "alignmentRule": "Outgoing and incoming work packet boxes share a grid row baseline.",
+      "edgeRule": "All masks and panels remain square, rectangular, hard-edge, and 0-radius.",
+      "boxPaddingRule": "All boxes keep internalPaddingPx 0; content remains flush to bounds with external gutters only.",
+      "grayscaleHierarchyRule": "Use #333333, #696969, and #9c9c9c in prose only.",
+      "genericMotionRejected": "A generic slide is wrong because it hides the work packet state change.",
+      "surprise": "The work packet becomes the validation row.",
+      "outgoingState": "Queued work packet is visible on the source board.",
+      "bridgeAction": "Work packet stretches along the grid baseline with flush bounds.",
+      "incomingState": "Validated work packet lands as the primary rectangle on the target board.",
+      "compositionShift": "Left board becomes right board through shared grid baseline.",
+      "colorShift": "Hue marks validated state only.",
+      "cameraShift": "No camera move; orthogonal morph holds scale.",
+      "spaceShift": "Source board becomes validation board.",
+      "validationFrames": [
+        {
+          "time": "midpoint",
+          "target": "work packet rectangle",
+          "passCriterion": "This should fail because grayscale hierarchy is not structured."
+        }
+      ],
+      "validationChecks": [
+        {
+          "method": "midpoint-frame-review",
+          "target": "t01 midpoint",
+          "passCriterion": "Should reject prose-only gray hierarchy."
+        }
+      ]
+    }
+  ]
+}

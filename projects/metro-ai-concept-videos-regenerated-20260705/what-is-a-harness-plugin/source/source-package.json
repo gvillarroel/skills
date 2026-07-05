@@ -1,0 +1,209 @@
+{
+  "title": "What is a Harness Plugin",
+  "topic": "What is a Harness Plugin",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "layered-architecture",
+  "visualZones": [
+    {
+      "id": "layered-architecture-orientation-zone",
+      "role": "opening anchor plane",
+      "bounds": {
+        "x": 44,
+        "y": 96,
+        "width": 304,
+        "height": 248
+      },
+      "grayLevel": 1,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "layered-architecture-primary-system-zone",
+      "role": "main mechanism plane",
+      "bounds": {
+        "x": 44,
+        "y": 344,
+        "width": 304,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "layered-architecture-secondary-system-zone",
+      "role": "support mechanism plane",
+      "bounds": {
+        "x": 348,
+        "y": 96,
+        "width": 520,
+        "height": 508
+      },
+      "grayLevel": 3,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "layered-architecture-control-risk-zone",
+      "role": "control and risk plane",
+      "bounds": {
+        "x": 868,
+        "y": 96,
+        "width": 368,
+        "height": 248
+      },
+      "grayLevel": 4,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "layered-architecture-evidence-feedback-zone",
+      "role": "evidence and feedback plane",
+      "bounds": {
+        "x": 868,
+        "y": 344,
+        "width": 368,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "durationSeconds": 120.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "what-is-a-harness-plugin",
+  "outputVideo": "projects/metro-ai-concept-videos/what-is-a-harness-plugin/artifacts/video-renders/draft/videos/what-is-a-harness-plugin.mp4",
+  "sourceFacts": [
+    "A harness plugin is a distribution mechanism for reusable harness customization.",
+    "The exact packaging differs by product, but the common pattern is to bundle runtime capabilities for install, sharing, versioning, and governance.",
+    "GitHub Copilot CLI plugins can bundle agents, skills, hooks, and MCP configuration.",
+    "Claude Code plugins can bundle skills, agents, hooks, and MCP servers from marketplaces.",
+    "OpenCode plugins are JavaScript or TypeScript modules loaded locally or from npm to add hooks, tools, and integrations.",
+    "Plugins package multiple runtime behaviors into one installable unit.",
+    "Distribution is governance: plugins standardize the approved way to work across a team.",
+    "Plugins can lower cost with efficient defaults or raise cost by injecting noisy context and expensive tool calls everywhere."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [
+    "Plugin bundle",
+    "Skills",
+    "Tools",
+    "Apps/connectors",
+    "Hooks",
+    "MCP config",
+    "Agent profile"
+  ],
+  "concernLabels": [
+    "Policy",
+    "Marketplace",
+    "Install/update",
+    "Versioning",
+    "Governance",
+    "Context cost"
+  ],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "plugin bundle cube",
+    "detachable module blocks",
+    "GitHub plugin manifest card",
+    "Claude marketplace allowlist gate",
+    "OpenCode npm module",
+    "versioning and upgrade arrows",
+    "good plugin versus noisy plugin split",
+    "team-wide install lane"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "layers activate in order so ownership boundaries are visible before cross-cutting concerns appear",
+    "the request path descends through the stack instead of treating architecture as a static diagram",
+    "cross-cutting policy, failure route, and observability stay separate from the happy path",
+    "rollout gate appears only after all layers and operational routes are visible"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

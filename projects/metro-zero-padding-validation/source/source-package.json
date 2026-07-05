@@ -1,0 +1,112 @@
+{
+  "title": "Zero Padding Gray Levels",
+  "topic": "Metro box hierarchy",
+  "checkedDate": "July 4, 2026",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "layered-architecture",
+  "durationSeconds": 4.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 6
+  },
+  "outputId": "zero-padding-gray-levels",
+  "outputVideo": "projects/metro-zero-padding-validation/artifacts/video-renders/draft/videos/zero-padding-gray-levels.mp4",
+  "sourceFacts": [
+    "Boxes must have zero internal padding.",
+    "Hierarchy levels must use different gray values."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [
+    "client",
+    "edge/API",
+    "application",
+    "domain service",
+    "data layer",
+    "platform"
+  ],
+  "concernLabels": [
+    "security policy",
+    "failure route",
+    "observability",
+    "rollout gate"
+  ],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "zero internal padding",
+    "grayscale hierarchy levels"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "layers activate in order so ownership boundaries are visible before cross-cutting concerns appear",
+    "the request path descends through the stack instead of treating architecture as a static diagram",
+    "cross-cutting policy, failure route, and observability stay separate from the happy path",
+    "rollout gate appears only after all layers and operational routes are visible"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

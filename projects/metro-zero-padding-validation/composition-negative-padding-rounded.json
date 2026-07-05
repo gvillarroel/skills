@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "format": "1280x720",
+  "scenes": [
+    {
+      "id": "s01",
+      "sceneJob": "Show hierarchy",
+      "viewerTask": "Compare levels",
+      "compositionChoice": "modular board",
+      "choiceRationale": "This fixture intentionally contradicts zero-padding and square-edge rules to prove the validator rejects it.",
+      "focal": "primary rectangle",
+      "roles": { "primary": "level 0", "secondary": "level 1", "tertiary": "level 2" },
+      "armature": "orthogonal grid",
+      "alignmentGrid": "4 px grid with shared baselines",
+      "armatureAnchors": ["left column", "right column"],
+      "objectBounds": [
+        { "id": "primary", "x": 80, "y": 120, "width": 400, "height": 120 }
+      ],
+      "edgePolicy": "square frame with rounded cards",
+      "cornerPolicy": "radius 12 px on internal panels",
+      "boxInteriorPolicy": "zero padding claimed in prose",
+      "boxModel": { "internalPaddingPx": 12, "contentFlushToBounds": true },
+      "grayscaleHierarchy": [
+        { "level": 0, "role": "primary", "grayHex": "#333333" },
+        { "level": 1, "role": "secondary", "grayHex": "#696969" },
+        { "level": 2, "role": "tertiary", "grayHex": "#9c9c9c" }
+      ],
+      "layout": "three rectangles",
+      "hierarchy": "dark to light",
+      "safeZones": "64 px",
+      "depthLayers": ["background", "board", "labels"],
+      "motionPhases": [
+        { "name": "entrance", "cue": "start", "visualChange": "rectangles appear", "motionVerb": "snap" },
+        { "name": "settle", "cue": "end", "visualChange": "levels hold", "motionVerb": "hold" }
+      ],
+      "validationContract": {
+        "boxPadding": "claims zero padding"
+      },
+      "validationChecks": [
+        { "method": "json-validator", "target": "boxModel.internalPaddingPx", "passCriterion": "Should reject positive padding." },
+        { "method": "json-validator", "target": "cornerPolicy", "passCriterion": "Should reject rounded corners." }
+      ]
+    }
+  ]
+}

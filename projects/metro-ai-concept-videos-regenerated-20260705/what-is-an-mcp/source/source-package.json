@@ -1,0 +1,209 @@
+{
+  "title": "What is an MCP",
+  "topic": "What is an MCP",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "systems-flow",
+  "visualZones": [
+    {
+      "id": "systems-flow-intake-zone",
+      "role": "input contract zone",
+      "bounds": {
+        "x": 44,
+        "y": 96,
+        "width": 304,
+        "height": 248
+      },
+      "grayLevel": 1,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-pipeline-zone",
+      "role": "queue and transform zone",
+      "bounds": {
+        "x": 44,
+        "y": 344,
+        "width": 304,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-control-zone",
+      "role": "retry and failure-control zone",
+      "bounds": {
+        "x": 348,
+        "y": 96,
+        "width": 520,
+        "height": 508
+      },
+      "grayLevel": 3,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-feedback-zone",
+      "role": "throughput feedback zone",
+      "bounds": {
+        "x": 868,
+        "y": 96,
+        "width": 368,
+        "height": 248
+      },
+      "grayLevel": 4,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-transaction-zone",
+      "role": "active transaction path zone",
+      "bounds": {
+        "x": 868,
+        "y": 344,
+        "width": 368,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "durationSeconds": 120.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "what-is-an-mcp",
+  "outputVideo": "projects/metro-ai-concept-videos/what-is-an-mcp/artifacts/video-renders/draft/videos/what-is-an-mcp.mp4",
+  "sourceFacts": [
+    "MCP stands for Model Context Protocol.",
+    "MCP is an open standard for connecting AI clients to external systems such as tools, resources, and prompts.",
+    "MCP gives clients and servers a shared protocol instead of requiring one custom integration per assistant.",
+    "An MCP server can expose tools, resources, and prompts.",
+    "MCP is supported across major clients including Claude, ChatGPT-related ecosystems, VS Code, and GitHub Copilot.",
+    "Authentication and authorization matter because MCP can expose real systems.",
+    "Registries, allowlists, and approval policies help govern MCP access.",
+    "MCP can affect cost because tool discovery, tool descriptions, tool calls, and downstream APIs add context or external spend."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [
+    "Client",
+    "MCP bus",
+    "Tools",
+    "Resources",
+    "Prompts",
+    "Auth",
+    "Registry",
+    "Approval",
+    "Downstream API",
+    "Cost/context",
+    "Read data",
+    "Execute action",
+    "Structured workflow",
+    "Least privilege"
+  ],
+  "strategyAnchors": [
+    "MCP bus",
+    "messy point-to-point integrations becoming one protocol bus",
+    "tools resources prompts lanes",
+    "neutral client cards",
+    "lock icons on bus",
+    "registry gate",
+    "approval shield",
+    "context meter and external billing icons"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "event packets route from sources through a bus into a bounded queue",
+    "queue slots fill while worker nodes pulse to show transformation capacity",
+    "retry and dead-letter branches split failed work into explicit control paths",
+    "throughput and feedback-control layers move separately from the main packet path"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

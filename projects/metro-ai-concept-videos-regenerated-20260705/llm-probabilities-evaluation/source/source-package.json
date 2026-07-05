@@ -1,0 +1,216 @@
+{
+  "title": "LLM Probabilities and Evaluation",
+  "topic": "LLM Probabilities and Evaluation",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "scenario-tree",
+  "visualZones": [
+    {
+      "id": "scenario-tree-orientation-zone",
+      "role": "opening anchor plane",
+      "bounds": {
+        "x": 44,
+        "y": 96,
+        "width": 304,
+        "height": 248
+      },
+      "grayLevel": 1,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "scenario-tree-primary-system-zone",
+      "role": "main mechanism plane",
+      "bounds": {
+        "x": 44,
+        "y": 344,
+        "width": 304,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "scenario-tree-secondary-system-zone",
+      "role": "support mechanism plane",
+      "bounds": {
+        "x": 348,
+        "y": 96,
+        "width": 520,
+        "height": 508
+      },
+      "grayLevel": 3,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "scenario-tree-control-risk-zone",
+      "role": "control and risk plane",
+      "bounds": {
+        "x": 868,
+        "y": 96,
+        "width": 368,
+        "height": 248
+      },
+      "grayLevel": 4,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "scenario-tree-evidence-feedback-zone",
+      "role": "evidence and feedback plane",
+      "bounds": {
+        "x": 868,
+        "y": 344,
+        "width": 368,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "durationSeconds": 120.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "llm-probabilities-evaluation",
+  "outputVideo": "projects/metro-ai-concept-videos/llm-probabilities-evaluation/artifacts/video-renders/draft/videos/llm-probabilities-evaluation.mp4",
+  "sourceFacts": [
+    "LLMs assign probabilities over candidate next tokens rather than looking up one true answer during generation.",
+    "The selected token is appended back into context, creating a repeated generation loop.",
+    "Better context reshapes the probability distribution toward better tokens, but the output remains probabilistic.",
+    "Log probabilities let you inspect token confidence after generation.",
+    "Logit bias can nudge specified tokens up or down before selection.",
+    "pass@N asks whether at least one of N sampled candidates is correct.",
+    "Programmatic verification is strongest when available, including unit tests, schema checks, exact match, parsers, and tool-execution success.",
+    "LLM-as-judge evaluation can help when objective checks are hard, but it needs a clear rubric and calibration against human review."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [
+    "prompt plus context",
+    "token distribution",
+    "greedy selection",
+    "sampled selection",
+    "appended token",
+    "candidate answer",
+    "programmatic verdict",
+    "judge verdict",
+    "pass at one",
+    "pass at N"
+  ],
+  "probabilityLabels": [
+    "top token 42 percent",
+    "alternative token 28 percent",
+    "long tail 30 percent",
+    "richer context shifts distribution",
+    "sample 1 fails",
+    "sample 4 passes",
+    "pass@N success",
+    "calibrated judge"
+  ],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "probability bars",
+    "blinking cursor",
+    "poor versus rich context comparison",
+    "confidence thermometer",
+    "boosted and suppressed token cards",
+    "passN grid",
+    "test runner panel",
+    "programmatic verification checklist",
+    "judge rubric cards",
+    "final evaluation loop recap"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "one decision point branches into base, upside, and downside scenarios",
+    "probability labels and evidence-weight meter appear before the decision gate",
+    "risk, upside, fallback, and final selected outcome appear as distinct routes",
+    "the selected outcome appears only after scenario branches and fallback are visible"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

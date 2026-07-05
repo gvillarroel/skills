@@ -51,6 +51,11 @@ EXAMPLE_SOURCES = {
     / "examples"
     / "playwright"
     / "mermaid-animation-directives",
+    "mermaid-colorset-styler-base": SKILLS
+    / "mermaid-colorset-styler"
+    / "assets"
+    / "examples"
+    / "base",
     "mermaid-svg-animated": SKILLS
     / "mermaid-animated-svg"
     / "assets"
@@ -68,6 +73,7 @@ UNLISTED_EXAMPLE_SOURCES = {
     # Raw source folders copied for linked galleries or verification assets, not standalone landing pages.
     "mermaid",
     "mermaid-directive-frames",
+    "mermaid-colorset-styler-base",
 }
 PUBLISHED_EXAMPLE_SETS = [
     {

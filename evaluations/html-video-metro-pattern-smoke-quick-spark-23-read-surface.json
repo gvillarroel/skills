@@ -1,0 +1,148 @@
+{
+  "passed": false,
+  "toolCounts": {
+    "bash": 10,
+    "read": 3
+  },
+  "paths": [
+    {
+      "path": "skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 24806
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/validate_metro_pattern_smoke.py",
+      "calls": 1,
+      "resultBytes": 9982
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1157
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 24806
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/validate_metro_pattern_smoke.py",
+      "calls": 1,
+      "resultBytes": 9982
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1157
+    }
+  ],
+  "calls": [
+    {
+      "line": 16,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 147
+    },
+    {
+      "line": 31,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 190
+    },
+    {
+      "line": 46,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 212
+    },
+    {
+      "line": 61,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 422
+    },
+    {
+      "line": 74,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/SKILL.md",
+      "isError": false,
+      "resultBytes": 24806
+    },
+    {
+      "line": 88,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 99
+    },
+    {
+      "line": 103,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 1698
+    },
+    {
+      "line": 118,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 637
+    },
+    {
+      "line": 131,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/validate_metro_pattern_smoke.py",
+      "isError": false,
+      "resultBytes": 9982
+    },
+    {
+      "line": 146,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 259
+    },
+    {
+      "line": 159,
+      "tool": "read",
+      "path": "../prompt.md",
+      "isError": false,
+      "resultBytes": 1157
+    },
+    {
+      "line": 175,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 7960
+    },
+    {
+      "line": 190,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 56
+    }
+  ],
+  "findings": [
+    {
+      "code": "tool-error",
+      "line": 16,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 88,
+      "tool": "bash",
+      "path": null
+    }
+  ]
+}

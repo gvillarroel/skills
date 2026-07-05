@@ -1,0 +1,622 @@
+{
+  "title": "What AI alternatives we have",
+  "topic": "What AI alternatives we have",
+  "checkedDate": "2026-07-05",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "swimlane-handoff",
+  "visualZones": [
+    {
+      "id": "swimlane-handoff-alternatives-grid-zone",
+      "role": "four alternative comparison grid zone",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "grayLevel": 1,
+      "sourceAnchors": [
+        "comparison_grid",
+        "comparison_grid with one strong icon per platform",
+        "swimlane-handoff",
+        "dependency-map"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "swimlane-handoff-workspace-homes-zone",
+      "role": "Rovo Gemini Copilot Claude home-base workspace zone",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 400,
+        "height": 280
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "Show each alternative anchored to its natural workspace: Atlassian suite",
+        "Fade in \"home base\" text for each tool rather than feature walls",
+        "inline-bar-table",
+        "masonry wall"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "swimlane-handoff-fit-radar-zone",
+      "role": "knowledge productivity coding research radar and quadrant zone",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 400,
+        "height": 580
+      },
+      "grayLevel": 3,
+      "sourceAnchors": [
+        "Use one shared radar chart for **knowledge**",
+        "circuit-signal-traces",
+        "megacanvas zones"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "swimlane-handoff-pricing-meters-zone",
+      "role": "subscription credit API and local cost meter zone",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 580
+      },
+      "grayLevel": 4,
+      "sourceAnchors": [
+        "credit_meter",
+        "credit_meter but relabel for each pricing model",
+        "masonry-wall",
+        "camera reframe"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "swimlane-handoff-workflow-selector-zone",
+      "role": "workflow-gravity selector guardrail permission observability zone",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 580
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "Choose by workflow gravity",
+        "End with a use-case selector the audience can mentally replay later",
+        "flow-tokens"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "masonryLayout": {
+    "required": true,
+    "moduleCount": 12,
+    "transitionType": "masonry-construction"
+  },
+  "masonryModules": [
+    {
+      "id": "masonry-module-01",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "zoneIndex": 0,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-02",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 180,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-03",
+      "bounds": {
+        "x": 228,
+        "y": 388,
+        "width": 220,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-04",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 220,
+        "height": 180
+      },
+      "zoneIndex": 2,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-05",
+      "bounds": {
+        "x": 668,
+        "y": 88,
+        "width": 180,
+        "height": 300
+      },
+      "zoneIndex": 2,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-06",
+      "bounds": {
+        "x": 448,
+        "y": 268,
+        "width": 400,
+        "height": 400
+      },
+      "zoneIndex": 2,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-07",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 300
+      },
+      "zoneIndex": 3,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-08",
+      "bounds": {
+        "x": 848,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-09",
+      "bounds": {
+        "x": 1020,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-10",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 244
+      },
+      "zoneIndex": 4,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-11",
+      "bounds": {
+        "x": 1192,
+        "y": 332,
+        "width": 172,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-12",
+      "bounds": {
+        "x": 1364,
+        "y": 332,
+        "width": 188,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 3
+    }
+  ],
+  "durationSeconds": 6.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 6
+  },
+  "outputId": "what-ai-alternatives-we-have",
+  "outputVideo": "projects/metro-design-repair-contracts-full/videos/what-ai-alternatives-we-have/artifacts/video-renders/draft/videos/what-ai-alternatives-we-have.mp4",
+  "sourceFacts": [
+    "The four alternatives named by the user map to four different \u201chome bases\u201d for AI work.",
+    "**Atlassian Rovo** is strongest when the center of gravity is organizational knowledge across Jira, Confluence, and connected tools; **Gemini App** is a consumer and prosumer assistant with subscription tiers and deep Google ecosystem ties; **GitHub Copilot** is strongest as a coding harness inside developer workflows; and **Claude Desktop/Code** is strongest as a high-capability coding and research assistant with strong connector, skill, hook, and MCP patterns.",
+    "Rovo now ships in paid Atlassian cloud subscriptions, Gemini offers Free/AI Pro/AI Ultra plans, Copilot has Free through Enterprise and AI-credit billing, and Claude offers Free through Enterprise plus API pricing."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [
+    "requester",
+    "intake",
+    "review",
+    "delivery"
+  ],
+  "handoffLabels": [
+    "comparison_grid",
+    "credit_meter",
+    "Choose by workflow gravity",
+    "comparison_grid with one strong icon per platform",
+    "Show each alternative anchored to its natural workspace: Atlassian suite",
+    "Use one shared radar chart for **knowledge**",
+    "credit_meter but relabel for each pricing model",
+    "Fade in \"home base\" text for each tool rather than feature walls"
+  ],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "comparison_grid",
+    "credit_meter",
+    "Choose by workflow gravity",
+    "comparison_grid with one strong icon per platform",
+    "Show each alternative anchored to its natural workspace: Atlassian suite",
+    "Use one shared radar chart for **knowledge**",
+    "credit_meter but relabel for each pricing model",
+    "Fade in \"home base\" text for each tool rather than feature walls",
+    "End with a use-case selector the audience can mentally replay later",
+    "swimlane-handoff",
+    "inline-bar-table",
+    "circuit-signal-traces",
+    "masonry-wall",
+    "flow-tokens",
+    "dependency-map",
+    "masonry wall",
+    "megacanvas zones",
+    "camera reframe"
+  ],
+  "semanticBindings": [
+    {
+      "id": "binding-01",
+      "sourceAnchor": "comparison_grid",
+      "zoneId": "swimlane-handoff-alternatives-grid-zone",
+      "zoneRole": "four alternative comparison grid zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "four-column comparison grid activates as a single modular surface instead of four separate cards",
+      "stateKey": "comparisonGridVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-02",
+      "sourceAnchor": "credit_meter",
+      "zoneId": "swimlane-handoff-pricing-meters-zone",
+      "zoneRole": "subscription credit API and local cost meter zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "four cost meters rise with distinct pricing models before the selected path is allowed to move",
+      "stateKey": "platformHomeBaseCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-03",
+      "sourceAnchor": "Choose by workflow gravity",
+      "zoneId": "swimlane-handoff-workflow-selector-zone",
+      "zoneRole": "workflow-gravity selector guardrail permission observability zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "workflow-gravity selector routes to one home base and then passes through guardrail permission observability blocks",
+      "stateKey": "rovoWorkspaceVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-04",
+      "sourceAnchor": "comparison_grid with one strong icon per platform",
+      "zoneId": "swimlane-handoff-alternatives-grid-zone",
+      "zoneRole": "four alternative comparison grid zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "four-column comparison grid activates as a single modular surface instead of four separate cards",
+      "stateKey": "geminiWorkspaceVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-05",
+      "sourceAnchor": "Show each alternative anchored to its natural workspace: Atlassian suite",
+      "zoneId": "swimlane-handoff-workspace-homes-zone",
+      "zoneRole": "Rovo Gemini Copilot Claude home-base workspace zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "Rovo Gemini Copilot and Claude home-base zones connect to their natural workspace blocks through circuit traces",
+      "stateKey": "copilotWorkspaceVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-06",
+      "sourceAnchor": "Use one shared radar chart for **knowledge**",
+      "zoneId": "swimlane-handoff-fit-radar-zone",
+      "zoneRole": "knowledge productivity coding research radar and quadrant zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "knowledge productivity coding research and budgetability axes form a shared radar/quadrant fit map",
+      "stateKey": "claudeWorkspaceVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-07",
+      "sourceAnchor": "credit_meter but relabel for each pricing model",
+      "zoneId": "swimlane-handoff-pricing-meters-zone",
+      "zoneRole": "subscription credit API and local cost meter zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "four cost meters rise with distinct pricing models before the selected path is allowed to move",
+      "stateKey": "radarAxisCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-08",
+      "sourceAnchor": "Fade in \"home base\" text for each tool rather than feature walls",
+      "zoneId": "swimlane-handoff-workspace-homes-zone",
+      "zoneRole": "Rovo Gemini Copilot Claude home-base workspace zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "Rovo Gemini Copilot and Claude home-base zones connect to their natural workspace blocks through circuit traces",
+      "stateKey": "quadrantMapVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-09",
+      "sourceAnchor": "End with a use-case selector the audience can mentally replay later",
+      "zoneId": "swimlane-handoff-workflow-selector-zone",
+      "zoneRole": "workflow-gravity selector guardrail permission observability zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "workflow-gravity selector routes to one home base and then passes through guardrail permission observability blocks",
+      "stateKey": "costMeterCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-10",
+      "sourceAnchor": "swimlane-handoff",
+      "zoneId": "swimlane-handoff-alternatives-grid-zone",
+      "zoneRole": "four alternative comparison grid zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "four-column comparison grid activates as a single modular surface instead of four separate cards",
+      "stateKey": "costMeterLevel",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-11",
+      "sourceAnchor": "inline-bar-table",
+      "zoneId": "swimlane-handoff-workspace-homes-zone",
+      "zoneRole": "Rovo Gemini Copilot Claude home-base workspace zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "Rovo Gemini Copilot and Claude home-base zones connect to their natural workspace blocks through circuit traces",
+      "stateKey": "workflowSelectorVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-12",
+      "sourceAnchor": "circuit-signal-traces",
+      "zoneId": "swimlane-handoff-fit-radar-zone",
+      "zoneRole": "knowledge productivity coding research radar and quadrant zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "knowledge productivity coding research and budgetability axes form a shared radar/quadrant fit map",
+      "stateKey": "selectedWorkflowPathVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-13",
+      "sourceAnchor": "masonry-wall",
+      "zoneId": "swimlane-handoff-pricing-meters-zone",
+      "zoneRole": "subscription credit API and local cost meter zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "four cost meters rise with distinct pricing models before the selected path is allowed to move",
+      "stateKey": "guardrailWrapVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-14",
+      "sourceAnchor": "flow-tokens",
+      "zoneId": "swimlane-handoff-workflow-selector-zone",
+      "zoneRole": "workflow-gravity selector guardrail permission observability zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "workflow-gravity selector routes to one home base and then passes through guardrail permission observability blocks",
+      "stateKey": "observabilityWrapVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-15",
+      "sourceAnchor": "dependency-map",
+      "zoneId": "swimlane-handoff-alternatives-grid-zone",
+      "zoneRole": "four alternative comparison grid zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "four-column comparison grid activates as a single modular surface instead of four separate cards",
+      "stateKey": "comparisonGridVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-16",
+      "sourceAnchor": "masonry wall",
+      "zoneId": "swimlane-handoff-workspace-homes-zone",
+      "zoneRole": "Rovo Gemini Copilot Claude home-base workspace zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "Rovo Gemini Copilot and Claude home-base zones connect to their natural workspace blocks through circuit traces",
+      "stateKey": "platformHomeBaseCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-17",
+      "sourceAnchor": "megacanvas zones",
+      "zoneId": "swimlane-handoff-fit-radar-zone",
+      "zoneRole": "knowledge productivity coding research radar and quadrant zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "knowledge productivity coding research and budgetability axes form a shared radar/quadrant fit map",
+      "stateKey": "rovoWorkspaceVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-18",
+      "sourceAnchor": "camera reframe",
+      "zoneId": "swimlane-handoff-pricing-meters-zone",
+      "zoneRole": "subscription credit API and local cost meter zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "four cost meters rise with distinct pricing models before the selected path is allowed to move",
+      "stateKey": "geminiWorkspaceVisible",
+      "visualRole": "data-bearing-zone"
+    }
+  ],
+  "visualMechanismAnchors": [
+    {
+      "id": "mechanism-01",
+      "mechanism": "four-column comparison grid activates as a single modular surface instead of four separate cards",
+      "sourceAnchors": [
+        "comparison_grid",
+        "comparison_grid with one strong icon per platform",
+        "swimlane-handoff",
+        "dependency-map"
+      ]
+    },
+    {
+      "id": "mechanism-02",
+      "mechanism": "Rovo Gemini Copilot and Claude home-base zones connect to their natural workspace blocks through circuit traces",
+      "sourceAnchors": [
+        "Show each alternative anchored to its natural workspace: Atlassian suite",
+        "Fade in \"home base\" text for each tool rather than feature walls",
+        "inline-bar-table",
+        "masonry wall"
+      ]
+    },
+    {
+      "id": "mechanism-03",
+      "mechanism": "knowledge productivity coding research and budgetability axes form a shared radar/quadrant fit map",
+      "sourceAnchors": [
+        "Use one shared radar chart for **knowledge**",
+        "circuit-signal-traces",
+        "megacanvas zones"
+      ]
+    },
+    {
+      "id": "mechanism-04",
+      "mechanism": "four cost meters rise with distinct pricing models before the selected path is allowed to move",
+      "sourceAnchors": [
+        "credit_meter",
+        "credit_meter but relabel for each pricing model",
+        "masonry-wall",
+        "camera reframe"
+      ]
+    },
+    {
+      "id": "mechanism-05",
+      "mechanism": "workflow-gravity selector routes to one home base and then passes through guardrail permission observability blocks",
+      "sourceAnchors": [
+        "Choose by workflow gravity",
+        "End with a use-case selector the audience can mentally replay later",
+        "flow-tokens"
+      ]
+    }
+  ],
+  "sourceAnchorCoverage": {
+    "expectedCount": 18,
+    "zoneCoveredCount": 18,
+    "mechanismCoveredCount": 18,
+    "coveredCount": 18,
+    "uncoveredAnchors": [],
+    "zoneUncoveredAnchors": [],
+    "mechanismUncoveredAnchors": []
+  },
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "four-column comparison grid activates as a single modular surface instead of four separate cards",
+    "Rovo Gemini Copilot and Claude home-base zones connect to their natural workspace blocks through circuit traces",
+    "knowledge productivity coding research and budgetability axes form a shared radar/quadrant fit map",
+    "four cost meters rise with distinct pricing models before the selected path is allowed to move",
+    "workflow-gravity selector routes to one home base and then passes through guardrail permission observability blocks"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

@@ -1,0 +1,443 @@
+{
+  "passed": false,
+  "toolCounts": {
+    "read": 17,
+    "bash": 17
+  },
+  "paths": [
+    {
+      "path": "projects/zero-padding-gray-video/src/index.html",
+      "calls": 4,
+      "resultBytes": 145129
+    },
+    {
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/prompt-contract-build.json",
+      "calls": 2,
+      "resultBytes": 30255
+    },
+    {
+      "path": "projects/zero-padding-gray-video/src/render.mjs",
+      "calls": 2,
+      "resultBytes": 3590
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/check_html_render_state.py",
+      "calls": 2,
+      "resultBytes": 17101
+    },
+    {
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-13-json/prompt.md",
+      "calls": 1,
+      "resultBytes": 2369
+    },
+    {
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-13-json/workspace/skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 23406
+    },
+    {
+      "path": "projects/zero-padding-gray-video/source/source-package.json",
+      "calls": 1,
+      "resultBytes": 3505
+    },
+    {
+      "path": "projects/zero-padding-gray-video/source/production-notes.md",
+      "calls": 1,
+      "resultBytes": 1887
+    },
+    {
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/metro-audit-suite.json",
+      "calls": 1,
+      "resultBytes": 5242
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/audit_metro_rendered_frames.py",
+      "calls": 1,
+      "resultBytes": 29810
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/run_metro_audit_suite.py",
+      "calls": 1,
+      "resultBytes": 7172
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "projects/zero-padding-gray-video/src/index.html",
+      "calls": 4,
+      "resultBytes": 145129
+    },
+    {
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/prompt-contract-build.json",
+      "calls": 2,
+      "resultBytes": 30255
+    },
+    {
+      "path": "projects/zero-padding-gray-video/src/render.mjs",
+      "calls": 2,
+      "resultBytes": 3590
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/check_html_render_state.py",
+      "calls": 2,
+      "resultBytes": 17101
+    },
+    {
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-13-json/prompt.md",
+      "calls": 1,
+      "resultBytes": 2369
+    },
+    {
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-13-json/workspace/skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 23406
+    },
+    {
+      "path": "projects/zero-padding-gray-video/source/source-package.json",
+      "calls": 1,
+      "resultBytes": 3505
+    },
+    {
+      "path": "projects/zero-padding-gray-video/source/production-notes.md",
+      "calls": 1,
+      "resultBytes": 1887
+    },
+    {
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/metro-audit-suite.json",
+      "calls": 1,
+      "resultBytes": 5242
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/audit_metro_rendered_frames.py",
+      "calls": 1,
+      "resultBytes": 29810
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/run_metro_audit_suite.py",
+      "calls": 1,
+      "resultBytes": 7172
+    }
+  ],
+  "calls": [
+    {
+      "line": 18,
+      "tool": "read",
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-13-json/prompt.md",
+      "isError": false,
+      "resultBytes": 2369
+    },
+    {
+      "line": 19,
+      "tool": "read",
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-13-json/workspace/skills/html-d3-anime-video-workflow/SKILL.md",
+      "isError": false,
+      "resultBytes": 23406
+    },
+    {
+      "line": 37,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 19647
+    },
+    {
+      "line": 63,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 1150
+    },
+    {
+      "line": 65,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 61
+    },
+    {
+      "line": 67,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 56
+    },
+    {
+      "line": 104,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/source/source-package.json",
+      "isError": false,
+      "resultBytes": 3505
+    },
+    {
+      "line": 105,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/source/production-notes.md",
+      "isError": false,
+      "resultBytes": 1887
+    },
+    {
+      "line": 106,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/prompt-contract-build.json",
+      "isError": false,
+      "resultBytes": 19598
+    },
+    {
+      "line": 107,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/src/index.html",
+      "isError": false,
+      "resultBytes": 107694
+    },
+    {
+      "line": 108,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/src/render.mjs",
+      "isError": false,
+      "resultBytes": 1795
+    },
+    {
+      "line": 109,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/metro-audit-suite.json",
+      "isError": false,
+      "resultBytes": 5242
+    },
+    {
+      "line": 134,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 293
+    },
+    {
+      "line": 147,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/src/index.html",
+      "isError": false,
+      "resultBytes": 16178
+    },
+    {
+      "line": 160,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/src/index.html",
+      "isError": false,
+      "resultBytes": 18463
+    },
+    {
+      "line": 173,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/src/index.html",
+      "isError": false,
+      "resultBytes": 2794
+    },
+    {
+      "line": 186,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/src/render.mjs",
+      "isError": false,
+      "resultBytes": 1795
+    },
+    {
+      "line": 199,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/audit_metro_rendered_frames.py",
+      "isError": false,
+      "resultBytes": 29810
+    },
+    {
+      "line": 212,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/run_metro_audit_suite.py",
+      "isError": false,
+      "resultBytes": 7172
+    },
+    {
+      "line": 227,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 128
+    },
+    {
+      "line": 241,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 93
+    },
+    {
+      "line": 256,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 954
+    },
+    {
+      "line": 271,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 1053
+    },
+    {
+      "line": 284,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/check_html_render_state.py",
+      "isError": false,
+      "resultBytes": 8959
+    },
+    {
+      "line": 299,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 2264
+    },
+    {
+      "line": 314,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 1399
+    },
+    {
+      "line": 327,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/check_html_render_state.py",
+      "isError": false,
+      "resultBytes": 8142
+    },
+    {
+      "line": 342,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 4547
+    },
+    {
+      "line": 357,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 155
+    },
+    {
+      "line": 372,
+      "tool": "bash",
+      "path": null,
+      "isError": true,
+      "resultBytes": 151
+    },
+    {
+      "line": 389,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 11517
+    },
+    {
+      "line": 405,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 15023
+    },
+    {
+      "line": 422,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 871
+    },
+    {
+      "line": 435,
+      "tool": "read",
+      "path": "projects/zero-padding-gray-video/artifacts/reviews/prompt-contract-build.json",
+      "isError": false,
+      "resultBytes": 10657
+    }
+  ],
+  "findings": [
+    {
+      "code": "tool-error",
+      "line": 37,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "forbidden-read",
+      "line": 199,
+      "path": "skills/html-d3-anime-video-workflow/scripts/audit_metro_rendered_frames.py",
+      "pattern": "(^|/)scripts/.*\\.py$"
+    },
+    {
+      "code": "forbidden-read",
+      "line": 212,
+      "path": "skills/html-d3-anime-video-workflow/scripts/run_metro_audit_suite.py",
+      "pattern": "(^|/)scripts/.*\\.py$"
+    },
+    {
+      "code": "tool-error",
+      "line": 227,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 241,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 256,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 271,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "forbidden-read",
+      "line": 284,
+      "path": "skills/html-d3-anime-video-workflow/scripts/check_html_render_state.py",
+      "pattern": "(^|/)scripts/.*\\.py$"
+    },
+    {
+      "code": "tool-error",
+      "line": 299,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "forbidden-read",
+      "line": 327,
+      "path": "skills/html-d3-anime-video-workflow/scripts/check_html_render_state.py",
+      "pattern": "(^|/)scripts/.*\\.py$"
+    },
+    {
+      "code": "tool-error",
+      "line": 357,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 372,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "missing-required-read",
+      "path": "../prompt.md"
+    },
+    {
+      "code": "missing-required-read",
+      "path": "skills/html-d3-anime-video-workflow/SKILL.md"
+    }
+  ]
+}

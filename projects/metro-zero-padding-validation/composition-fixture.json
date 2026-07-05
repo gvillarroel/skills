@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "format": "1280x720",
+  "videoDirection": {
+    "sourceAnchors": ["zero padding", "gray levels"],
+    "paletteTypeSource": "colorset1 grayscale hierarchy",
+    "alignmentMode": "4 px grid",
+    "edgeCornerPolicy": "square 0-radius",
+    "boxInteriorPolicy": "zero internal padding; content flush to declared bounds",
+    "grayscaleHierarchyScale": [
+      { "level": 0, "role": "primary", "grayHex": "#333333" },
+      { "level": 1, "role": "secondary", "grayHex": "#696969" },
+      { "level": 2, "role": "tertiary", "grayHex": "#9c9c9c" }
+    ],
+    "safeZones": "64 px",
+    "captionPolicy": "none",
+    "rhythm": "steady",
+    "heldScenes": [],
+    "negativeList": ["rounded cards", "internal padding"]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "title": "Grid",
+      "duration": "4s",
+      "sourceAnchors": ["zero padding", "gray levels"],
+      "sceneJob": "Show hierarchy",
+      "viewerTask": "Compare levels",
+      "compositionChoice": "modular hard-edge board",
+      "rejectedAlternatives": ["padded card stack"],
+      "choiceRationale": "The modular hard-edge board makes the no-padding and gray-level constraints visible in one frame.",
+      "focal": "primary rectangle",
+      "roles": { "primary": "level 0", "secondary": "level 1", "tertiary": "level 2" },
+      "armature": "orthogonal grid",
+      "alignmentGrid": "4 px grid with shared baselines",
+      "edgePolicy": "square hard-edge rectangular panels",
+      "cornerPolicy": "0-radius square corners",
+      "boxInteriorPolicy": "zero internal padding; no inset bars or chips",
+      "boxModel": { "internalPaddingPx": 0, "contentFlushToBounds": true, "separation": "external gutters only" },
+      "grayscaleHierarchy": [
+        { "level": 0, "role": "primary", "grayHex": "#333333" },
+        { "level": 1, "role": "secondary", "grayHex": "#696969" },
+        { "level": 2, "role": "tertiary", "grayHex": "#9c9c9c" }
+      ],
+      "armatureAnchors": ["left column", "right column", "shared baseline"],
+      "objectBounds": [
+        { "id": "primary", "x": 80, "y": 120, "width": 400, "height": 120 },
+        { "id": "secondary", "x": 80, "y": 260, "width": 400, "height": 120 },
+        { "id": "tertiary", "x": 80, "y": 400, "width": 400, "height": 120 }
+      ],
+      "layout": "three flush rectangles in one column",
+      "hierarchy": "level 0 darkest, level 2 lightest",
+      "density": "low",
+      "safeZones": "64 px",
+      "depthLayers": ["background", "board", "foreground labels"],
+      "motionPhases": [
+        { "name": "entrance", "cue": "start", "visualChange": "rectangles appear on grid", "motionVerb": "snap" },
+        { "name": "settle", "cue": "end", "visualChange": "levels hold", "motionVerb": "hold" }
+      ],
+      "captionPlan": "none",
+      "rendererHandoff": "HTML renderer may use SVG rectangles",
+      "validationContract": {
+        "alignment": "shared baselines",
+        "safeZones": "64 px clear",
+        "edgePolicy": "0-radius",
+        "boxPadding": "internalPaddingPx is 0 and content is flush to bounds",
+        "grayscaleHierarchy": "three distinct monotonic grayscale hex values",
+        "focalHierarchy": "darkest primary",
+        "verificationArtifacts": ["composition-plan.json"]
+      },
+      "validationChecks": [
+        { "method": "json-validator", "target": "boxModel.internalPaddingPx", "passCriterion": "Value is 0." },
+        { "method": "json-validator", "target": "grayscaleHierarchy", "passCriterion": "Three distinct monotonic grayscale values." }
+      ],
+      "risks": []
+    }
+  ]
+}

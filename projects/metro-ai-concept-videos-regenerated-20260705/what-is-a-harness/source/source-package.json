@@ -1,0 +1,213 @@
+{
+  "title": "What is a Harness",
+  "topic": "What is a Harness",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "layered-architecture",
+  "visualZones": [
+    {
+      "id": "layered-architecture-orientation-zone",
+      "role": "opening anchor plane",
+      "bounds": {
+        "x": 44,
+        "y": 96,
+        "width": 304,
+        "height": 248
+      },
+      "grayLevel": 1,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "layered-architecture-primary-system-zone",
+      "role": "main mechanism plane",
+      "bounds": {
+        "x": 44,
+        "y": 344,
+        "width": 304,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "layered-architecture-secondary-system-zone",
+      "role": "support mechanism plane",
+      "bounds": {
+        "x": 348,
+        "y": 96,
+        "width": 520,
+        "height": 508
+      },
+      "grayLevel": 3,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "layered-architecture-control-risk-zone",
+      "role": "control and risk plane",
+      "bounds": {
+        "x": 868,
+        "y": 96,
+        "width": 368,
+        "height": 248
+      },
+      "grayLevel": 4,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "layered-architecture-evidence-feedback-zone",
+      "role": "evidence and feedback plane",
+      "bounds": {
+        "x": 868,
+        "y": 344,
+        "width": 368,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "durationSeconds": 120.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "what-is-a-harness",
+  "outputVideo": "projects/metro-ai-concept-videos/what-is-a-harness/artifacts/video-renders/draft/videos/what-is-a-harness.mp4",
+  "sourceFacts": [
+    "A harness is the runtime wrapper that turns a raw model into a usable assistant or agent.",
+    "A harness defines instruction layers, default tools, permissions, model picker, execution loop, approvals, memory behavior, logging, and extensibility surface.",
+    "The model is like the engine; the harness provides steering, brakes, dashboard, and controls.",
+    "Different harnesses feel different even when they can call the same model.",
+    "GitHub Copilot emphasizes GitHub-native workflows and explicit AI-credit accounting.",
+    "Claude Code emphasizes skills, hooks, MCP, and coding autonomy.",
+    "OpenCode emphasizes openness and provider choice.",
+    "Harness defaults affect quality, latency, cost, and risk because they change tools, context, retries, and autonomous loops."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [
+    "User",
+    "Instructions",
+    "Model",
+    "Tools",
+    "Files / shell",
+    "Approvals"
+  ],
+  "concernLabels": [
+    "Logging",
+    "Memory rules",
+    "Execution loop",
+    "Permissions",
+    "GitHub workflow",
+    "Skills / hooks / MCP",
+    "Provider choice",
+    "Cost and risk"
+  ],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "comparison grid",
+    "runtime stack",
+    "model engine",
+    "steering controls",
+    "instruction layers",
+    "default tools",
+    "permission gate",
+    "approval control",
+    "logging surface",
+    "cost meter",
+    "use-case matrix"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "layers activate in order so ownership boundaries are visible before cross-cutting concerns appear",
+    "the request path descends through the stack instead of treating architecture as a static diagram",
+    "cross-cutting policy, failure route, and observability stay separate from the happy path",
+    "rollout gate appears only after all layers and operational routes are visible"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

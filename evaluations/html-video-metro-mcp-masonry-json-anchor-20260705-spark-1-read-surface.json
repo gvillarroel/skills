@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 2,
+    "bash": 2
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 16274
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/what-is-an-mcp/artifacts/reviews/metro-semantic-density-audit.json",
+      "calls": 1,
+      "resultBytes": 26872
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 16274
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/what-is-an-mcp/artifacts/reviews/metro-semantic-density-audit.json",
+      "calls": 1,
+      "resultBytes": 26872
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 16274
+    },
+    {
+      "line": 30,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/html-d3-anime-video-workflow/scripts/build_from_prompt_contract.py --prompt ../prompt.md --manifest projects/metro-design-repair-contracts-full/videos/what-is-an-mcp/artifacts/reviews/prompt-contract-build.json --stat",
+      "isError": false,
+      "resultBytes": 113272
+    },
+    {
+      "line": 45,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/html-d3-anime-video-workflow/scripts/audit_metro_semantic_density.py --wrapper-report projects/metro-design-repair-contracts-full/videos/what-is-an-mcp/artifacts/reviews/prompt-contract-build.json --state-manifest pro",
+      "isError": false,
+      "resultBytes": 207
+    },
+    {
+      "line": 58,
+      "tool": "read",
+      "path": "projects/metro-design-repair-contracts-full/videos/what-is-an-mcp/artifacts/reviews/metro-semantic-density-audit.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 26872
+    }
+  ],
+  "findings": []
+}

@@ -1,0 +1,216 @@
+{
+  "title": "What is a Guardrail",
+  "topic": "What is a Guardrail",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "risk-bowtie",
+  "visualZones": [
+    {
+      "id": "risk-bowtie-orientation-zone",
+      "role": "opening anchor plane",
+      "bounds": {
+        "x": 44,
+        "y": 96,
+        "width": 304,
+        "height": 248
+      },
+      "grayLevel": 1,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "risk-bowtie-primary-system-zone",
+      "role": "main mechanism plane",
+      "bounds": {
+        "x": 44,
+        "y": 344,
+        "width": 304,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "risk-bowtie-secondary-system-zone",
+      "role": "support mechanism plane",
+      "bounds": {
+        "x": 348,
+        "y": 96,
+        "width": 520,
+        "height": 508
+      },
+      "grayLevel": 3,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "risk-bowtie-control-risk-zone",
+      "role": "control and risk plane",
+      "bounds": {
+        "x": 868,
+        "y": 96,
+        "width": 368,
+        "height": 248
+      },
+      "grayLevel": 4,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "risk-bowtie-evidence-feedback-zone",
+      "role": "evidence and feedback plane",
+      "bounds": {
+        "x": 868,
+        "y": 344,
+        "width": 368,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "durationSeconds": 120.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "what-is-a-guardrail",
+  "outputVideo": "projects/metro-ai-concept-videos/what-is-a-guardrail/artifacts/video-renders/draft/videos/what-is-a-guardrail.mp4",
+  "sourceFacts": [
+    "A guardrail is a control layer around an agent, input, output, or tool action.",
+    "A guardrail decides whether a task should proceed, pause, be changed, or stop.",
+    "Guardrails can inspect user prompts, model outputs, and tool calls.",
+    "Guardrail actions include block, redact, route, and escalate.",
+    "A prompt suggests behavior, while a guardrail enforces a policy.",
+    "Google Model Armor can screen prompts and responses for prompt injection, jailbreaks, sensitive data, malicious URLs, and related risks.",
+    "OpenAI-style guidance uses automatic checks plus human review before sensitive or high-impact work continues.",
+    "For code assistants, common guardrails protect secrets, production systems, and destructive commands."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [
+    "Unsafe request",
+    "Prompt injection",
+    "Sensitive data",
+    "Destructive command"
+  ],
+  "barrierLabels": [
+    "Preventive barrier",
+    "Policy gate",
+    "Top event",
+    "Allow",
+    "Block",
+    "Redact",
+    "Escalate",
+    "Human approval",
+    "Mitigative barrier"
+  ],
+  "consequenceLabels": [
+    "Consequence",
+    "False positive friction",
+    "Residual risk",
+    "impact D"
+  ],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "shield gate around agent loop",
+    "input gate",
+    "output gate",
+    "action gate",
+    "prompt bubble versus hard gate",
+    "Model Armor filter fan-out",
+    "human approval control",
+    "secrets and destructive command warnings",
+    "safety versus friction balance",
+    "residual risk block"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "threats converge through preventive barriers before the top event can occur",
+    "the top event separates prevention from mitigation so control timing is visible",
+    "mitigative barriers reduce consequences after the event instead of pretending prevention already worked",
+    "degraded barrier and repair action appear late so the control gap is auditable"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 2,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1157
+    },
+    {
+      "path": "projects/metro-pattern-smoke-quick/artifacts/reviews/metro-pattern-smoke.json",
+      "calls": 1,
+      "resultBytes": 7925
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1157
+    },
+    {
+      "path": "projects/metro-pattern-smoke-quick/artifacts/reviews/metro-pattern-smoke.json",
+      "calls": 1,
+      "resultBytes": 7925
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "isError": false,
+      "resultBytes": 1157
+    },
+    {
+      "line": 30,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 7960
+    },
+    {
+      "line": 43,
+      "tool": "read",
+      "path": "projects/metro-pattern-smoke-quick/artifacts/reviews/metro-pattern-smoke.json",
+      "isError": false,
+      "resultBytes": 7925
+    }
+  ],
+  "findings": []
+}

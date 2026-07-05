@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 2,
+    "bash": 2
+  },
+  "paths": [
+    {
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-14-json/workspace/skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 23650
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2369
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-14-json/workspace/skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 23650
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2369
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "C:/Users/villa/dev/skills/evaluations/runs/html-video-zero-padding-gray-20260704-spark-14-json/workspace/skills/html-d3-anime-video-workflow/SKILL.md",
+      "isError": false,
+      "resultBytes": 23650
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "../prompt.md",
+      "isError": false,
+      "resultBytes": 2369
+    },
+    {
+      "line": 43,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 15053
+    },
+    {
+      "line": 58,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 1204
+    }
+  ],
+  "findings": []
+}

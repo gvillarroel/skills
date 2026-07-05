@@ -1,0 +1,162 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 7,
+    "write": 1,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2368
+    },
+    {
+      "path": "skills/scene-transition-director/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6246
+    },
+    {
+      "path": "skills/scene-transition-director/references/source-preservation.md",
+      "calls": 1,
+      "resultBytes": 4471
+    },
+    {
+      "path": "skills/scene-transition-director/references/transition-decision-guide.md",
+      "calls": 1,
+      "resultBytes": 7420
+    },
+    {
+      "path": "skills/scene-transition-director/references/transition-pattern-catalog.md",
+      "calls": 1,
+      "resultBytes": 9016
+    },
+    {
+      "path": "skills/scene-transition-director/references/transition-plan-contract.md",
+      "calls": 1,
+      "resultBytes": 6717
+    },
+    {
+      "path": "skills/scene-transition-director/scripts/validate_transition_plan.py",
+      "calls": 1,
+      "resultBytes": 20496
+    },
+    {
+      "path": "projects/metro-transition-director-validation/transition-plan.json",
+      "calls": 1,
+      "resultBytes": 142
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2368
+    },
+    {
+      "path": "skills/scene-transition-director/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6246
+    },
+    {
+      "path": "skills/scene-transition-director/references/source-preservation.md",
+      "calls": 1,
+      "resultBytes": 4471
+    },
+    {
+      "path": "skills/scene-transition-director/references/transition-decision-guide.md",
+      "calls": 1,
+      "resultBytes": 7420
+    },
+    {
+      "path": "skills/scene-transition-director/references/transition-pattern-catalog.md",
+      "calls": 1,
+      "resultBytes": 9016
+    },
+    {
+      "path": "skills/scene-transition-director/references/transition-plan-contract.md",
+      "calls": 1,
+      "resultBytes": 6717
+    },
+    {
+      "path": "skills/scene-transition-director/scripts/validate_transition_plan.py",
+      "calls": 1,
+      "resultBytes": 20496
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2368
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/scene-transition-director/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6246
+    },
+    {
+      "line": 40,
+      "tool": "read",
+      "path": "skills/scene-transition-director/references/source-preservation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4471
+    },
+    {
+      "line": 53,
+      "tool": "read",
+      "path": "skills/scene-transition-director/references/transition-decision-guide.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7420
+    },
+    {
+      "line": 66,
+      "tool": "read",
+      "path": "skills/scene-transition-director/references/transition-pattern-catalog.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9016
+    },
+    {
+      "line": 79,
+      "tool": "read",
+      "path": "skills/scene-transition-director/references/transition-plan-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6717
+    },
+    {
+      "line": 92,
+      "tool": "read",
+      "path": "skills/scene-transition-director/scripts/validate_transition_plan.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 20496
+    },
+    {
+      "line": 105,
+      "tool": "write",
+      "path": "projects/metro-transition-director-validation/transition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 142
+    },
+    {
+      "line": 120,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/scene-transition-director/scripts/validate_transition_plan.py --plan projects/metro-transition-director-validation/transition-plan.json --expect-transitions 2 --expect-persistent-name \"red work packet\" --expect-chain ",
+      "isError": false,
+      "resultBytes": 81
+    }
+  ],
+  "findings": []
+}

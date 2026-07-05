@@ -1,0 +1,101 @@
+[
+  {
+    "slug": "ai-alternatives",
+    "file": "ai-alternatives.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  },
+  {
+    "slug": "llm-billing",
+    "file": "llm-billing.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  },
+  {
+    "slug": "llm-probabilities-evaluation",
+    "file": "llm-probabilities-evaluation.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  },
+  {
+    "slug": "what-is-a-guardrail",
+    "file": "what-is-a-guardrail.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  },
+  {
+    "slug": "what-is-a-harness",
+    "file": "what-is-a-harness.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  },
+  {
+    "slug": "what-is-a-harness-hook",
+    "file": "what-is-a-harness-hook.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  },
+  {
+    "slug": "what-is-a-harness-plugin",
+    "file": "what-is-a-harness-plugin.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  },
+  {
+    "slug": "what-is-a-skill",
+    "file": "what-is-a-skill.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  },
+  {
+    "slug": "what-is-an-agent",
+    "file": "what-is-an-agent.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  },
+  {
+    "slug": "what-is-an-llm",
+    "file": "what-is-an-llm.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  },
+  {
+    "slug": "what-is-an-mcp",
+    "file": "what-is-an-mcp.mp4",
+    "width": 1280,
+    "height": 720,
+    "fps": "30/1",
+    "duration": 120.0,
+    "frames": "3600"
+  }
+]

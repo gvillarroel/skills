@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 2,
+    "bash": 2
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 14856
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/what-is-a-guardrail/artifacts/reviews/metro-semantic-density-audit.json",
+      "calls": 1,
+      "resultBytes": 31931
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 14856
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/what-is-a-guardrail/artifacts/reviews/metro-semantic-density-audit.json",
+      "calls": 1,
+      "resultBytes": 31931
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 14856
+    },
+    {
+      "line": 30,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/html-d3-anime-video-workflow/scripts/build_from_prompt_contract.py --prompt ../prompt.md --manifest projects/metro-design-repair-contracts-full/videos/what-is-a-guardrail/artifacts/reviews/prompt-contract-build.json -",
+      "isError": false,
+      "resultBytes": 115152
+    },
+    {
+      "line": 45,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/html-d3-anime-video-workflow/scripts/audit_metro_semantic_density.py --wrapper-report projects/metro-design-repair-contracts-full/videos/what-is-a-guardrail/artifacts/reviews/prompt-contract-build.json --state-manifes",
+      "isError": false,
+      "resultBytes": 212
+    },
+    {
+      "line": 58,
+      "tool": "read",
+      "path": "projects/metro-design-repair-contracts-full/videos/what-is-a-guardrail/artifacts/reviews/metro-semantic-density-audit.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 31931
+    }
+  ],
+  "findings": []
+}

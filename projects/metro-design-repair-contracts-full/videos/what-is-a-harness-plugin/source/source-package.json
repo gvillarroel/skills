@@ -1,0 +1,616 @@
+{
+  "title": "What is a Harness Plugin",
+  "topic": "What is a Harness Plugin",
+  "checkedDate": "2026-07-05",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "swimlane-handoff",
+  "visualZones": [
+    {
+      "id": "swimlane-handoff-plugin-bundle-zone",
+      "role": "installable bundle cube assembly zone",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "grayLevel": 1,
+      "sourceAnchors": [
+        "The important design principle is not the exact file format. It is that plugins package multiple runtime behaviors into one installable unit that can be versioned and governed. citeturn10view2turn9view0 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A harness plugin is how you package and share runtime customization. Instead of copying files by hand, you install one reusable unit.\" |",
+        "assembles from smaller blocks | | 0:15-0:30 | \"The bundle usually contains behavior, not just visuals: skills, hooks, MCP config, special agents, or custom tools.\" | Bundle opens to reveal labeled modules | | 0:30-0:45 | \"GitHub Copilot CLI plugins explicitly support reusable agents, skills, hooks, and MCP server configuration.\" | GitHub plugin manifest card | | 0:45-1:00 | \"Claude Code's plugin system also packages skills, agents, hooks, and MCP servers, and it supports controlled marketplaces and managed settings.\" | Claude marketplace diagram with allowlist gate | | 1:00-1:15 | \"OpenCode keeps plugins very developer-friendly. They are JavaScript or TypeScript modules that subscribe to events and extend behavior.\" | NPM package drops into OpenCode runtime | | 1:15-1:30 | \"This matters because distribution is governance. Plugins let you standardize the approved way to work.\" | Team-wide install animation | | 1:30-1:45 | \"Plugins can lower cost by packaging efficient defaults. They can also raise cost if they inject noisy context or expensive tool calls everywhere.\" | Good plugin vs bad plugin split | | 1:45-2:00 | \"So define a plugin as a shareable harness bundle for behavior, policy, and integrations-not as just another extension icon.\" | Final text: **Plugin = packaged harness behavior** | Reference basis for narration: GitHub Copilot CLI plugin docs, Claude Code plugin configuration, OpenCode plugin docs. citeturn10view2turn9view0turn11view0turn11view1 #### Shot and animation plan - Reuse",
+        "Plugin = packaged harness behavior",
+        "plugin_bundle_cube with detachable inner parts",
+        "End with a package-install visual that can be reused in skills and MCP modules",
+        "swimlane-handoff",
+        "dependency-map"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "swimlane-handoff-plugin-modules-zone",
+      "role": "detachable skills hooks MCP agents tools module zone",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 400,
+        "height": 280
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "json { \"name\": \"security-pack\", \"contains\": [\"hooks\", \"skills\", \"mcp\", \"agent-profile\"], \"defaultEnabled\": true, \"purpose\": \"secret scanning, safer tool use, shared deploy workflow\" }",
+        "Use a red \"noisy plugin\" example that adds unnecessary tools everywhere",
+        "flow-tokens",
+        "masonry wall"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "swimlane-handoff-plugin-provider-surfaces-zone",
+      "role": "GitHub manifest Claude marketplace and OpenCode npm runtime zone",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 400,
+        "height": 580
+      },
+      "grayLevel": 3,
+      "sourceAnchors": [
+        "Show GitHub",
+        "circuit-signal-traces",
+        "megacanvas zones"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "swimlane-handoff-plugin-governance-zone",
+      "role": "allowlist version upgrade and team install governance zone",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 580
+      },
+      "grayLevel": 4,
+      "sourceAnchors": [
+        "Add a marketplace / allowlist lane for enterprise governance",
+        "Visualize versioning and upgrade arrows over the same plugin pack",
+        "masonry-wall"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "swimlane-handoff-plugin-cost-risk-zone",
+      "role": "good plugin versus noisy plugin cost risk zone",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 580
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "risk-bowtie"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "masonryLayout": {
+    "required": true,
+    "moduleCount": 12,
+    "transitionType": "masonry-construction"
+  },
+  "masonryModules": [
+    {
+      "id": "masonry-module-01",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "zoneIndex": 0,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-02",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 180,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-03",
+      "bounds": {
+        "x": 228,
+        "y": 388,
+        "width": 220,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-04",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 220,
+        "height": 180
+      },
+      "zoneIndex": 2,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-05",
+      "bounds": {
+        "x": 668,
+        "y": 88,
+        "width": 180,
+        "height": 300
+      },
+      "zoneIndex": 2,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-06",
+      "bounds": {
+        "x": 448,
+        "y": 268,
+        "width": 400,
+        "height": 400
+      },
+      "zoneIndex": 2,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-07",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 300
+      },
+      "zoneIndex": 3,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-08",
+      "bounds": {
+        "x": 848,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-09",
+      "bounds": {
+        "x": 1020,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-10",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 244
+      },
+      "zoneIndex": 4,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-11",
+      "bounds": {
+        "x": 1192,
+        "y": 332,
+        "width": 172,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-12",
+      "bounds": {
+        "x": 1364,
+        "y": 332,
+        "width": 188,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 3
+    }
+  ],
+  "durationSeconds": 6.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 6
+  },
+  "outputId": "what-is-a-harness-plugin",
+  "outputVideo": "projects/metro-design-repair-contracts-full/videos/what-is-a-harness-plugin/artifacts/video-renders/draft/videos/what-is-a-harness-plugin.mp4",
+  "sourceFacts": [
+    "A plugin is a distribution mechanism for reusable harness customization.",
+    "The exact packaging differs by product, but the pattern is consistent: bundle runtime capabilities so teams can install, share, version, and govern them instead of hand-copying local setup.",
+    "In current official docs, GitHub Copilot CLI plugins can bundle agents, skills, hooks, and MCP configuration; Claude Code plugins can bundle skills, agents, hooks, and MCP servers from marketplaces; OpenCode plugins are JS/TS modules loaded locally or from npm to add hooks, tools, and integrations."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [
+    "requester",
+    "intake",
+    "review",
+    "delivery"
+  ],
+  "handoffLabels": [
+    "json { \"name\": \"security-pack\", \"contains\": [\"hooks\", \"skills\", \"mcp\", \"agent-profile\"], \"defaultEnabled\": true, \"purpose\": \"secret scanning, safer tool use, shared deploy workflow\" }",
+    "The important design principle is not the exact file format. It is that plugins package multiple runtime behaviors into one installable unit that can be versioned and governed. citeturn10view2turn9view0 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A harness plugin is how you package and share runtime customization. Instead of copying files by hand, you install one reusable unit.\" |",
+    "assembles from smaller blocks | | 0:15-0:30 | \"The bundle usually contains behavior, not just visuals: skills, hooks, MCP config, special agents, or custom tools.\" | Bundle opens to reveal labeled modules | | 0:30-0:45 | \"GitHub Copilot CLI plugins explicitly support reusable agents, skills, hooks, and MCP server configuration.\" | GitHub plugin manifest card | | 0:45-1:00 | \"Claude Code's plugin system also packages skills, agents, hooks, and MCP servers, and it supports controlled marketplaces and managed settings.\" | Claude marketplace diagram with allowlist gate | | 1:00-1:15 | \"OpenCode keeps plugins very developer-friendly. They are JavaScript or TypeScript modules that subscribe to events and extend behavior.\" | NPM package drops into OpenCode runtime | | 1:15-1:30 | \"This matters because distribution is governance. Plugins let you standardize the approved way to work.\" | Team-wide install animation | | 1:30-1:45 | \"Plugins can lower cost by packaging efficient defaults. They can also raise cost if they inject noisy context or expensive tool calls everywhere.\" | Good plugin vs bad plugin split | | 1:45-2:00 | \"So define a plugin as a shareable harness bundle for behavior, policy, and integrations-not as just another extension icon.\" | Final text: **Plugin = packaged harness behavior** | Reference basis for narration: GitHub Copilot CLI plugin docs, Claude Code plugin configuration, OpenCode plugin docs. citeturn10view2turn9view0turn11view0turn11view1 #### Shot and animation plan - Reuse",
+    "Plugin = packaged harness behavior",
+    "plugin_bundle_cube with detachable inner parts",
+    "Show GitHub",
+    "Add a marketplace / allowlist lane for enterprise governance",
+    "Visualize versioning and upgrade arrows over the same plugin pack"
+  ],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "json { \"name\": \"security-pack\", \"contains\": [\"hooks\", \"skills\", \"mcp\", \"agent-profile\"], \"defaultEnabled\": true, \"purpose\": \"secret scanning, safer tool use, shared deploy workflow\" }",
+    "The important design principle is not the exact file format. It is that plugins package multiple runtime behaviors into one installable unit that can be versioned and governed. citeturn10view2turn9view0 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A harness plugin is how you package and share runtime customization. Instead of copying files by hand, you install one reusable unit.\" |",
+    "assembles from smaller blocks | | 0:15-0:30 | \"The bundle usually contains behavior, not just visuals: skills, hooks, MCP config, special agents, or custom tools.\" | Bundle opens to reveal labeled modules | | 0:30-0:45 | \"GitHub Copilot CLI plugins explicitly support reusable agents, skills, hooks, and MCP server configuration.\" | GitHub plugin manifest card | | 0:45-1:00 | \"Claude Code's plugin system also packages skills, agents, hooks, and MCP servers, and it supports controlled marketplaces and managed settings.\" | Claude marketplace diagram with allowlist gate | | 1:00-1:15 | \"OpenCode keeps plugins very developer-friendly. They are JavaScript or TypeScript modules that subscribe to events and extend behavior.\" | NPM package drops into OpenCode runtime | | 1:15-1:30 | \"This matters because distribution is governance. Plugins let you standardize the approved way to work.\" | Team-wide install animation | | 1:30-1:45 | \"Plugins can lower cost by packaging efficient defaults. They can also raise cost if they inject noisy context or expensive tool calls everywhere.\" | Good plugin vs bad plugin split | | 1:45-2:00 | \"So define a plugin as a shareable harness bundle for behavior, policy, and integrations-not as just another extension icon.\" | Final text: **Plugin = packaged harness behavior** | Reference basis for narration: GitHub Copilot CLI plugin docs, Claude Code plugin configuration, OpenCode plugin docs. citeturn10view2turn9view0turn11view0turn11view1 #### Shot and animation plan - Reuse",
+    "Plugin = packaged harness behavior",
+    "plugin_bundle_cube with detachable inner parts",
+    "Show GitHub",
+    "Add a marketplace / allowlist lane for enterprise governance",
+    "Visualize versioning and upgrade arrows over the same plugin pack",
+    "Use a red \"noisy plugin\" example that adds unnecessary tools everywhere",
+    "End with a package-install visual that can be reused in skills and MCP modules",
+    "swimlane-handoff",
+    "flow-tokens",
+    "circuit-signal-traces",
+    "masonry-wall",
+    "risk-bowtie",
+    "dependency-map",
+    "masonry wall",
+    "megacanvas zones"
+  ],
+  "semanticBindings": [
+    {
+      "id": "binding-01",
+      "sourceAnchor": "json { \"name\": \"security-pack\", \"contains\": [\"hooks\", \"skills\", \"mcp\", \"agent-profile\"], \"defaultEnabled\": true, \"purpose\": \"secret scanning, safer tool use, shared deploy workflow\" }",
+      "zoneId": "swimlane-handoff-plugin-modules-zone",
+      "zoneRole": "detachable skills hooks MCP agents tools module zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "provider packaging surfaces show GitHub manifest Claude marketplace allowlist and OpenCode npm runtime as comparable hard-edge lanes",
+      "stateKey": "pluginBundleCubeVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-02",
+      "sourceAnchor": "The important design principle is not the exact file format. It is that plugins package multiple runtime behaviors into one installable unit that can be versioned and governed. citeturn10view2turn9view0 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A harness plugin is how you package and share runtime customization. Instead of copying files by hand, you install one reusable unit.\" |",
+      "zoneId": "swimlane-handoff-plugin-bundle-zone",
+      "zoneRole": "installable bundle cube assembly zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "plugin bundle cube assembles from flush rectangular capability blocks before opening into detachable modules",
+      "stateKey": "bundleOpenedVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-03",
+      "sourceAnchor": "assembles from smaller blocks | | 0:15-0:30 | \"The bundle usually contains behavior, not just visuals: skills, hooks, MCP config, special agents, or custom tools.\" | Bundle opens to reveal labeled modules | | 0:30-0:45 | \"GitHub Copilot CLI plugins explicitly support reusable agents, skills, hooks, and MCP server configuration.\" | GitHub plugin manifest card | | 0:45-1:00 | \"Claude Code's plugin system also packages skills, agents, hooks, and MCP servers, and it supports controlled marketplaces and managed settings.\" | Claude marketplace diagram with allowlist gate | | 1:00-1:15 | \"OpenCode keeps plugins very developer-friendly. They are JavaScript or TypeScript modules that subscribe to events and extend behavior.\" | NPM package drops into OpenCode runtime | | 1:15-1:30 | \"This matters because distribution is governance. Plugins let you standardize the approved way to work.\" | Team-wide install animation | | 1:30-1:45 | \"Plugins can lower cost by packaging efficient defaults. They can also raise cost if they inject noisy context or expensive tool calls everywhere.\" | Good plugin vs bad plugin split | | 1:45-2:00 | \"So define a plugin as a shareable harness bundle for behavior, policy, and integrations-not as just another extension icon.\" | Final text: **Plugin = packaged harness behavior** | Reference basis for narration: GitHub Copilot CLI plugin docs, Claude Code plugin configuration, OpenCode plugin docs. citeturn10view2turn9view0turn11view0turn11view1 #### Shot and animation plan - Reuse",
+      "zoneId": "swimlane-handoff-plugin-bundle-zone",
+      "zoneRole": "installable bundle cube assembly zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "plugin bundle cube assembles from flush rectangular capability blocks before opening into detachable modules",
+      "stateKey": "bundleModuleCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-04",
+      "sourceAnchor": "Plugin = packaged harness behavior",
+      "zoneId": "swimlane-handoff-plugin-bundle-zone",
+      "zoneRole": "installable bundle cube assembly zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "plugin bundle cube assembles from flush rectangular capability blocks before opening into detachable modules",
+      "stateKey": "githubManifestCardVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-05",
+      "sourceAnchor": "plugin_bundle_cube with detachable inner parts",
+      "zoneId": "swimlane-handoff-plugin-bundle-zone",
+      "zoneRole": "installable bundle cube assembly zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "plugin bundle cube assembles from flush rectangular capability blocks before opening into detachable modules",
+      "stateKey": "claudeMarketplaceGateVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-06",
+      "sourceAnchor": "Show GitHub",
+      "zoneId": "swimlane-handoff-plugin-provider-surfaces-zone",
+      "zoneRole": "GitHub manifest Claude marketplace and OpenCode npm runtime zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "allowlist gate version arrows and team install fanout convert distribution into governance rather than a copied-file setup",
+      "stateKey": "opencodeNpmRuntimeDropVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-07",
+      "sourceAnchor": "Add a marketplace / allowlist lane for enterprise governance",
+      "zoneId": "swimlane-handoff-plugin-governance-zone",
+      "zoneRole": "allowlist version upgrade and team install governance zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "good plugin and noisy plugin split show efficient defaults versus context/tool cost spread before the final packaged-behavior install stamp",
+      "stateKey": "teamInstallFanoutVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-08",
+      "sourceAnchor": "Visualize versioning and upgrade arrows over the same plugin pack",
+      "zoneId": "swimlane-handoff-plugin-governance-zone",
+      "zoneRole": "allowlist version upgrade and team install governance zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "good plugin and noisy plugin split show efficient defaults versus context/tool cost spread before the final packaged-behavior install stamp",
+      "stateKey": "installFanoutCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-09",
+      "sourceAnchor": "Use a red \"noisy plugin\" example that adds unnecessary tools everywhere",
+      "zoneId": "swimlane-handoff-plugin-modules-zone",
+      "zoneRole": "detachable skills hooks MCP agents tools module zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "provider packaging surfaces show GitHub manifest Claude marketplace allowlist and OpenCode npm runtime as comparable hard-edge lanes",
+      "stateKey": "versionUpgradeVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-10",
+      "sourceAnchor": "End with a package-install visual that can be reused in skills and MCP modules",
+      "zoneId": "swimlane-handoff-plugin-bundle-zone",
+      "zoneRole": "installable bundle cube assembly zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "plugin bundle cube assembles from flush rectangular capability blocks before opening into detachable modules",
+      "stateKey": "governanceGateVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-11",
+      "sourceAnchor": "swimlane-handoff",
+      "zoneId": "swimlane-handoff-plugin-bundle-zone",
+      "zoneRole": "installable bundle cube assembly zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "plugin bundle cube assembles from flush rectangular capability blocks before opening into detachable modules",
+      "stateKey": "goodBadPluginSplitVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-12",
+      "sourceAnchor": "flow-tokens",
+      "zoneId": "swimlane-handoff-plugin-modules-zone",
+      "zoneRole": "detachable skills hooks MCP agents tools module zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "provider packaging surfaces show GitHub manifest Claude marketplace allowlist and OpenCode npm runtime as comparable hard-edge lanes",
+      "stateKey": "noisyPluginRiskVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-13",
+      "sourceAnchor": "circuit-signal-traces",
+      "zoneId": "swimlane-handoff-plugin-provider-surfaces-zone",
+      "zoneRole": "GitHub manifest Claude marketplace and OpenCode npm runtime zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "allowlist gate version arrows and team install fanout convert distribution into governance rather than a copied-file setup",
+      "stateKey": "costMeterLevel",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-14",
+      "sourceAnchor": "masonry-wall",
+      "zoneId": "swimlane-handoff-plugin-governance-zone",
+      "zoneRole": "allowlist version upgrade and team install governance zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "good plugin and noisy plugin split show efficient defaults versus context/tool cost spread before the final packaged-behavior install stamp",
+      "stateKey": "packagedBehaviorStampVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-15",
+      "sourceAnchor": "risk-bowtie",
+      "zoneId": "swimlane-handoff-plugin-cost-risk-zone",
+      "zoneRole": "good plugin versus noisy plugin cost risk zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "allowlist gate version arrows and team install fanout convert distribution into governance rather than a copied-file setup",
+      "stateKey": "pluginBundleCubeVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-16",
+      "sourceAnchor": "dependency-map",
+      "zoneId": "swimlane-handoff-plugin-bundle-zone",
+      "zoneRole": "installable bundle cube assembly zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "plugin bundle cube assembles from flush rectangular capability blocks before opening into detachable modules",
+      "stateKey": "bundleOpenedVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-17",
+      "sourceAnchor": "masonry wall",
+      "zoneId": "swimlane-handoff-plugin-modules-zone",
+      "zoneRole": "detachable skills hooks MCP agents tools module zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "provider packaging surfaces show GitHub manifest Claude marketplace allowlist and OpenCode npm runtime as comparable hard-edge lanes",
+      "stateKey": "bundleModuleCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-18",
+      "sourceAnchor": "megacanvas zones",
+      "zoneId": "swimlane-handoff-plugin-provider-surfaces-zone",
+      "zoneRole": "GitHub manifest Claude marketplace and OpenCode npm runtime zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "allowlist gate version arrows and team install fanout convert distribution into governance rather than a copied-file setup",
+      "stateKey": "githubManifestCardVisible",
+      "visualRole": "data-bearing-zone"
+    }
+  ],
+  "visualMechanismAnchors": [
+    {
+      "id": "mechanism-01",
+      "mechanism": "plugin bundle cube assembles from flush rectangular capability blocks before opening into detachable modules",
+      "sourceAnchors": [
+        "The important design principle is not the exact file format. It is that plugins package multiple runtime behaviors into one installable unit that can be versioned and governed. citeturn10view2turn9view0 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A harness plugin is how you package and share runtime customization. Instead of copying files by hand, you install one reusable unit.\" |",
+        "assembles from smaller blocks | | 0:15-0:30 | \"The bundle usually contains behavior, not just visuals: skills, hooks, MCP config, special agents, or custom tools.\" | Bundle opens to reveal labeled modules | | 0:30-0:45 | \"GitHub Copilot CLI plugins explicitly support reusable agents, skills, hooks, and MCP server configuration.\" | GitHub plugin manifest card | | 0:45-1:00 | \"Claude Code's plugin system also packages skills, agents, hooks, and MCP servers, and it supports controlled marketplaces and managed settings.\" | Claude marketplace diagram with allowlist gate | | 1:00-1:15 | \"OpenCode keeps plugins very developer-friendly. They are JavaScript or TypeScript modules that subscribe to events and extend behavior.\" | NPM package drops into OpenCode runtime | | 1:15-1:30 | \"This matters because distribution is governance. Plugins let you standardize the approved way to work.\" | Team-wide install animation | | 1:30-1:45 | \"Plugins can lower cost by packaging efficient defaults. They can also raise cost if they inject noisy context or expensive tool calls everywhere.\" | Good plugin vs bad plugin split | | 1:45-2:00 | \"So define a plugin as a shareable harness bundle for behavior, policy, and integrations-not as just another extension icon.\" | Final text: **Plugin = packaged harness behavior** | Reference basis for narration: GitHub Copilot CLI plugin docs, Claude Code plugin configuration, OpenCode plugin docs. citeturn10view2turn9view0turn11view0turn11view1 #### Shot and animation plan - Reuse",
+        "Plugin = packaged harness behavior",
+        "plugin_bundle_cube with detachable inner parts",
+        "End with a package-install visual that can be reused in skills and MCP modules",
+        "swimlane-handoff",
+        "dependency-map"
+      ]
+    },
+    {
+      "id": "mechanism-02",
+      "mechanism": "provider packaging surfaces show GitHub manifest Claude marketplace allowlist and OpenCode npm runtime as comparable hard-edge lanes",
+      "sourceAnchors": [
+        "json { \"name\": \"security-pack\", \"contains\": [\"hooks\", \"skills\", \"mcp\", \"agent-profile\"], \"defaultEnabled\": true, \"purpose\": \"secret scanning, safer tool use, shared deploy workflow\" }",
+        "Use a red \"noisy plugin\" example that adds unnecessary tools everywhere",
+        "flow-tokens",
+        "masonry wall"
+      ]
+    },
+    {
+      "id": "mechanism-03",
+      "mechanism": "allowlist gate version arrows and team install fanout convert distribution into governance rather than a copied-file setup",
+      "sourceAnchors": [
+        "Show GitHub",
+        "circuit-signal-traces",
+        "megacanvas zones"
+      ]
+    },
+    {
+      "id": "mechanism-04",
+      "mechanism": "good plugin and noisy plugin split show efficient defaults versus context/tool cost spread before the final packaged-behavior install stamp",
+      "sourceAnchors": [
+        "Add a marketplace / allowlist lane for enterprise governance",
+        "Visualize versioning and upgrade arrows over the same plugin pack",
+        "masonry-wall"
+      ]
+    }
+  ],
+  "sourceAnchorCoverage": {
+    "expectedCount": 18,
+    "zoneCoveredCount": 18,
+    "mechanismCoveredCount": 17,
+    "coveredCount": 18,
+    "uncoveredAnchors": [],
+    "zoneUncoveredAnchors": [],
+    "mechanismUncoveredAnchors": [
+      "risk-bowtie"
+    ]
+  },
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "plugin bundle cube assembles from flush rectangular capability blocks before opening into detachable modules",
+    "provider packaging surfaces show GitHub manifest Claude marketplace allowlist and OpenCode npm runtime as comparable hard-edge lanes",
+    "allowlist gate version arrows and team install fanout convert distribution into governance rather than a copied-file setup",
+    "good plugin and noisy plugin split show efficient defaults versus context/tool cost spread before the final packaged-behavior install stamp"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

@@ -1,0 +1,620 @@
+{
+  "title": "What is a Harness",
+  "topic": "What is a Harness",
+  "checkedDate": "2026-07-05",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "systems-flow",
+  "visualZones": [
+    {
+      "id": "systems-flow-comparison-grid-zone",
+      "role": "harness comparison grid and selected cell zone",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "grayLevel": 1,
+      "sourceAnchors": [
+        "comparison_grid",
+        "comparison_grid and agent_loop_ring",
+        "Stack runtime layers: prompt",
+        "Close with a pointer back to the harness comparison matrix",
+        "circuit-signal-traces"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-runtime-stack-zone",
+      "role": "instruction tools permissions loop logging stack zone",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 400,
+        "height": 280
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "flow-tokens",
+        "attention-matrix-tiles"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-engine-dashboard-zone",
+      "role": "same model engine-to-dashboard control morph zone",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 400,
+        "height": 580
+      },
+      "grayLevel": 3,
+      "sourceAnchors": [
+        "Show same model icon in different harness shells",
+        "Use a simple \"engine vs car\" motion metaphor to make the abstraction sticky",
+        "swimlane-handoff",
+        "masonry wall"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-harness-shells-zone",
+      "role": "same model inside Copilot Claude Code and OpenCode shells zone",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 580
+      },
+      "grayLevel": 4,
+      "sourceAnchors": [
+        "agent_loop_ring",
+        "layered-architecture",
+        "megacanvas zones"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-cost-selection-zone",
+      "role": "credit meter feature-fit matrix and selected path zone",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 580
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "credit_meter",
+        "credit_meter to show how harness defaults change spend",
+        "masonry-wall",
+        "camera reframe"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "masonryLayout": {
+    "required": true,
+    "moduleCount": 12,
+    "transitionType": "masonry-construction"
+  },
+  "masonryModules": [
+    {
+      "id": "masonry-module-01",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "zoneIndex": 0,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-02",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 180,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-03",
+      "bounds": {
+        "x": 228,
+        "y": 388,
+        "width": 220,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-04",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 220,
+        "height": 180
+      },
+      "zoneIndex": 2,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-05",
+      "bounds": {
+        "x": 668,
+        "y": 88,
+        "width": 180,
+        "height": 300
+      },
+      "zoneIndex": 2,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-06",
+      "bounds": {
+        "x": 448,
+        "y": 268,
+        "width": 400,
+        "height": 400
+      },
+      "zoneIndex": 2,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-07",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 300
+      },
+      "zoneIndex": 3,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-08",
+      "bounds": {
+        "x": 848,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-09",
+      "bounds": {
+        "x": 1020,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-10",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 244
+      },
+      "zoneIndex": 4,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-11",
+      "bounds": {
+        "x": 1192,
+        "y": 332,
+        "width": 172,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-12",
+      "bounds": {
+        "x": 1364,
+        "y": 332,
+        "width": 188,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 3
+    }
+  ],
+  "durationSeconds": 6.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 6
+  },
+  "outputId": "what-is-a-harness",
+  "outputVideo": "projects/metro-design-repair-contracts-full/videos/what-is-a-harness/artifacts/video-renders/draft/videos/what-is-a-harness.mp4",
+  "sourceFacts": [
+    "A harness is the runtime wrapper that turns a raw model into a usable assistant or agent.",
+    "It usually defines the instruction layers, default tools, permissions, model picker, execution loop, approvals, memory behavior, logging, and extensibility surface.",
+    "In practice, choosing GitHub Copilot, Claude Code, OpenCode, or VS Code agents means choosing a harness with defaults that materially affect quality, latency, cost, and risk."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [
+    "comparison_grid",
+    "credit_meter",
+    "agent_loop_ring",
+    "comparison_grid and agent_loop_ring",
+    "Stack runtime layers: prompt",
+    "Show same model icon in different harness shells",
+    "Use a simple \"engine vs car\" motion metaphor to make the abstraction sticky",
+    "credit_meter to show how harness defaults change spend",
+    "dead-letter",
+    "throughput",
+    "throttle"
+  ],
+  "strategyAnchors": [
+    "comparison_grid",
+    "credit_meter",
+    "agent_loop_ring",
+    "comparison_grid and agent_loop_ring",
+    "Stack runtime layers: prompt",
+    "Show same model icon in different harness shells",
+    "Use a simple \"engine vs car\" motion metaphor to make the abstraction sticky",
+    "credit_meter to show how harness defaults change spend",
+    "Close with a pointer back to the harness comparison matrix",
+    "flow-tokens",
+    "swimlane-handoff",
+    "layered-architecture",
+    "masonry-wall",
+    "circuit-signal-traces",
+    "attention-matrix-tiles",
+    "masonry wall",
+    "megacanvas zones",
+    "camera reframe"
+  ],
+  "semanticBindings": [
+    {
+      "id": "binding-01",
+      "sourceAnchor": "comparison_grid",
+      "zoneId": "systems-flow-comparison-grid-zone",
+      "zoneRole": "harness comparison grid and selected cell zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
+      "stateKey": "comparisonGridVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-02",
+      "sourceAnchor": "credit_meter",
+      "zoneId": "systems-flow-cost-selection-zone",
+      "zoneRole": "credit meter feature-fit matrix and selected path zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "feature grid mutes behind a use-case matrix and a selected path closes the comparison",
+      "stateKey": "runtimeStackVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-03",
+      "sourceAnchor": "agent_loop_ring",
+      "zoneId": "systems-flow-harness-shells-zone",
+      "zoneRole": "same model inside Copilot Claude Code and OpenCode shells zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "tool count, context, retries, and loop depth drive a rising credit meter",
+      "stateKey": "engineCoreVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-04",
+      "sourceAnchor": "comparison_grid and agent_loop_ring",
+      "zoneId": "systems-flow-comparison-grid-zone",
+      "zoneRole": "harness comparison grid and selected cell zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
+      "stateKey": "dashboardControlsVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-05",
+      "sourceAnchor": "Stack runtime layers: prompt",
+      "zoneId": "systems-flow-comparison-grid-zone",
+      "zoneRole": "harness comparison grid and selected cell zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
+      "stateKey": "layersAssembling",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-06",
+      "sourceAnchor": "Show same model icon in different harness shells",
+      "zoneId": "systems-flow-engine-dashboard-zone",
+      "zoneRole": "same model engine-to-dashboard control morph zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "the same model badge drops into three distinct harness shells with different defaults",
+      "stateKey": "modelBadgeShared",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-07",
+      "sourceAnchor": "Use a simple \"engine vs car\" motion metaphor to make the abstraction sticky",
+      "zoneId": "systems-flow-engine-dashboard-zone",
+      "zoneRole": "same model engine-to-dashboard control morph zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "the same model badge drops into three distinct harness shells with different defaults",
+      "stateKey": "sameModelShellCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-08",
+      "sourceAnchor": "credit_meter to show how harness defaults change spend",
+      "zoneId": "systems-flow-cost-selection-zone",
+      "zoneRole": "credit meter feature-fit matrix and selected path zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "feature grid mutes behind a use-case matrix and a selected path closes the comparison",
+      "stateKey": "threeHarnessShellsVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-09",
+      "sourceAnchor": "Close with a pointer back to the harness comparison matrix",
+      "zoneId": "systems-flow-comparison-grid-zone",
+      "zoneRole": "harness comparison grid and selected cell zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
+      "stateKey": "toolCountLevel",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-10",
+      "sourceAnchor": "flow-tokens",
+      "zoneId": "systems-flow-runtime-stack-zone",
+      "zoneRole": "instruction tools permissions loop logging stack zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "runtime layers assemble around the model while the engine core becomes dashboard controls",
+      "stateKey": "creditMeterLevel",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-11",
+      "sourceAnchor": "swimlane-handoff",
+      "zoneId": "systems-flow-engine-dashboard-zone",
+      "zoneRole": "same model engine-to-dashboard control morph zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "the same model badge drops into three distinct harness shells with different defaults",
+      "stateKey": "featureGridMuted",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-12",
+      "sourceAnchor": "layered-architecture",
+      "zoneId": "systems-flow-harness-shells-zone",
+      "zoneRole": "same model inside Copilot Claude Code and OpenCode shells zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "tool count, context, retries, and loop depth drive a rising credit meter",
+      "stateKey": "useCaseMatrixActive",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-13",
+      "sourceAnchor": "masonry-wall",
+      "zoneId": "systems-flow-cost-selection-zone",
+      "zoneRole": "credit meter feature-fit matrix and selected path zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "feature grid mutes behind a use-case matrix and a selected path closes the comparison",
+      "stateKey": "selectionPathHighlighted",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-14",
+      "sourceAnchor": "circuit-signal-traces",
+      "zoneId": "systems-flow-comparison-grid-zone",
+      "zoneRole": "harness comparison grid and selected cell zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
+      "stateKey": "agentLoopRingVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-15",
+      "sourceAnchor": "attention-matrix-tiles",
+      "zoneId": "systems-flow-runtime-stack-zone",
+      "zoneRole": "instruction tools permissions loop logging stack zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "runtime layers assemble around the model while the engine core becomes dashboard controls",
+      "stateKey": "comparisonGridVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-16",
+      "sourceAnchor": "masonry wall",
+      "zoneId": "systems-flow-engine-dashboard-zone",
+      "zoneRole": "same model engine-to-dashboard control morph zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "the same model badge drops into three distinct harness shells with different defaults",
+      "stateKey": "runtimeStackVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-17",
+      "sourceAnchor": "megacanvas zones",
+      "zoneId": "systems-flow-harness-shells-zone",
+      "zoneRole": "same model inside Copilot Claude Code and OpenCode shells zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "tool count, context, retries, and loop depth drive a rising credit meter",
+      "stateKey": "engineCoreVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-18",
+      "sourceAnchor": "camera reframe",
+      "zoneId": "systems-flow-cost-selection-zone",
+      "zoneRole": "credit meter feature-fit matrix and selected path zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "feature grid mutes behind a use-case matrix and a selected path closes the comparison",
+      "stateKey": "dashboardControlsVisible",
+      "visualRole": "data-bearing-zone"
+    }
+  ],
+  "visualMechanismAnchors": [
+    {
+      "id": "mechanism-01",
+      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
+      "sourceAnchors": [
+        "comparison_grid",
+        "comparison_grid and agent_loop_ring",
+        "Stack runtime layers: prompt",
+        "Close with a pointer back to the harness comparison matrix",
+        "circuit-signal-traces"
+      ]
+    },
+    {
+      "id": "mechanism-02",
+      "mechanism": "runtime layers assemble around the model while the engine core becomes dashboard controls",
+      "sourceAnchors": [
+        "flow-tokens",
+        "attention-matrix-tiles"
+      ]
+    },
+    {
+      "id": "mechanism-03",
+      "mechanism": "the same model badge drops into three distinct harness shells with different defaults",
+      "sourceAnchors": [
+        "Show same model icon in different harness shells",
+        "Use a simple \"engine vs car\" motion metaphor to make the abstraction sticky",
+        "swimlane-handoff",
+        "masonry wall"
+      ]
+    },
+    {
+      "id": "mechanism-04",
+      "mechanism": "tool count, context, retries, and loop depth drive a rising credit meter",
+      "sourceAnchors": [
+        "agent_loop_ring",
+        "layered-architecture",
+        "megacanvas zones"
+      ]
+    },
+    {
+      "id": "mechanism-05",
+      "mechanism": "feature grid mutes behind a use-case matrix and a selected path closes the comparison",
+      "sourceAnchors": [
+        "credit_meter",
+        "credit_meter to show how harness defaults change spend",
+        "masonry-wall",
+        "camera reframe"
+      ]
+    }
+  ],
+  "sourceAnchorCoverage": {
+    "expectedCount": 18,
+    "zoneCoveredCount": 18,
+    "mechanismCoveredCount": 18,
+    "coveredCount": 18,
+    "uncoveredAnchors": [],
+    "zoneUncoveredAnchors": [],
+    "mechanismUncoveredAnchors": []
+  },
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
+    "runtime layers assemble around the model while the engine core becomes dashboard controls",
+    "the same model badge drops into three distinct harness shells with different defaults",
+    "tool count, context, retries, and loop depth drive a rising credit meter",
+    "feature grid mutes behind a use-case matrix and a selected path closes the comparison"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

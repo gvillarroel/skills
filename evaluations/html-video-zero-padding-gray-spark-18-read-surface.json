@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 2,
+    "bash": 2
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2536
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 23986
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2536
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/SKILL.md",
+      "calls": 1,
+      "resultBytes": 23986
+    }
+  ],
+  "calls": [
+    {
+      "line": 18,
+      "tool": "read",
+      "path": "../prompt.md",
+      "isError": false,
+      "resultBytes": 2536
+    },
+    {
+      "line": 19,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/SKILL.md",
+      "isError": false,
+      "resultBytes": 23986
+    },
+    {
+      "line": 37,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 15053
+    },
+    {
+      "line": 53,
+      "tool": "bash",
+      "path": null,
+      "isError": false,
+      "resultBytes": 744
+    }
+  ],
+  "findings": []
+}

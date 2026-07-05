@@ -1,0 +1,620 @@
+{
+  "title": "What is an Agent",
+  "topic": "What is an Agent",
+  "checkedDate": "2026-07-05",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "systems-flow",
+  "visualZones": [
+    {
+      "id": "systems-flow-agent-loop-zone",
+      "role": "observe-act-check-continue loop zone",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "grayLevel": 1,
+      "sourceAnchors": [
+        "agent_loop_ring",
+        "agent_loop_ring as the visual identity for every agent-related module",
+        "layered-architecture",
+        "megacanvas zones"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-context-zone",
+      "role": "stacked context window zone",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 400,
+        "height": 280
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "context_window_box",
+        "Represent context as stacked translucent panes rather than text walls",
+        "masonry-wall",
+        "camera reframe"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-environment-zone",
+      "role": "mutable environment surface zone",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 400,
+        "height": 580
+      },
+      "grayLevel": 3,
+      "sourceAnchors": [
+        "Animate environment changes: repo",
+        "risk-bowtie"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-workflow-contrast-zone",
+      "role": "fixed workflow versus adaptive agent zone",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 580
+      },
+      "grayLevel": 4,
+      "sourceAnchors": [
+        "Use one \"fixed workflow\" lane and one \"adaptive agent\" lane for contrast",
+        "flow-tokens",
+        "swimlane-handoff",
+        "critical-bowtie-barrier"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-approval-badge-zone",
+      "role": "approval checkpoint and model-tools-state-loop badge zone",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 580
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "Model + Tools + State + Loop",
+        "Add approval checkpoint icon near the end to foreshadow guardrails and permissions",
+        "the final **Model + Tools + State + Loop** badge in harness and MCP videos",
+        "masonry wall"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "masonryLayout": {
+    "required": true,
+    "moduleCount": 12,
+    "transitionType": "masonry-construction"
+  },
+  "masonryModules": [
+    {
+      "id": "masonry-module-01",
+      "bounds": {
+        "x": 48,
+        "y": 88,
+        "width": 280,
+        "height": 300
+      },
+      "zoneIndex": 0,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-02",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 180,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-03",
+      "bounds": {
+        "x": 228,
+        "y": 388,
+        "width": 220,
+        "height": 280
+      },
+      "zoneIndex": 1,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-04",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 220,
+        "height": 180
+      },
+      "zoneIndex": 2,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-05",
+      "bounds": {
+        "x": 668,
+        "y": 88,
+        "width": 180,
+        "height": 300
+      },
+      "zoneIndex": 2,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-06",
+      "bounds": {
+        "x": 448,
+        "y": 268,
+        "width": 400,
+        "height": 400
+      },
+      "zoneIndex": 2,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-07",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 300
+      },
+      "zoneIndex": 3,
+      "grayLevel": 3
+    },
+    {
+      "id": "masonry-module-08",
+      "bounds": {
+        "x": 848,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 1
+    },
+    {
+      "id": "masonry-module-09",
+      "bounds": {
+        "x": 1020,
+        "y": 388,
+        "width": 172,
+        "height": 280
+      },
+      "zoneIndex": 3,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-10",
+      "bounds": {
+        "x": 1192,
+        "y": 88,
+        "width": 360,
+        "height": 244
+      },
+      "zoneIndex": 4,
+      "grayLevel": 4
+    },
+    {
+      "id": "masonry-module-11",
+      "bounds": {
+        "x": 1192,
+        "y": 332,
+        "width": 172,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 2
+    },
+    {
+      "id": "masonry-module-12",
+      "bounds": {
+        "x": 1364,
+        "y": 332,
+        "width": 188,
+        "height": 336
+      },
+      "zoneIndex": 4,
+      "grayLevel": 3
+    }
+  ],
+  "durationSeconds": 6.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 6
+  },
+  "outputId": "what-is-an-agent",
+  "outputVideo": "projects/metro-design-repair-contracts-full/videos/what-is-an-agent/artifacts/video-renders/draft/videos/what-is-an-agent.mp4",
+  "sourceFacts": [
+    "An agent is not just \u201can LLM with tools.\u201d In current official platform guidance, an agentic system combines a model with tools, state or memory, and orchestration.",
+    "For teaching, the cleanest minimal decomposition is: **context** the agent sees, **environment** it can observe or affect, **actions** it can take, and a **loop or policy** that decides what to do next.",
+    "The crucial distinction is between a short, explicit workflow and an agent that can iteratively plan, act, read results, and continue."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [
+    "agent_loop_ring",
+    "context_window_box",
+    "Model + Tools + State + Loop",
+    "agent_loop_ring as the visual identity for every agent-related module",
+    "Represent context as stacked translucent panes rather than text walls",
+    "Animate environment changes: repo",
+    "Use one \"fixed workflow\" lane and one \"adaptive agent\" lane for contrast",
+    "Add approval checkpoint icon near the end to foreshadow guardrails and permissions",
+    "dead-letter",
+    "throughput",
+    "throttle"
+  ],
+  "strategyAnchors": [
+    "agent_loop_ring",
+    "context_window_box",
+    "Model + Tools + State + Loop",
+    "agent_loop_ring as the visual identity for every agent-related module",
+    "Represent context as stacked translucent panes rather than text walls",
+    "Animate environment changes: repo",
+    "Use one \"fixed workflow\" lane and one \"adaptive agent\" lane for contrast",
+    "Add approval checkpoint icon near the end to foreshadow guardrails and permissions",
+    "the final **Model + Tools + State + Loop** badge in harness and MCP videos",
+    "flow-tokens",
+    "swimlane-handoff",
+    "layered-architecture",
+    "masonry-wall",
+    "risk-bowtie",
+    "critical-bowtie-barrier",
+    "masonry wall",
+    "megacanvas zones",
+    "camera reframe"
+  ],
+  "semanticBindings": [
+    {
+      "id": "binding-01",
+      "sourceAnchor": "agent_loop_ring",
+      "zoneId": "systems-flow-agent-loop-zone",
+      "zoneRole": "observe-act-check-continue loop zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "agent loop ring cycles observe, act, check, and continue as the reusable visual identity",
+      "stateKey": "agentLoopRingVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-02",
+      "sourceAnchor": "context_window_box",
+      "zoneId": "systems-flow-context-zone",
+      "zoneRole": "stacked context window zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "stacked context panes feed model state before actions leave the loop",
+      "stateKey": "contextPaneCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-03",
+      "sourceAnchor": "Model + Tools + State + Loop",
+      "zoneId": "systems-flow-approval-badge-zone",
+      "zoneRole": "approval checkpoint and model-tools-state-loop badge zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "approval checkpoint and Model + Tools + State + Loop modules close the system",
+      "stateKey": "environmentState",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-04",
+      "sourceAnchor": "agent_loop_ring as the visual identity for every agent-related module",
+      "zoneId": "systems-flow-agent-loop-zone",
+      "zoneRole": "observe-act-check-continue loop zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "agent loop ring cycles observe, act, check, and continue as the reusable visual identity",
+      "stateKey": "toolActionLoopVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-05",
+      "sourceAnchor": "Represent context as stacked translucent panes rather than text walls",
+      "zoneId": "systems-flow-context-zone",
+      "zoneRole": "stacked context window zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "stacked context panes feed model state before actions leave the loop",
+      "stateKey": "fixedWorkflowLaneVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-06",
+      "sourceAnchor": "Animate environment changes: repo",
+      "zoneId": "systems-flow-environment-zone",
+      "zoneRole": "mutable environment surface zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "environment surfaces mutate across repo, browser, ticket, docs, and database blocks",
+      "stateKey": "adaptiveAgentLaneVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-07",
+      "sourceAnchor": "Use one \"fixed workflow\" lane and one \"adaptive agent\" lane for contrast",
+      "zoneId": "systems-flow-workflow-contrast-zone",
+      "zoneRole": "fixed workflow versus adaptive agent zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "a fixed workflow lane stays linear while an adaptive agent lane replans through a fork",
+      "stateKey": "approvalCheckpointVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-08",
+      "sourceAnchor": "Add approval checkpoint icon near the end to foreshadow guardrails and permissions",
+      "zoneId": "systems-flow-approval-badge-zone",
+      "zoneRole": "approval checkpoint and model-tools-state-loop badge zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "approval checkpoint and Model + Tools + State + Loop modules close the system",
+      "stateKey": "modelToolsStateLoopBadgeVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-09",
+      "sourceAnchor": "the final **Model + Tools + State + Loop** badge in harness and MCP videos",
+      "zoneId": "systems-flow-approval-badge-zone",
+      "zoneRole": "approval checkpoint and model-tools-state-loop badge zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "approval checkpoint and Model + Tools + State + Loop modules close the system",
+      "stateKey": "agentLoopRingVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-10",
+      "sourceAnchor": "flow-tokens",
+      "zoneId": "systems-flow-workflow-contrast-zone",
+      "zoneRole": "fixed workflow versus adaptive agent zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "a fixed workflow lane stays linear while an adaptive agent lane replans through a fork",
+      "stateKey": "contextPaneCount",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-11",
+      "sourceAnchor": "swimlane-handoff",
+      "zoneId": "systems-flow-workflow-contrast-zone",
+      "zoneRole": "fixed workflow versus adaptive agent zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "a fixed workflow lane stays linear while an adaptive agent lane replans through a fork",
+      "stateKey": "environmentState",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-12",
+      "sourceAnchor": "layered-architecture",
+      "zoneId": "systems-flow-agent-loop-zone",
+      "zoneRole": "observe-act-check-continue loop zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "agent loop ring cycles observe, act, check, and continue as the reusable visual identity",
+      "stateKey": "toolActionLoopVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-13",
+      "sourceAnchor": "masonry-wall",
+      "zoneId": "systems-flow-context-zone",
+      "zoneRole": "stacked context window zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "stacked context panes feed model state before actions leave the loop",
+      "stateKey": "fixedWorkflowLaneVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-14",
+      "sourceAnchor": "risk-bowtie",
+      "zoneId": "systems-flow-environment-zone",
+      "zoneRole": "mutable environment surface zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "environment surfaces mutate across repo, browser, ticket, docs, and database blocks",
+      "stateKey": "adaptiveAgentLaneVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-15",
+      "sourceAnchor": "critical-bowtie-barrier",
+      "zoneId": "systems-flow-workflow-contrast-zone",
+      "zoneRole": "fixed workflow versus adaptive agent zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "a fixed workflow lane stays linear while an adaptive agent lane replans through a fork",
+      "stateKey": "approvalCheckpointVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-16",
+      "sourceAnchor": "masonry wall",
+      "zoneId": "systems-flow-approval-badge-zone",
+      "zoneRole": "approval checkpoint and model-tools-state-loop badge zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "approval checkpoint and Model + Tools + State + Loop modules close the system",
+      "stateKey": "modelToolsStateLoopBadgeVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-17",
+      "sourceAnchor": "megacanvas zones",
+      "zoneId": "systems-flow-agent-loop-zone",
+      "zoneRole": "observe-act-check-continue loop zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "agent loop ring cycles observe, act, check, and continue as the reusable visual identity",
+      "stateKey": "agentLoopRingVisible",
+      "visualRole": "data-bearing-zone"
+    },
+    {
+      "id": "binding-18",
+      "sourceAnchor": "camera reframe",
+      "zoneId": "systems-flow-context-zone",
+      "zoneRole": "stacked context window zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "stacked context panes feed model state before actions leave the loop",
+      "stateKey": "contextPaneCount",
+      "visualRole": "data-bearing-zone"
+    }
+  ],
+  "visualMechanismAnchors": [
+    {
+      "id": "mechanism-01",
+      "mechanism": "agent loop ring cycles observe, act, check, and continue as the reusable visual identity",
+      "sourceAnchors": [
+        "agent_loop_ring",
+        "agent_loop_ring as the visual identity for every agent-related module",
+        "layered-architecture",
+        "megacanvas zones"
+      ]
+    },
+    {
+      "id": "mechanism-02",
+      "mechanism": "stacked context panes feed model state before actions leave the loop",
+      "sourceAnchors": [
+        "context_window_box",
+        "Represent context as stacked translucent panes rather than text walls",
+        "masonry-wall",
+        "camera reframe"
+      ]
+    },
+    {
+      "id": "mechanism-03",
+      "mechanism": "environment surfaces mutate across repo, browser, ticket, docs, and database blocks",
+      "sourceAnchors": [
+        "Animate environment changes: repo",
+        "risk-bowtie"
+      ]
+    },
+    {
+      "id": "mechanism-04",
+      "mechanism": "a fixed workflow lane stays linear while an adaptive agent lane replans through a fork",
+      "sourceAnchors": [
+        "Use one \"fixed workflow\" lane and one \"adaptive agent\" lane for contrast",
+        "flow-tokens",
+        "swimlane-handoff",
+        "critical-bowtie-barrier"
+      ]
+    },
+    {
+      "id": "mechanism-05",
+      "mechanism": "approval checkpoint and Model + Tools + State + Loop modules close the system",
+      "sourceAnchors": [
+        "Model + Tools + State + Loop",
+        "Add approval checkpoint icon near the end to foreshadow guardrails and permissions",
+        "the final **Model + Tools + State + Loop** badge in harness and MCP videos",
+        "masonry wall"
+      ]
+    }
+  ],
+  "sourceAnchorCoverage": {
+    "expectedCount": 18,
+    "zoneCoveredCount": 18,
+    "mechanismCoveredCount": 18,
+    "coveredCount": 18,
+    "uncoveredAnchors": [],
+    "zoneUncoveredAnchors": [],
+    "mechanismUncoveredAnchors": []
+  },
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "agent loop ring cycles observe, act, check, and continue as the reusable visual identity",
+    "stacked context panes feed model state before actions leave the loop",
+    "environment surfaces mutate across repo, browser, ticket, docs, and database blocks",
+    "a fixed workflow lane stays linear while an adaptive agent lane replans through a fork",
+    "approval checkpoint and Model + Tools + State + Loop modules close the system"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

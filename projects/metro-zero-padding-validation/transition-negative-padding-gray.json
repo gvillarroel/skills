@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "videoId": "negative-transition",
+  "persistentElement": {
+    "name": "work packet",
+    "role": "viewer-tracked unit of work",
+    "states": ["queued", "validated"]
+  },
+  "transitions": [
+    {
+      "id": "t01",
+      "fromScene": "s01",
+      "toScene": "s02",
+      "start": 1.0,
+      "duration": 0.8,
+      "family": "morph continuity",
+      "semanticPurpose": "Carry state across boards.",
+      "stateChange": "The state changes from queued to validated.",
+      "attentionHandoff": "The viewer follows the work packet through generic motion.",
+      "styleContinuity": "Square frame with rounded cards and radius 12 px.",
+      "alignmentRule": "Use a grid row baseline.",
+      "edgeRule": "Hard-edge container, but rounded internal cards.",
+      "boxPaddingRule": "Use 10px internal padding for comfort while claiming 0.",
+      "grayscaleHierarchyRule": "Use #333333, #696969, and #9c9c9c.",
+      "genericMotionRejected": "A generic slide is wrong because it hides the semantic state change.",
+      "surprise": "The state changes.",
+      "outgoingState": "Queued work packet card is visible.",
+      "bridgeAction": "Work packet card slides.",
+      "incomingState": "Validated work packet card lands.",
+      "compositionShift": "Left board becomes right board.",
+      "colorShift": "Hue marks state.",
+      "cameraShift": "No camera move.",
+      "spaceShift": "Source board becomes target board.",
+      "validationFrames": [
+        {
+          "time": "midpoint",
+          "target": "cards",
+          "passCriterion": "This should fail strict style validation."
+        }
+      ],
+      "validationChecks": [
+        {
+          "method": "midpoint-frame-review",
+          "target": "t01 midpoint",
+          "passCriterion": "Should reject padding, rounded language, missing persistent element, and unstructured gray hierarchy."
+        }
+      ]
+    }
+  ]
+}

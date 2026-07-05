@@ -2,6 +2,19 @@
 
 Use this catalog when a video needs several different transition types. Pick patterns by semantic job, not by decoration.
 
+## Metro Minimal Tonal Motion Transitions
+
+Use these when the prompt names Metro Minimal Tonal Motion, Masonry, megacanvas, hard square geometry, no padding, grayscale hierarchy, or design feedback that the video is not following the design. Treat the transition as navigation inside one large modular object unless the source explicitly requires a cut to another visual system.
+
+- **Zoom To Subsection**: push into a declared zone, chart, table, node group, or block. End with the target comfortably framed, unclipped, grid-aligned, and still showing enough context to understand where it lives.
+- **Zoom Out To System**: pull back from a detail to the full megacanvas. Use when the story needs context, dependencies, or a final synthesis.
+- **Pan To Zone**: move horizontally, vertically, or diagonally between named functional zones. Keep the camera stable and axis-aware; the move should reveal a new section, not drift.
+- **Expanding Block Cover**: a selected 0-radius module grows until it covers the frame, then shrinks, slides, or unmasks the next section. The block is the content boundary; do not place padded labels inside it.
+- **Surface Wipe**: a flat rectangular surface crosses the frame as a clean curtain. Use grayscale or a semantic state red; avoid gradients, soft shadows, or soft-corner masks.
+- **Tile Morph**: a module changes size, track, or role while preserving square edges, shared grid lines, and zero internal padding. Good for KPI-to-chart, table-cell-to-matrix, node-to-graph, or summary-block-to-detail.
+- **Masked Reframing**: a rectangular aperture opens inside a block and the camera enters the revealed view. The mask must be square-edged and semantically tied to the source block.
+- **Masonry Block Motion**: blocks enter, fit, push neighbors, reveal internal marks, expand to detail, or collapse back into the wall. Validate varied block sizes, shared edges, and a clean final wall.
+
 ## Pattern Cards
 
 ### Persistent Object Flight
@@ -23,6 +36,8 @@ Use this catalog when a video needs several different transition types. Pick pat
 
 - Use when a small object, verdict, or state should flood the entire screen with its color.
 - Visual mechanic: expand the object's color into a full-screen cover, optionally hold a short word or symbol, then wipe/fade back to a different scene.
+- Square-edge variant: expand the object into an axis-aligned rectangle or stepped shutter that preserves 0-radius corners.
+- No-padding variant: the cover rectangle is the content boundary; do not reveal an inset card or padded label inside the cover.
 - Good for breaking visual rhythm and making color carry state.
 - Validate that the cover color has a semantic reason and the next scene inherits or resolves it.
 
@@ -44,6 +59,7 @@ Use this catalog when a video needs several different transition types. Pick pat
 
 - Use when the next scene is a different conceptual space.
 - Visual mechanic: a window, tunnel, aperture, or corridor opens briefly and shows the target space before the cut completes.
+- Square-edge variant: use a rectangular aperture, grid cell, split-panel door, or orthogonal corridor; avoid circular portals unless the source style calls for them.
 - Good for loop-to-tool, local-to-system, interface-to-runtime, or data-to-diagram changes.
 - Validate that the portal shows the destination, not a decorative wipe.
 
@@ -51,7 +67,8 @@ Use this catalog when a video needs several different transition types. Pick pat
 
 - Use when the persistent element changes role or verdict.
 - Visual mechanic: a color field starts from the source object and floods only the target region or object that inherits the role.
-- Keep color tied to state: amber for pending, blue for action, red for blocked, green for proof, teal for controlled execution.
+- Square-edge variant: flood a bounded rectangular region, column, lane, or board cell instead of a soft radial cloud.
+- Keep color tied to state. Do not use hue as the only hierarchy signal; hierarchy should still be carried by distinct grayscale levels.
 - Validate that color change happens because state changed.
 
 ### Camera Parallax Move
@@ -72,6 +89,7 @@ Use this catalog when a video needs several different transition types. Pick pat
 
 - Use when one diagram role becomes another.
 - Visual mechanic: the outgoing object's bounding box, line, or card reshapes into the incoming object.
+- Square-edge variant: preserve rectangular bounds, straight edges, corner radius, and zero internal padding while changing size, fill, internal marks, or grid position.
 - Preserve enough geometry for continuity while changing state color or role.
 - Validate that the morph has a source and target, not an arbitrary shape change.
 
@@ -103,3 +121,6 @@ Use this catalog when a video needs several different transition types. Pick pat
 - Alternate smooth continuity with contrast. For example: persistent object, portal, interrupt, morph.
 - Change only the channels that carry meaning: object, color, camera, space, rhythm, or composition.
 - Do not stack every effect on every cut. One primary mechanic plus one supporting cue is usually enough.
+- Every pattern choice must name one primary semantic mechanic and one visual continuity cue.
+- For hard-edge styles, pick the square-edge variant of portal, morph, color cover, depth reveal, or mask transitions unless a source asset requires soft-corner geometry.
+- For no-padding or grayscale-level styles, preserve flush box geometry through the cut and state which grayscale levels carry outgoing, bridge, and incoming hierarchy.

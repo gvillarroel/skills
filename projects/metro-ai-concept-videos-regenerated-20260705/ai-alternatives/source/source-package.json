@@ -1,0 +1,208 @@
+{
+  "title": "What AI alternatives we have",
+  "topic": "AI alternatives",
+  "checkedDate": "2026-07-04",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "comparison-matrix",
+  "visualZones": [
+    {
+      "id": "comparison-matrix-options-zone",
+      "role": "option column zone",
+      "bounds": {
+        "x": 44,
+        "y": 96,
+        "width": 304,
+        "height": 248
+      },
+      "grayLevel": 1,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "comparison-matrix-criteria-zone",
+      "role": "criteria row zone",
+      "bounds": {
+        "x": 44,
+        "y": 344,
+        "width": 304,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "comparison-matrix-scores-zone",
+      "role": "score evidence zone",
+      "bounds": {
+        "x": 348,
+        "y": 96,
+        "width": 520,
+        "height": 508
+      },
+      "grayLevel": 3,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "comparison-matrix-tradeoff-zone",
+      "role": "tradeoff and guardrail zone",
+      "bounds": {
+        "x": 868,
+        "y": 96,
+        "width": 368,
+        "height": 248
+      },
+      "grayLevel": 4,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "comparison-matrix-decision-zone",
+      "role": "recommendation zone",
+      "bounds": {
+        "x": 868,
+        "y": 344,
+        "width": 368,
+        "height": 260
+      },
+      "grayLevel": 2,
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    }
+  ],
+  "durationSeconds": 120.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30
+  },
+  "outputId": "ai-alternatives",
+  "outputVideo": "projects/metro-ai-concept-videos/ai-alternatives/artifacts/video-renders/draft/videos/ai-alternatives.mp4",
+  "sourceFacts": [
+    "The named alternatives map to different home bases for AI work.",
+    "Atlassian Rovo is strongest for organizational knowledge across Jira, Confluence, and connected tools.",
+    "Gemini App is a consumer and prosumer assistant with subscription tiers and deep Google ecosystem ties.",
+    "GitHub Copilot is strongest as a coding harness inside developer workflows.",
+    "Claude Desktop and Claude Code are strong for coding and research workflows with connectors, skills, hooks, plugins, and MCP.",
+    "Rovo ships in paid Atlassian cloud subscriptions and Rovo Dev uses a credit model per developer.",
+    "Copilot has Free through Enterprise plans and AI-credit billing.",
+    "Claude blends subscriptions with API-style usage, while Gemini uses plan tiers and region-dependent availability."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [],
+  "qualityLabels": [],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "comparison grid",
+    "Atlassian suite knowledge graph feeding Rovo",
+    "Gemini plan cards",
+    "Copilot runtime stack",
+    "Claude desktop to terminal transition",
+    "use-case quadrants",
+    "four cost meters",
+    "choose by workflow gravity selector"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [
+    "Rovo",
+    "Gemini App",
+    "GitHub Copilot",
+    "Claude Desktop/Code"
+  ],
+  "decisionCriteria": [
+    "Knowledge home",
+    "Coding workflow",
+    "Extensibility",
+    "Budget model",
+    "Permissions",
+    "Observability",
+    "Workflow gravity",
+    "Plan tiers"
+  ],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "options reveal first so every later score has a stable column",
+    "criteria rows fill with per-option score bars to show comparable evidence",
+    "score-shift markers and tradeoff lens explain why the ranking changes",
+    "recommendation and guardrail panels appear only after criteria are visible"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

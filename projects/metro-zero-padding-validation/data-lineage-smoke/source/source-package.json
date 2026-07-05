@@ -1,0 +1,112 @@
+{
+  "title": "Data Lineage Zero Padding",
+  "topic": "Lineage boxes without internal decoration",
+  "checkedDate": "July 4, 2026",
+  "audience": "general technical viewers",
+  "route": "topic-explainer",
+  "visualPattern": "data-lineage",
+  "durationSeconds": 4.0,
+  "format": {
+    "width": 1280,
+    "height": 720,
+    "fps": 6
+  },
+  "outputId": "data-lineage-zero-padding",
+  "outputVideo": "projects/metro-zero-padding-validation/data-lineage-smoke/artifacts/video-renders/draft/videos/data-lineage-zero-padding.mp4",
+  "sourceFacts": [
+    "Lineage boxes use grayscale level fills.",
+    "Inactive boxes do not use internal padded decoration."
+  ],
+  "sourceUrls": [],
+  "treeLabels": [],
+  "meterLabels": [],
+  "routeLabels": [],
+  "checkpointLabels": [],
+  "phaseLabels": [],
+  "metricLabels": [],
+  "thresholdLabels": [],
+  "dependencyLabels": [],
+  "clusterLabels": [],
+  "traceLabels": [],
+  "flowLabels": [],
+  "laneLabels": [],
+  "handoffLabels": [],
+  "threatLabels": [],
+  "barrierLabels": [],
+  "consequenceLabels": [],
+  "scenarioLabels": [],
+  "probabilityLabels": [],
+  "claimLabels": [],
+  "evidenceLabels": [],
+  "layerLabels": [],
+  "concernLabels": [],
+  "lineageLabels": [
+    "source",
+    "normalize",
+    "transform",
+    "validate",
+    "publish",
+    "consume"
+  ],
+  "qualityLabels": [
+    "schema gate",
+    "drift",
+    "rollback",
+    "rollback plan"
+  ],
+  "systemLabels": [],
+  "strategyAnchors": [
+    "zero internal padding",
+    "gray lineage levels"
+  ],
+  "causalLabels": [],
+  "decisionOptions": [],
+  "decisionCriteria": [],
+  "stateLabels": [],
+  "guardLabels": [],
+  "missingFacts": [],
+  "visualMechanisms": [
+    "lineage nodes activate from source to consumer so provenance is visible before trust claims",
+    "transform rules appear before the quality gate so derived data is not treated as raw input",
+    "schema and freshness checks stay separate from drift and consumer readiness",
+    "rollback appears only after downstream drift or consumer risk is visible"
+  ],
+  "visualPolicy": {
+    "edgeStyle": "square",
+    "boxInteriorPolicy": "zero",
+    "internalPaddingPx": 0,
+    "contentFlushToBounds": true,
+    "grayLevels": [
+      {
+        "level": 0,
+        "hex": "#ffffff",
+        "role": "foreground panel"
+      },
+      {
+        "level": 1,
+        "hex": "#f7f7f7",
+        "role": "paper field"
+      },
+      {
+        "level": 2,
+        "hex": "#e7e7e7",
+        "role": "secondary level"
+      },
+      {
+        "level": 3,
+        "hex": "#cfcfcf",
+        "role": "inactive structure"
+      },
+      {
+        "level": 4,
+        "hex": "#9c9c9c",
+        "role": "tertiary level"
+      },
+      {
+        "level": 5,
+        "hex": "#696969",
+        "role": "muted labels"
+      }
+    ]
+  }
+}

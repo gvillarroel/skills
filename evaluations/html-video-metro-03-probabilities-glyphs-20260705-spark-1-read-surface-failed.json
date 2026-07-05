@@ -1,0 +1,256 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 14,
+    "bash": 5
+  },
+  "paths": [
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+      "calls": 4,
+      "resultBytes": 79147
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/src/index.html",
+      "calls": 2,
+      "resultBytes": 217294
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/artifacts/reviews/metro-video-composition-audit.json",
+      "calls": 2,
+      "resultBytes": 12272
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 17898
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/artifacts/reviews/metro-semantic-density-audit.json",
+      "calls": 1,
+      "resultBytes": 28240
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/source/source-package.json",
+      "calls": 1,
+      "resultBytes": 36048
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/src/render.mjs",
+      "calls": 1,
+      "resultBytes": 9415
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/audit_metro_video_composition.py",
+      "calls": 1,
+      "resultBytes": 19083
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/audit_metro_semantic_density.py",
+      "calls": 1,
+      "resultBytes": 108368
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+      "calls": 4,
+      "resultBytes": 79147
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/src/index.html",
+      "calls": 2,
+      "resultBytes": 217294
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/artifacts/reviews/metro-video-composition-audit.json",
+      "calls": 2,
+      "resultBytes": 12272
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 17898
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/artifacts/reviews/metro-semantic-density-audit.json",
+      "calls": 1,
+      "resultBytes": 28240
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/source/source-package.json",
+      "calls": 1,
+      "resultBytes": 36048
+    },
+    {
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/src/render.mjs",
+      "calls": 1,
+      "resultBytes": 9415
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/audit_metro_video_composition.py",
+      "calls": 1,
+      "resultBytes": 19083
+    },
+    {
+      "path": "skills/html-d3-anime-video-workflow/scripts/audit_metro_semantic_density.py",
+      "calls": 1,
+      "resultBytes": 108368
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 17898
+    },
+    {
+      "line": 30,
+      "tool": "bash",
+      "path": null,
+      "command": "cd . && uv run --script skills/html-d3-anime-video-workflow/scripts/build_from_prompt_contract.py --prompt ../prompt.md --manifest projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/artifacts/reviews/prompt-",
+      "isError": true,
+      "resultBytes": 56605
+    },
+    {
+      "line": 45,
+      "tool": "bash",
+      "path": null,
+      "command": "cd . && uv run --script skills/html-d3-anime-video-workflow/scripts/audit_metro_semantic_density.py --wrapper-report projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/artifacts/reviews/prompt-contract-build",
+      "isError": true,
+      "resultBytes": 270
+    },
+    {
+      "line": 58,
+      "tool": "read",
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/artifacts/reviews/metro-semantic-density-audit.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 28240
+    },
+    {
+      "line": 71,
+      "tool": "read",
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/source/source-package.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 36048
+    },
+    {
+      "line": 84,
+      "tool": "read",
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/src/render.mjs",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9415
+    },
+    {
+      "line": 97,
+      "tool": "read",
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/src/index.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 110192
+    },
+    {
+      "line": 110,
+      "tool": "read",
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/src/index.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 107102
+    },
+    {
+      "line": 123,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/audit_metro_video_composition.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 19083
+    },
+    {
+      "line": 136,
+      "tool": "read",
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/artifacts/reviews/metro-video-composition-audit.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11463
+    },
+    {
+      "line": 149,
+      "tool": "read",
+      "path": "projects/metro-design-repair-contracts-full/videos/llm-probabilities-and-evaluation/artifacts/reviews/metro-video-composition-audit.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 809
+    },
+    {
+      "line": 162,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/audit_metro_semantic_density.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 108368
+    },
+    {
+      "line": 175,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11410
+    },
+    {
+      "line": 191,
+      "tool": "bash",
+      "path": null,
+      "command": "rg -n \"comparison-matrix|renderConceptFrame|cameraPose|masonry\" skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+      "isError": false,
+      "resultBytes": 10843
+    },
+    {
+      "line": 207,
+      "tool": "bash",
+      "path": null,
+      "command": "rg -n \"render\\.mjs|playwright|ffmpeg|puppeteer|rendering|contact-sheet|video\" skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+      "isError": false,
+      "resultBytes": 18257
+    },
+    {
+      "line": 220,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 29417
+    },
+    {
+      "line": 233,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 17244
+    },
+    {
+      "line": 248,
+      "tool": "bash",
+      "path": null,
+      "command": "rg -n \"def render_comparison|def render_.*comparison|comparison_matrix\" skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+      "isError": false,
+      "resultBytes": 161
+    },
+    {
+      "line": 261,
+      "tool": "read",
+      "path": "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 21076
+    }
+  ],
+  "findings": []
+}
