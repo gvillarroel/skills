@@ -185,6 +185,33 @@ def gray_level(level: int) -> str:
     return GRAY_LEVELS[max(0, min(len(GRAY_LEVELS) - 1, level))]
 
 
+def is_red_surface_fill(fill: str | None) -> bool:
+    if fill is None:
+        return False
+    return str(fill).strip().lower() in {
+        PALETTE["route"].lower(),
+        PALETTE["attribute"].lower(),
+        PALETTE["damage"].lower(),
+        PALETTE["tradeoff"].lower(),
+        "#ffccd5",
+        "#e8002a",
+        "#6d1222",
+    }
+
+
+def tonal_surface_fill(fill: str, box: tuple[float, float, float, float]) -> str:
+    width = max(0.0, float(box[2]) - float(box[0]))
+    height = max(0.0, float(box[3]) - float(box[1]))
+    if width * height < 1800 or not is_red_surface_fill(fill):
+        return fill
+    raw = str(fill).strip().lower()
+    if raw == "#ffccd5":
+        return gray_level(2)
+    if raw in {PALETTE["damage"].lower(), PALETTE["tradeoff"].lower(), "#e8002a"}:
+        return gray_level(4)
+    return gray_level(5)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Build a small deterministic standalone explainer video package."
@@ -868,6 +895,7 @@ def rounded_rect(
     if EDGE_STYLE == "square":
         box = snap_box_to_grid(box)
         radius = 0
+    fill = tonal_surface_fill(fill, box)
     draw.rounded_rectangle(
         box,
         radius=radius,
@@ -996,13 +1024,9 @@ def draw_meter(
     rounded_rect(draw, box, gray_level(3), PALETTE["line"], radius=8)
     fill_width = (x2 - x1) * clamp(progress)
     if fill_width > 4:
-        rounded_rect(
-            draw,
-            (x1, y1, x1 + fill_width, y2),
-            color,
-            None,
-            radius=6,
-        )
+        rounded_rect(draw, (x1, y1, x1 + fill_width, y2), gray_level(5), None, radius=0)
+        cap_width = min(8, fill_width)
+        draw.rectangle((x1 + fill_width - cap_width, y1, x1 + fill_width, y2), fill=hex_to_rgb(color))
     text(draw, ((x1 + x2) / 2, (y1 + y2) / 2 + 5), label, fonts["small"], PALETTE["ink"], "mm", 2, "#ffffff")
 
 
@@ -1459,23 +1483,31 @@ def ai_alternatives_requested(args: argparse.Namespace) -> bool:
         *(getattr(args, "system_label", None) or []),
     ]
     haystack = " ".join(str(value) for value in values).lower()
+    title_topic = " ".join(str(value) for value in [getattr(args, "title", ""), getattr(args, "topic", "")]).lower()
+    if "harness plugin" in title_topic:
+        return False
+    if "what ai alternatives we have" in haystack or "ai alternatives" in haystack:
+        return True
     exact_signals = [
-        "what ai alternatives we have",
-        "ai alternatives",
         "atlassian rovo",
         "gemini app",
         "github copilot",
         "claude desktop",
         "claude code",
+    ]
+    ai_specific_signals = [
+        "atlassian rovo",
+        "gemini app",
+        "claude desktop",
         "workflow gravity",
         "home base",
-        "comparison_grid",
         "radar chart",
-        "credit_meter",
         "use-case selector",
     ]
-    signal_count = sum(1 for signal in exact_signals if signal in haystack)
-    return signal_count >= 3 or "what ai alternatives we have" in haystack
+    return (
+        sum(1 for signal in exact_signals if signal in haystack) >= 2
+        and sum(1 for signal in ai_specific_signals if signal in haystack) >= 2
+    )
 
 
 def hook_requested(args: argparse.Namespace) -> bool:
@@ -1487,7 +1519,10 @@ def hook_requested(args: argparse.Namespace) -> bool:
         *(getattr(args, "system_label", None) or []),
     ]
     haystack = " ".join(str(value) for value in values).lower()
+    title_topic = " ".join(str(value) for value in [getattr(args, "title", ""), getattr(args, "topic", "")]).lower()
     if skill_package_requested(args):
+        return False
+    if "what is an agent" in title_topic:
         return False
     if "harness plugin" in haystack:
         return False
@@ -1515,10 +1550,6 @@ def hook_requested(args: argparse.Namespace) -> bool:
         "speed-vs-cost",
         "cost slider",
         "hooks = lifecycle controls",
-        "flow-tokens",
-        "attention-matrix-tiles",
-        "swimlane-handoff",
-        "circuit-signal-traces",
     ]
     signal_count = sum(1 for signal in exact_signals if signal in haystack)
     return signal_count >= 2 or "what is a harness hook" in haystack
@@ -1978,7 +2009,7 @@ def render_hook_masonry_frame(
     for index in range(len(event_nodes) - 1):
         angular_path([event_nodes[index], event_nodes[index + 1]], gray_level(5), 3, 1)
         if index < active:
-            angular_path([event_nodes[index], event_nodes[index + 1]], PALETTE["route"], 6, ease((p - 0.05 - index * 0.045) / 0.12))
+            angular_path([event_nodes[index], event_nodes[index + 1]], PALETTE["route"], 3, ease((p - 0.05 - index * 0.045) / 0.12))
     for index, (x, y) in enumerate(event_nodes):
         node_active = index <= active
         fill = gray_level(2 + index % 4)
@@ -1988,7 +2019,7 @@ def render_hook_masonry_frame(
         module_rect(x - 22, y - 20, 12, 40, gray_level(1 + index % 4), None)
     pulse_index = min(len(event_nodes) - 2, active)
     pulse = point_on_polyline([event_nodes[pulse_index], event_nodes[pulse_index + 1]], ease((p * 8) % 1))
-    module_rect(pulse[0] - 10, pulse[1] - 10, 20, 20, PALETTE["attribute"], gray_level(6), 1)
+    module_rect(pulse[0] - 10, pulse[1] - 10, 20, 20, gray_level(5), gray_level(6), 1)
 
     # Shield gate overlays the timeline and converts passive lifecycle into active control.
     shield_on = p > 0.16
@@ -1996,14 +2027,14 @@ def render_hook_masonry_frame(
     module_rect(428, 96, 28, 188, gray_level(5 if shield_on else 4), gray_level(6), 1)
     module_rect(792, 96, 28, 188, gray_level(5 if shield_on else 4), gray_level(6), 1)
     if shield_on:
-        module_rect(428, 96, 8, 188, PALETTE["damage"], None)
-        module_rect(812, 96, 8, 188, PALETTE["damage"], None)
-    module_rect(456, 96, 336 * gate_close, 16, PALETTE["attribute"], None)
-    module_rect(456, 268, 336 * gate_close, 16, PALETTE["attribute"], None)
+        module_rect(428, 96, 4, 188, PALETTE["damage"], None)
+        module_rect(816, 96, 4, 188, PALETTE["damage"], None)
+    module_rect(456, 96, 336 * gate_close, 8, gray_level(5), None)
+    module_rect(456, 276, 336 * gate_close, 8, gray_level(5), None)
     loop_points = [(520, 132), (704, 132), (756, 196), (664, 264), (520, 236), (480, 176), (520, 132)]
     for start, end in zip(loop_points, loop_points[1:]):
         draw.line([pt(*start), pt(*end)], fill=hex_to_rgb(gray_level(5)), width=3)
-    angular_path(loop_points, PALETTE["route"], 6, ease((p - 0.18) / 0.36))
+    angular_path(loop_points, PALETTE["route"], 3, ease((p - 0.18) / 0.36))
 
     # Provider surfaces show three hook/event systems without product text.
     provider_on = p > 0.26
@@ -2028,9 +2059,9 @@ def render_hook_masonry_frame(
                 (x + 72, 248, 72, 76),
             ]
             for cell_index, (cx, cy, cw, ch) in enumerate(cloud_cells):
-                cell_fill = PALETTE["attribute"] if p > 0.36 and cell_index in {1, 2, 4} else gray_level(2 + cell_index % 4)
+                cell_fill = gray_level(5) if p > 0.36 and cell_index in {1, 2, 4} else gray_level(2 + cell_index % 4)
                 module_rect(cx, cy, cw, ch, cell_fill, gray_level(5), 1)
-            angular_path(cloud, PALETTE["attribute"], 5, ease((p - 0.30) / 0.28))
+            angular_path(cloud, PALETTE["attribute"], 3, ease((p - 0.30) / 0.28))
         else:
             row_y = 104
             for row in range(6):
@@ -2061,16 +2092,16 @@ def render_hook_masonry_frame(
         if block_on:
             module_rect(x, 430, 54, 8, PALETTE["damage"], None)
         module_rect(x, 504, 54, 18, gray_level(5), None)
-    angular_path([(316, 480), (388, 480), (436, 480)], PALETTE["damage"], 6, ease((p - 0.44) / 0.16))
-    angular_path([(436, 548), (516, 596), (660, 596)], PALETTE["route"], 5, ease((p - 0.58) / 0.18))
+    angular_path([(316, 480), (388, 480), (436, 480)], PALETTE["damage"], 4, ease((p - 0.44) / 0.16))
+    angular_path([(436, 548), (516, 596), (660, 596)], PALETTE["route"], 3, ease((p - 0.58) / 0.18))
 
     # Filtering/preprocessing shrinks noisy output before it reaches the model.
     filter_on = p > 0.54
     for row in range(6):
         for col in range(8):
-            fill = PALETTE["attribute"] if filter_on and (row + col) % 5 == 0 else gray_level(2 + (row + col) % 4)
+            fill = gray_level(5) if filter_on and (row + col) % 5 == 0 else gray_level(2 + (row + col) % 4)
             module_rect(680 + col * 28, 408 + row * 22, 20, 14, fill, None)
-    module_rect(936, 410, 34, 136, PALETTE["attribute"] if filter_on else gray_level(4), gray_level(6), 1)
+    module_rect(936, 410, 34, 136, gray_level(5) if filter_on else gray_level(4), gray_level(6), 1)
     reduced = min(6, int(ease((p - 0.56) / 0.22) * 7))
     for index in range(6):
         bar_active = index < reduced
@@ -2640,26 +2671,30 @@ def render_guardrail_masonry_frame(
     loop_points = [(540, 164), (700, 164), (784, 316), (700, 468), (540, 468), (456, 316), (540, 164)]
     for start, end in zip(loop_points, loop_points[1:]):
         draw.line([pt(*start), pt(*end)], fill=hex_to_rgb(gray_level(5)), width=4)
-    angular_path(loop_points, PALETTE["route"], 8, ease((p - 0.06) / 0.40))
+    angular_path(loop_points, PALETTE["route"], 3, ease((p - 0.06) / 0.40))
     for index, (x, y) in enumerate(loop_points[:-1]):
-        fill = PALETTE["route"] if index <= active and index % 3 == 0 else gray_level(2 + index % 4)
+        fill = gray_level(5) if index <= active and index % 3 == 0 else gray_level(2 + index % 4)
         module_rect(x - 30, y - 28, 60, 56, fill, gray_level(5), 1)
+        if index <= active and index % 3 == 0:
+            module_rect(x - 30, y - 28, 5, 56, PALETTE["route"], None)
         module_rect(x - 16, y - 4, 32, 8, gray_level(1 + index % 4), None)
-    module_rect(584, 268, 112, 96, gray_level(1), PALETTE["route"], 3)
+    module_rect(584, 268, 112, 96, gray_level(1), gray_level(5), 1)
     for row in range(3):
         for col in range(3):
-            fill = PALETTE["route"] if active >= 2 and (row + col) % 3 == 0 else gray_level(2 + ((row + col) % 4))
+            fill = gray_level(5) if active >= 2 and (row + col) % 3 == 0 else gray_level(2 + ((row + col) % 4))
             module_rect(604 + col * 26, 288 + row * 22, 18, 14, fill, None)
+            if active >= 2 and (row + col) % 3 == 0:
+                module_rect(604 + col * 26, 288 + row * 22, 4, 14, PALETTE["route"], None)
 
     gate_close = ease((p - 0.08) / 0.22)
     left_gate_x = 424 + 56 * (1 - gate_close)
     right_gate_x = 828 - 56 * (1 - gate_close)
     module_rect(left_gate_x, 116, 28, 408, gray_level(5), gray_level(6), 1)
     module_rect(right_gate_x, 116, 28, 408, gray_level(5), gray_level(6), 1)
-    module_rect(left_gate_x, 116, 8, 408, PALETTE["damage"], None)
-    module_rect(right_gate_x + 20, 116, 8, 408, PALETTE["damage"], None)
-    module_rect(424, 116, 432 * gate_close, 20, PALETTE["attribute"], None)
-    module_rect(424, 504, 432 * gate_close, 20, PALETTE["attribute"], None)
+    module_rect(left_gate_x, 116, 4, 408, PALETTE["damage"], None)
+    module_rect(right_gate_x + 24, 116, 4, 408, PALETTE["damage"], None)
+    module_rect(424, 116, 432 * gate_close, 8, gray_level(5), None)
+    module_rect(424, 516, 432 * gate_close, 8, gray_level(5), None)
     for index in range(4):
         module_rect(524 + index * 52, 230 + (index % 2) * 122, 40, 40, gray_level(2 + index), gray_level(5), 1)
 
@@ -2681,7 +2716,7 @@ def render_guardrail_masonry_frame(
             module_rect(280, y - 46, 8, 92, lane_color, None)
         module_rect(324, y - 10, 120, 20, gray_level(5), None)
         if gate_on:
-            angular_path([(324, y), (452, y), (456, 316)], lane_color, 5, 1)
+            angular_path([(324, y), (452, y), (456, 316)], lane_color, 3, 1)
 
     # Prompt suggestion versus hard policy gate.
     module_rect(104, 540, 160, 76, gray_level(2), gray_level(5), 1)
@@ -2708,7 +2743,7 @@ def render_guardrail_masonry_frame(
         if row_blocked:
             module_rect(932 + max(0, width_px - 8), y, min(8, width_px), 34, PALETTE["damage"], None)
         module_rect(1168, y, 44, 34, gray_level(5 if row in (0, 3) and p > 0.44 else 3), None)
-        angular_path([(856, 316), (904, y + 16), (932, y + 16)], PALETTE["route"] if row % 2 == 0 else PALETTE["attribute"], 4, filter_progress)
+        angular_path([(856, 316), (904, y + 16), (932, y + 16)], PALETTE["route"] if row % 2 == 0 else PALETTE["attribute"], 3, filter_progress)
     module_rect(930, 400, 300, 64, gray_level(3), gray_level(5), 1)
     risk_width = 300 * ease((p - 0.34) / 0.34)
     risk_high = risk_width > 185
@@ -2748,10 +2783,14 @@ def render_guardrail_masonry_frame(
 
     # Human approval over protected code-assistant actions.
     approval_on = p > 0.62
-    module_rect(1280, 424, 224, 150, PALETTE["tradeoff"] if approval_on else gray_level(3), gray_level(6), 2)
+    module_rect(1280, 424, 224, 150, gray_level(5 if approval_on else 3), gray_level(6), 1)
+    if approval_on:
+        module_rect(1280, 424, 6, 150, PALETTE["attribute"], None)
     module_rect(1304, 448, 176, 20, gray_level(1), None)
     module_rect(1304, 484, 68, 54, gray_level(5 if approval_on else 2), None)
-    module_rect(1392, 484, 64, 54, PALETTE["route"] if p > 0.74 else gray_level(2), None)
+    module_rect(1392, 484, 64, 54, gray_level(5) if p > 0.74 else gray_level(2), None)
+    if p > 0.74:
+        module_rect(1392, 484, 6, 54, PALETTE["route"], None)
     for index, (x, y) in enumerate([(1544, 432), (1624, 432), (1704, 432)]):
         risk_active = p > 0.56 + index * 0.06
         fill = gray_level(5 if risk_active else 2 + index)
@@ -2762,8 +2801,8 @@ def render_guardrail_masonry_frame(
         module_rect(x + 12, y + 38, 40, 10, gray_level(5), None)
 
     # Positive path passes while blocked path terminates; scale shows safety versus friction.
-    angular_path([(940, 612), (1096, 612), (1248, 612)], PALETTE["route"], 7, ease((p - 0.68) / 0.18))
-    angular_path([(940, 652), (1076, 652), (1076, 628)], PALETTE["damage"], 7, ease((p - 0.50) / 0.20))
+    angular_path([(940, 612), (1096, 612), (1248, 612)], PALETTE["route"], 4, ease((p - 0.68) / 0.18))
+    angular_path([(940, 652), (1076, 652), (1076, 628)], PALETTE["damage"], 4, ease((p - 0.50) / 0.20))
     stop_active = p > 0.50
     module_rect(1060, 620, 52, 52, gray_level(5 if stop_active else 3), gray_level(6), 1)
     if stop_active:
@@ -2831,7 +2870,9 @@ def render_skill_package_masonry_frame(
             module_rect(x, y, 8, 104, PALETTE["route"], None)
         for row in range(4):
             band_fill = fill if row == 0 and index < card_count else gray_level(1 + (row + index) % 4)
-            module_rect(x + 16, y + row * 26, max(28, 152 - row * 18), 24, band_fill, None)
+            module_rect(x, y + row * 26, max(44, 168 - row * 18), 24, band_fill, None)
+            if row == 0 and card_active:
+                module_rect(x, y + row * 26, 8, 24, PALETTE["route"], None)
 
     # Long prompt wall collapses into one scoped skill card.
     collapse = ease((p - 0.16) / 0.24)
@@ -2897,8 +2938,10 @@ def render_skill_package_masonry_frame(
         module_rect(x, y + 52, 64, 12, gray_level(5), None)
     badge_count = min(6, int(ease((p - 0.64) / 0.20) * 7))
     for index in range(6):
-        fill = PALETTE["attribute"] if index < badge_count else gray_level(2 + index % 4)
+        fill = gray_level(5) if index < badge_count else gray_level(2 + index % 4)
         module_rect(1268 + index * 44, 340, 32, 40, fill, gray_level(5), 1)
+        if index < badge_count:
+            module_rect(1268 + index * 44, 340, 5, 40, PALETTE["attribute"], None)
     script_count = min(4, int(ease((p - 0.66) / 0.18) * 5))
     for row in range(4):
         script_active = row < script_count
@@ -2908,8 +2951,10 @@ def render_skill_package_masonry_frame(
             module_rect(1276, 416 + row * 34, 6, 18, PALETTE["route"], None)
     read_level = min(4, int(ease((p - 0.54) / 0.34) * 5))
     for index in range(4):
-        fill = PALETTE["attribute"] if index < read_level else gray_level(2 + index)
+        fill = gray_level(5) if index < read_level else gray_level(2 + index)
         module_rect(1572 + index * 36, 416, 28, 88, fill, gray_level(5), 1)
+        if index < read_level:
+            module_rect(1572 + index * 36, 416, 5, 88, PALETTE["attribute"], None)
 
     # Bloated skill gets trimmed into a scoped reusable workflow.
     trim = ease((p - 0.72) / 0.20)
@@ -2921,7 +2966,7 @@ def render_skill_package_masonry_frame(
         if trim_line_active:
             module_rect(1516, 112 + row * 24, 6, 20, PALETTE["damage"], None)
     module_rect(1516 + 172 * trim, 112, 28, 296, gray_level(5), gray_level(6), 1)
-    module_rect(1516 + 172 * trim, 112, 8, 296, PALETTE["damage"], None)
+    module_rect(1516 + 172 * trim, 112, 4, 296, PALETTE["damage"], None)
     workflow_active = trim > 0.70
     module_rect(1516, 448, 184, 76, gray_level(5 if workflow_active else 3), gray_level(6), 1)
     if workflow_active:
@@ -3589,21 +3634,21 @@ def render_metric_dashboard_frame(
     points = [(145, 472), (230, 448), (315, 438), (400, 402), (485, 422), (570, 366), (655, 334), (740, 300)]
     reveal_segments = max(0, min(len(points) - 1, int(trend_progress * (len(points) - 1))))
     for idx in range(reveal_segments):
-        draw.line([points[idx], points[idx + 1]], fill=hex_to_rgb(PALETTE["route"]), width=8)
+        draw.line([points[idx], points[idx + 1]], fill=hex_to_rgb(PALETTE["route"]), width=4)
     if 0 < trend_progress < 1:
         idx = min(len(points) - 2, reveal_segments)
         ratio = trend_progress * (len(points) - 1) - idx
         a, b = points[idx], points[idx + 1]
         partial = (round(a[0] + (b[0] - a[0]) * ratio), round(a[1] + (b[1] - a[1]) * ratio))
-        draw.line([a, partial], fill=hex_to_rgb(PALETTE["route"]), width=8)
+        draw.line([a, partial], fill=hex_to_rgb(PALETTE["route"]), width=4)
     active_point_count = max(1, min(len(points), int(trend_progress * len(points)) + 1))
     for idx, point in enumerate(points[:active_point_count]):
-        fill = PALETTE["route"] if idx != 4 else PALETTE["damage"]
-        draw.ellipse((point[0] - 8, point[1] - 8, point[0] + 8, point[1] + 8), fill=hex_to_rgb(fill), outline=hex_to_rgb("#ffffff"), width=3)
+        outline = PALETTE["route"] if idx != 4 else PALETTE["damage"]
+        draw.ellipse((point[0] - 7, point[1] - 7, point[0] + 7, point[1] + 7), fill=hex_to_rgb(gray_level(5)), outline=hex_to_rgb(outline), width=3)
     if anomaly_visible:
         anomaly = points[4]
         draw.ellipse((anomaly[0] - 30, anomaly[1] - 30, anomaly[0] + 30, anomaly[1] + 30), outline=hex_to_rgb(PALETTE["damage"]), width=5)
-        rounded_rect(draw, (425, 225, 595, 285), "#ffccd5", PALETTE["damage"], radius=card_radius)
+        rounded_rect(draw, (425, 225, 595, 285), gray_level(2), PALETTE["damage"], radius=card_radius)
         if not low_text_masonry:
             text(draw, (510, 249), "anomaly", fonts["small"], PALETTE["damage"], "mm")
             text(draw, (510, 274), metrics[4], fonts["tiny"], PALETTE["ink"], "mm")
@@ -3628,7 +3673,9 @@ def render_metric_dashboard_frame(
         rounded_rect(draw, (x1, y1, x1 + w, y1 + h), gray_level(3), color if p > 0.16 else PALETTE["line"], radius=card_radius)
         fill_width = w * clamp(value)
         if fill_width > 0:
-            rounded_rect(draw, (x1, y1, x1 + fill_width, y1 + h), color, None, radius=0)
+            draw.rectangle((x1, y1, x1 + fill_width, y1 + h), fill=hex_to_rgb(gray_level(5)))
+            cap_width = min(8, fill_width)
+            draw.rectangle((x1 + fill_width - cap_width, y1, x1 + fill_width, y1 + h), fill=hex_to_rgb(color))
         if not low_text_masonry:
             text(draw, (x1 + w / 2, y1 + h / 2 - 8), compact_label(name, 20), fonts["small"], PALETTE["ink"], "mm", 3, "#ffffff")
             text(draw, (x1 + w / 2, y1 + h / 2 + 20), role, fonts["tiny"], PALETTE["ink"], "mm", 2, "#ffffff")
@@ -3871,10 +3918,10 @@ def render_sankey_flow_frame(
     nodes = [
         (130, 320, labels[0], PALETTE["route"], "#e7e7e7"),
         (340, 235, labels[1], PALETTE["defense"], "#e7e7e7"),
-        (340, 435, labels[2], PALETTE["tradeoff"], "#ffccd5"),
+        (340, 435, labels[2], PALETTE["tradeoff"], gray_level(2)),
         (570, 215, labels[3], PALETTE["route"], "#e7e7e7"),
         (570, 365, labels[4], PALETTE["attribute"], "#e7e7e7"),
-        (790, 300, labels[6], PALETTE["damage"], "#ffccd5"),
+        (790, 300, labels[6], PALETTE["damage"], gray_level(3)),
         (1048, 320, labels[7], PALETTE["atlas"], "#e7e7e7"),
     ]
     flows = [
@@ -3897,7 +3944,10 @@ def render_sankey_flow_frame(
         draw_polyline(draw, points, PALETTE["line"], max(4, base_width - 4), 1)
     for idx, (points, color, band_width) in enumerate(flows):
         segment_progress = clamp(flow_progress * len(flows) - idx)
-        draw_polyline(draw, points, color, band_width, segment_progress)
+        red_family = {PALETTE["route"], PALETTE["attribute"], PALETTE["damage"], PALETTE["tradeoff"]}
+        body_color = gray_level(6) if color in red_family else color
+        draw_polyline(draw, points, body_color, max(4, band_width - 6), segment_progress)
+        draw_polyline(draw, points, color, 3, segment_progress)
         if segment_progress > 0.12:
             token = point_on_polyline(points, segment_progress)
             draw.ellipse((token[0] - 8, token[1] - 8, token[0] + 8, token[1] + 8), fill=hex_to_rgb(PALETTE["gold"]))
@@ -3915,12 +3965,12 @@ def render_sankey_flow_frame(
         if not low_text_masonry:
             text(draw, (340, 185), "split preserves value", fonts["small"], PALETTE["route"], "mm", 3, "#ffffff")
     if loss_visible:
-        rounded_rect(draw, (235, 505, 445, 558), "#ffccd5", PALETTE["tradeoff"], width=3, radius=callout_radius)
+        rounded_rect(draw, (235, 505, 445, 558), gray_level(2), PALETTE["tradeoff"], width=3, radius=callout_radius)
         if not low_text_masonry:
             text(draw, (340, 528), "loss is explicit", fonts["small"], PALETTE["tradeoff"], "mm", 3, "#ffffff")
             text(draw, (340, 548), labels[2], fonts["tiny"], PALETTE["ink"], "mm")
     if bottleneck_visible:
-        rounded_rect(draw, (710, 170, 880, 238), "#ffccd5", PALETTE["damage"], width=4, radius=node_radius)
+        rounded_rect(draw, (710, 170, 880, 238), gray_level(3), PALETTE["damage"], width=4, radius=node_radius)
         if not low_text_masonry:
             text(draw, (795, 197), "bottleneck", fonts["small"], PALETTE["damage"], "mm", 3, "#ffffff")
             text(draw, (795, 220), "limits merged flow", fonts["tiny"], PALETTE["ink"], "mm")
@@ -3946,7 +3996,9 @@ def render_sankey_flow_frame(
             draw.rectangle(meter_box, fill=hex_to_rgb(gray_level(3)), outline=hex_to_rgb(PALETTE["line"]), width=2)
             fill_width = (x2 - x1) * clamp(value)
             if fill_width > 4:
-                draw.rectangle((x1, y1, x1 + fill_width, y2), fill=hex_to_rgb(color))
+                draw.rectangle((x1, y1, x1 + fill_width, y2), fill=hex_to_rgb(gray_level(5)))
+                cap_width = min(8, fill_width)
+                draw.rectangle((x1 + fill_width - cap_width, y1, x1 + fill_width, y2), fill=hex_to_rgb(color))
     else:
         draw_meter(draw, (86, 500, 268, 570), "input volume", flow_progress, PALETTE["route"], fonts)
         draw_meter(draw, (496, 500, 678, 570), "retained value", ease((p - 0.26) / 0.45), PALETTE["defense"], fonts)
@@ -6049,6 +6101,16 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
     function ease(v) {{ v = clamp(v); return v * v * (3 - 2 * v); }}
     const grayLevels = PACKAGE.visualPolicy?.grayLevels?.map((d) => d.hex) || {json.dumps(GRAY_LEVELS)};
     function grayLevel(index) {{ return grayLevels[Math.max(0, Math.min(grayLevels.length - 1, index))]; }}
+    const redSurfaceFills = new Set([palette.route, palette.damage, palette.attribute, palette.tradeoff, "#9e1b32", "#e8002a", "#6d1222", "#ffccd5"].map((value) => String(value).toLowerCase()));
+    function isRedSurfaceFill(fill) {{
+      return redSurfaceFills.has(String(fill || "").trim().toLowerCase());
+    }}
+    function tonalSurfaceFill(fill, rectWidth, rectHeight, grayIndex = 5) {{
+      const w = Math.abs(Number(rectWidth) || 0);
+      const h = Math.abs(Number(rectHeight) || 0);
+      if (isRedSurfaceFill(fill) && w * h >= 1100 && Math.min(w, h) > 10) return grayLevel(grayIndex);
+      return fill;
+    }}
     const squareEdge = (stage.getAttribute?.("data-edge-style") || stage.dataset?.edgeStyle) === "square";
     const metroGrid = {METRO_GRID:g};
     function snapToGrid(value) {{
@@ -6252,8 +6314,8 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const opacity = Math.min(0.92, 0.26 + ease(Math.min(1, phase)) * (active ? 0.58 : 0.38));
         const attrs = bindingAttrs(binding, bindingIndex, zoneIndex, active);
         const kind = semanticGlyphKind(binding?.sourceAnchor);
-        const fill = active ? palette.route : grayLevel((bindingIndex % 3) + 2);
-        const stroke = active ? palette.damage : grayLevel(5);
+        const fill = active ? grayLevel(5) : grayLevel((bindingIndex % 3) + 2);
+        const stroke = active ? palette.route : grayLevel(5);
         drawSemanticGlyph(kind, x, y, 12, fill, stroke, attrs, opacity);
       }});
     }}
@@ -6272,16 +6334,36 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const zoneIndex = Number.isFinite(Number(module.zoneIndex)) ? Number(module.zoneIndex) : index % Math.max(1, sourceZones.length || 1);
         const level = Math.max(1, Math.min(grayLevels.length - 2, Number(module.grayLevel) || metroZoneFillLevel(zoneIndex, active)));
         const isActive = zoneIndex === active;
+        const x = (Number(bounds.x) || 0) + vector.x * (1 - fit);
+        const y = (Number(bounds.y) || 0) + vector.y * (1 - fit);
+        const width = Number(bounds.width) || 4;
+        const height = Number(bounds.height) || 4;
+        const fill = grayLevel(isActive ? Math.min(level + 1, grayLevels.length - 2) : level);
+        const moduleBoxId = `masonry-wall-module-${{index}}`;
         el("rect", {{
-          x: (Number(bounds.x) || 0) + vector.x * (1 - fit),
-          y: (Number(bounds.y) || 0) + vector.y * (1 - fit),
-          width: Number(bounds.width) || 4,
-          height: Number(bounds.height) || 4,
+          x,
+          y,
+          width,
+          height,
           rx: 0,
-          fill: grayLevel(isActive ? Math.min(level + 1, grayLevels.length - 2) : level),
+          fill,
+          stroke: "none",
+          "fill-opacity": clamp(phase),
+          "data-fill-for": moduleBoxId,
+          "data-fill-axis": "all",
+          "data-padding-policy": "zero-verified",
+        }});
+        el("rect", {{
+          x,
+          y,
+          width,
+          height,
+          rx: 0,
+          fill,
           stroke: isActive ? palette.route : grayLevel(5),
           "stroke-width": isActive ? 3 : 1,
           "fill-opacity": clamp(phase),
+          "data-box-id": moduleBoxId,
           "data-masonry-module": "true",
           "data-masonry-wall": "true",
           "data-masonry-order": String(index),
@@ -6353,6 +6435,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           "stroke-width": isActive ? 3 : 1,
           "stroke-opacity": isActive ? 0.55 : 0.24,
           "pointer-events": "none",
+          "data-padding-exempt": "zone-evidence-outline",
           "data-zone-active": isActive ? "true" : "false",
           ...zoneAttrs(index),
         }});
@@ -6392,6 +6475,89 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         normalized["stroke-linejoin"] = "miter";
       }}
       return normalized;
+    }}
+    function rectMetrics(node, index) {{
+      const x = numericAttr(node.getAttribute("x"));
+      const y = numericAttr(node.getAttribute("y"));
+      const width = numericAttr(node.getAttribute("width"));
+      const height = numericAttr(node.getAttribute("height"));
+      if (![x, y, width, height].every(Number.isFinite) || width <= 0 || height <= 0) return null;
+      return {{ node, index, x, y, width, height, area: width * height }};
+    }}
+    function setRectMetrics(item, x, y, width, height) {{
+      const sx = snapToGrid(x);
+      const sy = snapToGrid(y);
+      const sw = Math.max(metroGrid, snapToGrid(x + width) - sx);
+      const sh = Math.max(metroGrid, snapToGrid(y + height) - sy);
+      item.node.setAttribute("x", sx);
+      item.node.setAttribute("y", sy);
+      item.node.setAttribute("width", sw);
+      item.node.setAttribute("height", sh);
+      item.node.setAttribute("rx", 0);
+      item.node.setAttribute("ry", 0);
+      item.node.setAttribute("data-zone-boundary", item.node.getAttribute("data-zone-boundary") || "flush");
+      item.node.setAttribute("data-padding-policy", item.node.getAttribute("data-padding-policy") || "zero-verified");
+    }}
+    function enforceFlushMasonryInteriors() {{
+      if (!masonryRequired || !squareEdge) return;
+      const minOffset = 3.5;
+      const minSize = 12;
+      const minParentSize = minSize * 3;
+      for (let pass = 0; pass < 6; pass++) {{
+        const rects = Array.from(stage.querySelectorAll("rect"))
+          .map((node, index) => rectMetrics(node, index))
+          .filter(Boolean);
+        const changes = [];
+        for (const child of rects) {{
+          if (child.node.getAttribute("data-fill-for")) continue;
+          if ((child.node.getAttribute("data-masonry-module") || "").toLowerCase() === "true") continue;
+          if ((child.node.getAttribute("data-padding-exempt") || "") === "zone-evidence-outline") continue;
+          if (Math.min(child.width, child.height) < minSize) continue;
+          let chosen = null;
+          for (const parent of rects) {{
+            if (parent === child) continue;
+            if (parent.node.getAttribute("data-fill-for")) continue;
+            if ((parent.node.getAttribute("data-padding-exempt") || "") === "zone-evidence-outline") continue;
+            const parentIsMasonryModule = (parent.node.getAttribute("data-masonry-module") || "").toLowerCase() === "true";
+            const parentIsZone = Boolean(parent.node.getAttribute("data-zone-id") || parent.node.getAttribute("data-box-id"));
+            if (!parentIsMasonryModule && !parentIsZone) continue;
+            if (parent.index > child.index) continue;
+            if (parent.area <= child.area || Math.min(parent.width, parent.height) < minParentSize) continue;
+            const offsets = {{
+              left: child.x - parent.x,
+              top: child.y - parent.y,
+              right: parent.x + parent.width - (child.x + child.width),
+              bottom: parent.y + parent.height - (child.y + child.height),
+            }};
+            if (Object.values(offsets).some((value) => value < minOffset)) continue;
+            const areaRatio = child.area / parent.area;
+            if ((child.node.getAttribute("data-semantic-glyph") || "").toLowerCase() === "true" && areaRatio < 0.035) continue;
+            const score = (parentIsMasonryModule ? 2 : 1) * parent.area;
+            if (!chosen || score > chosen.score) chosen = {{ parent, offsets, score }};
+          }}
+          if (!chosen) continue;
+          const ordered = Object.entries(chosen.offsets).sort((a, b) => a[1] - b[1]);
+          const edge = ordered[0][0];
+          let x = child.x;
+          let y = child.y;
+          let width = child.width;
+          let height = child.height;
+          if (edge === "left") {{
+            width += chosen.offsets.left;
+            x = chosen.parent.x;
+          }} else if (edge === "right") {{
+            width += chosen.offsets.right;
+          }} else if (edge === "top") {{
+            height += chosen.offsets.top;
+            y = chosen.parent.y;
+          }} else {{
+            height += chosen.offsets.bottom;
+          }}
+          changes.push({{ child, x, y, width, height }});
+        }}
+        if (changes.length === 0) break;
+        changes.forEach((change) => setRectMetrics(change.child, change.x, change.y, change.width, change.height));
+      }}
     }}
     function cameraPose(progress) {{
       const t = clamp(progress);
@@ -6470,7 +6636,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
       el("text", {{ x, y, "font-size": size, "font-weight": 650, "text-anchor": anchor, fill, ...extra }}).textContent = value;
     }}
     function circle(x, y, r, fill, stroke, w = 3) {{ el("circle", {{ cx: x, cy: y, r, fill, stroke, "stroke-width": w }}); }}
-    function line(x1, y1, x2, y2, stroke, w = 4) {{ el("line", {{ x1, y1, x2, y2, stroke, "stroke-width": w, "stroke-linecap": "round" }}); }}
+    function line(x1, y1, x2, y2, stroke, w = 4) {{ el("line", {{ x1, y1, x2, y2, stroke, "stroke-width": w, "stroke-linecap": "butt" }}); }}
     function renderConceptFrame(videoId, seconds, options = {{}}) {{
       currentParent = stage;
       stage.replaceChildren();
@@ -6521,7 +6687,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           let skillRectCounter = 0;
           const sRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {{}}) => {{
             const contract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] ? {{}} : {{ "data-box-id": "skill-independent-module-" + (++skillRectCounter) }};
-            el("rect", {{ x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...contract, ...extra }});
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...contract, ...extra }});
           }};
           const sLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {{}}) => {{
             if (progress <= 0) return;
@@ -6688,7 +6854,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const hRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {{}}) => {{
             const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"];
             const boxContract = hasBoxContract ? {{}} : {{ "data-box-id": `hook-independent-module-${{++hookRectCounter}}` }};
-            el("rect", {{ x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra }});
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra }});
           }};
           const hLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {{}}) => {{
             if (progress <= 0) return;
@@ -6847,7 +7013,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const harnessMotifRequested = !/harness hook|harness plugin/.test(harnessMotifText) && /what is a harness|comparison_grid|runtime stack|runtime wrapper|engine icon|vehicle dashboard|same model|different shell|three-column harness|credit_meter|use-case matrix|selection path/.test(harnessMotifText);
         if (masonryRequired && harnessMotifRequested) {{
           const rect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {{}}) => {{
-            el("rect", {{ x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, ...extra }});
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, ...extra }});
           }};
           const poly = (points, stroke, strokeWidth = 4, opacity = 1, extra = {{}}) => {{
             el("polyline", {{ points: points.map((point) => point[0] + "," + point[1]).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", opacity, ...extra }});
@@ -7027,7 +7193,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         }}
         if (masonryRequired && agentMotifRequested) {{
           const rect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {{}}) => {{
-            el("rect", {{ x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, ...extra }});
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, ...extra }});
           }};
           const poly = (points, stroke, strokeWidth = 4, opacity = 1, extra = {{}}) => {{
             el("polyline", {{ points: points.map(([x, y]) => `${{x}},${{y}}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", opacity, ...extra }});
@@ -7321,10 +7487,10 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
       }}
       if (PACKAGE.visualPattern === "comparison-matrix") {{
         const component = (x, y, w, h, name, stroke = palette.line, fill = "#fff") => {{
-          el("rect", {{ x, y, width: w, height: h, rx: 14, fill, stroke, "stroke-width": 3 }});
+          el("rect", {{ x, y, width: w, height: h, rx: 0, fill, stroke, "stroke-width": 3 }});
           label(x + w / 2, y + h / 2 + 6, name, 18, palette.ink);
         }};
-        el("rect", {{ x: 55, y: 112, width: 1165, height: 494, rx: 14, fill: "#fff", stroke: "#cfcfcf" }});
+        el("rect", {{ x: 55, y: 112, width: 1165, height: 494, rx: 0, fill: "#fff", stroke: "#cfcfcf" }});
         [
           [55, 112, 260, 494, grayLevel(0)],
           [315, 112, 540, 494, grayLevel(1)],
@@ -7358,9 +7524,9 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           component(92, y - 22, 113, 44, row[0], rowActive ? row[2] : palette.line, "#ffffff");
           row[1].forEach((v, o) => {{
             const x = options[o][0];
-            el("rect", {{ x: x - 74, y: y - 15, width: 148, height: 30, rx: 7, fill: "#cfcfcf" }});
+            el("rect", {{ x: x - 74, y: y - 15, width: 148, height: 30, rx: 0, fill: "#cfcfcf" }});
             const fill = rowActive ? v * ease((p - 0.20 - r * 0.07) / 0.22) : 0;
-            if (fill > 0.02) el("rect", {{ x: x - 74, y: y - 15, width: 148 * fill, height: 30, rx: 7, fill: row[2] }});
+            if (fill > 0.02) el("rect", {{ x: x - 74, y: y - 15, width: 148 * fill, height: 30, rx: 0, fill: row[2] }});
             if (rowActive && p > 0.48 && o === 1) circle(x + 92, y, 8, palette.gold, palette.gold, 2);
           }});
         }});
@@ -7391,7 +7557,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
       }}
       if (PACKAGE.visualPattern === "causal-loop") {{
         const component = (x, y, w, h, nameText, stroke = palette.line, fill = "#fff") => {{
-          el("rect", {{ x, y, width: w, height: h, rx: 16, fill, stroke, "stroke-width": 3 }});
+          el("rect", {{ x, y, width: w, height: h, rx: 0, fill, stroke, "stroke-width": 3 }});
           label(x + w / 2, y + h / 2 + 6, nameText, 18, palette.ink);
         }};
         const route = (points, color, width = 4, opacity = 1) => el("polyline", {{
@@ -7399,8 +7565,8 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           fill: "none",
           stroke: color,
           "stroke-width": width,
-          "stroke-linecap": "round",
-          "stroke-linejoin": "round",
+          "stroke-linecap": "butt",
+          "stroke-linejoin": "miter",
           opacity
         }});
         const meter = (x, y, nameText, value, color) => {{
@@ -7411,7 +7577,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           if (filled > 0) el("rect", {{ x, y, width: filled, height, rx: 0, fill: color }});
           label(x + width / 2, y + height / 2 + 5, nameText, 15, palette.ink);
         }};
-        el("rect", {{ x: 55, y: 112, width: 1165, height: 494, rx: 14, fill: "#fff", stroke: "#cfcfcf" }});
+        el("rect", {{ x: 55, y: 112, width: 1165, height: 494, rx: 0, fill: "#fff", stroke: "#cfcfcf" }});
         [
           [55, 112, 360, 494, grayLevel(0)],
           [415, 112, 340, 494, grayLevel(1)],
@@ -7484,7 +7650,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
       }}
       if (PACKAGE.visualPattern === "phase-timeline") {{
         const component = (x, y, w, h, nameText, stroke = palette.line, fill = "#fff") => {{
-          el("rect", {{ x, y, width: w, height: h, rx: 16, fill, stroke, "stroke-width": 3 }});
+          el("rect", {{ x, y, width: w, height: h, rx: 0, fill, stroke, "stroke-width": 3 }});
           label(x + w / 2, y + h / 2 + 6, nameText, 18, palette.ink);
         }};
         const compactText = (value, limit = 16) => {{
@@ -7493,9 +7659,9 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         }};
         const sourcePhaseLabels = PACKAGE.phaseLabels?.length ? PACKAGE.phaseLabels : ["intake","scope","build","review","validate","publish"];
         const phaseLabels = sourcePhaseLabels.map((value) => compactText(value, 16));
-        el("rect", {{ x: 55, y: 112, width: 1170, height: 496, rx: 14, fill: "#fff", stroke: "none" }});
-        el("rect", {{ x: 88, y: 182, width: 1104, height: 208, rx: 14, fill: "#ffffff", stroke: "none" }});
-        el("rect", {{ x: 138, y: 430, width: 977, height: 145, rx: 14, fill: "#ffccd5", stroke: "none" }});
+        el("rect", {{ x: 55, y: 112, width: 1170, height: 496, rx: 0, fill: "#fff", stroke: "none" }});
+        el("rect", {{ x: 88, y: 182, width: 1104, height: 208, rx: 0, fill: "#ffffff", stroke: "none" }});
+        el("rect", {{ x: 138, y: 430, width: 977, height: 145, rx: 0, fill: "#ffccd5", stroke: "none" }});
         label(92, 145, "PHASE TIMELINE", 15, palette.muted, "start");
         label(162, 458, "RISK, GATE, AND HANDOFF", 15, palette.tradeoff, "start");
         const phasePoints = [[150,300],[340,300],[530,300],[720,300],[910,300],[1100,300]];
@@ -7566,8 +7732,8 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const metricNames = sourceMetrics.map((value) => compactText(value, 18));
         const thresholdNames = sourceThresholds.map((value) => compactText(value, 18));
         if (!masonryRequired) {{
-          el("rect", {{ x: 55, y: 112, width: 800, height: 490, rx: 14, fill: "#fff", stroke: "none" }});
-          el("rect", {{ x: 835, y: 112, width: 385, height: 490, rx: 14, fill: "#fff", stroke: "none" }});
+          el("rect", {{ x: 55, y: 112, width: 800, height: 490, rx: 0, fill: "#fff", stroke: "none" }});
+          el("rect", {{ x: 835, y: 112, width: 385, height: 490, rx: 0, fill: "#fff", stroke: "none" }});
           el("rect", {{ x: 55, y: 568, width: 1165, height: 34, rx: 0, fill: grayLevel(5), stroke: "none" }});
           el("rect", {{ x: 800, y: 112, width: 32, height: 456, rx: 0, fill: grayLevel(4), stroke: "none" }});
           el("rect", {{ x: 1192, y: 112, width: 28, height: 456, rx: 0, fill: grayLevel(5), stroke: "none" }});
@@ -7600,18 +7766,18 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         }}
         const points = [[145,472],[230,448],[315,438],[400,402],[485,422],[570,366],[655,334],[740,300]];
         const revealed = Math.max(0, Math.min(points.length - 1, Math.floor(trendProgress * (points.length - 1))));
-        for (let i = 0; i < revealed; i++) line(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], palette.route, 8);
+        for (let i = 0; i < revealed; i++) line(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], palette.route, 4);
         if (trendProgress > 0 && trendProgress < 1) {{
           const i = Math.min(points.length - 2, revealed);
           const ratio = trendProgress * (points.length - 1) - i;
           const a = points[i], b = points[i + 1];
-          line(a[0], a[1], a[0] + (b[0] - a[0]) * ratio, a[1] + (b[1] - a[1]) * ratio, palette.route, 8);
+          line(a[0], a[1], a[0] + (b[0] - a[0]) * ratio, a[1] + (b[1] - a[1]) * ratio, palette.route, 4);
         }}
         const activeTrendPoint = Math.max(0, Math.min(points.length - 1, Math.floor(trendProgress * points.length)));
-        points.slice(0, activeTrendPoint + 1).forEach((d, i) => circle(d[0], d[1], 8, i === 4 ? palette.damage : palette.route, "#fff", 3));
+        points.slice(0, activeTrendPoint + 1).forEach((d, i) => circle(d[0], d[1], 7, grayLevel(5), i === 4 ? palette.damage : palette.route, 3));
         if (anomalyVisible) {{
           circle(485,422,30,"none",palette.damage,5);
-          component(425,225,170,60,"anomaly",palette.damage,"#ffccd5");
+          component(425,225,170,60,"anomaly",palette.damage,grayLevel(2));
           if (!masonryRequired) label(510,274,metricNames[4],14,palette.ink);
         }}
         if (forecastVisible) {{
@@ -7632,7 +7798,11 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           if (p + 0.02 < d[8]) return;
           el("rect", {{ x: d[0], y: d[1], width: d[2], height: d[3], rx: 0, fill: grayLevel(3), stroke: p > 0.16 ? d[6] : palette.line, "stroke-width": 2 }});
           const filled = Math.max(0, Math.min(d[2], d[2] * clamp(d[7])));
-          if (filled > 0) el("rect", {{ x: d[0], y: d[1], width: filled, height: d[3], rx: 0, fill: d[6] }});
+          if (filled > 0) {{
+            el("rect", {{ x: d[0], y: d[1], width: filled, height: d[3], rx: 0, fill: grayLevel(5) }});
+            const capX = d[0] + Math.max(0, filled - 8);
+            el("rect", {{ x: capX, y: d[1], width: Math.min(8, filled), height: d[3], rx: 0, fill: d[6], stroke: "none" }});
+          }}
           if (!masonryRequired) {{
             label(d[0] + d[2] / 2, d[1] + 32, d[4], 15, palette.ink);
             label(d[0] + d[2] / 2, d[1] + 62, d[5], 13, palette.ink);
@@ -7657,7 +7827,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const deps = sourceDependencies.map((value) => compactText(value, 18));
         const clusters = sourceClusters.map((value) => compactText(value, 20));
         const component = (x, y, w, h, nameText, stroke = palette.line, fill = "#fff") => {{
-          el("rect", {{ x, y, width: w, height: h, rx: 14, fill, stroke, "stroke-width": 3 }});
+          el("rect", {{ x, y, width: w, height: h, rx: 0, fill, stroke, "stroke-width": 3 }});
           label(x + w / 2, y + h / 2 + 6, nameText, 17, palette.ink);
         }};
         const clusterFrames = [
@@ -7669,7 +7839,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const clusterLevelFills = [grayLevel(3), grayLevel(4), grayLevel(5)];
         const clusterLevelStrips = [[349,112,16,480], [839,112,16,480], [1204,112,16,480]];
         clusterFrames.forEach(([x, y, w, h, accent], idx) => {{
-          el("rect", {{ x, y, width: w, height: h, rx: 14, fill: clusterFills[idx], stroke: "none" }});
+          el("rect", {{ x, y, width: w, height: h, rx: 0, fill: clusterFills[idx], stroke: "none" }});
           el("rect", {{ x, y, width: w, height: 12, rx: 0, fill: accent }});
           const [stripX, stripY, stripW, stripH] = clusterLevelStrips[idx];
           el("rect", {{ x: stripX, y: stripY, width: stripW, height: stripH, rx: 0, fill: clusterLevelFills[idx], stroke: "none" }});
@@ -7753,12 +7923,12 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const sourceTraceLabels = PACKAGE.traceLabels?.length ? PACKAGE.traceLabels : ["client request","edge gateway","auth span","inventory span","payment span","database","fallback cache","response"];
         const traceLabels = sourceTraceLabels.map((value) => compactText(value, 18));
         const component = (x, y, w, h, nameText, stroke = palette.line, fill = "#fff") => {{
-          el("rect", {{ x, y, width: w, height: h, rx: 14, fill, stroke, "stroke-width": 3 }});
+          el("rect", {{ x, y, width: w, height: h, rx: 0, fill, stroke, "stroke-width": 3 }});
           label(x + w / 2, y + h / 2 + 6, nameText, 17, palette.ink);
         }};
         const laneY = [160,220,280,340,400,460,520];
         const x0 = 245, x1 = 1135;
-        el("rect", {{ x: 55, y: 112, width: 1165, height: 473, rx: 14, fill: "#fff", stroke: "none" }});
+        el("rect", {{ x: 55, y: 112, width: 1165, height: 473, rx: 0, fill: "#fff", stroke: "none" }});
         label(78,132,"TRACE WATERFALL",15,palette.muted,"start");
         label(960,132,"latency budget",15,palette.muted,"start");
         const laneFills = [grayLevel(0), grayLevel(1), grayLevel(2), grayLevel(3), grayLevel(4), grayLevel(2), grayLevel(5)];
@@ -7789,11 +7959,11 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const y = laneY[lane];
           const sx = x0 + start * (x1 - x0);
           const ex = x0 + end * (x1 - x0);
-          el("rect", {{ x: sx, y: y - 15, width: ex - sx, height: 30, rx: 10, fill: "#ffffff", stroke: "#cfcfcf" }});
+          el("rect", {{ x: sx, y: y - 15, width: ex - sx, height: 30, rx: 0, fill: "#ffffff", stroke: "#cfcfcf" }});
           const progress = ease((p - start) / Math.max(0.01, end - start));
           if (progress > 0) {{
             activeSpanCount += 1;
-            el("rect", {{ x: sx, y: y - 15, width: (ex - sx) * progress, height: 30, rx: 10, fill: "#e7e7e7", stroke: color, "stroke-width": 3 }});
+            el("rect", {{ x: sx, y: y - 15, width: (ex - sx) * progress, height: 30, rx: 0, fill: "#e7e7e7", stroke: color, "stroke-width": 3 }});
           }}
           label((sx + ex) / 2, y + 5, nameText, 15, palette.ink);
         }});
@@ -7808,7 +7978,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const fallbackVisible = p > 0.78;
         const responseVisible = p > 0.88;
         if (criticalPathVisible) {{
-          el("rect", {{ x: 505, y: 370, width: 437, height: 117, rx: 16, fill: "#ffccd5", stroke: palette.tradeoff, "stroke-width": 3 }});
+          el("rect", {{ x: 505, y: 370, width: 437, height: 117, rx: 0, fill: "#ffccd5", stroke: palette.tradeoff, "stroke-width": 3 }});
           label(724,392,"critical path",15,palette.tradeoff);
           label(724,418,`${{traceLabels[3]}} -> ${{traceLabels[5]}}`,15,palette.ink);
           line(612,360,790,448,palette.tradeoff,4);
@@ -7819,7 +7989,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         if (retryVisible) {{
           component(770,226,260,60,"retry branch",palette.damage,"#ffccd5");
           label(900,271,"slow span triggers retry",14,palette.ink);
-          el("path", {{ d: "M720 276 C815 190 980 220 1045 300", fill: "none", stroke: palette.damage, "stroke-width": 5, "stroke-linecap": "round" }});
+          el("path", {{ d: "M720 276 C815 190 980 220 1045 300", fill: "none", stroke: palette.damage, "stroke-width": 5, "stroke-linecap": "butt" }});
         }}
         if (fallbackVisible) {{
           component(785,500,295,68,"fallback cache",palette.gold,"#e7e7e7");
@@ -7831,7 +8001,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const visibleMechanismCount = [activeSpanCount >= 4, criticalPathVisible, latencyBudgetVisible, retryVisible, fallbackVisible, responseVisible].filter(Boolean).length;
         const beats = ["Trace the request before judging the service.", "Each span owns a visible slice of latency.", "The critical path is a route, not a guess.", "Retry and fallback should appear as separate branches.", "The response only lands after the budget story is visible."];
         const beatIndex = Math.max(0, Math.min(beats.length - 1, Math.floor(p * beats.length)));
-        el("rect", {{ x: 60, y: 665, width: 1160, height: 42, rx: 12, fill: palette.ink }});
+        el("rect", {{ x: 60, y: 665, width: 1160, height: 42, rx: 0, fill: palette.ink }});
         return {{ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, traceLabels: sourceTraceLabels, activeSpanCount, criticalPathVisible, latencyBudgetVisible, retryVisible, fallbackVisible, responseVisible, visibleMechanismCount }};
       }}
       if (PACKAGE.visualPattern === "sankey-flow") {{
@@ -7844,10 +8014,14 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           fill: "none",
           stroke: color,
           "stroke-width": width,
-          "stroke-linecap": "round",
-          "stroke-linejoin": "round",
+          "stroke-linecap": "butt",
+          "stroke-linejoin": "miter",
           opacity
         }});
+        const flowBodyColor = (color) => {{
+          if ([palette.route, palette.attribute, palette.damage, palette.tradeoff].includes(color)) return grayLevel(6);
+          return color;
+        }};
         const pointOn = (points, progress) => {{
           const safe = Math.max(0, Math.min(1, progress));
           let total = 0;
@@ -7883,7 +8057,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           }}
         }};
         if (!masonryRequired) {{
-          el("rect", {{ x: 55, y: 112, width: 1165, height: 490, rx: 14, fill: "#fff", stroke: "#cfcfcf" }});
+          el("rect", {{ x: 55, y: 112, width: 1165, height: 490, rx: 0, fill: "#fff", stroke: "#cfcfcf" }});
           label(88, 145, "SPLIT, LOSS, MERGE, AND OUTPUT", 15, palette.muted, "start");
         }}
         const sourceFlowLabels = PACKAGE.flowLabels?.length ? PACKAGE.flowLabels : ["raw input", "accepted stream", "filtered loss", "transform A", "transform B", "merged value", "bottleneck", "final output"];
@@ -7908,7 +8082,8 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         flows.forEach(([points, color, width], idx) => {{
           const segmentProgress = Math.max(0, Math.min(1, flowProgress * flows.length - idx));
           if (segmentProgress > 0) {{
-            route(points, color, width, Math.max(0.28, segmentProgress));
+            route(points, flowBodyColor(color), Math.max(4, width - 6), Math.max(0.28, segmentProgress));
+            route(points, color, 3, Math.max(0.35, segmentProgress));
             const token = pointOn(points, segmentProgress);
             circle(token[0], token[1], 8, palette.gold, palette.gold, 2);
           }}
@@ -7916,21 +8091,21 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         [
           [130, 320, flowLabels[0], palette.route, "#e7e7e7"],
           [340, 235, flowLabels[1], palette.defense, "#e7e7e7"],
-          [340, 435, flowLabels[2], palette.tradeoff, "#ffccd5"],
+          [340, 435, flowLabels[2], palette.tradeoff, grayLevel(2)],
           [570, 215, flowLabels[3], palette.route, "#e7e7e7"],
           [570, 365, flowLabels[4], palette.attribute, "#e7e7e7"],
-          [790, 300, flowLabels[6], palette.damage, "#ffccd5"],
+          [790, 300, flowLabels[6], palette.damage, grayLevel(3)],
           [1048, 320, flowLabels[7], palette.atlas, "#e7e7e7"],
         ].forEach((d) => node(d[0], d[1], d[2], d[3], d[4]));
         if (splitVisible) {{
           node(340, 180, "split preserves value", palette.route, "#ffffff");
         }}
         if (lossVisible) {{
-          node(340, 530, "loss is explicit", palette.tradeoff, "#ffccd5");
+          node(340, 530, "loss is explicit", palette.tradeoff, grayLevel(2));
           if (!masonryRequired) label(340, 558, flowLabels[2], 14, palette.ink);
         }}
         if (bottleneckVisible) {{
-          node(795, 205, "bottleneck", palette.damage, "#ffccd5");
+          node(795, 205, "bottleneck", palette.damage, grayLevel(3));
           if (!masonryRequired) label(795, 234, "limits merged flow", 14, palette.ink);
           el("ellipse", {{ cx: 790, cy: 300, rx: 32, ry: 32, fill: "none", stroke: palette.damage, "stroke-width": 5 }});
         }}
@@ -7947,7 +8122,11 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const height = 66;
           el("rect", {{ x, y, width, height, rx: 0, fill: grayLevel(3), stroke: palette.line }});
           const filled = Math.max(0, Math.min(width, width * ease(value)));
-          if (filled > 0) el("rect", {{ x, y, width: filled, height, rx: 0, fill: color }});
+          if (filled > 0) {{
+            el("rect", {{ x, y, width: filled, height, rx: 0, fill: grayLevel(5) }});
+            const capX = x + Math.max(0, filled - 8);
+            el("rect", {{ x: capX, y, width: Math.min(8, filled), height, rx: 0, fill: color, stroke: "none" }});
+          }}
           if (!masonryRequired) label(x + width / 2, y + height / 2 + 5, name, 15, palette.ink);
         }};
         meter(86, 500, "input volume", flowProgress, palette.route);
@@ -7971,13 +8150,15 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           ...(PACKAGE.visualMechanisms || []),
         ].join(" ").toLowerCase();
         const pluginMotifRequested = /harness plugin|plugin_bundle_cube|packaged harness behavior|installable unit|marketplace|allowlist|npm package|opencode runtime|noisy plugin|versioning|team-wide install/.test(pluginMotifText);
-        const aiAlternativesMotifRequested = /what ai alternatives we have|ai alternatives|atlassian rovo|gemini app|github copilot|claude desktop|claude code|workflow gravity|home base|comparison_grid|radar chart|credit_meter|use-case selector/.test(pluginMotifText);
+        const aiPlatformSignalCount = ["atlassian rovo", "gemini app", "github copilot", "claude desktop", "claude code"].filter((signal) => pluginMotifText.includes(signal)).length;
+        const aiSpecificSignalCount = ["atlassian rovo", "gemini app", "claude desktop", "workflow gravity", "home base", "radar chart", "use-case selector"].filter((signal) => pluginMotifText.includes(signal)).length;
+        const aiAlternativesMotifRequested = !pluginMotifRequested && (/what ai alternatives we have|ai alternatives/.test(pluginMotifText) || (aiPlatformSignalCount >= 2 && aiSpecificSignalCount >= 2));
         if (masonryRequired && aiAlternativesMotifRequested) {{
           let aiRectCounter = 0;
           const aRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {{}}) => {{
             const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] || extra["data-masonry-module"];
             const boxContract = hasBoxContract ? {{}} : {{ "data-box-id": `ai-alt-independent-module-${{++aiRectCounter}}` }};
-            el("rect", {{ x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra }});
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra }});
           }};
           const aLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {{}}) => {{
             if (progress <= 0) return;
@@ -8179,7 +8360,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const pRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {{}}) => {{
             const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] || extra["data-masonry-module"];
             const boxContract = hasBoxContract ? {{}} : {{ "data-box-id": `plugin-independent-module-${{++pluginRectCounter}}` }};
-            el("rect", {{ x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra }});
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra }});
           }};
           const pLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {{}}) => {{
             if (progress <= 0) return;
@@ -8449,7 +8630,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const guardrailMotifRequested = /shield_gate|agent_loop_ring|input\\s*\\/\\s*output\\s*\\/\\s*action|model armor|risk_score|human approval|policy matrix|guardrail/.test(guardrailMotifText);
         if (masonryRequired && guardrailMotifRequested) {{
           const gRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {{}}) => {{
-            el("rect", {{ x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...extra }});
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...extra }});
           }};
           const gLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {{}}) => {{
             if (progress <= 0) return;
@@ -8634,13 +8815,13 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const degradedVisible = p > 0.74;
         const actionVisible = p > 0.84;
         const polyline = (points, stroke, width = 4) => {{
-          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "round", "stroke-linejoin": "round" }});
+          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "butt", "stroke-linejoin": "miter" }});
         }};
         const box = (x, y, w, h, labelValue, stroke, fill, size = 15) => {{
-          el("rect", {{ x: x - w / 2, y: y - h / 2, width: w, height: h, rx: 14, fill, stroke, "stroke-width": 3 }});
+          el("rect", {{ x: x - w / 2, y: y - h / 2, width: w, height: h, rx: 0, fill, stroke, "stroke-width": 3 }});
           label(x, y + 5, labelValue, size, palette.ink);
         }};
-        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 16, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
+        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 0, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
         label(120, 138, "THREATS", 14, palette.muted);
         label(380, 138, "PREVENT", 14, palette.muted);
         label(640, 138, "TOP EVENT", 14, palette.muted);
@@ -8668,12 +8849,12 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         if (mitigativeVisible) mitigativePoints.forEach((barrier) => polyline([topEvent, barrier], palette.defense, 5));
         if (consequenceVisible) consequencePoints.forEach((point, idx) => polyline([mitigativePoints[Math.min(idx, 2)], point], palette.damage, 4));
         if (degradedVisible) {{
-          el("rect", {{ x: 485, y: 475, width: 310, height: 70, rx: 16, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 4 }});
+          el("rect", {{ x: 485, y: 475, width: 310, height: 70, rx: 0, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 4 }});
           label(640, 503, "degraded barrier", 16, palette.damage);
           label(640, 526, "control gap stays visible", 14, palette.ink);
         }}
         if (actionVisible) {{
-          el("rect", {{ x: 470, y: 176, width: 340, height: 54, rx: 16, fill: "#e7e7e7", stroke: palette.atlas, "stroke-width": 4 }});
+          el("rect", {{ x: 470, y: 176, width: 340, height: 54, rx: 0, fill: "#e7e7e7", stroke: palette.atlas, "stroke-width": 4 }});
           label(640, 208, "action: repair weakest barrier", 16, palette.atlas);
         }}
         const meter = (x, y, name, value, color) => {{
@@ -8713,13 +8894,13 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const fallbackVisible = p > 0.76;
         const outcomeVisible = p > 0.86;
         const polyline = (points, stroke, width = 4) => {{
-          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "round", "stroke-linejoin": "round" }});
+          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "butt", "stroke-linejoin": "miter" }});
         }};
         const node = ([x, y], labelValue, stroke, fill, active = true, width = 176) => {{
-          el("rect", {{ x: x - width / 2, y: y - 30, width, height: 60, rx: 16, fill: active ? fill : "#e7e7e7", stroke: active ? stroke : "#ccd6e3", "stroke-width": active ? 3 : 2 }});
+          el("rect", {{ x: x - width / 2, y: y - 30, width, height: 60, rx: 0, fill: active ? fill : "#e7e7e7", stroke: active ? stroke : "#ccd6e3", "stroke-width": active ? 3 : 2 }});
           label(x, y + 5, labelValue, 16, palette.ink);
         }};
-        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 16, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
+        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 0, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
         label(150, 138, "DECISION", 14, palette.muted);
         label(395, 138, "SCENARIOS", 14, palette.muted);
         label(690, 138, "OUTCOMES", 14, palette.muted);
@@ -8732,7 +8913,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           if (probabilityVisible) {{
             const labelPositions = [[278, 245], [278, 318], [278, 408]];
             const [lx, ly] = labelPositions[idx];
-            el("rect", {{ x: lx - 72, y: ly - 17, width: 144, height: 34, rx: 10, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
+            el("rect", {{ x: lx - 72, y: ly - 17, width: 144, height: 34, rx: 0, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
             label(lx, ly + 5, probabilityLabels[idx], 14, palette.ink);
           }}
         }});
@@ -8743,11 +8924,11 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           node(end, scenarioLabels[Math.min(idx + 3, 6)], [palette.defense, palette.route, palette.attribute, palette.damage][idx], ["#e7e7e7", "#e7e7e7", "#e7e7e7", "#ffccd5"][idx], active, 180);
         }});
         if (riskVisible) {{
-          el("rect", {{ x: 790, y: 420, width: 155, height: 58, rx: 14, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 3 }});
+          el("rect", {{ x: 790, y: 420, width: 155, height: 58, rx: 0, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 3 }});
           label(868, 452, "risk branch", 16, palette.damage);
         }}
         if (upsideVisible) {{
-          el("rect", {{ x: 790, y: 184, width: 160, height: 58, rx: 14, fill: "#e7e7e7", stroke: palette.defense, "stroke-width": 3 }});
+          el("rect", {{ x: 790, y: 184, width: 160, height: 58, rx: 0, fill: "#e7e7e7", stroke: palette.defense, "stroke-width": 3 }});
           label(870, 216, "upside branch", 16, palette.defense);
         }}
         if (decisionVisible) {{
@@ -8759,7 +8940,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           polyline([outcomes[3], fallback], palette.gold, 5);
         }}
         if (outcomeVisible) {{
-          el("rect", {{ x: 930, y: 548, width: 268, height: 38, rx: 12, fill: "#e7e7e7", stroke: palette.defense, "stroke-width": 3 }});
+          el("rect", {{ x: 930, y: 548, width: 268, height: 38, rx: 0, fill: "#e7e7e7", stroke: palette.defense, "stroke-width": 3 }});
           label(1064, 572, "selected outcome is source-aware", 16, palette.defense);
         }}
         const meter = (x, y, name, value, color) => {{
@@ -8794,7 +8975,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const observabilityVisible = p > 0.62;
         const rolloutVisible = p > 0.80;
         const polyline = (points, stroke, width = 4) => {{
-          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "round", "stroke-linejoin": "round" }});
+          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "butt", "stroke-linejoin": "miter" }});
         }};
         const meter = (x, y, name, value, color) => {{
           const width = 235;
@@ -8805,7 +8986,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           if (filled > 0) el("rect", {{ x, y, width: filled, height, rx: 0, fill: color, "data-fill-for": boxId, "data-fill-axis": "x-progress" }});
           label(x + width / 2, y + height / 2 + 5, name, 15, palette.ink);
         }};
-        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 16, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
+        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 0, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
         label(185, 140, "REQUEST PATH", 14, palette.muted);
         label(562, 140, "LAYERS", 14, palette.muted);
         label(930, 140, "CROSS-CUTTING", 14, palette.muted);
@@ -8816,7 +8997,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const fill = layerGrayFills[idx % layerGrayFills.length];
           const stroke = idx < 2 ? palette.route : idx < 4 ? palette.defense : palette.atlas;
           const ghostStroke = layerGhostStrokes[idx % layerGhostStrokes.length];
-          el("rect", {{ x: 320, y, width: 460, height: 48, rx: 14, fill, stroke: active ? stroke : ghostStroke, "stroke-width": active ? 3 : 2, "data-box-id": `layer-${{idx}}` }});
+          el("rect", {{ x: 320, y, width: 460, height: 48, rx: 0, fill, stroke: active ? stroke : ghostStroke, "stroke-width": active ? 3 : 2, "data-box-id": `layer-${{idx}}` }});
           label(550, y + 29, textValue, 16, palette.ink);
           layerBoxes.push([320, y, 780, y + 48, stroke]);
         }});
@@ -8836,38 +9017,38 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           polyline([[203, cy], [320, cy]], palette.route, 5);
         }}
         if (!crossCuttingVisible) {{
-          el("rect", {{ x: 840, y: 180, width: 295, height: 58, rx: 16, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 840, y: 180, width: 295, height: 58, rx: 0, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(988, 214, "cross-cutting policy", 14, palette.muted);
         }}
         if (crossCuttingVisible) {{
-          el("rect", {{ x: 840, y: 180, width: 295, height: 58, rx: 16, fill: "#e7e7e7", stroke: palette.attribute, "stroke-width": 4 }});
+          el("rect", {{ x: 840, y: 180, width: 295, height: 58, rx: 0, fill: "#e7e7e7", stroke: palette.attribute, "stroke-width": 4 }});
           label(988, 214, concernLabels[0], 16, palette.attribute);
           polyline([[838, 210], [782, 210], [782, 500], [838, 500]], palette.attribute, 5);
         }}
         if (!failurePathVisible) {{
-          el("rect", {{ x: 838, y: 278, width: 297, height: 60, rx: 16, fill: "#ffccd5", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 838, y: 278, width: 297, height: 60, rx: 0, fill: "#ffccd5", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(986, 312, "failure route", 14, palette.muted);
         }}
         if (failurePathVisible) {{
-          el("rect", {{ x: 838, y: 278, width: 297, height: 60, rx: 16, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 4 }});
+          el("rect", {{ x: 838, y: 278, width: 297, height: 60, rx: 0, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 4 }});
           label(986, 312, concernLabels[1], 16, palette.damage);
           polyline([[780, 326], [835, 308]], palette.damage, 6);
         }}
         if (!observabilityVisible) {{
-          el("rect", {{ x: 838, y: 378, width: 297, height: 60, rx: 16, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 838, y: 378, width: 297, height: 60, rx: 0, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(986, 412, "observability", 14, palette.muted);
         }}
         if (observabilityVisible) {{
-          el("rect", {{ x: 838, y: 378, width: 297, height: 60, rx: 16, fill: "#e7e7e7", stroke: palette.atlas, "stroke-width": 4 }});
+          el("rect", {{ x: 838, y: 378, width: 297, height: 60, rx: 0, fill: "#e7e7e7", stroke: palette.atlas, "stroke-width": 4 }});
           label(986, 412, concernLabels[2], 16, palette.atlas);
           meter(875, 452, "signal coverage", ease((p - 0.62) / 0.20), palette.atlas);
         }}
         if (!rolloutVisible) {{
-          el("rect", {{ x: 838, y: 528, width: 297, height: 46, rx: 16, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 838, y: 528, width: 297, height: 46, rx: 0, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(986, 556, "rollout gate", 14, palette.muted);
         }}
         if (rolloutVisible) {{
-          el("rect", {{ x: 838, y: 528, width: 297, height: 46, rx: 16, fill: "#e7e7e7", stroke: palette.defense, "stroke-width": 4 }});
+          el("rect", {{ x: 838, y: 528, width: 297, height: 46, rx: 0, fill: "#e7e7e7", stroke: palette.defense, "stroke-width": 4 }});
           label(986, 556, concernLabels[3], 16, palette.defense);
         }}
         const visibleMechanismCount = [activeLayerCount >= 4, activeLayerCount === 6, crossCuttingVisible, failurePathVisible, observabilityVisible, rolloutVisible].filter(Boolean).length;
@@ -8891,7 +9072,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const consumerVisible = p > 0.70;
         const rollbackVisible = p > 0.84;
         const polyline = (points, stroke, width = 4) => {{
-          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "round", "stroke-linejoin": "round" }});
+          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "butt", "stroke-linejoin": "miter" }});
         }};
         const meter = (x, y, name, value, color, width = 162, height = 60) => {{
           el("rect", {{ x, y, width, height, rx: 0, fill: grayLevel(3), stroke: palette.line }});
@@ -8899,7 +9080,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           if (filled > 0) el("rect", {{ x, y, width: filled, height, rx: 0, fill: color }});
           label(x + width / 2, y + height / 2 + 5, name, 14, palette.ink);
         }};
-        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 16, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
+        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 0, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
         label(150, 140, "SOURCE", 14, palette.muted);
         label(604, 140, "LINEAGE PATH", 14, palette.muted);
         label(456, 322, "QUALITY GATE", 14, palette.muted);
@@ -8917,7 +9098,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const x = 82 + idx * 178;
           const active = idx < activeLineageCount;
           const [stroke, fill, ghostStroke] = nodeColors[idx];
-          el("rect", {{ x, y: 192, width: 138, height: 78, rx: 18, fill, stroke: active ? stroke : ghostStroke, "stroke-width": active ? 4 : 2 }});
+          el("rect", {{ x, y: 192, width: 138, height: 78, rx: 0, fill, stroke: active ? stroke : ghostStroke, "stroke-width": active ? 4 : 2 }});
           label(x + 69, 239, textValue, 15, palette.ink);
           nodeBoxes.push([x, 192, x + 138, 270, stroke]);
         }});
@@ -8933,17 +9114,17 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           circle(box[0] + 69, box[1] - 3, 13, palette.gold, "#fff", 3);
         }}
         if (!transformVisible) {{
-          el("rect", {{ x: 414, y: 150, width: 254, height: 28, rx: 14, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 414, y: 150, width: 254, height: 28, rx: 0, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(541, 168, "transform rule", 14, palette.muted);
         }}
         if (transformVisible) {{
-          el("rect", {{ x: 414, y: 150, width: 254, height: 28, rx: 14, fill: "#e7e7e7", stroke: palette.attribute, "stroke-width": 3 }});
+          el("rect", {{ x: 414, y: 150, width: 254, height: 28, rx: 0, fill: "#e7e7e7", stroke: palette.attribute, "stroke-width": 3 }});
           label(541, 168, "transform rule", 14, palette.attribute);
           polyline([[496,178],[496,192]], palette.attribute, 4);
           polyline([[592,178],[592,192]], palette.attribute, 4);
         }}
         if (!qualityGateVisible) {{
-          el("rect", {{ x: 248, y: 342, width: 414, height: 114, rx: 18, fill: grayLevel(1), stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 248, y: 342, width: 414, height: 114, rx: 0, fill: grayLevel(1), stroke: "#cfcfcf", "stroke-width": 2 }});
           label(455, 386, "quality checks pending", 16, palette.muted);
         }}
         if (qualityGateVisible) {{
@@ -8951,30 +9132,30 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           meter(455, 342, qualityLabels[1], ease((p - 0.42) / 0.18), palette.defense, 207, 114);
         }}
         if (!driftVisible) {{
-          el("rect", {{ x: 724, y: 342, width: 412, height: 52, rx: 18, fill: "#ffccd5", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 724, y: 342, width: 412, height: 52, rx: 0, fill: "#ffccd5", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(930, 372, "drift monitor", 16, palette.muted);
         }}
         if (driftVisible) {{
-          el("rect", {{ x: 724, y: 342, width: 412, height: 52, rx: 18, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 4 }});
+          el("rect", {{ x: 724, y: 342, width: 412, height: 52, rx: 0, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 4 }});
           label(884, 372, qualityLabels[2], 16, palette.damage);
           polyline([[994,374],[1048,354],[1110,378]], palette.damage, 5);
         }}
         if (!consumerVisible) {{
-          el("rect", {{ x: 724, y: 424, width: 412, height: 76, rx: 18, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 724, y: 424, width: 412, height: 76, rx: 0, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(930, 466, "consumer contract", 16, palette.muted);
         }}
         if (consumerVisible) {{
-          el("rect", {{ x: 724, y: 424, width: 412, height: 76, rx: 18, fill: "#e7e7e7", stroke: palette.atlas, "stroke-width": 4 }});
+          el("rect", {{ x: 724, y: 424, width: 412, height: 76, rx: 0, fill: "#e7e7e7", stroke: palette.atlas, "stroke-width": 4 }});
           label(930, 454, compactText(sourceLineageLabels[sourceLineageLabels.length - 1], 28), 16, palette.atlas);
           label(930, 482, "ready after lineage + checks", 14, palette.muted);
           polyline([[1042,270],[1042,424]], palette.atlas, 5);
         }}
         if (!rollbackVisible) {{
-          el("rect", {{ x: 248, y: 500, width: 414, height: 68, rx: 18, fill: "#ffccd5", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 248, y: 500, width: 414, height: 68, rx: 0, fill: "#ffccd5", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(455, 540, "rollback route", 16, palette.muted);
         }}
         if (rollbackVisible) {{
-          el("rect", {{ x: 248, y: 500, width: 414, height: 68, rx: 18, fill: "#ffccd5", stroke: palette.tradeoff, "stroke-width": 4 }});
+          el("rect", {{ x: 248, y: 500, width: 414, height: 68, rx: 0, fill: "#ffccd5", stroke: palette.tradeoff, "stroke-width": 4 }});
           label(455, 540, compactText(sourceQualityLabels[3], 26), 16, palette.tradeoff);
           polyline([[620,500],[620,480],[260,480],[260,270]], palette.tradeoff, 5);
         }}
@@ -8999,7 +9180,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const confidenceVisible = p > 0.68;
         const recommendationVisible = p > 0.82;
         const polyline = (points, stroke, width = 4) => {{
-          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "round", "stroke-linejoin": "round" }});
+          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "butt", "stroke-linejoin": "miter" }});
         }};
         const meter = (x, y, name, value, color) => {{
           const width = 190;
@@ -9009,7 +9190,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           if (filled > 0) el("rect", {{ x, y, width: filled, height, rx: 0, fill: color }});
           label(x + width / 2, y + height / 2 + 5, name, 15, palette.ink);
         }};
-        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 16, fill: "#fff", stroke: "none", "stroke-width": 2 }});
+        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 0, fill: "#fff", stroke: "none", "stroke-width": 2 }});
         [
           [44, 112, 280, 480, grayLevel(0)],
           [324, 112, 376, 480, grayLevel(1)],
@@ -9022,7 +9203,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         label(560, 140, "EVIDENCE LADDER", 14, palette.muted);
         label(845, 140, "COUNTERWEIGHT", 14, palette.muted);
         label(1080, 140, "DECISION", 14, palette.muted);
-        el("rect", {{ x: 72, y: 216, width: 228, height: 106, rx: 18, fill: "#e7e7e7", stroke: claimVisible ? palette.route : "#cfcfcf", "stroke-width": claimVisible ? 4 : 2 }});
+        el("rect", {{ x: 72, y: 216, width: 228, height: 106, rx: 0, fill: "#e7e7e7", stroke: claimVisible ? palette.route : "#cfcfcf", "stroke-width": claimVisible ? 4 : 2 }});
         label(186, 254, claimLabels[0], 16, palette.ink);
         label(186, 286, claimLabels[1], 14, palette.muted);
         const ladderPoints = [[430,500],[500,420],[570,340],[640,260]];
@@ -9032,34 +9213,34 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         }}
         ladderPoints.forEach(([x, y], idx) => {{
           const active = idx < activeEvidenceCount;
-          el("rect", {{ x: x - 86, y: y - 28, width: 172, height: 56, rx: 15, fill: active ? "#ffffff" : "#e7e7e7", stroke: active ? palette.route : "#cfcfcf", "stroke-width": active ? 3 : 2 }});
+          el("rect", {{ x: x - 86, y: y - 28, width: 172, height: 56, rx: 0, fill: active ? "#ffffff" : "#e7e7e7", stroke: active ? palette.route : "#cfcfcf", "stroke-width": active ? 3 : 2 }});
           label(x, y + 5, evidenceLabels[idx], 14, palette.ink);
         }});
         if (claimVisible) polyline([[300,270],[372,340],ladderPoints[0]], palette.route, 5);
         if (!counterEvidenceVisible) {{
-          el("rect", {{ x: 760, y: 260, width: 190, height: 72, rx: 16, fill: "#ffffff", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 760, y: 260, width: 190, height: 72, rx: 0, fill: "#ffffff", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(855, 302, "counterweight", 14, palette.muted);
         }}
         if (counterEvidenceVisible) {{
-          el("rect", {{ x: 760, y: 260, width: 190, height: 72, rx: 16, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 4 }});
+          el("rect", {{ x: 760, y: 260, width: 190, height: 72, rx: 0, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 4 }});
           label(855, 292, evidenceLabels[4], 16, palette.damage);
           label(855, 316, claimLabels[2], 14, palette.ink);
           polyline([ladderPoints[2], [720,328], [760,296]], palette.damage, 6);
         }}
         if (!gapVisible) {{
-          el("rect", {{ x: 760, y: 425, width: 190, height: 80, rx: 16, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 760, y: 425, width: 190, height: 80, rx: 0, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(855, 470, "source gap", 14, palette.muted);
         }}
         if (gapVisible) {{
-          el("rect", {{ x: 760, y: 425, width: 190, height: 80, rx: 16, fill: "#e7e7e7", stroke: palette.gold, "stroke-width": 4 }});
+          el("rect", {{ x: 760, y: 425, width: 190, height: 80, rx: 0, fill: "#e7e7e7", stroke: palette.gold, "stroke-width": 4 }});
           label(855, 458, "source gap", 16, palette.gold);
           label(855, 484, evidenceLabels[5], 14, palette.ink);
           polyline([ladderPoints[0], [700,470], [760,466]], palette.gold, 6);
         }}
         if (!confidenceVisible) {{
-          el("rect", {{ x: 1000, y: 228, width: 190, height: 62, rx: 9, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
+          el("rect", {{ x: 1000, y: 228, width: 190, height: 62, rx: 0, fill: "#e7e7e7", stroke: "#cfcfcf", "stroke-width": 2 }});
           label(1095, 264, "confidence", 14, palette.muted);
-          el("rect", {{ x: 1000, y: 310, width: 190, height: 62, rx: 9, fill: "#e7e7e7", stroke: "#ffccd5", "stroke-width": 2 }});
+          el("rect", {{ x: 1000, y: 310, width: 190, height: 62, rx: 0, fill: "#e7e7e7", stroke: "#ffccd5", "stroke-width": 2 }});
           label(1095, 346, "uncertainty", 14, palette.muted);
         }}
         if (confidenceVisible) {{
@@ -9067,7 +9248,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           meter(1000, 310, "uncertainty", 1 - ease((p - 0.58) / 0.28), palette.damage);
         }}
         if (recommendationVisible) {{
-          el("rect", {{ x: 990, y: 438, width: 212, height: 82, rx: 18, fill: "#e7e7e7", stroke: palette.defense, "stroke-width": 4 }});
+          el("rect", {{ x: 990, y: 438, width: 212, height: 82, rx: 0, fill: "#e7e7e7", stroke: palette.defense, "stroke-width": 4 }});
           label(1096, 470, claimLabels[3], 16, palette.defense);
           label(1096, 496, "recommend after evidence", 14, palette.ink);
         }}
@@ -9095,7 +9276,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const respecVisible = p > 0.74;
         const lateClusterVisible = p > 0.86;
         const polyline = (points, stroke, width = 4) => {{
-          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "round", "stroke-linejoin": "round" }});
+          el("polyline", {{ points: points.map((d) => d.join(",")).join(" "), fill: "none", stroke, "stroke-width": width, "stroke-linecap": "butt", "stroke-linejoin": "miter" }});
         }};
         const node = ([x, y], textValue, stroke, active = true, shape = "circle") => {{
           if (shape === "diamond") {{
@@ -9114,7 +9295,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           if (filled > 0) el("rect", {{ x, y, width: filled, height, rx: 0, fill: color }});
           label(x + width / 2, y + height / 2 + 5, name, 15, palette.ink);
         }};
-        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 16, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
+        el("rect", {{ x: 44, y: 112, width: 1192, height: 480, rx: 0, fill: "#fff", stroke: "#cfcfcf", "stroke-width": 2 }});
         label(112, 140, "ROUTE PLAN", 14, palette.muted);
         label(520, 140, "CLUSTERS", 14, palette.muted);
         label(830, 140, "TRADEOFFS", 14, palette.muted);
@@ -9129,7 +9310,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const damageNodes = [[345,185],[478,170],[575,205]];
           polyline([routePoints[2], ...damageNodes], palette.damage, 7);
           damageNodes.forEach(([x, y]) => circle(x, y, 15, "#fff", palette.damage, 4));
-          el("rect", {{ x: 414, y: 132, width: 182, height: 52, rx: 14, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 3 }});
+          el("rect", {{ x: 414, y: 132, width: 182, height: 52, rx: 0, fill: "#ffccd5", stroke: palette.damage, "stroke-width": 3 }});
           label(505, 164, routeLabels[2], 16, palette.damage);
           meter(690, 178, "damage threshold", ease((p - 0.22) / 0.24), palette.damage);
         }}
@@ -9137,12 +9318,12 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const defenseNodes = [[368,430],[510,480],[642,438]];
           polyline([routePoints[2], ...defenseNodes], palette.defense, 7);
           defenseNodes.forEach(([x, y]) => circle(x, y, 15, "#fff", palette.defense, 4));
-          el("rect", {{ x: 414, y: 456, width: 186, height: 52, rx: 14, fill: "#e7e7e7", stroke: palette.defense, "stroke-width": 3 }});
+          el("rect", {{ x: 414, y: 456, width: 186, height: 52, rx: 0, fill: "#e7e7e7", stroke: palette.defense, "stroke-width": 3 }});
           label(507, 488, routeLabels[3], 16, palette.defense);
           meter(724, 438, "defense layer", ease((p - 0.34) / 0.24), palette.defense);
         }}
         if (attributeBridgeVisible) {{
-          el("rect", {{ x: 604, y: 292, width: 154, height: 73, rx: 18, fill: "#e7e7e7", stroke: palette.attribute, "stroke-width": 4 }});
+          el("rect", {{ x: 604, y: 292, width: 154, height: 73, rx: 0, fill: "#e7e7e7", stroke: palette.attribute, "stroke-width": 4 }});
           label(681, 324, "attribute bridge", 16, palette.attribute);
           label(681, 348, routeLabels[4], 14, palette.ink);
         }}
@@ -9161,14 +9342,14 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const lateNodes = [[1050,205],[1160,285],[1070,395]];
           polyline([routePoints[7], lateNodes[1], lateNodes[2]], palette.atlas, 7);
           lateNodes.forEach(([x, y]) => circle(x, y, 15, "#fff", palette.atlas, 4));
-          el("rect", {{ x: 990, y: 456, width: 210, height: 64, rx: 16, fill: "#e7e7e7", stroke: palette.atlas, "stroke-width": 4 }});
+          el("rect", {{ x: 990, y: 456, width: 210, height: 64, rx: 0, fill: "#e7e7e7", stroke: palette.atlas, "stroke-width": 4 }});
           label(1095, 482, "late specialization", 16, palette.atlas);
           label(1095, 505, "kept separate", 14, palette.ink);
         }}
         checkpointLabels.forEach((textValue, idx) => {{
           const x = 150 + idx * 230;
           const active = p > 0.16 + idx * 0.14;
-          el("rect", {{ x: x - 92, y: 542, width: 184, height: 46, rx: 13, fill: active ? "#ffffff" : "#e7e7e7", stroke: active ? palette.route : "#ccd6e3", "stroke-width": active ? 3 : 2 }});
+          el("rect", {{ x: x - 92, y: 542, width: 184, height: 46, rx: 0, fill: active ? "#ffffff" : "#e7e7e7", stroke: active ? palette.route : "#ccd6e3", "stroke-width": active ? 3 : 2 }});
           label(x, 572, textValue, 14, palette.ink);
         }});
         const visibleMechanismCount = [activeRouteNodeCount >= 4, damageClusterVisible, defenseClusterVisible, attributeBridgeVisible, keystoneTradeoffVisible, respecVisible, lateClusterVisible].filter(Boolean).length;
@@ -9177,8 +9358,8 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         return {{ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, routeLabels: sourceRouteLabels, checkpointLabels: sourceCheckpointLabels, activeRouteNodeCount, damageClusterVisible, defenseClusterVisible, attributeBridgeVisible, keystoneTradeoffVisible, respecVisible, lateClusterVisible, visibleMechanismCount }};
       }}
       if (PACKAGE.visualPattern === "skill-tree") {{
-      el("rect", {{ x: 60, y: 115, width: 930, height: 495, rx: 14, fill: "#ffffff", stroke: "#cfcfcf" }});
-      el("rect", {{ x: 1015, y: 115, width: 203, height: 495, rx: 14, fill: "#e7e7e7", stroke: "#9c9c9c" }});
+      el("rect", {{ x: 60, y: 115, width: 930, height: 495, rx: 0, fill: "#ffffff", stroke: "#cfcfcf" }});
+      el("rect", {{ x: 1015, y: 115, width: 203, height: 495, rx: 0, fill: "#e7e7e7", stroke: "#9c9c9c" }});
       const compactText = (value, limit = 12) => {{
         const text = String(value ?? "").trim().replace(/\\s+/g, " ");
         return text;
@@ -9225,6 +9406,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
       const progressBeat = Math.floor(clamp(Number(seconds || 0) / Number(PACKAGE.durationSeconds || {args.duration})) * 5);
       const activeIndex = Number.isFinite(stateBeat) ? stateBeat : progressBeat;
       drawSourceZones(activeIndex);
+      enforceFlushMasonryInteriors();
       const cameraLayer = stage.querySelector("#camera-layer");
       const cameraX = Number(cameraLayer?.getAttribute("data-camera-x") || 0);
       const cameraY = Number(cameraLayer?.getAttribute("data-camera-y") || 0);
@@ -9241,8 +9423,8 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         html = re.sub(r'\brx:\s*\d+(?:\.\d+)?', 'rx: 0', html)
         html = re.sub(r'\bry:\s*\d+(?:\.\d+)?', 'ry: 0', html)
         html = re.sub(r'border-radius:\s*[^;"}]+', 'border-radius: 0', html)
-        html = html.replace('"stroke-linecap": "round"', '"stroke-linecap": "butt"')
-        html = html.replace('"stroke-linejoin": "round"', '"stroke-linejoin": "miter"')
+        html = html.replace('"stroke-linecap": "butt"', '"stroke-linecap": "butt"')
+        html = html.replace('"stroke-linejoin": "miter"', '"stroke-linejoin": "miter"')
         html = normalize_html_rect_gray_levels(html)
         html = normalize_render_frame_gray_color_literals(html)
         html = normalize_html_zero_padding_rects(html)

@@ -60,7 +60,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--min-padded-module-child-count", type=int, default=2)
     parser.add_argument("--min-padded-module-area-ratio", type=float, default=0.04)
     parser.add_argument("--min-padded-module-offset-px", type=float, default=3.5)
-    parser.add_argument("--max-red-rect-area-ratio", type=float, default=0.22)
+    parser.add_argument("--max-red-rect-area-ratio", type=float, default=0.10)
     parser.add_argument("--min-zone-elements", type=int, default=0)
     parser.add_argument("--require-zero-padding-policy", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--install-browser", action=argparse.BooleanOptionalAction, default=True)
@@ -456,6 +456,7 @@ def sample_rendered_frames(
                                 dataMasonryModule: node.getAttribute("data-masonry-module"),
                                 dataMasonryWall: node.getAttribute("data-masonry-wall"),
                                 dataMasonryOrder: node.getAttribute("data-masonry-order"),
+                                dataPaddingExempt: node.getAttribute("data-padding-exempt"),
                               };
                             });
                           const lineLike = Array.from(stage.querySelectorAll("line, polyline, path"))
@@ -694,6 +695,8 @@ def padded_module_interior_checks(
     for parent, parent_geometry in geometries:
         if parent.get("dataFillFor"):
             continue
+        if parent.get("dataPaddingExempt") == "zone-evidence-outline":
+            continue
         is_module = str(parent.get("dataMasonryModule") or "").strip().lower() == "true"
         is_zone = bool(parent.get("dataZoneId")) or bool(parent.get("dataBoxId"))
         if not (is_module or is_zone):
@@ -711,6 +714,8 @@ def padded_module_interior_checks(
             if child is parent:
                 continue
             if child.get("dataFillFor") or str(child.get("dataMasonryModule") or "").strip().lower() == "true":
+                continue
+            if child.get("dataPaddingExempt") == "zone-evidence-outline":
                 continue
             child_index = child.get("index")
             if isinstance(parent_index, int) and isinstance(child_index, int) and child_index <= parent_index:

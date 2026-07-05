@@ -111,7 +111,7 @@ Reject or redesign the video when any item is true:
 - Camera movement is absent or only decorative even though the prompt asks for Metro video style.
 - Rounded borders, pills, soft panels, or padded boxes are visible.
 - Required Masonry output has no zero-padding measurement coverage or reports any padded module interiors.
-- Red rectangles become dominant surfaces instead of state/routing marks. For AI alternatives, Guardrail, Hook, Skill, and similar product-choice or risk modules, treat `maxRedRectAreaRatio > 0.10` in rendered-frame audits as a redesign signal even if other audits pass; for encoded MP4 review, treat `maxRedAreaRatio > 0.14` as a hard failure unless the prompt explicitly asks for a red-dominant warning state.
+- Red rectangles become dominant surfaces instead of state/routing marks. For AI alternatives, Guardrail, Hook, Skill, LLM billing, metric dashboards, Sankey flows, and similar product-choice or risk modules, treat `maxRedRectAreaRatio > 0.10` in rendered-frame audits as a redesign signal even if other audits pass; for encoded MP4 review, treat `maxRedAreaRatio > 0.08` as a hard failure unless the prompt explicitly asks for a red-dominant warning state.
 - Metro source keeps any nonzero rounded-corner fallback such as `rx: masonryRequired ? 0 : 14`, nonzero `ry`, or CSS `border-radius`. The rendered frame may normalize it, but the source is still off-contract.
 - Text explains the concept while geometry only decorates it.
 - Source anchors are only preserved in arrays or labels and are not bound to visible zones, mechanisms, rendered JSON source-anchor markers, and active render-state samples.

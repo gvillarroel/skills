@@ -7,8 +7,8 @@
   "visualPattern": "systems-flow",
   "visualZones": [
     {
-      "id": "systems-flow-comparison-grid-zone",
-      "role": "harness comparison grid and selected cell zone",
+      "id": "systems-flow-hook-events-zone",
+      "role": "event timeline and moving lifecycle pulse zone",
       "bounds": {
         "x": 48,
         "y": 88,
@@ -18,71 +18,7 @@
       "grayLevel": 1,
       "sourceAnchors": [
         "comparison_grid",
-        "comparison_grid and agent_loop_ring",
-        "Stack runtime layers: prompt",
-        "Close with a pointer back to the harness comparison matrix",
-        "circuit-signal-traces"
-      ],
-      "boxModel": {
-        "cornerRadius": 0,
-        "internalPaddingPx": 0,
-        "gridPx": 4
-      }
-    },
-    {
-      "id": "systems-flow-runtime-stack-zone",
-      "role": "instruction tools permissions loop logging stack zone",
-      "bounds": {
-        "x": 48,
-        "y": 388,
-        "width": 400,
-        "height": 280
-      },
-      "grayLevel": 2,
-      "sourceAnchors": [
-        "flow-tokens",
-        "attention-matrix-tiles"
-      ],
-      "boxModel": {
-        "cornerRadius": 0,
-        "internalPaddingPx": 0,
-        "gridPx": 4
-      }
-    },
-    {
-      "id": "systems-flow-engine-dashboard-zone",
-      "role": "same model engine-to-dashboard control morph zone",
-      "bounds": {
-        "x": 448,
-        "y": 88,
-        "width": 400,
-        "height": 580
-      },
-      "grayLevel": 3,
-      "sourceAnchors": [
         "Show same model icon in different harness shells",
-        "Use a simple \"engine vs car\" motion metaphor to make the abstraction sticky",
-        "swimlane-handoff",
-        "masonry wall"
-      ],
-      "boxModel": {
-        "cornerRadius": 0,
-        "internalPaddingPx": 0,
-        "gridPx": 4
-      }
-    },
-    {
-      "id": "systems-flow-harness-shells-zone",
-      "role": "same model inside Copilot Claude Code and OpenCode shells zone",
-      "bounds": {
-        "x": 848,
-        "y": 88,
-        "width": 344,
-        "height": 580
-      },
-      "grayLevel": 4,
-      "sourceAnchors": [
-        "agent_loop_ring",
         "layered-architecture",
         "megacanvas zones"
       ],
@@ -93,8 +29,72 @@
       }
     },
     {
-      "id": "systems-flow-cost-selection-zone",
-      "role": "credit meter feature-fit matrix and selected path zone",
+      "id": "systems-flow-policy-gate-zone",
+      "role": "shield gate and dangerous command interception zone",
+      "bounds": {
+        "x": 48,
+        "y": 388,
+        "width": 400,
+        "height": 280
+      },
+      "grayLevel": 2,
+      "sourceAnchors": [
+        "credit_meter",
+        "Use a simple \"engine vs car\" motion metaphor to make the abstraction sticky",
+        "masonry-wall",
+        "camera reframe"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-provider-events-zone",
+      "role": "GitHub Claude Code and OpenCode hook event surfaces zone",
+      "bounds": {
+        "x": 448,
+        "y": 88,
+        "width": 400,
+        "height": 580
+      },
+      "grayLevel": 3,
+      "sourceAnchors": [
+        "agent_loop_ring",
+        "credit_meter to show how harness defaults change spend",
+        "circuit-signal-traces"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-preprocess-jobs-zone",
+      "role": "format validate secret audit notify and context-filter jobs zone",
+      "bounds": {
+        "x": 848,
+        "y": 88,
+        "width": 344,
+        "height": 580
+      },
+      "grayLevel": 4,
+      "sourceAnchors": [
+        "comparison_grid and agent_loop_ring",
+        "Close with a pointer back to the harness comparison matrix",
+        "attention-matrix-tiles"
+      ],
+      "boxModel": {
+        "cornerRadius": 0,
+        "internalPaddingPx": 0,
+        "gridPx": 4
+      }
+    },
+    {
+      "id": "systems-flow-cost-boundary-zone",
+      "role": "token savings latency cost and lifecycle-control boundary zone",
       "bounds": {
         "x": 1192,
         "y": 88,
@@ -103,10 +103,10 @@
       },
       "grayLevel": 2,
       "sourceAnchors": [
-        "credit_meter",
-        "credit_meter to show how harness defaults change spend",
-        "masonry-wall",
-        "camera reframe"
+        "Stack runtime layers: prompt",
+        "flow-tokens",
+        "swimlane-handoff",
+        "masonry wall"
       ],
       "boxModel": {
         "cornerRadius": 0,
@@ -329,231 +329,231 @@
     {
       "id": "binding-01",
       "sourceAnchor": "comparison_grid",
-      "zoneId": "systems-flow-comparison-grid-zone",
-      "zoneRole": "harness comparison grid and selected cell zone",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
       "mechanismId": "mechanism-01",
-      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
-      "stateKey": "comparisonGridVisible",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "eventTimelineVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-02",
       "sourceAnchor": "credit_meter",
-      "zoneId": "systems-flow-cost-selection-zone",
-      "zoneRole": "credit meter feature-fit matrix and selected path zone",
-      "mechanismId": "mechanism-05",
-      "mechanism": "feature grid mutes behind a use-case matrix and a selected path closes the comparison",
-      "stateKey": "runtimeStackVisible",
+      "zoneId": "systems-flow-policy-gate-zone",
+      "zoneRole": "shield gate and dangerous command interception zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "shield gate overlays the timeline and converts passive lifecycle events into active executable policy",
+      "stateKey": "shieldGateOverlayVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-03",
       "sourceAnchor": "agent_loop_ring",
-      "zoneId": "systems-flow-harness-shells-zone",
-      "zoneRole": "same model inside Copilot Claude Code and OpenCode shells zone",
-      "mechanismId": "mechanism-04",
-      "mechanism": "tool count, context, retries, and loop depth drive a rising credit meter",
-      "stateKey": "engineCoreVisible",
+      "zoneId": "systems-flow-provider-events-zone",
+      "zoneRole": "GitHub Claude Code and OpenCode hook event surfaces zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "GitHub Claude Code and OpenCode surfaces show comparable hook/event lanes without becoming feature cards",
+      "stateKey": "githubHookBadgesVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-04",
       "sourceAnchor": "comparison_grid and agent_loop_ring",
-      "zoneId": "systems-flow-comparison-grid-zone",
-      "zoneRole": "harness comparison grid and selected cell zone",
-      "mechanismId": "mechanism-01",
-      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
-      "stateKey": "dashboardControlsVisible",
+      "zoneId": "systems-flow-preprocess-jobs-zone",
+      "zoneRole": "format validate secret audit notify and context-filter jobs zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "one PreToolUse command path blocks destructive Bash actions while another filter path shrinks noisy logs before model context",
+      "stateKey": "claudeEventCloudVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-05",
       "sourceAnchor": "Stack runtime layers: prompt",
-      "zoneId": "systems-flow-comparison-grid-zone",
-      "zoneRole": "harness comparison grid and selected cell zone",
-      "mechanismId": "mechanism-01",
-      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
-      "stateKey": "layersAssembling",
+      "zoneId": "systems-flow-cost-boundary-zone",
+      "zoneRole": "token savings latency cost and lifecycle-control boundary zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "token savings and latency cost meters move in opposite directions before a lifecycle-control boundary closes the lesson",
+      "stateKey": "opencodeEventListVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-06",
       "sourceAnchor": "Show same model icon in different harness shells",
-      "zoneId": "systems-flow-engine-dashboard-zone",
-      "zoneRole": "same model engine-to-dashboard control morph zone",
-      "mechanismId": "mechanism-03",
-      "mechanism": "the same model badge drops into three distinct harness shells with different defaults",
-      "stateKey": "modelBadgeShared",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "hookJobCascadeVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-07",
       "sourceAnchor": "Use a simple \"engine vs car\" motion metaphor to make the abstraction sticky",
-      "zoneId": "systems-flow-engine-dashboard-zone",
-      "zoneRole": "same model engine-to-dashboard control morph zone",
-      "mechanismId": "mechanism-03",
-      "mechanism": "the same model badge drops into three distinct harness shells with different defaults",
-      "stateKey": "sameModelShellCount",
+      "zoneId": "systems-flow-policy-gate-zone",
+      "zoneRole": "shield gate and dangerous command interception zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "shield gate overlays the timeline and converts passive lifecycle events into active executable policy",
+      "stateKey": "commandBlockPathVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-08",
       "sourceAnchor": "credit_meter to show how harness defaults change spend",
-      "zoneId": "systems-flow-cost-selection-zone",
-      "zoneRole": "credit meter feature-fit matrix and selected path zone",
-      "mechanismId": "mechanism-05",
-      "mechanism": "feature grid mutes behind a use-case matrix and a selected path closes the comparison",
-      "stateKey": "threeHarnessShellsVisible",
+      "zoneId": "systems-flow-provider-events-zone",
+      "zoneRole": "GitHub Claude Code and OpenCode hook event surfaces zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "GitHub Claude Code and OpenCode surfaces show comparable hook/event lanes without becoming feature cards",
+      "stateKey": "logFilterPathVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-09",
       "sourceAnchor": "Close with a pointer back to the harness comparison matrix",
-      "zoneId": "systems-flow-comparison-grid-zone",
-      "zoneRole": "harness comparison grid and selected cell zone",
-      "mechanismId": "mechanism-01",
-      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
-      "stateKey": "toolCountLevel",
+      "zoneId": "systems-flow-preprocess-jobs-zone",
+      "zoneRole": "format validate secret audit notify and context-filter jobs zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "one PreToolUse command path blocks destructive Bash actions while another filter path shrinks noisy logs before model context",
+      "stateKey": "tokenSavingsCounterVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-10",
       "sourceAnchor": "flow-tokens",
-      "zoneId": "systems-flow-runtime-stack-zone",
-      "zoneRole": "instruction tools permissions loop logging stack zone",
-      "mechanismId": "mechanism-02",
-      "mechanism": "runtime layers assemble around the model while the engine core becomes dashboard controls",
-      "stateKey": "creditMeterLevel",
+      "zoneId": "systems-flow-cost-boundary-zone",
+      "zoneRole": "token savings latency cost and lifecycle-control boundary zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "token savings and latency cost meters move in opposite directions before a lifecycle-control boundary closes the lesson",
+      "stateKey": "costLatencyTradeoffVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-11",
       "sourceAnchor": "swimlane-handoff",
-      "zoneId": "systems-flow-engine-dashboard-zone",
-      "zoneRole": "same model engine-to-dashboard control morph zone",
-      "mechanismId": "mechanism-03",
-      "mechanism": "the same model badge drops into three distinct harness shells with different defaults",
-      "stateKey": "featureGridMuted",
+      "zoneId": "systems-flow-cost-boundary-zone",
+      "zoneRole": "token savings latency cost and lifecycle-control boundary zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "token savings and latency cost meters move in opposite directions before a lifecycle-control boundary closes the lesson",
+      "stateKey": "lifecycleRuleStampVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-12",
       "sourceAnchor": "layered-architecture",
-      "zoneId": "systems-flow-harness-shells-zone",
-      "zoneRole": "same model inside Copilot Claude Code and OpenCode shells zone",
-      "mechanismId": "mechanism-04",
-      "mechanism": "tool count, context, retries, and loop depth drive a rising credit meter",
-      "stateKey": "useCaseMatrixActive",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "activeHookEventCount",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-13",
       "sourceAnchor": "masonry-wall",
-      "zoneId": "systems-flow-cost-selection-zone",
-      "zoneRole": "credit meter feature-fit matrix and selected path zone",
-      "mechanismId": "mechanism-05",
-      "mechanism": "feature grid mutes behind a use-case matrix and a selected path closes the comparison",
-      "stateKey": "selectionPathHighlighted",
+      "zoneId": "systems-flow-policy-gate-zone",
+      "zoneRole": "shield gate and dangerous command interception zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "shield gate overlays the timeline and converts passive lifecycle events into active executable policy",
+      "stateKey": "providerLaneCount",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-14",
       "sourceAnchor": "circuit-signal-traces",
-      "zoneId": "systems-flow-comparison-grid-zone",
-      "zoneRole": "harness comparison grid and selected cell zone",
-      "mechanismId": "mechanism-01",
-      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
-      "stateKey": "agentLoopRingVisible",
+      "zoneId": "systems-flow-provider-events-zone",
+      "zoneRole": "GitHub Claude Code and OpenCode hook event surfaces zone",
+      "mechanismId": "mechanism-03",
+      "mechanism": "GitHub Claude Code and OpenCode surfaces show comparable hook/event lanes without becoming feature cards",
+      "stateKey": "policyTokenCount",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-15",
       "sourceAnchor": "attention-matrix-tiles",
-      "zoneId": "systems-flow-runtime-stack-zone",
-      "zoneRole": "instruction tools permissions loop logging stack zone",
-      "mechanismId": "mechanism-02",
-      "mechanism": "runtime layers assemble around the model while the engine core becomes dashboard controls",
-      "stateKey": "comparisonGridVisible",
+      "zoneId": "systems-flow-preprocess-jobs-zone",
+      "zoneRole": "format validate secret audit notify and context-filter jobs zone",
+      "mechanismId": "mechanism-04",
+      "mechanism": "one PreToolUse command path blocks destructive Bash actions while another filter path shrinks noisy logs before model context",
+      "stateKey": "tokenSavingsLevel",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-16",
       "sourceAnchor": "masonry wall",
-      "zoneId": "systems-flow-engine-dashboard-zone",
-      "zoneRole": "same model engine-to-dashboard control morph zone",
-      "mechanismId": "mechanism-03",
-      "mechanism": "the same model badge drops into three distinct harness shells with different defaults",
-      "stateKey": "runtimeStackVisible",
+      "zoneId": "systems-flow-cost-boundary-zone",
+      "zoneRole": "token savings latency cost and lifecycle-control boundary zone",
+      "mechanismId": "mechanism-05",
+      "mechanism": "token savings and latency cost meters move in opposite directions before a lifecycle-control boundary closes the lesson",
+      "stateKey": "latencyCostLevel",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-17",
       "sourceAnchor": "megacanvas zones",
-      "zoneId": "systems-flow-harness-shells-zone",
-      "zoneRole": "same model inside Copilot Claude Code and OpenCode shells zone",
-      "mechanismId": "mechanism-04",
-      "mechanism": "tool count, context, retries, and loop depth drive a rising credit meter",
-      "stateKey": "engineCoreVisible",
+      "zoneId": "systems-flow-hook-events-zone",
+      "zoneRole": "event timeline and moving lifecycle pulse zone",
+      "mechanismId": "mechanism-01",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+      "stateKey": "eventTimelineVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-18",
       "sourceAnchor": "camera reframe",
-      "zoneId": "systems-flow-cost-selection-zone",
-      "zoneRole": "credit meter feature-fit matrix and selected path zone",
-      "mechanismId": "mechanism-05",
-      "mechanism": "feature grid mutes behind a use-case matrix and a selected path closes the comparison",
-      "stateKey": "dashboardControlsVisible",
+      "zoneId": "systems-flow-policy-gate-zone",
+      "zoneRole": "shield gate and dangerous command interception zone",
+      "mechanismId": "mechanism-02",
+      "mechanism": "shield gate overlays the timeline and converts passive lifecycle events into active executable policy",
+      "stateKey": "shieldGateOverlayVisible",
       "visualRole": "data-bearing-zone"
     }
   ],
   "visualMechanismAnchors": [
     {
       "id": "mechanism-01",
-      "mechanism": "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
+      "mechanism": "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
       "sourceAnchors": [
         "comparison_grid",
-        "comparison_grid and agent_loop_ring",
-        "Stack runtime layers: prompt",
-        "Close with a pointer back to the harness comparison matrix",
-        "circuit-signal-traces"
-      ]
-    },
-    {
-      "id": "mechanism-02",
-      "mechanism": "runtime layers assemble around the model while the engine core becomes dashboard controls",
-      "sourceAnchors": [
-        "flow-tokens",
-        "attention-matrix-tiles"
-      ]
-    },
-    {
-      "id": "mechanism-03",
-      "mechanism": "the same model badge drops into three distinct harness shells with different defaults",
-      "sourceAnchors": [
         "Show same model icon in different harness shells",
-        "Use a simple \"engine vs car\" motion metaphor to make the abstraction sticky",
-        "swimlane-handoff",
-        "masonry wall"
-      ]
-    },
-    {
-      "id": "mechanism-04",
-      "mechanism": "tool count, context, retries, and loop depth drive a rising credit meter",
-      "sourceAnchors": [
-        "agent_loop_ring",
         "layered-architecture",
         "megacanvas zones"
       ]
     },
     {
-      "id": "mechanism-05",
-      "mechanism": "feature grid mutes behind a use-case matrix and a selected path closes the comparison",
+      "id": "mechanism-02",
+      "mechanism": "shield gate overlays the timeline and converts passive lifecycle events into active executable policy",
       "sourceAnchors": [
         "credit_meter",
-        "credit_meter to show how harness defaults change spend",
+        "Use a simple \"engine vs car\" motion metaphor to make the abstraction sticky",
         "masonry-wall",
         "camera reframe"
+      ]
+    },
+    {
+      "id": "mechanism-03",
+      "mechanism": "GitHub Claude Code and OpenCode surfaces show comparable hook/event lanes without becoming feature cards",
+      "sourceAnchors": [
+        "agent_loop_ring",
+        "credit_meter to show how harness defaults change spend",
+        "circuit-signal-traces"
+      ]
+    },
+    {
+      "id": "mechanism-04",
+      "mechanism": "one PreToolUse command path blocks destructive Bash actions while another filter path shrinks noisy logs before model context",
+      "sourceAnchors": [
+        "comparison_grid and agent_loop_ring",
+        "Close with a pointer back to the harness comparison matrix",
+        "attention-matrix-tiles"
+      ]
+    },
+    {
+      "id": "mechanism-05",
+      "mechanism": "token savings and latency cost meters move in opposite directions before a lifecycle-control boundary closes the lesson",
+      "sourceAnchors": [
+        "Stack runtime layers: prompt",
+        "flow-tokens",
+        "swimlane-handoff",
+        "masonry wall"
       ]
     }
   ],
@@ -573,11 +573,11 @@
   "guardLabels": [],
   "missingFacts": [],
   "visualMechanisms": [
-    "comparison grid zooms into one runtime stack cell before the shell mechanics appear",
-    "runtime layers assemble around the model while the engine core becomes dashboard controls",
-    "the same model badge drops into three distinct harness shells with different defaults",
-    "tool count, context, retries, and loop depth drive a rising credit meter",
-    "feature grid mutes behind a use-case matrix and a selected path closes the comparison"
+    "event timeline lights lifecycle nodes while one pulse moves through session prompt tool-call permission compaction notification and stop boundaries",
+    "shield gate overlays the timeline and converts passive lifecycle events into active executable policy",
+    "GitHub Claude Code and OpenCode surfaces show comparable hook/event lanes without becoming feature cards",
+    "one PreToolUse command path blocks destructive Bash actions while another filter path shrinks noisy logs before model context",
+    "token savings and latency cost meters move in opposite directions before a lifecycle-control boundary closes the lesson"
   ],
   "visualPolicy": {
     "edgeStyle": "square",

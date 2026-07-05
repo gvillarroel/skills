@@ -1414,6 +1414,11 @@ def plugin_motif_requested(source_package: dict[str, Any]) -> bool:
 
 def ai_alternatives_motif_requested(source_package: dict[str, Any]) -> bool:
     anchors = source_anchor_values(source_package)
+    title_topic = " ".join(
+        str(value)
+        for value in (source_package.get("title"), source_package.get("topic"))
+        if value is not None
+    ).lower()
     values = [
         source_package.get("title"),
         source_package.get("topic"),
@@ -1424,21 +1429,30 @@ def ai_alternatives_motif_requested(source_package: dict[str, Any]) -> bool:
         *(source_package.get("visualMechanisms") or []),
     ]
     haystack = " ".join(str(value) for value in values if value is not None).lower()
-    signals = [
-        "ai alternatives",
+    if "harness" in title_topic and "ai alternatives" not in title_topic and "what ai alternatives we have" not in title_topic:
+        return False
+    if "what ai alternatives we have" in haystack or "ai alternatives" in haystack:
+        return True
+    platform_signals = [
         "atlassian rovo",
         "gemini app",
         "github copilot",
         "claude desktop",
         "claude code",
+    ]
+    ai_specific_signals = [
+        "atlassian rovo",
+        "gemini app",
+        "claude desktop",
         "workflow gravity",
         "home base",
-        "comparison_grid",
         "radar chart",
-        "credit_meter",
         "use-case selector",
     ]
-    return sum(1 for signal in signals if signal in haystack) >= 3 or "what ai alternatives we have" in haystack
+    return (
+        sum(1 for signal in platform_signals if signal in haystack) >= 2
+        and sum(1 for signal in ai_specific_signals if signal in haystack) >= 2
+    )
 
 
 def skill_motif_requested(source_package: dict[str, Any]) -> bool:

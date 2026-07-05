@@ -642,6 +642,16 @@
     function ease(v) { v = clamp(v); return v * v * (3 - 2 * v); }
     const grayLevels = PACKAGE.visualPolicy?.grayLevels?.map((d) => d.hex) || ["#ffffff", "#f7f7f7", "#e7e7e7", "#cfcfcf", "#9c9c9c", "#696969"];
     function grayLevel(index) { return grayLevels[Math.max(0, Math.min(grayLevels.length - 1, index))]; }
+    const redSurfaceFills = new Set([palette.route, palette.damage, palette.attribute, palette.tradeoff, "#9e1b32", "#e8002a", "#6d1222", "#ffccd5"].map((value) => String(value).toLowerCase()));
+    function isRedSurfaceFill(fill) {
+      return redSurfaceFills.has(String(fill || "").trim().toLowerCase());
+    }
+    function tonalSurfaceFill(fill, rectWidth, rectHeight, grayIndex = 5) {
+      const w = Math.abs(Number(rectWidth) || 0);
+      const h = Math.abs(Number(rectHeight) || 0);
+      if (isRedSurfaceFill(fill) && w * h >= 1100 && Math.min(w, h) > 10) return grayLevel(grayIndex);
+      return fill;
+    }
     const squareEdge = (stage.getAttribute?.("data-edge-style") || stage.dataset?.edgeStyle) === "square";
     const metroGrid = 4;
     function snapToGrid(value) {
@@ -845,8 +855,8 @@
         const opacity = Math.min(0.92, 0.26 + ease(Math.min(1, phase)) * (active ? 0.58 : 0.38));
         const attrs = bindingAttrs(binding, bindingIndex, zoneIndex, active);
         const kind = semanticGlyphKind(binding?.sourceAnchor);
-        const fill = active ? palette.route : grayLevel((bindingIndex % 3) + 2);
-        const stroke = active ? palette.damage : grayLevel(5);
+        const fill = active ? grayLevel(5) : grayLevel((bindingIndex % 3) + 2);
+        const stroke = active ? palette.route : grayLevel(5);
         drawSemanticGlyph(kind, x, y, 12, fill, stroke, attrs, opacity);
       });
     }
@@ -865,16 +875,36 @@
         const zoneIndex = Number.isFinite(Number(module.zoneIndex)) ? Number(module.zoneIndex) : index % Math.max(1, sourceZones.length || 1);
         const level = Math.max(1, Math.min(grayLevels.length - 2, Number(module.grayLevel) || metroZoneFillLevel(zoneIndex, active)));
         const isActive = zoneIndex === active;
+        const x = (Number(bounds.x) || 0) + vector.x * (1 - fit);
+        const y = (Number(bounds.y) || 0) + vector.y * (1 - fit);
+        const width = Number(bounds.width) || 4;
+        const height = Number(bounds.height) || 4;
+        const fill = grayLevel(isActive ? Math.min(level + 1, grayLevels.length - 2) : level);
+        const moduleBoxId = `masonry-wall-module-${index}`;
         el("rect", {
-          x: (Number(bounds.x) || 0) + vector.x * (1 - fit),
-          y: (Number(bounds.y) || 0) + vector.y * (1 - fit),
-          width: Number(bounds.width) || 4,
-          height: Number(bounds.height) || 4,
+          x,
+          y,
+          width,
+          height,
           rx: 0,
-          fill: grayLevel(isActive ? Math.min(level + 1, grayLevels.length - 2) : level),
+          fill,
+          stroke: "none",
+          "fill-opacity": clamp(phase),
+          "data-fill-for": moduleBoxId,
+          "data-fill-axis": "all",
+          "data-padding-policy": "zero-verified",
+        });
+        el("rect", {
+          x,
+          y,
+          width,
+          height,
+          rx: 0,
+          fill,
           stroke: isActive ? palette.route : grayLevel(5),
           "stroke-width": isActive ? 3 : 1,
           "fill-opacity": clamp(phase),
+          "data-box-id": moduleBoxId,
           "data-masonry-module": "true",
           "data-masonry-wall": "true",
           "data-masonry-order": String(index),
@@ -946,6 +976,7 @@
           "stroke-width": isActive ? 3 : 1,
           "stroke-opacity": isActive ? 0.55 : 0.24,
           "pointer-events": "none",
+          "data-padding-exempt": "zone-evidence-outline",
           "data-zone-active": isActive ? "true" : "false",
           ...zoneAttrs(index),
         });
@@ -985,6 +1016,89 @@
         normalized["stroke-linejoin"] = "miter";
       }
       return normalized;
+    }
+    function rectMetrics(node, index) {
+      const x = numericAttr(node.getAttribute("x"));
+      const y = numericAttr(node.getAttribute("y"));
+      const width = numericAttr(node.getAttribute("width"));
+      const height = numericAttr(node.getAttribute("height"));
+      if (![x, y, width, height].every(Number.isFinite) || width <= 0 || height <= 0) return null;
+      return { node, index, x, y, width, height, area: width * height };
+    }
+    function setRectMetrics(item, x, y, width, height) {
+      const sx = snapToGrid(x);
+      const sy = snapToGrid(y);
+      const sw = Math.max(metroGrid, snapToGrid(x + width) - sx);
+      const sh = Math.max(metroGrid, snapToGrid(y + height) - sy);
+      item.node.setAttribute("x", sx);
+      item.node.setAttribute("y", sy);
+      item.node.setAttribute("width", sw);
+      item.node.setAttribute("height", sh);
+      item.node.setAttribute("rx", 0);
+      item.node.setAttribute("ry", 0);
+      item.node.setAttribute("data-zone-boundary", item.node.getAttribute("data-zone-boundary") || "flush");
+      item.node.setAttribute("data-padding-policy", item.node.getAttribute("data-padding-policy") || "zero-verified");
+    }
+    function enforceFlushMasonryInteriors() {
+      if (!masonryRequired || !squareEdge) return;
+      const minOffset = 3.5;
+      const minSize = 12;
+      const minParentSize = minSize * 3;
+      for (let pass = 0; pass < 6; pass++) {
+        const rects = Array.from(stage.querySelectorAll("rect"))
+          .map((node, index) => rectMetrics(node, index))
+          .filter(Boolean);
+        const changes = [];
+        for (const child of rects) {
+          if (child.node.getAttribute("data-fill-for")) continue;
+          if ((child.node.getAttribute("data-masonry-module") || "").toLowerCase() === "true") continue;
+          if ((child.node.getAttribute("data-padding-exempt") || "") === "zone-evidence-outline") continue;
+          if (Math.min(child.width, child.height) < minSize) continue;
+          let chosen = null;
+          for (const parent of rects) {
+            if (parent === child) continue;
+            if (parent.node.getAttribute("data-fill-for")) continue;
+            if ((parent.node.getAttribute("data-padding-exempt") || "") === "zone-evidence-outline") continue;
+            const parentIsMasonryModule = (parent.node.getAttribute("data-masonry-module") || "").toLowerCase() === "true";
+            const parentIsZone = Boolean(parent.node.getAttribute("data-zone-id") || parent.node.getAttribute("data-box-id"));
+            if (!parentIsMasonryModule && !parentIsZone) continue;
+            if (parent.index > child.index) continue;
+            if (parent.area <= child.area || Math.min(parent.width, parent.height) < minParentSize) continue;
+            const offsets = {
+              left: child.x - parent.x,
+              top: child.y - parent.y,
+              right: parent.x + parent.width - (child.x + child.width),
+              bottom: parent.y + parent.height - (child.y + child.height),
+            };
+            if (Object.values(offsets).some((value) => value < minOffset)) continue;
+            const areaRatio = child.area / parent.area;
+            if ((child.node.getAttribute("data-semantic-glyph") || "").toLowerCase() === "true" && areaRatio < 0.035) continue;
+            const score = (parentIsMasonryModule ? 2 : 1) * parent.area;
+            if (!chosen || score > chosen.score) chosen = { parent, offsets, score };
+          }
+          if (!chosen) continue;
+          const ordered = Object.entries(chosen.offsets).sort((a, b) => a[1] - b[1]);
+          const edge = ordered[0][0];
+          let x = child.x;
+          let y = child.y;
+          let width = child.width;
+          let height = child.height;
+          if (edge === "left") {
+            width += chosen.offsets.left;
+            x = chosen.parent.x;
+          } else if (edge === "right") {
+            width += chosen.offsets.right;
+          } else if (edge === "top") {
+            height += chosen.offsets.top;
+            y = chosen.parent.y;
+          } else {
+            height += chosen.offsets.bottom;
+          }
+          changes.push({ child, x, y, width, height });
+        }
+        if (changes.length === 0) break;
+        changes.forEach((change) => setRectMetrics(change.child, change.x, change.y, change.width, change.height));
+      }
     }
     function cameraPose(progress) {
       const t = clamp(progress);
@@ -1114,7 +1228,7 @@
           let skillRectCounter = 0;
           const sRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
             const contract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] ? {} : { "data-box-id": "skill-independent-module-" + (++skillRectCounter) };
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...contract, ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...contract, ...extra });
           };
           const sLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
             if (progress <= 0) return;
@@ -1281,7 +1395,7 @@
           const hRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
             const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"];
             const boxContract = hasBoxContract ? {} : { "data-box-id": `hook-independent-module-${++hookRectCounter}` };
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
           };
           const hLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
             if (progress <= 0) return;
@@ -1440,7 +1554,7 @@
         const harnessMotifRequested = !/harness hook|harness plugin/.test(harnessMotifText) && /what is a harness|comparison_grid|runtime stack|runtime wrapper|engine icon|vehicle dashboard|same model|different shell|three-column harness|credit_meter|use-case matrix|selection path/.test(harnessMotifText);
         if (masonryRequired && harnessMotifRequested) {
           const rect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, ...extra });
           };
           const poly = (points, stroke, strokeWidth = 4, opacity = 1, extra = {}) => {
             el("polyline", { points: points.map((point) => point[0] + "," + point[1]).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", opacity, ...extra });
@@ -1620,7 +1734,7 @@
         }
         if (masonryRequired && agentMotifRequested) {
           const rect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, ...extra });
           };
           const poly = (points, stroke, strokeWidth = 4, opacity = 1, extra = {}) => {
             el("polyline", { points: points.map(([x, y]) => `${x},${y}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", opacity, ...extra });
@@ -2193,18 +2307,18 @@
         }
         const points = [[145,472],[230,448],[315,438],[400,402],[485,422],[570,366],[655,334],[740,300]];
         const revealed = Math.max(0, Math.min(points.length - 1, Math.floor(trendProgress * (points.length - 1))));
-        for (let i = 0; i < revealed; i++) line(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], palette.route, 8);
+        for (let i = 0; i < revealed; i++) line(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], palette.route, 4);
         if (trendProgress > 0 && trendProgress < 1) {
           const i = Math.min(points.length - 2, revealed);
           const ratio = trendProgress * (points.length - 1) - i;
           const a = points[i], b = points[i + 1];
-          line(a[0], a[1], a[0] + (b[0] - a[0]) * ratio, a[1] + (b[1] - a[1]) * ratio, palette.route, 8);
+          line(a[0], a[1], a[0] + (b[0] - a[0]) * ratio, a[1] + (b[1] - a[1]) * ratio, palette.route, 4);
         }
         const activeTrendPoint = Math.max(0, Math.min(points.length - 1, Math.floor(trendProgress * points.length)));
-        points.slice(0, activeTrendPoint + 1).forEach((d, i) => circle(d[0], d[1], 8, i === 4 ? palette.damage : palette.route, grayLevel(1), 3));
+        points.slice(0, activeTrendPoint + 1).forEach((d, i) => circle(d[0], d[1], 7, grayLevel(5), i === 4 ? palette.damage : palette.route, 3));
         if (anomalyVisible) {
           circle(485,422,30,"none",palette.damage,5);
-          component(425,225,170,60,"anomaly",palette.damage,grayLevel(4));
+          component(425,225,170,60,"anomaly",palette.damage,grayLevel(2));
           if (!masonryRequired) label(510,274,metricNames[4],14,palette.ink);
         }
         if (forecastVisible) {
@@ -2225,7 +2339,11 @@
           if (p + 0.02 < d[8]) return;
           el("rect", { x: d[0], y: d[1], width: d[2], height: d[3], rx: 0, fill: grayLevel(3), stroke: p > 0.16 ? d[6] : palette.line, "stroke-width": 2 });
           const filled = Math.max(0, Math.min(d[2], d[2] * clamp(d[7])));
-          if (filled > 0) el("rect", { x: d[0], y: d[1], width: filled, height: d[3], rx: 0, fill: d[6] });
+          if (filled > 0) {
+            el("rect", { x: d[0], y: d[1], width: filled, height: d[3], rx: 0, fill: grayLevel(5) });
+            const capX = d[0] + Math.max(0, filled - 8);
+            el("rect", { x: capX, y: d[1], width: Math.min(8, filled), height: d[3], rx: 0, fill: d[6], stroke: "none" });
+          }
           if (!masonryRequired) {
             label(d[0] + d[2] / 2, d[1] + 32, d[4], 15, palette.ink);
             label(d[0] + d[2] / 2, d[1] + 62, d[5], 13, palette.ink);
@@ -2441,6 +2559,10 @@
           "stroke-linejoin": "miter",
           opacity
         });
+        const flowBodyColor = (color) => {
+          if ([palette.route, palette.attribute, palette.damage, palette.tradeoff].includes(color)) return grayLevel(6);
+          return color;
+        };
         const pointOn = (points, progress) => {
           const safe = Math.max(0, Math.min(1, progress));
           let total = 0;
@@ -2501,7 +2623,8 @@
         flows.forEach(([points, color, width], idx) => {
           const segmentProgress = Math.max(0, Math.min(1, flowProgress * flows.length - idx));
           if (segmentProgress > 0) {
-            route(points, color, width, Math.max(0.28, segmentProgress));
+            route(points, flowBodyColor(color), Math.max(4, width - 6), Math.max(0.28, segmentProgress));
+            route(points, color, 3, Math.max(0.35, segmentProgress));
             const token = pointOn(points, segmentProgress);
             circle(token[0], token[1], 8, palette.gold, palette.gold, 2);
           }
@@ -2509,21 +2632,21 @@
         [
           [130, 320, flowLabels[0], palette.route, grayLevel(2)],
           [340, 235, flowLabels[1], palette.defense, grayLevel(2)],
-          [340, 435, flowLabels[2], palette.tradeoff, grayLevel(4)],
+          [340, 435, flowLabels[2], palette.tradeoff, grayLevel(2)],
           [570, 215, flowLabels[3], palette.route, grayLevel(2)],
           [570, 365, flowLabels[4], palette.attribute, grayLevel(2)],
-          [790, 300, flowLabels[6], palette.damage, grayLevel(4)],
+          [790, 300, flowLabels[6], palette.damage, grayLevel(3)],
           [1048, 320, flowLabels[7], palette.atlas, grayLevel(2)],
         ].forEach((d) => node(d[0], d[1], d[2], d[3], d[4]));
         if (splitVisible) {
           node(340, 180, "split preserves value", palette.route, grayLevel(1));
         }
         if (lossVisible) {
-          node(340, 530, "loss is explicit", palette.tradeoff, grayLevel(4));
+          node(340, 530, "loss is explicit", palette.tradeoff, grayLevel(2));
           if (!masonryRequired) label(340, 558, flowLabels[2], 14, palette.ink);
         }
         if (bottleneckVisible) {
-          node(795, 205, "bottleneck", palette.damage, grayLevel(4));
+          node(795, 205, "bottleneck", palette.damage, grayLevel(3));
           if (!masonryRequired) label(795, 234, "limits merged flow", 14, palette.ink);
           el("ellipse", { cx: 790, cy: 300, rx: 0, ry: 0, fill: "none", stroke: palette.damage, "stroke-width": 5 });
         }
@@ -2540,7 +2663,11 @@
           const height = 66;
           el("rect", { x, y, width, height, rx: 0, fill: grayLevel(3), stroke: palette.line });
           const filled = Math.max(0, Math.min(width, width * ease(value)));
-          if (filled > 0) el("rect", { x, y, width: filled, height, rx: 0, fill: color });
+          if (filled > 0) {
+            el("rect", { x, y, width: filled, height, rx: 0, fill: grayLevel(5) });
+            const capX = x + Math.max(0, filled - 8);
+            el("rect", { x: capX, y, width: Math.min(8, filled), height, rx: 0, fill: color, stroke: "none" });
+          }
           if (!masonryRequired) label(x + width / 2, y + height / 2 + 5, name, 15, palette.ink);
         };
         meter(86, 500, "input volume", flowProgress, palette.route);
@@ -3042,7 +3169,7 @@
         const guardrailMotifRequested = /shield_gate|agent_loop_ring|input\s*\/\s*output\s*\/\s*action|model armor|risk_score|human approval|policy matrix|guardrail/.test(guardrailMotifText);
         if (masonryRequired && guardrailMotifRequested) {
           const gRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...extra });
           };
           const gLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
             if (progress <= 0) return;
@@ -3818,6 +3945,7 @@
       const progressBeat = Math.floor(clamp(Number(seconds || 0) / Number(PACKAGE.durationSeconds || 6.0)) * 5);
       const activeIndex = Number.isFinite(stateBeat) ? stateBeat : progressBeat;
       drawSourceZones(activeIndex);
+      enforceFlushMasonryInteriors();
       const cameraLayer = stage.querySelector("#camera-layer");
       const cameraX = Number(cameraLayer?.getAttribute("data-camera-x") || 0);
       const cameraY = Number(cameraLayer?.getAttribute("data-camera-y") || 0);

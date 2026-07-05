@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>What is a Skill</title>
+  <title>What is an LLM</title>
   <style>
     html, body { margin: 0; background: #f7f7f7; font-family: 'Open Sans', Arial, sans-serif; }
     #stage { width: 1280px; height: 720px; display: block; background: #f7f7f7; }
@@ -11,19 +11,19 @@
   </style>
 </head>
 <body>
-  <svg id="stage" viewBox="0 0 1280 720" role="img" aria-label="What is a Skill" data-edge-style="square" data-box-interior-policy="zero" data-internal-padding-px="0" data-gray-levels="#ffffff,#f7f7f7,#e7e7e7,#cfcfcf,#9c9c9c,#696969"></svg>
+  <svg id="stage" viewBox="0 0 1280 720" role="img" aria-label="What is an LLM" data-edge-style="square" data-box-interior-policy="zero" data-internal-padding-px="0" data-gray-levels="#ffffff,#f7f7f7,#e7e7e7,#cfcfcf,#9c9c9c,#696969"></svg>
   <script>
     const PACKAGE = {
-  "title": "What is a Skill",
-  "topic": "What is a Skill",
+  "title": "What is an LLM",
+  "topic": "What is an LLM",
   "checkedDate": "2026-07-05",
   "audience": "general technical viewers",
   "route": "topic-explainer",
-  "visualPattern": "systems-flow",
+  "visualPattern": "metric-dashboard",
   "visualZones": [
     {
-      "id": "systems-flow-skill-card-stack-zone",
-      "role": "reusable SKILL.md card stack and activation zone",
+      "id": "metric-dashboard-orientation-zone",
+      "role": "opening anchor plane",
       "bounds": {
         "x": 48,
         "y": 88,
@@ -32,11 +32,10 @@
       },
       "grayLevel": 1,
       "sourceAnchors": [
-        "SKILL.md",
-        "markdown # SKILL.md --- name: deploy-preview description: Build, test, and deploy a preview safely tools: - bash - read - write --- 1. Run targeted tests first. 2. Validate required environment variables. 3. Deploy only to preview environment. 4. Summarize URL and rollback command",
-        "fans open | | 0:15-0:30 | \"Good skills are not giant permanent prompts. They are loaded only when relevant, which keeps normal sessions lighter.\" | Long prompt wall shrinks into one skill card | | 0:30-0:45 | \"GitHub Copilot describes skills as folders of instructions, scripts, and resources. Claude and OpenCode use similar SKILL-dot-MD patterns.\" | Three compatible folder structures align | | 0:45-1:00 | \"This is progressive disclosure. You keep rich procedures available, but you only pay the token cost when the procedure is actually used.\" | Cost meter stays flat until skill activates | | 1:00-1:15 | \"That makes skills perfect for deploy checklists, debugging routines, architecture explainers, onboarding flows, or codebase maps.\" | Example skill cards cycle quickly | | 1:15-1:30 | \"A skill can also call scripts or specify approved tools, which makes the workflow more repeatable and safer.\" | Tool badges snap onto the skill card | | 1:30-1:45 | \"The common mistake is turning skills into mini novels. Keep them sharp, task-scoped, and reusable.\" | A huge bloated card gets trimmed down | | 1:45-2:00 | \"So define a skill as on-demand domain expertise for the harness: reusable, composable, and usually cheaper than repeating the same long prompt.\" | Final tag: **Skill = on-demand reusable workflow** | Reference basis for narration: GitHub skill docs, Claude skill docs, OpenCode skill docs. citeturn10view3turn7search1turn9view2turn11view2 #### Shot and animation plan - Reuse",
-        ",",
-        "skill_card_stack and show activation only when relevant"
+        "token_stream",
+        "Tokens != words",
+        "End with a four-tile summary card that can be reused as a chapter bumper in later videos",
+        "qkv-projection-flow"
       ],
       "boxModel": {
         "cornerRadius": 0,
@@ -45,8 +44,8 @@
       }
     },
     {
-      "id": "systems-flow-prompt-collapse-zone",
-      "role": "long prompt wall collapsing into scoped skill card zone",
+      "id": "metric-dashboard-primary-system-zone",
+      "role": "main mechanism plane",
       "bounds": {
         "x": 48,
         "y": 388,
@@ -55,9 +54,10 @@
       },
       "grayLevel": 2,
       "sourceAnchors": [
-        "and show activation only when relevant. - Show one giant static prompt turning into three small skills. - Use a cost line that stays flat until the skill is invoked. - Animate a deploy workflow skill from checklist to executed steps. - Reuse the same visual card style later for instruction layers. - End with a reusable \"progressive disclosure\" callout. #### Q&A | Question | Answer | Source | |---|---|---| | What is a skill? | A reusable set of instructions, scripts, and resources for specialized tasks. citeturn10view3turn7search1 | citeturn10view3turn7search1 | | Why are skills useful? | They make recurring workflows repeatable and easier to discover. citeturn10view3turn9view2 | citeturn10view3turn9view2 | | What is progressive disclosure here? | Long procedures stay available but load only when needed. citeturn9view2 | citeturn9view2 | | Do skills reduce cost? | Often yes, because they avoid repeating long instructions every session. citeturn9view2turn28view0 | citeturn9view2turn28view0 | | Where do Copilot skills live? | In project or personal skill folders, including",
-        ", or",
-        "Show one giant static prompt turning into three small skills"
+        "context_window_box",
+        "Parameters = learned weights",
+        "matmul-tile-accumulation",
+        "kv-cache-growth"
       ],
       "boxModel": {
         "cornerRadius": 0,
@@ -66,8 +66,8 @@
       }
     },
     {
-      "id": "systems-flow-compatible-folders-zone",
-      "role": "GitHub Claude and OpenCode folder structures zone",
+      "id": "metric-dashboard-secondary-system-zone",
+      "role": "support mechanism plane",
       "bounds": {
         "x": 448,
         "y": 88,
@@ -76,8 +76,10 @@
       },
       "grayLevel": 3,
       "sourceAnchors": [
-        "citeturn10view3 | citeturn10view3 | | Can Claude skills be invoked directly? | Yes, via slash-style invocation as skills or commands. citeturn9view2 | citeturn9view2 | | Does OpenCode support Claude-style skills? | Yes. It discovers Claude-compatible",
-        "the same visual card style later for instruction layers"
+        "gpu_rack",
+        "Not equal to truth",
+        "attention-matrix-tiles",
+        "masonry wall"
       ],
       "boxModel": {
         "cornerRadius": 0,
@@ -86,8 +88,8 @@
       }
     },
     {
-      "id": "systems-flow-progressive-cost-zone",
-      "role": "progressive disclosure token cost meter zone",
+      "id": "metric-dashboard-control-risk-zone",
+      "role": "control and risk plane",
       "bounds": {
         "x": 848,
         "y": 88,
@@ -96,11 +98,9 @@
       },
       "grayLevel": 4,
       "sourceAnchors": [
-        "The point of a skill is not fancy syntax. It is reusable, scoped expertise that the harness can invoke when relevant instead of re-learning the same workflow every session. citeturn10view3turn9view2turn11view2 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A skill is a reusable task package. It gives the assistant a named way to perform a specialized job again and again.\" |",
-        "Use a cost line that stays flat until the skill is invoked",
-        "End with a reusable \"progressive disclosure\" callout",
-        "flow-tokens",
-        "swimlane-handoff"
+        "parameter_counter",
+        "Tokens / Transformer / Parameters / GPUs / Context",
+        "token-boxes-to-context-window"
       ],
       "boxModel": {
         "cornerRadius": 0,
@@ -109,8 +109,8 @@
       }
     },
     {
-      "id": "systems-flow-repeatable-tools-zone",
-      "role": "example skills tool badges script blocks trim and workflow stamp zone",
+      "id": "metric-dashboard-evidence-feedback-zone",
+      "role": "evidence and feedback plane",
       "bounds": {
         "x": 1192,
         "y": 88,
@@ -119,9 +119,9 @@
       },
       "grayLevel": 2,
       "sourceAnchors": [
-        "Skill = on-demand reusable workflow",
-        "Animate a deploy workflow skill from checklist to executed steps",
-        "layered-architecture"
+        "Context -> Next token -> Repeat",
+        "Morph token bars into an attention graph to introduce transformers",
+        "masonry-wall"
       ],
       "boxModel": {
         "cornerRadius": 0,
@@ -275,12 +275,12 @@
     "height": 720,
     "fps": 6
   },
-  "outputId": "what-is-a-skill",
-  "outputVideo": "projects/metro-design-repair-contracts-full/videos/what-is-a-skill/artifacts/video-renders/draft/videos/what-is-a-skill.mp4",
+  "outputId": "what-is-an-llm",
+  "outputVideo": "projects/metro-design-repair-contracts-full/videos/what-is-an-llm/artifacts/video-renders/draft/videos/what-is-an-llm.mp4",
   "sourceFacts": [
-    "A skill is a reusable capability package that gives the harness structured instructions, scripts, and supporting resources for a specialized task.",
-    "The cost insight is important: skills support **progressive disclosure** because they load when relevant instead of forcing long procedures into every prompt.",
-    "GitHub Copilot defines skills as folders of instructions, scripts, and resources; Claude Code says long reference material in a skill \u201ccosts almost nothing until you need it\u201d; OpenCode also loads `SKILL.md`-based skills on demand."
+    "A large language model is a transformer-based neural network trained to predict text autoregressively: given prior tokens, it estimates the next token and repeats that process until it reaches a stopping condition.",
+    "Tokens are chunks of text rather than full words, and the model\u2019s size usually refers to its number of learned parameters, not its context window or factual correctness.",
+    "Modern LLM training and inference depend heavily on GPUs because transformers map well to parallel matrix operations, and larger models often improve capability on average, although scaling laws describe trends rather than guarantees."
   ],
   "sourceUrls": [],
   "treeLabels": [],
@@ -288,8 +288,18 @@
   "routeLabels": [],
   "checkpointLabels": [],
   "phaseLabels": [],
-  "metricLabels": [],
-  "thresholdLabels": [],
+  "metricLabels": [
+    "token_stream",
+    "context_window_box",
+    "gpu_rack",
+    "parameter_counter",
+    "Context -> Next token -> Repeat"
+  ],
+  "thresholdLabels": [
+    "healthy band",
+    "warning line",
+    "action line"
+  ],
   "dependencyLabels": [],
   "clusterLabels": [],
   "traceLabels": [],
@@ -307,268 +317,250 @@
   "concernLabels": [],
   "lineageLabels": [],
   "qualityLabels": [],
-  "systemLabels": [
-    "SKILL.md",
-    "markdown # SKILL.md --- name: deploy-preview description: Build, test, and deploy a preview safely tools: - bash - read - write --- 1. Run targeted tests first. 2. Validate required environment variables. 3. Deploy only to preview environment. 4. Summarize URL and rollback command",
-    "The point of a skill is not fancy syntax. It is reusable, scoped expertise that the harness can invoke when relevant instead of re-learning the same workflow every session. citeturn10view3turn9view2turn11view2 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A skill is a reusable task package. It gives the assistant a named way to perform a specialized job again and again.\" |",
-    "fans open | | 0:15-0:30 | \"Good skills are not giant permanent prompts. They are loaded only when relevant, which keeps normal sessions lighter.\" | Long prompt wall shrinks into one skill card | | 0:30-0:45 | \"GitHub Copilot describes skills as folders of instructions, scripts, and resources. Claude and OpenCode use similar SKILL-dot-MD patterns.\" | Three compatible folder structures align | | 0:45-1:00 | \"This is progressive disclosure. You keep rich procedures available, but you only pay the token cost when the procedure is actually used.\" | Cost meter stays flat until skill activates | | 1:00-1:15 | \"That makes skills perfect for deploy checklists, debugging routines, architecture explainers, onboarding flows, or codebase maps.\" | Example skill cards cycle quickly | | 1:15-1:30 | \"A skill can also call scripts or specify approved tools, which makes the workflow more repeatable and safer.\" | Tool badges snap onto the skill card | | 1:30-1:45 | \"The common mistake is turning skills into mini novels. Keep them sharp, task-scoped, and reusable.\" | A huge bloated card gets trimmed down | | 1:45-2:00 | \"So define a skill as on-demand domain expertise for the harness: reusable, composable, and usually cheaper than repeating the same long prompt.\" | Final tag: **Skill = on-demand reusable workflow** | Reference basis for narration: GitHub skill docs, Claude skill docs, OpenCode skill docs. citeturn10view3turn7search1turn9view2turn11view2 #### Shot and animation plan - Reuse",
-    "and show activation only when relevant. - Show one giant static prompt turning into three small skills. - Use a cost line that stays flat until the skill is invoked. - Animate a deploy workflow skill from checklist to executed steps. - Reuse the same visual card style later for instruction layers. - End with a reusable \"progressive disclosure\" callout. #### Q&A | Question | Answer | Source | |---|---|---| | What is a skill? | A reusable set of instructions, scripts, and resources for specialized tasks. citeturn10view3turn7search1 | citeturn10view3turn7search1 | | Why are skills useful? | They make recurring workflows repeatable and easier to discover. citeturn10view3turn9view2 | citeturn10view3turn9view2 | | What is progressive disclosure here? | Long procedures stay available but load only when needed. citeturn9view2 | citeturn9view2 | | Do skills reduce cost? | Often yes, because they avoid repeating long instructions every session. citeturn9view2turn28view0 | citeturn9view2turn28view0 | | Where do Copilot skills live? | In project or personal skill folders, including",
-    ",",
-    ", or",
-    "citeturn10view3 | citeturn10view3 | | Can Claude skills be invoked directly? | Yes, via slash-style invocation as skills or commands. citeturn9view2 | citeturn9view2 | | Does OpenCode support Claude-style skills? | Yes. It discovers Claude-compatible",
-    "dead-letter",
-    "throughput",
-    "throttle"
-  ],
+  "systemLabels": [],
   "strategyAnchors": [
-    "SKILL.md",
-    "markdown # SKILL.md --- name: deploy-preview description: Build, test, and deploy a preview safely tools: - bash - read - write --- 1. Run targeted tests first. 2. Validate required environment variables. 3. Deploy only to preview environment. 4. Summarize URL and rollback command",
-    "The point of a skill is not fancy syntax. It is reusable, scoped expertise that the harness can invoke when relevant instead of re-learning the same workflow every session. citeturn10view3turn9view2turn11view2 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A skill is a reusable task package. It gives the assistant a named way to perform a specialized job again and again.\" |",
-    "fans open | | 0:15-0:30 | \"Good skills are not giant permanent prompts. They are loaded only when relevant, which keeps normal sessions lighter.\" | Long prompt wall shrinks into one skill card | | 0:30-0:45 | \"GitHub Copilot describes skills as folders of instructions, scripts, and resources. Claude and OpenCode use similar SKILL-dot-MD patterns.\" | Three compatible folder structures align | | 0:45-1:00 | \"This is progressive disclosure. You keep rich procedures available, but you only pay the token cost when the procedure is actually used.\" | Cost meter stays flat until skill activates | | 1:00-1:15 | \"That makes skills perfect for deploy checklists, debugging routines, architecture explainers, onboarding flows, or codebase maps.\" | Example skill cards cycle quickly | | 1:15-1:30 | \"A skill can also call scripts or specify approved tools, which makes the workflow more repeatable and safer.\" | Tool badges snap onto the skill card | | 1:30-1:45 | \"The common mistake is turning skills into mini novels. Keep them sharp, task-scoped, and reusable.\" | A huge bloated card gets trimmed down | | 1:45-2:00 | \"So define a skill as on-demand domain expertise for the harness: reusable, composable, and usually cheaper than repeating the same long prompt.\" | Final tag: **Skill = on-demand reusable workflow** | Reference basis for narration: GitHub skill docs, Claude skill docs, OpenCode skill docs. citeturn10view3turn7search1turn9view2turn11view2 #### Shot and animation plan - Reuse",
-    "and show activation only when relevant. - Show one giant static prompt turning into three small skills. - Use a cost line that stays flat until the skill is invoked. - Animate a deploy workflow skill from checklist to executed steps. - Reuse the same visual card style later for instruction layers. - End with a reusable \"progressive disclosure\" callout. #### Q&A | Question | Answer | Source | |---|---|---| | What is a skill? | A reusable set of instructions, scripts, and resources for specialized tasks. citeturn10view3turn7search1 | citeturn10view3turn7search1 | | Why are skills useful? | They make recurring workflows repeatable and easier to discover. citeturn10view3turn9view2 | citeturn10view3turn9view2 | | What is progressive disclosure here? | Long procedures stay available but load only when needed. citeturn9view2 | citeturn9view2 | | Do skills reduce cost? | Often yes, because they avoid repeating long instructions every session. citeturn9view2turn28view0 | citeturn9view2turn28view0 | | Where do Copilot skills live? | In project or personal skill folders, including",
-    ",",
-    ", or",
-    "citeturn10view3 | citeturn10view3 | | Can Claude skills be invoked directly? | Yes, via slash-style invocation as skills or commands. citeturn9view2 | citeturn9view2 | | Does OpenCode support Claude-style skills? | Yes. It discovers Claude-compatible",
-    "Skill = on-demand reusable workflow",
-    "skill_card_stack and show activation only when relevant",
-    "Show one giant static prompt turning into three small skills",
-    "Use a cost line that stays flat until the skill is invoked",
-    "Animate a deploy workflow skill from checklist to executed steps",
-    "the same visual card style later for instruction layers",
-    "End with a reusable \"progressive disclosure\" callout",
-    "flow-tokens",
-    "layered-architecture",
-    "swimlane-handoff"
+    "token_stream",
+    "context_window_box",
+    "gpu_rack",
+    "parameter_counter",
+    "Context -> Next token -> Repeat",
+    "Tokens != words",
+    "Parameters = learned weights",
+    "Not equal to truth",
+    "Tokens / Transformer / Parameters / GPUs / Context",
+    "Morph token bars into an attention graph to introduce transformers",
+    "End with a four-tile summary card that can be reused as a chapter bumper in later videos",
+    "matmul-tile-accumulation",
+    "attention-matrix-tiles",
+    "token-boxes-to-context-window",
+    "masonry-wall",
+    "qkv-projection-flow",
+    "kv-cache-growth",
+    "masonry wall"
   ],
   "semanticBindings": [
     {
       "id": "binding-01",
-      "sourceAnchor": "SKILL.md",
-      "zoneId": "systems-flow-skill-card-stack-zone",
-      "zoneRole": "reusable SKILL.md card stack and activation zone",
+      "sourceAnchor": "token_stream",
+      "zoneId": "metric-dashboard-orientation-zone",
+      "zoneRole": "opening anchor plane",
       "mechanismId": "mechanism-01",
-      "mechanism": "skill_card_stack fans open from reusable SKILL.md cards only when the task needs them",
-      "stateKey": "skillCardStackVisible",
+      "mechanism": "trend line reveals before any interpretation panel appears",
+      "stateKey": "activeMetric",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-02",
-      "sourceAnchor": "markdown # SKILL.md --- name: deploy-preview description: Build, test, and deploy a preview safely tools: - bash - read - write --- 1. Run targeted tests first. 2. Validate required environment variables. 3. Deploy only to preview environment. 4. Summarize URL and rollback command",
-      "zoneId": "systems-flow-skill-card-stack-zone",
-      "zoneRole": "reusable SKILL.md card stack and activation zone",
-      "mechanismId": "mechanism-01",
-      "mechanism": "skill_card_stack fans open from reusable SKILL.md cards only when the task needs them",
-      "stateKey": "promptWallCollapsed",
+      "sourceAnchor": "context_window_box",
+      "zoneId": "metric-dashboard-primary-system-zone",
+      "zoneRole": "main mechanism plane",
+      "mechanismId": "mechanism-02",
+      "mechanism": "healthy, warning, and action thresholds convert the chart into an operating rule",
+      "stateKey": "trendVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-03",
-      "sourceAnchor": "The point of a skill is not fancy syntax. It is reusable, scoped expertise that the harness can invoke when relevant instead of re-learning the same workflow every session. citeturn10view3turn9view2turn11view2 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A skill is a reusable task package. It gives the assistant a named way to perform a specialized job again and again.\" |",
-      "zoneId": "systems-flow-progressive-cost-zone",
-      "zoneRole": "progressive disclosure token cost meter zone",
-      "mechanismId": "mechanism-04",
-      "mechanism": "progressive disclosure keeps the cost meter flat until activation then loads only the needed procedure",
-      "stateKey": "folderStructuresAligned",
+      "sourceAnchor": "gpu_rack",
+      "zoneId": "metric-dashboard-secondary-system-zone",
+      "zoneRole": "support mechanism plane",
+      "mechanismId": "mechanism-03",
+      "mechanism": "anomaly marker names the risk metric instead of relying on color alone",
+      "stateKey": "thresholdVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-04",
-      "sourceAnchor": "fans open | | 0:15-0:30 | \"Good skills are not giant permanent prompts. They are loaded only when relevant, which keeps normal sessions lighter.\" | Long prompt wall shrinks into one skill card | | 0:30-0:45 | \"GitHub Copilot describes skills as folders of instructions, scripts, and resources. Claude and OpenCode use similar SKILL-dot-MD patterns.\" | Three compatible folder structures align | | 0:45-1:00 | \"This is progressive disclosure. You keep rich procedures available, but you only pay the token cost when the procedure is actually used.\" | Cost meter stays flat until skill activates | | 1:00-1:15 | \"That makes skills perfect for deploy checklists, debugging routines, architecture explainers, onboarding flows, or codebase maps.\" | Example skill cards cycle quickly | | 1:15-1:30 | \"A skill can also call scripts or specify approved tools, which makes the workflow more repeatable and safer.\" | Tool badges snap onto the skill card | | 1:30-1:45 | \"The common mistake is turning skills into mini novels. Keep them sharp, task-scoped, and reusable.\" | A huge bloated card gets trimmed down | | 1:45-2:00 | \"So define a skill as on-demand domain expertise for the harness: reusable, composable, and usually cheaper than repeating the same long prompt.\" | Final tag: **Skill = on-demand reusable workflow** | Reference basis for narration: GitHub skill docs, Claude skill docs, OpenCode skill docs. citeturn10view3turn7search1turn9view2turn11view2 #### Shot and animation plan - Reuse",
-      "zoneId": "systems-flow-skill-card-stack-zone",
-      "zoneRole": "reusable SKILL.md card stack and activation zone",
-      "mechanismId": "mechanism-01",
-      "mechanism": "skill_card_stack fans open from reusable SKILL.md cards only when the task needs them",
-      "stateKey": "progressiveDisclosureVisible",
+      "sourceAnchor": "parameter_counter",
+      "zoneId": "metric-dashboard-control-risk-zone",
+      "zoneRole": "control and risk plane",
+      "mechanismId": "mechanism-04",
+      "mechanism": "forecast cone and decision panel appear late so action follows evidence",
+      "stateKey": "anomalyVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-05",
-      "sourceAnchor": "and show activation only when relevant. - Show one giant static prompt turning into three small skills. - Use a cost line that stays flat until the skill is invoked. - Animate a deploy workflow skill from checklist to executed steps. - Reuse the same visual card style later for instruction layers. - End with a reusable \"progressive disclosure\" callout. #### Q&A | Question | Answer | Source | |---|---|---| | What is a skill? | A reusable set of instructions, scripts, and resources for specialized tasks. citeturn10view3turn7search1 | citeturn10view3turn7search1 | | Why are skills useful? | They make recurring workflows repeatable and easier to discover. citeturn10view3turn9view2 | citeturn10view3turn9view2 | | What is progressive disclosure here? | Long procedures stay available but load only when needed. citeturn9view2 | citeturn9view2 | | Do skills reduce cost? | Often yes, because they avoid repeating long instructions every session. citeturn9view2turn28view0 | citeturn9view2turn28view0 | | Where do Copilot skills live? | In project or personal skill folders, including",
-      "zoneId": "systems-flow-prompt-collapse-zone",
-      "zoneRole": "long prompt wall collapsing into scoped skill card zone",
-      "mechanismId": "mechanism-02",
-      "mechanism": "a long prompt wall collapses into one scoped skill card to show reusable task packaging",
-      "stateKey": "skillActivationVisible",
+      "sourceAnchor": "Context -> Next token -> Repeat",
+      "zoneId": "metric-dashboard-evidence-feedback-zone",
+      "zoneRole": "evidence and feedback plane",
+      "mechanismId": "mechanism-01",
+      "mechanism": "trend line reveals before any interpretation panel appears",
+      "stateKey": "forecastVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-06",
-      "sourceAnchor": ",",
-      "zoneId": "systems-flow-skill-card-stack-zone",
-      "zoneRole": "reusable SKILL.md card stack and activation zone",
-      "mechanismId": "mechanism-01",
-      "mechanism": "skill_card_stack fans open from reusable SKILL.md cards only when the task needs them",
-      "stateKey": "exampleSkillCardsVisible",
+      "sourceAnchor": "Tokens != words",
+      "zoneId": "metric-dashboard-orientation-zone",
+      "zoneRole": "opening anchor plane",
+      "mechanismId": "mechanism-02",
+      "mechanism": "healthy, warning, and action thresholds convert the chart into an operating rule",
+      "stateKey": "decisionVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-07",
-      "sourceAnchor": ", or",
-      "zoneId": "systems-flow-prompt-collapse-zone",
-      "zoneRole": "long prompt wall collapsing into scoped skill card zone",
-      "mechanismId": "mechanism-02",
-      "mechanism": "a long prompt wall collapses into one scoped skill card to show reusable task packaging",
-      "stateKey": "toolBadgesAttached",
+      "sourceAnchor": "Parameters = learned weights",
+      "zoneId": "metric-dashboard-primary-system-zone",
+      "zoneRole": "main mechanism plane",
+      "mechanismId": "mechanism-03",
+      "mechanism": "anomaly marker names the risk metric instead of relying on color alone",
+      "stateKey": "activeMetric",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-08",
-      "sourceAnchor": "citeturn10view3 | citeturn10view3 | | Can Claude skills be invoked directly? | Yes, via slash-style invocation as skills or commands. citeturn9view2 | citeturn9view2 | | Does OpenCode support Claude-style skills? | Yes. It discovers Claude-compatible",
-      "zoneId": "systems-flow-compatible-folders-zone",
-      "zoneRole": "GitHub Claude and OpenCode folder structures zone",
-      "mechanismId": "mechanism-03",
-      "mechanism": "GitHub Claude and OpenCode-compatible folder structures align around SKILL.md scripts references and assets",
-      "stateKey": "scriptBlockVisible",
+      "sourceAnchor": "Not equal to truth",
+      "zoneId": "metric-dashboard-secondary-system-zone",
+      "zoneRole": "support mechanism plane",
+      "mechanismId": "mechanism-04",
+      "mechanism": "forecast cone and decision panel appear late so action follows evidence",
+      "stateKey": "trendVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-09",
-      "sourceAnchor": "Skill = on-demand reusable workflow",
-      "zoneId": "systems-flow-repeatable-tools-zone",
-      "zoneRole": "example skills tool badges script blocks trim and workflow stamp zone",
-      "mechanismId": "mechanism-05",
-      "mechanism": "example skill cards, tool badges, script blocks, trimming, and final workflow stamp show repeatable safe execution",
-      "stateKey": "bloatedSkillTrimmed",
+      "sourceAnchor": "Tokens / Transformer / Parameters / GPUs / Context",
+      "zoneId": "metric-dashboard-control-risk-zone",
+      "zoneRole": "control and risk plane",
+      "mechanismId": "mechanism-01",
+      "mechanism": "trend line reveals before any interpretation panel appears",
+      "stateKey": "thresholdVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-10",
-      "sourceAnchor": "skill_card_stack and show activation only when relevant",
-      "zoneId": "systems-flow-skill-card-stack-zone",
-      "zoneRole": "reusable SKILL.md card stack and activation zone",
-      "mechanismId": "mechanism-01",
-      "mechanism": "skill_card_stack fans open from reusable SKILL.md cards only when the task needs them",
-      "stateKey": "finalWorkflowStampVisible",
+      "sourceAnchor": "Morph token bars into an attention graph to introduce transformers",
+      "zoneId": "metric-dashboard-evidence-feedback-zone",
+      "zoneRole": "evidence and feedback plane",
+      "mechanismId": "mechanism-02",
+      "mechanism": "healthy, warning, and action thresholds convert the chart into an operating rule",
+      "stateKey": "anomalyVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-11",
-      "sourceAnchor": "Show one giant static prompt turning into three small skills",
-      "zoneId": "systems-flow-prompt-collapse-zone",
-      "zoneRole": "long prompt wall collapsing into scoped skill card zone",
-      "mechanismId": "mechanism-02",
-      "mechanism": "a long prompt wall collapses into one scoped skill card to show reusable task packaging",
-      "stateKey": "costMeterLevel",
+      "sourceAnchor": "End with a four-tile summary card that can be reused as a chapter bumper in later videos",
+      "zoneId": "metric-dashboard-orientation-zone",
+      "zoneRole": "opening anchor plane",
+      "mechanismId": "mechanism-03",
+      "mechanism": "anomaly marker names the risk metric instead of relying on color alone",
+      "stateKey": "forecastVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-12",
-      "sourceAnchor": "Use a cost line that stays flat until the skill is invoked",
-      "zoneId": "systems-flow-progressive-cost-zone",
-      "zoneRole": "progressive disclosure token cost meter zone",
+      "sourceAnchor": "matmul-tile-accumulation",
+      "zoneId": "metric-dashboard-primary-system-zone",
+      "zoneRole": "main mechanism plane",
       "mechanismId": "mechanism-04",
-      "mechanism": "progressive disclosure keeps the cost meter flat until activation then loads only the needed procedure",
-      "stateKey": "resourceModuleCount",
+      "mechanism": "forecast cone and decision panel appear late so action follows evidence",
+      "stateKey": "decisionVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-13",
-      "sourceAnchor": "Animate a deploy workflow skill from checklist to executed steps",
-      "zoneId": "systems-flow-repeatable-tools-zone",
-      "zoneRole": "example skills tool badges script blocks trim and workflow stamp zone",
-      "mechanismId": "mechanism-05",
-      "mechanism": "example skill cards, tool badges, script blocks, trimming, and final workflow stamp show repeatable safe execution",
-      "stateKey": "validationStageLevel",
+      "sourceAnchor": "attention-matrix-tiles",
+      "zoneId": "metric-dashboard-secondary-system-zone",
+      "zoneRole": "support mechanism plane",
+      "mechanismId": "mechanism-01",
+      "mechanism": "trend line reveals before any interpretation panel appears",
+      "stateKey": "activeMetric",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-14",
-      "sourceAnchor": "the same visual card style later for instruction layers",
-      "zoneId": "systems-flow-compatible-folders-zone",
-      "zoneRole": "GitHub Claude and OpenCode folder structures zone",
-      "mechanismId": "mechanism-03",
-      "mechanism": "GitHub Claude and OpenCode-compatible folder structures align around SKILL.md scripts references and assets",
-      "stateKey": "readSurfaceLevel",
+      "sourceAnchor": "token-boxes-to-context-window",
+      "zoneId": "metric-dashboard-control-risk-zone",
+      "zoneRole": "control and risk plane",
+      "mechanismId": "mechanism-02",
+      "mechanism": "healthy, warning, and action thresholds convert the chart into an operating rule",
+      "stateKey": "trendVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-15",
-      "sourceAnchor": "End with a reusable \"progressive disclosure\" callout",
-      "zoneId": "systems-flow-progressive-cost-zone",
-      "zoneRole": "progressive disclosure token cost meter zone",
-      "mechanismId": "mechanism-04",
-      "mechanism": "progressive disclosure keeps the cost meter flat until activation then loads only the needed procedure",
-      "stateKey": "skillCardStackVisible",
+      "sourceAnchor": "masonry-wall",
+      "zoneId": "metric-dashboard-evidence-feedback-zone",
+      "zoneRole": "evidence and feedback plane",
+      "mechanismId": "mechanism-03",
+      "mechanism": "anomaly marker names the risk metric instead of relying on color alone",
+      "stateKey": "thresholdVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-16",
-      "sourceAnchor": "flow-tokens",
-      "zoneId": "systems-flow-progressive-cost-zone",
-      "zoneRole": "progressive disclosure token cost meter zone",
+      "sourceAnchor": "qkv-projection-flow",
+      "zoneId": "metric-dashboard-orientation-zone",
+      "zoneRole": "opening anchor plane",
       "mechanismId": "mechanism-04",
-      "mechanism": "progressive disclosure keeps the cost meter flat until activation then loads only the needed procedure",
-      "stateKey": "promptWallCollapsed",
+      "mechanism": "forecast cone and decision panel appear late so action follows evidence",
+      "stateKey": "anomalyVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-17",
-      "sourceAnchor": "layered-architecture",
-      "zoneId": "systems-flow-repeatable-tools-zone",
-      "zoneRole": "example skills tool badges script blocks trim and workflow stamp zone",
-      "mechanismId": "mechanism-05",
-      "mechanism": "example skill cards, tool badges, script blocks, trimming, and final workflow stamp show repeatable safe execution",
-      "stateKey": "folderStructuresAligned",
+      "sourceAnchor": "kv-cache-growth",
+      "zoneId": "metric-dashboard-primary-system-zone",
+      "zoneRole": "main mechanism plane",
+      "mechanismId": "mechanism-01",
+      "mechanism": "trend line reveals before any interpretation panel appears",
+      "stateKey": "forecastVisible",
       "visualRole": "data-bearing-zone"
     },
     {
       "id": "binding-18",
-      "sourceAnchor": "swimlane-handoff",
-      "zoneId": "systems-flow-progressive-cost-zone",
-      "zoneRole": "progressive disclosure token cost meter zone",
-      "mechanismId": "mechanism-04",
-      "mechanism": "progressive disclosure keeps the cost meter flat until activation then loads only the needed procedure",
-      "stateKey": "progressiveDisclosureVisible",
+      "sourceAnchor": "masonry wall",
+      "zoneId": "metric-dashboard-secondary-system-zone",
+      "zoneRole": "support mechanism plane",
+      "mechanismId": "mechanism-02",
+      "mechanism": "healthy, warning, and action thresholds convert the chart into an operating rule",
+      "stateKey": "decisionVisible",
       "visualRole": "data-bearing-zone"
     }
   ],
   "visualMechanismAnchors": [
     {
       "id": "mechanism-01",
-      "mechanism": "skill_card_stack fans open from reusable SKILL.md cards only when the task needs them",
+      "mechanism": "trend line reveals before any interpretation panel appears",
       "sourceAnchors": [
-        "SKILL.md",
-        "markdown # SKILL.md --- name: deploy-preview description: Build, test, and deploy a preview safely tools: - bash - read - write --- 1. Run targeted tests first. 2. Validate required environment variables. 3. Deploy only to preview environment. 4. Summarize URL and rollback command",
-        "fans open | | 0:15-0:30 | \"Good skills are not giant permanent prompts. They are loaded only when relevant, which keeps normal sessions lighter.\" | Long prompt wall shrinks into one skill card | | 0:30-0:45 | \"GitHub Copilot describes skills as folders of instructions, scripts, and resources. Claude and OpenCode use similar SKILL-dot-MD patterns.\" | Three compatible folder structures align | | 0:45-1:00 | \"This is progressive disclosure. You keep rich procedures available, but you only pay the token cost when the procedure is actually used.\" | Cost meter stays flat until skill activates | | 1:00-1:15 | \"That makes skills perfect for deploy checklists, debugging routines, architecture explainers, onboarding flows, or codebase maps.\" | Example skill cards cycle quickly | | 1:15-1:30 | \"A skill can also call scripts or specify approved tools, which makes the workflow more repeatable and safer.\" | Tool badges snap onto the skill card | | 1:30-1:45 | \"The common mistake is turning skills into mini novels. Keep them sharp, task-scoped, and reusable.\" | A huge bloated card gets trimmed down | | 1:45-2:00 | \"So define a skill as on-demand domain expertise for the harness: reusable, composable, and usually cheaper than repeating the same long prompt.\" | Final tag: **Skill = on-demand reusable workflow** | Reference basis for narration: GitHub skill docs, Claude skill docs, OpenCode skill docs. citeturn10view3turn7search1turn9view2turn11view2 #### Shot and animation plan - Reuse",
-        ",",
-        "skill_card_stack and show activation only when relevant"
+        "token_stream",
+        "Context -> Next token -> Repeat",
+        "Tokens / Transformer / Parameters / GPUs / Context",
+        "attention-matrix-tiles",
+        "kv-cache-growth"
       ]
     },
     {
       "id": "mechanism-02",
-      "mechanism": "a long prompt wall collapses into one scoped skill card to show reusable task packaging",
+      "mechanism": "healthy, warning, and action thresholds convert the chart into an operating rule",
       "sourceAnchors": [
-        "and show activation only when relevant. - Show one giant static prompt turning into three small skills. - Use a cost line that stays flat until the skill is invoked. - Animate a deploy workflow skill from checklist to executed steps. - Reuse the same visual card style later for instruction layers. - End with a reusable \"progressive disclosure\" callout. #### Q&A | Question | Answer | Source | |---|---|---| | What is a skill? | A reusable set of instructions, scripts, and resources for specialized tasks. citeturn10view3turn7search1 | citeturn10view3turn7search1 | | Why are skills useful? | They make recurring workflows repeatable and easier to discover. citeturn10view3turn9view2 | citeturn10view3turn9view2 | | What is progressive disclosure here? | Long procedures stay available but load only when needed. citeturn9view2 | citeturn9view2 | | Do skills reduce cost? | Often yes, because they avoid repeating long instructions every session. citeturn9view2turn28view0 | citeturn9view2turn28view0 | | Where do Copilot skills live? | In project or personal skill folders, including",
-        ", or",
-        "Show one giant static prompt turning into three small skills"
+        "context_window_box",
+        "Tokens != words",
+        "Morph token bars into an attention graph to introduce transformers",
+        "token-boxes-to-context-window",
+        "masonry wall"
       ]
     },
     {
       "id": "mechanism-03",
-      "mechanism": "GitHub Claude and OpenCode-compatible folder structures align around SKILL.md scripts references and assets",
+      "mechanism": "anomaly marker names the risk metric instead of relying on color alone",
       "sourceAnchors": [
-        "citeturn10view3 | citeturn10view3 | | Can Claude skills be invoked directly? | Yes, via slash-style invocation as skills or commands. citeturn9view2 | citeturn9view2 | | Does OpenCode support Claude-style skills? | Yes. It discovers Claude-compatible",
-        "the same visual card style later for instruction layers"
+        "gpu_rack",
+        "Parameters = learned weights",
+        "End with a four-tile summary card that can be reused as a chapter bumper in later videos",
+        "masonry-wall"
       ]
     },
     {
       "id": "mechanism-04",
-      "mechanism": "progressive disclosure keeps the cost meter flat until activation then loads only the needed procedure",
+      "mechanism": "forecast cone and decision panel appear late so action follows evidence",
       "sourceAnchors": [
-        "The point of a skill is not fancy syntax. It is reusable, scoped expertise that the harness can invoke when relevant instead of re-learning the same workflow every session. citeturn10view3turn9view2turn11view2 #### Timed narration and visuals | Time | Spoken narration | On-screen text and visual cues | |---|---|---| | 0:00-0:15 | \"A skill is a reusable task package. It gives the assistant a named way to perform a specialized job again and again.\" |",
-        "Use a cost line that stays flat until the skill is invoked",
-        "End with a reusable \"progressive disclosure\" callout",
-        "flow-tokens",
-        "swimlane-handoff"
-      ]
-    },
-    {
-      "id": "mechanism-05",
-      "mechanism": "example skill cards, tool badges, script blocks, trimming, and final workflow stamp show repeatable safe execution",
-      "sourceAnchors": [
-        "Skill = on-demand reusable workflow",
-        "Animate a deploy workflow skill from checklist to executed steps",
-        "layered-architecture"
+        "parameter_counter",
+        "Not equal to truth",
+        "matmul-tile-accumulation",
+        "qkv-projection-flow"
       ]
     }
   ],
@@ -588,11 +580,10 @@
   "guardLabels": [],
   "missingFacts": [],
   "visualMechanisms": [
-    "skill_card_stack fans open from reusable SKILL.md cards only when the task needs them",
-    "a long prompt wall collapses into one scoped skill card to show reusable task packaging",
-    "GitHub Claude and OpenCode-compatible folder structures align around SKILL.md scripts references and assets",
-    "progressive disclosure keeps the cost meter flat until activation then loads only the needed procedure",
-    "example skill cards, tool badges, script blocks, trimming, and final workflow stamp show repeatable safe execution"
+    "trend line reveals before any interpretation panel appears",
+    "healthy, warning, and action thresholds convert the chart into an operating rule",
+    "anomaly marker names the risk metric instead of relying on color alone",
+    "forecast cone and decision panel appear late so action follows evidence"
   ],
   "visualPolicy": {
     "edgeStyle": "square",
@@ -844,8 +835,8 @@
         const opacity = Math.min(0.92, 0.26 + ease(Math.min(1, phase)) * (active ? 0.58 : 0.38));
         const attrs = bindingAttrs(binding, bindingIndex, zoneIndex, active);
         const kind = semanticGlyphKind(binding?.sourceAnchor);
-        const fill = active ? palette.route : grayLevel((bindingIndex % 3) + 2);
-        const stroke = active ? palette.damage : grayLevel(5);
+        const fill = active ? grayLevel(5) : grayLevel((bindingIndex % 3) + 2);
+        const stroke = active ? palette.route : grayLevel(5);
         drawSemanticGlyph(kind, x, y, 12, fill, stroke, attrs, opacity);
       });
     }
@@ -864,16 +855,36 @@
         const zoneIndex = Number.isFinite(Number(module.zoneIndex)) ? Number(module.zoneIndex) : index % Math.max(1, sourceZones.length || 1);
         const level = Math.max(1, Math.min(grayLevels.length - 2, Number(module.grayLevel) || metroZoneFillLevel(zoneIndex, active)));
         const isActive = zoneIndex === active;
+        const x = (Number(bounds.x) || 0) + vector.x * (1 - fit);
+        const y = (Number(bounds.y) || 0) + vector.y * (1 - fit);
+        const width = Number(bounds.width) || 4;
+        const height = Number(bounds.height) || 4;
+        const fill = grayLevel(isActive ? Math.min(level + 1, grayLevels.length - 2) : level);
+        const moduleBoxId = `masonry-wall-module-${index}`;
         el("rect", {
-          x: (Number(bounds.x) || 0) + vector.x * (1 - fit),
-          y: (Number(bounds.y) || 0) + vector.y * (1 - fit),
-          width: Number(bounds.width) || 4,
-          height: Number(bounds.height) || 4,
+          x,
+          y,
+          width,
+          height,
           rx: 0,
-          fill: grayLevel(isActive ? Math.min(level + 1, grayLevels.length - 2) : level),
+          fill,
+          stroke: "none",
+          "fill-opacity": clamp(phase),
+          "data-fill-for": moduleBoxId,
+          "data-fill-axis": "all",
+          "data-padding-policy": "zero-verified",
+        });
+        el("rect", {
+          x,
+          y,
+          width,
+          height,
+          rx: 0,
+          fill,
           stroke: isActive ? palette.route : grayLevel(5),
           "stroke-width": isActive ? 3 : 1,
           "fill-opacity": clamp(phase),
+          "data-box-id": moduleBoxId,
           "data-masonry-module": "true",
           "data-masonry-wall": "true",
           "data-masonry-order": String(index),
@@ -2276,18 +2287,18 @@
         }
         const points = [[145,472],[230,448],[315,438],[400,402],[485,422],[570,366],[655,334],[740,300]];
         const revealed = Math.max(0, Math.min(points.length - 1, Math.floor(trendProgress * (points.length - 1))));
-        for (let i = 0; i < revealed; i++) line(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], palette.route, 8);
+        for (let i = 0; i < revealed; i++) line(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], palette.route, 4);
         if (trendProgress > 0 && trendProgress < 1) {
           const i = Math.min(points.length - 2, revealed);
           const ratio = trendProgress * (points.length - 1) - i;
           const a = points[i], b = points[i + 1];
-          line(a[0], a[1], a[0] + (b[0] - a[0]) * ratio, a[1] + (b[1] - a[1]) * ratio, palette.route, 8);
+          line(a[0], a[1], a[0] + (b[0] - a[0]) * ratio, a[1] + (b[1] - a[1]) * ratio, palette.route, 4);
         }
         const activeTrendPoint = Math.max(0, Math.min(points.length - 1, Math.floor(trendProgress * points.length)));
-        points.slice(0, activeTrendPoint + 1).forEach((d, i) => circle(d[0], d[1], 8, i === 4 ? palette.damage : palette.route, grayLevel(1), 3));
+        points.slice(0, activeTrendPoint + 1).forEach((d, i) => circle(d[0], d[1], 7, grayLevel(5), i === 4 ? palette.damage : palette.route, 3));
         if (anomalyVisible) {
           circle(485,422,30,"none",palette.damage,5);
-          component(425,225,170,60,"anomaly",palette.damage,grayLevel(4));
+          component(425,225,170,60,"anomaly",palette.damage,grayLevel(2));
           if (!masonryRequired) label(510,274,metricNames[4],14,palette.ink);
         }
         if (forecastVisible) {
@@ -2308,7 +2319,11 @@
           if (p + 0.02 < d[8]) return;
           el("rect", { x: d[0], y: d[1], width: d[2], height: d[3], rx: 0, fill: grayLevel(3), stroke: p > 0.16 ? d[6] : palette.line, "stroke-width": 2 });
           const filled = Math.max(0, Math.min(d[2], d[2] * clamp(d[7])));
-          if (filled > 0) el("rect", { x: d[0], y: d[1], width: filled, height: d[3], rx: 0, fill: d[6] });
+          if (filled > 0) {
+            el("rect", { x: d[0], y: d[1], width: filled, height: d[3], rx: 0, fill: grayLevel(5) });
+            const capX = d[0] + Math.max(0, filled - 8);
+            el("rect", { x: capX, y: d[1], width: Math.min(8, filled), height: d[3], rx: 0, fill: d[6], stroke: "none" });
+          }
           if (!masonryRequired) {
             label(d[0] + d[2] / 2, d[1] + 32, d[4], 15, palette.ink);
             label(d[0] + d[2] / 2, d[1] + 62, d[5], 13, palette.ink);
@@ -2524,6 +2539,10 @@
           "stroke-linejoin": "miter",
           opacity
         });
+        const flowBodyColor = (color) => {
+          if ([palette.route, palette.attribute, palette.damage, palette.tradeoff].includes(color)) return grayLevel(6);
+          return color;
+        };
         const pointOn = (points, progress) => {
           const safe = Math.max(0, Math.min(1, progress));
           let total = 0;
@@ -2584,7 +2603,8 @@
         flows.forEach(([points, color, width], idx) => {
           const segmentProgress = Math.max(0, Math.min(1, flowProgress * flows.length - idx));
           if (segmentProgress > 0) {
-            route(points, color, width, Math.max(0.28, segmentProgress));
+            route(points, flowBodyColor(color), Math.max(4, width - 6), Math.max(0.28, segmentProgress));
+            route(points, color, 3, Math.max(0.35, segmentProgress));
             const token = pointOn(points, segmentProgress);
             circle(token[0], token[1], 8, palette.gold, palette.gold, 2);
           }
@@ -2592,21 +2612,21 @@
         [
           [130, 320, flowLabels[0], palette.route, grayLevel(2)],
           [340, 235, flowLabels[1], palette.defense, grayLevel(2)],
-          [340, 435, flowLabels[2], palette.tradeoff, grayLevel(4)],
+          [340, 435, flowLabels[2], palette.tradeoff, grayLevel(2)],
           [570, 215, flowLabels[3], palette.route, grayLevel(2)],
           [570, 365, flowLabels[4], palette.attribute, grayLevel(2)],
-          [790, 300, flowLabels[6], palette.damage, grayLevel(4)],
+          [790, 300, flowLabels[6], palette.damage, grayLevel(3)],
           [1048, 320, flowLabels[7], palette.atlas, grayLevel(2)],
         ].forEach((d) => node(d[0], d[1], d[2], d[3], d[4]));
         if (splitVisible) {
           node(340, 180, "split preserves value", palette.route, grayLevel(1));
         }
         if (lossVisible) {
-          node(340, 530, "loss is explicit", palette.tradeoff, grayLevel(4));
+          node(340, 530, "loss is explicit", palette.tradeoff, grayLevel(2));
           if (!masonryRequired) label(340, 558, flowLabels[2], 14, palette.ink);
         }
         if (bottleneckVisible) {
-          node(795, 205, "bottleneck", palette.damage, grayLevel(4));
+          node(795, 205, "bottleneck", palette.damage, grayLevel(3));
           if (!masonryRequired) label(795, 234, "limits merged flow", 14, palette.ink);
           el("ellipse", { cx: 790, cy: 300, rx: 0, ry: 0, fill: "none", stroke: palette.damage, "stroke-width": 5 });
         }
@@ -2623,7 +2643,11 @@
           const height = 66;
           el("rect", { x, y, width, height, rx: 0, fill: grayLevel(3), stroke: palette.line });
           const filled = Math.max(0, Math.min(width, width * ease(value)));
-          if (filled > 0) el("rect", { x, y, width: filled, height, rx: 0, fill: color });
+          if (filled > 0) {
+            el("rect", { x, y, width: filled, height, rx: 0, fill: grayLevel(5) });
+            const capX = x + Math.max(0, filled - 8);
+            el("rect", { x: capX, y, width: Math.min(8, filled), height, rx: 0, fill: color, stroke: "none" });
+          }
           if (!masonryRequired) label(x + width / 2, y + height / 2 + 5, name, 15, palette.ink);
         };
         meter(86, 500, "input volume", flowProgress, palette.route);

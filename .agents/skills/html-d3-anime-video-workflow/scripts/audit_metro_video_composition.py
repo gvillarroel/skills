@@ -43,7 +43,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--min-cell-change-mean", type=float, default=0.045)
     parser.add_argument("--max-title-band-dominance", type=float, default=3.0)
     parser.add_argument("--max-text-like-component-area-ratio", type=float, default=0.12)
-    parser.add_argument("--max-red-area-ratio", type=float, default=0.14)
+    parser.add_argument("--max-red-area-ratio", type=float, default=0.08)
     return parser.parse_args()
 
 
