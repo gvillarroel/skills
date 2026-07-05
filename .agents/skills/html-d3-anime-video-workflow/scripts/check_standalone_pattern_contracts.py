@@ -78,6 +78,7 @@ def main() -> int:
     helper_path = SKILL_DIR / "scripts" / "build_standalone_explainer.py"
     wrapper_path = SKILL_DIR / "scripts" / "build_from_prompt_contract.py"
     audit_suite_path = SKILL_DIR / "scripts" / "run_metro_audit_suite.py"
+    tonal_audit_path = SKILL_DIR / "scripts" / "audit_metro_tonal_style.py"
     video_composition_audit_path = SKILL_DIR / "scripts" / "audit_metro_video_composition.py"
     composition_audit_path = SKILL_DIR / "scripts" / "audit_metro_composition.py"
     rendered_frame_audit_path = SKILL_DIR / "scripts" / "audit_metro_rendered_frames.py"
@@ -94,6 +95,7 @@ def main() -> int:
     helper = read(helper_path)
     wrapper = read(wrapper_path)
     audit_suite = read(audit_suite_path)
+    tonal_audit = read(tonal_audit_path)
     video_composition_audit = read(video_composition_audit_path)
     composition_audit = read(composition_audit_path)
     rendered_frame_audit = read(rendered_frame_audit_path)
@@ -184,6 +186,8 @@ def main() -> int:
         ("global", "missing-video-composition-red-area-gate", video_composition_audit_path.as_posix(), "mp4-red-area-too-dominant"),
         ("global", "missing-video-composition-red-area-report", video_composition_audit_path.as_posix(), "maxRedAreaRatio"),
         ("global", "missing-video-composition-missing-video-report", video_composition_audit_path.as_posix(), "mp4-missing-video"),
+        ("global", "missing-tonal-open-sans-gate", tonal_audit_path.as_posix(), "wrong-metro-font-stack"),
+        ("global", "missing-tonal-font-report", tonal_audit_path.as_posix(), "fontFamilies"),
         ("global", "missing-metro-audit-suite-style", audit_suite_path.as_posix(), "audit_metro_tonal_style.py"),
         ("global", "missing-metro-audit-suite-composition", audit_suite_path.as_posix(), "audit_metro_composition.py"),
         ("global", "missing-metro-audit-suite-rendered-frame", audit_suite_path.as_posix(), "audit_metro_rendered_frames.py"),
@@ -195,6 +199,7 @@ def main() -> int:
         ("global", "missing-composition-padding-audit", composition_audit_path.as_posix(), "extract_padding_signals"),
         ("global", "missing-composition-visible-gray-audit", composition_audit_path.as_posix(), "rect_fill_expressions"),
         ("global", "missing-composition-rounded-line-audit", composition_audit_path.as_posix(), "extract_rounded_line_signals"),
+        ("global", "missing-composition-dynamic-rounded-audit", composition_audit_path.as_posix(), "rx-dynamic-object"),
         ("global", "missing-composition-dynamic-rect-audit", composition_audit_path.as_posix(), "runtimeRectNormalizer"),
         ("global", "missing-composition-selected-pattern-audit", composition_audit_path.as_posix(), "selected_pattern_scope"),
         ("global", "missing-composition-gray-spread-audit", composition_audit_path.as_posix(), "selectedPatternGrayLuminanceSpread"),
@@ -285,6 +290,8 @@ def main() -> int:
         ("global", "missing-metro-fixture-small-inset", audit_fixture_path.as_posix(), "rendered-small-inset-padding-fails"),
         ("global", "missing-metro-fixture-transformed-offgrid", audit_fixture_path.as_posix(), "rendered-transformed-offgrid-fails"),
         ("global", "missing-metro-fixture-css-rounded", audit_fixture_path.as_posix(), "rendered-css-rounded-fails"),
+        ("global", "missing-metro-fixture-tonal-font", audit_fixture_path.as_posix(), "tonal-wrong-font-fails"),
+        ("global", "missing-metro-fixture-dynamic-rounded", audit_fixture_path.as_posix(), "composition-dynamic-rounded-fails"),
         ("global", "missing-metro-fixture-tiny-gray-swatches", audit_fixture_path.as_posix(), "rendered-tiny-gray-swatches-fails"),
         ("global", "missing-metro-fixture-weak-gray", audit_fixture_path.as_posix(), "rendered-weak-gray-fails"),
         ("global", "missing-metro-fixture-title-band", audit_fixture_path.as_posix(), "rendered-title-band-text-fails"),
@@ -467,6 +474,7 @@ def main() -> int:
         helper_path.as_posix(): helper,
         wrapper_path.as_posix(): wrapper,
         audit_suite_path.as_posix(): audit_suite,
+        tonal_audit_path.as_posix(): tonal_audit,
         video_composition_audit_path.as_posix(): video_composition_audit,
         composition_audit_path.as_posix(): composition_audit,
         rendered_frame_audit_path.as_posix(): rendered_frame_audit,
