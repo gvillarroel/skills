@@ -104,13 +104,15 @@ Reject or redesign the video when any item is true:
 - The contact sheet looks like slides with labels.
 - The encoded MP4 composition audit reports weak grid coverage, weak quadrant distribution, weak opening composition, weak spatial progression, or excessive text-like component pressure.
 - The encoded MP4 composition audit reports `maxRedAreaRatio` above the threshold. Treat broad red-family surfaces in the contact sheet as a composition failure; red should read as a state/path/accent system, not as the dominant block material.
+- The source omits the colorset1 typography contract. Generated Metro HTML should declare `font-family: 'Open Sans', Arial, sans-serif`; `Segoe UI` or an unscoped default UI font stack is a style failure.
 - The opening tile is mostly empty or reserved for title text.
 - The final tile has fewer than four visible gray hierarchy levels.
 - Motion is mainly identical fade/slide entrances.
 - Camera movement is absent or only decorative even though the prompt asks for Metro video style.
 - Rounded borders, pills, soft panels, or padded boxes are visible.
 - Required Masonry output has no zero-padding measurement coverage or reports any padded module interiors.
-- Red rectangles become dominant surfaces instead of state/routing marks. For AI alternatives and similar product-choice modules, treat `maxRedRectAreaRatio > 0.10` in rendered-frame audits as a redesign signal even if other audits pass; for encoded MP4 review, treat `maxRedAreaRatio > 0.14` as a hard failure unless the prompt explicitly asks for a red-dominant warning state.
+- Red rectangles become dominant surfaces instead of state/routing marks. For AI alternatives, Guardrail, Hook, Skill, and similar product-choice or risk modules, treat `maxRedRectAreaRatio > 0.10` in rendered-frame audits as a redesign signal even if other audits pass; for encoded MP4 review, treat `maxRedAreaRatio > 0.14` as a hard failure unless the prompt explicitly asks for a red-dominant warning state.
+- Metro source keeps any nonzero rounded-corner fallback such as `rx: masonryRequired ? 0 : 14`, nonzero `ry`, or CSS `border-radius`. The rendered frame may normalize it, but the source is still off-contract.
 - Text explains the concept while geometry only decorates it.
 - Source anchors are only preserved in arrays or labels and are not bound to visible zones, mechanisms, rendered JSON source-anchor markers, and active render-state samples.
 - One large label or paragraph block dominates the frame even if total text area stays low.
