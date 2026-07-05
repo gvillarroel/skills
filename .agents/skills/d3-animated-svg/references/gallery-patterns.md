@@ -86,6 +86,14 @@ For large galleries, review every card visually before delivery. Generate screen
 
 Integrate repeated findings through shared CSS, token ramps, and a gallery-level post-render polish function before adding chart-specific tweaks. Use chart-specific code when the color encodes data meaning, such as heatmaps, density bins, vaccine-impact ramps, bivariate keys, missing-data annotations, or selected/focus states.
 
+## Styled Gallery Versions
+
+Use a separate published source such as `assets/examples/d3-animated-svg-colorset2/` when the full gallery needs a palette/style version without changing the base gallery. Load `colorset2-config.js` before the shared `gallery.js`; the shared renderer assigns short `d3-pattern-cs2-*` IDs, preserves each `d3-pattern-*` base ID in metadata, and remaps rendered SVG paint values to the tokens in `design/colorset2.yaml`.
+
+Keep the version page flat and modular: no decorative shadows, no gradient/orb backgrounds, compact card headers, and rectangular surfaces that can read as a large visual map. Validate it with `scripts/verify_colorset2_gallery.py` so every SVG exposes `data-style-version="colorset2"`, `data-color-set="colorset2"`, `data-palette-name="full-color-style"`, and no SVG paint value falls outside the colorset2 palette.
+
+Use `assets/examples/d3-animated-svg-cs1/` for the colorset1 red-neutral version. Load `cs1-config.js` before the shared `gallery.js`; the shared renderer assigns suffixed IDs such as `d3-pattern-force-network-cs1`, keeps `data-base-pattern-id="d3-pattern-force-network"`, and remaps all SVG paint values to `design/colorset1.yml`. Validate it with `scripts/verify_style_gallery.py` so every SVG exposes `data-style-version="cs1"`, `data-color-set="colorset1"`, `data-palette-name="basic-red-neutral-style"`, and only uses colors from the colorset1 palette.
+
 ## Verification
 
 For gallery updates, verify:
@@ -107,4 +115,6 @@ Use the gallery verifier for deterministic checks:
 ```powershell
 uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery.png --wait-ms 2200
 uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-mobile.png --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_colorset2_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-colorset2/index.html --expected 224 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-colorset2.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-colorset2.json --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_style_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-cs1/index.html --palette-file design/colorset1.yml --style-version cs1 --color-set colorset1 --palette-name basic-red-neutral-style --pattern-id-suffix cs1 --expected 224 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-cs1.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-cs1.json --wait-ms 2200
 ```

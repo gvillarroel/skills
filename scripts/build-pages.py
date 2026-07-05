@@ -23,6 +23,16 @@ EXAMPLE_SOURCES = {
     / "examples"
     / "ai-concept-videos",
     "d3-animated-svg": SKILLS / "d3-animated-svg" / "assets" / "examples" / "d3-animated-svg",
+    "d3-animated-svg-cs1": SKILLS
+    / "d3-animated-svg"
+    / "assets"
+    / "examples"
+    / "d3-animated-svg-cs1",
+    "d3-animated-svg-colorset2": SKILLS
+    / "d3-animated-svg"
+    / "assets"
+    / "examples"
+    / "d3-animated-svg-colorset2",
     "echarts-animated-svg": SKILLS
     / "echarts-animated-svg"
     / "assets"
@@ -74,6 +84,22 @@ PUBLISHED_EXAMPLE_SETS = [
         "href": "examples/d3-animated-svg/",
         "kind": "D3",
         "description": "A broad gallery of D3-generated SVG forms with replay controls.",
+    },
+    {
+        "id": "d3-animated-svg-cs1",
+        "source": "d3-animated-svg-cs1",
+        "title": "D3 Patterns CS1",
+        "href": "examples/d3-animated-svg-cs1/",
+        "kind": "D3 cs1",
+        "description": "The full D3 pattern catalog rendered with the colorset1 red-neutral palette and CS1-suffixed IDs.",
+    },
+    {
+        "id": "d3-animated-svg-colorset2",
+        "source": "d3-animated-svg-colorset2",
+        "title": "D3 Patterns Colorset2",
+        "href": "examples/d3-animated-svg-colorset2/",
+        "kind": "D3 colorset2",
+        "description": "The full D3 pattern catalog rendered as a colorset2-aligned version.",
     },
     {
         "id": "mermaid-svg-animated",
@@ -148,6 +174,34 @@ TEXT_SUFFIXES = {
     ".yaml",
     ".yml",
 }
+
+
+def write_favicon() -> None:
+    # A valid 1x1 transparent ICO prevents browser favicon 404s across copied example pages.
+    icon_header = b"\x00\x00\x01\x00\x01\x00"
+    icon_entry = (
+        b"\x01\x01\x00\x00"
+        + (1).to_bytes(2, "little")
+        + (32).to_bytes(2, "little")
+        + (48).to_bytes(4, "little")
+        + (22).to_bytes(4, "little")
+    )
+    bitmap_header = (
+        (40).to_bytes(4, "little")
+        + (1).to_bytes(4, "little", signed=True)
+        + (2).to_bytes(4, "little", signed=True)
+        + (1).to_bytes(2, "little")
+        + (32).to_bytes(2, "little")
+        + (0).to_bytes(4, "little")
+        + (4).to_bytes(4, "little")
+        + (0).to_bytes(4, "little", signed=True)
+        + (0).to_bytes(4, "little", signed=True)
+        + (0).to_bytes(4, "little")
+        + (0).to_bytes(4, "little")
+    )
+    transparent_pixel = b"\x00\x00\x00\x00"
+    transparency_mask = b"\x00\x00\x00\x00"
+    (DOCS / "favicon.ico").write_bytes(icon_header + icon_entry + bitmap_header + transparent_pixel + transparency_mask)
 
 
 def require_path(path: Path) -> Path:
@@ -440,6 +494,7 @@ def build_docs() -> None:
         shutil.rmtree(DOCS)
     DOCS.mkdir(parents=True)
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
+    write_favicon()
 
     copy_tree(example_source("echarts-animated-svg"), DOCS / "examples" / "echarts-animated-svg")
 
@@ -461,6 +516,22 @@ def build_docs() -> None:
     patch_file(
         DOCS / "examples" / "d3-animated-svg" / "force-beeswarm.html",
         {"./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"},
+    )
+    copy_tree(example_source("d3-animated-svg-colorset2"), DOCS / "examples" / "d3-animated-svg-colorset2")
+    patch_file(
+        DOCS / "examples" / "d3-animated-svg-colorset2" / "index.html",
+        {
+            "../d3-animated-svg/node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
+            "../d3-animated-svg/node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
+        },
+    )
+    copy_tree(example_source("d3-animated-svg-cs1"), DOCS / "examples" / "d3-animated-svg-cs1")
+    patch_file(
+        DOCS / "examples" / "d3-animated-svg-cs1" / "index.html",
+        {
+            "../d3-animated-svg/node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
+            "../d3-animated-svg/node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
+        },
     )
     copy_tree(example_source("mermaid"), DOCS / "examples" / "mermaid")
     copy_tree(example_source("mermaid-svg-animated"), DOCS / "examples" / "mermaid-svg-animated")

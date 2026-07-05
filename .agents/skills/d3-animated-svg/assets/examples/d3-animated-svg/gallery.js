@@ -6,9 +6,12 @@
     red: "#9e1b32",
     purple: "#652f6c",
     cyan: "#00ace6",
+    yellow: "#f1c319",
     gold: "#f1c319",
     ink: "#333e48",
     muted: "#696969",
+    black: "#000000",
+    white: "#ffffff",
     gray50: "#f7f7f7",
     gray100: "#e7e7e7",
     gray200: "#cfcfcf",
@@ -31,9 +34,36 @@
     greenHighlight: "#dbffcc",
     purpleHighlight: "#f9ccff",
     redHighlight: "#ffccd5",
+    error: "#e8002a",
+    warning: "#ff9633",
+    caution: "#ffd332",
+    success: "#36b300",
+    information: "#00ace6",
+    special: "#9e00b3",
     surface: "#ffffff",
     line: "#cfcfcf"
   };
+
+  const galleryStyleVersion = window.D3_GALLERY_STYLE_VERSION || document.body?.dataset?.styleVersion || "base";
+  const galleryStyleConfig = window.D3_GALLERY_STYLE_CONFIG || {};
+  if (galleryStyleConfig.paletteOverrides) {
+    Object.entries(galleryStyleConfig.paletteOverrides).forEach(([key, value]) => {
+      if (Object.hasOwn(palette, key) && typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value)) {
+        palette[key] = value.toLowerCase();
+      }
+    });
+  }
+  const isStyledGallery = galleryStyleVersion !== "base";
+  const galleryColorSet = galleryStyleConfig.colorSet || (galleryStyleVersion === "colorset2" ? "colorset2" : "base");
+  const galleryPaletteName = galleryStyleConfig.paletteName || (galleryStyleVersion === "colorset2" ? "full-color-style" : "base");
+  const galleryStyleAlignment = galleryStyleConfig.styleName || (galleryStyleVersion === "colorset2" ? "metro-minimal-tonal-motion" : null);
+  const galleryAssetBase = window.D3_GALLERY_ASSET_BASE || "";
+  const styleAllowedColors = new Set((galleryStyleConfig.allowedColors || Object.values(palette)).map(value => String(value).toLowerCase()));
+  const styleAllowedColorList = Array.from(styleAllowedColors);
+  const namedColorMap = new Map([
+    ["black", palette.black],
+    ["white", palette.white]
+  ]);
 
   const width = 560;
   const height = 420;
@@ -337,7 +367,16 @@
   function assignPatternIds() {
     const seen = new Set();
     examples.forEach(example => {
-      example.patternId = example.patternId || `d3-pattern-${example.id}`;
+      const basePatternId = example.basePatternId || example.patternId || `d3-pattern-${example.id}`;
+      example.basePatternId = basePatternId;
+      if (!isStyledGallery) {
+        example.patternId = basePatternId;
+      } else if (galleryStyleConfig.versionPatternSuffix) {
+        example.patternId = `${basePatternId}-${galleryStyleConfig.versionPatternSuffix}`;
+      } else {
+        const prefix = galleryStyleConfig.versionPatternPrefix || (galleryStyleVersion === "colorset2" ? "d3-pattern-cs2-" : `d3-pattern-${galleryStyleVersion}-`);
+        example.patternId = `${prefix}${example.id}`;
+      }
       if (!/^[a-z0-9][a-z0-9-]*$/.test(example.patternId)) {
         throw new Error(`Invalid pattern ID for ${example.id}: ${example.patternId}`);
       }
@@ -348,13 +387,20 @@
     });
   }
 
+  function assetHref(path) {
+    return `${galleryAssetBase}${path}`;
+  }
+
   function exposeExampleMetadata() {
-    window.D3_ANIMATED_SVG_EXAMPLES = examples.map(({ id, kicker, title, copy, patternId, size }) => ({
+    window.D3_ANIMATED_SVG_EXAMPLES = examples.map(({ id, kicker, title, copy, patternId, basePatternId, size }) => ({
       id,
       kicker,
       title,
       copy,
       patternId,
+      basePatternId,
+      styleVersion: galleryStyleVersion,
+      colorSet: galleryColorSet,
       size: size || "standard"
     }));
   }
@@ -369,6 +415,8 @@
       .attr("id", d => d.patternId)
       .attr("data-example", d => d.id)
       .attr("data-pattern-id", d => d.patternId)
+      .attr("data-base-pattern-id", d => d.basePatternId)
+      .attr("data-style-version", galleryStyleVersion)
       .html(d => `
         <div class="example-header">
           <div class="example-header-top">
@@ -379,11 +427,14 @@
           <p class="example-pattern-id">${d.patternId}</p>
           <p class="example-copy">${d.copy}</p>
         </div>
-        <div class="viz-frame"><svg id="${d.id}" data-pattern-id="${d.patternId}" role="img"></svg></div>
+        <div class="viz-frame"><svg id="${d.id}" data-pattern-id="${d.patternId}" data-base-pattern-id="${d.basePatternId}" data-style-version="${galleryStyleVersion}" role="img"></svg></div>
       `);
 
     d3.select("#example-count").text(examples.length);
     document.body.dataset.exampleCount = String(examples.length);
+    document.body.dataset.styleVersion = galleryStyleVersion;
+    document.body.dataset.colorSet = galleryColorSet;
+    document.body.dataset.paletteName = galleryPaletteName;
   }
 
   function prepareSvg(id, title, desc) {
@@ -392,6 +443,10 @@
     svg
       .attr("viewBox", `0 0 ${width} ${height}`)
       .attr("aria-labelledby", `${id}-title ${id}-desc`);
+    svg
+      .attr("data-style-version", galleryStyleVersion)
+      .attr("data-color-set", galleryColorSet)
+      .attr("data-base-pattern-id", `d3-pattern-${id}`);
     svg.append("title").attr("id", `${id}-title`).text(title);
     svg.append("desc").attr("id", `${id}-desc`).text(desc);
     return svg;
@@ -721,9 +776,78 @@
     return d3.scaleQuantize().domain(domain).range(range);
   }
 
-  function remapTokenColor(value) {
-    if (!value || value === "none" || value.startsWith("url(")) return value;
-    return remappedColors.get(value.toLowerCase()) || value;
+  function normalizeHexColor(value) {
+    const match = String(value).trim().toLowerCase().match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/);
+    if (!match) return null;
+    const hex = match[1];
+    if (hex.length === 3) {
+      return `#${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+    }
+    return `#${hex}`;
+  }
+
+  function channelToHex(value) {
+    const channel = Math.max(0, Math.min(255, Math.round(Number(value))));
+    return channel.toString(16).padStart(2, "0");
+  }
+
+  function normalizeColorValue(value) {
+    const raw = String(value).trim();
+    const lower = raw.toLowerCase();
+    if (namedColorMap.has(lower)) return namedColorMap.get(lower).toLowerCase();
+    const hex = normalizeHexColor(raw);
+    if (hex) return hex;
+    const rgbMatch = lower.match(/^rgba?\(([^)]+)\)$/);
+    if (!rgbMatch) return null;
+    const parts = rgbMatch[1].replace("/", " ").split(/[\s,]+/).filter(Boolean);
+    if (parts.length < 3) return null;
+    const alpha = parts.length > 3 ? Number(parts[3]) : 1;
+    if (Number.isFinite(alpha) && alpha <= 0) return "transparent";
+    return `#${channelToHex(parts[0])}${channelToHex(parts[1])}${channelToHex(parts[2])}`;
+  }
+
+  function rgbFromHex(hex) {
+    const normalized = normalizeHexColor(hex);
+    if (!normalized) return null;
+    return [
+      Number.parseInt(normalized.slice(1, 3), 16),
+      Number.parseInt(normalized.slice(3, 5), 16),
+      Number.parseInt(normalized.slice(5, 7), 16)
+    ];
+  }
+
+  function nearestStyleColor(hex) {
+    const source = rgbFromHex(hex);
+    if (!source) return hex;
+    let nearest = styleAllowedColorList[0] || hex;
+    let bestDistance = Infinity;
+    styleAllowedColorList.forEach(candidate => {
+      const target = rgbFromHex(candidate);
+      if (!target) return;
+      const distance =
+        (source[0] - target[0]) ** 2 +
+        (source[1] - target[1]) ** 2 +
+        (source[2] - target[2]) ** 2;
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        nearest = candidate;
+      }
+    });
+    return nearest;
+  }
+
+  function remapTokenColor(value, forceStylePalette = false) {
+    if (!value) return value;
+    const raw = String(value).trim();
+    const lower = raw.toLowerCase();
+    if (lower === "none" || lower === "transparent" || lower === "currentcolor" || lower.startsWith("url(")) return raw;
+    const direct = remappedColors.get(lower);
+    if (direct) return direct;
+    const normalized = normalizeColorValue(raw);
+    if (!normalized) return raw;
+    const remapped = remappedColors.get(normalized) || normalized;
+    if (!forceStylePalette || remapped === "transparent" || styleAllowedColors.has(remapped)) return remapped;
+    return nearestStyleColor(remapped);
   }
 
   function setReadableText(selection, fallback = palette.ink) {
@@ -740,14 +864,26 @@
 
   function polishSvg(id) {
     const svg = d3.select(`#${id}`);
+    svg
+      .attr("data-style-version", galleryStyleVersion)
+      .attr("data-color-set", galleryColorSet)
+      .attr("data-palette-name", galleryPaletteName)
+      .attr("data-style-alignment", galleryStyleAlignment);
 
     svg.selectAll("*").each(function () {
       const node = d3.select(this);
-      ["fill", "stroke"].forEach(attr => {
+      ["fill", "stroke", "stop-color", "flood-color"].forEach(attr => {
         const current = node.attr(attr);
-        const next = remapTokenColor(current);
+        const next = remapTokenColor(current, isStyledGallery);
         if (next !== current) node.attr(attr, next);
       });
+      if (isStyledGallery) {
+        const styleText = node.attr("style");
+        if (styleText) {
+          const nextStyle = styleText.replace(/#[0-9a-fA-F]{3,6}\b|rgba?\([^)]+\)|\b(?:black|white)\b/g, match => remapTokenColor(match, true));
+          if (nextStyle !== styleText) node.attr("style", nextStyle);
+        }
+      }
     });
 
     svg.selectAll(".axis path, .axis line").attr("stroke", palette.gray400);
@@ -2323,7 +2459,7 @@
       .attr("rx", 8);
 
     svg.append("image")
-      .attr("href", "assets/agent-loop-reference.png")
+      .attr("href", assetHref("assets/agent-loop-reference.png"))
       .attr("x", image.x)
       .attr("y", image.y)
       .attr("width", image.w)

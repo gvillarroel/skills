@@ -65,6 +65,7 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-pattern-calendar` | Heatmap | Calendar Heatmap | `references/patterns/calendar.md` |
 | `d3-pattern-lollipop` | Ranking | Lollipop | `references/patterns/lollipop.md` |
 | `d3-pattern-circular-bar` | Ranking | Circular Barplot | `references/patterns/circular-bar.md` |
+| `d3-pattern-rotating-dot-rings` | Radial pattern | Rotating Dot Rings | `references/patterns/rotating-dot-rings.md` |
 | `d3-pattern-radar` | Multivariate | Radar Profile | `references/patterns/radar.md` |
 | `d3-pattern-bump` | Temporal | Bump Chart | `references/patterns/bump.md` |
 | `d3-pattern-slope` | Temporal | Slope Chart | `references/patterns/slope.md` |
