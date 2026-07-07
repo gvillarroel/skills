@@ -1,7 +1,7 @@
 {
   "ok": true,
-  "colorset": "colorset2",
-  "theme": "assets/themes/cs2.puml",
+  "colorset": "colorset1",
+  "theme": "assets/themes/cs1.puml",
   "engine": "kroki",
   "serverUrl": null,
   "krokiUrl": "https://kroki.io",
@@ -24,7 +24,7 @@
         {
           "format": "svg",
           "path": "svg/activity.svg",
-          "size_bytes": 6745,
+          "size_bytes": 6673,
           "engine": "kroki"
         }
       ]
@@ -40,7 +40,7 @@
         {
           "format": "svg",
           "path": "svg/archimate.svg",
-          "size_bytes": 4191,
+          "size_bytes": 4123,
           "engine": "kroki"
         }
       ]
@@ -56,7 +56,7 @@
         {
           "format": "svg",
           "path": "svg/chen.svg",
-          "size_bytes": 5968,
+          "size_bytes": 5900,
           "engine": "kroki"
         }
       ]
@@ -72,7 +72,7 @@
         {
           "format": "svg",
           "path": "svg/class.svg",
-          "size_bytes": 5871,
+          "size_bytes": 5803,
           "engine": "kroki"
         }
       ]
@@ -88,7 +88,7 @@
         {
           "format": "svg",
           "path": "svg/component.svg",
-          "size_bytes": 6513,
+          "size_bytes": 6445,
           "engine": "kroki"
         }
       ]
@@ -104,7 +104,7 @@
         {
           "format": "svg",
           "path": "svg/deployment.svg",
-          "size_bytes": 7518,
+          "size_bytes": 7446,
           "engine": "kroki"
         }
       ]
@@ -120,7 +120,7 @@
         {
           "format": "svg",
           "path": "svg/ebnf.svg",
-          "size_bytes": 8000,
+          "size_bytes": 7928,
           "engine": "kroki"
         }
       ]
@@ -136,7 +136,7 @@
         {
           "format": "svg",
           "path": "svg/gantt.svg",
-          "size_bytes": 9465,
+          "size_bytes": 9397,
           "engine": "kroki"
         }
       ]
@@ -152,7 +152,7 @@
         {
           "format": "svg",
           "path": "svg/ie.svg",
-          "size_bytes": 5850,
+          "size_bytes": 5782,
           "engine": "kroki"
         }
       ]
@@ -168,7 +168,7 @@
         {
           "format": "svg",
           "path": "svg/json.svg",
-          "size_bytes": 4427,
+          "size_bytes": 4355,
           "engine": "kroki"
         }
       ]
@@ -184,7 +184,7 @@
         {
           "format": "svg",
           "path": "svg/mindmap.svg",
-          "size_bytes": 5236,
+          "size_bytes": 5164,
           "engine": "kroki"
         }
       ]
@@ -200,7 +200,7 @@
         {
           "format": "svg",
           "path": "svg/nwdiag.svg",
-          "size_bytes": 4356,
+          "size_bytes": 4284,
           "engine": "kroki"
         }
       ]
@@ -216,7 +216,7 @@
         {
           "format": "svg",
           "path": "svg/object.svg",
-          "size_bytes": 5189,
+          "size_bytes": 5121,
           "engine": "kroki"
         }
       ]
@@ -232,7 +232,7 @@
         {
           "format": "svg",
           "path": "svg/regex.svg",
-          "size_bytes": 7549,
+          "size_bytes": 7485,
           "engine": "kroki"
         }
       ]
@@ -248,7 +248,7 @@
         {
           "format": "svg",
           "path": "svg/salt.svg",
-          "size_bytes": 3367,
+          "size_bytes": 3295,
           "engine": "kroki"
         }
       ]
@@ -264,7 +264,7 @@
         {
           "format": "svg",
           "path": "svg/sequence.svg",
-          "size_bytes": 10923,
+          "size_bytes": 10851,
           "engine": "kroki"
         }
       ]
@@ -280,7 +280,7 @@
         {
           "format": "svg",
           "path": "svg/state.svg",
-          "size_bytes": 6550,
+          "size_bytes": 6478,
           "engine": "kroki"
         }
       ]
@@ -296,7 +296,7 @@
         {
           "format": "svg",
           "path": "svg/timing.svg",
-          "size_bytes": 6275,
+          "size_bytes": 6207,
           "engine": "kroki"
         }
       ]
@@ -312,7 +312,7 @@
         {
           "format": "svg",
           "path": "svg/usecase.svg",
-          "size_bytes": 5725,
+          "size_bytes": 5653,
           "engine": "kroki"
         }
       ]
@@ -328,7 +328,7 @@
         {
           "format": "svg",
           "path": "svg/wbs.svg",
-          "size_bytes": 5616,
+          "size_bytes": 5544,
           "engine": "kroki"
         }
       ]
@@ -344,7 +344,7 @@
         {
           "format": "svg",
           "path": "svg/yaml.svg",
-          "size_bytes": 8543,
+          "size_bytes": 8471,
           "engine": "kroki"
         }
       ]

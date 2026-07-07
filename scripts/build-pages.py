@@ -71,6 +71,11 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "plantuml-colorset-renderer",
+    "plantuml-colorset-renderer-cs1": SKILLS
+    / "plantuml-colorset-renderer"
+    / "assets"
+    / "examples"
+    / "plantuml-colorset-renderer-cs1",
     "slidev-animejs": SKILLS / "slidev-animejs" / "assets" / "examples" / "slidev-animejs",
     "slidev-echarts": SKILLS / "slidev-echarts" / "assets" / "examples" / "slidev-echarts",
     "threejs-animated-3d": SKILLS
@@ -138,10 +143,18 @@ PUBLISHED_EXAMPLE_SETS = [
     {
         "id": "plantuml-colorset-renderer",
         "source": "plantuml-colorset-renderer",
-        "title": "PlantUML Colorset Renderer",
+        "title": "PlantUML Colorset2 Renderer",
         "href": "examples/plantuml-colorset-renderer/",
-        "kind": "PlantUML",
-        "description": "CS2-themed PlantUML coverage examples with SVG and PNG render validation.",
+        "kind": "PlantUML colorset2",
+        "description": "Colorset2 PlantUML coverage examples with inline SVG cards and replayable reveal motion.",
+    },
+    {
+        "id": "plantuml-colorset-renderer-cs1",
+        "source": "plantuml-colorset-renderer-cs1",
+        "title": "PlantUML CS1 Renderer",
+        "href": "examples/plantuml-colorset-renderer-cs1/",
+        "kind": "PlantUML cs1",
+        "description": "Colorset1 red-neutral PlantUML coverage examples with CS1-suffixed SVG gallery item IDs.",
     },
     {
         "id": "threejs-animated-3d",
@@ -601,6 +614,7 @@ def build_docs() -> None:
     copy_tree(example_source("mermaid-svg-animated"), DOCS / "examples" / "mermaid-svg-animated")
     copy_tree(example_source("mermaid-animation-directives"), DOCS / "examples" / "mermaid-animation-directives")
     copy_tree(example_source("plantuml-colorset-renderer"), DOCS / "examples" / "plantuml-colorset-renderer")
+    copy_tree(example_source("plantuml-colorset-renderer-cs1"), DOCS / "examples" / "plantuml-colorset-renderer-cs1")
     copy_tree(
         example_source("mermaid-directive-frames"),
         DOCS / "examples" / "playwright" / "mermaid-animation-directives",

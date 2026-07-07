@@ -23,6 +23,10 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 SKILL_DIR = SCRIPT_DIR.parent
 DEFAULT_THEME = SKILL_DIR / "assets" / "themes" / "cs2.puml"
+THEME_BY_COLORSET = {
+    "colorset1": SKILL_DIR / "assets" / "themes" / "cs1.puml",
+    "colorset2": DEFAULT_THEME,
+}
 DEFAULT_SERVER_URL = "https://www.plantuml.com/plantuml"
 DEFAULT_KROKI_URL = "https://kroki.io"
 PLANTUML_SUFFIXES = {".puml", ".plantuml", ".pu"}
@@ -73,7 +77,7 @@ def first_start_directive(source: str) -> str:
 
 
 def inject_theme(source: str, theme: str) -> str:
-    if "plantuml-colorset-renderer: cs2 custom theme" in source:
+    if "plantuml-colorset-renderer:" in source:
         return source
     lines = source.splitlines()
     for index, line in enumerate(lines):
@@ -261,11 +265,12 @@ def write_report(report_path: Path, report: dict[str, object]) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Render PlantUML sources to SVG and PNG with the bundled CS2 theme.")
+    parser = argparse.ArgumentParser(description="Render PlantUML sources to SVG and PNG with bundled colorset themes.")
     parser.add_argument("input", type=Path, help="Directory containing .puml, .plantuml, or .pu files.")
     parser.add_argument("--output", type=Path, required=True, help="Output directory for rendered files.")
     parser.add_argument("--format", choices=sorted(SUPPORTED_FORMATS), action="append", dest="formats", help="Output format. May be repeated.")
-    parser.add_argument("--theme", type=Path, default=DEFAULT_THEME, help="PlantUML theme file to inject after @start.")
+    parser.add_argument("--colorset", choices=sorted(THEME_BY_COLORSET), help="Bundled colorset theme to inject. Default: colorset2.")
+    parser.add_argument("--theme", type=Path, help="Custom PlantUML theme file to inject after @start.")
     parser.add_argument("--engine", choices=["auto", "kroki", "server", "cli"], default="auto", help="Render engine. Default: auto.")
     parser.add_argument("--server-url", default=DEFAULT_SERVER_URL, help="PlantUML Server base URL for server rendering.")
     parser.add_argument("--kroki-url", default=DEFAULT_KROKI_URL, help="Kroki base URL for Kroki PlantUML rendering.")
@@ -283,7 +288,8 @@ def main() -> int:
     if not input_dir.exists() or not input_dir.is_dir():
         print(f"Input directory does not exist: {input_dir}", file=sys.stderr)
         return 2
-    theme_path = args.theme.resolve()
+    color_set = args.colorset or "colorset2"
+    theme_path = (args.theme or THEME_BY_COLORSET[color_set]).resolve()
     if not theme_path.exists():
         print(f"Theme file does not exist: {theme_path}", file=sys.stderr)
         return 2
@@ -310,6 +316,7 @@ def main() -> int:
     rendered_output_count = sum(len(result.outputs) for result in results)
     report = {
         "ok": not failed and bool(sources),
+        "colorset": color_set if not args.theme else args.colorset or "custom",
         "theme": relative(theme_path, SKILL_DIR),
         "engine": engine,
         "serverUrl": args.server_url if engine == "server" else None,
@@ -333,7 +340,7 @@ def main() -> int:
         ],
     }
     write_report(args.report, report)
-    print(json.dumps({key: report[key] for key in ("ok", "sourceDiagramCount", "renderedOutputCount", "failedDiagramCount")}, indent=2))
+    print(json.dumps({key: report[key] for key in ("ok", "colorset", "sourceDiagramCount", "renderedOutputCount", "failedDiagramCount")}, indent=2))
     return 0 if report["ok"] else 1
 
 
