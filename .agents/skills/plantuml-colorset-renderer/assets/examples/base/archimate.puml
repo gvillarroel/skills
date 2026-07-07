@@ -1,0 +1,8 @@
+@startuml
+title ArchiMate
+archimate #Technology "API Gateway" as gateway
+archimate #Application "Order Service" as service
+archimate #Business "Customer" as customer
+customer --> gateway : requests
+gateway --> service : routes
+@enduml

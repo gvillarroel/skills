@@ -1,0 +1,13 @@
+@startuml
+title Sequence
+actor User
+participant "Web App" as Web
+participant "API" as API
+database "Orders" as DB
+User -> Web : submit order
+Web -> API : POST /orders
+API -> DB : insert order
+DB --> API : order id
+API --> Web : accepted
+Web --> User : confirmation
+@enduml

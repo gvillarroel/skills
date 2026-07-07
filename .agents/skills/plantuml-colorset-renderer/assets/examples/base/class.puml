@@ -1,0 +1,11 @@
+@startuml
+title Class
+class Order {
+  +id: string
+  +total(): Money
+}
+class Customer {
+  +email: string
+}
+Customer "1" -- "many" Order : places
+@enduml

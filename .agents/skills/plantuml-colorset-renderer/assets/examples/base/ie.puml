@@ -1,0 +1,14 @@
+@startuml
+title Information Engineering
+entity CUSTOMER {
+  * id : UUID
+  --
+  * email : text
+}
+entity ORDER {
+  * id : UUID
+  --
+  total : decimal
+}
+CUSTOMER ||--o{ ORDER : places
+@enduml

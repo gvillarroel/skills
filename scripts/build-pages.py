@@ -61,6 +61,16 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "mermaid-svg-animated",
+    "plantuml-colorset-renderer-base": SKILLS
+    / "plantuml-colorset-renderer"
+    / "assets"
+    / "examples"
+    / "base",
+    "plantuml-colorset-renderer": SKILLS
+    / "plantuml-colorset-renderer"
+    / "assets"
+    / "examples"
+    / "plantuml-colorset-renderer",
     "slidev-animejs": SKILLS / "slidev-animejs" / "assets" / "examples" / "slidev-animejs",
     "slidev-echarts": SKILLS / "slidev-echarts" / "assets" / "examples" / "slidev-echarts",
     "threejs-animated-3d": SKILLS
@@ -74,6 +84,7 @@ UNLISTED_EXAMPLE_SOURCES = {
     "mermaid",
     "mermaid-directive-frames",
     "mermaid-colorset-styler-base",
+    "plantuml-colorset-renderer-base",
 }
 PUBLISHED_EXAMPLE_SETS = [
     {
@@ -123,6 +134,14 @@ PUBLISHED_EXAMPLE_SETS = [
         "href": "examples/mermaid-animation-directives/",
         "kind": "Directive demos",
         "description": "Generated directive examples with animated, static, and inspected frames.",
+    },
+    {
+        "id": "plantuml-colorset-renderer",
+        "source": "plantuml-colorset-renderer",
+        "title": "PlantUML Colorset Renderer",
+        "href": "examples/plantuml-colorset-renderer/",
+        "kind": "PlantUML",
+        "description": "CS2-themed PlantUML coverage examples with SVG and PNG render validation.",
     },
     {
         "id": "threejs-animated-3d",
@@ -581,6 +600,7 @@ def build_docs() -> None:
     copy_tree(example_source("mermaid"), DOCS / "examples" / "mermaid")
     copy_tree(example_source("mermaid-svg-animated"), DOCS / "examples" / "mermaid-svg-animated")
     copy_tree(example_source("mermaid-animation-directives"), DOCS / "examples" / "mermaid-animation-directives")
+    copy_tree(example_source("plantuml-colorset-renderer"), DOCS / "examples" / "plantuml-colorset-renderer")
     copy_tree(
         example_source("mermaid-directive-frames"),
         DOCS / "examples" / "playwright" / "mermaid-animation-directives",
