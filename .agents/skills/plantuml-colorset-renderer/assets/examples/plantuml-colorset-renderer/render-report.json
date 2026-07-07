@@ -1,0 +1,352 @@
+{
+  "ok": true,
+  "theme": "assets/themes/cs2.puml",
+  "engine": "kroki",
+  "serverUrl": null,
+  "krokiUrl": "https://kroki.io",
+  "formats": [
+    "svg"
+  ],
+  "sourceDiagramCount": 21,
+  "renderedDiagramCount": 21,
+  "renderedOutputCount": 21,
+  "failedDiagramCount": 0,
+  "results": [
+    {
+      "source": "activity.puml",
+      "diagramId": "activity",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/activity.svg",
+          "size_bytes": 6745,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "archimate.puml",
+      "diagramId": "archimate",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/archimate.svg",
+          "size_bytes": 4191,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "chen.puml",
+      "diagramId": "chen",
+      "startDirective": "@startchen",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/chen.svg",
+          "size_bytes": 5968,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "class.puml",
+      "diagramId": "class",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/class.svg",
+          "size_bytes": 5871,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "component.puml",
+      "diagramId": "component",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/component.svg",
+          "size_bytes": 6513,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "deployment.puml",
+      "diagramId": "deployment",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/deployment.svg",
+          "size_bytes": 7518,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "ebnf.puml",
+      "diagramId": "ebnf",
+      "startDirective": "@startebnf",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/ebnf.svg",
+          "size_bytes": 8000,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "gantt.puml",
+      "diagramId": "gantt",
+      "startDirective": "@startgantt",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/gantt.svg",
+          "size_bytes": 9465,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "ie.puml",
+      "diagramId": "ie",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/ie.svg",
+          "size_bytes": 5850,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "json.puml",
+      "diagramId": "json",
+      "startDirective": "@startjson",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/json.svg",
+          "size_bytes": 4427,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "mindmap.puml",
+      "diagramId": "mindmap",
+      "startDirective": "@startmindmap",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/mindmap.svg",
+          "size_bytes": 5236,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "nwdiag.puml",
+      "diagramId": "nwdiag",
+      "startDirective": "@startnwdiag",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/nwdiag.svg",
+          "size_bytes": 4356,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "object.puml",
+      "diagramId": "object",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/object.svg",
+          "size_bytes": 5189,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "regex.puml",
+      "diagramId": "regex",
+      "startDirective": "@startregex",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/regex.svg",
+          "size_bytes": 7549,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "salt.puml",
+      "diagramId": "salt",
+      "startDirective": "@startsalt",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/salt.svg",
+          "size_bytes": 3367,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "sequence.puml",
+      "diagramId": "sequence",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/sequence.svg",
+          "size_bytes": 10923,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "state.puml",
+      "diagramId": "state",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/state.svg",
+          "size_bytes": 6550,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "timing.puml",
+      "diagramId": "timing",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/timing.svg",
+          "size_bytes": 6275,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "usecase.puml",
+      "diagramId": "usecase",
+      "startDirective": "@startuml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/usecase.svg",
+          "size_bytes": 5725,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "wbs.puml",
+      "diagramId": "wbs",
+      "startDirective": "@startwbs",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/wbs.svg",
+          "size_bytes": 5616,
+          "engine": "kroki"
+        }
+      ]
+    },
+    {
+      "source": "yaml.puml",
+      "diagramId": "yaml",
+      "startDirective": "@startyaml",
+      "themedSource": null,
+      "ok": true,
+      "error": null,
+      "outputs": [
+        {
+          "format": "svg",
+          "path": "svg/yaml.svg",
+          "size_bytes": 8543,
+          "engine": "kroki"
+        }
+      ]
+    }
+  ]
+}
