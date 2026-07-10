@@ -13,10 +13,12 @@ Prefer local rendering for private diagrams. Use a remote fallback such as Kroki
 
 ## Workflow
 
-1. Read `references/diagram-types.md` when the task asks which PlantUML diagram types are covered or when adding examples.
+1. Read `references/diagram-types.md` and its machine-readable source `references/diagram-types.json` when the task asks which PlantUML diagram types are covered or when maintaining examples.
 2. Run `scripts/render_plantuml_directory.py` against the requested directory with `--colorset colorset2` or `--colorset colorset1`, `--format svg --format png`, and a JSON report.
-3. Inspect the report. Confirm `ok` is `true`, `renderedDiagramCount` matches the expected source count, and both SVG and PNG paths are present for each diagram.
-4. If maintaining this skill, render the bundled examples and review the report for all covered diagram types.
+3. Inspect the report. Confirm `ok` is `true`, failures are zero, and each result has the requested or capability-declared formats.
+4. If maintaining this skill, supply `--coverage-manifest references/diagram-types.json`. Validate exact family and fixture sets instead of relying on a count.
+
+Normal user rendering does not load the coverage manifest. Ditaa, standalone AsciiMath, and standalone LaTeX still bypass theme injection because adding theme text would corrupt or be ignored by those syntaxes.
 
 ## Commands
 
@@ -35,13 +37,19 @@ uv run --script .agents/skills/plantuml-colorset-renderer/scripts/render_plantum
 Render the bundled coverage examples when maintaining the skill:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py .agents/skills/plantuml-colorset-renderer/assets/examples/base --output projects/plantuml-colorset-renderer/artifacts/examples --format svg --format png --report projects/plantuml-colorset-renderer/artifacts/examples/report.json
+uv run --script .agents/skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py .agents/skills/plantuml-colorset-renderer/assets/examples/base --output projects/plantuml-colorset-renderer/artifacts/examples --format svg --format png --coverage-manifest .agents/skills/plantuml-colorset-renderer/references/diagram-types.json --publication-only --report projects/plantuml-colorset-renderer/artifacts/examples/report.json
 ```
 
 Validate a render report and artifacts:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/validate_plantuml_render_report.py --report projects/plantuml-colorset-renderer/artifacts/examples/report.json --output projects/plantuml-colorset-renderer/artifacts/examples --expected-diagrams 21 --expect-format svg --expect-format png --colorset colorset2
+uv run --script .agents/skills/plantuml-colorset-renderer/scripts/validate_plantuml_render_report.py --report projects/plantuml-colorset-renderer/artifacts/examples/report.json --output projects/plantuml-colorset-renderer/artifacts/examples --colorset colorset2 --coverage-manifest .agents/skills/plantuml-colorset-renderer/references/diagram-types.json
+```
+
+Validate the frozen manifest, fixtures, reports, and published galleries:
+
+```powershell
+uv run --script .agents/skills/plantuml-colorset-renderer/scripts/validate_plantuml_coverage.py --fixtures .agents/skills/plantuml-colorset-renderer/assets/examples/base --report .agents/skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/render-report.json --report .agents/skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/render-report.json --gallery .agents/skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer --gallery .agents/skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1
 ```
 
 Use a private/local PlantUML endpoint instead of the public server:
@@ -82,7 +90,7 @@ Use `assets/themes/cs1.puml` for the colorset1 red-neutral palette:
 - Red highlight: `#ffccd5`
 - Neutral ink and grays: `#333e48`, `#696969`, `#9c9c9c`, `#cfcfcf`, `#e7e7e7`
 
-Do not add semantic classes or labels to user diagrams unless the user asks. The renderer injects the theme in memory after the `@start...` line and leaves the original files unchanged unless `--write-themed` is passed.
+Do not add semantic classes or labels to user diagrams unless the user asks. The renderer injects the theme in memory after compatible `@start...` lines and leaves the original files unchanged unless `--write-themed` is passed. It never injects theme text into `@startditaa`, `@startmath`, or `@startlatex`. Kroki Ditaa requests use the `ditaa` route.
 
 ## Output Checks
 
@@ -90,7 +98,8 @@ After rendering, verify:
 
 - `ok` is `true` in the report.
 - `failedDiagramCount` is `0`.
-- Each diagram result has one `.svg` and one `.png` output when both formats were requested.
+- Each arbitrary diagram result has the requested outputs. Coverage-mode fixtures have the exact formats declared in `diagram-types.json`; Ditaa is PNG-only.
+- Coverage reports contain all 28 family IDs and all 29 fixture IDs exactly once, with Chronology recorded as `expected-unavailable` and no artifact.
 - SVG outputs contain `<svg` and expected colorset tokens such as `#9e1b32`, `#007298`, or `#e77204` for colorset2, or `#9e1b32`, `#6d1222`, and `#ffccd5` for colorset1.
 - PNG outputs are non-empty binary files.
 - For private source, the report uses a local endpoint or local PlantUML command rather than a public remote service.

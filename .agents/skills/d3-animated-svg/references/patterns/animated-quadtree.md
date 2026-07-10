@@ -32,8 +32,15 @@ function renderAnimatedQuadtree() {
       cells.push({ x0, y0, x1, y1, depth: Math.round(Math.log2(plot.w / Math.max(1, x1 - x0))) });
       return false;
     });
+    const visibleCells = cells.map(cell => ({
+      ...cell,
+      x0: Math.max(plot.x, cell.x0),
+      y0: Math.max(plot.y, cell.y0),
+      x1: Math.min(plot.x + plot.w, cell.x1),
+      y1: Math.min(plot.y + plot.h, cell.y1)
+    })).filter(cell => cell.x1 > cell.x0 && cell.y1 > cell.y0);
     svg.append("rect").attr("x", plot.x).attr("y", plot.y).attr("width", plot.w).attr("height", plot.h).attr("fill", "#ffffff").attr("stroke", palette.line);
-    const rects = svg.append("g").selectAll("rect").data(cells).join("rect")
+    const rects = svg.append("g").selectAll("rect").data(visibleCells).join("rect")
       .attr("x", d => d.x0).attr("y", d => d.y0).attr("width", d => d.x1 - d.x0).attr("height", d => d.y1 - d.y0)
       .attr("fill", "none").attr("stroke", d => d.depth > 2 ? palette.blue : palette.gray300).attr("stroke-opacity", d => .25 + Math.min(d.depth, 5) * .08).attr("stroke-width", 1);
     rects.each(function (_, i) {

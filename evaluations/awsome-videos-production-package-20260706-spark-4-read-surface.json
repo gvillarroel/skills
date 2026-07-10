@@ -1,0 +1,214 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 9,
+    "bash": 4,
+    "write": 2,
+    "edit": 1
+  },
+  "paths": [
+    {
+      "path": "outputs/queue-brief.md",
+      "calls": 5,
+      "resultBytes": 12648
+    },
+    {
+      "path": "outputs/queue-evaluation.md",
+      "calls": 2,
+      "resultBytes": 1199
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1691
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 4770
+    },
+    {
+      "path": "skills/awsome-videos/references/evaluation-rubric.md",
+      "calls": 1,
+      "resultBytes": 3039
+    },
+    {
+      "path": "outputs/queue-brief-validation.json",
+      "calls": 1,
+      "resultBytes": 247
+    },
+    {
+      "path": "outputs/smoke-video-validation.json",
+      "calls": 1,
+      "resultBytes": 597
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/queue-brief.md",
+      "calls": 3,
+      "resultBytes": 12648
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1691
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 4770
+    },
+    {
+      "path": "skills/awsome-videos/references/evaluation-rubric.md",
+      "calls": 1,
+      "resultBytes": 3039
+    },
+    {
+      "path": "outputs/queue-brief-validation.json",
+      "calls": 1,
+      "resultBytes": 247
+    },
+    {
+      "path": "outputs/smoke-video-validation.json",
+      "calls": 1,
+      "resultBytes": 597
+    },
+    {
+      "path": "outputs/queue-evaluation.md",
+      "calls": 1,
+      "resultBytes": 1199
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1691
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/awsome-videos/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4770
+    },
+    {
+      "line": 40,
+      "tool": "read",
+      "path": "skills/awsome-videos/references/evaluation-rubric.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3039
+    },
+    {
+      "line": 55,
+      "tool": "bash",
+      "path": null,
+      "command": "pwd && mkdir -p outputs && ls outputs",
+      "isError": false,
+      "resultBytes": 152
+    },
+    {
+      "line": 68,
+      "tool": "write",
+      "path": "outputs/queue-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 98
+    },
+    {
+      "line": 81,
+      "tool": "read",
+      "path": "outputs/queue-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5595
+    },
+    {
+      "line": 94,
+      "tool": "edit",
+      "path": "outputs/queue-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1253
+    },
+    {
+      "line": 107,
+      "tool": "write",
+      "path": "outputs/queue-evaluation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 103
+    },
+    {
+      "line": 124,
+      "tool": "bash",
+      "path": null,
+      "command": "ffmpeg -y -f lavfi -i testsrc=size=1280x720:rate=30:duration=2 -f lavfi -i sine=frequency=440:duration=2 -c:v libx264 -pix_fmt yuv420p -c:a aac -shortest outputs/smoke.mp4",
+      "isError": false,
+      "resultBytes": 6091
+    },
+    {
+      "line": 138,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_brief.py outputs/queue-brief.md --json > outputs/queue-brief-validation.json",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 152,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_artifact.py outputs/smoke.mp4 --expect-width 1280 --expect-height 720 --expect-fps 30 --expect-duration 2 --duration-tolerance 0.5 --require-audio --min-size-bytes 1 --json > outputs/",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 165,
+      "tool": "read",
+      "path": "outputs/queue-brief-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 247
+    },
+    {
+      "line": 178,
+      "tool": "read",
+      "path": "outputs/smoke-video-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 597
+    },
+    {
+      "line": 191,
+      "tool": "read",
+      "path": "outputs/queue-brief.md",
+      "command": null,
+      "isError": true,
+      "resultBytes": 107
+    },
+    {
+      "line": 204,
+      "tool": "read",
+      "path": "outputs/queue-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5595
+    },
+    {
+      "line": 217,
+      "tool": "read",
+      "path": "outputs/queue-evaluation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1096
+    }
+  ],
+  "findings": []
+}

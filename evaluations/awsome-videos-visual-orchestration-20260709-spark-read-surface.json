@@ -1,0 +1,273 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f49c8-3e38-79d1-a7ec-51a861ca1b85",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\awsome-videos-visual-orchestration-20260709-spark-1-json\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 6
+  },
+  "providers": {
+    "openai-codex": 6
+  },
+  "usageTotals": {
+    "input": 30059,
+    "output": 4434,
+    "cacheRead": 36096,
+    "cacheWrite": 0,
+    "totalTokens": 70589
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 9,
+    "bash": 3
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2784
+    },
+    {
+      "path": "outputs/cache-stampede/source/asset-manifest.json",
+      "calls": 1,
+      "resultBytes": 16353
+    },
+    {
+      "path": "outputs/cache-stampede/source/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 50094
+    },
+    {
+      "path": "outputs/visual-contract-stdout.json",
+      "calls": 1,
+      "resultBytes": 3193
+    },
+    {
+      "path": "outputs/visual-contract-structural.json",
+      "calls": 1,
+      "resultBytes": 2999
+    },
+    {
+      "path": "outputs/cache-stampede/src/index.html",
+      "calls": 1,
+      "resultBytes": 18044
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1,
+      "resultBytes": 2376
+    },
+    {
+      "path": "outputs/cache-stampede/artifacts/reviews/visual-review.json",
+      "calls": 1,
+      "resultBytes": 6096
+    },
+    {
+      "path": "outputs/cache-stampede/source/package-manifest.json",
+      "calls": 1,
+      "resultBytes": 10619
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2784
+    },
+    {
+      "path": "outputs/cache-stampede/source/asset-manifest.json",
+      "calls": 1,
+      "resultBytes": 16353
+    },
+    {
+      "path": "outputs/cache-stampede/source/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 50094
+    },
+    {
+      "path": "outputs/visual-contract-stdout.json",
+      "calls": 1,
+      "resultBytes": 3193
+    },
+    {
+      "path": "outputs/visual-contract-structural.json",
+      "calls": 1,
+      "resultBytes": 2999
+    },
+    {
+      "path": "outputs/cache-stampede/src/index.html",
+      "calls": 1,
+      "resultBytes": 18044
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1,
+      "resultBytes": 2376
+    },
+    {
+      "path": "outputs/cache-stampede/artifacts/reviews/visual-review.json",
+      "calls": 1,
+      "resultBytes": 6096
+    },
+    {
+      "path": "outputs/cache-stampede/source/package-manifest.json",
+      "calls": 1,
+      "resultBytes": 10619
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/source/asset-manifest.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/source/composition-plan.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/visual-contract-stdout.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/visual-contract-structural.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/src/index.html",
+      "calls": 1
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/artifacts/reviews/visual-review.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/source/package-manifest.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 112558,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2784
+    },
+    {
+      "line": 28,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/awsome-videos/scripts/scaffold_production_package.py outputs/cache-stampede --title \"How Cache Stampedes Happen\" --promise \"See one expired hot key turn into an origin overload, then watc",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 43,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/check_visual_contract.py --asset-manifest outputs/cache-stampede/source/asset-manifest.json --composition-plan outputs/cache-stampede/source/composition-plan.json --brief outputs/cache-",
+      "isError": false,
+      "resultBytes": 73
+    },
+    {
+      "line": 84,
+      "tool": "read",
+      "path": "outputs/cache-stampede/source/asset-manifest.json",
+      "policyPath": "outputs/cache-stampede/source/asset-manifest.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 16353
+    },
+    {
+      "line": 85,
+      "tool": "read",
+      "path": "outputs/cache-stampede/source/composition-plan.json",
+      "policyPath": "outputs/cache-stampede/source/composition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 50094
+    },
+    {
+      "line": 86,
+      "tool": "read",
+      "path": "outputs/visual-contract-stdout.json",
+      "policyPath": "outputs/visual-contract-stdout.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3193
+    },
+    {
+      "line": 87,
+      "tool": "read",
+      "path": "outputs/visual-contract-structural.json",
+      "policyPath": "outputs/visual-contract-structural.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2999
+    },
+    {
+      "line": 88,
+      "tool": "read",
+      "path": "outputs/cache-stampede/src/index.html",
+      "policyPath": "outputs/cache-stampede/src/index.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 18044
+    },
+    {
+      "line": 89,
+      "tool": "read",
+      "path": "outputs/scaffold-result.json",
+      "policyPath": "outputs/scaffold-result.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2376
+    },
+    {
+      "line": 90,
+      "tool": "read",
+      "path": "outputs/cache-stampede/artifacts/reviews/visual-review.json",
+      "policyPath": "outputs/cache-stampede/artifacts/reviews/visual-review.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6096
+    },
+    {
+      "line": 91,
+      "tool": "read",
+      "path": "outputs/cache-stampede/source/package-manifest.json",
+      "policyPath": "outputs/cache-stampede/source/package-manifest.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10619
+    },
+    {
+      "line": 121,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'for f in outputs/scaffold-result.json outputs/visual-contract-structural.json outputs/visual-contract-stdout.json outputs/cache-stampede/source/asset-manifest.json outputs/cache-stampede/source/composition-plan.json outputs/cache-",
+      "isError": false,
+      "resultBytes": 1243
+    }
+  ],
+  "findings": []
+}

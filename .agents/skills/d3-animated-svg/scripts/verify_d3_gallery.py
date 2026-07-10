@@ -9,6 +9,8 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
+import math
 import re
 import sys
 from pathlib import Path
@@ -36,6 +38,25 @@ def source_to_url(source: str) -> str:
     return path.as_uri()
 
 
+def noaa_subsolar_tuple(timestamp_text: str) -> tuple[float, float, float]:
+    timestamp = datetime.fromisoformat(timestamp_text.replace("Z", "+00:00"))
+    day_of_year = timestamp.timetuple().tm_yday
+    days_in_year = 366 if timestamp.replace(month=12, day=31).timetuple().tm_yday == 366 else 365
+    utc_hour = timestamp.hour + timestamp.minute / 60 + timestamp.second / 3600
+    gamma = 2 * math.pi / days_in_year * (day_of_year - 1 + (utc_hour - 12) / 24)
+    equation_of_time = 229.18 * (
+        0.000075 + 0.001868 * math.cos(gamma) - 0.032077 * math.sin(gamma)
+        - 0.014615 * math.cos(2 * gamma) - 0.040849 * math.sin(2 * gamma)
+    )
+    declination = (
+        0.006918 - 0.399912 * math.cos(gamma) + 0.070257 * math.sin(gamma)
+        - 0.006758 * math.cos(2 * gamma) + 0.000907 * math.sin(2 * gamma)
+        - 0.002697 * math.cos(3 * gamma) + 0.00148 * math.sin(3 * gamma)
+    ) * 180 / math.pi
+    longitude = ((720 - utc_hour * 60 - equation_of_time) / 4 + 540) % 360 - 180
+    return equation_of_time, declination, longitude
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verify the D3 animated SVG examples gallery in a real browser.")
     parser.add_argument("input", help="Gallery HTML file, file URL, or HTTP URL")
@@ -49,6 +70,7 @@ def main() -> int:
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--viewport", type=parse_viewport, default=parse_viewport("1440x1100"))
     parser.add_argument("--screenshot", type=Path, help="Optional full-page screenshot path")
+    parser.add_argument("--replay-all", action="store_true", help="Exercise every card replay control instead of three representative cards")
     args = parser.parse_args()
 
     url = source_to_url(args.input)
@@ -157,7 +179,12 @@ def main() -> int:
                         height: box.height,
                         elementCount: svg.querySelectorAll("*").length,
                         textLength: (svg.textContent || "").trim().length,
-                        animationCount: svg.querySelectorAll("animate, animateMotion, animateTransform").length
+                        animationCount: svg.querySelectorAll("animate, animateMotion, animateTransform").length,
+                        hasTitle: Boolean(svg.querySelector(":scope > title")?.textContent?.trim()),
+                        hasDesc: Boolean(svg.querySelector(":scope > desc")?.textContent?.trim()),
+                        ariaLabelledby: svg.getAttribute("aria-labelledby") || "",
+                        titleId: svg.querySelector(":scope > title")?.id || "",
+                        descId: svg.querySelector(":scope > desc")?.id || ""
                     };
                 })"""
             )
@@ -168,13 +195,55 @@ def main() -> int:
             ]
             if bad:
                 raise SystemExit(f"SVG panels failed size/content checks: {bad}")
+            accessibility_bad = [
+                item for item in reports
+                if not item["hasTitle"] or not item["hasDesc"] or
+                item["titleId"] not in item["ariaLabelledby"].split() or
+                item["descId"] not in item["ariaLabelledby"].split()
+            ]
+            if accessibility_bad:
+                raise SystemExit(f"SVG panels failed title/description accessibility checks: {accessibility_bad}")
+
+            solar = page.locator('[data-example="solar-terminator"] svg')
+            if solar.count() != 1:
+                raise SystemExit(f"Expected one Solar Terminator SVG, found {solar.count()}.")
+            solar_contract = solar.evaluate(
+                """svg => ({
+                    timestamp: svg.dataset.timestamp || "",
+                    astronomyModel: svg.dataset.astronomyModel || "",
+                    equationOfTime: Number(svg.dataset.equationOfTimeMinutes),
+                    longitude: Number(svg.dataset.subsolarLongitude),
+                    declination: Number(svg.dataset.subsolarDeclination),
+                    visibleText: (svg.textContent || "").replace(/\\s+/g, " ").trim()
+                })"""
+            )
+            try:
+                expected_eot, expected_declination, expected_longitude = noaa_subsolar_tuple(solar_contract["timestamp"])
+            except (TypeError, ValueError) as error:
+                raise SystemExit(f"Solar Terminator has an invalid UTC timestamp contract: {solar_contract}") from error
+            solar_deltas = {
+                "equationOfTime": abs(solar_contract["equationOfTime"] - expected_eot),
+                "declination": abs(solar_contract["declination"] - expected_declination),
+                "longitude": abs(solar_contract["longitude"] - expected_longitude),
+            }
+            if (
+                solar_contract["astronomyModel"] != "noaa-fractional-year"
+                or not solar_contract["timestamp"].endswith("Z")
+                or any(not math.isfinite(value) or value > 0.01 for value in solar_deltas.values())
+                or "UTC" not in solar_contract["visibleText"]
+                or "declination" not in solar_contract["visibleText"].lower()
+            ):
+                raise SystemExit(
+                    f"Solar Terminator timestamp/astronomy contract is inconsistent: {solar_contract}; deltas={solar_deltas}"
+                )
 
             replay_buttons = page.locator("[data-example] [data-replay]")
             replay_button_count = replay_buttons.count()
             if replay_button_count != expected:
                 raise SystemExit(f"Expected {expected} per-card replay buttons, found {replay_button_count}.")
 
-            sample_indexes = sorted(set([0, expected // 2, expected - 1]))
+            sample_indexes = list(range(expected)) if args.replay_all else sorted(set([0, expected // 2, expected - 1]))
+            repeat_check_indexes = set([0, expected // 2, expected - 1])
             replay_reports = []
             for index in sample_indexes:
                 card = examples.nth(index)
@@ -190,26 +259,45 @@ def main() -> int:
 
                 button.wait_for(state="visible", timeout=args.timeout_ms)
                 render_pass_before = card.get_attribute("data-render-pass")
-                button.click()
-                page.wait_for_timeout(80)
-                render_pass_after = card.get_attribute("data-render-pass")
+                all_render_passes_before = examples.evaluate_all(
+                    "cards => cards.map(card => card.getAttribute('data-render-pass'))"
+                )
+                timeline_start = button.evaluate(
+                    """button => {
+                        const card = button.closest("[data-example]");
+                        button.click();
+                        const svg = card?.querySelector("svg");
+                        return {
+                            currentTime: svg && typeof svg.getCurrentTime === "function" ? svg.getCurrentTime() : null,
+                            replayState: card?.getAttribute("data-replay-state") || null,
+                            renderPass: card?.getAttribute("data-render-pass") || null
+                        };
+                    }"""
+                )
+                render_pass_after = timeline_start["renderPass"]
                 if render_pass_before == render_pass_after:
                     raise SystemExit(f"Replay button for {example_id} did not trigger a new render pass.")
-
-                timeline_start = card.locator("svg").evaluate(
-                    """svg => ({
-                        currentTime: typeof svg.getCurrentTime === "function" ? svg.getCurrentTime() : null,
-                        replayState: svg.closest("[data-example]")?.getAttribute("data-replay-state") || null
-                    })"""
+                all_render_passes_after = examples.evaluate_all(
+                    "cards => cards.map(card => card.getAttribute('data-render-pass'))"
                 )
+                changed_indexes = [
+                    candidate_index
+                    for candidate_index, (before, after) in enumerate(zip(all_render_passes_before, all_render_passes_after, strict=True))
+                    if before != after
+                ]
+                if changed_indexes != [index]:
+                    raise SystemExit(
+                        f"Replay for {example_id} changed cards {changed_indexes}; expected only index {index}."
+                    )
+
                 if timeline_start["replayState"] != "running":
                     raise SystemExit(f"Replay button for {example_id} did not expose running replay state.")
-                if timeline_start["currentTime"] is not None and timeline_start["currentTime"] > 0.35:
+                if timeline_start["currentTime"] is not None and timeline_start["currentTime"] > 0.2:
                     raise SystemExit(
                         f"Replay button for {example_id} did not reset SVG timeline: {timeline_start}"
                     )
 
-                page.wait_for_timeout(420)
+                page.wait_for_timeout(70 if args.replay_all else 420)
                 timeline_after = card.locator("svg").evaluate(
                     """svg => ({
                         currentTime: typeof svg.getCurrentTime === "function" ? svg.getCurrentTime() : null
@@ -235,6 +323,23 @@ def main() -> int:
                 replay_reports.append(replay_report)
                 if replay_report["animationCount"] == 0 or replay_report["elementCount"] < 10:
                     raise SystemExit(f"Replay left {example_id} without expected animated SVG content: {replay_report}")
+                if index in repeat_check_indexes:
+                    button.click()
+                    page.wait_for_timeout(35 if args.replay_all else 80)
+                    repeated_report = card.locator("svg").evaluate(
+                        """svg => ({
+                            elementCount: svg.querySelectorAll("*").length,
+                            animationCount: svg.querySelectorAll("animate, animateMotion, animateTransform").length
+                        })"""
+                    )
+                    if repeated_report != {
+                        "elementCount": replay_report["elementCount"],
+                        "animationCount": replay_report["animationCount"],
+                    }:
+                        raise SystemExit(
+                            f"Repeated replay changed SVG structure for {example_id}: "
+                            f"{replay_report} -> {repeated_report}"
+                        )
 
             if args.screenshot:
                 args.screenshot.parent.mkdir(parents=True, exist_ok=True)
@@ -253,7 +358,7 @@ def main() -> int:
 
     print(f"Verified examples: {example_count}")
     print(f"Verified unique pattern IDs: {pattern_id_count}")
-    print(f"Verified per-card replay buttons: {replay_button_count}; sampled {len(replay_reports)}")
+    print(f"Verified per-card replay buttons: {replay_button_count}; exercised {len(replay_reports)}")
     for item in reports:
         print(
             f"- {item['id']}: {item['width']:.0f}x{item['height']:.0f}, "

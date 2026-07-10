@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f49b8-77cc-7a82-b924-1ef7ade2dbea",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\mermaid-family-coverage-20260709-spark-6-json\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 9
+  },
+  "providers": {
+    "openai-codex": 9
+  },
+  "usageTotals": {
+    "input": 28537,
+    "output": 1820,
+    "cacheRead": 38400,
+    "cacheWrite": 0,
+    "totalTokens": 68757
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 4,
+    "write": 2,
+    "bash": 2
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1609
+    },
+    {
+      "path": "skills/mermaid-animated-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6508
+    },
+    {
+      "path": "flow.mmd",
+      "calls": 1,
+      "resultBytes": 83
+    },
+    {
+      "path": "puppeteer-config.json",
+      "calls": 1,
+      "resultBytes": 96
+    },
+    {
+      "path": "flow.static.svg",
+      "calls": 1,
+      "resultBytes": 16910
+    },
+    {
+      "path": "flow.animated.svg",
+      "calls": 1,
+      "resultBytes": 25223
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1609
+    },
+    {
+      "path": "skills/mermaid-animated-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6508
+    },
+    {
+      "path": "flow.static.svg",
+      "calls": 1,
+      "resultBytes": 16910
+    },
+    {
+      "path": "flow.animated.svg",
+      "calls": 1,
+      "resultBytes": 25223
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/mermaid-animated-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "flow.static.svg",
+      "calls": 1
+    },
+    {
+      "path": "flow.animated.svg",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 50250,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1609
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/mermaid-animated-svg/SKILL.md",
+      "policyPath": "skills/mermaid-animated-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6508
+    },
+    {
+      "line": 40,
+      "tool": "write",
+      "path": "flow.mmd",
+      "policyPath": "flow.mmd",
+      "command": null,
+      "isError": false,
+      "resultBytes": 83
+    },
+    {
+      "line": 53,
+      "tool": "write",
+      "path": "puppeteer-config.json",
+      "policyPath": "puppeteer-config.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 96
+    },
+    {
+      "line": 68,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py flow.mmd -o flow.animated.svg --static-output flow.static.svg --animation auto --duration-ms 700 --stagger-ms 100 --mmdc-arg=--puppeteerConfigFile --mmdc-arg=puppete",
+      "isError": false,
+      "resultBytes": 129
+    },
+    {
+      "line": 81,
+      "tool": "read",
+      "path": "flow.static.svg",
+      "policyPath": "flow.static.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 16910
+    },
+    {
+      "line": 94,
+      "tool": "read",
+      "path": "flow.animated.svg",
+      "policyPath": "flow.animated.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 25223
+    },
+    {
+      "line": 108,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "rm -f puppeteer-config.json",
+      "isError": false,
+      "resultBytes": 54
+    }
+  ],
+  "findings": []
+}

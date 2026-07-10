@@ -1,0 +1,9 @@
+@startuml
+title SDL
+start
+:Receive signal; <<input>>
+:Validate payload; <<procedure>>
+:Persist state; <<task>>
+:Send response; <<output>>
+stop
+@enduml

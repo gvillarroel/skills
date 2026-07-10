@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 4,
+    "bash": 5
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 3641
+    },
+    {
+      "path": "outputs/video-validation.json",
+      "calls": 1,
+      "resultBytes": 1142
+    },
+    {
+      "path": "outputs/render-result.json",
+      "calls": 1,
+      "resultBytes": 1783
+    },
+    {
+      "path": "outputs/package-validation.json",
+      "calls": 1,
+      "resultBytes": 2422
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 3641
+    },
+    {
+      "path": "outputs/video-validation.json",
+      "calls": 1,
+      "resultBytes": 1142
+    },
+    {
+      "path": "outputs/render-result.json",
+      "calls": 1,
+      "resultBytes": 1783
+    },
+    {
+      "path": "outputs/package-validation.json",
+      "calls": 1,
+      "resultBytes": 2422
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3641
+    },
+    {
+      "line": 28,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/awsome-videos/scripts/scaffold_production_package.py outputs/breaker-video --title \"What Is A Circuit Breaker?\" --promise \"Explain a circuit breaker as a fail-fast state machine around un",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 43,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/render_concept_video.py outputs/breaker-video/src/index.html outputs/breaker-video/artifacts/videos/circuit-breaker.mp4 --duration 8 --fps 2 --force --contact-sheet outputs/breaker-vide",
+      "isError": false,
+      "resultBytes": 74
+    },
+    {
+      "line": 57,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/check_video_artifact.py outputs/breaker-video/artifacts/videos/circuit-breaker.mp4 --expect-width 1280 --expect-height 720 --expect-fps 2 --expect-duration 8 --duration-tolerance 0.5 --",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 71,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/check_production_package.py --brief outputs/breaker-video/source/brief.md --video outputs/breaker-video/artifacts/videos/circuit-breaker.mp4 --design-note outputs/breaker-video/source/d",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 87,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'for f in outputs/scaffold-result.json outputs/render-result.json outputs/video-validation.json outputs/package-validation.json outputs/breaker-video/src/index.html outputs/breaker-video/artifacts/videos/circuit-breaker.mp4 outputs",
+      "isError": false,
+      "resultBytes": 535
+    },
+    {
+      "line": 100,
+      "tool": "read",
+      "path": "outputs/video-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1142
+    },
+    {
+      "line": 113,
+      "tool": "read",
+      "path": "outputs/render-result.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1783
+    },
+    {
+      "line": 126,
+      "tool": "read",
+      "path": "outputs/package-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2422
+    }
+  ],
+  "findings": []
+}

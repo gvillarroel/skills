@@ -35,7 +35,7 @@ Use `auto` unless the user asks for a specific style or the diagram needs a know
 - Mindmap: `mindmap-level`.
 - Ishikawa: branch-first ordering.
 - State diagrams: state-flow ordering; connected arrows and labels start after both endpoint states are visible.
-- Flowcharts: flowchart-flow ordering; nodes appear before connected arrows and labels.
+- Flowcharts and Swimlanes: flowchart-flow ordering; nodes appear before connected arrows and labels while Swimlane cluster geometry remains visible.
 - Venn: reveal set groups first, then union/intersection labels. Use `.venn-sets-*` tokens from `--list-elements`.
 - Event Modeling: keep swimlanes visible, reveal boxes in event order, then paired relation arrows.
 - Entity Relationship: reveal entities first; relationship lines and labels start after both endpoint entities are visible.
@@ -52,6 +52,7 @@ Use `auto` unless the user asks for a specific style or the diagram needs a know
 - Timeline: keep title, section titles, and dates visible, then reveal line/connectors/events left to right.
 - TreeView: reveal labels by depth; connector lines follow visible child-depth labels.
 - Kanban: reveal all columns together, then task cards one by one.
+- Cynefin and Railroad: use source directives for semantic layered construction; generic `auto` otherwise falls back to `sequence` because current SVGs expose family-level classes rather than stable item IDs.
 - Other diagrams: fall back to `sequence`.
 
 ## Timing Controls

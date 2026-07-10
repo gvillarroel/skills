@@ -1,0 +1,186 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f49b7-4540-7ea3-b101-1755455063fe",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260709-mermaid-colorset-styler-runtime-spark-1\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 4
+  },
+  "providers": {
+    "openai-codex": 4
+  },
+  "usageTotals": {
+    "input": 11657,
+    "output": 1162,
+    "cacheRead": 3328,
+    "cacheWrite": 0,
+    "totalTokens": 16147
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 6,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2356
+    },
+    {
+      "path": "source/base-state.mmd",
+      "calls": 1,
+      "resultBytes": 1612
+    },
+    {
+      "path": "source/base-flow.mmd",
+      "calls": 1,
+      "resultBytes": 1838
+    },
+    {
+      "path": "source/notes.md",
+      "calls": 1,
+      "resultBytes": 2987
+    },
+    {
+      "path": "styled-check.json",
+      "calls": 1,
+      "resultBytes": 8542
+    },
+    {
+      "path": "styled-report.json",
+      "calls": 1,
+      "resultBytes": 8618
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2356
+    },
+    {
+      "path": "source/base-state.mmd",
+      "calls": 1,
+      "resultBytes": 1612
+    },
+    {
+      "path": "source/base-flow.mmd",
+      "calls": 1,
+      "resultBytes": 1838
+    },
+    {
+      "path": "source/notes.md",
+      "calls": 1,
+      "resultBytes": 2987
+    },
+    {
+      "path": "styled-check.json",
+      "calls": 1,
+      "resultBytes": 8542
+    },
+    {
+      "path": "styled-report.json",
+      "calls": 1,
+      "resultBytes": 8618
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "source/base-state.mmd",
+      "calls": 1
+    },
+    {
+      "path": "source/base-flow.mmd",
+      "calls": 1
+    },
+    {
+      "path": "source/notes.md",
+      "calls": 1
+    },
+    {
+      "path": "styled-check.json",
+      "calls": 1
+    },
+    {
+      "path": "styled-report.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 25953,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2356
+    },
+    {
+      "line": 28,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p source\ncat > source/base-flow.mmd <<'EOF'\nflowchart LR\n  Intake[Request]:::csPrimary --> Review{Review}:::csWarning\n  Review -->|approve| Ship[Ship]:::csSuccess\n  Review -->|reject| Fix[Fix]:::csCritical\n  Ship e1@--> Done[Done]:::",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 57,
+      "tool": "read",
+      "path": "source/base-state.mmd",
+      "policyPath": "source/base-state.mmd",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1612
+    },
+    {
+      "line": 58,
+      "tool": "read",
+      "path": "source/base-flow.mmd",
+      "policyPath": "source/base-flow.mmd",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1838
+    },
+    {
+      "line": 59,
+      "tool": "read",
+      "path": "source/notes.md",
+      "policyPath": "source/notes.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2987
+    },
+    {
+      "line": 60,
+      "tool": "read",
+      "path": "styled-check.json",
+      "policyPath": "styled-check.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8542
+    },
+    {
+      "line": 61,
+      "tool": "read",
+      "path": "styled-report.json",
+      "policyPath": "styled-report.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8618
+    }
+  ],
+  "findings": []
+}

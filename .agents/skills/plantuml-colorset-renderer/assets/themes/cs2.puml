@@ -123,4 +123,29 @@ arrow {
   FontColor #333e48
   LineColor #696969
 }
+chartDiagram {
+  BackGroundColor #ffffff
+  FontColor #333e48
+  axis {
+    LineColor #696969
+    FontColor #333e48
+  }
+  grid {
+    LineColor #e7e7e7
+  }
+  bar {
+    LineColor #007298
+    BackGroundColor #cdf3ff
+  }
+  line {
+    LineColor #9e1b32
+  }
+  scatter {
+    MarkerColor #e77204
+  }
+  legend {
+    FontColor #333e48
+    BackGroundColor #ffffff
+  }
+}
 </style>

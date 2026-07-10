@@ -28,9 +28,13 @@ function renderDivergingStack() {
       { name: "UX", values: [14, 20, 22, 30, 14] },
       { name: "Speed", values: [7, 12, 17, 34, 30] }
     ];
-    const x = d3.scaleLinear().domain([-52, 62]).range([88, width - 34]);
+    const x = d3.scaleLinear().domain([-50, 80]).range([88, width - 34]);
     const y = d3.scaleBand().domain(data.map(d => d.name)).range([70, 320]).padding(.32);
     const segmentColors = [palette.red, palette.redHighlight, palette.gray200, palette.greenHighlight, palette.green];
+    const legend = svg.append("g").attr("transform", "translate(48,28)");
+    const legendItems = legend.selectAll("g").data(keys).join("g").attr("transform", (_, i) => `translate(${i * 100},0)`);
+    legendItems.append("rect").attr("width", 11).attr("height", 11).attr("rx", 2).attr("fill", (_, i) => segmentColors[i]).attr("stroke", palette.gray200);
+    legendItems.append("text").attr("class", "caption").attr("x", 16).attr("y", 9).attr("font-size", 9).text(d => d);
     axisBottom(svg, x, 344, 5);
     svg.append("line").attr("x1", x(0)).attr("x2", x(0)).attr("y1", 48).attr("y2", 330).attr("stroke", palette.ink).attr("stroke-opacity", .45);
     const segments = [];

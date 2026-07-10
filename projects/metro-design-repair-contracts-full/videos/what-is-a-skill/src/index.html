@@ -641,6 +641,16 @@
     function ease(v) { v = clamp(v); return v * v * (3 - 2 * v); }
     const grayLevels = PACKAGE.visualPolicy?.grayLevels?.map((d) => d.hex) || ["#ffffff", "#f7f7f7", "#e7e7e7", "#cfcfcf", "#9c9c9c", "#696969"];
     function grayLevel(index) { return grayLevels[Math.max(0, Math.min(grayLevels.length - 1, index))]; }
+    const redSurfaceFills = new Set([palette.route, palette.damage, palette.attribute, palette.tradeoff, "#9e1b32", "#e8002a", "#6d1222", "#ffccd5"].map((value) => String(value).toLowerCase()));
+    function isRedSurfaceFill(fill) {
+      return redSurfaceFills.has(String(fill || "").trim().toLowerCase());
+    }
+    function tonalSurfaceFill(fill, rectWidth, rectHeight, grayIndex = 5) {
+      const w = Math.abs(Number(rectWidth) || 0);
+      const h = Math.abs(Number(rectHeight) || 0);
+      if (isRedSurfaceFill(fill) && w * h >= 1100 && Math.min(w, h) > 10) return grayLevel(grayIndex);
+      return fill;
+    }
     const squareEdge = (stage.getAttribute?.("data-edge-style") || stage.dataset?.edgeStyle) === "square";
     const metroGrid = 4;
     function snapToGrid(value) {
@@ -844,8 +854,8 @@
         const opacity = Math.min(0.92, 0.26 + ease(Math.min(1, phase)) * (active ? 0.58 : 0.38));
         const attrs = bindingAttrs(binding, bindingIndex, zoneIndex, active);
         const kind = semanticGlyphKind(binding?.sourceAnchor);
-        const fill = active ? palette.route : grayLevel((bindingIndex % 3) + 2);
-        const stroke = active ? palette.damage : grayLevel(5);
+        const fill = active ? grayLevel(5) : grayLevel((bindingIndex % 3) + 2);
+        const stroke = active ? palette.route : grayLevel(5);
         drawSemanticGlyph(kind, x, y, 12, fill, stroke, attrs, opacity);
       });
     }
@@ -864,16 +874,36 @@
         const zoneIndex = Number.isFinite(Number(module.zoneIndex)) ? Number(module.zoneIndex) : index % Math.max(1, sourceZones.length || 1);
         const level = Math.max(1, Math.min(grayLevels.length - 2, Number(module.grayLevel) || metroZoneFillLevel(zoneIndex, active)));
         const isActive = zoneIndex === active;
+        const x = (Number(bounds.x) || 0) + vector.x * (1 - fit);
+        const y = (Number(bounds.y) || 0) + vector.y * (1 - fit);
+        const width = Number(bounds.width) || 4;
+        const height = Number(bounds.height) || 4;
+        const fill = grayLevel(isActive ? Math.min(level + 1, grayLevels.length - 2) : level);
+        const moduleBoxId = `masonry-wall-module-${index}`;
         el("rect", {
-          x: (Number(bounds.x) || 0) + vector.x * (1 - fit),
-          y: (Number(bounds.y) || 0) + vector.y * (1 - fit),
-          width: Number(bounds.width) || 4,
-          height: Number(bounds.height) || 4,
+          x,
+          y,
+          width,
+          height,
           rx: 0,
-          fill: grayLevel(isActive ? Math.min(level + 1, grayLevels.length - 2) : level),
+          fill,
+          stroke: "none",
+          "fill-opacity": clamp(phase),
+          "data-fill-for": moduleBoxId,
+          "data-fill-axis": "all",
+          "data-padding-policy": "zero-verified",
+        });
+        el("rect", {
+          x,
+          y,
+          width,
+          height,
+          rx: 0,
+          fill,
           stroke: isActive ? palette.route : grayLevel(5),
           "stroke-width": isActive ? 3 : 1,
           "fill-opacity": clamp(phase),
+          "data-box-id": moduleBoxId,
           "data-masonry-module": "true",
           "data-masonry-wall": "true",
           "data-masonry-order": String(index),
@@ -898,6 +928,22 @@
         el("rect", { x: 48, y: 668, width: 1504, height: 32, rx: 0, fill: grayLevel(5), stroke: "none" });
         [448, 848, 1192].forEach(x => el("rect", { x, y: 88, width: 12, height: 580, rx: 0, fill: grayLevel(5), stroke: "none" }));
         drawMasonryWall(active, progress);
+        const flowOffset = clamp(progress) * 420;
+        for (let index = 0; index < 32; index++) {
+          const x = 64 + ((index * 96 + flowOffset) % 1432);
+          const y = 636 + (index % 2) * 18;
+          const fill = grayLevel(index % 5 === active ? 5 : 3 + (index % 2));
+          el("rect", { x, y, width: 52, height: 14, rx: 0, fill, stroke: "none", "data-masonry-module": "true", "data-semantic-glyph": "true", "data-transition-type": "evidence-flow" });
+          if (index % 11 === active) {
+            el("rect", { x, y, width: 8, height: 14, rx: 0, fill: palette.route, stroke: "none", "data-masonry-module": "true", "data-semantic-glyph": "true", "data-transition-type": "evidence-flow" });
+          }
+        }
+        [448, 848, 1192].forEach((spineX, spineIndex) => {
+          for (let tick = 0; tick < 4; tick++) {
+            const y = 112 + ((tick * 132 + flowOffset + spineIndex * 48) % 520);
+            el("rect", { x: spineX - 4, y, width: 24, height: 32, rx: 0, fill: grayLevel(tick === active % 4 ? 5 : 3), stroke: "none", "data-masonry-module": "true", "data-semantic-glyph": "true", "data-transition-type": "evidence-flow" });
+          }
+        });
         drawMasonrySemanticGlyphs(active, progress);
         return;
       }
@@ -1082,18 +1128,19 @@
         const aiAlternativesCamera = /what ai alternatives we have|ai alternatives|atlassian rovo|gemini app|github copilot|claude desktop|claude code|workflow gravity|comparison_grid|credit_meter/.test(cameraMotifText);
         const poses = aiAlternativesCamera ? [
           [0.00, 0, 0, 1.00],
-          [0.18, 20, -8, 1.18],
-          [0.40, -160, -28, 1.28],
-          [0.62, -360, -16, 1.32],
-          [0.82, -460, 16, 1.24],
-          [1.00, -180, 0, 1.08],
+          [0.16, 20, -8, 1.22],
+          [0.38, -210, -32, 1.48],
+          [0.60, -470, -24, 1.58],
+          [0.80, -640, 8, 1.50],
+          [1.00, -240, 0, 1.15],
         ] : [
           [0.00, 0, 0, 1.00],
-          [0.18, -120, -12, 1.24],
-          [0.38, -280, -20, 1.34],
-          [0.62, -420, -24, 1.36],
-          [0.82, -300, 4, 1.28],
-          [1.00, -80, 0, 1.08],
+          [0.12, -72, -8, 1.15],
+          [0.30, -220, -28, 1.48],
+          [0.50, -470, -36, 1.62],
+          [0.70, -650, -24, 1.58],
+          [0.88, -420, 0, 1.44],
+          [1.00, -120, 0, 1.12],
         ];
         let previous = poses[0];
         let next = poses[poses.length - 1];
@@ -1197,7 +1244,7 @@
           let skillRectCounter = 0;
           const sRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
             const contract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] ? {} : { "data-box-id": "skill-independent-module-" + (++skillRectCounter) };
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...contract, ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...contract, ...extra });
           };
           const sLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
             if (progress <= 0) return;
@@ -1364,7 +1411,7 @@
           const hRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
             const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"];
             const boxContract = hasBoxContract ? {} : { "data-box-id": `hook-independent-module-${++hookRectCounter}` };
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
           };
           const hLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
             if (progress <= 0) return;
@@ -1523,7 +1570,7 @@
         const harnessMotifRequested = !/harness hook|harness plugin/.test(harnessMotifText) && /what is a harness|comparison_grid|runtime stack|runtime wrapper|engine icon|vehicle dashboard|same model|different shell|three-column harness|credit_meter|use-case matrix|selection path/.test(harnessMotifText);
         if (masonryRequired && harnessMotifRequested) {
           const rect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, ...extra });
           };
           const poly = (points, stroke, strokeWidth = 4, opacity = 1, extra = {}) => {
             el("polyline", { points: points.map((point) => point[0] + "," + point[1]).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", opacity, ...extra });
@@ -1703,7 +1750,7 @@
         }
         if (masonryRequired && agentMotifRequested) {
           const rect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, ...extra });
           };
           const poly = (points, stroke, strokeWidth = 4, opacity = 1, extra = {}) => {
             el("polyline", { points: points.map(([x, y]) => `${x},${y}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", opacity, ...extra });
@@ -1853,6 +1900,155 @@
           const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
           return withCameraState({ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, systemLabels: sourceSystems, queueSlots, workerActive, retryVisible, deadLetterVisible, feedbackVisible, visibleMechanismCount, agentLoopRingVisible, contextPaneCount, environmentState: environmentStates[environmentIndex], environmentSurfaceCount: environmentIndex + 1, toolActionLoopVisible, fixedWorkflowLaneVisible, adaptiveAgentLaneVisible, approvalCheckpointVisible, modelToolsStateLoopBadgeVisible }, camera);
         }
+        const denseMotifText = [...sourceSystems, ...(PACKAGE.strategyAnchors || []), ...(PACKAGE.sourceFacts || []), PACKAGE.title || "", PACKAGE.topic || ""].join(" ").toLowerCase();
+        const llmConceptRequested = /what is an llm|large language model|token_stream|context_window_box|transformer|autoregressive|parameter|gpu_rack|next token/.test(denseMotifText);
+        const billingConceptRequested = /llm billing|billing|credit_meter|ai credit|token cost|api cost|subscription|local gpu|pricing|cost meter/.test(denseMotifText);
+        const mcpConceptRequested = /what is an mcp|model context protocol|mcp_bus|mcp server|tools resources prompts|tools \/ resources \/ prompts|registry|allowlist|client and server|tool surface/.test(denseMotifText);
+        if (masonryRequired && (llmConceptRequested || billingConceptRequested || mcpConceptRequested)) {
+          let denseRectCounter = 0;
+          const motifId = billingConceptRequested ? "billing-cost-map" : mcpConceptRequested ? "mcp-protocol-bus" : "llm-token-transformer-map";
+          const dAttrs = (zoneIndex, mechanismId, extra = {}) => ({
+            ...zoneAttrs(zoneIndex),
+            "data-dense-systems-motif": motifId,
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          });
+          const dRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
+            const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] || extra["data-masonry-module"];
+            const boxContract = hasBoxContract ? {} : { "data-box-id": `dense-systems-module-${++denseRectCounter}` };
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
+          };
+          const dLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
+            if (progress <= 0) return;
+            const visible = [];
+            const safe = clamp(progress);
+            const target = safe * (points.length - 1);
+            for (let index = 0; index < points.length - 1; index++) {
+              const local = clamp(target - index);
+              if (local <= 0) break;
+              const a = points[index], b = points[index + 1];
+              if (visible.length === 0) visible.push(a);
+              visible.push([a[0] + (b[0] - a[0]) * local, a[1] + (b[1] - a[1]) * local]);
+              if (local < 1) break;
+            }
+            if (visible.length < 2) return;
+            el("polyline", { points: visible.map(([x, y]) => `${x},${y}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", ...extra });
+          };
+
+          const tokenLevel = Math.min(24, Math.floor(ease((p - 0.04) / 0.34) * 25));
+          const matrixLevel = Math.min(80, Math.floor(ease((p - 0.16) / 0.42) * 81));
+          const stackLevel = Math.min(8, Math.floor(ease((p - 0.28) / 0.34) * 9));
+          const meterLevel = Math.min(5, Math.floor(ease((p - 0.40) / 0.34) * 6));
+          const gateLevel = Math.min(4, Math.floor(ease((p - 0.54) / 0.28) * 5));
+          const evidenceLevel = Math.min(60, Math.floor(ease((p - 0.10) / 0.72) * 61));
+
+          [
+            [[84, 112], [360, 112], [444, 180]],
+            [[404, 360], [744, 360], [900, 252]],
+            [[948, 132], [1216, 188], [1456, 188]],
+            [[104, 612], [552, 612], [760, 548], [1000, 548]],
+          ].forEach((points, index) => dLine(points, grayLevel(5), 2, 1, dAttrs(index % 5, "dense-baseline-trace", { "data-transition-type": "circuit-signal-trace", "data-transition-id": `dense-baseline-${index}`, "data-baseline-trace": "true" })));
+
+          dRect(80, 104, 292, 260, grayLevel(2), grayLevel(5), 1, dAttrs(0, "dense-input-surface", { "data-masonry-module": "true" }));
+          dRect(404, 96, 420, 308, grayLevel(1), grayLevel(5), 1, dAttrs(1, "dense-matrix-surface", { "data-masonry-module": "true" }));
+          dRect(884, 104, 304, 278, grayLevel(3), grayLevel(5), 1, dAttrs(2, "dense-stack-surface", { "data-masonry-module": "true" }));
+          dRect(1220, 112, 300, 240, grayLevel(2), grayLevel(5), 1, dAttrs(3, "dense-policy-surface", { "data-masonry-module": "true" }));
+          dRect(84, 432, 468, 150, grayLevel(1), grayLevel(5), 1, dAttrs(4, "dense-meter-surface", { "data-masonry-module": "true" }));
+          dRect(604, 456, 468, 128, grayLevel(2), grayLevel(5), 1, dAttrs(4, "dense-feedback-surface", { "data-masonry-module": "true" }));
+
+          for (let index = 0; index < 24; index++) {
+            const row = Math.floor(index / 8);
+            const col = index % 8;
+            const active = index < tokenLevel;
+            const x = 108 + col * 30;
+            const y = 132 + row * 42;
+            const fill = active ? grayLevel(4 + ((index + row) % 2)) : grayLevel(1 + (index % 4));
+            dRect(x, y, 22, 30, fill, grayLevel(5), 1, dAttrs(0, "dense-token-stream", { "data-masonry-module": "true" }));
+            if (active && index % 6 === 0) dRect(x, y, 6, 30, palette.route, "none", 1, dAttrs(0, "dense-token-state-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+          }
+          for (let row = 0; row < 8; row++) {
+            for (let col = 0; col < 10; col++) {
+              const index = row * 10 + col;
+              const active = index < matrixLevel;
+              const strong = active && ((row === col % 8) || (row + col) % 11 === 0);
+              const fill = strong ? grayLevel(5) : active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1);
+              dRect(428 + col * 36, 122 + row * 30, 28, 22, fill, "none", 1, dAttrs(1, "dense-attention-or-tool-matrix", { "data-masonry-module": "true" }));
+              if (strong && (row + col) % 3 === 0) dRect(428 + col * 36, 122 + row * 30, 6, 22, palette.route, "none", 1, dAttrs(1, "dense-matrix-state-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+          for (let layer = 0; layer < 8; layer++) {
+            const y = 128 + layer * 30;
+            const active = layer < stackLevel;
+            const width = billingConceptRequested ? 168 + layer * 8 : mcpConceptRequested ? 228 - layer * 10 : 248 - layer * 12;
+            dRect(916, y, width, 22, active ? grayLevel(5 - (layer % 2)) : grayLevel(2 + (layer % 4)), "none", 1, dAttrs(2, "dense-layer-stack", { "data-masonry-module": "true" }));
+            if (active && layer % 2 === 0) dRect(916 + width - 8, y, 8, 22, palette.route, "none", 1, dAttrs(2, "dense-layer-active-edge", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+          }
+          for (let index = 0; index < 4; index++) {
+            const x = 1248 + index * 62;
+            const active = index < gateLevel;
+            dRect(x, 142, 46, 80, active ? grayLevel(5) : grayLevel(2 + index), grayLevel(5), 1, dAttrs(3, "dense-gate-column", { "data-masonry-module": "true" }));
+            if (active) dRect(x, 142, 8, 80, palette.route, "none", 1, dAttrs(3, "dense-gate-state-edge", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            dRect(x, 248, 46, 54, active && index >= 2 ? grayLevel(5) : grayLevel(2 + ((index + 1) % 4)), grayLevel(5), 1, dAttrs(3, "dense-policy-cell", { "data-masonry-module": "true" }));
+          }
+          for (let index = 0; index < 5; index++) {
+            const x = 120 + index * 78;
+            const boxId = `dense-meter-${index}`;
+            dRect(x, 472, 58, 74, grayLevel(2 + (index % 3)), grayLevel(5), 1, dAttrs(4, "dense-meter-shell", { "data-box-id": boxId }));
+            const filled = 74 * (index < meterLevel ? (meterLevel / 5) : 0);
+            dRect(x, 472 + 74 - filled, 58, filled, grayLevel(5), "none", 1, dAttrs(4, "dense-meter-fill", { "data-fill-for": boxId, "data-fill-axis": "y-progress" }));
+            if (filled > 0) dRect(x, 472 + 74 - filled, 58, 6, palette.route, "none", 1, dAttrs(4, "dense-meter-state-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+          }
+          for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 8; col++) {
+              const index = row * 8 + col;
+              const active = index < Math.floor(evidenceLevel / 2);
+              dRect(632 + col * 48, 480 + row * 30, 38, 22, active ? grayLevel(3 + ((row + col) % 3)) : grayLevel(1 + ((row + col) % 4)), "none", 1, dAttrs(4, "dense-feedback-grid", { "data-masonry-module": "true" }));
+              if (active && index % 7 === 0) dRect(632 + col * 48, 480 + row * 30, 6, 22, palette.route, "none", 1, dAttrs(4, "dense-feedback-state-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 30; col++) {
+              const index = row * 30 + col;
+              const active = index < evidenceLevel;
+              dRect(64 + col * 50, 640 + row * 28, 40, 18, active ? grayLevel(2 + (index % 4)) : grayLevel(1), "none", 1, dAttrs(index % 5, "dense-evidence-floor", { "data-masonry-module": "true" }));
+              if (active && index % 13 === 0) dRect(64 + col * 50, 640 + row * 28, 6, 18, palette.route, "none", 1, dAttrs(index % 5, "dense-evidence-floor-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+
+          const routeColor = billingConceptRequested ? palette.route : mcpConceptRequested ? palette.attribute : palette.route;
+          dLine([[342, 246], [428, 246], [520, 246]], routeColor, 6, ease((p - 0.08) / 0.20), dAttrs(0, "dense-primary-route", { "data-transition-type": "flow-token-route", "data-transition-id": "dense-primary-route" }));
+          dLine([[780, 246], [916, 216], [1188, 216]], routeColor, 6, ease((p - 0.32) / 0.22), dAttrs(2, "dense-stack-route", { "data-transition-type": "flow-token-route", "data-transition-id": "dense-stack-route" }));
+          dLine([[1188, 216], [1248, 182], [1488, 182]], routeColor, 5, ease((p - 0.50) / 0.22), dAttrs(3, "dense-policy-route", { "data-transition-type": "flow-token-route", "data-transition-id": "dense-policy-route" }));
+          dLine([[358, 546], [604, 520], [1032, 520]], routeColor, 5, ease((p - 0.62) / 0.22), dAttrs(4, "dense-feedback-route", { "data-transition-type": "flow-token-route", "data-transition-id": "dense-feedback-route" }));
+
+          if (billingConceptRequested) {
+            dRect(1324, 280, 168, 28, grayLevel(5), "none", 1, dAttrs(3, "billing-subscription-band", { "data-masonry-module": "true" }));
+            dRect(1324, 316, 132, 28, grayLevel(4), "none", 1, dAttrs(3, "billing-api-band", { "data-masonry-module": "true" }));
+            dRect(1324, 352, 96, 28, grayLevel(3), "none", 1, dAttrs(3, "billing-local-band", { "data-masonry-module": "true" }));
+          } else if (mcpConceptRequested) {
+            dLine([[180, 252], [520, 252], [916, 252], [1432, 252]], grayLevel(5), 8, 1, dAttrs(1, "mcp-bus-spine", { "data-transition-type": "surface-wipe", "data-transition-id": "mcp-bus-spine" }));
+            for (let index = 0; index < 6; index++) {
+              const x = 524 + index * 72;
+              dRect(x, 292, 44, 34, index < gateLevel + 2 ? grayLevel(5) : grayLevel(3), grayLevel(5), 1, dAttrs(1, "mcp-tool-resource-prompt-port", { "data-masonry-module": "true" }));
+            }
+          } else {
+            for (let index = 0; index < 6; index++) {
+              const x = 130 + index * 30;
+              const h = 22 + index * 12;
+              dRect(x, 306 - h, 22, h, index < stackLevel ? grayLevel(5) : grayLevel(3), "none", 1, dAttrs(0, "llm-probability-bars", { "data-masonry-module": "true" }));
+              if (index === Math.min(5, meterLevel)) dRect(x, 306 - h, 22, 6, palette.route, "none", 1, dAttrs(0, "llm-selected-token-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+
+          const queueSlots = tokenLevel;
+          const workerActive = stackLevel >= 4;
+          const retryVisible = gateLevel >= 2;
+          const deadLetterVisible = gateLevel >= 4;
+          const feedbackVisible = meterLevel >= 4;
+          const visibleMechanismCount = [tokenLevel >= 16, matrixLevel >= 48, stackLevel >= 6, meterLevel >= 4, gateLevel >= 3, evidenceLevel >= 36].filter(Boolean).length;
+          const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
+          return withCameraState({ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, systemLabels: sourceSystems, queueSlots, workerActive, retryVisible, deadLetterVisible, feedbackVisible, visibleMechanismCount, denseSystemsMotif: motifId, tokenLevel, matrixLevel, stackLevel, meterLevel, gateLevel, evidenceLevel, llmConceptVisible: llmConceptRequested, billingConceptVisible: billingConceptRequested, mcpConceptVisible: mcpConceptRequested }, camera);
+        }
         if (!masonryRequired) {
           el("rect", { x: 56, y: 112, width: 304, height: 488, rx: 0, fill: grayLevel(0), stroke: "none" });
           el("rect", { x: 392, y: 112, width: 504, height: 488, rx: 0, fill: grayLevel(1), stroke: "none" });
@@ -1864,37 +2060,41 @@
           label(955, 145, "CONTROL", 15, palette.muted, "start");
         }
         component(71, 222, 128, 64, systemNames[0], palette.route, grayLevel(0));
-        component(71, 327, 128, 64, systemNames[1], palette.damage, grayLevel(4));
+        component(71, 327, 128, 64, systemNames[1], palette.damage, grayLevel(2));
         component(71, 432, 128, 64, systemNames[2], palette.attribute, grayLevel(2));
         component(226, 214, 96, 272, systemNames[3], palette.route, grayLevel(3));
         component(440, 235, 130, 230, systemNames[4], "none", grayLevel(1));
         for (let i = 0; i < 8; i++) {
           const filled = i < Math.floor(ease((p - 0.18) / 0.32) * 8);
-          el("rect", { x: 440, y: 244 + i * 28, width: 128, height: 20, rx: 0, fill: filled ? palette.route : grayLevel(4) });
+          el("rect", { x: 440, y: 244 + i * 28, width: 128, height: 20, rx: 0, fill: filled ? grayLevel(5) : grayLevel(4) });
+          if (filled) el("rect", { x: 440, y: 244 + i * 28, width: 8, height: 20, rx: 0, fill: palette.route, stroke: "none" });
         }
         [262, 350, 438].forEach((y, idx) => component(625, y - 34, 180, 68, `${systemNames[5]} ${idx + 1}`, ease((p - 0.38) / 0.24) > 0.2 ? palette.defense : palette.line, grayLevel(2)));
-        component(810, 304, 102, 92, systemNames[6], palette.damage, grayLevel(4));
-        component(970, 185, 210, 70, systemNames[7], palette.damage, grayLevel(4));
-        component(970, 300, 210, 70, systemNames[8], palette.tradeoff, grayLevel(4));
+        component(810, 304, 102, 92, systemNames[6], palette.damage, grayLevel(2));
+        component(970, 185, 210, 70, systemNames[7], palette.damage, grayLevel(2));
+        component(970, 300, 210, 70, systemNames[8], palette.tradeoff, grayLevel(2));
         component(970, 420, 210, 115, systemNames[9], palette.route, grayLevel(0));
         if (masonryRequired) {
           const activeCols = Math.max(1, Math.min(8, Math.floor(ease((p - 0.44) / 0.30) * 8)));
           for (let row = 0; row < 5; row++) {
             for (let col = 0; col < 8; col++) {
               const level = 1 + ((row + col) % 4);
-              const fill = col < activeCols && (row === 1 || row === 3) ? palette.route : grayLevel(level);
+              const fill = col < activeCols && (row === 1 || row === 3) ? grayLevel(5) : grayLevel(level);
               el("rect", { x: 1212 + col * 36, y: 124 + row * 36, width: 28, height: 28, rx: 0, fill, stroke: "none" });
+              if (col < activeCols && (row === 1 || row === 3) && col % 3 === 0) el("rect", { x: 1212 + col * 36, y: 124 + row * 36, width: 6, height: 28, rx: 0, fill: palette.route, stroke: "none" });
             }
           }
           [392, 432, 472, 512, 552, 592].forEach((y, row) => {
             const barWidth = 56 + ease((p - 0.52 - row * 0.035) / 0.18) * (180 - row * 16);
-            el("rect", { x: 1212, y, width: barWidth, height: 18, rx: 0, fill: row === 1 || row === 4 ? palette.damage : grayLevel(4), stroke: "none" });
+            el("rect", { x: 1212, y, width: barWidth, height: 18, rx: 0, fill: row === 1 || row === 4 ? grayLevel(5) : grayLevel(4), stroke: "none" });
+            if (row === 1 || row === 4) el("rect", { x: 1212, y, width: 6, height: 18, rx: 0, fill: palette.route, stroke: "none" });
           });
           for (let row = 0; row < 3; row++) {
             for (let col = 0; col < 4; col++) {
               const cellOn = ease((p - 0.50 - (row + col) * 0.025) / 0.16) > 0.35;
-              const fill = cellOn && (row + col) % 3 === 0 ? palette.damage : (cellOn ? grayLevel(5) : grayLevel(3));
+              const fill = cellOn ? grayLevel((row + col) % 3 === 0 ? 5 : 4) : grayLevel(3);
               el("rect", { x: 1416 + col * 32, y: 488 + row * 32, width: 24, height: 24, rx: 0, fill, stroke: "none" });
+              if (cellOn && (row + col) % 3 === 0) el("rect", { x: 1416 + col * 32, y: 488 + row * 32, width: 6, height: 24, rx: 0, fill: palette.route, stroke: "none" });
             }
           }
         }
@@ -2251,6 +2451,57 @@
           label(865, 145, "DECISION CONTEXT", 15, palette.muted, "start");
         }
         const chart = { x1: 115, y1: 190, x2: 760, y2: 520 };
+        if (masonryRequired) {
+          let metricTileCounter = 0;
+          const metricTileAttrs = (mechanismId, extra = {}) => ({
+            "data-box-id": `metric-density-tile-${++metricTileCounter}`,
+            "data-masonry-module": "true",
+            "data-zone-boundary": "flush",
+            "data-padding-policy": "zero-verified",
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          });
+          const metricTile = (x, y, width, height, fill, mechanismId, extra = {}) => {
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke: "none", ...metricTileAttrs(mechanismId, extra) });
+          };
+          const metricDensityLevel = Math.min(84, Math.floor(ease((p - 0.04) / 0.72) * 85));
+          for (let row = 0; row < 6; row++) {
+            for (let col = 0; col < 10; col++) {
+              const index = row * 10 + col;
+              const active = index < metricDensityLevel;
+              const x = chart.x1 + 26 + col * 42;
+              const y = chart.y1 + 26 + row * 28;
+              const fill = active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1);
+              metricTile(x, y, 32, 20, fill, "metric-attention-density-grid");
+              if (active && (row === col % 6 || index % 17 === 0)) {
+                metricTile(x, y, 6, 20, palette.route, "metric-attention-density-cap", { "data-semantic-glyph": "true" });
+              }
+            }
+          }
+          for (let index = 0; index < 14; index++) {
+            const active = index < Math.floor(metricDensityLevel / 4) + 2;
+            const x = 86 + index * 28;
+            const y = 132 + (index % 3) * 22;
+            metricTile(x, y, 22, 16, active ? grayLevel(3 + (index % 3)) : grayLevel(1 + (index % 4)), "metric-token-strip");
+            if (active && index % 5 === 0) metricTile(x, y, 6, 16, palette.route, "metric-token-strip-cap", { "data-semantic-glyph": "true" });
+          }
+          for (let row = 0; row < 5; row++) {
+            const y = 124 + row * 28;
+            const width = 96 + row * 38 + ease((p - 0.20 - row * 0.04) / 0.22) * 92;
+            metricTile(892, y, width, 20, grayLevel(2 + (row % 4)), "metric-right-density-bars");
+            if (row < Math.floor(ease((p - 0.24) / 0.42) * 6)) metricTile(892, y, 6, 20, palette.route, "metric-right-density-cap", { "data-semantic-glyph": "true" });
+          }
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 30; col++) {
+              const index = row * 30 + col;
+              const active = index < Math.floor(metricDensityLevel * 0.72);
+              const x = 64 + col * 50;
+              const y = 640 + row * 28;
+              metricTile(x, y, 40, 18, active ? grayLevel(2 + (index % 4)) : grayLevel(1), "metric-evidence-floor");
+              if (active && index % 12 === 0) metricTile(x, y, 6, 18, palette.route, "metric-evidence-floor-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+        }
         for (let i = 0; i < 5; i++) {
           const y = chart.y1 + i * (chart.y2 - chart.y1) / 4;
           line(chart.x1, y, chart.x2, y, grayLevel(3), 2);
@@ -2276,18 +2527,18 @@
         }
         const points = [[145,472],[230,448],[315,438],[400,402],[485,422],[570,366],[655,334],[740,300]];
         const revealed = Math.max(0, Math.min(points.length - 1, Math.floor(trendProgress * (points.length - 1))));
-        for (let i = 0; i < revealed; i++) line(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], palette.route, 8);
+        for (let i = 0; i < revealed; i++) line(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], palette.route, 4);
         if (trendProgress > 0 && trendProgress < 1) {
           const i = Math.min(points.length - 2, revealed);
           const ratio = trendProgress * (points.length - 1) - i;
           const a = points[i], b = points[i + 1];
-          line(a[0], a[1], a[0] + (b[0] - a[0]) * ratio, a[1] + (b[1] - a[1]) * ratio, palette.route, 8);
+          line(a[0], a[1], a[0] + (b[0] - a[0]) * ratio, a[1] + (b[1] - a[1]) * ratio, palette.route, 4);
         }
         const activeTrendPoint = Math.max(0, Math.min(points.length - 1, Math.floor(trendProgress * points.length)));
-        points.slice(0, activeTrendPoint + 1).forEach((d, i) => circle(d[0], d[1], 8, i === 4 ? palette.damage : palette.route, grayLevel(1), 3));
+        points.slice(0, activeTrendPoint + 1).forEach((d, i) => circle(d[0], d[1], 7, grayLevel(5), i === 4 ? palette.damage : palette.route, 3));
         if (anomalyVisible) {
           circle(485,422,30,"none",palette.damage,5);
-          component(425,225,170,60,"anomaly",palette.damage,grayLevel(4));
+          component(425,225,170,60,"anomaly",palette.damage,grayLevel(2));
           if (!masonryRequired) label(510,274,metricNames[4],14,palette.ink);
         }
         if (forecastVisible) {
@@ -2308,7 +2559,11 @@
           if (p + 0.02 < d[8]) return;
           el("rect", { x: d[0], y: d[1], width: d[2], height: d[3], rx: 0, fill: grayLevel(3), stroke: p > 0.16 ? d[6] : palette.line, "stroke-width": 2 });
           const filled = Math.max(0, Math.min(d[2], d[2] * clamp(d[7])));
-          if (filled > 0) el("rect", { x: d[0], y: d[1], width: filled, height: d[3], rx: 0, fill: d[6] });
+          if (filled > 0) {
+            el("rect", { x: d[0], y: d[1], width: filled, height: d[3], rx: 0, fill: grayLevel(5) });
+            const capX = d[0] + Math.max(0, filled - 8);
+            el("rect", { x: capX, y: d[1], width: Math.min(8, filled), height: d[3], rx: 0, fill: d[6], stroke: "none" });
+          }
           if (!masonryRequired) {
             label(d[0] + d[2] / 2, d[1] + 32, d[4], 15, palette.ink);
             label(d[0] + d[2] / 2, d[1] + 62, d[5], 13, palette.ink);
@@ -2350,6 +2605,47 @@
           const [stripX, stripY, stripW, stripH] = clusterLevelStrips[idx];
           el("rect", { x: stripX, y: stripY, width: stripW, height: stripH, rx: 0, fill: clusterLevelFills[idx], stroke: "none" });
         });
+        if (masonryRequired) {
+          let dependencyTileCounter = 0;
+          const depTileAttrs = (mechanismId, extra = {}) => ({
+            "data-box-id": `dependency-density-tile-${++dependencyTileCounter}`,
+            "data-masonry-module": "true",
+            "data-zone-boundary": "flush",
+            "data-padding-policy": "zero-verified",
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          });
+          const depTile = (x, y, width, height, fill, mechanismId, extra = {}) => {
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke: "none", ...depTileAttrs(mechanismId, extra) });
+          };
+          const dependencyDensityLevel = Math.max(42, Math.min(72, Math.floor(ease((p - 0.04) / 0.70) * 73)));
+          const dependencyCapFill = (index) => index % 3 === 0 ? palette.route : index % 3 === 1 ? palette.attribute : palette.damage;
+          for (let row = 0; row < 5; row++) {
+            for (let col = 0; col < 10; col++) {
+              const index = row * 10 + col;
+              const active = index < dependencyDensityLevel;
+              const x = 92 + col * 28;
+              const y = 472 + row * 22;
+              depTile(x, y, 20, 16, active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1), "dependency-source-ledger");
+              if (active && index % 7 === 0) depTile(x, y, 6, 16, dependencyCapFill(index), "dependency-source-ledger-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+          for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 8; col++) {
+              const index = row * 8 + col;
+              const active = index < Math.floor(dependencyDensityLevel * 0.7);
+              const x = 902 + col * 34;
+              const y = 342 + row * 26;
+              depTile(x, y, 26, 20, active ? grayLevel(2 + ((index + row) % 4)) : grayLevel(1), "dependency-policy-matrix");
+              if (active && (row === col % 4 || index % 7 === 0)) depTile(x, y, 6, 20, dependencyCapFill(index + row), "dependency-policy-matrix-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+          for (let col = 0; col < 24; col++) {
+            const active = col < Math.floor(dependencyDensityLevel / 2);
+            depTile(64 + col * 58, 650, 48, 18, active ? grayLevel(2 + (col % 4)) : grayLevel(1), "dependency-evidence-floor");
+            if (active && col % 6 === 0) depTile(64 + col * 58, 650, 6, 18, dependencyCapFill(col), "dependency-evidence-floor-cap", { "data-semantic-glyph": "true" });
+          }
+        }
         label(82, 145, clusters[0].toUpperCase(), 15, palette.muted, "start");
         label(425, 145, clusters[1].toUpperCase(), 15, palette.muted, "start");
         label(915, 145, clusters[2].toUpperCase(), 15, palette.muted, "start");
@@ -2524,6 +2820,10 @@
           "stroke-linejoin": "miter",
           opacity
         });
+        const flowBodyColor = (color) => {
+          if ([palette.route, palette.attribute, palette.damage, palette.tradeoff].includes(color)) return grayLevel(6);
+          return color;
+        };
         const pointOn = (points, progress) => {
           const safe = Math.max(0, Math.min(1, progress));
           let total = 0;
@@ -2564,6 +2864,52 @@
         }
         const sourceFlowLabels = PACKAGE.flowLabels?.length ? PACKAGE.flowLabels : ["raw input", "accepted stream", "filtered loss", "transform A", "transform B", "merged value", "bottleneck", "final output"];
         const flowLabels = sourceFlowLabels.map((value) => compactText(value, 18));
+        if (masonryRequired) {
+          let sankeyTileCounter = 0;
+          const sankeyTileAttrs = (mechanismId, extra = {}) => ({
+            "data-box-id": `sankey-density-tile-${++sankeyTileCounter}`,
+            "data-masonry-module": "true",
+            "data-zone-boundary": "flush",
+            "data-padding-policy": "zero-verified",
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          });
+          const sankeyTile = (x, y, width, height, fill, mechanismId, extra = {}) => {
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke: "none", ...sankeyTileAttrs(mechanismId, extra) });
+          };
+          const sankeyDensityLevel = Math.min(72, Math.floor(ease((p - 0.08) / 0.70) * 73));
+          for (let row = 0; row < 6; row++) {
+            for (let col = 0; col < 12; col++) {
+              const index = row * 12 + col;
+              const active = index < sankeyDensityLevel;
+              const x = 78 + col * 40;
+              const y = 124 + row * 26;
+              sankeyTile(x, y, 30, 18, active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1), "sankey-input-density-grid");
+              if (active && index % 11 === 0) sankeyTile(x, y, 6, 18, palette.route, "sankey-input-density-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+          for (let col = 0; col < 4; col++) {
+            const x = 918 + col * 74;
+            const meterLevel = Math.min(5, Math.floor(ease((p - 0.30 - col * 0.04) / 0.34) * 6));
+            sankeyTile(x, 404, 54, 114, grayLevel(2 + col), "sankey-cost-column-shell");
+            for (let level = 0; level < 5; level++) {
+              const active = level < meterLevel;
+              const y = 492 - level * 18;
+              sankeyTile(x + 8, y, 38, 14, active ? grayLevel(5) : grayLevel(3), "sankey-cost-column-segment");
+              if (active && level === meterLevel - 1) sankeyTile(x + 8, y, 38, 6, palette.route, "sankey-cost-column-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 28; col++) {
+              const index = row * 28 + col;
+              const active = index < Math.floor(sankeyDensityLevel * 0.75);
+              const x = 64 + col * 54;
+              const y = 640 + row * 28;
+              sankeyTile(x, y, 44, 18, active ? grayLevel(2 + (index % 4)) : grayLevel(1), "sankey-evidence-floor");
+              if (active && index % 10 === 0) sankeyTile(x, y, 6, 18, palette.route, "sankey-evidence-floor-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+        }
         const flows = [
           [[[190,320],[265,275],[340,235]], palette.route, 18],
           [[[190,320],[265,390],[340,435]], palette.tradeoff, 12],
@@ -2584,7 +2930,8 @@
         flows.forEach(([points, color, width], idx) => {
           const segmentProgress = Math.max(0, Math.min(1, flowProgress * flows.length - idx));
           if (segmentProgress > 0) {
-            route(points, color, width, Math.max(0.28, segmentProgress));
+            route(points, flowBodyColor(color), Math.max(4, width - 6), Math.max(0.28, segmentProgress));
+            route(points, color, 3, Math.max(0.35, segmentProgress));
             const token = pointOn(points, segmentProgress);
             circle(token[0], token[1], 8, palette.gold, palette.gold, 2);
           }
@@ -2592,21 +2939,21 @@
         [
           [130, 320, flowLabels[0], palette.route, grayLevel(2)],
           [340, 235, flowLabels[1], palette.defense, grayLevel(2)],
-          [340, 435, flowLabels[2], palette.tradeoff, grayLevel(4)],
+          [340, 435, flowLabels[2], palette.tradeoff, grayLevel(2)],
           [570, 215, flowLabels[3], palette.route, grayLevel(2)],
           [570, 365, flowLabels[4], palette.attribute, grayLevel(2)],
-          [790, 300, flowLabels[6], palette.damage, grayLevel(4)],
+          [790, 300, flowLabels[6], palette.damage, grayLevel(3)],
           [1048, 320, flowLabels[7], palette.atlas, grayLevel(2)],
         ].forEach((d) => node(d[0], d[1], d[2], d[3], d[4]));
         if (splitVisible) {
           node(340, 180, "split preserves value", palette.route, grayLevel(1));
         }
         if (lossVisible) {
-          node(340, 530, "loss is explicit", palette.tradeoff, grayLevel(4));
+          node(340, 530, "loss is explicit", palette.tradeoff, grayLevel(2));
           if (!masonryRequired) label(340, 558, flowLabels[2], 14, palette.ink);
         }
         if (bottleneckVisible) {
-          node(795, 205, "bottleneck", palette.damage, grayLevel(4));
+          node(795, 205, "bottleneck", palette.damage, grayLevel(3));
           if (!masonryRequired) label(795, 234, "limits merged flow", 14, palette.ink);
           el("ellipse", { cx: 790, cy: 300, rx: 0, ry: 0, fill: "none", stroke: palette.damage, "stroke-width": 5 });
         }
@@ -2623,7 +2970,11 @@
           const height = 66;
           el("rect", { x, y, width, height, rx: 0, fill: grayLevel(3), stroke: palette.line });
           const filled = Math.max(0, Math.min(width, width * ease(value)));
-          if (filled > 0) el("rect", { x, y, width: filled, height, rx: 0, fill: color });
+          if (filled > 0) {
+            el("rect", { x, y, width: filled, height, rx: 0, fill: grayLevel(5) });
+            const capX = x + Math.max(0, filled - 8);
+            el("rect", { x: capX, y, width: Math.min(8, filled), height, rx: 0, fill: color, stroke: "none" });
+          }
           if (!masonryRequired) label(x + width / 2, y + height / 2 + 5, name, 15, palette.ink);
         };
         meter(86, 500, "input volume", flowProgress, palette.route);
@@ -2647,13 +2998,15 @@
           ...(PACKAGE.visualMechanisms || []),
         ].join(" ").toLowerCase();
         const pluginMotifRequested = /harness plugin|plugin_bundle_cube|packaged harness behavior|installable unit|marketplace|allowlist|npm package|opencode runtime|noisy plugin|versioning|team-wide install/.test(pluginMotifText);
-        const aiAlternativesMotifRequested = /what ai alternatives we have|ai alternatives|atlassian rovo|gemini app|github copilot|claude desktop|claude code|workflow gravity|home base|comparison_grid|radar chart|credit_meter|use-case selector/.test(pluginMotifText);
+        const aiPlatformSignalCount = ["atlassian rovo", "gemini app", "github copilot", "claude desktop", "claude code"].filter((signal) => pluginMotifText.includes(signal)).length;
+        const aiSpecificSignalCount = ["atlassian rovo", "gemini app", "claude desktop", "workflow gravity", "home base", "radar chart", "use-case selector"].filter((signal) => pluginMotifText.includes(signal)).length;
+        const aiAlternativesMotifRequested = !pluginMotifRequested && (/what ai alternatives we have|ai alternatives/.test(pluginMotifText) || (aiPlatformSignalCount >= 2 && aiSpecificSignalCount >= 2));
         if (masonryRequired && aiAlternativesMotifRequested) {
           let aiRectCounter = 0;
           const aRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
             const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] || extra["data-masonry-module"];
             const boxContract = hasBoxContract ? {} : { "data-box-id": `ai-alt-independent-module-${++aiRectCounter}` };
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
           };
           const aLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
             if (progress <= 0) return;
@@ -2855,7 +3208,7 @@
           const pRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
             const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] || extra["data-masonry-module"];
             const boxContract = hasBoxContract ? {} : { "data-box-id": `plugin-independent-module-${++pluginRectCounter}` };
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
           };
           const pLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
             if (progress <= 0) return;
@@ -3125,7 +3478,7 @@
         const guardrailMotifRequested = /shield_gate|agent_loop_ring|input\s*\/\s*output\s*\/\s*action|model armor|risk_score|human approval|policy matrix|guardrail/.test(guardrailMotifText);
         if (masonryRequired && guardrailMotifRequested) {
           const gRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
-            el("rect", { x, y, width, height, rx: 0, fill, stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...extra });
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...extra });
           };
           const gLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
             if (progress <= 0) return;

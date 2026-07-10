@@ -23,6 +23,11 @@ graph TD
 ```
 
 ```mermaid
+flowchart-elk TD
+  Source[Source] --> Styled[Styled]
+```
+
+```mermaid
 swimlane-beta LR
   subgraph team_a [Team A]
     intake[Request]:::csPrimary
@@ -55,6 +60,13 @@ classDiagram
 ```
 
 ```mermaid
+classDiagram-v2
+  class LegacySource:::csMuted
+  class CompatibleOutput:::csSuccess
+  LegacySource --> CompatibleOutput
+```
+
+```mermaid
 stateDiagram-v2
   [*] --> Draft
   Draft --> Review
@@ -76,7 +88,7 @@ stateDiagram
 
 ```mermaid
 erDiagram
-  CUSTOMER ||--o{ ORDER : places
+  CUSTOMER:::csInfo ||--o{ ORDER:::csSpecial : places
   CUSTOMER {
     string id
     string name
@@ -120,7 +132,7 @@ quadrantChart
   quadrant-2 Watch
   quadrant-3 Defer
   quadrant-4 Maintain
-  Primary: [0.7, 0.8]
+  Primary:::csWarning: [0.7, 0.8]
 ```
 
 ```mermaid
@@ -218,14 +230,20 @@ zenuml
 ```
 
 ```mermaid
-sankey-beta
+sankey
   Source,Renderer,10
   Renderer,Styled SVG,8
   Renderer,Report,2
 ```
 
 ```mermaid
-xychart-beta
+sankey-beta
+  Legacy Source,Renderer,6
+  Renderer,Compatible Output,6
+```
+
+```mermaid
+xychart
   title "Base XY chart"
   x-axis [A, B, C]
   y-axis "Value" 0 --> 10
@@ -234,11 +252,27 @@ xychart-beta
 ```
 
 ```mermaid
-block-beta
+xychart-beta
+  title "Compatible XY chart"
+  x-axis [A, B]
+  y-axis "Value" 0 --> 5
+  bar [2, 4]
+```
+
+```mermaid
+block
   columns 3
   A["Primary"] B["Accent"] C["Critical"]
   A-->B
   B-->C
+  class A csPrimary
+```
+
+```mermaid
+block-beta
+  columns 2
+  Legacy["Legacy"] Compatible["Compatible"]
+  Legacy-->Compatible
 ```
 
 ```mermaid
@@ -248,6 +282,13 @@ packet
   +4: "Version"
   +8: "Flags"
   +16: "Length"
+```
+
+```mermaid
+packet-beta
+  title Compatible packet
+  +8: "Header"
+  +24: "Payload"
 ```
 
 ```mermaid
@@ -293,6 +334,13 @@ treemap-beta
 ```
 
 ```mermaid
+treemap
+  "Compatibility"
+    "Legacy": 4
+    "Current": 6
+```
+
+```mermaid
 venn-beta
   title Base overlap
   set A: 10
@@ -307,6 +355,15 @@ ishikawa-beta
       Missing base
     Classes
       Undefined semantic class
+```
+
+```mermaid
+ishikawa
+  Compatibility risk
+    Declaration
+      Legacy alias
+    Validation
+      Exact manifest gate
 ```
 
 ```mermaid

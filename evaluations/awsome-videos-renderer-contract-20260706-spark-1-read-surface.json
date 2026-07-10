@@ -1,0 +1,146 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 6,
+    "bash": 3
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1469
+    },
+    {
+      "path": "outputs/renderer-validation.json",
+      "calls": 1,
+      "resultBytes": 5676
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1,
+      "resultBytes": 1465
+    },
+    {
+      "path": "outputs/cache-story/artifacts/reviews/render-state.json",
+      "calls": 1,
+      "resultBytes": 5320
+    },
+    {
+      "path": "outputs/cache-story/source/brief.md",
+      "calls": 1,
+      "resultBytes": 2407
+    },
+    {
+      "path": "outputs/cache-story/source/package-manifest.json",
+      "calls": 1,
+      "resultBytes": 1873
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1469
+    },
+    {
+      "path": "outputs/renderer-validation.json",
+      "calls": 1,
+      "resultBytes": 5676
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1,
+      "resultBytes": 1465
+    },
+    {
+      "path": "outputs/cache-story/artifacts/reviews/render-state.json",
+      "calls": 1,
+      "resultBytes": 5320
+    },
+    {
+      "path": "outputs/cache-story/source/brief.md",
+      "calls": 1,
+      "resultBytes": 2407
+    },
+    {
+      "path": "outputs/cache-story/source/package-manifest.json",
+      "calls": 1,
+      "resultBytes": 1873
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1469
+    },
+    {
+      "line": 28,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/awsome-videos/scripts/scaffold_production_package.py outputs/cache-story --title \"What Is A Cache Stampede?\" --promise \"Explain cache stampede as many requests missing the same expired ke",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 43,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/check_renderer_contract.py outputs/cache-story/src/index.html --duration 70 --output outputs/cache-story/artifacts/reviews/render-state.json --install-browser --json > outputs/renderer-",
+      "isError": false,
+      "resultBytes": 74
+    },
+    {
+      "line": 59,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'for f in outputs/scaffold-result.json outputs/renderer-validation.json outputs/cache-story/source/brief.md outputs/cache-story/source/package-manifest.json outputs/cache-story/src/index.html outputs/cache-story/artifacts/reviews/r",
+      "isError": false,
+      "resultBytes": 329
+    },
+    {
+      "line": 72,
+      "tool": "read",
+      "path": "outputs/renderer-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5676
+    },
+    {
+      "line": 85,
+      "tool": "read",
+      "path": "outputs/scaffold-result.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1465
+    },
+    {
+      "line": 98,
+      "tool": "read",
+      "path": "outputs/cache-story/artifacts/reviews/render-state.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5320
+    },
+    {
+      "line": 111,
+      "tool": "read",
+      "path": "outputs/cache-story/source/brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2407
+    },
+    {
+      "line": 124,
+      "tool": "read",
+      "path": "outputs/cache-story/source/package-manifest.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1873
+    }
+  ],
+  "findings": []
+}

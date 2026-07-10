@@ -7,7 +7,7 @@ description: Create scene-by-scene composition briefs and selection rationale fo
 
 ## Core Workflow
 
-0. In isolated validation workspaces, read `../prompt.md` directly first when the prompt or harness names it. Do not probe for it with `ls`, `dir`, `find`, `pwd`, `Get-ChildItem`, or `Test-Path`; the prompt is the path contract. Reading `SKILL.md` does not satisfy a prompt-reading requirement. The copied skill lives at `skills/scene-composition-director`, not `../skills/scene-composition-director`; read references from that path when the prompt requests them.
+0. In isolated validation workspaces, read `../prompt.md` directly first when the prompt or harness names it. Do not probe for the prompt, skill bundle, workspace layout, or named output paths with `ls`, `dir`, `find`, `rg`, `rg --files`, `pwd`, `Get-ChildItem`, `Test-Path`, `head`, or equivalent searches; the prompt is the path contract, and expected outputs should be created directly. After reading the prompt, either read a directly required skill file by its known path or write/create the exact requested output path. Reading `SKILL.md` does not satisfy a prompt-reading requirement. The copied skill lives at `skills/scene-composition-director`, not `../skills/scene-composition-director`; read references from that path when the prompt requests them.
 1. Start with a source extraction pass from the current user message. Read `references/source-preservation.md` before designing when the prompt supplies exact scene/shot IDs, scene counts, durations, source anchors, output paths, validator arguments, or an isolated `../prompt.md` source.
 2. Identify the input surface and exact deliverable before designing: storyboard, shot contract, script, narration, product brief, PR video plan, deck outline, or rough scene list. Write exact paths the user names; do not substitute a nicer filename.
 3. Preserve upstream facts. If a scene comes from a `source-to-video-director` storyboard or shot contract, keep shot IDs, durations, source anchors, audience, style constraints, and media constraints intact. Do not invent missing product facts, metrics, file names, quotes, or assets.
@@ -60,3 +60,18 @@ After changing this skill, run:
 ```powershell
 uv run --script scripts/validate-skills.py
 ```
+
+When changing JSON output behavior, also validate at least one representative plan with:
+
+```powershell
+uv run --script .agents/skills/scene-composition-director/scripts/validate_scene_composition_plan.py --plan <plan> --expect-scenes <count> --require-anchor "<literal source anchor>"
+```
+
+For isolated forward tests, prefer the checked prompt files that name exact output paths and validator arguments:
+
+```powershell
+uv run --script scripts/run-pi-skill-eval.py scene-composition-director --prompt-file evaluations/pi-prompts/scene-composition-director-zero-padding-gray.md --mode json --expect-output projects/zero-padding-composition/composition-plan.json
+uv run --script scripts/run-pi-skill-eval.py scene-composition-director --prompt-file evaluations/pi-prompts/scene-composition-director-metro-hard-edge.md --mode json --expect-output projects/metro-composition-director-validation/composition-plan.json
+```
+
+When using SkillOpt or SkillOpt-Sleep on this skill, train only from reviewed tasks that include exact output paths plus validator flags. Do not adopt proposals mined from unreviewed sessions unless the generated plan passes the bundled validator with the same strict prompt arguments.

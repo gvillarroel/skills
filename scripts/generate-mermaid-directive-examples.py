@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import textwrap
+from collections import Counter
 from pathlib import Path
 
 
@@ -15,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / ".agents" / "skills"
 SOURCE_DIR = SKILLS / "mermaid-animated-svg" / "assets" / "examples" / "mermaid"
 OUTPUT_DIR = SKILLS / "mermaid-animated-svg" / "assets" / "examples" / "mermaid-animation-directives" / "by-type"
+COVERAGE_MANIFEST = SKILLS / "mermaid-animated-svg" / "references" / "diagram-family-coverage.json"
 
 
 EXAMPLES = [
@@ -599,7 +601,7 @@ EXAMPLES = [
     },
     {
         "slug": "treeview-directory-scan",
-        "type": "Treeview",
+        "type": "TreeView",
         "source": "treeview",
         "critique": "Labels are exact text targets; branch lines are only emphasized as a group because text-selected folder candidates can overlap line containers.",
         "directives": """
@@ -750,11 +752,138 @@ EXAMPLES = [
             %% @animate at return-text.end hide token effect=fade duration=180ms
         """,
     },
+    {
+        "slug": "swimlane-review-handoff",
+        "type": "Swimlane",
+        "source": "swimlane",
+        "frames": False,
+        "critique": "Swimlane exposes flowchart-compatible node and edge IDs; keep lane geometry visible and animate the cross-lane handoff through exact IDs.",
+        "directives": """
+            %% @animate v1 duration=5.2s default-duration=300ms
+            %% @animate target draft = id:my-svg-flowchart-draft-0
+            %% @animate target review = id:my-svg-flowchart-review-1
+            %% @animate target render = id:my-svg-flowchart-render-2
+            %% @animate target validate = id:my-svg-flowchart-validate-3
+            %% @animate target publish = id:my-svg-flowchart-publish-4
+            %% @animate target draft-review = id:my-svg-L_draft_review_0
+            %% @animate target review-render = id:my-svg-L_review_render_0
+            %% @animate target render-validate = id:my-svg-L_render_validate_0
+            %% @animate target validate-publish = id:my-svg-L_validate_publish_0
+            %% @animate target approved-label = id:edge-label-review-render-L_review_render_0
+            %% @animate group workflow = draft, review, render, validate, publish
+            %% @animate point draft-out = draft.right
+            %% @animate point review-in = review.left
+            %% @animate point render-in = render.left
+            %% @animate point validate-in = validate.left
+            %% @animate point publish-in = publish.left
+            %% @animate mark handoff at draft-out shape=dot size=8 fill=#007298
+            %% @animate at 0ms reveal workflow mode=sequence gap=180ms effect=pop name=show-workflow
+            %% @animate at show-workflow.end trace draft-review duration=380ms name=trace-review
+            %% @animate at trace-review.end move handoff to review-in duration=420ms ease=out name=to-review
+            %% @animate at to-review.end trace review-render duration=420ms name=trace-approved
+            %% @animate at trace-approved.end reveal approved-label effect=fade duration=180ms
+            %% @animate at trace-approved.end move handoff to render-in duration=480ms ease=out name=to-render
+            %% @animate at to-render.end trace render-validate duration=380ms name=trace-validate
+            %% @animate at trace-validate.end move handoff to validate-in duration=420ms ease=out name=to-validate
+            %% @animate at to-validate.end trace validate-publish duration=380ms name=trace-publish
+            %% @animate at trace-publish.end move handoff to publish-in duration=420ms ease=out name=to-publish
+            %% @animate at to-publish.end pulse publish scale=1.05 stroke=#45842a duration=320ms
+        """,
+    },
+    {
+        "slug": "cynefin-domain-response",
+        "type": "Cynefin",
+        "source": "cynefin",
+        "frames": False,
+        "critique": "Cynefin currently exposes stable family-level classes rather than per-item IDs, so reveal the framework in layers and reserve precise item semantics for future selectors.",
+        "directives": """
+            %% @animate v1 duration=4.8s default-duration=320ms
+            %% @animate target backgrounds = css:.cynefin-backgrounds
+            %% @animate target boundaries = css:.cynefin-boundaries
+            %% @animate target labels = css:.cynefin-labels
+            %% @animate target items = css:.cynefin-items
+            %% @animate target arrows = css:.cynefin-arrows
+            %% @animate target confusion = css:.cynefinConfusion
+            %% @animate group framework = backgrounds, boundaries
+            %% @animate at 0ms reveal framework mode=together effect=fade duration=420ms name=show-framework
+            %% @animate at show-framework.end reveal labels effect=fade duration=320ms name=show-labels
+            %% @animate at show-labels.end reveal items effect=pop duration=520ms name=show-items
+            %% @animate at show-items.end trace arrows duration=720ms name=trace-response
+            %% @animate at trace-response.end pulse confusion scale=1.025 stroke=#9e1b32 duration=420ms restore=true
+        """,
+    },
+    {
+        "slug": "railroad-artifact-rule",
+        "type": "Railroad",
+        "source": "railroad",
+        "frames": False,
+        "critique": "Railroad emits reliable grammar-role classes but no per-token IDs; class-scoped construction preserves grammar geometry while exposing the need for rule/token selectors.",
+        "directives": """
+            %% @animate v1 duration=4.8s default-duration=300ms
+            %% @animate target rule-name = css:.railroad-rule-name-group
+            %% @animate target start = css:.railroad-start
+            %% @animate target finish = css:.railroad-end
+            %% @animate target terminals = css:.railroad-terminal
+            %% @animate target nonterminals = css:.railroad-nonterminal
+            %% @animate target lines = css:.railroad-line
+            %% @animate target choice = css:.railroad-choice
+            %% @animate group frame = rule-name, start, finish
+            %% @animate at 0ms reveal frame mode=together effect=fade duration=300ms name=show-frame
+            %% @animate at show-frame.end reveal terminals mode=sequence gap=150ms effect=pop name=show-terminals
+            %% @animate at show-terminals.end reveal nonterminals effect=pop duration=300ms name=show-nonterminals
+            %% @animate at show-nonterminals.end trace lines duration=850ms name=draw-rule
+            %% @animate at draw-rule.end pulse choice scale=1.025 stroke=#007298 duration=420ms restore=true
+        """,
+    },
 ]
 
 
 def directive_block(raw: str) -> str:
     return "\n".join(line.rstrip() for line in textwrap.dedent(raw).strip().splitlines())
+
+
+def load_coverage_by_label() -> dict[str, dict[str, object]]:
+    manifest = json.loads(COVERAGE_MANIFEST.read_text(encoding="utf-8"))
+    if manifest.get("requiredFamilyCount") != 31:
+        raise ValueError("Mermaid family coverage manifest must require exactly 31 families.")
+    families = manifest.get("families")
+    if not isinstance(families, list) or len(families) != 31:
+        raise ValueError("Mermaid family coverage manifest must contain exactly 31 families.")
+    labels = [str(family.get("label")) for family in families if isinstance(family, dict)]
+    duplicate_labels = sorted(label for label, count in Counter(labels).items() if count > 1)
+    if duplicate_labels:
+        raise ValueError(f"Duplicate Mermaid family labels: {', '.join(duplicate_labels)}")
+    return {str(family["label"]): family for family in families}
+
+
+def validate_examples(coverage_by_label: dict[str, dict[str, object]]) -> None:
+    labels = [example["type"] for example in EXAMPLES]
+    duplicate_labels = sorted(label for label, count in Counter(labels).items() if count > 1)
+    if duplicate_labels:
+        raise ValueError(f"Duplicate by-type directive families: {', '.join(duplicate_labels)}")
+    expected = set(coverage_by_label)
+    actual = set(labels)
+    missing = sorted(expected - actual)
+    unexpected = sorted(actual - expected)
+    if missing or unexpected:
+        raise ValueError(
+            "By-type directive coverage must exactly match the 31-family manifest; "
+            f"missing={missing}, unexpected={unexpected}"
+        )
+    for example in EXAMPLES:
+        family = coverage_by_label[example["type"]]
+        if example["source"] != family["source"]:
+            raise ValueError(
+                f"{example['type']} source must be {family['source']!r}, found {example['source']!r}"
+            )
+        if example["slug"] != family["directiveSlug"]:
+            raise ValueError(
+                f"{example['type']} slug must be {family['directiveSlug']!r}, found {example['slug']!r}"
+            )
+        for suffix in (".mmd", ".md"):
+            source_path = SOURCE_DIR / f"{example['source']}{suffix}"
+            if not source_path.is_file():
+                raise FileNotFoundError(f"Missing canonical Mermaid source: {source_path}")
 
 
 def write_example(example: dict[str, str]) -> None:
@@ -768,9 +897,10 @@ def write_example(example: dict[str, str]) -> None:
     )
 
 
-def write_manifest() -> None:
+def write_manifest(coverage_by_label: dict[str, dict[str, object]]) -> None:
     manifest = [
         {
+            "family": coverage_by_label[example["type"]]["id"],
             "slug": example["slug"],
             "type": example["type"],
             "source": f".agents/skills/mermaid-animated-svg/assets/examples/mermaid/{example['source']}.mmd",
@@ -778,6 +908,7 @@ def write_manifest() -> None:
                 ".agents/skills/mermaid-animated-svg/assets/examples/"
                 f"mermaid-animation-directives/by-type/{example['slug']}.mmd"
             ),
+            "frames": bool(example.get("frames", True)),
             "critique": example["critique"],
         }
         for example in EXAMPLES
@@ -802,10 +933,12 @@ def write_critique() -> None:
 
 
 def main() -> int:
+    coverage_by_label = load_coverage_by_label()
+    validate_examples(coverage_by_label)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     for example in EXAMPLES:
         write_example(example)
-    write_manifest()
+    write_manifest(coverage_by_label)
     write_critique()
     print(f"Wrote {len(EXAMPLES)} directive examples to {OUTPUT_DIR.relative_to(ROOT)}")
     return 0

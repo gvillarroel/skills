@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "callCount": 3,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false
+    },
+    {
+      "line": 31,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/html-d3-anime-video-workflow/scripts/validate_metro_pattern_smoke.py --output projects/metro-pattern-smoke-runtime/artifacts/reviews/pattern-smoke.json --workdir projects/metro-pattern-smoke-runtime/artifacts/reviews/pattern-smoke-work --patterns scenario-tree --no-install-browser --timeout-seconds 180 --masonry-layout",
+      "isError": false
+    },
+    {
+      "line": 44,
+      "tool": "read",
+      "path": "projects/metro-pattern-smoke-runtime/artifacts/reviews/pattern-smoke.json",
+      "command": null,
+      "isError": false
+    }
+  ],
+  "findings": []
+}

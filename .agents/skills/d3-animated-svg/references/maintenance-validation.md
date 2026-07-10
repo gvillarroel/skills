@@ -37,11 +37,15 @@ Verify that:
 
 - all cards render
 - each card has exactly one replay control
-- sampled replay buttons restart only their target card
+- release replay checks restart every target card in isolation; sampled replay remains acceptable for a fast smoke check
 - repeated replay does not duplicate marks or listeners
 - desktop and mobile screenshots keep text and controls readable
 
 For large galleries, create contact sheets and run an explicit visual critique pass by example or batch before final validation. Integrate the critique centrally when possible: shared token ramps, label halos, axis/grid contrast, and replay-safe post-render polish should handle recurring issues before adding one-off chart fixes.
+
+Generate the full settled-frame review with `scripts/review_gallery_visuals.py` for desktop and mobile viewports. Keep its cards, contact sheets, JSON, and Markdown reports under `projects/<project-id>/artifacts/`; do not commit generated review media.
+
+Before release, validate reference and index coverage with `uv run --script .agents/skills/d3-animated-svg/scripts/extract_gallery_pattern_references.py --check-only --expected 224`.
 
 ## Composition Sheet Changes
 

@@ -30,6 +30,7 @@ description: Improve and run end-to-end video production workflows built from HT
 7. Before choosing D3 examples, reusing previous scenes, or coding a beat, design the visual metaphor. Write the concept claim, the causal mechanic, two or three candidate metaphors, the rejected alternatives, the chosen visual vocabulary, and the exact repeated roles for shapes, colors, motion, and layout. Reuse an old visual pattern only when it preserves the same semantic role.
 8. Read `references/visual-metaphor-design.md` when designing a new concept video, redesigning a weak beat, or responding to feedback that a scene feels generic, copied, decorative, or text-dependent.
 9. Read `references/metro-minimal-tonal-motion.md` when the request mentions Metro Minimal Tonal Motion, colorset1, colorset2, strict-grid, hard edges, no rounded borders, no padding, grayscale hierarchy, Masonry, megacanvas, camera movement, or design feedback that the output is not aligned with the design.
+   - Use the bundled `references/metro-design-profile.json` as the runtime palette and geometry source of truth. It records hashes of the source `style.md`, `colorset1.yml`, and `colorset2.yaml`; do not replace it with a hand-written palette. Recompile it with `scripts/compile_metro_design_profile.py` when those source files change.
    - When the user says the video is not following the design, treat the current artifact as rejected. Recompose from the design contract before re-rendering: remove title/caption/date bands, remove padded boxes and rounded geometry, restore colorset1 gray hierarchy, prove modular alignment, and add camera or block-based transitions that preserve the megacanvas structure.
 10. Read `references/visual-density-pattern-bank.md` when the request asks for more complex, dynamic, information-dense, visual rather than textual, pattern-based, or D3-influenced videos. Use it before accepting a scaffold that otherwise looks like boxes plus labels. For Metro redesign, run or inspect the wrapper's `metroPatternMix` from `scripts/plan_metro_pattern_mix.py` and require at least six named density patterns, three used beat patterns, five functional zones, four semantic motion systems, three camera events, three transition contracts, at least two transition types, one modular transition type such as tile morph, masked reframe, surface wipe, masonry construction, or expanding block, zero internal padding, 0-radius geometry, grayscale hierarchy, and `reusableD3PatternIds` when the mix maps to existing D3 patterns before accepting the design direction.
    - Treat named visual anchors from `design/videos.md` as render contracts. If a module names motifs such as `probability_bars`, `passN_grid`, `test_runner`, context-window shifts, judge/rubric cards, `agent_loop_ring`, `context_window_box`, fixed workflow versus adaptive agent lanes, environment changes, Model + Tools + State + Loop modules, `shield_gate`, Input/Output/Action gates, prompt bubble versus hard gate, Model Armor filter lanes, `risk_score`, human approval, protected `.env`/destructive/deploy actions, safety-versus-friction balance, policy matrix cues, `comparison_grid`, runtime stack, engine-to-dashboard morph, same model in different harness shells, three-column harness cards, `credit_meter`, feature grid versus use-case matrix, highlighted selection path, `event_timeline`, lifecycle event pulse, Hook `shield_gate` overlay, GitHub hook badges, Claude event cloud, OpenCode event list, PreToolUse command block, log-filter path, token-savings counter, speed-vs-cost slider, lifecycle-controls stamp, Atlassian Rovo, Gemini App, GitHub Copilot, Claude Desktop or Claude Code, workflow gravity, home-base workspace blocks, radar chart, use-case selector, guardrails, permissions, or observability wraps, those motifs must appear as visible low-text geometry in the final MP4 and contact sheet, not merely as preserved source strings in JSON.
@@ -83,6 +84,8 @@ After changing this skill, run:
 ```powershell
 uv run --script scripts/validate-skills.py
 ```
+
+For SkillOpt or SkillOpt-Sleep maintenance, use reviewed task files or exact `pi` prompts with required output paths and scoring commands. Do not auto-adopt mined session proposals unless the candidate passes the prompt-contract wrapper report plus the relevant Metro audits. A no-edit SkillOpt result with `baseline: 0` and `candidate: 0` means the harvested tasks lacked enough scoring signal for this skill, not that the skill is optimal; add or repair the task gate instead of weakening runtime instructions.
 
 When changing standalone scaffold patterns, wrapper label extraction, source-preservation fields, or derived render-state defaults, also run:
 
@@ -143,6 +146,15 @@ uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_metro_
 ```
 
 Inspect the generated manifest and prompt files. Each prompt should require `prompt-contract-build.json`, `render-state-check.json`, `metro-audit-suite.json`, `metro-video-composition-audit.json`, and `metro-semantic-density-audit.json` so a design-repair batch is validated from source package through encoded MP4.
+
+When the source design or palette files change, refresh the self-contained runtime profile first:
+
+```powershell
+uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/compile_metro_design_profile.py --style design/style.md --colorset1 design/colorset1.yml --colorset2 design/colorset2.yaml --output .agents/skills/html-d3-anime-video-workflow/references/metro-design-profile.json
+uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/validate_metro_design_profile.py --style design/style.md --colorset1 design/colorset1.yml --colorset2 design/colorset2.yaml --output projects/<project-id>/artifacts/reviews/metro-design-profile-validation.json
+```
+
+The profile must pass and its digest must appear in generated series prompts and tonal-audit reports. `--allow-colorset2` is valid only with a non-empty `--colorset2-reason`; it still permits only colors declared by the compiled colorset2 source.
 
 When changing standalone scaffold geometry, gray hierarchy, zero-padding normalization, or selected-pattern rendering, also run the no-video cross-pattern smoke:
 

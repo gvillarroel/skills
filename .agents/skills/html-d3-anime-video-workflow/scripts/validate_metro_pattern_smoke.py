@@ -9,6 +9,8 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import os
+import signal
 import subprocess
 import sys
 import tempfile
@@ -143,6 +145,45 @@ def write_scaffold(helper: Any, pattern: str, project_root: Path, *, masonry_lay
     return {"args": args, "paths": paths, "package": package}
 
 
+def kill_process_tree(process: subprocess.Popen[str]) -> None:
+    if process.poll() is not None:
+        return
+    if sys.platform.startswith("win"):
+        subprocess.run(
+            ["taskkill", "/F", "/T", "/PID", str(process.pid)],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        return
+    try:
+        os.killpg(os.getpgid(process.pid), signal.SIGKILL)
+    except ProcessLookupError:
+        return
+
+
+def run_command_with_tree_timeout(command: list[str], timeout_seconds: int) -> subprocess.CompletedProcess[str]:
+    popen_kwargs: dict[str, Any] = {
+        "text": True,
+        "stdout": subprocess.PIPE,
+        "stderr": subprocess.PIPE,
+    }
+    if sys.platform.startswith("win"):
+        popen_kwargs["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP
+    else:
+        popen_kwargs["start_new_session"] = True
+    process = subprocess.Popen(command, **popen_kwargs)
+    try:
+        stdout, stderr = process.communicate(timeout=timeout_seconds)
+    except subprocess.TimeoutExpired as exc:
+        kill_process_tree(process)
+        stdout, stderr = process.communicate(timeout=10)
+        exc.stdout = stdout
+        exc.stderr = stderr
+        raise
+    return subprocess.CompletedProcess(command, process.returncode, stdout, stderr)
+
+
 def run_suite(
     *,
     html: Path,
@@ -165,7 +206,36 @@ def run_suite(
     ]
     if not install_browser:
         command.append("--no-install-browser")
-    result = subprocess.run(command, text=True, capture_output=True, check=False, timeout=timeout_seconds * 4)
+    try:
+        result = run_command_with_tree_timeout(command, timeout_seconds * 2)
+    except subprocess.TimeoutExpired as exc:
+        timeout_manifest = {
+            "passed": False,
+            "html": html.as_posix(),
+            "sourcePackage": source_package.as_posix(),
+            "findings": [
+                {
+                    "code": "metro-pattern-smoke-suite-timeout",
+                    "message": f"run_metro_audit_suite.py exceeded {timeout_seconds * 2} seconds.",
+                }
+            ],
+            "timedOut": True,
+        }
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(json.dumps(timeout_manifest, indent=2), encoding="utf-8")
+        return {
+            "command": command,
+            "returnCode": None,
+            "stdoutTail": (exc.stdout or "")[-1000:] if isinstance(exc.stdout, str) else "",
+            "stderrTail": (exc.stderr or "")[-1000:] if isinstance(exc.stderr, str) else "",
+            "manifest": output.as_posix(),
+            "manifestPassed": False,
+            "findings": timeout_manifest["findings"],
+            "stylePassed": None,
+            "compositionPassed": None,
+            "renderedFramePassed": None,
+            "timedOut": True,
+        }
     try:
         manifest = json.loads(output.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -337,8 +407,8 @@ def validate_patterns(
 ) -> dict[str, Any]:
     helper = load_helper()
     cases: list[dict[str, Any]] = []
-    for pattern in patterns:
-        project_root = workdir / pattern
+
+    def run_pattern(pattern: str, project_root: Path) -> dict[str, Any]:
         scaffold = write_scaffold(helper, pattern, project_root, masonry_layout=masonry_layout)
         paths = scaffold["paths"]
         report_dir = project_root / "artifacts" / "reviews"
@@ -356,16 +426,33 @@ def validate_patterns(
             and suite.get("manifestPassed") is True
             and rendered_metrics.get("passed") is True
         )
-        cases.append(
-            {
-                "pattern": pattern,
-                "passed": passed,
-                "html": paths["html"].as_posix(),
-                "sourcePackage": paths["source_package"].as_posix(),
-                "suite": suite,
-                "renderedMetrics": rendered_metrics,
-            }
-        )
+        return {
+            "pattern": pattern,
+            "passed": passed,
+            "html": paths["html"].as_posix(),
+            "sourcePackage": paths["source_package"].as_posix(),
+            "suite": suite,
+            "renderedMetrics": rendered_metrics,
+        }
+
+    for pattern in patterns:
+        cases.append(run_pattern(pattern, workdir / pattern))
+
+    for index, case in enumerate(cases):
+        if case.get("passed") is True:
+            continue
+        pattern = str(case.get("pattern"))
+        retry_case = run_pattern(pattern, workdir / f"{pattern}-retry")
+        retry_case["retriedAfterFailure"] = True
+        retry_case["initialFailure"] = {
+            "suiteReturnCode": (case.get("suite") or {}).get("returnCode") if isinstance(case.get("suite"), dict) else None,
+            "suiteFindings": (case.get("suite") or {}).get("findings") if isinstance(case.get("suite"), dict) else None,
+            "renderedMetrics": case.get("renderedMetrics"),
+        }
+        if retry_case.get("passed") is True:
+            cases[index] = retry_case
+        else:
+            case["retry"] = retry_case
     failed = [case for case in cases if not case.get("passed")]
     return {
         "passed": not failed,

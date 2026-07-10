@@ -42,6 +42,18 @@ def assert_true(condition: bool, message: str) -> None:
 
 def main() -> int:
     styler = load_styler()
+    assert_true(len(styler.OFFICIAL_FAMILIES) == 31, "Mermaid 11.16.0 public family denominator must remain 31.")
+    assert_true(len(styler.OFFICIAL_DECLARATIONS) == 40, "Mermaid 11.16.0 current declaration denominator must remain 40.")
+    assert_true(len(styler.SUPPORTED_DECLARATIONS) == 48, "Mermaid 11.16.0 renderable declaration denominator must remain 48.")
+    assert_true(len(styler.CLASSDEF_FAMILIES) == 9, "Exactly nine Mermaid 11.16.0 families document inline classDef support.")
+    assert_true("architecture" not in styler.SUPPORTED_DECLARATIONS, "The detector-only architecture shorthand must not count as renderable coverage.")
+    assert_true("architecture-beta" in styler.SUPPORTED_DECLARATIONS, "The renderable architecture-beta declaration must remain covered.")
+    assert_true(styler.canonical_family("xychart") == "xyChart", "Stable xychart must receive XY-specific theme variables.")
+    assert_true(styler.canonical_family("flowchart-elk") == "flowchart", "flowchart-elk must retain flowchart class support.")
+    assert_true(styler.canonical_family("classDiagram-v2") == "classDiagram", "classDiagram-v2 must retain class support.")
+    quadrant_class = styler.class_style("colorset2", "csPrimary", "quadrantChart")
+    assert_true("stroke-color:" in quadrant_class, "Quadrant classDef must use stroke-color.")
+    assert_true(" fill:" not in quadrant_class and "stroke:" not in quadrant_class, "Quadrant classDef must not use generic fill/stroke properties.")
     theme = styler.theme_variables("colorset2", "sequenceDiagram")
     assert_true("fontFamily" not in theme, "Mermaid 11.16.0 ignores themeVariables when fontFamily is present.")
     assert_true(theme["actorBkg"] == styler.PALETTES["colorset2"]["primary_light"], "Sequence actors should visibly carry the colorset primary fill.")
@@ -96,9 +108,17 @@ flowchart LR
         )
         assert_true(result.returncode == 0, result.stderr or result.stdout)
         data = json.loads(report1.read_text(encoding="utf-8"))
-        assert_true(data["diagramCount"] >= len(styler.OFFICIAL_DECLARATIONS), "Expected all official declarations to be represented.")
-        for declaration in styler.OFFICIAL_DECLARATIONS:
-            assert_true(declaration in data["declarationsSeen"], f"Missing fixture declaration: {declaration}")
+        assert_true(data["diagramCount"] == len(styler.SUPPORTED_DECLARATIONS), "Fixture must contain exactly one block per accepted declaration.")
+        assert_true(data["declarationsSeen"] == sorted(styler.SUPPORTED_DECLARATIONS), "Fixture declaration set must exactly match the manifest.")
+        assert_true(data["familiesSeen"] == sorted(styler.OFFICIAL_FAMILIES), "Fixture family set must exactly match the manifest.")
+        assert_true(data["missingFamilies"] == [], "Fixture must cover every public Mermaid family.")
+        assert_true(data["missingOfficialDeclarations"] == [], "Fixture must cover every current Mermaid declaration.")
+        assert_true(data["missingSupportedDeclarations"] == [], "Fixture must cover every accepted Mermaid declaration.")
+        assert_true(data["duplicateSupportedDeclarations"] == [], "Fixture must not duplicate accepted declarations.")
+        assert_true(data["unexpectedDeclarations"] == [], "Fixture must not contain untracked declarations.")
+        assert_true(data["familyCoveragePercent"] == 100.0, "Family coverage must be 100 percent.")
+        assert_true(data["officialDeclarationCoveragePercent"] == 100.0, "Current declaration coverage must be 100 percent.")
+        assert_true(data["supportedDeclarationCoveragePercent"] == 100.0, "Accepted declaration coverage must be 100 percent.")
         fixture_classes = {class_name for diagram in data["diagrams"] for class_name in diagram["referenced_classes"]}
         assert_true(fixture_classes == styler.COLOR_CLASSES, f"Fixture should reference every supported color class: {sorted(fixture_classes)}")
         assert_true(data["changedFileCount"] > 0, "First write should change copied fixtures.")
@@ -113,6 +133,13 @@ flowchart LR
                 assert_true(not skipped, f"ClassDef-capable family should not skip classes: {diagram}")
             else:
                 assert_true(not inserted, f"Non-classDef family received classDefs: {diagram}")
+
+        quadrant_diagram = next(diagram for diagram in data["diagrams"] if diagram["family"] == "quadrantChart")
+        assert_true(quadrant_diagram["inserted_class_defs"] == ["csWarning"], "Quadrant fixture must exercise family-specific classDef insertion.")
+        er_diagram = next(diagram for diagram in data["diagrams"] if diagram["family"] == "erDiagram")
+        assert_true(er_diagram["inserted_class_defs"] == ["csInfo", "csSpecial"], "ER fixture must exercise documented classDef support.")
+        block_diagram = next(diagram for diagram in data["diagrams"] if diagram["diagram_type"] == "block")
+        assert_true(block_diagram["inserted_class_defs"] == ["csPrimary"], "Block fixture must exercise documented classDef support.")
 
         report_check = Path(tmp) / "colorset1-check.json"
         result = run_command(

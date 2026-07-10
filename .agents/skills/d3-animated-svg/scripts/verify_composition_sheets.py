@@ -262,7 +262,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("source", nargs="?", default=str(DEFAULT_SOURCE), help="Composition sheets HTML file, file URL, or HTTP URL.")
     parser.add_argument("--expected-sheets", type=int, default=7)
     parser.add_argument("--min-variants", type=int, default=70)
-    parser.add_argument("--expected-reviewed-patterns", type=int, default=219)
+    parser.add_argument("--expected-reviewed-patterns", type=int, default=224)
     parser.add_argument("--required-variant", default="d3-composition-radial-rosette-force-network")
     parser.add_argument("--viewport", type=parse_viewport, default=(1366, 900))
     parser.add_argument("--wait-ms", type=int, default=600)

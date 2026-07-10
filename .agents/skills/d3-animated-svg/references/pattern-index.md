@@ -36,6 +36,15 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-pattern-agent-loop-partial-covers` | Image Overlay | Agent Loop Partial Covers | `references/patterns/agent-loop-partial-covers.md` |
 | `d3-pattern-asymmetric-task-overlap` | Set Overlap | Asymmetric Task Overlap | `references/patterns/asymmetric-task-overlap.md` |
 | `d3-pattern-asymmetric-task-overlap-saturated` | Set Overlap | Saturated Task Overlap | `references/patterns/asymmetric-task-overlap-saturated.md` |
+| `d3-pattern-venn-three-circle` | Set Overlap | Venn Three Circle | `references/patterns/venn-three-circle.md` |
+| `d3-pattern-venn-five-overlap` | Set Overlap | Venn Five Overlap | `references/patterns/venn-five-overlap.md` |
+| `d3-pattern-venn-seven-overlap` | Set Overlap | Venn Seven Overlap | `references/patterns/venn-seven-overlap.md` |
+| `d3-pattern-symmetric-three-circle-rosette` | Symmetric Overlap | Symmetric Three Circle Rosette | `references/patterns/symmetric-three-circle-rosette.md` |
+| `d3-pattern-symmetric-five-circle-rosette` | Symmetric Overlap | Symmetric Five Circle Rosette | `references/patterns/symmetric-five-circle-rosette.md` |
+| `d3-pattern-symmetric-seven-circle-flower` | Symmetric Overlap | Symmetric Seven Circle Flower | `references/patterns/symmetric-seven-circle-flower.md` |
+| `d3-pattern-asymmetric-three-circle-chain` | Asymmetric Overlap | Asymmetric Three Circle Chain | `references/patterns/asymmetric-three-circle-chain.md` |
+| `d3-pattern-asymmetric-five-circle-cluster` | Asymmetric Overlap | Asymmetric Five Circle Cluster | `references/patterns/asymmetric-five-circle-cluster.md` |
+| `d3-pattern-asymmetric-seven-circle-bridge` | Asymmetric Overlap | Asymmetric Seven Circle Bridge | `references/patterns/asymmetric-seven-circle-bridge.md` |
 | `d3-pattern-sankey` | Flow | Sankey Pipeline | `references/patterns/sankey.md` |
 | `d3-pattern-d3-flowchart-dag` | Diagram | D3 Flowchart DAG | `references/patterns/d3-flowchart-dag.md` |
 | `d3-pattern-d3-sequence-lifelines` | Diagram | D3 Sequence Lifelines | `references/patterns/d3-sequence-lifelines.md` |

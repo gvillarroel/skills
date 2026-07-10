@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "skill": "d3-composition-evaluator",
+  "caseId": "service-dependency-naturalistic",
+  "caseKind": "naturalistic-forward",
+  "date": "2026-07-09",
+  "model": "openai-codex/gpt-5.3-codex-spark",
+  "prompt": "evaluations/pi-prompts/d3-composition-evaluator-naturalistic.md",
+  "expectedArtifact": "reports/service-dependency-review.md",
+  "repetitions": 3,
+  "requiredPasses": 2,
+  "passedRepetitions": 3,
+  "passed": true,
+  "independentChecks": [
+    "exact artifact ID present",
+    "one overall score out of 100 present",
+    "artifact length at least 400 characters",
+    "no recommendation to add or remove data nodes, links, or entities",
+    "strict harness result passed"
+  ],
+  "runs": [
+    {
+      "runId": "20260709-d3-composition-evaluator-naturalistic-spark-1",
+      "passed": true,
+      "reportedScore": 74,
+      "totalTokens": 16724,
+      "totalReadResultBytes": 4043,
+      "policyReadPaths": [
+        "../prompt.md",
+        "reports/service-dependency-review.md"
+      ]
+    },
+    {
+      "runId": "20260709-d3-composition-evaluator-naturalistic-spark-2",
+      "passed": true,
+      "reportedScore": 84,
+      "totalTokens": 15365,
+      "totalReadResultBytes": 4225,
+      "policyReadPaths": [
+        "../prompt.md",
+        "reports/service-dependency-review.md"
+      ]
+    },
+    {
+      "runId": "20260709-d3-composition-evaluator-naturalistic-spark-3",
+      "passed": true,
+      "reportedScore": 78,
+      "totalTokens": 14994,
+      "totalReadResultBytes": 4619,
+      "policyReadPaths": [
+        "../prompt.md",
+        "reports/service-dependency-review.md"
+      ]
+    }
+  ]
+}

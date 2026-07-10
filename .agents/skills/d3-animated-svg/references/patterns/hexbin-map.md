@@ -24,6 +24,7 @@ function renderHexbinMap() {
     const projection = d3.geoNaturalEarth1().fitExtent([[54, 54], [506, 336]], { type: "Sphere" });
     const path = d3.geoPath(projection);
     svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.gray100).attr("stroke", palette.gray200);
+    appendSchematicLand(svg, path, palette.surface);
     const points = d3.range(90).map(i => projection([-125 + ((i * 29) % 255), -52 + ((i * 43 + i * 2) % 104)])).filter(Boolean);
     const size = 26;
     const bins = d3.rollups(points, v => v.length, p => `${Math.round(p[0] / (size * .86))},${Math.round(p[1] / (size * .75))}`)
@@ -40,5 +41,9 @@ function renderHexbinMap() {
     const cells = svg.append("g").selectAll("path").data(bins).join("path")
       .attr("d", d => `${d3.line()(hex(d))}Z`).attr("fill", d => color(d.count)).attr("fill-opacity", .78).attr("stroke", "#fff").attr("stroke-width", 1.2);
     fadeIn(cells, .08, .6);
+    const legend = svg.append("g").attr("transform", "translate(64,370)");
+    ramps.heat.forEach((colorValue, index) => legend.append("rect").attr("x", index * 38).attr("width", 38).attr("height", 12).attr("fill", colorValue));
+    legend.append("text").attr("class", "caption").attr("x", 0).attr("y", -6).text("low density");
+    legend.append("text").attr("class", "caption").attr("x", ramps.heat.length * 38).attr("y", -6).attr("text-anchor", "end").text("high density");
   }
 ```

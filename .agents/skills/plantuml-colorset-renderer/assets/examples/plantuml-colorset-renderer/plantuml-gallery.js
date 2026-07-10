@@ -1,26 +1,4 @@
-const examples = [
-  { id: "sequence", kicker: "UML", title: "Sequence", source: "sequence.puml", copy: "Actor, participant, database, and request/response flow.", size: "wide" },
-  { id: "usecase", kicker: "UML", title: "Use Case", source: "usecase.puml", copy: "Actors, system boundary, and extension relation." },
-  { id: "class", kicker: "UML", title: "Class", source: "class.puml", copy: "Classes, fields, methods, and multiplicity." },
-  { id: "object", kicker: "UML", title: "Object", source: "object.puml", copy: "Runtime object instances and links." },
-  { id: "activity", kicker: "UML", title: "Activity", source: "activity.puml", copy: "Start, decisions, actions, and stop." },
-  { id: "component", kicker: "UML", title: "Component", source: "component.puml", copy: "Services, database, queue, and dependencies.", size: "wide" },
-  { id: "deployment", kicker: "UML", title: "Deployment", source: "deployment.puml", copy: "Cluster nodes, storage, and database topology.", size: "wide" },
-  { id: "state", kicker: "UML", title: "State", source: "state.puml", copy: "State machine with submit, approve, and change paths." },
-  { id: "timing", kicker: "UML", title: "Timing", source: "timing.puml", copy: "Robust and concise timeline states.", size: "wide" },
-  { id: "json", kicker: "Data", title: "JSON", source: "json.puml", copy: "Structured object data rendering." },
-  { id: "yaml", kicker: "Data", title: "YAML", source: "yaml.puml", copy: "Nested mapping and list data rendering." },
-  { id: "nwdiag", kicker: "Network", title: "nwdiag", source: "nwdiag.puml", copy: "Two-network topology with shared hosts.", size: "wide" },
-  { id: "salt", kicker: "Wireframe", title: "Salt", source: "salt.puml", copy: "Wireframe login form fixture." },
-  { id: "archimate", kicker: "Architecture", title: "ArchiMate", source: "archimate.puml", copy: "Business, application, and technology nodes." },
-  { id: "gantt", kicker: "Planning", title: "Gantt", source: "gantt.puml", copy: "Serial discovery, design, and build plan.", size: "wide" },
-  { id: "mindmap", kicker: "Structure", title: "Mind Map", source: "mindmap.puml", copy: "Theme, output, and validation branches." },
-  { id: "wbs", kicker: "Structure", title: "WBS", source: "wbs.puml", copy: "Work breakdown for PlantUML delivery." },
-  { id: "ebnf", kicker: "Grammar", title: "EBNF", source: "ebnf.puml", copy: "Grammar production rendering.", size: "wide" },
-  { id: "regex", kicker: "Grammar", title: "Regex", source: "regex.puml", copy: "Regular expression railroad rendering.", size: "wide" },
-  { id: "ie", kicker: "Entity Relation", title: "IE / ER", source: "ie.puml", copy: "Information Engineering entity relation fixture." },
-  { id: "chen", kicker: "Entity Relation", title: "Chen ER", source: "chen.puml", copy: "Entity and relationship notation fixture." },
-];
+let examples = [];
 
 const gallery = document.querySelector("#gallery");
 const exampleCount = document.querySelector("#example-count");
@@ -44,7 +22,7 @@ function renderCards() {
     const patternId = patternIdFor(example);
     const wideClass = example.size === "wide" ? " example-card--wide" : "";
     return `
-      <article class="example-card${wideClass}" data-example-id="${patternId}" data-pattern-id="${patternId}" data-source="${escapeHtml(example.source)}" data-replay-state="idle">
+      <article class="example-card${wideClass}" data-example-id="${patternId}" data-pattern-id="${patternId}" data-source="${escapeHtml(example.source)}" data-asset-format="${escapeHtml(example.assetFormat)}" data-replay-state="idle">
         <div class="example-header">
           <div class="example-header-top">
             <p class="example-kicker">${escapeHtml(example.kicker)}</p>
@@ -55,7 +33,7 @@ function renderCards() {
           <p class="example-copy">${escapeHtml(example.copy)}</p>
         </div>
         <div class="viz-frame">
-          <div class="svg-mount" id="${escapeHtml(example.id)}-mount" data-load-state="loading" aria-label="${escapeHtml(example.title)} SVG preview"></div>
+          <div class="svg-mount" id="${escapeHtml(example.id)}-mount" data-load-state="loading" aria-label="${escapeHtml(example.title)} ${escapeHtml(example.assetFormat.toUpperCase())} preview"></div>
         </div>
       </article>`;
   }).join("");
@@ -126,18 +104,29 @@ async function fetchSvgText(url) {
   throw lastError;
 }
 
-async function loadSvg(example) {
+async function loadExample(example) {
   const mount = document.querySelector(`#${CSS.escape(example.id)}-mount`);
   const card = mount.closest(".example-card");
   try {
-    const text = await fetchSvgText(`./svg/${example.id}.svg`);
-    const doc = new DOMParser().parseFromString(text, "image/svg+xml");
-    const svg = doc.querySelector("svg");
-    if (!svg) {
-      throw new Error("missing svg element");
+    if (example.assetFormat === "svg") {
+      const text = await fetchSvgText(`./${example.asset}`);
+      const doc = new DOMParser().parseFromString(text, "image/svg+xml");
+      const svg = doc.querySelector("svg");
+      if (!svg) {
+        throw new Error("missing svg element");
+      }
+      prepareSvg(svg, example);
+      mount.replaceChildren(document.importNode(svg, true));
+    } else if (example.assetFormat === "png") {
+      const image = new Image();
+      image.className = "plantuml-raster";
+      image.alt = `${example.title} PlantUML diagram`;
+      image.src = `./${example.asset}`;
+      await image.decode();
+      mount.replaceChildren(image);
+    } else {
+      throw new Error(`unsupported asset format: ${example.assetFormat}`);
     }
-    prepareSvg(svg, example);
-    mount.replaceChildren(document.importNode(svg, true));
     mount.dataset.loadState = "loaded";
     replayCard(card);
   } catch (error) {
@@ -146,14 +135,14 @@ async function loadSvg(example) {
   }
 }
 
-async function loadAllSvgs() {
+async function loadAllExamples() {
   let nextIndex = 0;
-  const workerCount = Math.min(4, examples.length);
+  const workerCount = Math.min(1, examples.length);
   const workers = Array.from({ length: workerCount }, async () => {
     while (nextIndex < examples.length) {
       const example = examples[nextIndex];
       nextIndex += 1;
-      await loadSvg(example);
+      await loadExample(example);
     }
   });
   await Promise.all(workers);
@@ -170,6 +159,22 @@ function bindReplayButtons() {
   });
 }
 
-renderCards();
-bindReplayButtons();
-loadAllSvgs();
+async function initialize() {
+  const response = await fetch("./coverage.json");
+  if (!response.ok) {
+    throw new Error(`coverage metadata HTTP ${response.status}`);
+  }
+  const metadata = await response.json();
+  if (!Array.isArray(metadata.items)) {
+    throw new Error("coverage metadata items must be an array");
+  }
+  examples = metadata.items;
+  renderCards();
+  bindReplayButtons();
+  await loadAllExamples();
+}
+
+initialize().catch((error) => {
+  document.body.dataset.loadState = "error";
+  document.body.dataset.error = error.message;
+});

@@ -81,7 +81,7 @@ def parse_args() -> argparse.Namespace:
         help=(
             "Animation preset. auto uses mindmap-level for mindmaps, ishikawa branch-first "
             "ordering for Ishikawa diagrams, state-flow ordering for state diagrams, "
-            "flowchart-flow ordering for flowcharts, bottom-to-top set ordering for Venn diagrams, "
+            "flowchart-flow ordering for flowcharts and Swimlanes, bottom-to-top set ordering for Venn diagrams, "
             "event-ordered Event Modeling, Quadrant Chart point-by-quadrant ordering, "
             "Pie Chart segment-by-segment ordering from smallest to largest, "
             "Radar base-first z-layer ordering, Entity Relationship entity-step ordering, "
@@ -252,7 +252,7 @@ def main() -> int:
                 planned = plan_candidates(root, candidates, args)
 
             if args.list_elements:
-                print(json.dumps(candidate_report(planned), indent=2, ensure_ascii=False))
+                print(json.dumps(candidate_report(planned), indent=2))
 
             if args.output is None:
                 return 0

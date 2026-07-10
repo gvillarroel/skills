@@ -11,6 +11,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import re
@@ -22,10 +23,6 @@ from typing import Any
 
 from playwright.sync_api import sync_playwright
 
-
-REPO_ROOT = Path(__file__).resolve().parents[4]
-DEFAULT_COMPOSITION = REPO_ROOT / ".agents" / "skills" / "d3-animated-svg" / "assets" / "examples" / "d3-animated-svg" / "composition-sheets.html"
-DEFAULT_BASE = REPO_ROOT / ".agents" / "skills" / "d3-animated-svg" / "assets" / "examples" / "d3-animated-svg" / "index.html"
 
 EXPECTED_RENDERERS = {
     "network": {"network"},
@@ -697,8 +694,8 @@ def contract_score(row: dict[str, Any], variant: dict[str, Any]) -> tuple[float,
         "pattern id": bool(row.get("patternId")) and row.get("patternId") in row.get("linkHref", ""),
         "title and desc": bool(feature.get("title")) and bool(feature.get("desc")),
         "visible svg marks": (feature.get("markCount") or 0) >= 8,
-        "composition lines": row.get("compositionLineCount", 0) >= 2,
-        "quadrant fields": row.get("quadrantFieldCount", 0) >= 4,
+        "no visible composition scaffold": row.get("compositionLineCount", 0) == 0,
+        "no visible quadrant overlay": row.get("quadrantFieldCount", 0) == 0,
         "source signature": bool(row.get("hasBaseSignature")) and row.get("sourceId", "") in row.get("baseSignatureText", ""),
         "armature metadata": bool(row.get("armatureLines")) and bool(row.get("quadrants")),
         "review metadata": row.get("reviewed") == "true" and bool(variant.get("reviewed")),
@@ -953,8 +950,8 @@ def score_composition(row: dict[str, Any], variant: dict[str, Any], contract: fl
         armature, metrics = 0.0, {}
     relationship, relationship_metrics = score_relationships(composition_id, family, segment_values, points)
     visibility = focus_visibility_score(points, family)
-    line_score = clamp(row.get("compositionLineCount", 0) / 4)
-    quadrant_score = clamp(row.get("quadrantFieldCount", 0) / 4)
+    guide_line_cleanliness = clamp(1 - row.get("compositionLineCount", 0) / 4)
+    quadrant_overlay_cleanliness = clamp(1 - row.get("quadrantFieldCount", 0) / 4)
     metadata_score = mean([
         1.0 if variant.get("armatureLines") else 0.0,
         1.0 if variant.get("quadrants") else 0.0,
@@ -965,8 +962,8 @@ def score_composition(row: dict[str, Any], variant: dict[str, Any], contract: fl
         (relationship, 0.18),
         (visibility, 0.10),
         (contract, 0.10),
-        (line_score, 0.04),
-        (quadrant_score, 0.03),
+        (guide_line_cleanliness, 0.04),
+        (quadrant_overlay_cleanliness, 0.03),
         (metadata_score, 0.07),
     ])
     notes: list[str] = []
@@ -978,13 +975,15 @@ def score_composition(row: dict[str, Any], variant: dict[str, Any], contract: fl
         notes.append("weak relationship alignment for the selected focus marks")
     if contract < 0.9:
         notes.append("composition contract is incomplete")
+    if guide_line_cleanliness < 1 or quadrant_overlay_cleanliness < 1:
+        notes.append("visible composition scaffolding should remain metadata-only")
     metrics.update(relationship_metrics)
     metrics.update({
         "armatureMetric": armature,
         "focusVisibility": visibility,
         "evaluatedFocusMarkCount": float(len(points)),
-        "lineScore": line_score,
-        "quadrantScore": quadrant_score,
+        "guideLineCleanlinessScore": guide_line_cleanliness,
+        "quadrantOverlayCleanlinessScore": quadrant_overlay_cleanliness,
         "metadataScore": metadata_score,
     })
     return score, metrics, notes
@@ -992,7 +991,13 @@ def score_composition(row: dict[str, Any], variant: dict[str, Any], contract: fl
 
 def summarize_scores(values: list[dict[str, Any]]) -> dict[str, Any]:
     if not values:
-        return {}
+        empty = {"min": 0.0, "median": 0.0, "mean": 0.0, "max": 0.0}
+        return {
+            "count": 0,
+            "source": dict(empty),
+            "composition": dict(empty),
+            "overall": dict(empty),
+        }
     source = [item["sourceClosenessScore"] for item in values]
     composition = [item["compositionScore"] for item in values]
     overall = [item["overallScore"] for item in values]
@@ -1045,6 +1050,21 @@ def write_text(path: Path, payload: str) -> None:
     path.write_text(payload, encoding="utf-8")
 
 
+def safe_screenshot_filename(identifier: str, index: int) -> str:
+    slug = re.sub(r"[^a-zA-Z0-9_-]+", "-", identifier).strip("-_")[:64] or "unnamed"
+    digest = hashlib.sha256(identifier.encode("utf-8")).hexdigest()[:10]
+    return f"variant-{index:03d}-{slug}-{digest}.png"
+
+
+def exact_data_locator(page: Any, attribute: str, value: str) -> Any:
+    candidates = page.locator(f"[{attribute}]")
+    for index in range(candidates.count()):
+        candidate = candidates.nth(index)
+        if candidate.get_attribute(attribute) == value:
+            return candidate
+    raise RuntimeError(f"Could not find [{attribute}] with exact value {value!r}.")
+
+
 def capture_samples(page: Any, variants: list[dict[str, Any]], output_dir: Path, limit: int) -> list[str]:
     output_dir.mkdir(parents=True, exist_ok=True)
     captured: list[str] = []
@@ -1062,11 +1082,11 @@ def capture_samples(page: Any, variants: list[dict[str, Any]], output_dir: Path,
         if item["id"] not in {entry["id"] for entry in selected}:
             selected.append(item)
     selected = selected[: max(0, limit)]
-    for item in selected:
-        page.locator(f'[data-sheet-tab="{item["compositionId"]}"]').click()
+    for index, item in enumerate(selected, start=1):
+        exact_data_locator(page, "data-sheet-tab", str(item["compositionId"])).click()
         page.wait_for_timeout(1500)
-        card = page.locator(f'[data-composition-pattern-id="{item["id"]}"]').first
-        path = output_dir / f"{item['id']}.png"
+        card = exact_data_locator(page, "data-composition-pattern-id", str(item["id"]))
+        path = output_dir / safe_screenshot_filename(str(item["id"]), index)
         card.screenshot(path=path)
         captured.append(path.as_posix())
     return captured
@@ -1074,8 +1094,12 @@ def capture_samples(page: Any, variants: list[dict[str, Any]], output_dir: Path,
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("composition_source", nargs="?", default=str(DEFAULT_COMPOSITION), help="Composition sheets HTML file, file URL, or HTTP URL.")
-    parser.add_argument("--base-gallery", default=str(DEFAULT_BASE), help="Base D3 gallery HTML file, file URL, or HTTP URL.")
+    parser.add_argument("composition_source", help="Composition sheets HTML file, file URL, or HTTP URL.")
+    parser.add_argument(
+        "--base-gallery",
+        required=True,
+        help="Base D3 gallery HTML file, file URL, or HTTP URL. Pass it explicitly; the evaluator does not depend on a sibling skill fixture.",
+    )
     parser.add_argument("--output", type=Path, help="Write full JSON evaluation output.")
     parser.add_argument("--report", type=Path, help="Write a Markdown summary report.")
     parser.add_argument("--screenshot-dir", type=Path, help="Capture worst-score card screenshots for visual review.")
@@ -1120,6 +1144,25 @@ def main() -> int:
 
         evaluations: list[dict[str, Any]] = []
         findings: list[str] = []
+        requested_ids = set(args.only)
+        missing_requested_ids = sorted(requested_ids - set(variant_by_id))
+        if not variant_by_id:
+            findings.append("No composition variants matched the requested selection.")
+        elif missing_requested_ids:
+            findings.append(
+                "Requested composition variants were not found: " + ", ".join(missing_requested_ids)
+            )
+        missing_base_source_ids = sorted(
+            {
+                str(variant.get("sourceId") or "<missing-source-id>")
+                for variant in variant_by_id.values()
+                if variant.get("sourceId") not in base_by_source
+            }
+        )
+        if missing_base_source_ids:
+            findings.append(
+                "Base gallery is missing source patterns: " + ", ".join(missing_base_source_ids)
+            )
         missing_rows = sorted(set(variant_by_id) - set(rows_by_id))
         if missing_rows:
             findings.append(f"{len(missing_rows)} variants were not rendered as cards.")

@@ -1,5 +1,7 @@
 Write `projects/zero-padding-transition/transition-plan.json`.
 
+Isolated-run constraint: do not run workspace discovery, output search, or orientation commands such as `ls`, `find`, `rg --files`, `pwd`, `Get-ChildItem`, or `Test-Path`. Read `../prompt.md`, read only directly required skill files by known path if needed, then write the exact requested output path.
+
 Create a validation-ready transition plan for these exact scenes:
 
 - `s01-source-board`: a hard-edge board with a queued work packet

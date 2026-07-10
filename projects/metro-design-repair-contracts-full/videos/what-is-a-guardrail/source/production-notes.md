@@ -40,5 +40,5 @@
 ## Render Command
 
 ```powershell
-uv run --script skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root projects/metro-design-repair-contracts-full/videos/what-is-a-guardrail --title "What is a Guardrail" --output-id what-is-a-guardrail --pattern risk-bowtie
+uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root projects/metro-design-repair-contracts-full/videos/what-is-a-guardrail --title "What is a Guardrail" --output-id what-is-a-guardrail --pattern risk-bowtie
 ```

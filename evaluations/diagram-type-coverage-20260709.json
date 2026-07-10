@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-07-09",
+  "scope": "Exact Mermaid 11.16.0 and PlantUML 1.2026.6 diagram-type coverage",
+  "baselines": {
+    "mermaid": {
+      "version": "11.16.0",
+      "sources": [
+        "https://mermaid.js.org/intro/syntax-reference.html",
+        "https://mermaid.js.org/schemas/config.schema.json",
+        "https://github.com/mermaid-js/mermaid/releases/tag/mermaid%4011.16.0"
+      ]
+    },
+    "plantuml": {
+      "version": "1.2026.6",
+      "sources": [
+        "https://github.com/plantuml/plantuml/blob/v1.2026.6/README.md#%EF%B8%8F-supported-diagram-types",
+        "https://github.com/plantuml/plantuml/releases/tag/v1.2026.6",
+        "https://plantuml.com/changes"
+      ]
+    }
+  },
+  "coverage": {
+    "mermaid": {
+      "families": {"covered": 31, "required": 31, "percent": 100.0},
+      "currentDeclarations": {"covered": 40, "required": 40, "percent": 100.0},
+      "renderableDeclarations": {"covered": 48, "required": 48, "percent": 100.0},
+      "classDefFamilies": {"covered": 9, "required": 9, "percent": 100.0},
+      "freshBatchRenders": {"approved": 96, "required": 96, "colorsets": 2},
+      "animatedFamilies": {"covered": 31, "required": 31, "percent": 100.0}
+    },
+    "plantuml": {
+      "canonicalFamilies": 27,
+      "releaseExtraFamilies": 1,
+      "trackedFamilies": {"covered": 28, "required": 28, "percent": 100.0},
+      "availableFamilies": {"covered": 27, "required": 27, "percent": 100.0},
+      "fixtures": 29,
+      "publishedFixturesPerColorset": 28,
+      "renderedPerColorset": 28,
+      "expectedUnavailablePerColorset": 1,
+      "failedPerColorset": 0
+    }
+  },
+  "exceptions": [
+    "Mermaid's detector recognizes the bare architecture header, but the 11.16.0 parser emits an error SVG; only architecture-beta counts as renderable.",
+    "PlantUML Chronology remains in the 1.2026.6 canonical taxonomy but was removed upstream in 1.2026.2; it is frozen and gated as expected-unavailable rather than falsely reported as rendered."
+  ],
+  "validation": {
+    "combinedGate": {
+      "command": "uv run --script scripts/validate-diagram-type-coverage.py",
+      "outcome": "pass",
+      "checksPassed": 7,
+      "findings": 0
+    },
+    "plantumlUnitTests": {"passed": 16, "failed": 0},
+    "browserQa": {
+      "mermaidDirectiveCards": {"loaded": 31, "required": 31, "consoleErrors": 0},
+      "plantumlColorset1Cards": {"loaded": 28, "required": 28, "consoleErrors": 0},
+      "plantumlColorset2Cards": {"loaded": 28, "required": 28, "consoleErrors": 0}
+    },
+    "repository": {
+      "validateSkills": "pass",
+      "payload": "pass",
+      "piHarnessTests": {"passed": 11, "failed": 0},
+      "pagesBuild": {"outcome": "pass", "files": 570},
+      "pagesPatternEntries": {"validated": 12, "outcome": "pass"},
+      "diffCheck": "pass"
+    }
+  },
+  "isolatedSparkRuns": [
+    {
+      "skill": "mermaid-colorset-styler",
+      "runId": "20260709-mermaid-colorset-styler-runtime-spark-1",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "outcome": "pass",
+      "exactOutputs": 5,
+      "readSurface": "evaluations/mermaid-colorset-styler-runtime-20260709-spark-read-surface.json"
+    },
+    {
+      "skill": "mermaid-animated-svg",
+      "runId": "mermaid-family-coverage-20260709-spark-6-json",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "outcome": "pass",
+      "exactOutputs": 3,
+      "readSurface": "evaluations/mermaid-animated-svg-family-coverage-20260709-spark-read-surface.json"
+    },
+    {
+      "skill": "plantuml-colorset-renderer",
+      "runId": "plantuml-colorset-renderer-runtime-20260709-coverage-spark-1-json",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "outcome": "pass",
+      "exactOutputs": 8,
+      "readSurface": "evaluations/plantuml-colorset-renderer-runtime-20260709-coverage-spark-read-surface.json"
+    }
+  ],
+  "failureClassification": null
+}

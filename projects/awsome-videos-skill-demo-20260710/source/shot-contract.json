@@ -1,0 +1,466 @@
+{
+  "version": 1,
+  "sourcePackage": "source-package.json",
+  "videoId": "skill-convierte-codex-especialista",
+  "durationSeconds": 70,
+  "aspect": "16:9",
+  "rendering": {
+    "engine": "unspecified",
+    "seekDeterministic": true,
+    "forbiddenDependencies": [
+      "gsap"
+    ]
+  },
+  "shots": [
+    {
+      "id": "s01",
+      "beatId": "b01",
+      "time": "0:00-0:05",
+      "start": 0.0,
+      "duration": 5.0,
+      "job": "Open on the cost of repeating a long prompt wall.",
+      "purpose": "Open on the cost of repeating a long prompt wall.",
+      "viewerTask": "Feel the context pressure before the reusable package appears.",
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "visual": {
+        "heroFrame": "Prompt wall pressure reaches its clearest source-bound mechanism state.",
+        "roles": [
+          "persistent red edge",
+          "megacanvas mechanism",
+          "a01-prompt-wall"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "reveal",
+          "subject": "a01-prompt-wall",
+          "target": "Prompt wall pressure",
+          "timing": "0:00-0:05"
+        },
+        {
+          "verb": "handoff",
+          "subject": "persistent red edge",
+          "target": "next scene focal axis",
+          "timing": "final 0.6 seconds"
+        }
+      ],
+      "media": {
+        "narration": "b01",
+        "music": "ducked procedural technical bed",
+        "captions": false,
+        "assets": [
+          "a01-prompt-wall"
+        ]
+      },
+      "assetIds": [
+        "a01-prompt-wall"
+      ],
+      "sourceFactIds": [
+        "f01"
+      ],
+      "validation": [
+        "focal mechanism remains legible",
+        "asset and composition IDs match renderer state"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "s02",
+      "beatId": "b02",
+      "time": "0:05-0:13",
+      "start": 5.0,
+      "duration": 8.0,
+      "job": "Define the skill as a compact operational package.",
+      "purpose": "Define the skill as a compact operational package.",
+      "viewerTask": "Track the prompt wall folding into a reusable SKILL.md card.",
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "visual": {
+        "heroFrame": "The compact SKILL.md package reaches its clearest source-bound mechanism state.",
+        "roles": [
+          "persistent red edge",
+          "megacanvas mechanism",
+          "a02-skill-package"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "reveal",
+          "subject": "a02-skill-package",
+          "target": "The compact SKILL.md package",
+          "timing": "0:05-0:13"
+        },
+        {
+          "verb": "handoff",
+          "subject": "persistent red edge",
+          "target": "next scene focal axis",
+          "timing": "final 0.6 seconds"
+        }
+      ],
+      "media": {
+        "narration": "b02",
+        "music": "ducked procedural technical bed",
+        "captions": false,
+        "assets": [
+          "a02-skill-package"
+        ]
+      },
+      "assetIds": [
+        "a02-skill-package"
+      ],
+      "sourceFactIds": [
+        "f02"
+      ],
+      "validation": [
+        "focal mechanism remains legible",
+        "asset and composition IDs match renderer state"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "s03",
+      "beatId": "b03",
+      "time": "0:13-0:22",
+      "start": 13.0,
+      "duration": 9.0,
+      "job": "Show the core opening only the resource needed for the current decision.",
+      "purpose": "Show the core opening only the resource needed for the current decision.",
+      "viewerTask": "Follow one reference entering context while dormant resources stay outside.",
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "visual": {
+        "heroFrame": "Progressive disclosure reaches its clearest source-bound mechanism state.",
+        "roles": [
+          "persistent red edge",
+          "megacanvas mechanism",
+          "a03-progressive-disclosure"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "reveal",
+          "subject": "a03-progressive-disclosure",
+          "target": "Progressive disclosure",
+          "timing": "0:13-0:22"
+        },
+        {
+          "verb": "handoff",
+          "subject": "persistent red edge",
+          "target": "next scene focal axis",
+          "timing": "final 0.6 seconds"
+        }
+      ],
+      "media": {
+        "narration": "b03",
+        "music": "ducked procedural technical bed",
+        "captions": false,
+        "assets": [
+          "a03-progressive-disclosure"
+        ]
+      },
+      "assetIds": [
+        "a03-progressive-disclosure"
+      ],
+      "sourceFactIds": [
+        "f03"
+      ],
+      "validation": [
+        "focal mechanism remains legible",
+        "asset and composition IDs match renderer state"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "s04",
+      "beatId": "b04",
+      "time": "0:22-0:31",
+      "start": 22.0,
+      "duration": 9.0,
+      "job": "Separate knowledge, deterministic operations, and reusable production material.",
+      "purpose": "Separate knowledge, deterministic operations, and reusable production material.",
+      "viewerTask": "Scan three peer resource lanes and see their outputs converge.",
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "visual": {
+        "heroFrame": "References, scripts, and assets reaches its clearest source-bound mechanism state.",
+        "roles": [
+          "persistent red edge",
+          "megacanvas mechanism",
+          "a04-resource-bundle"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "reveal",
+          "subject": "a04-resource-bundle",
+          "target": "References, scripts, and assets",
+          "timing": "0:22-0:31"
+        },
+        {
+          "verb": "handoff",
+          "subject": "persistent red edge",
+          "target": "next scene focal axis",
+          "timing": "final 0.6 seconds"
+        }
+      ],
+      "media": {
+        "narration": "b04",
+        "music": "ducked procedural technical bed",
+        "captions": false,
+        "assets": [
+          "a04-resource-bundle"
+        ]
+      },
+      "assetIds": [
+        "a04-resource-bundle"
+      ],
+      "sourceFactIds": [
+        "f04"
+      ],
+      "validation": [
+        "focal mechanism remains legible",
+        "asset and composition IDs match renderer state"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "s05",
+      "beatId": "b05",
+      "time": "0:31-0:41",
+      "start": 31.0,
+      "duration": 10.0,
+      "job": "Show intent-based routing to the correct visual producer.",
+      "purpose": "Show intent-based routing to the correct visual producer.",
+      "viewerTask": "Track one work packet splitting into specialist routes and verifiable artifacts.",
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "visual": {
+        "heroFrame": "Route each asset to a specialist reaches its clearest source-bound mechanism state.",
+        "roles": [
+          "persistent red edge",
+          "megacanvas mechanism",
+          "a05-specialist-router"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "reveal",
+          "subject": "a05-specialist-router",
+          "target": "Route each asset to a specialist",
+          "timing": "0:31-0:41"
+        },
+        {
+          "verb": "handoff",
+          "subject": "persistent red edge",
+          "target": "next scene focal axis",
+          "timing": "final 0.6 seconds"
+        }
+      ],
+      "media": {
+        "narration": "b05",
+        "music": "ducked procedural technical bed",
+        "captions": false,
+        "assets": [
+          "a05-specialist-router"
+        ]
+      },
+      "assetIds": [
+        "a05-specialist-router"
+      ],
+      "sourceFactIds": [
+        "f05"
+      ],
+      "validation": [
+        "focal mechanism remains legible",
+        "asset and composition IDs match renderer state"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "s06",
+      "beatId": "b06",
+      "time": "0:41-0:51",
+      "start": 41.0,
+      "duration": 10.0,
+      "job": "Make validation visibly block a defective artifact before delivery.",
+      "purpose": "Make validation visibly block a defective artifact before delivery.",
+      "viewerTask": "Trace the good path across four checks and the failed branch back to correction.",
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "visual": {
+        "heroFrame": "Validation is a gate reaches its clearest source-bound mechanism state.",
+        "roles": [
+          "persistent red edge",
+          "megacanvas mechanism",
+          "a06-validation-gate"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "reveal",
+          "subject": "a06-validation-gate",
+          "target": "Validation is a gate",
+          "timing": "0:41-0:51"
+        },
+        {
+          "verb": "handoff",
+          "subject": "persistent red edge",
+          "target": "next scene focal axis",
+          "timing": "final 0.6 seconds"
+        }
+      ],
+      "media": {
+        "narration": "b06",
+        "music": "ducked procedural technical bed",
+        "captions": false,
+        "assets": [
+          "a06-validation-gate"
+        ]
+      },
+      "assetIds": [
+        "a06-validation-gate"
+      ],
+      "sourceFactIds": [
+        "f06"
+      ],
+      "validation": [
+        "focal mechanism remains legible",
+        "asset and composition IDs match renderer state"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "s07",
+      "beatId": "b07",
+      "time": "0:51-1:01",
+      "start": 51.0,
+      "duration": 10.0,
+      "job": "Contrast an always-on instruction wall with a compact core plus selected detail.",
+      "purpose": "Contrast an always-on instruction wall with a compact core plus selected detail.",
+      "viewerTask": "Compare the two context bars and notice the oversized-skill warning.",
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "visual": {
+        "heroFrame": "Compact core, detail on demand reaches its clearest source-bound mechanism state.",
+        "roles": [
+          "persistent red edge",
+          "megacanvas mechanism",
+          "a07-context-budget"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "reveal",
+          "subject": "a07-context-budget",
+          "target": "Compact core, detail on demand",
+          "timing": "0:51-1:01"
+        },
+        {
+          "verb": "handoff",
+          "subject": "persistent red edge",
+          "target": "next scene focal axis",
+          "timing": "final 0.6 seconds"
+        }
+      ],
+      "media": {
+        "narration": "b07",
+        "music": "ducked procedural technical bed",
+        "captions": false,
+        "assets": [
+          "a07-context-budget"
+        ]
+      },
+      "assetIds": [
+        "a07-context-budget"
+      ],
+      "sourceFactIds": [
+        "f07"
+      ],
+      "validation": [
+        "focal mechanism remains legible",
+        "asset and composition IDs match renderer state"
+      ],
+      "status": "approved"
+    },
+    {
+      "id": "s08",
+      "beatId": "b08",
+      "time": "1:01-1:10",
+      "start": 61.0,
+      "duration": 9.0,
+      "job": "Return the compressed package to multiple projects and close the opening callback.",
+      "purpose": "Return the compressed package to multiple projects and close the opening callback.",
+      "viewerTask": "Recognize one workflow activating across projects and returning to rest.",
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "visual": {
+        "heroFrame": "Reusable workflow callback reaches its clearest source-bound mechanism state.",
+        "roles": [
+          "persistent red edge",
+          "megacanvas mechanism",
+          "a08-reusable-workflow"
+        ]
+      },
+      "motionIntent": [
+        {
+          "verb": "reveal",
+          "subject": "a08-reusable-workflow",
+          "target": "Reusable workflow callback",
+          "timing": "1:01-1:10"
+        },
+        {
+          "verb": "handoff",
+          "subject": "persistent red edge",
+          "target": "next scene focal axis",
+          "timing": "final 0.6 seconds"
+        }
+      ],
+      "media": {
+        "narration": "b08",
+        "music": "ducked procedural technical bed",
+        "captions": false,
+        "assets": [
+          "a08-reusable-workflow"
+        ]
+      },
+      "assetIds": [
+        "a08-reusable-workflow"
+      ],
+      "sourceFactIds": [
+        "f08"
+      ],
+      "validation": [
+        "focal mechanism remains legible",
+        "asset and composition IDs match renderer state"
+      ],
+      "status": "approved"
+    }
+  ],
+  "literalAnchors": [
+    "SKILL.md",
+    "references/",
+    "scripts/",
+    "assets/",
+    "progressive disclosure",
+    "validation",
+    "on-demand reusable workflow"
+  ],
+  "missingFacts": []
+}

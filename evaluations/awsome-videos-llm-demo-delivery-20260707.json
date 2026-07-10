@@ -1,0 +1,35 @@
+{
+  "skill": "awsome-videos",
+  "date": "2026-07-07",
+  "project": "projects/awsome-videos-llm-demo",
+  "finalVideo": "projects/awsome-videos-llm-demo/artifacts/videos/what-is-a-llm.mp4",
+  "deliverySummary": "projects/awsome-videos-llm-demo/artifacts/reviews/delivery-summary.md",
+  "contactSheet": "projects/awsome-videos-llm-demo/artifacts/reviews/contact-sheet.jpg",
+  "ffprobe": {
+    "durationSeconds": 70.0,
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "videoCodec": "h264",
+    "audioCodec": "aac"
+  },
+  "validation": {
+    "packageValidationRefresh": "projects/awsome-videos-llm-demo/artifacts/reviews/package-validation-refresh.json",
+    "packageOk": true,
+    "briefOk": true,
+    "videoOk": true,
+    "readiness": "24/24 ready",
+    "styleFidelity": "16/16",
+    "rendererBeatCoverageOk": true,
+    "sampledBriefBeats": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "finalAudioReady": true,
+    "qualityOk": true,
+    "motionOk": true,
+    "failures": [],
+    "warnings": []
+  },
+  "reviewNotes": [
+    "The contact sheet shows a clear hook, prompt/context construction, model-layer mechanism, next-token probability panel, verification warning, and final prediction-plus-context summary.",
+    "The final package passed after the Markdown-label parser hardening, so the real demo still validates against the current skill scripts."
+  ]
+}

@@ -65,6 +65,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--require-zero-padding-policy", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--install-browser", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--launch-timeout-ms", type=int, default=8_000)
+    parser.add_argument("--navigation-timeout-ms", type=int, default=30_000)
     return parser.parse_args()
 
 
@@ -237,15 +238,18 @@ def serve_directory(directory: Path):
         server.server_close()
 
 
-def goto_with_retry(page: Any, url: str, attempts: int = 4) -> None:
+def goto_with_retry(page: Any, url: str, attempts: int = 4, timeout_ms: int = 30_000, html: Path | None = None) -> None:
     last_error: Exception | None = None
     for attempt in range(attempts):
         try:
-            page.goto(url, wait_until="domcontentloaded", timeout=10_000)
+            page.goto(url, wait_until="domcontentloaded", timeout=timeout_ms)
             return
         except Exception as exc:
             last_error = exc
             time.sleep(0.25 * (attempt + 1))
+    if html is not None:
+        page.set_content(html.read_text(encoding="utf-8"), wait_until="domcontentloaded", timeout=timeout_ms)
+        return
     if last_error is not None:
         raise last_error
 
@@ -313,6 +317,7 @@ def sample_rendered_frames(
     selector: str,
     install_browser: bool,
     launch_timeout_ms: int,
+    navigation_timeout_ms: int,
 ) -> tuple[list[dict[str, Any]], list[str]]:
     try:
         from playwright.sync_api import sync_playwright
@@ -330,10 +335,10 @@ def sample_rendered_frames(
             )
             try:
                 page = browser.new_page(viewport={"width": int(config["width"]), "height": int(config["height"])})
-                page.set_default_timeout(10_000)
-                page.set_default_navigation_timeout(10_000)
-                goto_with_retry(page, f"{base_url}/{html.name}")
-                page.wait_for_function("() => typeof window.renderConceptFrame === 'function'", timeout=10_000)
+                page.set_default_timeout(navigation_timeout_ms)
+                page.set_default_navigation_timeout(navigation_timeout_ms)
+                goto_with_retry(page, f"{base_url}/{html.name}", timeout_ms=navigation_timeout_ms, html=html)
+                page.wait_for_function("() => typeof window.renderConceptFrame === 'function'", timeout=navigation_timeout_ms)
                 for index, seconds in enumerate(times):
                     frame = page.evaluate(
                         """
@@ -1502,14 +1507,40 @@ def main() -> int:
 
     config = resolve_config(args)
     times = sample_times(float(config["duration"]), args.samples)
-    frames, browser_notes = sample_rendered_frames(
-        html,
-        times,
-        config,
-        args.selector,
-        args.install_browser,
-        args.launch_timeout_ms,
-    )
+    try:
+        frames, browser_notes = sample_rendered_frames(
+            html,
+            times,
+            config,
+            args.selector,
+            args.install_browser,
+            args.launch_timeout_ms,
+            args.navigation_timeout_ms,
+        )
+    except Exception as exc:
+        report = {
+            "passed": False,
+            "html": args.html.as_posix(),
+            "sourcePackage": args.source_package.as_posix() if args.source_package else None,
+            "videoId": config["videoId"],
+            "duration": config["duration"],
+            "width": config["width"],
+            "height": config["height"],
+            "samplesRequested": args.samples,
+            "sampleTimes": times,
+            "findings": [
+                {
+                    "code": "rendered-frame-browser-failed",
+                    "message": str(exc),
+                }
+            ],
+            "browserFailed": True,
+        }
+        if args.output:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(json.dumps(report, indent=2), encoding="utf-8")
+        print(json.dumps(report, indent=2))
+        return 1
     viewport_area = float(config["width"]) * float(config["height"])
     forbidden_text_fragments = [
         str(config.get("title") or ""),

@@ -27,7 +27,20 @@ function renderCircularBar() {
     const y = d3.scaleRadial().domain([0, 100]).range([inner, outer]);
     const arc = d3.arc().innerRadius(inner).outerRadius(d => y(d.value)).startAngle(d => x(d.name)).endAngle(d => x(d.name) + x.bandwidth()).padAngle(.01);
     const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2 + 14})`);
+    [50, 100].forEach(value => g.append("circle")
+      .attr("r", y(value))
+      .attr("fill", "none")
+      .attr("stroke", palette.gray200)
+      .attr("stroke-dasharray", "3 5"));
     const bars = g.selectAll("path").data(data).join("path").attr("d", arc).attr("fill", (d, i) => colors[i % colors.length]).attr("fill-opacity", .86);
     fadeIn(bars, .06, .75);
+    g.append("g").selectAll("text").data(data).join("text")
+      .attr("class", "caption")
+      .attr("x", d => Math.sin(x(d.name) + x.bandwidth() / 2) * 180)
+      .attr("y", d => -Math.cos(x(d.name) + x.bandwidth() / 2) * 180 + 3)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 9)
+      .text(d => d.name);
+    g.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("dy", 4).text("0-100");
   }
 ```

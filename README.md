@@ -52,6 +52,7 @@ Before publishing repository changes, run:
 ```powershell
 uv run --script scripts/validate-skills.py
 uv run --script scripts/check-repo-payload.py
+uv run --script scripts/test-pi-eval-harness.py
 ```
 
 `validate-skills.py` also checks that published example sets have unique IDs and are registered for the main examples page.
@@ -59,15 +60,17 @@ uv run --script scripts/check-repo-payload.py
 When a skill changes, also run a skill-only forward validation with `pi`. The normal runtime profile copies only that skill bundle and excludes large acceptance fixtures under `assets/examples/`:
 
 ```powershell
-uv run --script scripts/run-pi-skill-eval.py <skill-name> --prompt-file evaluations/pi-prompts/<prompt>.md --mode json --expect-output <artifact>
+uv run --script scripts/run-pi-skill-eval.py <skill-name> --prompt-file evaluations/pi-prompts/<prompt>.md --mode json --strict --expect-output <artifact>
 ```
 
 Use Spark as the default validation model through `openai-codex/gpt-5.3-codex-spark`, which is the helper default. The validation should prove that an agent with only the target skill can create the requested result, with no required references to repository docs, sibling skills, parent directories, or hidden workspace context.
 
+See [evaluations/README.md](evaluations/README.md) for the full case taxonomy, repetition policy, release gates, failure classification, and evidence-retention method.
+
 After a JSON-mode run, inspect what the harness read:
 
 ```powershell
-uv run --script scripts/summarize-pi-json-events.py evaluations/runs/<run-id>/events.jsonl
+uv run --script scripts/summarize-pi-json-events.py evaluations/runs/<run-id>/events.jsonl --require-model gpt-5.3-codex-spark --fail-on-invalid-json --fail-on-tool-error
 ```
 
 Passing skill validation requires more than a zero exit code:

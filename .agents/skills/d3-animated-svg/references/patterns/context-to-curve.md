@@ -31,8 +31,11 @@ function renderContextToCurve() {
       const shifted = points.map(p => [p[0], p[1] + item.y]);
       const path = svg.append("path").datum(shifted).attr("d", d3.line().curve(item.curve)).attr("fill", "none").attr("stroke", item.c).attr("stroke-width", i === 0 ? 2 : 3).attr("stroke-opacity", i === 0 ? .55 : .9);
       drawPath(path, .08 + i * .08, .85);
-      svg.append("text").attr("class", "mark-label").attr("x", 488).attr("y", shifted.at(-1)[1] + 16).attr("text-anchor", "end").text(item.name);
     });
+    const legend = svg.append("g").attr("transform", "translate(88,32)");
+    const legendItem = legend.selectAll("g").data(curves).join("g").attr("transform", (_, i) => `translate(${i * 126},0)`);
+    legendItem.append("line").attr("x1", 0).attr("x2", 26).attr("y1", 0).attr("y2", 0).attr("stroke", d => d.c).attr("stroke-width", 3);
+    legendItem.append("text").attr("class", "caption").attr("x", 34).attr("y", 4).text(d => d.name);
     svg.append("g").selectAll("circle").data(points).join("circle").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("r", 4).attr("fill", palette.ink);
   }
 ```

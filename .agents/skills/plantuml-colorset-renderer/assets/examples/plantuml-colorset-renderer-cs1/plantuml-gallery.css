@@ -245,6 +245,15 @@ h2 {
   max-height: 100%;
 }
 
+.svg-mount .plantuml-raster {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
 .svg-mount[data-load-state="loading"]::before,
 .svg-mount[data-load-state="error"]::before {
   color: var(--muted);
@@ -252,11 +261,11 @@ h2 {
 }
 
 .svg-mount[data-load-state="loading"]::before {
-  content: "Loading SVG";
+  content: "Loading diagram";
 }
 
 .svg-mount[data-load-state="error"]::before {
-  content: "SVG unavailable";
+  content: "Diagram unavailable";
 }
 
 .example-card[data-replay-state="running"] .card-replay-button {

@@ -88,6 +88,9 @@ def main() -> int:
     pattern_mix_path = SKILL_DIR / "scripts" / "plan_metro_pattern_mix.py"
     series_plan_path = SKILL_DIR / "scripts" / "plan_metro_video_series.py"
     series_contract_path = SKILL_DIR / "scripts" / "build_metro_series_contract_prompts.py"
+    design_profile_compiler_path = SKILL_DIR / "scripts" / "compile_metro_design_profile.py"
+    design_profile_validator_path = SKILL_DIR / "scripts" / "validate_metro_design_profile.py"
+    design_profile_path = SKILL_DIR / "references" / "metro-design-profile.json"
     skill_path = SKILL_DIR / "SKILL.md"
     contract_path = SKILL_DIR / "references" / "standalone-helper-contract.md"
     loop_path = SKILL_DIR / "references" / "production-loop.md"
@@ -105,6 +108,9 @@ def main() -> int:
     pattern_mix = read(pattern_mix_path)
     series_plan = read(series_plan_path)
     series_contract = read(series_contract_path)
+    design_profile_compiler = read(design_profile_compiler_path)
+    design_profile_validator = read(design_profile_validator_path)
+    design_profile = read(design_profile_path)
     skill = read(skill_path)
     contract = read(contract_path)
     loop = read(loop_path)
@@ -188,6 +194,18 @@ def main() -> int:
         ("global", "missing-video-composition-missing-video-report", video_composition_audit_path.as_posix(), "mp4-missing-video"),
         ("global", "missing-tonal-open-sans-gate", tonal_audit_path.as_posix(), "wrong-metro-font-stack"),
         ("global", "missing-tonal-font-report", tonal_audit_path.as_posix(), "fontFamilies"),
+        ("global", "missing-tonal-compiled-design-profile", tonal_audit_path.as_posix(), "load_design_profile"),
+        ("global", "missing-tonal-rgb-normalization", tonal_audit_path.as_posix(), "RGB_PATTERN"),
+        ("global", "missing-tonal-hsl-normalization", tonal_audit_path.as_posix(), "HSL_PATTERN"),
+        ("global", "missing-tonal-colorset2-reason-gate", tonal_audit_path.as_posix(), "missing-colorset2-reason"),
+        ("global", "missing-design-profile-compiler", design_profile_compiler_path.as_posix(), "compile_profile"),
+        ("global", "missing-design-profile-source-digests", design_profile_compiler_path.as_posix(), "profileSha256"),
+        ("global", "missing-design-profile-validator", design_profile_validator_path.as_posix(), "canonical_digest"),
+        ("global", "missing-design-profile-negative-fixture", design_profile_validator_path.as_posix(), "undeclared-gray-fails"),
+        ("global", "missing-design-profile-source-drift-gate", design_profile_validator_path.as_posix(), "profile-source-drift"),
+        ("global", "missing-design-profile-runtime-payload", design_profile_path.as_posix(), "metro-minimal-tonal-motion-colorset1"),
+        ("global", "missing-series-compiled-design-profile", series_contract_path.as_posix(), "profile_prompt_contract"),
+        ("global", "missing-series-design-profile-report", series_contract_path.as_posix(), "sourceDigests"),
         ("global", "missing-metro-audit-suite-style", audit_suite_path.as_posix(), "audit_metro_tonal_style.py"),
         ("global", "missing-metro-audit-suite-composition", audit_suite_path.as_posix(), "audit_metro_composition.py"),
         ("global", "missing-metro-audit-suite-rendered-frame", audit_suite_path.as_posix(), "audit_metro_rendered_frames.py"),
@@ -484,6 +502,9 @@ def main() -> int:
         pattern_mix_path.as_posix(): pattern_mix,
         series_plan_path.as_posix(): series_plan,
         series_contract_path.as_posix(): series_contract,
+        design_profile_compiler_path.as_posix(): design_profile_compiler,
+        design_profile_validator_path.as_posix(): design_profile_validator,
+        design_profile_path.as_posix(): design_profile,
         skill_path.as_posix(): skill,
         contract_path.as_posix(): contract,
         loop_path.as_posix(): loop,

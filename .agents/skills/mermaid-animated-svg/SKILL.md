@@ -35,6 +35,7 @@ Read only the file needed for the task:
 
 - `references/animation-directives.md`: read when the source contains `%% @animate`, when designing Mermaid-comment animation syntax, or when using targets, groups, points, marks, movement, color, pulse, hide, or orchestration directives.
 - `references/diagram-directive-notes.md`: read when choosing selectors or choreography for a specific Mermaid diagram type.
+- `references/diagram-family-coverage.json`: read when maintaining canonical Mermaid family fixtures, by-type directive examples, or exact coverage validation.
 - `references/cli-animation-controls.md`: read when tuning `--animation`, timing, dwell, branch duration, order tokens, or diagram-specific auto behavior.
 - `assets/templates/flowchart-flow-smoke.mmd`: use for isolated smoke tests that need a small `flowchart LR` source with Request, Valid?, Process, Repair, and Done labels.
 
@@ -89,5 +90,6 @@ When a diagram-specific choreography, directive style, selector strategy, or ord
 After changing the skill, scripts, examples, or generated outputs, run the relevant render command and then:
 
 ```powershell
+uv run --script .agents/skills/mermaid-animated-svg/scripts/validate_mermaid_family_coverage.py --report projects/<project-id>/artifacts/reviews/mermaid-family-coverage.json
 uv run --script scripts/validate-skills.py
 ```

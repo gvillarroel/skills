@@ -19,8 +19,11 @@ description: Evaluate D3 or SVG composition quality using dynamic symmetry, bala
 
 ## Output Shape
 
-- Start with what is missing or wrong.
+- Start with `Artifact: <exact ID, selector, or file>` so the report remains traceable when copied out of context.
+- Follow with what is missing or wrong.
 - Separate composition issues from implementation contract issues.
+- Prefer one overall composition score. If you show component scores, make their weights, denominator, and arithmetic exactly reconcile with the reported total.
+- Preserve the number and meaning of data entities and relationships. Never recommend adding, removing, or inventing a node, mark, link, category, or value merely to improve symmetry; adjust layout only when data geometry is not protected.
 - Include validation commands or browser checks when the artifact lives in a runnable project.
 - Avoid broad style advice unless it changes readability, data integrity, or composition strength.
 
@@ -30,10 +33,13 @@ Read `references/evaluation-rubric.md` when the task involves scoring, comparing
 
 ## Scripted Variant Evaluation
 
-Use the gallery-level evaluator when the artifact has both composition variants and a base gallery:
+Use the gallery-level evaluator when the artifact has both composition variants and a base gallery. Resolve the evaluator from the loaded skill directory, pass both inputs explicitly, and do not discover or depend on fixtures from another skill. The example uses the isolated `skills/<name>/` layout:
 
 ```powershell
-uv run --script .agents/skills/d3-composition-evaluator/scripts/evaluate_composition_variants.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --base-gallery .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --output projects/d3-animated-svg-validation/artifacts/data/composition-eval-all.json --report projects/d3-animated-svg-validation/artifacts/reviews/composition-eval-all.md --screenshot-dir projects/d3-animated-svg-validation/artifacts/screenshots/composition-eval-all --expect-clean
+$Evaluator = "skills/d3-composition-evaluator/scripts/evaluate_composition_variants.py"
+$CompositionHtml = "path/to/composition-sheets.html"
+$BaseGallery = "path/to/base-gallery.html"
+uv run --script $Evaluator $CompositionHtml --base-gallery $BaseGallery --output composition-evaluation.json --report composition-evaluation.md --screenshot-dir composition-evaluation-screenshots --expect-clean
 ```
 
 The script opens both pages in Chromium, extracts rendered SVG mark profiles, and scores:

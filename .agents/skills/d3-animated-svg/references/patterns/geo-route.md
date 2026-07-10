@@ -25,15 +25,21 @@ function renderGeoRoute() {
     const path = d3.geoPath(projection);
     const graticule = d3.geoGraticule10();
     svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .22).attr("stroke", palette.gray300);
+    appendSchematicLand(svg, path);
     svg.append("path").datum(graticule).attr("d", path).attr("fill", "none").attr("stroke", "#d4dbe4").attr("stroke-width", .7);
     const cities = [
-      { name: "SF", lon: -122.4, lat: 37.8 }, { name: "NY", lon: -74, lat: 40.7 },
-      { name: "LDN", lon: -0.1, lat: 51.5 }, { name: "BER", lon: 13.4, lat: 52.5 }, { name: "TKY", lon: 139.7, lat: 35.7 }
+      { name: "SF", lon: -122.4, lat: 37.8, dx: 7, dy: -7, anchor: "start" },
+      { name: "NY", lon: -74, lat: 40.7, dx: 7, dy: -7, anchor: "start" },
+      { name: "LDN", lon: -0.1, lat: 51.5, dx: -8, dy: -10, anchor: "end" },
+      { name: "BER", lon: 13.4, lat: 52.5, dx: 8, dy: 13, anchor: "start" },
+      { name: "TKY", lon: 139.7, lat: 35.7, dx: 7, dy: -7, anchor: "start" }
     ];
     const route = { type: "LineString", coordinates: cities.map(d => [d.lon, d.lat]) };
     const routePath = svg.append("path").datum(route).attr("d", path).attr("fill", "none").attr("stroke", palette.red).attr("stroke-width", 2.8);
     drawPath(routePath, .2, 1.2);
     svg.append("g").selectAll("circle").data(cities).join("circle").attr("cx", d => projection([d.lon, d.lat])[0]).attr("cy", d => projection([d.lon, d.lat])[1]).attr("r", 4.5).attr("fill", palette.blue);
-    svg.append("g").selectAll("text").data(cities).join("text").attr("class", "mark-label").attr("x", d => projection([d.lon, d.lat])[0] + 7).attr("y", d => projection([d.lon, d.lat])[1] - 7).text(d => d.name);
+    svg.append("g").selectAll("text").data(cities).join("text").attr("class", "mark-label")
+      .attr("x", d => projection([d.lon, d.lat])[0] + d.dx).attr("y", d => projection([d.lon, d.lat])[1] + d.dy)
+      .attr("text-anchor", d => d.anchor).text(d => d.name);
   }
 ```
