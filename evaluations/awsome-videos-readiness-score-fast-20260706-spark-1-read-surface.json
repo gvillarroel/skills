@@ -1,0 +1,160 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 5,
+    "bash": 7
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 4223
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1,
+      "resultBytes": 1528
+    },
+    {
+      "path": "outputs/renderer-validation.json",
+      "calls": 1,
+      "resultBytes": 5652
+    },
+    {
+      "path": "outputs/readiness-result.json",
+      "calls": 1,
+      "resultBytes": 2965
+    },
+    {
+      "path": "outputs/package-validation.json",
+      "calls": 1,
+      "resultBytes": 2720
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 4223
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1,
+      "resultBytes": 1528
+    },
+    {
+      "path": "outputs/renderer-validation.json",
+      "calls": 1,
+      "resultBytes": 5652
+    },
+    {
+      "path": "outputs/readiness-result.json",
+      "calls": 1,
+      "resultBytes": 2965
+    },
+    {
+      "path": "outputs/package-validation.json",
+      "calls": 1,
+      "resultBytes": 2720
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4223
+    },
+    {
+      "line": 28,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/awsome-videos/scripts/scaffold_production_package.py outputs/rate-limit-video --title \"What Is A Rate Limit?\" --promise \"Explain a rate limit as a token budget that protects a service and",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 43,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/check_renderer_contract.py outputs/rate-limit-video/src/index.html --duration 70 --output outputs/rate-limit-video/artifacts/reviews/review-state.json --install-browser --json > outputs",
+      "isError": false,
+      "resultBytes": 74
+    },
+    {
+      "line": 57,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/check_renderer_contract.py outputs/rate-limit-video/src/index.html --duration 70 --output outputs/rate-limit-video/artifacts/reviews/render-state.json --install-browser --json > outputs",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 71,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'ffmpeg -y -f lavfi -i testsrc2=size=1280x720:rate=2:duration=4 -f lavfi -i sine=frequency=330:duration=4 -c:v libx264 -b:v 2M -pix_fmt yuv420p -c:a aac -shortest outputs/rate-limit-video/artifacts/videos/rate-limit.mp4 >/dev/null ",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 85,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/score_video_readiness.py --brief outputs/rate-limit-video/source/brief.md --video outputs/rate-limit-video/artifacts/videos/rate-limit.mp4 --renderer-report outputs/rate-limit-video/art",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 99,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/check_production_package.py --brief outputs/rate-limit-video/source/brief.md --video outputs/rate-limit-video/artifacts/videos/rate-limit.mp4 --design-note outputs/rate-limit-video/sour",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 112,
+      "tool": "read",
+      "path": "outputs/scaffold-result.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1528
+    },
+    {
+      "line": 125,
+      "tool": "read",
+      "path": "outputs/renderer-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5652
+    },
+    {
+      "line": 138,
+      "tool": "read",
+      "path": "outputs/readiness-result.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2965
+    },
+    {
+      "line": 151,
+      "tool": "read",
+      "path": "outputs/package-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2720
+    },
+    {
+      "line": 167,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'for f in outputs/scaffold-result.json outputs/renderer-validation.json outputs/readiness-result.json outputs/package-validation.json outputs/rate-limit-video/artifacts/videos/rate-limit.mp4 outputs/rate-limit-video/artifacts/revie",
+      "isError": false,
+      "resultBytes": 318
+    }
+  ],
+  "findings": []
+}

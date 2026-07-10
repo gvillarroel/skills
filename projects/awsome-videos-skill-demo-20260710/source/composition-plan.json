@@ -1,0 +1,1341 @@
+{
+  "version": 1,
+  "format": "1280x720",
+  "videoDirection": {
+    "sourceAnchors": [
+      "SKILL.md",
+      "references/",
+      "scripts/",
+      "assets/",
+      "on-demand reusable workflow"
+    ],
+    "paletteTypeSource": "Project colorset1 tonal palette and Open Sans stack.",
+    "alignmentMode": "Navigable hard-edge megacanvas on a 4-pixel grid with scene-specific camera crops.",
+    "edgeCornerPolicy": "All generated panels, masks, apertures, and modules are square and 0-radius.",
+    "safeZones": "Keep focal mechanisms inside a five-percent frame margin; no title, subtitle, or caption band.",
+    "captionPolicy": "No burned-in captions; Spanish narration carries explanatory prose.",
+    "rhythm": "Eight scene windows with a camera handoff in the opening quarter and a readable hold through the mechanism emphasis.",
+    "heldScenes": [
+      "s05 practical output proof",
+      "s08 callback resolve"
+    ],
+    "negativeList": [
+      "title bands",
+      "rounded cards",
+      "padded chips",
+      "generic stock imagery",
+      "invented percentages",
+      "decorative progress rails"
+    ],
+    "boxInteriorPolicy": "Zero internal padding; content is flush to declared bounds and separated by external gutters.",
+    "editorialTextPolicy": "none",
+    "functionalTextPolicy": "Only SKILL.md and local data-bearing marks may appear.",
+    "operatingModel": "navigable-megacanvas"
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "title": "Prompt wall pressure",
+      "duration": "0:00-0:05",
+      "beatIds": [
+        "b01"
+      ],
+      "assetIds": [
+        "a01-prompt-wall"
+      ],
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "sceneJob": "Open on the cost of repeating a long prompt wall.",
+      "viewerTask": "Feel the context pressure before the reusable package appears.",
+      "compositionChoice": "diagonal armature",
+      "rejectedAlternatives": [
+        "text-only slide",
+        "generic repeated card wall"
+      ],
+      "choiceRationale": "The diagonal armature makes prompt wall pressure the dominant mechanism while the persistent red edge stays available for the handoff.",
+      "focal": "Prompt wall pressure",
+      "roles": {
+        "focal": "megacanvas mechanism plus manifest-bound SVG proof",
+        "support": "tonal system context",
+        "handoff": "persistent red edge"
+      },
+      "armature": "compressed diagonal from prompt strips to the context wall",
+      "alignmentGrid": "4-pixel modular grid with shared x/y edges and scene-specific focal axis.",
+      "armatureAnchors": [
+        "Prompt wall pressure focal geometry locked to the primary scene axis",
+        "persistent red edge aligned to the outgoing seam target"
+      ],
+      "edgePolicy": "Hard-edge rectangular geometry with grid-locked masks and external gutters.",
+      "cornerPolicy": "0-radius square corners only.",
+      "boxInteriorPolicy": "Zero internal padding; content is flush to bounds and separation uses external gutters.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external gutters only"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#696969"
+        },
+        {
+          "level": 1,
+          "role": "secondary support",
+          "grayHex": "#9c9c9c"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#e7e7e7"
+        }
+      ],
+      "layout": "Camera frames the compressed diagonal from prompt strips to the context wall inside the shared skill-package megacanvas.",
+      "hierarchy": "The mechanism proof dominates; the source-bound SVG and persistent red edge remain subordinate but inspectable.",
+      "density": "One primary mechanism, one manifest-bound proof asset, one state metric or gate, and one transition-ready edge.",
+      "safeZones": {
+        "frameMargin": "5 percent on every edge",
+        "captionZone": "none",
+        "protectedRegion": "focal mechanism and source-bound SVG remain unobstructed"
+      },
+      "textRegion": {
+        "placement": "functional labels only inside data-bearing geometry",
+        "maxLineCharacters": 18,
+        "contrastTreatment": "Neutral ink on tonal white or gray surfaces.",
+        "clearance": "One external grid gutter from focal edges and crop zones."
+      },
+      "depthLayers": [
+        "background tonal field or source context",
+        "midground mechanism and supporting proof",
+        "foreground focal asset and transition handoff"
+      ],
+      "objectBounds": [
+        {
+          "id": "s01-focal",
+          "role": "focal",
+          "x": 0.72,
+          "y": 0.04,
+          "width": 0.24,
+          "height": 0.24
+        },
+        {
+          "id": "s01-support",
+          "role": "support",
+          "x": 0.7125,
+          "y": 0.04,
+          "width": 0.0078,
+          "height": 0.24
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal asset before supporting labels or traces.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "readable proof clause",
+          "visualChange": "Hold the complete focal proof long enough for labels and state to be inspected.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "voiceover mechanism clause",
+          "visualChange": "Change or accent the focal asset state so the technical claim becomes visible.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "final clause and handoff",
+          "visualChange": "Align the persistent element with the next scene or settle the final callback.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Preserve the entrance, readable hold, emphasized state, and final handoff as four static keyframes.",
+      "outgoingSeam": {
+        "seamId": "s01__s02",
+        "fromScene": "s01",
+        "toScene": "s02",
+        "persistentElement": "persistent red edge",
+        "attentionHandoff": "The red edge lands on the incoming focal axis before the camera settles.",
+        "beforeState": "Prompt wall pressure is complete and readable.",
+        "afterState": "The compact SKILL.md package receives the red edge as its activation cue.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Renderer must expose sceneId, activeBeat, activeCompositionId, activeAssetIds, activeZoneIndex, and sourceProofVisible.",
+      "validationChecks": [
+        {
+          "method": "full-resolution-frame-review",
+          "target": "s01 focal asset and safe areas",
+          "passCriterion": "Focal proof is large, legible, unclipped, and free of overlapping text."
+        },
+        {
+          "method": "renderer-state-and-dom-review",
+          "target": "s01 asset and composition markers",
+          "passCriterion": "Declared asset ID and composition ID are visible and match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared 12-column grid, focal axis, and baseline.",
+        "safeZones": "Focal proof, source labels, and captions remain inside the declared frame-safe regions.",
+        "edgePolicy": "0-radius edges remain square through render and transition midpoint.",
+        "boxPadding": "internalPaddingPx is 0 and all content remains flush to bounds.",
+        "grayscaleHierarchy": "Three monotonic grayscale roles remain distinct; red is reserved for semantic state.",
+        "focalHierarchy": "The focal object occupies at least five percent of frame area and wins the first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s01-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "Camera crop could hide a neighboring module during the seam.",
+        "The proof inset must not compete with the megacanvas focal mechanism."
+      ]
+    },
+    {
+      "id": "s02",
+      "title": "The compact SKILL.md package",
+      "duration": "0:05-0:13",
+      "beatIds": [
+        "b02"
+      ],
+      "assetIds": [
+        "a02-skill-package"
+      ],
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "sceneJob": "Define the skill as a compact operational package.",
+      "viewerTask": "Track the prompt wall folding into a reusable SKILL.md card.",
+      "compositionChoice": "centered hero",
+      "rejectedAlternatives": [
+        "text-only slide",
+        "generic repeated card wall"
+      ],
+      "choiceRationale": "The centered hero makes the compact skill.md package the dominant mechanism while the persistent red edge stays available for the handoff.",
+      "focal": "The compact SKILL.md package",
+      "roles": {
+        "focal": "megacanvas mechanism plus manifest-bound SVG proof",
+        "support": "tonal system context",
+        "handoff": "persistent red edge"
+      },
+      "armature": "stacked package centered on the persistent red edge",
+      "alignmentGrid": "4-pixel modular grid with shared x/y edges and scene-specific focal axis.",
+      "armatureAnchors": [
+        "The compact SKILL.md package focal geometry locked to the primary scene axis",
+        "persistent red edge aligned to the outgoing seam target"
+      ],
+      "edgePolicy": "Hard-edge rectangular geometry with grid-locked masks and external gutters.",
+      "cornerPolicy": "0-radius square corners only.",
+      "boxInteriorPolicy": "Zero internal padding; content is flush to bounds and separation uses external gutters.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external gutters only"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#696969"
+        },
+        {
+          "level": 1,
+          "role": "secondary support",
+          "grayHex": "#9c9c9c"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#e7e7e7"
+        }
+      ],
+      "layout": "Camera frames the stacked package centered on the persistent red edge inside the shared skill-package megacanvas.",
+      "hierarchy": "The mechanism proof dominates; the source-bound SVG and persistent red edge remain subordinate but inspectable.",
+      "density": "One primary mechanism, one manifest-bound proof asset, one state metric or gate, and one transition-ready edge.",
+      "safeZones": {
+        "frameMargin": "5 percent on every edge",
+        "captionZone": "none",
+        "protectedRegion": "focal mechanism and source-bound SVG remain unobstructed"
+      },
+      "textRegion": {
+        "placement": "functional labels only inside data-bearing geometry",
+        "maxLineCharacters": 18,
+        "contrastTreatment": "Neutral ink on tonal white or gray surfaces.",
+        "clearance": "One external grid gutter from focal edges and crop zones."
+      },
+      "depthLayers": [
+        "background tonal field or source context",
+        "midground mechanism and supporting proof",
+        "foreground focal asset and transition handoff"
+      ],
+      "objectBounds": [
+        {
+          "id": "s02-focal",
+          "role": "focal",
+          "x": 0.3797,
+          "y": 0.3806,
+          "width": 0.2398,
+          "height": 0.2403
+        },
+        {
+          "id": "s02-support",
+          "role": "support",
+          "x": 0.3719,
+          "y": 0.3806,
+          "width": 0.0078,
+          "height": 0.2403
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal asset before supporting labels or traces.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "readable proof clause",
+          "visualChange": "Hold the complete focal proof long enough for labels and state to be inspected.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "voiceover mechanism clause",
+          "visualChange": "Change or accent the focal asset state so the technical claim becomes visible.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "final clause and handoff",
+          "visualChange": "Align the persistent element with the next scene or settle the final callback.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Preserve the entrance, readable hold, emphasized state, and final handoff as four static keyframes.",
+      "outgoingSeam": {
+        "seamId": "s02__s03",
+        "fromScene": "s02",
+        "toScene": "s03",
+        "persistentElement": "persistent red edge",
+        "attentionHandoff": "The red edge lands on the incoming focal axis before the camera settles.",
+        "beforeState": "The compact SKILL.md package is complete and readable.",
+        "afterState": "Progressive disclosure receives the red edge as its activation cue.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Renderer must expose sceneId, activeBeat, activeCompositionId, activeAssetIds, activeZoneIndex, and sourceProofVisible.",
+      "validationChecks": [
+        {
+          "method": "full-resolution-frame-review",
+          "target": "s02 focal asset and safe areas",
+          "passCriterion": "Focal proof is large, legible, unclipped, and free of overlapping text."
+        },
+        {
+          "method": "renderer-state-and-dom-review",
+          "target": "s02 asset and composition markers",
+          "passCriterion": "Declared asset ID and composition ID are visible and match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared 12-column grid, focal axis, and baseline.",
+        "safeZones": "Focal proof, source labels, and captions remain inside the declared frame-safe regions.",
+        "edgePolicy": "0-radius edges remain square through render and transition midpoint.",
+        "boxPadding": "internalPaddingPx is 0 and all content remains flush to bounds.",
+        "grayscaleHierarchy": "Three monotonic grayscale roles remain distinct; red is reserved for semantic state.",
+        "focalHierarchy": "The focal object occupies at least five percent of frame area and wins the first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s02-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "Camera crop could hide a neighboring module during the seam.",
+        "The proof inset must not compete with the megacanvas focal mechanism."
+      ]
+    },
+    {
+      "id": "s03",
+      "title": "Progressive disclosure",
+      "duration": "0:13-0:22",
+      "beatIds": [
+        "b03"
+      ],
+      "assetIds": [
+        "a03-progressive-disclosure"
+      ],
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "sceneJob": "Show the core opening only the resource needed for the current decision.",
+      "viewerTask": "Follow one reference entering context while dormant resources stay outside.",
+      "compositionChoice": "asymmetric editorial",
+      "rejectedAlternatives": [
+        "text-only slide",
+        "generic repeated card wall"
+      ],
+      "choiceRationale": "The asymmetric editorial makes progressive disclosure the dominant mechanism while the persistent red edge stays available for the handoff.",
+      "focal": "Progressive disclosure",
+      "roles": {
+        "focal": "megacanvas mechanism plus manifest-bound SVG proof",
+        "support": "tonal system context",
+        "handoff": "persistent red edge"
+      },
+      "armature": "left core, center active reference, right dormant resource lane",
+      "alignmentGrid": "4-pixel modular grid with shared x/y edges and scene-specific focal axis.",
+      "armatureAnchors": [
+        "Progressive disclosure focal geometry locked to the primary scene axis",
+        "persistent red edge aligned to the outgoing seam target"
+      ],
+      "edgePolicy": "Hard-edge rectangular geometry with grid-locked masks and external gutters.",
+      "cornerPolicy": "0-radius square corners only.",
+      "boxInteriorPolicy": "Zero internal padding; content is flush to bounds and separation uses external gutters.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external gutters only"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#696969"
+        },
+        {
+          "level": 1,
+          "role": "secondary support",
+          "grayHex": "#9c9c9c"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#e7e7e7"
+        }
+      ],
+      "layout": "Camera frames the left core, center active reference, right dormant resource lane inside the shared skill-package megacanvas.",
+      "hierarchy": "The mechanism proof dominates; the source-bound SVG and persistent red edge remain subordinate but inspectable.",
+      "density": "One primary mechanism, one manifest-bound proof asset, one state metric or gate, and one transition-ready edge.",
+      "safeZones": {
+        "frameMargin": "5 percent on every edge",
+        "captionZone": "none",
+        "protectedRegion": "focal mechanism and source-bound SVG remain unobstructed"
+      },
+      "textRegion": {
+        "placement": "functional labels only inside data-bearing geometry",
+        "maxLineCharacters": 18,
+        "contrastTreatment": "Neutral ink on tonal white or gray surfaces.",
+        "clearance": "One external grid gutter from focal edges and crop zones."
+      },
+      "depthLayers": [
+        "background tonal field or source context",
+        "midground mechanism and supporting proof",
+        "foreground focal asset and transition handoff"
+      ],
+      "objectBounds": [
+        {
+          "id": "s03-focal",
+          "role": "focal",
+          "x": 0.72,
+          "y": 0.04,
+          "width": 0.24,
+          "height": 0.24
+        },
+        {
+          "id": "s03-support",
+          "role": "support",
+          "x": 0.7125,
+          "y": 0.04,
+          "width": 0.0078,
+          "height": 0.24
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal asset before supporting labels or traces.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "readable proof clause",
+          "visualChange": "Hold the complete focal proof long enough for labels and state to be inspected.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "voiceover mechanism clause",
+          "visualChange": "Change or accent the focal asset state so the technical claim becomes visible.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "final clause and handoff",
+          "visualChange": "Align the persistent element with the next scene or settle the final callback.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Preserve the entrance, readable hold, emphasized state, and final handoff as four static keyframes.",
+      "outgoingSeam": {
+        "seamId": "s03__s04",
+        "fromScene": "s03",
+        "toScene": "s04",
+        "persistentElement": "persistent red edge",
+        "attentionHandoff": "The red edge lands on the incoming focal axis before the camera settles.",
+        "beforeState": "Progressive disclosure is complete and readable.",
+        "afterState": "References, scripts, and assets receives the red edge as its activation cue.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Renderer must expose sceneId, activeBeat, activeCompositionId, activeAssetIds, activeZoneIndex, and sourceProofVisible.",
+      "validationChecks": [
+        {
+          "method": "full-resolution-frame-review",
+          "target": "s03 focal asset and safe areas",
+          "passCriterion": "Focal proof is large, legible, unclipped, and free of overlapping text."
+        },
+        {
+          "method": "renderer-state-and-dom-review",
+          "target": "s03 asset and composition markers",
+          "passCriterion": "Declared asset ID and composition ID are visible and match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared 12-column grid, focal axis, and baseline.",
+        "safeZones": "Focal proof, source labels, and captions remain inside the declared frame-safe regions.",
+        "edgePolicy": "0-radius edges remain square through render and transition midpoint.",
+        "boxPadding": "internalPaddingPx is 0 and all content remains flush to bounds.",
+        "grayscaleHierarchy": "Three monotonic grayscale roles remain distinct; red is reserved for semantic state.",
+        "focalHierarchy": "The focal object occupies at least five percent of frame area and wins the first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s03-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "Camera crop could hide a neighboring module during the seam.",
+        "The proof inset must not compete with the megacanvas focal mechanism."
+      ]
+    },
+    {
+      "id": "s04",
+      "title": "References, scripts, and assets",
+      "duration": "0:22-0:31",
+      "beatIds": [
+        "b04"
+      ],
+      "assetIds": [
+        "a04-resource-bundle"
+      ],
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "sceneJob": "Separate knowledge, deterministic operations, and reusable production material.",
+      "viewerTask": "Scan three peer resource lanes and see their outputs converge.",
+      "compositionChoice": "modular board",
+      "rejectedAlternatives": [
+        "text-only slide",
+        "generic repeated card wall"
+      ],
+      "choiceRationale": "The modular board makes references, scripts, and assets the dominant mechanism while the persistent red edge stays available for the handoff.",
+      "focal": "References, scripts, and assets",
+      "roles": {
+        "focal": "megacanvas mechanism plus manifest-bound SVG proof",
+        "support": "tonal system context",
+        "handoff": "persistent red edge"
+      },
+      "armature": "three equal vertical lanes joined by one baseline",
+      "alignmentGrid": "4-pixel modular grid with shared x/y edges and scene-specific focal axis.",
+      "armatureAnchors": [
+        "References, scripts, and assets focal geometry locked to the primary scene axis",
+        "persistent red edge aligned to the outgoing seam target"
+      ],
+      "edgePolicy": "Hard-edge rectangular geometry with grid-locked masks and external gutters.",
+      "cornerPolicy": "0-radius square corners only.",
+      "boxInteriorPolicy": "Zero internal padding; content is flush to bounds and separation uses external gutters.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external gutters only"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#696969"
+        },
+        {
+          "level": 1,
+          "role": "secondary support",
+          "grayHex": "#9c9c9c"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#e7e7e7"
+        }
+      ],
+      "layout": "Camera frames the three equal vertical lanes joined by one baseline inside the shared skill-package megacanvas.",
+      "hierarchy": "The mechanism proof dominates; the source-bound SVG and persistent red edge remain subordinate but inspectable.",
+      "density": "One primary mechanism, one manifest-bound proof asset, one state metric or gate, and one transition-ready edge.",
+      "safeZones": {
+        "frameMargin": "5 percent on every edge",
+        "captionZone": "none",
+        "protectedRegion": "focal mechanism and source-bound SVG remain unobstructed"
+      },
+      "textRegion": {
+        "placement": "functional labels only inside data-bearing geometry",
+        "maxLineCharacters": 18,
+        "contrastTreatment": "Neutral ink on tonal white or gray surfaces.",
+        "clearance": "One external grid gutter from focal edges and crop zones."
+      },
+      "depthLayers": [
+        "background tonal field or source context",
+        "midground mechanism and supporting proof",
+        "foreground focal asset and transition handoff"
+      ],
+      "objectBounds": [
+        {
+          "id": "s04-focal",
+          "role": "focal",
+          "x": 0.0477,
+          "y": 0.0403,
+          "width": 0.2398,
+          "height": 0.2403
+        },
+        {
+          "id": "s04-support",
+          "role": "support",
+          "x": 0.0398,
+          "y": 0.0403,
+          "width": 0.0078,
+          "height": 0.2403
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal asset before supporting labels or traces.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "readable proof clause",
+          "visualChange": "Hold the complete focal proof long enough for labels and state to be inspected.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "voiceover mechanism clause",
+          "visualChange": "Change or accent the focal asset state so the technical claim becomes visible.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "final clause and handoff",
+          "visualChange": "Align the persistent element with the next scene or settle the final callback.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Preserve the entrance, readable hold, emphasized state, and final handoff as four static keyframes.",
+      "outgoingSeam": {
+        "seamId": "s04__s05",
+        "fromScene": "s04",
+        "toScene": "s05",
+        "persistentElement": "persistent red edge",
+        "attentionHandoff": "The red edge lands on the incoming focal axis before the camera settles.",
+        "beforeState": "References, scripts, and assets is complete and readable.",
+        "afterState": "Route each asset to a specialist receives the red edge as its activation cue.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Renderer must expose sceneId, activeBeat, activeCompositionId, activeAssetIds, activeZoneIndex, and sourceProofVisible.",
+      "validationChecks": [
+        {
+          "method": "full-resolution-frame-review",
+          "target": "s04 focal asset and safe areas",
+          "passCriterion": "Focal proof is large, legible, unclipped, and free of overlapping text."
+        },
+        {
+          "method": "renderer-state-and-dom-review",
+          "target": "s04 asset and composition markers",
+          "passCriterion": "Declared asset ID and composition ID are visible and match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared 12-column grid, focal axis, and baseline.",
+        "safeZones": "Focal proof, source labels, and captions remain inside the declared frame-safe regions.",
+        "edgePolicy": "0-radius edges remain square through render and transition midpoint.",
+        "boxPadding": "internalPaddingPx is 0 and all content remains flush to bounds.",
+        "grayscaleHierarchy": "Three monotonic grayscale roles remain distinct; red is reserved for semantic state.",
+        "focalHierarchy": "The focal object occupies at least five percent of frame area and wins the first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s04-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "Camera crop could hide a neighboring module during the seam.",
+        "The proof inset must not compete with the megacanvas focal mechanism."
+      ]
+    },
+    {
+      "id": "s05",
+      "title": "Route each asset to a specialist",
+      "duration": "0:31-0:41",
+      "beatIds": [
+        "b05"
+      ],
+      "assetIds": [
+        "a05-specialist-router"
+      ],
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "sceneJob": "Show intent-based routing to the correct visual producer.",
+      "viewerTask": "Track one work packet splitting into specialist routes and verifiable artifacts.",
+      "compositionChoice": "flow spine",
+      "rejectedAlternatives": [
+        "text-only slide",
+        "generic repeated card wall"
+      ],
+      "choiceRationale": "The flow spine makes route each asset to a specialist the dominant mechanism while the persistent red edge stays available for the handoff.",
+      "focal": "Route each asset to a specialist",
+      "roles": {
+        "focal": "megacanvas mechanism plus manifest-bound SVG proof",
+        "support": "tonal system context",
+        "handoff": "persistent red edge"
+      },
+      "armature": "single intake, central router, three outcome branches",
+      "alignmentGrid": "4-pixel modular grid with shared x/y edges and scene-specific focal axis.",
+      "armatureAnchors": [
+        "Route each asset to a specialist focal geometry locked to the primary scene axis",
+        "persistent red edge aligned to the outgoing seam target"
+      ],
+      "edgePolicy": "Hard-edge rectangular geometry with grid-locked masks and external gutters.",
+      "cornerPolicy": "0-radius square corners only.",
+      "boxInteriorPolicy": "Zero internal padding; content is flush to bounds and separation uses external gutters.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external gutters only"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#696969"
+        },
+        {
+          "level": 1,
+          "role": "secondary support",
+          "grayHex": "#9c9c9c"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#e7e7e7"
+        }
+      ],
+      "layout": "Camera frames the single intake, central router, three outcome branches inside the shared skill-package megacanvas.",
+      "hierarchy": "The mechanism proof dominates; the source-bound SVG and persistent red edge remain subordinate but inspectable.",
+      "density": "One primary mechanism, one manifest-bound proof asset, one state metric or gate, and one transition-ready edge.",
+      "safeZones": {
+        "frameMargin": "5 percent on every edge",
+        "captionZone": "none",
+        "protectedRegion": "focal mechanism and source-bound SVG remain unobstructed"
+      },
+      "textRegion": {
+        "placement": "functional labels only inside data-bearing geometry",
+        "maxLineCharacters": 18,
+        "contrastTreatment": "Neutral ink on tonal white or gray surfaces.",
+        "clearance": "One external grid gutter from focal edges and crop zones."
+      },
+      "depthLayers": [
+        "background tonal field or source context",
+        "midground mechanism and supporting proof",
+        "foreground focal asset and transition handoff"
+      ],
+      "objectBounds": [
+        {
+          "id": "s05-focal",
+          "role": "focal",
+          "x": 0.72,
+          "y": 0.04,
+          "width": 0.24,
+          "height": 0.24
+        },
+        {
+          "id": "s05-support",
+          "role": "support",
+          "x": 0.7125,
+          "y": 0.04,
+          "width": 0.0078,
+          "height": 0.24
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal asset before supporting labels or traces.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "readable proof clause",
+          "visualChange": "Hold the complete focal proof long enough for labels and state to be inspected.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "voiceover mechanism clause",
+          "visualChange": "Change or accent the focal asset state so the technical claim becomes visible.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "final clause and handoff",
+          "visualChange": "Align the persistent element with the next scene or settle the final callback.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Preserve the entrance, readable hold, emphasized state, and final handoff as four static keyframes.",
+      "outgoingSeam": {
+        "seamId": "s05__s06",
+        "fromScene": "s05",
+        "toScene": "s06",
+        "persistentElement": "persistent red edge",
+        "attentionHandoff": "The red edge lands on the incoming focal axis before the camera settles.",
+        "beforeState": "Route each asset to a specialist is complete and readable.",
+        "afterState": "Validation is a gate receives the red edge as its activation cue.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Renderer must expose sceneId, activeBeat, activeCompositionId, activeAssetIds, activeZoneIndex, and sourceProofVisible.",
+      "validationChecks": [
+        {
+          "method": "full-resolution-frame-review",
+          "target": "s05 focal asset and safe areas",
+          "passCriterion": "Focal proof is large, legible, unclipped, and free of overlapping text."
+        },
+        {
+          "method": "renderer-state-and-dom-review",
+          "target": "s05 asset and composition markers",
+          "passCriterion": "Declared asset ID and composition ID are visible and match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared 12-column grid, focal axis, and baseline.",
+        "safeZones": "Focal proof, source labels, and captions remain inside the declared frame-safe regions.",
+        "edgePolicy": "0-radius edges remain square through render and transition midpoint.",
+        "boxPadding": "internalPaddingPx is 0 and all content remains flush to bounds.",
+        "grayscaleHierarchy": "Three monotonic grayscale roles remain distinct; red is reserved for semantic state.",
+        "focalHierarchy": "The focal object occupies at least five percent of frame area and wins the first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s05-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "Camera crop could hide a neighboring module during the seam.",
+        "The proof inset must not compete with the megacanvas focal mechanism."
+      ]
+    },
+    {
+      "id": "s06",
+      "title": "Validation is a gate",
+      "duration": "0:41-0:51",
+      "beatIds": [
+        "b06"
+      ],
+      "assetIds": [
+        "a06-validation-gate"
+      ],
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "sceneJob": "Make validation visibly block a defective artifact before delivery.",
+      "viewerTask": "Trace the good path across four checks and the failed branch back to correction.",
+      "compositionChoice": "flow corridor",
+      "rejectedAlternatives": [
+        "text-only slide",
+        "generic repeated card wall"
+      ],
+      "choiceRationale": "The flow corridor makes validation is a gate the dominant mechanism while the persistent red edge stays available for the handoff.",
+      "focal": "Validation is a gate",
+      "roles": {
+        "focal": "megacanvas mechanism plus manifest-bound SVG proof",
+        "support": "tonal system context",
+        "handoff": "persistent red edge"
+      },
+      "armature": "horizontal verification corridor with one rejection loop",
+      "alignmentGrid": "4-pixel modular grid with shared x/y edges and scene-specific focal axis.",
+      "armatureAnchors": [
+        "Validation is a gate focal geometry locked to the primary scene axis",
+        "persistent red edge aligned to the outgoing seam target"
+      ],
+      "edgePolicy": "Hard-edge rectangular geometry with grid-locked masks and external gutters.",
+      "cornerPolicy": "0-radius square corners only.",
+      "boxInteriorPolicy": "Zero internal padding; content is flush to bounds and separation uses external gutters.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external gutters only"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#696969"
+        },
+        {
+          "level": 1,
+          "role": "secondary support",
+          "grayHex": "#9c9c9c"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#e7e7e7"
+        }
+      ],
+      "layout": "Camera frames the horizontal verification corridor with one rejection loop inside the shared skill-package megacanvas.",
+      "hierarchy": "The mechanism proof dominates; the source-bound SVG and persistent red edge remain subordinate but inspectable.",
+      "density": "One primary mechanism, one manifest-bound proof asset, one state metric or gate, and one transition-ready edge.",
+      "safeZones": {
+        "frameMargin": "5 percent on every edge",
+        "captionZone": "none",
+        "protectedRegion": "focal mechanism and source-bound SVG remain unobstructed"
+      },
+      "textRegion": {
+        "placement": "functional labels only inside data-bearing geometry",
+        "maxLineCharacters": 18,
+        "contrastTreatment": "Neutral ink on tonal white or gray surfaces.",
+        "clearance": "One external grid gutter from focal edges and crop zones."
+      },
+      "depthLayers": [
+        "background tonal field or source context",
+        "midground mechanism and supporting proof",
+        "foreground focal asset and transition handoff"
+      ],
+      "objectBounds": [
+        {
+          "id": "s06-focal",
+          "role": "focal",
+          "x": 0.7203,
+          "y": 0.6597,
+          "width": 0.2398,
+          "height": 0.2403
+        },
+        {
+          "id": "s06-support",
+          "role": "support",
+          "x": 0.7125,
+          "y": 0.6597,
+          "width": 0.0078,
+          "height": 0.2403
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal asset before supporting labels or traces.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "readable proof clause",
+          "visualChange": "Hold the complete focal proof long enough for labels and state to be inspected.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "voiceover mechanism clause",
+          "visualChange": "Change or accent the focal asset state so the technical claim becomes visible.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "final clause and handoff",
+          "visualChange": "Align the persistent element with the next scene or settle the final callback.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Preserve the entrance, readable hold, emphasized state, and final handoff as four static keyframes.",
+      "outgoingSeam": {
+        "seamId": "s06__s07",
+        "fromScene": "s06",
+        "toScene": "s07",
+        "persistentElement": "persistent red edge",
+        "attentionHandoff": "The red edge lands on the incoming focal axis before the camera settles.",
+        "beforeState": "Validation is a gate is complete and readable.",
+        "afterState": "Compact core, detail on demand receives the red edge as its activation cue.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Renderer must expose sceneId, activeBeat, activeCompositionId, activeAssetIds, activeZoneIndex, and sourceProofVisible.",
+      "validationChecks": [
+        {
+          "method": "full-resolution-frame-review",
+          "target": "s06 focal asset and safe areas",
+          "passCriterion": "Focal proof is large, legible, unclipped, and free of overlapping text."
+        },
+        {
+          "method": "renderer-state-and-dom-review",
+          "target": "s06 asset and composition markers",
+          "passCriterion": "Declared asset ID and composition ID are visible and match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared 12-column grid, focal axis, and baseline.",
+        "safeZones": "Focal proof, source labels, and captions remain inside the declared frame-safe regions.",
+        "edgePolicy": "0-radius edges remain square through render and transition midpoint.",
+        "boxPadding": "internalPaddingPx is 0 and all content remains flush to bounds.",
+        "grayscaleHierarchy": "Three monotonic grayscale roles remain distinct; red is reserved for semantic state.",
+        "focalHierarchy": "The focal object occupies at least five percent of frame area and wins the first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s06-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "Camera crop could hide a neighboring module during the seam.",
+        "The proof inset must not compete with the megacanvas focal mechanism."
+      ]
+    },
+    {
+      "id": "s07",
+      "title": "Compact core, detail on demand",
+      "duration": "0:51-1:01",
+      "beatIds": [
+        "b07"
+      ],
+      "assetIds": [
+        "a07-context-budget"
+      ],
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "sceneJob": "Contrast an always-on instruction wall with a compact core plus selected detail.",
+      "viewerTask": "Compare the two context bars and notice the oversized-skill warning.",
+      "compositionChoice": "split comparison",
+      "rejectedAlternatives": [
+        "text-only slide",
+        "generic repeated card wall"
+      ],
+      "choiceRationale": "The split comparison makes compact core, detail on demand the dominant mechanism while the persistent red edge stays available for the handoff.",
+      "focal": "Compact core, detail on demand",
+      "roles": {
+        "focal": "megacanvas mechanism plus manifest-bound SVG proof",
+        "support": "tonal system context",
+        "handoff": "persistent red edge"
+      },
+      "armature": "two aligned horizontal budget bars with a shared scale",
+      "alignmentGrid": "4-pixel modular grid with shared x/y edges and scene-specific focal axis.",
+      "armatureAnchors": [
+        "Compact core, detail on demand focal geometry locked to the primary scene axis",
+        "persistent red edge aligned to the outgoing seam target"
+      ],
+      "edgePolicy": "Hard-edge rectangular geometry with grid-locked masks and external gutters.",
+      "cornerPolicy": "0-radius square corners only.",
+      "boxInteriorPolicy": "Zero internal padding; content is flush to bounds and separation uses external gutters.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external gutters only"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#696969"
+        },
+        {
+          "level": 1,
+          "role": "secondary support",
+          "grayHex": "#9c9c9c"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#e7e7e7"
+        }
+      ],
+      "layout": "Camera frames the two aligned horizontal budget bars with a shared scale inside the shared skill-package megacanvas.",
+      "hierarchy": "The mechanism proof dominates; the source-bound SVG and persistent red edge remain subordinate but inspectable.",
+      "density": "One primary mechanism, one manifest-bound proof asset, one state metric or gate, and one transition-ready edge.",
+      "safeZones": {
+        "frameMargin": "5 percent on every edge",
+        "captionZone": "none",
+        "protectedRegion": "focal mechanism and source-bound SVG remain unobstructed"
+      },
+      "textRegion": {
+        "placement": "functional labels only inside data-bearing geometry",
+        "maxLineCharacters": 18,
+        "contrastTreatment": "Neutral ink on tonal white or gray surfaces.",
+        "clearance": "One external grid gutter from focal edges and crop zones."
+      },
+      "depthLayers": [
+        "background tonal field or source context",
+        "midground mechanism and supporting proof",
+        "foreground focal asset and transition handoff"
+      ],
+      "objectBounds": [
+        {
+          "id": "s07-focal",
+          "role": "focal",
+          "x": 0.72,
+          "y": 0.04,
+          "width": 0.24,
+          "height": 0.24
+        },
+        {
+          "id": "s07-support",
+          "role": "support",
+          "x": 0.7125,
+          "y": 0.04,
+          "width": 0.0078,
+          "height": 0.24
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal asset before supporting labels or traces.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "readable proof clause",
+          "visualChange": "Hold the complete focal proof long enough for labels and state to be inspected.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "voiceover mechanism clause",
+          "visualChange": "Change or accent the focal asset state so the technical claim becomes visible.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "final clause and handoff",
+          "visualChange": "Align the persistent element with the next scene or settle the final callback.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Preserve the entrance, readable hold, emphasized state, and final handoff as four static keyframes.",
+      "outgoingSeam": {
+        "seamId": "s07__s08",
+        "fromScene": "s07",
+        "toScene": "s08",
+        "persistentElement": "persistent red edge",
+        "attentionHandoff": "The red edge lands on the incoming focal axis before the camera settles.",
+        "beforeState": "Compact core, detail on demand is complete and readable.",
+        "afterState": "Reusable workflow callback receives the red edge as its activation cue.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Renderer must expose sceneId, activeBeat, activeCompositionId, activeAssetIds, activeZoneIndex, and sourceProofVisible.",
+      "validationChecks": [
+        {
+          "method": "full-resolution-frame-review",
+          "target": "s07 focal asset and safe areas",
+          "passCriterion": "Focal proof is large, legible, unclipped, and free of overlapping text."
+        },
+        {
+          "method": "renderer-state-and-dom-review",
+          "target": "s07 asset and composition markers",
+          "passCriterion": "Declared asset ID and composition ID are visible and match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared 12-column grid, focal axis, and baseline.",
+        "safeZones": "Focal proof, source labels, and captions remain inside the declared frame-safe regions.",
+        "edgePolicy": "0-radius edges remain square through render and transition midpoint.",
+        "boxPadding": "internalPaddingPx is 0 and all content remains flush to bounds.",
+        "grayscaleHierarchy": "Three monotonic grayscale roles remain distinct; red is reserved for semantic state.",
+        "focalHierarchy": "The focal object occupies at least five percent of frame area and wins the first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s07-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "Camera crop could hide a neighboring module during the seam.",
+        "The proof inset must not compete with the megacanvas focal mechanism."
+      ]
+    },
+    {
+      "id": "s08",
+      "title": "Reusable workflow callback",
+      "duration": "1:01-1:10",
+      "beatIds": [
+        "b08"
+      ],
+      "assetIds": [
+        "a08-reusable-workflow"
+      ],
+      "sourceAnchors": [
+        "SKILL.md",
+        "on-demand reusable workflow"
+      ],
+      "sceneJob": "Return the compressed package to multiple projects and close the opening callback.",
+      "viewerTask": "Recognize one workflow activating across projects and returning to rest.",
+      "compositionChoice": "radial hub",
+      "rejectedAlternatives": [
+        "text-only slide",
+        "generic repeated card wall"
+      ],
+      "choiceRationale": "The radial hub makes reusable workflow callback the dominant mechanism while the persistent red edge stays available for the handoff.",
+      "focal": "Reusable workflow callback",
+      "roles": {
+        "focal": "megacanvas mechanism plus manifest-bound SVG proof",
+        "support": "tonal system context",
+        "handoff": "persistent red edge"
+      },
+      "armature": "central skill package connected to four project surfaces",
+      "alignmentGrid": "4-pixel modular grid with shared x/y edges and scene-specific focal axis.",
+      "armatureAnchors": [
+        "Reusable workflow callback focal geometry locked to the primary scene axis",
+        "persistent red edge aligned to the outgoing seam target"
+      ],
+      "edgePolicy": "Hard-edge rectangular geometry with grid-locked masks and external gutters.",
+      "cornerPolicy": "0-radius square corners only.",
+      "boxInteriorPolicy": "Zero internal padding; content is flush to bounds and separation uses external gutters.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external gutters only"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#696969"
+        },
+        {
+          "level": 1,
+          "role": "secondary support",
+          "grayHex": "#9c9c9c"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#e7e7e7"
+        }
+      ],
+      "layout": "Camera frames the central skill package connected to four project surfaces inside the shared skill-package megacanvas.",
+      "hierarchy": "The mechanism proof dominates; the source-bound SVG and persistent red edge remain subordinate but inspectable.",
+      "density": "One primary mechanism, one manifest-bound proof asset, one state metric or gate, and one transition-ready edge.",
+      "safeZones": {
+        "frameMargin": "5 percent on every edge",
+        "captionZone": "none",
+        "protectedRegion": "focal mechanism and source-bound SVG remain unobstructed"
+      },
+      "textRegion": {
+        "placement": "functional labels only inside data-bearing geometry",
+        "maxLineCharacters": 18,
+        "contrastTreatment": "Neutral ink on tonal white or gray surfaces.",
+        "clearance": "One external grid gutter from focal edges and crop zones."
+      },
+      "depthLayers": [
+        "background tonal field or source context",
+        "midground mechanism and supporting proof",
+        "foreground focal asset and transition handoff"
+      ],
+      "objectBounds": [
+        {
+          "id": "s08-focal",
+          "role": "focal",
+          "x": 0.72,
+          "y": 0.04,
+          "width": 0.24,
+          "height": 0.24
+        },
+        {
+          "id": "s08-support",
+          "role": "support",
+          "x": 0.7125,
+          "y": 0.04,
+          "width": 0.0078,
+          "height": 0.24
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal asset before supporting labels or traces.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "readable proof clause",
+          "visualChange": "Hold the complete focal proof long enough for labels and state to be inspected.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "voiceover mechanism clause",
+          "visualChange": "Change or accent the focal asset state so the technical claim becomes visible.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "final clause and handoff",
+          "visualChange": "Align the persistent element with the next scene or settle the final callback.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Preserve the entrance, readable hold, emphasized state, and final handoff as four static keyframes.",
+      "outgoingSeam": {
+        "seamId": "end",
+        "fromScene": "s08",
+        "toScene": null,
+        "persistentElement": "persistent red edge",
+        "attentionHandoff": "The red edge returns to the compact package and holds through the audio tail.",
+        "beforeState": "Reusable workflow hub is complete.",
+        "afterState": "Compact skill package rests in the full-system frame.",
+        "type": "end"
+      },
+      "rendererHandoff": "Renderer must expose sceneId, activeBeat, activeCompositionId, activeAssetIds, activeZoneIndex, and sourceProofVisible.",
+      "validationChecks": [
+        {
+          "method": "full-resolution-frame-review",
+          "target": "s08 focal asset and safe areas",
+          "passCriterion": "Focal proof is large, legible, unclipped, and free of overlapping text."
+        },
+        {
+          "method": "renderer-state-and-dom-review",
+          "target": "s08 asset and composition markers",
+          "passCriterion": "Declared asset ID and composition ID are visible and match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared 12-column grid, focal axis, and baseline.",
+        "safeZones": "Focal proof, source labels, and captions remain inside the declared frame-safe regions.",
+        "edgePolicy": "0-radius edges remain square through render and transition midpoint.",
+        "boxPadding": "internalPaddingPx is 0 and all content remains flush to bounds.",
+        "grayscaleHierarchy": "Three monotonic grayscale roles remain distinct; red is reserved for semantic state.",
+        "focalHierarchy": "The focal object occupies at least five percent of frame area and wins the first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s08-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "Camera crop could hide a neighboring module during the seam.",
+        "The proof inset must not compete with the megacanvas focal mechanism."
+      ]
+    }
+  ]
+}

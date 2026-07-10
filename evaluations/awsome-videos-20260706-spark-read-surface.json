@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 4,
+    "bash": 5,
+    "write": 2
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1053
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 3387
+    },
+    {
+      "path": "skills/awsome-videos/scripts/check_video_brief.py",
+      "calls": 1,
+      "resultBytes": 4180
+    },
+    {
+      "path": "skills/awsome-videos/references/awesome-fireship-patterns.md",
+      "calls": 1,
+      "resultBytes": 9158
+    },
+    {
+      "path": "outputs/sqlite-100-seconds-brief.md",
+      "calls": 1,
+      "resultBytes": 111
+    },
+    {
+      "path": "outputs/sqlite-100-seconds-validation.json",
+      "calls": 1,
+      "resultBytes": 117
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1053
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 3387
+    },
+    {
+      "path": "skills/awsome-videos/scripts/check_video_brief.py",
+      "calls": 1,
+      "resultBytes": 4180
+    },
+    {
+      "path": "skills/awsome-videos/references/awesome-fireship-patterns.md",
+      "calls": 1,
+      "resultBytes": 9158
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1053
+    },
+    {
+      "line": 30,
+      "tool": "bash",
+      "path": null,
+      "command": "pwd && ls",
+      "isError": false,
+      "resultBytes": 139
+    },
+    {
+      "line": 46,
+      "tool": "bash",
+      "path": null,
+      "command": "ls skills && ls skills/awsome-videos && ls skills/awsome-videos/scripts",
+      "isError": false,
+      "resultBytes": 127
+    },
+    {
+      "line": 59,
+      "tool": "read",
+      "path": "skills/awsome-videos/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3387
+    },
+    {
+      "line": 72,
+      "tool": "read",
+      "path": "skills/awsome-videos/scripts/check_video_brief.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4180
+    },
+    {
+      "line": 85,
+      "tool": "read",
+      "path": "skills/awsome-videos/references/awesome-fireship-patterns.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9158
+    },
+    {
+      "line": 99,
+      "tool": "bash",
+      "path": null,
+      "command": "mkdir -p outputs",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 112,
+      "tool": "write",
+      "path": "outputs/sqlite-100-seconds-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 111
+    },
+    {
+      "line": 127,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_brief.py outputs/sqlite-100-seconds-brief.md --json",
+      "isError": false,
+      "resultBytes": 248
+    },
+    {
+      "line": 140,
+      "tool": "write",
+      "path": "outputs/sqlite-100-seconds-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 117
+    },
+    {
+      "line": 155,
+      "tool": "bash",
+      "path": null,
+      "command": "ls -l outputs",
+      "isError": false,
+      "resultBytes": 205
+    }
+  ],
+  "findings": []
+}

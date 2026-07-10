@@ -65,7 +65,7 @@ function renderWebLoadTimeline() {
       { lane: "Main thread", label: "idle", start: 2140, end: 2380, track: .5, showLabel: true }
     ];
     const milestones = [
-      { label: "nav", time: 0, lane: "Network", y: 62, color: palette.ink, anchor: "start" },
+      { label: "nav", time: 0, lane: "Network", y: 34, color: palette.ink, anchor: "start" },
       { label: "TTFB 820", time: 820, lane: "Network", y: 78, color: palette.blue, anchor: "middle" },
       { label: "FCP 1.32s", time: 1320, lane: "Render", y: 336, color: palette.green, anchor: "middle" },
       { label: "LCP 1.86s", time: 1860, lane: "Render", y: 78, color: palette.red, anchor: "middle" },

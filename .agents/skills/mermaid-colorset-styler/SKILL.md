@@ -21,7 +21,7 @@ Keep insertion minimal:
 
 ## Workflow
 
-1. Read `references/diagram-coverage.md` when the task asks about supported Mermaid types, class support, or why a diagram received only theme variables.
+1. Read `references/diagram-coverage.md` when the task asks about supported Mermaid types, class support, or why a diagram received only theme variables. Treat its linked `references/diagram-types.json` manifest as the maintenance source of truth.
 2. Run the styler against the requested directory. Use `--write` to modify files in place, and always request a report.
 3. Inspect the JSON report. Confirm every expected Mermaid block was found, every block uses the requested colorset, and class definitions were inserted only for supported types.
 4. Run the changed diagrams through the user's renderer or validation command when available. If no renderer is available, at least run the script's `--check` mode after writing.
@@ -64,6 +64,12 @@ Review and approve every bundled Mermaid example when maintaining fixture covera
 uv run --script .agents/skills/mermaid-colorset-styler/scripts/review_mermaid_examples.py --render --render-retries 8 --output projects/mermaid-colorset-styler-review/artifacts/render-approval --report projects/mermaid-colorset-styler-review/artifacts/render-approval/approval-report.json
 ```
 
+Fresh-render every renderable declaration for both colorsets in two Mermaid CLI batches. This gate never reuses SVGs:
+
+```powershell
+uv run --script .agents/skills/mermaid-colorset-styler/scripts/validate_mermaid_render_coverage.py --report projects/mermaid-colorset-styler-review/artifacts/render-coverage.json
+```
+
 ## Color Classes
 
 Use these class names in generated or existing Mermaid source when individual Mermaid objects need semantic color roles:
@@ -90,4 +96,11 @@ After writing changes, verify:
 - Existing Mermaid frontmatter and non-colorset directives are still present.
 - Styled blocks use YAML frontmatter with `config.theme: "base"` and `config.themeVariables`.
 - Rendered smoke output does not contain Mermaid default purple theme tokens and does contain the expected colorset class and theme tokens.
-- The full example approval report has `approved: true`, `approvedExampleCount` equal to `exampleCount`, no missing declarations, no missing color classes, and no findings.
+- The coverage report records Mermaid 11.16.0 and shows 31/31 families, 40/40 current declarations, and 48/48 renderable declarations with 100 percent coverage.
+- The full example approval report has `approved: true`, `approvedExampleCount` equal to `exampleCount`, no missing, unexpected, or duplicate declarations, no missing color classes, and no findings.
+
+## SkillOpt Maintenance
+
+When using SkillOpt or SkillOpt-Sleep on this skill, train only from reviewed tasks with deterministic gates. Treat the acceptance gate as passing the bundled coverage test, a post-write `--check` report with `missingStyleCount: 0`, and rendered smoke or full example approval when theme behavior changes.
+
+Reject any candidate that adds class assignments to user diagrams, changes diagram geometry, switches away from Mermaid `base`, emits generated JSON init directives, or expands YAML frontmatter beyond the minimal generated `config` plus preserved user metadata needed for the selected colorset.

@@ -34,6 +34,7 @@ const palette = {
   greenHover: "#294d19",
   purpleHover: "#431f47",
   redHover: "#6d1222",
+  yellowHover: "#98700c",
   blueHighlight: "#cdf3ff",
   orangeHighlight: "#ffe5cc",
   yellowHighlight: "#fff4cc",
@@ -48,7 +49,12 @@ const ramps = {
   blue: [palette.blueHighlight, palette.cyan, palette.blue, palette.blueHover],
   heat: [palette.yellowHighlight, palette.orangeHighlight, palette.orange, palette.red],
   terrain: [palette.yellowHighlight, palette.greenHighlight, palette.blueHighlight, palette.blue, palette.purple],
-  gray: [palette.gray100, palette.gray200, palette.gray300, palette.gray400, palette.gray700]
+  gray: [palette.gray100, palette.gray200, palette.gray300, palette.gray400, palette.gray700],
+  bivariate: [
+    [palette.gray100, palette.blueHighlight, palette.blue],
+    [palette.purpleHighlight, palette.gray200, palette.blueHover],
+    [palette.purple, palette.red, palette.purpleHover]
+  ]
 };
 ```
 
@@ -64,17 +70,19 @@ function prepareSvg(id, title, desc) {
     .attr("id", id)
     .attr("data-pattern-id", `d3-pattern-${id}`)
     .attr("role", "img")
+    .attr("aria-labelledby", `${id}-title ${id}-desc`)
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("width", width)
     .attr("height", height);
   svg.selectAll("*").remove();
-  svg.append("title").text(title);
-  svg.append("desc").text(desc);
+  svg.append("title").attr("id", `${id}-title`).text(title);
+  svg.append("desc").attr("id", `${id}-desc`).text(desc);
   svg.append("rect")
     .attr("width", width)
     .attr("height", height)
     .attr("rx", 16)
     .attr("fill", palette.surface);
+  svg.style("font-family", '"Open Sans", Arial, sans-serif');
   return svg;
 }
 
@@ -111,14 +119,17 @@ function revealIn(selection, delay = 0, dur = 0.7) {
 }
 
 function grow(selection, attr, from, to, delay = 0, dur = 0.7) {
-  selection.attr(attr, to)
-    .append("animate")
-    .attr("attributeName", attr)
-    .attr("from", from)
-    .attr("to", to)
-    .attr("dur", `${dur}s`)
-    .attr("begin", `${delay}s`)
-    .attr("fill", "freeze");
+  selection.attr(attr, to).each(function (d, i) {
+    const resolvedFrom = typeof from === "function" ? from(d, i) : from;
+    const resolvedTo = typeof to === "function" ? to(d, i) : to;
+    d3.select(this).append("animate")
+      .attr("attributeName", attr)
+      .attr("from", resolvedFrom)
+      .attr("to", resolvedTo)
+      .attr("dur", `${dur}s`)
+      .attr("begin", `${delay + i * .025}s`)
+      .attr("fill", "freeze");
+  });
 }
 
 function drawPath(selection, delay = 0, dur = 1.1) {
@@ -150,7 +161,59 @@ function axisLeft(svg, scale, x, ticks = 5) {
     .attr("transform", `translate(${x},0)`)
     .call(d3.axisLeft(scale).ticks(ticks));
 }
+
+function quantizedRamp(domain, range) {
+  return d3.scaleQuantize().domain(domain).range(range);
+}
+
+function estimateSvgTextWidth(text, fontSize = 10) {
+  return Array.from(String(text)).reduce((sum, char) => {
+    if ("MW@#%".includes(char)) return sum + fontSize * .92;
+    if ("ABCDEFGHKNOPQRSTUVWXYZ0123456789".includes(char)) return sum + fontSize * .68;
+    if ("ilI.,:;!|".includes(char)) return sum + fontSize * .34;
+    if (char === " ") return sum + fontSize * .32;
+    return sum + fontSize * .56;
+  }, 0);
+}
 ```
+
+## Schematic Land Context
+
+Map excerpts that call `appendSchematicLand` need a compact local `FeatureCollection` named `schematicLand`. Use six coarse polygons for North America, South America, Eurasia, Africa, Australia, and Greenland, then render them through the excerpt's projection before data marks. Mark the group `data-map-context="schematic-land"`; treat it as orientation context, never as analytical boundary data.
+
+```js
+const schematicLand = {
+  type: "FeatureCollection",
+  features: [
+    [[[-168,16],[-150,68],[-108,74],[-58,50],[-80,8],[-122,12],[-168,16]]]],
+    [[[-82,12],[-50,10],[-34,-54],[-70,-56],[-82,12]]]],
+    [[[-10,35],[6,70],[72,76],[178,54],[150,8],[96,6],[42,28],[-10,35]]]],
+    [[[-18,34],[48,34],[42,-36],[12,-35],[-18,34]]]],
+    [[[112,-10],[154,-12],[150,-44],[114,-38],[112,-10]]]],
+    [[[-74,60],[-60,82],[-22,84],[-20,60],[-74,60]]]]
+  ].map((coordinates, index) => ({
+    type: "Feature",
+    properties: { schematicRegion: index + 1 },
+    geometry: { type: "Polygon", coordinates }
+  }))
+};
+
+function appendSchematicLand(svg, path, fill = palette.gray100) {
+  return svg.append("g")
+    .attr("class", "schematic-land")
+    .attr("data-map-context", "schematic-land")
+    .selectAll("path")
+    .data(schematicLand.features)
+    .join("path")
+    .attr("d", path)
+    .attr("fill", fill)
+    .attr("fill-opacity", .92)
+    .attr("stroke", palette.gray300)
+    .attr("stroke-width", .8);
+}
+```
+
+Keep the coarse land geometry visibly subordinate. When geographic boundary accuracy is part of the data question, replace it with a verified local GeoJSON source rather than presenting the schematic polygons as real boundaries.
 
 ## Standalone Conversion Rules
 

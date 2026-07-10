@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f49bc-b960-7e60-9086-402a8eb1cce7",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\plantuml-colorset-renderer-runtime-20260709-coverage-spark-1-json\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 6
+  },
+  "providers": {
+    "openai-codex": 6
+  },
+  "usageTotals": {
+    "input": 3667,
+    "output": 1307,
+    "cacheRead": 13568,
+    "cacheWrite": 0,
+    "totalTokens": 18542
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 3,
+    "bash": 2
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1827
+    },
+    {
+      "path": "outputs/plantuml/report.json",
+      "calls": 1,
+      "resultBytes": 3637
+    },
+    {
+      "path": "outputs/plantuml/validation.json",
+      "calls": 1,
+      "resultBytes": 386
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1827
+    },
+    {
+      "path": "outputs/plantuml/report.json",
+      "calls": 1,
+      "resultBytes": 3637
+    },
+    {
+      "path": "outputs/plantuml/validation.json",
+      "calls": 1,
+      "resultBytes": 386
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/plantuml/report.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/plantuml/validation.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 5850,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1827
+    },
+    {
+      "line": 29,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p inputs outputs/plantuml\ncat > inputs/sequence.puml <<'PUML'\n@startuml\ntitle Runtime Sequence\nactor User\nparticipant API\ndatabase DB\nUser -> API : create order\nAPI -> DB : insert\nDB --> API : id\nAPI --> User : accepted\n@enduml\nPUML\n",
+      "isError": false,
+      "resultBytes": 202
+    },
+    {
+      "line": 42,
+      "tool": "read",
+      "path": "outputs/plantuml/report.json",
+      "policyPath": "outputs/plantuml/report.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3637
+    },
+    {
+      "line": 55,
+      "tool": "read",
+      "path": "outputs/plantuml/validation.json",
+      "policyPath": "outputs/plantuml/validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 386
+    },
+    {
+      "line": 71,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "test -f outputs/plantuml/report.json && echo 'outputs/plantuml/report.json exists'\ntest -f outputs/plantuml/validation.json && echo 'outputs/plantuml/validation.json exists'\ntest -f outputs/plantuml/svg/sequence.svg && echo 'outputs/plantum",
+      "isError": false,
+      "resultBytes": 365
+    }
+  ],
+  "findings": []
+}

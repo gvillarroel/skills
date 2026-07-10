@@ -15,6 +15,7 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
    - If the request provides JSON, YAML, a table, or another structured output contract with IDs, counts, classes, or values, copy numeric counts and validation hooks exactly.
 3. For self-contained, standalone, offline, or portable HTML/SVG deliverables, read `references/self-contained-output.md`, start from `assets/templates/self-contained-animated-svg.html` when useful, and validate with `scripts/check_self_contained_html.py`.
 4. Before hand-rolling a visualization, check the pattern routing:
+   - If the request involves dense observations, distribution alternatives, uncertainty intervals, linked views, map selection, or publishable explanatory graphics, read `references/pattern-selection-contracts.md` before choosing the chart structure.
    - Read `references/pattern-routing.md` when the request names or strongly resembles a reusable `d3-pattern-*` family, asks for exact mark counts, asks for small/medium/large variants, or mentions a builder-backed pattern such as critical queues, cache stampedes, circuit breakers, P&ID loops, organic growth, or Kanban assignee boards.
    - If the request names exact `d3-pattern-*` IDs, extract the complete unique set and read each matching `references/patterns/<id-without-prefix>.md` before coding.
    - If the request asks for a closest gallery pattern without naming an exact ID, search `references/pattern-index.md`, choose one pattern, then read only that matching file under `references/patterns/`.
@@ -29,6 +30,7 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
 
 - `references/pattern-routing.md`: read before using reusable pattern families, exact `d3-pattern-*` IDs, exact cardinality contracts, or builder-backed standalone patterns.
 - `references/pattern-index.md`: search when selecting the closest gallery pattern without an exact pattern ID.
+- `references/pattern-selection-contracts.md`: read when choosing among dense-data, distribution, uncertainty, linked-view, map, or publishable explanatory chart patterns.
 - `references/visualization-type-index.md`: read when choosing a D3 visualization form or when the user asks for alternatives to Mermaid.
 - `references/layout-patterns.md`: read when implementing layouts, scales, projections, hierarchy, force simulations, or data joins.
 - `references/animation-patterns.md`: read when making portable SVG animation, staged reveals, path drawing, motion tokens, morphs, or final-frame verification.

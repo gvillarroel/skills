@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process";
 const args = [
   "run",
   "--script",
-  "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+  ".agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
   "--project-root",
   "projects/metro-design-repair-contracts-full/videos/what-is-an-agent",
   "--title",
@@ -29,6 +29,7 @@ const args = [
   "720",
   "--edge-style",
   "square",
+  "--masonry-layout",
   "--fact",
   "An agent is not just \u201can LLM with tools.\u201d In current official platform guidance, an agentic system combines a model with tools, state or memory, and orchestration.",
   "--fact",

@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process";
 const args = [
   "run",
   "--script",
-  "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+  ".agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
   "--project-root",
   "projects/metro-design-repair-contracts-full/videos/what-is-a-skill",
   "--title",
@@ -29,6 +29,7 @@ const args = [
   "720",
   "--edge-style",
   "square",
+  "--masonry-layout",
   "--fact",
   "A skill is a reusable capability package that gives the harness structured instructions, scripts, and supporting resources for a specialized task.",
   "--fact",

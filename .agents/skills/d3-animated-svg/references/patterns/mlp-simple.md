@@ -28,15 +28,20 @@ function renderMlpSimple() {
     const paths = svg.append("g").selectAll("path").data(layout.links, d => d.id).join("path")
       .attr("d", d => link({ source: d.source, target: d.target }))
       .attr("fill", "none")
-      .attr("stroke", palette.gray100)
+      .attr("stroke", palette.gray300)
       .attr("stroke-width", 1.5)
-      .attr("stroke-opacity", .34)
+      .attr("stroke-opacity", .62)
       .attr("stroke-linecap", "round");
     const groups = svg.append("g").selectAll("g").data(layout.nodes, d => d.id).join("g")
       .attr("transform", d => `translate(${d.x},${d.y})`);
     const circles = groups.append("circle")
       .attr("r", d => d.r)
-      .attr("fill", palette.gray200);
+      .attr("fill", d => [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight, palette.purpleHighlight][d.layer])
+      .attr("stroke", d => [palette.blue, palette.orange, palette.green, palette.purple][d.layer])
+      .attr("stroke-width", 1.4);
     pulseMlpNodes(circles, delayForLayer);
+    ["input", "hidden 1", "hidden 2", "output"].forEach((label, index) => {
+      svg.append("text").attr("class", "caption").attr("x", layout.layers[index][0].x).attr("y", 48).attr("text-anchor", "middle").text(label);
+    });
   }
 ```

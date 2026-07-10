@@ -24,6 +24,7 @@ function renderBubbleMap() {
     const projection = d3.geoNaturalEarth1().fitExtent([[44, 58], [516, 330]], { type: "Sphere" });
     const path = d3.geoPath(projection);
     svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", "#f7f7f7").attr("stroke", palette.line);
+    appendSchematicLand(svg, path);
     svg.append("g").selectAll("path").data(d3.geoGraticule().step([40, 30]).lines()).join("path")
       .attr("d", path).attr("fill", "none").attr("stroke", "#e7e7e7").attr("stroke-width", .8);
     const data = [
@@ -33,5 +34,11 @@ function renderBubbleMap() {
     const bubbles = svg.append("g").selectAll("circle").data(data).join("circle")
       .attr("cx", d => d.xy[0]).attr("cy", d => d.xy[1]).attr("fill", palette.blue).attr("fill-opacity", .42).attr("stroke", palette.blue).attr("stroke-width", 2);
     grow(bubbles, "r", 2, d => r(d.value), .08, .65);
+    const sizeLegend = svg.append("g").attr("transform", "translate(404,360)");
+    [15, 50].forEach((value, index) => {
+      const x = index * 72;
+      sizeLegend.append("circle").attr("cx", x).attr("cy", 0).attr("r", r(value)).attr("fill", palette.blueHighlight).attr("stroke", palette.blue);
+      sizeLegend.append("text").attr("class", "caption").attr("x", x).attr("y", 4).attr("text-anchor", "middle").text(value);
+    });
   }
 ```

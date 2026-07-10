@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "version": 1,
+  "videoId": "skill-convierte-codex-especialista",
+  "sourceId": "codex-skill-reusable-workflow",
+  "route": "topic-explainer",
+  "status": "frozen",
+  "createdFor": "A polished demonstration of the updated awsome-videos skill.",
+  "deliverables": [
+    "source/brief.md",
+    "source/shot-contract.json",
+    "src/index.html",
+    "artifacts/videos/skill-convierte-codex-especialista.mp4"
+  ],
+  "constraints": {
+    "durationSeconds": 70,
+    "aspect": "16:9",
+    "resolution": "1280x720",
+    "fps": 30,
+    "audience": "technical Spanish-speaking viewers",
+    "style": "fast technical explainer; hard-edge modular megacanvas; high visual density; low text",
+    "audio": "Spanish narration plus procedural bed and semantic SFX"
+  },
+  "facts": [
+    {
+      "id": "f01",
+      "beatId": "b01",
+      "time": "0:00-0:05",
+      "claim": "Teams can preserve a repeated workflow as a skill instead of pasting a long prompt into every task.",
+      "sourceUrl": "https://learn.chatgpt.com/use-cases/reusable-codex-skills",
+      "rightsStatus": "official-source",
+      "verificationStatus": "verified",
+      "checkedDate": "2026-07-10"
+    },
+    {
+      "id": "f02",
+      "beatId": "b02",
+      "time": "0:05-0:13",
+      "claim": "Most Codex skills start with a required SKILL.md file containing reusable instructions and metadata.",
+      "sourceUrl": "https://learn.chatgpt.com/use-cases/reusable-codex-skills",
+      "rightsStatus": "official-source",
+      "verificationStatus": "verified",
+      "checkedDate": "2026-07-10"
+    },
+    {
+      "id": "f03",
+      "beatId": "b03",
+      "time": "0:13-0:22",
+      "claim": "This repository keeps core workflow in SKILL.md and moves conditional or bulky detail into references.",
+      "sourceUrl": "https://github.com/gvillarroel/skills/blob/main/AGENTS.md",
+      "rightsStatus": "official-source",
+      "verificationStatus": "verified",
+      "checkedDate": "2026-07-10"
+    },
+    {
+      "id": "f04",
+      "beatId": "b04",
+      "time": "0:22-0:31",
+      "claim": "A skill can add optional references for longer docs, scripts for repeatable commands, and assets for templates or starter files.",
+      "sourceUrl": "https://learn.chatgpt.com/use-cases/reusable-codex-skills",
+      "rightsStatus": "official-source",
+      "verificationStatus": "verified",
+      "checkedDate": "2026-07-10"
+    },
+    {
+      "id": "f05",
+      "beatId": "b05",
+      "time": "0:31-0:41",
+      "claim": "The polished video workflow routes conventional diagrams, bespoke geometry, and raster imagery to their specialist producers.",
+      "sourceUrl": "https://github.com/gvillarroel/skills/blob/main/AGENTS.md",
+      "rightsStatus": "official-source",
+      "verificationStatus": "verified",
+      "checkedDate": "2026-07-10"
+    },
+    {
+      "id": "f06",
+      "beatId": "b06",
+      "time": "0:41-0:51",
+      "claim": "The repository treats skill validation as part of the work, not as an optional follow-up.",
+      "sourceUrl": "https://github.com/gvillarroel/skills/blob/main/AGENTS.md",
+      "rightsStatus": "official-source",
+      "verificationStatus": "verified",
+      "checkedDate": "2026-07-10"
+    },
+    {
+      "id": "f07",
+      "beatId": "b07",
+      "time": "0:51-1:01",
+      "claim": "Skills are useful when a reusable workflow replaces repeated long prompts; keeping the core short preserves that advantage.",
+      "sourceUrl": "https://learn.chatgpt.com/use-cases/reusable-codex-skills",
+      "rightsStatus": "official-source",
+      "verificationStatus": "verified",
+      "checkedDate": "2026-07-10"
+    },
+    {
+      "id": "f08",
+      "beatId": "b08",
+      "time": "1:01-1:10",
+      "claim": "A Codex skill preserves reusable instructions, resources, and scripts for work that repeats.",
+      "sourceUrl": "https://learn.chatgpt.com/use-cases/reusable-codex-skills",
+      "rightsStatus": "official-source",
+      "verificationStatus": "verified",
+      "checkedDate": "2026-07-10"
+    }
+  ],
+  "literalAnchors": [
+    "SKILL.md",
+    "references/",
+    "scripts/",
+    "assets/",
+    "progressive disclosure",
+    "validation",
+    "on-demand reusable workflow"
+  ],
+  "assets": [
+    "artifacts/images/a01-prompt-wall.svg",
+    "artifacts/images/a02-skill-package.svg",
+    "artifacts/images/a03-progressive-disclosure.svg",
+    "artifacts/images/a04-resource-bundle.svg",
+    "artifacts/images/a05-specialist-router.svg",
+    "artifacts/images/a06-validation-gate.svg",
+    "artifacts/images/a07-context-budget.svg",
+    "artifacts/images/a08-reusable-workflow.svg"
+  ],
+  "sourceUrls": [
+    "https://learn.chatgpt.com/use-cases/reusable-codex-skills",
+    "https://github.com/gvillarroel/skills/blob/main/AGENTS.md"
+  ],
+  "missingFacts": [],
+  "risks": [
+    "Context benefit remains qualitative; no invented token-savings percentage is shown.",
+    "The narration is synthetic neural speech and is reported as such."
+  ]
+}

@@ -3,92 +3,219 @@
 - **Pattern ID:** `d3-pattern-asymmetric-task-overlap-saturated`
 - **Gallery source ID:** `asymmetric-task-overlap-saturated`
 - **Family:** Set Overlap
-- **Use when:** A dense task backlog needs to show 100 work items across nine asymmetric scopes while keeping every task label readable outside the circle field.
+- **Use when:** Nine asymmetric scope circles hold 100 task dots with external labels and direct color-optimized leader lines.
 - **Renderer:** `renderAsymmetricTaskOverlapSaturated`
-- **Layout generator:** `scripts/layout_task_overlap_labels.py`
 
 ## Reuse Contract
 
-- Use exactly one root SVG with `data-pattern-id="d3-pattern-asymmetric-task-overlap-saturated"` when recreating this pattern outside the gallery.
-- Keep the same nine-circle scope geometry as `d3-pattern-asymmetric-task-overlap`, shifted into the central field so external labels can sit outside every circle.
-- Generate dense task dots and label positions with `scripts/layout_task_overlap_labels.py`; do not hand-place the 100-label fixture.
-- Load the generated `task-overlap-layouts.js` before the gallery renderer when maintaining the fixture.
-- Expose the root SVG with `data-target-count="100"`, `data-circle-count="9"`, `data-label-count="100"`, `data-label-algorithm="external-lane-gutter-anneal"`, `data-label-overlap-count="0"`, `data-label-circle-overlap-count="0"`, `data-label-dot-overlap-count="0"`, `data-label-placement="external-lanes"`, `data-leader-route="direct"`, `data-leader-color-count`, `data-leader-crossing-count`, `data-same-color-leader-crossing-count`, `data-label-length-buckets`, and `data-label-font-range`.
-- In the gallery, mark this card as wide enough for inspection because 100 direct labels are not readable in a normal four-column thumbnail.
+- Use this file as the pattern source in isolated skill-only workspaces; read the gallery fixture only when maintaining that fixture.
+- Keep data deterministic and inline small datasets.
+- Preserve the pattern's core geometry and semantic color roles before changing labels or domain data.
+- Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
+- Include an SVG `<title>`, `<desc>`, stable `viewBox`, and final-state geometry.
 
-## Data Contract
+## Source Excerpt
 
-The generated fixture uses 100 task records with:
+The excerpt below is the compact renderer source for this pattern. If it references helpers such as `prepareSvg`, `fadeIn`, `grow`, `drawPath`, `palette`, `ramps`, `axisBottom`, or `axisLeft`, read `references/shared-renderer-helpers.md` and recreate only the needed helper behavior in the final artifact.
 
-- `id`: stable task ID, such as `T001`.
-- `label`: mixed-length visible task label. The generated fixture includes 40 short labels, 35 medium labels, and 25 long labels such as `T092 runbook runbook`.
-- `x`, `y`: dot position inside at least one scope circle.
-- `memberships`: one, two, or three-or-more scope IDs computed from the circle geometry.
-- `membershipCount`: numeric membership count for color encoding.
-- `labelX`, `labelY`, `labelWidth`, `labelHeight`: final audited label box geometry.
-- `labelFontSize`: per-task font size, currently 6.6, 7.2, 7.8, or 8.4 SVG units.
-- `labelLengthBucket`: `short`, `medium`, or `long`.
-- `labelTextPaddingX`: left text inset used by the renderer.
-- `labelLane` and `labelSide`: lane assignment used by the label solver.
-- `labelEdgeX` and `labelEdgeY`: direct leader-line endpoint on the inner edge of the label box.
-- `leaderColorKey`, `leaderColorIndex`, and `leaderConflictDegree`: deterministic line-color assignment metadata from the direct-leader crossing graph.
+```js
+function renderAsymmetricTaskOverlapSaturated() {
+    const layout = window.D3_TASK_OVERLAP_LAYOUTS && window.D3_TASK_OVERLAP_LAYOUTS.saturated;
+    const svg = prepareSvg("asymmetric-task-overlap-saturated", "Saturated task overlap", "Nine asymmetric scope circles with 100 task dots, external collision-audited labels, and direct leader lines colored to reduce same-color crossings.");
+    if (!layout) {
+      svg.append("text")
+        .attr("class", "mark-label")
+        .attr("x", 36)
+        .attr("y", 70)
+        .text("Missing generated task-overlap layout.");
+      return;
+    }
 
-Default membership bucket targets:
+    const svgWidth = layout.width || width;
+    const svgHeight = layout.height || height;
+    svg
+      .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
+      .attr("data-target-count", layout.targetCount)
+      .attr("data-circle-count", layout.circleCount)
+      .attr("data-label-count", layout.tasks.length)
+      .attr("data-label-algorithm", layout.labelAlgorithm)
+      .attr("data-label-overlap-count", layout.labelOverlapCount)
+      .attr("data-label-circle-overlap-count", layout.labelCircleOverlapCount)
+      .attr("data-label-dot-overlap-count", layout.labelDotOverlapCount)
+      .attr("data-label-leader-overlap-count", layout.labelLeaderOverlapCount)
+      .attr("data-label-leader-underpass-count", layout.labelLeaderOverlapCount)
+      .attr("data-label-nonlabel-overlap-count", (layout.labelCircleOverlapCount || 0) + (layout.labelDotOverlapCount || 0))
+      .attr("data-label-placement", "external-lanes")
+      .attr("data-label-clearance-policy", "no-label-label-circle-dot-overlap")
+      .attr("data-leader-route", layout.leaderRoute || "direct")
+      .attr("data-leader-style-count", 1)
+      .attr("data-leader-color-count", (layout.leaderColorKeys || []).length)
+      .attr("data-leader-crossing-count", layout.leaderCrossingCount)
+      .attr("data-same-color-leader-crossing-count", layout.sameColorLeaderCrossingCount)
+      .attr("data-membership-buckets", Object.entries(layout.membershipBuckets).map(([key, value]) => `${key}:${value}`).join(" "))
+      .attr("data-label-length-buckets", Object.entries(layout.labelLengthBuckets || {}).map(([key, value]) => `${key}:${value}`).join(" "))
+      .attr("data-label-font-range", layout.labelFontRange ? `${layout.labelFontRange.min}-${layout.labelFontRange.max}` : layout.labelFontSize)
+      .attr("data-longest-label", layout.longestLabel || "");
 
-- 36 single-scope tasks.
-- 36 two-scope tasks.
-- 28 three-or-more-scope tasks.
+    const circles = layout.circles.map(circle => ({
+      ...circle,
+      fillColor: palette[circle.fill] || circle.fill,
+      strokeColor: palette[circle.stroke] || circle.stroke
+    }));
+    const tasks = layout.tasks;
+    const dotColor = d => d.membershipCount === 1 ? palette.blue : d.membershipCount === 2 ? palette.orange : palette.red;
+    const leaderColor = d => palette[d.leaderColorKey] || dotColor(d);
+    const labelEdgeX = d => d.labelEdgeX ?? (d.labelX < d.x ? d.labelX + d.labelWidth : d.labelX);
+    const labelEdgeY = d => d.labelEdgeY ?? (d.labelY + d.labelHeight / 2);
 
-## Label Layout Method
+    svg.append("rect")
+      .attr("x", 8)
+      .attr("y", 18)
+      .attr("width", svgWidth - 16)
+      .attr("height", svgHeight - 28)
+      .attr("rx", 10)
+      .attr("fill", palette.surface)
+      .attr("stroke", "none");
 
-The generator uses a deterministic external-lane layout:
+    const overlapCircles = svg.append("g")
+      .attr("class", "overlap-circle-layer")
+      .selectAll("circle.overlap-circle")
+      .data(circles)
+      .join("circle")
+      .attr("class", "overlap-circle")
+      .attr("data-set-id", d => d.id)
+      .attr("cx", d => d.cx)
+      .attr("cy", d => d.cy)
+      .attr("fill", d => d.fillColor)
+      .attr("fill-opacity", .18)
+      .attr("stroke", d => d.strokeColor)
+      .attr("stroke-width", 1.7)
+      .attr("stroke-opacity", .78);
+    grow(overlapCircles, "r", 4, d => d.r, .05, .7);
 
-1. Sample candidate task dots inside the nine fixed circles.
-2. Select 100 dots while preserving membership bucket quotas and at least four single-scope examples per circle.
-3. Generate mixed short, medium, and long label text with varied font sizes, then compute conservative label rectangles before placement.
-4. Create four external left and right label lanes with fixed row spacing, alternating lane offsets, and enough lane width for the longest generated label.
-5. Assign tasks to candidate label slots by cost: leader-line distance, preferred side, lane distance, and centrality.
-6. Run deterministic pair-swap annealing to reduce total leader distance.
-7. Build direct leader segments from each task dot to the nearest edge of its label box.
-8. Build a crossing graph for those direct leaders, then assign six token colors greedily with local repaint passes to minimize same-color crossings.
-9. Audit every label rectangle pair plus label intersections against circles and dots; fail generation unless those label overlaps are zero.
+    const circleLabels = svg.append("g")
+      .attr("class", "overlap-circle-label-layer")
+      .selectAll("text.overlap-circle-label")
+      .data(circles)
+      .join("text")
+      .attr("class", "caption overlap-circle-label")
+      .attr("x", d => d.lx)
+      .attr("y", d => d.ly)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 8.5)
+      .attr("font-weight", 800)
+      .attr("fill", palette.gray700)
+      .text(d => d.label);
+    fadeIn(circleLabels, .22, .42);
 
-This approach is deliberately stricter than browser-time force relaxation: the gallery should render a known-valid final label layout instead of hoping a simulation converges on every replay.
+    const leaderLayer = svg.append("g")
+      .attr("class", "task-leader-layer")
+      .attr("stroke-linecap", "round");
 
-## Geometry Contract
+    const leaderHalos = leaderLayer.selectAll("line.task-leader-halo")
+      .data(tasks)
+      .join("line")
+      .attr("class", "task-leader-halo")
+      .attr("x1", d => d.x)
+      .attr("y1", d => d.y)
+      .attr("x2", labelEdgeX)
+      .attr("y2", labelEdgeY)
+      .attr("stroke", palette.surface)
+      .attr("stroke-opacity", .42)
+      .attr("stroke-width", 1.8);
+    fadeIn(leaderHalos, .26, .38);
 
-- Use an 880 by 450 viewBox for the saturated fixture. Keep circles in the central field and reserve external lanes for labels.
-- Draw circles first with translucent token highlight fills.
-- Draw direct solid `.task-leader` lines from every dot to the nearest label box edge, using semitransparent strokes so the dense leader field remains readable.
-- Color leader lines from the generated crossing-graph assignment, not from membership count. Use the six token color keys emitted by the layout fixture, and prefer assignments that avoid same-color crossings.
-- Draw a subtle semitransparent white `.task-leader-halo` behind each colored line so direct leaders remain visible over circles and dots without creating heavy opaque routes.
-- Draw small colored task dots above circles and below labels.
-- Draw every label with an opaque white `.task-label-bg` rectangle sized from the generated `labelWidth`. Do not add lateral color accents inside labels for this dense fixture.
-- Do not draw an outer gray frame stroke around the SVG background; keep the inspection area open outside the labels.
-- If labels use the shared `.mark-label` class, set the generated `labelFontSize` as an inline style or a more-specific CSS rule so global gallery CSS cannot enlarge text beyond the audited rectangle.
-- Encode membership count with dot color: one scope in blue, two scopes in orange, and three-or-more scopes in red.
-- When publishing this dense fixture in a gallery card, use a wider card layout or equivalent presentation so the smallest rendered label height stays inspectable.
+    const leaders = leaderLayer.selectAll("line.task-leader")
+      .data(tasks)
+      .join("line")
+      .attr("class", "task-leader")
+      .attr("data-task-id", d => d.id)
+      .attr("data-membership-count", d => d.membershipCount)
+      .attr("data-leader-style", "solid")
+      .attr("data-leader-color-key", d => d.leaderColorKey)
+      .attr("data-leader-conflict-degree", d => d.leaderConflictDegree)
+      .attr("x1", d => d.x)
+      .attr("y1", d => d.y)
+      .attr("x2", labelEdgeX)
+      .attr("y2", labelEdgeY)
+      .attr("stroke", leaderColor)
+      .attr("stroke-opacity", .46)
+      .attr("stroke-width", .82);
+    fadeIn(leaders, .28, .4);
 
-## Validation Hooks
+    const dots = svg.append("g")
+      .attr("class", "task-dot-layer")
+      .selectAll("circle.task-dot")
+      .data(tasks)
+      .join("circle")
+      .attr("class", "task-dot")
+      .attr("data-task-id", d => d.id)
+      .attr("data-memberships", d => d.memberships.join(" "))
+      .attr("data-membership-count", d => d.membershipCount)
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("fill", dotColor)
+      .attr("stroke", palette.surface)
+      .attr("stroke-width", .9);
+    dots.append("title").text(d => `${d.id}: ${d.memberships.join(", ")}`);
+    grow(dots, "r", .7, layout.dotRadius, .42, .5);
 
-- `.overlap-circle` count equals 9.
-- `.task-dot` count equals 100.
-- `.task-label` count equals 100.
-- `.task-label-bg` count equals 100.
-- `.task-leader` and `.task-leader-halo` counts each equal 100.
-- `.task-leader-anchor` and `.task-label-accent` counts each equal 0.
-- Every `.task-dot` has non-empty `data-task-id`, `data-memberships`, and numeric `data-membership-count`.
-- At least one task has `data-membership-count="1"`, at least one has `"2"`, and at least one has `"3"` or greater.
-- Root SVG exposes `data-label-length-buckets` with nonzero `short`, `medium`, and `long` counts.
-- Root SVG exposes `data-label-font-range`, and `.task-label-group` exposes at least three distinct `data-label-font-size` values.
-- Root SVG exposes `data-label-placement="external-lanes"` and `data-leader-route="direct"`.
-- Root SVG exposes zero counts for `data-label-circle-overlap-count`, `data-label-dot-overlap-count`, and `data-label-nonlabel-overlap-count`.
-- Root SVG exposes direct-leader crossing metadata. For the current fixture, `data-leader-crossing-count="39"` and `data-same-color-leader-crossing-count="0"`.
-- Browser validation should confirm `.task-leader` exposes exactly one `data-leader-style` value: `solid`.
-- Browser validation should confirm at least five leader colors are present and the browser-computed same-color crossing count matches `data-same-color-leader-crossing-count`.
-- Browser validation should compare every `.task-label-bg` bounding box and confirm zero overlaps.
-- Browser validation should confirm `.task-label-bg` rectangles do not overlap scope circles or task dots. Direct leaders may pass behind opaque label backgrounds; track that as `data-label-leader-underpass-count`, not as a label collision.
-- Browser validation should confirm each `.task-label-bg` is at least as wide and tall as its paired `.task-label` text.
-- Browser validation should verify the gallery card is wide enough for the saturated case; the current fixture renders the wide SVG at 880 by 450 px in mobile scroll mode and about 882 by 451 px on desktop, with browser-rendered label text heights around 9 to 11 px and no undersized label backgrounds.
-- Dynamic-symmetry validation should use `scripts/audit_dynamic_symmetry.py` with selector `svg#asymmetric-task-overlap-saturated` to inspect the final browser-resolved points against the SVG frame armature before making further composition changes.
-- Use `scripts/audit_saturated_task_overlap.py --expect-clean` for the targeted browser audit, and repeat with `--viewport 390x900` before publishing.
+    const labelGroups = svg.append("g")
+      .attr("class", "task-label-layer")
+      .selectAll("g.task-label-group")
+      .data(tasks)
+      .join("g")
+      .attr("class", "task-label-group")
+      .attr("data-task-id", d => d.id)
+      .attr("data-memberships", d => d.memberships.join(" "))
+      .attr("data-membership-count", d => d.membershipCount)
+      .attr("data-label-lane", d => d.labelLane)
+      .attr("data-label-side", d => d.labelSide)
+      .attr("data-label-length-bucket", d => d.labelLengthBucket)
+      .attr("data-label-font-size", d => d.labelFontSize || layout.labelFontSize);
+
+    const labelBoxes = labelGroups.append("rect")
+      .attr("class", "task-label-bg")
+      .attr("x", d => d.labelX)
+      .attr("y", d => d.labelY)
+      .attr("width", d => d.labelWidth)
+      .attr("height", d => d.labelHeight)
+      .attr("rx", 3.6)
+      .attr("fill", palette.surface)
+      .attr("fill-opacity", .96)
+      .attr("stroke", palette.gray200)
+      .attr("stroke-width", .65);
+    fadeIn(labelBoxes, .5, .42);
+
+    const labels = labelGroups.append("text")
+      .attr("class", "task-label mark-label")
+      .attr("x", d => d.labelX + (d.labelTextPaddingX || 4.4))
+      .attr("y", d => d.labelY + d.labelHeight / 2 + (d.labelFontSize || layout.labelFontSize) * .36)
+      .attr("font-size", d => d.labelFontSize || layout.labelFontSize)
+      .attr("font-weight", 800)
+      .attr("fill", palette.ink)
+      .style("font-size", d => `${d.labelFontSize || layout.labelFontSize}px`)
+      .style("font-weight", 800)
+      .text(d => d.label);
+    fadeIn(labels, .56, .42);
+
+    const legend = [
+      { label: "1 scope", fill: palette.blue },
+      { label: "2 scopes", fill: palette.orange },
+      { label: "3+ scopes", fill: palette.red }
+    ];
+    const legendGroup = svg.append("g").attr("transform", `translate(${svgWidth - 438},${svgHeight - 22})`);
+    const legendItems = legendGroup.selectAll("g").data(legend).join("g").attr("transform", (_, i) => `translate(${i * 66},0)`);
+    legendItems.append("circle").attr("r", 3.6).attr("cx", 0).attr("cy", 0).attr("fill", d => d.fill).attr("stroke", palette.surface).attr("stroke-width", 1.1);
+    legendItems.append("text").attr("class", "caption").attr("x", 7).attr("y", 3.5).attr("font-size", 8.4).text(d => d.label);
+    fadeIn(legendItems, .76, .42);
+
+    svg.append("text")
+      .attr("class", "caption")
+      .attr("x", svgWidth - 470)
+      .attr("y", svgHeight - 22)
+      .attr("text-anchor", "end")
+      .attr("font-weight", 800)
+      .text("100 tasks, direct leaders, 0 label collisions");
+  }
+```

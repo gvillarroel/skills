@@ -15,6 +15,75 @@ from pathlib import Path
 from typing import Iterable
 
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+SKILL_DIR = SCRIPT_DIR.parent
+DIAGRAM_TYPES_MANIFEST = SKILL_DIR / "references" / "diagram-types.json"
+
+
+def load_diagram_types_manifest() -> dict[str, object]:
+    data = json.loads(DIAGRAM_TYPES_MANIFEST.read_text(encoding="utf-8"))
+    families = data.get("families")
+    if not isinstance(families, list) or not families:
+        raise RuntimeError("Mermaid diagram type manifest must contain a non-empty families list.")
+
+    family_ids: list[str] = []
+    current_declarations: list[str] = []
+    accepted_declarations: list[str] = []
+    for family in families:
+        if not isinstance(family, dict):
+            raise RuntimeError("Every Mermaid diagram family manifest entry must be an object.")
+        family_id = family.get("id")
+        current = family.get("currentDeclarations")
+        accepted = family.get("acceptedDeclarations")
+        if not isinstance(family_id, str) or not family_id:
+            raise RuntimeError("Every Mermaid diagram family must have a non-empty id.")
+        if not isinstance(current, list) or not current or not all(isinstance(value, str) and value for value in current):
+            raise RuntimeError(f"Mermaid family {family_id} must declare currentDeclarations.")
+        if not isinstance(accepted, list) or not accepted or not all(isinstance(value, str) and value for value in accepted):
+            raise RuntimeError(f"Mermaid family {family_id} must declare acceptedDeclarations.")
+        if not set(current).issubset(accepted):
+            raise RuntimeError(f"Mermaid family {family_id} current declarations must be accepted declarations.")
+        family_ids.append(family_id)
+        current_declarations.extend(current)
+        accepted_declarations.extend(accepted)
+
+    for label, values in (
+        ("family ids", family_ids),
+        ("current declarations", current_declarations),
+        ("accepted declarations", accepted_declarations),
+    ):
+        duplicates = sorted({value for value in values if values.count(value) > 1})
+        if duplicates:
+            raise RuntimeError(f"Duplicate Mermaid {label} in manifest: {', '.join(duplicates)}")
+    return data
+
+
+DIAGRAM_TYPE_CATALOG = load_diagram_types_manifest()
+DIAGRAM_FAMILIES = DIAGRAM_TYPE_CATALOG["families"]
+OFFICIAL_FAMILIES = [family["id"] for family in DIAGRAM_FAMILIES]
+OFFICIAL_DECLARATIONS = [
+    declaration
+    for family in DIAGRAM_FAMILIES
+    for declaration in family["currentDeclarations"]
+]
+SUPPORTED_DECLARATIONS = [
+    declaration
+    for family in DIAGRAM_FAMILIES
+    for declaration in family["acceptedDeclarations"]
+]
+DECLARATION_TO_FAMILY = {
+    declaration.lower(): family["id"]
+    for family in DIAGRAM_FAMILIES
+    for declaration in family["acceptedDeclarations"]
+}
+CLASSDEF_FAMILIES = {
+    family["id"]
+    for family in DIAGRAM_FAMILIES
+    if family.get("classDef") is True
+}
+MERMAID_VERSION = DIAGRAM_TYPE_CATALOG["upstream"]["version"]
+
+
 LEGACY_COLORSET_DIRECTIVE_RE = re.compile(r"^\s*%%\{init:\s*\{.*?\"mermaid-colorset-styler\".*?\}\}%%\s*$")
 FENCE_RE = re.compile(r"(?P<open>^[ \t]*```[ \t]*mermaid[^\n]*\n)(?P<body>.*?)(?P<close>^[ \t]*```[ \t]*$)", re.MULTILINE | re.DOTALL)
 CLASS_DEF_RE = re.compile(r"^\s*classDef\s+(?P<classes>[A-Za-z0-9_, -]+)\s+.*$", re.MULTILINE)
@@ -139,59 +208,6 @@ FAMILY_THEME_KEYS = {
     "radar": ["radar"],
     "cynefin": ["cynefin"],
 }
-
-CLASSDEF_FAMILIES = {
-    "flowchart",
-    "swimlane",
-    "classDiagram",
-    "stateDiagram",
-    "requirementDiagram",
-    "treemap",
-}
-
-OFFICIAL_DECLARATIONS = [
-    "flowchart",
-    "graph",
-    "swimlane-beta",
-    "sequenceDiagram",
-    "classDiagram",
-    "stateDiagram",
-    "stateDiagram-v2",
-    "erDiagram",
-    "journey",
-    "gantt",
-    "pie",
-    "quadrantChart",
-    "requirementDiagram",
-    "gitGraph",
-    "C4Context",
-    "C4Container",
-    "C4Component",
-    "C4Dynamic",
-    "C4Deployment",
-    "mindmap",
-    "timeline",
-    "zenuml",
-    "sankey-beta",
-    "xychart-beta",
-    "block-beta",
-    "packet",
-    "kanban",
-    "architecture-beta",
-    "radar-beta",
-    "eventmodeling",
-    "treemap-beta",
-    "venn-beta",
-    "ishikawa-beta",
-    "wardley-beta",
-    "cynefin-beta",
-    "treeView-beta",
-    "railroad-beta",
-    "railroad-ebnf-beta",
-    "railroad-abnf-beta",
-    "railroad-peg-beta",
-]
-
 
 PALETTES = {
     "colorset1": {
@@ -419,7 +435,7 @@ def yaml_mapping_lines(mapping: dict[str, object], indent: int = 0) -> list[str]
     return lines
 
 
-def class_style(colorset: str, class_name: str) -> str:
+def class_style(colorset: str, class_name: str, family: str) -> str:
     p = PALETTES[colorset]
     styles = {
         "csPrimary": (p["primary_light"], p["primary"], p["ink"]),
@@ -433,6 +449,8 @@ def class_style(colorset: str, class_name: str) -> str:
         "csNeutral": (p["neutral_light"], p["neutral"], p["ink"]),
     }
     fill, stroke, text = styles[class_name]
+    if family == "quadrantChart":
+        return f"classDef {class_name} color:{fill},stroke-color:{stroke},stroke-width:2px;"
     return f"classDef {class_name} fill:{fill},stroke:{stroke},color:{text},stroke-width:2px;"
 
 
@@ -618,39 +636,7 @@ def first_declaration(body: str) -> str:
 
 def canonical_family(declaration: str) -> str:
     lowered = declaration.lower()
-    if lowered in {"flowchart", "graph"}:
-        return "flowchart"
-    if lowered == "swimlane-beta":
-        return "swimlane"
-    if lowered.startswith("c4"):
-        return "c4"
-    if lowered in {"statediagram", "statediagram-v2"}:
-        return "stateDiagram"
-    if lowered == "classdiagram":
-        return "classDiagram"
-    if lowered == "requirementdiagram":
-        return "requirementDiagram"
-    if lowered == "treemap-beta":
-        return "treemap"
-    if lowered.startswith("railroad-"):
-        return "railroad"
-    replacements = {
-        "sequencediagram": "sequenceDiagram",
-        "erdiagram": "erDiagram",
-        "quadrantchart": "quadrantChart",
-        "gitgraph": "gitGraph",
-        "xychart-beta": "xyChart",
-        "block-beta": "block",
-        "architecture-beta": "architecture",
-        "radar-beta": "radar",
-        "ishikawa-beta": "ishikawa",
-        "wardley-beta": "wardley",
-        "venn-beta": "venn",
-        "cynefin-beta": "cynefin",
-        "treeview-beta": "treeView",
-        "sankey-beta": "sankey",
-    }
-    return replacements.get(lowered, lowered)
+    return DECLARATION_TO_FAMILY.get(lowered, lowered)
 
 
 def referenced_color_classes(source: str) -> list[str]:
@@ -692,7 +678,9 @@ def style_mermaid_block(body: str, colorset: str) -> tuple[str, dict[str, object
     styled_frontmatter = inject_colorset_frontmatter(frontmatter, colorset, family)
     styled = styled_frontmatter + rest.lstrip("\n")
     if inserted_classes:
-        styled = styled.rstrip() + "\n  " + "\n  ".join(class_style(colorset, class_name) for class_name in inserted_classes) + "\n"
+        styled = styled.rstrip() + "\n  " + "\n  ".join(
+            class_style(colorset, class_name, family) for class_name in inserted_classes
+        ) + "\n"
     if original.endswith("\n") and not styled.endswith("\n"):
         styled += "\n"
     return styled, {
@@ -776,9 +764,24 @@ def build_report(root: Path, colorset: str, diagrams: list[DiagramResult], chang
     missing = [d for d in diagrams if not d.has_style]
     declarations_seen = sorted({d.diagram_type for d in diagrams})
     families_seen = sorted({d.family for d in diagrams})
+    declaration_counts = {declaration: 0 for declaration in SUPPORTED_DECLARATIONS}
+    for diagram in diagrams:
+        if diagram.diagram_type in declaration_counts:
+            declaration_counts[diagram.diagram_type] += 1
+    missing_current = [declaration for declaration in OFFICIAL_DECLARATIONS if declaration_counts[declaration] == 0]
+    missing_supported = [declaration for declaration in SUPPORTED_DECLARATIONS if declaration_counts[declaration] == 0]
+    duplicate_supported = sorted(declaration for declaration, count in declaration_counts.items() if count > 1)
+    unexpected = sorted({diagram.diagram_type for diagram in diagrams if diagram.diagram_type not in SUPPORTED_DECLARATIONS})
+    missing_families = [family for family in OFFICIAL_FAMILIES if family not in families_seen]
+
+    def percentage(numerator: int, denominator: int) -> float:
+        return round((numerator / denominator) * 100, 2) if denominator else 0.0
+
     return {
         "root": str(root),
         "colorset": colorset,
+        "mermaidVersion": MERMAID_VERSION,
+        "diagramTypeManifest": "references/diagram-types.json",
         "check": check,
         "diagramCount": len(diagrams),
         "changedFileCount": len(changed_files),
@@ -786,8 +789,24 @@ def build_report(root: Path, colorset: str, diagrams: list[DiagramResult], chang
         "missingStyleCount": len(missing),
         "declarationsSeen": declarations_seen,
         "familiesSeen": families_seen,
+        "officialFamilyCount": len(OFFICIAL_FAMILIES),
+        "officialFamilies": OFFICIAL_FAMILIES,
+        "missingFamilies": missing_families,
+        "familyCoveragePercent": percentage(len(OFFICIAL_FAMILIES) - len(missing_families), len(OFFICIAL_FAMILIES)),
         "officialDeclarationCount": len(OFFICIAL_DECLARATIONS),
         "officialDeclarations": OFFICIAL_DECLARATIONS,
+        "missingOfficialDeclarations": missing_current,
+        "officialDeclarationCoveragePercent": percentage(
+            len(OFFICIAL_DECLARATIONS) - len(missing_current), len(OFFICIAL_DECLARATIONS)
+        ),
+        "supportedDeclarationCount": len(SUPPORTED_DECLARATIONS),
+        "supportedDeclarations": SUPPORTED_DECLARATIONS,
+        "missingSupportedDeclarations": missing_supported,
+        "duplicateSupportedDeclarations": duplicate_supported,
+        "unexpectedDeclarations": unexpected,
+        "supportedDeclarationCoveragePercent": percentage(
+            len(SUPPORTED_DECLARATIONS) - len(missing_supported), len(SUPPORTED_DECLARATIONS)
+        ),
         "diagrams": [d.__dict__ for d in diagrams],
     }
 

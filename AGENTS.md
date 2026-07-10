@@ -104,10 +104,10 @@ Validate skills as standalone bundles before treating them as done. The target q
 - Treat the copied `skills/<skill-name>/` directory as a read-only resource during forward tests. Generated task files should be written to the workspace root or a requested project/artifact directory, not into the copied skill directory.
 - If the prompt names exact output paths, the run must create those exact paths. Substituting descriptive filenames or default artifact directories counts as a validation failure unless the prompt explicitly allows it.
 - Use `--expect-output` for every required artifact path so wrong or missing output paths fail the harness even when `pi` exits successfully.
-- Use `--mode json` for at least one final validation run per changed skill, then inspect the read surface with:
+- Use `--mode json --strict` for every release validation. Strict mode verifies the observed Spark model, valid event JSON, zero tool errors, exact outputs, a clean runtime read surface, and an unchanged skill payload. Then inspect the read surface with:
 
 ```powershell
-uv run --script scripts/summarize-pi-json-events.py evaluations/runs/<run-id>/events.jsonl
+uv run --script scripts/summarize-pi-json-events.py evaluations/runs/<run-id>/events.jsonl --require-model gpt-5.3-codex-spark --fail-on-invalid-json --fail-on-tool-error
 ```
 
 - A healthy runtime trace should read `SKILL.md` plus only the specific references, scripts, templates, or small vendor files needed for the task. If a normal runtime run reads `assets/examples/`, generated galleries, project artifacts, repository-level docs, sibling skills, or a large source file that is not directly required, treat that as a skill design problem and simplify the skill before passing it.
@@ -115,7 +115,7 @@ uv run --script scripts/summarize-pi-json-events.py evaluations/runs/<run-id>/ev
 - Prefer the repo helper:
 
 ```powershell
-uv run --script scripts/run-pi-skill-eval.py <skill-name> --prompt-file <prompt.md> --mode json --expect-output <artifact>
+uv run --script scripts/run-pi-skill-eval.py <skill-name> --prompt-file <prompt.md> --mode json --strict --expect-output <artifact>
 ```
 
 - Keep durable evaluation summaries or reusable prompts under `evaluations/`; keep bulky run folders under `evaluations/runs/`.
@@ -123,6 +123,7 @@ uv run --script scripts/run-pi-skill-eval.py <skill-name> --prompt-file <prompt.
 - If a skill-only `pi` run cannot produce quality work, reduce the skill's difficulty instead of raising evaluator expectations: add a clearer script, template, fixture, checklist, or compact in-skill reference.
 - Never point a skill to repository files, sibling skills, parent directories, or project docs as required reading. If the skill needs a reference, copy or summarize it inside that skill's own `references/`, `scripts/`, or `assets/` tree.
 - Record the command, date, model, pass/fail outcome, and any follow-up simplification in [SKILLS.md](SKILLS.md).
+- Follow the case taxonomy, repetition policy, failure classification, and evidence-retention rules in [evaluations/README.md](evaluations/README.md).
 
 ## Script Rules
 

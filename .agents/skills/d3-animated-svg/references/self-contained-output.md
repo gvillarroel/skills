@@ -20,7 +20,8 @@ Read this when the user asks for a standalone, portable, offline, or self-contai
 5. Keep motion lanes separate from label and body text. For process visuals, place moving packets on a dedicated rail below or between cards, with at least 18 px clearance from text blocks and card borders. Do not animate tokens, arrows, or masks over readable text.
 6. Use explicit text lines instead of long wrapping strings inside compact cards. Keep each body line within the card width and leave enough bottom padding for descenders.
 7. Test reduced-motion rendering before delivery. Browser validation may run with reduced motion enabled, so disabling animation must not leave the SVG in an invisible initial state.
-8. Validate the final file:
+8. Before invoking the checker, inspect the completed markup once and confirm that the root SVG already contains a nonempty direct `<title>`, a nonempty direct `<desc>`, a stable `viewBox`, explicit text font families, visible final-state marks, and no remote URLs. Do not use the checker as an iterative linter for requirements already listed in this file.
+9. Validate the final file:
 
 ```powershell
 uv run --script skills/d3-animated-svg/scripts/check_self_contained_html.py artifact.html
@@ -31,6 +32,8 @@ Use the repo-relative path to the same script when working inside this repositor
 ```powershell
 uv run --script .agents/skills/d3-animated-svg/scripts/check_self_contained_html.py artifact.html
 ```
+
+When the checker passes, treat that as the network-dependency and required-SVG contract gate. Do not add `rg`, `grep`, `Select-String`, or similar negative probes for strings that should be absent: a correct no-match result commonly exits with code 1 and becomes a tool error in strict evaluation traces.
 
 ## Common Pitfalls
 

@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f4964-b403-75a6-ae2a-808182c5bf62",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260709-d3-composition-evaluator-contract-smoke-spark-8\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 4
+  },
+  "providers": {
+    "openai-codex": 4
+  },
+  "usageTotals": {
+    "input": 4026,
+    "output": 2600,
+    "cacheRead": 8448,
+    "cacheWrite": 0,
+    "totalTokens": 15074
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 2,
+    "write": 1
+  },
+  "paths": [
+    {
+      "path": "evaluation.md",
+      "calls": 2,
+      "resultBytes": 1137
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1705
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1705
+    },
+    {
+      "path": "evaluation.md",
+      "calls": 1,
+      "resultBytes": 1049
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "evaluation.md",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 2754,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1705
+    },
+    {
+      "line": 27,
+      "tool": "write",
+      "path": "evaluation.md",
+      "policyPath": "evaluation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 88
+    },
+    {
+      "line": 40,
+      "tool": "read",
+      "path": "evaluation.md",
+      "policyPath": "evaluation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1049
+    }
+  ],
+  "findings": []
+}

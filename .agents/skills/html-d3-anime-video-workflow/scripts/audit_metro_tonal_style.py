@@ -7,31 +7,12 @@
 from __future__ import annotations
 
 import argparse
+import colorsys
 import json
 import re
 from pathlib import Path
 
-
-COLORSET1 = {
-    "#9e1b32",
-    "#6d1222",
-    "#ffccd5",
-    "#e8002a",
-    "#333e48",
-    "#000000",
-    "#ffffff",
-    "#f7f7f7",
-    "#e7e7e7",
-    "#cfcfcf",
-    "#b5b5b5",
-    "#9c9c9c",
-    "#828282",
-    "#696969",
-    "#4f4f4f",
-    "#363636",
-    "#1c1c1c",
-    "#ccd6e3",
-}
+from compile_metro_design_profile import DEFAULT_PROFILE, load_design_profile
 
 EDITORIAL_PATTERNS = [
     re.compile(r">\s*checked\s+[^<]+<", re.IGNORECASE),
@@ -40,6 +21,40 @@ EDITORIAL_PATTERNS = [
 ]
 
 FONT_FAMILY_PATTERN = re.compile(r"font-family\s*:\s*([^;}]+)", re.IGNORECASE)
+HEX_PATTERN = re.compile(r"#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?\b")
+RGB_PATTERN = re.compile(
+    r"rgba?\(\s*([0-9.]+%?)\s*[, ]\s*([0-9.]+%?)\s*[, ]\s*([0-9.]+%?)(?:\s*[,/]\s*[0-9.]+%?)?\s*\)",
+    re.IGNORECASE,
+)
+HSL_PATTERN = re.compile(
+    r"hsla?\(\s*([0-9.]+)(?:deg)?\s*[, ]\s*([0-9.]+)%\s*[, ]\s*([0-9.]+)%(?:\s*[,/]\s*[0-9.]+%?)?\s*\)",
+    re.IGNORECASE,
+)
+
+
+def channel_value(raw: str) -> int:
+    if raw.endswith("%"):
+        return round(max(0.0, min(100.0, float(raw[:-1]))) * 2.55)
+    return round(max(0.0, min(255.0, float(raw))))
+
+
+def extract_colors(text: str) -> list[str]:
+    colors: set[str] = set()
+    for match in HEX_PATTERN.finditer(text):
+        value = match.group(0).lower()
+        if len(value) == 4:
+            value = "#" + "".join(character * 2 for character in value[1:])
+        colors.add(value)
+    for match in RGB_PATTERN.finditer(text):
+        channels = [channel_value(match.group(index)) for index in range(1, 4)]
+        colors.add("#" + "".join(f"{channel:02x}" for channel in channels))
+    for match in HSL_PATTERN.finditer(text):
+        hue = float(match.group(1)) % 360 / 360
+        saturation = max(0.0, min(100.0, float(match.group(2)))) / 100
+        lightness = max(0.0, min(100.0, float(match.group(3)))) / 100
+        red, green, blue = colorsys.hls_to_rgb(hue, lightness, saturation)
+        colors.add(f"#{round(red * 255):02x}{round(green * 255):02x}{round(blue * 255):02x}")
+    return sorted(colors)
 
 
 def parse_args() -> argparse.Namespace:
@@ -50,9 +65,20 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--source-package", type=Path)
     parser.add_argument("--output", type=Path)
     parser.add_argument(
+        "--design-profile",
+        type=Path,
+        default=DEFAULT_PROFILE,
+        help="Compiled Metro design profile. Defaults to the bundled profile generated from style.md and the colorsets.",
+    )
+    parser.add_argument(
         "--allow-colorset2",
         action="store_true",
-        help="Allow non-colorset1 colors when a project explicitly chose colorset2.",
+        help="Allow only colors declared by colorset2 when a project explicitly needs them.",
+    )
+    parser.add_argument(
+        "--colorset2-reason",
+        default="",
+        help="Required semantic justification when --allow-colorset2 is used.",
     )
     parser.add_argument(
         "--require-open-sans",
@@ -65,14 +91,26 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    profile = load_design_profile(args.design_profile)
+    colorset1 = set(profile["colorsets"]["colorset1"]["colors"])
+    colorset2 = set(profile["colorsets"]["colorset2"]["colors"])
+    allowed_colors = colorset1 | colorset2 if args.allow_colorset2 else colorset1
     html = args.html.read_text(encoding="utf-8")
-    colors = sorted({match.group(0).lower() for match in re.finditer(r"#[0-9a-fA-F]{6}", html)})
-    forbidden_colors = [color for color in colors if color not in COLORSET1]
+    colors = extract_colors(html)
+    forbidden_colors = [color for color in colors if color not in allowed_colors]
     findings: list[dict[str, str]] = []
-    if forbidden_colors and not args.allow_colorset2:
+    if args.allow_colorset2 and not args.colorset2_reason.strip():
         findings.append(
             {
-                "code": "non-colorset1-colors",
+                "code": "missing-colorset2-reason",
+                "path": args.html.as_posix(),
+                "message": "--allow-colorset2 requires --colorset2-reason with a semantic need.",
+            }
+        )
+    if forbidden_colors:
+        findings.append(
+            {
+                "code": "non-selected-colorset-colors",
                 "path": args.html.as_posix(),
                 "message": ", ".join(forbidden_colors),
             }
@@ -120,6 +158,18 @@ def main() -> int:
         "html": args.html.as_posix(),
         "colors": colors,
         "colorset": "colorset1" if not args.allow_colorset2 else "colorset1-or-colorset2",
+        "colorset2Reason": args.colorset2_reason.strip() or None,
+        "designProfile": {
+            "path": args.design_profile.as_posix(),
+            "profileId": profile.get("profileId"),
+            "profileVersion": profile.get("profileVersion"),
+            "profileSha256": profile.get("profileSha256"),
+            "sourceDigests": {
+                key: value.get("sha256")
+                for key, value in profile.get("sources", {}).items()
+                if isinstance(value, dict)
+            },
+        },
         "fontFamilies": font_families,
         "requireOpenSans": args.require_open_sans,
         "findings": findings,

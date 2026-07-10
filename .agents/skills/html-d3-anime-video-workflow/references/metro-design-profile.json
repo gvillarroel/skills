@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "profileId": "metro-minimal-tonal-motion-colorset1",
+  "profileVersion": "2026-07-09.1",
+  "passed": true,
+  "sources": {
+    "style": {
+      "name": "style.md",
+      "sha256": "d99998d1031b05cd20fcc0e9cde11a0bccbe52c1989eefbd2e41e413ccbc27a4"
+    },
+    "colorset1": {
+      "name": "colorset1.yml",
+      "sha256": "6472cb2a2e08738010051ce0f7c51107b115d215a70b8bb7f5db432411bf7cc1"
+    },
+    "colorset2": {
+      "name": "colorset2.yaml",
+      "sha256": "b424b5aa2223a9587fa5d32e4258491f85207e73038c5f5be1d3f4ef99108a13"
+    }
+  },
+  "style": {
+    "name": "Metro Minimal Tonal Motion",
+    "rules": {
+      "megacanvas": true,
+      "continuousComposition": true,
+      "noReservedEditorialSpace": true,
+      "hardEdges": true,
+      "masonry": true,
+      "cameraExploration": true,
+      "flatGeometry": true,
+      "functionalTextOnly": true
+    }
+  },
+  "typography": {
+    "primary": "'Open Sans', Arial, sans-serif"
+  },
+  "geometry": {
+    "cornerRadiusPx": 0,
+    "gridPx": 4,
+    "internalPaddingPx": 0,
+    "hardLineCapsAndJoins": true,
+    "sharedEdges": true,
+    "externalGuttersOnly": true
+  },
+  "colorsets": {
+    "colorset1": {
+      "colors": [
+        "#9e1b32",
+        "#333e48",
+        "#6d1222",
+        "#ffccd5",
+        "#e8002a",
+        "#000000",
+        "#ffffff",
+        "#e7e7e7",
+        "#cfcfcf",
+        "#b5b5b5",
+        "#9c9c9c",
+        "#828282",
+        "#696969",
+        "#4f4f4f",
+        "#363636",
+        "#1c1c1c",
+        "#f7f7f7"
+      ]
+    },
+    "colorset2": {
+      "colors": [
+        "#9e1b32",
+        "#333e48",
+        "#e77204",
+        "#f1c319",
+        "#45842a",
+        "#007298",
+        "#652f6c",
+        "#000000",
+        "#ffffff",
+        "#e7e7e7",
+        "#cfcfcf",
+        "#b5b5b5",
+        "#9c9c9c",
+        "#828282",
+        "#696969",
+        "#4f4f4f",
+        "#363636",
+        "#1c1c1c",
+        "#6d1222",
+        "#994a00",
+        "#98700c",
+        "#294d19",
+        "#004d66",
+        "#431f47",
+        "#ffccd5",
+        "#ffe5cc",
+        "#fff4cc",
+        "#dbffcc",
+        "#cdf3ff",
+        "#f9ccff",
+        "#e8002a",
+        "#ff9633",
+        "#ffd332",
+        "#36b300",
+        "#00ace6",
+        "#9e00b3",
+        "#f7f7f7"
+      ]
+    }
+  },
+  "policy": {
+    "defaultColorset": "colorset1",
+    "colorset2RequiresSemanticNeed": true,
+    "colorset2RequiresRecordedReason": true,
+    "redRole": "state, emphasis, failure, selection, alert path, or primary flow",
+    "hierarchyBeforeHue": "Use distinct grayscale levels before adding hue."
+  },
+  "findings": [],
+  "profileSha256": "72d060f9503d16a2fe11a07e57c7f828a8935ea8af7004a7b219a6686c36cf25"
+}

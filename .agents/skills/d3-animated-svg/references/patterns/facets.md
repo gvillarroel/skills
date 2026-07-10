@@ -33,7 +33,7 @@ function renderFacets() {
     const panels = svg.append("g").selectAll("g").data(data).join("g")
       .attr("transform", (d, i) => `translate(${54 + (i % 3) * 162},${48 + Math.floor(i / 3) * 142})`);
     panels.append("rect").attr("width", panelW).attr("height", panelH).attr("rx", 6).attr("fill", palette.gray50).attr("stroke", palette.gray200);
-    const paths = panels.append("path").attr("d", d => line(d.values)).attr("fill", "none").attr("stroke", (d, i) => colors[i]).attr("stroke-width", 2.3);
+    const paths = panels.append("path").attr("d", d => line(d.values)).attr("fill", "none").attr("stroke", (d, i) => colors[i % colors.length]).attr("stroke-width", 2.3);
     drawPath(paths, .08, .7);
     panels.append("text").attr("class", "mark-label").attr("x", 12).attr("y", 14).text(d => d.name);
   }

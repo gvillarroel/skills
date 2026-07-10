@@ -1,0 +1,228 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 7,
+    "bash": 11
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 7172
+    },
+    {
+      "path": "outputs/finalize-notes-result.json",
+      "calls": 1,
+      "resultBytes": 1280
+    },
+    {
+      "path": "outputs/package-validation.json",
+      "calls": 1,
+      "resultBytes": 12022
+    },
+    {
+      "path": "outputs/video-validation.json",
+      "calls": 1,
+      "resultBytes": 2339
+    },
+    {
+      "path": "outputs/readiness-result.json",
+      "calls": 1,
+      "resultBytes": 4338
+    },
+    {
+      "path": "outputs/render-result.json",
+      "calls": 1,
+      "resultBytes": 2056
+    },
+    {
+      "path": "outputs/rag-video/source/production-notes.md",
+      "calls": 1,
+      "resultBytes": 7538
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 7172
+    },
+    {
+      "path": "outputs/finalize-notes-result.json",
+      "calls": 1,
+      "resultBytes": 1280
+    },
+    {
+      "path": "outputs/package-validation.json",
+      "calls": 1,
+      "resultBytes": 12022
+    },
+    {
+      "path": "outputs/video-validation.json",
+      "calls": 1,
+      "resultBytes": 2339
+    },
+    {
+      "path": "outputs/readiness-result.json",
+      "calls": 1,
+      "resultBytes": 4338
+    },
+    {
+      "path": "outputs/render-result.json",
+      "calls": 1,
+      "resultBytes": 2056
+    },
+    {
+      "path": "outputs/rag-video/source/production-notes.md",
+      "calls": 1,
+      "resultBytes": 7538
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7172
+    },
+    {
+      "line": 28,
+      "tool": "bash",
+      "path": null,
+      "command": "mkdir -p outputs; uv run --script skills/awsome-videos/scripts/scaffold_production_package.py outputs/rag-video --title \"What Is RAG?\" --promise \"Explain retrieval augmented generation as a search-then-generate loop that grounds an answer i",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 42,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_brief.py outputs/rag-video/source/brief.md --require-voiceover --json > outputs/brief-validation.json",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 57,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/extract_voiceover_cues.py outputs/rag-video/source/brief.md --format json --min-cues 8 --expect-duration 12 --duration-tolerance 1 --require-beat-match --output outputs/rag-video/artifacts/audio/",
+      "isError": false,
+      "resultBytes": 149
+    },
+    {
+      "line": 72,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/render_concept_video.py outputs/rag-video/src/index.html outputs/rag-video/artifacts/videos/rag-video.mp4 --duration 12 --fps 30 --force --contact-sheet outputs/rag-video/artifacts/reviews/contac",
+      "isError": false,
+      "resultBytes": 74
+    },
+    {
+      "line": 87,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_artifact.py outputs/rag-video/artifacts/videos/rag-video.mp4 --expect-width 1280 --expect-height 720 --expect-fps 30 --expect-duration 12 --duration-tolerance 1 --min-size-bytes 1 --r",
+      "isError": false,
+      "resultBytes": 72
+    },
+    {
+      "line": 101,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/score_video_readiness.py --brief outputs/rag-video/source/brief.md --video outputs/rag-video/artifacts/videos/rag-video.mp4 --renderer-report outputs/rag-video/artifacts/reviews/render-state.json",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 115,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/finalize_production_notes.py outputs/rag-video/source/production-notes.md --renderer-report outputs/rag-video/artifacts/reviews/render-state.json --readiness-report outputs/rag-video/artifacts/re",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 130,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_production_package.py --brief outputs/rag-video/source/brief.md --video outputs/rag-video/artifacts/videos/rag-video.mp4 --design-note outputs/rag-video/source/design-note.md --production-n",
+      "isError": false,
+      "resultBytes": 72
+    },
+    {
+      "line": 145,
+      "tool": "bash",
+      "path": null,
+      "command": "python - <<'PY'\nimport os, json\nfiles = [\n'outputs/scaffold-result.json',\n'outputs/brief-validation.json',\n'outputs/render-result.json',\n'outputs/video-validation.json',\n'outputs/readiness-result.json',\n'outputs/finalize-notes-result.json',",
+      "isError": false,
+      "resultBytes": 1185
+    },
+    {
+      "line": 160,
+      "tool": "bash",
+      "path": null,
+      "command": "python - <<'PY'\nimport json\npaths = ['outputs/render-result.json','outputs/video-validation.json','outputs/readiness-result.json','outputs/finalize-notes-result.json','outputs/package-validation.json']\nfor p in paths:\n    with open(p) as f:",
+      "isError": false,
+      "resultBytes": 2011
+    },
+    {
+      "line": 173,
+      "tool": "read",
+      "path": "outputs/finalize-notes-result.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1280
+    },
+    {
+      "line": 186,
+      "tool": "read",
+      "path": "outputs/package-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 12022
+    },
+    {
+      "line": 199,
+      "tool": "read",
+      "path": "outputs/video-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2339
+    },
+    {
+      "line": 212,
+      "tool": "read",
+      "path": "outputs/readiness-result.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4338
+    },
+    {
+      "line": 225,
+      "tool": "read",
+      "path": "outputs/render-result.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2056
+    },
+    {
+      "line": 238,
+      "tool": "read",
+      "path": "outputs/rag-video/source/production-notes.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7538
+    },
+    {
+      "line": 253,
+      "tool": "bash",
+      "path": null,
+      "command": "python - <<'PY'\nimport json\nreq=['outputs/render-result.json','outputs/video-validation.json','outputs/readiness-result.json','outputs/finalize-notes-result.json','outputs/package-validation.json']\nfor p in req:\n    data=json.load(open(p))\n",
+      "isError": false,
+      "resultBytes": 323
+    }
+  ],
+  "findings": []
+}

@@ -28,7 +28,8 @@ function renderMareyTrains() {
       speed: .82 + (i % 3) * .08,
       color: colors[i % colors.length]
     }));
-    const x = d3.scaleLinear().domain([6, 15]).range([70, width - 42]);
+    const latestArrival = d3.max(services, service => service.start + (stations.length - 1) * service.speed);
+    const x = d3.scaleLinear().domain([6, Math.ceil(latestArrival * 2) / 2]).range([70, width - 42]);
     const y = d3.scalePoint().domain(stations).range([72, 318]);
     axisBottom(svg, x, 350, 5);
     svg.append("g").selectAll("text").data(stations).join("text")

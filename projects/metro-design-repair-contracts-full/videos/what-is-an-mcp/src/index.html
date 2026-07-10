@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>What is an MCP</title>
   <style>
-    html, body { margin: 0; background: #f7f7f7; font-family: Segoe UI, Arial, sans-serif; }
+    html, body { margin: 0; background: #f7f7f7; font-family: 'Open Sans', Arial, sans-serif; }
     #stage { width: 1280px; height: 720px; display: block; background: #f7f7f7; }
     text { paint-order: stroke; stroke: #f7f7f7; stroke-width: 4px; }
   </style>
@@ -635,6 +635,16 @@
     function ease(v) { v = clamp(v); return v * v * (3 - 2 * v); }
     const grayLevels = PACKAGE.visualPolicy?.grayLevels?.map((d) => d.hex) || ["#ffffff", "#f7f7f7", "#e7e7e7", "#cfcfcf", "#9c9c9c", "#696969"];
     function grayLevel(index) { return grayLevels[Math.max(0, Math.min(grayLevels.length - 1, index))]; }
+    const redSurfaceFills = new Set([palette.route, palette.damage, palette.attribute, palette.tradeoff, "#9e1b32", "#e8002a", "#6d1222", "#ffccd5"].map((value) => String(value).toLowerCase()));
+    function isRedSurfaceFill(fill) {
+      return redSurfaceFills.has(String(fill || "").trim().toLowerCase());
+    }
+    function tonalSurfaceFill(fill, rectWidth, rectHeight, grayIndex = 5) {
+      const w = Math.abs(Number(rectWidth) || 0);
+      const h = Math.abs(Number(rectHeight) || 0);
+      if (isRedSurfaceFill(fill) && w * h >= 1100 && Math.min(w, h) > 10) return grayLevel(grayIndex);
+      return fill;
+    }
     const squareEdge = (stage.getAttribute?.("data-edge-style") || stage.dataset?.edgeStyle) === "square";
     const metroGrid = 4;
     function snapToGrid(value) {
@@ -738,6 +748,7 @@
     }
     function semanticGlyphKind(anchor) {
       const text = String(anchor || "").toLowerCase();
+      if (/agent_loop|agent loop|context_window|context window|adaptive agent|fixed workflow|environment changes|model [+] tools [+] state [+] loop/.test(text)) return "agent";
       if (/auth|lock|approval|permission|policy|registry|allowlist/.test(text)) return "shield";
       if (/cost|credit|billing|spend|meter|api/.test(text)) return "meter";
       if (/tool|resource|prompt/.test(text)) return "triple";
@@ -752,6 +763,11 @@
     function drawSemanticGlyph(kind, x, y, size, fill, stroke, attrs, opacity) {
       const common = { rx: 0, fill, stroke, "stroke-width": 1, "fill-opacity": opacity.toFixed(3), "stroke-opacity": Math.min(0.88, opacity + 0.18).toFixed(3), ...attrs };
       const rect = (gx, gy, width, height, extra = {}) => el("rect", { x: gx, y: gy, width, height, ...common, ...extra });
+      if (kind === "agent") {
+        [[6, 0], [13, 6], [6, 13], [0, 6]].forEach(([dx, dy]) => rect(x + dx, y + dy, 5, 5));
+        el("polyline", { points: `${x + 8},${y + 2} ${x + 16},${y + 8} ${x + 8},${y + 16} ${x},${y + 8} ${x + 8},${y + 2}`, fill: "none", stroke, "stroke-width": 1, "stroke-linecap": "butt", "stroke-linejoin": "miter", "stroke-opacity": opacity.toFixed(3), ...attrs });
+        return;
+      }
       if (kind === "shield") {
         rect(x, y, size, size);
         el("rect", { x, y, width: size, height: 4, rx: 0, fill: stroke, stroke: "none", "fill-opacity": Math.min(1, opacity + 0.15).toFixed(3), ...attrs });
@@ -832,8 +848,8 @@
         const opacity = Math.min(0.92, 0.26 + ease(Math.min(1, phase)) * (active ? 0.58 : 0.38));
         const attrs = bindingAttrs(binding, bindingIndex, zoneIndex, active);
         const kind = semanticGlyphKind(binding?.sourceAnchor);
-        const fill = active ? palette.route : grayLevel((bindingIndex % 3) + 2);
-        const stroke = active ? palette.damage : grayLevel(5);
+        const fill = active ? grayLevel(5) : grayLevel((bindingIndex % 3) + 2);
+        const stroke = active ? palette.route : grayLevel(5);
         drawSemanticGlyph(kind, x, y, 12, fill, stroke, attrs, opacity);
       });
     }
@@ -852,16 +868,36 @@
         const zoneIndex = Number.isFinite(Number(module.zoneIndex)) ? Number(module.zoneIndex) : index % Math.max(1, sourceZones.length || 1);
         const level = Math.max(1, Math.min(grayLevels.length - 2, Number(module.grayLevel) || metroZoneFillLevel(zoneIndex, active)));
         const isActive = zoneIndex === active;
+        const x = (Number(bounds.x) || 0) + vector.x * (1 - fit);
+        const y = (Number(bounds.y) || 0) + vector.y * (1 - fit);
+        const width = Number(bounds.width) || 4;
+        const height = Number(bounds.height) || 4;
+        const fill = grayLevel(isActive ? Math.min(level + 1, grayLevels.length - 2) : level);
+        const moduleBoxId = `masonry-wall-module-${index}`;
         el("rect", {
-          x: (Number(bounds.x) || 0) + vector.x * (1 - fit),
-          y: (Number(bounds.y) || 0) + vector.y * (1 - fit),
-          width: Number(bounds.width) || 4,
-          height: Number(bounds.height) || 4,
+          x,
+          y,
+          width,
+          height,
           rx: 0,
-          fill: grayLevel(isActive ? Math.min(level + 1, grayLevels.length - 2) : level),
+          fill,
+          stroke: "none",
+          "fill-opacity": clamp(phase),
+          "data-fill-for": moduleBoxId,
+          "data-fill-axis": "all",
+          "data-padding-policy": "zero-verified",
+        });
+        el("rect", {
+          x,
+          y,
+          width,
+          height,
+          rx: 0,
+          fill,
           stroke: isActive ? palette.route : grayLevel(5),
           "stroke-width": isActive ? 3 : 1,
           "fill-opacity": clamp(phase),
+          "data-box-id": moduleBoxId,
           "data-masonry-module": "true",
           "data-masonry-wall": "true",
           "data-masonry-order": String(index),
@@ -933,6 +969,7 @@
           "stroke-width": isActive ? 3 : 1,
           "stroke-opacity": isActive ? 0.55 : 0.24,
           "pointer-events": "none",
+          "data-padding-exempt": "zone-evidence-outline",
           "data-zone-active": isActive ? "true" : "false",
           ...zoneAttrs(index),
         });
@@ -973,16 +1010,115 @@
       }
       return normalized;
     }
+    function rectMetrics(node, index) {
+      const x = numericAttr(node.getAttribute("x"));
+      const y = numericAttr(node.getAttribute("y"));
+      const width = numericAttr(node.getAttribute("width"));
+      const height = numericAttr(node.getAttribute("height"));
+      if (![x, y, width, height].every(Number.isFinite) || width <= 0 || height <= 0) return null;
+      return { node, index, x, y, width, height, area: width * height };
+    }
+    function setRectMetrics(item, x, y, width, height) {
+      const sx = snapToGrid(x);
+      const sy = snapToGrid(y);
+      const sw = Math.max(metroGrid, snapToGrid(x + width) - sx);
+      const sh = Math.max(metroGrid, snapToGrid(y + height) - sy);
+      item.node.setAttribute("x", sx);
+      item.node.setAttribute("y", sy);
+      item.node.setAttribute("width", sw);
+      item.node.setAttribute("height", sh);
+      item.node.setAttribute("rx", 0);
+      item.node.setAttribute("ry", 0);
+      item.node.setAttribute("data-zone-boundary", item.node.getAttribute("data-zone-boundary") || "flush");
+      item.node.setAttribute("data-padding-policy", item.node.getAttribute("data-padding-policy") || "zero-verified");
+    }
+    function enforceFlushMasonryInteriors() {
+      if (!masonryRequired || !squareEdge) return;
+      const minOffset = 3.5;
+      const minSize = 12;
+      const minParentSize = minSize * 3;
+      for (let pass = 0; pass < 6; pass++) {
+        const rects = Array.from(stage.querySelectorAll("rect"))
+          .map((node, index) => rectMetrics(node, index))
+          .filter(Boolean);
+        const changes = [];
+        for (const child of rects) {
+          if (child.node.getAttribute("data-fill-for")) continue;
+          if ((child.node.getAttribute("data-masonry-module") || "").toLowerCase() === "true") continue;
+          if ((child.node.getAttribute("data-padding-exempt") || "") === "zone-evidence-outline") continue;
+          if (Math.min(child.width, child.height) < minSize) continue;
+          let chosen = null;
+          for (const parent of rects) {
+            if (parent === child) continue;
+            if (parent.node.getAttribute("data-fill-for")) continue;
+            if ((parent.node.getAttribute("data-padding-exempt") || "") === "zone-evidence-outline") continue;
+            const parentIsMasonryModule = (parent.node.getAttribute("data-masonry-module") || "").toLowerCase() === "true";
+            const parentIsZone = Boolean(parent.node.getAttribute("data-zone-id") || parent.node.getAttribute("data-box-id"));
+            if (!parentIsMasonryModule && !parentIsZone) continue;
+            if (parent.index > child.index) continue;
+            if (parent.area <= child.area || Math.min(parent.width, parent.height) < minParentSize) continue;
+            const offsets = {
+              left: child.x - parent.x,
+              top: child.y - parent.y,
+              right: parent.x + parent.width - (child.x + child.width),
+              bottom: parent.y + parent.height - (child.y + child.height),
+            };
+            if (Object.values(offsets).some((value) => value < minOffset)) continue;
+            const areaRatio = child.area / parent.area;
+            if ((child.node.getAttribute("data-semantic-glyph") || "").toLowerCase() === "true" && areaRatio < 0.035) continue;
+            const score = (parentIsMasonryModule ? 2 : 1) * parent.area;
+            if (!chosen || score > chosen.score) chosen = { parent, offsets, score };
+          }
+          if (!chosen) continue;
+          const ordered = Object.entries(chosen.offsets).sort((a, b) => a[1] - b[1]);
+          const edge = ordered[0][0];
+          let x = child.x;
+          let y = child.y;
+          let width = child.width;
+          let height = child.height;
+          if (edge === "left") {
+            width += chosen.offsets.left;
+            x = chosen.parent.x;
+          } else if (edge === "right") {
+            width += chosen.offsets.right;
+          } else if (edge === "top") {
+            height += chosen.offsets.top;
+            y = chosen.parent.y;
+          } else {
+            height += chosen.offsets.bottom;
+          }
+          changes.push({ child, x, y, width, height });
+        }
+        if (changes.length === 0) break;
+        changes.forEach((change) => setRectMetrics(change.child, change.x, change.y, change.width, change.height));
+      }
+    }
     function cameraPose(progress) {
       const t = clamp(progress);
       if (masonryRequired) {
-        const poses = [
+        const cameraMotifText = [
+          PACKAGE.title,
+          PACKAGE.topic,
+          ...(PACKAGE.strategyAnchors || []),
+          ...(PACKAGE.sourceFacts || []),
+          ...(PACKAGE.visualMechanisms || []),
+        ].join(" ").toLowerCase();
+        const aiAlternativesCamera = /what ai alternatives we have|ai alternatives|atlassian rovo|gemini app|github copilot|claude desktop|claude code|workflow gravity|comparison_grid|credit_meter/.test(cameraMotifText);
+        const poses = aiAlternativesCamera ? [
           [0.00, 0, 0, 1.00],
-          [0.18, -120, -12, 1.24],
-          [0.38, -280, -20, 1.34],
-          [0.62, -420, -24, 1.36],
-          [0.82, -300, 4, 1.28],
-          [1.00, -80, 0, 1.08],
+          [0.16, 20, -8, 1.22],
+          [0.38, -210, -32, 1.48],
+          [0.60, -470, -24, 1.58],
+          [0.80, -640, 8, 1.50],
+          [1.00, -240, 0, 1.15],
+        ] : [
+          [0.00, 0, 0, 1.00],
+          [0.12, -72, -8, 1.15],
+          [0.30, -220, -28, 1.48],
+          [0.50, -470, -36, 1.62],
+          [0.70, -650, -24, 1.58],
+          [0.88, -420, 0, 1.44],
+          [1.00, -120, 0, 1.12],
         ];
         let previous = poses[0];
         let next = poses[poses.length - 1];
@@ -1046,7 +1182,7 @@
       drawMetroMegacanvasBase(Math.floor(clamp(p) * 5), p);
       if (PACKAGE.visualPattern === "systems-flow") {
         const component = (x, y, w, h, name, stroke = palette.line, fill = grayLevel(1)) => {
-          el("rect", { x, y, width: w, height: h, rx: masonryRequired ? 0 : 14, fill, stroke, "stroke-width": 2 });
+          el("rect", { x, y, width: w, height: h, rx: 0, fill, stroke, "stroke-width": 2 });
           if (masonryRequired) {
             const rightBandX = x + w - 8;
             el("rect", { x, y, width: 8, height: h, rx: 0, fill: stroke === "none" ? grayLevel(4) : stroke, stroke: "none" });
@@ -1077,6 +1213,820 @@
           compactText(sourceSystems[9], 18),
           compactText(sourceSystems[10], 17),
         ];
+        const agentMotifText = [...sourceSystems, ...(PACKAGE.strategyAnchors || [])].join(" ").toLowerCase();
+        const agentMotifRequested = /agent_loop_ring|context_window_box|adaptive agent|fixed workflow|model [+] tools [+] state [+] loop|approval checkpoint/.test(agentMotifText);
+        const harnessMotifText = [...sourceSystems, ...(PACKAGE.strategyAnchors || []), PACKAGE.title || "", PACKAGE.topic || ""].join(" ").toLowerCase();
+        const hookMotifRequested = /harness hook|event_timeline|lifecycle events|lifecycle boundaries|shield_gate|pretooluse|before tool use|permission request|compaction|notification|github hook|claude event|opencode event|block dangerous|bash command|filter log|preprocessing|token savings|speed-vs-cost|hooks = lifecycle controls/.test(harnessMotifText);
+        const skillMotifRequested = !/skill-tree|skill tree|path of exile/.test(harnessMotifText) && /what is a skill|skill_card_stack|skill[.]md|progressive disclosure|long prompt wall|cost meter|cost line|tool badges|deploy-preview|bloated|mini novels|reusable workflow|on-demand reusable workflow/.test(harnessMotifText);
+        if (masonryRequired && skillMotifRequested) {
+          let skillRectCounter = 0;
+          const sRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
+            const contract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] ? {} : { "data-box-id": "skill-independent-module-" + (++skillRectCounter) };
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...contract, ...extra });
+          };
+          const sLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
+            if (progress <= 0) return;
+            const visible = [];
+            const safe = clamp(progress);
+            const target = safe * (points.length - 1);
+            for (let index = 0; index < points.length - 1; index++) {
+              const local = clamp(target - index);
+              if (local <= 0) break;
+              const a = points[index], b = points[index + 1];
+              if (visible.length === 0) visible.push(a);
+              visible.push([a[0] + (b[0] - a[0]) * local, a[1] + (b[1] - a[1]) * local]);
+              if (local < 1) break;
+            }
+            if (visible.length < 2) return;
+            el("polyline", { points: visible.map(([x, y]) => x + "," + y).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", ...extra });
+          };
+          const sAttrs = (zoneIndex, motif, extra = {}) => ({
+            ...zoneAttrs(zoneIndex),
+            "data-skill-motif": motif,
+            "data-mechanism-id": motif,
+            ...extra,
+          });
+          const skillCardStackVisible = p > 0.03;
+          const skillManifestVisible = skillCardStackVisible;
+          const skillFileLayerCount = Math.min(4, Math.floor(ease((p - 0.04) / 0.22) * 5));
+          const promptWallCollapsed = p > 0.22;
+          const folderStructuresAligned = p > 0.34;
+          const frontmatterContractVisible = folderStructuresAligned;
+          const triggerSurfaceVisible = p > 0.40;
+          const progressiveDisclosureVisible = p > 0.46;
+          const skillActivationVisible = p > 0.52;
+          const exampleSkillCardsVisible = p > 0.50;
+          const triggerExampleCount = Math.min(5, Math.floor(ease((p - 0.46) / 0.36) * 6));
+          const toolBadgesAttached = p > 0.64;
+          const scriptBlockVisible = p > 0.66;
+          const resourceBundleVisible = p > 0.64;
+          const resourceModuleCount = Math.min(4, Math.floor(ease((p - 0.62) / 0.22) * 5));
+          const validationHarnessVisible = p > 0.68;
+          const validationStageLevel = Math.min(5, Math.floor(ease((p - 0.68) / 0.22) * 6));
+          const readSurfaceVisible = p > 0.54;
+          const readSurfaceLevel = Math.min(4, Math.floor(ease((p - 0.54) / 0.34) * 5));
+          const bloatedSkillTrimmed = p > 0.76;
+          const finalWorkflowStampVisible = p > 0.84;
+          const costMeterLevel = Math.min(4, Math.floor(ease((p - 0.36) / 0.48) * 5));
+
+          [
+            [[80, 92], [316, 92], [420, 156]],
+            [[352, 332], [704, 332], [780, 412]],
+            [[808, 600], [1220, 600], [1312, 520]],
+            [[1260, 388], [1612, 388], [1732, 456]],
+          ].forEach((points, index) => sLine(points, grayLevel(5), 2, 1, sAttrs(index % 5, "skill-baseline-trace", { "data-transition-type": "circuit-signal-trace", "data-transition-id": "skill-baseline-trace-" + index, "data-baseline-trace": "true" })));
+
+          for (let index = 0; index < 7; index++) {
+            const x = 92 + index * 24;
+            const y = 120 + index * 18;
+            const cardActive = index < Math.min(7, skillFileLayerCount + 3) && [0, 3, 6].includes(index);
+            const fill = cardActive ? grayLevel(5) : grayLevel(2 + (index % 4));
+            sRect(x, y, 168, 104, "none", grayLevel(5), 1, sAttrs(0, "skill-card-stack", { "data-transition-type": "masonry-construction", "data-transition-id": "skill-card-stack-fan" }));
+            sRect(x, y, 16, 104, grayLevel(5), "none", 1, sAttrs(0, "skill-card-stack-edge"));
+            if (cardActive) sRect(x, y, 8, 104, palette.route, "none", 1, sAttrs(0, "skill-card-stack-active-edge"));
+            for (let row = 0; row < 4; row++) {
+              const bandFill = row === 0 && index < Math.min(7, skillFileLayerCount + 3) ? fill : grayLevel(1 + ((row + index) % 4));
+              sRect(x + 16, y + row * 26, Math.max(28, 152 - row * 18), 24, bandFill, "none", 1, sAttrs(0, "skill-card-stack-mark"));
+            }
+          }
+
+          const collapse = ease((p - 0.16) / 0.24);
+          const promptStripCount = Math.max(1, 12 - Math.floor(collapse * 11));
+          for (let row = 0; row < 12; row++) {
+            const stripW = 280 - row * 10;
+            const x = 432 - 236 * collapse;
+            const y = 96 + row * 24 + (6 - row) * 6 * collapse;
+            const stripTrimmed = row >= promptStripCount && p > 0.26;
+            const fill = stripTrimmed ? grayLevel(5) : grayLevel(2 + (row % 4));
+            sRect(x, y, Math.max(44, stripW * (1 - 0.54 * collapse)), 14, fill, "none", 1, sAttrs(1, "long-prompt-wall-collapse", { "data-transition-type": "tile-morph", "data-transition-id": "prompt-wall-to-skill-card", "data-transition-phase": promptWallCollapsed ? "fitted" : "entering" }));
+            if (stripTrimmed) sRect(x, y, 6, 14, palette.damage, "none", 1, sAttrs(1, "long-prompt-wall-trim-edge"));
+          }
+          sRect(448, 412, 232, 92, grayLevel(1), grayLevel(5), 1, sAttrs(1, "scoped-skill-card", { "data-box-id": "skill-scoped-card-box" }));
+          const scopedWidth = 232 * collapse;
+          sRect(448, 412, scopedWidth, 92, collapse > 0.72 ? grayLevel(5) : grayLevel(3), "none", 1, sAttrs(1, "scoped-skill-card-fill", { "data-fill-for": "skill-scoped-card-box", "data-fill-axis": "x-progress" }));
+          if (collapse > 0.72 && scopedWidth > 0) sRect(448 + Math.max(0, scopedWidth - 8), 412, Math.min(8, scopedWidth), 92, palette.route, "none", 1, sAttrs(1, "scoped-skill-card-active-cap"));
+          sLine([[304, 236], [408, 292], [448, 458]], palette.route, 6, collapse, sAttrs(1, "prompt-wall-to-card-route", { "data-transition-type": "tile-morph", "data-transition-id": "prompt-wall-to-skill-card", "data-preserved-geometry-id": "long-prompt-wall" }));
+
+          for (let group = 0; group < 3; group++) {
+            const x = 820 + group * 180;
+            sRect(x, 108, 136, 228, grayLevel(1 + group), grayLevel(5), 1, sAttrs(2, "compatible-folder-structure"));
+            for (let row = 0; row < 5; row++) {
+              const y = 108 + row * 44;
+              const rowActive = folderStructuresAligned && [0, 2].includes(row);
+              const fill = rowActive ? grayLevel(5) : grayLevel(2 + ((row + group) % 4));
+              sRect(x, y, 104 - row * 8, 28, fill, grayLevel(5), 1, sAttrs(2, "skill-md-folder-node", { "data-transition-type": "surface-wipe", "data-transition-id": "skill-folder-align" }));
+              if (rowActive) sRect(x, y, 6, 28, palette.route, "none", 1, sAttrs(2, "skill-md-folder-active-edge"));
+              sRect(x + 104, y, 32, 28, grayLevel(3 + ((row + group) % 3)), grayLevel(5), 1, sAttrs(2, "skill-md-folder-terminal"));
+              sLine([[x + 104, y + 28], [x + 104, y + 40], [x + 136, y + 40]], grayLevel(5), 2, 1, sAttrs(2, "skill-folder-tree-edge"));
+            }
+          }
+
+          sRect(860, 420, 360, 48, grayLevel(3), grayLevel(5), 1, sAttrs(3, "progressive-disclosure-cost-meter", { "data-box-id": "skill-cost-meter-box" }));
+          const skillCostWidth = 360 * (costMeterLevel / 4);
+          sRect(860, 420, skillCostWidth, 48, costMeterLevel >= 4 ? grayLevel(5) : grayLevel(4), "none", 1, sAttrs(3, "progressive-disclosure-cost-fill", { "data-fill-for": "skill-cost-meter-box", "data-fill-axis": "x-progress" }));
+          if (skillCostWidth > 0) sRect(860 + Math.max(0, skillCostWidth - 8), 420, Math.min(8, skillCostWidth), 48, costMeterLevel >= 4 ? palette.route : palette.attribute, "none", 1, sAttrs(3, "progressive-disclosure-cost-cap"));
+          for (let mark = 0; mark < 5; mark++) sRect(868 + mark * 70, 484, 10, 40, grayLevel(5), "none", 1, sAttrs(3, "cost-meter-scale-mark"));
+          sRect(772, 400, 52, 120, skillActivationVisible ? grayLevel(5) : grayLevel(3), grayLevel(6), 1, sAttrs(3, "skill-activation-gate", { "data-transition-type": "surface-wipe", "data-transition-id": "skill-activation-gate" }));
+          if (skillActivationVisible) sRect(772, 400, 8, 120, palette.route, "none", 1, sAttrs(3, "skill-activation-gate-edge"));
+          sLine([[680, 458], [772, 458], [860, 444]], palette.route, 6, ease((p - 0.46) / 0.24), sAttrs(3, "skill-activation-route", { "data-transition-type": "flow-token-route", "data-transition-id": "skill-loads-when-relevant" }));
+
+          for (let index = 0; index < 5; index++) {
+            const x = 1280 + (index % 3) * 84;
+            const y = 108 + Math.floor(index / 3) * 88;
+            const exampleActive = index < triggerExampleCount && index % 2 === 0;
+            const fill = exampleActive ? grayLevel(5) : grayLevel(2 + (index % 4));
+            sRect(x, y, 64, 64, fill, grayLevel(5), 1, sAttrs(4, "example-skill-card-cycle"));
+            if (exampleActive) sRect(x, y, 8, 64, palette.route, "none", 1, sAttrs(4, "example-skill-card-active-edge"));
+            sRect(x, y + 52, 64, 12, grayLevel(5), "none", 1, sAttrs(4, "example-skill-card-edge"));
+          }
+          for (let index = 0; index < 6; index++) sRect(1268 + index * 44, 340, 32, 40, index < Math.min(6, resourceModuleCount + 2) ? palette.attribute : grayLevel(2 + (index % 4)), grayLevel(5), 1, sAttrs(4, "tool-badge-snap"));
+          for (let row = 0; row < 4; row++) {
+            const scriptActive = row < validationStageLevel;
+            sRect(1276, 416 + row * 34, 240 - row * 32, 18, scriptActive ? grayLevel(5) : grayLevel(2 + row), "none", 1, sAttrs(4, "script-validation-runner"));
+            if (scriptActive) sRect(1276, 416 + row * 34, 6, 18, palette.route, "none", 1, sAttrs(4, "script-validation-runner-edge"));
+          }
+          for (let index = 0; index < 4; index++) sRect(1572 + index * 36, 416, 28, 88, index < readSurfaceLevel ? palette.attribute : grayLevel(2 + index), grayLevel(5), 1, sAttrs(4, "read-surface-level"));
+
+          const trim = ease((p - 0.72) / 0.20);
+          sRect(1516, 112, 232, 296, grayLevel(2), grayLevel(5), 1, sAttrs(4, "bloated-skill-card"));
+          for (let row = 0; row < 12; row++) {
+            const w = 176 - (row % 4) * 20;
+            const trimLineActive = trim > 0.45 && row > 7;
+            sRect(1516, 112 + row * 24, w * (1 - 0.58 * trim), 20, trimLineActive ? grayLevel(5) : grayLevel(3 + (row % 3)), "none", 1, sAttrs(4, "bloated-skill-trim-lines", { "data-transition-type": "masked-reframe", "data-transition-id": "bloated-skill-trim" }));
+            if (trimLineActive) sRect(1516, 112 + row * 24, 6, 20, palette.damage, "none", 1, sAttrs(4, "bloated-skill-trim-line-edge"));
+          }
+          sRect(1516 + 172 * trim, 112, 28, 296, grayLevel(5), grayLevel(6), 1, sAttrs(4, "bloated-skill-trim-blade"));
+          sRect(1516 + 172 * trim, 112, 8, 296, palette.damage, "none", 1, sAttrs(4, "bloated-skill-trim-blade-edge"));
+          sRect(1516, 448, 184, 76, trim > 0.70 ? grayLevel(5) : grayLevel(3), grayLevel(6), 1, sAttrs(4, "sharp-task-scoped-workflow"));
+          if (trim > 0.70) sRect(1516, 448, 8, 76, palette.route, "none", 1, sAttrs(4, "sharp-task-scoped-workflow-edge"));
+
+          if (finalWorkflowStampVisible) {
+            sRect(420, 572, 360, 64, grayLevel(5), grayLevel(6), 1, sAttrs(4, "final-workflow-stamp"));
+            for (let index = 0; index < 6; index++) {
+              const stampActive = [0, 5].includes(index);
+              sRect(420 + index * 60, 572, 60, 64, stampActive ? grayLevel(5) : grayLevel(2 + (index % 4)), grayLevel(6), 1, sAttrs(4, "final-workflow-stamp-state"));
+              if (stampActive) sRect(420 + index * 60, 572, 8, 64, palette.route, "none", 1, sAttrs(4, "final-workflow-stamp-active-edge"));
+            }
+            sLine([[780, 604], [944, 604], [1108, 560], [1280, 560]], palette.route, 7, ease((p - 0.84) / 0.14), sAttrs(4, "workflow-reuse-route", { "data-transition-type": "flow-token-route", "data-transition-id": "skill-workflow-reuse-route" }));
+          }
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 24; col++) {
+              const index = row * 24 + col;
+              const routeCell = index <= Math.floor(ease((p - 0.12) / 0.66) * 46) && index % 8 === 0;
+              const attributeCell = index % 13 === 0 && p > 0.58;
+              const damageCell = index % 17 === 0 && p > 0.74;
+              let fill = grayLevel(2 + (index % 4));
+              sRect(64 + col * 64, 652 + row * 24, 52, 16, fill, "none", 1, sAttrs(index % 5, "skill-evidence-floor"));
+              if (routeCell || attributeCell || damageCell) sRect(64 + col * 64, 652 + row * 24, 6, 16, damageCell ? palette.damage : attributeCell ? palette.attribute : palette.route, "none", 1, sAttrs(index % 5, "skill-evidence-floor-accent"));
+            }
+          }
+          const visibleMechanismCount = [skillCardStackVisible, promptWallCollapsed, folderStructuresAligned, progressiveDisclosureVisible, skillActivationVisible, exampleSkillCardsVisible, toolBadgesAttached, scriptBlockVisible, bloatedSkillTrimmed, finalWorkflowStampVisible].filter(Boolean).length;
+          const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
+          return withCameraState({ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, systemLabels: sourceSystems, skillCardStackVisible, skillManifestVisible, frontmatterContractVisible, triggerSurfaceVisible, promptWallCollapsed, folderStructuresAligned, progressiveDisclosureVisible, skillActivationVisible, exampleSkillCardsVisible, toolBadgesAttached, scriptBlockVisible, bloatedSkillTrimmed, finalWorkflowStampVisible, resourceBundleVisible, validationHarnessVisible, readSurfaceVisible, skillFileLayerCount, triggerExampleCount, resourceModuleCount, validationStageLevel, readSurfaceLevel, costMeterLevel, visibleMechanismCount }, camera);
+        }
+        if (masonryRequired && hookMotifRequested) {
+          let hookRectCounter = 0;
+          const hRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
+            const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"];
+            const boxContract = hasBoxContract ? {} : { "data-box-id": `hook-independent-module-${++hookRectCounter}` };
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
+          };
+          const hLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
+            if (progress <= 0) return;
+            const visible = [];
+            const safe = clamp(progress);
+            const target = safe * (points.length - 1);
+            for (let index = 0; index < points.length - 1; index++) {
+              const local = clamp(target - index);
+              if (local <= 0) break;
+              const a = points[index], b = points[index + 1];
+              if (visible.length === 0) visible.push(a);
+              visible.push([a[0] + (b[0] - a[0]) * local, a[1] + (b[1] - a[1]) * local]);
+              if (local < 1) break;
+            }
+            if (visible.length < 2) return;
+            el("polyline", { points: visible.map(([x, y]) => `${x},${y}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", ...extra });
+          };
+          const activeHookEventCount = Math.min(8, Math.floor(ease((p - 0.04) / 0.48) * 8 + 0.999));
+          const eventTimelineVisible = true;
+          const shieldGateOverlayVisible = p > 0.16;
+          const githubHookBadgesVisible = p > 0.26;
+          const claudeEventCloudVisible = p > 0.32;
+          const opencodeEventListVisible = p > 0.38;
+          const commandBlockPathVisible = p > 0.44;
+          const logFilterPathVisible = p > 0.54;
+          const hookJobCascadeVisible = p > 0.62;
+          const tokenSavingsCounterVisible = p > 0.66;
+          const costLatencyTradeoffVisible = p > 0.70;
+          const lifecycleRuleStampVisible = p > 0.82;
+          const providerLaneCount = [githubHookBadgesVisible, claudeEventCloudVisible, opencodeEventListVisible].filter(Boolean).length;
+          const policyTokenCount = Math.min(6, Math.floor(ease((p - 0.44) / 0.28) * 6 + 0.999));
+          const tokenSavingsLevel = Math.min(6, Math.floor(ease((p - 0.66) / 0.24) * 7));
+          const latencyCostLevel = Math.min(5, Math.floor(ease((p - 0.70) / 0.22) * 6));
+          const eventNodes = Array.from({ length: 8 }, (_, index) => [104 + index * 92, 160 + (index % 2 ? 24 : 0)]);
+          eventNodes.slice(0, -1).forEach((point, index) => {
+            hLine([point, eventNodes[index + 1]], grayLevel(5), 3, 1, { "data-hook-motif": "event-timeline", "data-mechanism-id": "hook-event-timeline", "data-source-anchor-json": JSON.stringify(["event_timeline lights up lifecycle event nodes"]) });
+            if (index < activeHookEventCount - 1) hLine([point, eventNodes[index + 1]], palette.route, 6, 1, { "data-hook-motif": "event-timeline", "data-transition-type": "circuit-signal-trace", "data-transition-id": "hook-lifecycle-pulse", "data-transition-phase": "active", "data-preserved-geometry-id": "event_timeline" });
+          });
+          eventNodes.forEach(([x, y], index) => {
+            const eventNodeId = `hook-event-node-${index}`;
+            const eventNodeActive = index < activeHookEventCount;
+            hRect(x - 22, y - 20, 44, 40, eventNodeActive ? grayLevel(5) : grayLevel(2 + (index % 4)), grayLevel(5), 1, { "data-box-id": eventNodeId, "data-hook-motif": "event-timeline", "data-mechanism-id": "hook-event-timeline", "data-source-anchor-json": JSON.stringify(["event_timeline lights up lifecycle event nodes"]) });
+            if (eventNodeActive) hRect(x - 22, y - 20, 8, 40, palette.route, "none", 1, { "data-box-id": `${eventNodeId}-active-edge`, "data-hook-motif": "event-timeline", "data-mechanism-id": "hook-event-active-edge" });
+            hRect(x - 22, y - 20, 12, 40, grayLevel(1 + (index % 4)), "none", 1, { "data-box-id": `${eventNodeId}-state-glyph`, "data-hook-motif": "event-timeline", "data-mechanism-id": "hook-event-state-glyph" });
+          });
+          const gateClose = ease((p - 0.16) / 0.20);
+          hRect(428, 96, 28, 188, shieldGateOverlayVisible ? grayLevel(5) : grayLevel(4), grayLevel(6), 1, { "data-hook-motif": "shield-gate-overlay", "data-mechanism-id": "hook-shield-gate", "data-source-anchor-json": JSON.stringify(["shield_gate overlays the event timeline"]) });
+          hRect(792, 96, 28, 188, shieldGateOverlayVisible ? grayLevel(5) : grayLevel(4), grayLevel(6), 1, { "data-hook-motif": "shield-gate-overlay", "data-mechanism-id": "hook-shield-gate" });
+          if (shieldGateOverlayVisible) {
+            hRect(428, 96, 8, 188, palette.damage, "none", 1, { "data-hook-motif": "shield-gate-overlay", "data-mechanism-id": "hook-shield-gate-accent" });
+            hRect(812, 96, 8, 188, palette.damage, "none", 1, { "data-hook-motif": "shield-gate-overlay", "data-mechanism-id": "hook-shield-gate-accent" });
+          }
+          hRect(456, 96, 336 * gateClose, 16, palette.attribute, "none", 1, { "data-hook-motif": "shield-gate-overlay", "data-transition-type": "surface-wipe", "data-transition-id": "hook-shield-close", "data-transition-phase": shieldGateOverlayVisible ? "active" : "entering", "data-preserved-geometry-id": "event_timeline" });
+          hRect(456, 268, 336 * gateClose, 16, palette.attribute, "none", 1, { "data-hook-motif": "shield-gate-overlay", "data-transition-type": "surface-wipe", "data-transition-id": "hook-shield-close", "data-transition-phase": shieldGateOverlayVisible ? "active" : "entering", "data-preserved-geometry-id": "event_timeline" });
+          const loopPoints = [[520,132],[704,132],[756,196],[664,264],[520,236],[480,176],[520,132]];
+          loopPoints.slice(0, -1).forEach((point, index) => hLine([point, loopPoints[index + 1]], index < activeHookEventCount - 1 ? palette.route : grayLevel(5), index < activeHookEventCount - 1 ? 6 : 3, 1, { "data-hook-motif": "shield-gate-overlay", "data-mechanism-id": "hook-runtime-loop" }));
+          [[940, 104, "github-hook-badges"], [1116, 104, "claude-event-cloud"], [1292, 104, "opencode-event-list"]].forEach(([x, y, motif], providerIndex) => {
+            const providerVisible = providerIndex === 0 ? githubHookBadgesVisible : providerIndex === 1 ? claudeEventCloudVisible : opencodeEventListVisible;
+            const providerBoxId = `hook-provider-surface-${providerIndex}`;
+            hRect(x, y, 144, 220, grayLevel(1 + providerIndex), grayLevel(5), 1, { "data-box-id": providerBoxId, "data-hook-motif": motif, "data-mechanism-id": "hook-provider-events", "data-source-anchor-json": JSON.stringify(["GitHub hook badges for session prompt tool call and stop events", "Claude event cloud around the loop", "OpenCode vertical plugin event list"]) });
+            if (providerIndex === 0) {
+              for (let row = 0; row < 5; row++) {
+                const rowActive = providerVisible && row <= activeHookEventCount - 3;
+                hRect(x, y + row * 44, 144, 44, rowActive ? grayLevel(5) : grayLevel(2 + row % 4), "none", 1, { "data-box-id": `${providerBoxId}-badge-${row}`, "data-hook-motif": motif, "data-mechanism-id": "github-hook-badge" });
+                if (rowActive) hRect(x, y + row * 44, 8, 44, palette.route, "none", 1, { "data-box-id": `${providerBoxId}-badge-${row}-active-edge`, "data-hook-motif": motif, "data-mechanism-id": "github-hook-badge-active-edge" });
+                hRect(x, y + row * 44, 16, 44, grayLevel(5), "none", 1, { "data-box-id": `${providerBoxId}-badge-${row}-event-edge`, "data-hook-motif": motif, "data-mechanism-id": "github-hook-badge-edge" });
+              }
+            } else if (providerIndex === 1) {
+              const cloud = [[x+72,136],[x+116,176],[x+100,244],[x+44,254],[x+24,188],[x+72,136]];
+              [[x, y, 72, 72], [x + 72, y, 72, 72], [x, y + 72, 72, 72], [x + 72, y + 72, 72, 72], [x, y + 144, 72, 76], [x + 72, y + 144, 72, 76]].forEach(([cx, cy, cw, ch], cloudIndex) => {
+                const cellFill = providerVisible && [1, 2, 4].includes(cloudIndex) ? palette.attribute : grayLevel(2 + cloudIndex % 4);
+                hRect(cx, cy, cw, ch, cellFill, grayLevel(5), 1, { "data-box-id": `${providerBoxId}-cloud-cell-${cloudIndex}`, "data-hook-motif": motif, "data-mechanism-id": "claude-event-cloud-cell" });
+              });
+              hLine(cloud, providerVisible ? palette.attribute : grayLevel(5), 5, ease((p - 0.30) / 0.28), { "data-hook-motif": motif, "data-transition-type": "masked-reframe", "data-transition-id": "claude-event-cloud-expand" });
+            } else {
+              let rowY = y;
+              for (let row = 0; row < 6; row++) {
+                const rowHeight = row === 5 ? 40 : 36;
+                const rowActive = providerVisible && row <= activeHookEventCount - 4;
+                hRect(x, rowY, 144, rowHeight, rowActive ? grayLevel(5) : grayLevel(2 + row % 4), grayLevel(5), 1, { "data-box-id": `${providerBoxId}-event-row-${row}`, "data-hook-motif": motif, "data-mechanism-id": "opencode-event-row" });
+                if (rowActive) hRect(x, rowY, 8, rowHeight, palette.route, "none", 1, { "data-box-id": `${providerBoxId}-event-row-${row}-active-edge`, "data-hook-motif": motif, "data-mechanism-id": "opencode-event-active-edge" });
+                hRect(x + 132, rowY, 12, rowHeight, grayLevel(5), "none", 1, { "data-box-id": `${providerBoxId}-event-row-${row}-edge`, "data-hook-motif": motif, "data-mechanism-id": "opencode-event-edge" });
+                rowY += rowHeight;
+              }
+            }
+          });
+          for (let row = 0; row < 5; row++) {
+            for (let col = 0; col < 6; col++) {
+              const commandCellBlocked = commandBlockPathVisible && row === 2 && col >= 2;
+              hRect(96 + col * 42, 420 + row * 30, 34, 20, commandCellBlocked ? grayLevel(5) : grayLevel(2 + ((row + col) % 4)), "none", 1, { "data-hook-motif": "pretooluse-command-block", "data-mechanism-id": "hook-command-block", "data-source-anchor-json": JSON.stringify(["PreToolUse Bash command block for rm -rf kubectl delete terraform destroy"]) });
+              if (commandCellBlocked) hRect(96 + col * 42, 420 + row * 30, 34, 6, palette.damage, "none", 1, { "data-hook-motif": "pretooluse-command-block", "data-mechanism-id": "hook-command-block-cap" });
+            }
+          }
+          hRect(388, 400, 48, 176, commandBlockPathVisible ? grayLevel(5) : grayLevel(4), grayLevel(6), 1, { "data-hook-motif": "pretooluse-command-block", "data-mechanism-id": "hook-command-block" });
+          if (commandBlockPathVisible) hRect(428, 400, 8, 176, palette.damage, "none", 1, { "data-hook-motif": "pretooluse-command-block", "data-mechanism-id": "hook-command-block-edge" });
+          for (let index = 0; index < 3; index++) {
+            const tokenBlocked = index < policyTokenCount / 2;
+            hRect(468 + index * 72, 430, 54, 54, tokenBlocked ? grayLevel(5) : grayLevel(3), grayLevel(5), 1, { "data-hook-motif": "pretooluse-command-block", "data-mechanism-id": "hook-command-block" });
+            if (tokenBlocked) hRect(468 + index * 72, 430, 54, 8, palette.damage, "none", 1, { "data-hook-motif": "pretooluse-command-block", "data-mechanism-id": "hook-command-block-token-cap" });
+          }
+          hLine([[316,480],[388,480],[436,480]], palette.damage, 6, ease((p - 0.44) / 0.16), { "data-hook-motif": "pretooluse-command-block", "data-transition-type": "interrupt-gate-snap", "data-transition-id": "hook-command-deny", "data-preserved-geometry-id": "event-pulse" });
+          hLine([[436,548],[516,596],[660,596]], palette.route, 5, ease((p - 0.58) / 0.18), { "data-hook-motif": "pretooluse-command-block", "data-transition-type": "flow-token-route", "data-transition-id": "safe-command-continue" });
+          for (let row = 0; row < 6; row++) {
+            for (let col = 0; col < 8; col++) {
+              hRect(680 + col * 28, 408 + row * 22, 20, 14, logFilterPathVisible && (row + col) % 5 === 0 ? palette.attribute : grayLevel(2 + ((row + col) % 4)), "none", 1, { "data-hook-motif": "log-filter-path", "data-mechanism-id": "hook-log-filter", "data-source-anchor-json": JSON.stringify(["log filter and preprocessing path shrinks context before the model"]) });
+            }
+          }
+          hRect(936, 410, 34, 136, logFilterPathVisible ? palette.attribute : grayLevel(4), grayLevel(6), 1, { "data-hook-motif": "log-filter-path", "data-mechanism-id": "hook-log-filter" });
+          for (let index = 0; index < 6; index++) {
+            const tokenBarActive = index < tokenSavingsLevel;
+            hRect(1008 + index * 32, 430, 24, 76, tokenBarActive ? grayLevel(5) : grayLevel(3 + index % 3), grayLevel(5), 1, { "data-hook-motif": "token-savings-counter", "data-mechanism-id": "hook-token-savings", "data-source-anchor-json": JSON.stringify(["token-savings counter and speed-vs-cost slider"]) });
+            if (tokenBarActive) hRect(1008 + index * 32, 430, 8, 76, palette.route, "none", 1, { "data-hook-motif": "token-savings-counter", "data-mechanism-id": "hook-token-savings-edge" });
+          }
+          for (let lane = 0; lane < 6; lane++) {
+            const x = 1188 + lane * 60;
+            const y = 392 + lane * 24;
+            const laneActive = hookJobCascadeVisible && lane <= activeHookEventCount - 4;
+            hRect(x, y, 52, 48, laneActive ? grayLevel(5) : grayLevel(2 + lane % 4), grayLevel(5), 1, { "data-hook-motif": "hook-job-cascade", "data-mechanism-id": "hook-job-cascade", "data-source-anchor-json": JSON.stringify(["format validation secret protection audit logging notifications jobs cascade"]) });
+            if (laneActive) hRect(x, y, 8, 48, palette.route, "none", 1, { "data-hook-motif": "hook-job-cascade", "data-mechanism-id": "hook-job-cascade-edge-active" });
+            hRect(x, y + 40, 52, 8, grayLevel(5), "none", 1, { "data-hook-motif": "hook-job-cascade", "data-mechanism-id": "hook-job-cascade-edge" });
+          }
+          hRect(1516, 404, 264, 46, grayLevel(3), grayLevel(5), 1, { "data-box-id": "hook-token-savings-meter-box", "data-hook-motif": "token-savings-counter", "data-mechanism-id": "hook-cost-boundary" });
+          const tokenSavingsWidth = 264 * (tokenSavingsLevel / 6);
+          hRect(1516, 404, tokenSavingsWidth, 46, grayLevel(5), "none", 1, { "data-fill-for": "hook-token-savings-meter-box", "data-fill-axis": "x-progress", "data-hook-motif": "token-savings-counter", "data-mechanism-id": "hook-token-savings-fill" });
+          if (tokenSavingsWidth > 0) hRect(1516 + Math.max(0, tokenSavingsWidth - 8), 404, Math.min(8, tokenSavingsWidth), 46, palette.route, "none", 1, { "data-hook-motif": "token-savings-counter", "data-mechanism-id": "hook-token-savings-cap" });
+          hRect(1516, 480, 264, 46, grayLevel(3), grayLevel(5), 1, { "data-box-id": "hook-speed-cost-meter-box", "data-hook-motif": "speed-cost-slider", "data-mechanism-id": "hook-cost-boundary", "data-source-anchor-json": JSON.stringify(["token-savings counter and speed-vs-cost slider"]) });
+          const latencyCostWidth = 264 * (latencyCostLevel / 5);
+          hRect(1516, 480, latencyCostWidth, 46, latencyCostLevel >= 4 ? grayLevel(5) : grayLevel(4), "none", 1, { "data-fill-for": "hook-speed-cost-meter-box", "data-fill-axis": "x-progress", "data-hook-motif": "speed-cost-slider", "data-mechanism-id": "hook-speed-cost-fill" });
+          if (latencyCostWidth > 0) hRect(1516 + Math.max(0, latencyCostWidth - 8), 480, Math.min(8, latencyCostWidth), 46, latencyCostLevel >= 4 ? palette.damage : palette.attribute, "none", 1, { "data-hook-motif": "speed-cost-slider", "data-mechanism-id": "hook-speed-cost-cap" });
+          for (let mark = 0; mark < 7; mark++) hRect(1516 + mark * 44, 542, 8, 32, grayLevel(5), "none", 1, { "data-hook-motif": "speed-cost-slider", "data-mechanism-id": "hook-slider-scale-mark" });
+          hRect(1516 + 44 * latencyCostLevel, 588, 40, 48, grayLevel(5), grayLevel(6), 1, { "data-hook-motif": "speed-cost-slider", "data-transition-type": "tile-morph", "data-transition-id": "speed-cost-slider" });
+          hRect(1516 + 44 * latencyCostLevel, 588, 8, 48, latencyCostLevel >= 4 ? palette.damage : palette.route, "none", 1, { "data-hook-motif": "speed-cost-slider", "data-transition-type": "tile-morph", "data-transition-id": "speed-cost-slider-accent" });
+          if (lifecycleRuleStampVisible) {
+            hRect(112, 608, 352, 56, grayLevel(5), grayLevel(6), 1, { "data-hook-motif": "lifecycle-controls-stamp", "data-mechanism-id": "hook-lifecycle-controls", "data-source-anchor-json": JSON.stringify(["hooks = lifecycle controls final stamp"]) });
+            for (let index = 0; index < 4; index++) {
+              const stampActive = index % 2 === 0;
+              hRect(112 + index * 88, 608, 88, 56, stampActive ? grayLevel(5) : grayLevel(2 + index), grayLevel(6), 1, { "data-hook-motif": "lifecycle-controls-stamp", "data-mechanism-id": "hook-lifecycle-stamp-state" });
+              if (stampActive) hRect(112 + index * 88, 608, 8, 56, palette.route, "none", 1, { "data-hook-motif": "lifecycle-controls-stamp", "data-mechanism-id": "hook-lifecycle-stamp-edge" });
+            }
+            hLine([[464,636],[584,636],[660,596]], palette.route, 6, ease((p - 0.82) / 0.14), { "data-hook-motif": "lifecycle-controls-stamp", "data-transition-type": "surface-wipe", "data-transition-id": "hook-final-boundary" });
+          }
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 24; col++) {
+              const index = row * 24 + col;
+              const routeCell = index <= activeHookEventCount * 4 && index % 9 === 0;
+              const attributeCell = index % 13 === 0 && p > 0.60;
+              const fill = grayLevel(2 + index % 4);
+              hRect(64 + col * 64, 652 + row * 24, 52, 16, fill);
+              if (routeCell || attributeCell) hRect(64 + col * 64, 652 + row * 24, 6, 16, attributeCell ? palette.attribute : palette.route, "none", 1, { "data-hook-motif": "hook-evidence-floor-accent" });
+            }
+          }
+          const visibleMechanismCount = [eventTimelineVisible, shieldGateOverlayVisible, providerLaneCount >= 3, commandBlockPathVisible, logFilterPathVisible, hookJobCascadeVisible, tokenSavingsCounterVisible, costLatencyTradeoffVisible, lifecycleRuleStampVisible].filter(Boolean).length;
+          const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
+          return withCameraState({ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, systemLabels: sourceSystems, eventTimelineVisible, shieldGateOverlayVisible, githubHookBadgesVisible, claudeEventCloudVisible, opencodeEventListVisible, hookJobCascadeVisible, commandBlockPathVisible, logFilterPathVisible, tokenSavingsCounterVisible, costLatencyTradeoffVisible, lifecycleRuleStampVisible, activeHookEventCount, providerLaneCount, policyTokenCount, tokenSavingsLevel, latencyCostLevel, visibleMechanismCount }, camera);
+        }
+        const harnessMotifRequested = !/harness hook|harness plugin/.test(harnessMotifText) && /what is a harness|comparison_grid|runtime stack|runtime wrapper|engine icon|vehicle dashboard|same model|different shell|three-column harness|credit_meter|use-case matrix|selection path/.test(harnessMotifText);
+        if (masonryRequired && harnessMotifRequested) {
+          const rect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, ...extra });
+          };
+          const poly = (points, stroke, strokeWidth = 4, opacity = 1, extra = {}) => {
+            el("polyline", { points: points.map((point) => point[0] + "," + point[1]).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", opacity, ...extra });
+          };
+          const selectedCol = Math.min(3, Math.floor(ease((p - 0.06) / 0.20) * 4));
+          const selectedRow = Math.min(3, Math.floor(ease((p - 0.12) / 0.22) * 4));
+          const gridX = 96;
+          const gridY = 112;
+          for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 4; col++) {
+              const selected = row === selectedRow && col === selectedCol && p > 0.18;
+              const fill = selected ? palette.route : ((row + col) % 5 === 0 && p > 0.12 ? palette.attribute : grayLevel(2 + ((row + col) % 4)));
+              rect(gridX + col * 54, gridY + row * 46, 46, 38, fill, grayLevel(5), 1, {
+                "data-harness-motif": "comparison-grid",
+                "data-source-anchor-json": JSON.stringify(["comparison_grid"]),
+                "data-mechanism-id": "harness-comparison-grid",
+                "data-semantic-role": "mechanism-mark",
+              });
+              rect(gridX + col * 54 + 8, gridY + row * 46 + 10, 30, 6, grayLevel(1 + ((row + col) % 4)));
+              rect(gridX + col * 54 + 8, gridY + row * 46 + 24, 30, 6, grayLevel(5));
+            }
+          }
+          const selectedX = gridX + selectedCol * 54 + 23;
+          const selectedY = gridY + selectedRow * 46 + 19;
+          poly([[selectedX, selectedY], [360, 220], [492, 220]], palette.route, 6, ease((p - 0.16) / 0.20), {
+            "data-harness-motif": "grid-to-stack-path",
+            "data-source-anchor-json": JSON.stringify(["comparison_grid", "runtime stack"]),
+            "data-transition-type": "masked-reframe",
+            "data-transition-id": "harness-grid-to-stack",
+            "data-transition-phase": p > 0.24 ? "fitted" : "entering",
+            "data-preserved-geometry-id": "comparison-grid-selected-cell",
+          });
+
+          const layerCount = Math.min(7, Math.floor(ease((p - 0.18) / 0.34) * 8));
+          for (let index = 0; index < 7; index++) {
+            const y = 108 + index * 54;
+            const fill = index < layerCount && (index === 1 || index === 4) ? palette.route : grayLevel(1 + (index % 5));
+            rect(500 + index * 10, y, 300 - index * 18, 42, fill, grayLevel(5), 1, {
+              "data-harness-motif": "runtime-stack-layer",
+              "data-source-anchor-json": JSON.stringify(["runtime stack", "instruction tools permissions loop logging layers"]),
+              "data-mechanism-id": "harness-runtime-stack",
+              "data-zone-boundary": "flush",
+              "data-padding-policy": "zero-verified",
+            });
+            rect(500 + index * 10, y, 8, 42, grayLevel(5));
+            for (let slot = 0; slot < 4; slot++) {
+              const slotFill = index < layerCount && slot <= index % 4 ? palette.attribute : grayLevel(2 + (slot % 4));
+              rect(542 + index * 10 + slot * 50, y + 12, 34, 16, slotFill);
+            }
+          }
+
+          const engineCoreVisible = p > 0.22;
+          rect(620, 284, 108, 92, engineCoreVisible ? palette.route : grayLevel(3), grayLevel(6), 3, {
+            "data-harness-motif": "engine-core",
+            "data-source-anchor-json": JSON.stringify(["engine icon morphs into vehicle dashboard"]),
+            "data-mechanism-id": "harness-engine-dashboard",
+          });
+          for (let col = 0; col < 3; col++) rect(638 + col * 26, 300, 18, 54, grayLevel(1 + col));
+          const dashboardControlsVisible = p > 0.30;
+          [[748, 256], [804, 256], [776, 312], [834, 312]].forEach((point, index) => {
+            const fill = dashboardControlsVisible && index % 2 === 0 ? palette.attribute : grayLevel(2 + index);
+            rect(point[0], point[1], 44, 40, fill, grayLevel(5), 1, {
+              "data-harness-motif": "dashboard-controls",
+              "data-source-anchor-json": JSON.stringify(["vehicle dashboard"]),
+              "data-mechanism-id": "harness-engine-dashboard",
+            });
+            rect(point[0] + 10, point[1] + 14, 24, 8, grayLevel(5));
+          });
+          poly([[674, 330], [728, 330], [748, 276], [804, 276], [834, 332]], palette.route, 5, ease((p - 0.24) / 0.24), {
+            "data-transition-type": "tile-morph",
+            "data-transition-id": "harness-engine-dashboard-morph",
+            "data-transition-phase": dashboardControlsVisible ? "fitted" : "entering",
+            "data-preserved-geometry-id": "shared-model-core",
+          });
+
+          const ringPoints = [[616, 460], [716, 426], [822, 466], [786, 548], [654, 558], [590, 510], [616, 460]];
+          ringPoints.slice(0, -1).forEach((point, index) => {
+            poly([point, ringPoints[index + 1]], grayLevel(5), 3);
+            if (index < Math.floor(ease((p - 0.34) / 0.34) * 6)) poly([point, ringPoints[index + 1]], palette.attribute, 6, 1, {
+              "data-harness-motif": "agent-loop-ring",
+              "data-source-anchor-json": JSON.stringify(["agent_loop_ring"]),
+              "data-mechanism-id": "harness-loop-control",
+            });
+          });
+          ringPoints.slice(0, -1).forEach((point, index) => rect(point[0] - 20, point[1] - 18, 40, 36, p > 0.34 + index * 0.04 ? palette.attribute : grayLevel(2 + (index % 4)), grayLevel(5), 1));
+
+          const shellOrigins = [[928, 108], [1112, 108], [1296, 108]];
+          const modelDrop = ease((p - 0.38) / 0.20);
+          shellOrigins.forEach((origin, shellIndex) => {
+            const x = origin[0];
+            const y = origin[1];
+            rect(x, y, 152, 220, grayLevel(1 + shellIndex), grayLevel(5), 1, {
+              "data-harness-motif": ["copilot-shell", "claude-code-shell", "opencode-shell"][shellIndex],
+              "data-source-anchor-json": JSON.stringify(["same model badge in three different harness shells", "three-column harness cards"]),
+              "data-mechanism-id": "harness-shell-compare",
+            });
+            rect(x + 54, y + 22 + (1 - modelDrop) * -80, 44, 44, palette.route, grayLevel(6), 2, {
+              "data-harness-motif": "same-model-badge",
+              "data-source-anchor-json": JSON.stringify(["same model badge in three different harness shells"]),
+              "data-preserved-geometry-id": "same-model-badge",
+            });
+            if (shellIndex === 0) {
+              for (let row = 0; row < 5; row++) rect(x + 20, y + 92 + row * 22, 112, 14, row <= Math.floor(ease((p - 0.46) / 0.22) * 5) ? palette.route : grayLevel(2 + (row % 4)));
+              rect(x + 20, y + 190, 112 * ease((p - 0.52) / 0.22), 16, palette.attribute);
+            } else if (shellIndex === 1) {
+              const loop = [[x + 46, y + 116], [x + 86, y + 94], [x + 124, y + 124], [x + 92, y + 168], [x + 46, y + 154], [x + 46, y + 116]];
+              loop.slice(0, -1).forEach((point, index) => poly([point, loop[index + 1]], index < Math.floor(ease((p - 0.46) / 0.24) * 5) ? palette.attribute : grayLevel(5), 4));
+              [[x + 22, y + 170], [x + 62, y + 170], [x + 102, y + 170], [x + 62, y + 124]].forEach((point) => rect(point[0], point[1], 28, 24, grayLevel(4), grayLevel(5), 1));
+            } else {
+              rect(x + 24, y + 94, 104, 28, p > 0.50 ? palette.attribute : grayLevel(3), grayLevel(5), 1);
+              for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 3; col++) {
+                  rect(x + 28 + col * 34, y + 144 + row * 22, 24, 16, p > 0.54 && row === col ? palette.route : grayLevel(2 + ((row + col) % 4)));
+                }
+              }
+            }
+          });
+
+          const toolCountLevel = Math.min(6, Math.floor(ease((p - 0.52) / 0.22) * 7));
+          for (let index = 0; index < 6; index++) rect(932 + index * 34, 408, 26, 58, index < toolCountLevel ? palette.route : grayLevel(3 + (index % 3)), grayLevel(5), 1, {
+            "data-harness-motif": "tool-count",
+            "data-source-anchor-json": JSON.stringify(["credit_meter", "default tools"]),
+            "data-mechanism-id": "harness-cost-meter",
+          });
+          const creditMeterLevel = Math.min(5, Math.floor(ease((p - 0.42) / 0.38) * 6));
+          rect(932, 496, 244, 42, grayLevel(3), grayLevel(5), 1, {
+            "data-harness-motif": "credit-meter",
+            "data-source-anchor-json": JSON.stringify(["credit_meter"]),
+            "data-mechanism-id": "harness-cost-meter",
+          });
+          rect(932, 496, 244 * (creditMeterLevel / 5), 42, creditMeterLevel >= 4 ? palette.damage : palette.attribute);
+          for (let mark = 0; mark < 6; mark++) rect(932 + mark * 48, 548, 8, 30, grayLevel(5));
+
+          const featureGridMuted = p > 0.70;
+          const useCaseMatrixActive = p > 0.74;
+          for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 5; col++) {
+              let fill = featureGridMuted ? grayLevel(2) : grayLevel(2 + ((row + col) % 4));
+              if (useCaseMatrixActive && ((row === 0 && col === 1) || (row === 1 && col === 2) || (row === 2 && col === 3) || (row === 3 && col === 4))) fill = p > 0.82 ? palette.route : palette.attribute;
+              rect(1212 + col * 52, 408 + row * 42, 44, 34, fill, grayLevel(5), 1, {
+                "data-harness-motif": "fit-matrix",
+                "data-source-anchor-json": JSON.stringify(["feature grid fades behind use-case matrix", "highlighted selection path"]),
+                "data-mechanism-id": "harness-selection-matrix",
+              });
+            }
+          }
+          const selectionPathHighlighted = p > 0.82;
+          poly([[1234, 425], [1286, 467], [1338, 509], [1390, 551]], palette.route, 7, ease((p - 0.80) / 0.16), {
+            "data-harness-motif": "selection-path",
+            "data-source-anchor-json": JSON.stringify(["highlighted selection path"]),
+            "data-transition-type": "surface-wipe",
+            "data-transition-id": "harness-selection-path",
+            "data-transition-phase": selectionPathHighlighted ? "fitted" : "entering",
+          });
+
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 22; col++) {
+              const index = row * 22 + col;
+              const fill = index <= Math.floor(ease((p - 0.16) / 0.60) * 44) && index % 8 === 0 ? palette.route : (index % 11 === 0 && p > 0.60 ? palette.attribute : grayLevel(2 + (index % 4)));
+              rect(64 + col * 64, 648 + row * 26, 52, 18, fill);
+            }
+          }
+          const comparisonGridVisible = true;
+          const runtimeStackVisible = layerCount >= 2;
+          const layersAssembling = layerCount;
+          const modelBadgeShared = modelDrop > 0.25;
+          const sameModelShellCount = modelDrop > 0.75 ? 3 : Math.floor(modelDrop * 4);
+          const shellCopilotVisible = sameModelShellCount >= 1;
+          const shellClaudeCodeVisible = sameModelShellCount >= 2;
+          const shellOpenCodeVisible = sameModelShellCount >= 3;
+          const threeHarnessShellsVisible = sameModelShellCount >= 3;
+          const agentLoopRingVisible = p > 0.34;
+          const creditMeterRising = creditMeterLevel >= 2;
+          const visibleMechanismCount = [comparisonGridVisible, runtimeStackVisible, engineCoreVisible, dashboardControlsVisible, threeHarnessShellsVisible, creditMeterRising, featureGridMuted, useCaseMatrixActive, selectionPathHighlighted, agentLoopRingVisible].filter(Boolean).length;
+          const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
+          return withCameraState({ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, systemLabels: sourceSystems, comparisonGridVisible, runtimeStackVisible, engineCoreVisible, dashboardControlsVisible, layersAssembling, modelBadgeShared, sameModelShellCount, shellCopilotVisible, shellClaudeCodeVisible, shellOpenCodeVisible, threeHarnessShellsVisible, toolCountLevel, creditMeterLevel, creditMeterRising, featureGridMuted, useCaseMatrixActive, selectionPathHighlighted, agentLoopRingVisible, visibleMechanismCount }, camera);
+        }
+        if (masonryRequired && agentMotifRequested) {
+          const rect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, ...extra });
+          };
+          const poly = (points, stroke, strokeWidth = 4, opacity = 1, extra = {}) => {
+            el("polyline", { points: points.map(([x, y]) => `${x},${y}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", opacity, ...extra });
+          };
+          const contextPaneCount = Math.max(0, Math.min(5, Math.floor(ease((p - 0.04) / 0.26) * 6)));
+          for (let index = 0; index < 5; index++) {
+            const active = index < contextPaneCount;
+            const x = 96 + index * 24;
+            const y = 112 + index * 22;
+            const width = 244 - index * 28;
+            const height = 188 - index * 18;
+            rect(x, y, width, height, grayLevel(1 + (index % 5)), grayLevel(5), 1, {
+              "data-agent-motif": "context-pane",
+              "data-source-anchor-json": JSON.stringify(["context_window_box"]),
+            });
+            rect(x, y, 8, height, active ? (index % 2 === 0 ? palette.route : grayLevel(5)) : grayLevel(3));
+          }
+          for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 4; col++) {
+              const on = row + col < contextPaneCount + 2;
+              const fill = on && (row + col) % 4 === 0 ? palette.route : grayLevel(2 + ((row + col) % 4));
+              rect(120 + col * 44, 352 + row * 34, 34, 24, fill);
+            }
+          }
+
+          const loopPoints = [[600, 156], [790, 270], [738, 464], [520, 476], [420, 300], [600, 156]];
+          const loopProgress = ease((p - 0.10) / 0.54);
+          const loopActiveSegments = Math.floor(loopProgress * (loopPoints.length - 1) + 0.001);
+          for (let index = 0; index < loopPoints.length - 1; index++) {
+            poly([loopPoints[index], loopPoints[index + 1]], grayLevel(5), 4);
+            if (index < loopActiveSegments) poly([loopPoints[index], loopPoints[index + 1]], palette.route, 8);
+          }
+          loopPoints.slice(0, -1).forEach(([x, y], index) => {
+            const active = loopProgress * 5 >= index;
+            const fill = active ? [palette.route, grayLevel(4), palette.attribute, grayLevel(3), palette.tradeoff][index] : grayLevel(2 + index % 4);
+            rect(x - 38, y - 34, 76, 68, fill, grayLevel(6), active ? 2 : 1, {
+              "data-agent-motif": "agent-loop-station",
+              "data-source-anchor-json": JSON.stringify(["agent_loop_ring"]),
+            });
+            rect(x - 22, y - 8, 18 + (index % 3) * 8, 16, grayLevel(1 + index % 4));
+            rect(x + 4, y - 8, 26, 16, grayLevel(4));
+          });
+          const packetIndex = Math.min(loopPoints.length - 2, loopActiveSegments);
+          const packetStart = loopPoints[packetIndex];
+          const packetEnd = loopPoints[packetIndex + 1];
+          const local = Math.max(0, Math.min(1, loopProgress * (loopPoints.length - 1) - packetIndex));
+          rect(packetStart[0] + (packetEnd[0] - packetStart[0]) * local - 12, packetStart[1] + (packetEnd[1] - packetStart[1]) * local - 12, 24, 24, palette.gold, grayLevel(6), 1);
+
+          rect(566, 280, 132, 104, grayLevel(1), palette.route, 3, {
+            "data-agent-motif": "model-tools-state-loop",
+            "data-source-anchor-json": JSON.stringify(["Model + Tools + State + Loop"]),
+          });
+          for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+              const fill = p > 0.24 && (row + col) % 3 === 0 ? palette.route : grayLevel(2 + ((row + col) % 4));
+              rect(586 + col * 32, 300 + row * 24, 24, 16, fill);
+            }
+          }
+          [[498, 208], [742, 198], [842, 368], [652, 530], [404, 410], [404, 226]].forEach(([x, y], index) => {
+            const active = p > 0.22 + index * 0.055;
+            const fill = active && index % 2 === 0 ? palette.attribute : grayLevel(2 + index % 4);
+            rect(x, y, 40, 40, fill, grayLevel(5), 1, {
+              "data-agent-motif": "tool-action",
+              "data-source-anchor-json": JSON.stringify(["tool action loop"]),
+            });
+            rect(x + 8, y + 8, 24, 8, grayLevel(1 + index % 4));
+            rect(x + 8, y + 24, 24, 8, grayLevel(4));
+          });
+
+          const environmentIndex = Math.max(0, Math.min(4, Math.floor(ease((p - 0.24) / 0.48) * 5)));
+          const environmentStates = ["repo", "browser", "ticket", "docs", "database"];
+          [[934,112], [1112,112], [934,268], [1112,268], [1024,436]].forEach(([x, y], index) => {
+            const active = index <= environmentIndex;
+            rect(x, y, 132, 104, grayLevel(1 + index % 5), grayLevel(5), 1, {
+              "data-agent-motif": "environment-surface",
+              "data-source-anchor-json": JSON.stringify(["environment changes"]),
+              "data-environment-state": environmentStates[index],
+            });
+            for (let row = 0; row < 3; row++) {
+              for (let col = 0; col < 4; col++) {
+                const reveal = ease((p - 0.18 - index * 0.05 - (row + col) * 0.018) / 0.18);
+                const fill = reveal > 0.62 && (row + col + index) % 5 === 0 ? palette.damage : grayLevel(2 + ((row * 2 + col + index) % 4));
+                rect(x + 12 + col * 26, y + 14 + row * 24, 18, 14, fill);
+              }
+            }
+            if (active) poly([[698, 332], [846 + index * 18, 332], [846 + index * 18, y + 52], [x, y + 52]], index % 2 === 0 ? palette.route : palette.attribute, 4);
+          });
+
+          for (let index = 0; index < 5; index++) {
+            const x = 116 + index * 96;
+            const active = p > 0.34 + index * 0.045;
+            rect(x, 578, 58, 44, active ? palette.route : grayLevel(3), grayLevel(5), 1, {
+              "data-agent-motif": "fixed-workflow-lane",
+              "data-source-anchor-json": JSON.stringify(["fixed workflow lane"]),
+            });
+            if (index > 0) poly([[x - 38, 600], [x, 600]], grayLevel(5), 3);
+          }
+          const adaptivePath = [[672, 602], [768, 560], [880, 608], [1016, 566], [1136, 610], [1224, 554], [1328, 610]];
+          adaptivePath.slice(0, -1).forEach((point, index) => {
+            poly([point, adaptivePath[index + 1]], index < Math.floor(ease((p - 0.48) / 0.34) * 6) ? palette.attribute : grayLevel(5), index < 2 ? 6 : 4);
+          });
+          adaptivePath.forEach(([x, y], index) => {
+            rect(x - 24, y - 22, 48, 44, p > 0.46 + index * 0.04 ? palette.attribute : grayLevel(2 + index % 4), grayLevel(5), 1, {
+              "data-agent-motif": "adaptive-agent-lane",
+              "data-source-anchor-json": JSON.stringify(["adaptive agent lane"]),
+            });
+          });
+          if (p > 0.60) poly([[880, 608], [934, 664], [1090, 664]], palette.tradeoff, 5);
+
+          const approvalCheckpointVisible = p > 0.68;
+          rect(1390, 252, 112, 120, approvalCheckpointVisible ? palette.tradeoff : grayLevel(3), grayLevel(6), 2, {
+            "data-agent-motif": "approval-checkpoint",
+            "data-source-anchor-json": JSON.stringify(["approval checkpoint"]),
+          });
+          rect(1414, 284, 64, 16, grayLevel(1));
+          rect(1426, 316, 40, 36, approvalCheckpointVisible ? grayLevel(5) : grayLevel(2));
+          const modelToolsStateLoopBadgeVisible = p > 0.78;
+          for (let index = 0; index < 4; index++) {
+            const x = 1332 + index * 74;
+            rect(x, 448, 60, 60, modelToolsStateLoopBadgeVisible && index === 3 ? palette.route : grayLevel(2 + index), grayLevel(5), 1, {
+              "data-agent-motif": "model-tools-state-loop-badge",
+              "data-source-anchor-json": JSON.stringify(["Model + Tools + State + Loop"]),
+            });
+            rect(x + 10, 462, 40, 8, grayLevel(1 + index % 4));
+            rect(x + 10, 482, 40, 8, grayLevel(5));
+          }
+
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 14; col++) {
+              const index = row * 14 + col;
+              const fill = index <= Math.floor(ease((p - 0.16) / 0.60) * 28) && index % 7 === 0 ? palette.route : grayLevel(2 + index % 4);
+              rect(64 + col * 52, 656 + row * 32, 42, 22, fill);
+            }
+          }
+          const agentLoopRingVisible = p > 0.08;
+          const toolActionLoopVisible = p > 0.28;
+          const fixedWorkflowLaneVisible = p > 0.34;
+          const adaptiveAgentLaneVisible = p > 0.48;
+          const queueSlots = Math.floor(ease((p - 0.14) / 0.38) * 8);
+          const workerActive = toolActionLoopVisible;
+          const retryVisible = adaptiveAgentLaneVisible;
+          const deadLetterVisible = approvalCheckpointVisible;
+          const feedbackVisible = modelToolsStateLoopBadgeVisible;
+          const workflowContrastVisible = fixedWorkflowLaneVisible && adaptiveAgentLaneVisible;
+          const closureVisible = approvalCheckpointVisible && modelToolsStateLoopBadgeVisible;
+          const visibleMechanismCount = [agentLoopRingVisible, contextPaneCount >= 3, environmentIndex >= 2, toolActionLoopVisible, workflowContrastVisible, closureVisible].filter(Boolean).length;
+          const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
+          return withCameraState({ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, systemLabels: sourceSystems, queueSlots, workerActive, retryVisible, deadLetterVisible, feedbackVisible, visibleMechanismCount, agentLoopRingVisible, contextPaneCount, environmentState: environmentStates[environmentIndex], environmentSurfaceCount: environmentIndex + 1, toolActionLoopVisible, fixedWorkflowLaneVisible, adaptiveAgentLaneVisible, approvalCheckpointVisible, modelToolsStateLoopBadgeVisible }, camera);
+        }
+        const denseMotifText = [...sourceSystems, ...(PACKAGE.strategyAnchors || []), ...(PACKAGE.sourceFacts || []), PACKAGE.title || "", PACKAGE.topic || ""].join(" ").toLowerCase();
+        const llmConceptRequested = /what is an llm|large language model|token_stream|context_window_box|transformer|autoregressive|parameter|gpu_rack|next token/.test(denseMotifText);
+        const billingConceptRequested = /llm billing|billing|credit_meter|ai credit|token cost|api cost|subscription|local gpu|pricing|cost meter/.test(denseMotifText);
+        const mcpConceptRequested = /what is an mcp|model context protocol|mcp_bus|mcp server|tools resources prompts|tools \/ resources \/ prompts|registry|allowlist|client and server|tool surface/.test(denseMotifText);
+        if (masonryRequired && (llmConceptRequested || billingConceptRequested || mcpConceptRequested)) {
+          let denseRectCounter = 0;
+          const motifId = billingConceptRequested ? "billing-cost-map" : mcpConceptRequested ? "mcp-protocol-bus" : "llm-token-transformer-map";
+          const dAttrs = (zoneIndex, mechanismId, extra = {}) => ({
+            ...zoneAttrs(zoneIndex),
+            "data-dense-systems-motif": motifId,
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          });
+          const dRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
+            const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] || extra["data-masonry-module"];
+            const boxContract = hasBoxContract ? {} : { "data-box-id": `dense-systems-module-${++denseRectCounter}` };
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
+          };
+          const dLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
+            if (progress <= 0) return;
+            const visible = [];
+            const safe = clamp(progress);
+            const target = safe * (points.length - 1);
+            for (let index = 0; index < points.length - 1; index++) {
+              const local = clamp(target - index);
+              if (local <= 0) break;
+              const a = points[index], b = points[index + 1];
+              if (visible.length === 0) visible.push(a);
+              visible.push([a[0] + (b[0] - a[0]) * local, a[1] + (b[1] - a[1]) * local]);
+              if (local < 1) break;
+            }
+            if (visible.length < 2) return;
+            el("polyline", { points: visible.map(([x, y]) => `${x},${y}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", ...extra });
+          };
+
+          const tokenLevel = Math.min(24, Math.floor(ease((p - 0.04) / 0.34) * 25));
+          const matrixLevel = Math.min(80, Math.floor(ease((p - 0.16) / 0.42) * 81));
+          const stackLevel = Math.min(8, Math.floor(ease((p - 0.28) / 0.34) * 9));
+          const meterLevel = Math.min(5, Math.floor(ease((p - 0.40) / 0.34) * 6));
+          const gateLevel = Math.min(4, Math.floor(ease((p - 0.54) / 0.28) * 5));
+          const evidenceLevel = Math.min(60, Math.floor(ease((p - 0.10) / 0.72) * 61));
+
+          [
+            [[84, 112], [360, 112], [444, 180]],
+            [[404, 360], [744, 360], [900, 252]],
+            [[948, 132], [1216, 188], [1456, 188]],
+            [[104, 612], [552, 612], [760, 548], [1000, 548]],
+          ].forEach((points, index) => dLine(points, grayLevel(5), 2, 1, dAttrs(index % 5, "dense-baseline-trace", { "data-transition-type": "circuit-signal-trace", "data-transition-id": `dense-baseline-${index}`, "data-baseline-trace": "true" })));
+
+          dRect(80, 104, 292, 260, grayLevel(2), grayLevel(5), 1, dAttrs(0, "dense-input-surface", { "data-masonry-module": "true" }));
+          dRect(404, 96, 420, 308, grayLevel(1), grayLevel(5), 1, dAttrs(1, "dense-matrix-surface", { "data-masonry-module": "true" }));
+          dRect(884, 104, 304, 278, grayLevel(3), grayLevel(5), 1, dAttrs(2, "dense-stack-surface", { "data-masonry-module": "true" }));
+          dRect(1220, 112, 300, 240, grayLevel(2), grayLevel(5), 1, dAttrs(3, "dense-policy-surface", { "data-masonry-module": "true" }));
+          dRect(84, 432, 468, 150, grayLevel(1), grayLevel(5), 1, dAttrs(4, "dense-meter-surface", { "data-masonry-module": "true" }));
+          dRect(604, 456, 468, 128, grayLevel(2), grayLevel(5), 1, dAttrs(4, "dense-feedback-surface", { "data-masonry-module": "true" }));
+
+          for (let index = 0; index < 24; index++) {
+            const row = Math.floor(index / 8);
+            const col = index % 8;
+            const active = index < tokenLevel;
+            const x = 108 + col * 30;
+            const y = 132 + row * 42;
+            const fill = active ? grayLevel(4 + ((index + row) % 2)) : grayLevel(1 + (index % 4));
+            dRect(x, y, 22, 30, fill, grayLevel(5), 1, dAttrs(0, "dense-token-stream", { "data-masonry-module": "true" }));
+            if (active && index % 6 === 0) dRect(x, y, 6, 30, palette.route, "none", 1, dAttrs(0, "dense-token-state-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+          }
+          for (let row = 0; row < 8; row++) {
+            for (let col = 0; col < 10; col++) {
+              const index = row * 10 + col;
+              const active = index < matrixLevel;
+              const strong = active && ((row === col % 8) || (row + col) % 11 === 0);
+              const fill = strong ? grayLevel(5) : active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1);
+              dRect(428 + col * 36, 122 + row * 30, 28, 22, fill, "none", 1, dAttrs(1, "dense-attention-or-tool-matrix", { "data-masonry-module": "true" }));
+              if (strong && (row + col) % 3 === 0) dRect(428 + col * 36, 122 + row * 30, 6, 22, palette.route, "none", 1, dAttrs(1, "dense-matrix-state-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+          for (let layer = 0; layer < 8; layer++) {
+            const y = 128 + layer * 30;
+            const active = layer < stackLevel;
+            const width = billingConceptRequested ? 168 + layer * 8 : mcpConceptRequested ? 228 - layer * 10 : 248 - layer * 12;
+            dRect(916, y, width, 22, active ? grayLevel(5 - (layer % 2)) : grayLevel(2 + (layer % 4)), "none", 1, dAttrs(2, "dense-layer-stack", { "data-masonry-module": "true" }));
+            if (active && layer % 2 === 0) dRect(916 + width - 8, y, 8, 22, palette.route, "none", 1, dAttrs(2, "dense-layer-active-edge", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+          }
+          for (let index = 0; index < 4; index++) {
+            const x = 1248 + index * 62;
+            const active = index < gateLevel;
+            dRect(x, 142, 46, 80, active ? grayLevel(5) : grayLevel(2 + index), grayLevel(5), 1, dAttrs(3, "dense-gate-column", { "data-masonry-module": "true" }));
+            if (active) dRect(x, 142, 8, 80, palette.route, "none", 1, dAttrs(3, "dense-gate-state-edge", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            dRect(x, 248, 46, 54, active && index >= 2 ? grayLevel(5) : grayLevel(2 + ((index + 1) % 4)), grayLevel(5), 1, dAttrs(3, "dense-policy-cell", { "data-masonry-module": "true" }));
+          }
+          for (let index = 0; index < 5; index++) {
+            const x = 120 + index * 78;
+            const boxId = `dense-meter-${index}`;
+            dRect(x, 472, 58, 74, grayLevel(2 + (index % 3)), grayLevel(5), 1, dAttrs(4, "dense-meter-shell", { "data-box-id": boxId }));
+            const filled = 74 * (index < meterLevel ? (meterLevel / 5) : 0);
+            dRect(x, 472 + 74 - filled, 58, filled, grayLevel(5), "none", 1, dAttrs(4, "dense-meter-fill", { "data-fill-for": boxId, "data-fill-axis": "y-progress" }));
+            if (filled > 0) dRect(x, 472 + 74 - filled, 58, 6, palette.route, "none", 1, dAttrs(4, "dense-meter-state-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+          }
+          for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 8; col++) {
+              const index = row * 8 + col;
+              const active = index < Math.floor(evidenceLevel / 2);
+              dRect(632 + col * 48, 480 + row * 30, 38, 22, active ? grayLevel(3 + ((row + col) % 3)) : grayLevel(1 + ((row + col) % 4)), "none", 1, dAttrs(4, "dense-feedback-grid", { "data-masonry-module": "true" }));
+              if (active && index % 7 === 0) dRect(632 + col * 48, 480 + row * 30, 6, 22, palette.route, "none", 1, dAttrs(4, "dense-feedback-state-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 30; col++) {
+              const index = row * 30 + col;
+              const active = index < evidenceLevel;
+              dRect(64 + col * 50, 640 + row * 28, 40, 18, active ? grayLevel(2 + (index % 4)) : grayLevel(1), "none", 1, dAttrs(index % 5, "dense-evidence-floor", { "data-masonry-module": "true" }));
+              if (active && index % 13 === 0) dRect(64 + col * 50, 640 + row * 28, 6, 18, palette.route, "none", 1, dAttrs(index % 5, "dense-evidence-floor-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+
+          const routeColor = billingConceptRequested ? palette.route : mcpConceptRequested ? palette.attribute : palette.route;
+          dLine([[342, 246], [428, 246], [520, 246]], routeColor, 6, ease((p - 0.08) / 0.20), dAttrs(0, "dense-primary-route", { "data-transition-type": "flow-token-route", "data-transition-id": "dense-primary-route" }));
+          dLine([[780, 246], [916, 216], [1188, 216]], routeColor, 6, ease((p - 0.32) / 0.22), dAttrs(2, "dense-stack-route", { "data-transition-type": "flow-token-route", "data-transition-id": "dense-stack-route" }));
+          dLine([[1188, 216], [1248, 182], [1488, 182]], routeColor, 5, ease((p - 0.50) / 0.22), dAttrs(3, "dense-policy-route", { "data-transition-type": "flow-token-route", "data-transition-id": "dense-policy-route" }));
+          dLine([[358, 546], [604, 520], [1032, 520]], routeColor, 5, ease((p - 0.62) / 0.22), dAttrs(4, "dense-feedback-route", { "data-transition-type": "flow-token-route", "data-transition-id": "dense-feedback-route" }));
+
+          if (billingConceptRequested) {
+            dRect(1324, 280, 168, 28, grayLevel(5), "none", 1, dAttrs(3, "billing-subscription-band", { "data-masonry-module": "true" }));
+            dRect(1324, 316, 132, 28, grayLevel(4), "none", 1, dAttrs(3, "billing-api-band", { "data-masonry-module": "true" }));
+            dRect(1324, 352, 96, 28, grayLevel(3), "none", 1, dAttrs(3, "billing-local-band", { "data-masonry-module": "true" }));
+          } else if (mcpConceptRequested) {
+            dLine([[180, 252], [520, 252], [916, 252], [1432, 252]], grayLevel(5), 8, 1, dAttrs(1, "mcp-bus-spine", { "data-transition-type": "surface-wipe", "data-transition-id": "mcp-bus-spine" }));
+            for (let index = 0; index < 6; index++) {
+              const x = 524 + index * 72;
+              dRect(x, 292, 44, 34, index < gateLevel + 2 ? grayLevel(5) : grayLevel(3), grayLevel(5), 1, dAttrs(1, "mcp-tool-resource-prompt-port", { "data-masonry-module": "true" }));
+            }
+          } else {
+            for (let index = 0; index < 6; index++) {
+              const x = 130 + index * 30;
+              const h = 22 + index * 12;
+              dRect(x, 306 - h, 22, h, index < stackLevel ? grayLevel(5) : grayLevel(3), "none", 1, dAttrs(0, "llm-probability-bars", { "data-masonry-module": "true" }));
+              if (index === Math.min(5, meterLevel)) dRect(x, 306 - h, 22, 6, palette.route, "none", 1, dAttrs(0, "llm-selected-token-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+
+          const queueSlots = tokenLevel;
+          const workerActive = stackLevel >= 4;
+          const retryVisible = gateLevel >= 2;
+          const deadLetterVisible = gateLevel >= 4;
+          const feedbackVisible = meterLevel >= 4;
+          const visibleMechanismCount = [tokenLevel >= 16, matrixLevel >= 48, stackLevel >= 6, meterLevel >= 4, gateLevel >= 3, evidenceLevel >= 36].filter(Boolean).length;
+          const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
+          return withCameraState({ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, systemLabels: sourceSystems, queueSlots, workerActive, retryVisible, deadLetterVisible, feedbackVisible, visibleMechanismCount, denseSystemsMotif: motifId, tokenLevel, matrixLevel, stackLevel, meterLevel, gateLevel, evidenceLevel, llmConceptVisible: llmConceptRequested, billingConceptVisible: billingConceptRequested, mcpConceptVisible: mcpConceptRequested }, camera);
+        }
         if (!masonryRequired) {
           el("rect", { x: 56, y: 112, width: 304, height: 488, rx: 0, fill: grayLevel(0), stroke: "none" });
           el("rect", { x: 392, y: 112, width: 504, height: 488, rx: 0, fill: grayLevel(1), stroke: "none" });
@@ -1088,37 +2038,41 @@
           label(955, 145, "CONTROL", 15, palette.muted, "start");
         }
         component(71, 222, 128, 64, systemNames[0], palette.route, grayLevel(0));
-        component(71, 327, 128, 64, systemNames[1], palette.damage, grayLevel(4));
+        component(71, 327, 128, 64, systemNames[1], palette.damage, grayLevel(2));
         component(71, 432, 128, 64, systemNames[2], palette.attribute, grayLevel(2));
         component(226, 214, 96, 272, systemNames[3], palette.route, grayLevel(3));
         component(440, 235, 130, 230, systemNames[4], "none", grayLevel(1));
         for (let i = 0; i < 8; i++) {
           const filled = i < Math.floor(ease((p - 0.18) / 0.32) * 8);
-          el("rect", { x: 440, y: 244 + i * 28, width: 128, height: 20, rx: 0, fill: filled ? palette.route : grayLevel(4) });
+          el("rect", { x: 440, y: 244 + i * 28, width: 128, height: 20, rx: 0, fill: filled ? grayLevel(5) : grayLevel(4) });
+          if (filled) el("rect", { x: 440, y: 244 + i * 28, width: 8, height: 20, rx: 0, fill: palette.route, stroke: "none" });
         }
         [262, 350, 438].forEach((y, idx) => component(625, y - 34, 180, 68, `${systemNames[5]} ${idx + 1}`, ease((p - 0.38) / 0.24) > 0.2 ? palette.defense : palette.line, grayLevel(2)));
-        component(810, 304, 102, 92, systemNames[6], palette.damage, grayLevel(4));
-        component(970, 185, 210, 70, systemNames[7], palette.damage, grayLevel(4));
-        component(970, 300, 210, 70, systemNames[8], palette.tradeoff, grayLevel(4));
+        component(810, 304, 102, 92, systemNames[6], palette.damage, grayLevel(2));
+        component(970, 185, 210, 70, systemNames[7], palette.damage, grayLevel(2));
+        component(970, 300, 210, 70, systemNames[8], palette.tradeoff, grayLevel(2));
         component(970, 420, 210, 115, systemNames[9], palette.route, grayLevel(0));
         if (masonryRequired) {
           const activeCols = Math.max(1, Math.min(8, Math.floor(ease((p - 0.44) / 0.30) * 8)));
           for (let row = 0; row < 5; row++) {
             for (let col = 0; col < 8; col++) {
               const level = 1 + ((row + col) % 4);
-              const fill = col < activeCols && (row === 1 || row === 3) ? palette.route : grayLevel(level);
+              const fill = col < activeCols && (row === 1 || row === 3) ? grayLevel(5) : grayLevel(level);
               el("rect", { x: 1212 + col * 36, y: 124 + row * 36, width: 28, height: 28, rx: 0, fill, stroke: "none" });
+              if (col < activeCols && (row === 1 || row === 3) && col % 3 === 0) el("rect", { x: 1212 + col * 36, y: 124 + row * 36, width: 6, height: 28, rx: 0, fill: palette.route, stroke: "none" });
             }
           }
           [392, 432, 472, 512, 552, 592].forEach((y, row) => {
             const barWidth = 56 + ease((p - 0.52 - row * 0.035) / 0.18) * (180 - row * 16);
-            el("rect", { x: 1212, y, width: barWidth, height: 18, rx: 0, fill: row === 1 || row === 4 ? palette.damage : grayLevel(4), stroke: "none" });
+            el("rect", { x: 1212, y, width: barWidth, height: 18, rx: 0, fill: row === 1 || row === 4 ? grayLevel(5) : grayLevel(4), stroke: "none" });
+            if (row === 1 || row === 4) el("rect", { x: 1212, y, width: 6, height: 18, rx: 0, fill: palette.route, stroke: "none" });
           });
           for (let row = 0; row < 3; row++) {
             for (let col = 0; col < 4; col++) {
               const cellOn = ease((p - 0.50 - (row + col) * 0.025) / 0.16) > 0.35;
-              const fill = cellOn && (row + col) % 3 === 0 ? palette.damage : (cellOn ? grayLevel(5) : grayLevel(3));
+              const fill = cellOn ? grayLevel((row + col) % 3 === 0 ? 5 : 4) : grayLevel(3);
               el("rect", { x: 1416 + col * 32, y: 488 + row * 32, width: 24, height: 24, rx: 0, fill, stroke: "none" });
+              if (cellOn && (row + col) % 3 === 0) el("rect", { x: 1416 + col * 32, y: 488 + row * 32, width: 6, height: 24, rx: 0, fill: palette.route, stroke: "none" });
             }
           }
         }
@@ -1448,7 +2402,7 @@
       }
       if (PACKAGE.visualPattern === "metric-dashboard") {
         const component = (x, y, w, h, nameText, stroke = palette.line, fill = grayLevel(1)) => {
-          el("rect", { x, y, width: w, height: h, rx: masonryRequired ? 0 : 14, fill, stroke, "stroke-width": 3 });
+          el("rect", { x, y, width: w, height: h, rx: 0, fill, stroke, "stroke-width": 3 });
           if (masonryRequired) {
             const rightBandX = x + w - 8;
             el("rect", { x, y, width: 8, height: h, rx: 0, fill: stroke === "none" ? grayLevel(4) : stroke, stroke: "none" });
@@ -1475,6 +2429,57 @@
           label(865, 145, "DECISION CONTEXT", 15, palette.muted, "start");
         }
         const chart = { x1: 115, y1: 190, x2: 760, y2: 520 };
+        if (masonryRequired) {
+          let metricTileCounter = 0;
+          const metricTileAttrs = (mechanismId, extra = {}) => ({
+            "data-box-id": `metric-density-tile-${++metricTileCounter}`,
+            "data-masonry-module": "true",
+            "data-zone-boundary": "flush",
+            "data-padding-policy": "zero-verified",
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          });
+          const metricTile = (x, y, width, height, fill, mechanismId, extra = {}) => {
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke: "none", ...metricTileAttrs(mechanismId, extra) });
+          };
+          const metricDensityLevel = Math.min(84, Math.floor(ease((p - 0.04) / 0.72) * 85));
+          for (let row = 0; row < 6; row++) {
+            for (let col = 0; col < 10; col++) {
+              const index = row * 10 + col;
+              const active = index < metricDensityLevel;
+              const x = chart.x1 + 26 + col * 42;
+              const y = chart.y1 + 26 + row * 28;
+              const fill = active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1);
+              metricTile(x, y, 32, 20, fill, "metric-attention-density-grid");
+              if (active && (row === col % 6 || index % 17 === 0)) {
+                metricTile(x, y, 6, 20, palette.route, "metric-attention-density-cap", { "data-semantic-glyph": "true" });
+              }
+            }
+          }
+          for (let index = 0; index < 14; index++) {
+            const active = index < Math.floor(metricDensityLevel / 4) + 2;
+            const x = 86 + index * 28;
+            const y = 132 + (index % 3) * 22;
+            metricTile(x, y, 22, 16, active ? grayLevel(3 + (index % 3)) : grayLevel(1 + (index % 4)), "metric-token-strip");
+            if (active && index % 5 === 0) metricTile(x, y, 6, 16, palette.route, "metric-token-strip-cap", { "data-semantic-glyph": "true" });
+          }
+          for (let row = 0; row < 5; row++) {
+            const y = 124 + row * 28;
+            const width = 96 + row * 38 + ease((p - 0.20 - row * 0.04) / 0.22) * 92;
+            metricTile(892, y, width, 20, grayLevel(2 + (row % 4)), "metric-right-density-bars");
+            if (row < Math.floor(ease((p - 0.24) / 0.42) * 6)) metricTile(892, y, 6, 20, palette.route, "metric-right-density-cap", { "data-semantic-glyph": "true" });
+          }
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 30; col++) {
+              const index = row * 30 + col;
+              const active = index < Math.floor(metricDensityLevel * 0.72);
+              const x = 64 + col * 50;
+              const y = 640 + row * 28;
+              metricTile(x, y, 40, 18, active ? grayLevel(2 + (index % 4)) : grayLevel(1), "metric-evidence-floor");
+              if (active && index % 12 === 0) metricTile(x, y, 6, 18, palette.route, "metric-evidence-floor-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+        }
         for (let i = 0; i < 5; i++) {
           const y = chart.y1 + i * (chart.y2 - chart.y1) / 4;
           line(chart.x1, y, chart.x2, y, grayLevel(3), 2);
@@ -1500,18 +2505,18 @@
         }
         const points = [[145,472],[230,448],[315,438],[400,402],[485,422],[570,366],[655,334],[740,300]];
         const revealed = Math.max(0, Math.min(points.length - 1, Math.floor(trendProgress * (points.length - 1))));
-        for (let i = 0; i < revealed; i++) line(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], palette.route, 8);
+        for (let i = 0; i < revealed; i++) line(points[i][0], points[i][1], points[i + 1][0], points[i + 1][1], palette.route, 4);
         if (trendProgress > 0 && trendProgress < 1) {
           const i = Math.min(points.length - 2, revealed);
           const ratio = trendProgress * (points.length - 1) - i;
           const a = points[i], b = points[i + 1];
-          line(a[0], a[1], a[0] + (b[0] - a[0]) * ratio, a[1] + (b[1] - a[1]) * ratio, palette.route, 8);
+          line(a[0], a[1], a[0] + (b[0] - a[0]) * ratio, a[1] + (b[1] - a[1]) * ratio, palette.route, 4);
         }
         const activeTrendPoint = Math.max(0, Math.min(points.length - 1, Math.floor(trendProgress * points.length)));
-        points.slice(0, activeTrendPoint + 1).forEach((d, i) => circle(d[0], d[1], 8, i === 4 ? palette.damage : palette.route, grayLevel(1), 3));
+        points.slice(0, activeTrendPoint + 1).forEach((d, i) => circle(d[0], d[1], 7, grayLevel(5), i === 4 ? palette.damage : palette.route, 3));
         if (anomalyVisible) {
           circle(485,422,30,"none",palette.damage,5);
-          component(425,225,170,60,"anomaly",palette.damage,grayLevel(4));
+          component(425,225,170,60,"anomaly",palette.damage,grayLevel(2));
           if (!masonryRequired) label(510,274,metricNames[4],14,palette.ink);
         }
         if (forecastVisible) {
@@ -1532,7 +2537,11 @@
           if (p + 0.02 < d[8]) return;
           el("rect", { x: d[0], y: d[1], width: d[2], height: d[3], rx: 0, fill: grayLevel(3), stroke: p > 0.16 ? d[6] : palette.line, "stroke-width": 2 });
           const filled = Math.max(0, Math.min(d[2], d[2] * clamp(d[7])));
-          if (filled > 0) el("rect", { x: d[0], y: d[1], width: filled, height: d[3], rx: 0, fill: d[6] });
+          if (filled > 0) {
+            el("rect", { x: d[0], y: d[1], width: filled, height: d[3], rx: 0, fill: grayLevel(5) });
+            const capX = d[0] + Math.max(0, filled - 8);
+            el("rect", { x: capX, y: d[1], width: Math.min(8, filled), height: d[3], rx: 0, fill: d[6], stroke: "none" });
+          }
           if (!masonryRequired) {
             label(d[0] + d[2] / 2, d[1] + 32, d[4], 15, palette.ink);
             label(d[0] + d[2] / 2, d[1] + 62, d[5], 13, palette.ink);
@@ -1574,6 +2583,47 @@
           const [stripX, stripY, stripW, stripH] = clusterLevelStrips[idx];
           el("rect", { x: stripX, y: stripY, width: stripW, height: stripH, rx: 0, fill: clusterLevelFills[idx], stroke: "none" });
         });
+        if (masonryRequired) {
+          let dependencyTileCounter = 0;
+          const depTileAttrs = (mechanismId, extra = {}) => ({
+            "data-box-id": `dependency-density-tile-${++dependencyTileCounter}`,
+            "data-masonry-module": "true",
+            "data-zone-boundary": "flush",
+            "data-padding-policy": "zero-verified",
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          });
+          const depTile = (x, y, width, height, fill, mechanismId, extra = {}) => {
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke: "none", ...depTileAttrs(mechanismId, extra) });
+          };
+          const dependencyDensityLevel = Math.max(42, Math.min(72, Math.floor(ease((p - 0.04) / 0.70) * 73)));
+          const dependencyCapFill = (index) => index % 3 === 0 ? palette.route : index % 3 === 1 ? palette.attribute : palette.damage;
+          for (let row = 0; row < 5; row++) {
+            for (let col = 0; col < 10; col++) {
+              const index = row * 10 + col;
+              const active = index < dependencyDensityLevel;
+              const x = 92 + col * 28;
+              const y = 472 + row * 22;
+              depTile(x, y, 20, 16, active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1), "dependency-source-ledger");
+              if (active && index % 7 === 0) depTile(x, y, 6, 16, dependencyCapFill(index), "dependency-source-ledger-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+          for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 8; col++) {
+              const index = row * 8 + col;
+              const active = index < Math.floor(dependencyDensityLevel * 0.7);
+              const x = 902 + col * 34;
+              const y = 342 + row * 26;
+              depTile(x, y, 26, 20, active ? grayLevel(2 + ((index + row) % 4)) : grayLevel(1), "dependency-policy-matrix");
+              if (active && (row === col % 4 || index % 7 === 0)) depTile(x, y, 6, 20, dependencyCapFill(index + row), "dependency-policy-matrix-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+          for (let col = 0; col < 24; col++) {
+            const active = col < Math.floor(dependencyDensityLevel / 2);
+            depTile(64 + col * 58, 650, 48, 18, active ? grayLevel(2 + (col % 4)) : grayLevel(1), "dependency-evidence-floor");
+            if (active && col % 6 === 0) depTile(64 + col * 58, 650, 6, 18, dependencyCapFill(col), "dependency-evidence-floor-cap", { "data-semantic-glyph": "true" });
+          }
+        }
         label(82, 145, clusters[0].toUpperCase(), 15, palette.muted, "start");
         label(425, 145, clusters[1].toUpperCase(), 15, palette.muted, "start");
         label(915, 145, clusters[2].toUpperCase(), 15, palette.muted, "start");
@@ -1748,6 +2798,10 @@
           "stroke-linejoin": "miter",
           opacity
         });
+        const flowBodyColor = (color) => {
+          if ([palette.route, palette.attribute, palette.damage, palette.tradeoff].includes(color)) return grayLevel(6);
+          return color;
+        };
         const pointOn = (points, progress) => {
           const safe = Math.max(0, Math.min(1, progress));
           let total = 0;
@@ -1772,7 +2826,7 @@
           return points[points.length - 1];
         };
         const node = (x, y, name, stroke, fill = grayLevel(1)) => {
-          el("rect", { x: x - 62, y: y - 34, width: 124, height: 68, rx: masonryRequired ? 0 : 16, fill, stroke, "stroke-width": 3 });
+          el("rect", { x: x - 62, y: y - 34, width: 124, height: 68, rx: 0, fill, stroke, "stroke-width": 3 });
           if (masonryRequired) {
             const leftBandX = x - 62;
             const rightBandX = x + 54;
@@ -1788,6 +2842,52 @@
         }
         const sourceFlowLabels = PACKAGE.flowLabels?.length ? PACKAGE.flowLabels : ["raw input", "accepted stream", "filtered loss", "transform A", "transform B", "merged value", "bottleneck", "final output"];
         const flowLabels = sourceFlowLabels.map((value) => compactText(value, 18));
+        if (masonryRequired) {
+          let sankeyTileCounter = 0;
+          const sankeyTileAttrs = (mechanismId, extra = {}) => ({
+            "data-box-id": `sankey-density-tile-${++sankeyTileCounter}`,
+            "data-masonry-module": "true",
+            "data-zone-boundary": "flush",
+            "data-padding-policy": "zero-verified",
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          });
+          const sankeyTile = (x, y, width, height, fill, mechanismId, extra = {}) => {
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke: "none", ...sankeyTileAttrs(mechanismId, extra) });
+          };
+          const sankeyDensityLevel = Math.min(72, Math.floor(ease((p - 0.08) / 0.70) * 73));
+          for (let row = 0; row < 6; row++) {
+            for (let col = 0; col < 12; col++) {
+              const index = row * 12 + col;
+              const active = index < sankeyDensityLevel;
+              const x = 78 + col * 40;
+              const y = 124 + row * 26;
+              sankeyTile(x, y, 30, 18, active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1), "sankey-input-density-grid");
+              if (active && index % 11 === 0) sankeyTile(x, y, 6, 18, palette.route, "sankey-input-density-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+          for (let col = 0; col < 4; col++) {
+            const x = 918 + col * 74;
+            const meterLevel = Math.min(5, Math.floor(ease((p - 0.30 - col * 0.04) / 0.34) * 6));
+            sankeyTile(x, 404, 54, 114, grayLevel(2 + col), "sankey-cost-column-shell");
+            for (let level = 0; level < 5; level++) {
+              const active = level < meterLevel;
+              const y = 492 - level * 18;
+              sankeyTile(x + 8, y, 38, 14, active ? grayLevel(5) : grayLevel(3), "sankey-cost-column-segment");
+              if (active && level === meterLevel - 1) sankeyTile(x + 8, y, 38, 6, palette.route, "sankey-cost-column-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 28; col++) {
+              const index = row * 28 + col;
+              const active = index < Math.floor(sankeyDensityLevel * 0.75);
+              const x = 64 + col * 54;
+              const y = 640 + row * 28;
+              sankeyTile(x, y, 44, 18, active ? grayLevel(2 + (index % 4)) : grayLevel(1), "sankey-evidence-floor");
+              if (active && index % 10 === 0) sankeyTile(x, y, 6, 18, palette.route, "sankey-evidence-floor-cap", { "data-semantic-glyph": "true" });
+            }
+          }
+        }
         const flows = [
           [[[190,320],[265,275],[340,235]], palette.route, 18],
           [[[190,320],[265,390],[340,435]], palette.tradeoff, 12],
@@ -1808,7 +2908,8 @@
         flows.forEach(([points, color, width], idx) => {
           const segmentProgress = Math.max(0, Math.min(1, flowProgress * flows.length - idx));
           if (segmentProgress > 0) {
-            route(points, color, width, Math.max(0.28, segmentProgress));
+            route(points, flowBodyColor(color), Math.max(4, width - 6), Math.max(0.28, segmentProgress));
+            route(points, color, 3, Math.max(0.35, segmentProgress));
             const token = pointOn(points, segmentProgress);
             circle(token[0], token[1], 8, palette.gold, palette.gold, 2);
           }
@@ -1816,21 +2917,21 @@
         [
           [130, 320, flowLabels[0], palette.route, grayLevel(2)],
           [340, 235, flowLabels[1], palette.defense, grayLevel(2)],
-          [340, 435, flowLabels[2], palette.tradeoff, grayLevel(4)],
+          [340, 435, flowLabels[2], palette.tradeoff, grayLevel(2)],
           [570, 215, flowLabels[3], palette.route, grayLevel(2)],
           [570, 365, flowLabels[4], palette.attribute, grayLevel(2)],
-          [790, 300, flowLabels[6], palette.damage, grayLevel(4)],
+          [790, 300, flowLabels[6], palette.damage, grayLevel(3)],
           [1048, 320, flowLabels[7], palette.atlas, grayLevel(2)],
         ].forEach((d) => node(d[0], d[1], d[2], d[3], d[4]));
         if (splitVisible) {
           node(340, 180, "split preserves value", palette.route, grayLevel(1));
         }
         if (lossVisible) {
-          node(340, 530, "loss is explicit", palette.tradeoff, grayLevel(4));
+          node(340, 530, "loss is explicit", palette.tradeoff, grayLevel(2));
           if (!masonryRequired) label(340, 558, flowLabels[2], 14, palette.ink);
         }
         if (bottleneckVisible) {
-          node(795, 205, "bottleneck", palette.damage, grayLevel(4));
+          node(795, 205, "bottleneck", palette.damage, grayLevel(3));
           if (!masonryRequired) label(795, 234, "limits merged flow", 14, palette.ink);
           el("ellipse", { cx: 790, cy: 300, rx: 0, ry: 0, fill: "none", stroke: palette.damage, "stroke-width": 5 });
         }
@@ -1847,7 +2948,11 @@
           const height = 66;
           el("rect", { x, y, width, height, rx: 0, fill: grayLevel(3), stroke: palette.line });
           const filled = Math.max(0, Math.min(width, width * ease(value)));
-          if (filled > 0) el("rect", { x, y, width: filled, height, rx: 0, fill: color });
+          if (filled > 0) {
+            el("rect", { x, y, width: filled, height, rx: 0, fill: grayLevel(5) });
+            const capX = x + Math.max(0, filled - 8);
+            el("rect", { x: capX, y, width: Math.min(8, filled), height, rx: 0, fill: color, stroke: "none" });
+          }
           if (!masonryRequired) label(x + width / 2, y + height / 2 + 5, name, 15, palette.ink);
         };
         meter(86, 500, "input volume", flowProgress, palette.route);
@@ -1863,18 +2968,407 @@
           const text = String(value ?? "").trim().replace(/\s+/g, " ");
           return text;
         };
+        const pluginMotifText = [
+          PACKAGE.title,
+          PACKAGE.topic,
+          ...(PACKAGE.strategyAnchors || []),
+          ...(PACKAGE.sourceFacts || []),
+          ...(PACKAGE.visualMechanisms || []),
+        ].join(" ").toLowerCase();
+        const pluginMotifRequested = /harness plugin|plugin_bundle_cube|packaged harness behavior|installable unit|marketplace|allowlist|npm package|opencode runtime|noisy plugin|versioning|team-wide install/.test(pluginMotifText);
+        const aiPlatformSignalCount = ["atlassian rovo", "gemini app", "github copilot", "claude desktop", "claude code"].filter((signal) => pluginMotifText.includes(signal)).length;
+        const aiSpecificSignalCount = ["atlassian rovo", "gemini app", "claude desktop", "workflow gravity", "home base", "radar chart", "use-case selector"].filter((signal) => pluginMotifText.includes(signal)).length;
+        const aiAlternativesMotifRequested = !pluginMotifRequested && (/what ai alternatives we have|ai alternatives/.test(pluginMotifText) || (aiPlatformSignalCount >= 2 && aiSpecificSignalCount >= 2));
+        if (masonryRequired && aiAlternativesMotifRequested) {
+          let aiRectCounter = 0;
+          const aRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
+            const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] || extra["data-masonry-module"];
+            const boxContract = hasBoxContract ? {} : { "data-box-id": `ai-alt-independent-module-${++aiRectCounter}` };
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
+          };
+          const aLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
+            if (progress <= 0) return;
+            const visible = [];
+            const safe = clamp(progress);
+            const target = safe * (points.length - 1);
+            for (let index = 0; index < points.length - 1; index++) {
+              const local = clamp(target - index);
+              if (local <= 0) break;
+              const a = points[index], b = points[index + 1];
+              if (visible.length === 0) visible.push(a);
+              visible.push([a[0] + (b[0] - a[0]) * local, a[1] + (b[1] - a[1]) * local]);
+              if (local < 1) break;
+            }
+            if (visible.length < 2) return;
+            el("polyline", { points: visible.map(([x, y]) => `${x},${y}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", ...extra });
+          };
+          const anchoredAttrs = (zoneIndex, anchors, mechanismId, extra = {}) => ({
+            ...zoneAttrs(zoneIndex),
+            "data-source-anchor": anchors.join("|"),
+            "data-source-anchor-json": JSON.stringify(anchors),
+            "data-source-anchor-count": String(anchors.length),
+            "data-ai-alternatives-motif": mechanismId,
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          });
+          const comparisonAnchors = ["comparison_grid with one strong icon per platform", "four alternatives share one modular comparison surface"];
+          const workspaceAnchors = ["Atlassian Rovo anchored to Jira Confluence organizational knowledge workspace", "Gemini App anchored to Google personal productivity workspace", "GitHub Copilot anchored to IDE GitHub coding harness workspace", "Claude Desktop Code anchored to desktop terminal research coding workspace"];
+          const fitAnchors = ["shared radar chart for knowledge personal productivity coding extensibility budgetability", "one axis turns into four use-case quadrants"];
+          const costAnchors = ["credit_meter relabeled for Rovo credits Gemini subscription Copilot AI credits Claude subscription API"];
+          const selectorAnchors = ["Choose by workflow gravity final use-case selector", "guardrails permissions observability wrap the selected workflow home"];
+
+          const comparisonGridVisible = p > 0.03;
+          const platformHomeBaseCount = Math.min(4, Math.floor(ease((p - 0.08) / 0.30) * 5));
+          const rovoWorkspaceVisible = platformHomeBaseCount >= 1;
+          const geminiWorkspaceVisible = platformHomeBaseCount >= 2;
+          const copilotWorkspaceVisible = platformHomeBaseCount >= 3;
+          const claudeWorkspaceVisible = platformHomeBaseCount >= 4;
+          const radarAxisCount = Math.min(5, Math.floor(ease((p - 0.28) / 0.30) * 6));
+          const quadrantMapVisible = p > 0.48;
+          const costMeterCount = Math.min(4, Math.floor(ease((p - 0.28) / 0.58) * 5));
+          const costMeterLevel = Math.min(4, Math.floor(ease((p - 0.30) / 0.56) * 5));
+          const workflowSelectorVisible = p > 0.68;
+          const selectedWorkflowPathVisible = p > 0.78;
+          const guardrailWrapVisible = p > 0.82;
+          const observabilityWrapVisible = p > 0.86;
+
+          [
+            [0, comparisonAnchors, "ai-comparison-trace", [[84, 92], [352, 92], [448, 148]]],
+            [1, workspaceAnchors, "ai-workspace-trace", [[404, 344], [712, 344], [872, 252]]],
+            [2, fitAnchors, "ai-fit-trace", [[944, 104], [1144, 180], [1228, 228]]],
+            [3, costAnchors, "ai-cost-trace", [[96, 616], [540, 616], [796, 542]]],
+            [4, selectorAnchors, "ai-selector-trace", [[916, 636], [1276, 636], [1420, 560]]],
+          ].forEach(([zoneIndex, anchors, traceId, points]) => {
+            aLine(points, grayLevel(5), 2, 1, anchoredAttrs(zoneIndex, anchors, traceId, { "data-transition-type": "circuit-signal-trace", "data-transition-id": traceId, "data-baseline-trace": "true" }));
+          });
+
+          const gridX = 80;
+          const gridY = 108;
+          const columnW = 92;
+          const rowH = 56;
+          for (let col = 0; col < 4; col++) {
+            for (let row = 0; row < 4; row++) {
+              let fill = grayLevel(1 + ((row + col) % 5));
+              if (col < platformHomeBaseCount && row === 0) fill = grayLevel(5);
+              if (col < platformHomeBaseCount && row === 3) fill = grayLevel(3 + (col % 3));
+              aRect(gridX + col * columnW, gridY + row * rowH, columnW, rowH, fill, grayLevel(5), 1, anchoredAttrs(0, comparisonAnchors, "comparison_grid", { "data-masonry-module": "true", "data-transition-type": "masonry-construction", "data-transition-id": "ai-alternatives-comparison-grid" }));
+              const stripeFill = col < platformHomeBaseCount && row === 3 && p > 0.58 ? palette.route : grayLevel(5);
+              aRect(gridX + col * columnW, gridY + row * rowH, 8, rowH, stripeFill, "none", 1, anchoredAttrs(0, comparisonAnchors, "platform-state-stripe", { "data-masonry-module": "true" }));
+            }
+          }
+          aRect(gridX, gridY, columnW * 4, rowH * 4, "none", grayLevel(5), 2, anchoredAttrs(0, comparisonAnchors, "comparison_grid-frame"));
+
+          const homeX = 520;
+          const homeY = 100;
+          const homes = [
+            [homeX, homeY, 168, 132, "rovo-workspace-home"],
+            [homeX + 168, homeY, 184, 132, "gemini-workspace-home"],
+            [homeX, homeY + 132, 168, 148, "copilot-workspace-home"],
+            [homeX + 168, homeY + 132, 184, 148, "claude-workspace-home"],
+          ];
+          const workspaceSignature = (index, x, y, width, height, visible, id) => {
+            const attrs = (suffix, extra = {}) => anchoredAttrs(1, workspaceAnchors, `${id}-${suffix}`, { "data-masonry-module": "true", "data-transition-type": "tile-morph", "data-transition-id": "ai-workspace-home-bases", ...extra });
+            if (index === 0) {
+              aRect(x, y, 24, height, grayLevel(5), "none", 1, attrs("knowledge-spine"));
+              aRect(x + 24, y, width - 24, 36, grayLevel(3), grayLevel(5), 1, attrs("suite-band"));
+              for (let row = 0; row < 3; row++) {
+                const bandY = y + 36 + row * 32;
+                aRect(x + 24, bandY, 72, 32, grayLevel(1 + row), grayLevel(5), 1, attrs(`knowledge-cell-a-${row}`));
+                aRect(x + 96, bandY, width - 96, 32, grayLevel(2 + row), grayLevel(5), 1, attrs(`knowledge-cell-b-${row}`));
+              }
+              aRect(x + 24, y + height - 8, (width - 24) * ease((p - 0.16) / 0.30), 8, visible ? palette.route : grayLevel(4), "none", 1, attrs("state-edge", { "data-semantic-glyph": "true" }));
+            } else if (index === 1) {
+              aRect(x, y, width / 2, height / 2, grayLevel(1), grayLevel(5), 1, attrs("quadrant-a"));
+              aRect(x + width / 2, y, width / 2, height / 2, grayLevel(3), grayLevel(5), 1, attrs("quadrant-b"));
+              aRect(x, y + height / 2, width / 2, height / 2, grayLevel(4), grayLevel(5), 1, attrs("quadrant-c"));
+              aRect(x + width / 2, y + height / 2, width / 2, height / 2, grayLevel(2), grayLevel(5), 1, attrs("quadrant-d"));
+              aRect(x + width / 2 - 8, y, 16, height, grayLevel(5), "none", 1, attrs("cross-vertical"));
+              aRect(x, y + height / 2 - 8, width, 16, grayLevel(5), "none", 1, attrs("cross-horizontal"));
+              if (visible && p > 0.34) aRect(x + width - 12, y, 12, height, palette.route, "none", 1, attrs("state-edge", { "data-semantic-glyph": "true" }));
+            } else if (index === 2) {
+              aRect(x, y, 36, height, grayLevel(5), "none", 1, attrs("repo-spine"));
+              aRect(x + 36, y, width - 36, 24, grayLevel(3), grayLevel(5), 1, attrs("ide-toolbar"));
+              for (let row = 0; row < 5; row++) {
+                const rowY = y + 24 + row * ((height - 24) / 5);
+                aRect(x + 36, rowY, width - 36, (height - 24) / 5, grayLevel(1 + ((row + 1) % 5)), grayLevel(5), 1, attrs(`code-lane-${row}`));
+                if (visible && [1, 3].includes(row)) aRect(x + 36, rowY, (width - 36) * ease((p - 0.32) / 0.32), 8, palette.route, "none", 1, attrs(`active-code-lane-${row}`, { "data-semantic-glyph": "true" }));
+              }
+              aLine([[x + 36, y + height - 28], [x + 88, y + height - 56], [x + 136, y + height - 24]], palette.route, 4, ease((p - 0.36) / 0.26), anchoredAttrs(1, workspaceAnchors, `${id}-branch-route`, { "data-transition-type": "flow-token-route", "data-transition-id": "copilot-branch-route" }));
+            } else {
+              aRect(x, y, width, 48, grayLevel(5), grayLevel(6), 1, attrs("terminal-band"));
+              for (let row = 0; row < 3; row++) {
+                aRect(x, y + 48 + row * 28, width * (0.64 + row * 0.10), 28, grayLevel(2 + row), grayLevel(5), 1, attrs(`command-row-${row}`));
+              }
+              aRect(x + width / 2, y + 48, width / 2, height - 48, grayLevel(1), grayLevel(5), 1, attrs("research-pane"));
+              aLine([[x + 112, y + 92], [x + 152, y + 76], [x + 172, y + 112], [x + 132, y + 140], [x + 96, y + 124], [x + 112, y + 92]], palette.route, 4, ease((p - 0.42) / 0.28), anchoredAttrs(1, workspaceAnchors, `${id}-loop-route`, { "data-transition-type": "circuit-signal-trace", "data-transition-id": "claude-workspace-loop" }));
+            }
+          };
+          homes.forEach(([x, y, width, height, id], index) => {
+            const visible = index < platformHomeBaseCount;
+            workspaceSignature(index, x, y, width, height, visible, id);
+            const start = [gridX + columnW * index + columnW, gridY + rowH * 2];
+            const end = [x, y + height / 2];
+            aLine([start, [start[0] + 56, start[1]], end], palette.route, 4, ease((p - 0.18 - index * 0.04) / 0.18), { "data-transition-type": "flow-token-route", "data-transition-id": "ai-platform-homebase-route", "data-preserved-geometry-id": "comparison_grid" });
+          });
+
+          const radarCx = 1000;
+          const radarCy = 238;
+          for (let index = 0; index < 5; index++) {
+            const angle = -1.5708 + index * 1.2566;
+            const endX = radarCx + Math.round((132 * Math.cos(angle)) / 4) * 4;
+            const endY = radarCy + Math.round((108 * Math.sin(angle)) / 4) * 4;
+            aLine([[radarCx, radarCy], [endX, endY]], grayLevel(5), 3, 1, anchoredAttrs(2, fitAnchors, "fit-radar-axis", { "data-transition-type": "circuit-signal-trace", "data-transition-id": "ai-fit-radar-axis" }));
+            aRect(endX - 20, endY - 16, 40, 32, index < radarAxisCount ? grayLevel(5) : grayLevel(3), grayLevel(5), 1, anchoredAttrs(2, fitAnchors, "fit-radar-axis-node", { "data-masonry-module": "true" }));
+          }
+          if (radarAxisCount >= 5) {
+            const radarPoints = [[radarCx, radarCy - 84], [radarCx + 100, radarCy - 24], [radarCx + 68, radarCy + 80], [radarCx - 68, radarCy + 76], [radarCx - 108, radarCy - 20], [radarCx, radarCy - 84]];
+            aLine(radarPoints, palette.route, 4, ease((p - 0.44) / 0.16), anchoredAttrs(2, fitAnchors, "radar-fit-polygon", { "data-transition-type": "surface-wipe", "data-transition-id": "ai-radar-fit-polygon" }));
+          }
+          const quadX = 1220;
+          const quadY = 116;
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 2; col++) {
+              const index = row * 2 + col;
+              const fill = quadrantMapVisible ? grayLevel(2 + index) : grayLevel(1 + index);
+              aRect(quadX + col * 144, quadY + row * 112, 144, 112, fill, grayLevel(5), 1, anchoredAttrs(2, fitAnchors, "use-case-quadrant-map", { "data-masonry-module": "true" }));
+              if (quadrantMapVisible && index === 2) aRect(quadX + col * 144, quadY + row * 112, 8, 112, palette.route, "none", 1, anchoredAttrs(2, fitAnchors, "use-case-selected-edge", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+          aRect(quadX, quadY + 112, 288, 8, grayLevel(5), "none", 1, anchoredAttrs(2, fitAnchors, "quadrant-crossbar", { "data-masonry-module": "true" }));
+          aRect(quadX + 144, quadY, 8, 224, grayLevel(5), "none", 1, anchoredAttrs(2, fitAnchors, "quadrant-crossbar", { "data-masonry-module": "true" }));
+
+          const meterX = 80;
+          const meterY = 420;
+          for (let index = 0; index < 4; index++) {
+            const x = meterX + index * 176;
+            const boxId = `ai-cost-meter-${index}`;
+            aRect(x, meterY, 152, 52, grayLevel(3), grayLevel(5), 1, anchoredAttrs(3, costAnchors, "credit_meter", { "data-box-id": boxId }));
+            const filledWidth = 152 * (index < costMeterCount ? costMeterLevel / 4 : 0);
+            aRect(x, meterY, filledWidth, 52, grayLevel(5), "none", 1, anchoredAttrs(3, costAnchors, "credit_meter-fill", { "data-fill-for": boxId, "data-fill-axis": "x-progress" }));
+            if (index < costMeterCount && costMeterLevel >= 3) aRect(x + Math.max(0, filledWidth - 8), meterY, 8, 52, palette.route, "none", 1, anchoredAttrs(3, costAnchors, "credit-meter-state-cap", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            aRect(x, meterY + 52, 152, 28, grayLevel(index < costMeterCount ? 5 : 3), "none", 1, anchoredAttrs(3, costAnchors, "credit-meter-bottom-band", { "data-masonry-module": "true" }));
+          }
+
+          const selectorX = 920;
+          const selectorY = 480;
+          for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 4; col++) {
+              const index = row * 4 + col;
+              let fill = grayLevel(2 + ((row + col) % 4));
+              if (workflowSelectorVisible && [1, 6, 10].includes(index)) fill = grayLevel(5);
+              if (workflowSelectorVisible && [3, 11].includes(index)) fill = grayLevel(4);
+              aRect(selectorX + col * 76, selectorY + row * 48, 68, 40, fill, grayLevel(5), 1, anchoredAttrs(4, selectorAnchors, "workflow-gravity-selector", { "data-masonry-module": "true" }));
+              if (workflowSelectorVisible && [1, 6, 10].includes(index)) aRect(selectorX + col * 76, selectorY + row * 48, 8, 40, palette.route, "none", 1, anchoredAttrs(4, selectorAnchors, "workflow-gravity-selected-edge", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+          aLine([[selectorX + 38, selectorY + 20], [selectorX + 190, selectorY + 68], [homeX + 260, homeY + 198]], palette.route, 5, selectedWorkflowPathVisible ? ease((p - 0.78) / 0.16) : 0, { "data-transition-type": "flow-token-route", "data-transition-id": "selected-workflow-gravity-path", "data-preserved-geometry-id": "workflow-gravity-selector" });
+          [[442, "guardrail-permission-wrap"], [494, "guardrail-permission-wrap"], [546, "observability-wrap"]].forEach(([y, id], row) => {
+            const visible = row < 2 ? guardrailWrapVisible : observabilityWrapVisible;
+            aRect(1260, y, 292, 52, grayLevel(2 + row), grayLevel(6), 1, anchoredAttrs(4, selectorAnchors, id, { "data-masonry-module": "true" }));
+            if (visible) aRect(1260, y, 8, 52, palette.route, "none", 1, anchoredAttrs(4, selectorAnchors, `${id}-state-edge`, { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+          });
+
+          for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 24; col++) {
+              const index = row * 24 + col;
+              const fill = grayLevel(2 + ((index + row) % 4));
+              aRect(64 + col * 64, 628 + row * 24, 52, 20, fill, "none", 1, anchoredAttrs(index % 5, [...comparisonAnchors, ...workspaceAnchors, ...fitAnchors, ...costAnchors, ...selectorAnchors], "ai-alternatives-evidence-floor", { "data-masonry-module": "true" }));
+              if (index <= Math.floor(ease((p - 0.10) / 0.70) * 55) && index % 9 === 0) aRect(64 + col * 64, 628 + row * 24, 8, 20, palette.route, "none", 1, anchoredAttrs(index % 5, [...comparisonAnchors, ...workspaceAnchors, ...fitAnchors, ...costAnchors, ...selectorAnchors], "ai-alternatives-evidence-state-edge", { "data-masonry-module": "true", "data-semantic-glyph": "true" }));
+            }
+          }
+
+          const visibleMechanismCount = [comparisonGridVisible, platformHomeBaseCount >= 4, radarAxisCount >= 5, quadrantMapVisible, costMeterCount >= 4, costMeterLevel >= 4, workflowSelectorVisible, selectedWorkflowPathVisible, guardrailWrapVisible, observabilityWrapVisible].filter(Boolean).length;
+          const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
+          return withCameraState({ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, laneLabels: PACKAGE.laneLabels || [], handoffLabels: PACKAGE.handoffLabels || [], comparisonGridVisible, platformHomeBaseCount, rovoWorkspaceVisible, geminiWorkspaceVisible, copilotWorkspaceVisible, claudeWorkspaceVisible, radarAxisCount, quadrantMapVisible, costMeterCount, costMeterLevel, workflowSelectorVisible, selectedWorkflowPathVisible, guardrailWrapVisible, observabilityWrapVisible, visibleMechanismCount }, camera);
+        }
+        if (masonryRequired && pluginMotifRequested) {
+          let pluginRectCounter = 0;
+          const pRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
+            const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] || extra["data-masonry-module"];
+            const boxContract = hasBoxContract ? {} : { "data-box-id": `plugin-independent-module-${++pluginRectCounter}` };
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra });
+          };
+          const pLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
+            if (progress <= 0) return;
+            const visible = [];
+            const safe = clamp(progress);
+            const target = safe * (points.length - 1);
+            for (let index = 0; index < points.length - 1; index++) {
+              const local = clamp(target - index);
+              if (local <= 0) break;
+              const a = points[index], b = points[index + 1];
+              if (visible.length === 0) visible.push(a);
+              visible.push([a[0] + (b[0] - a[0]) * local, a[1] + (b[1] - a[1]) * local]);
+              if (local < 1) break;
+            }
+            if (visible.length < 2) return;
+            el("polyline", { points: visible.map(([x, y]) => `${x},${y}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", ...extra });
+          };
+          const anchoredAttrs = (zoneIndex, anchors, mechanismId, extra = {}) => ({
+            ...zoneAttrs(zoneIndex),
+            "data-source-anchor": anchors.join("|"),
+            "data-source-anchor-json": JSON.stringify(anchors),
+            "data-source-anchor-count": String(anchors.length),
+            "data-plugin-motif": mechanismId,
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          });
+          const pluginBundleCubeVisible = p > 0.03;
+          const bundleBlockCount = Math.min(9, Math.floor(ease((p - 0.03) / 0.24) * 10));
+          const bundleOpenedVisible = p > 0.18;
+          const bundleModuleCount = Math.min(5, Math.floor(ease((p - 0.22) / 0.24) * 6));
+          const githubManifestCardVisible = p > 0.32;
+          const claudeMarketplaceGateVisible = p > 0.42;
+          const opencodeNpmRuntimeDropVisible = p > 0.52;
+          const providerSurfaceCount = [githubManifestCardVisible, claudeMarketplaceGateVisible, opencodeNpmRuntimeDropVisible].filter(Boolean).length;
+          const teamInstallFanoutVisible = p > 0.60;
+          const installFanoutCount = Math.min(6, Math.floor(ease((p - 0.60) / 0.22) * 7));
+          const versionUpgradeVisible = p > 0.66;
+          const versionLevel = Math.min(4, Math.floor(ease((p - 0.66) / 0.22) * 5));
+          const governanceGateVisible = p > 0.56;
+          const goodBadPluginSplitVisible = p > 0.72;
+          const noisyPluginRiskVisible = p > 0.66;
+          const noisyToolCount = Math.min(6, Math.floor(ease((p - 0.64) / 0.32) * 7));
+          const costMeterLevel = Math.min(4, Math.floor(ease((p - 0.64) / 0.32) * 5));
+          const packageInstallVisible = p > 0.84;
+          const packagedBehaviorStampVisible = p > 0.86;
+
+          const bundleAnchors = ["plugin_bundle_cube assembles from smaller installable blocks", "Plugin = packaged harness behavior final package-install stamp"];
+          const moduleAnchors = ["detachable runtime modules reveal skills hooks MCP config agent-profile and tools"];
+          const providerAnchors = ["GitHub plugin manifest card with agents skills hooks and MCP configuration", "Claude marketplace lane with allowlist governance gate", "OpenCode npm package drops into runtime event surface"];
+          const governanceAnchors = ["team-wide install fanout standardizes approved behavior", "versioning and upgrade arrows govern the same plugin pack"];
+          const riskAnchors = ["good plugin versus noisy plugin split exposes cost and context risk", "flow-tokens circuit-signal-traces masonry-wall risk-bowtie dependency-map"];
+
+          [
+            [0, bundleAnchors, "plugin-baseline-bundle-trace", [[80, 96], [312, 96], [420, 132]]],
+            [1, moduleAnchors, "plugin-baseline-module-trace", [[360, 324], [740, 324], [820, 252]]],
+            [2, providerAnchors, "plugin-baseline-provider-trace", [[820, 636], [1144, 636], [1216, 596]]],
+            [3, governanceAnchors, "plugin-baseline-governance-trace", [[1184, 420], [1500, 420], [1576, 468]]],
+          ].forEach(([zoneIndex, anchors, traceId, points]) => {
+            pLine(points, grayLevel(5), 2, 1, anchoredAttrs(zoneIndex, anchors, traceId, { "data-transition-type": "circuit-signal-trace", "data-transition-id": traceId, "data-baseline-trace": "true" }));
+          });
+
+          const bundleX = 112;
+          const bundleY = 128;
+          for (let index = 0; index < 9; index++) {
+            const col = index % 3;
+            const row = Math.floor(index / 3);
+            const entry = 1 - ease((p - 0.03 - index * 0.018) / 0.12);
+            const x = bundleX + col * 64 - 72 * Math.max(0, entry);
+            const y = bundleY + row * 56 + (index % 2 ? 40 : -40) * Math.max(0, entry);
+            let fill = index < bundleBlockCount && [0, 4, 8].includes(index) ? palette.route : grayLevel(2 + (index % 4));
+            if (index < bundleBlockCount && index === 5) fill = palette.attribute;
+            pRect(x, y, 56, 48, fill, grayLevel(5), 1, anchoredAttrs(0, bundleAnchors, "plugin_bundle_cube", { "data-transition-type": "masonry-construction", "data-transition-id": "plugin-bundle-assembly", "data-transition-phase": index < bundleBlockCount ? "fitted" : "entering" }));
+            pRect(x, y, 10, 48, grayLevel(5), "none", 1, anchoredAttrs(0, bundleAnchors, "plugin_bundle_cube-edge"));
+            pRect(x + 18, y + 16, 26, 8, grayLevel(1 + (index % 4)), "none", 1, anchoredAttrs(0, bundleAnchors, "plugin_bundle_cube-mark"));
+          }
+          pRect(104, 120, 208, 184, "none", pluginBundleCubeVisible ? palette.route : grayLevel(5), pluginBundleCubeVisible ? 4 : 1, anchoredAttrs(0, bundleAnchors, "plugin_bundle_cube-frame"));
+          pLine([[312, 212], [420, 212], [468, 220]], palette.route, 6, ease((p - 0.18) / 0.16), { "data-transition-type": "flow-token-route", "data-transition-id": "bundle-to-open-pack", "data-preserved-geometry-id": "plugin_bundle_cube" });
+
+          pRect(468, 112, 272, 184, grayLevel(1), grayLevel(5), 1, anchoredAttrs(1, moduleAnchors, "detachable_runtime_modules"));
+          pRect(468 - 52 * ease((p - 0.18) / 0.18), 112, 52, 184, bundleOpenedVisible ? palette.route : grayLevel(3), grayLevel(5), 1, anchoredAttrs(1, moduleAnchors, "bundle-open-left", { "data-transition-type": "tile-morph", "data-transition-id": "bundle-opens" }));
+          pRect(688 + 52 * ease((p - 0.18) / 0.18), 112, 52, 184, grayLevel(5), grayLevel(6), 1, anchoredAttrs(1, moduleAnchors, "bundle-open-right", { "data-transition-type": "tile-morph", "data-transition-id": "bundle-opens" }));
+          [[500, 140, 64, 52], [580, 140, 84, 52], [500, 208, 72, 52], [592, 208, 72, 52], [676, 172, 44, 80]].forEach(([x, y, width, height], index) => {
+            let fill = index < bundleModuleCount && [0, 3].includes(index) ? palette.route : index < bundleModuleCount && index === 4 ? palette.attribute : grayLevel(2 + (index % 4));
+            pRect(x, y, width, height, fill, grayLevel(5), 1, anchoredAttrs(1, moduleAnchors, "detachable_runtime_modules", { "data-transition-type": "tile-morph", "data-transition-id": "bundle-module-reveal" }));
+            pRect(x, y, 8, height, grayLevel(5), "none", 1, anchoredAttrs(1, moduleAnchors, "detachable-module-edge"));
+            pRect(x + 16, y + 16, Math.max(16, width - 32), 8, grayLevel(1 + (index % 4)), "none", 1, anchoredAttrs(1, moduleAnchors, "detachable-module-mark"));
+          });
+
+          const providerX = 880;
+          [108, 284, 460].forEach((y, surfaceIndex) => {
+            pRect(providerX, y, 264, 132, grayLevel(1 + surfaceIndex), grayLevel(5), 1, anchoredAttrs(2, providerAnchors, "provider_package_surfaces"));
+            const edgeFill = [palette.route, palette.damage, palette.attribute][surfaceIndex];
+            pRect(providerX, y, 16, 132, providerSurfaceCount > surfaceIndex ? edgeFill : grayLevel(5), "none", 1, anchoredAttrs(2, providerAnchors, "provider-surface-edge"));
+          });
+          for (let row = 0; row < 5; row++) {
+            const width = 172 - row * 18;
+            const fill = githubManifestCardVisible && [1, 3].includes(row) ? palette.route : grayLevel(2 + (row % 4));
+            pRect(providerX + 40, 132 + row * 18, width, 12, fill, "none", 1, anchoredAttrs(2, [providerAnchors[0]], "github_manifest_card"));
+            pRect(providerX + 224, 130 + row * 18, 20, 16, grayLevel(githubManifestCardVisible && [1, 3].includes(row) ? 5 : 3), "none", 1, anchoredAttrs(2, [providerAnchors[0]], "github_manifest_check"));
+          }
+          const gateClose = ease((p - 0.42) / 0.20);
+          pRect(providerX + 42, 318, 148, 44, grayLevel(2), grayLevel(5), 1, anchoredAttrs(2, [providerAnchors[1]], "claude_marketplace_lane"));
+          pRect(providerX + 208, 300, 28, 96, claudeMarketplaceGateVisible ? palette.damage : grayLevel(4), grayLevel(6), 1, anchoredAttrs(2, [providerAnchors[1]], "claude_allowlist_gate"));
+          pRect(providerX + 42, 318, 166 * gateClose, 12, palette.attribute, "none", 1, anchoredAttrs(2, [providerAnchors[1]], "marketplace_allowlist_wipe", { "data-transition-type": "surface-wipe", "data-transition-id": "plugin-allowlist-gate" }));
+          pRect(providerX + 42, 350, 166 * gateClose, 12, palette.attribute, "none", 1, anchoredAttrs(2, [providerAnchors[1]], "marketplace_allowlist_wipe", { "data-transition-type": "surface-wipe", "data-transition-id": "plugin-allowlist-gate" }));
+          const drop = ease((p - 0.52) / 0.22);
+          pRect(providerX + 70, 420 + 92 * drop, 76, 52, opencodeNpmRuntimeDropVisible ? palette.route : grayLevel(3), grayLevel(5), 1, anchoredAttrs(2, [providerAnchors[2]], "opencode_npm_package_drop", { "data-transition-type": "flow-token-route", "data-transition-id": "npm-package-drop" }));
+          pRect(providerX + 48, 538, 184, 42, grayLevel(3), grayLevel(5), 1, anchoredAttrs(2, [providerAnchors[2]], "opencode_runtime_slot"));
+          pRect(providerX + 48, 538, 184 * drop, 42, palette.attribute, "none", 1, anchoredAttrs(2, [providerAnchors[2]], "opencode_runtime_fill"));
+
+          const govX = 1220;
+          const govY = 116;
+          pRect(govX, govY, 128, 112, teamInstallFanoutVisible ? palette.route : grayLevel(3), grayLevel(6), 2, anchoredAttrs(3, governanceAnchors, "team_install_versioning"));
+          for (let index = 0; index < 6; index++) {
+            const x = govX + 204 + (index % 3) * 88;
+            const y = govY + Math.floor(index / 3) * 88;
+            const fill = index < installFanoutCount ? palette.route : grayLevel(2 + (index % 4));
+            pRect(x, y, 56, 48, fill, grayLevel(5), 1, anchoredAttrs(3, [governanceAnchors[0]], "team_install_fanout"));
+            pLine([[govX + 128, govY + 56], [x, y + 24]], index < installFanoutCount ? palette.route : grayLevel(5), 3, ease((p - 0.60 - index * 0.02) / 0.12), { "data-transition-type": "flow-token-route", "data-transition-id": "team-install-fanout" });
+          }
+          for (let index = 0; index < 4; index++) {
+            const y = govY + 228 + index * 42;
+            const fill = index < versionLevel ? palette.attribute : grayLevel(2 + index);
+            pRect(govX, y, 220, 26, fill, grayLevel(5), 1, anchoredAttrs(3, [governanceAnchors[1]], "versioning_upgrade_arrows"));
+            pLine([[govX + 236, y + 13], [govX + 300, y + 13]], fill, 4, ease((p - 0.66 - index * 0.035) / 0.12), { "data-transition-type": "circuit-signal-trace", "data-transition-id": "plugin-version-upgrade" });
+          }
+          pRect(govX + 324, govY + 220, 36, 210, governanceGateVisible ? palette.damage : grayLevel(4), grayLevel(6), 1, anchoredAttrs(3, governanceAnchors, "governance_gate"));
+          for (let slot = 0; slot < 5; slot++) {
+            pRect(govX + 332, govY + 238 + slot * 36, 20, 24, slot < versionLevel ? palette.route : grayLevel(2 + slot), "none", 1, anchoredAttrs(3, governanceAnchors, "governance_gate_state"));
+          }
+
+          const splitX = 1216;
+          const splitY = 468;
+          pRect(splitX, splitY, 148, 132, grayLevel(2), grayLevel(5), 1, anchoredAttrs(4, riskAnchors, "good_bad_plugin_split"));
+          pRect(splitX + 188, splitY, 148, 132, goodBadPluginSplitVisible ? grayLevel(4) : grayLevel(2), goodBadPluginSplitVisible ? palette.damage : grayLevel(5), 1, anchoredAttrs(4, riskAnchors, "noisy_plugin_risk"));
+          for (let index = 0; index < 5; index++) {
+            pRect(splitX + 20, splitY + 20 + index * 20, 78 - index * 8, 10, goodBadPluginSplitVisible && index < 3 ? palette.route : grayLevel(3 + (index % 3)), "none", 1, anchoredAttrs(4, [riskAnchors[0]], "efficient-defaults-lane"));
+          }
+          for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+              const index = row * 3 + col;
+              const fill = index < noisyToolCount ? palette.damage : grayLevel(2 + (index % 4));
+              pRect(splitX + 208 + col * 36, splitY + 18 + row * 32, 28, 24, fill, "none", 1, anchoredAttrs(4, [riskAnchors[0]], "noisy-tool-spread"));
+            }
+          }
+          pRect(splitX + 20, splitY + 152, 316, 36, grayLevel(3), grayLevel(5), 1, anchoredAttrs(4, riskAnchors, "cost-meter"));
+          pRect(splitX + 20, splitY + 152, 316 * (costMeterLevel / 4), 36, costMeterLevel >= 3 ? palette.damage : palette.attribute, "none", 1, anchoredAttrs(4, riskAnchors, "cost-meter-fill"));
+
+          if (packageInstallVisible) {
+            pRect(420, 556, 180, 64, grayLevel(5), grayLevel(6), 1, anchoredAttrs(0, bundleAnchors, "packaged_behavior_stamp"));
+            for (let index = 0; index < 4; index++) {
+              pRect(420 + index * 45, 556, 45, 64, [0, 2].includes(index) ? palette.route : grayLevel(2 + index), grayLevel(6), 1, anchoredAttrs(0, bundleAnchors, "packaged_behavior_stamp-state"));
+            }
+            pLine([[600, 588], [712, 588], [776, 540], [860, 540]], palette.route, 7, ease((p - 0.84) / 0.14), { "data-transition-type": "flow-token-route", "data-transition-id": "package-install-reuse" });
+            pRect(860, 508, 172, 72, grayLevel(1), palette.route, 3, anchoredAttrs(0, bundleAnchors, "package_install_runtime"));
+          }
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 24; col++) {
+              const index = row * 24 + col;
+              let fill = index <= Math.floor(ease((p - 0.18) / 0.58) * 42) && index % 8 === 0 ? palette.route : grayLevel(2 + (index % 4));
+              if (index % 13 === 0 && p > 0.62) fill = palette.attribute;
+              if (index % 17 === 0 && p > 0.74) fill = palette.damage;
+              pRect(64 + col * 64, 652 + row * 24, 52, 16, fill, "none", 1, anchoredAttrs(index % 5, [...bundleAnchors, ...moduleAnchors, ...providerAnchors, ...governanceAnchors, ...riskAnchors], "plugin-evidence-floor"));
+            }
+          }
+          const visibleMechanismCount = [pluginBundleCubeVisible, bundleOpenedVisible, providerSurfaceCount >= 3, teamInstallFanoutVisible, versionUpgradeVisible, governanceGateVisible, goodBadPluginSplitVisible, noisyPluginRiskVisible, packageInstallVisible, packagedBehaviorStampVisible].filter(Boolean).length;
+          const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
+          return withCameraState({ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, laneLabels: PACKAGE.laneLabels || [], handoffLabels: PACKAGE.handoffLabels || [], pluginBundleCubeVisible, bundleBlockCount, bundleOpenedVisible, bundleModuleCount, githubManifestCardVisible, claudeMarketplaceGateVisible, opencodeNpmRuntimeDropVisible, providerSurfaceCount, teamInstallFanoutVisible, installFanoutCount, versionUpgradeVisible, versionLevel, governanceGateVisible, goodBadPluginSplitVisible, noisyPluginRiskVisible, noisyToolCount, costMeterLevel, packageInstallVisible, packagedBehaviorStampVisible, visibleMechanismCount }, camera);
+        }
         const sourceLaneLabels = PACKAGE.laneLabels?.length ? PACKAGE.laneLabels : ["requester", "intake", "review", "delivery"];
         const sourceHandoffLabels = PACKAGE.handoffLabels?.length ? PACKAGE.handoffLabels : ["request", "triage", "analysis", "approval", "rework", "escalation", "release", "complete"];
         const laneLabels = sourceLaneLabels.map((value) => compactText(value, 18));
         const handoffLabels = sourceHandoffLabels.map((value) => compactText(value, 15));
-        el("rect", { x: 36, y: 116, width: 1208, height: 476, rx: 0, fill: grayLevel(1), stroke: "none", "stroke-width": 2 });
+        el("rect", { x: 36, y: 116, width: 1208, height: 476, rx: 0, fill: grayLevel(1), stroke: "none", "stroke-width": 2, "data-masonry-module": "true", "data-box-id": "swimlane-generic-base" });
+        el("rect", { x: 36, y: 116, width: 1208, height: 476, rx: 0, fill: grayLevel(1), stroke: "none", "data-fill-for": "swimlane-generic-base", "data-fill-axis": "full-module" });
         const laneY = [150, 265, 380, 495];
         const laneColors = [grayLevel(2), grayLevel(2), grayLevel(2), grayLevel(2)];
         const laneStrokes = [palette.route, palette.defense, palette.attribute, palette.atlas];
-        el("rect", { x: 36, y: 116, width: 40, height: 476, rx: 0, fill: grayLevel(5), stroke: "none" });
+        el("rect", { x: 36, y: 116, width: 40, height: 476, rx: 0, fill: grayLevel(5), stroke: "none", "data-masonry-module": "true" });
         laneY.forEach((y, idx) => {
-          el("rect", { x: 64, y: y - 38, width: 1152, height: 76, rx: 0, fill: laneColors[idx], stroke: "none" });
-          el("rect", { x: 1192, y: y - 38, width: 24, height: 76, rx: 0, fill: grayLevel(idx + 2), stroke: "none" });
+          el("rect", { x: 64, y: y - 38, width: 1152, height: 76, rx: 0, fill: laneColors[idx], stroke: "none", "data-masonry-module": "true" });
+          el("rect", { x: 1192, y: y - 38, width: 24, height: 76, rx: 0, fill: grayLevel(idx + 2), stroke: "none", "data-masonry-module": "true" });
           label(92, y + 5, laneLabels[idx], 16, laneStrokes[idx], "start");
           line(170, y - 36, 170, y + 36, grayLevel(3), 2);
         });
@@ -1905,24 +3399,24 @@
           polyline([[x1 + 54, y1], [(x1 + x2) / 2, y1], [(x1 + x2) / 2, y2], [x2 - 54, y2]], active ? palette.route : palette.line, active ? 5 : 3);
         });
         const node = (x, y, labelValue, stroke, active) => {
-          el("rect", { x: x - 56, y: y - 28, width: 112, height: 56, rx: 0, fill: active ? grayLevel(1) : grayLevel(2), stroke: active ? stroke : grayLevel(3), "stroke-width": active ? 3 : 2 });
+          el("rect", { x: x - 56, y: y - 28, width: 112, height: 56, rx: 0, fill: active ? grayLevel(1) : grayLevel(2), stroke: active ? stroke : grayLevel(3), "stroke-width": active ? 3 : 2, "data-masonry-module": "true" });
           label(x, y + 5, labelValue, 14, palette.ink);
           if (active) el("circle", { cx: x - 54, cy: y - 26, r: 8, fill: stroke });
         };
         positions.forEach(([x, y, lane], idx) => node(x, y, handoffLabels[idx], laneStrokes[lane], idx < activeHandoffCount));
         if (reworkVisible) {
           polyline([[645, laneY[2] + 38], [610, laneY[2] + 92], [505, laneY[1] + 104], [505, laneY[1] + 40]], palette.tradeoff, 6);
-          el("rect", { x: 418, y: laneY[1] + 88, width: 174, height: 54, rx: 0, fill: grayLevel(4), stroke: palette.tradeoff, "stroke-width": 3 });
+          el("rect", { x: 418, y: laneY[1] + 88, width: 174, height: 54, rx: 0, fill: grayLevel(4), stroke: palette.tradeoff, "stroke-width": 3, "data-masonry-module": "true" });
           label(505, laneY[1] + 120, "rework loop", 16, palette.tradeoff);
         }
         if (slaVisible) {
           const width = 272;
           const height = 70;
           const filled = Math.max(0, Math.min(width, width * ease((p - 0.20) / 0.34)));
-          el("rect", { x: 884, y: 142, width, height, rx: 0, fill: grayLevel(3), stroke: palette.line });
+          el("rect", { x: 884, y: 142, width, height, rx: 0, fill: grayLevel(3), stroke: palette.line, "data-masonry-module": "true" });
           if (filled > 0) el("rect", { x: 884, y: 142, width: filled, height, rx: 0, fill: palette.damage });
           label(884 + width / 2, 142 + height / 2 + 5, "SLA pressure", 15, palette.ink);
-          el("rect", { x: 720, y: 128, width: 132, height: 56, rx: 0, fill: grayLevel(4), stroke: palette.damage, "stroke-width": 3 });
+          el("rect", { x: 720, y: 128, width: 132, height: 56, rx: 0, fill: grayLevel(4), stroke: palette.damage, "stroke-width": 3, "data-masonry-module": "true" });
           label(786, 162, "SLA gate", 16, palette.damage);
         }
         if (approvalVisible) {
@@ -1931,11 +3425,11 @@
         }
         if (escalationVisible) {
           polyline([[785, laneY[2] - 38], [820, laneY[1] - 54], [950, laneY[1] - 54], [1010, laneY[2] - 20]], palette.tradeoff, 6);
-          el("rect", { x: 872, y: laneY[1] - 88, width: 183, height: 60, rx: 0, fill: grayLevel(4), stroke: palette.tradeoff, "stroke-width": 3 });
+          el("rect", { x: 872, y: laneY[1] - 88, width: 183, height: 60, rx: 0, fill: grayLevel(4), stroke: palette.tradeoff, "stroke-width": 3, "data-masonry-module": "true" });
           label(964, laneY[1] - 52, "escalation path", 16, palette.tradeoff);
         }
         if (completeVisible) {
-          el("rect", { x: 1020, y: 548, width: 172, height: 36, rx: 0, fill: grayLevel(2), stroke: palette.defense, "stroke-width": 3 });
+          el("rect", { x: 1020, y: 548, width: 172, height: 36, rx: 0, fill: grayLevel(2), stroke: palette.defense, "stroke-width": 3, "data-masonry-module": "true" });
           label(1107, 572, "completed handoff", 16, palette.defense);
         }
         const visibleMechanismCount = [activeHandoffCount >= 4, slaVisible, reworkVisible, approvalVisible, escalationVisible, completeVisible].filter(Boolean).length;
@@ -1951,6 +3445,186 @@
         const sourceThreatLabels = PACKAGE.threatLabels?.length ? PACKAGE.threatLabels : ["threat A", "threat B", "threat C", "threat D"];
         const sourceBarrierLabels = PACKAGE.barrierLabels?.length ? PACKAGE.barrierLabels : ["detect", "validate", "isolate", "contain", "recover", "learn"];
         const sourceConsequenceLabels = PACKAGE.consequenceLabels?.length ? PACKAGE.consequenceLabels : ["impact A", "impact B", "impact C", "impact D"];
+        const guardrailMotifText = [
+          PACKAGE.title,
+          PACKAGE.topic,
+          ...(PACKAGE.strategyAnchors || []),
+          ...sourceThreatLabels,
+          ...sourceBarrierLabels,
+          ...sourceConsequenceLabels,
+        ].join(" ").toLowerCase();
+        const guardrailMotifRequested = /shield_gate|agent_loop_ring|input\s*\/\s*output\s*\/\s*action|model armor|risk_score|human approval|policy matrix|guardrail/.test(guardrailMotifText);
+        if (masonryRequired && guardrailMotifRequested) {
+          const gRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {}) => {
+            el("rect", { x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...extra });
+          };
+          const gLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {}) => {
+            if (progress <= 0) return;
+            const safe = clamp(progress);
+            const visible = points.map(([x, y]) => [x, y]);
+            if (safe < 1 && points.length > 1) {
+              const end = points[Math.max(1, Math.floor((points.length - 1) * safe))];
+              visible.splice(Math.max(2, visible.length - 1), visible.length, end);
+            }
+            el("polyline", { points: visible.map(([x, y]) => `${x},${y}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", ...extra });
+          };
+          const stateProgress = ease((p - 0.04) / 0.78);
+          const activeThreatCount = Math.min(4, Math.floor(ease((p - 0.08) / 0.48) * 4 + 0.999));
+          const guardrailShieldGateVisible = p > 0.06;
+          const inputGateVisible = p > 0.14;
+          const outputGateVisible = p > 0.22;
+          const actionGateVisible = p > 0.30;
+          const promptInspectionActive = p > 0.18;
+          const outputInspectionActive = p > 0.26;
+          const toolCallInspectionActive = p > 0.34;
+          const riskScoreVisible = p > 0.34;
+          const riskScoreLevel = Math.min(4, Math.floor(ease((p - 0.34) / 0.34) * 5));
+          const policyMatrixVisible = p > 0.42;
+          const blockStateActive = p > 0.50;
+          const redactStateActive = p > 0.38;
+          const routeStateActive = p > 0.46;
+          const escalateStateActive = p > 0.58;
+          const humanApprovalRequired = p > 0.62;
+          const positiveCasePasses = p > 0.72;
+          const blockedCaseStops = p > 0.50;
+          const secretRiskActive = p > 0.56;
+          const destructiveCommandRiskActive = p > 0.62;
+          const deployRiskActive = p > 0.66;
+          const safetyFrictionBalanceVisible = p > 0.78;
+          const preventiveVisible = inputGateVisible && outputGateVisible;
+          const topEventVisible = guardrailShieldGateVisible;
+          const mitigativeVisible = policyMatrixVisible;
+          const consequenceVisible = blockedCaseStops;
+          const degradedVisible = secretRiskActive || destructiveCommandRiskActive || deployRiskActive;
+          const actionVisible = humanApprovalRequired;
+
+          const loop = [[540,164],[700,164],[784,316],[700,468],[540,468],[456,316],[540,164]];
+          loop.slice(0, -1).forEach((point, index) => gLine([point, loop[index + 1]], grayLevel(5), 4, 1, { "data-mechanism-id": "agent_loop_ring", "data-semantic-role": "connector" }));
+          gLine(loop, palette.route, 8, ease((p - 0.06) / 0.40), { "data-mechanism-id": "agent_loop_ring", "data-semantic-role": "mechanism-mark", "data-source-anchor-json": JSON.stringify(["agent_loop_ring"]) });
+          loop.slice(0, -1).forEach(([x, y], index) => {
+            const loopNodeActive = index <= activeThreatCount + 1 && index % 3 === 0;
+            const fill = loopNodeActive ? grayLevel(5) : grayLevel(2 + index % 4);
+            gRect(x - 30, y - 28, 60, 56, fill, grayLevel(5), 1, { "data-mechanism-id": "agent_loop_ring", "data-semantic-role": "state-mark" });
+            if (loopNodeActive) gRect(x - 30, y - 28, 8, 56, palette.route, "none", 1, { "data-mechanism-id": "agent_loop_ring_active_edge", "data-semantic-role": "state-mark" });
+          });
+          gRect(584, 268, 112, 96, grayLevel(1), palette.route, 3, { "data-mechanism-id": "agent_core", "data-semantic-role": "mechanism-mark" });
+          for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+              const cellActive = row + col <= activeThreatCount;
+              const fill = cellActive ? grayLevel(5) : grayLevel(2 + ((row + col) % 4));
+              gRect(604 + col * 26, 288 + row * 22, 18, 14, fill, "none", 1, { "data-mechanism-id": "agent_core", "data-semantic-role": "state-mark" });
+              if (cellActive) gRect(604 + col * 26, 288 + row * 22, 5, 14, palette.route, "none", 1, { "data-mechanism-id": "agent_core_active_edge", "data-semantic-role": "state-mark" });
+            }
+          }
+
+          const gateClose = ease((p - 0.08) / 0.22);
+          const shieldLeftX = 424 + 56 * (1 - gateClose);
+          const shieldRightX = 828 - 56 * (1 - gateClose);
+          gRect(shieldLeftX, 116, 28, 408, grayLevel(5), grayLevel(5), 1, { "data-mechanism-id": "shield_gate", "data-semantic-role": "mechanism-mark", "data-source-anchor-json": JSON.stringify(["shield_gate around the agent_loop_ring"]) });
+          gRect(shieldRightX, 116, 28, 408, grayLevel(5), grayLevel(5), 1, { "data-mechanism-id": "shield_gate", "data-semantic-role": "mechanism-mark" });
+          gRect(shieldLeftX, 116, 8, 408, palette.damage, "none", 1, { "data-mechanism-id": "shield_gate_accent", "data-semantic-role": "state-mark" });
+          gRect(shieldRightX + 20, 116, 8, 408, palette.damage, "none", 1, { "data-mechanism-id": "shield_gate_accent", "data-semantic-role": "state-mark" });
+          gRect(424, 116, 432 * gateClose, 20, palette.attribute, "none", 1, { "data-transition-id": "shield-close", "data-transition-type": "surface-wipe", "data-transition-phase": guardrailShieldGateVisible ? "active" : "entering", "data-preserved-geometry-id": "agent-loop-ring" });
+          gRect(424, 504, 432 * gateClose, 20, palette.attribute, "none", 1, { "data-transition-id": "shield-close", "data-transition-type": "surface-wipe", "data-transition-phase": guardrailShieldGateVisible ? "active" : "entering", "data-preserved-geometry-id": "agent-loop-ring" });
+
+          [[164, inputGateVisible, palette.route, "input_gate"], [292, outputGateVisible, palette.attribute, "output_gate"], [420, actionGateVisible, palette.damage, "action_gate"]].forEach(([y, visible, color, id], index) => {
+            gRect(96, y - 34, 140, 68, grayLevel(1 + index), grayLevel(5), 1, { "data-mechanism-id": id, "data-semantic-role": "mechanism-mark" });
+            const gateFill = visible ? grayLevel(5) : grayLevel(3);
+            for (let col = 0; col < 4; col++) {
+              const gateCellActive = visible && col <= activeThreatCount;
+              const fill = gateCellActive ? grayLevel(5) : grayLevel(2 + (col + index) % 4);
+              gRect(112 + col * 28, y - 14, 22, 28, fill, "none", 1, { "data-mechanism-id": id, "data-semantic-role": "state-mark" });
+              if (gateCellActive) gRect(112 + col * 28, y - 14, 6, 28, color, "none", 1, { "data-mechanism-id": id + "_active_edge", "data-semantic-role": "state-mark" });
+            }
+            gRect(280, y - 46, 44, 92, gateFill, grayLevel(6), 1, { "data-mechanism-id": id, "data-semantic-role": "mechanism-mark" });
+            if (visible) gRect(280, y - 46, 8, 92, color, "none", 1, { "data-mechanism-id": id + "_active_gate_edge", "data-semantic-role": "state-mark" });
+            gRect(324, y - 10, 120, 20, grayLevel(5), "none", 1, { "data-mechanism-id": id, "data-semantic-role": "connector" });
+            if (visible) gLine([[324, y], [452, y], [456, 316]], color, 5, 1, { "data-mechanism-id": id, "data-semantic-role": "connector" });
+          });
+
+          gRect(104, 540, 160, 76, grayLevel(2), grayLevel(5), 1, { "data-mechanism-id": "prompt_bubble", "data-semantic-role": "mechanism-mark" });
+          for (let row = 0; row < 3; row++) gRect(120, 554 + row * 18, 92 + row * 18, 8, grayLevel(4), "none", 1, { "data-mechanism-id": "prompt_bubble", "data-semantic-role": "state-mark" });
+          gRect(304, 536, 36, 92, promptInspectionActive ? grayLevel(5) : grayLevel(4), grayLevel(6), 1, { "data-mechanism-id": "hard_policy_gate", "data-semantic-role": "mechanism-mark" });
+          if (promptInspectionActive) gRect(304, 536, 8, 92, palette.damage, "none", 1, { "data-mechanism-id": "hard_policy_gate_accent", "data-semantic-role": "state-mark" });
+          gRect(348, 562, 112, 36, redactStateActive ? grayLevel(5) : grayLevel(3), "none", 1, { "data-mechanism-id": "redaction_mask", "data-semantic-role": "state-mark" });
+          if (redactStateActive) gRect(348, 562, 8, 36, palette.route, "none", 1, { "data-mechanism-id": "redaction_mask_accent", "data-semantic-role": "state-mark" });
+
+          for (let row = 0; row < 4; row++) {
+            const y = 128 + row * 58;
+            const width = 82 + ease((p - 0.28) / 0.32) * (220 - row * 18);
+            const laneBlocked = row % 3 === 0 && blockStateActive;
+            const fill = laneBlocked ? grayLevel(5) : grayLevel(2 + row);
+            gRect(932, y, width, 34, fill, "none", 1, { "data-mechanism-id": "model_armor_filter_lanes", "data-semantic-role": "state-mark" });
+            if (laneBlocked) gRect(932 + Math.max(0, width - 8), y, Math.min(8, width), 34, palette.damage, "none", 1, { "data-mechanism-id": "model_armor_filter_lane_cap", "data-semantic-role": "state-mark" });
+            gRect(1168, y, 44, 34, grayLevel(row % 3 === 0 && blockStateActive ? 5 : 3), "none", 1, { "data-mechanism-id": "model_armor_filter_lanes", "data-semantic-role": "state-mark" });
+            gLine([[856,316],[904,y + 16],[932,y + 16]], row % 2 === 0 ? palette.route : palette.attribute, 4, ease((p - 0.28) / 0.32), { "data-mechanism-id": "model_armor_filter_lanes", "data-semantic-role": "connector" });
+          }
+          gRect(930, 400, 300, 64, grayLevel(3), grayLevel(5), 1, { "data-box-id": "guardrail-risk-score", "data-mechanism-id": "risk_score_bar", "data-semantic-role": "mechanism-mark" });
+          const riskWidth = 300 * ease((p - 0.34) / 0.34);
+          if (riskScoreVisible) {
+            const riskHigh = riskWidth > 185;
+            gRect(930, 400, riskWidth, 64, riskHigh ? grayLevel(5) : grayLevel(4), "none", 1, { "data-fill-for": "guardrail-risk-score", "data-fill-axis": "x-progress", "data-mechanism-id": "risk_score_bar", "data-semantic-role": "state-mark" });
+            if (riskWidth > 0) gRect(930 + Math.max(0, riskWidth - 8), 400, Math.min(8, riskWidth), 64, riskHigh ? palette.damage : palette.attribute, "none", 1, { "data-mechanism-id": "risk_score_bar_cap", "data-semantic-role": "state-mark" });
+          }
+
+          for (let row = 0; row < 3; row++) {
+            for (let col = 0; col < 3; col++) {
+              const score = row * 3 + col;
+              let fill = grayLevel(2 + (score % 4));
+              if (policyMatrixVisible && [2, 4].includes(score)) fill = palette.attribute;
+              const matrixBlocked = policyMatrixVisible && [6, 7, 8].includes(score);
+              if (matrixBlocked) fill = grayLevel(5);
+              gRect(1316 + col * 56, 104 + row * 56, 52, 52, fill, grayLevel(5), 1, { "data-mechanism-id": "policy_matrix", "data-semantic-role": "state-mark" });
+              if (matrixBlocked) gRect(1316 + col * 56, 104 + row * 56, 8, 52, palette.damage, "none", 1, { "data-mechanism-id": "policy_matrix_blocked_edge", "data-semantic-role": "state-mark" });
+            }
+          }
+          [blockStateActive, redactStateActive, routeStateActive, escalateStateActive].forEach((visible, index) => {
+            const fills = [palette.damage, palette.route, palette.attribute, grayLevel(5)];
+            gRect(1272 + index * 92, 312, 76, 58, visible ? grayLevel(5) : grayLevel(2 + index), grayLevel(5), 1, { "data-mechanism-id": "policy_outcome_tiles", "data-semantic-role": "state-mark" });
+            if (visible && index < 3) gRect(1272 + index * 92, 312, 8, 58, fills[index], "none", 1, { "data-mechanism-id": "policy_outcome_tile_edge", "data-semantic-role": "state-mark" });
+            gRect(1284 + index * 92, 326, 52, 8, grayLevel(1 + index % 4), "none");
+            gRect(1284 + index * 92, 346, 52, 8, grayLevel(5), "none");
+          });
+
+          gRect(1280, 424, 224, 150, humanApprovalRequired ? palette.tradeoff : grayLevel(3), grayLevel(6), 2, { "data-mechanism-id": "human_approval_modal", "data-semantic-role": "mechanism-mark" });
+          gRect(1304, 448, 176, 20, grayLevel(1), "none");
+          gRect(1304, 484, 68, 54, humanApprovalRequired ? grayLevel(5) : grayLevel(2), "none");
+          gRect(1392, 484, 64, 54, positiveCasePasses ? palette.route : grayLevel(2), "none");
+          [secretRiskActive, destructiveCommandRiskActive, deployRiskActive].forEach((visible, index) => {
+            const x = 1544 + index * 80;
+            gRect(x, 432, 64, 72, visible ? grayLevel(5) : grayLevel(2 + index), grayLevel(5), 1, { "data-mechanism-id": "protected_action_tile", "data-semantic-role": "state-mark" });
+            if (visible) gRect(x, 432, 8, 72, palette.damage, "none", 1, { "data-mechanism-id": "protected_action_tile_risk_edge", "data-semantic-role": "state-mark" });
+            gRect(x + 12, 446, 40, 10, grayLevel(1 + index % 4), "none");
+            gRect(x + 12, 470, 40, 10, grayLevel(5), "none");
+          });
+
+          gLine([[940,612],[1096,612],[1248,612]], palette.route, 7, positiveCasePasses ? 1 : 0, { "data-mechanism-id": "positive_case_path", "data-semantic-role": "connector" });
+          gLine([[940,652],[1076,652],[1076,628]], palette.damage, 7, blockedCaseStops ? 1 : 0, { "data-mechanism-id": "blocked_case_path", "data-semantic-role": "connector" });
+          if (blockedCaseStops) {
+            gRect(1060, 620, 52, 52, grayLevel(5), grayLevel(6), 1, { "data-mechanism-id": "block_stop_bar", "data-semantic-role": "state-mark" });
+            gRect(1060, 620, 8, 52, palette.damage, "none", 1, { "data-mechanism-id": "block_stop_bar_accent", "data-semantic-role": "state-mark" });
+          }
+          gRect(1492, 612, 240, 12, grayLevel(5), "none", 1, { "data-mechanism-id": "safety_friction_scale", "data-semantic-role": "mechanism-mark" });
+          gRect(1604, 558, 16, 108, grayLevel(6), "none", 1, { "data-mechanism-id": "safety_friction_scale", "data-semantic-role": "mechanism-mark" });
+          const leftH = 46 + 30 * ease((p - 0.76) / 0.16);
+          const rightH = 74 - 24 * ease((p - 0.76) / 0.16);
+          gRect(1512, 612 - leftH, 76, leftH, grayLevel(5), "none", 1, { "data-mechanism-id": "safety_friction_scale", "data-semantic-role": "state-mark" });
+          gRect(1512, 612 - leftH, 8, leftH, palette.route, "none", 1, { "data-mechanism-id": "safety_friction_scale_pass_edge", "data-semantic-role": "state-mark" });
+          gRect(1636, 612 - rightH, 76, rightH, grayLevel(5), "none", 1, { "data-mechanism-id": "safety_friction_scale", "data-semantic-role": "state-mark" });
+          gRect(1636, 612 - rightH, 8, rightH, palette.damage, "none", 1, { "data-mechanism-id": "safety_friction_scale_stop_edge", "data-semantic-role": "state-mark" });
+
+          const visibleMechanismCount = [
+            guardrailShieldGateVisible,
+            inputGateVisible && outputGateVisible && actionGateVisible,
+            riskScoreVisible,
+            policyMatrixVisible,
+            blockStateActive && redactStateActive && routeStateActive,
+            humanApprovalRequired,
+            safetyFrictionBalanceVisible,
+          ].filter(Boolean).length;
+          const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
+          return { videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, threatLabels: sourceThreatLabels, barrierLabels: sourceBarrierLabels, consequenceLabels: sourceConsequenceLabels, activeThreatCount, preventiveVisible, topEventVisible, mitigativeVisible, consequenceVisible, degradedVisible, actionVisible, guardrailShieldGateVisible, inputGateVisible, outputGateVisible, actionGateVisible, promptInspectionActive, outputInspectionActive, toolCallInspectionActive, riskScoreVisible, riskScoreLevel, policyMatrixVisible, blockStateActive, redactStateActive, routeStateActive, escalateStateActive, humanApprovalRequired, positiveCasePasses, blockedCaseStops, secretRiskActive, destructiveCommandRiskActive, deployRiskActive, safetyFrictionBalanceVisible, visibleMechanismCount };
+        }
         const threatLabels = sourceThreatLabels.map((value) => compactText(value, 18));
         const barrierLabels = sourceBarrierLabels.map((value) => compactText(value, 18));
         const consequenceLabels = sourceConsequenceLabels.map((value) => compactText(value, 18));
@@ -2558,6 +4232,7 @@
       const progressBeat = Math.floor(clamp(Number(seconds || 0) / Number(PACKAGE.durationSeconds || 6.0)) * 5);
       const activeIndex = Number.isFinite(stateBeat) ? stateBeat : progressBeat;
       drawSourceZones(activeIndex);
+      enforceFlushMasonryInteriors();
       const cameraLayer = stage.querySelector("#camera-layer");
       const cameraX = Number(cameraLayer?.getAttribute("data-camera-x") || 0);
       const cameraY = Number(cameraLayer?.getAttribute("data-camera-y") || 0);

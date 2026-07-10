@@ -16,6 +16,11 @@ from pathlib import Path
 from mermaid_animation.common import class_tokens
 
 
+def write_stderr(text: str) -> None:
+    encoding = sys.stderr.encoding or "utf-8"
+    sys.stderr.write(text.encode(encoding, errors="replace").decode(encoding))
+
+
 def renderer_base_command() -> list[str]:
     mmdc = shutil.which("mmdc")
     if mmdc:
@@ -23,7 +28,7 @@ def renderer_base_command() -> list[str]:
 
     npx = shutil.which("npx")
     if npx:
-        return [npx, "-y", "@mermaid-js/mermaid-cli@11.15.0"]
+        return [npx, "-y", "@mermaid-js/mermaid-cli@11.16.0"]
 
     raise RuntimeError(
         "Neither 'mmdc' nor 'npx' was found. Install @mermaid-js/mermaid-cli or pass --svg-input."
@@ -45,10 +50,16 @@ def render_mermaid(source: Path, output: Path, args: argparse.Namespace) -> None
     command.extend(args.mmdc_arg)
     command.extend(["-i", str(source), "-o", str(output)])
 
-    completed = subprocess.run(command, text=True, capture_output=True)
+    completed = subprocess.run(
+        command,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        capture_output=True,
+    )
     if completed.returncode != 0:
-        sys.stderr.write(completed.stdout)
-        sys.stderr.write(completed.stderr)
+        write_stderr(completed.stdout)
+        write_stderr(completed.stderr)
         raise RuntimeError(
             "Mermaid rendering failed. Re-run with the same Mermaid options manually, "
             "then pass the rendered SVG with --svg-input."

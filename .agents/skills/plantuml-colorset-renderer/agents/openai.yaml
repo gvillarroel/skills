@@ -1,4 +1,4 @@
 interface:
   display_name: "PlantUML Colorset Renderer"
   short_description: "Render PlantUML with CS1 or colorset2 themes"
-  default_prompt: "Use $plantuml-colorset-renderer to render this PlantUML directory to SVG and PNG with a bundled colorset theme."
+  default_prompt: "Use $plantuml-colorset-renderer to render this PlantUML directory with supported SVG and PNG outputs and a bundled colorset theme."

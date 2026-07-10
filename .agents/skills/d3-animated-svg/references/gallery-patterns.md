@@ -84,6 +84,8 @@ For large galleries, review every card visually before delivery. Generate screen
 - replay-safe fixes that survive clearing and rebuilding one card at a time
 - dynamic-symmetry alignment for composition-heavy patterns: use `scripts/audit_dynamic_symmetry.py` when points, centers, label lanes, routes, or major containers feel arbitrary even though collision and text-fit checks pass
 
+Use `scripts/review_gallery_visuals.py` to capture every settled card, create labeled contact sheets, and record per-pattern text overflow, text overlap, rendered text size, and horizontal overflow signals. Run both desktop and mobile viewports. These signals are advisory: inspect the corresponding card before moving marks, and never distort protected chart or map geometry merely to clear a heuristic.
+
 Integrate repeated findings through shared CSS, token ramps, and a gallery-level post-render polish function before adding chart-specific tweaks. Use chart-specific code when the color encodes data meaning, such as heatmaps, density bins, vaccine-impact ramps, bivariate keys, missing-data annotations, or selected/focus states.
 
 ## Styled Gallery Versions
@@ -104,8 +106,9 @@ For gallery updates, verify:
 - package or CI commands pin `--expected` to the intended card count instead of relying only on the page-generated count
 - every card contains exactly one SVG and one replay control
 - every SVG has positive dimensions, nontrivial element count, and animation nodes
-- replay works on multiple sampled cards and updates only the targeted card render pass
-- sampled replay resets the SVG timeline near zero and the timeline advances after the click
+- truth-sensitive metadata stays internally consistent; the verifier independently recomputes the Solar Terminator equation of time, declination, and subsolar longitude from its UTC timestamp
+- release verification replays every card and updates only the targeted card render pass; use sampled replay only for fast smoke checks
+- replay resets the SVG timeline near zero and the timeline advances after the click
 - repeated replay does not leave duplicated marks or empty SVGs
 - desktop and mobile screenshots preserve readable card headers, replay controls, labels, and SVG framing
 - publication is completed, not just built locally: run `uv run --script scripts/build-pages.py`, commit the updated gallery source and pattern references, push the Pages-deploying branch, then verify the GitHub Pages workflow before relying on the new `d3-pattern-*` URL in another task
@@ -113,8 +116,8 @@ For gallery updates, verify:
 Use the gallery verifier for deterministic checks:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery.png --wait-ms 2200
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-mobile.png --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --expected 224 --replay-all --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery.png --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 224 --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-mobile.png --wait-ms 2200
 uv run --script .agents/skills/d3-animated-svg/scripts/verify_colorset2_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-colorset2/index.html --expected 224 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-colorset2.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-colorset2.json --wait-ms 2200
 uv run --script .agents/skills/d3-animated-svg/scripts/verify_style_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-cs1/index.html --palette-file design/colorset1.yml --style-version cs1 --color-set colorset1 --palette-name basic-red-neutral-style --pattern-id-suffix cs1 --expected 224 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-cs1.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-cs1.json --wait-ms 2200
 ```

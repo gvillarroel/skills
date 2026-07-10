@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process";
 const args = [
   "run",
   "--script",
-  "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+  ".agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
   "--project-root",
   "projects/metro-design-repair-contracts-full/videos/what-is-an-llm",
   "--title",
@@ -29,6 +29,7 @@ const args = [
   "720",
   "--edge-style",
   "square",
+  "--masonry-layout",
   "--fact",
   "A large language model is a transformer-based neural network trained to predict text autoregressively: given prior tokens, it estimates the next token and repeats that process until it reaches a stopping condition.",
   "--fact",

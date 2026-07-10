@@ -30,6 +30,15 @@ function renderCorrelogramHistogram() {
     }));
     const size = 74, gap = 8, origin = { x: 88, y: 58 };
     const extent = v => d3.extent(data, d => d[v]);
+    const pearson = (a, b) => {
+      const meanA = d3.mean(data, d => d[a]);
+      const meanB = d3.mean(data, d => d[b]);
+      const numerator = d3.sum(data, d => (d[a] - meanA) * (d[b] - meanB));
+      const sumSquaresA = d3.sum(data, d => (d[a] - meanA) ** 2);
+      const sumSquaresB = d3.sum(data, d => (d[b] - meanB) ** 2);
+      const denominator = Math.sqrt(sumSquaresA * sumSquaresB);
+      return denominator > 0 ? numerator / denominator : 0;
+    };
     const scales = new Map(vars.map(v => [v, d3.scaleLinear().domain(extent(v)).range([8, size - 8])]));
     vars.forEach((row, r) => vars.forEach((col, c) => {
       const x0 = origin.x + c * (size + gap), y0 = origin.y + r * (size + gap);
@@ -49,9 +58,17 @@ function renderCorrelogramHistogram() {
           .attr("fill", palette.purple).attr("fill-opacity", .75);
         grow(dots, "r", 1.2, 2.5, .03, .35);
       } else {
-        const corr = d3.mean(data, d => (d[col] - d3.mean(data, x => x[col])) * (d[row] - d3.mean(data, x => x[row]))) / 900;
-        svg.append("rect").attr("x", x0 + 10).attr("y", y0 + 10).attr("width", size - 20).attr("height", size - 20).attr("fill", corr > 0 ? "#cdf3ff" : "#ffccd5").attr("stroke", corr > 0 ? palette.blue : palette.red);
-        svg.append("text").attr("class", "mark-label").attr("x", x0 + size / 2).attr("y", y0 + size / 2 + 4).attr("text-anchor", "middle").text(corr > 0 ? "+r" : "-r");
+        const corr = pearson(col, row);
+        svg.append("rect")
+          .attr("data-correlation", corr.toFixed(4))
+          .attr("data-x-variable", col)
+          .attr("data-y-variable", row)
+          .attr("x", x0 + 10).attr("y", y0 + 10).attr("width", size - 20).attr("height", size - 20)
+          .attr("fill", corr >= 0 ? palette.blueHighlight : palette.redHighlight)
+          .attr("fill-opacity", .35 + Math.abs(corr) * .55)
+          .attr("stroke", corr >= 0 ? palette.blue : palette.red);
+        svg.append("text").attr("class", "mark-label").attr("x", x0 + size / 2).attr("y", y0 + size / 2 + 4).attr("text-anchor", "middle")
+          .text(`r=${d3.format("+.2f")(corr)}`);
       }
     }));
     vars.forEach((v, i) => svg.append("text").attr("class", "mark-label").attr("x", origin.x + i * (size + gap) + size / 2).attr("y", 44).attr("text-anchor", "middle").text(v));

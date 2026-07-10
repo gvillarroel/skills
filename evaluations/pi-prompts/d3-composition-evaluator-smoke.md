@@ -1,4 +1,4 @@
-Use the loaded evaluator skill. Create exactly `evaluation.md` in the workspace root. Do not write elsewhere and do not inspect parent directories, sibling skills, repository fixtures, or evaluation contracts.
+Use the loaded evaluator skill. Treat `skills/d3-composition-evaluator/` as read-only. Create exactly `evaluation.md` in the workspace root. Do not write elsewhere and do not inspect parent directories, sibling skills, repository fixtures, or evaluation contracts.
 
 Evaluate radial-rosette variant `d3-composition-radial-rosette-force-network` from this SVG:
 
@@ -20,4 +20,4 @@ Evaluate radial-rosette variant `d3-composition-radial-rosette-force-network` fr
 </svg>
 ```
 
-Include `Findings`, `Composition Score`, and `Fixes` sections.
+Start with exactly `Artifact: d3-composition-radial-rosette-force-network`. Include `Findings`, `Composition Score`, and `Fixes` sections. Under `Composition Score`, write exactly one score as `Score: N/100`; do not add component scores. Preserve all six nodes and five links, and do not propose adding or removing data entities.

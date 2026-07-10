@@ -21,9 +21,10 @@ The excerpt below is the compact renderer source for this pattern. If it referen
 ```js
 function renderSpikeMap() {
     const svg = prepareSvg("spike-map", "Spike map", "Local intensity rises as vertical spikes over a projected grid.");
-    const projection = d3.geoMercator().scale(82).translate([width / 2, height / 2 + 28]);
+    const projection = d3.geoMercator().fitExtent([[34, 44], [526, 344]], { type: "Sphere" });
     const path = d3.geoPath(projection);
     svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", "#f7f7f7").attr("stroke", palette.line);
+    appendSchematicLand(svg, path);
     svg.append("g").selectAll("path").data(d3.geoGraticule().step([30, 30]).lines()).join("path")
       .attr("d", path).attr("fill", "none").attr("stroke", "#e7e7e7").attr("stroke-width", .8);
     const points = [
@@ -40,5 +41,7 @@ function renderSpikeMap() {
     });
     const dots = svg.append("g").selectAll("circle").data(points).join("circle").attr("cx", d => d.xy[0]).attr("cy", d => d.xy[1]).attr("fill", palette.ink);
     grow(dots, "r", 2, 4, .12, .45);
+    svg.append("line").attr("x1", 472).attr("x2", 472).attr("y1", 318).attr("y2", 264).attr("stroke", palette.red).attr("stroke-width", 3);
+    svg.append("text").attr("class", "caption").attr("x", 482).attr("y", 272).text("54 units");
   }
 ```

@@ -1,0 +1,342 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f4a1c-bd40-76d5-a637-a0f1dc3eee26",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\awsome-videos-visual-orchestration-20260709-spark-4-json\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 6
+  },
+  "providers": {
+    "openai-codex": 6
+  },
+  "usageTotals": {
+    "input": 39084,
+    "output": 6142,
+    "cacheRead": 45696,
+    "cacheWrite": 0,
+    "totalTokens": 90922
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 13,
+    "bash": 2
+  },
+  "paths": [
+    {
+      "path": "outputs/cache-stampede/source/composition-plan.json",
+      "calls": 2,
+      "resultBytes": 116225
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 3128
+    },
+    {
+      "path": "outputs/visual-contract-stdout.json",
+      "calls": 1,
+      "resultBytes": 3791
+    },
+    {
+      "path": "outputs/cache-stampede/source/asset-manifest.json",
+      "calls": 1,
+      "resultBytes": 17709
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1,
+      "resultBytes": 2737
+    },
+    {
+      "path": "outputs/cache-stampede/source/source-package.json",
+      "calls": 1,
+      "resultBytes": 3126
+    },
+    {
+      "path": "outputs/cache-stampede/source/shot-contract.json",
+      "calls": 1,
+      "resultBytes": 3244
+    },
+    {
+      "path": "outputs/cache-stampede/source/package-manifest.json",
+      "calls": 1,
+      "resultBytes": 12482
+    },
+    {
+      "path": "outputs/visual-contract-structural.json",
+      "calls": 1,
+      "resultBytes": 3545
+    },
+    {
+      "path": "outputs/cache-stampede/src/index.html",
+      "calls": 1,
+      "resultBytes": 17922
+    },
+    {
+      "path": "outputs/cache-stampede/source/transition-plan.json",
+      "calls": 1,
+      "resultBytes": 25687
+    },
+    {
+      "path": "outputs/cache-stampede/artifacts/reviews/visual-review.json",
+      "calls": 1,
+      "resultBytes": 6096
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/cache-stampede/source/composition-plan.json",
+      "calls": 2,
+      "resultBytes": 116225
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 3128
+    },
+    {
+      "path": "outputs/visual-contract-stdout.json",
+      "calls": 1,
+      "resultBytes": 3791
+    },
+    {
+      "path": "outputs/cache-stampede/source/asset-manifest.json",
+      "calls": 1,
+      "resultBytes": 17709
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1,
+      "resultBytes": 2737
+    },
+    {
+      "path": "outputs/cache-stampede/source/source-package.json",
+      "calls": 1,
+      "resultBytes": 3126
+    },
+    {
+      "path": "outputs/cache-stampede/source/shot-contract.json",
+      "calls": 1,
+      "resultBytes": 3244
+    },
+    {
+      "path": "outputs/cache-stampede/source/package-manifest.json",
+      "calls": 1,
+      "resultBytes": 12482
+    },
+    {
+      "path": "outputs/visual-contract-structural.json",
+      "calls": 1,
+      "resultBytes": 3545
+    },
+    {
+      "path": "outputs/cache-stampede/src/index.html",
+      "calls": 1,
+      "resultBytes": 17922
+    },
+    {
+      "path": "outputs/cache-stampede/source/transition-plan.json",
+      "calls": 1,
+      "resultBytes": 25687
+    },
+    {
+      "path": "outputs/cache-stampede/artifacts/reviews/visual-review.json",
+      "calls": 1,
+      "resultBytes": 6096
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "outputs/cache-stampede/source/composition-plan.json",
+      "calls": 2
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/visual-contract-stdout.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/source/asset-manifest.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/source/source-package.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/source/shot-contract.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/source/package-manifest.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/visual-contract-structural.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/src/index.html",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/source/transition-plan.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cache-stampede/artifacts/reviews/visual-review.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 215692,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3128
+    },
+    {
+      "line": 28,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/awsome-videos/scripts/scaffold_production_package.py outputs/cache-stampede --title \"How Cache Stampedes Happen\" --promise \"See one expired hot key turn into an origin overload, then watc",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 43,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/check_visual_contract.py --asset-manifest outputs/cache-stampede/source/asset-manifest.json --composition-plan outputs/cache-stampede/source/composition-plan.json --brief outputs/cache-",
+      "isError": false,
+      "resultBytes": 72
+    },
+    {
+      "line": 96,
+      "tool": "read",
+      "path": "outputs/visual-contract-stdout.json",
+      "policyPath": "outputs/visual-contract-stdout.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3791
+    },
+    {
+      "line": 97,
+      "tool": "read",
+      "path": "outputs/cache-stampede/source/asset-manifest.json",
+      "policyPath": "outputs/cache-stampede/source/asset-manifest.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 17709
+    },
+    {
+      "line": 98,
+      "tool": "read",
+      "path": "outputs/scaffold-result.json",
+      "policyPath": "outputs/scaffold-result.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2737
+    },
+    {
+      "line": 99,
+      "tool": "read",
+      "path": "outputs/cache-stampede/source/source-package.json",
+      "policyPath": "outputs/cache-stampede/source/source-package.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3126
+    },
+    {
+      "line": 100,
+      "tool": "read",
+      "path": "outputs/cache-stampede/source/composition-plan.json",
+      "policyPath": "outputs/cache-stampede/source/composition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 111032
+    },
+    {
+      "line": 101,
+      "tool": "read",
+      "path": "outputs/cache-stampede/source/shot-contract.json",
+      "policyPath": "outputs/cache-stampede/source/shot-contract.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3244
+    },
+    {
+      "line": 102,
+      "tool": "read",
+      "path": "outputs/cache-stampede/source/package-manifest.json",
+      "policyPath": "outputs/cache-stampede/source/package-manifest.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 12482
+    },
+    {
+      "line": 103,
+      "tool": "read",
+      "path": "outputs/visual-contract-structural.json",
+      "policyPath": "outputs/visual-contract-structural.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3545
+    },
+    {
+      "line": 104,
+      "tool": "read",
+      "path": "outputs/cache-stampede/src/index.html",
+      "policyPath": "outputs/cache-stampede/src/index.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 17922
+    },
+    {
+      "line": 105,
+      "tool": "read",
+      "path": "outputs/cache-stampede/source/transition-plan.json",
+      "policyPath": "outputs/cache-stampede/source/transition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 25687
+    },
+    {
+      "line": 106,
+      "tool": "read",
+      "path": "outputs/cache-stampede/artifacts/reviews/visual-review.json",
+      "policyPath": "outputs/cache-stampede/artifacts/reviews/visual-review.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6096
+    },
+    {
+      "line": 139,
+      "tool": "read",
+      "path": "outputs/cache-stampede/source/composition-plan.json",
+      "policyPath": "outputs/cache-stampede/source/composition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5193
+    }
+  ],
+  "findings": []
+}

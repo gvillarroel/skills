@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process";
 const args = [
   "run",
   "--script",
-  "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+  ".agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
   "--project-root",
   "projects/metro-design-repair-contracts-full/videos/llm-billing",
   "--title",
@@ -29,6 +29,7 @@ const args = [
   "720",
   "--edge-style",
   "square",
+  "--masonry-layout",
   "--fact",
   "LLM billing is best understood as \u201ctokens in, tokens out, model selected, extras enabled.\u201d GitHub Copilot now meters usage in AI credits where 1 credit equals $0.01 and actual spend depends on token counts and model rates; Anthropic\u2019s API prices Claude models directly per million input, cached-input, and output tokens, while Claude subscriptions bundle or cap usage in different ways.",
   "--fact",

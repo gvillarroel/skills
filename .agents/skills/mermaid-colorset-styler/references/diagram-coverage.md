@@ -1,33 +1,51 @@
 # Mermaid Diagram Coverage
 
-Use this reference when deciding whether the styler should add class definitions or only a base-theme colorset YAML config.
+Use `diagram-types.json` as the frozen, machine-readable Mermaid 11.16.0 taxonomy. It is the source of truth for family normalization, current declarations, accepted compatibility aliases, and inline `classDef` capability.
 
-## Source Scope
+## Coverage Contract
 
-The supported diagram declarations are the union of Mermaid 11.16.0 syntax navigation and Mermaid's public config schema. The syntax navigation lists Flowchart, Swimlanes, Sequence, Class, State, Entity Relationship, User Journey, Gantt, Pie, Quadrant, Requirement, GitGraph, C4, Mindmaps, Timeline, ZenUML, Sankey, XY Chart, Block, Packet, Kanban, Architecture, Radar, Event Modeling, Treemap, Venn, Ishikawa, Wardley, Cynefin, and TreeView. The config schema also exposes the Railroad family. Treat beta declarations such as `venn-beta` as supported source types even when a local renderer is older.
+The maintenance fixture must contain exactly one block for every accepted declaration in the manifest:
+
+- 31 public diagram families.
+- 40 current documented declarations.
+- 8 additional compatibility declarations rendered by Mermaid CLI 11.16.0.
+- 48 renderable declarations in total.
+- 9 families with documented inline `classDef` support.
+
+Require exact set equality. Fail maintenance validation for a missing, unexpected, or duplicate declaration; a matching count alone is not coverage evidence. Keep the `info` utility diagram and Mermaid's internal error/frontmatter sentinels outside the public content-diagram denominator.
+
+Do not count the `architecture` detector shorthand as accepted coverage. Mermaid CLI 11.16.0 can exit successfully for that header while emitting a syntax-error SVG; only `architecture-beta` is renderable. Inspect rendered SVGs for Mermaid error markers instead of trusting the process exit code alone.
 
 ## Class Definition Support
 
-Add Mermaid `classDef` lines only for these declarations:
+Insert Mermaid `classDef` lines only for the manifest families whose `classDef` value is `true`:
 
-| Family | Declarations | Classable objects |
-| --- | --- | --- |
-| Flowchart | `flowchart`, `graph` | Nodes and edge IDs referenced with `class` or `:::` |
-| Swimlanes | `swimlane-beta` | Flowchart-style lane nodes and edge IDs |
-| Class diagram | `classDiagram` | Class nodes referenced with `cssClass`, `class`, or `:::` |
-| State diagram | `stateDiagram`, `stateDiagram-v2` | Named states; do not target start/end markers or composite internals |
-| Requirement diagram | `requirementDiagram` | Requirements and elements |
-| Treemap | `treemap-beta` | Tree nodes using `:::class` |
+- Flowchart, including `graph` and `flowchart-elk`.
+- Swimlane.
+- Class, including `classDiagram-v2`.
+- State.
+- Entity Relationship.
+- Quadrant Chart.
+- Requirement.
+- Block.
+- Treemap.
 
-For all other declarations, style through the base theme variables only. Do not add class definitions to Sequence, ER, Journey, Gantt, Pie, Quadrant, GitGraph, C4, Mindmap, Timeline, ZenUML, Sankey, XY Chart, Block, Packet, Kanban, Architecture, Radar, Event Modeling, Venn (`venn-beta`), Ishikawa, Wardley, Cynefin, TreeView, or Railroad unless Mermaid's documented syntax adds `classDef` support later.
+Quadrant Chart uses its own class grammar. Emit `color` and `stroke-color`; generic `fill` and `stroke` properties fail Mermaid parsing. The other class-capable families use the normal generated CSS properties.
+
+For all other declarations, style through base theme variables only. Preserve referenced classes without inventing assignments.
 
 ## Minimal Insertion Rule
 
 For each Mermaid block:
 
 1. Use Mermaid YAML frontmatter `config:` for the generated colorset theme.
-2. Preserve existing Mermaid frontmatter, merge the generated colorset config into it, and replace only previous generated colorset config sections.
-3. Preserve existing non-colorset Mermaid directives. Migrate previous generated colorset `%%{init: ...}%%` directives to YAML frontmatter.
+2. Preserve existing Mermaid frontmatter, merge the generated colorset config into it, and replace only previous generated colorset sections.
+3. Preserve existing non-colorset directives. Migrate previous generated colorset `%%{init: ...}%%` directives to YAML frontmatter.
 4. Detect the diagram declaration after frontmatter, directives, and comments.
-5. Detect referenced color classes from `:::class`, `class target className`, and `cssClass "target" className`.
-6. Insert `classDef` lines only for referenced supported color classes and only when the diagram declaration supports class definitions.
+5. Normalize declarations through `diagram-types.json` before selecting family theme variables or class behavior.
+6. Detect referenced color classes from `:::class`, `class target className`, and `cssClass "target" className`.
+7. Insert definitions only for referenced supported color classes and only when the normalized family supports inline `classDef`.
+
+## Maintenance Validation
+
+Run the bundled test and full rendered approval. The reports must show 100 percent family, current-declaration, and accepted-declaration coverage with no missing, unexpected, or duplicate declarations.

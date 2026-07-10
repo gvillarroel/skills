@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process";
 const args = [
   "run",
   "--script",
-  "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+  ".agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
   "--project-root",
   "projects/metro-design-repair-contracts-full/videos/what-is-a-guardrail",
   "--title",
@@ -29,6 +29,7 @@ const args = [
   "720",
   "--edge-style",
   "square",
+  "--masonry-layout",
   "--fact",
   "A guardrail is a control layer that checks inputs, outputs, or tool behavior and then blocks, routes, redacts, or escalates based on policy.",
   "--fact",

@@ -27,9 +27,12 @@ Each row records the reason the by-type directive example is useful and the curr
 | State | `state-dwell-token.mmd` | Demonstrates dwell with marks and color; future wait/dwell verbs would reduce directive count. |
 | Timeline | `timeline-milestone-scan.mmd` | Uses visible timeline labels and generated timeline classes; dense timelines need shorter gaps. |
 | Treemap | `treemap-hierarchy-focus.mmd` | Label selectors work for readable sections/leaves; tiny hidden leaves are intentionally not emphasized. |
-| Treeview | `treeview-directory-scan.mmd` | Labels are exact text targets; branch lines are only emphasized as a group because text-selected folder candidates can overlap line containers. |
+| TreeView | `treeview-directory-scan.mmd` | Labels are exact text targets; branch lines are only emphasized as a group because text-selected folder candidates can overlap line containers. |
 | Journey | `journey-stage-progress.mmd` | Uses exact task/section text; no stable IDs are emitted, so broad column classes remain group-only tools. |
 | Venn | `venn-coverage-focus.mmd` | Generated .venn-sets-* classes are strong current syntax for set/intersection choreography. |
 | Wardley | `wardley-value-chain.mmd` | Uses text labels for components and xy points for precise symbols because component IDs are absent. |
 | XY Chart | `xy-chart-series-reveal.mmd` | Uses chart-level roles and xy points because individual bars and plot-domain points are not addressable yet. |
 | ZenUML | `zenuml-frontmatter-render.mmd` | Relies on explicit xy points and broad item/message groups because data-participant attributes are not selectable yet. |
+| Swimlane | `swimlane-review-handoff.mmd` | Swimlane exposes flowchart-compatible node and edge IDs; keep lane geometry visible and animate the cross-lane handoff through exact IDs. |
+| Cynefin | `cynefin-domain-response.mmd` | Cynefin currently exposes stable family-level classes rather than per-item IDs, so reveal the framework in layers and reserve precise item semantics for future selectors. |
+| Railroad | `railroad-artifact-rule.mmd` | Railroad emits reliable grammar-role classes but no per-token IDs; class-scoped construction preserves grammar geometry while exposing the need for rule/token selectors. |

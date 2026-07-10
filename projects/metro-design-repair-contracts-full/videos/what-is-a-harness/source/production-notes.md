@@ -9,13 +9,13 @@
 ## Visual Metaphor Decision
 
 - Visual pattern: systems-flow.
-- Concept claim: a good What is a Harness explainer should show hooks as lifecycle interception points where runtime events become enforceable policy, preprocessing, and cost tradeoffs.
-- Mechanic: a lifecycle event pulse moves through timeline nodes, a shield gate overlays execution, provider event surfaces expose comparable hook systems, one Bash path is blocked while another log path is filtered, and savings versus latency meters settle into a lifecycle-control boundary.
-- Candidate metaphors: hook lifecycle megacanvas, generic systems-flow pipeline, and provider feature comparison table.
-- Rejected alternative: a generic systems-flow pipeline would show work movement but hide the hook-specific timing: session, prompt, tool, permission, compaction, notification, stop, blocking, filtering, and cost/latency boundaries.
-- Chosen metaphor: hook lifecycle megacanvas with event_timeline, shield_gate overlay, GitHub hook badges, Claude event cloud, OpenCode event list, PreToolUse command block, log-filter path, hook-job cascade, token-savings counter, speed-vs-cost slider, and lifecycle-controls stamp.
-- Visual vocabulary: brand red marks active event and safe preprocessing flow; status red marks blocked dangerous command and latency risk; dark red marks executable policy and filter gates; gray levels separate timeline, policy, provider surfaces, preprocessing jobs, and cost boundary. Colorset2 is not used because colorset1 gray hierarchy plus red state marks separates all Hook roles.
-- Narration split: vendor event names, code details, and exact hook job labels stay in narration or source facts; the frame carries lifecycle interception and cost mechanics without explanatory text.
+- Concept claim: a good What is a Harness explainer should show the harness as the runtime shell that changes controls, defaults, cost, and behavior around the same model.
+- Mechanic: a comparison grid selects one runtime cell, layers assemble around the model, the engine core becomes dashboard controls, the same model enters three different harness shells, and cost rises as defaults add tools, context, retries, and loop depth.
+- Candidate metaphors: harness runtime megacanvas, generic systems-flow pipeline, and feature comparison table.
+- Rejected alternative: a generic systems-flow pipeline would show work movement but hide the model-versus-harness distinction, the same-model-different-shell mechanic, and cost/control defaults.
+- Chosen metaphor: harness runtime megacanvas with comparison_grid, runtime stack, engine-to-dashboard morph, same model badge in Copilot/Claude Code/OpenCode shells, credit_meter, muted feature grid, active use-case matrix, and highlighted selection path.
+- Visual vocabulary: brand red marks selected runtime paths and shared model identity; dark red marks control/default emphasis; status red marks rising cost pressure; gray levels separate comparison surface, runtime layers, shell boundaries, controls, inactive defaults, and active selection. Colorset2 is not used because colorset1 gray hierarchy plus red state marks separates the required roles.
+- Narration split: vendor names, exact plan features, and detailed selection criteria stay in narration or source facts; the frame carries runtime structure and selection mechanics without explanatory text.
 
 ## Strategy Anchors
 
@@ -41,5 +41,5 @@
 ## Render Command
 
 ```powershell
-uv run --script skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root projects/metro-design-repair-contracts-full/videos/what-is-a-harness --title "What is a Harness" --output-id what-is-a-harness --pattern systems-flow
+uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root projects/metro-design-repair-contracts-full/videos/what-is-a-harness --title "What is a Harness" --output-id what-is-a-harness --pattern systems-flow
 ```

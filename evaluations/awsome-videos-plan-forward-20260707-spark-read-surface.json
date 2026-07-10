@@ -1,0 +1,382 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 14,
+    "bash": 12,
+    "write": 3,
+    "edit": 3
+  },
+  "paths": [
+    {
+      "path": "outputs/sqlite-indexes-brief.md",
+      "calls": 8,
+      "resultBytes": 26572
+    },
+    {
+      "path": "outputs/sqlite-indexes-validation.json",
+      "calls": 2,
+      "resultBytes": 2582
+    },
+    {
+      "path": "skills/awsome-videos/scripts/test_validators.py",
+      "calls": 2,
+      "resultBytes": 14651
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 3587
+    },
+    {
+      "path": "../workspace/skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 9117
+    },
+    {
+      "path": "outputs/sqlite-indexes-blueprint.json",
+      "calls": 1,
+      "resultBytes": 8228
+    },
+    {
+      "path": "skills/awsome-videos/references/command-contracts.md",
+      "calls": 1,
+      "resultBytes": 9876
+    },
+    {
+      "path": "skills/awsome-videos/references/evaluation-rubric.md",
+      "calls": 1,
+      "resultBytes": 6662
+    },
+    {
+      "path": "skills/awsome-videos/assets/templates/brief-template.md",
+      "calls": 1,
+      "resultBytes": 3595
+    },
+    {
+      "path": "outputs/sqlite-indexes-style.json",
+      "calls": 1,
+      "resultBytes": 3013
+    },
+    {
+      "path": "outputs/sqlite-indexes-readiness.json",
+      "calls": 1,
+      "resultBytes": 3571
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/sqlite-indexes-validation.json",
+      "calls": 2,
+      "resultBytes": 2582
+    },
+    {
+      "path": "outputs/sqlite-indexes-brief.md",
+      "calls": 2,
+      "resultBytes": 26572
+    },
+    {
+      "path": "skills/awsome-videos/scripts/test_validators.py",
+      "calls": 2,
+      "resultBytes": 14651
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 3587
+    },
+    {
+      "path": "../workspace/skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 9117
+    },
+    {
+      "path": "outputs/sqlite-indexes-blueprint.json",
+      "calls": 1,
+      "resultBytes": 8228
+    },
+    {
+      "path": "skills/awsome-videos/references/command-contracts.md",
+      "calls": 1,
+      "resultBytes": 9876
+    },
+    {
+      "path": "skills/awsome-videos/references/evaluation-rubric.md",
+      "calls": 1,
+      "resultBytes": 6662
+    },
+    {
+      "path": "skills/awsome-videos/assets/templates/brief-template.md",
+      "calls": 1,
+      "resultBytes": 3595
+    },
+    {
+      "path": "outputs/sqlite-indexes-style.json",
+      "calls": 1,
+      "resultBytes": 3013
+    },
+    {
+      "path": "outputs/sqlite-indexes-readiness.json",
+      "calls": 1,
+      "resultBytes": 3571
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3587
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "../workspace/skills/awsome-videos/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9117
+    },
+    {
+      "line": 41,
+      "tool": "bash",
+      "path": null,
+      "command": "mkdir -p outputs\nuv run --script skills/awsome-videos/scripts/select_video_patterns.py --title \"SQLite Indexes in 100 Seconds\" --promise \"Explain how indexes trade extra structure and write cost for faster lookups.\" --format \"compressed exp",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 54,
+      "tool": "read",
+      "path": "outputs/sqlite-indexes-blueprint.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8228
+    },
+    {
+      "line": 67,
+      "tool": "read",
+      "path": "skills/awsome-videos/references/command-contracts.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9876
+    },
+    {
+      "line": 80,
+      "tool": "write",
+      "path": "outputs/sqlite-indexes-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 107
+    },
+    {
+      "line": 94,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_brief.py outputs/sqlite-indexes-brief.md --require-voiceover --require-source-links --json > outputs/sqlite-indexes-validation.json",
+      "isError": true,
+      "resultBytes": 99
+    },
+    {
+      "line": 107,
+      "tool": "read",
+      "path": "outputs/sqlite-indexes-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1513
+    },
+    {
+      "line": 120,
+      "tool": "read",
+      "path": "skills/awsome-videos/references/evaluation-rubric.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6662
+    },
+    {
+      "line": 133,
+      "tool": "read",
+      "path": "outputs/sqlite-indexes-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8325
+    },
+    {
+      "line": 146,
+      "tool": "edit",
+      "path": "outputs/sqlite-indexes-brief.md",
+      "command": null,
+      "isError": true,
+      "resultBytes": 176
+    },
+    {
+      "line": 159,
+      "tool": "write",
+      "path": "outputs/sqlite-indexes-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 107
+    },
+    {
+      "line": 175,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_brief.py outputs/sqlite-indexes-brief.md --require-voiceover --require-source-links --json > outputs/sqlite-indexes-validation.json\nuv run --script skills/awsome-videos/scripts/score_",
+      "isError": true,
+      "resultBytes": 8114
+    },
+    {
+      "line": 188,
+      "tool": "read",
+      "path": "outputs/sqlite-indexes-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8125
+    },
+    {
+      "line": 201,
+      "tool": "edit",
+      "path": "outputs/sqlite-indexes-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5114
+    },
+    {
+      "line": 217,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_brief.py outputs/sqlite-indexes-brief.md --require-voiceover --require-source-links --json > outputs/sqlite-indexes-validation.json\nuv run --script skills/awsome-videos/scripts/score_",
+      "isError": true,
+      "resultBytes": 8150
+    },
+    {
+      "line": 232,
+      "tool": "bash",
+      "path": null,
+      "command": "rg -n \"\\*\\*Promise:\\*\\*|## Promise|**Promise:**|Cold-open line|Source links|Title / Promise|source links label\" skills/awsome-videos -g \"*.md\"",
+      "isError": true,
+      "resultBytes": 314
+    },
+    {
+      "line": 248,
+      "tool": "bash",
+      "path": null,
+      "command": "rg -n \"Promise\" skills/awsome-videos -g \"*.md\"",
+      "isError": false,
+      "resultBytes": 289
+    },
+    {
+      "line": 261,
+      "tool": "read",
+      "path": "skills/awsome-videos/assets/templates/brief-template.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3595
+    },
+    {
+      "line": 277,
+      "tool": "bash",
+      "path": null,
+      "command": "rg -n \"Source links:\" skills/awsome-videos -g \"*.md\"",
+      "isError": false,
+      "resultBytes": 353
+    },
+    {
+      "line": 290,
+      "tool": "write",
+      "path": "outputs/sqlite-indexes-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 107
+    },
+    {
+      "line": 306,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_brief.py outputs/sqlite-indexes-brief.md --require-voiceover --require-source-links --json > outputs/sqlite-indexes-validation.json\nuv run --script skills/awsome-videos/scripts/score_",
+      "isError": true,
+      "resultBytes": 7703
+    },
+    {
+      "line": 322,
+      "tool": "bash",
+      "path": null,
+      "command": "rg -n \"labeled_field_missing|missing labeled field values|Promise:\" skills/awsome-videos -g \"*.md\"",
+      "isError": false,
+      "resultBytes": 367
+    },
+    {
+      "line": 339,
+      "tool": "bash",
+      "path": null,
+      "command": "rg -n \"Promise:\" skills/awsome-videos -g \"*\"",
+      "isError": false,
+      "resultBytes": 742
+    },
+    {
+      "line": 352,
+      "tool": "read",
+      "path": "skills/awsome-videos/scripts/test_validators.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8723
+    },
+    {
+      "line": 365,
+      "tool": "read",
+      "path": "skills/awsome-videos/scripts/test_validators.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5928
+    },
+    {
+      "line": 378,
+      "tool": "edit",
+      "path": "outputs/sqlite-indexes-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4511
+    },
+    {
+      "line": 394,
+      "tool": "bash",
+      "path": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_brief.py outputs/sqlite-indexes-brief.md --require-voiceover --require-source-links --json > outputs/sqlite-indexes-validation.json\nuv run --script skills/awsome-videos/scripts/score_",
+      "isError": false,
+      "resultBytes": 6965
+    },
+    {
+      "line": 407,
+      "tool": "read",
+      "path": "outputs/sqlite-indexes-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1069
+    },
+    {
+      "line": 420,
+      "tool": "read",
+      "path": "outputs/sqlite-indexes-style.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3013
+    },
+    {
+      "line": 433,
+      "tool": "read",
+      "path": "outputs/sqlite-indexes-readiness.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3571
+    },
+    {
+      "line": 449,
+      "tool": "bash",
+      "path": null,
+      "command": "[ -f outputs/sqlite-indexes-blueprint.json ] && echo blueprint_exists || echo blueprint_missing\n[ -f outputs/sqlite-indexes-brief.md ] && echo brief_exists || echo brief_missing\n[ -f outputs/sqlite-indexes-validation.json ] && echo validati",
+      "isError": false,
+      "resultBytes": 126
+    }
+  ],
+  "findings": []
+}

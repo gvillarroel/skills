@@ -21,6 +21,8 @@ The excerpt below is the compact renderer source for this pattern. If it referen
 ```js
 function renderScaledDotProductAttention() {
     const svg = prepareSvg("scaled-dot-product-attention", "Scaled dot-product attention", "Query-key scores are masked, passed through softmax, and used to weight value vectors.");
+    svg.append("text").attr("class", "mark-label").attr("x", width / 2).attr("y", 42).attr("text-anchor", "middle")
+      .text("softmax((QK^T / sqrt(d_k)) + mask) V");
     const cell = 15;
     const gap = 3;
     const n = 5;
@@ -52,7 +54,7 @@ function renderScaledDotProductAttention() {
 
     drawMatrix(42, 126, n, 3, "Q", palette.red, (r, c) => .25 + ((r + c * 2) % 4) * .16, .08);
     drawMatrix(134, 126, 3, n, "K^T", palette.blue, (r, c) => .22 + ((r * 2 + c) % 5) * .13, .18);
-    drawMatrix(246, 112, n, n, "QK^T + mask", palette.orange, (r, c) => c > r ? -1 : .2 + ((r + c * 3) % 5) * .14, .45);
+    drawMatrix(246, 112, n, n, "scaled scores", palette.orange, (r, c) => c > r ? -1 : .2 + ((r + c * 3) % 5) * .14, .45);
     drawMatrix(376, 112, n, n, "softmax", palette.green, (r, c) => c > r ? .02 : Math.max(.08, .68 - Math.abs(r - c) * .16), .82);
     drawMatrix(476, 126, n, 2, "V", palette.purple, (r, c) => .24 + ((r + c) % 4) * .15, 1.02);
 

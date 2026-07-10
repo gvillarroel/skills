@@ -32,7 +32,7 @@ function renderBump() {
     names.forEach((name, i) => {
       const path = svg.append("path").datum(ranks[name]).attr("d", line).attr("fill", "none").attr("stroke", colors[i]).attr("stroke-width", 3);
       drawPath(path, .12 + i * .05, .9);
-      svg.append("text").attr("class", "mark-label").attr("x", width - 44).attr("y", y(ranks[name].at(-1)) + 4).text(name);
+      svg.append("text").attr("class", "mark-label").attr("x", width - 46).attr("y", y(ranks[name].at(-1)) + 4).attr("text-anchor", "end").text(name);
     });
   }
 ```

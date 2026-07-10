@@ -292,6 +292,7 @@
     const id = source.id || "";
     const family = `${source.kicker || ""} ${source.title || ""}`.toLowerCase();
     if (/airport/.test(family) || /airport/.test(id)) return "geospatial";
+    if (id === "token-boxes-to-context-window") return "flow";
     if (/natural math|archetype|phyllotaxis|hexagonal packing|voronoi cell/.test(family) || /natural-math-archetypes/.test(id)) return "matrix";
     if (/table|kanban|scorecard|document|gemma/.test(family) || /table|kanban|document|gemma/.test(id)) return "table";
     if (/matrix|heatmap|calendar|waffle|context|attention|correlogram|rectbin|tile|matmul/.test(family) || /matrix|calendar|waffle|context|attention|matmul/.test(id)) return "matrix";
@@ -619,7 +620,7 @@
       "parallel-coordinates",
       "scatterplot-tour"
     )) {
-      add("dense-label-lanes", "lanes", "the composition problem is mark density, so labels and callouts need external lanes without moving the data field");
+      add("dense-label-lanes", id === "tile-choropleth" ? "matrix" : "lanes", "the composition problem is mark density, so labels and callouts need external lanes without moving the data field");
     }
   }
 
@@ -1462,13 +1463,80 @@
 
   function renderLaneFlow(group, variant, labels) {
     if (/sequence/.test(variant.sourceId)) {
-      [70, 140, 210, 280].forEach((x, index) => {
-        addLine(group, x, 50, x, 158, { class: "semantic-sequence-life", stroke: palette.line, "stroke-width": 1.2, "stroke-dasharray": "4 5" });
-        appendText(group, x, 38, labels[index]?.text || tokenLabel(variant, "actor", index), { "text-anchor": "middle", "font-size": 6.5, "font-weight": 800, fill: palette.ink });
+      const actors = [
+        { label: "Client", x: 38, fill: palette.blueHighlight },
+        { label: "API", x: 109, fill: palette.yellowHighlight },
+        { label: "DB", x: 180, fill: palette.greenHighlight },
+        { label: "Job", x: 251, fill: palette.purpleHighlight },
+        { label: "Worker", x: 322, fill: palette.blueHighlight }
+      ];
+      actors.forEach(actor => {
+        addRect(group, actor.x - 25, 30, 50, 18, {
+          class: "semantic-flow-station semantic-sequence-actor",
+          rx: 5,
+          fill: actor.fill,
+          stroke: palette.blue,
+          "stroke-width": 1
+        });
+        appendText(group, actor.x, 42.2, actor.label, {
+          class: "semantic-flow-label semantic-sequence-actor-label",
+          "text-anchor": "middle",
+          "font-size": 6.2,
+          "font-weight": 800,
+          fill: palette.ink
+        });
+        addLine(group, actor.x, 50, actor.x, 178, {
+          class: "semantic-sequence-life",
+          stroke: palette.line,
+          "stroke-width": 1.1,
+          "stroke-dasharray": "4 4"
+        });
       });
-      [[70, 140, 66], [140, 210, 92], [210, 140, 118], [140, 280, 144]].forEach((msg, index) => {
-        addLine(group, msg[0], msg[2], msg[1], msg[2], { class: "semantic-sequence-message", stroke: [palette.blue, palette.orange, palette.green, palette.purple][index], "stroke-width": 1.8, "marker-end": "" });
-        addCircle(group, msg[1], msg[2], 3.2, { fill: [palette.blue, palette.orange, palette.green, palette.purple][index], stroke: palette.surface, "stroke-width": 0.8 });
+      addRect(group, 105, 57, 8, 102, {
+        class: "semantic-sequence-activation",
+        rx: 3,
+        fill: palette.yellowHighlight,
+        stroke: palette.orange,
+        "stroke-width": 0.8
+      });
+      const messages = [
+        { from: 0, to: 1, y: 66, label: "1 order", color: palette.blue },
+        { from: 1, to: 2, y: 82, label: "2 reserve", color: palette.orange },
+        { from: 2, to: 1, y: 98, label: "3 reservation id", color: palette.green, reply: true },
+        { from: 1, to: 3, y: 114, label: "4 schedule", color: palette.purple },
+        { from: 1, to: 0, y: 130, label: "5 accepted", color: palette.green, reply: true },
+        { from: 4, to: 3, y: 146, label: "6 process", color: palette.blue },
+        { from: 3, to: 4, y: 162, label: "7 complete", color: palette.green, reply: true }
+      ];
+      messages.forEach(message => {
+        const fromX = actors[message.from].x;
+        const toX = actors[message.to].x;
+        const direction = Math.sign(toX - fromX) || 1;
+        addLine(group, fromX, message.y, toX, message.y, {
+          class: "semantic-flow-link semantic-sequence-message",
+          stroke: message.color,
+          "stroke-width": 1.55,
+          "stroke-dasharray": message.reply ? "4 3" : undefined
+        });
+        addPolygon(group, [
+          [toX, message.y],
+          [toX - direction * 6, message.y - 3.2],
+          [toX - direction * 6, message.y + 3.2]
+        ], {
+          class: "semantic-flow-token semantic-sequence-arrow",
+          fill: message.color,
+          stroke: "none"
+        });
+        appendText(group, (fromX + toX) / 2, message.y - 3.2, message.label, {
+          class: "semantic-flow-label semantic-sequence-message-label",
+          "text-anchor": "middle",
+          "font-size": 4.9,
+          "font-weight": 750,
+          fill: palette.ink,
+          stroke: palette.surface,
+          "stroke-width": 1.8,
+          "paint-order": "stroke"
+        });
       });
       return true;
     }
@@ -1651,6 +1719,105 @@
       const x = 64 + index * 18;
       const y = 146 + Math.sin(index * 1.2) * 9;
       addRect(group, x, y, 10, 8, { class: "semantic-flow-token", rx: 2, fill: [palette.blue, palette.orange, palette.green, palette.purple][index % 4], "fill-opacity": 0.72, stroke: "none" });
+    });
+    return true;
+  }
+
+  function renderTokenBoxesDiagonal(group) {
+    const tokens = [
+      { word: "AI", id: "15836", color: palette.blue },
+      { word: "tools", id: "7526", color: palette.green },
+      { word: "write", id: "3350", color: palette.orange },
+      { word: "code", id: "2082", color: palette.red }
+    ];
+    const tokenY = 150;
+    const idY = 101;
+    const gridX = 250;
+    const gridY = 31;
+    const cell = 8;
+    const gap = 2;
+    addRect(group, gridX - 5, gridY - 5, 87, 87, {
+      class: "semantic-flow-station semantic-flow-context-window",
+      rx: 6,
+      fill: palette.surface,
+      stroke: palette.line,
+      "stroke-width": 1.1
+    });
+    Array.from({ length: 64 }, (_, index) => {
+      const col = index % 8;
+      const row = Math.floor(index / 8);
+      const active = index < tokens.length;
+      addRect(group, gridX + col * (cell + gap), gridY + row * (cell + gap), cell, cell, {
+        class: active
+          ? "semantic-flow-station semantic-flow-token semantic-flow-context-cell is-active"
+          : "semantic-flow-context-cell",
+        rx: 1.7,
+        fill: active ? tokens[index].color : palette.softLine,
+        "fill-opacity": active ? 0.82 : 0.78,
+        stroke: palette.surface,
+        "stroke-width": 0.6
+      });
+    });
+    tokens.forEach((token, index) => {
+      const tokenX = 28 + index * 42;
+      const idX = 102 + index * 36;
+      const slotX = gridX + index * (cell + gap) + cell / 2;
+      const slotY = gridY + cell / 2;
+      addPath(group, `M${tokenX + 18} ${tokenY} C${tokenX + 34} ${tokenY - 28}, ${idX + 5} ${idY + 22}, ${idX + 16} ${idY + 9} C${idX + 38} ${idY - 17}, ${slotX - 28} ${slotY + 24}, ${slotX} ${slotY}`, {
+        class: "semantic-flow-link semantic-token-context-route",
+        fill: "none",
+        stroke: token.color,
+        "stroke-width": 1.55,
+        "stroke-opacity": 0.56,
+        "stroke-linecap": "round"
+      });
+      addRect(group, tokenX, tokenY - 9, 36, 18, {
+        class: "semantic-flow-station semantic-flow-token-box",
+        rx: 4,
+        fill: palette.surface,
+        stroke: token.color,
+        "stroke-width": 1.35
+      });
+      appendText(group, tokenX + 18, tokenY + 3, token.word, {
+        class: "semantic-flow-label semantic-flow-token-word",
+        "text-anchor": "middle",
+        "font-size": 6.3,
+        "font-weight": 800,
+        fill: palette.ink
+      });
+      addRect(group, idX, idY, 32, 18, {
+        class: "semantic-flow-station semantic-flow-token-id",
+        rx: 4,
+        fill: palette.surface,
+        stroke: token.color,
+        "stroke-width": 1.1
+      });
+      appendText(group, idX + 16, idY + 12, token.id, {
+        class: "semantic-flow-label semantic-flow-token-id-label",
+        "text-anchor": "middle",
+        "font-size": 5.4,
+        "font-weight": 800,
+        fill: token.color
+      });
+    });
+    appendText(group, 28, 179, "prompt boxes", {
+      class: "semantic-flow-label",
+      "font-size": 6.2,
+      "font-weight": 800,
+      fill: palette.muted
+    });
+    appendText(group, 102, 94, "token IDs", {
+      class: "semantic-flow-label",
+      "font-size": 6.2,
+      "font-weight": 800,
+      fill: palette.muted
+    });
+    appendText(group, 250, 23, "8×8 context", {
+      class: "semantic-flow-label",
+      "text-anchor": "start",
+      "font-size": 6.2,
+      "font-weight": 800,
+      fill: palette.muted
     });
     return true;
   }
@@ -1955,6 +2122,7 @@
       "data-source-label-count": labels.length
     }));
     if (variant.compositionId === "balance-symmetry" && variant.sourceId === "critical-bowtie-barrier") return renderCriticalBowtieBalance(group, variant);
+    if (variant.compositionId === "diagonal-armature" && variant.sourceId === "token-boxes-to-context-window") return renderTokenBoxesDiagonal(group);
     if (variant.compositionId === "flow-spine" && renderSpecializedFlow(group, variant, paths, labels)) return true;
     const stationCount = clamp(Math.max(labels.length, Math.min(paths.length + 1, 6), 4), 4, 7);
     const stations = flowStations(variant.compositionId, stationCount);
@@ -2417,28 +2585,235 @@
   }
 
   function renderWordLane(group, variant, labels) {
-    const words = labels.length ? labels : titleWords(sourceForVariant(variant)).map(text => ({ text }));
-    words.concat(words).slice(0, 12).forEach((label, index) => {
-      const x = 84 + (index % 4) * 48 + seededRange(variant, index, -6, 6);
-      const y = 58 + Math.floor(index / 4) * 31 + seededRange(variant, index + 20, -5, 5);
-      appendText(group, x, y, label.text || tokenLabel(variant, "word", index), {
+    const extractedWords = visibleTextMarks(sourceSvgForVariant(variant), 18);
+    const sourceWords = extractedWords.length ? extractedWords : labels.length ? labels : titleWords(sourceForVariant(variant)).map(text => ({ text }));
+    const words = Array.from({ length: 14 }, (_, index) => sourceWords[index] || { text: tokenLabel(variant, "word", index) });
+    const centralPositions = [
+      [132, 72, 16],
+      [180, 58, 15],
+      [228, 74, 13.5],
+      [145, 113, 11.5],
+      [204, 108, 10.5],
+      [178, 148, 10]
+    ];
+    words.slice(0, 6).forEach((label, index) => {
+      const [x, y, fontSize] = centralPositions[index];
+      appendText(group, x, y, label.text, {
         class: "semantic-word-lane-word",
         "text-anchor": "middle",
-        "font-size": index < 4 ? 13 : 8.5,
-        "font-weight": index < 4 ? 800 : 700,
+        "font-size": fontSize,
+        "font-weight": index < 3 ? 800 : 720,
         fill: [palette.red, palette.blue, palette.green, palette.purple][index % 4],
         stroke: palette.surface,
-        "stroke-width": 2.4,
+        "stroke-width": 2.2,
         "paint-order": "stroke"
       });
     });
-    [42, 318].forEach((x, side) => {
-      Array.from({ length: 4 }, (_, index) => {
-        const y = 58 + index * 30;
-        addLine(group, side ? x - 46 : x + 46, y, 164 + (index % 2) * 28, y + 8, { class: "semantic-lane-leader", stroke: palette.line, "stroke-width": 0.9 });
-        addRect(group, side ? x - 46 : x, y - 8, 46, 14, { class: "semantic-word-lane-chip", rx: 4, fill: palette.surface, stroke: palette.softLine });
+    const anchors = [
+      [121, 89], [237, 88],
+      [136, 121], [223, 120],
+      [153, 151], [207, 149],
+      [170, 91], [191, 137]
+    ];
+    words.slice(6, 14).forEach((label, index) => {
+      const left = index % 2 === 0;
+      const laneIndex = Math.floor(index / 2);
+      const x = left ? 24 : 256;
+      const width = 80;
+      const y = 52 + laneIndex * 34;
+      const target = anchors[index];
+      addLine(group, left ? x + width : x, y, target[0], target[1], {
+        class: "semantic-lane-leader semantic-word-lane-leader",
+        stroke: [palette.blue, palette.green, palette.orange, palette.purple][index % 4],
+        "stroke-width": 0.95,
+        "stroke-opacity": 0.5
+      });
+      addCircle(group, target[0], target[1], 2.2, {
+        class: "semantic-lane-mark semantic-word-lane-anchor",
+        fill: [palette.blue, palette.green, palette.orange, palette.purple][index % 4],
+        stroke: palette.surface,
+        "stroke-width": 0.7
+      });
+      addRect(group, x, y - 9, width, 17, {
+        class: "semantic-word-lane-chip",
+        rx: 5,
+        fill: palette.surface,
+        stroke: palette.softLine
+      });
+      appendText(group, left ? x + 7 : x + width - 7, y + 2.2, label.text, {
+        class: "semantic-word-lane-label",
+        "text-anchor": left ? "start" : "end",
+        "font-size": 6.5,
+        "font-weight": 800,
+        fill: palette.ink
       });
     });
+    return true;
+  }
+
+  function addDenseLaneCallout(group, label, index, target, color = palette.blue) {
+    const left = index % 2 === 0;
+    const row = Math.floor(index / 2);
+    const x = left ? 20 : 260;
+    const width = 80;
+    const y = 52 + row * 34;
+    addLine(group, left ? x + width : x, y, target[0], target[1], {
+      class: "semantic-lane-leader semantic-map-lane-leader",
+      stroke: color,
+      "stroke-width": 0.95,
+      "stroke-opacity": 0.5
+    });
+    addRect(group, x, y - 9, width, 17, {
+      class: "semantic-map-lane-label",
+      rx: 5,
+      fill: palette.surface,
+      stroke: palette.softLine
+    });
+    appendText(group, left ? x + 7 : x + width - 7, y + 2.2, label, {
+      class: "semantic-map-lane-label-text",
+      "text-anchor": left ? "start" : "end",
+      "font-size": 6.2,
+      "font-weight": 800,
+      fill: palette.ink
+    });
+  }
+
+  function renderTileChoroplethLane(group, variant, labels) {
+    const colors = ["#d7e8f4", "#9ecae1", "#6baed6", "#3182bd", "#08519c"];
+    const regions = Array.from({ length: 12 }, (_, index) => {
+      const col = index % 4;
+      const row = Math.floor(index / 4);
+      const x = 112 + col * 34 + (row % 2) * 4;
+      const y = 49 + row * 38;
+      const points = [
+        [x, y + 4],
+        [x + 27, y],
+        [x + 31, y + 25],
+        [x + 6, y + 31],
+        [x, y + 4]
+      ];
+      addPath(group, `M${points.map(point => `${point[0]} ${point[1]}`).join("L")}Z`, {
+        class: "semantic-lane-mark semantic-tile-region",
+        fill: colors[(index * 3) % colors.length],
+        stroke: palette.surface,
+        "stroke-width": 1.25
+      });
+      return { x: x + 15, y: y + 15, index };
+    });
+    const sourceLabels = labels.filter(label => /^R\d+$/i.test(label.text));
+    const calloutLabels = Array.from({ length: 8 }, (_, index) => sourceLabels[index]?.text || `R${index + 1}`);
+    const targets = [regions[0], regions[3], regions[4], regions[7], regions[8], regions[11], regions[5], regions[6]];
+    calloutLabels.forEach((label, index) => {
+      const target = targets[index];
+      addDenseLaneCallout(group, label, index, [target.x, target.y], colors[(target.index * 3) % colors.length]);
+    });
+    return true;
+  }
+
+  function renderTissotLane(group) {
+    addPath(group, "M108 106 C108 62 139 42 180 42 C221 42 252 62 252 106 C252 150 221 170 180 170 C139 170 108 150 108 106Z", {
+      class: "semantic-map-lane-region semantic-tissot-sphere",
+      fill: palette.blueHighlight,
+      "fill-opacity": 0.2,
+      stroke: palette.blue,
+      "stroke-width": 1.05,
+      "stroke-opacity": 0.5
+    });
+    [142, 180, 218].forEach((x, index) => {
+      addPath(group, `M${x} 45 C${x - 16 + index * 8} 72, ${x - 16 + index * 8} 140, ${x} 167`, {
+        class: "semantic-tissot-graticule",
+        fill: "none",
+        stroke: palette.softLine,
+        "stroke-width": 0.8
+      });
+    });
+    [74, 106, 138].forEach(y => {
+      addPath(group, `M112 ${y} C142 ${y - 7}, 218 ${y - 7}, 248 ${y}`, {
+        class: "semantic-tissot-graticule",
+        fill: "none",
+        stroke: palette.softLine,
+        "stroke-width": 0.8
+      });
+    });
+    const xs = [120, 150, 180, 210, 240];
+    const ys = [65, 106, 147];
+    const indicatrices = [];
+    ys.forEach((y, row) => {
+      xs.forEach((x, col) => {
+        const rx = 4.6 + Math.abs(col - 2) * 0.9;
+        const ry = row === 1 ? 4.8 : 7.4;
+        addPath(group, `M${x - rx} ${y}A${rx} ${ry} 0 1 0 ${x + rx} ${y}A${rx} ${ry} 0 1 0 ${x - rx} ${y}Z`, {
+          class: "semantic-lane-mark semantic-tissot-indicatrix",
+          fill: palette.orangeHighlight,
+          "fill-opacity": 0.58,
+          stroke: palette.orange,
+          "stroke-width": 1.05
+        });
+        indicatrices.push({ x, y, row, col });
+      });
+    });
+    const callouts = [
+      ["polar stretch", indicatrices[0]],
+      ["edge stretch", indicatrices[4]],
+      ["near equal", indicatrices[7]],
+      ["mid-latitude", indicatrices[13]]
+    ];
+    callouts.forEach(([label, target], index) => addDenseLaneCallout(group, label, index, [target.x, target.y], palette.orange));
+    return true;
+  }
+
+  function renderHexbinMapLane(group) {
+    addPath(group, "M108 106 C108 62 139 42 180 42 C221 42 252 62 252 106 C252 150 221 170 180 170 C139 170 108 150 108 106Z", {
+      class: "semantic-map-lane-region semantic-hexbin-sphere",
+      fill: palette.blueHighlight,
+      "fill-opacity": 0.28,
+      stroke: palette.blue,
+      "stroke-width": 1.05,
+      "stroke-opacity": 0.5
+    });
+    addPath(group, "M119 83 C132 65 154 61 166 72 C157 86 139 92 119 83Z", {
+      class: "semantic-map-lane-region semantic-hexbin-land",
+      fill: palette.surface,
+      stroke: palette.softLine,
+      "stroke-width": 0.7
+    });
+    addPath(group, "M185 82 C204 64 232 73 240 93 C227 105 211 102 203 117 C191 111 184 98 185 82Z", {
+      class: "semantic-map-lane-region semantic-hexbin-land",
+      fill: palette.surface,
+      stroke: palette.softLine,
+      "stroke-width": 0.7
+    });
+    const heat = [palette.yellowHighlight, palette.orangeHighlight, palette.orange, palette.red, palette.purple];
+    const rowCounts = [4, 6, 7, 6, 4];
+    const bins = [];
+    rowCounts.forEach((count, row) => {
+      const y = 64 + row * 21;
+      const startX = 180 - ((count - 1) * 20) / 2;
+      Array.from({ length: count }, (_, col) => {
+        const x = startX + col * 20;
+        const density = 1 + ((row * 7 + col * 3) % heat.length);
+        const points = Array.from({ length: 6 }, (__, pointIndex) => {
+          const angle = Math.PI / 3 * pointIndex + Math.PI / 6;
+          return [x + Math.cos(angle) * 10, y + Math.sin(angle) * 10];
+        });
+        addPath(group, `M${points.map(point => `${point[0].toFixed(2)} ${point[1].toFixed(2)}`).join("L")}Z`, {
+          class: "semantic-lane-mark semantic-hexbin-cell",
+          fill: heat[density - 1],
+          "fill-opacity": 0.8,
+          stroke: palette.surface,
+          "stroke-width": 0.9
+        });
+        bins.push({ x, y, density });
+      });
+    });
+    const byDensity = value => bins.find(bin => bin.density === value);
+    const callouts = [
+      ["low density", byDensity(1)],
+      ["moderate", byDensity(2)],
+      ["high density", byDensity(4)],
+      ["peak bin", byDensity(5)]
+    ];
+    callouts.forEach(([label, target], index) => addDenseLaneCallout(group, label, index, [target.x, target.y], heat[target.density - 1]));
     return true;
   }
 
@@ -2517,6 +2892,9 @@
     if (/word-cloud/.test(variant.sourceId)) return renderWordLane(group, variant, labels);
     if (/parallel-coordinates/.test(variant.sourceId)) return renderParallelLane(group, variant, labels);
     if (/contours|terrain|volcano/.test(variant.sourceId)) return renderContourLane(group, variant, labels);
+    if (variant.sourceId === "tile-choropleth") return renderTileChoroplethLane(group, variant, labels);
+    if (variant.sourceId === "tissot-indicatrix") return renderTissotLane(group);
+    if (variant.sourceId === "hexbin-map") return renderHexbinMapLane(group);
     if (/airport|map|cartogram|choropleth|tissot|dorling|hexbin-map|star-map/.test(variant.sourceId)) return renderMapLane(group, variant, circles, rects, paths, labels);
     return false;
   }

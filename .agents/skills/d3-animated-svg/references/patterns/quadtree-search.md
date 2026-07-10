@@ -33,9 +33,16 @@ function renderQuadtreeSearch() {
       cells.push({ x0, y0, x1, y1, leaf: !node.length });
       return false;
     });
+    const visibleCells = cells.map(cell => ({
+      ...cell,
+      x0: Math.max(bounds.x0, cell.x0),
+      y0: Math.max(bounds.y0, cell.y0),
+      x1: Math.min(bounds.x1, cell.x1),
+      y1: Math.min(bounds.y1, cell.y1)
+    })).filter(cell => cell.x1 > cell.x0 && cell.y1 > cell.y0);
     const target = [366, 178];
     const nearest = tree.find(target[0], target[1]);
-    const cellRects = svg.append("g").selectAll("rect").data(cells).join("rect")
+    const cellRects = svg.append("g").selectAll("rect").data(visibleCells).join("rect")
       .attr("x", d => d.x0).attr("y", d => d.y0)
       .attr("width", d => Math.max(0, d.x1 - d.x0))
       .attr("height", d => Math.max(0, d.y1 - d.y0))

@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import json
 import re
@@ -64,8 +65,8 @@ def slug(value: str) -> str:
     return re.sub(r"[^A-Za-z0-9_.-]+", "-", value).strip("-").lower() or "diagram"
 
 
-def class_color_tokens(styler, colorset: str, class_name: str) -> set[str]:
-    style = styler.class_style(colorset, class_name)
+def class_color_tokens(styler, colorset: str, class_name: str, family: str) -> set[str]:
+    style = styler.class_style(colorset, class_name, family)
     return {token.lower() for token in re.findall(r"#[0-9a-fA-F]{6}", style)}
 
 
@@ -74,6 +75,11 @@ def inspect_rendered_svg(styler, colorset: str, example: dict[str, object], svg_
     if not svg_path.exists() or svg_path.stat().st_size < 100:
         return [f"{colorset} render output is missing or too small"]
     svg = svg_path.read_text(encoding="utf-8", errors="replace").lower().replace(" ", "")
+    svg = re.sub(
+        r"rgb\((\d+),(\d+),(\d+)\)",
+        lambda match: "#" + "".join(f"{int(match.group(index)):02x}" for index in (1, 2, 3)),
+        svg,
+    )
     if (
         'aria-roledescription="error"' in svg
         or 'class="error-icon"' in svg
@@ -90,19 +96,65 @@ def inspect_rendered_svg(styler, colorset: str, example: dict[str, object], svg_
                 findings.append(f"{colorset} sequence render missing expected primary theme token {token}")
     if example["classable"]:
         for class_name in example["referencedClasses"]:
-            missing = sorted(token for token in class_color_tokens(styler, colorset, str(class_name)) if token not in svg)
+            missing = sorted(
+                token
+                for token in class_color_tokens(styler, colorset, str(class_name), str(example["family"]))
+                if token not in svg
+            )
             if missing:
                 findings.append(f"{colorset} render missing {class_name} color tokens: {', '.join(missing)}")
     return findings
 
 
-def render_example(npx: str, package: str, source_path: Path, svg_path: Path, timeout: int, retries: int) -> dict[str, object]:
+def render_example(
+    npx: str,
+    package: str,
+    source_path: Path,
+    svg_path: Path,
+    timeout: int,
+    retries: int,
+    reuse_existing: bool,
+) -> dict[str, object]:
     svg_path.parent.mkdir(parents=True, exist_ok=True)
+    metadata_path = svg_path.with_suffix(svg_path.suffix + ".render.json")
+    source_sha256 = hashlib.sha256(source_path.read_bytes()).hexdigest()
+    package_is_pinned = re.search(r"@\d+\.\d+\.\d+(?:[-+][A-Za-z0-9_.-]+)?$", package) is not None
+    cached_metadata: dict[str, object] = {}
+    if metadata_path.is_file():
+        try:
+            loaded_metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+            if isinstance(loaded_metadata, dict):
+                cached_metadata = loaded_metadata
+        except (json.JSONDecodeError, OSError):
+            cached_metadata = {}
+    if (
+        reuse_existing
+        and package_is_pinned
+        and svg_path.exists()
+        and svg_path.stat().st_size >= 100
+        and svg_path.stat().st_mtime_ns >= source_path.stat().st_mtime_ns
+        and cached_metadata.get("schemaVersion") == 1
+        and cached_metadata.get("package") == package
+        and cached_metadata.get("sourceSha256") == source_sha256
+    ):
+        return {
+            "command": None,
+            "exitCode": 0,
+            "stdout": "",
+            "stderr": "",
+            "svg": str(svg_path),
+            "sizeBytes": svg_path.stat().st_size,
+            "attemptCount": 0,
+            "attempts": [],
+            "reused": True,
+        }
     attempts: list[dict[str, object]] = []
     result: subprocess.CompletedProcess[str] | None = None
     for attempt in range(1, retries + 1):
         if svg_path.exists():
             svg_path.unlink()
+        if metadata_path.exists():
+            metadata_path.unlink()
         result = run_command([npx, "-y", package, "-i", str(source_path), "-o", str(svg_path), "--quiet"], source_path.parent, timeout)
         attempts.append(
             {
@@ -117,6 +169,20 @@ def render_example(npx: str, package: str, source_path: Path, svg_path: Path, ti
             break
     if result is None:
         raise RuntimeError("Render was not attempted.")
+    if result.returncode == 0 and svg_path.exists():
+        metadata_path.write_text(
+            json.dumps(
+                {
+                    "schemaVersion": 1,
+                    "package": package,
+                    "sourceSha256": source_sha256,
+                },
+                indent=2,
+                sort_keys=True,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
     return {
         "command": f"npx -y {package} -i {source_path.name} -o {svg_path.name} --quiet",
         "exitCode": result.returncode,
@@ -126,6 +192,7 @@ def render_example(npx: str, package: str, source_path: Path, svg_path: Path, ti
         "sizeBytes": svg_path.stat().st_size if svg_path.exists() else 0,
         "attemptCount": len(attempts),
         "attempts": attempts,
+        "reused": False,
     }
 
 
@@ -141,7 +208,7 @@ def extract_examples(styler, fixture: Path) -> list[dict[str, object]]:
         examples.append(
             {
                 "index": index,
-                "id": f"{index:02d}-{slug(declaration)}",
+                "id": f"{slug(family)}--{slug(declaration)}",
                 "line": text[: match.start("body")].count("\n") + 1,
                 "declaration": declaration,
                 "family": family,
@@ -164,12 +231,22 @@ def review_examples(args: argparse.Namespace) -> dict[str, object]:
 
     findings: list[str] = []
     declarations = [str(example["declaration"]) for example in examples]
+    families = sorted({str(example["family"]) for example in examples})
     missing_declarations = [decl for decl in styler.OFFICIAL_DECLARATIONS if decl not in declarations]
+    missing_supported_declarations = [decl for decl in styler.SUPPORTED_DECLARATIONS if decl not in declarations]
     duplicate_declarations = sorted({decl for decl in declarations if declarations.count(decl) > 1})
+    unexpected_declarations = sorted(set(declarations) - set(styler.SUPPORTED_DECLARATIONS))
+    missing_families = [family for family in styler.OFFICIAL_FAMILIES if family not in families]
     if missing_declarations:
-        findings.append(f"Fixture missing official declarations: {', '.join(missing_declarations)}")
+        findings.append(f"Fixture missing current declarations: {', '.join(missing_declarations)}")
+    if missing_supported_declarations:
+        findings.append(f"Fixture missing accepted declarations: {', '.join(missing_supported_declarations)}")
     if duplicate_declarations:
         findings.append(f"Fixture has duplicate declarations: {', '.join(duplicate_declarations)}")
+    if unexpected_declarations:
+        findings.append(f"Fixture has unexpected declarations: {', '.join(unexpected_declarations)}")
+    if missing_families:
+        findings.append(f"Fixture missing public families: {', '.join(missing_families)}")
 
     referenced_classes = {class_name for example in examples for class_name in example["referencedClasses"]}
     missing_classes = sorted(styler.COLOR_CLASSES - referenced_classes)
@@ -216,8 +293,17 @@ def review_examples(args: argparse.Namespace) -> dict[str, object]:
                 source_dir.mkdir(parents=True, exist_ok=True)
                 source_path = source_dir / f"{example['id']}.mmd"
                 svg_path = svg_dir / f"{example['id']}.svg"
-                source_path.write_text(styled, encoding="utf-8")
-                render = render_example(npx, args.mermaid_cli_package, source_path, svg_path, args.render_timeout, args.render_retries)
+                if not source_path.exists() or source_path.read_text(encoding="utf-8") != styled:
+                    source_path.write_text(styled, encoding="utf-8")
+                render = render_example(
+                    npx,
+                    args.mermaid_cli_package,
+                    source_path,
+                    svg_path,
+                    args.render_timeout,
+                    args.render_retries,
+                    args.reuse_existing,
+                )
                 colorset_result["render"] = render
                 if render["exitCode"] != 0:
                     example_findings.append(f"{colorset} render failed with exit {render['exitCode']}: {render['stderr']}")
@@ -238,13 +324,33 @@ def review_examples(args: argparse.Namespace) -> dict[str, object]:
         "approved": not findings,
         "fixture": str(fixture),
         "exampleCount": len(examples),
+        "mermaidVersion": styler.MERMAID_VERSION,
+        "diagramTypeManifest": "references/diagram-types.json",
+        "officialFamilyCount": len(styler.OFFICIAL_FAMILIES),
+        "coveredFamilyCount": len(styler.OFFICIAL_FAMILIES) - len(missing_families),
+        "familyCoveragePercent": round(
+            ((len(styler.OFFICIAL_FAMILIES) - len(missing_families)) / len(styler.OFFICIAL_FAMILIES)) * 100,
+            2,
+        ),
         "officialDeclarationCount": len(styler.OFFICIAL_DECLARATIONS),
+        "officialDeclarationCoveragePercent": round(
+            ((len(styler.OFFICIAL_DECLARATIONS) - len(missing_declarations)) / len(styler.OFFICIAL_DECLARATIONS)) * 100,
+            2,
+        ),
+        "supportedDeclarationCount": len(styler.SUPPORTED_DECLARATIONS),
+        "supportedDeclarationCoveragePercent": round(
+            ((len(styler.SUPPORTED_DECLARATIONS) - len(missing_supported_declarations)) / len(styler.SUPPORTED_DECLARATIONS)) * 100,
+            2,
+        ),
         "approvedExampleCount": sum(1 for example in report_examples if example["approved"]),
         "colorsetsReviewed": ["colorset1", "colorset2"],
         "rendered": bool(args.render),
         "mermaidCliPackage": args.mermaid_cli_package if args.render else None,
         "missingDeclarations": missing_declarations,
+        "missingSupportedDeclarations": missing_supported_declarations,
         "duplicateDeclarations": duplicate_declarations,
+        "unexpectedDeclarations": unexpected_declarations,
+        "missingFamilies": missing_families,
         "missingColorClasses": missing_classes,
         "examples": report_examples,
         "findings": findings,
@@ -260,6 +366,11 @@ def main() -> int:
     parser.add_argument("--mermaid-cli-package", default=DEFAULT_MERMAID_PACKAGE, help="npx package spec for Mermaid CLI.")
     parser.add_argument("--render-timeout", type=int, default=60, help="Seconds to allow each Mermaid CLI render.")
     parser.add_argument("--render-retries", type=int, default=8, help="Attempts for each Mermaid CLI render before failing.")
+    parser.add_argument(
+        "--reuse-existing",
+        action="store_true",
+        help="Reuse an SVG only when a sidecar matches its source hash and exact pinned Mermaid CLI package.",
+    )
     args = parser.parse_args()
 
     report = review_examples(args)

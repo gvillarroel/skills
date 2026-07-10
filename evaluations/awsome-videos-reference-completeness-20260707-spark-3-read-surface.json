@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 3,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 908
+    },
+    {
+      "path": "outputs/reference-completeness-stdout.json",
+      "calls": 1,
+      "resultBytes": 5541
+    },
+    {
+      "path": "outputs/reference-completeness.json",
+      "calls": 1,
+      "resultBytes": 5203
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 908
+    },
+    {
+      "path": "outputs/reference-completeness-stdout.json",
+      "calls": 1,
+      "resultBytes": 5541
+    },
+    {
+      "path": "outputs/reference-completeness.json",
+      "calls": 1,
+      "resultBytes": 5203
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 908
+    },
+    {
+      "line": 28,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/awsome-videos/scripts/check_reference_completeness.py --json --output outputs/reference-completeness.json > outputs/reference-completeness-stdout.json'",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 45,
+      "tool": "read",
+      "path": "outputs/reference-completeness-stdout.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5541
+    },
+    {
+      "line": 46,
+      "tool": "read",
+      "path": "outputs/reference-completeness.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5203
+    }
+  ],
+  "findings": []
+}

@@ -41,5 +41,5 @@
 ## Render Command
 
 ```powershell
-uv run --script skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root projects/metro-design-repair-contracts-full/videos/what-is-an-llm --title "What is an LLM" --output-id what-is-an-llm --pattern metric-dashboard
+uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root projects/metro-design-repair-contracts-full/videos/what-is-an-llm --title "What is an LLM" --output-id what-is-an-llm --pattern metric-dashboard
 ```

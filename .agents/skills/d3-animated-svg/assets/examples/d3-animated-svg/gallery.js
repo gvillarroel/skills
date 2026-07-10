@@ -190,9 +190,9 @@
     { id: "d3-gantt-rollout", kicker: "Diagram", title: "D3 Gantt Rollout", copy: "Time-scaled tasks, sections, dependencies, milestones, and today marker.", render: renderD3GanttRollout },
     { id: "d3-git-graph", kicker: "Diagram", title: "D3 Git Graph", copy: "Branches, commits, merge curves, and commit labels as SVG geometry.", render: renderD3GitGraph },
     { id: "d3-kanban-board", kicker: "Diagram", title: "D3 Kanban Board", copy: "Columns and ticket cards recreated with D3 joins and staged reveal.", render: renderD3KanbanBoard },
-    { id: "kanban-assignee-board", kicker: "Diagram", title: "Kanban Assignee Board", copy: "Five Kanban columns show compact task titles with two-letter colored assignee dots and a legend.", render: renderKanbanAssigneeBoard },
-    { id: "kanban-assignee-virtual-legend", kicker: "Diagram", title: "Kanban Virtual Legend", copy: "A five-column Kanban board keeps symmetry by rendering the people legend as a virtual sixth column.", render: renderKanbanAssigneeBoardVirtualLegend },
-    { id: "kanban-assignee-distributed-legend", kicker: "Diagram", title: "Kanban Distributed Legend", copy: "A five-column Kanban board distributes person legend chips through the spare footer space in each column.", render: renderKanbanAssigneeBoardDistributedLegend },
+    { id: "kanban-assignee-board", kicker: "Diagram", title: "Kanban Assignee Board", copy: "Five Kanban columns show compact task titles with two-letter colored assignee dots and a legend.", render: renderKanbanAssigneeBoard, size: "wide" },
+    { id: "kanban-assignee-virtual-legend", kicker: "Diagram", title: "Kanban Virtual Legend", copy: "A five-column Kanban board keeps symmetry by rendering the people legend as a virtual sixth column.", render: renderKanbanAssigneeBoardVirtualLegend, size: "wide" },
+    { id: "kanban-assignee-distributed-legend", kicker: "Diagram", title: "Kanban Distributed Legend", copy: "A five-column Kanban board distributes person legend chips through the spare footer space in each column.", render: renderKanbanAssigneeBoardDistributedLegend, size: "wide" },
     { id: "d3-user-journey", kicker: "Diagram", title: "D3 User Journey", copy: "Journey sections, steps, actors, and satisfaction scores as a custom chart.", render: renderD3UserJourney },
     { id: "parallel-coordinates", kicker: "Multivariate", title: "Parallel Coordinates", copy: "Many-dimensional profiles as polylines.", render: renderParallelCoordinates },
     { id: "bubble-scatter", kicker: "Correlation", title: "Bubble Scatter", copy: "Position, radius, and group encoded together.", render: renderBubbleScatter },
@@ -237,7 +237,7 @@
     { id: "qkv-projection-flow", kicker: "Transformer", title: "QKV Projection Flow", copy: "Token embeddings split into query, key, and value matrices before attention.", render: renderQkvProjectionFlow },
     { id: "lora-rank-update", kicker: "Adaptation", title: "LoRA Rank Update", copy: "A frozen weight matrix receives a compact low-rank update path.", render: renderLoraRankUpdate },
     { id: "flashattention-blocks", kicker: "Attention", title: "FlashAttention Blocks", copy: "Block tiles move between HBM and SRAM to reduce attention memory traffic.", render: renderFlashAttentionBlocks },
-    { id: "moe-router-capacity", kicker: "LLM", title: "MoE Router Capacity", copy: "Token-level top-k routing fills expert slots and exposes capacity overflow.", render: renderMoeRouterCapacity },
+    { id: "moe-router-capacity", kicker: "LLM", title: "MoE Router Capacity", copy: "Token-level top-k routing fills expert slots and exposes capacity overflow.", render: renderMoeRouterCapacity, size: "wide" },
     { id: "speculative-decoding-verify", kicker: "Inference", title: "Speculative Decode Verify", copy: "Draft tokens branch ahead while the target model accepts a prefix and rejects the tail.", render: renderSpeculativeDecodingVerify },
     { id: "rope-position-rotation", kicker: "Transformer", title: "RoPE Position Rotation", copy: "Position-indexed query and key vectors rotate before relative attention scoring.", render: renderRopePositionRotation },
     { id: "matmul-tile-accumulation", kicker: "Matrix", title: "Matmul Tile Accumulation", copy: "A and B tiles sweep into C while partial products accumulate.", render: renderMatmulTileAccumulation },
@@ -247,7 +247,7 @@
     { id: "residual-rmsnorm-stream", kicker: "Transformer", title: "Residual RMSNorm Stream", copy: "The residual stream branches through attention, adds back, then normalizes.", render: renderResidualRmsnormStream },
     { id: "swiglu-feed-forward", kicker: "Transformer", title: "SwiGLU Feed Forward", copy: "Up and gate projections multiply before down projection returns to model width.", render: renderSwigluFeedForward },
     { id: "paged-kv-cache", kicker: "Inference", title: "Paged KV Cache", copy: "Concurrent requests allocate fixed KV pages and reuse freed blocks.", render: renderPagedKvCache },
-    { id: "web-load-timeline", kicker: "Performance", title: "Web Load Timeline", copy: "A page load unfolds across network, parsing, assets, paint, and interactivity lanes.", render: renderWebLoadTimeline },
+    { id: "web-load-timeline", kicker: "Performance", title: "Web Load Timeline", copy: "A page load unfolds across network, parsing, assets, paint, and interactivity lanes.", render: renderWebLoadTimeline, size: "wide" },
     { id: "tile-choropleth", kicker: "Geospatial", title: "Tile Choropleth", copy: "Region shapes colored by local intensity.", render: renderTileChoropleth },
     { id: "spiral-timeline", kicker: "Temporal", title: "Spiral Timeline", copy: "Long sequences wrapped into cyclic space.", render: renderSpiralTimeline },
     { id: "candlestick", kicker: "Financial", title: "Candlestick", copy: "Open-high-low-close movement with wicks.", render: renderCandlestick },
@@ -286,7 +286,7 @@
     { id: "binary-classifier-labeled", kicker: "AI", title: "Binary Classifier Labels", copy: "The same binary decision includes feature, probability, and class labels.", render: renderBinaryClassifierLabeled },
     { id: "temporal-network", kicker: "Network", title: "Network Evolution", copy: "Topology snapshots settle as links change.", render: renderTemporalNetwork },
     { id: "tangled-tree", kicker: "Hierarchy", title: "Tangled Tree", copy: "A layered tree allows multiple parents per child.", render: renderTangledTree },
-    { id: "tangled-tree-levels", kicker: "Hierarchy", title: "Tangled Tree Levels", copy: "A multi-parent DAG draws one hierarchy level at a time.", render: renderTangledTreeLevels },
+    { id: "tangled-tree-levels", kicker: "Hierarchy", title: "Tangled Tree Levels", copy: "A multi-parent DAG draws one hierarchy level at a time.", render: renderTangledTreeLevels, size: "wide" },
     { id: "calendar-year", kicker: "Calendar", title: "Calendar Year", copy: "Daily values wrap into month grids and weekly rows.", render: renderCalendarYear },
     { id: "vaccine-impact", kicker: "Public health", title: "Vaccine Impact", copy: "Disease incidence collapses after intervention markers.", render: renderVaccineImpact },
     { id: "word-cloud", kicker: "Text", title: "Word Cloud", copy: "Weighted terms occupy an animated text layout.", render: renderWordCloud },
@@ -781,6 +781,33 @@
       .call(d3.axisLeft(scale).ticks(ticks));
   }
 
+  const schematicLand = {
+    type: "FeatureCollection",
+    features: [
+      { type: "Feature", properties: { region: "North America" }, geometry: { type: "Polygon", coordinates: [[[-168, 16], [-150, 68], [-108, 74], [-58, 50], [-80, 8], [-122, 12], [-168, 16]]] } },
+      { type: "Feature", properties: { region: "South America" }, geometry: { type: "Polygon", coordinates: [[[-82, 12], [-50, 10], [-34, -54], [-70, -56], [-82, 12]]] } },
+      { type: "Feature", properties: { region: "Eurasia" }, geometry: { type: "Polygon", coordinates: [[[-10, 35], [6, 70], [72, 76], [178, 54], [150, 8], [96, 6], [42, 28], [-10, 35]]] } },
+      { type: "Feature", properties: { region: "Africa" }, geometry: { type: "Polygon", coordinates: [[[-18, 34], [48, 34], [42, -36], [12, -35], [-18, 34]]] } },
+      { type: "Feature", properties: { region: "Australia" }, geometry: { type: "Polygon", coordinates: [[[112, -10], [154, -12], [150, -44], [114, -38], [112, -10]]] } },
+      { type: "Feature", properties: { region: "Greenland" }, geometry: { type: "Polygon", coordinates: [[[-74, 60], [-60, 82], [-22, 84], [-20, 60], [-74, 60]]] } }
+    ]
+  };
+
+  function appendSchematicLand(svg, path, fill = palette.gray100) {
+    return svg.append("g")
+      .attr("class", "schematic-land")
+      .attr("data-map-context", "schematic-land")
+      .selectAll("path")
+      .data(schematicLand.features)
+      .join("path")
+      .attr("d", path)
+      .attr("fill", fill)
+      .attr("fill-opacity", .92)
+      .attr("stroke", palette.gray300)
+      .attr("stroke-width", .8)
+      .attr("stroke-linejoin", "round");
+  }
+
   function quantizedRamp(domain, range) {
     return d3.scaleQuantize().domain(domain).range(range);
   }
@@ -898,6 +925,7 @@
     svg.selectAll(".axis path, .axis line").attr("stroke", palette.gray400);
     svg.selectAll(".axis text").style("fill", palette.gray700);
     svg.selectAll(".grid line").attr("stroke", palette.gray100);
+    svg.selectAll("text").style("font-family", '"Open Sans", Arial, sans-serif');
     setReadableText(svg.selectAll(".caption, .label"), palette.gray700);
     setReadableText(svg.selectAll(".mark-label"), palette.ink);
     svg.selectAll(".reverse-label")
@@ -2640,7 +2668,7 @@
       { id: "T15", label: "T15 Auth risk", x: 374, y: 118, lx: 396, ly: 128, memberships: ["api", "security"] },
       { id: "T16", label: "T16 QA gate", x: 240, y: 280, lx: 242, ly: 318, memberships: ["data", "qa", "release"] },
       { id: "T17", label: "T17 Criteria", x: 212, y: 150, lx: 154, ly: 148, memberships: ["backlog", "ux", "data"] },
-      { id: "T18", label: "T18 Migration", x: 326, y: 196, lx: 350, ly: 204, memberships: ["api", "data", "qa"] },
+      { id: "T18", label: "T18 Migration", x: 326, y: 196, lx: 356, ly: 184, memberships: ["api", "data", "qa"] },
       { id: "T19", label: "T19 Notes", x: 206, y: 252, lx: 158, ly: 356, memberships: ["docs", "data", "release"] },
       { id: "T20", label: "T20 Drill", x: 360, y: 286, lx: 356, ly: 344, memberships: ["data", "qa", "ops"] }
     ];
@@ -2952,7 +2980,7 @@
       { label: "2 scopes", fill: palette.orange },
       { label: "3+ scopes", fill: palette.red }
     ];
-    const legendGroup = svg.append("g").attr("transform", `translate(${svgWidth - 348},${svgHeight - 22})`);
+    const legendGroup = svg.append("g").attr("transform", `translate(${svgWidth - 438},${svgHeight - 22})`);
     const legendItems = legendGroup.selectAll("g").data(legend).join("g").attr("transform", (_, i) => `translate(${i * 66},0)`);
     legendItems.append("circle").attr("r", 3.6).attr("cx", 0).attr("cy", 0).attr("fill", d => d.fill).attr("stroke", palette.surface).attr("stroke-width", 1.1);
     legendItems.append("text").attr("class", "caption").attr("x", 7).attr("y", 3.5).attr("font-size", 8.4).text(d => d.label);
@@ -2960,8 +2988,9 @@
 
     svg.append("text")
       .attr("class", "caption")
-      .attr("x", svgWidth / 2 - 205)
+      .attr("x", svgWidth - 470)
       .attr("y", svgHeight - 22)
+      .attr("text-anchor", "end")
       .attr("font-weight", 800)
       .text("100 tasks, direct leaders, 0 label collisions");
   }
@@ -3125,7 +3154,7 @@
     }
 
     const labelLayer = svg.append("g").attr("class", "venn-label-layer");
-    circles.forEach((item, index) => vennSetLabel(labelLayer, item, .38 + index * .04));
+    circles.filter(item => !item.hideExternalLabel).forEach((item, index) => vennSetLabel(labelLayer, item, .38 + index * .04));
     if (options.note) {
       vennTextBlock(svg, options.note, width / 2, height - 38, {
         textClass: "caption",
@@ -3293,7 +3322,7 @@
     ];
     const ring = vennRosettePoints(6, center, 82);
     const circles = [
-      makeVennCircle("core", "LL", "Core", center.x, center.y, 82, palette.gold, center.x, center.y - 138, { center: true })
+      makeVennCircle("core", "LL", "Core", center.x, center.y, 82, palette.gold, center.x, center.y, { center: true, hideExternalLabel: true })
     ].concat(outer.map((item, index) => makeVennCircle(
       item[0],
       item[1],
@@ -3302,14 +3331,14 @@
       ring[index].y,
       82,
       item[3],
-      center.x + Math.cos(ring[index].angle) * 210,
-      center.y + Math.sin(ring[index].angle) * 148
+      index === 3 ? 420 : center.x + Math.cos(ring[index].angle) * 210,
+      index === 3 ? 330 : center.y + Math.sin(ring[index].angle) * 148
     )));
     renderVennPattern("symmetric-seven-circle-flower", "Symmetric seven circle flower", "A center circle plus six equal neighboring domains in a stable flower pattern.", {
       layout: "symmetric-7-flower",
       center,
       guideCircle: { ...center, r: 82 },
-      centerLabel: ["center", "+ six"],
+      centerLabel: ["Core", "+ six"],
       note: "one center with six equal neighbors",
       opacity: .27,
       circles
@@ -4306,7 +4335,7 @@
     const svg = prepareSvg("bubble-scatter", "Bubble scatter", "D3 scatterplot using radius and color encodings.");
     const data = d3.range(24).map(i => ({ x: 20 + i * 3 + (i % 4) * 8, y: 40 + Math.sin(i * .7) * 18 + (i % 5) * 9, r: 5 + (i % 6) * 2, group: i % 3 }));
     const margin = { top: 34, right: 36, bottom: 48, left: 54 };
-    const x = d3.scaleLinear().domain([15, 105]).range([margin.left, width - margin.right]);
+    const x = d3.scaleLinear().domain([15, 120]).range([margin.left, width - margin.right]);
     const y = d3.scaleLinear().domain([15, 100]).range([height - margin.bottom, margin.top]);
     axisBottom(svg, x, height - margin.bottom, 5);
     axisLeft(svg, y, margin.left, 5);
@@ -5306,8 +5335,21 @@
     const y = d3.scaleRadial().domain([0, 100]).range([inner, outer]);
     const arc = d3.arc().innerRadius(inner).outerRadius(d => y(d.value)).startAngle(d => x(d.name)).endAngle(d => x(d.name) + x.bandwidth()).padAngle(.01);
     const g = svg.append("g").attr("transform", `translate(${width / 2},${height / 2 + 14})`);
+    [50, 100].forEach(value => g.append("circle")
+      .attr("r", y(value))
+      .attr("fill", "none")
+      .attr("stroke", palette.gray200)
+      .attr("stroke-dasharray", "3 5"));
     const bars = g.selectAll("path").data(data).join("path").attr("d", arc).attr("fill", (d, i) => colors[i % colors.length]).attr("fill-opacity", .86);
     fadeIn(bars, .06, .75);
+    g.append("g").selectAll("text").data(data).join("text")
+      .attr("class", "caption")
+      .attr("x", d => Math.sin(x(d.name) + x.bandwidth() / 2) * 180)
+      .attr("y", d => -Math.cos(x(d.name) + x.bandwidth() / 2) * 180 + 3)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 9)
+      .text(d => d.name);
+    g.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("dy", 4).text("0-100");
   }
 
   function renderRadar() {
@@ -5345,7 +5387,7 @@
     names.forEach((name, i) => {
       const path = svg.append("path").datum(ranks[name]).attr("d", line).attr("fill", "none").attr("stroke", colors[i]).attr("stroke-width", 3);
       drawPath(path, .12 + i * .05, .9);
-      svg.append("text").attr("class", "mark-label").attr("x", width - 44).attr("y", y(ranks[name].at(-1)) + 4).text(name);
+      svg.append("text").attr("class", "mark-label").attr("x", width - 46).attr("y", y(ranks[name].at(-1)) + 4).attr("text-anchor", "end").text(name);
     });
   }
 
@@ -5371,10 +5413,13 @@
     const svg = prepareSvg("horizon", "Horizon chart", "Compressed time-series bands with layered color.");
     const data = d3.range(48).map(i => ({ x: i, y: Math.sin(i / 4) * 28 + Math.cos(i / 9) * 18 + 42 }));
     const x = d3.scaleLinear().domain(d3.extent(data, d => d.x)).range([42, width - 34]);
-    const y = d3.scaleLinear().domain([0, 90]).range([130, 0]);
-    const baseY = 310;
+    const y = d3.scaleLinear().domain([0, 90]).range([116, 0]);
+    const baseY = 300;
+    const bandHeight = 108;
     const bandColors = [palette.blueHighlight, palette.cyan, palette.blue];
-    const area = d3.area().x(d => x(d.x)).y0(baseY).y1(d => baseY - Math.min(45, y(0) - y(d.y))).curve(d3.curveBasis);
+    const area = d3.area().x(d => x(d.x)).y0(baseY).y1(d => baseY - Math.min(bandHeight, y(0) - y(d.y))).curve(d3.curveBasis);
+    svg.append("rect").attr("x", 42).attr("y", baseY - bandHeight).attr("width", width - 76).attr("height", bandHeight)
+      .attr("fill", palette.gray50).attr("stroke", palette.gray100);
     [0, 1, 2].forEach(i => {
       const shifted = data.map(d => ({ x: d.x, y: Math.max(0, d.y - i * 22) }));
       const path = svg.append("path").datum(shifted).attr("d", area).attr("fill", bandColors[i]).attr("fill-opacity", .78);
@@ -5397,16 +5442,22 @@
     const path = d3.geoPath(projection);
     const graticule = d3.geoGraticule10();
     svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .22).attr("stroke", palette.gray300);
+    appendSchematicLand(svg, path);
     svg.append("path").datum(graticule).attr("d", path).attr("fill", "none").attr("stroke", "#d4dbe4").attr("stroke-width", .7);
     const cities = [
-      { name: "SF", lon: -122.4, lat: 37.8 }, { name: "NY", lon: -74, lat: 40.7 },
-      { name: "LDN", lon: -0.1, lat: 51.5 }, { name: "BER", lon: 13.4, lat: 52.5 }, { name: "TKY", lon: 139.7, lat: 35.7 }
+      { name: "SF", lon: -122.4, lat: 37.8, dx: 7, dy: -7, anchor: "start" },
+      { name: "NY", lon: -74, lat: 40.7, dx: 7, dy: -7, anchor: "start" },
+      { name: "LDN", lon: -0.1, lat: 51.5, dx: -8, dy: -10, anchor: "end" },
+      { name: "BER", lon: 13.4, lat: 52.5, dx: 8, dy: 13, anchor: "start" },
+      { name: "TKY", lon: 139.7, lat: 35.7, dx: 7, dy: -7, anchor: "start" }
     ];
     const route = { type: "LineString", coordinates: cities.map(d => [d.lon, d.lat]) };
     const routePath = svg.append("path").datum(route).attr("d", path).attr("fill", "none").attr("stroke", palette.red).attr("stroke-width", 2.8);
     drawPath(routePath, .2, 1.2);
     svg.append("g").selectAll("circle").data(cities).join("circle").attr("cx", d => projection([d.lon, d.lat])[0]).attr("cy", d => projection([d.lon, d.lat])[1]).attr("r", 4.5).attr("fill", palette.blue);
-    svg.append("g").selectAll("text").data(cities).join("text").attr("class", "mark-label").attr("x", d => projection([d.lon, d.lat])[0] + 7).attr("y", d => projection([d.lon, d.lat])[1] - 7).text(d => d.name);
+    svg.append("g").selectAll("text").data(cities).join("text").attr("class", "mark-label")
+      .attr("x", d => projection([d.lon, d.lat])[0] + d.dx).attr("y", d => projection([d.lon, d.lat])[1] + d.dy)
+      .attr("text-anchor", d => d.anchor).text(d => d.name);
   }
 
   function renderSymbolGlyphs() {
@@ -7510,6 +7561,8 @@
 
   function renderScaledDotProductAttention() {
     const svg = prepareSvg("scaled-dot-product-attention", "Scaled dot-product attention", "Query-key scores are masked, passed through softmax, and used to weight value vectors.");
+    svg.append("text").attr("class", "mark-label").attr("x", width / 2).attr("y", 42).attr("text-anchor", "middle")
+      .text("softmax((QK^T / sqrt(d_k)) + mask) V");
     const cell = 15;
     const gap = 3;
     const n = 5;
@@ -7541,7 +7594,7 @@
 
     drawMatrix(42, 126, n, 3, "Q", palette.red, (r, c) => .25 + ((r + c * 2) % 4) * .16, .08);
     drawMatrix(134, 126, 3, n, "K^T", palette.blue, (r, c) => .22 + ((r * 2 + c) % 5) * .13, .18);
-    drawMatrix(246, 112, n, n, "QK^T + mask", palette.orange, (r, c) => c > r ? -1 : .2 + ((r + c * 3) % 5) * .14, .45);
+    drawMatrix(246, 112, n, n, "scaled scores", palette.orange, (r, c) => c > r ? -1 : .2 + ((r + c * 3) % 5) * .14, .45);
     drawMatrix(376, 112, n, n, "softmax", palette.green, (r, c) => c > r ? .02 : Math.max(.08, .68 - Math.abs(r - c) * .16), .82);
     drawMatrix(476, 126, n, 2, "V", palette.purple, (r, c) => .24 + ((r + c) % 4) * .15, 1.02);
 
@@ -7923,7 +7976,7 @@
       { lane: "Main thread", label: "idle", start: 2140, end: 2380, track: .5, showLabel: true }
     ];
     const milestones = [
-      { label: "nav", time: 0, lane: "Network", y: 62, color: palette.ink, anchor: "start" },
+      { label: "nav", time: 0, lane: "Network", y: 34, color: palette.ink, anchor: "start" },
       { label: "TTFB 820", time: 820, lane: "Network", y: 78, color: palette.blue, anchor: "middle" },
       { label: "FCP 1.32s", time: 1320, lane: "Render", y: 336, color: palette.green, anchor: "middle" },
       { label: "LCP 1.86s", time: 1860, lane: "Render", y: 78, color: palette.red, anchor: "middle" },
@@ -8850,7 +8903,7 @@
       .attr("fill", "freeze");
     axisBottom(svg, x2, height - context.bottom, 5);
     svg.append("text").attr("class", "mark-label").attr("x", focus.left).attr("y", 26).text("Detail");
-    svg.append("text").attr("class", "mark-label").attr("x", context.left).attr("y", context.top - 20).text("Context window");
+    svg.append("text").attr("class", "mark-label").attr("x", context.left + 8).attr("y", context.top + 16).text("Context window");
   }
 
   function renderQuadtreeSearch() {
@@ -8867,9 +8920,16 @@
       cells.push({ x0, y0, x1, y1, leaf: !node.length });
       return false;
     });
+    const visibleCells = cells.map(cell => ({
+      ...cell,
+      x0: Math.max(bounds.x0, cell.x0),
+      y0: Math.max(bounds.y0, cell.y0),
+      x1: Math.min(bounds.x1, cell.x1),
+      y1: Math.min(bounds.y1, cell.y1)
+    })).filter(cell => cell.x1 > cell.x0 && cell.y1 > cell.y0);
     const target = [366, 178];
     const nearest = tree.find(target[0], target[1]);
-    const cellRects = svg.append("g").selectAll("rect").data(cells).join("rect")
+    const cellRects = svg.append("g").selectAll("rect").data(visibleCells).join("rect")
       .attr("x", d => d.x0).attr("y", d => d.y0)
       .attr("width", d => Math.max(0, d.x1 - d.x0))
       .attr("height", d => Math.max(0, d.y1 - d.y0))
@@ -8943,9 +9003,13 @@
       { name: "UX", values: [14, 20, 22, 30, 14] },
       { name: "Speed", values: [7, 12, 17, 34, 30] }
     ];
-    const x = d3.scaleLinear().domain([-52, 62]).range([88, width - 34]);
+    const x = d3.scaleLinear().domain([-50, 80]).range([88, width - 34]);
     const y = d3.scaleBand().domain(data.map(d => d.name)).range([70, 320]).padding(.32);
     const segmentColors = [palette.red, palette.redHighlight, palette.gray200, palette.greenHighlight, palette.green];
+    const legend = svg.append("g").attr("transform", "translate(48,28)");
+    const legendItems = legend.selectAll("g").data(keys).join("g").attr("transform", (_, i) => `translate(${i * 100},0)`);
+    legendItems.append("rect").attr("width", 11).attr("height", 11).attr("rx", 2).attr("fill", (_, i) => segmentColors[i]).attr("stroke", palette.gray200);
+    legendItems.append("text").attr("class", "caption").attr("x", 16).attr("y", 9).attr("font-size", 9).text(d => d);
     axisBottom(svg, x, 344, 5);
     svg.append("line").attr("x1", x(0)).attr("x2", x(0)).attr("y1", 48).attr("y2", 330).attr("stroke", palette.ink).attr("stroke-opacity", .45);
     const segments = [];
@@ -9085,7 +9149,7 @@
     const panels = svg.append("g").selectAll("g").data(data).join("g")
       .attr("transform", (d, i) => `translate(${54 + (i % 3) * 162},${48 + Math.floor(i / 3) * 142})`);
     panels.append("rect").attr("width", panelW).attr("height", panelH).attr("rx", 6).attr("fill", palette.gray50).attr("stroke", palette.gray200);
-    const paths = panels.append("path").attr("d", d => line(d.values)).attr("fill", "none").attr("stroke", (d, i) => colors[i]).attr("stroke-width", 2.3);
+    const paths = panels.append("path").attr("d", d => line(d.values)).attr("fill", "none").attr("stroke", (d, i) => colors[i % colors.length]).attr("stroke-width", 2.3);
     drawPath(paths, .08, .7);
     panels.append("text").attr("class", "mark-label").attr("x", 12).attr("y", 14).text(d => d.name);
   }
@@ -10412,7 +10476,7 @@
       .attr("class", "severity-band")
       .attr("data-phase-id", d => d.id)
       .attr("data-status", d => d.status)
-      .attr("transform", d => `translate(${x(d.start)},78)`);
+      .attr("transform", d => `translate(${x(d.start)},70)`);
     phaseGroups.append("rect")
       .attr("width", d => x(d.end) - x(d.start) - 2)
       .attr("height", 18)
@@ -10447,7 +10511,7 @@
     tickGroups.append("text")
       .attr("class", "caption")
       .attr("x", d => x(d))
-      .attr("y", 316)
+      .attr("y", d => d === 0 ? 316 : 119)
       .attr("text-anchor", "middle")
       .attr("font-size", 8.5)
       .text(d => `${d}m`);
@@ -11489,16 +11553,21 @@
     const paths = svg.append("g").selectAll("path").data(layout.links, d => d.id).join("path")
       .attr("d", d => link({ source: d.source, target: d.target }))
       .attr("fill", "none")
-      .attr("stroke", palette.gray100)
+      .attr("stroke", palette.gray300)
       .attr("stroke-width", 1.5)
-      .attr("stroke-opacity", .34)
+      .attr("stroke-opacity", .62)
       .attr("stroke-linecap", "round");
     const groups = svg.append("g").selectAll("g").data(layout.nodes, d => d.id).join("g")
       .attr("transform", d => `translate(${d.x},${d.y})`);
     const circles = groups.append("circle")
       .attr("r", d => d.r)
-      .attr("fill", palette.gray200);
+      .attr("fill", d => [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight, palette.purpleHighlight][d.layer])
+      .attr("stroke", d => [palette.blue, palette.orange, palette.green, palette.purple][d.layer])
+      .attr("stroke-width", 1.4);
     pulseMlpNodes(circles, delayForLayer);
+    ["input", "hidden 1", "hidden 2", "output"].forEach((label, index) => {
+      svg.append("text").attr("class", "caption").attr("x", layout.layers[index][0].x).attr("y", 48).attr("text-anchor", "middle").text(label);
+    });
   }
 
   function renderDeepLearningModelExecution() {
@@ -11718,9 +11787,9 @@
     svg.append("g").selectAll("path").data(layout.links, d => d.id).join("path")
       .attr("d", d => link({ source: d.source, target: d.target }))
       .attr("fill", "none")
-      .attr("stroke", palette.gray100)
+      .attr("stroke", palette.gray300)
       .attr("stroke-width", 1.5)
-      .attr("stroke-opacity", .36)
+      .attr("stroke-opacity", .62)
       .attr("stroke-linecap", "round");
     const decisionRegion = svg.append("g");
     decisionRegion.selectAll("circle.base").data([
@@ -11731,7 +11800,9 @@
       .attr("cx", d => d.cx)
       .attr("cy", d => d.cy)
       .attr("r", 26)
-      .attr("fill", palette.gray200);
+      .attr("fill", (d, i) => i === 0 ? palette.greenHighlight : palette.purpleHighlight)
+      .attr("stroke", (d, i) => i === 0 ? palette.green : palette.purple)
+      .attr("stroke-width", 1.6);
     const classPulse = decisionRegion.selectAll("circle.pulse").data([
       { layer: 2, pulseLayer: 2, r: 26, cx: 504, cy: 162 },
       { layer: 2, pulseLayer: 5, r: 26, cx: 504, cy: 270 }
@@ -11740,13 +11811,17 @@
       .attr("cx", d => d.cx)
       .attr("cy", d => d.cy)
       .attr("r", 26)
-      .attr("fill", palette.gray200);
+      .attr("fill", (_, i) => i === 0 ? palette.greenHighlight : palette.purpleHighlight)
+      .attr("stroke", (_, i) => i === 0 ? palette.green : palette.purple)
+      .attr("stroke-width", 1.6);
     pulseMlpNodes(classPulse, delayForLayer);
     const groups = svg.append("g").selectAll("g").data(layout.nodes, d => d.id).join("g")
       .attr("transform", d => `translate(${d.x},${d.y})`);
     const circles = groups.append("circle")
       .attr("r", d => d.r)
-      .attr("fill", palette.gray200);
+      .attr("fill", d => [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight][d.layer])
+      .attr("stroke", d => [palette.blue, palette.orange, palette.green][d.layer])
+      .attr("stroke-width", 1.4);
     pulseMlpNodes(circles.filter(d => d.active), delayForLayer);
   }
 
@@ -12196,22 +12271,52 @@
     ].map(([text, value], i) => ({ text, value, i }));
     const size = d3.scaleSqrt().domain(d3.extent(terms, d => d.value)).range([14, 54]);
     const color = d3.scaleOrdinal(terms.map(d => d.text), [palette.ink, palette.blue, palette.red, palette.orange, palette.green, palette.purple, palette.gray700]);
+    const boxes = [];
     const placed = terms.map((d, i) => {
-      const angle = i * 2.32;
-      const radius = i === 0 ? 0 : 24 + i * 8.8;
-      return {
-        ...d,
-        x: width / 2 + Math.cos(angle) * radius * 1.18,
-        y: height / 2 + Math.sin(angle) * radius * .72,
-        rotate: i % 5 === 0 ? -24 : i % 4 === 0 ? 22 : 0
-      };
+      const fontSize = size(d.value);
+      const rotate = i === 0 ? 0 : i % 5 === 0 ? -24 : i % 4 === 0 ? 22 : 0;
+      const textWidth = estimateSvgTextWidth(d.text, fontSize);
+      const textHeight = fontSize * 1.08;
+      const radians = Math.abs(rotate) * Math.PI / 180;
+      const boxWidth = Math.abs(textWidth * Math.cos(radians)) + Math.abs(textHeight * Math.sin(radians));
+      const boxHeight = Math.abs(textWidth * Math.sin(radians)) + Math.abs(textHeight * Math.cos(radians));
+      let position = { x: width / 2, y: height / 2 };
+      let accepted = false;
+      for (let step = 0; step < 1200; step += 1) {
+        const angle = i * 1.17 + step * 2.399963;
+        const radius = i === 0 ? 0 : 8 + Math.sqrt(step) * 7.2;
+        const x = width / 2 + Math.cos(angle) * radius * 1.18;
+        const y = height / 2 + Math.sin(angle) * radius * .76;
+        const candidate = {
+          x0: x - boxWidth / 2,
+          y0: y - boxHeight / 2,
+          x1: x + boxWidth / 2,
+          y1: y + boxHeight / 2
+        };
+        const inside = candidate.x0 >= 28 && candidate.x1 <= width - 28 && candidate.y0 >= 36 && candidate.y1 <= height - 36;
+        const clear = !boxes.some(box => candidate.x0 < box.x1 + 5 && candidate.x1 + 5 > box.x0 && candidate.y0 < box.y1 + 4 && candidate.y1 + 4 > box.y0);
+        if (inside && clear) {
+          position = { x, y };
+          boxes.push(candidate);
+          accepted = true;
+          break;
+        }
+      }
+      if (!accepted) {
+        position = { x: 62 + (i % 6) * 86, y: 76 + Math.floor(i / 6) * 120 };
+        boxes.push({ x0: position.x - boxWidth / 2, y0: position.y - boxHeight / 2, x1: position.x + boxWidth / 2, y1: position.y + boxHeight / 2 });
+      }
+      return { ...d, ...position, rotate, fontSize };
     });
+    svg.attr("data-layout", "collision-aware-spiral").attr("data-word-count", terms.length);
     const words = svg.append("g").selectAll("text").data(placed).join("text")
+      .attr("class", "word-mark")
+      .attr("data-word", d => d.text)
       .attr("x", d => d.x)
       .attr("y", d => d.y)
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "central")
-      .attr("font-size", d => size(d.value))
+      .attr("font-size", d => d.fontSize)
       .attr("font-weight", d => d.value > 50 ? 750 : 600)
       .attr("fill", d => color(d.text))
       .attr("transform", d => `rotate(${d.rotate},${d.x},${d.y})`)
@@ -12907,7 +13012,8 @@
       speed: .82 + (i % 3) * .08,
       color: colors[i % colors.length]
     }));
-    const x = d3.scaleLinear().domain([6, 15]).range([70, width - 42]);
+    const latestArrival = d3.max(services, service => service.start + (stations.length - 1) * service.speed);
+    const x = d3.scaleLinear().domain([6, Math.ceil(latestArrival * 2) / 2]).range([70, width - 42]);
     const y = d3.scalePoint().domain(stations).range([72, 318]);
     axisBottom(svg, x, 350, 5);
     svg.append("g").selectAll("text").data(stations).join("text")
@@ -12954,6 +13060,7 @@
 
   function renderBivariateChoropleth() {
     const svg = prepareSvg("bivariate-choropleth", "Bivariate choropleth", "Two regional metrics combine into a compact color matrix.");
+    svg.attr("data-map-context", "schematic-regions").attr("data-metric-a-domain", "0-2").attr("data-metric-b-domain", "0-2");
     const palette2 = ramps.bivariate;
     const regions = d3.range(18).map(i => ({
       x: 86 + (i % 6) * 56 + ((i % 2) * 8),
@@ -12962,7 +13069,13 @@
       b: Math.floor((i * 5) % 9 / 3),
       label: String.fromCharCode(65 + i)
     }));
+    svg.append("path")
+      .attr("d", "M68,70C128,48 222,52 286,68C360,86 430,70 470,112L454,286C382,326 292,314 224,328C154,340 92,308 72,248Z")
+      .attr("fill", palette.gray50).attr("stroke", palette.gray300).attr("stroke-width", 1.4);
     const cells = svg.append("g").selectAll("path").data(regions).join("path")
+      .attr("data-region", d => d.label)
+      .attr("data-metric-a", d => d.a)
+      .attr("data-metric-b", d => d.b)
       .attr("d", d => {
         const pts = [[d.x, d.y], [d.x + 44, d.y + 8], [d.x + 38, d.y + 48], [d.x - 8, d.y + 42]];
         return `${d3.line()(pts)}Z`;
@@ -12978,25 +13091,31 @@
       const a = i % 3, b = Math.floor(i / 3);
       key.append("rect").attr("x", a * 24).attr("y", (2 - b) * 24).attr("width", 22).attr("height", 22).attr("fill", palette2[b][a]).attr("stroke", "#fff");
     });
-    key.append("text").attr("class", "label").attr("x", 36).attr("y", 88).attr("text-anchor", "middle").text("A + B");
+    key.append("text").attr("class", "label").attr("x", 36).attr("y", 88).attr("text-anchor", "middle").text("A low -> high");
+    key.append("text").attr("class", "caption").attr("x", 36).attr("y", -8).attr("text-anchor", "middle").text("B high");
   }
 
   function renderProjectionComparison() {
     const svg = prepareSvg("projection-comparison", "Projection comparison", "The same graticule and route expose projection distortion.");
     const sphere = { type: "Sphere" };
+    const boundedWorld = { type: "Polygon", coordinates: [[[-180, -80], [180, -80], [180, 80], [-180, 80], [-180, -80]]] };
     const graticule = d3.geoGraticule().step([30, 30]).lines();
     const route = { type: "LineString", coordinates: [[-120, 35], [-60, 50], [0, 20], [72, 30], [135, -15]] };
     const projections = [
-      { name: "Mercator", p: d3.geoMercator().scale(53).translate([151, 184]) },
-      { name: "Natural", p: d3.geoNaturalEarth1().fitExtent([[302, 66], [518, 302]], sphere) }
+      { name: "Mercator", p: d3.geoMercator().fitExtent([[54, 76], [248, 292]], boundedWorld), x: 44, clipId: "projection-comparison-mercator", outline: boundedWorld },
+      { name: "Natural Earth", p: d3.geoNaturalEarth1().fitExtent([[312, 76], [508, 292]], sphere), x: 302, clipId: "projection-comparison-natural", outline: sphere }
     ];
     projections.forEach((item, pi) => {
       const path = d3.geoPath(item.p);
-      svg.append("rect").attr("x", pi === 0 ? 44 : 302).attr("y", 66).attr("width", pi === 0 ? 214 : 216).attr("height", 236).attr("rx", 6).attr("fill", palette.gray50).attr("stroke", palette.gray200);
-      svg.append("g").selectAll("path").data(graticule).join("path").attr("d", path).attr("fill", "none").attr("stroke", palette.gray100).attr("stroke-width", .8);
-      const routePath = svg.append("path").datum(route).attr("d", path).attr("fill", "none").attr("stroke", colors[pi]).attr("stroke-width", 3.2);
+      svg.append("clipPath").attr("id", item.clipId).append("rect").attr("x", item.x).attr("y", 66).attr("width", 216).attr("height", 236).attr("rx", 6);
+      svg.append("rect").attr("x", item.x).attr("y", 66).attr("width", 216).attr("height", 236).attr("rx", 6).attr("fill", palette.gray50).attr("stroke", palette.gray200);
+      const panel = svg.append("g").attr("clip-path", `url(#${item.clipId})`);
+      panel.append("path").datum(item.outline).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .18).attr("stroke", palette.gray300);
+      appendSchematicLand(panel, path, palette.surface);
+      panel.append("g").selectAll("path").data(graticule).join("path").attr("d", path).attr("fill", "none").attr("stroke", palette.gray200).attr("stroke-width", .8);
+      const routePath = panel.append("path").datum(route).attr("d", path).attr("fill", "none").attr("stroke", colors[pi]).attr("stroke-width", 3.2);
       drawPath(routePath, .12, .85);
-      svg.append("text").attr("class", "mark-label").attr("x", pi === 0 ? 151 : 410).attr("y", 334).attr("text-anchor", "middle").text(item.name);
+      svg.append("text").attr("class", "mark-label").attr("x", item.x + 108).attr("y", 334).attr("text-anchor", "middle").text(item.name);
     });
   }
 
@@ -13032,22 +13151,59 @@
   }
 
   function renderSolarTerminator() {
-    const svg = prepareSvg("solar-terminator", "Solar terminator", "A day-night boundary sweeps across a gridded world view.");
-    const plot = { x: 48, y: 58, w: 464, h: 260 };
-    svg.append("rect").attr("x", plot.x).attr("y", plot.y).attr("width", plot.w).attr("height", plot.h).attr("rx", 8).attr("fill", palette.blueHighlight).attr("stroke", palette.gray200);
-    d3.range(1, 6).forEach(i => svg.append("line").attr("x1", plot.x + i * plot.w / 6).attr("x2", plot.x + i * plot.w / 6).attr("y1", plot.y).attr("y2", plot.y + plot.h).attr("stroke", palette.gray200));
-    d3.range(1, 4).forEach(i => svg.append("line").attr("x1", plot.x).attr("x2", plot.x + plot.w).attr("y1", plot.y + i * plot.h / 4).attr("y2", plot.y + i * plot.h / 4).attr("stroke", palette.gray200));
-    const boundary = d3.range(0, 101).map(i => {
-      const x = plot.x + i / 100 * plot.w;
-      const y = plot.y + plot.h / 2 + Math.sin(i / 100 * Math.PI * 2 - .7) * 48;
-      return [x, y];
+    const timestamp = new Date("2026-06-21T12:00:00Z");
+    const year = timestamp.getUTCFullYear();
+    const dayOfYear = Math.floor((Date.UTC(year, timestamp.getUTCMonth(), timestamp.getUTCDate()) - Date.UTC(year, 0, 0)) / 86400000);
+    const daysInYear = new Date(Date.UTC(year, 1, 29)).getUTCDate() === 29 ? 366 : 365;
+    const utcHour = timestamp.getUTCHours() + timestamp.getUTCMinutes() / 60 + timestamp.getUTCSeconds() / 3600;
+    const gamma = 2 * Math.PI / daysInYear * (dayOfYear - 1 + (utcHour - 12) / 24);
+    const equationOfTime = 229.18 * (
+      .000075 + .001868 * Math.cos(gamma) - .032077 * Math.sin(gamma)
+      - .014615 * Math.cos(2 * gamma) - .040849 * Math.sin(2 * gamma)
+    );
+    const declination = .006918 - .399912 * Math.cos(gamma) + .070257 * Math.sin(gamma)
+      - .006758 * Math.cos(2 * gamma) + .000907 * Math.sin(2 * gamma)
+      - .002697 * Math.cos(3 * gamma) + .00148 * Math.sin(3 * gamma);
+    const normalizeLongitude = value => ((value + 540) % 360) - 180;
+    const subsolar = {
+      lon: normalizeLongitude((720 - utcHour * 60 - equationOfTime) / 4),
+      lat: declination * 180 / Math.PI
+    };
+    const svg = prepareSvg("solar-terminator", "Solar terminator", "An astronomical day-night boundary is derived consistently from a fixed UTC timestamp using the NOAA fractional-year approximation.");
+    const projection = d3.geoEquirectangular().fitExtent([[48, 58], [512, 324]], { type: "Sphere" });
+    const path = d3.geoPath(projection);
+    svg
+      .attr("data-timestamp", timestamp.toISOString())
+      .attr("data-astronomy-model", "noaa-fractional-year")
+      .attr("data-equation-of-time-minutes", equationOfTime.toFixed(3))
+      .attr("data-subsolar-longitude", subsolar.lon.toFixed(3))
+      .attr("data-subsolar-declination", subsolar.lat.toFixed(3));
+    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("stroke", palette.gray300);
+    appendSchematicLand(svg, path, palette.surface);
+    svg.append("g").selectAll("path").data(d3.geoGraticule().step([30, 30]).lines()).join("path")
+      .attr("d", path).attr("fill", "none").attr("stroke", palette.gray200).attr("stroke-width", .7);
+    const boundary = d3.range(-180, 181, 2).map(lon => {
+      const hourAngle = (lon - subsolar.lon) * Math.PI / 180;
+      const declination = subsolar.lat * Math.PI / 180;
+      const lat = Math.atan(-Math.cos(hourAngle) / Math.tan(declination)) * 180 / Math.PI;
+      return [lon, lat];
     });
-    const night = [[plot.x, plot.y], [plot.x + plot.w, plot.y], ...boundary.slice().reverse(), [plot.x, plot.y]];
-    const nightPath = svg.append("path").attr("d", `${d3.line()(night)}Z`).attr("fill", palette.ink).attr("fill-opacity", .38);
+    const night = { type: "Polygon", coordinates: [[[-180, -90], [180, -90], ...boundary.slice().reverse(), [-180, -90]]] };
+    const nightPath = svg.append("path").datum(night).attr("d", path).attr("fill", palette.ink).attr("fill-opacity", .38);
     fadeIn(nightPath, .12, .55);
-    const line = svg.append("path").attr("d", d3.line()(boundary)).attr("fill", "none").attr("stroke", palette.orange).attr("stroke-width", 3.5);
+    const line = svg.append("path").datum({ type: "LineString", coordinates: boundary }).attr("d", path).attr("fill", "none").attr("stroke", palette.orange).attr("stroke-width", 3.5);
     drawPath(line, .15, 1);
-    svg.append("circle").attr("cx", plot.x + plot.w - 52).attr("cy", plot.y + 42).attr("r", 16).attr("fill", palette.gold).attr("stroke", palette.yellowHover).attr("stroke-width", 2);
+    const sun = projection([subsolar.lon, subsolar.lat]);
+    svg.append("circle").attr("cx", sun[0]).attr("cy", sun[1]).attr("r", 10).attr("fill", palette.gold).attr("stroke", palette.yellowHover).attr("stroke-width", 2);
+    svg.append("text").attr("class", "mark-label").attr("x", sun[0] + 14).attr("y", sun[1] - 12).text("subsolar point");
+    const longitudeLabel = `${Math.abs(subsolar.lon).toFixed(2)}°${subsolar.lon >= 0 ? "E" : "W"}`;
+    svg.append("text")
+      .attr("class", "caption")
+      .attr("x", 48)
+      .attr("y", 354)
+      .attr("font-size", 10.5)
+      .attr("font-weight", 760)
+      .text(`2026-06-21 12:00 UTC · subsolar ${longitudeLabel} · declination ${subsolar.lat.toFixed(2)}°N`);
   }
 
   function renderStarMap() {
@@ -13090,18 +13246,29 @@
   }
 
   function renderMoonPhases() {
-    const svg = prepareSvg("moon-phases", "Moon phases", "Repeated masks show a simplified lunar illumination cycle.");
+    const svg = prepareSvg("moon-phases", "Moon phases", "Projected terminators show a simplified waxing lunar illumination cycle.");
     const phases = d3.range(8).map(i => ({ i, phase: i / 7 }));
+    const moonRadius = 34;
+    const illuminatedPath = phase => {
+      if (phase <= 0) return null;
+      const terminatorRadius = moonRadius * Math.abs(1 - 2 * phase);
+      const terminator = terminatorRadius < .001
+        ? `L0,${-moonRadius}`
+        : `A${terminatorRadius},${moonRadius} 0 0 ${phase < .5 ? 0 : 1} 0,${-moonRadius}`;
+      return `M0,${-moonRadius}A${moonRadius},${moonRadius} 0 0 1 0,${moonRadius}${terminator}Z`;
+    };
     const groups = svg.append("g").selectAll("g").data(phases).join("g")
+      .attr("data-phase-index", d => d.i)
+      .attr("data-illumination-fraction", d => d3.format(".3f")(d.phase))
+      .attr("data-phase-direction", "waxing")
       .attr("transform", d => `translate(${74 + (d.i % 4) * 136},${128 + Math.floor(d.i / 4) * 128})`);
-    groups.append("circle").attr("r", 34).attr("fill", palette.gray900).attr("stroke", palette.gray200).attr("stroke-width", 2);
-    groups.append("circle").attr("r", 34).attr("fill", palette.yellowHighlight).attr("clip-path", d => `url(#moon-phase-clip-${d.i})`);
-    const defs = svg.append("defs");
-    phases.forEach(d => {
-      const offset = (d.phase - .5) * .82;
-      const clip = defs.append("clipPath").attr("id", `moon-phase-clip-${d.i}`).attr("clipPathUnits", "objectBoundingBox");
-      clip.append("ellipse").attr("cx", .5 + offset).attr("cy", .5).attr("rx", Math.max(.04, Math.abs(Math.cos(d.phase * Math.PI)) * .5)).attr("ry", .5);
-    });
+    groups.append("circle").attr("r", moonRadius).attr("fill", palette.gray900);
+    groups.append("path")
+      .attr("data-lit-hemisphere", "right")
+      .attr("data-terminator-radius", d => d3.format(".3f")(moonRadius * Math.abs(1 - 2 * d.phase)))
+      .attr("d", d => illuminatedPath(d.phase))
+      .attr("fill", palette.yellowHighlight);
+    groups.append("circle").attr("r", moonRadius).attr("fill", "none").attr("stroke", palette.gray200).attr("stroke-width", 2);
     fadeIn(groups, .08, .65);
     groups.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("dy", 56).text(d => `${Math.round(d.phase * 100)}%`);
   }
@@ -13178,9 +13345,12 @@
       { name: "Lab", total: 62, parts: [24, 12, 26] }
     ];
     const radius = d3.scaleSqrt().domain([40, 100]).range([38, 64]);
-    const pie = d3.pie().sort(null);
+    const pie = d3.pie().sort(null).value(d => d.value);
     const arc = d3.arc().innerRadius(d => radius(d.data.parent.total) * .55).outerRadius(d => radius(d.data.parent.total));
     const group = svg.append("g").selectAll("g").data(data).join("g")
+      .attr("class", "donut-multiple")
+      .attr("data-region", d => d.name)
+      .attr("data-total", d => d.total)
       .attr("transform", (d, i) => `translate(${110 + (i % 3) * 170},${128 + Math.floor(i / 3) * 160})`);
     group.each(function (d) {
       const slices = pie(d.parts.map((value, i) => ({ value, i, parent: d })));
@@ -13188,8 +13358,12 @@
         .attr("d", arc).attr("fill", s => colors[s.data.i]).attr("stroke", "#fff").attr("stroke-width", 2);
       fadeIn(paths, .06, .55);
     });
-    group.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("dy", 76).text(d => d.name);
+    group.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("dy", d => radius(d.total) + 20).text(d => d.name);
     group.append("text").attr("class", "label").attr("text-anchor", "middle").attr("dy", 4).text(d => d.total);
+    const legend = svg.append("g").attr("transform", "translate(154,28)");
+    const legendItems = legend.selectAll("g").data(["Acquire", "Retain", "Expand"]).join("g").attr("transform", (_, i) => `translate(${i * 100},0)`);
+    legendItems.append("rect").attr("width", 12).attr("height", 12).attr("rx", 2).attr("fill", (_, i) => colors[i]);
+    legendItems.append("text").attr("class", "caption").attr("x", 18).attr("y", 10).text(d => d);
   }
 
   function renderColorbrewerSplines() {
@@ -13241,9 +13415,10 @@
 
   function renderSpikeMap() {
     const svg = prepareSvg("spike-map", "Spike map", "Local intensity rises as vertical spikes over a projected grid.");
-    const projection = d3.geoMercator().scale(82).translate([width / 2, height / 2 + 28]);
+    const projection = d3.geoMercator().fitExtent([[34, 44], [526, 344]], { type: "Sphere" });
     const path = d3.geoPath(projection);
     svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", "#f7f7f7").attr("stroke", palette.line);
+    appendSchematicLand(svg, path);
     svg.append("g").selectAll("path").data(d3.geoGraticule().step([30, 30]).lines()).join("path")
       .attr("d", path).attr("fill", "none").attr("stroke", "#e7e7e7").attr("stroke-width", .8);
     const points = [
@@ -13260,6 +13435,8 @@
     });
     const dots = svg.append("g").selectAll("circle").data(points).join("circle").attr("cx", d => d.xy[0]).attr("cy", d => d.xy[1]).attr("fill", palette.ink);
     grow(dots, "r", 2, 4, .12, .45);
+    svg.append("line").attr("x1", 472).attr("x2", 472).attr("y1", 318).attr("y2", 264).attr("stroke", palette.red).attr("stroke-width", 3);
+    svg.append("text").attr("class", "caption").attr("x", 482).attr("y", 272).text("54 units");
   }
 
   function renderBubbleMap() {
@@ -13267,6 +13444,7 @@
     const projection = d3.geoNaturalEarth1().fitExtent([[44, 58], [516, 330]], { type: "Sphere" });
     const path = d3.geoPath(projection);
     svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", "#f7f7f7").attr("stroke", palette.line);
+    appendSchematicLand(svg, path);
     svg.append("g").selectAll("path").data(d3.geoGraticule().step([40, 30]).lines()).join("path")
       .attr("d", path).attr("fill", "none").attr("stroke", "#e7e7e7").attr("stroke-width", .8);
     const data = [
@@ -13276,6 +13454,12 @@
     const bubbles = svg.append("g").selectAll("circle").data(data).join("circle")
       .attr("cx", d => d.xy[0]).attr("cy", d => d.xy[1]).attr("fill", palette.blue).attr("fill-opacity", .42).attr("stroke", palette.blue).attr("stroke-width", 2);
     grow(bubbles, "r", 2, d => r(d.value), .08, .65);
+    const sizeLegend = svg.append("g").attr("transform", "translate(404,360)");
+    [15, 50].forEach((value, index) => {
+      const x = index * 72;
+      sizeLegend.append("circle").attr("cx", x).attr("cy", 0).attr("r", r(value)).attr("fill", palette.blueHighlight).attr("stroke", palette.blue);
+      sizeLegend.append("text").attr("class", "caption").attr("x", x).attr("y", 4).attr("text-anchor", "middle").text(value);
+    });
   }
 
   function renderNormalizedStackedArea() {
@@ -13425,8 +13609,15 @@
       cells.push({ x0, y0, x1, y1, depth: Math.round(Math.log2(plot.w / Math.max(1, x1 - x0))) });
       return false;
     });
+    const visibleCells = cells.map(cell => ({
+      ...cell,
+      x0: Math.max(plot.x, cell.x0),
+      y0: Math.max(plot.y, cell.y0),
+      x1: Math.min(plot.x + plot.w, cell.x1),
+      y1: Math.min(plot.y + plot.h, cell.y1)
+    })).filter(cell => cell.x1 > cell.x0 && cell.y1 > cell.y0);
     svg.append("rect").attr("x", plot.x).attr("y", plot.y).attr("width", plot.w).attr("height", plot.h).attr("fill", "#ffffff").attr("stroke", palette.line);
-    const rects = svg.append("g").selectAll("rect").data(cells).join("rect")
+    const rects = svg.append("g").selectAll("rect").data(visibleCells).join("rect")
       .attr("x", d => d.x0).attr("y", d => d.y0).attr("width", d => d.x1 - d.x0).attr("height", d => d.y1 - d.y0)
       .attr("fill", "none").attr("stroke", d => d.depth > 2 ? palette.blue : palette.gray300).attr("stroke-opacity", d => .25 + Math.min(d.depth, 5) * .08).attr("stroke-width", 1);
     rects.each(function (_, i) {
@@ -13874,6 +14065,7 @@
     const projection = d3.geoNaturalEarth1().fitExtent([[54, 54], [506, 336]], { type: "Sphere" });
     const path = d3.geoPath(projection);
     svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.gray100).attr("stroke", palette.gray200);
+    appendSchematicLand(svg, path, palette.surface);
     const points = d3.range(90).map(i => projection([-125 + ((i * 29) % 255), -52 + ((i * 43 + i * 2) % 104)])).filter(Boolean);
     const size = 26;
     const bins = d3.rollups(points, v => v.length, p => `${Math.round(p[0] / (size * .86))},${Math.round(p[1] / (size * .75))}`)
@@ -13890,6 +14082,10 @@
     const cells = svg.append("g").selectAll("path").data(bins).join("path")
       .attr("d", d => `${d3.line()(hex(d))}Z`).attr("fill", d => color(d.count)).attr("fill-opacity", .78).attr("stroke", "#fff").attr("stroke-width", 1.2);
     fadeIn(cells, .08, .6);
+    const legend = svg.append("g").attr("transform", "translate(64,370)");
+    ramps.heat.forEach((colorValue, index) => legend.append("rect").attr("x", index * 38).attr("width", 38).attr("height", 12).attr("fill", colorValue));
+    legend.append("text").attr("class", "caption").attr("x", 0).attr("y", -6).text("low density");
+    legend.append("text").attr("class", "caption").attr("x", ramps.heat.length * 38).attr("y", -6).attr("text-anchor", "end").text("high density");
   }
 
   function renderAirportsVoronoi() {
@@ -13988,6 +14184,15 @@
     }));
     const size = 74, gap = 8, origin = { x: 88, y: 58 };
     const extent = v => d3.extent(data, d => d[v]);
+    const pearson = (a, b) => {
+      const meanA = d3.mean(data, d => d[a]);
+      const meanB = d3.mean(data, d => d[b]);
+      const numerator = d3.sum(data, d => (d[a] - meanA) * (d[b] - meanB));
+      const sumSquaresA = d3.sum(data, d => (d[a] - meanA) ** 2);
+      const sumSquaresB = d3.sum(data, d => (d[b] - meanB) ** 2);
+      const denominator = Math.sqrt(sumSquaresA * sumSquaresB);
+      return denominator > 0 ? numerator / denominator : 0;
+    };
     const scales = new Map(vars.map(v => [v, d3.scaleLinear().domain(extent(v)).range([8, size - 8])]));
     vars.forEach((row, r) => vars.forEach((col, c) => {
       const x0 = origin.x + c * (size + gap), y0 = origin.y + r * (size + gap);
@@ -14007,9 +14212,17 @@
           .attr("fill", palette.purple).attr("fill-opacity", .75);
         grow(dots, "r", 1.2, 2.5, .03, .35);
       } else {
-        const corr = d3.mean(data, d => (d[col] - d3.mean(data, x => x[col])) * (d[row] - d3.mean(data, x => x[row]))) / 900;
-        svg.append("rect").attr("x", x0 + 10).attr("y", y0 + 10).attr("width", size - 20).attr("height", size - 20).attr("fill", corr > 0 ? "#cdf3ff" : "#ffccd5").attr("stroke", corr > 0 ? palette.blue : palette.red);
-        svg.append("text").attr("class", "mark-label").attr("x", x0 + size / 2).attr("y", y0 + size / 2 + 4).attr("text-anchor", "middle").text(corr > 0 ? "+r" : "-r");
+        const corr = pearson(col, row);
+        svg.append("rect")
+          .attr("data-correlation", corr.toFixed(4))
+          .attr("data-x-variable", col)
+          .attr("data-y-variable", row)
+          .attr("x", x0 + 10).attr("y", y0 + 10).attr("width", size - 20).attr("height", size - 20)
+          .attr("fill", corr >= 0 ? palette.blueHighlight : palette.redHighlight)
+          .attr("fill-opacity", .35 + Math.abs(corr) * .55)
+          .attr("stroke", corr >= 0 ? palette.blue : palette.red);
+        svg.append("text").attr("class", "mark-label").attr("x", x0 + size / 2).attr("y", y0 + size / 2 + 4).attr("text-anchor", "middle")
+          .text(`r=${d3.format("+.2f")(corr)}`);
       }
     }));
     vars.forEach((v, i) => svg.append("text").attr("class", "mark-label").attr("x", origin.x + i * (size + gap) + size / 2).attr("y", 44).attr("text-anchor", "middle").text(v));
@@ -14039,6 +14252,7 @@
 
   function renderPieDataSwitch() {
     const svg = prepareSvg("pie-data-switch", "Pie data switch", "Arc slices tween between two part-to-whole states.");
+    const names = ["Search", "Assist", "Build", "Review", "Other"];
     const before = [18, 26, 14, 20, 22];
     const after = [30, 12, 24, 10, 24];
     const pie = d3.pie().sort(null);
@@ -14046,11 +14260,27 @@
     const center = svg.append("g").attr("transform", `translate(${width / 2},${height / 2 + 8})`);
     const a = pie(before), b = pie(after);
     const slices = center.selectAll("path").data(b).join("path")
+      .attr("data-category", (_, i) => names[i])
+      .attr("data-value", d => d.value)
       .attr("d", d => arc(d)).attr("fill", (_, i) => colors[i]).attr("stroke", "#fff").attr("stroke-width", 2);
     slices.each(function (d, i) {
       d3.select(this).append("animate").attr("attributeName", "d")
         .attr("from", arc(a[i])).attr("to", arc(d)).attr("dur", "1s").attr("begin", `${.08 + i * .04}s`).attr("fill", "freeze");
     });
+    const labelArc = d3.arc().innerRadius(108).outerRadius(108);
+    center.selectAll("text.slice-label").data(b).join("text")
+      .attr("class", "reverse-label slice-label")
+      .attr("transform", d => `translate(${labelArc.centroid(d)})`)
+      .attr("text-anchor", "middle")
+      .attr("font-size", 10)
+      .attr("font-weight", 800)
+      .text(d => `${d.value}%`);
+    center.append("text").attr("class", "mark-label").attr("text-anchor", "middle").attr("y", -3).text("after");
+    center.append("text").attr("class", "caption").attr("text-anchor", "middle").attr("y", 15).text("100% total");
+    const legend = svg.append("g").attr("transform", "translate(54,30)");
+    const legendItem = legend.selectAll("g").data(names).join("g").attr("transform", (_, i) => `translate(${i * 98},0)`);
+    legendItem.append("rect").attr("width", 11).attr("height", 11).attr("rx", 2).attr("fill", (_, i) => colors[i]);
+    legendItem.append("text").attr("class", "caption").attr("x", 16).attr("y", 9).text(d => d);
   }
 
   function renderLineCursor() {
@@ -14097,18 +14327,25 @@
     const svg = prepareSvg("antimeridian-cutting", "Antimeridian cutting", "A route splits cleanly at the dateline instead of crossing the map.");
     const projection = d3.geoEquirectangular().fitExtent([[52, 58], [508, 334]], { type: "Sphere" });
     const path = d3.geoPath(projection);
-    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", "#f7f7f7").attr("stroke", palette.line);
+    svg.append("path").datum({ type: "Sphere" }).attr("d", path).attr("fill", palette.blueHighlight).attr("fill-opacity", .18).attr("stroke", palette.line);
+    appendSchematicLand(svg, path);
     svg.append("g").selectAll("path").data(d3.geoGraticule().step([30, 30]).lines()).join("path")
       .attr("d", path).attr("fill", "none").attr("stroke", palette.gray200).attr("stroke-width", .8);
-    const seamX = projection([180, 0])[0];
-    svg.append("line").attr("x1", seamX).attr("x2", seamX).attr("y1", 58).attr("y2", 334).attr("stroke", palette.red).attr("stroke-width", 2).attr("stroke-opacity", .72).attr("stroke-dasharray", "6 4");
+    const seamXs = [projection([-180, 0])[0], projection([180, 0])[0]];
+    svg.append("g").selectAll("line").data(seamXs).join("line")
+      .attr("x1", d => d).attr("x2", d => d).attr("y1", 58).attr("y2", 334)
+      .attr("stroke", palette.red).attr("stroke-width", 2).attr("stroke-opacity", .72).attr("stroke-dasharray", "6 4");
     const segments = [
       { type: "LineString", coordinates: [[132, 36], [160, 42], [179, 38]] },
       { type: "LineString", coordinates: [[-179, 38], [-150, 34], [-124, 40]] }
     ];
     const routes = svg.append("g").selectAll("path").data(segments).join("path").attr("d", path).attr("fill", "none").attr("stroke", palette.blueHover).attr("stroke-width", 3.4).attr("stroke-linecap", "round");
     drawPath(routes, .1, .85);
-    svg.append("text").attr("class", "mark-label").attr("x", seamX - 8).attr("y", 52).attr("text-anchor", "end").text("180 deg seam");
+    const seamEndpoints = [[179, 38], [-179, 38]].map(coord => projection(coord));
+    const endpoints = svg.append("g").selectAll("circle").data(seamEndpoints).join("circle")
+      .attr("cx", d => d[0]).attr("cy", d => d[1]).attr("fill", palette.orange).attr("stroke", palette.surface).attr("stroke-width", 1.5);
+    grow(endpoints, "r", 1, 5, .25, .4);
+    svg.append("text").attr("class", "mark-label").attr("x", width / 2).attr("y", 46).attr("text-anchor", "middle").text("route splits cleanly at +/-180 deg");
   }
 
   function renderAdaptiveSampling() {
@@ -14136,8 +14373,11 @@
       const shifted = points.map(p => [p[0], p[1] + item.y]);
       const path = svg.append("path").datum(shifted).attr("d", d3.line().curve(item.curve)).attr("fill", "none").attr("stroke", item.c).attr("stroke-width", i === 0 ? 2 : 3).attr("stroke-opacity", i === 0 ? .55 : .9);
       drawPath(path, .08 + i * .08, .85);
-      svg.append("text").attr("class", "mark-label").attr("x", 488).attr("y", shifted.at(-1)[1] + 16).attr("text-anchor", "end").text(item.name);
     });
+    const legend = svg.append("g").attr("transform", "translate(88,32)");
+    const legendItem = legend.selectAll("g").data(curves).join("g").attr("transform", (_, i) => `translate(${i * 126},0)`);
+    legendItem.append("line").attr("x1", 0).attr("x2", 26).attr("y1", 0).attr("y2", 0).attr("stroke", d => d.c).attr("stroke-width", 3);
+    legendItem.append("text").attr("class", "caption").attr("x", 34).attr("y", 4).text(d => d.name);
     svg.append("g").selectAll("circle").data(points).join("circle").attr("cx", d => d[0]).attr("cy", d => d[1]).attr("r", 4).attr("fill", palette.ink);
   }
 
@@ -14183,8 +14423,9 @@
 
   function renderEpicyclicGearing() {
     const svg = prepareSvg("epicyclic-gearing", "Epicyclic gearing", "Nested circular motion traces a gear-like parametric path.");
-    const cx = width / 2, cy = height / 2 + 8;
-    const R = 112, r = 38, d = 72;
+    const cx = width / 2, cy = height / 2 + 4;
+    const R = 100, r = 34, d = 58;
+    svg.attr("data-curve-family", "epitrochoid").attr("data-safe-frame", "true");
     const points = d3.range(0, Math.PI * 2.01, .045).map(t => [
       cx + (R + r) * Math.cos(t) - d * Math.cos(((R + r) / r) * t),
       cy + (R + r) * Math.sin(t) - d * Math.sin(((R + r) / r) * t)
@@ -14196,7 +14437,7 @@
     drawPath(path, .1, 1.2);
     const dot = svg.append("circle").attr("r", 6).attr("fill", palette.red).attr("stroke", "#fff").attr("stroke-width", 2.2);
     dot.append("animateMotion").attr("dur", "3.4s").attr("repeatCount", "indefinite").append("mpath").attr("href", "#epicyclic-gearing-path");
-    svg.append("text").attr("class", "mark-label").attr("x", cx).attr("y", 38).attr("text-anchor", "middle").text("hypotrochoid path");
+    svg.append("text").attr("class", "mark-label").attr("x", cx).attr("y", 30).attr("text-anchor", "middle").text("epitrochoid path");
   }
 
   function restartSvgTimeline(id) {

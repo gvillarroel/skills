@@ -463,11 +463,12 @@ def metro_camera_pose(second: float, duration: float, exploratory: bool = False)
     if exploratory:
         poses = [
             (0.00, 0.0, 0.0, 1.00),
-            (0.18, -120.0, -12.0, 1.24),
-            (0.38, -280.0, -20.0, 1.34),
-            (0.62, -420.0, -24.0, 1.36),
-            (0.82, -300.0, 4.0, 1.28),
-            (1.00, -80.0, 0.0, 1.08),
+            (0.12, -72.0, -8.0, 1.15),
+            (0.30, -220.0, -28.0, 1.48),
+            (0.50, -470.0, -36.0, 1.62),
+            (0.70, -650.0, -24.0, 1.58),
+            (0.88, -420.0, 0.0, 1.44),
+            (1.00, -120.0, 0.0, 1.12),
         ]
         previous = poses[0]
         current = poses[-1]
@@ -496,11 +497,11 @@ def apply_metro_camera(img: Image.Image, second: float, args: argparse.Namespace
         progress = second / args.duration if args.duration > 0 else 0.0
         poses = [
             (0.00, 0.0, 0.0, 1.00),
-            (0.18, 20.0, -8.0, 1.18),
-            (0.40, -160.0, -28.0, 1.28),
-            (0.62, -360.0, -16.0, 1.32),
-            (0.82, -460.0, 16.0, 1.24),
-            (1.00, -180.0, 0.0, 1.08),
+            (0.16, 20.0, -8.0, 1.22),
+            (0.38, -210.0, -32.0, 1.48),
+            (0.60, -470.0, -24.0, 1.58),
+            (0.80, -640.0, 8.0, 1.50),
+            (1.00, -240.0, 0.0, 1.15),
         ]
         previous = poses[0]
         current = poses[-1]
@@ -1255,9 +1256,31 @@ def draw_masonry_megacanvas_base(
             width=3 if zone_index == active_zone else 1,
             radius=0,
         )
+    flow_offset = clamp(p) * 420
+    for index in range(32):
+        x = 64 + ((index * 96 + flow_offset) % 1432)
+        y = 636 + (index % 2) * 18
+        fill = gray_level(5 if index % 5 == active_zone else 3 + (index % 2))
+        rounded_rect(draw, box(x, y, x + 52, y + 14), fill, None, radius=0)
+        if index % 11 == active_zone:
+            rounded_rect(draw, box(x, y, x + 8, y + 14), PALETTE["route"], None, radius=0)
+    for spine_index, spine_x in enumerate((448, 848, 1192)):
+        for tick in range(4):
+            y = 112 + ((tick * 132 + flow_offset + spine_index * 48) % 520)
+            fill = gray_level(5 if tick == active_zone % 4 else 3)
+            rounded_rect(draw, box(spine_x - 4, y, spine_x + 20, y + 32), fill, None, radius=0)
+    scan_x = 48 + ((clamp(p) * 1504) % 1504)
+    rounded_rect(draw, box(scan_x, 88, scan_x + 72, 668), gray_level(0), None, radius=0)
+    for stripe in range(0, 72, 16):
+        rounded_rect(draw, box(scan_x + stripe, 88, scan_x + stripe + 8, 668), gray_level(5 if stripe % 32 == 0 else 3), None, radius=0)
+    for segment in range(12):
+        y = 104 + segment * 44
+        rounded_rect(draw, box(scan_x + 12, y, scan_x + 60, y + 12), gray_level(5 if segment % 3 == active_zone % 3 else 2), None, radius=0)
 
 
 MASONRY_GENERIC_RENDER_PATTERNS = {
+    "metric-dashboard",
+    "sankey-flow",
     "skill-tree",
     "skill-tree-route",
     "state-machine",
@@ -1599,6 +1622,8 @@ def render_generic_masonry_frame(
     draw_masonry_megacanvas_base(draw, second, args)
 
     pattern_index = [
+        "metric-dashboard",
+        "sankey-flow",
         "skill-tree",
         "skill-tree-route",
         "state-machine",
@@ -1619,6 +1644,32 @@ def render_generic_masonry_frame(
     accent = accent_cycle[pattern_index % len(accent_cycle)]
     secondary = accent_cycle[(pattern_index + 2) % len(accent_cycle)]
     alert = accent_cycle[(pattern_index + 3) % len(accent_cycle)]
+    motif_text = " ".join(
+        str(value)
+        for value in [
+            getattr(args, "title", ""),
+            getattr(args, "topic", ""),
+            *(getattr(args, "anchor", None) or []),
+            *(getattr(args, "fact", None) or []),
+            *(getattr(args, "dependency_label", None) or []),
+            *(getattr(args, "system_label", None) or []),
+        ]
+    ).lower()
+    mcp_protocol_requested = any(
+        signal in motif_text
+        for signal in [
+            "what is an mcp",
+            "model context protocol",
+            "mcp_bus",
+            "mcp server",
+            "tools / resources / prompts",
+            "tools resources prompts",
+            "registry",
+            "allowlist",
+            "client and server",
+            "tool surface",
+        ]
+    )
 
     def draw_grid_surface(origin_x: int, origin_y: int, columns: int, rows: int, cell: int, active: int) -> None:
         for row in range(rows):
@@ -1667,6 +1718,122 @@ def render_generic_masonry_frame(
             width_px = 76 + (index % 2) * 28
             fill = alert if index <= max(0, active - 3) and index % 2 == 0 else gray_level(2 + index % 4)
             rounded_rect(draw, box(x, y, x + width_px, y + 32), fill, None, radius=0)
+
+    def draw_mcp_protocol_bus(active: int) -> None:
+        token_level = max(4, min(16, int(ease((p - 0.04) / 0.34) * 17)))
+        matrix_level = max(8, min(40, int(ease((p - 0.12) / 0.48) * 41)))
+        stack_level = max(2, min(8, int(ease((p - 0.22) / 0.42) * 9)))
+        meter_level = max(1, min(5, int(ease((p - 0.34) / 0.38) * 6)))
+        gate_level = max(1, min(4, int(ease((p - 0.48) / 0.32) * 5)))
+        evidence_level = max(10, min(60, int(ease((p - 0.08) / 0.72) * 61)))
+
+        surfaces = [
+            (80, 104, 292, 260, gray_level(2)),
+            (404, 96, 420, 308, gray_level(1)),
+            (884, 104, 304, 278, gray_level(3)),
+            (1220, 112, 300, 240, gray_level(2)),
+            (84, 432, 468, 150, gray_level(1)),
+            (604, 456, 468, 128, gray_level(2)),
+        ]
+        for x, y, w, h, fill in surfaces:
+            rounded_rect(draw, box(x, y, x + w, y + h), fill, gray_level(5), width=1, radius=0)
+
+        traces = [
+            [(84, 112), (360, 112), (444, 180)],
+            [(404, 360), (744, 360), (900, 252)],
+            [(948, 132), (1216, 188), (1456, 188)],
+            [(104, 612), (552, 612), (760, 548), (1000, 548)],
+            [(180, 252), (520, 252), (916, 252), (1432, 252)],
+        ]
+        for index, points in enumerate(traces):
+            draw_polyline(draw, [pt(x, y) for x, y in points], gray_level(5), 2 if index < 4 else 8, 1)
+
+        for index in range(16):
+            row = index // 8
+            col = index % 8
+            active_token = index < token_level
+            x = 108 + col * 32
+            y = 136 + row * 54
+            fill = gray_level(3 + ((index + row) % 6)) if active_token else gray_level(1 + (index % 5))
+            rounded_rect(draw, box(x, y, x + 26, y + 38), fill, gray_level(5), width=1, radius=0)
+            if active_token and index % 6 == 0:
+                rounded_rect(draw, box(x, y, x + 4, y + 38), PALETTE["route"], None, radius=0)
+            if active_token and index % 7 == 3:
+                rounded_rect(draw, box(x + 22, y, x + 26, y + 38), gray_level(8), None, radius=0)
+
+        for row in range(5):
+            for col in range(8):
+                index = row * 8 + col
+                active_cell = index < matrix_level
+                strong = active_cell and (row == col % 5 or (row + col) % 7 == 0)
+                fill = gray_level(6) if strong else gray_level(2 + ((row + col) % 7)) if active_cell else gray_level(1)
+                rounded_rect(draw, box(428 + col * 48, 122 + row * 42, 468 + col * 48, 154 + row * 42), fill, None, radius=0)
+                if strong and (row + col) % 3 == 0:
+                    rounded_rect(draw, box(428 + col * 48, 122 + row * 42, 434 + col * 48, 154 + row * 42), PALETTE["attribute"], None, radius=0)
+
+        for layer in range(8):
+            y = 128 + layer * 30
+            active_layer = layer < stack_level
+            layer_width = 228 - layer * 10
+            fill = gray_level(5 + (layer % 3)) if active_layer else gray_level(2 + (layer % 5))
+            rounded_rect(draw, box(916, y, 916 + layer_width, y + 22), fill, None, radius=0)
+            if active_layer and layer % 2 == 0:
+                rounded_rect(draw, box(916 + layer_width - 8, y, 916 + layer_width, y + 22), PALETTE["route"], None, radius=0)
+
+        for index in range(4):
+            x = 1248 + index * 62
+            active_gate = index < gate_level
+            rounded_rect(draw, box(x, 142, x + 46, 222), gray_level(6 if active_gate else 2 + index), gray_level(5), width=1, radius=0)
+            if active_gate:
+                rounded_rect(draw, box(x, 142, x + 8, 222), PALETTE["route"], None, radius=0)
+            rounded_rect(draw, box(x, 248, x + 46, 302), gray_level(5 if active_gate and index >= 2 else 2 + ((index + 1) % 5)), gray_level(5), width=1, radius=0)
+
+        for index in range(6):
+            x = 524 + index * 72
+            fill = gray_level(6 if index < gate_level + 2 else 3 + (index % 4))
+            port_y2 = 326
+            rounded_rect(draw, box(x, 292, x + 44, port_y2), fill, gray_level(5), width=1, radius=0)
+            if index < gate_level + 1:
+                rounded_rect(draw, box(x, 292, x + 6, port_y2), PALETTE["attribute"], None, radius=0)
+
+        route_segments = [
+            ([(342, 246), (428, 246), (520, 246)], ease((p - 0.08) / 0.20), PALETTE["attribute"], 6),
+            ([(780, 246), (916, 216), (1188, 216)], ease((p - 0.32) / 0.22), PALETTE["attribute"], 6),
+            ([(1188, 216), (1248, 182), (1488, 182)], ease((p - 0.50) / 0.22), PALETTE["attribute"], 5),
+            ([(358, 546), (604, 520), (1032, 520)], ease((p - 0.62) / 0.22), PALETTE["attribute"], 5),
+        ]
+        for points, progress, color, width_px in route_segments:
+            draw_polyline(draw, [pt(x, y) for x, y in points], color, width_px, progress)
+
+        for index in range(5):
+            x = 120 + index * 78
+            rounded_rect(draw, box(x, 472, x + 58, 546), gray_level(2 + (index % 4)), gray_level(5), width=1, radius=0)
+            filled = 74 * (meter_level / 5 if index < meter_level else 0)
+            if filled > 0:
+                rounded_rect(draw, box(x, 546 - filled, x + 58, 546), gray_level(6), None, radius=0)
+                rounded_rect(draw, box(x, 546 - filled, x + 58, 552 - filled), PALETTE["route"], None, radius=0)
+
+        for row in range(3):
+            for col in range(8):
+                index = row * 8 + col
+                active_cell = index < evidence_level // 2
+                fill = gray_level(3 + ((row + col) % 6)) if active_cell else gray_level(1 + ((row + col) % 5))
+                x = 632 + col * 48
+                y = 480 + row * 30
+                rounded_rect(draw, box(x, y, x + 38, y + 22), fill, None, radius=0)
+                if active_cell and index % 7 == 0:
+                    rounded_rect(draw, box(x, y, x + 6, y + 22), PALETTE["attribute"], None, radius=0)
+
+        for row in range(2):
+            for col in range(20):
+                index = row * 20 + col
+                active_cell = index < evidence_level
+                x = 64 + col * 72
+                y = 640 + row * 28
+                fill = gray_level(2 + (index % 7)) if active_cell else gray_level(1)
+                rounded_rect(draw, box(x, y, x + 58, y + 20), fill, None, radius=0)
+                if active_cell and index % 13 == 0:
+                    rounded_rect(draw, box(x, y, x + 6, y + 20), PALETTE["attribute"], None, radius=0)
 
     def draw_probability_evaluation_motifs(active: int) -> None:
         # Source-specific glyphs for the LLM probabilities/evaluation module:
@@ -1817,6 +1984,8 @@ def render_generic_masonry_frame(
             if index <= active_step:
                 draw_polyline(draw, [pt(*node), pt(*target)], accent if index < 4 else secondary, 6, 1)
         draw_grid_surface(404, 548, 8, 2, 32, active_step)
+    elif pattern == "dependency-map" and mcp_protocol_requested:
+        draw_mcp_protocol_bus(active_step)
     elif pattern == "data-lineage":
         path = [(120, 250), (300, 250), (480, 250), (660, 250), (840, 250), (1040, 250)]
         draw_network(path, active_step, False)
@@ -3606,6 +3775,42 @@ def render_metric_dashboard_frame(
         text(draw, (865, 145), "DECISION CONTEXT", fonts["small"], PALETTE["muted"], "lm")
 
     chart = (115, 190, 760, 520)
+    if low_text_masonry:
+        density_level = min(84, int(ease((p - 0.04) / 0.72) * 85))
+        for row in range(6):
+            for col in range(10):
+                index = row * 10 + col
+                active = index < density_level
+                x = chart[0] + 26 + col * 42
+                y = chart[1] + 26 + row * 28
+                fill = gray_level(2 + ((row + col) % 4)) if active else gray_level(1)
+                draw.rectangle((x, y, x + 32, y + 20), fill=hex_to_rgb(fill))
+                if active and (row == col % 6 or index % 17 == 0):
+                    draw.rectangle((x, y, x + 6, y + 20), fill=hex_to_rgb(PALETTE["route"]))
+        for index in range(14):
+            active = index < int(density_level / 4) + 2
+            x = 86 + index * 28
+            y = 132 + (index % 3) * 22
+            fill = gray_level(3 + (index % 3)) if active else gray_level(1 + (index % 4))
+            draw.rectangle((x, y, x + 22, y + 16), fill=hex_to_rgb(fill))
+            if active and index % 5 == 0:
+                draw.rectangle((x, y, x + 6, y + 16), fill=hex_to_rgb(PALETTE["route"]))
+        for row in range(5):
+            y = 124 + row * 28
+            bar_width = 96 + row * 38 + ease((p - 0.20 - row * 0.04) / 0.22) * 92
+            draw.rectangle((892, y, 892 + bar_width, y + 20), fill=hex_to_rgb(gray_level(2 + (row % 4))))
+            if row < int(ease((p - 0.24) / 0.42) * 6):
+                draw.rectangle((892, y, 898, y + 20), fill=hex_to_rgb(PALETTE["route"]))
+        for row in range(2):
+            for col in range(30):
+                index = row * 30 + col
+                active = index < int(density_level * 0.72)
+                x = 64 + col * 50
+                y = 640 + row * 28
+                fill = gray_level(2 + (index % 4)) if active else gray_level(1)
+                draw.rectangle((x, y, x + 40, y + 18), fill=hex_to_rgb(fill))
+                if active and index % 12 == 0:
+                    draw.rectangle((x, y, x + 6, y + 18), fill=hex_to_rgb(PALETTE["route"]))
     for idx in range(5):
         y = chart[1] + idx * (chart[3] - chart[1]) / 4
         draw.line([(chart[0], y), (chart[2], y)], fill=hex_to_rgb("#cfcfcf"), width=2)
@@ -3703,12 +3908,15 @@ def render_dependency_map_frame(
     fonts: dict[str, ImageFont.ImageFont],
 ) -> Image.Image:
     width, height = args.width, args.height
+    low_text_masonry = bool(getattr(args, "masonry_layout", False))
     img = Image.new("RGB", (width, height), hex_to_rgb(PALETTE["paper"]))
     draw = ImageDraw.Draw(img)
     p = second / args.duration
     dependency_labels, cluster_labels = dependency_map_labels(args)
     deps = [compact_label(label, 18) for label in dependency_labels]
     clusters = [compact_label(label, 20) for label in cluster_labels]
+    panel_radius = 0 if low_text_masonry else 14
+    callout_radius = 0 if low_text_masonry else 14
 
 
     cluster_frames = [
@@ -3717,11 +3925,64 @@ def render_dependency_map_frame(
         (885, 112, 1220, 592, PALETTE["attribute"]),
     ]
     for x1, y1, x2, y2, accent in cluster_frames:
-        rounded_rect(draw, (x1, y1, x2, y2), "#ffffff", "#cfcfcf", radius=14)
+        rounded_rect(draw, (x1, y1, x2, y2), "#ffffff", "#cfcfcf", radius=panel_radius)
         rounded_rect(draw, (x1, y1, x2, y1 + 12), accent, None, radius=0)
-    text(draw, (82, 145), clusters[0].upper(), fonts["small"], PALETTE["muted"], "lm")
-    text(draw, (425, 145), clusters[1].upper(), fonts["small"], PALETTE["muted"], "lm")
-    text(draw, (915, 145), clusters[2].upper(), fonts["small"], PALETTE["muted"], "lm")
+    if low_text_masonry:
+        density_level = max(42, min(72, int(ease((p - 0.04) / 0.70) * 73)))
+
+        def cap_fill(index: int) -> str:
+            return [PALETTE["route"], PALETTE["attribute"], PALETTE["damage"]][index % 3]
+
+        protocol_level = max(24, min(42, int(ease((p - 0.02) / 0.34) * 43)))
+        for row in range(3):
+            for col in range(14):
+                index = row * 14 + col
+                active = index < protocol_level
+                x = 420 + col * 28
+                y = 136 + row * 20
+                fill = gray_level(2 + ((row * 2 + col) % 7)) if active else gray_level(1)
+                draw.rectangle((x, y, x + 24, y + 16), fill=hex_to_rgb(fill))
+                if active and index % 10 == 0:
+                    draw.rectangle((x, y, x + 4, y + 16), fill=hex_to_rgb(cap_fill(index)))
+                if active and index % 13 == 5:
+                    draw.rectangle((x + 20, y, x + 24, y + 16), fill=hex_to_rgb(gray_level(8)))
+        for row in range(5):
+            for col in range(10):
+                index = row * 10 + col
+                active = index < density_level
+                x = 92 + col * 28
+                y = 472 + row * 22
+                fill = gray_level(2 + ((row + col) % 6)) if active else gray_level(1)
+                draw.rectangle((x, y, x + 20, y + 16), fill=hex_to_rgb(fill))
+                if active and index % 7 == 0:
+                    draw.rectangle((x, y, x + 6, y + 16), fill=hex_to_rgb(cap_fill(index)))
+                if active and index % 11 == 4:
+                    draw.rectangle((x + 16, y, x + 20, y + 16), fill=hex_to_rgb(gray_level(8)))
+        for row in range(4):
+            for col in range(8):
+                index = row * 8 + col
+                active = index < int(density_level * 0.7)
+                x = 902 + col * 34
+                y = 342 + row * 26
+                fill = gray_level(2 + ((index + row) % 6)) if active else gray_level(1)
+                draw.rectangle((x, y, x + 26, y + 20), fill=hex_to_rgb(fill))
+                if active and (row == col % 4 or index % 7 == 0):
+                    draw.rectangle((x, y, x + 6, y + 20), fill=hex_to_rgb(cap_fill(index + row)))
+                if active and index % 9 == 3:
+                    draw.rectangle((x + 22, y, x + 26, y + 20), fill=hex_to_rgb(gray_level(8)))
+        for col in range(24):
+            active = col < int(density_level / 2)
+            x = 64 + col * 58
+            fill = gray_level(2 + (col % 6)) if active else gray_level(1)
+            draw.rectangle((x, 650, x + 48, 668), fill=hex_to_rgb(fill))
+            if active and col % 6 == 0:
+                draw.rectangle((x, 650, x + 6, 668), fill=hex_to_rgb(cap_fill(col)))
+            if active and col % 8 == 3:
+                draw.rectangle((x + 42, 650, x + 48, 668), fill=hex_to_rgb(gray_level(8)))
+    else:
+        text(draw, (82, 145), clusters[0].upper(), fonts["small"], PALETTE["muted"], "lm")
+        text(draw, (425, 145), clusters[1].upper(), fonts["small"], PALETTE["muted"], "lm")
+        text(draw, (915, 145), clusters[2].upper(), fonts["small"], PALETTE["muted"], "lm")
 
     nodes = [
         (170, 245, deps[0], PALETTE["route"]),
@@ -3762,27 +4023,31 @@ def render_dependency_map_frame(
             draw.line([*halo, halo[0]], fill=hex_to_rgb(color), width=3)
         else:
             draw.ellipse((x - halo_radius, y - halo_radius, x + halo_radius, y + halo_radius), outline=hex_to_rgb(color), width=3)
-        draw_node(draw, (x, y), label, color, active, fonts, shape=shape, ghost_label=True)
+        draw_node(draw, (x, y), label, color, active, fonts, shape=shape, ghost_label=not low_text_masonry)
 
     if risk_visible:
-        rounded_rect(draw, (520, 500, 740, 565), "#ffccd5", PALETTE["damage"], radius=14)
-        text(draw, (630, 525), "risk edge", fonts["small"], PALETTE["damage"], "mm", 3, "#ffffff")
-        text(draw, (630, 548), "unblocks only after policy", fonts["tiny"], PALETTE["ink"], "mm")
+        rounded_rect(draw, (520, 500, 740, 565), gray_level(2), PALETTE["damage"], radius=callout_radius)
+        if not low_text_masonry:
+            text(draw, (630, 525), "risk edge", fonts["small"], PALETTE["damage"], "mm", 3, "#ffffff")
+            text(draw, (630, 548), "unblocks only after policy", fonts["tiny"], PALETTE["ink"], "mm")
         draw.line([(640, 455), (640, 500)], fill=hex_to_rgb(PALETTE["damage"]), width=5)
     if bottleneck_visible:
-        rounded_rect(draw, (705, 178, 845, 238), "#ffccd5", PALETTE["tradeoff"], radius=14)
-        text(draw, (775, 202), "bottleneck", fonts["small"], PALETTE["tradeoff"], "mm", 3, "#ffffff")
-        text(draw, (775, 224), deps[5], fonts["tiny"], PALETTE["ink"], "mm")
+        rounded_rect(draw, (705, 178, 845, 238), gray_level(2), PALETTE["tradeoff"], radius=callout_radius)
+        if not low_text_masonry:
+            text(draw, (775, 202), "bottleneck", fonts["small"], PALETTE["tradeoff"], "mm", 3, "#ffffff")
+            text(draw, (775, 224), deps[5], fonts["tiny"], PALETTE["ink"], "mm")
         draw.ellipse((785, 305, 825, 345), outline=hex_to_rgb(PALETTE["tradeoff"]), width=5)
     if cutover_visible:
-        rounded_rect(draw, (930, 170, 1160, 225), "#e7e7e7", PALETTE["attribute"], radius=14)
-        text(draw, (1045, 193), "cutover gate", fonts["small"], PALETTE["attribute"], "mm", 3, "#ffffff")
-        text(draw, (1045, 214), "release waits for upstream proof", fonts["tiny"], PALETTE["ink"], "mm")
+        rounded_rect(draw, (930, 170, 1160, 225), "#e7e7e7", PALETTE["attribute"], radius=callout_radius)
+        if not low_text_masonry:
+            text(draw, (1045, 193), "cutover gate", fonts["small"], PALETTE["attribute"], "mm", 3, "#ffffff")
+            text(draw, (1045, 214), "release waits for upstream proof", fonts["tiny"], PALETTE["ink"], "mm")
         draw.line([(930, 270), (1160, 270)], fill=hex_to_rgb(PALETTE["attribute"]), width=5)
     if fallback_visible:
-        rounded_rect(draw, (920, 502, 1168, 562), "#e7e7e7", PALETTE["gold"], radius=14)
-        text(draw, (1044, 526), "fallback armed", fonts["small"], PALETTE["gold"], "mm", 3, "#ffffff")
-        text(draw, (1044, 548), "late safety route is explicit", fonts["tiny"], PALETTE["ink"], "mm")
+        rounded_rect(draw, (920, 502, 1168, 562), "#e7e7e7", PALETTE["gold"], radius=callout_radius)
+        if not low_text_masonry:
+            text(draw, (1044, 526), "fallback armed", fonts["small"], PALETTE["gold"], "mm", 3, "#ffffff")
+            text(draw, (1044, 548), "late safety route is explicit", fonts["tiny"], PALETTE["ink"], "mm")
 
     edge_count = min(len(edges), int(edge_progress * len(edges) + 0.999))
     visible_mechanism_count = [edge_count >= 4, risk_visible, bottleneck_visible, cutover_visible, fallback_visible].count(True)
@@ -3911,6 +4176,37 @@ def render_sankey_flow_frame(
 
     if low_text_masonry:
         draw_masonry_megacanvas_base(draw, second, args)
+        density_level = min(72, int(ease((p - 0.08) / 0.70) * 73))
+        for row in range(6):
+            for col in range(12):
+                index = row * 12 + col
+                active = index < density_level
+                x = 78 + col * 40
+                y = 124 + row * 26
+                fill = gray_level(2 + ((row + col) % 4)) if active else gray_level(1)
+                draw.rectangle((x, y, x + 30, y + 18), fill=hex_to_rgb(fill))
+                if active and index % 11 == 0:
+                    draw.rectangle((x, y, x + 6, y + 18), fill=hex_to_rgb(PALETTE["route"]))
+        for col in range(4):
+            x = 918 + col * 74
+            meter_level = min(5, int(ease((p - 0.30 - col * 0.04) / 0.34) * 6))
+            draw.rectangle((x, 404, x + 54, 518), fill=hex_to_rgb(gray_level(2 + col)))
+            for level in range(5):
+                active = level < meter_level
+                y = 492 - level * 18
+                draw.rectangle((x + 8, y, x + 46, y + 14), fill=hex_to_rgb(gray_level(5 if active else 3)))
+                if active and level == meter_level - 1:
+                    draw.rectangle((x + 8, y, x + 46, y + 6), fill=hex_to_rgb(PALETTE["route"]))
+        for row in range(2):
+            for col in range(28):
+                index = row * 28 + col
+                active = index < int(density_level * 0.75)
+                x = 64 + col * 54
+                y = 640 + row * 28
+                fill = gray_level(2 + (index % 4)) if active else gray_level(1)
+                draw.rectangle((x, y, x + 44, y + 18), fill=hex_to_rgb(fill))
+                if active and index % 10 == 0:
+                    draw.rectangle((x, y, x + 6, y + 18), fill=hex_to_rgb(PALETTE["route"]))
     else:
         rounded_rect(draw, (55, 112, 1220, 602), "#ffffff", "#cfcfcf", radius=14)
         text(draw, (88, 145), "SPLIT, LOSS, MERGE, AND OUTPUT", fonts["small"], PALETTE["muted"], "lm")
@@ -6064,7 +6360,7 @@ def write_notes(args: argparse.Namespace, paths: dict[str, Path], package: dict[
 ## Render Command
 
 ```powershell
-uv run --script skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root {args.project_root.as_posix()} --title "{args.title}" --output-id {args.output_id} --pattern {args.pattern}
+uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root {args.project_root.as_posix()} --title "{args.title}" --output-id {args.output_id} --pattern {args.pattern}
 ```
 """
     paths["production_notes"].write_text(content, encoding="utf-8")
@@ -6388,6 +6684,31 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         el("rect", {{ x: 48, y: 668, width: 1504, height: 32, rx: 0, fill: grayLevel(5), stroke: "none" }});
         [448, 848, 1192].forEach(x => el("rect", {{ x, y: 88, width: 12, height: 580, rx: 0, fill: grayLevel(5), stroke: "none" }}));
         drawMasonryWall(active, progress);
+        const flowOffset = clamp(progress) * 420;
+        for (let index = 0; index < 32; index++) {{
+          const x = 64 + ((index * 96 + flowOffset) % 1432);
+          const y = 636 + (index % 2) * 18;
+          const fill = grayLevel(index % 5 === active ? 5 : 3 + (index % 2));
+          el("rect", {{ x, y, width: 52, height: 14, rx: 0, fill, stroke: "none", "data-masonry-module": "true", "data-semantic-glyph": "true", "data-transition-type": "evidence-flow" }});
+          if (index % 11 === active) {{
+            el("rect", {{ x, y, width: 8, height: 14, rx: 0, fill: palette.route, stroke: "none", "data-masonry-module": "true", "data-semantic-glyph": "true", "data-transition-type": "evidence-flow" }});
+          }}
+        }}
+        [448, 848, 1192].forEach((spineX, spineIndex) => {{
+          for (let tick = 0; tick < 4; tick++) {{
+            const y = 112 + ((tick * 132 + flowOffset + spineIndex * 48) % 520);
+            el("rect", {{ x: spineX - 4, y, width: 24, height: 32, rx: 0, fill: grayLevel(tick === active % 4 ? 5 : 3), stroke: "none", "data-masonry-module": "true", "data-semantic-glyph": "true", "data-transition-type": "evidence-flow" }});
+          }}
+        }});
+        const scanX = 48 + ((clamp(progress) * 1504) % 1504);
+        el("rect", {{ x: scanX, y: 88, width: 72, height: 580, rx: 0, fill: grayLevel(0), stroke: "none", "fill-opacity": 0.46, "data-masonry-module": "true", "data-semantic-glyph": "true", "data-transition-type": "surface-scan" }});
+        for (let stripe = 0; stripe < 72; stripe += 16) {{
+          el("rect", {{ x: scanX + stripe, y: 88, width: 8, height: 580, rx: 0, fill: grayLevel(stripe % 32 === 0 ? 5 : 3), stroke: "none", "fill-opacity": 0.66, "data-masonry-module": "true", "data-semantic-glyph": "true", "data-transition-type": "surface-scan" }});
+        }}
+        for (let segment = 0; segment < 12; segment++) {{
+          const y = 104 + segment * 44;
+          el("rect", {{ x: scanX + 12, y, width: 48, height: 12, rx: 0, fill: grayLevel(segment % 3 === active % 3 ? 5 : 2), stroke: "none", "fill-opacity": 0.72, "data-masonry-module": "true", "data-semantic-glyph": "true", "data-transition-type": "surface-scan" }});
+        }}
         drawMasonrySemanticGlyphs(active, progress);
         return;
       }}
@@ -6572,18 +6893,19 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const aiAlternativesCamera = /what ai alternatives we have|ai alternatives|atlassian rovo|gemini app|github copilot|claude desktop|claude code|workflow gravity|comparison_grid|credit_meter/.test(cameraMotifText);
         const poses = aiAlternativesCamera ? [
           [0.00, 0, 0, 1.00],
-          [0.18, 20, -8, 1.18],
-          [0.40, -160, -28, 1.28],
-          [0.62, -360, -16, 1.32],
-          [0.82, -460, 16, 1.24],
-          [1.00, -180, 0, 1.08],
+          [0.16, 20, -8, 1.22],
+          [0.38, -210, -32, 1.48],
+          [0.60, -470, -24, 1.58],
+          [0.80, -640, 8, 1.50],
+          [1.00, -240, 0, 1.15],
         ] : [
           [0.00, 0, 0, 1.00],
-          [0.18, -120, -12, 1.24],
-          [0.38, -280, -20, 1.34],
-          [0.62, -420, -24, 1.36],
-          [0.82, -300, 4, 1.28],
-          [1.00, -80, 0, 1.08],
+          [0.12, -72, -8, 1.15],
+          [0.30, -220, -28, 1.48],
+          [0.50, -470, -36, 1.62],
+          [0.70, -650, -24, 1.58],
+          [0.88, -420, 0, 1.44],
+          [1.00, -120, 0, 1.12],
         ];
         let previous = poses[0];
         let next = poses[poses.length - 1];
@@ -7343,6 +7665,155 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
           return withCameraState({{ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, systemLabels: sourceSystems, queueSlots, workerActive, retryVisible, deadLetterVisible, feedbackVisible, visibleMechanismCount, agentLoopRingVisible, contextPaneCount, environmentState: environmentStates[environmentIndex], environmentSurfaceCount: environmentIndex + 1, toolActionLoopVisible, fixedWorkflowLaneVisible, adaptiveAgentLaneVisible, approvalCheckpointVisible, modelToolsStateLoopBadgeVisible }}, camera);
         }}
+        const denseMotifText = [...sourceSystems, ...(PACKAGE.strategyAnchors || []), ...(PACKAGE.sourceFacts || []), PACKAGE.title || "", PACKAGE.topic || ""].join(" ").toLowerCase();
+        const llmConceptRequested = /what is an llm|large language model|token_stream|context_window_box|transformer|autoregressive|parameter|gpu_rack|next token/.test(denseMotifText);
+        const billingConceptRequested = /llm billing|billing|credit_meter|ai credit|token cost|api cost|subscription|local gpu|pricing|cost meter/.test(denseMotifText);
+        const mcpConceptRequested = /what is an mcp|model context protocol|mcp_bus|mcp server|tools resources prompts|tools \/ resources \/ prompts|registry|allowlist|client and server|tool surface/.test(denseMotifText);
+        if (masonryRequired && (llmConceptRequested || billingConceptRequested || mcpConceptRequested)) {{
+          let denseRectCounter = 0;
+          const motifId = billingConceptRequested ? "billing-cost-map" : mcpConceptRequested ? "mcp-protocol-bus" : "llm-token-transformer-map";
+          const dAttrs = (zoneIndex, mechanismId, extra = {{}}) => ({{
+            ...zoneAttrs(zoneIndex),
+            "data-dense-systems-motif": motifId,
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          }});
+          const dRect = (x, y, width, height, fill, stroke = "none", strokeWidth = 1, extra = {{}}) => {{
+            const hasBoxContract = extra["data-box-id"] || extra["data-fill-for"] || extra["data-zone-id"] || extra["data-masonry-module"];
+            const boxContract = hasBoxContract ? {{}} : {{ "data-box-id": `dense-systems-module-${{++denseRectCounter}}` }};
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke, "stroke-width": strokeWidth, "data-zone-boundary": "flush", "data-padding-policy": "zero-verified", ...boxContract, ...extra }});
+          }};
+          const dLine = (points, stroke, strokeWidth = 4, progress = 1, extra = {{}}) => {{
+            if (progress <= 0) return;
+            const visible = [];
+            const safe = clamp(progress);
+            const target = safe * (points.length - 1);
+            for (let index = 0; index < points.length - 1; index++) {{
+              const local = clamp(target - index);
+              if (local <= 0) break;
+              const a = points[index], b = points[index + 1];
+              if (visible.length === 0) visible.push(a);
+              visible.push([a[0] + (b[0] - a[0]) * local, a[1] + (b[1] - a[1]) * local]);
+              if (local < 1) break;
+            }}
+            if (visible.length < 2) return;
+            el("polyline", {{ points: visible.map(([x, y]) => `${{x}},${{y}}`).join(" "), fill: "none", stroke, "stroke-width": strokeWidth, "stroke-linecap": "butt", "stroke-linejoin": "miter", ...extra }});
+          }};
+
+          const tokenLevel = Math.min(24, Math.floor(ease((p - 0.04) / 0.34) * 25));
+          const matrixLevel = Math.min(80, Math.floor(ease((p - 0.16) / 0.42) * 81));
+          const stackLevel = Math.min(8, Math.floor(ease((p - 0.28) / 0.34) * 9));
+          const meterLevel = Math.min(5, Math.floor(ease((p - 0.40) / 0.34) * 6));
+          const gateLevel = Math.min(4, Math.floor(ease((p - 0.54) / 0.28) * 5));
+          const evidenceLevel = Math.min(60, Math.floor(ease((p - 0.10) / 0.72) * 61));
+
+          [
+            [[84, 112], [360, 112], [444, 180]],
+            [[404, 360], [744, 360], [900, 252]],
+            [[948, 132], [1216, 188], [1456, 188]],
+            [[104, 612], [552, 612], [760, 548], [1000, 548]],
+          ].forEach((points, index) => dLine(points, grayLevel(5), 2, 1, dAttrs(index % 5, "dense-baseline-trace", {{ "data-transition-type": "circuit-signal-trace", "data-transition-id": `dense-baseline-${{index}}`, "data-baseline-trace": "true" }})));
+
+          dRect(80, 104, 292, 260, grayLevel(2), grayLevel(5), 1, dAttrs(0, "dense-input-surface", {{ "data-masonry-module": "true" }}));
+          dRect(404, 96, 420, 308, grayLevel(1), grayLevel(5), 1, dAttrs(1, "dense-matrix-surface", {{ "data-masonry-module": "true" }}));
+          dRect(884, 104, 304, 278, grayLevel(3), grayLevel(5), 1, dAttrs(2, "dense-stack-surface", {{ "data-masonry-module": "true" }}));
+          dRect(1220, 112, 300, 240, grayLevel(2), grayLevel(5), 1, dAttrs(3, "dense-policy-surface", {{ "data-masonry-module": "true" }}));
+          dRect(84, 432, 468, 150, grayLevel(1), grayLevel(5), 1, dAttrs(4, "dense-meter-surface", {{ "data-masonry-module": "true" }}));
+          dRect(604, 456, 468, 128, grayLevel(2), grayLevel(5), 1, dAttrs(4, "dense-feedback-surface", {{ "data-masonry-module": "true" }}));
+
+          for (let index = 0; index < 24; index++) {{
+            const row = Math.floor(index / 8);
+            const col = index % 8;
+            const active = index < tokenLevel;
+            const x = 108 + col * 30;
+            const y = 132 + row * 42;
+            const fill = active ? grayLevel(4 + ((index + row) % 2)) : grayLevel(1 + (index % 4));
+            dRect(x, y, 22, 30, fill, grayLevel(5), 1, dAttrs(0, "dense-token-stream", {{ "data-masonry-module": "true" }}));
+            if (active && index % 6 === 0) dRect(x, y, 6, 30, palette.route, "none", 1, dAttrs(0, "dense-token-state-cap", {{ "data-masonry-module": "true", "data-semantic-glyph": "true" }}));
+          }}
+          for (let row = 0; row < 8; row++) {{
+            for (let col = 0; col < 10; col++) {{
+              const index = row * 10 + col;
+              const active = index < matrixLevel;
+              const strong = active && ((row === col % 8) || (row + col) % 11 === 0);
+              const fill = strong ? grayLevel(5) : active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1);
+              dRect(428 + col * 36, 122 + row * 30, 28, 22, fill, "none", 1, dAttrs(1, "dense-attention-or-tool-matrix", {{ "data-masonry-module": "true" }}));
+              if (strong && (row + col) % 3 === 0) dRect(428 + col * 36, 122 + row * 30, 6, 22, palette.route, "none", 1, dAttrs(1, "dense-matrix-state-cap", {{ "data-masonry-module": "true", "data-semantic-glyph": "true" }}));
+            }}
+          }}
+          for (let layer = 0; layer < 8; layer++) {{
+            const y = 128 + layer * 30;
+            const active = layer < stackLevel;
+            const width = billingConceptRequested ? 168 + layer * 8 : mcpConceptRequested ? 228 - layer * 10 : 248 - layer * 12;
+            dRect(916, y, width, 22, active ? grayLevel(5 - (layer % 2)) : grayLevel(2 + (layer % 4)), "none", 1, dAttrs(2, "dense-layer-stack", {{ "data-masonry-module": "true" }}));
+            if (active && layer % 2 === 0) dRect(916 + width - 8, y, 8, 22, palette.route, "none", 1, dAttrs(2, "dense-layer-active-edge", {{ "data-masonry-module": "true", "data-semantic-glyph": "true" }}));
+          }}
+          for (let index = 0; index < 4; index++) {{
+            const x = 1248 + index * 62;
+            const active = index < gateLevel;
+            dRect(x, 142, 46, 80, active ? grayLevel(5) : grayLevel(2 + index), grayLevel(5), 1, dAttrs(3, "dense-gate-column", {{ "data-masonry-module": "true" }}));
+            if (active) dRect(x, 142, 8, 80, palette.route, "none", 1, dAttrs(3, "dense-gate-state-edge", {{ "data-masonry-module": "true", "data-semantic-glyph": "true" }}));
+            dRect(x, 248, 46, 54, active && index >= 2 ? grayLevel(5) : grayLevel(2 + ((index + 1) % 4)), grayLevel(5), 1, dAttrs(3, "dense-policy-cell", {{ "data-masonry-module": "true" }}));
+          }}
+          for (let index = 0; index < 5; index++) {{
+            const x = 120 + index * 78;
+            const boxId = `dense-meter-${{index}}`;
+            dRect(x, 472, 58, 74, grayLevel(2 + (index % 3)), grayLevel(5), 1, dAttrs(4, "dense-meter-shell", {{ "data-box-id": boxId }}));
+            const filled = 74 * (index < meterLevel ? (meterLevel / 5) : 0);
+            dRect(x, 472 + 74 - filled, 58, filled, grayLevel(5), "none", 1, dAttrs(4, "dense-meter-fill", {{ "data-fill-for": boxId, "data-fill-axis": "y-progress" }}));
+            if (filled > 0) dRect(x, 472 + 74 - filled, 58, 6, palette.route, "none", 1, dAttrs(4, "dense-meter-state-cap", {{ "data-masonry-module": "true", "data-semantic-glyph": "true" }}));
+          }}
+          for (let row = 0; row < 3; row++) {{
+            for (let col = 0; col < 8; col++) {{
+              const index = row * 8 + col;
+              const active = index < Math.floor(evidenceLevel / 2);
+              dRect(632 + col * 48, 480 + row * 30, 38, 22, active ? grayLevel(3 + ((row + col) % 3)) : grayLevel(1 + ((row + col) % 4)), "none", 1, dAttrs(4, "dense-feedback-grid", {{ "data-masonry-module": "true" }}));
+              if (active && index % 7 === 0) dRect(632 + col * 48, 480 + row * 30, 6, 22, palette.route, "none", 1, dAttrs(4, "dense-feedback-state-cap", {{ "data-masonry-module": "true", "data-semantic-glyph": "true" }}));
+            }}
+          }}
+          for (let row = 0; row < 2; row++) {{
+            for (let col = 0; col < 30; col++) {{
+              const index = row * 30 + col;
+              const active = index < evidenceLevel;
+              dRect(64 + col * 50, 640 + row * 28, 40, 18, active ? grayLevel(2 + (index % 4)) : grayLevel(1), "none", 1, dAttrs(index % 5, "dense-evidence-floor", {{ "data-masonry-module": "true" }}));
+              if (active && index % 13 === 0) dRect(64 + col * 50, 640 + row * 28, 6, 18, palette.route, "none", 1, dAttrs(index % 5, "dense-evidence-floor-cap", {{ "data-masonry-module": "true", "data-semantic-glyph": "true" }}));
+            }}
+          }}
+
+          const routeColor = billingConceptRequested ? palette.route : mcpConceptRequested ? palette.attribute : palette.route;
+          dLine([[342, 246], [428, 246], [520, 246]], routeColor, 6, ease((p - 0.08) / 0.20), dAttrs(0, "dense-primary-route", {{ "data-transition-type": "flow-token-route", "data-transition-id": "dense-primary-route" }}));
+          dLine([[780, 246], [916, 216], [1188, 216]], routeColor, 6, ease((p - 0.32) / 0.22), dAttrs(2, "dense-stack-route", {{ "data-transition-type": "flow-token-route", "data-transition-id": "dense-stack-route" }}));
+          dLine([[1188, 216], [1248, 182], [1488, 182]], routeColor, 5, ease((p - 0.50) / 0.22), dAttrs(3, "dense-policy-route", {{ "data-transition-type": "flow-token-route", "data-transition-id": "dense-policy-route" }}));
+          dLine([[358, 546], [604, 520], [1032, 520]], routeColor, 5, ease((p - 0.62) / 0.22), dAttrs(4, "dense-feedback-route", {{ "data-transition-type": "flow-token-route", "data-transition-id": "dense-feedback-route" }}));
+
+          if (billingConceptRequested) {{
+            dRect(1324, 280, 168, 28, grayLevel(5), "none", 1, dAttrs(3, "billing-subscription-band", {{ "data-masonry-module": "true" }}));
+            dRect(1324, 316, 132, 28, grayLevel(4), "none", 1, dAttrs(3, "billing-api-band", {{ "data-masonry-module": "true" }}));
+            dRect(1324, 352, 96, 28, grayLevel(3), "none", 1, dAttrs(3, "billing-local-band", {{ "data-masonry-module": "true" }}));
+          }} else if (mcpConceptRequested) {{
+            dLine([[180, 252], [520, 252], [916, 252], [1432, 252]], grayLevel(5), 8, 1, dAttrs(1, "mcp-bus-spine", {{ "data-transition-type": "surface-wipe", "data-transition-id": "mcp-bus-spine" }}));
+            for (let index = 0; index < 6; index++) {{
+              const x = 524 + index * 72;
+              dRect(x, 292, 44, 34, index < gateLevel + 2 ? grayLevel(5) : grayLevel(3), grayLevel(5), 1, dAttrs(1, "mcp-tool-resource-prompt-port", {{ "data-masonry-module": "true" }}));
+            }}
+          }} else {{
+            for (let index = 0; index < 6; index++) {{
+              const x = 130 + index * 30;
+              const h = 22 + index * 12;
+              dRect(x, 306 - h, 22, h, index < stackLevel ? grayLevel(5) : grayLevel(3), "none", 1, dAttrs(0, "llm-probability-bars", {{ "data-masonry-module": "true" }}));
+              if (index === Math.min(5, meterLevel)) dRect(x, 306 - h, 22, 6, palette.route, "none", 1, dAttrs(0, "llm-selected-token-cap", {{ "data-masonry-module": "true", "data-semantic-glyph": "true" }}));
+            }}
+          }}
+
+          const queueSlots = tokenLevel;
+          const workerActive = stackLevel >= 4;
+          const retryVisible = gateLevel >= 2;
+          const deadLetterVisible = gateLevel >= 4;
+          const feedbackVisible = meterLevel >= 4;
+          const visibleMechanismCount = [tokenLevel >= 16, matrixLevel >= 48, stackLevel >= 6, meterLevel >= 4, gateLevel >= 3, evidenceLevel >= 36].filter(Boolean).length;
+          const beatIndex = Math.max(0, Math.min(4, Math.floor(p * 5)));
+          return withCameraState({{ videoId, seconds: safeSeconds, beat: beatIndex, sourceFacts: PACKAGE.sourceFacts.length, visualPattern: PACKAGE.visualPattern, systemLabels: sourceSystems, queueSlots, workerActive, retryVisible, deadLetterVisible, feedbackVisible, visibleMechanismCount, denseSystemsMotif: motifId, tokenLevel, matrixLevel, stackLevel, meterLevel, gateLevel, evidenceLevel, llmConceptVisible: llmConceptRequested, billingConceptVisible: billingConceptRequested, mcpConceptVisible: mcpConceptRequested }}, camera);
+        }}
         if (!masonryRequired) {{
           el("rect", {{ x: 55, y: 112, width: 305, height: 490, rx: 0, fill: grayLevel(0), stroke: "none" }});
           el("rect", {{ x: 390, y: 112, width: 505, height: 490, rx: 0, fill: grayLevel(1), stroke: "none" }});
@@ -7354,37 +7825,41 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           label(955, 145, "CONTROL", 15, palette.muted, "start");
         }}
         component(71, 222, 128, 64, systemNames[0], palette.route, grayLevel(0));
-        component(71, 327, 128, 64, systemNames[1], palette.damage, "#ffccd5");
+        component(71, 327, 128, 64, systemNames[1], palette.damage, grayLevel(2));
         component(71, 432, 128, 64, systemNames[2], palette.attribute, grayLevel(2));
         component(226, 214, 96, 272, systemNames[3], palette.route, grayLevel(3));
         component(440, 235, 130, 230, systemNames[4], "none", grayLevel(1));
         for (let i = 0; i < 8; i++) {{
           const filled = i < Math.floor(ease((p - 0.18) / 0.32) * 8);
-          el("rect", {{ x: 440, y: 244 + i * 28, width: 128, height: 20, rx: 0, fill: filled ? palette.route : grayLevel(4) }});
+          el("rect", {{ x: 440, y: 244 + i * 28, width: 128, height: 20, rx: 0, fill: filled ? grayLevel(5) : grayLevel(4) }});
+          if (filled) el("rect", {{ x: 440, y: 244 + i * 28, width: 8, height: 20, rx: 0, fill: palette.route, stroke: "none" }});
         }}
         [262, 350, 438].forEach((y, idx) => component(625, y - 34, 180, 68, `${{systemNames[5]}} ${{idx + 1}}`, ease((p - 0.38) / 0.24) > 0.2 ? palette.defense : palette.line, grayLevel(2)));
-        component(810, 304, 102, 92, systemNames[6], palette.damage, "#ffccd5");
-        component(970, 185, 210, 70, systemNames[7], palette.damage, "#ffccd5");
-        component(970, 300, 210, 70, systemNames[8], palette.tradeoff, "#ffccd5");
+        component(810, 304, 102, 92, systemNames[6], palette.damage, grayLevel(2));
+        component(970, 185, 210, 70, systemNames[7], palette.damage, grayLevel(2));
+        component(970, 300, 210, 70, systemNames[8], palette.tradeoff, grayLevel(2));
         component(970, 420, 210, 115, systemNames[9], palette.route, grayLevel(0));
         if (masonryRequired) {{
           const activeCols = Math.max(1, Math.min(8, Math.floor(ease((p - 0.44) / 0.30) * 8)));
           for (let row = 0; row < 5; row++) {{
             for (let col = 0; col < 8; col++) {{
               const level = 1 + ((row + col) % 4);
-              const fill = col < activeCols && (row === 1 || row === 3) ? palette.route : grayLevel(level);
+              const fill = col < activeCols && (row === 1 || row === 3) ? grayLevel(5) : grayLevel(level);
               el("rect", {{ x: 1212 + col * 36, y: 124 + row * 36, width: 28, height: 28, rx: 0, fill, stroke: "none" }});
+              if (col < activeCols && (row === 1 || row === 3) && col % 3 === 0) el("rect", {{ x: 1212 + col * 36, y: 124 + row * 36, width: 6, height: 28, rx: 0, fill: palette.route, stroke: "none" }});
             }}
           }}
           [392, 432, 472, 512, 552, 592].forEach((y, row) => {{
             const barWidth = 56 + ease((p - 0.52 - row * 0.035) / 0.18) * (180 - row * 16);
-            el("rect", {{ x: 1212, y, width: barWidth, height: 18, rx: 0, fill: row === 1 || row === 4 ? palette.damage : grayLevel(4), stroke: "none" }});
+            el("rect", {{ x: 1212, y, width: barWidth, height: 18, rx: 0, fill: row === 1 || row === 4 ? grayLevel(5) : grayLevel(4), stroke: "none" }});
+            if (row === 1 || row === 4) el("rect", {{ x: 1212, y, width: 6, height: 18, rx: 0, fill: palette.route, stroke: "none" }});
           }});
           for (let row = 0; row < 3; row++) {{
             for (let col = 0; col < 4; col++) {{
               const cellOn = ease((p - 0.50 - (row + col) * 0.025) / 0.16) > 0.35;
-              const fill = cellOn && (row + col) % 3 === 0 ? palette.damage : (cellOn ? grayLevel(5) : grayLevel(3));
+              const fill = cellOn ? grayLevel((row + col) % 3 === 0 ? 5 : 4) : grayLevel(3);
               el("rect", {{ x: 1416 + col * 32, y: 488 + row * 32, width: 24, height: 24, rx: 0, fill, stroke: "none" }});
+              if (cellOn && (row + col) % 3 === 0) el("rect", {{ x: 1416 + col * 32, y: 488 + row * 32, width: 6, height: 24, rx: 0, fill: palette.route, stroke: "none" }});
             }}
           }}
         }}
@@ -7741,6 +8216,57 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           label(865, 145, "DECISION CONTEXT", 15, palette.muted, "start");
         }}
         const chart = {{ x1: 115, y1: 190, x2: 760, y2: 520 }};
+        if (masonryRequired) {{
+          let metricTileCounter = 0;
+          const metricTileAttrs = (mechanismId, extra = {{}}) => ({{
+            "data-box-id": `metric-density-tile-${{++metricTileCounter}}`,
+            "data-masonry-module": "true",
+            "data-zone-boundary": "flush",
+            "data-padding-policy": "zero-verified",
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          }});
+          const metricTile = (x, y, width, height, fill, mechanismId, extra = {{}}) => {{
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke: "none", ...metricTileAttrs(mechanismId, extra) }});
+          }};
+          const metricDensityLevel = Math.min(84, Math.floor(ease((p - 0.04) / 0.72) * 85));
+          for (let row = 0; row < 6; row++) {{
+            for (let col = 0; col < 10; col++) {{
+              const index = row * 10 + col;
+              const active = index < metricDensityLevel;
+              const x = chart.x1 + 26 + col * 42;
+              const y = chart.y1 + 26 + row * 28;
+              const fill = active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1);
+              metricTile(x, y, 32, 20, fill, "metric-attention-density-grid");
+              if (active && (row === col % 6 || index % 17 === 0)) {{
+                metricTile(x, y, 6, 20, palette.route, "metric-attention-density-cap", {{ "data-semantic-glyph": "true" }});
+              }}
+            }}
+          }}
+          for (let index = 0; index < 14; index++) {{
+            const active = index < Math.floor(metricDensityLevel / 4) + 2;
+            const x = 86 + index * 28;
+            const y = 132 + (index % 3) * 22;
+            metricTile(x, y, 22, 16, active ? grayLevel(3 + (index % 3)) : grayLevel(1 + (index % 4)), "metric-token-strip");
+            if (active && index % 5 === 0) metricTile(x, y, 6, 16, palette.route, "metric-token-strip-cap", {{ "data-semantic-glyph": "true" }});
+          }}
+          for (let row = 0; row < 5; row++) {{
+            const y = 124 + row * 28;
+            const width = 96 + row * 38 + ease((p - 0.20 - row * 0.04) / 0.22) * 92;
+            metricTile(892, y, width, 20, grayLevel(2 + (row % 4)), "metric-right-density-bars");
+            if (row < Math.floor(ease((p - 0.24) / 0.42) * 6)) metricTile(892, y, 6, 20, palette.route, "metric-right-density-cap", {{ "data-semantic-glyph": "true" }});
+          }}
+          for (let row = 0; row < 2; row++) {{
+            for (let col = 0; col < 30; col++) {{
+              const index = row * 30 + col;
+              const active = index < Math.floor(metricDensityLevel * 0.72);
+              const x = 64 + col * 50;
+              const y = 640 + row * 28;
+              metricTile(x, y, 40, 18, active ? grayLevel(2 + (index % 4)) : grayLevel(1), "metric-evidence-floor");
+              if (active && index % 12 === 0) metricTile(x, y, 6, 18, palette.route, "metric-evidence-floor-cap", {{ "data-semantic-glyph": "true" }});
+            }}
+          }}
+        }}
         for (let i = 0; i < 5; i++) {{
           const y = chart.y1 + i * (chart.y2 - chart.y1) / 4;
           line(chart.x1, y, chart.x2, y, "#cfcfcf", 2);
@@ -7844,6 +8370,47 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
           const [stripX, stripY, stripW, stripH] = clusterLevelStrips[idx];
           el("rect", {{ x: stripX, y: stripY, width: stripW, height: stripH, rx: 0, fill: clusterLevelFills[idx], stroke: "none" }});
         }});
+        if (masonryRequired) {{
+          let dependencyTileCounter = 0;
+          const depTileAttrs = (mechanismId, extra = {{}}) => ({{
+            "data-box-id": `dependency-density-tile-${{++dependencyTileCounter}}`,
+            "data-masonry-module": "true",
+            "data-zone-boundary": "flush",
+            "data-padding-policy": "zero-verified",
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          }});
+          const depTile = (x, y, width, height, fill, mechanismId, extra = {{}}) => {{
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke: "none", ...depTileAttrs(mechanismId, extra) }});
+          }};
+          const dependencyDensityLevel = Math.max(42, Math.min(72, Math.floor(ease((p - 0.04) / 0.70) * 73)));
+          const dependencyCapFill = (index) => index % 3 === 0 ? palette.route : index % 3 === 1 ? palette.attribute : palette.damage;
+          for (let row = 0; row < 5; row++) {{
+            for (let col = 0; col < 10; col++) {{
+              const index = row * 10 + col;
+              const active = index < dependencyDensityLevel;
+              const x = 92 + col * 28;
+              const y = 472 + row * 22;
+              depTile(x, y, 20, 16, active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1), "dependency-source-ledger");
+              if (active && index % 7 === 0) depTile(x, y, 6, 16, dependencyCapFill(index), "dependency-source-ledger-cap", {{ "data-semantic-glyph": "true" }});
+            }}
+          }}
+          for (let row = 0; row < 4; row++) {{
+            for (let col = 0; col < 8; col++) {{
+              const index = row * 8 + col;
+              const active = index < Math.floor(dependencyDensityLevel * 0.7);
+              const x = 902 + col * 34;
+              const y = 342 + row * 26;
+              depTile(x, y, 26, 20, active ? grayLevel(2 + ((index + row) % 4)) : grayLevel(1), "dependency-policy-matrix");
+              if (active && (row === col % 4 || index % 7 === 0)) depTile(x, y, 6, 20, dependencyCapFill(index + row), "dependency-policy-matrix-cap", {{ "data-semantic-glyph": "true" }});
+            }}
+          }}
+          for (let col = 0; col < 24; col++) {{
+            const active = col < Math.floor(dependencyDensityLevel / 2);
+            depTile(64 + col * 58, 650, 48, 18, active ? grayLevel(2 + (col % 4)) : grayLevel(1), "dependency-evidence-floor");
+            if (active && col % 6 === 0) depTile(64 + col * 58, 650, 6, 18, dependencyCapFill(col), "dependency-evidence-floor-cap", {{ "data-semantic-glyph": "true" }});
+          }}
+        }}
         label(82, 145, clusters[0].toUpperCase(), 15, palette.muted, "start");
         label(425, 145, clusters[1].toUpperCase(), 15, palette.muted, "start");
         label(915, 145, clusters[2].toUpperCase(), 15, palette.muted, "start");
@@ -8062,6 +8629,52 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         }}
         const sourceFlowLabels = PACKAGE.flowLabels?.length ? PACKAGE.flowLabels : ["raw input", "accepted stream", "filtered loss", "transform A", "transform B", "merged value", "bottleneck", "final output"];
         const flowLabels = sourceFlowLabels.map((value) => compactText(value, 18));
+        if (masonryRequired) {{
+          let sankeyTileCounter = 0;
+          const sankeyTileAttrs = (mechanismId, extra = {{}}) => ({{
+            "data-box-id": `sankey-density-tile-${{++sankeyTileCounter}}`,
+            "data-masonry-module": "true",
+            "data-zone-boundary": "flush",
+            "data-padding-policy": "zero-verified",
+            "data-mechanism-id": mechanismId,
+            ...extra,
+          }});
+          const sankeyTile = (x, y, width, height, fill, mechanismId, extra = {{}}) => {{
+            el("rect", {{ x, y, width, height, rx: 0, fill: tonalSurfaceFill(fill, width, height), stroke: "none", ...sankeyTileAttrs(mechanismId, extra) }});
+          }};
+          const sankeyDensityLevel = Math.min(72, Math.floor(ease((p - 0.08) / 0.70) * 73));
+          for (let row = 0; row < 6; row++) {{
+            for (let col = 0; col < 12; col++) {{
+              const index = row * 12 + col;
+              const active = index < sankeyDensityLevel;
+              const x = 78 + col * 40;
+              const y = 124 + row * 26;
+              sankeyTile(x, y, 30, 18, active ? grayLevel(2 + ((row + col) % 4)) : grayLevel(1), "sankey-input-density-grid");
+              if (active && index % 11 === 0) sankeyTile(x, y, 6, 18, palette.route, "sankey-input-density-cap", {{ "data-semantic-glyph": "true" }});
+            }}
+          }}
+          for (let col = 0; col < 4; col++) {{
+            const x = 918 + col * 74;
+            const meterLevel = Math.min(5, Math.floor(ease((p - 0.30 - col * 0.04) / 0.34) * 6));
+            sankeyTile(x, 404, 54, 114, grayLevel(2 + col), "sankey-cost-column-shell");
+            for (let level = 0; level < 5; level++) {{
+              const active = level < meterLevel;
+              const y = 492 - level * 18;
+              sankeyTile(x + 8, y, 38, 14, active ? grayLevel(5) : grayLevel(3), "sankey-cost-column-segment");
+              if (active && level === meterLevel - 1) sankeyTile(x + 8, y, 38, 6, palette.route, "sankey-cost-column-cap", {{ "data-semantic-glyph": "true" }});
+            }}
+          }}
+          for (let row = 0; row < 2; row++) {{
+            for (let col = 0; col < 28; col++) {{
+              const index = row * 28 + col;
+              const active = index < Math.floor(sankeyDensityLevel * 0.75);
+              const x = 64 + col * 54;
+              const y = 640 + row * 28;
+              sankeyTile(x, y, 44, 18, active ? grayLevel(2 + (index % 4)) : grayLevel(1), "sankey-evidence-floor");
+              if (active && index % 10 === 0) sankeyTile(x, y, 6, 18, palette.route, "sankey-evidence-floor-cap", {{ "data-semantic-glyph": "true" }});
+            }}
+          }}
+        }}
         const flows = [
           [[[190,320],[265,275],[340,235]], palette.route, 18],
           [[[190,320],[265,390],[340,435]], palette.tradeoff, 12],
@@ -9535,7 +10148,7 @@ def write_render_js(args: argparse.Namespace, paths: dict[str, Path], package: d
     argv = [
         "run",
         "--script",
-        "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+        ".agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
         "--project-root",
         args.project_root.as_posix(),
         "--title",
@@ -9560,6 +10173,7 @@ def write_render_js(args: argparse.Namespace, paths: dict[str, Path], package: d
         str(args.height),
         "--edge-style",
         args.edge_style,
+        *(["--masonry-layout"] if args.masonry_layout else []),
         *facts_args,
         *anchor_args,
         *source_args,
@@ -9914,7 +10528,7 @@ MP4 path: `{paths["video"].as_posix()}`
 - Source facts preserved: {len(args.fact)}.
 - Strategy anchors preserved: {len(args.anchor)}.
 - Contact sheet: {"created at `" + paths["contact_sheet"].as_posix() + "` with manifest `" + paths["contact_sheet_manifest"].as_posix() + "`" if contact_sheet else "not created or did not pass the metric gate"}.
-- Render command: `uv run --script skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root {args.project_root.as_posix()} --title "{args.title}" --output-id {args.output_id} --pattern {args.pattern}`.
+- Render command: `uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root {args.project_root.as_posix()} --title "{args.title}" --output-id {args.output_id} --pattern {args.pattern}`.
 
 ## Critique
 

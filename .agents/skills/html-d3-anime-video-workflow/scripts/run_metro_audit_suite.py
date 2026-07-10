@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import signal
 import shutil
 import subprocess
 import sys
@@ -31,6 +33,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--mute-test-output", type=Path, help="metro-mute-test-audit.json path.")
     parser.add_argument("--output", type=Path, help="Optional suite JSON report path.")
     parser.add_argument("--allow-colorset2", action="store_true")
+    parser.add_argument("--colorset2-reason", default="")
+    parser.add_argument(
+        "--design-profile",
+        type=Path,
+        help="Compiled Metro design profile forwarded to the tonal style audit.",
+    )
     parser.add_argument("--install-browser", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--audit-timeout-seconds", type=int, default=240)
     parser.add_argument(
@@ -86,6 +94,23 @@ def read_tail(path: Path, limit: int = 1000) -> str:
         return ""
 
 
+def kill_process_tree(process: subprocess.Popen[str]) -> None:
+    if process.poll() is not None:
+        return
+    if sys.platform.startswith("win"):
+        subprocess.run(
+            ["taskkill", "/F", "/T", "/PID", str(process.pid)],
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        return
+    try:
+        os.killpg(os.getpgid(process.pid), signal.SIGKILL)
+    except ProcessLookupError:
+        return
+
+
 def run_child_command(cmd: list[str], timeout_seconds: int) -> subprocess.CompletedProcess[str]:
     temp_dir = Path(tempfile.mkdtemp(prefix="metro-audit-child-"))
     stdout_path = temp_dir / "stdout.txt"
@@ -94,19 +119,25 @@ def run_child_command(cmd: list[str], timeout_seconds: int) -> subprocess.Comple
         with stdout_path.open("w", encoding="utf-8", errors="replace") as stdout_file, stderr_path.open(
             "w", encoding="utf-8", errors="replace"
         ) as stderr_file:
+            popen_kwargs: dict[str, Any] = {
+                "text": True,
+                "stdout": stdout_file,
+                "stderr": stderr_file,
+            }
+            if sys.platform.startswith("win"):
+                popen_kwargs["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP
+            else:
+                popen_kwargs["start_new_session"] = True
+            process = subprocess.Popen(cmd, **popen_kwargs)
             try:
-                result = subprocess.run(
-                    cmd,
-                    text=True,
-                    stdout=stdout_file,
-                    stderr=stderr_file,
-                    check=False,
-                    timeout=timeout_seconds,
-                )
+                process.wait(timeout=timeout_seconds)
             except subprocess.TimeoutExpired as exc:
+                kill_process_tree(process)
+                process.wait(timeout=10)
                 exc.stdout = read_tail(stdout_path)
                 exc.stderr = read_tail(stderr_path)
                 raise
+        result = subprocess.CompletedProcess(cmd, process.returncode)
         result.stdout = read_tail(stdout_path)
         result.stderr = read_tail(stderr_path)
         return result
@@ -252,7 +283,13 @@ def main() -> int:
     if not args.install_browser:
         rendered_args.append("--no-install-browser")
     mute_test_args = [*rendered_args, "--samples", str(args.mute_test_samples)]
-    style_args = ["--allow-colorset2"] if args.allow_colorset2 else []
+    style_args: list[str] = []
+    if args.design_profile:
+        style_args.extend(["--design-profile", args.design_profile.as_posix()])
+    if args.allow_colorset2:
+        style_args.append("--allow-colorset2")
+        if args.colorset2_reason:
+            style_args.extend(["--colorset2-reason", args.colorset2_reason])
     style = run_audit(
         script_name="audit_metro_tonal_style.py",
         code="metro-style",
@@ -290,6 +327,7 @@ def main() -> int:
         "passed": not findings,
         "html": args.html.as_posix(),
         "sourcePackage": args.source_package.as_posix() if args.source_package else None,
+        "designProfile": args.design_profile.as_posix() if args.design_profile else None,
         "styleAudit": style,
         "compositionAudit": composition,
         "renderedFrameAudit": rendered,

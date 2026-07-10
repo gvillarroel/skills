@@ -32,9 +32,9 @@ function renderBinaryClassifier() {
     svg.append("g").selectAll("path").data(layout.links, d => d.id).join("path")
       .attr("d", d => link({ source: d.source, target: d.target }))
       .attr("fill", "none")
-      .attr("stroke", palette.gray100)
+      .attr("stroke", palette.gray300)
       .attr("stroke-width", 1.5)
-      .attr("stroke-opacity", .36)
+      .attr("stroke-opacity", .62)
       .attr("stroke-linecap", "round");
     const decisionRegion = svg.append("g");
     decisionRegion.selectAll("circle.base").data([
@@ -45,7 +45,9 @@ function renderBinaryClassifier() {
       .attr("cx", d => d.cx)
       .attr("cy", d => d.cy)
       .attr("r", 26)
-      .attr("fill", palette.gray200);
+      .attr("fill", (d, i) => i === 0 ? palette.greenHighlight : palette.purpleHighlight)
+      .attr("stroke", (d, i) => i === 0 ? palette.green : palette.purple)
+      .attr("stroke-width", 1.6);
     const classPulse = decisionRegion.selectAll("circle.pulse").data([
       { layer: 2, pulseLayer: 2, r: 26, cx: 504, cy: 162 },
       { layer: 2, pulseLayer: 5, r: 26, cx: 504, cy: 270 }
@@ -54,13 +56,17 @@ function renderBinaryClassifier() {
       .attr("cx", d => d.cx)
       .attr("cy", d => d.cy)
       .attr("r", 26)
-      .attr("fill", palette.gray200);
+      .attr("fill", (_, i) => i === 0 ? palette.greenHighlight : palette.purpleHighlight)
+      .attr("stroke", (_, i) => i === 0 ? palette.green : palette.purple)
+      .attr("stroke-width", 1.6);
     pulseMlpNodes(classPulse, delayForLayer);
     const groups = svg.append("g").selectAll("g").data(layout.nodes, d => d.id).join("g")
       .attr("transform", d => `translate(${d.x},${d.y})`);
     const circles = groups.append("circle")
       .attr("r", d => d.r)
-      .attr("fill", palette.gray200);
+      .attr("fill", d => [palette.blueHighlight, palette.orangeHighlight, palette.greenHighlight][d.layer])
+      .attr("stroke", d => [palette.blue, palette.orange, palette.green][d.layer])
+      .attr("stroke-width", 1.4);
     pulseMlpNodes(circles.filter(d => d.active), delayForLayer);
   }
 ```

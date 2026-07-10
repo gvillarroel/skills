@@ -14,26 +14,11 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
+from compile_metro_design_profile import DEFAULT_PROFILE, load_design_profile, profile_prompt_contract
 from plan_metro_video_series import build_series_report, markdown_video_sections, slugify
 
 
 SCRIPT_ID = "build_metro_series_contract_prompts"
-
-
-STYLE_CONTRACT = """Style contract:
-
-- This is a design-repair run: prior output was rejected as not following the design.
-- Use Metro Minimal Tonal Motion as a large navigable megacanvas, not isolated slides.
-- Use a masonry wall or masonry-like modular construction as a visible armature. Modules must have varied sizes, shared grid edges, and construction/progression over time.
-- Do not reserve space for titles, subtitles, captions, checked dates, draft labels, or editorial text.
-- Use only functional labels that belong to visual objects: node names, states, compact axis values, table cells, or data-bearing marks.
-- Use colorset1 by default: primary red `#9e1b32`, dark red `#6d1222`, status red `#e8002a`, red highlight `#ffccd5`, neutral `#333e48`, black `#000000`, white `#ffffff`, and grays `#e7e7e7`, `#cfcfcf`, `#b5b5b5`, `#9c9c9c`, `#828282`, `#696969`, `#4f4f4f`, `#363636`, `#1c1c1c`.
-- Use colorset2 only when colorset1 cannot encode a required semantic distinction, and record that reason in production notes.
-- Use hard 0-radius rectangles, hard line caps and joins, 4 px grid alignment, shared baselines, shared edges, and external gutters.
-- Boxes must have no internal padding. The rectangle edge is the content boundary; use adjacent flush lanes or separate flush rectangles for labels and data marks.
-- Use distinct grayscale levels for hierarchy before hue. Red is only for state, emphasis, failure, selection, alert paths, or primary flow.
-- The mute-test version with text hidden must still show the mechanism through marks, motion, zones, and gray hierarchy.
-"""
 
 
 def parse_args() -> argparse.Namespace:
@@ -44,6 +29,12 @@ def parse_args() -> argparse.Namespace:
         )
     )
     parser.add_argument("--source", required=True, type=Path, help="Markdown source with ### video modules.")
+    parser.add_argument(
+        "--design-profile",
+        type=Path,
+        default=DEFAULT_PROFILE,
+        help="Compiled Metro design profile embedded into every generated prompt.",
+    )
     parser.add_argument("--output-dir", required=True, type=Path, help="Directory for generated prompt files and manifest.")
     parser.add_argument("--project-root", required=True, type=Path, help="Project root used inside generated prompt paths.")
     parser.add_argument("--checked-date", default="2026-07-05")
@@ -277,7 +268,13 @@ def semantic_command(project: Path, output_id: str) -> str:
     )
 
 
-def render_prompt(index: int, section: dict[str, str], report: dict[str, Any], args: argparse.Namespace) -> tuple[str, dict[str, Any]]:
+def render_prompt(
+    index: int,
+    section: dict[str, str],
+    report: dict[str, Any],
+    args: argparse.Namespace,
+    style_contract: str,
+) -> tuple[str, dict[str, Any]]:
     output_id = slugify(section["title"])
     project = args.project_root / output_id
     selected = report.get("selected") if isinstance(report.get("selected"), dict) else {}
@@ -312,7 +309,7 @@ def render_prompt(index: int, section: dict[str, str], report: dict[str, Any], a
         f"Video title: {section['title']}.",
         f"Checked date: {args.checked_date}.",
         "",
-        STYLE_CONTRACT.rstrip(),
+        style_contract.rstrip(),
         "",
         "Pattern brief:",
         "",
@@ -363,16 +360,18 @@ def render_prompt(index: int, section: dict[str, str], report: dict[str, Any], a
     return "\n".join(prompt), metadata
 
 
-def design_repair_text(sections: list[dict[str, str]]) -> str:
-    return "\n\n".join(f"{section['text']}\n\n#### Design repair contract\n\n{STYLE_CONTRACT}" for section in sections)
+def design_repair_text(sections: list[dict[str, str]], style_contract: str) -> str:
+    return "\n\n".join(f"{section['text']}\n\n#### Design repair contract\n\n{style_contract}" for section in sections)
 
 
-def section_design_repair_text(section: dict[str, str]) -> str:
-    return f"{section['text']}\n\n#### Design repair contract\n\n{STYLE_CONTRACT}"
+def section_design_repair_text(section: dict[str, str], style_contract: str) -> str:
+    return f"{section['text']}\n\n#### Design repair contract\n\n{style_contract}"
 
 
 def main() -> int:
     args = parse_args()
+    design_profile = load_design_profile(args.design_profile)
+    style_contract = profile_prompt_contract(design_profile)
     text = args.source.read_text(encoding="utf-8")
     sections = markdown_video_sections(text)
     if args.limit > 0:
@@ -393,7 +392,7 @@ def main() -> int:
         min_camera_events=3,
     )
     source_name = args.source.as_posix()
-    repair_text = design_repair_text(sections)
+    repair_text = design_repair_text(sections, style_contract)
     series = build_series_report(f"{source_name}#design-repair", repair_text, series_args)
     modules_by_id = {str(module.get("id")): module for module in series.get("modules", []) if isinstance(module, dict)}
     full_reports = []
@@ -411,9 +410,13 @@ def main() -> int:
     args.output_dir.mkdir(parents=True, exist_ok=True)
     prompt_records: list[dict[str, Any]] = []
     for index, section in enumerate(sections, start=1):
-        report = build_report(f"{source_name}#{section['id']}#design-repair", section_design_repair_text(section), planner_args)
+        report = build_report(
+            f"{source_name}#{section['id']}#design-repair",
+            section_design_repair_text(section, style_contract),
+            planner_args,
+        )
         full_reports.append(report)
-        prompt_text, metadata = render_prompt(index, section, report, args)
+        prompt_text, metadata = render_prompt(index, section, report, args, style_contract)
         prompt_path = args.output_dir / f"{index:02d}-{metadata['id']}.md"
         prompt_path.write_text(prompt_text, encoding="utf-8")
         metadata["prompt"] = prompt_path.as_posix()
@@ -429,6 +432,17 @@ def main() -> int:
         "outputDir": args.output_dir.as_posix(),
         "projectRoot": args.project_root.as_posix(),
         "checkedDate": args.checked_date,
+        "designProfile": {
+            "path": args.design_profile.as_posix(),
+            "profileId": design_profile.get("profileId"),
+            "profileVersion": design_profile.get("profileVersion"),
+            "profileSha256": design_profile.get("profileSha256"),
+            "sourceDigests": {
+                key: value.get("sha256")
+                for key, value in design_profile.get("sources", {}).items()
+                if isinstance(value, dict)
+            },
+        },
         "format": {"duration": args.duration, "fps": args.fps, "width": args.width, "height": args.height},
         "series": series,
         "prompts": prompt_records,

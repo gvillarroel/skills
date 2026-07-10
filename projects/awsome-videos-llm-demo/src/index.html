@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What is an LLM?</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --panel: #151b23;
+      --panel-2: #1f2937;
+      --ink: #f8fafc;
+      --muted: #94a3b8;
+      --cyan: #5eead4;
+      --blue: #60a5fa;
+      --green: #34d399;
+      --yellow: #facc15;
+      --orange: #fb923c;
+      --red: #fb7185;
+      --purple: #a78bfa;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    #stage {
+      width: 1280px;
+      height: 720px;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    svg {
+      display: block;
+      width: 1280px;
+      height: 720px;
+      background: var(--bg);
+      text-rendering: geometricPrecision;
+      shape-rendering: geometricPrecision;
+    }
+
+    .mono {
+      font-family: "Cascadia Mono", Consolas, "SFMono-Regular", monospace;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage" aria-label="What is an LLM explainer video">
+    <svg id="viz" viewBox="0 0 1280 720" role="img"></svg>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const svg = document.getElementById("viz");
+      const NS = "http://www.w3.org/2000/svg";
+      const W = 1280;
+      const H = 720;
+      const DURATION = 70;
+
+      const colors = {
+        bg: "#0d1117",
+        grid: "#1f2937",
+        panel: "#151b23",
+        panel2: "#1f2937",
+        ink: "#f8fafc",
+        muted: "#94a3b8",
+        faint: "#334155",
+        cyan: "#5eead4",
+        blue: "#60a5fa",
+        green: "#34d399",
+        yellow: "#facc15",
+        orange: "#fb923c",
+        red: "#fb7185",
+        purple: "#a78bfa",
+        black: "#05070a"
+      };
+
+      const beats = [
+        { start: 0, end: 6, label: "Hook", caption: "An LLM bets on the next token, over and over." },
+        { start: 6, end: 13, label: "Large", caption: "Large means many learned weights from huge text." },
+        { start: 13, end: 20, label: "Language", caption: "Text becomes tokens before the model sees it." },
+        { start: 20, end: 28, label: "Model", caption: "Weighted layers transform the context." },
+        { start: 28, end: 36, label: "Prediction", caption: "The model scores possible next tokens." },
+        { start: 36, end: 44, label: "Repeat", caption: "The winner joins context, then the loop runs again." },
+        { start: 44, end: 52, label: "Prompting", caption: "The same model changes when the context changes." },
+        { start: 52, end: 60, label: "Limits", caption: "Fluent output is not the same as verified output." },
+        { start: 60, end: 66, label: "Use", caption: "Give context, constraints, examples, and checks." },
+        { start: 66, end: 70, label: "Callback", caption: "Prediction plus context, not a mind." }
+      ];
+
+      const tokenPalette = [colors.cyan, colors.blue, colors.green, colors.yellow, colors.orange, colors.purple];
+      const tokenData = [
+        ["The", "102"],
+        ["cloud", "781"],
+        ["server", "431"],
+        ["returns", "902"],
+        ["a", "17"],
+        ["JSON", "622"]
+      ];
+
+      function clamp(value, min = 0, max = 1) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function local(seconds, start, end) {
+        return clamp((seconds - start) / (end - start));
+      }
+
+      function ease(t) {
+        const x = clamp(t);
+        return x * x * (3 - 2 * x);
+      }
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function fract(value) {
+        return value - Math.floor(value);
+      }
+
+      function beatIndex(seconds) {
+        const index = beats.findIndex((beat) => seconds >= beat.start && seconds < beat.end);
+        return index === -1 ? beats.length - 1 : index;
+      }
+
+      function add(parent, tag, attrs = {}) {
+        const node = document.createElementNS(NS, tag);
+        for (const [key, value] of Object.entries(attrs)) {
+          if (value === undefined || value === null) {
+            continue;
+          }
+          if (key === "text") {
+            node.textContent = value;
+          } else {
+            node.setAttribute(key, String(value));
+          }
+        }
+        parent.appendChild(node);
+        return node;
+      }
+
+      function group(parent, attrs = {}) {
+        return add(parent, "g", attrs);
+      }
+
+      function rect(parent, x, y, width, height, attrs = {}) {
+        return add(parent, "rect", { x, y, width, height, ...attrs });
+      }
+
+      function line(parent, x1, y1, x2, y2, attrs = {}) {
+        return add(parent, "line", { x1, y1, x2, y2, ...attrs });
+      }
+
+      function path(parent, d, attrs = {}) {
+        return add(parent, "path", { d, ...attrs });
+      }
+
+      function circle(parent, cx, cy, r, attrs = {}) {
+        return add(parent, "circle", { cx, cy, r, ...attrs });
+      }
+
+      function text(parent, x, y, value, attrs = {}) {
+        return add(parent, "text", {
+          x,
+          y,
+          text: value,
+          fill: attrs.fill || colors.ink,
+          "font-size": attrs.size || 24,
+          "font-weight": attrs.weight || 600,
+          "font-family": attrs.family || "Inter, Segoe UI, sans-serif",
+          "text-anchor": attrs.anchor || "start",
+          opacity: attrs.opacity === undefined ? 1 : attrs.opacity,
+          class: attrs.className || ""
+        });
+      }
+
+      function multiline(parent, x, y, lines, attrs = {}) {
+        const node = add(parent, "text", {
+          x,
+          y,
+          fill: attrs.fill || colors.ink,
+          "font-size": attrs.size || 24,
+          "font-weight": attrs.weight || 600,
+          "font-family": attrs.family || "Inter, Segoe UI, sans-serif",
+          "text-anchor": attrs.anchor || "start",
+          opacity: attrs.opacity === undefined ? 1 : attrs.opacity,
+          class: attrs.className || ""
+        });
+        const gap = attrs.gap || Math.round((attrs.size || 24) * 1.25);
+        lines.forEach((lineText, index) => {
+          add(node, "tspan", {
+            x,
+            dy: index === 0 ? 0 : gap,
+            text: lineText
+          });
+        });
+        return node;
+      }
+
+      function panel(parent, x, y, width, height, title, accent, opacity = 1) {
+        const g = group(parent, { opacity });
+        rect(g, x, y, width, height, {
+          fill: colors.panel,
+          stroke: "#2c3748",
+          "stroke-width": 2
+        });
+        rect(g, x, y, 6, height, {
+          fill: accent,
+          opacity: 0.95
+        });
+        text(g, x + 24, y + 34, title, {
+          size: 18,
+          weight: 800,
+          fill: accent
+        });
+        return g;
+      }
+
+      function token(parent, x, y, label, id, fill, opacity = 1, scale = 1) {
+        const g = group(parent, {
+          transform: `translate(${x} ${y}) scale(${scale})`,
+          opacity
+        });
+        rect(g, 0, 0, 88, 46, {
+          fill,
+          stroke: "#e2e8f0",
+          "stroke-width": 1.2
+        });
+        text(g, 12, 21, label, {
+          size: 15,
+          weight: 800,
+          fill: colors.black,
+          family: "Cascadia Mono, Consolas, monospace"
+        });
+        text(g, 12, 37, "#" + id, {
+          size: 11,
+          weight: 700,
+          fill: "#111827",
+          family: "Cascadia Mono, Consolas, monospace",
+          opacity: 0.75
+        });
+        return g;
+      }
+
+      function addDefs(parent) {
+        const defs = add(parent, "defs");
+        const glow = add(defs, "filter", { id: "soft-glow", x: "-30%", y: "-30%", width: "160%", height: "160%" });
+        add(glow, "feGaussianBlur", { stdDeviation: 4, result: "blur" });
+        const merge = add(glow, "feMerge");
+        add(merge, "feMergeNode", { in: "blur" });
+        add(merge, "feMergeNode", { in: "SourceGraphic" });
+
+        const marker = add(defs, "marker", {
+          id: "arrowhead",
+          markerWidth: 10,
+          markerHeight: 10,
+          refX: 6,
+          refY: 3,
+          orient: "auto",
+          markerUnits: "strokeWidth"
+        });
+        path(marker, "M0,0 L0,6 L8,3 z", { fill: colors.cyan });
+      }
+
+      function drawBackground(parent, seconds) {
+        rect(parent, 0, 0, W, H, { fill: colors.bg });
+        const drift = (seconds * 9) % 80;
+        for (let x = -80 + drift; x <= W + 80; x += 80) {
+          line(parent, x, 0, x - 180, H, {
+            stroke: colors.grid,
+            "stroke-width": 1,
+            opacity: 0.22
+          });
+        }
+        for (let y = 120; y < H; y += 84) {
+          line(parent, 0, y, W, y, {
+            stroke: "#172033",
+            "stroke-width": 1,
+            opacity: 0.5
+          });
+        }
+        rect(parent, 0, 0, W, 116, { fill: "#0b0f16", opacity: 0.92 });
+        rect(parent, 0, 674, W, 46, { fill: "#0b0f16", opacity: 0.92 });
+      }
+
+      function drawTopBar(parent, seconds, beat) {
+        text(parent, 52, 48, "WHAT IS AN LLM?", {
+          size: 34,
+          weight: 900,
+          fill: colors.ink
+        });
+        text(parent, 53, 82, beats[beat].caption, {
+          size: 21,
+          weight: 650,
+          fill: colors.muted
+        });
+
+        const tagWidth = 168;
+        rect(parent, 1058, 32, tagWidth, 42, {
+          fill: colors.panel2,
+          stroke: tokenPalette[beat % tokenPalette.length],
+          "stroke-width": 2
+        });
+        text(parent, 1142, 60, beats[beat].label.toUpperCase(), {
+          size: 17,
+          weight: 900,
+          anchor: "middle",
+          fill: tokenPalette[beat % tokenPalette.length]
+        });
+
+        rect(parent, 52, 96, 1176, 5, { fill: "#1f2937" });
+        rect(parent, 52, 96, 1176 * clamp(seconds / DURATION), 5, {
+          fill: colors.cyan
+        });
+      }
+
+      function drawFooter(parent, seconds) {
+        const steps = [
+          ["tokenize", 13],
+          ["context", 18],
+          ["layers", 22],
+          ["score", 30],
+          ["sample", 35],
+          ["repeat", 39]
+        ];
+        let x = 222;
+        text(parent, 52, 704, "mechanism", {
+          size: 15,
+          weight: 800,
+          fill: colors.muted
+        });
+        steps.forEach((step, index) => {
+          const active = seconds >= step[1];
+          rect(parent, x, 688, 122, 22, {
+            fill: active ? tokenPalette[index % tokenPalette.length] : "#1f2937",
+            stroke: active ? "#e5e7eb" : "#334155",
+            "stroke-width": 1,
+            opacity: active ? 1 : 0.7
+          });
+          text(parent, x + 61, 704, step[0], {
+            size: 13,
+            weight: 900,
+            anchor: "middle",
+            fill: active ? colors.black : colors.muted
+          });
+          if (index < steps.length - 1) {
+            line(parent, x + 128, 699, x + 160, 699, {
+              stroke: active ? colors.cyan : "#334155",
+              "stroke-width": 2
+            });
+          }
+          x += 166;
+        });
+      }
+
+      function drawHook(parent, seconds) {
+        const p = ease(local(seconds, 0, 6));
+        rect(parent, 116, 154, 1048, 140, {
+          fill: "#05070a",
+          stroke: colors.cyan,
+          "stroke-width": 2,
+          opacity: 0.96
+        });
+        text(parent, 154, 205, "$ explain LLMs simply", {
+          size: 34,
+          weight: 800,
+          fill: colors.green,
+          family: "Cascadia Mono, Consolas, monospace"
+        });
+        multiline(parent, 116, 360, [
+          "Not a mind.",
+          "A next-token machine."
+        ], {
+          size: 48,
+          weight: 950,
+          fill: colors.ink,
+          gap: 60
+        });
+
+        const hookTokens = [
+          ["explain", "204"],
+          ["LLMs", "915"],
+          ["simply", "338"]
+        ];
+        hookTokens.forEach((item, index) => {
+          const reveal = clamp((p - 0.16 - index * 0.08) / 0.24);
+          const x = lerp(164 + index * 218, 722 + index * 112, ease(reveal));
+          const y = lerp(204, 348 + Math.sin(seconds * 3 + index) * 7, ease(reveal));
+          token(parent, x, y, item[0], item[1], tokenPalette[index], reveal, 1.08);
+        });
+
+        const barP = clamp((p - 0.56) / 0.32);
+        const g = group(parent, { opacity: barP });
+        panel(g, 742, 432, 418, 154, "NEXT TOKEN ODDS", colors.yellow, 1);
+        const bars = [
+          ["is", 0.86, colors.yellow],
+          ["can", 0.62, colors.blue],
+          ["means", 0.48, colors.green]
+        ];
+        bars.forEach((item, index) => {
+          const y = 482 + index * 34;
+          text(g, 776, y + 18, item[0], {
+            size: 15,
+            weight: 800,
+            fill: colors.ink,
+            family: "Cascadia Mono, Consolas, monospace"
+          });
+          rect(g, 848, y, 260, 20, { fill: "#111827" });
+          rect(g, 848, y, 260 * item[1] * ease(barP), 20, { fill: item[2] });
+        });
+      }
+
+      function drawLarge(parent, seconds) {
+        const p = ease(local(seconds, 6, 13));
+        panel(parent, 96, 142, 1088, 464, "LARGE = MANY LEARNED WEIGHTS", colors.purple, 1);
+        for (let row = 0; row < 9; row += 1) {
+          for (let col = 0; col < 22; col += 1) {
+            const delay = (row + col) / 34;
+            const on = clamp((p - delay * 0.55) / 0.18);
+            const jitter = 0.3 + 0.7 * Math.sin(seconds * 2 + row * 1.7 + col);
+            rect(parent, 160 + col * 42, 198 + row * 34, 24, 18, {
+              fill: on > 0.05 ? tokenPalette[(row + col) % tokenPalette.length] : "#1f2937",
+              opacity: 0.16 + on * (0.58 + 0.18 * jitter)
+            });
+          }
+        }
+        rect(parent, 484, 266, 312, 190, {
+          fill: "#101827",
+          stroke: colors.cyan,
+          "stroke-width": 3,
+          filter: "url(#soft-glow)"
+        });
+        text(parent, 640, 322, "parameters", {
+          size: 34,
+          weight: 950,
+          anchor: "middle",
+          fill: colors.ink
+        });
+        text(parent, 640, 370, "learned from text", {
+          size: 22,
+          weight: 800,
+          anchor: "middle",
+          fill: colors.muted
+        });
+        text(parent, 640, 418, "not rules hand-coded line by line", {
+          size: 18,
+          weight: 700,
+          anchor: "middle",
+          fill: colors.yellow
+        });
+      }
+
+      function drawInputPanel(parent, seconds, opacity = 1) {
+        const g = panel(parent, 62, 132, 354, 500, "PROMPT + CONTEXT", colors.cyan, opacity);
+        rect(g, 92, 178, 286, 86, {
+          fill: colors.black,
+          stroke: "#334155",
+          "stroke-width": 1.5
+        });
+        text(g, 112, 212, "The cloud server", {
+          size: 18,
+          weight: 800,
+          fill: colors.green,
+          family: "Cascadia Mono, Consolas, monospace"
+        });
+        text(g, 112, 242, "returns a JSON ...", {
+          size: 18,
+          weight: 800,
+          fill: colors.green,
+          family: "Cascadia Mono, Consolas, monospace"
+        });
+
+        const reveal = ease(local(seconds, 13, 20));
+        tokenData.forEach((item, index) => {
+          const localReveal = clamp((reveal - index * 0.12) / 0.28);
+          const x = lerp(116, 92 + (index % 3) * 96, ease(localReveal));
+          const y = lerp(226, 300 + Math.floor(index / 3) * 58, ease(localReveal));
+          token(g, x, y, item[0], item[1], tokenPalette[index % tokenPalette.length], localReveal);
+        });
+
+        text(g, 94, 454, "context window", {
+          size: 16,
+          weight: 900,
+          fill: colors.muted
+        });
+        const cellsOn = Math.floor(36 * clamp((seconds - 13) / 24, 0, 1));
+        for (let row = 0; row < 6; row += 1) {
+          for (let col = 0; col < 6; col += 1) {
+            const n = row * 6 + col;
+            const active = n <= cellsOn;
+            const blink = 0.65 + 0.35 * Math.sin(seconds * 4 + n);
+            rect(g, 94 + col * 44, 474 + row * 22, 34, 14, {
+              fill: active ? tokenPalette[n % tokenPalette.length] : "#111827",
+              opacity: active ? 0.42 + blink * 0.3 : 0.7,
+              stroke: "#263244",
+              "stroke-width": 1
+            });
+          }
+        }
+        return g;
+      }
+
+      function drawModelPanel(parent, seconds, opacity = 1) {
+        const g = panel(parent, 464, 132, 352, 500, "MODEL LAYERS", colors.purple, opacity);
+        const active = seconds >= 20;
+        const flow = fract((seconds - 20) / 2.4);
+        const columns = [524, 598, 672, 746];
+        const rows = [228, 288, 348, 408, 468];
+
+        columns.forEach((x, colIndex) => {
+          rows.forEach((y, rowIndex) => {
+            if (colIndex < columns.length - 1) {
+              rows.forEach((nextY, nextIndex) => {
+                if ((rowIndex + nextIndex + colIndex) % 2 === 0) {
+                  line(g, x + 14, y, columns[colIndex + 1] - 14, nextY, {
+                    stroke: "#334155",
+                    "stroke-width": 1,
+                    opacity: 0.22
+                  });
+                }
+              });
+            }
+          });
+        });
+
+        columns.forEach((x, colIndex) => {
+          rows.forEach((y, rowIndex) => {
+            const pulse = active ? 0.65 + 0.35 * Math.sin(seconds * 5 + colIndex * 1.3 + rowIndex) : 0.35;
+            circle(g, x, y, 15, {
+              fill: tokenPalette[(colIndex + rowIndex) % tokenPalette.length],
+              opacity: active ? pulse : 0.28,
+              stroke: "#dbeafe",
+              "stroke-width": active ? 1.5 : 0.5
+            });
+          });
+        });
+
+        for (let i = 0; i < 5; i += 1) {
+          const t = fract(flow + i * 0.18);
+          const x = lerp(498, 776, t);
+          const y = 348 + Math.sin((t * Math.PI * 2) + i) * 102;
+          circle(g, x, y, 5 + i, {
+            fill: tokenPalette[i % tokenPalette.length],
+            opacity: active ? 0.9 : 0
+          });
+        }
+
+        text(g, 640, 552, "weights transform context", {
+          size: 18,
+          weight: 800,
+          anchor: "middle",
+          fill: active ? colors.cyan : colors.muted
+        });
+        return g;
+      }
+
+      function drawProbabilityPanel(parent, seconds, opacity = 1, variant = "base") {
+        const g = panel(parent, 864, 132, 354, 500, "NEXT TOKEN", colors.yellow, opacity);
+        const p = ease(local(seconds, 28, 36));
+        const base = variant === "haiku"
+          ? [["moon", 0.74, colors.purple], ["server", 0.41, colors.blue], ["JSON", 0.34, colors.green], [";", 0.18, colors.orange]]
+          : [["mat", 0.84, colors.yellow], ["endpoint", 0.59, colors.blue], ["because", 0.46, colors.green], ["error", 0.28, colors.red]];
+
+        base.forEach((item, index) => {
+          const y = 216 + index * 58;
+          const race = clamp((p + Math.sin(seconds * 1.8 + index) * 0.08));
+          text(g, 904, y + 24, item[0], {
+            size: 18,
+            weight: 850,
+            fill: colors.ink,
+            family: "Cascadia Mono, Consolas, monospace"
+          });
+          rect(g, 1018, y, 162, 26, { fill: "#111827", stroke: "#263244", "stroke-width": 1 });
+          rect(g, 1018, y, 162 * item[1] * (0.45 + 0.55 * race), 26, { fill: item[2] });
+          text(g, 1188, y + 20, Math.round(item[1] * 100) + "%", {
+            size: 14,
+            weight: 800,
+            anchor: "end",
+            fill: colors.muted
+          });
+        });
+
+        const winnerPop = 1 + 0.12 * Math.sin(seconds * 10);
+        token(g, 1006, 488, base[0][0], "next", base[0][2], seconds >= 35 ? 1 : p, winnerPop);
+        text(g, 1048, 580, "sample one token", {
+          size: 18,
+          weight: 900,
+          anchor: "middle",
+          fill: seconds >= 34 ? colors.yellow : colors.muted
+        });
+        return g;
+      }
+
+      function loopPoint(t) {
+        if (t < 0.25) {
+          const p = t / 0.25;
+          return [lerp(1062, 700, p), lerp(548, 632, p)];
+        }
+        if (t < 0.5) {
+          const p = (t - 0.25) / 0.25;
+          return [lerp(700, 222, p), 632];
+        }
+        if (t < 0.75) {
+          const p = (t - 0.5) / 0.25;
+          return [222, lerp(632, 470, p)];
+        }
+        const p = (t - 0.75) / 0.25;
+        return [lerp(222, 118, p), lerp(470, 326, p)];
+      }
+
+      function drawLoop(parent, seconds) {
+        if (seconds < 36) {
+          return;
+        }
+        const p = ease(local(seconds, 36, 44));
+        path(parent, "M 1082 546 C 930 644, 570 666, 224 632 C 150 624, 116 564, 124 500", {
+          fill: "none",
+          stroke: colors.cyan,
+          "stroke-width": 4,
+          opacity: 0.18 + p * 0.55,
+          "marker-end": "url(#arrowhead)"
+        });
+        const moving = loopPoint(fract((seconds - 36) / 5));
+        token(parent, moving[0], moving[1], "mat", "next", colors.yellow, p, 0.82);
+      }
+
+      function drawOutputStream(parent, seconds) {
+        if (seconds < 36) {
+          return;
+        }
+        const p = ease(local(seconds, 36, 44));
+        const words = ["The", "model", "adds", "one", "token", "then", "predicts", "again."];
+        const visible = Math.max(1, Math.floor(words.length * p));
+        rect(parent, 894, 422, 286, 92, {
+          fill: "#05070a",
+          stroke: colors.green,
+          "stroke-width": 1.6,
+          opacity: 0.96
+        });
+        multiline(parent, 916, 456, [
+          words.slice(0, Math.min(4, visible)).join(" "),
+          words.slice(4, visible).join(" ")
+        ], {
+          size: 20,
+          weight: 850,
+          fill: colors.green,
+          family: "Cascadia Mono, Consolas, monospace",
+          gap: 30
+        });
+      }
+
+      function drawMechanism(parent, seconds) {
+        drawInputPanel(parent, seconds, 1);
+        drawModelPanel(parent, seconds, seconds >= 18 ? 1 : 0.62);
+        drawProbabilityPanel(parent, seconds, seconds >= 27 ? 1 : 0.42);
+        drawLoop(parent, seconds);
+        drawOutputStream(parent, seconds);
+      }
+
+      function drawPromptSteering(parent, seconds) {
+        const p = ease(local(seconds, 44, 46.8));
+        rect(parent, 84, 148, 1112, 460, {
+          fill: "#080b11",
+          stroke: colors.blue,
+          "stroke-width": 2,
+          opacity: 0.95 * p
+        });
+        text(parent, 640, 194, "Same model. Different context. Different odds.", {
+          size: 32,
+          weight: 950,
+          anchor: "middle",
+          fill: colors.ink,
+          opacity: p
+        });
+
+        const cards = [
+          { x: 150, title: "Prompt A", prompt: "Write an API fix", bars: [["endpoint", 0.78, colors.blue], ["haiku", 0.12, colors.purple], ["moon", 0.07, colors.yellow]] },
+          { x: 702, title: "Prompt B", prompt: "Write a 5-7-5 poem", bars: [["moon", 0.76, colors.purple], ["endpoint", 0.15, colors.blue], ["JSON", 0.09, colors.green]] }
+        ];
+
+        cards.forEach((card, cardIndex) => {
+          rect(parent, card.x, 240, 428, 280, {
+            fill: colors.panel,
+            stroke: cardIndex === 0 ? colors.blue : colors.purple,
+            "stroke-width": 2,
+            opacity: p
+          });
+          text(parent, card.x + 28, 280, card.title, {
+            size: 22,
+            weight: 950,
+            fill: cardIndex === 0 ? colors.blue : colors.purple,
+            opacity: p
+          });
+          text(parent, card.x + 28, 318, card.prompt, {
+            size: 19,
+            weight: 800,
+            fill: colors.ink,
+            opacity: p,
+            family: "Cascadia Mono, Consolas, monospace"
+          });
+          card.bars.forEach((bar, index) => {
+            const y = 366 + index * 44;
+            text(parent, card.x + 28, y + 19, bar[0], {
+              size: 17,
+              weight: 800,
+              fill: colors.muted,
+              opacity: p,
+              family: "Cascadia Mono, Consolas, monospace"
+            });
+            rect(parent, card.x + 164, y, 206, 24, {
+              fill: "#111827",
+              stroke: "#263244",
+              "stroke-width": 1,
+              opacity: p
+            });
+            rect(parent, card.x + 164, y, 206 * bar[1] * p, 24, {
+              fill: bar[2],
+              opacity: p
+            });
+          });
+        });
+      }
+
+      function drawWarning(parent, seconds) {
+        const p = ease(local(seconds, 52, 54.6));
+        const shake = Math.sin(seconds * 32) * 4 * p;
+        rect(parent, 132 + shake, 174, 1016, 386, {
+          fill: "#14090d",
+          stroke: colors.red,
+          "stroke-width": 4,
+          opacity: 0.94 * p
+        });
+        rect(parent, 176 - shake, 232, 382, 108, {
+          fill: "#05070a",
+          stroke: colors.green,
+          "stroke-width": 2,
+          opacity: p
+        });
+        multiline(parent, 204 - shake, 270, [
+          "The answer looks right.",
+          "The source may be missing."
+        ], {
+          size: 23,
+          weight: 850,
+          fill: colors.green,
+          family: "Cascadia Mono, Consolas, monospace",
+          gap: 34,
+          opacity: p
+        });
+        text(parent, 738 + shake, 276, "FLUENT", {
+          size: 48,
+          weight: 950,
+          anchor: "middle",
+          fill: colors.ink,
+          opacity: p
+        });
+        text(parent, 738 - shake, 340, "IS NOT VERIFIED", {
+          size: 48,
+          weight: 950,
+          anchor: "middle",
+          fill: colors.red,
+          opacity: p
+        });
+        line(parent, 610, 396, 866, 396, {
+          stroke: colors.red,
+          "stroke-width": 5,
+          opacity: p
+        });
+        text(parent, 738, 454, "Use sources, tests, and constraints.", {
+          size: 26,
+          weight: 850,
+          anchor: "middle",
+          fill: colors.yellow,
+          opacity: p
+        });
+      }
+
+      function drawRuleChips(parent, seconds) {
+        const p = ease(local(seconds, 60, 63.6));
+        rect(parent, 92, 158, 1096, 404, {
+          fill: "#080b11",
+          stroke: colors.green,
+          "stroke-width": 2,
+          opacity: 0.94 * p
+        });
+        text(parent, 640, 214, "A better prompt gives the loop better context.", {
+          size: 34,
+          weight: 950,
+          anchor: "middle",
+          fill: colors.ink,
+          opacity: p
+        });
+        const chips = [
+          ["context", colors.cyan],
+          ["constraints", colors.yellow],
+          ["examples", colors.purple],
+          ["checks", colors.green]
+        ];
+        chips.forEach((chip, index) => {
+          const chipP = ease(clamp((p - index * 0.14) / 0.34));
+          const startX = 200 + index * 228;
+          const x = lerp(startX, 306 + index * 164, chipP);
+          const y = lerp(456, 326, chipP);
+          rect(parent, x, y, 152, 48, {
+            fill: chip[1],
+            stroke: "#e5e7eb",
+            "stroke-width": 1.5,
+            opacity: chipP
+          });
+          text(parent, x + 76, y + 31, chip[0], {
+            size: 17,
+            weight: 950,
+            anchor: "middle",
+            fill: colors.black,
+            opacity: chipP
+          });
+        });
+        rect(parent, 286, 404, 708, 72, {
+          fill: "#05070a",
+          stroke: colors.cyan,
+          "stroke-width": 2,
+          opacity: p
+        });
+        text(parent, 640, 448, "prompt = instructions + evidence + success criteria", {
+          size: 24,
+          weight: 850,
+          anchor: "middle",
+          fill: colors.cyan,
+          opacity: p,
+          family: "Cascadia Mono, Consolas, monospace"
+        });
+      }
+
+      function drawFinal(parent, seconds) {
+        const p = ease(local(seconds, 66, 68.4));
+        rect(parent, 78, 138, 1124, 500, {
+          fill: "#080b11",
+          stroke: colors.cyan,
+          "stroke-width": 3,
+          opacity: 0.96
+        });
+        const items = [
+          ["prompt", colors.green],
+          ["tokens", colors.cyan],
+          ["context", colors.blue],
+          ["layers", colors.purple],
+          ["probabilities", colors.yellow],
+          ["next token", colors.orange],
+          ["repeat", colors.green]
+        ];
+        let x = 126;
+        items.forEach((item, index) => {
+          const itemP = ease(clamp((p - index * 0.07) / 0.22));
+          rect(parent, x, 286, index === 4 ? 158 : 118, 62, {
+            fill: item[1],
+            stroke: "#f8fafc",
+            "stroke-width": 1.5,
+            opacity: itemP
+          });
+          text(parent, x + (index === 4 ? 79 : 59), 324, item[0], {
+            size: index === 4 ? 15 : 16,
+            weight: 950,
+            anchor: "middle",
+            fill: colors.black,
+            opacity: itemP
+          });
+          if (index < items.length - 1) {
+            line(parent, x + (index === 4 ? 168 : 128), 317, x + (index === 4 ? 192 : 152), 317, {
+              stroke: colors.ink,
+              "stroke-width": 3,
+              opacity: itemP
+            });
+          }
+          x += index === 4 ? 202 : 162;
+        });
+        text(parent, 640, 214, "An LLM is prediction plus context.", {
+          size: 42,
+          weight: 950,
+          anchor: "middle",
+          fill: colors.ink,
+          opacity: p
+        });
+        text(parent, 640, 442, "not a mind", {
+          size: 66,
+          weight: 950,
+          anchor: "middle",
+          fill: colors.red,
+          opacity: p
+        });
+        text(parent, 640, 506, "Build prompts that shape the loop and verify the result.", {
+          size: 25,
+          weight: 850,
+          anchor: "middle",
+          fill: colors.muted,
+          opacity: p
+        });
+      }
+
+      function renderConceptFrame(videoId, seconds, options = {}) {
+        const s = clamp(Number(seconds) || 0, 0, DURATION);
+        const beat = beatIndex(s);
+        svg.textContent = "";
+        addDefs(svg);
+        drawBackground(svg, s);
+        drawTopBar(svg, s, beat);
+
+        if (s < 6) {
+          drawHook(svg, s);
+        } else if (s < 13) {
+          drawLarge(svg, s);
+        } else {
+          drawMechanism(svg, s);
+          if (s >= 44 && s < 52) {
+            drawPromptSteering(svg, s);
+          }
+          if (s >= 52 && s < 60) {
+            drawWarning(svg, s);
+          }
+          if (s >= 60 && s < 66) {
+            drawRuleChips(svg, s);
+          }
+          if (s >= 66) {
+            drawFinal(svg, s);
+          }
+        }
+
+        drawFooter(svg, s);
+
+        return {
+          videoId,
+          visualPattern: "token-loop",
+          activeBeat: beat + 1,
+          visibleMechanismCount: Math.min(10, Math.max(1, Math.floor(s / 7) + 1)),
+          hookVisible: s < 6,
+          sourceProofVisible: s >= 13,
+          transitionVisible: true,
+          contextVisible: s >= 13,
+          modelVisible: s >= 20,
+          probabilityVisible: s >= 28,
+          tokenLoopVisible: s >= 36,
+          promptSteeringVisible: s >= 44,
+          warningVisible: s >= 52,
+          outputVisible: s >= 66,
+          finalCallbackVisible: s >= 66,
+          caption: beats[beat].label
+        };
+      }
+
+      window.renderConceptFrame = renderConceptFrame;
+      renderConceptFrame("what-is-a-llm", 0, { capture: false });
+    })();
+  </script>
+</body>
+</html>

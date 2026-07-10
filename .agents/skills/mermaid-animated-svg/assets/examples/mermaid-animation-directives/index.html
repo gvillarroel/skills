@@ -380,7 +380,7 @@
           <h1>Mermaid Animation Directives</h1>
           <div class="tiny">Comment language, directive demos, and generated Mermaid SVG coverage</div>
         </div>
-        <div class="meta">33 directive examples · 41 generated gallery SVGs · 28 diagram-note rows</div>
+        <div class="meta">36 directive examples · 41 generated gallery SVGs · 31 diagram-note rows</div>
       </div>
     </header>
 
@@ -508,6 +508,7 @@
         ["Block", "Use alias IDs for blocks/arrows and exact connection IDs; avoid broad role:edge for one connector."],
         ["C4", "Use label selectors for boxes; relationships are coarse, so show flow with marks between anchors."],
         ["Class", "Use exact class IDs when names overlap; trace relations only after both classes are visible."],
+        ["Cynefin", "Use family-level framework groups; reveal domains in layers until per-item semantic selectors exist."],
         ["ER", "Use entity and relationship IDs; reveal entity, trace relation, show label, pulse target entity."],
         ["Event Modeling", "Use text selectors for boxes, keep swimlanes static, and move causality marks across lanes."],
         ["Flowchart", "Use text or ID targets for nodes and role:edge for broad traces; future edge:A->B would help."],
@@ -521,48 +522,19 @@
         ["Pie", "Use .pie-label-* or .pie-segment-* groups; category selectors often include wedge, value, and legend."],
         ["Quadrant", "Use text:\"Point\" and point centers; plot(x,y) and point:\"Label\" are future syntax."],
         ["Radar", "Use .radarCurve-* for series and text for axes/legend; per-vertex selectors are future work."],
+        ["Railroad", "Use grammar-role classes for tokens and paths; per-token IDs and rule selectors remain future work."],
         ["Requirement", "Use exact requirement and relation IDs; trace links after endpoint reveals."],
         ["Sankey", "Use node IDs/text and role:edge for flows; individual link selectors are still weak."],
         ["Sequence", "Use listed participant IDs and role:edge for messages; participant/message selectors are future syntax."],
         ["State", "Use state text or IDs and mark-based dwell; future wait/dwell verbs can make this smaller."],
+        ["Swimlane", "Use flowchart-compatible node and edge IDs; keep lane geometry visible while animating handoffs."],
         ["Timeline", "Use text for sections/dates/events and timeline classes for groups; avoid reusable node IDs."],
         ["Treemap", "Use label text for sections/leaves; tiny hidden leaves may not produce visible emphasis."],
-        ["Treeview", "Use exact text labels; select connector lines as a group until tree-edge selectors exist."],
+        ["TreeView", "Use exact text labels; select connector lines as a group until tree-edge selectors exist."],
         ["Venn", "Use generated .venn-sets-* classes; reveal base sets, overlaps, then final intersection."],
         ["Wardley", "Use text labels and xy() for precise component centers; component: is future syntax."],
         ["XY Chart", "Use chart title/axis/series classes; numeric text labels collide with ticks."],
         ["ZenUML", "Use participant/message text and simple CSS; data-participant attributes are not selectable yet."],
-      ];
-
-      const byTypeExamples = [
-        ["Architecture", "architecture-service-pipeline", "Stable service and edge IDs; grouped source/markdown reveal avoids overlapping fixtures."],
-        ["Block", "block-diagram-directive-selectors", "Stable block IDs and one exact connection ID; avoids broad role:edge for one connector."],
-        ["C4", "c4-context-message-flow", "Box-level flow works; relationship selection is still coarse in rendered C4 output."],
-        ["Class", "class-relation-token", "Exact class and relation IDs are safer than substring class-name matching."],
-        ["Entity Relationship", "er-relationship-trace", "Exact entity and relationship IDs give stable anchors and path tracing."],
-        ["Event Modeling", "event-modeling-causality", "Uses marks for causality because per-edge selectors are not available yet."],
-        ["Flowchart", "flowchart-branch-review", "Readable node selectors work; edge selection is broad until edge:A->B exists."],
-        ["Gantt", "gantt-progress-lane", "Moves progress marks instead of task bars to preserve date geometry."],
-        ["GitGraph", "gitgraph-release-flow", "Uses label text for point anchors because some commit classes resolve multiple shapes."],
-        ["Ishikawa", "ishikawa-root-cause", "Cause labels are text targets; per-branch line selection needs future branch syntax."],
-        ["Journey", "journey-stage-progress", "Exact task/section text works; no stable IDs are emitted."],
-        ["Kanban", "kanban-card-flow", "Uses rendered IDs and overlay marks so board layout stays fixed."],
-        ["Mindmap", "mindmap-branch-focus", "Combines node text with explicit generated edge IDs for branch focus."],
-        ["Packet", "packet-field-scan", "Uses full row text and xy field centers because packet fields lack semantic IDs."],
-        ["Pie", "pie-segment-callout", "Segment classes are compact but affect wedge, percentage, and legend together."],
-        ["Quadrant", "quadrant-point-routing", "Uses point label text; plot-space selectors remain future syntax."],
-        ["Radar", "radar-series-layering", "Series-level CSS works; per-axis and per-vertex selectors remain missing."],
-        ["Requirement", "requirement-traceability-thread", "Uses exact IDs; relation direction must come from --list-elements."],
-        ["Sankey", "sankey-flow-handoff", "Node IDs and all-flow tracing work; individual link syntax is still a gap."],
-        ["Sequence", "sequence-message-token", "Uses broad message tracing and explicit points due missing semantic message selectors."],
-        ["State", "state-dwell-token", "Shows dwell with marks and color; future wait/dwell verbs would reduce directive count."],
-        ["Timeline", "timeline-milestone-scan", "Uses visible labels and generated timeline classes; dense timelines need shorter gaps."],
-        ["Treemap", "treemap-hierarchy-focus", "Label selectors work; tiny hidden leaves are intentionally not emphasized."],
-        ["Treeview", "treeview-directory-scan", "Uses exact text labels; avoids root slash overmatch and per-line connector assumptions."],
-        ["Venn", "venn-coverage-focus", "Generated .venn-sets-* classes work well for set/intersection choreography."],
-        ["Wardley", "wardley-value-chain", "Uses label text and xy points because component IDs are absent."],
-        ["XY Chart", "xy-chart-series-reveal", "Uses chart-level roles and xy points; individual bars and plot-domain points are not addressable."],
-        ["ZenUML", "zenuml-frontmatter-render", "Uses xy points and broad item groups because data-participant attributes are not selectable."],
       ];
 
       const galleryExamples = [
@@ -729,20 +701,35 @@
       }
 
       const byTypeRoot = document.querySelector("#by-type");
-      for (const [type, name, critique] of byTypeExamples) {
-        byTypeRoot.appendChild(buildAnimationCard({
-          title: type,
-          note: critique,
-          animated: `by-type/${name}.animated.svg`,
-          statik: `by-type/${name}.static.svg`,
-          source: `../../examples/mermaid-animation-directives/by-type/${name}.mmd`,
-          mid: `../playwright/mermaid-animation-directives/by-type/${name}.mid.png`,
-          final: `../playwright/mermaid-animation-directives/by-type/${name}.final.png`,
-          className: "gallery-card",
-          patternId: `mermaid-directive-${name}`,
-          exampleId: name,
-        }));
+      async function loadByTypeExamples() {
+        const response = await fetch("by-type/manifest.json");
+        if (!response.ok) {
+          throw new Error(`Could not load by-type manifest: HTTP ${response.status}`);
+        }
+        const entries = await response.json();
+        if (!Array.isArray(entries) || entries.length !== 31) {
+          throw new Error(`Expected 31 by-type Mermaid families, found ${entries.length}`);
+        }
+        for (const item of entries) {
+          const name = item.slug;
+          byTypeRoot.appendChild(buildAnimationCard({
+            title: item.type,
+            note: item.critique,
+            animated: `by-type/${name}.animated.svg`,
+            statik: `by-type/${name}.static.svg`,
+            source: `../../examples/mermaid-animation-directives/by-type/${name}.mmd`,
+            mid: item.frames ? `../playwright/mermaid-animation-directives/by-type/${name}.mid.png` : undefined,
+            final: item.frames ? `../playwright/mermaid-animation-directives/by-type/${name}.final.png` : undefined,
+            className: "gallery-card",
+            patternId: `mermaid-directive-${name}`,
+            exampleId: name,
+          }));
+        }
       }
+      loadByTypeExamples().catch((error) => {
+        byTypeRoot.textContent = `By-type examples failed to load: ${error.message}`;
+        byTypeRoot.dataset.loadState = "error";
+      });
 
       const galleryRoot = document.querySelector("#gallery");
       for (const [name, animation, targets, staticName = name] of galleryExamples) {

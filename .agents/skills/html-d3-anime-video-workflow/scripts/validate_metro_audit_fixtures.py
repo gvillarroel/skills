@@ -152,7 +152,11 @@ window.renderConceptFrame = function renderConceptFrame(videoId, seconds) {{
     if ({str(red_dominant).lower()}) {{
       el("rect", {{ x: 0, y: 0, width: 256, height: 128, rx: 0, fill: "#9e1b32", stroke: "#6d1222", "data-zone-id": "zone-red", "data-zone-role": "bad-red-surface" }});
     }}
-    el("rect", {{ x: {fill_x}, y: {fill_y}, width: {64 if text_only_motion else "dynamicWidth"}, height: {fill_h}, rx: 0, fill: "#9e1b32", "data-fill-for": "box-a", "data-fill-axis": "x-progress", "data-zone-id": "zone-e", "data-zone-role": "active-route" }});
+    const activeFillWidth = {64 if text_only_motion else "dynamicWidth"};
+    el("rect", {{ x: {fill_x}, y: {fill_y}, width: activeFillWidth, height: {fill_h}, rx: 0, fill: grayLevel(3), "data-fill-for": "box-a", "data-fill-axis": "x-progress", "data-zone-id": "zone-e", "data-zone-role": "active-route" }});
+    if (activeFillWidth > 8) {{
+      el("rect", {{ x: {fill_x} + activeFillWidth - 4, y: {fill_y}, width: 4, height: {fill_h}, rx: 0, fill: "#9e1b32", "data-zone-id": "zone-e", "data-zone-role": "active-route-cap" }});
+    }}
     for (let x = 0; x <= 240; x += 16) {{
       el("line", {{ x1: x, y1: 0, x2: x, y2: 240, stroke: "#b5b5b5", "stroke-width": 1, "stroke-linecap": "butt", "stroke-linejoin": "miter" }});
     }}

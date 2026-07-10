@@ -20,6 +20,8 @@ Design the video as one large navigable visual object.
 
 Default to colorset1:
 
+Use `metro-design-profile.json` as the runtime source of truth for allowed colors, typography, geometry, and source digests. Regenerate it with `scripts/compile_metro_design_profile.py` when the original style or colorset files change. Do not maintain a second palette inside an audit or prompt builder.
+
 | Role | Color |
 | --- | --- |
 | primary red | `#9e1b32` |
@@ -40,6 +42,7 @@ Default to colorset1:
 | gray 900 | `#1c1c1c` |
 
 Use colorset2 only when colorset1 cannot separate necessary semantic states. Record the reason in production notes. Extra color must carry state, category, or risk; it must not be decoration.
+The tonal audit requires an explicit `--colorset2-reason` and still rejects colors absent from the compiled colorset2 source.
 
 ## Geometry
 

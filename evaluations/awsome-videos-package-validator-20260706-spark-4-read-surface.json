@@ -1,0 +1,154 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 5,
+    "write": 3,
+    "bash": 2,
+    "edit": 1
+  },
+  "paths": [
+    {
+      "path": "outputs/retry-brief.md",
+      "calls": 4,
+      "resultBytes": 15409
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1789
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 5356
+    },
+    {
+      "path": "outputs/design-note.md",
+      "calls": 1,
+      "resultBytes": 98
+    },
+    {
+      "path": "outputs/storyboard.md",
+      "calls": 1,
+      "resultBytes": 97
+    },
+    {
+      "path": "outputs/package-validation.json",
+      "calls": 1,
+      "resultBytes": 1531
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/retry-brief.md",
+      "calls": 2,
+      "resultBytes": 15409
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1789
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 5356
+    },
+    {
+      "path": "outputs/package-validation.json",
+      "calls": 1,
+      "resultBytes": 1531
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1789
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/awsome-videos/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5356
+    },
+    {
+      "line": 40,
+      "tool": "write",
+      "path": "outputs/retry-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 98
+    },
+    {
+      "line": 53,
+      "tool": "read",
+      "path": "outputs/retry-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5126
+    },
+    {
+      "line": 66,
+      "tool": "write",
+      "path": "outputs/design-note.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 98
+    },
+    {
+      "line": 79,
+      "tool": "write",
+      "path": "outputs/storyboard.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 97
+    },
+    {
+      "line": 96,
+      "tool": "bash",
+      "path": null,
+      "command": "ffmpeg -y -f lavfi -i testsrc=size=1280x720:rate=30:duration=2 -f lavfi -i sine=frequency=440:duration=2 -c:v libx264 -pix_fmt yuv420p -r 30 -c:a aac -shortest outputs/smoke.mp4",
+      "isError": false,
+      "resultBytes": 6091
+    },
+    {
+      "line": 109,
+      "tool": "edit",
+      "path": "outputs/retry-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5009
+    },
+    {
+      "line": 122,
+      "tool": "read",
+      "path": "outputs/retry-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5176
+    },
+    {
+      "line": 136,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/check_production_package.py --brief outputs/retry-brief.md --video outputs/smoke.mp4 --design-note outputs/design-note.md --renderer outputs/storyboard.md --expect-width 1280 --expect-h",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 149,
+      "tool": "read",
+      "path": "outputs/package-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1531
+    }
+  ],
+  "findings": []
+}

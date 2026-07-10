@@ -23,10 +23,13 @@ function renderHorizon() {
     const svg = prepareSvg("horizon", "Horizon chart", "Compressed time-series bands with layered color.");
     const data = d3.range(48).map(i => ({ x: i, y: Math.sin(i / 4) * 28 + Math.cos(i / 9) * 18 + 42 }));
     const x = d3.scaleLinear().domain(d3.extent(data, d => d.x)).range([42, width - 34]);
-    const y = d3.scaleLinear().domain([0, 90]).range([130, 0]);
-    const baseY = 310;
+    const y = d3.scaleLinear().domain([0, 90]).range([116, 0]);
+    const baseY = 300;
+    const bandHeight = 108;
     const bandColors = [palette.blueHighlight, palette.cyan, palette.blue];
-    const area = d3.area().x(d => x(d.x)).y0(baseY).y1(d => baseY - Math.min(45, y(0) - y(d.y))).curve(d3.curveBasis);
+    const area = d3.area().x(d => x(d.x)).y0(baseY).y1(d => baseY - Math.min(bandHeight, y(0) - y(d.y))).curve(d3.curveBasis);
+    svg.append("rect").attr("x", 42).attr("y", baseY - bandHeight).attr("width", width - 76).attr("height", bandHeight)
+      .attr("fill", palette.gray50).attr("stroke", palette.gray100);
     [0, 1, 2].forEach(i => {
       const shifted = data.map(d => ({ x: d.x, y: Math.max(0, d.y - i * 22) }));
       const path = svg.append("path").datum(shifted).attr("d", area).attr("fill", bandColors[i]).attr("fill-opacity", .78);

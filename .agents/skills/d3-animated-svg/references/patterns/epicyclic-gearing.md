@@ -21,8 +21,9 @@ The excerpt below is the compact renderer source for this pattern. If it referen
 ```js
 function renderEpicyclicGearing() {
     const svg = prepareSvg("epicyclic-gearing", "Epicyclic gearing", "Nested circular motion traces a gear-like parametric path.");
-    const cx = width / 2, cy = height / 2 + 8;
-    const R = 112, r = 38, d = 72;
+    const cx = width / 2, cy = height / 2 + 4;
+    const R = 100, r = 34, d = 58;
+    svg.attr("data-curve-family", "epitrochoid").attr("data-safe-frame", "true");
     const points = d3.range(0, Math.PI * 2.01, .045).map(t => [
       cx + (R + r) * Math.cos(t) - d * Math.cos(((R + r) / r) * t),
       cy + (R + r) * Math.sin(t) - d * Math.sin(((R + r) / r) * t)
@@ -34,6 +35,6 @@ function renderEpicyclicGearing() {
     drawPath(path, .1, 1.2);
     const dot = svg.append("circle").attr("r", 6).attr("fill", palette.red).attr("stroke", "#fff").attr("stroke-width", 2.2);
     dot.append("animateMotion").attr("dur", "3.4s").attr("repeatCount", "indefinite").append("mpath").attr("href", "#epicyclic-gearing-path");
-    svg.append("text").attr("class", "mark-label").attr("x", cx).attr("y", 38).attr("text-anchor", "middle").text("hypotrochoid path");
+    svg.append("text").attr("class", "mark-label").attr("x", cx).attr("y", 30).attr("text-anchor", "middle").text("epitrochoid path");
   }
 ```

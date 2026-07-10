@@ -1,0 +1,144 @@
+{
+  "passed": true,
+  "toolCounts": {
+    "read": 5,
+    "bash": 5
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1527
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 5821
+    },
+    {
+      "path": "outputs/retry-queue/source/package-manifest.json",
+      "calls": 1,
+      "resultBytes": 1425
+    },
+    {
+      "path": "outputs/retry-queue/artifacts/reviews/package-validation.json",
+      "calls": 1,
+      "resultBytes": 1640
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1,
+      "resultBytes": 962
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1527
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 5821
+    },
+    {
+      "path": "outputs/retry-queue/source/package-manifest.json",
+      "calls": 1,
+      "resultBytes": 1425
+    },
+    {
+      "path": "outputs/retry-queue/artifacts/reviews/package-validation.json",
+      "calls": 1,
+      "resultBytes": 1640
+    },
+    {
+      "path": "outputs/scaffold-result.json",
+      "calls": 1,
+      "resultBytes": 962
+    }
+  ],
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1527
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/awsome-videos/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5821
+    },
+    {
+      "line": 41,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/awsome-videos/scripts/scaffold_production_package.py outputs/retry-queue --title \"What Is A Retry Queue?\" --promise \"Explain a retry queue as controlled failure recovery with delay, limit",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 56,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'ls -R outputs/retry-queue | sed -n \"1,200p\"'",
+      "isError": false,
+      "resultBytes": 463
+    },
+    {
+      "line": 73,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'ffmpeg -y -f lavfi -i testsrc=duration=2:size=1280x720:rate=30 -f lavfi -i sine=frequency=1000:duration=2 -c:v libx264 -pix_fmt yuv420p -r 30 -b:v 2M -c:a aac -shortest outputs/retry-queue/artifacts/videos/retry-queue.mp4'",
+      "isError": false,
+      "resultBytes": 6215
+    },
+    {
+      "line": 86,
+      "tool": "read",
+      "path": "outputs/retry-queue/source/package-manifest.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1425
+    },
+    {
+      "line": 100,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'uv run --script skills/awsome-videos/scripts/check_production_package.py --brief outputs/retry-queue/source/brief.md --video outputs/retry-queue/artifacts/videos/retry-queue.mp4 --design-note outputs/retry-queue/source/design-note",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 113,
+      "tool": "read",
+      "path": "outputs/retry-queue/artifacts/reviews/package-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1640
+    },
+    {
+      "line": 128,
+      "tool": "bash",
+      "path": null,
+      "command": "bash -lc 'test -f outputs/scaffold-result.json && test -f outputs/retry-queue/source/brief.md && test -f outputs/retry-queue/source/design-note.md && test -f outputs/retry-queue/source/package-manifest.json && test -f outputs/retry-queue/sr",
+      "isError": false,
+      "resultBytes": 47
+    },
+    {
+      "line": 141,
+      "tool": "read",
+      "path": "outputs/scaffold-result.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 962
+    }
+  ],
+  "findings": []
+}

@@ -73,6 +73,6 @@ function renderFocusContext() {
       .attr("fill", "freeze");
     axisBottom(svg, x2, height - context.bottom, 5);
     svg.append("text").attr("class", "mark-label").attr("x", focus.left).attr("y", 26).text("Detail");
-    svg.append("text").attr("class", "mark-label").attr("x", context.left).attr("y", context.top - 20).text("Context window");
+    svg.append("text").attr("class", "mark-label").attr("x", context.left + 8).attr("y", context.top + 16).text("Context window");
   }
 ```

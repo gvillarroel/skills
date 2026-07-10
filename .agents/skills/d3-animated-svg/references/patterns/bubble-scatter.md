@@ -23,7 +23,7 @@ function renderBubbleScatter() {
     const svg = prepareSvg("bubble-scatter", "Bubble scatter", "D3 scatterplot using radius and color encodings.");
     const data = d3.range(24).map(i => ({ x: 20 + i * 3 + (i % 4) * 8, y: 40 + Math.sin(i * .7) * 18 + (i % 5) * 9, r: 5 + (i % 6) * 2, group: i % 3 }));
     const margin = { top: 34, right: 36, bottom: 48, left: 54 };
-    const x = d3.scaleLinear().domain([15, 105]).range([margin.left, width - margin.right]);
+    const x = d3.scaleLinear().domain([15, 120]).range([margin.left, width - margin.right]);
     const y = d3.scaleLinear().domain([15, 100]).range([height - margin.bottom, margin.top]);
     axisBottom(svg, x, height - margin.bottom, 5);
     axisLeft(svg, y, margin.left, 5);
