@@ -38,6 +38,8 @@ uv run --script scripts/check-repo-payload.py
 
 Browser reports under `projects/d3-logo-design/artifacts/reviews/` record clean desktop/mobile fixture checks, the 96x64 gate, a clean isolated artifact check, and a clean Pages static check. The generated Pages copy differs from the accepted source only by the required `data-example-id`, `data-pattern-id`, and `data-pattern-page` body metadata.
 
+Publication branch `codex/d3-logo-design-skin` and draft PR [#3](https://github.com/gvillarroel/skills/pull/3) contain the isolated commit. Manual Pages run `29161914126` was rejected before checkout because the `github-pages` environment permits deployment only from `main`; its annotations explicitly report branch protection rather than a build or validation failure. The clean detached-worktree Pages build passed locally, and live deployment will run through the existing workflow after merge.
+
 ## Isolated runtime validation
 
 Model: `openai-codex/gpt-5.3-codex-spark` (`gpt-5.3-codex-spark` observed in every accepted trace).
