@@ -34,6 +34,11 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "d3-animated-svg-colorset2",
+    "d3-logo-design": SKILLS
+    / "d3-logo-design"
+    / "assets"
+    / "examples"
+    / "d3-logo-design",
     "echarts-animated-svg": SKILLS
     / "echarts-animated-svg"
     / "assets"
@@ -123,6 +128,14 @@ PUBLISHED_EXAMPLE_SETS = [
         "href": "examples/d3-animated-svg-colorset2/",
         "kind": "D3 colorset2",
         "description": "The full D3 pattern catalog rendered as a colorset2-aligned version.",
+    },
+    {
+        "id": "d3-logo-design",
+        "source": "d3-logo-design",
+        "title": "D3 Logo Design Patterns",
+        "href": "examples/d3-logo-design/",
+        "kind": "D3 logo",
+        "description": "Thirty adjustable logo compositions with ten SVG textures constrained to colorset1 and colorset2.",
     },
     {
         "id": "mermaid-svg-animated",
@@ -610,6 +623,7 @@ def build_docs() -> None:
             "../d3-animated-svg/node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
         },
     )
+    copy_tree(example_source("d3-logo-design"), DOCS / "examples" / "d3-logo-design")
     copy_tree(example_source("mermaid"), DOCS / "examples" / "mermaid")
     copy_tree(example_source("mermaid-svg-animated"), DOCS / "examples" / "mermaid-svg-animated")
     copy_tree(example_source("mermaid-animation-directives"), DOCS / "examples" / "mermaid-animation-directives")

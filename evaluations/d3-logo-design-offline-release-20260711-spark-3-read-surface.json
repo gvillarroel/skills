@@ -1,0 +1,176 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f522f-b7a7-7090-885f-5ac18e996710",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-logo-design-offline-release-20260711-spark-3\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 9
+  },
+  "providers": {
+    "openai-codex": 9
+  },
+  "usageTotals": {
+    "input": 11083,
+    "output": 2863,
+    "cacheRead": 34944,
+    "cacheWrite": 0,
+    "totalTokens": 48890
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 5,
+    "bash": 4
+  },
+  "paths": [
+    {
+      "path": "outputs/canopy-signal-logo.html",
+      "calls": 2,
+      "resultBytes": 7309
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1488
+    },
+    {
+      "path": "skills/d3-logo-design/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6068
+    },
+    {
+      "path": "outputs/canopy-signal-validation.json",
+      "calls": 1,
+      "resultBytes": 1075
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/canopy-signal-logo.html",
+      "calls": 2,
+      "resultBytes": 7309
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1488
+    },
+    {
+      "path": "skills/d3-logo-design/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6068
+    },
+    {
+      "path": "outputs/canopy-signal-validation.json",
+      "calls": 1,
+      "resultBytes": 1075
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "outputs/canopy-signal-logo.html",
+      "calls": 2
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3-logo-design/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/canopy-signal-validation.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 15940,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1488
+    },
+    {
+      "line": 29,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'ls -la skills/d3-logo-design'",
+      "isError": false,
+      "resultBytes": 415
+    },
+    {
+      "line": 42,
+      "tool": "read",
+      "path": "skills/d3-logo-design/SKILL.md",
+      "policyPath": "skills/d3-logo-design/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6068
+    },
+    {
+      "line": 63,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py --help'",
+      "isError": false,
+      "resultBytes": 832
+    },
+    {
+      "line": 64,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --help'",
+      "isError": false,
+      "resultBytes": 3128
+    },
+    {
+      "line": 82,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --output outputs/canopy-signal-logo.html --brand \"CANOPY SIGNAL\" --tagline \"Field intelligence, naturally connected\" --colorset colorset1 --pattern d3-logo-animal-",
+      "isError": false,
+      "resultBytes": 1619
+    },
+    {
+      "line": 95,
+      "tool": "read",
+      "path": "outputs/canopy-signal-validation.json",
+      "policyPath": "outputs/canopy-signal-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1075
+    },
+    {
+      "line": 108,
+      "tool": "read",
+      "path": "outputs/canopy-signal-logo.html",
+      "policyPath": "outputs/canopy-signal-logo.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 704
+    },
+    {
+      "line": 121,
+      "tool": "read",
+      "path": "outputs/canopy-signal-logo.html",
+      "policyPath": "outputs/canopy-signal-logo.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6605
+    }
+  ],
+  "findings": []
+}
