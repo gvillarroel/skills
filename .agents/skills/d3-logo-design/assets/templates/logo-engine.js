@@ -42,7 +42,37 @@
     { id: "d3-logo-parametric-wave", label: "Parametric Wave", family: "generative", geometrySignature: "closed-harmonic-curve" },
     { id: "d3-logo-kaleidoscope-wedges", label: "Kaleidoscope Wedges", family: "generative", geometrySignature: "mirrored-radial-wedges" },
     { id: "d3-logo-polar-halo", label: "Polar Halo", family: "generative", geometrySignature: "data-driven-polar-arcs" },
-    { id: "d3-logo-aperture-iris", label: "Aperture Iris", family: "generative", geometrySignature: "overlapping-iris-blades" }
+    { id: "d3-logo-aperture-iris", label: "Aperture Iris", family: "generative", geometrySignature: "overlapping-iris-blades" },
+    { id: "d3-logo-terminal-extension", label: "Terminal Extension", family: "typographic", geometrySignature: "glyph-terminal-rule-extension" },
+    { id: "d3-logo-vertical-rail-wordmark", label: "Vertical Rail Wordmark", family: "typographic", geometrySignature: "stacked-glyph-reading-rail" },
+    { id: "d3-logo-hinged-glyph-fan", label: "Hinged Glyph Fan", family: "typographic", geometrySignature: "baseline-pivot-rotation" },
+    { id: "d3-logo-justified-word-block", label: "Justified Word Block", family: "typographic", geometrySignature: "measured-multiline-justification" },
+    { id: "d3-logo-fill-outline-cadence", label: "Fill Outline Cadence", family: "typographic", geometrySignature: "per-glyph-fill-outline-alternation" },
+    { id: "d3-logo-punctuation-armature", label: "Punctuation Armature", family: "typographic", geometrySignature: "bbox-punctuation-frame" },
+    { id: "d3-logo-circle-pack-cluster", label: "Circle Pack Cluster", family: "generative", geometrySignature: "hierarchical-circle-enclosure" },
+    { id: "d3-logo-treemap-mosaic", label: "Treemap Mosaic", family: "generative", geometrySignature: "hierarchical-rect-subdivision" },
+    { id: "d3-logo-convex-hull-shells", label: "Convex Hull Shells", family: "generative", geometrySignature: "iterative-point-hulls" },
+    { id: "d3-logo-phyllotaxis-bloom", label: "Phyllotaxis Bloom", family: "generative", geometrySignature: "golden-angle-disc-sequence" },
+    { id: "d3-logo-tangency-chain", label: "Tangency Chain", family: "generative", geometrySignature: "mutually-tangent-circle-chain" },
+    { id: "d3-logo-tangram-dissection", label: "Tangram Dissection", family: "generative", geometrySignature: "rule-based-polygon-dissection" },
+    { id: "d3-logo-superellipse-family", label: "Superellipse Family", family: "generative", geometrySignature: "superellipse-exponent-nesting" },
+    { id: "d3-logo-isometric-block-stack", label: "Isometric Block Stack", family: "generative", geometrySignature: "axonometric-cube-aggregation" },
+    { id: "d3-logo-eulerian-one-stroke", label: "Eulerian One Stroke", family: "generative", geometrySignature: "euler-circuit-graph-trace" },
+    { id: "d3-logo-perfect-maze", label: "Perfect Maze", family: "generative", geometrySignature: "spanning-tree-corridors" },
+    { id: "d3-logo-split-merge-stream", label: "Split Merge Stream", family: "generative", geometrySignature: "conserved-multistream-routing" },
+    { id: "d3-logo-dendrogram-crown", label: "Dendrogram Crown", family: "generative", geometrySignature: "hierarchy-cluster-branches" },
+    { id: "d3-logo-linked-ring-chain", label: "Linked Ring Chain", family: "generative", geometrySignature: "interlocking-component-cycles" },
+    { id: "d3-logo-lsystem-branch", label: "L-system Branch", family: "generative", geometrySignature: "grammar-turtle-branching" },
+    { id: "d3-logo-hilbert-route", label: "Hilbert Route", family: "generative", geometrySignature: "space-filling-continuous-path" },
+    { id: "d3-logo-reciprocal-profiles", label: "Reciprocal Profiles", family: "generative", geometrySignature: "paired-silhouette-shared-boundary" },
+    { id: "d3-logo-modular-gutter-symbol", label: "Modular Gutter Symbol", family: "generative", geometrySignature: "gap-defined-modular-symbol" },
+    { id: "d3-logo-tangent-void-star", label: "Tangent Void Star", family: "generative", geometrySignature: "tangent-primitives-central-void" },
+    { id: "d3-logo-reciprocal-tessellation", label: "Reciprocal Tessellation", family: "generative", geometrySignature: "dual-figure-ground-tiling" },
+    { id: "d3-logo-impossible-triangle", label: "Impossible Triangle", family: "generative", geometrySignature: "cyclic-occlusion-beams" },
+    { id: "d3-logo-necker-cube", label: "Necker Cube", family: "generative", geometrySignature: "bistable-wireframe-depth" },
+    { id: "d3-logo-kanizsa-closure", label: "Kanizsa Closure", family: "generative", geometrySignature: "inducer-based-illusory-contour" },
+    { id: "d3-logo-line-screen-silhouette", label: "Line Screen Silhouette", family: "generative", geometrySignature: "variable-line-segmentation-encoding" },
+    { id: "d3-logo-perspective-portal", label: "Perspective Portal", family: "generative", geometrySignature: "receding-quadrilateral-frame" }
   ]);
 
   const TEXTURES = deepFreeze([
@@ -88,7 +118,37 @@
     { id: "d3-logo-harmonic-wave-lockup", exampleId: "parametric-wave", patternId: "d3-logo-parametric-wave", textureId: "d3-logo-crosshatch", brand: "HARMONIC", tagline: "Find the shared frequency", colorset: "colorset1", font: "monospace", density: 1.1, curvature: 0.88, scale: 1.0, rotation: 4, textureStrength: 0.34, seed: 127 },
     { id: "d3-logo-kaleidoscope-emblem", exampleId: "kaleidoscope-wedges", patternId: "d3-logo-kaleidoscope-wedges", textureId: "d3-logo-woven-checker", brand: "PRISMATA", tagline: "Many angles, one identity", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.62, scale: 1.0, rotation: 12, textureStrength: 0.4, seed: 128 },
     { id: "d3-logo-polar-data-lockup", exampleId: "polar-halo", patternId: "d3-logo-polar-halo", textureId: "d3-logo-voronoi-mosaic", brand: "CYCLE", tagline: "Measure the whole system", colorset: "colorset1", font: "humanist", density: 1.0, curvature: 0.56, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 129 },
-    { id: "d3-logo-iris-aperture-lockup", exampleId: "aperture-iris", patternId: "d3-logo-aperture-iris", textureId: "d3-logo-topographic-lines", brand: "APERTURE", tagline: "Bring the idea into focus", colorset: "colorset2", font: "condensed", density: 1.1, curvature: 0.76, scale: 1.0, rotation: -8, textureStrength: 0.32, seed: 130 }
+    { id: "d3-logo-iris-aperture-lockup", exampleId: "aperture-iris", patternId: "d3-logo-aperture-iris", textureId: "d3-logo-topographic-lines", brand: "APERTURE", tagline: "Bring the idea into focus", colorset: "colorset2", font: "condensed", density: 1.1, curvature: 0.76, scale: 1.0, rotation: -8, textureStrength: 0.32, seed: 130 },
+    { id: "d3-logo-terminal-rule-lockup", exampleId: "terminal-extension", patternId: "d3-logo-terminal-extension", textureId: "d3-logo-micro-grid", brand: "ASCENT", tagline: "Extend the signal", colorset: "colorset1", font: "geometric", density: 1.0, curvature: 0.48, scale: 1.0, rotation: 0, textureStrength: 0.24, seed: 131 },
+    { id: "d3-logo-vertical-rail-lockup", exampleId: "vertical-rail-wordmark", patternId: "d3-logo-vertical-rail-wordmark", textureId: "d3-logo-diagonal-hatch", brand: "NORTH", tagline: "Read upward", colorset: "colorset2", font: "condensed", density: 1.1, curvature: 0.42, scale: 1.0, rotation: 0, textureStrength: 0.3, seed: 132 },
+    { id: "d3-logo-hinged-letter-lockup", exampleId: "hinged-glyph-fan", patternId: "d3-logo-hinged-glyph-fan", textureId: "d3-logo-crosshatch", brand: "FOLD", tagline: "Ideas open outward", colorset: "colorset1", font: "humanist", density: 1.0, curvature: 0.74, scale: 1.0, rotation: -4, textureStrength: 0.28, seed: 133 },
+    { id: "d3-logo-justified-block-lockup", exampleId: "justified-word-block", patternId: "d3-logo-justified-word-block", textureId: "d3-logo-halftone-dots", brand: "COMMON", tagline: "Every line aligns", colorset: "colorset2", font: "editorial", density: 1.0, curvature: 0.36, scale: 1.0, rotation: 0, textureStrength: 0.3, seed: 134 },
+    { id: "d3-logo-cadence-type-lockup", exampleId: "fill-outline-cadence", patternId: "d3-logo-fill-outline-cadence", textureId: "d3-logo-seeded-stipple", brand: "RHYTHM", tagline: "Form meets interval", colorset: "colorset1", font: "monospace", density: 1.1, curvature: 0.5, scale: 1.0, rotation: 0, textureStrength: 0.26, seed: 135 },
+    { id: "d3-logo-punctuation-frame-lockup", exampleId: "punctuation-armature", patternId: "d3-logo-punctuation-armature", textureId: "d3-logo-topographic-lines", brand: "CLAUSE", tagline: "Pause with purpose", colorset: "colorset2", font: "geometric", density: 0.9, curvature: 0.58, scale: 1.0, rotation: 0, textureStrength: 0.32, seed: 136 },
+    { id: "d3-logo-packed-cluster-lockup", exampleId: "circle-pack-cluster", patternId: "d3-logo-circle-pack-cluster", textureId: "d3-logo-voronoi-mosaic", brand: "KINSHIP", tagline: "Room for every part", colorset: "colorset1", font: "humanist", density: 1.2, curvature: 0.64, scale: 1.0, rotation: 0, textureStrength: 0.36, seed: 137 },
+    { id: "d3-logo-treemap-mosaic-lockup", exampleId: "treemap-mosaic", patternId: "d3-logo-treemap-mosaic", textureId: "d3-logo-guilloche-waves", brand: "PARCEL", tagline: "Fit the whole story", colorset: "colorset2", font: "condensed", density: 1.1, curvature: 0.4, scale: 1.0, rotation: 0, textureStrength: 0.34, seed: 138 },
+    { id: "d3-logo-hull-shell-lockup", exampleId: "convex-hull-shells", patternId: "d3-logo-convex-hull-shells", textureId: "d3-logo-woven-checker", brand: "ENVELOPE", tagline: "Hold the outer edge", colorset: "colorset1", font: "editorial", density: 1.0, curvature: 0.72, scale: 1.0, rotation: 3, textureStrength: 0.28, seed: 139 },
+    { id: "d3-logo-phyllotaxis-bloom-lockup", exampleId: "phyllotaxis-bloom", patternId: "d3-logo-phyllotaxis-bloom", textureId: "d3-logo-directional-fibers", brand: "SEEDLING", tagline: "Growth finds order", colorset: "colorset2", font: "geometric", density: 1.2, curvature: 0.82, scale: 1.0, rotation: 7, textureStrength: 0.3, seed: 140 },
+    { id: "d3-logo-tangent-chain-lockup", exampleId: "tangency-chain", patternId: "d3-logo-tangency-chain", textureId: "d3-logo-micro-grid", brand: "TOUCHPOINT", tagline: "Connected at the edge", colorset: "colorset1", font: "monospace", density: 1.0, curvature: 0.62, scale: 1.0, rotation: 0, textureStrength: 0.24, seed: 141 },
+    { id: "d3-logo-tangram-form-lockup", exampleId: "tangram-dissection", patternId: "d3-logo-tangram-dissection", textureId: "d3-logo-diagonal-hatch", brand: "SEVEN", tagline: "Pieces become form", colorset: "colorset2", font: "humanist", density: 1.0, curvature: 0.44, scale: 1.0, rotation: -3, textureStrength: 0.3, seed: 142 },
+    { id: "d3-logo-superellipse-nest-lockup", exampleId: "superellipse-family", patternId: "d3-logo-superellipse-family", textureId: "d3-logo-crosshatch", brand: "SOFTBOX", tagline: "Shape between forms", colorset: "colorset1", font: "geometric", density: 1.1, curvature: 0.78, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 143 },
+    { id: "d3-logo-isometric-stack-lockup", exampleId: "isometric-block-stack", patternId: "d3-logo-isometric-block-stack", textureId: "d3-logo-halftone-dots", brand: "UPSTACK", tagline: "Build from every side", colorset: "colorset2", font: "condensed", density: 1.2, curvature: 0.38, scale: 1.0, rotation: 0, textureStrength: 0.32, seed: 144 },
+    { id: "d3-logo-euler-route-lockup", exampleId: "eulerian-one-stroke", patternId: "d3-logo-eulerian-one-stroke", textureId: "d3-logo-seeded-stipple", brand: "UNBROKEN", tagline: "One path through all", colorset: "colorset1", font: "editorial", density: 1.0, curvature: 0.7, scale: 1.0, rotation: 0, textureStrength: 0.26, seed: 145 },
+    { id: "d3-logo-perfect-maze-lockup", exampleId: "perfect-maze", patternId: "d3-logo-perfect-maze", textureId: "d3-logo-topographic-lines", brand: "WAYFIND", tagline: "Every turn connects", colorset: "colorset2", font: "monospace", density: 1.2, curvature: 0.34, scale: 1.0, rotation: 0, textureStrength: 0.34, seed: 146 },
+    { id: "d3-logo-stream-routing-lockup", exampleId: "split-merge-stream", patternId: "d3-logo-split-merge-stream", textureId: "d3-logo-voronoi-mosaic", brand: "CONFLUX", tagline: "Many paths, one current", colorset: "colorset1", font: "humanist", density: 1.1, curvature: 0.82, scale: 1.0, rotation: 0, textureStrength: 0.36, seed: 147 },
+    { id: "d3-logo-dendrogram-crown-lockup", exampleId: "dendrogram-crown", patternId: "d3-logo-dendrogram-crown", textureId: "d3-logo-guilloche-waves", brand: "LINEAGE", tagline: "Branch into clarity", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.68, scale: 1.0, rotation: 0, textureStrength: 0.32, seed: 148 },
+    { id: "d3-logo-ring-chain-lockup", exampleId: "linked-ring-chain", patternId: "d3-logo-linked-ring-chain", textureId: "d3-logo-woven-checker", brand: "LINKAGE", tagline: "Held by connection", colorset: "colorset1", font: "condensed", density: 1.0, curvature: 0.58, scale: 1.0, rotation: -5, textureStrength: 0.28, seed: 149 },
+    { id: "d3-logo-lsystem-growth-lockup", exampleId: "lsystem-branch", patternId: "d3-logo-lsystem-branch", textureId: "d3-logo-directional-fibers", brand: "ARBOR", tagline: "Rules become growth", colorset: "colorset2", font: "editorial", density: 1.2, curvature: 0.76, scale: 1.0, rotation: 0, textureStrength: 0.3, seed: 150 },
+    { id: "d3-logo-hilbert-route-lockup", exampleId: "hilbert-route", patternId: "d3-logo-hilbert-route", textureId: "d3-logo-micro-grid", brand: "LOCALITY", tagline: "Fill space continuously", colorset: "colorset1", font: "monospace", density: 1.2, curvature: 0.3, scale: 1.0, rotation: 0, textureStrength: 0.24, seed: 151 },
+    { id: "d3-logo-profile-boundary-lockup", exampleId: "reciprocal-profiles", patternId: "d3-logo-reciprocal-profiles", textureId: "d3-logo-diagonal-hatch", brand: "DIALOGUE", tagline: "Meet at one boundary", colorset: "colorset2", font: "humanist", density: 1.0, curvature: 0.7, scale: 1.0, rotation: 0, textureStrength: 0.3, seed: 152 },
+    { id: "d3-logo-gutter-symbol-lockup", exampleId: "modular-gutter-symbol", patternId: "d3-logo-modular-gutter-symbol", textureId: "d3-logo-crosshatch", brand: "INTERVAL", tagline: "Meaning lives between", colorset: "colorset1", font: "geometric", density: 1.1, curvature: 0.4, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 153 },
+    { id: "d3-logo-central-void-lockup", exampleId: "tangent-void-star", patternId: "d3-logo-tangent-void-star", textureId: "d3-logo-halftone-dots", brand: "STARVOID", tagline: "Space makes the symbol", colorset: "colorset2", font: "condensed", density: 1.0, curvature: 0.66, scale: 1.0, rotation: 6, textureStrength: 0.32, seed: 154 },
+    { id: "d3-logo-reciprocal-tile-lockup", exampleId: "reciprocal-tessellation", patternId: "d3-logo-reciprocal-tessellation", textureId: "d3-logo-seeded-stipple", brand: "DUALITY", tagline: "Ground becomes figure", colorset: "colorset1", font: "editorial", density: 1.2, curvature: 0.52, scale: 1.0, rotation: 0, textureStrength: 0.26, seed: 155 },
+    { id: "d3-logo-impossible-beam-lockup", exampleId: "impossible-triangle", patternId: "d3-logo-impossible-triangle", textureId: "d3-logo-topographic-lines", brand: "PARADOX", tagline: "Follow every edge", colorset: "colorset2", font: "monospace", density: 1.0, curvature: 0.46, scale: 1.0, rotation: 0, textureStrength: 0.34, seed: 156 },
+    { id: "d3-logo-necker-depth-lockup", exampleId: "necker-cube", patternId: "d3-logo-necker-cube", textureId: "d3-logo-voronoi-mosaic", brand: "FLIPSPACE", tagline: "See depth two ways", colorset: "colorset1", font: "geometric", density: 1.0, curvature: 0.48, scale: 1.0, rotation: 0, textureStrength: 0.36, seed: 157 },
+    { id: "d3-logo-kanizsa-closure-lockup", exampleId: "kanizsa-closure", patternId: "d3-logo-kanizsa-closure", textureId: "d3-logo-guilloche-waves", brand: "IMPLIED", tagline: "Complete what is absent", colorset: "colorset2", font: "humanist", density: 0.9, curvature: 0.62, scale: 1.0, rotation: 0, textureStrength: 0.32, seed: 158 },
+    { id: "d3-logo-line-screen-lockup", exampleId: "line-screen-silhouette", patternId: "d3-logo-line-screen-silhouette", textureId: "d3-logo-woven-checker", brand: "SCANLINE", tagline: "Shape through intervals", colorset: "colorset1", font: "condensed", density: 1.2, curvature: 0.56, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 159 },
+    { id: "d3-logo-perspective-portal-lockup", exampleId: "perspective-portal", patternId: "d3-logo-perspective-portal", textureId: "d3-logo-directional-fibers", brand: "THRESHOLD", tagline: "Enter the next frame", colorset: "colorset2", font: "editorial", density: 1.1, curvature: 0.6, scale: 1.0, rotation: -2, textureStrength: 0.3, seed: 160 }
   ]);
 
   const FONT_STACKS = deepFreeze([
@@ -1843,6 +1903,1086 @@
     mark.append("circle").attr("r", inner * 0.32).attr("fill", ctx.palette.roles.accent);
   }
 
+  function renderTerminalExtension(group, ctx) {
+    const curvature = ctx.config.curvature;
+    group.append("path")
+      .attr("class", "terminal-extension-rule")
+      .attr("d", `M78,177 H${334 + curvature * 34} Q${370 + curvature * 18},177 ${386 + curvature * 8},${157 - curvature * 18} V${110 - curvature * 10}`)
+      .attr("fill", "none")
+      .attr("stroke", ctx.textureFill)
+      .attr("stroke-width", 8 + ctx.config.density * 2)
+      .attr("stroke-linecap", "round")
+      .attr("stroke-linejoin", "round");
+    group.append("circle")
+      .attr("class", "terminal-extension-anchor")
+      .attr("cx", 78).attr("cy", 177).attr("r", 7)
+      .attr("fill", ctx.palette.roles.accent);
+    addText(group, ctx, {
+      className: "terminal-extension-wordmark",
+      role: "brand",
+      text: ctx.config.brand,
+      x: 230,
+      y: 132,
+      size: fittedFontSize(ctx.config.brand, 68, 302, 10),
+      weight: 820,
+      tracking: 0.8,
+      fill: ctx.palette.roles.ink,
+      maxWidth: 302,
+      minimumSize: 10
+    });
+    ctx.brandHandled = true;
+  }
+
+  function renderVerticalRailWordmark(group, ctx) {
+    const characters = Array.from(ctx.config.brand || "?");
+    const count = Math.max(1, characters.length);
+    const top = 48;
+    const bottom = 226;
+    const step = count === 1 ? 0 : (bottom - top) / (count - 1);
+    const size = clamp(Math.min(27, 154 / count + 8), 7, 27);
+    group.append("line")
+      .attr("class", "vertical-reading-rail")
+      .attr("x1", 205).attr("y1", top - 15)
+      .attr("x2", 205).attr("y2", bottom + 15)
+      .attr("stroke", ctx.textureFill)
+      .attr("stroke-width", 9)
+      .attr("stroke-linecap", "round");
+    group.selectAll("circle.vertical-rail-stop")
+      .data([top - 15, bottom + 15])
+      .join("circle")
+      .attr("class", "vertical-rail-stop")
+      .attr("cx", 205).attr("cy", (d) => d).attr("r", 7)
+      .attr("fill", ctx.palette.roles.accent);
+    if (count > 12) {
+      addText(group, ctx, {
+        className: "vertical-rail-compact-wordmark",
+        role: "brand",
+        text: ctx.config.brand,
+        x: 246,
+        y: 139,
+        size: fittedFontSize(ctx.config.brand, 24, 168, 7),
+        weight: 820,
+        tracking: 0.5,
+        fill: ctx.palette.roles.ink,
+        maxWidth: 168,
+        minimumSize: 7
+      }).attr("transform", "rotate(-90,246,139)");
+      ctx.brandHandled = true;
+      return;
+    }
+    characters.forEach((character, index) => {
+      addText(group, ctx, {
+        className: "vertical-rail-glyph",
+        role: "brand",
+        text: character,
+        x: 244,
+        y: count === 1 ? 137 : top + index * step,
+        size,
+        weight: 820,
+        fill: index % 2 ? ctx.palette.roles.primary : ctx.palette.roles.ink
+      }).attr("data-text-layer-suffix", index + 1);
+    });
+    ctx.brandHandled = true;
+  }
+
+  function renderHingedGlyphFan(group, ctx) {
+    const characters = Array.from(ctx.config.brand || "?");
+    const count = Math.max(1, characters.length);
+    const span = Math.min(310, Math.max(70, count * 38));
+    const step = count === 1 ? 0 : span / (count - 1);
+    const start = 240 - span / 2;
+    const size = clamp(Math.min(58, 292 / count * 1.45), 9, 58);
+    group.append("line")
+      .attr("class", "hinge-baseline")
+      .attr("x1", start - 18).attr("x2", start + span + 18)
+      .attr("y1", 178).attr("y2", 178)
+      .attr("stroke", ctx.palette.roles.line).attr("stroke-width", 4);
+    if (count > 12) {
+      const angle = (ctx.config.curvature - 0.5) * 12;
+      group.append("circle")
+        .attr("class", "glyph-hinge compact-hinge")
+        .attr("cx", 240).attr("cy", 178).attr("r", 6)
+        .attr("fill", ctx.palette.roles.accent);
+      addText(group, ctx, {
+        className: "hinged-compact-wordmark",
+        role: "brand",
+        text: ctx.config.brand,
+        x: 240,
+        y: 139,
+        size: fittedFontSize(ctx.config.brand, 42, 306, 8),
+        weight: 820,
+        tracking: 0.45,
+        fill: ctx.palette.roles.ink,
+        maxWidth: 306,
+        minimumSize: 8
+      }).attr("transform", `rotate(${angle},240,178)`);
+      ctx.brandHandled = true;
+      return;
+    }
+    characters.forEach((character, index) => {
+      const x = count === 1 ? 240 : start + index * step;
+      const normalized = count === 1 ? 0 : index / (count - 1) * 2 - 1;
+      const angle = normalized * (4 + ctx.config.curvature * 9);
+      group.append("circle")
+        .attr("class", "glyph-hinge")
+        .attr("cx", x).attr("cy", 178).attr("r", 4.5)
+        .attr("fill", ctx.palette.sequence[index % ctx.palette.sequence.length]);
+      addText(group, ctx, {
+        className: "hinged-brand-glyph",
+        role: "brand",
+        text: character,
+        x,
+        y: 143,
+        size,
+        weight: 820,
+        fill: ctx.palette.roles.ink
+      })
+        .attr("transform", `rotate(${angle},${x},178)`)
+        .attr("data-text-layer-suffix", index + 1);
+    });
+    ctx.brandHandled = true;
+  }
+
+  function renderJustifiedWordBlock(group, ctx) {
+    const blockWidth = 306;
+    group.selectAll("rect.justification-rail")
+      .data([78, 402])
+      .join("rect")
+      .attr("class", "justification-rail")
+      .attr("x", (d) => d - 4).attr("y", 75)
+      .attr("width", 8).attr("height", 132)
+      .attr("rx", 4)
+      .attr("fill", (d, index) => index ? ctx.palette.roles.accent : ctx.textureFill);
+    const lines = balancedTextLines(ctx.config.brand);
+    const wordBlock = addText(group, ctx, {
+      className: "justified-brand-block",
+      role: "brand",
+      text: "",
+      x: 240,
+      y: 141,
+      size: 48,
+      weight: 820,
+      tracking: 0.4,
+      fill: ctx.palette.roles.ink,
+    })
+      .attr("aria-label", ctx.config.brand)
+      .attr("data-text-fit", "justified-2-lines")
+      .attr("data-text-line-count", lines.length);
+    const sourceHasSpaces = /\s/u.test(ctx.config.brand);
+    lines.forEach((line, index) => {
+      const renderedLine = sourceHasSpaces && index < lines.length - 1 ? `${line} ` : line;
+      const lineSelection = wordBlock.append("tspan")
+        .attr("x", 240)
+        .attr("y", 141 + (index - (lines.length - 1) / 2) * 52)
+        .attr("data-text-line", index + 1)
+        .text(renderedLine);
+      fitTextToWidth(lineSelection, blockWidth, 14);
+      lineSelection
+        .attr("textLength", blockWidth)
+        .attr("lengthAdjust", "spacing")
+        .attr("data-text-fit", "justified-spacing");
+    });
+    group.append("line")
+      .attr("class", "justification-measure")
+      .attr("x1", 87).attr("x2", 393).attr("y1", 215).attr("y2", 215)
+      .attr("stroke", ctx.palette.roles.line).attr("stroke-width", 3);
+    ctx.brandHandled = true;
+  }
+
+  function renderFillOutlineCadence(group, ctx) {
+    const characters = Array.from(ctx.config.brand || "?");
+    const count = Math.max(1, characters.length);
+    const span = Math.min(330, Math.max(70, count * 42));
+    const step = count === 1 ? 0 : span / (count - 1);
+    const start = 240 - span / 2;
+    const size = clamp(Math.min(60, count === 1 ? 60 : step * 1.02), 9, 60);
+    if (count > 12) {
+      addText(group, ctx, {
+        className: "cadence-compact-wordmark",
+        role: "brand",
+        text: ctx.config.brand,
+        x: 240,
+        y: 143,
+        size: fittedFontSize(ctx.config.brand, 42, 320, 8),
+        weight: 850,
+        tracking: 0.4,
+        fill: ctx.palette.roles.background,
+        maxWidth: 320,
+        minimumSize: 8
+      })
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", 1.8)
+        .attr("paint-order", "stroke fill");
+      group.append("path")
+        .attr("class", "cadence-index")
+        .attr("d", "M80,194H400")
+        .attr("stroke", ctx.textureFill).attr("stroke-width", 5).attr("stroke-linecap", "round");
+      ctx.brandHandled = true;
+      return;
+    }
+    characters.forEach((character, index) => {
+      const outline = index % 2 === 1;
+      addText(group, ctx, {
+        className: "cadence-brand-glyph",
+        role: "brand",
+        text: character,
+        x: count === 1 ? 240 : start + index * step,
+        y: 143,
+        size,
+        weight: 850,
+        fill: outline ? "none" : ctx.palette.sequence[index % ctx.palette.sequence.length]
+      })
+        .attr("stroke", outline ? ctx.palette.roles.ink : "none")
+        .attr("stroke-width", outline ? Math.max(1.5, size * 0.055) : 0)
+        .attr("paint-order", "stroke")
+        .attr("data-text-layer-suffix", index + 1);
+    });
+    group.append("path")
+      .attr("class", "cadence-index")
+      .attr("d", `M${start - 10},194 H${start + span + 10}`)
+      .attr("stroke", ctx.textureFill).attr("stroke-width", 5).attr("stroke-linecap", "round");
+    ctx.brandHandled = true;
+  }
+
+  function renderPunctuationArmature(group, ctx) {
+    const inset = 78 + ctx.config.curvature * 18;
+    const outer = 402 - ctx.config.curvature * 18;
+    const top = 72;
+    const bottom = 205;
+    group.append("path")
+      .attr("class", "punctuation-bracket-left")
+      .attr("d", `M${inset + 28},${top} H${inset} V${bottom} H${inset + 28}`)
+      .attr("fill", "none").attr("stroke", ctx.textureFill)
+      .attr("stroke-width", 10).attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    group.append("path")
+      .attr("class", "punctuation-bracket-right")
+      .attr("d", `M${outer - 28},${top} H${outer} V${bottom} H${outer - 28}`)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.accent)
+      .attr("stroke-width", 10).attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    group.selectAll("circle.punctuation-stop")
+      .data([[inset + 45, 92], [outer - 45, 185]])
+      .join("circle")
+      .attr("class", "punctuation-stop")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 7)
+      .attr("fill", ctx.palette.roles.primaryDark);
+    addText(group, ctx, {
+      className: "punctuation-armature-wordmark",
+      role: "brand",
+      text: ctx.config.brand,
+      x: 240,
+      y: 139,
+      size: fittedFontSize(ctx.config.brand, 58, 250, 10),
+      weight: 820,
+      tracking: 1,
+      fill: ctx.palette.roles.ink,
+      maxWidth: 250,
+      minimumSize: 10
+    });
+    ctx.brandHandled = true;
+  }
+
+  function renderCirclePackCluster(group, ctx) {
+    const random = seededRandom(ctx.d3, ctx.config.seed, "circle-pack-cluster");
+    const count = Math.max(9, Math.round(10 + ctx.config.density * 7));
+    const data = { children: ctx.d3.range(count).map((index) => ({ value: 1 + random() * (4 + index % 3) })) };
+    const root = ctx.d3.pack().size([204, 184]).padding(3 + (1 - ctx.config.curvature) * 4)(
+      ctx.d3.hierarchy(data).sum((d) => d.value || 0)
+    );
+    const mark = group.append("g").attr("class", "hierarchical-circle-pack").attr("transform", "translate(138,48)");
+    mark.selectAll("circle.pack-disc")
+      .data(root.leaves())
+      .join("circle")
+      .attr("class", "pack-disc")
+      .attr("cx", (d) => d.x).attr("cy", (d) => d.y).attr("r", (d) => d.r)
+      .attr("fill", (d, index) => index === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 2);
+    mark.append("circle")
+      .attr("class", "pack-boundary")
+      .attr("cx", root.x).attr("cy", root.y).attr("r", root.r)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
+  }
+
+  function renderTreemapMosaic(group, ctx) {
+    const random = seededRandom(ctx.d3, ctx.config.seed, "treemap-mosaic");
+    const count = Math.max(8, Math.round(8 + ctx.config.density * 8));
+    const hierarchy = ctx.d3.hierarchy({ children: ctx.d3.range(count).map((index) => ({ value: 1 + random() * (7 + index % 4) })) })
+      .sum((d) => d.value || 0)
+      .sort((a, b) => b.value - a.value);
+    ctx.d3.treemap()
+      .size([242, 174])
+      .paddingInner(2 + (1 - ctx.config.curvature) * 3)
+      .round(true)(hierarchy);
+    const mark = group.append("g").attr("class", "hierarchical-treemap").attr("transform", "translate(119,47)");
+    mark.selectAll("rect.treemap-leaf")
+      .data(hierarchy.leaves())
+      .join("rect")
+      .attr("class", "treemap-leaf")
+      .attr("x", (d) => d.x0).attr("y", (d) => d.y0)
+      .attr("width", (d) => Math.max(0, d.x1 - d.x0))
+      .attr("height", (d) => Math.max(0, d.y1 - d.y0))
+      .attr("rx", 2 + ctx.config.curvature * 7)
+      .attr("fill", (d, index) => index === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length]);
+    mark.append("rect")
+      .attr("class", "treemap-boundary")
+      .attr("width", 242).attr("height", 174).attr("rx", 8)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
+  }
+
+  function renderConvexHullShells(group, ctx) {
+    const random = seededRandom(ctx.d3, ctx.config.seed, "convex-hull-shells");
+    let points = ctx.d3.range(Math.max(24, Math.round(26 + ctx.config.density * 18))).map(() => {
+      const angle = random() * Math.PI * 2;
+      const radius = Math.sqrt(random());
+      return [240 + Math.cos(angle) * radius * 118, 139 + Math.sin(angle) * radius * 88];
+    });
+    const shells = [];
+    while (points.length >= 3 && shells.length < 7) {
+      const hull = ctx.d3.polygonHull(points);
+      if (!hull || hull.length < 3) break;
+      shells.push(hull);
+      const keys = new Set(hull.map((point) => `${point[0].toFixed(5)},${point[1].toFixed(5)}`));
+      points = points.filter((point) => !keys.has(`${point[0].toFixed(5)},${point[1].toFixed(5)}`));
+    }
+    const line = ctx.d3.line().curve(ctx.d3.curveLinearClosed);
+    group.append("g").attr("class", "convex-hull-peeling")
+      .selectAll("path.hull-shell")
+      .data(shells)
+      .join("path")
+      .attr("class", "hull-shell")
+      .attr("d", line)
+      .attr("fill", (d, index) => index === shells.length - 1 ? ctx.textureFill : "none")
+      .attr("stroke", (d, index) => ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke-width", (d, index) => Math.max(2, 7 - index * 0.65))
+      .attr("stroke-linejoin", "round");
+    group.selectAll("circle.hull-core-point")
+      .data(points.slice(0, 8))
+      .join("circle")
+      .attr("class", "hull-core-point")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 3.5)
+      .attr("fill", ctx.palette.roles.ink);
+  }
+
+  function renderPhyllotaxisBloom(group, ctx) {
+    const count = Math.max(42, Math.round(48 + ctx.config.density * 32));
+    const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+    const maxRadius = 104;
+    const seeds = ctx.d3.range(count).map((index) => {
+      const radius = maxRadius * Math.sqrt((index + 0.5) / count);
+      const angle = index * goldenAngle + ctx.config.curvature * 0.35;
+      return {
+        x: 240 + Math.cos(angle) * radius,
+        y: 139 + Math.sin(angle) * radius,
+        r: 2.8 + (1 - index / count) * 4.8
+      };
+    });
+    group.append("g").attr("class", "golden-angle-seed-field")
+      .selectAll("circle.seed-disc")
+      .data(seeds)
+      .join("circle")
+      .attr("class", "seed-disc")
+      .attr("cx", (d) => d.x).attr("cy", (d) => d.y).attr("r", (d) => d.r)
+      .attr("fill", (d, index) => index === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length]);
+    group.append("circle")
+      .attr("class", "phyllotaxis-boundary")
+      .attr("cx", 240).attr("cy", 139).attr("r", maxRadius + 7)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 2.5);
+  }
+
+  function renderTangencyChain(group, ctx) {
+    const scale = clamp(0.82 + (ctx.config.density - 0.5) * 0.12, 0.82, 1.02);
+    const radii = [18, 25, 15, 22, 14, 24, 18].map((radius) => radius * scale);
+    const angles = [0.12, -0.18, 0.2, -0.16, 0.12, -0.08].map((angle) => angle * (0.65 + ctx.config.curvature));
+    const circles = [{ x: 120, y: 142, r: radii[0] }];
+    for (let index = 1; index < radii.length; index += 1) {
+      const previous = circles[index - 1];
+      const distance = previous.r + radii[index];
+      const angle = angles[index - 1];
+      circles.push({
+        x: previous.x + Math.cos(angle) * distance,
+        y: previous.y + Math.sin(angle) * distance,
+        r: radii[index]
+      });
+    }
+    group.append("g").attr("class", "mutually-tangent-chain")
+      .selectAll("circle.tangent-disc")
+      .data(circles)
+      .join("circle")
+      .attr("class", "tangent-disc")
+      .attr("cx", (d) => d.x).attr("cy", (d) => d.y).attr("r", (d) => d.r)
+      .attr("fill", (d, index) => index === Math.floor(circles.length / 2) ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 2.2);
+    group.selectAll("circle.tangency-contact")
+      .data(circles.slice(1).map((circle, index) => {
+        const previous = circles[index];
+        const total = previous.r + circle.r;
+        return {
+          x: previous.x + (circle.x - previous.x) * previous.r / total,
+          y: previous.y + (circle.y - previous.y) * previous.r / total
+        };
+      }))
+      .join("circle")
+      .attr("class", "tangency-contact")
+      .attr("cx", (d) => d.x).attr("cy", (d) => d.y).attr("r", 3)
+      .attr("fill", ctx.palette.roles.background)
+      .attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 1.5);
+  }
+
+  function renderTangramDissection(group, ctx) {
+    const pieces = [
+      [[0, 0], [100, 0], [0, 100]],
+      [[100, 0], [200, 0], [200, 100]],
+      [[200, 100], [200, 200], [100, 200]],
+      [[100, 200], [0, 200], [0, 100]],
+      [[100, 0], [200, 100], [100, 200]],
+      [[100, 0], [100, 100], [0, 100]],
+      [[0, 100], [100, 100], [100, 200]]
+    ];
+    const mark = group.append("g")
+      .attr("class", "rule-based-tangram")
+      .attr("transform", `translate(140,39) rotate(${(ctx.config.curvature - 0.5) * 8},100,100)`);
+    mark.selectAll("polygon.tangram-piece")
+      .data(pieces)
+      .join("polygon")
+      .attr("class", "tangram-piece")
+      .attr("points", (piece) => piece.map((point) => point.join(",")).join(" "))
+      .attr("fill", (d, index) => index === 4 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 3)
+      .attr("stroke-linejoin", "round");
+    mark.append("rect")
+      .attr("class", "tangram-master-boundary")
+      .attr("width", 200).attr("height", 200)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
+  }
+
+  function renderSuperellipseFamily(group, ctx) {
+    const exponents = [1.15, 1.55, 2.1, 3.2, 5.2 + ctx.config.curvature * 2.8];
+    const sizes = [112, 91, 70, 49, 28];
+    const line = ctx.d3.line().curve(ctx.d3.curveLinearClosed);
+    const shapes = exponents.map((exponent, index) => ctx.d3.range(160).map((sample) => {
+      const angle = sample / 160 * Math.PI * 2;
+      const cosine = Math.cos(angle);
+      const sine = Math.sin(angle);
+      const radius = sizes[index];
+      return [
+        240 + Math.sign(cosine) * Math.pow(Math.abs(cosine), 2 / exponent) * radius,
+        139 + Math.sign(sine) * Math.pow(Math.abs(sine), 2 / exponent) * radius * 0.78
+      ];
+    }));
+    group.append("g").attr("class", "nested-superellipse-family")
+      .selectAll("path.superellipse-level")
+      .data(shapes)
+      .join("path")
+      .attr("class", "superellipse-level")
+      .attr("d", line)
+      .attr("fill", (d, index) => index === 2 ? ctx.textureFill : (index % 2 ? ctx.palette.roles.background : ctx.palette.sequence[index % ctx.palette.sequence.length]))
+      .attr("stroke", (d, index) => ctx.palette.sequence[(index + 1) % ctx.palette.sequence.length])
+      .attr("stroke-width", 2.5);
+  }
+
+  function renderIsometricBlockStack(group, ctx) {
+    const cells = [
+      [0, 0, 0], [1, 0, 0], [2, 0, 0], [0, 1, 0], [1, 1, 0], [2, 1, 0],
+      [1, 0, 1], [1, 1, 1], [2, 1, 1], [1, 1, 2]
+    ];
+    const size = 31;
+    const project = (x, y, z) => [240 + (x - y - 0.5) * size, 182 + (x + y - 2) * size * 0.5 - z * size];
+    const facePoints = (cell) => {
+      const [x, y, z] = cell;
+      const top = [project(x, y, z + 1), project(x + 1, y, z + 1), project(x + 1, y + 1, z + 1), project(x, y + 1, z + 1)];
+      const left = [project(x, y + 1, z), project(x, y + 1, z + 1), project(x + 1, y + 1, z + 1), project(x + 1, y + 1, z)];
+      const right = [project(x + 1, y, z), project(x + 1, y + 1, z), project(x + 1, y + 1, z + 1), project(x + 1, y, z + 1)];
+      return { top, left, right };
+    };
+    const sorted = cells.slice().sort((a, b) => (a[0] + a[1] + a[2]) - (b[0] + b[1] + b[2]));
+    const cubes = group.append("g").attr("class", "axonometric-voxel-stack")
+      .selectAll("g.isometric-cube")
+      .data(sorted)
+      .join("g")
+      .attr("class", "isometric-cube");
+    cubes.each(function drawCube(cell, index) {
+      const faces = facePoints(cell);
+      const cube = ctx.d3.select(this);
+      cube.selectAll("polygon.cube-face")
+        .data([
+          { role: "cube-left", points: faces.left, fill: ctx.palette.sequence[(index + 2) % ctx.palette.sequence.length] },
+          { role: "cube-right", points: faces.right, fill: ctx.palette.sequence[(index + 1) % ctx.palette.sequence.length] },
+          { role: "cube-top", points: faces.top, fill: index === sorted.length - 1 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length] }
+        ])
+        .join("polygon")
+        .attr("class", (face) => `cube-face ${face.role}`)
+        .attr("points", (face) => face.points.map((point) => point.join(",")).join(" "))
+        .attr("fill", (face) => face.fill)
+        .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 1.6)
+        .attr("stroke-linejoin", "round");
+    });
+  }
+
+  function renderEulerianOneStroke(group, ctx) {
+    const route = [
+      [240, 139], [160, 58], [103, 139], [160, 220], [240, 139],
+      [320, 58], [377, 139], [320, 220], [240, 139]
+    ];
+    const line = ctx.d3.line().curve(ctx.d3.curveCatmullRom.alpha(0.25 + ctx.config.curvature * 0.5));
+    group.append("path")
+      .attr("class", "euler-circuit-clearance")
+      .attr("d", line(route)).attr("fill", "none")
+      .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 18)
+      .attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    group.append("path")
+      .attr("class", "euler-circuit-trace")
+      .attr("d", line(route)).attr("fill", "none")
+      .attr("stroke", ctx.textureFill).attr("stroke-width", 10)
+      .attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    group.selectAll("circle.euler-vertex")
+      .data(route.slice(0, -1).filter((point, index, values) => values.findIndex((item) => item[0] === point[0] && item[1] === point[1]) === index))
+      .join("circle")
+      .attr("class", "euler-vertex")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 6)
+      .attr("fill", (d, index) => ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 2);
+  }
+
+  function renderPerfectMaze(group, ctx) {
+    const columns = Math.max(9, Math.round(9 + ctx.config.density * 3));
+    const rows = 7;
+    const cell = Math.min(22, 236 / columns);
+    const width = columns * cell;
+    const height = rows * cell;
+    const offsetX = 240 - width / 2;
+    const offsetY = 139 - height / 2;
+    const random = seededRandom(ctx.d3, ctx.config.seed, "perfect-maze");
+    const cells = ctx.d3.range(columns * rows).map(() => ({ visited: false, walls: [true, true, true, true], parent: -1 }));
+    const stack = [0];
+    cells[0].visited = true;
+    while (stack.length) {
+      const current = stack[stack.length - 1];
+      const x = current % columns;
+      const y = Math.floor(current / columns);
+      const neighbors = [];
+      if (y > 0 && !cells[current - columns].visited) neighbors.push([current - columns, 0, 2]);
+      if (x < columns - 1 && !cells[current + 1].visited) neighbors.push([current + 1, 1, 3]);
+      if (y < rows - 1 && !cells[current + columns].visited) neighbors.push([current + columns, 2, 0]);
+      if (x > 0 && !cells[current - 1].visited) neighbors.push([current - 1, 3, 1]);
+      if (!neighbors.length) {
+        stack.pop();
+        continue;
+      }
+      const [next, wall, opposite] = neighbors[Math.floor(random() * neighbors.length)];
+      cells[current].walls[wall] = false;
+      cells[next].walls[opposite] = false;
+      cells[next].visited = true;
+      cells[next].parent = current;
+      stack.push(next);
+    }
+    const solution = [];
+    let cursor = columns * rows - 1;
+    while (cursor >= 0) {
+      solution.push([offsetX + (cursor % columns + 0.5) * cell, offsetY + (Math.floor(cursor / columns) + 0.5) * cell]);
+      if (cursor === 0) break;
+      cursor = cells[cursor].parent;
+    }
+    group.append("path")
+      .attr("class", "maze-solution-route")
+      .attr("d", ctx.d3.line().curve(ctx.d3.curveLinear)(solution.reverse()))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.accent)
+      .attr("stroke-width", Math.max(3, cell * 0.22)).attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    let walls = "";
+    cells.forEach((mazeCell, index) => {
+      const x = offsetX + (index % columns) * cell;
+      const y = offsetY + Math.floor(index / columns) * cell;
+      if (mazeCell.walls[0]) walls += `M${x},${y}H${x + cell}`;
+      if (mazeCell.walls[3]) walls += `M${x},${y}V${y + cell}`;
+      if (index % columns === columns - 1 && mazeCell.walls[1]) walls += `M${x + cell},${y}V${y + cell}`;
+      if (Math.floor(index / columns) === rows - 1 && mazeCell.walls[2]) walls += `M${x},${y + cell}H${x + cell}`;
+    });
+    group.append("path")
+      .attr("class", "perfect-maze-walls")
+      .attr("d", walls).attr("fill", "none")
+      .attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 2.6)
+      .attr("stroke-linecap", "square");
+    group.selectAll("circle.maze-terminal")
+      .data([solution[0], solution[solution.length - 1]])
+      .join("circle")
+      .attr("class", "maze-terminal")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 5)
+      .attr("fill", ctx.textureFill);
+  }
+
+  function renderSplitMergeStream(group, ctx) {
+    const streamCount = 4;
+    const sources = [78, 119, 160, 201];
+    const targets = [84, 121, 165, 198];
+    const xValues = [88, 145, 205, 240, 275, 335, 392];
+    const area = ctx.d3.area()
+      .x((d) => d.x)
+      .y0((d) => d.y - d.width / 2)
+      .y1((d) => d.y + d.width / 2)
+      .curve(ctx.d3.curveCatmullRom.alpha(0.45 + ctx.config.curvature * 0.35));
+    const streams = ctx.d3.range(streamCount).map((index) => {
+      const centerOffset = (index - (streamCount - 1) / 2) * 13;
+      return xValues.map((x, pointIndex) => {
+        const progress = pointIndex / (xValues.length - 1);
+        const merge = Math.sin(progress * Math.PI);
+        const base = sources[index] * (1 - progress) + targets[(index + 1) % streamCount] * progress;
+        return { x, y: base * (1 - merge * 0.58) + (139 + centerOffset) * merge * 0.58, width: 10 + (index % 2) * 3 };
+      });
+    });
+    group.append("g").attr("class", "conserved-stream-routing")
+      .selectAll("path.flow-ribbon")
+      .data(streams)
+      .join("path")
+      .attr("class", "flow-ribbon")
+      .attr("d", area)
+      .attr("fill", (d, index) => index === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 1.8);
+    group.selectAll("circle.flow-terminal")
+      .data(sources.map((y, index) => ({ x: 88, y, index })).concat(targets.map((y, index) => ({ x: 392, y, index: index + streamCount }))))
+      .join("circle")
+      .attr("class", "flow-terminal")
+      .attr("cx", (d) => d.x).attr("cy", (d) => d.y).attr("r", 5)
+      .attr("fill", (d) => ctx.palette.sequence[d.index % ctx.palette.sequence.length]);
+  }
+
+  function renderDendrogramCrown(group, ctx) {
+    const data = {
+      children: ctx.d3.range(4).map((branch) => ({
+        children: ctx.d3.range(2 + branch % 2).map((leaf) => ({ value: branch * 3 + leaf + 1 }))
+      }))
+    };
+    const root = ctx.d3.hierarchy(data);
+    ctx.d3.cluster().size([250, 145])(root);
+    const position = (node) => ({ x: 115 + node.x, y: 215 - node.y });
+    const links = root.links();
+    group.append("g").attr("class", "hierarchy-crown-links")
+      .selectAll("path.crown-link")
+      .data(links)
+      .join("path")
+      .attr("class", "crown-link")
+      .attr("d", (link) => {
+        const source = position(link.source);
+        const target = position(link.target);
+        const middle = (source.y + target.y) / 2;
+        return `M${source.x},${source.y}C${source.x},${middle} ${target.x},${middle} ${target.x},${target.y}`;
+      })
+      .attr("fill", "none")
+      .attr("stroke", (d, index) => ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke-width", (d) => d.target.children ? 5 : 3)
+      .attr("stroke-linecap", "round");
+    group.append("g").attr("class", "hierarchy-crown-nodes")
+      .selectAll("circle.crown-node")
+      .data(root.descendants())
+      .join("circle")
+      .attr("class", "crown-node")
+      .attr("cx", (d) => position(d).x).attr("cy", (d) => position(d).y)
+      .attr("r", (d) => d.children ? 7 : 5)
+      .attr("fill", (d, index) => d.depth === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 2);
+  }
+
+  function renderLinkedRingChain(group, ctx) {
+    const rings = [
+      { cx: 176, cy: 139, rx: 70, ry: 47, rotation: -24 },
+      { cx: 240, cy: 139, rx: 70, ry: 47, rotation: 24 },
+      { cx: 304, cy: 139, rx: 70, ry: 47, rotation: -24 }
+    ];
+    const sampleRing = (ring, start = 0, end = Math.PI * 2) => ctx.d3.range(65).map((index) => {
+      const angle = start + (end - start) * index / 64;
+      const cosine = Math.cos(ring.rotation * Math.PI / 180);
+      const sine = Math.sin(ring.rotation * Math.PI / 180);
+      const x = Math.cos(angle) * ring.rx;
+      const y = Math.sin(angle) * ring.ry;
+      return [ring.cx + x * cosine - y * sine, ring.cy + x * sine + y * cosine];
+    });
+    const line = ctx.d3.line().curve(ctx.d3.curveBasis);
+    rings.forEach((ring, index) => {
+      const path = line(sampleRing(ring));
+      group.append("path")
+        .attr("class", "ring-cycle-clearance")
+        .attr("d", path).attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 17)
+        .attr("stroke-linecap", "round");
+      group.append("path")
+        .attr("class", "ring-cycle")
+        .attr("d", path).attr("fill", "none")
+        .attr("stroke", index === 1 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+        .attr("stroke-width", 10).attr("stroke-linecap", "round");
+    });
+    rings.forEach((ring, index) => {
+      const start = index % 2 ? Math.PI * 0.82 : Math.PI * 1.82;
+      const segment = line(sampleRing(ring, start, start + Math.PI * 0.32));
+      group.append("path")
+        .attr("class", "ring-overpass-gap")
+        .attr("d", segment).attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 18).attr("stroke-linecap", "round");
+      group.append("path")
+        .attr("class", "ring-overpass")
+        .attr("d", segment).attr("fill", "none")
+        .attr("stroke", index === 1 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+        .attr("stroke-width", 10).attr("stroke-linecap", "round");
+    });
+  }
+
+  function renderLsystemBranch(group, ctx) {
+    let grammar = "F";
+    const depth = 3;
+    for (let index = 0; index < depth; index += 1) grammar = grammar.replaceAll("F", "F[+F]F[-F]F");
+    const angleStep = (18 + ctx.config.curvature * 15) * Math.PI / 180;
+    let state = { x: 240, y: 222, angle: -Math.PI / 2, length: 6.2 + ctx.config.density * 1.1 };
+    const stack = [];
+    const segments = [];
+    for (const token of grammar) {
+      if (token === "F") {
+        const next = {
+          x: state.x + Math.cos(state.angle) * state.length,
+          y: state.y + Math.sin(state.angle) * state.length,
+          angle: state.angle,
+          length: state.length
+        };
+        segments.push([[state.x, state.y], [next.x, next.y], stack.length]);
+        state = next;
+      } else if (token === "+") {
+        state.angle += angleStep;
+      } else if (token === "-") {
+        state.angle -= angleStep;
+      } else if (token === "[") {
+        stack.push({ ...state });
+        state.length *= 0.74;
+      } else if (token === "]") {
+        state = stack.pop() || state;
+      }
+    }
+    group.append("g").attr("class", "lsystem-grammar-branches")
+      .selectAll("line.branch-segment")
+      .data(segments)
+      .join("line")
+      .attr("class", "branch-segment")
+      .attr("x1", (d) => d[0][0]).attr("y1", (d) => d[0][1])
+      .attr("x2", (d) => d[1][0]).attr("y2", (d) => d[1][1])
+      .attr("stroke", (d, index) => index % 11 === 0 ? ctx.textureFill : ctx.palette.sequence[d[2] % ctx.palette.sequence.length])
+      .attr("stroke-width", (d) => Math.max(1.2, 5 - d[2] * 0.8))
+      .attr("stroke-linecap", "round");
+    group.append("circle")
+      .attr("class", "lsystem-root")
+      .attr("cx", 240).attr("cy", 222).attr("r", 8)
+      .attr("fill", ctx.palette.roles.ink);
+  }
+
+  function renderHilbertRoute(group, ctx) {
+    const order = ctx.config.density > 1.2 ? 5 : 4;
+    const side = 2 ** order;
+    function rotateHilbert(n, x, y, rx, ry) {
+      let nextX = x;
+      let nextY = y;
+      if (ry === 0) {
+        if (rx === 1) {
+          nextX = n - 1 - nextX;
+          nextY = n - 1 - nextY;
+        }
+        const swap = nextX;
+        nextX = nextY;
+        nextY = swap;
+      }
+      return [nextX, nextY];
+    }
+    function distanceToPoint(size, distance) {
+      let x = 0;
+      let y = 0;
+      let value = distance;
+      for (let scale = 1; scale < size; scale *= 2) {
+        const rx = 1 & Math.floor(value / 2);
+        const ry = 1 & (value ^ rx);
+        [x, y] = rotateHilbert(scale, x, y, rx, ry);
+        x += scale * rx;
+        y += scale * ry;
+        value = Math.floor(value / 4);
+      }
+      return [x, y];
+    }
+    const extent = 192;
+    const points = ctx.d3.range(side * side).map((distance) => {
+      const [x, y] = distanceToPoint(side, distance);
+      return [144 + x * extent / (side - 1), 43 + y * extent / (side - 1)];
+    });
+    const path = ctx.d3.line().curve(ctx.d3.curveLinear)(points);
+    group.append("path")
+      .attr("class", "hilbert-route-clearance")
+      .attr("d", path).attr("fill", "none")
+      .attr("stroke", ctx.palette.roles.background).attr("stroke-width", order === 5 ? 7 : 11)
+      .attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    group.append("path")
+      .attr("class", "hilbert-continuous-path")
+      .attr("d", path).attr("fill", "none")
+      .attr("stroke", ctx.textureFill).attr("stroke-width", order === 5 ? 3.5 : 6)
+      .attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    group.selectAll("circle.hilbert-terminal")
+      .data([points[0], points[points.length - 1]])
+      .join("circle")
+      .attr("class", "hilbert-terminal")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", order === 5 ? 4 : 6)
+      .attr("fill", (d, index) => ctx.palette.sequence[index % ctx.palette.sequence.length]);
+  }
+
+  function renderReciprocalProfiles(group, ctx) {
+    const depth = 18 + ctx.config.curvature * 18;
+    const leftPath = `M92,49 H205 C${226 - depth},65 ${226 + depth},84 214,103 C201,116 234,124 215,140 C196,157 229,169 213,187 C201,201 220,216 205,229 H92Z`;
+    const rightPath = `M388,49 H275 C${254 + depth},65 ${254 - depth},84 266,103 C279,116 246,124 265,140 C284,157 251,169 267,187 C279,201 260,216 275,229 H388Z`;
+    group.append("path")
+      .attr("class", "reciprocal-profile reciprocal-profile-left")
+      .attr("d", leftPath).attr("fill", ctx.textureFill)
+      .attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 2.5).attr("stroke-linejoin", "round");
+    group.append("path")
+      .attr("class", "reciprocal-profile reciprocal-profile-right")
+      .attr("d", rightPath).attr("fill", ctx.palette.sequence[1 % ctx.palette.sequence.length])
+      .attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 2.5).attr("stroke-linejoin", "round");
+    group.append("path")
+      .attr("class", "shared-boundary-axis")
+      .attr("d", "M240,54V224")
+      .attr("stroke", ctx.palette.roles.line).attr("stroke-width", 2).attr("stroke-dasharray", "4 8");
+  }
+
+  function renderModularGutterSymbol(group, ctx) {
+    const gap = 13 + ctx.config.curvature * 11;
+    const pieces = [
+      [[116, 57], [224 - gap, 57], [224 - gap, 124], [191, 124]],
+      [[256 + gap, 57], [364, 57], [289, 124], [256 + gap, 124]],
+      [[116, 221], [191, 154], [224 - gap, 154], [224 - gap, 221]],
+      [[256 + gap, 154], [289, 154], [364, 221], [256 + gap, 221]],
+      [[205, 124], [240, 89], [275, 124], [240, 144]],
+      [[205, 154], [240, 134], [275, 154], [240, 189]]
+    ];
+    group.append("g").attr("class", "gap-defined-modules")
+      .selectAll("polygon.gutter-module")
+      .data(pieces)
+      .join("polygon")
+      .attr("class", "gutter-module")
+      .attr("points", (piece) => piece.map((point) => point.join(",")).join(" "))
+      .attr("fill", (d, index) => index === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 2.2)
+      .attr("stroke-linejoin", "round");
+    group.append("rect")
+      .attr("class", "gutter-boundary")
+      .attr("x", 110).attr("y", 51).attr("width", 260).attr("height", 176).attr("rx", 9)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
+  }
+
+  function renderTangentVoidStar(group, ctx) {
+    const count = 6;
+    const orbit = 63 + ctx.config.curvature * 8;
+    const radius = orbit * Math.sin(Math.PI / count);
+    const circles = ctx.d3.range(count).map((index) => {
+      const angle = -Math.PI / 2 + index * Math.PI * 2 / count;
+      return { x: 240 + Math.cos(angle) * orbit, y: 139 + Math.sin(angle) * orbit, r: radius };
+    });
+    group.append("g").attr("class", "tangent-void-primitives")
+      .selectAll("circle.void-disc")
+      .data(circles)
+      .join("circle")
+      .attr("class", "void-disc")
+      .attr("cx", (d) => d.x).attr("cy", (d) => d.y).attr("r", (d) => d.r)
+      .attr("fill", (d, index) => index === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 2);
+    group.append("circle")
+      .attr("class", "unpainted-star-guide")
+      .attr("cx", 240).attr("cy", 139).attr("r", Math.max(5, orbit - radius * 2.02))
+      .attr("fill", ctx.palette.roles.background);
+  }
+
+  function renderReciprocalTessellation(group, ctx) {
+    const columns = 5;
+    const rows = 3;
+    const width = 54;
+    const height = 54;
+    const startX = 105;
+    const startY = 58;
+    const tiles = [];
+    for (let row = 0; row < rows; row += 1) {
+      for (let column = 0; column < columns; column += 1) {
+        tiles.push({ row, column, x: startX + column * width, y: startY + row * height, mirror: (row + column) % 2 === 1 });
+      }
+    }
+    const mark = group.append("g").attr("class", "dual-figure-ground-tiles");
+    tiles.forEach((tile, index) => {
+      const direction = tile.mirror ? -1 : 1;
+      const topX = tile.x + width * (0.5 - direction * 0.12);
+      const bottomX = tile.x + width * (0.5 + direction * 0.12);
+      const c1x = tile.x + width * (0.5 + direction * (0.16 + ctx.config.curvature * 0.08));
+      const c2x = tile.x + width * (0.5 - direction * (0.16 + ctx.config.curvature * 0.08));
+      const boundary = `C${c1x},${tile.y + height * 0.32} ${c2x},${tile.y + height * 0.68} ${bottomX},${tile.y + height}`;
+      mark.append("path")
+        .attr("class", "reciprocal-tile reciprocal-tile-a")
+        .attr("d", `M${tile.x},${tile.y}H${topX}${boundary}H${tile.x}Z`)
+        .attr("fill", index === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length]);
+      mark.append("path")
+        .attr("class", "reciprocal-tile reciprocal-tile-b")
+        .attr("d", `M${topX},${tile.y}H${tile.x + width}V${tile.y + height}H${bottomX}C${c2x},${tile.y + height * 0.68} ${c1x},${tile.y + height * 0.32} ${topX},${tile.y}Z`)
+        .attr("fill", ctx.palette.sequence[(index + 2) % ctx.palette.sequence.length]);
+    });
+    mark.append("rect")
+      .attr("class", "reciprocal-tile-boundary")
+      .attr("x", startX).attr("y", startY).attr("width", columns * width).attr("height", rows * height)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
+  }
+
+  function renderImpossibleTriangle(group, ctx) {
+    const vertices = [[240, 45], [373, 220], [107, 220]];
+    const beams = [
+      { from: vertices[0], to: vertices[1], color: ctx.palette.sequence[0] },
+      { from: vertices[1], to: vertices[2], color: ctx.palette.sequence[1] },
+      { from: vertices[2], to: vertices[0], color: ctx.textureFill }
+    ];
+    beams.forEach((beam, index) => {
+      group.append("line")
+        .attr("class", "impossible-beam-clearance")
+        .attr("x1", beam.from[0]).attr("y1", beam.from[1])
+        .attr("x2", beam.to[0]).attr("y2", beam.to[1])
+        .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 42)
+        .attr("stroke-linecap", "square");
+      group.append("line")
+        .attr("class", `impossible-beam impossible-beam-${index + 1}`)
+        .attr("x1", beam.from[0]).attr("y1", beam.from[1])
+        .attr("x2", beam.to[0]).attr("y2", beam.to[1])
+        .attr("stroke", beam.color).attr("stroke-width", 29)
+        .attr("stroke-linecap", "square");
+    });
+    const overpasses = [
+      [[240, 45], [267, 80], ctx.palette.sequence[0]],
+      [[373, 220], [328, 220], ctx.palette.sequence[1]],
+      [[107, 220], [132, 187], ctx.textureFill]
+    ];
+    overpasses.forEach((segment, index) => {
+      group.append("line")
+        .attr("class", "cyclic-depth-gap")
+        .attr("x1", segment[0][0]).attr("y1", segment[0][1])
+        .attr("x2", segment[1][0]).attr("y2", segment[1][1])
+        .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 43).attr("stroke-linecap", "square");
+      group.append("line")
+        .attr("class", `cyclic-depth-overpass cyclic-depth-overpass-${index + 1}`)
+        .attr("x1", segment[0][0]).attr("y1", segment[0][1])
+        .attr("x2", segment[1][0]).attr("y2", segment[1][1])
+        .attr("stroke", segment[2]).attr("stroke-width", 29).attr("stroke-linecap", "square");
+    });
+    group.append("polygon")
+      .attr("class", "impossible-inner-void")
+      .attr("points", "240,103 308,191 172,191")
+      .attr("fill", ctx.palette.roles.background)
+      .attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 2);
+  }
+
+  function renderNeckerCube(group, ctx) {
+    const offset = 48 + ctx.config.curvature * 15;
+    const back = [[145, 52], [286, 52], [286, 193], [145, 193]];
+    const front = back.map((point) => [point[0] + offset, point[1] + 34]);
+    const edges = [
+      ...ctx.d3.range(4).map((index) => [back[index], back[(index + 1) % 4]]),
+      ...ctx.d3.range(4).map((index) => [front[index], front[(index + 1) % 4]]),
+      ...ctx.d3.range(4).map((index) => [back[index], front[index]])
+    ];
+    group.append("g").attr("class", "bistable-necker-wireframe")
+      .selectAll("line.necker-edge")
+      .data(edges)
+      .join("line")
+      .attr("class", "necker-edge")
+      .attr("x1", (d) => d[0][0]).attr("y1", (d) => d[0][1])
+      .attr("x2", (d) => d[1][0]).attr("y2", (d) => d[1][1])
+      .attr("stroke", (d, index) => index < 4 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke-width", 6).attr("stroke-linecap", "round");
+    group.selectAll("circle.necker-joint")
+      .data(back.concat(front))
+      .join("circle")
+      .attr("class", "necker-joint")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 5)
+      .attr("fill", ctx.palette.roles.background)
+      .attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 2);
+  }
+
+  function renderKanizsaClosure(group, ctx) {
+    const center = [240, 139];
+    const inducers = [[165, 64], [315, 64], [315, 214], [165, 214]];
+    const radius = 37 + ctx.config.curvature * 5;
+    const arc = ctx.d3.arc().innerRadius(0).outerRadius(radius);
+    group.append("g").attr("class", "kanizsa-inducer-field")
+      .selectAll("path.kanizsa-inducer")
+      .data(inducers)
+      .join("path")
+      .attr("class", "kanizsa-inducer")
+      .attr("d", (point) => {
+        const angle = Math.atan2(center[1] - point[1], center[0] - point[0]) + Math.PI / 2;
+        return arc({ startAngle: angle + 0.62, endAngle: angle + Math.PI * 2 - 0.62 });
+      })
+      .attr("transform", (point) => `translate(${point[0]},${point[1]})`)
+      .attr("fill", (d, index) => index === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length]);
+    group.selectAll("circle.kanizsa-anchor")
+      .data(inducers)
+      .join("circle")
+      .attr("class", "kanizsa-anchor")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 4)
+      .attr("fill", ctx.palette.roles.ink);
+  }
+
+  function renderLineScreenSilhouette(group, ctx) {
+    const rows = Math.max(15, Math.round(16 + ctx.config.density * 8));
+    const yScale = ctx.d3.scaleLinear().domain([0, rows - 1]).range([48, 226]);
+    const segments = [];
+    ctx.d3.range(rows).forEach((index) => {
+      const y = yScale(index);
+      const normalized = (index / (rows - 1)) * 2 - 1;
+      const halfWidth = 124 * Math.sqrt(Math.max(0, 1 - normalized * normalized * 0.86));
+      const shift = Math.sin(normalized * Math.PI * 1.4) * (18 + ctx.config.curvature * 24);
+      const gap = 12 + (1 - Math.abs(normalized)) * 18;
+      segments.push({ x1: 240 - halfWidth, x2: 240 + shift - gap, y, index });
+      segments.push({ x1: 240 + shift + gap, x2: 240 + halfWidth, y, index });
+    });
+    group.append("g").attr("class", "variable-line-screen")
+      .selectAll("line.screen-segment")
+      .data(segments.filter((segment) => segment.x2 > segment.x1))
+      .join("line")
+      .attr("class", "screen-segment")
+      .attr("x1", (d) => d.x1).attr("x2", (d) => d.x2)
+      .attr("y1", (d) => d.y).attr("y2", (d) => d.y)
+      .attr("stroke", (d) => d.index % 4 === 0 ? ctx.textureFill : ctx.palette.sequence[d.index % ctx.palette.sequence.length])
+      .attr("stroke-width", Math.max(3, 7 - rows * 0.12))
+      .attr("stroke-linecap", "round");
+    group.append("ellipse")
+      .attr("class", "line-screen-boundary")
+      .attr("cx", 240).attr("cy", 137).attr("rx", 132).attr("ry", 97)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 2.5);
+  }
+
+  function renderPerspectivePortal(group, ctx) {
+    const outer = [[105, 43], [376, 61], [350, 224], [126, 211]];
+    const vanishing = [286 + (ctx.config.curvature - 0.5) * 35, 137];
+    group.append("g").attr("class", "portal-perspective-guides")
+      .selectAll("line.portal-guide")
+      .data(outer)
+      .join("line")
+      .attr("class", "portal-guide")
+      .attr("x1", (d) => d[0]).attr("y1", (d) => d[1])
+      .attr("x2", vanishing[0]).attr("y2", vanishing[1])
+      .attr("stroke", ctx.palette.roles.line).attr("stroke-width", 2);
+    const levels = Math.max(7, Math.round(7 + ctx.config.density * 4));
+    const frames = ctx.d3.range(levels).map((index) => {
+      const t = index / levels * 0.86;
+      return outer.map((point) => [
+        point[0] + (vanishing[0] - point[0]) * t,
+        point[1] + (vanishing[1] - point[1]) * t
+      ]);
+    });
+    group.append("g").attr("class", "receding-portal-frames")
+      .selectAll("polygon.portal-frame")
+      .data(frames)
+      .join("polygon")
+      .attr("class", "portal-frame")
+      .attr("points", (frame) => frame.map((point) => point.join(",")).join(" "))
+      .attr("fill", "none")
+      .attr("stroke", (d, index) => index === 1 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke-width", (d, index) => Math.max(2.5, 10 - index * 0.65))
+      .attr("stroke-linejoin", "round");
+    group.append("circle")
+      .attr("class", "portal-vanishing-point")
+      .attr("cx", vanishing[0]).attr("cy", vanishing[1]).attr("r", 7)
+      .attr("fill", ctx.palette.roles.accent);
+  }
+
   const PATTERN_RENDERERS = Object.freeze({
     "d3-logo-type-orbit": renderTypeOrbit,
     "d3-logo-bezier-wordpath": renderBezierWordpath,
@@ -1873,7 +3013,37 @@
     "d3-logo-parametric-wave": renderParametricWave,
     "d3-logo-kaleidoscope-wedges": renderKaleidoscopeWedges,
     "d3-logo-polar-halo": renderPolarHalo,
-    "d3-logo-aperture-iris": renderApertureIris
+    "d3-logo-aperture-iris": renderApertureIris,
+    "d3-logo-terminal-extension": renderTerminalExtension,
+    "d3-logo-vertical-rail-wordmark": renderVerticalRailWordmark,
+    "d3-logo-hinged-glyph-fan": renderHingedGlyphFan,
+    "d3-logo-justified-word-block": renderJustifiedWordBlock,
+    "d3-logo-fill-outline-cadence": renderFillOutlineCadence,
+    "d3-logo-punctuation-armature": renderPunctuationArmature,
+    "d3-logo-circle-pack-cluster": renderCirclePackCluster,
+    "d3-logo-treemap-mosaic": renderTreemapMosaic,
+    "d3-logo-convex-hull-shells": renderConvexHullShells,
+    "d3-logo-phyllotaxis-bloom": renderPhyllotaxisBloom,
+    "d3-logo-tangency-chain": renderTangencyChain,
+    "d3-logo-tangram-dissection": renderTangramDissection,
+    "d3-logo-superellipse-family": renderSuperellipseFamily,
+    "d3-logo-isometric-block-stack": renderIsometricBlockStack,
+    "d3-logo-eulerian-one-stroke": renderEulerianOneStroke,
+    "d3-logo-perfect-maze": renderPerfectMaze,
+    "d3-logo-split-merge-stream": renderSplitMergeStream,
+    "d3-logo-dendrogram-crown": renderDendrogramCrown,
+    "d3-logo-linked-ring-chain": renderLinkedRingChain,
+    "d3-logo-lsystem-branch": renderLsystemBranch,
+    "d3-logo-hilbert-route": renderHilbertRoute,
+    "d3-logo-reciprocal-profiles": renderReciprocalProfiles,
+    "d3-logo-modular-gutter-symbol": renderModularGutterSymbol,
+    "d3-logo-tangent-void-star": renderTangentVoidStar,
+    "d3-logo-reciprocal-tessellation": renderReciprocalTessellation,
+    "d3-logo-impossible-triangle": renderImpossibleTriangle,
+    "d3-logo-necker-cube": renderNeckerCube,
+    "d3-logo-kanizsa-closure": renderKanizsaClosure,
+    "d3-logo-line-screen-silhouette": renderLineScreenSilhouette,
+    "d3-logo-perspective-portal": renderPerspectivePortal
   });
 
   function assertPaletteSafe(svgNode, palette) {

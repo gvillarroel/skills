@@ -21,6 +21,12 @@ Choose one primary pattern per mark. Parameters are adjustment surfaces, not sep
 | `d3-logo-extruded-wordmark` | Build flat pseudo-depth from translated text copies. | Dimensional, architectural cues | depth, projection angle, steps, outline |
 | `d3-logo-letter-weave` | Interlace two initial paths with alternating over/under masks. | Collaboration, textiles, continuity | initials, path width, crossing order, gap |
 | `d3-logo-responsive-lockup` | Recompose one symbol and wordmark into wide, stacked, and compact states. | Product families and responsive identity | aspect ratio, breakpoint, hierarchy, spacing |
+| `d3-logo-terminal-extension` | Extend selected glyph terminals into structural rules that remain attached to their source letters. | Editorial, architectural, directional identities | terminal choice, extension length, rule weight, corner treatment |
+| `d3-logo-vertical-rail-wordmark` | Stack glyphs on a shared vertical reading rail instead of rotating a horizontal wordmark. | Tall formats, wayfinding, compact side marks | rail side, glyph spacing, alignment, rail weight |
+| `d3-logo-hinged-glyph-fan` | Pivot successive glyphs from a common baseline hinge to create a readable opening fan. | Events, publishing, expressive motion | pivot, angle sequence, overlap, tracking |
+| `d3-logo-justified-word-block` | Measure multiple words and adjust tracking so every line resolves to one shared width. | Editorial, civic, modular identities | line breaks, target width, leading, tracking bounds |
+| `d3-logo-fill-outline-cadence` | Alternate filled and outlined glyph treatments across one continuous wordmark. | Fashion, music, rhythmic campaign marks | cadence, stroke width, start phase, tracking |
+| `d3-logo-punctuation-armature` | Scale punctuation from measured text bounds into a frame that supports the wordmark. | Editorial, quotation, language-focused brands | punctuation pair, frame offset, scale, stroke weight |
 
 ## Geometric and generative systems
 
@@ -41,6 +47,30 @@ Choose one primary pattern per mark. Parameters are adjustment surfaces, not sep
 | `d3-logo-kaleidoscope-wedges` | Mirror one motif into radial sectors. | Culture, beauty, craft, events | sector count, motif, reflection, radius, rotation |
 | `d3-logo-polar-halo` | Surround a wordmark or monogram with data-driven arc segments. | Metrics, cycles, time, systems | segments, values, radii, gaps, ordering |
 | `d3-logo-aperture-iris` | Overlap curved blades around a variable negative-space opening. | Imaging, focus, precision, optics | blade count, curvature, aperture, twist, overlap |
+| `d3-logo-circle-pack-cluster` | Enclose a weighted hierarchy as nested, non-overlapping circles. | Communities, portfolios, family systems | hierarchy, value weights, padding, depth roles |
+| `d3-logo-treemap-mosaic` | Recursively subdivide a rectangle into value-weighted hierarchical cells. | Platforms, collections, modular systems | hierarchy, tiling method, padding, weight distribution |
+| `d3-logo-convex-hull-shells` | Peel deterministic point sets into successive convex hull boundaries. | Protection, layers, collective identity | point count, shell count, jitter, inset rule |
+| `d3-logo-phyllotaxis-bloom` | Place discs in a golden-angle sequence so density grows without radial spokes. | Growth, nature, research, discovery | disc count, radial law, disc scale, phase |
+| `d3-logo-tangency-chain` | Solve a sequence of circles that touch neighbors without overlapping. | Continuity, precision, connected products | circle count, radius sequence, chain path, endpoint rule |
+| `d3-logo-tangram-dissection` | Assemble a silhouette from a fixed rule-based polygon dissection. | Learning, transformation, modular craft | target silhouette, piece transform, gap, ordering |
+| `d3-logo-superellipse-family` | Nest Lamé curves while varying the exponent between diamond, circle, and rounded-square states. | Flexible products, surfaces, soft technology | exponent sequence, radii, nesting gap, rotation |
+| `d3-logo-isometric-block-stack` | Aggregate axonometric cube faces on a discrete three-axis lattice. | Construction, infrastructure, spatial systems | cell coordinates, height, face roles, gap |
+| `d3-logo-eulerian-one-stroke` | Trace an Euler circuit that visits every graph edge exactly once. | Journeys, networks, continuous service | graph topology, start node, routing order, line caps |
+| `d3-logo-perfect-maze` | Carve corridors from a spanning tree so every pair of cells has one route. | Discovery, strategy, navigation | rows, columns, generator seed, entrance and exit |
+| `d3-logo-split-merge-stream` | Route conserved bands through explicit split and merge junctions. | Pipelines, orchestration, multi-service systems | stream count, weights, junction positions, curvature |
+| `d3-logo-dendrogram-crown` | Convert a hierarchy into branching cluster links that form a crown silhouette. | Lineage, portfolios, knowledge systems | hierarchy, link curve, branch spacing, depth |
+| `d3-logo-linked-ring-chain` | Interlock separate closed rings with alternating visible crossing segments. | Partnership, durability, connected communities | ring count, spacing, stroke width, crossing order |
+| `d3-logo-lsystem-branch` | Expand a grammar and interpret it with turtle turns to grow a deterministic branching mark. | Ecology, learning, generative craft | axiom, production rules, iterations, turn angle |
+| `d3-logo-hilbert-route` | Traverse a square through one continuous recursive space-filling path. | Locality, coverage, compact data systems | recursion order, inset, stroke width, corner style |
+| `d3-logo-reciprocal-profiles` | Pair facing silhouettes around one shared boundary so each side completes the other. | Dialogue, mediation, human-centered services | profile curve, separation, symmetry, role assignment |
+| `d3-logo-modular-gutter-symbol` | Arrange solid modules so the consistent gutters, rather than the modules, define the central symbol. | Architecture, platforms, negative-space identity | module grid, gutter width, omitted cells, corner radius |
+| `d3-logo-tangent-void-star` | Position tangent primitives around a central void whose boundary reads as a star. | Collective energy, discovery, compact emblems | primitive count, radius, tangent distance, void sharpness |
+| `d3-logo-reciprocal-tessellation` | Tile interlocking figure-ground shapes so either color role can become the foreground. | Exchange, duality, circular systems | tile motif, rows, columns, alternation, edge crop |
+| `d3-logo-impossible-triangle` | Layer three beams with cyclic occlusion so depth order cannot resolve globally. | Paradox, invention, conceptual technology | beam width, corner angle, overlap gaps, orientation |
+| `d3-logo-necker-cube` | Draw a bistable wireframe cube whose front and back faces can reverse perceptually. | Perspective, ambiguity, spatial products | projection, depth offset, edge emphasis, rotation |
+| `d3-logo-kanizsa-closure` | Place cut-out inducers so the eye completes an unpainted central contour. | Insight, perception, minimal identity | inducer count, aperture angle, radius, implied shape |
+| `d3-logo-line-screen-silhouette` | Vary gaps within parallel lines so their segmentation encodes a coherent silhouette. | Media, scanning, signal, security | line count, silhouette, gap width, phase |
+| `d3-logo-perspective-portal` | Nest offset quadrilateral frames toward a controlled vanishing region. | Access, transition, spatial experience | frame count, convergence, inset progression, skew |
 
 ## Originality gate
 

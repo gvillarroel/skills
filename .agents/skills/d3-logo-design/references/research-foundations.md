@@ -15,6 +15,17 @@ Use these sources to justify mechanisms and implementation choices. Abstract the
 - [Official d3-contour documentation](https://d3js.org/d3-contour): derive fingerprint and topographic geometry from scalar fields.
 - [Official D3 Delaunay and Voronoi documentation](https://d3js.org/d3-delaunay): partition and triangulate deterministic point sets for shards and facets.
 - [Official d3-force simulation documentation](https://d3js.org/d3-force/simulation): pre-tick seeded networks or packed marks; never leave export geometry nondeterministic.
+- [Official D3 hierarchy documentation](https://d3js.org/d3-hierarchy): use hierarchy, pack, treemap, and cluster layouts when enclosure, recursive subdivision, or ancestry is the actual construction mechanism.
+- [Official D3 circle-pack documentation](https://d3js.org/d3-hierarchy/pack): derive tangent enclosure from explicit hierarchical values rather than treating arbitrary circles as decoration.
+- [Official D3 treemap documentation](https://d3js.org/d3-hierarchy/treemap): generate weighted recursive rectangular partitions with deterministic tiling and padding.
+- [Official D3 polygon documentation](https://d3js.org/d3-polygon): compute convex hulls and polygon predicates for combinatorial shells, clipping checks, and dissection systems.
+- [W3C SVG 2 text layout](https://www.w3.org/TR/SVG2/text.html): use per-glyph positioning, rotation, measured length, and `textLength` calibration for structural typography without converting editable copy into an inaccessible picture.
+
+## Perceptual foundations
+
+- [Kanizsa illusory-contour research](https://pmc.ncbi.nlm.nih.gov/articles/PMC8231925/): oriented inducers can produce a perceived contour where no physical boundary is drawn; keep the implied region empty and the inducers clearly separated.
+- [Necker-cube bistability research](https://pmc.ncbi.nlm.nih.gov/articles/PMC5507912/): one unchanged wireframe can support two depth interpretations; preserve geometric ambiguity instead of resolving it with shading.
+- [Figure-ground reversal research](https://pmc.ncbi.nlm.nih.gov/articles/PMC3761598/): reciprocal boundaries can alternate which region reads as figure; balance both sides instead of treating background as leftover space.
 
 ## Deployed dynamic-identity precedents
 

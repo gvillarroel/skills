@@ -22,7 +22,7 @@ Use a deterministic integer seed. Keep `compositionId`, `exampleId`, `patternId`
 
 Text occlusion and omission are prohibited by default. Pattern-level exceptions must follow `text-clearance-contract.md`, remain limited to the named semantic roles and state, and keep every declared `maxOcclusionRatio` at or below 0.30. An absent or empty declaration means zero permitted occlusion or omission.
 
-## Thirty acceptance compositions
+## Sixty acceptance compositions
 
 | Composition ID | Local example ID | Global pattern ID | Default texture |
 | --- | --- | --- | --- |
@@ -56,6 +56,36 @@ Text occlusion and omission are prohibited by default. Pattern-level exceptions 
 | `d3-logo-kaleidoscope-emblem` | `kaleidoscope-wedges` | `d3-logo-kaleidoscope-wedges` | `d3-logo-woven-checker` |
 | `d3-logo-polar-data-lockup` | `polar-halo` | `d3-logo-polar-halo` | `d3-logo-voronoi-mosaic` |
 | `d3-logo-iris-aperture-lockup` | `aperture-iris` | `d3-logo-aperture-iris` | `d3-logo-topographic-lines` |
+| `d3-logo-terminal-rule-lockup` | `terminal-extension` | `d3-logo-terminal-extension` | `d3-logo-micro-grid` |
+| `d3-logo-vertical-rail-lockup` | `vertical-rail-wordmark` | `d3-logo-vertical-rail-wordmark` | `d3-logo-diagonal-hatch` |
+| `d3-logo-hinged-letter-lockup` | `hinged-glyph-fan` | `d3-logo-hinged-glyph-fan` | `d3-logo-crosshatch` |
+| `d3-logo-justified-block-lockup` | `justified-word-block` | `d3-logo-justified-word-block` | `d3-logo-halftone-dots` |
+| `d3-logo-cadence-type-lockup` | `fill-outline-cadence` | `d3-logo-fill-outline-cadence` | `d3-logo-seeded-stipple` |
+| `d3-logo-punctuation-frame-lockup` | `punctuation-armature` | `d3-logo-punctuation-armature` | `d3-logo-topographic-lines` |
+| `d3-logo-packed-cluster-lockup` | `circle-pack-cluster` | `d3-logo-circle-pack-cluster` | `d3-logo-voronoi-mosaic` |
+| `d3-logo-treemap-mosaic-lockup` | `treemap-mosaic` | `d3-logo-treemap-mosaic` | `d3-logo-guilloche-waves` |
+| `d3-logo-hull-shell-lockup` | `convex-hull-shells` | `d3-logo-convex-hull-shells` | `d3-logo-woven-checker` |
+| `d3-logo-phyllotaxis-bloom-lockup` | `phyllotaxis-bloom` | `d3-logo-phyllotaxis-bloom` | `d3-logo-directional-fibers` |
+| `d3-logo-tangent-chain-lockup` | `tangency-chain` | `d3-logo-tangency-chain` | `d3-logo-micro-grid` |
+| `d3-logo-tangram-form-lockup` | `tangram-dissection` | `d3-logo-tangram-dissection` | `d3-logo-diagonal-hatch` |
+| `d3-logo-superellipse-nest-lockup` | `superellipse-family` | `d3-logo-superellipse-family` | `d3-logo-crosshatch` |
+| `d3-logo-isometric-stack-lockup` | `isometric-block-stack` | `d3-logo-isometric-block-stack` | `d3-logo-halftone-dots` |
+| `d3-logo-euler-route-lockup` | `eulerian-one-stroke` | `d3-logo-eulerian-one-stroke` | `d3-logo-seeded-stipple` |
+| `d3-logo-perfect-maze-lockup` | `perfect-maze` | `d3-logo-perfect-maze` | `d3-logo-topographic-lines` |
+| `d3-logo-stream-routing-lockup` | `split-merge-stream` | `d3-logo-split-merge-stream` | `d3-logo-voronoi-mosaic` |
+| `d3-logo-dendrogram-crown-lockup` | `dendrogram-crown` | `d3-logo-dendrogram-crown` | `d3-logo-guilloche-waves` |
+| `d3-logo-ring-chain-lockup` | `linked-ring-chain` | `d3-logo-linked-ring-chain` | `d3-logo-woven-checker` |
+| `d3-logo-lsystem-growth-lockup` | `lsystem-branch` | `d3-logo-lsystem-branch` | `d3-logo-directional-fibers` |
+| `d3-logo-hilbert-route-lockup` | `hilbert-route` | `d3-logo-hilbert-route` | `d3-logo-micro-grid` |
+| `d3-logo-profile-boundary-lockup` | `reciprocal-profiles` | `d3-logo-reciprocal-profiles` | `d3-logo-diagonal-hatch` |
+| `d3-logo-gutter-symbol-lockup` | `modular-gutter-symbol` | `d3-logo-modular-gutter-symbol` | `d3-logo-crosshatch` |
+| `d3-logo-central-void-lockup` | `tangent-void-star` | `d3-logo-tangent-void-star` | `d3-logo-halftone-dots` |
+| `d3-logo-reciprocal-tile-lockup` | `reciprocal-tessellation` | `d3-logo-reciprocal-tessellation` | `d3-logo-seeded-stipple` |
+| `d3-logo-impossible-beam-lockup` | `impossible-triangle` | `d3-logo-impossible-triangle` | `d3-logo-topographic-lines` |
+| `d3-logo-necker-depth-lockup` | `necker-cube` | `d3-logo-necker-cube` | `d3-logo-voronoi-mosaic` |
+| `d3-logo-kanizsa-closure-lockup` | `kanizsa-closure` | `d3-logo-kanizsa-closure` | `d3-logo-guilloche-waves` |
+| `d3-logo-line-screen-lockup` | `line-screen-silhouette` | `d3-logo-line-screen-silhouette` | `d3-logo-woven-checker` |
+| `d3-logo-perspective-portal-lockup` | `perspective-portal` | `d3-logo-perspective-portal` | `d3-logo-directional-fibers` |
 
 ## Typography and responsive checks
 
