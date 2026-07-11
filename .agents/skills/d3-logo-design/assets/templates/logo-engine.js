@@ -13,13 +13,13 @@
   }
 
   const PATTERNS = deepFreeze([
-    { id: "d3-logo-type-orbit", label: "Type Orbit", family: "typographic", geometrySignature: "textpath-circle" },
+    { id: "d3-logo-type-orbit", label: "Type Orbit", family: "typographic", geometrySignature: "textpath-circle", intentionalOmissions: [{ textRole: "tagline", when: "small-size", reason: "The compact 96 px lockup omits the tagline to preserve legibility." }] },
     { id: "d3-logo-bezier-wordpath", label: "Bezier Wordpath", family: "typographic", geometrySignature: "textpath-cubic" },
     { id: "d3-logo-variable-axis-wordmark", label: "Variable Axis Wordmark", family: "typographic", geometrySignature: "per-glyph-axis" },
-    { id: "d3-logo-ligature-bridge", label: "Ligature Bridge", family: "typographic", geometrySignature: "initial-connector" },
+    { id: "d3-logo-ligature-bridge", label: "Ligature Bridge", family: "typographic", geometrySignature: "initial-connector", intentionalOcclusions: [{ textRole: "initials", occluderRole: "ligature-connector", reason: "The connector intentionally crosses the joined initials.", maxOcclusionRatio: 0.22 }, { textRole: "initials", occluderRole: "ligature-anchor", reason: "The small connector terminals intentionally touch the joined initials at their attachment points.", maxOcclusionRatio: 0.03 }] },
     { id: "d3-logo-stencil-cuts", label: "Stencil Cuts", family: "typographic", geometrySignature: "masked-stencil-cuts" },
     { id: "d3-logo-letter-window", label: "Letter Window", family: "typographic", geometrySignature: "text-clip-window" },
-    { id: "d3-logo-mirrored-monogram", label: "Mirrored Monogram", family: "typographic", geometrySignature: "mirror-transform-axis" },
+    { id: "d3-logo-mirrored-monogram", label: "Mirrored Monogram", family: "typographic", geometrySignature: "mirror-transform-axis", intentionalOcclusions: [{ textRole: "initials", occluderRole: "mirror-joint", reason: "The small center joint intentionally pins the mirrored initials at their shared axis.", maxOcclusionRatio: 0.05 }] },
     { id: "d3-logo-glyph-rosette", label: "Glyph Rosette", family: "typographic", geometrySignature: "radial-glyph-repeat" },
     { id: "d3-logo-baseline-wave", label: "Baseline Wave", family: "typographic", geometrySignature: "per-letter-wave" },
     { id: "d3-logo-stack-offset", label: "Stack Offset", family: "typographic", geometrySignature: "offset-copy-stack" },
@@ -59,36 +59,36 @@
   ]);
 
   const COMPOSITIONS = deepFreeze([
-    { id: "d3-logo-heritage-orbit-lockup", patternId: "d3-logo-type-orbit", textureId: "d3-logo-diagonal-hatch", brand: "NORTHLIGHT", tagline: "Signal in motion", colorset: "colorset1", font: "geometric", density: 1.0, curvature: 0.72, scale: 1.0, rotation: 0, textureStrength: 0.38, seed: 101 },
-    { id: "d3-logo-rising-curve-lockup", patternId: "d3-logo-bezier-wordpath", textureId: "d3-logo-directional-fibers", brand: "TIDELINE", tagline: "Move with purpose", colorset: "colorset2", font: "humanist", density: 0.9, curvature: 0.82, scale: 1.0, rotation: -4, textureStrength: 0.32, seed: 102 },
-    { id: "d3-logo-variable-editorial-lockup", patternId: "d3-logo-variable-axis-wordmark", textureId: "d3-logo-micro-grid", brand: "FORMFIELD", tagline: "A flexible identity", colorset: "colorset1", font: "editorial", density: 1.1, curvature: 0.45, scale: 1.0, rotation: 0, textureStrength: 0.24, seed: 103 },
-    { id: "d3-logo-joined-initial-lockup", patternId: "d3-logo-ligature-bridge", textureId: "d3-logo-crosshatch", brand: "ARC UNION", tagline: "Built together", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.6, scale: 1.02, rotation: 0, textureStrength: 0.34, seed: 104 },
-    { id: "d3-logo-stenciled-utility-lockup", patternId: "d3-logo-stencil-cuts", textureId: "d3-logo-seeded-stipple", brand: "IRONVALE", tagline: "Made to endure", colorset: "colorset1", font: "condensed", density: 1.2, curvature: 0.35, scale: 1.0, rotation: -2, textureStrength: 0.28, seed: 105 },
-    { id: "d3-logo-textured-letter-window", patternId: "d3-logo-letter-window", textureId: "d3-logo-voronoi-mosaic", brand: "LUMA", tagline: "See what is possible", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.5, scale: 1.08, rotation: 0, textureStrength: 0.58, seed: 106 },
-    { id: "d3-logo-mirror-axis-lockup", patternId: "d3-logo-mirrored-monogram", textureId: "d3-logo-woven-checker", brand: "AXIS", tagline: "Balanced by design", colorset: "colorset1", font: "editorial", density: 0.9, curvature: 0.55, scale: 1.0, rotation: 0, textureStrength: 0.3, seed: 107 },
-    { id: "d3-logo-radial-glyph-emblem", patternId: "d3-logo-glyph-rosette", textureId: "d3-logo-guilloche-waves", brand: "AERIA", tagline: "Many voices, one form", colorset: "colorset2", font: "humanist", density: 1.2, curvature: 0.68, scale: 0.98, rotation: 8, textureStrength: 0.36, seed: 108 },
-    { id: "d3-logo-wave-baseline-lockup", patternId: "d3-logo-baseline-wave", textureId: "d3-logo-topographic-lines", brand: "SONORA", tagline: "Make the signal visible", colorset: "colorset1", font: "humanist", density: 1.0, curvature: 0.9, scale: 1.0, rotation: 0, textureStrength: 0.3, seed: 109 },
-    { id: "d3-logo-echo-stack-lockup", patternId: "d3-logo-stack-offset", textureId: "d3-logo-halftone-dots", brand: "ECHOFORM", tagline: "Repeat with intent", colorset: "colorset2", font: "condensed", density: 1.1, curvature: 0.4, scale: 1.0, rotation: -5, textureStrength: 0.32, seed: 110 },
-    { id: "d3-logo-sliced-motion-lockup", patternId: "d3-logo-slice-shift", textureId: "d3-logo-directional-fibers", brand: "KINETIQ", tagline: "Designed in motion", colorset: "colorset1", font: "geometric", density: 1.0, curvature: 0.45, scale: 1.0, rotation: -3, textureStrength: 0.3, seed: 111 },
-    { id: "d3-logo-outline-signal-lockup", patternId: "d3-logo-multi-stroke-wordmark", textureId: "d3-logo-micro-grid", brand: "SIGNAL", tagline: "Clarity through layers", colorset: "colorset2", font: "monospace", density: 1.0, curvature: 0.5, scale: 1.0, rotation: 0, textureStrength: 0.22, seed: 112 },
-    { id: "d3-logo-depth-step-lockup", patternId: "d3-logo-extruded-wordmark", textureId: "d3-logo-diagonal-hatch", brand: "MONOLITH", tagline: "Depth without noise", colorset: "colorset1", font: "condensed", density: 1.1, curvature: 0.35, scale: 0.96, rotation: 0, textureStrength: 0.34, seed: 113 },
-    { id: "d3-logo-woven-initial-lockup", patternId: "d3-logo-letter-weave", textureId: "d3-logo-seeded-stipple", brand: "INTERLACE", tagline: "Different paths, shared future", colorset: "colorset2", font: "editorial", density: 1.0, curvature: 0.74, scale: 1.0, rotation: 0, textureStrength: 0.4, seed: 114 },
-    { id: "d3-logo-responsive-brand-family", patternId: "d3-logo-responsive-lockup", textureId: "d3-logo-guilloche-waves", brand: "MODULA", tagline: "One system, every space", colorset: "colorset1", font: "geometric", density: 0.9, curvature: 0.5, scale: 1.0, rotation: 0, textureStrength: 0.25, seed: 115 },
-    { id: "d3-logo-spiral-core-lockup", patternId: "d3-logo-spiral-trace", textureId: "d3-logo-voronoi-mosaic", brand: "SPIRA", tagline: "Ideas in orbit", colorset: "colorset2", font: "humanist", density: 1.2, curvature: 0.86, scale: 1.0, rotation: 6, textureStrength: 0.34, seed: 116 },
-    { id: "d3-logo-connected-orbit-lockup", patternId: "d3-logo-orbit-network", textureId: "d3-logo-woven-checker", brand: "NEXUS", tagline: "Connect what matters", colorset: "colorset1", font: "geometric", density: 1.1, curvature: 0.65, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 117 },
-    { id: "d3-logo-modular-grid-lockup", patternId: "d3-logo-grid-activation", textureId: "d3-logo-directional-fibers", brand: "GRIDWORK", tagline: "Systems made visible", colorset: "colorset2", font: "monospace", density: 1.2, curvature: 0.4, scale: 1.0, rotation: 0, textureStrength: 0.24, seed: 118 },
-    { id: "d3-logo-contour-medallion", patternId: "d3-logo-contour-fingerprint", textureId: "d3-logo-diagonal-hatch", brand: "TERRAIN", tagline: "Defined by place", colorset: "colorset1", font: "editorial", density: 1.0, curvature: 0.7, scale: 1.0, rotation: 0, textureStrength: 0.42, seed: 119 },
-    { id: "d3-logo-voronoi-window-lockup", patternId: "d3-logo-voronoi-shards", textureId: "d3-logo-guilloche-waves", brand: "VORO", tagline: "Order from fragments", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.5, scale: 1.02, rotation: 0, textureStrength: 0.46, seed: 120 },
-    { id: "d3-logo-faceted-fauna-lockup", patternId: "d3-logo-animal-facets", textureId: "d3-logo-halftone-dots", brand: "WILDFOLD", tagline: "Built for open ground", colorset: "colorset1", font: "condensed", density: 1.2, curvature: 0.58, scale: 1.0, rotation: 0, textureStrength: 0.3, seed: 121 },
-    { id: "d3-logo-surface-fauna-lockup", patternId: "d3-logo-animal-surface-mask", textureId: "d3-logo-topographic-lines", brand: "ROAM", tagline: "Follow your nature", colorset: "colorset2", font: "humanist", density: 1.0, curvature: 0.68, scale: 1.0, rotation: 0, textureStrength: 0.55, seed: 122 },
-    { id: "d3-logo-hidden-initial-lockup", patternId: "d3-logo-negative-space-reveal", textureId: "d3-logo-crosshatch", brand: "REVEAL", tagline: "Look twice", colorset: "colorset1", font: "geometric", density: 0.9, curvature: 0.5, scale: 1.0, rotation: 0, textureStrength: 0.34, seed: 123 },
-    { id: "d3-logo-ribbon-fold-lockup", patternId: "d3-logo-folded-ribbon", textureId: "d3-logo-micro-grid", brand: "CONTINUUM", tagline: "A path that keeps moving", colorset: "colorset2", font: "humanist", density: 1.0, curvature: 0.84, scale: 0.98, rotation: 0, textureStrength: 0.3, seed: 124 },
-    { id: "d3-logo-overlap-lens-lockup", patternId: "d3-logo-boolean-lens", textureId: "d3-logo-seeded-stipple", brand: "SYNTHESIS", tagline: "Better at the intersection", colorset: "colorset1", font: "editorial", density: 1.0, curvature: 0.52, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 125 },
-    { id: "d3-logo-radiant-core-lockup", patternId: "d3-logo-radiant-pulse", textureId: "d3-logo-halftone-dots", brand: "RADIANT", tagline: "Turn energy outward", colorset: "colorset2", font: "condensed", density: 1.2, curvature: 0.64, scale: 1.0, rotation: 0, textureStrength: 0.32, seed: 126 },
-    { id: "d3-logo-harmonic-wave-lockup", patternId: "d3-logo-parametric-wave", textureId: "d3-logo-crosshatch", brand: "HARMONIC", tagline: "Find the shared frequency", colorset: "colorset1", font: "monospace", density: 1.1, curvature: 0.88, scale: 1.0, rotation: 4, textureStrength: 0.34, seed: 127 },
-    { id: "d3-logo-kaleidoscope-emblem", patternId: "d3-logo-kaleidoscope-wedges", textureId: "d3-logo-woven-checker", brand: "PRISMATA", tagline: "Many angles, one identity", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.62, scale: 1.0, rotation: 12, textureStrength: 0.4, seed: 128 },
-    { id: "d3-logo-polar-data-lockup", patternId: "d3-logo-polar-halo", textureId: "d3-logo-voronoi-mosaic", brand: "CYCLE", tagline: "Measure the whole system", colorset: "colorset1", font: "humanist", density: 1.0, curvature: 0.56, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 129 },
-    { id: "d3-logo-iris-aperture-lockup", patternId: "d3-logo-aperture-iris", textureId: "d3-logo-topographic-lines", brand: "APERTURE", tagline: "Bring the idea into focus", colorset: "colorset2", font: "condensed", density: 1.1, curvature: 0.76, scale: 1.0, rotation: -8, textureStrength: 0.32, seed: 130 }
+    { id: "d3-logo-heritage-orbit-lockup", exampleId: "type-orbit", patternId: "d3-logo-type-orbit", textureId: "d3-logo-diagonal-hatch", brand: "NORTHLIGHT", tagline: "Signal in motion", colorset: "colorset1", font: "geometric", density: 1.0, curvature: 0.72, scale: 1.0, rotation: 0, textureStrength: 0.38, seed: 101 },
+    { id: "d3-logo-rising-curve-lockup", exampleId: "bezier-wordpath", patternId: "d3-logo-bezier-wordpath", textureId: "d3-logo-directional-fibers", brand: "TIDELINE", tagline: "Move with purpose", colorset: "colorset2", font: "humanist", density: 0.9, curvature: 0.82, scale: 1.0, rotation: -4, textureStrength: 0.32, seed: 102 },
+    { id: "d3-logo-variable-editorial-lockup", exampleId: "variable-axis-wordmark", patternId: "d3-logo-variable-axis-wordmark", textureId: "d3-logo-micro-grid", brand: "FORMFIELD", tagline: "A flexible identity", colorset: "colorset1", font: "editorial", density: 1.1, curvature: 0.45, scale: 1.0, rotation: 0, textureStrength: 0.24, seed: 103 },
+    { id: "d3-logo-joined-initial-lockup", exampleId: "ligature-bridge", patternId: "d3-logo-ligature-bridge", textureId: "d3-logo-crosshatch", brand: "ARC UNION", tagline: "Built together", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.6, scale: 1.02, rotation: 0, textureStrength: 0.34, seed: 104 },
+    { id: "d3-logo-stenciled-utility-lockup", exampleId: "stencil-cuts", patternId: "d3-logo-stencil-cuts", textureId: "d3-logo-seeded-stipple", brand: "IRONVALE", tagline: "Made to endure", colorset: "colorset1", font: "condensed", density: 1.2, curvature: 0.35, scale: 1.0, rotation: -2, textureStrength: 0.28, seed: 105 },
+    { id: "d3-logo-textured-letter-window", exampleId: "letter-window", patternId: "d3-logo-letter-window", textureId: "d3-logo-voronoi-mosaic", brand: "LUMA", tagline: "See what is possible", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.5, scale: 1.08, rotation: 0, textureStrength: 0.58, seed: 106 },
+    { id: "d3-logo-mirror-axis-lockup", exampleId: "mirrored-monogram", patternId: "d3-logo-mirrored-monogram", textureId: "d3-logo-woven-checker", brand: "AXIS", tagline: "Balanced by design", colorset: "colorset1", font: "editorial", density: 0.9, curvature: 0.55, scale: 1.0, rotation: 0, textureStrength: 0.3, seed: 107 },
+    { id: "d3-logo-radial-glyph-emblem", exampleId: "glyph-rosette", patternId: "d3-logo-glyph-rosette", textureId: "d3-logo-guilloche-waves", brand: "AERIA", tagline: "Many voices, one form", colorset: "colorset2", font: "humanist", density: 1.2, curvature: 0.68, scale: 0.98, rotation: 8, textureStrength: 0.36, seed: 108 },
+    { id: "d3-logo-wave-baseline-lockup", exampleId: "baseline-wave", patternId: "d3-logo-baseline-wave", textureId: "d3-logo-topographic-lines", brand: "SONORA", tagline: "Make the signal visible", colorset: "colorset1", font: "humanist", density: 1.0, curvature: 0.9, scale: 1.0, rotation: 0, textureStrength: 0.3, seed: 109 },
+    { id: "d3-logo-echo-stack-lockup", exampleId: "stack-offset", patternId: "d3-logo-stack-offset", textureId: "d3-logo-halftone-dots", brand: "ECHOFORM", tagline: "Repeat with intent", colorset: "colorset2", font: "condensed", density: 1.1, curvature: 0.4, scale: 1.0, rotation: -5, textureStrength: 0.32, seed: 110 },
+    { id: "d3-logo-sliced-motion-lockup", exampleId: "slice-shift", patternId: "d3-logo-slice-shift", textureId: "d3-logo-directional-fibers", brand: "KINETIQ", tagline: "Designed in motion", colorset: "colorset1", font: "geometric", density: 1.0, curvature: 0.45, scale: 1.0, rotation: -3, textureStrength: 0.3, seed: 111 },
+    { id: "d3-logo-outline-signal-lockup", exampleId: "multi-stroke-wordmark", patternId: "d3-logo-multi-stroke-wordmark", textureId: "d3-logo-micro-grid", brand: "SIGNAL", tagline: "Clarity through layers", colorset: "colorset2", font: "monospace", density: 1.0, curvature: 0.5, scale: 1.0, rotation: 0, textureStrength: 0.22, seed: 112 },
+    { id: "d3-logo-depth-step-lockup", exampleId: "extruded-wordmark", patternId: "d3-logo-extruded-wordmark", textureId: "d3-logo-diagonal-hatch", brand: "MONOLITH", tagline: "Depth without noise", colorset: "colorset1", font: "condensed", density: 1.1, curvature: 0.35, scale: 0.96, rotation: 0, textureStrength: 0.34, seed: 113 },
+    { id: "d3-logo-woven-initial-lockup", exampleId: "letter-weave", patternId: "d3-logo-letter-weave", textureId: "d3-logo-seeded-stipple", brand: "INTERLACE", tagline: "Different paths, shared future", colorset: "colorset2", font: "editorial", density: 1.0, curvature: 0.74, scale: 1.0, rotation: 0, textureStrength: 0.4, seed: 114 },
+    { id: "d3-logo-responsive-brand-family", exampleId: "responsive-lockup", patternId: "d3-logo-responsive-lockup", textureId: "d3-logo-guilloche-waves", brand: "MODULA", tagline: "One system, every space", colorset: "colorset1", font: "geometric", density: 0.9, curvature: 0.5, scale: 1.0, rotation: 0, textureStrength: 0.25, seed: 115 },
+    { id: "d3-logo-spiral-core-lockup", exampleId: "spiral-trace", patternId: "d3-logo-spiral-trace", textureId: "d3-logo-voronoi-mosaic", brand: "SPIRA", tagline: "Ideas in orbit", colorset: "colorset2", font: "humanist", density: 1.2, curvature: 0.86, scale: 1.0, rotation: 6, textureStrength: 0.34, seed: 116 },
+    { id: "d3-logo-connected-orbit-lockup", exampleId: "orbit-network", patternId: "d3-logo-orbit-network", textureId: "d3-logo-woven-checker", brand: "NEXUS", tagline: "Connect what matters", colorset: "colorset1", font: "geometric", density: 1.1, curvature: 0.65, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 117 },
+    { id: "d3-logo-modular-grid-lockup", exampleId: "grid-activation", patternId: "d3-logo-grid-activation", textureId: "d3-logo-directional-fibers", brand: "GRIDWORK", tagline: "Systems made visible", colorset: "colorset2", font: "monospace", density: 1.2, curvature: 0.4, scale: 1.0, rotation: 0, textureStrength: 0.24, seed: 118 },
+    { id: "d3-logo-contour-medallion", exampleId: "contour-fingerprint", patternId: "d3-logo-contour-fingerprint", textureId: "d3-logo-diagonal-hatch", brand: "TERRAIN", tagline: "Defined by place", colorset: "colorset1", font: "editorial", density: 1.0, curvature: 0.7, scale: 1.0, rotation: 0, textureStrength: 0.42, seed: 119 },
+    { id: "d3-logo-voronoi-window-lockup", exampleId: "voronoi-shards", patternId: "d3-logo-voronoi-shards", textureId: "d3-logo-guilloche-waves", brand: "VORO", tagline: "Order from fragments", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.5, scale: 1.02, rotation: 0, textureStrength: 0.46, seed: 120 },
+    { id: "d3-logo-faceted-fauna-lockup", exampleId: "animal-facets", patternId: "d3-logo-animal-facets", textureId: "d3-logo-halftone-dots", brand: "WILDFOLD", tagline: "Built for open ground", colorset: "colorset1", font: "condensed", density: 1.2, curvature: 0.58, scale: 1.0, rotation: 0, textureStrength: 0.3, seed: 121 },
+    { id: "d3-logo-surface-fauna-lockup", exampleId: "animal-surface-mask", patternId: "d3-logo-animal-surface-mask", textureId: "d3-logo-topographic-lines", brand: "ROAM", tagline: "Follow your nature", colorset: "colorset2", font: "humanist", density: 1.0, curvature: 0.68, scale: 1.0, rotation: 0, textureStrength: 0.55, seed: 122 },
+    { id: "d3-logo-hidden-initial-lockup", exampleId: "negative-space-reveal", patternId: "d3-logo-negative-space-reveal", textureId: "d3-logo-crosshatch", brand: "REVEAL", tagline: "Look twice", colorset: "colorset1", font: "geometric", density: 0.9, curvature: 0.5, scale: 1.0, rotation: 0, textureStrength: 0.34, seed: 123 },
+    { id: "d3-logo-ribbon-fold-lockup", exampleId: "folded-ribbon", patternId: "d3-logo-folded-ribbon", textureId: "d3-logo-micro-grid", brand: "CONTINUUM", tagline: "A path that keeps moving", colorset: "colorset2", font: "humanist", density: 1.0, curvature: 0.84, scale: 0.98, rotation: 0, textureStrength: 0.3, seed: 124 },
+    { id: "d3-logo-overlap-lens-lockup", exampleId: "boolean-lens", patternId: "d3-logo-boolean-lens", textureId: "d3-logo-seeded-stipple", brand: "SYNTHESIS", tagline: "Better at the intersection", colorset: "colorset1", font: "editorial", density: 1.0, curvature: 0.52, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 125 },
+    { id: "d3-logo-radiant-core-lockup", exampleId: "radiant-pulse", patternId: "d3-logo-radiant-pulse", textureId: "d3-logo-halftone-dots", brand: "RADIANT", tagline: "Turn energy outward", colorset: "colorset2", font: "condensed", density: 1.2, curvature: 0.64, scale: 1.0, rotation: 0, textureStrength: 0.32, seed: 126 },
+    { id: "d3-logo-harmonic-wave-lockup", exampleId: "parametric-wave", patternId: "d3-logo-parametric-wave", textureId: "d3-logo-crosshatch", brand: "HARMONIC", tagline: "Find the shared frequency", colorset: "colorset1", font: "monospace", density: 1.1, curvature: 0.88, scale: 1.0, rotation: 4, textureStrength: 0.34, seed: 127 },
+    { id: "d3-logo-kaleidoscope-emblem", exampleId: "kaleidoscope-wedges", patternId: "d3-logo-kaleidoscope-wedges", textureId: "d3-logo-woven-checker", brand: "PRISMATA", tagline: "Many angles, one identity", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.62, scale: 1.0, rotation: 12, textureStrength: 0.4, seed: 128 },
+    { id: "d3-logo-polar-data-lockup", exampleId: "polar-halo", patternId: "d3-logo-polar-halo", textureId: "d3-logo-voronoi-mosaic", brand: "CYCLE", tagline: "Measure the whole system", colorset: "colorset1", font: "humanist", density: 1.0, curvature: 0.56, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 129 },
+    { id: "d3-logo-iris-aperture-lockup", exampleId: "aperture-iris", patternId: "d3-logo-aperture-iris", textureId: "d3-logo-topographic-lines", brand: "APERTURE", tagline: "Bring the idea into focus", colorset: "colorset2", font: "condensed", density: 1.1, curvature: 0.76, scale: 1.0, rotation: -8, textureStrength: 0.32, seed: 130 }
   ]);
 
   const FONT_STACKS = deepFreeze([
@@ -235,9 +235,14 @@
 
     const patternId = requestedPattern || composition.patternId;
     const textureId = requestedTexture || composition.textureId;
+    const expectedExampleId = patternId.replace(/^d3-logo-/, "");
+    const exampleId = source.exampleId == null ? composition.exampleId : String(source.exampleId);
     const colorset = source.colorset == null ? composition.colorset : String(source.colorset);
     if (!PATTERN_BY_ID.has(patternId)) throw new RangeError(`Unknown pattern ID: ${patternId}`);
     if (!TEXTURE_BY_ID.has(textureId)) throw new RangeError(`Unknown texture ID: ${textureId}`);
+    if (!isValidCanonicalId(exampleId) || exampleId !== expectedExampleId) {
+      throw new RangeError(`Example ID ${exampleId} must match the local technique slug ${expectedExampleId}.`);
+    }
     if (!Object.prototype.hasOwnProperty.call(COLORSETS, colorset)) {
       throw new RangeError(`Unknown colorset: ${colorset}`);
     }
@@ -254,6 +259,7 @@
 
     return Object.freeze({
       compositionId,
+      exampleId,
       patternId,
       textureId,
       brand,
@@ -283,6 +289,77 @@
     }
     const widthAttribute = finiteNumber(svgNode.getAttribute("width"), 0);
     return widthAttribute > 0 ? widthAttribute : 480;
+  }
+
+  function markContainsText(markNode, ctx) {
+    if (markNode.querySelector("text, [data-text-proxy]")) return true;
+    return Array.from(markNode.querySelectorAll("use")).some((node) => resolvedUseTarget(node, ctx.svgNode)?.localName === "text");
+  }
+
+  function rotatedScaleLimit(box, rotation, safeBounds) {
+    const pivotX = 240;
+    const pivotY = 145;
+    const radians = rotation * Math.PI / 180;
+    const cosine = Math.cos(radians);
+    const sine = Math.sin(radians);
+    const corners = [
+      [box.x, box.y],
+      [box.x + box.width, box.y],
+      [box.x + box.width, box.y + box.height],
+      [box.x, box.y + box.height]
+    ];
+    let limit = Number.POSITIVE_INFINITY;
+    for (const [x, y] of corners) {
+      const dx = x - pivotX;
+      const dy = y - pivotY;
+      const rotatedX = dx * cosine - dy * sine;
+      const rotatedY = dx * sine + dy * cosine;
+      if (rotatedX < 0) limit = Math.min(limit, (pivotX - safeBounds.left) / -rotatedX);
+      if (rotatedX > 0) limit = Math.min(limit, (safeBounds.right - pivotX) / rotatedX);
+      if (rotatedY < 0) limit = Math.min(limit, (pivotY - safeBounds.top) / -rotatedY);
+      if (rotatedY > 0) limit = Math.min(limit, (safeBounds.bottom - pivotY) / rotatedY);
+    }
+    return Number.isFinite(limit) && limit > 0 ? limit : 1;
+  }
+
+  function applySafeMarkTransform(markGroup, ctx) {
+    const markNode = markGroup.node();
+    const requestedScale = ctx.config.scale;
+    const requestedRotation = ctx.config.rotation;
+    const carriesText = markContainsText(markNode, ctx);
+    const reservesBrand = !ctx.brandHandled;
+    const reservesTagline = !ctx.taglineHandled && Boolean(ctx.config.tagline);
+    const safeBounds = {
+      left: 18,
+      right: 462,
+      top: 14,
+      bottom: reservesBrand ? 238 : (reservesTagline ? 282 : 306)
+    };
+    let effectiveScale = requestedScale;
+    try {
+      markGroup.attr("transform", null);
+      const box = markNode.getBBox();
+      if ([box.x, box.y, box.width, box.height].every(Number.isFinite) && box.width > 0 && box.height > 0) {
+        effectiveScale = Math.min(requestedScale, rotatedScaleLimit(box, requestedRotation, safeBounds) * 0.98);
+      }
+    } catch (error) {
+      effectiveScale = requestedScale;
+    }
+    effectiveScale = clamp(effectiveScale, 0.25, requestedScale);
+    markGroup
+      .attr("data-requested-scale", requestedScale)
+      .attr("data-effective-scale", effectiveScale.toFixed(4))
+      .attr("data-requested-rotation", requestedRotation)
+      .attr("data-effective-rotation", requestedRotation)
+      .attr("data-carries-text", carriesText ? "true" : "false")
+      .attr("data-reserves-brand", reservesBrand ? "true" : "false")
+      .attr("data-reserves-tagline", reservesTagline ? "true" : "false")
+      .attr("data-safe-bounds", `${safeBounds.left},${safeBounds.top},${safeBounds.right},${safeBounds.bottom}`)
+      .attr("transform", `translate(240,145) rotate(${requestedRotation}) scale(${effectiveScale}) translate(-240,-145)`);
+    ctx.svg
+      .attr("data-effective-scale", effectiveScale.toFixed(4))
+      .attr("data-effective-rotation", requestedRotation);
+    return effectiveScale;
   }
 
   function stablePrefix(svgNode, config) {
@@ -556,14 +633,110 @@
     return Array.from(words[0]).slice(0, 2).join("").toLocaleUpperCase();
   }
 
-  function fittedFontSize(text, preferred, maxWidth) {
+  function fittedFontSize(text, preferred, maxWidth, minimum = 8) {
     const length = Math.max(1, Array.from(String(text)).length);
-    return Math.max(16, Math.min(preferred, maxWidth / (length * 0.59)));
+    return Math.max(minimum, Math.min(preferred, maxWidth / (length * 0.59)));
+  }
+
+  function fitTextToWidth(selection, maxWidth, minimumSize = 6) {
+    const node = selection.node();
+    if (!node || !(maxWidth > 0) || typeof node.getComputedTextLength !== "function") return selection;
+    const currentSize = finiteNumber(node.getAttribute("font-size"), 16);
+    let measuredWidth = 0;
+    try {
+      measuredWidth = node.getComputedTextLength();
+    } catch (error) {
+      measuredWidth = 0;
+    }
+    if (!(measuredWidth > maxWidth)) {
+      node.setAttribute("data-text-fit", "natural");
+      return selection;
+    }
+    const fittedSize = Math.max(minimumSize, currentSize * maxWidth / measuredWidth);
+    node.setAttribute("font-size", fittedSize.toFixed(3));
+    node.setAttribute("data-text-fit", "font-size");
+    try {
+      measuredWidth = node.getComputedTextLength();
+    } catch (error) {
+      measuredWidth = 0;
+    }
+    if (measuredWidth > maxWidth + 0.25) {
+      node.setAttribute("textLength", maxWidth);
+      node.setAttribute("lengthAdjust", "spacingAndGlyphs");
+      node.setAttribute("data-text-fit", "length-adjust");
+    }
+    return selection;
+  }
+
+  function balancedTextLines(value) {
+    const text = String(value).trim();
+    const words = text.split(/\s+/u).filter(Boolean);
+    if (words.length > 1) {
+      let splitIndex = 1;
+      let bestDifference = Number.POSITIVE_INFINITY;
+      for (let index = 1; index < words.length; index += 1) {
+        const first = words.slice(0, index).join(" ");
+        const second = words.slice(index).join(" ");
+        const difference = Math.abs(Array.from(first).length - Array.from(second).length);
+        if (difference < bestDifference) {
+          bestDifference = difference;
+          splitIndex = index;
+        }
+      }
+      return [words.slice(0, splitIndex).join(" "), words.slice(splitIndex).join(" ")];
+    }
+    const characters = Array.from(text);
+    const midpoint = Math.ceil(characters.length / 2);
+    return [characters.slice(0, midpoint).join(""), characters.slice(midpoint).join("")].filter(Boolean);
+  }
+
+  function fitOrWrapText(selection, value, maxWidth, minimumSize, lineHeight) {
+    const node = selection.node();
+    if (!node || typeof node.getComputedTextLength !== "function") return selection;
+    const currentSize = finiteNumber(node.getAttribute("font-size"), 16);
+    let measuredWidth = 0;
+    try {
+      measuredWidth = node.getComputedTextLength();
+    } catch (error) {
+      measuredWidth = 0;
+    }
+    const requiredSize = measuredWidth > 0 ? currentSize * maxWidth / measuredWidth : currentSize;
+    if (requiredSize >= minimumSize) return fitTextToWidth(selection, maxWidth, minimumSize);
+
+    const lines = balancedTextLines(value);
+    if (lines.length < 2) return fitTextToWidth(selection, maxWidth, minimumSize);
+    const x = finiteNumber(node.getAttribute("x"), 240);
+    const centerY = finiteNumber(node.getAttribute("y"), 160);
+    const originalHasSpaces = /\s/u.test(String(value));
+    selection
+      .text(null)
+      .attr("aria-label", String(value))
+      .attr("data-text-fit", "wrapped-2-lines")
+      .attr("data-text-line-count", lines.length);
+    lines.forEach((line, index) => {
+      const renderedLine = originalHasSpaces && index < lines.length - 1 ? `${line} ` : line;
+      const lineSelection = selection.append("tspan")
+        .attr("x", x)
+        .attr("y", centerY + (index - (lines.length - 1) / 2) * lineHeight)
+        .attr("data-text-line", index + 1)
+        .text(renderedLine);
+      fitTextToWidth(lineSelection, maxWidth, minimumSize);
+    });
+    return selection;
   }
 
   function addText(group, ctx, options) {
-    return group.append("text")
+    const className = options.className || "";
+    const inferredRole = options.role || (
+      /tagline/.test(className) ? "tagline" :
+      /initial|monogram|ligature/.test(className) ? "initials" :
+      /value/.test(className) ? "label" :
+      /brand|wordmark|window|axis-glyph|wave-glyph|stack-copy|depth-copy/.test(className) ? "brand" :
+      "decorative"
+    );
+    const selection = group.append("text")
       .attr("class", options.className || null)
+      .attr("data-text-role", inferredRole)
       .attr("x", options.x == null ? 240 : options.x)
       .attr("y", options.y == null ? 160 : options.y)
       .attr("text-anchor", options.anchor || "middle")
@@ -574,6 +747,74 @@
       .attr("letter-spacing", options.tracking == null ? 0 : options.tracking)
       .attr("fill", options.fill || ctx.palette.roles.ink)
       .text(options.text == null ? "" : options.text);
+    if (options.maxWidth != null) {
+      const minimumSize = options.minimumSize == null ? 6 : options.minimumSize;
+      if (options.maxLines > 1) {
+        fitOrWrapText(selection, options.text, options.maxWidth, minimumSize, options.lineHeight || minimumSize * 1.25);
+      } else {
+        fitTextToWidth(selection, options.maxWidth, minimumSize);
+      }
+    }
+    return selection;
+  }
+
+  function resolvedUseTarget(node, svgNode) {
+    if (String(node.localName).toLowerCase() !== "use") return null;
+    const href = node.getAttribute("href") || node.getAttribute("xlink:href") || "";
+    return href.startsWith("#") ? svgNode.querySelector(href) : null;
+  }
+
+  function inferRenderedTextRole(node, ctx) {
+    const explicit = node.getAttribute("data-text-role");
+    if (explicit) return explicit;
+    const target = resolvedUseTarget(node, ctx.svgNode);
+    const className = `${node.getAttribute("class") || ""} ${target?.getAttribute("class") || ""}`;
+    const text = `${node.textContent || ""}${target?.textContent || ""}`.trim();
+    if (/tagline/.test(className) || text === ctx.config.tagline) return "tagline";
+    if (/initial|monogram|ligature/.test(className) || text === brandInitials(ctx.config.brand)) return "initials";
+    if (/polar-value|label/.test(className)) return "label";
+    if (/rosette-glyph/.test(className)) return "decorative";
+    if (/axis-glyph|wave-glyph|stack-copy|shifted-slice|stroke-layer|stroke-fill|depth-copy|brand|wordmark|window/.test(className)) return "brand";
+    if (text === ctx.config.brand) return "brand";
+    if (text.includes(ctx.config.brand) && ctx.config.tagline && text.includes(ctx.config.tagline)) return "brand-tagline";
+    return "decorative";
+  }
+
+  function annotateTextLayers(compositionGroup, ctx) {
+    const root = compositionGroup.node();
+    const candidates = Array.from(root.querySelectorAll("text, use, [data-text-proxy]"))
+      .filter((node) => {
+        if (node.matches("[data-text-proxy], text")) return true;
+        return resolvedUseTarget(node, ctx.svgNode)?.localName === "text";
+      })
+      .filter((node, index, values) => !values.some((parent, parentIndex) => parentIndex !== index && parent.contains(node) && parent.hasAttribute("data-text-proxy")));
+    for (const node of candidates) {
+      const role = inferRenderedTextRole(node, ctx);
+      const source = node.getAttribute("data-text-proxy") || (
+        String(node.localName).toLowerCase() === "use" ? "use-stack" :
+        node.querySelector?.("textPath") ? "text-path" :
+        node.matches("text") ? "glyph-run" : "proxy"
+      );
+      const layerSuffix = node.getAttribute("data-text-layer-suffix");
+      const layerId = `${ctx.config.exampleId}--${sanitizeId(role)}${layerSuffix ? `-${sanitizeId(layerSuffix)}` : ""}`;
+      node.setAttribute("data-text-role", role);
+      node.setAttribute("data-text-layer-id", layerId);
+      node.setAttribute("data-text-source", source);
+      if (!node.hasAttribute("data-text-policy")) node.setAttribute("data-text-policy", "clear");
+    }
+
+    const layerCounts = new Map();
+    const drawables = root.querySelectorAll("path, rect, circle, ellipse, line, polyline, polygon, use, text");
+    for (const node of drawables) {
+      if (node.closest("[data-text-layer-id]")) continue;
+      const classToken = (node.getAttribute("class") || "").trim().split(/\s+/u).filter(Boolean)[0];
+      const role = node.getAttribute("data-layer-role") || classToken || String(node.localName).toLowerCase();
+      const safeRole = sanitizeId(role);
+      const ordinal = (layerCounts.get(safeRole) || 0) + 1;
+      layerCounts.set(safeRole, ordinal);
+      node.setAttribute("data-layer-role", role);
+      node.setAttribute("data-layer-id", `${ctx.config.exampleId}--${safeRole}-${ordinal}`);
+    }
   }
 
   function addBrandLockup(group, ctx, y) {
@@ -585,7 +826,9 @@
       size: fittedFontSize(ctx.config.brand, 32, 330),
       weight: 750,
       tracking: 1.2,
-      fill: ctx.palette.roles.ink
+      fill: ctx.palette.roles.ink,
+      maxWidth: 330,
+      minimumSize: 8
     });
     ctx.brandHandled = true;
   }
@@ -603,7 +846,11 @@
       size: fittedFontSize(ctx.config.tagline, 13, 330),
       weight: 500,
       tracking: 1.35,
-      fill: ctx.palette.sequence[1 % ctx.palette.sequence.length]
+      fill: ctx.palette.sequence[1 % ctx.palette.sequence.length],
+      maxWidth: 330,
+      minimumSize: 9,
+      maxLines: 2,
+      lineHeight: 12
     });
     ctx.taglineHandled = true;
   }
@@ -742,29 +989,74 @@
     group.attr("data-axis-mode", "fallback");
     const glyphs = Array.from(ctx.config.brand);
     const size = fittedFontSize(ctx.config.brand, 66, 360);
-    const advance = Math.min(size * 0.72, 350 / Math.max(1, glyphs.length));
-    const start = 240 - (glyphs.length - 1) * advance / 2;
-    const weightScale = ctx.d3.scaleLinear().domain([0, Math.max(1, glyphs.length - 1)]).range([320, 880]);
-    group.selectAll("text.axis-glyph")
-      .data(glyphs)
+    const weightScale = ctx.d3.scaleLinear().domain([0, Math.max(1, glyphs.length - 1)]).range([540, 860]);
+    const strongColors = [
+      ctx.palette.roles.inkDark,
+      ctx.palette.roles.primary,
+      ctx.palette.roles.primaryDark,
+      ctx.palette.roles.secondaryDark || ctx.palette.roles.ink,
+      ctx.palette.roles.special || ctx.palette.roles.ink
+    ];
+    const glyphData = glyphs.map((glyph, index) => ({
+      glyph,
+      index,
+      baseSize: size * (0.92 + index % 3 * 0.05)
+    }));
+    const glyphSelection = group.selectAll("text.axis-glyph")
+      .data(glyphData)
       .join("text")
       .attr("class", "axis-glyph")
-      .attr("x", (d, index) => start + index * advance)
-      .attr("y", (d, index) => 151 + Math.sin(index * 0.8) * ctx.config.curvature * 12)
+      .attr("data-text-layer-suffix", (d) => `glyph-${d.index + 1}`)
+      .attr("x", 0)
+      .attr("y", (d) => 151 + Math.sin(d.index * 0.8) * ctx.config.curvature * 7)
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "middle")
       .attr("font-family", ctx.config.fontFamily)
-      .attr("font-size", (d, index) => size * (0.86 + index % 3 * 0.07))
-      .attr("font-weight", (d, index) => Math.round(weightScale(index)))
-      .attr("letter-spacing", (d, index) => index % 2 ? 0.4 : 1.3)
-      .attr("fill", (d, index) => index === Math.floor(glyphs.length / 2) ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
-      .text((d) => d);
+      .attr("font-size", (d) => d.baseSize)
+      .attr("font-weight", (d) => Math.round(weightScale(d.index)))
+      .attr("letter-spacing", 0)
+      .attr("fill", (d) => strongColors[d.index % strongColors.length])
+      .text((d) => d.glyph);
+
+    const measureGlyphs = () => glyphSelection.nodes().map((node, index) => {
+      const renderedSize = finiteNumber(node.getAttribute("font-size"), glyphData[index].baseSize);
+      if (/\s/u.test(glyphData[index].glyph)) return renderedSize * 0.36;
+      try {
+        const measured = Number(node.getComputedTextLength());
+        if (Number.isFinite(measured) && measured > 0) return measured;
+      } catch (error) {
+        // Detached renderers use the deterministic width fallback below.
+      }
+      return renderedSize * 0.59;
+    });
+    const gap = clamp(7.2 - glyphs.length * 0.08 + (ctx.config.density - 1) * 0.3, 5, 7);
+    let widths = measureGlyphs();
+    const availableGlyphWidth = Math.max(48, 330 - gap * Math.max(0, glyphs.length - 1));
+    const measuredGlyphWidth = widths.reduce((sum, width) => sum + width, 0);
+    let commonScale = Math.min(1, availableGlyphWidth / Math.max(1, measuredGlyphWidth));
+    glyphSelection.attr("font-size", (d) => d.baseSize * commonScale);
+    widths = measureGlyphs();
+    let totalWidth = widths.reduce((sum, width) => sum + width, 0) + gap * Math.max(0, glyphs.length - 1);
+    if (totalWidth > 330) {
+      const correction = availableGlyphWidth / Math.max(1, widths.reduce((sum, width) => sum + width, 0));
+      commonScale *= correction;
+      glyphSelection.attr("font-size", (d) => d.baseSize * commonScale);
+      widths = measureGlyphs();
+      totalWidth = widths.reduce((sum, width) => sum + width, 0) + gap * Math.max(0, glyphs.length - 1);
+    }
+    let cursor = 240 - totalWidth / 2;
+    glyphSelection.attr("x", (d, index) => {
+      const center = cursor + widths[index] / 2;
+      cursor += widths[index] + gap;
+      return center;
+    });
+    group.attr("data-axis-scale", commonScale.toFixed(4)).attr("data-axis-gap", gap.toFixed(2));
     group.append("rect")
       .attr("class", "axis-rule")
-      .attr("x", 82)
-      .attr("y", 199)
-      .attr("width", 316)
-      .attr("height", 9)
+      .attr("x", 240 - totalWidth / 2)
+      .attr("y", 194)
+      .attr("width", Math.max(72, totalWidth))
+      .attr("height", 7)
       .attr("fill", ctx.textureFill);
     ctx.brandHandled = true;
   }
@@ -826,6 +1118,8 @@
       .attr("transform", (d) => `rotate(${-18 + ctx.config.rotation * 0.12} ${82 + d * 310 / Math.max(1, cutCount - 1)} 160)`);
     group.append("rect")
       .attr("class", "stencil-wordmark")
+      .attr("data-text-proxy", "mask-proxy")
+      .attr("data-text-role", "brand")
       .attr("x", 44)
       .attr("y", 82)
       .attr("width", 392)
@@ -853,6 +1147,8 @@
       .text(ctx.config.brand);
     group.append("rect")
       .attr("class", "letter-window-surface")
+      .attr("data-text-proxy", "clip-proxy")
+      .attr("data-text-role", "brand")
       .attr("x", 42)
       .attr("y", 74)
       .attr("width", 396)
@@ -872,39 +1168,56 @@
       .attr("x1", 0).attr("y1", -82).attr("x2", 0).attr("y2", 82)
       .attr("stroke", ctx.palette.roles.line).attr("stroke-width", 2);
     mark.append("text")
+      .attr("class", "mirror-initial")
       .attr("x", -3).attr("y", 0).attr("text-anchor", "middle").attr("dominant-baseline", "middle")
       .attr("font-family", ctx.config.fontFamily).attr("font-size", 118).attr("font-weight", 800)
       .attr("fill", ctx.textureFill).text(initial);
     mark.append("text")
+      .attr("class", "mirror-initial")
       .attr("x", -3).attr("y", 0).attr("text-anchor", "middle").attr("dominant-baseline", "middle")
       .attr("font-family", ctx.config.fontFamily).attr("font-size", 118).attr("font-weight", 800)
       .attr("fill", ctx.palette.roles.primaryDark)
       .attr("transform", `scale(-1,1) translate(${-18 * ctx.config.curvature},0)`).text(initial);
-    mark.append("circle").attr("cx", 0).attr("cy", 0).attr("r", 7).attr("fill", ctx.palette.roles.accent);
+    mark.append("circle").attr("class", "mirror-joint").attr("cx", 0).attr("cy", 0).attr("r", 7).attr("fill", ctx.palette.roles.accent);
   }
 
   function renderGlyphRosette(group, ctx) {
     const glyph = Array.from(brandInitials(ctx.config.brand))[0] || "A";
-    const count = Math.max(8, Math.round(12 * ctx.config.density));
+    const centerY = 132;
+    const count = clamp(Math.round(8 + ctx.config.density * 4.5), 10, 16);
+    const radius = 78 + clamp((ctx.config.density - 1) * 5, 0, 5);
+    const arcLength = Math.PI * 2 * radius / count;
+    const glyphSize = clamp(arcLength * 0.55, 16, 22);
+    const strongColors = [
+      ctx.palette.roles.inkDark,
+      ctx.palette.roles.primary,
+      ctx.palette.roles.primaryDark,
+      ctx.palette.roles.secondaryDark || ctx.palette.roles.ink,
+      ctx.palette.roles.special || ctx.palette.roles.ink
+    ];
     group.selectAll("text.rosette-glyph")
       .data(ctx.d3.range(count))
       .join("text")
       .attr("class", "rosette-glyph")
+      .attr("data-text-layer-suffix", (d) => `glyph-${d + 1}`)
       .attr("x", 240)
-      .attr("y", 64)
+      .attr("y", centerY - radius)
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "middle")
       .attr("font-family", ctx.config.fontFamily)
-      .attr("font-size", (d) => d % 2 ? 24 : 31)
-      .attr("font-weight", 800)
-      .attr("fill", (d) => ctx.palette.sequence[d % ctx.palette.sequence.length])
-      .attr("transform", (d) => `rotate(${d * 360 / count} 240 145)`)
+      .attr("font-size", (d) => glyphSize * (d % 2 ? 0.9 : 1))
+      .attr("font-weight", 850)
+      .attr("fill", (d) => strongColors[d % strongColors.length])
+      .attr("stroke", ctx.palette.roles.background)
+      .attr("stroke-width", 1.8)
+      .attr("paint-order", "stroke fill")
+      .attr("transform", (d) => `rotate(${d * 360 / count} 240 ${centerY})`)
       .text(glyph);
     group.append("circle")
       .attr("class", "rosette-core")
-      .attr("cx", 240).attr("cy", 145).attr("r", 40)
+      .attr("cx", 240).attr("cy", centerY).attr("r", 36)
       .attr("fill", ctx.textureFill).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
-    addText(group, ctx, { className: "rosette-initials", text: brandInitials(ctx.config.brand), x: 240, y: 145, size: 25, weight: 850, fill: ctx.palette.roles.surface });
+    addText(group, ctx, { className: "rosette-initials", text: brandInitials(ctx.config.brand), x: 240, y: centerY, size: 24, weight: 850, fill: ctx.palette.roles.surface });
   }
 
   function renderBaselineWave(group, ctx) {
@@ -946,15 +1259,27 @@
   }
 
   function renderStackOffset(group, ctx) {
-    const copies = Math.max(3, Math.round(4 + ctx.config.density * 3));
-    const size = fittedFontSize(ctx.config.brand, 68, 350);
+    const copies = clamp(Math.round(3 + ctx.config.density * 2.4), 4, 7);
     const center = (copies - 1) / 2;
-    group.selectAll("text.stack-copy")
+    const offsetX = 3.6 + ctx.config.curvature * 1.6;
+    const offsetY = 4.2 + ctx.config.curvature * 1.8;
+    const effectiveRotation = ctx.config.rotation;
+    const angle = Math.abs(effectiveRotation) * Math.PI / 180;
+    const glyphWidthFactor = Math.max(1, Array.from(ctx.config.brand).length * 0.59);
+    const availableWidth = Math.max(120, 2 * (180 / ctx.config.scale - center * offsetX));
+    const availableHeight = Math.max(70, 2 * (78 / ctx.config.scale - center * offsetY));
+    const widthBound = availableWidth / (glyphWidthFactor * Math.cos(angle) + Math.sin(angle));
+    const heightBound = availableHeight / (glyphWidthFactor * Math.sin(angle) + Math.cos(angle));
+    const size = clamp(Math.min(68, widthBound, heightBound), 14, 68);
+    const stack = group.append("g")
+      .attr("class", "stack-safe-area")
+      .attr("data-effective-rotation", effectiveRotation);
+    stack.selectAll("text.stack-copy")
       .data(ctx.d3.range(copies).reverse())
       .join("text")
       .attr("class", "stack-copy")
-      .attr("x", (d) => 240 + (d - center) * 5.5)
-      .attr("y", (d) => 150 + (d - center) * 6.5)
+      .attr("x", (d) => 240 + (d - center) * offsetX)
+      .attr("y", (d) => 150 + (d - center) * offsetY)
       .attr("text-anchor", "middle")
       .attr("dominant-baseline", "middle")
       .attr("font-family", ctx.config.fontFamily)
@@ -1077,6 +1402,7 @@
 
   function renderResponsiveLockup(group, ctx) {
     const mode = ctx.effectiveWidth < 180 ? "compact" : (ctx.effectiveWidth < 360 ? "stacked" : "wide");
+    const taglineFill = ctx.palette.roles.secondaryDark || ctx.palette.roles.ink;
     group.attr("data-lockup-mode", mode);
     const symbol = group.append("g").attr("class", `responsive-symbol responsive-symbol-${mode}`);
     const cells = [[0, 0], [1, 0], [0, 1], [1, 1]];
@@ -1090,10 +1416,10 @@
       .attr("fill", (d, index) => index === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length]);
     if (mode === "wide") {
       addText(group, ctx, { className: "responsive-brand", text: ctx.config.brand, x: 278, y: 137, size: fittedFontSize(ctx.config.brand, 47, 230), weight: 850, fill: ctx.palette.roles.ink });
-      addText(group, ctx, { className: "responsive-tagline", text: ctx.config.tagline, x: 278, y: 176, size: fittedFontSize(ctx.config.tagline, 13, 220), weight: 500, tracking: 1, fill: ctx.palette.roles.muted });
+      addText(group, ctx, { className: "responsive-tagline", text: ctx.config.tagline, x: 278, y: 176, size: fittedFontSize(ctx.config.tagline, 14, 220), weight: 650, tracking: 0.7, fill: taglineFill });
     } else if (mode === "stacked") {
       addText(group, ctx, { className: "responsive-brand", text: ctx.config.brand, x: 240, y: 196, size: fittedFontSize(ctx.config.brand, 42, 280), weight: 850, fill: ctx.palette.roles.ink });
-      addText(group, ctx, { className: "responsive-tagline", text: ctx.config.tagline, x: 240, y: 228, size: fittedFontSize(ctx.config.tagline, 12, 270), weight: 500, tracking: 1, fill: ctx.palette.roles.muted });
+      addText(group, ctx, { className: "responsive-tagline", text: ctx.config.tagline, x: 240, y: 228, size: fittedFontSize(ctx.config.tagline, 13, 270), weight: 650, tracking: 0.7, fill: taglineFill });
     } else {
       addText(group, ctx, { className: "responsive-initials", text: brandInitials(ctx.config.brand), x: 240, y: 124, size: 24, weight: 900, fill: ctx.palette.roles.surface });
       addText(group, ctx, { className: "responsive-brand", text: ctx.config.brand, x: 240, y: 208, size: fittedFontSize(ctx.config.brand, 30, 250), weight: 850, fill: ctx.palette.roles.ink });
@@ -1347,6 +1673,8 @@
       .attr("fill", ctx.palette.allowed[0]).text(initial);
     group.append("g")
       .attr("class", "negative-space-primitives")
+      .attr("data-text-proxy", "negative-space")
+      .attr("data-text-role", "initials")
       .attr("mask", fragmentUrl(maskId))
       .selectAll("circle")
       .data([[190, 135, 76], [290, 135, 76], [240, 182, 66]])
@@ -1355,6 +1683,7 @@
       .attr("fill", (d, index) => index === 0 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length]);
     group.append("text")
       .attr("class", "negative-space-outline")
+      .attr("data-text-role", "initials")
       .attr("x", 240).attr("y", 147).attr("text-anchor", "middle").attr("dominant-baseline", "middle")
       .attr("font-family", ctx.config.fontFamily).attr("font-size", 118).attr("font-weight", 900)
       .attr("fill", "none").attr("stroke", ctx.palette.roles.background).attr("stroke-width", 2).text(initial);
@@ -1424,7 +1753,14 @@
       .attr("stroke-width", (d) => d.width).attr("stroke-linecap", "round");
     group.append("circle").attr("class", "radiant-core").attr("cx", 240).attr("cy", 143).attr("r", 43)
       .attr("fill", ctx.textureFill).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
-    addText(group, ctx, { className: "radiant-initials", text: brandInitials(ctx.config.brand), x: 240, y: 143, size: 22, weight: 900, fill: ctx.palette.roles.surface });
+    const initials = brandInitials(ctx.config.brand);
+    const labelRadius = clamp(22 + ctx.config.density * 2, 23, 27);
+    group.append("circle")
+      .attr("class", "radiant-label-disc")
+      .attr("cx", 240).attr("cy", 143).attr("r", labelRadius)
+      .attr("fill", ctx.palette.roles.inkDark)
+      .attr("stroke", ctx.palette.roles.surface).attr("stroke-width", 2);
+    addText(group, ctx, { className: "radiant-initials", text: initials, x: 240, y: 143, size: fittedFontSize(initials, 27, labelRadius * 1.55), weight: 900, fill: ctx.palette.roles.surface });
   }
 
   function renderParametricWave(group, ctx) {
@@ -1484,7 +1820,7 @@
       .attr("fill", (d) => d.index === 0 ? ctx.textureFill : ctx.palette.sequence[d.index % ctx.palette.sequence.length]);
     mark.append("circle").attr("r", 52).attr("fill", ctx.palette.roles.surface).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
     addText(mark, ctx, { className: "polar-initials", text: brandInitials(ctx.config.brand), x: 0, y: -7, size: 28, weight: 900, fill: ctx.palette.roles.ink });
-    addText(mark, ctx, { className: "polar-value", text: String(ctx.config.seed), x: 0, y: 23, size: 10, weight: 600, tracking: 1.2, fill: ctx.palette.roles.muted });
+    addText(mark, ctx, { className: "polar-value", text: String(ctx.config.seed), x: 0, y: 23, size: 12, weight: 750, tracking: 0.6, fill: ctx.palette.roles.inkDark });
   }
 
   function renderApertureIris(group, ctx) {
@@ -1598,10 +1934,13 @@
       .attr("focusable", "false")
       .attr("aria-labelledby", `${titleId} ${descId}`)
       .attr("data-composition-id", config.compositionId)
+      .attr("data-example-id", config.exampleId)
       .attr("data-pattern-id", config.patternId)
       .attr("data-texture-id", config.textureId)
       .attr("data-colorset", config.colorset)
       .attr("data-geometry-signature", pattern.geometrySignature)
+      .attr("data-intentional-text-occlusions", JSON.stringify(pattern.intentionalOcclusions || []))
+      .attr("data-intentional-text-omissions", JSON.stringify(pattern.intentionalOmissions || []))
       .attr("data-font", config.font)
       .attr("data-density", config.density)
       .attr("data-curvature", config.curvature)
@@ -1649,6 +1988,7 @@
     const compositionGroup = svg.append("g")
       .attr("class", "logo-composition")
       .attr("data-composition-id", config.compositionId)
+      .attr("data-example-id", config.exampleId)
       .attr("data-pattern-id", config.patternId)
       .attr("data-texture-id", config.textureId)
       .attr("data-colorset", config.colorset)
@@ -1659,8 +1999,10 @@
       .attr("transform", `translate(240,145) rotate(${config.rotation}) scale(${config.scale}) translate(-240,-145)`);
 
     renderer(markGroup, context);
+    applySafeMarkTransform(markGroup, context);
     if (!context.brandHandled) addBrandLockup(compositionGroup, context, 270);
     if (!context.taglineHandled) addTagline(compositionGroup, context, 302);
+    annotateTextLayers(compositionGroup, context);
     assertPaletteSafe(svgNode, palette);
     return svgNode;
   }

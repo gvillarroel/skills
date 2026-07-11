@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f5292-ab33-7fd4-896b-b2b7bf6216da",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-logo-design-id-clearance-20260711-spark-7-exact-final\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 9
+  },
+  "providers": {
+    "openai-codex": 9
+  },
+  "usageTotals": {
+    "input": 18411,
+    "output": 2662,
+    "cacheRead": 28032,
+    "cacheWrite": 0,
+    "totalTokens": 49105
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 3,
+    "bash": 5
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1758
+    },
+    {
+      "path": "skills/d3-logo-design/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6599
+    },
+    {
+      "path": "outputs/canopy-clearance-validation.json",
+      "calls": 1,
+      "resultBytes": 1377
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1758
+    },
+    {
+      "path": "skills/d3-logo-design/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6599
+    },
+    {
+      "path": "outputs/canopy-clearance-validation.json",
+      "calls": 1,
+      "resultBytes": 1377
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3-logo-design/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/canopy-clearance-validation.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 9734,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1758
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/d3-logo-design/SKILL.md",
+      "policyPath": "skills/d3-logo-design/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6599
+    },
+    {
+      "line": 42,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --help",
+      "isError": false,
+      "resultBytes": 3128
+    },
+    {
+      "line": 57,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py --help",
+      "isError": false,
+      "resultBytes": 832
+    },
+    {
+      "line": 72,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --output outputs/canopy-clearance-logo.html --brand \"CANOPY SIGNAL\" --tagline \"Field intelligence, naturally connected\" --colorset colorset1 --pattern d3-logo-animal-surface",
+      "isError": false,
+      "resultBytes": 651
+    },
+    {
+      "line": 87,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/canopy-clearance-logo.html --expect-patterns 30 --expect-textures 10 --expect-compositions 30 --require-colorset colorset1 --json-report outputs/canopy-clearanc",
+      "isError": false,
+      "resultBytes": 1377
+    },
+    {
+      "line": 100,
+      "tool": "read",
+      "path": "outputs/canopy-clearance-validation.json",
+      "policyPath": "outputs/canopy-clearance-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1377
+    },
+    {
+      "line": 115,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'printf \"%s\n\" \"$(test -f outputs/canopy-clearance-logo.html && echo outputs/canopy-clearance-logo.html)\" \"$(test -f outputs/canopy-clearance-validation.json && echo outputs/canopy-clearance-validation.json)\"'",
+      "isError": false,
+      "resultBytes": 121
+    }
+  ],
+  "findings": []
+}

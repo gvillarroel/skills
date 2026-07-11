@@ -95,6 +95,7 @@ def main() -> int:
 
     initial_config = {
         "compositionId": "d3-logo-live-studio",
+        "exampleId": args.pattern.removeprefix("d3-logo-"),
         "patternId": args.pattern,
         "textureId": args.texture,
         "brand": brand,
@@ -150,6 +151,7 @@ def main() -> int:
         "standalone": True,
         "embeddedD3Version": "7.9.0",
         "initialPattern": args.pattern,
+        "initialExampleId": args.pattern.removeprefix("d3-logo-"),
         "initialTexture": args.texture,
         "initialColorset": args.colorset,
         "bytes": output.stat().st_size,

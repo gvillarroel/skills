@@ -12,6 +12,7 @@ import argparse
 from collections import Counter
 from html.parser import HTMLParser
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -22,6 +23,7 @@ from typing import Any
 
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 GENERIC_SEGMENTS = {"pattern", "item", "example", "feature"}
+MAX_INTENTIONAL_OCCLUSION_RATIO = 0.30
 EXPECTED_PALETTES = {
     "colorset1": {
         "#000000", "#1c1c1c", "#333e48", "#363636", "#4f4f4f", "#696969",
@@ -145,6 +147,104 @@ def validate_palette_data(palette_data: dict[str, Any], findings: list[str]) -> 
     return observed
 
 
+def validate_text_clearance_contracts(records: Any, findings: list[str]) -> dict[str, Any]:
+    """Validate opt-in exceptions to the default no-occlusion/no-omission rule."""
+    stats: dict[str, Any] = {
+        "intentionalOcclusionCount": 0,
+        "intentionalOmissionCount": 0,
+        "maxDeclaredOcclusionRatio": 0.0,
+    }
+    if not isinstance(records, list):
+        return stats
+
+    def validate_token(value: Any, field: str, location: str) -> bool:
+        if not isinstance(value, str) or not ID_RE.fullmatch(value) or len(value) > 64:
+            findings.append(
+                f"{location} {field} must be a lowercase hyphen-case semantic role of at most 64 characters; "
+                f"found {value!r}."
+            )
+            return False
+        return True
+
+    def validate_reason(value: Any, location: str) -> None:
+        if not isinstance(value, str) or not value.strip():
+            findings.append(f"{location} reason must be a non-empty explanation.")
+
+    for pattern_index, record in enumerate(records):
+        if not isinstance(record, dict):
+            continue
+        pattern_id = record.get("id") if isinstance(record.get("id"), str) else f"patterns[{pattern_index}]"
+
+        occlusions = record.get("intentionalOcclusions", [])
+        if not isinstance(occlusions, list):
+            findings.append(f"Pattern {pattern_id} intentionalOcclusions must be an array when declared.")
+        else:
+            stats["intentionalOcclusionCount"] += len(occlusions)
+            seen_occlusions: set[tuple[str, str]] = set()
+            for exception_index, exception in enumerate(occlusions):
+                location = f"Pattern {pattern_id} intentionalOcclusions[{exception_index}]"
+                if not isinstance(exception, dict):
+                    findings.append(f"{location} must be an object.")
+                    continue
+                text_role = exception.get("textRole")
+                occluder_role = exception.get("occluderRole")
+                text_role_valid = validate_token(text_role, "textRole", location)
+                occluder_role_valid = validate_token(occluder_role, "occluderRole", location)
+                validate_reason(exception.get("reason"), location)
+
+                ratio = exception.get("maxOcclusionRatio")
+                ratio_valid = (
+                    isinstance(ratio, (int, float))
+                    and not isinstance(ratio, bool)
+                    and math.isfinite(ratio)
+                    and 0 < ratio <= MAX_INTENTIONAL_OCCLUSION_RATIO
+                )
+                if not ratio_valid:
+                    findings.append(
+                        f"{location} maxOcclusionRatio must be a finite number greater than 0 and at most "
+                        f"{MAX_INTENTIONAL_OCCLUSION_RATIO:.2f}; found {ratio!r}."
+                    )
+                else:
+                    stats["maxDeclaredOcclusionRatio"] = max(stats["maxDeclaredOcclusionRatio"], float(ratio))
+
+                if text_role_valid and occluder_role_valid:
+                    key = (text_role, occluder_role)
+                    if key in seen_occlusions:
+                        findings.append(
+                            f"Pattern {pattern_id} repeats the intentional occlusion for "
+                            f"textRole={text_role!r}, occluderRole={occluder_role!r}."
+                        )
+                    seen_occlusions.add(key)
+
+        omissions = record.get("intentionalOmissions", [])
+        if not isinstance(omissions, list):
+            findings.append(f"Pattern {pattern_id} intentionalOmissions must be an array when declared.")
+        else:
+            stats["intentionalOmissionCount"] += len(omissions)
+            seen_omissions: set[tuple[str, str]] = set()
+            for exception_index, exception in enumerate(omissions):
+                location = f"Pattern {pattern_id} intentionalOmissions[{exception_index}]"
+                if not isinstance(exception, dict):
+                    findings.append(f"{location} must be an object.")
+                    continue
+                text_role = exception.get("textRole")
+                when = exception.get("when")
+                text_role_valid = validate_token(text_role, "textRole", location)
+                when_valid = validate_token(when, "when", location)
+                validate_reason(exception.get("reason"), location)
+
+                if text_role_valid and when_valid:
+                    key = (text_role, when)
+                    if key in seen_omissions:
+                        findings.append(
+                            f"Pattern {pattern_id} repeats the intentional omission for "
+                            f"textRole={text_role!r}, when={when!r}."
+                        )
+                    seen_omissions.add(key)
+
+    return stats
+
+
 def extract_engine(text: str, findings: list[str]) -> str:
     scripts = re.findall(r"<script(?:\s[^>]*)?>(.*?)</script>", text, re.IGNORECASE | re.DOTALL)
     candidates = [script for script in scripts if "attachD3LogoDesign" in script and "PATTERN_RENDERERS" in script]
@@ -205,6 +305,9 @@ def main() -> int:
     pattern_ids, pattern_signatures = validate_ids(manifest.get("patterns"), "patterns", findings)
     texture_ids, texture_signatures = validate_ids(manifest.get("textures"), "textures", findings)
     composition_ids, _ = validate_ids(manifest.get("compositions"), "compositions", findings)
+    clearance_findings_before = len(findings)
+    clearance_stats = validate_text_clearance_contracts(manifest.get("patterns"), findings)
+    clearance_contract_valid = isinstance(manifest.get("patterns"), list) and len(findings) == clearance_findings_before
     expected_counts = {
         "patterns": (len(pattern_ids), args.expect_patterns),
         "textures": (len(texture_ids), args.expect_textures),
@@ -242,17 +345,25 @@ def main() -> int:
         )
     referenced_patterns: list[str] = []
     referenced_textures: list[str] = []
+    example_ids: list[str] = []
     for record in manifest.get("compositions", []) if isinstance(manifest.get("compositions"), list) else []:
         if not isinstance(record, dict) or not isinstance(record.get("id"), str):
             continue
         pattern_id = record.get("patternId")
         texture_id = record.get("textureId")
+        example_id = record.get("exampleId")
         referenced_patterns.append(str(pattern_id))
         referenced_textures.append(str(texture_id))
+        example_ids.append(str(example_id))
         if pattern_id not in patterns:
             findings.append(f"Composition {record['id']} references unknown pattern {pattern_id!r}.")
         if texture_id not in textures:
             findings.append(f"Composition {record['id']} references unknown texture {texture_id!r}.")
+        expected_example_id = str(pattern_id).removeprefix("d3-logo-")
+        if example_id != expected_example_id or not ID_RE.fullmatch(str(example_id)):
+            findings.append(
+                f"Composition {record['id']} exampleId {example_id!r} must match its local technique slug {expected_example_id!r}."
+            )
         if record.get("colorset") not in EXPECTED_PALETTES:
             findings.append(f"Composition {record['id']} has an invalid colorset {record.get('colorset')!r}.")
     if set(referenced_patterns) != patterns or len(referenced_patterns) != len(patterns):
@@ -262,6 +373,8 @@ def main() -> int:
     missing_textures = sorted(textures - set(referenced_textures))
     if missing_textures:
         findings.append(f"Compositions do not cover all textures: {missing_textures}")
+    if len(set(example_ids)) != len(patterns):
+        findings.append(f"Expected {len(patterns)} unique local example IDs, found {len(set(example_ids))}.")
 
     observed_palettes = validate_palette_data(palette_data, findings)
     manifest_palettes = manifest.get("palettes")
@@ -376,6 +489,7 @@ def main() -> int:
         "patternCount": len(pattern_ids),
         "textureCount": len(texture_ids),
         "compositionCount": len(composition_ids),
+        "exampleIdCount": len(set(example_ids)),
         "patternSignatureCount": len(set(pattern_signatures)),
         "textureSignatureCount": len(set(texture_signatures)),
         "patternRendererCount": len(pattern_renderer_ids),
@@ -383,11 +497,15 @@ def main() -> int:
         "engineSyntaxChecked": engine_syntax_checked,
         "engineRuntimeChecked": engine_runtime_checked,
         "engineRegistryParity": engine_registry_parity,
+        "textClearanceContractValid": clearance_contract_valid,
+        "textOcclusionDefault": "prohibited",
+        **clearance_stats,
         "standalone": standalone,
         "embeddedD3Version": manifest.get("d3Version"),
         "usedTextureCount": len(set(referenced_textures)),
         "selectedColorset": selected,
         "initialPattern": initial_config.get("patternId"),
+        "initialExampleId": initial_config.get("exampleId"),
         "initialTexture": initial_config.get("textureId"),
         "initialBrand": initial_config.get("brand"),
         "initialTagline": initial_config.get("tagline"),

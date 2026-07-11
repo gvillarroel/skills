@@ -13,6 +13,8 @@ description: Create, adapt, implement, and validate parametric D3/SVG logo syste
 - Build geometry with D3 and SVG. Keep a stable `viewBox`, deterministic data, unique DOM IDs, `<title>`, `<desc>`, and a readable final state.
 - Deliver standalone HTML with the bundled D3 7.9.0 runtime; do not add CDN, font, image, or other network dependencies.
 - Make variation explicit through parameters instead of one-off coordinate edits: copy, pattern, texture, colorset, font stack, density, curvature, scale, rotation, and texture strength.
+- Keep every gallery example traceable: local `exampleId` is the technique slug, global `patternId` is `d3-logo-<exampleId>`, and editorial preset IDs remain separate composition metadata.
+- Prohibit text occlusion and omission by default. Declare a narrowly scoped exception only under `references/text-clearance-contract.md`; an intentional occlusion may never exceed a 0.30 ratio.
 - Test the mark at small size and in monochrome-like colorset1 before accepting a detailed result.
 
 ## Fast Path and Read Discipline
@@ -55,6 +57,7 @@ uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/
 - `references/texture-catalog.md`: read when choosing and tuning one of the 10 palette-safe SVG textures.
 - `references/palette-contract.md`: read before any palette, paint, opacity, or colorset decision.
 - `references/composition-contract.md`: read when building a gallery, a responsive lockup system, or a new finished composition.
+- `references/text-clearance-contract.md`: read before intentionally occluding or omitting any brand, tagline, wordmark, monogram, or initials.
 - `references/research-foundations.md`: read when explaining why text paths, masks, D3 shape generators, and dynamic identity parameters are appropriate.
 
 ## Maintenance

@@ -38,6 +38,10 @@ CONTROL_IDS = (
     "textureStrength",
 )
 RANGE_CONTROL_IDS = ("density", "curvature", "scale", "rotation", "textureStrength")
+TEXT_SAMPLE_STEP_PX = 2.75
+TEXT_OCCLUSION_TOLERANCE = 0.01
+TEXT_CLIP_TOLERANCE_PX = 0.75
+TEXT_MIN_OCCLUDED_SAMPLES = 3
 
 COLORSETS = {
     "colorset1": [
@@ -180,12 +184,15 @@ STATIC_AUDIT_JS = r"""
     findings.push(`Expected ${expectedPatterns} gallery SVGs, found ${gallerySvgs.length}.`);
   }
 
+  const exampleIds = cards.map(card => card.dataset.exampleId || "");
   const patternIds = cards.map(card => card.dataset.patternId || "");
   const compositionIds = cards.map(card => card.dataset.compositionId || "");
+  const legacyExampleIds = cards.map(card => card.dataset.legacyExampleId || "");
   const geometrySignatures = cards.map(card => card.dataset.geometrySignature || "");
   const usedTextureIds = cards.map(card => card.dataset.textureId || "");
 
   for (const [label, values, expected] of [
+    ["example", exampleIds, expectedPatterns],
     ["pattern", patternIds, expectedPatterns],
     ["composition", compositionIds, expectedCompositions],
     ["geometry signature", geometrySignatures, expectedPatterns]
@@ -198,10 +205,22 @@ STATIC_AUDIT_JS = r"""
     if (uniqueCount !== expected) findings.push(`Expected ${expected} unique ${label} IDs/signatures, found ${uniqueCount}.`);
   }
 
+  const invalidExampleIds = exampleIds.filter(value => value && !idPattern.test(value));
   const invalidPatternIds = patternIds.filter(value => value && !idPattern.test(value));
   const invalidCompositionIds = compositionIds.filter(value => value && !idPattern.test(value));
+  if (invalidExampleIds.length) findings.push(`Invalid example IDs: ${invalidExampleIds.join(", ")}.`);
   if (invalidPatternIds.length) findings.push(`Invalid pattern IDs: ${invalidPatternIds.join(", ")}.`);
   if (invalidCompositionIds.length) findings.push(`Invalid composition IDs: ${invalidCompositionIds.join(", ")}.`);
+  cards.forEach((card, index) => {
+    const expectedPatternId = `d3-logo-${exampleIds[index]}`;
+    const expectedLegacyExampleId = compositionIds[index].replace(/^d3-logo-/, "");
+    const visibleId = card.querySelector(".card-head p")?.textContent?.trim() || "";
+    if (card.dataset.example !== exampleIds[index]) findings.push(`Card ${patternIds[index] || index} data-example does not match data-example-id.`);
+    if (patternIds[index] !== expectedPatternId) findings.push(`Card ${patternIds[index] || index} example/pattern parity mismatch: ${exampleIds[index]} -> ${expectedPatternId}.`);
+    if (card.id !== patternIds[index]) findings.push(`Card ${patternIds[index] || index} DOM id must equal data-pattern-id.`);
+    if (visibleId !== patternIds[index]) findings.push(`Card ${patternIds[index] || index} visible ID label is ${visibleId || "missing"}.`);
+    if (legacyExampleIds[index] !== expectedLegacyExampleId) findings.push(`Card ${patternIds[index] || index} legacy example alias is ${legacyExampleIds[index] || "missing"}; expected ${expectedLegacyExampleId}.`);
+  });
 
   const registry = window.D3LogoDesign?.TEXTURES;
   const registeredTextureIds = textureIds(registry);
@@ -260,7 +279,7 @@ STATIC_AUDIT_JS = r"""
       contentBox.x + contentBox.width <= 483 && contentBox.y + contentBox.height <= 323;
     const report = {
       index,
-      exampleId: card.dataset.example || "",
+      exampleId: card.dataset.exampleId || "",
       svgCount: svgs.length,
       elementCount: svg?.querySelectorAll("*").length || 0,
       titleId: title?.id || "",
@@ -269,6 +288,7 @@ STATIC_AUDIT_JS = r"""
       hasDesc: Boolean(desc?.textContent?.trim()),
       ariaLabelledby: labelledBy,
       cardPatternId: card.dataset.patternId || "",
+      svgExampleId: svg?.dataset.exampleId || "",
       svgPatternId: svg?.dataset.patternId || "",
       cardCompositionId: card.dataset.compositionId || "",
       svgCompositionId: svg?.dataset.compositionId || "",
@@ -288,6 +308,7 @@ STATIC_AUDIT_JS = r"""
       findings.push(`SVG ${report.exampleId || index} is missing a direct title/desc or matching aria-labelledby references.`);
     }
     if (svg && report.svgPatternId !== report.cardPatternId) findings.push(`SVG/card pattern ID mismatch for ${report.exampleId || index}.`);
+    if (svg && report.svgExampleId !== report.exampleId) findings.push(`SVG/card example ID mismatch for ${report.exampleId || index}.`);
     if (svg && report.svgCompositionId !== report.cardCompositionId) findings.push(`SVG/card composition ID mismatch for ${report.exampleId || index}.`);
     if (svg && report.svgGeometrySignature && report.svgGeometrySignature !== report.cardGeometrySignature) findings.push(`SVG/card geometry signature mismatch for ${report.exampleId || index}.`);
     if (svg && report.svgTextureId !== report.cardTextureId) findings.push(`SVG/card texture ID mismatch for ${report.exampleId || index}.`);
@@ -362,6 +383,8 @@ STATIC_AUDIT_JS = r"""
     bodyCounts,
     cardCount: cards.length,
     gallerySvgCount: gallerySvgs.length,
+    uniqueExampleIds: new Set(exampleIds).size,
+    legacyExampleIds,
     uniquePatternIds: new Set(patternIds.filter(Boolean)).size,
     uniqueCompositionIds: new Set(compositionIds.filter(Boolean)).size,
     uniqueGeometrySignatures: new Set(geometrySignatures.filter(Boolean)).size,
@@ -378,6 +401,466 @@ STATIC_AUDIT_JS = r"""
     computedGradientCount: computedGradientNodes.length,
     stylesheetHasGradient,
     externalImageCount: externalImages.length + externalBackgrounds.length
+  };
+}
+"""
+
+
+TEXT_CLEARANCE_AUDIT_JS = r"""
+(card, { sampleStepPx, occlusionTolerance, clipTolerancePx, minOccludedSamples }) => {
+  const svg = card.querySelector(".viz-frame svg, svg");
+  const exampleId = card.dataset.exampleId || svg?.dataset.exampleId || "";
+  const patternId = card.dataset.patternId || svg?.dataset.patternId || "";
+  const compositionId = card.dataset.compositionId || svg?.dataset.compositionId || "";
+  const findingRecords = [];
+  const findingMessages = [];
+  const knownPolicies = new Set(["clear"]);
+  const drawableTags = new Set(["path", "rect", "circle", "ellipse", "line", "polyline", "polygon", "text", "textPath", "use"]);
+
+  function addFinding(kind, message, details = {}) {
+    const record = { kind, severity: "error", exampleId, patternId, compositionId, message, ...details };
+    findingRecords.push(record);
+    findingMessages.push(`[text-clearance][exampleId=${exampleId || "missing"}][patternId=${patternId || "missing"}] ${message}`);
+  }
+
+  function parseJsonContract(owner, datasetKey, label) {
+    const raw = owner?.dataset?.[datasetKey];
+    if (typeof raw !== "string") {
+      addFinding("contract", `${label} JSON metadata is missing.`, { datasetKey });
+      return [];
+    }
+    try {
+      const value = JSON.parse(raw);
+      if (!Array.isArray(value)) {
+        addFinding("contract", `${label} JSON must be an array.`, { datasetKey, raw });
+        return [];
+      }
+      return value;
+    } catch (error) {
+      addFinding("contract", `${label} JSON is invalid: ${error.message}.`, { datasetKey, raw });
+      return [];
+    }
+  }
+
+  function normalizedJson(value) {
+    return JSON.stringify(value);
+  }
+
+  function roleToken(value) {
+    return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(String(value || ""));
+  }
+
+  function ruleAppliesNow(rule) {
+    const when = String(rule?.when || "always");
+    if (when === "always") return true;
+    if (when === "small-size") return svg?.dataset.smallSize === "true";
+    if (when === "not-small-size") return svg?.dataset.smallSize !== "true";
+    const mode = svg?.querySelector("[data-lockup-mode]")?.dataset.lockupMode || "";
+    if (["wide", "stacked", "compact"].includes(when)) return mode === when;
+    return false;
+  }
+
+  function validateOcclusionRule(rule, index) {
+    if (!rule || typeof rule !== "object" || Array.isArray(rule)) {
+      addFinding("contract", `Intentional occlusion rule ${index} must be an object.`, { exceptionIndex: index });
+      return false;
+    }
+    const hasTextMatcher = Boolean(rule.textLayerId || rule.textRole);
+    const hasOccluderMatcher = Boolean(rule.occluderLayerId || rule.occluderRole);
+    const ratio = Number(rule.maxOcclusionRatio);
+    let valid = true;
+    if (!hasTextMatcher || !hasOccluderMatcher) {
+      addFinding("contract", `Intentional occlusion rule ${index} must identify both the text and occluder by role or layer ID.`, { exceptionIndex: index, rule });
+      valid = false;
+    }
+    if (rule.textRole && !roleToken(rule.textRole)) {
+      addFinding("contract", `Intentional occlusion rule ${index} has invalid textRole ${JSON.stringify(rule.textRole)}.`, { exceptionIndex: index, rule });
+      valid = false;
+    }
+    if (rule.occluderRole && !roleToken(rule.occluderRole)) {
+      addFinding("contract", `Intentional occlusion rule ${index} has invalid occluderRole ${JSON.stringify(rule.occluderRole)}.`, { exceptionIndex: index, rule });
+      valid = false;
+    }
+    if (!String(rule.reason || "").trim()) {
+      addFinding("contract", `Intentional occlusion rule ${index} needs a nonblank reason.`, { exceptionIndex: index, rule });
+      valid = false;
+    }
+    if (!Number.isFinite(ratio) || ratio <= 0 || ratio > 0.30) {
+      addFinding("contract", `Intentional occlusion rule ${index} has invalid maxOcclusionRatio ${JSON.stringify(rule.maxOcclusionRatio)}; expected > 0 and <= 0.30.`, { exceptionIndex: index, rule });
+      valid = false;
+    }
+    if (rule.when && !["always", "small-size", "not-small-size", "wide", "stacked", "compact"].includes(String(rule.when))) {
+      addFinding("contract", `Intentional occlusion rule ${index} has unsupported when=${JSON.stringify(rule.when)}.`, { exceptionIndex: index, rule });
+      valid = false;
+    }
+    return valid;
+  }
+
+  function validateOmissionRule(rule, index) {
+    if (!rule || typeof rule !== "object" || Array.isArray(rule)) {
+      addFinding("contract", `Intentional omission rule ${index} must be an object.`, { omissionIndex: index });
+      return false;
+    }
+    let valid = true;
+    if (!rule.textRole && !rule.textLayerId) {
+      addFinding("contract", `Intentional omission rule ${index} must identify a text role or layer ID.`, { omissionIndex: index, rule });
+      valid = false;
+    }
+    if (rule.textRole && !roleToken(rule.textRole)) {
+      addFinding("contract", `Intentional omission rule ${index} has invalid textRole ${JSON.stringify(rule.textRole)}.`, { omissionIndex: index, rule });
+      valid = false;
+    }
+    if (!String(rule.reason || "").trim()) {
+      addFinding("contract", `Intentional omission rule ${index} needs a nonblank reason.`, { omissionIndex: index, rule });
+      valid = false;
+    }
+    if (!rule.when || !["small-size", "wide", "stacked", "compact"].includes(String(rule.when))) {
+      addFinding("contract", `Intentional omission rule ${index} needs a supported conditional when value.`, { omissionIndex: index, rule });
+      valid = false;
+    }
+    return valid;
+  }
+
+  function semanticNodeFor(entry, composition) {
+    if (!(entry instanceof Element) || entry.namespaceURI !== "http://www.w3.org/2000/svg") return null;
+    if (!drawableTags.has(entry.localName)) return null;
+    const semantic = entry.closest("[data-text-layer-id], [data-layer-id]");
+    if (!semantic || !composition.contains(semantic)) return entry;
+    return semantic;
+  }
+
+  function requiresIndependentGlyph(node) {
+    if (node?.localName === "text" && !String(node.textContent || "").trim()) return false;
+    const classList = node?.classList;
+    return Boolean(classList?.contains("axis-glyph") || classList?.contains("rosette-glyph"));
+  }
+
+  function isWhitespaceSpacer(node) {
+    if (node?.localName !== "text") return false;
+    const value = String(node.textContent || "");
+    return value.length > 0 && !value.trim();
+  }
+
+  function semanticIdentity(node, composition) {
+    const baseTextLayerId = node?.dataset?.textLayerId || "";
+    const independentGlyph = Boolean(baseTextLayerId && requiresIndependentGlyph(node));
+    let glyphIndex = null;
+    let effectiveLayerId = baseTextLayerId;
+    if (independentGlyph) {
+      const peers = Array.from(composition.querySelectorAll("[data-text-layer-id]"))
+        .filter(candidate => candidate.dataset.textLayerId === baseTextLayerId && requiresIndependentGlyph(candidate));
+      glyphIndex = peers.indexOf(node);
+      if (peers.length > 1 && glyphIndex >= 0) {
+        effectiveLayerId = `${baseTextLayerId}--glyph-${String(glyphIndex + 1).padStart(2, "0")}`;
+      }
+    }
+    return {
+      layerId: effectiveLayerId || node?.dataset?.layerId || "",
+      baseLayerId: baseTextLayerId || node?.dataset?.layerId || "",
+      role: baseTextLayerId ? node?.dataset?.textRole || "" : node?.dataset?.layerRole || "",
+      isText: Boolean(baseTextLayerId),
+      independentGlyph,
+      glyphIndex: glyphIndex == null || glyphIndex < 0 ? null : glyphIndex + 1,
+      tag: node?.localName || "",
+      className: node?.getAttribute?.("class") || ""
+    };
+  }
+
+  function ruleMatches(rule, target, occluder) {
+    if (!ruleAppliesNow(rule)) return false;
+    if (rule.textLayerId && ![target.layerId, target.baseLayerId].includes(rule.textLayerId)) return false;
+    if (rule.textRole && rule.textRole !== target.role) return false;
+    if (rule.occluderLayerId && ![occluder.layerId, occluder.baseLayerId].includes(rule.occluderLayerId)) return false;
+    if (rule.occluderRole && rule.occluderRole !== occluder.role) return false;
+    return true;
+  }
+
+  function omissionMatches(rule, target) {
+    if (!ruleAppliesNow(rule)) return false;
+    if (rule.textLayerId && ![target.layerId, target.baseLayerId].includes(rule.textLayerId)) return false;
+    if (rule.textRole && rule.textRole !== target.role) return false;
+    return true;
+  }
+
+  function renderedText(node) {
+    const direct = String(node.textContent || "").replace(/\s+/g, " ").trim();
+    if (direct) return direct;
+    if (node.localName !== "use") return "";
+    const href = node.getAttribute("href") || node.getAttribute("xlink:href") || "";
+    const source = href.startsWith("#") ? svg?.querySelector(href) : null;
+    return String(source?.textContent || "").replace(/\s+/g, " ").trim();
+  }
+
+  if (!svg) {
+    addFinding("contract", "Gallery card has no SVG to audit.");
+    return { clean: false, exampleId, patternId, compositionId, findings: findingRecords, findingMessages, textLayers: [] };
+  }
+  const composition = svg.querySelector(".logo-composition");
+  if (!composition) {
+    addFinding("contract", "SVG has no .logo-composition group.");
+    return { clean: false, exampleId, patternId, compositionId, findings: findingRecords, findingMessages, textLayers: [] };
+  }
+
+  const svgOcclusions = parseJsonContract(svg, "intentionalTextOcclusions", "SVG intentional text occlusions");
+  const cardOcclusions = parseJsonContract(card, "intentionalTextOcclusions", "Card intentional text occlusions");
+  const svgOmissions = parseJsonContract(svg, "intentionalTextOmissions", "SVG intentional text omissions");
+  const cardOmissions = parseJsonContract(card, "intentionalTextOmissions", "Card intentional text omissions");
+  if (normalizedJson(svgOcclusions) !== normalizedJson(cardOcclusions)) {
+    addFinding("contract", "Card/SVG intentional text occlusion metadata differs.", { cardOcclusions, svgOcclusions });
+  }
+  if (normalizedJson(svgOmissions) !== normalizedJson(cardOmissions)) {
+    addFinding("contract", "Card/SVG intentional text omission metadata differs.", { cardOmissions, svgOmissions });
+  }
+  const validOcclusionRules = svgOcclusions.filter((rule, index) => validateOcclusionRule(rule, index));
+  const validOmissionRules = svgOmissions.filter((rule, index) => validateOmissionRule(rule, index));
+
+  const rawTextCandidates = Array.from(composition.querySelectorAll("text, use, [data-text-proxy]"));
+  const missingSemanticText = rawTextCandidates.filter(node => {
+    if (node.closest("defs")) return false;
+    if (isWhitespaceSpacer(node)) return false;
+    if (node.closest("[data-text-layer-id]")) return false;
+    if (node.localName === "use") {
+      const href = node.getAttribute("href") || node.getAttribute("xlink:href") || "";
+      const source = href.startsWith("#") ? svg.querySelector(href) : null;
+      if (source?.localName !== "text" && !node.hasAttribute("data-text-proxy")) return false;
+    }
+    return node.localName === "text" || node.hasAttribute("data-text-proxy") || node.localName === "use";
+  });
+  if (missingSemanticText.length) {
+    addFinding("contract", `${missingSemanticText.length} rendered text candidates lack data-text-layer-id metadata.`, {
+      missingSemanticText: missingSemanticText.slice(0, 12).map(node => ({ tag: node.localName, className: node.getAttribute("class") || "" }))
+    });
+  }
+
+  const unannotatedDrawables = Array.from(composition.querySelectorAll("path, rect, circle, ellipse, line, polyline, polygon, use, text"))
+    .filter(node => !node.closest("defs") && !node.closest("[data-text-layer-id]") && !node.hasAttribute("data-layer-id"));
+  if (unannotatedDrawables.length) {
+    addFinding("contract", `${unannotatedDrawables.length} drawable layers lack data-layer-id metadata.`, {
+      unannotatedDrawables: unannotatedDrawables.slice(0, 12).map(node => ({ tag: node.localName, className: node.getAttribute("class") || "" }))
+    });
+  }
+
+  const svgRect = svg.getBoundingClientRect();
+  const textNodes = Array.from(composition.querySelectorAll("[data-text-layer-id]")).filter(node => !isWhitespaceSpacer(node));
+  if (!textNodes.length) addFinding("contract", "SVG exposes no semantic text layers.");
+  const textLayers = [];
+  const usedExceptionIndexes = new Set();
+
+  textNodes.forEach((targetNode, targetIndex) => {
+    const target = semanticIdentity(targetNode, composition);
+    const policy = targetNode.dataset.textPolicy || "";
+    const source = targetNode.dataset.textSource || "";
+    const rect = targetNode.getBoundingClientRect();
+    const computedStyle = getComputedStyle(targetNode);
+    const visible = rect.width > 0 && rect.height > 0 && computedStyle.display !== "none" &&
+      computedStyle.visibility !== "hidden" && Number(computedStyle.opacity || 1) > 0;
+    const activeOmissionRules = validOmissionRules.filter(rule => omissionMatches(rule, target));
+    if (!target.layerId || !target.role || !source || !policy) {
+      addFinding("contract", `Text layer ${target.layerId || targetIndex} is missing layer ID, role, source, or policy metadata.`, {
+        textLayerId: target.layerId, textRole: target.role, textSource: source, textPolicy: policy
+      });
+    }
+    if (target.layerId && !target.layerId.startsWith(`${exampleId}--`)) {
+      addFinding("contract", `Text layer ID ${target.layerId} must begin with ${exampleId}--.`, { textLayerId: target.layerId, textRole: target.role });
+    }
+    if (target.role && !roleToken(target.role)) {
+      addFinding("contract", `Text layer ${target.layerId || targetIndex} has invalid role ${JSON.stringify(target.role)}.`, { textLayerId: target.layerId, textRole: target.role });
+    }
+    if (policy && !knownPolicies.has(policy)) {
+      addFinding("contract", `Text layer ${target.layerId || targetIndex} has unknown policy ${JSON.stringify(policy)}.`, { textLayerId: target.layerId, textRole: target.role, textPolicy: policy });
+    }
+
+    const overflowPx = {
+      left: Math.max(0, svgRect.left - rect.left),
+      right: Math.max(0, rect.right - svgRect.right),
+      top: Math.max(0, svgRect.top - rect.top),
+      bottom: Math.max(0, rect.bottom - svgRect.bottom)
+    };
+    const maxOverflowPx = Math.max(...Object.values(overflowPx));
+    const policyAllowsClipping = false;
+    const clipped = visible && maxOverflowPx > clipTolerancePx;
+    if (clipped && !policyAllowsClipping) {
+      addFinding("clipping", `Text layer ${target.layerId || targetIndex} (${target.role || "missing-role"}) exceeds the SVG viewport by ${maxOverflowPx.toFixed(2)} px.`, {
+        textLayerId: target.layerId, textRole: target.role, textPolicy: policy, overflowPx
+      });
+    }
+
+    let paintedSamples = 0;
+    const occluderCounts = new Map();
+    if (visible) {
+      const step = Math.max(1.5, Number(sampleStepPx) || 2.75);
+      const originalStyleAttribute = targetNode.getAttribute("style");
+      targetNode.style.pointerEvents = "visiblePainted";
+      for (let y = Math.floor(rect.top); y <= Math.ceil(rect.bottom); y += step) {
+        if (y < svgRect.top - 1 || y > svgRect.bottom + 1) continue;
+        for (let x = Math.floor(rect.left); x <= Math.ceil(rect.right); x += step) {
+          if (x < svgRect.left - 1 || x > svgRect.right + 1) continue;
+          const stack = document.elementsFromPoint(x, y);
+          const targetStackIndex = stack.findIndex(entry => entry === targetNode || targetNode.contains(entry));
+          if (targetStackIndex < 0) continue;
+          paintedSamples += 1;
+          let occluderNode = null;
+          for (const entry of stack.slice(0, targetStackIndex)) {
+            const semantic = semanticNodeFor(entry, composition);
+            if (!semantic || semantic === targetNode || targetNode.contains(semantic)) continue;
+            occluderNode = semantic;
+            break;
+          }
+          if (!occluderNode) continue;
+          const occluder = semanticIdentity(occluderNode, composition);
+          if (target.baseLayerId && target.baseLayerId === occluder.baseLayerId &&
+              !target.independentGlyph && !occluder.independentGlyph) {
+            continue;
+          }
+          const key = `${occluder.layerId}\u0000${occluder.role}\u0000${occluder.tag}\u0000${occluder.className}`;
+          const current = occluderCounts.get(key) || { ...occluder, samples: 0 };
+          current.samples += 1;
+          occluderCounts.set(key, current);
+        }
+      }
+      if (originalStyleAttribute == null) targetNode.removeAttribute("style");
+      else targetNode.setAttribute("style", originalStyleAttribute);
+    }
+
+    const policyAllowsOcclusion = false;
+    let allowedOccludedSamples = 0;
+    let unexpectedOccludedSamples = 0;
+    const occluders = Array.from(occluderCounts.values()).map(occluder => {
+      const ratio = paintedSamples ? occluder.samples / paintedSamples : 0;
+      const matchingRules = validOcclusionRules
+        .map((rule, index) => ({ rule, index }))
+        .filter(item => ruleMatches(item.rule, target, occluder));
+      matchingRules.forEach(item => usedExceptionIndexes.add(item.index));
+      const maxDeclaredRatio = matchingRules.length
+        ? Math.max(...matchingRules.map(item => Number(item.rule.maxOcclusionRatio)))
+        : null;
+      const allowedByException = maxDeclaredRatio != null && ratio <= maxDeclaredRatio + occlusionTolerance;
+      const allowed = policyAllowsOcclusion || allowedByException;
+      if (allowed) allowedOccludedSamples += occluder.samples;
+      else unexpectedOccludedSamples += occluder.samples;
+      return {
+        ...occluder,
+        ratio,
+        allowed,
+        maxDeclaredRatio,
+        matchingExceptionIndexes: matchingRules.map(item => item.index)
+      };
+    }).sort((left, right) => right.samples - left.samples);
+    const totalOccludedSamples = allowedOccludedSamples + unexpectedOccludedSamples;
+    const totalOcclusionRatio = paintedSamples ? totalOccludedSamples / paintedSamples : 0;
+    const unexpectedOcclusionRatio = paintedSamples ? unexpectedOccludedSamples / paintedSamples : 0;
+    const unexpectedOcclusion = unexpectedOccludedSamples >= minOccludedSamples && unexpectedOcclusionRatio > occlusionTolerance;
+    if (unexpectedOcclusion) {
+      const leading = occluders.filter(item => !item.allowed).slice(0, 4);
+      addFinding("occlusion", `Text layer ${target.layerId || targetIndex} (${target.role || "missing-role"}) has ${(unexpectedOcclusionRatio * 100).toFixed(1)}% unexpected occlusion.`, {
+        textLayerId: target.layerId,
+        textRole: target.role,
+        textPolicy: policy,
+        unexpectedOcclusionRatio,
+        unexpectedOccludedSamples,
+        paintedSamples,
+        occluders: leading
+      });
+    }
+    for (const occluder of occluders) {
+      if (!occluder.matchingExceptionIndexes.length || occluder.allowed) continue;
+      addFinding("exception-exceeded", `Text layer ${target.layerId || targetIndex} exceeds its declared occlusion limit against ${occluder.layerId || occluder.role || occluder.tag}: ${(occluder.ratio * 100).toFixed(1)}% observed.`, {
+        textLayerId: target.layerId,
+        textRole: target.role,
+        occluder,
+        matchingExceptionIndexes: occluder.matchingExceptionIndexes
+      });
+    }
+
+    textLayers.push({
+      index: targetIndex,
+      layerId: target.layerId,
+      baseLayerId: target.baseLayerId,
+      role: target.role,
+      independentGlyph: target.independentGlyph,
+      glyphIndex: target.glyphIndex,
+      policy,
+      source,
+      tag: target.tag,
+      className: target.className,
+      text: renderedText(targetNode),
+      visible,
+      activeOmissionRuleCount: activeOmissionRules.length,
+      renderState: {
+        display: computedStyle.display,
+        visibility: computedStyle.visibility,
+        opacity: computedStyle.opacity
+      },
+      bbox: { x: rect.x - svgRect.x, y: rect.y - svgRect.y, width: rect.width, height: rect.height },
+      overflowPx,
+      clipped,
+      paintedSamples,
+      totalOccludedSamples,
+      totalOcclusionRatio,
+      allowedOccludedSamples,
+      unexpectedOccludedSamples,
+      unexpectedOcclusionRatio,
+      occluders
+    });
+  });
+
+  const baseLayerGroups = new Map();
+  for (const layer of textLayers) {
+    const key = layer.independentGlyph ? layer.layerId : layer.baseLayerId;
+    const group = baseLayerGroups.get(key) || [];
+    group.push(layer);
+    baseLayerGroups.set(key, group);
+  }
+  for (const [baseLayerId, layers] of baseLayerGroups) {
+    const independentlyAudited = layers.some(layer => layer.independentGlyph);
+    if (independentlyAudited) {
+      for (const layer of layers) {
+        if (layer.activeOmissionRuleCount) continue;
+        if (!layer.visible || layer.paintedSamples === 0) {
+          addFinding("hidden", `Text sublayer ${layer.layerId} (${layer.role || "missing-role"}) is not visibly painted.`, {
+            textLayerId: layer.layerId,
+            baseTextLayerId: layer.baseLayerId,
+            textRole: layer.role,
+            textPolicy: layer.policy,
+            glyphIndex: layer.glyphIndex,
+            paintedSamples: layer.paintedSamples,
+            renderState: layer.renderState,
+            bbox: layer.bbox
+          });
+        }
+      }
+      continue;
+    }
+    const hasPaintedMember = layers.some(layer => layer.visible && layer.paintedSamples > 0);
+    const hasActiveOmission = layers.some(layer => layer.activeOmissionRuleCount > 0);
+    if (!hasPaintedMember && !hasActiveOmission) {
+      addFinding("hidden", `Semantic text layer ${baseLayerId} (${layers[0]?.role || "missing-role"}) has no visibly painted member.`, {
+        textLayerId: baseLayerId,
+        textRole: layers[0]?.role || "",
+        textPolicy: layers[0]?.policy || "",
+        memberCount: layers.length,
+        members: layers.map(layer => ({ index: layer.index, visible: layer.visible, paintedSamples: layer.paintedSamples, renderState: layer.renderState, bbox: layer.bbox }))
+      });
+    }
+  }
+
+  return {
+    clean: findingRecords.length === 0,
+    exampleId,
+    patternId,
+    compositionId,
+    requestedScale: Number(svg?.dataset.scale || NaN),
+    effectiveScale: Number(svg?.dataset.effectiveScale || NaN),
+    requestedRotation: Number(svg?.dataset.rotation || NaN),
+    effectiveRotation: Number(svg?.dataset.effectiveRotation || NaN),
+    findings: findingRecords,
+    findingMessages,
+    textLayerCount: textLayers.length,
+    textLayers,
+    intentionalOcclusionRules: validOcclusionRules,
+    intentionalOmissionRules: validOmissionRules,
+    usedExceptionIndexes: Array.from(usedExceptionIndexes).sort((a, b) => a - b),
+    unusedExceptionIndexes: validOcclusionRules.map((_, index) => index).filter(index => !usedExceptionIndexes.has(index))
   };
 }
 """
@@ -600,8 +1083,12 @@ STUDIO_SNAPSHOT_JS = r"""
 
 RENDER_PASSES_JS = r"""
 () => Array.from(document.querySelectorAll("[data-example]"), card => ({
-  exampleId: card.dataset.example || "",
+  exampleId: card.dataset.exampleId || "",
   patternId: card.dataset.patternId || "",
+  domId: card.id || "",
+  visibleId: card.querySelector(".card-head p")?.textContent?.trim() || "",
+  svgExampleId: card.querySelector("svg")?.dataset.exampleId || "",
+  svgPatternId: card.querySelector("svg")?.dataset.patternId || "",
   compositionId: card.dataset.compositionId || "",
   renderPass: card.dataset.renderPass || card.querySelector("svg")?.dataset.renderPass || null,
   elementCount: card.querySelector("svg")?.querySelectorAll("*").length || 0
@@ -649,6 +1136,49 @@ def apply_control(page: Page, control_id: str, value: str, *, render_all: bool, 
 
 def state_changed(before: dict[str, Any], after: dict[str, Any]) -> bool:
     return before.get("dataset") != after.get("dataset") or before.get("config") != after.get("config")
+
+
+def audit_text_clearance(page: Page, wait_ms: int) -> dict[str, Any]:
+    """Audit semantic text layers after scrolling each gallery card into the viewport."""
+
+    card_locator = page.locator("[data-example]")
+    card_count = card_locator.count()
+    card_reports: list[dict[str, Any]] = []
+    finding_records: list[dict[str, Any]] = []
+    finding_messages: list[str] = []
+
+    for index in range(card_count):
+        card = card_locator.nth(index)
+        card.scroll_into_view_if_needed()
+        page.wait_for_timeout(max(10, min(wait_ms, 80)))
+        card_report = card.evaluate(
+            TEXT_CLEARANCE_AUDIT_JS,
+            {
+                "sampleStepPx": TEXT_SAMPLE_STEP_PX,
+                "occlusionTolerance": TEXT_OCCLUSION_TOLERANCE,
+                "clipTolerancePx": TEXT_CLIP_TOLERANCE_PX,
+                "minOccludedSamples": TEXT_MIN_OCCLUDED_SAMPLES,
+            },
+        )
+        card_reports.append(card_report)
+        finding_records.extend(card_report.get("findings", []))
+        finding_messages.extend(card_report.get("findingMessages", []))
+
+    return {
+        "clean": not finding_records,
+        "cardCount": card_count,
+        "auditedTextLayerCount": sum(int(item.get("textLayerCount") or 0) for item in card_reports),
+        "findingCount": len(finding_records),
+        "findings": finding_records,
+        "findingMessages": finding_messages,
+        "cards": card_reports,
+        "thresholds": {
+            "sampleStepPx": TEXT_SAMPLE_STEP_PX,
+            "occlusionTolerance": TEXT_OCCLUSION_TOLERANCE,
+            "clipTolerancePx": TEXT_CLIP_TOLERANCE_PX,
+            "minOccludedSamples": TEXT_MIN_OCCLUDED_SAMPLES,
+        },
+    }
 
 
 def exercise_controls(page: Page, wait_ms: int) -> tuple[list[dict[str, Any]], list[str]]:
@@ -725,6 +1255,53 @@ def exercise_controls(page: Page, wait_ms: int) -> tuple[list[dict[str, Any]], l
             findings.append(f"Control #{control_id} did not change studio SVG content.")
 
     return reports, findings
+
+
+def exercise_boundary_controls(page: Page, wait_ms: int) -> tuple[dict[str, Any], list[str]]:
+    findings: list[str] = []
+    requested_values: dict[str, str] = {
+        "brand": "W" * 32,
+        "tagline": "W" * 56,
+        "font": "editorial",
+    }
+    applied_values: dict[str, str] = {}
+
+    for control_id in ("brand", "tagline", "font", *RANGE_CONTROL_IDS):
+        info = page.evaluate(CONTROL_INFO_JS, control_id)
+        if not info:
+            findings.append(f"Cannot exercise boundary value for missing control #{control_id}.")
+            continue
+        requested = requested_values.get(control_id)
+        if requested is None:
+            requested = str(info.get("max", ""))
+        if not requested:
+            findings.append(f"Control #{control_id} does not expose a usable maximum boundary.")
+            continue
+        try:
+            applied = apply_control(page, control_id, requested, render_all=False, wait_ms=wait_ms)
+        except PlaywrightError as error:
+            findings.append(f"Boundary control #{control_id} failed during interaction: {error}")
+            continue
+        applied_values[control_id] = applied
+        if applied != requested:
+            findings.append(f"Boundary control #{control_id} applied {applied!r}; expected {requested!r}.")
+
+    try:
+        page.evaluate("() => window.D3LogoGallery.renderAll()")
+        page.wait_for_timeout(max(wait_ms, 0))
+    except PlaywrightError as error:
+        findings.append(f"Boundary renderAll failed: {error}")
+
+    snapshot = snapshot_studio(page)
+    if snapshot is None:
+        findings.append("Boundary controls removed #studio-logo.")
+    return {
+        "requestedValues": requested_values,
+        "appliedValues": applied_values,
+        "brandLength": len(requested_values["brand"]),
+        "taglineLength": len(requested_values["tagline"]),
+        "studio": snapshot,
+    }, findings
 
 
 def exercise_colorsets(page: Page, wait_ms: int) -> tuple[list[dict[str, Any]], list[str]]:
@@ -839,6 +1416,14 @@ def exercise_replay(page: Page, wait_ms: int) -> tuple[list[dict[str, Any]], lis
             )
         if int(after[card_index].get("elementCount") or 0) <= 8:
             findings.append(f"Replay left card {card_record.get('exampleId') or card_index} with too little SVG content.")
+        replayed = after[card_index]
+        expected_pattern_id = f"d3-logo-{replayed.get('exampleId', '')}"
+        if replayed.get("patternId") != expected_pattern_id:
+            findings.append(f"Replay broke example/pattern parity for {replayed.get('exampleId') or card_index}.")
+        if replayed.get("domId") != replayed.get("patternId") or replayed.get("visibleId") != replayed.get("patternId"):
+            findings.append(f"Replay broke DOM or visible ID parity for {replayed.get('exampleId') or card_index}.")
+        if replayed.get("svgExampleId") != replayed.get("exampleId") or replayed.get("svgPatternId") != replayed.get("patternId"):
+            findings.append(f"Replay broke SVG ID parity for {replayed.get('exampleId') or card_index}.")
 
     return reports, findings
 
@@ -912,6 +1497,10 @@ def main() -> int:
             if d3_version != "7.9.0":
                 findings.append(f"Expected embedded D3 7.9.0, found {d3_version!r}.")
 
+            text_clearance_report = audit_text_clearance(page, args.wait_ms)
+            report["textClearance"] = text_clearance_report
+            findings.extend(text_clearance_report.get("findingMessages", []))
+
             if args.initial_screenshot:
                 args.initial_screenshot.parent.mkdir(parents=True, exist_ok=True)
                 page.screenshot(path=str(args.initial_screenshot.resolve()), full_page=True)
@@ -941,6 +1530,16 @@ def main() -> int:
                       const box = svg.getBoundingClientRect();
                       const initialsBox = initials && initials.getBoundingClientRect();
                       const wordmarkBox = wordmark && wordmark.getBoundingClientRect();
+                      let omissionRules = [];
+                      try { omissionRules = JSON.parse(svg.dataset.intentionalTextOmissions || "[]"); } catch (_) {}
+                      const taglineOmissionDeclared = omissionRules.some(rule => rule?.textRole === "tagline" && rule?.when === "small-size" && String(rule?.reason || "").trim());
+                      const visibleTagline = Array.from(svg.querySelectorAll('[data-text-role="tagline"]')).some(node => {
+                        const rect = node.getBoundingClientRect();
+                        const style = getComputedStyle(node);
+                        return rect.width > 0 && rect.height > 0 && style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity || 1) > 0;
+                      });
+                      const configuredTagline = String(window.D3LogoGallery?.currentConfig?.tagline || "");
+                      const accessibleDescription = svg.querySelector(':scope > desc')?.textContent || '';
                       return {
                         width: box.width,
                         height: box.height,
@@ -948,7 +1547,12 @@ def main() -> int:
                         compactLockup: Boolean(compact),
                         initialsHeight: initialsBox ? initialsBox.height : 0,
                         wordmarkHeight: wordmarkBox ? wordmarkBox.height : 0,
-                        wordmarkText: wordmark ? wordmark.textContent : ''
+                        wordmarkText: wordmark ? wordmark.textContent : '',
+                        taglineOmissionDeclared,
+                        visibleTagline,
+                        configuredTagline,
+                        accessibleDescription,
+                        accessibleTaglinePreserved: !configuredTagline || accessibleDescription.includes(configuredTagline)
                       };
                     }"""
                 )
@@ -960,6 +1564,12 @@ def main() -> int:
                     findings.append(f"The 96x64 compact initials are too small: {small_report.get('initialsHeight', 0):.2f}px high.")
                 if small_report.get("wordmarkHeight", 0) < 6:
                     findings.append(f"The 96x64 compact wordmark is too small: {small_report.get('wordmarkHeight', 0):.2f}px high.")
+                if not small_report.get("taglineOmissionDeclared"):
+                    findings.append("The 96x64 compact lockup omits its tagline without an exact small-size omission declaration.")
+                if small_report.get("visibleTagline"):
+                    findings.append("The 96x64 compact lockup renders the tagline even though the declared small-size state omits it.")
+                if not small_report.get("accessibleTaglinePreserved"):
+                    findings.append("The 96x64 compact lockup does not preserve the omitted tagline in its accessible description.")
                 args.small_logo_screenshot.parent.mkdir(parents=True, exist_ok=True)
                 studio_locator.scroll_into_view_if_needed(timeout=args.timeout_ms)
                 studio_box = studio_locator.bounding_box()
@@ -990,6 +1600,18 @@ def main() -> int:
                 colorset_reports, colorset_findings = exercise_colorsets(page, args.wait_ms)
                 report["colorsets"] = colorset_reports
                 findings.extend(colorset_findings)
+
+                post_control_text_clearance = audit_text_clearance(page, args.wait_ms)
+                report["textClearanceAfterControls"] = post_control_text_clearance
+                findings.extend(post_control_text_clearance.get("findingMessages", []))
+
+                boundary_report, boundary_findings = exercise_boundary_controls(page, args.wait_ms)
+                report["boundaryControls"] = boundary_report
+                findings.extend(boundary_findings)
+
+                boundary_text_clearance = audit_text_clearance(page, args.wait_ms)
+                report["textClearanceAtControlBoundaries"] = boundary_text_clearance
+                findings.extend(boundary_text_clearance.get("findingMessages", []))
 
                 replay_reports, replay_findings = exercise_replay(page, args.wait_ms)
                 report["replay"] = replay_reports

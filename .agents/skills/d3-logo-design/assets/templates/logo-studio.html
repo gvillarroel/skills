@@ -209,6 +209,7 @@
         colorset: controls.colorset.value,
         font: controls.font.value,
         patternId: controls.pattern.value,
+        exampleId: controls.pattern.value.replace(/^d3-logo-/, ""),
         textureId: controls.texture.value,
         density: Number(controls.density.value),
         curvature: Number(controls.curvature.value),
@@ -238,7 +239,7 @@
 
       const renderCard = (card, spec, overrides = {}) => {
         const svg = card.querySelector("svg");
-        const config = {...spec, ...overrides, compositionId: spec.id, patternId: spec.patternId};
+        const config = {...spec, ...overrides, compositionId: spec.id, exampleId: spec.exampleId, patternId: spec.patternId};
         engine.renderLogo(svg, config);
         card.dataset.textureId = config.textureId;
         card.dataset.colorset = config.colorset;
@@ -252,15 +253,18 @@
         const article = document.createElement("article");
         article.className = "logo-card";
         article.id = spec.patternId;
-        article.dataset.example = spec.id;
-        article.dataset.exampleId = spec.id.replace(/^d3-logo-/, "");
+        article.dataset.example = spec.exampleId;
+        article.dataset.exampleId = spec.exampleId;
         article.dataset.patternId = spec.patternId;
         article.dataset.compositionId = spec.id;
+        article.dataset.legacyExampleId = spec.id.replace(/^d3-logo-/, "");
         article.dataset.geometrySignature = pattern.geometrySignature;
         article.dataset.textureId = spec.textureId;
+        article.dataset.intentionalTextOcclusions = JSON.stringify(pattern.intentionalOcclusions || []);
+        article.dataset.intentionalTextOmissions = JSON.stringify(pattern.intentionalOmissions || []);
         article.dataset.renderPass = "0";
         article.dataset.replayState = "ready";
-        article.innerHTML = `<div class="card-head"><div><h3>${pattern.label}</h3><p>${spec.id}</p></div><button type="button" data-replay="${spec.id}">Replay</button></div><div class="viz-frame"><svg id="${spec.id}-svg" viewBox="0 0 480 320" role="img"></svg></div><div class="card-foot"><code>${pattern.geometrySignature}</code><span>${spec.colorset}</span></div>`;
+        article.innerHTML = `<div class="card-head"><div><h3>${pattern.label}</h3><p>${spec.patternId}</p></div><button type="button" data-replay="${spec.id}">Replay</button></div><div class="viz-frame"><svg id="${spec.exampleId}-svg" viewBox="0 0 480 320" role="img"></svg></div><div class="card-foot"><code>${pattern.geometrySignature}</code><span>${spec.colorset}</span></div>`;
         article.querySelector("[data-replay]").addEventListener("click", () => renderCard(article, spec, applyAllMode ? currentConfig : {}));
         return article;
       };
@@ -284,7 +288,7 @@
           const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
           svg.setAttribute("viewBox", "0 0 120 56");
           svg.setAttribute("aria-label", texture.label);
-          const config = {...initialConfig, colorset, textureId: texture.id, patternId: "d3-logo-letter-window", brand: String(index + 1).padStart(2, "0"), tagline: "", textureStrength: 1, compositionId: `d3-logo-swatch-${index + 1}`};
+          const config = {...initialConfig, colorset, textureId: texture.id, patternId: "d3-logo-letter-window", exampleId: "letter-window", brand: String(index + 1).padStart(2, "0"), tagline: "", textureStrength: 1, compositionId: `d3-logo-swatch-${index + 1}`};
           engine.renderLogo(svg, config);
           const texturePattern = svg.querySelector(`pattern[data-texture-id="${texture.id}"]`);
           const composition = svg.querySelector(".logo-composition");
