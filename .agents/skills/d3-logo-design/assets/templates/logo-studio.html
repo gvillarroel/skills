@@ -105,14 +105,14 @@
     }
   </style>
 </head>
-<body data-example-count="30" data-pattern-count="30" data-texture-count="10" data-composition-count="30" data-colorset="__D3_LOGO_COLORSET__">
+<body data-example-count="60" data-pattern-count="60" data-texture-count="10" data-composition-count="60" data-colorset="__D3_LOGO_COLORSET__">
   <header>
     <div>
       <h1>D3 Logo Design Studio</h1>
-      <p>Thirty distinct construction mechanisms, ten palette-safe SVG textures, and one adjustable colorset1/colorset2 skin.</p>
+      <p>Sixty distinct construction mechanisms, ten palette-safe SVG textures, and one adjustable colorset1/colorset2 skin.</p>
     </div>
     <div class="count-strip" aria-label="Catalog totals">
-      <span>30 patterns</span><span>10 textures</span><span>30 compositions</span>
+      <span>60 patterns</span><span>10 textures</span><span>60 compositions</span>
     </div>
   </header>
   <main>
@@ -151,9 +151,9 @@
 
     <div class="gallery-heading">
       <div><h2>Finished compositions</h2><p>Each card uses a different construction topology. Text, font, palette, texture, density, curvature, scale, and rotation remain adjustable.</p></div>
-      <button id="restore-gallery" type="button">Restore 30 defaults</button>
+      <button id="restore-gallery" type="button">Restore 60 defaults</button>
     </div>
-    <section class="logo-gallery" id="logo-gallery" aria-label="Thirty D3 logo compositions"></section>
+    <section class="logo-gallery" id="logo-gallery" aria-label="Sixty D3 logo compositions"></section>
   </main>
   <footer><p>All visible paints are restricted to the active colorset1 or colorset2 token list.</p></footer>
 
@@ -176,6 +176,7 @@
       const gallery = document.getElementById("logo-gallery");
       const studio = document.getElementById("studio-logo");
       const status = document.getElementById("studio-status");
+      const cardsByCompositionId = new Map();
       let currentConfig = {...initialConfig};
       let applyAllMode = false;
       window.D3LogoGallery = {currentConfig};
@@ -266,6 +267,7 @@
         article.dataset.replayState = "ready";
         article.innerHTML = `<div class="card-head"><div><h3>${pattern.label}</h3><p>${spec.patternId}</p></div><button type="button" data-replay="${spec.id}">Replay</button></div><div class="viz-frame"><svg id="${spec.exampleId}-svg" viewBox="0 0 480 320" role="img"></svg></div><div class="card-foot"><code>${pattern.geometrySignature}</code><span>${spec.colorset}</span></div>`;
         article.querySelector("[data-replay]").addEventListener("click", () => renderCard(article, spec, applyAllMode ? currentConfig : {}));
+        cardsByCompositionId.set(spec.id, article);
         return article;
       };
 
@@ -274,7 +276,7 @@
         applyAllMode = Boolean(overrides);
         if (!gallery.children.length) gallery.replaceChildren(...manifest.compositions.map(buildCard));
         for (const spec of manifest.compositions) {
-          const card = Array.from(gallery.children).find(node => node.dataset.compositionId === spec.id);
+          const card = cardsByCompositionId.get(spec.id);
           renderCard(card, spec, overrides || {});
         }
       };

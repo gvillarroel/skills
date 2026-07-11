@@ -21,8 +21,8 @@ from playwright.sync_api import Error as PlaywrightError
 from playwright.sync_api import Page, sync_playwright
 
 
-EXPECTED_PATTERNS = 30
-EXPECTED_COMPOSITIONS = 30
+EXPECTED_PATTERNS = 60
+EXPECTED_COMPOSITIONS = 60
 EXPECTED_TEXTURES = 10
 CONTROL_IDS = (
     "brand",
