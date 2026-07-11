@@ -1,0 +1,263 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f522f-b663-7c44-9d3a-cbcef6552f40",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-logo-design-offline-release-20260711-spark-1\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 15
+  },
+  "providers": {
+    "openai-codex": 15
+  },
+  "usageTotals": {
+    "input": 22275,
+    "output": 2969,
+    "cacheRead": 80640,
+    "cacheWrite": 0,
+    "totalTokens": 105884
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 7,
+    "bash": 7
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1488
+    },
+    {
+      "path": "skills/d3-logo-design/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6068
+    },
+    {
+      "path": "skills/d3-logo-design/references/pattern-catalog.md",
+      "calls": 1,
+      "resultBytes": 6144
+    },
+    {
+      "path": "skills/d3-logo-design/references/texture-catalog.md",
+      "calls": 1,
+      "resultBytes": 2256
+    },
+    {
+      "path": "skills/d3-logo-design/references/palette-contract.md",
+      "calls": 1,
+      "resultBytes": 2501
+    },
+    {
+      "path": "skills/d3-logo-design/references/composition-contract.md",
+      "calls": 1,
+      "resultBytes": 3936
+    },
+    {
+      "path": "outputs/canopy-signal-validation.json",
+      "calls": 1,
+      "resultBytes": 1075
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1488
+    },
+    {
+      "path": "skills/d3-logo-design/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6068
+    },
+    {
+      "path": "skills/d3-logo-design/references/pattern-catalog.md",
+      "calls": 1,
+      "resultBytes": 6144
+    },
+    {
+      "path": "skills/d3-logo-design/references/texture-catalog.md",
+      "calls": 1,
+      "resultBytes": 2256
+    },
+    {
+      "path": "skills/d3-logo-design/references/palette-contract.md",
+      "calls": 1,
+      "resultBytes": 2501
+    },
+    {
+      "path": "skills/d3-logo-design/references/composition-contract.md",
+      "calls": 1,
+      "resultBytes": 3936
+    },
+    {
+      "path": "outputs/canopy-signal-validation.json",
+      "calls": 1,
+      "resultBytes": 1075
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3-logo-design/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3-logo-design/references/pattern-catalog.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3-logo-design/references/texture-catalog.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3-logo-design/references/palette-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3-logo-design/references/composition-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/canopy-signal-validation.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 23468,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1488
+    },
+    {
+      "line": 29,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la",
+      "isError": false,
+      "resultBytes": 190
+    },
+    {
+      "line": 44,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la skills/d3-logo-design",
+      "isError": false,
+      "resultBytes": 415
+    },
+    {
+      "line": 57,
+      "tool": "read",
+      "path": "skills/d3-logo-design/SKILL.md",
+      "policyPath": "skills/d3-logo-design/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6068
+    },
+    {
+      "line": 70,
+      "tool": "read",
+      "path": "skills/d3-logo-design/references/pattern-catalog.md",
+      "policyPath": "skills/d3-logo-design/references/pattern-catalog.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6144
+    },
+    {
+      "line": 83,
+      "tool": "read",
+      "path": "skills/d3-logo-design/references/texture-catalog.md",
+      "policyPath": "skills/d3-logo-design/references/texture-catalog.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2256
+    },
+    {
+      "line": 96,
+      "tool": "read",
+      "path": "skills/d3-logo-design/references/palette-contract.md",
+      "policyPath": "skills/d3-logo-design/references/palette-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2501
+    },
+    {
+      "line": 109,
+      "tool": "read",
+      "path": "skills/d3-logo-design/references/composition-contract.md",
+      "policyPath": "skills/d3-logo-design/references/composition-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3936
+    },
+    {
+      "line": 124,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --help",
+      "isError": false,
+      "resultBytes": 3128
+    },
+    {
+      "line": 139,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py --help",
+      "isError": false,
+      "resultBytes": 832
+    },
+    {
+      "line": 154,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --output outputs/canopy-signal-logo.html --brand \"CANOPY SIGNAL\" --tagline \"Field intelligence, naturally connected\" --colorset colorset1 --pattern d3-logo-animal-surface-ma",
+      "isError": false,
+      "resultBytes": 587
+    },
+    {
+      "line": 169,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/canopy-signal-logo.html --expect-patterns 30 --expect-textures 10 --expect-compositions 30 --require-colorset colorset1 --json-report outputs/canopy-signal-vali",
+      "isError": false,
+      "resultBytes": 1075
+    },
+    {
+      "line": 182,
+      "tool": "read",
+      "path": "outputs/canopy-signal-validation.json",
+      "policyPath": "outputs/canopy-signal-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1075
+    },
+    {
+      "line": 197,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la outputs",
+      "isError": false,
+      "resultBytes": 301
+    }
+  ],
+  "findings": []
+}
