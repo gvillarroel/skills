@@ -16,7 +16,7 @@ Create these exact files:
 - `outputs/compensation/browser-audit.json`
 - `outputs/compensation/overview.png`
 
-The SVG must be one large synchronized composition with at least six nonredundant modules, six distinct asset types, and at least four renderer families. Include complementary views for compensation mix, gross-to-net deductions, monthly cash allocation, effective tax rate, savings-target progress, and annual/monthly reconciliation. Use explicit causal or dependency relationships to connect the forward story and at least one honest feedback relationship from planning shortfall back to allocation. Recurring concepts must keep stable labels, units, direction, and non-color identity cues across modules.
+The SVG must be one large synchronized composition with at least eight nonredundant modules, eight distinct asset types, and at least five renderer families. Include complementary views for compensation mix, gross-to-net deductions, monthly cash allocation, effective tax rate, savings-target progress, annual/monthly reconciliation, and a readable causal spine. Use explicit causal or dependency relationships to connect the forward story and at least one honest feedback relationship from planning shortfall back to allocation. Recurring concepts must keep stable labels, units, direction, and non-color identity cues across modules.
 
 Use these named scenarios:
 
@@ -27,6 +27,8 @@ The model must reconcile these checkpoints:
 
 - Baseline: gross cash 100,000 USD/year, total compensation 115,000 USD/year, tax 22,000 USD/year, net cash 78,000 USD/year, net cash 6,500 USD/month, savings 975 USD/month, flexible cash 2,525 USD/month, savings-target progress 65%.
 - Raise: gross cash 135,000 USD/year, total compensation 153,000 USD/year, tax 32,400 USD/year, net cash 102,600 USD/year, net cash 8,550 USD/month, savings 1,710 USD/month, flexible cash 3,640 USD/month, savings-target progress 95%.
+
+Every declared source concept—including monthly savings target, living cost, tax rate, and savings rate—must be visibly bound in at least one module. If a network includes a derived node, include every direct parent needed to reconstruct it; keep the network to a readable causal core rather than adding downstream endpoints whose full parent closure would make it dense. The annual/monthly reconciliation must visibly distinguish annual from monthly rows. Each relationship label must name only the exact value or dependency its two endpoint modules support; do not claim both progress and shortfall unless both are visibly carried at the target, and name gross cash rather than the broader total-compensation module when benefits do not transfer into tax.
 
 Ordinary comparative bars must contain only same-unit values that stay nonnegative over their full declared legal domains and must use one shared zero baseline. The module that contains `flexible-cash-monthly` must be a network, table, or flow asset from the first brief; its `assetType` must not contain `bar`. Do not narrow credible source domains merely to make a residual nonnegative.
 

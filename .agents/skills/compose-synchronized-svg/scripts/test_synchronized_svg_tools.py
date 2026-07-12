@@ -463,6 +463,35 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             with self.subTest(value=value, format=format_spec):
                 self.assertEqual(format_value(value, format_spec, "en-US"), expected)
 
+        annual_info = composer.BindingInfo(
+            index=0,
+            binding={"label": "Gross cash"},
+            role="gross-cash-text",
+            value_id="gross-cash-annual",
+            channel="text",
+            raw=100000,
+            rendered=100000,
+            color="#000000",
+            unit="USD/year",
+            domain=None,
+            accessible_value="$100,000 per year",
+        )
+        monthly_info = composer.BindingInfo(
+            index=1,
+            binding={"label": "Gross cash"},
+            role="gross-cash-monthly-text",
+            value_id="gross-cash-monthly",
+            channel="text",
+            raw=8333.33,
+            rendered=8333.33,
+            color="#000000",
+            unit="USD/month",
+            domain=None,
+            accessible_value="$8,333.33 per month",
+        )
+        self.assertEqual(composer.table_binding_label(annual_info), "Annual Gross cash")
+        self.assertEqual(composer.table_binding_label(monthly_info), "Monthly Gross cash")
+
         self.assertEqual(compiler.clean_number(5e-13), 5e-13)
         self.assertEqual(compiler.clean_number(1.0000000000005), 1.0000000000005)
         self.assertEqual(composer.scaffold.canonical_number_text(8e-10), "8e-10")
@@ -535,6 +564,9 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             group for group in brief["focusGroups"] if group["id"] == "pressure-story"
         )
         pressure_group["moduleIds"].append("effective-tax-rate")
+        next(module for module in brief["modules"] if module["id"] == "edge-ledger")[
+            "values"
+        ].append("tax-annual")
         brief_path = self.write_plan("opaque-gauge-brief.json", brief)
         plan_path = self.workspace / "opaque-gauge-plan.json"
         output = self.workspace / "opaque-gauge.svg"
@@ -837,7 +869,13 @@ class SynchronizedSvgToolTests(unittest.TestCase):
                     "assetType": "network-diagram",
                     "selectionRationale": "A network exposes the shared edge-delivery dependencies.",
                     "rejectedAlternative": "A table would hide the dependency structure.",
-                    "values": ["request-rate", "edge-capacity", "edge-served-rate", "origin-rate"],
+                    "values": [
+                        "request-rate",
+                        "edge-capacity",
+                        "cache-hit-rate",
+                        "edge-served-rate",
+                        "origin-rate",
+                    ],
                     "focusGroups": ["routing-story"],
                 },
                 {
@@ -1667,6 +1705,8 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             "request-rate",
             "edge-capacity",
             "cache-hit-rate",
+            "edge-latency",
+            "origin-latency",
             "edge-served-rate",
             "origin-rate",
             "overload",
@@ -2166,6 +2206,9 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         for scenario in brief["scenarios"]:
             scenario["values"]["root-control"] = 1 if scenario["id"] == "baseline" else 2
             scenario["values"]["root-total"] = 10
+        next(module for module in brief["modules"] if module["id"] == "edge-ledger")[
+            "values"
+        ].append("root-control")
         brief["modules"].append(
             {
                 "id": "irrational-root-flow",
@@ -2293,6 +2336,9 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         )
         for scenario in brief["scenarios"]:
             scenario["values"]["flow-control"] = 0 if scenario["id"] == "baseline" else 1
+        next(module for module in brief["modules"] if module["id"] == "edge-ledger")[
+            "values"
+        ].append("flow-control")
         flow = next(module for module in brief["modules"] if module["id"] == "request-flow")
         flow["values"] = ["request-rate", "interior-zero-flow", "flow-remainder"]
         brief_path = self.write_plan("interior-zero-flow-brief.json", brief)
@@ -3441,7 +3487,12 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         }
         self.assertEqual(
             dependency_edges,
-            {"request-rate:edge-served-rate", "request-rate:origin-rate"},
+            {
+                "request-rate:edge-served-rate",
+                "cache-hit-rate:edge-served-rate",
+                "request-rate:origin-rate",
+                "cache-hit-rate:origin-rate",
+            },
         )
         visible_network_copy = " ".join(
             text.strip()
@@ -3695,8 +3746,30 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         )
         bridge_report = self.parse_json_stdout(bridge_result)
         self.assertEqual(bridge_result.returncode, 1)
-        self.assertIn("omits intermediate node", str(bridge_report.get("error")))
+        self.assertIn("omits direct parent node", str(bridge_report.get("error")))
         self.assertFalse(bridge_output.exists())
+
+        hidden_source = self.edge_brief()
+        for module in hidden_source["modules"]:
+            module["values"] = [
+                value_id
+                for value_id in module["values"]
+                if value_id != "edge-capacity"
+            ]
+        hidden_output = self.workspace / "hidden-source-plan.json"
+        hidden_result = self.run_tool(
+            COMPILER,
+            "--brief",
+            str(self.write_plan("hidden-source-brief.json", hidden_source)),
+            "--output",
+            str(hidden_output),
+            "--json",
+        )
+        hidden_report = self.parse_json_stdout(hidden_result)
+        self.assertEqual(hidden_result.returncode, 1)
+        self.assertIn("unbound source concept", str(hidden_report.get("error")))
+        self.assertIn("edge-capacity", str(hidden_report.get("error")))
+        self.assertFalse(hidden_output.exists())
 
     def test_eight_module_compiler_uses_balanced_four_by_four_layout(self) -> None:
         brief = self.edge_brief()
@@ -4214,6 +4287,50 @@ class SynchronizedSvgToolTests(unittest.TestCase):
                 ("parts-total", "text"),
             ],
         )
+
+    def test_explicit_stack_total_blocks_scaled_aliases_and_mixed_units(self) -> None:
+        brief = self.edge_brief()
+        brief["derived"].append(
+            {
+                "id": "request-rate-per-minute",
+                "label": "Request rate",
+                "unit": "requests/minute",
+                "compute": {
+                    "op": "multiply",
+                    "args": [{"ref": "request-rate"}, 60],
+                },
+            }
+        )
+        stack = next(module for module in brief["modules"] if module["id"] == "service-mix")
+        plan_path = self.workspace / "explicit-stack-plan.json"
+        compiled = self.run_tool(
+            COMPILER,
+            "--brief",
+            str(self.write_plan("explicit-stack-brief.json", brief)),
+            "--output",
+            str(plan_path),
+            "--json",
+        )
+        self.assertEqual(compiled.returncode, 0, msg=compiled.stderr or compiled.stdout)
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+        module = next(item for item in plan["modules"] if item["id"] == "service-mix")
+        self.assertNotIn(
+            "request-rate-per-minute",
+            [binding["value"] for binding in module["bindings"]],
+        )
+
+        stack["values"].append("request-rate-per-minute")
+        rejected = self.run_tool(
+            COMPILER,
+            "--brief",
+            str(self.write_plan("mixed-unit-stack-brief.json", brief)),
+            "--output",
+            str(self.workspace / "mixed-unit-stack-plan.json"),
+            "--json",
+        )
+        rejected_report = self.parse_json_stdout(rejected)
+        self.assertEqual(rejected.returncode, 1)
+        self.assertIn("stacked parts and stackTotal must share one unit", str(rejected_report.get("error")))
 
     def test_compiler_zero_anchors_stack_with_positive_total_domain_minimum(self) -> None:
         brief = self.edge_brief()

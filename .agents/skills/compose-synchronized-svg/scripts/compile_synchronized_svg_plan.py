@@ -943,11 +943,12 @@ def compile_module_shells(
             declared_total = item.get("stackTotal")
             if isinstance(declared_total, str) and declared_total in known_values:
                 candidates.append(declared_total)
-            for candidate in sorted(known_values):
-                label_phrase = labels[candidate].lower().replace("-", " ")
-                id_phrase = candidate.replace("-", " ")
-                if label_phrase in claim_text or id_phrase in claim_text:
-                    candidates.append(candidate)
+            else:
+                for candidate in sorted(known_values):
+                    label_phrase = labels[candidate].lower().replace("-", " ")
+                    id_phrase = candidate.replace("-", " ")
+                    if label_phrase in claim_text or id_phrase in claim_text:
+                        candidates.append(candidate)
             for candidate in candidates:
                 if candidate in selected:
                     continue
@@ -995,6 +996,19 @@ def compile_module_shells(
             )
         if family == "network":
             selected_values = set(values)
+            missing_direct_parents = [
+                (value_id, sorted(dependencies.get(value_id, set()) - selected_values))
+                for value_id in values
+                if value_id in computations
+                and dependencies.get(value_id, set()) - selected_values
+            ]
+            if missing_direct_parents:
+                value_id, missing = missing_direct_parents[0]
+                raise BriefError(
+                    f"module {module_id!r} network selects derived node {value_id!r} but omits "
+                    f"direct parent node(s) {missing}. Include every direct parent needed to "
+                    "reconstruct each visible derived node, or remove that derived endpoint"
+                )
             missing_bridges: list[tuple[str, str, list[str]]] = []
             for value_id in values:
                 for dependency in sorted(dependencies.get(value_id, set())):
@@ -1114,6 +1128,14 @@ def compile_module_shells(
                 raise BriefError(
                     f"module {module_id!r} stackTotal references unknown value {stack_total!r}"
                 )
+            if is_stack:
+                stack_units = {units[value_id] for value_id in values}
+                stack_units.add(units[stack_total])
+                if len(stack_units) != 1:
+                    raise BriefError(
+                        f"module {module_id!r} stacked parts and stackTotal must share one unit; "
+                        f"found {sorted(stack_units)}"
+                    )
             if semantic_envelope(stack_total)[0] < 0:
                 low, high = semantic_envelope(stack_total)
                 raise BriefError(
@@ -1575,6 +1597,17 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
         cues,
         value_states,
     )
+    directly_visible_values = {
+        binding["value"]
+        for module in modules
+        for binding in module["bindings"]
+    }
+    unbound_sources = sorted(source_ids - directly_visible_values)
+    if unbound_sources:
+        raise BriefError(
+            "every source concept must be visibly bound in at least one module; "
+            f"unbound source concept(s): {unbound_sources}"
+        )
     for module in modules:
         expected_focus = [
             focus["id"]

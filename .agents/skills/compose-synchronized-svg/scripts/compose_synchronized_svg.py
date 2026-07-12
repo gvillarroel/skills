@@ -170,6 +170,28 @@ def binding_label(info: BindingInfo, limit: int = 24) -> str:
     return role_label(info.role, limit)
 
 
+def table_binding_label(info: BindingInfo, limit: int = 24) -> str:
+    """Keep recurring annual/monthly measures distinguishable in exact tables."""
+
+    declared = info.binding.get("label")
+    base = (
+        declared.strip()
+        if isinstance(declared, str) and declared.strip()
+        else role_label(info.role, max(limit, 48))
+    )
+    period = info.unit.rsplit("/", 1)[1].lower() if "/" in info.unit else ""
+    prefix = {
+        "year": "Annual",
+        "month": "Monthly",
+        "week": "Weekly",
+        "day": "Daily",
+        "hour": "Hourly",
+    }.get(period)
+    if prefix and prefix.lower() not in base.lower():
+        base = f"{prefix} {base}"
+    return short_label(base, limit)
+
+
 def source_color_map(plan: dict[str, Any]) -> dict[str, str]:
     all_ids = [item["id"] for item in [*plan["concepts"], *plan.get("derived", [])]]
     token_index = {value_id: index for index, value_id in enumerate(all_ids)}
@@ -741,11 +763,16 @@ def render_text_rail(
         label_y = cell_top + label_offset
         value_y = min(cell_top + row_height - 3.0, label_y + 13.0)
         label_limit = max(10, min(34, int(cell_width / 6.4)))
+        visible_label = (
+            table_binding_label(info, label_limit)
+            if table
+            else binding_label(info, label_limit)
+        )
         parts.append(
             f'<text x="{fmt(cell_left + 4)}" y="{fmt(label_y)}" '
             f'font-size="{9 if row_height < 30 else 10}" '
             f'letter-spacing="0.04em" fill="#637087" aria-hidden="true">'
-            f'{esc(binding_label(info, label_limit))}</text>'
+            f'{esc(visible_label)}</text>'
         )
         parts.append(render_text_binding(module_id, info, cell_right - 5, value_y))
         if column > 0:

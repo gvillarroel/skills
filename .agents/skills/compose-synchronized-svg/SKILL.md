@@ -39,10 +39,12 @@ Before the single brief write, perform this in-context preflight without calling
 - every direct or derived divisor stays strictly away from zero over its full credible domain, or the formula models the zero case explicitly with `max`/`clamp`;
 - any ratio that can exceed 100% is named as a load/target ratio and uses a bullet or progress asset, never utilization or a radial gauge;
 - every network contains at least one selected direct source/derived dependency pair and every intermediate node needed to connect a claimed transitive path;
+- every visible derived node in a network includes all of its direct parents, and every declared source concept is visibly bound in at least one module;
 - every stack contains only nonnegative disjoint parts and names its reconciled `stackTotal`;
 - no claim or formula treats a subtotal and one of its included parts as peers.
 - when the task requires a forward causal chain, every required facet belongs to one connected relationship spine and feedback closes that same component;
 - when a scenario promises an unchanged representation, that entire module binds only values that remain unchanged in the transition.
+- every relationship label names only the exact shared value or declared dependency carried between its two endpoint modules; never use “and” to claim an omitted concept, and name a transferred subtotal rather than the broader source-module total.
 
 After the first complete JSON write, make the bundled preflight the first external command. Do not reread, chunk-read, or inspect the brief between a write and preflight; the preflight is the inspection step. Do not run `--help`, `python -m json.tool`, another JSON linter, a directory listing, or a speculative tool call first. When preflight reports `ok: false`, rewrite the whole brief with one `write` call rather than using exact-match `edit`, then rerun preflight. Only `ok: true` authorizes the single publishing compiler command.
 
@@ -63,6 +65,7 @@ Keep the brief, compiled plan, reports, and requested output in the workspace. R
 
 - Score candidate assets with the bundled selection reference.
 - Give every accepted module one viewer question, one visible claim, one asset type, one region, and explicit concept bindings.
+- Bind every declared source concept visibly somewhere. In exact tables, distinguish recurring annual and monthly measures in their labels; generated table rails add period prefixes, but the source labels should still be semantically specific.
 - Prefer roughly 6–12 strong modules for a broad idea. Extend to 13–16 only for a true megacanvas whose additional modules answer distinct questions, share canonical state, and remain legible in overview hierarchy plus detail crops.
 - Keep two encodings of one concept only when they serve different tasks, such as exact lookup versus distribution or present state versus projection.
 - Choose the global armature after selecting the modules. Declare causal, dependency, transfer, and feedback relationships explicitly; leave modules visually disconnected only when no honest relationship exists.
