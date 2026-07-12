@@ -44,6 +44,7 @@ class LogoAssetTests(unittest.TestCase):
     def test_ids_and_source_artwork_are_unique(self) -> None:
         logos = self.manifest["logos"]
         self.assertEqual(len({item["id"] for item in logos}), len(logos))
+        self.assertEqual(len({item["assetPath"] for item in logos}), len(logos))
         self.assertEqual(len({item["sourceSha256"] for item in logos}), len(logos))
 
     def test_representative_cloud_and_company_logos_exist(self) -> None:

@@ -96,9 +96,9 @@ For the full catalog, use this single export command and trust its built-in mani
 Insert a local logo with PlantUML image markup, using the same scale for peer logos:
 
 ```plantuml
-rectangle "<img:assets/logos/aws-compute-lambda.svg{scale=0.25}>\nAWS Lambda" as lambda
-rectangle "<img:assets/logos/gcp-compute-cloud-run.svg{scale=0.25}>\nCloud Run" as run
-rectangle "<img:assets/logos/devicon-kubernetes.svg{scale=0.25}>\nKubernetes" as k8s
+rectangle "<img:assets/logos/aws/compute/lambda.svg{scale=0.25}>\nAWS Lambda" as lambda
+rectangle "<img:assets/logos/gcp/compute/cloud-run.svg{scale=0.25}>\nCloud Run" as run
+rectangle "<img:assets/logos/devicon/technology/kubernetes.svg{scale=0.25}>\nKubernetes" as k8s
 ```
 
 Resolve image paths from the PlantUML source or renderer working directory. Prefer paths without spaces. For a portable delivery, export the complete bundle or copy selected SVGs while retaining `license_log.md`, `logo_manifest.json`, and `licenses/`.

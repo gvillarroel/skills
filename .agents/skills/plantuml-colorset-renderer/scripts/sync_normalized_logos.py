@@ -149,7 +149,7 @@ def license_log(manifest: dict) -> str:
     )
     for item in manifest["logos"]:
         lines.append(
-            f"| `{item['id']}.svg` | {item['title']} | {item['provider']} / {item['category']} | [{item['licenseId']}]({item['licenseUrl']}) | [source]({item['sourceUrl']}) | {item.get('originalSource') or 'Not supplied'} | {item.get('guidelines') or 'Not supplied'} | `{item['sourceSha256']}` |"
+            f"| `{item['assetPath']}` | {item['title']} | {item['provider']} / {item['category']} | [{item['licenseId']}]({item['licenseUrl']}) | [source]({item['sourceUrl']}) | {item.get('originalSource') or 'Not supplied'} | {item.get('guidelines') or 'Not supplied'} | `{item['sourceSha256']}` |"
         )
     lines.extend(
         [
@@ -168,13 +168,15 @@ def license_log(manifest: dict) -> str:
 
 def sync(directory: Path, manifest: dict, overrides: dict[str, Path]) -> None:
     directory.mkdir(parents=True, exist_ok=True)
-    expected = {f"{item['id']}.svg" for item in manifest["logos"]}
-    for stale in directory.glob("*.svg"):
-        if stale.name not in expected:
+    expected = {item["assetPath"] for item in manifest["logos"]}
+    for stale in directory.rglob("*.svg"):
+        if stale.relative_to(directory).as_posix() not in expected:
             stale.unlink()
     for item in manifest["logos"]:
         payload = source_bytes(item, overrides)
-        (directory / f"{item['id']}.svg").write_text(
+        target = directory / item["assetPath"]
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(
             wrapped_svg(item, payload, manifest["normalization"]),
             encoding="utf-8",
             newline="\n",
@@ -186,15 +188,15 @@ def sync(directory: Path, manifest: dict, overrides: dict[str, Path]) -> None:
 
 def validate(directory: Path, manifest: dict) -> list[str]:
     errors: list[str] = []
-    expected = {f"{item['id']}.svg" for item in manifest["logos"]}
-    actual = {path.name for path in directory.glob("*.svg")}
+    expected = {item["assetPath"] for item in manifest["logos"]}
+    actual = {path.relative_to(directory).as_posix() for path in directory.rglob("*.svg")}
     if actual != expected:
         errors.append(
             f"SVG inventory mismatch: expected {len(expected)}, got {len(actual)}; missing={len(expected-actual)}, extra={len(actual-expected)}"
         )
     normalization = manifest["normalization"]
     for item in manifest["logos"]:
-        path = directory / f"{item['id']}.svg"
+        path = directory / item["assetPath"]
         if not path.is_file():
             continue
         try:
@@ -250,11 +252,13 @@ def export(source: Path, destination: Path, manifest: dict) -> None:
     if errors:
         raise ValueError("Bundled logo assets are invalid: " + "; ".join(errors[:20]))
     if destination.exists():
-        for stale in destination.glob("*.svg"):
+        for stale in destination.rglob("*.svg"):
             stale.unlink()
     destination.mkdir(parents=True, exist_ok=True)
     for item in manifest["logos"]:
-        shutil.copy2(source / f"{item['id']}.svg", destination / f"{item['id']}.svg")
+        target = destination / item["assetPath"]
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source / item["assetPath"], target)
     shutil.copy2(source / "license_log.md", destination / "license_log.md")
     shutil.copy2(source / "logo_manifest.json", destination / "logo_manifest.json")
     if (destination / "licenses").exists():

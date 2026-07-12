@@ -114,6 +114,7 @@ def cloud_entries(key: str, root: Path) -> list[dict[str, str]]:
         entries.append(
             {
                 "id": logo_id,
+                "assetPath": f"{key}/{slugify(category)}/{slugify(name)}.svg",
                 "title": f"{source.provider} {name}",
                 "provider": source.provider,
                 "category": category,
@@ -166,6 +167,7 @@ def devicon_entries(root: Path) -> list[dict[str, str]]:
         entries.append(
             {
                 "id": f"devicon-{slugify(directory.name)}",
+                "assetPath": f"devicon/technology/{slugify(directory.name)}.svg",
                 "title": directory.name,
                 "provider": source.provider,
                 "category": "technology",
@@ -213,6 +215,7 @@ def simple_icon_entries(root: Path) -> list[dict[str, str]]:
         entries.append(
             {
                 "id": f"simpleicons-{slug}",
+                "assetPath": f"simple-icons/technology-brand/{slug}.svg",
                 "title": title,
                 "provider": source.provider,
                 "category": "technology-brand",
@@ -251,6 +254,9 @@ def main() -> int:
     ids = [item["id"] for item in entries]
     if len(ids) != len(set(ids)):
         raise ValueError("Generated logo IDs are not unique")
+    asset_paths = [item["assetPath"] for item in entries]
+    if len(asset_paths) != len(set(asset_paths)):
+        raise ValueError("Generated logo asset paths are not unique")
     payload = {
         "schemaVersion": SCHEMA_VERSION,
         "normalization": {

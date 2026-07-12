@@ -39,7 +39,7 @@ def main() -> int:
                 "title": item["title"],
                 "provider": item["provider"],
                 "category": item["category"],
-                "path": f"assets/logos/{item['id']}.svg",
+                "path": f"assets/logos/{item['assetPath']}",
                 "licenseId": item["licenseId"],
             }
         )
