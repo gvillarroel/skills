@@ -93,9 +93,9 @@
     {
       "id": "adaptive-control",
       "question": "Which coordinated action closes the operational loop?",
-      "claim": "Routing weight, replica count, queue pressure, utilization, and burn rate move as one feedback response.",
+      "claim": "Routing weight, replica count, queue pressure, draft acceptance, utilization, and burn rate move as one feedback response.",
       "assetType": "adaptive-control-network",
-      "values": ["replica-count", "model-b-weight", "other-route-weight", "queue-depth", "gpu-utilization", "gpu-headroom", "burn-rate"],
+      "values": ["replica-count", "model-b-weight", "other-route-weight", "queue-depth", "draft-acceptance-rate", "gpu-utilization", "gpu-headroom", "burn-rate"],
       "selectionRationale": "A control network shows one observation feeding several coordinated actions without implying independent clocks.",
       "rejectedAlternative": "A checklist was rejected because it would not expose feedback from SLO state into routing, capacity, and queue pressure."
     },
@@ -120,9 +120,9 @@
     {
       "id": "queue-pressure",
       "question": "How much admitted work waits and for how long?",
-      "claim": "Queue occupancy, wait time, and admitted load expose the same backpressure state.",
+      "claim": "Queue occupancy, wait time, admitted load, and the admission limit expose the same backpressure state.",
       "assetType": "backpressure-capacity-grid",
-      "values": ["queue-depth", "queue-wait-ms", "admitted-rate"],
+      "values": ["queue-depth", "queue-wait-ms", "admitted-rate", "admission-limit"],
       "selectionRationale": "A capacity grid combines discrete queue occupancy with an exact wait reading.",
       "rejectedAlternative": "A radial gauge was rejected because queue occupancy is countable slots, not an angular state."
     },
@@ -149,7 +149,7 @@
       "question": "How is the context window partitioned after retrieval?",
       "claim": "Prompt and retrieved evidence consume one shared context capacity, leaving an explicit remainder.",
       "assetType": "context-matrix-heatmap",
-      "values": ["prompt-tokens", "retrieved-tokens", "context-tokens", "context-free-tokens"],
+      "values": ["prompt-tokens", "retrieved-tokens", "context-tokens", "context-free-tokens", "context-capacity"],
       "selectionRationale": "A matrix makes used and free token capacity legible as discrete spatial allocation.",
       "rejectedAlternative": "A single progress bar was rejected because it would conceal the prompt-versus-evidence composition."
     },
@@ -218,11 +218,11 @@
     },
     {
       "id": "response-stream",
-      "question": "How does verified output become a user-visible response?",
-      "claim": "Output volume, stream time, and total trace time advance from the same response state.",
+      "question": "How do prefill, decode, and streaming turn verified output into a user-visible response?",
+      "claim": "Prefill, decode, stream, and total trace latency advance with output volume in one ordered response state.",
       "assetType": "response-token-timeline",
-      "values": ["output-tokens", "stream-latency-ms", "trace-latency-ms"],
-      "selectionRationale": "A timeline relates output accumulation to delivery time and the full trace.",
+      "values": ["output-tokens", "prefill-latency-ms", "decode-latency-ms", "stream-latency-ms", "trace-latency-ms"],
+      "selectionRationale": "A timeline relates output accumulation to prefill, decode, delivery, and the full trace.",
       "rejectedAlternative": "A metric card was rejected because it would not communicate ordered token emission."
     },
     {
