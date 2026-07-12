@@ -32,6 +32,7 @@ Latest acceptance evidence:
 
 - static validation: pass with zero failures or warnings;
 - browser audit: 810/810 checks, 26 source perturbations, 2 exact zero-flow boundaries, 3,530 negative controls, 58 shared-revision cases, 71 quantitative-semantics checks, 44 accessibility-tree rounds, 53 relationship-state rounds, 39 timeline samples, real pointer/keyboard controls, and zero issues;
+- direct interactions: 14/14 pointer, keyboard, scenario, focus, play/pause, seek, pulse, mixed-interpolation, and browser-error checks;
 - visual review: clean macro overview plus admission, prefill, and adaptive-feedback states; hierarchy, focus, connector routing, labels, and claim/asset fit remain coherent;
 - published artifact SHA-256: `7e66347d7538c9ad6446e7994d9f24d357a7a6d71fbed1a5d0f2f29c32c91407`, identical in the project artifact, skill fixture, and generated Pages copy.
 
@@ -65,6 +66,10 @@ Latest acceptance evidence:
 | Frozen v13 cloudburst reps 1–3 | Zero complete passes | All artifacts eventually passed 265/265, 306/306, or 279/279 browser checks, but every trace contained repair errors and every manual review found unsupported causal feedback, orphaned required facets, misleading generic line/surface forms, or a generic metric-card fallback. The first-write gate, supported-renderer allowlist, module-level transition isolation, connected-spine review, and evidence-backed feedback guidance now block those patterns. |
 | Frozen v13 edge-load reps 1–3 | Zero complete passes | Rep 1 failed strict edits. Reps 2–3 passed strict automation (333/333 and 319/319) but failed manual review due a label-free generic metric card, disconnected relationship components, and an 8-module 3+5 layout that compressed the lower row. Unknown fallback renderers now fail compilation and eight modules use a balanced 4+4 layout. |
 | Automatic v14–v15 runs | Excluded prefreeze evidence | Separate background continuations launched overlapping Chromium matrices while the payload was still changing. Their processes were terminated once identified; the overlapping runs are neither independent nor same-payload release evidence. |
+| Frozen v16 contract and compensation | Superseded; zero naturalistic passes | The exact-command contract passed. Both compensation traces eventually produced valid artifacts but failed the strict event gate after expected authoring defects reached the publishing compiler. The advisory preflight now reports those defects without a tool error and publishing is authorized only after `ok: true`. |
+| Compensation v17 | Strict fail and diagnostic-sprawl case | Preflight and compilation succeeded, but a focus-label plaque painted over the timeline and intercepted the 75% pointer seek. The agent then shortened the loop, which exposed a second audit false negative at the loop seam, and removed required focus semantics while debugging. Focus layers are now pointer-transparent and geometrically clear of the rail; the audit names the hit target and proves playback by revision across a seam; the skill routes mechanical failures without brief erosion or ad-hoc browser scripts. |
+| Compensation v18 | One strict automation pass, manual semantic fail | The strict pass reconciled all named numbers and flows but hid the monthly target, omitted direct parents from the causal network, left annual/monthly table rows ambiguous, and overclaimed two relationship labels. The compiler now requires every source to be visibly bound and every selected network-derived node to include all direct parents; table rails add visible period prefixes and relationship guidance requires exact carried values. |
+| Compensation v19 candidates | Superseded mixed-payload evidence | Payload `fbf375…` produced one strict/manual pass. Payload `64a4c696…` produced one strict pass whose manual review found a mixed-unit annual stack caused by label-based subtotal inference; its third attempt then hit the provider usage limit before a tool call. Explicit stack totals now disable alias inference, stack units are enforced, and a regression protects the case. Neither payload is the final runtime bundle. |
 
 ## Patterns promoted into the skill
 
@@ -108,7 +113,7 @@ Current local evidence before the final isolated matrix:
 - Pi harness: 11/11 tests pass;
 - Pages build: pass with 576 files; unrelated Slidev/Rolldown warnings remain nonblocking;
 - acceptance regeneration: static validation pass, compact Chromium audit 810/810 with real input controls and 3,530 negative controls, visual review clean, and project/skill/Pages hashes identical;
-- synchronized SVG regression suite: one stable 69/69 run passed in 148.788 seconds, including supervisor cleanup, advisory preflight behavior, duplicate-key rejection, visible-source coverage, exact zero/sign, close interior roots, scale-safe conservation, deterministic formatting, exact phase progress, real timeline controls, negative mutation checks, total/branch double-count rejection, residual-partition detection, zero-anchored and unit-consistent stacks, network bridge enforcement, supported-renderer enforcement, and balanced 8-module layout.
+- synchronized SVG regression suite: one uninterrupted 69/69 run passed in 146.002 seconds, including supervisor cleanup, advisory preflight behavior, duplicate-key rejection, visible-source coverage, exact zero/sign, close interior roots, scale-safe conservation, deterministic formatting, exact phase progress, real timeline controls, negative mutation checks, total/branch double-count rejection, residual-partition detection, zero-anchored and unit-consistent stacks, network bridge enforcement, supported-renderer enforcement, and balanced 8-module layout.
 
 ## Failed frozen v12 matrix
 
@@ -157,15 +162,15 @@ Final runtime payload SHA-256: `7be956ae3dda96e286ab345fc2a0e9fe6e7c6319d052a31e
 Final prompt SHA-256 values:
 
 - contract smoke: `065ce8a142c9f3f7d624577c223f36d2cebd91a62b29a578c649b35185a1b1f2`;
-- compensation: `e19a97ee4e154dd874ee0c408200e9afd91a6addb4357128ed30b06abe0a4a30`;
+- compensation: `3f93e8009cb38d9b1815f103518403d1dda7cd2df9d7de0df03de23556d86419`;
 - cloudburst: `8913ff06b071c41860c98458585dd910e0153513bc4b311a6ec27093b4d2ad21`;
 - edge load: `fc0a09330c8e8c17aa453e3ed86eca455c78972f58d8d77ff52a671ca5e28eda`.
 
-The payload hash is recorded by both `compose-synchronized-svg-contract-release-v22-20260712-spark-1` and `compose-synchronized-svg-contract-release-v23-20260712-spark-1`. Each run stopped before the first tool call with `Codex error: The usage limit has been reached`, observed the required Spark model, consumed zero tokens, created no task artifacts, and preserved skill integrity. The third naturalistic attempt hit the same zero-token provider condition. These are provider pre-event aborts, not strict trajectories and not skill failures.
+The payload hash is independently recorded by `compose-synchronized-svg-contract-release-v20-20260712-spark-1`, `...-spark-2`, `compose-synchronized-svg-contract-release-v22-20260712-spark-1`, and `compose-synchronized-svg-contract-release-v23-20260712-spark-1`. Every run stopped before the first tool call with `Codex error: The usage limit has been reached`, observed the required Spark model, consumed zero tokens, created no task artifacts, and preserved skill integrity. These are provider pre-event aborts, not strict trajectories and not skill failures.
 
 | Case | Current evidence | Passing | Threshold |
 | --- | --- | ---: | ---: |
-| Contract smoke | v22 and v23 provider pre-event aborts; no tool call or token usage | 0/1 | 1/1 |
+| Contract smoke | v20 reps 1–2, v22, and v23 provider pre-event aborts; no tool call or token usage | 0/1 | 1/1 |
 | Compensation | Not yet run on final `7be956ae…` payload | 0/3 | ≥2/3 |
 | Cloudburst | Not yet run on final `7be956ae…` payload | 0/3 | ≥2/3 |
 | Edge load | Not yet run on final `7be956ae…` payload | 0/3 | ≥2/3 |
