@@ -15,7 +15,7 @@ Release target: expand `d3-logo-design` from 60 to 90 canonical patterns and fro
 | Visual originality review | PASS | All 30 additions were reviewed in six desktop and six mobile segmented screenshots; Desargues balance and moire bounds were corrected before the clean final browser runs. |
 | Pages and repository validation | PASS | Pages copy validates at 90/10/90; pattern-ID, repo-skill, payload, and `git diff --check` gates pass. |
 | Isolated Spark validation | PASS | Strict runtime-profile run `20260712T015448Z-d3-logo-design-pi` produced both exact outputs with the required Spark model, zero tool errors, and unchanged skill payload. |
-| Published Pages workflow | PENDING | PENDING |
+| Published Pages workflow | PASS | PR #5 merged as `632a441a`; Pages run `29176471654` completed successfully, and the live home and gallery passed publication checks. |
 
 ## Source and static validation
 
@@ -65,10 +65,13 @@ git diff --check
 Status: **PASS**
 Evidence: `scripts/build-pages.py` completed with 575 generated files; the generated Pages gallery passed the static 90/10/90 validator. `scripts/validate-pattern-ids.py` passed 1,137 canonical IDs with no review-threshold violations; `scripts/validate-skills.py`, `scripts/check-repo-payload.py`, and `git diff --check` passed.
 
-After merging the complete source and generated fixture, verify the Pages workflow and both the main examples index and stable `d3-logo-design` gallery URL.
+The complete source and generated fixture were merged through PR #5 as `632a441a4a6f08776399198e27507166431937b2`. GitHub Pages workflow `29176471654` completed successfully. The public home contains the canonical gallery link plus the 90-composition and 30-mathematical-mechanism copy. A live Chromium pass against the stable gallery URL reports `clean: true`, 90 cards, 90 pattern/composition IDs, 90 unique geometry signatures and hashes, all 10 textures, zero text-clearance findings, and zero browser or external-resource errors.
 
-Publication status: **PENDING**
-Workflow/URLs: PENDING
+Publication status: **PASS**
+Workflow: `https://github.com/gvillarroel/skills/actions/runs/29176471654`
+Home: `https://gvillarroel.github.io/skills/`
+Gallery: `https://gvillarroel.github.io/skills/examples/d3-logo-design/`
+Live browser evidence: `projects/d3-logo-design-math-expansion/artifacts/reviews/live-pages.json`
 
 ## Isolated Spark validation
 
