@@ -994,9 +994,9 @@ def focus_region_markup(plan: dict[str, Any]) -> tuple[str, str]:
         label = str(focus.get("label", region_id.replace("-", " ").title()))
         full_label_text = label.upper()
         label_x = left + 8.0
-        # Keep the label in the upper half of the inter-row gutter. Relationship
-        # lanes use the lower half, so even three adjacent routes remain distinct.
-        label_y = top - 13.0
+        # Fill the inter-row gutter without touching either module row. For the
+        # first row this also leaves a clean gap below the master timeline.
+        label_y = top - 8.0
         # Inter 10 px uppercase plus 0.1em tracking. Overestimate slightly so the
         # opaque plaque fully covers the browser-measured text box on fallback fonts.
         # Budget for wide uppercase and fallback glyphs, including 0.1em tracking.
@@ -1028,12 +1028,12 @@ def focus_region_markup(plan: dict[str, Any]) -> tuple[str, str]:
     if not backgrounds:
         return "", ""
     background_markup = (
-        '<g id="composition-focus-regions" aria-hidden="true">'
+        '<g id="composition-focus-regions" aria-hidden="true" pointer-events="none">'
         + "".join(backgrounds)
         + "</g>"
     )
     label_markup = (
-        '<g id="composition-focus-region-labels" aria-hidden="true">'
+        '<g id="composition-focus-region-labels" aria-hidden="true" pointer-events="none">'
         + "".join(labels)
         + "</g>"
     )
@@ -2120,12 +2120,12 @@ def build_svg(plan: dict[str, Any]) -> str:
             f'data-track-width="{fmt(track_width)}" role="slider" tabindex="0" '
             f'aria-label="Master timeline" aria-valuemin="0" aria-valuemax="{fmt(duration)}" '
             f'aria-valuenow="0" aria-valuetext="Start of loop">'
-            f'<rect class="timeline-track" x="{fmt(track_x)}" y="101" '
+            f'<rect class="timeline-track" x="{fmt(track_x)}" y="96" '
             f'width="{fmt(track_width)}" height="6" rx="3"/>'
             f'<rect class="timeline-progress" data-timeline-progress="true" x="{fmt(track_x)}" '
-            f'y="101" width="0" height="6" rx="3"/>'
+            f'y="96" width="0" height="6" rx="3"/>'
             f'<text class="timeline-label" data-timeline-label="true" '
-            f'x="{fmt(track_x + track_width + 14)}" y="107">Timeline ready</text></g>'
+            f'x="{fmt(track_x + track_width + 14)}" y="102">Timeline ready</text></g>'
         )
 
     modules_by_id = {module["id"]: module for module in plan["modules"]}

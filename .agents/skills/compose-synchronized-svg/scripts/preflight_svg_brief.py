@@ -47,10 +47,13 @@ def parse_args() -> argparse.Namespace:
 
 
 def invalid_result(brief_path: Path, error: Exception) -> dict[str, Any]:
+    syntax_error = isinstance(error, compiler.DuplicateKeyError) or isinstance(
+        error.__cause__, json.JSONDecodeError
+    )
     result: dict[str, Any] = {
         "ok": False,
         "brief": str(brief_path),
-        "stage": "syntax" if isinstance(error.__cause__, json.JSONDecodeError) else "semantic",
+        "stage": "syntax" if syntax_error else "semantic",
         "finding": str(error),
     }
     cause = error.__cause__

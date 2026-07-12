@@ -1328,6 +1328,13 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         self.assertIn('.module-focus-control[aria-pressed="true"]', style_text)
         self.assertIn(".focus-region-label", style_text)
         self.assertIn(".focus-region-label-plaque", style_text)
+        focus_region_layers = [
+            element
+            for element in elements
+            if element.get("id") in {"composition-focus-regions", "composition-focus-region-labels"}
+        ]
+        self.assertEqual(len(focus_region_layers), 2)
+        self.assertTrue(all(layer.get("pointer-events") == "none" for layer in focus_region_layers))
         focus_label_groups = [
             element for element in elements if element.get("class") == "focus-region-label-group"
         ]
@@ -1337,6 +1344,17 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             label = next(child for child in group if child.get("class") == "focus-region-label")
             self.assertEqual(label.get("data-clearance-mask"), "true")
             self.assertEqual(list(group).index(plaque) + 1, list(group).index(label))
+        timeline_track = next(element for element in elements if element.get("class") == "timeline-track")
+        timeline_bottom = float(timeline_track.get("y", "nan")) + float(
+            timeline_track.get("height", "nan")
+        )
+        first_plaque_top = min(
+            float(plaque.get("y", "nan"))
+            for group in focus_label_groups
+            for plaque in group
+            if plaque.get("class") == "focus-region-label-plaque"
+        )
+        self.assertLess(timeline_bottom, first_plaque_top)
         raw_svg = output.read_text(encoding="utf-8")
         self.assertLess(raw_svg.index('id="composition-focus-regions"'), raw_svg.index('id="composition-relationships"'))
         self.assertLess(raw_svg.index('id="composition-relationships"'), raw_svg.index('id="composition-focus-region-labels"'))
@@ -3508,6 +3526,24 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         self.assertEqual(malformed_result.returncode, 0)
         self.assertIs(malformed_report.get("ok"), False)
         self.assertIn("not valid JSON", str(malformed_report.get("finding")))
+
+        duplicate = self.workspace / "preflight-duplicate-key.json"
+        duplicate.write_text(
+            '{"compositionId":"first","compositionId":"second"}\n',
+            encoding="utf-8",
+            newline="\n",
+        )
+        duplicate_result = self.run_tool(
+            PREFLIGHT,
+            "--brief",
+            str(duplicate),
+            "--json",
+        )
+        duplicate_report = self.parse_json_stdout(duplicate_result)
+        self.assertEqual(duplicate_result.returncode, 0)
+        self.assertIs(duplicate_report.get("ok"), False)
+        self.assertEqual(duplicate_report.get("stage"), "syntax")
+        self.assertIn("duplicate JSON object key", str(duplicate_report.get("finding")))
 
         accepted_path = self.write_plan("preflight-valid-brief.json", self.edge_brief())
         accepted = self.run_tool(

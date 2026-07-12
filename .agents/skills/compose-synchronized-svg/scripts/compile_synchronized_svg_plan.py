@@ -39,6 +39,21 @@ class BriefError(ValueError):
     """Describe an invalid compact brief."""
 
 
+class DuplicateKeyError(BriefError):
+    """Reject ambiguous JSON objects before a parser can overwrite a value."""
+
+
+def unique_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    """Build one JSON object while preserving the invariant that keys are unique."""
+
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise DuplicateKeyError(f"brief contains duplicate JSON object key: {key!r}")
+        result[key] = value
+    return result
+
+
 class JsonArgumentParser(argparse.ArgumentParser):
     """Keep argument failures machine-readable for automation."""
 
@@ -66,7 +81,10 @@ def load_brief(path: Path) -> dict[str, Any]:
     if not path.is_file():
         raise BriefError(f"brief file does not exist: {path}")
     try:
-        value = json.loads(path.read_text(encoding="utf-8"))
+        value = json.loads(
+            path.read_text(encoding="utf-8"),
+            object_pairs_hook=unique_json_object,
+        )
     except json.JSONDecodeError as exc:
         raise BriefError(f"brief is not valid JSON: {exc}") from exc
     if not isinstance(value, dict):

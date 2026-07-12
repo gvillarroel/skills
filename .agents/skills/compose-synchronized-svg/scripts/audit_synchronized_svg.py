@@ -3047,14 +3047,38 @@ def audit_real_input_controls(page: Page, audit: Audit, plan: dict[str, Any]) ->
                 )
             if arrow_time <= home_time:
                 errors.append("timeline ArrowRight did not advance time")
-            track_box = page.locator(".timeline-track").bounding_box()
+            track_box = rail.locator(".timeline-track").bounding_box()
             pointer_time = None
+            pointer_hit = None
             if track_box is None:
                 errors.append("timeline track has no pointer geometry")
             else:
+                pointer_x = track_box["x"] + track_box["width"] * 0.75
+                pointer_y = track_box["y"] + track_box["height"] / 2
+                pointer_hit = page.evaluate(
+                    """
+                    ({x, y}) => {
+                      const hit = document.elementFromPoint(x, y);
+                      return {
+                        tag: hit ? hit.tagName : null,
+                        id: hit ? (hit.id || null) : null,
+                        className: hit && hit.getAttribute ? (hit.getAttribute("class") || null) : null,
+                        insideTimelineRail: Boolean(hit && hit.closest("[data-timeline-rail]"))
+                      };
+                    }
+                    """,
+                    {"x": pointer_x, "y": pointer_y},
+                )
+                if not pointer_hit.get("insideTimelineRail"):
+                    errors.append(
+                        "timeline pointer target is occluded by "
+                        f"{pointer_hit.get('tag') or 'unknown'}"
+                        f"#{pointer_hit.get('id') or ''}"
+                        f".{pointer_hit.get('className') or ''}"
+                    )
                 page.mouse.click(
-                    track_box["x"] + track_box["width"] * 0.75,
-                    track_box["y"] + track_box["height"] / 2,
+                    pointer_x,
+                    pointer_y,
                 )
                 pointer_time = float(page.evaluate("() => window.svgSync.snapshot().timeMs"))
                 if abs(pointer_time - duration * 0.75) > duration * 0.03:
@@ -3066,20 +3090,28 @@ def audit_real_input_controls(page: Page, audit: Audit, plan: dict[str, Any]) ->
                 errors.append("Play/Pause control is missing or duplicated")
             else:
                 play.click()
-                play_before = float(page.evaluate("() => window.svgSync.snapshot().timeMs"))
+                play_pressed = play.get_attribute("aria-pressed")
+                play_before_snapshot = page.evaluate("() => window.svgSync.snapshot()")
+                play_before = float(play_before_snapshot["timeMs"])
                 page.wait_for_timeout(150)
-                play_after = float(page.evaluate("() => window.svgSync.snapshot().timeMs"))
+                play_after_snapshot = page.evaluate("() => window.svgSync.snapshot()")
+                play_after = float(play_after_snapshot["timeMs"])
                 play.click()
                 pause_before = float(page.evaluate("() => window.svgSync.snapshot().timeMs"))
                 page.wait_for_timeout(80)
                 pause_after = float(page.evaluate("() => window.svgSync.snapshot().timeMs"))
-                if play_after <= play_before:
+                if play_pressed != "true" or int(play_after_snapshot["revision"]) <= int(
+                    play_before_snapshot["revision"]
+                ):
                     errors.append("Play pointer activation did not advance the master time")
                 if not close_number(pause_after, pause_before, tolerance=1e-6):
                     errors.append("Pause pointer activation did not stabilize the master time")
                 details["playback"] = {
                     "before": play_before,
                     "after": play_after,
+                    "beforeRevision": play_before_snapshot["revision"],
+                    "afterRevision": play_after_snapshot["revision"],
+                    "pressedAfterPlay": play_pressed,
                     "pausedAt": pause_after,
                 }
             details["timeline"] = {
@@ -3087,6 +3119,7 @@ def audit_real_input_controls(page: Page, audit: Audit, plan: dict[str, Any]) ->
                 "endTimeMs": end_time,
                 "arrowTimeMs": arrow_time,
                 "pointerTimeMs": pointer_time,
+                "pointerHit": pointer_hit,
             }
 
     invoke(page, "pause")
