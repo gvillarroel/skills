@@ -64,7 +64,7 @@ Review and approve every bundled Mermaid example when maintaining fixture covera
 uv run --script .agents/skills/mermaid-colorset-styler/scripts/review_mermaid_examples.py --render --render-retries 8 --output projects/mermaid-colorset-styler-review/artifacts/render-approval --report projects/mermaid-colorset-styler-review/artifacts/render-approval/approval-report.json
 ```
 
-Fresh-render every renderable declaration for both colorsets in one combined Mermaid CLI batch. This gate never reuses SVGs, launches Chromium only once, and defaults to one render job so constrained CI runners stay deterministic:
+Fresh-render every renderable declaration for both colorsets from one combined input. The gate never reuses prior SVGs: it preserves a healthy primary-render prefix and recovers only missing diagrams in small independently retried batches. It defaults to one render job and eight-item recovery chunks so constrained CI runners stay deterministic:
 
 ```powershell
 uv run --script .agents/skills/mermaid-colorset-styler/scripts/validate_mermaid_render_coverage.py --report projects/mermaid-colorset-styler-review/artifacts/render-coverage.json

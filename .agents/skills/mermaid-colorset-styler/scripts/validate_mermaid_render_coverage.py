@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -121,9 +122,15 @@ def attempts_for_colorset(
     results: list[dict[str, object]] = []
     for attempt in attempts:
         result = dict(attempt)
+        attempt_colorsets = result.get("colorsets")
+        if isinstance(attempt_colorsets, list) and colorset not in attempt_colorsets:
+            continue
         counts = result.pop("colorsetRenderedSvgCounts", {})
         if isinstance(counts, dict):
             result["renderedSvgCount"] = int(counts.get(colorset, 0))
+        approved_counts = result.pop("colorsetApprovedSvgCounts", None)
+        if isinstance(approved_counts, dict):
+            result["approvedSvgCount"] = int(approved_counts.get(colorset, 0))
         results.append(result)
     return results
 
@@ -137,8 +144,17 @@ def render_colorsets(
     timeout: int,
     retries: int,
     jobs: int,
+    recovery_chunk_size: int,
+    overall_timeout: int,
 ) -> tuple[list[dict[str, object]], list[str], dict[str, object]]:
+    def remaining_timeout(limit: int) -> int | None:
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            return None
+        return max(1, min(limit, int(remaining)))
+
     colorset_inputs: list[dict[str, object]] = []
+    render_units: list[dict[str, object]] = []
     combined_parts: list[str] = []
     next_global_index = 1
     for colorset in ("colorset1", "colorset2"):
@@ -146,103 +162,248 @@ def render_colorsets(
         start_index = next_global_index
         end_index = start_index + len(examples) - 1
         next_global_index = end_index + 1
+        fences = [match.group(0) for match in styler.FENCE_RE.finditer(styled)]
+        fixture_findings = validate_fixture_examples(styler, examples)
+        if len(fences) != len(examples):
+            fixture_findings.append(
+                f"styled fixture has {len(fences)} Mermaid fences; expected {len(examples)}"
+            )
         colorset_inputs.append(
             {
                 "colorset": colorset,
                 "examples": examples,
                 "startIndex": start_index,
                 "endIndex": end_index,
-                "findings": validate_fixture_examples(styler, examples),
+                "findings": fixture_findings,
             }
         )
+        for local_index, (example, fence) in enumerate(
+            zip(examples, fences, strict=False), start=1
+        ):
+            render_units.append(
+                {
+                    "colorset": colorset,
+                    "localIndex": local_index,
+                    "globalIndex": start_index + local_index - 1,
+                    "example": example,
+                    "fence": fence,
+                }
+            )
         combined_parts.append(f"# {colorset}\n\n{styled.strip()}\n")
 
     input_path = workspace / "all-colorsets.md"
     output_path = workspace / "rendered.md"
     input_path.write_text("\n\n".join(combined_parts), encoding="utf-8", newline="\n")
-    # Mermaid CLI shares one Chromium browser across every Markdown render promise.
-    # One serialized 96-diagram invocation avoids a flaky second browser launch on
-    # constrained Linux runners while keeping both colorsets freshly rendered.
-    command = [
-        npx,
-        "-y",
-        package,
-        "-i",
-        str(input_path),
-        "-o",
-        str(output_path),
-        "--quiet",
-        "--jobs",
-        str(jobs),
-    ]
+    # Start with one efficient full render. If Chromium stops after a healthy
+    # prefix, preserve those SVGs and recover only the missing diagrams in small,
+    # independently retried batches. This avoids repeating the same cumulative
+    # browser-pressure failure while still requiring 96 fresh valid artifacts.
+    def command_for(batch_input: Path, batch_output: Path) -> list[str]:
+        return [
+            npx,
+            "-y",
+            package,
+            "-i",
+            str(batch_input),
+            "-o",
+            str(batch_output),
+            "--quiet",
+            "--jobs",
+            str(jobs),
+        ]
+
     render_count = next_global_index - 1
     expected_names = {f"rendered-{index}.svg" for index in range(1, render_count + 1)}
+    for stale_path in workspace.glob("rendered-*.svg"):
+        stale_path.unlink()
+    output_path.unlink(missing_ok=True)
+
+    started_at = time.monotonic()
+    deadline = started_at + overall_timeout
     attempts: list[dict[str, object]] = []
-    completed: subprocess.CompletedProcess[str] | None = None
-    for attempt in range(1, retries + 1):
-        for stale_path in workspace.glob("rendered-*.svg"):
-            stale_path.unlink()
-        output_path.unlink(missing_ok=True)
-        try:
-            completed = subprocess.run(
-                command,
-                cwd=workspace,
-                text=True,
-                encoding="utf-8",
-                errors="replace",
-                capture_output=True,
-                check=False,
-                timeout=timeout,
-            )
-            actual_names = {path.name for path in workspace.glob("rendered-*.svg")}
-            attempts.append(
-                {
-                    "attempt": attempt,
-                    "exitCode": completed.returncode,
-                    "jobs": jobs,
-                    "renderedSvgCount": len(actual_names),
-                    "colorsetRenderedSvgCounts": rendered_counts_by_colorset(
-                        actual_names, colorset_inputs
-                    ),
-                    "stdout": completed.stdout.strip()[-1000:],
-                    "stderr": completed.stderr.strip()[-1000:],
-                }
-            )
-            if completed.returncode == 0 and actual_names == expected_names:
+    primary_completed: subprocess.CompletedProcess[str] | None = None
+    primary_timeout = remaining_timeout(timeout) or 1
+    try:
+        primary_completed = subprocess.run(
+            command_for(input_path, output_path),
+            cwd=workspace,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            capture_output=True,
+            check=False,
+            timeout=primary_timeout,
+        )
+        primary_names = {path.name for path in workspace.glob("rendered-*.svg")}
+        attempts.append(
+            {
+                "phase": "primary",
+                "attempt": 1,
+                "exitCode": primary_completed.returncode,
+                "jobs": jobs,
+                "colorsets": ["colorset1", "colorset2"],
+                "globalIndices": list(range(1, render_count + 1)),
+                "renderedSvgCount": len(primary_names),
+                "colorsetRenderedSvgCounts": rendered_counts_by_colorset(
+                    primary_names, colorset_inputs
+                ),
+                "stdout": primary_completed.stdout.strip()[-1000:],
+                "stderr": primary_completed.stderr.strip()[-1000:],
+            }
+        )
+    except subprocess.TimeoutExpired:
+        primary_names = {path.name for path in workspace.glob("rendered-*.svg")}
+        attempts.append(
+            {
+                "phase": "primary",
+                "attempt": 1,
+                "exitCode": None,
+                "jobs": jobs,
+                "colorsets": ["colorset1", "colorset2"],
+                "globalIndices": list(range(1, render_count + 1)),
+                "renderedSvgCount": len(primary_names),
+                "colorsetRenderedSvgCounts": rendered_counts_by_colorset(
+                    primary_names, colorset_inputs
+                ),
+                "stdout": "",
+                "stderr": f"timed out after {primary_timeout} seconds",
+            }
+        )
+
+    missing_units: list[dict[str, object]] = []
+    for unit in render_units:
+        canonical_path = workspace / f"rendered-{int(unit['globalIndex'])}.svg"
+        if inspect_svg(canonical_path):
+            canonical_path.unlink(missing_ok=True)
+            missing_units.append(unit)
+    initial_unusable_count = len(missing_units)
+    recovery_chunks = [
+        missing_units[index : index + recovery_chunk_size]
+        for index in range(0, len(missing_units), recovery_chunk_size)
+    ]
+    recovery_failures: list[str] = []
+    recovery_timeout = min(timeout, 60)
+    recovery_invocation = 0
+
+    for chunk_number, chunk in enumerate(recovery_chunks, start=1):
+        pending_groups: list[list[dict[str, object]]] = [chunk]
+        budget_exhausted = False
+        for attempt_round in range(1, retries + 1):
+            if not pending_groups:
                 break
-        except subprocess.TimeoutExpired:
-            completed = None
-            timeout_names = {path.name for path in workspace.glob("rendered-*.svg")}
-            attempts.append(
-                {
-                    "attempt": attempt,
-                    "exitCode": None,
-                    "jobs": jobs,
-                    "renderedSvgCount": len(timeout_names),
-                    "colorsetRenderedSvgCounts": rendered_counts_by_colorset(
-                        timeout_names, colorset_inputs
-                    ),
-                    "stdout": "",
-                    "stderr": f"timed out after {timeout} seconds",
+            next_groups: list[list[dict[str, object]]] = []
+            for group_position, group in enumerate(pending_groups):
+                call_timeout = remaining_timeout(recovery_timeout)
+                if call_timeout is None:
+                    next_groups.extend(pending_groups[group_position:])
+                    budget_exhausted = True
+                    break
+                recovery_invocation += 1
+                scratch_input = workspace / f"recovery-{recovery_invocation:03d}.md"
+                scratch_output = workspace / f"recovery-{recovery_invocation:03d}-rendered.md"
+                scratch_input.write_text(
+                    "\n\n".join(str(unit["fence"]) for unit in group) + "\n",
+                    encoding="utf-8",
+                    newline="\n",
+                )
+                scratch_prefix = scratch_output.stem
+                for stale_path in workspace.glob(f"{scratch_prefix}-*.svg"):
+                    stale_path.unlink()
+                scratch_output.unlink(missing_ok=True)
+                completed: subprocess.CompletedProcess[str] | None = None
+                timed_out = False
+                try:
+                    completed = subprocess.run(
+                        command_for(scratch_input, scratch_output),
+                        cwd=workspace,
+                        text=True,
+                        encoding="utf-8",
+                        errors="replace",
+                        capture_output=True,
+                        check=False,
+                        timeout=call_timeout,
+                    )
+                except subprocess.TimeoutExpired:
+                    timed_out = True
+
+                scratch_names = {
+                    path.name for path in workspace.glob(f"{scratch_prefix}-*.svg")
                 }
+                scratch_expected = {
+                    f"{scratch_prefix}-{index}.svg"
+                    for index in range(1, len(group) + 1)
+                }
+                unexpected_scratch = sorted(scratch_names - scratch_expected)
+                colorset_counts = {"colorset1": 0, "colorset2": 0}
+                approved_counts = {"colorset1": 0, "colorset2": 0}
+                unresolved: list[dict[str, object]] = []
+                for local_index, unit in enumerate(group, start=1):
+                    scratch_name = f"{scratch_prefix}-{local_index}.svg"
+                    scratch_path = workspace / scratch_name
+                    colorset = str(unit["colorset"])
+                    if scratch_name in scratch_names:
+                        colorset_counts[colorset] += 1
+                    if (
+                        not unexpected_scratch
+                        and scratch_name in scratch_names
+                        and not inspect_svg(scratch_path)
+                    ):
+                        target_path = workspace / f"rendered-{int(unit['globalIndex'])}.svg"
+                        scratch_path.replace(target_path)
+                        approved_counts[colorset] += 1
+                    else:
+                        unresolved.append(unit)
+
+                attempts.append(
+                    {
+                        "phase": "recovery",
+                        "chunk": chunk_number,
+                        "attempt": attempt_round,
+                        "invocation": recovery_invocation,
+                        "exitCode": completed.returncode if completed is not None else None,
+                        "jobs": jobs,
+                        "colorsets": sorted({str(unit["colorset"]) for unit in group}),
+                        "globalIndices": [int(unit["globalIndex"]) for unit in group],
+                        "renderedSvgCount": len(scratch_names),
+                        "approvedSvgCount": sum(approved_counts.values()),
+                        "unexpectedSvgNames": unexpected_scratch,
+                        "colorsetRenderedSvgCounts": colorset_counts,
+                        "colorsetApprovedSvgCounts": approved_counts,
+                        "stdout": completed.stdout.strip()[-1000:] if completed is not None else "",
+                        "stderr": (
+                            completed.stderr.strip()[-1000:]
+                            if completed is not None
+                            else f"timed out after {call_timeout} seconds"
+                        ),
+                        "timedOut": timed_out,
+                    }
+                )
+                if unresolved:
+                    if attempt_round == retries - 1 and len(unresolved) > 1:
+                        next_groups.extend([[unit] for unit in unresolved])
+                    else:
+                        next_groups.append(unresolved)
+            pending_groups = next_groups
+            if budget_exhausted:
+                break
+
+        unresolved_units = [unit for group in pending_groups for unit in group]
+        if unresolved_units:
+            global_indices = [int(unit["globalIndex"]) for unit in unresolved_units]
+            reason = "overall timeout exhausted" if budget_exhausted else "retries exhausted"
+            recovery_failures.append(
+                f"recovery chunk {chunk_number} left unresolved global indices {global_indices}: {reason}"
             )
 
     actual_names = {path.name for path in workspace.glob("rendered-*.svg")}
-    final_exit_code = completed.returncode if completed is not None else None
-    batch_findings: list[str] = []
-    if completed is None:
-        batch_findings.append(f"Mermaid CLI did not complete within {retries} attempts")
-    elif completed.returncode != 0:
-        detail = (completed.stderr.strip() or completed.stdout.strip())[-2000:]
-        batch_findings.append(
-            f"Mermaid CLI exited {completed.returncode} after {len(attempts)} attempts: {detail}"
-        )
+    batch_findings: list[str] = list(recovery_failures)
 
     if actual_names != expected_names:
         batch_findings.append(
             f"rendered SVG set differs: missing={sorted(expected_names - actual_names)}, "
             f"unexpected={sorted(actual_names - expected_names)}"
         )
+    final_exit_code = 0 if not batch_findings else 1
 
     colorset_results: list[dict[str, object]] = []
     prefixed_findings: list[str] = list(batch_findings)
@@ -271,14 +432,15 @@ def render_colorsets(
                 f"{example['declaration']}: {finding}" for finding in svg_findings
             )
         findings = [*batch_findings, *colorset_findings]
+        colorset_attempts = attempts_for_colorset(attempts, colorset)
         colorset_results.append(
             {
                 "colorset": colorset,
                 "ok": not findings and not batch_findings,
                 "exitCode": final_exit_code,
                 "jobs": jobs,
-                "attemptCount": len(attempts),
-                "attempts": attempts_for_colorset(attempts, colorset),
+                "attemptCount": len(colorset_attempts),
+                "attempts": colorset_attempts,
                 "startIndex": start_index,
                 "endIndex": int(colorset_input["endIndex"]),
                 "diagramCount": len(examples),
@@ -297,6 +459,17 @@ def render_colorsets(
         "jobs": jobs,
         "attemptCount": len(attempts),
         "attempts": attempts,
+        "primaryExitCode": (
+            primary_completed.returncode if primary_completed is not None else None
+        ),
+        "primaryRenderedSvgCount": len(primary_names),
+        "initialUnusableSvgCount": initial_unusable_count,
+        "recoveryChunkSize": recovery_chunk_size,
+        "recoveryChunkCount": len(recovery_chunks),
+        "recoveredSvgCount": initial_unusable_count
+        - len(expected_names - actual_names),
+        "overallTimeout": overall_timeout,
+        "elapsedSeconds": round(time.monotonic() - started_at, 3),
         "renderCount": render_count,
         "renderedSvgCount": len(actual_names),
         "findings": batch_findings,
@@ -310,8 +483,20 @@ def main() -> int:
     )
     parser.add_argument("--fixture", type=Path, default=FIXTURE, help="Markdown coverage fixture.")
     parser.add_argument("--mermaid-cli-package", default=DEFAULT_MERMAID_PACKAGE, help="Exact npx Mermaid CLI package spec.")
-    parser.add_argument("--timeout", type=int, default=180, help="Seconds allowed for the combined colorset batch render.")
-    parser.add_argument("--render-retries", type=int, default=3, help="Fresh combined-batch attempts for transient browser failures.")
+    parser.add_argument("--timeout", type=int, default=180, help="Seconds allowed for each Mermaid CLI process.")
+    parser.add_argument("--render-retries", type=int, default=3, help="Attempts per missing-output recovery chunk.")
+    parser.add_argument(
+        "--recovery-chunk-size",
+        type=int,
+        default=8,
+        help="Missing diagrams per independently retried recovery batch.",
+    )
+    parser.add_argument(
+        "--overall-timeout",
+        type=int,
+        default=600,
+        help="Maximum seconds for the primary render and all recovery batches.",
+    )
     parser.add_argument(
         "--jobs",
         type=int,
@@ -320,8 +505,16 @@ def main() -> int:
     )
     parser.add_argument("--report", type=Path, help="Write the validation report as JSON.")
     args = parser.parse_args()
+    if args.timeout < 1:
+        parser.error("--timeout must be at least 1")
     if args.jobs < 1:
         parser.error("--jobs must be at least 1")
+    if args.render_retries < 1:
+        parser.error("--render-retries must be at least 1")
+    if args.recovery_chunk_size < 1:
+        parser.error("--recovery-chunk-size must be at least 1")
+    if args.overall_timeout < 1:
+        parser.error("--overall-timeout must be at least 1")
 
     styler = load_styler()
     npx = find_npx()
@@ -354,6 +547,8 @@ def main() -> int:
             args.timeout,
             args.render_retries,
             args.jobs,
+            args.recovery_chunk_size,
+            args.overall_timeout,
         )
         findings.extend(render_findings)
 
@@ -366,6 +561,8 @@ def main() -> int:
         "renderableDeclarationCount": len(styler.SUPPORTED_DECLARATIONS),
         "colorsetCount": len(colorset_results),
         "jobs": args.jobs,
+        "recoveryChunkSize": args.recovery_chunk_size,
+        "overallTimeout": args.overall_timeout,
         "batch": batch,
         "renderCount": sum(int(result["diagramCount"]) for result in colorset_results),
         "approvedRenderCount": sum(int(result["approvedRenderCount"]) for result in colorset_results),
