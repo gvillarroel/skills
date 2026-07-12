@@ -4,7 +4,7 @@ Work only from this prompt and the loaded skill at `skills/compose-synchronized-
 
 Follow the skill's declared normal-use boundary exactly: read only `SKILL.md`, its three named focused references, and `assets/templates/composition-brief.json`. The skill intentionally has no README or package manifest; do not probe for either and do not list the bundle.
 
-Apply the skill's deterministic brief preflight before the single publishing compiler call. Expected preflight findings are not tool failures: rewrite the complete brief rather than using fragile exact-match edits, repeat preflight until `ok=true`, and call the compiler only once after that gate passes.
+Apply the skill's deterministic brief preflight immediately after each complete brief write and before the single publishing compiler call. Do not reread, chunk-read, or inspect the brief between a write and preflight; the preflight is the inspection step. Expected findings are not tool failures: rewrite the complete brief rather than using fragile exact-match edits, repeat preflight until `ok=true`, and call the compiler only once after that gate passes.
 
 Create these exact files:
 

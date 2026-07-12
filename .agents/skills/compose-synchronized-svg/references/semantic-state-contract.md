@@ -16,7 +16,7 @@ Use safe computation nodes instead of executable strings. A node may be a finite
 
 ## Author the compact brief in normal use
 
-Write the idea-specific contract, pass it through `preflight_synchronized_svg_brief.py`, and let `compile_synchronized_svg_plan.py` expand mechanics only after preflight reports `ok: true`. A compact brief keeps source records, derived computation trees, scenarios, modules, a global armature name, optional cross-module relationships, focus groups, and optional timeline phases. For each module, provide a `values` list instead of manual selectors or channels:
+Write the idea-specific contract, pass it through `preflight_svg_brief.py`, and let `compile_synchronized_svg_plan.py` expand mechanics only after preflight reports `ok: true`. A compact brief keeps source records, derived computation trees, scenarios, modules, a global armature name, optional cross-module relationships, focus groups, and optional timeline phases. For each module, provide a `values` list instead of manual selectors or channels:
 
 ```json
 {

@@ -25,7 +25,7 @@ Normal generation has one short path:
 1. After reading the task prompt, read exactly `skills/compose-synchronized-svg/SKILL.md` first, then the three focused references and compact brief template above once. This is a standalone `uv` Python bundle and intentionally has no `package.json`, Node manifest, or README. Do not probe for them, test whether they exist, or list/search the skill directory.
 2. If the active shell is Git Bash on Windows, run `mkdir -p .tmp` once in the writable workspace and prefix every bundled `uv run` command with `TMPDIR="$(pwd)/.tmp"`. Never create or rely on `/tmp`; it can resolve outside the writable workspace. The examples below omit this conditional prefix only for readability.
 3. Write one compact project brief outside the skill. Keep the idea-specific choices—concepts, computations, scenarios, module questions, asset types, bound values, focus, and phases—while leaving regions, selectors, identity boilerplate, transforms, and exact phase times to the compiler.
-4. Run `preflight_synchronized_svg_brief.py` on the brief. It never publishes a plan and reports expected authoring defects as `ok: false` with process exit zero. Rewrite the complete brief and repeat preflight until `ok: true`; do not use fragile exact-match edits.
+4. Run `preflight_svg_brief.py` on the brief. It never publishes a plan and reports expected authoring defects as `ok: false` with process exit zero. Rewrite the complete brief and repeat preflight until `ok: true`; do not use fragile exact-match edits.
 5. Run `compile_synchronized_svg_plan.py` once to create the complete plan. Copy the documented command literally: the report switch is `--json`, not an inferred abbreviation or trial flag.
 6. Run `compose_synchronized_svg.py --force` on that compiled plan.
 7. Run `validate_synchronized_svg.py` once on the requested SVG.
@@ -44,7 +44,7 @@ Before the single brief write, perform this in-context preflight without calling
 - when the task requires a forward causal chain, every required facet belongs to one connected relationship spine and feedback closes that same component;
 - when a scenario promises an unchanged representation, that entire module binds only values that remain unchanged in the transition.
 
-After the first complete JSON write, make the bundled preflight the first external command. Do not run `--help`, `python -m json.tool`, another JSON linter, a directory listing, or a speculative tool call first. When preflight reports `ok: false`, rewrite the whole brief with one `write` call rather than using exact-match `edit`, then rerun preflight. Only `ok: true` authorizes the single publishing compiler command.
+After the first complete JSON write, make the bundled preflight the first external command. Do not reread, chunk-read, or inspect the brief between a write and preflight; the preflight is the inspection step. Do not run `--help`, `python -m json.tool`, another JSON linter, a directory listing, or a speculative tool call first. When preflight reports `ok: false`, rewrite the whole brief with one `write` call rather than using exact-match `edit`, then rerun preflight. Only `ok: true` authorizes the single publishing compiler command.
 
 Do not run `ls`, `find`, `rg`, `grep`, `sed`, `head`, or `tail`, and do not use Python, Node, shell globs, `test -f`, or filesystem APIs to enumerate or probe the bundle. Do not read the compiled plan, monolithic SVG, helper source, package manifests, or unrelated files after a pass. Command exit status, durable reports, and rendered screenshots are the evidence; inspect screenshots, not implementation internals. Do not run the scaffold, replacer, or tests during normal generation. Use the bundled browser audit by default; add a direct browser interaction review only when the task explicitly requires pointer, keyboard, or state-specific acceptance beyond that audit. Keep every generated review artifact outside the skill bundle.
 
@@ -104,7 +104,7 @@ Do not embed executable expressions in the brief. Use the documented pure comput
 Preflight without publishing a plan. An expected authoring finding still exits zero, so inspect the JSON `ok` field rather than treating process success as semantic success:
 
 ```text
-uv run --script <skill-root>/scripts/preflight_synchronized_svg_brief.py --brief composition-brief.json --json
+uv run --script <skill-root>/scripts/preflight_svg_brief.py --brief composition-brief.json --json
 ```
 
 When and only when preflight reports `"ok": true`, compile the full deterministic plan once:
