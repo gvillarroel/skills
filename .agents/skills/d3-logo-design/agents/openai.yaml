@@ -1,4 +1,4 @@
 interface:
   display_name: "D3 Logo Design"
-  short_description: "Parametric D3 logos in approved colorsets"
-  default_prompt: "Use $d3-logo-design to create and validate a dynamic D3 logo system using only colorset1 or colorset2."
+  short_description: "Parametric D3 logos and texture atlas"
+  default_prompt: "Use $d3-logo-design to create and validate a dynamic D3 logo or select a reusable texture by canonical ID using only colorset1 or colorset2."

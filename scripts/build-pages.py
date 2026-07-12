@@ -39,6 +39,11 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "d3-logo-design",
+    "d3-logo-textures": SKILLS
+    / "d3-logo-design"
+    / "assets"
+    / "examples"
+    / "d3-logo-textures",
     "echarts-animated-svg": SKILLS
     / "echarts-animated-svg"
     / "assets"
@@ -135,7 +140,15 @@ PUBLISHED_EXAMPLE_SETS = [
         "title": "D3 Logo Design Patterns",
         "href": "examples/d3-logo-design/",
         "kind": "D3 logo",
-        "description": "Ninety adjustable logo compositions, including thirty mathematical mechanisms, with ten SVG textures constrained to colorset1 and colorset2.",
+        "description": "Ninety adjustable logo compositions, including thirty mathematical mechanisms, with forty SVG textures constrained to colorset1 and colorset2.",
+    },
+    {
+        "id": "d3-logo-textures",
+        "source": "d3-logo-textures",
+        "title": "D3 Logo Texture Atlas",
+        "href": "examples/d3-logo-textures/",
+        "kind": "D3 texture",
+        "description": "Forty reusable SVG texture mechanisms with stable IDs, adjustable parameters, and colorset1/colorset2 previews.",
     },
     {
         "id": "mermaid-svg-animated",
@@ -624,6 +637,7 @@ def build_docs() -> None:
         },
     )
     copy_tree(example_source("d3-logo-design"), DOCS / "examples" / "d3-logo-design")
+    copy_tree(example_source("d3-logo-textures"), DOCS / "examples" / "d3-logo-textures")
     copy_tree(example_source("mermaid"), DOCS / "examples" / "mermaid")
     copy_tree(example_source("mermaid-svg-animated"), DOCS / "examples" / "mermaid-svg-animated")
     copy_tree(example_source("mermaid-animation-directives"), DOCS / "examples" / "mermaid-animation-directives")

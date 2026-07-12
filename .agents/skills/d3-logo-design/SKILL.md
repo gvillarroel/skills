@@ -1,6 +1,6 @@
 ---
 name: d3-logo-design
-description: Create, adapt, implement, and validate parametric D3/SVG logo systems using only the bundled colorset1 and colorset2 palettes. Use when Codex needs a wordmark, monogram, seal, circular text logo, animal or organic silhouette mask, responsive brand mark, typographic treatment, texture-filled emblem, logo exploration gallery, or reusable HTML/SVG logo generator with adjustable copy, font stack, geometry, texture, scale, rotation, density, and curvature.
+description: Create, adapt, implement, and validate parametric D3/SVG logo systems using only the bundled colorset1 and colorset2 palettes. Use when Codex needs a wordmark, monogram, seal, circular text logo, animal or organic silhouette mask, responsive brand mark, typographic treatment, texture-filled emblem, texture atlas, logo exploration gallery, or reusable HTML/SVG logo generator with adjustable copy, font stack, geometry, texture, scale, rotation, density, and curvature.
 ---
 
 # D3 Logo Design
@@ -25,7 +25,12 @@ When the request already supplies exact output paths, pattern or texture IDs, co
 
 1. Freeze the brief: brand text, optional tagline, audience, desired personality, delivery format, and whether the mark should be typographic, symbolic, masked, or a lockup.
 2. If the pattern is open-ended, read `references/pattern-catalog.md`, choose one primary pattern and at most one supporting mechanism, and retain its canonical `d3-logo-*` ID in the artifact.
-3. If the texture is open-ended, read `references/texture-catalog.md`. Select one of the ten bundled textures and tune density or strength; do not invent an unregistered texture without extending the catalog and validator.
+3. If the texture is open-ended, read `references/texture-catalog.md`. Select one of the 40 bundled textures and tune density, curvature, strength, or seed; do not invent an unregistered texture without extending the catalog and validators. When the user asks to compare or inspect textures, build the standalone atlas with `scripts/build_texture_gallery.py` and retain the selected canonical texture ID in the final logo.
+
+```powershell
+uv run --script skills/d3-logo-design/scripts/build_texture_gallery.py --output outputs/d3-logo-textures.html
+```
+
 4. If the colorset is open-ended, read `references/palette-contract.md`. Choose `colorset1` for restrained red-neutral identity work or `colorset2` only when multiple semantic hues materially improve the concept.
 5. Start from the deterministic studio builder unless the user already supplied a codebase. Resolve this skill directory, then run:
 
@@ -37,7 +42,14 @@ uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --output outp
 7. Validate every deliverable. For generated studio HTML, run:
 
 ```powershell
-uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/logo-studio.html --expect-patterns 90 --expect-textures 10 --expect-compositions 90 --require-colorset colorset1
+uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/logo-studio.html --expect-patterns 90 --expect-textures 40 --expect-compositions 90 --require-colorset colorset1
+```
+
+For a generated texture atlas, run both gates:
+
+```powershell
+uv run --script skills/d3-logo-design/scripts/validate_texture_gallery.py outputs/d3-logo-textures.html
+uv run --script skills/d3-logo-design/scripts/verify_logo_texture_gallery.py outputs/d3-logo-textures.html --viewport 1440x1100 --json-report outputs/d3-logo-textures-browser.json
 ```
 
 8. For browser-visible or published work, run the Playwright verifier, inspect desktop and mobile screenshots, and correct clipping, illegible type, collisions, weak negative space, or palette leakage before delivery.
@@ -53,9 +65,9 @@ uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/
 
 ## Progressive Disclosure
 
-- `references/pattern-catalog.md`: read when selecting or adapting one of the 60 typographic and generative mechanisms.
+- `references/pattern-catalog.md`: read when selecting or adapting one of the 90 typographic, generative, perceptual, and mathematical mechanisms.
 - `references/mathematical-patterns.md`: read when the pattern catalog routes a request to a mathematical construction, dynamical system, topology, or optimization mechanism.
-- `references/texture-catalog.md`: read when choosing and tuning one of the 10 palette-safe SVG textures.
+- `references/texture-catalog.md`: read when choosing and tuning one of the 40 palette-safe SVG textures or when a user names a canonical texture ID.
 - `references/palette-contract.md`: read before any palette, paint, opacity, or colorset decision.
 - `references/composition-contract.md`: read when building a gallery, a responsive lockup system, or a new finished composition.
 - `references/text-clearance-contract.md`: read before intentionally occluding or omitting any brand, tagline, wordmark, monogram, or initials.
@@ -63,4 +75,4 @@ uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/
 
 ## Maintenance
 
-When changing the engine, bundled D3 runtime, catalogs, example gallery, or palette rules, keep the runtime license, pattern, texture, and composition inventories synchronized. Run both skill validators, the browser gallery verifier at desktop and mobile sizes, the Pages build, the repository validators, and an isolated `pi` forward test before marking the skill done.
+When changing the engine, bundled D3 runtime, catalogs, example galleries, or palette rules, keep the runtime license, pattern, texture, and composition inventories synchronized. Run the logo and texture artifact validators, both browser gallery verifiers at desktop and mobile sizes, the Pages build, the repository validators, and an isolated `pi` forward test before marking the skill done.

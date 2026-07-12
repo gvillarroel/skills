@@ -106,16 +106,46 @@
   ]);
 
   const TEXTURES = deepFreeze([
-    { id: "d3-logo-micro-grid", label: "Micro Grid", geometrySignature: "orthogonal-tile-grid" },
-    { id: "d3-logo-diagonal-hatch", label: "Diagonal Hatch", geometrySignature: "single-angle-hatch" },
-    { id: "d3-logo-crosshatch", label: "Crosshatch", geometrySignature: "dual-angle-hatch" },
-    { id: "d3-logo-halftone-dots", label: "Halftone Dots", geometrySignature: "modulated-dot-tile" },
-    { id: "d3-logo-seeded-stipple", label: "Seeded Stipple", geometrySignature: "seeded-point-tile" },
-    { id: "d3-logo-topographic-lines", label: "Topographic Lines", geometrySignature: "contour-line-tile" },
-    { id: "d3-logo-voronoi-mosaic", label: "Voronoi Mosaic", geometrySignature: "cell-fragment-tile" },
-    { id: "d3-logo-guilloche-waves", label: "Guilloche Waves", geometrySignature: "phase-wave-tile" },
-    { id: "d3-logo-woven-checker", label: "Woven Checker", geometrySignature: "alternating-band-tile" },
-    { id: "d3-logo-directional-fibers", label: "Directional Fibers", geometrySignature: "seeded-fiber-tile" }
+    {"id":"d3-logo-micro-grid","label":"Micro Grid","family":"geometric","geometrySignature":"orthogonal-tile-grid","description":"A tiled square grid with optional subdivisions for restrained technical structure.","parameters":["tileSize","subdivision","lineWidth","angle"],"avoidWhen":"Avoid when the primary mark already uses a dense cell grid."},
+    {"id":"d3-logo-diagonal-hatch","label":"Diagonal Hatch","family":"linework","geometrySignature":"single-angle-hatch","description":"One evenly spaced diagonal stroke family for economical print-like shading.","parameters":["pitch","angle","dashRhythm","lineWidth"],"avoidWhen":"Avoid when narrow glyph counters could collapse."},
+    {"id":"d3-logo-crosshatch","label":"Crosshatch","family":"linework","geometrySignature":"dual-angle-hatch","description":"Two opposing stroke families that create a compact engraved field.","parameters":["primaryAngle","secondaryAngle","pitch","lineWidth"],"avoidWhen":"Avoid when the symbol already contains many intersections."},
+    {"id":"d3-logo-halftone-dots","label":"Halftone Dots","family":"print","geometrySignature":"modulated-dot-tile","description":"A regular dot screen with deterministic radius modulation for printed tonal rhythm.","parameters":["cellSize","radiusMin","radiusMax","screenAngle"],"avoidWhen":"Avoid when the smallest output is below 128 pixels wide."},
+    {"id":"d3-logo-seeded-stipple","label":"Seeded Stipple","family":"print","geometrySignature":"seeded-point-tile","description":"A repeatable seeded point field that adds tactile grain without external imagery.","parameters":["density","radiusMin","radiusMax","minimumDistance","seed"],"avoidWhen":"Avoid when the silhouette depends on tiny negative spaces."},
+    {"id":"d3-logo-topographic-lines","label":"Topographic Lines","family":"linework","geometrySignature":"contour-line-tile","description":"Procedural contour-like paths that suggest terrain and layered surfaces.","parameters":["thresholdCount","spacing","smoothing","seed"],"avoidWhen":"Avoid when the primary pattern is already a contour fingerprint."},
+    {"id":"d3-logo-voronoi-mosaic","label":"Voronoi Mosaic","family":"geometric","geometrySignature":"cell-fragment-tile","description":"A seeded space-filling cell field with discrete palette assignment.","parameters":["siteCount","cellGap","seed","roleSequence"],"avoidWhen":"Avoid when the primary pattern already uses Voronoi shards."},
+    {"id":"d3-logo-guilloche-waves","label":"Guilloche Waves","family":"ornamental","geometrySignature":"phase-wave-tile","description":"Phase-shifted harmonic lines for currency-like ornamental detail.","parameters":["frequency","amplitude","phaseStep","lineCount"],"avoidWhen":"Avoid when the primary pattern already uses a wave baseline."},
+    {"id":"d3-logo-woven-checker","label":"Woven Checker","family":"textile","geometrySignature":"alternating-band-tile","description":"Orthogonal bands with an alternating over-under crossing schedule.","parameters":["tileSize","bandWidth","crossingSchedule","rotation"],"avoidWhen":"Avoid when the primary mark already uses a letter weave."},
+    {"id":"d3-logo-directional-fibers","label":"Directional Fibers","family":"organic","geometrySignature":"seeded-fiber-tile","description":"Short parallel strokes with seeded displacement for directional material grain.","parameters":["spacing","direction","displacement","length","seed"],"avoidWhen":"Avoid when a crisp institutional seal is required."},
+    {"id":"d3-logo-hex-cell-lattice","label":"Hex Cell Lattice","family":"geometric","geometrySignature":"regular-hexagon-edge-lattice","description":"A staggered field of regular hexagon outlines for modular scientific identities.","parameters":["cellRadius","gap","lineWidth","rowOffset","rotation"],"avoidWhen":"Avoid when the mark already relies on honeycomb or hexagonal geometry."},
+    {"id":"d3-logo-triangle-flip-tiles","label":"Triangle Flip Tiles","family":"geometric","geometrySignature":"alternating-equilateral-triangle-facets","description":"Equilateral triangle facets whose fills alternate by orientation and grid parity.","parameters":["edgeLength","gap","fillCadence","rotation","sequenceOffset"],"avoidWhen":"Avoid when small counters cannot preserve the triangular facet rhythm."},
+    {"id":"d3-logo-truchet-arc-links","label":"Truchet Arc Links","family":"geometric","geometrySignature":"seeded-quarter-circle-tile-connectivity","description":"Seeded quarter-circle tiles that join into deterministic flowing routes.","parameters":["tileSize","arcRadius","lineWidth","seed","rotation"],"avoidWhen":"Avoid when the primary symbol already contains routed arc networks."},
+    {"id":"d3-logo-houndstooth-blocks","label":"Houndstooth Blocks","family":"textile","geometrySignature":"offset-notched-houndstooth-polygons","description":"Offset notched polygons that form a bold houndstooth textile repeat.","parameters":["moduleSize","toothDepth","rowOffset","gap","rotation"],"avoidWhen":"Avoid when a quiet or minimal luxury treatment is required."},
+    {"id":"d3-logo-argyle-diamonds","label":"Argyle Diamonds","family":"textile","geometrySignature":"staggered-diamond-fields-with-seam-threads","description":"Staggered filled diamonds crossed by sparse seam threads.","parameters":["diamondWidth","diamondHeight","rowShift","seamWidth","sequenceCadence"],"avoidWhen":"Avoid when the logo already contains dominant diamond geometry."},
+    {"id":"d3-logo-running-brick-bond","label":"Running Brick Bond","family":"geometric","geometrySignature":"half-offset-masonry-rectangle-bond","description":"Rectangular modules arranged in half-offset masonry rows.","parameters":["brickRatio","rowHeight","mortarGap","rowPhase","rotation"],"avoidWhen":"Avoid when rigid masonry cues conflict with the brand personality."},
+    {"id":"d3-logo-isometric-cube-tiles","label":"Isometric Cube Tiles","family":"geometric","geometrySignature":"three-rhombus-axonometric-cube-repeat","description":"Three rhombus faces repeat as compact axonometric cube units.","parameters":["moduleSize","skewAngle","faceGap","cubeSpacing","rotation"],"avoidWhen":"Avoid when the primary mark already uses an isometric block stack."},
+    {"id":"d3-logo-greek-key-meander","label":"Greek Key Meander","family":"ornamental","geometrySignature":"continuous-orthogonal-fret-meander","description":"A continuous orthogonal fret path that forms a seamless border-like field.","parameters":["stepSize","inset","lineWidth","turnPeriod","rotation"],"avoidWhen":"Avoid when the available fill area is too narrow to show complete turns."},
+    {"id":"d3-logo-chainmail-rings","label":"Chainmail Rings","family":"textile","geometrySignature":"interleaved-over-under-ring-arc-lattice","description":"Split ring arcs alternate front and back to create linked metallic rhythm.","parameters":["ringRadius","linkSpacing","lineWidth","overlapPhase","rotation"],"avoidWhen":"Avoid when ring crossings would compete with thin lettering."},
+    {"id":"d3-logo-seigaiha-fans","label":"Seigaiha Fans","family":"ornamental","geometrySignature":"staggered-nested-semicircle-fan-motifs","description":"Discrete staggered fans built from nested semicircular arcs.","parameters":["fanRadius","ringCount","rowOverlap","lineWidth","phase"],"avoidWhen":"Avoid when the concept should not suggest water, waves, or heritage ornament."},
+    {"id":"d3-logo-knit-v-loops","label":"Knit V Loops","family":"textile","geometrySignature":"interlocking-curved-v-stitch-loops","description":"Curved V-shaped stitches interlock in staggered knitted rows.","parameters":["loopWidth","loopHeight","tension","stitchPitch","lineWidth"],"avoidWhen":"Avoid when textile or hand-crafted cues are inappropriate."},
+    {"id":"d3-logo-pinwheel-quilt","label":"Pinwheel Quilt","family":"textile","geometrySignature":"fourfold-rotated-triangle-pinwheel-block","description":"Four rotated triangle patches form a repeating pinwheel block.","parameters":["blockSize","centerOffset","triangleGap","rotation","colorCadence"],"avoidWhen":"Avoid when multiple palette faces would make the mark visually busy."},
+    {"id":"d3-logo-star-kite-lattice","label":"Star Kite Lattice","family":"ornamental","geometrySignature":"eight-point-star-and-kite-tiling","description":"Eight-point stars and surrounding kite polygons form a precise ornamental lattice.","parameters":["starRadius","kiteLength","gap","lineWidth","rotation"],"avoidWhen":"Avoid when the silhouette is too small to preserve star points."},
+    {"id":"d3-logo-chevron-bands","label":"Chevron Bands","family":"geometric","geometrySignature":"filled-zigzag-ribbon-cadence","description":"Closed filled zigzag ribbons create a strong directional cadence.","parameters":["pitch","bandThickness","pointDepth","spacing","rotation"],"avoidWhen":"Avoid when the primary mark already has aggressive directional motion."},
+    {"id":"d3-logo-pixel-staircase","label":"Pixel Staircase","family":"digital","geometrySignature":"quantized-diagonal-stair-band-repeat","description":"Integer-aligned rectangles form diagonal stepped bands with a digital character.","parameters":["cellSize","run","rise","bandWidth","phase","rotation"],"avoidWhen":"Avoid when the desired identity should feel organic or handcrafted."},
+    {"id":"d3-logo-terrazzo-chips","label":"Terrazzo Chips","family":"material","geometrySignature":"seeded-independent-angular-chip-scatter","description":"Independent seeded polygon chips float over a flat substrate without sharing boundaries.","parameters":["chipCount","sizeRange","elongation","minimumGap","seed"],"avoidWhen":"Avoid when the primary form already uses fragmented polygon facets."},
+    {"id":"d3-logo-linocut-gouges","label":"Linocut Gouges","family":"print","geometrySignature":"seeded-tapered-negative-gouge-cuts","description":"Tapered curved negative cuts emulate hand-carved linocut marks.","parameters":["gougeCount","length","taper","curvature","direction","seed"],"avoidWhen":"Avoid when pristine geometric precision is central to the identity."},
+    {"id":"d3-logo-letterpress-slippage","label":"Letterpress Slippage","family":"print","geometrySignature":"dual-offset-stamp-registration-impressions","description":"A repeated stamp receives a controlled second impression with visible registration offset.","parameters":["stampMotif","offsetX","offsetY","impressionSize","repeatPitch","rotation"],"avoidWhen":"Avoid when any registration error would undermine a precision-focused brand."},
+    {"id":"d3-logo-dry-roller-bands","label":"Dry Roller Bands","family":"print","geometrySignature":"seeded-broken-coverage-broad-bands","description":"Broad bands break into deterministic ink runs and substrate gaps.","parameters":["bandHeight","coverageRatio","breakCount","direction","seed"],"avoidWhen":"Avoid when distressed print texture would weaken small-size recognition."},
+    {"id":"d3-logo-embossed-lozenges","label":"Embossed Lozenges","family":"material","geometrySignature":"paired-offset-lozenge-relief-faces","description":"Paired light and dark offset faces imply lozenge relief without gradients.","parameters":["lozengeSize","bevelDepth","gap","lightDirection","rotation"],"avoidWhen":"Avoid when flat one-color reproduction is the primary delivery mode."},
+    {"id":"d3-logo-camouflage-islands","label":"Camouflage Islands","family":"organic","geometrySignature":"seeded-union-of-organic-closed-islands","description":"Seeded closed blobs overlap into a repeatable organic island field.","parameters":["islandCount","lobeCount","radiusRange","overlap","seed","rotation"],"avoidWhen":"Avoid when camouflage, outdoor, or tactical associations are undesirable."},
+    {"id":"d3-logo-leaf-vein-repeat","label":"Leaf Vein Repeat","family":"organic","geometrySignature":"mirrored-secondary-veins-on-leaf-midrib","description":"Repeated leaf silhouettes carry a midrib and mirrored secondary veins.","parameters":["leafSize","veinCount","veinSlant","rowOffset","lineWidth","rotation"],"avoidWhen":"Avoid when botanical or sustainability cues would be misleading."},
+    {"id":"d3-logo-pinecone-scales","label":"Pinecone Scales","family":"organic","geometrySignature":"staggered-pointed-lens-scale-overlap","description":"Pointed lens-shaped scales overlap in staggered natural rows.","parameters":["scaleWidth","scaleHeight","overlap","rowOffset","gap","rotation"],"avoidWhen":"Avoid when the mark already uses feather, scale, or petal geometry."},
+    {"id":"d3-logo-coral-branchlets","label":"Coral Branchlets","family":"organic","geometrySignature":"recursive-forked-microbranch-colonies","description":"Bounded recursive forks form connected microbranch colonies.","parameters":["recursionDepth","branchRatio","forkAngle","stemWidth","seed"],"avoidWhen":"Avoid when thin branches cannot survive the smallest required reproduction."},
+    {"id":"d3-logo-circuit-traces","label":"Circuit Traces","family":"technical","geometrySignature":"seeded-orthogonal-routing-with-terminal-pads","description":"Seeded Manhattan routes connect compact terminal pads across a coarse lattice.","parameters":["gridStep","traceCount","bendCount","lineWidth","padRadius","seed"],"avoidWhen":"Avoid when technology or electronics associations do not support the brief."},
+    {"id":"d3-logo-barcode-cadence","label":"Barcode Cadence","family":"encoded","geometrySignature":"hash-derived-variable-width-bar-sequence","description":"A brand hash generates a repeatable sequence of variable-width vertical bars.","parameters":["sourceText","moduleWidth","barHeight","quietZone","checksumLength","rotation"],"avoidWhen":"Avoid when barcode or retail associations would distract from the brand."},
+    {"id":"d3-logo-microtype-ribbons","label":"Microtype Ribbons","family":"typographic","geometrySignature":"repeated-brand-microtype-row-ribbons","description":"The supplied brand or tagline repeats in offset microtype rows behind the primary wordmark.","parameters":["sourceText","fontStack","fontSize","tracking","rowPitch","angle"],"avoidWhen":"Avoid when the texture copy cannot remain secondary to the primary wordmark."},
+    {"id":"d3-logo-morse-stripes","label":"Morse Stripes","family":"encoded","geometrySignature":"hash-encoded-dot-dash-baseline-rows","description":"A fixed Morse table converts supplied copy into aligned dot-dash rows.","parameters":["sourceText","unitSize","dashRatio","characterGap","rowPitch","inversion"],"avoidWhen":"Avoid when dot-dash encoding could be mistaken for unreadable primary text."},
+    {"id":"d3-logo-radial-calibration","label":"Radial Calibration","family":"technical","geometrySignature":"repeated-concentric-dial-and-tick-motifs","description":"Compact repeated dials combine discrete rings with major and minor radial ticks.","parameters":["dialRadius","tickCount","majorCadence","ringCount","lineWidth","phase"],"avoidWhen":"Avoid when instrument, measurement, or precision cues conflict with the brief."},
+    {"id":"d3-logo-seven-segment-code","label":"Seven Segment Code","family":"digital","geometrySignature":"hash-selected-seven-segment-glyph-grid","description":"A brand hash selects digits rendered through a fixed seven-segment glyph grid.","parameters":["sourceText","seed","digitCount","cellSize","segmentThickness","rowShift"],"avoidWhen":"Avoid when a retro-digital display aesthetic is inappropriate."}
   ]);
 
   const COMPOSITIONS = deepFreeze([
@@ -250,7 +280,7 @@
   function getD3() {
     const d3 = root.d3;
     if (!d3 || typeof d3.select !== "function" || typeof d3.line !== "function" || typeof d3.arc !== "function") {
-      throw new Error("D3 Logo Design requires the global D3 v7 bundle before renderLogo is called.");
+      throw new Error("D3 Logo Design requires the global D3 v7 bundle before renderLogo or renderTexture is called.");
     }
     if (d3.version && String(d3.version).split(".")[0] !== "7") {
       throw new Error(`D3 Logo Design requires D3 v7; found ${d3.version}.`);
@@ -401,6 +431,47 @@
     });
   }
 
+  function normalizeTextureConfig(input) {
+    const source = input && typeof input === "object" ? input : {};
+    const requestedTexture = source.textureId == null
+      ? (source.texture == null ? TEXTURES[0].id : String(source.texture))
+      : String(source.textureId);
+    const texture = TEXTURE_BY_ID.get(requestedTexture);
+    if (!texture) throw new RangeError(`Unknown texture ID: ${requestedTexture}`);
+
+    const colorset = source.colorset == null ? "colorset1" : String(source.colorset);
+    if (!Object.prototype.hasOwnProperty.call(COLORSETS, colorset)) {
+      throw new RangeError(`Unknown colorset: ${colorset}`);
+    }
+    const font = resolveFont(source.font == null ? (source.fontFamily == null ? "monospace" : source.fontFamily) : source.font);
+    const brand = String(source.brand == null ? "BRAND" : source.brand).trim() || "BRAND";
+    const strengthSource = source.textureStrength == null ? source.strength : source.textureStrength;
+    const density = clamp(finiteNumber(source.density, 1), 0.45, 2.0);
+    const curvature = clamp(finiteNumber(source.curvature, 0.5), 0, 1);
+    const textureStrength = clamp(finiteNumber(strengthSource, 0.7), 0, 1);
+    const seed = Math.trunc(finiteNumber(source.seed, 101));
+    const exampleId = requestedTexture.replace(/^d3-logo-/, "");
+
+    return Object.freeze({
+      exampleId,
+      patternId: requestedTexture,
+      textureId: requestedTexture,
+      colorset,
+      brand,
+      font: font.id,
+      fontFamily: font.value,
+      density,
+      curvature,
+      textureStrength,
+      seed,
+      viewBox: VIEW_BOX,
+      accessibilityLabel: String(source.accessibilityLabel == null ? `${texture.label} texture` : source.accessibilityLabel),
+      instanceId: source.instanceId == null ? "" : String(source.instanceId),
+      outputWidth: finiteNumber(source.outputWidth, 0),
+      smallSize: source.smallSize === true || source.swatch === true
+    });
+  }
+
   function effectiveWidth(svgNode, config) {
     if (config.outputWidth > 0) return config.outputWidth;
     if (typeof svgNode.getBoundingClientRect === "function") {
@@ -496,6 +567,22 @@
     const instance = `${sanitizeId(config.compositionId)}-${hashString(nodeIdentity)}`;
     svgNode.setAttribute("data-logo-instance", instance);
     return `d3ld-${instance}`;
+  }
+
+  function stableTexturePrefix(svgNode, config) {
+    const ownerDocument = svgNode.ownerDocument;
+    const existingInstance = svgNode.getAttribute("data-texture-instance") || "";
+    const explicitIdentity = config.instanceId || svgNode.getAttribute("id") || existingInstance;
+    let documentIndex = 0;
+    if (!explicitIdentity && ownerDocument && typeof ownerDocument.querySelectorAll === "function") {
+      const nodes = Array.from(ownerDocument.querySelectorAll("svg"));
+      const found = nodes.indexOf(svgNode);
+      if (found >= 0) documentIndex = found;
+    }
+    const nodeIdentity = explicitIdentity || `${config.textureId}-${documentIndex}`;
+    const instance = `${sanitizeId(config.textureId)}-${hashString(nodeIdentity)}`;
+    svgNode.setAttribute("data-texture-instance", instance);
+    return `d3ldt-${instance}`;
   }
 
   function seededRandom(d3, seed, salt) {
@@ -615,23 +702,49 @@
     },
 
     "d3-logo-topographic-lines": function renderTopographicLines(defs, ctx) {
-      const size = 52 / ctx.config.density;
+      const size = 72 / ctx.config.density;
       const pattern = texturePattern(defs, ctx, size);
-      textureBase(pattern, ctx, size);
-      const line = ctx.d3.line().curve(ctx.d3.curveBasis);
-      const amplitude = size * (0.08 + ctx.config.curvature * 0.12);
-      const paths = ctx.d3.range(5).map((row) => ctx.d3.range(7).map((column) => [
-        column * size / 6,
-        (row + 0.6) * size / 5 + Math.sin(column * 1.3 + row) * amplitude
-      ]));
-      pattern.selectAll("path")
-        .data(paths)
+      pattern.attr("data-texture-mechanism", "nested-closed-isolines");
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const random = seededRandom(ctx.d3, ctx.config.seed, "topographic-closed-isolines");
+      const clusters = [
+        { cx: size * 0.28, cy: size * 0.34, radius: size * 0.31, levels: 5 },
+        { cx: size * 0.78, cy: size * 0.78, radius: size * 0.25, levels: 4 },
+        { cx: size * 0.94, cy: size * 0.18, radius: size * 0.19, levels: 3 }
+      ];
+      const contours = clusters.flatMap((cluster, clusterIndex) => ctx.d3.range(cluster.levels).map((level) => {
+        const radius = cluster.radius * (1 - level * 0.155);
+        const pointCount = 24;
+        const phase = random() * Math.PI * 2;
+        const points = ctx.d3.range(pointCount).map((index) => {
+          const angle = phase + index / pointCount * Math.PI * 2;
+          const harmonic = Math.sin(angle * (3 + clusterIndex) + phase) * 0.045 + Math.cos(angle * 5 - phase) * 0.025;
+          const jitter = (random() - 0.5) * 0.045;
+          const localRadius = radius * (1 + harmonic + jitter);
+          const squash = 0.74 + clusterIndex * 0.08;
+          return [
+            cluster.cx + Math.cos(angle) * localRadius,
+            cluster.cy + Math.sin(angle) * localRadius * squash
+          ];
+        });
+        return { clusterIndex, level, points };
+      }));
+      const line = ctx.d3.line().curve(ctx.d3.curveCardinalClosed.tension(0.18 + ctx.config.curvature * 0.62));
+      pattern.selectAll("path.topographic-isoline")
+        .data(contours)
         .join("path")
-        .attr("d", line)
+        .attr("class", "topographic-isoline")
+        .attr("data-isoline-closed", "true")
+        .attr("data-contour-cluster", (d) => d.clusterIndex)
+        .attr("data-contour-level", (d) => d.level)
+        .attr("d", (d) => {
+          const path = line(d.points);
+          return /Z$/i.test(path) ? path : `${path}Z`;
+        })
         .attr("fill", "none")
-        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke", (d) => d.level === 0 ? ctx.palette.roles.primary : ctx.palette.roles.ink)
         .attr("stroke-width", Math.max(0.55, 1.1 / ctx.config.density))
-        .attr("opacity", ctx.config.textureStrength);
+        .attr("opacity", (d) => 0.34 + ctx.config.textureStrength * (d.level === 0 ? 0.62 : 0.5));
       return pattern;
     },
 
@@ -731,6 +844,942 @@
         .attr("stroke", ctx.palette.roles.ink)
         .attr("stroke-width", 1)
         .attr("opacity", ctx.config.textureStrength);
+      return pattern;
+    },
+
+    "d3-logo-hex-cell-lattice": function renderHexCellLattice(defs, ctx) {
+      const size = 58 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const radius = size / 5;
+      const centers = [[0, size / 2], [size * 0.3, 0], [size * 0.3, size], [size * 0.6, size / 2], [size * 0.9, 0], [size * 0.9, size]];
+      const points = ([cx, cy]) => ctx.d3.range(6).map((index) => {
+        const angle = Math.PI / 3 * index;
+        return `${cx + Math.cos(angle) * radius},${cy + Math.sin(angle) * radius}`;
+      }).join(" ");
+      pattern.selectAll("polygon")
+        .data(centers)
+        .join("polygon")
+        .attr("points", points)
+        .attr("fill", (d, index) => index % 3 === 1 ? ctx.palette.roles.primary : "none")
+        .attr("fill-opacity", ctx.config.textureStrength * 0.28)
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", Math.max(0.7, 1.45 / ctx.config.density))
+        .attr("opacity", 0.45 + ctx.config.textureStrength * 0.55);
+      return pattern;
+    },
+
+    "d3-logo-triangle-flip-tiles": function renderTriangleFlipTiles(defs, ctx) {
+      const size = 48 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const half = size / 2;
+      const triangles = [
+        [[0, 0], [half, 0], [0, half]], [[half, 0], [half, half], [0, half]],
+        [[half, 0], [size, 0], [size, half]], [[half, 0], [size, half], [half, half]],
+        [[0, half], [half, half], [half, size]], [[0, half], [half, size], [0, size]],
+        [[half, half], [size, half], [half, size]], [[size, half], [size, size], [half, size]]
+      ];
+      pattern.selectAll("polygon")
+        .data(triangles)
+        .join("polygon")
+        .attr("points", (d) => d.map((point) => point.join(",")).join(" "))
+        .attr("fill", (d, index) => ctx.palette.sequence[index % ctx.palette.sequence.length])
+        .attr("stroke", ctx.palette.roles.background)
+        .attr("stroke-width", 0.65)
+        .attr("opacity", 0.5 + ctx.config.textureStrength * 0.5);
+      return pattern;
+    },
+
+    "d3-logo-truchet-arc-links": function renderTruchetArcLinks(defs, ctx) {
+      const size = 64 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const cell = size / 2;
+      const radius = cell / 2;
+      const random = seededRandom(ctx.d3, ctx.config.seed, "truchet-arc-links");
+      const paths = [];
+      for (let row = 0; row < 2; row += 1) {
+        for (let column = 0; column < 2; column += 1) {
+          const x = column * cell;
+          const y = row * cell;
+          if (random() < 0.5) {
+            paths.push(`M${x + radius},${y}A${radius},${radius} 0 0 0 ${x},${y + radius}`);
+            paths.push(`M${x + cell},${y + radius}A${radius},${radius} 0 0 0 ${x + radius},${y + cell}`);
+          } else {
+            paths.push(`M${x + radius},${y}A${radius},${radius} 0 0 1 ${x + cell},${y + radius}`);
+            paths.push(`M${x},${y + radius}A${radius},${radius} 0 0 1 ${x + radius},${y + cell}`);
+          }
+        }
+      }
+      pattern.selectAll("path")
+        .data(paths)
+        .join("path")
+        .attr("d", (d) => d)
+        .attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.primary)
+        .attr("stroke-width", Math.max(1.4, 3 / ctx.config.density))
+        .attr("stroke-linecap", "round")
+        .attr("opacity", 0.42 + ctx.config.textureStrength * 0.58);
+      return pattern;
+    },
+
+    "d3-logo-houndstooth-blocks": function renderHoundstoothBlocks(defs, ctx) {
+      const size = 60 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const module = size / 2;
+      const motif = [[0, 0], [module * 0.58, 0], [module * 0.58, module * 0.22], [module, module * 0.22], [module * 0.72, module * 0.5], [module, module * 0.78], [module * 0.58, module * 0.78], [module * 0.58, module], [0, module], [module * 0.28, module * 0.5]];
+      const placements = [[0, 0], [module, module], [-module / 2, module], [module / 2, 0]];
+      pattern.selectAll("polygon")
+        .data(placements)
+        .join("polygon")
+        .attr("points", ([dx, dy]) => motif.map(([x, y]) => `${x + dx},${y + dy}`).join(" "))
+        .attr("fill", (d, index) => index % 2 ? ctx.palette.roles.ink : ctx.palette.roles.primary)
+        .attr("opacity", 0.52 + ctx.config.textureStrength * 0.48);
+      return pattern;
+    },
+
+    "d3-logo-argyle-diamonds": function renderArgyleDiamonds(defs, ctx) {
+      const size = 72 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const diamonds = [[size / 2, size / 2], [0, 0], [size, 0], [0, size], [size, size]];
+      pattern.selectAll("polygon")
+        .data(diamonds)
+        .join("polygon")
+        .attr("points", ([cx, cy]) => `${cx},${cy - size * 0.28} ${cx + size * 0.23},${cy} ${cx},${cy + size * 0.28} ${cx - size * 0.23},${cy}`)
+        .attr("fill", (d, index) => ctx.palette.sequence[index % ctx.palette.sequence.length])
+        .attr("opacity", 0.38 + ctx.config.textureStrength * 0.5);
+      pattern.selectAll("path.argyle-seam")
+        .data([`M0,${size * 0.22}L${size},${size * 0.78}`, `M0,${size * 0.78}L${size},${size * 0.22}`])
+        .join("path")
+        .attr("class", "argyle-seam")
+        .attr("d", (d) => d)
+        .attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", 1.15)
+        .attr("stroke-dasharray", "5 3")
+        .attr("opacity", ctx.config.textureStrength);
+      return pattern;
+    },
+
+    "d3-logo-running-brick-bond": function renderRunningBrickBond(defs, ctx) {
+      const size = 72 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.background);
+      const rowHeight = size / 3;
+      const brickWidth = size / 2;
+      const bricks = ctx.d3.range(3).flatMap((row) => ctx.d3.range(-1, 3).map((column) => ({
+        x: column * brickWidth + (row % 2 ? brickWidth / 2 : 0),
+        y: row * rowHeight,
+        row,
+        column
+      })));
+      pattern.selectAll("rect.brick")
+        .data(bricks)
+        .join("rect")
+        .attr("class", "brick")
+        .attr("x", (d) => d.x + 1)
+        .attr("y", (d) => d.y + 1)
+        .attr("width", brickWidth - 2)
+        .attr("height", rowHeight - 2)
+        .attr("fill", (d) => ctx.palette.sequence[(d.row + d.column + 12) % ctx.palette.sequence.length])
+        .attr("opacity", 0.45 + ctx.config.textureStrength * 0.55);
+      return pattern;
+    },
+
+    "d3-logo-isometric-cube-tiles": function renderIsometricCubeTiles(defs, ctx) {
+      const size = 64 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const cubeFaces = (cx, cy, radius) => {
+        const top = [[cx, cy - radius], [cx + radius, cy - radius / 2], [cx, cy], [cx - radius, cy - radius / 2]];
+        const left = [[cx - radius, cy - radius / 2], [cx, cy], [cx, cy + radius], [cx - radius, cy + radius / 2]];
+        const right = [[cx, cy], [cx + radius, cy - radius / 2], [cx + radius, cy + radius / 2], [cx, cy + radius]];
+        return [top, left, right];
+      };
+      const faces = [...cubeFaces(size * 0.25, size * 0.3, size * 0.2), ...cubeFaces(size * 0.75, size * 0.8, size * 0.2)];
+      pattern.selectAll("polygon")
+        .data(faces)
+        .join("polygon")
+        .attr("points", (d) => d.map((point) => point.join(",")).join(" "))
+        .attr("fill", (d, index) => ctx.palette.sequence[index % 3])
+        .attr("stroke", ctx.palette.roles.background)
+        .attr("stroke-width", 0.8)
+        .attr("opacity", 0.52 + ctx.config.textureStrength * 0.48);
+      return pattern;
+    },
+
+    "d3-logo-greek-key-meander": function renderGreekKeyMeander(defs, ctx) {
+      const size = 64 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size);
+      const paths = [
+        `M0,${size * 0.25}H${size * 0.75}V${size * 0.75}H${size * 0.25}V${size * 0.5}H${size * 0.55}V${size * 0.25}H${size}`,
+        `M0,${size * 0.75}H${size * 0.25}V${size * 0.5}`
+      ];
+      pattern.selectAll("path")
+        .data(paths)
+        .join("path")
+        .attr("d", (d) => d)
+        .attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", Math.max(1.4, 2.8 / ctx.config.density))
+        .attr("stroke-linejoin", "miter")
+        .attr("opacity", 0.42 + ctx.config.textureStrength * 0.58);
+      return pattern;
+    },
+
+    "d3-logo-chainmail-rings": function renderChainmailRings(defs, ctx) {
+      const size = 60 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      pattern.attr("data-texture-mechanism", "alternating-under-over-ring-crossings");
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const radius = size * 0.22;
+      const rings = [
+        { cx: size * 0.2, cy: size * 0.28, row: 0, column: 0 },
+        { cx: size * 0.7, cy: size * 0.28, row: 0, column: 1 },
+        { cx: size * 0.45, cy: size * 0.74, row: 1, column: 0 },
+        { cx: size * 0.95, cy: size * 0.74, row: 1, column: 1 }
+      ].map((ring) => ({ ...ring, parity: (ring.row + ring.column) % 2 }));
+      pattern.selectAll("circle.chainmail-under-ring")
+        .data(rings)
+        .join("circle")
+        .attr("class", "chainmail-under-ring")
+        .attr("data-crossing-parity", (d) => d.parity)
+        .attr("cx", (d) => d.cx)
+        .attr("cy", (d) => d.cy)
+        .attr("r", radius)
+        .attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.primary)
+        .attr("stroke-width", Math.max(2, 4 / ctx.config.density))
+        .attr("opacity", 0.4 + ctx.config.textureStrength * 0.6);
+      const crossings = rings.map((ring) => ({
+        ...ring,
+        d: ring.parity === 0
+          ? `M${ring.cx - radius},${ring.cy}A${radius},${radius} 0 0 1 ${ring.cx + radius},${ring.cy}`
+          : `M${ring.cx + radius},${ring.cy}A${radius},${radius} 0 0 1 ${ring.cx - radius},${ring.cy}`
+      }));
+      pattern.selectAll("path.chainmail-crossing-cover")
+        .data(crossings)
+        .join("path")
+        .attr("class", "chainmail-crossing-cover")
+        .attr("data-crossing-parity", (d) => d.parity)
+        .attr("d", (d) => d.d)
+        .attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.surface)
+        .attr("stroke-width", Math.max(4.6, 7.2 / ctx.config.density))
+        .attr("stroke-linecap", "round");
+      pattern.selectAll("path.chainmail-over-arc")
+        .data(crossings)
+        .join("path")
+        .attr("class", "chainmail-over-arc")
+        .attr("data-crossing-parity", (d) => d.parity)
+        .attr("d", (d) => d.d)
+        .attr("fill", "none")
+        .attr("stroke", (d) => d.parity ? ctx.palette.roles.ink : ctx.palette.roles.primaryDark)
+        .attr("stroke-width", Math.max(2, 4 / ctx.config.density))
+        .attr("stroke-linecap", "round")
+        .attr("opacity", 0.48 + ctx.config.textureStrength * 0.52);
+      return pattern;
+    },
+
+    "d3-logo-seigaiha-fans": function renderSeigaihaFans(defs, ctx) {
+      const size = 64 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size);
+      const centers = [[0, size * 0.45], [size / 2, size * 0.45], [size, size * 0.45], [size / 4, size], [size * 0.75, size]];
+      const arcs = centers.flatMap(([cx, cy]) => ctx.d3.range(1, 5).map((ring) => {
+        const radius = size * 0.07 * ring;
+        return `M${cx - radius},${cy}A${radius},${radius} 0 0 1 ${cx + radius},${cy}`;
+      }));
+      pattern.selectAll("path")
+        .data(arcs)
+        .join("path")
+        .attr("d", (d) => d)
+        .attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", Math.max(0.65, 1.25 / ctx.config.density))
+        .attr("opacity", 0.38 + ctx.config.textureStrength * 0.62);
+      return pattern;
+    },
+
+    "d3-logo-knit-v-loops": function renderKnitVLoops(defs, ctx) {
+      const size = 56 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      const tension = 0.18 + ctx.config.curvature * 0.7;
+      pattern
+        .attr("data-texture-mechanism", "alternating-knit-loop-crossings")
+        .attr("data-loop-tension", tension.toFixed(4));
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const pitch = size / 3;
+      const drop = pitch * (0.58 + tension * 0.25);
+      const stitches = ctx.d3.range(-1, 4).flatMap((row) => ctx.d3.range(-1, 4).map((column) => {
+        const x = column * pitch + (row % 2 ? pitch / 2 : 0);
+        const y = row * pitch * 0.72;
+        const handle = pitch * (0.16 + tension * 0.16);
+        return {
+          row,
+          column,
+          x,
+          y,
+          parity: (row + column + 10) % 2,
+          d: `M${x - pitch * 0.36},${y}C${x - pitch * 0.32 + handle},${y + drop * 0.55} ${x - handle},${y + drop * 0.92} ${x},${y + drop}C${x + handle},${y + drop * 0.92} ${x + pitch * 0.32 - handle},${y + drop * 0.55} ${x + pitch * 0.36},${y}`
+        };
+      }));
+      const strokeWidth = Math.max(1.2, 2.35 / ctx.config.density);
+      pattern.selectAll("path.knit-loop-under")
+        .data(stitches)
+        .join("path")
+        .attr("class", "knit-loop-under")
+        .attr("data-crossing-parity", (d) => d.parity)
+        .attr("d", (d) => d.d)
+        .attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.primary)
+        .attr("stroke-width", strokeWidth)
+        .attr("stroke-linecap", "round")
+        .attr("opacity", 0.4 + ctx.config.textureStrength * 0.6);
+      const bridges = stitches.map((stitch) => {
+        const cx = stitch.x;
+        const cy = stitch.y + drop * 0.57;
+        const half = pitch * 0.13;
+        const rise = pitch * (0.08 + tension * 0.05);
+        return {
+          ...stitch,
+          bridge: stitch.parity === 0
+            ? `M${cx - half},${cy + rise}Q${cx},${cy - rise} ${cx + half},${cy - rise}`
+            : `M${cx - half},${cy - rise}Q${cx},${cy + rise} ${cx + half},${cy + rise}`
+        };
+      });
+      pattern.selectAll("path.knit-crossing-cover")
+        .data(bridges)
+        .join("path")
+        .attr("class", "knit-crossing-cover")
+        .attr("data-crossing-parity", (d) => d.parity)
+        .attr("d", (d) => d.bridge)
+        .attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.surface)
+        .attr("stroke-width", strokeWidth + Math.max(2.4, 3.8 / ctx.config.density))
+        .attr("stroke-linecap", "round");
+      pattern.selectAll("path.knit-loop-over-bridge")
+        .data(bridges)
+        .join("path")
+        .attr("class", "knit-loop-over-bridge")
+        .attr("data-crossing-parity", (d) => d.parity)
+        .attr("d", (d) => d.bridge)
+        .attr("fill", "none")
+        .attr("stroke", (d) => d.parity ? ctx.palette.roles.ink : ctx.palette.roles.primaryDark)
+        .attr("stroke-width", strokeWidth)
+        .attr("stroke-linecap", "round")
+        .attr("opacity", 0.48 + ctx.config.textureStrength * 0.52);
+      return pattern;
+    },
+
+    "d3-logo-pinwheel-quilt": function renderPinwheelQuilt(defs, ctx) {
+      const size = 64 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const centers = [[size / 2, size / 2], [0, 0], [size, size]];
+      const triangles = centers.flatMap(([cx, cy]) => {
+        const radius = size * 0.28;
+        return ctx.d3.range(4).map((index) => {
+          const angle = index * Math.PI / 2;
+          const point = (offset, distance) => [cx + Math.cos(angle + offset) * distance, cy + Math.sin(angle + offset) * distance];
+          return [[cx, cy], point(-Math.PI / 4, radius), point(Math.PI / 4, radius * 0.38)];
+        });
+      });
+      pattern.selectAll("polygon")
+        .data(triangles)
+        .join("polygon")
+        .attr("points", (d) => d.map((point) => point.join(",")).join(" "))
+        .attr("fill", (d, index) => ctx.palette.sequence[index % ctx.palette.sequence.length])
+        .attr("stroke", ctx.palette.roles.background)
+        .attr("stroke-width", 0.8)
+        .attr("opacity", 0.45 + ctx.config.textureStrength * 0.55);
+      return pattern;
+    },
+
+    "d3-logo-star-kite-lattice": function renderStarKiteLattice(defs, ctx) {
+      const size = 68 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const cx = size / 2;
+      const cy = size / 2;
+      const star = ctx.d3.range(16).map((index) => {
+        const angle = -Math.PI / 2 + index * Math.PI / 8;
+        const radius = index % 2 ? size * 0.14 : size * 0.3;
+        return [cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius];
+      });
+      pattern.append("polygon")
+        .attr("points", star.map((point) => point.join(",")).join(" "))
+        .attr("fill", ctx.palette.roles.primary)
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", 1)
+        .attr("opacity", 0.48 + ctx.config.textureStrength * 0.52);
+      const kites = ctx.d3.range(8).map((index) => {
+        const angle = index * Math.PI / 4;
+        const radial = (distance, offset = 0) => [cx + Math.cos(angle + offset) * distance, cy + Math.sin(angle + offset) * distance];
+        return [radial(size * 0.31), radial(size * 0.49, -Math.PI / 12), radial(size * 0.6), radial(size * 0.49, Math.PI / 12)];
+      });
+      pattern.selectAll("polygon.kite")
+        .data(kites)
+        .join("polygon")
+        .attr("class", "kite")
+        .attr("points", (d) => d.map((point) => point.join(",")).join(" "))
+        .attr("fill", (d, index) => ctx.palette.sequence[(index + 1) % ctx.palette.sequence.length])
+        .attr("stroke", ctx.palette.roles.background)
+        .attr("stroke-width", 0.7)
+        .attr("opacity", ctx.config.textureStrength * 0.72);
+      return pattern;
+    },
+
+    "d3-logo-chevron-bands": function renderChevronBands(defs, ctx) {
+      const size = 64 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const band = size * 0.17;
+      const depth = size * (0.16 + ctx.config.curvature * 0.08);
+      const chevron = (centerY) => [
+        [-size * 0.1, centerY - band], [size * 0.25, centerY + depth - band], [size * 0.5, centerY - band], [size * 0.75, centerY + depth - band], [size * 1.1, centerY - band],
+        [size * 1.1, centerY], [size * 0.75, centerY + depth], [size * 0.5, centerY], [size * 0.25, centerY + depth], [-size * 0.1, centerY]
+      ];
+      pattern.selectAll("polygon")
+        .data([chevron(size * 0.2), chevron(size * 0.72)])
+        .join("polygon")
+        .attr("points", (d) => d.map((point) => point.join(",")).join(" "))
+        .attr("fill", (d, index) => index ? ctx.palette.roles.ink : ctx.palette.roles.primary)
+        .attr("opacity", 0.42 + ctx.config.textureStrength * 0.58);
+      return pattern;
+    },
+
+    "d3-logo-pixel-staircase": function renderPixelStaircase(defs, ctx) {
+      const size = 48 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const cell = size / 8;
+      const pixels = ctx.d3.range(8).flatMap((row) => ctx.d3.range(8).flatMap((column) => {
+        const phase = (column - row + 16) % 6;
+        return phase < 2 ? [{ row, column, phase }] : [];
+      }));
+      pattern.selectAll("rect.pixel")
+        .data(pixels)
+        .join("rect")
+        .attr("class", "pixel")
+        .attr("x", (d) => d.column * cell)
+        .attr("y", (d) => d.row * cell)
+        .attr("width", cell)
+        .attr("height", cell)
+        .attr("fill", (d) => d.phase ? ctx.palette.roles.ink : ctx.palette.roles.primary)
+        .attr("opacity", 0.44 + ctx.config.textureStrength * 0.56);
+      return pattern;
+    },
+
+    "d3-logo-terrazzo-chips": function renderTerrazzoChips(defs, ctx) {
+      const size = 72 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const random = seededRandom(ctx.d3, ctx.config.seed, "terrazzo-chips");
+      const chips = ctx.d3.range(Math.max(10, Math.round(16 * ctx.config.density))).map((index) => {
+        const cx = random() * size;
+        const cy = random() * size;
+        const radius = size * (0.025 + random() * 0.07);
+        const sides = 3 + Math.floor(random() * 4);
+        const angleOffset = random() * Math.PI * 2;
+        const points = ctx.d3.range(sides).map((side) => {
+          const angle = angleOffset + side / sides * Math.PI * 2;
+          const localRadius = radius * (0.65 + random() * 0.7);
+          return [cx + Math.cos(angle) * localRadius, cy + Math.sin(angle) * localRadius];
+        });
+        return { points, index };
+      });
+      const line = ctx.d3.line().curve(ctx.d3.curveLinearClosed);
+      pattern.selectAll("path.chip")
+        .data(chips)
+        .join("path")
+        .attr("class", "chip")
+        .attr("d", (d) => line(d.points))
+        .attr("fill", (d) => ctx.palette.sequence[d.index % ctx.palette.sequence.length])
+        .attr("opacity", 0.4 + ctx.config.textureStrength * 0.6);
+      return pattern;
+    },
+
+    "d3-logo-linocut-gouges": function renderLinocutGouges(defs, ctx) {
+      const size = 68 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.ink);
+      const random = seededRandom(ctx.d3, ctx.config.seed, "linocut-gouges");
+      const gouges = ctx.d3.range(Math.max(8, Math.round(13 * ctx.config.density))).map(() => {
+        const x = random() * size;
+        const y = random() * size;
+        const length = size * (0.14 + random() * 0.28);
+        const angle = -0.55 + random() * 1.1;
+        const ex = x + Math.cos(angle) * length;
+        const ey = y + Math.sin(angle) * length;
+        const nx = -Math.sin(angle);
+        const ny = Math.cos(angle);
+        const bow = length * (0.08 + ctx.config.curvature * 0.14) * (random() < 0.5 ? -1 : 1);
+        const mx = (x + ex) / 2 + nx * bow;
+        const my = (y + ey) / 2 + ny * bow;
+        const taper = 0.8 + random() * 1.8;
+        return `M${x},${y}Q${mx + nx * taper},${my + ny * taper} ${ex},${ey}Q${mx - nx * taper * 0.45},${my - ny * taper * 0.45} ${x},${y}Z`;
+      });
+      pattern.selectAll("path.gouge")
+        .data(gouges)
+        .join("path")
+        .attr("class", "gouge")
+        .attr("d", (d) => d)
+        .attr("fill", ctx.palette.roles.surface)
+        .attr("opacity", 0.36 + ctx.config.textureStrength * 0.64);
+      return pattern;
+    },
+
+    "d3-logo-letterpress-slippage": function renderLetterpressSlippage(defs, ctx) {
+      const size = 64 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      pattern.attr("data-texture-mechanism", "offset-type-slug-registration");
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const stamps = [
+        { cx: size * 0.24, cy: size * 0.25, index: 0 },
+        { cx: size * 0.72, cy: size * 0.25, index: 1 },
+        { cx: size * 0.24, cy: size * 0.75, index: 2 },
+        { cx: size * 0.72, cy: size * 0.75, index: 3 }
+      ];
+      const stampWidth = size * 0.27;
+      const stampHeight = size * 0.31;
+      const capHeight = stampHeight * 0.3;
+      const stemWidth = stampWidth * 0.34;
+      const typeSlugPoints = (stamp, dx, dy) => {
+        const left = stamp.cx - stampWidth / 2 + dx;
+        const right = stamp.cx + stampWidth / 2 + dx;
+        const top = stamp.cy - stampHeight / 2 + dy;
+        const bottom = stamp.cy + stampHeight / 2 + dy;
+        const stemLeft = stamp.cx - stemWidth / 2 + dx;
+        const stemRight = stamp.cx + stemWidth / 2 + dx;
+        return [
+          [left, top], [right, top], [right, top + capHeight], [stemRight, top + capHeight],
+          [stemRight, bottom], [stemLeft, bottom], [stemLeft, top + capHeight], [left, top + capHeight]
+        ].map((point) => point.join(",")).join(" ");
+      };
+      pattern.selectAll("polygon.letterpress-first-impression")
+        .data(stamps)
+        .join("polygon")
+        .attr("class", "letterpress-stamp letterpress-first-impression")
+        .attr("data-registration-impression", "first")
+        .attr("data-stamp-shape", "type-slug")
+        .attr("data-stamp-index", (d) => d.index)
+        .attr("points", (d) => typeSlugPoints(d, -2.2, -1.4))
+        .attr("fill", ctx.palette.roles.primary)
+        .attr("opacity", 0.34 + ctx.config.textureStrength * 0.42);
+      pattern.selectAll("polygon.letterpress-offset-impression")
+        .data(stamps)
+        .join("polygon")
+        .attr("class", "letterpress-stamp letterpress-offset-impression")
+        .attr("data-registration-impression", "offset")
+        .attr("data-stamp-shape", "type-slug")
+        .attr("data-stamp-index", (d) => d.index)
+        .attr("points", (d) => typeSlugPoints(d, 2.4, 1.7))
+        .attr("fill", ctx.palette.roles.ink)
+        .attr("opacity", 0.24 + ctx.config.textureStrength * 0.5);
+      return pattern;
+    },
+
+    "d3-logo-dry-roller-bands": function renderDryRollerBands(defs, ctx) {
+      const size = 72 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const random = seededRandom(ctx.d3, ctx.config.seed, "dry-roller-bands");
+      const segments = [];
+      for (let row = 0; row < 4; row += 1) {
+        let x = -size * 0.05;
+        while (x < size) {
+          const gap = size * (0.018 + random() * 0.07);
+          const width = size * (0.07 + random() * 0.2);
+          x += gap;
+          segments.push({ x, y: row * size / 4 + random() * size * 0.035, width, row });
+          x += width;
+        }
+      }
+      pattern.selectAll("rect.ink-run")
+        .data(segments)
+        .join("rect")
+        .attr("class", "ink-run")
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => d.y)
+        .attr("width", (d) => d.width)
+        .attr("height", size * (0.1 + random() * 0.06))
+        .attr("fill", (d) => d.row % 2 ? ctx.palette.roles.ink : ctx.palette.roles.primary)
+        .attr("opacity", 0.36 + ctx.config.textureStrength * 0.64);
+      return pattern;
+    },
+
+    "d3-logo-embossed-lozenges": function renderEmbossedLozenges(defs, ctx) {
+      const size = 64 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      pattern.attr("data-texture-mechanism", "faceted-lozenge-relief");
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const centers = [[size * 0.25, size * 0.25], [size * 0.75, size * 0.75], [size * 0.75, size * 0.25], [size * 0.25, size * 0.75]];
+      const radius = size * 0.17;
+      const lozenges = centers.map(([cx, cy], index) => {
+        const outer = {
+          top: [cx, cy - radius], right: [cx + radius * 0.74, cy],
+          bottom: [cx, cy + radius], left: [cx - radius * 0.74, cy]
+        };
+        const innerRadius = radius * 0.58;
+        const inner = {
+          top: [cx, cy - innerRadius], right: [cx + innerRadius * 0.74, cy],
+          bottom: [cx, cy + innerRadius], left: [cx - innerRadius * 0.74, cy]
+        };
+        return { index, outer, inner };
+      });
+      const facets = lozenges.flatMap((lozenge) => [
+        { ...lozenge, tone: "light", side: "top-right", points: [lozenge.outer.top, lozenge.outer.right, lozenge.inner.right, lozenge.inner.top] },
+        { ...lozenge, tone: "light", side: "top-left", points: [lozenge.outer.left, lozenge.outer.top, lozenge.inner.top, lozenge.inner.left] },
+        { ...lozenge, tone: "dark", side: "bottom-right", points: [lozenge.outer.right, lozenge.outer.bottom, lozenge.inner.bottom, lozenge.inner.right] },
+        { ...lozenge, tone: "dark", side: "bottom-left", points: [lozenge.outer.bottom, lozenge.outer.left, lozenge.inner.left, lozenge.inner.bottom] }
+      ]);
+      pattern.selectAll("polygon.embossed-bevel-facet")
+        .data(facets)
+        .join("polygon")
+        .attr("class", (d) => `embossed-bevel-facet embossed-bevel-${d.tone}`)
+        .attr("data-bevel-tone", (d) => d.tone)
+        .attr("data-bevel-side", (d) => d.side)
+        .attr("data-lozenge-index", (d) => d.index)
+        .attr("points", (d) => d.points.map((point) => point.join(",")).join(" "))
+        .attr("fill", (d) => d.tone === "light" ? ctx.palette.roles.quiet : ctx.palette.roles.primaryDark)
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", 0.35)
+        .attr("opacity", 0.48 + ctx.config.textureStrength * 0.48);
+      pattern.selectAll("polygon.embossed-center")
+        .data(lozenges)
+        .join("polygon")
+        .attr("class", "embossed-center")
+        .attr("data-lozenge-index", (d) => d.index)
+        .attr("points", (d) => [d.inner.top, d.inner.right, d.inner.bottom, d.inner.left].map((point) => point.join(",")).join(" "))
+        .attr("fill", ctx.palette.roles.primary)
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", 0.65)
+        .attr("opacity", 0.52 + ctx.config.textureStrength * 0.48);
+      return pattern;
+    },
+
+    "d3-logo-camouflage-islands": function renderCamouflageIslands(defs, ctx) {
+      const size = 76 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const random = seededRandom(ctx.d3, ctx.config.seed, "camouflage-islands");
+      const islands = ctx.d3.range(Math.max(7, Math.round(10 * ctx.config.density))).map((index) => {
+        const cx = random() * size;
+        const cy = random() * size;
+        const lobes = 7 + Math.floor(random() * 5);
+        const baseRadius = size * (0.09 + random() * 0.13);
+        const points = ctx.d3.range(lobes).map((lobe) => {
+          const angle = lobe / lobes * Math.PI * 2;
+          const radius = baseRadius * (0.65 + random() * 0.55);
+          return [cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius];
+        });
+        return { points, index };
+      });
+      const line = ctx.d3.line().curve(ctx.d3.curveBasisClosed);
+      pattern.selectAll("path.island")
+        .data(islands)
+        .join("path")
+        .attr("class", "island")
+        .attr("d", (d) => line(d.points))
+        .attr("fill", (d) => ctx.palette.sequence[d.index % ctx.palette.sequence.length])
+        .attr("opacity", 0.38 + ctx.config.textureStrength * 0.62);
+      return pattern;
+    },
+
+    "d3-logo-leaf-vein-repeat": function renderLeafVeinRepeat(defs, ctx) {
+      const size = 72 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const leaves = [[size * 0.25, size * 0.28, -18], [size * 0.72, size * 0.72, 22], [size * 0.82, size * 0.12, 35], [size * 0.12, size * 0.85, -32]];
+      const groups = pattern.selectAll("g.leaf")
+        .data(leaves)
+        .join("g")
+        .attr("class", "leaf")
+        .attr("transform", (d) => `translate(${d[0]},${d[1]}) rotate(${d[2]})`);
+      const leafLength = size * 0.32;
+      const leafWidth = size * 0.12;
+      groups.append("path")
+        .attr("d", `M${-leafLength / 2},0C${-leafLength * 0.18},${-leafWidth} ${leafLength * 0.18},${-leafWidth} ${leafLength / 2},0C${leafLength * 0.18},${leafWidth} ${-leafLength * 0.18},${leafWidth} ${-leafLength / 2},0Z`)
+        .attr("fill", ctx.palette.roles.primary)
+        .attr("opacity", 0.34 + ctx.config.textureStrength * 0.54);
+      groups.append("line")
+        .attr("x1", -leafLength / 2).attr("x2", leafLength / 2)
+        .attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 1);
+      const veinFractions = [-0.28, -0.12, 0.04, 0.2, 0.36];
+      groups.selectAll("path.vein")
+        .data(veinFractions)
+        .join("path")
+        .attr("class", "vein")
+        .attr("d", (fraction) => {
+          const x = fraction * leafLength;
+          const reach = leafWidth * (0.78 - Math.abs(fraction) * 0.7);
+          return `M${x},0L${x + leafLength * 0.08},${-reach}M${x},0L${x + leafLength * 0.08},${reach}`;
+        })
+        .attr("fill", "none")
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", 0.65)
+        .attr("opacity", ctx.config.textureStrength);
+      return pattern;
+    },
+
+    "d3-logo-pinecone-scales": function renderPineconeScales(defs, ctx) {
+      const size = 60 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size);
+      const rowHeight = size / 5;
+      const scaleWidth = size / 3;
+      const scales = ctx.d3.range(-1, 6).flatMap((row) => ctx.d3.range(-1, 4).map((column) => ({
+        cx: column * scaleWidth + (row % 2 ? scaleWidth / 2 : 0),
+        cy: row * rowHeight,
+        row,
+        column
+      })));
+      pattern.selectAll("path.scale")
+        .data(scales)
+        .join("path")
+        .attr("class", "scale")
+        .attr("d", (d) => `M${d.cx},${d.cy - rowHeight * 0.62}Q${d.cx + scaleWidth * 0.5},${d.cy} ${d.cx},${d.cy + rowHeight * 0.68}Q${d.cx - scaleWidth * 0.5},${d.cy} ${d.cx},${d.cy - rowHeight * 0.62}Z`)
+        .attr("fill", (d) => ctx.palette.sequence[(d.row + d.column + 12) % ctx.palette.sequence.length])
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", 0.6)
+        .attr("opacity", 0.36 + ctx.config.textureStrength * 0.58);
+      return pattern;
+    },
+
+    "d3-logo-coral-branchlets": function renderCoralBranchlets(defs, ctx) {
+      const size = 76 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const random = seededRandom(ctx.d3, ctx.config.seed, "coral-branchlets");
+      const segments = [];
+      const grow = (x, y, length, angle, depth, colony) => {
+        if (depth <= 0 || length < size * 0.025) return;
+        const ex = x + Math.cos(angle) * length;
+        const ey = y + Math.sin(angle) * length;
+        segments.push({ x1: x, y1: y, x2: ex, y2: ey, depth, colony });
+        const fork = 0.35 + random() * 0.28;
+        const ratio = 0.58 + random() * 0.12;
+        grow(ex, ey, length * ratio, angle - fork, depth - 1, colony);
+        grow(ex, ey, length * ratio, angle + fork, depth - 1, colony);
+      };
+      grow(size * 0.2, size, size * 0.28, -Math.PI / 2, 4, 0);
+      grow(size * 0.72, size * 0.55, size * 0.25, -Math.PI / 2.3, 4, 1);
+      pattern.selectAll("line.branch")
+        .data(segments)
+        .join("line")
+        .attr("class", "branch")
+        .attr("x1", (d) => d.x1).attr("y1", (d) => d.y1)
+        .attr("x2", (d) => d.x2).attr("y2", (d) => d.y2)
+        .attr("stroke", (d) => d.colony ? ctx.palette.roles.ink : ctx.palette.roles.primary)
+        .attr("stroke-width", (d) => Math.max(0.65, d.depth * 0.52 / ctx.config.density))
+        .attr("stroke-linecap", "round")
+        .attr("opacity", 0.38 + ctx.config.textureStrength * 0.62);
+      return pattern;
+    },
+
+    "d3-logo-circuit-traces": function renderCircuitTraces(defs, ctx) {
+      const size = 72 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const random = seededRandom(ctx.d3, ctx.config.seed, "circuit-traces");
+      const step = size / 8;
+      const routes = ctx.d3.range(8).map((index) => {
+        const x1 = Math.round(random() * 7) * step;
+        const y1 = Math.round(random() * 7) * step;
+        const x2 = Math.round(random() * 7) * step;
+        const y2 = Math.round(random() * 7) * step;
+        const bendX = Math.round((x1 + (x2 - x1) * random()) / step) * step;
+        return { index, x1, y1, x2, y2, d: `M${x1},${y1}H${bendX}V${y2}H${x2}` };
+      });
+      pattern.selectAll("path.trace")
+        .data(routes)
+        .join("path")
+        .attr("class", "trace")
+        .attr("d", (d) => d.d)
+        .attr("fill", "none")
+        .attr("stroke", (d) => ctx.palette.sequence[d.index % ctx.palette.sequence.length])
+        .attr("stroke-width", Math.max(1, 1.8 / ctx.config.density))
+        .attr("stroke-linejoin", "round")
+        .attr("opacity", 0.4 + ctx.config.textureStrength * 0.6);
+      pattern.selectAll("circle.pad")
+        .data(routes.flatMap((route) => [[route.x1, route.y1, route.index], [route.x2, route.y2, route.index]]))
+        .join("circle")
+        .attr("class", "pad")
+        .attr("cx", (d) => d[0]).attr("cy", (d) => d[1])
+        .attr("r", Math.max(1.4, 2.6 / ctx.config.density))
+        .attr("fill", (d) => ctx.palette.sequence[d[2] % ctx.palette.sequence.length])
+        .attr("stroke", ctx.palette.roles.ink)
+        .attr("stroke-width", 0.55);
+      return pattern;
+    },
+
+    "d3-logo-barcode-cadence": function renderBarcodeCadence(defs, ctx) {
+      const size = 84 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const source = `${ctx.config.brand}|${ctx.config.seed}|${hashString(ctx.config.brand)}`;
+      const unit = size / 52;
+      const bars = [];
+      let x = size * 0.055;
+      let index = 0;
+      while (x < size * 0.95) {
+        const code = source.charCodeAt(index % source.length);
+        const modules = 1 + code % 4;
+        const gapModules = 1 + (code >> 2) % 2;
+        const heightRatio = 0.5 + ((code >> 3) % 5) * 0.09;
+        bars.push({ x, width: modules * unit, height: size * Math.min(0.9, heightRatio), index });
+        x += (modules + gapModules) * unit;
+        index += 1;
+      }
+      pattern.selectAll("rect.bar")
+        .data(bars)
+        .join("rect")
+        .attr("class", "bar")
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => (size - d.height) / 2)
+        .attr("width", (d) => d.width)
+        .attr("height", (d) => d.height)
+        .attr("fill", (d) => d.index % 5 === 0 ? ctx.palette.roles.primary : ctx.palette.roles.ink)
+        .attr("opacity", 0.48 + ctx.config.textureStrength * 0.52);
+      return pattern;
+    },
+
+    "d3-logo-microtype-ribbons": function renderMicrotypeRibbons(defs, ctx) {
+      const size = 96 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const brand = String(ctx.config.brand || "BRAND").toLocaleUpperCase();
+      const phrase = `${brand} / ${brand} / ${brand} / `;
+      const rows = ctx.d3.range(9).map((row) => ({ row, x: row % 2 ? -size * 0.18 : -size * 0.02, y: (row + 0.72) * size / 9 }));
+      pattern.selectAll("text.microtype")
+        .data(rows)
+        .join("text")
+        .attr("class", "microtype")
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => d.y)
+        .attr("fill", (d) => d.row % 3 === 0 ? ctx.palette.roles.primary : ctx.palette.roles.ink)
+        .attr("font-family", ctx.config.fontFamily)
+        .attr("font-size", Math.max(4.5, size / 15))
+        .attr("font-weight", 700)
+        .attr("letter-spacing", size / 120)
+        .attr("opacity", 0.28 + ctx.config.textureStrength * 0.58)
+        .text(phrase);
+      return pattern;
+    },
+
+    "d3-logo-morse-stripes": function renderMorseStripes(defs, ctx) {
+      const size = 96 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size);
+      const table = {
+        A: ".-", B: "-...", C: "-.-.", D: "-..", E: ".", F: "..-.", G: "--.", H: "....", I: "..", J: ".---", K: "-.-", L: ".-..", M: "--", N: "-.", O: "---", P: ".--.", Q: "--.-", R: ".-.", S: "...", T: "-", U: "..-", V: "...-", W: ".--", X: "-..-", Y: "-.--", Z: "--..",
+        0: "-----", 1: ".----", 2: "..---", 3: "...--", 4: "....-", 5: ".....", 6: "-....", 7: "--...", 8: "---..", 9: "----."
+      };
+      const source = Array.from(String(ctx.config.brand || "BRAND").toLocaleUpperCase()).filter((character) => table[character]);
+      const symbols = (source.length ? source : ["B", "R", "A", "N", "D"]).flatMap((character, characterIndex) => [
+        ...Array.from(table[character]).map((symbol) => ({ symbol, characterIndex })),
+        { symbol: "gap", characterIndex }
+      ]);
+      const unit = size / 54;
+      const marks = [];
+      for (let row = 0; row < 5; row += 1) {
+        let x = unit * (row % 2 ? -4 : 1);
+        let symbolIndex = row;
+        while (x < size) {
+          const entry = symbols[symbolIndex % symbols.length];
+          const width = entry.symbol === "-" ? unit * 3 : entry.symbol === "." ? unit : unit * 2;
+          if (entry.symbol !== "gap") marks.push({ row, x, width, dot: entry.symbol === ".", characterIndex: entry.characterIndex });
+          x += width + unit;
+          symbolIndex += 1;
+        }
+      }
+      pattern.selectAll("rect.dash")
+        .data(marks.filter((mark) => !mark.dot))
+        .join("rect")
+        .attr("class", "dash")
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => (d.row + 0.5) * size / 5 - unit / 2)
+        .attr("width", (d) => d.width)
+        .attr("height", unit)
+        .attr("rx", unit / 2)
+        .attr("fill", (d) => ctx.palette.sequence[d.characterIndex % ctx.palette.sequence.length])
+        .attr("opacity", 0.42 + ctx.config.textureStrength * 0.58);
+      pattern.selectAll("circle.dot")
+        .data(marks.filter((mark) => mark.dot))
+        .join("circle")
+        .attr("class", "dot")
+        .attr("cx", (d) => d.x + unit / 2)
+        .attr("cy", (d) => (d.row + 0.5) * size / 5)
+        .attr("r", unit / 2)
+        .attr("fill", (d) => ctx.palette.sequence[d.characterIndex % ctx.palette.sequence.length])
+        .attr("opacity", 0.42 + ctx.config.textureStrength * 0.58);
+      return pattern;
+    },
+
+    "d3-logo-radial-calibration": function renderRadialCalibration(defs, ctx) {
+      const size = 72 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.surface);
+      const dials = [[size * 0.26, size * 0.3, size * 0.19], [size * 0.74, size * 0.72, size * 0.19]];
+      pattern.selectAll("circle.dial-ring")
+        .data(dials.flatMap(([cx, cy, radius], dial) => ctx.d3.range(1, 4).map((ring) => ({ cx, cy, radius: radius * ring / 3, dial, ring }))))
+        .join("circle")
+        .attr("class", "dial-ring")
+        .attr("cx", (d) => d.cx).attr("cy", (d) => d.cy).attr("r", (d) => d.radius)
+        .attr("fill", "none")
+        .attr("stroke", (d) => d.ring === 3 ? ctx.palette.roles.primary : ctx.palette.roles.ink)
+        .attr("stroke-width", (d) => d.ring === 3 ? 1.25 : 0.65)
+        .attr("opacity", 0.36 + ctx.config.textureStrength * 0.64);
+      const ticks = dials.flatMap(([cx, cy, radius], dial) => ctx.d3.range(20).map((index) => {
+        const angle = index / 20 * Math.PI * 2;
+        const major = index % 5 === 0;
+        const inner = radius * (major ? 0.66 : 0.78);
+        return { dial, major, x1: cx + Math.cos(angle) * inner, y1: cy + Math.sin(angle) * inner, x2: cx + Math.cos(angle) * radius, y2: cy + Math.sin(angle) * radius };
+      }));
+      pattern.selectAll("line.tick")
+        .data(ticks)
+        .join("line")
+        .attr("class", "tick")
+        .attr("x1", (d) => d.x1).attr("y1", (d) => d.y1)
+        .attr("x2", (d) => d.x2).attr("y2", (d) => d.y2)
+        .attr("stroke", (d) => d.major ? ctx.palette.roles.primary : ctx.palette.roles.ink)
+        .attr("stroke-width", (d) => d.major ? 1.5 : 0.7)
+        .attr("opacity", 0.4 + ctx.config.textureStrength * 0.6);
+      return pattern;
+    },
+
+    "d3-logo-seven-segment-code": function renderSevenSegmentCode(defs, ctx) {
+      const size = 96 / ctx.config.density;
+      const pattern = texturePattern(defs, ctx, size);
+      textureBase(pattern, ctx, size, ctx.palette.roles.inkDark);
+      const digitSegments = [
+        [0, 1, 2, 3, 4, 5], [1, 2], [0, 1, 6, 4, 3], [0, 1, 6, 2, 3], [5, 6, 1, 2],
+        [0, 5, 6, 2, 3], [0, 5, 6, 4, 2, 3], [0, 1, 2], [0, 1, 2, 3, 4, 5, 6], [0, 1, 2, 3, 5, 6]
+      ];
+      const segmentBoxes = [
+        [0.18, 0.08, 0.64, 0.1], [0.78, 0.14, 0.1, 0.34], [0.78, 0.52, 0.1, 0.34],
+        [0.18, 0.82, 0.64, 0.1], [0.12, 0.52, 0.1, 0.34], [0.12, 0.14, 0.1, 0.34], [0.18, 0.45, 0.64, 0.1]
+      ];
+      const hash = `${hashString(ctx.config.brand)}${Math.abs(ctx.config.seed)}`;
+      const digits = ctx.d3.range(4).map((index) => (hash.charCodeAt(index % hash.length) + ctx.config.seed + index * 7) % 10);
+      const cellWidth = size / 4;
+      const segments = digits.flatMap((digit, digitIndex) => digitSegments[Math.abs(digit)].map((segment) => ({ digitIndex, digit, segment })));
+      pattern.selectAll("rect.segment")
+        .data(segments)
+        .join("rect")
+        .attr("class", "segment")
+        .attr("x", (d) => d.digitIndex * cellWidth + segmentBoxes[d.segment][0] * cellWidth)
+        .attr("y", (d) => segmentBoxes[d.segment][1] * size)
+        .attr("width", (d) => segmentBoxes[d.segment][2] * cellWidth)
+        .attr("height", (d) => segmentBoxes[d.segment][3] * size)
+        .attr("rx", Math.max(0.7, size * 0.012))
+        .attr("fill", (d) => ctx.palette.sequence[d.digitIndex % ctx.palette.sequence.length])
+        .attr("opacity", 0.48 + ctx.config.textureStrength * 0.52);
       return pattern;
     }
   };
@@ -4226,6 +5275,101 @@
     }
   }
 
+  function renderTexture(target, input, options) {
+    const d3 = getD3();
+    const svgNode = target && typeof target.node === "function" ? target.node() : target;
+    if (!svgNode || String(svgNode.localName).toLowerCase() !== "svg" || svgNode.namespaceURI !== SVG_NS) {
+      throw new TypeError("renderTexture expects an SVG element or a D3 selection containing one SVG element.");
+    }
+
+    const renderOptions = options && typeof options === "object" ? options : {};
+    const sourceConfig = input && typeof input === "object" ? input : {};
+    const config = normalizeTextureConfig({
+      ...sourceConfig,
+      smallSize: sourceConfig.smallSize === true || sourceConfig.swatch === true || renderOptions.smallSize === true || renderOptions.swatch === true,
+      outputWidth: renderOptions.outputWidth == null ? sourceConfig.outputWidth : renderOptions.outputWidth
+    });
+    const palette = COLORSETS[config.colorset];
+    const texture = TEXTURE_BY_ID.get(config.textureId);
+    const width = effectiveWidth(svgNode, config);
+    const smallSize = config.smallSize || width < 128;
+    const prefix = stableTexturePrefix(svgNode, config);
+    const uid = makeIdFactory(prefix);
+    const titleId = uid("title");
+    const descId = uid("desc");
+    const texturePatternId = uid("texture-fill");
+    const svg = d3.select(svgNode);
+    const flatFallback = config.textureStrength === 0 || (smallSize && config.textureId === "d3-logo-halftone-dots");
+
+    svg.selectAll("*").remove();
+    svg
+      .attr("viewBox", VIEW_BOX)
+      .attr("width", 480)
+      .attr("height", 320)
+      .attr("preserveAspectRatio", "xMidYMid meet")
+      .attr("role", "img")
+      .attr("focusable", "false")
+      .attr("aria-labelledby", `${titleId} ${descId}`)
+      .attr("data-example-id", config.exampleId)
+      .attr("data-pattern-id", config.textureId)
+      .attr("data-texture-id", config.textureId)
+      .attr("data-geometry-signature", texture.geometrySignature)
+      .attr("data-texture-family", texture.family || "")
+      .attr("data-colorset", config.colorset)
+      .attr("data-density", config.density)
+      .attr("data-curvature", config.curvature)
+      .attr("data-texture-strength", config.textureStrength)
+      .attr("data-seed", config.seed)
+      .attr("data-effective-width", width)
+      .attr("data-small-size", smallSize ? "true" : "false")
+      .attr("data-texture-flat-fallback", flatFallback ? "true" : "false");
+
+    svg.append("title").attr("id", titleId).text(`${texture.label} — ${texture.id}`);
+    svg.append("desc").attr("id", descId).text(
+      `${config.accessibilityLabel}. ${texture.description || texture.label} Rendered from ${config.brand} in ${config.colorset}.`
+    );
+
+    const defs = svg.append("defs");
+    const context = {
+      d3,
+      svg,
+      svgNode,
+      defs,
+      uid,
+      config,
+      palette,
+      texture,
+      effectiveWidth: width,
+      smallSize,
+      texturePatternId,
+      textureFillFallback: palette.roles.primary,
+      textureFill: fragmentUrl(texturePatternId)
+    };
+    createTexture(defs, context);
+
+    svg.append("rect")
+      .attr("class", "texture-background")
+      .attr("x", 0).attr("y", 0).attr("width", 480).attr("height", 320)
+      .attr("fill", palette.roles.background);
+    const swatch = svg.append("g")
+      .attr("class", "texture-composition")
+      .attr("data-example-id", config.exampleId)
+      .attr("data-pattern-id", config.textureId)
+      .attr("data-texture-id", config.textureId)
+      .attr("data-geometry-signature", texture.geometrySignature)
+      .attr("data-colorset", config.colorset);
+    swatch.append("rect")
+      .attr("class", "texture-surface")
+      .attr("x", 18).attr("y", 18).attr("width", 444).attr("height", 284)
+      .attr("rx", 0).attr("ry", 0)
+      .attr("fill", fragmentUrl(texturePatternId))
+      .attr("stroke", palette.roles.ink)
+      .attr("stroke-width", 3);
+
+    assertPaletteSafe(svgNode, palette);
+    return svgNode;
+  }
+
   function renderLogo(target, input, options) {
     const d3 = getD3();
     const svgNode = target && typeof target.node === "function" ? target.node() : target;
@@ -4349,7 +5493,10 @@
     FONTS,
     COLORSETS,
     PALETTES: COLORSETS,
+    TEXTURE_RENDERER_IDS: Object.freeze(Object.keys(TEXTURE_RENDERERS)),
     normalizeConfig,
+    normalizeTextureConfig,
+    renderTexture,
     renderLogo
   });
 

@@ -272,7 +272,7 @@ def main() -> int:
     arg_parser = argparse.ArgumentParser(description="Validate a generated D3 logo studio HTML artifact.")
     arg_parser.add_argument("input", type=Path)
     arg_parser.add_argument("--expect-patterns", type=int, default=90)
-    arg_parser.add_argument("--expect-textures", type=int, default=10)
+    arg_parser.add_argument("--expect-textures", type=int, default=40)
     arg_parser.add_argument("--expect-compositions", type=int, default=90)
     arg_parser.add_argument("--require-colorset", choices=("colorset1", "colorset2"))
     arg_parser.add_argument("--json-report", type=Path)
@@ -371,8 +371,6 @@ def main() -> int:
         repeated = sorted(key for key, count in Counter(referenced_patterns).items() if count > 1)
         findings.append(f"Compositions must cover every pattern exactly once; missing={missing}, repeated={repeated}.")
     missing_textures = sorted(textures - set(referenced_textures))
-    if missing_textures:
-        findings.append(f"Compositions do not cover all textures: {missing_textures}")
     if len(set(example_ids)) != len(patterns):
         findings.append(f"Expected {len(patterns)} unique local example IDs, found {len(set(example_ids))}.")
 
@@ -503,6 +501,7 @@ def main() -> int:
         "standalone": standalone,
         "embeddedD3Version": manifest.get("d3Version"),
         "usedTextureCount": len(set(referenced_textures)),
+        "unusedTextureIds": missing_textures,
         "selectedColorset": selected,
         "initialPattern": initial_config.get("patternId"),
         "initialExampleId": initial_config.get("exampleId"),

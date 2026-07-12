@@ -66,9 +66,11 @@
     .studio-status { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; color: #696969; font-size: 0.78rem; }
     .studio-status span { border-left: 3px solid #9e1b32; padding-left: 7px; }
     .texture-bank { margin-top: 18px; padding: 16px; }
-    .texture-grid { display: grid; grid-template-columns: repeat(10, minmax(82px, 1fr)); gap: 8px; margin-top: 12px; }
-    .texture-swatch { border: 1px solid #cfcfcf; background: #f7f7f7; min-height: 92px; padding: 6px; display: grid; gap: 4px; }
-    .texture-swatch svg { width: 100%; height: 56px; display: block; }
+    .texture-bank-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .texture-bank-head a { color: #9e1b32; font-weight: 700; }
+    .texture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 12px; }
+    .texture-swatch { border: 1px solid #cfcfcf; background: #f7f7f7; min-height: 112px; padding: 6px; display: grid; gap: 4px; }
+    .texture-swatch svg { width: 100%; height: 76px; display: block; }
     .texture-swatch span { font-size: 0.65rem; line-height: 1.2; color: #4f4f4f; overflow-wrap: anywhere; }
     .gallery-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 42px 0 14px; }
     .gallery-heading p { margin: 0; max-width: 680px; color: #696969; }
@@ -90,13 +92,14 @@
       .studio-preview { min-height: 420px; }
       .studio-preview svg { min-height: 340px; }
       .logo-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .texture-grid { grid-template-columns: repeat(5, minmax(82px, 1fr)); }
+      .texture-grid { grid-template-columns: repeat(3, minmax(120px, 1fr)); }
     }
     @media (max-width: 650px) {
       header { grid-template-columns: 1fr; }
       .count-strip { justify-content: flex-start; }
       .logo-gallery { grid-template-columns: 1fr; }
-      .texture-grid { grid-template-columns: repeat(2, minmax(82px, 1fr)); }
+      .texture-grid { grid-template-columns: repeat(2, minmax(110px, 1fr)); }
+      .texture-bank-head { align-items: flex-start; flex-direction: column; }
       .gallery-heading { align-items: start; flex-direction: column; }
       .button-row { grid-template-columns: 1fr; }
     }
@@ -105,14 +108,14 @@
     }
   </style>
 </head>
-<body data-example-count="90" data-pattern-count="90" data-texture-count="10" data-composition-count="90" data-colorset="__D3_LOGO_COLORSET__">
+<body data-example-count="90" data-pattern-count="90" data-texture-count="40" data-composition-count="90" data-colorset="__D3_LOGO_COLORSET__">
   <header>
     <div>
       <h1>D3 Logo Design Studio</h1>
-      <p>Ninety distinct construction mechanisms, ten palette-safe SVG textures, and one adjustable colorset1/colorset2 skin.</p>
+      <p>Ninety distinct construction mechanisms, forty palette-safe SVG textures, and one adjustable colorset1/colorset2 skin.</p>
     </div>
     <div class="count-strip" aria-label="Catalog totals">
-      <span>90 patterns</span><span>10 textures</span><span>90 compositions</span>
+      <span>90 patterns</span><span>40 textures</span><span>90 compositions</span>
     </div>
   </header>
   <main>
@@ -145,7 +148,10 @@
     </section>
 
     <section class="texture-bank" aria-labelledby="texture-heading">
-      <h2 id="texture-heading">Texture bank</h2>
+      <div class="texture-bank-head">
+        <h2 id="texture-heading">Texture bank</h2>
+        <a href="../d3-logo-textures/">Open the dedicated texture atlas</a>
+      </div>
       <div class="texture-grid" id="texture-grid"></div>
     </section>
 
@@ -287,26 +293,23 @@
         target.replaceChildren(...manifest.textures.map((texture, index) => {
           const item = document.createElement("div");
           item.className = "texture-swatch";
+          item.id = `texture-bank-${texture.id.replace(/^d3-logo-/, "")}`;
+          item.dataset.exampleId = texture.id.replace(/^d3-logo-/, "");
+          item.dataset.patternId = texture.id;
           item.dataset.textureId = texture.id;
+          item.dataset.geometrySignature = texture.geometrySignature;
           const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-          svg.setAttribute("viewBox", "0 0 120 56");
           svg.setAttribute("aria-label", texture.label);
-          const config = {...initialConfig, colorset, textureId: texture.id, patternId: "d3-logo-letter-window", exampleId: "letter-window", brand: String(index + 1).padStart(2, "0"), tagline: "", textureStrength: 1, compositionId: `d3-logo-swatch-${index + 1}`};
-          engine.renderLogo(svg, config);
-          const texturePattern = svg.querySelector(`pattern[data-texture-id="${texture.id}"]`);
-          const composition = svg.querySelector(".logo-composition");
-          if (texturePattern && composition) {
-            composition.replaceChildren();
-            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-            rect.setAttribute("x", "18");
-            rect.setAttribute("y", "18");
-            rect.setAttribute("width", "444");
-            rect.setAttribute("height", "284");
-            rect.setAttribute("fill", `url(#${texturePattern.id})`);
-            rect.setAttribute("stroke", paletteData.colorsets[colorset].roles.ink);
-            rect.setAttribute("stroke-width", "4");
-            composition.append(rect);
-          }
+          engine.renderTexture(svg, {
+            textureId: texture.id,
+            colorset,
+            density: 1,
+            curvature: 0.6,
+            textureStrength: 0.9,
+            seed: initialConfig.seed + index,
+            brand: initialConfig.brand,
+            instanceId: `studio-bank-${texture.id}`
+          });
           const label = document.createElement("span");
           label.textContent = texture.id;
           item.append(svg, label);
