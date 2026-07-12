@@ -1370,6 +1370,65 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             {"system-to-routing", "system-to-overflow", "overflow-to-system-feedback"},
         )
 
+    def test_browser_controls_ignore_focus_layers_and_accept_loop_seam_progress(self) -> None:
+        plan = self.template_plan()
+        plan["timeline"]["durationMs"] = 210
+        for phase, (start_ms, end_ms) in zip(
+            plan["timeline"]["phases"],
+            ((0, 70), (70, 140), (140, 210)),
+            strict=True,
+        ):
+            phase["startMs"] = start_ms
+            phase["endMs"] = end_ms
+        spec = self.write_plan("short-loop-plan.json", plan)
+        output = self.workspace / "short-loop.svg"
+        composed = self.run_tool(
+            COMPOSER,
+            "--spec",
+            str(spec),
+            "--output",
+            str(output),
+            "--json",
+        )
+        self.assertEqual(composed.returncode, 0, msg=composed.stderr or composed.stdout)
+
+        report_path = self.workspace / "short-loop-browser.json"
+        screenshot_path = self.workspace / "short-loop.png"
+        audited = subprocess.run(
+            [
+                "uv",
+                "run",
+                "--script",
+                str(AUDITOR),
+                str(output),
+                "--report",
+                str(report_path),
+                "--screenshot",
+                str(screenshot_path),
+                "--json",
+            ],
+            cwd=self.workspace,
+            check=False,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        )
+        self.assertEqual(audited.returncode, 0, msg=audited.stderr or audited.stdout)
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        self.assertIs(report.get("ok"), True)
+        real_inputs = next(
+            check for check in report["checks"] if check.get("id") == "real-input-controls"
+        )
+        details = real_inputs["details"]
+        pointer = details["timeline"]
+        playback = details["playback"]
+        self.assertIs(pointer["pointerHit"]["insideTimelineRail"], True)
+        self.assertAlmostEqual(pointer["pointerTimeMs"], 157.5, delta=6.3)
+        self.assertGreater(playback["afterRevision"], playback["beforeRevision"])
+        self.assertEqual(playback["pressedAfterPlay"], "true")
+        self.assertLess(playback["after"], playback["before"])
+
     def test_long_header_copy_is_explicitly_truncated_and_accessible(self) -> None:
         plan = self.template_plan()
         module = plan["modules"][0]
