@@ -104,18 +104,6 @@ def validate_fixture_examples(styler, examples: list[dict[str, str]]) -> list[st
     return findings
 
 
-def rendered_counts_by_colorset(
-    actual_names: set[str], colorset_inputs: list[dict[str, object]]
-) -> dict[str, int]:
-    return {
-        str(item["colorset"]): sum(
-            f"rendered-{index}.svg" in actual_names
-            for index in range(int(item["startIndex"]), int(item["endIndex"]) + 1)
-        )
-        for item in colorset_inputs
-    }
-
-
 def attempts_for_colorset(
     attempts: list[dict[str, object]], colorset: str
 ) -> list[dict[str, object]]:
@@ -144,7 +132,7 @@ def render_colorsets(
     timeout: int,
     retries: int,
     jobs: int,
-    recovery_chunk_size: int,
+    render_chunk_size: int,
     overall_timeout: int,
 ) -> tuple[list[dict[str, object]], list[str], dict[str, object]]:
     def remaining_timeout(limit: int) -> int | None:
@@ -155,7 +143,6 @@ def render_colorsets(
 
     colorset_inputs: list[dict[str, object]] = []
     render_units: list[dict[str, object]] = []
-    combined_parts: list[str] = []
     next_global_index = 1
     for colorset in ("colorset1", "colorset2"):
         styled, examples = style_fixture(styler, source, colorset)
@@ -189,15 +176,10 @@ def render_colorsets(
                     "fence": fence,
                 }
             )
-        combined_parts.append(f"# {colorset}\n\n{styled.strip()}\n")
-
-    input_path = workspace / "all-colorsets.md"
-    output_path = workspace / "rendered.md"
-    input_path.write_text("\n\n".join(combined_parts), encoding="utf-8", newline="\n")
-    # Start with one efficient full render. If Chromium stops after a healthy
-    # prefix, preserve those SVGs and recover only the missing diagrams in small,
-    # independently retried batches. This avoids repeating the same cumulative
-    # browser-pressure failure while still requiring 96 fresh valid artifacts.
+    # Render in small batches from the outset. A single Mermaid CLI process can
+    # exhaust a constrained CI runner after a healthy prefix and leave later
+    # Chromium launches unhealthy. Starting each batch in a fresh process avoids
+    # that cumulative pressure while still requiring 96 fresh valid artifacts.
     def command_for(batch_input: Path, batch_output: Path) -> list[str]:
         return [
             npx,
@@ -216,76 +198,19 @@ def render_colorsets(
     expected_names = {f"rendered-{index}.svg" for index in range(1, render_count + 1)}
     for stale_path in workspace.glob("rendered-*.svg"):
         stale_path.unlink()
-    output_path.unlink(missing_ok=True)
 
     started_at = time.monotonic()
     deadline = started_at + overall_timeout
     attempts: list[dict[str, object]] = []
-    primary_completed: subprocess.CompletedProcess[str] | None = None
-    primary_timeout = remaining_timeout(timeout) or 1
-    try:
-        primary_completed = subprocess.run(
-            command_for(input_path, output_path),
-            cwd=workspace,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            capture_output=True,
-            check=False,
-            timeout=primary_timeout,
-        )
-        primary_names = {path.name for path in workspace.glob("rendered-*.svg")}
-        attempts.append(
-            {
-                "phase": "primary",
-                "attempt": 1,
-                "exitCode": primary_completed.returncode,
-                "jobs": jobs,
-                "colorsets": ["colorset1", "colorset2"],
-                "globalIndices": list(range(1, render_count + 1)),
-                "renderedSvgCount": len(primary_names),
-                "colorsetRenderedSvgCounts": rendered_counts_by_colorset(
-                    primary_names, colorset_inputs
-                ),
-                "stdout": primary_completed.stdout.strip()[-1000:],
-                "stderr": primary_completed.stderr.strip()[-1000:],
-            }
-        )
-    except subprocess.TimeoutExpired:
-        primary_names = {path.name for path in workspace.glob("rendered-*.svg")}
-        attempts.append(
-            {
-                "phase": "primary",
-                "attempt": 1,
-                "exitCode": None,
-                "jobs": jobs,
-                "colorsets": ["colorset1", "colorset2"],
-                "globalIndices": list(range(1, render_count + 1)),
-                "renderedSvgCount": len(primary_names),
-                "colorsetRenderedSvgCounts": rendered_counts_by_colorset(
-                    primary_names, colorset_inputs
-                ),
-                "stdout": "",
-                "stderr": f"timed out after {primary_timeout} seconds",
-            }
-        )
-
-    missing_units: list[dict[str, object]] = []
-    for unit in render_units:
-        canonical_path = workspace / f"rendered-{int(unit['globalIndex'])}.svg"
-        if inspect_svg(canonical_path):
-            canonical_path.unlink(missing_ok=True)
-            missing_units.append(unit)
-    initial_unusable_count = len(missing_units)
-    recovery_chunks = [
-        missing_units[index : index + recovery_chunk_size]
-        for index in range(0, len(missing_units), recovery_chunk_size)
+    render_chunks = [
+        render_units[index : index + render_chunk_size]
+        for index in range(0, len(render_units), render_chunk_size)
     ]
-    recovery_failures: list[str] = []
-    recovery_timeout = min(timeout, 60)
-    recovery_invocation = 0
+    chunk_failures: list[str] = []
+    batch_timeout = min(timeout, 60)
+    render_invocation = 0
 
-    for chunk_number, chunk in enumerate(recovery_chunks, start=1):
+    for chunk_number, chunk in enumerate(render_chunks, start=1):
         pending_groups: list[list[dict[str, object]]] = [chunk]
         budget_exhausted = False
         for attempt_round in range(1, retries + 1):
@@ -293,14 +218,14 @@ def render_colorsets(
                 break
             next_groups: list[list[dict[str, object]]] = []
             for group_position, group in enumerate(pending_groups):
-                call_timeout = remaining_timeout(recovery_timeout)
+                call_timeout = remaining_timeout(batch_timeout)
                 if call_timeout is None:
                     next_groups.extend(pending_groups[group_position:])
                     budget_exhausted = True
                     break
-                recovery_invocation += 1
-                scratch_input = workspace / f"recovery-{recovery_invocation:03d}.md"
-                scratch_output = workspace / f"recovery-{recovery_invocation:03d}-rendered.md"
+                render_invocation += 1
+                scratch_input = workspace / f"batch-{render_invocation:03d}.md"
+                scratch_output = workspace / f"batch-{render_invocation:03d}-rendered.md"
                 scratch_input.write_text(
                     "\n\n".join(str(unit["fence"]) for unit in group) + "\n",
                     encoding="utf-8",
@@ -356,10 +281,10 @@ def render_colorsets(
 
                 attempts.append(
                     {
-                        "phase": "recovery",
+                        "phase": "chunk",
                         "chunk": chunk_number,
                         "attempt": attempt_round,
-                        "invocation": recovery_invocation,
+                        "invocation": render_invocation,
                         "exitCode": completed.returncode if completed is not None else None,
                         "jobs": jobs,
                         "colorsets": sorted({str(unit["colorset"]) for unit in group}),
@@ -391,12 +316,21 @@ def render_colorsets(
         if unresolved_units:
             global_indices = [int(unit["globalIndex"]) for unit in unresolved_units]
             reason = "overall timeout exhausted" if budget_exhausted else "retries exhausted"
-            recovery_failures.append(
-                f"recovery chunk {chunk_number} left unresolved global indices {global_indices}: {reason}"
+            chunk_failures.append(
+                f"render chunk {chunk_number} left unresolved global indices {global_indices}: {reason}"
             )
 
     actual_names = {path.name for path in workspace.glob("rendered-*.svg")}
-    batch_findings: list[str] = list(recovery_failures)
+    batch_findings: list[str] = list(chunk_failures)
+    unresolved = [
+        {
+            "globalIndex": int(unit["globalIndex"]),
+            "colorset": str(unit["colorset"]),
+            "declaration": str(unit["example"]["declaration"]),
+        }
+        for unit in render_units
+        if f"rendered-{int(unit['globalIndex'])}.svg" not in actual_names
+    ]
 
     if actual_names != expected_names:
         batch_findings.append(
@@ -457,17 +391,18 @@ def render_colorsets(
         "ok": not batch_findings,
         "exitCode": final_exit_code,
         "jobs": jobs,
+        "renderMode": "chunk-first",
         "attemptCount": len(attempts),
         "attempts": attempts,
-        "primaryExitCode": (
-            primary_completed.returncode if primary_completed is not None else None
+        "renderChunkSize": render_chunk_size,
+        "renderChunkCount": len(render_chunks),
+        "promotedSvgCount": len(actual_names & expected_names),
+        "timedOutAttemptCount": sum(bool(attempt.get("timedOut")) for attempt in attempts),
+        "nonzeroAttemptCount": sum(
+            attempt.get("exitCode") not in (None, 0) for attempt in attempts
         ),
-        "primaryRenderedSvgCount": len(primary_names),
-        "initialUnusableSvgCount": initial_unusable_count,
-        "recoveryChunkSize": recovery_chunk_size,
-        "recoveryChunkCount": len(recovery_chunks),
-        "recoveredSvgCount": initial_unusable_count
-        - len(expected_names - actual_names),
+        "unresolvedCount": len(unresolved),
+        "unresolved": unresolved,
         "overallTimeout": overall_timeout,
         "elapsedSeconds": round(time.monotonic() - started_at, 3),
         "renderCount": render_count,
@@ -479,23 +414,25 @@ def render_colorsets(
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Fresh batch-render every Mermaid colorset declaration and reject error SVGs."
+        description="Fresh chunk-render every Mermaid colorset declaration and reject error SVGs."
     )
     parser.add_argument("--fixture", type=Path, default=FIXTURE, help="Markdown coverage fixture.")
     parser.add_argument("--mermaid-cli-package", default=DEFAULT_MERMAID_PACKAGE, help="Exact npx Mermaid CLI package spec.")
     parser.add_argument("--timeout", type=int, default=180, help="Seconds allowed for each Mermaid CLI process.")
-    parser.add_argument("--render-retries", type=int, default=3, help="Attempts per missing-output recovery chunk.")
+    parser.add_argument("--render-retries", type=int, default=3, help="Attempts per unresolved render chunk.")
     parser.add_argument(
+        "--render-chunk-size",
         "--recovery-chunk-size",
+        dest="render_chunk_size",
         type=int,
         default=8,
-        help="Missing diagrams per independently retried recovery batch.",
+        help="Diagrams per independently retried fresh render batch.",
     )
     parser.add_argument(
         "--overall-timeout",
         type=int,
         default=600,
-        help="Maximum seconds for the primary render and all recovery batches.",
+        help="Maximum seconds for all fresh render batches and retries.",
     )
     parser.add_argument(
         "--jobs",
@@ -511,8 +448,8 @@ def main() -> int:
         parser.error("--jobs must be at least 1")
     if args.render_retries < 1:
         parser.error("--render-retries must be at least 1")
-    if args.recovery_chunk_size < 1:
-        parser.error("--recovery-chunk-size must be at least 1")
+    if args.render_chunk_size < 1:
+        parser.error("--render-chunk-size must be at least 1")
     if args.overall_timeout < 1:
         parser.error("--overall-timeout must be at least 1")
 
@@ -547,7 +484,7 @@ def main() -> int:
             args.timeout,
             args.render_retries,
             args.jobs,
-            args.recovery_chunk_size,
+            args.render_chunk_size,
             args.overall_timeout,
         )
         findings.extend(render_findings)
@@ -561,7 +498,8 @@ def main() -> int:
         "renderableDeclarationCount": len(styler.SUPPORTED_DECLARATIONS),
         "colorsetCount": len(colorset_results),
         "jobs": args.jobs,
-        "recoveryChunkSize": args.recovery_chunk_size,
+        "renderMode": "chunk-first",
+        "renderChunkSize": args.render_chunk_size,
         "overallTimeout": args.overall_timeout,
         "batch": batch,
         "renderCount": sum(int(result["diagramCount"]) for result in colorset_results),
@@ -574,6 +512,21 @@ def main() -> int:
         report_path.parent.mkdir(parents=True, exist_ok=True)
         report_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2, sort_keys=True))
+    if findings:
+        failure_summary = {
+            "renderMode": batch["renderMode"],
+            "attemptCount": batch["attemptCount"],
+            "timedOutAttemptCount": batch["timedOutAttemptCount"],
+            "nonzeroAttemptCount": batch["nonzeroAttemptCount"],
+            "unresolvedCount": batch["unresolvedCount"],
+            "unresolved": batch["unresolved"][:16],
+            "findings": batch["findings"][:8],
+        }
+        print(
+            "Mermaid render coverage failure summary: "
+            + json.dumps(failure_summary, sort_keys=True),
+            file=sys.stderr,
+        )
     return 0 if report["ok"] else 1
 
 
