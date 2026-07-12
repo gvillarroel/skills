@@ -82,21 +82,8 @@ def style_fixture(styler, source: str, colorset: str) -> tuple[str, list[dict[st
     return styler.FENCE_RE.sub(replace, source), examples
 
 
-def render_colorset(
-    styler,
-    npx: str,
-    package: str,
-    source: str,
-    colorset: str,
-    workspace: Path,
-    timeout: int,
-    retries: int,
-    jobs: int,
-) -> tuple[dict[str, object], list[str]]:
+def validate_fixture_examples(styler, examples: list[dict[str, str]]) -> list[str]:
     findings: list[str] = []
-    colorset_dir = workspace / colorset
-    colorset_dir.mkdir(parents=True)
-    styled, examples = style_fixture(styler, source, colorset)
     declarations = [example["declaration"] for example in examples]
     if len(declarations) != len(styler.SUPPORTED_DECLARATIONS):
         findings.append(
@@ -113,12 +100,69 @@ def render_colorset(
     )
     if duplicate_declarations:
         findings.append(f"fixture has duplicate declarations: {duplicate_declarations}")
+    return findings
 
-    input_path = colorset_dir / "all-types.md"
-    output_path = colorset_dir / "rendered.md"
-    input_path.write_text(styled, encoding="utf-8", newline="\n")
+
+def rendered_counts_by_colorset(
+    actual_names: set[str], colorset_inputs: list[dict[str, object]]
+) -> dict[str, int]:
+    return {
+        str(item["colorset"]): sum(
+            f"rendered-{index}.svg" in actual_names
+            for index in range(int(item["startIndex"]), int(item["endIndex"]) + 1)
+        )
+        for item in colorset_inputs
+    }
+
+
+def attempts_for_colorset(
+    attempts: list[dict[str, object]], colorset: str
+) -> list[dict[str, object]]:
+    results: list[dict[str, object]] = []
+    for attempt in attempts:
+        result = dict(attempt)
+        counts = result.pop("colorsetRenderedSvgCounts", {})
+        if isinstance(counts, dict):
+            result["renderedSvgCount"] = int(counts.get(colorset, 0))
+        results.append(result)
+    return results
+
+
+def render_colorsets(
+    styler,
+    npx: str,
+    package: str,
+    source: str,
+    workspace: Path,
+    timeout: int,
+    retries: int,
+    jobs: int,
+) -> tuple[list[dict[str, object]], list[str], dict[str, object]]:
+    colorset_inputs: list[dict[str, object]] = []
+    combined_parts: list[str] = []
+    next_global_index = 1
+    for colorset in ("colorset1", "colorset2"):
+        styled, examples = style_fixture(styler, source, colorset)
+        start_index = next_global_index
+        end_index = start_index + len(examples) - 1
+        next_global_index = end_index + 1
+        colorset_inputs.append(
+            {
+                "colorset": colorset,
+                "examples": examples,
+                "startIndex": start_index,
+                "endIndex": end_index,
+                "findings": validate_fixture_examples(styler, examples),
+            }
+        )
+        combined_parts.append(f"# {colorset}\n\n{styled.strip()}\n")
+
+    input_path = workspace / "all-colorsets.md"
+    output_path = workspace / "rendered.md"
+    input_path.write_text("\n\n".join(combined_parts), encoding="utf-8", newline="\n")
     # Mermaid CLI shares one Chromium browser across every Markdown render promise.
-    # Serial execution keeps this release gate deterministic on constrained CI runners.
+    # One serialized 96-diagram invocation avoids a flaky second browser launch on
+    # constrained Linux runners while keeping both colorsets freshly rendered.
     command = [
         npx,
         "-y",
@@ -131,17 +175,18 @@ def render_colorset(
         "--jobs",
         str(jobs),
     ]
-    expected_names = {f"rendered-{index}.svg" for index in range(1, len(examples) + 1)}
+    render_count = next_global_index - 1
+    expected_names = {f"rendered-{index}.svg" for index in range(1, render_count + 1)}
     attempts: list[dict[str, object]] = []
     completed: subprocess.CompletedProcess[str] | None = None
     for attempt in range(1, retries + 1):
-        for stale_path in colorset_dir.glob("rendered-*.svg"):
+        for stale_path in workspace.glob("rendered-*.svg"):
             stale_path.unlink()
         output_path.unlink(missing_ok=True)
         try:
             completed = subprocess.run(
                 command,
-                cwd=colorset_dir,
+                cwd=workspace,
                 text=True,
                 encoding="utf-8",
                 errors="replace",
@@ -149,13 +194,17 @@ def render_colorset(
                 check=False,
                 timeout=timeout,
             )
-            actual_names = {path.name for path in colorset_dir.glob("rendered-*.svg")}
+            actual_names = {path.name for path in workspace.glob("rendered-*.svg")}
             attempts.append(
                 {
                     "attempt": attempt,
                     "exitCode": completed.returncode,
                     "jobs": jobs,
                     "renderedSvgCount": len(actual_names),
+                    "colorsetRenderedSvgCounts": rendered_counts_by_colorset(
+                        actual_names, colorset_inputs
+                    ),
+                    "stdout": completed.stdout.strip()[-1000:],
                     "stderr": completed.stderr.strip()[-1000:],
                 }
             )
@@ -163,56 +212,96 @@ def render_colorset(
                 break
         except subprocess.TimeoutExpired:
             completed = None
+            timeout_names = {path.name for path in workspace.glob("rendered-*.svg")}
             attempts.append(
                 {
                     "attempt": attempt,
                     "exitCode": None,
                     "jobs": jobs,
-                    "renderedSvgCount": len(list(colorset_dir.glob("rendered-*.svg"))),
+                    "renderedSvgCount": len(timeout_names),
+                    "colorsetRenderedSvgCounts": rendered_counts_by_colorset(
+                        timeout_names, colorset_inputs
+                    ),
+                    "stdout": "",
                     "stderr": f"timed out after {timeout} seconds",
                 }
             )
 
-    actual_names = {path.name for path in colorset_dir.glob("rendered-*.svg")}
+    actual_names = {path.name for path in workspace.glob("rendered-*.svg")}
     final_exit_code = completed.returncode if completed is not None else None
+    batch_findings: list[str] = []
     if completed is None:
-        findings.append(f"Mermaid CLI did not complete within {retries} attempts")
+        batch_findings.append(f"Mermaid CLI did not complete within {retries} attempts")
     elif completed.returncode != 0:
         detail = (completed.stderr.strip() or completed.stdout.strip())[-2000:]
-        findings.append(f"Mermaid CLI exited {completed.returncode} after {len(attempts)} attempts: {detail}")
-
-    render_results: list[dict[str, object]] = []
-    for index, example in enumerate(examples, start=1):
-        svg_path = colorset_dir / f"rendered-{index}.svg"
-        svg_findings = inspect_svg(svg_path)
-        render_results.append(
-            {
-                "index": index,
-                "declaration": example["declaration"],
-                "family": example["family"],
-                "approved": not svg_findings,
-                "findings": svg_findings,
-            }
+        batch_findings.append(
+            f"Mermaid CLI exited {completed.returncode} after {len(attempts)} attempts: {detail}"
         )
-        findings.extend(f"{example['declaration']}: {finding}" for finding in svg_findings)
 
     if actual_names != expected_names:
-        findings.append(
+        batch_findings.append(
             f"rendered SVG set differs: missing={sorted(expected_names - actual_names)}, "
             f"unexpected={sorted(actual_names - expected_names)}"
         )
-    return {
-        "colorset": colorset,
-        "ok": not findings,
+
+    colorset_results: list[dict[str, object]] = []
+    prefixed_findings: list[str] = list(batch_findings)
+    for colorset_input in colorset_inputs:
+        colorset = str(colorset_input["colorset"])
+        examples = colorset_input["examples"]
+        assert isinstance(examples, list)
+        start_index = int(colorset_input["startIndex"])
+        colorset_findings = list(colorset_input["findings"])
+        render_results: list[dict[str, object]] = []
+        for index, example in enumerate(examples, start=1):
+            assert isinstance(example, dict)
+            global_index = start_index + index - 1
+            svg_findings = inspect_svg(workspace / f"rendered-{global_index}.svg")
+            render_results.append(
+                {
+                    "index": index,
+                    "globalIndex": global_index,
+                    "declaration": example["declaration"],
+                    "family": example["family"],
+                    "approved": not svg_findings,
+                    "findings": svg_findings,
+                }
+            )
+            colorset_findings.extend(
+                f"{example['declaration']}: {finding}" for finding in svg_findings
+            )
+        findings = [*batch_findings, *colorset_findings]
+        colorset_results.append(
+            {
+                "colorset": colorset,
+                "ok": not findings and not batch_findings,
+                "exitCode": final_exit_code,
+                "jobs": jobs,
+                "attemptCount": len(attempts),
+                "attempts": attempts_for_colorset(attempts, colorset),
+                "startIndex": start_index,
+                "endIndex": int(colorset_input["endIndex"]),
+                "diagramCount": len(examples),
+                "approvedRenderCount": sum(1 for result in render_results if result["approved"]),
+                "renders": render_results,
+                "findings": findings,
+            }
+        )
+        prefixed_findings.extend(
+            f"{colorset}: {finding}" for finding in colorset_findings
+        )
+
+    batch = {
+        "ok": not batch_findings,
         "exitCode": final_exit_code,
         "jobs": jobs,
         "attemptCount": len(attempts),
         "attempts": attempts,
-        "diagramCount": len(examples),
-        "approvedRenderCount": sum(1 for result in render_results if result["approved"]),
-        "renders": render_results,
-        "findings": findings,
-    }, [f"{colorset}: {finding}" for finding in findings]
+        "renderCount": render_count,
+        "renderedSvgCount": len(actual_names),
+        "findings": batch_findings,
+    }
+    return colorset_results, prefixed_findings, batch
 
 
 def main() -> int:
@@ -221,8 +310,8 @@ def main() -> int:
     )
     parser.add_argument("--fixture", type=Path, default=FIXTURE, help="Markdown coverage fixture.")
     parser.add_argument("--mermaid-cli-package", default=DEFAULT_MERMAID_PACKAGE, help="Exact npx Mermaid CLI package spec.")
-    parser.add_argument("--timeout", type=int, default=180, help="Seconds allowed for each colorset batch render.")
-    parser.add_argument("--render-retries", type=int, default=3, help="Fresh batch attempts per colorset for transient browser failures.")
+    parser.add_argument("--timeout", type=int, default=180, help="Seconds allowed for the combined colorset batch render.")
+    parser.add_argument("--render-retries", type=int, default=3, help="Fresh combined-batch attempts for transient browser failures.")
     parser.add_argument(
         "--jobs",
         type=int,
@@ -254,23 +343,19 @@ def main() -> int:
         )
 
     source = args.fixture.resolve().read_text(encoding="utf-8")
-    colorset_results: list[dict[str, object]] = []
     with tempfile.TemporaryDirectory(prefix="mermaid-render-coverage-") as temporary:
         workspace = Path(temporary)
-        for colorset in ("colorset1", "colorset2"):
-            result, colorset_findings = render_colorset(
-                styler,
-                npx,
-                args.mermaid_cli_package,
-                source,
-                colorset,
-                workspace,
-                args.timeout,
-                args.render_retries,
-                args.jobs,
-            )
-            colorset_results.append(result)
-            findings.extend(colorset_findings)
+        colorset_results, render_findings, batch = render_colorsets(
+            styler,
+            npx,
+            args.mermaid_cli_package,
+            source,
+            workspace,
+            args.timeout,
+            args.render_retries,
+            args.jobs,
+        )
+        findings.extend(render_findings)
 
     report = {
         "ok": not findings,
@@ -281,6 +366,7 @@ def main() -> int:
         "renderableDeclarationCount": len(styler.SUPPORTED_DECLARATIONS),
         "colorsetCount": len(colorset_results),
         "jobs": args.jobs,
+        "batch": batch,
         "renderCount": sum(int(result["diagramCount"]) for result in colorset_results),
         "approvedRenderCount": sum(int(result["approvedRenderCount"]) for result in colorset_results),
         "colorsets": colorset_results,
