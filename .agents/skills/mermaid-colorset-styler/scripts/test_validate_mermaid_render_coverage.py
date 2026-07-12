@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import subprocess
 import sys
 import tempfile
@@ -42,6 +43,7 @@ class FakeRenderer:
         self.styler = styler
         self.behavior = behavior
         self.calls: list[list[str]] = []
+        self.puppeteer_configs: list[dict[str, object] | None] = []
 
     def __call__(self, command: list[str], **kwargs):
         input_path = Path(command[command.index("-i") + 1])
@@ -52,6 +54,11 @@ class FakeRenderer:
             for match in self.styler.FENCE_RE.finditer(source)
         ]
         self.calls.append(declarations)
+        if "--puppeteerConfigFile" in command:
+            config_path = Path(command[command.index("--puppeteerConfigFile") + 1])
+            self.puppeteer_configs.append(json.loads(config_path.read_text(encoding="utf-8")))
+        else:
+            self.puppeteer_configs.append(None)
         approved, exit_code, timed_out = self.behavior(len(self.calls), declarations)
         for index in approved:
             output_path.with_name(f"{output_path.stem}-{index + 1}.svg").write_text(
@@ -62,7 +69,7 @@ class FakeRenderer:
         return subprocess.CompletedProcess(command, exit_code, stdout="", stderr="")
 
 
-def run_case(behavior):
+def run_case(behavior, *, disable_browser_sandbox: bool = False):
     validator = load_validator()
     styler = validator.load_styler()
     source = validator.FIXTURE.read_text(encoding="utf-8")
@@ -82,16 +89,18 @@ def run_case(behavior):
                 jobs=1,
                 render_chunk_size=8,
                 overall_timeout=600,
+                disable_browser_sandbox=disable_browser_sandbox,
             )
     finally:
         validator.subprocess.run = original_run
-    return result, renderer.calls, styler
+    return result, renderer, styler
 
 
 def test_all_diagrams_start_in_small_chunks() -> None:
-    (colorsets, findings, batch), calls, _styler = run_case(
+    (colorsets, findings, batch), renderer, _styler = run_case(
         lambda _call, declarations: (set(range(len(declarations))), 0, False)
     )
+    calls = renderer.calls
     assert not findings
     assert batch["ok"]
     assert batch["renderMode"] == "chunk-first"
@@ -102,6 +111,8 @@ def test_all_diagrams_start_in_small_chunks() -> None:
     assert len(calls) == 12
     assert max(map(len, calls)) == 8
     assert all(attempt["phase"] == "chunk" for attempt in batch["attempts"])
+    assert batch["browserSandboxMode"] == "default"
+    assert renderer.puppeteer_configs == [None] * 12
     assert sum(int(item["approvedRenderCount"]) for item in colorsets) == 96
 
 
@@ -113,7 +124,8 @@ def test_partial_timeout_is_promoted_then_unresolved_items_are_isolated() -> Non
             return set(), 1, False
         return set(range(len(declarations))), 0, False
 
-    (_colorsets, findings, batch), calls, _styler = run_case(behavior)
+    (_colorsets, findings, batch), renderer, _styler = run_case(behavior)
+    calls = renderer.calls
     assert not findings
     assert batch["ok"]
     assert batch["promotedSvgCount"] == 96
@@ -135,7 +147,7 @@ def test_unrenderable_singletons_fail_the_gate() -> None:
     validator = load_validator()
     styler = validator.load_styler()
     blocked = styler.SUPPORTED_DECLARATIONS[-1]
-    (colorsets, findings, batch), _calls, _styler = run_case(behavior)
+    (colorsets, findings, batch), _renderer, _styler = run_case(behavior)
     assert findings
     assert not batch["ok"]
     assert batch["promotedSvgCount"] == 94
@@ -144,10 +156,24 @@ def test_unrenderable_singletons_fail_the_gate() -> None:
     assert any("retries exhausted" in finding for finding in batch["findings"])
 
 
+def test_trusted_ci_mode_passes_explicit_no_sandbox_config() -> None:
+    (_colorsets, findings, batch), renderer, _styler = run_case(
+        lambda _call, declarations: (set(range(len(declarations))), 0, False),
+        disable_browser_sandbox=True,
+    )
+    assert not findings
+    assert batch["ok"]
+    assert batch["browserSandboxMode"] == "disabled"
+    assert renderer.puppeteer_configs == [
+        {"args": ["--no-sandbox", "--disable-setuid-sandbox"]}
+    ] * 12
+
+
 def main() -> int:
     test_all_diagrams_start_in_small_chunks()
     test_partial_timeout_is_promoted_then_unresolved_items_are_isolated()
     test_unrenderable_singletons_fail_the_gate()
+    test_trusted_ci_mode_passes_explicit_no_sandbox_config()
     print("Mermaid chunk-first render coverage tests passed.")
     return 0
 

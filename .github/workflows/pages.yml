@@ -37,7 +37,7 @@ jobs:
         run: uv run --script scripts/validate-skills.py
 
       - name: Validate diagram-type coverage
-        run: uv run --script scripts/validate-diagram-type-coverage.py
+        run: uv run --script scripts/validate-diagram-type-coverage.py --disable-mermaid-browser-sandbox
 
       - name: Check repository payload
         run: uv run --script scripts/check-repo-payload.py
