@@ -1,6 +1,6 @@
 # Diverging Stack
 
-- **Pattern ID:** `d3-pattern-diverging-stack`
+- **Pattern ID:** `d3-diverging-stack`
 - **Gallery source ID:** `diverging-stack`
 - **Family:** Sentiment
 - **Use when:** Likert responses split around a neutral center.

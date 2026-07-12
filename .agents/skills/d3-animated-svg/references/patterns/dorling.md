@@ -1,6 +1,6 @@
 # Dorling Cartogram
 
-- **Pattern ID:** `d3-pattern-dorling`
+- **Pattern ID:** `d3-dorling`
 - **Gallery source ID:** `dorling`
 - **Family:** Geospatial
 - **Use when:** Values collide around geographic anchors.

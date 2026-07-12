@@ -1,6 +1,6 @@
 # Stacked to Grouped
 
-- **Pattern ID:** `d3-pattern-stacked-grouped-bars`
+- **Pattern ID:** `d3-stacked-grouped-bars`
 - **Gallery source ID:** `stacked-grouped-bars`
 - **Family:** Transition
 - **Use when:** Bars move from composition to side-by-side comparison.

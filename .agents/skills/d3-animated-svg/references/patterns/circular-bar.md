@@ -1,6 +1,6 @@
 # Circular Barplot
 
-- **Pattern ID:** `d3-pattern-circular-bar`
+- **Pattern ID:** `d3-circular-bar`
 - **Gallery source ID:** `circular-bar`
 - **Family:** Ranking
 - **Use when:** Radial magnitude around a categorical wheel.

@@ -1,0 +1,126 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f4c00-b48b-75a0-bf2e-008b5e3737f1",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\awsome-videos-validator-regression-20260710-spark-15-json\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 6
+  },
+  "providers": {
+    "openai-codex": 6
+  },
+  "usageTotals": {
+    "input": 41848,
+    "output": 15882,
+    "cacheRead": 51456,
+    "cacheWrite": 0,
+    "totalTokens": 109186
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 4,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "outputs/validator-tests.json",
+      "calls": 2,
+      "resultBytes": 158523
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 6996
+    },
+    {
+      "path": "outputs/validator-tests-stdout.json",
+      "calls": 1,
+      "resultBytes": 114200
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/validator-tests.json",
+      "calls": 2,
+      "resultBytes": 158523
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 6996
+    },
+    {
+      "path": "outputs/validator-tests-stdout.json",
+      "calls": 1,
+      "resultBytes": 114200
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "outputs/validator-tests.json",
+      "calls": 2
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/validator-tests-stdout.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 279719,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6996
+    },
+    {
+      "line": 29,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/awsome-videos/scripts/test_validators.py --json --output outputs/validator-tests.json > outputs/validator-tests-stdout.json'",
+      "isError": false,
+      "resultBytes": 74
+    },
+    {
+      "line": 42,
+      "tool": "read",
+      "path": "outputs/validator-tests.json",
+      "policyPath": "outputs/validator-tests.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 111094
+    },
+    {
+      "line": 55,
+      "tool": "read",
+      "path": "outputs/validator-tests.json",
+      "policyPath": "outputs/validator-tests.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 47429
+    },
+    {
+      "line": 68,
+      "tool": "read",
+      "path": "outputs/validator-tests-stdout.json",
+      "policyPath": "outputs/validator-tests-stdout.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 114200
+    }
+  ],
+  "findings": []
+}

@@ -1,6 +1,6 @@
 # Moon Phases
 
-- **Pattern ID:** `d3-pattern-moon-phases`
+- **Pattern ID:** `d3-moon-phases`
 - **Gallery source ID:** `moon-phases`
 - **Family:** Astronomy
 - **Use when:** Repeated masks show the lunar cycle as changing illumination.

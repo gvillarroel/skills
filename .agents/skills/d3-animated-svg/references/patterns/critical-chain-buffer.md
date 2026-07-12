@@ -1,6 +1,6 @@
 # Critical Chain Buffer
 
-- **Pattern ID:** `d3-pattern-critical-chain-buffer`
+- **Pattern ID:** `d3-critical-chain-buffer`
 - **Gallery source ID:** standalone pattern recipe
 - **Family:** Critical
 - **Use when:** A schedule, incident, rollout, or project plan needs to show the controlling chain of work, feeding dependencies, resource-readiness alerts, buffer consumption, and deadline risk.
@@ -61,7 +61,7 @@ Task times are arbitrary time units, usually weeks or phases. The builder uses a
 
 ## Geometry Contract
 
-1. Use a root SVG with a stable `viewBox`, a `<title>`, a `<desc>`, and `data-pattern-id="d3-pattern-critical-chain-buffer"`.
+1. Use a root SVG with a stable `viewBox`, a `<title>`, a `<desc>`, and `data-pattern-id="d3-critical-chain-buffer"`.
 2. Draw lane bands and time ticks before tasks.
 3. Render every task as `.critical-chain-task` with `data-task-id`, `data-lane-id`, `data-start`, `data-duration`, and `data-critical`.
 4. Render dependencies as `.critical-chain-dependency` paths with `data-dependency-id`, `data-source-id`, `data-target-id`, `data-critical`, and `data-feeds-critical`.
@@ -128,7 +128,7 @@ function dependencyPath(dep) {
 
 const svg = d3.select("svg")
   .attr("viewBox", `0 0 ${width} ${height}`)
-  .attr("data-pattern-id", "d3-pattern-critical-chain-buffer")
+  .attr("data-pattern-id", "d3-critical-chain-buffer")
   .attr("data-pattern-family", "critical-chain")
   .attr("data-task-count", tasks.length)
   .attr("data-critical-task-count", tasks.filter(d => d.critical).length)
@@ -155,7 +155,7 @@ Use `pathLength="1"` on dependency paths and animate `stroke-dashoffset` from `1
 
 ## Validation Hooks
 
-- Root SVG exposes `data-pattern-id="d3-pattern-critical-chain-buffer"` and `data-pattern-family="critical-chain"`.
+- Root SVG exposes `data-pattern-id="d3-critical-chain-buffer"` and `data-pattern-family="critical-chain"`.
 - `data-task-count`, `data-critical-task-count`, `data-dependency-count`, and `data-buffer-count` match rendered mark counts.
 - Every task exposes `data-task-id`, `data-lane-id`, `data-start`, `data-duration`, and `data-critical`.
 - Every dependency path has a non-empty `d` attribute and source/target data attributes.

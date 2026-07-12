@@ -1,6 +1,6 @@
 # Parabolic Arcs
 
-- **Pattern ID:** `d3-pattern-parabolic-arcs`
+- **Pattern ID:** `d3-parabolic-arcs`
 - **Gallery source ID:** `parabolic-arcs`
 - **Family:** Geometry
 - **Use when:** Curved trajectories connect ordered endpoints with height encoding.

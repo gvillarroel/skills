@@ -1106,8 +1106,15 @@ def build_visual_review(
                     "overlap",
                     "contrast",
                     "typography",
+                    "silentComprehension",
                     "sourceProof",
                 ]},
+                "silentTest": {
+                    "durationSeconds": 3,
+                    "object": "Pending silent-frame object identification.",
+                    "action": "Pending silent-frame action identification.",
+                    "result": "Pending silent-frame result identification.",
+                },
                 "finding": "Pending full-resolution visual inspection.",
                 "correction": "Pending correction and rerender decision.",
                 "status": "pending",
@@ -1235,6 +1242,16 @@ def build_manifest(args: argparse.Namespace, project_id: str, root: Path) -> dic
                 f"--format json --min-cues 8 --expect-duration {duration_seconds:g} --duration-tolerance 1 "
                 f"--require-beat-match --output {voiceover_cues_json_path}"
             ),
+            "extractVoiceoverCuesSrt": (
+                f"uv run --script {skill_path}/scripts/extract_voiceover_cues.py {brief_path} "
+                f"--format srt --min-cues 8 --expect-duration {duration_seconds:g} --duration-tolerance 1 "
+                f"--require-beat-match --output {voiceover_cues_srt_path}"
+            ),
+            "extractVoiceoverCuesCsv": (
+                f"uv run --script {skill_path}/scripts/extract_voiceover_cues.py {brief_path} "
+                f"--format csv --min-cues 8 --expect-duration {duration_seconds:g} --duration-tolerance 1 "
+                f"--require-beat-match --output {voiceover_cues_csv_path}"
+            ),
             "styleFidelity": (
                 f"uv run --script {skill_path}/scripts/score_style_fidelity.py "
                 f"--brief {brief_path} --pattern-blueprint {pattern_blueprint_json_path} "
@@ -1308,7 +1325,8 @@ def build_manifest(args: argparse.Namespace, project_id: str, root: Path) -> dic
                 "--require-renderer --forbid-scaffold-renderer --require-renderer-report "
                 "--require-renderer-beat-coverage --require-renderer-visual-coverage "
                 "--require-readiness-report --require-style-fidelity-report --require-final-review-notes "
-                "--require-contact-sheet --require-motion-report --json"
+                "--require-contact-sheet --require-motion-report "
+                "--output artifacts/reviews/package-validation.json --json"
             ),
         },
     }

@@ -1,6 +1,6 @@
 # Tidy Tree
 
-- **Pattern ID:** `d3-pattern-tidy-tree`
+- **Pattern ID:** `d3-tidy-tree`
 - **Gallery source ID:** `tidy-tree`
 - **Family:** Hierarchy
 - **Use when:** Layered node-link hierarchy with balanced spacing.

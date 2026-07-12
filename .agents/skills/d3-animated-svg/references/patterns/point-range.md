@@ -1,6 +1,6 @@
 # Point Range
 
-- **Pattern ID:** `d3-pattern-point-range`
+- **Pattern ID:** `d3-point-range`
 - **Gallery source ID:** `point-range`
 - **Family:** Uncertainty
 - **Use when:** Estimates with confidence intervals by group.

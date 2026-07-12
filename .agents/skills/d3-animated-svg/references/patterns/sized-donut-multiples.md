@@ -1,6 +1,6 @@
 # Sized Donut Multiples
 
-- **Pattern ID:** `d3-pattern-sized-donut-multiples`
+- **Pattern ID:** `d3-sized-donut-multiples`
 - **Gallery source ID:** `sized-donut-multiples`
 - **Family:** Multiples
 - **Use when:** Small radial pies compare share and total size together.

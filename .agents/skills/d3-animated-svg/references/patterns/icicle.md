@@ -1,6 +1,6 @@
 # Icicle
 
-- **Pattern ID:** `d3-pattern-icicle`
+- **Pattern ID:** `d3-icicle`
 - **Gallery source ID:** `icicle`
 - **Family:** Hierarchy
 - **Use when:** Rectangular partition for drilldown paths.

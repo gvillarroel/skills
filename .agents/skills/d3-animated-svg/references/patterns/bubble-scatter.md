@@ -1,6 +1,6 @@
 # Bubble Scatter
 
-- **Pattern ID:** `d3-pattern-bubble-scatter`
+- **Pattern ID:** `d3-bubble-scatter`
 - **Gallery source ID:** `bubble-scatter`
 - **Family:** Correlation
 - **Use when:** Position, radius, and group encoded together.

@@ -2,36 +2,35 @@
   "version": 1,
   "videoId": "skill-convierte-codex-especialista",
   "persistentElement": {
-    "name": "persistent red edge",
-    "role": "Carries the active skill package state and viewer attention across the megacanvas.",
+    "name": "red SKILL packet",
+    "role": "A recognizable red document with a folded white corner and SKILL label that carries reusable workflow identity across scenes.",
     "states": [
-      "prompt pressure",
-      "package edge",
-      "active reference",
-      "resource baseline",
-      "router packet",
-      "validation gate",
-      "context cap",
-      "reusable workflow"
+      "bound repeated instructions",
+      "compact operational package",
+      "active core beside one selected reference",
+      "resource-workbench organizer",
+      "specialist-routing contract",
+      "validated artifact companion",
+      "compact context core",
+      "reusable project skill ready for the next task"
     ]
   },
   "transitions": [
     {
       "id": "t01",
-      "seamId": "s01__s02",
       "fromScene": "s01",
       "toScene": "s02",
       "start": 4.4,
       "duration": 1.2,
       "family": "morph",
-      "semanticPurpose": "Carry the skill package state from prompt wall pressure into the compact skill.md package without resetting attention.",
-      "stateChange": "The persistent red edge changes role from prompt wall pressure to the activation cue for the compact skill.md package.",
-      "attentionHandoff": "The outgoing red edge and incoming focal axis share the same grid intersection at the midpoint.",
-      "styleContinuity": "Hard-edge 0-radius geometry, grayscale hierarchy, Open Sans, and semantic red persist through the seam.",
-      "alignmentRule": "Outgoing red edge and incoming focal target remain grid-locked on a shared axis.",
-      "edgeRule": "All masks, panels, and apertures remain rectangular and 0-radius.",
-      "boxPaddingRule": "All masks, panels, cards, and apertures keep internalPaddingPx 0; content remains flush to bounds.",
-      "grayscaleHierarchyRule": "Primary, secondary, and background roles stay distinct through outgoing, bridge, and incoming states; red only marks semantic state.",
+      "semanticPurpose": "Convert repeated instructions into one reusable operational package without losing the object the viewer just tracked.",
+      "stateChange": "The red SKILL packet changes from a binding around repeated instruction sheets into the labeled package that contains SKILL.md.",
+      "attentionHandoff": "The eye follows the bound sheets from the active-context baseline to the large SKILL.md folder at center.",
+      "styleContinuity": "The red document body, folded white corner, SKILL label, square masks, and hard-edge document geometry remain stable through the midpoint.",
+      "alignmentRule": "The bound-sheet center and incoming package entry point share the horizontal transfer baseline.",
+      "edgeRule": "Document and folder masks remain rectangular, hard-edge, and 0-radius; the folded paper corner is the only source-semantic diagonal.",
+      "boxPaddingRule": "Masks, documents, folders, and apertures keep internalPaddingPx 0; content remains flush to bounds.",
+      "grayscaleHierarchyRule": "Primary, support, and work-surface states retain #696969, #9c9c9c, and #e7e7e7; red marks the workflow identity and full-context warning.",
       "grayscaleHierarchy": [
         {
           "level": 0,
@@ -45,60 +44,49 @@
         },
         {
           "level": 2,
-          "role": "background structure",
+          "role": "work surface",
           "grayHex": "#e7e7e7"
         }
       ],
-      "genericMotionRejected": "A generic fade or slide would lose the tracked package edge and hide the conceptual state change.",
-      "surprise": "The red edge from prompt wall pressure becomes the first active mark in the compact skill.md package.",
-      "outgoingState": "Prompt wall pressure is settled with the red edge visible.",
-      "bridgeAction": "A tile morph keeps the red edge visible while the camera reframes the megacanvas.",
-      "incomingState": "The compact SKILL.md package receives the edge and becomes the dominant mechanism.",
-      "compositionShift": "diagonal armature resolves into centered hero.",
-      "colorShift": "Red semantic state persists; grayscale roles re-balance around the incoming focal.",
-      "cameraShift": "Camera reframes during the first quarter of the incoming scene, then holds for readability.",
-      "spaceShift": "compressed diagonal from prompt strips to the context wall gives way to stacked package centered on the persistent red edge.",
+      "genericMotionRejected": "A generic slide would not show repeated instruction sheets becoming one reusable package.",
+      "surprise": "The burden that filled context binds into the compact red SKILL packet instead of disappearing.",
+      "outgoingState": "The red SKILL packet binds the repeated instruction sheets beside the full active-context tray.",
+      "bridgeAction": "The red SKILL packet closes around the sheets, preserves its red body and folded corner, and crosses the shared baseline.",
+      "incomingState": "The red SKILL packet lands beside the large folder where SKILL.md and its resources are visible.",
+      "compositionShift": "Tri-column repeated-input strip resolves into a centered package hero with a right resource rail.",
+      "colorShift": "Alert red on the full tray yields to the deeper red workflow identity on the package.",
+      "cameraShift": "No ornamental travel; framing cuts only after the packet reaches the package landing point.",
+      "spaceShift": "Repeated project inputs become the exterior source of one reusable folder.",
       "validationFrames": [
         {
-          "time": "4.6s",
-          "target": "s01 outgoing focal and persistent red edge",
-          "passCriterion": "Outgoing hierarchy and tracked edge are visible and unclipped."
-        },
-        {
-          "time": "5.0s",
-          "target": "s01 to s02 transition midpoint",
-          "passCriterion": "The red edge remains visible while the camera crosses the declared grid axis."
-        },
-        {
-          "time": "5.4s",
-          "target": "s02 incoming focal",
-          "passCriterion": "Incoming mechanism owns the first eye landing without overlap or clipping."
+          "time": "transition midpoint",
+          "target": "bound instruction sheets, red SKILL packet, and package entry baseline",
+          "passCriterion": "The same packet is visible with its red body folded corner and SKILL label while the sheets visibly compress into it."
         }
       ],
       "validationChecks": [
         {
-          "method": "three-frame-seam-review",
-          "target": "s01__s02",
-          "passCriterion": "Before, midpoint, and after frames prove persistent-edge continuity and semantic attention handoff."
+          "method": "midpoint-frame-review",
+          "target": "s01__s02 transition midpoint",
+          "passCriterion": "A muted reviewer identifies repeated sheets becoming a skill package and can point to the same red SKILL packet before and after."
         }
       ]
     },
     {
       "id": "t02",
-      "seamId": "s02__s03",
       "fromScene": "s02",
       "toScene": "s03",
       "start": 12.4,
       "duration": 1.2,
       "family": "spatial portal",
-      "semanticPurpose": "Carry the skill package state from the compact skill.md package into progressive disclosure without resetting attention.",
-      "stateChange": "The persistent red edge changes role from the compact skill.md package to the activation cue for progressive disclosure.",
-      "attentionHandoff": "The outgoing red edge and incoming focal axis share the same grid intersection at the midpoint.",
-      "styleContinuity": "Hard-edge 0-radius geometry, grayscale hierarchy, Open Sans, and semantic red persist through the seam.",
-      "alignmentRule": "Outgoing red edge and incoming focal target remain grid-locked on a shared axis.",
-      "edgeRule": "All masks, panels, and apertures remain rectangular and 0-radius.",
-      "boxPaddingRule": "All masks, panels, cards, and apertures keep internalPaddingPx 0; content remains flush to bounds.",
-      "grayscaleHierarchyRule": "Primary, secondary, and background roles stay distinct through outgoing, bridge, and incoming states; red only marks semantic state.",
+      "semanticPurpose": "Move from package contents to the exact reference-loading behavior that the package controls.",
+      "stateChange": "The red SKILL packet changes from closed package identity into the active core that opens one reference path.",
+      "attentionHandoff": "The eye begins on the resource rail and lands on video-validation.md selected beside SKILL.md.",
+      "styleContinuity": "The red packet, file labels, document strokes, square aperture, and grayscale surfaces remain stable.",
+      "alignmentRule": "The resource rail and incoming shelf share one vertical file axis; the packet lands on the SKILL.md core baseline.",
+      "edgeRule": "The resource aperture and document shelf remain rectangular, hard-edge, and 0-radius.",
+      "boxPaddingRule": "Folders, documents, shelf, tray, and aperture keep internalPaddingPx 0; content remains flush to bounds.",
+      "grayscaleHierarchyRule": "Active core, dormant resources, and work surfaces retain #696969, #9c9c9c, and #e7e7e7; red marks selection.",
       "grayscaleHierarchy": [
         {
           "level": 0,
@@ -112,60 +100,49 @@
         },
         {
           "level": 2,
-          "role": "background structure",
+          "role": "work surface",
           "grayHex": "#e7e7e7"
         }
       ],
-      "genericMotionRejected": "A generic fade or slide would lose the tracked package edge and hide the conceptual state change.",
-      "surprise": "The red edge from the compact skill.md package becomes the first active mark in progressive disclosure.",
-      "outgoingState": "The compact SKILL.md package is settled with the red edge visible.",
-      "bridgeAction": "A masked reframing keeps the red edge visible while the camera reframes the megacanvas.",
-      "incomingState": "Progressive disclosure receives the edge and becomes the dominant mechanism.",
-      "compositionShift": "centered hero resolves into asymmetric editorial.",
-      "colorShift": "Red semantic state persists; grayscale roles re-balance around the incoming focal.",
-      "cameraShift": "Camera reframes during the first quarter of the incoming scene, then holds for readability.",
-      "spaceShift": "stacked package centered on the persistent red edge gives way to left core, center active reference, right dormant resource lane.",
+      "genericMotionRejected": "A wipe would hide why one specific reference becomes active while the others remain outside context.",
+      "surprise": "The references folder opens directly into a shelf where only video-validation.md moves.",
+      "outgoingState": "The red SKILL packet sits beside the complete SKILL.md package and its resource rail.",
+      "bridgeAction": "The red SKILL packet opens a square resource aperture; the references folder expands into the visible shelf.",
+      "incomingState": "The red SKILL packet rests at the SKILL.md core while video-validation.md is selected for CONTEXTO ACTIVO.",
+      "compositionShift": "Centered package hero becomes an asymmetric task-core-shelf-tray selection corridor.",
+      "colorShift": "Package red persists and becomes the selection state on the chosen reference.",
+      "cameraShift": "A short push through the resource aperture changes abstraction from package overview to file selection.",
+      "spaceShift": "The folder exterior becomes the interior reference shelf and active-context tray.",
       "validationFrames": [
         {
-          "time": "12.6s",
-          "target": "s02 outgoing focal and persistent red edge",
-          "passCriterion": "Outgoing hierarchy and tracked edge are visible and unclipped."
-        },
-        {
-          "time": "13.0s",
-          "target": "s02 to s03 transition midpoint",
-          "passCriterion": "The red edge remains visible while the camera crosses the declared grid axis."
-        },
-        {
-          "time": "13.4s",
-          "target": "s03 incoming focal",
-          "passCriterion": "Incoming mechanism owns the first eye landing without overlap or clipping."
+          "time": "transition midpoint",
+          "target": "red SKILL packet, square resource aperture, and video-validation.md landing lane",
+          "passCriterion": "The packet remains recognizable and the destination shelf is already visible before the transition completes."
         }
       ],
       "validationChecks": [
         {
-          "method": "three-frame-seam-review",
-          "target": "s02__s03",
-          "passCriterion": "Before, midpoint, and after frames prove persistent-edge continuity and semantic attention handoff."
+          "method": "midpoint-frame-review",
+          "target": "s02__s03 transition midpoint",
+          "passCriterion": "The resource aperture shows the selected-reference destination and the red SKILL packet is visible on both sides."
         }
       ]
     },
     {
       "id": "t03",
-      "seamId": "s03__s04",
       "fromScene": "s03",
       "toScene": "s04",
       "start": 21.4,
       "duration": 1.2,
-      "family": "color handoff",
-      "semanticPurpose": "Carry the skill package state from progressive disclosure into references, scripts, and assets without resetting attention.",
-      "stateChange": "The persistent red edge changes role from progressive disclosure to the activation cue for references, scripts, and assets.",
-      "attentionHandoff": "The outgoing red edge and incoming focal axis share the same grid intersection at the midpoint.",
-      "styleContinuity": "Hard-edge 0-radius geometry, grayscale hierarchy, Open Sans, and semantic red persist through the seam.",
-      "alignmentRule": "Outgoing red edge and incoming focal target remain grid-locked on a shared axis.",
-      "edgeRule": "All masks, panels, and apertures remain rectangular and 0-radius.",
-      "boxPaddingRule": "All masks, panels, cards, and apertures keep internalPaddingPx 0; content remains flush to bounds.",
-      "grayscaleHierarchyRule": "Primary, secondary, and background roles stay distinct through outgoing, bridge, and incoming states; red only marks semantic state.",
+      "family": "match cut",
+      "semanticPurpose": "Turn the selected reference into the first concrete resource-role workstation.",
+      "stateChange": "The red SKILL packet changes from active core beside one reference into the organizer of references, scripts, and assets.",
+      "attentionHandoff": "video-validation.md lands on the same left-column axis where the references CRITERIO station appears.",
+      "styleContinuity": "The packet identity, file strokes, square work surfaces, and tonal hierarchy persist through the cut.",
+      "alignmentRule": "The selected document center match-cuts to the manual center; the active-context bottom axis becomes the workstation completion baseline.",
+      "edgeRule": "Selected document and workstation surfaces remain rectangular, hard-edge, and 0-radius.",
+      "boxPaddingRule": "Document, station, terminal, media frame, and output surfaces keep internalPaddingPx 0; content remains flush to bounds.",
+      "grayscaleHierarchyRule": "Selected document, peer workstations, and background surfaces retain #696969, #9c9c9c, and #e7e7e7; red marks active completion.",
       "grayscaleHierarchy": [
         {
           "level": 0,
@@ -179,60 +156,49 @@
         },
         {
           "level": 2,
-          "role": "background structure",
+          "role": "work surface",
           "grayHex": "#e7e7e7"
         }
       ],
-      "genericMotionRejected": "A generic fade or slide would lose the tracked package edge and hide the conceptual state change.",
-      "surprise": "The red edge from progressive disclosure becomes the first active mark in references, scripts, and assets.",
-      "outgoingState": "Progressive disclosure is settled with the red edge visible.",
-      "bridgeAction": "A surface wipe keeps the red edge visible while the camera reframes the megacanvas.",
-      "incomingState": "References, scripts, and assets receives the edge and becomes the dominant mechanism.",
-      "compositionShift": "asymmetric editorial resolves into modular board.",
-      "colorShift": "Red semantic state persists; grayscale roles re-balance around the incoming focal.",
-      "cameraShift": "Camera reframes during the first quarter of the incoming scene, then holds for readability.",
-      "spaceShift": "left core, center active reference, right dormant resource lane gives way to three equal vertical lanes joined by one baseline.",
+      "genericMotionRejected": "A color wash would not show that the selected reference is now performing the CRITERIO job beside scripts and assets.",
+      "surprise": "The selected file becomes an open manual while two new workstations appear on its shared baseline.",
+      "outgoingState": "The red SKILL packet anchors SKILL.md while video-validation.md rests in active context.",
+      "bridgeAction": "The selected reference holds screen position and opens into the CRITERIO manual; the red SKILL packet shifts to the workbench organizer position.",
+      "incomingState": "The red SKILL packet organizes the manual terminal and media-folder stations before their outputs converge.",
+      "compositionShift": "Asymmetric selection corridor becomes a three-column semantic workbench.",
+      "colorShift": "Selected-reference red becomes the active completion state shared by the three stations.",
+      "cameraShift": "A slight pullback reveals the two peer stations without moving the selected-reference landing point.",
+      "spaceShift": "Active context becomes a production workbench where resources perform distinct jobs.",
       "validationFrames": [
         {
-          "time": "21.6s",
-          "target": "s03 outgoing focal and persistent red edge",
-          "passCriterion": "Outgoing hierarchy and tracked edge are visible and unclipped."
-        },
-        {
-          "time": "22.0s",
-          "target": "s03 to s04 transition midpoint",
-          "passCriterion": "The red edge remains visible while the camera crosses the declared grid axis."
-        },
-        {
-          "time": "22.4s",
-          "target": "s04 incoming focal",
-          "passCriterion": "Incoming mechanism owns the first eye landing without overlap or clipping."
+          "time": "transition midpoint",
+          "target": "selected reference, CRITERIO manual, red SKILL packet, and shared baseline",
+          "passCriterion": "The document-to-manual match is visible and the packet remains recognizable as organizer."
         }
       ],
       "validationChecks": [
         {
-          "method": "three-frame-seam-review",
-          "target": "s03__s04",
-          "passCriterion": "Before, midpoint, and after frames prove persistent-edge continuity and semantic attention handoff."
+          "method": "midpoint-frame-review",
+          "target": "s03__s04 transition midpoint",
+          "passCriterion": "The viewer sees the chosen reference become the first workstation rather than an unrelated new panel."
         }
       ]
     },
     {
       "id": "t04",
-      "seamId": "s04__s05",
       "fromScene": "s04",
       "toScene": "s05",
       "start": 30.4,
       "duration": 1.2,
       "family": "persistent object",
-      "semanticPurpose": "Carry the skill package state from references, scripts, and assets into route each asset to a specialist without resetting attention.",
-      "stateChange": "The persistent red edge changes role from references, scripts, and assets to the activation cue for route each asset to a specialist.",
-      "attentionHandoff": "The outgoing red edge and incoming focal axis share the same grid intersection at the midpoint.",
-      "styleContinuity": "Hard-edge 0-radius geometry, grayscale hierarchy, Open Sans, and semantic red persist through the seam.",
-      "alignmentRule": "Outgoing red edge and incoming focal target remain grid-locked on a shared axis.",
-      "edgeRule": "All masks, panels, and apertures remain rectangular and 0-radius.",
-      "boxPaddingRule": "All masks, panels, cards, and apertures keep internalPaddingPx 0; content remains flush to bounds.",
-      "grayscaleHierarchyRule": "Primary, secondary, and background roles stay distinct through outgoing, bridge, and incoming states; red only marks semantic state.",
+      "semanticPurpose": "Reconfigure completed resource roles into the specialist-routing decision they enable.",
+      "stateChange": "The red SKILL packet changes from workbench organizer into the routing contract attached to the visual-need card.",
+      "attentionHandoff": "The eye holds on the fixed packet while three workstations collapse toward the central producer switch.",
+      "styleContinuity": "The packet stays fixed in screen space; square work surfaces, dark mechanism marks, and grayscale levels persist.",
+      "alignmentRule": "The workbench convergence center and producer-switch center share the same vertical axis; the packet retains a fixed baseline.",
+      "edgeRule": "Workstations, need card, output lanes, and masks remain hard-edge and 0-radius; the semantic switch diamond retains its source shape.",
+      "boxPaddingRule": "Workstations, task card, switch lanes, and output surfaces keep internalPaddingPx 0; content remains flush to bounds.",
+      "grayscaleHierarchyRule": "Completed stations, inactive routes, and work surfaces retain #696969, #9c9c9c, and #e7e7e7; red marks selection and proof.",
       "grayscaleHierarchy": [
         {
           "level": 0,
@@ -246,60 +212,49 @@
         },
         {
           "level": 2,
-          "role": "background structure",
+          "role": "work surface",
           "grayHex": "#e7e7e7"
         }
       ],
-      "genericMotionRejected": "A generic fade or slide would lose the tracked package edge and hide the conceptual state change.",
-      "surprise": "The red edge from references, scripts, and assets becomes the first active mark in route each asset to a specialist.",
-      "outgoingState": "References, scripts, and assets is settled with the red edge visible.",
-      "bridgeAction": "A persistent object keeps the red edge visible while the camera reframes the megacanvas.",
-      "incomingState": "Route each asset to a specialist receives the edge and becomes the dominant mechanism.",
-      "compositionShift": "modular board resolves into flow spine.",
-      "colorShift": "Red semantic state persists; grayscale roles re-balance around the incoming focal.",
-      "cameraShift": "Camera reframes during the first quarter of the incoming scene, then holds for readability.",
-      "spaceShift": "three equal vertical lanes joined by one baseline gives way to single intake, central router, three outcome branches.",
+      "genericMotionRejected": "A generic packet flight would not show resources becoming routing criteria for three different producer outputs.",
+      "surprise": "The workbench result turns into the input card while the same packet remains fixed as the rule set behind the switch.",
+      "outgoingState": "The red SKILL packet organizes three completed resource stations and their VIDEO LISTO result.",
+      "bridgeAction": "The red SKILL packet stays fixed while VIDEO LISTO becomes NECESIDAD VISUAL and the three stations align with three producer outputs.",
+      "incomingState": "The red SKILL packet is attached to the visual-need card beside the Mermaid D3 and ImageGen switchboard.",
+      "compositionShift": "Three-column workbench becomes single intake, central switch, and three stacked output lanes.",
+      "colorShift": "Station completion red becomes the active branch and proof state.",
+      "cameraShift": "Framing remains stable around the packet while surrounding objects reconfigure.",
+      "spaceShift": "Production resources become a decision surface for specialist ownership.",
       "validationFrames": [
         {
-          "time": "30.6s",
-          "target": "s04 outgoing focal and persistent red edge",
-          "passCriterion": "Outgoing hierarchy and tracked edge are visible and unclipped."
-        },
-        {
-          "time": "31.0s",
-          "target": "s04 to s05 transition midpoint",
-          "passCriterion": "The red edge remains visible while the camera crosses the declared grid axis."
-        },
-        {
-          "time": "31.4s",
-          "target": "s05 incoming focal",
-          "passCriterion": "Incoming mechanism owns the first eye landing without overlap or clipping."
+          "time": "transition midpoint",
+          "target": "fixed red SKILL packet, VIDEO LISTO to need-card transformation, and switch center",
+          "passCriterion": "The packet is static and recognizable while the workbench result visibly becomes routing input."
         }
       ],
       "validationChecks": [
         {
-          "method": "three-frame-seam-review",
-          "target": "s04__s05",
-          "passCriterion": "Before, midpoint, and after frames prove persistent-edge continuity and semantic attention handoff."
+          "method": "midpoint-frame-review",
+          "target": "s04__s05 transition midpoint",
+          "passCriterion": "The persistent packet stays fixed and the viewer can identify the resource result becoming a specialist request."
         }
       ]
     },
     {
       "id": "t05",
-      "seamId": "s05__s06",
       "fromScene": "s05",
       "toScene": "s06",
       "start": 40.4,
       "duration": 1.2,
-      "family": "interrupt",
-      "semanticPurpose": "Carry the skill package state from route each asset to a specialist into validation is a gate without resetting attention.",
-      "stateChange": "The persistent red edge changes role from route each asset to a specialist to the activation cue for validation is a gate.",
-      "attentionHandoff": "The outgoing red edge and incoming focal axis share the same grid intersection at the midpoint.",
-      "styleContinuity": "Hard-edge 0-radius geometry, grayscale hierarchy, Open Sans, and semantic red persist through the seam.",
-      "alignmentRule": "Outgoing red edge and incoming focal target remain grid-locked on a shared axis.",
-      "edgeRule": "All masks, panels, and apertures remain rectangular and 0-radius.",
-      "boxPaddingRule": "All masks, panels, cards, and apertures keep internalPaddingPx 0; content remains flush to bounds.",
-      "grayscaleHierarchyRule": "Primary, secondary, and background roles stay distinct through outgoing, bridge, and incoming states; red only marks semantic state.",
+      "family": "persistent object",
+      "semanticPurpose": "Carry the selected specialist artifact directly into consequential validation.",
+      "stateChange": "The red SKILL packet changes from routing contract into a validation companion attached to the chosen artifact.",
+      "attentionHandoff": "The eye follows the selected output from its producer lane onto the inspection conveyor at the same vertical level.",
+      "styleContinuity": "Artifact preview, packet identity, hard-edge frames, proof mark, and tonal hierarchy remain stable.",
+      "alignmentRule": "The chosen output center and incoming artifact center share the horizontal conveyor baseline.",
+      "edgeRule": "Output preview, artifact, conveyor, checkpoints, and masks remain rectangular, hard-edge, and 0-radius.",
+      "boxPaddingRule": "Output, artifact, conveyor, checkpoint, and correction surfaces keep internalPaddingPx 0; content remains flush to bounds.",
+      "grayscaleHierarchyRule": "Selected output, support checkpoints, and work surfaces retain #696969, #9c9c9c, and #e7e7e7; red marks active path and later rejection.",
       "grayscaleHierarchy": [
         {
           "level": 0,
@@ -313,60 +268,49 @@
         },
         {
           "level": 2,
-          "role": "background structure",
+          "role": "work surface",
           "grayHex": "#e7e7e7"
         }
       ],
-      "genericMotionRejected": "A generic fade or slide would lose the tracked package edge and hide the conceptual state change.",
-      "surprise": "The red edge from route each asset to a specialist becomes the first active mark in validation is a gate.",
-      "outgoingState": "Route each asset to a specialist is settled with the red edge visible.",
-      "bridgeAction": "A interrupt gate snap keeps the red edge visible while the camera reframes the megacanvas.",
-      "incomingState": "Validation is a gate receives the edge and becomes the dominant mechanism.",
-      "compositionShift": "flow spine resolves into flow corridor.",
-      "colorShift": "Red semantic state persists; grayscale roles re-balance around the incoming focal.",
-      "cameraShift": "Camera reframes during the first quarter of the incoming scene, then holds for readability.",
-      "spaceShift": "single intake, central router, three outcome branches gives way to horizontal verification corridor with one rejection loop.",
+      "genericMotionRejected": "A hard cut would disconnect the specialist result from the artifact being inspected and make validation feel ceremonial.",
+      "surprise": "The checked producer output does not finish the story; it immediately becomes the artifact entering validation.",
+      "outgoingState": "The red SKILL packet sits with the selected Mermaid D3 or ImageGen output and its proof mark.",
+      "bridgeAction": "The selected output and red SKILL packet travel together across the seam and land on the inspection conveyor.",
+      "incomingState": "The red SKILL packet accompanies the recognizable video artifact before the RUTA ESTRUCTURA CONTENIDO and VISUAL checks.",
+      "compositionShift": "Branching producer switchboard resolves into a horizontal inspection conveyor.",
+      "colorShift": "Producer-selection red becomes validation-path red; alert red is reserved for the later defect.",
+      "cameraShift": "A lateral follow keeps the artifact centered while the producer lanes leave frame and checkpoints enter.",
+      "spaceShift": "Producer output space becomes quality-control space without resetting the tracked artifact.",
       "validationFrames": [
         {
-          "time": "40.6s",
-          "target": "s05 outgoing focal and persistent red edge",
-          "passCriterion": "Outgoing hierarchy and tracked edge are visible and unclipped."
-        },
-        {
-          "time": "41.0s",
-          "target": "s05 to s06 transition midpoint",
-          "passCriterion": "The red edge remains visible while the camera crosses the declared grid axis."
-        },
-        {
-          "time": "41.4s",
-          "target": "s06 incoming focal",
-          "passCriterion": "Incoming mechanism owns the first eye landing without overlap or clipping."
+          "time": "transition midpoint",
+          "target": "selected artifact, attached red SKILL packet, and conveyor landing baseline",
+          "passCriterion": "Artifact and packet are visible together and the first validation checkpoint is already present."
         }
       ],
       "validationChecks": [
         {
-          "method": "three-frame-seam-review",
-          "target": "s05__s06",
-          "passCriterion": "Before, midpoint, and after frames prove persistent-edge continuity and semantic attention handoff."
+          "method": "midpoint-frame-review",
+          "target": "s05__s06 transition midpoint",
+          "passCriterion": "The same selected artifact and red SKILL packet cross into validation with no attention reset."
         }
       ]
     },
     {
       "id": "t06",
-      "seamId": "s06__s07",
       "fromScene": "s06",
       "toScene": "s07",
       "start": 50.4,
       "duration": 1.2,
-      "family": "match cut",
-      "semanticPurpose": "Carry the skill package state from validation is a gate into compact core, detail on demand without resetting attention.",
-      "stateChange": "The persistent red edge changes role from validation is a gate to the activation cue for compact core, detail on demand.",
-      "attentionHandoff": "The outgoing red edge and incoming focal axis share the same grid intersection at the midpoint.",
-      "styleContinuity": "Hard-edge 0-radius geometry, grayscale hierarchy, Open Sans, and semantic red persist through the seam.",
-      "alignmentRule": "Outgoing red edge and incoming focal target remain grid-locked on a shared axis.",
-      "edgeRule": "All masks, panels, and apertures remain rectangular and 0-radius.",
-      "boxPaddingRule": "All masks, panels, cards, and apertures keep internalPaddingPx 0; content remains flush to bounds.",
-      "grayscaleHierarchyRule": "Primary, secondary, and background roles stay distinct through outgoing, bridge, and incoming states; red only marks semantic state.",
+      "family": "color handoff",
+      "semanticPurpose": "Turn the validated packet into the compact core used in the context comparison.",
+      "stateChange": "The red SKILL packet changes from approved artifact companion into the compact SKILL.md core loaded on demand.",
+      "attentionHandoff": "The approval mark and packet share the landing point of the right-hand SKILL BAJO DEMANDA tray.",
+      "styleContinuity": "Packet identity, approval stroke, square tray geometry, and grayscale levels persist through the match.",
+      "alignmentRule": "The approved packet center match-cuts along a shared axis to the NÚCLEO SKILL.md block center on the right comparison half.",
+      "edgeRule": "Approval block, packet, context trays, and comparison masks remain rectangular, hard-edge, and 0-radius.",
+      "boxPaddingRule": "Approval, packet, tray, comparison, and warning surfaces keep internalPaddingPx 0; content remains flush to bounds.",
+      "grayscaleHierarchyRule": "Approved packet, supporting detail, and tray surfaces retain #696969, #9c9c9c, and #e7e7e7; red marks active skill and caveat.",
       "grayscaleHierarchy": [
         {
           "level": 0,
@@ -380,60 +324,49 @@
         },
         {
           "level": 2,
-          "role": "background structure",
+          "role": "work surface",
           "grayHex": "#e7e7e7"
         }
       ],
-      "genericMotionRejected": "A generic fade or slide would lose the tracked package edge and hide the conceptual state change.",
-      "surprise": "The red edge from validation is a gate becomes the first active mark in compact core, detail on demand.",
-      "outgoingState": "Validation is a gate is settled with the red edge visible.",
-      "bridgeAction": "A match cut axis keeps the red edge visible while the camera reframes the megacanvas.",
-      "incomingState": "Compact core, detail on demand receives the edge and becomes the dominant mechanism.",
-      "compositionShift": "flow corridor resolves into split comparison.",
-      "colorShift": "Red semantic state persists; grayscale roles re-balance around the incoming focal.",
-      "cameraShift": "Camera reframes during the first quarter of the incoming scene, then holds for readability.",
-      "spaceShift": "horizontal verification corridor with one rejection loop gives way to two aligned horizontal budget bars with a shared scale.",
+      "genericMotionRejected": "A pulse would not explain that the validated packet is the same compact core being compared against an always-on prompt.",
+      "surprise": "The validation approval block becomes the NÚCLEO SKILL.md block inside the on-demand context tray.",
+      "outgoingState": "The red SKILL packet and corrected artifact have reached LISTO after all four checks.",
+      "bridgeAction": "The approval state contracts around the red SKILL packet and match-cuts into the right-hand core block.",
+      "incomingState": "The red SKILL packet appears as NÚCLEO SKILL.md beside one selected detail with free context still visible.",
+      "compositionShift": "Horizontal inspection conveyor becomes an axis-locked split comparison.",
+      "colorShift": "Approval red becomes the active-skill identity; alert red later marks the inflated-skill caveat.",
+      "cameraShift": "A short pullback reveals the paired context trays after the packet lands on the right.",
+      "spaceShift": "Quality-control space becomes a capacity comparison while preserving the approved workflow object.",
       "validationFrames": [
         {
-          "time": "50.6s",
-          "target": "s06 outgoing focal and persistent red edge",
-          "passCriterion": "Outgoing hierarchy and tracked edge are visible and unclipped."
-        },
-        {
-          "time": "51.0s",
-          "target": "s06 to s07 transition midpoint",
-          "passCriterion": "The red edge remains visible while the camera crosses the declared grid axis."
-        },
-        {
-          "time": "51.4s",
-          "target": "s07 incoming focal",
-          "passCriterion": "Incoming mechanism owns the first eye landing without overlap or clipping."
+          "time": "transition midpoint",
+          "target": "approved red SKILL packet, NÚCLEO landing block, and paired tray baseline",
+          "passCriterion": "The packet remains visible and its approval state clearly becomes the compact core."
         }
       ],
       "validationChecks": [
         {
-          "method": "three-frame-seam-review",
-          "target": "s06__s07",
-          "passCriterion": "Before, midpoint, and after frames prove persistent-edge continuity and semantic attention handoff."
+          "method": "midpoint-frame-review",
+          "target": "s06__s07 transition midpoint",
+          "passCriterion": "The reviewer can connect validation approval to the compact on-demand SKILL.md core."
         }
       ]
     },
     {
       "id": "t07",
-      "seamId": "s07__s08",
       "fromScene": "s07",
       "toScene": "s08",
       "start": 60.4,
       "duration": 1.2,
       "family": "camera move",
-      "semanticPurpose": "Carry the skill package state from compact core, detail on demand into reusable workflow callback without resetting attention.",
-      "stateChange": "The persistent red edge changes role from compact core, detail on demand to the activation cue for reusable workflow callback.",
-      "attentionHandoff": "The outgoing red edge and incoming focal axis share the same grid intersection at the midpoint.",
-      "styleContinuity": "Hard-edge 0-radius geometry, grayscale hierarchy, Open Sans, and semantic red persist through the seam.",
-      "alignmentRule": "Outgoing red edge and incoming focal target remain grid-locked on a shared axis.",
-      "edgeRule": "All masks, panels, and apertures remain rectangular and 0-radius.",
-      "boxPaddingRule": "All masks, panels, cards, and apertures keep internalPaddingPx 0; content remains flush to bounds.",
-      "grayscaleHierarchyRule": "Primary, secondary, and background roles stay distinct through outgoing, bridge, and incoming states; red only marks semantic state.",
+      "semanticPurpose": "Reveal that the compact packet can reactivate across several project surfaces.",
+      "stateChange": "The red SKILL packet changes from compact context core into the reusable central skill ready to serve four projects.",
+      "attentionHandoff": "The eye stays on the right-hand packet while framing pulls back and the packet becomes the center of the four-surface workbench.",
+      "styleContinuity": "Packet identity, hard-edge project surfaces, square routes, and tonal hierarchy remain stable.",
+      "alignmentRule": "The right-tray packet center moves to the central folder axis; four project surfaces land on symmetric quadrant anchors.",
+      "edgeRule": "Context trays, central folder, project surfaces, and masks remain rectangular, hard-edge, and 0-radius; semantic paper folds persist.",
+      "boxPaddingRule": "Tray, packet, folder, project, and completion surfaces keep internalPaddingPx 0; content remains flush to bounds.",
+      "grayscaleHierarchyRule": "Central skill, project surfaces, and work field retain #696969, #9c9c9c, and #e7e7e7; red marks activation.",
       "grayscaleHierarchy": [
         {
           "level": 0,
@@ -447,41 +380,31 @@
         },
         {
           "level": 2,
-          "role": "background structure",
+          "role": "work surface",
           "grayHex": "#e7e7e7"
         }
       ],
-      "genericMotionRejected": "A generic fade or slide would lose the tracked package edge and hide the conceptual state change.",
-      "surprise": "The red edge from compact core, detail on demand becomes the first active mark in reusable workflow callback.",
-      "outgoingState": "Compact core, detail on demand is settled with the red edge visible.",
-      "bridgeAction": "A zoom out to system keeps the red edge visible while the camera reframes the megacanvas.",
-      "incomingState": "Reusable workflow callback receives the edge and becomes the dominant mechanism.",
-      "compositionShift": "split comparison resolves into radial hub.",
-      "colorShift": "Red semantic state persists; grayscale roles re-balance around the incoming focal.",
-      "cameraShift": "Camera reframes during the first quarter of the incoming scene, then holds for readability.",
-      "spaceShift": "two aligned horizontal budget bars with a shared scale gives way to central skill package connected to four project surfaces.",
+      "genericMotionRejected": "A radial wipe would not show that the exact compact packet leaves one context and becomes reusable across four concrete projects.",
+      "surprise": "The free space around the on-demand tray expands into four recognizable project surfaces around the same packet.",
+      "outgoingState": "The red SKILL packet rests in the SKILL BAJO DEMANDA tray beside one selected detail and visible free context.",
+      "bridgeAction": "Framing pulls back around the red SKILL packet; the comparison boundaries recede and four project surfaces enter at quadrant anchors.",
+      "incomingState": "The red SKILL packet sits at the center of REPO PR TERMINAL DOCS and NAVEGADOR surfaces ready to reactivate.",
+      "compositionShift": "Axis-locked split comparison becomes a four-surface reuse hub.",
+      "colorShift": "On-demand active red becomes the activation state repeated at each project surface.",
+      "cameraShift": "A real abstraction change pulls from one context tray to a multi-project system view and then settles.",
+      "spaceShift": "Single-task context becomes a reusable project library and activation surface.",
       "validationFrames": [
         {
-          "time": "60.6s",
-          "target": "s07 outgoing focal and persistent red edge",
-          "passCriterion": "Outgoing hierarchy and tracked edge are visible and unclipped."
-        },
-        {
-          "time": "61.0s",
-          "target": "s07 to s08 transition midpoint",
-          "passCriterion": "The red edge remains visible while the camera crosses the declared grid axis."
-        },
-        {
-          "time": "61.4s",
-          "target": "s08 incoming focal",
-          "passCriterion": "Incoming mechanism owns the first eye landing without overlap or clipping."
+          "time": "transition midpoint",
+          "target": "red SKILL packet, receding right tray, and arriving project quadrants",
+          "passCriterion": "The packet remains the first eye landing while at least two recognizable project surfaces are already visible."
         }
       ],
       "validationChecks": [
         {
-          "method": "three-frame-seam-review",
-          "target": "s07__s08",
-          "passCriterion": "Before, midpoint, and after frames prove persistent-edge continuity and semantic attention handoff."
+          "method": "midpoint-frame-review",
+          "target": "s07__s08 transition midpoint",
+          "passCriterion": "The camera move changes abstraction from active context to project reuse and preserves the same red SKILL packet."
         }
       ]
     }

@@ -1,6 +1,6 @@
 # Sketchy Treemap
 
-- **Pattern ID:** `d3-pattern-sketchy-treemap`
+- **Pattern ID:** `d3-sketchy-treemap`
 - **Gallery source ID:** `sketchy-treemap`
 - **Family:** Sketchy
 - **Use when:** A treemap keeps exact rectangular allocation but draws each cell as a rough marker block.

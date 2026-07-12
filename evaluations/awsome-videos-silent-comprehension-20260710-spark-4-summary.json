@@ -1,0 +1,242 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f4bf5-e791-7ee1-b343-1383f10de7be",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\awsome-videos-silent-comprehension-20260710-spark-4\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 12
+  },
+  "providers": {
+    "openai-codex": 12
+  },
+  "usageTotals": {
+    "input": 20836,
+    "output": 11389,
+    "cacheRead": 117376,
+    "cacheWrite": 0,
+    "totalTokens": 149601
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 7,
+    "write": 4,
+    "edit": 1,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "outputs/brief-validation.json",
+      "calls": 4,
+      "resultBytes": 3045
+    },
+    {
+      "path": "outputs/idempotency-brief.md",
+      "calls": 3,
+      "resultBytes": 14189
+    },
+    {
+      "path": "outputs/silent-review-plan.json",
+      "calls": 2,
+      "resultBytes": 4926
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1909
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 12855
+    },
+    {
+      "path": "skills/awsome-videos/assets/templates/brief-template.md",
+      "calls": 1,
+      "resultBytes": 5579
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/brief-validation.json",
+      "calls": 2,
+      "resultBytes": 2836
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1909
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1,
+      "resultBytes": 12855
+    },
+    {
+      "path": "skills/awsome-videos/assets/templates/brief-template.md",
+      "calls": 1,
+      "resultBytes": 5579
+    },
+    {
+      "path": "outputs/idempotency-brief.md",
+      "calls": 1,
+      "resultBytes": 8246
+    },
+    {
+      "path": "outputs/silent-review-plan.json",
+      "calls": 1,
+      "resultBytes": 4819
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "outputs/brief-validation.json",
+      "calls": 2
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/awsome-videos/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/awsome-videos/assets/templates/brief-template.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/idempotency-brief.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/silent-review-plan.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 36244,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1909
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/awsome-videos/SKILL.md",
+      "policyPath": "skills/awsome-videos/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 12855
+    },
+    {
+      "line": 40,
+      "tool": "read",
+      "path": "skills/awsome-videos/assets/templates/brief-template.md",
+      "policyPath": "skills/awsome-videos/assets/templates/brief-template.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5579
+    },
+    {
+      "line": 53,
+      "tool": "write",
+      "path": "outputs/idempotency-brief.md",
+      "policyPath": "outputs/idempotency-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 104
+    },
+    {
+      "line": 66,
+      "tool": "edit",
+      "path": "outputs/idempotency-brief.md",
+      "policyPath": "outputs/idempotency-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5839
+    },
+    {
+      "line": 79,
+      "tool": "write",
+      "path": "outputs/silent-review-plan.json",
+      "policyPath": "outputs/silent-review-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 107
+    },
+    {
+      "line": 94,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/awsome-videos/scripts/check_video_brief.py outputs/idempotency-brief.md --require-voiceover --require-source-links --json",
+      "isError": false,
+      "resultBytes": 2242
+    },
+    {
+      "line": 107,
+      "tool": "write",
+      "path": "outputs/brief-validation.json",
+      "policyPath": "outputs/brief-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 104
+    },
+    {
+      "line": 120,
+      "tool": "read",
+      "path": "outputs/brief-validation.json",
+      "policyPath": "outputs/brief-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 754
+    },
+    {
+      "line": 133,
+      "tool": "write",
+      "path": "outputs/brief-validation.json",
+      "policyPath": "outputs/brief-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 105
+    },
+    {
+      "line": 154,
+      "tool": "read",
+      "path": "outputs/idempotency-brief.md",
+      "policyPath": "outputs/idempotency-brief.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8246
+    },
+    {
+      "line": 155,
+      "tool": "read",
+      "path": "outputs/brief-validation.json",
+      "policyPath": "outputs/brief-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2082
+    },
+    {
+      "line": 156,
+      "tool": "read",
+      "path": "outputs/silent-review-plan.json",
+      "policyPath": "outputs/silent-review-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4819
+    }
+  ],
+  "findings": []
+}

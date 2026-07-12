@@ -11,6 +11,8 @@ const { beats, concepts, palette, researchNotes } = await import(pathToFileURL(j
 const errors = [];
 const beatIds = beats.map((beat) => beat.id);
 const paletteValues = new Set(Object.values(palette));
+const patternIds = new Set();
+const canonicalPatternId = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 function assert(condition, message) {
   if (!condition) errors.push(message);
@@ -20,6 +22,11 @@ assert(concepts.length === 11, `Expected 11 concepts, found ${concepts.length}.`
 assert(researchNotes.length >= 10, "Expected at least 10 current research notes.");
 
 for (const concept of concepts) {
+  assert(canonicalPatternId.test(concept.patternId), `${concept.id}: patternId must be lowercase hyphen-case.`);
+  assert(concept.patternId.startsWith("ai-"), `${concept.id}: patternId must use the ai namespace.`);
+  assert(concept.patternId.length <= 64, `${concept.id}: patternId must be 64 characters or fewer.`);
+  assert(!patternIds.has(concept.patternId), `${concept.id}: duplicate patternId ${concept.patternId}.`);
+  patternIds.add(concept.patternId);
   assert(concept.runtimeSeconds === 120, `${concept.id}: runtimeSeconds must be 120.`);
   assert(concept.scenes.length === beats.length, `${concept.id}: expected ${beats.length} scenes.`);
   assert(JSON.stringify(concept.scenes.map((scene) => scene.beat)) === JSON.stringify(beatIds), `${concept.id}: scenes must match the standard beat order.`);
@@ -46,4 +53,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Validated ${concepts.length} AI concept videos, ${beats.length} beats, and ${researchNotes.length} research notes.`);
+console.log(`Validated ${concepts.length} AI concept videos, ${patternIds.size} canonical pattern IDs, ${beats.length} beats, and ${researchNotes.length} research notes.`);

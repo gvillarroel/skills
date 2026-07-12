@@ -357,15 +357,15 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-dependency-blast-radius" data-pattern-id="d3-pattern-critical-dependency-blast-radius"
+  <svg id="dependency-blast-radius" data-pattern-id="d3-dependency-blast-radius"
     data-pattern-family="critical-dependency" data-node-count="{len(NODES)}"
     data-link-count="{len(LINKS)}" data-critical-link-count="{len(critical_links)}"
     data-impact-count="{impacts}" data-ring-count="{len(RINGS)}"
     data-tier-label-count="{len(TIER_LABELS)}" data-failover-count="{len(FAILOVERS)}"
     data-status-card-count="{len(STATUS_CARDS)}" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-dependency-blast-radius-title critical-dependency-blast-radius-desc">
-    <title id="critical-dependency-blast-radius-title">Critical dependency blast radius</title>
-    <desc id="critical-dependency-blast-radius-desc">A deterministic service dependency map shows a degraded checkout API, a failing payments dependency, affected surfaces, blast-radius rings, failover paths, and animated propagation pulses.</desc>
+    aria-labelledby="dependency-blast-radius-title dependency-blast-radius-desc">
+    <title id="dependency-blast-radius-title">Critical dependency blast radius</title>
+    <desc id="dependency-blast-radius-desc">A deterministic service dependency map shows a degraded checkout API, a failing payments dependency, affected surfaces, blast-radius rings, failover paths, and animated propagation pulses.</desc>
     <defs>
       <clipPath id="blast-field-clip">
         <rect x="58" y="108" width="930" height="408" rx="0"/>

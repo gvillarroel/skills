@@ -1,6 +1,6 @@
 # Scatterplot Matrix
 
-- **Pattern ID:** `d3-pattern-scatterplot-matrix`
+- **Pattern ID:** `d3-scatterplot-matrix`
 - **Gallery source ID:** `scatterplot-matrix`
 - **Family:** Multivariate
 - **Use when:** Pairwise relationships fill a compact grid of panels.

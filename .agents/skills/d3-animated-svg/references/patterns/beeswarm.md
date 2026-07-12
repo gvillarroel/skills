@@ -1,6 +1,6 @@
 # Beeswarm
 
-- **Pattern ID:** `d3-pattern-beeswarm`
+- **Pattern ID:** `d3-beeswarm`
 - **Gallery source ID:** `beeswarm`
 - **Family:** Distribution
 - **Use when:** Individual observations settle into grouped swarms.

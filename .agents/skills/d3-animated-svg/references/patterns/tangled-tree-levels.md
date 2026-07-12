@@ -1,6 +1,6 @@
 # Tangled Tree Levels
 
-- **Pattern ID:** `d3-pattern-tangled-tree-levels`
+- **Pattern ID:** `d3-tangled-tree-levels`
 - **Gallery source ID:** `tangled-tree-levels`
 - **Family:** Hierarchy
 - **Use when:** A multi-parent DAG draws one hierarchy level at a time.

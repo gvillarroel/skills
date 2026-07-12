@@ -14,7 +14,7 @@ Expose these fields when the variant appears in a gallery card:
 
 - `data-composition-id`: target composition ID.
 - `data-example-id`: source example ID.
-- `data-pattern-id`: stable base pattern ID, usually `d3-pattern-<source-id>`.
+- `data-pattern-id`: stable base pattern ID, usually `d3-<source-id>`.
 - `data-composition-pattern-id`: stable variant ID.
 
 When the user gives only a pattern family or source ID, build a small representative structure that preserves the family semantics instead of searching a gallery fixture. For example, a force-network placeholder should remain a node-link graph with at least seven nodes and enough links to show clusters, bridges, and the requested armature.

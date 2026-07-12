@@ -1,6 +1,6 @@
 # Parallel Coordinates
 
-- **Pattern ID:** `d3-pattern-parallel-coordinates`
+- **Pattern ID:** `d3-parallel-coordinates`
 - **Gallery source ID:** `parallel-coordinates`
 - **Family:** Multivariate
 - **Use when:** Many-dimensional profiles as polylines.

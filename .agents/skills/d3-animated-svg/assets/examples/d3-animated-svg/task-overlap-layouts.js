@@ -2,8 +2,8 @@
 // Edit the generator, then rerun it instead of hand-editing this file.
 window.D3_TASK_OVERLAP_LAYOUTS = {
   "saturated": {
-    "id": "asymmetric-task-overlap-saturated",
-    "patternId": "d3-pattern-asymmetric-task-overlap-saturated",
+    "id": "task-overlap-dense",
+    "patternId": "d3-task-overlap-dense",
     "labelAlgorithm": "external-lane-gutter-anneal",
     "seed": 20260624,
     "width": 880,

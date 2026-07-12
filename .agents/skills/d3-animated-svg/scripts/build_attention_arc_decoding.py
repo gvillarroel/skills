@@ -146,7 +146,7 @@ def build_html() -> str:
 
     svg = dedent(
         f"""\
-        <svg id="attention-arc-decoding" data-pattern-id="d3-pattern-attention-arc-decoding" role="img"
+        <svg id="attention-arc-decoding" data-pattern-id="d3-attention-arc-decoding" role="img"
              aria-labelledby="attention-arc-decoding-title attention-arc-decoding-desc" viewBox="0 0 {width} {height}"
              width="{width}" height="{height}" xmlns="http://www.w3.org/2000/svg">
           <title id="attention-arc-decoding-title">Attention arc decoding</title>

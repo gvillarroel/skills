@@ -1,6 +1,6 @@
 # Solar Path
 
-- **Pattern ID:** `d3-pattern-solar-path`
+- **Pattern ID:** `d3-solar-path`
 - **Gallery source ID:** `solar-path`
 - **Family:** Astronomy
 - **Use when:** Seasonal sun arcs cross a local horizon diagram.

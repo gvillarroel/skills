@@ -90,7 +90,7 @@
         "leftField": "cache hit lane",
         "rightField": "origin fallback lane"
       },
-      "armature": "d3-composition-flow-spine-router-branch",
+      "armature": "d3-composition-flow-router-branch",
       "layout": "Cache lane left, origin lane right, decision point top center",
       "hierarchy": "Moving request token first, lane outcomes second",
       "safeZones": "Lane labels stay above caption-safe band",
@@ -189,7 +189,7 @@
         "supporting": "D3 radial checklist arcs",
         "background": "quiet structural grid"
       },
-      "armature": "d3-composition-radial-rosette-rollout-checklist",
+      "armature": "d3-composition-radial-rollout-checklist",
       "layout": "CTA in upper-middle, checklist ticks below, bottom band clear",
       "hierarchy": "CTA first, ticks second",
       "safeZones": "CTA remains above y=560",

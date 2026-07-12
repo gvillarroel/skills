@@ -1,6 +1,6 @@
 # Flow Tokens
 
-- **Pattern ID:** `d3-pattern-flow-tokens`
+- **Pattern ID:** `d3-flow-tokens`
 - **Gallery source ID:** `flow-tokens`
 - **Family:** Flow
 - **Use when:** Moving particles reveal direction and cadence.

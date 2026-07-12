@@ -1,6 +1,6 @@
 # Paged KV Cache
 
-- **Pattern ID:** `d3-pattern-paged-kv-cache`
+- **Pattern ID:** `d3-paged-kv-cache`
 - **Gallery source ID:** `paged-kv-cache`
 - **Family:** Inference
 - **Use when:** Concurrent requests allocate fixed KV pages and reuse freed blocks.

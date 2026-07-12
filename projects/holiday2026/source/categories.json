@@ -1,0 +1,134 @@
+[
+  {
+    "id": "family-restaurants",
+    "order": 1,
+    "name": "Family Restaurants",
+    "short_name": "Restaurants",
+    "video_slug": "01-family-restaurants",
+    "accent": "#9C4837",
+    "accent_soft": "#F2D8D0",
+    "icon": "fork-knife",
+    "promise": "Find dependable family meals close to home, then widen the radius only for genuinely distinctive food."
+  },
+  {
+    "id": "bakeries-cafes-desserts",
+    "order": 2,
+    "name": "Bakeries, Cafes & Desserts",
+    "short_name": "Bakeries",
+    "video_slug": "02-bakeries-cafes-desserts",
+    "accent": "#8A5A20",
+    "accent_soft": "#F3E3C8",
+    "icon": "cupcake",
+    "promise": "Turn a short snack stop into a memorable family outing with pastries, coffee, ice cream and international sweets."
+  },
+  {
+    "id": "museums-science-history",
+    "order": 3,
+    "name": "Museums, Science & History",
+    "short_name": "Museums",
+    "video_slug": "03-museums-science-history",
+    "accent": "#1F6E67",
+    "accent_soft": "#D8ECE7",
+    "icon": "museum",
+    "promise": "Prioritize hands-on learning, strong visual exhibits and enough depth to keep adults and children engaged together."
+  },
+  {
+    "id": "arts-culture-spiritual-heritage",
+    "order": 4,
+    "name": "Arts, Culture, Spiritual Sites & Heritage",
+    "short_name": "Culture",
+    "video_slug": "04-arts-culture-spiritual-heritage",
+    "accent": "#6D4C7D",
+    "accent_soft": "#E7DDEE",
+    "icon": "palette",
+    "promise": "Discover art, architecture, living traditions and respectful visitor experiences across metro Atlanta and north Georgia."
+  },
+  {
+    "id": "family-attractions-indoor-play",
+    "order": 5,
+    "name": "Family Attractions & Indoor Play",
+    "short_name": "Indoor Play",
+    "video_slug": "05-family-attractions-indoor-play",
+    "accent": "#246B8A",
+    "accent_soft": "#D9EBF2",
+    "icon": "spark",
+    "promise": "Keep high-energy alternatives ready for heat and rain, with options for mixed ages and different comfort levels."
+  },
+  {
+    "id": "geek-tech-anime-games-comics-vinyl",
+    "order": 6,
+    "name": "Geek, Tech, Anime, Games, Comics & Vinyl",
+    "short_name": "Geek & Tech",
+    "video_slug": "06-geek-tech-anime-games-comics-vinyl",
+    "accent": "#485C9B",
+    "accent_soft": "#DEE3F4",
+    "icon": "gamepad",
+    "promise": "Map the best places for computers, arcades, manga, tabletop games, comics, records and collectible hunting."
+  },
+  {
+    "id": "parks-hiking-lakes-nature",
+    "order": 7,
+    "name": "Parks, Hiking, Lakes & Nature",
+    "short_name": "Nature",
+    "video_slug": "07-parks-hiking-lakes-nature",
+    "accent": "#3E6B4F",
+    "accent_soft": "#DDE9DF",
+    "icon": "mountain",
+    "promise": "Balance nearby trails and lake days with a few exceptional north Georgia landscapes worth the longer drive."
+  },
+  {
+    "id": "adventure-water-animals-farms",
+    "order": 8,
+    "name": "Adventure, Water, Animals & Farms",
+    "short_name": "Adventure",
+    "video_slug": "08-adventure-water-animals-farms",
+    "accent": "#2D6F83",
+    "accent_soft": "#D9E9ED",
+    "icon": "kayak",
+    "promise": "Add first-time experiences through tubing, paddling, climbing, wildlife encounters and farm visits."
+  },
+  {
+    "id": "shopping-markets-outlets",
+    "order": 9,
+    "name": "Shopping, Markets & Outlets",
+    "short_name": "Shopping",
+    "video_slug": "09-shopping-markets-outlets",
+    "accent": "#9B4668",
+    "accent_soft": "#F1DDE5",
+    "icon": "shopping-bag",
+    "promise": "Separate useful destination shopping from ordinary retail by rewarding variety, local character and family add-ons."
+  },
+  {
+    "id": "sports-live-games",
+    "order": 10,
+    "name": "Sports & Live Games",
+    "short_name": "Sports",
+    "video_slug": "10-sports-live-games",
+    "accent": "#9B3D46",
+    "accent_soft": "#F2D9DB",
+    "icon": "ball",
+    "promise": "Catch rare live games now, then keep active sports experiences ready for any free afternoon."
+  },
+  {
+    "id": "events-festivals-live-shows",
+    "order": 11,
+    "name": "Events, Festivals & Live Shows",
+    "short_name": "Events",
+    "video_slug": "11-events-festivals-live-shows",
+    "accent": "#8C3A67",
+    "accent_soft": "#F0DBE6",
+    "icon": "ticket",
+    "promise": "Prioritize the unexpired July vacation window and clearly separate later 2026 highlights."
+  },
+  {
+    "id": "day-trips-unusual-experiences",
+    "order": 12,
+    "name": "Day Trips & Unusual Experiences",
+    "short_name": "Day Trips",
+    "video_slug": "12-day-trips-unusual-experiences",
+    "accent": "#67546E",
+    "accent_soft": "#E5DFE8",
+    "icon": "compass",
+    "promise": "Use the longer drive only when the destination creates a full-day memory that cannot be replicated near Cumming."
+  }
+]

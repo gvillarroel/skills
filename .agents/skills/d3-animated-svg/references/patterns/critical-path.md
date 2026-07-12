@@ -1,6 +1,6 @@
 # Critical Path DAG
 
-- **Pattern ID:** `d3-pattern-critical-path`
+- **Pattern ID:** `d3-critical-path`
 - **Gallery source ID:** `critical-path`
 - **Family:** Flow
 - **Use when:** Weighted dependencies reveal the bottleneck route.

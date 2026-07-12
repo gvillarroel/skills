@@ -1,6 +1,6 @@
 # Sankey Pipeline
 
-- **Pattern ID:** `d3-pattern-sankey`
+- **Pattern ID:** `d3-sankey`
 - **Gallery source ID:** `sankey`
 - **Family:** Flow
 - **Use when:** Weighted handoffs across ordered stages.

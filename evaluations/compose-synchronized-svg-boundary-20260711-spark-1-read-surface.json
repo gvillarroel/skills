@@ -1,0 +1,626 @@
+{
+  "passed": false,
+  "session": {
+    "version": 3,
+    "id": "019f53d7-8574-7cff-a579-63c7ad15dec8",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\compose-synchronized-svg-boundary-20260711-spark-1\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 45
+  },
+  "providers": {
+    "openai-codex": 45
+  },
+  "usageTotals": {
+    "input": 71487,
+    "output": 30191,
+    "cacheRead": 1905792,
+    "cacheWrite": 0,
+    "totalTokens": 2007470
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 21,
+    "bash": 13,
+    "write": 1,
+    "edit": 9
+  },
+  "paths": [
+    {
+      "path": "outputs/edge-load/composition-brief.json",
+      "calls": 21,
+      "resultBytes": 46212
+    },
+    {
+      "path": "outputs/edge-load/static-validation.json",
+      "calls": 2,
+      "resultBytes": 11210
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 4347
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 16332
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 15160
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 20873
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 14127
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 9598
+    },
+    {
+      "path": "outputs/edge-load/browser-audit.json",
+      "calls": 1,
+      "resultBytes": 7181
+    },
+    {
+      "path": "outputs/edge-load/composition-report.json",
+      "calls": 1,
+      "resultBytes": 2061
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/edge-load/composition-brief.json",
+      "calls": 11,
+      "resultBytes": 32678
+    },
+    {
+      "path": "outputs/edge-load/static-validation.json",
+      "calls": 2,
+      "resultBytes": 11210
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 4347
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 16332
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 15160
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 20873
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 14127
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 9598
+    },
+    {
+      "path": "outputs/edge-load/browser-audit.json",
+      "calls": 1,
+      "resultBytes": 7181
+    },
+    {
+      "path": "outputs/edge-load/composition-report.json",
+      "calls": 1,
+      "resultBytes": 2061
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "outputs/edge-load/composition-brief.json",
+      "calls": 11
+    },
+    {
+      "path": "outputs/edge-load/static-validation.json",
+      "calls": 2
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/edge-load/browser-audit.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/edge-load/composition-report.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 133567,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4347
+    },
+    {
+      "line": 30,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la skills/compose-synchronized-svg",
+      "isError": false,
+      "resultBytes": 478
+    },
+    {
+      "line": 43,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 16332
+    },
+    {
+      "line": 56,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "policyPath": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 15160
+    },
+    {
+      "line": 69,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "policyPath": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 20873
+    },
+    {
+      "line": 82,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "policyPath": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 14127
+    },
+    {
+      "line": 95,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "policyPath": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9598
+    },
+    {
+      "line": 108,
+      "tool": "write",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 117
+    },
+    {
+      "line": 124,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outputs/edge-load/composition-brief.json --output outputs/edge-load/composition-plan.json --force --json",
+      "isError": true,
+      "resultBytes": 262
+    },
+    {
+      "line": 137,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": true,
+      "resultBytes": 108
+    },
+    {
+      "line": 150,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7560
+    },
+    {
+      "line": 163,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7187
+    },
+    {
+      "line": 176,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": true,
+      "resultBytes": 185
+    },
+    {
+      "line": 189,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1159
+    },
+    {
+      "line": 205,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outputs/edge-load/composition-brief.json --output outputs/edge-load/composition-plan.json --force --json",
+      "isError": true,
+      "resultBytes": 289
+    },
+    {
+      "line": 218,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": true,
+      "resultBytes": 203
+    },
+    {
+      "line": 231,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5290
+    },
+    {
+      "line": 244,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 976
+    },
+    {
+      "line": 260,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outputs/edge-load/composition-brief.json --output outputs/edge-load/composition-plan.json --force --json",
+      "isError": true,
+      "resultBytes": 289
+    },
+    {
+      "line": 273,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3506
+    },
+    {
+      "line": 286,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1076
+    },
+    {
+      "line": 302,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outputs/edge-load/composition-brief.json --output outputs/edge-load/composition-plan.json --force --json",
+      "isError": false,
+      "resultBytes": 666
+    },
+    {
+      "line": 318,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py --spec outputs/edge-load/composition-plan.json --output outputs/edge-load/edge-load.svg --report outputs/edge-load/composition-report.json --force --json",
+      "isError": false,
+      "resultBytes": 2255
+    },
+    {
+      "line": 334,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/edge-load/edge-load.svg --output outputs/edge-load/static-validation.json --min-modules 7 --min-asset-types 7 --min-renderer-families 5 --min-share",
+      "isError": false,
+      "resultBytes": 296
+    },
+    {
+      "line": 347,
+      "tool": "read",
+      "path": "outputs/edge-load/static-validation.json",
+      "policyPath": "outputs/edge-load/static-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5635
+    },
+    {
+      "line": 364,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py outputs/edge-load/edge-load.svg --report outputs/edge-load/browser-audit.json --screenshot outputs/edge-load/overview.png",
+      "isError": true,
+      "resultBytes": 3861
+    },
+    {
+      "line": 377,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2648
+    },
+    {
+      "line": 390,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2485
+    },
+    {
+      "line": 403,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": true,
+      "resultBytes": 3926
+    },
+    {
+      "line": 416,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1920
+    },
+    {
+      "line": 429,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2148
+    },
+    {
+      "line": 442,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1593
+    },
+    {
+      "line": 455,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 158
+    },
+    {
+      "line": 468,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 824
+    },
+    {
+      "line": 481,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1651
+    },
+    {
+      "line": 494,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json",
+      "policyPath": "outputs/edge-load/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1492
+    },
+    {
+      "line": 510,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outputs/edge-load/composition-brief.json --output outputs/edge-load/composition-plan.json --force --json",
+      "isError": false,
+      "resultBytes": 666
+    },
+    {
+      "line": 526,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py --spec outputs/edge-load/composition-plan.json --output outputs/edge-load/edge-load.svg --report outputs/edge-load/composition-report.json --force --json",
+      "isError": false,
+      "resultBytes": 2245
+    },
+    {
+      "line": 542,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/edge-load/edge-load.svg --output outputs/edge-load/static-validation.json --min-modules 7 --min-asset-types 7 --min-renderer-families 5 --min-share",
+      "isError": false,
+      "resultBytes": 296
+    },
+    {
+      "line": 558,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py outputs/edge-load/edge-load.svg --report outputs/edge-load/browser-audit.json --screenshot outputs/edge-load/overview.png",
+      "isError": false,
+      "resultBytes": 623
+    },
+    {
+      "line": 571,
+      "tool": "read",
+      "path": "outputs/edge-load/static-validation.json",
+      "policyPath": "outputs/edge-load/static-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5575
+    },
+    {
+      "line": 584,
+      "tool": "read",
+      "path": "outputs/edge-load/browser-audit.json",
+      "policyPath": "outputs/edge-load/browser-audit.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7181
+    },
+    {
+      "line": 600,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la outputs/edge-load",
+      "isError": false,
+      "resultBytes": 676
+    },
+    {
+      "line": 613,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-report.json",
+      "policyPath": "outputs/edge-load/composition-report.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2061
+    }
+  ],
+  "findings": [
+    {
+      "code": "tool-error",
+      "line": 124,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 137,
+      "tool": "read",
+      "path": "outputs/edge-load/composition-brief.json"
+    },
+    {
+      "code": "tool-error",
+      "line": 176,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json"
+    },
+    {
+      "code": "tool-error",
+      "line": 205,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 218,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json"
+    },
+    {
+      "code": "tool-error",
+      "line": 260,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 364,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 403,
+      "tool": "edit",
+      "path": "outputs/edge-load/composition-brief.json"
+    }
+  ]
+}

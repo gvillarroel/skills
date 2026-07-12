@@ -1,0 +1,1327 @@
+{
+  "passed": false,
+  "session": {
+    "version": 3,
+    "id": "019f5240-d21f-745e-a218-e40850f92f18",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\compose-synchronized-svg-edge-load-release-20260711-spark-1\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 121
+  },
+  "providers": {
+    "openai-codex": 121
+  },
+  "usageTotals": {
+    "input": 411999,
+    "output": 99180,
+    "cacheRead": 9110784,
+    "cacheWrite": 0,
+    "totalTokens": 9621963
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 48,
+    "bash": 61,
+    "write": 2,
+    "edit": 10
+  },
+  "paths": [
+    {
+      "path": "outputs/edge-load.svg",
+      "calls": 40,
+      "resultBytes": 138354
+    },
+    {
+      "path": "outputs/edge-load-script.js",
+      "calls": 13,
+      "resultBytes": 12754
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 2,
+      "resultBytes": 7994
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 2,
+      "resultBytes": 21636
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 9584
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 10165
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 10156
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 18273
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/edge-load.svg",
+      "calls": 27,
+      "resultBytes": 85401
+    },
+    {
+      "path": "outputs/edge-load-script.js",
+      "calls": 13,
+      "resultBytes": 12754
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 2,
+      "resultBytes": 7994
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 2,
+      "resultBytes": 21636
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 9584
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 10165
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 10156
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 18273
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "outputs/edge-load.svg",
+      "calls": 27
+    },
+    {
+      "path": "outputs/edge-load-script.js",
+      "calls": 13
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 2
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 2
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 175963,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3997
+    },
+    {
+      "line": 29,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la skills/compose-synchronized-svg",
+      "isError": false,
+      "resultBytes": 415
+    },
+    {
+      "line": 42,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9584
+    },
+    {
+      "line": 63,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "policyPath": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10165
+    },
+    {
+      "line": 64,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "policyPath": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10818
+    },
+    {
+      "line": 65,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "policyPath": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10156
+    },
+    {
+      "line": 82,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "policyPath": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 18273
+    },
+    {
+      "line": 97,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la outputs",
+      "isError": true,
+      "resultBytes": 144
+    },
+    {
+      "line": 111,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p outputs",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 124,
+      "tool": "write",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 97
+    },
+    {
+      "line": 137,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8992
+    },
+    {
+      "line": 150,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": true,
+      "resultBytes": 107
+    },
+    {
+      "line": 165,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, json, pathlib, xml.etree.ElementTree as ET\np = pathlib.Path('outputs/edge-load.svg')\ntext = p.read_text(encoding='utf-8')\ntry:\n    ET.parse(p)\n    print('XML: ok')\nexcept Exception as e:\n    print('XML error', e)\n",
+      "isError": false,
+      "resultBytes": 121
+    },
+    {
+      "line": 178,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1769
+    },
+    {
+      "line": 194,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "wc -l outputs/edge-load.svg && wc -c outputs/edge-load.svg",
+      "isError": false,
+      "resultBytes": 97
+    },
+    {
+      "line": 207,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3169
+    },
+    {
+      "line": 222,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "nl -ba outputs/edge-load.svg | sed -n '1,120p'",
+      "isError": false,
+      "resultBytes": 9618
+    },
+    {
+      "line": 235,
+      "tool": "write",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 98
+    },
+    {
+      "line": 250,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, json, pathlib\nfrom lxml import etree\np='outputs/edge-load.svg'\ntext=pathlib.Path(p).read_text(encoding='utf-8')\ntry:\n    etree.parse(p)\n    print('XML ok')\nexcept Exception as e:\n    print('XML error:',e)\n\nimport ",
+      "isError": true,
+      "resultBytes": 216
+    },
+    {
+      "line": 265,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, json, pathlib, xml.etree.ElementTree as ET\np='outputs/edge-load.svg'\ntext=pathlib.Path(p).read_text(encoding='utf-8')\ntry:\n    ET.parse(p)\n    print('XML ok')\nexcept Exception as e:\n    print('XML error:', e)\n\nm=r",
+      "isError": false,
+      "resultBytes": 309
+    },
+    {
+      "line": 282,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nm=re.search(r'<script><![CDATA\\[(.*?)\\]\\]></script>', text, re.S)\nprint('script', bool(m))\nif m:\n    s=m.group(1)\n    open('outputs/ed",
+      "isError": true,
+      "resultBytes": 2056
+    },
+    {
+      "line": 297,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nstart=text.index('<script><![CDATA[')+len('<script><![CDATA[')\nend=text.index(']]></script>', start)\ns=text[start:end]\npathlib.Path('outpu",
+      "isError": false,
+      "resultBytes": 52
+    },
+    {
+      "line": 310,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3365
+    },
+    {
+      "line": 323,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4745
+    },
+    {
+      "line": 336,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3792
+    },
+    {
+      "line": 351,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport math\ncx,cy,r=560,244,68\nstartDeg=0\nendDeg=270\nstart=(math.pi/180)*(startDeg-90)\nend=(math.pi/180)*(endDeg-90)\nx1=cx+math.cos(start)*r\ny1=cy+math.sin(start)*r\nx2=cx+math.cos(end)*r\ny2=cy+math.sin(end)*r\nprint('x1 y1',x",
+      "isError": false,
+      "resultBytes": 141
+    },
+    {
+      "line": 366,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport math\ncx,cy,r=560,244,68\nstartDeg=270\nendDeg=360\nstart=(math.pi/180)*(startDeg-90)\nend=(math.pi/180)*(endDeg-90)\nx1=cx+math.cos(start)*r\ny1=cy+math.sin(start)*r\nx2=cx+math.cos(end)*r\ny2=cy+math.sin(end)*r\nlarge=1 if ab",
+      "isError": false,
+      "resultBytes": 102
+    },
+    {
+      "line": 381,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text()\nroles=set(re.findall(r'data-role=\"([^\"]+)\"', text))\n# manual parse script roles list by pattern maybe many occurrences include xlink etc. We'll extrac",
+      "isError": false,
+      "resultBytes": 152
+    },
+    {
+      "line": 394,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3674
+    },
+    {
+      "line": 407,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6796
+    },
+    {
+      "line": 420,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6190
+    },
+    {
+      "line": 433,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 25306
+    },
+    {
+      "line": 449,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport xml.etree.ElementTree as ET, pathlib, re, json\np='outputs/edge-load.svg'\ntext=pathlib.Path(p).read_text(encoding='utf-8')\nET.parse(p)\nprint('XML ok')\nm=re.search(r'<script><![CDATA\\[(.*?)\\]\\]></script>', text, re.S)\no",
+      "isError": true,
+      "resultBytes": 1633
+    },
+    {
+      "line": 464,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport pathlib, subprocess\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nstart=text.index('<script><![CDATA[')+len('<script><![CDATA[')\nend=text.index(']]></script>', start)\nopen('outputs/edge-load-s",
+      "isError": false,
+      "resultBytes": 67
+    },
+    {
+      "line": 479,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, json, pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nm=re.search(r'<metadata id=\"sync-composition-plan\" type=\"application/json\">(.*?)</metadata>', text, re.S)\nprint('metadata', bool",
+      "isError": false,
+      "resultBytes": 79
+    },
+    {
+      "line": 494,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport json,re,pathlib,math\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nimport re\nm=re.search(r'<metadata id=\"sync-composition-plan\" type=\"application/json\">(.*?)</metadata>', text, re.S)\nplan=json",
+      "isError": false,
+      "resultBytes": 196
+    },
+    {
+      "line": 509,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text()\nroles = set(re.findall(r'data-role=\"([^\"]+)\"', text))\nscript = text[text.index('<script><![CDATA[')+14:text.index(']]></script>')]\nqueries = set(re.fi",
+      "isError": false,
+      "resultBytes": 93
+    },
+    {
+      "line": 522,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 978
+    },
+    {
+      "line": 537,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport xml.etree.ElementTree as ET\nET.parse('outputs/edge-load.svg')\nprint('XML still valid')\nPY",
+      "isError": false,
+      "resultBytes": 62
+    },
+    {
+      "line": 552,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nstart=text.index('<script><![CDATA[')+len('<script><![CDATA[')\nend=text.index(']]></script>',start)\npathlib.Path('outputs/edge-load-script",
+      "isError": false,
+      "resultBytes": 57
+    },
+    {
+      "line": 565,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3813
+    },
+    {
+      "line": 578,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2702
+    },
+    {
+      "line": 591,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7831
+    },
+    {
+      "line": 606,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "node -e \"try{const {JSDOM}=require('jsdom'); console.log('jsdom yes')}catch(e){console.log('no jsdom')}}\"",
+      "isError": true,
+      "resultBytes": 620
+    },
+    {
+      "line": 621,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "node - <<'NODE'\ntry {\n  const {JSDOM}=require('jsdom');\n  console.log('jsdom yes');\n} catch (e) {\n  console.log('no jsdom');\n}\nNODE",
+      "isError": false,
+      "resultBytes": 53
+    },
+    {
+      "line": 637,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib, json\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nplan=json.loads(re.search(r'<metadata id=\"sync-composition-plan\" type=\"application/json\">(.*?)</metadata>', text, re.S).group(1)",
+      "isError": true,
+      "resultBytes": 837
+    },
+    {
+      "line": 652,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib, json\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nplan=json.loads(re.search(r'<metadata id=\"sync-composition-plan\" type=\"application/json\">(.*?)</metadata>', text, re.S).group(1)",
+      "isError": false,
+      "resultBytes": 103
+    },
+    {
+      "line": 667,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nids=re.findall(r'\\bid=\"([^\"]+)\"', text)\nfrom collections import Counter\ndups=[i for i,c in Counter(ids).items() if c>1]\nprint('duplica",
+      "isError": false,
+      "resultBytes": 187
+    },
+    {
+      "line": 680,
+      "tool": "bash",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": true,
+      "resultBytes": 250
+    },
+    {
+      "line": 693,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 832
+    },
+    {
+      "line": 708,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8').splitlines()\nids={}\nfor i,line in enumerate(text,1):\n    for m in re.finditer(r'\\bid=\"([^\"]+)\"', line):\n        idv=m.group(1)\n       ",
+      "isError": false,
+      "resultBytes": 246
+    },
+    {
+      "line": 721,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 419
+    },
+    {
+      "line": 734,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2416
+    },
+    {
+      "line": 749,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"const ready\" -n outputs/edge-load.svg",
+      "isError": false,
+      "resultBytes": 91
+    },
+    {
+      "line": 760,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1172
+    },
+    {
+      "line": 773,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4555
+    },
+    {
+      "line": 786,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1727
+    },
+    {
+      "line": 801,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport pathlib, subprocess\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nstart=text.index('<script><![CDATA[')+14\nend=text.index(']]></script>', start)\npathlib.Path('outputs/edge-load-script.js').wri",
+      "isError": false,
+      "resultBytes": 416
+    },
+    {
+      "line": 814,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 457
+    },
+    {
+      "line": 827,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1419
+    },
+    {
+      "line": 842,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\ncode=open('outputs/edge-load-script.js',encoding='utf-8').read()\nfor i,ch in enumerate(code,1):\n    pass\nprint('len',len(code))\n# simple check unmatched braces by parser naive ignoring strings/comments maybe rough\n\nopen_char",
+      "isError": true,
+      "resultBytes": 225
+    },
+    {
+      "line": 857,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "nl -ba outputs/edge-load-script.js | tail -n 80",
+      "isError": false,
+      "resultBytes": 2882
+    },
+    {
+      "line": 872,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "node - <<'NODE'\nconst fs=require('fs');\nconst code=fs.readFileSync('outputs/edge-load-script.js','utf8');\ntry {\n  const acorn=require('acorn');\n  acorn.parse(code,{ecmaVersion:'latest',sourceType:'script'});\n  console.log('acorn parsed ok')",
+      "isError": false,
+      "resultBytes": 230
+    },
+    {
+      "line": 885,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1151
+    },
+    {
+      "line": 900,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport pathlib\ns='<script><![CDATA['\nprint(len(s))\nPY",
+      "isError": false,
+      "resultBytes": 49
+    },
+    {
+      "line": 915,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport pathlib, subprocess\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nstart=text.index('<script><![CDATA[')+len('<script><![CDATA[')\nend=text.index(']]></script>', start)\ncode=text[start:end]\nprin",
+      "isError": false,
+      "resultBytes": 76
+    },
+    {
+      "line": 930,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib, subprocess\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nids=set(re.findall(r'\"([a-zA-Z0-9_-]+)\"(?=[\\)\\]])|\\x27([a-zA-Z0-9_-]+)\\x27(?=\\)|;)', text[text.index('<script><![CDATA[')+",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 943,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 167
+    },
+    {
+      "line": 958,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nfor s in ['1,200 req/s','1,600 req/s','75%','71.25 ms','2,400','122.2%','400 req/s','126.5','84.0']:\n    print(s, 'found', s in text)\nPY",
+      "isError": false,
+      "resultBytes": 244
+    },
+    {
+      "line": 971,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1961
+    },
+    {
+      "line": 984,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3531
+    },
+    {
+      "line": 999,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport xml.etree.ElementTree as ET, pathlib, json, re, subprocess\nET.parse('outputs/edge-load.svg')\nprint('XML valid')\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nm=re.search(r'<metadata id=\"sync-c",
+      "isError": false,
+      "resultBytes": 98
+    },
+    {
+      "line": 1014,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nvals=['1,200 req/s','1,600 req/s','75%','71.25 ms','2,100','900 req/s','300 req/s','1,210 req/s']\nfor v in vals:\n    print(v, v in text)\nP",
+      "isError": false,
+      "resultBytes": 183
+    },
+    {
+      "line": 1028,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport xml.etree.ElementTree as ET, collections\nroot=ET.parse('outputs/edge-load.svg').getroot()\nids=collections.Counter()\nfor e in root.iter():\n    if 'id' in e.attrib:\n        ids[e.attrib['id']]+=1\nfor k,v in ids.items():",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 1043,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nimport collections\nassets=re.findall(r'data-asset-type=\"([^\"]+)\"',text)\nprint(assets)\nprint('count',len(assets), 'unique',len(set(asse",
+      "isError": false,
+      "resultBytes": 187
+    },
+    {
+      "line": 1056,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3709
+    },
+    {
+      "line": 1069,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2998
+    },
+    {
+      "line": 1092,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport xml.etree.ElementTree as ET, re, math, pathlib\nns={'': 'http://www.w3.org/2000/svg'}\n# register no namespaces\nET.register_namespace('', 'http://www.w3.org/2000/svg')\nroot=ET.parse('outputs/edge-load.svg').getroot()\n# ",
+      "isError": false,
+      "resultBytes": 465
+    },
+    {
+      "line": 1107,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib, math\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\n# parse d attribute values\nfor role in ['cache-donut','origin-donut']:\n    m=re.search(rf'data-role=\"{role}\"[^>]*d=\"([^\"]+)\"', t",
+      "isError": false,
+      "resultBytes": 162
+    },
+    {
+      "line": 1120,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3997
+    },
+    {
+      "line": 1133,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": true,
+      "resultBytes": 184
+    },
+    {
+      "line": 1146,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1842
+    },
+    {
+      "line": 1161,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"function play\" -n outputs/edge-load-script.js",
+      "isError": false,
+      "resultBytes": 68
+    },
+    {
+      "line": 1174,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 992
+    },
+    {
+      "line": 1189,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nscript=text[text.index('<script><![CDATA[')+17:text.index(']]></script>')]\nids=[]\nids += re.findall(r'getElementById\\(\\\"([^\\\"]+)\\\"\\)|g",
+      "isError": false,
+      "resultBytes": 58
+    },
+    {
+      "line": 1202,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9043
+    },
+    {
+      "line": 1215,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "policyPath": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10818
+    },
+    {
+      "line": 1228,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": true,
+      "resultBytes": 184
+    },
+    {
+      "line": 1243,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"dispatchSnapshot\" -n outputs/edge-load-script.js",
+      "isError": false,
+      "resultBytes": 230
+    },
+    {
+      "line": 1254,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 429
+    },
+    {
+      "line": 1267,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1212
+    },
+    {
+      "line": 1280,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1153
+    },
+    {
+      "line": 1293,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 853
+    },
+    {
+      "line": 1306,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 916
+    },
+    {
+      "line": 1319,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 14776
+    },
+    {
+      "line": 1334,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport xml.etree.ElementTree as ET\nET.parse('outputs/edge-load.svg')\nprint('xml ok')\nPY",
+      "isError": false,
+      "resultBytes": 53
+    },
+    {
+      "line": 1349,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport pathlib, subprocess, re\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nstart=text.index('<script><![CDATA[')+len('<script><![CDATA[')\nend=text.index(']]></script>', start)\ncode=text[start:end]\n",
+      "isError": false,
+      "resultBytes": 57
+    },
+    {
+      "line": 1364,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nscript=text[text.index('<script><![CDATA[')+17:text.index(']]></script>')]\nfor name in ['ready','getPlan','getState','setState','apply",
+      "isError": false,
+      "resultBytes": 272
+    },
+    {
+      "line": 1377,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": true,
+      "resultBytes": 108
+    },
+    {
+      "line": 1392,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"function updateButtonActive\" -n outputs/edge-load-script.js",
+      "isError": false,
+      "resultBytes": 82
+    },
+    {
+      "line": 1403,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1506
+    },
+    {
+      "line": 1416,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": true,
+      "resultBytes": 187
+    },
+    {
+      "line": 1429,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1174
+    },
+    {
+      "line": 1442,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2570
+    },
+    {
+      "line": 1455,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1152
+    },
+    {
+      "line": 1470,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"function applySource\" -n outputs/edge-load-script.js",
+      "isError": false,
+      "resultBytes": 131
+    },
+    {
+      "line": 1481,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1042
+    },
+    {
+      "line": 1496,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport xml.etree.ElementTree as ET, pathlib, re, json, subprocess\nET.parse('outputs/edge-load.svg')\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nstart=text.index('<script><![CDATA[')+len('<script><!",
+      "isError": false,
+      "resultBytes": 114
+    },
+    {
+      "line": 1511,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport xml.etree.ElementTree as ET, collections\nroot=ET.parse('outputs/edge-load.svg').getroot()\nids=collections.Counter([e.attrib['id'] for e in root.iter() if 'id' in e.attrib])\nfor k,v in ids.items():\n    if v>1:\n        ",
+      "isError": false,
+      "resultBytes": 59
+    },
+    {
+      "line": 1527,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "git status --short",
+      "isError": false,
+      "resultBytes": 39003
+    },
+    {
+      "line": 1542,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"svg-sync-change\\|svgSyncChange\\|dispatchSnapshot\" outputs/edge-load.svg",
+      "isError": false,
+      "resultBytes": 316
+    },
+    {
+      "line": 1555,
+      "tool": "read",
+      "path": "outputs/edge-load.svg",
+      "policyPath": "outputs/edge-load.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 843
+    },
+    {
+      "line": 1568,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 314
+    },
+    {
+      "line": 1581,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js",
+      "policyPath": "outputs/edge-load-script.js",
+      "command": null,
+      "isError": false,
+      "resultBytes": 440
+    },
+    {
+      "line": 1596,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nroles=set(re.findall(r'data-role=\"([^\"]+)\"', text))\nscript=text[text.index('<script><![CDATA[')+17:text.index(']]></script>')]\nsel=set",
+      "isError": false,
+      "resultBytes": 91
+    },
+    {
+      "line": 1611,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re, pathlib, json, math\ntext=pathlib.Path('outputs/edge-load.svg').read_text(encoding='utf-8')\nimport lxml.etree as ET\nfrom collections import defaultdict\n# not using lxml maybe unavailable? let's try\nprint('parse wit",
+      "isError": true,
+      "resultBytes": 216
+    },
+    {
+      "line": 1625,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "rm -f outputs/edge-load-script.js",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 1640,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls outputs",
+      "isError": false,
+      "resultBytes": 58
+    },
+    {
+      "line": 1655,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport xml.etree.ElementTree as ET, pathlib, re, json, subprocess\npath='outputs/edge-load.svg'\nET.parse(path)\ntext=pathlib.Path(path).read_text(encoding='utf-8')\nm=re.search(r'<metadata id=\"sync-composition-plan\" type=\"appli",
+      "isError": false,
+      "resultBytes": 163
+    },
+    {
+      "line": 1669,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "rm -f outputs/_tmp.js",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 1684,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la outputs",
+      "isError": false,
+      "resultBytes": 210
+    }
+  ],
+  "findings": [
+    {
+      "code": "tool-error",
+      "line": 97,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 150,
+      "tool": "read",
+      "path": "outputs/edge-load.svg"
+    },
+    {
+      "code": "tool-error",
+      "line": 250,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 282,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 449,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 606,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 637,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 680,
+      "tool": "bash",
+      "path": "outputs/edge-load.svg"
+    },
+    {
+      "code": "tool-error",
+      "line": 842,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 1133,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg"
+    },
+    {
+      "code": "tool-error",
+      "line": 1228,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg"
+    },
+    {
+      "code": "tool-error",
+      "line": 1377,
+      "tool": "read",
+      "path": "outputs/edge-load-script.js"
+    },
+    {
+      "code": "tool-error",
+      "line": 1416,
+      "tool": "edit",
+      "path": "outputs/edge-load.svg"
+    },
+    {
+      "code": "tool-error",
+      "line": 1611,
+      "tool": "bash",
+      "path": null
+    }
+  ]
+}

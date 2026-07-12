@@ -1,6 +1,6 @@
 # Embedding Neighborhood
 
-- **Pattern ID:** `d3-pattern-embedding-neighborhood`
+- **Pattern ID:** `d3-embedding-neighborhood`
 - **Gallery source ID:** `embedding-neighborhood`
 - **Family:** LLM
 - **Use when:** Nearby vectors form semantic neighborhoods around a query.

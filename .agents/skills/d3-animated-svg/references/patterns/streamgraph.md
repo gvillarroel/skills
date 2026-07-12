@@ -1,6 +1,6 @@
 # Streamgraph
 
-- **Pattern ID:** `d3-pattern-streamgraph`
+- **Pattern ID:** `d3-streamgraph`
 - **Gallery source ID:** `streamgraph`
 - **Family:** Temporal
 - **Use when:** Layered composition changes across time.

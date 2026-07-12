@@ -1,6 +1,6 @@
 # X/Y Zoom
 
-- **Pattern ID:** `d3-pattern-xy-zoom`
+- **Pattern ID:** `d3-xy-zoom`
 - **Gallery source ID:** `xy-zoom`
 - **Family:** Focus
 - **Use when:** Independent axis windows crop a two-dimensional scatter field.

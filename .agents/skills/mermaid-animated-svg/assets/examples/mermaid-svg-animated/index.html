@@ -226,6 +226,19 @@
     ];
 
     const gallery = document.getElementById("gallery");
+    const patternSlugs = new Map([
+      ["block-diagram", "block"],
+      ["c4-diagram", "c4"],
+      ["class-diagram", "class"],
+      ["entity-relationship-diagram", "er"],
+      ["gitgraph-diagram", "gitgraph"],
+      ["packet-diagram", "packet"],
+      ["pie-chart", "pie"],
+      ["quadrant-chart", "quadrant"],
+      ["requirement-diagram", "requirement"],
+      ["sequence-diagram", "sequence"],
+      ["state-diagram", "state"]
+    ]);
     const titleCase = (value) => value
       .split("-")
       .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
@@ -233,16 +246,18 @@
 
     for (const [name, animation, elements, staticName = name] of examples) {
       const article = document.createElement("article");
-      const patternId = `mermaid-pattern-${name}`;
+      const patternId = `mermaid-${patternSlugs.get(name) || name}`;
+      const legacyPatternId = `mermaid-pattern-${name}`;
       article.className = "gallery-card";
       article.id = patternId;
       article.dataset.exampleId = name;
       article.dataset.patternId = patternId;
+      article.dataset.legacyPatternId = legacyPatternId;
       article.dataset.diagramType = staticName;
       article.dataset.animationProfile = animation;
       article.innerHTML = `
         <div class="frame">
-          <img src="animated/${name}.animated.svg" data-example-id="${name}" data-pattern-id="${patternId}" alt="${titleCase(name)} animated SVG">
+          <img src="animated/${name}.animated.svg" data-example-id="${name}" data-pattern-id="${patternId}" data-legacy-pattern-id="${legacyPatternId}" alt="${titleCase(name)} animated SVG">
         </div>
         <div class="meta">
           <h2>${titleCase(name)}</h2>
@@ -259,6 +274,18 @@
       `;
       gallery.appendChild(article);
     }
+
+    function redirectLegacyPatternHash() {
+      const hash = decodeURIComponent(window.location.hash.slice(1));
+      if (!hash) return;
+      const card = [...gallery.querySelectorAll(".gallery-card")].find((item) => item.dataset.legacyPatternId === hash);
+      if (!card) return;
+      history.replaceState(null, "", location.pathname + location.search + "#" + card.dataset.patternId);
+      card.scrollIntoView({ block: "start" });
+    }
+
+    redirectLegacyPatternHash();
+    window.addEventListener("hashchange", redirectLegacyPatternHash);
   </script>
 </body>
 </html>

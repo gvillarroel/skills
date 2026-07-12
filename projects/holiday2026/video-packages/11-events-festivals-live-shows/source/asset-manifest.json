@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 1,
+  "videoId": "holiday2026-11-events-festivals-live-shows",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  "skillRouting": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "assets": [
+    {
+      "id": "a01-proximity-map",
+      "kind": "diagram",
+      "claim": "Show the Events, Festivals & Live Shows evidence required for scene 1 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a01-proximity-map.png",
+      "sha256": "c38f899bf2300fe6c7c8e96229a25c081e58df4a3af2b4cf033aa8ede4f25719",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:events-festivals-live-shows:a01-proximity-map",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "T. rex: The Ultimate Predator",
+            "pageUrl": "https://discoveratlanta.com/event/detail/t-rex-the-ultimate-predator/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1781706421/EventEntry/sodhcaj4vqbhvpbfw5ss.jpg",
+            "imageSha256": "c9a3aed40a57a1e4f0f8c41917cfe846fcc9560660d8063b547dbaeef9fe3478",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for T. rex: The Ultimate Predator; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "300 and Troy: Odyssey Film Fest",
+            "pageUrl": "https://discoveratlanta.com/events/",
+            "imageUrl": null,
+            "imageSha256": "f71e94deef3b1ef27c1c898991fb72e8a548739ef5e3d7e6edb16dbb48a7635e",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 3,
+            "name": "All the Soccer Things at The Works",
+            "pageUrl": "https://theworksatl.com/",
+            "imageUrl": "https://theworksatl.com/wp-content/uploads/2025/04/SELIGtheworks1024_031054FPO-scaled.jpg",
+            "imageSha256": "7760707fef6b9c1fc09da540f0de5fce083aab84beb65c844a112a37225e4d4a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for All the Soccer Things at The Works; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a01-proximity-map-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s01",
+          "beatId": "b01",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a02-top-1-source",
+      "kind": "screenshot",
+      "claim": "Show the Events, Festivals & Live Shows evidence required for scene 2 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a02-top-1-source.png",
+      "sha256": "c9a3aed40a57a1e4f0f8c41917cfe846fcc9560660d8063b547dbaeef9fe3478",
+      "origin": {
+        "type": "captured",
+        "uri": "https://discoveratlanta.com/event/detail/t-rex-the-ultimate-predator/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for T. rex: The Ultimate Predator; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "T. rex: The Ultimate Predator",
+            "pageUrl": "https://discoveratlanta.com/event/detail/t-rex-the-ultimate-predator/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1781706421/EventEntry/sodhcaj4vqbhvpbfw5ss.jpg",
+            "imageSha256": "c9a3aed40a57a1e4f0f8c41917cfe846fcc9560660d8063b547dbaeef9fe3478",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for T. rex: The Ultimate Predator; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a02-top-1-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s02",
+          "beatId": "b02",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a03-top-2-source",
+      "kind": "screenshot",
+      "claim": "Show the Events, Festivals & Live Shows evidence required for scene 3 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a03-top-2-source.png",
+      "sha256": "f71e94deef3b1ef27c1c898991fb72e8a548739ef5e3d7e6edb16dbb48a7635e",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:events-festivals-live-shows:a03-top-2-source",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 2,
+            "name": "300 and Troy: Odyssey Film Fest",
+            "pageUrl": "https://discoveratlanta.com/events/",
+            "imageUrl": null,
+            "imageSha256": "f71e94deef3b1ef27c1c898991fb72e8a548739ef5e3d7e6edb16dbb48a7635e",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "repo-native",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a03-top-2-source-validation.json",
+        "fallbackReason": "No acceptable official hero image was available after the declared acquisition fallbacks."
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s03",
+          "beatId": "b03",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a04-top-3-source",
+      "kind": "screenshot",
+      "claim": "Show the Events, Festivals & Live Shows evidence required for scene 4 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a04-top-3-source.png",
+      "sha256": "7760707fef6b9c1fc09da540f0de5fce083aab84beb65c844a112a37225e4d4a",
+      "origin": {
+        "type": "captured",
+        "uri": "https://theworksatl.com/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for All the Soccer Things at The Works; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 3,
+            "name": "All the Soccer Things at The Works",
+            "pageUrl": "https://theworksatl.com/",
+            "imageUrl": "https://theworksatl.com/wp-content/uploads/2025/04/SELIGtheworks1024_031054FPO-scaled.jpg",
+            "imageSha256": "7760707fef6b9c1fc09da540f0de5fce083aab84beb65c844a112a37225e4d4a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for All the Soccer Things at The Works; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a04-top-3-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s04",
+          "beatId": "b04",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a05-top-five",
+      "kind": "diagram",
+      "claim": "Show the Events, Festivals & Live Shows evidence required for scene 5 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a05-top-five.png",
+      "sha256": "c2b2575b02298d7894fd9a8e4c04ec7306aa766ecc651a8ae3cf9eaf68bd4872",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:events-festivals-live-shows:a05-top-five",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "T. rex: The Ultimate Predator",
+            "pageUrl": "https://discoveratlanta.com/event/detail/t-rex-the-ultimate-predator/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1781706421/EventEntry/sodhcaj4vqbhvpbfw5ss.jpg",
+            "imageSha256": "c9a3aed40a57a1e4f0f8c41917cfe846fcc9560660d8063b547dbaeef9fe3478",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for T. rex: The Ultimate Predator; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "300 and Troy: Odyssey Film Fest",
+            "pageUrl": "https://discoveratlanta.com/events/",
+            "imageUrl": null,
+            "imageSha256": "f71e94deef3b1ef27c1c898991fb72e8a548739ef5e3d7e6edb16dbb48a7635e",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 3,
+            "name": "All the Soccer Things at The Works",
+            "pageUrl": "https://theworksatl.com/",
+            "imageUrl": "https://theworksatl.com/wp-content/uploads/2025/04/SELIGtheworks1024_031054FPO-scaled.jpg",
+            "imageSha256": "7760707fef6b9c1fc09da540f0de5fce083aab84beb65c844a112a37225e4d4a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for All the Soccer Things at The Works; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "FIFA Fan Festival Atlanta",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "The LEGO Brand x FIFA Fan Fest",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for The LEGO Brand x FIFA Fan Fest; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a05-top-five-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s05",
+          "beatId": "b05",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a06-preference-bars",
+      "kind": "diagram",
+      "claim": "Show the Events, Festivals & Live Shows evidence required for scene 6 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a06-preference-bars.png",
+      "sha256": "857013c50ab36fd5b6009e6c1b5a0d56d5f51b3bc24ec18cdf64cfc101076052",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:events-festivals-live-shows:a06-preference-bars",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "T. rex: The Ultimate Predator",
+            "pageUrl": "https://discoveratlanta.com/event/detail/t-rex-the-ultimate-predator/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1781706421/EventEntry/sodhcaj4vqbhvpbfw5ss.jpg",
+            "imageSha256": "c9a3aed40a57a1e4f0f8c41917cfe846fcc9560660d8063b547dbaeef9fe3478",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for T. rex: The Ultimate Predator; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "300 and Troy: Odyssey Film Fest",
+            "pageUrl": "https://discoveratlanta.com/events/",
+            "imageUrl": null,
+            "imageSha256": "f71e94deef3b1ef27c1c898991fb72e8a548739ef5e3d7e6edb16dbb48a7635e",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 3,
+            "name": "All the Soccer Things at The Works",
+            "pageUrl": "https://theworksatl.com/",
+            "imageUrl": "https://theworksatl.com/wp-content/uploads/2025/04/SELIGtheworks1024_031054FPO-scaled.jpg",
+            "imageSha256": "7760707fef6b9c1fc09da540f0de5fce083aab84beb65c844a112a37225e4d4a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for All the Soccer Things at The Works; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "FIFA Fan Festival Atlanta",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "The LEGO Brand x FIFA Fan Fest",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for The LEGO Brand x FIFA Fan Fest; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Celebration of Soccer & Sound",
+            "pageUrl": "https://www.axios.com/local/atlanta/2026/07/10/ludacris-world-cup-fifa-festival-piedmont-park",
+            "imageUrl": "https://images.axios.com/5_ur0nPc1krRbqrkqVdOPu0BsbM=/0x88:3600x2113/1366x768/2026/07/09/1783619016860.jpeg",
+            "imageSha256": "e43eaa60c3d52608f1bd5dd2502f786ac9a4321e9af3aaf65e388d005fb93e31",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Celebration of Soccer & Sound; verify reuse terms before public publication."
+          },
+          {
+            "rank": 7,
+            "name": "Final Match World Soccer Block Party",
+            "pageUrl": "https://discoveratlanta.com/event/detail/final-match-world-soccer-block-party-at-yeppa-co/",
+            "imageUrl": null,
+            "imageSha256": "e308b4e14d7427dfce90551dc057658275872f4b6123e7ff0217b8482c95289e",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 8,
+            "name": "Atlanta United 2 vs. Inter Miami CF II",
+            "pageUrl": "https://www.atlutd.com/2/news/atlanta-united-2-announces-2026-mls-next-pro-regular-season-schedule",
+            "imageUrl": "https://images.mlssoccer.com/image/private/t_keep-aspect-ratio-e-desktop/f_png/mls-atl/bbryg5u9uuptjtxr3efh.png",
+            "imageSha256": "5346829ed502cc6d77d5b622b9345c93de42cd1c3acbc47462cf95e808088d5c",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Atlanta United 2 vs. Inter Miami CF II; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a06-preference-bars-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s06",
+          "beatId": "b06",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a07-decision-board",
+      "kind": "diagram",
+      "claim": "Show the Events, Festivals & Live Shows evidence required for scene 7 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a07-decision-board.png",
+      "sha256": "c7c3f42d2c50a18a41cdf64d1c6167b73f59b00374f09236a46d5e0e968f904f",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:events-festivals-live-shows:a07-decision-board",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "T. rex: The Ultimate Predator",
+            "pageUrl": "https://discoveratlanta.com/event/detail/t-rex-the-ultimate-predator/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1781706421/EventEntry/sodhcaj4vqbhvpbfw5ss.jpg",
+            "imageSha256": "c9a3aed40a57a1e4f0f8c41917cfe846fcc9560660d8063b547dbaeef9fe3478",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for T. rex: The Ultimate Predator; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "300 and Troy: Odyssey Film Fest",
+            "pageUrl": "https://discoveratlanta.com/events/",
+            "imageUrl": null,
+            "imageSha256": "f71e94deef3b1ef27c1c898991fb72e8a548739ef5e3d7e6edb16dbb48a7635e",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 3,
+            "name": "All the Soccer Things at The Works",
+            "pageUrl": "https://theworksatl.com/",
+            "imageUrl": "https://theworksatl.com/wp-content/uploads/2025/04/SELIGtheworks1024_031054FPO-scaled.jpg",
+            "imageSha256": "7760707fef6b9c1fc09da540f0de5fce083aab84beb65c844a112a37225e4d4a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for All the Soccer Things at The Works; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "FIFA Fan Festival Atlanta",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a07-decision-board-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s07",
+          "beatId": "b07",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a08-planner-callback",
+      "kind": "diagram",
+      "claim": "Show the Events, Festivals & Live Shows evidence required for scene 8 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a08-planner-callback.png",
+      "sha256": "1c319f7a4868cf272313891d6697606f6e581eb88b1919862f2c956ec34b82a9",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:events-festivals-live-shows:a08-planner-callback",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "T. rex: The Ultimate Predator",
+            "pageUrl": "https://discoveratlanta.com/event/detail/t-rex-the-ultimate-predator/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1781706421/EventEntry/sodhcaj4vqbhvpbfw5ss.jpg",
+            "imageSha256": "c9a3aed40a57a1e4f0f8c41917cfe846fcc9560660d8063b547dbaeef9fe3478",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for T. rex: The Ultimate Predator; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "300 and Troy: Odyssey Film Fest",
+            "pageUrl": "https://discoveratlanta.com/events/",
+            "imageUrl": null,
+            "imageSha256": "f71e94deef3b1ef27c1c898991fb72e8a548739ef5e3d7e6edb16dbb48a7635e",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 3,
+            "name": "All the Soccer Things at The Works",
+            "pageUrl": "https://theworksatl.com/",
+            "imageUrl": "https://theworksatl.com/wp-content/uploads/2025/04/SELIGtheworks1024_031054FPO-scaled.jpg",
+            "imageSha256": "7760707fef6b9c1fc09da540f0de5fce083aab84beb65c844a112a37225e4d4a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for All the Soccer Things at The Works; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "FIFA Fan Festival Atlanta",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "The LEGO Brand x FIFA Fan Fest",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for The LEGO Brand x FIFA Fan Fest; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Celebration of Soccer & Sound",
+            "pageUrl": "https://www.axios.com/local/atlanta/2026/07/10/ludacris-world-cup-fifa-festival-piedmont-park",
+            "imageUrl": "https://images.axios.com/5_ur0nPc1krRbqrkqVdOPu0BsbM=/0x88:3600x2113/1366x768/2026/07/09/1783619016860.jpeg",
+            "imageSha256": "e43eaa60c3d52608f1bd5dd2502f786ac9a4321e9af3aaf65e388d005fb93e31",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Celebration of Soccer & Sound; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a08-planner-callback-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s08",
+          "beatId": "b08",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    }
+  ]
+}

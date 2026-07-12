@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 1,
+  "videoId": "holiday2026-12-day-trips-unusual-experiences",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  "skillRouting": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "assets": [
+    {
+      "id": "a01-proximity-map",
+      "kind": "diagram",
+      "claim": "Show the Day Trips & Unusual Experiences evidence required for scene 1 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a01-proximity-map.png",
+      "sha256": "dd6a5ba2d99338a83b623c6bd683400843701255953af6d277cd8f8cdb79b532",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:day-trips-unusual-experiences:a01-proximity-map",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "BAPS Shri Swaminarayan Mandir Atlanta",
+            "pageUrl": "https://www.baps.org/Global-Network/North-America/Atlanta.aspx",
+            "imageUrl": "https://www.baps.org/Data/Sites/1/Media/ModuleRotatorImages/1000113779.jpg",
+            "imageSha256": "f6cc3309e24f186eec3b97d0faca6930ac4e4b80a59b4786fbe5e7e824d375d7",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for BAPS Shri Swaminarayan Mandir Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Etowah Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "62df838029a9bf06c77175c6281690a130a4e28a8296044445507a169f5f23f1",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Mounds State Historic Site; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a01-proximity-map-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s01",
+          "beatId": "b01",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a02-top-1-source",
+      "kind": "screenshot",
+      "claim": "Show the Day Trips & Unusual Experiences evidence required for scene 2 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a02-top-1-source.png",
+      "sha256": "f6cc3309e24f186eec3b97d0faca6930ac4e4b80a59b4786fbe5e7e824d375d7",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.baps.org/Global-Network/North-America/Atlanta.aspx",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for BAPS Shri Swaminarayan Mandir Atlanta; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "BAPS Shri Swaminarayan Mandir Atlanta",
+            "pageUrl": "https://www.baps.org/Global-Network/North-America/Atlanta.aspx",
+            "imageUrl": "https://www.baps.org/Data/Sites/1/Media/ModuleRotatorImages/1000113779.jpg",
+            "imageSha256": "f6cc3309e24f186eec3b97d0faca6930ac4e4b80a59b4786fbe5e7e824d375d7",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for BAPS Shri Swaminarayan Mandir Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a02-top-1-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s02",
+          "beatId": "b02",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a03-top-2-source",
+      "kind": "screenshot",
+      "claim": "Show the Day Trips & Unusual Experiences evidence required for scene 3 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a03-top-2-source.png",
+      "sha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.nps.gov/ocmu/index.htm",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 2,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a03-top-2-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s03",
+          "beatId": "b03",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a04-top-3-source",
+      "kind": "screenshot",
+      "claim": "Show the Day Trips & Unusual Experiences evidence required for scene 4 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a04-top-3-source.png",
+      "sha256": "62df838029a9bf06c77175c6281690a130a4e28a8296044445507a169f5f23f1",
+      "origin": {
+        "type": "captured",
+        "uri": "https://gastateparks.org/EtowahIndianMounds",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official visual page for Etowah Mounds State Historic Site; private family-planning use.",
+        "embeddedSources": [
+          {
+            "rank": 3,
+            "name": "Etowah Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "62df838029a9bf06c77175c6281690a130a4e28a8296044445507a169f5f23f1",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Mounds State Historic Site; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a04-top-3-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s04",
+          "beatId": "b04",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a05-top-five",
+      "kind": "diagram",
+      "claim": "Show the Day Trips & Unusual Experiences evidence required for scene 5 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a05-top-five.png",
+      "sha256": "137f7095cd2e65d8c705611ba64a236fda72b54c1c8ad2833f3725def1d4393b",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:day-trips-unusual-experiences:a05-top-five",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "BAPS Shri Swaminarayan Mandir Atlanta",
+            "pageUrl": "https://www.baps.org/Global-Network/North-America/Atlanta.aspx",
+            "imageUrl": "https://www.baps.org/Data/Sites/1/Media/ModuleRotatorImages/1000113779.jpg",
+            "imageSha256": "f6cc3309e24f186eec3b97d0faca6930ac4e4b80a59b4786fbe5e7e824d375d7",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for BAPS Shri Swaminarayan Mandir Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Etowah Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "62df838029a9bf06c77175c6281690a130a4e28a8296044445507a169f5f23f1",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Mounds State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 4,
+            "name": "New Echota State Historic Site",
+            "pageUrl": "https://gastateparks.org/NewEchota",
+            "imageUrl": null,
+            "imageSha256": "fdbf72728c213e09557c4f6416017d6c4ab128b00df8a1b5071c41d45fb24c99",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for New Echota State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Chief Vann House State Historic Site",
+            "pageUrl": "https://gastateparks.org/ChiefVannHouse",
+            "imageUrl": null,
+            "imageSha256": "7e4da8f84486c9df00de159fd9911861ae350a9545b838e736372b7172855303",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Chief Vann House State Historic Site; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a05-top-five-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s05",
+          "beatId": "b05",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a06-preference-bars",
+      "kind": "diagram",
+      "claim": "Show the Day Trips & Unusual Experiences evidence required for scene 6 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a06-preference-bars.png",
+      "sha256": "a8a00faa8bfcc5f1e98e38cbc00a42e6db3849af7f489183570f24153bb47b04",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:day-trips-unusual-experiences:a06-preference-bars",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "BAPS Shri Swaminarayan Mandir Atlanta",
+            "pageUrl": "https://www.baps.org/Global-Network/North-America/Atlanta.aspx",
+            "imageUrl": "https://www.baps.org/Data/Sites/1/Media/ModuleRotatorImages/1000113779.jpg",
+            "imageSha256": "f6cc3309e24f186eec3b97d0faca6930ac4e4b80a59b4786fbe5e7e824d375d7",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for BAPS Shri Swaminarayan Mandir Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Etowah Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "62df838029a9bf06c77175c6281690a130a4e28a8296044445507a169f5f23f1",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Mounds State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 4,
+            "name": "New Echota State Historic Site",
+            "pageUrl": "https://gastateparks.org/NewEchota",
+            "imageUrl": null,
+            "imageSha256": "fdbf72728c213e09557c4f6416017d6c4ab128b00df8a1b5071c41d45fb24c99",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for New Echota State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Chief Vann House State Historic Site",
+            "pageUrl": "https://gastateparks.org/ChiefVannHouse",
+            "imageUrl": null,
+            "imageSha256": "7e4da8f84486c9df00de159fd9911861ae350a9545b838e736372b7172855303",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Chief Vann House State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 6,
+            "name": "Martin Luther King, Jr. National Historical Park",
+            "pageUrl": "https://www.nps.gov/malu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/grid_builder/malu/crop16_9/C5BE8CA9-B173-FEEF-A7F4610532393282.jpg?width=1300&quality=80&mode=crop&format=webp",
+            "imageSha256": "1c6d669442772a8c9ba72c580928204f326c7245b9c75623c42fc7decf0baf49",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Martin Luther King, Jr. National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 7,
+            "name": "Historic Oakland Cemetery",
+            "pageUrl": "https://oaklandcemetery.com/",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/674fb87550d16033675b3324/e43e761d-cbec-424b-914c-73c0106a93b8/texture1+%284%29.png?format=1500w",
+            "imageSha256": "ce03696b7def050944fe4af4572a69dae6e6a44a3bfd919cda704d7345653393",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Historic Oakland Cemetery; verify reuse terms before public publication."
+          },
+          {
+            "rank": 8,
+            "name": "Dahlonega Historic Square",
+            "pageUrl": "https://www.dahlonega.org/things-to-do/attractions/historic-downtown/",
+            "imageUrl": "https://www.dahlonega.org/imager/cmsimages/main-images/1272913/Gold_Museum_Summer_4a6a5cea-1827-456c-a36d-22569855b9bd_91852798b59be8b28fc00edfe4aec23a.png",
+            "imageSha256": "1d18e111d176d805b32f8e18ae1d4ae7df6e9619100a8ed721d0f17aa82989f8",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Dahlonega Historic Square; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a06-preference-bars-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s06",
+          "beatId": "b06",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a07-decision-board",
+      "kind": "diagram",
+      "claim": "Show the Day Trips & Unusual Experiences evidence required for scene 7 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a07-decision-board.png",
+      "sha256": "68b809629ff68144ebeb5a8f6f258ce93ff564b00ced10b582c4ae5c0b533b2f",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:day-trips-unusual-experiences:a07-decision-board",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "BAPS Shri Swaminarayan Mandir Atlanta",
+            "pageUrl": "https://www.baps.org/Global-Network/North-America/Atlanta.aspx",
+            "imageUrl": "https://www.baps.org/Data/Sites/1/Media/ModuleRotatorImages/1000113779.jpg",
+            "imageSha256": "f6cc3309e24f186eec3b97d0faca6930ac4e4b80a59b4786fbe5e7e824d375d7",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for BAPS Shri Swaminarayan Mandir Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Etowah Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "62df838029a9bf06c77175c6281690a130a4e28a8296044445507a169f5f23f1",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Mounds State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 6,
+            "name": "Martin Luther King, Jr. National Historical Park",
+            "pageUrl": "https://www.nps.gov/malu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/grid_builder/malu/crop16_9/C5BE8CA9-B173-FEEF-A7F4610532393282.jpg?width=1300&quality=80&mode=crop&format=webp",
+            "imageSha256": "1c6d669442772a8c9ba72c580928204f326c7245b9c75623c42fc7decf0baf49",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Martin Luther King, Jr. National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 7,
+            "name": "Historic Oakland Cemetery",
+            "pageUrl": "https://oaklandcemetery.com/",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/674fb87550d16033675b3324/e43e761d-cbec-424b-914c-73c0106a93b8/texture1+%284%29.png?format=1500w",
+            "imageSha256": "ce03696b7def050944fe4af4572a69dae6e6a44a3bfd919cda704d7345653393",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Historic Oakland Cemetery; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a07-decision-board-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s07",
+          "beatId": "b07",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a08-planner-callback",
+      "kind": "diagram",
+      "claim": "Show the Day Trips & Unusual Experiences evidence required for scene 8 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a08-planner-callback.png",
+      "sha256": "5a275080700c6cd6b549983cea142101a23f333fc165b385b6d9b83f1dcbdd1b",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:day-trips-unusual-experiences:a08-planner-callback",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "BAPS Shri Swaminarayan Mandir Atlanta",
+            "pageUrl": "https://www.baps.org/Global-Network/North-America/Atlanta.aspx",
+            "imageUrl": "https://www.baps.org/Data/Sites/1/Media/ModuleRotatorImages/1000113779.jpg",
+            "imageSha256": "f6cc3309e24f186eec3b97d0faca6930ac4e4b80a59b4786fbe5e7e824d375d7",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for BAPS Shri Swaminarayan Mandir Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Etowah Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "62df838029a9bf06c77175c6281690a130a4e28a8296044445507a169f5f23f1",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Mounds State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 4,
+            "name": "New Echota State Historic Site",
+            "pageUrl": "https://gastateparks.org/NewEchota",
+            "imageUrl": null,
+            "imageSha256": "fdbf72728c213e09557c4f6416017d6c4ab128b00df8a1b5071c41d45fb24c99",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for New Echota State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Chief Vann House State Historic Site",
+            "pageUrl": "https://gastateparks.org/ChiefVannHouse",
+            "imageUrl": null,
+            "imageSha256": "7e4da8f84486c9df00de159fd9911861ae350a9545b838e736372b7172855303",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Chief Vann House State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 6,
+            "name": "Martin Luther King, Jr. National Historical Park",
+            "pageUrl": "https://www.nps.gov/malu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/grid_builder/malu/crop16_9/C5BE8CA9-B173-FEEF-A7F4610532393282.jpg?width=1300&quality=80&mode=crop&format=webp",
+            "imageSha256": "1c6d669442772a8c9ba72c580928204f326c7245b9c75623c42fc7decf0baf49",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Martin Luther King, Jr. National Historical Park; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a08-planner-callback-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s08",
+          "beatId": "b08",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    }
+  ]
+}

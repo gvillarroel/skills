@@ -1,5 +1,5 @@
 <template>
-  <section class="chart-type-slide" data-example-id="slidev-echarts" data-pattern-page="true" :data-chart-type="spec.type" :data-pattern-id="`slidev-echarts-chart-${spec.type}`">
+  <section class="chart-type-slide" :data-example-id="sourceSlug" data-pattern-page="true" :data-chart-type="spec.type" :data-pattern-id="patternId" :data-legacy-pattern-id="`slidev-echarts-chart-${spec.type}`">
     <div class="chart-type-header">
       <div>
         <p class="eyebrow">{{ spec.type }}</p>
@@ -72,6 +72,20 @@ const props = defineProps({
 
 const chartRef = ref(null)
 const spec = computed(() => chartSpec(props.chartType))
+const publicChartSlugs = new Map([
+  ['map', 'geo-map'],
+  ['graph', 'network-graph'],
+  ['parallel', 'parallel-coordinates'],
+  ['lines', 'route-lines'],
+  ['custom', 'custom-ranges'],
+])
+const sourceSlug = computed(() => String(spec.value.type)
+  .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+  .replace(/[^a-zA-Z0-9]+/g, '-')
+  .replace(/^-|-$/g, '')
+  .toLowerCase())
+const chartSlug = computed(() => publicChartSlugs.get(sourceSlug.value) || sourceSlug.value)
+const patternId = computed(() => `slidev-echarts-${chartSlug.value}`)
 const option = computed(() => spec.value.option(props.step))
 
 function replaySvg() {

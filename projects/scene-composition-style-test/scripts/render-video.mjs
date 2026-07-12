@@ -194,7 +194,7 @@ async function main() {
       "",
       `- Preset: ${presetName}`,
       `- Runtime: HTML/SVG with D3-generated diagrams and Anime.js preview only; final capture uses deterministic timestamp rendering.`,
-      "- D3 compositions: thirds force-network, flow-spine branch, golden/root before-after bars, radial rosette checklist.",
+      "- D3 compositions: thirds force-network, flow branch, golden/root before-after bars, radial rosette checklist.",
       `- Output: ${videoPath}`,
       `- Contact sheet: ${contactSheetPath}`,
       `- Frames: ${frameCount} at ${fps} fps`,

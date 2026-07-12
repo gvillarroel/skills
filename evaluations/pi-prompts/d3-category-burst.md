@@ -1,6 +1,6 @@
 Use the `d3-animated-svg` skill to create a standalone, self-contained HTML artifact at exactly `category-burst.html`.
 
-The artifact must show a reusable `d3-pattern-category-burst` visual:
+The artifact must show a reusable `d3-category-burst` visual:
 
 - One central root circle labeled "Main category".
 - Eight subcategory circles arranged around it.

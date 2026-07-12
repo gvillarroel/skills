@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 1,
+  "videoId": "holiday2026-04-arts-culture-spiritual-heritage",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  "skillRouting": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "assets": [
+    {
+      "id": "a01-proximity-map",
+      "kind": "diagram",
+      "claim": "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 1 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a01-proximity-map.png",
+      "sha256": "5126d1e18327838a41a368925b5befba763071980aff8eae202b21c27675b7f3",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:arts-culture-spiritual-heritage:a01-proximity-map",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Sri Maha Lakshmi Temple of Atlanta",
+            "pageUrl": "https://www.srimahalakshmitempleofatlanta.org/photos.html",
+            "imageUrl": "https://nebula.wsimg.com/9594dc8da09481508c90fa219bce42bc?AccessKeyId=CD2E388447A0504018D3&disposition=0&alloworigin=1",
+            "imageSha256": "519c38eb25982265acf131cdac04d464fb2a5d3eaf1cf24797eeea546a6befcc",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Sri Maha Lakshmi Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Shirdi Sai Temple of Atlanta",
+            "pageUrl": "https://saitempleatlanta.org/about/",
+            "imageUrl": "https://saitempleatlanta.org/wp-content/uploads/2023/03/cropped-2023-Temple-Anniversary-1536x1152.jpeg",
+            "imageSha256": "aa65592151caebc77712f85821a2ff750fe61f3d0c12ee2f694a8106a42ce4ec",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Shirdi Sai Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Hindu Temple of Atlanta",
+            "pageUrl": "https://hindutempleofatlanta.org/",
+            "imageUrl": "https://hindutempleofatlanta.org/cdn/shop/files/HTA-ThisWeekend_900x.jpg?v=1781805165",
+            "imageSha256": "8e22fb57138c3569031a95b19d4e72d5fcf4f34c03246e7776e0ece7799a2486",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Hindu Temple of Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a01-proximity-map-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s01",
+          "beatId": "b01",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a02-top-1-source",
+      "kind": "screenshot",
+      "claim": "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 2 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a02-top-1-source.png",
+      "sha256": "519c38eb25982265acf131cdac04d464fb2a5d3eaf1cf24797eeea546a6befcc",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.srimahalakshmitempleofatlanta.org/photos.html",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Sri Maha Lakshmi Temple of Atlanta; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Sri Maha Lakshmi Temple of Atlanta",
+            "pageUrl": "https://www.srimahalakshmitempleofatlanta.org/photos.html",
+            "imageUrl": "https://nebula.wsimg.com/9594dc8da09481508c90fa219bce42bc?AccessKeyId=CD2E388447A0504018D3&disposition=0&alloworigin=1",
+            "imageSha256": "519c38eb25982265acf131cdac04d464fb2a5d3eaf1cf24797eeea546a6befcc",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Sri Maha Lakshmi Temple of Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a02-top-1-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s02",
+          "beatId": "b02",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a03-top-2-source",
+      "kind": "screenshot",
+      "claim": "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 3 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a03-top-2-source.png",
+      "sha256": "aa65592151caebc77712f85821a2ff750fe61f3d0c12ee2f694a8106a42ce4ec",
+      "origin": {
+        "type": "captured",
+        "uri": "https://saitempleatlanta.org/about/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Shirdi Sai Temple of Atlanta; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 2,
+            "name": "Shirdi Sai Temple of Atlanta",
+            "pageUrl": "https://saitempleatlanta.org/about/",
+            "imageUrl": "https://saitempleatlanta.org/wp-content/uploads/2023/03/cropped-2023-Temple-Anniversary-1536x1152.jpeg",
+            "imageSha256": "aa65592151caebc77712f85821a2ff750fe61f3d0c12ee2f694a8106a42ce4ec",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Shirdi Sai Temple of Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a03-top-2-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s03",
+          "beatId": "b03",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a04-top-3-source",
+      "kind": "screenshot",
+      "claim": "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 4 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a04-top-3-source.png",
+      "sha256": "8e22fb57138c3569031a95b19d4e72d5fcf4f34c03246e7776e0ece7799a2486",
+      "origin": {
+        "type": "captured",
+        "uri": "https://hindutempleofatlanta.org/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Hindu Temple of Atlanta; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 3,
+            "name": "Hindu Temple of Atlanta",
+            "pageUrl": "https://hindutempleofatlanta.org/",
+            "imageUrl": "https://hindutempleofatlanta.org/cdn/shop/files/HTA-ThisWeekend_900x.jpg?v=1781805165",
+            "imageSha256": "8e22fb57138c3569031a95b19d4e72d5fcf4f34c03246e7776e0ece7799a2486",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Hindu Temple of Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a04-top-3-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s04",
+          "beatId": "b04",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a05-top-five",
+      "kind": "diagram",
+      "claim": "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 5 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a05-top-five.png",
+      "sha256": "e8be7e5e5b7fdb0c980c8ccce24f5d92f412999dc91f44de9aaefbf3ded67d83",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:arts-culture-spiritual-heritage:a05-top-five",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Sri Maha Lakshmi Temple of Atlanta",
+            "pageUrl": "https://www.srimahalakshmitempleofatlanta.org/photos.html",
+            "imageUrl": "https://nebula.wsimg.com/9594dc8da09481508c90fa219bce42bc?AccessKeyId=CD2E388447A0504018D3&disposition=0&alloworigin=1",
+            "imageSha256": "519c38eb25982265acf131cdac04d464fb2a5d3eaf1cf24797eeea546a6befcc",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Sri Maha Lakshmi Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Shirdi Sai Temple of Atlanta",
+            "pageUrl": "https://saitempleatlanta.org/about/",
+            "imageUrl": "https://saitempleatlanta.org/wp-content/uploads/2023/03/cropped-2023-Temple-Anniversary-1536x1152.jpeg",
+            "imageSha256": "aa65592151caebc77712f85821a2ff750fe61f3d0c12ee2f694a8106a42ce4ec",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Shirdi Sai Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Hindu Temple of Atlanta",
+            "pageUrl": "https://hindutempleofatlanta.org/",
+            "imageUrl": "https://hindutempleofatlanta.org/cdn/shop/files/HTA-ThisWeekend_900x.jpg?v=1781805165",
+            "imageSha256": "8e22fb57138c3569031a95b19d4e72d5fcf4f34c03246e7776e0ece7799a2486",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Hindu Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "BAPS Shri Swaminarayan Mandir",
+            "pageUrl": "https://www.baps.org/Photos/2021/Atlanta-22890.aspx?mid=216359",
+            "imageUrl": "https://www.baps.org/Data/Sites/1/Media/GalleryImages/22890/WebImages/01___BAPS_Shri_Swaminarayan_Mandir__Atlanta__GA.JPG",
+            "imageSha256": "36a16cc9d54c06cfde7064cae2ef46fa22c3a613c33302221926901163f011a7",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for BAPS Shri Swaminarayan Mandir; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Drepung Loseling Monastery",
+            "pageUrl": "https://www.drepung.org/",
+            "imageUrl": null,
+            "imageSha256": "9b907382f2236cd3115613226fa1751e430c074d39a6a0a8ff123609dce33e62",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Drepung Loseling Monastery; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a05-top-five-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s05",
+          "beatId": "b05",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a06-preference-bars",
+      "kind": "diagram",
+      "claim": "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 6 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a06-preference-bars.png",
+      "sha256": "a78bd050653d7f12509594bbde58c8a7e4a69f96a20ec70d18f86faa0be1b8bf",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:arts-culture-spiritual-heritage:a06-preference-bars",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Sri Maha Lakshmi Temple of Atlanta",
+            "pageUrl": "https://www.srimahalakshmitempleofatlanta.org/photos.html",
+            "imageUrl": "https://nebula.wsimg.com/9594dc8da09481508c90fa219bce42bc?AccessKeyId=CD2E388447A0504018D3&disposition=0&alloworigin=1",
+            "imageSha256": "519c38eb25982265acf131cdac04d464fb2a5d3eaf1cf24797eeea546a6befcc",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Sri Maha Lakshmi Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Shirdi Sai Temple of Atlanta",
+            "pageUrl": "https://saitempleatlanta.org/about/",
+            "imageUrl": "https://saitempleatlanta.org/wp-content/uploads/2023/03/cropped-2023-Temple-Anniversary-1536x1152.jpeg",
+            "imageSha256": "aa65592151caebc77712f85821a2ff750fe61f3d0c12ee2f694a8106a42ce4ec",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Shirdi Sai Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Hindu Temple of Atlanta",
+            "pageUrl": "https://hindutempleofatlanta.org/",
+            "imageUrl": "https://hindutempleofatlanta.org/cdn/shop/files/HTA-ThisWeekend_900x.jpg?v=1781805165",
+            "imageSha256": "8e22fb57138c3569031a95b19d4e72d5fcf4f34c03246e7776e0ece7799a2486",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Hindu Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "BAPS Shri Swaminarayan Mandir",
+            "pageUrl": "https://www.baps.org/Photos/2021/Atlanta-22890.aspx?mid=216359",
+            "imageUrl": "https://www.baps.org/Data/Sites/1/Media/GalleryImages/22890/WebImages/01___BAPS_Shri_Swaminarayan_Mandir__Atlanta__GA.JPG",
+            "imageSha256": "36a16cc9d54c06cfde7064cae2ef46fa22c3a613c33302221926901163f011a7",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for BAPS Shri Swaminarayan Mandir; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Drepung Loseling Monastery",
+            "pageUrl": "https://www.drepung.org/",
+            "imageUrl": null,
+            "imageSha256": "9b907382f2236cd3115613226fa1751e430c074d39a6a0a8ff123609dce33e62",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Drepung Loseling Monastery; private family-planning use."
+          },
+          {
+            "rank": 6,
+            "name": "Spelman College Museum of Fine Art",
+            "pageUrl": "https://discoveratlanta.com/things-to-do/arts-culture/art-galleries/spelman-college-museum-of-fine-art/",
+            "imageUrl": "https://discoveratlanta.com/wp-content/themes/atlanta/assets/images/50Fun_thumbnail.jpg",
+            "imageSha256": "682146762fb6a8f91696be6584ad947416995aa5be65edffcbbc696896d714de",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Spelman College Museum of Fine Art; verify reuse terms before public publication."
+          },
+          {
+            "rank": 7,
+            "name": "Hammonds House Museum",
+            "pageUrl": "https://www.hammondshousemuseum.org/exhibitions",
+            "imageUrl": null,
+            "imageSha256": "e1bf5010f79fcc9a74785d0dc6fd24d859f40b1ee3cf9d6843d4a1de5b87e246",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Hammonds House Museum; private family-planning use."
+          },
+          {
+            "rank": 8,
+            "name": "Annunciation Greek Orthodox Cathedral",
+            "pageUrl": "https://www.atlgoc.org/",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/56d3a66a859fd0668189e525/1495634755915-GD4CJVV4PTHXCD28WKME/CS3_0590.jpg?format=1500w",
+            "imageSha256": "bfb96e76a7654ae5b487f490b0d9232154a4b7654e837acb243d247534df9526",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Annunciation Greek Orthodox Cathedral; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a06-preference-bars-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s06",
+          "beatId": "b06",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a07-decision-board",
+      "kind": "diagram",
+      "claim": "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 7 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a07-decision-board.png",
+      "sha256": "d904f1a75d1678fa1b1eda18303782a31260197b086dbe1bf64feaef242e4b72",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:arts-culture-spiritual-heritage:a07-decision-board",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Sri Maha Lakshmi Temple of Atlanta",
+            "pageUrl": "https://www.srimahalakshmitempleofatlanta.org/photos.html",
+            "imageUrl": "https://nebula.wsimg.com/9594dc8da09481508c90fa219bce42bc?AccessKeyId=CD2E388447A0504018D3&disposition=0&alloworigin=1",
+            "imageSha256": "519c38eb25982265acf131cdac04d464fb2a5d3eaf1cf24797eeea546a6befcc",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Sri Maha Lakshmi Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Shirdi Sai Temple of Atlanta",
+            "pageUrl": "https://saitempleatlanta.org/about/",
+            "imageUrl": "https://saitempleatlanta.org/wp-content/uploads/2023/03/cropped-2023-Temple-Anniversary-1536x1152.jpeg",
+            "imageSha256": "aa65592151caebc77712f85821a2ff750fe61f3d0c12ee2f694a8106a42ce4ec",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Shirdi Sai Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "BAPS Shri Swaminarayan Mandir",
+            "pageUrl": "https://www.baps.org/Photos/2021/Atlanta-22890.aspx?mid=216359",
+            "imageUrl": "https://www.baps.org/Data/Sites/1/Media/GalleryImages/22890/WebImages/01___BAPS_Shri_Swaminarayan_Mandir__Atlanta__GA.JPG",
+            "imageSha256": "36a16cc9d54c06cfde7064cae2ef46fa22c3a613c33302221926901163f011a7",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for BAPS Shri Swaminarayan Mandir; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Drepung Loseling Monastery",
+            "pageUrl": "https://www.drepung.org/",
+            "imageUrl": null,
+            "imageSha256": "9b907382f2236cd3115613226fa1751e430c074d39a6a0a8ff123609dce33e62",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Drepung Loseling Monastery; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a07-decision-board-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s07",
+          "beatId": "b07",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a08-planner-callback",
+      "kind": "diagram",
+      "claim": "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 8 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a08-planner-callback.png",
+      "sha256": "c6ace17c72967463b4503a8e24fb575032cc1075f32fc0068f52936e4d45fafc",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:arts-culture-spiritual-heritage:a08-planner-callback",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Sri Maha Lakshmi Temple of Atlanta",
+            "pageUrl": "https://www.srimahalakshmitempleofatlanta.org/photos.html",
+            "imageUrl": "https://nebula.wsimg.com/9594dc8da09481508c90fa219bce42bc?AccessKeyId=CD2E388447A0504018D3&disposition=0&alloworigin=1",
+            "imageSha256": "519c38eb25982265acf131cdac04d464fb2a5d3eaf1cf24797eeea546a6befcc",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Sri Maha Lakshmi Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Shirdi Sai Temple of Atlanta",
+            "pageUrl": "https://saitempleatlanta.org/about/",
+            "imageUrl": "https://saitempleatlanta.org/wp-content/uploads/2023/03/cropped-2023-Temple-Anniversary-1536x1152.jpeg",
+            "imageSha256": "aa65592151caebc77712f85821a2ff750fe61f3d0c12ee2f694a8106a42ce4ec",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Shirdi Sai Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Hindu Temple of Atlanta",
+            "pageUrl": "https://hindutempleofatlanta.org/",
+            "imageUrl": "https://hindutempleofatlanta.org/cdn/shop/files/HTA-ThisWeekend_900x.jpg?v=1781805165",
+            "imageSha256": "8e22fb57138c3569031a95b19d4e72d5fcf4f34c03246e7776e0ece7799a2486",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Hindu Temple of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "BAPS Shri Swaminarayan Mandir",
+            "pageUrl": "https://www.baps.org/Photos/2021/Atlanta-22890.aspx?mid=216359",
+            "imageUrl": "https://www.baps.org/Data/Sites/1/Media/GalleryImages/22890/WebImages/01___BAPS_Shri_Swaminarayan_Mandir__Atlanta__GA.JPG",
+            "imageSha256": "36a16cc9d54c06cfde7064cae2ef46fa22c3a613c33302221926901163f011a7",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for BAPS Shri Swaminarayan Mandir; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Drepung Loseling Monastery",
+            "pageUrl": "https://www.drepung.org/",
+            "imageUrl": null,
+            "imageSha256": "9b907382f2236cd3115613226fa1751e430c074d39a6a0a8ff123609dce33e62",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Drepung Loseling Monastery; private family-planning use."
+          },
+          {
+            "rank": 6,
+            "name": "Spelman College Museum of Fine Art",
+            "pageUrl": "https://discoveratlanta.com/things-to-do/arts-culture/art-galleries/spelman-college-museum-of-fine-art/",
+            "imageUrl": "https://discoveratlanta.com/wp-content/themes/atlanta/assets/images/50Fun_thumbnail.jpg",
+            "imageSha256": "682146762fb6a8f91696be6584ad947416995aa5be65edffcbbc696896d714de",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Spelman College Museum of Fine Art; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a08-planner-callback-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s08",
+          "beatId": "b08",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    }
+  ]
+}

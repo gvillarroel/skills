@@ -1,6 +1,6 @@
 # Calendar Heatmap
 
-- **Pattern ID:** `d3-pattern-calendar`
+- **Pattern ID:** `d3-calendar`
 - **Gallery source ID:** `calendar`
 - **Family:** Heatmap
 - **Use when:** Repeated temporal cells with intensity.

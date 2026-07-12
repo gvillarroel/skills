@@ -19,7 +19,7 @@ The first render used a repeated diagnostic sweep behind each scene to keep the 
 - **Composition sampler**: each scene uses a different composition family while preserving one request-token vocabulary.
 - **D3 armature sampler**: each scene uses a different D3-friendly structure so motion comes from the diagram itself.
 
-Chosen metaphor: D3 armature sampler. It tests a thirds force-network, a flow-spine branch, a golden/root before-after chart, and a radial rosette checklist in one short piece.
+Chosen metaphor: D3 armature sampler. It tests a thirds force-network, a flow branch, a golden/root before-after chart, and a radial rosette checklist in one short piece.
 
 Rejected reuse: a repeated background sweep. It kept pixels changing but did not preserve a semantic role across scenes, so it read as decoration.
 

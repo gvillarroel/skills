@@ -1,0 +1,132 @@
+{
+  "projectId": "holiday2026-05-family-attractions-indoor-play",
+  "title": "Holiday 2026: Family Attractions & Indoor Play",
+  "format": "source-backed family planning explainer",
+  "runtime": "0:48",
+  "toolchain": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "contracts": {
+    "sourcePackage": "source/source-package.json",
+    "shotContract": "source/shot-contract.json",
+    "assetManifest": "source/asset-manifest.json",
+    "compositionPlan": "source/composition-plan.json",
+    "transitionPlan": "source/transition-plan.json",
+    "visualReview": "artifacts/reviews/visual-review.json",
+    "validationReport": "artifacts/reviews/asset-composition-validation.json"
+  },
+  "paths": {
+    "brief": "source/brief.md",
+    "sourcePackage": "source/source-package.json",
+    "shotContract": "source/shot-contract.json",
+    "designNote": "source/design-note.md",
+    "productionNotes": "source/production-notes.md",
+    "patternBlueprintJson": "source/pattern-blueprint.json",
+    "patternBlueprintMarkdown": "source/pattern-blueprint.md",
+    "assetManifest": "source/asset-manifest.json",
+    "compositionPlan": "source/composition-plan.json",
+    "transitionPlan": "source/transition-plan.json",
+    "visualReview": "artifacts/reviews/visual-review.json",
+    "visualContractValidation": "artifacts/reviews/asset-composition-validation.json",
+    "renderer": "src/index.html",
+    "storyboard": "src/storyboard.md",
+    "voiceoverCuesJson": "artifacts/audio/voiceover-cues.json",
+    "voiceoverCuesSrt": "artifacts/audio/voiceover-cues.srt",
+    "voiceoverCuesCsv": "artifacts/audio/voiceover-cues.csv",
+    "finalAudio": "artifacts/audio/final-audio.m4a",
+    "video": "artifacts/videos/05-family-attractions-indoor-play.mp4",
+    "contactSheet": "artifacts/reviews/contact-sheet.jpg",
+    "rendererValidation": "artifacts/reviews/renderer-contract.json",
+    "renderState": "artifacts/reviews/render-state.json",
+    "qualityReport": "artifacts/reviews/quality-report.json",
+    "motionReport": "artifacts/reviews/motion-report.json",
+    "captureManifest": "artifacts/reviews/capture-manifest.json",
+    "audioReport": "artifacts/reviews/audio-report.json",
+    "readinessScore": "artifacts/reviews/readiness-score.json",
+    "styleFidelity": "artifacts/reviews/style-fidelity.json",
+    "packageValidation": "artifacts/reviews/package-validation.json"
+  },
+  "commands": {
+    "selectPatterns": "uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/select_video_patterns.py --title \"Holiday 2026\" --promise \"Family planning\" --format \"compressed explainer\" --runtime \"0:48\" --output source/pattern-blueprint.json --json",
+    "briefValidation": "uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/check_video_brief.py source/brief.md --min-beats 8 --require-voiceover --min-voiceover-lines 8 --require-source-links --json",
+    "visualContractValidation": "uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/check_visual_contract.py --asset-manifest source/asset-manifest.json --composition-plan source/composition-plan.json --visual-review artifacts/reviews/visual-review.json --video artifacts/videos/05-family-attractions-indoor-play.mp4 --brief source/brief.md --project-root . --min-assets 8 --min-scenes 8 --require-ready-assets --require-specialist-routing --require-source-routing --require-reviewed-scenes --output artifacts/reviews/asset-composition-validation.json --json",
+    "rendererValidation": "uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/check_renderer_contract.py src/index.html --brief source/brief.md --duration 48 --require-all-brief-beats --asset-manifest source/asset-manifest.json --composition-plan source/composition-plan.json --require-visual-ids --output artifacts/reviews/renderer-contract.json --json",
+    "renderVideo": "uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/render_concept_video.py src/index.html artifacts/videos/05-family-attractions-indoor-play.mp4 --brief source/brief.md --require-all-brief-beats --duration 48 --fps 30 --capture-fps 6 --force --contact-sheet artifacts/reviews/contact-sheet.jpg --quality-report artifacts/reviews/quality-report.json --motion-report artifacts/reviews/motion-report.json --capture-manifest artifacts/reviews/capture-manifest.json --render-state-report artifacts/reviews/render-state.json --audio-report artifacts/reviews/audio-report.json --audio-file artifacts/audio/final-audio.m4a --json",
+    "videoValidation": "uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/check_video_artifact.py artifacts/videos/05-family-attractions-indoor-play.mp4 --expect-width 1280 --expect-height 720 --expect-fps 30 --expect-duration 48 --duration-tolerance 0.7 --require-audio --audio-report artifacts/reviews/audio-report.json --require-audio-report --require-final-audio --contact-sheet artifacts/reviews/contact-sheet.jpg --quality-report artifacts/reviews/quality-report.json --motion-report artifacts/reviews/motion-report.json --capture-manifest artifacts/reviews/capture-manifest.json --json",
+    "scoreReadiness": "uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/score_video_readiness.py --brief source/brief.md --video artifacts/videos/05-family-attractions-indoor-play.mp4 --renderer src/index.html --renderer-report artifacts/reviews/renderer-contract.json --quality-report artifacts/reviews/quality-report.json --motion-report artifacts/reviews/motion-report.json --capture-manifest artifacts/reviews/capture-manifest.json --audio-report artifacts/reviews/audio-report.json --require-final-audio --contact-sheet artifacts/reviews/contact-sheet.jpg --require-voiceover --require-source-links --output artifacts/reviews/readiness-score.json --json",
+    "styleFidelity": "uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/score_style_fidelity.py --brief source/brief.md --pattern-blueprint source/pattern-blueprint.json --require-voiceover --require-pattern-blueprint --require-source-links --output artifacts/reviews/style-fidelity.json --json",
+    "packageValidation": "uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/check_production_package.py --brief source/brief.md --video artifacts/videos/05-family-attractions-indoor-play.mp4 --design-note source/design-note.md --production-notes source/production-notes.md --package-manifest source/package-manifest.json --pattern-blueprint source/pattern-blueprint.json --asset-manifest source/asset-manifest.json --composition-plan source/composition-plan.json --visual-review artifacts/reviews/visual-review.json --visual-contract-report artifacts/reviews/asset-composition-validation.json --renderer src/index.html --renderer-report artifacts/reviews/renderer-contract.json --readiness-report artifacts/reviews/readiness-score.json --style-fidelity-report artifacts/reviews/style-fidelity.json --contact-sheet artifacts/reviews/contact-sheet.jpg --quality-report artifacts/reviews/quality-report.json --motion-report artifacts/reviews/motion-report.json --capture-manifest artifacts/reviews/capture-manifest.json --audio-report artifacts/reviews/audio-report.json --expect-duration 48 --duration-tolerance 0.7 --require-audio --require-audio-report --require-final-audio --require-voiceover --require-source-links --require-design-note --require-production-notes --require-package-manifest --require-pattern-blueprint --require-visual-contract --require-ready-assets --require-specialist-routing --require-source-routing --require-reviewed-scenes --require-renderer --forbid-scaffold-renderer --require-contact-sheet --require-motion-report --require-renderer-report --require-renderer-beat-coverage --require-renderer-visual-coverage --require-readiness-report --require-style-fidelity-report --require-final-review-notes --min-readiness-score 18 --min-style-fidelity-score 12 --json"
+  }
+}

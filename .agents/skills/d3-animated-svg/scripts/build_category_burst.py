@@ -199,7 +199,7 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="category-burst" data-pattern-id="d3-pattern-category-burst" viewBox="0 0 {WIDTH} {HEIGHT}"
+  <svg id="category-burst" data-pattern-id="d3-category-burst" viewBox="0 0 {WIDTH} {HEIGHT}"
     role="img" aria-labelledby="category-burst-title category-burst-desc">
     <title id="category-burst-title">Category burst</title>
     <desc id="category-burst-desc">A central main category appears, draws curved spokes outward, and settles eight floating subcategory circles into a radial concept map.</desc>

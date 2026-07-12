@@ -1,6 +1,6 @@
 # You Draw It
 
-- **Pattern ID:** `d3-pattern-you-draw-it`
+- **Pattern ID:** `d3-you-draw-it`
 - **Gallery source ID:** `you-draw-it`
 - **Family:** Prediction
 - **Use when:** A guessed trajectory reveals against the observed series.

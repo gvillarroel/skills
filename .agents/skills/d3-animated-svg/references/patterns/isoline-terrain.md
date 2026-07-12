@@ -1,6 +1,6 @@
 # Isoline Terrain
 
-- **Pattern ID:** `d3-pattern-isoline-terrain`
+- **Pattern ID:** `d3-isoline-terrain`
 - **Gallery source ID:** `isoline-terrain`
 - **Family:** Surface
 - **Use when:** A scalar grid becomes nested elevation bands.

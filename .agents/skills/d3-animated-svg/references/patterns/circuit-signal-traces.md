@@ -1,6 +1,6 @@
 # Circuit Signal Traces
 
-- **Pattern ID:** `d3-pattern-circuit-signal-traces`
+- **Pattern ID:** `d3-circuit-signal-traces`
 - **Gallery source ID:** standalone pattern recipe
 - **Family:** Circuit
 - **Use when:** A circuit-board visual metaphor should show signals, bus handshakes, diagnostic pulses, blocked segments, or rerouted paths moving through deterministic orthogonal traces.
@@ -54,7 +54,7 @@ Supported modes:
 
 ## Geometry Contract
 
-1. Use a root SVG with `viewBox="0 0 760 440"`, a `<title>`, a `<desc>`, and `data-pattern-id="d3-pattern-circuit-signal-traces"`.
+1. Use a root SVG with `viewBox="0 0 760 440"`, a `<title>`, a `<desc>`, and `data-pattern-id="d3-circuit-signal-traces"`.
 2. Draw a neutral board surface first, then a faint rectilinear grid or pin field.
 3. Draw passive trace paths as `.circuit-trace` with rounded caps and joins. Use `data-trace-id`, `data-signal`, and `data-mode`.
 4. Draw vias at corners or branch points as `.circuit-via` rings. Keep them smaller than endpoint pads.
@@ -105,7 +105,7 @@ function tracePath(points) {
 
 const svg = d3.select("svg")
   .attr("viewBox", "0 0 760 440")
-  .attr("data-pattern-id", "d3-pattern-circuit-signal-traces")
+  .attr("data-pattern-id", "d3-circuit-signal-traces")
   .attr("data-pattern-family", "circuit")
   .attr("data-node-count", nodes.length)
   .attr("data-trace-count", traces.length)
@@ -165,7 +165,7 @@ pulses.append("animateMotion")
 
 ## Validation Hooks
 
-- Root SVG exposes `data-pattern-id="d3-pattern-circuit-signal-traces"` and `data-pattern-family="circuit"`.
+- Root SVG exposes `data-pattern-id="d3-circuit-signal-traces"` and `data-pattern-family="circuit"`.
 - Root SVG exposes `data-node-count` and `data-trace-count`; these values match rendered `.circuit-node` and `.circuit-trace` counts.
 - Every `.circuit-trace` has a non-empty `d` attribute, `data-trace-id`, `data-signal`, and `data-mode`.
 - Every active trace has at least one `.circuit-pulse` with an `<animateMotion>` child.

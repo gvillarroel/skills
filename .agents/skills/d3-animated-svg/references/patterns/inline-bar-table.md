@@ -1,6 +1,6 @@
 # Inline Bar Table
 
-- **Pattern ID:** `d3-pattern-inline-bar-table`
+- **Pattern ID:** `d3-inline-bar-table`
 - **Gallery source ID:** `inline-bar-table`
 - **Family:** Table
 - **Use when:** A compact token-price table embeds bars directly inside input and output cost cells.

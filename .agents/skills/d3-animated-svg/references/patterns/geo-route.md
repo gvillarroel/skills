@@ -1,6 +1,6 @@
 # Projected Routes
 
-- **Pattern ID:** `d3-pattern-geo-route`
+- **Pattern ID:** `d3-geo-route`
 - **Gallery source ID:** `geo-route`
 - **Family:** Geospatial
 - **Use when:** Coordinates, projection, and route motion.

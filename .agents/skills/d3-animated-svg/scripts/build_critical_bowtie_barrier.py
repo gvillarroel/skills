@@ -253,13 +253,13 @@ def build_svg() -> str:
             f'<animateMotion dur="3.4s" begin="{0.74 + index * 0.34:.2f}s" repeatCount="indefinite"><mpath href="#{path_id}"/></animateMotion></circle>'
         )
 
-    return f"""<svg id="critical-bowtie-barrier" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-  aria-labelledby="critical-bowtie-barrier-title critical-bowtie-barrier-desc"
-  data-pattern-id="d3-pattern-critical-bowtie-barrier" data-pattern-family="critical-bowtie-barrier"
+    return f"""<svg id="bowtie-barriers" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
+  aria-labelledby="bowtie-barriers-title bowtie-barriers-desc"
+  data-pattern-id="d3-bowtie-barriers" data-pattern-family="bowtie-barriers"
   data-threat-count="4" data-preventive-barrier-count="4" data-mitigative-barrier-count="4" data-consequence-count="4"
   data-barrier-count="8" data-critical-gap-count="2" data-degradation-control-count="3" data-top-event="loss-of-containment">
-  <title id="critical-bowtie-barrier-title">Critical bowtie barrier</title>
-  <desc id="critical-bowtie-barrier-desc">A bowtie barrier diagram maps threats, a top event, preventive barriers, mitigative barriers, consequences, and degraded controls.</desc>
+  <title id="bowtie-barriers-title">Critical bowtie barrier</title>
+  <desc id="bowtie-barriers-desc">A bowtie barrier diagram maps threats, a top event, preventive barriers, mitigative barriers, consequences, and degraded controls.</desc>
   <defs>
     <marker id="critical-bowtie-threat" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0L8,4L0,8Z" fill="{color('orange')}"/></marker>
     <marker id="critical-bowtie-consequence" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0L8,4L0,8Z" fill="{color('purple')}"/></marker>

@@ -1,6 +1,6 @@
 # MLP Simple
 
-- **Pattern ID:** `d3-pattern-mlp-simple`
+- **Pattern ID:** `d3-mlp-simple`
 - **Gallery source ID:** `mlp-simple`
 - **Family:** AI
 - **Use when:** Gray neurons pulse red one layer at a time.

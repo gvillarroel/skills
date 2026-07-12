@@ -1,6 +1,6 @@
 # Candlestick
 
-- **Pattern ID:** `d3-pattern-candlestick`
+- **Pattern ID:** `d3-candlestick`
 - **Gallery source ID:** `candlestick`
 - **Family:** Financial
 - **Use when:** Open-high-low-close movement with wicks.

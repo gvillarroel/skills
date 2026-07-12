@@ -1,6 +1,6 @@
 # Parallel Sets
 
-- **Pattern ID:** `d3-pattern-parallel-sets`
+- **Pattern ID:** `d3-parallel-sets`
 - **Gallery source ID:** `parallel-sets`
 - **Family:** Flow
 - **Use when:** Categorical ribbons connect counts across multiple dimensions.

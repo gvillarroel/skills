@@ -117,7 +117,7 @@ def phyllotaxis_markup() -> str:
       </circle>"""
         )
     return f"""
-    <g class="organic-variant phyllotaxis-seed-head" data-pattern-id="d3-pattern-phyllotaxis-seed-head"
+    <g class="organic-variant phyllotaxis-seed-head" data-pattern-id="d3-phyllotaxis-seed-head"
       data-pattern-family="organic-growth" data-seed-count="{count}" data-divergence-degrees="137.507764">
       <circle cx="{fmt(cx)}" cy="{fmt(cy)}" r="92" fill="{PALETTE['yellow_highlight']}" stroke="{PALETTE['gray200']}" stroke-width="1.2"/>
       <circle cx="{fmt(cx)}" cy="{fmt(cy)}" r="64" fill="none" stroke="{PALETTE['gray200']}" stroke-dasharray="4 6"/>
@@ -207,7 +207,7 @@ def lsystem_markup() -> str:
       </ellipse>"""
         )
     return f"""
-    <g class="organic-variant lsystem-canopy" data-pattern-id="d3-pattern-lsystem-canopy"
+    <g class="organic-variant lsystem-canopy" data-pattern-id="d3-lsystem-canopy"
       data-pattern-family="organic-growth" data-grammar="F[+F]F[-F]F" data-iteration-count="3"
       data-branch-count="{len(segments)}">
       <line x1="{fmt(x0 + 66)}" y1="{fmt(y0 + 224)}" x2="{fmt(x0 + PANEL_W - 66)}" y2="{fmt(y0 + 224)}"
@@ -274,7 +274,7 @@ def reaction_diffusion_markup() -> str:
             )
     sweep_x = gx + cols * cell + 8
     return f"""
-    <g class="organic-variant reaction-diffusion-field" data-pattern-id="d3-pattern-reaction-diffusion-field"
+    <g class="organic-variant reaction-diffusion-field" data-pattern-id="d3-reaction-diffusion-field"
       data-pattern-family="organic-growth" data-model="gray-scott" data-feed-rate="0.0367"
       data-kill-rate="0.0649" data-grid-size="{cols}x{rows}" data-step-count="82">
       <rect x="{fmt(gx - 5)}" y="{fmt(gy - 5)}" width="{fmt(cols * cell + 10)}" height="{fmt(rows * cell + 10)}"
@@ -374,7 +374,7 @@ def dla_markup() -> str:
       </circle>"""
         )
     return f"""
-    <g class="organic-variant diffusion-limited-aggregation" data-pattern-id="d3-pattern-diffusion-limited-aggregation"
+    <g class="organic-variant diffusion-limited-aggregation" data-pattern-id="d3-diffusion-limited-aggregation"
       data-pattern-family="organic-growth" data-particle-count="{len(particles)}" data-seed="20260628">
       <circle cx="{fmt(cx)}" cy="{fmt(cy)}" r="98" fill="none" stroke="{PALETTE['gray100']}" stroke-width="1.1"/>
       <g class="organic-dla-links">{''.join(links)}</g>
@@ -445,11 +445,11 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="organic-growth-patterns" data-pattern-id="d3-pattern-organic-growth-patterns"
+  <svg id="organic-growth" data-pattern-id="d3-organic-growth"
     data-pattern-family="organic-growth" data-variant-count="4" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="organic-growth-patterns-title organic-growth-patterns-desc">
-    <title id="organic-growth-patterns-title">Organic growth patterns</title>
-    <desc id="organic-growth-patterns-desc">Four deterministic organic mathematics patterns: phyllotaxis seed packing, bracketed L-system branching, Gray-Scott reaction diffusion, and diffusion-limited aggregation.</desc>
+    aria-labelledby="organic-growth-title organic-growth-desc">
+    <title id="organic-growth-title">Organic growth patterns</title>
+    <desc id="organic-growth-desc">Four deterministic organic mathematics patterns: phyllotaxis seed packing, bracketed L-system branching, Gray-Scott reaction diffusion, and diffusion-limited aggregation.</desc>
     <rect x="22" y="20" width="{WIDTH - 44}" height="{HEIGHT - 40}" rx="10" fill="{PALETTE['gray50']}" stroke="{PALETTE['gray200']}" stroke-width="1.4"/>
     <text class="root-title" x="50" y="50">Organic growth pattern lab</text>
     <text class="root-subtitle" x="50" y="70">Fractal, botanical, and morphogenesis rules converted into D3-ready SVG contracts.</text>

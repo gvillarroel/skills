@@ -1,6 +1,6 @@
 # Chord Ribbons
 
-- **Pattern ID:** `d3-pattern-chord`
+- **Pattern ID:** `d3-chord`
 - **Gallery source ID:** `chord`
 - **Family:** Flow
 - **Use when:** Reciprocal category-to-category volume.

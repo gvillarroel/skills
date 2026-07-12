@@ -1,6 +1,6 @@
 # Radial Hierarchy
 
-- **Pattern ID:** `d3-pattern-radial-hierarchy`
+- **Pattern ID:** `d3-radial-hierarchy`
 - **Gallery source ID:** `radial-hierarchy`
 - **Family:** Hierarchy
 - **Use when:** A tree layout with curved parent-child paths.

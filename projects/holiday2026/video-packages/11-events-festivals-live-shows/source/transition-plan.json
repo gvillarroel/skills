@@ -1,0 +1,493 @@
+{
+  "version": 1,
+  "videoId": "holiday2026-11-events-festivals-live-shows",
+  "sourceAnchors": [
+    "Events, Festivals & Live Shows",
+    "7010 Brassfield Dr, Cumming"
+  ],
+  "persistentElement": {
+    "name": "route marker",
+    "role": "viewer-tracked family decision state",
+    "states": [
+      "child-permitted pool map",
+      "first source",
+      "second source",
+      "third source",
+      "top-five hierarchy",
+      "preference profiles",
+      "decision board",
+      "planner callback"
+    ]
+  },
+  "transitions": [
+    {
+      "id": "t01",
+      "seamId": "s01__s02",
+      "fromScene": "s01",
+      "toScene": "s02",
+      "start": 5.55,
+      "duration": 0.9,
+      "family": "match cut axis",
+      "semanticPurpose": "Move from child-permitted pool map to first source while preserving the ranked-route mental model.",
+      "stateChange": "The route marker changes from child-permitted pool map to first source.",
+      "attentionHandoff": "The outgoing marker crosses the shared axis and lands beside the incoming focal image.",
+      "styleContinuity": "Palette, type scale, square edges, source labels and route-line weight remain stable.",
+      "alignmentRule": "Outgoing and incoming focal centers share one twelve-column grid axis at the midpoint.",
+      "edgeRule": "Preserve square hard edges and source-native screenshot boundaries through the bridge.",
+      "boxPaddingRule": "Keep image planes flush to bounds with zero hidden transition padding.",
+      "grayscaleHierarchyRule": "Primary, secondary and background roles remain distinct throughout the seam.",
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "genericMotionRejected": "A generic crossfade would reset attention and hide the decision-state change.",
+      "surprise": "The outgoing child-permitted pool map route marker becomes the incoming first source rank badge.",
+      "outgoingState": "The child-permitted pool map evidence is settled with the route marker visible.",
+      "bridgeAction": "The marker moves across the shared axis as the outgoing text clears.",
+      "incomingState": "The first source image receives the marker and becomes dominant.",
+      "compositionShift": "diagonal proximity map resolves into asymmetric source proof.",
+      "colorShift": "The category accent #8C3A67 travels with the route marker.",
+      "cameraShift": "Use only the minimum reframe required to land the next focal axis.",
+      "spaceShift": "diagonal reading path gives way to golden-root split.",
+      "validationFrames": [
+        {
+          "time": "pre-cut",
+          "target": "s01 focal and route marker",
+          "passCriterion": "Outgoing evidence and marker are visible and unclipped."
+        },
+        {
+          "time": "transition midpoint",
+          "target": "s01 to s02 shared axis",
+          "passCriterion": "The marker remains visible within one second of the seam."
+        },
+        {
+          "time": "post-cut",
+          "target": "s02 incoming focal",
+          "passCriterion": "Incoming evidence wins first eye landing without overlap."
+        }
+      ],
+      "validationChecks": [
+        {
+          "method": "three-frame seam review",
+          "target": "s01__s02",
+          "passCriterion": "Before, midpoint and after frames prove persistence and attention handoff."
+        }
+      ]
+    },
+    {
+      "id": "t02",
+      "seamId": "s02__s03",
+      "fromScene": "s02",
+      "toScene": "s03",
+      "start": 11.55,
+      "duration": 0.9,
+      "family": "persistent object",
+      "semanticPurpose": "Move from first source to second source while preserving the ranked-route mental model.",
+      "stateChange": "The route marker changes from first source to second source.",
+      "attentionHandoff": "The outgoing marker crosses the shared axis and lands beside the incoming focal image.",
+      "styleContinuity": "Palette, type scale, square edges, source labels and route-line weight remain stable.",
+      "alignmentRule": "Outgoing and incoming focal centers share one twelve-column grid axis at the midpoint.",
+      "edgeRule": "Preserve square hard edges and source-native screenshot boundaries through the bridge.",
+      "boxPaddingRule": "Keep image planes flush to bounds with zero hidden transition padding.",
+      "grayscaleHierarchyRule": "Primary, secondary and background roles remain distinct throughout the seam.",
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "genericMotionRejected": "A generic crossfade would reset attention and hide the decision-state change.",
+      "surprise": "The outgoing first source route marker becomes the incoming second source rank badge.",
+      "outgoingState": "The first source evidence is settled with the route marker visible.",
+      "bridgeAction": "The marker moves across the shared axis as the outgoing text clears.",
+      "incomingState": "The second source image receives the marker and becomes dominant.",
+      "compositionShift": "asymmetric source proof resolves into reverse editorial proof.",
+      "colorShift": "The category accent #8C3A67 travels with the route marker.",
+      "cameraShift": "Use only the minimum reframe required to land the next focal axis.",
+      "spaceShift": "golden-root split gives way to reverse golden-root split.",
+      "validationFrames": [
+        {
+          "time": "pre-cut",
+          "target": "s02 focal and route marker",
+          "passCriterion": "Outgoing evidence and marker are visible and unclipped."
+        },
+        {
+          "time": "transition midpoint",
+          "target": "s02 to s03 shared axis",
+          "passCriterion": "The marker remains visible within one second of the seam."
+        },
+        {
+          "time": "post-cut",
+          "target": "s03 incoming focal",
+          "passCriterion": "Incoming evidence wins first eye landing without overlap."
+        }
+      ],
+      "validationChecks": [
+        {
+          "method": "three-frame seam review",
+          "target": "s02__s03",
+          "passCriterion": "Before, midpoint and after frames prove persistence and attention handoff."
+        }
+      ]
+    },
+    {
+      "id": "t03",
+      "seamId": "s03__s04",
+      "fromScene": "s03",
+      "toScene": "s04",
+      "start": 17.55,
+      "duration": 0.9,
+      "family": "camera move",
+      "semanticPurpose": "Move from second source to third source while preserving the ranked-route mental model.",
+      "stateChange": "The route marker changes from second source to third source.",
+      "attentionHandoff": "The outgoing marker crosses the shared axis and lands beside the incoming focal image.",
+      "styleContinuity": "Palette, type scale, square edges, source labels and route-line weight remain stable.",
+      "alignmentRule": "Outgoing and incoming focal centers share one twelve-column grid axis at the midpoint.",
+      "edgeRule": "Preserve square hard edges and source-native screenshot boundaries through the bridge.",
+      "boxPaddingRule": "Keep image planes flush to bounds with zero hidden transition padding.",
+      "grayscaleHierarchyRule": "Primary, secondary and background roles remain distinct throughout the seam.",
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "genericMotionRejected": "A generic crossfade would reset attention and hide the decision-state change.",
+      "surprise": "The outgoing second source route marker becomes the incoming third source rank badge.",
+      "outgoingState": "The second source evidence is settled with the route marker visible.",
+      "bridgeAction": "The marker moves across the shared axis as the outgoing text clears.",
+      "incomingState": "The third source image receives the marker and becomes dominant.",
+      "compositionShift": "reverse editorial proof resolves into full-bleed source proof.",
+      "colorShift": "The category accent #8C3A67 travels with the route marker.",
+      "cameraShift": "Use only the minimum reframe required to land the next focal axis.",
+      "spaceShift": "reverse golden-root split gives way to centered hero plane.",
+      "validationFrames": [
+        {
+          "time": "pre-cut",
+          "target": "s03 focal and route marker",
+          "passCriterion": "Outgoing evidence and marker are visible and unclipped."
+        },
+        {
+          "time": "transition midpoint",
+          "target": "s03 to s04 shared axis",
+          "passCriterion": "The marker remains visible within one second of the seam."
+        },
+        {
+          "time": "post-cut",
+          "target": "s04 incoming focal",
+          "passCriterion": "Incoming evidence wins first eye landing without overlap."
+        }
+      ],
+      "validationChecks": [
+        {
+          "method": "three-frame seam review",
+          "target": "s03__s04",
+          "passCriterion": "Before, midpoint and after frames prove persistence and attention handoff."
+        }
+      ]
+    },
+    {
+      "id": "t04",
+      "seamId": "s04__s05",
+      "fromScene": "s04",
+      "toScene": "s05",
+      "start": 23.55,
+      "duration": 0.9,
+      "family": "color handoff",
+      "semanticPurpose": "Move from third source to top-five hierarchy while preserving the ranked-route mental model.",
+      "stateChange": "The route marker changes from third source to top-five hierarchy.",
+      "attentionHandoff": "The outgoing marker crosses the shared axis and lands beside the incoming focal image.",
+      "styleContinuity": "Palette, type scale, square edges, source labels and route-line weight remain stable.",
+      "alignmentRule": "Outgoing and incoming focal centers share one twelve-column grid axis at the midpoint.",
+      "edgeRule": "Preserve square hard edges and source-native screenshot boundaries through the bridge.",
+      "boxPaddingRule": "Keep image planes flush to bounds with zero hidden transition padding.",
+      "grayscaleHierarchyRule": "Primary, secondary and background roles remain distinct throughout the seam.",
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "genericMotionRejected": "A generic crossfade would reset attention and hide the decision-state change.",
+      "surprise": "The outgoing third source route marker becomes the incoming top-five hierarchy rank badge.",
+      "outgoingState": "The third source evidence is settled with the route marker visible.",
+      "bridgeAction": "The marker moves across the shared axis as the outgoing text clears.",
+      "incomingState": "The top-five hierarchy image receives the marker and becomes dominant.",
+      "compositionShift": "full-bleed source proof resolves into ranked comparison strip.",
+      "colorShift": "The category accent #8C3A67 travels with the route marker.",
+      "cameraShift": "Use only the minimum reframe required to land the next focal axis.",
+      "spaceShift": "centered hero plane gives way to horizontal rank spine.",
+      "validationFrames": [
+        {
+          "time": "pre-cut",
+          "target": "s04 focal and route marker",
+          "passCriterion": "Outgoing evidence and marker are visible and unclipped."
+        },
+        {
+          "time": "transition midpoint",
+          "target": "s04 to s05 shared axis",
+          "passCriterion": "The marker remains visible within one second of the seam."
+        },
+        {
+          "time": "post-cut",
+          "target": "s05 incoming focal",
+          "passCriterion": "Incoming evidence wins first eye landing without overlap."
+        }
+      ],
+      "validationChecks": [
+        {
+          "method": "three-frame seam review",
+          "target": "s04__s05",
+          "passCriterion": "Before, midpoint and after frames prove persistence and attention handoff."
+        }
+      ]
+    },
+    {
+      "id": "t05",
+      "seamId": "s05__s06",
+      "fromScene": "s05",
+      "toScene": "s06",
+      "start": 29.55,
+      "duration": 0.9,
+      "family": "spatial portal reveal",
+      "semanticPurpose": "Move from top-five hierarchy to preference profiles while preserving the ranked-route mental model.",
+      "stateChange": "The route marker changes from top-five hierarchy to preference profiles.",
+      "attentionHandoff": "The outgoing marker crosses the shared axis and lands beside the incoming focal image.",
+      "styleContinuity": "Palette, type scale, square edges, source labels and route-line weight remain stable.",
+      "alignmentRule": "Outgoing and incoming focal centers share one twelve-column grid axis at the midpoint.",
+      "edgeRule": "Preserve square hard edges and source-native screenshot boundaries through the bridge.",
+      "boxPaddingRule": "Keep image planes flush to bounds with zero hidden transition padding.",
+      "grayscaleHierarchyRule": "Primary, secondary and background roles remain distinct throughout the seam.",
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "genericMotionRejected": "A generic crossfade would reset attention and hide the decision-state change.",
+      "surprise": "The outgoing top-five hierarchy route marker becomes the incoming preference profiles rank badge.",
+      "outgoingState": "The top-five hierarchy evidence is settled with the route marker visible.",
+      "bridgeAction": "The marker moves across the shared axis as the outgoing text clears.",
+      "incomingState": "The preference profiles image receives the marker and becomes dominant.",
+      "compositionShift": "ranked comparison strip resolves into preference profile chart.",
+      "colorShift": "The category accent #8C3A67 travels with the route marker.",
+      "cameraShift": "Use only the minimum reframe required to land the next focal axis.",
+      "spaceShift": "horizontal rank spine gives way to priority ladder field.",
+      "validationFrames": [
+        {
+          "time": "pre-cut",
+          "target": "s05 focal and route marker",
+          "passCriterion": "Outgoing evidence and marker are visible and unclipped."
+        },
+        {
+          "time": "transition midpoint",
+          "target": "s05 to s06 shared axis",
+          "passCriterion": "The marker remains visible within one second of the seam."
+        },
+        {
+          "time": "post-cut",
+          "target": "s06 incoming focal",
+          "passCriterion": "Incoming evidence wins first eye landing without overlap."
+        }
+      ],
+      "validationChecks": [
+        {
+          "method": "three-frame seam review",
+          "target": "s05__s06",
+          "passCriterion": "Before, midpoint and after frames prove persistence and attention handoff."
+        }
+      ]
+    },
+    {
+      "id": "t06",
+      "seamId": "s06__s07",
+      "fromScene": "s06",
+      "toScene": "s07",
+      "start": 35.55,
+      "duration": 0.9,
+      "family": "morph continuity",
+      "semanticPurpose": "Move from preference profiles to decision board while preserving the ranked-route mental model.",
+      "stateChange": "The route marker changes from preference profiles to decision board.",
+      "attentionHandoff": "The outgoing marker crosses the shared axis and lands beside the incoming focal image.",
+      "styleContinuity": "Palette, type scale, square edges, source labels and route-line weight remain stable.",
+      "alignmentRule": "Outgoing and incoming focal centers share one twelve-column grid axis at the midpoint.",
+      "edgeRule": "Preserve square hard edges and source-native screenshot boundaries through the bridge.",
+      "boxPaddingRule": "Keep image planes flush to bounds with zero hidden transition padding.",
+      "grayscaleHierarchyRule": "Primary, secondary and background roles remain distinct throughout the seam.",
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "genericMotionRejected": "A generic crossfade would reset attention and hide the decision-state change.",
+      "surprise": "The outgoing preference profiles route marker becomes the incoming decision board rank badge.",
+      "outgoingState": "The preference profiles evidence is settled with the route marker visible.",
+      "bridgeAction": "The marker moves across the shared axis as the outgoing text clears.",
+      "incomingState": "The decision board image receives the marker and becomes dominant.",
+      "compositionShift": "preference profile chart resolves into decision matrix.",
+      "colorShift": "The category accent #8C3A67 travels with the route marker.",
+      "cameraShift": "Use only the minimum reframe required to land the next focal axis.",
+      "spaceShift": "priority ladder field gives way to modular decision grid.",
+      "validationFrames": [
+        {
+          "time": "pre-cut",
+          "target": "s06 focal and route marker",
+          "passCriterion": "Outgoing evidence and marker are visible and unclipped."
+        },
+        {
+          "time": "transition midpoint",
+          "target": "s06 to s07 shared axis",
+          "passCriterion": "The marker remains visible within one second of the seam."
+        },
+        {
+          "time": "post-cut",
+          "target": "s07 incoming focal",
+          "passCriterion": "Incoming evidence wins first eye landing without overlap."
+        }
+      ],
+      "validationChecks": [
+        {
+          "method": "three-frame seam review",
+          "target": "s06__s07",
+          "passCriterion": "Before, midpoint and after frames prove persistence and attention handoff."
+        }
+      ]
+    },
+    {
+      "id": "t07",
+      "seamId": "s07__s08",
+      "fromScene": "s07",
+      "toScene": "s08",
+      "start": 41.55,
+      "duration": 0.9,
+      "family": "negative space cut",
+      "semanticPurpose": "Move from decision board to planner callback while preserving the ranked-route mental model.",
+      "stateChange": "The route marker changes from decision board to planner callback.",
+      "attentionHandoff": "The outgoing marker crosses the shared axis and lands beside the incoming focal image.",
+      "styleContinuity": "Palette, type scale, square edges, source labels and route-line weight remain stable.",
+      "alignmentRule": "Outgoing and incoming focal centers share one twelve-column grid axis at the midpoint.",
+      "edgeRule": "Preserve square hard edges and source-native screenshot boundaries through the bridge.",
+      "boxPaddingRule": "Keep image planes flush to bounds with zero hidden transition padding.",
+      "grayscaleHierarchyRule": "Primary, secondary and background roles remain distinct throughout the seam.",
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "genericMotionRejected": "A generic crossfade would reset attention and hide the decision-state change.",
+      "surprise": "The outgoing decision board route marker becomes the incoming planner callback rank badge.",
+      "outgoingState": "The decision board evidence is settled with the route marker visible.",
+      "bridgeAction": "The marker moves across the shared axis as the outgoing text clears.",
+      "incomingState": "The planner callback image receives the marker and becomes dominant.",
+      "compositionShift": "decision matrix resolves into planner callback map.",
+      "colorShift": "The category accent #8C3A67 travels with the route marker.",
+      "cameraShift": "Use only the minimum reframe required to land the next focal axis.",
+      "spaceShift": "modular decision grid gives way to radial route callback.",
+      "validationFrames": [
+        {
+          "time": "pre-cut",
+          "target": "s07 focal and route marker",
+          "passCriterion": "Outgoing evidence and marker are visible and unclipped."
+        },
+        {
+          "time": "transition midpoint",
+          "target": "s07 to s08 shared axis",
+          "passCriterion": "The marker remains visible within one second of the seam."
+        },
+        {
+          "time": "post-cut",
+          "target": "s08 incoming focal",
+          "passCriterion": "Incoming evidence wins first eye landing without overlap."
+        }
+      ],
+      "validationChecks": [
+        {
+          "method": "three-frame seam review",
+          "target": "s07__s08",
+          "passCriterion": "Before, midpoint and after frames prove persistence and attention handoff."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1268 @@
+{
+  "version": 1,
+  "format": "1280x720",
+  "videoDirection": {
+    "sourceAnchors": [
+      "Arts, Culture, Spiritual Sites & Heritage",
+      "7010 Brassfield Dr, Cumming"
+    ],
+    "paletteTypeSource": "Soft warm route-map system with restrained category accent #6D4C7D and source-native destination imagery.",
+    "alignmentMode": "Twelve-column grid with a persistent route marker and eight-pixel baseline.",
+    "edgeCornerPolicy": "Quiet neutral borders use square hard edges and an explicit 0-radius policy.",
+    "safeZones": "Five-percent frame margin and a reserved lower source-credit band.",
+    "captionPolicy": "Narration is supported by concise scene text; no full subtitle block covers evidence.",
+    "rhythm": "A new image or data view arrives every six seconds with deliberate holds for scanning.",
+    "heldScenes": [
+      "s02 official source proof",
+      "s08 planner callback"
+    ],
+    "negativeList": [
+      "generic repeated card wall",
+      "text-only scene",
+      "decorative motion without a decision change",
+      "source labels hidden by overlays"
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "title": "Diagonal Proximity Map",
+      "duration": "0:00-0:06",
+      "beatIds": [
+        "b01"
+      ],
+      "assetIds": [
+        "a01-proximity-map"
+      ],
+      "sourceAnchors": [
+        "Arts, Culture, Spiritual Sites & Heritage",
+        "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 1 with visible source-bound destination imagery."
+      ],
+      "sceneJob": "Make diagonal proximity map answer one family-planning question.",
+      "viewerTask": "Read the focal evidence, connect it to distance or rank, and know the next decision.",
+      "compositionChoice": "diagonal proximity map",
+      "rejectedAlternatives": [
+        "text-only list with no visual evidence",
+        "repeated equal-card grid without focal hierarchy"
+      ],
+      "choiceRationale": "The diagonal proximity map gives the source image priority while preserving a clear route-marker handoff.",
+      "focal": "The a01-proximity-map image and its ranked family-planning consequence",
+      "roles": {
+        "focal": "source-bound image",
+        "support": "rank, distance and source label",
+        "handoff": "route marker"
+      },
+      "armature": "diagonal reading path",
+      "alignmentGrid": "Twelve-column frame grid with an eight-pixel baseline and named focal axis.",
+      "armatureAnchors": [
+        "Focal image locks to the dominant grid area.",
+        "Text and route marker align to the secondary axis."
+      ],
+      "edgePolicy": "Clean rectangular image plane with a quiet neutral border and source imagery preserved without color filtering.",
+      "cornerPolicy": "Square hard-edge geometry with a 0-radius policy keeps the family guide editorial rather than app-like.",
+      "boxInteriorPolicy": "Image is flush to its bounds; text uses external gutters rather than hidden padding.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external grid gutters"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "layout": "Place the focal image at normalized bounds 0.04, 0.14, 0.70, 0.78; keep decision text on the open axis.",
+      "hierarchy": "The visual image wins first eye landing, then rank and distance, then the concise family consequence.",
+      "density": "One focal image, one decision headline, one metadata line and one persistent route marker.",
+      "safeZones": {
+        "frameMargin": "five percent",
+        "captionZone": "bottom twelve percent",
+        "protectedRegion": "focal image and source label"
+      },
+      "textRegion": {
+        "placement": "Open column or overlay band outside the focal evidence center.",
+        "maxLineCharacters": 42,
+        "contrastTreatment": "Translucent warm-white backing preserves readable dark text over every destination image.",
+        "clearance": "At least one grid gutter from the focal center, frame edge and route marker."
+      },
+      "depthLayers": [
+        "background route field",
+        "midground focal image",
+        "foreground decision label and marker"
+      ],
+      "objectBounds": [
+        {
+          "id": "s01-focal",
+          "role": "focal",
+          "x": 0.04,
+          "y": 0.14,
+          "width": 0.7,
+          "height": 0.78
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal image along its governing axis.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "source clause",
+          "visualChange": "Hold the complete image and metadata for inspection.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "decision clause",
+          "visualChange": "Accent the rank or distance without moving the source label.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "handoff clause",
+          "visualChange": "Move the route marker toward the next scene axis.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Use four static keyframes that preserve image reveal, readable hold, decision emphasis and final route handoff.",
+      "outgoingSeam": {
+        "seamId": "s01__s02",
+        "fromScene": "s01",
+        "toScene": "s02",
+        "persistentElement": "The route marker remains visible as the family-planning state token.",
+        "attentionHandoff": "The marker lands on the incoming image axis before its headline appears.",
+        "beforeState": "The outgoing source image and decision signal are complete and readable.",
+        "afterState": "The incoming source image receives the marker and becomes the dominant evidence.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Expose sceneId, activeCompositionId, activeAssetIds, sourceProofAssetIds and visible object IDs.",
+      "validationChecks": [
+        {
+          "method": "full-resolution frame review",
+          "target": "s01 focal image",
+          "passCriterion": "Image is large, decoded, unclipped and visibly different from adjacent scenes."
+        },
+        {
+          "method": "renderer state and DOM review",
+          "target": "s01 IDs",
+          "passCriterion": "Asset, composition and object identifiers match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared grid and scene-specific focal axis.",
+        "safeZones": "Image, labels and route marker remain inside frame-safe regions.",
+        "edgePolicy": "Quiet neutral borders survive the final crop without filtering or masking destination imagery.",
+        "boxPadding": "Image is flush to its bounds with zero hidden internal padding.",
+        "grayscaleHierarchy": "Primary image, metadata and background remain distinct without relying on hue.",
+        "focalHierarchy": "The focal image occupies at least five percent and wins first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s01-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "remote page capture can include a consent layer",
+        "long names require controlled truncation"
+      ]
+    },
+    {
+      "id": "s02",
+      "title": "Asymmetric Source Proof",
+      "duration": "0:06-0:12",
+      "beatIds": [
+        "b02"
+      ],
+      "assetIds": [
+        "a02-top-1-source"
+      ],
+      "sourceAnchors": [
+        "Arts, Culture, Spiritual Sites & Heritage",
+        "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 2 with visible source-bound destination imagery."
+      ],
+      "sceneJob": "Make asymmetric source proof answer one family-planning question.",
+      "viewerTask": "Read the focal evidence, connect it to distance or rank, and know the next decision.",
+      "compositionChoice": "asymmetric source proof",
+      "rejectedAlternatives": [
+        "text-only list with no visual evidence",
+        "repeated equal-card grid without focal hierarchy"
+      ],
+      "choiceRationale": "The asymmetric source proof gives the source image priority while preserving a clear route-marker handoff.",
+      "focal": "The a02-top-1-source image and its ranked family-planning consequence",
+      "roles": {
+        "focal": "source-bound image",
+        "support": "rank, distance and source label",
+        "handoff": "route marker"
+      },
+      "armature": "golden-root split",
+      "alignmentGrid": "Twelve-column frame grid with an eight-pixel baseline and named focal axis.",
+      "armatureAnchors": [
+        "Focal image locks to the dominant grid area.",
+        "Text and route marker align to the secondary axis."
+      ],
+      "edgePolicy": "Clean rectangular image plane with a quiet neutral border and source imagery preserved without color filtering.",
+      "cornerPolicy": "Square hard-edge geometry with a 0-radius policy keeps the family guide editorial rather than app-like.",
+      "boxInteriorPolicy": "Image is flush to its bounds; text uses external gutters rather than hidden padding.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external grid gutters"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "layout": "Place the focal image at normalized bounds 0.04, 0.13, 0.62, 0.74; keep decision text on the open axis.",
+      "hierarchy": "The visual image wins first eye landing, then rank and distance, then the concise family consequence.",
+      "density": "One focal image, one decision headline, one metadata line and one persistent route marker.",
+      "safeZones": {
+        "frameMargin": "five percent",
+        "captionZone": "bottom twelve percent",
+        "protectedRegion": "focal image and source label"
+      },
+      "textRegion": {
+        "placement": "Open column or overlay band outside the focal evidence center.",
+        "maxLineCharacters": 42,
+        "contrastTreatment": "Translucent warm-white backing preserves readable dark text over every destination image.",
+        "clearance": "At least one grid gutter from the focal center, frame edge and route marker."
+      },
+      "depthLayers": [
+        "background route field",
+        "midground focal image",
+        "foreground decision label and marker"
+      ],
+      "objectBounds": [
+        {
+          "id": "s02-focal",
+          "role": "focal",
+          "x": 0.045,
+          "y": 0.13,
+          "width": 0.62,
+          "height": 0.74
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal image along its governing axis.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "source clause",
+          "visualChange": "Hold the complete image and metadata for inspection.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "decision clause",
+          "visualChange": "Accent the rank or distance without moving the source label.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "handoff clause",
+          "visualChange": "Move the route marker toward the next scene axis.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Use four static keyframes that preserve image reveal, readable hold, decision emphasis and final route handoff.",
+      "outgoingSeam": {
+        "seamId": "s02__s03",
+        "fromScene": "s02",
+        "toScene": "s03",
+        "persistentElement": "The route marker remains visible as the family-planning state token.",
+        "attentionHandoff": "The marker lands on the incoming image axis before its headline appears.",
+        "beforeState": "The outgoing source image and decision signal are complete and readable.",
+        "afterState": "The incoming source image receives the marker and becomes the dominant evidence.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Expose sceneId, activeCompositionId, activeAssetIds, sourceProofAssetIds and visible object IDs.",
+      "validationChecks": [
+        {
+          "method": "full-resolution frame review",
+          "target": "s02 focal image",
+          "passCriterion": "Image is large, decoded, unclipped and visibly different from adjacent scenes."
+        },
+        {
+          "method": "renderer state and DOM review",
+          "target": "s02 IDs",
+          "passCriterion": "Asset, composition and object identifiers match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared grid and scene-specific focal axis.",
+        "safeZones": "Image, labels and route marker remain inside frame-safe regions.",
+        "edgePolicy": "Quiet neutral borders survive the final crop without filtering or masking destination imagery.",
+        "boxPadding": "Image is flush to its bounds with zero hidden internal padding.",
+        "grayscaleHierarchy": "Primary image, metadata and background remain distinct without relying on hue.",
+        "focalHierarchy": "The focal image occupies at least five percent and wins first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s02-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "remote page capture can include a consent layer",
+        "long names require controlled truncation"
+      ]
+    },
+    {
+      "id": "s03",
+      "title": "Reverse Editorial Proof",
+      "duration": "0:12-0:18",
+      "beatIds": [
+        "b03"
+      ],
+      "assetIds": [
+        "a03-top-2-source"
+      ],
+      "sourceAnchors": [
+        "Arts, Culture, Spiritual Sites & Heritage",
+        "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 3 with visible source-bound destination imagery."
+      ],
+      "sceneJob": "Make reverse editorial proof answer one family-planning question.",
+      "viewerTask": "Read the focal evidence, connect it to distance or rank, and know the next decision.",
+      "compositionChoice": "reverse editorial proof",
+      "rejectedAlternatives": [
+        "text-only list with no visual evidence",
+        "repeated equal-card grid without focal hierarchy"
+      ],
+      "choiceRationale": "The reverse editorial proof gives the source image priority while preserving a clear route-marker handoff.",
+      "focal": "The a03-top-2-source image and its ranked family-planning consequence",
+      "roles": {
+        "focal": "source-bound image",
+        "support": "rank, distance and source label",
+        "handoff": "route marker"
+      },
+      "armature": "reverse golden-root split",
+      "alignmentGrid": "Twelve-column frame grid with an eight-pixel baseline and named focal axis.",
+      "armatureAnchors": [
+        "Focal image locks to the dominant grid area.",
+        "Text and route marker align to the secondary axis."
+      ],
+      "edgePolicy": "Clean rectangular image plane with a quiet neutral border and source imagery preserved without color filtering.",
+      "cornerPolicy": "Square hard-edge geometry with a 0-radius policy keeps the family guide editorial rather than app-like.",
+      "boxInteriorPolicy": "Image is flush to its bounds; text uses external gutters rather than hidden padding.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external grid gutters"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "layout": "Place the focal image at normalized bounds 0.34, 0.13, 0.62, 0.74; keep decision text on the open axis.",
+      "hierarchy": "The visual image wins first eye landing, then rank and distance, then the concise family consequence.",
+      "density": "One focal image, one decision headline, one metadata line and one persistent route marker.",
+      "safeZones": {
+        "frameMargin": "five percent",
+        "captionZone": "bottom twelve percent",
+        "protectedRegion": "focal image and source label"
+      },
+      "textRegion": {
+        "placement": "Open column or overlay band outside the focal evidence center.",
+        "maxLineCharacters": 42,
+        "contrastTreatment": "Translucent warm-white backing preserves readable dark text over every destination image.",
+        "clearance": "At least one grid gutter from the focal center, frame edge and route marker."
+      },
+      "depthLayers": [
+        "background route field",
+        "midground focal image",
+        "foreground decision label and marker"
+      ],
+      "objectBounds": [
+        {
+          "id": "s03-focal",
+          "role": "focal",
+          "x": 0.335,
+          "y": 0.13,
+          "width": 0.62,
+          "height": 0.74
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal image along its governing axis.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "source clause",
+          "visualChange": "Hold the complete image and metadata for inspection.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "decision clause",
+          "visualChange": "Accent the rank or distance without moving the source label.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "handoff clause",
+          "visualChange": "Move the route marker toward the next scene axis.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Use four static keyframes that preserve image reveal, readable hold, decision emphasis and final route handoff.",
+      "outgoingSeam": {
+        "seamId": "s03__s04",
+        "fromScene": "s03",
+        "toScene": "s04",
+        "persistentElement": "The route marker remains visible as the family-planning state token.",
+        "attentionHandoff": "The marker lands on the incoming image axis before its headline appears.",
+        "beforeState": "The outgoing source image and decision signal are complete and readable.",
+        "afterState": "The incoming source image receives the marker and becomes the dominant evidence.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Expose sceneId, activeCompositionId, activeAssetIds, sourceProofAssetIds and visible object IDs.",
+      "validationChecks": [
+        {
+          "method": "full-resolution frame review",
+          "target": "s03 focal image",
+          "passCriterion": "Image is large, decoded, unclipped and visibly different from adjacent scenes."
+        },
+        {
+          "method": "renderer state and DOM review",
+          "target": "s03 IDs",
+          "passCriterion": "Asset, composition and object identifiers match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared grid and scene-specific focal axis.",
+        "safeZones": "Image, labels and route marker remain inside frame-safe regions.",
+        "edgePolicy": "Quiet neutral borders survive the final crop without filtering or masking destination imagery.",
+        "boxPadding": "Image is flush to its bounds with zero hidden internal padding.",
+        "grayscaleHierarchy": "Primary image, metadata and background remain distinct without relying on hue.",
+        "focalHierarchy": "The focal image occupies at least five percent and wins first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s03-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "remote page capture can include a consent layer",
+        "long names require controlled truncation"
+      ]
+    },
+    {
+      "id": "s04",
+      "title": "Full-Bleed Source Proof",
+      "duration": "0:18-0:24",
+      "beatIds": [
+        "b04"
+      ],
+      "assetIds": [
+        "a04-top-3-source"
+      ],
+      "sourceAnchors": [
+        "Arts, Culture, Spiritual Sites & Heritage",
+        "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 4 with visible source-bound destination imagery."
+      ],
+      "sceneJob": "Make full-bleed source proof answer one family-planning question.",
+      "viewerTask": "Read the focal evidence, connect it to distance or rank, and know the next decision.",
+      "compositionChoice": "full-bleed source proof",
+      "rejectedAlternatives": [
+        "text-only list with no visual evidence",
+        "repeated equal-card grid without focal hierarchy"
+      ],
+      "choiceRationale": "The full-bleed source proof gives the source image priority while preserving a clear route-marker handoff.",
+      "focal": "The a04-top-3-source image and its ranked family-planning consequence",
+      "roles": {
+        "focal": "source-bound image",
+        "support": "rank, distance and source label",
+        "handoff": "route marker"
+      },
+      "armature": "centered hero plane",
+      "alignmentGrid": "Twelve-column frame grid with an eight-pixel baseline and named focal axis.",
+      "armatureAnchors": [
+        "Focal image locks to the dominant grid area.",
+        "Text and route marker align to the secondary axis."
+      ],
+      "edgePolicy": "Clean rectangular image plane with a quiet neutral border and source imagery preserved without color filtering.",
+      "cornerPolicy": "Square hard-edge geometry with a 0-radius policy keeps the family guide editorial rather than app-like.",
+      "boxInteriorPolicy": "Image is flush to its bounds; text uses external gutters rather than hidden padding.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external grid gutters"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "layout": "Place the focal image at normalized bounds 0.05, 0.11, 0.90, 0.76; keep decision text on the open axis.",
+      "hierarchy": "The visual image wins first eye landing, then rank and distance, then the concise family consequence.",
+      "density": "One focal image, one decision headline, one metadata line and one persistent route marker.",
+      "safeZones": {
+        "frameMargin": "five percent",
+        "captionZone": "bottom twelve percent",
+        "protectedRegion": "focal image and source label"
+      },
+      "textRegion": {
+        "placement": "Open column or overlay band outside the focal evidence center.",
+        "maxLineCharacters": 42,
+        "contrastTreatment": "Translucent warm-white backing preserves readable dark text over every destination image.",
+        "clearance": "At least one grid gutter from the focal center, frame edge and route marker."
+      },
+      "depthLayers": [
+        "background route field",
+        "midground focal image",
+        "foreground decision label and marker"
+      ],
+      "objectBounds": [
+        {
+          "id": "s04-focal",
+          "role": "focal",
+          "x": 0.05,
+          "y": 0.11,
+          "width": 0.9,
+          "height": 0.76
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal image along its governing axis.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "source clause",
+          "visualChange": "Hold the complete image and metadata for inspection.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "decision clause",
+          "visualChange": "Accent the rank or distance without moving the source label.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "handoff clause",
+          "visualChange": "Move the route marker toward the next scene axis.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Use four static keyframes that preserve image reveal, readable hold, decision emphasis and final route handoff.",
+      "outgoingSeam": {
+        "seamId": "s04__s05",
+        "fromScene": "s04",
+        "toScene": "s05",
+        "persistentElement": "The route marker remains visible as the family-planning state token.",
+        "attentionHandoff": "The marker lands on the incoming image axis before its headline appears.",
+        "beforeState": "The outgoing source image and decision signal are complete and readable.",
+        "afterState": "The incoming source image receives the marker and becomes the dominant evidence.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Expose sceneId, activeCompositionId, activeAssetIds, sourceProofAssetIds and visible object IDs.",
+      "validationChecks": [
+        {
+          "method": "full-resolution frame review",
+          "target": "s04 focal image",
+          "passCriterion": "Image is large, decoded, unclipped and visibly different from adjacent scenes."
+        },
+        {
+          "method": "renderer state and DOM review",
+          "target": "s04 IDs",
+          "passCriterion": "Asset, composition and object identifiers match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared grid and scene-specific focal axis.",
+        "safeZones": "Image, labels and route marker remain inside frame-safe regions.",
+        "edgePolicy": "Quiet neutral borders survive the final crop without filtering or masking destination imagery.",
+        "boxPadding": "Image is flush to its bounds with zero hidden internal padding.",
+        "grayscaleHierarchy": "Primary image, metadata and background remain distinct without relying on hue.",
+        "focalHierarchy": "The focal image occupies at least five percent and wins first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s04-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "remote page capture can include a consent layer",
+        "long names require controlled truncation"
+      ]
+    },
+    {
+      "id": "s05",
+      "title": "Ranked Comparison Strip",
+      "duration": "0:24-0:30",
+      "beatIds": [
+        "b05"
+      ],
+      "assetIds": [
+        "a05-top-five"
+      ],
+      "sourceAnchors": [
+        "Arts, Culture, Spiritual Sites & Heritage",
+        "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 5 with visible source-bound destination imagery."
+      ],
+      "sceneJob": "Make ranked comparison strip answer one family-planning question.",
+      "viewerTask": "Read the focal evidence, connect it to distance or rank, and know the next decision.",
+      "compositionChoice": "ranked comparison strip",
+      "rejectedAlternatives": [
+        "text-only list with no visual evidence",
+        "repeated equal-card grid without focal hierarchy"
+      ],
+      "choiceRationale": "The ranked comparison strip gives the source image priority while preserving a clear route-marker handoff.",
+      "focal": "The a05-top-five image and its ranked family-planning consequence",
+      "roles": {
+        "focal": "source-bound image",
+        "support": "rank, distance and source label",
+        "handoff": "route marker"
+      },
+      "armature": "horizontal rank spine",
+      "alignmentGrid": "Twelve-column frame grid with an eight-pixel baseline and named focal axis.",
+      "armatureAnchors": [
+        "Focal image locks to the dominant grid area.",
+        "Text and route marker align to the secondary axis."
+      ],
+      "edgePolicy": "Clean rectangular image plane with a quiet neutral border and source imagery preserved without color filtering.",
+      "cornerPolicy": "Square hard-edge geometry with a 0-radius policy keeps the family guide editorial rather than app-like.",
+      "boxInteriorPolicy": "Image is flush to its bounds; text uses external gutters rather than hidden padding.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external grid gutters"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "layout": "Place the focal image at normalized bounds 0.05, 0.15, 0.90, 0.72; keep decision text on the open axis.",
+      "hierarchy": "The visual image wins first eye landing, then rank and distance, then the concise family consequence.",
+      "density": "One focal image, one decision headline, one metadata line and one persistent route marker.",
+      "safeZones": {
+        "frameMargin": "five percent",
+        "captionZone": "bottom twelve percent",
+        "protectedRegion": "focal image and source label"
+      },
+      "textRegion": {
+        "placement": "Open column or overlay band outside the focal evidence center.",
+        "maxLineCharacters": 42,
+        "contrastTreatment": "Translucent warm-white backing preserves readable dark text over every destination image.",
+        "clearance": "At least one grid gutter from the focal center, frame edge and route marker."
+      },
+      "depthLayers": [
+        "background route field",
+        "midground focal image",
+        "foreground decision label and marker"
+      ],
+      "objectBounds": [
+        {
+          "id": "s05-focal",
+          "role": "focal",
+          "x": 0.05,
+          "y": 0.15,
+          "width": 0.9,
+          "height": 0.72
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal image along its governing axis.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "source clause",
+          "visualChange": "Hold the complete image and metadata for inspection.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "decision clause",
+          "visualChange": "Accent the rank or distance without moving the source label.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "handoff clause",
+          "visualChange": "Move the route marker toward the next scene axis.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Use four static keyframes that preserve image reveal, readable hold, decision emphasis and final route handoff.",
+      "outgoingSeam": {
+        "seamId": "s05__s06",
+        "fromScene": "s05",
+        "toScene": "s06",
+        "persistentElement": "The route marker remains visible as the family-planning state token.",
+        "attentionHandoff": "The marker lands on the incoming image axis before its headline appears.",
+        "beforeState": "The outgoing source image and decision signal are complete and readable.",
+        "afterState": "The incoming source image receives the marker and becomes the dominant evidence.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Expose sceneId, activeCompositionId, activeAssetIds, sourceProofAssetIds and visible object IDs.",
+      "validationChecks": [
+        {
+          "method": "full-resolution frame review",
+          "target": "s05 focal image",
+          "passCriterion": "Image is large, decoded, unclipped and visibly different from adjacent scenes."
+        },
+        {
+          "method": "renderer state and DOM review",
+          "target": "s05 IDs",
+          "passCriterion": "Asset, composition and object identifiers match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared grid and scene-specific focal axis.",
+        "safeZones": "Image, labels and route marker remain inside frame-safe regions.",
+        "edgePolicy": "Quiet neutral borders survive the final crop without filtering or masking destination imagery.",
+        "boxPadding": "Image is flush to its bounds with zero hidden internal padding.",
+        "grayscaleHierarchy": "Primary image, metadata and background remain distinct without relying on hue.",
+        "focalHierarchy": "The focal image occupies at least five percent and wins first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s05-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "remote page capture can include a consent layer",
+        "long names require controlled truncation"
+      ]
+    },
+    {
+      "id": "s06",
+      "title": "Preference Profile Chart",
+      "duration": "0:30-0:36",
+      "beatIds": [
+        "b06"
+      ],
+      "assetIds": [
+        "a06-preference-bars"
+      ],
+      "sourceAnchors": [
+        "Arts, Culture, Spiritual Sites & Heritage",
+        "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 6 with visible source-bound destination imagery."
+      ],
+      "sceneJob": "Make preference profile chart answer one family-planning question.",
+      "viewerTask": "Read the focal evidence, connect it to distance or rank, and know the next decision.",
+      "compositionChoice": "preference profile chart",
+      "rejectedAlternatives": [
+        "text-only list with no visual evidence",
+        "repeated equal-card grid without focal hierarchy"
+      ],
+      "choiceRationale": "The preference profile chart gives the source image priority while preserving a clear route-marker handoff.",
+      "focal": "The a06-preference-bars image and its ranked family-planning consequence",
+      "roles": {
+        "focal": "source-bound image",
+        "support": "rank, distance and source label",
+        "handoff": "route marker"
+      },
+      "armature": "priority ladder field",
+      "alignmentGrid": "Twelve-column frame grid with an eight-pixel baseline and named focal axis.",
+      "armatureAnchors": [
+        "Focal image locks to the dominant grid area.",
+        "Text and route marker align to the secondary axis."
+      ],
+      "edgePolicy": "Clean rectangular image plane with a quiet neutral border and source imagery preserved without color filtering.",
+      "cornerPolicy": "Square hard-edge geometry with a 0-radius policy keeps the family guide editorial rather than app-like.",
+      "boxInteriorPolicy": "Image is flush to its bounds; text uses external gutters rather than hidden padding.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external grid gutters"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "layout": "Place the focal image at normalized bounds 0.05, 0.15, 0.90, 0.72; keep decision text on the open axis.",
+      "hierarchy": "The visual image wins first eye landing, then rank and distance, then the concise family consequence.",
+      "density": "One focal image, one decision headline, one metadata line and one persistent route marker.",
+      "safeZones": {
+        "frameMargin": "five percent",
+        "captionZone": "bottom twelve percent",
+        "protectedRegion": "focal image and source label"
+      },
+      "textRegion": {
+        "placement": "Open column or overlay band outside the focal evidence center.",
+        "maxLineCharacters": 42,
+        "contrastTreatment": "Translucent warm-white backing preserves readable dark text over every destination image.",
+        "clearance": "At least one grid gutter from the focal center, frame edge and route marker."
+      },
+      "depthLayers": [
+        "background route field",
+        "midground focal image",
+        "foreground decision label and marker"
+      ],
+      "objectBounds": [
+        {
+          "id": "s06-focal",
+          "role": "focal",
+          "x": 0.05,
+          "y": 0.15,
+          "width": 0.9,
+          "height": 0.72
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal image along its governing axis.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "source clause",
+          "visualChange": "Hold the complete image and metadata for inspection.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "decision clause",
+          "visualChange": "Accent the rank or distance without moving the source label.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "handoff clause",
+          "visualChange": "Move the route marker toward the next scene axis.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Use four static keyframes that preserve image reveal, readable hold, decision emphasis and final route handoff.",
+      "outgoingSeam": {
+        "seamId": "s06__s07",
+        "fromScene": "s06",
+        "toScene": "s07",
+        "persistentElement": "The route marker remains visible as the family-planning state token.",
+        "attentionHandoff": "The marker lands on the incoming image axis before its headline appears.",
+        "beforeState": "The outgoing source image and decision signal are complete and readable.",
+        "afterState": "The incoming source image receives the marker and becomes the dominant evidence.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Expose sceneId, activeCompositionId, activeAssetIds, sourceProofAssetIds and visible object IDs.",
+      "validationChecks": [
+        {
+          "method": "full-resolution frame review",
+          "target": "s06 focal image",
+          "passCriterion": "Image is large, decoded, unclipped and visibly different from adjacent scenes."
+        },
+        {
+          "method": "renderer state and DOM review",
+          "target": "s06 IDs",
+          "passCriterion": "Asset, composition and object identifiers match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared grid and scene-specific focal axis.",
+        "safeZones": "Image, labels and route marker remain inside frame-safe regions.",
+        "edgePolicy": "Quiet neutral borders survive the final crop without filtering or masking destination imagery.",
+        "boxPadding": "Image is flush to its bounds with zero hidden internal padding.",
+        "grayscaleHierarchy": "Primary image, metadata and background remain distinct without relying on hue.",
+        "focalHierarchy": "The focal image occupies at least five percent and wins first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s06-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "remote page capture can include a consent layer",
+        "long names require controlled truncation"
+      ]
+    },
+    {
+      "id": "s07",
+      "title": "Decision Matrix",
+      "duration": "0:36-0:42",
+      "beatIds": [
+        "b07"
+      ],
+      "assetIds": [
+        "a07-decision-board"
+      ],
+      "sourceAnchors": [
+        "Arts, Culture, Spiritual Sites & Heritage",
+        "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 7 with visible source-bound destination imagery."
+      ],
+      "sceneJob": "Make decision matrix answer one family-planning question.",
+      "viewerTask": "Read the focal evidence, connect it to distance or rank, and know the next decision.",
+      "compositionChoice": "decision matrix",
+      "rejectedAlternatives": [
+        "text-only list with no visual evidence",
+        "repeated equal-card grid without focal hierarchy"
+      ],
+      "choiceRationale": "The decision matrix gives the source image priority while preserving a clear route-marker handoff.",
+      "focal": "The a07-decision-board image and its ranked family-planning consequence",
+      "roles": {
+        "focal": "source-bound image",
+        "support": "rank, distance and source label",
+        "handoff": "route marker"
+      },
+      "armature": "modular decision grid",
+      "alignmentGrid": "Twelve-column frame grid with an eight-pixel baseline and named focal axis.",
+      "armatureAnchors": [
+        "Focal image locks to the dominant grid area.",
+        "Text and route marker align to the secondary axis."
+      ],
+      "edgePolicy": "Clean rectangular image plane with a quiet neutral border and source imagery preserved without color filtering.",
+      "cornerPolicy": "Square hard-edge geometry with a 0-radius policy keeps the family guide editorial rather than app-like.",
+      "boxInteriorPolicy": "Image is flush to its bounds; text uses external gutters rather than hidden padding.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external grid gutters"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "layout": "Place the focal image at normalized bounds 0.05, 0.14, 0.90, 0.74; keep decision text on the open axis.",
+      "hierarchy": "The visual image wins first eye landing, then rank and distance, then the concise family consequence.",
+      "density": "One focal image, one decision headline, one metadata line and one persistent route marker.",
+      "safeZones": {
+        "frameMargin": "five percent",
+        "captionZone": "bottom twelve percent",
+        "protectedRegion": "focal image and source label"
+      },
+      "textRegion": {
+        "placement": "Open column or overlay band outside the focal evidence center.",
+        "maxLineCharacters": 42,
+        "contrastTreatment": "Translucent warm-white backing preserves readable dark text over every destination image.",
+        "clearance": "At least one grid gutter from the focal center, frame edge and route marker."
+      },
+      "depthLayers": [
+        "background route field",
+        "midground focal image",
+        "foreground decision label and marker"
+      ],
+      "objectBounds": [
+        {
+          "id": "s07-focal",
+          "role": "focal",
+          "x": 0.05,
+          "y": 0.14,
+          "width": 0.9,
+          "height": 0.74
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal image along its governing axis.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "source clause",
+          "visualChange": "Hold the complete image and metadata for inspection.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "decision clause",
+          "visualChange": "Accent the rank or distance without moving the source label.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "handoff clause",
+          "visualChange": "Move the route marker toward the next scene axis.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Use four static keyframes that preserve image reveal, readable hold, decision emphasis and final route handoff.",
+      "outgoingSeam": {
+        "seamId": "s07__s08",
+        "fromScene": "s07",
+        "toScene": "s08",
+        "persistentElement": "The route marker remains visible as the family-planning state token.",
+        "attentionHandoff": "The marker lands on the incoming image axis before its headline appears.",
+        "beforeState": "The outgoing source image and decision signal are complete and readable.",
+        "afterState": "The incoming source image receives the marker and becomes the dominant evidence.",
+        "type": "transition"
+      },
+      "rendererHandoff": "Expose sceneId, activeCompositionId, activeAssetIds, sourceProofAssetIds and visible object IDs.",
+      "validationChecks": [
+        {
+          "method": "full-resolution frame review",
+          "target": "s07 focal image",
+          "passCriterion": "Image is large, decoded, unclipped and visibly different from adjacent scenes."
+        },
+        {
+          "method": "renderer state and DOM review",
+          "target": "s07 IDs",
+          "passCriterion": "Asset, composition and object identifiers match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared grid and scene-specific focal axis.",
+        "safeZones": "Image, labels and route marker remain inside frame-safe regions.",
+        "edgePolicy": "Quiet neutral borders survive the final crop without filtering or masking destination imagery.",
+        "boxPadding": "Image is flush to its bounds with zero hidden internal padding.",
+        "grayscaleHierarchy": "Primary image, metadata and background remain distinct without relying on hue.",
+        "focalHierarchy": "The focal image occupies at least five percent and wins first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s07-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "remote page capture can include a consent layer",
+        "long names require controlled truncation"
+      ]
+    },
+    {
+      "id": "s08",
+      "title": "Planner Callback Map",
+      "duration": "0:42-0:48",
+      "beatIds": [
+        "b08"
+      ],
+      "assetIds": [
+        "a08-planner-callback"
+      ],
+      "sourceAnchors": [
+        "Arts, Culture, Spiritual Sites & Heritage",
+        "Show the Arts, Culture, Spiritual Sites & Heritage evidence required for scene 8 with visible source-bound destination imagery."
+      ],
+      "sceneJob": "Make planner callback map answer one family-planning question.",
+      "viewerTask": "Read the focal evidence, connect it to distance or rank, and know the next decision.",
+      "compositionChoice": "planner callback map",
+      "rejectedAlternatives": [
+        "text-only list with no visual evidence",
+        "repeated equal-card grid without focal hierarchy"
+      ],
+      "choiceRationale": "The planner callback map gives the source image priority while preserving a clear route-marker handoff.",
+      "focal": "The a08-planner-callback image and its ranked family-planning consequence",
+      "roles": {
+        "focal": "source-bound image",
+        "support": "rank, distance and source label",
+        "handoff": "route marker"
+      },
+      "armature": "radial route callback",
+      "alignmentGrid": "Twelve-column frame grid with an eight-pixel baseline and named focal axis.",
+      "armatureAnchors": [
+        "Focal image locks to the dominant grid area.",
+        "Text and route marker align to the secondary axis."
+      ],
+      "edgePolicy": "Clean rectangular image plane with a quiet neutral border and source imagery preserved without color filtering.",
+      "cornerPolicy": "Square hard-edge geometry with a 0-radius policy keeps the family guide editorial rather than app-like.",
+      "boxInteriorPolicy": "Image is flush to its bounds; text uses external gutters rather than hidden padding.",
+      "boxModel": {
+        "internalPaddingPx": 0,
+        "contentFlushToBounds": true,
+        "separation": "external grid gutters"
+      },
+      "grayscaleHierarchy": [
+        {
+          "level": 0,
+          "role": "primary focal",
+          "grayHex": "#f4f4f4"
+        },
+        {
+          "level": 1,
+          "role": "secondary evidence",
+          "grayHex": "#a0a0a0"
+        },
+        {
+          "level": 2,
+          "role": "background structure",
+          "grayHex": "#242424"
+        }
+      ],
+      "layout": "Place the focal image at normalized bounds 0.04, 0.14, 0.70, 0.78; keep decision text on the open axis.",
+      "hierarchy": "The visual image wins first eye landing, then rank and distance, then the concise family consequence.",
+      "density": "One focal image, one decision headline, one metadata line and one persistent route marker.",
+      "safeZones": {
+        "frameMargin": "five percent",
+        "captionZone": "bottom twelve percent",
+        "protectedRegion": "focal image and source label"
+      },
+      "textRegion": {
+        "placement": "Open column or overlay band outside the focal evidence center.",
+        "maxLineCharacters": 42,
+        "contrastTreatment": "Translucent warm-white backing preserves readable dark text over every destination image.",
+        "clearance": "At least one grid gutter from the focal center, frame edge and route marker."
+      },
+      "depthLayers": [
+        "background route field",
+        "midground focal image",
+        "foreground decision label and marker"
+      ],
+      "objectBounds": [
+        {
+          "id": "s08-focal",
+          "role": "focal",
+          "x": 0.04,
+          "y": 0.14,
+          "width": 0.7,
+          "height": 0.78
+        }
+      ],
+      "motionPhases": [
+        {
+          "name": "entrance",
+          "cue": "scene entry",
+          "visualChange": "Reveal the focal image along its governing axis.",
+          "motionVerb": "reveal"
+        },
+        {
+          "name": "hold",
+          "cue": "source clause",
+          "visualChange": "Hold the complete image and metadata for inspection.",
+          "motionVerb": "hold"
+        },
+        {
+          "name": "emphasis",
+          "cue": "decision clause",
+          "visualChange": "Accent the rank or distance without moving the source label.",
+          "motionVerb": "emphasize"
+        },
+        {
+          "name": "exit",
+          "cue": "handoff clause",
+          "visualChange": "Move the route marker toward the next scene axis.",
+          "motionVerb": "handoff"
+        }
+      ],
+      "reducedMotion": "Use four static keyframes that preserve image reveal, readable hold, decision emphasis and final route handoff.",
+      "outgoingSeam": {
+        "seamId": "end",
+        "fromScene": "s08",
+        "toScene": null,
+        "persistentElement": "The route marker remains visible as the family-planning state token.",
+        "attentionHandoff": "The marker lands on the incoming image axis before its headline appears.",
+        "beforeState": "The outgoing source image and decision signal are complete and readable.",
+        "afterState": "The incoming source image receives the marker and becomes the dominant evidence.",
+        "type": "end"
+      },
+      "rendererHandoff": "Expose sceneId, activeCompositionId, activeAssetIds, sourceProofAssetIds and visible object IDs.",
+      "validationChecks": [
+        {
+          "method": "full-resolution frame review",
+          "target": "s08 focal image",
+          "passCriterion": "Image is large, decoded, unclipped and visibly different from adjacent scenes."
+        },
+        {
+          "method": "renderer state and DOM review",
+          "target": "s08 IDs",
+          "passCriterion": "Asset, composition and object identifiers match the active beat."
+        }
+      ],
+      "validationContract": {
+        "alignment": "Major objects remain locked to the declared grid and scene-specific focal axis.",
+        "safeZones": "Image, labels and route marker remain inside frame-safe regions.",
+        "edgePolicy": "Quiet neutral borders survive the final crop without filtering or masking destination imagery.",
+        "boxPadding": "Image is flush to its bounds with zero hidden internal padding.",
+        "grayscaleHierarchy": "Primary image, metadata and background remain distinct without relying on hue.",
+        "focalHierarchy": "The focal image occupies at least five percent and wins first eye landing.",
+        "verificationArtifacts": [
+          "artifacts/reviews/frames/s08-hold.png",
+          "artifacts/reviews/renderer-contract.json"
+        ]
+      },
+      "risks": [
+        "remote page capture can include a consent layer",
+        "long names require controlled truncation"
+      ]
+    }
+  ]
+}

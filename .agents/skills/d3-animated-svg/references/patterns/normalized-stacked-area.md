@@ -1,6 +1,6 @@
 # Normalized Stacked Area
 
-- **Pattern ID:** `d3-pattern-normalized-stacked-area`
+- **Pattern ID:** `d3-normalized-stacked-area`
 - **Gallery source ID:** `normalized-stacked-area`
 - **Family:** Temporal
 - **Use when:** Category shares sum to 100 percent across time.

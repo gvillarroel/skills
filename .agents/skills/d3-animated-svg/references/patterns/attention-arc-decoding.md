@@ -1,6 +1,6 @@
 # Attention Arc Decoding
 
-- **Pattern ID:** `d3-pattern-attention-arc-decoding`
+- **Pattern ID:** `d3-attention-arc-decoding`
 - **Gallery source ID:** `attention-arc-decoding`
 - **Family:** LLM
 - **Use when:** Attention arcs target an empty next-token slot, reveal a generated token, and then include that token in the next attention pass.
@@ -64,7 +64,7 @@ Replace `attention-arc-decoding.html` with the exact path requested by the user 
 
 ## Validation Hooks
 
-- Root SVG exposes `data-pattern-id="d3-pattern-attention-arc-decoding"`.
+- Root SVG exposes `data-pattern-id="d3-attention-arc-decoding"`.
 - Arcs expose `data-decode-step`, `data-source-token`, `data-target-token`, and `data-attention-weight`.
 - The final SVG contains 6 token groups, 12 attention arcs, 3 generated token overlays, and 3 query cursor pulses.
 - A screenshot after about 2.2 seconds should show the complete phrase `The model predicts the next word`.

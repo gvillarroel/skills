@@ -33,7 +33,7 @@
     {
       "stage": "transitions",
       "skill": "scene-transition-director",
-      "reason": "Carry the persistent red edge and viewer attention across all seven adjacent seams.",
+      "reason": "Carry the recognizable red SKILL packet and its causal state across all seven adjacent seams.",
       "output": "source/transition-plan.json",
       "outputPaths": [
         "source/transition-plan.json"
@@ -62,7 +62,7 @@
     {
       "stage": "renderer",
       "skill": "html-d3-anime-video-workflow",
-      "reason": "Render the modular megacanvas with deterministic timestamp state, browser capture, and ffmpeg encoding.",
+      "reason": "Render eight fixed-frame semantic workbenches with dominant manifest-bound assets, deterministic timestamp state, browser capture, and ffmpeg encoding.",
       "output": "src/index.html",
       "outputPaths": [
         "src/index.html"
@@ -77,7 +77,7 @@
       "kind": "svg",
       "claim": "Teams can preserve a repeated workflow as a skill instead of pasting a long prompt into every task.",
       "output": "artifacts/images/a01-prompt-wall.svg",
-      "sha256": "5c6086825ea12cd5a268a28d5ddadd46a00dcddb5b3d004962060601677937d1",
+      "sha256": "c14ad97de83175d97d107e88c05b3a4a79733dd8b45ecb3d6259475f29ac5745",
       "origin": {
         "type": "generated",
         "uri": "generated://awsome-videos-skill-demo/a01-prompt-wall",
@@ -106,9 +106,11 @@
       ],
       "status": "approved",
       "qualityChecks": [
-        "Verify focal geometry remains legible at delivery resolution.",
-        "Confirm red is a semantic signal rather than a broad decorative fill.",
-        "Match the rendered asset ID and SHA-256 to its declared scene and beat."
+        "Render the complete 640x360 viewBox at 16:9 and verify that no semantic object is clipped.",
+        "Preserve high-contrast neutral text and surfaces; reserve red for selected routes, warnings, or approved states.",
+        "Pass the three-second silent-frame test: a viewer can identify the labeled input, action, and output without narration.",
+        "Keep every route visibly directed and animate only the declared process and active-state groups to explain causality.",
+        "Keep the root id and data-asset-id equal to the manifest asset ID and retain input, process, output, and active-state group IDs."
       ]
     },
     {
@@ -116,7 +118,7 @@
       "kind": "svg",
       "claim": "Most Codex skills start with a required SKILL.md file containing reusable instructions and metadata.",
       "output": "artifacts/images/a02-skill-package.svg",
-      "sha256": "00a017a6e4acad76abda0a2ba422ae4b498177dd30e72c70e1bba602afd6a018",
+      "sha256": "5a5aacf84cb9f3f6acc4e2c307a1da44268b8a5f7b0277b5b9347b47148bdd7c",
       "origin": {
         "type": "generated",
         "uri": "generated://awsome-videos-skill-demo/a02-skill-package",
@@ -145,9 +147,11 @@
       ],
       "status": "approved",
       "qualityChecks": [
-        "Verify focal geometry remains legible at delivery resolution.",
-        "Confirm red is a semantic signal rather than a broad decorative fill.",
-        "Match the rendered asset ID and SHA-256 to its declared scene and beat."
+        "Render the complete 640x360 viewBox at 16:9 and verify that no semantic object is clipped.",
+        "Preserve high-contrast neutral text and surfaces; reserve red for selected routes, warnings, or approved states.",
+        "Pass the three-second silent-frame test: a viewer can identify the labeled input, action, and output without narration.",
+        "Keep every route visibly directed and animate only the declared process and active-state groups to explain causality.",
+        "Keep the root id and data-asset-id equal to the manifest asset ID and retain input, process, output, and active-state group IDs."
       ]
     },
     {
@@ -155,7 +159,7 @@
       "kind": "svg",
       "claim": "This repository keeps core workflow in SKILL.md and moves conditional or bulky detail into references.",
       "output": "artifacts/images/a03-progressive-disclosure.svg",
-      "sha256": "3861cf862852011cf0c4ad9c69d6e641db19da76f42c7e96e9cb4edd15b5280e",
+      "sha256": "60f14e3d4a1b46642f8be9067f984a78e726398541f97a94de04ae7a11a00fa8",
       "origin": {
         "type": "generated",
         "uri": "generated://awsome-videos-skill-demo/a03-progressive-disclosure",
@@ -184,9 +188,11 @@
       ],
       "status": "approved",
       "qualityChecks": [
-        "Verify focal geometry remains legible at delivery resolution.",
-        "Confirm red is a semantic signal rather than a broad decorative fill.",
-        "Match the rendered asset ID and SHA-256 to its declared scene and beat."
+        "Render the complete 640x360 viewBox at 16:9 and verify that no semantic object is clipped.",
+        "Preserve high-contrast neutral text and surfaces; reserve red for selected routes, warnings, or approved states.",
+        "Pass the three-second silent-frame test: a viewer can identify the labeled input, action, and output without narration.",
+        "Keep every route visibly directed and animate only the declared process and active-state groups to explain causality.",
+        "Keep the root id and data-asset-id equal to the manifest asset ID and retain input, process, output, and active-state group IDs."
       ]
     },
     {
@@ -194,7 +200,7 @@
       "kind": "svg",
       "claim": "A skill can add optional references for longer docs, scripts for repeatable commands, and assets for templates or starter files.",
       "output": "artifacts/images/a04-resource-bundle.svg",
-      "sha256": "17ba35a6408b15acf0184cec893953402c857fea79d72a0e761f339c6146cc7f",
+      "sha256": "bfe9805ac806e26bba2013ee246c647ece6670c9e20ddabf1541ad50ab16c613",
       "origin": {
         "type": "generated",
         "uri": "generated://awsome-videos-skill-demo/a04-resource-bundle",
@@ -223,9 +229,11 @@
       ],
       "status": "approved",
       "qualityChecks": [
-        "Verify focal geometry remains legible at delivery resolution.",
-        "Confirm red is a semantic signal rather than a broad decorative fill.",
-        "Match the rendered asset ID and SHA-256 to its declared scene and beat."
+        "Render the complete 640x360 viewBox at 16:9 and verify that no semantic object is clipped.",
+        "Preserve high-contrast neutral text and surfaces; reserve red for selected routes, warnings, or approved states.",
+        "Pass the three-second silent-frame test: a viewer can identify the labeled input, action, and output without narration.",
+        "Keep every route visibly directed and animate only the declared process and active-state groups to explain causality.",
+        "Keep the root id and data-asset-id equal to the manifest asset ID and retain input, process, output, and active-state group IDs."
       ]
     },
     {
@@ -233,7 +241,7 @@
       "kind": "svg",
       "claim": "The polished video workflow routes conventional diagrams, bespoke geometry, and raster imagery to their specialist producers.",
       "output": "artifacts/images/a05-specialist-router.svg",
-      "sha256": "fd086c7f8b8d7b0cd2648a920c3a5b10c7dce6ef179b60cb68e77ba3d9afeb1c",
+      "sha256": "954e275e068f49dea173c318046f1710ca0be66b05e40850ecb703013b5707ff",
       "origin": {
         "type": "generated",
         "uri": "generated://awsome-videos-skill-demo/a05-specialist-router",
@@ -262,9 +270,11 @@
       ],
       "status": "approved",
       "qualityChecks": [
-        "Verify focal geometry remains legible at delivery resolution.",
-        "Confirm red is a semantic signal rather than a broad decorative fill.",
-        "Match the rendered asset ID and SHA-256 to its declared scene and beat."
+        "Render the complete 640x360 viewBox at 16:9 and verify that no semantic object is clipped.",
+        "Preserve high-contrast neutral text and surfaces; reserve red for selected routes, warnings, or approved states.",
+        "Pass the three-second silent-frame test: a viewer can identify the labeled input, action, and output without narration.",
+        "Keep every route visibly directed and animate only the declared process and active-state groups to explain causality.",
+        "Keep the root id and data-asset-id equal to the manifest asset ID and retain input, process, output, and active-state group IDs."
       ]
     },
     {
@@ -272,7 +282,7 @@
       "kind": "svg",
       "claim": "The repository treats skill validation as part of the work, not as an optional follow-up.",
       "output": "artifacts/images/a06-validation-gate.svg",
-      "sha256": "2cb760f33b025cfdb8bdb771be1964351b36d1ee958a92195b75b165fd4f0979",
+      "sha256": "c945b58844b4633d9ba52d32c93e2df6767ce04b4add27b5d94783bfe8b70e29",
       "origin": {
         "type": "generated",
         "uri": "generated://awsome-videos-skill-demo/a06-validation-gate",
@@ -301,9 +311,11 @@
       ],
       "status": "approved",
       "qualityChecks": [
-        "Verify focal geometry remains legible at delivery resolution.",
-        "Confirm red is a semantic signal rather than a broad decorative fill.",
-        "Match the rendered asset ID and SHA-256 to its declared scene and beat."
+        "Render the complete 640x360 viewBox at 16:9 and verify that no semantic object is clipped.",
+        "Preserve high-contrast neutral text and surfaces; reserve red for selected routes, warnings, or approved states.",
+        "Pass the three-second silent-frame test: a viewer can identify the labeled input, action, and output without narration.",
+        "Keep every route visibly directed and animate only the declared process and active-state groups to explain causality.",
+        "Keep the root id and data-asset-id equal to the manifest asset ID and retain input, process, output, and active-state group IDs."
       ]
     },
     {
@@ -311,7 +323,7 @@
       "kind": "svg",
       "claim": "Skills are useful when a reusable workflow replaces repeated long prompts; keeping the core short preserves that advantage.",
       "output": "artifacts/images/a07-context-budget.svg",
-      "sha256": "ad322ce49f27d1f67a69440dd07e31a6ee8eb97688a2983a93bf4242cb9e8014",
+      "sha256": "aae8f1c8c0f8eb2751edbabc4ffa5c63f8c250e78dcce5a9f9a5ec129196e9fb",
       "origin": {
         "type": "generated",
         "uri": "generated://awsome-videos-skill-demo/a07-context-budget",
@@ -340,9 +352,11 @@
       ],
       "status": "approved",
       "qualityChecks": [
-        "Verify focal geometry remains legible at delivery resolution.",
-        "Confirm red is a semantic signal rather than a broad decorative fill.",
-        "Match the rendered asset ID and SHA-256 to its declared scene and beat."
+        "Render the complete 640x360 viewBox at 16:9 and verify that no semantic object is clipped.",
+        "Preserve high-contrast neutral text and surfaces; reserve red for selected routes, warnings, or approved states.",
+        "Pass the three-second silent-frame test: a viewer can identify the labeled input, action, and output without narration.",
+        "Keep every route visibly directed and animate only the declared process and active-state groups to explain causality.",
+        "Keep the root id and data-asset-id equal to the manifest asset ID and retain input, process, output, and active-state group IDs."
       ]
     },
     {
@@ -350,7 +364,7 @@
       "kind": "svg",
       "claim": "A Codex skill preserves reusable instructions, resources, and scripts for work that repeats.",
       "output": "artifacts/images/a08-reusable-workflow.svg",
-      "sha256": "28ebb24f28e5377cac02930bb9581a6c198baa6455d03511c8b8a1f02a04883a",
+      "sha256": "5e1a40d5bdfdbe3c6b1826743c047c166e856dd70d27b561568e768eb4ae981d",
       "origin": {
         "type": "generated",
         "uri": "generated://awsome-videos-skill-demo/a08-reusable-workflow",
@@ -379,9 +393,11 @@
       ],
       "status": "approved",
       "qualityChecks": [
-        "Verify focal geometry remains legible at delivery resolution.",
-        "Confirm red is a semantic signal rather than a broad decorative fill.",
-        "Match the rendered asset ID and SHA-256 to its declared scene and beat."
+        "Render the complete 640x360 viewBox at 16:9 and verify that no semantic object is clipped.",
+        "Preserve high-contrast neutral text and surfaces; reserve red for selected routes, warnings, or approved states.",
+        "Pass the three-second silent-frame test: a viewer can identify the labeled input, action, and output without narration.",
+        "Keep every route visibly directed and animate only the declared process and active-state groups to explain causality.",
+        "Keep the root id and data-asset-id equal to the manifest asset ID and retain input, process, output, and active-state group IDs."
       ]
     }
   ]

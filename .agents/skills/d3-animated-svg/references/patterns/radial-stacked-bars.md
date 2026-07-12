@@ -1,6 +1,6 @@
 # Radial Stacked Bars
 
-- **Pattern ID:** `d3-pattern-radial-stacked-bars`
+- **Pattern ID:** `d3-radial-stacked-bars`
 - **Gallery source ID:** `radial-stacked-bars`
 - **Family:** Radial
 - **Use when:** Stacked segments compare composition around a circular axis.

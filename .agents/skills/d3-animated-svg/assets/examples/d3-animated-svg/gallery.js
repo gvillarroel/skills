@@ -134,13 +134,78 @@
   }));
   let renderPass = 0;
   const tableExampleIds = new Set([
-    "data-table-grid",
+    "data-grid",
     "inline-bar-table",
     "pivot-heat-table",
-    "sortable-rank-table",
+    "rank-table",
     "sparkline-table",
-    "column-profile-table"
+    "column-profile"
   ]);
+
+  const legacyExampleIds = new Map([
+    ["agent-loop-overlay", "agent-loop-partial-covers"],
+    ["airport-voronoi", "airports-voronoi"],
+    ["attention-tiles", "attention-matrix-tiles"],
+    ["barcode-plot", "barcode"],
+    ["bowtie-barriers", "critical-bowtie-barrier"],
+    ["bulkhead-isolation", "critical-bulkhead-isolation"],
+    ["cache-stampede", "critical-cache-stampede"],
+    ["circuit-breaker", "critical-circuit-breaker"],
+    ["column-profile", "column-profile-table"],
+    ["context-window-fill", "token-boxes-to-context-window"],
+    ["correlogram", "correlogram-histogram"],
+    ["creature-stippling", "pocket-monster-stippling"],
+    ["curve-contexts", "context-to-curve"],
+    ["data-grid", "data-table-grid"],
+    ["dependency-blast-radius", "critical-dependency-blast-radius"],
+    ["document-token-bins", "document-token-extraction-buckets"],
+    ["document-token-errors", "document-token-quality-red"],
+    ["er-schema", "d3-er-schema"],
+    ["facet-sparklines", "facets"],
+    ["fault-tree", "critical-fault-tree"],
+    ["flowchart-dag", "d3-flowchart-dag"],
+    ["gantt-rollout", "d3-gantt-rollout"],
+    ["git-graph", "d3-git-graph"],
+    ["idempotency-guard", "critical-idempotency-replay-guard"],
+    ["image-histogram", "mona-histogram"],
+    ["incident-escalation", "critical-incident-escalation"],
+    ["kanban-assignees", "kanban-assignee-board"],
+    ["kanban-board", "d3-kanban-board"],
+    ["kanban-legend-column", "kanban-assignee-virtual-legend"],
+    ["kanban-legend-footer", "kanban-assignee-distributed-legend"],
+    ["mlp-execution", "deep-learning-model-execution"],
+    ["nature-geometry", "natural-math-archetypes"],
+    ["organic-growth", "organic-growth-patterns"],
+    ["overlap-3-chain", "asymmetric-three-circle-chain"],
+    ["overlap-3-rosette", "symmetric-three-circle-rosette"],
+    ["overlap-5-cluster", "asymmetric-five-circle-cluster"],
+    ["overlap-5-rosette", "symmetric-five-circle-rosette"],
+    ["overlap-7-bridge", "asymmetric-seven-circle-bridge"],
+    ["overlap-7-flower", "symmetric-seven-circle-flower"],
+    ["process-control-loop", "process-pid-control-loop"],
+    ["projection-switch", "ortho-switch"],
+    ["quadtree-partition", "animated-quadtree"],
+    ["queue-backpressure", "critical-queue-backpressure"],
+    ["rank-table", "sortable-rank-table"],
+    ["rectbin", "rectbin-density"],
+    ["replication-failover", "critical-replication-failover"],
+    ["rope-rotation", "rope-position-rotation"],
+    ["sequence-lifelines", "d3-sequence-lifelines"],
+    ["slo-burn-rate", "critical-slo-burn-rate"],
+    ["speculative-decoding", "speculative-decoding-verify"],
+    ["state-machine", "d3-state-machine"],
+    ["task-overlap", "asymmetric-task-overlap"],
+    ["task-overlap-dense", "asymmetric-task-overlap-saturated"],
+    ["tiled-matmul", "matmul-tile-accumulation"],
+    ["token-bucket", "critical-rate-limit-token-bucket"],
+    ["token-roulette", "token-roulette-sampler"],
+    ["token-sampler", "token-probability-sampler"],
+    ["user-journey", "d3-user-journey"],
+    ["venn-3", "venn-three-circle"],
+    ["venn-5", "venn-five-overlap"],
+    ["venn-7", "venn-seven-overlap"]
+  ]);
+  window.D3_PATTERN_LEGACY_IDS = Object.fromEntries(legacyExampleIds);
 
   const examples = [
     { id: "force-network", kicker: "Simulation", title: "Force Network", copy: "Clustered topology with collision and link tension.", render: renderForceNetwork },
@@ -161,39 +226,39 @@
     { id: "edge-bundling", kicker: "Network", title: "Edge Bundling", copy: "Cross-links routed through hierarchy paths.", render: renderEdgeBundling },
     { id: "arc-diagram", kicker: "Network", title: "Arc Diagram", copy: "Ordered dependencies shown as curved arcs.", render: renderArcDiagram },
     { id: "adjacency-matrix", kicker: "Network", title: "Adjacency Matrix", copy: "Dense relationships as a sortable grid.", render: renderAdjacencyMatrix },
-    { id: "data-table-grid", kicker: "Table", title: "Data Table Grid", copy: "Rows, typed columns, status chips, and row focus composed as SVG marks.", render: renderDataTableGrid },
+    { id: "data-grid", kicker: "Table", title: "Data Table Grid", copy: "Rows, typed columns, status chips, and row focus composed as SVG marks.", render: renderDataTableGrid },
     { id: "inline-bar-table", kicker: "Table", title: "Inline Bar Table", copy: "A compact token-price table embeds bars directly inside input and output cost cells.", render: renderInlineBarTable },
     { id: "pivot-heat-table", kicker: "Table", title: "Pivot Heat Table", copy: "A cross-tab table uses ordered color and totals to expose segment patterns.", render: renderPivotHeatTable },
-    { id: "sortable-rank-table", kicker: "Table", title: "Sortable Rank Table", copy: "Rows animate from input order into a score-sorted analytical table.", render: renderSortableRankTable },
+    { id: "rank-table", kicker: "Table", title: "Sortable Rank Table", copy: "Rows animate from input order into a score-sorted analytical table.", render: renderSortableRankTable },
     { id: "sparkline-table", kicker: "Table", title: "Sparkline Table", copy: "Each table row carries a mini trend line, final value, and directional delta.", render: renderSparklineTable },
-    { id: "column-profile-table", kicker: "Table", title: "Column Profile Table", copy: "Column-level data quality, cardinality, and distributions are rendered as row profiles.", render: renderColumnProfileTable },
+    { id: "column-profile", kicker: "Table", title: "Column Profile Table", copy: "Column-level data quality, cardinality, and distributions are rendered as row profiles.", render: renderColumnProfileTable },
     { id: "document-token-quality", kicker: "Document", title: "Document Token Quality", copy: "Three document blocks encode correct, filler, and wrong word-length shares at 20/70/10, 10/85/5, and 70/10/20.", render: renderDocumentTokenQuality },
-    { id: "document-token-quality-red", kicker: "Document", title: "Document Token Quality Red", copy: "The same document-quality pattern uses red for wrong spans while preserving the length-weighted ratios and paragraph spacing.", render: renderDocumentTokenQualityRed },
-    { id: "document-token-extraction-buckets", kicker: "Document", title: "Document Extraction Buckets", copy: "A single page is scanned in writing order, then colored word blocks split into filler, correct, and wrong buckets with calculated totals.", render: renderDocumentTokenExtractionBuckets },
-    { id: "agent-loop-partial-covers", kicker: "Image Overlay", title: "Agent Loop Partial Covers", copy: "A source diagram remains visible while animated translucent covers selectively pass over key areas.", render: renderAgentLoopPartialCovers },
-    { id: "asymmetric-task-overlap", kicker: "Set Overlap", title: "Asymmetric Task Overlap", copy: "Nine uneven scope circles hold 20 task dots, including single-scope and shared multi-scope work.", render: renderAsymmetricTaskOverlap },
-    { id: "asymmetric-task-overlap-saturated", kicker: "Set Overlap", title: "Saturated Task Overlap", copy: "Nine asymmetric scope circles hold 100 task dots with external labels and direct color-optimized leader lines.", render: renderAsymmetricTaskOverlapSaturated, size: "wide" },
-    { id: "venn-three-circle", kicker: "Set Overlap", title: "Venn Three Circle", copy: "Three peer concepts reveal single, pairwise, and shared center intersections.", render: renderVennThreeCircle },
-    { id: "venn-five-overlap", kicker: "Set Overlap", title: "Venn Five Overlap", copy: "Five domains converge around a shared center with labeled outer roles.", render: renderVennFiveOverlap },
-    { id: "venn-seven-overlap", kicker: "Set Overlap", title: "Venn Seven Overlap", copy: "Seven LLM workstreams overlap around a central alignment zone.", render: renderVennSevenOverlap },
-    { id: "symmetric-three-circle-rosette", kicker: "Symmetric Overlap", title: "Symmetric Three Circle Rosette", copy: "Three equal circles use 120-degree rotational symmetry for balanced concepts.", render: renderSymmetricThreeCircleRosette },
-    { id: "symmetric-five-circle-rosette", kicker: "Symmetric Overlap", title: "Symmetric Five Circle Rosette", copy: "Five equal circles form a peer-level rosette around one shared center.", render: renderSymmetricFiveCircleRosette },
-    { id: "symmetric-seven-circle-flower", kicker: "Symmetric Overlap", title: "Symmetric Seven Circle Flower", copy: "A center circle plus six equal neighbors forms a stable flower layout.", render: renderSymmetricSevenCircleFlower },
-    { id: "asymmetric-three-circle-chain", kicker: "Asymmetric Overlap", title: "Asymmetric Three Circle Chain", copy: "One bridge circle links two endpoints while the endpoints remain mostly separate.", render: renderAsymmetricThreeCircleChain },
-    { id: "asymmetric-five-circle-cluster", kicker: "Asymmetric Overlap", title: "Asymmetric Five Circle Cluster", copy: "A primary block of three circles gains two adjacent context circles.", render: renderAsymmetricFiveCircleCluster },
-    { id: "asymmetric-seven-circle-bridge", kicker: "Asymmetric Overlap", title: "Asymmetric Seven Circle Bridge", copy: "Two blocks of three circles are joined by one bridge circle in a 3+1+3 structure.", render: renderAsymmetricSevenCircleBridge },
+    { id: "document-token-errors", kicker: "Document", title: "Document Token Quality Red", copy: "The same document-quality pattern uses red for wrong spans while preserving the length-weighted ratios and paragraph spacing.", render: renderDocumentTokenQualityRed },
+    { id: "document-token-bins", kicker: "Document", title: "Document Extraction Buckets", copy: "A single page is scanned in writing order, then colored word blocks split into filler, correct, and wrong buckets with calculated totals.", render: renderDocumentTokenExtractionBuckets },
+    { id: "agent-loop-overlay", kicker: "Image Overlay", title: "Agent Loop Partial Covers", copy: "A source diagram remains visible while animated translucent covers selectively pass over key areas.", render: renderAgentLoopPartialCovers },
+    { id: "task-overlap", kicker: "Set Overlap", title: "Asymmetric Task Overlap", copy: "Nine uneven scope circles hold 20 task dots, including single-scope and shared multi-scope work.", render: renderAsymmetricTaskOverlap },
+    { id: "task-overlap-dense", kicker: "Set Overlap", title: "Saturated Task Overlap", copy: "Nine asymmetric scope circles hold 100 task dots with external labels and direct color-optimized leader lines.", render: renderAsymmetricTaskOverlapSaturated, size: "wide" },
+    { id: "venn-3", kicker: "Set Overlap", title: "Venn Three Circle", copy: "Three peer concepts reveal single, pairwise, and shared center intersections.", render: renderVennThreeCircle },
+    { id: "venn-5", kicker: "Set Overlap", title: "Venn Five Overlap", copy: "Five domains converge around a shared center with labeled outer roles.", render: renderVennFiveOverlap },
+    { id: "venn-7", kicker: "Set Overlap", title: "Venn Seven Overlap", copy: "Seven LLM workstreams overlap around a central alignment zone.", render: renderVennSevenOverlap },
+    { id: "overlap-3-rosette", kicker: "Symmetric Overlap", title: "Symmetric Three Circle Rosette", copy: "Three equal circles use 120-degree rotational symmetry for balanced concepts.", render: renderSymmetricThreeCircleRosette },
+    { id: "overlap-5-rosette", kicker: "Symmetric Overlap", title: "Symmetric Five Circle Rosette", copy: "Five equal circles form a peer-level rosette around one shared center.", render: renderSymmetricFiveCircleRosette },
+    { id: "overlap-7-flower", kicker: "Symmetric Overlap", title: "Symmetric Seven Circle Flower", copy: "A center circle plus six equal neighbors forms a stable flower layout.", render: renderSymmetricSevenCircleFlower },
+    { id: "overlap-3-chain", kicker: "Asymmetric Overlap", title: "Asymmetric Three Circle Chain", copy: "One bridge circle links two endpoints while the endpoints remain mostly separate.", render: renderAsymmetricThreeCircleChain },
+    { id: "overlap-5-cluster", kicker: "Asymmetric Overlap", title: "Asymmetric Five Circle Cluster", copy: "A primary block of three circles gains two adjacent context circles.", render: renderAsymmetricFiveCircleCluster },
+    { id: "overlap-7-bridge", kicker: "Asymmetric Overlap", title: "Asymmetric Seven Circle Bridge", copy: "Two blocks of three circles are joined by one bridge circle in a 3+1+3 structure.", render: renderAsymmetricSevenCircleBridge },
     { id: "sankey", kicker: "Flow", title: "Sankey Pipeline", copy: "Weighted handoffs across ordered stages.", render: renderSankey },
-    { id: "d3-flowchart-dag", kicker: "Diagram", title: "D3 Flowchart DAG", copy: "Mermaid-style process logic drawn as explicit D3 nodes, links, and decisions.", render: renderD3FlowchartDag },
-    { id: "d3-sequence-lifelines", kicker: "Diagram", title: "D3 Sequence Lifelines", copy: "Actor boxes, lifelines, activations, and replies composed directly in SVG.", render: renderD3SequenceLifelines },
-    { id: "d3-state-machine", kicker: "Diagram", title: "D3 State Machine", copy: "State, choice, fork, join, start, and end symbols laid out without Mermaid.", render: renderD3StateMachine },
-    { id: "d3-er-schema", kicker: "Diagram", title: "D3 ER Schema", copy: "Entity tables and cardinality connectors generated from structured records.", render: renderD3ErSchema },
-    { id: "d3-gantt-rollout", kicker: "Diagram", title: "D3 Gantt Rollout", copy: "Time-scaled tasks, sections, dependencies, milestones, and today marker.", render: renderD3GanttRollout },
-    { id: "d3-git-graph", kicker: "Diagram", title: "D3 Git Graph", copy: "Branches, commits, merge curves, and commit labels as SVG geometry.", render: renderD3GitGraph },
-    { id: "d3-kanban-board", kicker: "Diagram", title: "D3 Kanban Board", copy: "Columns and ticket cards recreated with D3 joins and staged reveal.", render: renderD3KanbanBoard },
-    { id: "kanban-assignee-board", kicker: "Diagram", title: "Kanban Assignee Board", copy: "Five Kanban columns show compact task titles with two-letter colored assignee dots and a legend.", render: renderKanbanAssigneeBoard, size: "wide" },
-    { id: "kanban-assignee-virtual-legend", kicker: "Diagram", title: "Kanban Virtual Legend", copy: "A five-column Kanban board keeps symmetry by rendering the people legend as a virtual sixth column.", render: renderKanbanAssigneeBoardVirtualLegend, size: "wide" },
-    { id: "kanban-assignee-distributed-legend", kicker: "Diagram", title: "Kanban Distributed Legend", copy: "A five-column Kanban board distributes person legend chips through the spare footer space in each column.", render: renderKanbanAssigneeBoardDistributedLegend, size: "wide" },
-    { id: "d3-user-journey", kicker: "Diagram", title: "D3 User Journey", copy: "Journey sections, steps, actors, and satisfaction scores as a custom chart.", render: renderD3UserJourney },
+    { id: "flowchart-dag", kicker: "Diagram", title: "D3 Flowchart DAG", copy: "Mermaid-style process logic drawn as explicit D3 nodes, links, and decisions.", render: renderD3FlowchartDag },
+    { id: "sequence-lifelines", kicker: "Diagram", title: "D3 Sequence Lifelines", copy: "Actor boxes, lifelines, activations, and replies composed directly in SVG.", render: renderD3SequenceLifelines },
+    { id: "state-machine", kicker: "Diagram", title: "D3 State Machine", copy: "State, choice, fork, join, start, and end symbols laid out without Mermaid.", render: renderD3StateMachine },
+    { id: "er-schema", kicker: "Diagram", title: "D3 ER Schema", copy: "Entity tables and cardinality connectors generated from structured records.", render: renderD3ErSchema },
+    { id: "gantt-rollout", kicker: "Diagram", title: "D3 Gantt Rollout", copy: "Time-scaled tasks, sections, dependencies, milestones, and today marker.", render: renderD3GanttRollout },
+    { id: "git-graph", kicker: "Diagram", title: "D3 Git Graph", copy: "Branches, commits, merge curves, and commit labels as SVG geometry.", render: renderD3GitGraph },
+    { id: "kanban-board", kicker: "Diagram", title: "D3 Kanban Board", copy: "Columns and ticket cards recreated with D3 joins and staged reveal.", render: renderD3KanbanBoard },
+    { id: "kanban-assignees", kicker: "Diagram", title: "Kanban Assignee Board", copy: "Five Kanban columns show compact task titles with two-letter colored assignee dots and a legend.", render: renderKanbanAssigneeBoard, size: "wide" },
+    { id: "kanban-legend-column", kicker: "Diagram", title: "Kanban Virtual Legend", copy: "A five-column Kanban board keeps symmetry by rendering the people legend as a virtual sixth column.", render: renderKanbanAssigneeBoardVirtualLegend, size: "wide" },
+    { id: "kanban-legend-footer", kicker: "Diagram", title: "Kanban Distributed Legend", copy: "A five-column Kanban board distributes person legend chips through the spare footer space in each column.", render: renderKanbanAssigneeBoardDistributedLegend, size: "wide" },
+    { id: "user-journey", kicker: "Diagram", title: "D3 User Journey", copy: "Journey sections, steps, actors, and satisfaction scores as a custom chart.", render: renderD3UserJourney },
     { id: "parallel-coordinates", kicker: "Multivariate", title: "Parallel Coordinates", copy: "Many-dimensional profiles as polylines.", render: renderParallelCoordinates },
     { id: "bubble-scatter", kicker: "Correlation", title: "Bubble Scatter", copy: "Position, radius, and group encoded together.", render: renderBubbleScatter },
     { id: "point-cloud", kicker: "Distribution", title: "Point Cloud", copy: "Small gray circles float around an invisible horizontal line.", render: renderPointCloud },
@@ -224,23 +289,23 @@
     { id: "delaunay-mesh", kicker: "Proximity", title: "Delaunay Mesh", copy: "Triangulated neighbor structure behind points.", render: renderDelaunayMesh },
     { id: "waffle", kicker: "Part-to-whole", title: "Waffle Matrix", copy: "Individual units grouped into exact shares.", render: renderWaffle },
     { id: "context-window-matrix", kicker: "Context", title: "Context Window Matrix", copy: "Token budget fills as agent context enters the active window.", render: renderContextWindowMatrix },
-    { id: "token-boxes-to-context-window", kicker: "Context", title: "Token Boxes To Context Window", copy: "Prompt tokens become ordered colored slots in a square context grid.", render: renderTokenBoxesToContextWindow },
-    { id: "token-probability-sampler", kicker: "LLM", title: "Token Probability Sampler", copy: "Candidate next tokens compete by probability before one token is sampled.", render: renderTokenProbabilitySampler },
-    { id: "token-roulette-sampler", kicker: "LLM", title: "Token Roulette Sampler", copy: "A probability wheel spins, then reveals the selected token.", render: renderTokenRouletteSampler },
+    { id: "context-window-fill", kicker: "Context", title: "Token Boxes To Context Window", copy: "Prompt tokens become ordered colored slots in a square context grid.", render: renderTokenBoxesToContextWindow },
+    { id: "token-sampler", kicker: "LLM", title: "Token Probability Sampler", copy: "Candidate next tokens compete by probability before one token is sampled.", render: renderTokenProbabilitySampler },
+    { id: "token-roulette", kicker: "LLM", title: "Token Roulette Sampler", copy: "A probability wheel spins, then reveals the selected token.", render: renderTokenRouletteSampler },
     { id: "temperature-softmax", kicker: "LLM", title: "Temperature Softmax", copy: "The same logits sharpen or flatten as temperature changes.", render: renderTemperatureSoftmax },
     { id: "nucleus-sampling", kicker: "LLM", title: "Nucleus Sampling", copy: "Top-p keeps the smallest token set whose cumulative probability crosses a threshold.", render: renderNucleusSampling },
     { id: "attention-routing", kicker: "LLM", title: "Attention Routing", copy: "A query token distributes attention across earlier context tokens.", render: renderAttentionRouting },
     { id: "attention-arc-decoding", kicker: "LLM", title: "Attention Arc Decoding", copy: "Attention arcs target an empty slot; each generated token joins the context for the next decode step.", render: renderAttentionArcDecoding },
     { id: "embedding-neighborhood", kicker: "LLM", title: "Embedding Neighborhood", copy: "Nearby vectors form semantic neighborhoods around a query.", render: renderEmbeddingNeighborhood },
     { id: "kv-cache-growth", kicker: "LLM", title: "KV Cache Growth", copy: "Generated tokens append reusable key-value columns while the active query advances.", render: renderKvCacheGrowth },
-    { id: "attention-matrix-tiles", kicker: "LLM", title: "Attention Matrix Tiles", copy: "Causal attention scores become tiled rows, query focus, and masked future tokens.", render: renderAttentionMatrixTiles },
+    { id: "attention-tiles", kicker: "LLM", title: "Attention Matrix Tiles", copy: "Causal attention scores become tiled rows, query focus, and masked future tokens.", render: renderAttentionMatrixTiles },
     { id: "qkv-projection-flow", kicker: "Transformer", title: "QKV Projection Flow", copy: "Token embeddings split into query, key, and value matrices before attention.", render: renderQkvProjectionFlow },
     { id: "lora-rank-update", kicker: "Adaptation", title: "LoRA Rank Update", copy: "A frozen weight matrix receives a compact low-rank update path.", render: renderLoraRankUpdate },
     { id: "flashattention-blocks", kicker: "Attention", title: "FlashAttention Blocks", copy: "Block tiles move between HBM and SRAM to reduce attention memory traffic.", render: renderFlashAttentionBlocks },
     { id: "moe-router-capacity", kicker: "LLM", title: "MoE Router Capacity", copy: "Token-level top-k routing fills expert slots and exposes capacity overflow.", render: renderMoeRouterCapacity, size: "wide" },
-    { id: "speculative-decoding-verify", kicker: "Inference", title: "Speculative Decode Verify", copy: "Draft tokens branch ahead while the target model accepts a prefix and rejects the tail.", render: renderSpeculativeDecodingVerify },
-    { id: "rope-position-rotation", kicker: "Transformer", title: "RoPE Position Rotation", copy: "Position-indexed query and key vectors rotate before relative attention scoring.", render: renderRopePositionRotation },
-    { id: "matmul-tile-accumulation", kicker: "Matrix", title: "Matmul Tile Accumulation", copy: "A and B tiles sweep into C while partial products accumulate.", render: renderMatmulTileAccumulation },
+    { id: "speculative-decoding", kicker: "Inference", title: "Speculative Decode Verify", copy: "Draft tokens branch ahead while the target model accepts a prefix and rejects the tail.", render: renderSpeculativeDecodingVerify },
+    { id: "rope-rotation", kicker: "Transformer", title: "RoPE Position Rotation", copy: "Position-indexed query and key vectors rotate before relative attention scoring.", render: renderRopePositionRotation },
+    { id: "tiled-matmul", kicker: "Matrix", title: "Matmul Tile Accumulation", copy: "A and B tiles sweep into C while partial products accumulate.", render: renderMatmulTileAccumulation },
     { id: "scaled-dot-product-attention", kicker: "Attention", title: "Scaled Dot-Product Attention", copy: "QK scores are masked, normalized, then applied to V.", render: renderScaledDotProductAttention },
     { id: "multi-head-attention-merge", kicker: "Transformer", title: "Multi-Head Attention Merge", copy: "Several attention heads specialize before concatenation and output projection.", render: renderMultiHeadAttentionMerge },
     { id: "logit-lens-rank-bump", kicker: "Diagnostics", title: "Logit Lens Rank Bump", copy: "Candidate token ranks move across layers until the final answer separates.", render: renderLogitLensRankBump },
@@ -252,8 +317,8 @@
     { id: "spiral-timeline", kicker: "Temporal", title: "Spiral Timeline", copy: "Long sequences wrapped into cyclic space.", render: renderSpiralTimeline },
     { id: "candlestick", kicker: "Financial", title: "Candlestick", copy: "Open-high-low-close movement with wicks.", render: renderCandlestick },
     { id: "flow-tokens", kicker: "Flow", title: "Flow Tokens", copy: "Moving particles reveal direction and cadence.", render: renderFlowTokens },
-    { id: "process-pid-control-loop", kicker: "Process Engineering", title: "P&ID Control Loop", copy: "A process vessel, pump, exchanger, valves, instrument bubbles, dashed signal lines, interlock, and flow pulses form a P&ID-style control loop.", render: renderProcessPidControlLoop, size: "wide" },
-    { id: "natural-math-archetypes", kicker: "Natural Math", title: "Natural Math Archetypes", copy: "Six archetypes connect a mathematical invariant, a generative rule, and a natural expression for the theory of three.", render: renderNaturalMathArchetypes, size: "full" },
+    { id: "process-control-loop", kicker: "Process Engineering", title: "P&ID Control Loop", copy: "A process vessel, pump, exchanger, valves, instrument bubbles, dashed signal lines, interlock, and flow pulses form a P&ID-style control loop.", render: renderProcessPidControlLoop, size: "wide" },
+    { id: "nature-geometry", kicker: "Natural Math", title: "Natural Math Archetypes", copy: "Six archetypes connect a mathematical invariant, a generative rule, and a natural expression for the theory of three.", render: renderNaturalMathArchetypes, size: "full" },
     { id: "dorling", kicker: "Geospatial", title: "Dorling Cartogram", copy: "Values collide around geographic anchors.", render: renderDorlingCartogram },
     { id: "bar-race", kicker: "Ranking", title: "Bar Race", copy: "Ranks and magnitudes animate between states.", render: renderBarRace },
     { id: "focus-context", kicker: "Interaction", title: "Focus Context", copy: "A selected window links overview and detail.", render: renderFocusContext },
@@ -263,8 +328,8 @@
     { id: "ternary", kicker: "Composition", title: "Ternary Plot", copy: "Three-part mixtures mapped into simplex space.", render: renderTernary },
     { id: "point-range", kicker: "Uncertainty", title: "Point Range", copy: "Estimates with confidence intervals by group.", render: renderPointRange },
     { id: "bullet", kicker: "Performance", title: "Bullet Chart", copy: "Target, ranges, and current value in compact form.", render: renderBullet },
-    { id: "facets", kicker: "Small multiples", title: "Facet Sparklines", copy: "Repeated scales compare patterns across panels.", render: renderFacets },
-    { id: "barcode", kicker: "Events", title: "Barcode Plot", copy: "Dense event timing as ordered tick marks.", render: renderBarcode },
+    { id: "facet-sparklines", kicker: "Small multiples", title: "Facet Sparklines", copy: "Repeated scales compare patterns across panels.", render: renderFacets },
+    { id: "barcode-plot", kicker: "Events", title: "Barcode Plot", copy: "Dense event timing as ordered tick marks.", render: renderBarcode },
     { id: "event-cascade", kicker: "Causality", title: "Event Cascade", copy: "Timed events propagate across lagged lanes.", render: renderEventCascade },
     { id: "geofence-join", kicker: "Spatial join", title: "Geofenced Activity", copy: "Points classify into regions and roll up totals.", render: renderGeofenceJoin },
     { id: "isoline-terrain", kicker: "Surface", title: "Isoline Terrain", copy: "A scalar grid becomes nested elevation bands.", render: renderIsolineTerrain },
@@ -276,11 +341,11 @@
     { id: "pen-curve-study", kicker: "Drawing", title: "Pen Curve Study", copy: "A precise pen point lays pressure-modulated calligraphic curves.", render: renderPenCurveStudy },
     { id: "pen-label-optimizer", kicker: "Labels", title: "Pen Label Optimizer", copy: "Dense mixed-length labels compare placement strategies and keep the best readable subset.", render: renderPenLabelOptimizer },
     { id: "critical-path", kicker: "Flow", title: "Critical Path DAG", copy: "Weighted dependencies reveal the bottleneck route.", render: renderCriticalPath },
-    { id: "critical-incident-escalation", kicker: "Critical", title: "Critical Incident Escalation", copy: "A SEV response timeline shows detection, command, comms, SLA pressure, mitigation, and recovery.", render: renderCriticalIncidentEscalation, size: "wide" },
-    { id: "critical-fault-tree", kicker: "Critical", title: "Critical Fault Tree", copy: "A safety fault tree traces a top event through OR and AND gates, basic events, minimal cut sets, and risk contribution.", render: renderCriticalFaultTree, size: "wide" },
-    { id: "critical-bowtie-barrier", kicker: "Critical", title: "Critical Bowtie Barrier", copy: "A safety bowtie maps threats, the top event, preventive barriers, consequences, mitigative barriers, and degraded controls.", render: renderCriticalBowtieBarrier, size: "wide" },
+    { id: "incident-escalation", kicker: "Critical", title: "Critical Incident Escalation", copy: "A SEV response timeline shows detection, command, comms, SLA pressure, mitigation, and recovery.", render: renderCriticalIncidentEscalation, size: "wide" },
+    { id: "fault-tree", kicker: "Critical", title: "Critical Fault Tree", copy: "A safety fault tree traces a top event through OR and AND gates, basic events, minimal cut sets, and risk contribution.", render: renderCriticalFaultTree, size: "wide" },
+    { id: "bowtie-barriers", kicker: "Critical", title: "Critical Bowtie Barrier", copy: "A safety bowtie maps threats, the top event, preventive barriers, consequences, mitigative barriers, and degraded controls.", render: renderCriticalBowtieBarrier, size: "wide" },
     { id: "mlp-simple", kicker: "AI", title: "MLP Simple", copy: "Gray neurons pulse red one layer at a time.", render: renderMlpSimple },
-    { id: "deep-learning-model-execution", kicker: "AI", title: "Deep Learning Model Execution", copy: "A square model frame contains only an internal MLP pulsing through execution.", render: renderDeepLearningModelExecution },
+    { id: "mlp-execution", kicker: "AI", title: "Deep Learning Model Execution", copy: "A square model frame contains only an internal MLP pulsing through execution.", render: renderDeepLearningModelExecution },
     { id: "mlp-internals", kicker: "AI", title: "MLP Internals", copy: "A forward pass pulses neurons while x, z, a, W, b, and y_hat stay visible.", render: renderMlpInternals },
     { id: "binary-classifier", kicker: "AI", title: "Binary Classifier", copy: "A forward pass routes one sample into one of two outcomes.", render: renderBinaryClassifier },
     { id: "binary-classifier-labeled", kicker: "AI", title: "Binary Classifier Labels", copy: "The same binary decision includes feature, probability, and class labels.", render: renderBinaryClassifierLabeled },
@@ -291,7 +356,7 @@
     { id: "vaccine-impact", kicker: "Public health", title: "Vaccine Impact", copy: "Disease incidence collapses after intervention markers.", render: renderVaccineImpact },
     { id: "word-cloud", kicker: "Text", title: "Word Cloud", copy: "Weighted terms occupy an animated text layout.", render: renderWordCloud },
     { id: "voronoi-stippling", kicker: "Sampling", title: "Voronoi Stippling", copy: "Points and cells approximate a continuous intensity field.", render: renderVoronoiStippling },
-    { id: "pocket-monster-stippling", kicker: "Sampling", title: "Pocket Monster Stippling", copy: "Weighted Voronoi stipples settle into a stylized electric creature silhouette.", render: renderPocketMonsterStippling },
+    { id: "creature-stippling", kicker: "Sampling", title: "Pocket Monster Stippling", copy: "Weighted Voronoi stipples settle into a stylized electric creature silhouette.", render: renderPocketMonsterStippling },
     { id: "tanglegram", kicker: "Comparison", title: "Tanglegram", copy: "Two trees connect matched leaves across the middle.", render: renderTanglegram },
     { id: "scatterplot-tour", kicker: "Projection", title: "Scatterplot Tour", copy: "Stable points move between two analytical projections.", render: renderScatterplotTour },
     { id: "zoom-to-bounds", kicker: "Focus", title: "Zoom to Bounds", copy: "A selected region expands into a linked detail panel.", render: renderZoomToBounds },
@@ -299,7 +364,7 @@
     { id: "hierarchical-bars", kicker: "Hierarchy", title: "Hierarchical Bars", copy: "Indented bars show parent and child magnitude together.", render: renderHierarchicalBars },
     { id: "stacked-grouped-bars", kicker: "Transition", title: "Stacked to Grouped", copy: "Bars move from composition to side-by-side comparison.", render: renderStackedGroupedBars },
     { id: "smooth-zoom", kicker: "Focus", title: "Smooth Zoom", copy: "A viewport path eases into a magnified data region.", render: renderSmoothZoom },
-    { id: "ortho-switch", kicker: "Projection", title: "Projection Switch", copy: "Geographic points shift between globe and flat views.", render: renderProjectionSwitch },
+    { id: "projection-switch", kicker: "Projection", title: "Projection Switch", copy: "Geographic points shift between globe and flat views.", render: renderProjectionSwitch },
     { id: "world-tour", kicker: "Geospatial", title: "World Tour", copy: "Great-circle hops trace a route across a rotating globe.", render: renderWorldTour },
     { id: "moving-average", kicker: "Analysis", title: "Moving Average", copy: "A smoothed trend line separates signal from noise.", render: renderMovingAverage },
     { id: "bollinger-bands", kicker: "Financial", title: "Bollinger Bands", copy: "Rolling volatility wraps price with dynamic bands.", render: renderBollingerBands },
@@ -329,7 +394,7 @@
     { id: "radial-area", kicker: "Radial", title: "Radial Area", copy: "A cyclic time series wraps into a filled polar profile.", render: renderRadialArea },
     { id: "mirrored-beeswarm", kicker: "Distribution", title: "Mirrored Beeswarm", copy: "Two groups mirror around a central quantitative axis.", render: renderMirroredBeeswarm },
     { id: "index-chart", kicker: "Temporal", title: "Index Chart", copy: "Multiple series rebase to a common starting value.", render: renderIndexChart },
-    { id: "animated-quadtree", kicker: "Indexing", title: "Animated Quadtree", copy: "Recursive spatial partitions reveal point index depth.", render: renderAnimatedQuadtree },
+    { id: "quadtree-partition", kicker: "Indexing", title: "Animated Quadtree", copy: "Recursive spatial partitions reveal point index depth.", render: renderAnimatedQuadtree },
     { id: "drag-collisions", kicker: "Simulation", title: "Drag Collisions", copy: "Collision resolution spreads overlapping nodes from a dragged focus.", render: renderDragCollisions },
     { id: "dot-plot", kicker: "Ranking", title: "Dot Plot", copy: "Compact ranked points compare paired measures.", render: renderDotPlot },
     { id: "line-missing-data", kicker: "Temporal", title: "Line with Missing Data", copy: "Gaps preserve absent observations instead of implying continuity.", render: renderLineMissingData },
@@ -347,23 +412,23 @@
     { id: "xy-zoom", kicker: "Focus", title: "X/Y Zoom", copy: "Independent axis windows crop a two-dimensional scatter field.", render: renderXyZoom },
     { id: "versor-dragging", kicker: "Projection", title: "Versor Dragging", copy: "A globe rotates along a drag arc using spherical interpolation.", render: renderVersorDragging },
     { id: "you-draw-it", kicker: "Prediction", title: "You Draw It", copy: "A guessed trajectory reveals against the observed series.", render: renderYouDrawIt },
-    { id: "mona-histogram", kicker: "Raster", title: "Image Histogram", copy: "A brushed image region links to a pixel-value distribution.", render: renderMonaHistogram },
+    { id: "image-histogram", kicker: "Raster", title: "Image Histogram", copy: "A brushed image region links to a pixel-value distribution.", render: renderMonaHistogram },
     { id: "population-pyramid", kicker: "Demography", title: "Population Pyramid", copy: "Mirrored age bins compare two demographic groups.", render: renderPopulationPyramid },
     { id: "hr-diagram", kicker: "Science", title: "H-R Diagram", copy: "Stars map temperature and luminosity into a scientific scatter.", render: renderHrDiagram },
     { id: "solar-path", kicker: "Astronomy", title: "Solar Path", copy: "Seasonal sun arcs cross a local horizon diagram.", render: renderSolarPath },
     { id: "non-contiguous-cartogram", kicker: "Geospatial", title: "Non-contiguous Cartogram", copy: "Region shapes scale around fixed centroids by value.", render: renderNonContiguousCartogram },
     { id: "hexbin-map", kicker: "Geospatial", title: "Hexbin Map", copy: "Projected points aggregate into geographic hexagonal bins.", render: renderHexbinMap },
-    { id: "airports-voronoi", kicker: "Geospatial", title: "Airports Voronoi", copy: "Nearest-airport service areas partition a projected region.", render: renderAirportsVoronoi },
+    { id: "airport-voronoi", kicker: "Geospatial", title: "Airports Voronoi", copy: "Nearest-airport service areas partition a projected region.", render: renderAirportsVoronoi },
     { id: "polygon-clipping", kicker: "Geometry", title: "Polygon Clipping", copy: "An input polygon is intersected with a clipping window.", render: renderPolygonClipping },
     { id: "occlusion-labels", kicker: "Labels", title: "Occlusion Labels", copy: "Dense labels resolve into a readable non-overlapping subset.", render: renderOcclusionLabels },
-    { id: "correlogram-histogram", kicker: "Matrix", title: "Correlogram + Histograms", copy: "Pairwise panels combine correlations, scatters, and diagonals.", render: renderCorrelogramHistogram },
-    { id: "rectbin-density", kicker: "Density", title: "2D Rectangular Histogram", copy: "Rectangular bins aggregate point density without hex geometry.", render: renderRectbinDensity },
+    { id: "correlogram", kicker: "Matrix", title: "Correlogram + Histograms", copy: "Pairwise panels combine correlations, scatters, and diagonals.", render: renderCorrelogramHistogram },
+    { id: "rectbin", kicker: "Density", title: "2D Rectangular Histogram", copy: "Rectangular bins aggregate point density without hex geometry.", render: renderRectbinDensity },
     { id: "pie-data-switch", kicker: "Transition", title: "Pie Data Switch", copy: "Arc slices tween between two part-to-whole states.", render: renderPieDataSwitch },
     { id: "line-cursor", kicker: "Interaction", title: "Line Cursor", copy: "A nearest-point cursor links a vertical guide and value label.", render: renderLineCursor },
     { id: "cluster-dendrogram", kicker: "Hierarchy", title: "Cluster Dendrogram", copy: "Equal-depth leaves reveal the structure of a clustered tree.", render: renderClusterDendrogram },
     { id: "antimeridian-cutting", kicker: "Projection", title: "Antimeridian Cutting", copy: "A route splits cleanly at the dateline instead of crossing the map.", render: renderAntimeridianCutting },
     { id: "adaptive-sampling", kicker: "Geometry", title: "Adaptive Sampling", copy: "More sample points appear where a curve bends sharply.", render: renderAdaptiveSampling },
-    { id: "context-to-curve", kicker: "Geometry", title: "Context to Curve", copy: "The same control points render through multiple D3 curve contexts.", render: renderContextToCurve },
+    { id: "curve-contexts", kicker: "Geometry", title: "Context to Curve", copy: "The same control points render through multiple D3 curve contexts.", render: renderContextToCurve },
     { id: "satellite-projection", kicker: "Projection", title: "Satellite Projection", copy: "Perspective footprint and horizon rings explain a satellite view.", render: renderSatelliteProjection },
     { id: "exoplanet-orbits", kicker: "Science", title: "Exoplanet Orbits", copy: "Orbital radius and planet size encode a compact science catalog.", render: renderExoplanetOrbits },
     { id: "epicyclic-gearing", kicker: "Geometry", title: "Epicyclic Gearing", copy: "Nested circular motion traces gear-like paths.", render: renderEpicyclicGearing }
@@ -372,15 +437,19 @@
   function assignPatternIds() {
     const seen = new Set();
     examples.forEach(example => {
-      const basePatternId = example.basePatternId || example.patternId || `d3-pattern-${example.id}`;
+      const basePatternId = example.basePatternId || example.patternId || `d3-${example.id}`;
+      const legacyExampleId = legacyExampleIds.get(example.id) || example.id;
       example.basePatternId = basePatternId;
       if (!isStyledGallery) {
         example.patternId = basePatternId;
+        example.legacyPatternId = `d3-pattern-${legacyExampleId}`;
       } else if (galleryStyleConfig.versionPatternSuffix) {
         example.patternId = `${basePatternId}-${galleryStyleConfig.versionPatternSuffix}`;
+        example.legacyPatternId = galleryStyleVersion === "colorset2"
+          ? `d3-pattern-cs2-${legacyExampleId}`
+          : `d3-pattern-${legacyExampleId}-${galleryStyleConfig.versionPatternSuffix}`;
       } else {
-        const prefix = galleryStyleConfig.versionPatternPrefix || (galleryStyleVersion === "colorset2" ? "d3-pattern-cs2-" : `d3-pattern-${galleryStyleVersion}-`);
-        example.patternId = `${prefix}${example.id}`;
+        throw new Error(`Styled gallery ${galleryStyleVersion} must define versionPatternSuffix.`);
       }
       if (!/^[a-z0-9][a-z0-9-]*$/.test(example.patternId)) {
         throw new Error(`Invalid pattern ID for ${example.id}: ${example.patternId}`);
@@ -397,12 +466,13 @@
   }
 
   function exposeExampleMetadata() {
-    window.D3_ANIMATED_SVG_EXAMPLES = examples.map(({ id, kicker, title, copy, patternId, basePatternId, size }) => ({
+    window.D3_ANIMATED_SVG_EXAMPLES = examples.map(({ id, kicker, title, copy, patternId, legacyPatternId, basePatternId, size }) => ({
       id,
       kicker,
       title,
       copy,
       patternId,
+      legacyPatternId,
       basePatternId,
       styleVersion: galleryStyleVersion,
       colorSet: galleryColorSet,
@@ -421,6 +491,7 @@
       .attr("data-example", d => d.id)
       .attr("data-example-id", d => d.id)
       .attr("data-pattern-id", d => d.patternId)
+      .attr("data-legacy-pattern-id", d => d.legacyPatternId)
       .attr("data-base-pattern-id", d => d.basePatternId)
       .attr("data-style-version", galleryStyleVersion)
       .html(d => `
@@ -433,7 +504,7 @@
           <p class="example-pattern-id">${d.patternId}</p>
           <p class="example-copy">${d.copy}</p>
         </div>
-        <div class="viz-frame"><svg id="${d.id}" data-pattern-id="${d.patternId}" data-base-pattern-id="${d.basePatternId}" data-style-version="${galleryStyleVersion}" role="img"></svg></div>
+        <div class="viz-frame"><svg id="${d.id}" data-pattern-id="${d.patternId}" data-legacy-pattern-id="${d.legacyPatternId}" data-base-pattern-id="${d.basePatternId}" data-style-version="${galleryStyleVersion}" role="img"></svg></div>
       `);
 
     d3.select("#example-count").text(examples.length);
@@ -446,6 +517,17 @@
     document.body.dataset.paletteName = galleryPaletteName;
   }
 
+  function redirectLegacyPatternHash() {
+    const hash = decodeURIComponent(window.location.hash.slice(1));
+    if (!hash) return;
+    const example = examples.find(item => item.legacyPatternId === hash);
+    if (!example) return;
+    const target = document.getElementById(example.patternId);
+    if (!target) return;
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#${example.patternId}`);
+    target.scrollIntoView({ block: "start" });
+  }
+
   function prepareSvg(id, title, desc) {
     const svg = d3.select(`#${id}`);
     svg.selectAll("*").remove();
@@ -455,7 +537,7 @@
     svg
       .attr("data-style-version", galleryStyleVersion)
       .attr("data-color-set", galleryColorSet)
-      .attr("data-base-pattern-id", `d3-pattern-${id}`);
+      .attr("data-base-pattern-id", `d3-${id}`);
     svg.append("title").attr("id", `${id}-title`).text(title);
     svg.append("desc").attr("id", `${id}-desc`).text(desc);
     return svg;
@@ -1520,7 +1602,7 @@
   }
 
   function renderDataTableGrid() {
-    const svg = prepareSvg("data-table-grid", "Data table grid", "A D3-built SVG table with typed columns and row-level emphasis.");
+    const svg = prepareSvg("data-grid", "Data table grid", "A D3-built SVG table with typed columns and row-level emphasis.");
     const x0 = 32, y0 = 56, tableW = 496, rowH = 36, headerH = 34;
     const columns = [
       { key: "id", label: "ID", x: 14, w: 58 },
@@ -1722,7 +1804,7 @@
   }
 
   function renderSortableRankTable() {
-    const svg = prepareSvg("sortable-rank-table", "Sortable rank table", "Rows animate from source order into score-sorted order.");
+    const svg = prepareSvg("rank-table", "Sortable rank table", "Rows animate from source order into score-sorted order.");
     const x0 = 54, y0 = 92, rowH = 34, tableW = 450;
     const rows = [
       { name: "Atlas", segment: "Core", score: 78, delta: 5 },
@@ -1826,7 +1908,7 @@
   }
 
   function renderColumnProfileTable() {
-    const svg = prepareSvg("column-profile-table", "Column profile table", "A data profiling table rendered with D3 row profiles and mini distributions.");
+    const svg = prepareSvg("column-profile", "Column profile table", "A data profiling table rendered with D3 row profiles and mini distributions.");
     const x0 = 46, y0 = 92, rowH = 38;
     const rows = [
       { column: "customer_id", type: "string", complete: 1, unique: 1180, bins: [1, 1, 1, 1, 1, 1] },
@@ -1897,7 +1979,7 @@
 
   function renderDocumentTokenQualityRed() {
     renderDocumentTokenQualityVariant(
-      "document-token-quality-red",
+      "document-token-errors",
       "Document token quality red",
       "Document word blocks encode correct, filler, and red wrong spans by accumulated word length.",
       { wrong: { fill: palette.red, stroke: palette.redHover } }
@@ -2133,7 +2215,7 @@
   }
 
   function renderDocumentTokenExtractionBuckets() {
-    const svg = prepareSvg("document-token-extraction-buckets", "Document token extraction buckets", "A single colored document page is extracted into filler, correct, and wrong buckets with calculated totals.");
+    const svg = prepareSvg("document-token-bins", "Document token extraction buckets", "A single colored document page is extracted into filler, correct, and wrong buckets with calculated totals.");
     const totalUnits = 420;
     const wordHeight = 7;
     const wordGap = 3.3;
@@ -2456,7 +2538,7 @@
   }
 
   function renderAgentLoopPartialCovers() {
-    const svg = prepareSvg("agent-loop-partial-covers", "Agent loop partial covers", "An image-backed SVG with animated partial covers over selected regions of the agent loop diagram.");
+    const svg = prepareSvg("agent-loop-overlay", "Agent loop partial covers", "An image-backed SVG with animated partial covers over selected regions of the agent loop diagram.");
     const image = { x: 16, y: 34, w: 528, h: 333 };
     const source = { w: 980, h: 618 };
     const sx = image.w / source.w;
@@ -2487,7 +2569,7 @@
       .attr("stroke-width", 1.4);
 
     svg.append("clipPath")
-      .attr("id", "agent-loop-partial-covers-clip")
+      .attr("id", "agent-loop-overlay-clip")
       .append("rect")
       .attr("x", image.x)
       .attr("y", image.y)
@@ -2502,7 +2584,7 @@
       .attr("width", image.w)
       .attr("height", image.h)
       .attr("preserveAspectRatio", "xMidYMid meet")
-      .attr("clip-path", "url(#agent-loop-partial-covers-clip)")
+      .attr("clip-path", "url(#agent-loop-overlay-clip)")
       .attr("opacity", .72);
 
     svg.append("rect")
@@ -2513,10 +2595,10 @@
       .attr("rx", 8)
       .attr("fill", palette.surface)
       .attr("opacity", .08)
-      .attr("clip-path", "url(#agent-loop-partial-covers-clip)");
+      .attr("clip-path", "url(#agent-loop-overlay-clip)");
 
     const coverGroups = svg.append("g")
-      .attr("clip-path", "url(#agent-loop-partial-covers-clip)")
+      .attr("clip-path", "url(#agent-loop-overlay-clip)")
       .selectAll("g.agent-cover")
       .data(regions)
       .join("g")
@@ -2609,7 +2691,7 @@
       ]
     }));
     const outlines = svg.append("g")
-      .attr("clip-path", "url(#agent-loop-partial-covers-clip)")
+      .attr("clip-path", "url(#agent-loop-overlay-clip)")
       .selectAll("path.agent-cover-outline")
       .data(outlineData)
       .join("path")
@@ -2637,7 +2719,7 @@
   }
 
   function renderAsymmetricTaskOverlap() {
-    const svg = prepareSvg("asymmetric-task-overlap", "Asymmetric task overlap", "Nine asymmetric scope circles with 20 labeled task dots distributed across single and shared memberships.");
+    const svg = prepareSvg("task-overlap", "Asymmetric task overlap", "Nine asymmetric scope circles with 20 labeled task dots distributed across single and shared memberships.");
     svg.attr("data-target-count", 20).attr("data-circle-count", 9);
     const circles = [
       { id: "backlog", label: "Backlog", cx: 150, cy: 135, r: 74, fill: palette.blueHighlight, stroke: palette.blue, lx: 82, ly: 58 },
@@ -2797,7 +2879,7 @@
 
   function renderAsymmetricTaskOverlapSaturated() {
     const layout = window.D3_TASK_OVERLAP_LAYOUTS && window.D3_TASK_OVERLAP_LAYOUTS.saturated;
-    const svg = prepareSvg("asymmetric-task-overlap-saturated", "Saturated task overlap", "Nine asymmetric scope circles with 100 task dots, external collision-audited labels, and direct leader lines colored to reduce same-color crossings.");
+    const svg = prepareSvg("task-overlap-dense", "Saturated task overlap", "Nine asymmetric scope circles with 100 task dots, external collision-audited labels, and direct leader lines colored to reduce same-color crossings.");
     if (!layout) {
       svg.append("text")
         .attr("class", "mark-label")
@@ -3170,7 +3252,7 @@
   }
 
   function renderVennThreeCircle() {
-    renderVennPattern("venn-three-circle", "Venn three circle", "Three peer concepts with single, pairwise, and central shared regions.", {
+    renderVennPattern("venn-3", "Venn three circle", "Three peer concepts with single, pairwise, and central shared regions.", {
       layout: "three-circle-classic",
       center: { x: 280, y: 214 },
       coreRadius: 31,
@@ -3194,7 +3276,7 @@
       ["policy", "PL", "Policy", palette.red]
     ];
     const points = vennRosettePoints(5, center, 64);
-    renderVennPattern("venn-five-overlap", "Venn five overlap", "Five domains converge around a shared center with direct labels.", {
+    renderVennPattern("venn-5", "Venn five overlap", "Five domains converge around a shared center with direct labels.", {
       layout: "five-circle-shared-center",
       center,
       guideCircle: { ...center, r: 66 },
@@ -3228,7 +3310,7 @@
       ["product", "PD", "Product", palette.orangeHover]
     ];
     const points = vennRosettePoints(7, center, 75);
-    renderVennPattern("venn-seven-overlap", "Venn seven overlap", "Seven LLM workstreams overlap around a central alignment zone.", {
+    renderVennPattern("venn-7", "Venn seven overlap", "Seven LLM workstreams overlap around a central alignment zone.", {
       layout: "seven-circle-ecosystem",
       center,
       guideCircle: { ...center, r: 78 },
@@ -3258,7 +3340,7 @@
       ["context", "CX", "Context", palette.green]
     ];
     const points = vennRosettePoints(3, center, 56);
-    renderVennPattern("symmetric-three-circle-rosette", "Symmetric three circle rosette", "Three equal circles arranged with 120-degree rotational symmetry.", {
+    renderVennPattern("overlap-3-rosette", "Symmetric three circle rosette", "Three equal circles arranged with 120-degree rotational symmetry.", {
       layout: "symmetric-3-rosette",
       center,
       guideCircle: { ...center, r: 58 },
@@ -3289,7 +3371,7 @@
       ["risk", "RK", "Risk", palette.red]
     ];
     const points = vennRosettePoints(5, center, 66);
-    renderVennPattern("symmetric-five-circle-rosette", "Symmetric five circle rosette", "Five equal circles arranged with 72-degree rotational symmetry.", {
+    renderVennPattern("overlap-5-rosette", "Symmetric five circle rosette", "Five equal circles arranged with 72-degree rotational symmetry.", {
       layout: "symmetric-5-rosette",
       center,
       guideCircle: { ...center, r: 68 },
@@ -3334,7 +3416,7 @@
       index === 3 ? 420 : center.x + Math.cos(ring[index].angle) * 210,
       index === 3 ? 330 : center.y + Math.sin(ring[index].angle) * 148
     )));
-    renderVennPattern("symmetric-seven-circle-flower", "Symmetric seven circle flower", "A center circle plus six equal neighboring domains in a stable flower pattern.", {
+    renderVennPattern("overlap-7-flower", "Symmetric seven circle flower", "A center circle plus six equal neighboring domains in a stable flower pattern.", {
       layout: "symmetric-7-flower",
       center,
       guideCircle: { ...center, r: 82 },
@@ -3346,7 +3428,7 @@
   }
 
   function renderAsymmetricThreeCircleChain() {
-    renderVennPattern("asymmetric-three-circle-chain", "Asymmetric three circle chain", "A middle concept bridges two endpoints while the endpoints stay mostly separate.", {
+    renderVennPattern("overlap-3-chain", "Asymmetric three circle chain", "A middle concept bridges two endpoints while the endpoints stay mostly separate.", {
       layout: "asymmetric-3-chain",
       center: { x: 280, y: 214 },
       centerLabel: ["bridge", "set"],
@@ -3361,7 +3443,7 @@
   }
 
   function renderAsymmetricFiveCircleCluster() {
-    renderVennPattern("asymmetric-five-circle-cluster", "Asymmetric five circle cluster", "Three primary circles form the main block and two secondary circles attach as context.", {
+    renderVennPattern("overlap-5-cluster", "Asymmetric five circle cluster", "Three primary circles form the main block and two secondary circles attach as context.", {
       layout: "asymmetric-5-cluster",
       center: { x: 258, y: 208 },
       coreRadius: 30,
@@ -3379,7 +3461,7 @@
   }
 
   function renderAsymmetricSevenCircleBridge() {
-    renderVennPattern("asymmetric-seven-circle-bridge", "Asymmetric seven circle bridge", "Two blocks of three circles connected by one bridge circle in a 3+1+3 structure.", {
+    renderVennPattern("overlap-7-bridge", "Asymmetric seven circle bridge", "Two blocks of three circles connected by one bridge circle in a 3+1+3 structure.", {
       layout: "asymmetric-7-bridge-3-1-3",
       center: { x: 280, y: 206 },
       coreRadius: 31,
@@ -3426,8 +3508,8 @@
   }
 
   function renderD3FlowchartDag() {
-    const svg = prepareSvg("d3-flowchart-dag", "D3 flowchart DAG", "A Mermaid-style flowchart rendered directly with D3 SVG marks.");
-    const arrow = addArrowMarker(svg, "d3-flowchart-dag", palette.green);
+    const svg = prepareSvg("flowchart-dag", "D3 flowchart DAG", "A Mermaid-style flowchart rendered directly with D3 SVG marks.");
+    const arrow = addArrowMarker(svg, "flowchart-dag", palette.green);
     const nodes = [
       { id: "start", label: "Start", type: "circle", x: 52, y: 210, w: 56, h: 56, fill: palette.blueHighlight, stroke: palette.blue },
       { id: "collect", label: "Collect\nrequest", type: "input", x: 145, y: 210, w: 90, h: 54, fill: palette.surface, stroke: palette.blue },
@@ -3505,8 +3587,8 @@
   }
 
   function renderD3SequenceLifelines() {
-    const svg = prepareSvg("d3-sequence-lifelines", "D3 sequence lifelines", "A sequence diagram rendered from actor and message records.");
-    const arrow = addArrowMarker(svg, "d3-sequence-lifelines", palette.blueHover);
+    const svg = prepareSvg("sequence-lifelines", "D3 sequence lifelines", "A sequence diagram rendered from actor and message records.");
+    const arrow = addArrowMarker(svg, "sequence-lifelines", palette.blueHover);
     const actors = [
       { id: "Client", x: 54, color: palette.blueHighlight },
       { id: "API", x: 176, color: palette.yellowHighlight },
@@ -3565,8 +3647,8 @@
   }
 
   function renderD3StateMachine() {
-    const svg = prepareSvg("d3-state-machine", "D3 state machine", "A state diagram rendered with explicit D3 node symbols and transitions.");
-    const arrow = addArrowMarker(svg, "d3-state-machine", palette.purple);
+    const svg = prepareSvg("state-machine", "D3 state machine", "A state diagram rendered with explicit D3 node symbols and transitions.");
+    const arrow = addArrowMarker(svg, "state-machine", palette.purple);
     const nodes = [
       { id: "start", label: "", type: "start", x: 38, y: 210, w: 18, h: 18 },
       { id: "Draft", label: "Draft", type: "state", x: 112, y: 210, w: 78, h: 42 },
@@ -3628,7 +3710,7 @@
   }
 
   function renderD3ErSchema() {
-    const svg = prepareSvg("d3-er-schema", "D3 ER schema", "Entity tables and relationship cardinalities rendered directly with D3.");
+    const svg = prepareSvg("er-schema", "D3 ER schema", "Entity tables and relationship cardinalities rendered directly with D3.");
     const entities = [
       { id: "CUSTOMER", x: 44, y: 60, fields: ["customer_id PK", "email", "status"], color: palette.blue },
       { id: "ORDER", x: 228, y: 60, fields: ["order_id PK", "created_at", "state"], color: palette.orange },
@@ -3693,7 +3775,7 @@
   }
 
   function renderD3GanttRollout() {
-    const svg = prepareSvg("d3-gantt-rollout", "D3 Gantt rollout", "A Mermaid-style rollout schedule drawn with D3 time scales.");
+    const svg = prepareSvg("gantt-rollout", "D3 Gantt rollout", "A Mermaid-style rollout schedule drawn with D3 time scales.");
     const parse = d3.timeParse("%Y-%m-%d");
     const tasks = [
       { section: "Build", name: "Draft sources", start: "2026-06-19", end: "2026-06-21", status: "active", color: palette.blue },
@@ -3742,7 +3824,7 @@
   }
 
   function renderD3GitGraph() {
-    const svg = prepareSvg("d3-git-graph", "D3 git graph", "Branch lanes, commits, and merge geometry rendered without Mermaid.");
+    const svg = prepareSvg("git-graph", "D3 git graph", "Branch lanes, commits, and merge geometry rendered without Mermaid.");
     const lanes = { main: 156, examples: 252 };
     const commits = [
       { id: "init", branch: "main", x: 70, y: lanes.main, color: palette.blue },
@@ -3769,7 +3851,7 @@
   }
 
   function renderD3KanbanBoard() {
-    const svg = prepareSvg("d3-kanban-board", "D3 kanban board", "Mermaid kanban data rendered as D3 columns and cards.");
+    const svg = prepareSvg("kanban-board", "D3 kanban board", "Mermaid kanban data rendered as D3 columns and cards.");
     const columns = [
       { id: "Backlog", x: 32, color: palette.blue },
       { id: "In progress", x: 204, color: palette.orange },
@@ -3859,7 +3941,7 @@
 
   function renderKanbanAssigneeBoard() {
     renderKanbanAssigneeBoardVariant({
-      id: "kanban-assignee-board",
+      id: "kanban-assignees",
       title: "Kanban assignee board",
       desc: "Five Kanban columns with task cards, colored assignee dots, and a compact team legend.",
       legendMode: "top-row"
@@ -3868,7 +3950,7 @@
 
   function renderKanbanAssigneeBoardVirtualLegend() {
     renderKanbanAssigneeBoardVariant({
-      id: "kanban-assignee-virtual-legend",
+      id: "kanban-legend-column",
       title: "Kanban virtual legend",
       desc: "Five Kanban columns with task cards and a person legend rendered as a virtual sixth column.",
       legendMode: "virtual-column"
@@ -3877,7 +3959,7 @@
 
   function renderKanbanAssigneeBoardDistributedLegend() {
     renderKanbanAssigneeBoardVariant({
-      id: "kanban-assignee-distributed-legend",
+      id: "kanban-legend-footer",
       title: "Kanban distributed legend",
       desc: "Five Kanban columns with task cards and person legend chips distributed through spare column footer space.",
       legendMode: "distributed-columns"
@@ -3886,7 +3968,7 @@
 
   function renderKanbanAssigneeBoardVariant({ id, title, desc, legendMode }) {
     const svg = prepareSvg(id, title, desc)
-      .attr("data-pattern-family", "kanban-assignee-board")
+      .attr("data-pattern-family", "kanban-assignees")
       .attr("data-legend-mode", legendMode)
       .attr("data-column-count", 5)
       .attr("data-assignee-count", 5);
@@ -4249,7 +4331,7 @@
   }
 
   function renderD3UserJourney() {
-    const svg = prepareSvg("d3-user-journey", "D3 user journey", "A journey diagram rendered as scored steps and actor participation.");
+    const svg = prepareSvg("user-journey", "D3 user journey", "A journey diagram rendered as scored steps and actor participation.");
     const steps = [
       { section: "Discover", label: "Open", score: 4, actors: ["R"] },
       { section: "Discover", label: "Pick", score: 5, actors: ["R"] },
@@ -5908,7 +5990,7 @@
   }
 
   function renderTokenBoxesToContextWindow() {
-    const svg = prepareSvg("token-boxes-to-context-window", "Token boxes to context window", "Token-owned text boxes become ordered colored slots in a square context grid.");
+    const svg = prepareSvg("context-window-fill", "Token boxes to context window", "Token-owned text boxes become ordered colored slots in a square context grid.");
     const tokens = [
       { text: "AI", id: "15836", color: palette.blue, width: 42 },
       { text: "tools", id: "7526", color: palette.green, width: 66 },
@@ -6070,7 +6152,7 @@
   }
 
   function renderTokenProbabilitySampler() {
-    const svg = prepareSvg("token-probability-sampler", "Token probability sampler", "A next-token distribution is sampled by cumulative probability.");
+    const svg = prepareSvg("token-sampler", "Token probability sampler", "A next-token distribution is sampled by cumulative probability.");
     const tokens = [
       { text: "the", p: .34, color: palette.blue },
       { text: "code", p: .23, color: palette.red, selected: true },
@@ -6144,7 +6226,7 @@
     selectionLine.append("animate").attr("attributeName", "opacity").attr("from", 0).attr("to", 1).attr("dur", ".2s").attr("begin", "1.85s").attr("fill", "freeze");
 
     const path = svg.append("path")
-      .attr("id", "token-probability-sampler-path")
+      .attr("id", "token-sampler-path")
       .attr("d", `M${strip.x},${strip.y - 24}C${strip.x + 120},${strip.y - 64} ${selectedX - 100},${strip.y - 58} ${selectedX},${strip.y - 24}`)
       .attr("fill", "none")
       .attr("stroke", palette.gray200)
@@ -6159,7 +6241,7 @@
       .attr("begin", ".45s")
       .attr("fill", "freeze")
       .append("mpath")
-      .attr("href", "#token-probability-sampler-path");
+      .attr("href", "#token-sampler-path");
 
     const result = svg.append("g").attr("opacity", 0);
     result.append("rect").attr("x", 186).attr("y", 356).attr("width", 188).attr("height", 36).attr("rx", 8).attr("fill", palette.redHighlight).attr("stroke", palette.red);
@@ -6168,7 +6250,7 @@
   }
 
   function renderTokenRouletteSampler() {
-    const svg = prepareSvg("token-roulette-sampler", "Token roulette sampler", "A probability-weighted roulette wheel spins before landing on a sampled next token.");
+    const svg = prepareSvg("token-roulette", "Token roulette sampler", "A probability-weighted roulette wheel spins before landing on a sampled next token.");
     const tokens = [
       { text: "the", p: .34, color: palette.blue },
       { text: "code", p: .23, color: palette.red, selected: true },
@@ -6803,7 +6885,7 @@
   }
 
   function renderAttentionMatrixTiles() {
-    const svg = prepareSvg("attention-matrix-tiles", "Attention matrix tiles", "Causal self-attention as a tiled score matrix with masked future tokens and an active query row.");
+    const svg = prepareSvg("attention-tiles", "Attention matrix tiles", "Causal self-attention as a tiled score matrix with masked future tokens and an active query row.");
     const n = 9;
     const cell = 26;
     const gap = 4;
@@ -7250,7 +7332,7 @@
   }
 
   function renderSpeculativeDecodingVerify() {
-    const svg = prepareSvg("speculative-decoding-verify", "Speculative decoding verify", "A draft model proposes future tokens while the target model accepts a prefix and rejects the divergent tail.");
+    const svg = prepareSvg("speculative-decoding", "Speculative decoding verify", "A draft model proposes future tokens while the target model accepts a prefix and rejects the divergent tail.");
     const x = d3.scalePoint().domain(d3.range(6)).range([66, 494]);
     const nodes = [
       { id: "prompt", label: "prompt", x: x(0), y: 196, status: "base", color: palette.ink },
@@ -7293,7 +7375,7 @@
     });
 
     const draft = svg.append("path")
-      .attr("id", "speculative-decoding-verify-draft")
+      .attr("id", "speculative-decoding-draft")
       .attr("d", draftPath)
       .attr("fill", "none")
       .attr("stroke", palette.gray300)
@@ -7323,7 +7405,7 @@
       .attr("begin", ".24s")
       .attr("fill", "freeze")
       .append("mpath")
-      .attr("href", "#speculative-decoding-verify-draft");
+      .attr("href", "#speculative-decoding-draft");
 
     const nodeGroups = svg.append("g").selectAll("g.spec-node").data(nodes).join("g")
       .attr("class", "spec-node")
@@ -7365,7 +7447,7 @@
   }
 
   function renderRopePositionRotation() {
-    const svg = prepareSvg("rope-position-rotation", "RoPE position rotation", "Rotary position embedding rotates query and key vectors by token position before attention scores are compared.");
+    const svg = prepareSvg("rope-rotation", "RoPE position rotation", "Rotary position embedding rotates query and key vectors by token position before attention scores are compared.");
     const positions = d3.range(5).map(index => ({
       index,
       x: d3.scalePoint().domain(d3.range(5)).range([76, 484])(index),
@@ -7446,7 +7528,7 @@
   }
 
   function renderMatmulTileAccumulation() {
-    const svg = prepareSvg("matmul-tile-accumulation", "Matmul tile accumulation", "Matrix multiplication as tiled A and B blocks accumulating partial sums into an output tile.");
+    const svg = prepareSvg("tiled-matmul", "Matmul tile accumulation", "Matrix multiplication as tiled A and B blocks accumulating partial sums into an output tile.");
     const n = 4;
     const cell = 24;
     const band = d3.scaleBand().domain(d3.range(n)).range([0, 112]).paddingInner(.12);
@@ -7512,7 +7594,7 @@
       { id: "b", from: bCenter, mid: { x: 306, y: 106 }, stroke: palette.orange, begin: .82 }
     ].forEach(route => {
       const path = svg.append("path")
-        .attr("id", `matmul-tile-accumulation-${route.id}-route`)
+        .attr("id", `tiled-matmul-${route.id}-route`)
         .attr("d", `M${route.from.x},${route.from.y}C${route.mid.x},${route.mid.y} ${cCenter.x - 70},${cCenter.y} ${cCenter.x},${cCenter.y}`)
         .attr("fill", "none")
         .attr("stroke", route.stroke)
@@ -7527,7 +7609,7 @@
           .attr("begin", `${route.begin + .1 + i * .18}s`)
           .attr("fill", "freeze")
           .append("mpath")
-          .attr("href", `#matmul-tile-accumulation-${route.id}-route`);
+          .attr("href", `#tiled-matmul-${route.id}-route`);
       });
     });
 
@@ -8311,7 +8393,7 @@
   }
 
   function renderProcessPidControlLoop() {
-    const svg = prepareSvg("process-pid-control-loop", "P&ID control loop", "A process engineering piping and instrumentation diagram with equipment, valves, instruments, signal lines, interlock logic, and animated flow.");
+    const svg = prepareSvg("process-control-loop", "P&ID control loop", "A process engineering piping and instrumentation diagram with equipment, valves, instruments, signal lines, interlock logic, and animated flow.");
     svg
       .attr("data-pattern-family", "process-engineering")
       .attr("data-equipment-count", 4)
@@ -8320,9 +8402,9 @@
       .attr("data-signal-line-count", 5)
       .attr("data-process-line-count", 3);
 
-    const flowArrow = addArrowMarker(svg, "process-pid-control-loop-flow", palette.blue);
-    const signalArrow = addArrowMarker(svg, "process-pid-control-loop-signal", palette.purple);
-    const tripArrow = addArrowMarker(svg, "process-pid-control-loop-trip", palette.red);
+    const flowArrow = addArrowMarker(svg, "process-control-loop-flow", palette.blue);
+    const signalArrow = addArrowMarker(svg, "process-control-loop-signal", palette.purple);
+    const tripArrow = addArrowMarker(svg, "process-control-loop-trip", palette.red);
     const shell = svg.append("g").attr("class", "pid-shell");
     shell.append("rect")
       .attr("x", 24)
@@ -8523,7 +8605,7 @@
   }
 
   function renderNaturalMathArchetypes() {
-    const svg = prepareSvg("natural-math-archetypes", "Natural math archetypes", "Six mathematically specified nature patterns arranged as invariant, generative rule, and natural expression.");
+    const svg = prepareSvg("nature-geometry", "Natural math archetypes", "Six mathematically specified nature patterns arranged as invariant, generative rule, and natural expression.");
     const phi = (1 + Math.sqrt(5)) / 2;
     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
     const hexDensity = Math.PI / (2 * Math.sqrt(3));
@@ -9136,7 +9218,7 @@
   }
 
   function renderFacets() {
-    const svg = prepareSvg("facets", "Facet sparklines", "Small multiples repeat scale and encoding across comparable panels.");
+    const svg = prepareSvg("facet-sparklines", "Facet sparklines", "Small multiples repeat scale and encoding across comparable panels.");
     const groups = ["North", "South", "East", "West", "Core", "Labs"];
     const data = groups.map((name, gi) => ({
       name,
@@ -9155,7 +9237,7 @@
   }
 
   function renderBarcode() {
-    const svg = prepareSvg("barcode", "Barcode plot", "Dense event times are encoded as ordered ticks on multiple lanes.");
+    const svg = prepareSvg("barcode-plot", "Barcode plot", "Dense event times are encoded as ordered ticks on multiple lanes.");
     const lanes = ["API", "Jobs", "Search", "Billing"];
     const data = lanes.flatMap((lane, li) => d3.range(24).map(i => ({
       lane,
@@ -10334,7 +10416,7 @@
     const chartWidth = 820;
     const chartHeight = 420;
     const svg = prepareSvg(
-      "critical-incident-escalation",
+      "incident-escalation",
       "Critical incident escalation",
       "A SEV response timeline shows detection, command, communications, SLA pressure, mitigation, recovery, and response roles."
     )
@@ -10595,7 +10677,7 @@
       .selectAll("path")
       .data(escalations)
       .join("path")
-      .attr("id", d => `critical-incident-escalation-link-${d.id}`)
+      .attr("id", d => `incident-escalation-link-${d.id}`)
       .attr("class", d => `escalation-link${d.critical ? " critical-escalation" : ""}`)
       .attr("data-escalation-id", d => d.id)
       .attr("data-source-id", d => d.source)
@@ -10702,7 +10784,7 @@
         .attr("repeatCount", "indefinite")
         .attr("rotate", "auto")
         .append("mpath")
-        .attr("href", `#critical-incident-escalation-link-${d.id}`);
+        .attr("href", `#incident-escalation-link-${d.id}`);
     });
 
     const beats = svg.append("g")
@@ -10781,12 +10863,12 @@
     const chartWidth = 760;
     const chartHeight = 450;
     const svg = prepareSvg(
-      "critical-fault-tree",
+      "fault-tree",
       "Critical fault tree",
       "A safety fault tree traces a critical top event through OR and AND gates, basic events, minimal cut sets, and risk contribution."
     )
       .attr("viewBox", `0 0 ${chartWidth} ${chartHeight}`)
-      .attr("data-pattern-family", "critical-fault-tree")
+      .attr("data-pattern-family", "fault-tree")
       .attr("data-event-count", 10)
       .attr("data-basic-event-count", 5)
       .attr("data-gate-count", 4)
@@ -11102,12 +11184,12 @@
     const chartWidth = 820;
     const chartHeight = 450;
     const svg = prepareSvg(
-      "critical-bowtie-barrier",
+      "bowtie-barriers",
       "Critical bowtie barrier",
       "A safety bowtie maps threats, the top event, preventive barriers, consequences, mitigative barriers, and degraded controls."
     )
       .attr("viewBox", `0 0 ${chartWidth} ${chartHeight}`)
-      .attr("data-pattern-family", "critical-bowtie-barrier")
+      .attr("data-pattern-family", "bowtie-barriers")
       .attr("data-threat-count", 4)
       .attr("data-preventive-barrier-count", 4)
       .attr("data-mitigative-barrier-count", 4)
@@ -11571,7 +11653,7 @@
   }
 
   function renderDeepLearningModelExecution() {
-    const svg = prepareSvg("deep-learning-model-execution", "Deep learning model execution", "A square model frame contains only an internal multilayer network pulsing through execution.");
+    const svg = prepareSvg("mlp-execution", "Deep learning model execution", "A square model frame contains only an internal multilayer network pulsing through execution.");
     const model = { x: 150, y: 80, size: 260 };
     const network = {
       x0: model.x + 52,
@@ -12372,7 +12454,7 @@
   }
 
   function renderPocketMonsterStippling() {
-    const svg = prepareSvg("pocket-monster-stippling", "Pocket monster Voronoi stippling", "Weighted centroidal Voronoi stipples form a stylized electric pocket creature silhouette.");
+    const svg = prepareSvg("creature-stippling", "Pocket monster Voronoi stippling", "Weighted centroidal Voronoi stipples form a stylized electric pocket creature silhouette.");
     const bounds = [70, 34, width - 58, height - 36];
     const leftEar = [[218, 132], [178, 42], [252, 103], [244, 146]];
     const rightEar = [[342, 132], [384, 42], [308, 103], [316, 146]];
@@ -12503,7 +12585,7 @@
     });
 
     const defs = svg.append("defs");
-    const clipId = "pocket-monster-stippling-clip";
+    const clipId = "creature-stippling-clip";
     const clip = defs.append("clipPath").attr("id", clipId);
     clip.append("path").attr("d", polygonPath(leftEar));
     clip.append("path").attr("d", polygonPath(rightEar));
@@ -12840,7 +12922,7 @@
   }
 
   function renderProjectionSwitch() {
-    const svg = prepareSvg("ortho-switch", "Projection switch", "The same coordinates shift from orthographic globe to flat projection.");
+    const svg = prepareSvg("projection-switch", "Projection switch", "The same coordinates shift from orthographic globe to flat projection.");
     const points = [
       ["SEA", -122, 47], ["SFO", -122, 38], ["MEX", -99, 19], ["NYC", -74, 41],
       ["RIO", -43, -23], ["LON", 0, 51], ["CAI", 31, 30], ["DEL", 77, 29], ["TKY", 139, 36]
@@ -13597,7 +13679,7 @@
   }
 
   function renderAnimatedQuadtree() {
-    const svg = prepareSvg("animated-quadtree", "Animated quadtree", "Recursive spatial partitions reveal point index depth.");
+    const svg = prepareSvg("quadtree-partition", "Animated quadtree", "Recursive spatial partitions reveal point index depth.");
     const plot = { x: 54, y: 48, w: 452, h: 308 };
     const points = d3.range(34).map(i => ({
       x: plot.x + 24 + ((i * 71) % (plot.w - 48)),
@@ -13962,7 +14044,7 @@
   }
 
   function renderMonaHistogram() {
-    const svg = prepareSvg("mona-histogram", "Image histogram", "A brushed image region links to a pixel-value distribution.");
+    const svg = prepareSvg("image-histogram", "Image histogram", "A brushed image region links to a pixel-value distribution.");
     const image = { x: 64, y: 64, size: 188, cells: 12 };
     const values = d3.range(image.cells * image.cells).map(i => {
       const x = i % image.cells, y = Math.floor(i / image.cells);
@@ -14089,7 +14171,7 @@
   }
 
   function renderAirportsVoronoi() {
-    const svg = prepareSvg("airports-voronoi", "Airports Voronoi", "Nearest-airport service areas partition a projected region.");
+    const svg = prepareSvg("airport-voronoi", "Airports Voronoi", "Nearest-airport service areas partition a projected region.");
     const airports = [
       [92, 112, "SEA"], [158, 230, "SFO"], [250, 174, "DEN"], [348, 128, "ORD"], [414, 232, "ATL"], [478, 172, "JFK"], [302, 286, "DFW"]
     ];
@@ -14174,7 +14256,7 @@
   }
 
   function renderCorrelogramHistogram() {
-    const svg = prepareSvg("correlogram-histogram", "Correlogram with histograms", "Pairwise panels combine correlations, scatters, and diagonal distributions.");
+    const svg = prepareSvg("correlogram", "Correlogram with histograms", "Pairwise panels combine correlations, scatters, and diagonal distributions.");
     const vars = ["A", "B", "C", "D"];
     const data = d3.range(42).map(i => ({
       A: 18 + ((i * 17) % 76),
@@ -14229,7 +14311,7 @@
   }
 
   function renderRectbinDensity() {
-    const svg = prepareSvg("rectbin-density", "2D rectangular histogram", "Rectangular bins aggregate point density without hex geometry.");
+    const svg = prepareSvg("rectbin", "2D rectangular histogram", "Rectangular bins aggregate point density without hex geometry.");
     const plot = { x: 64, y: 58, w: 430, h: 286 };
     const points = d3.range(180).map(i => ({
       x: 20 + ((i * 37 + i * i) % 80),
@@ -14362,7 +14444,7 @@
   }
 
   function renderContextToCurve() {
-    const svg = prepareSvg("context-to-curve", "Context to curve", "The same control points render through multiple D3 curve contexts.");
+    const svg = prepareSvg("curve-contexts", "Context to curve", "The same control points render through multiple D3 curve contexts.");
     const points = [[62, 304], [132, 112], [208, 216], [288, 82], [372, 244], [488, 126]];
     const curves = [
       { name: "linear", curve: d3.curveLinear, y: 0, c: palette.gray600 },
@@ -14514,6 +14596,8 @@
   const galleryElement = document.getElementById("gallery");
   if (galleryElement) {
     createCards();
+    redirectLegacyPatternHash();
+    window.addEventListener("hashchange", redirectLegacyPatternHash);
     galleryElement.addEventListener("click", event => {
       const button = event.target.closest("[data-replay]");
       if (!button) return;

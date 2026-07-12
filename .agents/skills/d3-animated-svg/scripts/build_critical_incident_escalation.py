@@ -565,15 +565,15 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-incident-escalation" data-pattern-id="d3-pattern-critical-incident-escalation"
+  <svg id="incident-escalation" data-pattern-id="d3-incident-escalation"
     data-pattern-family="critical-incident" data-event-count="{len(EVENTS)}"
     data-escalation-count="{len(ESCALATIONS)}" data-critical-escalation-count="{len(critical_links)}"
     data-phase-count="{len(PHASES)}" data-team-count="{len(TEAMS)}"
     data-mitigation-count="{len(MITIGATIONS)}" data-communication-count="{len(COMMUNICATION_BEATS)}"
     data-status-card-count="{len(STATUS_CARDS)}" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-incident-escalation-title critical-incident-escalation-desc">
-    <title id="critical-incident-escalation-title">Critical incident escalation</title>
-    <desc id="critical-incident-escalation-desc">A deterministic major incident timeline shows detection, severity assessment, incident command, communications, mitigation, recovery, SLA pressure, response roles, and post-incident learning.</desc>
+    aria-labelledby="incident-escalation-title incident-escalation-desc">
+    <title id="incident-escalation-title">Critical incident escalation</title>
+    <desc id="incident-escalation-desc">A deterministic major incident timeline shows detection, severity assessment, incident command, communications, mitigation, recovery, SLA pressure, response roles, and post-incident learning.</desc>
     <rect x="32" y="28" width="1116" height="650" rx="10" fill="{PALETTE["surface"]}" stroke="{PALETTE["gray200"]}" stroke-width="1.2"/>
     <text class="root-title" x="56" y="62">Critical incident escalation</text>
     <text class="root-subtitle" x="56" y="84">SEV response timeline with command roles, stakeholder cadence, SLA pressure, mitigation, recovery, and learning.</text>

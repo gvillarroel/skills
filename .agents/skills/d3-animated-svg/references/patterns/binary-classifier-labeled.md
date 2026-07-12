@@ -1,6 +1,6 @@
 # Binary Classifier Labels
 
-- **Pattern ID:** `d3-pattern-binary-classifier-labeled`
+- **Pattern ID:** `d3-binary-classifier-labeled`
 - **Gallery source ID:** `binary-classifier-labeled`
 - **Family:** AI
 - **Use when:** The same binary decision includes feature, probability, and class labels.

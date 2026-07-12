@@ -1,6 +1,6 @@
 # Zoom to Bounds
 
-- **Pattern ID:** `d3-pattern-zoom-to-bounds`
+- **Pattern ID:** `d3-zoom-to-bounds`
 - **Gallery source ID:** `zoom-to-bounds`
 - **Family:** Focus
 - **Use when:** A selected region expands into a linked detail panel.

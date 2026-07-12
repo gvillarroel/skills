@@ -1,0 +1,285 @@
+{
+  "passed": false,
+  "session": {
+    "version": 3,
+    "id": "019f52d2-7ecb-7b47-96c2-a4b100d0c9f0",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\compose-synchronized-svg-compensation-release-v8-20260711-spark-1\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 16
+  },
+  "providers": {
+    "openai-codex": 16
+  },
+  "usageTotals": {
+    "input": 62226,
+    "output": 12119,
+    "cacheRead": 171392,
+    "cacheWrite": 0,
+    "totalTokens": 245737
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 7,
+    "bash": 7,
+    "write": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 4258
+    },
+    {
+      "path": "skills/compose-synchronized-svg/package.json",
+      "calls": 1,
+      "resultBytes": 276
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 12471
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 11744
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 13911
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 11428
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 21277
+    },
+    {
+      "path": "composition-plan.json",
+      "calls": 1,
+      "resultBytes": 98
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 4258
+    },
+    {
+      "path": "skills/compose-synchronized-svg/package.json",
+      "calls": 1,
+      "resultBytes": 276
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 12471
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 11744
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 13911
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 11428
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 21277
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/package.json",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 75365,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4258
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/package.json",
+      "policyPath": "skills/compose-synchronized-svg/package.json",
+      "command": null,
+      "isError": true,
+      "resultBytes": 276
+    },
+    {
+      "line": 42,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc \"test -f skills/compose-synchronized-svg/package.json; echo $?\n\"",
+      "isError": false,
+      "resultBytes": 46
+    },
+    {
+      "line": 57,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc \"python - <<'PY'\nimport os\nprint(os.path.exists('skills/compose-synchronized-svg/package.json'))\nprint(os.path.abspath('skills/compose-synchronized-svg/package.json'))\nPY\"",
+      "isError": false,
+      "resultBytes": 230
+    },
+    {
+      "line": 72,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc \"python - <<'PY'\nimport os\np='skills/compose-synchronized-svg'\nprint(os.listdir(p))\nPY\"",
+      "isError": false,
+      "resultBytes": 104
+    },
+    {
+      "line": 85,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 12471
+    },
+    {
+      "line": 98,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "policyPath": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11744
+    },
+    {
+      "line": 111,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "policyPath": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 13911
+    },
+    {
+      "line": 122,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "policyPath": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11428
+    },
+    {
+      "line": 135,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "policyPath": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 21277
+    },
+    {
+      "line": 148,
+      "tool": "write",
+      "path": "composition-plan.json",
+      "policyPath": "composition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 98
+    },
+    {
+      "line": 162,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc \"mkdir -p outputs\"",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 177,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc \"uv run --script skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py --spec composition-plan.json --output outputs/compensation.svg --report composition-report.json --json\"",
+      "isError": false,
+      "resultBytes": 1990
+    },
+    {
+      "line": 192,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc \"uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/compensation.svg --output composition-validation.json --min-modules 6 --min-asset-types 4\"",
+      "isError": false,
+      "resultBytes": 247
+    },
+    {
+      "line": 208,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc \"uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py outputs/compensation.svg --output browser-audit.json --screenshot outputs/overview.png\"",
+      "isError": false,
+      "resultBytes": 604
+    }
+  ],
+  "findings": [
+    {
+      "code": "tool-error",
+      "line": 27,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/package.json"
+    }
+  ]
+}

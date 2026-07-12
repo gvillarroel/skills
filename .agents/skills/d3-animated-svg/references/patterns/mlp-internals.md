@@ -1,6 +1,6 @@
 # MLP Internals
 
-- **Pattern ID:** `d3-pattern-mlp-internals`
+- **Pattern ID:** `d3-mlp-internals`
 - **Gallery source ID:** `mlp-internals`
 - **Family:** AI
 - **Use when:** A forward pass pulses neurons while x, z, a, W, b, and y_hat stay visible.

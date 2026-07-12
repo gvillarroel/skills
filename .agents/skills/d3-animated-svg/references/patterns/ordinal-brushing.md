@@ -1,6 +1,6 @@
 # Ordinal Brushing
 
-- **Pattern ID:** `d3-pattern-ordinal-brushing`
+- **Pattern ID:** `d3-ordinal-brushing`
 - **Gallery source ID:** `ordinal-brushing`
 - **Family:** Interaction
 - **Use when:** Categorical bins are selected with an ordinal brush range.

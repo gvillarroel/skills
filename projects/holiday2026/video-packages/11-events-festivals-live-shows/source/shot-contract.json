@@ -1,0 +1,252 @@
+{
+  "version": 1,
+  "videoId": "holiday2026-11-events-festivals-live-shows",
+  "durationSeconds": 48,
+  "literalAnchors": [
+    "7010 Brassfield Dr, Cumming",
+    "Events, Festivals & Live Shows",
+    "Top 50 or top half"
+  ],
+  "shots": [
+    {
+      "id": "s01",
+      "beatId": "b01",
+      "time": "0:00-0:06",
+      "start": 0,
+      "duration": 6,
+      "job": "Establish the child-permitted pool and preference hierarchy",
+      "viewerTask": "Understand the events evidence and its implication for one family day.",
+      "purpose": "Establish the child-permitted pool and preference hierarchy",
+      "visual": "A proximity map plots the child-permitted options around the Brassfield home reference.",
+      "motionIntent": [
+        "reveal focal image",
+        "hold for reading",
+        "emphasize decision signal",
+        "handoff route marker"
+      ],
+      "media": "artifacts/images/a01-proximity-map.png",
+      "validation": [
+        "source visible",
+        "focal image unclipped",
+        "silent object-action-result readable"
+      ],
+      "assetIds": [
+        "a01-proximity-map"
+      ],
+      "sourceFactIds": [
+        "f01"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "s02",
+      "beatId": "b02",
+      "time": "0:06-0:12",
+      "start": 6,
+      "duration": 6,
+      "job": "Present the first official source proof",
+      "viewerTask": "Understand the events evidence and its implication for one family day.",
+      "purpose": "Present the first official source proof",
+      "visual": "A browser capture proves the official source for the first-ranked option.",
+      "motionIntent": [
+        "reveal focal image",
+        "hold for reading",
+        "emphasize decision signal",
+        "handoff route marker"
+      ],
+      "media": "artifacts/images/a02-top-1-source.png",
+      "validation": [
+        "source visible",
+        "focal image unclipped",
+        "silent object-action-result readable"
+      ],
+      "assetIds": [
+        "a02-top-1-source"
+      ],
+      "sourceFactIds": [
+        "f02"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "s03",
+      "beatId": "b03",
+      "time": "0:12-0:18",
+      "start": 12,
+      "duration": 6,
+      "job": "Present the second official source proof",
+      "viewerTask": "Understand the events evidence and its implication for one family day.",
+      "purpose": "Present the second official source proof",
+      "visual": "A browser capture proves the official source for the second-ranked option.",
+      "motionIntent": [
+        "reveal focal image",
+        "hold for reading",
+        "emphasize decision signal",
+        "handoff route marker"
+      ],
+      "media": "artifacts/images/a03-top-2-source.png",
+      "validation": [
+        "source visible",
+        "focal image unclipped",
+        "silent object-action-result readable"
+      ],
+      "assetIds": [
+        "a03-top-2-source"
+      ],
+      "sourceFactIds": [
+        "f03"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "s04",
+      "beatId": "b04",
+      "time": "0:18-0:24",
+      "start": 18,
+      "duration": 6,
+      "job": "Present the third official source proof",
+      "viewerTask": "Understand the events evidence and its implication for one family day.",
+      "purpose": "Present the third official source proof",
+      "visual": "A browser capture proves the official source for the third-ranked option.",
+      "motionIntent": [
+        "reveal focal image",
+        "hold for reading",
+        "emphasize decision signal",
+        "handoff route marker"
+      ],
+      "media": "artifacts/images/a04-top-3-source.png",
+      "validation": [
+        "source visible",
+        "focal image unclipped",
+        "silent object-action-result readable"
+      ],
+      "assetIds": [
+        "a04-top-3-source"
+      ],
+      "sourceFactIds": [
+        "f04"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "s05",
+      "beatId": "b05",
+      "time": "0:24-0:30",
+      "start": 24,
+      "duration": 6,
+      "job": "Compare the five strongest starting points",
+      "viewerTask": "Understand the events evidence and its implication for one family day.",
+      "purpose": "Compare the five strongest starting points",
+      "visual": "A score strip compares the top five under the strict culture, world and cost hierarchy.",
+      "motionIntent": [
+        "reveal focal image",
+        "hold for reading",
+        "emphasize decision signal",
+        "handoff route marker"
+      ],
+      "media": "artifacts/images/a05-top-five.png",
+      "validation": [
+        "source visible",
+        "focal image unclipped",
+        "silent object-action-result readable"
+      ],
+      "assetIds": [
+        "a05-top-five"
+      ],
+      "sourceFactIds": [
+        "f05"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "s06",
+      "beatId": "b06",
+      "time": "0:30-0:36",
+      "start": 30,
+      "duration": 6,
+      "job": "Compare culture, international experience and affordability",
+      "viewerTask": "Understand the events evidence and its implication for one family day.",
+      "purpose": "Compare culture, international experience and affordability",
+      "visual": "Three aligned bar fields compare culture, international experience and affordability for the first eight.",
+      "motionIntent": [
+        "reveal focal image",
+        "hold for reading",
+        "emphasize decision signal",
+        "handoff route marker"
+      ],
+      "media": "artifacts/images/a06-preference-bars.png",
+      "validation": [
+        "source visible",
+        "focal image unclipped",
+        "silent object-action-result readable"
+      ],
+      "assetIds": [
+        "a06-preference-bars"
+      ],
+      "sourceFactIds": [
+        "f06"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "s07",
+      "beatId": "b07",
+      "time": "0:36-0:42",
+      "start": 36,
+      "duration": 6,
+      "job": "Convert the strict preferences into a family decision",
+      "viewerTask": "Understand the events evidence and its implication for one family day.",
+      "purpose": "Convert the strict preferences into a family decision",
+      "visual": "A decision matrix selects the overall leader, strongest culture, world experience and lowest cost.",
+      "motionIntent": [
+        "reveal focal image",
+        "hold for reading",
+        "emphasize decision signal",
+        "handoff route marker"
+      ],
+      "media": "artifacts/images/a07-decision-board.png",
+      "validation": [
+        "source visible",
+        "focal image unclipped",
+        "silent object-action-result readable"
+      ],
+      "assetIds": [
+        "a07-decision-board"
+      ],
+      "sourceFactIds": [
+        "f07"
+      ],
+      "status": "verified"
+    },
+    {
+      "id": "s08",
+      "beatId": "b08",
+      "time": "0:42-0:48",
+      "start": 42,
+      "duration": 6,
+      "job": "Return to the full shortlist and planner",
+      "viewerTask": "Understand the events evidence and its implication for one family day.",
+      "purpose": "Return to the full shortlist and planner",
+      "visual": "A wider map reconnects the video to the complete Excel shortlist.",
+      "motionIntent": [
+        "reveal focal image",
+        "hold for reading",
+        "emphasize decision signal",
+        "handoff route marker"
+      ],
+      "media": "artifacts/images/a08-planner-callback.png",
+      "validation": [
+        "source visible",
+        "focal image unclipped",
+        "silent object-action-result readable"
+      ],
+      "assetIds": [
+        "a08-planner-callback"
+      ],
+      "sourceFactIds": [
+        "f08"
+      ],
+      "status": "verified"
+    }
+  ]
+}

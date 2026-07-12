@@ -1,0 +1,1523 @@
+{
+  "passed": false,
+  "session": {
+    "version": 3,
+    "id": "019f5226-5ea3-779a-a953-7beefcfd08dd",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\compose-synchronized-svg-cloudburst-final-20260711-spark-2\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 123
+  },
+  "providers": {
+    "openai-codex": 123
+  },
+  "usageTotals": {
+    "input": 415694,
+    "output": 64367,
+    "cacheRead": 7389440,
+    "cacheWrite": 0,
+    "totalTokens": 7869501
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 39,
+    "bash": 53,
+    "write": 16,
+    "edit": 13
+  },
+  "paths": [
+    {
+      "path": "composition-plan-cloudburst.json",
+      "calls": 11,
+      "resultBytes": 40463
+    },
+    {
+      "path": "outputs/fragments/downstream-risk.svg",
+      "calls": 8,
+      "resultBytes": 12289
+    },
+    {
+      "path": "outputs/fragments/retention-buffer.svg",
+      "calls": 7,
+      "resultBytes": 17346
+    },
+    {
+      "path": "outputs/fragments/runoff-network.svg",
+      "calls": 6,
+      "resultBytes": 14441
+    },
+    {
+      "path": "outputs/fragments/capacity-dashboard.svg",
+      "calls": 6,
+      "resultBytes": 7909
+    },
+    {
+      "path": "outputs/cloudburst.svg",
+      "calls": 5,
+      "resultBytes": 103737
+    },
+    {
+      "path": "outputs/fragments/storm-pulse.svg",
+      "calls": 4,
+      "resultBytes": 5078
+    },
+    {
+      "path": "outputs/fragments/catchment-surface.svg",
+      "calls": 3,
+      "resultBytes": 2005
+    },
+    {
+      "path": "/tmp/cloudburst-test/fragments/compensation-mix.svg",
+      "calls": 2,
+      "resultBytes": 318
+    },
+    {
+      "path": "skills/compose-synchronized-svg/workspace-sim/base.svg",
+      "calls": 2,
+      "resultBytes": 42788
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/replace_svg_module.py",
+      "calls": 2,
+      "resultBytes": 24768
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "calls": 2,
+      "resultBytes": 16198
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 3630
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 8952
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 18179
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 10165
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 10620
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 10045
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/test_synchronized_svg_tools.py",
+      "calls": 1,
+      "resultBytes": 22012
+    },
+    {
+      "path": "skills/compose-synchronized-svg/workspace-sim/fragments/compensation-mix.svg",
+      "calls": 1,
+      "resultBytes": 1753
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+      "calls": 1,
+      "resultBytes": 5361
+    },
+    {
+      "path": "outputs/audit.json",
+      "calls": 1,
+      "resultBytes": 16186
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "composition-plan-cloudburst.json",
+      "calls": 7,
+      "resultBytes": 37663
+    },
+    {
+      "path": "outputs/fragments/retention-buffer.svg",
+      "calls": 3,
+      "resultBytes": 7596
+    },
+    {
+      "path": "outputs/fragments/downstream-risk.svg",
+      "calls": 3,
+      "resultBytes": 6455
+    },
+    {
+      "path": "/tmp/cloudburst-test/fragments/compensation-mix.svg",
+      "calls": 2,
+      "resultBytes": 318
+    },
+    {
+      "path": "skills/compose-synchronized-svg/workspace-sim/base.svg",
+      "calls": 2,
+      "resultBytes": 42788
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/replace_svg_module.py",
+      "calls": 2,
+      "resultBytes": 24768
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "calls": 2,
+      "resultBytes": 16198
+    },
+    {
+      "path": "outputs/fragments/runoff-network.svg",
+      "calls": 2,
+      "resultBytes": 5736
+    },
+    {
+      "path": "outputs/fragments/capacity-dashboard.svg",
+      "calls": 2,
+      "resultBytes": 4566
+    },
+    {
+      "path": "outputs/cloudburst.svg",
+      "calls": 2,
+      "resultBytes": 40390
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 3630
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 8952
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 18179
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 10165
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 10620
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 10045
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/test_synchronized_svg_tools.py",
+      "calls": 1,
+      "resultBytes": 22012
+    },
+    {
+      "path": "skills/compose-synchronized-svg/workspace-sim/fragments/compensation-mix.svg",
+      "calls": 1,
+      "resultBytes": 1753
+    },
+    {
+      "path": "outputs/fragments/storm-pulse.svg",
+      "calls": 1,
+      "resultBytes": 1670
+    },
+    {
+      "path": "outputs/fragments/catchment-surface.svg",
+      "calls": 1,
+      "resultBytes": 1775
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+      "calls": 1,
+      "resultBytes": 5361
+    },
+    {
+      "path": "outputs/audit.json",
+      "calls": 1,
+      "resultBytes": 16186
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "composition-plan-cloudburst.json",
+      "calls": 7
+    },
+    {
+      "path": "outputs/fragments/retention-buffer.svg",
+      "calls": 3
+    },
+    {
+      "path": "outputs/fragments/downstream-risk.svg",
+      "calls": 3
+    },
+    {
+      "path": "C:/tmp/cloudburst-test/fragments/compensation-mix.svg",
+      "calls": 2
+    },
+    {
+      "path": "skills/compose-synchronized-svg/workspace-sim/base.svg",
+      "calls": 2
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/replace_svg_module.py",
+      "calls": 2
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "calls": 2
+    },
+    {
+      "path": "outputs/fragments/runoff-network.svg",
+      "calls": 2
+    },
+    {
+      "path": "outputs/fragments/capacity-dashboard.svg",
+      "calls": 2
+    },
+    {
+      "path": "outputs/cloudburst.svg",
+      "calls": 2
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/test_synchronized_svg_tools.py",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/workspace-sim/fragments/compensation-mix.svg",
+      "calls": 1
+    },
+    {
+      "path": "outputs/fragments/storm-pulse.svg",
+      "calls": 1
+    },
+    {
+      "path": "outputs/fragments/catchment-surface.svg",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+      "calls": 1
+    },
+    {
+      "path": "outputs/audit.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 296826,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3630
+    },
+    {
+      "line": 30,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "pwd && ls",
+      "isError": false,
+      "resultBytes": 164
+    },
+    {
+      "line": 45,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls skills",
+      "isError": false,
+      "resultBytes": 69
+    },
+    {
+      "line": 60,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "find skills/compose-synchronized-svg -maxdepth 3 -type f | sort",
+      "isError": false,
+      "resultBytes": 772
+    },
+    {
+      "line": 73,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8952
+    },
+    {
+      "line": 86,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "policyPath": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 18179
+    },
+    {
+      "line": 99,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "policyPath": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10165
+    },
+    {
+      "line": 112,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "policyPath": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10620
+    },
+    {
+      "line": 125,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "policyPath": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10045
+    },
+    {
+      "line": 140,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py --help",
+      "isError": false,
+      "resultBytes": 851
+    },
+    {
+      "line": 155,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/replace_svg_module.py --help",
+      "isError": false,
+      "resultBytes": 656
+    },
+    {
+      "line": 168,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py --help",
+      "isError": false,
+      "resultBytes": 1407
+    },
+    {
+      "line": 182,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py --help",
+      "isError": false,
+      "resultBytes": 1400
+    },
+    {
+      "line": 195,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/test_synchronized_svg_tools.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/test_synchronized_svg_tools.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 22012
+    },
+    {
+      "line": 210,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p /tmp/cloudburst-test && uv run --script skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py --spec skills/compose-synchronized-svg/assets/templates/composition-plan.json --output /tmp/cloudburst-test/base.svg --fra",
+      "isError": false,
+      "resultBytes": 494
+    },
+    {
+      "line": 223,
+      "tool": "read",
+      "path": "/tmp/cloudburst-test/fragments/compensation-mix.svg",
+      "policyPath": "C:/tmp/cloudburst-test/fragments/compensation-mix.svg",
+      "command": null,
+      "isError": true,
+      "resultBytes": 159
+    },
+    {
+      "line": 241,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "find /tmp -maxdepth 3 -type f | grep cloudburst-test | sed -n '1,20p'",
+      "isError": false,
+      "resultBytes": 588
+    },
+    {
+      "line": 254,
+      "tool": "read",
+      "path": "/tmp/cloudburst-test/fragments/compensation-mix.svg",
+      "policyPath": "C:/tmp/cloudburst-test/fragments/compensation-mix.svg",
+      "command": null,
+      "isError": true,
+      "resultBytes": 159
+    },
+    {
+      "line": 269,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p skills/compose-synchronized-svg/workspace-sim && uv run --script skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py --spec skills/compose-synchronized-svg/assets/templates/composition-plan.json --output skills/com",
+      "isError": false,
+      "resultBytes": 740
+    },
+    {
+      "line": 282,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/workspace-sim/fragments/compensation-mix.svg",
+      "policyPath": "skills/compose-synchronized-svg/workspace-sim/fragments/compensation-mix.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1753
+    },
+    {
+      "line": 295,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/workspace-sim/base.svg",
+      "policyPath": "skills/compose-synchronized-svg/workspace-sim/base.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 32702
+    },
+    {
+      "line": 308,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/workspace-sim/base.svg",
+      "policyPath": "skills/compose-synchronized-svg/workspace-sim/base.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10086
+    },
+    {
+      "line": 321,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/replace_svg_module.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/replace_svg_module.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11546
+    },
+    {
+      "line": 334,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/replace_svg_module.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/replace_svg_module.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 13222
+    },
+    {
+      "line": 349,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"case .*'round'\\|compute\" -n skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py | head -n 20",
+      "isError": false,
+      "resultBytes": 683
+    },
+    {
+      "line": 362,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9216
+    },
+    {
+      "line": 377,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nrainfall=30\ncoef=0.6\ncapacity=40\nbuffer=8\nrunoff=rainfall*coef\ngap=capacity-runoff\noverflow=max(0, runoff-capacity-buffer)\nretention_raw=max(0, runoff-capacity)\nretention_use=min(buffer, retention_raw)\nrisk=max(0, min(100, r",
+      "isError": false,
+      "resultBytes": 74
+    },
+    {
+      "line": 392,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nrainfall=90\ncoef=0.7\ncapacity=40\nbuffer=8\nrunoff=rainfall*coef\ngap=capacity-runoff\noverflow=max(0, runoff-capacity-buffer)\nretention_raw=max(0, runoff-capacity)\nretention_use=min(buffer, retention_raw)\nrisk=max(0,min(100, ro",
+      "isError": false,
+      "resultBytes": 122
+    },
+    {
+      "line": 405,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6982
+    },
+    {
+      "line": 418,
+      "tool": "write",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 108
+    },
+    {
+      "line": 431,
+      "tool": "read",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10868
+    },
+    {
+      "line": 444,
+      "tool": "read",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": true,
+      "resultBytes": 108
+    },
+    {
+      "line": 457,
+      "tool": "read",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 992
+    },
+    {
+      "line": 470,
+      "tool": "read",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2599
+    },
+    {
+      "line": 483,
+      "tool": "read",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4206
+    },
+    {
+      "line": 498,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport json\np='composition-plan-cloudburst.json'\ntry:\n    data=json.load(open(p,encoding='utf-8'))\n    print('ok',len(data['modules']))\nexcept Exception as e:\n    print('err',e)\nPY",
+      "isError": false,
+      "resultBytes": 98
+    },
+    {
+      "line": 511,
+      "tool": "write",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 109
+    },
+    {
+      "line": 526,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport json\nwith open('composition-plan-cloudburst.json',encoding='utf-8') as f:\n    d=json.load(f)\nprint('ok',d['compositionId'],len(d['modules']),len(d['focusGroups']))\nPY",
+      "isError": false,
+      "resultBytes": 75
+    },
+    {
+      "line": 541,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p outputs && uv run --script skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py --spec composition-plan-cloudburst.json --output outputs/cloudburst.svg --fragments-dir outputs/fragments --force --json",
+      "isError": false,
+      "resultBytes": 657
+    },
+    {
+      "line": 556,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "find outputs/fragments -maxdepth 1 -type f -name '*.svg' -print",
+      "isError": false,
+      "resultBytes": 278
+    },
+    {
+      "line": 569,
+      "tool": "read",
+      "path": "outputs/fragments/storm-pulse.svg",
+      "policyPath": "outputs/fragments/storm-pulse.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1670
+    },
+    {
+      "line": 582,
+      "tool": "read",
+      "path": "outputs/fragments/catchment-surface.svg",
+      "policyPath": "outputs/fragments/catchment-surface.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1775
+    },
+    {
+      "line": 595,
+      "tool": "read",
+      "path": "outputs/fragments/runoff-network.svg",
+      "policyPath": "outputs/fragments/runoff-network.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2318
+    },
+    {
+      "line": 608,
+      "tool": "read",
+      "path": "outputs/fragments/capacity-dashboard.svg",
+      "policyPath": "outputs/fragments/capacity-dashboard.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1982
+    },
+    {
+      "line": 621,
+      "tool": "read",
+      "path": "outputs/fragments/retention-buffer.svg",
+      "policyPath": "outputs/fragments/retention-buffer.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2392
+    },
+    {
+      "line": 632,
+      "tool": "read",
+      "path": "outputs/fragments/downstream-risk.svg",
+      "policyPath": "outputs/fragments/downstream-risk.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1707
+    },
+    {
+      "line": 645,
+      "tool": "write",
+      "path": "outputs/fragments/storm-pulse.svg",
+      "policyPath": "outputs/fragments/storm-pulse.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 109
+    },
+    {
+      "line": 658,
+      "tool": "write",
+      "path": "outputs/fragments/catchment-surface.svg",
+      "policyPath": "outputs/fragments/catchment-surface.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 115
+    },
+    {
+      "line": 671,
+      "tool": "write",
+      "path": "outputs/fragments/runoff-network.svg",
+      "policyPath": "outputs/fragments/runoff-network.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 112
+    },
+    {
+      "line": 684,
+      "tool": "write",
+      "path": "outputs/fragments/capacity-dashboard.svg",
+      "policyPath": "outputs/fragments/capacity-dashboard.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 116
+    },
+    {
+      "line": 697,
+      "tool": "write",
+      "path": "outputs/fragments/retention-buffer.svg",
+      "policyPath": "outputs/fragments/retention-buffer.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 114
+    },
+    {
+      "line": 712,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re\ntext=open('outputs/cloudburst.svg',encoding='utf-8').read()\nstart=text.index('.svg{') if '.svg{' in text else text.index('.canvas')\n# simple print lines with concept vars\nm=re.search(r\"--concept-[^:]+: #[0-9a-fA-F]",
+      "isError": false,
+      "resultBytes": 208
+    },
+    {
+      "line": 725,
+      "tool": "write",
+      "path": "outputs/fragments/downstream-risk.svg",
+      "policyPath": "outputs/fragments/downstream-risk.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 113
+    },
+    {
+      "line": 740,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"concept-\" outputs/fragments/storm-pulse.svg outputs/fragments/catchment-surface.svg outputs/fragments/runoff-network.svg outputs/fragments/capacity-dashboard.svg outputs/fragments/retention-buffer.svg outputs/fragments/downstream-r",
+      "isError": false,
+      "resultBytes": 4984
+    },
+    {
+      "line": 753,
+      "tool": "edit",
+      "path": "outputs/fragments/storm-pulse.svg",
+      "policyPath": "outputs/fragments/storm-pulse.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3190
+    },
+    {
+      "line": 766,
+      "tool": "edit",
+      "path": "outputs/fragments/runoff-network.svg",
+      "policyPath": "outputs/fragments/runoff-network.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5256
+    },
+    {
+      "line": 779,
+      "tool": "read",
+      "path": "outputs/fragments/runoff-network.svg",
+      "policyPath": "outputs/fragments/runoff-network.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3418
+    },
+    {
+      "line": 792,
+      "tool": "edit",
+      "path": "outputs/fragments/runoff-network.svg",
+      "policyPath": "outputs/fragments/runoff-network.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3225
+    },
+    {
+      "line": 805,
+      "tool": "edit",
+      "path": "outputs/fragments/capacity-dashboard.svg",
+      "policyPath": "outputs/fragments/capacity-dashboard.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2995
+    },
+    {
+      "line": 816,
+      "tool": "edit",
+      "path": "outputs/fragments/retention-buffer.svg",
+      "policyPath": "outputs/fragments/retention-buffer.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5993
+    },
+    {
+      "line": 829,
+      "tool": "edit",
+      "path": "outputs/fragments/downstream-risk.svg",
+      "policyPath": "outputs/fragments/downstream-risk.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2651
+    },
+    {
+      "line": 842,
+      "tool": "read",
+      "path": "outputs/fragments/retention-buffer.svg",
+      "policyPath": "outputs/fragments/retention-buffer.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2812
+    },
+    {
+      "line": 855,
+      "tool": "edit",
+      "path": "outputs/fragments/retention-buffer.svg",
+      "policyPath": "outputs/fragments/retention-buffer.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3529
+    },
+    {
+      "line": 870,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"concept-\" outputs/fragments/{storm-pulse.svg,catchment-surface.svg,runoff-network.svg,capacity-dashboard.svg,retention-buffer.svg,downstream-risk.svg}",
+      "isError": false,
+      "resultBytes": 4985
+    },
+    {
+      "line": 890,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/replace_svg_module.py outputs/cloudburst.svg outputs/fragments/storm-pulse.svg --module storm-pulse --in-place\nuv run --script skills/compose-synchronized-svg/scripts/replace_svg_modul",
+      "isError": false,
+      "resultBytes": 5139
+    },
+    {
+      "line": 905,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\ntext=Path('outputs/cloudburst.svg').read_text(encoding='utf-8')\nprint('placeholder' in text)\nprint(text.count('data-placeholder=\"true\"'))\nPY",
+      "isError": false,
+      "resultBytes": 56
+    },
+    {
+      "line": 920,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\nimport re\ntext=Path('outputs/cloudburst.svg').read_text(encoding='utf-8')\nfor m in re.finditer('placeholder',text):\n    start=max(0,m.start()-40); end=min(len(text),m.end()+80)\n    print(text[start:e",
+      "isError": false,
+      "resultBytes": 448
+    },
+    {
+      "line": 935,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/cloudburst.svg --output outputs/validation.json --require-time-sync --min-modules 6 --min-asset-types 4 --min-shared-sources 3 --min-modules-per-sh",
+      "isError": true,
+      "resultBytes": 348
+    },
+    {
+      "line": 950,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"placeholder\" -n skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py | head -n 80",
+      "isError": false,
+      "resultBytes": 766
+    },
+    {
+      "line": 965,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -o \"class=\\\"[^\"]*\\\"\" -n outputs/cloudburst.svg | sed -n '1,120p'",
+      "isError": true,
+      "resultBytes": 163
+    },
+    {
+      "line": 979,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re\nfrom pathlib import Path\ntext=Path('outputs/cloudburst.svg').read_text(encoding='utf-8')\nimport xml.etree.ElementTree as ET\nroot=ET.fromstring(text)\nfor el in root.iter():\n    cls=el.get('class')\n    if cls and ('p",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 994,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\nfrom lxml import etree as ET\ntext=Path('outputs/cloudburst.svg').read_bytes()\nroot=ET.fromstring(text)\nfor el in root.iter():\n    if isinstance(el.tag,str) and el.get('data-placeholder') is not None:",
+      "isError": true,
+      "resultBytes": 216
+    },
+    {
+      "line": 1008,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\nimport xml.etree.ElementTree as ET\nroot=ET.fromstring(Path('outputs/cloudburst.svg').read_bytes())\nfor el in root.iter():\n    if el.get('data-placeholder') is not None:\n        print('ph attr',el.tag",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 1023,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/cloudburst.svg --json",
+      "isError": true,
+      "resultBytes": 4866
+    },
+    {
+      "line": 1038,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -n \"placeholder-mark\\|placeholder-value\\|module-placeholder\" outputs/cloudburst.svg",
+      "isError": false,
+      "resultBytes": 282
+    },
+    {
+      "line": 1051,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5361
+    },
+    {
+      "line": 1066,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re\nfrom pathlib import Path\nimport xml.etree.ElementTree as ET\nxml=Path('outputs/cloudburst.svg').read_text(encoding='utf-8')\nroot=ET.fromstring(xml.encode('utf-8'))\n# include namespace\nns={'svg':'http://www.w3.org/20",
+      "isError": false,
+      "resultBytes": 108
+    },
+    {
+      "line": 1079,
+      "tool": "read",
+      "path": "outputs/cloudburst.svg",
+      "policyPath": "outputs/cloudburst.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 15878
+    },
+    {
+      "line": 1092,
+      "tool": "edit",
+      "path": "outputs/cloudburst.svg",
+      "policyPath": "outputs/cloudburst.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4125
+    },
+    {
+      "line": 1107,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/cloudburst.svg --output outputs/validation.json --require-time-sync --min-modules 6 --min-asset-types 4",
+      "isError": false,
+      "resultBytes": 238
+    },
+    {
+      "line": 1123,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py outputs/cloudburst.svg --output outputs/audit.json --screenshot outputs/overview.png --timeout-ms 60000 --json",
+      "isError": true,
+      "resultBytes": 58431
+    },
+    {
+      "line": 1136,
+      "tool": "edit",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1351
+    },
+    {
+      "line": 1151,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py --spec composition-plan-cloudburst.json --output outputs/cloudburst.svg --fragments-dir outputs/fragments --force",
+      "isError": false,
+      "resultBytes": 307
+    },
+    {
+      "line": 1171,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/replace_svg_module.py outputs/cloudburst.svg outputs/fragments/storm-pulse.svg --module storm-pulse --in-place\nuv run --script skills/compose-synchronized-svg/scripts/replace_svg_modul",
+      "isError": true,
+      "resultBytes": 712
+    },
+    {
+      "line": 1184,
+      "tool": "write",
+      "path": "outputs/fragments/storm-pulse.svg",
+      "policyPath": "outputs/fragments/storm-pulse.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 109
+    },
+    {
+      "line": 1197,
+      "tool": "write",
+      "path": "outputs/fragments/catchment-surface.svg",
+      "policyPath": "outputs/fragments/catchment-surface.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 115
+    },
+    {
+      "line": 1210,
+      "tool": "write",
+      "path": "outputs/fragments/runoff-network.svg",
+      "policyPath": "outputs/fragments/runoff-network.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 112
+    },
+    {
+      "line": 1223,
+      "tool": "write",
+      "path": "outputs/fragments/capacity-dashboard.svg",
+      "policyPath": "outputs/fragments/capacity-dashboard.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 116
+    },
+    {
+      "line": 1244,
+      "tool": "read",
+      "path": "outputs/fragments/capacity-dashboard.svg",
+      "policyPath": "outputs/fragments/capacity-dashboard.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2584
+    },
+    {
+      "line": 1257,
+      "tool": "write",
+      "path": "outputs/fragments/capacity-dashboard.svg",
+      "policyPath": "outputs/fragments/capacity-dashboard.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 116
+    },
+    {
+      "line": 1270,
+      "tool": "read",
+      "path": "outputs/fragments/retention-buffer.svg",
+      "policyPath": "outputs/fragments/retention-buffer.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2392
+    },
+    {
+      "line": 1283,
+      "tool": "read",
+      "path": "outputs/fragments/downstream-risk.svg",
+      "policyPath": "outputs/fragments/downstream-risk.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1707
+    },
+    {
+      "line": 1296,
+      "tool": "write",
+      "path": "outputs/fragments/retention-buffer.svg",
+      "policyPath": "outputs/fragments/retention-buffer.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 114
+    },
+    {
+      "line": 1309,
+      "tool": "write",
+      "path": "outputs/fragments/downstream-risk.svg",
+      "policyPath": "outputs/fragments/downstream-risk.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 113
+    },
+    {
+      "line": 1324,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "rg -n \"placeholder\" outputs/fragments/*.svg outputs/cloudburst.svg",
+      "isError": false,
+      "resultBytes": 10806
+    },
+    {
+      "line": 1344,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/replace_svg_module.py outputs/cloudburst.svg outputs/fragments/storm-pulse.svg --module storm-pulse --in-place\nuv run --script skills/compose-synchronized-svg/scripts/replace_svg_modul",
+      "isError": true,
+      "resultBytes": 4444
+    },
+    {
+      "line": 1357,
+      "tool": "edit",
+      "path": "outputs/fragments/downstream-risk.svg",
+      "policyPath": "outputs/fragments/downstream-risk.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2844
+    },
+    {
+      "line": 1372,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/replace_svg_module.py outputs/cloudburst.svg outputs/fragments/downstream-risk.svg --module downstream-risk --in-place",
+      "isError": true,
+      "resultBytes": 206
+    },
+    {
+      "line": 1385,
+      "tool": "read",
+      "path": "outputs/fragments/downstream-risk.svg",
+      "policyPath": "outputs/fragments/downstream-risk.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3041
+    },
+    {
+      "line": 1398,
+      "tool": "read",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 13215
+    },
+    {
+      "line": 1411,
+      "tool": "read",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5675
+    },
+    {
+      "line": 1424,
+      "tool": "write",
+      "path": "outputs/fragments/downstream-risk.svg",
+      "policyPath": "outputs/fragments/downstream-risk.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 113
+    },
+    {
+      "line": 1439,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/replace_svg_module.py outputs/cloudburst.svg outputs/fragments/downstream-risk.svg --module downstream-risk --in-place",
+      "isError": false,
+      "resultBytes": 892
+    },
+    {
+      "line": 1454,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "rg -n \"placeholder\" outputs/fragments/*.svg outputs/cloudburst.svg | head",
+      "isError": false,
+      "resultBytes": 351
+    },
+    {
+      "line": 1469,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/cloudburst.svg --require-time-sync --min-modules 6 --min-asset-types 4 --output outputs/validation.json",
+      "isError": true,
+      "resultBytes": 348
+    },
+    {
+      "line": 1482,
+      "tool": "read",
+      "path": "outputs/cloudburst.svg",
+      "policyPath": "outputs/cloudburst.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 24512
+    },
+    {
+      "line": 1495,
+      "tool": "edit",
+      "path": "outputs/cloudburst.svg",
+      "policyPath": "outputs/cloudburst.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6408
+    },
+    {
+      "line": 1509,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "rg -n \"placeholder\" outputs/cloudburst.svg",
+      "isError": true,
+      "resultBytes": 99
+    },
+    {
+      "line": 1524,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/cloudburst.svg --require-time-sync --min-modules 6 --min-asset-types 4 --output outputs/validation.json",
+      "isError": false,
+      "resultBytes": 238
+    },
+    {
+      "line": 1540,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py outputs/cloudburst.svg --output outputs/audit.json --screenshot outputs/overview.png --timeout-ms 60000 --json",
+      "isError": true,
+      "resultBytes": 58488
+    },
+    {
+      "line": 1553,
+      "tool": "edit",
+      "path": "composition-plan-cloudburst.json",
+      "policyPath": "composition-plan-cloudburst.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1232
+    },
+    {
+      "line": 1568,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "rg -n '\"style\":\"percent\"' outputs/cloudburst.svg",
+      "isError": false,
+      "resultBytes": 12671
+    },
+    {
+      "line": 1581,
+      "tool": "edit",
+      "path": "outputs/cloudburst.svg",
+      "policyPath": "outputs/cloudburst.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 52814
+    },
+    {
+      "line": 1596,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/cloudburst.svg --require-time-sync --min-modules 6 --min-asset-types 4 --output outputs/validation.json",
+      "isError": false,
+      "resultBytes": 238
+    },
+    {
+      "line": 1611,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "rg -n \"window\\.svgSync|svg-sync|new SvgSync\" outputs/cloudburst.svg",
+      "isError": false,
+      "resultBytes": 273
+    },
+    {
+      "line": 1627,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "git status --short",
+      "isError": false,
+      "resultBytes": 39631
+    },
+    {
+      "line": 1642,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -1 outputs",
+      "isError": false,
+      "resultBytes": 113
+    },
+    {
+      "line": 1656,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport re\nfrom pathlib import Path\nfor path in Path('outputs').glob('fragments/*.svg'):\n    txt=path.read_text(encoding='utf-8')\n    ids=re.findall(r'\\bid=\"([^\"]+)\"',txt)\n    dup=[i for i in set(ids) if ids.count(i)>1]\n    i",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 1669,
+      "tool": "read",
+      "path": "outputs/audit.json",
+      "policyPath": "outputs/audit.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 16186
+    },
+    {
+      "line": 1685,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "rg -n 'sync-module-start:' outputs/cloudburst.svg | wc -l && rg -n 'assetType' outputs/cloudburst.svg | head -n 20",
+      "isError": false,
+      "resultBytes": 12674
+    },
+    {
+      "line": 1699,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "rg -n \"3,100|% %|%\\)\" outputs/cloudburst.svg | head",
+      "isError": false,
+      "resultBytes": 54
+    }
+  ],
+  "findings": [
+    {
+      "code": "tool-error",
+      "line": 223,
+      "tool": "read",
+      "path": "/tmp/cloudburst-test/fragments/compensation-mix.svg"
+    },
+    {
+      "code": "tool-error",
+      "line": 254,
+      "tool": "read",
+      "path": "/tmp/cloudburst-test/fragments/compensation-mix.svg"
+    },
+    {
+      "code": "tool-error",
+      "line": 444,
+      "tool": "read",
+      "path": "composition-plan-cloudburst.json"
+    },
+    {
+      "code": "tool-error",
+      "line": 935,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 965,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 994,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 1023,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 1123,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 1171,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 1344,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 1372,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 1469,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 1509,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 1540,
+      "tool": "bash",
+      "path": null
+    }
+  ]
+}

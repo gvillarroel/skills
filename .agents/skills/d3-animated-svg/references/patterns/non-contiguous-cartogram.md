@@ -1,6 +1,6 @@
 # Non-contiguous Cartogram
 
-- **Pattern ID:** `d3-pattern-non-contiguous-cartogram`
+- **Pattern ID:** `d3-non-contiguous-cartogram`
 - **Gallery source ID:** `non-contiguous-cartogram`
 - **Family:** Geospatial
 - **Use when:** Region shapes scale around fixed centroids by value.

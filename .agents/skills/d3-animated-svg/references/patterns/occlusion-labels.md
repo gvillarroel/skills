@@ -1,6 +1,6 @@
 # Occlusion Labels
 
-- **Pattern ID:** `d3-pattern-occlusion-labels`
+- **Pattern ID:** `d3-occlusion-labels`
 - **Gallery source ID:** `occlusion-labels`
 - **Family:** Labels
 - **Use when:** Dense labels resolve into a readable non-overlapping subset.

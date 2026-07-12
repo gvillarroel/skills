@@ -1,6 +1,6 @@
 # Sparkline Table
 
-- **Pattern ID:** `d3-pattern-sparkline-table`
+- **Pattern ID:** `d3-sparkline-table`
 - **Gallery source ID:** `sparkline-table`
 - **Family:** Table
 - **Use when:** Each table row carries a mini trend line, final value, and directional delta.

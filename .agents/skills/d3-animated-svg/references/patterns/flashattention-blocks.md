@@ -1,6 +1,6 @@
 # FlashAttention Blocks
 
-- **Pattern ID:** `d3-pattern-flashattention-blocks`
+- **Pattern ID:** `d3-flashattention-blocks`
 - **Gallery source ID:** `flashattention-blocks`
 - **Family:** Attention
 - **Use when:** Block tiles move between HBM and SRAM to reduce attention memory traffic.

@@ -461,7 +461,7 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-rate-limit-token-bucket" data-pattern-id="d3-pattern-critical-rate-limit-token-bucket"
+  <svg id="token-bucket" data-pattern-id="d3-token-bucket"
     data-pattern-family="critical-rate-limit" data-client-count="{len(CLIENTS)}" data-flow-count="8"
     data-pulse-count="9" data-token-count="{BUCKET['capacity']}" data-metric-line-count="3"
     data-metric-point-count="{len(METRICS) * 3}" data-policy-step-count="{len(POLICY_STEPS)}"
@@ -470,9 +470,9 @@ def build_html() -> str:
     data-burst-limit="{esc(BUCKET['burst_limit'])}" data-retry-after-seconds="{BUCKET['retry_after']}"
     data-allowed-rate="{esc(BUCKET['allowed_rate'])}" data-throttled-rate="{esc(BUCKET['throttled_rate'])}"
     viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-rate-limit-token-bucket-title critical-rate-limit-token-bucket-desc">
-    <title id="critical-rate-limit-token-bucket-title">Critical rate limit token bucket</title>
-    <desc id="critical-rate-limit-token-bucket-desc">A deterministic token-bucket rate-limit pattern shows client bursts, an API gateway, bucket tokens, refill rate, admitted backend traffic, throttled 429 Retry-After responses, and metrics where incoming traffic exceeds the limit while admitted traffic remains capped.</desc>
+    aria-labelledby="token-bucket-title token-bucket-desc">
+    <title id="token-bucket-title">Critical rate limit token bucket</title>
+    <desc id="token-bucket-desc">A deterministic token-bucket rate-limit pattern shows client bursts, an API gateway, bucket tokens, refill rate, admitted backend traffic, throttled 429 Retry-After responses, and metrics where incoming traffic exceeds the limit while admitted traffic remains capped.</desc>
     <rect x="28" y="24" width="1024" height="590" rx="10" fill="{PALETTE["surface"]}" stroke="{PALETTE["gray200"]}" stroke-width="1.2"/>
     <text class="root-title" x="58" y="58">Critical rate-limit token bucket</text>
     <text class="root-subtitle" x="58" y="80">Spend burst tokens deliberately, return 429 with Retry-After, and keep backend admission capped.</text>

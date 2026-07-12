@@ -18,32 +18,34 @@
       "time": "0:00-0:05",
       "start": 0.0,
       "duration": 5.0,
-      "job": "Open on the cost of repeating a long prompt wall.",
-      "purpose": "Open on the cost of repeating a long prompt wall.",
-      "viewerTask": "Feel the context pressure before the reusable package appears.",
+      "job": "Expose the cost of repeating the same long prompt across tasks.",
+      "purpose": "Make repeated prompt baggage and active-context pressure visible before introducing the reusable package.",
+      "viewerTask": "Recognize that BUG, DEPLOY, and DOCS receive the same instruction sheet and fill one active-context tray.",
       "sourceAnchors": [
         "SKILL.md",
         "on-demand reusable workflow"
       ],
       "visual": {
-        "heroFrame": "Prompt wall pressure reaches its clearest source-bound mechanism state.",
+        "heroFrame": "Three labeled project windows contain the same instruction sheet; the active-context tray is full and shows a warning.",
         "roles": [
-          "persistent red edge",
-          "megacanvas mechanism",
+          "repeated instruction sheets",
+          "BUG DEPLOY and DOCS project windows",
+          "active-context tray",
+          "red SKILL packet",
           "a01-prompt-wall"
         ]
       },
       "motionIntent": [
         {
-          "verb": "reveal",
-          "subject": "a01-prompt-wall",
-          "target": "Prompt wall pressure",
-          "timing": "0:00-0:05"
+          "verb": "accumulate",
+          "subject": "repeated instruction sheet",
+          "target": "active-context tray",
+          "timing": "0:00-0:04.4"
         },
         {
-          "verb": "handoff",
-          "subject": "persistent red edge",
-          "target": "next scene focal axis",
+          "verb": "bind",
+          "subject": "repeated instruction sheets",
+          "target": "red SKILL packet",
           "timing": "final 0.6 seconds"
         }
       ],
@@ -62,7 +64,8 @@
         "f01"
       ],
       "validation": [
-        "focal mechanism remains legible",
+        "muted hold frame communicates repeated input and full context",
+        "red SKILL packet is recognizable by label silhouette and color",
         "asset and composition IDs match renderer state"
       ],
       "status": "approved"
@@ -73,32 +76,41 @@
       "time": "0:05-0:13",
       "start": 5.0,
       "duration": 8.0,
-      "job": "Define the skill as a compact operational package.",
-      "purpose": "Define the skill as a compact operational package.",
-      "viewerTask": "Track the prompt wall folding into a reusable SKILL.md card.",
+      "job": "Define a skill as a compact operational package.",
+      "purpose": "Show SKILL.md and its optional resources as one reusable folder rather than a collection of abstract modules.",
+      "viewerTask": "Identify SKILL.md as the core and references, scripts, and assets as attached resources.",
       "sourceAnchors": [
         "SKILL.md",
-        "on-demand reusable workflow"
+        "references/",
+        "scripts/",
+        "assets/"
       ],
       "visual": {
-        "heroFrame": "The compact SKILL.md package reaches its clearest source-bound mechanism state.",
+        "heroFrame": "A large file folder contains a dominant SKILL.md document with references, scripts, and assets attached at the right.",
         "roles": [
-          "persistent red edge",
-          "megacanvas mechanism",
+          "SKILL.md core document",
+          "references scripts and assets folders",
+          "red SKILL packet",
           "a02-skill-package"
         ]
       },
       "motionIntent": [
         {
-          "verb": "reveal",
-          "subject": "a02-skill-package",
-          "target": "The compact SKILL.md package",
-          "timing": "0:05-0:13"
+          "verb": "compress",
+          "subject": "repeated prompt",
+          "target": "SKILL.md package",
+          "timing": "0:05-0:08"
         },
         {
-          "verb": "handoff",
-          "subject": "persistent red edge",
-          "target": "next scene focal axis",
+          "verb": "assemble",
+          "subject": "references scripts and assets",
+          "target": "skill folder",
+          "timing": "0:08-0:12.4"
+        },
+        {
+          "verb": "open",
+          "subject": "red SKILL packet",
+          "target": "selected-reference workbench",
           "timing": "final 0.6 seconds"
         }
       ],
@@ -117,7 +129,8 @@
         "f02"
       ],
       "validation": [
-        "focal mechanism remains legible",
+        "SKILL.md is the first eye landing",
+        "resource folders remain distinct and readable",
         "asset and composition IDs match renderer state"
       ],
       "status": "approved"
@@ -128,32 +141,48 @@
       "time": "0:13-0:22",
       "start": 13.0,
       "duration": 9.0,
-      "job": "Show the core opening only the resource needed for the current decision.",
-      "purpose": "Show the core opening only the resource needed for the current decision.",
-      "viewerTask": "Follow one reference entering context while dormant resources stay outside.",
+      "job": "Show progressive disclosure as a concrete selection and loading action.",
+      "purpose": "Prove that the core loads one needed reference while other resources remain outside active context.",
+      "viewerTask": "Follow video-validation.md from the resource shelf into CONTEXTO ACTIVO beside SKILL.md.",
       "sourceAnchors": [
         "SKILL.md",
-        "on-demand reusable workflow"
+        "progressive disclosure",
+        "references/"
       ],
       "visual": {
-        "heroFrame": "Progressive disclosure reaches its clearest source-bound mechanism state.",
+        "heroFrame": "A VALIDAR task activates SKILL.md; video-validation.md is selected from the shelf and appears beside the core in the active-context tray while style.md and audio.md stay outside.",
         "roles": [
-          "persistent red edge",
-          "megacanvas mechanism",
+          "VALIDAR task",
+          "SKILL.md core",
+          "selected reference",
+          "dormant reference shelf",
+          "red SKILL packet",
           "a03-progressive-disclosure"
         ]
       },
       "motionIntent": [
         {
-          "verb": "reveal",
-          "subject": "a03-progressive-disclosure",
-          "target": "Progressive disclosure",
-          "timing": "0:13-0:22"
+          "verb": "activate",
+          "subject": "VALIDAR task",
+          "target": "SKILL.md core",
+          "timing": "0:13-0:16"
+        },
+        {
+          "verb": "select",
+          "subject": "video-validation.md",
+          "target": "active reference state",
+          "timing": "0:16-0:18.5"
+        },
+        {
+          "verb": "load",
+          "subject": "video-validation.md",
+          "target": "CONTEXTO ACTIVO",
+          "timing": "0:18.5-0:21.4"
         },
         {
           "verb": "handoff",
-          "subject": "persistent red edge",
-          "target": "next scene focal axis",
+          "subject": "red SKILL packet",
+          "target": "resource workbench",
           "timing": "final 0.6 seconds"
         }
       ],
@@ -172,7 +201,8 @@
         "f03"
       ],
       "validation": [
-        "focal mechanism remains legible",
+        "selected and dormant references are visibly different",
+        "only SKILL.md and one reference appear in active context",
         "asset and composition IDs match renderer state"
       ],
       "status": "approved"
@@ -183,33 +213,48 @@
       "time": "0:22-0:31",
       "start": 22.0,
       "duration": 9.0,
-      "job": "Separate knowledge, deterministic operations, and reusable production material.",
-      "purpose": "Separate knowledge, deterministic operations, and reusable production material.",
-      "viewerTask": "Scan three peer resource lanes and see their outputs converge.",
+      "job": "Separate the jobs of references, scripts, and assets.",
+      "purpose": "Show knowledge, repeatable execution, and production material as concrete workstations with different outputs.",
+      "viewerTask": "Scan the three stations and see CRITERIO, EJECUCIÓN, and MATERIAL converge into VIDEO LISTO.",
       "sourceAnchors": [
-        "SKILL.md",
-        "on-demand reusable workflow"
+        "references/",
+        "scripts/",
+        "assets/"
       ],
       "visual": {
-        "heroFrame": "References, scripts, and assets reaches its clearest source-bound mechanism state.",
+        "heroFrame": "A manual, terminal, and media folder occupy three aligned stations, each completed, with their contributions converging into a video result.",
         "roles": [
-          "persistent red edge",
-          "megacanvas mechanism",
+          "reference manual and criterion output",
+          "terminal and execution output",
+          "media folder and material output",
+          "red SKILL packet",
           "a04-resource-bundle"
         ]
       },
       "motionIntent": [
         {
-          "verb": "reveal",
-          "subject": "a04-resource-bundle",
-          "target": "References, scripts, and assets",
-          "timing": "0:22-0:31"
+          "verb": "complete",
+          "subject": "reference workstation",
+          "target": "CRITERIO",
+          "timing": "0:22-0:25"
         },
         {
-          "verb": "handoff",
-          "subject": "persistent red edge",
-          "target": "next scene focal axis",
-          "timing": "final 0.6 seconds"
+          "verb": "execute",
+          "subject": "script workstation",
+          "target": "EJECUCIÓN",
+          "timing": "0:25-0:27.5"
+        },
+        {
+          "verb": "supply",
+          "subject": "asset workstation",
+          "target": "MATERIAL",
+          "timing": "0:27.5-0:29.5"
+        },
+        {
+          "verb": "converge",
+          "subject": "three workstation outputs",
+          "target": "VIDEO LISTO",
+          "timing": "0:29.5-0:31"
         }
       ],
       "media": {
@@ -227,7 +272,8 @@
         "f04"
       ],
       "validation": [
-        "focal mechanism remains legible",
+        "each resource role is understandable with audio muted",
+        "the three outputs converge into one result",
         "asset and composition IDs match renderer state"
       ],
       "status": "approved"
@@ -238,32 +284,48 @@
       "time": "0:31-0:41",
       "start": 31.0,
       "duration": 10.0,
-      "job": "Show intent-based routing to the correct visual producer.",
-      "purpose": "Show intent-based routing to the correct visual producer.",
-      "viewerTask": "Track one work packet splitting into specialist routes and verifiable artifacts.",
+      "job": "Route each visual need to the correct specialist producer.",
+      "purpose": "Distinguish conventional diagrams, bespoke data geometry, and illustration by the artifact each producer returns.",
+      "viewerTask": "Track a visual-need card through the switch and compare Mermaid, D3, and ImageGen outputs.",
       "sourceAnchors": [
         "SKILL.md",
         "on-demand reusable workflow"
       ],
       "visual": {
-        "heroFrame": "Route each asset to a specialist reaches its clearest source-bound mechanism state.",
+        "heroFrame": "A visual-need card enters a central producer switch; the three branches end in a recognizable flowchart, chart, and illustration with proof checks.",
         "roles": [
-          "persistent red edge",
-          "megacanvas mechanism",
+          "visual-need card",
+          "producer switch",
+          "Mermaid flowchart",
+          "D3 chart",
+          "ImageGen illustration",
+          "red SKILL packet",
           "a05-specialist-router"
         ]
       },
       "motionIntent": [
         {
-          "verb": "reveal",
-          "subject": "a05-specialist-router",
-          "target": "Route each asset to a specialist",
-          "timing": "0:31-0:41"
+          "verb": "route",
+          "subject": "visual-need marker",
+          "target": "Mermaid branch",
+          "timing": "0:31-0:34"
+        },
+        {
+          "verb": "route",
+          "subject": "visual-need marker",
+          "target": "D3 branch",
+          "timing": "0:34-0:37"
+        },
+        {
+          "verb": "route",
+          "subject": "visual-need marker",
+          "target": "ImageGen branch",
+          "timing": "0:37-0:40.4"
         },
         {
           "verb": "handoff",
-          "subject": "persistent red edge",
-          "target": "next scene focal axis",
+          "subject": "verified output with red SKILL packet",
+          "target": "validation conveyor",
           "timing": "final 0.6 seconds"
         }
       ],
@@ -282,7 +344,8 @@
         "f05"
       ],
       "validation": [
-        "focal mechanism remains legible",
+        "each specialist is identified by a distinct output",
+        "the active route is visually dominant",
         "asset and composition IDs match renderer state"
       ],
       "status": "approved"
@@ -293,33 +356,49 @@
       "time": "0:41-0:51",
       "start": 41.0,
       "duration": 10.0,
-      "job": "Make validation visibly block a defective artifact before delivery.",
-      "purpose": "Make validation visibly block a defective artifact before delivery.",
-      "viewerTask": "Trace the good path across four checks and the failed branch back to correction.",
+      "job": "Block a defective artifact and prove correction before delivery.",
+      "purpose": "Make validation part of the causal workflow rather than a decorative approval mark.",
+      "viewerTask": "Follow the artifact through four named checks, into correction after failure, and finally to LISTO.",
       "sourceAnchors": [
-        "SKILL.md",
-        "on-demand reusable workflow"
+        "validation",
+        "SKILL.md"
       ],
       "visual": {
-        "heroFrame": "Validation is a gate reaches its clearest source-bound mechanism state.",
+        "heroFrame": "A recognizable video artifact is downstream of RUTA, ESTRUCTURA, CONTENIDO, and VISUAL checkpoints; the clipped-text correction loop and LISTO destination are visible together.",
         "roles": [
-          "persistent red edge",
-          "megacanvas mechanism",
+          "video artifact",
+          "four validation checkpoints",
+          "clipped-text defect",
+          "correction loop",
+          "LISTO destination",
+          "red SKILL packet",
           "a06-validation-gate"
         ]
       },
       "motionIntent": [
         {
-          "verb": "reveal",
-          "subject": "a06-validation-gate",
-          "target": "Validation is a gate",
-          "timing": "0:41-0:51"
+          "verb": "inspect",
+          "subject": "video artifact",
+          "target": "first validation pass",
+          "timing": "0:41-0:45.2"
         },
         {
-          "verb": "handoff",
-          "subject": "persistent red edge",
-          "target": "next scene focal axis",
-          "timing": "final 0.6 seconds"
+          "verb": "reject",
+          "subject": "clipped-text artifact",
+          "target": "correction loop",
+          "timing": "0:45.2-0:47.2"
+        },
+        {
+          "verb": "correct",
+          "subject": "video artifact",
+          "target": "repaired state",
+          "timing": "0:47.2-0:48.5"
+        },
+        {
+          "verb": "approve",
+          "subject": "repaired artifact",
+          "target": "LISTO",
+          "timing": "0:48.5-0:51"
         }
       ],
       "media": {
@@ -337,7 +416,8 @@
         "f06"
       ],
       "validation": [
-        "focal mechanism remains legible",
+        "failure correction and approval states are visibly different",
+        "all four checkpoint labels remain readable",
         "asset and composition IDs match renderer state"
       ],
       "status": "approved"
@@ -348,32 +428,47 @@
       "time": "0:51-1:01",
       "start": 51.0,
       "duration": 10.0,
-      "job": "Contrast an always-on instruction wall with a compact core plus selected detail.",
-      "purpose": "Contrast an always-on instruction wall with a compact core plus selected detail.",
-      "viewerTask": "Compare the two context bars and notice the oversized-skill warning.",
+      "job": "Compare always-on prompt baggage with a compact skill and one selected detail.",
+      "purpose": "Show the qualitative context advantage and the inflated-skill limitation without invented metrics.",
+      "viewerTask": "Compare both trays on one scale and notice that the skill side keeps visible room until the caveat appears.",
       "sourceAnchors": [
         "SKILL.md",
         "on-demand reusable workflow"
       ],
       "visual": {
-        "heroFrame": "Compact core, detail on demand reaches its clearest source-bound mechanism state.",
+        "heroFrame": "A split frame shows repeated instruction blocks filling the left tray while SKILL.md plus one selected detail occupy only part of the right tray; the inflated-skill warning is visible.",
         "roles": [
-          "persistent red edge",
-          "megacanvas mechanism",
+          "always-on prompt tray",
+          "on-demand skill tray",
+          "free context region",
+          "inflated-skill warning",
+          "red SKILL packet",
           "a07-context-budget"
         ]
       },
       "motionIntent": [
         {
-          "verb": "reveal",
-          "subject": "a07-context-budget",
-          "target": "Compact core, detail on demand",
-          "timing": "0:51-1:01"
+          "verb": "fill",
+          "subject": "repeated prompt blocks",
+          "target": "always-on context tray",
+          "timing": "0:51-0:55.5"
         },
         {
-          "verb": "handoff",
-          "subject": "persistent red edge",
-          "target": "next scene focal axis",
+          "verb": "load",
+          "subject": "SKILL.md and one selected detail",
+          "target": "on-demand context tray",
+          "timing": "0:53.2-0:58"
+        },
+        {
+          "verb": "warn",
+          "subject": "inflated skill",
+          "target": "same-problem caveat",
+          "timing": "0:58-1:00.4"
+        },
+        {
+          "verb": "reframe",
+          "subject": "red SKILL packet",
+          "target": "project reuse workbench",
           "timing": "final 0.6 seconds"
         }
       ],
@@ -392,7 +487,9 @@
         "f07"
       ],
       "validation": [
-        "focal mechanism remains legible",
+        "both context states use one comparable scale",
+        "the compact side preserves visible free room",
+        "no invented token-savings percentage appears",
         "asset and composition IDs match renderer state"
       ],
       "status": "approved"
@@ -403,33 +500,49 @@
       "time": "1:01-1:10",
       "start": 61.0,
       "duration": 9.0,
-      "job": "Return the compressed package to multiple projects and close the opening callback.",
-      "purpose": "Return the compressed package to multiple projects and close the opening callback.",
-      "viewerTask": "Recognize one workflow activating across projects and returning to rest.",
+      "job": "Close on one reusable skill activating across several projects.",
+      "purpose": "Return the red SKILL packet to a ready state after it produces approved results on four recognizable work surfaces.",
+      "viewerTask": "Recognize one central SKILL.md folder serving REPO/PR, TERMINAL, DOCS, and NAVEGADOR.",
       "sourceAnchors": [
         "SKILL.md",
         "on-demand reusable workflow"
       ],
       "visual": {
-        "heroFrame": "Reusable workflow callback reaches its clearest source-bound mechanism state.",
+        "heroFrame": "A central SKILL.md folder connects to four recognizable project surfaces, all marked complete, with the packet ready for the next task.",
         "roles": [
-          "persistent red edge",
-          "megacanvas mechanism",
+          "central reusable skill folder",
+          "repository surface",
+          "terminal surface",
+          "documentation surface",
+          "browser surface",
+          "red SKILL packet",
           "a08-reusable-workflow"
         ]
       },
       "motionIntent": [
         {
-          "verb": "reveal",
-          "subject": "a08-reusable-workflow",
-          "target": "Reusable workflow callback",
-          "timing": "1:01-1:10"
+          "verb": "reactivate",
+          "subject": "red SKILL packet",
+          "target": "REPO PR surface",
+          "timing": "1:01-1:03"
         },
         {
-          "verb": "handoff",
-          "subject": "persistent red edge",
-          "target": "next scene focal axis",
-          "timing": "final 0.6 seconds"
+          "verb": "reactivate",
+          "subject": "red SKILL packet",
+          "target": "TERMINAL surface",
+          "timing": "1:03-1:05"
+        },
+        {
+          "verb": "reactivate",
+          "subject": "red SKILL packet",
+          "target": "DOCS and NAVEGADOR surfaces",
+          "timing": "1:05-1:08"
+        },
+        {
+          "verb": "return",
+          "subject": "red SKILL packet",
+          "target": "ready for next task state",
+          "timing": "1:08-1:10"
         }
       ],
       "media": {
@@ -447,7 +560,9 @@
         "f08"
       ],
       "validation": [
-        "focal mechanism remains legible",
+        "one recognizable packet identity persists across all project surfaces",
+        "each surface receives a visible completion mark",
+        "final state holds long enough to read",
         "asset and composition IDs match renderer state"
       ],
       "status": "approved"
@@ -460,7 +575,8 @@
     "assets/",
     "progressive disclosure",
     "validation",
-    "on-demand reusable workflow"
+    "on-demand reusable workflow",
+    "red SKILL packet"
   ],
   "missingFacts": []
 }

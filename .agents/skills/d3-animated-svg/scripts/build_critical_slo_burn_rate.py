@@ -420,14 +420,14 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-slo-burn-rate" data-pattern-id="d3-pattern-critical-slo-burn-rate"
+  <svg id="slo-burn-rate" data-pattern-id="d3-slo-burn-rate"
     data-pattern-family="critical-slo" data-budget-point-count="{len(BUDGET_POINTS)}"
     data-window-count="{len(BURN_WINDOWS)}" data-threshold-band-count="{len(THRESHOLD_BANDS)}"
     data-action-count="{len(ACTION_STEPS)}" data-summary-card-count="{len(SUMMARY_CARDS)}"
     data-pulse-count="3" data-time-to-exhaust-hours="{TIME_TO_EXHAUST_HOURS}" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-slo-burn-rate-title critical-slo-burn-rate-desc">
-    <title id="critical-slo-burn-rate-title">Critical SLO burn rate</title>
-    <desc id="critical-slo-burn-rate-desc">A deterministic burn-rate dashboard shows SLO error budget remaining, page and ticket thresholds across alert windows, time-to-exhaust risk, and immediate reliability actions.</desc>
+    aria-labelledby="slo-burn-rate-title slo-burn-rate-desc">
+    <title id="slo-burn-rate-title">Critical SLO burn rate</title>
+    <desc id="slo-burn-rate-desc">A deterministic burn-rate dashboard shows SLO error budget remaining, page and ticket thresholds across alert windows, time-to-exhaust risk, and immediate reliability actions.</desc>
     <rect x="28" y="24" width="1024" height="580" rx="10" fill="{PALETTE["surface"]}" stroke="{PALETTE["gray200"]}" stroke-width="1.2"/>
     <text class="root-title" x="58" y="58">Critical SLO burn rate</text>
     <text class="root-subtitle" x="58" y="80">Multi-window burn-rate thresholds catch fast budget loss before the service runs out of error budget.</text>

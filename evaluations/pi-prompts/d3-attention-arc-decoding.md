@@ -1,4 +1,4 @@
-Create a self-contained D3 animated SVG HTML artifact using the exact pattern `d3-pattern-attention-arc-decoding`.
+Create a self-contained D3 animated SVG HTML artifact using the exact pattern `d3-attention-arc-decoding`.
 
 Requirements:
 
@@ -14,7 +14,7 @@ Requirements:
   - Step 3 draws attention arcs from the prompt tokens plus `the` and `next` into the final empty slot and reveals `word`.
 - The generated tokens must visually join the context for later steps, such as by using their token color on outgoing attention arcs.
 - Include SVG-native animation, not D3 transitions that disappear from exported markup.
-- Expose `data-pattern-id="d3-pattern-attention-arc-decoding"` on the SVG.
+- Expose `data-pattern-id="d3-attention-arc-decoding"` on the SVG.
 - Expose `data-decode-step`, `data-source-token`, `data-target-token`, and `data-attention-weight` on attention arc paths.
 - Do not read or write inside `skills/d3-animated-svg/assets/examples/`.
 - Do not use CDN scripts, remote fonts, or network resources.

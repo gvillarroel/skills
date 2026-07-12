@@ -22,7 +22,7 @@ DEFAULT_GALLERY = SKILL_ROOT / "assets" / "examples" / "d3-animated-svg" / "inde
 
 AUDIT_JS = r"""
 () => {
-  const root = document.querySelector('svg#asymmetric-task-overlap-saturated');
+  const root = document.querySelector('svg#task-overlap-dense');
   if (!root) return { error: 'missing saturated svg' };
   const groups = Array.from(root.querySelectorAll('.task-label-group'));
   const boxes = groups.map(group => {
@@ -250,7 +250,7 @@ def main() -> int:
         page = browser.new_page(viewport={"width": width, "height": height})
         page.goto(source_to_url(args.source), wait_until="load", timeout=90_000)
         page.wait_for_timeout(max(args.wait_ms, 0))
-        page.locator("svg#asymmetric-task-overlap-saturated").scroll_into_view_if_needed(timeout=90_000)
+        page.locator("svg#task-overlap-dense").scroll_into_view_if_needed(timeout=90_000)
         page.wait_for_timeout(300)
         result: dict[str, Any] = page.evaluate(AUDIT_JS)
         browser.close()

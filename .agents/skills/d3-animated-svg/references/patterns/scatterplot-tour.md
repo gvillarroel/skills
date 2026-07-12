@@ -1,6 +1,6 @@
 # Scatterplot Tour
 
-- **Pattern ID:** `d3-pattern-scatterplot-tour`
+- **Pattern ID:** `d3-scatterplot-tour`
 - **Gallery source ID:** `scatterplot-tour`
 - **Family:** Projection
 - **Use when:** Stable points move between two analytical projections.

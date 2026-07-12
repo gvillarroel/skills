@@ -1,6 +1,6 @@
 # Spike Map
 
-- **Pattern ID:** `d3-pattern-spike-map`
+- **Pattern ID:** `d3-spike-map`
 - **Gallery source ID:** `spike-map`
 - **Family:** Geospatial
 - **Use when:** Local intensity rises as vertical spikes over a projected grid.

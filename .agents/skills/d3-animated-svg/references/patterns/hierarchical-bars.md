@@ -1,6 +1,6 @@
 # Hierarchical Bars
 
-- **Pattern ID:** `d3-pattern-hierarchical-bars`
+- **Pattern ID:** `d3-hierarchical-bars`
 - **Gallery source ID:** `hierarchical-bars`
 - **Family:** Hierarchy
 - **Use when:** Indented bars show parent and child magnitude together.

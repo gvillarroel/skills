@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 1,
+  "videoId": "holiday2026-05-family-attractions-indoor-play",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  "skillRouting": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "assets": [
+    {
+      "id": "a01-proximity-map",
+      "kind": "diagram",
+      "claim": "Show the Family Attractions & Indoor Play evidence required for scene 1 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a01-proximity-map.png",
+      "sha256": "dbbf6d332394c67690b51d2bcb599b34e28021dfe1942fd6bccc786011e64c69",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:family-attractions-indoor-play:a01-proximity-map",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Play Street Museum Alpharetta",
+            "pageUrl": "https://www.alpharetta.playstreetmuseum.com/contact",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/65ca34eca3c7472b435b46a9/1734363197177-QYRTW8Y76JW99OZ6ZEVL/Website+Banners.png?format=1500w",
+            "imageSha256": "40d90225ebe1af68cf9ac7c5aeec07d163e93f073b9bcf2c4e3afd161c1fcbb5",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Play Street Museum Alpharetta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "INK - Interactive Neighborhood for Kids",
+            "pageUrl": "https://www.inkfun.org/",
+            "imageUrl": "https://inkfun.org/skin/frontend/ink-v2022/images/footer-map-2025.webp",
+            "imageSha256": "a76709413abcf589028b7174e988b37d372addbf7e6607053e46efd0d4d1e91b",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for INK - Interactive Neighborhood for Kids; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Museum of Illusions Atlanta",
+            "pageUrl": "https://moiatlanta.com/",
+            "imageUrl": "https://moiatlanta.com/wp-content/uploads/2023/05/moi-home-exhibits-atlanta-usa-1200x900-1.jpg",
+            "imageSha256": "ae22be1ba5384cf51c6a23d023185f758805f03a93991daf687e6ffe3226d517",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Museum of Illusions Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a01-proximity-map-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s01",
+          "beatId": "b01",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a02-top-1-source",
+      "kind": "screenshot",
+      "claim": "Show the Family Attractions & Indoor Play evidence required for scene 2 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a02-top-1-source.png",
+      "sha256": "40d90225ebe1af68cf9ac7c5aeec07d163e93f073b9bcf2c4e3afd161c1fcbb5",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.alpharetta.playstreetmuseum.com/contact",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Play Street Museum Alpharetta; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Play Street Museum Alpharetta",
+            "pageUrl": "https://www.alpharetta.playstreetmuseum.com/contact",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/65ca34eca3c7472b435b46a9/1734363197177-QYRTW8Y76JW99OZ6ZEVL/Website+Banners.png?format=1500w",
+            "imageSha256": "40d90225ebe1af68cf9ac7c5aeec07d163e93f073b9bcf2c4e3afd161c1fcbb5",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Play Street Museum Alpharetta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a02-top-1-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s02",
+          "beatId": "b02",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a03-top-2-source",
+      "kind": "screenshot",
+      "claim": "Show the Family Attractions & Indoor Play evidence required for scene 3 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a03-top-2-source.png",
+      "sha256": "a76709413abcf589028b7174e988b37d372addbf7e6607053e46efd0d4d1e91b",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.inkfun.org/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for INK - Interactive Neighborhood for Kids; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 2,
+            "name": "INK - Interactive Neighborhood for Kids",
+            "pageUrl": "https://www.inkfun.org/",
+            "imageUrl": "https://inkfun.org/skin/frontend/ink-v2022/images/footer-map-2025.webp",
+            "imageSha256": "a76709413abcf589028b7174e988b37d372addbf7e6607053e46efd0d4d1e91b",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for INK - Interactive Neighborhood for Kids; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a03-top-2-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s03",
+          "beatId": "b03",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a04-top-3-source",
+      "kind": "screenshot",
+      "claim": "Show the Family Attractions & Indoor Play evidence required for scene 4 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a04-top-3-source.png",
+      "sha256": "ae22be1ba5384cf51c6a23d023185f758805f03a93991daf687e6ffe3226d517",
+      "origin": {
+        "type": "captured",
+        "uri": "https://moiatlanta.com/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Museum of Illusions Atlanta; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 3,
+            "name": "Museum of Illusions Atlanta",
+            "pageUrl": "https://moiatlanta.com/",
+            "imageUrl": "https://moiatlanta.com/wp-content/uploads/2023/05/moi-home-exhibits-atlanta-usa-1200x900-1.jpg",
+            "imageSha256": "ae22be1ba5384cf51c6a23d023185f758805f03a93991daf687e6ffe3226d517",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Museum of Illusions Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a04-top-3-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s04",
+          "beatId": "b04",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a05-top-five",
+      "kind": "diagram",
+      "claim": "Show the Family Attractions & Indoor Play evidence required for scene 5 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a05-top-five.png",
+      "sha256": "de30e4fad5367784b78c09a948890ddb0f67964d5187c00f0dd2f08eca1e3c00",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:family-attractions-indoor-play:a05-top-five",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Play Street Museum Alpharetta",
+            "pageUrl": "https://www.alpharetta.playstreetmuseum.com/contact",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/65ca34eca3c7472b435b46a9/1734363197177-QYRTW8Y76JW99OZ6ZEVL/Website+Banners.png?format=1500w",
+            "imageSha256": "40d90225ebe1af68cf9ac7c5aeec07d163e93f073b9bcf2c4e3afd161c1fcbb5",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Play Street Museum Alpharetta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "INK - Interactive Neighborhood for Kids",
+            "pageUrl": "https://www.inkfun.org/",
+            "imageUrl": "https://inkfun.org/skin/frontend/ink-v2022/images/footer-map-2025.webp",
+            "imageSha256": "a76709413abcf589028b7174e988b37d372addbf7e6607053e46efd0d4d1e91b",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for INK - Interactive Neighborhood for Kids; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Museum of Illusions Atlanta",
+            "pageUrl": "https://moiatlanta.com/",
+            "imageUrl": "https://moiatlanta.com/wp-content/uploads/2023/05/moi-home-exhibits-atlanta-usa-1200x900-1.jpg",
+            "imageSha256": "ae22be1ba5384cf51c6a23d023185f758805f03a93991daf687e6ffe3226d517",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Museum of Illusions Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Children's Museum of Atlanta",
+            "pageUrl": "https://childrensmuseumatlanta.org/",
+            "imageUrl": "https://childrensmuseumatlanta.org/wp-content/uploads/2023/08/ChildrensMuseumAtlantaExt.png",
+            "imageSha256": "018cadecce5251cbb174c387dfa81be22c2470ba93191369ca46315fe1a6b34d",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Children's Museum of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Medieval Times Dinner & Tournament",
+            "pageUrl": "https://www.medievaltimes.com/atlanta",
+            "imageUrl": "https://medt-refresh.imgix.net/wp-content/uploads/2023/12/25000756/250204_Shot06_Jousting_0093_Web-Compressed-scaled.jpg",
+            "imageSha256": "aed991bbcdaf79418a339e579332d5558a12097f9bc24a343baa3ac456eaa8d0",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Medieval Times Dinner & Tournament; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a05-top-five-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s05",
+          "beatId": "b05",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a06-preference-bars",
+      "kind": "diagram",
+      "claim": "Show the Family Attractions & Indoor Play evidence required for scene 6 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a06-preference-bars.png",
+      "sha256": "ea7dfc65b87b6b187116eb9812154fd8f62e133a656f0a87a21d440012d16bcf",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:family-attractions-indoor-play:a06-preference-bars",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Play Street Museum Alpharetta",
+            "pageUrl": "https://www.alpharetta.playstreetmuseum.com/contact",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/65ca34eca3c7472b435b46a9/1734363197177-QYRTW8Y76JW99OZ6ZEVL/Website+Banners.png?format=1500w",
+            "imageSha256": "40d90225ebe1af68cf9ac7c5aeec07d163e93f073b9bcf2c4e3afd161c1fcbb5",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Play Street Museum Alpharetta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "INK - Interactive Neighborhood for Kids",
+            "pageUrl": "https://www.inkfun.org/",
+            "imageUrl": "https://inkfun.org/skin/frontend/ink-v2022/images/footer-map-2025.webp",
+            "imageSha256": "a76709413abcf589028b7174e988b37d372addbf7e6607053e46efd0d4d1e91b",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for INK - Interactive Neighborhood for Kids; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Museum of Illusions Atlanta",
+            "pageUrl": "https://moiatlanta.com/",
+            "imageUrl": "https://moiatlanta.com/wp-content/uploads/2023/05/moi-home-exhibits-atlanta-usa-1200x900-1.jpg",
+            "imageSha256": "ae22be1ba5384cf51c6a23d023185f758805f03a93991daf687e6ffe3226d517",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Museum of Illusions Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Children's Museum of Atlanta",
+            "pageUrl": "https://childrensmuseumatlanta.org/",
+            "imageUrl": "https://childrensmuseumatlanta.org/wp-content/uploads/2023/08/ChildrensMuseumAtlantaExt.png",
+            "imageSha256": "018cadecce5251cbb174c387dfa81be22c2470ba93191369ca46315fe1a6b34d",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Children's Museum of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Medieval Times Dinner & Tournament",
+            "pageUrl": "https://www.medievaltimes.com/atlanta",
+            "imageUrl": "https://medt-refresh.imgix.net/wp-content/uploads/2023/12/25000756/250204_Shot06_Jousting_0093_Web-Compressed-scaled.jpg",
+            "imageSha256": "aed991bbcdaf79418a339e579332d5558a12097f9bc24a343baa3ac456eaa8d0",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Medieval Times Dinner & Tournament; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Catch Air Johns Creek",
+            "pageUrl": "https://catchair.com/",
+            "imageUrl": "https://catchair.com/wp-content/uploads/2022/02/Slider2-IMG-5150.jpg",
+            "imageSha256": "b8133594f093c45c80bb1df6f4862ffd10ef0e257199a6268f1e0f03ca7c5d13",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Catch Air Johns Creek; verify reuse terms before public publication."
+          },
+          {
+            "rank": 7,
+            "name": "Kids Avenue Alpharetta",
+            "pageUrl": "https://www.awesomealpharetta.com/play/attraction/kid-friendly-fun/",
+            "imageUrl": "https://www.awesomealpharetta.com/wp-content/uploads/2024/03/acvb-default-social-3-2024.jpg",
+            "imageSha256": "1a6912ce786e0cdf95ac0329d90dcfd715a547b7707f42fe703aa594397be754",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Kids Avenue Alpharetta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 8,
+            "name": "The Cooler - Alpharetta Family Skate Center",
+            "pageUrl": "https://www.cooler.com/",
+            "imageUrl": null,
+            "imageSha256": "b2db9a5c868dc2192b980e2cdbc56ec9e297c2076ed1243f534d80768339175b",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a06-preference-bars-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s06",
+          "beatId": "b06",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a07-decision-board",
+      "kind": "diagram",
+      "claim": "Show the Family Attractions & Indoor Play evidence required for scene 7 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a07-decision-board.png",
+      "sha256": "7c079c552cc2d4de65b1267b9d13a88b36bed1f9d581ac0f8e2491a64aad9e1e",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:family-attractions-indoor-play:a07-decision-board",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Play Street Museum Alpharetta",
+            "pageUrl": "https://www.alpharetta.playstreetmuseum.com/contact",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/65ca34eca3c7472b435b46a9/1734363197177-QYRTW8Y76JW99OZ6ZEVL/Website+Banners.png?format=1500w",
+            "imageSha256": "40d90225ebe1af68cf9ac7c5aeec07d163e93f073b9bcf2c4e3afd161c1fcbb5",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Play Street Museum Alpharetta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "INK - Interactive Neighborhood for Kids",
+            "pageUrl": "https://www.inkfun.org/",
+            "imageUrl": "https://inkfun.org/skin/frontend/ink-v2022/images/footer-map-2025.webp",
+            "imageSha256": "a76709413abcf589028b7174e988b37d372addbf7e6607053e46efd0d4d1e91b",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for INK - Interactive Neighborhood for Kids; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Museum of Illusions Atlanta",
+            "pageUrl": "https://moiatlanta.com/",
+            "imageUrl": "https://moiatlanta.com/wp-content/uploads/2023/05/moi-home-exhibits-atlanta-usa-1200x900-1.jpg",
+            "imageSha256": "ae22be1ba5384cf51c6a23d023185f758805f03a93991daf687e6ffe3226d517",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Museum of Illusions Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Catch Air Johns Creek",
+            "pageUrl": "https://catchair.com/",
+            "imageUrl": "https://catchair.com/wp-content/uploads/2022/02/Slider2-IMG-5150.jpg",
+            "imageSha256": "b8133594f093c45c80bb1df6f4862ffd10ef0e257199a6268f1e0f03ca7c5d13",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Catch Air Johns Creek; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a07-decision-board-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s07",
+          "beatId": "b07",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a08-planner-callback",
+      "kind": "diagram",
+      "claim": "Show the Family Attractions & Indoor Play evidence required for scene 8 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a08-planner-callback.png",
+      "sha256": "695f9cac0b0efcb50ce7145e80c0c101fbd91bde2c74a7dfe5c084f8a5300ba7",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:family-attractions-indoor-play:a08-planner-callback",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Play Street Museum Alpharetta",
+            "pageUrl": "https://www.alpharetta.playstreetmuseum.com/contact",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/65ca34eca3c7472b435b46a9/1734363197177-QYRTW8Y76JW99OZ6ZEVL/Website+Banners.png?format=1500w",
+            "imageSha256": "40d90225ebe1af68cf9ac7c5aeec07d163e93f073b9bcf2c4e3afd161c1fcbb5",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Play Street Museum Alpharetta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "INK - Interactive Neighborhood for Kids",
+            "pageUrl": "https://www.inkfun.org/",
+            "imageUrl": "https://inkfun.org/skin/frontend/ink-v2022/images/footer-map-2025.webp",
+            "imageSha256": "a76709413abcf589028b7174e988b37d372addbf7e6607053e46efd0d4d1e91b",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for INK - Interactive Neighborhood for Kids; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Museum of Illusions Atlanta",
+            "pageUrl": "https://moiatlanta.com/",
+            "imageUrl": "https://moiatlanta.com/wp-content/uploads/2023/05/moi-home-exhibits-atlanta-usa-1200x900-1.jpg",
+            "imageSha256": "ae22be1ba5384cf51c6a23d023185f758805f03a93991daf687e6ffe3226d517",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Museum of Illusions Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Children's Museum of Atlanta",
+            "pageUrl": "https://childrensmuseumatlanta.org/",
+            "imageUrl": "https://childrensmuseumatlanta.org/wp-content/uploads/2023/08/ChildrensMuseumAtlantaExt.png",
+            "imageSha256": "018cadecce5251cbb174c387dfa81be22c2470ba93191369ca46315fe1a6b34d",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Children's Museum of Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Medieval Times Dinner & Tournament",
+            "pageUrl": "https://www.medievaltimes.com/atlanta",
+            "imageUrl": "https://medt-refresh.imgix.net/wp-content/uploads/2023/12/25000756/250204_Shot06_Jousting_0093_Web-Compressed-scaled.jpg",
+            "imageSha256": "aed991bbcdaf79418a339e579332d5558a12097f9bc24a343baa3ac456eaa8d0",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Medieval Times Dinner & Tournament; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Catch Air Johns Creek",
+            "pageUrl": "https://catchair.com/",
+            "imageUrl": "https://catchair.com/wp-content/uploads/2022/02/Slider2-IMG-5150.jpg",
+            "imageSha256": "b8133594f093c45c80bb1df6f4862ffd10ef0e257199a6268f1e0f03ca7c5d13",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Catch Air Johns Creek; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a08-planner-callback-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s08",
+          "beatId": "b08",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    }
+  ]
+}

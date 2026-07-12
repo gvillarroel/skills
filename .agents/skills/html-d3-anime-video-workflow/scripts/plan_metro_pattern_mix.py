@@ -58,7 +58,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["mcp", "tool", "plugin", "connector", "server", "client", "handshake", "reroute", "fault", "permission"],
         "marks": ["orthogonal traces", "port blocks", "signal packets", "fault gates"],
         "motions": ["signal trace", "handshake pulse", "fault isolation", "fallback reroute"],
-        "d3PatternIds": ["d3-pattern-circuit-signal-traces"],
+        "d3PatternIds": ["d3-circuit-signal-traces"],
     },
     {
         "id": "critical-queue-backpressure",
@@ -68,7 +68,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["queue", "backpressure", "retry", "dead-letter", "worker", "throttle", "overload", "harness", "agent"],
         "marks": ["queue slots", "producer gates", "consumer lanes", "shed path"],
         "motions": ["queue fill", "throttle gate", "load shed", "recovery drain"],
-        "d3PatternIds": ["d3-pattern-critical-queue-backpressure"],
+        "d3PatternIds": ["d3-queue-backpressure"],
     },
     {
         "id": "critical-cache-stampede",
@@ -78,7 +78,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["cache", "stampede", "hot key", "single-flight", "stale", "origin", "shield", "ttl"],
         "marks": ["fan-out requests", "single-flight lock", "stale path", "origin shield"],
         "motions": ["miss storm", "lock collapse", "stale response", "origin recovery"],
-        "d3PatternIds": ["d3-pattern-critical-cache-stampede"],
+        "d3PatternIds": ["d3-cache-stampede"],
     },
     {
         "id": "critical-dependency-blast-radius",
@@ -88,7 +88,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["dependency", "integration", "blast radius", "failover", "impact", "risk", "cutover", "fallback"],
         "marks": ["dependency rings", "impact surfaces", "critical links", "failover routes"],
         "motions": ["blast wave", "impact reveal", "critical route draw", "failover switch"],
-        "d3PatternIds": ["d3-pattern-critical-dependency-blast-radius"],
+        "d3PatternIds": ["d3-dependency-blast-radius"],
     },
     {
         "id": "critical-bowtie-barrier",
@@ -98,7 +98,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["guardrail", "risk", "barrier", "threat", "mitigation", "policy", "control", "safety"],
         "marks": ["threat lanes", "preventive barriers", "top event", "mitigative barriers"],
         "motions": ["threat converge", "barrier activation", "top event lock", "mitigation route"],
-        "d3PatternIds": ["d3-pattern-critical-bowtie-barrier"],
+        "d3PatternIds": ["d3-bowtie-barriers"],
     },
     {
         "id": "moe-router-capacity",
@@ -108,7 +108,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["moe", "expert", "router", "capacity", "overflow", "dropped token", "model"],
         "marks": ["expert slots", "router gates", "capacity bars", "overflow bins"],
         "motions": ["route dispatch", "capacity fill", "overflow shed"],
-        "d3PatternIds": ["d3-pattern-moe-router-capacity"],
+        "d3PatternIds": ["d3-moe-router-capacity"],
     },
     {
         "id": "document-token-extraction-buckets",
@@ -118,7 +118,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["document", "grounding", "source", "evidence", "extract", "quality", "citation", "retrieval"],
         "marks": ["source blocks", "scan lanes", "evidence buckets", "quality totals"],
         "motions": ["source scan", "block extraction", "bucket split", "quality tally"],
-        "d3PatternIds": ["d3-pattern-document-token-extraction-buckets"],
+        "d3PatternIds": ["d3-document-token-bins"],
     },
     {
         "id": "adjacency-matrix",
@@ -128,7 +128,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["relationship", "pairwise", "matrix", "dependency", "tool", "permission", "connector", "integration"],
         "marks": ["matrix cells", "row bands", "column bands", "active intersections"],
         "motions": ["cell activation", "row sweep", "column compare"],
-        "d3PatternIds": ["d3-pattern-adjacency-matrix"],
+        "d3PatternIds": ["d3-adjacency-matrix"],
     },
     {
         "id": "attention-matrix-tiles",
@@ -138,7 +138,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["attention", "token", "transformer", "probability", "logprob", "model", "llm", "context"],
         "marks": ["matrix cells", "head bands", "mask lanes", "activation blocks"],
         "motions": ["cell activation", "head sweep", "mask reveal"],
-        "d3PatternIds": ["d3-pattern-attention-matrix-tiles"],
+        "d3PatternIds": ["d3-attention-tiles"],
     },
     {
         "id": "token-boxes-to-context-window",
@@ -148,7 +148,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["token", "context", "window", "prompt", "sequence", "generation"],
         "marks": ["token groups", "address slots", "context cells", "append path"],
         "motions": ["token split", "slot fill", "append loop"],
-        "d3PatternIds": ["d3-pattern-token-boxes-to-context-window", "d3-pattern-context-window-matrix"],
+        "d3PatternIds": ["d3-context-window-fill", "d3-context-window-matrix"],
     },
     {
         "id": "qkv-projection-flow",
@@ -167,7 +167,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["gpu", "parameter", "compute", "matrix", "parallel", "inference", "training"],
         "marks": ["compute tiles", "partial sums", "output cells"],
         "motions": ["tile sweep", "partial accumulation", "output assembly"],
-        "d3PatternIds": ["d3-pattern-matmul-tile-accumulation"],
+        "d3PatternIds": ["d3-tiled-matmul"],
     },
     {
         "id": "kv-cache-growth",
@@ -177,7 +177,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["cache", "kv", "memory", "context", "inference", "latency"],
         "marks": ["cache pages", "append slots", "eviction bands"],
         "motions": ["page allocation", "cache append", "pressure shift"],
-        "d3PatternIds": ["d3-pattern-paged-kv-cache"],
+        "d3PatternIds": ["d3-paged-kv-cache"],
     },
     {
         "id": "flow-tokens",
@@ -196,7 +196,7 @@ CATALOG: list[dict[str, Any]] = [
         "keywords": ["billing", "cost", "conversion", "allocation", "credits", "tokens in", "tokens out", "pricing"],
         "marks": ["weighted bands", "loss branch", "merge node", "output meter"],
         "motions": ["band split", "loss reveal", "bottleneck pulse"],
-        "d3PatternIds": ["d3-pattern-sankey", "d3-pattern-parallel-sets"],
+        "d3PatternIds": ["d3-sankey", "d3-parallel-sets"],
     },
     {
         "id": "swimlane-handoff",

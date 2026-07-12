@@ -1,6 +1,6 @@
 # World Tour
 
-- **Pattern ID:** `d3-pattern-world-tour`
+- **Pattern ID:** `d3-world-tour`
 - **Gallery source ID:** `world-tour`
 - **Family:** Geospatial
 - **Use when:** Great-circle hops trace a route across a rotating globe.

@@ -1,6 +1,6 @@
 # Marimekko
 
-- **Pattern ID:** `d3-pattern-marimekko`
+- **Pattern ID:** `d3-marimekko`
 - **Gallery source ID:** `marimekko`
 - **Family:** Mosaic
 - **Use when:** Variable-width stacked composition by segment.

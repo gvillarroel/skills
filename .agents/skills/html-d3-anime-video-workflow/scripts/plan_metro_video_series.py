@@ -147,7 +147,7 @@ def build_series_report(source: str, text: str, args: argparse.Namespace) -> dic
     if primary_diversity < args.min_primary_diversity:
         findings.append({"code": "series-primary-pattern-diversity-too-low", "minimum": args.min_primary_diversity, "actual": primary_diversity})
     if len(reusable_d3_ids) < args.min_reusable_d3_patterns:
-        findings.append({"code": "series-reusable-d3-pattern-diversity-too-low", "minimum": args.min_reusable_d3_patterns, "actual": len(reusable_d3_ids)})
+        findings.append({"code": "series-reusable-d3-diversity-too-low", "minimum": args.min_reusable_d3_patterns, "actual": len(reusable_d3_ids)})
     if repeated_helper_run > args.max_same_helper_run:
         findings.append({"code": "series-repeated-helper-run-too-long", "maximum": args.max_same_helper_run, "actual": repeated_helper_run})
     if generic_helpers == len(modules) and modules:

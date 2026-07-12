@@ -1,6 +1,6 @@
 # Calendar Year
 
-- **Pattern ID:** `d3-pattern-calendar-year`
+- **Pattern ID:** `d3-calendar-year`
 - **Gallery source ID:** `calendar-year`
 - **Family:** Calendar
 - **Use when:** Daily values wrap into month grids and weekly rows.

@@ -1,6 +1,6 @@
 # Zoomable Bar
 
-- **Pattern ID:** `d3-pattern-zoomable-bar`
+- **Pattern ID:** `d3-zoomable-bar`
 - **Gallery source ID:** `zoomable-bar`
 - **Family:** Focus
 - **Use when:** A local categorical range expands while context remains visible.

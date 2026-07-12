@@ -1,6 +1,6 @@
 # Tanglegram
 
-- **Pattern ID:** `d3-pattern-tanglegram`
+- **Pattern ID:** `d3-tanglegram`
 - **Gallery source ID:** `tanglegram`
 - **Family:** Comparison
 - **Use when:** Two trees connect matched leaves across the middle.

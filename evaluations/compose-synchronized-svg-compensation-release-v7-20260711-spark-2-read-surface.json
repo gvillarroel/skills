@@ -1,0 +1,414 @@
+{
+  "passed": false,
+  "session": {
+    "version": 3,
+    "id": "019f52bf-6bef-7094-9bb6-7e5de5e3ed4c",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\compose-synchronized-svg-compensation-release-v7-20260711-spark-2\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 25
+  },
+  "providers": {
+    "openai-codex": 25
+  },
+  "usageTotals": {
+    "input": 84308,
+    "output": 6452,
+    "cacheRead": 881408,
+    "cacheWrite": 0,
+    "totalTokens": 972168
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 11,
+    "bash": 13
+  },
+  "paths": [
+    {
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "calls": 3,
+      "resultBytes": 23317
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 4060
+    },
+    {
+      "path": "skills/compose-synchronized-svg/README.md",
+      "calls": 1,
+      "resultBytes": 273
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 11544
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 21197
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py",
+      "calls": 1,
+      "resultBytes": 107932
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+      "calls": 1,
+      "resultBytes": 42891
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py",
+      "calls": 1,
+      "resultBytes": 107274
+    },
+    {
+      "path": "outputs/browser-audit.json",
+      "calls": 1,
+      "resultBytes": 2864
+    },
+    {
+      "path": "outputs/compensation.svg",
+      "calls": 1,
+      "resultBytes": 30961
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "calls": 2,
+      "resultBytes": 23019
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 4060
+    },
+    {
+      "path": "skills/compose-synchronized-svg/README.md",
+      "calls": 1,
+      "resultBytes": 273
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 11544
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1,
+      "resultBytes": 21197
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py",
+      "calls": 1,
+      "resultBytes": 107932
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+      "calls": 1,
+      "resultBytes": 42891
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py",
+      "calls": 1,
+      "resultBytes": 107274
+    },
+    {
+      "path": "outputs/browser-audit.json",
+      "calls": 1,
+      "resultBytes": 2864
+    },
+    {
+      "path": "outputs/compensation.svg",
+      "calls": 1,
+      "resultBytes": 30961
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "calls": 2
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/README.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py",
+      "calls": 1
+    },
+    {
+      "path": "outputs/browser-audit.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/compensation.svg",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 352015,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4060
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/README.md",
+      "policyPath": "skills/compose-synchronized-svg/README.md",
+      "command": null,
+      "isError": true,
+      "resultBytes": 273
+    },
+    {
+      "line": 42,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la",
+      "isError": false,
+      "resultBytes": 190
+    },
+    {
+      "line": 57,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la skills",
+      "isError": false,
+      "resultBytes": 208
+    },
+    {
+      "line": 72,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la skills/compose-synchronized-svg",
+      "isError": false,
+      "resultBytes": 422
+    },
+    {
+      "line": 85,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 11544
+    },
+    {
+      "line": 98,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "policyPath": "skills/compose-synchronized-svg/assets/templates/composition-plan.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 21197
+    },
+    {
+      "line": 111,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 107932
+    },
+    {
+      "line": 124,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 42891
+    },
+    {
+      "line": 137,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 107274
+    },
+    {
+      "line": 152,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -R \"control\" -n skills/compose-synchronized-svg/assets/templates | head",
+      "isError": false,
+      "resultBytes": 643
+    },
+    {
+      "line": 167,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "grep -R \"class=\\\"interactive-control\\\"\\|interactive-control\\|play\" -n skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py | head -n 50",
+      "isError": false,
+      "resultBytes": 1494
+    },
+    {
+      "line": 180,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10633
+    },
+    {
+      "line": 195,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la",
+      "isError": false,
+      "resultBytes": 190
+    },
+    {
+      "line": 208,
+      "tool": "bash",
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "command": null,
+      "isError": true,
+      "resultBytes": 298
+    },
+    {
+      "line": 221,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "policyPath": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 12386
+    },
+    {
+      "line": 236,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p outputs && cp skills/compose-synchronized-svg/assets/templates/composition-plan.json outputs/compensation-plan.json && ls -la outputs",
+      "isError": false,
+      "resultBytes": 219
+    },
+    {
+      "line": 251,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py --spec outputs/compensation-plan.json --output outputs/compensation.svg --report outputs/composition-report.json --json",
+      "isError": false,
+      "resultBytes": 2001
+    },
+    {
+      "line": 266,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/compensation.svg --output outputs/validation-report.json --json --min-modules 6 --min-asset-types 4",
+      "isError": false,
+      "resultBytes": 7103
+    },
+    {
+      "line": 281,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized-svg.py outputs/compensation.svg --report outputs/browser-audit.json --screenshot outputs/browser-overview.png --json",
+      "isError": true,
+      "resultBytes": 461
+    },
+    {
+      "line": 298,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py outputs/compensation.svg --report outputs/browser-audit.json --screenshot outputs/browser-overview.png --json",
+      "isError": false,
+      "resultBytes": 116441
+    },
+    {
+      "line": 311,
+      "tool": "read",
+      "path": "outputs/browser-audit.json",
+      "policyPath": "outputs/browser-audit.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2864
+    },
+    {
+      "line": 326,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la outputs",
+      "isError": false,
+      "resultBytes": 562
+    },
+    {
+      "line": 339,
+      "tool": "read",
+      "path": "outputs/compensation.svg",
+      "policyPath": "outputs/compensation.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 30961
+    }
+  ],
+  "findings": [
+    {
+      "code": "tool-error",
+      "line": 27,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/README.md"
+    },
+    {
+      "code": "tool-error",
+      "line": 208,
+      "tool": "bash",
+      "path": "skills/compose-synchronized-svg/scripts/scaffold_synchronized_svg.py"
+    },
+    {
+      "code": "tool-error",
+      "line": 281,
+      "tool": "bash",
+      "path": null
+    }
+  ]
+}

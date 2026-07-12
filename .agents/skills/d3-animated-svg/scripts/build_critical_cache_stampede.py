@@ -485,7 +485,7 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-cache-stampede" data-pattern-id="d3-pattern-critical-cache-stampede"
+  <svg id="cache-stampede" data-pattern-id="d3-cache-stampede"
     data-pattern-family="critical-cache" data-request-source-count="{len(REQUEST_SOURCES)}"
     data-cache-flow-count="7" data-cache-pulse-count="8" data-hit-ratio-point-count="{len(TREND_POINTS)}"
     data-origin-load-point-count="{len(TREND_POINTS)}" data-ttl-marker-count="{len(TTL_MARKERS)}"
@@ -495,9 +495,9 @@ def build_html() -> str:
     data-stale-window-seconds="{CACHE_STATE['stale_window']}" data-stampede-rate="{esc(CACHE_STATE['stampede_rate'])}"
     data-coalesced-origin-calls="{CACHE_STATE['coalesced_origin_calls']}"
     viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-cache-stampede-title critical-cache-stampede-desc">
-    <title id="critical-cache-stampede-title">Critical cache stampede</title>
-    <desc id="critical-cache-stampede-desc">A deterministic cache-stampede pattern shows request sources, an expired hot key, miss fan-out, single-flight lock, stale response, origin shielding, TTL policy, hit-ratio collapse, origin load spike, and mitigation steps.</desc>
+    aria-labelledby="cache-stampede-title cache-stampede-desc">
+    <title id="cache-stampede-title">Critical cache stampede</title>
+    <desc id="cache-stampede-desc">A deterministic cache-stampede pattern shows request sources, an expired hot key, miss fan-out, single-flight lock, stale response, origin shielding, TTL policy, hit-ratio collapse, origin load spike, and mitigation steps.</desc>
     <rect x="28" y="24" width="1024" height="590" rx="10" fill="{PALETTE["surface"]}" stroke="{PALETTE["gray200"]}" stroke-width="1.2"/>
     <text class="root-title" x="58" y="58">Critical cache stampede</text>
     <text class="root-subtitle" x="58" y="80">Coalesce hot-key misses, serve stale, and refresh one copy before origin saturates.</text>

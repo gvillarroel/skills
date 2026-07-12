@@ -1,6 +1,6 @@
 # Moving Average
 
-- **Pattern ID:** `d3-pattern-moving-average`
+- **Pattern ID:** `d3-moving-average`
 - **Gallery source ID:** `moving-average`
 - **Family:** Analysis
 - **Use when:** A smoothed trend line separates signal from noise.

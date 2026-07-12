@@ -1,5 +1,5 @@
 <template>
-  <section class="chart-example market-mix" data-example-id="slidev-echarts" data-pattern-page="true" data-pattern-id="slidev-echarts-market-mix">
+  <section class="chart-example market-mix" data-example-id="market-mix" data-pattern-page="true" data-pattern-id="slidev-echarts-market-mix">
     <div class="chart-copy">
       <p class="eyebrow">Acquisition mix</p>
       <h3>Stacked volume with a quality signal</h3>

@@ -59,7 +59,13 @@ function selectConcept(id) {
   if (Number.isFinite(numeric) && numeric >= 1 && numeric <= concepts.length) {
     return concepts[numeric - 1];
   }
-  return concepts.find((item) => item.id === id || item.shortTitle.toLowerCase() === String(id).toLowerCase()) ?? concepts[0];
+  const normalizedId = String(id).toLowerCase();
+  return concepts.find((item) =>
+    item.id === id
+    || item.patternId === id
+    || `ai-concept-pattern-${item.id}` === id
+    || item.shortTitle.toLowerCase() === normalizedId
+  ) ?? concepts[0];
 }
 
 function isVisualOnlyConcept(concept) {
@@ -198,24 +204,29 @@ function prepareSvg(concept, seconds) {
   const frameWidth = visualOnly ? 1280 : SVG_WIDTH;
   const frameHeight = visualOnly ? 720 : SVG_HEIGHT;
   const { beat } = sceneForTime(concept, seconds);
-  const patternId = `ai-concept-pattern-${concept.id}`;
+  const patternId = concept.patternId;
+  const legacyPatternId = `ai-concept-pattern-${concept.id}`;
   document.body.dataset.exampleId = "ai-concept-videos";
   document.body.dataset.patternId = patternId;
+  document.body.dataset.legacyPatternId = legacyPatternId;
   document.body.dataset.patternPage = "true";
   document.body.dataset.conceptId = concept.id;
   document.body.dataset.beatId = beat.id;
   const frame = document.querySelector(".video-frame");
   if (frame) {
-    frame.dataset.exampleId = "ai-concept-videos";
+    frame.id = patternId;
+    frame.dataset.exampleId = concept.id;
     frame.dataset.patternId = patternId;
+    frame.dataset.legacyPatternId = legacyPatternId;
     frame.dataset.patternPage = "true";
     frame.dataset.conceptId = concept.id;
     frame.dataset.beatId = beat.id;
   }
   svg.selectAll("*").remove();
   svg.attr("aria-label", concept.title);
-  svg.attr("data-example-id", "ai-concept-videos");
+  svg.attr("data-example-id", concept.id);
   svg.attr("data-pattern-id", patternId);
+  svg.attr("data-legacy-pattern-id", legacyPatternId);
   svg.attr("data-concept-id", concept.id);
   svg.attr("data-beat-id", beat.id);
   svg.attr("viewBox", `0 0 ${frameWidth} ${frameHeight}`);
@@ -2326,7 +2337,7 @@ export function renderConceptFrame(conceptId, seconds, options = {}) {
   drawConceptVisual(concept, time);
   return {
     conceptId: concept.id,
-    patternId: `ai-concept-pattern-${concept.id}`,
+    patternId: concept.patternId,
     time,
     beat: sceneForTime(concept, time).beat.id,
     svgElementCount: svg.selectAll("*").size(),
@@ -2350,7 +2361,8 @@ function startPlayback(conceptId) {
 
 function init() {
   const params = new URLSearchParams(window.location.search);
-  const concept = selectConcept(params.get("concept"));
+  const hashId = decodeURIComponent(window.location.hash.slice(1));
+  const concept = selectConcept(params.get("concept") ?? hashId);
   const t = Number(params.get("t") ?? "0");
   const autoplay = params.get("play") === "1";
   window.AI_CONCEPTS = concepts;
@@ -2358,6 +2370,10 @@ function init() {
   window.renderConceptFrame = renderConceptFrame;
   window.startConceptPlayback = startPlayback;
   renderConceptFrame(concept.id, t);
+  const legacyPatternId = `ai-concept-pattern-${concept.id}`;
+  if (hashId === legacyPatternId) {
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#${concept.patternId}`);
+  }
   if (autoplay) startPlayback(concept.id);
 }
 

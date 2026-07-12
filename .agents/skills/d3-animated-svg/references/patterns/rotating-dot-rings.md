@@ -1,6 +1,6 @@
 # Rotating Dot Rings
 
-- **Pattern ID:** `d3-pattern-rotating-dot-rings`
+- **Pattern ID:** `d3-rotating-dot-rings`
 - **Family:** Radial dot field
 - **Use when:** A D3/SVG artifact needs concentric circular bands made from discrete dots, especially subtle hero/background fields inspired by partial dotted circular layouts.
 - **Builder:** `scripts/build_rotating_dot_rings.py`
@@ -14,7 +14,7 @@ Reference URL: https://assets.equifax.com/images/us/personal-misc/dot_bkg_hero_w
 ## Reuse Contract
 
 - Keep the root SVG selector `svg#rotating-dot-rings` for standalone artifacts.
-- Expose `data-pattern-id="d3-pattern-rotating-dot-rings"`, `data-pattern-family="radial-dot-field"`, `data-ring-count`, `data-dot-count`, and `data-direction-rule="alternating-clockwise-counterclockwise"`.
+- Expose `data-pattern-id="d3-rotating-dot-rings"`, `data-pattern-family="radial-dot-field"`, `data-ring-count`, `data-dot-count`, and `data-direction-rule="alternating-clockwise-counterclockwise"`.
 - Represent each layer as one `.dot-ring` group with `data-ring-index`, `data-direction`, `data-radius`, `data-dot-count`, and `data-duration-seconds`.
 - Represent every point as a `.rotating-dot` circle with `data-dot-index`.
 - Create deliberate white space by omitting about 7 percent of each ring's source dots from one fixed angular sector. Expose `data-source-dot-count`, `data-gap-dot-count`, `data-gap-percent`, and `data-gap-sector-center-degrees` on the root and on each ring.
@@ -76,7 +76,7 @@ The optional D3 renderer output exposes `renderRotatingDotRings(target, options)
 
 ## Validation Hooks
 
-- Root SVG exposes `data-pattern-id="d3-pattern-rotating-dot-rings"`.
+- Root SVG exposes `data-pattern-id="d3-rotating-dot-rings"`.
 - Root `data-ring-count` matches the number of `.dot-ring` groups.
 - Root `data-dot-count` matches the number of `.rotating-dot` circles.
 - On every ring, `data-source-dot-count - data-dot-count` equals `data-gap-dot-count`, and `data-gap-dot-count / data-source-dot-count` is close to `0.07` after rounding.

@@ -1,6 +1,6 @@
 # Volcano Contours
 
-- **Pattern ID:** `d3-pattern-volcano-contours`
+- **Pattern ID:** `d3-volcano-contours`
 - **Gallery source ID:** `volcano-contours`
 - **Family:** Surface
 - **Use when:** A synthetic height field becomes nested contour bands.

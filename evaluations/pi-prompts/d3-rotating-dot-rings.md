@@ -10,7 +10,7 @@ uv run --script skills/d3-animated-svg/scripts/build_rotating_dot_rings.py rotat
 
 Requirements:
 
-- Use `d3-pattern-rotating-dot-rings`.
+- Use `d3-rotating-dot-rings`.
 - Show 8 to 14 concentric rings made from individual gray dot circles.
 - Remove about 7 percent of each ring's source circles from one deterministic angular sector so the pattern has intentional white space.
 - Ring 0 must rotate clockwise, ring 1 counterclockwise, ring 2 clockwise, and so on.

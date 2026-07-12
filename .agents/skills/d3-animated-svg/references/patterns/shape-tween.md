@@ -1,6 +1,6 @@
 # Shape Tween
 
-- **Pattern ID:** `d3-pattern-shape-tween`
+- **Pattern ID:** `d3-shape-tween`
 - **Gallery source ID:** `shape-tween`
 - **Family:** Morph
 - **Use when:** A polygon morphs between two compatible point sets.

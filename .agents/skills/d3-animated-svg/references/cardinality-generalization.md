@@ -12,18 +12,18 @@ Read this when the task asks a D3 pattern to work with fewer elements, more elem
    - required mark classes
    - required metadata attributes
 2. If every requested pattern is supported by `scripts/build_cardinality_variants.ts`, use the generator path and skip `references/pattern-index.md` plus per-pattern references; the generator already encodes the required deterministic geometry for those pattern families.
-3. If the prompt names exact `d3-pattern-*` IDs that are not fully covered by the generator path, extract the complete unique set and read every matching `references/patterns/<id>.md` file before implementation. Do not stop after the first pattern, do not search the pattern index first, and do not switch to a different chart family.
+3. If the prompt names exact `d3-*` IDs that are not fully covered by the generator path, extract the complete unique set and read every matching `references/patterns/<id>.md` file before implementation. Do not stop after the first pattern, do not search the pattern index first, and do not switch to a different chart family.
 4. If the prompt asks for one SVG per variant, create separate `<svg>` roots with the exact requested IDs. Do not collapse them into one combined chart unless the prompt explicitly allows it.
 5. Preserve the requested classes on the countable marks. If validation will count `.node`, put `class="node"` on every node mark. If validation will count `.dot`, put `class="dot"` on every observation mark.
 6. Add `data-pattern-id`, `data-size`, and `data-target-count` on each generated SVG when the task asks for machine-verifiable variants.
 7. For self-contained output, inline final-state geometry. Do not leave an empty SVG that depends on runtime D3, CDN scripts, or external assets.
 8. Treat requested `svg#id` values as a validation interface. Copy them exactly; do not rename them to a theme, chart title, or generalized family name.
-9. If every requested pattern is supported by `scripts/build_cardinality_variants.ts`, create a small workspace-local variants JSON file and run `node skills/d3-animated-svg/scripts/build_cardinality_variants.ts <variants.json> <artifact.html>` instead of hand-writing the SVG. The generator currently supports `d3-pattern-force-network` and `d3-pattern-beeswarm`.
+9. If every requested pattern is supported by `scripts/build_cardinality_variants.ts`, create a small workspace-local variants JSON file and run `node skills/d3-animated-svg/scripts/build_cardinality_variants.ts <variants.json> <artifact.html>` instead of hand-writing the SVG. The generator currently supports `d3-force-network` and `d3-beeswarm`.
 10. Before the final response, create a small workspace-local `svg-contract.json` and run `node skills/d3-animated-svg/scripts/check_svg_contract.ts <artifact.html> svg-contract.json`. Fix every finding before replying.
 
 ## Force Network Scaling
 
-Use this when adapting `d3-pattern-force-network` to multiple node counts.
+Use this when adapting `d3-force-network` to multiple node counts.
 
 Data contract:
 
@@ -45,7 +45,7 @@ If the generator path is unavailable, use a ring or clustered-ring layout: one h
 
 ## Beeswarm Scaling
 
-Use this when adapting `d3-pattern-beeswarm` to multiple observation counts.
+Use this when adapting `d3-beeswarm` to multiple observation counts.
 
 Data contract:
 
@@ -72,7 +72,7 @@ For force-network and beeswarm cardinality variants, prefer the bundled generato
   "svgs": [
     {
       "id": "force-small",
-      "patternId": "d3-pattern-force-network",
+      "patternId": "d3-force-network",
       "size": "small",
       "targetCount": 5,
       "marks": {
@@ -82,7 +82,7 @@ For force-network and beeswarm cardinality variants, prefer the bundled generato
     },
     {
       "id": "force-medium",
-      "patternId": "d3-pattern-force-network",
+      "patternId": "d3-force-network",
       "size": "medium",
       "targetCount": 12,
       "marks": {
@@ -92,7 +92,7 @@ For force-network and beeswarm cardinality variants, prefer the bundled generato
     },
     {
       "id": "force-large",
-      "patternId": "d3-pattern-force-network",
+      "patternId": "d3-force-network",
       "size": "large",
       "targetCount": 36,
       "marks": {
@@ -102,7 +102,7 @@ For force-network and beeswarm cardinality variants, prefer the bundled generato
     },
     {
       "id": "beeswarm-small",
-      "patternId": "d3-pattern-beeswarm",
+      "patternId": "d3-beeswarm",
       "size": "small",
       "targetCount": 9,
       "marks": {
@@ -111,7 +111,7 @@ For force-network and beeswarm cardinality variants, prefer the bundled generato
     },
     {
       "id": "beeswarm-medium",
-      "patternId": "d3-pattern-beeswarm",
+      "patternId": "d3-beeswarm",
       "size": "medium",
       "targetCount": 30,
       "marks": {
@@ -120,7 +120,7 @@ For force-network and beeswarm cardinality variants, prefer the bundled generato
     },
     {
       "id": "beeswarm-large",
-      "patternId": "d3-pattern-beeswarm",
+      "patternId": "d3-beeswarm",
       "size": "large",
       "targetCount": 90,
       "marks": {
@@ -156,7 +156,7 @@ Example contract shape:
   "svgs": [
     {
       "id": "force-small",
-      "patternId": "d3-pattern-force-network",
+      "patternId": "d3-force-network",
       "size": "small",
       "targetCount": 5,
       "marks": {
@@ -166,7 +166,7 @@ Example contract shape:
     },
     {
       "id": "beeswarm-large",
-      "patternId": "d3-pattern-beeswarm",
+      "patternId": "d3-beeswarm",
       "size": "large",
       "targetCount": 90,
       "marks": {

@@ -502,7 +502,7 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-circuit-breaker" data-pattern-id="d3-pattern-critical-circuit-breaker"
+  <svg id="circuit-breaker" data-pattern-id="d3-circuit-breaker"
     data-pattern-family="critical-resilience" data-client-count="{len(CLIENTS)}"
     data-flow-count="8" data-pulse-count="7" data-state-count="{len(STATE_NODES)}"
     data-failure-point-count="{len(METRICS)}" data-latency-point-count="{len(METRICS)}"
@@ -511,9 +511,9 @@ def build_html() -> str:
     data-current-failure-rate="{BREAKER_STATE['current_failure_rate']}" data-open-window-seconds="{BREAKER_STATE['open_window_seconds']}"
     data-timeout-ms="{BREAKER_STATE['timeout_ms']}" data-retry-budget="{esc(BREAKER_STATE['retry_budget'])}"
     data-probe-count="{BREAKER_STATE['probe_count']}" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-circuit-breaker-title critical-circuit-breaker-desc">
-    <title id="critical-circuit-breaker-title">Critical circuit breaker</title>
-    <desc id="critical-circuit-breaker-desc">A deterministic resilience pattern shows client pressure, an open circuit breaker, fail-fast fallback, retry suppression, half-open probes, and failure-rate recovery.</desc>
+    aria-labelledby="circuit-breaker-title circuit-breaker-desc">
+    <title id="circuit-breaker-title">Critical circuit breaker</title>
+    <desc id="circuit-breaker-desc">A deterministic resilience pattern shows client pressure, an open circuit breaker, fail-fast fallback, retry suppression, half-open probes, and failure-rate recovery.</desc>
     <rect x="28" y="24" width="1024" height="606" rx="10" fill="{PALETTE["surface"]}" stroke="{PALETTE["gray200"]}" stroke-width="1.2"/>
     <text class="root-title" x="58" y="58">Critical circuit breaker</text>
     <text class="root-subtitle" x="58" y="80">Stop repeated downstream failures before retries turn a local outage into a system-wide incident.</text>

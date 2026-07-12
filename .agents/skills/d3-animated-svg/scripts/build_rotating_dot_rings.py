@@ -183,7 +183,7 @@ def build_html(
   </style>
 </head>
 <body>
-  <svg id="rotating-dot-rings" data-pattern-id="d3-pattern-rotating-dot-rings"
+  <svg id="rotating-dot-rings" data-pattern-id="d3-rotating-dot-rings"
     data-pattern-family="radial-dot-field" data-ring-count="{ring_count}"
     data-dot-count="{total_dots}" data-source-dot-count="{source_dots}" data-gap-dot-count="{gap_dots}"
     data-gap-percent="{fmt(gap_percent, 4)}" data-gap-sector-center-degrees="{fmt(gap_center_degrees)}"
@@ -205,7 +205,7 @@ def build_html(
 
 def build_d3_renderer(gap_percent: float = GAP_PERCENT, gap_center_degrees: float = GAP_CENTER_DEGREES) -> str:
     return f"""/*
- * D3 renderer for d3-pattern-rotating-dot-rings.
+ * D3 renderer for d3-rotating-dot-rings.
  * Requires D3 v7 as globalThis.d3 or options.d3.
  */
 (function attachRotatingDotRingsRenderer(global) {{
@@ -293,7 +293,7 @@ def build_d3_renderer(gap_percent: float = GAP_PERCENT, gap_center_degrees: floa
     svg.selectAll("*").remove();
     svg
       .attr("id", options.id || "rotating-dot-rings")
-      .attr("data-pattern-id", "d3-pattern-rotating-dot-rings")
+      .attr("data-pattern-id", "d3-rotating-dot-rings")
       .attr("data-pattern-family", "radial-dot-field")
       .attr("data-ring-count", ringCount)
       .attr("data-dot-count", totalDots)

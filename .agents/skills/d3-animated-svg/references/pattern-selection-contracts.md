@@ -9,7 +9,7 @@ Before choosing a chart family, decide the primary task:
 - Exact lookup: table, inline bars, or labeled compact chart.
 - Comparison/ranking: aligned position before color, area, or angle.
 - Distribution: raw observations, density/bin summary, or intervals based on sample size and overlap.
-- Relationship: scatter, connected scatter, density, facets, or model overlays with declared transforms.
+- Relationship: scatter, connected scatter, density, facet-sparklines, or model overlays with declared transforms.
 - Geography: map only when location, boundary, distance, or geographic level changes interpretation.
 - Publication: source, units, denominator, and final takeaway.
 

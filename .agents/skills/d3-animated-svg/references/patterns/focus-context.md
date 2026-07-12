@@ -1,6 +1,6 @@
 # Focus Context
 
-- **Pattern ID:** `d3-pattern-focus-context`
+- **Pattern ID:** `d3-focus-context`
 - **Gallery source ID:** `focus-context`
 - **Family:** Interaction
 - **Use when:** A selected window links overview and detail.

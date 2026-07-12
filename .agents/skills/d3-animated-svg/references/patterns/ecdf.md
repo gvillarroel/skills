@@ -1,6 +1,6 @@
 # Empirical CDF
 
-- **Pattern ID:** `d3-pattern-ecdf`
+- **Pattern ID:** `d3-ecdf`
 - **Gallery source ID:** `ecdf`
 - **Family:** Distribution
 - **Use when:** Cumulative probability reveals quantiles and tails.

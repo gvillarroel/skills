@@ -4,7 +4,7 @@
   "svgs": [
     {
       "id": "force-small",
-      "patternId": "d3-pattern-force-network",
+      "patternId": "d3-force-network",
       "size": "small",
       "targetCount": 5,
       "marks": {
@@ -14,7 +14,7 @@
     },
     {
       "id": "force-medium",
-      "patternId": "d3-pattern-force-network",
+      "patternId": "d3-force-network",
       "size": "medium",
       "targetCount": 12,
       "marks": {
@@ -24,7 +24,7 @@
     },
     {
       "id": "force-large",
-      "patternId": "d3-pattern-force-network",
+      "patternId": "d3-force-network",
       "size": "large",
       "targetCount": 36,
       "marks": {
@@ -34,7 +34,7 @@
     },
     {
       "id": "beeswarm-small",
-      "patternId": "d3-pattern-beeswarm",
+      "patternId": "d3-beeswarm",
       "size": "small",
       "targetCount": 9,
       "marks": {
@@ -43,7 +43,7 @@
     },
     {
       "id": "beeswarm-medium",
-      "patternId": "d3-pattern-beeswarm",
+      "patternId": "d3-beeswarm",
       "size": "medium",
       "targetCount": 30,
       "marks": {
@@ -52,7 +52,7 @@
     },
     {
       "id": "beeswarm-large",
-      "patternId": "d3-pattern-beeswarm",
+      "patternId": "d3-beeswarm",
       "size": "large",
       "targetCount": 90,
       "marks": {

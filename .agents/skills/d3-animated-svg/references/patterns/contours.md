@@ -1,6 +1,6 @@
 # Density Contours
 
-- **Pattern ID:** `d3-pattern-contours`
+- **Pattern ID:** `d3-contours`
 - **Gallery source ID:** `contours`
 - **Family:** Density
 - **Use when:** Two-dimensional concentration fields.

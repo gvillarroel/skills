@@ -1,0 +1,75 @@
+# Storyboard — Holiday 2026: Arts, Culture, Spiritual Sites & Heritage
+
+Literal anchor: 7010 Brassfield Dr, Cumming
+
+## s01 / b01 — 0:00-0:06
+
+- Viewer task: Locate the ranked field around home.
+- Visual: diagonal proximity map using asset a01-proximity-map.
+- Source anchor: https://www.srimahalakshmitempleofatlanta.org/
+- Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
+- Transition: match cut axis with the route marker visible.
+- Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
+
+## s02 / b02 — 0:06-0:12
+
+- Viewer task: Inspect the image, read the decision signal, and follow the route marker.
+- Visual: asymmetric source proof using asset a02-top-1-source.
+- Source anchor: https://saitempleatlanta.org/about/
+- Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
+- Transition: persistent object with the route marker visible.
+- Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
+
+## s03 / b03 — 0:12-0:18
+
+- Viewer task: Inspect the image, read the decision signal, and follow the route marker.
+- Visual: reverse editorial proof using asset a03-top-2-source.
+- Source anchor: https://hindutempleofatlanta.org/
+- Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
+- Transition: camera move with the route marker visible.
+- Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
+
+## s04 / b04 — 0:18-0:24
+
+- Viewer task: Inspect the image, read the decision signal, and follow the route marker.
+- Visual: full-bleed source proof using asset a04-top-3-source.
+- Source anchor: https://www.baps.org/Global-Network/North-America/Atlanta/Visitor-Info.aspx
+- Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
+- Transition: color handoff with the route marker visible.
+- Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
+
+## s05 / b05 — 0:24-0:30
+
+- Viewer task: Inspect the image, read the decision signal, and follow the route marker.
+- Visual: ranked comparison strip using asset a05-top-five.
+- Source anchor: https://www.drepung.org/Newcomers.cfm
+- Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
+- Transition: spatial portal reveal with the route marker visible.
+- Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
+
+## s06 / b06 — 0:30-0:36
+
+- Viewer task: Inspect the image, read the decision signal, and follow the route marker.
+- Visual: preference profile chart using asset a06-preference-bars.
+- Source anchor: https://museum.spelman.edu/
+- Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
+- Transition: morph continuity with the route marker visible.
+- Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
+
+## s07 / b07 — 0:36-0:42
+
+- Viewer task: Inspect the image, read the decision signal, and follow the route marker.
+- Visual: decision matrix using asset a07-decision-board.
+- Source anchor: https://www.hammondshousemuseum.org/visit
+- Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
+- Transition: negative space cut with the route marker visible.
+- Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
+
+## s08 / b08 — 0:42-0:48
+
+- Viewer task: Inspect the image, read the decision signal, and follow the route marker.
+- Visual: planner callback map using asset a08-planner-callback.
+- Source anchor: https://www.atlgoc.org/
+- Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
+- Transition: final callback hold with the route marker visible.
+- Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.

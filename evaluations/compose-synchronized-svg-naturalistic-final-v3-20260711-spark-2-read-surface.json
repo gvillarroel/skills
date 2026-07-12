@@ -1,0 +1,441 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f5424-8302-76e7-b6c3-76a4a7fb51d2",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\compose-synchronized-svg-naturalistic-final-v3-20260711-spark-2\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 30
+  },
+  "providers": {
+    "openai-codex": 30
+  },
+  "usageTotals": {
+    "input": 60659,
+    "output": 30329,
+    "cacheRead": 1020544,
+    "cacheWrite": 0,
+    "totalTokens": 1111532
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 13,
+    "bash": 14,
+    "write": 2
+  },
+  "paths": [
+    {
+      "path": "outputs/compensation/composition-brief.json",
+      "calls": 6,
+      "resultBytes": 10037
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 3949
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 17896
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 16396
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 21628
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 14127
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 9325
+    },
+    {
+      "path": "outputs/compensation/static-validation.json",
+      "calls": 1,
+      "resultBytes": 7748
+    },
+    {
+      "path": "outputs/compensation/browser-audit.json",
+      "calls": 1,
+      "resultBytes": 19427
+    },
+    {
+      "path": "outputs/compensation/composition-report.json",
+      "calls": 1,
+      "resultBytes": 2119
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/compensation/composition-brief.json",
+      "calls": 4,
+      "resultBytes": 9798
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 3949
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 17896
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 16396
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 21628
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 14127
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 9325
+    },
+    {
+      "path": "outputs/compensation/static-validation.json",
+      "calls": 1,
+      "resultBytes": 7748
+    },
+    {
+      "path": "outputs/compensation/browser-audit.json",
+      "calls": 1,
+      "resultBytes": 19427
+    },
+    {
+      "path": "outputs/compensation/composition-report.json",
+      "calls": 1,
+      "resultBytes": 2119
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "outputs/compensation/composition-brief.json",
+      "calls": 4
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/compensation/static-validation.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/compensation/browser-audit.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/compensation/composition-report.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 122413,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3949
+    },
+    {
+      "line": 30,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls skills/compose-synchronized-svg",
+      "isError": false,
+      "resultBytes": 146
+    },
+    {
+      "line": 43,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 17896
+    },
+    {
+      "line": 56,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "policyPath": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 16396
+    },
+    {
+      "line": 69,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "policyPath": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 21628
+    },
+    {
+      "line": 82,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "policyPath": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 14127
+    },
+    {
+      "line": 95,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "policyPath": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9325
+    },
+    {
+      "line": 110,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p outputs/compensation",
+      "isError": false,
+      "resultBytes": 99
+    },
+    {
+      "line": 123,
+      "tool": "write",
+      "path": "outputs/compensation/composition-brief.json",
+      "policyPath": "outputs/compensation/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 119
+    },
+    {
+      "line": 136,
+      "tool": "read",
+      "path": "outputs/compensation/composition-brief.json",
+      "policyPath": "outputs/compensation/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5939
+    },
+    {
+      "line": 149,
+      "tool": "read",
+      "path": "outputs/compensation/composition-brief.json",
+      "policyPath": "outputs/compensation/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2631
+    },
+    {
+      "line": 162,
+      "tool": "read",
+      "path": "outputs/compensation/composition-brief.json",
+      "policyPath": "outputs/compensation/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 895
+    },
+    {
+      "line": 178,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\np=Path('outputs/compensation/composition-brief.json')\nprint('exists',p.exists())\nprint('size',p.stat().st_size)\nprint('lines',sum(1 for _ in p.open()))\nPY",
+      "isError": false,
+      "resultBytes": 140
+    },
+    {
+      "line": 191,
+      "tool": "read",
+      "path": "outputs/compensation/composition-brief.json",
+      "policyPath": "outputs/compensation/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 333
+    },
+    {
+      "line": 207,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\nimport json\np=Path('outputs/compensation/composition-brief.json')\ntext=p.read_text()\nprint('chars',len(text))\nprint('endswith',text[-200:])\ntry:\n    json.loads(text)\n    print('json ok')\nexcept Excep",
+      "isError": false,
+      "resultBytes": 460
+    },
+    {
+      "line": 220,
+      "tool": "write",
+      "path": "outputs/compensation/composition-brief.json",
+      "policyPath": "outputs/compensation/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 120
+    },
+    {
+      "line": 236,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nimport json, pathlib\np=pathlib.Path('outputs/compensation/composition-brief.json')\nobj=json.loads(p.read_text())\nprint('ok',obj['compositionId'], len(obj['modules']), len(obj['relationships']))\nprint('timeline phases',len(ob",
+      "isError": false,
+      "resultBytes": 164
+    },
+    {
+      "line": 252,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outputs/compensation/composition-brief.json --output outputs/compensation/composition-plan.json --force --json",
+      "isError": false,
+      "resultBytes": 698
+    },
+    {
+      "line": 268,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py --spec outputs/compensation/composition-plan.json --output outputs/compensation/compensation.svg --report outputs/compensation/composition-report.json --for",
+      "isError": false,
+      "resultBytes": 2303
+    },
+    {
+      "line": 284,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/compensation/compensation.svg --output outputs/compensation/static-validation.json --min-modules 7 --min-asset-types 6 --min-renderer-families 4 --",
+      "isError": false,
+      "resultBytes": 315
+    },
+    {
+      "line": 297,
+      "tool": "read",
+      "path": "outputs/compensation/static-validation.json",
+      "policyPath": "outputs/compensation/static-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7748
+    },
+    {
+      "line": 315,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py outputs/compensation/compensation.svg --report outputs/compensation/browser-audit.json --screenshot outputs/compensation/overview.png --compact-report",
+      "isError": false,
+      "resultBytes": 705
+    },
+    {
+      "line": 328,
+      "tool": "read",
+      "path": "outputs/compensation/browser-audit.json",
+      "policyPath": "outputs/compensation/browser-audit.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 19427
+    },
+    {
+      "line": 341,
+      "tool": "read",
+      "path": "outputs/compensation/composition-report.json",
+      "policyPath": "outputs/compensation/composition-report.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2119
+    },
+    {
+      "line": 358,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nbase={\n 'annual_base_salary':90000,\n 'annual_bonus':10000,\n 'annual_benefits':15000,\n 'effective_tax_rate':22,\n 'savings_rate':15,\n 'monthly_living_cost':3000,\n 'monthly_savings_target':1500,\n}\nraise_={\n 'annual_base_salary'",
+      "isError": false,
+      "resultBytes": 475
+    },
+    {
+      "line": 374,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\np=Path('outputs/compensation/compensation.svg')\ntext=p.read_text()\nfor s in ['Illustrative compensation model · synthetic USD values','window.svgSync','data-sync-ready','svg-sync-change','data-phase-",
+      "isError": false,
+      "resultBytes": 274
+    },
+    {
+      "line": 390,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\ntext=Path('outputs/compensation/compensation.svg').read_text(encoding='utf-8',errors='replace')\nimport re\nm=re.search(r'provenance\"[^\\n]{0,120}',text)\nprint(m.group(0) if m else 'no')\nfor token in ['",
+      "isError": false,
+      "resultBytes": 339
+    },
+    {
+      "line": 406,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\np=Path('outputs/compensation/overview.png')\nprint(p.exists(),p.stat().st_size)\nPY",
+      "isError": false,
+      "resultBytes": 114
+    },
+    {
+      "line": 422,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python - <<'PY'\nfrom pathlib import Path\nfiles=[\n  'outputs/compensation/composition-brief.json',\n  'outputs/compensation/composition-plan.json',\n  'outputs/compensation/composition-report.json',\n  'outputs/compensation/compensation.svg',\n ",
+      "isError": false,
+      "resultBytes": 492
+    }
+  ],
+  "findings": []
+}

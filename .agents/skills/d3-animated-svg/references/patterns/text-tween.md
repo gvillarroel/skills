@@ -1,6 +1,6 @@
 # Text Tween
 
-- **Pattern ID:** `d3-pattern-text-tween`
+- **Pattern ID:** `d3-text-tween`
 - **Gallery source ID:** `text-tween`
 - **Family:** Motion
 - **Use when:** Counters and labels animate value changes directly.

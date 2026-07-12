@@ -1,6 +1,6 @@
 # QKV Projection Flow
 
-- **Pattern ID:** `d3-pattern-qkv-projection-flow`
+- **Pattern ID:** `d3-qkv-projection-flow`
 - **Gallery source ID:** `qkv-projection-flow`
 - **Family:** Transformer
 - **Use when:** Token embeddings split into query, key, and value matrices before attention.

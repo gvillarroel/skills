@@ -1,6 +1,6 @@
 # Brush Handles
 
-- **Pattern ID:** `d3-pattern-brush-handles`
+- **Pattern ID:** `d3-brush-handles`
 - **Gallery source ID:** `brush-handles`
 - **Family:** Interaction
 - **Use when:** Custom brush handles make a selected interval legible.

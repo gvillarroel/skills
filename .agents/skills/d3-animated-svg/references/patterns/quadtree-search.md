@@ -1,6 +1,6 @@
 # Quadtree Search
 
-- **Pattern ID:** `d3-pattern-quadtree-search`
+- **Pattern ID:** `d3-quadtree-search`
 - **Gallery source ID:** `quadtree-search`
 - **Family:** Indexing
 - **Use when:** Spatial index partitions reveal nearest lookup.

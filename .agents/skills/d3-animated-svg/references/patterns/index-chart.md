@@ -1,6 +1,6 @@
 # Index Chart
 
-- **Pattern ID:** `d3-pattern-index-chart`
+- **Pattern ID:** `d3-index-chart`
 - **Gallery source ID:** `index-chart`
 - **Family:** Temporal
 - **Use when:** Multiple series rebase to a common starting value.

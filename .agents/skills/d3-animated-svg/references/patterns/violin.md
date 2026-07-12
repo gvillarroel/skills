@@ -1,6 +1,6 @@
 # Violin Plot
 
-- **Pattern ID:** `d3-pattern-violin`
+- **Pattern ID:** `d3-violin`
 - **Gallery source ID:** `violin`
 - **Family:** Distribution
 - **Use when:** Mirrored density shape for each group.

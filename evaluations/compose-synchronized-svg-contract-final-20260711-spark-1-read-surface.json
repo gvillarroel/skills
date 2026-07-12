@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f53ef-b6ad-7a9a-89df-ddd52553d85f",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\compose-synchronized-svg-contract-final-20260711-spark-1\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 3
+  },
+  "providers": {
+    "openai-codex": 3
+  },
+  "usageTotals": {
+    "input": 18070,
+    "output": 2079,
+    "cacheRead": 1280,
+    "cacheWrite": 0,
+    "totalTokens": 21429
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 1,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2665
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2665
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 2665,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2665
+    },
+    {
+      "line": 36,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'mkdir -p outputs && cp skills/compose-synchronized-svg/assets/templates/composition-brief.json outputs/composition-brief.json && uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outp",
+      "isError": false,
+      "resultBytes": 117317
+    }
+  ],
+  "findings": []
+}

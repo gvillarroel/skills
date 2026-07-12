@@ -456,16 +456,16 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-bulkhead-isolation" data-pattern-id="d3-pattern-critical-bulkhead-isolation"
+  <svg id="bulkhead-isolation" data-pattern-id="d3-bulkhead-isolation"
     data-pattern-family="critical-bulkhead" data-client-count="{len(CLIENTS)}" data-cell-count="{len(CELLS)}"
     data-pool-slot-count="{sum(int(cell['total']) for cell in CELLS)}" data-flow-count="8" data-pulse-count="8"
     data-wall-count="2" data-health-line-count="{len(CELLS)}" data-health-point-count="{len(CELLS) * 10}"
     data-policy-step-count="{len(POLICY_STEPS)}" data-status-card-count="{len(STATUS_CARDS)}"
     data-saturated-cell="cell-c" data-shed-rate="1.1k/s" data-protected-cell-count="2"
     data-partition-key="tenant-id" data-concurrency-limit="6" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-bulkhead-isolation-title critical-bulkhead-isolation-desc">
-    <title id="critical-bulkhead-isolation-title">Critical bulkhead isolation</title>
-    <desc id="critical-bulkhead-isolation-desc">A deterministic bulkhead-isolation pattern shows clients routed by tenant key into isolated resource cells, a saturated noisy cell, protected healthy cells, overflow shedding, utilization thresholds, and policy steps.</desc>
+    aria-labelledby="bulkhead-isolation-title bulkhead-isolation-desc">
+    <title id="bulkhead-isolation-title">Critical bulkhead isolation</title>
+    <desc id="bulkhead-isolation-desc">A deterministic bulkhead-isolation pattern shows clients routed by tenant key into isolated resource cells, a saturated noisy cell, protected healthy cells, overflow shedding, utilization thresholds, and policy steps.</desc>
     <rect x="28" y="24" width="1024" height="590" rx="10" fill="{PALETTE["surface"]}" stroke="{PALETTE["gray200"]}" stroke-width="1.2"/>
     <text class="root-title" x="58" y="58">Critical bulkhead isolation</text>
     <text class="root-subtitle" x="58" y="80">Contain a noisy tenant inside one cell so critical traffic keeps its reserved pool.</text>

@@ -163,11 +163,11 @@ def build_html(timestamp: datetime) -> str:
 <main>
   <header>
     <div><h1>Solar Terminator</h1><p>A fixed UTC instant drives one internally consistent day/night state.</p></div>
-    <button id="replay" type="button" aria-controls="d3-pattern-solar-terminator">Replay animation</button>
+    <button id="replay" type="button" aria-controls="d3-solar-terminator">Replay animation</button>
   </header>
   <div class="frame">
-    <svg id="d3-pattern-solar-terminator" class="replaying" viewBox="0 0 720 460" role="img"
-      aria-labelledby="solar-title solar-desc" data-pattern-id="d3-pattern-solar-terminator"
+    <svg id="d3-solar-terminator" class="replaying" viewBox="0 0 720 460" role="img"
+      aria-labelledby="solar-title solar-desc" data-pattern-id="d3-solar-terminator"
       data-timestamp="{timestamp_iso}" data-astronomy-model="noaa-fractional-year"
       data-equation-of-time-minutes="{equation_of_time:.3f}"
       data-subsolar-longitude="{subsolar_longitude:.3f}"
@@ -214,7 +214,7 @@ def build_html(timestamp: datetime) -> str:
   </div>
 </main>
 <script>
-  const visual = document.querySelector("#d3-pattern-solar-terminator");
+  const visual = document.querySelector("#d3-solar-terminator");
   const replay = document.querySelector("#replay");
   function restart() {{
     visual.classList.remove("replaying");
@@ -241,7 +241,7 @@ def main() -> int:
     output = args.output.resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     artifact = build_html(args.timestamp)
-    required = ["<svg", "<title", "<desc", 'data-pattern-id="d3-pattern-solar-terminator"', "prefers-reduced-motion"]
+    required = ["<svg", "<title", "<desc", 'data-pattern-id="d3-solar-terminator"', "prefers-reduced-motion"]
     missing = [token for token in required if token not in artifact]
     if missing:
         raise SystemExit(f"Builder invariant failed; missing: {', '.join(missing)}")

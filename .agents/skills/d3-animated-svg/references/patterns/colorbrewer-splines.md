@@ -1,6 +1,6 @@
 # ColorBrewer Splines
 
-- **Pattern ID:** `d3-pattern-colorbrewer-splines`
+- **Pattern ID:** `d3-colorbrewer-splines`
 - **Gallery source ID:** `colorbrewer-splines`
 - **Family:** Color
 - **Use when:** Interpolated spline ribbons show sequential palette movement.

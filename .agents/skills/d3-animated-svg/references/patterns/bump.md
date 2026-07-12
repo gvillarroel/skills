@@ -1,6 +1,6 @@
 # Bump Chart
 
-- **Pattern ID:** `d3-pattern-bump`
+- **Pattern ID:** `d3-bump`
 - **Gallery source ID:** `bump`
 - **Family:** Temporal
 - **Use when:** Rank changes across time periods.

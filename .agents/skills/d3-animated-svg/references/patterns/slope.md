@@ -1,6 +1,6 @@
 # Slope Chart
 
-- **Pattern ID:** `d3-pattern-slope`
+- **Pattern ID:** `d3-slope`
 - **Gallery source ID:** `slope`
 - **Family:** Temporal
 - **Use when:** Before-after movement with labels.

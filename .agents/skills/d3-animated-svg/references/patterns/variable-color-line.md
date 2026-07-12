@@ -1,6 +1,6 @@
 # Variable Color Line
 
-- **Pattern ID:** `d3-pattern-variable-color-line`
+- **Pattern ID:** `d3-variable-color-line`
 - **Gallery source ID:** `variable-color-line`
 - **Family:** Encoding
 - **Use when:** Line segments change color as a thresholded value changes.

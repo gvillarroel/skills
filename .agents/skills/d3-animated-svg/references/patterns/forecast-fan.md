@@ -1,6 +1,6 @@
 # Forecast Fan
 
-- **Pattern ID:** `d3-pattern-forecast-fan`
+- **Pattern ID:** `d3-forecast-fan`
 - **Gallery source ID:** `forecast-fan`
 - **Family:** Uncertainty
 - **Use when:** Prediction intervals widen across future periods.

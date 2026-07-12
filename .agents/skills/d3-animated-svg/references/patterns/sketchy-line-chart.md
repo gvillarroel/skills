@@ -1,6 +1,6 @@
 # Sketchy Line Chart
 
-- **Pattern ID:** `d3-pattern-sketchy-line-chart`
+- **Pattern ID:** `d3-sketchy-line-chart`
 - **Gallery source ID:** `sketchy-line-chart`
 - **Family:** Sketchy
 - **Use when:** A connected scatter path is rendered as a seeded double-stroke hand sketch.

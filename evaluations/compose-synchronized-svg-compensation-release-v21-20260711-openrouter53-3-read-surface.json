@@ -1,0 +1,317 @@
+{
+  "passed": false,
+  "session": {
+    "version": 3,
+    "id": "019f5357-8bd2-765b-9e4a-862f58e76433",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\compose-synchronized-svg-compensation-release-v21-20260711-openrouter53-3\\workspace"
+  },
+  "models": {
+    "openai/gpt-5.3-codex": 15
+  },
+  "providers": {
+    "openrouter": 15
+  },
+  "usageTotals": {
+    "input": 47872,
+    "output": 26239,
+    "cacheRead": 349824,
+    "cacheWrite": 0,
+    "totalTokens": 423935
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 7,
+    "write": 3,
+    "bash": 5,
+    "edit": 2
+  },
+  "paths": [
+    {
+      "path": "composition-brief.json",
+      "calls": 6,
+      "resultBytes": 22759
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 5746
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 16224
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 20876
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 15160
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 9338
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 14127
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 5746
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 16224
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 20876
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 15160
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 9338
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 14127
+    },
+    {
+      "path": "composition-brief.json",
+      "calls": 1,
+      "resultBytes": 15155
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1
+    },
+    {
+      "path": "composition-brief.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 96626,
+  "calls": [
+    {
+      "line": 20,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5746
+    },
+    {
+      "line": 49,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 16224
+    },
+    {
+      "line": 83,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "policyPath": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 20876
+    },
+    {
+      "line": 84,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "policyPath": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 15160
+    },
+    {
+      "line": 85,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "policyPath": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9338
+    },
+    {
+      "line": 86,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "policyPath": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 14127
+    },
+    {
+      "line": 4546,
+      "tool": "write",
+      "path": "composition-brief.json",
+      "policyPath": "composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 99
+    },
+    {
+      "line": 4737,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief composition-brief.json --output composition-plan.json --force --json && uv run --script skills/compose-synchroniz",
+      "isError": true,
+      "resultBytes": 4456
+    },
+    {
+      "line": 9527,
+      "tool": "write",
+      "path": "composition-brief.json",
+      "policyPath": "composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 99
+    },
+    {
+      "line": 9717,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief composition-brief.json --output composition-plan.json --force --json && uv run --script skills/compose-synchroniz",
+      "isError": true,
+      "resultBytes": 5594
+    },
+    {
+      "line": 14363,
+      "tool": "write",
+      "path": "composition-brief.json",
+      "policyPath": "composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 99
+    },
+    {
+      "line": 14553,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief composition-brief.json --output composition-plan.json --force --json && uv run --script skills/compose-synchroniz",
+      "isError": true,
+      "resultBytes": 5163
+    },
+    {
+      "line": 14837,
+      "tool": "read",
+      "path": "composition-brief.json",
+      "policyPath": "composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 15155
+    },
+    {
+      "line": 15391,
+      "tool": "edit",
+      "path": "composition-brief.json",
+      "policyPath": "composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4173
+    },
+    {
+      "line": 15581,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief composition-brief.json --output composition-plan.json --force --json && uv run --script skills/compose-synchroniz",
+      "isError": true,
+      "resultBytes": 4915
+    },
+    {
+      "line": 16535,
+      "tool": "edit",
+      "path": "composition-brief.json",
+      "policyPath": "composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3134
+    },
+    {
+      "line": 16725,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'mkdir -p outputs && uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief composition-brief.json --output composition-plan.json --force --json && uv run --script skills/compose-synchroniz",
+      "isError": false,
+      "resultBytes": 3502
+    }
+  ],
+  "findings": [
+    {
+      "code": "tool-error",
+      "line": 4737,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 9717,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 14553,
+      "tool": "bash",
+      "path": null
+    },
+    {
+      "code": "tool-error",
+      "line": 15581,
+      "tool": "bash",
+      "path": null
+    }
+  ]
+}

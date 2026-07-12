@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Holiday 2026 — Bakeries, Cafes &amp; Desserts</title>
+  <style>
+    :root{--bg:#F6F3EE;--surface:#FFFCF8;--soft:#E9EFEB;--ink:#263238;--muted:#59666F;--line:#D7DDD8;--line-strong:#7A877F;--accent:#8A5A20;--accent-soft:#F3E3C8;}
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Arial,"Segoe UI",sans-serif;color:var(--ink)}
+    body{display:grid;place-items:center}
+    #stage{position:relative;width:1280px;height:720px;overflow:hidden;background:radial-gradient(circle at 84% 8%,color-mix(in srgb,var(--accent-soft) 72%,transparent),transparent 40%),linear-gradient(135deg,var(--bg),var(--soft))}
+    #stage:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(38,50,56,.035) 1px,transparent 1px) 0 0/80px 80px,linear-gradient(0deg,rgba(38,50,56,.035) 1px,transparent 1px) 0 0/80px 80px;opacity:.38}
+    #route{position:absolute;left:62px;right:62px;top:38px;height:20px;z-index:10}
+    #route .line{position:absolute;left:0;right:0;top:9px;height:2px;background:var(--line)}
+    #route .fill{position:absolute;left:0;top:7px;height:6px;background:var(--accent);width:var(--route,0%);transition:none}
+    #marker{position:absolute;left:var(--route,0%);top:0;width:20px;height:20px;border:4px solid var(--surface);background:var(--accent);transform:translateX(-10px) rotate(45deg);box-shadow:0 0 0 6px rgba(38,50,56,.16)}
+    #scene{position:absolute;inset:0;z-index:2}
+    #hero{position:absolute;object-fit:contain;background:var(--surface);border:2px solid var(--line);border-radius:0;box-shadow:0 14px 36px rgba(38,50,56,.17);transition:none}
+    #copy{position:absolute;z-index:4;background:rgba(255,252,248,.94);border-left:7px solid var(--accent);border-radius:0;padding:22px 26px;max-width:450px;box-shadow:0 12px 30px rgba(38,50,56,.16)}
+    #eyebrow{font-size:18px;font-weight:800;letter-spacing:2px;color:var(--accent);margin-bottom:12px}
+    #headline{font-size:44px;line-height:1.02;font-weight:850;letter-spacing:-1.4px;margin:0 0 14px}
+    #meta{font-size:23px;line-height:1.18;font-weight:700;color:var(--ink);margin-bottom:12px}
+    #detail{font-size:19px;line-height:1.3;color:var(--muted)}
+    #source{position:absolute;left:62px;bottom:24px;font-size:16px;color:var(--muted);z-index:6;background:rgba(255,252,248,.94);padding:8px 10px;border:1px solid var(--line-strong);border-radius:0}
+    #counter{position:absolute;right:62px;bottom:26px;font-size:17px;font-weight:800;z-index:6;color:var(--accent)}
+    .layout-0 #copy,.layout-7 #copy{right:48px;top:168px;width:340px}
+    .layout-1 #copy{right:48px;top:174px;width:400px}
+    .layout-2 #copy{left:48px;top:174px;width:400px}
+    .layout-3 #copy{right:52px;bottom:72px;width:440px}
+    .layout-4 #copy,.layout-5 #copy,.layout-6 #copy{left:64px;right:64px;top:76px;max-width:none;padding:12px 20px;background:rgba(255,252,248,.94);display:grid;grid-template-columns:180px 1fr 340px;gap:18px;align-items:center}
+    .layout-4 #eyebrow,.layout-5 #eyebrow,.layout-6 #eyebrow{margin:0}
+    .layout-4 #headline,.layout-5 #headline,.layout-6 #headline{font-size:32px;margin:0}
+    .layout-4 #meta,.layout-5 #meta,.layout-6 #meta{font-size:18px;margin:0;text-align:right}
+    .layout-4 #detail,.layout-5 #detail,.layout-6 #detail{display:none}
+    #pulse{position:absolute;width:140px;height:140px;border:3px solid var(--accent);border-radius:50%;opacity:0;pointer-events:none;z-index:5;filter:drop-shadow(0 4px 10px rgba(38,50,56,.12))}
+  </style>
+</head>
+<body>
+<main id="stage">
+  <div id="route"><div class="line"></div><div class="fill"></div><div id="marker"></div></div>
+  <section id="scene" data-composition-id="s01">
+    <img id="hero" alt="Source-bound family planning visual">
+    <div id="copy"><div id="eyebrow"></div><h1 id="headline"></h1><div id="meta"></div><div id="detail"></div></div>
+    <div id="source"></div><div id="counter"></div><div id="pulse"></div>
+  </section>
+</main>
+<script>
+  const VIDEO_ID="holiday2026-02-bakeries-cafes-desserts";
+  const DURATION=48;
+  const SCENES=[{"id": "s01", "beat": 1, "assetId": "a01-proximity-map", "assetPath": "../artifacts/images/a01-proximity-map.png", "assetOutput": "artifacts/images/a01-proximity-map.png", "sha256": "5eecaadabb8072cdf1439089fa0caa894b37d36fe52bc7d672cf83c2e40c9c5e", "objectId": "s01-focal", "composition": "diagonal proximity map", "layout": 0, "bounds": [0.04, 0.14, 0.7, 0.78], "eyebrow": "CHILD-PERMITTED RANKING", "title": "50 child-permitted bakeries options", "meta": "Every row allows children • pool 100", "detail": "Adult-only options are excluded before the preferences are applied.", "source": "www.vanillacafegelato.com", "sourceProof": false}, {"id": "s02", "beat": 2, "assetId": "a02-top-1-source", "assetPath": "../artifacts/images/a02-top-1-source.png", "assetOutput": "artifacts/images/a02-top-1-source.png", "sha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932", "objectId": "s02-focal", "composition": "asymmetric source proof", "layout": 1, "bounds": [0.045, 0.13, 0.62, 0.74], "eyebrow": "TOP PICK", "title": "Vanilla Café Gelato", "meta": "Marietta • 18.1 mi • 32 min", "detail": "Local Ice cream / frozen dessert stop in Marietta that adds variety to a family outing.", "source": "www.vanillacafegelato.com", "sourceProof": true}, {"id": "s03", "beat": 3, "assetId": "a03-top-2-source", "assetPath": "../artifacts/images/a03-top-2-source.png", "assetOutput": "artifacts/images/a03-top-2-source.png", "sha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5", "objectId": "s03-focal", "composition": "reverse editorial proof", "layout": 2, "bounds": [0.335, 0.13, 0.62, 0.74], "eyebrow": "SECOND PICK", "title": "Jeremia's Italian Ice", "meta": "Johns Creek • 2.8 mi • 6 min", "detail": "Local Ice cream / frozen dessert stop in Johns Creek that adds variety to a family outing.", "source": "www.openstreetmap.org", "sourceProof": true}, {"id": "s04", "beat": 4, "assetId": "a04-top-3-source", "assetPath": "../artifacts/images/a04-top-3-source.png", "assetOutput": "artifacts/images/a04-top-3-source.png", "sha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd", "objectId": "s04-focal", "composition": "full-bleed source proof", "layout": 3, "bounds": [0.05, 0.11, 0.9, 0.76], "eyebrow": "THIRD PICK", "title": "Scoops Sugar Hill", "meta": "Sugar Hill • 11.8 mi • 19 min", "detail": "Local Ice cream / frozen dessert stop in Sugar Hill that adds variety to a family outing.", "source": "www.scoopsicecream.com", "sourceProof": true}, {"id": "s05", "beat": 5, "assetId": "a05-top-five", "assetPath": "../artifacts/images/a05-top-five.png", "assetOutput": "artifacts/images/a05-top-five.png", "sha256": "17811030a5c5025da3783e538e3f57784abee9ff63d024c78717ec639d8ff050", "objectId": "s05-focal", "composition": "ranked comparison strip", "layout": 4, "bounds": [0.05, 0.15, 0.9, 0.72], "eyebrow": "TOP FIVE", "title": "Five strong starting points", "meta": "Scores 86.1 to 39.6", "detail": "The top five use the same strict hierarchy as the workbook.", "source": "www.vanillacafegelato.com", "sourceProof": false}, {"id": "s06", "beat": 6, "assetId": "a06-preference-bars", "assetPath": "../artifacts/images/a06-preference-bars.png", "assetOutput": "artifacts/images/a06-preference-bars.png", "sha256": "361b74f4319124bfe9e7f29e8d9a992b101b6e5632466d2997ba81f350d27b6a", "objectId": "s06-focal", "composition": "preference profile chart", "layout": 5, "bounds": [0.05, 0.15, 0.9, 0.72], "eyebrow": "YOUR PRIORITIES", "title": "Culture. World. Cost.", "meta": "Culture first • international second • affordability third", "detail": "Three aligned profiles make the family priorities visible.", "source": "www.vanillacafegelato.com", "sourceProof": false}, {"id": "s07", "beat": 7, "assetId": "a07-decision-board", "assetPath": "../artifacts/images/a07-decision-board.png", "assetOutput": "artifacts/images/a07-decision-board.png", "sha256": "ce082617ded2427b96febe8e1fee65a39570eaf54453aeece29cf5afcdf651b6", "objectId": "s07-focal", "composition": "decision matrix", "layout": 6, "bounds": [0.05, 0.14, 0.9, 0.74], "eyebrow": "PICK YOUR DAY", "title": "Four ways to choose", "meta": "Overall • most cultural • world experience • lowest cost", "detail": "Pick the leader that matches today's cultural goal and budget.", "source": "www.vanillacafegelato.com", "sourceProof": false}, {"id": "s08", "beat": 8, "assetId": "a08-planner-callback", "assetPath": "../artifacts/images/a08-planner-callback.png", "assetOutput": "artifacts/images/a08-planner-callback.png", "sha256": "777c689126d58087bc1584685605cdcf41ddf09f9ec9d16deaffbc3894738233", "objectId": "s08-focal", "composition": "planner callback map", "layout": 7, "bounds": [0.04, 0.14, 0.7, 0.78], "eyebrow": "OPEN THE EXCEL", "title": "Your full shortlist is ready", "meta": "All 50 rows • access conditions • directions • sources", "detail": "Use the category sheet and Family Planner before leaving.", "source": "www.vanillacafegelato.com", "sourceProof": false}];
+  const stage=document.getElementById('stage'),scene=document.getElementById('scene'),hero=document.getElementById('hero');
+  const copy=document.getElementById('copy'),eyebrow=document.getElementById('eyebrow'),headline=document.getElementById('headline'),meta=document.getElementById('meta'),detail=document.getElementById('detail'),source=document.getElementById('source'),counter=document.getElementById('counter'),pulse=document.getElementById('pulse');
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function renderConceptFrame(videoId=VIDEO_ID,seconds=0,options={}){
+    const duration=Number(options.duration||DURATION),t=clamp(Number(seconds)||0,0,duration-.001);
+    const index=clamp(Math.floor(t/6),0,SCENES.length-1),s=SCENES[index],local=(t-index*6)/6;
+    const [x,y,w,h]=s.bounds;
+    scene.className='layout-'+s.layout;scene.dataset.compositionId=s.id;
+    hero.src=s.assetPath;hero.alt=s.title;hero.dataset.assetId=s.assetId;hero.dataset.assetSrc=s.assetOutput;hero.dataset.assetSha256=s.sha256;hero.dataset.objectId=s.objectId;hero.dataset.role='focal';
+    hero.style.left=(x*1280)+'px';hero.style.top=(y*720)+'px';hero.style.width=(w*1280)+'px';hero.style.height=(h*720)+'px';hero.style.objectFit=s.objectFit;
+    const enter=clamp(local/.18,0,1),exit=clamp((1-local)/.15,0,1),visible=Math.min(enter,exit);
+    const direction=index%2===0?-1:1;hero.style.opacity=String(.68+.32*visible);hero.style.transform=`translateX(${direction*(1-enter)*70}px) scale(${.96+.04*Math.min(1,local/.35)})`;
+    eyebrow.textContent=s.eyebrow;headline.textContent=s.title;meta.textContent=s.meta;detail.textContent=s.detail;source.textContent='Source: '+s.source;counter.textContent=String(index+1).padStart(2,'0')+' / 08';
+    copy.style.opacity=String(clamp((local-.08)/.18,0,1)*exit);copy.style.transform=`translateY(${(1-clamp((local-.08)/.22,0,1))*24}px)`;
+    stage.style.setProperty('--route',((index+clamp(local,.05,.95))/7*100)+'%');
+    pulse.style.left=(x*1280+w*1280*.5-70)+'px';pulse.style.top=(y*720+h*720*.5-70)+'px';pulse.style.opacity=String(local>.48&&local<.72?.7:0);pulse.style.transform=`scale(${.75+local*.55})`;
+    stage.dataset.activeBeat=String(index+1);stage.dataset.visualPattern=s.composition;stage.dataset.visibleMechanismCount=String(index+1);
+    return{videoId,seconds:t,rendererMode:'production',activeBeat:index+1,sceneId:s.id,activeCompositionId:s.id,activeAssetIds:[s.assetId],sourceProofAssetIds:s.sourceProof?[s.assetId]:[],visualPattern:s.composition,visibleMechanismCount:index+1,hookVisible:index===0||t<=5,sourceProofVisible:s.sourceProof,transitionVisible:local<.15||local>.82,warningVisible:index===5,outputVisible:index>=4,finalCallbackVisible:index===7,beatLabel:s.eyebrow};
+  }
+  window.AWSOME_VIDEO_BEATS=SCENES.map((s,i)=>({id:'b'+String(i+1).padStart(2,'0'),sceneId:s.id,start:i*6,end:(i+1)*6}));
+  window.renderConceptFrame=renderConceptFrame;
+  const params=new URLSearchParams(location.search);if(params.has('t')||window.AWSOME_VIDEO_TEST_MODE){renderConceptFrame(VIDEO_ID,Number(params.get('t')||0));}else{let start=performance.now();requestAnimationFrame(function tick(now){renderConceptFrame(VIDEO_ID,((now-start)/1000)%DURATION);requestAnimationFrame(tick);});}
+</script>
+</body>
+</html>

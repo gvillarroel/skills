@@ -1,6 +1,6 @@
 # Edge Bundling
 
-- **Pattern ID:** `d3-pattern-edge-bundling`
+- **Pattern ID:** `d3-edge-bundling`
 - **Gallery source ID:** `edge-bundling`
 - **Family:** Network
 - **Use when:** Cross-links routed through hierarchy paths.

@@ -1,6 +1,6 @@
 # Circle Packing
 
-- **Pattern ID:** `d3-pattern-circle-pack`
+- **Pattern ID:** `d3-circle-pack`
 - **Gallery source ID:** `circle-pack`
 - **Family:** Hierarchy
 - **Use when:** Containment and relative area in packed circles.

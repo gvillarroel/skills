@@ -1,0 +1,320 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f5607-9f8f-71c8-b37c-a3bb00b8fe64",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\compose-synchronized-svg-cloudburst-release-v14-20260712-spark-1\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 18
+  },
+  "providers": {
+    "openai-codex": 18
+  },
+  "usageTotals": {
+    "input": 180793,
+    "output": 29819,
+    "cacheRead": 528768,
+    "cacheWrite": 0,
+    "totalTokens": 739380
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 11,
+    "write": 1,
+    "edit": 1,
+    "bash": 4
+  },
+  "paths": [
+    {
+      "path": "outputs/cloudburst/composition-brief.json",
+      "calls": 5,
+      "resultBytes": 35326
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 5595
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 28423
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 20453
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 25331
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 17757
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 9038
+    },
+    {
+      "path": "outputs/cloudburst/static-validation.json",
+      "calls": 1,
+      "resultBytes": 6223
+    },
+    {
+      "path": "outputs/cloudburst/browser-audit.json",
+      "calls": 1,
+      "resultBytes": 7526
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "outputs/cloudburst/composition-brief.json",
+      "calls": 3,
+      "resultBytes": 31507
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 5595
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 28423
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1,
+      "resultBytes": 20453
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1,
+      "resultBytes": 25331
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1,
+      "resultBytes": 17757
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1,
+      "resultBytes": 9038
+    },
+    {
+      "path": "outputs/cloudburst/static-validation.json",
+      "calls": 1,
+      "resultBytes": 6223
+    },
+    {
+      "path": "outputs/cloudburst/browser-audit.json",
+      "calls": 1,
+      "resultBytes": 7526
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "outputs/cloudburst/composition-brief.json",
+      "calls": 3
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cloudburst/static-validation.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/cloudburst/browser-audit.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 151853,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 5595
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/SKILL.md",
+      "policyPath": "skills/compose-synchronized-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 28423
+    },
+    {
+      "line": 40,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "policyPath": "skills/compose-synchronized-svg/references/asset-selection-and-composition.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 20453
+    },
+    {
+      "line": 51,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "policyPath": "skills/compose-synchronized-svg/references/semantic-state-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 25331
+    },
+    {
+      "line": 62,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "policyPath": "skills/compose-synchronized-svg/references/critique-and-validation.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 17757
+    },
+    {
+      "line": 75,
+      "tool": "read",
+      "path": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "policyPath": "skills/compose-synchronized-svg/assets/templates/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9038
+    },
+    {
+      "line": 88,
+      "tool": "write",
+      "path": "outputs/cloudburst/composition-brief.json",
+      "policyPath": "outputs/cloudburst/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 118
+    },
+    {
+      "line": 101,
+      "tool": "read",
+      "path": "outputs/cloudburst/composition-brief.json",
+      "policyPath": "outputs/cloudburst/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 14906
+    },
+    {
+      "line": 114,
+      "tool": "edit",
+      "path": "outputs/cloudburst/composition-brief.json",
+      "policyPath": "outputs/cloudburst/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 3701
+    },
+    {
+      "line": 127,
+      "tool": "read",
+      "path": "outputs/cloudburst/composition-brief.json",
+      "policyPath": "outputs/cloudburst/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7688
+    },
+    {
+      "line": 140,
+      "tool": "read",
+      "path": "outputs/cloudburst/composition-brief.json",
+      "policyPath": "outputs/cloudburst/composition-brief.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8913
+    },
+    {
+      "line": 156,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p .tmp\nTMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/compile_synchronized_svg_plan.py --brief outputs/cloudburst/composition-brief.json --output outputs/cloudburst/composition-plan.json --force --json",
+      "isError": false,
+      "resultBytes": 696
+    },
+    {
+      "line": 173,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/compose_synchronized_svg.py --spec outputs/cloudburst/composition-plan.json --output outputs/cloudburst/cloudburst.svg --report outputs/cloudburst/composition-repo",
+      "isError": false,
+      "resultBytes": 2690
+    },
+    {
+      "line": 189,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/validate_synchronized_svg.py outputs/cloudburst/cloudburst.svg --output outputs/cloudburst/static-validation.json --min-modules 8 --min-asset-types 8 --min-rendere",
+      "isError": false,
+      "resultBytes": 312
+    },
+    {
+      "line": 206,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "TMPDIR=\"$(pwd)/.tmp\" uv run --script skills/compose-synchronized-svg/scripts/audit_synchronized_svg.py outputs/cloudburst/cloudburst.svg --report outputs/cloudburst/browser-audit.json --screenshot outputs/cloudburst/overview.png --compact-r",
+      "isError": false,
+      "resultBytes": 700
+    },
+    {
+      "line": 219,
+      "tool": "read",
+      "path": "outputs/cloudburst/static-validation.json",
+      "policyPath": "outputs/cloudburst/static-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6223
+    },
+    {
+      "line": 232,
+      "tool": "read",
+      "path": "outputs/cloudburst/browser-audit.json",
+      "policyPath": "outputs/cloudburst/browser-audit.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7526
+    }
+  ],
+  "findings": []
+}

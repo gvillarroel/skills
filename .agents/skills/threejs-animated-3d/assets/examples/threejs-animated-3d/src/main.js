@@ -18,6 +18,16 @@ const TOKEN_HEX = {
 }
 
 const PRIMARY_TOKENS = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+const PATTERN_SLUGS = new Map([
+  ['scaled-attention-3d', 'scaled-dot-product-attention'],
+  ['multi-head-merge-3d', 'multi-head-attention-merge'],
+  ['moe-router-3d', 'moe-router-capacity'],
+  ['speculative-decode-3d', 'speculative-decoding'],
+  ['rope-rotation-3d', 'rope-rotation'],
+  ['logit-lens-3d', 'logit-lens-rank-bump'],
+  ['swiglu-ffn-3d', 'swiglu-feed-forward'],
+  ['paged-kv-cache-3d', 'paged-kv-cache'],
+])
 const COLOR_OBJECTS = Object.fromEntries(
   Object.entries(TOKEN_HEX).map(([name, value]) => [name, new THREE.Color(value)]),
 )
@@ -210,11 +220,14 @@ document.body.dataset.exampleCount = String(examples.length)
 
 for (const [index, example] of examples.entries()) {
   const card = document.createElement('article')
-  const patternId = `threejs-pattern-${example.id}`
+  const patternId = `threejs-${PATTERN_SLUGS.get(example.id) || example.id}`
+  const legacyPatternId = `threejs-pattern-${example.id}`
   card.className = 'example-card'
-  card.id = `example-${example.id}`
+  card.id = patternId
   card.dataset.exampleId = example.id
   card.dataset.patternId = patternId
+  card.dataset.legacyPatternId = legacyPatternId
+  card.dataset.legacyDomId = `example-${example.id}`
   card.dataset.sceneId = example.id
   card.dataset.replayCount = '0'
   card.dataset.dragCount = '0'
@@ -232,7 +245,7 @@ for (const [index, example] of examples.entries()) {
       <p class="example-copy">${example.description}</p>
     </div>
     <div class="scene-frame">
-      <canvas class="three-canvas" data-example-id="${example.id}" data-pattern-id="${patternId}" data-scene-id="${example.id}" aria-label="${example.title} canvas" tabindex="0"></canvas>
+      <canvas class="three-canvas" data-example-id="${example.id}" data-pattern-id="${patternId}" data-legacy-pattern-id="${legacyPatternId}" data-scene-id="${example.id}" aria-label="${example.title} canvas" tabindex="0"></canvas>
     </div>
   `
 
@@ -255,6 +268,19 @@ document.querySelector('#replay-all').addEventListener('click', () => {
 
 window.__threeGalleryScenes = instances
 window.__threeGalleryReady = false
+
+function redirectLegacyPatternHash() {
+  const hash = decodeURIComponent(window.location.hash.slice(1))
+  if (!hash) return
+  const card = [...document.querySelectorAll('.example-card')].find((item) =>
+    item.dataset.legacyPatternId === hash || item.dataset.legacyDomId === hash)
+  if (!card) return
+  history.replaceState(null, '', location.pathname + location.search + '#' + card.dataset.patternId)
+  card.scrollIntoView({ block: 'start' })
+}
+
+redirectLegacyPatternHash()
+window.addEventListener('hashchange', redirectLegacyPatternHash)
 
 requestAnimationFrame((now) => {
   for (const instance of instances) instance.render(now)

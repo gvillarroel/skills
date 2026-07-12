@@ -1,6 +1,6 @@
 # Bullet Chart
 
-- **Pattern ID:** `d3-pattern-bullet`
+- **Pattern ID:** `d3-bullet`
 - **Gallery source ID:** `bullet`
 - **Family:** Performance
 - **Use when:** Target, ranges, and current value in compact form.

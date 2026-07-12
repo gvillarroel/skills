@@ -94,18 +94,7 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
 }
 .card-header h2 { margin: 0 0 4px; font-size: 17px; line-height: 1.2; letter-spacing: 0; }
 .card-header p { margin: 0; color: var(--brand-gray-60); line-height: 1.35; font-size: 13px; }
-.card-header .pattern-id {
-  width: max-content;
-  max-width: 100%;
-  margin-top: 6px;
-  border: 1px solid var(--brand-gray-10);
-  border-radius: 6px;
-  background: var(--brand-background);
-  color: var(--brand-gray-60);
-  padding: 3px 6px;
-  font: 800 11px/1.2 Consolas, "Liberation Mono", "Courier New", monospace;
-  overflow-wrap: anywhere;
-}
+.card-header .pattern-id { margin-top: 6px; font: 800 11px/1.2 Consolas, "Liberation Mono", "Courier New", monospace; overflow-wrap: anywhere; }
 .chart-stage { padding: 8px 10px 12px; background: #ffffff; }
 .chart-stage svg { display: block; width: 100%; height: auto; overflow: visible; }
 .easv-svg .easv-mark {
@@ -170,15 +159,16 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
       </div>
     </header>
     <section class="gallery" aria-label="Animated ECharts SVG examples">
-      <article class="chart-card is-playing" id="example-line" data-example-id="line" data-chart-type="line" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-line" data-example-id="line" data-pattern-id="echarts-line" data-legacy-pattern-id="echarts-pattern-line" data-legacy-dom-id="example-line" data-chart-type="line" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Line</h2>
           <p>Trend continuity through stroke drawing.</p>
+          <p class="pattern-id">echarts-line</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Line animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-line" data-echarts-chart-type="line" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-line" data-echarts-chart-type="line" data-example-id="line" data-pattern-id="echarts-line" data-legacy-pattern-id="echarts-pattern-line" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M48 288.5L488 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr0-cls-0 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></path>
 <path d="M48 242.5L488 242.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr0-cls-0 easv-mark easv-draw" style="--easv-delay:68ms" data-easv-order="2" pathLength="1"></path>
@@ -268,15 +258,16 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-bar" data-example-id="bar" data-chart-type="bar" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-bar" data-example-id="bar" data-pattern-id="echarts-bar" data-legacy-pattern-id="echarts-pattern-bar" data-legacy-dom-id="example-bar" data-chart-type="bar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Bar</h2>
           <p>Category growth from a shared baseline.</p>
+          <p class="pattern-id">echarts-bar</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Bar animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-bar" data-echarts-chart-type="bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-bar" data-echarts-chart-type="bar" data-example-id="bar" data-pattern-id="echarts-bar" data-legacy-pattern-id="echarts-pattern-bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M48 288.5L488 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr1-cls-6 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M48 242.5L488 242.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr1-cls-6 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -319,15 +310,16 @@ fill:rgba(0,125,167,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-pie" data-example-id="pie" data-chart-type="pie" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-pie" data-example-id="pie" data-pattern-id="echarts-pie" data-legacy-pattern-id="echarts-pattern-pie" data-legacy-dom-id="example-pie" data-chart-type="pie" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Pie</h2>
           <p>Part-to-whole slices revealed around the center.</p>
+          <p class="pattern-id">echarts-pie</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Pie animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-pie" data-echarts-chart-type="pie" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-pie" data-echarts-chart-type="pie" data-example-id="pie" data-pattern-id="echarts-pie" data-legacy-pattern-id="echarts-pattern-pie" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <polyline points="361.2 102.8 374.4 95.5 404.4 95.5" fill="none" pointer-events="visible" stroke="#696969" stroke-width="1.4" class="zr2-cls-8 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></polyline>
 <polyline points="288.7 270.3 292.5 284.8 322.5 284.8" fill="none" pointer-events="visible" stroke="#696969" stroke-width="1.4" class="zr2-cls-8 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></polyline>
@@ -409,15 +401,16 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-scatter" data-example-id="scatter" data-chart-type="scatter" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-scatter" data-example-id="scatter" data-pattern-id="echarts-scatter" data-legacy-pattern-id="echarts-pattern-scatter" data-legacy-dom-id="example-scatter" data-chart-type="scatter" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Scatter</h2>
           <p>Opportunity points fade in without moving axes.</p>
+          <p class="pattern-id">echarts-scatter</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Scatter animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-scatter" data-echarts-chart-type="scatter" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-scatter" data-echarts-chart-type="scatter" data-example-id="scatter" data-pattern-id="echarts-scatter" data-legacy-pattern-id="echarts-pattern-scatter" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M54.7 288.5L490 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr3-cls-16 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></path>
 <path d="M54.7 249.5L490 249.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr3-cls-16 easv-mark easv-draw" style="--easv-delay:68ms" data-easv-order="2" pathLength="1"></path>
@@ -504,15 +497,16 @@ fill:rgba(105,141,39,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-radar" data-example-id="radar" data-chart-type="radar" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-radar" data-example-id="radar" data-pattern-id="echarts-radar" data-legacy-pattern-id="echarts-pattern-radar" data-legacy-dom-id="example-radar" data-chart-type="radar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Radar</h2>
           <p>Grid, benchmark, then current profile.</p>
+          <p class="pattern-id">echarts-radar</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Radar animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-radar" data-echarts-chart-type="radar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-radar" data-echarts-chart-type="radar" data-example-id="radar" data-pattern-id="echarts-radar" data-legacy-pattern-id="echarts-pattern-radar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M260 139.3L241.8 152.5L248.7 173.9L271.3 173.9L278.2 152.5L260 139.3L260 158.4ZM260 101L205.4 140.7L226.2 204.9L293.8 204.9L314.6 140.7L260 101L260 120.1L296.4 146.6L282.5 189.4L237.5 189.4L223.6 146.6L260 120.1ZM260 62.7L169 128.8L203.7 235.8L316.3 235.8L351 128.8L260 62.7L260 81.8L332.8 134.7L305 220.3L215 220.3L187.2 134.7L260 81.8Z" fill="#f7f7f7" class="zr4-cls-23 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M260 120.1L223.6 146.6L237.5 189.4L282.5 189.4L296.4 146.6L260 120.1L260 139.3L278.2 152.5L271.3 173.9L248.7 173.9L241.8 152.5L260 139.3ZM260 81.8L187.2 134.7L215 220.3L305 220.3L332.8 134.7L260 81.8L260 101L314.6 140.7L293.8 204.9L226.2 204.9L205.4 140.7L260 101Z" fill="#e7e7e7" class="zr4-cls-23 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -583,15 +577,16 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-map" data-example-id="map" data-chart-type="map" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-geo-map" data-example-id="map" data-pattern-id="echarts-geo-map" data-legacy-pattern-id="echarts-pattern-map" data-legacy-dom-id="example-map" data-chart-type="map" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Map</h2>
           <p>Regions fade in with boundaries kept readable.</p>
+          <p class="pattern-id">echarts-geo-map</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Map animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-map" data-echarts-chart-type="map" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-map" data-echarts-chart-type="map" data-example-id="map" data-pattern-id="echarts-geo-map" data-legacy-pattern-id="echarts-pattern-map" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M146.6 150.8L222.2 150.8L222.2 50L146.6 50L146.6 150.8Z" fill="rgb(71,67,121)" stroke="#cfcfcf" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr5-cls-30 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M146.6 302L222.2 302L222.2 150.8L146.6 150.8L146.6 302Z" fill="rgb(72,159,188)" stroke="#cfcfcf" stroke-width="2" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr5-cls-30 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -617,15 +612,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-tree" data-example-id="tree" data-chart-type="tree" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-tree" data-example-id="tree" data-pattern-id="echarts-tree" data-legacy-pattern-id="echarts-pattern-tree" data-legacy-dom-id="example-tree" data-chart-type="tree" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Tree</h2>
           <p>Root, branches, then leaves and labels.</p>
+          <p class="pattern-id">echarts-tree</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Tree animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-tree" data-echarts-chart-type="tree" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-tree" data-echarts-chart-type="tree" data-example-id="tree" data-pattern-id="echarts-tree" data-legacy-pattern-id="echarts-pattern-tree" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M0 135C93 135 93 45 186 45" transform="translate(58 42)" fill="none" pointer-events="visible" stroke="#878787" stroke-width="2" class="zr6-cls-32 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M186 45C279 45 279 30 372 30" transform="translate(58 42)" fill="none" pointer-events="visible" stroke="#878787" stroke-width="2" class="zr6-cls-32 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -675,15 +671,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-treemap" data-example-id="treemap" data-chart-type="treemap" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-treemap" data-example-id="treemap" data-pattern-id="echarts-treemap" data-legacy-pattern-id="echarts-pattern-treemap" data-legacy-dom-id="example-treemap" data-chart-type="treemap" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Treemap</h2>
           <p>Parent areas settle before labels.</p>
+          <p class="pattern-id">echarts-treemap</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Treemap animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-treemap" data-echarts-chart-type="treemap" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-treemap" data-echarts-chart-type="treemap" data-example-id="treemap" data-pattern-id="echarts-treemap" data-legacy-pattern-id="echarts-pattern-treemap" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M0 0l496 0l0 270l-496 0Z" transform="translate(12 48)" fill="#e7e7e7" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr7-cls-35 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M0 0l354.5 0l0 130l-354.5 0Z" transform="translate(14 72)" fill="#cfcfcf" ecmeta_series_index="0" ecmeta_data_index="4" ecmeta_ssr_type="chart" class="zr7-cls-36 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -750,15 +747,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-graph" data-example-id="graph" data-chart-type="graph" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-network-graph" data-example-id="graph" data-pattern-id="echarts-network-graph" data-legacy-pattern-id="echarts-pattern-graph" data-legacy-dom-id="example-graph" data-chart-type="graph" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Graph</h2>
           <p>Nodes appear before topology links.</p>
+          <p class="pattern-id">echarts-network-graph</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Graph animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-graph" data-echarts-chart-type="graph" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-graph" data-echarts-chart-type="graph" data-example-id="graph" data-pattern-id="echarts-network-graph" data-legacy-pattern-id="echarts-pattern-graph" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M372.8 246.5Q277.9 212.1 252.5 309.8" fill="none" pointer-events="visible" stroke="#b7b7b7" stroke-width="2.5714285714285716" stroke-opacity="0.72" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr8-cls-43 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></path>
 <path d="M372.8 246.5Q259 199.5 141.3 235.8" fill="none" pointer-events="visible" stroke="#b7b7b7" stroke-width="1.8571428571428572" stroke-opacity="0.72" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr8-cls-43 easv-mark easv-draw" style="--easv-delay:68ms" data-easv-order="2" pathLength="1"></path>
@@ -827,15 +825,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-chord" data-example-id="chord" data-chart-type="chord" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-chord" data-example-id="chord" data-pattern-id="echarts-chord" data-legacy-pattern-id="echarts-pattern-chord" data-legacy-dom-id="example-chord" data-chart-type="chord" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Chord</h2>
           <p>Outer arcs orient before ribbons fade in.</p>
+          <p class="pattern-id">echarts-chord</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Chord animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-chord" data-echarts-chart-type="chord" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-chord" data-echarts-chart-type="chord" data-example-id="chord" data-pattern-id="echarts-chord" data-legacy-pattern-id="echarts-pattern-chord" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M260 69.3A102.3 102.3 0 0 1 318.9 88C277.7 146.5 290.6 169 361.9 162.8A102.3 102.3 0 0 1 348.4 223.1C286.5 187.1 260 140.9 260 69.3Z" fill="#9e1b32" fill-opacity="0.42" stroke="source" stroke-width="0" stroke-opacity="0.42" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr9-cls-52 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M318.9 88A102.3 102.3 0 0 1 349.1 121.4C286.7 156.5 271.3 200.1 297.6 266.7A102.3 102.3 0 0 1 253.1 273.7C257.9 202.2 277.7 146.5 318.9 88Z" fill="#9e1b32" fill-opacity="0.42" stroke="source" stroke-width="0" stroke-opacity="0.42" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr9-cls-52 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -891,15 +890,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-gauge" data-example-id="gauge" data-chart-type="gauge" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-gauge" data-example-id="gauge" data-pattern-id="echarts-gauge" data-legacy-pattern-id="echarts-pattern-gauge" data-legacy-dom-id="example-gauge" data-chart-type="gauge" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Gauge</h2>
           <p>Arc and value settle into one ratio.</p>
+          <p class="pattern-id">echarts-gauge</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Gauge animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-gauge" data-echarts-chart-type="gauge" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-gauge" data-echarts-chart-type="gauge" data-example-id="gauge" data-pattern-id="echarts-gauge" data-legacy-pattern-id="echarts-pattern-gauge" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M383.5 157.2A123.8 123.8 0 0 1 367.2 226.9L351.6 217.9A105.8 105.8 0 0 0 365.5 158.4Z" fill="#45842a" class="zr10-cls-59 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M358.6 90.2A123.8 123.8 0 0 1 383.5 157.2L365.5 158.4A105.8 105.8 0 0 0 344.2 101.1Z" fill="#f1c319" class="zr10-cls-59 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -1017,15 +1017,16 @@ fill:rgba(75,145,46,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-funnel" data-example-id="funnel" data-chart-type="funnel" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-funnel" data-example-id="funnel" data-pattern-id="echarts-funnel" data-legacy-pattern-id="echarts-pattern-funnel" data-legacy-dom-id="example-funnel" data-chart-type="funnel" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Funnel</h2>
           <p>Stages reveal from top to bottom.</p>
+          <p class="pattern-id">echarts-funnel</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Funnel animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-funnel" data-echarts-chart-type="funnel" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-funnel" data-echarts-chart-type="funnel" data-example-id="funnel" data-pattern-id="echarts-funnel" data-legacy-pattern-id="echarts-pattern-funnel" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <polyline points="260 83 260 83" fill="none" pointer-events="visible" stroke="#9e1b32" class="zr11-cls-63 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></polyline>
 <polyline points="260 151 260 151" fill="none" pointer-events="visible" stroke="#e77204" class="zr11-cls-63 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></polyline>
@@ -1070,15 +1071,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-parallel" data-example-id="parallel" data-chart-type="parallel" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-parallel-coordinates" data-example-id="parallel" data-pattern-id="echarts-parallel-coordinates" data-legacy-pattern-id="echarts-pattern-parallel" data-legacy-dom-id="example-parallel" data-chart-type="parallel" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Parallel</h2>
           <p>Axes first, then multidimensional polylines.</p>
+          <p class="pattern-id">echarts-parallel-coordinates</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Parallel animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-parallel" data-echarts-chart-type="parallel" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-parallel" data-echarts-chart-type="parallel" data-example-id="parallel" data-pattern-id="echarts-parallel-coordinates" data-legacy-pattern-id="echarts-pattern-parallel" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <g clip-path="url(#zr12-c0)">
 <polyline points="56 193 162 223.2 268 167 374 236.2 480 201.6" fill="none" pointer-events="visible" stroke="#9e1b32" stroke-width="2.7" stroke-opacity="0.74" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr12-cls-70 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></polyline>
@@ -1180,15 +1182,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-sankey" data-example-id="sankey" data-chart-type="sankey" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-sankey" data-example-id="sankey" data-pattern-id="echarts-sankey" data-legacy-pattern-id="echarts-pattern-sankey" data-legacy-dom-id="example-sankey" data-chart-type="sankey" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Sankey</h2>
           <p>Columns establish endpoints before links.</p>
+          <p class="pattern-id">echarts-sankey</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Sankey animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-sankey" data-echarts-chart-type="sankey" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-sankey" data-echarts-chart-type="sankey" data-example-id="sankey" data-pattern-id="echarts-sankey" data-legacy-pattern-id="echarts-pattern-sankey" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M102.4 0C132.4 0 134.8 18.7 164.8 18.7L164.8 131.8C134.8 131.8 132.4 113.1 102.4 113.1Z" transform="translate(18 50)" fill="#ffccd5" fill-opacity="0.62" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr13-cls-72 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M102.4 113.1C211.5 113.1 220.5 37.5 329.6 37.5L329.6 119.2C220.5 119.2 211.5 194.9 102.4 194.9Z" transform="translate(18 50)" fill="#ffe5cc" fill-opacity="0.62" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr13-cls-73 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -1278,15 +1281,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-boxplot" data-example-id="boxplot" data-chart-type="boxplot" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-boxplot" data-example-id="boxplot" data-pattern-id="echarts-boxplot" data-legacy-pattern-id="echarts-pattern-boxplot" data-legacy-dom-id="example-boxplot" data-chart-type="boxplot" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Boxplot</h2>
           <p>Distribution summaries build by cohort.</p>
+          <p class="pattern-id">echarts-boxplot</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Boxplot animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-boxplot" data-echarts-chart-type="boxplot" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-boxplot" data-echarts-chart-type="boxplot" data-example-id="boxplot" data-pattern-id="echarts-boxplot" data-legacy-pattern-id="echarts-pattern-boxplot" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M49.1 288.5L488 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr14-cls-86 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M49.1 249.5L488 249.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr14-cls-86 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -1335,15 +1339,16 @@ fill:rgba(254,125,4,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-candlestick" data-example-id="candlestick" data-chart-type="candlestick" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-candlestick" data-example-id="candlestick" data-pattern-id="echarts-candlestick" data-legacy-pattern-id="echarts-pattern-candlestick" data-legacy-dom-id="example-candlestick" data-chart-type="candlestick" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Candlestick</h2>
           <p>OHLC movement reads left to right.</p>
+          <p class="pattern-id">echarts-candlestick</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Candlestick animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-candlestick" data-echarts-chart-type="candlestick" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-candlestick" data-echarts-chart-type="candlestick" data-example-id="candlestick" data-pattern-id="echarts-candlestick" data-legacy-pattern-id="echarts-pattern-candlestick" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M48 288.5L488 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr15-cls-89 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M48 249.5L488 249.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr15-cls-89 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -1395,15 +1400,16 @@ stroke-width:2;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-effect-scatter" data-example-id="effect-scatter" data-chart-type="effectScatter" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-effect-scatter" data-example-id="effect-scatter" data-pattern-id="echarts-effect-scatter" data-legacy-pattern-id="echarts-pattern-effect-scatter" data-legacy-dom-id="example-effect-scatter" data-chart-type="effectScatter" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Effect Scatter</h2>
           <p>Priority points appear before pulse rings.</p>
+          <p class="pattern-id">echarts-effect-scatter</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Effect Scatter animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-effect-scatter" data-echarts-chart-type="effectScatter" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-effect-scatter" data-echarts-chart-type="effectScatter" data-example-id="effect-scatter" data-pattern-id="echarts-effect-scatter" data-legacy-pattern-id="echarts-pattern-effect-scatter" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M54.7 288.5L490 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr16-cls-92 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></path>
 <path d="M54.7 249.5L490 249.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr16-cls-92 easv-mark easv-draw" style="--easv-delay:68ms" data-easv-order="2" pathLength="1"></path>
@@ -1678,15 +1684,16 @@ opacity:0;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-lines" data-example-id="lines" data-chart-type="lines" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-route-lines" data-example-id="lines" data-pattern-id="echarts-route-lines" data-legacy-pattern-id="echarts-pattern-lines" data-legacy-dom-id="example-lines" data-chart-type="lines" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Lines</h2>
           <p>Routes draw before endpoints.</p>
+          <p class="pattern-id">echarts-route-lines</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Lines animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-lines" data-echarts-chart-type="lines" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-lines" data-echarts-chart-type="lines" data-example-id="lines" data-pattern-id="echarts-route-lines" data-legacy-pattern-id="echarts-pattern-lines" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M44 292.5L492 292.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr17-cls-109 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></path>
 <path d="M44 239.5L492 239.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr17-cls-109 easv-mark easv-draw" style="--easv-delay:68ms" data-easv-order="2" pathLength="1"></path>
@@ -1770,15 +1777,16 @@ fill:rgba(173,29,55,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-heatmap" data-example-id="heatmap" data-chart-type="heatmap" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-heatmap" data-example-id="heatmap" data-pattern-id="echarts-heatmap" data-legacy-pattern-id="echarts-pattern-heatmap" data-legacy-dom-id="example-heatmap" data-chart-type="heatmap" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Heatmap</h2>
           <p>Cells reveal as a readable grid.</p>
+          <p class="pattern-id">echarts-heatmap</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Heatmap animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-heatmap" data-echarts-chart-type="heatmap" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-heatmap" data-echarts-chart-type="heatmap" data-example-id="heatmap" data-pattern-id="echarts-heatmap" data-legacy-pattern-id="echarts-pattern-heatmap" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M52 258l440 0l0 -50l-440 0Z" fill="rgb(234,237,245)" fill-opacity="0.5" class="zr18-cls-113 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M52 208l440 0l0 -50l-440 0Z" fill="rgb(255,255,255)" fill-opacity="0" class="zr18-cls-113 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -1900,15 +1908,16 @@ fill:rgba(173,29,55,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-pictorial-bar" data-example-id="pictorial-bar" data-chart-type="pictorialBar" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-pictorial-bar" data-example-id="pictorial-bar" data-pattern-id="echarts-pictorial-bar" data-legacy-pattern-id="echarts-pattern-pictorial-bar" data-legacy-dom-id="example-pictorial-bar" data-chart-type="pictorialBar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Pictorial Bar</h2>
           <p>Repeated symbols accumulate upward.</p>
+          <p class="pattern-id">echarts-pictorial-bar</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Pictorial Bar animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-pictorial-bar" data-echarts-chart-type="pictorialBar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-pictorial-bar" data-echarts-chart-type="pictorialBar" data-example-id="pictorial-bar" data-pattern-id="echarts-pictorial-bar" data-legacy-pattern-id="echarts-pattern-pictorial-bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M48 288.5L488 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr19-cls-126 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M48 237.5L488 237.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr19-cls-126 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -1985,15 +1994,16 @@ fill:rgba(75,145,46,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-theme-river" data-example-id="theme-river" data-chart-type="themeRiver" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-theme-river" data-example-id="theme-river" data-pattern-id="echarts-theme-river" data-legacy-pattern-id="echarts-pattern-theme-river" data-legacy-dom-id="example-theme-river" data-chart-type="themeRiver" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Theme River</h2>
           <p>Streams settle layer by layer.</p>
+          <p class="pattern-id">echarts-theme-river</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Theme River animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-theme-river" data-echarts-chart-type="themeRiver" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-theme-river" data-echarts-chart-type="themeRiver" data-example-id="theme-river" data-pattern-id="echarts-theme-river" data-legacy-pattern-id="echarts-pattern-theme-river" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M52.5 84L52.5 294M143.5 84L143.5 294M225.5 84L225.5 294M316.5 84L316.5 294M405.5 84L405.5 294M496.5 84L496.5 294" fill="#000" fill-opacity="0.2" stroke="#dbdee4" stroke-opacity="0.2" stroke-dasharray="4,2" class="zr20-cls-128 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M52 294.5L496 294.5" fill="none" pointer-events="visible" stroke="#b7b7b7" stroke-linecap="round" class="zr20-cls-128 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -2050,15 +2060,16 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-sunburst" data-example-id="sunburst" data-chart-type="sunburst" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-sunburst" data-example-id="sunburst" data-pattern-id="echarts-sunburst" data-legacy-pattern-id="echarts-pattern-sunburst" data-legacy-dom-id="example-sunburst" data-chart-type="sunburst" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Sunburst</h2>
           <p>Hierarchy expands from inner to outer rings.</p>
+          <p class="pattern-id">echarts-sunburst</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Sunburst animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-sunburst" data-echarts-chart-type="sunburst" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-sunburst" data-echarts-chart-type="sunburst" data-example-id="sunburst" data-pattern-id="echarts-sunburst" data-legacy-pattern-id="echarts-pattern-sunburst" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M260 108.9A69.3 69.3 0 0 1 320 212.8L285.7 193.1A29.7 29.7 0 0 0 260 148.5Z" fill="#e77204" stroke="#cfcfcf" stroke-width="2" stroke-linejoin="bevel" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr21-cls-133 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M260 49.5A128.7 128.7 0 0 1 371.5 113.8L320 143.6A69.3 69.3 0 0 0 260 108.9Z" fill="#f1c319" stroke="#e7e7e7" stroke-width="2" stroke-linejoin="bevel" ecmeta_series_index="0" ecmeta_data_index="2" ecmeta_ssr_type="chart" class="zr21-cls-134 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -2110,15 +2121,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-custom" data-example-id="custom" data-chart-type="custom" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-custom-ranges" data-example-id="custom" data-pattern-id="echarts-custom-ranges" data-legacy-pattern-id="echarts-pattern-custom" data-legacy-dom-id="example-custom" data-chart-type="custom" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Custom</h2>
           <p>RenderItem ranges extend from their start.</p>
+          <p class="pattern-id">echarts-custom-ranges</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Custom animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-custom" data-echarts-chart-type="custom" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-custom" data-echarts-chart-type="custom" data-example-id="custom" data-pattern-id="echarts-custom-ranges" data-legacy-pattern-id="echarts-pattern-custom" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M78.5 58L78.5 288" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr22-cls-139 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M153.5 58L153.5 288" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr22-cls-139 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -2171,15 +2183,16 @@ fill:rgba(75,145,46,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-stacked-area-line" data-example-id="stacked-area-line" data-chart-type="stacked-area-line" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-stacked-area" data-example-id="stacked-area-line" data-pattern-id="echarts-stacked-area" data-legacy-pattern-id="echarts-pattern-stacked-area-line" data-legacy-dom-id="example-stacked-area-line" data-chart-type="stacked-area-line" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Stacked Area Line</h2>
           <p>Multiple area layers draw while axes stay fixed.</p>
+          <p class="pattern-id">echarts-stacked-area</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Stacked Area Line animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-line" data-echarts-chart-type="line" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-line" data-echarts-chart-type="line" data-example-id="stacked-area-line" data-pattern-id="echarts-stacked-area" data-legacy-pattern-id="echarts-pattern-stacked-area-line" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M48 288.5L488 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr23-cls-144 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></path>
 <path d="M48 242.5L488 242.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr23-cls-144 easv-mark easv-draw" style="--easv-delay:68ms" data-easv-order="2" pathLength="1"></path>
@@ -2299,15 +2312,16 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-waterfall-bar" data-example-id="waterfall-bar" data-chart-type="waterfall-bar" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-waterfall" data-example-id="waterfall-bar" data-pattern-id="echarts-waterfall" data-legacy-pattern-id="echarts-pattern-waterfall-bar" data-legacy-dom-id="example-waterfall-bar" data-chart-type="waterfall-bar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Waterfall Bar</h2>
           <p>Transparent offsets preserve the rendered delta geometry.</p>
+          <p class="pattern-id">echarts-waterfall</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Waterfall Bar animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-bar" data-echarts-chart-type="bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-bar" data-echarts-chart-type="bar" data-example-id="waterfall-bar" data-pattern-id="echarts-waterfall" data-legacy-pattern-id="echarts-pattern-waterfall-bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M48 288.5L488 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr24-cls-152 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M48 252.5L488 252.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr24-cls-152 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -2374,15 +2388,16 @@ fill:rgba(173,29,55,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-diverging-bar" data-example-id="diverging-bar" data-chart-type="diverging-bar" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-diverging-bar" data-example-id="diverging-bar" data-pattern-id="echarts-diverging-bar" data-legacy-pattern-id="echarts-pattern-diverging-bar" data-legacy-dom-id="example-diverging-bar" data-chart-type="diverging-bar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Diverging Bar</h2>
           <p>Positive and negative bars grow from the same zero line.</p>
+          <p class="pattern-id">echarts-diverging-bar</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Diverging Bar animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-bar" data-echarts-chart-type="bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-bar" data-echarts-chart-type="bar" data-example-id="diverging-bar" data-pattern-id="echarts-diverging-bar" data-legacy-pattern-id="echarts-pattern-diverging-bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M86.5 58L86.5 288" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr25-cls-156 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M165.5 58L165.5 288" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr25-cls-156 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -2434,15 +2449,16 @@ fill:rgba(0,125,167,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-nested-donut" data-example-id="nested-donut" data-chart-type="nested-donut" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-nested-donut" data-example-id="nested-donut" data-pattern-id="echarts-nested-donut" data-legacy-pattern-id="echarts-pattern-nested-donut" data-legacy-dom-id="example-nested-donut" data-chart-type="nested-donut" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Nested Donut</h2>
           <p>Inner and outer rings reveal related part-to-whole views.</p>
+          <p class="pattern-id">echarts-nested-donut</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Nested Donut animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-pie" data-echarts-chart-type="pie" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-pie" data-echarts-chart-type="pie" data-example-id="nested-donut" data-pattern-id="echarts-nested-donut" data-legacy-pattern-id="echarts-pattern-nested-donut" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <polyline points="364.1 101.2 377.2 93.9 407.2 93.9" fill="none" pointer-events="visible" stroke="#696969" stroke-width="1.4" class="zr26-cls-159 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></polyline>
 <polyline points="289.5 273.5 293.3 288 323.3 288" fill="none" pointer-events="visible" stroke="#696969" stroke-width="1.4" class="zr26-cls-159 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></polyline>
@@ -2522,15 +2538,16 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-bubble-quadrant" data-example-id="bubble-quadrant" data-chart-type="bubble-quadrant" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-bubble-quadrant" data-example-id="bubble-quadrant" data-pattern-id="echarts-bubble-quadrant" data-legacy-pattern-id="echarts-pattern-bubble-quadrant" data-legacy-dom-id="example-bubble-quadrant" data-chart-type="bubble-quadrant" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Bubble Quadrant</h2>
           <p>Bubble symbols pop over stable quadrant guides.</p>
+          <p class="pattern-id">echarts-bubble-quadrant</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Bubble Quadrant animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-scatter" data-echarts-chart-type="scatter" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-scatter" data-echarts-chart-type="scatter" data-example-id="bubble-quadrant" data-pattern-id="echarts-bubble-quadrant" data-legacy-pattern-id="echarts-pattern-bubble-quadrant" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M54.7 288.5L490 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr27-cls-167 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></path>
 <path d="M54.7 249.5L490 249.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr27-cls-167 easv-mark easv-draw" style="--easv-delay:68ms" data-easv-order="2" pathLength="1"></path>
@@ -2621,15 +2638,16 @@ fill:rgba(25,132,126,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-segmented-gauge" data-example-id="segmented-gauge" data-chart-type="segmented-gauge" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-segmented-gauge" data-example-id="segmented-gauge" data-pattern-id="echarts-segmented-gauge" data-legacy-pattern-id="echarts-pattern-segmented-gauge" data-legacy-dom-id="example-segmented-gauge" data-chart-type="segmented-gauge" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Segmented Gauge</h2>
           <p>Threshold arcs settle before the center KPI.</p>
+          <p class="pattern-id">echarts-segmented-gauge</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Segmented Gauge animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-gauge" data-echarts-chart-type="gauge" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-gauge" data-echarts-chart-type="gauge" data-example-id="segmented-gauge" data-pattern-id="echarts-segmented-gauge" data-legacy-pattern-id="echarts-pattern-segmented-gauge" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M381.6 188.2A123.8 123.8 0 0 1 367.2 226.9L353.3 218.9A107.8 107.8 0 0 0 365.8 185.2Z" fill="#45842a" class="zr28-cls-174 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M377.7 126.8A123.8 123.8 0 0 1 381.6 188.2L365.8 185.2A107.8 107.8 0 0 0 362.5 131.7Z" fill="#f1c319" class="zr28-cls-174 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -2747,15 +2765,16 @@ fill:rgba(75,145,46,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-hub-graph" data-example-id="hub-graph" data-chart-type="hub-graph" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-hub-graph" data-example-id="hub-graph" data-pattern-id="echarts-hub-graph" data-legacy-pattern-id="echarts-pattern-hub-graph" data-legacy-dom-id="example-hub-graph" data-chart-type="hub-graph" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Hub Graph</h2>
           <p>Fixed node coordinates keep topology replay deterministic.</p>
+          <p class="pattern-id">echarts-hub-graph</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Hub Graph animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-graph" data-echarts-chart-type="graph" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-graph" data-echarts-chart-type="graph" data-example-id="hub-graph" data-pattern-id="echarts-hub-graph" data-legacy-pattern-id="echarts-pattern-hub-graph" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M260 156L52 72" fill="none" pointer-events="visible" stroke="#b7b7b7" stroke-width="2.2857142857142856" stroke-opacity="0.72" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr29-cls-178 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></path>
 <path d="M260 156L468 72" fill="none" pointer-events="visible" stroke="#b7b7b7" stroke-width="3.142857142857143" stroke-opacity="0.72" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr29-cls-178 easv-mark easv-draw" style="--easv-delay:68ms" data-easv-order="2" pathLength="1"></path>
@@ -2811,15 +2830,16 @@ fill:rgba(255,255,255,0.9);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-conversion-sankey" data-example-id="conversion-sankey" data-chart-type="conversion-sankey" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-conversion-sankey" data-example-id="conversion-sankey" data-pattern-id="echarts-conversion-sankey" data-legacy-pattern-id="echarts-pattern-conversion-sankey" data-legacy-dom-id="example-conversion-sankey" data-chart-type="conversion-sankey" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Conversion Sankey</h2>
           <p>More columns test link fading while preserving gradients.</p>
+          <p class="pattern-id">echarts-conversion-sankey</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Conversion Sankey animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-sankey" data-echarts-chart-type="sankey" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-sankey" data-echarts-chart-type="sankey" data-example-id="conversion-sankey" data-pattern-id="echarts-conversion-sankey" data-legacy-pattern-id="echarts-pattern-conversion-sankey" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M18 0C82 0 82 15.9 146 15.9L146 117.1C82 117.1 82 101.1 18 101.1Z" transform="translate(12 48)" fill="#ffccd5" fill-opacity="0.62" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr30-cls-185 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M18 115.1C82 115.1 82 117.1 146 117.1L146 195.7C82 195.7 82 193.8 18 193.8Z" transform="translate(12 48)" fill="#ffe5cc" fill-opacity="0.62" ecmeta_series_index="0" ecmeta_data_index="1" ecmeta_ssr_type="chart" class="zr30-cls-186 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -2913,15 +2933,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-calendar-heatmap" data-example-id="calendar-heatmap" data-chart-type="calendar-heatmap" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-calendar-heatmap" data-example-id="calendar-heatmap" data-pattern-id="echarts-calendar-heatmap" data-legacy-pattern-id="echarts-pattern-calendar-heatmap" data-legacy-dom-id="example-calendar-heatmap" data-chart-type="calendar-heatmap" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Calendar Heatmap</h2>
           <p>Date cells fade in while calendar labels stay readable.</p>
+          <p class="pattern-id">echarts-calendar-heatmap</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Calendar Heatmap animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-heatmap" data-echarts-chart-type="heatmap" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-heatmap" data-echarts-chart-type="heatmap" data-example-id="calendar-heatmap" data-pattern-id="echarts-calendar-heatmap" data-legacy-pattern-id="echarts-pattern-calendar-heatmap" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M44 170l90.4 0l0 24l-90.4 0Z" fill="#fff" stroke="#e7e7e7" class="zr31-cls-199 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M44 194l90.4 0l0 24l-90.4 0Z" fill="#fff" stroke="#e7e7e7" class="zr31-cls-199 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -3364,15 +3385,16 @@ fill:[object Object];
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-polar-bar" data-example-id="polar-bar" data-chart-type="polar-bar" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-polar-bar" data-example-id="polar-bar" data-pattern-id="echarts-polar-bar" data-legacy-pattern-id="echarts-pattern-polar-bar" data-legacy-dom-id="example-polar-bar" data-chart-type="polar-bar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Polar Bar</h2>
           <p>Radial columns grow from the polar baseline.</p>
+          <p class="pattern-id">echarts-polar-bar</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Polar Bar animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-bar" data-echarts-chart-type="bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-bar" data-echarts-chart-type="bar" data-example-id="polar-bar" data-pattern-id="echarts-polar-bar" data-legacy-pattern-id="echarts-pattern-polar-bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M289.7 184.8A29.7 29.7 0 1 1 289.6 181.8A29.7 29.7 0 0 1 289.7 184.8M302.4 184.8A42.4 42.4 0 1 1 302.2 180.6A42.4 42.4 0 0 1 302.4 184.8M315.2 184.8A55.2 55.2 0 1 1 314.9 179.3A55.2 55.2 0 0 1 315.2 184.8M327.9 184.8A67.9 67.9 0 1 1 327.5 178A67.9 67.9 0 0 1 327.9 184.8M340.6 184.8A80.6 80.6 0 1 1 340.2 176.8A80.6 80.6 0 0 1 340.6 184.8M353.3 184.8A93.3 93.3 0 1 1 352.9 175.5A93.3 93.3 0 0 1 353.3 184.8M366.1 184.8A106.1 106.1 0 1 1 365.5 174.2A106.1 106.1 0 0 1 366.1 184.8M378.8 184.8A118.8 118.8 0 1 1 378.2 172.9A118.8 118.8 0 0 1 378.8 184.8" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr32-cls-235 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <text dominant-baseline="central" text-anchor="start" style="font-size:9px;font-family:;--easv-delay:68ms"Open Sans", Arial, sans-serif;" x="324.40000000000003" y="68.75592799256431" fill="#333e48" class="easv-mark easv-label" data-easv-order="2">North</text>
@@ -3438,15 +3460,16 @@ fill:rgba(111,51,118,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-radar-delta" data-example-id="radar-delta" data-chart-type="radar-delta" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-radar-delta" data-example-id="radar-delta" data-pattern-id="echarts-radar-delta" data-legacy-pattern-id="echarts-pattern-radar-delta" data-legacy-dom-id="example-radar-delta" data-chart-type="radar-delta" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Radar Delta</h2>
           <p>Three profiles reveal over the same capability frame.</p>
+          <p class="pattern-id">echarts-radar-delta</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Radar Delta animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-radar" data-echarts-chart-type="radar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-radar" data-echarts-chart-type="radar" data-example-id="radar-delta" data-pattern-id="echarts-radar-delta" data-legacy-pattern-id="echarts-pattern-radar-delta" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M260 139.3L241.8 152.5L248.7 173.9L271.3 173.9L278.2 152.5L260 139.3L260 158.4ZM260 101L205.4 140.7L226.2 204.9L293.8 204.9L314.6 140.7L260 101L260 120.1L296.4 146.6L282.5 189.4L237.5 189.4L223.6 146.6L260 120.1ZM260 62.7L169 128.8L203.7 235.8L316.3 235.8L351 128.8L260 62.7L260 81.8L332.8 134.7L305 220.3L215 220.3L187.2 134.7L260 81.8Z" fill="#f7f7f7" class="zr33-cls-243 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M260 120.1L223.6 146.6L237.5 189.4L282.5 189.4L296.4 146.6L260 120.1L260 139.3L278.2 152.5L271.3 173.9L248.7 173.9L241.8 152.5L260 139.3ZM260 81.8L187.2 134.7L215 220.3L305 220.3L332.8 134.7L260 81.8L260 101L314.6 140.7L293.8 204.9L226.2 204.9L205.4 140.7L260 101Z" fill="#e7e7e7" class="zr33-cls-243 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -3531,15 +3554,16 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-timeline-ranges" data-example-id="timeline-ranges" data-chart-type="timeline-ranges" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-timeline-ranges" data-example-id="timeline-ranges" data-pattern-id="echarts-timeline-ranges" data-legacy-pattern-id="echarts-pattern-timeline-ranges" data-legacy-dom-id="example-timeline-ranges" data-chart-type="timeline-ranges" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Timeline Ranges</h2>
           <p>Custom rendered ranges animate from start to finish.</p>
+          <p class="pattern-id">echarts-timeline-ranges</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Timeline Ranges animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-custom" data-echarts-chart-type="custom" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-custom" data-echarts-chart-type="custom" data-example-id="timeline-ranges" data-pattern-id="echarts-timeline-ranges" data-legacy-pattern-id="echarts-pattern-timeline-ranges" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M82.5 58L82.5 288" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr34-cls-251 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M150.5 58L150.5 288" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr34-cls-251 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -3592,15 +3616,16 @@ fill:rgba(75,145,46,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-step-threshold-line" data-example-id="step-threshold-line" data-chart-type="step-threshold-line" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-step-threshold" data-example-id="step-threshold-line" data-pattern-id="echarts-step-threshold" data-legacy-pattern-id="echarts-pattern-step-threshold-line" data-legacy-dom-id="example-step-threshold-line" data-chart-type="step-threshold-line" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Step Threshold Line</h2>
           <p>Step changes and a target line test mixed stroke timing.</p>
+          <p class="pattern-id">echarts-step-threshold</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Step Threshold Line animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-line" data-echarts-chart-type="line" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-line" data-echarts-chart-type="line" data-example-id="step-threshold-line" data-pattern-id="echarts-step-threshold" data-legacy-pattern-id="echarts-pattern-step-threshold-line" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M48 288.5L488 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr35-cls-256 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></path>
 <path d="M48 242.5L488 242.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr35-cls-256 easv-mark easv-draw" style="--easv-delay:68ms" data-easv-order="2" pathLength="1"></path>
@@ -3694,15 +3719,16 @@ stroke-width:3;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-horizontal-stacked-bar" data-example-id="horizontal-stacked-bar" data-chart-type="horizontal-stacked-bar" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-stacked-bar-horizontal" data-example-id="horizontal-stacked-bar" data-pattern-id="echarts-stacked-bar-horizontal" data-legacy-pattern-id="echarts-pattern-horizontal-stacked-bar" data-legacy-dom-id="example-horizontal-stacked-bar" data-chart-type="horizontal-stacked-bar" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Horizontal Stacked Bar</h2>
           <p>Horizontal bars grow from the left while segment labels follow.</p>
+          <p class="pattern-id">echarts-stacked-bar-horizontal</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Horizontal Stacked Bar animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-horizontal-bar" data-echarts-chart-type="horizontal-bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-horizontal-bar" data-echarts-chart-type="horizontal-bar" data-example-id="horizontal-stacked-bar" data-pattern-id="echarts-stacked-bar-horizontal" data-legacy-pattern-id="echarts-pattern-horizontal-stacked-bar" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-x" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M92.5 58L92.5 296" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr36-cls-263 easv-mark easv-scale-x" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M171.5 58L171.5 296" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr36-cls-263 easv-mark easv-scale-x" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -3783,15 +3809,16 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-rose-area-donut" data-example-id="rose-area-donut" data-chart-type="rose-area-donut" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-rose-donut" data-example-id="rose-area-donut" data-pattern-id="echarts-rose-donut" data-legacy-pattern-id="echarts-pattern-rose-area-donut" data-legacy-dom-id="example-rose-area-donut" data-chart-type="rose-area-donut" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Rose Area Donut</h2>
           <p>Rose segments test radial scaling with uneven arc areas.</p>
+          <p class="pattern-id">echarts-rose-donut</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Rose Area Donut animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-pie" data-echarts-chart-type="pie" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-pie" data-echarts-chart-type="pie" data-example-id="rose-area-donut" data-pattern-id="echarts-rose-donut" data-legacy-pattern-id="echarts-pattern-rose-area-donut" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <polyline points="329.8 62.3 338.6 50.2 368.6 50.2" fill="none" pointer-events="visible" stroke="#696969" stroke-width="1.4" class="zr37-cls-268 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></polyline>
 <polyline points="344.7 185.9 387.3 199.7 417.3 199.7" fill="none" pointer-events="visible" stroke="#696969" stroke-width="1.4" class="zr37-cls-268 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></polyline>
@@ -3868,15 +3895,16 @@ fill:rgba(0,0,0,0);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-matrix-heatmap" data-example-id="matrix-heatmap" data-chart-type="matrix-heatmap" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-matrix-heatmap" data-example-id="matrix-heatmap" data-pattern-id="echarts-matrix-heatmap" data-legacy-pattern-id="echarts-pattern-matrix-heatmap" data-legacy-dom-id="example-matrix-heatmap" data-chart-type="matrix-heatmap" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Matrix Heatmap</h2>
           <p>Dense matrix cells reveal row by row with values intact.</p>
+          <p class="pattern-id">echarts-matrix-heatmap</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Matrix Heatmap animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-heatmap" data-echarts-chart-type="heatmap" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-heatmap" data-echarts-chart-type="heatmap" data-example-id="matrix-heatmap" data-pattern-id="echarts-matrix-heatmap" data-legacy-pattern-id="echarts-pattern-matrix-heatmap" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M78 270l412 0l0 -42.4l-412 0Z" fill="rgb(234,237,245)" fill-opacity="0.5" class="zr38-cls-276 easv-mark easv-scale-y" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M78 227.6l412 0l0 -42.4l-412 0Z" fill="rgb(255,255,255)" fill-opacity="0" class="zr38-cls-276 easv-mark easv-scale-y" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -4082,15 +4110,16 @@ fill:rgba(114,50,115,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-scatter-regression" data-example-id="scatter-regression" data-chart-type="scatter-regression" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-scatter-regression" data-example-id="scatter-regression" data-pattern-id="echarts-scatter-regression" data-legacy-pattern-id="echarts-pattern-scatter-regression" data-legacy-dom-id="example-scatter-regression" data-chart-type="scatter-regression" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Scatter Regression</h2>
           <p>Points fade in first, then the fitted guide line draws across.</p>
+          <p class="pattern-id">echarts-scatter-regression</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Scatter Regression animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-scatter" data-echarts-chart-type="scatter" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-scatter" data-echarts-chart-type="scatter" data-example-id="scatter-regression" data-pattern-id="echarts-scatter-regression" data-legacy-pattern-id="echarts-pattern-scatter-regression" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M54.7 288.5L478 288.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr39-cls-304 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></path>
 <path d="M54.7 249.5L478 249.5" fill="none" pointer-events="visible" stroke="#e7e7e7" class="zr39-cls-304 easv-mark easv-draw" style="--easv-delay:68ms" data-easv-order="2" pathLength="1"></path>
@@ -4172,15 +4201,16 @@ cursor:pointer;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-dual-ring-gauge" data-example-id="dual-ring-gauge" data-chart-type="dual-ring-gauge" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-dual-ring-gauge" data-example-id="dual-ring-gauge" data-pattern-id="echarts-dual-ring-gauge" data-legacy-pattern-id="echarts-pattern-dual-ring-gauge" data-legacy-dom-id="example-dual-ring-gauge" data-chart-type="dual-ring-gauge" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Dual Ring Gauge</h2>
           <p>Concentric KPI rings verify separate arc and value reveals.</p>
+          <p class="pattern-id">echarts-dual-ring-gauge</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Dual Ring Gauge animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-gauge" data-echarts-chart-type="gauge" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-gauge" data-echarts-chart-type="gauge" data-example-id="dual-ring-gauge" data-pattern-id="echarts-dual-ring-gauge" data-legacy-pattern-id="echarts-pattern-dual-ring-gauge" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M154.3 226.1A122.1 122.1 0 1 1 365.7 226L353.6 219A108.1 108.1 0 1 0 166.4 219.1Z" fill="#cfcfcf" class="zr40-cls-308 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <text dominant-baseline="central" text-anchor="middle" style="font-size:12px;font-family:;--easv-delay:68ms"Open Sans", Arial, sans-serif;font-weight:700;" x="260" y="175.989" fill="#4f4f4f" class="easv-mark easv-label" data-easv-order="2">Health</text>
@@ -4212,15 +4242,16 @@ fill:rgba(254,125,4,1);
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-parallel-scenarios" data-example-id="parallel-scenarios" data-chart-type="parallel-scenarios" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-parallel-scenarios" data-example-id="parallel-scenarios" data-pattern-id="echarts-parallel-scenarios" data-legacy-pattern-id="echarts-pattern-parallel-scenarios" data-legacy-dom-id="example-parallel-scenarios" data-chart-type="parallel-scenarios" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Parallel Scenarios</h2>
           <p>More polylines stress parallel-axis draw order and opacity.</p>
+          <p class="pattern-id">echarts-parallel-scenarios</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Parallel Scenarios animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-parallel" data-echarts-chart-type="parallel" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-parallel" data-echarts-chart-type="parallel" data-example-id="parallel-scenarios" data-pattern-id="echarts-parallel-scenarios" data-legacy-pattern-id="echarts-pattern-parallel-scenarios" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-fade" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <g clip-path="url(#zr41-c0)">
 <polyline points="56 182 162 209.5 268 158.4 374 221.2 480 189.8" fill="none" pointer-events="visible" stroke="#9e1b32" stroke-width="2.7" stroke-opacity="0.74" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr41-cls-312 easv-mark easv-draw" style="--easv-delay:34ms" data-easv-order="1" pathLength="1"></polyline>
@@ -4334,15 +4365,16 @@ pointer-events:none;
 </style>
 </svg></div>
     </article>
-      <article class="chart-card is-playing" id="example-nested-treemap-drilldown" data-example-id="nested-treemap-drilldown" data-chart-type="nested-treemap-drilldown" data-replay-count="0">
+      <article class="chart-card is-playing" id="echarts-treemap-drilldown" data-example-id="nested-treemap-drilldown" data-pattern-id="echarts-treemap-drilldown" data-legacy-pattern-id="echarts-pattern-nested-treemap-drilldown" data-legacy-dom-id="example-nested-treemap-drilldown" data-chart-type="nested-treemap-drilldown" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>Nested Treemap Drilldown</h2>
           <p>Three hierarchy depths exercise parent, leaf, and label timing.</p>
+          <p class="pattern-id">echarts-treemap-drilldown</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay Nested Treemap Drilldown animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
-      <div class="chart-stage"><svg class="easv-svg easv-profile-treemap" data-echarts-chart-type="treemap" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
+      <div class="chart-stage"><svg class="easv-svg easv-profile-treemap" data-echarts-chart-type="treemap" data-example-id="nested-treemap-drilldown" data-pattern-id="echarts-treemap-drilldown" data-legacy-pattern-id="echarts-pattern-nested-treemap-drilldown" width="520" height="330" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" viewBox="0 0 520 330">
 <rect width="520" height="330" x="0" y="0" fill="none" class="easv-mark easv-scale-y" style="--easv-delay:0ms" data-easv-order="0"></rect>
 <path d="M0 0l496 0l0 270l-496 0Z" transform="translate(12 48)" fill="#cfcfcf" ecmeta_series_index="0" ecmeta_data_index="0" ecmeta_ssr_type="chart" class="zr42-cls-314 easv-mark easv-fade" style="--easv-delay:34ms" data-easv-order="1"></path>
 <path d="M0 0l350.6 0l0 128.7l-350.6 0Z" transform="translate(14 72)" fill="#cfcfcf" ecmeta_series_index="0" ecmeta_data_index="5" ecmeta_ssr_type="chart" class="zr42-cls-314 easv-mark easv-fade" style="--easv-delay:68ms" data-easv-order="2"></path>
@@ -4424,28 +4456,15 @@ pointer-events:none;
     </article>
     </section>
   </main>
-  <script>function normalizePatternMetadata() {
-  document.querySelectorAll('.chart-card').forEach((card) => {
-    const exampleId = card.dataset.exampleId || card.dataset.chartType || card.id.replace(/^example-/, '')
-    const patternId = `echarts-pattern-${exampleId}`
-    card.dataset.exampleId = exampleId
-    card.dataset.patternId = patternId
-    const svg = card.querySelector('svg')
-    if (svg) {
-      svg.dataset.exampleId = exampleId
-      svg.dataset.patternId = patternId
-    }
-    const headerContent = card.querySelector('.card-header > div')
-    if (headerContent && !headerContent.querySelector('.pattern-id')) {
-      const node = document.createElement('p')
-      node.className = 'pattern-id'
-      node.textContent = patternId
-      headerContent.appendChild(node)
-    }
-  })
+  <script>function redirectLegacyPatternHash() {
+  const hash = decodeURIComponent(window.location.hash.slice(1))
+  if (!hash) return
+  const card = [...document.querySelectorAll('.chart-card')].find((item) =>
+    item.dataset.legacyPatternId === hash || item.dataset.legacyDomId === hash)
+  if (!card) return
+  history.replaceState(null, '', location.pathname + location.search + '#' + card.dataset.patternId)
+  card.scrollIntoView({ block: 'start' })
 }
-
-normalizePatternMetadata()
 
 function replayCard(card) {
   card.classList.remove('is-playing')
@@ -4460,6 +4479,9 @@ document.querySelectorAll('[data-replay-card]').forEach((button) => {
 
 document.querySelector('#replay-all').addEventListener('click', () => {
   document.querySelectorAll('.chart-card').forEach(replayCard)
-})</script>
+})
+
+redirectLegacyPatternHash()
+window.addEventListener('hashchange', redirectLegacyPatternHash)</script>
 </body>
 </html>

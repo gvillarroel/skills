@@ -110,7 +110,7 @@ VERIFY_JS = r"""
   }
 
   function expectedPatternId(exampleId) {
-    const basePatternId = `d3-pattern-${exampleId}`;
+    const basePatternId = `d3-${exampleId}`;
     if (patternIdSuffix) return `${basePatternId}-${patternIdSuffix}`;
     return `${patternIdPrefix}${exampleId}`;
   }
@@ -154,7 +154,7 @@ VERIFY_JS = r"""
       badPatternIds.push({ exampleId, patternId, duplicate: true });
     }
     seenPatternIds.add(patternId);
-    if (basePatternId !== `d3-pattern-${exampleId}` || card.dataset.styleVersion !== styleVersion) {
+    if (basePatternId !== `d3-${exampleId}` || card.dataset.styleVersion !== styleVersion) {
       badCardMetadata.push({ exampleId, basePatternId, styleVersion: card.dataset.styleVersion || null });
     }
     if (
@@ -162,7 +162,7 @@ VERIFY_JS = r"""
       svg.dataset.styleVersion !== styleVersion ||
       svg.dataset.colorSet !== colorSet ||
       svg.dataset.paletteName !== paletteName ||
-      svg.dataset.basePatternId !== `d3-pattern-${exampleId}`
+      svg.dataset.basePatternId !== `d3-${exampleId}`
     ) {
       badSvgMetadata.push({
         exampleId,
@@ -211,7 +211,7 @@ VERIFY_JS = r"""
     item.styleVersion !== styleVersion ||
     item.colorSet !== colorSet ||
     item.patternId !== expectedPatternId(item.id) ||
-    item.basePatternId !== `d3-pattern-${item.id}`
+    item.basePatternId !== `d3-${item.id}`
   );
   if (metadata.length !== expected) {
     findings.push(`Expected ${expected} metadata records, found ${metadata.length}.`);

@@ -303,7 +303,7 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="circuit-signal-traces" data-pattern-id="d3-pattern-circuit-signal-traces"
+  <svg id="circuit-signal-traces" data-pattern-id="d3-circuit-signal-traces"
     data-pattern-family="circuit" data-node-count="{len(NODES)}" data-trace-count="{len(TRACES)}"
     viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
     aria-labelledby="circuit-signal-traces-title circuit-signal-traces-desc">

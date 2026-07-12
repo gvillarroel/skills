@@ -1,6 +1,6 @@
 # Force Network
 
-- **Pattern ID:** `d3-pattern-force-network`
+- **Pattern ID:** `d3-force-network`
 - **Gallery source ID:** `force-network`
 - **Family:** Simulation
 - **Use when:** Clustered topology with collision and link tension.
@@ -50,7 +50,7 @@ Implementation steps:
 
 Validation hooks:
 
-- Root SVG exposes `data-pattern-id="d3-pattern-force-network"`.
+- Root SVG exposes `data-pattern-id="d3-force-network"`.
 - Final SVG contains 9 circles, 11 link lines, and 9 readable labels.
 - A reduced-motion or static screenshot must still show the links, circles, and labels; no mark may rely on `opacity: 0` plus a disabled animation.
 

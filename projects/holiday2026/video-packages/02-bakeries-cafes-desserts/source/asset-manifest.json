@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 1,
+  "videoId": "holiday2026-02-bakeries-cafes-desserts",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  "skillRouting": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "assets": [
+    {
+      "id": "a01-proximity-map",
+      "kind": "diagram",
+      "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 1 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a01-proximity-map.png",
+      "sha256": "5eecaadabb8072cdf1439089fa0caa894b37d36fe52bc7d672cf83c2e40c9c5e",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:bakeries-cafes-desserts:a01-proximity-map",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Vanilla Café Gelato",
+            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
+            "imageUrl": null,
+            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Jeremia's Italian Ice",
+            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
+            "imageUrl": null,
+            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Scoops Sugar Hill",
+            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
+            "imageUrl": null,
+            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a01-proximity-map-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s01",
+          "beatId": "b01",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a02-top-1-source",
+      "kind": "screenshot",
+      "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 2 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a02-top-1-source.png",
+      "sha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.openstreetmap.org/node/11985939675",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Vanilla Café Gelato",
+            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
+            "imageUrl": null,
+            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a02-top-1-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s02",
+          "beatId": "b02",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a03-top-2-source",
+      "kind": "screenshot",
+      "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 3 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a03-top-2-source.png",
+      "sha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.openstreetmap.org/node/12874339998",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use.",
+        "embeddedSources": [
+          {
+            "rank": 2,
+            "name": "Jeremia's Italian Ice",
+            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
+            "imageUrl": null,
+            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a03-top-2-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s03",
+          "beatId": "b03",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a04-top-3-source",
+      "kind": "screenshot",
+      "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 4 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a04-top-3-source.png",
+      "sha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.openstreetmap.org/node/10252222344",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use.",
+        "embeddedSources": [
+          {
+            "rank": 3,
+            "name": "Scoops Sugar Hill",
+            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
+            "imageUrl": null,
+            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a04-top-3-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s04",
+          "beatId": "b04",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a05-top-five",
+      "kind": "diagram",
+      "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 5 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a05-top-five.png",
+      "sha256": "17811030a5c5025da3783e538e3f57784abee9ff63d024c78717ec639d8ff050",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:bakeries-cafes-desserts:a05-top-five",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Vanilla Café Gelato",
+            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
+            "imageUrl": null,
+            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Jeremia's Italian Ice",
+            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
+            "imageUrl": null,
+            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Scoops Sugar Hill",
+            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
+            "imageUrl": null,
+            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+          },
+          {
+            "rank": 4,
+            "name": "Vampire Penguin",
+            "pageUrl": "https://www.openstreetmap.org/node/12164439045",
+            "imageUrl": null,
+            "imageSha256": "94a72cfd4d8acf999f55f0f0a57d97901e8194a07481b2666b528814928a4cae",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vampire Penguin; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Sarah Donuts",
+            "pageUrl": "https://www.sarahdonuts.com/",
+            "imageUrl": "https://cdn.prod.website-files.com/675ef9c1bee91b289f7233ba/675f241ac7e72aec12dfd166_Group%2096-p-1080.png",
+            "imageSha256": "24046e20633ae1d1c88cfe68b63c96bf39677e7633cd662f8a39a8149e62212a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Sarah Donuts; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a05-top-five-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s05",
+          "beatId": "b05",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a06-preference-bars",
+      "kind": "diagram",
+      "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 6 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a06-preference-bars.png",
+      "sha256": "361b74f4319124bfe9e7f29e8d9a992b101b6e5632466d2997ba81f350d27b6a",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:bakeries-cafes-desserts:a06-preference-bars",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Vanilla Café Gelato",
+            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
+            "imageUrl": null,
+            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Jeremia's Italian Ice",
+            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
+            "imageUrl": null,
+            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Scoops Sugar Hill",
+            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
+            "imageUrl": null,
+            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+          },
+          {
+            "rank": 4,
+            "name": "Vampire Penguin",
+            "pageUrl": "https://www.openstreetmap.org/node/12164439045",
+            "imageUrl": null,
+            "imageSha256": "94a72cfd4d8acf999f55f0f0a57d97901e8194a07481b2666b528814928a4cae",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vampire Penguin; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Sarah Donuts",
+            "pageUrl": "https://www.sarahdonuts.com/",
+            "imageUrl": "https://cdn.prod.website-files.com/675ef9c1bee91b289f7233ba/675f241ac7e72aec12dfd166_Group%2096-p-1080.png",
+            "imageSha256": "24046e20633ae1d1c88cfe68b63c96bf39677e7633cd662f8a39a8149e62212a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Sarah Donuts; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Tiger Sugar",
+            "pageUrl": "https://www.openstreetmap.org/node/11221413688",
+            "imageUrl": null,
+            "imageSha256": "1f3b8424d4a526fe5ed6269934e752b46c330136d899ad7a96f4b4944af13840",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Tiger Sugar; private family-planning use."
+          },
+          {
+            "rank": 7,
+            "name": "Pearl's Tea",
+            "pageUrl": "https://www.openstreetmap.org/way/1085221722",
+            "imageUrl": null,
+            "imageSha256": "446aced1d0dfddcacc02bd13679421b91cf3b183e2d71ae0b8a647deb3959ceb",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Pearl's Tea; private family-planning use."
+          },
+          {
+            "rank": 8,
+            "name": "Hey Boba Tea & Snacks",
+            "pageUrl": "https://www.openstreetmap.org/node/13179023862",
+            "imageUrl": null,
+            "imageSha256": "68035bbe130e07edbe7a87860db4632b5d30aa1fd3b13940066a241c5a6b5678",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Hey Boba Tea & Snacks; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a06-preference-bars-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s06",
+          "beatId": "b06",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a07-decision-board",
+      "kind": "diagram",
+      "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 7 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a07-decision-board.png",
+      "sha256": "ce082617ded2427b96febe8e1fee65a39570eaf54453aeece29cf5afcdf651b6",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:bakeries-cafes-desserts:a07-decision-board",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Vanilla Café Gelato",
+            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
+            "imageUrl": null,
+            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Jeremia's Italian Ice",
+            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
+            "imageUrl": null,
+            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Scoops Sugar Hill",
+            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
+            "imageUrl": null,
+            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+          },
+          {
+            "rank": 4,
+            "name": "Vampire Penguin",
+            "pageUrl": "https://www.openstreetmap.org/node/12164439045",
+            "imageUrl": null,
+            "imageSha256": "94a72cfd4d8acf999f55f0f0a57d97901e8194a07481b2666b528814928a4cae",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vampire Penguin; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a07-decision-board-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s07",
+          "beatId": "b07",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a08-planner-callback",
+      "kind": "diagram",
+      "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 8 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a08-planner-callback.png",
+      "sha256": "777c689126d58087bc1584685605cdcf41ddf09f9ec9d16deaffbc3894738233",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:bakeries-cafes-desserts:a08-planner-callback",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Vanilla Café Gelato",
+            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
+            "imageUrl": null,
+            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Jeremia's Italian Ice",
+            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
+            "imageUrl": null,
+            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Scoops Sugar Hill",
+            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
+            "imageUrl": null,
+            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+          },
+          {
+            "rank": 4,
+            "name": "Vampire Penguin",
+            "pageUrl": "https://www.openstreetmap.org/node/12164439045",
+            "imageUrl": null,
+            "imageSha256": "94a72cfd4d8acf999f55f0f0a57d97901e8194a07481b2666b528814928a4cae",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vampire Penguin; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Sarah Donuts",
+            "pageUrl": "https://www.sarahdonuts.com/",
+            "imageUrl": "https://cdn.prod.website-files.com/675ef9c1bee91b289f7233ba/675f241ac7e72aec12dfd166_Group%2096-p-1080.png",
+            "imageSha256": "24046e20633ae1d1c88cfe68b63c96bf39677e7633cd662f8a39a8149e62212a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Sarah Donuts; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Tiger Sugar",
+            "pageUrl": "https://www.openstreetmap.org/node/11221413688",
+            "imageUrl": null,
+            "imageSha256": "1f3b8424d4a526fe5ed6269934e752b46c330136d899ad7a96f4b4944af13840",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Tiger Sugar; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a08-planner-callback-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s08",
+          "beatId": "b08",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    }
+  ]
+}

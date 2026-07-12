@@ -2,11 +2,11 @@ Use the loaded D3 Animated SVG skill to create a self-contained HTML file named 
 
 The artifact must test whether two D3 SVG patterns generalize to smaller and larger datasets without losing coherence:
 
-- `d3-pattern-force-network`
+- `d3-force-network`
   - `svg#force-small`: 5 nodes and at least 5 links
   - `svg#force-medium`: 12 nodes and at least 16 links
   - `svg#force-large`: 36 nodes and at least 45 links
-- `d3-pattern-beeswarm`
+- `d3-beeswarm`
   - `svg#beeswarm-small`: 9 observations
   - `svg#beeswarm-medium`: 30 observations
   - `svg#beeswarm-large`: 90 observations
@@ -22,7 +22,7 @@ Use this exact structured contract as the source of truth for IDs, pattern IDs, 
   "svgs": [
     {
       "id": "force-small",
-      "patternId": "d3-pattern-force-network",
+      "patternId": "d3-force-network",
       "size": "small",
       "targetCount": 5,
       "marks": {
@@ -32,7 +32,7 @@ Use this exact structured contract as the source of truth for IDs, pattern IDs, 
     },
     {
       "id": "force-medium",
-      "patternId": "d3-pattern-force-network",
+      "patternId": "d3-force-network",
       "size": "medium",
       "targetCount": 12,
       "marks": {
@@ -42,7 +42,7 @@ Use this exact structured contract as the source of truth for IDs, pattern IDs, 
     },
     {
       "id": "force-large",
-      "patternId": "d3-pattern-force-network",
+      "patternId": "d3-force-network",
       "size": "large",
       "targetCount": 36,
       "marks": {
@@ -52,7 +52,7 @@ Use this exact structured contract as the source of truth for IDs, pattern IDs, 
     },
     {
       "id": "beeswarm-small",
-      "patternId": "d3-pattern-beeswarm",
+      "patternId": "d3-beeswarm",
       "size": "small",
       "targetCount": 9,
       "marks": {
@@ -61,7 +61,7 @@ Use this exact structured contract as the source of truth for IDs, pattern IDs, 
     },
     {
       "id": "beeswarm-medium",
-      "patternId": "d3-pattern-beeswarm",
+      "patternId": "d3-beeswarm",
       "size": "medium",
       "targetCount": 30,
       "marks": {
@@ -70,7 +70,7 @@ Use this exact structured contract as the source of truth for IDs, pattern IDs, 
     },
     {
       "id": "beeswarm-large",
-      "patternId": "d3-pattern-beeswarm",
+      "patternId": "d3-beeswarm",
       "size": "large",
       "targetCount": 90,
       "marks": {

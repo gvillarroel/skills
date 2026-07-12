@@ -1,6 +1,6 @@
 # Temperature Softmax
 
-- **Pattern ID:** `d3-pattern-temperature-softmax`
+- **Pattern ID:** `d3-temperature-softmax`
 - **Gallery source ID:** `temperature-softmax`
 - **Family:** LLM
 - **Use when:** The same logits sharpen or flatten as temperature changes.
