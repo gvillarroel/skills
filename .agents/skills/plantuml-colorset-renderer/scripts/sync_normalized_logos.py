@@ -21,7 +21,27 @@ from pathlib import Path
 SVG_NS = "http://www.w3.org/2000/svg"
 XLINK_NS = "http://www.w3.org/1999/xlink"
 MINIMUM_LOGOS = 400
-REQUIRED_PROVIDERS = {"AWS", "GCP", "Devicon", "Simple Icons"}
+REQUIRED_PROVIDERS = {
+    "AWS",
+    "GCP",
+    "Devicon",
+    "Simple Icons",
+    "Font Awesome Brands",
+    "Ollama",
+    "Pi Coding Agent",
+    "OpenCode",
+    "Cline",
+    "Roo Code",
+    "Continue",
+    "Aider",
+    "Goose",
+    "OpenHands",
+    "SWE-agent",
+    "Qwen Code",
+    "Oh My Pi",
+    "Gemini CLI",
+    "Lobe Icons",
+}
 LICENSE_FILES = {
     "Apache-2.0": "Apache-2.0.txt",
     "BSD-3-Clause": "BSD-3-Clause.txt",

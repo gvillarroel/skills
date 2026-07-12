@@ -15,7 +15,7 @@ from pathlib import Path
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--search", default="", help="Case-insensitive text matched against ID, title, and category")
-    parser.add_argument("--provider", help="Exact provider name, such as AWS, GCP, Devicon, or Simple Icons")
+    parser.add_argument("--provider", help="Exact provider name, such as AWS, GCP, Devicon, Simple Icons, Font Awesome Brands, or Ollama")
     parser.add_argument("--category")
     parser.add_argument("--limit", type=int, default=50)
     parser.add_argument("--json", action="store_true")

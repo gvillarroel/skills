@@ -1,6 +1,6 @@
 ---
 name: plantuml-colorset-renderer
-description: Render PlantUML diagrams with bundled colorset1 and colorset2 themes and a normalized 1,500+ SVG catalog spanning AWS, Google Cloud, major companies, programming languages, databases, frameworks, infrastructure, and developer tools. Use when Codex needs to create, style, batch-render, or validate PlantUML `.puml`, `.plantuml`, or `.pu` sources as SVG and PNG, find and insert consistently sized technical logos, build cloud architecture diagrams, or check PlantUML diagram-family coverage.
+description: Render PlantUML diagrams with bundled colorset1 and colorset2 themes and a normalized 1,600+ SVG catalog spanning AWS, Google Cloud, major companies, programming languages, databases, frameworks, infrastructure, AI, code-assistant harnesses, and developer tools. Use when Codex needs to create, style, batch-render, or validate PlantUML `.puml`, `.plantuml`, or `.pu` sources as SVG and PNG, find and insert consistently sized technical logos, build cloud architecture diagrams, or check PlantUML diagram-family coverage.
 ---
 
 # PlantUML Colorset Renderer
@@ -72,13 +72,14 @@ uv run --script .agents/skills/plantuml-colorset-renderer/scripts/render_plantum
 
 ## Normalized Logo Assets
 
-Use the 1,648 SVG files in `assets/logos/` when a PlantUML diagram needs a cloud, company, programming-language, database, framework, infrastructure, or developer-tool logo. The catalog contains 860 AWS symbols, 93 GCP symbols, 578 Devicon technologies, and 117 individually licensed Simple Icons brands. Every logo has the same intrinsic `256×256` size, `0 0 256 256` viewBox, 16-unit padding, and centered `meet` scaling, so one scale value produces predictable boxes without stretching.
+Use the 1,960 SVG files in `assets/logos/` when a PlantUML diagram needs a cloud, company, programming-language, database, framework, infrastructure, AI, code-assistant, or developer-tool logo. The catalog contains 860 AWS symbols, 93 GCP symbols, 578 Devicon technologies, 117 individually licensed Simple Icons brands, 13 curated Font Awesome Brands assets, Ollama, and 298 code-assistant ecosystem assets. The latter cover harnesses, assistant products, AI providers, agent frameworks, gateways, observability, RAG, MCP, runtimes, automation, model families, and adjacent AI infrastructure. Every logo has the same intrinsic `256×256` size, `0 0 256 256` viewBox, 16-unit padding, and centered `meet` scaling, so one scale value produces predictable boxes without stretching.
 
 Search the compact manifest instead of reading the 1,500-row license log:
 
 ```powershell
 uv run --script .agents/skills/plantuml-colorset-renderer/scripts/list_logo_assets.py --search lambda --provider AWS
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/list_logo_assets.py --search kubernetes --json
+uv run --script .agents/skills/plantuml-colorset-renderer/scripts/list_logo_assets.py --search ollama --json
+uv run --script .agents/skills/plantuml-colorset-renderer/scripts/list_logo_assets.py --search claude --json
 ```
 
 Read the selected records in `assets/logos/logo_manifest.json` and consult `assets/logos/license_log.md` for redistribution. Treat trademark permission as separate from the artwork copyright license, and do not imply endorsement.
@@ -88,10 +89,10 @@ AWS and GCP artwork uses CC-BY-ND-2.0. Preserve its embedded source bytes and do
 For a portable handoff, export all logos and the license log byte-for-byte without network access:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/sync_normalized_logos.py --export path/to/deliverable/logos
+uv run --script skills/plantuml-colorset-renderer/scripts/sync_normalized_logos.py --export path/to/deliverable/logos
 ```
 
-For the full catalog, use this single export command and trust its built-in manifest, embedded-hash, inventory, license, and SVG checks. Do not enumerate, print, read, or compare all 1,648 files individually; large directory output can overwhelm the runtime. Confirm only the command exit code and a few requested exact paths.
+For the full catalog, use this single export command and trust its built-in manifest, embedded-hash, inventory, license, and SVG checks. Do not enumerate, print, read, or compare all 1,960 files individually; large directory output can overwhelm the runtime. Confirm only the command exit code and a few requested exact paths.
 
 Insert a local logo with PlantUML image markup, using the same scale for peer logos:
 
@@ -99,6 +100,7 @@ Insert a local logo with PlantUML image markup, using the same scale for peer lo
 rectangle "<img:assets/logos/aws/compute/lambda.svg{scale=0.25}>\nAWS Lambda" as lambda
 rectangle "<img:assets/logos/gcp/compute/cloud-run.svg{scale=0.25}>\nCloud Run" as run
 rectangle "<img:assets/logos/devicon/technology/kubernetes.svg{scale=0.25}>\nKubernetes" as k8s
+rectangle "<img:assets/logos/code-assistants/harnesses/pi.svg{scale=0.25}>\nPi" as pi
 ```
 
 Resolve image paths from the PlantUML source or renderer working directory. Prefer paths without spaces. For a portable delivery, export the complete bundle or copy selected SVGs while retaining `license_log.md`, `logo_manifest.json`, and `licenses/`.
@@ -110,7 +112,7 @@ uv run --script .agents/skills/plantuml-colorset-renderer/scripts/sync_normalize
 uv run --script .agents/skills/plantuml-colorset-renderer/scripts/sync_normalized_logos.py --check
 ```
 
-When maintaining the catalog, rebuild `logo_manifest.json` from the four pinned source clones with `scripts/build_logo_manifest.py`, then run the sync command with `--source aws=...`, `--source gcp=...`, `--source devicon=...`, and `--source 'simple icons'=...`. Do not hand-edit generated SVG wrappers or the generated license log.
+When maintaining the catalog, rebuild `logo_manifest.json` from every pinned source declared by `scripts/build_logo_manifest.py`, including each `--assistant-source KEY=DIR` value and `--lobe-icons-source`. Then run the sync command with matching provider-to-directory overrides. Do not hand-edit generated SVG wrappers or the generated license log. Read `references/code-assistant-logo-sources.md` before adding or rejecting a code-assistant brand.
 
 ## Bundled Themes
 

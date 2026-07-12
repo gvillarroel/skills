@@ -33,13 +33,56 @@ class LogoAssetTests(unittest.TestCase):
 
     def test_inventory_exceeds_goal_and_has_required_providers(self) -> None:
         logos = self.manifest["logos"]
-        self.assertEqual(self.manifest["logoCount"], 1648)
+        self.assertEqual(self.manifest["logoCount"], 1960)
         self.assertGreaterEqual(len(logos), 400)
         counts = {
             provider: sum(item["provider"] == provider for item in logos)
-            for provider in ("AWS", "GCP", "Devicon", "Simple Icons")
+            for provider in (
+                "AWS",
+                "GCP",
+                "Devicon",
+                "Simple Icons",
+                "Font Awesome Brands",
+                "Ollama",
+                "Pi Coding Agent",
+                "OpenCode",
+                "Cline",
+                "Roo Code",
+                "Continue",
+                "Aider",
+                "Goose",
+                "OpenHands",
+                "SWE-agent",
+                "Qwen Code",
+                "Oh My Pi",
+                "Gemini CLI",
+                "Lobe Icons",
+            )
         }
-        self.assertEqual(counts, {"AWS": 860, "GCP": 93, "Devicon": 578, "Simple Icons": 117})
+        self.assertEqual(
+            counts,
+            {
+                "AWS": 860,
+                "GCP": 93,
+                "Devicon": 578,
+                "Simple Icons": 117,
+                "Font Awesome Brands": 13,
+                "Ollama": 1,
+                "Pi Coding Agent": 1,
+                "OpenCode": 1,
+                "Cline": 1,
+                "Roo Code": 1,
+                "Continue": 1,
+                "Aider": 1,
+                "Goose": 1,
+                "OpenHands": 1,
+                "SWE-agent": 1,
+                "Qwen Code": 1,
+                "Oh My Pi": 1,
+                "Gemini CLI": 1,
+                "Lobe Icons": 286,
+            },
+        )
 
     def test_ids_and_source_artwork_are_unique(self) -> None:
         logos = self.manifest["logos"]
@@ -66,8 +109,56 @@ class LogoAssetTests(unittest.TestCase):
             "simpleicons-apache",
             "simpleicons-angular",
             "simpleicons-android",
+            "fontawesome-hugging-face",
+            "ollama-ollama",
+            "code-assistant-pi",
+            "code-assistant-opencode",
+            "code-assistant-cline",
+            "code-assistant-aider",
+            "code-assistant-goose",
+            "code-assistant-openhands",
+            "code-assistant-swe-agent",
+            "code-assistant-qwen-code",
+            "code-assistant-claudecode",
+            "code-assistant-codex",
+            "code-assistant-cursor",
+            "code-assistant-windsurf",
+            "code-assistant-antigravity",
+            "code-assistant-junie",
+            "code-assistant-kilocode",
+            "code-assistant-lovable",
+            "ai-provider-openrouter",
+            "ai-provider-deepseek",
+            "ai-provider-openai",
+            "agent-tool-crewai",
+            "agent-tool-langgraph",
+            "agent-tool-mcp",
+            "agent-tool-openclaw",
+            "agent-tool-pydanticai",
+            "ai-ecosystem-ai21",
+            "ai-ecosystem-cohere",
+            "ai-ecosystem-gemini",
+            "ai-ecosystem-nvidia",
         }
         self.assertFalse(required - ids)
+
+    def test_lobe_canonical_collection_is_exhaustively_accounted_for(self) -> None:
+        coverage = self.manifest["lobeCanonicalCoverage"]
+        self.assertEqual(
+            coverage,
+            {
+                "canonicalCandidates": 309,
+                "importedAsEcosystem": 195,
+                "skippedSemanticDuplicates": 114,
+                "skippedHashDuplicates": 0,
+            },
+        )
+        self.assertEqual(
+            coverage["canonicalCandidates"],
+            coverage["importedAsEcosystem"]
+            + coverage["skippedSemanticDuplicates"]
+            + coverage["skippedHashDuplicates"],
+        )
 
     def test_every_svg_and_embedded_source_passes_validator(self) -> None:
         self.assertEqual(SYNC.validate(ASSETS, self.manifest), [])
@@ -81,6 +172,7 @@ class LogoAssetTests(unittest.TestCase):
         self.assertTrue((ASSETS / "licenses" / "Apache-2.0.txt").is_file())
         self.assertTrue((ASSETS / "licenses" / "BSD-3-Clause.txt").is_file())
         self.assertTrue((ASSETS / "licenses" / "CC0-1.0.txt").is_file())
+        self.assertTrue((ASSETS / "licenses" / "CC-BY-4.0.txt").is_file())
 
 
 if __name__ == "__main__":
