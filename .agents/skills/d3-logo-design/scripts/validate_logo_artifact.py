@@ -271,9 +271,9 @@ def registry_ids(engine: str, start: str, end: str, label: str, findings: list[s
 def main() -> int:
     arg_parser = argparse.ArgumentParser(description="Validate a generated D3 logo studio HTML artifact.")
     arg_parser.add_argument("input", type=Path)
-    arg_parser.add_argument("--expect-patterns", type=int, default=60)
+    arg_parser.add_argument("--expect-patterns", type=int, default=90)
     arg_parser.add_argument("--expect-textures", type=int, default=10)
-    arg_parser.add_argument("--expect-compositions", type=int, default=60)
+    arg_parser.add_argument("--expect-compositions", type=int, default=90)
     arg_parser.add_argument("--require-colorset", choices=("colorset1", "colorset2"))
     arg_parser.add_argument("--json-report", type=Path)
     args = arg_parser.parse_args()

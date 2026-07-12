@@ -135,7 +135,7 @@ PUBLISHED_EXAMPLE_SETS = [
         "title": "D3 Logo Design Patterns",
         "href": "examples/d3-logo-design/",
         "kind": "D3 logo",
-        "description": "Sixty adjustable logo compositions with ten SVG textures constrained to colorset1 and colorset2.",
+        "description": "Ninety adjustable logo compositions, including thirty mathematical mechanisms, with ten SVG textures constrained to colorset1 and colorset2.",
     },
     {
         "id": "mermaid-svg-animated",
