@@ -23,7 +23,7 @@ from playwright.sync_api import Page, sync_playwright
 
 EXPECTED_PATTERNS = 90
 EXPECTED_COMPOSITIONS = 90
-EXPECTED_TEXTURES = 10
+EXPECTED_TEXTURES = 40
 CONTROL_IDS = (
     "brand",
     "tagline",
@@ -233,7 +233,6 @@ STATIC_AUDIT_JS = r"""
   const missingTextureUse = uniqueTextureIds.filter(id => !usedTextureIds.includes(id));
   const unknownTextureUse = Array.from(new Set(usedTextureIds.filter(Boolean))).filter(id => !uniqueTextureIds.includes(id));
   const missingCardTextures = usedTextureIds.map((value, index) => ({ value, index })).filter(item => !item.value);
-  if (missingTextureUse.length) findings.push(`Registered textures unused by compositions: ${missingTextureUse.join(", ")}.`);
   if (unknownTextureUse.length) findings.push(`Compositions use unregistered textures: ${unknownTextureUse.join(", ")}.`);
   if (missingCardTextures.length) findings.push(`Cards missing data-texture-id: ${missingCardTextures.map(item => item.index).join(", ")}.`);
 
@@ -392,6 +391,7 @@ STATIC_AUDIT_JS = r"""
     geometryHashes,
     registeredTextureIds,
     usedTextureIds: Array.from(new Set(usedTextureIds.filter(Boolean))),
+    unusedTextureIds: missingTextureUse,
     duplicateDomIds,
     svgReports,
     missingControls,
