@@ -37,7 +37,7 @@ uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --output outp
 7. Validate every deliverable. For generated studio HTML, run:
 
 ```powershell
-uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/logo-studio.html --expect-patterns 60 --expect-textures 10 --expect-compositions 60 --require-colorset colorset1
+uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/logo-studio.html --expect-patterns 90 --expect-textures 10 --expect-compositions 90 --require-colorset colorset1
 ```
 
 8. For browser-visible or published work, run the Playwright verifier, inspect desktop and mobile screenshots, and correct clipping, illegible type, collisions, weak negative space, or palette leakage before delivery.
@@ -53,7 +53,8 @@ uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/
 
 ## Progressive Disclosure
 
-- `references/pattern-catalog.md`: read when selecting or adapting one of the 60 canonical logo mechanisms.
+- `references/pattern-catalog.md`: read when selecting or adapting one of the 60 typographic and generative mechanisms.
+- `references/mathematical-patterns.md`: read when the pattern catalog routes a request to a mathematical construction, dynamical system, topology, or optimization mechanism.
 - `references/texture-catalog.md`: read when choosing and tuning one of the 10 palette-safe SVG textures.
 - `references/palette-contract.md`: read before any palette, paint, opacity, or colorset decision.
 - `references/composition-contract.md`: read when building a gallery, a responsive lockup system, or a new finished composition.

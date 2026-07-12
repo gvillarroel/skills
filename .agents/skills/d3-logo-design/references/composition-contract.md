@@ -22,7 +22,7 @@ Use a deterministic integer seed. Keep `compositionId`, `exampleId`, `patternId`
 
 Text occlusion and omission are prohibited by default. Pattern-level exceptions must follow `text-clearance-contract.md`, remain limited to the named semantic roles and state, and keep every declared `maxOcclusionRatio` at or below 0.30. An absent or empty declaration means zero permitted occlusion or omission.
 
-## Sixty acceptance compositions
+## Ninety acceptance compositions
 
 | Composition ID | Local example ID | Global pattern ID | Default texture |
 | --- | --- | --- | --- |
@@ -86,6 +86,36 @@ Text occlusion and omission are prohibited by default. Pattern-level exceptions 
 | `d3-logo-kanizsa-closure-lockup` | `kanizsa-closure` | `d3-logo-kanizsa-closure` | `d3-logo-guilloche-waves` |
 | `d3-logo-line-screen-lockup` | `line-screen-silhouette` | `d3-logo-line-screen-silhouette` | `d3-logo-woven-checker` |
 | `d3-logo-perspective-portal-lockup` | `perspective-portal` | `d3-logo-perspective-portal` | `d3-logo-directional-fibers` |
+| `d3-logo-reuleaux-body-lockup` | `reuleaux-body` | `d3-logo-reuleaux-body` | `d3-logo-micro-grid` |
+| `d3-logo-cassini-oval-lockup` | `cassini-oval` | `d3-logo-cassini-oval` | `d3-logo-diagonal-hatch` |
+| `d3-logo-polar-reciprocal-lockup` | `polar-reciprocal` | `d3-logo-polar-reciprocal` | `d3-logo-crosshatch` |
+| `d3-logo-minkowski-sum-lockup` | `minkowski-sum` | `d3-logo-minkowski-sum` | `d3-logo-halftone-dots` |
+| `d3-logo-pedal-curve-lockup` | `pedal-curve` | `d3-logo-pedal-curve` | `d3-logo-seeded-stipple` |
+| `d3-logo-involute-gear-lockup` | `involute-gear` | `d3-logo-involute-gear` | `d3-logo-topographic-lines` |
+| `d3-logo-desargues-incidence-lockup` | `desargues-incidence` | `d3-logo-desargues-incidence` | `d3-logo-voronoi-mosaic` |
+| `d3-logo-circle-inversion-lockup` | `circle-inversion` | `d3-logo-circle-inversion` | `d3-logo-guilloche-waves` |
+| `d3-logo-catenary-funicular-lockup` | `catenary-funicular` | `d3-logo-catenary-funicular` | `d3-logo-woven-checker` |
+| `d3-logo-joukowski-airfoil-lockup` | `joukowski-airfoil` | `d3-logo-joukowski-airfoil` | `d3-logo-directional-fibers` |
+| `d3-logo-hyperbolic-geodesics-lockup` | `hyperbolic-geodesics` | `d3-logo-hyperbolic-geodesics` | `d3-logo-micro-grid` |
+| `d3-logo-elliptic-group-law-lockup` | `elliptic-group-law` | `d3-logo-elliptic-group-law` | `d3-logo-diagonal-hatch` |
+| `d3-logo-mobius-strip-lockup` | `mobius-strip` | `d3-logo-mobius-strip` | `d3-logo-crosshatch` |
+| `d3-logo-torus-knot-lockup` | `torus-knot` | `d3-logo-torus-knot` | `d3-logo-halftone-dots` |
+| `d3-logo-ruled-hyperboloid-lockup` | `ruled-hyperboloid` | `d3-logo-ruled-hyperboloid` | `d3-logo-seeded-stipple` |
+| `d3-logo-tensegrity-prism-lockup` | `tensegrity-prism` | `d3-logo-tensegrity-prism` | `d3-logo-topographic-lines` |
+| `d3-logo-maxwell-reciprocal-lockup` | `maxwell-reciprocal` | `d3-logo-maxwell-reciprocal` | `d3-logo-voronoi-mosaic` |
+| `d3-logo-medial-axis-lockup` | `medial-axis` | `d3-logo-medial-axis` | `d3-logo-guilloche-waves` |
+| `d3-logo-string-parabola-lockup` | `string-parabola` | `d3-logo-string-parabola` | `d3-logo-woven-checker` |
+| `d3-logo-circle-caustic-lockup` | `circle-caustic` | `d3-logo-circle-caustic` | `d3-logo-directional-fibers` |
+| `d3-logo-moire-beat-lockup` | `moire-beat` | `d3-logo-moire-beat` | `d3-logo-micro-grid` |
+| `d3-logo-peaucellier-linkage-lockup` | `peaucellier-linkage` | `d3-logo-peaucellier-linkage` | `d3-logo-diagonal-hatch` |
+| `d3-logo-lorenz-attractor-lockup` | `lorenz-attractor` | `d3-logo-lorenz-attractor` | `d3-logo-crosshatch` |
+| `d3-logo-affine-ifs-lockup` | `affine-ifs` | `d3-logo-affine-ifs` | `d3-logo-halftone-dots` |
+| `d3-logo-cellular-automaton-lockup` | `cellular-automaton` | `d3-logo-cellular-automaton` | `d3-logo-seeded-stipple` |
+| `d3-logo-logistic-bifurcation-lockup` | `logistic-bifurcation` | `d3-logo-logistic-bifurcation` | `d3-logo-topographic-lines` |
+| `d3-logo-field-streamlines-lockup` | `field-streamlines` | `d3-logo-field-streamlines` | `d3-logo-voronoi-mosaic` |
+| `d3-logo-newton-basin-lockup` | `newton-basin` | `d3-logo-newton-basin` | `d3-logo-guilloche-waves` |
+| `d3-logo-steiner-tree-lockup` | `steiner-tree` | `d3-logo-steiner-tree` | `d3-logo-woven-checker` |
+| `d3-logo-penrose-substitution-lockup` | `penrose-substitution` | `d3-logo-penrose-substitution` | `d3-logo-directional-fibers` |
 
 ## Typography and responsive checks
 

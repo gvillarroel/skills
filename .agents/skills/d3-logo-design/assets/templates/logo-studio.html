@@ -105,14 +105,14 @@
     }
   </style>
 </head>
-<body data-example-count="60" data-pattern-count="60" data-texture-count="10" data-composition-count="60" data-colorset="__D3_LOGO_COLORSET__">
+<body data-example-count="90" data-pattern-count="90" data-texture-count="10" data-composition-count="90" data-colorset="__D3_LOGO_COLORSET__">
   <header>
     <div>
       <h1>D3 Logo Design Studio</h1>
-      <p>Sixty distinct construction mechanisms, ten palette-safe SVG textures, and one adjustable colorset1/colorset2 skin.</p>
+      <p>Ninety distinct construction mechanisms, ten palette-safe SVG textures, and one adjustable colorset1/colorset2 skin.</p>
     </div>
     <div class="count-strip" aria-label="Catalog totals">
-      <span>60 patterns</span><span>10 textures</span><span>60 compositions</span>
+      <span>90 patterns</span><span>10 textures</span><span>90 compositions</span>
     </div>
   </header>
   <main>
@@ -151,9 +151,9 @@
 
     <div class="gallery-heading">
       <div><h2>Finished compositions</h2><p>Each card uses a different construction topology. Text, font, palette, texture, density, curvature, scale, and rotation remain adjustable.</p></div>
-      <button id="restore-gallery" type="button">Restore 60 defaults</button>
+      <button id="restore-gallery" type="button">Restore 90 defaults</button>
     </div>
-    <section class="logo-gallery" id="logo-gallery" aria-label="Sixty D3 logo compositions"></section>
+    <section class="logo-gallery" id="logo-gallery" aria-label="Ninety D3 logo compositions"></section>
   </main>
   <footer><p>All visible paints are restricted to the active colorset1 or colorset2 token list.</p></footer>
 
@@ -176,6 +176,7 @@
       const gallery = document.getElementById("logo-gallery");
       const studio = document.getElementById("studio-logo");
       const status = document.getElementById("studio-status");
+      const patternsById = new Map(manifest.patterns.map(pattern => [pattern.id, pattern]));
       const cardsByCompositionId = new Map();
       let currentConfig = {...initialConfig};
       let applyAllMode = false;
@@ -250,7 +251,7 @@
       };
 
       const buildCard = spec => {
-        const pattern = manifest.patterns.find(item => item.id === spec.patternId);
+        const pattern = patternsById.get(spec.patternId);
         const article = document.createElement("article");
         article.className = "logo-card";
         article.id = spec.patternId;

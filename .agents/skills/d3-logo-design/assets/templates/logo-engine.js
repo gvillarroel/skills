@@ -72,7 +72,37 @@
     { id: "d3-logo-necker-cube", label: "Necker Cube", family: "generative", geometrySignature: "bistable-wireframe-depth" },
     { id: "d3-logo-kanizsa-closure", label: "Kanizsa Closure", family: "generative", geometrySignature: "inducer-based-illusory-contour" },
     { id: "d3-logo-line-screen-silhouette", label: "Line Screen Silhouette", family: "generative", geometrySignature: "variable-line-segmentation-encoding" },
-    { id: "d3-logo-perspective-portal", label: "Perspective Portal", family: "generative", geometrySignature: "receding-quadrilateral-frame" }
+    { id: "d3-logo-perspective-portal", label: "Perspective Portal", family: "generative", geometrySignature: "receding-quadrilateral-frame" },
+    { id: "d3-logo-reuleaux-body", label: "Reuleaux Body", family: "mathematical", geometrySignature: "equilateral-vertex-constant-width-arcs" },
+    { id: "d3-logo-cassini-oval", label: "Cassini Oval", family: "mathematical", geometrySignature: "fixed-foci-distance-product-locus" },
+    { id: "d3-logo-polar-reciprocal", label: "Polar Reciprocal", family: "mathematical", geometrySignature: "convex-polygon-polar-duality" },
+    { id: "d3-logo-minkowski-sum", label: "Minkowski Sum", family: "mathematical", geometrySignature: "convex-set-vector-addition-boundary" },
+    { id: "d3-logo-pedal-curve", label: "Pedal Curve", family: "mathematical", geometrySignature: "tangent-perpendicular-foot-locus" },
+    { id: "d3-logo-involute-gear", label: "Involute Gear", family: "mathematical", geometrySignature: "base-circle-unwound-string-flanks" },
+    { id: "d3-logo-desargues-incidence", label: "Desargues Incidence", family: "mathematical", geometrySignature: "perspective-triangles-collinear-axis" },
+    { id: "d3-logo-circle-inversion", label: "Circle Inversion", family: "mathematical", geometrySignature: "reciprocal-radius-circle-line-transform" },
+    { id: "d3-logo-catenary-funicular", label: "Catenary Funicular", family: "mathematical", geometrySignature: "uniform-load-hyperbolic-cable" },
+    { id: "d3-logo-joukowski-airfoil", label: "Joukowski Airfoil", family: "mathematical", geometrySignature: "complex-circle-joukowski-map" },
+    { id: "d3-logo-hyperbolic-geodesics", label: "Hyperbolic Geodesics", family: "mathematical", geometrySignature: "poincare-boundary-orthogonal-arcs" },
+    { id: "d3-logo-elliptic-group-law", label: "Elliptic Group Law", family: "mathematical", geometrySignature: "cubic-chord-tangent-addition" },
+    { id: "d3-logo-mobius-strip", label: "Mobius Strip", family: "mathematical", geometrySignature: "half-twist-nonorientable-band" },
+    { id: "d3-logo-torus-knot", label: "Torus Knot", family: "mathematical", geometrySignature: "coprime-toroidal-winding-curve" },
+    { id: "d3-logo-ruled-hyperboloid", label: "Ruled Hyperboloid", family: "mathematical", geometrySignature: "doubly-ruled-quadric-line-family" },
+    { id: "d3-logo-tensegrity-prism", label: "Tensegrity Prism", family: "mathematical", geometrySignature: "prestressed-strut-cable-equilibrium" },
+    { id: "d3-logo-maxwell-reciprocal", label: "Maxwell Reciprocal", family: "mathematical", geometrySignature: "form-force-reciprocal-diagrams" },
+    { id: "d3-logo-medial-axis", label: "Medial Axis", family: "mathematical", geometrySignature: "maximal-inscribed-disc-center-locus" },
+    { id: "d3-logo-string-parabola", label: "String Parabola", family: "mathematical", geometrySignature: "indexed-segment-parabolic-envelope" },
+    { id: "d3-logo-circle-caustic", label: "Circle Caustic", family: "mathematical", geometrySignature: "specular-reflection-nephroid-envelope" },
+    { id: "d3-logo-moire-beat", label: "Moire Beat", family: "mathematical", geometrySignature: "phase-offset-frequency-interference" },
+    { id: "d3-logo-peaucellier-linkage", label: "Peaucellier Linkage", family: "mathematical", geometrySignature: "exact-straight-line-inversor-linkage" },
+    { id: "d3-logo-lorenz-attractor", label: "Lorenz Attractor", family: "mathematical", geometrySignature: "nonlinear-ode-chaotic-trajectory" },
+    { id: "d3-logo-affine-ifs", label: "Affine IFS", family: "mathematical", geometrySignature: "contractive-affine-iteration-invariant" },
+    { id: "d3-logo-cellular-automaton", label: "Cellular Automaton", family: "mathematical", geometrySignature: "boolean-neighborhood-time-evolution" },
+    { id: "d3-logo-logistic-bifurcation", label: "Logistic Bifurcation", family: "mathematical", geometrySignature: "parameter-swept-period-doubling" },
+    { id: "d3-logo-field-streamlines", label: "Field Streamlines", family: "mathematical", geometrySignature: "numerically-integrated-vector-field" },
+    { id: "d3-logo-newton-basin", label: "Newton Basin", family: "mathematical", geometrySignature: "complex-newton-root-basin" },
+    { id: "d3-logo-steiner-tree", label: "Steiner Tree", family: "mathematical", geometrySignature: "length-minimizing-120-degree-network" },
+    { id: "d3-logo-penrose-substitution", label: "Penrose Substitution", family: "mathematical", geometrySignature: "aperiodic-rhomb-substitution" }
   ]);
 
   const TEXTURES = deepFreeze([
@@ -148,7 +178,37 @@
     { id: "d3-logo-necker-depth-lockup", exampleId: "necker-cube", patternId: "d3-logo-necker-cube", textureId: "d3-logo-voronoi-mosaic", brand: "FLIPSPACE", tagline: "See depth two ways", colorset: "colorset1", font: "geometric", density: 1.0, curvature: 0.48, scale: 1.0, rotation: 0, textureStrength: 0.36, seed: 157 },
     { id: "d3-logo-kanizsa-closure-lockup", exampleId: "kanizsa-closure", patternId: "d3-logo-kanizsa-closure", textureId: "d3-logo-guilloche-waves", brand: "IMPLIED", tagline: "Complete what is absent", colorset: "colorset2", font: "humanist", density: 0.9, curvature: 0.62, scale: 1.0, rotation: 0, textureStrength: 0.32, seed: 158 },
     { id: "d3-logo-line-screen-lockup", exampleId: "line-screen-silhouette", patternId: "d3-logo-line-screen-silhouette", textureId: "d3-logo-woven-checker", brand: "SCANLINE", tagline: "Shape through intervals", colorset: "colorset1", font: "condensed", density: 1.2, curvature: 0.56, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 159 },
-    { id: "d3-logo-perspective-portal-lockup", exampleId: "perspective-portal", patternId: "d3-logo-perspective-portal", textureId: "d3-logo-directional-fibers", brand: "THRESHOLD", tagline: "Enter the next frame", colorset: "colorset2", font: "editorial", density: 1.1, curvature: 0.6, scale: 1.0, rotation: -2, textureStrength: 0.3, seed: 160 }
+    { id: "d3-logo-perspective-portal-lockup", exampleId: "perspective-portal", patternId: "d3-logo-perspective-portal", textureId: "d3-logo-directional-fibers", brand: "THRESHOLD", tagline: "Enter the next frame", colorset: "colorset2", font: "editorial", density: 1.1, curvature: 0.6, scale: 1.0, rotation: -2, textureStrength: 0.3, seed: 160 },
+    { id: "d3-logo-reuleaux-body-lockup", exampleId: "reuleaux-body", patternId: "d3-logo-reuleaux-body", textureId: "d3-logo-micro-grid", brand: "CONSTANT", tagline: "Width in every direction", colorset: "colorset1", font: "geometric", density: 1.0, curvature: 0.68, scale: 1.0, rotation: 0, textureStrength: 0.24, seed: 161 },
+    { id: "d3-logo-cassini-oval-lockup", exampleId: "cassini-oval", patternId: "d3-logo-cassini-oval", textureId: "d3-logo-diagonal-hatch", brand: "LOCUS", tagline: "Distance becomes form", colorset: "colorset2", font: "humanist", density: 0.9, curvature: 0.76, scale: 1.0, rotation: -3, textureStrength: 0.28, seed: 162 },
+    { id: "d3-logo-polar-reciprocal-lockup", exampleId: "polar-reciprocal", patternId: "d3-logo-polar-reciprocal", textureId: "d3-logo-crosshatch", brand: "DUAL", tagline: "Every edge has a counterpart", colorset: "colorset1", font: "editorial", density: 1.1, curvature: 0.52, scale: 1.0, rotation: 2, textureStrength: 0.26, seed: 163 },
+    { id: "d3-logo-minkowski-sum-lockup", exampleId: "minkowski-sum", patternId: "d3-logo-minkowski-sum", textureId: "d3-logo-halftone-dots", brand: "SUMFORM", tagline: "Shapes add into structure", colorset: "colorset2", font: "condensed", density: 1.0, curvature: 0.58, scale: 1.02, rotation: 0, textureStrength: 0.3, seed: 164 },
+    { id: "d3-logo-pedal-curve-lockup", exampleId: "pedal-curve", patternId: "d3-logo-pedal-curve", textureId: "d3-logo-seeded-stipple", brand: "FOOTPOINT", tagline: "Trace the perpendicular", colorset: "colorset1", font: "monospace", density: 1.2, curvature: 0.72, scale: 1.0, rotation: 4, textureStrength: 0.25, seed: 165 },
+    { id: "d3-logo-involute-gear-lockup", exampleId: "involute-gear", patternId: "d3-logo-involute-gear", textureId: "d3-logo-topographic-lines", brand: "UNWIND", tagline: "Motion shaped by contact", colorset: "colorset2", font: "geometric", density: 1.1, curvature: 0.46, scale: 0.98, rotation: -2, textureStrength: 0.32, seed: 166 },
+    { id: "d3-logo-desargues-incidence-lockup", exampleId: "desargues-incidence", patternId: "d3-logo-desargues-incidence", textureId: "d3-logo-voronoi-mosaic", brand: "AXIS", tagline: "Perspective proves alignment", colorset: "colorset1", font: "humanist", density: 1.0, curvature: 0.5, scale: 1.0, rotation: 0, textureStrength: 0.27, seed: 167 },
+    { id: "d3-logo-circle-inversion-lockup", exampleId: "circle-inversion", patternId: "d3-logo-circle-inversion", textureId: "d3-logo-guilloche-waves", brand: "INVERSE", tagline: "Near becomes far", colorset: "colorset2", font: "editorial", density: 1.2, curvature: 0.64, scale: 1.0, rotation: 5, textureStrength: 0.34, seed: 168 },
+    { id: "d3-logo-catenary-funicular-lockup", exampleId: "catenary-funicular", patternId: "d3-logo-catenary-funicular", textureId: "d3-logo-woven-checker", brand: "FUNICULAR", tagline: "Load finds its curve", colorset: "colorset1", font: "condensed", density: 0.9, curvature: 0.82, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 169 },
+    { id: "d3-logo-joukowski-airfoil-lockup", exampleId: "joukowski-airfoil", patternId: "d3-logo-joukowski-airfoil", textureId: "d3-logo-directional-fibers", brand: "TRANSFORM", tagline: "Map flow into form", colorset: "colorset2", font: "monospace", density: 1.1, curvature: 0.6, scale: 1.0, rotation: -4, textureStrength: 0.3, seed: 170 },
+    { id: "d3-logo-hyperbolic-geodesics-lockup", exampleId: "hyperbolic-geodesics", patternId: "d3-logo-hyperbolic-geodesics", textureId: "d3-logo-micro-grid", brand: "GEODESIC", tagline: "Shortest paths bend", colorset: "colorset1", font: "geometric", density: 1.2, curvature: 0.78, scale: 1.0, rotation: 0, textureStrength: 0.24, seed: 171 },
+    { id: "d3-logo-elliptic-group-law-lockup", exampleId: "elliptic-group-law", patternId: "d3-logo-elliptic-group-law", textureId: "d3-logo-diagonal-hatch", brand: "TANGENT", tagline: "Addition through incidence", colorset: "colorset2", font: "humanist", density: 1.0, curvature: 0.66, scale: 1.0, rotation: 3, textureStrength: 0.28, seed: 172 },
+    { id: "d3-logo-mobius-strip-lockup", exampleId: "mobius-strip", patternId: "d3-logo-mobius-strip", textureId: "d3-logo-crosshatch", brand: "ONESIDE", tagline: "Continuity with a twist", colorset: "colorset1", font: "editorial", density: 1.1, curvature: 0.74, scale: 1.0, rotation: -5, textureStrength: 0.26, seed: 173 },
+    { id: "d3-logo-torus-knot-lockup", exampleId: "torus-knot", patternId: "d3-logo-torus-knot", textureId: "d3-logo-halftone-dots", brand: "COPRIME", tagline: "One curve many crossings", colorset: "colorset2", font: "condensed", density: 1.2, curvature: 0.7, scale: 0.98, rotation: 6, textureStrength: 0.3, seed: 174 },
+    { id: "d3-logo-ruled-hyperboloid-lockup", exampleId: "ruled-hyperboloid", patternId: "d3-logo-ruled-hyperboloid", textureId: "d3-logo-seeded-stipple", brand: "RULED", tagline: "Lines compose a surface", colorset: "colorset1", font: "monospace", density: 1.1, curvature: 0.56, scale: 1.0, rotation: 0, textureStrength: 0.25, seed: 175 },
+    { id: "d3-logo-tensegrity-prism-lockup", exampleId: "tensegrity-prism", patternId: "d3-logo-tensegrity-prism", textureId: "d3-logo-topographic-lines", brand: "EQUILIBRIUM", tagline: "Tension holds the whole", colorset: "colorset2", font: "geometric", density: 1.0, curvature: 0.48, scale: 1.0, rotation: -3, textureStrength: 0.32, seed: 176 },
+    { id: "d3-logo-maxwell-reciprocal-lockup", exampleId: "maxwell-reciprocal", patternId: "d3-logo-maxwell-reciprocal", textureId: "d3-logo-voronoi-mosaic", brand: "RECIPROCAL", tagline: "Force mirrors form", colorset: "colorset1", font: "humanist", density: 1.1, curvature: 0.54, scale: 1.0, rotation: 2, textureStrength: 0.27, seed: 177 },
+    { id: "d3-logo-medial-axis-lockup", exampleId: "medial-axis", patternId: "d3-logo-medial-axis", textureId: "d3-logo-guilloche-waves", brand: "SKELETON", tagline: "The center of every boundary", colorset: "colorset2", font: "editorial", density: 1.2, curvature: 0.76, scale: 1.0, rotation: 0, textureStrength: 0.34, seed: 178 },
+    { id: "d3-logo-string-parabola-lockup", exampleId: "string-parabola", patternId: "d3-logo-string-parabola", textureId: "d3-logo-woven-checker", brand: "ENVELOPE", tagline: "Straight lines reveal a curve", colorset: "colorset1", font: "condensed", density: 1.1, curvature: 0.8, scale: 1.0, rotation: 4, textureStrength: 0.28, seed: 179 },
+    { id: "d3-logo-circle-caustic-lockup", exampleId: "circle-caustic", patternId: "d3-logo-circle-caustic", textureId: "d3-logo-directional-fibers", brand: "CAUSTIC", tagline: "Reflection gathers light", colorset: "colorset2", font: "monospace", density: 1.2, curvature: 0.72, scale: 1.0, rotation: -4, textureStrength: 0.3, seed: 180 },
+    { id: "d3-logo-moire-beat-lockup", exampleId: "moire-beat", patternId: "d3-logo-moire-beat", textureId: "d3-logo-micro-grid", brand: "BEATFIELD", tagline: "Difference makes rhythm", colorset: "colorset1", font: "geometric", density: 1.2, curvature: 0.6, scale: 1.0, rotation: 5, textureStrength: 0.24, seed: 181 },
+    { id: "d3-logo-peaucellier-linkage-lockup", exampleId: "peaucellier-linkage", patternId: "d3-logo-peaucellier-linkage", textureId: "d3-logo-diagonal-hatch", brand: "LINKAGE", tagline: "Mechanism draws truth", colorset: "colorset2", font: "humanist", density: 1.0, curvature: 0.5, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 182 },
+    { id: "d3-logo-lorenz-attractor-lockup", exampleId: "lorenz-attractor", patternId: "d3-logo-lorenz-attractor", textureId: "d3-logo-crosshatch", brand: "STRANGEFLOW", tagline: "Order beyond repetition", colorset: "colorset1", font: "editorial", density: 1.1, curvature: 0.84, scale: 1.0, rotation: 3, textureStrength: 0.26, seed: 183 },
+    { id: "d3-logo-affine-ifs-lockup", exampleId: "affine-ifs", patternId: "d3-logo-affine-ifs", textureId: "d3-logo-halftone-dots", brand: "INVARIANT", tagline: "Simple maps grow complexity", colorset: "colorset2", font: "condensed", density: 1.2, curvature: 0.7, scale: 1.0, rotation: -2, textureStrength: 0.3, seed: 184 },
+    { id: "d3-logo-cellular-automaton-lockup", exampleId: "cellular-automaton", patternId: "d3-logo-cellular-automaton", textureId: "d3-logo-seeded-stipple", brand: "LOCALRULE", tagline: "Neighborhoods shape time", colorset: "colorset1", font: "monospace", density: 1.2, curvature: 0.4, scale: 1.0, rotation: 0, textureStrength: 0.25, seed: 185 },
+    { id: "d3-logo-logistic-bifurcation-lockup", exampleId: "logistic-bifurcation", patternId: "d3-logo-logistic-bifurcation", textureId: "d3-logo-topographic-lines", brand: "CASCADE", tagline: "Change splits into branches", colorset: "colorset2", font: "geometric", density: 1.1, curvature: 0.62, scale: 1.0, rotation: 0, textureStrength: 0.32, seed: 186 },
+    { id: "d3-logo-field-streamlines-lockup", exampleId: "field-streamlines", patternId: "d3-logo-field-streamlines", textureId: "d3-logo-voronoi-mosaic", brand: "FLOWFIELD", tagline: "Follow the vector", colorset: "colorset1", font: "humanist", density: 1.2, curvature: 0.82, scale: 1.0, rotation: 4, textureStrength: 0.27, seed: 187 },
+    { id: "d3-logo-newton-basin-lockup", exampleId: "newton-basin", patternId: "d3-logo-newton-basin", textureId: "d3-logo-guilloche-waves", brand: "BASIN", tagline: "Every start finds a root", colorset: "colorset2", font: "editorial", density: 1.2, curvature: 0.74, scale: 1.0, rotation: -3, textureStrength: 0.34, seed: 188 },
+    { id: "d3-logo-steiner-tree-lockup", exampleId: "steiner-tree", patternId: "d3-logo-steiner-tree", textureId: "d3-logo-woven-checker", brand: "STEINER", tagline: "Connect more with less", colorset: "colorset1", font: "condensed", density: 1.0, curvature: 0.56, scale: 1.0, rotation: 0, textureStrength: 0.28, seed: 189 },
+    { id: "d3-logo-penrose-substitution-lockup", exampleId: "penrose-substitution", patternId: "d3-logo-penrose-substitution", textureId: "d3-logo-directional-fibers", brand: "APERIODIC", tagline: "Pattern without repetition", colorset: "colorset2", font: "monospace", density: 1.1, curvature: 0.68, scale: 1.0, rotation: 5, textureStrength: 0.3, seed: 190 }
   ]);
 
   const FONT_STACKS = deepFreeze([
@@ -424,14 +484,15 @@
 
   function stablePrefix(svgNode, config) {
     const ownerDocument = svgNode.ownerDocument;
+    const existingInstance = svgNode.getAttribute("data-logo-instance") || "";
+    const explicitIdentity = config.instanceId || svgNode.getAttribute("id") || existingInstance;
     let documentIndex = 0;
-    if (ownerDocument && typeof ownerDocument.querySelectorAll === "function") {
+    if (!explicitIdentity && ownerDocument && typeof ownerDocument.querySelectorAll === "function") {
       const nodes = Array.from(ownerDocument.querySelectorAll("svg"));
       const found = nodes.indexOf(svgNode);
       if (found >= 0) documentIndex = found;
     }
-    const existingInstance = svgNode.getAttribute("data-logo-instance") || "";
-    const nodeIdentity = config.instanceId || svgNode.getAttribute("id") || existingInstance || `${config.compositionId}-${documentIndex}`;
+    const nodeIdentity = explicitIdentity || `${config.compositionId}-${documentIndex}`;
     const instance = `${sanitizeId(config.compositionId)}-${hashString(nodeIdentity)}`;
     svgNode.setAttribute("data-logo-instance", instance);
     return `d3ld-${instance}`;
@@ -2983,6 +3044,1076 @@
       .attr("fill", ctx.palette.roles.accent);
   }
 
+  function mathSegmentsPath(segments) {
+    return segments.map((segment) => `M${segment[0][0].toFixed(2)},${segment[0][1].toFixed(2)}L${segment[1][0].toFixed(2)},${segment[1][1].toFixed(2)}`).join("");
+  }
+
+  function mathPolygonPath(points) {
+    if (!points.length) return "";
+    return `M${points.map((point) => `${point[0].toFixed(2)},${point[1].toFixed(2)}`).join("L")}Z`;
+  }
+
+  function mathLineIntersection(a, b, c, d) {
+    const denominator = (a[0] - b[0]) * (c[1] - d[1]) - (a[1] - b[1]) * (c[0] - d[0]);
+    if (Math.abs(denominator) < 1e-8) return null;
+    const crossA = a[0] * b[1] - a[1] * b[0];
+    const crossB = c[0] * d[1] - c[1] * d[0];
+    return [
+      (crossA * (c[0] - d[0]) - (a[0] - b[0]) * crossB) / denominator,
+      (crossA * (c[1] - d[1]) - (a[1] - b[1]) * crossB) / denominator
+    ];
+  }
+
+  function mathFitTransform(points, bounds) {
+    const xs = points.map((point) => point[0]);
+    const ys = points.map((point) => point[1]);
+    const minX = Math.min(...xs);
+    const maxX = Math.max(...xs);
+    const minY = Math.min(...ys);
+    const maxY = Math.max(...ys);
+    const scale = Math.min(
+      (bounds[2] - bounds[0]) / Math.max(1e-6, maxX - minX),
+      (bounds[3] - bounds[1]) / Math.max(1e-6, maxY - minY)
+    );
+    const sourceCenter = [(minX + maxX) / 2, (minY + maxY) / 2];
+    const targetCenter = [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2];
+    return (point) => [
+      targetCenter[0] + (point[0] - sourceCenter[0]) * scale,
+      targetCenter[1] + (point[1] - sourceCenter[1]) * scale
+    ];
+  }
+
+  function mathProject3D(point, options) {
+    const rx = options.rx || 0;
+    const ry = options.ry || 0;
+    const cosX = Math.cos(rx);
+    const sinX = Math.sin(rx);
+    const cosY = Math.cos(ry);
+    const sinY = Math.sin(ry);
+    const y1 = point[1] * cosX - point[2] * sinX;
+    const z1 = point[1] * sinX + point[2] * cosX;
+    const x2 = point[0] * cosY + z1 * sinY;
+    const z2 = -point[0] * sinY + z1 * cosY;
+    const perspective = 1 / Math.max(0.55, 1 + z2 * (options.perspective || 0.08));
+    return [
+      options.cx + x2 * options.scale * perspective,
+      options.cy - y1 * options.scale * perspective,
+      z2
+    ];
+  }
+
+  function mathCircumcenter(a, b, c) {
+    const denominator = 2 * (a[0] * (b[1] - c[1]) + b[0] * (c[1] - a[1]) + c[0] * (a[1] - b[1]));
+    if (Math.abs(denominator) < 1e-8) return null;
+    const aa = a[0] * a[0] + a[1] * a[1];
+    const bb = b[0] * b[0] + b[1] * b[1];
+    const cc = c[0] * c[0] + c[1] * c[1];
+    return [
+      (aa * (b[1] - c[1]) + bb * (c[1] - a[1]) + cc * (a[1] - b[1])) / denominator,
+      (aa * (c[0] - b[0]) + bb * (a[0] - c[0]) + cc * (b[0] - a[0])) / denominator
+    ];
+  }
+
+  function renderReuleauxBody(group, ctx) {
+    const center = [240, 126];
+    const line = ctx.d3.line().curve(ctx.d3.curveLinearClosed);
+    const bodies = ctx.d3.range(3).map((index) => {
+      const side = 116 - index * 25;
+      const height = side * Math.sqrt(3) / 2;
+      const vertices = [
+        [center[0], center[1] - height * 2 / 3],
+        [center[0] + side / 2, center[1] + height / 3],
+        [center[0] - side / 2, center[1] + height / 3]
+      ];
+      const arcs = [
+        [vertices[2], vertices[0], vertices[1], -Math.PI / 3, 0],
+        [vertices[0], vertices[1], vertices[2], Math.PI / 3, 2 * Math.PI / 3],
+        [vertices[1], vertices[2], vertices[0], Math.PI, 4 * Math.PI / 3]
+      ];
+      const points = [];
+      arcs.forEach(([arcCenter, start, end, startAngle, endAngle]) => {
+        ctx.d3.range(13).forEach((sample) => {
+          const angle = startAngle + (endAngle - startAngle) * sample / 12;
+          points.push([arcCenter[0] + side * Math.cos(angle), arcCenter[1] + side * Math.sin(angle)]);
+        });
+        points[points.length - 1] = end;
+        if (points.length === 13) points[0] = start;
+      });
+      return points;
+    });
+    group.selectAll("path.reuleaux-body")
+      .data(bodies)
+      .join("path")
+      .attr("class", "reuleaux-body")
+      .attr("d", line)
+      .attr("fill", (d, index) => index === 2 ? ctx.textureFill : "none")
+      .attr("stroke", (d, index) => ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke-width", (d, index) => 8 - index * 1.8)
+      .attr("stroke-linejoin", "round");
+    group.append("circle").attr("class", "reuleaux-center").attr("cx", center[0]).attr("cy", center[1]).attr("r", 6).attr("fill", ctx.palette.roles.accent);
+  }
+
+  function renderCassiniOval(group, ctx) {
+    const center = [240, 126];
+    const a = 62;
+    const ratios = [0.78, 1, 1.2];
+    const paths = [];
+    ratios.forEach((ratio, ratioIndex) => {
+      let segment = [];
+      ctx.d3.range(361).forEach((sample) => {
+        const theta = sample / 360 * Math.PI * 2;
+        const b = a * ratio;
+        const discriminant = Math.pow(b, 4) - Math.pow(a, 4) * Math.pow(Math.sin(2 * theta), 2);
+        const radiusSquared = a * a * Math.cos(2 * theta) + Math.sqrt(Math.max(0, discriminant));
+        if (discriminant >= 0 && radiusSquared >= 0) {
+          const radius = Math.sqrt(radiusSquared);
+          segment.push([center[0] + radius * Math.cos(theta), center[1] + radius * Math.sin(theta)]);
+        } else if (segment.length > 1) {
+          paths.push({ ratioIndex, points: segment });
+          segment = [];
+        } else {
+          segment = [];
+        }
+      });
+      if (segment.length > 1) paths.push({ ratioIndex, points: segment });
+    });
+    const line = ctx.d3.line().curve(ctx.d3.curveLinear);
+    group.selectAll("path.cassini-locus")
+      .data(paths)
+      .join("path")
+      .attr("class", "cassini-locus")
+      .attr("d", (d) => line(d.points))
+      .attr("fill", "none")
+      .attr("stroke", (d) => d.ratioIndex === 1 ? ctx.textureFill : ctx.palette.sequence[d.ratioIndex])
+      .attr("stroke-width", (d) => d.ratioIndex === 1 ? 7 : 4)
+      .attr("stroke-linecap", "round");
+    group.selectAll("circle.cassini-focus")
+      .data([-a, a])
+      .join("circle")
+      .attr("class", "cassini-focus")
+      .attr("cx", (d) => center[0] + d).attr("cy", center[1]).attr("r", 5)
+      .attr("fill", ctx.palette.roles.accent);
+  }
+
+  function renderPolarReciprocal(group, ctx) {
+    const center = [240, 126];
+    const source = [-1.45, -0.55, 0.55, 1.75, 2.75].map((angle, index) => {
+      const radius = [76, 68, 73, 63, 70][index];
+      return [radius * Math.cos(angle), radius * Math.sin(angle)];
+    });
+    let dual = source.map((point, index) => {
+      const next = source[(index + 1) % source.length];
+      const a = point[1] - next[1];
+      const b = next[0] - point[0];
+      const c = a * point[0] + b * point[1];
+      return [2700 * a / c, 2700 * b / c];
+    });
+    const maxDual = Math.max(...dual.map((point) => Math.hypot(point[0], point[1])));
+    if (maxDual > 82) dual = dual.map((point) => [point[0] * 82 / maxDual, point[1] * 82 / maxDual]);
+    const toCanvas = (point) => [center[0] + point[0], center[1] + point[1]];
+    const sourceCanvas = source.map(toCanvas);
+    const dualCanvas = dual.map(toCanvas);
+    group.append("path").attr("class", "polar-source-polygon").attr("d", mathPolygonPath(sourceCanvas))
+      .attr("fill", ctx.textureFill).attr("fill-opacity", 0.26).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 4);
+    group.append("path").attr("class", "polar-dual-polygon").attr("d", mathPolygonPath(dualCanvas))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 7).attr("stroke-linejoin", "round");
+    const incidence = dualCanvas.map((point, index) => {
+      const a = sourceCanvas[index];
+      const b = sourceCanvas[(index + 1) % sourceCanvas.length];
+      return [[(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], point];
+    });
+    group.append("path").attr("class", "polar-incidence-lines").attr("d", mathSegmentsPath(incidence))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.accent).attr("stroke-width", 2).attr("stroke-dasharray", "3 5");
+    group.selectAll("circle.polar-dual-vertex").data(dualCanvas).join("circle").attr("class", "polar-dual-vertex")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 4.5).attr("fill", ctx.palette.roles.accent);
+  }
+
+  function renderMinkowskiSum(group, ctx) {
+    const a = [[-30, 25], [0, -32], [34, 22]];
+    const b = [[-26, -20], [28, -20], [28, 20], [-26, 20]];
+    const sum = ctx.d3.polygonHull(a.flatMap((pointA) => b.map((pointB) => [pointA[0] + pointB[0], pointA[1] + pointB[1]]))) || [];
+    const place = (points, x, scale) => points.map((point) => [x + point[0] * scale, 126 + point[1] * scale]);
+    const aCanvas = place(a, 113, 0.82);
+    const bCanvas = place(b, 226, 0.82);
+    const sumCanvas = place(sum, 356, 0.88);
+    group.append("path").attr("class", "minkowski-set-a").attr("d", mathPolygonPath(aCanvas))
+      .attr("fill", ctx.palette.sequence[1]).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
+    group.append("path").attr("class", "minkowski-set-b").attr("d", mathPolygonPath(bCanvas))
+      .attr("fill", ctx.palette.sequence[2]).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
+    group.append("path").attr("class", "minkowski-sum-boundary").attr("d", mathPolygonPath(sumCanvas))
+      .attr("fill", ctx.textureFill).attr("stroke", ctx.palette.roles.primaryDark).attr("stroke-width", 6).attr("stroke-linejoin", "round");
+    const plusSegments = [[[164, 126], [183, 126]], [[173.5, 116.5], [173.5, 135.5]]];
+    const arrowSegments = [[[276, 126], [307, 126]], [[297, 117], [307, 126]], [[297, 135], [307, 126]]];
+    group.append("path").attr("class", "minkowski-operators").attr("d", mathSegmentsPath(plusSegments.concat(arrowSegments)))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.accent).attr("stroke-width", 4).attr("stroke-linecap", "round");
+  }
+
+  function renderPedalCurve(group, ctx) {
+    const center = [240, 128];
+    const rx = 104;
+    const ry = 67;
+    const fixed = [172, 66];
+    const feet = ctx.d3.range(181).map((sample) => {
+      const t = sample / 180 * Math.PI * 2;
+      const point = [center[0] + rx * Math.cos(t), center[1] + ry * Math.sin(t)];
+      const normal = [Math.cos(t) / rx, Math.sin(t) / ry];
+      const normalLength = normal[0] * normal[0] + normal[1] * normal[1];
+      const factor = ((fixed[0] - point[0]) * normal[0] + (fixed[1] - point[1]) * normal[1]) / normalLength;
+      return [fixed[0] - factor * normal[0], fixed[1] - factor * normal[1]];
+    });
+    const ellipse = ctx.d3.range(121).map((sample) => [
+      center[0] + rx * Math.cos(sample / 120 * Math.PI * 2),
+      center[1] + ry * Math.sin(sample / 120 * Math.PI * 2)
+    ]);
+    const line = ctx.d3.line().curve(ctx.d3.curveLinearClosed);
+    group.append("path").attr("class", "pedal-source-ellipse").attr("d", line(ellipse))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.line).attr("stroke-width", 3);
+    group.append("path").attr("class", "pedal-foot-locus").attr("d", line(feet))
+      .attr("fill", ctx.textureFill).attr("fill-opacity", 0.18).attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 7).attr("stroke-linejoin", "round");
+    const construction = ctx.d3.range(0, feet.length, 30).map((index) => [fixed, feet[index]]);
+    group.append("path").attr("class", "pedal-projections").attr("d", mathSegmentsPath(construction))
+      .attr("fill", "none").attr("stroke", ctx.palette.sequence[2]).attr("stroke-width", 2).attr("opacity", 0.72);
+    group.append("circle").attr("class", "pedal-fixed-point").attr("cx", fixed[0]).attr("cy", fixed[1]).attr("r", 7).attr("fill", ctx.palette.roles.accent);
+  }
+
+  function renderInvoluteGear(group, ctx) {
+    const center = [240, 126];
+    const baseRadius = 54;
+    const teeth = 12;
+    const flankSegments = [];
+    const toothTips = [];
+    const rotate = (point, angle) => [
+      center[0] + point[0] * Math.cos(angle) - point[1] * Math.sin(angle),
+      center[1] + point[0] * Math.sin(angle) + point[1] * Math.cos(angle)
+    ];
+    ctx.d3.range(teeth).forEach((tooth) => {
+      const angle = tooth / teeth * Math.PI * 2;
+      const left = [];
+      const right = [];
+      ctx.d3.range(13).forEach((sample) => {
+        const t = sample / 12 * 0.72;
+        const x = baseRadius * (Math.cos(t) + t * Math.sin(t));
+        const y = baseRadius * (Math.sin(t) - t * Math.cos(t));
+        left.push(rotate([x, y], angle - 0.12));
+        right.push(rotate([x, -y], angle + 0.12));
+      });
+      for (let index = 1; index < left.length; index += 1) flankSegments.push([left[index - 1], left[index]]);
+      for (let index = 1; index < right.length; index += 1) flankSegments.push([right[index - 1], right[index]]);
+      toothTips.push([left[left.length - 1], right[right.length - 1]]);
+    });
+    group.append("circle").attr("class", "involute-gear-body").attr("cx", center[0]).attr("cy", center[1]).attr("r", baseRadius + 5)
+      .attr("fill", ctx.textureFill).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 4);
+    group.append("path").attr("class", "involute-flanks").attr("d", mathSegmentsPath(flankSegments.concat(toothTips)))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 5).attr("stroke-linecap", "round");
+    group.append("circle").attr("class", "involute-base-circle").attr("cx", center[0]).attr("cy", center[1]).attr("r", baseRadius)
+      .attr("fill", "none").attr("stroke", ctx.palette.sequence[2]).attr("stroke-width", 2).attr("stroke-dasharray", "5 5");
+    group.append("circle").attr("class", "involute-bore").attr("cx", center[0]).attr("cy", center[1]).attr("r", 18)
+      .attr("fill", ctx.palette.roles.background).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 5);
+  }
+
+  function renderDesarguesIncidence(group, ctx) {
+    const origin = [0, -90];
+    const triangleA = [[-90, 30], [90, 20], [-20, 120]];
+    const scales = [0.45, 0.8, 0.25];
+    const triangleB = triangleA.map((point, index) => [
+      origin[0] + (point[0] - origin[0]) * scales[index],
+      origin[1] + (point[1] - origin[1]) * scales[index]
+    ]);
+    const pairs = [[0, 1], [1, 2], [2, 0]];
+    const axisPoints = pairs.map(([a, b]) => mathLineIntersection(triangleA[a], triangleA[b], triangleB[a], triangleB[b])).filter(Boolean);
+    const toCanvas = (point) => [240 + point[0], 125 + (point[1] - 15) * 0.86];
+    const o = toCanvas(origin);
+    const aCanvas = triangleA.map(toCanvas);
+    const bCanvas = triangleB.map(toCanvas);
+    const axisCanvas = axisPoints.map(toCanvas);
+    const perspectiveRays = aCanvas.map((point) => [o, point]);
+    group.append("path").attr("class", "desargues-perspective-rays").attr("d", mathSegmentsPath(perspectiveRays))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.line).attr("stroke-width", 2.5);
+    group.append("path").attr("class", "desargues-triangle-a").attr("d", mathPolygonPath(aCanvas))
+      .attr("fill", ctx.textureFill).attr("fill-opacity", 0.22).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 5);
+    group.append("path").attr("class", "desargues-triangle-b").attr("d", mathPolygonPath(bCanvas))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 6);
+    if (axisCanvas.length > 1) {
+      const sorted = axisCanvas.slice().sort((left, right) => left[0] - right[0]);
+      group.append("path").attr("class", "desargues-collinear-axis").attr("d", mathSegmentsPath([[sorted[0], sorted[sorted.length - 1]]]))
+        .attr("fill", "none").attr("stroke", ctx.palette.roles.accent).attr("stroke-width", 4).attr("stroke-dasharray", "8 5");
+    }
+    group.selectAll("circle.desargues-axis-point").data(axisCanvas).join("circle").attr("class", "desargues-axis-point")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 5).attr("fill", ctx.palette.roles.accent);
+    group.append("circle").attr("class", "desargues-center").attr("cx", o[0]).attr("cy", o[1]).attr("r", 7).attr("fill", ctx.palette.sequence[2]);
+  }
+
+  function renderCircleInversion(group, ctx) {
+    const center = [240, 126];
+    const inversionRadius = 54;
+    const sourceLines = [-76, -42, 42, 76].map((offset, index) => ({
+      vertical: index % 2 === 0,
+      offset
+    }));
+    const inversePaths = sourceLines.map((spec) => ctx.d3.range(121).map((sample) => {
+      const t = -112 + sample / 120 * 224;
+      const local = spec.vertical ? [spec.offset, t] : [t, spec.offset];
+      const magnitudeSquared = local[0] * local[0] + local[1] * local[1];
+      return [
+        center[0] + inversionRadius * inversionRadius * local[0] / magnitudeSquared,
+        center[1] + inversionRadius * inversionRadius * local[1] / magnitudeSquared
+      ];
+    }));
+    const guideSegments = sourceLines.map((spec) => spec.vertical
+      ? [[center[0] + spec.offset, 35], [center[0] + spec.offset, 217]]
+      : [[92, center[1] + spec.offset], [388, center[1] + spec.offset]]);
+    group.append("path").attr("class", "inversion-source-lines").attr("d", mathSegmentsPath(guideSegments))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.line).attr("stroke-width", 2);
+    group.selectAll("path.inversion-image")
+      .data(inversePaths)
+      .join("path")
+      .attr("class", "inversion-image")
+      .attr("d", ctx.d3.line().curve(ctx.d3.curveBasis))
+      .attr("fill", "none")
+      .attr("stroke", (d, index) => index === 1 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke-width", 6)
+      .attr("stroke-linecap", "round");
+    group.append("circle").attr("class", "inversion-circle").attr("cx", center[0]).attr("cy", center[1]).attr("r", inversionRadius)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 4).attr("stroke-dasharray", "6 5");
+    group.append("circle").attr("class", "inversion-center").attr("cx", center[0]).attr("cy", center[1]).attr("r", 7).attr("fill", ctx.palette.roles.accent);
+  }
+
+  function renderCatenaryFunicular(group, ctx) {
+    const cableSpecs = [
+      { x0: 92, x1: 388, top: 55, sag: 98, a: 82 },
+      { x0: 126, x1: 354, top: 79, sag: 70, a: 66 }
+    ];
+    const line = ctx.d3.line().curve(ctx.d3.curveLinear);
+    const cables = cableSpecs.map((spec) => {
+      const centerX = (spec.x0 + spec.x1) / 2;
+      const half = (spec.x1 - spec.x0) / 2;
+      const denominator = Math.cosh(half / spec.a) - 1;
+      return ctx.d3.range(121).map((sample) => {
+        const x = spec.x0 + sample / 120 * (spec.x1 - spec.x0);
+        const normalized = (Math.cosh(half / spec.a) - Math.cosh((x - centerX) / spec.a)) / denominator;
+        return [x, spec.top + spec.sag * normalized];
+      });
+    });
+    group.selectAll("path.catenary-cable").data(cables).join("path").attr("class", "catenary-cable")
+      .attr("d", line).attr("fill", "none")
+      .attr("stroke", (d, index) => index === 0 ? ctx.palette.roles.primary : ctx.textureFill)
+      .attr("stroke-width", (d, index) => index === 0 ? 8 : 5).attr("stroke-linecap", "round");
+    const hangers = ctx.d3.range(13).map((index) => {
+      const point = cables[0][index * 10];
+      return [point, [point[0], 205]];
+    });
+    group.append("path").attr("class", "catenary-hangers").attr("d", mathSegmentsPath(hangers))
+      .attr("fill", "none").attr("stroke", ctx.palette.sequence[2]).attr("stroke-width", 2.5);
+    group.append("path").attr("class", "funicular-deck").attr("d", "M84,205H396")
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 7).attr("stroke-linecap", "round");
+  }
+
+  function renderJoukowskiAirfoil(group, ctx) {
+    const mapped = ctx.d3.range(361).map((sample) => {
+      const theta = sample / 360 * Math.PI * 2;
+      const z = [-0.09 + 1.04 * Math.cos(theta), 0.08 + 1.04 * Math.sin(theta)];
+      const magnitudeSquared = z[0] * z[0] + z[1] * z[1];
+      return [
+        z[0] + z[0] / magnitudeSquared,
+        z[1] - z[1] / magnitudeSquared
+      ];
+    });
+    const fit = mathFitTransform(mapped, [86, 62, 394, 190]);
+    const airfoil = mapped.map(fit);
+    const line = ctx.d3.line().curve(ctx.d3.curveLinearClosed);
+    group.append("path").attr("class", "joukowski-airfoil").attr("d", line(airfoil))
+      .attr("fill", ctx.textureFill).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 6).attr("stroke-linejoin", "round");
+    const flowLines = [-34, -17, 0, 17, 34].map((offset) => ctx.d3.range(45).map((sample) => {
+      const x = 82 + sample / 44 * 316;
+      const normalized = (x - 240) / 154;
+      const displacement = offset * (0.85 + 0.15 * normalized * normalized) - 18 * Math.exp(-normalized * normalized * 2.5) * (offset / 38);
+      return [x, 126 + displacement];
+    }));
+    group.selectAll("path.joukowski-flow").data(flowLines).join("path").attr("class", "joukowski-flow")
+      .attr("d", ctx.d3.line().curve(ctx.d3.curveBasis)).attr("fill", "none")
+      .attr("stroke", (d, index) => ctx.palette.sequence[(index + 1) % ctx.palette.sequence.length])
+      .attr("stroke-width", 2).attr("opacity", 0.72);
+    group.append("circle").attr("class", "joukowski-map-pole").attr("cx", airfoil[0][0]).attr("cy", airfoil[0][1]).attr("r", 5).attr("fill", ctx.palette.roles.accent);
+  }
+
+  function renderHyperbolicGeodesics(group, ctx) {
+    const center = [240, 126];
+    const radius = 92;
+    const clipId = ctx.uid("poincare-disc-clip");
+    ctx.defs.append("clipPath").attr("id", clipId).append("circle").attr("cx", center[0]).attr("cy", center[1]).attr("r", radius);
+    const anglePairs = [[-2.75, -0.55], [-2.35, 0.15], [-1.95, 0.75], [-1.45, 1.25], [-0.95, 1.85], [-0.4, 2.45], [0.15, 2.9]];
+    const geodesics = anglePairs.map(([angleA, angleB]) => {
+      const u = [Math.cos(angleA), Math.sin(angleA)];
+      const v = [Math.cos(angleB), Math.sin(angleB)];
+      const determinant = u[0] * v[1] - u[1] * v[0];
+      const circleCenter = [(v[1] - u[1]) / determinant, (u[0] - v[0]) / determinant];
+      const circleRadius = Math.sqrt(Math.max(0, circleCenter[0] * circleCenter[0] + circleCenter[1] * circleCenter[1] - 1));
+      const start = Math.atan2(u[1] - circleCenter[1], u[0] - circleCenter[0]);
+      const end = Math.atan2(v[1] - circleCenter[1], v[0] - circleCenter[0]);
+      const candidates = [1, -1].map((direction) => {
+        let delta = end - start;
+        if (direction > 0 && delta < 0) delta += Math.PI * 2;
+        if (direction < 0 && delta > 0) delta -= Math.PI * 2;
+        return ctx.d3.range(61).map((sample) => {
+          const angle = start + delta * sample / 60;
+          return [circleCenter[0] + circleRadius * Math.cos(angle), circleCenter[1] + circleRadius * Math.sin(angle)];
+        });
+      });
+      const chosen = candidates.sort((left, right) => {
+        const leftScore = left.reduce((sum, point) => sum + Math.hypot(point[0], point[1]), 0);
+        const rightScore = right.reduce((sum, point) => sum + Math.hypot(point[0], point[1]), 0);
+        return leftScore - rightScore;
+      })[0];
+      return chosen.map((point) => [center[0] + point[0] * radius, center[1] + point[1] * radius]);
+    });
+    group.append("circle").attr("class", "poincare-disc").attr("cx", center[0]).attr("cy", center[1]).attr("r", radius)
+      .attr("fill", ctx.textureFill).attr("fill-opacity", 0.18).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 6);
+    group.append("g").attr("class", "hyperbolic-geodesic-field").attr("clip-path", `url(#${clipId})`)
+      .selectAll("path.hyperbolic-geodesic").data(geodesics).join("path").attr("class", "hyperbolic-geodesic")
+      .attr("d", ctx.d3.line().curve(ctx.d3.curveLinear)).attr("fill", "none")
+      .attr("stroke", (d, index) => ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke-width", 5).attr("stroke-linecap", "round");
+  }
+
+  function renderEllipticGroupLaw(group, ctx) {
+    const coefficientA = -1;
+    const coefficientB = 0.3;
+    const curveValue = (x) => x * x * x + coefficientA * x + coefficientB;
+    const xDomain = [-1.22, 1.48];
+    const xScale = ctx.d3.scaleLinear().domain(xDomain).range([98, 382]);
+    const yScale = ctx.d3.scaleLinear().domain([-1.45, 1.45]).range([215, 38]);
+    const branches = [];
+    [1, -1].forEach((sign) => {
+      let branch = [];
+      ctx.d3.range(241).forEach((sample) => {
+        const x = xDomain[0] + sample / 240 * (xDomain[1] - xDomain[0]);
+        const value = curveValue(x);
+        if (value >= 0) {
+          branch.push([xScale(x), yScale(sign * Math.sqrt(value))]);
+        } else if (branch.length > 1) {
+          branches.push(branch);
+          branch = [];
+        } else {
+          branch = [];
+        }
+      });
+      if (branch.length > 1) branches.push(branch);
+    });
+    const xP = -0.88;
+    const xQ = 1.13;
+    const yP = Math.sqrt(curveValue(xP));
+    const yQ = Math.sqrt(curveValue(xQ));
+    const slope = (yQ - yP) / (xQ - xP);
+    const xR = slope * slope - xP - xQ;
+    const yOnLine = yP + slope * (xR - xP);
+    const points = [
+      { id: "p", point: [xScale(xP), yScale(yP)] },
+      { id: "q", point: [xScale(xQ), yScale(yQ)] },
+      { id: "minus-r", point: [xScale(xR), yScale(yOnLine)] },
+      { id: "sum", point: [xScale(xR), yScale(-yOnLine)] }
+    ];
+    group.append("path").attr("class", "elliptic-axes").attr("d", mathSegmentsPath([[[98, yScale(0)], [382, yScale(0)]], [[xScale(0), 38], [xScale(0), 215]]]))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.line).attr("stroke-width", 2);
+    group.selectAll("path.elliptic-curve-branch").data(branches).join("path").attr("class", "elliptic-curve-branch")
+      .attr("d", ctx.d3.line().curve(ctx.d3.curveLinear)).attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 6);
+    const chordY0 = yP + slope * (xDomain[0] - xP);
+    const chordY1 = yP + slope * (xDomain[1] - xP);
+    group.append("path").attr("class", "elliptic-chord").attr("d", mathSegmentsPath([[[xScale(xDomain[0]), yScale(chordY0)], [xScale(xDomain[1]), yScale(chordY1)]], [points[2].point, points[3].point]]))
+      .attr("fill", "none").attr("stroke", ctx.textureFill).attr("stroke-width", 4).attr("stroke-dasharray", "8 5");
+    group.selectAll("circle.elliptic-group-point").data(points).join("circle").attr("class", (d) => `elliptic-group-point elliptic-${d.id}`)
+      .attr("cx", (d) => d.point[0]).attr("cy", (d) => d.point[1]).attr("r", (d) => d.id === "sum" ? 8 : 5)
+      .attr("fill", (d) => d.id === "sum" ? ctx.palette.roles.accent : ctx.palette.roles.ink);
+  }
+
+  function renderMobiusStrip(group, ctx) {
+    const options = { cx: 240, cy: 126, scale: 61, rx: -0.62, ry: 0.32, perspective: 0.1 };
+    const segments = 28;
+    const halfWidth = 0.32;
+    const surfacePoint = (angle, width) => [
+      (1.45 + width * Math.cos(angle / 2)) * Math.cos(angle),
+      (1.45 + width * Math.cos(angle / 2)) * Math.sin(angle),
+      width * Math.sin(angle / 2)
+    ];
+    const faces = ctx.d3.range(segments).map((index) => {
+      const a0 = index / segments * Math.PI * 2;
+      const a1 = (index + 1) / segments * Math.PI * 2;
+      const points = [
+        mathProject3D(surfacePoint(a0, -halfWidth), options),
+        mathProject3D(surfacePoint(a1, -halfWidth), options),
+        mathProject3D(surfacePoint(a1, halfWidth), options),
+        mathProject3D(surfacePoint(a0, halfWidth), options)
+      ];
+      return { index, points, depth: ctx.d3.mean(points, (point) => point[2]) };
+    }).sort((a, b) => b.depth - a.depth);
+    group.selectAll("path.mobius-face").data(faces).join("path")
+      .attr("class", "mobius-face")
+      .attr("d", (d) => mathPolygonPath(d.points))
+      .attr("fill", (d) => d.index % 7 === 0 ? ctx.textureFill : ctx.palette.sequence[d.index % ctx.palette.sequence.length])
+      .attr("stroke", ctx.palette.roles.background)
+      .attr("stroke-width", 1.5)
+      .attr("stroke-linejoin", "round");
+    const boundary = [-halfWidth, halfWidth].map((width) => ctx.d3.range(121).map((sample) => {
+      const angle = sample / 120 * Math.PI * 2;
+      return mathProject3D(surfacePoint(angle, width), options);
+    }));
+    group.selectAll("path.mobius-boundary").data(boundary).join("path").attr("class", "mobius-boundary")
+      .attr("d", ctx.d3.line().curve(ctx.d3.curveLinear)).attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 3);
+  }
+
+  function renderTorusKnot(group, ctx) {
+    const options = { cx: 240, cy: 126, scale: 66, rx: -0.7, ry: 0.22, perspective: 0.09 };
+    const samples = ctx.d3.range(181).map((sample) => {
+      const t = sample / 180 * Math.PI * 2;
+      const radial = 1.18 + 0.43 * Math.cos(3 * t);
+      return mathProject3D([
+        radial * Math.cos(2 * t),
+        radial * Math.sin(2 * t),
+        0.43 * Math.sin(3 * t)
+      ], options);
+    });
+    const line = ctx.d3.line().curve(ctx.d3.curveCatmullRom.alpha(0.5));
+    group.append("path").attr("class", "torus-knot-underlay").attr("d", line(samples))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.inkDark).attr("stroke-width", 14).attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    const segmentSize = 3;
+    const segments = ctx.d3.range(0, samples.length - 1, segmentSize).map((start) => {
+      const points = samples.slice(start, Math.min(samples.length, start + segmentSize + 1));
+      return { points, depth: ctx.d3.mean(points, (point) => point[2]), index: start / segmentSize };
+    }).sort((a, b) => b.depth - a.depth);
+    group.selectAll("path.torus-knot-segment").data(segments).join("path").attr("class", "torus-knot-segment")
+      .attr("d", (d) => line(d.points)).attr("fill", "none")
+      .attr("stroke", (d) => d.index % 9 === 0 ? ctx.textureFill : ctx.palette.sequence[d.index % ctx.palette.sequence.length])
+      .attr("stroke-width", 8).attr("stroke-linecap", "round");
+  }
+
+  function renderRuledHyperboloid(group, ctx) {
+    const center = [240, 126];
+    const count = 17;
+    const topY = 43;
+    const bottomY = 209;
+    const rx = 92;
+    const ry = 27;
+    const rotation = 0.82;
+    const topPoints = ctx.d3.range(count).map((index) => {
+      const angle = index / count * Math.PI * 2;
+      return [center[0] + rx * Math.cos(angle), topY + ry * Math.sin(angle)];
+    });
+    const bottomA = ctx.d3.range(count).map((index) => {
+      const angle = index / count * Math.PI * 2 + rotation;
+      return [center[0] + rx * Math.cos(angle), bottomY + ry * Math.sin(angle)];
+    });
+    const bottomB = ctx.d3.range(count).map((index) => {
+      const angle = index / count * Math.PI * 2 - rotation;
+      return [center[0] + rx * Math.cos(angle), bottomY + ry * Math.sin(angle)];
+    });
+    const familyA = topPoints.map((point, index) => [point, bottomA[index]]);
+    const familyB = topPoints.map((point, index) => [point, bottomB[index]]);
+    group.append("path").attr("class", "hyperboloid-rulings-a").attr("d", mathSegmentsPath(familyA))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 3.5).attr("opacity", 0.86);
+    group.append("path").attr("class", "hyperboloid-rulings-b").attr("d", mathSegmentsPath(familyB))
+      .attr("fill", "none").attr("stroke", ctx.textureFill).attr("stroke-width", 3.5).attr("opacity", 0.82);
+    group.append("ellipse").attr("class", "hyperboloid-rim-top").attr("cx", center[0]).attr("cy", topY).attr("rx", rx).attr("ry", ry)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 5);
+    group.append("ellipse").attr("class", "hyperboloid-rim-bottom").attr("cx", center[0]).attr("cy", bottomY).attr("rx", rx).attr("ry", ry)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 5);
+  }
+
+  function renderTensegrityPrism(group, ctx) {
+    const options = { cx: 240, cy: 126, scale: 58, rx: -0.32, ry: 0.38, perspective: 0.08 };
+    const bottom = ctx.d3.range(3).map((index) => {
+      const angle = index / 3 * Math.PI * 2 - Math.PI / 2;
+      return mathProject3D([Math.cos(angle), -1.25, Math.sin(angle)], options);
+    });
+    const top = ctx.d3.range(3).map((index) => {
+      const angle = index / 3 * Math.PI * 2 - Math.PI / 2 + 0.72;
+      return mathProject3D([Math.cos(angle), 1.25, Math.sin(angle)], options);
+    });
+    const ringSegments = [];
+    const crossCables = [];
+    ctx.d3.range(3).forEach((index) => {
+      ringSegments.push([bottom[index], bottom[(index + 1) % 3]], [top[index], top[(index + 1) % 3]]);
+      crossCables.push([bottom[index], top[(index + 1) % 3]], [bottom[index], top[(index + 2) % 3]]);
+    });
+    const struts = ctx.d3.range(3).map((index) => [bottom[index], top[index]]);
+    group.append("path").attr("class", "tensegrity-cable-network").attr("d", mathSegmentsPath(ringSegments.concat(crossCables)))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 3).attr("stroke-linecap", "round");
+    group.selectAll("path.tensegrity-strut").data(struts).join("path").attr("class", "tensegrity-strut")
+      .attr("d", (d) => mathSegmentsPath([d])).attr("fill", "none")
+      .attr("stroke", (d, index) => index === 1 ? ctx.textureFill : ctx.palette.sequence[(index + 2) % ctx.palette.sequence.length])
+      .attr("stroke-width", 13).attr("stroke-linecap", "round");
+    group.selectAll("circle.tensegrity-joint").data(bottom.concat(top)).join("circle").attr("class", "tensegrity-joint")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 6).attr("fill", ctx.palette.roles.accent).attr("stroke", ctx.palette.roles.background).attr("stroke-width", 2);
+  }
+
+  function renderMaxwellReciprocal(group, ctx) {
+    const formNodes = [[92, 190], [150, 55], [208, 190], [150, 132]];
+    const formEdges = [[0, 1], [1, 2], [2, 0], [0, 3], [1, 3], [2, 3]].map(([a, b]) => [formNodes[a], formNodes[b]]);
+    const forceNodes = [[290, 177], [337, 56], [393, 151], [344, 207]];
+    const forceEdges = forceNodes.map((point, index) => [point, forceNodes[(index + 1) % forceNodes.length]]);
+    const spokes = forceNodes.map((point) => [[343, 143], point]);
+    group.append("path").attr("class", "maxwell-form-diagram").attr("d", mathSegmentsPath(formEdges))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 6).attr("stroke-linecap", "round");
+    group.append("path").attr("class", "maxwell-force-polygon").attr("d", mathPolygonPath(forceNodes))
+      .attr("fill", ctx.textureFill).attr("fill-opacity", 0.24).attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 6).attr("stroke-linejoin", "round");
+    group.append("path").attr("class", "maxwell-reciprocal-spokes").attr("d", mathSegmentsPath(spokes))
+      .attr("fill", "none").attr("stroke", ctx.palette.sequence[2]).attr("stroke-width", 2.5);
+    group.append("path").attr("class", "maxwell-reciprocal-link").attr("d", "M228,126H263")
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.accent).attr("stroke-width", 5).attr("stroke-dasharray", "6 5");
+    group.selectAll("circle.maxwell-form-node").data(formNodes).join("circle").attr("class", "maxwell-form-node")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 5).attr("fill", ctx.palette.roles.accent);
+  }
+
+  function renderMedialAxis(group, ctx) {
+    const center = [240, 126];
+    const boundary = ctx.d3.range(48).map((index) => {
+      const angle = index / 48 * Math.PI * 2;
+      const radius = 82 + 19 * Math.cos(3 * angle) + 8 * Math.sin(5 * angle);
+      return [center[0] + radius * Math.cos(angle), center[1] + radius * 0.78 * Math.sin(angle)];
+    });
+    const delaunay = ctx.d3.Delaunay.from(boundary);
+    const triangleCount = delaunay.triangles.length / 3;
+    const centers = ctx.d3.range(triangleCount).map((triangleIndex) => {
+      const offset = triangleIndex * 3;
+      const a = boundary[delaunay.triangles[offset]];
+      const b = boundary[delaunay.triangles[offset + 1]];
+      const c = boundary[delaunay.triangles[offset + 2]];
+      const point = mathCircumcenter(a, b, c);
+      if (!point || !ctx.d3.polygonContains(boundary, point)) return null;
+      const radius = Math.min(...boundary.map((edgePoint) => Math.hypot(edgePoint[0] - point[0], edgePoint[1] - point[1])));
+      return { point, radius };
+    });
+    const skeleton = [];
+    for (let edge = 0; edge < delaunay.halfedges.length; edge += 1) {
+      const opposite = delaunay.halfedges[edge];
+      if (opposite <= edge) continue;
+      const left = centers[Math.floor(edge / 3)];
+      const right = centers[Math.floor(opposite / 3)];
+      if (!left || !right || Math.min(left.radius, right.radius) < 9) continue;
+      if (Math.hypot(left.point[0] - right.point[0], left.point[1] - right.point[1]) > 54) continue;
+      skeleton.push([left.point, right.point]);
+    }
+    group.append("path").attr("class", "medial-source-silhouette").attr("d", mathPolygonPath(boundary))
+      .attr("fill", ctx.textureFill).attr("fill-opacity", 0.18).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 5).attr("stroke-linejoin", "round");
+    group.append("path").attr("class", "medial-axis-network").attr("d", mathSegmentsPath(skeleton))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 6).attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    const visibleCenters = centers.filter((entry) => entry && entry.radius >= 9);
+    group.selectAll("circle.medial-disc-center").data(visibleCenters).join("circle").attr("class", "medial-disc-center")
+      .attr("cx", (d) => d.point[0]).attr("cy", (d) => d.point[1]).attr("r", (d) => clamp(d.radius * 0.09, 2.5, 6))
+      .attr("fill", ctx.palette.roles.accent);
+  }
+
+  function renderStringParabola(group, ctx) {
+    const count = 22;
+    const leftSegments = ctx.d3.range(count + 1).map((index) => {
+      const t = index / count;
+      return [[92 + 148 * t, 205], [92, 205 - 166 * t]];
+    });
+    const rightSegments = ctx.d3.range(count + 1).map((index) => {
+      const t = index / count;
+      return [[388 - 148 * t, 205], [388, 205 - 166 * t]];
+    });
+    group.append("path").attr("class", "string-parabola-left").attr("d", mathSegmentsPath(leftSegments))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 2.6).attr("opacity", 0.82);
+    group.append("path").attr("class", "string-parabola-right").attr("d", mathSegmentsPath(rightSegments))
+      .attr("fill", "none").attr("stroke", ctx.textureFill).attr("stroke-width", 2.6).attr("opacity", 0.82);
+    group.append("path").attr("class", "string-parabola-baseline").attr("d", "M82,205H398")
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 5).attr("stroke-linecap", "round");
+    group.append("circle").attr("class", "string-parabola-focus").attr("cx", 240).attr("cy", 154).attr("r", 7).attr("fill", ctx.palette.roles.accent);
+  }
+
+  function renderCircleCaustic(group, ctx) {
+    const center = [240, 126];
+    const radius = 91;
+    const rays = ctx.d3.range(19).map((index) => {
+      const angle = -Math.PI / 2 + 0.15 + index / 18 * (Math.PI - 0.3);
+      const normal = [Math.cos(angle), Math.sin(angle)];
+      const hit = [center[0] + radius * normal[0], center[1] + radius * normal[1]];
+      const incoming = [1, 0];
+      const dot = incoming[0] * normal[0] + incoming[1] * normal[1];
+      const reflected = [incoming[0] - 2 * dot * normal[0], incoming[1] - 2 * dot * normal[1]];
+      return {
+        incoming: [[82, hit[1]], hit],
+        reflected: [hit, [hit[0] + reflected[0] * 185, hit[1] + reflected[1] * 185]]
+      };
+    });
+    const clipId = ctx.uid("caustic-circle-clip");
+    ctx.defs.append("clipPath").attr("id", clipId).append("circle").attr("cx", center[0]).attr("cy", center[1]).attr("r", radius);
+    group.append("circle").attr("class", "caustic-reflector").attr("cx", center[0]).attr("cy", center[1]).attr("r", radius)
+      .attr("fill", ctx.textureFill).attr("fill-opacity", 0.12).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 6);
+    group.append("path").attr("class", "caustic-incoming-rays").attr("d", mathSegmentsPath(rays.map((ray) => ray.incoming)))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.line).attr("stroke-width", 2);
+    group.append("path").attr("class", "caustic-reflected-rays").attr("clip-path", `url(#${clipId})`).attr("d", mathSegmentsPath(rays.map((ray) => ray.reflected)))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 2.8).attr("opacity", 0.82);
+    const nephroid = ctx.d3.range(181).map((sample) => {
+      const t = sample / 180 * Math.PI * 2;
+      const a = 20;
+      return [center[0] + 3 * a * Math.cos(t) - a * Math.cos(3 * t), center[1] + 3 * a * Math.sin(t) - a * Math.sin(3 * t)];
+    });
+    group.append("path").attr("class", "nephroid-envelope").attr("d", ctx.d3.line().curve(ctx.d3.curveLinearClosed)(nephroid))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.accent).attr("stroke-width", 7).attr("stroke-linejoin", "round");
+  }
+
+  function renderMoireBeat(group, ctx) {
+    const clipId = ctx.uid("moire-field-clip");
+    ctx.defs.append("clipPath").attr("id", clipId).append("rect").attr("x", 82).attr("y", 34).attr("width", 316).attr("height", 184).attr("rx", 34);
+    group.append("rect").attr("class", "moire-field-surface").attr("x", 82).attr("y", 34).attr("width", 316).attr("height", 184).attr("rx", 34)
+      .attr("fill", ctx.palette.roles.quiet).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 5);
+    const clipLineToRect = (base, direction) => {
+      let low = Number.NEGATIVE_INFINITY;
+      let high = Number.POSITIVE_INFINITY;
+      const limits = [[82, 398, 0], [34, 218, 1]];
+      limits.forEach(([minimum, maximum, axis]) => {
+        if (Math.abs(direction[axis]) < 1e-9) return;
+        const first = (minimum - base[axis]) / direction[axis];
+        const second = (maximum - base[axis]) / direction[axis];
+        low = Math.max(low, Math.min(first, second));
+        high = Math.min(high, Math.max(first, second));
+      });
+      if (!(low <= high)) return null;
+      return [
+        [base[0] + direction[0] * low, base[1] + direction[1] * low],
+        [base[0] + direction[0] * high, base[1] + direction[1] * high]
+      ];
+    };
+    const field = (angle, spacing, phase) => {
+      const direction = [Math.cos(angle), Math.sin(angle)];
+      const normal = [-direction[1], direction[0]];
+      return ctx.d3.range(-28, 29).map((index) => {
+        const offset = (index + phase) * spacing;
+        const base = [240 + normal[0] * offset, 126 + normal[1] * offset];
+        return clipLineToRect(base, direction);
+      }).filter(Boolean);
+    };
+    const fieldA = field(0.19, 8.8, 0);
+    const fieldB = field(0.275, 9.35, 0.42);
+    const clipped = group.append("g").attr("class", "moire-interference-fields").attr("clip-path", `url(#${clipId})`);
+    clipped.append("path").attr("class", "moire-frequency-a").attr("d", mathSegmentsPath(fieldA))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 2.8).attr("opacity", 0.72);
+    clipped.append("path").attr("class", "moire-frequency-b").attr("d", mathSegmentsPath(fieldB))
+      .attr("fill", "none").attr("stroke", ctx.palette.sequence[1]).attr("stroke-width", 2.4).attr("opacity", 0.54);
+    group.append("path").attr("class", "moire-phase-markers").attr("d", "M102,52H164M316,200H378")
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.accent).attr("stroke-width", 6).attr("stroke-linecap", "round");
+  }
+
+  function renderPeaucellierLinkage(group, ctx) {
+    const origin = [174, 126];
+    const circleRadius = 52;
+    const circleCenter = [origin[0] + circleRadius, origin[1]];
+    const theta = 1.08;
+    const localQ = [circleRadius + circleRadius * Math.cos(theta), circleRadius * Math.sin(theta)];
+    const q = [origin[0] + localQ[0], origin[1] + localQ[1]];
+    const invariant = 6500;
+    const qMagnitudeSquared = localQ[0] * localQ[0] + localQ[1] * localQ[1];
+    const p = [origin[0] + invariant * localQ[0] / qMagnitudeSquared, origin[1] + invariant * localQ[1] / qMagnitudeSquared];
+    const diagonal = Math.hypot(p[0] - q[0], p[1] - q[1]);
+    const bar = diagonal / 2 + 31;
+    const midpoint = [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+    const halfHeight = Math.sqrt(Math.max(0, bar * bar - diagonal * diagonal / 4));
+    const unitPerpendicular = [-(p[1] - q[1]) / diagonal, (p[0] - q[0]) / diagonal];
+    const b = [midpoint[0] + unitPerpendicular[0] * halfHeight, midpoint[1] + unitPerpendicular[1] * halfHeight];
+    const d = [midpoint[0] - unitPerpendicular[0] * halfHeight, midpoint[1] - unitPerpendicular[1] * halfHeight];
+    const traceX = origin[0] + invariant / (2 * circleRadius);
+    const trace = ctx.d3.range(101).map((sample) => {
+      const angle = 0.34 + sample / 100 * (Math.PI * 2 - 0.68);
+      const local = [circleRadius + circleRadius * Math.cos(angle), circleRadius * Math.sin(angle)];
+      const magnitudeSquared = local[0] * local[0] + local[1] * local[1];
+      return [origin[0] + invariant * local[0] / magnitudeSquared, origin[1] + invariant * local[1] / magnitudeSquared];
+    }).filter((point) => point[1] >= 35 && point[1] <= 215);
+    group.append("circle").attr("class", "peaucellier-input-circle").attr("cx", circleCenter[0]).attr("cy", circleCenter[1]).attr("r", circleRadius)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.line).attr("stroke-width", 3);
+    group.append("path").attr("class", "peaucellier-straight-trace").attr("d", ctx.d3.line()(trace))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.accent).attr("stroke-width", 7).attr("stroke-linecap", "round");
+    const bars = [[origin, b], [origin, d], [b, p], [p, d], [d, q], [q, b]];
+    group.append("path").attr("class", "peaucellier-bars").attr("d", mathSegmentsPath(bars))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 6).attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    group.append("path").attr("class", "peaucellier-invariant-line").attr("d", mathSegmentsPath([[origin, q], [q, p]]))
+      .attr("fill", "none").attr("stroke", ctx.textureFill).attr("stroke-width", 3).attr("stroke-dasharray", "6 4");
+    group.selectAll("circle.peaucellier-joint").data([origin, b, p, d, q]).join("circle").attr("class", "peaucellier-joint")
+      .attr("cx", (point) => point[0]).attr("cy", (point) => point[1]).attr("r", 6).attr("fill", ctx.palette.roles.ink);
+    group.append("path").attr("class", "peaucellier-trace-guide").attr("d", `M${traceX},35V215`)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.accent).attr("stroke-width", 2).attr("opacity", 0.45);
+  }
+
+  function renderLorenzAttractor(group, ctx) {
+    const sigma = 10;
+    const rho = 28;
+    const beta = 8 / 3;
+    const dt = 0.0065;
+    let state = [0.1, 0, 0];
+    const derivative = ([x, y, z]) => [sigma * (y - x), x * (rho - z) - y, x * y - beta * z];
+    const step = (current) => {
+      const k1 = derivative(current);
+      const k2 = derivative(current.map((value, index) => value + k1[index] * dt / 2));
+      const k3 = derivative(current.map((value, index) => value + k2[index] * dt / 2));
+      const k4 = derivative(current.map((value, index) => value + k3[index] * dt));
+      return current.map((value, index) => value + dt * (k1[index] + 2 * k2[index] + 2 * k3[index] + k4[index]) / 6);
+    };
+    const raw = [];
+    ctx.d3.range(4300).forEach((index) => {
+      state = step(state);
+      if (index > 650) raw.push([state[0], state[2]]);
+    });
+    const fit = mathFitTransform(raw, [92, 34, 388, 216]);
+    const points = raw.map(fit);
+    const line = ctx.d3.line().curve(ctx.d3.curveLinear);
+    group.append("path").attr("class", "lorenz-trajectory-underlay").attr("d", line(points))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 5).attr("opacity", 0.28);
+    group.append("path").attr("class", "lorenz-chaotic-trajectory").attr("d", line(points))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.primary).attr("stroke-width", 2.2).attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+    group.selectAll("circle.lorenz-state-marker").data([points[0], points[Math.floor(points.length * 0.54)], points[points.length - 1]]).join("circle")
+      .attr("class", "lorenz-state-marker").attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 5).attr("fill", (d, index) => index === 1 ? ctx.textureFill : ctx.palette.roles.accent);
+  }
+
+  function renderAffineIfs(group, ctx) {
+    const random = seededRandom(ctx.d3, ctx.config.seed, "affine-ifs");
+    let point = [0, 0];
+    const buckets = [[], [], [], []];
+    ctx.d3.range(4800).forEach((iteration) => {
+      const value = random();
+      let transformIndex;
+      if (value < 0.01) transformIndex = 0;
+      else if (value < 0.86) transformIndex = 1;
+      else if (value < 0.93) transformIndex = 2;
+      else transformIndex = 3;
+      const [x, y] = point;
+      if (transformIndex === 0) point = [0, 0.16 * y];
+      if (transformIndex === 1) point = [0.85 * x + 0.04 * y, -0.04 * x + 0.85 * y + 1.6];
+      if (transformIndex === 2) point = [0.2 * x - 0.26 * y, 0.23 * x + 0.22 * y + 1.6];
+      if (transformIndex === 3) point = [-0.15 * x + 0.28 * y, 0.26 * x + 0.24 * y + 0.44];
+      if (iteration > 40) buckets[transformIndex].push(point);
+    });
+    const xScale = ctx.d3.scaleLinear().domain([-2.3, 2.8]).range([159, 321]);
+    const yScale = ctx.d3.scaleLinear().domain([0, 10]).range([216, 35]);
+    const pointPath = (points) => points.map(([x, y]) => {
+      const px = xScale(x).toFixed(2);
+      const py = yScale(y).toFixed(2);
+      return `M${px},${py}h1.55v1.55h-1.55Z`;
+    }).join("");
+    group.selectAll("path.affine-ifs-bucket").data(buckets).join("path").attr("class", "affine-ifs-bucket")
+      .attr("d", pointPath)
+      .attr("fill", (d, index) => index === 1 ? ctx.textureFill : ctx.palette.sequence[(index + 1) % ctx.palette.sequence.length])
+      .attr("opacity", (d, index) => index === 1 ? 0.92 : 0.74);
+    group.append("path").attr("class", "affine-ifs-ground").attr("d", "M144,218H336")
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 4).attr("stroke-linecap", "round");
+  }
+
+  function renderCellularAutomaton(group, ctx) {
+    const columns = 47;
+    const rows = 27;
+    const rule = 110;
+    const cellWidth = 6;
+    const cellHeight = 6;
+    const startX = 99;
+    const startY = 43;
+    let state = ctx.d3.range(columns).map((index) => index === Math.floor(columns / 2) || ((ctx.config.seed >> (index % 8)) & 1) === 1 && index % 11 === 0);
+    const buckets = [[], [], []];
+    ctx.d3.range(rows).forEach((row) => {
+      state.forEach((active, column) => {
+        if (!active) return;
+        const x = startX + column * cellWidth;
+        const y = startY + row * cellHeight;
+        buckets[row % buckets.length].push(`M${x},${y}h${cellWidth - 0.8}v${cellHeight - 0.8}h${-(cellWidth - 0.8)}Z`);
+      });
+      state = state.map((value, column) => {
+        const left = state[(column - 1 + columns) % columns] ? 1 : 0;
+        const center = value ? 1 : 0;
+        const right = state[(column + 1) % columns] ? 1 : 0;
+        const neighborhood = (left << 2) | (center << 1) | right;
+        return ((rule >> neighborhood) & 1) === 1;
+      });
+    });
+    group.append("rect").attr("class", "cellular-automaton-field").attr("x", startX - 5).attr("y", startY - 5)
+      .attr("width", columns * cellWidth + 10).attr("height", rows * cellHeight + 10).attr("rx", 12)
+      .attr("fill", ctx.palette.roles.quiet).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 4);
+    group.selectAll("path.cellular-automaton-state").data(buckets).join("path").attr("class", "cellular-automaton-state")
+      .attr("d", (d) => d.join(""))
+      .attr("fill", (d, index) => index === 1 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length]);
+  }
+
+  function renderLogisticBifurcation(group, ctx) {
+    const x0 = 90;
+    const x1 = 390;
+    const y0 = 38;
+    const y1 = 215;
+    const columns = 132;
+    const buckets = [[], [], [], []];
+    ctx.d3.range(columns).forEach((column) => {
+      const r = 2.5 + column / (columns - 1) * 1.5;
+      let value = 0.5 + ((ctx.config.seed % 17) - 8) * 0.001;
+      ctx.d3.range(190).forEach(() => { value = r * value * (1 - value); });
+      ctx.d3.range(32).forEach((sample) => {
+        value = r * value * (1 - value);
+        const x = x0 + column / (columns - 1) * (x1 - x0);
+        const y = y1 - value * (y1 - y0);
+        const bucket = Math.min(3, Math.floor(value * 4));
+        buckets[bucket].push(`M${x.toFixed(2)},${y.toFixed(2)}h1.65v1.65h-1.65Z`);
+      });
+    });
+    group.append("path").attr("class", "bifurcation-axes").attr("d", mathSegmentsPath([[[x0, y0], [x0, y1]], [[x0, y1], [x1, y1]]]))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 4).attr("stroke-linecap", "round");
+    group.selectAll("path.logistic-attractor-band").data(buckets).join("path").attr("class", "logistic-attractor-band")
+      .attr("d", (d) => d.join(""))
+      .attr("fill", (d, index) => index === 2 ? ctx.textureFill : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("opacity", 0.88);
+    group.append("path").attr("class", "period-doubling-threshold").attr("d", `M${x0 + (3.57 - 2.5) / 1.5 * (x1 - x0)},${y0}V${y1}`)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.accent).attr("stroke-width", 2).attr("stroke-dasharray", "5 5");
+  }
+
+  function renderFieldStreamlines(group, ctx) {
+    const bounds = [-1.8, -1.1, 1.8, 1.1];
+    const toCanvas = (point) => [
+      91 + (point[0] - bounds[0]) / (bounds[2] - bounds[0]) * 298,
+      215 - (point[1] - bounds[1]) / (bounds[3] - bounds[1]) * 177
+    ];
+    const vector = ([x, y]) => [
+      Math.sin(y * 2.2) + 0.42 * x - 0.16 * y,
+      Math.cos(x * 1.65) - 0.36 * y + 0.12 * x
+    ];
+    const integrate = (seed, direction) => {
+      const points = [seed];
+      let current = seed;
+      for (let step = 0; step < 105; step += 1) {
+        const velocity = vector(current);
+        const magnitude = Math.max(0.2, Math.hypot(velocity[0], velocity[1]));
+        const dt = direction * 0.034 / magnitude;
+        const midpoint = [current[0] + velocity[0] * dt / 2, current[1] + velocity[1] * dt / 2];
+        const middleVelocity = vector(midpoint);
+        const next = [current[0] + middleVelocity[0] * dt, current[1] + middleVelocity[1] * dt];
+        if (next[0] < bounds[0] || next[0] > bounds[2] || next[1] < bounds[1] || next[1] > bounds[3]) break;
+        points.push(next);
+        current = next;
+      }
+      return points;
+    };
+    const seeds = ctx.d3.range(15).map((index) => [-1.58 + index / 14 * 3.16, -0.92 + (index % 4) * 0.58]);
+    const streamlines = seeds.map((seed) => integrate(seed, -1).reverse().slice(0, -1).concat(integrate(seed, 1))).map((points) => points.map(toCanvas));
+    group.append("rect").attr("class", "vector-field-domain").attr("x", 86).attr("y", 33).attr("width", 308).attr("height", 187).attr("rx", 18)
+      .attr("fill", ctx.textureFill).attr("fill-opacity", 0.11).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 4);
+    group.selectAll("path.field-streamline").data(streamlines).join("path").attr("class", "field-streamline")
+      .attr("d", ctx.d3.line().curve(ctx.d3.curveBasis)).attr("fill", "none")
+      .attr("stroke", (d, index) => index % 5 === 0 ? ctx.palette.roles.accent : ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke-width", (d, index) => index % 5 === 0 ? 4.5 : 3).attr("stroke-linecap", "round");
+  }
+
+  function renderNewtonBasin(group, ctx) {
+    const columns = 54;
+    const rows = 34;
+    const x0 = 91;
+    const y0 = 38;
+    const width = 298;
+    const height = 176;
+    const roots = [[1, 0], [-0.5, Math.sqrt(3) / 2], [-0.5, -Math.sqrt(3) / 2]];
+    const buckets = ctx.d3.range(9).map(() => []);
+    const square = (value) => [value[0] * value[0] - value[1] * value[1], 2 * value[0] * value[1]];
+    const multiply = (a, b) => [a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0]];
+    ctx.d3.range(rows).forEach((row) => {
+      ctx.d3.range(columns).forEach((column) => {
+        let z = [-1.65 + column / (columns - 1) * 3.3, 1.08 - row / (rows - 1) * 2.16];
+        let iteration = 0;
+        for (; iteration < 19; iteration += 1) {
+          const z2 = square(z);
+          const z3 = multiply(z2, z);
+          const f = [z3[0] - 1, z3[1]];
+          if (Math.hypot(f[0], f[1]) < 1e-4) break;
+          const derivative = [3 * z2[0], 3 * z2[1]];
+          const denominator = derivative[0] * derivative[0] + derivative[1] * derivative[1];
+          if (denominator < 1e-10) break;
+          const quotient = [(f[0] * derivative[0] + f[1] * derivative[1]) / denominator, (f[1] * derivative[0] - f[0] * derivative[1]) / denominator];
+          z = [z[0] - quotient[0], z[1] - quotient[1]];
+        }
+        let rootIndex = 0;
+        roots.forEach((root, index) => {
+          if (Math.hypot(z[0] - root[0], z[1] - root[1]) < Math.hypot(z[0] - roots[rootIndex][0], z[1] - roots[rootIndex][1])) rootIndex = index;
+        });
+        const speedBand = Math.min(2, Math.floor(iteration / 7));
+        const bucket = rootIndex * 3 + speedBand;
+        const x = x0 + column / columns * width;
+        const y = y0 + row / rows * height;
+        buckets[bucket].push(`M${x.toFixed(2)},${y.toFixed(2)}h${(width / columns + 0.2).toFixed(2)}v${(height / rows + 0.2).toFixed(2)}h${(-width / columns - 0.2).toFixed(2)}Z`);
+      });
+    });
+    group.append("rect").attr("class", "newton-basin-frame").attr("x", x0 - 4).attr("y", y0 - 4).attr("width", width + 8).attr("height", height + 8).attr("rx", 12)
+      .attr("fill", ctx.palette.roles.quiet).attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 5);
+    group.selectAll("path.newton-basin-region").data(buckets).join("path").attr("class", "newton-basin-region")
+      .attr("d", (d) => d.join(""))
+      .attr("fill", (d, index) => index === 4 ? ctx.textureFill : ctx.palette.sequence[Math.floor(index / 3) % ctx.palette.sequence.length])
+      .attr("opacity", (d, index) => 0.48 + (index % 3) * 0.24);
+    group.selectAll("circle.newton-root").data(roots).join("circle").attr("class", "newton-root")
+      .attr("cx", (root) => x0 + (root[0] + 1.65) / 3.3 * width)
+      .attr("cy", (root) => y0 + (1.08 - root[1]) / 2.16 * height)
+      .attr("r", 5).attr("fill", ctx.palette.roles.accent).attr("stroke", ctx.palette.roles.background).attr("stroke-width", 2);
+  }
+
+  function renderSteinerTree(group, ctx) {
+    const terminals = [[112, 190], [214, 43], [374, 184]];
+    let junction = [ctx.d3.mean(terminals, (point) => point[0]), ctx.d3.mean(terminals, (point) => point[1])];
+    ctx.d3.range(80).forEach(() => {
+      const weights = terminals.map((point) => 1 / Math.max(1e-6, Math.hypot(point[0] - junction[0], point[1] - junction[1])));
+      const total = ctx.d3.sum(weights);
+      junction = [
+        ctx.d3.sum(terminals, (point, index) => point[0] * weights[index]) / total,
+        ctx.d3.sum(terminals, (point, index) => point[1] * weights[index]) / total
+      ];
+    });
+    const network = terminals.map((terminal) => [junction, terminal]);
+    group.append("path").attr("class", "steiner-terminal-hull").attr("d", mathPolygonPath(terminals))
+      .attr("fill", ctx.textureFill).attr("fill-opacity", 0.13).attr("stroke", ctx.palette.roles.line).attr("stroke-width", 3);
+    group.selectAll("path.steiner-branch").data(network).join("path").attr("class", "steiner-branch")
+      .attr("d", (d) => mathSegmentsPath([d])).attr("fill", "none")
+      .attr("stroke", (d, index) => ctx.palette.sequence[index % ctx.palette.sequence.length])
+      .attr("stroke-width", 10).attr("stroke-linecap", "round");
+    group.selectAll("circle.steiner-terminal").data(terminals).join("circle").attr("class", "steiner-terminal")
+      .attr("cx", (d) => d[0]).attr("cy", (d) => d[1]).attr("r", 12).attr("fill", ctx.palette.roles.ink).attr("stroke", ctx.palette.roles.background).attr("stroke-width", 3);
+    group.append("circle").attr("class", "steiner-junction").attr("cx", junction[0]).attr("cy", junction[1]).attr("r", 14)
+      .attr("fill", ctx.palette.roles.accent).attr("stroke", ctx.palette.roles.background).attr("stroke-width", 4);
+    const angleMarkers = terminals.map((terminal) => {
+      const dx = terminal[0] - junction[0];
+      const dy = terminal[1] - junction[1];
+      const length = Math.hypot(dx, dy);
+      return [junction, [junction[0] + dx / length * 31, junction[1] + dy / length * 31]];
+    });
+    group.append("path").attr("class", "steiner-angle-markers").attr("d", mathSegmentsPath(angleMarkers))
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.background).attr("stroke-width", 2);
+  }
+
+  function renderPenroseSubstitution(group, ctx) {
+    const phi = (1 + Math.sqrt(5)) / 2;
+    const center = [240, 126];
+    const radius = 94;
+    let triangles = ctx.d3.range(10).map((index) => {
+      const angleA = (2 * index - 1) * Math.PI / 10 - Math.PI / 2;
+      const angleB = (2 * index + 1) * Math.PI / 10 - Math.PI / 2;
+      const left = [center[0] + radius * Math.cos(angleA), center[1] + radius * Math.sin(angleA)];
+      const right = [center[0] + radius * Math.cos(angleB), center[1] + radius * Math.sin(angleB)];
+      return { type: 0, points: index % 2 === 0 ? [center, left, right] : [center, right, left] };
+    });
+    ctx.d3.range(3).forEach(() => {
+      const next = [];
+      triangles.forEach((triangle) => {
+        const [a, b, c] = triangle.points;
+        if (triangle.type === 0) {
+          const p = [a[0] + (b[0] - a[0]) / phi, a[1] + (b[1] - a[1]) / phi];
+          next.push({ type: 0, points: [c, p, b] });
+          next.push({ type: 1, points: [p, c, a] });
+        } else {
+          const q = [b[0] + (a[0] - b[0]) / phi, b[1] + (a[1] - b[1]) / phi];
+          const r = [b[0] + (c[0] - b[0]) / phi, b[1] + (c[1] - b[1]) / phi];
+          next.push({ type: 1, points: [r, c, a] });
+          next.push({ type: 1, points: [q, r, b] });
+          next.push({ type: 0, points: [r, q, a] });
+        }
+      });
+      triangles = next;
+    });
+    const buckets = [0, 1].map((type) => triangles.filter((triangle) => triangle.type === type).map((triangle) => mathPolygonPath(triangle.points)).join(""));
+    group.selectAll("path.penrose-substitution-tile").data(buckets).join("path").attr("class", "penrose-substitution-tile")
+      .attr("d", (d) => d)
+      .attr("fill", (d, index) => index === 0 ? ctx.textureFill : ctx.palette.sequence[2])
+      .attr("stroke", ctx.palette.roles.background).attr("stroke-width", 1.35).attr("stroke-linejoin", "round");
+    group.append("circle").attr("class", "penrose-boundary").attr("cx", center[0]).attr("cy", center[1]).attr("r", radius)
+      .attr("fill", "none").attr("stroke", ctx.palette.roles.ink).attr("stroke-width", 6);
+    group.append("circle").attr("class", "penrose-center").attr("cx", center[0]).attr("cy", center[1]).attr("r", 6).attr("fill", ctx.palette.roles.accent);
+  }
+
   const PATTERN_RENDERERS = Object.freeze({
     "d3-logo-type-orbit": renderTypeOrbit,
     "d3-logo-bezier-wordpath": renderBezierWordpath,
@@ -3043,7 +4174,37 @@
     "d3-logo-necker-cube": renderNeckerCube,
     "d3-logo-kanizsa-closure": renderKanizsaClosure,
     "d3-logo-line-screen-silhouette": renderLineScreenSilhouette,
-    "d3-logo-perspective-portal": renderPerspectivePortal
+    "d3-logo-perspective-portal": renderPerspectivePortal,
+    "d3-logo-reuleaux-body": renderReuleauxBody,
+    "d3-logo-cassini-oval": renderCassiniOval,
+    "d3-logo-polar-reciprocal": renderPolarReciprocal,
+    "d3-logo-minkowski-sum": renderMinkowskiSum,
+    "d3-logo-pedal-curve": renderPedalCurve,
+    "d3-logo-involute-gear": renderInvoluteGear,
+    "d3-logo-desargues-incidence": renderDesarguesIncidence,
+    "d3-logo-circle-inversion": renderCircleInversion,
+    "d3-logo-catenary-funicular": renderCatenaryFunicular,
+    "d3-logo-joukowski-airfoil": renderJoukowskiAirfoil,
+    "d3-logo-hyperbolic-geodesics": renderHyperbolicGeodesics,
+    "d3-logo-elliptic-group-law": renderEllipticGroupLaw,
+    "d3-logo-mobius-strip": renderMobiusStrip,
+    "d3-logo-torus-knot": renderTorusKnot,
+    "d3-logo-ruled-hyperboloid": renderRuledHyperboloid,
+    "d3-logo-tensegrity-prism": renderTensegrityPrism,
+    "d3-logo-maxwell-reciprocal": renderMaxwellReciprocal,
+    "d3-logo-medial-axis": renderMedialAxis,
+    "d3-logo-string-parabola": renderStringParabola,
+    "d3-logo-circle-caustic": renderCircleCaustic,
+    "d3-logo-moire-beat": renderMoireBeat,
+    "d3-logo-peaucellier-linkage": renderPeaucellierLinkage,
+    "d3-logo-lorenz-attractor": renderLorenzAttractor,
+    "d3-logo-affine-ifs": renderAffineIfs,
+    "d3-logo-cellular-automaton": renderCellularAutomaton,
+    "d3-logo-logistic-bifurcation": renderLogisticBifurcation,
+    "d3-logo-field-streamlines": renderFieldStreamlines,
+    "d3-logo-newton-basin": renderNewtonBasin,
+    "d3-logo-steiner-tree": renderSteinerTree,
+    "d3-logo-penrose-substitution": renderPenroseSubstitution
   });
 
   function assertPaletteSafe(svgNode, palette) {

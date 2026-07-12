@@ -2,6 +2,8 @@
 
 Choose one primary pattern per mark. Parameters are adjustment surfaces, not separate patterns. Keep the canonical ID in `data-pattern-id` on the composition container and rendered SVG.
 
+This file catalogs the 60 typographic and generative mechanisms. For the 30 mathematical mechanisms that complete the 90-pattern catalog, route to `mathematical-patterns.md`.
+
 ## Typographic systems
 
 | ID | Mechanism | Best for | Primary parameters |
