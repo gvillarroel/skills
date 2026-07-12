@@ -359,6 +359,18 @@ def ensure_html_head_meta(content: str, example_id: str) -> str:
     return content.replace("</head>", f"{meta}</head>", 1)
 
 
+def ensure_html_favicon(content: str) -> str:
+    if re.search(r'''<link\b[^>]*\brel=["'][^"']*\bicon\b''', content, flags=re.IGNORECASE):
+        return content
+    if "</head>" not in content:
+        return content
+    return content.replace(
+        "</head>",
+        '  <link rel="icon" href="../../favicon.ico">\n</head>',
+        1,
+    )
+
+
 def ensure_body_attribute(content: str, name: str, value: str) -> str:
     match = re.search(r"<body\b([^>]*)>", content)
     if not match:
@@ -373,6 +385,7 @@ def ensure_body_attribute(content: str, name: str, value: str) -> str:
 def patch_page_metadata(example_id: str, index_path: Path) -> None:
     content = index_path.read_text(encoding="utf-8")
     content = ensure_html_head_meta(content, example_id)
+    content = ensure_html_favicon(content)
     for name, value in {
         "data-example-id": example_id,
         "data-pattern-id": example_id,

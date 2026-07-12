@@ -21,6 +21,7 @@ class AttributeParser(HTMLParser):
         super().__init__()
         self.body: dict[str, str] | None = None
         self.cards: list[dict[str, str]] = []
+        self.icons: list[dict[str, str]] = []
         self.meta: dict[str, str] = {}
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
@@ -31,6 +32,8 @@ class AttributeParser(HTMLParser):
             self.cards.append(attributes)
         if tag == "meta" and "name" in attributes and "content" in attributes:
             self.meta[attributes["name"]] = attributes["content"]
+        if tag == "link" and "icon" in attributes.get("rel", "").lower().split():
+            self.icons.append(attributes)
 
 
 def parse_html(path: Path) -> AttributeParser:
@@ -78,6 +81,8 @@ def main() -> int:
     require_attr(root.body, "data-example-id", "codex-skills-examples", "docs/index.html")
     require_attr(root.body, "data-pattern-id", "codex-skills-examples", "docs/index.html")
     require_attr(root.body, "data-pattern-page", "catalog", "docs/index.html")
+    if not root.icons or not root.icons[0].get("href"):
+        fail("docs/index.html is missing a non-empty favicon link")
 
     root_cards = {card.get("data-example-id"): card for card in root.cards}
     for entry in catalog:
@@ -111,6 +116,8 @@ def main() -> int:
             fail(f"{context} is missing meta pattern-id={example_id!r}")
         if page.meta.get("pattern-page") != "true":
             fail(f"{context} is missing meta pattern-page='true'")
+        if not page.icons or not page.icons[0].get("href"):
+            fail(f"{context} is missing a non-empty favicon link")
 
     print(f"Validated {len(catalog)} published Pages entries with stable pattern-page metadata.")
     return 0
