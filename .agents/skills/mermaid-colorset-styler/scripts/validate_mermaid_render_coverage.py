@@ -91,6 +91,7 @@ def render_colorset(
     workspace: Path,
     timeout: int,
     retries: int,
+    jobs: int,
 ) -> tuple[dict[str, object], list[str]]:
     findings: list[str] = []
     colorset_dir = workspace / colorset
@@ -116,7 +117,20 @@ def render_colorset(
     input_path = colorset_dir / "all-types.md"
     output_path = colorset_dir / "rendered.md"
     input_path.write_text(styled, encoding="utf-8", newline="\n")
-    command = [npx, "-y", package, "-i", str(input_path), "-o", str(output_path), "--quiet"]
+    # Mermaid CLI shares one Chromium browser across every Markdown render promise.
+    # Serial execution keeps this release gate deterministic on constrained CI runners.
+    command = [
+        npx,
+        "-y",
+        package,
+        "-i",
+        str(input_path),
+        "-o",
+        str(output_path),
+        "--quiet",
+        "--jobs",
+        str(jobs),
+    ]
     expected_names = {f"rendered-{index}.svg" for index in range(1, len(examples) + 1)}
     attempts: list[dict[str, object]] = []
     completed: subprocess.CompletedProcess[str] | None = None
@@ -140,6 +154,7 @@ def render_colorset(
                 {
                     "attempt": attempt,
                     "exitCode": completed.returncode,
+                    "jobs": jobs,
                     "renderedSvgCount": len(actual_names),
                     "stderr": completed.stderr.strip()[-1000:],
                 }
@@ -152,6 +167,7 @@ def render_colorset(
                 {
                     "attempt": attempt,
                     "exitCode": None,
+                    "jobs": jobs,
                     "renderedSvgCount": len(list(colorset_dir.glob("rendered-*.svg"))),
                     "stderr": f"timed out after {timeout} seconds",
                 }
@@ -189,6 +205,7 @@ def render_colorset(
         "colorset": colorset,
         "ok": not findings,
         "exitCode": final_exit_code,
+        "jobs": jobs,
         "attemptCount": len(attempts),
         "attempts": attempts,
         "diagramCount": len(examples),
@@ -206,8 +223,16 @@ def main() -> int:
     parser.add_argument("--mermaid-cli-package", default=DEFAULT_MERMAID_PACKAGE, help="Exact npx Mermaid CLI package spec.")
     parser.add_argument("--timeout", type=int, default=180, help="Seconds allowed for each colorset batch render.")
     parser.add_argument("--render-retries", type=int, default=3, help="Fresh batch attempts per colorset for transient browser failures.")
+    parser.add_argument(
+        "--jobs",
+        type=int,
+        default=1,
+        help="Parallel Mermaid renders per batch. Keep 1 for deterministic CI coverage.",
+    )
     parser.add_argument("--report", type=Path, help="Write the validation report as JSON.")
     args = parser.parse_args()
+    if args.jobs < 1:
+        parser.error("--jobs must be at least 1")
 
     styler = load_styler()
     npx = find_npx()
@@ -242,6 +267,7 @@ def main() -> int:
                 workspace,
                 args.timeout,
                 args.render_retries,
+                args.jobs,
             )
             colorset_results.append(result)
             findings.extend(colorset_findings)
@@ -254,6 +280,7 @@ def main() -> int:
         "currentDeclarationCount": len(styler.OFFICIAL_DECLARATIONS),
         "renderableDeclarationCount": len(styler.SUPPORTED_DECLARATIONS),
         "colorsetCount": len(colorset_results),
+        "jobs": args.jobs,
         "renderCount": sum(int(result["diagramCount"]) for result in colorset_results),
         "approvedRenderCount": sum(int(result["approvedRenderCount"]) for result in colorset_results),
         "colorsets": colorset_results,
