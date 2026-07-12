@@ -1,6 +1,6 @@
 # Pie Data Switch
 
-- **Pattern ID:** `d3-pattern-pie-data-switch`
+- **Pattern ID:** `d3-pie-data-switch`
 - **Gallery source ID:** `pie-data-switch`
 - **Family:** Transition
 - **Use when:** Arc slices tween between two part-to-whole states.

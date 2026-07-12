@@ -1,6 +1,6 @@
 # Residual RMSNorm Stream
 
-- **Pattern ID:** `d3-pattern-residual-rmsnorm-stream`
+- **Pattern ID:** `d3-residual-rmsnorm-stream`
 - **Gallery source ID:** `residual-rmsnorm-stream`
 - **Family:** Transformer
 - **Use when:** The residual stream branches through attention, adds back, then normalizes.

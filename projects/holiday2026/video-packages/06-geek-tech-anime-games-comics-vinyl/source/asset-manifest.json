@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 1,
+  "videoId": "holiday2026-06-geek-tech-anime-games-comics-vinyl",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  "skillRouting": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "assets": [
+    {
+      "id": "a01-proximity-map",
+      "kind": "diagram",
+      "claim": "Show the Geek, Tech, Anime, Games, Comics & Vinyl evidence required for scene 1 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a01-proximity-map.png",
+      "sha256": "690ae965301c0ba16888cf0f5972365c220d559d6a3b0c22c0e76b1490589376",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:geek-tech-anime-games-comics-vinyl:a01-proximity-map",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Robert C. Williams Museum of Papermaking",
+            "pageUrl": "https://paper.gatech.edu/visit-0",
+            "imageUrl": "https://paper.gatech.edu/sites/default/files/inline-images/Exhibit-2_0.jpg",
+            "imageSha256": "ff484dbed2f7799e28fc1f849c94315a7a07d69ae2af786c65a3707f57d1c73c",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Robert C. Williams Museum of Papermaking; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Mimms Museum of Technology and Art",
+            "pageUrl": "https://mimmsmuseum.org/",
+            "imageUrl": null,
+            "imageSha256": "165e43b7ba93cdbd2af510771a1df8e533ae726d33a7816b36b7a62994bfd088",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Mimms Museum of Technology and Art; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Kinokuniya Atlanta",
+            "pageUrl": "https://usa.kinokuniya.com/stores-kinokuniya",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/571abd61e3214001fb3b9966/1592851908870-B9ZITWWDTLDHJN9SDSSD/An+appealing+example+of+the+Kinokuniya+Austin+store+interior.jpg?format=1500w",
+            "imageSha256": "927e3e5640280c385e93466244bd13f1a3e705a12bafa1e1542c750ab3b17a9d",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Kinokuniya Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a01-proximity-map-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s01",
+          "beatId": "b01",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a02-top-1-source",
+      "kind": "screenshot",
+      "claim": "Show the Geek, Tech, Anime, Games, Comics & Vinyl evidence required for scene 2 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a02-top-1-source.png",
+      "sha256": "ff484dbed2f7799e28fc1f849c94315a7a07d69ae2af786c65a3707f57d1c73c",
+      "origin": {
+        "type": "captured",
+        "uri": "https://paper.gatech.edu/visit-0",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Robert C. Williams Museum of Papermaking; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Robert C. Williams Museum of Papermaking",
+            "pageUrl": "https://paper.gatech.edu/visit-0",
+            "imageUrl": "https://paper.gatech.edu/sites/default/files/inline-images/Exhibit-2_0.jpg",
+            "imageSha256": "ff484dbed2f7799e28fc1f849c94315a7a07d69ae2af786c65a3707f57d1c73c",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Robert C. Williams Museum of Papermaking; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a02-top-1-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s02",
+          "beatId": "b02",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a03-top-2-source",
+      "kind": "screenshot",
+      "claim": "Show the Geek, Tech, Anime, Games, Comics & Vinyl evidence required for scene 3 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a03-top-2-source.png",
+      "sha256": "165e43b7ba93cdbd2af510771a1df8e533ae726d33a7816b36b7a62994bfd088",
+      "origin": {
+        "type": "captured",
+        "uri": "https://mimmsmuseum.org/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official visual page for Mimms Museum of Technology and Art; private family-planning use.",
+        "embeddedSources": [
+          {
+            "rank": 2,
+            "name": "Mimms Museum of Technology and Art",
+            "pageUrl": "https://mimmsmuseum.org/",
+            "imageUrl": null,
+            "imageSha256": "165e43b7ba93cdbd2af510771a1df8e533ae726d33a7816b36b7a62994bfd088",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Mimms Museum of Technology and Art; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a03-top-2-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s03",
+          "beatId": "b03",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a04-top-3-source",
+      "kind": "screenshot",
+      "claim": "Show the Geek, Tech, Anime, Games, Comics & Vinyl evidence required for scene 4 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a04-top-3-source.png",
+      "sha256": "927e3e5640280c385e93466244bd13f1a3e705a12bafa1e1542c750ab3b17a9d",
+      "origin": {
+        "type": "captured",
+        "uri": "https://usa.kinokuniya.com/stores-kinokuniya",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Kinokuniya Atlanta; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 3,
+            "name": "Kinokuniya Atlanta",
+            "pageUrl": "https://usa.kinokuniya.com/stores-kinokuniya",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/571abd61e3214001fb3b9966/1592851908870-B9ZITWWDTLDHJN9SDSSD/An+appealing+example+of+the+Kinokuniya+Austin+store+interior.jpg?format=1500w",
+            "imageSha256": "927e3e5640280c385e93466244bd13f1a3e705a12bafa1e1542c750ab3b17a9d",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Kinokuniya Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a04-top-3-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s04",
+          "beatId": "b04",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a05-top-five",
+      "kind": "diagram",
+      "claim": "Show the Geek, Tech, Anime, Games, Comics & Vinyl evidence required for scene 5 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a05-top-five.png",
+      "sha256": "51f8875fd63cfc2b2e4d5a6d738aa9e8c42142e01b4f5329d430cbadf0c53481",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:geek-tech-anime-games-comics-vinyl:a05-top-five",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Robert C. Williams Museum of Papermaking",
+            "pageUrl": "https://paper.gatech.edu/visit-0",
+            "imageUrl": "https://paper.gatech.edu/sites/default/files/inline-images/Exhibit-2_0.jpg",
+            "imageSha256": "ff484dbed2f7799e28fc1f849c94315a7a07d69ae2af786c65a3707f57d1c73c",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Robert C. Williams Museum of Papermaking; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Mimms Museum of Technology and Art",
+            "pageUrl": "https://mimmsmuseum.org/",
+            "imageUrl": null,
+            "imageSha256": "165e43b7ba93cdbd2af510771a1df8e533ae726d33a7816b36b7a62994bfd088",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Mimms Museum of Technology and Art; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Kinokuniya Atlanta",
+            "pageUrl": "https://usa.kinokuniya.com/stores-kinokuniya",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/571abd61e3214001fb3b9966/1592851908870-B9ZITWWDTLDHJN9SDSSD/An+appealing+example+of+the+Kinokuniya+Austin+store+interior.jpg?format=1500w",
+            "imageSha256": "927e3e5640280c385e93466244bd13f1a3e705a12bafa1e1542c750ab3b17a9d",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Kinokuniya Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Anime Remix",
+            "pageUrl": "https://www.anime-remix.com/pages/contact-us/",
+            "imageUrl": null,
+            "imageSha256": "23e22e69b04249e6e41b90a2a49997d5296d8ed2ec9161ed3c7fba756a19a66b",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Anime Remix; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Win Condition Games",
+            "pageUrl": "https://www.loc8nearme.com/georgia/kennesaw/win-condition-games/8714656/",
+            "imageUrl": "https://cdn10.localdatacdn.com/ga/kennesaw/8714656/original/cHU6J8JiJO.jpg",
+            "imageSha256": "957eb9fb509ad1d6b18ee139355120cfe2bbbb7d7e00adc873ba235f01f93120",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Win Condition Games; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a05-top-five-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s05",
+          "beatId": "b05",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a06-preference-bars",
+      "kind": "diagram",
+      "claim": "Show the Geek, Tech, Anime, Games, Comics & Vinyl evidence required for scene 6 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a06-preference-bars.png",
+      "sha256": "85e19cd58802fadc94bd22c217f89f612dcc5ad6b0d5f9a47e4e9f604d4f992b",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:geek-tech-anime-games-comics-vinyl:a06-preference-bars",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Robert C. Williams Museum of Papermaking",
+            "pageUrl": "https://paper.gatech.edu/visit-0",
+            "imageUrl": "https://paper.gatech.edu/sites/default/files/inline-images/Exhibit-2_0.jpg",
+            "imageSha256": "ff484dbed2f7799e28fc1f849c94315a7a07d69ae2af786c65a3707f57d1c73c",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Robert C. Williams Museum of Papermaking; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Mimms Museum of Technology and Art",
+            "pageUrl": "https://mimmsmuseum.org/",
+            "imageUrl": null,
+            "imageSha256": "165e43b7ba93cdbd2af510771a1df8e533ae726d33a7816b36b7a62994bfd088",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Mimms Museum of Technology and Art; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Kinokuniya Atlanta",
+            "pageUrl": "https://usa.kinokuniya.com/stores-kinokuniya",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/571abd61e3214001fb3b9966/1592851908870-B9ZITWWDTLDHJN9SDSSD/An+appealing+example+of+the+Kinokuniya+Austin+store+interior.jpg?format=1500w",
+            "imageSha256": "927e3e5640280c385e93466244bd13f1a3e705a12bafa1e1542c750ab3b17a9d",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Kinokuniya Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Anime Remix",
+            "pageUrl": "https://www.anime-remix.com/pages/contact-us/",
+            "imageUrl": null,
+            "imageSha256": "23e22e69b04249e6e41b90a2a49997d5296d8ed2ec9161ed3c7fba756a19a66b",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Anime Remix; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Win Condition Games",
+            "pageUrl": "https://www.loc8nearme.com/georgia/kennesaw/win-condition-games/8714656/",
+            "imageUrl": "https://cdn10.localdatacdn.com/ga/kennesaw/8714656/original/cHU6J8JiJO.jpg",
+            "imageSha256": "957eb9fb509ad1d6b18ee139355120cfe2bbbb7d7e00adc873ba235f01f93120",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Win Condition Games; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Oxford Comics & Games",
+            "pageUrl": "https://oxfordcomicsandgames.com/",
+            "imageUrl": "https://oxfordcomicsandgames.com/cdn/shop/files/IMG_8085_6cd05779-a7b5-4d69-8637-111cba522c30.jpg?v=1737322759&width=832",
+            "imageSha256": "c2e9351b9031572c57f9e77d4bdf1305b0920992db46c3ea22b4c6d27b0e09f8",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Oxford Comics & Games; verify reuse terms before public publication."
+          },
+          {
+            "rank": 7,
+            "name": "TESO Life Duluth",
+            "pageUrl": "https://www.tesolife.com/",
+            "imageUrl": "https://www.tesolife.com/pub/media/tesolife/side/1.png",
+            "imageSha256": "8ea75f770260f0e2fd43bd46700656904b6b791e2f52aa676571d4fd230197b0",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for TESO Life Duluth; verify reuse terms before public publication."
+          },
+          {
+            "rank": 8,
+            "name": "Tokyo Kuma Duluth",
+            "pageUrl": "https://tokyokumausa.com/",
+            "imageUrl": "https://img1.wsimg.com/isteam/ip/646f0613-bdf3-4684-9307-f8d19bbe48c8/blob-e902f7e.png",
+            "imageSha256": "245f1915ba3368b824ee14cd7422b2a0b8d71d4980076cd9e4e76cff4275f56a",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Tokyo Kuma Duluth; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a06-preference-bars-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s06",
+          "beatId": "b06",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a07-decision-board",
+      "kind": "diagram",
+      "claim": "Show the Geek, Tech, Anime, Games, Comics & Vinyl evidence required for scene 7 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a07-decision-board.png",
+      "sha256": "341f59e8deeb4ae7545bef2a6284968d457afe0b164ebf65fe345671a4fd0f25",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:geek-tech-anime-games-comics-vinyl:a07-decision-board",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Robert C. Williams Museum of Papermaking",
+            "pageUrl": "https://paper.gatech.edu/visit-0",
+            "imageUrl": "https://paper.gatech.edu/sites/default/files/inline-images/Exhibit-2_0.jpg",
+            "imageSha256": "ff484dbed2f7799e28fc1f849c94315a7a07d69ae2af786c65a3707f57d1c73c",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Robert C. Williams Museum of Papermaking; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Mimms Museum of Technology and Art",
+            "pageUrl": "https://mimmsmuseum.org/",
+            "imageUrl": null,
+            "imageSha256": "165e43b7ba93cdbd2af510771a1df8e533ae726d33a7816b36b7a62994bfd088",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Mimms Museum of Technology and Art; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Kinokuniya Atlanta",
+            "pageUrl": "https://usa.kinokuniya.com/stores-kinokuniya",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/571abd61e3214001fb3b9966/1592851908870-B9ZITWWDTLDHJN9SDSSD/An+appealing+example+of+the+Kinokuniya+Austin+store+interior.jpg?format=1500w",
+            "imageSha256": "927e3e5640280c385e93466244bd13f1a3e705a12bafa1e1542c750ab3b17a9d",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Kinokuniya Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Anime Remix",
+            "pageUrl": "https://www.anime-remix.com/pages/contact-us/",
+            "imageUrl": null,
+            "imageSha256": "23e22e69b04249e6e41b90a2a49997d5296d8ed2ec9161ed3c7fba756a19a66b",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Anime Remix; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a07-decision-board-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s07",
+          "beatId": "b07",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a08-planner-callback",
+      "kind": "diagram",
+      "claim": "Show the Geek, Tech, Anime, Games, Comics & Vinyl evidence required for scene 8 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a08-planner-callback.png",
+      "sha256": "52ecc887b2552a73835a613b3a0109d0309e09d8f13225279095795083913b22",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:geek-tech-anime-games-comics-vinyl:a08-planner-callback",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Robert C. Williams Museum of Papermaking",
+            "pageUrl": "https://paper.gatech.edu/visit-0",
+            "imageUrl": "https://paper.gatech.edu/sites/default/files/inline-images/Exhibit-2_0.jpg",
+            "imageSha256": "ff484dbed2f7799e28fc1f849c94315a7a07d69ae2af786c65a3707f57d1c73c",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Robert C. Williams Museum of Papermaking; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Mimms Museum of Technology and Art",
+            "pageUrl": "https://mimmsmuseum.org/",
+            "imageUrl": null,
+            "imageSha256": "165e43b7ba93cdbd2af510771a1df8e533ae726d33a7816b36b7a62994bfd088",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Mimms Museum of Technology and Art; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Kinokuniya Atlanta",
+            "pageUrl": "https://usa.kinokuniya.com/stores-kinokuniya",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/571abd61e3214001fb3b9966/1592851908870-B9ZITWWDTLDHJN9SDSSD/An+appealing+example+of+the+Kinokuniya+Austin+store+interior.jpg?format=1500w",
+            "imageSha256": "927e3e5640280c385e93466244bd13f1a3e705a12bafa1e1542c750ab3b17a9d",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Kinokuniya Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Anime Remix",
+            "pageUrl": "https://www.anime-remix.com/pages/contact-us/",
+            "imageUrl": null,
+            "imageSha256": "23e22e69b04249e6e41b90a2a49997d5296d8ed2ec9161ed3c7fba756a19a66b",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Anime Remix; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Win Condition Games",
+            "pageUrl": "https://www.loc8nearme.com/georgia/kennesaw/win-condition-games/8714656/",
+            "imageUrl": "https://cdn10.localdatacdn.com/ga/kennesaw/8714656/original/cHU6J8JiJO.jpg",
+            "imageSha256": "957eb9fb509ad1d6b18ee139355120cfe2bbbb7d7e00adc873ba235f01f93120",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Win Condition Games; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Oxford Comics & Games",
+            "pageUrl": "https://oxfordcomicsandgames.com/",
+            "imageUrl": "https://oxfordcomicsandgames.com/cdn/shop/files/IMG_8085_6cd05779-a7b5-4d69-8637-111cba522c30.jpg?v=1737322759&width=832",
+            "imageSha256": "c2e9351b9031572c57f9e77d4bdf1305b0920992db46c3ea22b4c6d27b0e09f8",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Oxford Comics & Games; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a08-planner-callback-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s08",
+          "beatId": "b08",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Nucleus Sampling
 
-- **Pattern ID:** `d3-pattern-nucleus-sampling`
+- **Pattern ID:** `d3-nucleus-sampling`
 - **Gallery source ID:** `nucleus-sampling`
 - **Family:** LLM
 - **Use when:** Top-p keeps the smallest token set whose cumulative probability crosses a threshold.

@@ -1,6 +1,6 @@
 # Voronoi Field
 
-- **Pattern ID:** `d3-pattern-voronoi`
+- **Pattern ID:** `d3-voronoi`
 - **Gallery source ID:** `voronoi`
 - **Family:** Proximity
 - **Use when:** Nearest-neighbor cells around point anchors.

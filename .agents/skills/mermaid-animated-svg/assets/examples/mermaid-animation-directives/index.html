@@ -581,6 +581,26 @@
         ["timeline-dense-groups", "auto", 29],
       ];
 
+      const basePatternSlugs = new Map([
+        ["block-diagram", "block"],
+        ["c4-diagram", "c4"],
+        ["class-diagram", "class"],
+        ["entity-relationship-diagram", "er"],
+        ["gitgraph-diagram", "gitgraph"],
+        ["packet-diagram", "packet"],
+        ["pie-chart", "pie"],
+        ["quadrant-chart", "quadrant"],
+        ["requirement-diagram", "requirement"],
+        ["sequence-diagram", "sequence"],
+        ["state-diagram", "state"]
+      ]);
+      const directivePatternSlugs = new Map([
+        ["block-diagram-directive-selectors", "block-selectors"],
+        ["requirement-traceability-thread", "requirement-trace-thread"],
+        ["sankey-flow-handoff", "sankey-handoff"],
+        ["xy-chart-series-reveal", "xy-series-reveal"]
+      ]);
+
       const titleCase = (value) =>
         value
           .split("-")
@@ -602,6 +622,7 @@
         final,
         className = "",
         patternId,
+        legacyPatternId,
         exampleId,
       }) {
         const node = template.content.cloneNode(true);
@@ -612,6 +633,7 @@
         const restart = node.querySelector("button[data-action='restart']");
         const views = { animated, static: statik, mid, final };
         const resolvedExampleId = exampleId || patternId;
+        const resolvedLegacyPatternId = legacyPatternId && legacyPatternId !== patternId ? legacyPatternId : "";
 
         if (className) {
           article.className = className;
@@ -619,6 +641,7 @@
         article.id = patternId;
         article.dataset.exampleId = resolvedExampleId;
         article.dataset.patternId = patternId;
+        if (resolvedLegacyPatternId) article.dataset.legacyPatternId = resolvedLegacyPatternId;
         titleNode.textContent = title;
         patternIdNode.textContent = patternId;
         noteNode.textContent = note;
@@ -635,6 +658,7 @@
           panel.src = src;
           panel.dataset.exampleId = resolvedExampleId;
           panel.dataset.patternId = patternId;
+          if (resolvedLegacyPatternId) panel.dataset.legacyPatternId = resolvedLegacyPatternId;
           panel.alt = `${title} ${view === "static" ? "static SVG" : view === "animated" ? "animated SVG" : `${view} animation frame`}`;
         }
 
@@ -679,6 +703,7 @@
       }
 
       for (const item of directiveExamples) {
+        const patternSlug = directivePatternSlugs.get(item.name) || item.name;
         examplesRoot.appendChild(buildAnimationCard({
           title: item.label,
           note: item.note,
@@ -687,7 +712,8 @@
           source: `../../examples/mermaid-animation-directives/${item.name}.mmd`,
           mid: item.frames === false ? undefined : `../playwright/mermaid-animation-directives/${item.name}.mid.png`,
           final: item.frames === false ? undefined : `../playwright/mermaid-animation-directives/${item.name}.final.png`,
-          patternId: `mermaid-directive-${item.name}`,
+          patternId: `mermaid-directive-${patternSlug}`,
+          legacyPatternId: `mermaid-directive-${item.name}`,
           exampleId: item.name,
         }));
       }
@@ -712,6 +738,7 @@
         }
         for (const item of entries) {
           const name = item.slug;
+          const patternSlug = directivePatternSlugs.get(name) || name;
           byTypeRoot.appendChild(buildAnimationCard({
             title: item.type,
             note: item.critique,
@@ -721,10 +748,12 @@
             mid: item.frames ? `../playwright/mermaid-animation-directives/by-type/${name}.mid.png` : undefined,
             final: item.frames ? `../playwright/mermaid-animation-directives/by-type/${name}.final.png` : undefined,
             className: "gallery-card",
-            patternId: `mermaid-directive-${name}`,
+            patternId: `mermaid-directive-${patternSlug}`,
+            legacyPatternId: `mermaid-directive-${name}`,
             exampleId: name,
           }));
         }
+        redirectLegacyPatternHash();
       }
       loadByTypeExamples().catch((error) => {
         byTypeRoot.textContent = `By-type examples failed to load: ${error.message}`;
@@ -733,6 +762,7 @@
 
       const galleryRoot = document.querySelector("#gallery");
       for (const [name, animation, targets, staticName = name] of galleryExamples) {
+        const patternSlug = basePatternSlugs.get(name) || name;
         galleryRoot.appendChild(buildAnimationCard({
           title: titleCase(name),
           note: `${animation} animation · ${targets} targets`,
@@ -740,10 +770,23 @@
           statik: `../../examples/mermaid-svg-animated/static/${staticName}.static.svg`,
           source: `../../examples/mermaid/${staticName}.mmd`,
           className: "gallery-card",
-          patternId: `mermaid-pattern-${name}`,
+          patternId: `mermaid-${patternSlug}`,
+          legacyPatternId: `mermaid-pattern-${name}`,
           exampleId: name,
         }));
       }
+
+      function redirectLegacyPatternHash() {
+        const hash = decodeURIComponent(window.location.hash.slice(1));
+        if (!hash) return;
+        const card = [...document.querySelectorAll("[data-legacy-pattern-id]")].find((item) => item.dataset.legacyPatternId === hash && item.id);
+        if (!card) return;
+        history.replaceState(null, "", location.pathname + location.search + "#" + card.dataset.patternId);
+        card.scrollIntoView({ block: "start" });
+      }
+
+      redirectLegacyPatternHash();
+      window.addEventListener("hashchange", redirectLegacyPatternHash);
     </script>
   </body>
 </html>

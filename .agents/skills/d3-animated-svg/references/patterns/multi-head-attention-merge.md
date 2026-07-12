@@ -1,6 +1,6 @@
 # Multi-Head Attention Merge
 
-- **Pattern ID:** `d3-pattern-multi-head-attention-merge`
+- **Pattern ID:** `d3-multi-head-attention-merge`
 - **Gallery source ID:** `multi-head-attention-merge`
 - **Family:** Transformer
 - **Use when:** Several attention heads specialize before concatenation and output projection.

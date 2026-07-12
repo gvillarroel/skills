@@ -21,7 +21,7 @@ The script extracts points from circles, ellipses, rectangles, lines, polylines,
 Audit a gallery SVG by ID:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/audit_dynamic_symmetry.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --selector "svg#asymmetric-task-overlap-saturated" --output projects/d3-animated-svg-validation/artifacts/data/asymmetric-task-overlap-saturated-dynamic-symmetry.json
+uv run --script .agents/skills/d3-animated-svg/scripts/audit_dynamic_symmetry.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --selector "svg#task-overlap-dense" --output projects/d3-animated-svg-validation/artifacts/data/task-overlap-dense-dynamic-symmetry.json
 ```
 
 Audit a nested object using its own bounding box as the frame:
@@ -60,13 +60,13 @@ Composition membership is a narrative decision before it is a geometry decision.
 
 Current sheet IDs:
 
-- `balance-symmetry`: center axes, mirrored weight, and quadrant balance.
-- `diagonal-armature`: major diagonal, minor diagonal, and reciprocal diagonal motion.
+- `symmetry`: center axes, mirrored weight, and quadrant balance.
+- `diagonal`: major diagonal, minor diagonal, and reciprocal diagonal motion.
 - `golden-root`: golden section plus root-2/root-3/root-5 divisions.
-- `thirds-fifths-grid`: modular thirds/fifths rows and columns.
-- `radial-rosette`: center, rings, spokes, and rotational balance.
-- `flow-spine`: source, transform, checkpoint, and output roles.
-- `dense-label-lanes`: external lanes, clearance bands, and leader underpasses.
+- `modular-grid`: modular thirds/fifths rows and columns.
+- `radial`: center, rings, spokes, and rotational balance.
+- `flow`: source, transform, checkpoint, and output roles.
+- `label-lanes`: external lanes, clearance bands, and leader underpasses.
 
 Each variant must expose a stable composition-specific ID:
 
@@ -76,15 +76,15 @@ d3-composition-<composition-id>-<source-example-id>
 
 Examples:
 
-- `d3-composition-balance-symmetry-force-network`
-- `d3-composition-diagonal-armature-force-network`
-- `d3-composition-radial-rosette-force-network`
+- `d3-composition-symmetry-force-network`
+- `d3-composition-diagonal-force-network`
+- `d3-composition-radial-force-network`
 
 Each rendered card must include an inline SVG preview and expose:
 
 - `data-composition-id`: the active sheet ID.
 - `data-example-id`: the gallery source example ID.
-- `data-pattern-id`: the stable `d3-pattern-*` ID.
+- `data-pattern-id`: the stable `d3-*` ID.
 - `data-composition-pattern-id`: the stable composition-specific variant ID.
 - `data-source-family`: the source gallery family or inferred family.
 - `data-armature-lines`: the lines used to optimize the target composition.
@@ -102,11 +102,11 @@ When adding a variant:
 2. Start from the rendered source SVG geometry or a faithful extraction of its marks, then recompose the preview toward the sheet armature: center balance, diagonal movement, golden/root split, modular grid, radial rings, process spine, or label lanes.
 3. For geospatial diagonal variants, preserve relative spacing between places and use diagonal height/direction to express route, reach, or distance; do not equalize airports or regions into generic stations.
 4. Render a nonblank SVG preview on the card so the composition can be visually inspected without opening the base gallery.
-5. Keep the base pattern link so the original `d3-pattern-*` ID remains discoverable.
+5. Keep the base pattern link so the original `d3-*` ID remains discoverable.
 6. Search by the composition ID, source pattern ID, title, or role should reveal the card.
 
 Validate the sheets after adding, removing, or renaming D3 patterns:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 70 --expected-reviewed-patterns 224 --required-variant d3-composition-radial-rosette-force-network --expect-clean
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 70 --expected-reviewed-patterns 224 --required-variant d3-composition-radial-force-network --expect-clean
 ```

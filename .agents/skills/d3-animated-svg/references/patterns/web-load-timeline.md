@@ -1,6 +1,6 @@
 # Web Load Timeline
 
-- **Pattern ID:** `d3-pattern-web-load-timeline`
+- **Pattern ID:** `d3-web-load-timeline`
 - **Gallery source ID:** `web-load-timeline`
 - **Family:** Performance
 - **Use when:** A page load unfolds across network, parsing, assets, paint, and interactivity lanes.

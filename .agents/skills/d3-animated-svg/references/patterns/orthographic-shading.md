@@ -1,6 +1,6 @@
 # Orthographic Shading
 
-- **Pattern ID:** `d3-pattern-orthographic-shading`
+- **Pattern ID:** `d3-orthographic-shading`
 - **Gallery source ID:** `orthographic-shading`
 - **Family:** Projection
 - **Use when:** A globe projection uses radial light to suggest curvature.

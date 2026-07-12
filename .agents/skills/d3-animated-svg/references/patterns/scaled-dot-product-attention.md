@@ -1,6 +1,6 @@
 # Scaled Dot-Product Attention
 
-- **Pattern ID:** `d3-pattern-scaled-dot-product-attention`
+- **Pattern ID:** `d3-scaled-dot-product-attention`
 - **Gallery source ID:** `scaled-dot-product-attention`
 - **Family:** Attention
 - **Use when:** QK scores are masked, normalized, then applied to V.

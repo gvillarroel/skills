@@ -1,6 +1,6 @@
 # Box Plot
 
-- **Pattern ID:** `d3-pattern-boxplot`
+- **Pattern ID:** `d3-boxplot`
 - **Gallery source ID:** `boxplot`
 - **Family:** Distribution
 - **Use when:** Quartiles, whiskers, and outliers per group.

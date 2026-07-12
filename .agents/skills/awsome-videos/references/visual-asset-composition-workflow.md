@@ -1,21 +1,21 @@
 # Visual Asset and Composition Workflow
 
-Use this workflow for finished videos and production packages. Treat specialist skills as preferred collaborators, not runtime dependencies. Preserve one artifact chain from source decisions to the reviewed MP4.
+Use this for finished videos. Preserve one source-to-reviewed-MP4 artifact chain; specialists are collaborators, not runtime dependencies.
 
 ## Ownership and routing
 
 Keep one owner per decision:
 
-- `awsome-videos` owns the editorial promise, timed beats, voiceover cadence, style vocabulary, audio direction, and final package acceptance.
+- `awsome-videos` owns promise, beats, voiceover, style, audio, and final acceptance.
 - Prefer `source-to-video-director` to freeze source facts, storyboard, and shot contracts for source-backed or finished work.
 - Prefer `scene-composition-director` for scene framing, focal hierarchy, safe areas, depth, asset roles, and motion phases. Prefer `scene-transition-director` for every multi-scene transition chain.
-- Route each asset to exactly one producer: `imagegen` for original raster work; `mermaid-animated-svg` for conventional diagrams; `d3-animated-svg` for bespoke geometry or data motion; `echarts-animated-svg` for standard charts; and `threejs-animated-3d` only when depth carries meaning.
+- Route each asset to one producer: `imagegen` for raster work; `mermaid-animated-svg` for conventional diagrams; `d3-animated-svg` for bespoke geometry/data motion; ECharts for charts; Three.js only when depth carries meaning.
 - Select exactly one renderer owner. Prefer `html-d3-anime-video-workflow` for complex browser animation, Slidev plus its animation/chart skills for slide-first work, or `manim-svg-video` for an SVG mosaic or Manim-native sequence. Do not let two renderer skills encode competing finals.
-- Run the selected renderer's checks and the applicable quality audit. Examples include browser frame/contact-sheet review, `slidev-quality-audit`, D3/SVG composition evaluation, canvas-pixel checks for Three.js, and the final `awsome-videos` MP4/style/readiness/package gates.
+- Run renderer checks, the applicable visual audit, and the final MP4/style/readiness/package gates.
 
-For finished work, source, composition, transition, and renderer ownership are mandatory; asset specialists remain need-driven. Never invoke every visual skill by default.
+Finished work requires source, composition, transition, and renderer owners; route asset specialists only when needed.
 
-Record decisions under `skillRouting`. Each route needs `stage`, `skill`, `reason`, `output`, `outputPaths`, `proof`, and `status`. A complete route proof binds every output to its current SHA-256; the source route additionally needs frozen, URL-backed facts and a complete fact-to-shot contract. A skipped route needs `fallbackReason`. Keep one renderer route.
+Record `skillRouting` with `stage`, `skill`, `reason`, `output`, `outputPaths`, `proof`, and `status`. Completed proofs bind every output SHA-256; the source route also freezes URL-backed facts and fact-to-shot mappings. Skips need `fallbackReason`. Keep one renderer route.
 
 ## Required artifact chain
 
@@ -43,7 +43,7 @@ Give every asset a stable lowercase `id` and include the exact contract fields:
 
 Every declared asset must exist, match its hash, and appear in a scene. Raster/SVG work must decode; video must pass ffprobe; GLTF/GLB must have valid 2.x scene/node/mesh structure. Reject placeholder media, broken paths, unverifiable provenance, generic stock, watermarks, private data, illegible screenshots, and rights violations.
 
-Prefer source-bound UI, code, documentation, diagrams, and captures. Use generated imagery only when it clarifies the claim or establishes a deliberate visual metaphor. Inspect generated raster work at the final aspect ratio and crop; reject malformed anatomy or objects, garbled text, noisy edges, inconsistent lighting/perspective, unwanted halos, and visual styles that collide with adjacent scenes. Supply enough native resolution for the largest final crop and planned zoom; prefer vectors for diagrams and icons.
+Prefer source-bound UI, code, docs, diagrams, and captures. Generate imagery only for a claim or deliberate metaphor. Inspect the final crop; reject malformed objects, garbled text, noisy edges, inconsistent perspective, halos, or style drift. Supply enough resolution for the largest zoom; prefer vectors for diagrams and icons.
 
 ### Composition plan
 
@@ -61,6 +61,8 @@ Create exactly one entry per rendered `sceneId` in the `scenes` array. Bind each
 
 Use one dominant reading task per moment. Keep proof primary and labels subordinate. Reserve clear margins, avoid tangencies/overlaps, and protect crop zones. Vary actual `objectBounds` geometry across scenes—not only armature names—with at least three material spatial layouts in a six-plus-scene sequence. Motion must reveal, compare, transform, or hand off attention.
 
+Before renderer handoff, mute narration/captions and view each hold for three seconds. Name its familiar object, state-changing action, and result. Fail anonymous boxes/lines, motion that only relocates geometry, or a small semantic inset under an abstract dominant background. Enlarge/replace the asset, add functional local labels, and retest.
+
 ## Seam IDs and binding
 
 Use the same stable IDs and timing across every contract and report. Visible media itself carries matching `data-asset-id`, `data-asset-src`, and `data-asset-sha256` and must load that exact file; inline SVG/canvas/3D needs an instrumented resource load. Composition objects carry `data-object-id`. Do not repair a seam by renaming one artifact.
@@ -76,9 +78,9 @@ A scaffold proves directories and timing hooks only. Its generic cards, gradient
 Review first/hold/emphasis/final for every scene and before/midpoint/after for every seam. Timestamps must be ordered, lie inside their scene, and straddle the exact seam; paths and hashes must be globally unique. The validator uses ffmpeg to re-extract every frame from the candidate MP4 and enforces normalized mean pixel difference at most `0.04`. Record:
 
 - `candidateVideo: { path, sha256 }` for the exact delivered MP4;
-- one scene review per ID with `compositionId`, exact `assetIds`, evidence-frame timestamps/paths/SHA-256 values, seven passing checks, substantive finding/correction text, and `status: approved`;
+- one scene review per ID with `compositionId`, exact `assetIds`, evidence-frame timestamps/paths/SHA-256 values, eight passing checks, a concrete `silentTest` (`durationSeconds`, `object`, `action`, `result`), substantive finding/correction text, and `status: approved`;
 - `N-1` transition reviews with from/to IDs, evidence-frame path/SHA-256, substantive finding, and passing status;
-- checks for asset binding, focal hierarchy, legibility, safe areas, crop, contrast, visual continuity, transition persistence, motion purpose, and source fidelity;
+- checks for asset binding, focal hierarchy, legibility, safe areas, crop, contrast, silent comprehension, visual continuity, transition persistence, motion purpose, and source fidelity;
 - `pass`, `warn`, or `fail`, with concrete observations, correction owner, and rerender requirement;
 - caveats and the reviewer method (`automated`, `manual`, or both).
 

@@ -280,6 +280,7 @@ export const researchNotes = [
 export const concepts = [
   {
     id: "01-what-is-an-llm",
+    patternId: "ai-llm",
     title: "What Is an LLM?",
     shortTitle: "LLM",
     kind: "llm",
@@ -352,6 +353,7 @@ export const concepts = [
   },
   {
     id: "02-llm-billing",
+    patternId: "ai-llm-billing",
     title: "LLM Billing",
     shortTitle: "Billing",
     kind: "billing",
@@ -405,6 +407,7 @@ export const concepts = [
   },
   {
     id: "03-probabilities-and-evaluation",
+    patternId: "ai-probability-eval",
     title: "LLM Probabilities and Evaluation",
     shortTitle: "Evaluation",
     kind: "evaluation",
@@ -457,6 +460,7 @@ export const concepts = [
   },
   {
     id: "04-what-is-an-agent",
+    patternId: "ai-agent",
     title: "What Is an Agent?",
     shortTitle: "Agent",
     kind: "agent",
@@ -510,6 +514,7 @@ export const concepts = [
   },
   {
     id: "05-what-is-a-guardrail",
+    patternId: "ai-guardrail",
     title: "What Is a Guardrail?",
     shortTitle: "Guardrail",
     kind: "guardrail",
@@ -561,6 +566,7 @@ export const concepts = [
   },
   {
     id: "06-what-is-a-harness",
+    patternId: "ai-harness",
     title: "What Is a Harness?",
     shortTitle: "Harness",
     kind: "harness",
@@ -613,6 +619,7 @@ export const concepts = [
   },
   {
     id: "07-what-is-a-harness-hook",
+    patternId: "ai-harness-hook",
     title: "What Is a Harness Hook?",
     shortTitle: "Hook",
     kind: "hook",
@@ -666,6 +673,7 @@ export const concepts = [
   },
   {
     id: "08-what-is-a-harness-plugin",
+    patternId: "ai-harness-plugin",
     title: "What Is a Harness Plugin?",
     shortTitle: "Plugin",
     kind: "plugin",
@@ -719,6 +727,7 @@ export const concepts = [
   },
   {
     id: "09-what-is-a-skill",
+    patternId: "ai-skill",
     title: "What Is a Skill?",
     shortTitle: "Skill",
     kind: "skill",
@@ -771,6 +780,7 @@ export const concepts = [
   },
   {
     id: "10-what-is-an-mcp",
+    patternId: "ai-mcp",
     title: "What Is an MCP?",
     shortTitle: "MCP",
     kind: "mcp",
@@ -824,6 +834,7 @@ export const concepts = [
   },
   {
     id: "11-ai-alternatives",
+    patternId: "ai-alternatives",
     title: "AI Alternatives",
     shortTitle: "Alternatives",
     kind: "alternatives",

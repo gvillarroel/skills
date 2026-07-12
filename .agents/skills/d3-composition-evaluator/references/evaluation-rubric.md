@@ -7,7 +7,7 @@ Use this rubric to evaluate a rendered D3 or SVG pattern, composition variant, o
 - The SVG is visible, nonblank, and framed inside the card or page without clipping important marks.
 - The SVG has a `title`, `desc`, stable `id`, and a predictable selector for validation.
 - A composition variant uses `d3-composition-<composition-id>-<source-id>` as its stable ID.
-- The variant exposes enough metadata to trace it back to the base pattern, such as source example ID and `d3-pattern-*` ID.
+- The variant exposes enough metadata to trace it back to the base pattern, such as source example ID and `d3-*` ID.
 - The card shows the SVG preview directly; text-only cards are not sufficient for composition review.
 - If a reviewed source pattern is not published in any composition sheet, the review records an explicit rejection reason. Missing targets without a rejection reason are an audit failure.
 - Card previews should not rely on visible composition scaffolding. Visible guide lines, quadrant overlays, source-field borders, signature boxes, or direction cues are failures unless they are source-derived data marks, route paths, flow links, label leaders, or another narrative element.
@@ -39,7 +39,7 @@ Use this rubric to evaluate a rendered D3 or SVG pattern, composition variant, o
 
 Use these when evaluating a recomposed variant against the source pattern that generated it:
 
-- The card, SVG, and link expose the original source example ID and stable `d3-pattern-*` ID.
+- The card, SVG, and link expose the original source example ID and stable `d3-*` ID.
 - The visible source signature or title trace makes the base pattern identifiable without opening the source gallery.
 - Source-closeness scoring should compare the recomposed source content against the base SVG, excluding composition-only anchors such as guide lines, lane labels, context panels, or radial/grid cues.
 - The preview renderer is compatible with the source pattern kind. For example, a source network can become balanced, diagonal, or radial, but it should still read as nodes and links.

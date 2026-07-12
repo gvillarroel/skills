@@ -1,6 +1,6 @@
 # Area with Missing Data
 
-- **Pattern ID:** `d3-pattern-area-missing-data`
+- **Pattern ID:** `d3-area-missing-data`
 - **Gallery source ID:** `area-missing-data`
 - **Family:** Temporal
 - **Use when:** Filled segments stop and restart around missing periods.

@@ -1,6 +1,6 @@
 # Ternary Plot
 
-- **Pattern ID:** `d3-pattern-ternary`
+- **Pattern ID:** `d3-ternary`
 - **Gallery source ID:** `ternary`
 - **Family:** Composition
 - **Use when:** Three-part mixtures mapped into simplex space.

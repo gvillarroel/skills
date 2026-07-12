@@ -1,6 +1,6 @@
 # Polar Area
 
-- **Pattern ID:** `d3-pattern-polar-area`
+- **Pattern ID:** `d3-polar-area`
 - **Gallery source ID:** `polar-area`
 - **Family:** Radial
 - **Use when:** Seasonal magnitude as radial arc segments.

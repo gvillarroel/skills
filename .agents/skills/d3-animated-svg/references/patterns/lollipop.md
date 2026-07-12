@@ -1,6 +1,6 @@
 # Lollipop
 
-- **Pattern ID:** `d3-pattern-lollipop`
+- **Pattern ID:** `d3-lollipop`
 - **Gallery source ID:** `lollipop`
 - **Family:** Ranking
 - **Use when:** Ranked values with reduced bar ink.

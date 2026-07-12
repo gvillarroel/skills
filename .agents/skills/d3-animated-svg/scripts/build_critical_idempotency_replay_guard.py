@@ -468,7 +468,7 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-idempotency-replay-guard" data-pattern-id="d3-pattern-critical-idempotency-replay-guard"
+  <svg id="idempotency-guard" data-pattern-id="d3-idempotency-guard"
     data-pattern-family="critical-idempotency" data-client-count="{len(ATTEMPTS)}" data-retry-count="3"
     data-duplicate-count="3" data-flow-count="8" data-pulse-count="8" data-ledger-row-count="{len(LEDGER_ROWS)}"
     data-side-effect-count="1" data-replay-count="2" data-mismatch-count="1" data-metric-line-count="3"
@@ -476,9 +476,9 @@ def build_html() -> str:
     data-status-card-count="{len(STATUS_CARDS)}" data-idempotency-key="pay_9f3" data-idempotency-ttl-hours="24"
     data-duplicate-suppressed="3" data-side-effects-created="1" data-replayed-response-code="201"
     viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-idempotency-replay-guard-title critical-idempotency-replay-guard-desc">
-    <title id="critical-idempotency-replay-guard-title">Critical idempotency replay guard</title>
-    <desc id="critical-idempotency-replay-guard-desc">A deterministic replay-guard pattern shows clients retrying with an idempotency key, a gateway duplicate guard, a ledger comparing request fingerprints, one committed side effect, stored response replay for same-key retries, changed-payload rejection, TTL retention, and metrics where attempts rise while side effects remain at one.</desc>
+    aria-labelledby="idempotency-guard-title idempotency-guard-desc">
+    <title id="idempotency-guard-title">Critical idempotency replay guard</title>
+    <desc id="idempotency-guard-desc">A deterministic replay-guard pattern shows clients retrying with an idempotency key, a gateway duplicate guard, a ledger comparing request fingerprints, one committed side effect, stored response replay for same-key retries, changed-payload rejection, TTL retention, and metrics where attempts rise while side effects remain at one.</desc>
     <rect x="28" y="24" width="1024" height="590" rx="10" fill="{PALETTE["surface"]}" stroke="{PALETTE["gray200"]}" stroke-width="1.2"/>
     <text class="root-title" x="58" y="58">Critical idempotency replay guard</text>
     <text class="root-subtitle" x="58" y="80">Make retries safe by replaying the first stored result instead of creating duplicate side effects.</text>

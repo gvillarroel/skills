@@ -1,6 +1,6 @@
 # Versor Dragging
 
-- **Pattern ID:** `d3-pattern-versor-dragging`
+- **Pattern ID:** `d3-versor-dragging`
 - **Gallery source ID:** `versor-dragging`
 - **Family:** Projection
 - **Use when:** A globe rotates along a drag arc using spherical interpolation.

@@ -1,6 +1,6 @@
 # Sketchy Streamgraph
 
-- **Pattern ID:** `d3-pattern-sketchy-streamgraph`
+- **Pattern ID:** `d3-sketchy-streamgraph`
 - **Gallery source ID:** `sketchy-streamgraph`
 - **Family:** Sketchy
 - **Use when:** Stacked areas keep their D3 geometry while rough outlines and fills add drawn texture.

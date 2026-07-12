@@ -1,6 +1,6 @@
 # Bivariate Choropleth
 
-- **Pattern ID:** `d3-pattern-bivariate-choropleth`
+- **Pattern ID:** `d3-bivariate-choropleth`
 - **Gallery source ID:** `bivariate-choropleth`
 - **Family:** Geospatial
 - **Use when:** Two metrics combine into a 3-by-3 regional color key.

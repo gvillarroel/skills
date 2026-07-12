@@ -1,6 +1,6 @@
 # AI Line Writing
 
-- **Pattern ID:** `d3-pattern-ai-line-writing`
+- **Pattern ID:** `d3-ai-line-writing`
 - **Gallery source ID:** `ai-line-writing`
 - **Family:** Motion
 - **Use when:** Monoline strokes write AI Generated one letter at a time.

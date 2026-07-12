@@ -1,6 +1,6 @@
 # Freehand Trace
 
-- **Pattern ID:** `d3-pattern-freehand-trace`
+- **Pattern ID:** `d3-freehand-trace`
 - **Gallery source ID:** `freehand-trace`
 - **Family:** Motion
 - **Use when:** A red point draws a loose hand stroke and leaves ink behind.

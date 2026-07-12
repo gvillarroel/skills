@@ -1,6 +1,6 @@
 # Delaunay Mesh
 
-- **Pattern ID:** `d3-pattern-delaunay-mesh`
+- **Pattern ID:** `d3-delaunay-mesh`
 - **Gallery source ID:** `delaunay-mesh`
 - **Family:** Proximity
 - **Use when:** Triangulated neighbor structure behind points.

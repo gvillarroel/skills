@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 1,
+  "videoId": "holiday2026-09-shopping-markets-outlets",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  "skillRouting": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "assets": [
+    {
+      "id": "a01-proximity-map",
+      "kind": "diagram",
+      "claim": "Show the Shopping, Markets & Outlets evidence required for scene 1 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a01-proximity-map.png",
+      "sha256": "6ca3294e73f3b715a296151d384b0396984c7174a16f4d59fda19ddad1cd6f87",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:shopping-markets-outlets:a01-proximity-map",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Plaza Fiesta",
+            "pageUrl": "https://exploregeorgia.org/georgia-shopping",
+            "imageUrl": null,
+            "imageSha256": "04e9e56924d90bb3c988f5f52671c3b23731d427860c815cf0a91f68572f73c7",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Plaza Fiesta; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Buford Highway Farmers Market",
+            "pageUrl": "https://www.aofwc.com/",
+            "imageUrl": "http://static1.squarespace.com/static/5c910847840b16a0eabf20cd/t/5c9115fb104c7b45621ec62c/1553012276088/weblogo.jpg?format=1500w",
+            "imageSha256": "6ad216c405b17a9f807e200717c987d4246f4223c4bbaf1f8f31b636aabd7411",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Buford Highway Farmers Market; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Downtown Duluth",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?search=Downtown%20Duluth%20Duluth&title=Special:MediaSearch&type=image",
+            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Duluth_Minnesota_Panorama_%2816785450493%29.jpg/960px-Duluth_Minnesota_Panorama_%2816785450493%29.jpg",
+            "imageSha256": "f63590b3c05aa510e15a977156a6233fcf1aa0fb5955d450799161e19ca3fc3f",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Downtown Duluth; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a01-proximity-map-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s01",
+          "beatId": "b01",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a02-top-1-source",
+      "kind": "screenshot",
+      "claim": "Show the Shopping, Markets & Outlets evidence required for scene 2 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a02-top-1-source.png",
+      "sha256": "04e9e56924d90bb3c988f5f52671c3b23731d427860c815cf0a91f68572f73c7",
+      "origin": {
+        "type": "captured",
+        "uri": "https://exploregeorgia.org/georgia-shopping",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official visual page for Plaza Fiesta; private family-planning use.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Plaza Fiesta",
+            "pageUrl": "https://exploregeorgia.org/georgia-shopping",
+            "imageUrl": null,
+            "imageSha256": "04e9e56924d90bb3c988f5f52671c3b23731d427860c815cf0a91f68572f73c7",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Plaza Fiesta; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a02-top-1-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s02",
+          "beatId": "b02",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a03-top-2-source",
+      "kind": "screenshot",
+      "claim": "Show the Shopping, Markets & Outlets evidence required for scene 3 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a03-top-2-source.png",
+      "sha256": "6ad216c405b17a9f807e200717c987d4246f4223c4bbaf1f8f31b636aabd7411",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.aofwc.com/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Buford Highway Farmers Market; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 2,
+            "name": "Buford Highway Farmers Market",
+            "pageUrl": "https://www.aofwc.com/",
+            "imageUrl": "http://static1.squarespace.com/static/5c910847840b16a0eabf20cd/t/5c9115fb104c7b45621ec62c/1553012276088/weblogo.jpg?format=1500w",
+            "imageSha256": "6ad216c405b17a9f807e200717c987d4246f4223c4bbaf1f8f31b636aabd7411",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Buford Highway Farmers Market; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a03-top-2-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s03",
+          "beatId": "b03",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a04-top-3-source",
+      "kind": "screenshot",
+      "claim": "Show the Shopping, Markets & Outlets evidence required for scene 4 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a04-top-3-source.png",
+      "sha256": "f63590b3c05aa510e15a977156a6233fcf1aa0fb5955d450799161e19ca3fc3f",
+      "origin": {
+        "type": "captured",
+        "uri": "https://commons.wikimedia.org/w/index.php?search=Downtown%20Duluth%20Duluth&title=Special:MediaSearch&type=image",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Downtown Duluth; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 3,
+            "name": "Downtown Duluth",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?search=Downtown%20Duluth%20Duluth&title=Special:MediaSearch&type=image",
+            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Duluth_Minnesota_Panorama_%2816785450493%29.jpg/960px-Duluth_Minnesota_Panorama_%2816785450493%29.jpg",
+            "imageSha256": "f63590b3c05aa510e15a977156a6233fcf1aa0fb5955d450799161e19ca3fc3f",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Downtown Duluth; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a04-top-3-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s04",
+          "beatId": "b04",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a05-top-five",
+      "kind": "diagram",
+      "claim": "Show the Shopping, Markets & Outlets evidence required for scene 5 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a05-top-five.png",
+      "sha256": "7172c13e73bf163bc9b635331642b519be7c23159be6b2944b11afa9f4472b10",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:shopping-markets-outlets:a05-top-five",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Plaza Fiesta",
+            "pageUrl": "https://exploregeorgia.org/georgia-shopping",
+            "imageUrl": null,
+            "imageSha256": "04e9e56924d90bb3c988f5f52671c3b23731d427860c815cf0a91f68572f73c7",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Plaza Fiesta; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Buford Highway Farmers Market",
+            "pageUrl": "https://www.aofwc.com/",
+            "imageUrl": "http://static1.squarespace.com/static/5c910847840b16a0eabf20cd/t/5c9115fb104c7b45621ec62c/1553012276088/weblogo.jpg?format=1500w",
+            "imageSha256": "6ad216c405b17a9f807e200717c987d4246f4223c4bbaf1f8f31b636aabd7411",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Buford Highway Farmers Market; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Downtown Duluth",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?search=Downtown%20Duluth%20Duluth&title=Special:MediaSearch&type=image",
+            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Duluth_Minnesota_Panorama_%2816785450493%29.jpg/960px-Duluth_Minnesota_Panorama_%2816785450493%29.jpg",
+            "imageSha256": "f63590b3c05aa510e15a977156a6233fcf1aa0fb5955d450799161e19ca3fc3f",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Downtown Duluth; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Your DeKalb Farmers Market",
+            "pageUrl": "https://www.dekalbfarmersmarket.com/",
+            "imageUrl": "https://www.dekalbfarmersmarket.com/images/2015ydfm_registered.jpg?crc=77328639",
+            "imageSha256": "e54ea638baff86c36c2d87247ce3c7fbfa5c83efb04523d65e953b316e543472",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Your DeKalb Farmers Market; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Global Mall",
+            "pageUrl": "https://amsglobalmall.com/about-us/",
+            "imageUrl": null,
+            "imageSha256": "444ba70e9accb2a52b9c2d2f1f3af6ddbd68e00073a246b5cf979f893835604b",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a05-top-five-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s05",
+          "beatId": "b05",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a06-preference-bars",
+      "kind": "diagram",
+      "claim": "Show the Shopping, Markets & Outlets evidence required for scene 6 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a06-preference-bars.png",
+      "sha256": "8f4f1b3557ce82f9d85b03578bba95d5527b683087247de45d520e0e5aa8c84f",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:shopping-markets-outlets:a06-preference-bars",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Plaza Fiesta",
+            "pageUrl": "https://exploregeorgia.org/georgia-shopping",
+            "imageUrl": null,
+            "imageSha256": "04e9e56924d90bb3c988f5f52671c3b23731d427860c815cf0a91f68572f73c7",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Plaza Fiesta; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Buford Highway Farmers Market",
+            "pageUrl": "https://www.aofwc.com/",
+            "imageUrl": "http://static1.squarespace.com/static/5c910847840b16a0eabf20cd/t/5c9115fb104c7b45621ec62c/1553012276088/weblogo.jpg?format=1500w",
+            "imageSha256": "6ad216c405b17a9f807e200717c987d4246f4223c4bbaf1f8f31b636aabd7411",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Buford Highway Farmers Market; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Downtown Duluth",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?search=Downtown%20Duluth%20Duluth&title=Special:MediaSearch&type=image",
+            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Duluth_Minnesota_Panorama_%2816785450493%29.jpg/960px-Duluth_Minnesota_Panorama_%2816785450493%29.jpg",
+            "imageSha256": "f63590b3c05aa510e15a977156a6233fcf1aa0fb5955d450799161e19ca3fc3f",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Downtown Duluth; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Your DeKalb Farmers Market",
+            "pageUrl": "https://www.dekalbfarmersmarket.com/",
+            "imageUrl": "https://www.dekalbfarmersmarket.com/images/2015ydfm_registered.jpg?crc=77328639",
+            "imageSha256": "e54ea638baff86c36c2d87247ce3c7fbfa5c83efb04523d65e953b316e543472",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Your DeKalb Farmers Market; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Global Mall",
+            "pageUrl": "https://amsglobalmall.com/about-us/",
+            "imageUrl": null,
+            "imageSha256": "444ba70e9accb2a52b9c2d2f1f3af6ddbd68e00073a246b5cf979f893835604b",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 6,
+            "name": "Alpharetta Farmers Market",
+            "pageUrl": "https://www.agr.georgia.gov/community-farmers-markets",
+            "imageUrl": "https://www.agr.georgia.gov/sites/default/files/styles/2_1_medium/public/images/hero/farmers-market.webp?itok=S7aSXbhG",
+            "imageSha256": "875c5901b3dbd0eb35c0aaccd2c397100bdb11ae177dffd64363964ca4d52ac6",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Alpharetta Farmers Market; verify reuse terms before public publication."
+          },
+          {
+            "rank": 7,
+            "name": "Downtown Alpharetta",
+            "pageUrl": "https://www.awesomealpharetta.com/shop/",
+            "imageUrl": "https://www.awesomealpharetta.com/wp-content/uploads/2024/03/acvb-default-social-3-2024.jpg",
+            "imageSha256": "1a6912ce786e0cdf95ac0329d90dcfd715a547b7707f42fe703aa594397be754",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Downtown Alpharetta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 8,
+            "name": "Roswell Farmers and Artisans Market",
+            "pageUrl": "https://www.roswellfarmersmarket.com/",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/677808226603a332939bc8a8/9280fe15-94ff-45dd-8699-dd36317058c0/WEB2045462-7F9798B3-782B-2EA9-256E-B5AA567E23F0.jpeg?format=1500w",
+            "imageSha256": "e981c3699aee3124028f4bc6dfe06533ed7529c870a34f5cf860f74088ad2c99",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Roswell Farmers and Artisans Market; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a06-preference-bars-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s06",
+          "beatId": "b06",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a07-decision-board",
+      "kind": "diagram",
+      "claim": "Show the Shopping, Markets & Outlets evidence required for scene 7 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a07-decision-board.png",
+      "sha256": "0ce0f0592d10d7ef07a5605195c5b0e573b98d3ae03abe41d528b0da0ef8fdfd",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:shopping-markets-outlets:a07-decision-board",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Plaza Fiesta",
+            "pageUrl": "https://exploregeorgia.org/georgia-shopping",
+            "imageUrl": null,
+            "imageSha256": "04e9e56924d90bb3c988f5f52671c3b23731d427860c815cf0a91f68572f73c7",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Plaza Fiesta; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Buford Highway Farmers Market",
+            "pageUrl": "https://www.aofwc.com/",
+            "imageUrl": "http://static1.squarespace.com/static/5c910847840b16a0eabf20cd/t/5c9115fb104c7b45621ec62c/1553012276088/weblogo.jpg?format=1500w",
+            "imageSha256": "6ad216c405b17a9f807e200717c987d4246f4223c4bbaf1f8f31b636aabd7411",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Buford Highway Farmers Market; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Downtown Duluth",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?search=Downtown%20Duluth%20Duluth&title=Special:MediaSearch&type=image",
+            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Duluth_Minnesota_Panorama_%2816785450493%29.jpg/960px-Duluth_Minnesota_Panorama_%2816785450493%29.jpg",
+            "imageSha256": "f63590b3c05aa510e15a977156a6233fcf1aa0fb5955d450799161e19ca3fc3f",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Downtown Duluth; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Your DeKalb Farmers Market",
+            "pageUrl": "https://www.dekalbfarmersmarket.com/",
+            "imageUrl": "https://www.dekalbfarmersmarket.com/images/2015ydfm_registered.jpg?crc=77328639",
+            "imageSha256": "e54ea638baff86c36c2d87247ce3c7fbfa5c83efb04523d65e953b316e543472",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Your DeKalb Farmers Market; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a07-decision-board-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s07",
+          "beatId": "b07",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a08-planner-callback",
+      "kind": "diagram",
+      "claim": "Show the Shopping, Markets & Outlets evidence required for scene 8 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a08-planner-callback.png",
+      "sha256": "e555105988f0d8aa1b09c1442b204074cacedc29f4377c60b243565538b74651",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:shopping-markets-outlets:a08-planner-callback",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Plaza Fiesta",
+            "pageUrl": "https://exploregeorgia.org/georgia-shopping",
+            "imageUrl": null,
+            "imageSha256": "04e9e56924d90bb3c988f5f52671c3b23731d427860c815cf0a91f68572f73c7",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Plaza Fiesta; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Buford Highway Farmers Market",
+            "pageUrl": "https://www.aofwc.com/",
+            "imageUrl": "http://static1.squarespace.com/static/5c910847840b16a0eabf20cd/t/5c9115fb104c7b45621ec62c/1553012276088/weblogo.jpg?format=1500w",
+            "imageSha256": "6ad216c405b17a9f807e200717c987d4246f4223c4bbaf1f8f31b636aabd7411",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Buford Highway Farmers Market; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Downtown Duluth",
+            "pageUrl": "https://commons.wikimedia.org/w/index.php?search=Downtown%20Duluth%20Duluth&title=Special:MediaSearch&type=image",
+            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Duluth_Minnesota_Panorama_%2816785450493%29.jpg/960px-Duluth_Minnesota_Panorama_%2816785450493%29.jpg",
+            "imageSha256": "f63590b3c05aa510e15a977156a6233fcf1aa0fb5955d450799161e19ca3fc3f",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Downtown Duluth; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Your DeKalb Farmers Market",
+            "pageUrl": "https://www.dekalbfarmersmarket.com/",
+            "imageUrl": "https://www.dekalbfarmersmarket.com/images/2015ydfm_registered.jpg?crc=77328639",
+            "imageSha256": "e54ea638baff86c36c2d87247ce3c7fbfa5c83efb04523d65e953b316e543472",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Your DeKalb Farmers Market; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Global Mall",
+            "pageUrl": "https://amsglobalmall.com/about-us/",
+            "imageUrl": null,
+            "imageSha256": "444ba70e9accb2a52b9c2d2f1f3af6ddbd68e00073a246b5cf979f893835604b",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 6,
+            "name": "Alpharetta Farmers Market",
+            "pageUrl": "https://www.agr.georgia.gov/community-farmers-markets",
+            "imageUrl": "https://www.agr.georgia.gov/sites/default/files/styles/2_1_medium/public/images/hero/farmers-market.webp?itok=S7aSXbhG",
+            "imageSha256": "875c5901b3dbd0eb35c0aaccd2c397100bdb11ae177dffd64363964ca4d52ac6",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Alpharetta Farmers Market; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a08-planner-callback-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s08",
+          "beatId": "b08",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    }
+  ]
+}

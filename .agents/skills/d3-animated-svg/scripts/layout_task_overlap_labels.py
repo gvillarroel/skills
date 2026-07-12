@@ -654,8 +654,8 @@ def build_payload(seed: int, task_count: int) -> dict[str, Any]:
 
     return {
         "saturated": {
-            "id": "asymmetric-task-overlap-saturated",
-            "patternId": "d3-pattern-asymmetric-task-overlap-saturated",
+            "id": "task-overlap-dense",
+            "patternId": "d3-task-overlap-dense",
             "labelAlgorithm": "external-lane-gutter-anneal",
             "seed": seed,
             "width": WIDTH,

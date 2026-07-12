@@ -1,6 +1,6 @@
 # Context Window Matrix
 
-- **Pattern ID:** `d3-pattern-context-window-matrix`
+- **Pattern ID:** `d3-context-window-matrix`
 - **Gallery source ID:** `context-window-matrix`
 - **Family:** Context
 - **Use when:** Token budget fills as agent context enters the active window.

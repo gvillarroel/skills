@@ -1,6 +1,6 @@
 # Solar Terminator
 
-- **Pattern ID:** `d3-pattern-solar-terminator`
+- **Pattern ID:** `d3-solar-terminator`
 - **Gallery source ID:** `solar-terminator`
 - **Family:** Geospatial
 - **Use when:** A day-night boundary sweeps across a world grid.

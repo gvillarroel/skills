@@ -7,6 +7,19 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const exampleRoot = resolve(__dirname, '..')
 const width = 520
 const height = 330
+const patternSlugs = new Map([
+  ['map', 'geo-map'],
+  ['graph', 'network-graph'],
+  ['parallel', 'parallel-coordinates'],
+  ['lines', 'route-lines'],
+  ['custom', 'custom-ranges'],
+  ['stacked-area-line', 'stacked-area'],
+  ['waterfall-bar', 'waterfall'],
+  ['step-threshold-line', 'step-threshold'],
+  ['horizontal-stacked-bar', 'stacked-bar-horizontal'],
+  ['rose-area-donut', 'rose-donut'],
+  ['nested-treemap-drilldown', 'treemap-drilldown'],
+])
 const fontPrimary = '"Open Sans", Arial, sans-serif'
 const iconFont = '"Material Symbols Rounded"'
 const brand = {
@@ -1429,15 +1442,15 @@ function polishOption(definition, option) {
   return option
 }
 
-function renderSvg(definition) {
+function renderSvg(definition, patternMetadata) {
   const chart = echarts.init(null, null, { renderer: 'svg', ssr: true, width, height })
   chart.setOption(polishOption(definition, definition.option()))
   const svg = chart.renderToSVGString()
   chart.dispose()
-  return decorateSvg(svg, definition.profile || definition.type)
+  return decorateSvg(svg, definition.profile || definition.type, patternMetadata)
 }
 
-function decorateSvg(svg, chartType) {
+function decorateSvg(svg, chartType, patternMetadata) {
   const chartSlug = slug(chartType)
   let order = 0
   let decorated = svg.replace(
@@ -1455,7 +1468,10 @@ function decorateSvg(svg, chartType) {
     },
   )
 
-  decorated = decorated.replace('<svg ', `<svg class="easv-svg easv-profile-${chartSlug}" data-echarts-chart-type="${escapeHtml(chartType)}" `)
+  decorated = decorated.replace(
+    '<svg ',
+    `<svg class="easv-svg easv-profile-${chartSlug}" data-echarts-chart-type="${escapeHtml(chartType)}" data-example-id="${escapeHtml(patternMetadata.exampleId)}" data-pattern-id="${escapeHtml(patternMetadata.patternId)}" data-legacy-pattern-id="${escapeHtml(patternMetadata.legacyPatternId)}" `,
+  )
   return decorated
 }
 
@@ -1602,6 +1618,7 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
 }
 .card-header h2 { margin: 0 0 4px; font-size: 17px; line-height: 1.2; letter-spacing: 0; }
 .card-header p { margin: 0; color: var(--brand-gray-60); line-height: 1.35; font-size: 13px; }
+.card-header .pattern-id { margin-top: 6px; font: 800 11px/1.2 Consolas, "Liberation Mono", "Courier New", monospace; overflow-wrap: anywhere; }
 .chart-stage { padding: 8px 10px 12px; background: #ffffff; }
 .chart-stage svg { display: block; width: 100%; height: auto; overflow: visible; }
 .easv-svg .easv-mark {
@@ -1658,6 +1675,16 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
 
 function pageJs() {
   return `
+function redirectLegacyPatternHash() {
+  const hash = decodeURIComponent(window.location.hash.slice(1))
+  if (!hash) return
+  const card = [...document.querySelectorAll('.chart-card')].find((item) =>
+    item.dataset.legacyPatternId === hash || item.dataset.legacyDomId === hash)
+  if (!card) return
+  history.replaceState(null, '', location.pathname + location.search + '#' + card.dataset.patternId)
+  card.scrollIntoView({ block: 'start' })
+}
+
 function replayCard(card) {
   card.classList.remove('is-playing')
   void card.offsetWidth
@@ -1672,20 +1699,27 @@ document.querySelectorAll('[data-replay-card]').forEach((button) => {
 document.querySelector('#replay-all').addEventListener('click', () => {
   document.querySelectorAll('.chart-card').forEach(replayCard)
 })
+
+redirectLegacyPatternHash()
+window.addEventListener('hashchange', redirectLegacyPatternHash)
 `.trim()
 }
 
 const galleryDefinitions = [...chartDefinitions, ...extraChartDefinitions]
 
 const cards = galleryDefinitions.map((definition) => {
-  const svg = renderSvg(definition)
   const exampleId = slug(definition.type)
+  const patternSlug = patternSlugs.get(exampleId) || exampleId
+  const patternId = `echarts-${patternSlug}`
+  const legacyPatternId = `echarts-pattern-${exampleId}`
+  const svg = renderSvg(definition, { exampleId, patternId, legacyPatternId })
   return `
-    <article class="chart-card is-playing" id="example-${escapeHtml(exampleId)}" data-example-id="${escapeHtml(exampleId)}" data-chart-type="${escapeHtml(definition.type)}" data-replay-count="0">
+    <article class="chart-card is-playing" id="${escapeHtml(patternId)}" data-example-id="${escapeHtml(exampleId)}" data-pattern-id="${escapeHtml(patternId)}" data-legacy-pattern-id="${escapeHtml(legacyPatternId)}" data-legacy-dom-id="example-${escapeHtml(exampleId)}" data-chart-type="${escapeHtml(definition.type)}" data-replay-count="0">
       <header class="card-header">
         <div>
           <h2>${escapeHtml(definition.title)}</h2>
           <p>${escapeHtml(definition.summary)}</p>
+          <p class="pattern-id">${escapeHtml(patternId)}</p>
         </div>
         <button type="button" data-replay-card aria-label="Replay ${escapeHtml(definition.title)} animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
       </header>
@@ -1705,8 +1739,8 @@ const html = `<!doctype html>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400..700,0..1,0&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>${pageCss()}</style>
 </head>
-<body>
-  <main class="page-shell" data-expected-cards="${galleryDefinitions.length}" data-core-chart-count="${chartDefinitions.length}" data-extra-example-count="${extraChartDefinitions.length}">
+<body data-example-id="echarts-animated-svg" data-pattern-id="echarts-animated-svg" data-pattern-page="true">
+  <main class="page-shell" data-example-id="echarts-animated-svg" data-pattern-id="echarts-animated-svg" data-pattern-page="true" data-expected-cards="${galleryDefinitions.length}" data-core-chart-count="${chartDefinitions.length}" data-extra-example-count="${extraChartDefinitions.length}">
     <header class="topbar">
       <div>
         <h1>ECharts Animated SVG Gallery</h1>

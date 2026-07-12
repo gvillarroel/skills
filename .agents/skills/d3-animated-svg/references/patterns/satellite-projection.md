@@ -1,6 +1,6 @@
 # Satellite Projection
 
-- **Pattern ID:** `d3-pattern-satellite-projection`
+- **Pattern ID:** `d3-satellite-projection`
 - **Gallery source ID:** `satellite-projection`
 - **Family:** Projection
 - **Use when:** Perspective footprint and horizon rings explain a satellite view.

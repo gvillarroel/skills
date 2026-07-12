@@ -1,6 +1,6 @@
 # Alluvial Bands
 
-- **Pattern ID:** `d3-pattern-alluvial`
+- **Pattern ID:** `d3-alluvial`
 - **Gallery source ID:** `alluvial`
 - **Family:** Flow
 - **Use when:** Category handoffs as layered flowing ribbons.

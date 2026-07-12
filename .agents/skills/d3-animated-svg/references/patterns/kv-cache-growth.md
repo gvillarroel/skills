@@ -1,6 +1,6 @@
 # KV Cache Growth
 
-- **Pattern ID:** `d3-pattern-kv-cache-growth`
+- **Pattern ID:** `d3-kv-cache-growth`
 - **Gallery source ID:** `kv-cache-growth`
 - **Family:** LLM
 - **Use when:** Generated tokens append reusable key-value columns while the active query advances.

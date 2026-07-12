@@ -1,6 +1,6 @@
 # Star Map
 
-- **Pattern ID:** `d3-pattern-star-map`
+- **Pattern ID:** `d3-star-map`
 - **Gallery source ID:** `star-map`
 - **Family:** Astronomy
 - **Use when:** Spherical coordinates become a radial sky chart.

@@ -1,6 +1,6 @@
 # Radar Profile
 
-- **Pattern ID:** `d3-pattern-radar`
+- **Pattern ID:** `d3-radar`
 - **Gallery source ID:** `radar`
 - **Family:** Multivariate
 - **Use when:** Compact radial comparison across metrics.

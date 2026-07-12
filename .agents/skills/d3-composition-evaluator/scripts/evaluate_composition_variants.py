@@ -129,7 +129,7 @@ EXTRACT_BASE_JS = r"""
     const svg = document.querySelector(`svg#${cssEscape(item.id)}`);
     return {
       sourceId: item.id,
-      patternId: item.patternId || `d3-pattern-${item.id}`,
+      patternId: item.patternId || `d3-${item.id}`,
       title: item.title || item.id,
       kicker: item.kicker || "",
       copy: item.copy || "",
@@ -433,7 +433,7 @@ def focus_family(variant: dict[str, Any]) -> str:
     renderer = variant.get("renderer") or variant.get("kind") or ""
     inferred = variant.get("inferredKind") or variant.get("kind") or ""
     composition_id = variant.get("compositionId") or ""
-    if composition_id == "dense-label-lanes":
+    if composition_id == "label-lanes":
         return "lanes"
     if renderer in {"network", "flow", "set-overlap", "radial", "hierarchy", "scatter"}:
         return renderer
@@ -646,17 +646,17 @@ def score_relationships(
     segments: list[dict[str, Any]],
     points: list[dict[str, Any]],
 ) -> tuple[float, dict[str, float]]:
-    if composition_id == "diagonal-armature":
+    if composition_id == "diagonal":
         value = score_segment_diagonal(segments)
-    elif composition_id == "flow-spine":
+    elif composition_id == "flow":
         value = score_segment_flow(segments)
-    elif composition_id == "thirds-fifths-grid":
+    elif composition_id == "modular-grid":
         value = score_segment_grid(segments)
-    elif composition_id == "radial-rosette":
+    elif composition_id == "radial":
         value = score_segment_radial(segments)
-    elif composition_id == "dense-label-lanes":
+    elif composition_id == "label-lanes":
         value = score_segment_lanes(segments)
-    elif composition_id == "balance-symmetry":
+    elif composition_id == "symmetry":
         midpoints = [segment_midpoint(segment) for segment in segments]
         value = score_balance(midpoints or points)[0] if (midpoints or points) else 0.0
     elif composition_id == "golden-root":
@@ -932,19 +932,19 @@ def score_composition(row: dict[str, Any], variant: dict[str, Any], contract: fl
     segment_values = relevant_focus_segments(feature, family)
     selected_feature = focus_feature(points, segment_values)
     composition_id = variant.get("compositionId") or row.get("compositionId")
-    if composition_id == "balance-symmetry":
+    if composition_id == "symmetry":
         armature, metrics = score_balance(points)
-    elif composition_id == "diagonal-armature":
+    elif composition_id == "diagonal":
         armature, metrics = score_diagonal(points)
     elif composition_id == "golden-root":
         armature, metrics = score_golden(points)
-    elif composition_id == "thirds-fifths-grid":
+    elif composition_id == "modular-grid":
         armature, metrics = score_grid(points, selected_feature)
-    elif composition_id == "radial-rosette":
+    elif composition_id == "radial":
         armature, metrics = score_radial(points)
-    elif composition_id == "flow-spine":
+    elif composition_id == "flow":
         armature, metrics = score_flow(points, selected_feature)
-    elif composition_id == "dense-label-lanes":
+    elif composition_id == "label-lanes":
         armature, metrics = score_lanes(points, selected_feature)
     else:
         armature, metrics = 0.0, {}

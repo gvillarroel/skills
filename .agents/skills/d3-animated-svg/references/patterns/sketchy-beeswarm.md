@@ -1,6 +1,6 @@
 # Sketchy Beeswarm
 
-- **Pattern ID:** `d3-pattern-sketchy-beeswarm`
+- **Pattern ID:** `d3-sketchy-beeswarm`
 - **Gallery source ID:** `sketchy-beeswarm`
 - **Family:** Sketchy
 - **Use when:** The beeswarm distribution is redrawn with seeded hand-sketched dots and axes.

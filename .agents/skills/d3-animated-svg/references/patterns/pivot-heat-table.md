@@ -1,6 +1,6 @@
 # Pivot Heat Table
 
-- **Pattern ID:** `d3-pattern-pivot-heat-table`
+- **Pattern ID:** `d3-pivot-heat-table`
 - **Gallery source ID:** `pivot-heat-table`
 - **Family:** Table
 - **Use when:** A cross-tab table uses ordered color and totals to expose segment patterns.

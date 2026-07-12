@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = []
+# dependencies = ["pillow>=10.0.0"]
 # ///
 """Score whether a brief follows the distilled Awesome/Fireship style patterns."""
 

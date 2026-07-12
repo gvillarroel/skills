@@ -1,6 +1,6 @@
 # Smooth Zoom
 
-- **Pattern ID:** `d3-pattern-smooth-zoom`
+- **Pattern ID:** `d3-smooth-zoom`
 - **Gallery source ID:** `smooth-zoom`
 - **Family:** Focus
 - **Use when:** A viewport path eases into a magnified data region.

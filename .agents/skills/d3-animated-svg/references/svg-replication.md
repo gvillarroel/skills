@@ -144,7 +144,7 @@ Recommended token-source colors:
 
 ## Token Boxes To Context Window
 
-Use gallery card `token-boxes-to-context-window` when a video or SVG needs to show tokenization, numeric token IDs, and ordered context insertion without explanatory labels.
+Use gallery card `context-window-fill` when a video or SVG needs to show tokenization, numeric token IDs, and ordered context insertion without explanatory labels.
 
 Implementation rules:
 

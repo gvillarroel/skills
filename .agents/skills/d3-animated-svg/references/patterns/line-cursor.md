@@ -1,6 +1,6 @@
 # Line Cursor
 
-- **Pattern ID:** `d3-pattern-line-cursor`
+- **Pattern ID:** `d3-line-cursor`
 - **Gallery source ID:** `line-cursor`
 - **Family:** Interaction
 - **Use when:** A nearest-point cursor links a vertical guide and value label.

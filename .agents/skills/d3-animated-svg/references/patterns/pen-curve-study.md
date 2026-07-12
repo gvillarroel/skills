@@ -1,6 +1,6 @@
 # Pen Curve Study
 
-- **Pattern ID:** `d3-pattern-pen-curve-study`
+- **Pattern ID:** `d3-pen-curve-study`
 - **Gallery source ID:** `pen-curve-study`
 - **Family:** Drawing
 - **Use when:** A precise pen point lays pressure-modulated calligraphic curves.

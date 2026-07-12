@@ -1,6 +1,6 @@
 # Lasso Selection
 
-- **Pattern ID:** `d3-pattern-lasso-selection`
+- **Pattern ID:** `d3-lasso-selection`
 - **Gallery source ID:** `lasso-selection`
 - **Family:** Selection
 - **Use when:** A freeform region isolates an irregular cluster.

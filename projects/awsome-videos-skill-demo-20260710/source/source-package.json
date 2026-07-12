@@ -18,7 +18,7 @@
     "resolution": "1280x720",
     "fps": 30,
     "audience": "technical Spanish-speaking viewers",
-    "style": "fast technical explainer; hard-edge modular megacanvas; high visual density; low text",
+    "style": "fast technical explainer; fixed-frame semantic workbench; recognizable objects; high visual clarity; low functional text",
     "audio": "Spanish narration plus procedural bed and semantic SFX"
   },
   "facts": [
@@ -110,7 +110,8 @@
     "assets/",
     "progressive disclosure",
     "validation",
-    "on-demand reusable workflow"
+    "on-demand reusable workflow",
+    "red SKILL packet"
   ],
   "assets": [
     "artifacts/images/a01-prompt-wall.svg",
@@ -129,6 +130,7 @@
   "missingFacts": [],
   "risks": [
     "Context benefit remains qualitative; no invented token-savings percentage is shown.",
-    "The narration is synthetic neural speech and is reported as such."
+    "The narration is synthetic neural speech and is reported as such.",
+    "Every scene must remain understandable with narration muted; anonymous moving geometry is not acceptable evidence."
   ]
 }

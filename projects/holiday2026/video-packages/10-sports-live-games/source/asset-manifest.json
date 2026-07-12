@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 1,
+  "videoId": "holiday2026-10-sports-live-games",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  "skillRouting": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "assets": [
+    {
+      "id": "a01-proximity-map",
+      "kind": "diagram",
+      "claim": "Show the Sports & Live Games evidence required for scene 1 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a01-proximity-map.png",
+      "sha256": "0df963e9b03b8ea7473f5d7806c7e8b5931c1587439ce0e3931ca75359936e83",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:sports-live-games:a01-proximity-map",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "FIFA Fan Festival Atlanta",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "The LEGO Brand x FIFA Fan Fest",
+            "pageUrl": "https://discoveratlanta.com/event/detail/the-lego-brand-x-fifa-fan-fest/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1780944076/EventEntry/uxlhu3ey0ndal2wdkxmb.jpg",
+            "imageSha256": "82be5085c8376b4df40afbb6d6239d723ae6024cfa5fa64c2651eb3b9d829181",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for The LEGO Brand x FIFA Fan Fest; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Celebration of Soccer & Sound",
+            "pageUrl": "https://www.axios.com/local/atlanta/2026/07/10/ludacris-world-cup-fifa-festival-piedmont-park",
+            "imageUrl": "https://images.axios.com/5_ur0nPc1krRbqrkqVdOPu0BsbM=/0x88:3600x2113/1366x768/2026/07/09/1783619016860.jpeg",
+            "imageSha256": "e43eaa60c3d52608f1bd5dd2502f786ac9a4321e9af3aaf65e388d005fb93e31",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Celebration of Soccer & Sound; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a01-proximity-map-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s01",
+          "beatId": "b01",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a02-top-1-source",
+      "kind": "screenshot",
+      "claim": "Show the Sports & Live Games evidence required for scene 2 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a02-top-1-source.png",
+      "sha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+      "origin": {
+        "type": "captured",
+        "uri": "https://atlantafwc26.com/fan-fest/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "FIFA Fan Festival Atlanta",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a02-top-1-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s02",
+          "beatId": "b02",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a03-top-2-source",
+      "kind": "screenshot",
+      "claim": "Show the Sports & Live Games evidence required for scene 3 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a03-top-2-source.png",
+      "sha256": "82be5085c8376b4df40afbb6d6239d723ae6024cfa5fa64c2651eb3b9d829181",
+      "origin": {
+        "type": "captured",
+        "uri": "https://discoveratlanta.com/event/detail/the-lego-brand-x-fifa-fan-fest/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for The LEGO Brand x FIFA Fan Fest; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 2,
+            "name": "The LEGO Brand x FIFA Fan Fest",
+            "pageUrl": "https://discoveratlanta.com/event/detail/the-lego-brand-x-fifa-fan-fest/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1780944076/EventEntry/uxlhu3ey0ndal2wdkxmb.jpg",
+            "imageSha256": "82be5085c8376b4df40afbb6d6239d723ae6024cfa5fa64c2651eb3b9d829181",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for The LEGO Brand x FIFA Fan Fest; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a03-top-2-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s03",
+          "beatId": "b03",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a04-top-3-source",
+      "kind": "screenshot",
+      "claim": "Show the Sports & Live Games evidence required for scene 4 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a04-top-3-source.png",
+      "sha256": "e43eaa60c3d52608f1bd5dd2502f786ac9a4321e9af3aaf65e388d005fb93e31",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.axios.com/local/atlanta/2026/07/10/ludacris-world-cup-fifa-festival-piedmont-park",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Celebration of Soccer & Sound; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 3,
+            "name": "Celebration of Soccer & Sound",
+            "pageUrl": "https://www.axios.com/local/atlanta/2026/07/10/ludacris-world-cup-fifa-festival-piedmont-park",
+            "imageUrl": "https://images.axios.com/5_ur0nPc1krRbqrkqVdOPu0BsbM=/0x88:3600x2113/1366x768/2026/07/09/1783619016860.jpeg",
+            "imageSha256": "e43eaa60c3d52608f1bd5dd2502f786ac9a4321e9af3aaf65e388d005fb93e31",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Celebration of Soccer & Sound; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a04-top-3-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s04",
+          "beatId": "b04",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a05-top-five",
+      "kind": "diagram",
+      "claim": "Show the Sports & Live Games evidence required for scene 5 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a05-top-five.png",
+      "sha256": "ad83da8da3d5b07d74a6e3d7d09431964e05a553af40b75bdb2c1c3fd551e7fa",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:sports-live-games:a05-top-five",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "FIFA Fan Festival Atlanta",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "The LEGO Brand x FIFA Fan Fest",
+            "pageUrl": "https://discoveratlanta.com/event/detail/the-lego-brand-x-fifa-fan-fest/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1780944076/EventEntry/uxlhu3ey0ndal2wdkxmb.jpg",
+            "imageSha256": "82be5085c8376b4df40afbb6d6239d723ae6024cfa5fa64c2651eb3b9d829181",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for The LEGO Brand x FIFA Fan Fest; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Celebration of Soccer & Sound",
+            "pageUrl": "https://www.axios.com/local/atlanta/2026/07/10/ludacris-world-cup-fifa-festival-piedmont-park",
+            "imageUrl": "https://images.axios.com/5_ur0nPc1krRbqrkqVdOPu0BsbM=/0x88:3600x2113/1366x768/2026/07/09/1783619016860.jpeg",
+            "imageSha256": "e43eaa60c3d52608f1bd5dd2502f786ac9a4321e9af3aaf65e388d005fb93e31",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Celebration of Soccer & Sound; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Mercedes-Benz Stadium Tour",
+            "pageUrl": "https://www.mercedesbenzstadium.com/stadium-tours",
+            "imageUrl": "https://cdn.prod.website-files.com/5ddedb3aabcf2c01a3f45461/64ba3cf5ea0a30cccb7accf9_Falcon-66-copy-e1510676998489.jpg",
+            "imageSha256": "d6da691b8f2167e652b7c1d4c25949a6d0104782dc599de5b69459aad891775c",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Mercedes-Benz Stadium Tour; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "FIFA World Cup 26 Atlanta Semifinal",
+            "pageUrl": "https://www.mercedesbenzstadium.com/events/fifa-world-cup-26-tm---semi-final",
+            "imageUrl": "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/6941a01491186d7edf1b3f3a_Full%20Schedule%201x1.jpg",
+            "imageSha256": "ce67685575804aaf07a1dc7deedeedb899375fe8bcfad054a736ed10b9f24094",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for FIFA World Cup 26 Atlanta Semifinal; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a05-top-five-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s05",
+          "beatId": "b05",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a06-preference-bars",
+      "kind": "diagram",
+      "claim": "Show the Sports & Live Games evidence required for scene 6 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a06-preference-bars.png",
+      "sha256": "65fdab3b86510bad494204abe36af233887ba3b3f7a64170e3208bcc1c647aae",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:sports-live-games:a06-preference-bars",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "FIFA Fan Festival Atlanta",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "The LEGO Brand x FIFA Fan Fest",
+            "pageUrl": "https://discoveratlanta.com/event/detail/the-lego-brand-x-fifa-fan-fest/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1780944076/EventEntry/uxlhu3ey0ndal2wdkxmb.jpg",
+            "imageSha256": "82be5085c8376b4df40afbb6d6239d723ae6024cfa5fa64c2651eb3b9d829181",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for The LEGO Brand x FIFA Fan Fest; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Celebration of Soccer & Sound",
+            "pageUrl": "https://www.axios.com/local/atlanta/2026/07/10/ludacris-world-cup-fifa-festival-piedmont-park",
+            "imageUrl": "https://images.axios.com/5_ur0nPc1krRbqrkqVdOPu0BsbM=/0x88:3600x2113/1366x768/2026/07/09/1783619016860.jpeg",
+            "imageSha256": "e43eaa60c3d52608f1bd5dd2502f786ac9a4321e9af3aaf65e388d005fb93e31",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Celebration of Soccer & Sound; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Mercedes-Benz Stadium Tour",
+            "pageUrl": "https://www.mercedesbenzstadium.com/stadium-tours",
+            "imageUrl": "https://cdn.prod.website-files.com/5ddedb3aabcf2c01a3f45461/64ba3cf5ea0a30cccb7accf9_Falcon-66-copy-e1510676998489.jpg",
+            "imageSha256": "d6da691b8f2167e652b7c1d4c25949a6d0104782dc599de5b69459aad891775c",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Mercedes-Benz Stadium Tour; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "FIFA World Cup 26 Atlanta Semifinal",
+            "pageUrl": "https://www.mercedesbenzstadium.com/events/fifa-world-cup-26-tm---semi-final",
+            "imageUrl": "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/6941a01491186d7edf1b3f3a_Full%20Schedule%201x1.jpg",
+            "imageSha256": "ce67685575804aaf07a1dc7deedeedb899375fe8bcfad054a736ed10b9f24094",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for FIFA World Cup 26 Atlanta Semifinal; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "College Football Hall of Fame",
+            "pageUrl": "https://www.cfbhall.com/",
+            "imageUrl": "https://www.cfbhall.com/images/HOF-Logos_Graphic.jpg?format=webp",
+            "imageSha256": "a49bfe00d78fc02e7761b61fd20f0bdb5ae46dadae79ec6b014aed8438443a7e",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for College Football Hall of Fame; verify reuse terms before public publication."
+          },
+          {
+            "rank": 7,
+            "name": "Final Match World Soccer Block Party",
+            "pageUrl": "https://discoveratlanta.com/event/detail/final-match-world-soccer-block-party-at-yeppa-co/",
+            "imageUrl": null,
+            "imageSha256": "94e5e22e79b671e970845656c2a69ab055422a5eb298b349ac6ed1366d251b6c",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 8,
+            "name": "All the Soccer Things at The Works",
+            "pageUrl": "https://discoveratlanta.com/event/detail/all-the-soccer-things-at-the-works/",
+            "imageUrl": null,
+            "imageSha256": "871510447b684ad94c084842e2c73b3b7378b64ce65c34e5bb6aa382080615a7",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a06-preference-bars-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s06",
+          "beatId": "b06",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a07-decision-board",
+      "kind": "diagram",
+      "claim": "Show the Sports & Live Games evidence required for scene 7 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a07-decision-board.png",
+      "sha256": "b0855d973fcaba0188a526aef5eb891273c51dbd6b1130d62129d9017122709a",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:sports-live-games:a07-decision-board",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "FIFA Fan Festival Atlanta",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "The LEGO Brand x FIFA Fan Fest",
+            "pageUrl": "https://discoveratlanta.com/event/detail/the-lego-brand-x-fifa-fan-fest/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1780944076/EventEntry/uxlhu3ey0ndal2wdkxmb.jpg",
+            "imageSha256": "82be5085c8376b4df40afbb6d6239d723ae6024cfa5fa64c2651eb3b9d829181",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for The LEGO Brand x FIFA Fan Fest; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Celebration of Soccer & Sound",
+            "pageUrl": "https://www.axios.com/local/atlanta/2026/07/10/ludacris-world-cup-fifa-festival-piedmont-park",
+            "imageUrl": "https://images.axios.com/5_ur0nPc1krRbqrkqVdOPu0BsbM=/0x88:3600x2113/1366x768/2026/07/09/1783619016860.jpeg",
+            "imageSha256": "e43eaa60c3d52608f1bd5dd2502f786ac9a4321e9af3aaf65e388d005fb93e31",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Celebration of Soccer & Sound; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "FIFA World Cup 26 Atlanta Semifinal",
+            "pageUrl": "https://www.mercedesbenzstadium.com/events/fifa-world-cup-26-tm---semi-final",
+            "imageUrl": "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/6941a01491186d7edf1b3f3a_Full%20Schedule%201x1.jpg",
+            "imageSha256": "ce67685575804aaf07a1dc7deedeedb899375fe8bcfad054a736ed10b9f24094",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for FIFA World Cup 26 Atlanta Semifinal; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a07-decision-board-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s07",
+          "beatId": "b07",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a08-planner-callback",
+      "kind": "diagram",
+      "claim": "Show the Sports & Live Games evidence required for scene 8 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a08-planner-callback.png",
+      "sha256": "91463b5d3ec729045a193b15a58e1b0cb3857b7d167523e370dc65e51d6ab969",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:sports-live-games:a08-planner-callback",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "FIFA Fan Festival Atlanta",
+            "pageUrl": "https://atlantafwc26.com/fan-fest/",
+            "imageUrl": "https://atlantafwc26.com/wp-content/uploads/2026/06/Scherm%C2%ADafbeelding-2026-06-18-om-12.19.08.png",
+            "imageSha256": "e7384e516a4c329fe2703f3425278c638b49e44a768876c4076cb61f3fd5e302",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for FIFA Fan Festival Atlanta; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "The LEGO Brand x FIFA Fan Fest",
+            "pageUrl": "https://discoveratlanta.com/event/detail/the-lego-brand-x-fifa-fan-fest/",
+            "imageUrl": "https://images.discoveratlanta.com/image/upload/w_1200,h_630,c_fill,g_auto,q_auto/v1780944076/EventEntry/uxlhu3ey0ndal2wdkxmb.jpg",
+            "imageSha256": "82be5085c8376b4df40afbb6d6239d723ae6024cfa5fa64c2651eb3b9d829181",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for The LEGO Brand x FIFA Fan Fest; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Celebration of Soccer & Sound",
+            "pageUrl": "https://www.axios.com/local/atlanta/2026/07/10/ludacris-world-cup-fifa-festival-piedmont-park",
+            "imageUrl": "https://images.axios.com/5_ur0nPc1krRbqrkqVdOPu0BsbM=/0x88:3600x2113/1366x768/2026/07/09/1783619016860.jpeg",
+            "imageSha256": "e43eaa60c3d52608f1bd5dd2502f786ac9a4321e9af3aaf65e388d005fb93e31",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Celebration of Soccer & Sound; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Mercedes-Benz Stadium Tour",
+            "pageUrl": "https://www.mercedesbenzstadium.com/stadium-tours",
+            "imageUrl": "https://cdn.prod.website-files.com/5ddedb3aabcf2c01a3f45461/64ba3cf5ea0a30cccb7accf9_Falcon-66-copy-e1510676998489.jpg",
+            "imageSha256": "d6da691b8f2167e652b7c1d4c25949a6d0104782dc599de5b69459aad891775c",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Mercedes-Benz Stadium Tour; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "FIFA World Cup 26 Atlanta Semifinal",
+            "pageUrl": "https://www.mercedesbenzstadium.com/events/fifa-world-cup-26-tm---semi-final",
+            "imageUrl": "https://cdn.prod.website-files.com/5ddedd0e3047ab406ee3c37e/6941a01491186d7edf1b3f3a_Full%20Schedule%201x1.jpg",
+            "imageSha256": "ce67685575804aaf07a1dc7deedeedb899375fe8bcfad054a736ed10b9f24094",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for FIFA World Cup 26 Atlanta Semifinal; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "College Football Hall of Fame",
+            "pageUrl": "https://www.cfbhall.com/",
+            "imageUrl": "https://www.cfbhall.com/images/HOF-Logos_Graphic.jpg?format=webp",
+            "imageSha256": "a49bfe00d78fc02e7761b61fd20f0bdb5ae46dadae79ec6b014aed8438443a7e",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for College Football Hall of Fame; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a08-planner-callback-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s08",
+          "beatId": "b08",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    }
+  ]
+}

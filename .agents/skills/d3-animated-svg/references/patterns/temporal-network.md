@@ -1,6 +1,6 @@
 # Network Evolution
 
-- **Pattern ID:** `d3-pattern-temporal-network`
+- **Pattern ID:** `d3-temporal-network`
 - **Gallery source ID:** `temporal-network`
 - **Family:** Network
 - **Use when:** Topology snapshots settle as links change.

@@ -219,7 +219,7 @@ function drawSceneOne(local) {
 
   const root = group({
     "data-composition-id": "thirds-force-network",
-    "data-pattern-id": "d3-pattern-force-network",
+    "data-pattern-id": "d3-force-network",
     "data-composition-pattern-id": "d3-composition-thirds-force-network-cache-policy"
   });
   const nodes = [
@@ -329,15 +329,15 @@ function drawSceneOne(local) {
 function drawSceneTwo(local) {
   background(C.tealSoft);
   sceneLabel("FLOW SPINE / BRANCH", "Lookup branch");
-  svg.setAttribute("data-current-composition", "d3-composition-flow-spine-router-branch");
+  svg.setAttribute("data-current-composition", "d3-composition-flow-router-branch");
 
   const enter = easeOut(local / 0.75);
   const split = easeInOut((local - 0.72) / 1.85);
   const settle = easeOut((local - 2.15) / 0.7);
   const root = group({
-    "data-composition-id": "flow-spine",
-    "data-pattern-id": "d3-pattern-router-branch",
-    "data-composition-pattern-id": "d3-composition-flow-spine-router-branch"
+    "data-composition-id": "flow",
+    "data-pattern-id": "d3-router-branch",
+    "data-composition-pattern-id": "d3-composition-flow-router-branch"
   });
 
   line(640, 152, 640, 590, { stroke: C.hairline, "stroke-width": 2, opacity: 0.8 }, root);
@@ -467,7 +467,7 @@ function drawSceneThree(local) {
   const proofPulse = 0.5 + 0.5 * Math.sin(local * Math.PI * 2.6);
   const root = group({
     "data-composition-id": "golden-root",
-    "data-pattern-id": "d3-pattern-before-after-bars",
+    "data-pattern-id": "d3-before-after-bars",
     "data-composition-pattern-id": "d3-composition-golden-root-before-after-bars"
   });
 
@@ -562,15 +562,15 @@ function drawSceneThree(local) {
 
 function drawSceneFour(local) {
   background(C.yellowSoft);
-  svg.setAttribute("data-current-composition", "d3-composition-radial-rosette-rollout-checklist");
+  svg.setAttribute("data-current-composition", "d3-composition-radial-rollout-checklist");
   const intro = easeOut(local / 0.8);
   const checks = easeOut((local - 0.68) / 1.45);
   const hold = easeOut((local - 2.0) / 0.8);
   const orbit = local * Math.PI * 1.35;
   const root = group({
-    "data-composition-id": "radial-rosette",
-    "data-pattern-id": "d3-pattern-rollout-checklist",
-    "data-composition-pattern-id": "d3-composition-radial-rosette-rollout-checklist"
+    "data-composition-id": "radial",
+    "data-pattern-id": "d3-rollout-checklist",
+    "data-composition-pattern-id": "d3-composition-radial-rollout-checklist"
   });
 
   const center = { x: 640, y: 338 };

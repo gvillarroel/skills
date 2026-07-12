@@ -1,6 +1,6 @@
 # Difference Chart
 
-- **Pattern ID:** `d3-pattern-difference-chart`
+- **Pattern ID:** `d3-difference-chart`
 - **Gallery source ID:** `difference-chart`
 - **Family:** Temporal
 - **Use when:** Two series expose over and under performance bands.

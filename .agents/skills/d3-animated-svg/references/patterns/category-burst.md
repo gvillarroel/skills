@@ -1,6 +1,6 @@
 # Category Burst
 
-- **Pattern ID:** `d3-pattern-category-burst`
+- **Pattern ID:** `d3-category-burst`
 - **Gallery source ID:** `category-burst`
 - **Family:** Network
 - **Use when:** A primary category should reveal subcategories as spokes that float outward from one central circle and settle into a readable concept map.
@@ -40,7 +40,7 @@ Angles are degrees around the root, with `0` at the top and clockwise positive. 
 
 ## Implementation Steps
 
-1. Create a root SVG with `viewBox="0 0 560 420"`, a `<title>`, a `<desc>`, and `data-pattern-id="d3-pattern-category-burst"` when delivered outside the gallery.
+1. Create a root SVG with `viewBox="0 0 560 420"`, a `<title>`, a `<desc>`, and `data-pattern-id="d3-category-burst"` when delivered outside the gallery.
 2. Place the root at `{ x: 280, y: 214 }`.
 3. Convert each subcategory angle with `(degrees - 90) * Math.PI / 180`, then compute final `x/y` from `root + unitVector * distance`.
 4. Draw a subtle guide ring first, then animate the root circle radius from `0` to about `36`.
@@ -59,7 +59,7 @@ Angles are degrees around the root, with `0` at the top and clockwise positive. 
 
 ## Validation Hooks
 
-- Root SVG exposes `data-pattern-id="d3-pattern-category-burst"`.
+- Root SVG exposes `data-pattern-id="d3-category-burst"`.
 - Final SVG contains exactly one root node, 6-10 subcategory nodes, one visible link per subcategory, and one readable label per subcategory.
 - Each subcategory node should expose stable IDs/classes such as `data-subcategory-id`.
 - A screenshot after about `2.5s` must show a nonblank radial map with no label overlap and no moving mark crossing readable text.

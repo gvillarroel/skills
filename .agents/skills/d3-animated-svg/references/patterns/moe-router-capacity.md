@@ -1,6 +1,6 @@
 # MoE Router Capacity
 
-- **Pattern ID:** `d3-pattern-moe-router-capacity`
+- **Pattern ID:** `d3-moe-router-capacity`
 - **Gallery source ID:** `moe-router-capacity`
 - **Family:** LLM
 - **Use when:** Token-level top-k routing fills expert slots and exposes capacity overflow.

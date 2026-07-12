@@ -1,6 +1,6 @@
 # Sketchy Histogram
 
-- **Pattern ID:** `d3-pattern-sketchy-histogram`
+- **Pattern ID:** `d3-sketchy-histogram`
 - **Gallery source ID:** `sketchy-histogram`
 - **Family:** Sketchy
 - **Use when:** Histogram bins use rough rectangular marks and light hachure fills.

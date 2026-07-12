@@ -1,6 +1,6 @@
 # Tangled Tree
 
-- **Pattern ID:** `d3-pattern-tangled-tree`
+- **Pattern ID:** `d3-tangled-tree`
 - **Gallery source ID:** `tangled-tree`
 - **Family:** Hierarchy
 - **Use when:** A layered tree allows multiple parents per child.

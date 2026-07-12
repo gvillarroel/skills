@@ -1,6 +1,6 @@
 # Word Cloud
 
-- **Pattern ID:** `d3-pattern-word-cloud`
+- **Pattern ID:** `d3-word-cloud`
 - **Gallery source ID:** `word-cloud`
 - **Family:** Text
 - **Use when:** Weighted terms occupy an animated text layout.

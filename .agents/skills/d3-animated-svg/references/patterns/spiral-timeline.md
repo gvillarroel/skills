@@ -1,6 +1,6 @@
 # Spiral Timeline
 
-- **Pattern ID:** `d3-pattern-spiral-timeline`
+- **Pattern ID:** `d3-spiral-timeline`
 - **Gallery source ID:** `spiral-timeline`
 - **Family:** Temporal
 - **Use when:** Long sequences wrapped into cyclic space.

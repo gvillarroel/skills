@@ -116,8 +116,18 @@ async function verifyViewport({ browser, url, label, viewport, screenshot, exerc
         .map((card) => card.dataset.exampleId || '')
         .filter((id) => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)),
       duplicateExampleIds: cards.length - new Set(cards.map((card) => card.dataset.exampleId || '')).size,
+      invalidPatternIds: cards
+        .map((card) => card.dataset.patternId || '')
+        .filter((id) => !/^threejs-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || id.includes('-pattern-')),
+      duplicatePatternIds: cards.length - new Set(cards.map((card) => card.dataset.patternId || '')).size,
+      missingLegacyPatternIds: cards
+        .filter((card) => !/^threejs-pattern-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(card.dataset.legacyPatternId || ''))
+        .map((card) => card.dataset.sceneId),
+      mismatchedCanvasPatternIds: cards
+        .filter((card) => card.querySelector('canvas')?.dataset.patternId !== card.dataset.patternId)
+        .map((card) => card.dataset.sceneId),
       cardsWithoutDomId: cards
-        .filter((card) => card.id !== `example-${card.dataset.exampleId}`)
+        .filter((card) => card.id !== card.dataset.patternId)
         .map((card) => card.dataset.sceneId),
       mismatchedSceneIds: cards
         .filter((card) => card.dataset.exampleId !== card.dataset.sceneId)
@@ -146,6 +156,14 @@ async function verifyViewport({ browser, url, label, viewport, screenshot, exerc
     throw new Error(`${label}: invalid example ids: ${initial.invalidExampleIds.join(', ')}.`)
   if (initial.duplicateExampleIds)
     throw new Error(`${label}: found duplicate example ids.`)
+  if (initial.invalidPatternIds.length)
+    throw new Error(`${label}: invalid pattern ids: ${initial.invalidPatternIds.join(', ')}.`)
+  if (initial.duplicatePatternIds)
+    throw new Error(`${label}: found duplicate pattern ids.`)
+  if (initial.missingLegacyPatternIds.length)
+    throw new Error(`${label}: patterns missing legacy aliases: ${initial.missingLegacyPatternIds.join(', ')}.`)
+  if (initial.mismatchedCanvasPatternIds.length)
+    throw new Error(`${label}: canvas pattern ids do not match cards: ${initial.mismatchedCanvasPatternIds.join(', ')}.`)
   if (initial.cardsWithoutDomId.length)
     throw new Error(`${label}: cards without matching DOM ids: ${initial.cardsWithoutDomId.join(', ')}.`)
   if (initial.mismatchedSceneIds.length)

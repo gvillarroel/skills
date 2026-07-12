@@ -1,6 +1,6 @@
 # Tile Choropleth
 
-- **Pattern ID:** `d3-pattern-tile-choropleth`
+- **Pattern ID:** `d3-tile-choropleth`
 - **Gallery source ID:** `tile-choropleth`
 - **Family:** Geospatial
 - **Use when:** Region shapes colored by local intensity.

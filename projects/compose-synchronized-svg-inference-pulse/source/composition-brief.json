@@ -1,0 +1,293 @@
+{
+  "compositionId": "svg-inference-pulse",
+  "title": "Inference Pulse",
+  "subtitle": "One request, sixteen synchronized views, one adaptive inference loop",
+  "provenance": "Synthetic acceptance fixture; all rates, tokens, timings, probabilities, and control actions are illustrative test data.",
+  "locale": "en-US",
+  "initialScenario": "surge-trace",
+  "armature": "causal-flow-spine-with-feedback",
+  "concepts": [
+    {"id": "arrival-rate", "label": "Arrival rate", "unit": "requests/second", "default": 48, "domain": [0, 160]},
+    {"id": "admission-limit", "label": "Admission limit", "unit": "requests/second", "default": 96, "domain": [1, 160]},
+    {"id": "queue-depth", "label": "Queue depth", "unit": "requests", "default": 3, "domain": [0, 24], "interpolation": "step"},
+    {"id": "cache-hit-rate", "label": "Cache hit rate", "unit": "fraction", "default": 0.68, "domain": [0, 1]},
+    {"id": "retrieval-docs", "label": "Selected documents", "unit": "documents", "default": 0, "domain": [0, 6], "interpolation": "step"},
+    {"id": "prompt-tokens", "label": "Prompt tokens", "unit": "tokens", "default": 768, "domain": [0, 4096], "interpolation": "step"},
+    {"id": "retrieved-tokens", "label": "Retrieved tokens", "unit": "tokens", "default": 0, "domain": [0, 4096], "interpolation": "step"},
+    {"id": "context-capacity", "label": "Context capacity", "unit": "tokens", "default": 4096, "domain": [1024, 8192], "interpolation": "step"},
+    {"id": "model-b-weight", "label": "Model B route weight", "unit": "fraction", "default": 0.6, "domain": [0, 1]},
+    {"id": "batch-size", "label": "Batch size", "unit": "requests", "default": 1, "domain": [1, 8], "interpolation": "step"},
+    {"id": "gpu-utilization", "label": "GPU utilization", "unit": "fraction", "default": 0.62, "domain": [0, 1]},
+    {"id": "replica-count", "label": "Active replicas", "unit": "replicas", "default": 3, "domain": [1, 8], "interpolation": "step"},
+    {"id": "kv-pages-used", "label": "KV pages used", "unit": "pages", "default": 0, "domain": [0, 12], "interpolation": "step"},
+    {"id": "kv-page-capacity", "label": "KV page capacity", "unit": "pages", "default": 12, "domain": [6, 24], "interpolation": "step"},
+    {"id": "draft-tokens", "label": "Drafted tokens", "unit": "tokens", "default": 0, "domain": [0, 8], "interpolation": "step"},
+    {"id": "draft-acceptance-rate", "label": "Draft acceptance rate", "unit": "fraction", "default": 0.75, "domain": [0, 1], "interpolation": "step"},
+    {"id": "selected-probability", "label": "Selected token probability", "unit": "fraction", "default": 0.42, "domain": [0, 1]},
+    {"id": "output-tokens", "label": "Streamed output tokens", "unit": "tokens", "default": 0, "domain": [0, 24], "interpolation": "step"},
+    {"id": "queue-wait-ms", "label": "Queue wait", "unit": "milliseconds", "default": 0, "domain": [0, 200]},
+    {"id": "retrieval-latency-ms", "label": "Retrieval latency", "unit": "milliseconds", "default": 0, "domain": [0, 300]},
+    {"id": "prefill-latency-ms", "label": "Prefill latency", "unit": "milliseconds", "default": 0, "domain": [0, 400]},
+    {"id": "decode-latency-ms", "label": "Decode latency", "unit": "milliseconds", "default": 0, "domain": [0, 600]},
+    {"id": "stream-latency-ms", "label": "Stream latency", "unit": "milliseconds", "default": 0, "domain": [0, 400]},
+    {"id": "slo-target-ms", "label": "SLO target", "unit": "milliseconds", "default": 800, "domain": [400, 1600]},
+    {"id": "fleet-p95-ms", "label": "Fleet p95 latency", "unit": "milliseconds", "default": 620, "domain": [300, 1600]},
+    {"id": "burn-rate", "label": "Error budget burn", "unit": "fraction", "default": 0.8, "domain": [0, 3]}
+  ],
+  "derived": [
+    {"id": "admitted-rate", "label": "Admitted rate", "unit": "requests/second", "colorSource": "arrival-rate", "compute": {"op": "min", "args": [{"ref": "arrival-rate"}, {"ref": "admission-limit"}]}},
+    {"id": "shed-rate", "label": "Shed rate", "unit": "requests/second", "colorSource": "arrival-rate", "compute": {"op": "max", "args": [{"op": "subtract", "args": [{"ref": "arrival-rate"}, {"ref": "admission-limit"}]}, 0]}},
+    {"id": "cache-miss-rate", "label": "Cache miss rate", "unit": "fraction", "colorSource": "cache-hit-rate", "compute": {"op": "subtract", "args": [1, {"ref": "cache-hit-rate"}]}},
+    {"id": "context-tokens", "label": "Context tokens", "unit": "tokens", "colorSource": "prompt-tokens", "compute": {"op": "add", "args": [{"ref": "prompt-tokens"}, {"ref": "retrieved-tokens"}]}},
+    {"id": "context-free-tokens", "label": "Free context tokens", "unit": "tokens", "colorSource": "context-capacity", "compute": {"op": "max", "args": [{"op": "subtract", "args": [{"ref": "context-capacity"}, {"ref": "context-tokens"}]}, 0]}},
+    {"id": "other-route-weight", "label": "Other route weight", "unit": "fraction", "colorSource": "model-b-weight", "compute": {"op": "subtract", "args": [1, {"ref": "model-b-weight"}]}},
+    {"id": "gpu-headroom", "label": "GPU headroom", "unit": "fraction", "colorSource": "gpu-utilization", "compute": {"op": "subtract", "args": [1, {"ref": "gpu-utilization"}]}},
+    {"id": "kv-pages-free", "label": "Free KV pages", "unit": "pages", "colorSource": "kv-page-capacity", "compute": {"op": "max", "args": [{"op": "subtract", "args": [{"ref": "kv-page-capacity"}, {"ref": "kv-pages-used"}]}, 0]}},
+    {"id": "accepted-draft-tokens", "label": "Accepted draft tokens", "unit": "tokens", "compute": {"op": "multiply", "args": [{"ref": "draft-tokens"}, {"ref": "draft-acceptance-rate"}]}},
+    {"id": "rejected-draft-tokens", "label": "Rejected draft tokens", "unit": "tokens", "colorSource": "draft-tokens", "compute": {"op": "multiply", "args": [{"ref": "draft-tokens"}, {"op": "subtract", "args": [1, {"ref": "draft-acceptance-rate"}]}]}},
+    {"id": "sampling-remainder", "label": "Other token probability", "unit": "fraction", "colorSource": "selected-probability", "compute": {"op": "subtract", "args": [1, {"ref": "selected-probability"}]}},
+    {"id": "trace-latency-ms", "label": "Tracked request latency", "unit": "milliseconds", "colorSource": "decode-latency-ms", "compute": {"op": "add", "args": [{"ref": "queue-wait-ms"}, {"ref": "retrieval-latency-ms"}, {"ref": "prefill-latency-ms"}, {"ref": "decode-latency-ms"}, {"ref": "stream-latency-ms"}]}},
+    {"id": "slo-headroom-ms", "label": "Tracked request SLO headroom", "unit": "milliseconds", "colorSource": "slo-target-ms", "compute": {"op": "subtract", "args": [{"ref": "slo-target-ms"}, {"ref": "trace-latency-ms"}]}},
+    {"id": "p95-over-target-ms", "label": "Fleet p95 over target", "unit": "milliseconds", "colorSource": "fleet-p95-ms", "compute": {"op": "max", "args": [{"op": "subtract", "args": [{"ref": "fleet-p95-ms"}, {"ref": "slo-target-ms"}]}, 0]}}
+  ],
+  "scenarios": [
+    {"id": "ready-baseline", "label": "Ready baseline", "values": {"arrival-rate": 48}},
+    {
+      "id": "surge-trace",
+      "label": "Tracked surge request",
+      "values": {
+        "arrival-rate": 120,
+        "queue-depth": 18,
+        "retrieval-docs": 3,
+        "retrieved-tokens": 768,
+        "batch-size": 4,
+        "gpu-utilization": 0.91,
+        "kv-pages-used": 6,
+        "draft-tokens": 4,
+        "draft-acceptance-rate": 0.75,
+        "output-tokens": 12,
+        "queue-wait-ms": 34,
+        "retrieval-latency-ms": 92,
+        "prefill-latency-ms": 148,
+        "decode-latency-ms": 282,
+        "stream-latency-ms": 160,
+        "fleet-p95-ms": 842,
+        "burn-rate": 1.4
+      }
+    },
+    {
+      "id": "adaptive-recovery",
+      "label": "Adaptive recovery",
+      "values": {
+        "arrival-rate": 72,
+        "queue-depth": 3,
+        "model-b-weight": 0.45,
+        "gpu-utilization": 0.7,
+        "replica-count": 4,
+        "fleet-p95-ms": 740,
+        "burn-rate": 0.9
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "adaptive-control",
+      "question": "Which coordinated action closes the operational loop?",
+      "claim": "Routing weight, replica count, queue pressure, utilization, and burn rate move as one feedback response.",
+      "assetType": "adaptive-control-network",
+      "values": ["replica-count", "model-b-weight", "other-route-weight", "queue-depth", "gpu-utilization", "gpu-headroom", "burn-rate"],
+      "selectionRationale": "A control network shows one observation feeding several coordinated actions without implying independent clocks.",
+      "rejectedAlternative": "A checklist was rejected because it would not expose feedback from SLO state into routing, capacity, and queue pressure."
+    },
+    {
+      "id": "arrival-load",
+      "question": "How does demand change before the tracked request enters?",
+      "claim": "Demand and admitted throughput rise together until the admission ceiling creates divergence.",
+      "assetType": "arrival-time-series",
+      "values": ["arrival-rate", "admitted-rate"],
+      "selectionRationale": "A time series makes the demand burst and its admitted envelope readable as change, not just two isolated numbers.",
+      "rejectedAlternative": "A static metric card was rejected because it would hide the burst shape and loop reset."
+    },
+    {
+      "id": "token-admission",
+      "question": "How is incoming demand divided between admitted and shed work?",
+      "claim": "Every arriving request resolves atomically to admitted or shed throughput.",
+      "assetType": "admission-sankey-flow",
+      "values": ["arrival-rate", "admitted-rate", "shed-rate"],
+      "selectionRationale": "A proportional flow reconciles one incoming total with two mutually exclusive outcomes.",
+      "rejectedAlternative": "Grouped bars were rejected because they would weaken the one-source-to-two-outcomes relationship."
+    },
+    {
+      "id": "queue-pressure",
+      "question": "How much admitted work waits and for how long?",
+      "claim": "Queue occupancy, wait time, and admitted load expose the same backpressure state.",
+      "assetType": "backpressure-capacity-grid",
+      "values": ["queue-depth", "queue-wait-ms", "admitted-rate"],
+      "selectionRationale": "A capacity grid combines discrete queue occupancy with an exact wait reading.",
+      "rejectedAlternative": "A radial gauge was rejected because queue occupancy is countable slots, not an angular state."
+    },
+    {
+      "id": "cache-path",
+      "question": "Does the tracked request reuse cached context or continue to retrieval?",
+      "claim": "Cache-hit and miss shares remain complementary while a miss hands the request to retrieval.",
+      "assetType": "cache-radial-gauge",
+      "values": ["cache-hit-rate", "cache-miss-rate"],
+      "selectionRationale": "A bounded semicircle makes hit versus miss share immediately inspectable.",
+      "rejectedAlternative": "A pie chart was rejected because the gauge provides a clearer threshold-oriented read at small size."
+    },
+    {
+      "id": "retrieval-evidence",
+      "question": "Which evidence expands the tracked request?",
+      "claim": "Selected evidence count, token payload, and retrieval latency describe one retrieval state.",
+      "assetType": "retrieval-network-graph",
+      "values": ["retrieval-docs", "retrieved-tokens", "prompt-tokens", "context-tokens", "retrieval-latency-ms"],
+      "selectionRationale": "A network view expresses one query selecting several evidence nodes while retaining quantitative bindings.",
+      "rejectedAlternative": "A table was rejected because exact rows would not show the query-to-evidence relationship as clearly."
+    },
+    {
+      "id": "context-window",
+      "question": "How is the context window partitioned after retrieval?",
+      "claim": "Prompt and retrieved evidence consume one shared context capacity, leaving an explicit remainder.",
+      "assetType": "context-matrix-heatmap",
+      "values": ["prompt-tokens", "retrieved-tokens", "context-tokens", "context-free-tokens"],
+      "selectionRationale": "A matrix makes used and free token capacity legible as discrete spatial allocation.",
+      "rejectedAlternative": "A single progress bar was rejected because it would conceal the prompt-versus-evidence composition."
+    },
+    {
+      "id": "route-choice",
+      "question": "Which model route receives the request and at what traffic weight?",
+      "claim": "The selected route and all other routes partition the full routing weight.",
+      "assetType": "routing-comparison-bars",
+      "values": ["model-b-weight", "other-route-weight"],
+      "selectionRationale": "Aligned bars compare the selected route with the remaining allocation precisely.",
+      "rejectedAlternative": "A node-link diagram was rejected because the question is proportional allocation, not topology."
+    },
+    {
+      "id": "batch-formation",
+      "question": "How does r-042 join work scheduled for one inference step?",
+      "claim": "Batch size and queue depth reveal how waiting work is grouped for one inference step.",
+      "assetType": "batch-capacity-slots",
+      "values": ["batch-size", "queue-depth"],
+      "selectionRationale": "Capacity slots expose the discrete batch membership and remaining pressure.",
+      "rejectedAlternative": "A line chart was rejected because the key fact is discrete membership, not history."
+    },
+    {
+      "id": "gpu-fabric",
+      "question": "Where does the batch execute and how stressed is the compute fabric?",
+      "claim": "Utilization, headroom, replicas, and batch size describe one compute-fabric state.",
+      "assetType": "gpu-topology-network",
+      "values": ["gpu-utilization", "gpu-headroom", "replica-count", "batch-size"],
+      "selectionRationale": "A topology network preserves replica identity while node size carries utilization and capacity state.",
+      "rejectedAlternative": "A gauge alone was rejected because it would omit which compute replica receives the batch."
+    },
+    {
+      "id": "attention-map",
+      "question": "How does the model connect prompt tokens to retrieved evidence?",
+      "claim": "Prompt, retrieved, and total context tokens stay reconciled inside one attention field.",
+      "assetType": "attention-pairwise-matrix",
+      "values": ["prompt-tokens", "retrieved-tokens", "context-tokens"],
+      "selectionRationale": "A pairwise matrix is the natural encoding for many-to-many attention intensity.",
+      "rejectedAlternative": "A network was rejected because dense token relationships would become an unreadable hairball."
+    },
+    {
+      "id": "kv-allocation",
+      "question": "How much paged memory does the request consume?",
+      "claim": "Used and free KV pages reconcile against the shared page capacity.",
+      "assetType": "kv-bullet-capacity",
+      "values": ["kv-pages-used", "kv-pages-free", "kv-page-capacity"],
+      "selectionRationale": "A bullet-capacity view compares used, free, and total pages on one exact scale.",
+      "rejectedAlternative": "A donut was rejected because aligned length is more precise for capacity."
+    },
+    {
+      "id": "speculative-verify",
+      "question": "How much speculative work survives verification?",
+      "claim": "Drafted tokens resolve into accepted output and rejected work without double counting.",
+      "assetType": "speculative-waterfall-chart",
+      "values": ["draft-tokens", "rejected-draft-tokens", "accepted-draft-tokens"],
+      "selectionRationale": "A waterfall shows the transition from drafted work to accepted output and visible rejection loss.",
+      "rejectedAlternative": "A stacked bar was rejected because the transformation and loss sequence matters more than part-to-whole lookup."
+    },
+    {
+      "id": "sampling-choice",
+      "question": "Why does the decoder choose the next visible token?",
+      "claim": "Selected-token probability and remaining probability mass always sum to one distribution.",
+      "assetType": "sampler-ranked-bars",
+      "values": ["selected-probability", "sampling-remainder"],
+      "selectionRationale": "Ranked probability bars make the chosen token and competing mass directly comparable.",
+      "rejectedAlternative": "A roulette wheel was rejected because angle would make probability comparison less precise."
+    },
+    {
+      "id": "response-stream",
+      "question": "How does verified output become a user-visible response?",
+      "claim": "Output volume, stream time, and total trace time advance from the same response state.",
+      "assetType": "response-token-timeline",
+      "values": ["output-tokens", "stream-latency-ms", "trace-latency-ms"],
+      "selectionRationale": "A timeline relates output accumulation to delivery time and the full trace.",
+      "rejectedAlternative": "A metric card was rejected because it would not communicate ordered token emission."
+    },
+    {
+      "id": "slo-observability",
+      "question": "Does the tracked request and the fleet satisfy the latency objective?",
+      "claim": "Request latency, fleet p95, target, overage, and burn rate expose one service-level decision.",
+      "assetType": "slo-threshold-line",
+      "values": ["trace-latency-ms", "fleet-p95-ms", "slo-target-ms", "p95-over-target-ms", "burn-rate"],
+      "selectionRationale": "A threshold line distinguishes one trace from fleet tail behavior and the declared target.",
+      "rejectedAlternative": "A traffic-light badge was rejected because it would hide magnitude, headroom, and fleet context."
+    }
+  ],
+  "relationships": [
+    {"id": "arrival-to-admission", "source": "arrival-load", "target": "token-admission", "kind": "flow", "label": "Arrivals enter admission control"},
+    {"id": "admission-to-queue", "source": "token-admission", "target": "queue-pressure", "kind": "flow", "label": "Admitted requests form queue pressure"},
+    {"id": "queue-to-cache", "source": "queue-pressure", "target": "cache-path", "kind": "flow", "label": "Queued requests probe the cache"},
+    {"id": "cache-to-retrieval", "source": "cache-path", "target": "retrieval-evidence", "kind": "flow", "label": "Cache misses trigger retrieval"},
+    {"id": "retrieval-to-context", "source": "retrieval-evidence", "target": "context-window", "kind": "flow", "label": "Selected evidence expands the context"},
+    {"id": "context-to-route", "source": "context-window", "target": "route-choice", "kind": "dependency", "label": "Context demand informs model routing"},
+    {"id": "route-to-batch", "source": "route-choice", "target": "batch-formation", "kind": "flow", "label": "Routed requests enter a batch"},
+    {"id": "batch-to-gpu", "source": "batch-formation", "target": "gpu-fabric", "kind": "flow", "label": "The batch is placed on the GPU fabric"},
+    {"id": "gpu-to-attention", "source": "gpu-fabric", "target": "attention-map", "kind": "dependency", "label": "GPU load drives attention work"},
+    {"id": "attention-to-kv", "source": "attention-map", "target": "kv-allocation", "kind": "dependency", "label": "Attention work consumes KV pages"},
+    {"id": "kv-to-verification", "source": "kv-allocation", "target": "speculative-verify", "kind": "flow", "label": "KV state supports draft verification"},
+    {"id": "verification-to-sampling", "source": "speculative-verify", "target": "sampling-choice", "kind": "flow", "label": "Accepted draft tokens reach sampling"},
+    {"id": "sampling-to-stream", "source": "sampling-choice", "target": "response-stream", "kind": "flow", "label": "Selected tokens enter the response stream"},
+    {"id": "stream-to-slo", "source": "response-stream", "target": "slo-observability", "kind": "flow", "label": "Streaming latency updates the SLO view"},
+    {"id": "slo-to-control", "source": "slo-observability", "target": "adaptive-control", "kind": "feedback", "label": "SLO burn feeds adaptive control"},
+    {"id": "control-to-admission", "source": "adaptive-control", "target": "token-admission", "kind": "feedback", "label": "Adaptive control retunes admission"},
+    {"id": "control-to-route", "source": "adaptive-control", "target": "route-choice", "kind": "feedback", "label": "Adaptive control shifts route weights"},
+    {"id": "control-to-gpu", "source": "adaptive-control", "target": "gpu-fabric", "kind": "feedback", "label": "Adaptive control changes GPU replicas"}
+  ],
+  "focusGroups": [
+    {"id": "ready-focus", "label": "Baseline readiness", "moduleIds": ["arrival-load", "adaptive-control"]},
+    {"id": "burst-focus", "label": "Demand burst", "moduleIds": ["arrival-load"]},
+    {"id": "admit-focus", "label": "Admission and queue", "moduleIds": ["token-admission", "queue-pressure"]},
+    {"id": "cache-focus", "label": "Cache miss", "moduleIds": ["queue-pressure", "cache-path"]},
+    {"id": "retrieve-focus", "label": "Retrieval and context", "moduleIds": ["retrieval-evidence", "context-window"]},
+    {"id": "route-focus", "label": "Route and batch", "moduleIds": ["route-choice", "batch-formation"]},
+    {"id": "prefill-focus", "label": "Prefill and memory", "moduleIds": ["gpu-fabric", "attention-map", "kv-allocation"]},
+    {"id": "verify-focus", "label": "Draft verification", "moduleIds": ["speculative-verify"]},
+    {"id": "stream-focus", "label": "Sampling and streaming", "moduleIds": ["sampling-choice", "response-stream"]},
+    {"id": "observe-focus", "label": "SLO observation", "moduleIds": ["response-stream", "slo-observability"]},
+    {"id": "adapt-focus", "label": "Adaptive response", "moduleIds": ["slo-observability", "adaptive-control", "route-choice", "gpu-fabric", "queue-pressure"]},
+    {"id": "settle-focus", "label": "Recovered baseline", "moduleIds": ["adaptive-control", "arrival-load"]}
+  ],
+  "timeline": {
+    "durationMs": 24000,
+    "loop": true,
+    "baseScenario": "ready-baseline",
+    "interpolation": "smooth",
+    "autoplay": true,
+    "phases": [
+      {"id": "ready", "startMs": 0, "endMs": 1000, "focusId": "ready-focus", "values": {}},
+      {"id": "burst", "startMs": 1000, "endMs": 3000, "focusId": "burst-focus", "values": {"arrival-rate": 120}},
+      {"id": "admit", "startMs": 3000, "endMs": 5000, "focusId": "admit-focus", "values": {"arrival-rate": 120, "queue-depth": 18}},
+      {"id": "cache-miss", "startMs": 5000, "endMs": 6500, "focusId": "cache-focus", "values": {"arrival-rate": 120, "queue-depth": 18, "queue-wait-ms": 34}},
+      {"id": "retrieve-context", "startMs": 6500, "endMs": 9000, "focusId": "retrieve-focus", "values": {"arrival-rate": 120, "queue-depth": 18, "queue-wait-ms": 34, "retrieval-docs": 3, "retrieved-tokens": 768, "retrieval-latency-ms": 92}},
+      {"id": "route-batch", "startMs": 9000, "endMs": 11500, "focusId": "route-focus", "values": {"arrival-rate": 120, "queue-depth": 18, "queue-wait-ms": 34, "retrieval-docs": 3, "retrieved-tokens": 768, "retrieval-latency-ms": 92, "batch-size": 4}},
+      {"id": "prefill", "startMs": 11500, "endMs": 14000, "focusId": "prefill-focus", "values": {"arrival-rate": 120, "queue-depth": 18, "queue-wait-ms": 34, "retrieval-docs": 3, "retrieved-tokens": 768, "retrieval-latency-ms": 92, "batch-size": 4, "gpu-utilization": 0.91, "kv-pages-used": 6, "prefill-latency-ms": 148}},
+      {"id": "draft-verify", "startMs": 14000, "endMs": 16500, "focusId": "verify-focus", "values": {"arrival-rate": 120, "queue-depth": 18, "queue-wait-ms": 34, "retrieval-docs": 3, "retrieved-tokens": 768, "retrieval-latency-ms": 92, "batch-size": 4, "gpu-utilization": 0.91, "kv-pages-used": 6, "prefill-latency-ms": 148, "draft-tokens": 4, "draft-acceptance-rate": 0.75, "decode-latency-ms": 282}},
+      {"id": "sample-stream", "startMs": 16500, "endMs": 19000, "focusId": "stream-focus", "values": {"arrival-rate": 120, "queue-depth": 18, "queue-wait-ms": 34, "retrieval-docs": 3, "retrieved-tokens": 768, "retrieval-latency-ms": 92, "batch-size": 4, "gpu-utilization": 0.91, "kv-pages-used": 6, "prefill-latency-ms": 148, "draft-tokens": 4, "draft-acceptance-rate": 0.75, "decode-latency-ms": 282, "output-tokens": 12, "stream-latency-ms": 160}},
+      {"id": "observe", "startMs": 19000, "endMs": 21000, "focusId": "observe-focus", "values": {"arrival-rate": 120, "queue-depth": 18, "queue-wait-ms": 34, "retrieval-docs": 3, "retrieved-tokens": 768, "retrieval-latency-ms": 92, "batch-size": 4, "gpu-utilization": 0.91, "kv-pages-used": 6, "prefill-latency-ms": 148, "draft-tokens": 4, "draft-acceptance-rate": 0.75, "decode-latency-ms": 282, "output-tokens": 12, "stream-latency-ms": 160, "fleet-p95-ms": 842, "burn-rate": 1.4}},
+      {"id": "adapt", "startMs": 21000, "endMs": 23000, "focusId": "adapt-focus", "values": {"arrival-rate": 72, "queue-depth": 3, "queue-wait-ms": 34, "retrieval-docs": 3, "retrieved-tokens": 768, "retrieval-latency-ms": 92, "batch-size": 4, "gpu-utilization": 0.7, "replica-count": 4, "model-b-weight": 0.45, "kv-pages-used": 6, "prefill-latency-ms": 148, "draft-tokens": 4, "draft-acceptance-rate": 0.75, "decode-latency-ms": 282, "output-tokens": 12, "stream-latency-ms": 160, "fleet-p95-ms": 740, "burn-rate": 0.9}},
+      {"id": "settle", "startMs": 23000, "endMs": 24000, "focusId": "settle-focus", "values": {}}
+    ]
+  }
+}

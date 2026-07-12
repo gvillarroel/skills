@@ -1,6 +1,6 @@
 # Polygon Clipping
 
-- **Pattern ID:** `d3-pattern-polygon-clipping`
+- **Pattern ID:** `d3-polygon-clipping`
 - **Gallery source ID:** `polygon-clipping`
 - **Family:** Geometry
 - **Use when:** An input polygon is intersected with a clipping window.

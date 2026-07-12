@@ -1,20 +1,20 @@
 # <Title>
 
-Promise:
+Promise: <one-sentence viewer promise>
 
-Audience:
+Audience: <specific viewer and prior knowledge>
 
-Format:
+Format: <format, runtime, and pacing>
 
-Runtime:
+Runtime: <M:SS or seconds>
 
 ## Hook
 
-Cold-open line:
+Cold-open line: <opening spoken or on-screen line>
 
-First visual:
+First visual: <recognizable object, causal action, and visible result>
 
-Audio cue:
+Audio cue: <opening hit, bed, and ducking direction>
 
 ## Timed Beat Table
 

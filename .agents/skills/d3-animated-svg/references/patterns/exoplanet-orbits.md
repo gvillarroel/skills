@@ -1,6 +1,6 @@
 # Exoplanet Orbits
 
-- **Pattern ID:** `d3-pattern-exoplanet-orbits`
+- **Pattern ID:** `d3-exoplanet-orbits`
 - **Gallery source ID:** `exoplanet-orbits`
 - **Family:** Science
 - **Use when:** Orbital radius and planet size encode a compact science catalog.

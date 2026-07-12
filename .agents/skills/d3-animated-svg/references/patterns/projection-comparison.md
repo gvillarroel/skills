@@ -1,6 +1,6 @@
 # Projection Comparison
 
-- **Pattern ID:** `d3-pattern-projection-comparison`
+- **Pattern ID:** `d3-projection-comparison`
 - **Gallery source ID:** `projection-comparison`
 - **Family:** Projection
 - **Use when:** The same coordinates expose projection distortion side by side.

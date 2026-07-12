@@ -1,6 +1,6 @@
 # Mirrored Beeswarm
 
-- **Pattern ID:** `d3-pattern-mirrored-beeswarm`
+- **Pattern ID:** `d3-mirrored-beeswarm`
 - **Gallery source ID:** `mirrored-beeswarm`
 - **Family:** Distribution
 - **Use when:** Two groups mirror around a central quantitative axis.

@@ -1,6 +1,6 @@
 # Tissot Indicatrix
 
-- **Pattern ID:** `d3-pattern-tissot-indicatrix`
+- **Pattern ID:** `d3-tissot-indicatrix`
 - **Gallery source ID:** `tissot-indicatrix`
 - **Family:** Projection
 - **Use when:** Equal angular circles reveal distortion across a map.

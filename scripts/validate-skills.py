@@ -230,6 +230,32 @@ def load_build_pages_module(root: Path):
     return module, None
 
 
+def validate_pattern_id_registry(root: Path, findings: list[Finding]) -> None:
+    script = root / "scripts" / "validate-pattern-ids.py"
+    if not script.exists():
+        add(findings, script, "scripts/validate-pattern-ids.py is required")
+        return
+
+    spec = importlib.util.spec_from_file_location("skills_repo_pattern_ids", script)
+    if spec is None or spec.loader is None:
+        add(findings, script, "could not load scripts/validate-pattern-ids.py")
+        return
+
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    try:
+        spec.loader.exec_module(module)
+        pattern_findings, _ = module.validate_pattern_ids(root)
+    except Exception as error:
+        add(findings, script, f"could not validate pattern IDs: {error}")
+        return
+    finally:
+        sys.modules.pop(spec.name, None)
+
+    for finding in pattern_findings:
+        add(findings, finding.path, finding.message)
+
+
 def validate_example_catalog(root: Path, findings: list[Finding]) -> None:
     build_pages, error = load_build_pages_module(root)
     script = root / "scripts" / "build-pages.py"
@@ -341,6 +367,7 @@ def validate_repo(root: Path) -> list[Finding]:
 
     validate_script_tree(root / "scripts", root, findings)
     validate_example_catalog(root, findings)
+    validate_pattern_id_registry(root, findings)
 
     for child in root.iterdir():
         if child.is_dir() and (child / "SKILL.md").exists():

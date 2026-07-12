@@ -1,6 +1,6 @@
 # Hexbin Map
 
-- **Pattern ID:** `d3-pattern-hexbin-map`
+- **Pattern ID:** `d3-hexbin-map`
 - **Gallery source ID:** `hexbin-map`
 - **Family:** Geospatial
 - **Use when:** Projected points aggregate into geographic hexagonal bins.

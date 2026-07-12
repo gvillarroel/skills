@@ -1,0 +1,217 @@
+{
+  "ok": true,
+  "title": "Holiday 2026: Events, Festivals & Live Shows",
+  "promise": "Prioritize the unexpired July vacation window and clearly separate later 2026 highlights.",
+  "selectedFormat": "compressed explainer",
+  "selectionRationale": "explicit format request",
+  "runtime": "0:48",
+  "runtimeSeconds": 48,
+  "corpusWindow": {
+    "startDate": "2025-07-06",
+    "endDate": "2026-07-06",
+    "inclusive": true
+  },
+  "corpusCounts": {
+    "totalPublicVideos": 181,
+    "sourceManifest": {
+      "path": "assets/reference/corpus-sources.json",
+      "totalEntries": 181,
+      "channelCounts": {
+        "Awesome": 105,
+        "Fireship": 76
+      },
+      "sourceIdSha256": "3ba23e8ab3df28ba6f4a2ef894ee69a932812a8b8fc74097dd1b7ea4f422bd5e"
+    }
+  },
+  "videoType": {
+    "name": "compressed explainer",
+    "runtime": "90-160 seconds",
+    "useWhen": "One concept, term, library, feature, or workflow needs fast payoff-first definition.",
+    "shape": "Claim, definition, mechanism, concrete example, tradeoff or callback."
+  },
+  "visualSources": [
+    {
+      "name": "logo/title anchor",
+      "useWhen": "The viewer must identify the technology or story subject immediately.",
+      "placement": "First 3-5 seconds or section resets."
+    },
+    {
+      "name": "UI proof",
+      "useWhen": "A claim depends on visible product, docs, dashboard, browser, GitHub, or terminal evidence.",
+      "placement": "Cut directly from the spoken claim to the evidence, then punch into the exact region."
+    },
+    {
+      "name": "diagram proof",
+      "useWhen": "The viewer needs to see lifecycle, dependency, state, timeline, or request flow.",
+      "placement": "Definition, mechanism, and recap beats."
+    },
+    {
+      "name": "meme/editorial insert",
+      "useWhen": "A joke, reversal, or absurd contrast punctuates a technical point.",
+      "placement": "After the claim is already understandable."
+    }
+  ],
+  "animationAtoms": [
+    {
+      "name": "punch-in zoom",
+      "useWhen": "Focus the viewer on the exact UI, code, logo, metric, or doc line that proves the point."
+    },
+    {
+      "name": "highlight sweep",
+      "useWhen": "Reveal one meaningful line, value, API, warning, or command."
+    },
+    {
+      "name": "stack build",
+      "useWhen": "Layer logo, docs, code, output, and warning into a quick causal chain."
+    },
+    {
+      "name": "diagram trace",
+      "useWhen": "Show request, network, dependency, lifecycle, or event flow moving through nodes."
+    },
+    {
+      "name": "counter/ticker",
+      "useWhen": "A number, cost, version, latency, time window, or count is the claim."
+    }
+  ],
+  "transitionTypes": [
+    {
+      "name": "hard cut",
+      "useWhen": "A new claim, proof point, joke, or section starts."
+    },
+    {
+      "name": "punch-in",
+      "useWhen": "The next idea is a smaller detail inside the same source visual."
+    },
+    {
+      "name": "match cut",
+      "useWhen": "Two UI shapes, diagrams, logos, or code blocks map to each other."
+    },
+    {
+      "name": "snap zoom",
+      "useWhen": "A joke, warning, or surprising number needs emphasis."
+    }
+  ],
+  "audioRoles": [
+    {
+      "name": "background bed",
+      "useWhen": "Maintain near-continuous pace under voiceover; duck under narration."
+    },
+    {
+      "name": "hit/stinger",
+      "useWhen": "Title reveal, punchline, claim reversal, or section break."
+    },
+    {
+      "name": "whoosh/tick",
+      "useWhen": "Zooms, pop-in labels, quick UI pans, code highlights, and overlay movement."
+    },
+    {
+      "name": "riser",
+      "useWhen": "Build tension before revealing a number, product, consequence, or warning."
+    },
+    {
+      "name": "final tail",
+      "useWhen": "Let the callback or last warning resolve after the final visual."
+    }
+  ],
+  "scriptMoves": [
+    {
+      "name": "claim hook",
+      "useWhen": "Open with the consequence or contradiction before background."
+    },
+    {
+      "name": "one-sentence context",
+      "useWhen": "Compress prerequisite context before showing evidence."
+    },
+    {
+      "name": "contrast pair",
+      "useWhen": "Make the mechanism memorable by contrasting old/new, simple/hidden, or hype/reality."
+    },
+    {
+      "name": "reset line",
+      "useWhen": "After dense explanation, reorient the viewer before the next proof."
+    },
+    {
+      "name": "warning beat",
+      "useWhen": "Name the limitation, footgun, cost, lock-in, latency, or security tradeoff."
+    },
+    {
+      "name": "callback",
+      "useWhen": "End by returning to the opening claim with a sharper technical implication."
+    },
+    {
+      "name": "technical joke",
+      "useWhen": "A joke makes the mechanism easier to remember and does not replace the proof."
+    }
+  ],
+  "beatGuidance": [
+    {
+      "time": "0:00-0:04",
+      "purpose": "Cold claim and title anchor",
+      "visualSource": "logo/title anchor",
+      "animation": "punch-in zoom",
+      "transition": "hard cut",
+      "audioRole": "background bed"
+    },
+    {
+      "time": "0:04-0:11",
+      "purpose": "One-sentence definition",
+      "visualSource": "UI proof",
+      "animation": "highlight sweep",
+      "transition": "punch-in",
+      "audioRole": "hit/stinger"
+    },
+    {
+      "time": "0:11-0:18",
+      "purpose": "Source proof",
+      "visualSource": "diagram proof",
+      "animation": "stack build",
+      "transition": "match cut",
+      "audioRole": "whoosh/tick"
+    },
+    {
+      "time": "0:18-0:25",
+      "purpose": "Mechanism or state flow",
+      "visualSource": "meme/editorial insert",
+      "animation": "diagram trace",
+      "transition": "snap zoom",
+      "audioRole": "riser"
+    },
+    {
+      "time": "0:25-0:32",
+      "purpose": "Concrete example",
+      "visualSource": "logo/title anchor",
+      "animation": "counter/ticker",
+      "transition": "hard cut",
+      "audioRole": "final tail"
+    },
+    {
+      "time": "0:32-0:38",
+      "purpose": "Contrast or warning",
+      "visualSource": "UI proof",
+      "animation": "punch-in zoom",
+      "transition": "punch-in",
+      "audioRole": "background bed"
+    },
+    {
+      "time": "0:38-0:44",
+      "purpose": "Reusable rule",
+      "visualSource": "diagram proof",
+      "animation": "highlight sweep",
+      "transition": "match cut",
+      "audioRole": "hit/stinger"
+    },
+    {
+      "time": "0:44-0:48",
+      "purpose": "Callback and final tail",
+      "visualSource": "meme/editorial insert",
+      "animation": "stack build",
+      "transition": "snap zoom",
+      "audioRole": "whoosh/tick"
+    }
+  ],
+  "validationHints": [
+    "Use check_video_brief.py --require-voiceover for the brief.",
+    "Use --require-source-links for publishable source-backed claims.",
+    "Use score_video_readiness.py and check_production_package.py before calling a finished video ready."
+  ]
+}

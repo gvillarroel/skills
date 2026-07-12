@@ -1,6 +1,6 @@
 # Waterfall
 
-- **Pattern ID:** `d3-pattern-waterfall`
+- **Pattern ID:** `d3-waterfall`
 - **Gallery source ID:** `waterfall`
 - **Family:** Accounting
 - **Use when:** Sequential deltas build toward a final total.

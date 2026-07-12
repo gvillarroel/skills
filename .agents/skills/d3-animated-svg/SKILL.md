@@ -11,13 +11,13 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
 2. Lock the output contract before coding:
    - For live interactive artifacts, deliver HTML with D3 transitions, zoom, drag, filters, or tooltips.
    - For portable animated SVG, use D3 to compute geometry and write inline SVG, CSS, or SMIL animation. Do not rely on D3 transitions to survive extraction into a standalone SVG.
-   - If the request names an exact output file or path, write that exact path. Do not derive a replacement filename from a `d3-pattern-*` ID, title, or chart family.
+   - If the request names an exact output file or path, write that exact path. Do not derive a replacement filename from a `d3-*` ID, title, or chart family.
    - If the request provides JSON, YAML, a table, or another structured output contract with IDs, counts, classes, or values, copy numeric counts and validation hooks exactly.
 3. For self-contained, standalone, offline, or portable HTML/SVG deliverables, read `references/self-contained-output.md`, start from `assets/templates/self-contained-animated-svg.html` when useful, and validate with `scripts/check_self_contained_html.py`.
 4. Before hand-rolling a visualization, check the pattern routing:
    - If the request involves dense observations, distribution alternatives, uncertainty intervals, linked views, map selection, or publishable explanatory graphics, read `references/pattern-selection-contracts.md` before choosing the chart structure.
-   - Read `references/pattern-routing.md` when the request names or strongly resembles a reusable `d3-pattern-*` family, asks for exact mark counts, asks for small/medium/large variants, or mentions a builder-backed pattern such as critical queues, cache stampedes, circuit breakers, P&ID loops, organic growth, or Kanban assignee boards.
-   - If the request names exact `d3-pattern-*` IDs, extract the complete unique set and read each matching `references/patterns/<id-without-prefix>.md` before coding.
+   - Read `references/pattern-routing.md` when the request names or strongly resembles a reusable `d3-*` family, asks for exact mark counts, asks for small/medium/large variants, or mentions a builder-backed pattern such as critical queues, cache stampedes, circuit breakers, P&ID loops, organic growth, or Kanban assignee boards.
+   - If the request names exact `d3-*` IDs, extract the complete unique set and read each matching `references/patterns/<id-without-prefix>.md` before coding.
    - If the request asks for a closest gallery pattern without naming an exact ID, search `references/pattern-index.md`, choose one pattern, then read only that matching file under `references/patterns/`.
    - Do not read the gallery fixture for normal pattern generation; use it only when maintaining that fixture.
 5. Keep data deterministic. Inline small data, load local files for larger data, and seed or pre-tick force layouts so exported geometry is reproducible.
@@ -28,7 +28,7 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
 
 ## Progressive Disclosure Map
 
-- `references/pattern-routing.md`: read before using reusable pattern families, exact `d3-pattern-*` IDs, exact cardinality contracts, or builder-backed standalone patterns.
+- `references/pattern-routing.md`: read before using reusable pattern families, exact `d3-*` IDs, exact cardinality contracts, or builder-backed standalone patterns.
 - `references/pattern-index.md`: search when selecting the closest gallery pattern without an exact pattern ID.
 - `references/pattern-selection-contracts.md`: read when choosing among dense-data, distribution, uncertainty, linked-view, map, or publishable explanatory chart patterns.
 - `references/visualization-type-index.md`: read when choosing a D3 visualization form or when the user asks for alternatives to Mermaid.

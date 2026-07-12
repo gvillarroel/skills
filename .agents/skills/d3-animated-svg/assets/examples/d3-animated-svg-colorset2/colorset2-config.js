@@ -7,8 +7,8 @@
     styleName: "metro-minimal-tonal-motion",
     paletteSource: "design/colorset2.yaml",
     styleSource: "design/style.md",
-    basePatternPrefix: "d3-pattern-",
-    versionPatternPrefix: "d3-pattern-cs2-"
+    basePatternPrefix: "d3-",
+    versionPatternSuffix: "cs2"
   };
   window.D3_COLORSET2_ALIGNMENT = window.D3_GALLERY_STYLE_CONFIG;
 })();

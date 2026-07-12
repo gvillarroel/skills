@@ -1,6 +1,6 @@
 # Vaccine Impact
 
-- **Pattern ID:** `d3-pattern-vaccine-impact`
+- **Pattern ID:** `d3-vaccine-impact`
 - **Gallery source ID:** `vaccine-impact`
 - **Family:** Public health
 - **Use when:** Disease incidence collapses after intervention markers.

@@ -1,6 +1,6 @@
 # Binary Classifier
 
-- **Pattern ID:** `d3-pattern-binary-classifier`
+- **Pattern ID:** `d3-binary-classifier`
 - **Gallery source ID:** `binary-classifier`
 - **Family:** AI
 - **Use when:** A forward pass routes one sample into one of two outcomes.

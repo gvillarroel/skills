@@ -1,6 +1,6 @@
 # Pen Label Optimizer
 
-Pattern ID: `d3-pattern-pen-label-optimizer`.
+Pattern ID: `d3-pen-label-optimizer`.
 
 Use this pattern when dense pen-like points or scatter points need direct labels without saturating one area of the frame.
 

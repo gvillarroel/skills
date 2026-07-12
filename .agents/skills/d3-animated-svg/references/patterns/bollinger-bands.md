@@ -1,6 +1,6 @@
 # Bollinger Bands
 
-- **Pattern ID:** `d3-pattern-bollinger-bands`
+- **Pattern ID:** `d3-bollinger-bands`
 - **Gallery source ID:** `bollinger-bands`
 - **Family:** Financial
 - **Use when:** Rolling volatility wraps price with dynamic bands.

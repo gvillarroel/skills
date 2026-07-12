@@ -5,7 +5,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const SUPPORTED_PATTERNS = new Set(["d3-pattern-force-network", "d3-pattern-beeswarm"]);
+const SUPPORTED_PATTERNS = new Set(["d3-force-network", "d3-beeswarm"]);
 
 function usage() {
   console.error("Usage: node skills/d3-animated-svg/scripts/build_cardinality_variants.ts <variants.json> [artifact.html]");
@@ -28,10 +28,10 @@ function kebab(value) {
 }
 
 function primaryMarkForPattern(patternId) {
-  if (patternId === "d3-pattern-force-network") {
+  if (patternId === "d3-force-network") {
     return "node";
   }
-  if (patternId === "d3-pattern-beeswarm") {
+  if (patternId === "d3-beeswarm") {
     return "dot";
   }
   return null;
@@ -206,7 +206,7 @@ function renderForceSvg(variant) {
   const radius = count > 30 ? 5.2 : count > 12 ? 6.6 : 9;
 
   return `
-<svg id="${escapeHtml(variant.id)}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="${escapeHtml(variant.id)}-title ${escapeHtml(variant.id)}-desc" data-pattern-id="d3-pattern-force-network" data-size="${escapeHtml(variant.size)}" data-target-count="${count}" font-family="Open Sans, Arial, sans-serif" xmlns="http://www.w3.org/2000/svg">
+<svg id="${escapeHtml(variant.id)}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="${escapeHtml(variant.id)}-title ${escapeHtml(variant.id)}-desc" data-pattern-id="d3-force-network" data-size="${escapeHtml(variant.size)}" data-target-count="${count}" font-family="Open Sans, Arial, sans-serif" xmlns="http://www.w3.org/2000/svg">
   <title id="${escapeHtml(variant.id)}-title">${escapeHtml(variant.size)} force network, ${count} nodes</title>
   <desc id="${escapeHtml(variant.id)}-desc">Deterministic force-network variant with ${count} node marks and ${links.length} link marks.</desc>
   <rect class="frame" x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="8" />
@@ -288,7 +288,7 @@ function renderBeeswarmSvg(variant) {
   const ticks = [30, 45, 60, 75, 90];
 
   return `
-<svg id="${escapeHtml(variant.id)}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="${escapeHtml(variant.id)}-title ${escapeHtml(variant.id)}-desc" data-pattern-id="d3-pattern-beeswarm" data-size="${escapeHtml(variant.size)}" data-target-count="${count}" font-family="Open Sans, Arial, sans-serif" xmlns="http://www.w3.org/2000/svg">
+<svg id="${escapeHtml(variant.id)}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="${escapeHtml(variant.id)}-title ${escapeHtml(variant.id)}-desc" data-pattern-id="d3-beeswarm" data-size="${escapeHtml(variant.size)}" data-target-count="${count}" font-family="Open Sans, Arial, sans-serif" xmlns="http://www.w3.org/2000/svg">
   <title id="${escapeHtml(variant.id)}-title">${escapeHtml(variant.size)} beeswarm, ${count} observations</title>
   <desc id="${escapeHtml(variant.id)}-desc">Deterministic beeswarm variant with ${count} observation dots across three lanes.</desc>
   <rect class="frame" x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="8" />
@@ -324,10 +324,10 @@ function renderBeeswarmSvg(variant) {
 }
 
 function renderVariant(variant) {
-  if (variant.patternId === "d3-pattern-force-network") {
+  if (variant.patternId === "d3-force-network") {
     return renderForceSvg(variant);
   }
-  if (variant.patternId === "d3-pattern-beeswarm") {
+  if (variant.patternId === "d3-beeswarm") {
     return renderBeeswarmSvg(variant);
   }
   throw new Error(`Unsupported patternId: ${variant.patternId}`);

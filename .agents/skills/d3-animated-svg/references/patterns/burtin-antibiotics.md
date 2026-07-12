@@ -1,6 +1,6 @@
 # Burtin Antibiotics
 
-- **Pattern ID:** `d3-pattern-burtin-antibiotics`
+- **Pattern ID:** `d3-burtin-antibiotics`
 - **Gallery source ID:** `burtin-antibiotics`
 - **Family:** Radial matrix
 - **Use when:** A radial sensitivity matrix compares organisms and treatments.

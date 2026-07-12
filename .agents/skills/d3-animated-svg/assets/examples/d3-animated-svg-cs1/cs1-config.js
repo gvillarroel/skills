@@ -27,7 +27,7 @@
     styleName: "metro-minimal-tonal-motion",
     paletteSource: "design/colorset1.yml",
     styleSource: "design/style.md",
-    basePatternPrefix: "d3-pattern-",
+    basePatternPrefix: "d3-",
     versionPatternSuffix: "cs1",
     allowedColors: [
       colors.red,

@@ -93,6 +93,22 @@ Published examples must be referenceable and discoverable from the repository's 
 - After changing published examples or the example catalog, run `uv run --script scripts/build-pages.py` and `uv run --script scripts/validate-skills.py`.
 - When adding or changing a published pattern, treat GitHub Pages publication as part of the normal workflow: commit the source example, references, validation notes, and catalog changes, push the branch that deploys Pages, and verify the Pages workflow completed so the stable pattern ID can be referenced by URL.
 
+## Pattern ID Rules
+
+Use one canonical grammar for reusable and published pattern IDs:
+
+- Form item IDs as `<namespace>-<semantic-slug>[-<variant>]`, using lowercase hyphen-case.
+- Omit generic tokens already implied by the field, especially `pattern`, `item`, `example`, and `feature`.
+- Keep the namespace short and recognizable, such as `d3`, `echarts`, `mermaid`, `plantuml`, `threejs`, `slidev-echarts`, or `slidev-animejs`.
+- Prefer a short semantic slug that describes the visual or mechanism. Avoid repeating the namespace inside the slug.
+- Reuse the same semantic slug across renderer namespaces when two skills implement the same mechanism, such as `d3-speculative-decoding` and `threejs-speculative-decoding`.
+- Put presentation variants at the end, such as `-cs1` or `-cs2`; do not insert a variant between the namespace and semantic slug.
+- Keep canonical IDs at 64 characters or fewer. Treat 48 characters as the review threshold and shorten nonessential category words when an ID exceeds it.
+- Keep upstream API keys, renderer modes, source fixture IDs, and file-format declarations unchanged when they mirror an external system. Derive a separate canonical pattern ID instead.
+- Use local `data-example-id` values for a card or scene and globally unique `data-pattern-id` values for the reusable pattern. Page-level metadata may continue to use the published example-set ID.
+- Preserve published links when renaming an ID. Record the old ID as a legacy alias and redirect old hashes or routes to the canonical ID when the page supports direct linking. Omit the legacy field when the old and canonical IDs are identical.
+- Validate uniqueness across the owning gallery, its style variants, and any composition variants before publication.
+
 ## Isolated Skill Validation
 
 Validate skills as standalone bundles before treating them as done. The target question is: can an agent with only the evaluated skill, a task prompt, and normal local tools produce a good result?
@@ -150,6 +166,7 @@ Scripts may be TypeScript or `uv` Python.
 Before finishing changes to skills or repository rules, run:
 
 ```powershell
+uv run --script scripts/validate-pattern-ids.py
 uv run --script scripts/validate-skills.py
 ```
 

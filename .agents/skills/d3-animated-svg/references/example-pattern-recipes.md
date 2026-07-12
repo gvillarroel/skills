@@ -6,7 +6,7 @@ Use this reference when a good gallery example should become reusable skill know
 
 Promote an example into skill guidance when it solves a recurring visual problem, not only when it looks good. Record the pattern as:
 
-- **Pattern ID:** the stable `d3-pattern-*` ID exposed by the card and SVG.
+- **Pattern ID:** the stable `d3-*` ID exposed by the card and SVG.
 - **Mechanic:** the cause/effect, comparison, sampling, capacity, extraction, or transformation the viewer should infer.
 - **Data contract:** the minimal data shape needed to reproduce the pattern.
 - **Geometry contract:** the layout, scales, rows, slots, or masks that preserve meaning.
@@ -18,7 +18,7 @@ Do not copy an entire renderer when only a helper or geometry idiom is reusable.
 
 ## Document Token Quality
 
-Pattern IDs: `d3-pattern-document-token-quality`, `d3-pattern-document-token-quality-red`.
+Pattern IDs: `d3-document-token-quality`, `d3-document-token-errors`.
 
 Use for document-quality explanations where the counting unit is text span length rather than row count or token count.
 
@@ -31,7 +31,7 @@ Use for document-quality explanations where the counting unit is text span lengt
 
 ## Document Extraction Buckets
 
-Pattern ID: `d3-pattern-document-token-extraction-buckets`.
+Pattern ID: `d3-document-token-bins`.
 
 Use when a single source page needs to visibly split into calculated buckets.
 
@@ -43,7 +43,7 @@ Use when a single source page needs to visibly split into calculated buckets.
 
 ## Image Partial Covers
 
-Pattern ID: `d3-pattern-agent-loop-partial-covers`.
+Pattern ID: `d3-agent-loop-overlay`.
 
 Use when the source material is an image or screenshot that should remain inspectable while D3 overlays reveal selected regions.
 
@@ -55,7 +55,7 @@ Use when the source material is an image or screenshot that should remain inspec
 
 ## Asymmetric Task Overlap
 
-Pattern IDs: `d3-pattern-asymmetric-task-overlap`, `d3-pattern-asymmetric-task-overlap-saturated`.
+Pattern IDs: `d3-task-overlap`, `d3-task-overlap-dense`.
 
 Use when tasks, backlog items, risks, or work units belong to one scope, two shared scopes, or three-or-more overlapping scopes.
 
@@ -71,21 +71,21 @@ Use when tasks, backlog items, risks, or work units belong to one scope, two sha
 
 ## Venn Overlap Family
 
-Pattern IDs: `d3-pattern-venn-three-circle`, `d3-pattern-venn-five-overlap`, `d3-pattern-venn-seven-overlap`, `d3-pattern-symmetric-three-circle-rosette`, `d3-pattern-symmetric-five-circle-rosette`, `d3-pattern-symmetric-seven-circle-flower`, `d3-pattern-asymmetric-three-circle-chain`, `d3-pattern-asymmetric-five-circle-cluster`, `d3-pattern-asymmetric-seven-circle-bridge`.
+Pattern IDs: `d3-venn-3`, `d3-venn-5`, `d3-venn-7`, `d3-overlap-3-rosette`, `d3-overlap-5-rosette`, `d3-overlap-7-flower`, `d3-overlap-3-chain`, `d3-overlap-5-cluster`, `d3-overlap-7-bridge`.
 
 Use when a concept explainer needs reusable overlapping circles rather than a mathematically complete Venn diagram with every possible region.
 
 - Use fixed circle geometry so the intended overlap story is deterministic and replayable.
 - Expose every circle as `.venn-circle` with `data-set-id` and `data-set-code`.
 - Expose the root SVG with `data-pattern-family="venn-overlap"`, `data-layout`, and `data-circle-count`.
-- Keep the card ID, card `data-pattern-id`, and SVG `data-pattern-id` equal to the stable `d3-pattern-*` ID.
+- Keep the card ID, card `data-pattern-id`, and SVG `data-pattern-id` equal to the stable `d3-*` ID.
 - Use three visual subfamilies: classic shared-center overlap, rotationally symmetric rosettes, and asymmetric bridge/cluster layouts.
 - For asymmetric 7-circle bridge layouts, preserve the 3+1+3 structure: three circles in one block, one bridge circle, and three circles in the second block.
 - Animate circle radius and fill-opacity with SVG animation nodes so replay works from the shared gallery button.
 
 ## Kanban Assignee Legend Modes
 
-Pattern IDs: `d3-pattern-kanban-assignee-board`, `d3-pattern-kanban-assignee-virtual-legend`, `d3-pattern-kanban-assignee-distributed-legend`.
+Pattern IDs: `d3-kanban-assignees`, `d3-kanban-legend-column`, `d3-kanban-legend-footer`.
 
 Use when a Kanban board needs one-title task cards, bottom-right two-letter assignee dots, and a people legend that can move to fit the available board geometry.
 
@@ -99,7 +99,7 @@ Use when a Kanban board needs one-title task cards, bottom-right two-letter assi
 
 ## Pen Label Optimizer
 
-Pattern ID: `d3-pattern-pen-label-optimizer`.
+Pattern ID: `d3-pen-label-optimizer`.
 
 Use when many labeled points crowd a pen/scatter-style view and direct labels saturate part of the drawing.
 
@@ -114,7 +114,7 @@ Use when many labeled points crowd a pen/scatter-style view and direct labels sa
 
 ## Inline Bar Tables
 
-Pattern ID: `d3-pattern-inline-bar-table`.
+Pattern ID: `d3-inline-bar-table`.
 
 Use for compact current-data comparisons such as model pricing, latency, quality, or resource cost.
 
@@ -126,7 +126,7 @@ Use for compact current-data comparisons such as model pricing, latency, quality
 
 ## Sketchy Overlay
 
-Representative IDs: `d3-pattern-sketchy-beeswarm`, `d3-pattern-sketchy-streamgraph`, `d3-pattern-sketchy-treemap`, `d3-pattern-sketchy-line-chart`, `d3-pattern-sketchy-histogram`, `d3-pattern-sketchy-gemma-comparison`.
+Representative IDs: `d3-sketchy-beeswarm`, `d3-sketchy-streamgraph`, `d3-sketchy-treemap`, `d3-sketchy-line-chart`, `d3-sketchy-histogram`, `d3-sketchy-gemma-comparison`.
 
 Use when a hand-rendered style is requested but the data geometry must stay faithful.
 
@@ -138,7 +138,7 @@ Use when a hand-rendered style is requested but the data geometry must stay fait
 
 ## Model Execution Box
 
-Pattern ID: `d3-pattern-deep-learning-model-execution`.
+Pattern ID: `d3-mlp-execution`.
 
 Use when a model or processor should read as active work without showing inputs, outputs, or extra explanatory labels.
 
@@ -150,7 +150,7 @@ Use when a model or processor should read as active work without showing inputs,
 
 ## Token Roulette Sampler
 
-Pattern ID: `d3-pattern-token-roulette-sampler`.
+Pattern ID: `d3-token-roulette`.
 
 Use when weighted chance and final selection are the concept.
 
@@ -161,7 +161,7 @@ Use when weighted chance and final selection are the concept.
 
 ## Circuit Signal Traces
 
-Pattern ID: `d3-pattern-circuit-signal-traces`.
+Pattern ID: `d3-circuit-signal-traces`.
 
 Use when a circuit-board metaphor needs to show animated propagation, request/acknowledge handshakes, fault isolation, or a fallback route without turning into a generic network graph.
 
@@ -176,7 +176,7 @@ Use when a circuit-board metaphor needs to show animated propagation, request/ac
 
 ## Critical Chain Buffer
 
-Pattern ID: `d3-pattern-critical-chain-buffer`.
+Pattern ID: `d3-critical-chain-buffer`.
 
 Use when a critical path needs schedule context, feeding dependencies, resource-readiness alerts, consumed buffer, remaining project buffer, a buffer fever view, and deadline risk rather than only a DAG route.
 
@@ -192,7 +192,7 @@ Use when a critical path needs schedule context, feeding dependencies, resource-
 
 ## Critical Incident Escalation
 
-Pattern ID: `d3-pattern-critical-incident-escalation`.
+Pattern ID: `d3-incident-escalation`.
 
 Use when the critical story is incident response rather than project scheduling: alert, impact confirmation, incident command, escalation, communication cadence, mitigation, validation, recovery, post-incident learning, and SLA pressure.
 
@@ -209,7 +209,7 @@ Use when the critical story is incident response rather than project scheduling:
 
 ## Critical Fault Tree
 
-Pattern ID: `d3-pattern-critical-fault-tree`.
+Pattern ID: `d3-fault-tree`.
 
 Use when a D3/SVG artifact needs a fault tree analysis view for safety, reliability, process, aerospace, nuclear, or operations risk: top event, AND/OR failure gates, basic events, undeveloped events, minimal cut sets, and risk contribution.
 
@@ -217,12 +217,12 @@ Use when a D3/SVG artifact needs a fault tree analysis view for safety, reliabil
 - Use recognizable fault-tree marks: rectangular event boxes, OR/AND gate symbols, circular basic events, diamond undeveloped events, and minimal cut badges.
 - Use red only for the critical top event and dominant single-event cut, orange for redundant equipment failures, purple for protection logic or bypass failures, and neutral gray for screened context.
 - Animate minimal cut evidence upward along hidden motion paths that avoid readable labels.
-- Expose `data-pattern-family="critical-fault-tree"`, `data-event-count`, `data-basic-event-count`, `data-gate-count`, `data-minimal-cut-count`, `data-risk-panel-count`, `.fault-event-box`, `.basic-event`, `.undeveloped-event`, `.fault-gate`, `.fault-link`, `.minimal-cut-link`, `.fault-cut-pulse`, and `.fault-risk-card` for audits.
+- Expose `data-pattern-family="fault-tree"`, `data-event-count`, `data-basic-event-count`, `data-gate-count`, `data-minimal-cut-count`, `data-risk-panel-count`, `.fault-event-box`, `.basic-event`, `.undeveloped-event`, `.fault-gate`, `.fault-link`, `.minimal-cut-link`, `.fault-cut-pulse`, and `.fault-risk-card` for audits.
 - Prefer `scripts/build_critical_fault_tree.py` for a self-contained standalone HTML starting point in isolated workspaces.
 
 ## Critical Bowtie Barrier
 
-Pattern ID: `d3-pattern-critical-bowtie-barrier`.
+Pattern ID: `d3-bowtie-barriers`.
 
 Use when the critical story is barrier management around a top event rather than logic-gate failure decomposition: threats, preventive barriers, top event, mitigative barriers, consequences, degraded barriers, and degradation controls.
 
@@ -231,12 +231,12 @@ Use when the critical story is barrier management around a top event rather than
 - Model barriers with `id`, `label`, `side`, `status`, and `criticalGap`; show weak barriers directly on the barrier rather than only in a legend.
 - Add `.critical-barrier-gap` badges with leaders to degraded barriers, then add `.degradation-control` cards for audits, proof tests, override reviews, or maintenance actions.
 - Use red only for the top event and weak/missing barrier states, orange for incoming threats, blue for preventive controls, purple for outgoing consequence paths, and green for healthy barriers.
-- Expose `data-pattern-family="critical-bowtie-barrier"`, `data-threat-count`, `data-preventive-barrier-count`, `data-mitigative-barrier-count`, `data-consequence-count`, `data-barrier-count`, `data-critical-gap-count`, `data-degradation-control-count`, `.bowtie-threat`, `.bowtie-consequence`, `.bowtie-barrier`, `.degraded-barrier`, `.bowtie-link`, `.bowtie-threat-pulse`, `.bowtie-consequence-pulse`, `.critical-barrier-gap`, and `.degradation-control` for audits.
+- Expose `data-pattern-family="bowtie-barriers"`, `data-threat-count`, `data-preventive-barrier-count`, `data-mitigative-barrier-count`, `data-consequence-count`, `data-barrier-count`, `data-critical-gap-count`, `data-degradation-control-count`, `.bowtie-threat`, `.bowtie-consequence`, `.bowtie-barrier`, `.degraded-barrier`, `.bowtie-link`, `.bowtie-threat-pulse`, `.bowtie-consequence-pulse`, `.critical-barrier-gap`, and `.degradation-control` for audits.
 - Prefer `scripts/build_critical_bowtie_barrier.py` for self-contained standalone HTML in isolated workspaces.
 
 ## Critical SLO Burn Rate
 
-Pattern ID: `d3-pattern-critical-slo-burn-rate`.
+Pattern ID: `d3-slo-burn-rate`.
 
 Use when the critical story is reliability alerting before or during service degradation: SLO target, remaining error budget, multi-window burn-rate thresholds, page/ticket levels, and time-to-exhaust action.
 
@@ -252,7 +252,7 @@ Use when the critical story is reliability alerting before or during service deg
 
 ## Critical Queue Backpressure
 
-Pattern ID: `d3-pattern-critical-queue-backpressure`.
+Pattern ID: `d3-queue-backpressure`.
 
 Use when the critical story is overload control rather than incident timeline, dependency mapping, or SLO burn: bounded queue depth, message age, producer throttling, retry pressure, saturated consumers, load shedding, dead-letter/sideline routing, and recovery after backpressure.
 
@@ -270,7 +270,7 @@ Use when the critical story is overload control rather than incident timeline, d
 
 ## Critical Cache Stampede
 
-Pattern ID: `d3-pattern-critical-cache-stampede`.
+Pattern ID: `d3-cache-stampede`.
 
 Use when the critical story is hot-key cache expiry rather than general queue overload or service failover: cache stampede, thundering herd, dogpile effect, stale-while-revalidate, soft TTL, hard TTL, TTL jitter, request coalescing, single-flight refresh, origin shielding, cache warming, hit-ratio collapse, and origin load spike.
 
@@ -289,7 +289,7 @@ Use when the critical story is hot-key cache expiry rather than general queue ov
 
 ## Critical Circuit Breaker
 
-Pattern ID: `d3-pattern-critical-circuit-breaker`.
+Pattern ID: `d3-circuit-breaker`.
 
 Use when the critical story is cascading-failure prevention around a degraded dependency rather than a generic service map: circuit breaker, closed/open/half-open states, failure threshold, reset timeout, fast fail, fallback response, retry isolation, and recovery probe.
 
@@ -307,7 +307,7 @@ Use when the critical story is cascading-failure prevention around a degraded de
 
 ## Critical Bulkhead Isolation
 
-Pattern ID: `d3-pattern-critical-bulkhead-isolation`.
+Pattern ID: `d3-bulkhead-isolation`.
 
 Use when the critical story is resource isolation rather than a generic dependency outage: bulkheads, isolated cells, noisy-neighbor containment, tenant partitioning, dedicated thread or connection pools, isolated queues, concurrency caps, and overflow shedding.
 
@@ -326,7 +326,7 @@ Use when the critical story is resource isolation rather than a generic dependen
 
 ## Critical Rate Limit Token Bucket
 
-Pattern ID: `d3-pattern-critical-rate-limit-token-bucket`.
+Pattern ID: `d3-token-bucket`.
 
 Use when the critical story is admission control before overload rather than queue recovery: token bucket, rate limit, burst cap, API throttling, quota keys, 429 Too Many Requests, Retry-After, allowed vs rejected traffic, and backend protection.
 
@@ -344,7 +344,7 @@ Use when the critical story is admission control before overload rather than que
 
 ## Critical Idempotency Replay Guard
 
-Pattern ID: `d3-pattern-critical-idempotency-replay-guard`.
+Pattern ID: `d3-idempotency-guard`.
 
 Use when the critical story is safe retry behavior rather than only throttling or queueing: idempotency keys, duplicate suppression, replaying the first stored response, comparing request fingerprints, rejecting changed payloads that reuse a key, retaining keys for a TTL window, and preventing duplicate side effects in payment/order flows.
 
@@ -363,7 +363,7 @@ Use when the critical story is safe retry behavior rather than only throttling o
 
 ## Critical Replication Failover
 
-Pattern ID: `d3-pattern-critical-replication-failover`.
+Pattern ID: `d3-replication-failover`.
 
 Use when the critical story is database or stateful-service failover rather than a generic outage timeline: primary degradation, replication lag, old-writer fencing, quorum, split-brain prevention, RPO exposure, RTO target, promotion candidate, and traffic reroute.
 
@@ -383,7 +383,7 @@ Use when the critical story is database or stateful-service failover rather than
 
 ## Critical Dependency Blast Radius
 
-Pattern ID: `d3-pattern-critical-dependency-blast-radius`.
+Pattern ID: `d3-dependency-blast-radius`.
 
 Use when the critical story is architecture impact rather than project schedule or incident timeline: central service, hard dependencies, affected surfaces, failover routes, and blast-radius tiers.
 
@@ -398,20 +398,20 @@ Use when the critical story is architecture impact rather than project schedule 
 
 ## Organic Growth Patterns
 
-Pattern IDs: `d3-pattern-organic-growth-patterns`, `d3-pattern-phyllotaxis-seed-head`, `d3-pattern-lsystem-canopy`, `d3-pattern-reaction-diffusion-field`, `d3-pattern-diffusion-limited-aggregation`.
+Pattern IDs: `d3-organic-growth`, `d3-phyllotaxis-seed-head`, `d3-lsystem-canopy`, `d3-reaction-diffusion-field`, `d3-diffusion-limited-aggregation`.
 
 Use when a D3/SVG artifact needs organic, botanical, cellular, coral-like, lichen-like, mineral, or dendritic form without becoming decorative random noise.
 
 - Pick the mathematical rule before drawing: phyllotaxis for packed radial growth, L-systems for recursive branching, reaction-diffusion for spots/stripes/activator fields, or DLA for accretive random-walk clusters.
 - Keep every variant deterministic through formulas, grammar iterations, fixed simulation parameters, or a seeded random generator.
-- Expose the root as `data-pattern-id="d3-pattern-organic-growth-patterns"` and each variant as an `.organic-variant` with its exact `d3-pattern-*` ID.
+- Expose the root as `data-pattern-id="d3-organic-growth"` and each variant as an `.organic-variant` with its exact `d3-*` ID.
 - Use `.organic-seed`, `.organic-branch`, `.organic-rd-cell`, `.organic-aggregate-particle`, and `.organic-dla-link` hooks so browser audits can prove the intended model survived adaptation.
 - Animate growth in model order: seed index, grammar path order, field sweep, or DLA attachment order.
 - Prefer `scripts/build_organic_growth_patterns.py` for a self-contained standalone HTML starting point in isolated workspaces.
 
 ## Natural Math Archetypes
 
-Pattern ID: `d3-pattern-natural-math-archetypes`.
+Pattern ID: `d3-nature-geometry`.
 
 Use when a concept explainer needs mathematically defensible archetypes from nature organized around the theory-of-three contract: invariant, generative rule, and natural expression.
 
@@ -425,7 +425,7 @@ Use when a concept explainer needs mathematically defensible archetypes from nat
 
 ## Process P&ID Control Loop
 
-Pattern ID: `d3-pattern-process-pid-control-loop`.
+Pattern ID: `d3-process-control-loop`.
 
 Use when a D3/SVG artifact needs a process-engineering P&ID style diagram: process equipment, pipe runs, valves, instrument bubbles, dashed control signals, safety interlocks, and utility lines.
 
@@ -438,7 +438,7 @@ Use when a D3/SVG artifact needs a process-engineering P&ID style diagram: proce
 
 ## Parabolic Arcs For SDLC Tasks
 
-Pattern ID: `d3-pattern-parabolic-arcs`.
+Pattern ID: `d3-parabolic-arcs`.
 
 Use when ordered SDLC phases or milestones need cross-phase dependency links, handoffs, or task flows. The baseline represents lifecycle order; arc height represents dependency strength, risk, effort, or coordination cost.
 
@@ -499,7 +499,7 @@ function arcPath(link) {
 
 const svg = d3.select("svg")
   .attr("viewBox", `0 0 ${width} ${height}`)
-  .attr("data-pattern-id", "d3-pattern-parabolic-arcs")
+  .attr("data-pattern-id", "d3-parabolic-arcs")
   .attr("role", "img");
 
 svg.append("line")
@@ -538,7 +538,7 @@ paths.each(function (_, index) {
 
 Verification hooks:
 
-- The root SVG or card must expose `data-pattern-id="d3-pattern-parabolic-arcs"`.
+- The root SVG or card must expose `data-pattern-id="d3-parabolic-arcs"`.
 - Every path should have a non-empty `d` attribute containing one `Q` command.
 - Endpoint count should match the number of phases.
 - Browser validation should confirm nonblank rendered pixels and at least one animated path.
@@ -552,6 +552,6 @@ Before committing an adapted pattern:
 - Read the gallery fixture only when changing or validating the gallery fixture itself.
 - Copy only the required helpers, data shape, and geometry.
 - Preserve semantic roles for shapes, colors, and motion.
-- Add or update the stable `d3-pattern-*` ID if it becomes a gallery card.
+- Add or update the stable `d3-*` ID if it becomes a gallery card.
 - Run `npm run verify --prefix .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg` for gallery changes.
 - For served or Pages behavior, verify through HTTP so CDN/local asset assumptions are tested.

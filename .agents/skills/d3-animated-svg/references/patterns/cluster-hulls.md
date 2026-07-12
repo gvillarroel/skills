@@ -1,6 +1,6 @@
 # Cluster Hulls
 
-- **Pattern ID:** `d3-pattern-cluster-hulls`
+- **Pattern ID:** `d3-cluster-hulls`
 - **Gallery source ID:** `cluster-hulls`
 - **Family:** Proximity
 - **Use when:** Convex envelopes around related observations.

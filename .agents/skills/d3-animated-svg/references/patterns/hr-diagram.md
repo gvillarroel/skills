@@ -1,6 +1,6 @@
 # H-R Diagram
 
-- **Pattern ID:** `d3-pattern-hr-diagram`
+- **Pattern ID:** `d3-hr-diagram`
 - **Gallery source ID:** `hr-diagram`
 - **Family:** Science
 - **Use when:** Stars map temperature and luminosity into a scientific scatter.

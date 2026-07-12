@@ -537,16 +537,16 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-replication-failover" data-pattern-id="d3-pattern-critical-replication-failover"
+  <svg id="replication-failover" data-pattern-id="d3-replication-failover"
     data-pattern-family="critical-replication" data-node-count="{len(NODES)}"
     data-replication-link-count="{len(LINKS)}" data-lag-sample-count="{len(LAG_SAMPLES)}"
     data-quorum-vote-count="{len(QUORUM_VOTES)}" data-failover-step-count="{len(FAILOVER_STEPS)}"
     data-status-card-count="{len(STATUS_CARDS)}" data-pulse-count="4" data-rpo-events-at-risk="8"
     data-rto-target-seconds="60" data-write-fence-count="1" data-traffic-reroute-count="1"
     viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-replication-failover-title critical-replication-failover-desc">
-    <title id="critical-replication-failover-title">Critical replication failover</title>
-    <desc id="critical-replication-failover-desc">A deterministic database failover pattern shows a degraded primary, replica lag, quorum votes, RPO exposure, selected promotion candidate, RTO target, and animated replication pulses.</desc>
+    aria-labelledby="replication-failover-title replication-failover-desc">
+    <title id="replication-failover-title">Critical replication failover</title>
+    <desc id="replication-failover-desc">A deterministic database failover pattern shows a degraded primary, replica lag, quorum votes, RPO exposure, selected promotion candidate, RTO target, and animated replication pulses.</desc>
     <rect x="28" y="24" width="1024" height="580" rx="10" fill="{PALETTE["surface"]}" stroke="{PALETTE["gray200"]}" stroke-width="1.2"/>
     <text class="root-title" x="58" y="58">Critical replication failover</text>
     <text class="root-subtitle" x="58" y="80">Promote the lowest-lag replica only after freezing writes and reaching quorum.</text>

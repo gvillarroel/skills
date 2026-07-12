@@ -1,6 +1,6 @@
 # Ridgeline
 
-- **Pattern ID:** `d3-pattern-ridgeline`
+- **Pattern ID:** `d3-ridgeline`
 - **Gallery source ID:** `ridgeline`
 - **Family:** Distribution
 - **Use when:** Stacked density curves for group comparison.

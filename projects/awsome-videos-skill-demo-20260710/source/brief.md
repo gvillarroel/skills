@@ -12,7 +12,7 @@ The video proves that a compact skill package can preserve recurring instruction
 ## Hook
 
 Cold-open line: “Si Codex necesita este muro de prompt, no es especialista: solo está cargando equipaje.”
-First visual: A dense prompt wall presses against a context bar before folding into a SKILL.md package.
+First visual: Three recognizable project windows receive the same instruction sheet; the third copy fills the active-context tray and triggers a warning.
 Audio cue: Low impact at frame one; restrained technical bed starts immediately and ducks under narration.
 
 ## Voiceover Draft
@@ -30,28 +30,31 @@ Audio cue: Low impact at frame one; restrained technical bed starts immediately 
 
 | Time | Beat ID | Scene ID | Script purpose | Visual | Animation | Transition | Audio/music/SFX |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0:00-0:05 | b01 | s01 | Expose the repeated-prompt problem | Dense prompt wall compresses the frame while a context bar reaches its limit. | Prompt strips advance and the red pressure cap snaps on. | Hard cut and interrupt gate snap into the compact package. | Immediate low hit; bed starts; narration front and dry. |
-| 0:05-0:13 | b02 | s02 | Define a skill as an operational package | The wall folds into a layered SKILL.md package with trigger, workflow, resources, and output marks. | Tile-morph collapse; red edge preserves object identity. | Tile morph keeps the red edge on the same axis. | Short whoosh; bed ducks 8 dB below voiceover. |
-| 0:13-0:22 | b03 | s03 | Explain progressive disclosure | The core opens one reference; dormant resources stay outside the active context. | One route draws; one resource brightens; inactive modules remain tonal. | Masked reframe enters the selected reference lane. | Soft tick on the active reference; restrained pulse in the bed. |
-| 0:22-0:31 | b04 | s04 | Assign roles to references, scripts, and assets | Three hard-edge lanes emit a rule, a deterministic run, and a visual resource. | Parallel lane build followed by one converging baseline. | Surface wipe follows the baseline into the router. | Three precise ticks; subtle stereo spread, then center. |
-| 0:31-0:41 | b05 | s05 | Show specialist routing | A task packet splits toward conventional diagrams, bespoke geometry, and raster imagery. | Routes draw in sequence; each outcome returns a proof mark. | Persistent red packet crosses into the validation corridor. | Ascending three-note cue; ducked bed; small proof clicks. |
-| 0:41-0:51 | b06 | s06 | Make validation block defects | The artifact crosses structure, binding, pixel, and package gates; a failed branch loops back. | Gate sequence advances; failed path snaps downward; corrected path receives approval. | Interrupt gate snap, then match cut to the budget bars. | Hard stop on rejection; brighter approval hit; bed resumes. |
-| 0:51-1:01 | b07 | s07 | Show the qualitative context benefit and limitation | Always-on wall versus compact core plus one selected detail; an oversized skill grows as the warning. | Bars compare on one scale; the warning section expands only at the final clause. | Match cut on the shared bar cap into the reusable hub. | Bed thins for the warning; low tick on the bloated branch. |
-| 1:01-1:10 | b08 | s08 | Close with the reusable-workflow callback | One skill package activates across several project surfaces and returns to a compact resting state. | Hub routes pulse one at a time; camera pulls out to reveal the complete system. | Zoom out to system; final match cut returns to the opening red edge. | Warm resolve; final tail holds 700 ms after the last word. |
+| 0:00-0:05 | b01 | s01 | Expose the repeated-prompt problem | Three project windows labeled BUG, DEPLOY, and DOCS receive the same instruction sheet; a labeled active-context tray reaches its warning state. | Copies appear one by one; the instruction sheet travels into the tray; the warning locks on only after the third copy. | The repeated sheets bind into the recognizable red SKILL packet. | Immediate low hit; bed starts; narration front and dry. |
+| 0:05-0:13 | b02 | s02 | Define a skill as an operational package | A large file-folder workbench shows SKILL.md at its center with references/, scripts/, and assets/ attached as distinct resources. | The incoming prompt compresses; SKILL.md becomes dominant; the three resource folders assemble in sequence. | The red SKILL packet opens its resource tab and reveals the selected-reference workbench. | Short whoosh; bed ducks 8 dB below voiceover. |
+| 0:13-0:22 | b03 | s03 | Explain progressive disclosure | A VALIDAR task activates the SKILL.md core, selects video-validation.md from a labeled shelf, and loads only it into CONTEXTO ACTIVO. | The task reaches the core; the matching reference is selected; the document travels into the active tray while other references remain on the shelf. | The selected reference becomes the first station of the three-role workbench. | Soft tick on the active reference; restrained pulse in the bed. |
+| 0:22-0:31 | b04 | s04 | Assign roles to references, scripts, and assets | Three recognizable stations show a manual producing CRITERIO, a terminal producing EJECUCIÓN, and a media folder providing MATERIAL; their outputs converge into VIDEO LISTO. | Stations activate left to right; each produces a visible check; the three contributions converge into the output frame. | The red SKILL packet stays fixed while the stations reorganize into the specialist switchboard. | Three precise ticks; subtle stereo spread, then center. |
+| 0:31-0:41 | b05 | s05 | Show specialist routing | One NECESIDAD VISUAL card reaches a producer switch; Mermaid returns a flowchart, D3 a chart, and ImageGen an illustration, each with visible proof. | The switch highlights one branch at a time; the task marker travels to the matching producer; each output receives a check. | The chosen output continues on the same baseline into the validation conveyor with the red SKILL packet attached. | Ascending three-note cue; ducked bed; small proof clicks. |
+| 0:41-0:51 | b06 | s06 | Make validation block defects | A recognizable video artifact crosses RUTA, ESTRUCTURA, CONTENIDO, and VISUAL checks; a clipped-text failure returns to correction before LISTO appears. | The artifact advances, drops into the correction loop on failure, repairs, then crosses the four checks successfully. | The approval state on the red SKILL packet match-cuts into the compact side of the context comparison. | Hard stop on rejection; brighter approval hit; bed resumes. |
+| 0:51-1:01 | b07 | s07 | Show the qualitative context benefit and limitation | A full-frame split compares PROMPT PEGADO SIEMPRE with SKILL BAJO DEMANDA; only SKILL.md plus one selected detail occupy the active tray, while a warning names the inflated-skill failure. | The repeated prompt fills the left tray; the compact core and one detail populate the right; the inflated-skill warning enters only on the caveat. | The right-hand red SKILL packet becomes the center of the reusable-project workbench. | Bed thins for the warning; low tick on the inflated branch. |
+| 1:01-1:10 | b08 | s08 | Close with the reusable-workflow callback | One central SKILL.md folder activates across REPO/PR, TERMINAL, DOCS, and NAVEGADOR surfaces, leaves an approved mark on each, and returns to rest. | Project surfaces activate in sequence; each receives a check; the packet returns to its ready state for the next task. | Final held callback on the recognizable red SKILL packet; no abstract handoff. | Warm resolve; final tail holds 700 ms after the last word. |
 
 ## Visuals, animation, and transitions
 
-Use a continuous hard-edge skill-package megacanvas with five functional zones and eight camera-framed scenes. Keep the red edge as the tracked semantic element. Vary the scene armature across diagonal pressure, centered package, asymmetric disclosure, modular resource board, router spine, validation corridor, comparison bars, and final radial hub. Use no title bands, decorative progress rails, or prose cards.
+Use eight fixed-frame semantic workbenches, each organized around one recognizable input, one causal action, and one visible result. The primary file-backed SVG occupies 70–85 percent of frame width and height. The persistent object is the red SKILL packet: a red document with a folded white corner and the visible label SKILL. Preserve its identity through label, silhouette, and color in every scene.
 
-Animation vocabulary: punch-in zoom, highlight sweep, stack build, split-screen comparison, orthogonal route trace, masked pan, tile morph, and final zoom-out callback.
+Vary the composition across a tri-column repeated-work strip, centered package hero, asymmetric selection corridor, three-column workbench, branching switchboard, horizontal inspection conveyor, split comparison, and four-surface reuse hub. Motion vocabulary: copy, bind, open, select, load, execute, route, reject, correct, approve, compare, and reactivate. Every motion verb must alter meaning; anonymous decorative geometry is excluded.
+
+Transition vocabulary: paper-to-packet morph, square spatial portal, selected-document match cut, static-anchor sweep, persistent-object flight, a hard cut at the validation interruption, approval color handoff, and final camera pullback. Each transition must preserve the red SKILL packet and show a concrete change of role; use no generic fade or decorative wipe.
 
 ## Assets and sources
 
 - Source links: https://learn.chatgpt.com/use-cases/reusable-codex-skills, https://github.com/gvillarroel/skills/blob/main/AGENTS.md
 - Official OpenAI use case: https://learn.chatgpt.com/use-cases/reusable-codex-skills
 - Repository authoring and progressive-disclosure rules: https://github.com/gvillarroel/skills/blob/main/AGENTS.md
-- Eight original D3/SVG mechanism assets under `artifacts/images/`, each bound to one beat and one scene.
-- Renderer-native megacanvas geometry is original and project-generated; no third-party footage or stock media is used.
+- Eight original semantic SVG workbenches under `artifacts/images/`, each bound to one beat and one scene.
+- The routing workbench contains recognizable conventional-diagram, data-geometry, and illustration outputs that make the Mermaid, D3, and ImageGen roles visible.
+- Renderer overlays animate only source-bound objects and state changes; no third-party footage or stock media is used.
 
 ## Audio
 
@@ -62,6 +65,9 @@ Spanish neural narration is the primary audio. A procedural, rights-safe technic
 - Hook and proof appear in the first five seconds.
 - Exactly eight concrete beats cover the full 70-second runtime.
 - Every scene exposes stable scene, composition, asset, and beat IDs.
-- A new visual mechanism, camera target, or semantic state appears every 5–10 seconds.
-- Full-resolution scene holds and transition midpoints must pass legibility, safe-zone, source-binding, and continuity checks.
+- The red SKILL packet remains recognizable by silhouette, label, and color across all seven seams.
+- A new semantic object, causal action, or visible result appears every 5–10 seconds.
+- With narration muted, every scene must communicate input, action, and result from its hold frame.
+- The eight-frame contact sheet must preserve the complete story without relying on detached proof windows or anonymous moving boxes.
+- Full-resolution scene holds and transition midpoints must pass legibility, safe-zone, source-binding, semantic-causality, and continuity checks.
 - Brief, source links, renderer binding, MP4, audio, motion, visual-contract, style-fidelity, readiness, and final package validators must pass before delivery.

@@ -1,6 +1,6 @@
 # Voronoi Stippling
 
-- **Pattern ID:** `d3-pattern-voronoi-stippling`
+- **Pattern ID:** `d3-voronoi-stippling`
 - **Gallery source ID:** `voronoi-stippling`
 - **Family:** Sampling
 - **Use when:** Points and cells approximate a continuous intensity field.

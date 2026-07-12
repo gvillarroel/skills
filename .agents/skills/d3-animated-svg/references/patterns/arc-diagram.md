@@ -1,6 +1,6 @@
 # Arc Diagram
 
-- **Pattern ID:** `d3-pattern-arc-diagram`
+- **Pattern ID:** `d3-arc-diagram`
 - **Gallery source ID:** `arc-diagram`
 - **Family:** Network
 - **Use when:** Ordered dependencies shown as curved arcs.

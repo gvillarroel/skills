@@ -1,6 +1,6 @@
 # Connected Scatter
 
-- **Pattern ID:** `d3-pattern-connected-scatter`
+- **Pattern ID:** `d3-connected-scatter`
 - **Gallery source ID:** `connected-scatter`
 - **Family:** Correlation
 - **Use when:** Trajectory across two changing measures.

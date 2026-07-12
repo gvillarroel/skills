@@ -1,6 +1,6 @@
 # Q-Q Plot
 
-- **Pattern ID:** `d3-pattern-qq-plot`
+- **Pattern ID:** `d3-qq-plot`
 - **Gallery source ID:** `qq-plot`
 - **Family:** Diagnostics
 - **Use when:** Sample quantiles are compared against a reference line.

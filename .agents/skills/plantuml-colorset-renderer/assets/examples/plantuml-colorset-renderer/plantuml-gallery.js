@@ -3,10 +3,24 @@ let examples = [];
 const gallery = document.querySelector("#gallery");
 const exampleCount = document.querySelector("#example-count");
 const styleVersion = document.body.dataset.styleVersion || "colorset2";
-const patternSuffix = styleVersion === "cs1" ? "-cs1" : "";
+const patternSuffix = styleVersion === "cs1" ? "-cs1" : "-cs2";
+const patternSlugs = new Map([
+  ["usecase", "use-case"],
+  ["math", "asciimath"],
+  ["latex", "jlatexmath"],
+  ["ie", "ie-er"],
+  ["chen", "chen-er"],
+  ["files", "file-tree"],
+  ["packetdiag", "packet"]
+]);
 
 function patternIdFor(example) {
-  return `plantuml-${example.id}${patternSuffix}`;
+  return `plantuml-${patternSlugs.get(example.id) || example.id}${patternSuffix}`;
+}
+
+function legacyPatternIdFor(example) {
+  const legacyPatternId = `plantuml-${example.id}${styleVersion === "cs1" ? "-cs1" : ""}`;
+  return legacyPatternId === patternIdFor(example) ? "" : legacyPatternId;
 }
 
 function escapeHtml(value) {
@@ -20,9 +34,11 @@ function escapeHtml(value) {
 function renderCards() {
   gallery.innerHTML = examples.map((example) => {
     const patternId = patternIdFor(example);
+    const legacyPatternId = legacyPatternIdFor(example);
+    const legacyPatternAttribute = legacyPatternId ? ` data-legacy-pattern-id="${legacyPatternId}"` : "";
     const wideClass = example.size === "wide" ? " example-card--wide" : "";
     return `
-      <article class="example-card${wideClass}" data-example-id="${patternId}" data-pattern-id="${patternId}" data-source="${escapeHtml(example.source)}" data-asset-format="${escapeHtml(example.assetFormat)}" data-replay-state="idle">
+      <article class="example-card${wideClass}" id="${patternId}" data-example-id="${example.id}" data-pattern-id="${patternId}"${legacyPatternAttribute} data-source="${escapeHtml(example.source)}" data-asset-format="${escapeHtml(example.assetFormat)}" data-replay-state="idle">
         <div class="example-header">
           <div class="example-header-top">
             <p class="example-kicker">${escapeHtml(example.kicker)}</p>
@@ -46,6 +62,12 @@ function prepareSvg(svg, example) {
   svg.setAttribute("role", "img");
   svg.setAttribute("aria-labelledby", `${example.id}-svg-title`);
   svg.setAttribute("data-pattern-id", patternIdFor(example));
+  const legacyPatternId = legacyPatternIdFor(example);
+  if (legacyPatternId) {
+    svg.setAttribute("data-legacy-pattern-id", legacyPatternId);
+  } else {
+    svg.removeAttribute("data-legacy-pattern-id");
+  }
   svg.setAttribute("data-source", example.source);
 
   const existingTitle = svg.querySelector("title");
@@ -170,8 +192,19 @@ async function initialize() {
   }
   examples = metadata.items;
   renderCards();
+  redirectLegacyPatternHash();
+  window.addEventListener("hashchange", redirectLegacyPatternHash);
   bindReplayButtons();
   await loadAllExamples();
+}
+
+function redirectLegacyPatternHash() {
+  const hash = decodeURIComponent(window.location.hash.slice(1));
+  if (!hash) return;
+  const card = [...document.querySelectorAll(".example-card")].find((item) => item.dataset.legacyPatternId === hash);
+  if (!card) return;
+  history.replaceState(null, "", location.pathname + location.search + "#" + card.dataset.patternId);
+  card.scrollIntoView({ block: "start" });
 }
 
 initialize().catch((error) => {

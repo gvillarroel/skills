@@ -1,6 +1,6 @@
 # Dot Plot
 
-- **Pattern ID:** `d3-pattern-dot-plot`
+- **Pattern ID:** `d3-dot-plot`
 - **Gallery source ID:** `dot-plot`
 - **Family:** Ranking
 - **Use when:** Compact ranked points compare paired measures.

@@ -445,16 +445,16 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-queue-backpressure" data-pattern-id="d3-pattern-critical-queue-backpressure"
+  <svg id="queue-backpressure" data-pattern-id="d3-queue-backpressure"
     data-pattern-family="critical-queue" data-producer-count="{len(PRODUCERS)}"
     data-consumer-count="{len(CONSUMERS)}" data-queue-segment-count="{len(QUEUE_SEGMENTS)}"
     data-control-count="{len(CONTROLS)}" data-shed-count="{len(SHED_LANES)}"
     data-backlog-point-count="{len(BACKLOG_POINTS)}" data-status-card-count="{len(STATUS_CARDS)}"
     data-pulse-count="5" data-current-depth="91" data-backpressure-threshold="70"
     data-oldest-message-minutes="11" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-queue-backpressure-title critical-queue-backpressure-desc">
-    <title id="critical-queue-backpressure-title">Critical queue backpressure</title>
-    <desc id="critical-queue-backpressure-desc">A deterministic queue overload map shows producers, a bounded queue, saturated consumers, backpressure gates, load shedding, queue depth, and animated message pulses.</desc>
+    aria-labelledby="queue-backpressure-title queue-backpressure-desc">
+    <title id="queue-backpressure-title">Critical queue backpressure</title>
+    <desc id="queue-backpressure-desc">A deterministic queue overload map shows producers, a bounded queue, saturated consumers, backpressure gates, load shedding, queue depth, and animated message pulses.</desc>
     <rect x="28" y="24" width="1024" height="580" rx="10" fill="{PALETTE["surface"]}" stroke="{PALETTE["gray200"]}" stroke-width="1.2"/>
     <text class="root-title" x="58" y="58">Critical queue backpressure</text>
     <text class="root-subtitle" x="58" y="78">Bound the queue, slow producers, shed stale work, and keep fresh user traffic draining.</text>

@@ -364,13 +364,13 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="natural-math-archetypes" data-pattern-id="d3-pattern-natural-math-archetypes"
+  <svg id="nature-geometry" data-pattern-id="d3-nature-geometry"
     data-pattern-family="natural-math" data-archetype-count="6" data-theory-of-three="invariant-rule-nature"
     data-phi="{fmt(PHI, 12)}" data-pi="{fmt(math.pi, 12)}" data-golden-angle-degrees="{fmt(math.degrees(GOLDEN_ANGLE), 9)}"
     data-hex-circle-packing-density="{fmt(HEX_CIRCLE_PACKING_DENSITY, 12)}"
-    viewBox="0 0 {WIDTH} {HEIGHT}" role="img" aria-labelledby="natural-math-archetypes-title natural-math-archetypes-desc">
-    <title id="natural-math-archetypes-title">Natural math archetypes</title>
-    <desc id="natural-math-archetypes-desc">Six mathematically specified natural archetypes shown as invariant, generative rule, and natural expression: golden-angle phyllotaxis, pi circular waves, logarithmic shell spirals, fractal branching, hexagonal packing, and Voronoi leaf cells.</desc>
+    viewBox="0 0 {WIDTH} {HEIGHT}" role="img" aria-labelledby="nature-geometry-title nature-geometry-desc">
+    <title id="nature-geometry-title">Natural math archetypes</title>
+    <desc id="nature-geometry-desc">Six mathematically specified natural archetypes shown as invariant, generative rule, and natural expression: golden-angle phyllotaxis, pi circular waves, logarithmic shell spirals, fractal branching, hexagonal packing, and Voronoi leaf cells.</desc>
     <rect x="24" y="22" width="{WIDTH - 48}" height="{HEIGHT - 44}" rx="12" fill="{PALETTE['gray50']}" stroke="{PALETTE['gray200']}" stroke-width="1.4"/>
     <text class="root-title" x="44" y="55">Natural math archetypes for the theory of three</text>
     <text class="root-subtitle" x="44" y="78">Each panel keeps a three-part contract: invariant, generative rule, natural expression.</text>

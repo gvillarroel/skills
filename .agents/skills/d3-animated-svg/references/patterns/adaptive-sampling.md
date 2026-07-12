@@ -1,6 +1,6 @@
 # Adaptive Sampling
 
-- **Pattern ID:** `d3-pattern-adaptive-sampling`
+- **Pattern ID:** `d3-adaptive-sampling`
 - **Gallery source ID:** `adaptive-sampling`
 - **Family:** Geometry
 - **Use when:** More sample points appear where a curve bends sharply.

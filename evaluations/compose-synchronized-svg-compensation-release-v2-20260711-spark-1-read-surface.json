@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "runId": "compose-synchronized-svg-compensation-release-v2-20260711-spark-1",
+  "classification": "agent-timeout-after-valid-artifact",
+  "eventsSummaryAvailable": false,
+  "eventsPath": "evaluations/runs/compose-synchronized-svg-compensation-release-v2-20260711-spark-1/events.jsonl",
+  "error": "Spark created the required artifact, then violated the normal validation path by launching an ad hoc inline Playwright program that remained blocked. The verified harness and agent process tree was terminated, so the harness never emitted events.jsonl and strict trace checks could not be observed.",
+  "requestedStrictChecks": {
+    "requireModel": "gpt-5.3-codex-spark",
+    "failOnInvalidJson": true,
+    "failOnToolError": true,
+    "result": "not-observable-without-events-jsonl"
+  },
+  "artifact": {
+    "path": "evaluations/runs/compose-synchronized-svg-compensation-release-v2-20260711-spark-1/workspace/outputs/compensation.svg",
+    "exists": true,
+    "sizeBytes": 56972,
+    "sha256": "1fc9281b72885be68c19eb67923adc9d5f52a4c5e404030cfeeeff56a632c73c",
+    "lastWriteTime": "2026-07-11T14:10:27.7224354-04:00"
+  },
+  "independentEvidence": {
+    "staticReport": "evaluations/runs/compose-synchronized-svg-compensation-release-v2-20260711-spark-1/independent-static.json",
+    "browserReport": "evaluations/runs/compose-synchronized-svg-compensation-release-v2-20260711-spark-1/independent-browser.json",
+    "screenshot": "evaluations/runs/compose-synchronized-svg-compensation-release-v2-20260711-spark-1/independent-browser.png",
+    "staticPassed": true,
+    "browserPassed": true
+  },
+  "findings": [
+    "The harness repetition fails because the agent did not terminate normally.",
+    "No events.jsonl was available for strict read-surface summarization.",
+    "The preserved exact-path SVG independently passes the current static and browser gates."
+  ]
+}

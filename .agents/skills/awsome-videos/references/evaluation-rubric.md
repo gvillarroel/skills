@@ -32,7 +32,7 @@ Score each category from 0 to 3:
 | --- | --- | --- | --- | --- |
 | Hook | No clear hook | Generic intro | Clear claim after delay | Immediate claim plus proof visual |
 | Script density | Wanders | Sparse or repetitive | Mostly dense | Every beat defines, proves, contrasts, jokes, or warns |
-| Visual mechanism | Decorative | Prose or self-reported state only | Most scenes explain claims | Reviewed frames and renderer IDs prove the core mechanism without narration dependency |
+| Visual mechanism | Decorative boxes/lines | Prose, labels, or self-reported state only | Most scenes expose a recognizable mechanism | Muted three-second holds identify object, action, and result; reviewed frames and renderer IDs prove the mechanism without narration dependency |
 | Source binding | Unsupported | URLs or planned assets only | Some validated local proof | Ready assets with provenance, claim/scene use, visible renderer IDs, and reviewed evidence |
 | Transitions | Random | Mostly decorative | Mark sections | Mark idea changes, proof points, reversals, or jokes |
 | Audio direction | Missing | Vague music | Bed plus some cues | Bed, ducking, hits, ticks, risers, dropout, and final tail |
@@ -77,6 +77,8 @@ For source-backed publishable work, also use `--require-source-links` in brief v
 - Review theater: `ok` or generated prose claims inspection without frame paths, current input hashes, corrections, or full-speed playback.
 - Source placeholder drift: the visual source plan says "official docs" or "primary sources" but provides no concrete URL or domain.
 - Decoration drift: animations look active but do not correspond to mechanism changes.
+- Silent-comprehension failure: the voiceover explains what anonymous geometry is supposed to mean, but the muted hold has no recognizable object, action, or result.
+- Semantic inset failure: a small explanatory asset exists, but an abstract background dominates the frame and the squint test.
 - Audio afterthought: music is named but not assigned to timing roles.
 - Placeholder audio drift: the MP4 has an audible validation tone, but no final narration/music/SFX report.
 - Short final audio drift: the report says a file was supplied, but `sourceDurationSeconds` is shorter than the video and `finalAudioDurationOk` is false.

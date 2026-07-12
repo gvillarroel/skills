@@ -21,7 +21,7 @@ Use this index to choose visual forms that complement Mermaid instead of duplica
 - Hybrid matrices: correlograms with diagonal histograms, lower-triangle scatter panels, and upper-triangle correlation cells.
 - Spatial indexing and search: quadtrees, nearest-neighbor lookups, partition cells, and query overlays.
 - Uncertainty and target forms: point ranges, error bars, bullet charts, confidence intervals, and target bands.
-- Specialized composition: ternary/simplex plots, diverging Likert stacks, waterfall deltas, and dense event barcode plots.
+- Specialized composition: ternary/simplex plots, diverging Likert stacks, waterfall deltas, and dense event barcode-plot plots.
 - Surface and spatial joins: geofenced points, isolines, scalar terrain, service catchments, and geodesic range rings.
 - Temporal causality and evolution: event cascades, cohort lifelines, forecast fans, survival curves, difference charts, stacked-to-grouped transitions, scatterplot tours, and topology snapshots.
 - Selection and annotation: lasso selection, linked brushing, zoom lenses, callout tours, and data-bound highlight overlays.
@@ -57,7 +57,7 @@ Use these tags to avoid adding near-duplicates to an examples gallery:
 | Uncertainty | interval, target band, bullet | range draw and estimate reveal | intervals, targets, and estimates align |
 | Diagnostics | Q-Q, moving average, Bollinger, threshold line | reference line then sample reveal | reference and observed values remain distinguishable |
 | Composition | simplex, diverging stack, waterfall | baseline or unit reveal | totals and zero baselines remain correct |
-| Events | rug, barcode, timeline lanes | tick cascade | dense marks stay legible |
+| Events | rug, barcode-plot, timeline lanes | tick cascade | dense marks stay legible |
 | Surface | contour, isoline, scalar grid | threshold sweep | bands map to ordered values |
 | Rectangular density | rectbin, 2D histogram | cell fade or value sweep | bins preserve a visible grid and ordered density scale |
 | Selection | lasso, brush, linked highlight | selection path and highlight reveal | selected and nonselected marks remain distinguishable |

@@ -1,6 +1,6 @@
 # Vector Field
 
-- **Pattern ID:** `d3-pattern-vector-field`
+- **Pattern ID:** `d3-vector-field`
 - **Gallery source ID:** `vector-field`
 - **Family:** Field
 - **Use when:** Direction and magnitude are encoded as small arrows.

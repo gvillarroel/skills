@@ -1,6 +1,6 @@
 # Logit Lens Rank Bump
 
-- **Pattern ID:** `d3-pattern-logit-lens-rank-bump`
+- **Pattern ID:** `d3-logit-lens-rank-bump`
 - **Gallery source ID:** `logit-lens-rank-bump`
 - **Family:** Diagnostics
 - **Use when:** Candidate token ranks move across layers until the final answer separates.

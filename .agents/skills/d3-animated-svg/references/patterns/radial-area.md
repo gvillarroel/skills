@@ -1,6 +1,6 @@
 # Radial Area
 
-- **Pattern ID:** `d3-pattern-radial-area`
+- **Pattern ID:** `d3-radial-area`
 - **Gallery source ID:** `radial-area`
 - **Family:** Radial
 - **Use when:** A cyclic time series wraps into a filled polar profile.

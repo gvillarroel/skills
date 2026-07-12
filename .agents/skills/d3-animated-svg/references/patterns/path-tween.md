@@ -1,6 +1,6 @@
 # Path Tween
 
-- **Pattern ID:** `d3-pattern-path-tween`
+- **Pattern ID:** `d3-path-tween`
 - **Gallery source ID:** `path-tween`
 - **Family:** Morph
 - **Use when:** A path interpolates between two line geometries.

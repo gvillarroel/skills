@@ -1,6 +1,6 @@
 # Geofenced Activity
 
-- **Pattern ID:** `d3-pattern-geofence-join`
+- **Pattern ID:** `d3-geofence-join`
 - **Gallery source ID:** `geofence-join`
 - **Family:** Spatial join
 - **Use when:** Points classify into regions and roll up totals.

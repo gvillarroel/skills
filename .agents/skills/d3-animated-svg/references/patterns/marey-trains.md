@@ -1,6 +1,6 @@
 # Marey Trains
 
-- **Pattern ID:** `d3-pattern-marey-trains`
+- **Pattern ID:** `d3-marey-trains`
 - **Gallery source ID:** `marey-trains`
 - **Family:** Schedule
 - **Use when:** Moving services appear as diagonal space-time trajectories.

@@ -1,6 +1,6 @@
 # Bar Race
 
-- **Pattern ID:** `d3-pattern-bar-race`
+- **Pattern ID:** `d3-bar-race`
 - **Gallery source ID:** `bar-race`
 - **Family:** Ranking
 - **Use when:** Ranks and magnitudes animate between states.

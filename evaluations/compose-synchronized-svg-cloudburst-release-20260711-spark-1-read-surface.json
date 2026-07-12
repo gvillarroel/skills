@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "runId": "compose-synchronized-svg-cloudburst-release-20260711-spark-1",
+  "eventsSummaryAvailable": false,
+  "eventsPath": "evaluations/runs/compose-synchronized-svg-cloudburst-release-20260711-spark-1/events.jsonl",
+  "error": "The strict harness exceeded its configured 900-second timeout while a model-started browser audit was still running. The lingering verified process tree was terminated, so the harness never emitted events.jsonl and the event summarizer could not inspect model, JSON, or tool-error records.",
+  "requestedStrictChecks": {
+    "requireModel": "gpt-5.3-codex-spark",
+    "failOnInvalidJson": true,
+    "failOnToolError": true,
+    "result": "not-observable-without-events-jsonl"
+  },
+  "artifact": {
+    "path": "evaluations/runs/compose-synchronized-svg-cloudburst-release-20260711-spark-1/workspace/outputs/cloudburst.svg",
+    "exists": true,
+    "sizeBytes": 71150,
+    "sha256": "3f879c1082f629f2c3a6942c9dc8db79c9750c9dfdde2ef8e012a3c217696843",
+    "lastWriteTime": "2026-07-11T13:48:48.5710581-04:00"
+  },
+  "independentEvidence": {
+    "staticReport": "evaluations/runs/compose-synchronized-svg-cloudburst-release-20260711-spark-1/independent-static.json",
+    "browserReport": "evaluations/runs/compose-synchronized-svg-cloudburst-release-20260711-spark-1/independent-browser.json",
+    "screenshot": "evaluations/runs/compose-synchronized-svg-cloudburst-release-20260711-spark-1/independent-browser.png",
+    "staticPassed": false,
+    "browserPassed": false
+  },
+  "findings": [
+    "Harness timed out and required process-tree termination.",
+    "No events.jsonl was available for strict read-surface summarization.",
+    "The exact required SVG artifact exists and was preserved for independent validation."
+  ]
+}

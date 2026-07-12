@@ -1,6 +1,6 @@
 # Line with Missing Data
 
-- **Pattern ID:** `d3-pattern-line-missing-data`
+- **Pattern ID:** `d3-line-missing-data`
 - **Gallery source ID:** `line-missing-data`
 - **Family:** Temporal
 - **Use when:** Gaps preserve absent observations instead of implying continuity.

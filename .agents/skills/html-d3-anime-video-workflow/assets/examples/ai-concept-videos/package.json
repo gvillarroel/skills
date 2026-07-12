@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "serve": "python -m http.server 4188",
-    "validate": "node ../../../../../../projects/ai-concept-videos/scripts/validate-concepts.mjs",
+    "validate": "node scripts/validate-concepts.mjs",
     "render": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs",
     "render:quick": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset quick",
     "render:draft": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset draft",

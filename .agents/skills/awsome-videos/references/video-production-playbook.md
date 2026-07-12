@@ -36,7 +36,7 @@ Before running command examples, set `$env:AWSOME_VIDEOS_SKILL` to this skill di
    uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/extract_voiceover_cues.py path/to/brief.md --format json --min-cues 8 --expect-duration 70 --duration-tolerance 1 --require-beat-match --output path/to/artifacts/audio/voiceover-cues.json
    ```
 
-   Passing JSON includes `"ok": true`, enough `cueCount`, `beatCueMismatches: []`, and `finalCueEndSeconds` within tolerance. Use `--format srt` or `--format csv` for handoff.
+   Passing JSON includes `"ok": true`, enough `cueCount`, `beatCueMismatches: []`, and `finalCueEndSeconds` within tolerance. Generate `--format srt` and `--format csv` too whenever the package manifest declares those handoff paths.
 
 7. Read `references/visual-asset-composition-workflow.md` and finish the visual preflight before coding final visuals:
    - Use `source-to-video-director` to freeze facts and stable shot IDs for source-backed or finished work.
@@ -295,7 +295,8 @@ uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/check_production_package.py `
   --require-style-fidelity-report `
   --require-final-review-notes `
   --require-contact-sheet `
-  --require-motion-report
+  --require-motion-report `
+  --output projects/<project-id>/artifacts/reviews/package-validation.json
 ```
 
 Expected passing output starts with `PASS awsome-videos package`; JSON requires `"ok": true`.

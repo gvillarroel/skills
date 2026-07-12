@@ -514,7 +514,7 @@ def build_html() -> str:
   </style>
 </head>
 <body>
-  <svg id="critical-chain-buffer" data-pattern-id="d3-pattern-critical-chain-buffer"
+  <svg id="critical-chain-buffer" data-pattern-id="d3-critical-chain-buffer"
     data-pattern-family="critical-chain" data-task-count="{len(TASKS)}"
     data-critical-task-count="{critical_count}" data-dependency-count="{len(DEPENDENCIES)}"
     data-buffer-count="{len(BUFFERS)}" data-feeding-buffer-count="{feeding_buffer_count}"

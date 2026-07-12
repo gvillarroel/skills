@@ -282,13 +282,13 @@ def svg_markup() -> str:
     for y in range(106, 420, 52):
         grid_lines.append(f'<line x1="50" x2="710" y1="{y}" y2="{y}"/>')
 
-    return f"""<svg id="process-pid-control-loop" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="process-pid-control-loop-title process-pid-control-loop-desc"
-    data-pattern-id="d3-pattern-process-pid-control-loop" data-pattern-family="process-engineering"
+    return f"""<svg id="process-control-loop" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
+    aria-labelledby="process-control-loop-title process-control-loop-desc"
+    data-pattern-id="d3-process-control-loop" data-pattern-family="process-engineering"
     data-equipment-count="4" data-valve-count="{len(VALVES)}" data-instrument-count="{len(INSTRUMENTS)}"
     data-signal-line-count="{len(SIGNALS)}" data-process-line-count="{len(PROCESS_LINES)}">
-    <title id="process-pid-control-loop-title">P&amp;ID control loop</title>
-    <desc id="process-pid-control-loop-desc">A process engineering piping and instrumentation diagram with equipment, valves, instruments, dashed signal lines, interlock logic, and animated flow.</desc>
+    <title id="process-control-loop-title">P&amp;ID control loop</title>
+    <desc id="process-control-loop-desc">A process engineering piping and instrumentation diagram with equipment, valves, instruments, dashed signal lines, interlock logic, and animated flow.</desc>
     {marker_defs()}
     <rect x="28" y="30" width="704" height="442" rx="10" fill="{PALETTE['surface']}" stroke="{PALETTE['gray200']}" stroke-width="1.6"/>
     <text class="caption" x="52" y="62">P&amp;ID 101 - reactor feed control</text>

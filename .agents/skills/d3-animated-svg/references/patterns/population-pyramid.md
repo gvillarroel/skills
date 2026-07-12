@@ -1,6 +1,6 @@
 # Population Pyramid
 
-- **Pattern ID:** `d3-pattern-population-pyramid`
+- **Pattern ID:** `d3-population-pyramid`
 - **Gallery source ID:** `population-pyramid`
 - **Family:** Demography
 - **Use when:** Mirrored age bins compare two demographic groups.

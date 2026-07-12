@@ -71,6 +71,7 @@ REVIEW_CHECKS = {
     "focalClarity",
     "overlap",
     "safeAreas",
+    "silentComprehension",
     "sourceProof",
     "typography",
 }
@@ -1475,6 +1476,7 @@ def validate_review(
     evidence_frame_count = 0
     scene_evidence_frame_count = 0
     transition_evidence_frame_count = 0
+    silent_comprehension_count = 0
     evidence_paths: set[str] = set()
     evidence_hashes: dict[str, str] = {}
     scene_intervals = {
@@ -1587,6 +1589,27 @@ def validate_review(
                 failures.append(f"visual review scene {scene_id} has unresolved checks: {', '.join(failed_checks)}")
             if review.get("status") != "approved":
                 failures.append(f"visual review scene {scene_id} status is not approved")
+            silent_test = review.get("silentTest")
+            if not isinstance(silent_test, dict):
+                failures.append(f"visual review scene {scene_id} silentTest is missing or not an object")
+            else:
+                duration = silent_test.get("durationSeconds")
+                if not isinstance(duration, (int, float)) or duration <= 0 or duration > 3:
+                    failures.append(
+                        f"visual review scene {scene_id} silentTest.durationSeconds must be > 0 and <= 3"
+                    )
+                missing_roles = [
+                    field
+                    for field in ["object", "action", "result"]
+                    if not nonempty(silent_test.get(field), minimum=6)
+                ]
+                if missing_roles:
+                    failures.append(
+                        f"visual review scene {scene_id} silentTest needs substantive "
+                        + ", ".join(missing_roles)
+                    )
+                elif isinstance(duration, (int, float)) and 0 < duration <= 3:
+                    silent_comprehension_count += 1
             if not nonempty(review.get("finding"), minimum=20):
                 failures.append(f"visual review scene {scene_id} finding is missing or too thin")
             if not nonempty(review.get("correction"), minimum=20):
@@ -1740,6 +1763,7 @@ def validate_review(
         "sceneEvidenceFrameCount": scene_evidence_frame_count,
         "transitionEvidenceFrameCount": transition_evidence_frame_count,
         "transitionReviewCount": len(transitions),
+        "silentComprehensionCount": silent_comprehension_count,
         "uniqueEvidenceHashCount": len(evidence_hashes),
         "videoFrameMatchCount": len(video_frame_matches),
         "videoFrameMatches": video_frame_matches,

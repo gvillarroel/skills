@@ -1,6 +1,6 @@
 # Polar Clock
 
-- **Pattern ID:** `d3-pattern-polar-clock`
+- **Pattern ID:** `d3-polar-clock`
 - **Gallery source ID:** `polar-clock`
 - **Family:** Radial
 - **Use when:** Nested arcs encode cyclic units of time.

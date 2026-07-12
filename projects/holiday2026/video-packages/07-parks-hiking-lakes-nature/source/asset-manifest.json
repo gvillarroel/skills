@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 1,
+  "videoId": "holiday2026-07-parks-hiking-lakes-nature",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  "skillRouting": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "assets": [
+    {
+      "id": "a01-proximity-map",
+      "kind": "diagram",
+      "claim": "Show the Parks, Hiking, Lakes & Nature evidence required for scene 1 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a01-proximity-map.png",
+      "sha256": "ceaa690042fafd9e388c41705d969e7fc0664a6933d7ddc1a5563823f2995063",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:parks-hiking-lakes-nature:a01-proximity-map",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Autrey Mill Nature Preserve",
+            "pageUrl": "https://autreymill.org/",
+            "imageUrl": null,
+            "imageSha256": "6709b71db125bce49de43fe962d4afb6656dfbed0fec566d66f3f5aa42fae879",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Autrey Mill Nature Preserve; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Arabia Mountain National Heritage Area",
+            "pageUrl": "https://arabiaalliance.org/",
+            "imageUrl": "https://arabiaalliance.org/wp-content/uploads/img_arabia_rock_formation.jpg",
+            "imageSha256": "d211e06825ffd2f7105d7aa69d50c772d7b2cd4c97ac147e17c0f1a3b54ac95d",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Arabia Mountain National Heritage Area; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Olde Rope Mill Park",
+            "pageUrl": "https://woodstock.recdesk.com/Community/Page?pageId=27832",
+            "imageUrl": "https://live.staticflickr.com/65535/50483094688_95e742632b_z.jpg",
+            "imageSha256": "c3991de2e6e78356c0b91df6c8e3b669a23271b7b713e7e772b9e151e6543d42",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Olde Rope Mill Park; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a01-proximity-map-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s01",
+          "beatId": "b01",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a02-top-1-source",
+      "kind": "screenshot",
+      "claim": "Show the Parks, Hiking, Lakes & Nature evidence required for scene 2 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a02-top-1-source.png",
+      "sha256": "6709b71db125bce49de43fe962d4afb6656dfbed0fec566d66f3f5aa42fae879",
+      "origin": {
+        "type": "captured",
+        "uri": "https://autreymill.org/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official visual page for Autrey Mill Nature Preserve; private family-planning use.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Autrey Mill Nature Preserve",
+            "pageUrl": "https://autreymill.org/",
+            "imageUrl": null,
+            "imageSha256": "6709b71db125bce49de43fe962d4afb6656dfbed0fec566d66f3f5aa42fae879",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Autrey Mill Nature Preserve; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a02-top-1-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s02",
+          "beatId": "b02",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a03-top-2-source",
+      "kind": "screenshot",
+      "claim": "Show the Parks, Hiking, Lakes & Nature evidence required for scene 3 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a03-top-2-source.png",
+      "sha256": "d211e06825ffd2f7105d7aa69d50c772d7b2cd4c97ac147e17c0f1a3b54ac95d",
+      "origin": {
+        "type": "captured",
+        "uri": "https://arabiaalliance.org/",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Arabia Mountain National Heritage Area; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 2,
+            "name": "Arabia Mountain National Heritage Area",
+            "pageUrl": "https://arabiaalliance.org/",
+            "imageUrl": "https://arabiaalliance.org/wp-content/uploads/img_arabia_rock_formation.jpg",
+            "imageSha256": "d211e06825ffd2f7105d7aa69d50c772d7b2cd4c97ac147e17c0f1a3b54ac95d",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Arabia Mountain National Heritage Area; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a03-top-2-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s03",
+          "beatId": "b03",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a04-top-3-source",
+      "kind": "screenshot",
+      "claim": "Show the Parks, Hiking, Lakes & Nature evidence required for scene 4 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a04-top-3-source.png",
+      "sha256": "c3991de2e6e78356c0b91df6c8e3b669a23271b7b713e7e772b9e151e6543d42",
+      "origin": {
+        "type": "captured",
+        "uri": "https://woodstock.recdesk.com/Community/Page?pageId=27832",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Olde Rope Mill Park; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 3,
+            "name": "Olde Rope Mill Park",
+            "pageUrl": "https://woodstock.recdesk.com/Community/Page?pageId=27832",
+            "imageUrl": "https://live.staticflickr.com/65535/50483094688_95e742632b_z.jpg",
+            "imageSha256": "c3991de2e6e78356c0b91df6c8e3b669a23271b7b713e7e772b9e151e6543d42",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Olde Rope Mill Park; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a04-top-3-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s04",
+          "beatId": "b04",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a05-top-five",
+      "kind": "diagram",
+      "claim": "Show the Parks, Hiking, Lakes & Nature evidence required for scene 5 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a05-top-five.png",
+      "sha256": "5c2239222f09d86b3ee85cf0db784efb4fd36a68269fd340a5ff7bf0397ce67f",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:parks-hiking-lakes-nature:a05-top-five",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Autrey Mill Nature Preserve",
+            "pageUrl": "https://autreymill.org/",
+            "imageUrl": null,
+            "imageSha256": "6709b71db125bce49de43fe962d4afb6656dfbed0fec566d66f3f5aa42fae879",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Autrey Mill Nature Preserve; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Arabia Mountain National Heritage Area",
+            "pageUrl": "https://arabiaalliance.org/",
+            "imageUrl": "https://arabiaalliance.org/wp-content/uploads/img_arabia_rock_formation.jpg",
+            "imageSha256": "d211e06825ffd2f7105d7aa69d50c772d7b2cd4c97ac147e17c0f1a3b54ac95d",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Arabia Mountain National Heritage Area; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Olde Rope Mill Park",
+            "pageUrl": "https://woodstock.recdesk.com/Community/Page?pageId=27832",
+            "imageUrl": "https://live.staticflickr.com/65535/50483094688_95e742632b_z.jpg",
+            "imageSha256": "c3991de2e6e78356c0b91df6c8e3b669a23271b7b713e7e772b9e151e6543d42",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Olde Rope Mill Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Vickery Creek Unit, Chattahoochee River NRA",
+            "pageUrl": "https://www.nps.gov/chat/planyourvisit/maps.htm",
+            "imageUrl": null,
+            "imageSha256": "3f07a3f3b8898575a7a3a615495d58c898659fc2e24de9f2bc223a0527290ae5",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vickery Creek Unit, Chattahoochee River NRA; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Kennesaw Mountain National Battlefield Park",
+            "pageUrl": "https://www.nps.gov/kemo/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/D087031F-1DD8-B71B-0BB9898C84464224.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "c1ac4b20fbe7c6392d369926c07795db6cb4b6404b850f0778006d480ec5c235",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Kennesaw Mountain National Battlefield Park; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a05-top-five-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s05",
+          "beatId": "b05",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a06-preference-bars",
+      "kind": "diagram",
+      "claim": "Show the Parks, Hiking, Lakes & Nature evidence required for scene 6 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a06-preference-bars.png",
+      "sha256": "aee4658a488c86a2f7d707f7510a5fd4ecae855bb5f6b18e8f23fd19b462d829",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:parks-hiking-lakes-nature:a06-preference-bars",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Autrey Mill Nature Preserve",
+            "pageUrl": "https://autreymill.org/",
+            "imageUrl": null,
+            "imageSha256": "6709b71db125bce49de43fe962d4afb6656dfbed0fec566d66f3f5aa42fae879",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Autrey Mill Nature Preserve; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Arabia Mountain National Heritage Area",
+            "pageUrl": "https://arabiaalliance.org/",
+            "imageUrl": "https://arabiaalliance.org/wp-content/uploads/img_arabia_rock_formation.jpg",
+            "imageSha256": "d211e06825ffd2f7105d7aa69d50c772d7b2cd4c97ac147e17c0f1a3b54ac95d",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Arabia Mountain National Heritage Area; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Olde Rope Mill Park",
+            "pageUrl": "https://woodstock.recdesk.com/Community/Page?pageId=27832",
+            "imageUrl": "https://live.staticflickr.com/65535/50483094688_95e742632b_z.jpg",
+            "imageSha256": "c3991de2e6e78356c0b91df6c8e3b669a23271b7b713e7e772b9e151e6543d42",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Olde Rope Mill Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Vickery Creek Unit, Chattahoochee River NRA",
+            "pageUrl": "https://www.nps.gov/chat/planyourvisit/maps.htm",
+            "imageUrl": null,
+            "imageSha256": "3f07a3f3b8898575a7a3a615495d58c898659fc2e24de9f2bc223a0527290ae5",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vickery Creek Unit, Chattahoochee River NRA; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Kennesaw Mountain National Battlefield Park",
+            "pageUrl": "https://www.nps.gov/kemo/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/D087031F-1DD8-B71B-0BB9898C84464224.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "c1ac4b20fbe7c6392d369926c07795db6cb4b6404b850f0778006d480ec5c235",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Kennesaw Mountain National Battlefield Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Sope Creek Unit, Chattahoochee River NRA",
+            "pageUrl": "https://www.nps.gov/chat/planyourvisit/maps.htm",
+            "imageUrl": null,
+            "imageSha256": "d4e17f9feb8a6c403e07da4cd9ae847b1cd64600cfab1826cdf70f34d70bedb7",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Sope Creek Unit, Chattahoochee River NRA; private family-planning use."
+          },
+          {
+            "rank": 7,
+            "name": "Sweetwater Creek State Park",
+            "pageUrl": "https://gastateparks.org/SweetwaterCreek",
+            "imageUrl": null,
+            "imageSha256": "86ab7f2cf8bbfe3f02f43826446d97ea7b182a414003631068153eda161996e1",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Sweetwater Creek State Park; private family-planning use."
+          },
+          {
+            "rank": 8,
+            "name": "Elachee Nature Science Center and Chicopee Woods",
+            "pageUrl": "https://www.elachee.org/",
+            "imageUrl": null,
+            "imageSha256": "81c0a80ad3150923d86e09c9d126b51ec58504eb5800540be8de39a949256739",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a06-preference-bars-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s06",
+          "beatId": "b06",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a07-decision-board",
+      "kind": "diagram",
+      "claim": "Show the Parks, Hiking, Lakes & Nature evidence required for scene 7 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a07-decision-board.png",
+      "sha256": "cfad6dfb287f0e7e92503f6062b55c7c46c0de665d0728921e90ef6f2882d5fd",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:parks-hiking-lakes-nature:a07-decision-board",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Autrey Mill Nature Preserve",
+            "pageUrl": "https://autreymill.org/",
+            "imageUrl": null,
+            "imageSha256": "6709b71db125bce49de43fe962d4afb6656dfbed0fec566d66f3f5aa42fae879",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Autrey Mill Nature Preserve; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Arabia Mountain National Heritage Area",
+            "pageUrl": "https://arabiaalliance.org/",
+            "imageUrl": "https://arabiaalliance.org/wp-content/uploads/img_arabia_rock_formation.jpg",
+            "imageSha256": "d211e06825ffd2f7105d7aa69d50c772d7b2cd4c97ac147e17c0f1a3b54ac95d",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Arabia Mountain National Heritage Area; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Olde Rope Mill Park",
+            "pageUrl": "https://woodstock.recdesk.com/Community/Page?pageId=27832",
+            "imageUrl": "https://live.staticflickr.com/65535/50483094688_95e742632b_z.jpg",
+            "imageSha256": "c3991de2e6e78356c0b91df6c8e3b669a23271b7b713e7e772b9e151e6543d42",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Olde Rope Mill Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Vickery Creek Unit, Chattahoochee River NRA",
+            "pageUrl": "https://www.nps.gov/chat/planyourvisit/maps.htm",
+            "imageUrl": null,
+            "imageSha256": "3f07a3f3b8898575a7a3a615495d58c898659fc2e24de9f2bc223a0527290ae5",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vickery Creek Unit, Chattahoochee River NRA; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a07-decision-board-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s07",
+          "beatId": "b07",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a08-planner-callback",
+      "kind": "diagram",
+      "claim": "Show the Parks, Hiking, Lakes & Nature evidence required for scene 8 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a08-planner-callback.png",
+      "sha256": "a2dbf487b2b5e7257acd42a3c76a6fdeba5a113cb4626e33afdee3c58e3c92b2",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:parks-hiking-lakes-nature:a08-planner-callback",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Autrey Mill Nature Preserve",
+            "pageUrl": "https://autreymill.org/",
+            "imageUrl": null,
+            "imageSha256": "6709b71db125bce49de43fe962d4afb6656dfbed0fec566d66f3f5aa42fae879",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Autrey Mill Nature Preserve; private family-planning use."
+          },
+          {
+            "rank": 2,
+            "name": "Arabia Mountain National Heritage Area",
+            "pageUrl": "https://arabiaalliance.org/",
+            "imageUrl": "https://arabiaalliance.org/wp-content/uploads/img_arabia_rock_formation.jpg",
+            "imageSha256": "d211e06825ffd2f7105d7aa69d50c772d7b2cd4c97ac147e17c0f1a3b54ac95d",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Arabia Mountain National Heritage Area; verify reuse terms before public publication."
+          },
+          {
+            "rank": 3,
+            "name": "Olde Rope Mill Park",
+            "pageUrl": "https://woodstock.recdesk.com/Community/Page?pageId=27832",
+            "imageUrl": "https://live.staticflickr.com/65535/50483094688_95e742632b_z.jpg",
+            "imageSha256": "c3991de2e6e78356c0b91df6c8e3b669a23271b7b713e7e772b9e151e6543d42",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Olde Rope Mill Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 4,
+            "name": "Vickery Creek Unit, Chattahoochee River NRA",
+            "pageUrl": "https://www.nps.gov/chat/planyourvisit/maps.htm",
+            "imageUrl": null,
+            "imageSha256": "3f07a3f3b8898575a7a3a615495d58c898659fc2e24de9f2bc223a0527290ae5",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Vickery Creek Unit, Chattahoochee River NRA; private family-planning use."
+          },
+          {
+            "rank": 5,
+            "name": "Kennesaw Mountain National Battlefield Park",
+            "pageUrl": "https://www.nps.gov/kemo/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/D087031F-1DD8-B71B-0BB9898C84464224.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "c1ac4b20fbe7c6392d369926c07795db6cb4b6404b850f0778006d480ec5c235",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Kennesaw Mountain National Battlefield Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "Sope Creek Unit, Chattahoochee River NRA",
+            "pageUrl": "https://www.nps.gov/chat/planyourvisit/maps.htm",
+            "imageUrl": null,
+            "imageSha256": "d4e17f9feb8a6c403e07da4cd9ae847b1cd64600cfab1826cdf70f34d70bedb7",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Sope Creek Unit, Chattahoochee River NRA; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a08-planner-callback-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s08",
+          "beatId": "b08",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    }
+  ]
+}

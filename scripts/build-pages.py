@@ -23,6 +23,11 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "ai-concept-videos",
+    "compose-synchronized-svg": SKILLS
+    / "compose-synchronized-svg"
+    / "assets"
+    / "examples"
+    / "compose-synchronized-svg",
     "d3-animated-svg": SKILLS / "d3-animated-svg" / "assets" / "examples" / "d3-animated-svg",
     "d3-animated-svg-cs1": SKILLS
     / "d3-animated-svg"
@@ -102,6 +107,14 @@ UNLISTED_EXAMPLE_SOURCES = {
     "plantuml-colorset-renderer-base",
 }
 PUBLISHED_EXAMPLE_SETS = [
+    {
+        "id": "compose-synchronized-svg",
+        "source": "compose-synchronized-svg",
+        "title": "Synchronized SVG Inference Pulse",
+        "href": "examples/compose-synchronized-svg/",
+        "kind": "Interactive SVG",
+        "description": "Sixteen related views share one canonical state, loop, focus model, and routed causal and feedback relationships.",
+    },
     {
         "id": "echarts-animated-svg",
         "source": "echarts-animated-svg",
@@ -599,6 +612,7 @@ def build_docs() -> None:
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
     write_favicon()
 
+    copy_tree(example_source("compose-synchronized-svg"), DOCS / "examples" / "compose-synchronized-svg")
     copy_tree(example_source("echarts-animated-svg"), DOCS / "examples" / "echarts-animated-svg")
 
     copy_tree(example_source("d3-animated-svg"), DOCS / "examples" / "d3-animated-svg")

@@ -1,6 +1,6 @@
 # LoRA Rank Update
 
-- **Pattern ID:** `d3-pattern-lora-rank-update`
+- **Pattern ID:** `d3-lora-rank-update`
 - **Gallery source ID:** `lora-rank-update`
 - **Family:** Adaptation
 - **Use when:** A frozen weight matrix receives a compact low-rank update path.

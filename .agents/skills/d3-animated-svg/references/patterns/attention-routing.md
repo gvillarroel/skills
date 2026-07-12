@@ -1,6 +1,6 @@
 # Attention Routing
 
-- **Pattern ID:** `d3-pattern-attention-routing`
+- **Pattern ID:** `d3-attention-routing`
 - **Gallery source ID:** `attention-routing`
 - **Family:** LLM
 - **Use when:** A query token distributes attention across earlier context tokens.

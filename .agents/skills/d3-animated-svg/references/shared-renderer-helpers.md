@@ -68,7 +68,7 @@ Use these helpers as compact equivalents when converting a pattern excerpt into 
 function prepareSvg(id, title, desc) {
   const svg = d3.select("svg")
     .attr("id", id)
-    .attr("data-pattern-id", `d3-pattern-${id}`)
+    .attr("data-pattern-id", `d3-${id}`)
     .attr("role", "img")
     .attr("aria-labelledby", `${id}-title ${id}-desc`)
     .attr("viewBox", `0 0 ${width} ${height}`)

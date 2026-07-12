@@ -6,8 +6,8 @@ Use this reference when extending a gallery of multiple D3-generated SVG example
 
 - Keep one data record per example with `id`, `kicker`, `title`, `copy`, and `render`.
 - Use the `id` for the card `data-example`, the SVG `id`, and the per-card replay target.
-- Derive a stable `patternId` as `d3-pattern-${id}` unless a specific stable override is required. Expose it on the card `id`, the card `data-pattern-id`, the SVG `data-pattern-id`, and a compact visible card label so examples can be referenced later as reusable patterns.
-- Keep `window.D3_ANIMATED_SVG_EXAMPLES` in sync with gallery metadata. Derived pages such as `composition-sheets.html` depend on it for source titles, base `d3-pattern-*` IDs, and links, while rendering their own curated composition SVG previews.
+- Derive a stable `patternId` as `d3-${id}` unless a specific stable override is required. Expose it on the card `id`, the card `data-pattern-id`, the SVG `data-pattern-id`, and a compact visible card label so examples can be referenced later as reusable patterns.
+- Keep `window.D3_ANIMATED_SVG_EXAMPLES` in sync with gallery metadata. Derived pages such as `composition-sheets.html` depend on it for source titles, base `d3-*` IDs, and links, while rendering their own curated composition SVG previews.
 - Keep card headers compact and stable. Do not let replay controls resize the visualization frame.
 - Keep every SVG self-contained with a unique `title`, `desc`, and scoped IDs for definitions.
 
@@ -90,11 +90,11 @@ Integrate repeated findings through shared CSS, token ramps, and a gallery-level
 
 ## Styled Gallery Versions
 
-Use a separate published source such as `assets/examples/d3-animated-svg-colorset2/` when the full gallery needs a palette/style version without changing the base gallery. Load `colorset2-config.js` before the shared `gallery.js`; the shared renderer assigns short `d3-pattern-cs2-*` IDs, preserves each `d3-pattern-*` base ID in metadata, and remaps rendered SVG paint values to the tokens in `design/colorset2.yaml`.
+Use a separate published source such as `assets/examples/d3-animated-svg-colorset2/` when the full gallery needs a palette/style version without changing the base gallery. Load `colorset2-config.js` before the shared `gallery.js`; the shared renderer assigns `d3-<slug>-cs2` IDs, preserves each `d3-<slug>` base ID in metadata, and remaps rendered SVG paint values to the tokens in `design/colorset2.yaml`.
 
 Keep the version page flat and modular: no decorative shadows, no gradient/orb backgrounds, compact card headers, and rectangular surfaces that can read as a large visual map. Validate it with `scripts/verify_colorset2_gallery.py` so every SVG exposes `data-style-version="colorset2"`, `data-color-set="colorset2"`, `data-palette-name="full-color-style"`, and no SVG paint value falls outside the colorset2 palette.
 
-Use `assets/examples/d3-animated-svg-cs1/` for the colorset1 red-neutral version. Load `cs1-config.js` before the shared `gallery.js`; the shared renderer assigns suffixed IDs such as `d3-pattern-force-network-cs1`, keeps `data-base-pattern-id="d3-pattern-force-network"`, and remaps all SVG paint values to `design/colorset1.yml`. Validate it with `scripts/verify_style_gallery.py` so every SVG exposes `data-style-version="cs1"`, `data-color-set="colorset1"`, `data-palette-name="basic-red-neutral-style"`, and only uses colors from the colorset1 palette.
+Use `assets/examples/d3-animated-svg-cs1/` for the colorset1 red-neutral version. Load `cs1-config.js` before the shared `gallery.js`; the shared renderer assigns suffixed IDs such as `d3-force-network-cs1`, keeps `data-base-pattern-id="d3-force-network"`, and remaps all SVG paint values to `design/colorset1.yml`. Validate it with `scripts/verify_style_gallery.py` so every SVG exposes `data-style-version="cs1"`, `data-color-set="colorset1"`, `data-palette-name="basic-red-neutral-style"`, and only uses colors from the colorset1 palette.
 
 ## Verification
 
@@ -111,7 +111,7 @@ For gallery updates, verify:
 - replay resets the SVG timeline near zero and the timeline advances after the click
 - repeated replay does not leave duplicated marks or empty SVGs
 - desktop and mobile screenshots preserve readable card headers, replay controls, labels, and SVG framing
-- publication is completed, not just built locally: run `uv run --script scripts/build-pages.py`, commit the updated gallery source and pattern references, push the Pages-deploying branch, then verify the GitHub Pages workflow before relying on the new `d3-pattern-*` URL in another task
+- publication is completed, not just built locally: run `uv run --script scripts/build-pages.py`, commit the updated gallery source and pattern references, push the Pages-deploying branch, then verify the GitHub Pages workflow before relying on the new `d3-*` URL in another task
 
 Use the gallery verifier for deterministic checks:
 

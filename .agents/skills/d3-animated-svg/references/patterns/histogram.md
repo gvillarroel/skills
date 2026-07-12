@@ -1,6 +1,6 @@
 # Histogram
 
-- **Pattern ID:** `d3-pattern-histogram`
+- **Pattern ID:** `d3-histogram`
 - **Gallery source ID:** `histogram`
 - **Family:** Distribution
 - **Use when:** Binned frequency with animated bars.

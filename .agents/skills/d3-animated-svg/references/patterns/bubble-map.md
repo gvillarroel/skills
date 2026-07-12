@@ -1,6 +1,6 @@
 # Bubble Map
 
-- **Pattern ID:** `d3-pattern-bubble-map`
+- **Pattern ID:** `d3-bubble-map`
 - **Gallery source ID:** `bubble-map`
 - **Family:** Geospatial
 - **Use when:** Projected point symbols encode regional magnitude.

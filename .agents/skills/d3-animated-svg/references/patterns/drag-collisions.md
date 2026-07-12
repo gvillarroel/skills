@@ -1,6 +1,6 @@
 # Drag Collisions
 
-- **Pattern ID:** `d3-pattern-drag-collisions`
+- **Pattern ID:** `d3-drag-collisions`
 - **Gallery source ID:** `drag-collisions`
 - **Family:** Simulation
 - **Use when:** Collision resolution spreads overlapping nodes from a dragged focus.

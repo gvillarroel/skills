@@ -40,12 +40,23 @@ const initial = await page.evaluate(() => {
     replayIconCount: document.querySelectorAll('.material-symbols-rounded').length,
     oldPaletteHits: [...document.documentElement.outerHTML.matchAll(/#(?:2563eb|0f766e|f59e0b|be123c|7c3aed|64748b|475569|0f172a|334155|e2e8f0|dbeafe|f8fafc)/gi)].length,
     exampleIds: cards.map((card) => card.dataset.exampleId || ''),
+    patternIds: cards.map((card) => card.dataset.patternId || ''),
     invalidExampleIds: cards
       .map((card) => card.dataset.exampleId || '')
       .filter((id) => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id)),
     duplicateExampleIds: cards.length - new Set(cards.map((card) => card.dataset.exampleId || '')).size,
+    invalidPatternIds: cards
+      .map((card) => card.dataset.patternId || '')
+      .filter((id) => !/^echarts-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || id.includes('-pattern-')),
+    duplicatePatternIds: cards.length - new Set(cards.map((card) => card.dataset.patternId || '')).size,
+    missingLegacyPatternIds: cards
+      .filter((card) => !/^echarts-pattern-[a-z0-9]+(?:-[a-z0-9]+)*$/.test(card.dataset.legacyPatternId || ''))
+      .map((card) => card.dataset.exampleId),
+    mismatchedSvgPatternIds: cards
+      .filter((card) => card.querySelector('svg')?.dataset.patternId !== card.dataset.patternId)
+      .map((card) => card.dataset.exampleId),
     cardsWithoutDomId: cards
-      .filter((card) => card.id !== `example-${card.dataset.exampleId}`)
+      .filter((card) => card.id !== card.dataset.patternId)
       .map((card) => card.dataset.chartType),
     missingMarks: cards
       .filter((card) => !card.querySelector('svg .easv-mark'))
@@ -75,6 +86,14 @@ if (initial.invalidExampleIds.length)
   throw new Error(`Invalid chart example ids: ${initial.invalidExampleIds.join(', ')}`)
 if (initial.duplicateExampleIds)
   throw new Error('Found duplicate chart example ids.')
+if (initial.invalidPatternIds.length)
+  throw new Error(`Invalid chart pattern ids: ${initial.invalidPatternIds.join(', ')}`)
+if (initial.duplicatePatternIds)
+  throw new Error('Found duplicate chart pattern ids.')
+if (initial.missingLegacyPatternIds.length)
+  throw new Error(`Cards missing legacy pattern aliases: ${initial.missingLegacyPatternIds.join(', ')}`)
+if (initial.mismatchedSvgPatternIds.length)
+  throw new Error(`Charts with mismatched SVG pattern ids: ${initial.mismatchedSvgPatternIds.join(', ')}`)
 if (initial.cardsWithoutDomId.length)
   throw new Error(`Cards without matching DOM ids: ${initial.cardsWithoutDomId.join(', ')}`)
 if (initial.missingMarks.length)

@@ -3,7 +3,7 @@ Use the loaded `$d3-composition-evaluator` skill to review a dependency-flow com
 Write the review to exactly `reports/service-dependency-review.md`. Make it useful to an engineer deciding whether this SVG is ready for a dashboard: identify the artifact exactly, assess the composition and implementation contract, give one overall score from 0 to 100, and recommend the minimum concrete fixes. Preserve the four service nodes and three dependency links; do not invent or remove data entities.
 
 ```html
-<svg id="service-dependency-diagonal" data-pattern-id="d3-pattern-service-dependency" data-composition-id="diagonal-flow" viewBox="0 0 480 260" role="img">
+<svg id="service-dependency-diagonal" data-pattern-id="d3-service-dependency" data-composition-id="diagonal-flow" viewBox="0 0 480 260" role="img">
   <title>Service dependency diagonal</title>
   <desc>Four services connected from ingestion to API along a rising diagonal.</desc>
   <defs>

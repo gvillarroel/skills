@@ -1,6 +1,6 @@
 # Treemap
 
-- **Pattern ID:** `d3-pattern-treemap`
+- **Pattern ID:** `d3-treemap`
 - **Gallery source ID:** `treemap`
 - **Family:** Hierarchy
 - **Use when:** Nested area allocation with readable groups.

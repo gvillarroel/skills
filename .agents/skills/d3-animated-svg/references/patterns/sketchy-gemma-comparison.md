@@ -1,6 +1,6 @@
 # Sketchy Gemma Compare
 
-- **Pattern ID:** `d3-pattern-sketchy-gemma-comparison`
+- **Pattern ID:** `d3-sketchy-gemma-comparison`
 - **Gallery source ID:** `sketchy-gemma-comparison`
 - **Family:** Sketchy AI
 - **Use when:** Two Gemma sizes balance benchmark strength against memory and cloud hardware cost.

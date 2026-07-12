@@ -1,6 +1,6 @@
 # SwiGLU Feed Forward
 
-- **Pattern ID:** `d3-pattern-swiglu-feed-forward`
+- **Pattern ID:** `d3-swiglu-feed-forward`
 - **Gallery source ID:** `swiglu-feed-forward`
 - **Family:** Transformer
 - **Use when:** Up and gate projections multiply before down projection returns to model width.

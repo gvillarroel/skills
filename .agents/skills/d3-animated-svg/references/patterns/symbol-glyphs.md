@@ -1,6 +1,6 @@
 # Symbol Glyphs
 
-- **Pattern ID:** `d3-pattern-symbol-glyphs`
+- **Pattern ID:** `d3-symbol-glyphs`
 - **Gallery source ID:** `symbol-glyphs`
 - **Family:** Glyphs
 - **Use when:** Custom point marks encode type and magnitude.

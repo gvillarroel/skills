@@ -1,6 +1,6 @@
 # Gemma Compare
 
-- **Pattern ID:** `d3-pattern-gemma-comparison`
+- **Pattern ID:** `d3-gemma-comparison`
 - **Gallery source ID:** `gemma-comparison`
 - **Family:** AI Model
 - **Use when:** A clean model scorecard compares two Gemma sizes across quality, memory, and GPU cost.

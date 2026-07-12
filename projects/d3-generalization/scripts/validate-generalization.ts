@@ -32,7 +32,7 @@ if (!/(?:@keyframes|<animate\b|<animateTransform\b|animation\s*:)/i.test(html)) 
 const expected = [
   {
     id: "force-small",
-    pattern: "d3-pattern-force-network",
+    pattern: "d3-force-network",
     size: "small",
     target: 5,
     markClass: "node",
@@ -43,7 +43,7 @@ const expected = [
   },
   {
     id: "force-medium",
-    pattern: "d3-pattern-force-network",
+    pattern: "d3-force-network",
     size: "medium",
     target: 12,
     markClass: "node",
@@ -54,7 +54,7 @@ const expected = [
   },
   {
     id: "force-large",
-    pattern: "d3-pattern-force-network",
+    pattern: "d3-force-network",
     size: "large",
     target: 36,
     markClass: "node",
@@ -65,7 +65,7 @@ const expected = [
   },
   {
     id: "beeswarm-small",
-    pattern: "d3-pattern-beeswarm",
+    pattern: "d3-beeswarm",
     size: "small",
     target: 9,
     markClass: "dot",
@@ -74,7 +74,7 @@ const expected = [
   },
   {
     id: "beeswarm-medium",
-    pattern: "d3-pattern-beeswarm",
+    pattern: "d3-beeswarm",
     size: "medium",
     target: 30,
     markClass: "dot",
@@ -83,7 +83,7 @@ const expected = [
   },
   {
     id: "beeswarm-large",
-    pattern: "d3-pattern-beeswarm",
+    pattern: "d3-beeswarm",
     size: "large",
     target: 90,
     markClass: "dot",
@@ -167,7 +167,7 @@ for (const [pattern, rows] of byPattern.entries()) {
   if (!(small.elements < medium.elements && medium.elements < large.elements)) {
     findings.push(`${pattern}: element counts are not monotonic small < medium < large.`);
   }
-  if (pattern === "d3-pattern-force-network" && !(small.secondaryMarks < medium.secondaryMarks && medium.secondaryMarks < large.secondaryMarks)) {
+  if (pattern === "d3-force-network" && !(small.secondaryMarks < medium.secondaryMarks && medium.secondaryMarks < large.secondaryMarks)) {
     findings.push(`${pattern}: link counts are not monotonic small < medium < large.`);
   }
 }

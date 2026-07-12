@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 1,
+  "videoId": "holiday2026-03-museums-science-history",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9"
+  },
+  "skillRouting": [
+    {
+      "stage": "source",
+      "skill": "source-to-video-director",
+      "reason": "Freeze exact ranked facts, URLs, timing and shot identifiers before visual production.",
+      "output": "source package and shot contract",
+      "outputPaths": [
+        "source/source-package.json",
+        "source/shot-contract.json"
+      ],
+      "proof": "artifacts/reviews/source-contract-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "composition",
+      "skill": "scene-composition-director",
+      "reason": "Define focal image bounds, hierarchy, safe areas and validation evidence for every scene.",
+      "output": "scene composition plan",
+      "outputPaths": [
+        "source/composition-plan.json"
+      ],
+      "proof": "artifacts/reviews/composition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "transitions",
+      "skill": "scene-transition-director",
+      "reason": "Carry the route marker and ranked decision state across all adjacent scene seams.",
+      "output": "scene transition plan",
+      "outputPaths": [
+        "source/transition-plan.json"
+      ],
+      "proof": "artifacts/reviews/transition-plan-specialist-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset generation",
+      "skill": "d3-animated-svg",
+      "reason": "Create deterministic source-ranked maps, bars and decision geometry as self-contained SVG assets.",
+      "output": "D3-style SVG data visuals",
+      "outputPaths": [
+        "artifacts/images/a01-proximity-map.png",
+        "artifacts/images/a05-top-five.png",
+        "artifacts/images/a06-preference-bars.png",
+        "artifacts/images/a07-decision-board.png",
+        "artifacts/images/a08-planner-callback.png"
+      ],
+      "proof": "artifacts/reviews/asset-generation-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "asset capture",
+      "skill": "playwright",
+      "reason": "Capture official source pages at the final video crop and record any source-bound fallback.",
+      "output": "official source page images",
+      "outputPaths": [
+        "artifacts/images/a02-top-1-source.png",
+        "artifacts/images/a03-top-2-source.png",
+        "artifacts/images/a04-top-3-source.png"
+      ],
+      "proof": "artifacts/reviews/asset-capture-validation.json",
+      "status": "complete"
+    },
+    {
+      "stage": "renderer",
+      "skill": "html-d3-anime-video-workflow",
+      "reason": "Own deterministic browser frames, visual identifiers, audio muxing and MP4 validation.",
+      "output": "deterministic HTML renderer",
+      "outputPaths": [
+        "src/index.html"
+      ],
+      "proof": "artifacts/reviews/renderer-route-validation.json",
+      "status": "complete"
+    }
+  ],
+  "assets": [
+    {
+      "id": "a01-proximity-map",
+      "kind": "diagram",
+      "claim": "Show the Museums, Science & History evidence required for scene 1 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a01-proximity-map.png",
+      "sha256": "c92de63321217fc2438bbdcd9ce5a1d1be93dbd1117e41ee3756e59ef7c246c6",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:museums-science-history:a01-proximity-map",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Etowah Indian Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "17d8e89e372109d52786a5d746035520c77be97f173a0869879145921e63dd33",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Indian Mounds State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Funk Heritage Center",
+            "pageUrl": "https://www.reinhardt.edu/funkheritage/",
+            "imageUrl": null,
+            "imageSha256": "0af8aab5ec6884852edea105fcd7ec3f990b5a6d247068f3ccc56517b56d8c62",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a01-proximity-map-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s01",
+          "beatId": "b01",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a02-top-1-source",
+      "kind": "screenshot",
+      "claim": "Show the Museums, Science & History evidence required for scene 2 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a02-top-1-source.png",
+      "sha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+      "origin": {
+        "type": "captured",
+        "uri": "https://www.nps.gov/ocmu/index.htm",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a02-top-1-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s02",
+          "beatId": "b02",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a03-top-2-source",
+      "kind": "screenshot",
+      "claim": "Show the Museums, Science & History evidence required for scene 3 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a03-top-2-source.png",
+      "sha256": "17d8e89e372109d52786a5d746035520c77be97f173a0869879145921e63dd33",
+      "origin": {
+        "type": "captured",
+        "uri": "https://gastateparks.org/EtowahIndianMounds",
+        "rightsStatus": "official-source",
+        "rightsNote": "official-source-private-family-planning-use",
+        "attribution": "Official visual page for Etowah Indian Mounds State Historic Site; private family-planning use.",
+        "embeddedSources": [
+          {
+            "rank": 2,
+            "name": "Etowah Indian Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "17d8e89e372109d52786a5d746035520c77be97f173a0869879145921e63dd33",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Indian Mounds State Historic Site; private family-planning use."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "playwright",
+        "method": "Acquire and crop the official hero image at 1280x720 with Playwright browser automation.",
+        "report": "artifacts/reviews/a03-top-2-source-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s03",
+          "beatId": "b03",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a04-top-3-source",
+      "kind": "screenshot",
+      "claim": "Show the Museums, Science & History evidence required for scene 4 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a04-top-3-source.png",
+      "sha256": "0af8aab5ec6884852edea105fcd7ec3f990b5a6d247068f3ccc56517b56d8c62",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:museums-science-history:a04-top-3-source",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 3,
+            "name": "Funk Heritage Center",
+            "pageUrl": "https://www.reinhardt.edu/funkheritage/",
+            "imageUrl": null,
+            "imageSha256": "0af8aab5ec6884852edea105fcd7ec3f990b5a6d247068f3ccc56517b56d8c62",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "repo-native",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a04-top-3-source-validation.json",
+        "fallbackReason": "No acceptable official hero image was available after the declared acquisition fallbacks."
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s04",
+          "beatId": "b04",
+          "role": "source proof",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a05-top-five",
+      "kind": "diagram",
+      "claim": "Show the Museums, Science & History evidence required for scene 5 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a05-top-five.png",
+      "sha256": "306c9067bb00609cd7612f200de63ad1f87dfed2fa4335318424ecd5cd0a93aa",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:museums-science-history:a05-top-five",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Etowah Indian Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "17d8e89e372109d52786a5d746035520c77be97f173a0869879145921e63dd33",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Indian Mounds State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Funk Heritage Center",
+            "pageUrl": "https://www.reinhardt.edu/funkheritage/",
+            "imageUrl": null,
+            "imageSha256": "0af8aab5ec6884852edea105fcd7ec3f990b5a6d247068f3ccc56517b56d8c62",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 4,
+            "name": "Cherokee County History Center",
+            "pageUrl": "https://historycherokee.org/visit/",
+            "imageUrl": "https://cdn.sanity.io/images/aaskokbc/production/79b91bdcfe73c3585002404e64ea76a02646c1da-1080x1080.jpg?w=1080&h=1080&auto=format",
+            "imageSha256": "103a67ba59f78d3631e222fa0660927a1898101b642967666051c5644967e6d4",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Cherokee County History Center; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Museum of History and Holocaust Education",
+            "pageUrl": "https://www.kennesaw.edu/arts/academics/museum-history-holocaust-education/",
+            "imageUrl": "https://campus.kennesaw.edu/404/images/scrappy.jpg",
+            "imageSha256": "305c4b2f5d9db58302b6f44da9938a4c0446b2606940ab44896fe172bf4f1e99",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Museum of History and Holocaust Education; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a05-top-five-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s05",
+          "beatId": "b05",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a06-preference-bars",
+      "kind": "diagram",
+      "claim": "Show the Museums, Science & History evidence required for scene 6 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a06-preference-bars.png",
+      "sha256": "10a9fd0ce967148e5de18cb81cdb6f35a25454e0b7f3db7ab07bb85fe98d2020",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:museums-science-history:a06-preference-bars",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Etowah Indian Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "17d8e89e372109d52786a5d746035520c77be97f173a0869879145921e63dd33",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Indian Mounds State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Funk Heritage Center",
+            "pageUrl": "https://www.reinhardt.edu/funkheritage/",
+            "imageUrl": null,
+            "imageSha256": "0af8aab5ec6884852edea105fcd7ec3f990b5a6d247068f3ccc56517b56d8c62",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 4,
+            "name": "Cherokee County History Center",
+            "pageUrl": "https://historycherokee.org/visit/",
+            "imageUrl": "https://cdn.sanity.io/images/aaskokbc/production/79b91bdcfe73c3585002404e64ea76a02646c1da-1080x1080.jpg?w=1080&h=1080&auto=format",
+            "imageSha256": "103a67ba59f78d3631e222fa0660927a1898101b642967666051c5644967e6d4",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Cherokee County History Center; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Museum of History and Holocaust Education",
+            "pageUrl": "https://www.kennesaw.edu/arts/academics/museum-history-holocaust-education/",
+            "imageUrl": "https://campus.kennesaw.edu/404/images/scrappy.jpg",
+            "imageSha256": "305c4b2f5d9db58302b6f44da9938a4c0446b2606940ab44896fe172bf4f1e99",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Museum of History and Holocaust Education; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "The Breman Museum",
+            "pageUrl": "https://www.thebreman.org/",
+            "imageUrl": "https://thebreman.org/wp-content/uploads/2026/05/bukharian_web_2205x975-1024x453.jpg",
+            "imageSha256": "eed2c2cb3167e38e0b83f6a2ec680c83fafa0205060625d5466a332ac4a3fb5b",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for The Breman Museum; verify reuse terms before public publication."
+          },
+          {
+            "rank": 7,
+            "name": "Martin Luther King, Jr. National Historical Park Visitor Center",
+            "pageUrl": "https://www.nps.gov/malu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/grid_builder/malu/crop16_9/C5BE8CA9-B173-FEEF-A7F4610532393282.jpg?width=1300&quality=80&mode=crop&format=webp",
+            "imageSha256": "1c6d669442772a8c9ba72c580928204f326c7245b9c75623c42fc7decf0baf49",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Martin Luther King, Jr. National Historical Park Visitor Center; verify reuse terms before public publication."
+          },
+          {
+            "rank": 8,
+            "name": "Alpharetta and Old Milton County History Museum",
+            "pageUrl": "https://www.awesomealpharetta.com/play/attraction/alpharetta-and-old-milton-county-history-museum/",
+            "imageUrl": "https://www.awesomealpharetta.com/wp-content/uploads/2024/03/acvb-default-social-3-2024.jpg",
+            "imageSha256": "1a6912ce786e0cdf95ac0329d90dcfd715a547b7707f42fe703aa594397be754",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Alpharetta and Old Milton County History Museum; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a06-preference-bars-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s06",
+          "beatId": "b06",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a07-decision-board",
+      "kind": "diagram",
+      "claim": "Show the Museums, Science & History evidence required for scene 7 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a07-decision-board.png",
+      "sha256": "5f1e1bcba5584ceecbc66cd8adcfb1cf70ab71d1d54f8b52013dd4f7cc37d91f",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:museums-science-history:a07-decision-board",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Etowah Indian Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "17d8e89e372109d52786a5d746035520c77be97f173a0869879145921e63dd33",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Indian Mounds State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 7,
+            "name": "Martin Luther King, Jr. National Historical Park Visitor Center",
+            "pageUrl": "https://www.nps.gov/malu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/grid_builder/malu/crop16_9/C5BE8CA9-B173-FEEF-A7F4610532393282.jpg?width=1300&quality=80&mode=crop&format=webp",
+            "imageSha256": "1c6d669442772a8c9ba72c580928204f326c7245b9c75623c42fc7decf0baf49",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Martin Luther King, Jr. National Historical Park Visitor Center; verify reuse terms before public publication."
+          },
+          {
+            "rank": 8,
+            "name": "Alpharetta and Old Milton County History Museum",
+            "pageUrl": "https://www.awesomealpharetta.com/play/attraction/alpharetta-and-old-milton-county-history-museum/",
+            "imageUrl": "https://www.awesomealpharetta.com/wp-content/uploads/2024/03/acvb-default-social-3-2024.jpg",
+            "imageSha256": "1a6912ce786e0cdf95ac0329d90dcfd715a547b7707f42fe703aa594397be754",
+            "status": "strong",
+            "method": "official-meta-image",
+            "attribution": "Official source image for Alpharetta and Old Milton County History Museum; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a07-decision-board-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s07",
+          "beatId": "b07",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    },
+    {
+      "id": "a08-planner-callback",
+      "kind": "diagram",
+      "claim": "Show the Museums, Science & History evidence required for scene 8 with visible source-bound destination imagery.",
+      "output": "artifacts/images/a08-planner-callback.png",
+      "sha256": "0a52356a1e06b60585d93b28f2e94bac40803fd4abc52a3f8863b9529edf2962",
+      "origin": {
+        "type": "generated",
+        "uri": "project-dataset:museums-science-history:a08-planner-callback",
+        "rightsStatus": "project-generated",
+        "rightsNote": "project-generated photo/data composite",
+        "attribution": "Holiday 2026 photo/data composite from declared official-source images.",
+        "embeddedSources": [
+          {
+            "rank": 1,
+            "name": "Ocmulgee Mounds National Historical Park",
+            "pageUrl": "https://www.nps.gov/ocmu/index.htm",
+            "imageUrl": "https://www.nps.gov/common/uploads/structured_data/3C797774-1DD8-B71B-0B2DA9E973C5AD89.jpg?width=840&height=630&mode=crop&quality=78&format=webp",
+            "imageSha256": "76b4e759db14df63b9a6f143e98da7b11c5261d09eb9c518bcebc1dcd723f41a",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Ocmulgee Mounds National Historical Park; verify reuse terms before public publication."
+          },
+          {
+            "rank": 2,
+            "name": "Etowah Indian Mounds State Historic Site",
+            "pageUrl": "https://gastateparks.org/EtowahIndianMounds",
+            "imageUrl": null,
+            "imageSha256": "17d8e89e372109d52786a5d746035520c77be97f173a0869879145921e63dd33",
+            "status": "strong",
+            "method": "official-visual-page",
+            "attribution": "Official visual page for Etowah Indian Mounds State Historic Site; private family-planning use."
+          },
+          {
+            "rank": 3,
+            "name": "Funk Heritage Center",
+            "pageUrl": "https://www.reinhardt.edu/funkheritage/",
+            "imageUrl": null,
+            "imageSha256": "0af8aab5ec6884852edea105fcd7ec3f990b5a6d247068f3ccc56517b56d8c62",
+            "status": "fallback",
+            "method": "soft-project-card",
+            "attribution": "Holiday 2026 project-generated fallback card."
+          },
+          {
+            "rank": 4,
+            "name": "Cherokee County History Center",
+            "pageUrl": "https://historycherokee.org/visit/",
+            "imageUrl": "https://cdn.sanity.io/images/aaskokbc/production/79b91bdcfe73c3585002404e64ea76a02646c1da-1080x1080.jpg?w=1080&h=1080&auto=format",
+            "imageSha256": "103a67ba59f78d3631e222fa0660927a1898101b642967666051c5644967e6d4",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Cherokee County History Center; verify reuse terms before public publication."
+          },
+          {
+            "rank": 5,
+            "name": "Museum of History and Holocaust Education",
+            "pageUrl": "https://www.kennesaw.edu/arts/academics/museum-history-holocaust-education/",
+            "imageUrl": "https://campus.kennesaw.edu/404/images/scrappy.jpg",
+            "imageSha256": "305c4b2f5d9db58302b6f44da9938a4c0446b2606940ab44896fe172bf4f1e99",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for Museum of History and Holocaust Education; verify reuse terms before public publication."
+          },
+          {
+            "rank": 6,
+            "name": "The Breman Museum",
+            "pageUrl": "https://www.thebreman.org/",
+            "imageUrl": "https://thebreman.org/wp-content/uploads/2026/05/bukharian_web_2205x975-1024x453.jpg",
+            "imageSha256": "eed2c2cb3167e38e0b83f6a2ec680c83fafa0205060625d5466a332ac4a3fb5b",
+            "status": "strong",
+            "method": "official-hero-image",
+            "attribution": "Official source image for The Breman Museum; verify reuse terms before public publication."
+          }
+        ]
+      },
+      "producer": {
+        "skill": "d3-animated-svg",
+        "method": "Generate a deterministic ranked photo/data composite from project-bound source images.",
+        "report": "artifacts/reviews/a08-planner-callback-validation.json"
+      },
+      "technical": {
+        "targetWidth": 1280,
+        "targetHeight": 720,
+        "aspectRatio": "16:9",
+        "maxUpscale": 1.0,
+        "crop": "Preserve primary destination subjects, score/distance evidence and the declared 16:9 safe area."
+      },
+      "uses": [
+        {
+          "sceneId": "s08",
+          "beatId": "b08",
+          "role": "photo-supported data visualization",
+          "fit": "contain inside the focal image plane without clipping or distortion"
+        }
+      ],
+      "status": "verified",
+      "qualityChecks": [
+        "Inspect dimensions, source-image uniqueness and visible variance at the final crop.",
+        "Verify destination subjects remain visible beneath the restrained scene overlay.",
+        "Confirm provenance, rights status, attribution and content digest.",
+        "Reject blocked pages, administrative notices, clipping, blank captures and accidental overlays."
+      ]
+    }
+  ]
+}

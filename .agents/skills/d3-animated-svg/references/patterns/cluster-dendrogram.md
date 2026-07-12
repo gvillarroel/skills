@@ -1,6 +1,6 @@
 # Cluster Dendrogram
 
-- **Pattern ID:** `d3-pattern-cluster-dendrogram`
+- **Pattern ID:** `d3-cluster-dendrogram`
 - **Gallery source ID:** `cluster-dendrogram`
 - **Family:** Hierarchy
 - **Use when:** Equal-depth leaves reveal the structure of a clustered tree.

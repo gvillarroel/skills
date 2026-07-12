@@ -63,7 +63,7 @@ Implementation steps:
 
 Validation hooks:
 
-- Root SVG exposes `data-pattern-id="d3-pattern-force-network"`.
+- Root SVG exposes `data-pattern-id="d3-force-network"`.
 - Final SVG contains 9 circles, 11 link lines, and 9 readable labels.
 - A reduced-motion or static screenshot must still show the links, circles, and labels; no mark may rely on `opacity: 0` plus a disabled animation.
 
@@ -111,7 +111,7 @@ class Example:
 
     @property
     def pattern_id(self) -> str:
-        return f"d3-pattern-{self.id}"
+        return f"d3-{self.id}"
 
 
 def skill_dir() -> Path:
@@ -259,7 +259,7 @@ def extra_index_rows(index_path: Path, gallery_pattern_ids: set[str]) -> list[st
         return []
     extras: list[str] = []
     for line in index_path.read_text(encoding="utf-8").splitlines():
-        match = re.match(r"^\|\s*`(?P<pattern_id>d3-pattern-[^`]+)`\s*\|", line)
+        match = re.match(r"^\|\s*`(?P<pattern_id>d3-[^`]+)`\s*\|", line)
         if match and match.group("pattern_id") not in gallery_pattern_ids:
             extras.append(line)
     return extras
@@ -269,7 +269,7 @@ def write_index(examples: list[Example], index_path: Path, preserved_rows: list[
     rows = [
         "# D3 Pattern Index",
         "",
-        "Read this file when a user names a `d3-pattern-*` ID or asks to adapt a gallery pattern. Then read only the matching file under `references/patterns/`.",
+        "Read this file when a user names a `d3-*` ID or asks to adapt a gallery pattern. Then read only the matching file under `references/patterns/`.",
         "",
         "Do not read the gallery source for normal pattern generation. Use the gallery source only when changing or validating the gallery fixture.",
         "",

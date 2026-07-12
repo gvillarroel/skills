@@ -1,6 +1,6 @@
 # Hexbin Field
 
-- **Pattern ID:** `d3-pattern-hexbin`
+- **Pattern ID:** `d3-hexbin`
 - **Gallery source ID:** `hexbin`
 - **Family:** Density
 - **Use when:** Binned point density in hexagonal cells.

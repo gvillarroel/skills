@@ -248,6 +248,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--min-readiness-score", type=int, default=18)
     parser.add_argument("--min-style-fidelity-score", type=int, default=12)
     parser.add_argument("--allow-weak-readiness", action="store_true")
+    parser.add_argument("--output", type=Path, help="Write the full JSON validation report to this path.")
     parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON.")
     return parser.parse_args()
 
@@ -595,6 +596,7 @@ def validate_package_manifest(
     require_source_links: bool = False,
     require_visual_contract: bool = False,
     expected_artifacts: dict[str, Path | None] | None = None,
+    require_declared_files: bool = False,
 ) -> dict[str, Any] | None:
     info = require_file(path, "package manifest", failures, warnings, required)
     if info is None or path is None or not path.exists():
@@ -671,6 +673,35 @@ def validate_package_manifest(
         failures.append("package manifest missing commands: " + ", ".join(missing_commands))
 
     package_root = path.parent.parent.resolve()
+    declared_file_checks: dict[str, dict[str, Any]] = {}
+    if require_declared_files:
+        for manifest_name, raw_declared_path in paths.items():
+            if manifest_name == "packageValidation":
+                continue
+            if not isinstance(raw_declared_path, str) or not raw_declared_path.strip():
+                failures.append(f"package manifest paths.{manifest_name} must be a non-empty string")
+                declared_file_checks[manifest_name] = {"path": raw_declared_path, "exists": False, "safe": False}
+                continue
+            declared_path = Path(raw_declared_path)
+            if declared_path.is_absolute() or declared_path.drive:
+                failures.append(f"package manifest paths.{manifest_name} must be project-root-relative")
+                declared_file_checks[manifest_name] = {"path": raw_declared_path, "exists": False, "safe": False}
+                continue
+            resolved_declared_path = (package_root / declared_path).resolve()
+            try:
+                resolved_declared_path.relative_to(package_root)
+            except ValueError:
+                failures.append(f"package manifest paths.{manifest_name} escapes the project root")
+                declared_file_checks[manifest_name] = {"path": raw_declared_path, "exists": False, "safe": False}
+                continue
+            declared_exists = resolved_declared_path.is_file()
+            declared_file_checks[manifest_name] = {
+                "path": raw_declared_path,
+                "exists": declared_exists,
+                "safe": True,
+            }
+            if not declared_exists:
+                failures.append(f"package manifest paths.{manifest_name} file missing: {raw_declared_path}")
     if expected_artifacts:
         for manifest_name, artifact_path in expected_artifacts.items():
             if artifact_path is None:
@@ -957,6 +988,8 @@ def validate_package_manifest(
     info["requirePatternBlueprint"] = require_pattern_blueprint
     info["requireStyleFidelityReport"] = require_style_fidelity_report
     info["requireSourceLinks"] = require_source_links
+    info["requireDeclaredFiles"] = require_declared_files
+    info["declaredFileChecks"] = declared_file_checks
     info["finalAudioPath"] = final_audio_path
     info["finalAudioExists"] = final_audio_exists
     info["styleFidelityPath"] = style_fidelity_path
@@ -1772,6 +1805,7 @@ def validate(args: argparse.Namespace) -> dict[str, Any]:
                 "readinessScore": args.readiness_report,
                 "styleFidelity": args.style_fidelity_report,
             },
+            require_declared_files=True,
         ),
         "patternBlueprint": validate_pattern_blueprint(
             args.pattern_blueprint,
@@ -1894,6 +1928,9 @@ def validate(args: argparse.Namespace) -> dict[str, Any]:
 def main() -> int:
     args = parse_args()
     result = validate(args)
+    if args.output:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8", newline="\n")
     if args.json:
         print(json.dumps(result, indent=2))
     elif result["ok"]:

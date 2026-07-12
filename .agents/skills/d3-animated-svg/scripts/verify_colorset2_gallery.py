@@ -140,14 +140,14 @@ VERIFY_JS = r"""
     const patternId = card.dataset.patternId || "";
     const basePatternId = card.dataset.basePatternId || "";
     const svg = card.querySelector("svg");
-    if (!patternId.startsWith("d3-pattern-cs2-")) {
+    if (patternId !== `d3-${exampleId}-cs2`) {
       badPatternIds.push({ exampleId, patternId });
     }
     if (seenPatternIds.has(patternId)) {
       badPatternIds.push({ exampleId, patternId, duplicate: true });
     }
     seenPatternIds.add(patternId);
-    if (basePatternId !== `d3-pattern-${exampleId}` || card.dataset.styleVersion !== "colorset2") {
+    if (basePatternId !== `d3-${exampleId}` || card.dataset.styleVersion !== "colorset2") {
       badCardMetadata.push({ exampleId, basePatternId, styleVersion: card.dataset.styleVersion || null });
     }
     if (
@@ -155,7 +155,7 @@ VERIFY_JS = r"""
       svg.dataset.styleVersion !== "colorset2" ||
       svg.dataset.colorSet !== "colorset2" ||
       svg.dataset.paletteName !== "full-color-style" ||
-      svg.dataset.basePatternId !== `d3-pattern-${exampleId}`
+      svg.dataset.basePatternId !== `d3-${exampleId}`
     ) {
       badSvgMetadata.push({
         exampleId,
@@ -203,8 +203,8 @@ VERIFY_JS = r"""
   const metadataFailures = metadata.filter(item =>
     item.styleVersion !== "colorset2" ||
     item.colorSet !== "colorset2" ||
-    !item.patternId?.startsWith("d3-pattern-cs2-") ||
-    item.basePatternId !== `d3-pattern-${item.id}`
+    item.patternId !== `d3-${item.id}-cs2` ||
+    item.basePatternId !== `d3-${item.id}`
   );
   if (metadata.length !== expected) {
     findings.push(`Expected ${expected} metadata records, found ${metadata.length}.`);

@@ -1,6 +1,6 @@
 # Arc Tween
 
-- **Pattern ID:** `d3-pattern-arc-tween`
+- **Pattern ID:** `d3-arc-tween`
 - **Gallery source ID:** `arc-tween`
 - **Family:** Morph
 - **Use when:** Radial segments interpolate from one angle state to another.

@@ -1,6 +1,6 @@
 # Epicyclic Gearing
 
-- **Pattern ID:** `d3-pattern-epicyclic-gearing`
+- **Pattern ID:** `d3-epicyclic-gearing`
 - **Gallery source ID:** `epicyclic-gearing`
 - **Family:** Geometry
 - **Use when:** Nested circular motion traces gear-like paths.

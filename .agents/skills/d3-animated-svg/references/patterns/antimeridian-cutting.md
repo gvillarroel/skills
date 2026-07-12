@@ -1,6 +1,6 @@
 # Antimeridian Cutting
 
-- **Pattern ID:** `d3-pattern-antimeridian-cutting`
+- **Pattern ID:** `d3-antimeridian-cutting`
 - **Gallery source ID:** `antimeridian-cutting`
 - **Family:** Projection
 - **Use when:** A route splits cleanly at the dateline instead of crossing the map.

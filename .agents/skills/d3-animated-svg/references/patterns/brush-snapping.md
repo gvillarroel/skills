@@ -1,6 +1,6 @@
 # Brush Snapping
 
-- **Pattern ID:** `d3-pattern-brush-snapping`
+- **Pattern ID:** `d3-brush-snapping`
 - **Gallery source ID:** `brush-snapping`
 - **Family:** Interaction
 - **Use when:** A loose brush snaps to calendar-like interval boundaries.

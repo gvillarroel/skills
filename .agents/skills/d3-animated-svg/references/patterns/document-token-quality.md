@@ -1,6 +1,6 @@
 # Document Token Quality
 
-- **Pattern ID:** `d3-pattern-document-token-quality`
+- **Pattern ID:** `d3-document-token-quality`
 - **Gallery source ID:** `document-token-quality`
 - **Family:** Document
 - **Use when:** Three document blocks encode correct, filler, and wrong word-length shares at 20/70/10, 10/85/5, and 70/10/20.

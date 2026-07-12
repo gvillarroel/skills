@@ -8,7 +8,7 @@ When a gallery card or standalone SVG pattern proves reusable during skill maint
 
 Capture:
 
-- stable `d3-pattern-*` ID
+- stable `d3-*` ID
 - trigger context
 - data contract
 - geometry contract

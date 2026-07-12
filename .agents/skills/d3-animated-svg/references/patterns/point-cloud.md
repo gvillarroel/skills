@@ -1,6 +1,6 @@
 # Point Cloud
 
-- **Pattern ID:** `d3-pattern-point-cloud`
+- **Pattern ID:** `d3-point-cloud`
 - **Gallery source ID:** `point-cloud`
 - **Family:** Distribution
 - **Use when:** Small gray circles float around an invisible horizontal line.

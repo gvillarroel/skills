@@ -1,6 +1,6 @@
 # Sunburst
 
-- **Pattern ID:** `d3-pattern-sunburst`
+- **Pattern ID:** `d3-sunburst`
 - **Gallery source ID:** `sunburst`
 - **Family:** Hierarchy
 - **Use when:** Radial partition for nested composition.

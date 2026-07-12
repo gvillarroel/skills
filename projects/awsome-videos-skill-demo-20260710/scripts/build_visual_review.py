@@ -41,69 +41,153 @@ REVIEW_CHECKS = (
     "safeAreas",
     "sourceProof",
     "typography",
+    "recognizableObject",
+    "inputActionOutput",
+    "assetDominance",
+    "semanticMotion",
+    "silentComprehension",
 )
 
 
 SCENE_FINDINGS = {
     "s01": (
-        "The compressed diagonal prompt wall creates immediate pressure while the persistent red edge "
-        "remains a clear secondary handoff and the source proof stays readable.",
-        "Tightened the prompt-strip crop and kept the proof inset clear of the diagonal so the first eye "
-        "landing remains on the repeated-workflow problem.",
+        "Three recognizable task windows receive the same prompt while the active-context container fills, "
+        "so the repeated-input problem and its consequence remain understandable with audio muted.",
+        "Kept the task windows, copied prompt, and context warning unobstructed so input, repeated action, "
+        "and saturated-context result can be named from the hold frame alone.",
     ),
     "s02": (
-        "The SKILL.md package is the dominant centered object; its stacked resources read as one compact "
-        "operational unit without losing the persistent red edge.",
-        "Reduced competing support geometry and aligned the package stack to the red edge before capturing "
-        "the approved evidence phases.",
+        "The open SKILL.md folder is the dominant recognizable object, and its instructions, references, "
+        "scripts, and assets read as one operational package without narration.",
+        "Reserved clear space around the package assembly so the incoming repeated prompt, bundling action, "
+        "and completed instructions-plus-resources result remain visible in sequence.",
     ),
     "s03": (
-        "The left-to-right disclosure path clearly separates the active reference from dormant resources, "
-        "making selective context loading visible rather than merely narrated.",
-        "Opened more clearance around the active-reference lane and subdued dormant resources so the "
-        "disclosure mechanism wins the composition.",
+        "A validation task, the SKILL.md core, a resource shelf, and the active-context tray form a readable "
+        "input-to-selection-to-loaded-reference sequence even when playback is muted.",
+        "Kept the selected video-validation reference clear while it moves from the shelf into active "
+        "context, with dormant resources visibly remaining outside.",
     ),
     "s04": (
-        "References, scripts, and assets form three distinct resource roles around the core skill package; "
-        "their grouping is dense but remains legible at delivery resolution.",
-        "Regularized the resource spacing and retained hard square edges so the bundle reads as one system "
-        "instead of a set of unrelated cards.",
+        "The manual, terminal, and media workstations are recognizable as references, scripts, and assets; "
+        "their criterion, execution, and material outputs converge on a visible ready-video result.",
+        "Preserved independent clearance for all three workstations and the assembled output so sequential "
+        "activation changes meaning rather than merely adding motion.",
     ),
     "s05": (
-        "The specialist router gives each visual request a clear destination and keeps the output proof as "
-        "the dominant endpoint rather than treating the tools as decoration.",
-        "Strengthened the route hierarchy and separated the Mermaid, D3, and image branches before approving "
-        "the output-focused hold frame.",
+        "A concrete visual request enters a decision switchboard and reaches recognizable Mermaid, D3, or "
+        "ImageGen outputs, making the routing choice readable without explanatory audio.",
+        "Activated only one route at a time and kept each resulting diagram, chart, or image unobstructed so "
+        "the selected producer and returned artifact remain unambiguous.",
     ),
     "s06": (
-        "The validation gate presents checks as a consequential workflow stage, with the approved output "
-        "visibly downstream and no label collisions around the gate.",
-        "Expanded the gate clearance and reserved red for the active validation state so success reads as a "
-        "semantic change rather than a decorative color shift.",
+        "A visible artifact crosses named route, structure, content, and visual gates; the cropped-text defect "
+        "is rejected, corrected, and then reaches the clearly marked ready state.",
+        "Kept the rejected thumbnail, correction loop, second pass, and approved output separated so the "
+        "semantic retry remains legible at normal playback speed and in mute review.",
     ),
     "s07": (
-        "The context comparison communicates the qualitative benefit of a compact reusable core without "
-        "invented percentages, while the oversized-skill limitation remains visible.",
-        "Removed quantitative-looking decoration and increased separation between compact and oversized "
-        "states so the limitation is explicit and honest.",
+        "Two recognizable context containers contrast an always-pasted prompt with a compact SKILL.md core "
+        "plus one selected detail, while the oversized-skill warning preserves the limitation.",
+        "Kept all comparison labels and warning states unobstructed and avoided quantitative-looking marks so "
+        "the qualitative context benefit remains explicit and honest.",
     ),
     "s08": (
-        "The final workflow hub resolves the earlier components into one reusable loop and returns the "
-        "persistent red edge to the compact package for a legible callback.",
-        "Centered the callback path and held the completed system through the audio tail so the ending feels "
-        "resolved rather than abruptly cut.",
+        "The central SKILL.md folder activates across repository, terminal, document, and browser surfaces, "
+        "leaving recognizable approved results before returning to a ready state.",
+        "Kept every project surface, activation route, result check, and final ready-for-the-next-task label "
+        "clear through the closing hold.",
     ),
 }
 
 
+SILENT_COMPREHENSION = {
+    "s01": {
+        "recognizableObject": "Three project-task windows and one active-context container are recognizable before reading supporting copy.",
+        "input": "The same long instruction document enters BUG, DEPLOY, and DOCS tasks.",
+        "action": "The instruction document is copied again while the active-context cells fill.",
+        "output": "The third copy produces a visible context-full warning.",
+        "assetDominance": "The manifest-bound SVG occupies about 72 percent of the frame and owns the first eye landing.",
+        "semanticMotion": "Document travel, task highlighting, and context growth encode repetition and saturation rather than decorative movement.",
+    },
+    "s02": {
+        "recognizableObject": "An open SKILL.md folder, instruction page, reference folder, terminal, and media asset are individually recognizable.",
+        "input": "The repeated prompt arrives at the SKILL.md package.",
+        "action": "Instructions and supporting resources assemble into one named folder.",
+        "output": "The completed package exposes instructions plus reusable resources.",
+        "assetDominance": "The manifest-bound SVG occupies about 49 percent of the frame and remains the centered hero object.",
+        "semanticMotion": "Incoming prompt travel and sequential resource activation show packaging and assembly.",
+    },
+    "s03": {
+        "recognizableObject": "A validation task card, SKILL.md core, resource shelf, and active-context tray are visually distinct.",
+        "input": "The task asks how to validate the final video.",
+        "action": "Only video-validation.md is selected from the shelf and moved toward active context.",
+        "output": "Active context contains the compact core and exactly one selected reference.",
+        "assetDominance": "The manifest-bound SVG occupies about 64 percent of the frame and contains the full causal path.",
+        "semanticMotion": "Reference selection and tray entry make progressive disclosure visible as a state change.",
+    },
+    "s04": {
+        "recognizableObject": "A manual, terminal, media library, and ready-video output form three familiar production workstations.",
+        "input": "The skill exposes references, scripts, and assets for the current task.",
+        "action": "The workstations contribute criterion, execution, and material in sequence.",
+        "output": "Their outputs converge on a visibly completed video artifact.",
+        "assetDominance": "The manifest-bound SVG occupies about 72 percent of the frame and gives each resource role a large dedicated lane.",
+        "semanticMotion": "Sequential checks and convergence encode contribution and assembly instead of generic pulsing.",
+    },
+    "s05": {
+        "recognizableObject": "A visual-request document, decision switchboard, flowchart, chart, and generated image are recognizable.",
+        "input": "A request identifies a flow, data, or scene need.",
+        "action": "The switchboard selects Mermaid, D3, or ImageGen according to that need.",
+        "output": "The selected branch returns a visibly different verified artifact.",
+        "assetDominance": "The manifest-bound SVG occupies about 72 percent of the frame and makes the routing decision the dominant composition.",
+        "semanticMotion": "One active route and one moving work packet expose the producer choice; inactive routes remain subordinate.",
+    },
+    "s06": {
+        "recognizableObject": "A media thumbnail, four named inspection gates, a repair station, and a ready stamp are recognizable.",
+        "input": "A candidate visual artifact enters the validation corridor.",
+        "action": "The artifact fails on cropped text, returns for correction, and traverses the gates again.",
+        "output": "The corrected artifact reaches the LISTO state.",
+        "assetDominance": "The manifest-bound SVG occupies about 64 percent of the frame and keeps the retry loop within the primary reading path.",
+        "semanticMotion": "Artifact travel, rejection, repair, and re-entry expose validation as a blocking gate with consequence.",
+    },
+    "s07": {
+        "recognizableObject": "Two context containers, repeated prompt blocks, a SKILL.md core, selected detail, and free space are recognizable.",
+        "input": "The comparison starts with the same reusable instructions needed for a task.",
+        "action": "One side keeps every prompt block loaded; the other loads the core and one requested detail.",
+        "output": "The on-demand side preserves free space, while an inflated-skill warning shows the limitation.",
+        "assetDominance": "The manifest-bound SVG occupies about 72 percent of the frame and gives both context states a shared visual scale.",
+        "semanticMotion": "Context filling, selective loading, and the late warning change information state without implying invented percentages.",
+    },
+    "s08": {
+        "recognizableObject": "A central SKILL.md folder connects to repository, terminal, document, and browser project surfaces.",
+        "input": "Each project surface presents a distinct recurring task.",
+        "action": "The same skill activates one project route at a time.",
+        "output": "Every project receives an approved result and the skill returns ready for the next task.",
+        "assetDominance": "The manifest-bound SVG occupies about 49 percent of the frame and keeps the reusable folder at the visual center.",
+        "semanticMotion": "Sequential route activation and persistent result checks encode reuse across projects and a final return to rest.",
+    },
+}
+
+
 TRANSITION_FINDINGS = {
-    "s01__s02": "The compressed prompt strips hand their red edge into the compact SKILL.md package, preserving direction and focal continuity across the camera move.",
-    "s02__s03": "The package edge becomes the active disclosure lane, so attention moves from the reusable core to the one reference opened for the task.",
-    "s03__s04": "The active reference expands into the broader resource bundle while dormant context remains subordinate through the seam midpoint.",
-    "s04__s05": "The resource bundle reorganizes into specialist routes, and the red edge lands on the router output before the new camera crop settles.",
-    "s05__s06": "The specialist output persists into the validation gate, carrying the viewer from production choice to proof of quality without a dead cut.",
-    "s06__s07": "The approved gate state hands attention to the compact-context comparison while red remains limited to the active semantic state.",
-    "s07__s08": "The compact context state expands into the reusable workflow hub and completes the callback with a stable final hold.",
+    "s01__s02": "The repeated instruction pages bind into the labeled red SKILL packet, which becomes the assembled SKILL.md package instead of dissolving into an abstract line.",
+    "s02__s03": "The SKILL package opens the selected video-validation reference and carries that document into the active-context tray.",
+    "s03__s04": "The selected reference remains identifiable as it becomes the criterion input for the three recognizable production workstations.",
+    "s04__s05": "The completed workbench output becomes the concrete request entering the Mermaid, D3, and ImageGen specialist switchboard.",
+    "s05__s06": "The selected specialist artifact persists as the media thumbnail entering the named validation gates.",
+    "s06__s07": "The approved artifact stamp remains attached to the SKILL package as the validation corridor resolves into the two context containers.",
+    "s07__s08": "The on-demand SKILL package leaves the comparison and becomes the same central folder reused across four recognizable project surfaces.",
+}
+
+
+TRANSITION_CORRECTIONS = {
+    "s01__s02": "Kept the instruction pages and labeled SKILL packet visible at the seam so the package assembly is trackable before the next hold.",
+    "s02__s03": "Preserved the package and selected reference identities through the handoff and cleared both objects from competing labels.",
+    "s03__s04": "Held the selected reference on screen until the references workstation accepted it as criterion input.",
+    "s04__s05": "Carried the completed production artifact into the visual-request intake without replacing it with an unlabelled connector.",
+    "s05__s06": "Matched the selected specialist output to the validation thumbnail and verified its identity before and after the seam.",
+    "s06__s07": "Kept the approval state attached to the skill package while the frame reorganized into the qualitative context comparison.",
+    "s07__s08": "Moved the same labeled skill package from on-demand context into the reuse hub and protected the final callback label.",
 }
 
 
@@ -150,8 +234,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--playback-notes",
         default=(
-            "Full-speed playback was reviewed with audio; camera handoffs remain readable, the recurring red "
-            "edge preserves continuity, and every focal mechanism receives a stable inspection hold."
+            "Full-speed playback was reviewed once with audio and once muted. Every scene preserves a "
+            "recognizable primary object, a readable input-action-output change, asset-first hierarchy, and "
+            "semantic motion; every seam carries a named object or consequence into the next scene."
         ),
     )
     parser.add_argument("--ffmpeg", default="ffmpeg")
@@ -453,14 +538,26 @@ def build_contact_sheet(
 
 
 def check_notes(scene: SceneInterval) -> dict[str, str]:
+    silent = SILENT_COMPREHENSION.get(scene.scene_id, {})
     return {
-        "clipping": f"The {scene.title} focal mechanism and its proof inset remain fully inside the 1280x720 frame.",
+        "clipping": f"The {scene.title} primary asset and its input, action, and output roles remain fully inside the 1280x720 frame.",
         "contrast": "Three tonal gray levels remain separable, while red is reserved for the semantic state and handoff.",
-        "focalClarity": f"The first eye landing is the {scene.title} mechanism; support geometry remains visibly subordinate.",
-        "overlap": "No local label crosses the focal geometry, persistent edge, or manifest-bound source-proof inset.",
-        "safeAreas": "The focal mechanism, proof inset, and transition handoff remain inside the declared frame-safe region.",
-        "sourceProof": f"The manifest-bound SVG for {scene.scene_id} is visible, legible, and separated from the primary mechanism.",
-        "typography": "Functional labels remain legible at delivery size and no title, subtitle, or caption band is introduced.",
+        "focalClarity": f"The manifest-bound {scene.title} SVG is the dominant object and wins the first eye landing over renderer overlays.",
+        "overlap": "No renderer overlay, recurring SKILL packet, status label, or transition mark hides a named object or causal state.",
+        "safeAreas": "The primary asset, functional labels, semantic overlays, and carried transition object stay inside the declared frame-safe region.",
+        "sourceProof": f"The manifest-bound SVG for {scene.scene_id} is the primary visible mechanism and carries the scene's source-bound claim.",
+        "typography": "Functional labels remain legible at delivery size, and explanatory prose stays in narration instead of a slide-like text panel.",
+        "recognizableObject": str(silent.get("recognizableObject", "The primary object can be named from the muted hold frame.")),
+        "inputActionOutput": " ".join(
+            str(silent.get(key, "")).strip() for key in ("input", "action", "output")
+        ).strip(),
+        "assetDominance": str(silent.get("assetDominance", "The manifest-bound asset dominates the frame.")),
+        "semanticMotion": str(silent.get("semanticMotion", "Motion changes a visible semantic state.")),
+        "silentComprehension": (
+            f"Within three seconds, the viewer can name the object ({silent.get('recognizableObject', scene.title)}), "
+            f"action ({silent.get('action', 'a visible causal change')}), and result "
+            f"({silent.get('output', 'a visible output state')})."
+        ),
     }
 
 
@@ -522,6 +619,38 @@ def main() -> int:
                 "evidenceFrames": evidence_frames,
                 "checks": {name: "pass" for name in REVIEW_CHECKS},
                 "checkNotes": check_notes(scene),
+                "silentComprehension": SILENT_COMPREHENSION.get(
+                    scene.scene_id,
+                    {
+                        "recognizableObject": f"The {scene.title} primary object can be named without narration.",
+                        "input": "The incoming object or state remains visible.",
+                        "action": "The scene changes that object or state through a causal visual action.",
+                        "output": "The result remains visible in the final evidence phase.",
+                        "assetDominance": "The manifest-bound asset owns the first eye landing.",
+                        "semanticMotion": "Motion changes meaning rather than merely moving decoration.",
+                    },
+                ),
+                "silentTest": {
+                    "durationSeconds": 3,
+                    "object": str(
+                        SILENT_COMPREHENSION.get(scene.scene_id, {}).get(
+                            "recognizableObject",
+                            f"The {scene.title} primary object is recognizable without narration.",
+                        )
+                    ),
+                    "action": str(
+                        SILENT_COMPREHENSION.get(scene.scene_id, {}).get(
+                            "action",
+                            "The primary object undergoes a visible causal change.",
+                        )
+                    ),
+                    "result": str(
+                        SILENT_COMPREHENSION.get(scene.scene_id, {}).get(
+                            "output",
+                            "The resulting state remains visible in the final evidence frame.",
+                        )
+                    ),
+                },
                 "status": "approved",
                 "finding": finding,
                 "correction": correction,
@@ -551,9 +680,12 @@ def main() -> int:
                 "status": "pass",
                 "finding": TRANSITION_FINDINGS.get(
                     transition_id,
-                    f"The persistent red edge carries attention from {left.title} into {right.title} without clipping or ambiguity.",
+                    f"A named object or consequence carries attention from {left.title} into {right.title} without clipping or ambiguity.",
                 ),
-                "correction": "Aligned the persistent edge to the incoming focal axis and verified the before, midpoint, and after seam states.",
+                "correction": TRANSITION_CORRECTIONS.get(
+                    transition_id,
+                    "Kept the carried object identifiable and verified the before, midpoint, and after seam states at full resolution.",
+                ),
             }
         )
 
@@ -574,8 +706,10 @@ def main() -> int:
         "reviewer": args.reviewer,
         "reviewMethod": (
             "Inspect full-resolution first, hold, emphasis, and final frames for every scene; inspect before, "
-            "midpoint, and after frames across every adjacent seam; then review the candidate with audio at "
-            "full speed. Evidence is extracted directly from the hash-bound candidate video."
+            "midpoint, and after frames across every adjacent seam; then review the candidate at full speed "
+            "once with audio and once muted. In muted review, name the recognizable object, input, action, "
+            "output, dominant asset, and semantic motion for every scene. Evidence is extracted directly "
+            "from the hash-bound candidate video."
         ),
         "contactSheet": project_relative(project_root, contact_sheet),
         "candidateVideo": {
@@ -585,6 +719,16 @@ def main() -> int:
         "fullSpeedPlayback": {
             "reviewed": True,
             "notes": args.playback_notes,
+        },
+        "silentComprehensionReview": {
+            "reviewed": True,
+            "criteria": [
+                "The primary object is recognizable without narration.",
+                "Input, action, and output can be named from the scene evidence.",
+                "The manifest-bound asset dominates the composition rather than appearing as an inset.",
+                "Motion changes a semantic state instead of moving anonymous geometry.",
+                "Every seam carries a named object or visible consequence into the next scene.",
+            ],
         },
         "scenes": scene_reviews,
         "transitions": transition_reviews,

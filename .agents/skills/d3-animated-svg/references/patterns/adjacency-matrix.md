@@ -1,6 +1,6 @@
 # Adjacency Matrix
 
-- **Pattern ID:** `d3-pattern-adjacency-matrix`
+- **Pattern ID:** `d3-adjacency-matrix`
 - **Gallery source ID:** `adjacency-matrix`
 - **Family:** Network
 - **Use when:** Dense relationships as a sortable grid.

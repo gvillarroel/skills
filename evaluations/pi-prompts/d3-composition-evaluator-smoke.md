@@ -1,9 +1,9 @@
 Use the loaded evaluator skill. Treat `skills/d3-composition-evaluator/` as read-only. Create exactly `evaluation.md` in the workspace root. Do not write elsewhere and do not inspect parent directories, sibling skills, repository fixtures, or evaluation contracts.
 
-Evaluate radial-rosette variant `d3-composition-radial-rosette-force-network` from this SVG:
+Evaluate radial variant `d3-composition-radial-force-network` from this SVG:
 
 ```html
-<svg id="d3-composition-radial-rosette-force-network" data-composition-id="radial-rosette" data-example-id="force-network" data-pattern-id="d3-pattern-force-network" data-composition-pattern-id="d3-composition-radial-rosette-force-network" viewBox="0 0 360 220">
+<svg id="d3-composition-radial-force-network" data-composition-id="radial" data-example-id="force-network" data-pattern-id="d3-force-network" data-composition-pattern-id="d3-composition-radial-force-network" viewBox="0 0 360 220">
   <title>Force Network radial network</title>
   <desc>Hub node with peers orbiting.</desc>
   <line x1="180" y1="110" x2="180" y2="40"/>
@@ -20,4 +20,4 @@ Evaluate radial-rosette variant `d3-composition-radial-rosette-force-network` fr
 </svg>
 ```
 
-Start with exactly `Artifact: d3-composition-radial-rosette-force-network`. Include `Findings`, `Composition Score`, and `Fixes` sections. Under `Composition Score`, write exactly one score as `Score: N/100`; do not add component scores. Preserve all six nodes and five links, and do not propose adding or removing data entities.
+Start with exactly `Artifact: d3-composition-radial-force-network`. Include `Findings`, `Composition Score`, and `Fixes` sections. Under `Composition Score`, write exactly one score as `Score: N/100`; do not add component scores. Preserve all six nodes and five links, and do not propose adding or removing data entities.

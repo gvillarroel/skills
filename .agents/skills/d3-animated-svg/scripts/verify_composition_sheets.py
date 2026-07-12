@@ -21,10 +21,11 @@ SKILL_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = SKILL_ROOT / "assets" / "examples" / "d3-animated-svg" / "composition-sheets.html"
 
 VERIFY_JS = r"""
-async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns }) => {
+async ({ expectedSheets, minVariants, expectedVariants, requiredVariant, expectedReviewedPatterns }) => {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   const sheets = window.D3_COMPOSITION_SHEETS || [];
   const variants = window.D3_COMPOSITION_VARIANTS || [];
+  const curatedIds = window.D3_COMPOSITION_CURATED_IDS || [];
   const reviews = window.D3_COMPOSITION_REVIEW || [];
   const metadata = window.D3_ANIMATED_SVG_EXAMPLES || [];
   const sheetIds = sheets.map(sheet => sheet.id);
@@ -35,6 +36,9 @@ async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns 
   }
   if (variants.length < minVariants) {
     findings.push(`Expected at least ${minVariants} variants, found ${variants.length}.`);
+  }
+  if (expectedVariants && variants.length !== expectedVariants) {
+    findings.push(`Expected exactly ${expectedVariants} variants, found ${variants.length}.`);
   }
   if (expectedReviewedPatterns && reviews.length !== expectedReviewedPatterns) {
     findings.push(`Expected ${expectedReviewedPatterns} reviewed patterns, found ${reviews.length}.`);
@@ -68,6 +72,18 @@ async ({ expectedSheets, minVariants, requiredVariant, expectedReviewedPatterns 
   const invalidIds = ids.filter(id => !/^d3-composition-[a-z0-9][a-z0-9-]*-[a-z0-9][a-z0-9-]*$/.test(id || ""));
   if (invalidIds.length) {
     findings.push(`Invalid composition IDs: ${invalidIds.slice(0, 5).join(", ")}.`);
+  }
+  const curatedSet = new Set(curatedIds);
+  const missingCuratedIds = curatedIds.filter(id => !uniqueIds.has(id));
+  const unexpectedIds = ids.filter(id => !curatedSet.has(id));
+  if (curatedSet.size !== curatedIds.length) {
+    findings.push("Curated composition manifest contains duplicate IDs.");
+  }
+  if (missingCuratedIds.length) {
+    findings.push(`Curated composition IDs missing at runtime: ${missingCuratedIds.slice(0, 8).join(", ")}.`);
+  }
+  if (unexpectedIds.length) {
+    findings.push(`Runtime composition IDs missing from curated manifest: ${unexpectedIds.slice(0, 8).join(", ")}.`);
   }
   const missingSources = variants.filter(variant => !metadataIds.has(variant.sourceId)).map(variant => variant.sourceId);
   if (missingSources.length) {
@@ -262,8 +278,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("source", nargs="?", default=str(DEFAULT_SOURCE), help="Composition sheets HTML file, file URL, or HTTP URL.")
     parser.add_argument("--expected-sheets", type=int, default=7)
     parser.add_argument("--min-variants", type=int, default=70)
+    parser.add_argument("--expected-variants", type=int, default=78)
     parser.add_argument("--expected-reviewed-patterns", type=int, default=224)
-    parser.add_argument("--required-variant", default="d3-composition-radial-rosette-force-network")
+    parser.add_argument("--required-variant", default="d3-composition-radial-force-network")
     parser.add_argument("--viewport", type=parse_viewport, default=(1366, 900))
     parser.add_argument("--wait-ms", type=int, default=600)
     parser.add_argument("--screenshot", type=Path)
@@ -284,6 +301,7 @@ def main() -> int:
             {
                 "expectedSheets": args.expected_sheets,
                 "minVariants": args.min_variants,
+                "expectedVariants": args.expected_variants,
                 "requiredVariant": args.required_variant,
                 "expectedReviewedPatterns": args.expected_reviewed_patterns,
             },

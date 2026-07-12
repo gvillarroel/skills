@@ -1,0 +1,4 @@
+interface:
+  display_name: "Compose Synchronized SVG"
+  short_description: "Build giant SVG compositions in sync"
+  default_prompt: "Use $compose-synchronized-svg to turn an idea into one coherent giant SVG whose related modules share canonical state."

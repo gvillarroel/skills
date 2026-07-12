@@ -1,6 +1,6 @@
 # Horizon Chart
 
-- **Pattern ID:** `d3-pattern-horizon`
+- **Pattern ID:** `d3-horizon`
 - **Gallery source ID:** `horizon`
 - **Family:** Temporal
 - **Use when:** Compressed time-series bands with color.

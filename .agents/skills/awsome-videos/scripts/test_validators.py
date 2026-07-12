@@ -1075,6 +1075,12 @@ def build_visual_contract_fixture(project: Path) -> dict[str, Any]:
                     for phase, timestamp in scene_timestamps.items()
                 ],
                 "checks": {name: "pass" for name in check_visual_contract.REVIEW_CHECKS},
+                "silentTest": {
+                    "durationSeconds": 3,
+                    "object": "A recognizable mechanism input and its focal work surface.",
+                    "action": "The input changes state through the scene-specific technical operation.",
+                    "result": "A distinct validated output remains visible in the hold frame.",
+                },
                 "status": "approved",
                 "finding": "The focal generated asset is legible, source-bound, unclipped, and compositionally dominant.",
                 "correction": "Tightened the focal crop and label clearance before capturing this approved evidence frame.",
@@ -3353,6 +3359,18 @@ uv run --script skills/awsome-videos/scripts/check_production_package.py --brief
         required=True,
         expected_artifacts={"video": tmp / "artifacts" / "videos" / "different.mp4"},
     )
+    missing_declared_manifest = tmp / "source" / "missing-declared-package-manifest.json"
+    missing_declared_manifest_data = json.loads(package_manifest.read_text(encoding="utf-8"))
+    missing_declared_manifest_data["paths"]["voiceoverCuesSrt"] = "artifacts/audio/voiceover-cues.srt"
+    write_json(missing_declared_manifest, missing_declared_manifest_data)
+    missing_declared_failures: list[str] = []
+    missing_declared_info = check_production_package.validate_package_manifest(
+        missing_declared_manifest,
+        missing_declared_failures,
+        [],
+        required=True,
+        require_declared_files=True,
+    )
     missing_source_notes_failures: list[str] = []
     missing_source_notes_warnings: list[str] = []
     missing_source_notes_info = check_production_package.validate_production_notes(
@@ -3697,6 +3715,11 @@ Visual review:
                 "paths.video does not match the CLI artifact" in item
                 for item in mismatched_artifact_failures
             )
+            and missing_declared_info
+            and any(
+                "paths.voiceoverCuesSrt file missing" in item
+                for item in missing_declared_failures
+            )
             and missing_source_notes_info
             and missing_source_notes_failures
             and missing_source_notes_info.get("commandContract", {}).get("missingSourceLinkCommandTerms")
@@ -3760,6 +3783,10 @@ Visual review:
         "manifestMissingPaths": manifest_info.get("missingPaths") if manifest_info else None,
         "mismatchedArtifactInfo": mismatched_artifact_info,
         "mismatchedArtifactFailures": mismatched_artifact_failures,
+        "missingDeclaredFileFailures": missing_declared_failures,
+        "missingDeclaredFileChecks": (
+            missing_declared_info.get("declaredFileChecks") if missing_declared_info else None
+        ),
         "manifestMissingCommands": manifest_info.get("missingCommands") if manifest_info else None,
         "manifestMissingPackageCommandTerms": manifest_info.get("missingPackageCommandTerms") if manifest_info else None,
         "manifestMissingReadinessCommandTerms": manifest_info.get("missingReadinessCommandTerms") if manifest_info else None,

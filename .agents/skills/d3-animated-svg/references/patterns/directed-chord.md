@@ -1,6 +1,6 @@
 # Directed Chord
 
-- **Pattern ID:** `d3-pattern-directed-chord`
+- **Pattern ID:** `d3-directed-chord`
 - **Gallery source ID:** `directed-chord`
 - **Family:** Flow
 - **Use when:** Asymmetric ribbons expose sender and receiver imbalance.

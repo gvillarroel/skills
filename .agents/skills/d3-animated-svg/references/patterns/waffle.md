@@ -1,6 +1,6 @@
 # Waffle Matrix
 
-- **Pattern ID:** `d3-pattern-waffle`
+- **Pattern ID:** `d3-waffle`
 - **Gallery source ID:** `waffle`
 - **Family:** Part-to-whole
 - **Use when:** Individual units grouped into exact shares.

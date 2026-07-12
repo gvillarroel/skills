@@ -258,13 +258,13 @@ def build_svg() -> str:
     gates = [gate_markup(gate, index) for index, gate in enumerate(GATES)]
     links = [link_markup(link, index) for index, link in enumerate(LINKS)]
     pulses = [pulse_markup(cut, index) for index, cut in enumerate(CUT_PATHS)]
-    return f"""<svg id="critical-fault-tree" data-pattern-id="d3-pattern-critical-fault-tree"
-    data-pattern-family="critical-fault-tree" data-event-count="{len(EVENTS)}" data-basic-event-count="5"
+    return f"""<svg id="fault-tree" data-pattern-id="d3-fault-tree"
+    data-pattern-family="fault-tree" data-event-count="{len(EVENTS)}" data-basic-event-count="5"
     data-gate-count="{len(GATES)}" data-minimal-cut-count="{len(CUT_PATHS)}" data-risk-panel-count="{len(RISK_CARDS)}"
     data-top-event-probability="2.4e-4" viewBox="0 0 {WIDTH} {HEIGHT}" role="img"
-    aria-labelledby="critical-fault-tree-title critical-fault-tree-desc">
-    <title id="critical-fault-tree-title">Critical fault tree</title>
-    <desc id="critical-fault-tree-desc">A safety fault tree traces a critical top event through OR and AND gates, basic events, minimal cut sets, and risk contribution.</desc>
+    aria-labelledby="fault-tree-title fault-tree-desc">
+    <title id="fault-tree-title">Critical fault tree</title>
+    <desc id="fault-tree-desc">A safety fault tree traces a critical top event through OR and AND gates, basic events, minimal cut sets, and risk contribution.</desc>
     <rect x="22" y="22" width="1036" height="596" rx="12" fill="#ffffff" stroke="{PALETTE['gray200']}" stroke-width="1.5"/>
     <text class="caption" x="54" y="56">FTA - critical cooling unavailable</text>
     <g class="fault-hazard-band">

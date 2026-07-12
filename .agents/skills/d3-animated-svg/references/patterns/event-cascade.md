@@ -1,6 +1,6 @@
 # Event Cascade
 
-- **Pattern ID:** `d3-pattern-event-cascade`
+- **Pattern ID:** `d3-event-cascade`
 - **Gallery source ID:** `event-cascade`
 - **Family:** Causality
 - **Use when:** Timed events propagate across lagged lanes.

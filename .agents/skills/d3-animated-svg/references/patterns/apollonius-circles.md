@@ -1,6 +1,6 @@
 # Apollonius Circles
 
-- **Pattern ID:** `d3-pattern-apollonius-circles`
+- **Pattern ID:** `d3-apollonius-circles`
 - **Gallery source ID:** `apollonius-circles`
 - **Family:** Geometry
 - **Use when:** Circle solutions reveal tangent constraints between anchors.
