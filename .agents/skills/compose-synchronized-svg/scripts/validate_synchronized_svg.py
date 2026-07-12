@@ -21,6 +21,7 @@ import xml.etree.ElementTree as ET
 sys.dont_write_bytecode = True
 
 from scaffold_synchronized_svg import ID_RE, ROLE_SELECTOR_RE, initial_values, validate_plan
+import navigation_contract as navigation
 
 SVG_NS = "http://www.w3.org/2000/svg"
 URL_REF_RE = re.compile(r"url\(\s*['\"]?#([^)'\"\s]+)['\"]?\s*\)")
@@ -42,6 +43,18 @@ REQUIRED_RUNTIME_METHODS = {
     "reset",
     "snapshot",
     "serializeSnapshot",
+}
+REQUIRED_NAVIGATION_METHODS = {
+    "getCamera",
+    "setCamera",
+    "navigateTo",
+    "seekCamera",
+    "fitOverview",
+    "nextAnchor",
+    "previousAnchor",
+    "playCamera",
+    "pauseCamera",
+    "resetCamera",
 }
 GEOMETRY_CHANNELS = {"x", "y", "width", "height", "r", "opacity"}
 TRANSLATE_RE = re.compile(
@@ -82,6 +95,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--json", action="store_true", help="Print the report as JSON")
     parser.add_argument("--allow-placeholders", action="store_true", help="Allow scaffold placeholder modules")
     parser.add_argument("--require-time-sync", action="store_true", help="Require a declared master timeline")
+    parser.add_argument("--require-navigation", action="store_true", help="Require a navigable world contract")
+    parser.add_argument("--min-navigation-regions", type=int, default=0)
+    parser.add_argument("--min-anchor-depth", type=int, default=0)
+    parser.add_argument("--min-world-detail-area-ratio", type=float, default=0.0)
+    parser.add_argument("--min-distant-shared-sources", type=int, default=0)
     parser.add_argument("--min-modules", type=int, default=4)
     parser.add_argument("--min-asset-types", type=int, default=3)
     parser.add_argument("--min-renderer-families", type=int, default=0)
@@ -373,7 +391,15 @@ def main() -> int:
     svg_path = args.svg.resolve()
     output_path = args.output.resolve() if args.output else None
 
-    if args.min_modules < 1 or args.min_asset_types < 1 or args.min_renderer_families < 0:
+    if (
+        args.min_modules < 1
+        or args.min_asset_types < 1
+        or args.min_renderer_families < 0
+        or args.min_navigation_regions < 0
+        or args.min_anchor_depth < 0
+        or args.min_world_detail_area_ratio < 0
+        or args.min_distant_shared_sources < 0
+    ):
         failures.append("minimum counts must be positive")
     if output_path == svg_path:
         failures.append("validation report path must not overwrite the input SVG")
@@ -483,6 +509,20 @@ def main() -> int:
         missing_methods = sorted(method for method in REQUIRED_RUNTIME_METHODS if not re.search(rf"\b{re.escape(method)}\b", script_text))
         if missing_methods:
             failures.append(f"window.svgSync runtime is missing methods: {missing_methods}")
+        if plan.get("navigation"):
+            missing_navigation_methods = sorted(
+                method
+                for method in REQUIRED_NAVIGATION_METHODS
+                if not re.search(rf"\b{re.escape(method)}\b", script_text)
+            )
+            if missing_navigation_methods:
+                failures.append(
+                    "window.svgSync navigation runtime is missing methods: "
+                    f"{missing_navigation_methods}"
+                )
+            for token in ("svg-camera-change", "data-camera-revision", "data-camera-tier"):
+                if token not in script_text:
+                    failures.append(f"navigation runtime is missing camera marker {token!r}")
         for token in ("svg-sync-change", "data-sync-revision", "data-state-revision"):
             if token not in script_text:
                 failures.append(f"runtime is missing atomic-update marker {token!r}")
@@ -1037,6 +1077,7 @@ def main() -> int:
                     binding_records.append(
                         {
                             "module": module["id"],
+                            "district": module.get("districtId"),
                             "assetType": module["assetType"],
                             "value": binding["value"],
                             "channel": binding["channel"],
@@ -1067,10 +1108,19 @@ def main() -> int:
             source_id = source["id"]
             influenced_records = [record for record in binding_records if source_id in ancestors(record["value"])]
             module_ids = sorted({record["module"] for record in influenced_records})
+            district_ids = sorted(
+                {
+                    str(record["district"])
+                    for record in influenced_records
+                    if record.get("district")
+                }
+            )
             encodings = sorted({f"{record['assetType']}:{record['channel']}" for record in influenced_records})
             influence[source_id] = {
                 "modules": module_ids,
                 "moduleCount": len(module_ids),
+                "districts": district_ids,
+                "districtCount": len(district_ids),
                 "values": sorted({record["value"] for record in influenced_records}),
                 "encodings": encodings,
                 "encodingCount": len(encodings),
@@ -1086,8 +1136,26 @@ def main() -> int:
                 f"required {args.min_shared_sources}"
             )
         details["sharedSources"] = sorted(shared_sources)
+        distant_shared_sources = sorted(
+            source_id
+            for source_id, item in influence.items()
+            if item.get("districtCount", 0) >= 2 and item["encodingCount"] >= 2
+        )
+        if len(distant_shared_sources) < args.min_distant_shared_sources:
+            failures.append(
+                f"only {len(distant_shared_sources)} source concepts propagate across at least two "
+                f"districts with distinct encodings; required {args.min_distant_shared_sources}"
+            )
+        details["distantSharedSources"] = distant_shared_sources
 
-        view_box = [float(item) for item in plan["viewBox"]]
+        view_box = [
+            float(item)
+            for item in (
+                plan.get("navigation", {}).get("worldBounds")
+                if isinstance(plan.get("navigation"), dict)
+                else plan["viewBox"]
+            )
+        ]
         vx, vy, vw, vh = view_box
         for module in modules:
             x, y, width, height = (float(item) for item in module["region"])
@@ -1100,6 +1168,198 @@ def main() -> int:
                     warnings.append(
                         f"module regions {first['id']!r} and {second['id']!r} overlap by {ratio:.1%}; inspect intentional layering"
                     )
+
+        navigation_plan = plan.get("navigation")
+        if args.require_navigation and not isinstance(navigation_plan, dict):
+            failures.append("navigation is required but the plan has no navigable world")
+        if isinstance(navigation_plan, dict):
+            anchors = navigation_plan["anchors"]
+            anchor_by_id = {anchor["id"]: anchor for anchor in anchors}
+            initial_anchor = anchor_by_id[navigation_plan["initialAnchorId"]]
+            viewport_elements = [
+                element
+                for element in all_elements
+                if element.get("id") == "composition-world-viewport"
+            ]
+            if len(viewport_elements) != 1:
+                failures.append("navigable world needs exactly one composition-world-viewport")
+            else:
+                viewport_element = viewport_elements[0]
+                if viewport_element.get("role") != "group" or not viewport_element.get("aria-label"):
+                    failures.append("composition-world-viewport needs a named non-atomic group role")
+                actual_camera = parse_view_box(viewport_element.get("viewBox"))
+                expected_camera = [float(item) for item in initial_anchor["viewBox"]]
+                if actual_camera is None or any(
+                    abs(actual - expected) > 1e-6
+                    for actual, expected in zip(actual_camera or [], expected_camera)
+                ):
+                    failures.append("world viewport initial camera differs from navigation.initialAnchorId")
+            if root.get("data-world-mode") != "true":
+                failures.append("navigable root needs data-world-mode='true'")
+            if root.get("data-camera-anchor") != navigation_plan["initialAnchorId"]:
+                failures.append("root initial data-camera-anchor differs from the plan")
+            dom_anchor_ids = [
+                element.get("data-nav-anchor-id")
+                for element in all_elements
+                if element.get("data-nav-anchor-id") is not None
+            ]
+            expected_anchor_ids = {anchor["id"] for anchor in anchors}
+            if set(dom_anchor_ids) != expected_anchor_ids or len(dom_anchor_ids) != len(expected_anchor_ids):
+                failures.append(
+                    "DOM navigation anchors must resolve every plan anchor exactly once; "
+                    f"expected={sorted(expected_anchor_ids)}, actual={sorted(dom_anchor_ids)}"
+                )
+            world = plan.get("world", {})
+            districts = world.get("districts", []) if isinstance(world, dict) else []
+            district_dom_ids = {
+                element.get("data-district-id")
+                for element in all_elements
+                if "world-district" in classes(element)
+            }
+            expected_district_ids = {district["id"] for district in districts}
+            if district_dom_ids != expected_district_ids:
+                failures.append("DOM world districts differ from the plan")
+            world_link_dom_ids = {
+                element.get("data-world-link-id")
+                for element in all_elements
+                if element.get("data-world-link-id") is not None
+            }
+            expected_world_link_ids = {link["id"] for link in world.get("links", [])}
+            if world_link_dom_ids != expected_world_link_ids:
+                failures.append("DOM world district links differ from the plan")
+            world_node_ids = [
+                element.get("data-world-module-id")
+                for element in all_elements
+                if element.get("data-world-module-id") is not None
+            ]
+            expected_module_ids = {module["id"] for module in modules}
+            if set(world_node_ids) != expected_module_ids or len(world_node_ids) != len(expected_module_ids):
+                failures.append("world local-index nodes must represent every module exactly once")
+            district_control_ids = {
+                element.get("id")
+                for element in all_elements
+                if "district-nav-control" in classes(element)
+            }
+            expected_district_control_ids = {f"district-nav-{item['id']}" for item in districts}
+            if district_control_ids != expected_district_control_ids:
+                failures.append("world district hub controls need stable IDs for every district")
+            module_control_targets = {
+                element.get("data-nav-target")
+                for element in all_elements
+                if "world-module-nav-control" in classes(element)
+            }
+            if module_control_targets != {f"module-{module_id}" for module_id in expected_module_ids}:
+                failures.append("world local-index controls must navigate to every module anchor")
+            trunk_targets = [
+                link["target"] for link in world.get("links", []) if link.get("treeRole") == "trunk"
+            ]
+            expected_trunk_targets = expected_district_ids - {world.get("rootDistrictId")}
+            if len(trunk_targets) != len(set(trunk_targets)) or set(trunk_targets) != expected_trunk_targets:
+                failures.append("world trunk links must reach every non-root district exactly once")
+            world_link_groups = {
+                element.get("data-world-link-id"): element
+                for element in all_elements
+                if element.get("data-world-link-id") is not None
+            }
+            for link in world.get("links", []):
+                if link.get("treeRole") != "trunk":
+                    continue
+                group = world_link_groups.get(link["id"])
+                chevron_count = (
+                    len(
+                        [
+                            descendant
+                            for descendant in group.iter()
+                            if "world-link-chevron" in classes(descendant)
+                        ]
+                    )
+                    if group is not None
+                    else 0
+                )
+                if chevron_count != 2:
+                    failures.append(
+                        f"world trunk {link['id']!r} needs exactly two persistent direction chevrons"
+                    )
+            camera_actions = {
+                element.get("data-camera-action")
+                for element in all_elements
+                if element.get("data-camera-action") is not None
+            }
+            expected_camera_actions = {"previous", "up", "next", "tour", "home"}
+            if camera_actions != expected_camera_actions:
+                failures.append(
+                    "camera HUD controls must expose previous, up, next, tour, and home actions"
+                )
+            module_plan_by_id = {module["id"]: module for module in modules}
+            expected_singleton_previews = sum(
+                1
+                for district in districts
+                if len(district.get("moduleIds", [])) == 1
+                and isinstance(
+                    module_plan_by_id.get(district["moduleIds"][0], {}).get("diagram"),
+                    dict,
+                )
+            )
+            actual_singleton_previews = len(
+                [
+                    element
+                    for element in all_elements
+                    if "district-singleton-preview" in classes(element)
+                ]
+            )
+            if actual_singleton_previews != expected_singleton_previews:
+                failures.append(
+                    "single-module structural districts need one district-level concept preview"
+                )
+            peer_anchor_sizes: dict[int, set[tuple[float, float]]] = {}
+            district_by_id = {item["id"]: item for item in districts}
+            for anchor in anchors:
+                if anchor.get("kind") != "district" or anchor.get("targetId") == world.get("rootDistrictId"):
+                    continue
+                module_count = len(district_by_id[anchor["targetId"]]["moduleIds"])
+                peer_anchor_sizes.setdefault(module_count, set()).add(
+                    (round(float(anchor["viewBox"][2]), 6), round(float(anchor["viewBox"][3]), 6))
+                )
+            if any(len(sizes) != 1 for sizes in peer_anchor_sizes.values()):
+                failures.append("peer districts with equal module counts must use one camera scale")
+            if not any(element.get("data-navigation-hud") == "true" for element in all_elements):
+                failures.append("navigable world needs a persistent navigation HUD")
+            if not any(element.get("data-minimap-viewport") == "true" for element in all_elements):
+                failures.append("navigable world needs a static minimap viewport indicator")
+            maximum_depth = max(int(anchor.get("depth", 0)) for anchor in anchors)
+            module_anchor_areas = [
+                float(anchor["viewBox"][2]) * float(anchor["viewBox"][3])
+                for anchor in anchors
+                if anchor["kind"] == "module"
+            ]
+            world_area = float(navigation_plan["worldBounds"][2]) * float(
+                navigation_plan["worldBounds"][3]
+            )
+            area_ratio = world_area / min(module_anchor_areas) if module_anchor_areas else 0.0
+            if len(districts) < args.min_navigation_regions:
+                failures.append(
+                    f"navigation has {len(districts)} districts; required {args.min_navigation_regions}"
+                )
+            if maximum_depth < args.min_anchor_depth:
+                failures.append(
+                    f"navigation anchor depth is {maximum_depth}; required {args.min_anchor_depth}"
+                )
+            if area_ratio < args.min_world_detail_area_ratio:
+                failures.append(
+                    f"world/detail camera area ratio is {area_ratio:.2f}; "
+                    f"required {args.min_world_detail_area_ratio:.2f}"
+                )
+            details["navigation"] = {
+                "districtCount": len(districts),
+                "anchorCount": len(anchors),
+                "maximumAnchorDepth": maximum_depth,
+                "worldDetailAreaRatio": area_ratio,
+                "worldBounds": navigation_plan["worldBounds"],
+                "routeStopCount": len(navigation_plan["route"]["stops"]),
+                "routeDurationMs": navigation_plan["route"]["durationMs"],
+                "worldNodeCount": len(world_node_ids),
+                "trunkLinkCount": len(trunk_targets),
+            }
 
         timeline = plan.get("timeline")
         sync_modes = set(plan.get("syncModes", []))
@@ -1167,6 +1427,7 @@ def main() -> int:
                 "accessibleBindingCount": accessible_binding_count,
                 "relationshipCount": len(declared_relationships),
                 "timeline": timeline is not None,
+                "navigableWorld": isinstance(plan.get("navigation"), dict),
             }
         )
 

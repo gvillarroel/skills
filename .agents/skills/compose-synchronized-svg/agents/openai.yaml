@@ -1,4 +1,4 @@
 interface:
   display_name: "Compose Synchronized SVG"
-  short_description: "Build giant SVG compositions in sync"
-  default_prompt: "Use $compose-synchronized-svg to turn an idea into one coherent giant SVG whose related modules share canonical state."
+  short_description: "Build SVG megacanvases and navigable worlds"
+  default_prompt: "Use $compose-synchronized-svg to choose between a compact 6–16-module megacanvas and a navigable 12–48-module world with districts, shared canonical state, structural diagrams, semantic zoom, and a deterministic camera route."

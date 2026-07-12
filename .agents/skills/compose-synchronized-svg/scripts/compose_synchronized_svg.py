@@ -21,6 +21,7 @@ import os
 import stat
 import sys
 import tempfile
+import textwrap
 import time
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -1353,6 +1354,7 @@ def render_gauge_family(
     progress_info = next((info for info in other_marks if info.channel == "width"), None) if show_percent_target else None
     progress_domain = None
     progress_multiplier = None
+    progress_scale = None
     if progress_info is not None:
         transform = progress_info.binding.get("transform")
         domain = transform.get("domain") if isinstance(transform, dict) else None
@@ -1361,13 +1363,19 @@ def render_gauge_family(
             target, progress_multiplier = semantics
             if min(float(domain[0]), float(domain[1])) <= target <= max(float(domain[0]), float(domain[1])):
                 progress_domain = [float(domain[0]), float(domain[1])]
-    progress_attrs = (
-        f' data-sync-layout="progress" data-layout-bound-role="{esc(progress_info.role)}" '
-        f'data-layout-target-value="{fmt(1.0 if progress_info.unit == "fraction" else 100.0)}" '
-        f'data-layout-max-value="{fmt(max(progress_domain) if progress_domain is not None else 0.0)}"'
-        if progress_info is not None and progress_domain is not None
-        else ""
-    )
+                progress_scale = positive_scale(
+                    right - left - 2,
+                    max_positive_extent(progress_info, plan),
+                )
+    progress_attrs = ""
+    if progress_info is not None and progress_domain is not None and progress_scale is not None:
+        progress_attrs = (
+            f' data-sync-layout="progress" data-layout-bound-role="{esc(progress_info.role)}" '
+            f'data-layout-target-value="{fmt(1.0 if progress_info.unit == "fraction" else 100.0)}" '
+            f'data-layout-max-value="{fmt(max(progress_domain))}" '
+            f'data-layout-progress-x="{fmt(left + 1)}" '
+            f'data-layout-progress-scale="{fmt_scale(progress_scale)}"'
+        )
     parts = [f'<g id="{esc(module_id)}-gauge-plot" class="asset-gauge-plot"{progress_attrs}>']
     if transform_marks:
         for info in transform_marks:
@@ -1438,25 +1446,45 @@ def render_gauge_family(
             y = lane_top + index * lane_height
             track_y = y + lane_height * 0.25
             track_height = max(8.0, lane_height * 0.5)
+            target_x = percent_target_x(plan, info, left, right) if show_percent_target and info.channel == "width" else None
             parts.append(
                 f'<rect x="{fmt(left)}" y="{fmt(track_y)}" width="{fmt(right-left)}" '
                 f'height="{fmt(track_height)}" fill="#e8edf5" rx="4"/>'
             )
+            if target_x is not None:
+                parts.append(
+                    f'<rect class="progress-over-target-band" x="{fmt(target_x)}" '
+                    f'y="{fmt(track_y)}" width="{fmt(max(0.0, right - target_x))}" '
+                    f'height="{fmt(track_height)}" fill="#f59e0b" fill-opacity="0.14" rx="3"/>'
+                )
             parts.append(
                 render_mark(plan, module_id, info, (left, y, right-left, lane_height))
             )
-            target_x = percent_target_x(plan, info, left, right) if show_percent_target and info.channel == "width" else None
             if target_x is not None:
+                target_label_x = min(max(target_x, left + 42.0), right - 42.0)
+                endpoint_x = None
+                if progress_scale is not None and progress_info is not None and info.role == progress_info.role:
+                    endpoint_x = min(
+                        max(left + 1.0 + max(0.0, float(info.rendered)) * progress_scale, left + 1.0),
+                        right - 1.0,
+                    )
                 parts.extend(
                     [
                         f'<line class="percent-target-marker" data-target-ratio="1" '
                         f'x1="{fmt(target_x)}" y1="{fmt(track_y - 5)}" x2="{fmt(target_x)}" '
                         f'y2="{fmt(track_y + track_height + 5)}" stroke="#b45309" stroke-width="2" '
                         f'aria-label="100% target"/>',
-                        f'<text x="{fmt(target_x)}" y="{fmt(max(top + 8, track_y - 8))}" text-anchor="middle" '
+                        f'<text x="{fmt(target_label_x)}" y="{fmt(max(top + 8, track_y - 8))}" text-anchor="middle" '
                         f'font-size="10" font-weight="650" fill="#92400e" aria-hidden="true">100% target</text>',
                     ]
                 )
+                if endpoint_x is not None:
+                    parts.append(
+                        f'<line class="progress-endpoint" data-progress-endpoint="true" '
+                        f'x1="{fmt(endpoint_x)}" y1="{fmt(track_y - 2)}" '
+                        f'x2="{fmt(endpoint_x)}" y2="{fmt(track_y + track_height + 2)}" '
+                        f'stroke="{esc(info.color)}" stroke-width="2.2" vector-effect="non-scaling-stroke"/>'
+                    )
                 if progress_domain is not None and progress_multiplier is not None:
                     readout_y = min(visual_bottom - 2, track_y + track_height + 14)
                     current_copy = f"{percentage_label(info.raw, progress_multiplier)} current"
@@ -1630,6 +1658,232 @@ def render_network_family(
     plot_height = max(28.0, visual_bottom - top)
     center_x, center_y = (left+right)/2, top+plot_height/2
     parts = [f'<g id="{esc(module_id)}-network-plot" class="asset-network-plot">']
+    diagram = module.get("diagram")
+    if isinstance(diagram, dict):
+        content_height = float(scaffold.module_content_geometry(module)[4])
+        nodes = list(diagram["nodes"])
+        links = list(diagram["links"])
+        node_by_id = {node["id"]: node for node in nodes}
+        incoming: dict[str, set[str]] = {node["id"]: set() for node in nodes}
+        outgoing: dict[str, set[str]] = {node["id"]: set() for node in nodes}
+        for link in links:
+            if link["kind"] == "feedback":
+                continue
+            incoming[link["target"]].add(link["source"])
+            outgoing[link["source"]].add(link["target"])
+        roots = [node["id"] for node in nodes if not incoming[node["id"]]]
+        if not roots:
+            roots = [next((node["id"] for node in nodes if node["kind"] == "root"), nodes[0]["id"])]
+        depths = {node_id: 0 for node_id in roots}
+        pending = list(roots)
+        while pending:
+            source_id = pending.pop(0)
+            for target_id in sorted(outgoing[source_id]):
+                candidate = depths[source_id] + 1
+                if target_id not in depths or candidate > depths[target_id]:
+                    depths[target_id] = candidate
+                    pending.append(target_id)
+        fallback_depth = max(depths.values(), default=0) + 1
+        for node in nodes:
+            depths.setdefault(node["id"], fallback_depth)
+        positions: dict[str, tuple[float, float]] = {}
+        diagram_layout = diagram.get("layout", "tree")
+        dense_radial = diagram_layout == "radial" and len(nodes) > 9
+        if diagram_layout == "radial":
+            root_id = roots[0]
+            positions[root_id] = (width / 2, content_height / 2)
+            other_nodes = [node for node in nodes if node["id"] != root_id]
+            levels: dict[int, list[dict[str, Any]]] = {}
+            for node in other_nodes:
+                levels.setdefault(max(1, depths[node["id"]]), []).append(node)
+            maximum_depth = max(levels, default=1)
+            for level, level_nodes in sorted(levels.items()):
+                if len(level_nodes) > 8:
+                    perimeter_slots = [
+                        (0.14, 0.17), (0.38, 0.17), (0.62, 0.17), (0.86, 0.17),
+                        (0.14, 0.43), (0.86, 0.43),
+                        (0.14, 0.68), (0.86, 0.68),
+                        (0.24, 0.82), (0.50, 0.82), (0.76, 0.82),
+                    ]
+                    for index, node in enumerate(level_nodes):
+                        slot_x, slot_y = perimeter_slots[index % len(perimeter_slots)]
+                        positions[node["id"]] = (width * slot_x, content_height * slot_y)
+                    continue
+                ring_count = max(1, math.ceil(len(level_nodes) / 6))
+                base_count, remainder = divmod(len(level_nodes), ring_count)
+                cursor = 0
+                for ring_index in range(ring_count):
+                    count = base_count + (1 if ring_index < remainder else 0)
+                    ring_nodes = level_nodes[cursor : cursor + count]
+                    cursor += count
+                    radius_x = min(
+                        width * 0.41,
+                        92.0
+                        + level / maximum_depth * width * 0.18
+                        + ring_index * width * 0.13,
+                    )
+                    radius_y = min(
+                        max(54.0, content_height / 2 - 76.0),
+                        62.0
+                        + level / maximum_depth * content_height * 0.13
+                        + ring_index * content_height * 0.12,
+                    )
+                    angle_offset = math.pi / max(2, count) if ring_index % 2 else 0.0
+                    for index, node in enumerate(ring_nodes):
+                        angle = (
+                            -math.pi / 2
+                            + angle_offset
+                            + 2 * math.pi * index / max(1, count)
+                        )
+                        positions[node["id"]] = (
+                            width / 2 + radius_x * math.cos(angle),
+                            content_height / 2 + radius_y * math.sin(angle),
+                        )
+        else:
+            levels: dict[int, list[dict[str, Any]]] = {}
+            for node in nodes:
+                levels.setdefault(depths[node["id"]], []).append(node)
+            level_ids = sorted(levels)
+            if diagram_layout == "lanes":
+                for level_index, level_id in enumerate(level_ids):
+                    level_nodes = levels[level_id]
+                    x = 64.0 + level_index * (width - 128.0) / max(1, len(level_ids) - 1)
+                    for index, node in enumerate(level_nodes):
+                        y = 58.0 + index * (content_height - 166.0) / max(1, len(level_nodes) - 1)
+                        positions[node["id"]] = (x, y)
+            else:
+                for level_index, level_id in enumerate(level_ids):
+                    level_nodes = levels[level_id]
+                    y = 58.0 + level_index * (content_height - 166.0) / max(1, len(level_ids) - 1)
+                    for index, node in enumerate(level_nodes):
+                        x = 64.0 + index * (width - 128.0) / max(1, len(level_nodes) - 1)
+                        positions[node["id"]] = (x, y)
+        marker_id = f"{module_id}-structural-arrow"
+        parts.append(
+            f'<defs><marker id="{esc(marker_id)}" viewBox="0 0 8 8" refX="7" refY="4" '
+            'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
+            '<path d="M0 0 L8 4 L0 8 Z" fill="#64748b"/></marker></defs>'
+        )
+        radius_scale = 0.80 if dense_radial else 1.0
+        radius_by_kind = {
+            "root": 34.0 * radius_scale,
+            "notable": 31.0 * radius_scale,
+            "merge": 29.0 * radius_scale,
+            "gate": 28.0 * radius_scale,
+            "leaf": 24.0 * radius_scale,
+            "evidence": 22.0 * radius_scale,
+        }
+        for link in links:
+            sx, sy = positions[link["source"]]
+            tx, ty = positions[link["target"]]
+            center_dx = tx - sx
+            center_dy = ty - sy
+            distance = math.hypot(center_dx, center_dy)
+            if distance > 1e-9:
+                source_offset = radius_by_kind[node_by_id[link["source"]]["kind"]] + 8.0
+                target_offset = radius_by_kind[node_by_id[link["target"]]["kind"]] + 13.0
+                source_x = sx + center_dx / distance * source_offset
+                source_y = sy + center_dy / distance * source_offset
+                target_x = tx - center_dx / distance * target_offset
+                target_y = ty - center_dy / distance * target_offset
+            else:
+                source_x, source_y, target_x, target_y = sx, sy, tx, ty
+            dx = target_x - source_x
+            dy = target_y - source_y
+            bend = -0.28 if link["kind"] == "feedback" else 0.12
+            nx, ny = -dy * bend, dx * bend
+            path_margin = 10.0
+            control_one_x = min(max(source_x + dx * 0.34 + nx, path_margin), width - path_margin)
+            control_one_y = min(max(source_y + dy * 0.34 + ny, path_margin), content_height - path_margin)
+            control_two_x = min(max(source_x + dx * 0.66 + nx, path_margin), width - path_margin)
+            control_two_y = min(max(source_y + dy * 0.66 + ny, path_margin), content_height - path_margin)
+            path = (
+                f"M{fmt(source_x)} {fmt(source_y)} C{fmt(control_one_x)} {fmt(control_one_y)} "
+                f"{fmt(control_two_x)} {fmt(control_two_y)} {fmt(target_x)} {fmt(target_y)}"
+            )
+            dash = (
+                ' stroke-dasharray="6 5"'
+                if link["kind"] == "feedback"
+                else (' stroke-dasharray="3 4"' if link["kind"] == "dependency" else "")
+            )
+            parts.append(
+                f'<path d="{path}" fill="none" stroke="#64748b" stroke-width="1.8" '
+                f'marker-end="url(#{esc(marker_id)})"{dash} '
+                f'data-structural-link-id="{esc(link["id"])}" '
+                f'data-source-node="{esc(link["source"])}" data-target-node="{esc(link["target"])}">'
+                f'<title>{esc(link.get("label", link["kind"]))}</title></path>'
+            )
+        info_by_value = {info.value_id: info for info in infos}
+        for node in nodes:
+            x, y = positions[node["id"]]
+            radius = radius_by_kind[node["kind"]]
+            info = info_by_value.get(node.get("bind"))
+            color = info.color if info is not None else str(module.get("districtAccent", "#64748b"))
+            parts.append(
+                f'<g class="structural-node structural-node-{esc(node["kind"])}" '
+                f'data-structural-node-id="{esc(node["id"])}" data-node-kind="{esc(node["kind"])}">'
+                f'<title>{esc(node["label"])}</title>'
+                f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius + 7)}" fill="none" '
+                f'stroke="{esc(color)}" stroke-opacity="0.28" stroke-width="5"/>'
+                f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="{fmt(radius)}" fill="#ffffff" '
+                f'stroke="{esc(color)}" stroke-width="3"/>'
+            )
+            if info is not None:
+                value_text = scaffold.format_value(
+                    info.raw,
+                    info.binding.get("format"),
+                    "en-US",
+                )
+                value_width = max(38.0, min(124.0, len(value_text) * 5.4 + 16.0))
+                value_font_size = 8.5 if len(value_text) <= 14 else 7.3
+                parts.append(
+                    f'<rect class="structural-value-plaque" '
+                    f'x="{fmt(x - value_width / 2)}" y="{fmt(y - 11)}" '
+                    f'width="{fmt(value_width)}" height="20" rx="10" '
+                    f'fill="#ffffff" fill-opacity="0.96" stroke="{esc(color)}" '
+                    f'stroke-opacity="0.36" stroke-width="1.2"/>'
+                )
+                parts.append(
+                    render_text_binding(
+                        module_id,
+                        info,
+                        x,
+                        y + 4,
+                        anchor="middle",
+                        font_size=value_font_size,
+                    )
+                )
+            else:
+                parts.append(
+                    f'<text x="{fmt(x)}" y="{fmt(y + 6)}" text-anchor="middle" '
+                    f'font-size="14" font-weight="780" fill="{esc(color)}" aria-hidden="true">'
+                    f'{esc(node["label"][0].upper())}</text>'
+                )
+            label_lines = textwrap.wrap(
+                str(node["label"]), width=20, break_long_words=False
+            ) or [str(node["label"])]
+            label_width = max(
+                54.0,
+                min(154.0, max(len(line) for line in label_lines) * 5.8 + 18.0),
+            )
+            label_height = 19.0 + max(0, len(label_lines) - 1) * 12.0
+            label_top = y + radius + 7.0
+            label_markup = [
+                f'<rect class="structural-label-plaque" '
+                f'x="{fmt(x - label_width / 2)}" y="{fmt(label_top)}" '
+                f'width="{fmt(label_width)}" height="{fmt(label_height)}" rx="8" '
+                'fill="#ffffff" fill-opacity="0.92" stroke="#e2e8f0" stroke-width="1"/>',
+                f'<text x="{fmt(x)}" y="{fmt(y + radius + 18)}" text-anchor="middle" '
+                'font-size="9.5" font-weight="650" fill="#475569" aria-hidden="true">'
+            ]
+            for line_index, line in enumerate(label_lines):
+                label_markup.append(
+                    f'<tspan x="{fmt(x)}" dy="{0 if line_index == 0 else 12}">{esc(line)}</tspan>'
+                )
+            label_markup.append('</text></g>')
+            parts.append("".join(label_markup))
+        parts.append("</g>")
+        return "".join(parts)
     if texts and not marks:
         # A compact network is a dependency overview, not a shared quantitative
         # scale. Equal-area cards plus exact readouts avoid comparing unlike
@@ -2045,6 +2299,18 @@ COMPOSER_LAYOUT_RUNTIME = r'''  function layoutFlow(plot, group) {
     const multiplier = mark.dataset.valueUnit === "percent" || mark.dataset.valueUnit === "%" ? 1 : 100;
     const percent = Math.round(value * multiplier * 10) / 10;
     readout.textContent = `${percent}% current`;
+    const endpoint = plot.querySelector("[data-progress-endpoint]");
+    if (endpoint) {
+      const rendered = numeric(
+        mark.style.getPropertyValue("--sync-rendered") || mark.getAttribute("width") || "0",
+        "progress rendered value"
+      );
+      const start = numeric(plot.dataset.layoutProgressX, "progress start");
+      const scale = numeric(plot.dataset.layoutProgressScale, "progress scale");
+      const x = start + Math.max(0, rendered) * scale;
+      endpoint.setAttribute("x1", String(x));
+      endpoint.setAttribute("x2", String(x));
+    }
   }
   function layoutModule(group) {
     group.querySelectorAll('[data-sync-layout="stack"]').forEach(layoutStack);
@@ -2073,7 +2339,16 @@ def finished_scaffold(plan: dict[str, Any]) -> bytes:
     runtime_end = draft.find("  function renderAll(changedValues = null) {", runtime_start)
     if runtime_start < 0 or runtime_end < 0:
         raise CompositionError("scaffold runtime layout hook contract changed unexpectedly")
-    draft = draft[:runtime_start] + COMPOSER_LAYOUT_RUNTIME + draft[runtime_end:]
+    navigation_start = draft.find("  function normalizedCamera(raw) {", runtime_start, runtime_end)
+    preserved_navigation_runtime = (
+        draft[navigation_start:runtime_end] if navigation_start >= 0 else ""
+    )
+    draft = (
+        draft[:runtime_start]
+        + COMPOSER_LAYOUT_RUNTIME
+        + preserved_navigation_runtime
+        + draft[runtime_end:]
+    )
     return draft.encode("utf-8")
 
 

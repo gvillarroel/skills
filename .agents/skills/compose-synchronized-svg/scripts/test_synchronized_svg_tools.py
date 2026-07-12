@@ -709,6 +709,112 @@ class SynchronizedSvgToolTests(unittest.TestCase):
         self.assertIsInstance(value, dict)
         return value
 
+    def world_brief(self) -> dict[str, object]:
+        brief = json.loads(BRIEF_TEMPLATE.read_text(encoding="utf-8"))
+        modules: list[dict[str, object]] = []
+        source_modules = list(brief["modules"])
+        for copy_index in range(2):
+            for source in source_modules:
+                module = json.loads(json.dumps(source))
+                module["id"] = f"{source['id']}-world-{copy_index + 1}"
+                module["question"] = f"{source['question']} World branch {copy_index + 1}?"
+                module["claim"] = f"{source['claim']} This is branch {copy_index + 1}."
+                modules.append(module)
+        first = modules[0]
+        first["assetType"] = "structural-skill-tree"
+        first_values = list(first["values"])
+        first["diagram"] = {
+            "layout": "tree",
+            "nodes": [
+                {
+                    "id": f"node-{index + 1}",
+                    "label": f"Capability node {index + 1}",
+                    "kind": "root" if index == 0 else ("notable" if index == 1 else "leaf"),
+                    "bind": value_id,
+                }
+                for index, value_id in enumerate(first_values)
+            ],
+            "links": [
+                {
+                    "id": f"node-link-{index}",
+                    "source": f"node-{index}",
+                    "target": f"node-{index + 1}",
+                    "kind": "prerequisite",
+                    "label": "Unlocks the next capability",
+                }
+                for index in range(1, len(first_values))
+            ],
+        }
+        brief["modules"] = modules
+        brief["relationships"] = []
+        brief["focusGroups"] = [
+            {
+                "id": "world-story",
+                "label": "World story",
+                "moduleIds": [module["id"] for module in modules],
+            }
+        ]
+        brief["timeline"] = None
+        district_ids = ["origin", "upper-branch", "lower-branch", "outcomes"]
+        districts = []
+        for index, district_id in enumerate(district_ids):
+            districts.append(
+                {
+                    "id": district_id,
+                    "label": district_id.replace("-", " ").title(),
+                    "summary": f"Three linked local diagrams explain the {district_id} district.",
+                    "role": "A coherent branch of the larger world",
+                    "localArmature": ("radial", "branch", "lanes", "orbit")[index],
+                    "moduleIds": [module["id"] for module in modules[index * 3 : index * 3 + 3]],
+                }
+            )
+        route_stops = [
+            {
+                "id": "world-opening",
+                "label": "Whole world",
+                "target": "world",
+                "travelMs": 0,
+                "holdMs": 1000,
+            }
+        ]
+        for index, district_id in enumerate(district_ids):
+            route_stops.append(
+                {
+                    "id": f"visit-{district_id}",
+                    "label": f"Visit {district_id}",
+                    "target": district_id,
+                    "travelMs": 600,
+                    "holdMs": 800,
+                    "focusId": "world-story",
+                    "handoff": "Follow the declared district branch",
+                }
+            )
+        brief["world"] = {
+            "mode": "navigable-atlas",
+            "armature": "radial-skill-tree",
+            "rootDistrictId": "origin",
+            "districts": districts,
+            "links": [
+                {
+                    "id": f"origin-to-{district_id}",
+                    "source": "origin",
+                    "target": district_id,
+                    "kind": "dependency",
+                    "label": f"Origin enables {district_id}",
+                }
+                for district_id in district_ids[1:]
+            ],
+            "navigation": {
+                "initialTarget": "world",
+                "route": {
+                    "loop": False,
+                    "autoplay": False,
+                    "stops": route_stops,
+                },
+            },
+        }
+        return brief
+
     def edge_brief(self) -> dict[str, object]:
         return {
             "compositionId": "edge-delivery-atlas",
@@ -4682,6 +4788,392 @@ class SynchronizedSvgToolTests(unittest.TestCase):
                 self.assertEqual(mutated_result.returncode, 1)
                 self.assertIs(mutated_report.get("ok"), False)
                 self.assertIn(expected_error, "\n".join(mutated_report.get("failures", [])))
+
+    def test_world_mode_compiles_nested_districts_structural_tree_and_camera_route(self) -> None:
+        brief_path = self.workspace / "world-brief.json"
+        brief_path.write_text(
+            json.dumps(self.world_brief(), indent=2) + "\n",
+            encoding="utf-8",
+            newline="\n",
+        )
+        plan_path = self.workspace / "world-plan.json"
+        compiled = self.run_tool(
+            COMPILER,
+            "--brief",
+            str(brief_path),
+            "--output",
+            str(plan_path),
+            "--force",
+            "--json",
+        )
+        compiled_report = self.parse_json_stdout(compiled)
+        self.assertEqual(compiled.returncode, 0, msg=compiled.stderr or compiled.stdout)
+        self.assertIs(compiled_report.get("ok"), True)
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+        self.assertEqual(plan["viewBox"], [0, 0, 1920, 1080])
+        self.assertEqual(len(plan["modules"]), 12)
+        self.assertEqual(len(plan["world"]["districts"]), 4)
+        self.assertEqual(len(plan["navigation"]["anchors"]), 17)
+        self.assertGreater(plan["navigation"]["worldBounds"][2], 8000)
+        self.assertAlmostEqual(
+            plan["navigation"]["worldBounds"][2] / plan["navigation"]["worldBounds"][3],
+            16 / 9,
+            places=4,
+        )
+        self.assertEqual(plan["modules"][0]["diagram"]["layout"], "tree")
+        self.assertTrue(all(module.get("districtId") for module in plan["modules"]))
+
+        output = self.workspace / "world.svg"
+        composed = self.run_tool(
+            COMPOSER,
+            "--spec",
+            str(plan_path),
+            "--output",
+            str(output),
+            "--force",
+            "--json",
+        )
+        composed_report = self.parse_json_stdout(composed)
+        self.assertEqual(composed.returncode, 0, msg=composed.stderr or composed.stdout)
+        self.assertIs(composed_report.get("ok"), True)
+        root = ET.parse(output).getroot()
+        viewport = next(
+            element for element in root.iter() if element.get("id") == "composition-world-viewport"
+        )
+        self.assertEqual(viewport.get("viewBox"), " ".join(fmt_number(item) for item in plan["navigation"]["worldBounds"]))
+        self.assertEqual(
+            len([element for element in root.iter() if element.get("data-district-id") and element.get("class") == "world-district"]),
+            4,
+        )
+        self.assertEqual(
+            len([element for element in root.iter() if element.get("data-world-link-id")]),
+            3,
+        )
+        trunk_groups = [
+            element
+            for element in root.iter()
+            if element.get("data-world-link-id") and element.get("data-tree-role") == "trunk"
+        ]
+        self.assertEqual(len(trunk_groups), 3)
+        self.assertTrue(
+            all(
+                len(
+                    [
+                        descendant
+                        for descendant in group.iter()
+                        if descendant.get("class") == "world-link-chevron"
+                    ]
+                )
+                == 2
+                for group in trunk_groups
+            )
+        )
+        self.assertEqual(
+            len(
+                [
+                    element
+                    for element in root.iter()
+                    if element.get("class") == "world-local-branch world-local-orbit-ring"
+                ]
+            ),
+            1,
+        )
+        self.assertEqual(
+            len(
+                [
+                    element
+                    for element in root.iter()
+                    if element.get("data-camera-action") == "up"
+                ]
+            ),
+            1,
+        )
+        self.assertGreaterEqual(
+            len(
+                [
+                    element
+                    for element in root.iter()
+                    if element.get("data-progress-endpoint") == "true"
+                ]
+            ),
+            1,
+        )
+        source_node = next(
+            element
+            for element in root.iter()
+            if element.get("data-structural-node-id") == "node-1"
+        )
+        source_circle = next(element for element in source_node if element.tag.endswith("circle"))
+        structural_link = next(
+            element
+            for element in root.iter()
+            if element.get("data-source-node") == "node-1"
+            and element.get("data-target-node") == "node-2"
+        )
+        path_start = re.match(
+            r"M(-?[0-9.]+) (-?[0-9.]+)",
+            structural_link.get("d", ""),
+        )
+        self.assertIsNotNone(path_start)
+        self.assertNotEqual(
+            (float(path_start.group(1)), float(path_start.group(2))),
+            (float(source_circle.get("cx", "0")), float(source_circle.get("cy", "0"))),
+        )
+        rendered = output.read_text(encoding="utf-8")
+        for method in (
+            "getCamera",
+            "setCamera",
+            "navigateTo",
+            "seekCamera",
+            "fitOverview",
+            "playCamera",
+            "pauseCamera",
+        ):
+            self.assertIn(method, rendered)
+        self.assertIn('data-structural-node-id="node-1"', rendered)
+        self.assertIn('data-camera-action="tour"', rendered)
+        self.assertIn('data-camera-action="up"', rendered)
+        self.assertIn('data-route-traveling="false"', rendered)
+        self.assertIn('"Return to parent district"', rendered)
+        self.assertIn('breadcrumb.join(" › ")', rendered)
+        self.assertIn('data-minimap-viewport="true"', rendered)
+        validated, validation_report = self.validate_json(
+            output,
+            "--min-modules",
+            "12",
+            "--require-navigation",
+            "--min-navigation-regions",
+            "4",
+            "--min-anchor-depth",
+            "2",
+            "--min-world-detail-area-ratio",
+            "16",
+            "--min-distant-shared-sources",
+            "1",
+        )
+        self.assertEqual(validated.returncode, 0, msg=validated.stderr or validated.stdout)
+        self.assertIs(validation_report.get("ok"), True)
+        self.assertEqual(validation_report["metrics"]["navigation"]["districtCount"], 4)
+
+    def test_world_tree_assigns_exact_trunks_and_equal_peer_district_cameras(self) -> None:
+        brief = self.world_brief()
+        brief["world"]["links"].extend(
+            [
+                {
+                    "id": "upper-to-outcomes-crosslink",
+                    "source": "upper-branch",
+                    "target": "outcomes",
+                    "kind": "dependency",
+                    "label": "A secondary branch also informs outcomes",
+                },
+                {
+                    "id": "outcomes-to-origin-feedback",
+                    "source": "outcomes",
+                    "target": "origin",
+                    "kind": "feedback",
+                    "label": "Observed outcomes inform the next origin state",
+                },
+            ]
+        )
+        plan_path = self.workspace / "world-tree-contract-plan.json"
+        compiled = self.run_tool(
+            COMPILER,
+            "--brief",
+            str(self.write_plan("world-tree-contract-brief.json", brief)),
+            "--output",
+            str(plan_path),
+            "--json",
+        )
+        report = self.parse_json_stdout(compiled)
+        self.assertEqual(compiled.returncode, 0, msg=compiled.stderr or compiled.stdout)
+        self.assertIs(report.get("ok"), True)
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+
+        districts = plan["world"]["districts"]
+        root_id = plan["world"]["rootDistrictId"]
+        non_root_ids = {district["id"] for district in districts} - {root_id}
+        links = plan["world"]["links"]
+        trunks = [link for link in links if link["treeRole"] == "trunk"]
+        self.assertEqual(len(trunks), len(districts) - 1)
+        self.assertEqual({link["target"] for link in trunks}, non_root_ids)
+        self.assertTrue(all(link["source"] != link["target"] for link in trunks))
+        self.assertTrue(all(sum(link["target"] == district_id for link in trunks) == 1 for district_id in non_root_ids))
+        self.assertEqual(
+            {link["id"]: link["treeRole"] for link in links},
+            {
+                "origin-to-upper-branch": "trunk",
+                "origin-to-lower-branch": "trunk",
+                "origin-to-outcomes": "trunk",
+                "upper-to-outcomes-crosslink": "crosslink",
+                "outcomes-to-origin-feedback": "feedback",
+            },
+        )
+
+        anchors = {anchor["id"]: anchor for anchor in plan["navigation"]["anchors"]}
+        peer_districts = [
+            district
+            for district in districts
+            if district["id"] != root_id and len(district["moduleIds"]) == 3
+        ]
+        self.assertEqual(len(peer_districts), 3)
+        peer_camera_sizes = {
+            tuple(anchors[f"district-{district['id']}"]["viewBox"][2:])
+            for district in peer_districts
+        }
+        self.assertEqual(len(peer_camera_sizes), 1)
+
+    def test_small_root_district_preserves_exact_anchor_zoom_tiers(self) -> None:
+        brief = self.world_brief()
+        module_ids = [module["id"] for module in brief["modules"]]
+        districts = brief["world"]["districts"]
+        districts[0]["moduleIds"] = module_ids[:1]
+        districts[1]["moduleIds"] = module_ids[1:4]
+        districts[2]["moduleIds"] = module_ids[4:8]
+        districts[3]["moduleIds"] = module_ids[8:]
+        brief["world"]["navigation"]["initialTarget"] = "origin"
+
+        plan_path = self.workspace / "small-root-world-plan.json"
+        compiled = self.run_tool(
+            COMPILER,
+            "--brief",
+            str(self.write_plan("small-root-world-brief.json", brief)),
+            "--output",
+            str(plan_path),
+            "--json",
+        )
+        report = self.parse_json_stdout(compiled)
+        self.assertEqual(compiled.returncode, 0, msg=compiled.stderr or compiled.stdout)
+        self.assertIs(report.get("ok"), True)
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+        anchors = {anchor["id"]: anchor for anchor in plan["navigation"]["anchors"]}
+        expected_tiers = {"world": "world"}
+        expected_tiers.update(
+            {f"district-{district['id']}": "district" for district in plan["world"]["districts"]}
+        )
+        expected_tiers.update({f"module-{module['id']}": "module" for module in plan["modules"]})
+        self.assertEqual(
+            {anchor_id: anchor["zoomTier"] for anchor_id, anchor in anchors.items()},
+            expected_tiers,
+        )
+        self.assertEqual(plan["navigation"]["initialAnchorId"], "district-origin")
+        self.assertEqual(anchors["district-origin"]["moduleIds"], module_ids[:1])
+        self.assertEqual(anchors["district-origin"]["zoomTier"], "district")
+
+        output = self.workspace / "small-root-world.svg"
+        composed = self.run_tool(
+            COMPOSER,
+            "--spec",
+            str(plan_path),
+            "--output",
+            str(output),
+            "--force",
+            "--json",
+        )
+        report = self.parse_json_stdout(composed)
+        self.assertEqual(composed.returncode, 0, msg=composed.stderr or composed.stdout)
+        self.assertIs(report.get("ok"), True)
+        root = ET.parse(output).getroot()
+        singleton_previews = [
+            element
+            for element in root.iter()
+            if element.get("class") == "district-singleton-preview"
+        ]
+        self.assertEqual(len(singleton_previews), 1)
+        self.assertGreaterEqual(
+            len(
+                [
+                    element
+                    for element in singleton_previews[0].iter()
+                    if element.get("class") == "district-singleton-preview-node"
+                ]
+            ),
+            2,
+        )
+
+    def test_world_compiler_rejects_invalid_membership_structure_and_loop_seam(self) -> None:
+        duplicate_membership = self.world_brief()
+        repeated_module_id = duplicate_membership["world"]["districts"][0]["moduleIds"][0]
+        duplicate_membership["world"]["districts"][1]["moduleIds"].append(repeated_module_id)
+
+        unreachable_district = self.world_brief()
+        unreachable_district["world"]["links"] = [
+            link
+            for link in unreachable_district["world"]["links"]
+            if link["target"] != "outcomes"
+        ]
+
+        disconnected_diagram = self.world_brief()
+        disconnected_diagram["modules"][0]["diagram"]["links"].pop()
+
+        unbound_diagram_value = self.world_brief()
+        unbound_diagram_value["modules"][0]["diagram"]["nodes"][-1].pop("bind")
+
+        invalid_loop_seam = self.world_brief()
+        invalid_loop_seam["world"]["navigation"]["route"]["loop"] = True
+
+        cases = (
+            (
+                "duplicate-world-membership",
+                duplicate_membership,
+                "module assignment is invalid",
+                "repeated",
+            ),
+            (
+                "unreachable-world-district",
+                unreachable_district,
+                "unreachable district(s)",
+                "outcomes",
+            ),
+            (
+                "disconnected-structural-diagram",
+                disconnected_diagram,
+                "structural diagram must be connected",
+                "isolated node",
+            ),
+            (
+                "unbound-structural-diagram-value",
+                unbound_diagram_value,
+                "must bind every declared value",
+                "missing value(s)",
+            ),
+            (
+                "invalid-world-loop-seam",
+                invalid_loop_seam,
+                "looping world navigation route",
+                "clean seam",
+            ),
+        )
+        for name, invalid_brief, first_error, second_error in cases:
+            with self.subTest(name=name):
+                brief_path = self.write_plan(f"{name}-brief.json", invalid_brief)
+                original = brief_path.read_bytes()
+                output = self.workspace / "invalid-world" / f"{name}-plan.json"
+                result = self.run_tool(
+                    COMPILER,
+                    "--brief",
+                    str(brief_path),
+                    "--output",
+                    str(output),
+                    "--json",
+                )
+                report = self.parse_json_stdout(result)
+                error = str(report.get("error")).lower()
+                self.assertEqual(result.returncode, 1)
+                self.assertIs(report.get("ok"), False)
+                self.assertIn(first_error, error)
+                self.assertIn(second_error, error)
+                self.assertFalse(output.exists())
+                self.assertEqual(brief_path.read_bytes(), original)
+
+    def test_world_compiler_rejects_route_that_misses_required_anchor(self) -> None:
+        brief = self.world_brief()
+        brief["world"]["navigation"]["route"]["stops"] = [
+            stop
+            for stop in brief["world"]["navigation"]["route"]["stops"]
+            if stop["target"] != "outcomes"
+        ]
+        with self.assertRaisesRegex(ValueError, "navigation route misses required anchors"):
+            compiler.compile_brief(brief)
 
     def test_exact_output_path_and_forced_rerun_are_deterministic(self) -> None:
         output = self.workspace / "exact" / "requested-name.svg"

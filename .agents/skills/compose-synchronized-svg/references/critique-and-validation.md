@@ -4,7 +4,7 @@ Use this review after generating a synchronized SVG and after every material cha
 
 ## Keep evidence
 
-Keep review artifacts outside the read-only skill bundle. Preserve the compact brief, compiler result, compiled plan, SVG, validation report, serialized state checkpoints, overview screenshots, readable module crops, and a contact sheet covering representative states, reduced motion, and the script-free fallback. Pause playback and use deterministic calls after `window.svgSync.ready`; never grade a wall-clock animation at an arbitrary instant.
+Keep review artifacts outside the read-only skill bundle. Preserve the selected brief, compiler result, compiled plan, SVG, validation report, serialized state checkpoints, overview screenshots, readable module crops, and a contact sheet covering representative states, reduced motion, and the script-free fallback. In world mode also preserve every district capture plus route arrivals and travel midpoints for narration or video review. Pause playback and use deterministic calls after `window.svgSync.ready`; never grade a wall-clock animation at an arbitrary instant.
 
 Use the bundled auditor as one supervised command. It runs the browser worker in an isolated process group with kill-on-close containment where supported, sweeps surviving descendants after exit, handles cancellation and POSIX terminal closure, and retries one timeout internally. It preserves real failure codes and emits retained timeout diagnostics only when both attempts time out. Do not wrap it in a second shell retry, because the strict trace must distinguish a recovered transient startup hang from a repeated timeout or real semantic failure.
 
@@ -23,6 +23,7 @@ For feedback specifically, reject a target value that is unrelated to the source
 7. **Visible and accessible usability:** no essential mark or label is clipped, unreadably small, obscured, or dependent only on hover, motion, or color. The SVG root and module containers are non-atomic groups; every bound mark is a separately exposed, human-named browser accessibility node with the current formatted value; controls are labeled, keyboard reachable, and visibly focused. For generated flows, require the visible source header and branch value labels to match their current accessible values after every scenario, perturbation, phase, and zero-flow state. Emit module groups in `layout.readingOrder` and require Chromium's module traversal to follow that same visual sequence. Module focus uses a separate button semantic with synchronized `aria-pressed`, never an unlabeled interactive group. Focus may dim marks or borders, but must not lower text below 4.5:1 or dim an ancestor that contains essential text. Resting relationship paths must remain visibly distinguishable in the static fallback instead of depending on active focus or animation for sufficient contrast.
 8. **Evidence honesty:** a concise visible provenance note distinguishes sourced, assumed, simulated, and synthetic values. Never rely on metadata alone or present illustrative precision as observed evidence.
 9. **Fallback behavior:** the literal SVG is meaningful without script, and reduced-motion mode disables autoplay and nonessential transitions without removing information. Playback controls expose their current visible and accessible state; disable or remove them from keyboard order when reduced motion makes playback unavailable.
+10. **Navigable-world behavior, when declared:** every module belongs to exactly one district; every district is reachable from the root through directed non-feedback links; one incoming visual trunk reaches every non-root district; world, district, and module anchors exist at depths 0, 1, and 2; exact anchors retain their declared zoom tier; and the camera route covers every required district and returns to its initial anchor at an exact loop seam. Camera calls must update one independent camera revision and one post-commit `svg-camera-change` event without changing the serialized semantic snapshot. Require a fixed outer camera viewport, working deep links and minimap, camera-aware tab order, instant reduced-motion navigation with camera autoplay disabled, and a script-free fallback with no dead navigation HUD.
 
 Stop at the earliest failing layer, repair it, and rerun all earlier layers before interpreting later results.
 
@@ -65,9 +66,11 @@ When the plan declares cross-module relationships:
 
 Exercise real input, not only API calls. Click and keyboard-activate every module focus control—including every membership on a multi-story module—toggle each off, clear focus with Escape, use Home/End and arrow keys on the timeline, seek with a pointer, apply a scenario, and toggle Play/Pause. Every control must pause or preserve playback exactly as specified, expose visible focus, synchronize `aria-pressed` across all controls that target the same group, and produce no console or page error.
 
-## Review both visual scales
+For a navigable world, also exercise every district destination, every active-district module destination, pointer drag, wheel zoom, arrow-key pan, `+`/`-` zoom, Home/`0` overview reset, route next/previous, play/pause, deep links, and direct `navigateTo`. Seek identical route times after different navigation histories and require identical camera snapshots. At each tier, require only the controls relevant to that camera context in tab order.
 
-A giant SVG need not expose every detail when fitted to one screen. Its overview must explain the structure, and every module must become clear at its intended crop or zoom.
+## Review every required visual scale
+
+A giant SVG need not expose every detail when fitted to one screen. A compact megacanvas needs an overview plus module crops. A navigable world needs a world overview, every district index, and every module at its intended anchor. Evaluate camera coverage against the fixed outer navigation viewport after resolving its root transform; never use the nested world SVG's changing bounding box as the viewport oracle.
 
 ### Macro overview
 
@@ -80,6 +83,19 @@ Capture the complete `viewBox` for the initial state and each materially differe
 - recurring concepts preserving units, direction, labels, category colors, and meaning;
 - connectors only where they encode a real relationship, use clear gutters, and reveal the active causal path without crossing essential content;
 - focus states coordinating attention without making other modules unreadable.
+
+For a navigable world, additionally require one unmistakable semantic root, a readable primary spanning tree, subordinate crosslinks and feedback, recognizable district hubs, and compact local nodes that hint at density without painting miniature cards. The overview should resemble an explorable skill tree, genealogy, or atlas—not a dashboard viewed from far away.
+
+### District indexes
+
+Capture every district at its declared anchor. Check:
+
+- the district title, summary, role, and local armature are clear;
+- all member modules appear exactly once as labeled destinations;
+- the local reading path is understandable without exposing full chart bodies;
+- peer districts with equal module counts use the same camera scale unless their semantic role explicitly differs;
+- only the active district's module destinations enter tab order;
+- labels, branches, and hit targets stay inside the fixed camera frame.
 
 ### Module crops
 
@@ -94,7 +110,7 @@ Capture every module near its intended reading scale in the initial state and an
 - repeated elements have deliberate alignment and spacing;
 - the module remains understandable without the overview or animation.
 
-Use browser-resolved bounds to find clipping, text overlap, body marks crossing above `data-content-top`, and a module footprint below 70% of either canvas dimension; then inspect screenshots. Measure footprint against the transformed SVG content box, not CSS letterboxing created by `preserveAspectRatio`. Bounds can flag intentional nesting or halos, while clean geometry cannot prove hierarchy or asset suitability, so visual review decides both cases.
+Use browser-resolved bounds to find clipping, text overlap, and body marks crossing above `data-content-top`; then inspect screenshots. In compact mode, flag a module footprint below 70% of either assigned content-box dimension. In navigable-world mode, instead require the target module frame to cover at least 95% of the fixed outer camera viewport at its exact anchor; the module is intentionally tiny in the world overview. Measure against transformed SVG content, not CSS letterboxing created by `preserveAspectRatio`. Bounds can flag intentional nesting or halos, while clean geometry cannot prove hierarchy or asset suitability, so visual review decides both cases.
 
 ## Verify static and reduced-motion modes
 

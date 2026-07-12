@@ -24,6 +24,8 @@ from typing import Any
 
 sys.dont_write_bytecode = True
 
+import navigation_contract as navigation  # noqa: E402
+
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 ROLE_SELECTOR_RE = re.compile(r"^\[data-role=(?:'([^']+)'|\"([^\"]+)\")\]$")
 OPS = {"add", "subtract", "multiply", "divide", "min", "max", "clamp", "round"}
@@ -394,6 +396,57 @@ def validate_plan(plan: dict[str, Any]) -> None:
             if (role, channel) in roles:
                 raise ValueError(f"module {module_id!r} repeats role/channel {role!r}/{channel!r}")
             roles.add((role, channel))
+        diagram = module.get("diagram")
+        if diagram is not None:
+            if not isinstance(diagram, dict) or diagram.get("layout") not in {
+                "tree",
+                "radial",
+                "lanes",
+            }:
+                raise ValueError(
+                    f"module {module_id!r} diagram needs a tree, radial, or lanes layout"
+                )
+            nodes = diagram.get("nodes")
+            links = diagram.get("links")
+            if not isinstance(nodes, list) or len(nodes) < 2 or not isinstance(links, list) or not links:
+                raise ValueError(
+                    f"module {module_id!r} diagram needs at least two nodes and one link"
+                )
+            node_ids: set[str] = set()
+            bound_values: set[str] = set()
+            for node_index, node in enumerate(nodes):
+                node_id = require_id(
+                    node.get("id") if isinstance(node, dict) else None,
+                    f"module {module_id!r} diagram.nodes[{node_index}].id",
+                )
+                if node_id in node_ids:
+                    raise ValueError(
+                        f"module {module_id!r} repeats diagram node id {node_id!r}"
+                    )
+                node_ids.add(node_id)
+                require_text(node.get("label"), f"module {module_id!r} diagram node label")
+                if node.get("bind") is not None:
+                    if node["bind"] not in all_ids:
+                        raise ValueError(
+                            f"module {module_id!r} diagram node {node_id!r} binds an unknown value"
+                        )
+                    bound_values.add(str(node["bind"]))
+            for link_index, link in enumerate(links):
+                if not isinstance(link, dict):
+                    raise ValueError(
+                        f"module {module_id!r} diagram.links[{link_index}] must be an object"
+                    )
+                source = link.get("source")
+                target = link.get("target")
+                if source == target or source not in node_ids or target not in node_ids:
+                    raise ValueError(
+                        f"module {module_id!r} diagram link must connect distinct declared nodes"
+                    )
+            bound_module_values = {binding["value"] for binding in bindings}
+            if bound_values != bound_module_values:
+                raise ValueError(
+                    f"module {module_id!r} structural diagram bound values differ from its bindings"
+                )
 
     relationships = plan.get("relationships", [])
     if not isinstance(relationships, list):
@@ -448,8 +501,19 @@ def validate_plan(plan: dict[str, Any]) -> None:
         raise ValueError("layout.readingOrder must contain every module id exactly once")
     vx, vy, vw, vh = (float(item) for item in view_box)
     sx, sy, sw, sh = (float(item) for item in safe_area)
-    if sx < vx or sy < vy or sx + sw > vx + vw or sy + sh > vy + vh:
-        raise ValueError("layout.safeArea must stay inside viewBox")
+    navigation_plan = plan.get("navigation")
+    containment = (
+        navigation.rect(navigation_plan.get("worldBounds"), "navigation.worldBounds")
+        if isinstance(navigation_plan, dict)
+        else [vx, vy, vw, vh]
+    )
+    cx, cy, cw, ch = containment
+    if sx < cx or sy < cy or sx + sw > cx + cw or sy + sh > cy + ch:
+        raise ValueError(
+            "layout.safeArea must stay inside navigation.worldBounds"
+            if navigation_plan is not None
+            else "layout.safeArea must stay inside viewBox"
+        )
     for module in modules:
         mx, my, mw, mh = (float(item) for item in module["region"])
         if mx < sx or my < sy or mx + mw > sx + sw or my + mh > sy + sh:
@@ -480,6 +544,78 @@ def validate_plan(plan: dict[str, Any]) -> None:
             raise ValueError(
                 f"module {module_id!r} belongs to {len(expected_focus)} focus groups; use at most four discoverable stories"
             )
+
+    world = plan.get("world")
+    if (world is None) != (navigation_plan is None):
+        raise ValueError("world and navigation must either both be present or both be absent")
+    if world is not None:
+        if not isinstance(world, dict) or world.get("mode") != "navigable-atlas":
+            raise ValueError("world.mode must equal navigable-atlas")
+        if "navigation" not in plan.get("syncModes", []):
+            raise ValueError("a world plan requires navigation in syncModes")
+        navigation.validate_navigation(plan)
+        viewport = navigation.rect(navigation_plan.get("viewport"), "navigation.viewport")
+        if not navigation.contains([vx, vy, vw, vh], viewport):
+            raise ValueError("navigation.viewport must stay inside the root viewBox")
+        districts = world.get("districts")
+        links = world.get("links")
+        if not isinstance(districts, list) or len(districts) < 4:
+            raise ValueError("world needs at least four districts")
+        if not isinstance(links, list) or not links:
+            raise ValueError("world needs a non-empty district link graph")
+        district_ids: set[str] = set()
+        district_modules: set[str] = set()
+        for index, district in enumerate(districts):
+            district_id = require_id(
+                district.get("id") if isinstance(district, dict) else None,
+                f"world.districts[{index}].id",
+            )
+            if district_id in district_ids:
+                raise ValueError(f"duplicate world district id: {district_id}")
+            district_ids.add(district_id)
+            district_bounds = navigation.rect(
+                district.get("bounds"), f"world district {district_id!r} bounds"
+            )
+            if not navigation.contains(containment, district_bounds):
+                raise ValueError(f"world district {district_id!r} escapes worldBounds")
+            assigned = district.get("moduleIds")
+            if not isinstance(assigned, list) or not assigned or not set(assigned) <= module_ids:
+                raise ValueError(f"world district {district_id!r} references unknown modules")
+            if district_modules & set(assigned):
+                raise ValueError("world districts must not share modules")
+            district_modules.update(assigned)
+        if district_modules != module_ids:
+            raise ValueError("world districts must assign every module exactly once")
+        if world.get("rootDistrictId") not in district_ids:
+            raise ValueError("world.rootDistrictId must name a declared district")
+        for module in modules:
+            if module.get("districtId") not in district_ids:
+                raise ValueError(f"world module {module['id']!r} needs a declared districtId")
+        trunk_targets: list[str] = []
+        for index, link in enumerate(links):
+            if not isinstance(link, dict):
+                raise ValueError(f"world.links[{index}] must be an object")
+            if (
+                link.get("source") not in district_ids
+                or link.get("target") not in district_ids
+                or link.get("source") == link.get("target")
+            ):
+                raise ValueError("world links must connect distinct declared districts")
+            expected_roles = {"feedback"} if link.get("kind") == "feedback" else {"trunk", "crosslink"}
+            if link.get("treeRole") not in expected_roles:
+                raise ValueError(
+                    f"world link {link.get('id')!r} has invalid treeRole {link.get('treeRole')!r}"
+                )
+            if link.get("treeRole") == "trunk":
+                trunk_targets.append(str(link["target"]))
+        expected_trunk_targets = district_ids - {str(world["rootDistrictId"])}
+        if len(trunk_targets) != len(set(trunk_targets)) or set(trunk_targets) != expected_trunk_targets:
+            raise ValueError("world trunk links must reach every non-root district exactly once")
+        for stop in navigation_plan["route"]["stops"]:
+            if stop.get("focusId") is not None and stop.get("focusId") not in focus_ids:
+                raise ValueError(
+                    f"navigation route stop {stop['id']!r} references an unknown focus group"
+                )
 
     timeline = plan.get("timeline")
     if timeline is not None:
@@ -895,7 +1031,7 @@ def module_markup(
                 focus_id.split("-")[-1].title(),
             )
             visible_label = short_label(
-                f"Focus {visible_word}",
+                visible_word,
                 max(3, int((control_width - 12.0) / 5.5)),
             )
             control_x = control_start + index * (control_width + control_gap)
@@ -912,12 +1048,19 @@ def module_markup(
             )
     focus_control = "".join(focus_controls)
     module_id = esc(module["id"])
+    district_id = esc(str(module.get("districtId", "")))
+    district_accent = esc(str(module.get("districtAccent", "#2563eb")))
+    navigation_anchor = (
+        f' data-nav-anchor-id="module-{module_id}"' if module.get("districtId") else ""
+    )
     question_markup = "".join(question)
     claim_markup = "".join(claim)
     marks_markup = "\n      ".join(marks)
     return f'''<!-- sync-module-start:{module_id} -->
 <g id="module-{module_id}" class="sync-module" transform="translate({fmt(x)} {fmt(y)})"
    data-module-id="{module_id}" data-asset-type="{esc(module["assetType"])}"
+   data-district-id="{district_id}"{navigation_anchor}
+   style="--district-accent: {district_accent};"
    data-focus-group="{esc(focus)}" data-placeholder="true"
    data-content-top="{fmt(content_top)}"
    role="group"
@@ -1092,7 +1235,12 @@ def relationship_markup(plan: dict[str, Any]) -> str:
     ]
     safe_x = float(plan["layout"]["safeArea"][0])
     safe_right = safe_x + float(plan["layout"]["safeArea"][2])
-    root_x, root_y, root_width, root_height = (float(value) for value in plan["viewBox"])
+    route_bounds = (
+        plan.get("navigation", {}).get("worldBounds")
+        if isinstance(plan.get("navigation"), dict)
+        else plan["viewBox"]
+    )
+    root_x, root_y, root_width, root_height = (float(value) for value in route_bounds)
     root_right = root_x + root_width
     declared_gap = float(plan["layout"].get("gap", 24))
     key_columns = min(6, max(3, math.ceil(len(relationships) / 3)))
@@ -1340,6 +1488,390 @@ def relationship_markup(plan: dict[str, Any]) -> str:
     return "".join(parts)
 
 
+def world_markup(plan: dict[str, Any]) -> str:
+    world = plan.get("world")
+    if not isinstance(world, dict):
+        return ""
+    bounds = [float(item) for item in world["bounds"]]
+    district_by_id = {item["id"]: item for item in world["districts"]}
+    module_by_id = {item["id"]: item for item in plan["modules"]}
+    marker_id = f"{plan['compositionId']}--world-arrow"
+    parts = [
+        '<g id="composition-world-map" data-world-map="true" '
+        f'data-world-armature="{esc(world["armature"])}" aria-label="Navigable diagram world">',
+        '<defs>',
+        f'<pattern id="{esc(plan["compositionId"])}--world-grid" width="160" height="160" '
+        'patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="2.4" fill="#94a3b8" '
+        'fill-opacity="0.25"/></pattern>',
+        f'<marker id="{esc(marker_id)}" viewBox="0 0 10 10" refX="8.5" refY="5" '
+        'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
+        '<path d="M1 1 L9 5 L1 9 Z" fill="context-stroke"/></marker>',
+        '</defs>',
+        f'<rect class="world-field" x="{fmt(bounds[0])}" y="{fmt(bounds[1])}" '
+        f'width="{fmt(bounds[2])}" height="{fmt(bounds[3])}" '
+        f'fill="url(#{esc(plan["compositionId"])}--world-grid)"/>',
+        '<g id="world-district-links" class="world-district-links" '
+        'aria-label="District lineage and dependency routes">',
+    ]
+    for link in world["links"]:
+        source = district_by_id[link["source"]]
+        target = district_by_id[link["target"]]
+        sx, sy = (float(item) for item in source["center"])
+        tx, ty = (float(item) for item in target["center"])
+        dx = tx - sx
+        dy = ty - sy
+        bend = 0.17 if link["kind"] != "feedback" else -0.28
+        normal_x = -dy * bend
+        normal_y = dx * bend
+        c1x = sx + dx * 0.34 + normal_x
+        c1y = sy + dy * 0.34 + normal_y
+        c2x = sx + dx * 0.66 + normal_x
+        c2y = sy + dy * 0.66 + normal_y
+        path = (
+            f"M{fmt(sx)} {fmt(sy)} C{fmt(c1x)} {fmt(c1y)} "
+            f"{fmt(c2x)} {fmt(c2y)} {fmt(tx)} {fmt(ty)}"
+        )
+        chevrons: list[str] = []
+        if link["treeRole"] == "trunk":
+            for progress in (0.50, 0.70):
+                inverse = 1.0 - progress
+                chevron_x = (
+                    inverse**3 * sx
+                    + 3.0 * inverse**2 * progress * c1x
+                    + 3.0 * inverse * progress**2 * c2x
+                    + progress**3 * tx
+                )
+                chevron_y = (
+                    inverse**3 * sy
+                    + 3.0 * inverse**2 * progress * c1y
+                    + 3.0 * inverse * progress**2 * c2y
+                    + progress**3 * ty
+                )
+                tangent_x = (
+                    3.0 * inverse**2 * (c1x - sx)
+                    + 6.0 * inverse * progress * (c2x - c1x)
+                    + 3.0 * progress**2 * (tx - c2x)
+                )
+                tangent_y = (
+                    3.0 * inverse**2 * (c1y - sy)
+                    + 6.0 * inverse * progress * (c2y - c1y)
+                    + 3.0 * progress**2 * (ty - c2y)
+                )
+                angle = math.degrees(math.atan2(tangent_y, tangent_x))
+                chevrons.append(
+                    f'<path class="world-link-chevron" d="M-28 -24 L0 0 L-28 24" '
+                    f'transform="translate({fmt(chevron_x)} {fmt(chevron_y)}) rotate({fmt(angle)})"/>'
+                )
+        label_x = (sx + tx) / 2 + normal_x * 0.72
+        label_y = (sy + ty) / 2 + normal_y * 0.72
+        dash = (
+            ' stroke-dasharray="18 12"'
+            if link["kind"] == "feedback"
+            else (
+                ' stroke-dasharray="7 9"'
+                if link["kind"] == "dependency" and link["treeRole"] != "trunk"
+                else ""
+            )
+        )
+        parts.append(
+            f'<g id="world-link-{esc(link["id"])}" '
+            f'class="world-link {"world-link-primary" if link["treeRole"] == "trunk" else "world-link-secondary"}" '
+            f'data-world-link-id="{esc(link["id"])}" data-kind="{esc(link["kind"])}" '
+            f'data-tree-role="{esc(link["treeRole"])}" '
+            'data-route-active="false" data-route-traveling="false" '
+            f'data-source-district="{esc(link["source"])}" '
+            f'data-target-district="{esc(link["target"])}">'
+            f'<title>{esc(link["label"])}</title>'
+            f'<path class="world-link-halo" d="{path}"/>'
+            f'<path class="world-link-path" d="{path}" marker-end="url(#{esc(marker_id)})"{dash}/>'
+            f'<g class="world-link-chevrons">{"".join(chevrons)}</g>'
+            f'<g class="world-link-label" transform="translate({fmt(label_x)} {fmt(label_y)})">'
+            f'<rect x="-410" y="-70" width="820" height="140" rx="70"/>'
+            f'<text text-anchor="middle" y="27">{esc(short_label(link["label"], 34))}</text>'
+            '</g></g>'
+        )
+    parts.append('</g><g id="world-districts" class="world-districts">')
+    for district in world["districts"]:
+        x, y, width, height = (float(item) for item in district["bounds"])
+        center_x, center_y = (float(item) for item in district["center"])
+        label_x = x + 72
+        label_y = y + 112
+        summary_lines = textwrap.wrap(str(district["summary"]), width=58)[:2]
+        summary = [
+            f'<text class="district-summary" x="{fmt(label_x)}" y="{fmt(label_y + 64)}">'
+            f'{esc(summary_lines[0]) if summary_lines else ""}'
+        ]
+        for line in summary_lines[1:]:
+            summary.append(f'<tspan x="{fmt(label_x)}" dy="38">{esc(line)}</tspan>')
+        summary.append('</text>')
+        local_branch_parts = [
+            f'<g class="world-local-branches" data-local-branches-for="{esc(district["id"])}" '
+            'aria-label="Local diagram branches">'
+        ]
+        local_node_parts = [
+            f'<g class="world-local-nodes" data-local-nodes-for="{esc(district["id"])}">'
+        ]
+        module_layouts: list[tuple[str, dict[str, Any], float, float]] = []
+        for module_id in district["moduleIds"]:
+            module = module_by_id[module_id]
+            mx, my, mw, mh = (float(value) for value in module["region"])
+            node_x = mx + mw / 2
+            node_y = my + mh / 2
+            module_layouts.append((module_id, module, node_x, node_y))
+        local_armature = str(district["localArmature"])
+        if local_armature == "orbit" and len(module_layouts) > 1:
+            radius_x = max(abs(item[2] - center_x) for item in module_layouts)
+            radius_y = max(abs(item[3] - center_y) for item in module_layouts)
+            local_branch_parts.append(
+                f'<ellipse class="world-local-branch world-local-orbit-ring" '
+                f'cx="{fmt(center_x)}" cy="{fmt(center_y)}" rx="{fmt(radius_x)}" ry="{fmt(radius_y)}"/>'
+            )
+        for module_index, (module_id, module, node_x, node_y) in enumerate(module_layouts, start=1):
+            local_path: str | None = None
+            if local_armature == "branch" and module_index > 1:
+                source_x, source_y = module_layouts[0][2], module_layouts[0][3]
+                dx = node_x - source_x
+                dy = node_y - source_y
+                normal_x = -dy * (0.08 if module_index % 2 else -0.08)
+                normal_y = dx * (0.08 if module_index % 2 else -0.08)
+                local_path = (
+                    f'M{fmt(source_x)} {fmt(source_y)} '
+                    f'C{fmt(source_x + dx * 0.32 + normal_x)} {fmt(source_y + dy * 0.32 + normal_y)} '
+                    f'{fmt(source_x + dx * 0.72 + normal_x)} {fmt(source_y + dy * 0.72 + normal_y)} '
+                    f'{fmt(node_x)} {fmt(node_y)}'
+                )
+            elif local_armature == "lanes" and module_index > 1:
+                source_x, source_y = module_layouts[module_index - 2][2], module_layouts[module_index - 2][3]
+                midpoint_x = (source_x + node_x) / 2.0
+                local_path = (
+                    f'M{fmt(source_x)} {fmt(source_y)} H{fmt(midpoint_x)} '
+                    f'V{fmt(node_y)} H{fmt(node_x)}'
+                )
+            elif local_armature == "radial" and module_index > 1:
+                source_x, source_y = module_layouts[0][2], module_layouts[0][3]
+                dx = node_x - source_x
+                dy = node_y - source_y
+                bend = 0.10 if module_index % 2 else -0.10
+                normal_x = -dy * bend
+                normal_y = dx * bend
+                local_path = (
+                    f'M{fmt(source_x)} {fmt(source_y)} '
+                    f'C{fmt(source_x + dx * 0.30 + normal_x)} {fmt(source_y + dy * 0.30 + normal_y)} '
+                    f'{fmt(source_x + dx * 0.72 + normal_x)} {fmt(source_y + dy * 0.72 + normal_y)} '
+                    f'{fmt(node_x)} {fmt(node_y)}'
+                )
+            if local_path is not None:
+                local_branch_parts.append(
+                    f'<path class="world-local-branch {"world-local-root-branch" if module_index == 2 else ""}" '
+                    f'd="{local_path}" data-local-module-id="{esc(module_id)}"/>'
+                )
+            wrapped_label = textwrap.wrap(
+                str(module.get("navigationLabel", module_id.replace("-", " ").title())),
+                width=22,
+                break_long_words=False,
+            )[:2]
+            if not wrapped_label:
+                wrapped_label = [module_id.replace("-", " ").title()]
+            single_module_district = len(district["moduleIds"]) == 1
+            node_halo_radius = 92.0 if single_module_district else 62.0
+            node_core_radius = 62.0 if single_module_district else 42.0
+            node_hit_radius = 108.0 if single_module_district else 76.0
+            node_label_y = node_y + node_halo_radius + 16.0
+            label_width = max(
+                260.0,
+                min(680.0, max(len(line) for line in wrapped_label) * 24.0 + 72.0),
+            )
+            label_height = 76.0 + max(0, len(wrapped_label) - 1) * 38.0
+            label_markup = [
+                f'<rect class="world-module-node-label-plaque" '
+                f'x="{fmt(node_x - label_width / 2)}" y="{fmt(node_label_y - 48)}" '
+                f'width="{fmt(label_width)}" height="{fmt(label_height)}" rx="{fmt(label_height / 2)}"/>',
+                f'<text class="world-module-node-label" x="{fmt(node_x)}" y="{fmt(node_label_y)}" '
+                'text-anchor="middle">'
+            ]
+            for line_index, line in enumerate(wrapped_label):
+                label_markup.append(
+                    f'<tspan x="{fmt(node_x)}" dy="{0 if line_index == 0 else 34}">{esc(line)}</tspan>'
+                )
+            label_markup.append('</text>')
+            singleton_preview_markup = ""
+            diagram = module.get("diagram")
+            if single_module_district and isinstance(diagram, dict):
+                preview_nodes = [
+                    item
+                    for item in diagram.get("nodes", [])
+                    if item.get("kind") != "root"
+                ][:12]
+                preview_parts = [
+                    '<g class="district-singleton-preview" aria-hidden="true">'
+                ]
+                inner_count = max(1, len(preview_nodes) // 2)
+                for preview_index, preview_node in enumerate(preview_nodes):
+                    inner = preview_index < inner_count
+                    ring_index = preview_index if inner else preview_index - inner_count
+                    ring_count = inner_count if inner else len(preview_nodes) - inner_count
+                    angle = (
+                        -math.pi / 2
+                        + 2 * math.pi * ring_index / max(1, ring_count)
+                        + (0.0 if inner else math.pi / max(2, ring_count))
+                    )
+                    radius_x = 300.0 if inner else 500.0
+                    radius_y = 180.0 if inner else 315.0
+                    preview_x = node_x + radius_x * math.cos(angle)
+                    preview_y = node_y + radius_y * math.sin(angle)
+                    vector_x = preview_x - node_x
+                    vector_y = preview_y - node_y
+                    distance = max(1.0, math.hypot(vector_x, vector_y))
+                    end_x = preview_x - vector_x / distance * 32.0
+                    end_y = preview_y - vector_y / distance * 32.0
+                    preview_parts.append(
+                        f'<line class="district-singleton-preview-branch" '
+                        f'x1="{fmt(node_x)}" y1="{fmt(node_y)}" '
+                        f'x2="{fmt(end_x)}" y2="{fmt(end_y)}"/>'
+                        f'<circle class="district-singleton-preview-node" '
+                        f'cx="{fmt(preview_x)}" cy="{fmt(preview_y)}" r="26"/>'
+                    )
+                    preview_lines = textwrap.wrap(
+                        str(preview_node.get("label", preview_node.get("id", "Concept"))),
+                        width=19,
+                        break_long_words=False,
+                    ) or [str(preview_node.get("label", "Concept"))]
+                    preview_parts.append(
+                        f'<text class="district-singleton-preview-label" '
+                        f'x="{fmt(preview_x)}" y="{fmt(preview_y + 52)}" text-anchor="middle">'
+                    )
+                    for preview_line_index, preview_line in enumerate(preview_lines):
+                        preview_parts.append(
+                            f'<tspan x="{fmt(preview_x)}" '
+                            f'dy="{0 if preview_line_index == 0 else 27}">{esc(preview_line)}</tspan>'
+                        )
+                    preview_parts.append('</text>')
+                preview_parts.append('</g>')
+                singleton_preview_markup = "".join(preview_parts)
+            local_node_parts.append(
+                f'<g id="world-module-node-{esc(module_id)}" class="world-module-node" '
+                f'data-world-module-id="{esc(module_id)}" data-world-node-district="{esc(district["id"])}" '
+                f'data-local-root="{str(module_index == 1).lower()}" '
+                f'style="--district-accent: {esc(district["accent"])};">'
+                f'{singleton_preview_markup}'
+                f'<circle class="world-module-node-halo" cx="{fmt(node_x)}" cy="{fmt(node_y)}" r="{fmt(node_halo_radius)}"/>'
+                f'<circle class="world-module-node-core" cx="{fmt(node_x)}" cy="{fmt(node_y)}" r="{fmt(node_core_radius)}"/>'
+                f'<text class="world-module-node-index" x="{fmt(node_x)}" y="{fmt(node_y + 13)}" '
+                f'text-anchor="middle">{esc(str(module_index).zfill(2))}</text>'
+                f'{"".join(label_markup)}'
+                f'<g id="module-nav-{esc(module_id)}" class="interactive-control world-module-nav-control" '
+                f'data-nav-target="module-{esc(module_id)}" role="button" tabindex="-1" '
+                f'aria-label="Open local diagram: {esc(module["question"])}">'
+                f'<circle cx="{fmt(node_x)}" cy="{fmt(node_y)}" r="{fmt(node_hit_radius)}"/></g>'
+                '</g>'
+            )
+        local_branch_parts.append('</g>')
+        local_node_parts.append('</g>')
+        is_root_district = district["id"] == world["rootDistrictId"]
+        hub_halo_radius = 168.0 if is_root_district else 118.0
+        hub_radius = 98.0 if is_root_district else 72.0
+        hub_hit_radius = 186.0 if is_root_district else 132.0
+        world_label_y = center_y - hub_halo_radius - 84.0
+        world_label_width = max(
+            760.0,
+            min(1540.0, len(str(district["label"])) * 84.0 + 180.0),
+        )
+        parts.append(
+            f'<g id="district-{esc(district["id"])}" class="world-district" '
+            f'data-district-id="{esc(district["id"])}" '
+            f'data-nav-anchor-id="district-{esc(district["id"])}" '
+            f'data-local-armature="{esc(district["localArmature"])}" '
+            f'data-world-root="{str(is_root_district).lower()}" '
+            f'data-single-module="{str(len(district["moduleIds"]) == 1).lower()}" '
+            f'style="--district-accent: {esc(district["accent"])};">'
+            f'<title>{esc(district["label"])}: {esc(district["summary"])}</title>'
+            f'<rect class="district-field" x="{fmt(x)}" y="{fmt(y)}" '
+            f'width="{fmt(width)}" height="{fmt(height)}" rx="180"/>'
+            f'{"".join(local_branch_parts)}'
+            f'{"".join(local_node_parts)}'
+            f'<circle class="district-hub-halo" cx="{fmt(center_x)}" cy="{fmt(center_y)}" r="{fmt(hub_halo_radius)}"/>'
+            f'<circle class="district-hub" cx="{fmt(center_x)}" cy="{fmt(center_y)}" r="{fmt(hub_radius)}"/>'
+            f'<text class="district-index" x="{fmt(center_x)}" y="{fmt(center_y + 17)}" '
+            f'text-anchor="middle">{esc(str(world["districts"].index(district) + 1).zfill(2))}</text>'
+            f'<text class="district-title district-title-detail" x="{fmt(label_x)}" y="{fmt(label_y)}">'
+            f'{esc(district["label"])}</text>'
+            f'<rect class="district-title-world-plaque" '
+            f'x="{fmt(center_x - world_label_width / 2)}" y="{fmt(world_label_y - 116)}" '
+            f'width="{fmt(world_label_width)}" height="158" rx="79"/>'
+            f'<text class="district-title district-title-world" x="{fmt(center_x)}" '
+            f'y="{fmt(world_label_y)}" text-anchor="middle">{esc(district["label"])}</text>'
+            f'{"".join(summary)}'
+            f'<g id="district-nav-{esc(district["id"])}" class="interactive-control district-nav-control" '
+            f'data-nav-target="district-{esc(district["id"])}" role="button" tabindex="0" '
+            f'aria-label="Open district: {esc(district["label"])}" '
+            f'><circle cx="{fmt(center_x)}" cy="{fmt(center_y)}" r="{fmt(hub_hit_radius)}"/></g>'
+            '</g>'
+        )
+    parts.append('</g></g>')
+    return "".join(parts)
+
+
+def navigation_hud_markup(plan: dict[str, Any]) -> str:
+    navigation_plan = plan.get("navigation")
+    world = plan.get("world")
+    if not isinstance(navigation_plan, dict) or not isinstance(world, dict):
+        return ""
+    _, _, world_width, world_height = (float(item) for item in navigation_plan["worldBounds"])
+    map_x, map_y, map_width, map_height = 1620.0, 690.0, 280.0, 157.5
+    parts = [
+        '<g id="navigation-hud" class="navigation-hud" data-navigation-hud="true" '
+        'aria-label="Spatial navigation and minimap">',
+        '<rect class="navigation-hud-panel" x="1620" y="140" width="280" height="520" rx="24"/>',
+        '<text class="navigation-eyebrow" x="1644" y="180">CAMERA ROUTE</text>',
+        '<text class="navigation-current-label" data-navigation-current-label="true" '
+        'x="1644" y="210">WORLD</text>',
+        '<text class="navigation-current-tier" data-navigation-current-tier="true" '
+        'x="1644" y="276">WORLD · topology</text>',
+        '<text class="navigation-handoff" data-navigation-handoff="true" '
+        'x="1644" y="528">SELECT A BRANCH OR PLAY THE TOUR</text>',
+        '<text class="navigation-help" x="1644" y="600">DRAG TO PAN · WHEEL TO ZOOM</text>',
+        '<text class="navigation-help" x="1644" y="626">HOME OR 0 RETURNS TO WORLD</text>',
+    ]
+    controls = (
+        ("previous", "PREV", 1644.0, 300.0, 112.0),
+        ("up", "UP", 1766.0, 300.0, 112.0),
+        ("next", "NEXT", 1644.0, 372.0, 112.0),
+        ("tour", "TOUR", 1766.0, 372.0, 112.0),
+        ("home", "WORLD", 1644.0, 444.0, 234.0),
+    )
+    for action, label, x, y, control_width in controls:
+        parts.append(
+            f'<g id="camera-control-{action}" class="interactive-control navigation-control" '
+            f'data-camera-action="{action}" '
+            f'role="button" tabindex="0" aria-label="{esc(label.title())} camera view" '
+            f'transform="translate({fmt(x)} {fmt(y)})"><rect width="{fmt(control_width)}" height="54" rx="18"/>'
+            f'<text x="{fmt(control_width / 2)}" y="34" text-anchor="middle">{label}</text></g>'
+        )
+    parts.extend(
+        [
+            f'<g id="navigation-minimap" class="navigation-minimap" '
+            f'transform="translate({fmt(map_x)} {fmt(map_y)})" '
+            f'data-world-width="{fmt(world_width)}" data-world-height="{fmt(world_height)}">',
+            f'<rect class="minimap-field" width="{fmt(map_width)}" height="{fmt(map_height)}" rx="16"/>',
+        ]
+    )
+    for district in world["districts"]:
+        x, y, width, height = (float(item) for item in district["bounds"])
+        parts.append(
+            f'<rect class="minimap-district" data-minimap-district="{esc(district["id"])}" '
+            f'x="{fmt(x / world_width * map_width)}" y="{fmt(y / world_height * map_height)}" '
+            f'width="{fmt(width / world_width * map_width)}" '
+            f'height="{fmt(height / world_height * map_height)}" '
+            f'style="--district-accent: {esc(district["accent"])};"/>'
+        )
+    parts.append(
+        '<rect class="minimap-viewport" data-minimap-viewport="true" '
+        f'x="0" y="0" width="{fmt(map_width)}" height="{fmt(map_height)}" rx="4"/>'
+        '</g></g>'
+    )
+    return "".join(parts)
+
+
 RUNTIME_JS = r"""
 (function () {
   "use strict";
@@ -1351,6 +1883,11 @@ RUNTIME_JS = r"""
   const scenarios = new Map(plan.scenarios.map((item) => [item.id, item]));
   const modules = new Map(plan.modules.map((item) => [item.id, item]));
   const focusGroups = new Map((plan.focusGroups || []).map((item) => [item.id, item]));
+  const navigationPlan = plan.navigation || null;
+  const navigationAnchors = new Map(
+    navigationPlan ? navigationPlan.anchors.map((item) => [item.id, item]) : []
+  );
+  const worldViewport = document.getElementById("composition-world-viewport");
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let sourceValues = Object.fromEntries(plan.concepts.map((item) => [item.id, Number(item.default)]));
   let derivedValues = {};
@@ -1364,6 +1901,18 @@ RUNTIME_JS = r"""
   let animationTimer = null;
   let playStartedAt = 0;
   let playStartedTime = 0;
+  let cameraViewBox = navigationPlan
+    ? [...navigationAnchors.get(navigationPlan.initialAnchorId).viewBox]
+    : null;
+  let cameraAnchorId = navigationPlan ? navigationPlan.initialAnchorId : null;
+  let cameraTier = navigationPlan ? "world" : null;
+  let cameraRevision = 0;
+  let cameraTimeMs = 0;
+  let cameraStopId = null;
+  let cameraPlaying = false;
+  let cameraTimer = null;
+  let cameraPlayStartedAt = 0;
+  let cameraPlayStartedTime = 0;
 
   function clone(value) { return JSON.parse(JSON.stringify(value)); }
   function stable(value) {
@@ -1670,6 +2219,349 @@ RUNTIME_JS = r"""
     group.querySelectorAll('[data-sync-layout="stack"]').forEach(layoutStack);
     group.querySelectorAll('[data-sync-layout="waterfall"]').forEach(layoutWaterfall);
     group.querySelectorAll('[data-sync-layout="flow"]').forEach((plot) => layoutFlow(plot, group));
+  }
+  function normalizedCamera(raw) {
+    if (!navigationPlan) throw new Error("navigation is not declared");
+    if (!Array.isArray(raw) || raw.length !== 4) throw new Error("camera must be [x, y, width, height]");
+    let [x, y, width, height] = raw.map((value) => numeric(value, "camera value"));
+    if (width <= 0 || height <= 0) throw new Error("camera dimensions must be positive");
+    const [worldX, worldY, worldWidth, worldHeight] = navigationPlan.worldBounds.map(Number);
+    const viewportAspect = Number(navigationPlan.viewport[2]) / Number(navigationPlan.viewport[3]);
+    if (Math.abs(width / height - viewportAspect) > 1e-6) {
+      throw new Error("camera aspect must match the fixed viewport");
+    }
+    const moduleWidths = navigationPlan.anchors
+      .filter((anchor) => anchor.kind === "module")
+      .map((anchor) => Number(anchor.viewBox[2]));
+    const minimumWidth = Math.max(80, Math.min(...moduleWidths) * 0.55);
+    width = Math.min(Math.max(width, minimumWidth), worldWidth);
+    height = width / viewportAspect;
+    if (height > worldHeight) {
+      height = worldHeight;
+      width = height * viewportAspect;
+    }
+    x = Math.min(Math.max(x, worldX), worldX + worldWidth - width);
+    y = Math.min(Math.max(y, worldY), worldY + worldHeight - height);
+    return [x, y, width, height];
+  }
+  function cameraEqual(first, second) {
+    return Boolean(first && second && first.every((value, index) => Math.abs(value - second[index]) <= 1e-7));
+  }
+  function cameraZoomTier(camera) {
+    if (!navigationPlan) return null;
+    const ratio = camera[2] / Number(navigationPlan.worldBounds[2]);
+    const thresholds = Object.fromEntries(
+      navigationPlan.semanticZoom.map((item) => [item.id, Number(item.maximumWidthRatio)])
+    );
+    if (ratio <= thresholds.module) return "module";
+    if (ratio <= thresholds.district) return "district";
+    return "world";
+  }
+  function cameraSnapshot() {
+    return {
+      version: 1,
+      compositionId: plan.compositionId,
+      revision: cameraRevision,
+      anchorId: cameraAnchorId,
+      viewBox: cameraViewBox ? [...cameraViewBox] : null,
+      tier: cameraTier,
+      timeMs: cameraTimeMs,
+      stopId: cameraStopId,
+      playing: cameraPlaying,
+      motion: reduceMotion ? "reduced" : "full"
+    };
+  }
+  function updateCameraHud() {
+    if (!navigationPlan || !cameraViewBox || !worldViewport) return;
+    worldViewport.setAttribute("viewBox", cameraViewBox.join(" "));
+    root.setAttribute("data-camera-anchor", cameraAnchorId || "");
+    root.setAttribute("data-camera-tier", cameraTier || "");
+    root.setAttribute("data-camera-revision", String(cameraRevision));
+    root.setAttribute("data-camera-time-ms", String(cameraTimeMs));
+    root.setAttribute("data-camera-stop-id", cameraStopId || "");
+    const anchor = cameraAnchorId ? navigationAnchors.get(cameraAnchorId) : null;
+    const stop = cameraStopId
+      ? navigationPlan.route.stops.find((item) => item.id === cameraStopId)
+      : null;
+    const label = root.querySelector("[data-navigation-current-label]");
+    if (label) {
+      const breadcrumb = ["WORLD"];
+      if (anchor?.kind === "district") breadcrumb.push(anchor.label);
+      else if (anchor?.kind === "module") {
+        const parent = navigationAnchors.get(anchor.parentId);
+        if (parent?.label) breadcrumb.push(parent.label);
+        breadcrumb.push(anchor.label);
+      } else if (!anchor && stop?.label) breadcrumb.push(stop.label);
+      const fullLabel = breadcrumb.join(" › ");
+      const lines = [""];
+      for (const word of fullLabel.split(/\s+/).filter(Boolean)) {
+        const candidate = `${lines.at(-1)} ${word}`.trim();
+        if (candidate.length <= 28 || !lines.at(-1)) lines[lines.length - 1] = candidate;
+        else lines.push(word);
+      }
+      label.replaceChildren();
+      lines.slice(0, 3).forEach((line, index) => {
+        const tspan = document.createElementNS(label.namespaceURI, "tspan");
+        tspan.setAttribute("x", "1644");
+        tspan.setAttribute("dy", index === 0 ? "0" : "22");
+        tspan.textContent = line;
+        label.appendChild(tspan);
+      });
+      label.setAttribute("aria-label", fullLabel);
+    }
+    const tier = root.querySelector("[data-navigation-current-tier]");
+    if (tier) {
+      const tierCopy = {
+        world: "WORLD · topology",
+        district: "DISTRICT · local index",
+        module: "MODULE · complete diagram"
+      }[cameraTier] || "FREE CAMERA · manual view";
+      tier.textContent = tierCopy;
+    }
+    const handoff = root.querySelector("[data-navigation-handoff]");
+    if (handoff) {
+      const fullHandoff = stop?.handoff || (anchor ? `Explore ${anchor.label}` : "Free camera navigation");
+      const handoffLines = [""];
+      for (const word of fullHandoff.split(/\s+/).filter(Boolean)) {
+        const candidate = `${handoffLines.at(-1)} ${word}`.trim();
+        if (candidate.length <= 34 || !handoffLines.at(-1)) handoffLines[handoffLines.length - 1] = candidate;
+        else handoffLines.push(word);
+      }
+      handoff.replaceChildren();
+      handoffLines.slice(0, 3).forEach((line, index) => {
+        const tspan = document.createElementNS(handoff.namespaceURI, "tspan");
+        tspan.setAttribute("x", "1644");
+        tspan.setAttribute("dy", index === 0 ? "0" : "17");
+        tspan.textContent = line;
+        handoff.appendChild(tspan);
+      });
+      handoff.setAttribute("aria-label", fullHandoff);
+    }
+    const upControl = root.querySelector('[data-camera-action="up"]');
+    if (upControl) {
+      const upText = upControl.querySelector("text");
+      const hasParent = anchor?.kind === "module" || anchor?.kind === "district";
+      const upLabel = anchor?.kind === "module" ? "DISTRICT" : "WORLD";
+      if (upText) upText.textContent = hasParent ? upLabel : "UP";
+      upControl.setAttribute("aria-label", anchor?.kind === "module"
+        ? "Return to parent district"
+        : (anchor?.kind === "district" ? "Return to world overview" : "Already at world overview"));
+      upControl.setAttribute("aria-disabled", String(!hasParent));
+      upControl.setAttribute("tabindex", hasParent ? "0" : "-1");
+    }
+    const minimap = root.querySelector("[data-minimap-viewport]");
+    if (minimap) {
+      const field = minimap.parentElement.querySelector(".minimap-field");
+      const mapWidth = Number(field?.getAttribute("width")) || 320;
+      const mapHeight = Number(field?.getAttribute("height")) || 180;
+      const [worldX, worldY, worldWidth, worldHeight] = navigationPlan.worldBounds.map(Number);
+      minimap.setAttribute("x", String((cameraViewBox[0] - worldX) / worldWidth * mapWidth));
+      minimap.setAttribute("y", String((cameraViewBox[1] - worldY) / worldHeight * mapHeight));
+      minimap.setAttribute("width", String(cameraViewBox[2] / worldWidth * mapWidth));
+      minimap.setAttribute("height", String(cameraViewBox[3] / worldHeight * mapHeight));
+    }
+    const intersectsCamera = (region) => {
+      const [mx, my, mw, mh] = region.map(Number);
+      const [cx, cy, cw, ch] = cameraViewBox;
+      return mx + mw > cx && my + mh > cy && mx < cx + cw && my < cy + ch;
+    };
+    let activeDistrictId = null;
+    if (anchor?.kind === "district") activeDistrictId = anchor.targetId;
+    else if (anchor?.kind === "module") activeDistrictId = String(anchor.parentId || "").replace(/^district-/, "");
+    const districtForAnchor = (item) => {
+      if (!item || item.kind === "world") return null;
+      if (item.kind === "district") return item.targetId;
+      if (item.kind === "module") return String(item.parentId || "").replace(/^district-/, "");
+      return null;
+    };
+    const routeFromDistrict = districtForAnchor(
+      stop ? navigationAnchors.get(stop.fromAnchorId) : null
+    );
+    const routeTargetDistrict = districtForAnchor(
+      stop ? navigationAnchors.get(stop.anchorId) : anchor
+    ) || activeDistrictId;
+    root.querySelectorAll("[data-world-link-id]").forEach((link) => {
+      const exactRoute = Boolean(
+        routeFromDistrict && routeTargetDistrict &&
+        link.dataset.sourceDistrict === routeFromDistrict &&
+        link.dataset.targetDistrict === routeTargetDistrict
+      );
+      const incomingTrunk = Boolean(
+        !routeFromDistrict && routeTargetDistrict &&
+        link.dataset.targetDistrict === routeTargetDistrict &&
+        link.dataset.treeRole === "trunk"
+      );
+      link.setAttribute("data-route-active", String(exactRoute || incomingTrunk));
+      link.setAttribute("data-route-traveling", String(exactRoute && !cameraAnchorId));
+    });
+    for (const district of plan.world?.districts || []) {
+      const active = activeDistrictId
+        ? district.id === activeDistrictId
+        : (cameraTier === "world" || intersectsCamera(district.bounds));
+      const group = root.querySelector(`#district-${CSS.escape(district.id)}`);
+      if (group) group.setAttribute("data-camera-active", String(active));
+      const control = group?.querySelector(":scope > .district-nav-control");
+      if (control) control.setAttribute("tabindex", cameraTier === "world" ? "0" : "-1");
+    }
+    for (const module of plan.modules) {
+      const group = root.querySelector(`[data-module-id="${CSS.escape(module.id)}"]`);
+      if (!group) continue;
+      const visible = intersectsCamera(module.region);
+      const active = anchor?.kind === "module"
+        ? module.id === anchor.targetId
+        : (anchor?.kind === "district" ? anchor.moduleIds.includes(module.id) : visible);
+      group.setAttribute("data-camera-active", String(Boolean(active)));
+      for (const control of group.querySelectorAll("[data-module-focus-id]")) {
+        control.setAttribute("tabindex", cameraTier === "module" && active && visible ? "0" : "-1");
+      }
+      const node = root.querySelector(`[data-world-module-id="${CSS.escape(module.id)}"]`);
+      if (node) {
+        node.setAttribute("data-camera-active", String(Boolean(active)));
+        const control = node.querySelector("[data-nav-target]");
+        if (control) {
+          const nodeDistrict = node.getAttribute("data-world-node-district");
+          control.setAttribute(
+            "tabindex",
+            cameraTier === "district" && nodeDistrict === activeDistrictId ? "0" : "-1"
+          );
+        }
+      }
+    }
+  }
+  function emitCamera() {
+    const detail = cameraSnapshot();
+    root.dispatchEvent(new CustomEvent("svg-camera-change", {detail}));
+    return detail;
+  }
+  function commitCamera(raw, anchorId = null, time = cameraTimeMs, stopId = cameraStopId, emit = true) {
+    if (!navigationPlan) return cameraSnapshot();
+    const next = normalizedCamera(raw);
+    const nextTier = anchorId && navigationAnchors.has(anchorId)
+      ? navigationAnchors.get(anchorId).zoomTier
+      : cameraZoomTier(next);
+    const changed = !cameraEqual(next, cameraViewBox) || anchorId !== cameraAnchorId ||
+      time !== cameraTimeMs || stopId !== cameraStopId;
+    if (!changed) return cameraSnapshot();
+    cameraViewBox = next;
+    cameraAnchorId = anchorId;
+    cameraTier = nextTier;
+    cameraTimeMs = time;
+    cameraStopId = stopId;
+    cameraRevision += 1;
+    updateCameraHud();
+    return emit ? emitCamera() : cameraSnapshot();
+  }
+  function updateNavigationHash(anchorId) {
+    if (!anchorId || typeof history === "undefined") return;
+    try {
+      const url = new URL(window.location.href);
+      url.hash = `view=${encodeURIComponent(anchorId)}`;
+      history.replaceState({svgAnchor: anchorId}, "", url);
+    } catch (_) { /* local SVG viewers may not expose writable history */ }
+  }
+  function navigateTo(anchorId, options = {}) {
+    if (!navigationPlan) return cameraSnapshot();
+    const anchor = navigationAnchors.get(anchorId);
+    if (!anchor) throw new Error("unknown navigation anchor: " + anchorId);
+    pauseCamera();
+    const snapshot = commitCamera(anchor.viewBox, anchor.id, cameraTimeMs, null);
+    if (options.updateHash !== false) updateNavigationHash(anchor.id);
+    return snapshot;
+  }
+  function setCamera(raw) {
+    pauseCamera();
+    return commitCamera(raw, null, cameraTimeMs, null);
+  }
+  function fitOverview(options = {}) {
+    if (!navigationPlan) return cameraSnapshot();
+    return navigateTo("world", options);
+  }
+  function interpolateCamera(first, second, progress) {
+    const clamped = Math.min(Math.max(progress, 0), 1);
+    const eased = clamped * clamped * (3 - 2 * clamped);
+    const firstCenter = [first[0] + first[2] / 2, first[1] + first[3] / 2];
+    const secondCenter = [second[0] + second[2] / 2, second[1] + second[3] / 2];
+    const centerX = firstCenter[0] + (secondCenter[0] - firstCenter[0]) * eased;
+    const centerY = firstCenter[1] + (secondCenter[1] - firstCenter[1]) * eased;
+    const width = Math.exp(Math.log(first[2]) + (Math.log(second[2]) - Math.log(first[2])) * eased);
+    const height = Math.exp(Math.log(first[3]) + (Math.log(second[3]) - Math.log(first[3])) * eased);
+    return [centerX - width / 2, centerY - height / 2, width, height];
+  }
+  function routeStopAt(time) {
+    const stops = navigationPlan.route.stops;
+    if (time === Number(navigationPlan.route.durationMs)) return stops.at(-1);
+    return stops.find((stop) => time >= Number(stop.startMs) && time < Number(stop.endMs)) || stops.at(-1);
+  }
+  function seekCamera(rawMs) {
+    if (!navigationPlan) return cameraSnapshot();
+    let nextTime = numeric(rawMs, "camera timeMs");
+    const duration = Number(navigationPlan.route.durationMs);
+    if (navigationPlan.route.loop && nextTime > 0 && nextTime >= duration) nextTime %= duration;
+    nextTime = Math.min(Math.max(nextTime, 0), duration);
+    const stop = routeStopAt(nextTime);
+    const from = navigationAnchors.get(stop.fromAnchorId);
+    const target = navigationAnchors.get(stop.anchorId);
+    const travel = Number(stop.arrivalMs) - Number(stop.startMs);
+    const progress = travel <= 0 ? 1 : Math.min(Math.max((nextTime - Number(stop.startMs)) / travel, 0), 1);
+    const camera = progress >= 1
+      ? target.viewBox
+      : interpolateCamera(from.viewBox, target.viewBox, progress);
+    return commitCamera(camera, progress >= 1 ? target.id : null, nextTime, stop.id);
+  }
+  function cameraRouteAnchors() {
+    return [...new Set(navigationPlan.route.stops.map((stop) => stop.anchorId))];
+  }
+  function adjacentAnchor(direction) {
+    if (!navigationPlan) return cameraSnapshot();
+    const anchors = cameraRouteAnchors();
+    const currentIndex = Math.max(0, anchors.indexOf(cameraAnchorId));
+    const nextIndex = Math.min(Math.max(currentIndex + direction, 0), anchors.length - 1);
+    return navigateTo(anchors[nextIndex]);
+  }
+  function updateCameraPlaybackControl() {
+    const control = root.querySelector('[data-camera-action="tour"]');
+    if (!control) return;
+    const disabled = !navigationPlan || reduceMotion;
+    const text = control.querySelector("text");
+    if (text) text.textContent = disabled ? "CUTS" : (cameraPlaying ? "PAUSE" : "TOUR");
+    control.setAttribute("aria-label", disabled
+      ? "Camera autoplay disabled by reduced motion preference"
+      : (cameraPlaying ? "Pause camera tour" : "Play camera tour"));
+    control.setAttribute("aria-pressed", String(!disabled && cameraPlaying));
+    control.setAttribute("aria-disabled", String(disabled));
+    control.setAttribute("tabindex", disabled ? "-1" : "0");
+  }
+  function cameraTick(now) {
+    if (!cameraPlaying || !navigationPlan) return;
+    const duration = Number(navigationPlan.route.durationMs);
+    const raw = cameraPlayStartedTime + (now - cameraPlayStartedAt);
+    seekCamera(navigationPlan.route.loop ? raw % duration : Math.min(raw, duration));
+    if (!navigationPlan.route.loop && raw >= duration) { pauseCamera(); return; }
+    cameraTimer = window.setTimeout(() => cameraTick(performance.now()), 33);
+  }
+  function playCamera() {
+    if (!navigationPlan || reduceMotion || cameraPlaying) {
+      updateCameraPlaybackControl();
+      return cameraSnapshot();
+    }
+    cameraPlaying = true;
+    cameraPlayStartedAt = performance.now();
+    cameraPlayStartedTime = cameraTimeMs;
+    cameraTimer = window.setTimeout(() => cameraTick(performance.now()), 0);
+    updateCameraPlaybackControl();
+    return cameraSnapshot();
+  }
+  function pauseCamera() {
+    cameraPlaying = false;
+    if (cameraTimer !== null) window.clearTimeout(cameraTimer);
+    cameraTimer = null;
+    updateCameraPlaybackControl();
+    return cameraSnapshot();
+  }
+  function resetCamera() {
+    pauseCamera();
+    cameraTimeMs = 0;
+    return navigateTo(navigationPlan.initialAnchorId);
   }
   function renderAll(changedValues = null) {
     const values = {...sourceValues, ...derivedValues};
@@ -1988,10 +2880,122 @@ RUNTIME_JS = r"""
       else seek(timeMs + (event.key === "ArrowRight" ? 1 : -1) * plan.timeline.durationMs / 100);
     });
   }
+  function activateCameraControl(control) {
+    const target = control.dataset.navTarget;
+    if (target) { navigateTo(target); return; }
+    const action = control.dataset.cameraAction;
+    if (action === "previous") adjacentAnchor(-1);
+    else if (action === "next") adjacentAnchor(1);
+    else if (action === "up") {
+      const anchor = cameraAnchorId ? navigationAnchors.get(cameraAnchorId) : null;
+      if (anchor?.kind === "module" && navigationAnchors.has(anchor.parentId)) navigateTo(anchor.parentId);
+      else fitOverview();
+    }
+    else if (action === "home") fitOverview();
+    else if (action === "tour") cameraPlaying ? pauseCamera() : playCamera();
+  }
+  root.querySelectorAll("[data-camera-action], [data-nav-target]").forEach((control) => {
+    control.addEventListener("click", (event) => {
+      event.stopPropagation();
+      activateCameraControl(control);
+    });
+    control.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        event.stopPropagation();
+        activateCameraControl(control);
+      }
+    });
+  });
+  if (worldViewport && navigationPlan) {
+    let drag = null;
+    worldViewport.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || event.target.closest("[role='button'], [role='slider']")) return;
+      pauseCamera();
+      drag = {pointerId: event.pointerId, x: event.clientX, y: event.clientY, camera: [...cameraViewBox]};
+      worldViewport.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+    worldViewport.addEventListener("pointermove", (event) => {
+      if (!drag || drag.pointerId !== event.pointerId) return;
+      const box = worldViewport.getBoundingClientRect();
+      if (!box.width || !box.height) return;
+      const dx = (event.clientX - drag.x) * drag.camera[2] / box.width;
+      const dy = (event.clientY - drag.y) * drag.camera[3] / box.height;
+      commitCamera(
+        [drag.camera[0] - dx, drag.camera[1] - dy, drag.camera[2], drag.camera[3]],
+        null,
+        cameraTimeMs,
+        null
+      );
+    });
+    const endDrag = (event) => {
+      if (!drag || drag.pointerId !== event.pointerId) return;
+      if (worldViewport.hasPointerCapture(event.pointerId)) worldViewport.releasePointerCapture(event.pointerId);
+      drag = null;
+    };
+    worldViewport.addEventListener("pointerup", endDrag);
+    worldViewport.addEventListener("pointercancel", endDrag);
+    worldViewport.addEventListener("wheel", (event) => {
+      pauseCamera();
+      const box = worldViewport.getBoundingClientRect();
+      if (!box.width || !box.height) return;
+      const ratioX = Math.min(Math.max((event.clientX - box.left) / box.width, 0), 1);
+      const ratioY = Math.min(Math.max((event.clientY - box.top) / box.height, 0), 1);
+      const worldX = cameraViewBox[0] + ratioX * cameraViewBox[2];
+      const worldY = cameraViewBox[1] + ratioY * cameraViewBox[3];
+      const scale = Math.exp(Math.min(Math.max(event.deltaY * 0.0015, -0.7), 0.7));
+      const width = cameraViewBox[2] * scale;
+      const height = cameraViewBox[3] * scale;
+      commitCamera(
+        [worldX - ratioX * width, worldY - ratioY * height, width, height],
+        null,
+        cameraTimeMs,
+        null
+      );
+      event.preventDefault();
+    }, {passive: false});
+  }
   root.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") { pause(); setFocus(null); }
+    if (event.key === "Escape") { pause(); pauseCamera(); setFocus(null); }
+    if (navigationPlan && !event.defaultPrevented) {
+      const panX = cameraViewBox[2] * 0.08;
+      const panY = cameraViewBox[3] * 0.08;
+      if (event.key === "Home" || event.key === "0") { event.preventDefault(); fitOverview(); }
+      else if (event.key === "+" || event.key === "=") {
+        event.preventDefault();
+        const width = cameraViewBox[2] / 1.35;
+        const height = cameraViewBox[3] / 1.35;
+        setCamera([
+          cameraViewBox[0] + (cameraViewBox[2] - width) / 2,
+          cameraViewBox[1] + (cameraViewBox[3] - height) / 2,
+          width,
+          height
+        ]);
+      } else if (event.key === "-" || event.key === "_") {
+        event.preventDefault();
+        const width = cameraViewBox[2] * 1.35;
+        const height = cameraViewBox[3] * 1.35;
+        setCamera([
+          cameraViewBox[0] - (width - cameraViewBox[2]) / 2,
+          cameraViewBox[1] - (height - cameraViewBox[3]) / 2,
+          width,
+          height
+        ]);
+      } else if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key) &&
+          !event.target.closest("[role='slider'], [role='button']")) {
+        event.preventDefault();
+        setCamera([
+          cameraViewBox[0] + (event.key === "ArrowLeft" ? -panX : (event.key === "ArrowRight" ? panX : 0)),
+          cameraViewBox[1] + (event.key === "ArrowUp" ? -panY : (event.key === "ArrowDown" ? panY : 0)),
+          cameraViewBox[2],
+          cameraViewBox[3]
+        ]);
+      }
+    }
     if ((event.key === "r" || event.key === "R") && !event.defaultPrevented) {
       reset();
+      if (navigationPlan) resetCamera();
       if (plan.timeline && !reduceMotion) play();
     }
   });
@@ -2000,15 +3004,45 @@ RUNTIME_JS = r"""
   derivedValues = computeDerived(sourceValues);
   scenarioId = initial.id;
   renderAll();
+  if (navigationPlan) {
+    let requestedAnchor = navigationPlan.initialAnchorId;
+    try {
+      const decoded = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+      const candidate = decoded.startsWith("view=") ? decoded.slice(5) : decoded;
+      if (navigationAnchors.has(candidate)) requestedAnchor = candidate;
+    } catch (_) { /* malformed hashes fall back to the overview */ }
+    const initialCameraAnchor = navigationAnchors.get(requestedAnchor);
+    cameraViewBox = normalizedCamera(initialCameraAnchor.viewBox);
+    cameraAnchorId = initialCameraAnchor.id;
+    cameraTier = initialCameraAnchor.zoomTier;
+    cameraTimeMs = 0;
+    cameraStopId = null;
+    updateCameraHud();
+    window.addEventListener("hashchange", () => {
+      try {
+        const decoded = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+        const candidate = decoded.startsWith("view=") ? decoded.slice(5) : decoded;
+        navigateTo(navigationAnchors.has(candidate) ? candidate : navigationPlan.initialAnchorId, {updateHash: false});
+      } catch (_) {
+        navigateTo(navigationPlan.initialAnchorId, {updateHash: false});
+      }
+    });
+  }
   root.classList.add("svg-sync-ready");
   root.setAttribute("data-sync-ready", "true");
   updatePlaybackControl();
+  updateCameraPlaybackControl();
   const ready = Promise.resolve();
   window.svgSync = Object.freeze({
     version: "1.0", ready,
     getPlan: () => clone(plan),
     getState: () => clone(currentState()),
     setState, applyScenario, setFocus, seek, play, pause, reset,
+    getCamera: () => clone(cameraSnapshot()),
+    setCamera, navigateTo, seekCamera, fitOverview,
+    nextAnchor: () => adjacentAnchor(1),
+    previousAnchor: () => adjacentAnchor(-1),
+    playCamera, pauseCamera, resetCamera,
     snapshot: () => clone(snapshot()),
     serializeSnapshot
   });
@@ -2017,6 +3051,12 @@ RUNTIME_JS = r"""
     const startAutoplay = () => { if (!playing) play(); };
     if (document.readyState === "complete") startAutoplay();
     else window.addEventListener("load", startAutoplay, {once: true});
+  }
+  if (navigationPlan && navigationPlan.route.autoplay && !reduceMotion) {
+    seekCamera(0);
+    const startCameraAutoplay = () => { if (!cameraPlaying) playCamera(); };
+    if (document.readyState === "complete") startCameraAutoplay();
+    else window.addEventListener("load", startCameraAutoplay, {once: true});
   }
 })();
 """
@@ -2082,6 +3122,96 @@ def build_svg(plan: dict[str, Any]) -> str:
     [data-relationship-id][data-active="true"] .relationship-path {{ stroke: var(--accent); stroke-width: 3.5; opacity: 0.96; }}
     [data-relationship-id][data-kind="feedback"][data-active="true"] .relationship-path {{ stroke: #b45309; stroke-width: 4; }}
     .relationship-pulse {{ pointer-events: none; filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent) 70%, transparent)); }}
+    #composition-world-viewport {{ touch-action: none; cursor: grab; }}
+    #composition-world-viewport:active {{ cursor: grabbing; }}
+    .world-field {{ fill: #f2f3fa; }}
+    .world-district-links {{ pointer-events: none; }}
+    .world-link-halo {{ fill: none; stroke: #f8fafc; stroke-width: 16; vector-effect: non-scaling-stroke; opacity: 0.94; }}
+    .world-link-path {{ fill: none; stroke: #53627a; stroke-width: 3; vector-effect: non-scaling-stroke; opacity: 0.52; }}
+    .world-link-primary .world-link-path {{ stroke-width: 5.5; opacity: 0.92; }}
+    .world-link-primary .world-link-halo {{ stroke-width: 15; opacity: 0.98; }}
+    .world-link-secondary .world-link-halo {{ stroke-width: 11; opacity: 0.72; }}
+    .world-link[data-kind="feedback"] .world-link-path {{ stroke: #b45309; }}
+    .world-link-chevrons {{ pointer-events: none; }}
+    .world-link-chevron {{ fill: none; stroke: #53627a; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }}
+    .world-link[data-route-traveling="true"] .world-link-path {{ stroke: var(--accent); stroke-width: 9; opacity: 1; }}
+    .world-link[data-route-traveling="true"] .world-link-halo {{ stroke-width: 22; opacity: 1; }}
+    .world-link[data-route-traveling="true"] .world-link-chevron {{ stroke: var(--accent); stroke-width: 11; }}
+    .world-link-label rect {{ fill: #f8fafc; fill-opacity: 0.96; stroke: #cbd5e1; stroke-width: 1.5; vector-effect: non-scaling-stroke; }}
+    .world-link-label text {{ font-size: 72px; font-weight: 760; fill: #334155; }}
+    .world-local-branches {{ pointer-events: none; }}
+    .world-local-branch {{ fill: none; stroke: var(--district-accent); stroke-width: 3.5; stroke-opacity: 0.68; vector-effect: non-scaling-stroke; }}
+    .world-local-root-branch {{ stroke-width: 5.5; stroke-opacity: 0.9; }}
+    .world-local-orbit-ring {{ stroke-dasharray: 18 14; stroke-width: 5; }}
+    .world-district[data-local-armature="lanes"] .world-local-branch {{ stroke-linejoin: round; stroke-width: 5; }}
+    .world-district[data-local-armature="branch"] .world-local-root-branch {{ stroke-width: 7; }}
+    .world-module-node-halo {{ fill: color-mix(in srgb, var(--district-accent) 14%, transparent); stroke: var(--district-accent); stroke-width: 4; stroke-opacity: 0.64; vector-effect: non-scaling-stroke; }}
+    .world-module-node-core {{ fill: #ffffff; stroke: var(--district-accent); stroke-width: 4; vector-effect: non-scaling-stroke; }}
+    .world-module-node[data-local-root="true"] .world-module-node-halo {{ stroke-width: 6; }}
+    .world-module-node-index {{ font-size: 40px; font-weight: 840; fill: var(--district-accent); }}
+    .world-module-node-label-plaque {{ fill: #ffffff; fill-opacity: 0.94; stroke: color-mix(in srgb, var(--district-accent) 42%, #cbd5e1); stroke-width: 2; vector-effect: non-scaling-stroke; }}
+    .world-module-node-label {{ font-size: 42px; font-weight: 740; fill: #273449; }}
+    .district-singleton-preview {{ opacity: 0; pointer-events: none; }}
+    .district-singleton-preview-branch {{ stroke: var(--district-accent); stroke-width: 3; stroke-opacity: 0.42; vector-effect: non-scaling-stroke; }}
+    .district-singleton-preview-node {{ fill: #ffffff; stroke: var(--district-accent); stroke-width: 3; vector-effect: non-scaling-stroke; }}
+    .district-singleton-preview-label {{ font-size: 24px; font-weight: 680; fill: #475569; paint-order: stroke; stroke: #ffffff; stroke-width: 6; stroke-linejoin: round; }}
+    .world-module-nav-control {{ outline: none; cursor: pointer; }}
+    .world-module-nav-control circle {{ fill: transparent; stroke: transparent; stroke-width: 5; vector-effect: non-scaling-stroke; }}
+    .world-module-nav-control:focus circle {{ stroke: var(--district-accent); }}
+    .district-field {{ fill: color-mix(in srgb, var(--district-accent) 8%, white); stroke: color-mix(in srgb, var(--district-accent) 72%, #334155); stroke-width: 3; vector-effect: non-scaling-stroke; }}
+    .district-hub-halo {{ fill: color-mix(in srgb, var(--district-accent) 12%, transparent); stroke: var(--district-accent); stroke-width: 4; vector-effect: non-scaling-stroke; pointer-events: none; }}
+    .district-hub {{ fill: #ffffff; stroke: var(--district-accent); stroke-width: 5; vector-effect: non-scaling-stroke; pointer-events: none; }}
+    .world-district[data-world-root="true"] .district-hub-halo {{ stroke-width: 9; }}
+    .world-district[data-world-root="true"] .district-hub {{ stroke-width: 8; }}
+    .district-index {{ font-size: 42px; font-weight: 820; fill: var(--district-accent); }}
+    .district-title {{ font-size: 96px; font-weight: 820; letter-spacing: -0.035em; fill: color-mix(in srgb, var(--district-accent) 78%, #172033); }}
+    .district-title-world-plaque {{ opacity: 0; fill: #ffffff; fill-opacity: 0.94; stroke: color-mix(in srgb, var(--district-accent) 58%, #cbd5e1); stroke-width: 3; vector-effect: non-scaling-stroke; }}
+    .district-title-world {{ opacity: 0; font-size: 118px; paint-order: stroke; stroke: #ffffff; stroke-width: 10; stroke-linejoin: round; }}
+    .district-summary {{ font-size: 34px; font-weight: 580; fill: #475569; }}
+    .district-nav-control {{ outline: none; cursor: pointer; }}
+    .district-nav-control circle {{ fill: transparent; stroke: transparent; stroke-width: 7; vector-effect: non-scaling-stroke; }}
+    .district-nav-control:focus circle {{ stroke: var(--district-accent); }}
+    [data-world-mode="true"] .sync-module .module-frame {{ fill-opacity: 0.86; stroke: var(--district-accent); stroke-width: 2; vector-effect: non-scaling-stroke; rx: 24; }}
+    [data-world-mode="true"] .sync-module {{ filter: drop-shadow(0 10px 18px rgb(15 23 42 / 0.12)); }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .district-field {{ opacity: 0; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] :is(.district-title-detail, .district-summary, .world-module-node-label, .world-module-node-label-plaque, .district-singleton-preview) {{ opacity: 0; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] :is(.district-title-world, .district-title-world-plaque) {{ opacity: 1; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .world-link-secondary:not([data-kind="feedback"]) {{ opacity: 0.07; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .world-link-secondary[data-kind="feedback"] {{ opacity: 0.14; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .world-link-label {{ opacity: 0; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .world-local-branch {{ stroke-opacity: 0.46; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .sync-module > .module-frame {{ fill-opacity: 0; stroke-opacity: 0; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="world"] .sync-module > :is(.module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 0; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-link {{ opacity: 0.08; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-link-label {{ opacity: 0; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] :is(.district-title-world, .district-title-world-plaque) {{ opacity: 0; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-district[data-camera-active="true"] .district-singleton-preview {{ opacity: 1; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] :is(.district-hub, .district-hub-halo, .district-index, .district-nav-control) {{ opacity: 0; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .world-district[data-camera-active="false"] {{ opacity: 0.025; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .sync-module > .module-frame {{ fill-opacity: 0; stroke-opacity: 0; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="district"] .sync-module > :is(.module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 0; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] :is(.world-link, .world-local-branches, .world-local-nodes, .district-summary, .district-title, .district-hub, .district-hub-halo, .district-field, .district-nav-control) {{ opacity: 0; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] .sync-module[data-camera-active="false"] > :is(.module-frame, .module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 0; pointer-events: none; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] .sync-module[data-camera-active="true"] > :is(.module-frame, .module-kicker, .module-question, .module-claim, .module-content, .module-focus-control) {{ opacity: 1; }}
+    .svg-sync-ready[data-world-mode="true"][data-camera-tier="module"] .sync-module[data-camera-active="true"] {{ filter: drop-shadow(0 18px 32px rgb(15 23 42 / 0.18)); }}
+    .svg-sync-ready[data-world-mode="true"]:is([data-camera-tier="world"], [data-camera-tier="district"]) .world-link[data-route-traveling="true"] {{ opacity: 1; }}
+    .svg-sync-ready[data-world-mode="true"]:is([data-camera-tier="world"], [data-camera-tier="district"]) .world-link[data-route-traveling="true"] .world-link-label {{ opacity: 1; }}
+    .header-plaque {{ fill: #f8fafc; fill-opacity: 0.94; stroke: #d6dce8; stroke-width: 1; }}
+    .navigation-hud-panel {{ fill: #111827; fill-opacity: 0.94; stroke: #334155; stroke-width: 1.5; }}
+    .navigation-eyebrow {{ font-size: 11px; font-weight: 780; letter-spacing: 0.14em; fill: #93c5fd; }}
+    .navigation-current-label {{ font-size: 14.5px; font-weight: 760; fill: #f8fafc; }}
+    .navigation-current-tier {{ font-size: 11px; font-weight: 640; letter-spacing: 0.08em; fill: #94a3b8; }}
+    .navigation-handoff {{ font-size: 11.5px; font-weight: 650; fill: #cbd5e1; }}
+    .navigation-help {{ font-size: 9.5px; font-weight: 650; letter-spacing: 0.04em; fill: #94a3b8; }}
+    .navigation-control {{ outline: none; cursor: pointer; }}
+    .navigation-control rect {{ fill: #1e293b; stroke: #64748b; stroke-width: 1.5; }}
+    .navigation-control text {{ font-size: 13px; font-weight: 780; fill: #f8fafc; pointer-events: none; }}
+    .navigation-control:focus rect, .navigation-control[aria-pressed="true"] rect {{ stroke: #60a5fa; stroke-width: 3; }}
+    .navigation-control[aria-disabled="true"] {{ opacity: 0.52; cursor: not-allowed; }}
+    .minimap-field {{ fill: #0f172a; fill-opacity: 0.92; stroke: #64748b; stroke-width: 1.5; }}
+    .minimap-district {{ fill: var(--district-accent); fill-opacity: 0.38; stroke: var(--district-accent); stroke-width: 1; }}
+    .minimap-viewport {{ fill: #f8fafc; fill-opacity: 0.08; stroke: #f8fafc; stroke-width: 2.5; vector-effect: non-scaling-stroke; }}
+    svg:not(.svg-sync-ready) .navigation-hud {{ display: none; }}
     @media (prefers-reduced-motion: reduce) {{
       *, .sync-module {{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }}
     }}
@@ -2139,29 +3269,70 @@ def build_svg(plan: dict[str, Any]) -> str:
     )
     focus_regions, focus_region_labels = focus_region_markup(plan)
     relationships = relationship_markup(plan)
+    world = world_markup(plan)
+    navigation_hud = navigation_hud_markup(plan)
+    navigation_plan = plan.get("navigation")
     description = (
         f"A synchronized SVG composition with {len(plan['modules'])} related visual modules. "
         "The initial scenario is fully visible without scripts; interactive controls appear when the embedded runtime is ready."
     )
     root_x, root_y, root_width, root_height = plan["viewBox"]
+    if isinstance(navigation_plan, dict):
+        initial_anchor = next(
+            anchor
+            for anchor in navigation_plan["anchors"]
+            if anchor["id"] == navigation_plan["initialAnchorId"]
+        )
+        initial_camera = " ".join(fmt(float(item)) for item in initial_anchor["viewBox"])
+        viewport_x, viewport_y, viewport_width, viewport_height = (
+            float(item) for item in navigation_plan["viewport"]
+        )
+        world_bounds_text = " ".join(
+            fmt(float(item)) for item in navigation_plan["worldBounds"]
+        )
+        composition_body = (
+            f'<svg id="composition-world-viewport" class="composition-world-viewport" '
+            f'x="{fmt(viewport_x)}" y="{fmt(viewport_y)}" '
+            f'width="{fmt(viewport_width)}" height="{fmt(viewport_height)}" '
+            f'viewBox="{initial_camera}" preserveAspectRatio="xMidYMid meet" '
+            f'overflow="hidden" role="group" aria-label="Navigable world viewport" '
+            f'data-world-bounds="{world_bounds_text}" data-nav-anchor-id="world">'
+            f'<g id="composition-world">{world}{focus_regions}{relationships}'
+            f'{focus_region_labels}<g id="composition-modules">{modules}</g></g></svg>'
+        )
+        header_plaque = (
+            f'<rect class="header-plaque" x="20" y="16" '
+            f'width="{fmt(float(root_width) - 40)}" height="104" rx="20"/>'
+        )
+        root_navigation_attributes = (
+            f' data-world-mode="true" data-camera-anchor="{esc(initial_anchor["id"])}" '
+            f'data-camera-tier="{esc(initial_anchor["zoomTier"])}" data-camera-revision="0" '
+            'data-camera-time-ms="0" data-camera-stop-id="" tabindex="0"'
+        )
+    else:
+        composition_body = (
+            f'{focus_regions}{relationships}{focus_region_labels}'
+            f'<g id="composition-modules">{modules}</g>'
+        )
+        header_plaque = ""
+        root_navigation_attributes = ' data-world-mode="false"'
     return f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" id="{esc(plan['compositionId'])}" viewBox="{fmt(float(root_x))} {fmt(float(root_y))} {fmt(float(root_width))} {fmt(float(root_height))}" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="group" aria-labelledby="composition-title" aria-describedby="composition-desc" data-composition-id="{esc(plan['compositionId'])}" data-plan-version="1" data-sync-ready="false" data-static-state="{esc(plan['initialScenario'])}" data-state-revision="0">
+<svg xmlns="http://www.w3.org/2000/svg" id="{esc(plan['compositionId'])}" viewBox="{fmt(float(root_x))} {fmt(float(root_y))} {fmt(float(root_width))} {fmt(float(root_height))}" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" role="group" aria-labelledby="composition-title" aria-describedby="composition-desc" data-composition-id="{esc(plan['compositionId'])}" data-plan-version="1" data-sync-ready="false" data-static-state="{esc(plan['initialScenario'])}" data-state-revision="0"{root_navigation_attributes}>
   <title id="composition-title">{esc(plan['title'])}</title>
   <desc id="composition-desc">{esc(description)}</desc>
   <metadata id="sync-composition-plan"><![CDATA[{metadata}]]></metadata>
   <defs><style><![CDATA[{style}]]></style></defs>
   <rect class="canvas" x="{fmt(float(root_x))}" y="{fmt(float(root_y))}" width="{fmt(float(root_width))}" height="{fmt(float(root_height))}"/>
+  {composition_body}
   <g id="composition-header" aria-label="Composition header">
+    {header_plaque}
     <text class="title" x="48" y="44">{esc(plan['title'])}</text>
     <text class="subtitle" x="48" y="70">Synchronized semantic megacanvas · structural scaffold</text>
     <text class="provenance" x="48" y="91">{esc(plan['provenance'])}</text>
     {''.join(controls)}
     {timeline_markup}
   </g>
-  {focus_regions}
-  {relationships}
-  {focus_region_labels}
-  <g id="composition-modules">{modules}</g>
+  {navigation_hud}
   <script><![CDATA[{RUNTIME_JS}]]></script>
 </svg>
 '''

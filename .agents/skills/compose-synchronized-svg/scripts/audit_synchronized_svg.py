@@ -69,6 +69,25 @@ REQUIRED_METHODS = {
     "snapshot",
     "serializeSnapshot",
 }
+REQUIRED_NAVIGATION_METHODS = {
+    "getCamera",
+    "setCamera",
+    "navigateTo",
+    "seekCamera",
+    "fitOverview",
+    "nextAnchor",
+    "previousAnchor",
+    "playCamera",
+    "pauseCamera",
+    "resetCamera",
+}
+
+
+def is_navigable_plan(plan: dict[str, Any]) -> bool:
+    """Return whether the embedded plan declares the giant-world camera contract."""
+
+    navigation = plan.get("navigation")
+    return isinstance(navigation, dict) and bool(navigation.get("anchors"))
 
 CAPTURE_JS = r"""
 () => {
@@ -134,6 +153,7 @@ CAPTURE_JS = r"""
     snapshot: api.snapshot(),
     serialized: api.serializeSnapshot(),
     state: api.getState(),
+    camera: typeof api.getCamera === "function" ? api.getCamera() : null,
     root: {
       revision: root.getAttribute("data-state-revision"),
       scenarioId: root.getAttribute("data-current-scenario"),
@@ -141,6 +161,10 @@ CAPTURE_JS = r"""
       timeMs: root.getAttribute("data-time-ms"),
       phaseId: root.getAttribute("data-phase-id"),
       phaseProgress: root.getAttribute("data-phase-progress"),
+      cameraAnchor: root.getAttribute("data-camera-anchor"),
+      cameraTier: root.getAttribute("data-camera-tier"),
+      cameraRevision: root.getAttribute("data-camera-revision"),
+      cameraTimeMs: root.getAttribute("data-camera-time-ms"),
       ready: root.getAttribute("data-sync-ready")
     },
     bindings,
@@ -213,6 +237,21 @@ GEOMETRY_AUDIT_JS = r"""
     const right = Math.max(...corners.map((point) => point.x));
     const bottom = Math.max(...corners.map((point) => point.y));
     contentRect = {left, top, right, bottom, width: right - left, height: bottom - top};
+  }
+  const navigationRect = window.svgSync?.getPlan?.()?.navigation?.viewport;
+  if (Array.isArray(navigationRect) && navigationRect.length === 4 && screenMatrix) {
+    const [x, y, width, height] = navigationRect.map(Number);
+    const corners = [
+      new DOMPoint(x, y), new DOMPoint(x + width, y),
+      new DOMPoint(x, y + height), new DOMPoint(x + width, y + height)
+    ].map((point) => point.matrixTransform(screenMatrix));
+    const left = Math.min(...corners.map((point) => point.x));
+    const top = Math.min(...corners.map((point) => point.y));
+    const right = Math.max(...corners.map((point) => point.x));
+    const bottom = Math.max(...corners.map((point) => point.y));
+    if (right > left && bottom > top) {
+      contentRect = {left, top, right, bottom, width: right - left, height: bottom - top};
+    }
   }
   const issues = [];
   const moduleResults = [];
@@ -1034,6 +1073,7 @@ class Audit:
             "zeroFlowDiagnostics": {},
             "focus": {},
             "timeline": [],
+            "navigation": {},
             "reducedMotion": None,
         }
         self.metrics: dict[str, Any] = {
@@ -1059,6 +1099,11 @@ class Audit:
             "relationshipClearanceCheckCount": 0,
             "relationshipClearanceIssueCount": 0,
             "realInputCheckCount": 0,
+            "navigationAnchorCount": 0,
+            "navigationDistrictCount": 0,
+            "navigationModuleCropCount": 0,
+            "navigationRouteSampleCount": 0,
+            "navigationIssueCount": 0,
             "accessibleBindingCount": 0,
             "visibleModuleCount": 0,
             "visibleTextCount": 0,
@@ -1365,6 +1410,29 @@ def validate_capture(
     if root.get("ready") != "true":
         errors.append("root data-sync-ready is not true")
 
+    camera = capture_data.get("camera")
+    camera_anchor: dict[str, Any] | None = None
+    if is_navigable_plan(plan):
+        if not isinstance(camera, dict):
+            errors.append("navigable capture lacks getCamera() state")
+        else:
+            camera_anchor = next(
+                (
+                    item
+                    for item in plan["navigation"]["anchors"]
+                    if item["id"] == camera.get("anchorId")
+                ),
+                None,
+            )
+            if root.get("cameraAnchor") != (camera.get("anchorId") or ""):
+                errors.append("root data-camera-anchor differs from getCamera()")
+            if root.get("cameraTier") != (camera.get("tier") or ""):
+                errors.append("root data-camera-tier differs from getCamera()")
+            if root.get("cameraRevision") != str(camera.get("revision")):
+                errors.append("root data-camera-revision differs from getCamera()")
+            if not close_number(root.get("cameraTimeMs"), camera.get("timeMs")):
+                errors.append("root data-camera-time-ms differs from getCamera()")
+
     expected_values = {**expected_source, **expected_derived}
     expected_binding_count = sum(len(module["bindings"]) for module in plan["modules"])
     records = capture_data.get("bindings", [])
@@ -1434,7 +1502,31 @@ def validate_capture(
                     if not isinstance(control, dict):
                         continue
                     control_focus = control.get("focusId")
-                    if control.get("role") != "button" or control.get("tabIndex") != 0:
+                    if control.get("role") != "button":
+                        errors.append(f"module {module['id']!r} focus control does not use role='button'")
+                    if is_navigable_plan(plan):
+                        expected_tab_index = -1
+                        if isinstance(camera, dict) and camera.get("tier") == "module":
+                            if camera_anchor is not None and camera_anchor.get("kind") == "module":
+                                visible_detail = camera_anchor.get("targetId") == module["id"]
+                            else:
+                                camera_box = camera.get("viewBox", [])
+                                mx, my, mw, mh = (float(item) for item in module["region"])
+                                visible_detail = (
+                                    isinstance(camera_box, list)
+                                    and len(camera_box) == 4
+                                    and mx + mw > float(camera_box[0])
+                                    and my + mh > float(camera_box[1])
+                                    and mx < float(camera_box[0]) + float(camera_box[2])
+                                    and my < float(camera_box[1]) + float(camera_box[3])
+                                )
+                            expected_tab_index = 0 if visible_detail else -1
+                        if control.get("tabIndex") != expected_tab_index:
+                            errors.append(
+                                f"module {module['id']!r} focus control tabindex is "
+                                f"{control.get('tabIndex')!r}, expected {expected_tab_index} for the camera"
+                            )
+                    elif control.get("tabIndex") != 0:
                         errors.append(f"module {module['id']!r} focus control is not a keyboard-reachable button")
                     if not control.get("label"):
                         errors.append(f"module {module['id']!r} focus control lacks an accessible name")
@@ -1530,6 +1622,8 @@ def idempotence_errors(before: dict[str, Any], after: dict[str, Any]) -> list[st
         errors.append("the repeated call drifted module focus state")
     if before.get("controls") != after.get("controls"):
         errors.append("the repeated call drifted control labels or states")
+    if before.get("camera") != after.get("camera"):
+        errors.append("the repeated semantic call drifted camera state")
     return errors
 
 
@@ -1942,6 +2036,7 @@ def audit_accessibility_tree(page: Page, audit: Audit, check_id: str) -> None:
         () => {
           const root = document.documentElement;
           const plan = window.svgSync.getPlan();
+          const navigable = Boolean(plan.navigation && Array.isArray(plan.navigation.anchors));
           const normalize = (value) => String(value || "").replace(/\s+/g, " ").trim();
           const referencedText = (element, attribute) => normalize(
             (element.getAttribute(attribute) || "")
@@ -1981,9 +2076,15 @@ def audit_accessibility_tree(page: Page, audit: Audit, check_id: str) -> None:
               accessibleValue: normalize(element.getAttribute("data-accessible-value")),
               hasChildTitle: Boolean([...element.children].find((child) => child.localName === "title"))
             })),
-            controls: [...root.querySelectorAll("[data-action], [data-module-focus-id]")].map((element) => ({
+            controls: [...root.querySelectorAll(
+              "[data-action], [data-module-focus-id], [data-camera-action], [data-nav-target]"
+            )]
+            .filter((element) => !navigable || element.tabIndex >= 0)
+            .map((element) => ({
               id: element.id,
-              action: element.getAttribute("data-action") || "module-focus",
+              action: element.getAttribute("data-action") ||
+                element.getAttribute("data-camera-action") ||
+                (element.hasAttribute("data-nav-target") ? "navigate" : "module-focus"),
               role: element.getAttribute("role"),
               name: normalize(element.getAttribute("aria-label")),
               pressed: normalize(element.getAttribute("aria-pressed")),
@@ -2307,6 +2408,14 @@ def check_api(page: Page, audit: Audit) -> dict[str, Any]:
         validate_plan(plan)
     except (TypeError, ValueError) as exc:
         errors.append(f"runtime plan is invalid: {exc}")
+    if isinstance(plan, dict) and is_navigable_plan(plan):
+        missing_navigation = sorted(
+            method
+            for method in REQUIRED_NAVIGATION_METHODS
+            if details.get("methods", {}).get(method) != "function"
+        )
+        if missing_navigation:
+            errors.append(f"window.svgSync is missing navigation methods: {missing_navigation}")
     audit.finish_check(
         "runtime-api",
         errors,
@@ -2787,6 +2896,7 @@ def audit_focus_readability(page: Page, audit: Audit, check_id: str) -> None:
     details = page.evaluate(
         r"""
         () => {
+          const navigable = Boolean(window.svgSync.getPlan().navigation);
           const parseColor = (value) => {
             const match = String(value).match(/rgba?\((\d+(?:\.\d+)?),\s*(\d+(?:\.\d+)?),\s*(\d+(?:\.\d+)?)/);
             return match ? match.slice(1, 4).map(Number) : null;
@@ -2804,12 +2914,16 @@ def audit_focus_readability(page: Page, audit: Audit, check_id: str) -> None:
           const modules = [];
           const issues = [];
           for (const group of document.querySelectorAll('.sync-module[data-focused="false"]')) {
+            if (navigable && group.getAttribute("data-camera-active") !== "true") continue;
             const moduleId = group.getAttribute("data-module-id") || "unknown";
             const groupStyle = getComputedStyle(group);
             const frame = group.querySelector(":scope > .module-frame");
             const background = parseColor(frame ? getComputedStyle(frame).fill : "rgb(255,255,255)") || [255,255,255];
             const textRecords = [];
-            if (Number(groupStyle.opacity) < 0.999 || groupStyle.filter !== "none") {
+            const forbiddenFilter = groupStyle.filter !== "none" && (
+              !navigable || /(?:opacity|brightness|contrast|saturate)\(/.test(groupStyle.filter)
+            );
+            if (Number(groupStyle.opacity) < 0.999 || forbiddenFilter) {
               issues.push({moduleId, reason: "focus treatment dims or filters the whole module container"});
             }
             for (const text of group.querySelectorAll("text")) {
@@ -2863,7 +2977,18 @@ def audit_focus(page: Page, audit: Audit, plan: dict[str, Any]) -> None:
         audit.fail("focus-groups", "the plan declares no focus groups to audit")
         return
     baseline_source, baseline_derived = scenario_state(plan, plan["initialScenario"])
+    navigable = is_navigable_plan(plan)
     for focus in focus_groups:
+        if navigable:
+            focus_members = set(focus["moduleIds"])
+            target_module = next(
+                (module["id"] for module in plan["modules"] if module["id"] not in focus_members),
+                focus["moduleIds"][0],
+            )
+            page.evaluate(
+                "anchorId => window.svgSync.navigateTo(anchorId, {updateHash:false})",
+                f"module-{target_module}",
+            )
         reset = invoke(page, "reset")
         audit.finish_check(f"focus-{focus['id']}-prepare", invocation_errors(reset))
         before = capture(page)
@@ -2920,12 +3045,15 @@ def audit_focus(page: Page, audit: Audit, plan: dict[str, Any]) -> None:
             0,
             "full",
         )
+    if navigable:
+        page.evaluate("() => window.svgSync.fitOverview({updateHash:false})")
     audit.metrics["focusGroupCount"] = len(focus_groups)
 
 
 def audit_real_input_controls(page: Page, audit: Audit, plan: dict[str, Any]) -> None:
     errors: list[str] = []
     details: dict[str, Any] = {}
+    navigable = is_navigable_plan(plan)
     invoke(page, "pause")
     invoke(page, "reset")
 
@@ -2942,6 +3070,19 @@ def audit_real_input_controls(page: Page, audit: Audit, plan: dict[str, Any]) ->
             module_id = control.evaluate(
                 "element => element.closest('[data-module-id]')?.getAttribute('data-module-id') || 'unknown'"
             )
+            if navigable:
+                camera = page.evaluate(
+                    "anchorId => window.svgSync.navigateTo(anchorId, {updateHash:false})",
+                    f"module-{module_id}",
+                )
+                if camera.get("anchorId") != f"module-{module_id}" or camera.get("tier") != "module":
+                    errors.append(
+                        f"navigation did not expose module focus control for {module_id!r}"
+                    )
+                if control.get_attribute("tabindex") != "0":
+                    errors.append(
+                        f"visible module focus control {module_id!r}/{focus_id!r} is not keyboard reachable"
+                    )
             control.click()
             pointer_focus = page.evaluate("() => window.svgSync.snapshot().focusId")
             pointer_pressed = page.evaluate(
@@ -3124,8 +3265,525 @@ def audit_real_input_controls(page: Page, audit: Audit, plan: dict[str, Any]) ->
 
     invoke(page, "pause")
     invoke(page, "reset")
+    if navigable:
+        page.evaluate("() => window.svgSync.fitOverview({updateHash:false})")
     audit.metrics["realInputCheckCount"] += 1
     audit.finish_check("real-input-controls", errors, details)
+
+
+def audit_navigation(page: Page, audit: Audit, plan: dict[str, Any], timeout_ms: int) -> None:
+    """Exercise the giant-world camera, spatial anchors, and semantic-zoom contract."""
+
+    if not is_navigable_plan(plan):
+        return
+    navigation = plan["navigation"]
+    anchors = navigation["anchors"]
+    anchor_by_id = {item["id"]: item for item in anchors}
+    module_by_id = {item["id"]: item for item in plan["modules"]}
+
+    records = page.evaluate(
+        r"""
+        () => {
+          const api = window.svgSync;
+          const plan = api.getPlan();
+          const root = document.documentElement;
+          const navigation = plan.navigation;
+          const viewport = document.getElementById("composition-world-viewport");
+          const intersectionRatio = (first, second) => {
+            if (!first || !second || first.width <= 0 || first.height <= 0) return 0;
+            const width = Math.max(0, Math.min(first.right, second.right) - Math.max(first.left, second.left));
+            const height = Math.max(0, Math.min(first.bottom, second.bottom) - Math.max(first.top, second.top));
+            return width * height / Math.max(1, first.width * first.height);
+          };
+          const visibleText = (element) => {
+            const style = getComputedStyle(element);
+            const box = element.getBoundingClientRect();
+            return style.display !== "none" && style.visibility !== "hidden" &&
+              Number(style.opacity) > 0.01 && box.width > 0 && box.height > 0;
+          };
+          const fixedViewportBox = () => {
+            const matrix = root.getScreenCTM();
+            const [x, y, width, height] = navigation.viewport.map(Number);
+            const points = [
+              new DOMPoint(x, y), new DOMPoint(x + width, y),
+              new DOMPoint(x, y + height), new DOMPoint(x + width, y + height)
+            ].map((point) => point.matrixTransform(matrix));
+            const left = Math.min(...points.map((point) => point.x));
+            const top = Math.min(...points.map((point) => point.y));
+            const right = Math.max(...points.map((point) => point.x));
+            const bottom = Math.max(...points.map((point) => point.y));
+            return {left, top, right, bottom, width:right-left, height:bottom-top};
+          };
+          const results = [];
+          api.pauseCamera();
+          for (const anchor of navigation.anchors) {
+            const semanticBefore = api.serializeSnapshot();
+            const camera = api.navigateTo(anchor.id, {updateHash:false});
+            const semanticAfter = api.serializeSnapshot();
+            const viewportBox = fixedViewportBox();
+            const markerSelector = `[data-nav-anchor-id="${CSS.escape(anchor.id)}"]`;
+            const markers = [...root.querySelectorAll(markerSelector)];
+            const memberCoverage = [];
+            for (const moduleId of anchor.moduleIds || []) {
+              const frame = root.querySelector(
+                `[data-module-id="${CSS.escape(moduleId)}"] .module-frame`
+              );
+              memberCoverage.push({
+                moduleId,
+                ratio: frame ? intersectionRatio(frame.getBoundingClientRect(), viewportBox) : 0
+              });
+            }
+            let targetFrame = null;
+            let visibleTextCount = 0;
+            let textEscapeCount = 0;
+            if (anchor.kind === "module") {
+              const module = root.querySelector(
+                `[data-module-id="${CSS.escape(anchor.targetId)}"]`
+              );
+              const frame = module?.querySelector(".module-frame");
+              targetFrame = frame ? intersectionRatio(frame.getBoundingClientRect(), viewportBox) : 0;
+              if (module && frame) {
+                const frameBox = frame.getBoundingClientRect();
+                for (const text of module.querySelectorAll("text")) {
+                  if (!visibleText(text)) continue;
+                  visibleTextCount += 1;
+                  const box = text.getBoundingClientRect();
+                  if (box.left < frameBox.left - 3 || box.top < frameBox.top - 3 ||
+                      box.right > frameBox.right + 3 || box.bottom > frameBox.bottom + 3) {
+                    textEscapeCount += 1;
+                  }
+                }
+              }
+            }
+            const activeControlModules = [...root.querySelectorAll(
+              '[data-module-focus-id][tabindex="0"]'
+            )].map((control) => control.closest("[data-module-id]")?.getAttribute("data-module-id") || "");
+            const activeNodeModules = [...root.querySelectorAll(
+              '.world-module-nav-control[tabindex="0"]'
+            )].map((control) => control.closest("[data-world-module-id]")?.getAttribute("data-world-module-id") || "");
+            const activeDistrictTargets = [...root.querySelectorAll(
+              '.district-nav-control[tabindex="0"]'
+            )].map((control) => control.getAttribute("data-nav-target") || "");
+            results.push({
+              id: anchor.id,
+              kind: anchor.kind,
+              targetId: anchor.targetId,
+              expectedViewBox: anchor.viewBox,
+              camera,
+              viewportViewBox: (viewport.getAttribute("viewBox") || "").split(/\s+/).map(Number),
+              rootAnchorId: root.getAttribute("data-camera-anchor"),
+              rootTier: root.getAttribute("data-camera-tier"),
+              markerCount: markers.length,
+              semanticUnchanged: semanticBefore === semanticAfter,
+              memberCoverage,
+              targetFrameCoverage: targetFrame,
+              visibleTextCount,
+              textEscapeCount,
+              activeControlModules: [...new Set(activeControlModules)].sort(),
+              activeNodeModules: [...new Set(activeNodeModules)].sort(),
+              activeDistrictTargets: [...new Set(activeDistrictTargets)].sort()
+            });
+          }
+          return results;
+        }
+        """
+    )
+
+    def rect_close(first: Any, second: Any) -> bool:
+        return (
+            isinstance(first, list)
+            and isinstance(second, list)
+            and len(first) == len(second) == 4
+            and all(close_number(a, b, tolerance=1e-5) for a, b in zip(first, second))
+        )
+
+    anchor_errors: list[str] = []
+    module_crop_count = 0
+    district_count = 0
+    for record in records:
+        anchor = anchor_by_id.get(record.get("id"))
+        if anchor is None:
+            anchor_errors.append(f"runtime exposed unexpected navigation anchor {record.get('id')!r}")
+            continue
+        if record.get("markerCount") != 1:
+            anchor_errors.append(
+                f"anchor {anchor['id']!r} maps to {record.get('markerCount')} DOM markers; expected one"
+            )
+        camera = record.get("camera", {})
+        if camera.get("anchorId") != anchor["id"] or camera.get("tier") != anchor["zoomTier"]:
+            anchor_errors.append(f"anchor {anchor['id']!r} commits the wrong camera identity or tier")
+        if record.get("rootAnchorId") != anchor["id"] or record.get("rootTier") != anchor["zoomTier"]:
+            anchor_errors.append(f"anchor {anchor['id']!r} leaves stale root camera attributes")
+        if not rect_close(camera.get("viewBox"), anchor["viewBox"]):
+            anchor_errors.append(f"anchor {anchor['id']!r} camera viewBox differs from the plan")
+        if not rect_close(record.get("viewportViewBox"), anchor["viewBox"]):
+            anchor_errors.append(f"anchor {anchor['id']!r} nested SVG viewBox differs from the camera")
+        if not record.get("semanticUnchanged"):
+            anchor_errors.append(f"anchor {anchor['id']!r} changed semantic state")
+
+        kind = anchor["kind"]
+        active_modules = set(record.get("activeControlModules", []))
+        active_nodes = set(record.get("activeNodeModules", []))
+        active_districts = set(record.get("activeDistrictTargets", []))
+        if kind == "world":
+            if active_modules:
+                anchor_errors.append("world tier leaves module focus controls keyboard reachable")
+            if active_nodes:
+                anchor_errors.append("world tier leaves local module nodes in the tab order")
+            expected_districts = {
+                f"district-{item['id']}" for item in plan["world"]["districts"]
+            }
+            if active_districts != expected_districts:
+                anchor_errors.append("world tier does not expose every district hub control")
+        elif kind == "district":
+            district_count += 1
+            if active_modules:
+                anchor_errors.append(
+                    f"district anchor {anchor['id']!r} exposes focus controls for "
+                    f"{sorted(active_modules)!r}; focus belongs to module detail tier"
+                )
+            if active_nodes != set(anchor.get("moduleIds", [])):
+                anchor_errors.append(
+                    f"district anchor {anchor['id']!r} exposes local nodes for "
+                    f"{sorted(active_nodes)!r}, expected {sorted(anchor.get('moduleIds', []))!r}"
+                )
+            if active_districts:
+                anchor_errors.append(f"district anchor {anchor['id']!r} leaves district hubs in the tab order")
+            incomplete = [
+                item for item in record.get("memberCoverage", []) if float(item.get("ratio", 0)) < 0.90
+            ]
+            if incomplete:
+                anchor_errors.append(
+                    f"district anchor {anchor['id']!r} does not show every member module at 90% coverage: "
+                    f"{incomplete!r}"
+                )
+        elif kind == "module":
+            module_crop_count += 1
+            expected_active = {anchor["targetId"]} if module_by_id[anchor["targetId"]].get("focusGroups") else set()
+            if active_modules != expected_active:
+                anchor_errors.append(
+                    f"module anchor {anchor['id']!r} exposes focus controls for "
+                    f"{sorted(active_modules)!r}, expected {sorted(expected_active)!r}"
+                )
+            if active_nodes or active_districts:
+                anchor_errors.append(f"module anchor {anchor['id']!r} leaves overview controls in the tab order")
+            if float(record.get("targetFrameCoverage") or 0) < 0.95:
+                anchor_errors.append(
+                    f"module anchor {anchor['id']!r} covers only "
+                    f"{float(record.get('targetFrameCoverage') or 0):.3f} of its target frame"
+                )
+            if int(record.get("visibleTextCount") or 0) < 3:
+                anchor_errors.append(f"module anchor {anchor['id']!r} lacks readable detail text")
+            if int(record.get("textEscapeCount") or 0):
+                anchor_errors.append(
+                    f"module anchor {anchor['id']!r} has {record['textEscapeCount']} visible text elements "
+                    "outside its frame"
+                )
+
+    if len(records) != len(anchors):
+        anchor_errors.append(f"audited {len(records)} anchors, expected {len(anchors)}")
+    audit.metrics["navigationAnchorCount"] = len(records)
+    audit.metrics["navigationDistrictCount"] = district_count
+    audit.metrics["navigationModuleCropCount"] = module_crop_count
+    audit.metrics["navigationIssueCount"] += len(anchor_errors)
+    audit.finish_check(
+        "navigation-anchor-contract",
+        anchor_errors,
+        {
+            "anchorCount": len(records),
+            "districtCount": district_count,
+            "moduleCropCount": module_crop_count,
+            "maximumDepth": max(int(item.get("depth", 0)) for item in anchors),
+        },
+    )
+
+    route = navigation["route"]
+    duration = float(route["durationMs"])
+    sample_times = {0.0, duration}
+    for stop in route["stops"]:
+        start = float(stop["startMs"])
+        arrival = float(stop["arrivalMs"])
+        end = float(stop["endMs"])
+        sample_times.update({start, arrival, end})
+        if arrival > start:
+            sample_times.add((start + arrival) / 2)
+    ordered_times = sorted(sample_times)
+    first_pass = {
+        str(value): page.evaluate("time => window.svgSync.seekCamera(time)", value)
+        for value in ordered_times
+    }
+    second_pass = {
+        str(value): page.evaluate("time => window.svgSync.seekCamera(time)", value)
+        for value in reversed(ordered_times)
+    }
+    route_errors: list[str] = []
+    for key in first_pass:
+        if not rect_close(first_pass[key].get("viewBox"), second_pass[key].get("viewBox")):
+            route_errors.append(f"camera seek is history dependent at {key}ms")
+        if first_pass[key].get("stopId") != second_pass[key].get("stopId"):
+            route_errors.append(f"camera seek returns a different route stop at {key}ms")
+    if route.get("loop") and not rect_close(
+        first_pass[str(0.0)].get("viewBox"), first_pass[str(duration)].get("viewBox")
+    ):
+        route_errors.append("looping camera route does not close at durationMs")
+    audit.metrics["navigationRouteSampleCount"] = len(ordered_times)
+    audit.metrics["navigationIssueCount"] += len(route_errors)
+    audit.finish_check(
+        "navigation-route-determinism",
+        route_errors,
+        {"sampleCount": len(ordered_times), "durationMs": duration, "loop": bool(route.get("loop"))},
+    )
+
+    def anchor_district(anchor_id: str) -> str | None:
+        anchor = anchor_by_id.get(anchor_id)
+        if not anchor or anchor.get("kind") == "world":
+            return None
+        if anchor.get("kind") == "district":
+            return str(anchor.get("targetId"))
+        if anchor.get("kind") == "module":
+            return str(anchor.get("parentId", "")).removeprefix("district-")
+        return None
+
+    world_edges = {
+        (str(item["source"]), str(item["target"]))
+        for item in plan["world"]["links"]
+    }
+    directional_stop = next(
+        (
+            stop
+            for stop in route["stops"]
+            if float(stop["arrivalMs"]) > float(stop["startMs"])
+            and (
+                anchor_district(str(stop["fromAnchorId"])),
+                anchor_district(str(stop["anchorId"])),
+            )
+            in world_edges
+        ),
+        None,
+    )
+    direction_errors: list[str] = []
+    direction_evidence: dict[str, Any] = {}
+    if directional_stop is None:
+        direction_errors.append("camera route has no travel segment that follows a declared world link")
+    else:
+        midpoint = (
+            float(directional_stop["startMs"]) + float(directional_stop["arrivalMs"])
+        ) / 2.0
+        direction_evidence = page.evaluate(
+            r"""
+            (time) => {
+              const semanticBefore = window.svgSync.serializeSnapshot();
+              const camera = window.svgSync.seekCamera(time);
+              const traveling = [...document.querySelectorAll('[data-route-traveling="true"]')];
+              const visibleLabels = traveling.filter((link) => {
+                const label = link.querySelector('.world-link-label');
+                if (!label) return false;
+                const style = getComputedStyle(label);
+                const box = label.getBoundingClientRect();
+                return style.display !== 'none' && Number(style.opacity) > .01 && box.width > 0 && box.height > 0;
+              });
+              return {
+                camera,
+                semanticUnchanged: semanticBefore === window.svgSync.serializeSnapshot(),
+                trunkCount: document.querySelectorAll('[data-tree-role="trunk"]').length,
+                chevronCount: document.querySelectorAll('[data-tree-role="trunk"] .world-link-chevron').length,
+                travelingCount: traveling.length,
+                visibleTravelLabelCount: visibleLabels.length
+              };
+            }
+            """,
+            midpoint,
+        )
+        if not direction_evidence.get("semanticUnchanged"):
+            direction_errors.append("route travel direction check changed semantic state")
+        if int(direction_evidence.get("chevronCount", 0)) != 2 * int(
+            direction_evidence.get("trunkCount", 0)
+        ):
+            direction_errors.append("primary trunks do not expose two restrained direction chevrons each")
+        if int(direction_evidence.get("travelingCount", 0)) != 1:
+            direction_errors.append("route midpoint does not identify exactly one active travel segment")
+        if int(direction_evidence.get("visibleTravelLabelCount", 0)) != 1:
+            direction_errors.append("active travel segment does not expose one visible relationship label")
+    page.evaluate("() => window.svgSync.fitOverview({updateHash:false})")
+    audit.metrics["navigationIssueCount"] += len(direction_errors)
+    audit.finish_check("navigation-route-direction-cues", direction_errors, direction_evidence)
+
+    first_district = next(item for item in anchors if item["kind"] == "district")
+    first_module = next(item for item in anchors if item["kind"] == "module")
+    isolation = page.evaluate(
+        r"""
+        (anchorId) => {
+          const root = document.documentElement;
+          const beforeSemantic = window.svgSync.serializeSnapshot();
+          const beforeCamera = window.svgSync.getCamera();
+          const events = [];
+          const listener = (event) => events.push(JSON.parse(JSON.stringify(event.detail)));
+          root.addEventListener("svg-camera-change", listener);
+          const afterCamera = window.svgSync.navigateTo(anchorId, {updateHash:false});
+          root.removeEventListener("svg-camera-change", listener);
+          const afterSemantic = window.svgSync.serializeSnapshot();
+          return {
+            semanticUnchanged: beforeSemantic === afterSemantic,
+            beforeCamera,
+            afterCamera,
+            events,
+            rootRevision: root.getAttribute("data-camera-revision"),
+            rootAnchor: root.getAttribute("data-camera-anchor")
+          };
+        }
+        """,
+        first_district["id"],
+    )
+    isolation_errors: list[str] = []
+    if not isolation.get("semanticUnchanged"):
+        isolation_errors.append("camera navigation changed the serialized semantic snapshot")
+    before_camera = isolation.get("beforeCamera", {})
+    after_camera = isolation.get("afterCamera", {})
+    if int(after_camera.get("revision", -1)) <= int(before_camera.get("revision", -1)):
+        isolation_errors.append("camera navigation did not advance its independent revision")
+    if isolation.get("rootRevision") != str(after_camera.get("revision")):
+        isolation_errors.append("camera event/root revision was not committed atomically")
+    if isolation.get("rootAnchor") != first_district["id"]:
+        isolation_errors.append("camera root anchor is stale after navigation")
+    if len(isolation.get("events", [])) != 1 or isolation.get("events", [{}])[0] != after_camera:
+        isolation_errors.append("camera navigation did not dispatch one post-commit svg-camera-change event")
+    audit.metrics["navigationIssueCount"] += len(isolation_errors)
+    audit.finish_check("navigation-state-isolation", isolation_errors, isolation)
+
+    minimap = page.evaluate(
+        r"""
+        () => {
+          const viewport = document.querySelector("[data-minimap-viewport]");
+          const field = viewport?.parentElement?.querySelector(".minimap-field");
+          const values = Object.fromEntries(
+            ["x", "y", "width", "height"].map((name) => [name, Number(viewport?.getAttribute(name))])
+          );
+          return {
+            ...values,
+            fieldWidth: Number(field?.getAttribute("width")),
+            fieldHeight: Number(field?.getAttribute("height"))
+          };
+        }
+        """
+    )
+    minimap_errors: list[str] = []
+    if not all(math.isfinite(float(minimap.get(key, math.nan))) for key in ("x", "y", "width", "height")):
+        minimap_errors.append("minimap viewport contains non-finite geometry")
+    else:
+        if float(minimap["x"]) < -1e-6 or float(minimap["y"]) < -1e-6:
+            minimap_errors.append("minimap viewport starts outside the minimap")
+        if float(minimap["x"]) + float(minimap["width"]) > float(minimap["fieldWidth"]) + 1e-4:
+            minimap_errors.append("minimap viewport exceeds the minimap width")
+        if float(minimap["y"]) + float(minimap["height"]) > float(minimap["fieldHeight"]) + 1e-4:
+            minimap_errors.append("minimap viewport exceeds the minimap height")
+    audit.metrics["navigationIssueCount"] += len(minimap_errors)
+    audit.finish_check("navigation-minimap", minimap_errors, minimap)
+
+    input_errors: list[str] = []
+    page.evaluate("() => window.svgSync.fitOverview({updateHash:false})")
+    next_control = page.locator('[data-camera-action="next"]')
+    if next_control.count() != 1:
+        input_errors.append("Next camera control is missing or duplicated")
+    else:
+        next_control.click()
+        if page.evaluate("() => window.svgSync.getCamera().anchorId") == "world":
+            input_errors.append("Next camera pointer control did not leave the world anchor")
+    page.evaluate("() => window.svgSync.fitOverview({updateHash:false})")
+    district_control = page.locator(f'[data-nav-target="{first_district["id"]}"]')
+    if district_control.count() != 1:
+        input_errors.append(f"district navigation control for {first_district['id']!r} is missing or duplicated")
+    else:
+        district_control.click()
+        if page.evaluate("() => window.svgSync.getCamera().anchorId") != first_district["id"]:
+            input_errors.append("district pointer control did not commit its camera anchor")
+    parent_anchor = anchor_by_id.get(str(first_module.get("parentId")))
+    page.evaluate(
+        "anchorId => window.svgSync.navigateTo(anchorId, {updateHash:false})",
+        first_module["id"],
+    )
+    breadcrumb_control = page.locator("[data-navigation-current-label]")
+    breadcrumb = (
+        breadcrumb_control.get_attribute("aria-label")
+        or breadcrumb_control.text_content()
+        or ""
+    )
+    if (
+        "WORLD" not in breadcrumb
+        or first_module["label"] not in breadcrumb
+        or not parent_anchor
+        or str(parent_anchor["label"]) not in breadcrumb
+    ):
+        input_errors.append("module HUD breadcrumb does not preserve world, district, and module ancestry")
+    up_control = page.locator('[data-camera-action="up"]')
+    if up_control.count() != 1:
+        input_errors.append("Up camera control is missing or duplicated")
+    else:
+        if (up_control.locator("text").text_content() or "").strip() != "DISTRICT":
+            input_errors.append("module-tier Up control does not identify the parent district")
+        up_control.click()
+        if page.evaluate("() => window.svgSync.getCamera().anchorId") != first_module.get("parentId"):
+            input_errors.append("module-tier Up control did not return to the parent district")
+        if (up_control.locator("text").text_content() or "").strip() != "WORLD":
+            input_errors.append("district-tier Up control does not identify the world overview")
+        up_control.click()
+        if page.evaluate("() => window.svgSync.getCamera().anchorId") != "world":
+            input_errors.append("district-tier Up control did not return to the world overview")
+        if up_control.get_attribute("aria-disabled") != "true" or up_control.get_attribute("tabindex") != "-1":
+            input_errors.append("world-tier Up control remains actionable in keyboard order")
+    tour_control = page.locator('[data-camera-action="tour"]')
+    if tour_control.count() != 1:
+        input_errors.append("camera Tour control is missing or duplicated")
+    else:
+        page.evaluate("() => window.svgSync.resetCamera({updateHash:false})")
+        before_time = float(page.evaluate("() => window.svgSync.getCamera().timeMs"))
+        tour_control.click()
+        page.wait_for_timeout(150)
+        during = page.evaluate("() => window.svgSync.getCamera()")
+        tour_control.click()
+        paused_time = float(page.evaluate("() => window.svgSync.getCamera().timeMs"))
+        page.wait_for_timeout(80)
+        stable_time = float(page.evaluate("() => window.svgSync.getCamera().timeMs"))
+        if not during.get("playing") or float(during.get("timeMs", 0)) <= before_time:
+            input_errors.append("Tour pointer control did not advance camera time")
+        if not close_number(paused_time, stable_time, tolerance=1e-4):
+            input_errors.append("Tour pointer control did not pause camera time")
+    page.evaluate("() => window.svgSync.fitOverview({updateHash:false})")
+    audit.metrics["navigationIssueCount"] += len(input_errors)
+    audit.finish_check("navigation-input-controls", input_errors)
+
+    deep_page = page.context.new_page()
+    attach_error_collectors(deep_page, audit, "navigation-deep-link")
+    try:
+        deep_url = page.url.split("#", 1)[0] + f"#view={first_district['id']}"
+        deep_page.goto(deep_url, wait_until="load", timeout=timeout_ms)
+        deep_page.wait_for_function(
+            "() => window.svgSync && window.svgSync.ready && typeof window.svgSync.getCamera === 'function'",
+            timeout=timeout_ms,
+        )
+        deep = deep_page.evaluate(
+            "() => ({camera:window.svgSync.getCamera(), label:document.querySelector('[data-navigation-current-label]')?.textContent || ''})"
+        )
+        deep_errors = []
+        if deep.get("camera", {}).get("anchorId") != first_district["id"]:
+            deep_errors.append("#view deep link did not restore the requested camera anchor")
+        if first_district["label"] not in deep.get("label", ""):
+            deep_errors.append("deep-link HUD label does not identify the requested district")
+        audit.metrics["navigationIssueCount"] += len(deep_errors)
+        audit.finish_check("navigation-deep-link", deep_errors, deep)
+    finally:
+        deep_page.close()
+
+    page.evaluate(
+        "anchorId => window.svgSync.navigateTo(anchorId, {updateHash:false})",
+        first_module["id"],
+    )
+    audit_accessibility_tree(page, audit, "navigation-module-accessibility-tree")
+    page.evaluate("() => window.svgSync.fitOverview({updateHash:false})")
+    audit.snapshots["navigation"] = {
+        "anchorCount": len(records),
+        "routeSampleCount": len(ordered_times),
+        "finalCamera": page.evaluate("() => window.svgSync.getCamera()"),
+    }
 
 
 def normalize_time(timeline: dict[str, Any], raw_time: float) -> float:
@@ -3479,6 +4137,60 @@ def audit_reduced_motion(
             {"control": reduced_control},
         )
 
+        if is_navigable_plan(plan):
+            first_district = next(
+                item for item in plan["navigation"]["anchors"] if item["kind"] == "district"
+            )
+            navigation_before = page.evaluate(
+                "() => ({semantic:window.svgSync.serializeSnapshot(), camera:window.svgSync.getCamera()})"
+            )
+            played_camera = page.evaluate("() => window.svgSync.playCamera()")
+            page.wait_for_timeout(180)
+            after_camera_play = page.evaluate("() => window.svgSync.getCamera()")
+            moved_camera = page.evaluate(
+                "anchorId => window.svgSync.navigateTo(anchorId, {updateHash:false})",
+                first_district["id"],
+            )
+            navigation_after = page.evaluate(
+                r"""
+                () => {
+                  const control = document.querySelector('[data-camera-action="tour"]');
+                  return {
+                    semantic: window.svgSync.serializeSnapshot(),
+                    camera: window.svgSync.getCamera(),
+                    disabled: control?.getAttribute("aria-disabled"),
+                    tabIndex: control?.tabIndex
+                  };
+                }
+                """
+            )
+            navigation_errors: list[str] = []
+            if played_camera.get("playing") or after_camera_play.get("playing"):
+                navigation_errors.append("reduced motion did not disable camera autoplay")
+            if not close_number(
+                after_camera_play.get("timeMs"), navigation_before["camera"].get("timeMs")
+            ):
+                navigation_errors.append("reduced-motion camera time advanced after playCamera()")
+            if moved_camera.get("anchorId") != first_district["id"]:
+                navigation_errors.append("reduced motion disabled instant anchor navigation")
+            if navigation_after.get("semantic") != navigation_before.get("semantic"):
+                navigation_errors.append("reduced-motion camera navigation changed semantic state")
+            if navigation_after.get("disabled") != "true" or navigation_after.get("tabIndex") != -1:
+                navigation_errors.append("reduced-motion Tour control is not disabled and removed from tab order")
+            audit.metrics["navigationIssueCount"] += len(navigation_errors)
+            audit.finish_check(
+                "reduced-motion-navigation",
+                navigation_errors,
+                {
+                    "before": navigation_before["camera"],
+                    "played": played_camera,
+                    "afterPlay": after_camera_play,
+                    "moved": moved_camera,
+                    "controlDisabled": navigation_after.get("disabled"),
+                    "controlTabIndex": navigation_after.get("tabIndex"),
+                },
+            )
+
         css_state = page.evaluate(
             """
             () => {
@@ -3756,6 +4468,7 @@ def audit_normal_page(
         audit.snapshots["initial"] = current["snapshot"]
         audit.metrics["bindingCount"] = len(current["bindings"])
 
+        audit_navigation(page, audit, plan, args.timeout_ms)
         audit_real_input_controls(page, audit, plan)
         current = capture(page)
         current = audit_scenarios(page, audit, plan, current)

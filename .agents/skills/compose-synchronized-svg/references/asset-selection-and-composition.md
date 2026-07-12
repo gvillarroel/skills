@@ -1,6 +1,6 @@
 # Asset Selection And Composition
 
-Use this reference before drawing modules. Select assets from the questions the composition must answer, then choose one global armature and one shared identity system. The result should read as one explanatory object, not as unrelated dashboard cards.
+Use this reference before drawing modules. Select assets from the questions the composition must answer, then choose one global armature and one shared identity system. Decide whether the result is a compact 6–16-module megacanvas or a 12–48-module navigable world before assigning geometry. Both must read as one explanatory object, not as unrelated dashboard cards.
 
 ## Start From Questions
 
@@ -46,7 +46,7 @@ Use a generated waterfall as an arithmetic bridge: order one nonnegative opening
 
 Use the generated radial gauge only for a bounded fraction whose full legal envelope stays inside `[0, 1]` and increases from the left endpoint to the right endpoint. Its visible arc is a 180° upper semicircle, so declare the needle transform as `rotate` with range `[-180, 0]` (or equivalent `[180, 360]`). A demand/capacity ratio that can exceed 100% is load or overload evidence, not utilization: name it accordingly and use a bullet or capacity band with an explicit 100% threshold. Anchor percentage bullet/progress geometry at canonical zero; before saturation, its distance to the target must equal `value / target`. Keep exact negative or above-range values in the synchronized readout even when the visible mark clamps to zero or the 150% ceiling. A wider dial sweep is a semantic mismatch.
 
-Use compact network and hierarchy assets to explain topology. Their generated nodes have equal area and exact synchronized value/unit readouts; every edge comes from a direct dependency declared in the derived-value DAG. Put at least one related source/derived pair in `values`, and reject a network whose only relation would be a decorative hub or generic “shared state.” When the claim spans a transitive dependency, include every intermediate node so the visible graph contains the claimed path; a total and distant leaves with the connecting subtotal omitted are not a composition diagram. Do not encode unlike units as comparable node radii. If quantitative node size is genuinely necessary, use one common unit, one shared domain, area-correct scaling, and a visible scale in bespoke geometry; otherwise keep node size structural.
+Use compact network and hierarchy assets to explain numeric dependency topology. Without `module.diagram`, their generated nodes have equal area and exact synchronized value/unit readouts; every edge comes from a direct dependency declared in the derived-value DAG. Put at least one related source/derived pair in `values`, and reject a network whose only relation would be a decorative hub or generic “shared state.” When the claim spans a transitive dependency, include every intermediate node so the visible graph contains the claimed path; a total and distant leaves with the connecting subtotal omitted are not a composition diagram. When the subject requires a qualitative genealogy, prerequisite tree, policy loop, or evidence structure, use an explicit connected `module.diagram` instead. Bind every numeric module value exactly once and keep qualitative nodes structural. Do not encode unlike units as comparable node radii. If quantitative node size is genuinely necessary, use one common unit, one shared domain, area-correct scaling, and a visible scale in bespoke geometry; otherwise keep node size structural.
 
 Keep compact module value lists purposeful. Dense generated bars, tables, and networks adapt their columns, rows, and cards to the assigned body, but packing is not a substitute for selection: split a bar list when more than six values no longer share one comparison task, and split a network or table when more than roughly eight values obscure the dependency or lookup question.
 
@@ -87,7 +87,29 @@ Build three small matrices before implementation:
 
 Merge or remove modules that answer the same question with the same concept and channel. Keep two views of one concept only when the viewer tasks differ, such as exact lookup versus distribution or current state versus projection. A structural overview without a numeric binding is allowed only when it explains relationships needed by bound modules.
 
-Do not force every concept into every module. Bind only consumers whose meaning changes. Give essential exact values a text, axis, table, or accessible-value path. Prefer a small complete set over a crowded set of weak facets. Use 13–16 modules only when the composition is intentionally a megacanvas, every module owns a nonredundant question, and one canonical semantic model plus a readable overview binds the extra detail together.
+Do not force every concept into every module. Bind only consumers whose meaning changes. Give essential exact values a text, axis, table, or accessible-value path. Prefer a small complete set over a crowded set of weak facets. In compact mode, use 13–16 modules only when every module owns a nonredundant question and one canonical model plus readable crops binds the extra detail together. In navigable-world mode, use 12–48 modules only when 4–12 districts provide meaningful local neighborhoods and the overview can communicate topology without exposing full module detail.
+
+## Build a Navigable World When One Screen Is Not Enough
+
+Use a world only when the viewer should intentionally move through three scales:
+
+1. **World:** understand the semantic root, primary trunks, district hubs, and broad crosslinks.
+2. **District:** inspect one local branch or index and choose a destination.
+3. **Module:** read one complete diagram with all labels, marks, and synchronized values.
+
+Group modules by explanatory neighborhood, not by arbitrary page packing. Assign every module to exactly one district. Keep 1–8 modules per district, make every district reachable from the root through directed non-feedback links, and preserve one incoming visual trunk per non-root district. Treat remaining non-feedback links as crosslinks and feedback links as contextual loops so the overview has a legible spine.
+
+Use `world.armature` as a validated spatial choice:
+
+| World armature | Use when | Avoid when |
+| --- | --- | --- |
+| `radial-skill-tree` | One root unlocks or influences several semantic branches | A center would be decorative or chronology is primary |
+| `genealogical-tree` | Generations, stages, descent, or inheritance determine depth | Peer districts should orbit without ancestry |
+| `constellation-map` | Crosslinks matter and no single linear reading order is honest | The current radial placement would imply a hierarchy the subject does not have |
+
+The top-level `armature` remains a short descriptive narrative phrase such as `heat-risk-to-adaptation`; it is not the same field as the validated `world.armature` enum.
+
+Select module assets inside each district with the same question-fit rubric used in compact mode. Let the district tier show navigation nodes and branch structure, not tiny chart bodies. Use explicit qualitative `module.diagram` records for genealogy, prerequisites, policy feedback, or evidence chains whose topology is not the numeric derived DAG.
 
 ## Choose One Global Armature
 
@@ -104,11 +126,13 @@ Choose from the dominant story, not from the module count.
 | Balanced split | Two states, forces, or options need equal weight | Three or more peers are central |
 | Dense label lanes | A central field needs external labels and leaders | Direct labels already fit |
 
+These armatures describe compact page composition. In navigable-world mode, use the separate `world.armature` enum above and let each district declare a local `radial`, `branch`, `lanes`, or `orbit` armature.
+
 Order compact-brief modules by intended reading preference and choose asset families before drawing marks. Above twelve modules the compiler preserves that order across the four-row megacanvas; for smaller briefs it may move heavy flow, network, spatial, or dense-table modules into wider slots while recording the resulting `layout.readingOrder`. The compiler assigns the root `viewBox`, safe module regions, baselines, and gutters. Record the intended armature in the brief. The current compact compiler preserves that intent as metadata while applying its validated asymmetric layout; use the advanced full-plan surface only when the task truly requires another geometry. Never hand-patch generated regions.
 
 ## Declare Honest Cross-Module Relationships
 
-Use a relationship only when a viewer should follow a real handoff, dependency, or feedback path between two modules. Add compact records shaped like:
+Use a relationship only when a viewer should follow a real handoff, dependency, or feedback path between two modules. These top-level `relationships` describe module-to-module explanation. In navigable-world mode, `world.links` separately describe district topology and camera-scale reading; neither field creates semantic value dependencies. Add compact module relationship records shaped like:
 
 ```json
 {
@@ -149,6 +173,8 @@ Keep exact shared values canonical in the compact brief and bind the same value 
 The validator checks the declared canonical value token on each bound mark and checks that its `data-role` retains a declared non-color cue. Two distinct identities may share a color only when their non-color cues remain disjoint; they must never share the complete color/non-color signature. Unit conversions and rate/amount forms may be aliases when the rationale makes the semantic relationship explicit.
 
 Keep these cues stable while geometry changes by asset. Salary may be a bar length, waterfall source, and projection input, but its accent, unit, and label identity should remain recognizable. Use a non-color cue for important concepts. Focus should add outline, halo, weight, or contrast rather than silently changing semantic color.
+
+In navigable-world mode, require at least one canonical source to recur in materially different encodings across two distant districts. This proves that synchronized identity survives spatial separation rather than only neighboring modules. Keep its color token, non-color cue, label vocabulary, unit, and semantic direction stable at world, district, and module scales.
 
 Let the shared identity override module-local palettes. Give derived concepts related but distinguishable cues. When two appearances use different scales, declare their units, domains, and transforms; never imply shared pixel magnitude.
 

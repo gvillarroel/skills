@@ -110,10 +110,10 @@ PUBLISHED_EXAMPLE_SETS = [
     {
         "id": "compose-synchronized-svg",
         "source": "compose-synchronized-svg",
-        "title": "Synchronized SVG Inference Pulse",
+        "title": "Synchronized SVG Compositions",
         "href": "examples/compose-synchronized-svg/",
         "kind": "Interactive SVG",
-        "description": "Sixteen related views share one canonical state, loop, focus model, and routed causal and feedback relationships.",
+        "description": "A fitted causal megacanvas and a navigable 36-module world share canonical state, explicit structural diagrams, semantic zoom, and deterministic routes for narration or video.",
     },
     {
         "id": "echarts-animated-svg",

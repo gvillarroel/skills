@@ -24,6 +24,7 @@ from typing import Any
 sys.dont_write_bytecode = True
 
 import scaffold_synchronized_svg as scaffold  # noqa: E402
+import navigation_contract as navigation  # noqa: E402
 
 
 VIEW_BOX = [0, 0, 1600, 1000]
@@ -33,6 +34,29 @@ MEGACANVAS_SAFE_AREA = [48, 128, 2304, 1624]
 GAP = 24
 MIN_MODULES = 6
 MAX_MODULES = 16
+WORLD_MIN_MODULES = 12
+WORLD_MAX_MODULES = 48
+WORLD_ASPECT_RATIO = 16 / 9
+WORLD_NAVIGATION_VIEWPORT = [0, 120, 1600, 900]
+WORLD_HEADER_HEIGHT = 260
+WORLD_FOOTER_HEIGHT = 360
+WORLD_MARGIN = 180
+WORLD_DISTRICT_GAP = 520
+WORLD_MODULE_WIDTH = 680
+WORLD_HEAVY_MODULE_WIDTH = 780
+WORLD_MODULE_HEIGHT = 500
+WORLD_HEAVY_MODULE_HEIGHT = 540
+WORLD_DISTRICT_PALETTE = (
+    "#7c3aed",
+    "#0891b2",
+    "#2563eb",
+    "#16a34a",
+    "#db2777",
+    "#ea580c",
+    "#0f766e",
+    "#9333ea",
+    "#b45309",
+)
 
 
 class BriefError(ValueError):
@@ -835,6 +859,133 @@ def infer_flow_values(
     return [source, *[value_id for value_id in values if value_id != source]]
 
 
+def compile_structural_diagram(
+    raw: Any,
+    *,
+    module_id: str,
+    values: list[str],
+    known_values: set[str],
+) -> dict[str, Any] | None:
+    """Compile qualitative parent/prerequisite topology without inventing arithmetic."""
+
+    if raw is None:
+        return None
+    if not isinstance(raw, dict):
+        raise BriefError(f"module {module_id!r} diagram must be an object")
+    nodes_raw = raw.get("nodes")
+    links_raw = raw.get("links")
+    if not isinstance(nodes_raw, list) or not 2 <= len(nodes_raw) <= 18:
+        raise BriefError(f"module {module_id!r} diagram.nodes must contain 2 to 18 nodes")
+    if not isinstance(links_raw, list) or not 1 <= len(links_raw) <= 32:
+        raise BriefError(f"module {module_id!r} diagram.links must contain 1 to 32 links")
+    node_ids: set[str] = set()
+    nodes: list[dict[str, Any]] = []
+    bound_values: set[str] = set()
+    for index, node in enumerate(nodes_raw):
+        if not isinstance(node, dict):
+            raise BriefError(f"module {module_id!r} diagram.nodes[{index}] must be an object")
+        node_id = require_id(node.get("id"), f"module {module_id!r} diagram node {index} id")
+        if node_id in node_ids:
+            raise BriefError(f"module {module_id!r} repeats diagram node id {node_id!r}")
+        node_ids.add(node_id)
+        kind = node.get("kind", "leaf")
+        if kind not in {"root", "notable", "merge", "gate", "leaf", "evidence"}:
+            raise BriefError(
+                f"module {module_id!r} diagram node {node_id!r} kind must be root, notable, "
+                "merge, gate, leaf, or evidence"
+            )
+        compiled_node: dict[str, Any] = {
+            "id": node_id,
+            "label": require_text(
+                node.get("label"), f"module {module_id!r} diagram node {node_id!r} label"
+            ),
+            "kind": kind,
+        }
+        bind = node.get("bind")
+        if bind is not None:
+            bind = require_id(bind, f"module {module_id!r} diagram node {node_id!r} bind")
+            if bind not in known_values or bind not in values:
+                raise BriefError(
+                    f"module {module_id!r} diagram node {node_id!r} bind {bind!r} must name "
+                    "one of the module's declared values"
+                )
+            if bind in bound_values:
+                raise BriefError(
+                    f"module {module_id!r} structural diagram binds value {bind!r} more than once; "
+                    "use one canonical bound node and qualitative descendants"
+                )
+            compiled_node["bind"] = bind
+            bound_values.add(bind)
+        if node.get("note") is not None:
+            compiled_node["note"] = require_text(
+                node.get("note"), f"module {module_id!r} diagram node {node_id!r} note"
+            )
+        nodes.append(compiled_node)
+    links: list[dict[str, Any]] = []
+    link_ids: set[str] = set()
+    adjacency: dict[str, set[str]] = {node_id: set() for node_id in node_ids}
+    for index, link in enumerate(links_raw):
+        if not isinstance(link, dict):
+            raise BriefError(f"module {module_id!r} diagram.links[{index}] must be an object")
+        link_id = require_id(link.get("id"), f"module {module_id!r} diagram link {index} id")
+        if link_id in link_ids:
+            raise BriefError(f"module {module_id!r} repeats diagram link id {link_id!r}")
+        link_ids.add(link_id)
+        source = require_id(link.get("source"), f"module {module_id!r} diagram link source")
+        target = require_id(link.get("target"), f"module {module_id!r} diagram link target")
+        if source == target or source not in node_ids or target not in node_ids:
+            raise BriefError(
+                f"module {module_id!r} diagram link {link_id!r} must connect two declared nodes"
+            )
+        kind = link.get("kind", "prerequisite")
+        if kind not in {"parent", "prerequisite", "dependency", "flow", "feedback"}:
+            raise BriefError(
+                f"module {module_id!r} diagram link {link_id!r} has unsupported kind {kind!r}"
+            )
+        compiled_link: dict[str, Any] = {
+            "id": link_id,
+            "source": source,
+            "target": target,
+            "kind": kind,
+        }
+        if link.get("label") is not None:
+            compiled_link["label"] = require_text(
+                link.get("label"), f"module {module_id!r} diagram link {link_id!r} label"
+            )
+        links.append(compiled_link)
+        adjacency[source].add(target)
+        adjacency[target].add(source)
+    visited: set[str] = set()
+    pending = [nodes[0]["id"]]
+    while pending:
+        node_id = pending.pop()
+        if node_id in visited:
+            continue
+        visited.add(node_id)
+        pending.extend(sorted(adjacency[node_id] - visited))
+    if visited != node_ids:
+        raise BriefError(
+            f"module {module_id!r} structural diagram must be connected; isolated node(s): "
+            f"{sorted(node_ids - visited)}"
+        )
+    missing_bindings = sorted(set(values) - bound_values)
+    if missing_bindings:
+        raise BriefError(
+            f"module {module_id!r} structural diagram must bind every declared value to at least "
+            f"one node; missing value(s): {missing_bindings}"
+        )
+    layout = raw.get("layout", "tree")
+    if layout not in {"tree", "radial", "lanes"}:
+        raise BriefError(
+            f"module {module_id!r} diagram.layout must be tree, radial, or lanes"
+        )
+    return {
+        "layout": layout,
+        "nodes": nodes,
+        "links": links,
+    }
+
+
 def compile_module_shells(
     raw: Any,
     known_values: set[str],
@@ -845,9 +996,14 @@ def compile_module_shells(
     computations: dict[str, Any],
     cues: dict[str, str],
     value_states: list[tuple[str, dict[str, float]]],
+    *,
+    minimum_modules: int = MIN_MODULES,
+    maximum_modules: int = MAX_MODULES,
 ) -> list[dict[str, Any]]:
-    if not isinstance(raw, list) or not MIN_MODULES <= len(raw) <= MAX_MODULES:
-        raise BriefError(f"modules must contain {MIN_MODULES} to {MAX_MODULES} items")
+    if not isinstance(raw, list) or not minimum_modules <= len(raw) <= maximum_modules:
+        raise BriefError(
+            f"modules must contain {minimum_modules} to {maximum_modules} items"
+        )
     result: list[dict[str, Any]] = []
     seen: set[str] = set()
     source_ids = known_values - set(computations)
@@ -920,6 +1076,16 @@ def compile_module_shells(
                 "gauge/bullet/progress, line/timeline, network/graph, spatial/map, "
                 "table/matrix, or waterfall"
             )
+        structural_diagram = compile_structural_diagram(
+            item.get("diagram"),
+            module_id=module_id,
+            values=values,
+            known_values=known_values,
+        )
+        if structural_diagram is not None and family != "network":
+            raise BriefError(
+                f"module {module_id!r} diagram is valid only with a network/graph/tree assetType"
+            )
         for partition_total, partition_branches in module_partition_contracts(
             values,
             computations,
@@ -985,7 +1151,7 @@ def compile_module_shells(
                         "conserved total first and include only mutually exclusive branches, or "
                         "use a table/network for nonconserving comparisons"
                     )
-        if family == "network" and not any(
+        if family == "network" and structural_diagram is None and not any(
             dependency in values
             for value_id in values
             for dependency in dependencies.get(value_id, set())
@@ -994,7 +1160,7 @@ def compile_module_shells(
                 f"module {module_id!r} selects a network asset but its values contain no declared "
                 "dependency edge; include related source/derived values or choose a non-network asset"
             )
-        if family == "network":
+        if family == "network" and structural_diagram is None:
             selected_values = set(values)
             missing_direct_parents = [
                 (value_id, sorted(dependencies.get(value_id, set()) - selected_values))
@@ -1257,6 +1423,11 @@ def compile_module_shells(
                 "assetType": asset_type,
                 "question": require_text(item.get("question"), f"module {module_id!r} question"),
                 "claim": require_text(item.get("claim"), f"module {module_id!r} claim"),
+                "navigationLabel": (
+                    require_text(item.get("navigationLabel"), f"module {module_id!r} navigationLabel")
+                    if item.get("navigationLabel") is not None
+                    else module_id.replace("-", " ").title()
+                ),
                 "selectionRationale": require_text(
                     item.get("selectionRationale"),
                     f"module {module_id!r} selectionRationale",
@@ -1273,6 +1444,8 @@ def compile_module_shells(
             }
         if stack_total is not None:
             compiled_module["stackTotal"] = stack_total
+        if structural_diagram is not None:
+            compiled_module["diagram"] = structural_diagram
         result.append(compiled_module)
     return result
 
@@ -1352,6 +1525,681 @@ def assign_layout(modules: list[dict[str, Any]], safe_area: list[int]) -> list[s
         module.pop("_heavy")
         module["region"] = region
     return [module["id"] for module in modules]
+
+
+def bounds_for_regions(regions: list[list[float]], padding: float = 0.0) -> list[float]:
+    left = min(region[0] for region in regions) - padding
+    top = min(region[1] for region in regions) - padding
+    right = max(region[0] + region[2] for region in regions) + padding
+    bottom = max(region[1] + region[3] for region in regions) + padding
+    return [left, top, right - left, bottom - top]
+
+
+def world_module_size(module: dict[str, Any]) -> tuple[float, float]:
+    if module.get("_heavy"):
+        return float(WORLD_HEAVY_MODULE_WIDTH), float(WORLD_HEAVY_MODULE_HEIGHT)
+    return float(WORLD_MODULE_WIDTH), float(WORLD_MODULE_HEIGHT)
+
+
+def local_district_regions(
+    modules: list[dict[str, Any]],
+    armature: str,
+) -> tuple[dict[str, list[float]], list[float]]:
+    """Place local diagrams around one district hub before global projection."""
+
+    if armature not in {"radial", "branch", "lanes", "orbit"}:
+        raise BriefError(
+            f"district localArmature {armature!r} must be radial, branch, lanes, or orbit"
+        )
+    count = len(modules)
+    if not 1 <= count <= 8:
+        raise BriefError("each world district must contain 1 to 8 local diagram modules")
+    sizes = [world_module_size(module) for module in modules]
+    centers: list[tuple[float, float]] = []
+    if count == 1:
+        centers = [(0.0, 0.0)]
+    elif armature == "radial":
+        centers.append((0.0, 0.0))
+        orbit_count = count - 1
+        radius_x = max(960.0, 285.0 * orbit_count)
+        radius_y = max(720.0, 210.0 * orbit_count)
+        for index in range(orbit_count):
+            angle = -math.pi / 2 + 2 * math.pi * index / orbit_count
+            centers.append((radius_x * math.cos(angle), radius_y * math.sin(angle)))
+    elif armature == "orbit":
+        radius_x = max(1000.0, 245.0 * count)
+        radius_y = max(760.0, 185.0 * count)
+        for index in range(count):
+            angle = -math.pi / 2 + 2 * math.pi * index / count
+            centers.append((radius_x * math.cos(angle), radius_y * math.sin(angle)))
+    elif armature == "branch":
+        centers.append((-980.0, 0.0))
+        remaining = count - 1
+        columns = 2 if remaining > 3 else 1
+        rows = math.ceil(remaining / columns)
+        for index in range(remaining):
+            column = index // rows
+            row = index % rows
+            x = 180.0 + column * 900.0
+            y = (row - (rows - 1) / 2) * 660.0
+            centers.append((x, y))
+    else:
+        columns = min(3, max(2, math.ceil(math.sqrt(count))))
+        rows = math.ceil(count / columns)
+        for index in range(count):
+            column = index % columns
+            row = index // columns
+            x = (column - (columns - 1) / 2) * 860.0
+            y = (row - (rows - 1) / 2) * 640.0
+            centers.append((x, y))
+    regions: dict[str, list[float]] = {}
+    for module, (width, height), (center_x, center_y) in zip(
+        modules, sizes, centers, strict=True
+    ):
+        regions[module["id"]] = [
+            center_x - width / 2,
+            center_y - height / 2,
+            width,
+            height,
+        ]
+    bounds = bounds_for_regions(list(regions.values()), padding=220.0)
+    return regions, bounds
+
+
+def compile_world_links(
+    raw: Any,
+    district_ids: set[str],
+) -> list[dict[str, Any]]:
+    if not isinstance(raw, list) or not raw:
+        raise BriefError("world.links must be a non-empty array")
+    if len(raw) > 28:
+        raise BriefError("world.links supports at most 28 explanatory district routes")
+    result: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    seen_edges: set[tuple[str, str, str]] = set()
+    for index, item in enumerate(raw):
+        if not isinstance(item, dict):
+            raise BriefError(f"world.links[{index}] must be an object")
+        link_id = require_id(item.get("id"), f"world.links[{index}].id")
+        if link_id in seen:
+            raise BriefError(f"duplicate world link id: {link_id}")
+        seen.add(link_id)
+        source = require_id(item.get("source"), f"world link {link_id!r} source")
+        target = require_id(item.get("target"), f"world link {link_id!r} target")
+        if source == target or source not in district_ids or target not in district_ids:
+            raise BriefError(
+                f"world link {link_id!r} must connect two distinct declared districts"
+            )
+        kind = item.get("kind", "dependency")
+        if kind not in {"flow", "dependency", "feedback"}:
+            raise BriefError(
+                f"world link {link_id!r} kind must be flow, dependency, or feedback"
+            )
+        edge = (source, target, str(kind))
+        if edge in seen_edges:
+            raise BriefError(
+                f"duplicate world link endpoints and kind: {source!r} -> {target!r} ({kind})"
+            )
+        seen_edges.add(edge)
+        result.append(
+            {
+                "id": link_id,
+                "source": source,
+                "target": target,
+                "kind": kind,
+                "label": require_text(item.get("label"), f"world link {link_id!r} label"),
+            }
+        )
+    return result
+
+
+def district_depths(
+    root_id: str,
+    district_ids: set[str],
+    links: list[dict[str, Any]],
+) -> dict[str, int]:
+    outgoing: dict[str, list[str]] = {district_id: [] for district_id in district_ids}
+    for link in links:
+        if link["kind"] != "feedback":
+            outgoing[link["source"]].append(link["target"])
+    depths = {root_id: 0}
+    pending = [root_id]
+    while pending:
+        source = pending.pop(0)
+        for target in outgoing[source]:
+            candidate = depths[source] + 1
+            if target not in depths or candidate < depths[target]:
+                depths[target] = candidate
+                pending.append(target)
+    missing = sorted(district_ids - set(depths))
+    if missing:
+        raise BriefError(
+            "every world district must be reachable from rootDistrictId through a directed "
+            f"non-feedback link; unreachable district(s): {missing}"
+        )
+    return depths
+
+
+def assign_world_tree_roles(
+    root_id: str,
+    district_ids: set[str],
+    links: list[dict[str, Any]],
+) -> None:
+    """Mark one readable spanning-tree trunk per non-root district."""
+
+    outgoing: dict[str, list[dict[str, Any]]] = {
+        district_id: [] for district_id in district_ids
+    }
+    for link in links:
+        link["treeRole"] = "feedback" if link["kind"] == "feedback" else "crosslink"
+        if link["kind"] != "feedback":
+            outgoing[link["source"]].append(link)
+    reached = {root_id}
+    pending = [root_id]
+    while pending:
+        source = pending.pop(0)
+        for link in outgoing[source]:
+            target = link["target"]
+            if target in reached:
+                continue
+            link["treeRole"] = "trunk"
+            reached.add(target)
+            pending.append(target)
+    missing = sorted(district_ids - reached)
+    if missing:  # district_depths normally reports this first; retain a local invariant.
+        raise BriefError(f"world spanning tree cannot reach district(s): {missing}")
+
+
+def radial_district_centers(
+    districts: list[dict[str, Any]],
+    depths: dict[str, int],
+    links: list[dict[str, Any]],
+) -> dict[str, tuple[float, float]]:
+    """Place one semantic root at center and all other districts on a readable ring.
+
+    Causal depth remains metadata and link meaning. Projecting every causal depth
+    onto a new radius creates an enormous sparse spiral for long systems, which
+    defeats the explorable-world overview.
+    """
+
+    centers: dict[str, tuple[float, float]] = {}
+    root_id = next(item["id"] for item in districts if depths[item["id"]] == 0)
+    centers[root_id] = (0.0, 0.0)
+    ring_by_id = {district["id"]: district for district in districts if district["id"] != root_id}
+    declaration_order = list(ring_by_id)
+    adjacency: dict[str, list[str]] = {district_id: [] for district_id in declaration_order}
+    root_children: list[str] = []
+    for link in links:
+        if link.get("treeRole") != "trunk":
+            continue
+        source = str(link["source"])
+        target = str(link["target"])
+        if source == root_id:
+            root_children.append(target)
+        elif source in adjacency and target in adjacency:
+            adjacency[source].append(target)
+            adjacency[target].append(source)
+
+    ordered_ids: list[str] = []
+    remaining = set(declaration_order)
+    if all(len(neighbors) <= 2 for neighbors in adjacency.values()):
+        while remaining:
+            endpoints = [
+                district_id
+                for district_id in declaration_order
+                if district_id in remaining
+                and len([item for item in adjacency[district_id] if item in remaining]) <= 1
+            ]
+            current = endpoints[0] if endpoints else next(
+                district_id for district_id in declaration_order if district_id in remaining
+            )
+            previous: str | None = None
+            while current in remaining:
+                ordered_ids.append(current)
+                remaining.remove(current)
+                candidates = [
+                    item for item in adjacency[current] if item in remaining and item != previous
+                ]
+                if not candidates:
+                    break
+                previous, current = current, candidates[0]
+    else:
+        children: dict[str, list[str]] = {district_id: [] for district_id in [root_id, *declaration_order]}
+        for link in links:
+            if link.get("treeRole") == "trunk":
+                children[str(link["source"])].append(str(link["target"]))
+
+        def visit(district_id: str) -> None:
+            if district_id in ring_by_id and district_id not in ordered_ids:
+                ordered_ids.append(district_id)
+            for child_id in children.get(district_id, []):
+                visit(child_id)
+
+        visit(root_id)
+        ordered_ids.extend(item for item in declaration_order if item not in ordered_ids)
+
+    first_root_child = next((item for item in root_children if item in ordered_ids), None)
+    if first_root_child is not None:
+        pivot = ordered_ids.index(first_root_child)
+        ordered_ids = ordered_ids[pivot:] + ordered_ids[:pivot]
+    ring = [ring_by_id[district_id] for district_id in ordered_ids]
+    maximum_extent = max(
+        max(float(item["_localBounds"][2]), float(item["_localBounds"][3]))
+        for item in districts
+    )
+    count = len(ring)
+    circumference_radius = (
+        (maximum_extent + WORLD_DISTRICT_GAP) * max(1, count) / (2 * math.pi)
+    )
+    radius = max(4300.0, circumference_radius)
+    for index, district in enumerate(ring):
+        angle = -math.pi / 2 + 2 * math.pi * index / max(1, count)
+        centers[district["id"]] = (
+            radius * math.cos(angle),
+            radius * 0.78 * math.sin(angle),
+        )
+    if root_id not in centers:  # pragma: no cover - defensive clarity
+        raise BriefError("world root district could not be positioned")
+    return centers
+
+
+def genealogical_district_centers(
+    districts: list[dict[str, Any]],
+    depths: dict[str, int],
+) -> dict[str, tuple[float, float]]:
+    by_depth: dict[int, list[dict[str, Any]]] = {}
+    for district in districts:
+        by_depth.setdefault(depths[district["id"]], []).append(district)
+    maximum_width = max(float(item["_localBounds"][2]) for item in districts)
+    maximum_height = max(float(item["_localBounds"][3]) for item in districts)
+    maximum_rows = max(len(items) for items in by_depth.values())
+    centers: dict[str, tuple[float, float]] = {}
+    for depth, level in sorted(by_depth.items()):
+        for index, district in enumerate(level):
+            centers[district["id"]] = (
+                depth * (maximum_width + WORLD_DISTRICT_GAP),
+                (index - (len(level) - 1) / 2) * (maximum_height + WORLD_DISTRICT_GAP),
+            )
+    if maximum_rows == 1:
+        return centers
+    return centers
+
+
+def clean_rect(value: list[float]) -> list[int | float]:
+    return [clean_number(round(item, 6)) for item in value]
+
+
+def target_anchor_id(target: str, district_ids: set[str], module_ids: set[str]) -> str:
+    if target == "world":
+        return "world"
+    if target in district_ids:
+        return f"district-{target}"
+    if target in module_ids:
+        return f"module-{target}"
+    if target.startswith("district-") and target.removeprefix("district-") in district_ids:
+        return target
+    if target.startswith("module-") and target.removeprefix("module-") in module_ids:
+        return target
+    raise BriefError(f"navigation target {target!r} is not world, a district, or a module")
+
+
+def compile_navigation(
+    raw: Any,
+    *,
+    view_box: list[int],
+    world_bounds: list[float],
+    districts: list[dict[str, Any]],
+    modules: list[dict[str, Any]],
+    focus_ids: set[str],
+    root_district_id: str,
+) -> dict[str, Any]:
+    if not isinstance(raw, dict):
+        raise BriefError("world.navigation must be an object")
+    district_ids = {item["id"] for item in districts}
+    module_ids = {item["id"] for item in modules}
+    viewport = list(WORLD_NAVIGATION_VIEWPORT)
+    aspect = float(viewport[2]) / float(viewport[3])
+    anchors: list[dict[str, Any]] = [
+        {
+            "id": "world",
+            "label": "Whole atlas",
+            "kind": "world",
+            "targetId": "world",
+            "parentId": None,
+            "depth": 0,
+            "zoomTier": "world",
+            "moduleIds": [module["id"] for module in modules],
+            "requiredForTour": True,
+            "viewBox": clean_rect(world_bounds),
+        }
+    ]
+    district_cameras = {
+        district["id"]: navigation.fit_aspect(
+            [float(item) for item in district["bounds"]],
+            aspect,
+            padding=140.0,
+            bounds=world_bounds,
+        )
+        for district in districts
+    }
+    peer_groups: dict[int, list[dict[str, Any]]] = {}
+    for district in districts:
+        if district["id"] != root_district_id:
+            peer_groups.setdefault(len(district["moduleIds"]), []).append(district)
+    for peer_districts in peer_groups.values():
+        peer_width = max(float(district_cameras[item["id"]][2]) for item in peer_districts)
+        peer_height = peer_width / aspect
+        for district in peer_districts:
+            camera = district_cameras[district["id"]]
+            center_x = float(camera[0]) + float(camera[2]) / 2
+            center_y = float(camera[1]) + float(camera[3]) / 2
+            district_cameras[district["id"]] = navigation.fit_aspect(
+                [center_x - peer_width / 2, center_y - peer_height / 2, peer_width, peer_height],
+                aspect,
+                bounds=world_bounds,
+            )
+    for district in districts:
+        camera = district_cameras[district["id"]]
+        anchors.append(
+            {
+                "id": f"district-{district['id']}",
+                "label": district["label"],
+                "kind": "district",
+                "targetId": district["id"],
+                "parentId": "world",
+                "depth": 1,
+                "zoomTier": "district",
+                "moduleIds": list(district["moduleIds"]),
+                "requiredForTour": bool(district.get("requiredForTour", True)),
+                "viewBox": clean_rect(camera),
+            }
+        )
+    district_by_module = {
+        module_id: district["id"]
+        for district in districts
+        for module_id in district["moduleIds"]
+    }
+    for module in modules:
+        camera = navigation.fit_aspect(
+            [float(item) for item in module["region"]],
+            aspect,
+            padding=90.0,
+            bounds=world_bounds,
+        )
+        anchors.append(
+            {
+                "id": f"module-{module['id']}",
+                "label": module["navigationLabel"],
+                "kind": "module",
+                "targetId": module["id"],
+                "parentId": f"district-{district_by_module[module['id']]}",
+                "depth": 2,
+                "zoomTier": "module",
+                "moduleIds": [module["id"]],
+                "requiredForTour": False,
+                "viewBox": clean_rect(camera),
+            }
+        )
+    initial_target = require_id(raw.get("initialTarget", "world"), "world.navigation.initialTarget")
+    initial_anchor = target_anchor_id(initial_target, district_ids, module_ids)
+    route_raw = raw.get("route")
+    if not isinstance(route_raw, dict):
+        raise BriefError("world.navigation.route must be an object")
+    stops_raw = route_raw.get("stops")
+    if not isinstance(stops_raw, list) or not stops_raw:
+        raise BriefError("world.navigation.route.stops must be a non-empty array")
+    stops: list[dict[str, Any]] = []
+    seen_stops: set[str] = set()
+    cursor = 0.0
+    previous_anchor = initial_anchor
+    for index, stop in enumerate(stops_raw):
+        if not isinstance(stop, dict):
+            raise BriefError(f"world.navigation.route.stops[{index}] must be an object")
+        stop_id = require_id(stop.get("id"), f"world navigation stop {index} id")
+        if stop_id in seen_stops:
+            raise BriefError(f"duplicate world navigation stop id: {stop_id}")
+        seen_stops.add(stop_id)
+        target = require_id(stop.get("target"), f"world navigation stop {stop_id!r} target")
+        anchor_id = target_anchor_id(target, district_ids, module_ids)
+        travel = finite_number(
+            stop.get("travelMs", 0 if index == 0 else 1600),
+            f"world navigation stop {stop_id!r} travelMs",
+        )
+        hold = finite_number(
+            stop.get("holdMs", 2400),
+            f"world navigation stop {stop_id!r} holdMs",
+        )
+        if travel < 0 or hold <= 0:
+            raise BriefError(
+                f"world navigation stop {stop_id!r} needs nonnegative travelMs and positive holdMs"
+            )
+        focus_id = stop.get("focusId")
+        if focus_id is not None and focus_id not in focus_ids:
+            raise BriefError(
+                f"world navigation stop {stop_id!r} references unknown focus group {focus_id!r}"
+            )
+        arrival = cursor + travel
+        end = arrival + hold
+        compiled_stop: dict[str, Any] = {
+            "id": stop_id,
+            "label": require_text(
+                stop.get("label", stop_id.replace("-", " ").title()),
+                f"world navigation stop {stop_id!r} label",
+            ),
+            "fromAnchorId": previous_anchor,
+            "anchorId": anchor_id,
+            "startMs": clean_number(cursor),
+            "arrivalMs": clean_number(arrival),
+            "endMs": clean_number(end),
+            "travelMs": clean_number(travel),
+            "holdMs": clean_number(hold),
+        }
+        if focus_id is not None:
+            compiled_stop["focusId"] = focus_id
+        if stop.get("handoff") is not None:
+            compiled_stop["handoff"] = require_text(
+                stop.get("handoff"), f"world navigation stop {stop_id!r} handoff"
+            )
+        stops.append(compiled_stop)
+        cursor = end
+        previous_anchor = anchor_id
+    loop = route_raw.get("loop", False)
+    autoplay = route_raw.get("autoplay", False)
+    if not isinstance(loop, bool) or not isinstance(autoplay, bool):
+        raise BriefError("world.navigation.route loop and autoplay must be booleans")
+    if loop and stops[-1]["anchorId"] != initial_anchor:
+        raise BriefError(
+            "a looping world navigation route must end at its initial anchor for a clean seam"
+        )
+    return {
+        "version": 1,
+        "viewport": viewport,
+        "worldBounds": clean_rect(world_bounds),
+        "initialAnchorId": initial_anchor,
+        "anchors": anchors,
+        "semanticZoom": [
+            {"id": "world", "maximumWidthRatio": 1.0},
+            {"id": "district", "maximumWidthRatio": 0.42},
+            {"id": "module", "maximumWidthRatio": 0.16},
+        ],
+        "route": {
+            "durationMs": clean_number(cursor),
+            "loop": loop,
+            "autoplay": autoplay,
+            "stops": stops,
+        },
+    }
+
+
+def compile_world_layout(
+    raw: Any,
+    modules: list[dict[str, Any]],
+    focus_ids: set[str],
+) -> tuple[
+    dict[str, Any],
+    dict[str, Any],
+    list[int],
+    list[int | float],
+    list[str],
+]:
+    if not isinstance(raw, dict):
+        raise BriefError("world must be an object")
+    mode = raw.get("mode", "navigable-atlas")
+    if mode != "navigable-atlas":
+        raise BriefError("world.mode must equal navigable-atlas")
+    armature = require_id(raw.get("armature"), "world.armature")
+    if armature not in {"radial-skill-tree", "genealogical-tree", "constellation-map"}:
+        raise BriefError(
+            "world.armature must be radial-skill-tree, genealogical-tree, or constellation-map"
+        )
+    districts_raw = raw.get("districts")
+    if not isinstance(districts_raw, list) or not 4 <= len(districts_raw) <= 12:
+        raise BriefError("world.districts must contain 4 to 12 districts")
+    module_by_id = {module["id"]: module for module in modules}
+    module_ids = set(module_by_id)
+    districts: list[dict[str, Any]] = []
+    district_ids: set[str] = set()
+    covered_modules: set[str] = set()
+    for index, item in enumerate(districts_raw):
+        if not isinstance(item, dict):
+            raise BriefError(f"world.districts[{index}] must be an object")
+        district_id = require_id(item.get("id"), f"world.districts[{index}].id")
+        if district_id in district_ids or district_id in module_ids:
+            raise BriefError(
+                f"world district id {district_id!r} must be unique and distinct from module ids"
+            )
+        district_ids.add(district_id)
+        assigned = item.get("moduleIds")
+        if (
+            not isinstance(assigned, list)
+            or not assigned
+            or any(not isinstance(module_id, str) for module_id in assigned)
+            or len(assigned) != len(set(assigned))
+        ):
+            raise BriefError(
+                f"world district {district_id!r} moduleIds must be a non-empty unique list"
+            )
+        unknown = set(assigned) - module_ids
+        repeated = set(assigned) & covered_modules
+        if unknown or repeated:
+            raise BriefError(
+                f"world district {district_id!r} module assignment is invalid; "
+                f"unknown={sorted(unknown)}, repeated={sorted(repeated)}"
+            )
+        covered_modules.update(assigned)
+        local_armature = item.get("localArmature", "radial")
+        local_modules = [module_by_id[module_id] for module_id in assigned]
+        local_regions, local_bounds = local_district_regions(local_modules, str(local_armature))
+        districts.append(
+            {
+                "id": district_id,
+                "label": require_text(item.get("label"), f"world district {district_id!r} label"),
+                "summary": require_text(
+                    item.get("summary"), f"world district {district_id!r} summary"
+                ),
+                "role": require_text(
+                    item.get("role", "Linked local diagrams"),
+                    f"world district {district_id!r} role",
+                ),
+                "localArmature": local_armature,
+                "moduleIds": list(assigned),
+                "requiredForTour": bool(item.get("requiredForTour", True)),
+                "accent": WORLD_DISTRICT_PALETTE[index % len(WORLD_DISTRICT_PALETTE)],
+                "_localRegions": local_regions,
+                "_localBounds": local_bounds,
+            }
+        )
+    if covered_modules != module_ids:
+        raise BriefError(
+            "world districts must assign every module exactly once; "
+            f"unassigned module(s): {sorted(module_ids - covered_modules)}"
+        )
+    root_id = require_id(raw.get("rootDistrictId"), "world.rootDistrictId")
+    if root_id not in district_ids:
+        raise BriefError("world.rootDistrictId must name a declared district")
+    links = compile_world_links(raw.get("links"), district_ids)
+    depths = district_depths(root_id, district_ids, links)
+    assign_world_tree_roles(root_id, district_ids, links)
+    if armature == "genealogical-tree":
+        centers = genealogical_district_centers(districts, depths)
+    else:
+        centers = radial_district_centers(districts, depths, links)
+    projected_regions: list[list[float]] = []
+    for district in districts:
+        center_x, center_y = centers[district["id"]]
+        local_bounds = district["_localBounds"]
+        offset_x = center_x - (local_bounds[0] + local_bounds[2] / 2)
+        offset_y = center_y - (local_bounds[1] + local_bounds[3] / 2)
+        district_regions: list[list[float]] = []
+        for module_id in district["moduleIds"]:
+            local = district["_localRegions"][module_id]
+            projected = [local[0] + offset_x, local[1] + offset_y, local[2], local[3]]
+            module = module_by_id[module_id]
+            module.pop("_heavy", None)
+            module["region"] = projected
+            module["districtId"] = district["id"]
+            module["districtAccent"] = district["accent"]
+            district_regions.append(projected)
+            projected_regions.append(projected)
+        district["bounds"] = bounds_for_regions(district_regions, padding=210.0)
+        district["center"] = [center_x, center_y]
+    content_bounds = bounds_for_regions(
+        [district["bounds"] for district in districts], padding=float(WORLD_MARGIN)
+    )
+    world_width = content_bounds[2]
+    world_height = content_bounds[3]
+    if world_width / world_height < WORLD_ASPECT_RATIO:
+        world_width = world_height * WORLD_ASPECT_RATIO
+    else:
+        world_height = world_width / WORLD_ASPECT_RATIO
+    shift_x = -content_bounds[0] + (world_width - content_bounds[2]) / 2
+    shift_y = -content_bounds[1] + (world_height - content_bounds[3]) / 2
+    for module in modules:
+        module["region"][0] += shift_x
+        module["region"][1] += shift_y
+        module["region"] = clean_rect(module["region"])
+    for district in districts:
+        district["bounds"][0] += shift_x
+        district["bounds"][1] += shift_y
+        district["center"][0] += shift_x
+        district["center"][1] += shift_y
+        district["bounds"] = clean_rect(district["bounds"])
+        district["center"] = [clean_number(round(item, 6)) for item in district["center"]]
+        district.pop("_localRegions", None)
+        district.pop("_localBounds", None)
+    world_height_units = max(9, math.ceil(world_height / 9.0) * 9)
+    world_width_units = world_height_units * 16 // 9
+    world_bounds = [0.0, 0.0, float(world_width_units), float(world_height_units)]
+    view_box = [0, 0, 1920, 1080]
+    navigation_plan = compile_navigation(
+        raw.get("navigation"),
+        view_box=view_box,
+        world_bounds=world_bounds,
+        districts=districts,
+        modules=modules,
+        focus_ids=focus_ids,
+        root_district_id=root_id,
+    )
+    world_plan = {
+        "mode": mode,
+        "armature": armature,
+        "rootDistrictId": root_id,
+        "bounds": clean_rect(world_bounds),
+        "districts": districts,
+        "links": links,
+    }
+    reading_order = [
+        module_id
+        for district in districts
+        for module_id in district["moduleIds"]
+    ]
+    navigation.validate_navigation(
+        {
+            "navigation": navigation_plan,
+            "modules": modules,
+        }
+    )
+    return world_plan, navigation_plan, view_box, clean_rect(world_bounds), reading_order
 
 
 def compile_focus_groups(raw: Any, module_ids: set[str]) -> list[dict[str, Any]]:
@@ -1586,6 +2434,8 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
     focus_groups = compile_focus_groups(brief.get("focusGroups", []), raw_module_ids)
     relationships = compile_relationships(brief.get("relationships", []), raw_module_ids)
     focus_ids = {item["id"] for item in focus_groups}
+    world_raw = brief.get("world")
+    world_mode = world_raw is not None
     modules = compile_module_shells(
         module_raw,
         set(value_ids),
@@ -1596,6 +2446,8 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
         computations,
         cues,
         value_states,
+        minimum_modules=WORLD_MIN_MODULES if world_mode else MIN_MODULES,
+        maximum_modules=WORLD_MAX_MODULES if world_mode else MAX_MODULES,
     )
     directly_visible_values = {
         binding["value"]
@@ -1615,10 +2467,21 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
             if module["id"] in focus["moduleIds"]
         ]
         module["focusGroups"] = expected_focus
-    megacanvas = len(modules) > 12
-    view_box = MEGACANVAS_VIEW_BOX if megacanvas else VIEW_BOX
-    safe_area = MEGACANVAS_SAFE_AREA if megacanvas else SAFE_AREA
-    reading_order = assign_layout(modules, safe_area)
+    world_plan: dict[str, Any] | None = None
+    navigation_plan: dict[str, Any] | None = None
+    if world_mode:
+        (
+            world_plan,
+            navigation_plan,
+            view_box,
+            safe_area,
+            reading_order,
+        ) = compile_world_layout(world_raw, modules, focus_ids)
+    else:
+        megacanvas = len(modules) > 12
+        view_box = MEGACANVAS_VIEW_BOX if megacanvas else VIEW_BOX
+        safe_area = MEGACANVAS_SAFE_AREA if megacanvas else SAFE_AREA
+        reading_order = assign_layout(modules, safe_area)
     source_domains = {
         item["id"]: (float(item["domain"][0]), float(item["domain"][1]))
         for item in concepts
@@ -1673,7 +2536,9 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
         "locale": require_text(brief.get("locale", "en-US"), "locale"),
         "viewBox": view_box,
         "initialScenario": initial_scenario,
-        "syncModes": ["semantic", "state", "focus"] + (["time"] if timeline else []),
+        "syncModes": ["semantic", "state", "focus"]
+        + (["time"] if timeline else [])
+        + (["navigation"] if navigation_plan else []),
         "identity": identity,
         "identityAliases": aliases,
         "layout": {
@@ -1690,6 +2555,9 @@ def compile_brief(brief: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str,
         "focusGroups": focus_groups,
         "timeline": timeline,
     }
+    if world_plan is not None and navigation_plan is not None:
+        plan["world"] = world_plan
+        plan["navigation"] = navigation_plan
     if "subtitle" in brief:
         plan["subtitle"] = require_text(brief["subtitle"], "subtitle")
     try:
