@@ -134,6 +134,7 @@ def render_colorsets(
     jobs: int,
     render_chunk_size: int,
     overall_timeout: int,
+    disable_browser_sandbox: bool = False,
 ) -> tuple[list[dict[str, object]], list[str], dict[str, object]]:
     def remaining_timeout(limit: int) -> int | None:
         remaining = deadline - time.monotonic()
@@ -176,12 +177,20 @@ def render_colorsets(
                     "fence": fence,
                 }
             )
+    puppeteer_config_path: Path | None = None
+    if disable_browser_sandbox:
+        puppeteer_config_path = workspace / "puppeteer-ci.json"
+        puppeteer_config_path.write_text(
+            json.dumps({"args": ["--no-sandbox", "--disable-setuid-sandbox"]}) + "\n",
+            encoding="utf-8",
+        )
+
     # Render in small batches from the outset. A single Mermaid CLI process can
     # exhaust a constrained CI runner after a healthy prefix and leave later
     # Chromium launches unhealthy. Starting each batch in a fresh process avoids
     # that cumulative pressure while still requiring 96 fresh valid artifacts.
     def command_for(batch_input: Path, batch_output: Path) -> list[str]:
-        return [
+        command = [
             npx,
             "-y",
             package,
@@ -193,6 +202,9 @@ def render_colorsets(
             "--jobs",
             str(jobs),
         ]
+        if puppeteer_config_path is not None:
+            command.extend(["--puppeteerConfigFile", str(puppeteer_config_path)])
+        return command
 
     render_count = next_global_index - 1
     expected_names = {f"rendered-{index}.svg" for index in range(1, render_count + 1)}
@@ -392,6 +404,7 @@ def render_colorsets(
         "exitCode": final_exit_code,
         "jobs": jobs,
         "renderMode": "chunk-first",
+        "browserSandboxMode": "disabled" if disable_browser_sandbox else "default",
         "attemptCount": len(attempts),
         "attempts": attempts,
         "renderChunkSize": render_chunk_size,
@@ -440,6 +453,11 @@ def main() -> int:
         default=1,
         help="Parallel Mermaid renders per batch. Keep 1 for deterministic CI coverage.",
     )
+    parser.add_argument(
+        "--disable-browser-sandbox",
+        action="store_true",
+        help="Disable Chromium's sandbox only in a trusted, isolated CI runner.",
+    )
     parser.add_argument("--report", type=Path, help="Write the validation report as JSON.")
     args = parser.parse_args()
     if args.timeout < 1:
@@ -486,6 +504,7 @@ def main() -> int:
             args.jobs,
             args.render_chunk_size,
             args.overall_timeout,
+            args.disable_browser_sandbox,
         )
         findings.extend(render_findings)
 
@@ -500,6 +519,7 @@ def main() -> int:
         "jobs": args.jobs,
         "renderMode": "chunk-first",
         "renderChunkSize": args.render_chunk_size,
+        "browserSandboxMode": "disabled" if args.disable_browser_sandbox else "default",
         "overallTimeout": args.overall_timeout,
         "batch": batch,
         "renderCount": sum(int(result["diagramCount"]) for result in colorset_results),
@@ -526,6 +546,7 @@ def main() -> int:
             sampled_attempts.append(failed_attempts[-1])
         failure_summary = {
             "renderMode": batch["renderMode"],
+            "browserSandboxMode": batch["browserSandboxMode"],
             "attemptCount": batch["attemptCount"],
             "timedOutAttemptCount": batch["timedOutAttemptCount"],
             "nonzeroAttemptCount": batch["nonzeroAttemptCount"],

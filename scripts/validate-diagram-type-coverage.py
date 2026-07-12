@@ -368,6 +368,11 @@ def validate_plantuml_taxonomy() -> tuple[dict[str, Any], list[str]]:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Validate exact Mermaid and PlantUML diagram-type coverage.")
     parser.add_argument("--report", type=Path, help="Write the combined coverage report as JSON.")
+    parser.add_argument(
+        "--disable-mermaid-browser-sandbox",
+        action="store_true",
+        help="Disable Chromium's sandbox only for trusted Mermaid CI fixtures.",
+    )
     args = parser.parse_args()
 
     findings: list[str] = []
@@ -377,6 +382,13 @@ def main() -> int:
     findings.extend(taxonomy_findings)
 
     checks: list[dict[str, Any]] = []
+    mermaid_render_command = [
+        sys.executable,
+        str(MERMAID_STYLER / "scripts" / "validate_mermaid_render_coverage.py"),
+    ]
+    if args.disable_mermaid_browser_sandbox:
+        mermaid_render_command.append("--disable-browser-sandbox")
+
     commands = [
         (
             "Mermaid colorset exact coverage",
@@ -388,7 +400,7 @@ def main() -> int:
         ),
         (
             "Mermaid fresh batch render coverage",
-            [sys.executable, str(MERMAID_STYLER / "scripts" / "validate_mermaid_render_coverage.py")],
+            mermaid_render_command,
         ),
         (
             "PlantUML fixture, render-report, and gallery coverage",

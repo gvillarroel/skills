@@ -70,6 +70,8 @@ Fresh-render every renderable declaration for both colorsets in isolated small b
 uv run --script .agents/skills/mermaid-colorset-styler/scripts/validate_mermaid_render_coverage.py --report projects/mermaid-colorset-styler-review/artifacts/render-coverage.json
 ```
 
+Keep Chromium's sandbox enabled by default. Use `--disable-browser-sandbox` only inside a trusted, isolated CI runner whose AppArmor policy prevents Chromium from starting, and only with repository-owned Mermaid fixtures. The Pages workflow opts into this mode explicitly through `validate-diagram-type-coverage.py --disable-mermaid-browser-sandbox`.
+
 Run the deterministic chunk/retry tests when maintaining the fresh-render gate:
 
 ```powershell
