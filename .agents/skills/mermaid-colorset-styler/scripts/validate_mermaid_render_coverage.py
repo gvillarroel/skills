@@ -513,14 +513,40 @@ def main() -> int:
         report_path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(report, indent=2, sort_keys=True))
     if findings:
+        failed_attempts = [
+            attempt
+            for attempt in batch["attempts"]
+            if attempt.get("timedOut")
+            or attempt.get("exitCode") not in (None, 0)
+            or int(attempt.get("approvedSvgCount", 0))
+            != len(attempt.get("globalIndices", []))
+        ]
+        sampled_attempts = failed_attempts[:1]
+        if len(failed_attempts) > 1:
+            sampled_attempts.append(failed_attempts[-1])
         failure_summary = {
             "renderMode": batch["renderMode"],
             "attemptCount": batch["attemptCount"],
             "timedOutAttemptCount": batch["timedOutAttemptCount"],
             "nonzeroAttemptCount": batch["nonzeroAttemptCount"],
             "unresolvedCount": batch["unresolvedCount"],
-            "unresolved": batch["unresolved"][:16],
-            "findings": batch["findings"][:8],
+            "unresolved": batch["unresolved"][:4],
+            "findings": batch["findings"][:2],
+            "sampledFailedAttempts": [
+                {
+                    "chunk": attempt.get("chunk"),
+                    "attempt": attempt.get("attempt"),
+                    "exitCode": attempt.get("exitCode"),
+                    "timedOut": attempt.get("timedOut"),
+                    "globalIndices": attempt.get("globalIndices"),
+                    "renderedSvgCount": attempt.get("renderedSvgCount"),
+                    "approvedSvgCount": attempt.get("approvedSvgCount"),
+                    "unexpectedSvgNames": attempt.get("unexpectedSvgNames"),
+                    "stdout": attempt.get("stdout"),
+                    "stderr": attempt.get("stderr"),
+                }
+                for attempt in sampled_attempts
+            ],
         }
         print(
             "Mermaid render coverage failure summary: "
