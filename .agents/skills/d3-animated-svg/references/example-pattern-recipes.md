@@ -48,6 +48,8 @@ Pattern ID: `d3-agent-loop-overlay`.
 Use when the source material is an image or screenshot that should remain inspectable while D3 overlays reveal selected regions.
 
 - Keep the raster asset local, small, and committed only if it is an intentional source asset, not a rendered output.
+- During normal skill use, read `assets/reference/agent-loop-reference.png`; in an isolated workspace use `skills/d3-animated-svg/assets/reference/agent-loop-reference.png`. Do not read the acceptance fixture for this source image.
+- Embed the image or copy it beside the generated artifact before delivery. The mirrored image under `assets/examples/d3-animated-svg/assets/` exists only for gallery maintenance and publication.
 - Put the image in a clipped SVG group. Keep the image visible; overlays should explain selected regions, not erase the source.
 - Use translucent covers, sweep lines, outlines, or masks that partially pass over meaningful regions.
 - Scope clip IDs and overlay classes to the pattern ID.

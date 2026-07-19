@@ -9,6 +9,10 @@
 ## Reuse Contract
 
 - Use this file as the pattern source in isolated skill-only workspaces; read the gallery fixture only when maintaining that fixture.
+- For the canonical standalone artifact, run `scripts/build_agent_loop_overlay.py <exact-output.html>` instead of recreating the image embedding and cover geometry by hand.
+- Use the bundled source image at `assets/reference/agent-loop-reference.png`; in an isolated workspace its exact path is `skills/d3-animated-svg/assets/reference/agent-loop-reference.png`.
+- For a standalone deliverable, embed that PNG as a data URL or copy it beside the output and use an output-relative `href`. Do not leave the delivered artifact dependent on the skill path.
+- Only for gallery maintenance, keep the fixture mirror at `assets/examples/d3-animated-svg/assets/agent-loop-reference.png` byte-identical to the runtime asset. Do not read the fixture mirror during normal skill use.
 - Keep data deterministic and inline small datasets.
 - Preserve the pattern's core geometry and semantic color roles before changing labels or domain data.
 - Use SVG-native animation for standalone output; do not leave runtime D3 or CDN dependencies in a self-contained deliverable.
@@ -21,6 +25,7 @@ The excerpt below is the compact renderer source for this pattern. If it referen
 ```js
 function renderAgentLoopPartialCovers() {
     const svg = prepareSvg("agent-loop-overlay", "Agent loop partial covers", "An image-backed SVG with animated partial covers over selected regions of the agent loop diagram.");
+    const referenceImageHref = "skills/d3-animated-svg/assets/reference/agent-loop-reference.png";
     const image = { x: 16, y: 34, w: 528, h: 333 };
     const source = { w: 980, h: 618 };
     const sx = image.w / source.w;
@@ -60,7 +65,7 @@ function renderAgentLoopPartialCovers() {
       .attr("rx", 8);
 
     svg.append("image")
-      .attr("href", "assets/agent-loop-reference.png")
+      .attr("href", referenceImageHref)
       .attr("x", image.x)
       .attr("y", image.y)
       .attr("width", image.w)

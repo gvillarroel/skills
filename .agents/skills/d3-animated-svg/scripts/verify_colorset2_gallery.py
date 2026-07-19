@@ -21,18 +21,15 @@ from playwright.sync_api import Error as PlaywrightError
 from playwright.sync_api import sync_playwright
 
 
-REPO_ROOT = Path(__file__).resolve().parents[4]
+SKILL_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = (
-    REPO_ROOT
-    / ".agents"
-    / "skills"
-    / "d3-animated-svg"
+    SKILL_ROOT
     / "assets"
     / "examples"
     / "d3-animated-svg-colorset2"
     / "index.html"
 )
-COLORSET2_YAML = REPO_ROOT / "design" / "colorset2.yaml"
+DEFAULT_PALETTE = SKILL_ROOT / "assets" / "palettes" / "colorset2.yaml"
 
 
 def parse_viewport(value: str) -> tuple[int, int]:
@@ -54,13 +51,13 @@ def source_to_url(source: str) -> str:
     return path.as_uri()
 
 
-def load_allowed_colors() -> list[str]:
-    if not COLORSET2_YAML.exists():
-        raise SystemExit(f"colorset2 palette not found: {COLORSET2_YAML}")
-    content = COLORSET2_YAML.read_text(encoding="utf-8")
+def load_allowed_colors(path: Path) -> list[str]:
+    if not path.exists():
+        raise SystemExit(f"colorset2 palette not found: {path}")
+    content = path.read_text(encoding="utf-8")
     colors = sorted({match.lower() for match in re.findall(r'value:\s*"(#[0-9a-fA-F]{6})"', content)})
     if not colors:
-        raise SystemExit(f"No hex colors found in {COLORSET2_YAML}")
+        raise SystemExit(f"No hex colors found in {path}")
     return colors
 
 
@@ -229,6 +226,7 @@ VERIFY_JS = r"""
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", nargs="?", default=str(DEFAULT_SOURCE), help="Colorset2 gallery HTML file, file URL, or HTTP URL")
+    parser.add_argument("--palette-file", type=Path, default=DEFAULT_PALETTE)
     parser.add_argument("--expected", type=int, default=224)
     parser.add_argument("--wait-ms", type=int, default=1800)
     parser.add_argument("--timeout-ms", type=int, default=60000)
@@ -240,7 +238,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    allowed_colors = load_allowed_colors()
+    allowed_colors = load_allowed_colors(args.palette_file)
     url = source_to_url(args.input)
     width, height = args.viewport
     console_errors: list[str] = []

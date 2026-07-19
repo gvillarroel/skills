@@ -1,6 +1,6 @@
 <svg class="anime-svg-asset anime-svg-drawable-circuit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="drawable-circuit-title drawable-circuit-desc">
   <title id="drawable-circuit-title">Drawable circuit asset</title>
-  <desc id="drawable-circuit-desc">A circuit-style SVG with independent path and node hooks for Anime.js draw-on and stagger animations.</desc>
+  <desc id="drawable-circuit-desc" data-allow-hidden>A circuit-style SVG with independent path and node hooks for Anime.js draw-on and stagger animations.</desc>
   <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
   <g class="circuit-panels" data-anime-group="panels">
     <rect class="circuit-panel" x="78" y="96" width="164" height="112" rx="18" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>

@@ -45,6 +45,21 @@ DISALLOWED_SKILL_DOCS = {
 SKILL_NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 EXAMPLE_ID_RE = SKILL_NAME_RE
 MAX_SKILL_NAME_LENGTH = 64
+INDEPENDENCE_TEXT_SUFFIXES = {".md", ".py", ".ts", ".js", ".mjs", ".cjs", ".json", ".yaml", ".yml", ".toml"}
+INDEPENDENCE_IGNORED_DIRS = {"__pycache__", "node_modules"}
+DIRECT_SKILL_PATH_RE = re.compile(
+    r"(?i)(?P<prefix>\.agents[\\/]skills|(?<![.a-z0-9_-])skills)[\\/](?P<skill>[a-z0-9]+(?:-[a-z0-9]+)*)"
+)
+SCRIPT_ROOT_ESCAPE_RE = re.compile(
+    r"Path\(\s*__file__\s*\)\.resolve\(\)\.parents\[(?P<level>\d+)\]"
+)
+MARKDOWN_LINK_RE = re.compile(r"!?\[[^\]]*\]\((?P<target><[^>]+>|[^)\s]+)(?:\s+['\"][^'\"]*['\"])?\)")
+LOCAL_RESOURCE_PATH_RE = re.compile(
+    r"`(?P<target>(?:assets|references|scripts)/[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*/?)`"
+)
+FIXTURE_EXTERNAL_SCRIPT_RE = re.compile(
+    r"(?i)(?:\.\.[\\/])*(?:projects)[\\/][^\"'\s]+[\\/]scripts[\\/]"
+)
 
 
 @dataclass
@@ -131,7 +146,8 @@ def validate_skill_dir(skill_dir: Path, root: Path, findings: list[Finding]) -> 
             add(findings, child, "auxiliary documentation is not allowed inside skill directories")
 
     validate_agents_metadata(skill_dir, root, findings)
-    validate_script_tree(skill_dir / "scripts", root, findings)
+    validate_script_tree(skill_dir / "scripts", root, findings, dependency_root=skill_dir)
+    validate_skill_independence(skill_dir, root, findings)
 
 
 def validate_agents_metadata(skill_dir: Path, root: Path, findings: list[Finding]) -> None:
@@ -182,13 +198,13 @@ def has_nearby_package_json(script: Path, root: Path) -> bool:
     return False
 
 
-def validate_typescript_script(script: Path, root: Path, findings: list[Finding]) -> None:
+def validate_typescript_script(script: Path, dependency_root: Path, findings: list[Finding]) -> None:
     content = script.read_text(encoding="utf-8")
     lines = content.splitlines()
     first_line = lines[0] if lines else ""
     has_runner = first_line.startswith("#!") and ("tsx" in first_line or "ts-node" in first_line)
     has_run_comment = re.search(r"^//\s*Run:\s*", content, re.MULTILINE) is not None
-    has_dependencies = has_nearby_package_json(script, root) or re.search(r"^//\s*Dependencies:\s*", content, re.MULTILINE) is not None
+    has_dependencies = has_nearby_package_json(script, dependency_root) or re.search(r"^//\s*Dependencies:\s*", content, re.MULTILINE) is not None
 
     if not has_runner and not has_run_comment:
         add(findings, script, "TypeScript scripts must include a tsx/ts-node shebang or // Run: header")
@@ -196,7 +212,13 @@ def validate_typescript_script(script: Path, root: Path, findings: list[Finding]
         add(findings, script, "TypeScript script dependencies must be declared in package.json or a // Dependencies: header")
 
 
-def validate_script_tree(script_dir: Path, root: Path, findings: list[Finding]) -> None:
+def validate_script_tree(
+    script_dir: Path,
+    root: Path,
+    findings: list[Finding],
+    *,
+    dependency_root: Path | None = None,
+) -> None:
     if not script_dir.exists():
         return
 
@@ -208,9 +230,106 @@ def validate_script_tree(script_dir: Path, root: Path, findings: list[Finding]) 
         if script.suffix == ".py":
             validate_python_script(script, findings)
         elif script.suffix == ".ts":
-            validate_typescript_script(script, root, findings)
+            validate_typescript_script(script, dependency_root or root, findings)
         else:
             add(findings, script, "scripts must be TypeScript (.ts) or uv Python (.py)")
+
+
+def is_runtime_independence_file(path: Path, skill_dir: Path) -> bool:
+    relative_path = path.relative_to(skill_dir)
+    if any(part in INDEPENDENCE_IGNORED_DIRS for part in relative_path.parts):
+        return False
+    if relative_path.parts[:2] == ("assets", "examples"):
+        return False
+    return path.is_file() and path.suffix.lower() in INDEPENDENCE_TEXT_SUFFIXES
+
+
+def markdown_target_path(target: str) -> str | None:
+    value = target.strip().strip("<>")
+    if not value or value.startswith("#") or re.match(r"^[a-z][a-z0-9+.-]*:", value, flags=re.IGNORECASE):
+        return None
+    value = value.split("#", 1)[0].split("?", 1)[0]
+    if not value or "<" in value or ">" in value:
+        return None
+    return value
+
+
+def validate_markdown_links(path: Path, skill_dir: Path, content: str, findings: list[Finding]) -> None:
+    prose = re.sub(r"^\s*```.*?^\s*```\s*$", "", content, flags=re.MULTILINE | re.DOTALL)
+    for match in MARKDOWN_LINK_RE.finditer(prose):
+        target = markdown_target_path(match.group("target"))
+        if target is None:
+            continue
+        candidate = (path.parent / target.replace("\\", "/")).resolve()
+        try:
+            candidate.relative_to(skill_dir.resolve())
+        except ValueError:
+            add(findings, path, f"Markdown link must stay inside the skill bundle: {target}")
+            continue
+        if not candidate.exists():
+            add(findings, path, f"Markdown link target does not exist inside the skill bundle: {target}")
+
+
+def validate_local_resource_paths(path: Path, skill_dir: Path, content: str, findings: list[Finding]) -> None:
+    for match in LOCAL_RESOURCE_PATH_RE.finditer(content):
+        target = match.group("target")
+        candidate = skill_dir / target
+        if not candidate.exists():
+            add(findings, path, f"referenced local resource does not exist inside the skill bundle: {target}")
+
+
+def validate_skill_independence(skill_dir: Path, root: Path, findings: list[Finding]) -> None:
+    skill_name = skill_dir.name
+    known_skill_names = {path.name for path in skill_dir.parent.iterdir() if path.is_dir()}
+    for path in sorted(skill_dir.rglob("*")):
+        if path.is_symlink():
+            try:
+                path.resolve().relative_to(skill_dir.resolve())
+            except ValueError:
+                add(findings, path, "symbolic link must resolve inside its owning skill bundle")
+                continue
+        relative_path = path.relative_to(skill_dir)
+        if path.is_file() and path.name == "package.json" and relative_path.parts[:2] == ("assets", "examples"):
+            try:
+                fixture_manifest = path.read_text(encoding="utf-8")
+            except UnicodeDecodeError:
+                fixture_manifest = ""
+            if FIXTURE_EXTERNAL_SCRIPT_RE.search(fixture_manifest):
+                add(
+                    findings,
+                    path,
+                    "acceptance fixture package scripts must not execute project-level scripts outside the skill bundle",
+                )
+        if not is_runtime_independence_file(path, skill_dir):
+            continue
+        try:
+            content = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+
+        for match in DIRECT_SKILL_PATH_RE.finditer(content):
+            target_skill = match.group("skill")
+            source_tree_path = match.group("prefix").lower().startswith(".agents")
+            if target_skill != skill_name and (source_tree_path or target_skill in known_skill_names):
+                add(
+                    findings,
+                    path,
+                    f"runtime payload must not use a direct path to sibling skill '{target_skill}'",
+                )
+
+        if skill_dir / "scripts" in path.parents:
+            for match in SCRIPT_ROOT_ESCAPE_RE.finditer(content):
+                level = int(match.group("level"))
+                if level >= 2:
+                    add(
+                        findings,
+                        path,
+                        "skill script derives a path above its own bundle from __file__; use the skill root, cwd, or an explicit input",
+                    )
+
+        if path.suffix.lower() == ".md":
+            validate_markdown_links(path, skill_dir, content, findings)
+            validate_local_resource_paths(path, skill_dir, content, findings)
 
 
 def load_build_pages_module(root: Path):

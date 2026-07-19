@@ -51,7 +51,7 @@ Animate a pre-rendered SVG:
 ```powershell
 $StaticSvg = "chart.static.svg"
 $AnimatedSvg = "chart.animated.svg"
-uv run --script .agents/skills/echarts-animated-svg/scripts/animate_echarts_svg.py $StaticSvg --chart-type line -o $AnimatedSvg
+uv run --script skills/echarts-animated-svg/scripts/animate_echarts_svg.py $StaticSvg --chart-type line -o $AnimatedSvg
 if (!(Test-Path -LiteralPath $StaticSvg) -or !(Test-Path -LiteralPath $AnimatedSvg)) { throw "Missing requested ECharts SVG output path." }
 ```
 
@@ -68,15 +68,15 @@ if (!(Test-Path -LiteralPath $StaticSvg) -or !(Test-Path -LiteralPath $AnimatedS
 Tune timing:
 
 ```powershell
-uv run --script .agents/skills/echarts-animated-svg/scripts/animate_echarts_svg.py chart.static.svg --chart-type sankey -o chart.animated.svg --duration-ms 900 --stagger-ms 45
+uv run --script skills/echarts-animated-svg/scripts/animate_echarts_svg.py chart.static.svg --chart-type sankey -o chart.animated.svg --duration-ms 900 --stagger-ms 45
 ```
 
-Build and verify the bundled gallery fixture:
+For repository acceptance-fixture maintenance only, set `<skill-root>` to the full `echarts-animated-svg` source directory and build the bundled gallery below. It requires `assets/examples/`, which is intentionally excluded from the normal runtime payload.
 
 ```powershell
-npm install --prefix .agents/skills/echarts-animated-svg/assets/examples/echarts-animated-svg
-npm run build --prefix .agents/skills/echarts-animated-svg/assets/examples/echarts-animated-svg
-npm run verify --prefix .agents/skills/echarts-animated-svg/assets/examples/echarts-animated-svg
+npm install --prefix <skill-root>/assets/examples/echarts-animated-svg
+npm run build --prefix <skill-root>/assets/examples/echarts-animated-svg
+npm run verify --prefix <skill-root>/assets/examples/echarts-animated-svg
 ```
 
 ## Validation

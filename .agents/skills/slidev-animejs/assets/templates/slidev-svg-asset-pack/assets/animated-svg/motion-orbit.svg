@@ -1,6 +1,6 @@
 <svg class="anime-svg-asset anime-svg-motion-orbit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="motion-orbit-title motion-orbit-desc">
   <title id="motion-orbit-title">Motion orbit asset</title>
-  <desc id="motion-orbit-desc">A path-following SVG with an orbit route, traveler group, pulses, and rings for Anime.js motion path animation.</desc>
+  <desc id="motion-orbit-desc" data-allow-hidden>A path-following SVG with an orbit route, traveler group, pulses, and rings for Anime.js motion path animation.</desc>
   <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
   <g class="orbit-field" transform="translate(480 270)">
     <ellipse class="orbit-ring ring-blue" cx="0" cy="0" rx="318" ry="120" fill="none" stroke="#cdf3ff" stroke-width="5"/>

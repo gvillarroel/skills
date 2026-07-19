@@ -21,6 +21,8 @@ package.json
 
 Slidev auto-loads Vue components from `components/`. Keep shared animation metadata in `lib/` so the same taxonomy can drive slides, references, and browser verification.
 
+When the task needs the generated SVG pack, copy the contents of `assets/templates/slidev-svg-asset-pack/` from the loaded skill into the deck root. The template already matches the project shape above; its source SVGs live under `assets/templates/slidev-svg-asset-pack/assets/animated-svg/` and it does not depend on the acceptance fixture.
+
 ## Dependencies
 
 Install Anime.js next to the Slidev project:

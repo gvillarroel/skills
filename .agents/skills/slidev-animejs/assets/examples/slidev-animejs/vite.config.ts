@@ -4,4 +4,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ['@fix-webm-duration/fix'],
   },
+  resolve: {
+    dedupe: ['animejs', 'vue'],
+  },
 })

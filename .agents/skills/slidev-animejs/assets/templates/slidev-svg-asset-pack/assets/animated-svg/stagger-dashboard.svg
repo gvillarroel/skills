@@ -1,6 +1,6 @@
 <svg class="anime-svg-asset anime-svg-stagger-dashboard" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="stagger-dashboard-title stagger-dashboard-desc">
   <title id="stagger-dashboard-title">Stagger dashboard asset</title>
-  <desc id="stagger-dashboard-desc">A dashboard SVG with repeated cards, bars, and dots designed for Anime.js stagger sequences.</desc>
+  <desc id="stagger-dashboard-desc" data-allow-hidden>A dashboard SVG with repeated cards, bars, and dots designed for Anime.js stagger sequences.</desc>
   <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
   <g class="dashboard-shell">
     <rect x="92" y="72" width="776" height="396" rx="28" fill="#ffffff" stroke="#cfcfcf" stroke-width="4"/>

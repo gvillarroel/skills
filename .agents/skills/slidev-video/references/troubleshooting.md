@@ -22,7 +22,7 @@ npm install --save-dev playwright
 If the configured browser channel fails, retry with the bundled browser:
 
 ```powershell
-npx tsx /path/to/.agents/skills/slidev-video/scripts/record-slidev-video.ts --deck /path/to/deck --channel none
+npx tsx <skill-root>/scripts/record-slidev-video.ts --deck /path/to/deck --channel none
 ```
 
 ## Blank Or Partial Slides

@@ -22,6 +22,7 @@ Run the gates in order. Stop and repair the earliest failing layer before interp
 
 ```powershell
 uv run --script scripts/validate-skills.py
+uv run --script scripts/test-skill-independence.py
 uv run --script scripts/check-repo-payload.py
 uv run --script scripts/test-pi-eval-harness.py
 ```

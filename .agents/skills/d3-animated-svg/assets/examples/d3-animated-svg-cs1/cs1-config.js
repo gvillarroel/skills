@@ -25,7 +25,7 @@
     colorSet: "colorset1",
     paletteName: "basic-red-neutral-style",
     styleName: "metro-minimal-tonal-motion",
-    paletteSource: "design/colorset1.yml",
+    paletteSource: "assets/palettes/colorset1.yml",
     styleSource: "design/style.md",
     basePatternPrefix: "d3-",
     versionPatternSuffix: "cs1",

@@ -36,7 +36,7 @@ description: Improve and run end-to-end video production workflows built from HT
    - Treat named visual anchors from `design/videos.md` as render contracts. If a module names motifs such as `probability_bars`, `passN_grid`, `test_runner`, context-window shifts, judge/rubric cards, `agent_loop_ring`, `context_window_box`, fixed workflow versus adaptive agent lanes, environment changes, Model + Tools + State + Loop modules, `shield_gate`, Input/Output/Action gates, prompt bubble versus hard gate, Model Armor filter lanes, `risk_score`, human approval, protected `.env`/destructive/deploy actions, safety-versus-friction balance, policy matrix cues, `comparison_grid`, runtime stack, engine-to-dashboard morph, same model in different harness shells, three-column harness cards, `credit_meter`, feature grid versus use-case matrix, highlighted selection path, `event_timeline`, lifecycle event pulse, Hook `shield_gate` overlay, GitHub hook badges, Claude event cloud, OpenCode event list, PreToolUse command block, log-filter path, token-savings counter, speed-vs-cost slider, lifecycle-controls stamp, Atlassian Rovo, Gemini App, GitHub Copilot, Claude Desktop or Claude Code, workflow gravity, home-base workspace blocks, radar chart, use-case selector, guardrails, permissions, or observability wraps, those motifs must appear as visible low-text geometry in the final MP4 and contact sheet, not merely as preserved source strings in JSON.
    - For a multi-video source such as `design/videos.md`, run `scripts/plan_metro_video_series.py` before rendering the series. Do not accept one global `metroPatternMix` for the whole document as proof of design fidelity. Require the report to pass with per-module `helperPattern`, `primaryPattern`, `reusableD3PatternIds`, enough helper/primary diversity, and no long repeated-helper run, so distinct topics do not collapse into the same generic scaffold.
    - When a whole series is being regenerated after design-rejection feedback, generate prompt contracts with `scripts/build_metro_series_contract_prompts.py` before running `pi`. The generated prompts must include the wrapper command, render-state manifest, full Metro audit suite, encoded-MP4 composition audit, and semantic-density audit as exact required outputs. Use those generated prompts instead of hand-written per-video prompts so the batch cannot silently skip `metro-video-composition-audit.json` or the masonry/megacanvas repair contract.
-11. Read `references/scene-pattern-recipes.md` when reusing an approved scene pattern, extracting a shared visual component, or preserving a good example from `.agents/skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos`.
+11. Read `references/scene-pattern-recipes.md` when reusing an approved scene pattern, extracting a shared visual component, or preserving a good example from the current project. Treat the compact recipes as the runtime source of truth; inspect `assets/examples/` only when maintaining the acceptance fixture.
 12. Before coding each beat, run a visual decision pass: identify the mechanism, the chosen shape metaphor, the visible data states, the elements omitted because narration carries them, and the existing D3/gallery/component example to adapt after the metaphor is chosen.
 13. Define layout regions before drawing. Use explicit rows, columns, quadrants, shared baselines, and shared scale targets so related objects line up and keep consistent visual weight across a beat.
 14. Split long videos into modules as soon as a block is approved or substantial: one orchestration entry point, shared data/palette/layout helpers, and separate files for beats or subscenes. Do not let one renderer file accumulate the full video.
@@ -90,37 +90,37 @@ For SkillOpt or SkillOpt-Sleep maintenance, use reviewed task files or exact `pi
 When changing standalone scaffold patterns, wrapper label extraction, source-preservation fields, or derived render-state defaults, also run:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/check_standalone_pattern_contracts.py --output projects/<project-id>/artifacts/reviews/pattern-contract-check.json
+uv run --script skills/html-d3-anime-video-workflow/scripts/check_standalone_pattern_contracts.py --output projects/<project-id>/artifacts/reviews/pattern-contract-check.json
 ```
 
 When changing Metro tonal style handling, also run:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/audit_metro_tonal_style.py --html projects/<project-id>/src/index.html --source-package projects/<project-id>/source/source-package.json --output projects/<project-id>/artifacts/reviews/metro-style-audit.json
+uv run --script skills/html-d3-anime-video-workflow/scripts/audit_metro_tonal_style.py --html projects/<project-id>/src/index.html --source-package projects/<project-id>/source/source-package.json --output projects/<project-id>/artifacts/reviews/metro-style-audit.json
 ```
 
 When changing Metro composition or zero-padding handling, also run:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/run_metro_audit_suite.py --html projects/<project-id>/src/index.html --source-package projects/<project-id>/source/source-package.json --style-output projects/<project-id>/artifacts/reviews/metro-style-audit.json --composition-output projects/<project-id>/artifacts/reviews/metro-composition-audit.json --rendered-frame-output projects/<project-id>/artifacts/reviews/metro-rendered-frame-audit.json --mute-test-output projects/<project-id>/artifacts/reviews/metro-mute-test-audit.json --output projects/<project-id>/artifacts/reviews/metro-audit-suite.json
+uv run --script skills/html-d3-anime-video-workflow/scripts/run_metro_audit_suite.py --html projects/<project-id>/src/index.html --source-package projects/<project-id>/source/source-package.json --style-output projects/<project-id>/artifacts/reviews/metro-style-audit.json --composition-output projects/<project-id>/artifacts/reviews/metro-composition-audit.json --rendered-frame-output projects/<project-id>/artifacts/reviews/metro-rendered-frame-audit.json --mute-test-output projects/<project-id>/artifacts/reviews/metro-mute-test-audit.json --output projects/<project-id>/artifacts/reviews/metro-audit-suite.json
 ```
 
 When changing Metro audit behavior, also run:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/validate_metro_audit_fixtures.py --output projects/<project-id>/artifacts/reviews/metro-audit-fixtures.json
+uv run --script skills/html-d3-anime-video-workflow/scripts/validate_metro_audit_fixtures.py --output projects/<project-id>/artifacts/reviews/metro-audit-fixtures.json
 ```
 
 When changing Metro design-contract references, storyboard prompts, or plan-output requirements, also run:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/validate_metro_design_contract.py --plan projects/<project-id>/production-plan.md --contract projects/<project-id>/design-contract.json --output projects/<project-id>/metro-design-validation.json --require-text "<literal source anchor>"
+uv run --script skills/html-d3-anime-video-workflow/scripts/validate_metro_design_contract.py --plan projects/<project-id>/production-plan.md --contract projects/<project-id>/design-contract.json --output projects/<project-id>/metro-design-validation.json --require-text "<literal source anchor>"
 ```
 
 When changing Metro semantic-density expectations, wrapper report summaries, state checks, contact-sheet metrics, encoded-MP4 composition metrics, camera-state requirements, or rendered adherence to `metroPatternMix`, also run:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/audit_metro_semantic_density.py --wrapper-report projects/<project-id>/artifacts/reviews/prompt-contract-build.json --state-manifest projects/<project-id>/artifacts/reviews/render-state-check.json --contact-sheet-manifest projects/<project-id>/artifacts/video-renders/draft/review/<output-id>-contact-sheet.json --metro-audit-suite projects/<project-id>/artifacts/reviews/metro-audit-suite.json --metro-mute-test-audit projects/<project-id>/artifacts/reviews/metro-mute-test-audit.json --metro-video-composition-audit projects/<project-id>/artifacts/reviews/metro-video-composition-audit.json --output projects/<project-id>/artifacts/reviews/metro-semantic-density-audit.json
+uv run --script skills/html-d3-anime-video-workflow/scripts/audit_metro_semantic_density.py --wrapper-report projects/<project-id>/artifacts/reviews/prompt-contract-build.json --state-manifest projects/<project-id>/artifacts/reviews/render-state-check.json --contact-sheet-manifest projects/<project-id>/artifacts/video-renders/draft/review/<output-id>-contact-sheet.json --metro-audit-suite projects/<project-id>/artifacts/reviews/metro-audit-suite.json --metro-mute-test-audit projects/<project-id>/artifacts/reviews/metro-mute-test-audit.json --metro-video-composition-audit projects/<project-id>/artifacts/reviews/metro-video-composition-audit.json --output projects/<project-id>/artifacts/reviews/metro-semantic-density-audit.json
 ```
 
 This semantic-density command requires the wrapper's `metroPatternMix` by default. It should fail when `selected.helperPattern` does not match the rendered `visualPattern`, when the pattern mix lacks enough zones, semantic motion systems, camera events, transition contracts, transition type variety, a modular transition type, a required Masonry pattern plus transition contract, anti-pattern risks, zero-padding contract, 0-radius contract, or grayscale hierarchy, when `source-package.json` lacks enough `visualZones` or `semanticBindings`, when source anchors are not bound to zones, mechanisms, rendered `data-source-anchor-json`/`data-source-anchor` markers, and render-state `activeSourceAnchors`, when render-state evidence lacks `visibleZoneCount` or changing `activeZoneId`, when ordered `statesSample` evidence lacks enough adjacent active-zone changes, camera-coupled zone changes, camera travel, or zoom depth, when rendered DOM evidence lacks enough zone markers to support the mix, when rendered text ends with three dots or a single-character ellipsis, when the MP4 composition audit shows slide-like grid/quadrant/progression weakness, or when the mute-test audit shows that hiding text removes the visual progression. Use JSON source-anchor attributes as the primary rendered evidence because Markdown tables and code snippets can contain `|` characters that break delimiter-based attributes. For required Masonry, it must also fail unless the rendered-frame audit proves real `data-masonry-module` geometry with enough modules, varied module sizes, enough occupied visual area, nondecreasing `masonryModuleCounts` with at least three distinct counts, enough count growth, low text-element/text-character counts, measured zero-padding coverage, and zero `paddedModuleInteriorViolationCount`. Treat `visibleZoneCount` as a presence/count signal and `activeZoneId` as the changing traversal signal.
@@ -128,13 +128,13 @@ This semantic-density command requires the wrapper's `metroPatternMix` by defaul
 When changing Metro pattern-mix selection, design-following gates, or low-text visual-density routing, also run:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/plan_metro_pattern_mix.py --prompt-file design/videos.md --output projects/<project-id>/artifacts/reviews/metro-pattern-mix.json --require-anchor "LLM" --require-anchor "MCP" --require-anchor "agent"
+uv run --script skills/html-d3-anime-video-workflow/scripts/plan_metro_pattern_mix.py --prompt-file design/videos.md --output projects/<project-id>/artifacts/reviews/metro-pattern-mix.json --require-anchor "LLM" --require-anchor "MCP" --require-anchor "agent"
 ```
 
 When changing multi-video Metro planning or generating from a document with several `###` video modules, also run:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/plan_metro_video_series.py --prompt-file design/videos.md --output projects/<project-id>/artifacts/reviews/metro-video-series-plan.json
+uv run --script skills/html-d3-anime-video-workflow/scripts/plan_metro_video_series.py --prompt-file design/videos.md --output projects/<project-id>/artifacts/reviews/metro-video-series-plan.json
 ```
 
 Inspect `moduleCount`, `metrics.helperDiversity`, `metrics.primaryPatternDiversity`, `metrics.reusableD3PatternCount`, `metrics.maxSameHelperRun`, `helperSequence`, and each module's selected patterns before accepting a batch. A series report that fails for low diversity means the batch is still too generic even when individual Metro audits pass.
@@ -142,7 +142,7 @@ Inspect `moduleCount`, `metrics.helperDiversity`, `metrics.primaryPatternDiversi
 When changing design-repair series contracts, prompt generation, exact-output video batches, or Google Drive delivery prompts for a Metro series, also run:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_metro_series_contract_prompts.py --source design/videos.md --output-dir projects/<project-id>/artifacts/prompts --project-root projects/<project-id>/videos --duration 6 --fps 6 --width 1280 --height 720 --limit 2
+uv run --script skills/html-d3-anime-video-workflow/scripts/build_metro_series_contract_prompts.py --source design/videos.md --output-dir projects/<project-id>/artifacts/prompts --project-root projects/<project-id>/videos --duration 6 --fps 6 --width 1280 --height 720 --limit 2
 ```
 
 Inspect the generated manifest and prompt files. Each prompt should require `prompt-contract-build.json`, `render-state-check.json`, `metro-audit-suite.json`, `metro-video-composition-audit.json`, and `metro-semantic-density-audit.json` so a design-repair batch is validated from source package through encoded MP4.
@@ -150,8 +150,8 @@ Inspect the generated manifest and prompt files. Each prompt should require `pro
 When the source design or palette files change, refresh the self-contained runtime profile first:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/compile_metro_design_profile.py --style design/style.md --colorset1 design/colorset1.yml --colorset2 design/colorset2.yaml --output .agents/skills/html-d3-anime-video-workflow/references/metro-design-profile.json
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/validate_metro_design_profile.py --style design/style.md --colorset1 design/colorset1.yml --colorset2 design/colorset2.yaml --output projects/<project-id>/artifacts/reviews/metro-design-profile-validation.json
+uv run --script <skill-root>/scripts/compile_metro_design_profile.py --style design/style.md --colorset1 design/colorset1.yml --colorset2 design/colorset2.yaml --output <skill-root>/references/metro-design-profile.json
+uv run --script skills/html-d3-anime-video-workflow/scripts/validate_metro_design_profile.py --style design/style.md --colorset1 design/colorset1.yml --colorset2 design/colorset2.yaml --output projects/<project-id>/artifacts/reviews/metro-design-profile-validation.json
 ```
 
 The profile must pass and its digest must appear in generated series prompts and tonal-audit reports. `--allow-colorset2` is valid only with a non-empty `--colorset2-reason`; it still permits only colors declared by the compiled colorset2 source.
@@ -159,7 +159,7 @@ The profile must pass and its digest must appear in generated series prompts and
 When changing standalone scaffold geometry, gray hierarchy, zero-padding normalization, or selected-pattern rendering, also run the no-video cross-pattern smoke:
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/validate_metro_pattern_smoke.py --output projects/<project-id>/artifacts/reviews/metro-pattern-smoke.json --workdir projects/<project-id>/artifacts/reviews/metro-pattern-smoke-work --no-install-browser --timeout-seconds 180
+uv run --script skills/html-d3-anime-video-workflow/scripts/validate_metro_pattern_smoke.py --output projects/<project-id>/artifacts/reviews/metro-pattern-smoke.json --workdir projects/<project-id>/artifacts/reviews/metro-pattern-smoke-work --no-install-browser --timeout-seconds 180
 ```
 
 For design-rejection, low-text, or Masonry changes, add `--masonry-layout` to this smoke command. Inspect the report's top-level `aggregateMetrics`: `maxRenderedInternalPaddingPx`, total padding/inset violation counts, `minMedianGrayLevelCount`, `minFinalGrayLevelCount`, `patternsWithWeakGrayHierarchy`, `minMaxMasonryModuleCount`, `minMaxMasonrySizeCount`, `minMasonryModuleCountDistinct`, `maxMasonryTextElementCount`, and `patternsWithWeakMasonry` should all support the no-padding, grayscale-hierarchy, modular-composition, and low-text claims. For product-choice modules such as AI alternatives, also inspect `metro-rendered-frame-audit.json` for `maxRedRectAreaRatio`; broad red rectangles are a design failure even when alignment, padding, and text metrics pass.

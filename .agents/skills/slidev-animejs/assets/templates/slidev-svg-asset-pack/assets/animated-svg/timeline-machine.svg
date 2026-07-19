@@ -1,6 +1,6 @@
 <svg class="anime-svg-asset anime-svg-timeline-machine" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="timeline-machine-title timeline-machine-desc">
   <title id="timeline-machine-title">Timeline machine asset</title>
-  <desc id="timeline-machine-desc">A machine-themed SVG with cable paths, gears, a conveyor block, and signals for Anime.js timeline sequencing.</desc>
+  <desc id="timeline-machine-desc" data-allow-hidden>A machine-themed SVG with cable paths, gears, a conveyor block, and signals for Anime.js timeline sequencing.</desc>
   <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
   <g class="machine-rails" fill="none" stroke-linecap="round">
     <path class="machine-cable machine-cable-main" d="M126 178 C246 116 342 126 420 204 S596 318 800 184" stroke="#007298" stroke-width="12"/>

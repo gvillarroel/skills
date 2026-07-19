@@ -59,7 +59,7 @@ uv run --script scripts/validate-skills.py
 When changing JSON output behavior, also validate at least one representative plan with:
 
 ```powershell
-uv run --script .agents/skills/scene-transition-director/scripts/validate_transition_plan.py --plan <plan> --expect-transitions <count> --expect-persistent-name "<literal name>"
+uv run --script skills/scene-transition-director/scripts/validate_transition_plan.py --plan <plan> --expect-transitions <count> --expect-persistent-name "<literal name>"
 ```
 
 For isolated forward tests, prefer the checked prompt files that name exact output paths and validator arguments:

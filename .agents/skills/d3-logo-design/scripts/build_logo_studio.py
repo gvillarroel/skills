@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import sys
 from pathlib import Path
@@ -54,6 +55,11 @@ def build_parser(manifest: dict[str, Any], palettes: dict[str, Any]) -> argparse
 
     parser = argparse.ArgumentParser(description="Build an adjustable D3/SVG logo studio.")
     parser.add_argument("--output", type=Path, required=True, help="Exact output HTML path")
+    parser.add_argument(
+        "--texture-gallery-url",
+        default="d3-logo-textures.html",
+        help="Optional URL for the texture-atlas link; defaults to a sibling HTML file",
+    )
     parser.add_argument("--brand", default=first["brand"], help="Brand text, up to 32 characters")
     parser.add_argument("--tagline", default=first["tagline"], help="Optional tagline, up to 56 characters")
     parser.add_argument("--colorset", choices=colorset_ids, default=first["colorset"])
@@ -127,6 +133,7 @@ def main() -> int:
         "__D3_LOGO_RUNTIME_JS__": d3_runtime.replace("</script", "<\\/script"),
         "__D3_LOGO_ENGINE_JS__": engine.replace("</script", "<\\/script"),
         "__D3_LOGO_COLORSET__": args.colorset,
+        "__D3_LOGO_TEXTURE_GALLERY_URL__": html.escape(args.texture_gallery_url, quote=True),
     }
     output_html = template
     for marker, value in replacements.items():
@@ -154,6 +161,7 @@ def main() -> int:
         "initialExampleId": args.pattern.removeprefix("d3-logo-"),
         "initialTexture": args.texture,
         "initialColorset": args.colorset,
+        "textureGalleryUrl": args.texture_gallery_url,
         "bytes": output.stat().st_size,
     }
     print(json.dumps(result, indent=2))

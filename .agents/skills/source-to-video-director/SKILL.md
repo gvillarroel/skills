@@ -48,5 +48,5 @@ uv run --script scripts/validate-skills.py
 For generated contracts, run the bundled validator when practical:
 
 ```powershell
-uv run --script .agents/skills/source-to-video-director/scripts/validate_video_contract.py --source-package source-package.json --storyboard storyboard.md --shot-contract shot-contract.json --forbid gsap
+uv run --script skills/source-to-video-director/scripts/validate_video_contract.py --source-package source-package.json --storyboard storyboard.md --shot-contract shot-contract.json --forbid gsap
 ```

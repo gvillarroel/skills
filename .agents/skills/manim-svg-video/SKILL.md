@@ -26,19 +26,19 @@ description: Compose many SVG or animated-SVG assets into one configurable Manim
 Generate a manifest and Manim scene without rendering:
 
 ```powershell
-uv run --script .agents/skills/manim-svg-video/scripts/compose_svg_video.py --discover-root . --out projects/<project-id>/artifacts/videos/repo-animated-svg-10min --duration 600 --dry-run
+uv run --script skills/manim-svg-video/scripts/compose_svg_video.py --discover-root . --out projects/<project-id>/artifacts/videos/repo-animated-svg-10min --duration 600 --dry-run
 ```
 
 Render a 10-minute MP4 from repository animated SVGs:
 
 ```powershell
-uv run --script .agents/skills/manim-svg-video/scripts/compose_svg_video.py --discover-root . --out projects/<project-id>/artifacts/videos/repo-animated-svg-10min-replace-white --duration 600 --layout replace --active-slots 4 --import-mode svg --render --quality l --fps 5 --resolution 854,480
+uv run --script skills/manim-svg-video/scripts/compose_svg_video.py --discover-root . --out projects/<project-id>/artifacts/videos/repo-animated-svg-10min-replace-white --duration 600 --layout replace --active-slots 4 --import-mode svg --render --quality l --fps 5 --resolution 854,480
 ```
 
 Render a faster smoke test with only a few assets:
 
 ```powershell
-uv run --script .agents/skills/manim-svg-video/scripts/compose_svg_video.py --discover-root .agents/skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/animated --out projects/<project-id>/artifacts/videos/smoke --duration 12 --max-assets 6 --render --quality l --fps 5 --resolution 640,360
+uv run --script skills/manim-svg-video/scripts/compose_svg_video.py --discover-root path/to/animated-svgs --out projects/<project-id>/artifacts/videos/smoke --duration 12 --max-assets 6 --render --quality l --fps 5 --resolution 640,360
 ```
 
 ## Operating Notes

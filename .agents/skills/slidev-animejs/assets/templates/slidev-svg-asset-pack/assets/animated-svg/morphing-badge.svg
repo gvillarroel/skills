@@ -1,6 +1,6 @@
 <svg class="anime-svg-asset anime-svg-morphing-badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="morphing-badge-title morphing-badge-desc">
   <title id="morphing-badge-title">Morphing badge asset</title>
-  <desc id="morphing-badge-desc">A central path with hidden target paths that can be morphed with Anime.js svg.morphTo.</desc>
+  <desc id="morphing-badge-desc" data-allow-hidden>A central path with hidden target paths that can be morphed with Anime.js svg.morphTo.</desc>
   <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
   <g class="badge-rays" data-anime-group="rays" stroke-linecap="round">
     <path class="badge-spark" d="M480 76 L480 120" stroke="#007298" stroke-width="10"/>

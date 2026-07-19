@@ -1,6 +1,6 @@
 # Scene Pattern Recipes
 
-Use this reference when preserving an approved HTML+D3+Anime.js scene pattern from `.agents/skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos` or adapting one into a new concept video.
+Use this reference when preserving an approved HTML+D3+Anime.js scene pattern from the current project or adapting one into a new concept video. The contracts below are self-contained runtime recipes; do not read the acceptance gallery during normal work.
 
 ## Approved Pattern Capture
 
@@ -14,7 +14,7 @@ When a scene works, store the transferable part in the skill before starting the
 
 ## Shared Model Box
 
-Source helper: `.agents/skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos/scenes/llm-model-box.js`.
+Runtime recipe: implement one shared model-box helper with stable geometry, semantic layers, and deterministic animation inputs.
 
 Use when a model, grader, evaluator, or processor should appear as the same visual object across beats.
 
@@ -26,7 +26,7 @@ Use when a model, grader, evaluator, or processor should appear as the same visu
 
 ## Beat Module Split
 
-Source pattern: `.agents/skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos/scenes/evaluation.js` plus one file per beat and `evaluation-shared.js`.
+Runtime recipe: keep one dispatcher, one shared module, and one deterministic module per beat.
 
 Use when a concept needs different visual metaphors across hook, definition, mechanism, handoff, and implication beats.
 
@@ -38,7 +38,7 @@ Use when a concept needs different visual metaphors across hook, definition, mec
 
 ## Generic Visual Renderer Gate
 
-Source pattern: `.agents/skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos/scenes/generic-visuals.js`.
+Runtime recipe: keep generic visual primitives in one shared module and route to them only when their semantic mechanic matches.
 
 Use the generic renderer only when the new concept shares the same mechanic as the existing pattern.
 
@@ -75,7 +75,7 @@ Use when the video needs current pricing or cost comparison without making movin
 
 ## Evaluation Scene Pattern
 
-Source pattern: `.agents/skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos/scenes/evaluation-*.js`.
+Runtime recipe: implement evaluation beats as deterministic datasets, candidates, graders, and aggregate-result views that preserve object identity.
 
 Use when the concept is evaluation, grading, pass/fail, pass@k, or benchmark comparison.
 
@@ -86,7 +86,7 @@ Use when the concept is evaluation, grading, pass/fail, pass@k, or benchmark com
 
 ## Render Presets
 
-Source script: `projects/ai-concept-videos/scripts/render-videos.mjs`.
+Use the bundled `scripts/capture_html_video.py` renderer. Map the presets below to explicit fps, CRF, device-scale, encoder-preset, frame-retention, and review settings; keep the selected values in the project manifest.
 
 Use explicit presets instead of editing capture settings ad hoc:
 
@@ -96,7 +96,7 @@ Use explicit presets instead of editing capture settings ad hoc:
 - `fast`: near-final segment preview without slow encoding or contact sheets.
 - `final`: approved delivery render with review artifacts.
 
-Render only the changed time range with `--start` and `--duration` unless shared helpers changed across the full video.
+When the project renderer supports ranges, render only the changed time range unless shared helpers changed across the full video. The bundled capture script renders a complete deterministic duration; use a smaller temporary HTML contract for segment-only smoke tests.
 
 ## Validation Checklist
 

@@ -243,10 +243,12 @@ When using npm scripts with extra renderer flags in PowerShell, pass a double se
 npm run render:fast -- -- --concept 01-what-is-an-llm --start 36 --duration 30
 ```
 
+The bundled AI concept fixture keeps `render-videos.mjs` and `review-videos.mjs` in its own `scripts/` directory. Those runners resolve the fixture from their own location, so the same package scripts work in a repository checkout and in an isolated full-payload copy. They default generated output to the operating-system temporary directory, outside the skill bundle. Set `AI_CONCEPT_VIDEO_ARTIFACTS_ROOT` or pass an absolute external `--out`/`--root` path when artifacts should be retained. Before a long render, use `npm run render:check` and `npm run review:check`; both validate selection and resolved paths without launching Chromium, invoking ffmpeg, or writing files.
+
 Calling the renderer directly is also valid for segment work:
 
 ```powershell
-node projects/ai-concept-videos/scripts/render-videos.mjs --preset fast --concept 01-what-is-an-llm --start 36 --duration 30
+uv run --script skills/html-d3-anime-video-workflow/scripts/capture_html_video.py --html projects/<project-id>/src/index.html --output projects/<project-id>/artifacts/videos/segment.mp4 --video-id <video-id> --duration 30 --fps 30 --width 1280 --height 720 --device-scale-factor 2 --crf 16 --preset veryfast --manifest projects/<project-id>/artifacts/reviews/capture-manifest.json
 ```
 
 For separately rendered or separately authored segments, lock continuity at boundaries. Render both adjacent segments with raw frames kept, then compare the previous segment's last intended frame (`duration * fps - 1`) against the next segment's first frame by hash or pixel diff. Treat a mismatch as a visual bug unless the cut is intentionally visible.
@@ -376,7 +378,7 @@ projects/<project-id>/
     reviews/
 ```
 
-For the AI concept video project, the default renderer layout is:
+For retained AI concept video project output in a repository checkout, use this renderer layout by passing its `video-renders` directory with `--out` or setting `AI_CONCEPT_VIDEO_ARTIFACTS_ROOT` to the parent artifact directory:
 
 ```text
 projects/ai-concept-videos/artifacts/video-renders/

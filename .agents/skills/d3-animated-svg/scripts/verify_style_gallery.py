@@ -21,18 +21,15 @@ from playwright.sync_api import Error as PlaywrightError
 from playwright.sync_api import sync_playwright
 
 
-REPO_ROOT = Path(__file__).resolve().parents[4]
+SKILL_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = (
-    REPO_ROOT
-    / ".agents"
-    / "skills"
-    / "d3-animated-svg"
+    SKILL_ROOT
     / "assets"
     / "examples"
     / "d3-animated-svg-cs1"
     / "index.html"
 )
-DEFAULT_PALETTE = REPO_ROOT / "design" / "colorset1.yml"
+DEFAULT_PALETTE = SKILL_ROOT / "assets" / "palettes" / "colorset1.yml"
 
 
 def parse_viewport(value: str) -> tuple[int, int]:

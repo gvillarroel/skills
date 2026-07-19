@@ -66,7 +66,7 @@ When continuing this repository, start from [SKILLS.md](SKILLS.md), especially t
 - Use progressive disclosure: keep core workflow in `SKILL.md`, and move conditional or bulky detail into `references/`.
 - Use `scripts/` only for deterministic or repeated operations.
 - Use `assets/` only for files the skill needs as output resources or templates.
-- Keep each skill self-contained. Required runtime references, templates, scripts, vendor shims, and examples must live inside that skill directory, not in parent directories, sibling skills, or repository-level docs.
+- Keep each skill self-contained. Required runtime references, templates, scripts, vendor shims, and examples must live inside that skill directory, not in parent directories, sibling skills, or repository-level docs. Do not hard-code a path to a sibling skill; orchestrators may name optional companion skills but must keep their own fallback workflow and resources usable when those companions are absent.
 - Do not add auxiliary documentation inside a skill such as `README.md`, `INSTALLATION_GUIDE.md`, `QUICK_REFERENCE.md`, or `CHANGELOG.md` unless the user explicitly asks for it.
 - Keep `agents/openai.yaml`, when present, aligned with `SKILL.md`.
 
@@ -168,8 +168,9 @@ Before finishing changes to skills or repository rules, run:
 ```powershell
 uv run --script scripts/validate-pattern-ids.py
 uv run --script scripts/validate-skills.py
+uv run --script scripts/test-skill-independence.py
 ```
 
-The validator checks repo structure, backlog presence, skill metadata, skill naming, and script conventions. It cannot prove that prose is English, so review language manually before finalizing.
+The validator checks repo structure, backlog presence, skill metadata, skill naming, script conventions, in-bundle Markdown links, direct sibling-skill paths, and skill scripts that derive repository roots above their own bundle. It cannot prove that prose is English, so review language manually before finalizing.
 
 When updating one skill, also run any skill-specific tests or representative scripts that were changed.

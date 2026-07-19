@@ -17,7 +17,7 @@ description: Audit Slidev decks for visual quality regressions with automated Pl
 3. Run the bundled quality audit. Keep generated artifacts outside skill directories:
 
    ```powershell
-   npx tsx /path/to/.agents/skills/slidev-quality-audit/scripts/audit-slidev-quality.ts --deck /path/to/deck --out /path/to/projects/<project-id>/artifacts/reports/deck-quality
+   npx tsx <skill-root>/scripts/audit-slidev-quality.ts --deck /path/to/deck --out /path/to/projects/<project-id>/artifacts/reports/deck-quality
    ```
 
 4. Read `quality-report.md` first, then inspect `quality-report.json` for exact selectors, bounding boxes, and thresholds.
@@ -31,7 +31,7 @@ Use `scripts/audit-slidev-quality.ts` for the automated pass. It starts a local 
 Common options:
 
 ```powershell
-npx tsx /path/to/.agents/skills/slidev-quality-audit/scripts/audit-slidev-quality.ts `
+npx tsx <skill-root>/scripts/audit-slidev-quality.ts `
   --deck /path/to/deck `
   --out /path/to/projects/<project-id>/artifacts/reports/deck-quality `
   --range 1,4-8 `

@@ -13,7 +13,7 @@ When a task names a specific output file, treat that path as fixed. Before codin
 $OutputHtml = "scene.html"
 ```
 
-Replace the example value with the exact requested path. Do not substitute descriptive names such as `portable-3d-scene.html`, `three-scene.html`, or `index.html`, even if the task description says "portable" or "3D scene". When the task forbids network access or package installation, copy `assets/templates/self-contained-token-orbit.html` to the exact requested path and use only the bundled local vendor files under `assets/vendor/`; do not use CDN scripts, remote fonts, import maps that point to the network, `npm install`, or a copied vendor file in the workspace root.
+Replace the example value with the exact requested path. Do not substitute descriptive names such as `portable-3d-scene.html`, `three-scene.html`, or `index.html`, even if the task description says "portable" or "3D scene". When the task forbids network access or package installation, run `scripts/build_standalone_threejs.py` with the exact output path. The builder inlines the bundled Three.js module and core into the HTML, so the artifact remains portable from nested output directories without CDN scripts, remote fonts, package installation, or copied vendor files.
 
 ## Core Workflow
 
@@ -31,8 +31,9 @@ Replace the example value with the exact requested path. Do not substitute descr
 
 - `references/scene-patterns.md`: read when choosing scene types, structuring a Three.js gallery, or implementing cameras, lights, materials, particles, and resize-safe renderers.
 - `references/validation.md`: read when writing Playwright checks, canvas pixel probes, movement checks, replay checks, or screenshot verification for Three.js output.
-- `assets/templates/self-contained-token-orbit.html`: use for isolated runtime smoke tests or any task that needs a portable no-network HTML scene.
-- `assets/vendor/three.module.min.js` and `assets/vendor/three.core.min.js`: bundled local Three.js runtime for no-network HTML.
+- `scripts/build_standalone_threejs.py`: run for isolated runtime smoke tests or any task that needs a portable no-network HTML scene at an exact path.
+- `assets/templates/self-contained-token-orbit.html`: builder source template; do not copy it directly because its runtime marker must be expanded.
+- `assets/vendor/three.module.min.js` and `assets/vendor/three.core.min.js`: bundled inputs that the builder embeds into the standalone HTML.
 
 ## Common Commands
 
@@ -40,25 +41,27 @@ Create a no-network runtime scene with an exact output path:
 
 ```powershell
 $OutputHtml = "scene.html"
-Copy-Item skills/threejs-animated-3d/assets/templates/self-contained-token-orbit.html $OutputHtml
+uv run --script skills/threejs-animated-3d/scripts/build_standalone_threejs.py $OutputHtml
 if (!(Test-Path -LiteralPath $OutputHtml)) { throw "Missing requested Three.js HTML output path." }
 if (Test-Path -LiteralPath "portable-3d-scene.html") { throw "Wrong output filename: use the exact requested path." }
-if (Test-Path -LiteralPath "three.module.min.js") { throw "Do not copy vendor files to the workspace root." }
+if (Test-Path -LiteralPath "three.module.min.js") { throw "Standalone build must not copy vendor files to the workspace root." }
 Select-String -Path $OutputHtml -Pattern "https?://|//cdn|unpkg|jsdelivr|esm.sh" -Quiet | ForEach-Object { if ($_) { throw "External network reference found." } }
 ```
+
+For repository acceptance-fixture maintenance only, set `<skill-root>` to the full `threejs-animated-3d` source directory. The commands below require `assets/examples/`, which is intentionally excluded from the normal runtime payload.
 
 Install and verify the included Three.js gallery fixture:
 
 ```powershell
-npm install --prefix .agents/skills/threejs-animated-3d/assets/examples/threejs-animated-3d
-npm run build --prefix .agents/skills/threejs-animated-3d/assets/examples/threejs-animated-3d
-npm run verify --prefix .agents/skills/threejs-animated-3d/assets/examples/threejs-animated-3d
+npm install --prefix <skill-root>/assets/examples/threejs-animated-3d
+npm run build --prefix <skill-root>/assets/examples/threejs-animated-3d
+npm run verify --prefix <skill-root>/assets/examples/threejs-animated-3d
 ```
 
 Run the example page locally:
 
 ```powershell
-npm run dev --prefix .agents/skills/threejs-animated-3d/assets/examples/threejs-animated-3d
+npm run dev --prefix <skill-root>/assets/examples/threejs-animated-3d
 ```
 
 ## Complementarity Rules

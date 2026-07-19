@@ -6,13 +6,15 @@
   "scripts": {
     "serve": "python -m http.server 4188",
     "validate": "node scripts/validate-concepts.mjs",
-    "render": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs",
-    "render:quick": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset quick",
-    "render:draft": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset draft",
-    "render:motion": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset motion",
-    "render:fast": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset fast",
-    "render:final": "node ../../../../../../projects/ai-concept-videos/scripts/render-videos.mjs --preset final",
-    "review": "node ../../../../../../projects/ai-concept-videos/scripts/review-videos.mjs"
+    "render": "node scripts/render-videos.mjs",
+    "render:check": "node scripts/render-videos.mjs --dry-run",
+    "render:quick": "node scripts/render-videos.mjs --preset quick",
+    "render:draft": "node scripts/render-videos.mjs --preset draft",
+    "render:motion": "node scripts/render-videos.mjs --preset motion",
+    "render:fast": "node scripts/render-videos.mjs --preset fast",
+    "render:final": "node scripts/render-videos.mjs --preset final",
+    "review": "node scripts/review-videos.mjs",
+    "review:check": "node scripts/review-videos.mjs --dry-run"
   },
   "dependencies": {
     "animejs": "4.4.1",

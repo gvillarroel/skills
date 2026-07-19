@@ -6,7 +6,7 @@ Use this workflow when the user asks for a video, MP4, WebM, automatic recording
 
 Prefer a deterministic Playwright recorder over manual screen capture.
 
-1. Add a deck-local script such as `scripts/record-video.mjs`.
+1. Add a recorder script under the target deck's local scripts directory.
 2. Start the Slidev dev server from the script on an available local port.
 3. Open the deck with Playwright at a fixed viewport, usually `1280x720`.
 4. Record the browser context with `recordVideo`.

@@ -28,7 +28,7 @@ Use this index when choosing a motion pattern for a Slidev story. Load only the 
 
 ## Shared Example Fixture
 
-The validation deck in `.agents/skills/slidev-animejs/assets/examples/slidev-animejs/` uses one component, `components/AnimeFeatureSlide.vue`, and one metadata file, `lib/anime-demos.js`.
+For repository maintenance, the full-payload validation deck under `assets/examples/slidev-animejs/` uses one fixture-local component, `components/AnimeFeatureSlide.vue`, and one fixture-local metadata file, `lib/anime-demos.js`. Normal skill use must not read this deck; use the dedicated references and `assets/templates/slidev-svg-asset-pack/` instead.
 
 Keep the animation keys stable because `slides.md`, browser verification, and reference routing depend on them:
 

@@ -5,7 +5,7 @@
     colorSet: "colorset2",
     paletteName: "full-color-style",
     styleName: "metro-minimal-tonal-motion",
-    paletteSource: "design/colorset2.yaml",
+    paletteSource: "assets/palettes/colorset2.yaml",
     styleSource: "design/style.md",
     basePatternPrefix: "d3-",
     versionPatternSuffix: "cs2"

@@ -31,43 +31,45 @@ Keep insertion minimal:
 Style a directory in place with colorset1:
 
 ```powershell
-uv run --script .agents/skills/mermaid-colorset-styler/scripts/style_mermaid_directory.py path/to/diagrams --colorset colorset1 --write --report path/to/mermaid-colorset-report.json
+uv run --script skills/mermaid-colorset-styler/scripts/style_mermaid_directory.py path/to/diagrams --colorset colorset1 --write --report path/to/mermaid-colorset-report.json
 ```
 
 Style Markdown fences and `.mmd` files with colorset2:
 
 ```powershell
-uv run --script .agents/skills/mermaid-colorset-styler/scripts/style_mermaid_directory.py path/to/docs --colorset colorset2 --write --report path/to/mermaid-colorset-report.json
+uv run --script skills/mermaid-colorset-styler/scripts/style_mermaid_directory.py path/to/docs --colorset colorset2 --write --report path/to/mermaid-colorset-report.json
 ```
 
 Verify that a directory is already styled without modifying it:
 
 ```powershell
-uv run --script .agents/skills/mermaid-colorset-styler/scripts/style_mermaid_directory.py path/to/diagrams --colorset colorset1 --check --report path/to/mermaid-colorset-check.json
+uv run --script skills/mermaid-colorset-styler/scripts/style_mermaid_directory.py path/to/diagrams --colorset colorset1 --check --report path/to/mermaid-colorset-check.json
 ```
 
-Run the bundled coverage test when maintaining the skill:
+For the maintenance commands below, set `<skill-root>` to the full `mermaid-colorset-styler` source directory. Commands labeled acceptance-fixture-only require `assets/examples/`, which is intentionally excluded from the normal runtime payload.
+
+Run the bundled coverage test when maintaining the skill (acceptance-fixture-only):
 
 ```powershell
-uv run --script .agents/skills/mermaid-colorset-styler/scripts/test_style_mermaid_directory.py
+uv run --script <skill-root>/scripts/test_style_mermaid_directory.py
 ```
 
 Run the rendered visual smoke test when maintaining palette or theme behavior:
 
 ```powershell
-uv run --script .agents/skills/mermaid-colorset-styler/scripts/visual_smoke_mermaid_colorset.py --output projects/mermaid-colorset-styler-visual/artifacts/latest --report projects/mermaid-colorset-styler-visual/artifacts/latest/visual-report.json --png --render-retries 3
+uv run --script <skill-root>/scripts/visual_smoke_mermaid_colorset.py --output projects/mermaid-colorset-styler-visual/artifacts/latest --report projects/mermaid-colorset-styler-visual/artifacts/latest/visual-report.json --png --render-retries 3
 ```
 
-Review and approve every bundled Mermaid example when maintaining fixture coverage:
+Review and approve every bundled Mermaid example when maintaining fixture coverage (acceptance-fixture-only):
 
 ```powershell
-uv run --script .agents/skills/mermaid-colorset-styler/scripts/review_mermaid_examples.py --render --render-retries 8 --output projects/mermaid-colorset-styler-review/artifacts/render-approval --report projects/mermaid-colorset-styler-review/artifacts/render-approval/approval-report.json
+uv run --script <skill-root>/scripts/review_mermaid_examples.py --render --render-retries 8 --output projects/mermaid-colorset-styler-review/artifacts/render-approval --report projects/mermaid-colorset-styler-review/artifacts/render-approval/approval-report.json
 ```
 
-Fresh-render every renderable declaration for both colorsets in isolated small batches. The gate never reuses prior SVGs: it promotes valid partial output, retries only unresolved diagrams, and isolates stubborn items on the final attempt. It defaults to one render job and eight-item batches so constrained CI runners stay deterministic without accumulating browser pressure in one long-lived Chromium process:
+Fresh-render every renderable declaration for both colorsets in isolated small batches (acceptance-fixture-only). The gate never reuses prior SVGs: it promotes valid partial output, retries only unresolved diagrams, and isolates stubborn items on the final attempt. It defaults to one render job and eight-item batches so constrained CI runners stay deterministic without accumulating browser pressure in one long-lived Chromium process:
 
 ```powershell
-uv run --script .agents/skills/mermaid-colorset-styler/scripts/validate_mermaid_render_coverage.py --report projects/mermaid-colorset-styler-review/artifacts/render-coverage.json
+uv run --script <skill-root>/scripts/validate_mermaid_render_coverage.py --report projects/mermaid-colorset-styler-review/artifacts/render-coverage.json
 ```
 
 Keep Chromium's sandbox enabled by default. Use `--disable-browser-sandbox` only inside a trusted, isolated CI runner whose AppArmor policy prevents Chromium from starting, and only with repository-owned Mermaid fixtures. The Pages workflow opts into this mode explicitly through `validate-diagram-type-coverage.py --disable-mermaid-browser-sandbox`.
@@ -75,7 +77,7 @@ Keep Chromium's sandbox enabled by default. Use `--disable-browser-sandbox` only
 Run the deterministic chunk/retry tests when maintaining the fresh-render gate:
 
 ```powershell
-uv run --script .agents/skills/mermaid-colorset-styler/scripts/test_validate_mermaid_render_coverage.py
+uv run --script <skill-root>/scripts/test_validate_mermaid_render_coverage.py
 ```
 
 ## Color Classes

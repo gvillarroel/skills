@@ -51,19 +51,19 @@ if (!(Test-Path -LiteralPath $SourceSvg) -or !(Test-Path -LiteralPath $Gif)) { t
 Convert a folder of animated SVGs:
 
 ```powershell
-uv run --script .agents/skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py .agents/skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/animated --output-dir projects/<project-id>/artifacts/gifs/mermaid --fps 24 --max-width 1280 --scale 2
+uv run --script skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py path/to/animated-svgs --output-dir projects/<project-id>/artifacts/gifs/batch --fps 24 --max-width 1280 --scale 2
 ```
 
 Force timing and dimensions for a delivery target:
 
 ```powershell
-uv run --script .agents/skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py chart.animated.svg -o chart.gif --duration 5 --fps 30 --width 960 --scale 2 --background "#ffffff"
+uv run --script skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py chart.animated.svg -o chart.gif --duration 5 --fps 30 --width 960 --scale 2 --background "#ffffff"
 ```
 
 Install Playwright's Chromium browser if the local cache is missing:
 
 ```powershell
-uv run --script .agents/skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py diagram.animated.svg --install-browser
+uv run --script skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py diagram.animated.svg --install-browser
 ```
 
 ## Quality Guidance
@@ -78,14 +78,14 @@ uv run --script .agents/skills/animated-svg-to-gif/scripts/convert_animated_svg_
 
 ## Pattern Promotion
 
-When a source family or conversion preset proves reusable, update this skill before finishing. Capture the source pattern, trigger context, recommended flags, output constraints, verification commands, and pitfalls such as static SVG skipping or duration inference. If the pattern grows beyond this file, create `references/pattern-recipes.md` and link it here.
+When a source family or conversion preset proves reusable, update this skill before finishing. Capture the source pattern, trigger context, recommended flags, output constraints, verification commands, and pitfalls such as static SVG skipping or duration inference. If the pattern grows beyond this file, create a focused pattern-recipes reference and link it here.
 
 ## Validation
 
 After changing the skill or script, run:
 
 ```powershell
-uv run --script .agents/skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py --help
+uv run --script skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py --help
 uv run --script scripts/validate-skills.py
 ```
 

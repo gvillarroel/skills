@@ -25,49 +25,51 @@ Normal user rendering does not load the coverage manifest. Ditaa, standalone Asc
 Render a directory to SVG and PNG with the bundled colorset2 theme:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders --colorset colorset2 --format svg --format png --report path/to/plantuml-render-report.json
+uv run --script skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders --colorset colorset2 --format svg --format png --report path/to/plantuml-render-report.json
 ```
 
 Render the same directory with the bundled colorset1 red-neutral theme:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders-cs1 --colorset colorset1 --format svg --format png --report path/to/plantuml-render-report-cs1.json
+uv run --script skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders-cs1 --colorset colorset1 --format svg --format png --report path/to/plantuml-render-report-cs1.json
 ```
+
+For the next three commands, set `<skill-root>` to the full `plantuml-colorset-renderer` source directory. This is an acceptance-fixture-only workflow that requires `assets/examples/`, which is intentionally excluded from the normal runtime payload.
 
 Render the bundled coverage examples when maintaining the skill:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py .agents/skills/plantuml-colorset-renderer/assets/examples/base --output projects/plantuml-colorset-renderer/artifacts/examples --format svg --format png --coverage-manifest .agents/skills/plantuml-colorset-renderer/references/diagram-types.json --publication-only --report projects/plantuml-colorset-renderer/artifacts/examples/report.json
+uv run --script <skill-root>/scripts/render_plantuml_directory.py <skill-root>/assets/examples/base --output projects/plantuml-colorset-renderer/artifacts/examples --format svg --format png --coverage-manifest <skill-root>/references/diagram-types.json --publication-only --report projects/plantuml-colorset-renderer/artifacts/examples/report.json
 ```
 
 Validate a render report and artifacts:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/validate_plantuml_render_report.py --report projects/plantuml-colorset-renderer/artifacts/examples/report.json --output projects/plantuml-colorset-renderer/artifacts/examples --colorset colorset2 --coverage-manifest .agents/skills/plantuml-colorset-renderer/references/diagram-types.json
+uv run --script <skill-root>/scripts/validate_plantuml_render_report.py --report projects/plantuml-colorset-renderer/artifacts/examples/report.json --output projects/plantuml-colorset-renderer/artifacts/examples --colorset colorset2 --coverage-manifest <skill-root>/references/diagram-types.json
 ```
 
 Validate the frozen manifest, fixtures, reports, and published galleries:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/validate_plantuml_coverage.py --fixtures .agents/skills/plantuml-colorset-renderer/assets/examples/base --report .agents/skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/render-report.json --report .agents/skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1/render-report.json --gallery .agents/skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer --gallery .agents/skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer-cs1
+uv run --script <skill-root>/scripts/validate_plantuml_coverage.py --fixtures <skill-root>/assets/examples/base --report <skill-root>/assets/examples/plantuml-colorset-renderer/render-report.json --report <skill-root>/assets/examples/plantuml-colorset-renderer-cs1/render-report.json --gallery <skill-root>/assets/examples/plantuml-colorset-renderer --gallery <skill-root>/assets/examples/plantuml-colorset-renderer-cs1
 ```
 
 Use a private/local PlantUML endpoint instead of the public server:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders --format svg --format png --engine server --server-url http://localhost:8080/plantuml --report path/to/plantuml-render-report.json
+uv run --script skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders --format svg --format png --engine server --server-url http://localhost:8080/plantuml --report path/to/plantuml-render-report.json
 ```
 
 Use Kroki explicitly for remote rendering:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders --format svg --format png --engine kroki --report path/to/plantuml-render-report.json
+uv run --script skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders --format svg --format png --engine kroki --report path/to/plantuml-render-report.json
 ```
 
 Write themed source copies for debugging or handoff:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders --format svg --format png --write-themed
+uv run --script skills/plantuml-colorset-renderer/scripts/render_plantuml_directory.py path/to/plantuml --output path/to/renders --format svg --format png --write-themed
 ```
 
 ## Normalized Logo Assets
@@ -77,9 +79,9 @@ Use the 1,960 SVG files in `assets/logos/` when a PlantUML diagram needs a cloud
 Search the compact manifest instead of reading the 1,500-row license log:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/list_logo_assets.py --search lambda --provider AWS
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/list_logo_assets.py --search ollama --json
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/list_logo_assets.py --search claude --json
+uv run --script skills/plantuml-colorset-renderer/scripts/list_logo_assets.py --search lambda --provider AWS
+uv run --script skills/plantuml-colorset-renderer/scripts/list_logo_assets.py --search ollama --json
+uv run --script skills/plantuml-colorset-renderer/scripts/list_logo_assets.py --search claude --json
 ```
 
 Read the selected records in `assets/logos/logo_manifest.json` and consult `assets/logos/license_log.md` for redistribution. Treat trademark permission as separate from the artwork copyright license, and do not imply endorsement.
@@ -108,8 +110,8 @@ Resolve image paths from the PlantUML source or renderer working directory. Pref
 Refresh the pinned source assets and validate their hashes and common sizing contract:
 
 ```powershell
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/sync_normalized_logos.py
-uv run --script .agents/skills/plantuml-colorset-renderer/scripts/sync_normalized_logos.py --check
+uv run --script <skill-root>/scripts/sync_normalized_logos.py
+uv run --script <skill-root>/scripts/sync_normalized_logos.py --check
 ```
 
 When maintaining the catalog, rebuild `logo_manifest.json` from every pinned source declared by `scripts/build_logo_manifest.py`, including each `--assistant-source KEY=DIR` value and `--lobe-icons-source`. Then run the sync command with matching provider-to-directory overrides. Do not hand-edit generated SVG wrappers or the generated license log. Read `references/code-assistant-logo-sources.md` before adding or rejecting a code-assistant brand.

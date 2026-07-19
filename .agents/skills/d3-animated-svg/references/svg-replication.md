@@ -4,7 +4,7 @@ Use this reference when recreating a D3-generated SVG from the gallery, adapting
 
 ## Replication Workflow
 
-1. Identify the gallery card `id` and its `render*` function in `.agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/gallery.js`.
+1. Identify the pattern ID and read its compact source contract under `references/patterns/<pattern-slug>.md`. Use the gallery source only when maintaining the full acceptance fixture.
 2. Copy only the required data, scales, layout code, and local helpers. Do not copy unrelated renderers.
 3. Preserve the output contract: fixed `viewBox`, `role="img"`, `title`, `desc`, scoped IDs, deterministic data, and final attributes that already encode the settled state.
 4. Use D3 for geometry and joins. Use inline SVG `animate`, `animateTransform`, `animateMotion`, or CSS keyframes for portable animation.

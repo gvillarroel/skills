@@ -64,7 +64,7 @@ uv run --script scripts/validate-skills.py
 When changing JSON output behavior, also validate at least one representative plan with:
 
 ```powershell
-uv run --script .agents/skills/scene-composition-director/scripts/validate_scene_composition_plan.py --plan <plan> --expect-scenes <count> --require-anchor "<literal source anchor>"
+uv run --script skills/scene-composition-director/scripts/validate_scene_composition_plan.py --plan <plan> --expect-scenes <count> --require-anchor "<literal source anchor>"
 ```
 
 For isolated forward tests, prefer the checked prompt files that name exact output paths and validator arguments:

@@ -22,9 +22,13 @@ Read `references/integration-patterns.md` before implementing or debugging an An
 
 Read `references/animation-type-index.md` when the task names a specific Anime.js capability or asks for broad animation coverage. It routes to one dedicated reference file per animation pattern demonstrated in the acceptance deck.
 
-Read `references/assets/animated-svg-assets.md` when the task asks for SVGs that Anime.js can animate. It documents the generated SVG asset pack, stable selectors, and the Slidev fixture component that exercises each asset.
+Read `references/assets/animated-svg-assets.md` when the task asks for SVGs that Anime.js can animate. It documents the generated SVG asset pack, stable selectors, and the copy-ready runtime template under `assets/templates/slidev-svg-asset-pack/`.
 
-The runnable validation fixture lives in `.agents/skills/slidev-animejs/assets/examples/slidev-animejs/`. Keep one slide per tested animation type and keep the matching reference file updated whenever the fixture behavior changes.
+For normal work, copy only `assets/templates/slidev-svg-asset-pack/` into the target deck; it contains `components/SvgAssetSlide.vue`, `lib/svg-assets.js`, and the six SVG files under `assets/templates/slidev-svg-asset-pack/assets/animated-svg/`. Do not read or copy `assets/examples/` during normal skill use.
+
+In an isolated workspace, copy the complete pack without enumerating the bundle: run `cp -R skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/. <deck-root>/` in bash or `Copy-Item skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/* <deck-root> -Recurse -Force` in PowerShell. Replace `<deck-root>` with the exact requested deck path.
+
+The runnable validation fixture under `assets/examples/slidev-animejs/` is maintenance-only. It consumes the runtime template through a thin wrapper so fixture validation exercises the same files shipped in the isolated runtime payload.
 
 ## Visual Tokens
 

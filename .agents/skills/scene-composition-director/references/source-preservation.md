@@ -53,7 +53,7 @@ In isolated harnesses, `../prompt.md` is the only allowed parent-directory sourc
 Validate machine-readable plans with:
 
 ```powershell
-uv run --script .agents/skills/scene-composition-director/scripts/validate_scene_composition_plan.py --plan composition-plan.json --forbid gsap
+uv run --script skills/scene-composition-director/scripts/validate_scene_composition_plan.py --plan composition-plan.json --forbid gsap
 ```
 
 If the prompt supplies `--expect-scenes`, `--require-anchor`, or `--forbid`, copy those arguments literally into the validation command before finishing and fix the plan until it passes. Do not replace supplied expectations with easier values.

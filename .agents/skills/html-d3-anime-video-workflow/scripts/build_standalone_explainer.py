@@ -18,6 +18,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 
+SCRIPT_PATH = Path(__file__).resolve()
 PALETTE = {
     "paper": "#f7f7f7",
     "ink": "#333e48",
@@ -6360,7 +6361,7 @@ def write_notes(args: argparse.Namespace, paths: dict[str, Path], package: dict[
 ## Render Command
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root {args.project_root.as_posix()} --title "{args.title}" --output-id {args.output_id} --pattern {args.pattern}
+uv run --script <skill-root>/scripts/build_standalone_explainer.py --project-root {args.project_root.as_posix()} --title "{args.title}" --output-id {args.output_id} --pattern {args.pattern}
 ```
 """
     paths["production_notes"].write_text(content, encoding="utf-8")
@@ -7668,7 +7669,7 @@ def write_html(args: argparse.Namespace, paths: dict[str, Path], package: dict[s
         const denseMotifText = [...sourceSystems, ...(PACKAGE.strategyAnchors || []), ...(PACKAGE.sourceFacts || []), PACKAGE.title || "", PACKAGE.topic || ""].join(" ").toLowerCase();
         const llmConceptRequested = /what is an llm|large language model|token_stream|context_window_box|transformer|autoregressive|parameter|gpu_rack|next token/.test(denseMotifText);
         const billingConceptRequested = /llm billing|billing|credit_meter|ai credit|token cost|api cost|subscription|local gpu|pricing|cost meter/.test(denseMotifText);
-        const mcpConceptRequested = /what is an mcp|model context protocol|mcp_bus|mcp server|tools resources prompts|tools \/ resources \/ prompts|registry|allowlist|client and server|tool surface/.test(denseMotifText);
+        const mcpConceptRequested = /what is an mcp|model context protocol|mcp_bus|mcp server|tools resources prompts|tools \\/ resources \\/ prompts|registry|allowlist|client and server|tool surface/.test(denseMotifText);
         if (masonryRequired && (llmConceptRequested || billingConceptRequested || mcpConceptRequested)) {{
           let denseRectCounter = 0;
           const motifId = billingConceptRequested ? "billing-cost-map" : mcpConceptRequested ? "mcp-protocol-bus" : "llm-token-transformer-map";
@@ -10148,7 +10149,7 @@ def write_render_js(args: argparse.Namespace, paths: dict[str, Path], package: d
     argv = [
         "run",
         "--script",
-        ".agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+        SCRIPT_PATH.as_posix(),
         "--project-root",
         args.project_root.as_posix(),
         "--title",
@@ -10528,7 +10529,7 @@ MP4 path: `{paths["video"].as_posix()}`
 - Source facts preserved: {len(args.fact)}.
 - Strategy anchors preserved: {len(args.anchor)}.
 - Contact sheet: {"created at `" + paths["contact_sheet"].as_posix() + "` with manifest `" + paths["contact_sheet_manifest"].as_posix() + "`" if contact_sheet else "not created or did not pass the metric gate"}.
-- Render command: `uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root {args.project_root.as_posix()} --title "{args.title}" --output-id {args.output_id} --pattern {args.pattern}`.
+- Render command: `uv run --script <skill-root>/scripts/build_standalone_explainer.py --project-root {args.project_root.as_posix()} --title "{args.title}" --output-id {args.output_id} --pattern {args.pattern}`.
 
 ## Critique
 

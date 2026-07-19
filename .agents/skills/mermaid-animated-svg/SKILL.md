@@ -55,19 +55,19 @@ if (!(Test-Path -LiteralPath $Source) -or !(Test-Path -LiteralPath $StaticSvg) -
 Render a Mermaid source that contains `%% @animate` comments:
 
 ```powershell
-uv run --script .agents/skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py .agents/skills/mermaid-animated-svg/assets/examples/mermaid-animation-directives/flowchart-token-routing.mmd -o projects/<project-id>/artifacts/svgs/flowchart-token-routing.animated.svg --static-output projects/<project-id>/artifacts/svgs/flowchart-token-routing.static.svg
+uv run --script skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py skills/mermaid-animated-svg/assets/templates/flowchart-flow-smoke.mmd -o projects/<project-id>/artifacts/svgs/flowchart-token-routing.animated.svg --static-output projects/<project-id>/artifacts/svgs/flowchart-token-routing.static.svg
 ```
 
 Use a pre-rendered Mermaid SVG:
 
 ```powershell
-uv run --script .agents/skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py --svg-input diagram.static.svg -o diagram.animated.svg --animation organic
+uv run --script skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py --svg-input diagram.static.svg -o diagram.animated.svg --animation organic
 ```
 
 Inspect detected elements before ordering or directive work:
 
 ```powershell
-uv run --script .agents/skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py diagram.mmd --list-elements
+uv run --script skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py diagram.mmd --list-elements
 ```
 
 ## Selector Discipline
@@ -87,9 +87,9 @@ When a diagram-specific choreography, directive style, selector strategy, or ord
 
 ## Validation
 
-After changing the skill, scripts, examples, or generated outputs, run the relevant render command and then:
+After changing the skill, scripts, examples, or generated outputs, run the relevant render command. For repository acceptance-fixture maintenance only, set `<skill-root>` to the full `mermaid-animated-svg` source directory and run the family coverage gate below. It requires `assets/examples/`, which is intentionally excluded from the normal runtime payload; do not treat this command as a runtime prerequisite.
 
 ```powershell
-uv run --script .agents/skills/mermaid-animated-svg/scripts/validate_mermaid_family_coverage.py --report projects/<project-id>/artifacts/reviews/mermaid-family-coverage.json
+uv run --script <skill-root>/scripts/validate_mermaid_family_coverage.py --report projects/<project-id>/artifacts/reviews/mermaid-family-coverage.json
 uv run --script scripts/validate-skills.py
 ```

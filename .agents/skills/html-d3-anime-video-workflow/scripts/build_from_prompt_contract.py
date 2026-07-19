@@ -60,6 +60,15 @@ def clean_label_value(value: str) -> str:
     return clean_value(value).rstrip(".").strip()
 
 
+def is_safe_workspace_path(value: str, *, marker: str | None = None) -> bool:
+    normalized = value.strip().replace("\\", "/")
+    if not normalized or normalized.startswith(("/", "//")) or re.match(r"^[A-Za-z]:/", normalized):
+        return False
+    if ".." in Path(normalized).parts:
+        return False
+    return marker is None or marker in normalized
+
+
 def extract_label(text: str, label: str, default: str = "") -> str:
     match = re.search(rf"^{re.escape(label)}:\s*(.+?)\s*$", text, flags=re.MULTILINE | re.IGNORECASE)
     return clean_label_value(match.group(1)) if match else default
@@ -80,7 +89,7 @@ def extract_required_paths(text: str) -> list[str]:
         values = re.findall(r"`([^`]+)`", line) or [line[2:]]
         for value in values:
             value = value.strip().replace("\\", "/")
-            if value.startswith("projects/") and any(marker in value for marker in ("/source/", "/src/", "/artifacts/")):
+            if is_safe_workspace_path(value) and any(marker in value for marker in ("/source/", "/src/", "/artifacts/")):
                 paths.append(value)
     return list(dict.fromkeys(paths))
 
@@ -95,7 +104,7 @@ def extract_manifest_path(text: str) -> Path | None:
         match = re.search(pattern, text, flags=re.IGNORECASE | re.DOTALL)
         if match:
             value = clean_value(match.group(1)).replace("\\", "/")
-            if value.startswith("projects/") and "/artifacts/" in value:
+            if is_safe_workspace_path(value, marker="/artifacts/"):
                 return Path(value)
     return None
 
@@ -109,7 +118,7 @@ def extract_state_manifest_path(text: str) -> Path | None:
         match = re.search(pattern, text, flags=re.IGNORECASE)
         if match:
             value = clean_value(match.group(1)).replace("\\", "/")
-            if value.startswith("projects/") and "/artifacts/" in value:
+            if is_safe_workspace_path(value, marker="/artifacts/"):
                 return Path(value)
     return None
 
@@ -126,7 +135,7 @@ def extract_named_json_path(text: str, names: list[str]) -> Path | None:
         match = re.search(pattern, text, flags=re.IGNORECASE | re.DOTALL)
         if match:
             value = clean_value(match.group(1)).replace("\\", "/")
-            if value.startswith("projects/") and "/artifacts/" in value:
+            if is_safe_workspace_path(value, marker="/artifacts/"):
                 return Path(value)
     return None
 

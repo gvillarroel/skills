@@ -1,6 +1,6 @@
 <svg class="anime-svg-asset anime-svg-interactive-hotspots" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="interactive-hotspots-title interactive-hotspots-desc">
   <title id="interactive-hotspots-title">Interactive hotspots asset</title>
-  <desc id="interactive-hotspots-desc">A map-like SVG with route, hotspot, and callout hooks for Anime.js stagger, draw, and click-state animations.</desc>
+  <desc id="interactive-hotspots-desc" data-allow-hidden>A map-like SVG with route, hotspot, and callout hooks for Anime.js stagger, draw, and click-state animations.</desc>
   <rect class="svg-backdrop" width="960" height="540" rx="42" fill="#f7f7f7"/>
   <path class="map-region region-blue" d="M112 158 C214 78 330 124 366 220 C394 294 328 370 206 358 C122 350 58 244 112 158 Z" fill="#cdf3ff" stroke="#00ace6" stroke-width="5"/>
   <path class="map-region region-green" d="M412 118 C526 72 650 124 676 234 C704 348 604 438 474 394 C376 360 314 184 412 118 Z" fill="#dbffcc" stroke="#36b300" stroke-width="5"/>

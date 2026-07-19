@@ -87,7 +87,7 @@ Order tokens may be exact IDs, `#id`, `.class`, `role:node`, `role:edge`, `text:
 Use direct order for short sequences:
 
 ```powershell
-uv run --script .agents/skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py diagram.mmd -o diagram.animated.svg --order "Start,Collect request,Valid payload,Store event,Done" --animation sequence
+uv run --script skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py diagram.mmd -o diagram.animated.svg --order "Start,Collect request,Valid payload,Store event,Done" --animation sequence
 ```
 
 Use a JSON array or newline-separated file for longer sequences:
@@ -103,5 +103,5 @@ Add `--strict-order` when every requested token must match at least one SVG elem
 Preserve Mermaid rendering options in both static and animated output:
 
 ```powershell
-uv run --script .agents/skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py diagram.mmd -o diagram.animated.svg --config-file mermaid-config.json --css-file mermaid.css --background transparent --mmdc-arg=--scale --mmdc-arg=2
+uv run --script skills/mermaid-animated-svg/scripts/animate_mermaid_svg.py diagram.mmd -o diagram.animated.svg --config-file mermaid-config.json --css-file mermaid.css --background transparent --mmdc-arg=--scale --mmdc-arg=2
 ```

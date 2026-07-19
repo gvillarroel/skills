@@ -383,7 +383,10 @@ def validate_family_inventories(
     anime_demos = anime_demo_path.read_text(encoding="utf-8")
     feature_block = extract_block(anime_demos, "export const featureOrder = [", "]", anime_demo_path, findings)
     feature_ids = re.findall(r"'([a-z0-9-]+)'", feature_block)
-    svg_asset_path = slidev_anime_root / "lib" / "svg-assets.js"
+    svg_asset_path = (
+        root
+        / ".agents/skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/lib/svg-assets.js"
+    )
     svg_assets = svg_asset_path.read_text(encoding="utf-8")
     asset_block = extract_block(svg_assets, "export const svgAssetOrder = [", "]", svg_asset_path, findings)
     asset_ids = re.findall(r"'([a-z0-9-]+)'", asset_block)

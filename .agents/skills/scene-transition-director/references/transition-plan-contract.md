@@ -93,7 +93,7 @@ Use structured `validationChecks` objects with `method`, `target`, and `passCrit
 Run the bundled validator for JSON transition plans:
 
 ```powershell
-uv run --script .agents/skills/scene-transition-director/scripts/validate_transition_plan.py --plan transition-plan.json --expect-transitions 4 --require-anchor "task packet" --forbid gsap
+uv run --script skills/scene-transition-director/scripts/validate_transition_plan.py --plan transition-plan.json --expect-transitions 4 --require-anchor "task packet" --forbid gsap
 ```
 
 When the prompt gives an exact transition count, pass `--expect-transitions`. When it names a persistent element, pass `--expect-persistent-name`. When it lists exact scene IDs, pass `--expect-chain` with those IDs joined by commas.
