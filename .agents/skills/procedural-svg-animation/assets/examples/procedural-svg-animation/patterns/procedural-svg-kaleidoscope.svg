@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="kaleidoscope-title kaleidoscope-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-kaleidoscope" data-example-id="kaleidoscope" data-family="tiling" data-renderer="tiling" data-variant="4" data-seed="685268" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SVG use + transforms" data-technique="sector reflection" data-deterministic="true" data-standalone="true" data-parameter-hash="0823886fdf886ac520137a936038a4dbe908adefa0e66fed287aced8f830d9b6">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="kaleidoscope-title kaleidoscope-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-kaleidoscope" data-example-id="kaleidoscope" data-family="tiling" data-renderer="tiling" data-variant="4" data-pattern-revision="1" data-seed="685268" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SVG use + transforms" data-technique="sector reflection" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="80d1a5a5cb112fbb8d30f1b40e7fb0b1225a6656cb43895c5d768e0bfab87ff9">
   <title id="kaleidoscope-title">Kaleidoscope</title>
   <desc id="kaleidoscope-desc">One animated motif is reflected and rotated into a reusable dihedral symmetry system. Deterministic seed 685268; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

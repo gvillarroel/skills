@@ -14,6 +14,14 @@
   let replaySerial = 0;
   let globalPauseActive = false;
 
+  function decodedHashId() {
+    try { return decodeURIComponent(location.hash.slice(1)); }
+    catch (_error) { return ""; }
+  }
+
+  const initialHashTarget = document.getElementById(decodedHashId());
+  let deferHashNeighborLoading = Boolean(initialHashTarget?.classList.contains("pattern-card"));
+
   const normalize = value => String(value || "").trim().toLocaleLowerCase();
 
   function previewFor(card) {
@@ -171,7 +179,7 @@
   }
 
   function revealHashTarget() {
-    const id = decodeURIComponent(location.hash.slice(1));
+    const id = decodedHashId();
     if (!id) return;
     const target = document.getElementById(id);
     if (!target?.classList.contains("pattern-card")) return;
@@ -182,18 +190,47 @@
       applyFilters({ announce: false });
     }
     loadPreview(target);
-    requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+    requestAnimationFrame(() => {
+      const root = document.documentElement;
+      const previousBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      target.scrollIntoView({ block: "start", behavior: "instant" });
+      requestAnimationFrame(() => {
+        root.style.scrollBehavior = previousBehavior;
+        if (deferHashNeighborLoading) {
+          requestAnimationFrame(() => {
+            window.addEventListener("scroll", releaseDeferredPreviewLoading, { once: true, passive: true });
+          });
+        }
+      });
+    });
   }
 
-  const previewObserver = "IntersectionObserver" in window
+  let previewObserver = "IntersectionObserver" in window
     ? new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting || entry.target.hidden) return;
+          if (deferHashNeighborLoading && entry.target !== initialHashTarget) return;
           loadPreview(entry.target);
           previewObserver.unobserve(entry.target);
         });
-      }, { rootMargin: "1000px 0px" })
+      }, { rootMargin: "180px 0px" })
     : null;
+
+  function releaseDeferredPreviewLoading() {
+    if (!deferHashNeighborLoading) return;
+    deferHashNeighborLoading = false;
+    if (!previewObserver) return;
+    cards.forEach(card => {
+      if (previewFor(card)?.dataset.loaded === "true") return;
+      previewObserver.unobserve(card);
+      previewObserver.observe(card);
+    });
+  }
+
+  for (const eventName of ["wheel", "touchstart", "pointerdown", "keydown"]) {
+    window.addEventListener(eventName, releaseDeferredPreviewLoading, { once: true, passive: true });
+  }
 
   cards.forEach((card, index) => {
     const preview = previewFor(card);

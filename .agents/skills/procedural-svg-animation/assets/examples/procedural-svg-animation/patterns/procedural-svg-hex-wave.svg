@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="hex-wave-title hex-wave-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-hex-wave" data-example-id="hex-wave" data-family="tiling" data-renderer="tiling" data-variant="1" data-seed="978168" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated lattice + CSS" data-technique="polar phase on hex grid" data-deterministic="true" data-standalone="true" data-parameter-hash="1125863f367bc815143f3484067c4793fdd1745651d80d9af5660896157ef8c9">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="hex-wave-title hex-wave-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-hex-wave" data-example-id="hex-wave" data-family="tiling" data-renderer="tiling" data-variant="1" data-pattern-revision="1" data-seed="978168" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated lattice + CSS" data-technique="polar phase on hex grid" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="315e1f6c366563ac3927c0637cc1c341dcf93171d288ef449917d8e93455a201">
   <title id="hex-wave-title">Hex Wave</title>
   <desc id="hex-wave-desc">A hexagonal lattice combines radial distance and polar angle into a spiraling scale-and-color wave. Deterministic seed 978168; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="gradient-cycle-title gradient-cycle-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-gradient-cycle" data-example-id="gradient-cycle" data-family="paint" data-renderer="paint" data-variant="0" data-seed="271041" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL stops" data-technique="animated color field" data-deterministic="true" data-standalone="true" data-parameter-hash="3d989d2bb94428aafc4c1ab1dc33ece319b5ef0537e9877c91201cfe836951eb">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="gradient-cycle-title gradient-cycle-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-gradient-cycle" data-example-id="gradient-cycle" data-family="paint" data-renderer="paint" data-variant="0" data-pattern-revision="1" data-seed="271041" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL stops" data-technique="animated color field" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="e82c17ba355d00f66bf4403ffae776ea21de125362d91adf2c53594ea823ae65">
   <title id="gradient-cycle-title">Gradient Cycle</title>
   <desc id="gradient-cycle-desc">Gradient stops change color and position while geometry remains static and reusable. Deterministic seed 271041; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="verlet-cloth-title verlet-cloth-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-verlet-cloth" data-example-id="verlet-cloth" data-family="simulation" data-renderer="simulation" data-variant="1" data-seed="853344" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed constraint frames" data-technique="Verlet integration" data-deterministic="true" data-standalone="true" data-parameter-hash="5319278e0b1db3a46e332f666b07b0e3ce6353f002b3e5ef63fc88a32e39830a">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="verlet-cloth-title verlet-cloth-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-verlet-cloth" data-example-id="verlet-cloth" data-family="simulation" data-renderer="simulation" data-variant="1" data-pattern-revision="1" data-seed="853344" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed constraint frames" data-technique="Verlet integration" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="949e05aaf67c8c2d2dd359901a4e384f9d59a168852721e668343dabe958ddb7">
   <title id="verlet-cloth-title">Verlet Cloth</title>
   <desc id="verlet-cloth-desc">A point lattice advances with Verlet integration and repeated distance-constraint projection. Deterministic seed 853344; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

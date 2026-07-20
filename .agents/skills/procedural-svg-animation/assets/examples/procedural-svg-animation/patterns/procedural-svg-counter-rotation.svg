@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="counter-rotation-title counter-rotation-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-counter-rotation" data-example-id="counter-rotation" data-family="transform" data-renderer="transform" data-variant="1" data-seed="823570" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL transforms" data-technique="orientation compensation" data-deterministic="true" data-standalone="true" data-parameter-hash="6f35ad7e45c1c82b949f98b57c1b98aeca7172e897e9618ee07b891cacf722b7">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="counter-rotation-title counter-rotation-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-counter-rotation" data-example-id="counter-rotation" data-family="transform" data-renderer="transform" data-variant="1" data-pattern-revision="1" data-seed="823570" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL transforms" data-technique="orientation compensation" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="435b4df4afda9477e995047ee2cb3ff3994ed5f20cd0c29ba01d0c0e7ccc6744">
   <title id="counter-rotation-title">Counter Rotation</title>
   <desc id="counter-rotation-desc">Parent rotation moves a frame while inverse child rotation keeps labels upright. Deterministic seed 823570; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

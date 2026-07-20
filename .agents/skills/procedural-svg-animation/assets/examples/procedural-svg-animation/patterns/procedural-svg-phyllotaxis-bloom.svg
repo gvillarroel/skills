@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="phyllotaxis-bloom-title phyllotaxis-bloom-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-phyllotaxis-bloom" data-example-id="phyllotaxis-bloom" data-family="growth" data-renderer="growth" data-variant="1" data-seed="241073" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated marks + CSS" data-technique="golden-angle packing" data-deterministic="true" data-standalone="true" data-parameter-hash="16bbc1a77603c165c9aa53246f5f078ec2c48660f8d184a94d5363d9d29214e6">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="phyllotaxis-bloom-title phyllotaxis-bloom-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-phyllotaxis-bloom" data-example-id="phyllotaxis-bloom" data-family="growth" data-renderer="growth" data-variant="1" data-pattern-revision="1" data-seed="241073" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated marks + CSS" data-technique="golden-angle packing" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="ee67b417b91a515faf2e044e592b860671778d84d4652e102d5380e12178e41d">
   <title id="phyllotaxis-bloom-title">Phyllotaxis Bloom</title>
   <desc id="phyllotaxis-bloom-desc">Seeds appear in index order along a golden-angle spiral, producing dense radial packing. Deterministic seed 241073; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="handwriting-reveal-title handwriting-reveal-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-handwriting-reveal" data-example-id="handwriting-reveal" data-family="path" data-renderer="path" data-variant="5" data-seed="262051" data-palette="colorset2" data-motion="full" data-motion-engine="mixed" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="CSS mask + SMIL follower" data-technique="authored trace reveal" data-deterministic="true" data-standalone="true" data-parameter-hash="229c5f0818e589a7e70d7101f90c64a73f8e1ed8ba6b2226a81943d3f48ed961">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="handwriting-reveal-title handwriting-reveal-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-handwriting-reveal" data-example-id="handwriting-reveal" data-family="path" data-renderer="path" data-variant="5" data-pattern-revision="1" data-seed="262051" data-palette="colorset2" data-motion="full" data-motion-engine="mixed" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="CSS mask + SMIL follower" data-technique="authored trace reveal" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="b79b0bae683f0ff45660a4701dbb307b7fe4758be6fd2df9645de20f1bb372a1">
   <title id="handwriting-reveal-title">Handwriting Reveal</title>
   <desc id="handwriting-reveal-desc">A pressure-like trace reveals a wider ink path while pen and lettering remain separate layers. Deterministic seed 262051; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

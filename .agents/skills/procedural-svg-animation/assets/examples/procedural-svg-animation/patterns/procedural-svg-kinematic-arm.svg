@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="kinematic-arm-title kinematic-arm-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-kinematic-arm" data-example-id="kinematic-arm" data-family="transform" data-renderer="transform" data-variant="4" data-seed="931099" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL transforms" data-technique="forward kinematics" data-deterministic="true" data-standalone="true" data-parameter-hash="5d496d74e4475426490c91f820a22e68c3c9bcfc713cda36374898692e7c1dfd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="kinematic-arm-title kinematic-arm-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-kinematic-arm" data-example-id="kinematic-arm" data-family="transform" data-renderer="transform" data-variant="4" data-pattern-revision="1" data-seed="931099" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL transforms" data-technique="forward kinematics" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="bff0f2ec5e40ad81dfcd65a109d6daf5c855e747f61ee039758180105ede78df">
   <title id="kinematic-arm-title">Kinematic Arm</title>
   <desc id="kinematic-arm-desc">Nested transforms articulate a multi-joint arm while preserving explicit pivots and link lengths. Deterministic seed 931099; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="wave-interference-title wave-interference-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-wave-interference" data-example-id="wave-interference" data-family="parametric" data-renderer="parametric" data-variant="5" data-seed="238793" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed SMIL path frames" data-technique="signal superposition" data-deterministic="true" data-standalone="true" data-parameter-hash="063cfa33c8da4c221d359ccb9b6a5aadab8636d656c5d2520efeda0b7be9a269">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="wave-interference-title wave-interference-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-wave-interference" data-example-id="wave-interference" data-family="parametric" data-renderer="parametric" data-variant="5" data-pattern-revision="1" data-seed="238793" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed SMIL path frames" data-technique="signal superposition" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="6973898e36befaeda733549f6e92ff8603ff6a90c8efddaa055a4f5d80cfa88e">
   <title id="wave-interference-title">Wave Interference</title>
   <desc id="wave-interference-desc">Precomputed temporal-phase frames animate seven harmonic sums through constructive and destructive interference. Deterministic seed 238793; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

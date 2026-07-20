@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="superformula-title superformula-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-superformula" data-example-id="superformula" data-family="parametric" data-renderer="parametric" data-variant="4" data-seed="807544" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated compatible paths" data-technique="superformula sampling" data-deterministic="true" data-standalone="true" data-parameter-hash="2eb2a2019f0d60d1f09dac33aee7df549a04e600327c8ea6c5b3f64f79ffc239">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="superformula-title superformula-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-superformula" data-example-id="superformula" data-family="parametric" data-renderer="parametric" data-variant="4" data-pattern-revision="1" data-seed="807544" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated compatible paths" data-technique="superformula sampling" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="62becfbdb1961ff994be508a1b7e14c55e81d1fbbd7e114900afa9bbf7b8962e">
   <title id="superformula-title">Superformula</title>
   <desc id="superformula-desc">Sampled superformula coefficients form a family between rounded, star-like, and organic silhouettes. Deterministic seed 807544; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

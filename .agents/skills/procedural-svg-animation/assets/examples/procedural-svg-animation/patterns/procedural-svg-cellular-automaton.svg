@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="cellular-automaton-title cellular-automaton-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-cellular-automaton" data-example-id="cellular-automaton" data-family="simulation" data-renderer="simulation" data-variant="3" data-seed="566561" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="discrete SMIL frames" data-technique="local neighborhood update" data-deterministic="true" data-standalone="true" data-parameter-hash="7ea57b2631907dc6a03aae598e05fc4a23c1a7e125e249900cf8379130b3c2d4">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="cellular-automaton-title cellular-automaton-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-cellular-automaton" data-example-id="cellular-automaton" data-family="simulation" data-renderer="simulation" data-variant="3" data-pattern-revision="1" data-seed="566561" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="discrete SMIL frames" data-technique="local neighborhood update" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="d36c7e1f4a24dd2181bcba8d9e4ed36d07f2afbbd4e03ec6979dc73f49ae6c03">
   <title id="cellular-automaton-title">Cellular Automaton</title>
   <desc id="cellular-automaton-desc">A seeded binary grid exposes several deterministic generations of a local update rule. Deterministic seed 566561; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="stroke-draw-title stroke-draw-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-stroke-draw" data-example-id="stroke-draw" data-family="path" data-renderer="path" data-variant="0" data-seed="614569" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="CSS dash animation" data-technique="path-length reveal" data-deterministic="true" data-standalone="true" data-parameter-hash="e120f974b985a87db6d5449226ba64eaae62867b4ea7e312f537597ad2dbe4da">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="stroke-draw-title stroke-draw-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-stroke-draw" data-example-id="stroke-draw" data-family="path" data-renderer="path" data-variant="0" data-pattern-revision="1" data-seed="614569" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="CSS dash animation" data-technique="path-length reveal" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="f485ac9f3d1ab3046fb01e011c19fa17f6c107ae8fcf6431548a0704ae58e922">
   <title id="stroke-draw-title">Stroke Draw</title>
   <desc id="stroke-draw-desc">A measured path is revealed from start to finish with dash offset while final geometry stays intact. Deterministic seed 614569; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

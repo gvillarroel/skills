@@ -159,7 +159,7 @@ a { color: inherit; }
 
 .family-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 0.8rem;
 }
 
@@ -393,6 +393,7 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
 
 .metadata-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.85rem 0 0; padding: 0; list-style: none; }
 .metadata-list li { padding: 0.35rem 0.52rem; color: #475362; border: 1px solid rgba(24,32,42,0.1); border-radius: 999px; background: rgba(255,255,255,0.47); font-size: 0.68rem; font-weight: 760; }
+.metadata-list .diagnostic-pill { color: #173b35; border-color: rgba(33, 127, 111, 0.25); background: rgba(126, 231, 220, 0.24); }
 
 .card-controls {
   display: grid;
@@ -446,9 +447,9 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
 [data-family-id="tiling"], [data-family-filter="tiling"] { --family-accent: #f7dd72; }
 [data-family-id="paint"], [data-family-filter="paint"] { --family-accent: #ff9776; }
 [data-family-id="composition"], [data-family-filter="composition"] { --family-accent: #77d5ff; }
+[data-family-id="multistrata"], [data-family-filter="multistrata"] { --family-accent: #c8a7ff; }
 
 @media (max-width: 1180px) {
-  .family-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .catalog-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

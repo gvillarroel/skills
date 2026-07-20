@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="vector-field-title vector-field-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-vector-field" data-example-id="vector-field" data-family="field" data-renderer="field" data-variant="0" data-seed="656528" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated glyphs + SMIL" data-technique="grid sampling" data-deterministic="true" data-standalone="true" data-parameter-hash="c11589752077b351f70b091320cc2f09a37f4e5ca21509f3d16af3f44f460671">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="vector-field-title vector-field-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-vector-field" data-example-id="vector-field" data-family="field" data-renderer="field" data-variant="0" data-pattern-revision="1" data-seed="656528" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated glyphs + SMIL" data-technique="grid sampling" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="daaa98f067030b29ff1d1039122c5e89bdc90a4116138d0e4694cecde0bd2b2a">
   <title id="vector-field-title">Vector Field</title>
   <desc id="vector-field-desc">A sampled vector function maps local direction and magnitude to glyph orientation and length. Deterministic seed 656528; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="turbulence-warp-title turbulence-warp-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-turbulence-warp" data-example-id="turbulence-warp" data-family="paint" data-renderer="paint" data-variant="3" data-seed="190328" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SVG filter animation" data-technique="noise displacement" data-deterministic="true" data-standalone="true" data-parameter-hash="05e3cd1a231625d109691c08ba2aa9fc6d66aa8e122c5d7d4f31d4d2f233a8d5">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="turbulence-warp-title turbulence-warp-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-turbulence-warp" data-example-id="turbulence-warp" data-family="paint" data-renderer="paint" data-variant="3" data-pattern-revision="1" data-seed="190328" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SVG filter animation" data-technique="noise displacement" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="575ed229984e4ba76ff162171d4ce38d20438e02a48bf92b16ad7a603f309f2e">
   <title id="turbulence-warp-title">Turbulence Warp</title>
   <desc id="turbulence-warp-desc">Animated turbulence frequency and displacement scale turn a stable path field into an organic warp. Deterministic seed 190328; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

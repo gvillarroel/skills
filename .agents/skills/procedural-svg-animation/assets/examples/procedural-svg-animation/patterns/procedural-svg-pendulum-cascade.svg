@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="pendulum-cascade-title pendulum-cascade-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-pendulum-cascade" data-example-id="pendulum-cascade" data-family="transform" data-renderer="transform" data-variant="2" data-seed="995474" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="sampled SMIL transforms" data-technique="integer-related angular phase" data-deterministic="true" data-standalone="true" data-parameter-hash="dffc752a7d21b51d0a9faeb3ce281c2b1d3eea73d2029b27b405e2adf14fcf89">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="pendulum-cascade-title pendulum-cascade-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-pendulum-cascade" data-example-id="pendulum-cascade" data-family="transform" data-renderer="transform" data-variant="2" data-pattern-revision="1" data-seed="995474" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="sampled SMIL transforms" data-technique="integer-related angular phase" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="3dc449c6ed3dbd93c824494cb6e31281db009a62a887f3bba48850973669173d">
   <title id="pendulum-cascade-title">Pendulum Cascade</title>
   <desc id="pendulum-cascade-desc">Pivoted rods use distinct integer frequencies on one master clock, so their wave envelope recurs exactly at the loop boundary. Deterministic seed 995474; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

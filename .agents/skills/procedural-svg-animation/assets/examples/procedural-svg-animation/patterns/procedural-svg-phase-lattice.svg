@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="phase-lattice-title phase-lattice-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-phase-lattice" data-example-id="phase-lattice" data-family="timing" data-renderer="timing" data-variant="1" data-seed="683452" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL values" data-technique="phase offsets" data-deterministic="true" data-standalone="true" data-parameter-hash="e7179f6d7752cfb494e5156445abead49bbd9634c539378c1cd5a8ffc1e1a81d">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="phase-lattice-title phase-lattice-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-phase-lattice" data-example-id="phase-lattice" data-family="timing" data-renderer="timing" data-variant="1" data-pattern-revision="1" data-seed="683452" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL values" data-technique="phase offsets" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="554cae94742709eda5ebc055144a9325ac450c0d98af65fe0150ce8bf1bfbb3e">
   <title id="phase-lattice-title">Phase Lattice</title>
   <desc id="phase-lattice-desc">Phase-shifted cells expose how one periodic signal produces coherent lattice motion. Deterministic seed 683452; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

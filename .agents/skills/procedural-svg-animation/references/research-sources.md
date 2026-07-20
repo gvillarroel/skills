@@ -32,6 +32,16 @@ Use these sources when extending the catalog or choosing a browser/runtime contr
 - [An Image Synthesizer](https://www.cs.drexel.edu/~david/Classes/Papers/p287-perlin.pdf): Perlin's original procedural noise work.
 - [Implementing Improved Perlin Noise](https://developer.nvidia.com/gpugems/gpugems/part-i-natural-effects/chapter-5-implementing-improved-perlin-noise): deterministic improved-noise implementation choices.
 
+## Multi-strata Topology and Transport
+
+- [Alpha Shapes](https://www.clear.rice.edu/comp551/papers/Edelsbrunner-AlphaShapes.pdf): Delaunay-derived alpha complexes and scale-dependent boundaries.
+- [Topological Persistence and Simplification](https://www.math.uchicago.edu/~shmuel/AAT-readings/Data%20Analysis/Edelsbrunner-Letscher-Zomordian.pdf): filtration order, persistence pairing, and homological lifetime.
+- [Computing Contour Trees in All Dimensions](https://www.cs.ubc.ca/sites/default/files/tr/1999/TR-99-09_0.pdf): join/split-tree sweeps, critical-point connectivity, and contour-tree construction for scalar fields.
+- [Sinkhorn Distances: Lightspeed Computation of Optimal Transport](https://papers.nips.cc/paper/4927-sinkhorn-distances-lightspeed-computation-of-optimal-transport.pdf): entropic regularization, diagonal matrix scaling, and marginal residuals.
+- [A Fast Marching Level Set Method for Monotonically Advancing Fronts](https://doi.org/10.1073/pnas.93.4.1591): causal upwind Eikonal updates and smallest-trial acceptance.
+- [Influences on the Formation and Evolution of Physarum polycephalum-inspired Emergent Transport Networks](https://ics-websites.science.uu.nl/docs/vakken/b2nb/stuff/Influences%20on%20the%20formation%20and%20evolution%20of%20Physarum%20Polycephalum%20inspired%20emergent%20transport%20networks%20-%20J.%20Jones%20-%202011.pdf): three-sensor particle steering coupled to deposited, diffused, and decayed trails.
+- [Stable Fluids](https://graphics.stanford.edu/courses/cs448-01-spring/papers/stam.pdf): semi-Lagrangian advection, diffusion, and pressure projection for stable incompressible flow playback.
+
 ## Accessibility and Performance
 
 - [WCAG Pause, Stop, Hide](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide): user control for automatically moving content lasting more than five seconds.
@@ -47,3 +57,5 @@ Use these sources when extending the catalog or choosing a browser/runtime contr
 - Use fixed-step deterministic simulation and SVG-native playback for portable output.
 - Treat filters as bounded compositing graphs, not cost-free vector operations.
 - Make pause and reduced-motion behavior part of the pattern contract, not a gallery-only patch.
+- Expose numerical strata and invariant residuals alongside solver imagery; a plausible rendering is not numerical validation.
+- Use a palindromic playback sequence when a dissipative or monotone solver has no natural periodic orbit.

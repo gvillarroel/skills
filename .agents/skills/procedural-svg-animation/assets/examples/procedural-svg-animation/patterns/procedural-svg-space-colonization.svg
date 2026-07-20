@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="space-colonization-title space-colonization-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-space-colonization" data-example-id="space-colonization" data-family="growth" data-renderer="growth" data-variant="3" data-seed="309042" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed attraction growth" data-technique="attractor-driven branching" data-deterministic="true" data-standalone="true" data-parameter-hash="e33e2b61f269269e7db94186bceca61a6fe73b4fc8cd989645ed3eb8ffaa2cf7">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="space-colonization-title space-colonization-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-space-colonization" data-example-id="space-colonization" data-family="growth" data-renderer="growth" data-variant="3" data-pattern-revision="1" data-seed="309042" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed attraction growth" data-technique="attractor-driven branching" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="8a7b84b7a679f5cc883db0fdfe96886d82b4052e600ee3182b33f720a343d58b">
   <title id="space-colonization-title">Space Colonization</title>
   <desc id="space-colonization-desc">Branch tips advance toward a field of attractors, splitting coverage into vein-like territories. Deterministic seed 309042; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

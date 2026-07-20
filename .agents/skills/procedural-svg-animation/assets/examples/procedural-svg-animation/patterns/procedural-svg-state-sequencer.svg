@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="state-sequencer-title state-sequencer-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-state-sequencer" data-example-id="state-sequencer" data-family="timing" data-renderer="timing" data-variant="3" data-seed="259565" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="shared SMIL keyTimes" data-technique="finite-state timing" data-deterministic="true" data-standalone="true" data-parameter-hash="108a4a7ec2b8d12f092b2fc2ca79492e517177fa1fc3102e7e0ac423fe69fca1">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="state-sequencer-title state-sequencer-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-state-sequencer" data-example-id="state-sequencer" data-family="timing" data-renderer="timing" data-variant="3" data-pattern-revision="1" data-seed="259565" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="shared SMIL keyTimes" data-technique="finite-state timing" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="41adec1af7367225be46c3218224b9a221968384de0086f7cee77717bda5aac4">
   <title id="state-sequencer-title">State Sequencer</title>
   <desc id="state-sequencer-desc">A deterministic state ring derives every discrete active state from one shared keyed timeline, with no event-chain drift. Deterministic seed 259565; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

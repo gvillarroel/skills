@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="recursive-coral-title recursive-coral-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-recursive-coral" data-example-id="recursive-coral" data-family="growth" data-renderer="growth" data-variant="5" data-seed="922909" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="seeded recursion + CSS" data-technique="angle-limited recursive growth" data-deterministic="true" data-standalone="true" data-parameter-hash="03dece6b391fba18799045df94382b3a2c97f6274f7f182d4b1c1a5fc7386d54">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="recursive-coral-title recursive-coral-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-recursive-coral" data-example-id="recursive-coral" data-family="growth" data-renderer="growth" data-variant="5" data-pattern-revision="1" data-seed="922909" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="seeded recursion + CSS" data-technique="angle-limited recursive growth" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="e496fe2184e31585a7c495330729f3a48c03692799f29004d2ff70b7dc7813d5">
   <title id="recursive-coral-title">Recursive Coral</title>
   <desc id="recursive-coral-desc">A recursively scaled branching rule grows a coral silhouette with depth-specific reveal timing. Deterministic seed 922909; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

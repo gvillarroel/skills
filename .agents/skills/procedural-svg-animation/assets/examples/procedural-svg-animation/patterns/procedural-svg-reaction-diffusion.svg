@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="reaction-diffusion-title reaction-diffusion-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-reaction-diffusion" data-example-id="reaction-diffusion" data-family="simulation" data-renderer="simulation" data-variant="4" data-seed="1022196" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed Gray-Scott field" data-technique="coupled diffusion and reaction" data-deterministic="true" data-standalone="true" data-parameter-hash="0332acf9d95e246af192df123193ae79cbbf56f221b317a439a2689f662c613c">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="reaction-diffusion-title reaction-diffusion-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-reaction-diffusion" data-example-id="reaction-diffusion" data-family="simulation" data-renderer="simulation" data-variant="4" data-pattern-revision="1" data-seed="1022196" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed Gray-Scott field" data-technique="coupled diffusion and reaction" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="ce749370d4da4f4b004ef970742e2e0e0d7780dd16911608467776259cc329f5">
   <title id="reaction-diffusion-title">Reaction Diffusion</title>
   <desc id="reaction-diffusion-desc">A compact Gray-Scott simulation converts evolving chemical concentration into thresholded SVG cells. Deterministic seed 1022196; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

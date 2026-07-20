@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="moire-rotation-title moire-rotation-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-moire-rotation" data-example-id="moire-rotation" data-family="tiling" data-renderer="tiling" data-variant="3" data-seed="151068" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL transforms" data-technique="interference of repeated line sets" data-deterministic="true" data-standalone="true" data-parameter-hash="85ff87ac154ea2b89d0c7c6ee10b583eee365d55cbee7bcf6237ad96c7c3b4ed">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="moire-rotation-title moire-rotation-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-moire-rotation" data-example-id="moire-rotation" data-family="tiling" data-renderer="tiling" data-variant="3" data-pattern-revision="1" data-seed="151068" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL transforms" data-technique="interference of repeated line sets" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="f71f6d0d91bd060d3d104bb6447aaf49e9751bd2b193e94c2045d9140ea016b4">
   <title id="moire-rotation-title">Moiré Rotation</title>
   <desc id="moire-rotation-desc">Two dense line lattices rotate through complementary phases to create large-scale interference bands. Deterministic seed 151068; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

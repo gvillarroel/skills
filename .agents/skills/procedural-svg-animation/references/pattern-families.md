@@ -12,6 +12,7 @@ Use this reference when choosing or extending a mechanism. From the task workspa
 | Parametric | Equations should directly define the visible form | coefficient set and normalized parameter | generated paths plus transform/dash motion | aliasing or non-closing loops |
 | Field | Many marks sample a continuous spatial function | scalar/vector value at `(x,y,t)` | precomputed paths, glyph transforms, filters | too many DOM nodes |
 | Simulation | Local rules create emergent state | fixed-step state vector | precomputed frames/paths | nondeterminism and unstable integration |
+| Multi-strata | A solver must expose substrate, state, evidence, and geometry together | typed parameters, snapshots, invariant metrics | palindromic snapshot groups | plausible visuals hiding invalid numerics |
 | Growth | Order, recursion, or accumulation is meaningful | branch/attachment generation | staged path draw and mark reveal | dense late frames and hidden order |
 | Tiling | A repeated cell or symmetry rule creates global form | tile coordinate, orientation, phase | `<symbol>/<use>`, pattern transforms, stagger | seams and accidental moiré overload |
 | Paint | Geometry is stable but its reveal or surface changes | paint server, mask, clip, filter parameter | SMIL attributes and CSS | clipped filter regions or expensive blur |
@@ -81,6 +82,19 @@ Precompute deterministic states using a fixed step and explicit update order. Re
 
 Do not make frame rate part of the physics. Preserve stable particle IDs and use the same iteration order across platforms.
 
+### Multi-strata solvers
+
+Use these when the numerical mechanism and its evidence must remain inspectable, not merely decorate the output. Every pattern declares six ordered strata, typed parameters, at least four machine-checked invariants, catalog budgets, and a palindromic snapshot loop. Read `multi-strata-mastery.md` before changing one.
+
+- `procedural-svg-alpha-persistence`: ranked atomic filtration-event frames, Z2 persistence, alpha boundary/barcode, and a maximum-`β₁` semantic static state.
+- `procedural-svg-join-tree`: meaningfully seed-varied PL fields, lower-star birth/merge events, consequential critical/sample-event levels, a structurally audited join tree, and synchronized isolines.
+- `procedural-svg-optimal-transport`: high-precision final `u`/kernel/`v`, iteration-indexed scaling checkpoints and residuals, complete coupling, and constant-mass barycentric motion.
+- `procedural-svg-fast-marching-front`: heap-ordered Eikonal solve, true live trial IDs/times plus live/stale heap counts, contours, and geodesics.
+- `procedural-svg-physarum-network`: a transparent Jones-inspired hybrid with central inoculation, bounded early guidance, separate pre/post trail fields, and a visibly marked, serialized, structurally audited deterministic root and backbone.
+- `procedural-svg-stable-fluid`: exact seeded source evidence, pre/post pressure-projection fields with a 35% residual-ratio gate, projected dye transport, cell-center mapping, and projected streamlines.
+
+Keep computation independent from rendering. Hash canonical solver state independently of viewport and presentation, derive animated frames and the semantic static frame from one result, and bind every rendered stratum to the canonical renderer. Run the canonical adversarial test; a solver is not valid because its image looks plausible.
+
 ### Recursive growth
 
 Store generation, depth, parent, and reveal order on every produced segment or mark.
@@ -125,6 +139,7 @@ When adding a pattern:
 
 1. Choose one canonical family and a semantic `procedural-svg-<slug>` ID.
 2. Declare the generator, time signal, animated channels, motion engine, final state, seed behavior, and loop invariant.
-3. Reuse an existing renderer only when the visual mechanism remains distinct after parameters change.
-4. Make the same seed byte-stable; make a different seed change generated geometry without breaking structure.
-5. Add the pattern to the machine catalog, generator, gallery, reference routing, and validator inventory together.
+3. For a multi-strata solver, also declare `revision`, `reference`, ordered `strata`, typed `parameters`, numerical `invariants`, output `budgets`, event/step frame policy, and semantic static-frame policy. Emit resolved values, canonical diagnostics, and a viewport-independent solver-state digest.
+4. Reuse an existing renderer only when the visual mechanism remains distinct after parameters change.
+5. Make the same seed byte-stable; make a different seed change generated geometry without breaking structure.
+6. Add the pattern to the machine catalog, generator, gallery, reference routing, and validator inventory together.

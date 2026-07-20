@@ -24,6 +24,7 @@ Use this inventory when exploring capabilities or designing a pattern that is no
 | Deterministic sampling | uniform, stratified, jittered, Poisson-disc-like, low-discrepancy, weighted/rejection sampling |
 | Mathematical packing | phyllotaxis, circle packing, Apollonian-like packing, recursive subdivision |
 | Spatial partitions | Delaunay, Voronoi, nearest-site sampled cells, quadtrees, kd-like partitions |
+| Topological complexes | Delaunay simplices, alpha complexes, filtrations, boundary chains, persistence barcodes |
 | Hierarchies | trees, dendrograms, radial trees, treemaps, packs, recursive nesting |
 | Networks | adjacency layouts, force-directed placement, route grids, edge bundling, port/lane routing |
 | Tiling | Truchet, Wang-style edge rules, substitution tilings, Penrose-like systems, quasicrystal samples |
@@ -51,6 +52,11 @@ Use this inventory when exploring capabilities or designing a pattern that is no
 | Constraint physics | springs, dampers, Verlet chains/cloth, rods, distance constraints, inverse-kinematic approximations |
 | Cellular systems | Life-like rules, cyclic automata, elementary automata, Langton-style walkers, graph automata |
 | Continuous fields | reaction-diffusion, wave equations, diffusion/decay, potential relaxation, coupled maps |
+| Topological analysis | lower-star sweeps, union-find merge trees, critical events, Z2 reduction, Betti/Euler checks |
+| Mass transport | entropic Sinkhorn scaling, Gibbs cost kernels, coupling marginals, barycentric interpolation |
+| Front propagation | upwind Eikonal updates, heap-ordered Fast Marching, accepted/trial sets, arrival contours, gradient backtracing |
+| Agent-field coupling | three-sensor steering, trail deposition, buffered diffusion/decay, transport networks |
+| Incompressible flow | semi-Lagrangian advection, iterative diffusion, pressure projection, dye transport, sampled streamlines |
 | Accretion and growth | DLA, random walks, Eden-like growth, space colonization, vein networks, recursive branching |
 | Grammars and fractals | L-systems, iterated function systems, turtle graphics, midpoint displacement, recursive substitution |
 | Optimization/evolution | Lloyd relaxation, iterative packing, hill-climbing layouts, genetic parameter search when explicitly bounded |
@@ -118,5 +124,6 @@ Examples:
 - Cellular grid × sampled contours × stepped states × `d`/color × goo × seek input × inline SVG/WAAPI.
 - Tiling × radial distance × wave phase × transform/fill × mask × reduced-motion-aware clock × CSS.
 - Projected ribbon × depth order × camera phase × path/viewBox × lighting × scroll × scripted inline SVG.
+- Solver substrate × typed state × invariant analysis × extracted geometry × palindromic snapshots × precomputed SMIL.
 
 Reject a combination when the compositor hides semantics, the driver conflicts with the embedding mode, topology cannot remain stable, or reduced motion would remove the only meaningful state.

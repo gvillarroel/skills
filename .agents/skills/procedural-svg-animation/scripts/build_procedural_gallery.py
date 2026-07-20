@@ -17,6 +17,7 @@ import argparse
 import hashlib
 import html
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -35,8 +36,6 @@ DEFAULT_OUTPUT_DIR = (
     SKILL_ROOT / "assets" / "examples" / "procedural-svg-animation"
 )
 PAGE_ID = "procedural-svg-animation"
-EXPECTED_PATTERN_COUNT = 60
-EXPECTED_FAMILY_COUNT = 10
 MANAGED_PAGE_FILES = ("index.html", "gallery.css", "gallery.js", "manifest.json")
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 REMOTE_REFERENCE_RE = re.compile(
@@ -205,7 +204,7 @@ a { color: inherit; }
 
 .family-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 0.8rem;
 }
 
@@ -439,6 +438,7 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
 
 .metadata-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.85rem 0 0; padding: 0; list-style: none; }
 .metadata-list li { padding: 0.35rem 0.52rem; color: #475362; border: 1px solid rgba(24,32,42,0.1); border-radius: 999px; background: rgba(255,255,255,0.47); font-size: 0.68rem; font-weight: 760; }
+.metadata-list .diagnostic-pill { color: #173b35; border-color: rgba(33, 127, 111, 0.25); background: rgba(126, 231, 220, 0.24); }
 
 .card-controls {
   display: grid;
@@ -492,9 +492,9 @@ body[data-reduced-motion="true"] .motion-note { display: inline; }
 [data-family-id="tiling"], [data-family-filter="tiling"] { --family-accent: #f7dd72; }
 [data-family-id="paint"], [data-family-filter="paint"] { --family-accent: #ff9776; }
 [data-family-id="composition"], [data-family-filter="composition"] { --family-accent: #77d5ff; }
+[data-family-id="multistrata"], [data-family-filter="multistrata"] { --family-accent: #c8a7ff; }
 
 @media (max-width: 1180px) {
-  .family-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .catalog-toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -537,6 +537,14 @@ GALLERY_JS = r"""(() => {
   const pauseAllButton = document.querySelector("#pause-all");
   let replaySerial = 0;
   let globalPauseActive = false;
+
+  function decodedHashId() {
+    try { return decodeURIComponent(location.hash.slice(1)); }
+    catch (_error) { return ""; }
+  }
+
+  const initialHashTarget = document.getElementById(decodedHashId());
+  let deferHashNeighborLoading = Boolean(initialHashTarget?.classList.contains("pattern-card"));
 
   const normalize = value => String(value || "").trim().toLocaleLowerCase();
 
@@ -695,7 +703,7 @@ GALLERY_JS = r"""(() => {
   }
 
   function revealHashTarget() {
-    const id = decodeURIComponent(location.hash.slice(1));
+    const id = decodedHashId();
     if (!id) return;
     const target = document.getElementById(id);
     if (!target?.classList.contains("pattern-card")) return;
@@ -706,18 +714,47 @@ GALLERY_JS = r"""(() => {
       applyFilters({ announce: false });
     }
     loadPreview(target);
-    requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+    requestAnimationFrame(() => {
+      const root = document.documentElement;
+      const previousBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      target.scrollIntoView({ block: "start", behavior: "instant" });
+      requestAnimationFrame(() => {
+        root.style.scrollBehavior = previousBehavior;
+        if (deferHashNeighborLoading) {
+          requestAnimationFrame(() => {
+            window.addEventListener("scroll", releaseDeferredPreviewLoading, { once: true, passive: true });
+          });
+        }
+      });
+    });
   }
 
-  const previewObserver = "IntersectionObserver" in window
+  let previewObserver = "IntersectionObserver" in window
     ? new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting || entry.target.hidden) return;
+          if (deferHashNeighborLoading && entry.target !== initialHashTarget) return;
           loadPreview(entry.target);
           previewObserver.unobserve(entry.target);
         });
-      }, { rootMargin: "1000px 0px" })
+      }, { rootMargin: "180px 0px" })
     : null;
+
+  function releaseDeferredPreviewLoading() {
+    if (!deferHashNeighborLoading) return;
+    deferHashNeighborLoading = false;
+    if (!previewObserver) return;
+    cards.forEach(card => {
+      if (previewFor(card)?.dataset.loaded === "true") return;
+      previewObserver.unobserve(card);
+      previewObserver.observe(card);
+    });
+  }
+
+  for (const eventName of ["wheel", "touchstart", "pointerdown", "keydown"]) {
+    window.addEventListener(eventName, releaseDeferredPreviewLoading, { once: true, passive: true });
+  }
 
   cards.forEach((card, index) => {
     const preview = previewFor(card);
@@ -819,20 +856,36 @@ def require_text(value: Any, field: str, record: str) -> str:
     return value.strip()
 
 
+def require_positive_catalog_int(catalog: dict[str, Any], field: str) -> int:
+    value = catalog.get(field)
+    if not isinstance(value, int) or isinstance(value, bool) or value < 1:
+        raise SystemExit(f"Pattern catalog {field} must be a positive integer.")
+    return value
+
+
 def validate_catalog(catalog: dict[str, Any]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     if catalog.get("namespace") != "procedural-svg":
         raise SystemExit("Pattern catalog namespace must be procedural-svg.")
+    require_positive_catalog_int(catalog, "version")
     families_value = catalog.get("families")
     patterns_value = catalog.get("patterns")
     if not isinstance(families_value, list) or not isinstance(patterns_value, list):
         raise SystemExit("Pattern catalog requires families and patterns arrays.")
-    if len(families_value) != EXPECTED_FAMILY_COUNT:
+    expected_pattern_count = require_positive_catalog_int(catalog, "expectedPatternCount")
+    expected_renderer_count = require_positive_catalog_int(catalog, "expectedRendererCount")
+    patterns_per_family = require_positive_catalog_int(catalog, "patternsPerFamily")
+    if expected_pattern_count % patterns_per_family:
         raise SystemExit(
-            f"Gallery requires {EXPECTED_FAMILY_COUNT} families; found {len(families_value)}."
+            "Pattern catalog expectedPatternCount must be divisible by patternsPerFamily."
         )
-    if len(patterns_value) != EXPECTED_PATTERN_COUNT:
+    expected_family_count = expected_pattern_count // patterns_per_family
+    if len(families_value) != expected_family_count:
         raise SystemExit(
-            f"Gallery requires {EXPECTED_PATTERN_COUNT} patterns; found {len(patterns_value)}."
+            f"Gallery catalog declares {expected_family_count} families; found {len(families_value)}."
+        )
+    if len(patterns_value) != expected_pattern_count:
+        raise SystemExit(
+            f"Gallery catalog declares {expected_pattern_count} patterns; found {len(patterns_value)}."
         )
 
     families: list[dict[str, Any]] = []
@@ -886,6 +939,62 @@ def validate_catalog(catalog: dict[str, Any]) -> tuple[list[dict[str, Any]], lis
             "signature": require_text(raw.get("signature"), "signature", pattern_id),
             "description": require_text(raw.get("description"), "description", pattern_id),
         }
+        for optional_field in (
+            "revision",
+            "loopMode",
+            "reference",
+            "strata",
+            "invariants",
+            "parameters",
+            "budgets",
+        ):
+            if optional_field in raw:
+                normalized[optional_field] = raw[optional_field]
+        if "revision" in normalized and (
+            not isinstance(normalized["revision"], int)
+            or isinstance(normalized["revision"], bool)
+            or normalized["revision"] < 1
+        ):
+            raise SystemExit(f"Pattern {pattern_id} revision must be a positive integer.")
+        if "reference" in normalized:
+            normalized["reference"] = require_text(
+                normalized["reference"], "reference", pattern_id
+            )
+        if "loopMode" in normalized:
+            normalized["loopMode"] = require_text(
+                normalized["loopMode"], "loopMode", pattern_id
+            )
+        structured_types = {
+            "strata": list,
+            "invariants": list,
+            "parameters": dict,
+            "budgets": dict,
+        }
+        for field, expected_type in structured_types.items():
+            if field in normalized and not isinstance(normalized[field], expected_type):
+                raise SystemExit(
+                    f"Pattern {pattern_id} {field} must be a {expected_type.__name__}."
+                )
+        if "strata" in normalized:
+            required_mastery_fields = {
+                "revision",
+                "loopMode",
+                "reference",
+                "strata",
+                "invariants",
+                "parameters",
+                "budgets",
+            }
+            missing_mastery_fields = sorted(required_mastery_fields - normalized.keys())
+            if missing_mastery_fields:
+                raise SystemExit(
+                    f"Pattern {pattern_id} is missing mastery fields: "
+                    f"{', '.join(missing_mastery_fields)}."
+                )
+            if not normalized["strata"] or not normalized["invariants"]:
+                raise SystemExit(
+                    f"Pattern {pattern_id} requires non-empty strata and invariants arrays."
+                )
         patterns.append(normalized)
         pattern_ids.append(pattern_id)
         example_ids.append(example_id)
@@ -896,14 +1005,23 @@ def validate_catalog(catalog: dict[str, Any]) -> tuple[list[dict[str, Any]], lis
         raise SystemExit(f"Duplicate pattern IDs: {', '.join(duplicates)}")
     if duplicate_examples:
         raise SystemExit(f"Duplicate local example IDs: {', '.join(duplicate_examples)}")
+    renderers = {str(pattern["renderer"]) for pattern in patterns}
+    if len(renderers) != expected_renderer_count:
+        raise SystemExit(
+            f"Gallery catalog declares {expected_renderer_count} renderers; found "
+            f"{len(renderers)} ({', '.join(sorted(renderers))})."
+        )
     family_counts = Counter(pattern["family"] for pattern in patterns)
     unexpected_counts = {
         family_id: family_counts[family_id]
         for family_id in family_ids
-        if family_counts[family_id] != 6
+        if family_counts[family_id] != patterns_per_family
     }
     if unexpected_counts:
-        raise SystemExit(f"Each family must contain six patterns; found {unexpected_counts}.")
+        raise SystemExit(
+            f"Each family must contain {patterns_per_family} patterns; found "
+            f"{unexpected_counts}."
+        )
     return families, patterns
 
 
@@ -1095,6 +1213,194 @@ def first_present(values: dict[str, str], names: Iterable[str], fallback: Any) -
     return fallback
 
 
+def canonical_json(value: Any) -> str:
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def is_finite_number(value: Any) -> bool:
+    return (
+        isinstance(value, (int, float))
+        and not isinstance(value, bool)
+        and math.isfinite(float(value))
+    )
+
+
+def invariant_holds(value: float | int, operator: str, threshold: float | int) -> bool:
+    if operator == "eq":
+        return math.isclose(float(value), float(threshold), rel_tol=0.0, abs_tol=1e-12)
+    if operator == "lte":
+        return value <= threshold
+    if operator == "gte":
+        return value >= threshold
+    raise SystemExit(f"Unsupported diagnostics invariant operator: {operator!r}.")
+
+
+def audit_multistrata_diagnostics(
+    root: ET.Element,
+    root_data: dict[str, str],
+    record: dict[str, Any],
+) -> dict[str, Any]:
+    pattern_id = str(record["id"])
+    expected_id = f"{record['exampleId']}-diagnostics"
+    metadata_nodes = [
+        element
+        for element in list(root)
+        if local_name(element.tag) == "metadata" and element.get("id") == expected_id
+    ]
+    if len(metadata_nodes) != 1:
+        raise SystemExit(
+            f"SVG {pattern_id} requires exactly one direct metadata element with "
+            f"id={expected_id!r}; found {len(metadata_nodes)}."
+        )
+    metadata = metadata_nodes[0]
+    if metadata.get("data-diagnostics-schema") != "1":
+        raise SystemExit(
+            f"SVG {pattern_id} diagnostics metadata must expose data-diagnostics-schema=\"1\"."
+        )
+    if list(metadata):
+        raise SystemExit(f"SVG {pattern_id} diagnostics metadata must contain JSON text only.")
+    raw_json = metadata.text or ""
+    try:
+        diagnostics = json.loads(raw_json)
+    except json.JSONDecodeError as error:
+        raise SystemExit(
+            f"SVG {pattern_id} diagnostics metadata is not valid JSON: {error}."
+        ) from error
+    if not isinstance(diagnostics, dict):
+        raise SystemExit(f"SVG {pattern_id} diagnostics metadata must be a JSON object.")
+    expected_keys = {
+        "schemaVersion",
+        "patternId",
+        "revision",
+        "parameters",
+        "strata",
+        "metrics",
+        "invariants",
+        "stateDigest",
+        "allPassed",
+    }
+    if set(diagnostics) != expected_keys:
+        missing = sorted(expected_keys - diagnostics.keys())
+        extra = sorted(diagnostics.keys() - expected_keys)
+        raise SystemExit(
+            f"SVG {pattern_id} diagnostics keys differ from the v1 contract; "
+            f"missing={missing}, extra={extra}."
+        )
+    canonical = canonical_json(diagnostics)
+    if raw_json != canonical:
+        raise SystemExit(f"SVG {pattern_id} diagnostics JSON is not canonical compact sorted JSON.")
+    diagnostics_hash = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    if root_data.get("diagnostics-hash") != diagnostics_hash:
+        raise SystemExit(
+            f"SVG {pattern_id} data-diagnostics-hash does not match its canonical metadata."
+        )
+    if diagnostics.get("schemaVersion") != 1:
+        raise SystemExit(f"SVG {pattern_id} diagnostics schemaVersion must equal 1.")
+    if diagnostics.get("patternId") != pattern_id:
+        raise SystemExit(f"SVG {pattern_id} diagnostics patternId does not match the root.")
+    if diagnostics.get("revision") != record.get("revision"):
+        raise SystemExit(
+            f"SVG {pattern_id} diagnostics revision does not match the catalog revision."
+        )
+
+    expected_parameters: dict[str, Any] = {}
+    for name, specification in record["parameters"].items():
+        if not isinstance(specification, dict) or "default" not in specification:
+            raise SystemExit(
+                f"Pattern {pattern_id} parameter {name!r} requires a default for gallery builds."
+            )
+        expected_parameters[str(name)] = specification["default"]
+    if diagnostics.get("parameters") != expected_parameters:
+        raise SystemExit(
+            f"SVG {pattern_id} diagnostics parameters do not match catalog defaults."
+        )
+    if diagnostics.get("strata") != record["strata"]:
+        raise SystemExit(
+            f"SVG {pattern_id} diagnostics strata do not match the ordered catalog strata."
+        )
+    if root_data.get("strata-count") != str(len(record["strata"])):
+        raise SystemExit(
+            f"SVG {pattern_id} data-strata-count must equal {len(record['strata'])}."
+        )
+
+    metrics = diagnostics.get("metrics")
+    if not isinstance(metrics, dict) or not metrics:
+        raise SystemExit(f"SVG {pattern_id} diagnostics metrics must be a non-empty object.")
+    invalid_metrics = sorted(
+        str(name) for name, value in metrics.items() if not is_finite_number(value)
+    )
+    if invalid_metrics:
+        raise SystemExit(
+            f"SVG {pattern_id} diagnostics contains non-finite metrics: "
+            f"{', '.join(invalid_metrics)}."
+        )
+
+    results = diagnostics.get("invariants")
+    expected_invariants = record["invariants"]
+    if not isinstance(results, list) or len(results) != len(expected_invariants):
+        raise SystemExit(
+            f"SVG {pattern_id} diagnostics must report {len(expected_invariants)} invariants."
+        )
+    result_keys = {"id", "metric", "op", "threshold", "value", "passed"}
+    passed_count = 0
+    for index, (result, expected) in enumerate(zip(results, expected_invariants, strict=True)):
+        if not isinstance(result, dict) or set(result) != result_keys:
+            raise SystemExit(
+                f"SVG {pattern_id} invariant result {index} does not match the v1 contract."
+            )
+        for field in ("id", "metric", "op", "threshold"):
+            if result.get(field) != expected.get(field):
+                raise SystemExit(
+                    f"SVG {pattern_id} invariant {index} {field} differs from the catalog."
+                )
+        metric_name = str(expected["metric"])
+        value = result.get("value")
+        threshold = expected.get("threshold")
+        if metric_name not in metrics or metrics[metric_name] != value:
+            raise SystemExit(
+                f"SVG {pattern_id} invariant {index} value does not match metric {metric_name}."
+            )
+        if not is_finite_number(value) or not is_finite_number(threshold):
+            raise SystemExit(f"SVG {pattern_id} invariant {index} must compare finite numbers.")
+        expected_passed = invariant_holds(value, str(expected["op"]), threshold)
+        if not isinstance(result.get("passed"), bool) or result["passed"] != expected_passed:
+            raise SystemExit(
+                f"SVG {pattern_id} invariant {index} passed flag is inconsistent with its value."
+            )
+        passed_count += int(result["passed"])
+
+    invariant_status = f"{passed_count}/{len(results)}"
+    if root_data.get("invariants-status") != invariant_status:
+        raise SystemExit(
+            f"SVG {pattern_id} data-invariants-status must equal {invariant_status}."
+        )
+    all_passed = passed_count == len(results)
+    if diagnostics.get("allPassed") is not all_passed:
+        raise SystemExit(f"SVG {pattern_id} diagnostics allPassed flag is inconsistent.")
+    if not all_passed:
+        raise SystemExit(f"SVG {pattern_id} failed one or more catalog invariants.")
+    state_digest = diagnostics.get("stateDigest")
+    if not isinstance(state_digest, str) or not re.fullmatch(r"[0-9a-f]{64}", state_digest):
+        raise SystemExit(f"SVG {pattern_id} diagnostics stateDigest must be lowercase SHA-256.")
+    if root_data.get("state-hash") != state_digest:
+        raise SystemExit(f"SVG {pattern_id} data-state-hash must equal diagnostics stateDigest.")
+
+    return {
+        "schemaVersion": 1,
+        "hash": diagnostics_hash,
+        "stateHash": state_digest,
+        "strataCount": len(record["strata"]),
+        "invariantsPassed": passed_count,
+        "invariantsTotal": len(results),
+        "status": invariant_status,
+        "allPassed": all_passed,
+        "parameters": diagnostics["parameters"],
+        "strata": diagnostics["strata"],
+        "metrics": metrics,
+        "invariants": results,
+    }
+
+
 def audit_svg(record: dict[str, Any]) -> dict[str, Any]:
     svg_path = Path(record["svgPath"])
     content = svg_path.read_bytes()
@@ -1202,6 +1508,11 @@ def audit_svg(record: dict[str, Any]) -> dict[str, Any]:
         "hasSmilReducedMotionContract": smil_reduced_motion_contract,
         "hasRemoteReferences": bool(REMOTE_REFERENCE_RE.search(text)),
         "elementCount": sum(counts.values()),
+        "diagnostics": (
+            audit_multistrata_diagnostics(root, data, record)
+            if "strata" in record
+            else None
+        ),
     }
     if audit["scriptCount"]:
         raise SystemExit(f"Gallery SVG {record['id']} must not contain scripts.")
@@ -1260,16 +1571,36 @@ def pattern_cards_html(records: list[dict[str, Any]], family_map: dict[str, dict
         family_id = str(record["family"])
         family = family_map[family_id]
         audit = record["svgAudit"]
+        diagnostics = audit.get("diagnostics")
         svg_url = f"./patterns/{pattern_id}.svg"
-        search = " ".join(
+        searchable_values = [
             str(record[key])
             for key in ("id", "name", "family", "driver", "technique", "signature", "description")
-        ).lower()
+        ]
+        searchable_values.extend(
+            canonical_json(record[key])
+            for key in ("reference", "strata", "invariants", "parameters")
+            if key in record
+        )
+        search = " ".join(searchable_values).lower()
         short_hash = str(audit["sha256"])[:12]
         duration = str(audit["durationMs"])
         duration_label = f"{duration} ms" if duration.isdigit() else duration
+        diagnostics_attributes = ""
+        diagnostics_pill = ""
+        if diagnostics:
+            diagnostics_attributes = (
+                f' data-svg-strata-count="{diagnostics["strataCount"]}"'
+                f' data-svg-invariants-status="{escape(diagnostics["status"], quote=True)}"'
+                f' data-svg-diagnostics-hash="{escape(diagnostics["hash"], quote=True)}"'
+                f' data-svg-state-hash="{escape(diagnostics["stateHash"], quote=True)}"'
+            )
+            diagnostics_pill = (
+                f'\n          <li class="diagnostic-pill">{diagnostics["strataCount"]} strata · '
+                f'{escape(diagnostics["status"])} checks</li>'
+            )
         cards.append(
-            f'''    <article class="pattern-card" id="{escape(pattern_id, quote=True)}" data-example-id="{escape(example_id, quote=True)}" data-pattern-id="{escape(pattern_id, quote=True)}" data-family-id="{escape(family_id, quote=True)}" data-driver="{escape(record['driver'], quote=True)}" data-renderer="{escape(record['renderer'], quote=True)}" data-technique="{escape(record['technique'], quote=True)}" data-search="{escape(search, quote=True)}" data-playback-state="queued" data-svg-seed="{escape(audit['seed'], quote=True)}" data-svg-duration-ms="{escape(audit['durationMs'], quote=True)}" data-svg-motion-engine="{escape(audit['motionEngine'], quote=True)}" data-svg-parameter-hash="{escape(audit['parameterHash'], quote=True)}" data-svg-sha256="{escape(audit['sha256'], quote=True)}" data-svg-motion-count="{audit['motionElementCount'] + audit['cssKeyframeCount']}" data-svg-reduced-motion="{str(audit['hasReducedMotionRule']).lower()}">
+            f'''    <article class="pattern-card" id="{escape(pattern_id, quote=True)}" data-example-id="{escape(example_id, quote=True)}" data-pattern-id="{escape(pattern_id, quote=True)}" data-family-id="{escape(family_id, quote=True)}" data-driver="{escape(record['driver'], quote=True)}" data-renderer="{escape(record['renderer'], quote=True)}" data-technique="{escape(record['technique'], quote=True)}" data-search="{escape(search, quote=True)}" data-playback-state="queued" data-svg-seed="{escape(audit['seed'], quote=True)}" data-svg-duration-ms="{escape(audit['durationMs'], quote=True)}" data-svg-motion-engine="{escape(audit['motionEngine'], quote=True)}" data-svg-parameter-hash="{escape(audit['parameterHash'], quote=True)}" data-svg-sha256="{escape(audit['sha256'], quote=True)}" data-svg-motion-count="{audit['motionElementCount'] + audit['cssKeyframeCount']}" data-svg-reduced-motion="{str(audit['hasReducedMotionRule']).lower()}"{diagnostics_attributes}>
       <div class="preview-shell">
         <span class="preview-state" data-preview-state>Queued</span>
         <object class="pattern-preview" data-pattern-preview data-source="{escape(svg_url, quote=True)}" type="image/svg+xml" aria-label="Animated preview of {escape(record['name'], quote=True)}">
@@ -1287,7 +1618,7 @@ def pattern_cards_html(records: list[dict[str, Any]], family_map: dict[str, dict
           <li>seed {escape(audit['seed'])}</li>
           <li>{escape(duration_label)}</li>
           <li>{audit['elementCount']} elements</li>
-          <li>sha {escape(short_hash)}</li>
+          <li>sha {escape(short_hash)}</li>{diagnostics_pill}
         </ul>
         <div class="card-controls" aria-label="Playback controls for {escape(record['name'], quote=True)}">
           <button class="button" type="button" data-action="pause">Pause</button>
@@ -1302,6 +1633,7 @@ def pattern_cards_html(records: list[dict[str, Any]], family_map: dict[str, dict
 
 
 def render_index(
+    catalog: dict[str, Any],
     families: list[dict[str, Any]],
     records: list[dict[str, Any]],
     catalog_hash: str,
@@ -1309,34 +1641,43 @@ def render_index(
     family_map = {str(family["id"]): family for family in families}
     family_labels = {str(family["id"]): str(family["title"]) for family in families}
     drivers = sorted({str(record["driver"]) for record in records}, key=str.casefold)
+    renderer_count = len({str(record["renderer"]) for record in records})
     family_options = select_options((str(family["id"]) for family in families), family_labels)
     driver_options = select_options(drivers)
+    page_description = (
+        f"{len(records)} deterministic procedural SVG animation patterns across "
+        f"{len(families)} reusable technique families."
+    )
     return f'''<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sixty deterministic procedural SVG animation patterns across ten reusable technique families.">
+  <meta name="description" content="{escape(page_description, quote=True)}">
   <meta name="example-id" content="{PAGE_ID}">
   <meta name="pattern-id" content="{PAGE_ID}">
   <meta name="pattern-page" content="true">
   <meta name="pattern-count" content="{len(records)}">
   <meta name="family-count" content="{len(families)}">
+  <meta name="renderer-count" content="{renderer_count}">
+  <meta name="catalog-version" content="{escape(catalog.get('version'), quote=True)}">
+  <meta name="patterns-per-family" content="{escape(catalog.get('patternsPerFamily'), quote=True)}">
   <meta name="catalog-hash" content="{catalog_hash}">
   <title>Procedural SVG Animation Patterns</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111827'/%3E%3Cpath d='M12 39C22 7 42 57 52 25' fill='none' stroke='%235eead4' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="./gallery.css">
 </head>
-<body data-example-id="{PAGE_ID}" data-pattern-id="{PAGE_ID}" data-pattern-page="true" data-pattern-count="{len(records)}" data-family-count="{len(families)}" data-catalog-hash="{catalog_hash}" data-reduced-motion="false">
+<body data-example-id="{PAGE_ID}" data-pattern-id="{PAGE_ID}" data-pattern-page="true" data-pattern-count="{len(records)}" data-family-count="{len(families)}" data-renderer-count="{renderer_count}" data-catalog-version="{escape(catalog.get('version'), quote=True)}" data-patterns-per-family="{escape(catalog.get('patternsPerFamily'), quote=True)}" data-catalog-hash="{catalog_hash}" data-reduced-motion="false">
   <a class="skip-link" href="#catalog-heading">Skip to pattern catalog</a>
   <main class="page-shell">
     <header class="hero">
       <p class="eyebrow">Deterministic motion systems · acceptance catalog</p>
       <h1>Procedural SVG Animation</h1>
-      <p class="hero-copy">Sixty self-contained SVG mechanisms organized as reusable families: timing, kinematics, path choreography, parametric curves, fields, simulation, growth, tiling, paint, and hybrid composition.</p>
+      <p class="hero-copy">{len(records)} self-contained SVG mechanisms organized into {len(families)} reusable families, from timing and geometry through simulations, hybrid composition, and auditable multi-strata numerical solvers.</p>
       <div class="hero-meta" aria-label="Catalog summary">
         <span><strong>{len(records)}</strong>&nbsp;canonical patterns</span>
         <span><strong>{len(families)}</strong>&nbsp;families</span>
+        <span><strong>{renderer_count}</strong>&nbsp;renderers</span>
         <span>seeded · standalone · replayable</span>
         <a class="manifest-link" href="./manifest.json">JSON manifest</a>
       </div>
@@ -1355,13 +1696,13 @@ def render_index(
     <section aria-labelledby="catalog-heading">
       <div class="section-heading">
         <h2 id="catalog-heading">Pattern catalog</h2>
-        <p>Search by canonical ID, mechanism, formula, family, or driver. Every preview links to its standalone SVG and exposes deterministic audit metadata.</p>
+        <p>Search by canonical ID, mechanism, formula, family, driver, stratum, or invariant. Every preview links to its standalone SVG and exposes deterministic audit metadata.</p>
       </div>
 
       <div class="catalog-toolbar" aria-label="Pattern filters and playback controls">
         <label class="control-field">
           <span>Search</span>
-          <input id="pattern-search" type="search" placeholder="Try curl, morph, field, SMIL…" autocomplete="off">
+          <input id="pattern-search" type="search" placeholder="Try curl, Sinkhorn, stratum, SMIL…" autocomplete="off">
         </label>
         <label class="control-field">
           <span>Family</span>
@@ -1401,7 +1742,7 @@ def render_index(
     </section>
 
     <footer class="page-footer">
-      <span>Generated from <code>assets/pattern-specs.json</code>.</span>
+      <span>Generated from catalog v{escape(catalog.get('version'))} · {escape(catalog.get('patternsPerFamily'))} patterns per family.</span>
       <span>Catalog fingerprint <code>{catalog_hash}</code></span>
     </footer>
   </main>
@@ -1425,7 +1766,7 @@ def build_manifest(
 ) -> dict[str, Any]:
     family_map = {str(family["id"]): family for family in families}
     return {
-        "version": 1,
+        "version": 2,
         "pageId": PAGE_ID,
         "title": "Procedural SVG Animation Patterns",
         "description": "Deterministic standalone SVG motion mechanisms and reusable combinations.",
@@ -1435,6 +1776,15 @@ def build_manifest(
         "catalogHash": catalog_hash,
         "patternCount": len(records),
         "familyCount": len(families),
+        "rendererCount": len({str(record["renderer"]) for record in records}),
+        "catalogContract": {
+            "expectedPatternCount": catalog.get("expectedPatternCount"),
+            "expectedFamilyCount": (
+                int(catalog["expectedPatternCount"]) // int(catalog["patternsPerFamily"])
+            ),
+            "expectedRendererCount": catalog.get("expectedRendererCount"),
+            "patternsPerFamily": catalog.get("patternsPerFamily"),
+        },
         "defaults": {
             "width": width,
             "height": height,
@@ -1465,6 +1815,19 @@ def build_manifest(
                     "description",
                     "seed",
                 )
+            }
+            | {
+                key: record[key]
+                for key in (
+                    "revision",
+                    "loopMode",
+                    "reference",
+                    "strata",
+                    "invariants",
+                    "parameters",
+                    "budgets",
+                )
+                if key in record
             }
             | {
                 "familyTitle": family_map[str(record["family"])]["title"],
@@ -1525,7 +1888,7 @@ def materialize_build(
     )
     write_text(destination / "gallery.css", GALLERY_CSS.strip() + "\n")
     write_text(destination / "gallery.js", GALLERY_JS.strip() + "\n")
-    write_text(destination / "index.html", render_index(families, records, catalog_hash))
+    write_text(destination / "index.html", render_index(catalog, families, records, catalog_hash))
     write_text(
         destination / "manifest.json",
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",

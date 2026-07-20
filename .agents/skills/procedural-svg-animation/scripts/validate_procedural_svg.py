@@ -20,6 +20,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Iterable
 
+from multistrata_core import compute_multistrata
+
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = SKILL_ROOT / "assets" / "pattern-specs.json"
@@ -33,6 +35,7 @@ REQUIRED_ROOT_METADATA = (
     "data-family",
     "data-renderer",
     "data-variant",
+    "data-pattern-revision",
     "data-seed",
     "data-palette",
     "data-motion",
@@ -45,6 +48,7 @@ REQUIRED_ROOT_METADATA = (
     "data-technique",
     "data-deterministic",
     "data-standalone",
+    "data-parameter-values",
     "data-parameter-hash",
 )
 MOTION_TAGS = {"animate", "animateMotion", "animateTransform", "set"}
@@ -64,21 +68,201 @@ NUMERIC_GEOMETRY_ATTRIBUTES = {
 }
 
 
+def reject_duplicate_object_keys(pairs: list[tuple[str, object]]) -> dict[str, object]:
+    result: dict[str, object] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"Duplicate JSON object key: {key!r}.")
+        result[key] = value
+    return result
+
+
+def strict_json_loads(raw: str) -> object:
+    def reject_constant(value: str) -> object:
+        raise ValueError(f"Non-finite JSON constant is forbidden: {value}.")
+
+    return json.loads(
+        raw,
+        object_pairs_hook=reject_duplicate_object_keys,
+        parse_constant=reject_constant,
+    )
+
+
 def local_name(name: str) -> str:
     return name.rsplit("}", 1)[-1]
 
 
 def load_catalog() -> dict[str, dict[str, object]]:
-    data = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
+    data = strict_json_loads(CATALOG_PATH.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError("Bundled pattern catalog must contain one JSON object.")
     entries = data.get("patterns")
     if not isinstance(entries, list):
         raise ValueError("Bundled pattern catalog is missing its patterns array.")
     result: dict[str, dict[str, object]] = {}
+    renderer_variants: set[tuple[str, int]] = set()
     for entry in entries:
         if not isinstance(entry, dict) or not isinstance(entry.get("id"), str):
             raise ValueError("Bundled pattern catalog contains an invalid entry.")
-        result[str(entry["id"])] = entry
+        pattern_id = str(entry["id"])
+        if pattern_id in result:
+            raise ValueError(f"Bundled pattern catalog contains duplicate ID {pattern_id!r}.")
+        renderer = entry.get("renderer")
+        variant = entry.get("variant")
+        if (
+            not isinstance(renderer, str)
+            or not isinstance(variant, int)
+            or isinstance(variant, bool)
+        ):
+            raise ValueError(f"Catalog pattern {pattern_id!r} has an invalid renderer/variant.")
+        renderer_variant = (renderer, variant)
+        if renderer_variant in renderer_variants:
+            raise ValueError(f"Catalog contains duplicate renderer/variant {renderer}/{variant}.")
+        renderer_variants.add(renderer_variant)
+        result[pattern_id] = entry
+    expected_count = data.get("expectedPatternCount")
+    if (
+        not isinstance(expected_count, int)
+        or isinstance(expected_count, bool)
+        or len(result) != expected_count
+    ):
+        raise ValueError(
+            f"Catalog expectedPatternCount is {expected_count!r}, but {len(result)} entries were loaded."
+        )
+    expected_renderer_count = data.get("expectedRendererCount")
+    if (
+        not isinstance(expected_renderer_count, int)
+        or isinstance(expected_renderer_count, bool)
+        or len({key[0] for key in renderer_variants}) != expected_renderer_count
+    ):
+        raise ValueError("Catalog renderer count does not match expectedRendererCount.")
+    families = data.get("families")
+    patterns_per_family = data.get("patternsPerFamily")
+    if (
+        not isinstance(families, list)
+        or not isinstance(patterns_per_family, int)
+        or isinstance(patterns_per_family, bool)
+        or patterns_per_family < 1
+    ):
+        raise ValueError("Catalog requires families and patternsPerFamily.")
+    family_ids: list[str] = []
+    for family in families:
+        if not isinstance(family, dict) or not isinstance(family.get("id"), str):
+            raise ValueError("Catalog contains an invalid family record.")
+        family_ids.append(str(family["id"]))
+    if len(set(family_ids)) != len(family_ids):
+        raise ValueError("Catalog contains duplicate family IDs.")
+    for family_id in family_ids:
+        count = sum(entry.get("family") == family_id for entry in result.values())
+        if count != patterns_per_family:
+            raise ValueError(
+                f"Catalog family {family_id!r} has {count} patterns, expected {patterns_per_family}."
+            )
+    if any(entry.get("family") not in family_ids for entry in result.values()):
+        raise ValueError("Catalog pattern references an unknown family.")
+    for entry in result.values():
+        validate_catalog_mastery_entry(entry)
     return result
+
+
+def validate_catalog_mastery_entry(entry: dict[str, object]) -> None:
+    mastery_fields = {
+        "revision", "loopMode", "reference", "strata", "invariants", "parameters", "budgets"
+    }
+    is_mastery = (
+        entry.get("renderer") == "multistrata"
+        or entry.get("family") == "multistrata"
+        or bool(mastery_fields & set(entry))
+    )
+    if not is_mastery:
+        return
+    pattern_id = str(entry.get("id"))
+    missing = sorted(mastery_fields - set(entry))
+    if missing:
+        raise ValueError(f"Catalog pattern {pattern_id} is missing mastery fields: {', '.join(missing)}.")
+    if (
+        not isinstance(entry.get("revision"), int)
+        or isinstance(entry.get("revision"), bool)
+        or int(entry["revision"]) < 1
+    ):
+        raise ValueError(f"Catalog pattern {pattern_id} has an invalid revision.")
+    if entry.get("loopMode") != "palindromic-snapshots":
+        raise ValueError(f"Catalog pattern {pattern_id} has an invalid loopMode.")
+    strata = entry.get("strata")
+    if not isinstance(strata, list) or len(strata) < 4:
+        raise ValueError(f"Catalog pattern {pattern_id} requires at least four strata.")
+    stratum_ids: list[str] = []
+    for value in strata:
+        if not isinstance(value, dict) or any(
+            not isinstance(value.get(key), str) or not value.get(key)
+            for key in ("id", "role", "input", "output")
+        ):
+            raise ValueError(f"Catalog pattern {pattern_id} has an invalid stratum.")
+        stratum_ids.append(str(value["id"]))
+    if len(set(stratum_ids)) != len(stratum_ids):
+        raise ValueError(f"Catalog pattern {pattern_id} has duplicate strata.")
+    invariants = entry.get("invariants")
+    if not isinstance(invariants, list) or len(invariants) < 2:
+        raise ValueError(f"Catalog pattern {pattern_id} requires invariants.")
+    invariant_ids: list[str] = []
+    metric_ids: list[str] = []
+    for value in invariants:
+        if (
+            not isinstance(value, dict)
+            or not isinstance(value.get("id"), str)
+            or not isinstance(value.get("metric"), str)
+            or value.get("op") not in {"eq", "lte", "gte"}
+            or not isinstance(value.get("threshold"), (int, float))
+            or isinstance(value.get("threshold"), bool)
+            or not math.isfinite(float(value["threshold"]))
+        ):
+            raise ValueError(f"Catalog pattern {pattern_id} has an invalid invariant.")
+        invariant_ids.append(str(value["id"]))
+        metric_ids.append(str(value["metric"]))
+    if len(set(invariant_ids)) != len(invariant_ids) or len(set(metric_ids)) != len(metric_ids):
+        raise ValueError(f"Catalog pattern {pattern_id} has duplicate invariant/metric IDs.")
+    parameters = entry.get("parameters")
+    if not isinstance(parameters, dict):
+        raise ValueError(f"Catalog pattern {pattern_id} requires parameters.")
+    for name, value in parameters.items():
+        if not isinstance(name, str) or not isinstance(value, dict):
+            raise ValueError(f"Catalog pattern {pattern_id} has an invalid parameter.")
+        kind = value.get("type")
+        default = value.get("default")
+        minimum = value.get("minimum")
+        maximum = value.get("maximum")
+        type_ok = (
+            kind == "integer" and isinstance(default, int) and not isinstance(default, bool)
+        ) or (
+            kind == "number"
+            and isinstance(default, (int, float))
+            and not isinstance(default, bool)
+            and math.isfinite(float(default))
+        )
+        if (
+            not type_ok
+            or not isinstance(minimum, (int, float))
+            or isinstance(minimum, bool)
+            or not math.isfinite(float(minimum))
+            or not isinstance(maximum, (int, float))
+            or isinstance(maximum, bool)
+            or not math.isfinite(float(maximum))
+            or minimum > default
+            or default > maximum
+        ):
+            raise ValueError(f"Catalog pattern {pattern_id} parameter {name!r} is invalid.")
+    budgets = entry.get("budgets")
+    if not isinstance(budgets, dict) or any(
+        not isinstance(budgets.get(key), int)
+        or isinstance(budgets.get(key), bool)
+        or int(budgets[key]) < 1
+        for key in ("maxBytes", "maxElements", "maxMotionElements")
+    ):
+        raise ValueError(f"Catalog pattern {pattern_id} has invalid budgets.")
+
+
+def canonical_json(value: object) -> str:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
 def parse_number(value: str, label: str, errors: list[str]) -> float | None:
@@ -122,11 +306,18 @@ def validate_finite_geometry(elements: list[ET.Element], errors: list[str]) -> N
                 remainder = SVG_NUMBER.sub("", raw_value).replace(",", "").strip()
                 if remainder or len(tokens) < 4 or len(tokens) % 2:
                     errors.append(f"<{tag}> #{element_index + 1} has malformed points data.")
+                elif any(not math.isfinite(float(token)) for token in tokens):
+                    errors.append(f"<{tag}> #{element_index + 1} has non-finite points data.")
             elif name == "d":
+                tokens = SVG_NUMBER.findall(raw_value)
                 remainder = SVG_NUMBER.sub("", raw_value)
                 remainder = re.sub(r"[MmZzLlHhVvCcSsQqTtAa,\s]", "", remainder)
-                if remainder:
+                if not raw_value.strip() or not tokens:
+                    errors.append(f"<{tag}> #{element_index + 1} has empty path data.")
+                elif remainder:
                     errors.append(f"<{tag}> #{element_index + 1} has malformed path data near {remainder[:24]!r}.")
+                elif any(not math.isfinite(float(token)) for token in tokens):
+                    errors.append(f"<{tag}> #{element_index + 1} has non-finite path data.")
 
 
 def clock_value_ms(value: str) -> float | None:
@@ -339,21 +530,249 @@ def validate_loop_contract(
     return smil_count, css_count
 
 
+def validate_palindromic_snapshots(
+    elements: list[ET.Element], expected_frame_count: int, errors: list[str]
+) -> None:
+    animated_layers = [
+        element for element in elements if element.get("data-motion-layer") == "animated"
+    ]
+    if len(animated_layers) != 1:
+        errors.append("Palindromic playback requires exactly one animated motion layer.")
+        return
+    animations = [
+        element
+        for element in animated_layers[0].iter()
+        if local_name(element.tag) in MOTION_TAGS
+    ]
+    if not animations:
+        errors.append("Palindromic playback requires discrete snapshot animations.")
+        return
+    parent_map = {
+        id(child): parent
+        for parent in animated_layers[0].iter()
+        for child in parent
+    }
+    snapshot_groups = [
+        element
+        for element in animated_layers[0].iter()
+        if element.get("data-frame-index") is not None
+    ]
+    expected_indices = list(range(expected_frame_count))
+    expected_playback = list(range(expected_frame_count)) + list(
+        range(expected_frame_count - 2, -1, -1)
+    )
+    expected_values_by_frame = {
+        frame_index: [
+            "1" if playback_index == frame_index else "0"
+            for playback_index in expected_playback
+        ]
+        for frame_index in expected_indices
+    }
+    if not snapshot_groups:
+        errors.append("Palindromic playback requires data-frame-index snapshot groups.")
+    groups_by_parent: dict[int, list[ET.Element]] = {}
+    for group in snapshot_groups:
+        parent = parent_map.get(id(group))
+        if parent is not None:
+            groups_by_parent.setdefault(id(parent), []).append(group)
+        raw_index = group.get("data-frame-index", "")
+        try:
+            frame_index = int(raw_index)
+        except ValueError:
+            errors.append(f"Snapshot group has invalid data-frame-index {raw_index!r}.")
+            continue
+        if str(frame_index) != raw_index or frame_index not in expected_indices:
+            errors.append(
+                f"Snapshot group data-frame-index must be an integer from 0 to "
+                f"{expected_frame_count - 1}."
+            )
+            continue
+        direct_animations = [
+            child for child in group if local_name(child.tag) in MOTION_TAGS
+        ]
+        if len(direct_animations) != 1:
+            errors.append(
+                f"Snapshot frame {frame_index} requires exactly one direct animation child."
+            )
+            continue
+        values = [
+            part.strip()
+            for part in (direct_animations[0].get("values") or "").split(";")
+        ]
+        if values != expected_values_by_frame[frame_index]:
+            errors.append(
+                f"Snapshot frame {frame_index} must use its exact one-hot palindromic schedule."
+            )
+        expected_opacity = "1" if frame_index == 0 else "0"
+        if group.get("opacity") != expected_opacity:
+            errors.append(
+                f"Snapshot frame {frame_index} initial opacity must be {expected_opacity}."
+            )
+    for groups in groups_by_parent.values():
+        actual_indices: list[int] = []
+        for group in groups:
+            raw_index = group.get("data-frame-index", "")
+            if re.fullmatch(r"\d+", raw_index):
+                actual_indices.append(int(raw_index))
+        if actual_indices != expected_indices:
+            errors.append(
+                f"Each snapshot series must contain ordered frame indices {expected_indices!r}."
+            )
+    snapshot_animation_ids = {
+        id(child)
+        for group in snapshot_groups
+        for child in group
+        if local_name(child.tag) in MOTION_TAGS
+    }
+    if snapshot_animation_ids != {id(animation) for animation in animations}:
+        errors.append(
+            "Every palindromic animation must be the direct child of one snapshot group."
+        )
+    for index, animation in enumerate(animations):
+        label = f"Palindromic animation #{index + 1}"
+        if local_name(animation.tag) == "set":
+            errors.append(f"{label} may not use <set>; encode the full snapshot sequence.")
+            continue
+        if animation.get("calcMode") != "discrete":
+            errors.append(f"{label} must use calcMode='discrete'.")
+        if animation.get("attributeName") != "opacity":
+            errors.append(f"{label} must animate snapshot opacity only.")
+        values = [part.strip() for part in (animation.get("values") or "").split(";")]
+        key_times = [part.strip() for part in (animation.get("keyTimes") or "").split(";")]
+        expected_sequence_length = 2 * expected_frame_count - 1
+        if len(values) != expected_sequence_length or len(values) != len(key_times):
+            errors.append(f"{label} requires matching values/keyTimes snapshot sequences.")
+            continue
+        if values != list(reversed(values)):
+            errors.append(f"{label} values must be an exact palindrome.")
+        if set(values) - {"0", "1"} or not {"0", "1"}.issubset(set(values)):
+            errors.append(f"{label} must contain both binary snapshot states 0 and 1.")
+        try:
+            times = [float(value) for value in key_times]
+        except ValueError:
+            errors.append(f"{label} keyTimes must be numeric.")
+            continue
+        if (
+            not math.isclose(times[0], 0.0, abs_tol=1e-12)
+            or not math.isclose(times[-1], 1.0, abs_tol=1e-12)
+            or any(a >= b for a, b in zip(times, times[1:]))
+            or any(
+                not math.isclose(a + b, 1.0, rel_tol=0.0, abs_tol=1e-9)
+                for a, b in zip(times, reversed(times))
+            )
+        ):
+            errors.append(f"{label} keyTimes must be strictly increasing and symmetric about 0.5.")
+
+
+def css_animated_elements(elements: list[ET.Element], style_text: str) -> set[int]:
+    animated: set[int] = set()
+    class_tokens: set[str] = set()
+    for selector, declarations in re.findall(r"([^{}]+)\{([^{}]*)\}", CSS_COMMENT.sub("", style_text)):
+        if not re.search(r"(?:^|;)\s*animation(?:-[a-z-]+)?\s*:\s*(?!none\b)", declarations, re.IGNORECASE):
+            continue
+        class_tokens.update(re.findall(r"\.([-_A-Za-z0-9]+)", selector))
+    for element in elements:
+        inline_style = element.get("style") or ""
+        classes = set((element.get("class") or "").split())
+        if re.search(r"\banimation\s*:\s*(?!none\b)", inline_style, re.IGNORECASE) or classes & class_tokens:
+            animated.add(id(element))
+    return animated
+
+
 def expected_parameter_hash(root: ET.Element, pattern_id: str) -> str | None:
     try:
+        parameters = strict_json_loads(root.get("data-parameter-values", ""))
+        if not isinstance(parameters, dict):
+            return None
+        width_text = root.get("width", "")
+        height_text = root.get("height", "")
+        revision_text = root.get("data-pattern-revision", "")
+        seed_text = root.get("data-seed", "")
+        duration_text = root.get("data-duration-ms", "")
+        if (
+            not re.fullmatch(r"\d+", width_text)
+            or not re.fullmatch(r"\d+", height_text)
+            or not re.fullmatch(r"\d+", revision_text)
+            or not re.fullmatch(r"-?\d+", seed_text)
+            or not re.fullmatch(r"\d+", duration_text)
+        ):
+            return None
+        width = int(width_text)
+        height = int(height_text)
+        duration = int(duration_text)
+        if not 320 <= width <= 4096 or not 240 <= height <= 4096 or not 400 <= duration <= 120000:
+            return None
         payload = {
             "pattern": pattern_id,
-            "seed": int(root.get("data-seed", "")),
-            "width": int(float(root.get("width", ""))),
-            "height": int(float(root.get("height", ""))),
-            "durationMs": int(root.get("data-duration-ms", "")),
+            "revision": int(revision_text),
+            "seed": int(seed_text),
+            "width": width,
+            "height": height,
+            "durationMs": duration,
             "palette": root.get("data-palette", ""),
             "motion": root.get("data-motion", ""),
+            "parameters": parameters,
         }
-    except ValueError:
+    except (ValueError, OverflowError, json.JSONDecodeError):
         return None
     encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
+
+
+def validate_parameter_values(
+    raw: str,
+    catalog_entry: dict[str, object],
+    errors: list[str],
+) -> dict[str, object] | None:
+    valid = True
+    try:
+        values = strict_json_loads(raw)
+    except (json.JSONDecodeError, ValueError) as error:
+        errors.append(f"data-parameter-values must be JSON: {error}.")
+        return None
+    if not isinstance(values, dict):
+        errors.append("data-parameter-values must encode one JSON object.")
+        return None
+    if raw != canonical_json(values):
+        errors.append("data-parameter-values must use canonical compact sorted JSON.")
+        valid = False
+    schema = catalog_entry.get("parameters", {})
+    if not isinstance(schema, dict):
+        errors.append("Catalog parameter schema must be an object.")
+        return values
+    if set(values) != set(schema):
+        errors.append(
+            "data-parameter-values keys must exactly match the catalog parameter schema."
+        )
+        return None
+    for name, contract in schema.items():
+        if not isinstance(contract, dict):
+            errors.append(f"Catalog parameter contract {name!r} must be an object.")
+            valid = False
+            continue
+        value = values[name]
+        kind = contract.get("type")
+        valid_type = (
+            kind == "integer" and isinstance(value, int) and not isinstance(value, bool)
+        ) or (
+            kind == "number"
+            and isinstance(value, (int, float))
+            and not isinstance(value, bool)
+            and math.isfinite(float(value))
+        )
+        if not valid_type:
+            errors.append(f"Parameter {name!r} does not satisfy catalog type {kind!r}.")
+            valid = False
+            continue
+        minimum = contract.get("minimum")
+        maximum = contract.get("maximum")
+        if isinstance(minimum, (int, float)) and value < minimum:
+            errors.append(f"Parameter {name!r} is below catalog minimum {minimum}.")
+            valid = False
+        if isinstance(maximum, (int, float)) and value > maximum:
+            errors.append(f"Parameter {name!r} is above catalog maximum {maximum}.")
+            valid = False
+    return values if valid else None
 
 
 def direct_child(root: ET.Element, tag_name: str) -> ET.Element | None:
@@ -361,6 +780,382 @@ def direct_child(root: ET.Element, tag_name: str) -> ET.Element | None:
         if local_name(child.tag) == tag_name:
             return child
     return None
+
+
+def canonical_element_payload(element: ET.Element) -> dict[str, object]:
+    """Return a whitespace-insensitive structural payload for one rendered subtree."""
+
+    return {
+        "tag": local_name(element.tag),
+        "attributes": sorted((str(name), value) for name, value in element.attrib.items()),
+        "text": (element.text or "").strip(),
+        "children": [canonical_element_payload(child) for child in element],
+    }
+
+
+def validate_canonical_multistrata_render(
+    root: ET.Element,
+    catalog_entry: dict[str, object],
+    parameter_values: dict[str, object] | None,
+    counts: dict[str, int],
+    errors: list[str],
+) -> None:
+    """Bind every published stratum subtree to the deterministic solver renderer."""
+
+    if parameter_values is None:
+        return
+    try:
+        from build_procedural_svg import Context, PALETTES, build_svg
+
+        palette_name = root.get("data-palette", "")
+        motion = root.get("data-motion", "")
+        if palette_name not in PALETTES or motion not in {"full", "reduced"}:
+            return
+        expected_svg = build_svg(
+            Context(
+                spec=catalog_entry,
+                seed=int(root.get("data-seed", "")),
+                width=int(root.get("width", "")),
+                height=int(root.get("height", "")),
+                duration_ms=int(root.get("data-duration-ms", "")),
+                palette_name=palette_name,
+                palette=PALETTES[palette_name],
+                motion=motion,
+                parameters=parameter_values,
+            )
+        )
+        expected_root = ET.fromstring(expected_svg)
+    except (ImportError, KeyError, TypeError, ValueError, OverflowError, RuntimeError, ET.ParseError) as error:
+        errors.append(f"Could not rebuild the canonical multi-strata render: {error}.")
+        return
+
+    def layers_by_role(document_root: ET.Element) -> dict[str, ET.Element]:
+        if motion == "reduced":
+            return {"static": document_root}
+        return {
+            str(element.get("data-motion-layer")): element
+            for element in document_root.iter()
+            if element.get("data-motion-layer") in {"animated", "reduced"}
+        }
+
+    actual_layers = layers_by_role(root)
+    expected_layers = layers_by_role(expected_root)
+    if set(actual_layers) != set(expected_layers):
+        errors.append("Rendered motion layers differ from the canonical multi-strata output.")
+        return
+    verified = 0
+    for layer_name in sorted(expected_layers):
+        actual_strata = [
+            element for element in actual_layers[layer_name].iter() if element.get("data-stratum")
+        ]
+        expected_strata = [
+            element for element in expected_layers[layer_name].iter() if element.get("data-stratum")
+        ]
+        if len(actual_strata) != len(expected_strata):
+            errors.append(f"{layer_name} stratum count differs from the canonical render.")
+            continue
+        for actual, expected in zip(actual_strata, expected_strata, strict=True):
+            stratum_id = str(expected.get("data-stratum"))
+            actual_digest = hashlib.sha256(
+                canonical_json(canonical_element_payload(actual)).encode("utf-8")
+            ).hexdigest()
+            expected_digest = hashlib.sha256(
+                canonical_json(canonical_element_payload(expected)).encode("utf-8")
+            ).hexdigest()
+            if actual_digest != expected_digest:
+                errors.append(
+                    f"Stratum {stratum_id!r} in {layer_name} layer differs from the canonical solver render."
+                )
+            else:
+                verified += 1
+    counts["canonicalStrataVerified"] = verified
+
+
+def invariant_result(operator: str, value: float, threshold: float) -> bool:
+    if operator == "eq":
+        return math.isclose(value, threshold, rel_tol=0.0, abs_tol=1e-12)
+    if operator == "lte":
+        return value <= threshold
+    if operator == "gte":
+        return value >= threshold
+    raise ValueError(f"Unsupported invariant operator {operator!r}.")
+
+
+def validate_multistrata_diagnostics(
+    root: ET.Element,
+    elements: list[ET.Element],
+    catalog_entry: dict[str, object],
+    parameter_values: dict[str, object] | None,
+    byte_size: int,
+    counts: dict[str, int],
+    metadata: dict[str, str],
+    errors: list[str],
+) -> dict[str, object] | None:
+    expected_strata = catalog_entry.get("strata")
+    expected_invariants = catalog_entry.get("invariants")
+    if not isinstance(expected_strata, list) or not isinstance(expected_invariants, list):
+        errors.append("Catalog multistrata contracts require strata and invariants arrays.")
+        return None
+    for key in (
+        "data-strata-count",
+        "data-invariants-status",
+        "data-diagnostics-hash",
+        "data-state-hash",
+    ):
+        value = root.get(key)
+        if value is None or not value.strip():
+            errors.append(f"Multistrata root is missing non-empty {key}.")
+        else:
+            metadata[key] = value.strip()
+    expected_ids = [
+        str(item.get("id")) for item in expected_strata if isinstance(item, dict)
+    ]
+    if len(expected_ids) != len(expected_strata) or len(set(expected_ids)) != len(expected_ids):
+        errors.append("Catalog strata must use unique string IDs.")
+    if metadata.get("data-strata-count") != str(len(expected_ids)):
+        errors.append(f"data-strata-count must be {len(expected_ids)}.")
+
+    motion_layers = [
+        element for element in elements if element.get("data-motion-layer") in {"animated", "reduced"}
+    ]
+    invalid_motion_layers = [
+        element.get("data-motion-layer")
+        for element in elements
+        if element.get("data-motion-layer") is not None
+        and element.get("data-motion-layer") not in {"animated", "reduced"}
+    ]
+    if invalid_motion_layers:
+        errors.append(f"Unknown data-motion-layer values: {invalid_motion_layers!r}.")
+    if root.get("data-motion") == "full":
+        layer_map = {str(element.get("data-motion-layer")): element for element in motion_layers}
+        if len(motion_layers) != 2 or set(layer_map) != {"animated", "reduced"}:
+            errors.append("Full multi-strata SVG requires exactly one animated and one reduced layer.")
+        if "animated" in layer_map:
+            animated_classes = set((layer_map["animated"].get("class") or "").split())
+            if "psvg-motion-layer" not in animated_classes or "psvg-reduced-layer" in animated_classes:
+                errors.append(
+                    "The animated multi-strata layer must use only the psvg-motion-layer role class."
+                )
+        if "reduced" in layer_map:
+            reduced_classes = set((layer_map["reduced"].get("class") or "").split())
+            if "psvg-reduced-layer" not in reduced_classes or "psvg-motion-layer" in reduced_classes:
+                errors.append(
+                    "The reduced multi-strata layer must use only the psvg-reduced-layer role class."
+                )
+        layers_to_check = [(name, layer_map[name]) for name in ("animated", "reduced") if name in layer_map]
+        if "animated" in layer_map:
+            animated_descendants = {id(element) for element in layer_map["animated"].iter()}
+            rogue_motion = [
+                element for element in elements
+                if local_name(element.tag) in MOTION_TAGS and id(element) not in animated_descendants
+            ]
+            if rogue_motion:
+                errors.append("Every multi-strata SMIL element must be inside the animated motion layer.")
+    else:
+        layers_to_check = [("static", root)]
+    for layer_name, layer in layers_to_check:
+        stratum_nodes = [element for element in layer.iter() if element.get("data-stratum")]
+        actual_ids = [str(element.get("data-stratum")) for element in stratum_nodes]
+        if actual_ids != expected_ids:
+            errors.append(
+                f"{layer_name} SVG stratum order must be {expected_ids!r}; found {actual_ids!r}."
+            )
+        for node in stratum_nodes:
+            visible_descendants = [
+                descendant
+                for descendant in node.iter()
+                if descendant is not node and local_name(descendant.tag) in DRAWING_TAGS
+            ]
+            if not visible_descendants:
+                errors.append(
+                    f"Stratum {node.get('data-stratum')!r} in {layer_name} layer has no drawing descendants."
+                )
+
+    metadata_nodes = [child for child in root if local_name(child.tag) == "metadata"]
+    if len(metadata_nodes) != 1:
+        errors.append("Multistrata SVG requires exactly one direct <metadata> diagnostics document.")
+        return None
+    node = metadata_nodes[0]
+    if node.get("data-diagnostics-schema") != "1":
+        errors.append("Diagnostics <metadata> requires data-diagnostics-schema='1'.")
+    raw = node.text or ""
+    try:
+        document = strict_json_loads(raw)
+    except (json.JSONDecodeError, ValueError) as error:
+        errors.append(f"Diagnostics metadata must be JSON: {error}.")
+        return None
+    if not isinstance(document, dict):
+        errors.append("Diagnostics metadata must contain one JSON object.")
+        return None
+    expected_document_keys = {
+        "schemaVersion",
+        "patternId",
+        "revision",
+        "parameters",
+        "strata",
+        "metrics",
+        "invariants",
+        "stateDigest",
+        "allPassed",
+    }
+    if set(document) != expected_document_keys:
+        errors.append("Diagnostics metadata keys must exactly match schema version 1.")
+    canonical = canonical_json(document)
+    if raw != canonical:
+        errors.append("Diagnostics metadata must use canonical compact sorted JSON.")
+    digest = hashlib.sha256(raw.encode("utf-8")).hexdigest()
+    if metadata.get("data-diagnostics-hash") != digest:
+        errors.append("data-diagnostics-hash does not match canonical diagnostics metadata.")
+    expected_revision = int(catalog_entry.get("revision", 1))
+    if document.get("schemaVersion") != 1:
+        errors.append("Diagnostics schemaVersion must be 1.")
+    if document.get("patternId") != catalog_entry.get("id"):
+        errors.append("Diagnostics patternId must match the catalog pattern.")
+    if document.get("revision") != expected_revision:
+        errors.append("Diagnostics revision must match the catalog revision.")
+    if document.get("parameters") != parameter_values:
+        errors.append("Diagnostics parameters must match data-parameter-values.")
+    if document.get("strata") != expected_strata:
+        errors.append("Diagnostics strata must exactly match the ordered catalog strata.")
+
+    expected_solver_state: dict[str, object] | None = None
+    if parameter_values is not None:
+        width_text = root.get("width", "")
+        height_text = root.get("height", "")
+        seed_text = root.get("data-seed", "")
+        if (
+            re.fullmatch(r"\d+", width_text)
+            and re.fullmatch(r"\d+", height_text)
+            and re.fullmatch(r"-?\d+", seed_text)
+            and 320 <= int(width_text) <= 4096
+            and 240 <= int(height_text) <= 4096
+        ):
+            try:
+                expected_solver_state = compute_multistrata(
+                    int(catalog_entry["variant"]),
+                    int(seed_text),
+                    int(width_text),
+                    int(height_text),
+                    parameter_values,
+                )
+            except (KeyError, TypeError, ValueError, OverflowError, RuntimeError) as error:
+                errors.append(f"Could not recompute the multi-strata solver state: {error}.")
+
+    state_digest = document.get("stateDigest")
+    if not isinstance(state_digest, str) or not re.fullmatch(r"[0-9a-f]{64}", state_digest):
+        errors.append("Diagnostics stateDigest must be a lowercase SHA-256 digest.")
+    elif metadata.get("data-state-hash") != state_digest:
+        errors.append("data-state-hash must equal diagnostics stateDigest.")
+    if expected_solver_state is not None and state_digest != expected_solver_state.get("stateDigest"):
+        errors.append("Diagnostics stateDigest does not match recomputed solver state.")
+
+    metrics = document.get("metrics")
+    if not isinstance(metrics, dict):
+        errors.append("Diagnostics metrics must be an object.")
+        metrics = {}
+    expected_metrics = {
+        str(item.get("metric"))
+        for item in expected_invariants
+        if isinstance(item, dict) and isinstance(item.get("metric"), str)
+    }
+    if set(metrics) != expected_metrics:
+        errors.append("Diagnostics metric keys must exactly match catalog invariant metrics.")
+    numeric_metrics: dict[str, float] = {}
+    for metric, value in metrics.items():
+        if (
+            not isinstance(value, (int, float))
+            or isinstance(value, bool)
+            or not math.isfinite(float(value))
+        ):
+            errors.append(f"Diagnostics metric {metric!r} must be a finite number.")
+        else:
+            numeric_metrics[str(metric)] = float(value)
+    if expected_solver_state is not None:
+        recomputed_metrics = expected_solver_state.get("metrics")
+        projected_metrics = (
+            {name: recomputed_metrics.get(name) for name in expected_metrics}
+            if isinstance(recomputed_metrics, dict)
+            else None
+        )
+        if metrics != projected_metrics:
+            errors.append("Diagnostics metrics do not match recomputed solver metrics.")
+
+    actual_invariants = document.get("invariants")
+    if not isinstance(actual_invariants, list) or len(actual_invariants) != len(expected_invariants):
+        errors.append("Diagnostics invariants must match the catalog invariant count and order.")
+        actual_invariants = []
+    pass_results: list[bool] = []
+    for index, expected in enumerate(expected_invariants):
+        if not isinstance(expected, dict) or index >= len(actual_invariants):
+            continue
+        actual = actual_invariants[index]
+        if not isinstance(actual, dict):
+            errors.append(f"Diagnostics invariant #{index + 1} must be an object.")
+            continue
+        if set(actual) != {"id", "metric", "op", "threshold", "value", "passed"}:
+            errors.append(
+                f"Diagnostics invariant #{index + 1} keys do not match schema version 1."
+            )
+        for key in ("id", "metric", "op", "threshold"):
+            if actual.get(key) != expected.get(key):
+                errors.append(
+                    f"Diagnostics invariant #{index + 1} field {key!r} must match the catalog."
+                )
+        metric = expected.get("metric")
+        operator = expected.get("op")
+        threshold = expected.get("threshold")
+        if (
+            not isinstance(metric, str)
+            or metric not in numeric_metrics
+            or not isinstance(operator, str)
+            or not isinstance(threshold, (int, float))
+        ):
+            continue
+        value = numeric_metrics[metric]
+        declared_value = actual.get("value")
+        if (
+            not isinstance(declared_value, (int, float))
+            or isinstance(declared_value, bool)
+            or not math.isclose(float(declared_value), value, rel_tol=0.0, abs_tol=1e-12)
+        ):
+            errors.append(f"Diagnostics invariant {expected.get('id')!r} has a stale value.")
+        try:
+            passed = invariant_result(operator, value, float(threshold))
+        except ValueError as error:
+            errors.append(str(error))
+            continue
+        pass_results.append(passed)
+        if actual.get("passed") is not passed:
+            errors.append(f"Diagnostics invariant {expected.get('id')!r} has a stale pass result.")
+        if not passed:
+            errors.append(
+                f"Invariant {expected.get('id')!r} failed: {value:g} {operator} {float(threshold):g}."
+            )
+    expected_status = f"{sum(pass_results)}/{len(expected_invariants)}"
+    if metadata.get("data-invariants-status") != expected_status:
+        errors.append(f"data-invariants-status must be {expected_status!r}.")
+    if document.get("allPassed") is not (len(pass_results) == len(expected_invariants) and all(pass_results)):
+        errors.append("Diagnostics allPassed does not match evaluated invariants.")
+
+    budgets = catalog_entry.get("budgets", {})
+    if isinstance(budgets, dict):
+        budget_values = {
+            "maxBytes": byte_size,
+            "maxElements": counts.get("elements", 0),
+            "maxMotionElements": counts.get("motionElements", 0),
+        }
+        for key, actual in budget_values.items():
+            maximum = budgets.get(key)
+            if isinstance(maximum, int) and actual > maximum:
+                errors.append(f"Catalog budget {key}={maximum} exceeded by {actual}.")
+    validate_canonical_multistrata_render(
+        root,
+        catalog_entry,
+        parameter_values,
+        counts,
+        errors,
+    )
+    return document
 
 
 def text_content(element: ET.Element | None) -> str:
@@ -548,7 +1343,9 @@ def validate_one(
         "xmlStylesheetInstructions": 0,
         "loopSmilAnimations": 0,
         "loopInlineCssAnimations": 0,
+        "motionElements": 0,
     }
+    diagnostics: dict[str, object] | None = None
     resolved = path.resolve()
     if not path.exists():
         errors.append(f"SVG file does not exist: {resolved}")
@@ -602,6 +1399,7 @@ def validate_one(
     catalog_entry = catalog.get(pattern_id)
     if pattern_id and catalog_entry is None:
         errors.append(f"Pattern ID is not present in the bundled catalog: {pattern_id!r}.")
+    parameter_values: dict[str, object] | None = None
     if catalog_entry is not None:
         expected_pairs = {
             "data-family": str(catalog_entry.get("family")),
@@ -616,6 +1414,15 @@ def validate_one(
         local_id = pattern_id.removeprefix("procedural-svg-")
         if metadata.get("data-example-id") != local_id:
             errors.append(f"data-example-id must be {local_id!r}; found {metadata.get('data-example-id')!r}.")
+        expected_revision = str(int(catalog_entry.get("revision", 1)))
+        if metadata.get("data-pattern-revision") != expected_revision:
+            errors.append(
+                f"data-pattern-revision must be {expected_revision!r}; "
+                f"found {metadata.get('data-pattern-revision')!r}."
+            )
+        raw_parameters = metadata.get("data-parameter-values")
+        if raw_parameters is not None:
+            parameter_values = validate_parameter_values(raw_parameters, catalog_entry, errors)
 
     if metadata.get("data-procedural-svg-version") != "1":
         errors.append("data-procedural-svg-version must be '1'.")
@@ -635,7 +1442,11 @@ def validate_one(
         errors.append("Full-motion output must declare data-loop='true'.")
     if metadata.get("data-motion") == "reduced" and metadata.get("data-loop") != "false":
         errors.append("Reduced-motion output must declare data-loop='false'.")
-    expected_loop_contract = "master-phase" if metadata.get("data-motion") == "full" else "static"
+    expected_loop_contract = (
+        str(catalog_entry.get("loopMode", "master-phase"))
+        if metadata.get("data-motion") == "full" and catalog_entry is not None
+        else "master-phase" if metadata.get("data-motion") == "full" else "static"
+    )
     if metadata.get("data-loop-contract") != expected_loop_contract:
         errors.append(
             f"data-loop-contract must be {expected_loop_contract!r} for "
@@ -658,18 +1469,14 @@ def validate_one(
 
     seed_text = metadata.get("data-seed")
     if seed_text is not None:
-        try:
-            int(seed_text)
-        except ValueError:
+        if not re.fullmatch(r"-?\d+", seed_text):
             errors.append(f"data-seed must be an integer; found {seed_text!r}.")
     duration_text = metadata.get("data-duration-ms")
     if duration_text is not None:
-        try:
-            duration = int(duration_text)
-            if duration <= 0:
-                raise ValueError
-        except ValueError:
-            errors.append(f"data-duration-ms must be a positive integer; found {duration_text!r}.")
+        if not re.fullmatch(r"\d+", duration_text) or not 400 <= int(duration_text) <= 120000:
+            errors.append(
+                f"data-duration-ms must be a canonical integer in 400..120000; found {duration_text!r}."
+            )
 
     if expect_pattern_id is not None and pattern_id != expect_pattern_id:
         errors.append(f"Expected pattern ID {expect_pattern_id!r}; found {pattern_id!r}.")
@@ -705,14 +1512,29 @@ def validate_one(
             errors.append("viewBox width must be positive.")
         if values[3] is not None and values[3] <= 0:
             errors.append("viewBox height must be positive.")
-    for dimension in ("width", "height"):
+    dimension_values: dict[str, int] = {}
+    for dimension, minimum in (("width", 320), ("height", 240)):
         value = root.get(dimension)
         if value is None:
             errors.append(f"Root is missing {dimension}.")
+        elif not re.fullmatch(r"\d+", value) or not minimum <= int(value) <= 4096:
+            errors.append(
+                f"Root {dimension} must be a canonical integer in {minimum}..4096; found {value!r}."
+            )
         else:
-            number = parse_number(value, dimension, errors)
-            if number is not None and number <= 0:
-                errors.append(f"Root {dimension} must be positive.")
+            dimension_values[dimension] = int(value)
+    if len(view_box) == 4 and len(dimension_values) == 2:
+        expected_view_box = [0.0, 0.0, float(dimension_values["width"]), float(dimension_values["height"])]
+        parsed_view_box: list[float] = []
+        try:
+            parsed_view_box = [float(value) for value in view_box]
+        except ValueError:
+            pass
+        if len(parsed_view_box) == 4 and any(
+            not math.isclose(actual, expected, rel_tol=0.0, abs_tol=1e-9)
+            for actual, expected in zip(parsed_view_box, expected_view_box)
+        ):
+            errors.append("viewBox must be exactly 0 0 width height.")
 
     elements = list(root.iter())
     validate_finite_geometry(elements, errors)
@@ -762,6 +1584,9 @@ def validate_one(
     counts["externalReferences"] += style_external_count
     counts["smilElements"] = sum(local_name(element.tag) in MOTION_TAGS for element in elements)
     counts["cssKeyframes"] = len(re.findall(r"@keyframes\s+[-_A-Za-z0-9]+", style_text))
+    counts["motionElements"] = counts["smilElements"] + len(
+        css_animated_elements(elements, style_text)
+    )
     css_motion = counts["cssKeyframes"] > 0 and bool(
         re.search(r"\banimation\s*:\s*(?!none\b)[^;}]+", raw, re.IGNORECASE)
     )
@@ -806,6 +1631,27 @@ def validate_one(
             ".psvg-reduced-layer elements plus a prefers-reduced-motion rule that "
             "hides the motion layer and shows the reduced layer."
         )
+    if catalog_entry is not None and "strata" in catalog_entry:
+        if metadata.get("data-motion") == "full":
+            if metadata.get("data-motion-engine") != "smil" or css_motion:
+                errors.append(
+                    "Full palindromic-snapshots output must use SMIL only; CSS animation is forbidden."
+                )
+            frame_count = parameter_values.get("frame_count") if parameter_values else None
+            if isinstance(frame_count, int) and not isinstance(frame_count, bool):
+                validate_palindromic_snapshots(elements, frame_count, errors)
+            else:
+                errors.append("Palindromic playback requires a valid integer frame_count parameter.")
+        diagnostics = validate_multistrata_diagnostics(
+            root,
+            elements,
+            catalog_entry,
+            parameter_values,
+            byte_size,
+            counts,
+            metadata,
+            errors,
+        )
     standalone = (
         metadata.get("data-standalone") == "true"
         and counts["externalReferences"] == 0
@@ -827,6 +1673,7 @@ def validate_one(
         "title": text_content(title),
         "description": text_content(desc),
         "counts": counts,
+        "diagnostics": diagnostics,
         "hasMotion": has_motion,
         "standalone": standalone,
     }
@@ -874,6 +1721,16 @@ def main() -> int:
         input_paths = {path.expanduser().resolve() for path in args.svg}
         if report_path in input_paths:
             parser.error(f"--report path collides with an input SVG: {report_path}")
+        if report_path.exists() and report_path.is_dir():
+            parser.error(f"--report path is an existing directory: {report_path}")
+        if report_path.parent.exists() and not report_path.parent.is_dir():
+            parser.error(f"--report parent is not a directory: {report_path.parent}")
+        if report_path.exists():
+            for input_path in input_paths:
+                if input_path.exists() and report_path.samefile(input_path):
+                    parser.error(
+                        f"--report path is the same file as an input SVG: {report_path}"
+                    )
     try:
         catalog = load_catalog()
         results = [
@@ -909,7 +1766,11 @@ def main() -> int:
         "results": results,
     }
     if args.report:
-        write_report(args.report, report)
+        try:
+            write_report(args.report, report)
+        except OSError as error:
+            print(f"Could not write validation report: {error}", file=sys.stderr)
+            return 1
         report["report"] = str(args.report.resolve())
     if args.json:
         print(json.dumps(report, indent=2))

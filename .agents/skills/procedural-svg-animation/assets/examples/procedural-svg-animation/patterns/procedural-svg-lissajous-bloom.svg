@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="lissajous-bloom-title lissajous-bloom-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-lissajous-bloom" data-example-id="lissajous-bloom" data-family="parametric" data-renderer="parametric" data-variant="0" data-seed="166897" data-palette="colorset2" data-motion="full" data-motion-engine="mixed" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated path + CSS/SMIL" data-technique="frequency-ratio curve" data-deterministic="true" data-standalone="true" data-parameter-hash="5dd0a1b50778f367080716aa024ede3b9e147507604d94e45db29a314914ce32">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="lissajous-bloom-title lissajous-bloom-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-lissajous-bloom" data-example-id="lissajous-bloom" data-family="parametric" data-renderer="parametric" data-variant="0" data-pattern-revision="1" data-seed="166897" data-palette="colorset2" data-motion="full" data-motion-engine="mixed" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated path + CSS/SMIL" data-technique="frequency-ratio curve" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="008b2032ef70b5e39938f4b33b3017603ae9ae8fd5cdf23a3e7e1ee47dbed583">
   <title id="lissajous-bloom-title">Lissajous Bloom</title>
   <desc id="lissajous-bloom-desc">Frequency ratios and phase generate closed harmonic figures that bloom through rotation and draw. Deterministic seed 166897; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

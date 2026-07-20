@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="growth-to-flow-title growth-to-flow-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-growth-to-flow" data-example-id="growth-to-flow" data-family="composition" data-renderer="composition" data-variant="1" data-seed="919800" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="level reveal + root-to-leaf transport" data-technique="structural-to-operational handoff" data-deterministic="true" data-standalone="true" data-parameter-hash="88331434427c060651f0c05bed55a27e729db4647f7045740895d85f60ce9d77">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="growth-to-flow-title growth-to-flow-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-growth-to-flow" data-example-id="growth-to-flow" data-family="composition" data-renderer="composition" data-variant="1" data-pattern-revision="1" data-seed="919800" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="level reveal + root-to-leaf transport" data-technique="structural-to-operational handoff" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="7ba852bbeea6ae282e36d130c0eb9370b2fafaa8bc1987741eee1e00261284da">
   <title id="growth-to-flow-title">Growth to Flow</title>
   <desc id="growth-to-flow-desc">Recursive branch levels finish revealing before tokens traverse deterministic root-to-leaf paths during a separate operating phase. Deterministic seed 919800; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

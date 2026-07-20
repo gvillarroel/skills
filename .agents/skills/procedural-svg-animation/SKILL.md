@@ -1,6 +1,6 @@
 ---
 name: procedural-svg-animation
-description: "Generate, combine, animate, and validate deterministic standalone SVG systems from programmatic geometry, oscillators, paths, particles, vector or scalar fields, simulations, recursive growth, tilings, masks, gradients, and filter graphs. Use for procedural motion studies, generative SVG art, mathematical animation, reusable motion mechanisms, seeded visual systems, technique exploration, seamless loops, or self-contained animated SVG/HTML where a chart, Mermaid diagram, or manually authored timeline is not the primary abstraction."
+description: "Generate, combine, animate, and validate deterministic standalone SVG systems from programmatic geometry, oscillators, paths, particles, fields, simulations, topology, transport, recursive growth, tilings, masks, gradients, and filter graphs. Use for procedural motion studies, generative SVG art, mathematical animation, multi-strata numerical solvers, seeded visual systems, technique exploration, seamless loops, or self-contained animated SVG/HTML where a chart, Mermaid diagram, or manually authored timeline is not the primary abstraction."
 ---
 
 # Procedural SVG Animation
@@ -14,8 +14,9 @@ Build SVG as a reproducible system where visual state is a function of time, see
    - From the task workspace root, run `uv run --script skills/procedural-svg-animation/scripts/build_procedural_svg.py --list` to inspect the shipped catalog.
    - Run `uv run --script skills/procedural-svg-animation/scripts/build_procedural_svg.py --describe <procedural-svg-id>` before using an unfamiliar pattern.
    - Read `references/pattern-families.md` when selecting among technique families or designing a new variant.
+   - Read `references/multi-strata-mastery.md` before changing a topology, transport, front-propagation, agent-field, or fluid solver.
    - Read `references/composition-recipes.md` when two or more mechanisms must share one clock or state model.
-3. Make the system deterministic. Fix the seed, order all generated marks, avoid wall-clock randomness, and derive every delay or frame from stable indices or normalized time.
+3. Make the system deterministic. Fix the seed, order all generated marks, avoid wall-clock randomness, and derive every delay or frame from stable indices, normalized time, or audited solver events.
 4. Generate the exact artifact. For example:
 
 ```powershell
@@ -23,6 +24,8 @@ uv run --script skills/procedural-svg-animation/scripts/build_procedural_svg.py 
 ```
 
 Run from the workspace root; do not change into the skill directory. Interpret every requested relative output path against the task workspace, create its parent directory when needed, and never redirect task artifacts into `skills/`.
+
+For a catalog pattern with typed parameters, put the pattern, common options, and a `parameters` object in JSON and pass `--config request.json`. Query `--describe` for exact types, defaults, and bounds; do not guess parameter names.
 
 5. Validate the artifact before styling around it:
 
@@ -47,7 +50,8 @@ Treat each result as a pipeline:
 ## Output Rules
 
 - Emit a stable `viewBox`, direct `<title>` and `<desc>`, semantic groups, finite coordinates, unique IDs, and self-contained paint/filter definitions.
-- Preserve root audit metadata from the builder: pattern ID, family, techniques, seed, duration, loop flag, motion engine, and parameter hash.
+- Preserve root audit metadata from the builder: pattern ID and revision, family, techniques, seed, duration, loop flag, motion engine, resolved parameters, and parameter hash.
+- For multi-strata patterns, preserve ordered `data-stratum` groups, canonical solver-render correspondence, canonical diagnostics and hashes, the viewport-independent solver-state digest, and the all-invariants status. Preserve solver-native evidence such as Sinkhorn scaling checkpoints and constant plan masses, live heap trial state, a serialized visible network root, and pre/post projection residuals; never infer or cosmetically rewrite numerical state. Use event-derived animated states and the solver-selected semantic static state rather than an arbitrary frame.
 - Prefer SVG-native CSS or SMIL for portable files. Do not add remote scripts, fonts, styles, images, or runtime imports.
 - Use seeded precomputation for simulations. SVG is the playback surface, not a reason to run an unbounded physics loop in the browser.
 - Honor `prefers-reduced-motion`; keep every mark visible and meaningful when motion is reduced.
@@ -65,6 +69,7 @@ Treat each result as a pipeline:
 ## Progressive Disclosure
 
 - `references/pattern-families.md`: family selection, technique signatures, and extension rules.
+- `references/multi-strata-mastery.md`: solver pipelines, typed parameters, numerical invariants, snapshot loops, and pitfalls for the six mastery patterns.
 - `references/technique-matrix.md`: comprehensive programmable geometry, timing, channel, compositor, input, and driver capability matrix.
 - `references/composition-recipes.md`: tested combinations, shared-clock contracts, and failure modes.
 - `references/runtime-and-validation.md`: portability, embedding, replay, accessibility, performance, deterministic QA, and browser checks.
@@ -73,4 +78,4 @@ Treat each result as a pipeline:
 
 ## Maintenance
 
-Keep gallery fixtures under `assets/examples/procedural-svg-animation/`; normal runtime work must not read them. When adding a reusable mechanism, update the catalog, generator, compact family guidance, gallery, tests, and canonical ID inventory together. Validate exact paths, deterministic hashes, alternate seeds, standalone SVG behavior, reduced motion, desktop/mobile layout, and isolated skill use before marking the skill done.
+Keep gallery fixtures under `assets/examples/procedural-svg-animation/`; normal runtime work must not read them. When adding a reusable mechanism, update the catalog, generator, compact family guidance, gallery, tests, and canonical ID inventory together. Validate exact paths, deterministic hashes, alternate seeds, standalone SVG behavior, reduced motion, desktop/mobile layout, isolated skill use, and the canonical multi-strata adversarial test before marking the skill done.

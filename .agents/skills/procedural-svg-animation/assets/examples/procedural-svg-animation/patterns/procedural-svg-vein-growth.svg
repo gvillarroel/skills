@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="vein-growth-title vein-growth-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-vein-growth" data-example-id="vein-growth" data-family="growth" data-renderer="growth" data-variant="4" data-seed="773596" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="ordered branch synthesis" data-technique="hierarchical transport network" data-deterministic="true" data-standalone="true" data-parameter-hash="b8508c401d2a225898fb7ef9892f1eaad10542c793de84863e2ea3a8a56d2fdb">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="vein-growth-title vein-growth-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-vein-growth" data-example-id="vein-growth" data-family="growth" data-renderer="growth" data-variant="4" data-pattern-revision="1" data-seed="773596" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="ordered branch synthesis" data-technique="hierarchical transport network" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="94b2208282e1a261d81643663efaa3d4c1da7065e05ce8e1a9c34f6c8303c01a">
   <title id="vein-growth-title">Vein Growth</title>
   <desc id="vein-growth-desc">Quadratic lateral veins and tangent-derived capillaries build a three-level leaf transport hierarchy. Deterministic seed 773596; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

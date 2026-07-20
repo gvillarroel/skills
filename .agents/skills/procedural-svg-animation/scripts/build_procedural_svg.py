@@ -6,9 +6,9 @@
 
 """Build deterministic, standalone procedural SVG animations.
 
-The bundled pattern catalog is the source of truth.  Each catalog renderer owns
-six variants, while this script supplies the deterministic geometry, motion,
-metadata, and exact-path CLI used by the skill at runtime.
+The bundled pattern catalog is the source of truth. This script supplies the
+deterministic geometry, motion, typed parameters, diagnostics, and exact-path
+CLI used by the skill at runtime.
 """
 
 from __future__ import annotations
@@ -20,10 +20,13 @@ import math
 import random
 import re
 import sys
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass, replace
 from html import escape
 from pathlib import Path
-from typing import Callable, Iterable, Sequence, TypeVar
+from typing import Any, Callable, Iterable, Sequence, TypeVar
+
+from multistrata_core import compute_multistrata
 
 
 for _stream in (sys.stdout, sys.stderr):
@@ -59,6 +62,27 @@ PALETTES: dict[str, dict[str, str | list[str]]] = {
     },
 }
 
+DEFAULT_BUILD_OPTIONS: dict[str, object] = {
+    "seed": 20260720,
+    "width": 960,
+    "height": 640,
+    "duration_ms": 6000,
+    "palette": "colorset2",
+    "motion": "full",
+}
+CONFIG_KEYS = {
+    "pattern",
+    "seed",
+    "width",
+    "height",
+    "duration_ms",
+    "palette",
+    "motion",
+    "loop",
+    "parameters",
+}
+MULTISTRATA_CACHE: dict[tuple[int, int, int, int, str], dict[str, object]] = {}
+
 
 @dataclass(frozen=True)
 class Context:
@@ -70,6 +94,7 @@ class Context:
     palette_name: str
     palette: dict[str, str | list[str]]
     motion: str
+    parameters: dict[str, object]
     id_suffix: str = ""
 
     @property
@@ -128,6 +153,30 @@ def fmt(value: float) -> str:
     if rounded == 0:
         rounded = 0
     return f"{rounded:.3f}".rstrip("0").rstrip(".")
+
+
+def canonical_json(value: object) -> str:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+
+def reject_duplicate_object_keys(pairs: list[tuple[str, object]]) -> dict[str, object]:
+    result: dict[str, object] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"Duplicate JSON object key: {key!r}.")
+        result[key] = value
+    return result
+
+
+def strict_json_loads(raw: str) -> object:
+    def reject_constant(value: str) -> object:
+        raise ValueError(f"Non-finite JSON constant is forbidden: {value}.")
+
+    return json.loads(
+        raw,
+        object_pairs_hook=reject_duplicate_object_keys,
+        parse_constant=reject_constant,
+    )
 
 
 def slug_from_pattern(pattern_id: str) -> str:
@@ -219,15 +268,116 @@ def css_animation(ctx: Context, name: str, duration_factor: float = 1.0, delay_m
     return f"animation:{name} {fmt(duration)}ms {timing} {delay_ms}ms infinite both"
 
 
+def validate_mastery_spec(spec: dict[str, object]) -> None:
+    """Fail closed on the structured contract used by deep solver patterns."""
+
+    mastery_fields = {
+        "revision", "loopMode", "reference", "strata", "invariants", "parameters", "budgets"
+    }
+    is_mastery = (
+        spec.get("renderer") == "multistrata"
+        or spec.get("family") == "multistrata"
+        or bool(mastery_fields & set(spec))
+    )
+    if not is_mastery:
+        return
+    pattern_id = spec.get("id")
+    missing = sorted(mastery_fields - set(spec))
+    if missing:
+        raise RuntimeError(f"Pattern {pattern_id} is missing mastery fields: {', '.join(missing)}.")
+    if (
+        not isinstance(spec.get("revision"), int)
+        or isinstance(spec.get("revision"), bool)
+        or int(spec["revision"]) < 1
+    ):
+        raise RuntimeError(f"Pattern {pattern_id} requires a positive integer revision.")
+    if spec.get("loopMode") != "palindromic-snapshots":
+        raise RuntimeError(f"Pattern {pattern_id} requires palindromic-snapshots playback.")
+    if not isinstance(spec.get("reference"), str) or not spec["reference"]:
+        raise RuntimeError(f"Pattern {pattern_id} requires a reference anchor.")
+    strata = spec.get("strata")
+    if not isinstance(strata, list) or len(strata) < 4:
+        raise RuntimeError(f"Pattern {pattern_id} requires at least four strata.")
+    stratum_ids: list[str] = []
+    for stratum in strata:
+        if not isinstance(stratum, dict) or any(
+            not isinstance(stratum.get(key), str) or not stratum.get(key)
+            for key in ("id", "role", "input", "output")
+        ):
+            raise RuntimeError(f"Pattern {pattern_id} contains an invalid stratum.")
+        stratum_ids.append(str(stratum["id"]))
+    if len(set(stratum_ids)) != len(stratum_ids):
+        raise RuntimeError(f"Pattern {pattern_id} contains duplicate stratum IDs.")
+    invariants = spec.get("invariants")
+    if not isinstance(invariants, list) or len(invariants) < 2:
+        raise RuntimeError(f"Pattern {pattern_id} requires at least two invariants.")
+    invariant_ids: list[str] = []
+    metric_ids: list[str] = []
+    for invariant in invariants:
+        if (
+            not isinstance(invariant, dict)
+            or not isinstance(invariant.get("id"), str)
+            or not isinstance(invariant.get("metric"), str)
+            or invariant.get("op") not in {"eq", "lte", "gte"}
+            or not isinstance(invariant.get("threshold"), (int, float))
+            or isinstance(invariant.get("threshold"), bool)
+            or not math.isfinite(float(invariant["threshold"]))
+        ):
+            raise RuntimeError(f"Pattern {pattern_id} contains an invalid invariant.")
+        invariant_ids.append(str(invariant["id"]))
+        metric_ids.append(str(invariant["metric"]))
+    if len(set(invariant_ids)) != len(invariant_ids) or len(set(metric_ids)) != len(metric_ids):
+        raise RuntimeError(f"Pattern {pattern_id} contains duplicate invariant or metric IDs.")
+    parameter_schema = spec.get("parameters")
+    if not isinstance(parameter_schema, dict):
+        raise RuntimeError(f"Pattern {pattern_id} requires a parameter schema.")
+    for name, contract in parameter_schema.items():
+        if not isinstance(name, str) or not isinstance(contract, dict):
+            raise RuntimeError(f"Pattern {pattern_id} contains an invalid parameter contract.")
+        kind = contract.get("type")
+        default = contract.get("default")
+        minimum = contract.get("minimum")
+        maximum = contract.get("maximum")
+        type_ok = (
+            kind == "integer" and isinstance(default, int) and not isinstance(default, bool)
+        ) or (
+            kind == "number"
+            and isinstance(default, (int, float))
+            and not isinstance(default, bool)
+            and math.isfinite(float(default))
+        )
+        if (
+            not type_ok
+            or not isinstance(minimum, (int, float))
+            or isinstance(minimum, bool)
+            or not math.isfinite(float(minimum))
+            or not isinstance(maximum, (int, float))
+            or isinstance(maximum, bool)
+            or not math.isfinite(float(maximum))
+            or minimum > default
+            or default > maximum
+        ):
+            raise RuntimeError(f"Pattern {pattern_id} contains an invalid parameter {name!r}.")
+    budgets = spec.get("budgets")
+    if not isinstance(budgets, dict) or any(
+        not isinstance(budgets.get(key), int)
+        or isinstance(budgets.get(key), bool)
+        or int(budgets[key]) < 1
+        for key in ("maxBytes", "maxElements", "maxMotionElements")
+    ):
+        raise RuntimeError(f"Pattern {pattern_id} contains invalid resource budgets.")
+
+
 def load_catalog() -> tuple[dict[str, object], dict[str, dict[str, object]]]:
     try:
-        catalog = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as error:
+        catalog = strict_json_loads(CATALOG_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, ValueError) as error:
         raise RuntimeError(f"Cannot read procedural pattern catalog: {error}") from error
     if not isinstance(catalog, dict) or not isinstance(catalog.get("patterns"), list):
         raise RuntimeError("Pattern catalog must contain a patterns array.")
     patterns: dict[str, dict[str, object]] = {}
     renderers: set[str] = set()
+    renderer_variants: set[tuple[str, int]] = set()
     for raw in catalog["patterns"]:  # type: ignore[index]
         if not isinstance(raw, dict):
             raise RuntimeError("Every pattern catalog entry must be an object.")
@@ -240,22 +390,268 @@ def load_catalog() -> tuple[dict[str, object], dict[str, dict[str, object]]]:
             raise RuntimeError(f"Duplicate procedural pattern ID: {pattern_id}")
         if not isinstance(renderer, str) or not renderer:
             raise RuntimeError(f"Pattern {pattern_id} is missing a renderer.")
-        if not isinstance(variant, int) or variant not in range(6):
-            raise RuntimeError(f"Pattern {pattern_id} must use variant 0..5.")
+        if not isinstance(variant, int) or isinstance(variant, bool) or variant < 0:
+            raise RuntimeError(f"Pattern {pattern_id} must use a nonnegative integer variant.")
+        renderer_variant = (renderer, variant)
+        if renderer_variant in renderer_variants:
+            raise RuntimeError(f"Duplicate renderer/variant pair: {renderer}/{variant}.")
+        validate_mastery_spec(raw)
         patterns[pattern_id] = raw
         renderers.add(renderer)
-    if len(patterns) != 60 or len(renderers) != 10:
-        raise RuntimeError(f"Expected 60 patterns and 10 renderers, found {len(patterns)} and {len(renderers)}.")
+        renderer_variants.add(renderer_variant)
+    expected_patterns = catalog.get("expectedPatternCount")
+    expected_renderers = catalog.get("expectedRendererCount")
+    if not isinstance(expected_patterns, int) or isinstance(expected_patterns, bool) or expected_patterns <= 0:
+        raise RuntimeError("Pattern catalog requires a positive expectedPatternCount.")
+    if not isinstance(expected_renderers, int) or isinstance(expected_renderers, bool) or expected_renderers <= 0:
+        raise RuntimeError("Pattern catalog requires a positive expectedRendererCount.")
+    if len(patterns) != expected_patterns or len(renderers) != expected_renderers:
+        raise RuntimeError(
+            f"Expected {expected_patterns} patterns and {expected_renderers} renderers, "
+            f"found {len(patterns)} and {len(renderers)}."
+        )
+    families = catalog.get("families")
+    patterns_per_family = catalog.get("patternsPerFamily")
+    if (
+        not isinstance(families, list)
+        or not isinstance(patterns_per_family, int)
+        or isinstance(patterns_per_family, bool)
+        or patterns_per_family < 1
+    ):
+        raise RuntimeError("Pattern catalog requires families and patternsPerFamily metadata.")
+    family_ids = [item.get("id") for item in families if isinstance(item, dict)]
+    if (
+        len(family_ids) != len(families)
+        or any(not isinstance(value, str) or not value for value in family_ids)
+        or len(set(family_ids)) != len(family_ids)
+    ):
+        raise RuntimeError("Pattern catalog family IDs must be unique strings.")
+    for family_id in family_ids:
+        family_count = sum(spec.get("family") == family_id for spec in patterns.values())
+        if family_count != patterns_per_family:
+            raise RuntimeError(
+                f"Family {family_id!r} must contain {patterns_per_family} patterns; found {family_count}."
+            )
     return catalog, patterns
+
+
+def load_build_config(path: Path) -> dict[str, object]:
+    try:
+        raw = strict_json_loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, ValueError) as error:
+        raise ValueError(f"Cannot read --config JSON {path}: {error}") from error
+    if not isinstance(raw, dict):
+        raise ValueError("--config JSON must contain one object.")
+    unknown = sorted(set(raw) - CONFIG_KEYS)
+    if unknown:
+        raise ValueError(f"Unknown --config field(s): {', '.join(unknown)}.")
+    pattern_id = raw.get("pattern")
+    if not isinstance(pattern_id, str) or not pattern_id:
+        raise ValueError("--config requires a non-empty string field named 'pattern'.")
+    parameters = raw.get("parameters", {})
+    if not isinstance(parameters, dict):
+        raise ValueError("--config field 'parameters' must be an object.")
+    if "loop" in raw and not isinstance(raw["loop"], bool):
+        raise ValueError("--config field 'loop' must be a boolean.")
+    return raw
+
+
+def resolve_build_arguments(parser: argparse.ArgumentParser, args: argparse.Namespace) -> None:
+    """Merge one optional config with explicit CLI values, then apply defaults."""
+
+    config: dict[str, object] = {}
+    if args.config is not None:
+        if any((args.pattern, args.pattern_option, args.list, args.describe, args.all_directory)):
+            parser.error("--config is a complete one-pattern mode; do not combine it with another mode.")
+        try:
+            config = load_build_config(args.config)
+        except ValueError as error:
+            parser.error(str(error))
+        args.pattern_option = config["pattern"]
+    for key, default in DEFAULT_BUILD_OPTIONS.items():
+        explicit = getattr(args, key)
+        value = explicit if explicit is not None else config.get(key, default)
+        setattr(args, key, value)
+    args.parameters = config.get("parameters", {})
+    if args.config is not None:
+        scalar_types = {
+            "seed": int,
+            "width": int,
+            "height": int,
+            "duration_ms": int,
+            "palette": str,
+            "motion": str,
+        }
+        for key, expected_type in scalar_types.items():
+            value = getattr(args, key)
+            if not isinstance(value, expected_type) or (
+                expected_type is int and isinstance(value, bool)
+            ):
+                raise ValueError(
+                    f"Resolved config field {key!r} must be {expected_type.__name__}."
+                )
+        if "loop" in config:
+            expected_loop = args.motion == "full"
+            if config["loop"] is not expected_loop:
+                raise ValueError(
+                    "Config 'loop' must be true for full motion and false for reduced motion."
+                )
+
+
+def resolve_parameters(
+    spec: dict[str, object], supplied: dict[str, object] | None
+) -> dict[str, object]:
+    """Resolve and validate the catalog's typed, bounded parameter contract."""
+
+    raw_schema = spec.get("parameters", {})
+    if not isinstance(raw_schema, dict):
+        raise ValueError(f"Pattern {spec['id']} has an invalid parameter schema.")
+    supplied = supplied or {}
+    unknown = sorted(set(supplied) - set(raw_schema))
+    if unknown:
+        raise ValueError(
+            f"Unknown parameter(s) for {spec['id']}: {', '.join(unknown)}."
+        )
+    resolved: dict[str, object] = {}
+    for name, raw_contract in raw_schema.items():
+        if not isinstance(name, str) or not isinstance(raw_contract, dict):
+            raise ValueError(f"Pattern {spec['id']} has an invalid parameter contract.")
+        kind = raw_contract.get("type")
+        value = supplied.get(name, raw_contract.get("default"))
+        if kind == "integer":
+            if not isinstance(value, int) or isinstance(value, bool):
+                raise ValueError(f"Parameter {name!r} must be an integer.")
+        elif kind == "number":
+            if not isinstance(value, (int, float)) or isinstance(value, bool):
+                raise ValueError(f"Parameter {name!r} must be a finite number.")
+            value = float(value)
+            if not math.isfinite(value):
+                raise ValueError(f"Parameter {name!r} must be a finite number.")
+        else:
+            raise ValueError(f"Parameter {name!r} uses unsupported type {kind!r}.")
+        minimum = raw_contract.get("minimum")
+        maximum = raw_contract.get("maximum")
+        if isinstance(minimum, (int, float)) and value < minimum:  # type: ignore[operator]
+            raise ValueError(f"Parameter {name!r} must be at least {minimum}.")
+        if isinstance(maximum, (int, float)) and value > maximum:  # type: ignore[operator]
+            raise ValueError(f"Parameter {name!r} must be at most {maximum}.")
+        resolved[name] = value
+    return resolved
+
+
+def multistrata_state(ctx: Context) -> dict[str, object]:
+    variant = int(ctx.spec["variant"])
+    cache_key = (variant, ctx.seed, ctx.width, ctx.height, canonical_json(ctx.parameters))
+    cached = MULTISTRATA_CACHE.get(cache_key)
+    if cached is None:
+        value = compute_multistrata(
+            variant,
+            ctx.seed,
+            ctx.width,
+            ctx.height,
+            ctx.parameters,
+        )
+        if not isinstance(value, dict):
+            raise RuntimeError("Multi-strata solver returned a non-object state.")
+        cached = value
+        MULTISTRATA_CACHE[cache_key] = cached
+    return cached
+
+
+def evaluate_invariant(operator: str, value: float, threshold: float) -> bool:
+    if operator == "eq":
+        return math.isclose(value, threshold, rel_tol=0.0, abs_tol=1e-12)
+    if operator == "lte":
+        return value <= threshold
+    if operator == "gte":
+        return value >= threshold
+    raise RuntimeError(f"Unsupported invariant operator: {operator!r}.")
+
+
+def multistrata_diagnostics(ctx: Context) -> tuple[dict[str, object], str]:
+    state = multistrata_state(ctx)
+    raw_metrics = state.get("metrics")
+    state_digest = state.get("stateDigest")
+    if not isinstance(raw_metrics, dict):
+        raise RuntimeError("Multi-strata solver did not return a metrics object.")
+    if not isinstance(state_digest, str) or not re.fullmatch(r"[0-9a-f]{64}", state_digest):
+        raise RuntimeError("Multi-strata solver did not return a valid stateDigest.")
+    raw_invariants = ctx.spec.get("invariants")
+    raw_strata = ctx.spec.get("strata")
+    if not isinstance(raw_invariants, list) or not isinstance(raw_strata, list):
+        raise RuntimeError("Multi-strata catalog entry is missing strata/invariants.")
+    expected_metric_names = {
+        str(contract.get("metric"))
+        for contract in raw_invariants
+        if isinstance(contract, dict) and isinstance(contract.get("metric"), str)
+    }
+    metrics: dict[str, int | float] = {}
+    for name, raw_value in raw_metrics.items():
+        if name not in expected_metric_names:
+            continue
+        if (
+            not isinstance(name, str)
+            or not isinstance(raw_value, (int, float))
+            or isinstance(raw_value, bool)
+            or not math.isfinite(float(raw_value))
+        ):
+            raise RuntimeError(f"Invalid multi-strata metric {name!r}: {raw_value!r}.")
+        metrics[name] = raw_value
+    invariant_results: list[dict[str, object]] = []
+    for contract in raw_invariants:
+        if not isinstance(contract, dict):
+            raise RuntimeError("Invalid catalog invariant contract.")
+        metric_name = contract.get("metric")
+        operator = contract.get("op")
+        threshold = contract.get("threshold")
+        if (
+            not isinstance(metric_name, str)
+            or metric_name not in metrics
+            or not isinstance(operator, str)
+            or not isinstance(threshold, (int, float))
+        ):
+            raise RuntimeError(f"Incomplete invariant contract: {contract!r}.")
+        value = metrics[metric_name]
+        passed = evaluate_invariant(operator, float(value), float(threshold))
+        invariant_results.append(
+            {
+                "id": contract.get("id"),
+                "metric": metric_name,
+                "op": operator,
+                "threshold": threshold,
+                "value": value,
+                "passed": passed,
+            }
+        )
+    document: dict[str, object] = {
+        "schemaVersion": 1,
+        "patternId": ctx.spec["id"],
+        "revision": int(ctx.spec.get("revision", 1)),
+        "parameters": ctx.parameters,
+        "strata": raw_strata,
+        "metrics": metrics,
+        "invariants": invariant_results,
+        "stateDigest": state_digest,
+        "allPassed": all(bool(item["passed"]) for item in invariant_results),
+    }
+    if not document["allPassed"]:
+        failures = [str(item["id"]) for item in invariant_results if not item["passed"]]
+        raise RuntimeError(
+            f"Multi-strata solver invariants failed for {ctx.spec['id']}: {', '.join(failures)}."
+        )
+    encoded = canonical_json(document)
+    return document, encoded
 
 
 def panel_frame(ctx: Context, body: str, note: str = "") -> str:
     x, y, width, height = ctx.left, ctx.top, ctx.art_width, ctx.art_height
     note_markup = ""
     if note:
+        maximum_characters = max(18, int((width - 36) / 6.2))
+        visible_note = note if len(note) <= maximum_characters else note[: maximum_characters - 1].rstrip() + "…"
         note_markup = (
             f'<text class="psvg-note" x="{fmt(x + 18)}" y="{fmt(y + height - 16)}">'
-            f"{escape(note)}</text>"
+            f"{escape(visible_note)}</text>"
         )
     return (
         f'<rect class="psvg-panel" x="{fmt(x)}" y="{fmt(y)}" width="{fmt(width)}" height="{fmt(height)}" rx="12"/>'
@@ -2055,6 +2451,1172 @@ def render_composition(ctx: Context) -> str:
     return panel_frame(ctx, "".join(body), str(ctx.spec["signature"]))
 
 
+def mastery_regions(
+    ctx: Context,
+) -> tuple[tuple[float, float, float, float], tuple[float, float, float, float]]:
+    inset = 18.0
+    gap = max(12.0, ctx.art_width * 0.025)
+    plot_width = max(1.0, (ctx.art_width - inset * 2 - gap) * 0.7)
+    side_width = max(1.0, ctx.art_width - inset * 2 - gap - plot_width)
+    usable_height = max(1.0, ctx.art_height - 96.0)
+    plot = (ctx.left + inset, ctx.top + inset, plot_width, usable_height)
+    side = (ctx.left + inset + plot_width + gap, ctx.top + inset, side_width, usable_height)
+    return plot, side
+
+
+def mastery_full_region(
+    ctx: Context, aspect_ratio: float
+) -> tuple[float, float, float, float]:
+    """Fit one centered solver field above the reserved timeline band."""
+
+    inset = 18.0
+    available_width = max(1.0, ctx.art_width - inset * 2)
+    available_height = max(1.0, ctx.art_height - 96.0)
+    ratio = max(0.25, float(aspect_ratio))
+    width = min(available_width, available_height * ratio)
+    height = min(available_height, width / ratio)
+    return (
+        ctx.left + (ctx.art_width - width) / 2,
+        ctx.top + inset,
+        width,
+        height,
+    )
+
+
+def mapped_point(
+    point: Sequence[float], region: tuple[float, float, float, float]
+) -> tuple[float, float]:
+    x, y, width, height = region
+    return x + float(point[0]) * width, y + float(point[1]) * height
+
+
+def mapped_grid_point(
+    point: Sequence[float],
+    region: tuple[float, float, float, float],
+    columns: int,
+    rows: int,
+) -> tuple[float, float]:
+    return mapped_point(
+        (float(point[0]) / max(1, columns - 1), float(point[1]) / max(1, rows - 1)),
+        region,
+    )
+
+
+def mapped_cell_center(
+    point: Sequence[float],
+    region: tuple[float, float, float, float],
+    columns: int,
+    rows: int,
+) -> tuple[float, float]:
+    """Map cell-center coordinates from a columns-by-rows finite-volume grid."""
+
+    return mapped_point(
+        (float(point[0]) / max(1, columns), float(point[1]) / max(1, rows)),
+        region,
+    )
+
+
+def palindrome_indices(frame_count: int) -> list[int]:
+    return list(range(frame_count)) + list(range(frame_count - 2, -1, -1))
+
+
+def snapshot_animation(ctx: Context, frame_index: int, frame_count: int) -> str:
+    if not ctx.full_motion:
+        return ""
+    sequence = palindrome_indices(frame_count)
+    values = ";".join("1" if index == frame_index else "0" for index in sequence)
+    key_times = ";".join(fmt(index / (len(sequence) - 1)) for index in range(len(sequence)))
+    return smil(
+        ctx,
+        f'<animate attributeName="opacity" values="{values}" keyTimes="{key_times}" '
+        f'calcMode="discrete" dur="{ctx.duration_s}" repeatCount="indefinite"/>',
+    )
+
+
+def snapshot_group(ctx: Context, frame_index: int, frame_count: int, body: str) -> str:
+    opacity = "1" if not ctx.full_motion or frame_index == 0 else "0"
+    return (
+        f'<g data-frame-index="{frame_index}" opacity="{opacity}">{body}'
+        f'{snapshot_animation(ctx, frame_index, frame_count)}</g>'
+    )
+
+
+def render_snapshot_series(
+    ctx: Context,
+    state: dict[str, object],
+    render_frame: Callable[[dict[str, object]], str],
+) -> str:
+    raw_frames = state.get("frames")
+    static_frame = state.get("staticFrame")
+    if not isinstance(raw_frames, list) or not raw_frames or not isinstance(static_frame, dict):
+        raise RuntimeError("Multi-strata solver state is missing frames/staticFrame.")
+    frames = [frame for frame in raw_frames if isinstance(frame, dict)]
+    if len(frames) != len(raw_frames):
+        raise RuntimeError("Multi-strata solver returned an invalid frame.")
+    if not ctx.full_motion:
+        index = int(static_frame.get("index", 0))
+        return f'<g data-frame-index="{index}">{render_frame(static_frame)}</g>'
+    return "".join(
+        snapshot_group(ctx, index, len(frames), render_frame(frame))
+        for index, frame in enumerate(frames)
+    )
+
+
+def mastery_timeline(ctx: Context, state: dict[str, object], label: str) -> str:
+    frames = state.get("frames")
+    static_frame = state.get("staticFrame")
+    if not isinstance(frames, list) or not frames or not isinstance(static_frame, dict):
+        raise RuntimeError("Multi-strata timeline requires frames.")
+    x = ctx.left + 28
+    y = ctx.bottom - 27
+    width = ctx.art_width - 56
+    timeline_label = (
+        f"{label} · forward solver states return by exact playback reversal"
+        if ctx.art_width >= 420
+        else "reversible solver snapshots"
+    )
+    base = (
+        f'<text x="{fmt(x)}" y="{fmt(y - 9)}" class="psvg-note">{escape(timeline_label)}</text>'
+        f'<line x1="{fmt(x)}" y1="{fmt(y)}" x2="{fmt(x + width)}" y2="{fmt(y)}" stroke="{ctx.palette["line"]}" stroke-width="3" stroke-linecap="round"/>'
+    )
+
+    def marker(frame: dict[str, object]) -> str:
+        phase = float(frame.get("phase", 0.0))
+        return (
+            f'<circle cx="{fmt(x + phase * width)}" cy="{fmt(y)}" r="7" fill="{ctx.color(0)}" '
+            f'stroke="{ctx.palette["surface"]}" stroke-width="3"/>'
+        )
+
+    return base + render_snapshot_series(ctx, state, marker)
+
+
+def mastery_layers(ctx: Context, layers: dict[str, str]) -> str:
+    strata = ctx.spec.get("strata")
+    if not isinstance(strata, list):
+        raise RuntimeError("Multi-strata renderer requires catalog strata.")
+    expected = [str(item.get("id")) for item in strata if isinstance(item, dict)]
+    if set(layers) != set(expected):
+        raise RuntimeError(
+            f"Renderer strata differ from catalog: expected {expected!r}, got {list(layers)!r}."
+        )
+    return "".join(
+        f'<g data-stratum="{escape(stratum_id, quote=True)}">{layers[stratum_id]}</g>'
+        for stratum_id in expected
+    )
+
+
+def render_alpha_mastery(ctx: Context, state: dict[str, object]) -> dict[str, str]:
+    geometry = state.get("geometry")
+    if not isinstance(geometry, dict):
+        raise RuntimeError("Alpha solver geometry is missing.")
+    raw_points = geometry.get("points")
+    raw_edges = geometry.get("delaunayEdges")
+    raw_faces = geometry.get("delaunayFaces")
+    intervals = geometry.get("persistenceIntervals")
+    if not all(isinstance(value, list) for value in (raw_points, raw_edges, raw_faces, intervals)):
+        raise RuntimeError("Alpha solver geometry is incomplete.")
+    plot, side = mastery_regions(ctx)
+    points: dict[int, tuple[float, float]] = {}
+    for raw in raw_points:  # type: ignore[union-attr]
+        if isinstance(raw, dict):
+            points[int(raw["id"])] = mapped_point((float(raw["x"]), float(raw["y"])), plot)
+    edges = [value for value in raw_edges if isinstance(value, dict)]  # type: ignore[union-attr]
+    faces = [value for value in raw_faces if isinstance(value, dict)]  # type: ignore[union-attr]
+    edge_by_id = {str(value["id"]): value for value in edges}
+    face_by_id = {str(value["id"]): value for value in faces}
+    samples = "".join(
+        f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="4.4" fill="{ctx.palette["surface"]}" stroke="{ctx.palette["ink"]}" stroke-width="1.8"/>'
+        for x, y in points.values()
+    )
+    delaunay = "".join(
+        f'<line x1="{fmt(points[int(edge["a"])][0])}" y1="{fmt(points[int(edge["a"])][1])}" '
+        f'x2="{fmt(points[int(edge["b"])][0])}" y2="{fmt(points[int(edge["b"])][1])}" '
+        f'stroke="{ctx.palette["line"]}" stroke-width="1"/>'
+        for edge in edges
+    )
+
+    def active_complex(frame: dict[str, object]) -> str:
+        active_faces = {str(value) for value in frame.get("activeFaceIds", [])}  # type: ignore[union-attr]
+        active_edges = {str(value) for value in frame.get("activeEdgeIds", [])}  # type: ignore[union-attr]
+        face_markup = []
+        for face_id in sorted(active_faces):
+            face = face_by_id.get(face_id)
+            if face is None:
+                continue
+            vertices = [points[int(value)] for value in face["vertices"]]  # type: ignore[index]
+            face_markup.append(
+                f'<polygon points="{" ".join(f"{fmt(x)},{fmt(y)}" for x, y in vertices)}" '
+                f'fill="{ctx.color(2)}" opacity=".16" stroke="none"/>'
+            )
+        edge_markup = []
+        for edge_id in sorted(active_edges):
+            edge = edge_by_id.get(edge_id)
+            if edge is None:
+                continue
+            a, b = points[int(edge["a"])], points[int(edge["b"])]
+            edge_markup.append(
+                f'<line x1="{fmt(a[0])}" y1="{fmt(a[1])}" x2="{fmt(b[0])}" y2="{fmt(b[1])}" '
+                f'stroke="{ctx.color(2)}" stroke-width="1.8"/>'
+            )
+        return "".join(face_markup + edge_markup)
+
+    def boundary(frame: dict[str, object]) -> str:
+        active_faces = {str(value) for value in frame.get("activeFaceIds", [])}  # type: ignore[union-attr]
+        active_edges = {str(value) for value in frame.get("activeEdgeIds", [])}  # type: ignore[union-attr]
+        incidence: dict[tuple[int, int], int] = {}
+        for face_id in active_faces:
+            face = face_by_id.get(face_id)
+            if face is None:
+                continue
+            vertices = [int(value) for value in face["vertices"]]  # type: ignore[index]
+            for a, b in ((vertices[0], vertices[1]), (vertices[0], vertices[2]), (vertices[1], vertices[2])):
+                key = tuple(sorted((a, b)))
+                incidence[key] = incidence.get(key, 0) + 1
+        markup: list[str] = []
+        for edge_id in sorted(active_edges):
+            edge = edge_by_id.get(edge_id)
+            if edge is None:
+                continue
+            key = tuple(sorted((int(edge["a"]), int(edge["b"]))))
+            if incidence.get(key, 0) >= 2:
+                continue
+            a, b = points[key[0]], points[key[1]]
+            markup.append(
+                f'<line x1="{fmt(a[0])}" y1="{fmt(a[1])}" x2="{fmt(b[0])}" y2="{fmt(b[1])}" '
+                f'stroke="{ctx.color(0)}" stroke-width="4" stroke-linecap="round"/>'
+            )
+        if not markup:
+            markup.append(
+                f'<circle cx="{fmt(plot[0])}" cy="{fmt(plot[1])}" r="2" fill="{ctx.color(0)}" opacity=".25"/>'
+            )
+        return "".join(markup)
+
+    maximum_alpha = max(
+        [float(frame.get("alpha", 0.0)) for frame in state["frames"] if isinstance(frame, dict)],  # type: ignore[index]
+        default=1.0,
+    )
+    sx, sy, sw, sh = side
+    interval_values = [value for value in intervals if isinstance(value, dict)]  # type: ignore[union-attr]
+    show_bar_label = sh >= 36
+    bar_top = sy + (22 if show_bar_label else 1)
+    bar_height = max(1.0, sh - (30 if show_bar_label else 2))
+    interval_height = bar_height / max(1, len(interval_values))
+    bars: list[str] = (
+        [f'<text x="{fmt(sx)}" y="{fmt(sy + 12)}" class="psvg-label">persistence intervals</text>']
+        if show_bar_label
+        else []
+    )
+    for index, interval in enumerate(interval_values):
+        birth = float(interval.get("birth", 0.0))
+        death_value = interval.get("death")
+        death = maximum_alpha if death_value is None else float(death_value)
+        y = bar_top + (index + .5) * interval_height
+        x1 = sx + sw * min(1.0, birth / max(maximum_alpha, 1e-9))
+        x2 = sx + sw * min(1.0, death / max(maximum_alpha, 1e-9))
+        bars.append(
+            f'<line x1="{fmt(x1)}" y1="{fmt(y)}" x2="{fmt(max(x1 + 2, x2))}" y2="{fmt(y)}" '
+            f'stroke="{ctx.color(int(interval.get("dimension", 0)))}" stroke-width="{fmt(max(.35, min(5, interval_height * .62)))}" stroke-linecap="round"/>'
+        )
+
+    def alpha_cursor(frame: dict[str, object]) -> str:
+        alpha = float(frame.get("alpha", 0.0))
+        x = sx + sw * alpha / max(maximum_alpha, 1e-9)
+        return f'<line x1="{fmt(x)}" y1="{fmt(bar_top)}" x2="{fmt(x)}" y2="{fmt(sy + sh - 1)}" stroke="{ctx.palette["ink"]}" stroke-width="1.5" stroke-dasharray="3 3"/>'
+
+    return {
+        "samples": samples,
+        "delaunay": delaunay,
+        "filtration": render_snapshot_series(ctx, state, active_complex),
+        "homology": "".join(bars) + render_snapshot_series(ctx, state, alpha_cursor),
+        "boundary": render_snapshot_series(ctx, state, boundary),
+        "timeline": mastery_timeline(ctx, state, "α filtration"),
+    }
+
+
+def render_join_tree_mastery(ctx: Context, state: dict[str, object]) -> dict[str, str]:
+    geometry = state.get("geometry")
+    if not isinstance(geometry, dict):
+        raise RuntimeError("Join-tree solver geometry is missing.")
+    samples_raw = geometry.get("samples")
+    triangles_raw = geometry.get("triangles")
+    tree = geometry.get("joinTree")
+    if not isinstance(samples_raw, list) or not isinstance(triangles_raw, list) or not isinstance(tree, dict):
+        raise RuntimeError("Join-tree solver geometry is incomplete.")
+    plot, side = mastery_regions(ctx)
+    samples = [value for value in samples_raw if isinstance(value, dict)]
+    sample_points = {
+        int(value["id"]): mapped_point((float(value["x"]), float(value["y"])), plot)
+        for value in samples
+    }
+    values = [float(value["value"]) for value in samples]
+    minimum, maximum = min(values), max(values)
+    cell_radius = max(1.4, min(plot[2] / int(geometry["columns"]), plot[3] / int(geometry["rows"])) * .42)
+    field = "".join(
+        f'<circle cx="{fmt(sample_points[int(value["id"])][0])}" cy="{fmt(sample_points[int(value["id"])][1])}" r="{fmt(cell_radius)}" '
+        f'fill="{ctx.color(min(5, int(6 * (float(value["value"]) - minimum) / max(maximum - minimum, 1e-9))))}" opacity=".46"/>'
+        for value in samples
+    )
+    triangle_path: list[str] = []
+    for raw in triangles_raw:
+        if not isinstance(raw, list) or len(raw) != 3:
+            continue
+        points = [sample_points[int(value)] for value in raw]
+        triangle_path.append(path_from_points(points, close=True))
+    triangulation = (
+        f'<path d="{" ".join(triangle_path)}" fill="none" stroke="{ctx.palette["line"]}" stroke-width=".45" opacity=".55"/>'
+    )
+    nodes_raw = tree.get("nodes")
+    arcs_raw = tree.get("arcs")
+    if not isinstance(nodes_raw, list) or not isinstance(arcs_raw, list):
+        raise RuntimeError("Join-tree nodes/arcs are missing.")
+    nodes = [value for value in nodes_raw if isinstance(value, dict)]
+    arcs = [value for value in arcs_raw if isinstance(value, dict)]
+    node_by_id = {str(value["id"]): value for value in nodes}
+    critical_context = "".join(
+        f'<circle cx="{fmt(sample_points[int(node["sample"])][0])}" cy="{fmt(sample_points[int(node["sample"])][1])}" '
+        f'r="5" fill="{ctx.color(0 if node.get("type") == "minimum" else 1)}" opacity=".16" '
+        f'stroke="{ctx.palette["surface"]}" stroke-width="2"/>'
+        for node in nodes
+    )
+    sx, sy, sw, sh = side
+    tree_height = sh * .74
+    node_positions: dict[str, tuple[float, float]] = {}
+    for index, node in enumerate(nodes):
+        node_positions[str(node["id"])] = (
+            sx + sw * ((index + .5) / max(1, len(nodes))),
+            sy + tree_height * (1.0 - (float(node["value"]) - minimum) / max(maximum - minimum, 1e-9)),
+        )
+    faint_tree = "".join(
+        f'<line x1="{fmt(node_positions[str(arc["from"])][0])}" y1="{fmt(node_positions[str(arc["from"])][1])}" '
+        f'x2="{fmt(node_positions[str(arc["to"])][0])}" y2="{fmt(node_positions[str(arc["to"])][1])}" '
+        f'stroke="{ctx.palette["line"]}" stroke-width="2"/>'
+        for arc in arcs
+    ) + "".join(
+        f'<circle cx="{fmt(node_positions[str(node["id"])][0])}" cy="{fmt(node_positions[str(node["id"])][1])}" r="4" fill="{ctx.palette["surface"]}" stroke="{ctx.palette["muted"]}"/>'
+        for node in nodes
+    )
+
+    def active_tree(frame: dict[str, object]) -> str:
+        visible_nodes = {str(value) for value in frame.get("visibleTreeNodeIds", [])}  # type: ignore[union-attr]
+        visible_arcs = {str(value) for value in frame.get("visibleTreeArcIds", [])}  # type: ignore[union-attr]
+        markup = []
+        for arc in arcs:
+            if str(arc["id"]) not in visible_arcs:
+                continue
+            a, b = node_positions[str(arc["from"])], node_positions[str(arc["to"])]
+            markup.append(
+                f'<line x1="{fmt(a[0])}" y1="{fmt(a[1])}" x2="{fmt(b[0])}" y2="{fmt(b[1])}" stroke="{ctx.color(2)}" stroke-width="3"/>'
+            )
+        for node_id in sorted(visible_nodes):
+            if node_id in node_positions:
+                point = node_positions[node_id]
+                markup.append(f'<circle cx="{fmt(point[0])}" cy="{fmt(point[1])}" r="5" fill="{ctx.color(0)}"/>')
+        if not markup:
+            markup.append(f'<circle cx="{fmt(sx)}" cy="{fmt(sy)}" r="2" fill="{ctx.color(0)}" opacity=".2"/>')
+        return "".join(markup)
+
+    def active_critical_points(frame: dict[str, object]) -> str:
+        visible_nodes = {str(value) for value in frame.get("visibleTreeNodeIds", [])}  # type: ignore[union-attr]
+        markup = []
+        for node_id in sorted(visible_nodes):
+            node = node_by_id.get(node_id)
+            if node is None:
+                continue
+            point = sample_points[int(node["sample"])]
+            markup.append(
+                f'<circle cx="{fmt(point[0])}" cy="{fmt(point[1])}" r="6" '
+                f'fill="{ctx.color(0 if node.get("type") == "minimum" else 1)}" '
+                f'stroke="{ctx.palette["surface"]}" stroke-width="2"/>'
+            )
+        return "".join(markup) or (
+            f'<circle cx="{fmt(plot[0])}" cy="{fmt(plot[1])}" r="2" '
+            f'fill="{ctx.color(0)}" opacity=".2"/>'
+        )
+
+    def isolines(frame: dict[str, object]) -> str:
+        segments = frame.get("contourSegments", [])
+        paths = []
+        if isinstance(segments, list):
+            for segment in segments:
+                if isinstance(segment, dict):
+                    a = mapped_point(segment["a"], plot)  # type: ignore[arg-type]
+                    b = mapped_point(segment["b"], plot)  # type: ignore[arg-type]
+                    paths.append(f"M {fmt(a[0])} {fmt(a[1])} L {fmt(b[0])} {fmt(b[1])}")
+        return (
+            f'<path d="{" ".join(paths)}" fill="none" stroke="{ctx.color(0)}" stroke-width="2.4" stroke-linecap="round"/>'
+            if paths
+            else f'<circle cx="{fmt(plot[0])}" cy="{fmt(plot[1])}" r="2" fill="{ctx.color(0)}" opacity=".2"/>'
+        )
+
+    return {
+        "field": field,
+        "triangulation": triangulation,
+        "critical-points": critical_context + render_snapshot_series(ctx, state, active_critical_points),
+        "join-tree": faint_tree + render_snapshot_series(ctx, state, active_tree),
+        "isolines": render_snapshot_series(ctx, state, isolines),
+        "timeline": mastery_timeline(ctx, state, "lower-star level"),
+    }
+
+
+def render_transport_mastery(ctx: Context, state: dict[str, object]) -> dict[str, str]:
+    geometry = state.get("geometry")
+    if not isinstance(geometry, dict):
+        raise RuntimeError("Transport solver geometry is missing.")
+    sources_raw = geometry.get("sources")
+    targets_raw = geometry.get("targets")
+    rounded_kernel_raw = geometry.get("gibbsKernel")
+    rounded_plan_raw = geometry.get("plan")
+    history_raw = geometry.get("residualHistory")
+    scaling_evidence = geometry.get("sinkhornScalingEvidence")
+    if not all(
+        isinstance(value, list)
+        for value in (
+            sources_raw,
+            targets_raw,
+            rounded_kernel_raw,
+            rounded_plan_raw,
+            history_raw,
+        )
+    ) or not isinstance(scaling_evidence, dict):
+        raise RuntimeError("Transport solver geometry is incomplete.")
+    plot, side = mastery_regions(ctx)
+    sources = [value for value in sources_raw if isinstance(value, dict)]  # type: ignore[union-attr]
+    targets = [value for value in targets_raw if isinstance(value, dict)]  # type: ignore[union-attr]
+    high_precision_kernel = scaling_evidence.get("kernel")
+    final_u = scaling_evidence.get("u")
+    final_v = scaling_evidence.get("v")
+    if (
+        not isinstance(high_precision_kernel, list)
+        or not isinstance(final_u, list)
+        or not isinstance(final_v, list)
+        or len(high_precision_kernel) != len(sources)
+        or len(final_u) != len(sources)
+        or len(final_v) != len(targets)
+    ):
+        raise RuntimeError("High-precision Sinkhorn factorization is incomplete.")
+    kernel_raw: list[list[float]] = []
+    for row in high_precision_kernel:
+        if not isinstance(row, list) or len(row) != len(targets):
+            raise RuntimeError("High-precision Sinkhorn kernel has an invalid shape.")
+        kernel_raw.append([float(value) for value in row])
+    plan_raw = [
+        [
+            float(final_u[source_index])
+            * kernel_raw[source_index][target_index]
+            * float(final_v[target_index])
+            for target_index in range(len(targets))
+        ]
+        for source_index in range(len(sources))
+    ]
+    source_points = [mapped_point((float(value["x"]), float(value["y"])), plot) for value in sources]
+    target_points = [mapped_point((float(value["x"]), float(value["y"])), plot) for value in targets]
+    endpoint_markup: list[str] = []
+    for point, site in zip(source_points, sources, strict=True):
+        radius = 5 + 22 * math.sqrt(float(site.get("mass", 0.0)))
+        endpoint_markup.append(
+            f'<circle cx="{fmt(point[0])}" cy="{fmt(point[1])}" r="{fmt(radius)}" fill="{ctx.color(4)}" opacity=".8" stroke="{ctx.palette["surface"]}" stroke-width="2"/>'
+        )
+    for point, site in zip(target_points, targets, strict=True):
+        radius = 5 + 22 * math.sqrt(float(site.get("mass", 0.0)))
+        endpoint_markup.append(
+            f'<rect x="{fmt(point[0] - radius)}" y="{fmt(point[1] - radius)}" width="{fmt(radius * 2)}" height="{fmt(radius * 2)}" rx="{fmt(radius * .35)}" fill="{ctx.color(1)}" opacity=".72" stroke="{ctx.palette["surface"]}" stroke-width="2"/>'
+        )
+    sx, sy, sw, sh = side
+    affinities = [float(value) for row in kernel_raw for value in row]
+    maximum_affinity = max(affinities, default=1.0)
+    cell_count = max(1, len(sources))
+    show_matrix_label = sh >= 60
+    matrix_top = sy + (22 if show_matrix_label else 0)
+    matrix_size = min(sw, sh * (.46 if show_matrix_label else .48))
+    cell_size = matrix_size / cell_count
+    matrix: list[str] = (
+        [f'<text x="{fmt(sx)}" y="{fmt(sy + 11)}" class="psvg-label">Gibbs affinity K</text>']
+        if show_matrix_label
+        else []
+    )
+    for row_index, row in enumerate(kernel_raw):
+        for column_index, value in enumerate(row):
+            normalized = float(value) / max(maximum_affinity, 1e-12)
+            matrix.append(
+                f'<rect data-kernel-row="{row_index}" data-kernel-column="{column_index}" '
+                f'data-kernel-value="{format(float(value), ".15g")}" '
+                f'x="{fmt(sx + column_index * cell_size)}" y="{fmt(matrix_top + row_index * cell_size)}" '
+                f'width="{fmt(cell_size + .25)}" height="{fmt(cell_size + .25)}" fill="{ctx.color(2)}" opacity="{fmt(.12 + .72 * normalized)}"/>'
+            )
+    checkpoints_raw = scaling_evidence.get("checkpoints")
+    if not isinstance(checkpoints_raw, list) or not checkpoints_raw:
+        raise RuntimeError("Sinkhorn scaling checkpoints are missing.")
+    checkpoints = [value for value in checkpoints_raw if isinstance(value, dict)]
+    if len(checkpoints) != len(checkpoints_raw):
+        raise RuntimeError("Sinkhorn scaling checkpoints are malformed.")
+    scaling_values = [
+        float(value)
+        for checkpoint in checkpoints
+        for role in ("u", "v")
+        for value in checkpoint.get(role, [])  # type: ignore[union-attr]
+    ]
+    if not scaling_values or any(value <= 0.0 or not math.isfinite(value) for value in scaling_values):
+        raise RuntimeError("Sinkhorn scaling checkpoints must contain finite positive values.")
+    scaling_logs = [math.log10(value) for value in scaling_values]
+    scaling_log_min, scaling_log_max = min(scaling_logs), max(scaling_logs)
+    scaling_top = matrix_top + matrix_size + 13
+    scaling_height = max(34.0, min(74.0, sh * .19))
+    scaling_label_width = min(18.0, sw * .1)
+    scaling_chart_x = sx + scaling_label_width
+    scaling_chart_width = max(1.0, sw - scaling_label_width)
+
+    def scaling_checkpoint(frame: dict[str, object]) -> str:
+        checkpoint_index = int(frame.get("sinkhornCheckpointIndex", -1))
+        if not 0 <= checkpoint_index < len(checkpoints):
+            raise RuntimeError("Transport frame references an invalid Sinkhorn checkpoint.")
+        checkpoint = checkpoints[checkpoint_index]
+        iteration = int(checkpoint.get("iteration", -1))
+        if iteration != int(frame.get("sinkhornIteration", -2)):
+            raise RuntimeError("Transport frame/checkpoint iteration mismatch.")
+        rows: list[str] = []
+        role_height = max(1.0, (scaling_height - 15) / 2)
+        for role_index, role in enumerate(("u", "v")):
+            values = checkpoint.get(role)
+            if not isinstance(values, list) or len(values) != cell_count:
+                raise RuntimeError(f"Sinkhorn checkpoint {role!r} scaling is malformed.")
+            row_y = scaling_top + 14 + role_index * role_height
+            bar_width = scaling_chart_width / cell_count
+            rows.append(
+                f'<text x="{fmt(sx)}" y="{fmt(row_y + role_height * .72)}" class="psvg-note">{role}</text>'
+            )
+            for value_index, raw_value in enumerate(values):
+                value = float(raw_value)
+                normalized = (math.log10(value) - scaling_log_min) / max(
+                    scaling_log_max - scaling_log_min, 1e-12
+                )
+                bar_height = max(1.0, role_height * (.12 + .88 * normalized))
+                rows.append(
+                    f'<rect data-scaling-role="{role}" data-scaling-index="{value_index}" '
+                    f'data-scaling-value="{format(value, ".15g")}" '
+                    f'x="{fmt(scaling_chart_x + value_index * bar_width)}" '
+                    f'y="{fmt(row_y + role_height - bar_height)}" width="{fmt(bar_width + .2)}" '
+                    f'height="{fmt(bar_height)}" fill="{ctx.color(4 if role == "u" else 1)}" '
+                    f'opacity="{fmt(.28 + .62 * normalized)}"/>'
+                )
+        scaling_heading = (
+            f'<text x="{fmt(sx)}" y="{fmt(scaling_top + 9)}" class="psvg-note">'
+            f'scalings · iter {iteration}</text>'
+            if sw >= 120 and scaling_height >= 48
+            else ""
+        )
+        return (
+            f'<g data-sinkhorn-checkpoint-index="{checkpoint_index}" '
+            f'data-sinkhorn-iteration="{iteration}">'
+            f'{scaling_heading}{"".join(rows)}</g>'
+        )
+
+    history = [value for value in history_raw if isinstance(value, dict)]  # type: ignore[union-attr]
+    history_y = scaling_top + scaling_height + 18
+    history_height = max(1.0, sh - (history_y - sy) - (12 if show_matrix_label else 1))
+    residual_values = [
+        max(float(value.get("maxRowError", 0.0)), float(value.get("maxColumnError", 0.0)), 1e-12)
+        for value in history
+    ]
+    maximum_log = max((-math.log10(value) for value in residual_values), default=1.0)
+    history_points = [
+        (
+            sx + sw * index / max(1, len(history) - 1),
+            history_y + history_height * (1.0 - (-math.log10(value)) / max(maximum_log, 1e-9)),
+        )
+        for index, value in enumerate(residual_values)
+    ]
+    residual_label = (
+        f'<text x="{fmt(sx)}" y="{fmt(history_y - 5)}" class="psvg-note">Sinkhorn marginal residual</text>'
+        if show_matrix_label
+        else ""
+    )
+    residual = (
+        residual_label
+        +
+        f'<path d="{path_from_points(history_points)}" fill="none" stroke="{ctx.color(0)}" stroke-width="2.5"/>'
+        f'<circle cx="{fmt(history_points[-1][0])}" cy="{fmt(history_points[-1][1])}" r="4" fill="{ctx.color(0)}"/>'
+        if history_points
+        else f'<text x="{fmt(sx)}" y="{fmt(history_y)}" class="psvg-note">no residual samples</text>'
+    )
+
+    def residual_cursor(frame: dict[str, object]) -> str:
+        if not history_points:
+            return ""
+        iteration = int(frame.get("sinkhornIteration", 0))
+        sample_index = min(
+            range(len(history)),
+            key=lambda index: abs(int(history[index].get("iteration", 0)) - iteration),
+        )
+        point = history_points[sample_index]
+        return (
+            f'<circle data-sinkhorn-residual-iteration="{iteration}" '
+            f'cx="{fmt(point[0])}" cy="{fmt(point[1])}" r="4.2" '
+            f'fill="{ctx.palette["surface"]}" stroke="{ctx.color(0)}" stroke-width="2"/>'
+        )
+
+    def sinkhorn_checkpoint(frame: dict[str, object]) -> str:
+        return scaling_checkpoint(frame) + residual_cursor(frame)
+    plan_values = [float(value) for row in plan_raw for value in row]
+    maximum_mass = max(plan_values, default=1.0)
+    plan_lines: list[str] = []
+    for source_index, row in enumerate(plan_raw):
+        for target_index, raw_mass in enumerate(row):
+            mass = float(raw_mass)
+            relative_mass = math.sqrt(max(0.0, mass / max(maximum_mass, 1e-15)))
+            a, b = source_points[source_index], target_points[target_index]
+            midpoint = ((a[0] + b[0]) / 2, min(a[1], b[1]) - 18 - 36 * mass / maximum_mass)
+            plan_lines.append(
+                f'<path data-plan-source="{source_index}" data-plan-target="{target_index}" '
+                f'data-plan-mass="{format(mass, ".15g")}" '
+                f'd="M {fmt(a[0])} {fmt(a[1])} Q {fmt(midpoint[0])} {fmt(midpoint[1])} {fmt(b[0])} {fmt(b[1])}" '
+                f'fill="none" stroke="{ctx.color(source_index)}" stroke-width="{fmt(.25 + 9.75 * relative_mass)}" '
+                f'opacity="{fmt(.08 + .38 * relative_mass)}" stroke-linecap="round"/>'
+            )
+
+    def transported_mass(frame: dict[str, object]) -> str:
+        links = frame.get("links", [])
+        if not isinstance(links, list):
+            return ""
+        selected = [value for value in links if isinstance(value, dict)]
+        markup: list[str] = []
+        seen_entries: set[tuple[int, int]] = set()
+        for link in selected:
+            source_index = int(link["source"])
+            target_index = int(link["target"])
+            entry = (source_index, target_index)
+            if (
+                not 0 <= source_index < len(sources)
+                or not 0 <= target_index < len(targets)
+                or entry in seen_entries
+            ):
+                raise RuntimeError("Transport frame contains an invalid plan entry.")
+            seen_entries.add(entry)
+            mass = plan_raw[source_index][target_index]
+            point = mapped_point((float(link["x"]), float(link["y"])), plot)
+            markup.append(
+                f'<circle data-plan-entry="{source_index}:{target_index}" '
+                f'cx="{fmt(point[0])}" cy="{fmt(point[1])}" '
+                f'r="{fmt(.6 + 18 * math.sqrt(max(0.0, mass)))}" '
+                f'fill="{ctx.color(source_index)}" '
+                f'opacity="{fmt(.16 + .66 * math.sqrt(max(0.0, mass / max(maximum_mass, 1e-15))))}" '
+                f'stroke="{ctx.palette["surface"]}" stroke-width=".6"/>'
+            )
+        expected_entries = {
+            (source_index, target_index)
+            for source_index in range(len(sources))
+            for target_index in range(len(targets))
+        }
+        if seen_entries != expected_entries:
+            raise RuntimeError("Transport frame must render every final plan entry exactly once.")
+        return "".join(markup)
+
+    return {
+        "source-target": "".join(endpoint_markup),
+        "cost-kernel": "".join(matrix),
+        "sinkhorn": residual + render_snapshot_series(ctx, state, sinkhorn_checkpoint),
+        "transport-plan": "".join(plan_lines) or f'<line x1="{fmt(plot[0])}" y1="{fmt(plot[1])}" x2="{fmt(plot[0] + 2)}" y2="{fmt(plot[1])}" stroke="{ctx.color(0)}"/>',
+        "interpolation": render_snapshot_series(ctx, state, transported_mass),
+        "timeline": mastery_timeline(ctx, state, "barycentric transport"),
+    }
+
+
+def fmm_backtraces(
+    arrivals: list[float], columns: int, rows: int, source: int
+) -> list[list[int]]:
+    targets = [columns - 1, rows * columns - 1, (rows - 1) * columns + columns // 2]
+    paths: list[list[int]] = []
+    for target in targets:
+        current = target
+        path = [current]
+        seen = {current}
+        for _ in range(columns + rows + 12):
+            if current == source:
+                break
+            column, row = current % columns, current // columns
+            neighbors = [
+                neighbor_row * columns + neighbor_column
+                for neighbor_column, neighbor_row in (
+                    (column - 1, row), (column + 1, row), (column, row - 1), (column, row + 1)
+                )
+                if 0 <= neighbor_column < columns and 0 <= neighbor_row < rows
+            ]
+            next_cell = min(neighbors, key=lambda cell: (arrivals[cell], cell))
+            if next_cell in seen or arrivals[next_cell] >= arrivals[current] - 1e-12:
+                break
+            current = next_cell
+            seen.add(current)
+            path.append(current)
+        paths.append(path)
+    return paths
+
+
+def grid_cell_path(
+    cell_ids: Iterable[int],
+    region: tuple[float, float, float, float],
+    columns: int,
+    rows: int,
+) -> str:
+    x, y, width, height = region
+    cell_width, cell_height = width / columns, height / rows
+    commands = []
+    for cell in sorted(cell_ids):
+        column, row = int(cell) % columns, int(cell) // columns
+        px, py = x + column * cell_width, y + row * cell_height
+        commands.append(
+            f"M {fmt(px)} {fmt(py)} h {fmt(cell_width + .2)} v {fmt(cell_height + .2)} h {fmt(-cell_width - .2)} Z"
+        )
+    return " ".join(commands)
+
+
+def render_fast_marching_mastery(ctx: Context, state: dict[str, object]) -> dict[str, str]:
+    geometry = state.get("geometry")
+    if not isinstance(geometry, dict):
+        raise RuntimeError("Fast Marching geometry is missing.")
+    columns, rows = int(geometry["columns"]), int(geometry["rows"])
+    speed = [float(value) for value in geometry["speedField"]]  # type: ignore[index]
+    arrivals = [float(value) for value in geometry["arrivalTimes"]]  # type: ignore[index]
+    source_data = geometry.get("source")
+    if not isinstance(source_data, dict):
+        raise RuntimeError("Fast Marching source is missing.")
+    source = int(source_data["id"])
+    plot = mastery_full_region(ctx, columns / rows)
+    x, y, width, height = plot
+    cell_width, cell_height = width / columns, height / rows
+    min_speed, max_speed = min(speed), max(speed)
+    speed_cells = []
+    for cell, value in enumerate(speed):
+        column, row = cell % columns, cell // columns
+        normalized = (value - min_speed) / max(max_speed - min_speed, 1e-9)
+        speed_cells.append(
+            f'<rect x="{fmt(x + column * cell_width)}" y="{fmt(y + row * cell_height)}" '
+            f'width="{fmt(cell_width + .25)}" height="{fmt(cell_height + .25)}" fill="{ctx.color(3)}" opacity="{fmt(.08 + .38 * normalized)}"/>'
+        )
+    source_point = (
+        x + (int(source_data["column"]) + .5) * cell_width,
+        y + (int(source_data["row"]) + .5) * cell_height,
+    )
+    speed_cells.append(
+        f'<circle cx="{fmt(source_point[0])}" cy="{fmt(source_point[1])}" r="7" fill="{ctx.color(0)}" stroke="{ctx.palette["surface"]}" stroke-width="2"/>'
+    )
+    max_arrival = max(arrivals)
+    arrival_marks = "".join(
+        f'<circle cx="{fmt(x + (cell % columns + .5) * cell_width)}" cy="{fmt(y + (cell // columns + .5) * cell_height)}" '
+        f'r="{fmt(max(.6, min(cell_width, cell_height) * .13))}" fill="{ctx.palette["ink"]}" opacity="{fmt(.08 + .32 * value / max(max_arrival, 1e-9))}"/>'
+        for cell, value in enumerate(arrivals)
+    )
+
+    def accepted(frame: dict[str, object]) -> str:
+        accepted_ids = {int(value) for value in frame.get("acceptedCellIds", [])}  # type: ignore[union-attr]
+        trial_raw = frame.get("trialCellIds", [])
+        trial_times_raw = frame.get("trialArrivalTimes", [])
+        if not isinstance(trial_raw, list) or not isinstance(trial_times_raw, list):
+            raise RuntimeError("Fast Marching frame is missing its trial heap state.")
+        if len(trial_raw) != len(trial_times_raw):
+            raise RuntimeError("Fast Marching trial cells and tentative times differ in length.")
+        trial = [int(value) for value in trial_raw]
+        trial_times = [float(value) for value in trial_times_raw]
+        if len(set(trial)) != len(trial) or accepted_ids.intersection(trial):
+            raise RuntimeError("Fast Marching accepted/trial sets are not disjoint.")
+        accepted_path = grid_cell_path(accepted_ids, plot, columns, rows)
+        markup = []
+        if accepted_path:
+            markup.append(f'<path d="{accepted_path}" fill="{ctx.color(4)}" opacity=".18"/>')
+        if trial:
+            threshold = float(frame.get("time", 0.0))
+            maximum_trial = max(trial_times)
+            trial_buckets: list[list[int]] = [[] for _ in range(4)]
+            for cell, tentative_time in zip(trial, trial_times, strict=True):
+                if not math.isfinite(tentative_time) or tentative_time <= threshold:
+                    raise RuntimeError("Fast Marching trial time violates heap causality.")
+                normalized = (tentative_time - threshold) / max(maximum_trial - threshold, 1e-12)
+                trial_buckets[min(3, max(0, int(normalized * 4)))].append(cell)
+            for bucket_index, bucket_cells in enumerate(trial_buckets):
+                if not bucket_cells:
+                    continue
+                markup.append(
+                    f'<path data-trial-time-bucket="{bucket_index}" '
+                    f'd="{grid_cell_path(bucket_cells, plot, columns, rows)}" '
+                    f'fill="{ctx.color(1)}" opacity="{fmt(.68 - .1 * bucket_index)}"/>'
+                )
+        heap_count = int(frame.get("trialHeapEntryCount", len(trial)))
+        stale_count = int(frame.get("trialStaleHeapEntryCount", 0))
+        if stale_count < 0 or heap_count != len(trial) + stale_count:
+            raise RuntimeError("Fast Marching heap-entry telemetry is inconsistent.")
+        trial_ids_text = ",".join(str(value) for value in trial)
+        trial_times_text = ",".join(format(value, ".15g") for value in trial_times)
+        evidence_attributes = (
+            f'data-accepted-count="{len(accepted_ids)}" data-trial-count="{len(trial)}" '
+            f'data-trial-cell-ids="{trial_ids_text}" '
+            f'data-trial-arrival-times="{trial_times_text}" '
+            f'data-trial-heap-entry-count="{heap_count}" '
+            f'data-trial-stale-entry-count="{stale_count}"'
+        )
+        return (
+            f'<g {evidence_attributes}>{"".join(markup)}</g>'
+            if markup
+            else f'<g {evidence_attributes}><circle cx="{fmt(source_point[0])}" '
+            f'cy="{fmt(source_point[1])}" r="2" fill="{ctx.color(1)}"/></g>'
+        )
+
+    def front(frame: dict[str, object]) -> str:
+        raw_segments = frame.get("frontSegments", [])
+        paths = []
+        if isinstance(raw_segments, list):
+            for segment in raw_segments:
+                if isinstance(segment, dict):
+                    a, b = mapped_point(segment["a"], plot), mapped_point(segment["b"], plot)  # type: ignore[arg-type]
+                    paths.append(f"M {fmt(a[0])} {fmt(a[1])} L {fmt(b[0])} {fmt(b[1])}")
+        return (
+            f'<path d="{" ".join(paths)}" fill="none" stroke="{ctx.color(0)}" stroke-width="3" stroke-linecap="round"/>'
+            if paths
+            else f'<circle cx="{fmt(source_point[0])}" cy="{fmt(source_point[1])}" r="2" fill="{ctx.color(0)}"/>'
+        )
+
+    trace_markup = []
+    for index, cell_path in enumerate(fmm_backtraces(arrivals, columns, rows, source)):
+        points = [
+            (x + (cell % columns + .5) * cell_width, y + (cell // columns + .5) * cell_height)
+            for cell in cell_path
+        ]
+        trace_markup.append(
+            f'<path d="{path_from_points(points)}" fill="none" stroke="{ctx.color(index + 1)}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'
+        )
+    return {
+        "speed-field": "".join(speed_cells),
+        "arrival-time": arrival_marks,
+        "accepted-front": render_snapshot_series(ctx, state, accepted),
+        "isocontours": render_snapshot_series(ctx, state, front),
+        "geodesics": "".join(trace_markup),
+        "timeline": mastery_timeline(ctx, state, "accepted arrival time"),
+    }
+
+
+def field_bucket_markup(
+    field: Sequence[float],
+    region: tuple[float, float, float, float],
+    columns: int,
+    rows: int,
+    color: str,
+    *,
+    maximum_cells: int = 420,
+    threshold_ratio: float = 0.06,
+) -> str:
+    magnitudes = [abs(float(value)) for value in field]
+    maximum = max(magnitudes, default=0.0)
+    if maximum <= 1e-15:
+        return f'<circle cx="{fmt(region[0])}" cy="{fmt(region[1])}" r="2" fill="{color}" opacity=".18"/>'
+    candidates = [
+        index for index, value in enumerate(magnitudes) if value >= maximum * threshold_ratio
+    ]
+    candidates.sort(key=lambda index: (-magnitudes[index], index))
+    candidates = candidates[:maximum_cells]
+    buckets: list[list[int]] = [[] for _ in range(4)]
+    for cell in candidates:
+        bucket = min(3, int(4 * magnitudes[cell] / maximum))
+        buckets[bucket].append(cell)
+    markup = []
+    for bucket, cell_ids in enumerate(buckets):
+        if not cell_ids:
+            continue
+        markup.append(
+            f'<path d="{grid_cell_path(cell_ids, region, columns, rows)}" fill="{color}" '
+            f'opacity="{fmt(.1 + .18 * (bucket + 1))}"/>'
+        )
+    return "".join(markup)
+
+
+def grid_network_path(
+    field: Sequence[float],
+    region: tuple[float, float, float, float],
+    columns: int,
+    rows: int,
+    threshold_ratio: float,
+) -> str:
+    values = [float(value) for value in field]
+    maximum = max(values, default=0.0)
+    if maximum <= 1e-15:
+        return ""
+    active = {index for index, value in enumerate(values) if value >= maximum * threshold_ratio}
+    segments: list[str] = []
+    for cell in sorted(active):
+        column, row = cell % columns, cell // columns
+        a = mapped_grid_point((column, row), region, columns, rows)
+        for neighbor in (cell + 1, cell + columns):
+            if neighbor not in active:
+                continue
+            if neighbor == cell + 1 and column + 1 >= columns:
+                continue
+            b = mapped_grid_point((neighbor % columns, neighbor // columns), region, columns, rows)
+            segments.append(f"M {fmt(a[0])} {fmt(a[1])} L {fmt(b[0])} {fmt(b[1])}")
+    return " ".join(segments)
+
+
+def render_physarum_mastery(ctx: Context, state: dict[str, object]) -> dict[str, str]:
+    geometry = state.get("geometry")
+    if not isinstance(geometry, dict):
+        raise RuntimeError("Physarum geometry is missing.")
+    columns, rows = int(geometry["columns"]), int(geometry["rows"])
+    nutrients = geometry.get("nutrientSites")
+    if not isinstance(nutrients, list):
+        raise RuntimeError("Physarum nutrient sites are missing.")
+    plot = mastery_full_region(ctx, columns / rows)
+    nutrient_markup = []
+    for site in nutrients:
+        if not isinstance(site, dict):
+            continue
+        point = mapped_grid_point((float(site["x"]), float(site["y"])), plot, columns, rows)
+        nutrient_markup.append(
+            f'<circle cx="{fmt(point[0])}" cy="{fmt(point[1])}" r="13" fill="{ctx.color(2)}" opacity=".2"/>'
+            f'<circle cx="{fmt(point[0])}" cy="{fmt(point[1])}" r="5" fill="{ctx.color(2)}" stroke="{ctx.palette["surface"]}" stroke-width="2"/>'
+        )
+
+    def agents(frame: dict[str, object]) -> str:
+        values = frame.get("agents", [])
+        if not isinstance(values, list):
+            return ""
+        stride = max(1, math.ceil(len(values) / 48))
+        markup = []
+        for agent in values[::stride]:
+            if not isinstance(agent, dict):
+                continue
+            point = mapped_grid_point((float(agent["x"]), float(agent["y"])), plot, columns, rows)
+            angle = float(agent["heading"])
+            length = 5.5
+            markup.append(
+                f'<line x1="{fmt(point[0])}" y1="{fmt(point[1])}" x2="{fmt(point[0] + length * math.cos(angle))}" '
+                f'y2="{fmt(point[1] + length * math.sin(angle))}" stroke="{ctx.palette["ink"]}" stroke-width="1.4"/>'
+                f'<circle cx="{fmt(point[0])}" cy="{fmt(point[1])}" r="2.2" fill="{ctx.color(4)}"/>'
+            )
+        return "".join(markup)
+
+    def trail(frame: dict[str, object]) -> str:
+        values = frame.get("depositedTrailField", [])
+        if not isinstance(values, list):
+            return ""
+        return field_bucket_markup(
+            [float(value) for value in values], plot, columns, rows, ctx.color(4), maximum_cells=360
+        )
+
+    def diffused(frame: dict[str, object]) -> str:
+        values = frame.get("trailField", [])
+        if not isinstance(values, list):
+            return ""
+        path = grid_network_path(values, plot, columns, rows, .18)
+        return (
+            f'<path d="{path}" fill="none" stroke="{ctx.color(1)}" stroke-width="1.2" opacity=".42" stroke-linecap="round"/>'
+            if path
+            else f'<circle cx="{fmt(plot[0])}" cy="{fmt(plot[1])}" r="2" fill="{ctx.color(1)}" opacity=".2"/>'
+        )
+
+    def network(frame: dict[str, object]) -> str:
+        values = frame.get("networkField", [])
+        raw_edges = frame.get("networkEdges", [])
+        if not isinstance(values, list) or not isinstance(raw_edges, list):
+            return ""
+        segments: list[str] = []
+        for raw_edge in raw_edges:
+            if not isinstance(raw_edge, list) or len(raw_edge) != 2:
+                continue
+            left, right = int(raw_edge[0]), int(raw_edge[1])
+            a = mapped_grid_point((left % columns, left // columns), plot, columns, rows)
+            b = mapped_grid_point((right % columns, right // columns), plot, columns, rows)
+            segments.append(f'M {fmt(a[0])} {fmt(a[1])} L {fmt(b[0])} {fmt(b[1])}')
+        path = " ".join(segments)
+        connected_ids = {
+            int(value) for value in frame.get("connectedNutrientSiteIds", [])  # type: ignore[union-attr]
+        }
+        site_evidence = "".join(
+            f'<circle cx="{fmt(mapped_grid_point((float(site["x"]), float(site["y"])), plot, columns, rows)[0])}" '
+            f'cy="{fmt(mapped_grid_point((float(site["x"]), float(site["y"])), plot, columns, rows)[1])}" '
+            f'r="9" fill="none" stroke="{ctx.color(3)}" stroke-width="2" opacity=".82"/>'
+            for site_id, site in enumerate(nutrients)
+            if site_id in connected_ids and isinstance(site, dict)
+        )
+        support = field_bucket_markup(
+            [float(value) for value in values],
+            plot,
+            columns,
+            rows,
+            ctx.color(4),
+            maximum_cells=160,
+            threshold_ratio=.08,
+        )
+        network_path = (
+            f'<path d="{path}" fill="none" stroke="{ctx.color(0)}" stroke-width="2.6" opacity=".78" stroke-linecap="round" stroke-linejoin="round"/>'
+            if path
+            else f'<circle cx="{fmt(plot[0])}" cy="{fmt(plot[1])}" r="2" fill="{ctx.color(0)}" opacity=".2"/>'
+        )
+        root_cell = frame.get("networkRootCellId")
+        root_evidence = ""
+        if isinstance(root_cell, int) and not isinstance(root_cell, bool):
+            root_point = mapped_grid_point(
+                (root_cell % columns, root_cell // columns), plot, columns, rows
+            )
+            root_evidence = (
+                f'<circle data-network-root="true" cx="{fmt(root_point[0])}" cy="{fmt(root_point[1])}" '
+                f'r="6" fill="{ctx.palette["surface"]}" stroke="{ctx.color(0)}" stroke-width="2.2"/>'
+                f'<circle cx="{fmt(root_point[0])}" cy="{fmt(root_point[1])}" r="2.1" fill="{ctx.color(0)}"/>'
+            )
+        return support + network_path + site_evidence + root_evidence
+
+    return {
+        "nutrients": "".join(nutrient_markup),
+        "agents": render_snapshot_series(ctx, state, agents),
+        "trail-field": render_snapshot_series(ctx, state, trail),
+        "diffusion": render_snapshot_series(ctx, state, diffused),
+        "network": render_snapshot_series(ctx, state, network),
+        "timeline": mastery_timeline(ctx, state, "agent scheduler snapshot"),
+    }
+
+
+def fluid_streamline_paths(
+    vectors: list[dict[str, object]],
+    region: tuple[float, float, float, float],
+    columns: int,
+    rows: int,
+) -> list[str]:
+    if not vectors:
+        return []
+    paths: list[str] = []
+    for seed_index in range(7):
+        x = 1.5 + (columns - 3) * (seed_index + .5) / 7
+        y = 1.5 + (rows - 3) * ((seed_index * 5) % 7 + .5) / 7
+        points = [mapped_cell_center((x, y), region, columns, rows)]
+        for _ in range(16):
+            nearest = min(
+                vectors,
+                key=lambda value: (float(value["x"]) - x) ** 2 + (float(value["y"]) - y) ** 2,
+            )
+            x += float(nearest["u"]) * columns * 1.4
+            y += float(nearest["v"]) * rows * 1.4
+            x = min(columns - 1, max(0.0, x))
+            y = min(rows - 1, max(0.0, y))
+            points.append(mapped_cell_center((x, y), region, columns, rows))
+        paths.append(path_from_points(points))
+    return paths
+
+
+def render_fluid_mastery(ctx: Context, state: dict[str, object]) -> dict[str, str]:
+    geometry = state.get("geometry")
+    if not isinstance(geometry, dict):
+        raise RuntimeError("Stable-fluid geometry is missing.")
+    columns, rows = int(geometry["columns"]), int(geometry["rows"])
+    plot = mastery_full_region(ctx, columns / rows)
+
+    def sources(frame: dict[str, object]) -> str:
+        force_center = frame.get("forceCenter")
+        if not isinstance(force_center, dict):
+            return ""
+        center = mapped_point((float(force_center["x"]), float(force_center["y"])), plot)
+        inlet = mapped_cell_center(
+            (
+                float(frame.get("inletColumn", 1)) + .5,
+                float(frame.get("inletRow", 0)) + .5,
+            ),
+            plot,
+            columns,
+            rows,
+        )
+        return (
+            f'<circle cx="{fmt(center[0])}" cy="{fmt(center[1])}" r="20" fill="none" stroke="{ctx.color(2)}" stroke-width="2" stroke-dasharray="4 4"/>'
+            f'<circle cx="{fmt(center[0])}" cy="{fmt(center[1])}" r="5" fill="{ctx.color(2)}"/>'
+            f'<path d="M {fmt(plot[0])} {fmt(inlet[1])} L {fmt(inlet[0])} {fmt(inlet[1])}" stroke="{ctx.color(0)}" stroke-width="8" stroke-linecap="round"/>'
+        )
+
+    def velocity(frame: dict[str, object]) -> str:
+        values = frame.get("advectedVelocity", [])
+        if not isinstance(values, list):
+            return ""
+        markup = []
+        for vector in values:
+            if not isinstance(vector, dict):
+                continue
+            point = mapped_cell_center((float(vector["x"]), float(vector["y"])), plot, columns, rows)
+            dx = float(vector["u"]) * plot[2] * 1.8
+            dy = float(vector["v"]) * plot[3] * 1.8
+            magnitude = math.hypot(dx, dy)
+            if magnitude > 18:
+                dx, dy = dx * 18 / magnitude, dy * 18 / magnitude
+            markup.append(
+                f'<line x1="{fmt(point[0])}" y1="{fmt(point[1])}" x2="{fmt(point[0] + dx)}" y2="{fmt(point[1] + dy)}" '
+                f'stroke="{ctx.palette["ink"]}" stroke-width="1.3" opacity=".58" stroke-linecap="round"/>'
+            )
+        return "".join(markup)
+
+    def projection(frame: dict[str, object]) -> str:
+        before = frame.get("advectedDivergenceField", [])
+        after = frame.get("divergenceField", [])
+        if not isinstance(before, list) or not isinstance(after, list) or len(before) != len(after):
+            return ""
+        removed = [max(0.0, abs(float(old)) - abs(float(new))) for old, new in zip(before, after, strict=True)]
+        positive_residual = [max(0.0, float(value)) for value in after]
+        negative_residual = [max(0.0, -float(value)) for value in after]
+        return (
+            field_bucket_markup(removed, plot, columns, rows, ctx.color(2), maximum_cells=260, threshold_ratio=.1)
+            + field_bucket_markup(positive_residual, plot, columns, rows, ctx.color(0), maximum_cells=220, threshold_ratio=.12)
+            + field_bucket_markup(negative_residual, plot, columns, rows, ctx.color(4), maximum_cells=220, threshold_ratio=.12)
+        )
+
+    def dye(frame: dict[str, object]) -> str:
+        values = frame.get("dyeField", [])
+        if not isinstance(values, list):
+            return ""
+        return field_bucket_markup(
+            [float(value) for value in values], plot, columns, rows, ctx.color(4), maximum_cells=240, threshold_ratio=.025
+        )
+
+    def streamlines(frame: dict[str, object]) -> str:
+        values = frame.get("projectedVelocity", [])
+        vectors = [value for value in values if isinstance(value, dict)] if isinstance(values, list) else []
+        paths = fluid_streamline_paths(vectors, plot, columns, rows)
+        return "".join(
+            f'<path d="{path}" fill="none" stroke="{ctx.color(index + 1)}" stroke-width="1.8" opacity=".68" stroke-linecap="round"/>'
+            for index, path in enumerate(paths)
+        ) or f'<circle cx="{fmt(plot[0])}" cy="{fmt(plot[1])}" r="2" fill="{ctx.color(1)}" opacity=".2"/>'
+
+    first_frame = state.get("frames", [{}])[0]  # type: ignore[index]
+    first_vectors = first_frame.get("advectedVelocity", []) if isinstance(first_frame, dict) else []
+    velocity_guides = "".join(
+        f'<circle cx="{fmt(mapped_cell_center((float(vector["x"]), float(vector["y"])), plot, columns, rows)[0])}" '
+        f'cy="{fmt(mapped_cell_center((float(vector["x"]), float(vector["y"])), plot, columns, rows)[1])}" '
+        f'r="1.25" fill="{ctx.palette["line"]}" opacity=".7"/>'
+        for vector in first_vectors
+        if isinstance(vector, dict)
+    )
+    streamline_seeds = "".join(
+        f'<circle cx="{fmt(mapped_cell_center((1.5 + (columns - 3) * (index + .5) / 7, 1.5 + (rows - 3) * ((index * 5) % 7 + .5) / 7), plot, columns, rows)[0])}" '
+        f'cy="{fmt(mapped_cell_center((1.5 + (columns - 3) * (index + .5) / 7, 1.5 + (rows - 3) * ((index * 5) % 7 + .5) / 7), plot, columns, rows)[1])}" '
+        f'r="2" fill="{ctx.color(index + 1)}" opacity=".5"/>'
+        for index in range(7)
+    )
+
+    return {
+        "sources": render_snapshot_series(ctx, state, sources),
+        "velocity": velocity_guides + render_snapshot_series(ctx, state, velocity),
+        "projection": render_snapshot_series(ctx, state, projection),
+        "dye": render_snapshot_series(ctx, state, dye),
+        "streamlines": streamline_seeds + render_snapshot_series(ctx, state, streamlines),
+        "timeline": mastery_timeline(ctx, state, "stable-fluid solver snapshot"),
+    }
+
+
+def render_multistrata(ctx: Context) -> str:
+    state = multistrata_state(ctx)
+    variant = int(ctx.spec["variant"])
+    renderers: tuple[Callable[[Context, dict[str, object]], dict[str, str]], ...] = (
+        render_alpha_mastery,
+        render_join_tree_mastery,
+        render_transport_mastery,
+        render_fast_marching_mastery,
+        render_physarum_mastery,
+        render_fluid_mastery,
+    )
+    if not 0 <= variant < len(renderers):
+        raise RuntimeError(f"Unsupported multi-strata renderer variant: {variant}.")
+    layers = renderers[variant](ctx, state)
+    return panel_frame(ctx, mastery_layers(ctx, layers), str(ctx.spec["signature"]))
+
+
 RENDERERS: dict[str, Callable[[Context], str]] = {
     "timing": render_timing,
     "transform": render_transform,
@@ -2066,10 +3628,14 @@ RENDERERS: dict[str, Callable[[Context], str]] = {
     "tiling": render_tiling,
     "paint": render_paint,
     "composition": render_composition,
+    "multistrata": render_multistrata,
 }
 
 
 def common_style(ctx: Context) -> str:
+    title_size = max(16.0, min(24.0, ctx.width / 36.0))
+    subtitle_size = max(7.0, min(13.0, ctx.width / 45.0))
+    kicker_size = max(6.5, min(11.0, ctx.width / 48.0))
     animation_css = ""
     if ctx.full_motion:
         animation_css = """
@@ -2096,9 +3662,9 @@ def common_style(ctx: Context) -> str:
 *{{box-sizing:border-box}}
 .psvg-panel{{fill:{ctx.palette['surface']};stroke:{ctx.palette['line']};stroke-width:1.5}}
 .psvg-guide{{fill:none;stroke:{ctx.palette['line']};stroke-width:2}}
-.psvg-title{{font:700 24px Arial,sans-serif;fill:{ctx.palette['ink']}}}
-.psvg-subtitle{{font:13px Arial,sans-serif;fill:{ctx.palette['muted']}}}
-.psvg-kicker{{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:{ctx.color(0)}}}
+.psvg-title{{font:700 {fmt(title_size)}px Arial,sans-serif;fill:{ctx.palette['ink']}}}
+.psvg-subtitle{{font:{fmt(subtitle_size)}px Arial,sans-serif;fill:{ctx.palette['muted']}}}
+.psvg-kicker{{font:700 {fmt(kicker_size)}px Arial,sans-serif;letter-spacing:{fmt(max(.5, kicker_size / 9))}px;fill:{ctx.color(0)}}}
 .psvg-label{{font:600 13px Arial,sans-serif;fill:{ctx.palette['ink']}}}
 .psvg-node-label{{font:700 10px Arial,sans-serif;fill:{ctx.palette['surface']};pointer-events:none}}
 .psvg-note{{font:11px Arial,sans-serif;fill:{ctx.palette['muted']}}}
@@ -2155,20 +3721,44 @@ def build_svg(ctx: Context) -> str:
         "data-family": str(ctx.spec["family"]),
         "data-renderer": renderer_name,
         "data-variant": str(ctx.spec["variant"]),
+        "data-pattern-revision": str(int(ctx.spec.get("revision", 1))),
         "data-seed": str(ctx.seed),
         "data-palette": ctx.palette_name,
         "data-motion": ctx.motion,
         "data-motion-engine": motion_engine,
         "data-duration-ms": str(ctx.duration_ms),
         "data-loop": "true" if ctx.full_motion else "false",
-        "data-loop-contract": "master-phase" if ctx.full_motion else "static",
+        "data-loop-contract": str(ctx.spec.get("loopMode", "master-phase")) if ctx.full_motion else "static",
         "data-reduced-motion-fallback": "layered" if ctx.full_motion else "static",
         "data-driver": str(ctx.spec["driver"]),
         "data-technique": str(ctx.spec["technique"]),
         "data-deterministic": "true",
         "data-standalone": "true",
+        "data-parameter-values": canonical_json(ctx.parameters),
         "data-parameter-hash": parameter_hash(ctx),
     }
+    diagnostics_markup = ""
+    if "strata" in ctx.spec:
+        diagnostics, diagnostics_json = multistrata_diagnostics(ctx)
+        invariants = diagnostics["invariants"]
+        passed = sum(
+            bool(item.get("passed")) for item in invariants if isinstance(item, dict)
+        )
+        state_digest = str(diagnostics["stateDigest"])
+        attrs.update(
+            {
+                "data-strata-count": str(len(ctx.spec["strata"])),  # type: ignore[arg-type]
+                "data-invariants-status": f"{passed}/{len(invariants)}",  # type: ignore[arg-type]
+                "data-diagnostics-hash": hashlib.sha256(
+                    diagnostics_json.encode("utf-8")
+                ).hexdigest(),
+                "data-state-hash": state_digest,
+            }
+        )
+        diagnostics_markup = (
+            f'  <metadata id="{slug}-diagnostics" data-diagnostics-schema="1">'
+            f"{escape(diagnostics_json)}</metadata>\n"
+        )
     attr_text = " ".join(f'{name}="{escape(value, quote=True)}"' for name, value in attrs.items())
     title = escape(str(ctx.spec["name"]))
     description = escape(str(ctx.spec["description"]))
@@ -2178,6 +3768,7 @@ def build_svg(ctx: Context) -> str:
 <svg {attr_text}>
   <title id="{title_id}">{title}</title>
   <desc id="{desc_id}">{description} Deterministic seed {ctx.seed}; {ctx.motion} motion.</desc>
+{diagnostics_markup.rstrip()}
   <style>{style}</style>
   <rect width="{ctx.width}" height="{ctx.height}" fill="{ctx.palette['background']}"/>
   <text class="psvg-kicker" x="40" y="34">{family} · {technique}</text>
@@ -2191,12 +3782,14 @@ def build_svg(ctx: Context) -> str:
 def parameter_hash(ctx: Context) -> str:
     payload = {
         "pattern": ctx.spec["id"],
+        "revision": int(ctx.spec.get("revision", 1)),
         "seed": ctx.seed,
         "width": ctx.width,
         "height": ctx.height,
         "durationMs": ctx.duration_ms,
         "palette": ctx.palette_name,
         "motion": ctx.motion,
+        "parameters": ctx.parameters,
     }
     return hashlib.sha256(json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
 
@@ -2218,28 +3811,78 @@ def make_context(args: argparse.Namespace, spec: dict[str, object]) -> Context:
         palette_name=args.palette,
         palette=PALETTES[args.palette],
         motion=args.motion,
+        parameters=resolve_parameters(spec, args.parameters),
     )
 
 
-def result_for(ctx: Context, output: Path) -> dict[str, object]:
+def enforce_catalog_budgets(ctx: Context, content: str) -> None:
+    budgets = ctx.spec.get("budgets")
+    if not isinstance(budgets, dict):
+        return
+    try:
+        root = ET.fromstring(content)
+    except ET.ParseError as error:
+        raise RuntimeError(f"Generated SVG is not parseable: {error}.") from error
+    elements = list(root.iter())
+    actual = {
+        "maxBytes": len(content.encode("utf-8")),
+        "maxElements": len(elements),
+        "maxMotionElements": sum(
+            element.tag.rsplit("}", 1)[-1]
+            in {"animate", "animateMotion", "animateTransform", "set"}
+            for element in elements
+        ),
+    }
+    exceeded = [
+        f"{name}={value} exceeds {int(budgets[name])}"
+        for name, value in actual.items()
+        if isinstance(budgets.get(name), int) and value > int(budgets[name])
+    ]
+    if exceeded:
+        raise RuntimeError(
+            f"Pattern {ctx.spec['id']} exceeded its catalog budget: {', '.join(exceeded)}."
+        )
+
+
+def prepare_result(ctx: Context, output: Path) -> tuple[dict[str, object], str, Path]:
     content = build_svg(ctx)
-    write_exact(output, content, ctx_args_force.get())
-    return {
+    enforce_catalog_budgets(ctx, content)
+    result: dict[str, object] = {
         "patternId": ctx.spec["id"],
         "family": ctx.spec["family"],
         "renderer": ctx.spec["renderer"],
         "variant": ctx.spec["variant"],
+        "revision": int(ctx.spec.get("revision", 1)),
         "seed": ctx.seed,
         "palette": ctx.palette_name,
         "motion": ctx.motion,
         "durationMs": ctx.duration_ms,
         "width": ctx.width,
         "height": ctx.height,
+        "parameters": ctx.parameters,
         "parameterHash": parameter_hash(ctx),
         "svgSha256": hashlib.sha256(content.encode("utf-8")).hexdigest(),
         "output": str(output.resolve()),
         "bytes": len(content.encode("utf-8")),
     }
+    if "strata" in ctx.spec:
+        diagnostics, diagnostics_json = multistrata_diagnostics(ctx)
+        result["diagnosticsHash"] = hashlib.sha256(
+            diagnostics_json.encode("utf-8")
+        ).hexdigest()
+        result["stateHash"] = diagnostics["stateDigest"]
+        result["invariantsPassed"] = sum(
+            bool(item.get("passed"))
+            for item in diagnostics["invariants"]  # type: ignore[index]
+            if isinstance(item, dict)
+        )
+    return result, content, output
+
+
+def result_for(ctx: Context, output: Path) -> dict[str, object]:
+    result, content, target = prepare_result(ctx, output)
+    write_exact(target, content, ctx_args_force.get())
+    return result
 
 
 class _ForceFlag:
@@ -2263,16 +3906,17 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Build deterministic standalone procedural SVG animations.")
     parser.add_argument("pattern", nargs="?", help="Canonical procedural-svg-* pattern ID for one output.")
     parser.add_argument("--pattern", dest="pattern_option", help="Canonical pattern ID; alternative to the positional ID.")
+    parser.add_argument("--config", type=Path, help="Exact JSON config path for one typed, parameterized pattern build.")
     parser.add_argument("-o", "--output", type=Path, help="Exact SVG output path for one pattern.")
     parser.add_argument("--all", dest="all_directory", type=Path, metavar="DIRECTORY", help="Build all catalog patterns into this exact directory.")
     parser.add_argument("--list", action="store_true", help="List every bundled pattern.")
     parser.add_argument("--describe", metavar="PATTERN_ID", help="Describe one bundled pattern.")
-    parser.add_argument("--seed", type=int, default=20260720, help="Deterministic signed integer seed.")
-    parser.add_argument("--width", type=int, default=960, help="SVG width and viewBox width (320..4096).")
-    parser.add_argument("--height", type=int, default=640, help="SVG height and viewBox height (240..4096).")
-    parser.add_argument("--duration-ms", type=int, default=6000, help="Loop duration in milliseconds (400..120000).")
-    parser.add_argument("--palette", choices=sorted(PALETTES), default="colorset2")
-    parser.add_argument("--motion", choices=("full", "reduced"), default="full")
+    parser.add_argument("--seed", type=int, help="Deterministic signed integer seed.")
+    parser.add_argument("--width", type=int, help="SVG width and viewBox width (320..4096).")
+    parser.add_argument("--height", type=int, help="SVG height and viewBox height (240..4096).")
+    parser.add_argument("--duration-ms", type=int, help="Loop duration in milliseconds (400..120000).")
+    parser.add_argument("--palette", choices=sorted(PALETTES))
+    parser.add_argument("--motion", choices=("full", "reduced"))
     motion_group = parser.add_mutually_exclusive_group()
     motion_group.add_argument("--full-motion", dest="motion", action="store_const", const="full", help="Emit full animation (default).")
     motion_group.add_argument("--reduced-motion", dest="motion", action="store_const", const="reduced", help="Emit a readable static reduced-motion state.")
@@ -2283,7 +3927,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def validate_args(parser: argparse.ArgumentParser, args: argparse.Namespace) -> None:
-    modes = sum(bool(value) for value in (args.list, args.describe, args.all_directory, args.pattern, args.pattern_option))
+    one_pattern_mode = bool(args.config or args.pattern or args.pattern_option)
+    modes = sum(bool(value) for value in (args.list, args.describe, args.all_directory, one_pattern_mode))
     if modes != 1:
         parser.error("Choose exactly one mode: --list, --describe ID, --all DIRECTORY, or one pattern ID.")
     if args.pattern and args.pattern_option:
@@ -2294,9 +3939,13 @@ def validate_args(parser: argparse.ArgumentParser, args: argparse.Namespace) -> 
         parser.error("--height must be between 240 and 4096.")
     if not 400 <= args.duration_ms <= 120000:
         parser.error("--duration-ms must be between 400 and 120000.")
-    if (args.pattern or args.pattern_option) and args.output is None:
+    if args.palette not in PALETTES:
+        parser.error(f"--palette/config palette must be one of: {', '.join(sorted(PALETTES))}.")
+    if args.motion not in {"full", "reduced"}:
+        parser.error("--motion/config motion must be 'full' or 'reduced'.")
+    if one_pattern_mode and args.output is None:
         parser.error("One-pattern mode requires --output with the exact SVG path.")
-    if args.output is not None and not (args.pattern or args.pattern_option):
+    if args.output is not None and not one_pattern_mode:
         parser.error("--output is valid only in one-pattern mode.")
     if args.report is not None and (args.list or args.describe):
         parser.error("--report is valid only for generated output modes.")
@@ -2328,11 +3977,22 @@ def validate_write_targets(
                 f"--report path collides with generated SVG output: {report_path}"
             )
     targets = svg_paths + ([report_path] if report_path is not None else [])
+    for left_index, left in enumerate(targets):
+        for right in targets[left_index + 1 :]:
+            if left == right or (left.exists() and right.exists() and left.samefile(right)):
+                raise ValueError(f"Requested output targets alias the same file: {left} and {right}")
     for target in targets:
         if target.exists() and target.is_dir():
             raise IsADirectoryError(f"Requested output path is a directory: {target}")
         if target.exists() and not args.force:
             raise FileExistsError(f"Refusing to overwrite existing output without --force: {target}")
+        ancestor = target.parent
+        while not ancestor.exists() and ancestor != ancestor.parent:
+            ancestor = ancestor.parent
+        if ancestor.exists() and not ancestor.is_dir():
+            raise NotADirectoryError(
+                f"Requested output parent resolves through a non-directory: {ancestor}"
+            )
 
 
 def print_listing(patterns: dict[str, dict[str, object]], json_mode: bool) -> None:
@@ -2353,14 +4013,24 @@ def print_description(spec: dict[str, object], json_mode: bool) -> None:
         return
     for key in ("id", "name", "family", "renderer", "variant", "driver", "technique", "signature", "description"):
         print(f"{key}: {spec[key]}")
+    if "reference" in spec:
+        print(f"reference: {spec['reference']}")
+    if isinstance(spec.get("strata"), list):
+        print(f"strata: {len(spec['strata'])}")  # type: ignore[arg-type]
+    if isinstance(spec.get("parameters"), dict):
+        print(f"parameters: {', '.join(spec['parameters'])}")  # type: ignore[arg-type]
+    if isinstance(spec.get("invariants"), list):
+        ids = [str(item.get("id")) for item in spec["invariants"] if isinstance(item, dict)]  # type: ignore[index]
+        print(f"invariants: {', '.join(ids)}")
 
 
 def main() -> int:
     parser = build_parser()
     args = parser.parse_args()
-    validate_args(parser, args)
     try:
         catalog, patterns = load_catalog()
+        resolve_build_arguments(parser, args)
+        validate_args(parser, args)
         if args.list:
             print_listing(patterns, args.json)
             return 0
@@ -2373,22 +4043,25 @@ def main() -> int:
 
         validate_write_targets(args, patterns)
         ctx_args_force.set(args.force)
-        results: list[dict[str, object]] = []
+        prepared: list[tuple[dict[str, object], str, Path]] = []
         if args.all_directory:
             output_dir: Path = args.all_directory
             if output_dir.exists() and not output_dir.is_dir():
                 raise NotADirectoryError(f"--all target exists and is not a directory: {output_dir}")
-            output_dir.mkdir(parents=True, exist_ok=True)
             for pattern_id, spec in patterns.items():
                 ctx = make_context(args, spec)
-                results.append(result_for(ctx, output_dir / f"{pattern_id}.svg"))
+                prepared.append(prepare_result(ctx, output_dir / f"{pattern_id}.svg"))
         else:
             pattern_id = args.pattern_option or args.pattern
             spec = patterns.get(pattern_id)
             if spec is None:
                 raise KeyError(f"Unknown procedural pattern ID: {pattern_id}")
             ctx = make_context(args, spec)
-            results.append(result_for(ctx, args.output))
+            prepared.append(prepare_result(ctx, args.output))
+
+        for _result, content, target in prepared:
+            write_exact(target, content, args.force)
+        results = [result for result, _content, _target in prepared]
 
         report: dict[str, object] = {
             "ok": True,
@@ -2408,7 +4081,7 @@ def main() -> int:
             else:
                 print(f"Built {len(results)} procedural SVG patterns in {args.all_directory.resolve()}.")
         return 0
-    except (OSError, RuntimeError, ValueError, KeyError) as error:
+    except (OSError, RuntimeError, ValueError, TypeError, KeyError) as error:
         if args.json:
             print(json.dumps({"ok": False, "error": str(error)}, indent=2), file=sys.stderr)
         else:

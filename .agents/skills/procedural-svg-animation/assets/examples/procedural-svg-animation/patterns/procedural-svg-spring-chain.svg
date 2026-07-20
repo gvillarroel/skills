@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="spring-chain-title spring-chain-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-spring-chain" data-example-id="spring-chain" data-family="timing" data-renderer="timing" data-variant="5" data-seed="812322" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed keyframes" data-technique="damped response" data-deterministic="true" data-standalone="true" data-parameter-hash="b1817a1eeee8b77b0f32644cf22e67fff68be31f2c98fea9cc2df401c3e79bea">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="spring-chain-title spring-chain-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-spring-chain" data-example-id="spring-chain" data-family="timing" data-renderer="timing" data-variant="5" data-pattern-revision="1" data-seed="812322" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed keyframes" data-technique="damped response" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="a334522361bd3efb15b25caac1b3bbe9f6258ef2e0292e0b06727cef8f9e2b2f">
   <title id="spring-chain-title">Spring Chain</title>
   <desc id="spring-chain-desc">Precomputed damped oscillators propagate a delayed spring response through a linked chain. Deterministic seed 812322; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

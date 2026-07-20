@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="tiled-wavefront-title tiled-wavefront-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-tiled-wavefront" data-example-id="tiled-wavefront" data-family="composition" data-renderer="composition" data-variant="4" data-seed="993393" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="tiling + adjacency BFS + timed opacity" data-technique="topology-aware propagation" data-deterministic="true" data-standalone="true" data-parameter-hash="e38c92af0d3d1b8849d613a230dbb776cb80ed00a2a3b33f03f3a06d4d722054">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="tiled-wavefront-title tiled-wavefront-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-tiled-wavefront" data-example-id="tiled-wavefront" data-family="composition" data-renderer="composition" data-variant="4" data-pattern-revision="1" data-seed="993393" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="tiling + adjacency BFS + timed opacity" data-technique="topology-aware propagation" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="f77bb885d9e699884c1d8b4a174bdc79e02ebb352c844c7e7bff9d8f3eb970b5">
   <title id="tiled-wavefront-title">Tiled Wavefront</title>
   <desc id="tiled-wavefront-desc">A breadth-first wave crosses four-neighbor tiles and bends through deterministic barrier gates instead of following DOM or Euclidean order. Deterministic seed 993393; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

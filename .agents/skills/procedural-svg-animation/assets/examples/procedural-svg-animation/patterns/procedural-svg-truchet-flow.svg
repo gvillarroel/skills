@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="truchet-flow-title truchet-flow-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-truchet-flow" data-example-id="truchet-flow" data-family="tiling" data-renderer="tiling" data-variant="0" data-seed="368586" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="seeded tiles + CSS" data-technique="edge-compatible tile rotation" data-deterministic="true" data-standalone="true" data-parameter-hash="89636aea9136d4cf58cbd24e8c31163ea713dffa4361b39270f7324f359ff16f">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="truchet-flow-title truchet-flow-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-truchet-flow" data-example-id="truchet-flow" data-family="tiling" data-renderer="tiling" data-variant="0" data-pattern-revision="1" data-seed="368586" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="seeded tiles + CSS" data-technique="edge-compatible tile rotation" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="dc9267c36a6202a0c4f272762b3106193f37b64461cc3110e292848ef0315fd6">
   <title id="truchet-flow-title">Truchet Flow</title>
   <desc id="truchet-flow-desc">Seeded quarter-arc tiles form long accidental paths that animate as a connected flow texture. Deterministic seed 368586; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

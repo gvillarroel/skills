@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="lsystem-canopy-title lsystem-canopy-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-lsystem-canopy" data-example-id="lsystem-canopy" data-family="growth" data-renderer="growth" data-variant="0" data-seed="564705" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="grammar expansion + CSS" data-technique="parallel string rewriting" data-deterministic="true" data-standalone="true" data-parameter-hash="c2dda1a9eeb68d0ab14086bf54cf7c90e706b61e21f9913c132741ef84f6d5f1">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="lsystem-canopy-title lsystem-canopy-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-lsystem-canopy" data-example-id="lsystem-canopy" data-family="growth" data-renderer="growth" data-variant="0" data-pattern-revision="1" data-seed="564705" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="grammar expansion + CSS" data-technique="parallel string rewriting" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="213cfd8ebe7591945b06ebc48204d516bfba3d3d1ce5e3cd143cf877794f36e7">
   <title id="lsystem-canopy-title">L-System Canopy</title>
   <desc id="lsystem-canopy-desc">A deterministic grammar expands into turtle commands and reveals a recursive plant canopy by depth. Deterministic seed 564705; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

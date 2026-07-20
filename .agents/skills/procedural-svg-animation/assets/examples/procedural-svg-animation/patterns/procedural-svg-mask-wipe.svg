@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="mask-wipe-title mask-wipe-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-mask-wipe" data-example-id="mask-wipe" data-family="paint" data-renderer="paint" data-variant="1" data-seed="783356" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL mask geometry" data-technique="luminance reveal" data-deterministic="true" data-standalone="true" data-parameter-hash="35afc88313b53f14ab1404a6254ede69eebbe26d4a2466ebd2667ad825df8301">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="mask-wipe-title mask-wipe-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-mask-wipe" data-example-id="mask-wipe" data-family="paint" data-renderer="paint" data-variant="1" data-pattern-revision="1" data-seed="783356" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL mask geometry" data-technique="luminance reveal" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="eda70b945b6146ba3b27d0ae50d47c0d2baa89ad7ac4a3ef6327387e06608083">
   <title id="mask-wipe-title">Mask Wipe</title>
   <desc id="mask-wipe-desc">A procedural mask reveals layered geometry without mutating the source artwork. Deterministic seed 783356; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

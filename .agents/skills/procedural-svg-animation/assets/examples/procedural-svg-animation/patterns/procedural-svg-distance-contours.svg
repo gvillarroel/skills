@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="distance-contours-title distance-contours-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-distance-contours" data-example-id="distance-contours" data-family="field" data-renderer="field" data-variant="4" data-seed="983213" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="marching squares + CSS" data-technique="nearest-site scalar sampling" data-deterministic="true" data-standalone="true" data-parameter-hash="a04553ab623611cb2c67e64133efb940cdd266ef6936d5146cadd484fdd103ad">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="distance-contours-title distance-contours-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-distance-contours" data-example-id="distance-contours" data-family="field" data-renderer="field" data-variant="4" data-pattern-revision="1" data-seed="983213" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="marching squares + CSS" data-technique="nearest-site scalar sampling" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="2e870cbbb28523932b4acd5414ca467e2e6e3920bd232ffc7d910e7b1611d77a">
   <title id="distance-contours-title">Distance Contours</title>
   <desc id="distance-contours-desc">Marching squares extracts nested union boundaries from a seeded nearest-site distance field. Deterministic seed 983213; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

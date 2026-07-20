@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="spirograph-title spirograph-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-spirograph" data-example-id="spirograph" data-family="parametric" data-renderer="parametric" data-variant="2" data-seed="196871" data-palette="colorset2" data-motion="full" data-motion-engine="mixed" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated path + SMIL" data-technique="hypotrochoid" data-deterministic="true" data-standalone="true" data-parameter-hash="9be42c7df4f31e18839ae46d63fbc9aff70813e44a73f5264f05fcea86a744a7">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="spirograph-title spirograph-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-spirograph" data-example-id="spirograph" data-family="parametric" data-renderer="parametric" data-variant="2" data-pattern-revision="1" data-seed="196871" data-palette="colorset2" data-motion="full" data-motion-engine="mixed" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated path + SMIL" data-technique="hypotrochoid" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="60081add0e95d74d062a3aeace09be74ea05a01136e5814e4f9ecd47f22bc8cc">
   <title id="spirograph-title">Spirograph</title>
   <desc id="spirograph-desc">Integer radii and pen offset generate repeatable hypotrochoid families and exact closure periods. Deterministic seed 196871; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

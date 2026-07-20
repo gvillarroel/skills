@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="path-morph-title path-morph-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-path-morph" data-example-id="path-morph" data-family="path" data-renderer="path" data-variant="3" data-seed="147812" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL path values" data-technique="topology-safe morph" data-deterministic="true" data-standalone="true" data-parameter-hash="5a42a8c60adf181c37cbee92deb4ad8826a1be1aeea1464cd480d2a73374f305">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="path-morph-title path-morph-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-path-morph" data-example-id="path-morph" data-family="path" data-renderer="path" data-variant="3" data-pattern-revision="1" data-seed="147812" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL path values" data-technique="topology-safe morph" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="a5795f5c632c1200a9e9410ef917349a80166bf71aa7f93140795362897a7a96">
   <title id="path-morph-title">Path Morph</title>
   <desc id="path-morph-desc">Compatible cubic paths interpolate between silhouettes without resampling artifacts. Deterministic seed 147812; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

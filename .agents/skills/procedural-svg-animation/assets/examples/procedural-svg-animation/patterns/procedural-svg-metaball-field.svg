@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="metaball-field-title metaball-field-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-metaball-field" data-example-id="metaball-field" data-family="field" data-renderer="field" data-variant="5" data-seed="257297" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SVG blur + alpha threshold" data-technique="Gaussian density approximation" data-deterministic="true" data-standalone="true" data-parameter-hash="a9cb1b6d63b318bd3dd06b1b67f0398e78601dd9f4ae59f6393579a6df1038a8">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="metaball-field-title metaball-field-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-metaball-field" data-example-id="metaball-field" data-family="field" data-renderer="field" data-variant="5" data-pattern-revision="1" data-seed="257297" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SVG blur + alpha threshold" data-technique="Gaussian density approximation" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="52358660227090902f215a5f27c99226fbc23045c538ee98065af5b6f18e12ea">
   <title id="metaball-field-title">Metaball Field</title>
   <desc id="metaball-field-desc">Moving source disks merge into an implicit-looking surface through blur and component-transfer thresholding. Deterministic seed 257297; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

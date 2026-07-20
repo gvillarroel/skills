@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="voronoi-pulse-title voronoi-pulse-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-voronoi-pulse" data-example-id="voronoi-pulse" data-family="tiling" data-renderer="tiling" data-variant="2" data-seed="561236" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="sampled nearest-site cells" data-technique="Voronoi-like partition" data-deterministic="true" data-standalone="true" data-parameter-hash="6aed3717e61b281c65ad50f00acd82a0bbd23225c1d0792800002632afef17ab">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="voronoi-pulse-title voronoi-pulse-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-voronoi-pulse" data-example-id="voronoi-pulse" data-family="tiling" data-renderer="tiling" data-variant="2" data-pattern-revision="1" data-seed="561236" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="sampled nearest-site cells" data-technique="Voronoi-like partition" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="6dafbca44273dc36634fa584ee268bc871c0aa750ae85e4effad899f0540964e">
   <title id="voronoi-pulse-title">Voronoi Pulse</title>
   <desc id="voronoi-pulse-desc">A compact sampled partition pulses by site order while retaining deterministic region ownership. Deterministic seed 561236; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

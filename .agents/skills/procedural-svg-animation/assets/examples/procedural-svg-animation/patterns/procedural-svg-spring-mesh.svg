@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="spring-mesh-title spring-mesh-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-spring-mesh" data-example-id="spring-mesh" data-family="simulation" data-renderer="simulation" data-variant="2" data-seed="926336" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed keyframes" data-technique="mass-spring coupling" data-deterministic="true" data-standalone="true" data-parameter-hash="36f4610e221e72016cac69e551c0c99d183e892f878e8fe1f52314e8de0dcb26">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="spring-mesh-title spring-mesh-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-spring-mesh" data-example-id="spring-mesh" data-family="simulation" data-renderer="simulation" data-variant="2" data-pattern-revision="1" data-seed="926336" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed keyframes" data-technique="mass-spring coupling" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="398e08ef5462ee622c09c3b708af1577e154e79d91c5ae348aa14a99155a4fb0">
   <title id="spring-mesh-title">Spring Mesh</title>
   <desc id="spring-mesh-desc">Coupled damped springs distribute an impulse across a compact node mesh. Deterministic seed 926336; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

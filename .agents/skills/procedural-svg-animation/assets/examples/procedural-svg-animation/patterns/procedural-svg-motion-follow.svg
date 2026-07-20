@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="motion-follow-title motion-follow-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-motion-follow" data-example-id="motion-follow" data-family="path" data-renderer="path" data-variant="2" data-seed="144817" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL animateMotion" data-technique="path-constrained motion" data-deterministic="true" data-standalone="true" data-parameter-hash="a198d30151864297196ff2c1d248dca0b061ee94af2ccbf6e21fe83168e3a29d">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="motion-follow-title motion-follow-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-motion-follow" data-example-id="motion-follow" data-family="path" data-renderer="path" data-variant="2" data-pattern-revision="1" data-seed="144817" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="SMIL animateMotion" data-technique="path-constrained motion" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="1008195aab6d161d6a69b79d2dd247fb6a5dc16b97531c9730a5615699018f20">
   <title id="motion-follow-title">Motion Follow</title>
   <desc id="motion-follow-desc">A marker follows a reusable path and automatically rotates its forward axis to the local tangent. Deterministic seed 144817; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

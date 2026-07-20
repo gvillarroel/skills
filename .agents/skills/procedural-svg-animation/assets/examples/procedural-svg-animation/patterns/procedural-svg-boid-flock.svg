@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="boid-flock-title boid-flock-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-boid-flock" data-example-id="boid-flock" data-family="simulation" data-renderer="simulation" data-variant="0" data-seed="222616" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed simulation" data-technique="separation + alignment + cohesion" data-deterministic="true" data-standalone="true" data-parameter-hash="16e6881e63e285d322882b180df3c3272404bb960cf60ea829158e4d8f2cf8ff">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="boid-flock-title boid-flock-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-boid-flock" data-example-id="boid-flock" data-family="simulation" data-renderer="simulation" data-variant="0" data-pattern-revision="1" data-seed="222616" data-palette="colorset2" data-motion="full" data-motion-engine="smil" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="precomputed simulation" data-technique="separation + alignment + cohesion" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="f7efe79506c64d03e72da212d489aba5ef0376dc3562cc531b62fb8b636630e6">
   <title id="boid-flock-title">Boid Flock</title>
   <desc id="boid-flock-desc">A seeded boid system records stable trajectories from three local steering behaviors. Deterministic seed 222616; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

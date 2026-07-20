@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="rose-curve-title rose-curve-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-rose-curve" data-example-id="rose-curve" data-family="parametric" data-renderer="parametric" data-variant="1" data-seed="612293" data-palette="colorset2" data-motion="full" data-motion-engine="mixed" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated path + CSS/SMIL" data-technique="polar harmonic" data-deterministic="true" data-standalone="true" data-parameter-hash="3e17d5760dedbbcfece1ae211e2793bbdb947b3d4e9504e2dfc9dc8fe3678723">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="rose-curve-title rose-curve-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-rose-curve" data-example-id="rose-curve" data-family="parametric" data-renderer="parametric" data-variant="1" data-pattern-revision="1" data-seed="612293" data-palette="colorset2" data-motion="full" data-motion-engine="mixed" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="generated path + CSS/SMIL" data-technique="polar harmonic" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="8bd7bf16bf6a4dc1b6f35acd8bd7a0fee94c36c45f148b6ceb27dee1cdd8863b">
   <title id="rose-curve-title">Rose Curve</title>
   <desc id="rose-curve-desc">A fixed sevenfold polar harmonic is sampled deterministically, progressively revealed, and rigidly phase-rotated without changing petal topology. Deterministic seed 612293; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

@@ -174,7 +174,7 @@ PUBLISHED_EXAMPLE_SETS = [
         "title": "Procedural SVG Animation Patterns",
         "href": "examples/procedural-svg-animation/",
         "kind": "Procedural SVG",
-        "description": "Sixty deterministic procedural SVG motion systems across timing, geometry, fields, simulations, growth, tiling, paint, and hybrid compositions.",
+        "description": "A deterministic catalog of procedural SVG motion systems spanning timing, geometry, fields, simulations, growth, compositing, and auditable multi-strata solvers.",
     },
     {
         "id": "mermaid-svg-animated",

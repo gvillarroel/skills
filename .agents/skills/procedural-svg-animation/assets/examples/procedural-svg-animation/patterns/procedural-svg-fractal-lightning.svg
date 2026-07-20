@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="fractal-lightning-title fractal-lightning-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-fractal-lightning" data-example-id="fractal-lightning" data-family="growth" data-renderer="growth" data-variant="2" data-seed="684860" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="seeded midpoint displacement" data-technique="recursive branching" data-deterministic="true" data-standalone="true" data-parameter-hash="276feb7001f48f803a4c432f88e2d58f2d6352dfd976754ff29f59f000e9418a">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="fractal-lightning-title fractal-lightning-desc" data-procedural-svg-version="1" data-pattern-id="procedural-svg-fractal-lightning" data-example-id="fractal-lightning" data-family="growth" data-renderer="growth" data-variant="2" data-pattern-revision="1" data-seed="684860" data-palette="colorset2" data-motion="full" data-motion-engine="css" data-duration-ms="8000" data-loop="true" data-loop-contract="master-phase" data-reduced-motion-fallback="layered" data-driver="seeded midpoint displacement" data-technique="recursive branching" data-deterministic="true" data-standalone="true" data-parameter-values="{}" data-parameter-hash="c5fc11e176d73293515c2b7e6fff8a441913560365365685b87ceb54fed2fc78">
   <title id="fractal-lightning-title">Fractal Lightning</title>
   <desc id="fractal-lightning-desc">Recursive midpoint displacement and branching create a deterministic electrical growth path. Deterministic seed 684860; full motion.</desc>
+
   <style>:root{color-scheme:light}
 *{box-sizing:border-box}
 .psvg-panel{fill:#ffffff;stroke:#cfcfcf;stroke-width:1.5}
 .psvg-guide{fill:none;stroke:#cfcfcf;stroke-width:2}
 .psvg-title{font:700 24px Arial,sans-serif;fill:#333e48}
 .psvg-subtitle{font:13px Arial,sans-serif;fill:#696969}
-.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.2px;fill:#9e1b32}
+.psvg-kicker{font:700 11px Arial,sans-serif;letter-spacing:1.222px;fill:#9e1b32}
 .psvg-label{font:600 13px Arial,sans-serif;fill:#333e48}
 .psvg-node-label{font:700 10px Arial,sans-serif;fill:#ffffff;pointer-events:none}
 .psvg-note{font:11px Arial,sans-serif;fill:#696969}

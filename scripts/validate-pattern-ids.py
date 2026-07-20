@@ -471,7 +471,7 @@ def validate_family_inventories(
     register_family(
         "procedural-svg",
         procedural_ids,
-        60,
+        66,
         procedural_manifest_path,
         findings,
         global_ids,
