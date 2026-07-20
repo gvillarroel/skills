@@ -33,7 +33,7 @@ This table highlights current skill status; `SKILLS.md` is authoritative.
 | --- | --- | --- |
 | [mermaid-animated-svg](.agents/skills/mermaid-animated-svg/SKILL.md) | `done` | Render Mermaid diagrams to static and animated SVG while preserving Mermaid geometry. |
 | [d3-animated-svg](.agents/skills/d3-animated-svg/SKILL.md) | `done` | Build bespoke D3-generated SVG visualizations and galleries. |
-| [procedural-svg-animation](.agents/skills/procedural-svg-animation/SKILL.md) | `validating` | Build deterministic standalone SVG motion systems from reusable procedural techniques. |
+| [procedural-svg-animation](.agents/skills/procedural-svg-animation/SKILL.md) | `done` | Build deterministic standalone SVG motion systems from reusable procedural techniques. |
 | [echarts-animated-svg](.agents/skills/echarts-animated-svg/SKILL.md) | `done` | Animate already-rendered Apache ECharts SVG output. |
 | [animated-svg-to-gif](.agents/skills/animated-svg-to-gif/SKILL.md) | `done` | Convert animated SVG assets into browser-rendered GIFs. |
 | [slidev-animejs](.agents/skills/slidev-animejs/SKILL.md) | `done` | Build and validate Anime.js animation patterns inside Slidev decks. |

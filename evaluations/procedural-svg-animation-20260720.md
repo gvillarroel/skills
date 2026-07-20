@@ -74,4 +74,6 @@ The pre-hardening strict run, `20260720T123404Z-procedural-svg-animation-pi`, pa
 
 ## Publication
 
-Pending the release commit, Pages workflow, and live URL verification.
+Release commit `a640e265a9d7752a8f7762175f08e6da9b6a254c` was pushed to `main`. GitHub Pages workflow [29748284244](https://github.com/gvillarroel/skills/actions/runs/29748284244) passed every validation, build, upload, and deployment step.
+
+The live gallery at <https://gvillarroel.github.io/skills/examples/procedural-svg-animation/> returned HTTP 200 with catalog fingerprint `1b75b2148656f433`, 60 HTML pattern cards, 60 manifest entries, and a discoverable card on the main Pages index.
