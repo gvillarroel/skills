@@ -1,0 +1,4 @@
+interface:
+  display_name: "Procedural SVG Animation"
+  short_description: "Deterministic generative SVG motion systems"
+  default_prompt: "Use $procedural-svg-animation to generate and validate a deterministic standalone animated SVG from reusable procedural techniques."

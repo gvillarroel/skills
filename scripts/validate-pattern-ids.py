@@ -199,6 +199,66 @@ def kebab(value: str) -> str:
     return value.lower()
 
 
+def manifest_pattern_ids(
+    path: Path,
+    expected_namespace: str,
+    findings: list[Finding],
+) -> list[str]:
+    try:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        add(findings, path, f"could not load pattern manifest: {error}")
+        return []
+
+    if not isinstance(manifest, dict):
+        add(findings, path, "pattern manifest must be a JSON object")
+        return []
+
+    namespace = manifest.get("namespace")
+    if namespace != expected_namespace:
+        add(
+            findings,
+            path,
+            f"pattern manifest namespace must be {expected_namespace!r}, found {namespace!r}",
+        )
+
+    patterns = manifest.get("patterns")
+    if not isinstance(patterns, list):
+        add(findings, path, "pattern manifest must contain a patterns list")
+        return []
+
+    pattern_ids: list[str] = []
+    for index, pattern in enumerate(patterns, start=1):
+        if not isinstance(pattern, dict):
+            add(findings, path, f"pattern manifest entry {index} must be an object")
+            continue
+        pattern_id = pattern.get("id")
+        if not isinstance(pattern_id, str) or not pattern_id:
+            add(findings, path, f"pattern manifest entry {index} must contain a non-empty string id")
+            continue
+        pattern_ids.append(pattern_id)
+
+    if len(pattern_ids) != len(patterns):
+        add(
+            findings,
+            path,
+            f"pattern manifest ID parity mismatch: {len(pattern_ids)} IDs for {len(patterns)} patterns",
+        )
+
+    namespace_prefix = f"{expected_namespace}-"
+    wrong_namespace = sorted(
+        pattern_id for pattern_id in pattern_ids if not pattern_id.startswith(namespace_prefix)
+    )
+    if wrong_namespace:
+        add(
+            findings,
+            path,
+            f"pattern manifest IDs must use the {namespace_prefix} namespace: {', '.join(wrong_namespace[:8])}",
+        )
+
+    return pattern_ids
+
+
 def register_family(
     family: str,
     ids: list[str],
@@ -405,6 +465,19 @@ def validate_family_inventories(
     ai_main_match = re.search(r'<main[^>]+data-example-id="([^"]+)"[^>]+data-pattern-id="([^"]+)"', ai_index_path.read_text(encoding="utf-8"))
     if not ai_main_match or ai_main_match.group(1) == "ai-concept-videos":
         add(findings, ai_index_path, "AI concept item surface must use the local concept ID")
+
+    procedural_manifest_path = root / ".agents/skills/procedural-svg-animation/assets/pattern-specs.json"
+    procedural_ids = manifest_pattern_ids(procedural_manifest_path, "procedural-svg", findings)
+    register_family(
+        "procedural-svg",
+        procedural_ids,
+        60,
+        procedural_manifest_path,
+        findings,
+        global_ids,
+        review_ids,
+        family_counts,
+    )
 
     return family_counts, review_ids, set(global_ids)
 

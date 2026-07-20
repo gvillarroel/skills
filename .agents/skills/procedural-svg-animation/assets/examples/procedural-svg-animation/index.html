@@ -1,0 +1,1882 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sixty deterministic procedural SVG animation patterns across ten reusable technique families.">
+  <meta name="example-id" content="procedural-svg-animation">
+  <meta name="pattern-id" content="procedural-svg-animation">
+  <meta name="pattern-page" content="true">
+  <meta name="pattern-count" content="60">
+  <meta name="family-count" content="10">
+  <meta name="catalog-hash" content="1b75b2148656f433">
+  <title>Procedural SVG Animation Patterns</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111827'/%3E%3Cpath d='M12 39C22 7 42 57 52 25' fill='none' stroke='%235eead4' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./gallery.css">
+</head>
+<body data-example-id="procedural-svg-animation" data-pattern-id="procedural-svg-animation" data-pattern-page="true" data-pattern-count="60" data-family-count="10" data-catalog-hash="1b75b2148656f433" data-reduced-motion="false">
+  <a class="skip-link" href="#catalog-heading">Skip to pattern catalog</a>
+  <main class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">Deterministic motion systems · acceptance catalog</p>
+      <h1>Procedural SVG Animation</h1>
+      <p class="hero-copy">Sixty self-contained SVG mechanisms organized as reusable families: timing, kinematics, path choreography, parametric curves, fields, simulation, growth, tiling, paint, and hybrid composition.</p>
+      <div class="hero-meta" aria-label="Catalog summary">
+        <span><strong>60</strong>&nbsp;canonical patterns</span>
+        <span><strong>10</strong>&nbsp;families</span>
+        <span>seeded · standalone · replayable</span>
+        <a class="manifest-link" href="./manifest.json">JSON manifest</a>
+      </div>
+    </header>
+
+    <section aria-labelledby="families-heading">
+      <div class="section-heading">
+        <h2 id="families-heading">Technique families</h2>
+        <p>Each family shares a programmable mechanism. Select one to filter the catalog; select it again to return to all patterns.</p>
+      </div>
+      <div class="family-grid">
+      <button class="family-tile" type="button" data-family-filter="timing" aria-pressed="false">
+        <span class="family-count">06</span>
+        <strong>Timing systems</strong>
+        <small>Phase, stagger, easing, clocks, springs, and state sequencing as reusable temporal control signals.</small>
+      </button>
+      <button class="family-tile" type="button" data-family-filter="transform" aria-pressed="false">
+        <span class="family-count">06</span>
+        <strong>Transform mechanics</strong>
+        <small>Nested translation, rotation, scale, articulated linkage, and parallax assembled into kinematic systems.</small>
+      </button>
+      <button class="family-tile" type="button" data-family-filter="path" aria-pressed="false">
+        <span class="family-count">06</span>
+        <strong>Path choreography</strong>
+        <small>Stroke drawing, dash transport, motion paths, topology-safe morphs, trim windows, and authored traces.</small>
+      </button>
+      <button class="family-tile" type="button" data-family-filter="parametric" aria-pressed="false">
+        <span class="family-count">06</span>
+        <strong>Parametric geometry</strong>
+        <small>Curves generated from equations and animated by changing phase, frequency, radius, or coefficient sets.</small>
+      </button>
+      <button class="family-tile" type="button" data-family-filter="field" aria-pressed="false">
+        <span class="family-count">06</span>
+        <strong>Fields and sampling</strong>
+        <small>Vector, scalar, distance, and noise fields converted into arrows, streamlines, ribbons, particles, and contours.</small>
+      </button>
+      <button class="family-tile" type="button" data-family-filter="simulation" aria-pressed="false">
+        <span class="family-count">06</span>
+        <strong>Simulation systems</strong>
+        <small>Local rules and numerical integration for flocking, constraints, coupled springs, automata, and diffusion.</small>
+      </button>
+      <button class="family-tile" type="button" data-family-filter="growth" aria-pressed="false">
+        <span class="family-count">06</span>
+        <strong>Recursive growth</strong>
+        <small>Rewriting systems, accumulation, branching, aggregation, and attraction models that reveal structure over time.</small>
+      </button>
+      <button class="family-tile" type="button" data-family-filter="tiling" aria-pressed="false">
+        <span class="family-count">06</span>
+        <strong>Tiling and symmetry</strong>
+        <small>Repeatable cells, interference, tessellation, mirrored sectors, relaxation, and quasiperiodic sampling.</small>
+      </button>
+      <button class="family-tile" type="button" data-family-filter="paint" aria-pressed="false">
+        <span class="family-count">06</span>
+        <strong>Paint and compositing</strong>
+        <small>Animated gradients, masks, clips, filter graphs, displacement, morphology, blur, and light sweeps.</small>
+      </button>
+      <button class="family-tile" type="button" data-family-filter="composition" aria-pressed="false">
+        <span class="family-count">06</span>
+        <strong>Hybrid compositions</strong>
+        <small>Reusable combinations that couple two or more temporal, geometric, simulation, and paint systems.</small>
+      </button>
+      </div>
+    </section>
+
+    <section aria-labelledby="catalog-heading">
+      <div class="section-heading">
+        <h2 id="catalog-heading">Pattern catalog</h2>
+        <p>Search by canonical ID, mechanism, formula, family, or driver. Every preview links to its standalone SVG and exposes deterministic audit metadata.</p>
+      </div>
+
+      <div class="catalog-toolbar" aria-label="Pattern filters and playback controls">
+        <label class="control-field">
+          <span>Search</span>
+          <input id="pattern-search" type="search" placeholder="Try curl, morph, field, SMIL…" autocomplete="off">
+        </label>
+        <label class="control-field">
+          <span>Family</span>
+          <select id="family-filter">
+            <option value="">All families</option>
+          <option value="timing">Timing systems</option>
+          <option value="transform">Transform mechanics</option>
+          <option value="path">Path choreography</option>
+          <option value="parametric">Parametric geometry</option>
+          <option value="field">Fields and sampling</option>
+          <option value="simulation">Simulation systems</option>
+          <option value="growth">Recursive growth</option>
+          <option value="tiling">Tiling and symmetry</option>
+          <option value="paint">Paint and compositing</option>
+          <option value="composition">Hybrid compositions</option>
+          </select>
+        </label>
+        <label class="control-field">
+          <span>Driver</span>
+          <select id="driver-filter">
+            <option value="">All drivers</option>
+          <option value="CSS dash animation">CSS dash animation</option>
+          <option value="CSS keyframes">CSS keyframes</option>
+          <option value="CSS mask + SMIL follower">CSS mask + SMIL follower</option>
+          <option value="discrete SMIL frames">discrete SMIL frames</option>
+          <option value="field snapshots + compatible SMIL morph">field snapshots + compatible SMIL morph</option>
+          <option value="four-state clock + spotlight mask + routes">four-state clock + spotlight mask + routes</option>
+          <option value="generated compatible paths">generated compatible paths</option>
+          <option value="generated glyphs + SMIL">generated glyphs + SMIL</option>
+          <option value="generated lattice + CSS">generated lattice + CSS</option>
+          <option value="generated marks + CSS">generated marks + CSS</option>
+          <option value="generated path + CSS/SMIL">generated path + CSS/SMIL</option>
+          <option value="generated path + SMIL">generated path + SMIL</option>
+          <option value="generated wave samples">generated wave samples</option>
+          <option value="grammar expansion + CSS">grammar expansion + CSS</option>
+          <option value="level reveal + root-to-leaf transport">level reveal + root-to-leaf transport</option>
+          <option value="marching squares + CSS">marching squares + CSS</option>
+          <option value="nested SMIL transforms + trace">nested SMIL transforms + trace</option>
+          <option value="nested transforms + precomputed endpoint path">nested transforms + precomputed endpoint path</option>
+          <option value="ordered branch synthesis">ordered branch synthesis</option>
+          <option value="precomputed attraction growth">precomputed attraction growth</option>
+          <option value="precomputed constraint frames">precomputed constraint frames</option>
+          <option value="precomputed Gray-Scott field">precomputed Gray-Scott field</option>
+          <option value="precomputed integration">precomputed integration</option>
+          <option value="precomputed keyframes">precomputed keyframes</option>
+          <option value="precomputed simulation">precomputed simulation</option>
+          <option value="precomputed SMIL path frames">precomputed SMIL path frames</option>
+          <option value="sampled nearest-site cells">sampled nearest-site cells</option>
+          <option value="sampled SMIL transforms">sampled SMIL transforms</option>
+          <option value="seeded aggregation">seeded aggregation</option>
+          <option value="seeded midpoint displacement">seeded midpoint displacement</option>
+          <option value="seeded recursion + CSS">seeded recursion + CSS</option>
+          <option value="seeded tiles + CSS">seeded tiles + CSS</option>
+          <option value="seeded value-noise keyframes">seeded value-noise keyframes</option>
+          <option value="shared clock + dash reveals + motion tokens">shared clock + dash reveals + motion tokens</option>
+          <option value="shared SMIL keyTimes">shared SMIL keyTimes</option>
+          <option value="SMIL animateMotion">SMIL animateMotion</option>
+          <option value="SMIL clip path">SMIL clip path</option>
+          <option value="SMIL mask geometry">SMIL mask geometry</option>
+          <option value="SMIL motion paths">SMIL motion paths</option>
+          <option value="SMIL path values">SMIL path values</option>
+          <option value="SMIL stops">SMIL stops</option>
+          <option value="SMIL transforms">SMIL transforms</option>
+          <option value="SMIL values">SMIL values</option>
+          <option value="SVG blur + alpha threshold">SVG blur + alpha threshold</option>
+          <option value="SVG filter + SMIL positions">SVG filter + SMIL positions</option>
+          <option value="SVG filter animation">SVG filter animation</option>
+          <option value="SVG lighting filter">SVG lighting filter</option>
+          <option value="SVG use + transforms">SVG use + transforms</option>
+          <option value="tiling + adjacency BFS + timed opacity">tiling + adjacency BFS + timed opacity</option>
+          </select>
+        </label>
+        <div class="toolbar-actions">
+          <button class="button" id="pause-all" type="button" aria-pressed="false">Pause all</button>
+          <button class="button" id="play-all" type="button">Play loaded</button>
+          <button class="button primary" id="replay-all" type="button">Replay loaded</button>
+          <button class="button" id="reset-filters" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="results-bar">
+        <span><strong id="visible-count">60</strong> of 60 patterns</span>
+        <span class="motion-note">Reduced motion is active; previews start paused.</span>
+        <span id="filter-status" class="visually-hidden" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="gallery" id="gallery" aria-label="Procedural SVG pattern cards">
+    <article class="pattern-card" id="procedural-svg-stagger-wave" data-example-id="stagger-wave" data-pattern-id="procedural-svg-stagger-wave" data-family-id="timing" data-driver="CSS keyframes" data-renderer="timing" data-technique="index-derived delay" data-search="procedural-svg-stagger-wave stagger wave timing css keyframes index-derived delay delay(i) + shared oscillator a grid turns one oscillator into a traveling wave by deriving delay from row and column indices." data-playback-state="queued" data-svg-seed="257203" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="7cc495e62eac9e668756ae427b25abe143e4e6ca0fa4fec89cf071a075e96a1d" data-svg-sha256="b21596feb04fcc201dad1f33592adf2b6fc69d4b6a2a1c0f1ffc401d5528c6f2" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-stagger-wave.svg" type="image/svg+xml" aria-label="Animated preview of Stagger Wave">
+          <a href="./patterns/procedural-svg-stagger-wave.svg">Open Stagger Wave SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Timing systems</span><span>CSS keyframes</span></div>
+        <h3>Stagger Wave</h3>
+        <a class="canonical-link" href="#procedural-svg-stagger-wave" aria-label="Deep link to Stagger Wave"><code>procedural-svg-stagger-wave</code></a>
+        <p class="card-description">A grid turns one oscillator into a traveling wave by deriving delay from row and column indices.</p>
+        <p class="signature">delay(i) + shared oscillator</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>index-derived delay</li>
+          <li>seed 257203</li>
+          <li>8000 ms</li>
+          <li>148 elements</li>
+          <li>sha b21596feb04f</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Stagger Wave">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-stagger-wave.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-phase-lattice" data-example-id="phase-lattice" data-pattern-id="procedural-svg-phase-lattice" data-family-id="timing" data-driver="SMIL values" data-renderer="timing" data-technique="phase offsets" data-search="procedural-svg-phase-lattice phase lattice timing smil values phase offsets sin(t + i·φ) phase-shifted cells expose how one periodic signal produces coherent lattice motion." data-playback-state="queued" data-svg-seed="683452" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="e7179f6d7752cfb494e5156445abead49bbd9634c539378c1cd5a8ffc1e1a81d" data-svg-sha256="9245611f21b47c5dc6a36f8457a2a296b93bf8a4653ed13f48621e73a8754f3c" data-svg-motion-count="83" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-phase-lattice.svg" type="image/svg+xml" aria-label="Animated preview of Phase Lattice">
+          <a href="./patterns/procedural-svg-phase-lattice.svg">Open Phase Lattice SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Timing systems</span><span>SMIL values</span></div>
+        <h3>Phase Lattice</h3>
+        <a class="canonical-link" href="#procedural-svg-phase-lattice" aria-label="Deep link to Phase Lattice"><code>procedural-svg-phase-lattice</code></a>
+        <p class="card-description">Phase-shifted cells expose how one periodic signal produces coherent lattice motion.</p>
+        <p class="signature">sin(t + i·φ)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>phase offsets</li>
+          <li>seed 683452</li>
+          <li>8000 ms</li>
+          <li>214 elements</li>
+          <li>sha 9245611f21b4</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Phase Lattice">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-phase-lattice.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-easing-orchestra" data-example-id="easing-orchestra" data-pattern-id="procedural-svg-easing-orchestra" data-family-id="timing" data-driver="CSS keyframes" data-renderer="timing" data-technique="easing comparison" data-search="procedural-svg-easing-orchestra easing orchestra timing css keyframes easing comparison same endpoints, different transfer curves parallel marks compare linear, ease, overshoot, stepped, and asymmetric timing profiles." data-playback-state="queued" data-svg-seed="824781" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="2d7f5fa4dac222c7c9d1566bb23953b1a2f5e9b4578aa54f3ebf2a3f92a6c20a" data-svg-sha256="4386afbf3e5a9ccb54f9d114e6f8fb3172764b668aefe85cbfb196487087759a" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-easing-orchestra.svg" type="image/svg+xml" aria-label="Animated preview of Easing Orchestra">
+          <a href="./patterns/procedural-svg-easing-orchestra.svg">Open Easing Orchestra SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Timing systems</span><span>CSS keyframes</span></div>
+        <h3>Easing Orchestra</h3>
+        <a class="canonical-link" href="#procedural-svg-easing-orchestra" aria-label="Deep link to Easing Orchestra"><code>procedural-svg-easing-orchestra</code></a>
+        <p class="card-description">Parallel marks compare linear, ease, overshoot, stepped, and asymmetric timing profiles.</p>
+        <p class="signature">same endpoints, different transfer curves</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>easing comparison</li>
+          <li>seed 824781</li>
+          <li>8000 ms</li>
+          <li>46 elements</li>
+          <li>sha 4386afbf3e5a</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Easing Orchestra">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-easing-orchestra.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-state-sequencer" data-example-id="state-sequencer" data-pattern-id="procedural-svg-state-sequencer" data-family-id="timing" data-driver="shared SMIL keyTimes" data-renderer="timing" data-technique="finite-state timing" data-search="procedural-svg-state-sequencer state sequencer timing shared smil keytimes finite-state timing state(t)=⌊nt⌋ mod n a deterministic state ring derives every discrete active state from one shared keyed timeline, with no event-chain drift." data-playback-state="queued" data-svg-seed="259565" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="108a4a7ec2b8d12f092b2fc2ca79492e517177fa1fc3102e7e0ac423fe69fca1" data-svg-sha256="759413fdb08d2549d8f7ca9d2ab3fa96fefc01688b8fe9e8f1543a2fdfdc2a9f" data-svg-motion-count="33" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-state-sequencer.svg" type="image/svg+xml" aria-label="Animated preview of State Sequencer">
+          <a href="./patterns/procedural-svg-state-sequencer.svg">Open State Sequencer SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Timing systems</span><span>shared SMIL keyTimes</span></div>
+        <h3>State Sequencer</h3>
+        <a class="canonical-link" href="#procedural-svg-state-sequencer" aria-label="Deep link to State Sequencer"><code>procedural-svg-state-sequencer</code></a>
+        <p class="card-description">A deterministic state ring derives every discrete active state from one shared keyed timeline, with no event-chain drift.</p>
+        <p class="signature">state(t)=⌊Nt⌋ mod N</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>finite-state timing</li>
+          <li>seed 259565</li>
+          <li>8000 ms</li>
+          <li>84 elements</li>
+          <li>sha 759413fdb08d</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for State Sequencer">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-state-sequencer.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-loop-crossfade" data-example-id="loop-crossfade" data-pattern-id="procedural-svg-loop-crossfade" data-family-id="timing" data-driver="CSS keyframes" data-renderer="timing" data-technique="seamless loop" data-search="procedural-svg-loop-crossfade loop crossfade timing css keyframes seamless loop complementary opacity envelopes two complementary layers crossfade at the loop boundary so the cycle has no visible reset." data-playback-state="queued" data-svg-seed="963021" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="ad17482982adbcd3e0b1b6b318807f7261360ff7f0ec3d75822d90f2b947c530" data-svg-sha256="0dca0703166c474a4f372c1622262eb020e9f7eb1f3d218a4306b4c5510e08bb" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-loop-crossfade.svg" type="image/svg+xml" aria-label="Animated preview of Loop Crossfade">
+          <a href="./patterns/procedural-svg-loop-crossfade.svg">Open Loop Crossfade SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Timing systems</span><span>CSS keyframes</span></div>
+        <h3>Loop Crossfade</h3>
+        <a class="canonical-link" href="#procedural-svg-loop-crossfade" aria-label="Deep link to Loop Crossfade"><code>procedural-svg-loop-crossfade</code></a>
+        <p class="card-description">Two complementary layers crossfade at the loop boundary so the cycle has no visible reset.</p>
+        <p class="signature">complementary opacity envelopes</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>seamless loop</li>
+          <li>seed 963021</li>
+          <li>8000 ms</li>
+          <li>22 elements</li>
+          <li>sha 0dca0703166c</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Loop Crossfade">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-loop-crossfade.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-spring-chain" data-example-id="spring-chain" data-pattern-id="procedural-svg-spring-chain" data-family-id="timing" data-driver="precomputed keyframes" data-renderer="timing" data-technique="damped response" data-search="procedural-svg-spring-chain spring chain timing precomputed keyframes damped response x&#x27;&#x27; + 2ζωx&#x27; + ω²x = 0 precomputed damped oscillators propagate a delayed spring response through a linked chain." data-playback-state="queued" data-svg-seed="812322" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="b1817a1eeee8b77b0f32644cf22e67fff68be31f2c98fea9cc2df401c3e79bea" data-svg-sha256="540f673d8187be38a5df307e9db98e74e7dc5b985f58da4d5ee39b09755b1610" data-svg-motion-count="28" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-spring-chain.svg" type="image/svg+xml" aria-label="Animated preview of Spring Chain">
+          <a href="./patterns/procedural-svg-spring-chain.svg">Open Spring Chain SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Timing systems</span><span>precomputed keyframes</span></div>
+        <h3>Spring Chain</h3>
+        <a class="canonical-link" href="#procedural-svg-spring-chain" aria-label="Deep link to Spring Chain"><code>procedural-svg-spring-chain</code></a>
+        <p class="card-description">Precomputed damped oscillators propagate a delayed spring response through a linked chain.</p>
+        <p class="signature">x'' + 2ζωx' + ω²x = 0</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>damped response</li>
+          <li>seed 812322</li>
+          <li>8000 ms</li>
+          <li>49 elements</li>
+          <li>sha 540f673d8187</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Spring Chain">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-spring-chain.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-orbit-nested" data-example-id="orbit-nested" data-pattern-id="procedural-svg-orbit-nested" data-family-id="transform" data-driver="SMIL transforms" data-renderer="transform" data-technique="nested coordinate frames" data-search="procedural-svg-orbit-nested nested orbits transform smil transforms nested coordinate frames r₀(t)·t(r₀)·r₁(t)·t(r₁) nested local groups make each orbital frame inherit the revolution and translation of its parent." data-playback-state="queued" data-svg-seed="614684" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="893713e2e33418a8e4c3817d09236d6d8598b398a91feb86360945c159ad46d7" data-svg-sha256="e7d1748a78b49d7a52279009c043fe7e89711519a9ab38a6381a65492889d3ec" data-svg-motion-count="20" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-orbit-nested.svg" type="image/svg+xml" aria-label="Animated preview of Nested Orbits">
+          <a href="./patterns/procedural-svg-orbit-nested.svg">Open Nested Orbits SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Transform mechanics</span><span>SMIL transforms</span></div>
+        <h3>Nested Orbits</h3>
+        <a class="canonical-link" href="#procedural-svg-orbit-nested" aria-label="Deep link to Nested Orbits"><code>procedural-svg-orbit-nested</code></a>
+        <p class="card-description">Nested local groups make each orbital frame inherit the revolution and translation of its parent.</p>
+        <p class="signature">R₀(t)·T(r₀)·R₁(t)·T(r₁)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>nested coordinate frames</li>
+          <li>seed 614684</li>
+          <li>8000 ms</li>
+          <li>47 elements</li>
+          <li>sha e7d1748a78b4</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Nested Orbits">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-orbit-nested.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-counter-rotation" data-example-id="counter-rotation" data-pattern-id="procedural-svg-counter-rotation" data-family-id="transform" data-driver="SMIL transforms" data-renderer="transform" data-technique="orientation compensation" data-search="procedural-svg-counter-rotation counter rotation transform smil transforms orientation compensation r(t) · r(-t) parent rotation moves a frame while inverse child rotation keeps labels upright." data-playback-state="queued" data-svg-seed="823570" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="6f35ad7e45c1c82b949f98b57c1b98aeca7172e897e9618ee07b891cacf722b7" data-svg-sha256="b132909e88af21ecdb5378f22ba5fb95f6731f27ead5d3becbf8684400974ae5" data-svg-motion-count="26" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-counter-rotation.svg" type="image/svg+xml" aria-label="Animated preview of Counter Rotation">
+          <a href="./patterns/procedural-svg-counter-rotation.svg">Open Counter Rotation SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Transform mechanics</span><span>SMIL transforms</span></div>
+        <h3>Counter Rotation</h3>
+        <a class="canonical-link" href="#procedural-svg-counter-rotation" aria-label="Deep link to Counter Rotation"><code>procedural-svg-counter-rotation</code></a>
+        <p class="card-description">Parent rotation moves a frame while inverse child rotation keeps labels upright.</p>
+        <p class="signature">R(t) · R(-t)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>orientation compensation</li>
+          <li>seed 823570</li>
+          <li>8000 ms</li>
+          <li>77 elements</li>
+          <li>sha b132909e88af</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Counter Rotation">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-counter-rotation.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-pendulum-cascade" data-example-id="pendulum-cascade" data-pattern-id="procedural-svg-pendulum-cascade" data-family-id="transform" data-driver="sampled SMIL transforms" data-renderer="transform" data-technique="integer-related angular phase" data-search="procedural-svg-pendulum-cascade pendulum cascade transform sampled smil transforms integer-related angular phase θᵢ(t)=aᵢsin(2πnᵢt), nᵢ∈ℤ pivoted rods use distinct integer frequencies on one master clock, so their wave envelope recurs exactly at the loop boundary." data-playback-state="queued" data-svg-seed="995474" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="dffc752a7d21b51d0a9faeb3ce281c2b1d3eea73d2029b27b405e2adf14fcf89" data-svg-sha256="4c27df92da5313d9e9a89027fe74ebd8d7ae2755ba4bc87f538193d0d30cfc93" data-svg-motion-count="30" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-pendulum-cascade.svg" type="image/svg+xml" aria-label="Animated preview of Pendulum Cascade">
+          <a href="./patterns/procedural-svg-pendulum-cascade.svg">Open Pendulum Cascade SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Transform mechanics</span><span>sampled SMIL transforms</span></div>
+        <h3>Pendulum Cascade</h3>
+        <a class="canonical-link" href="#procedural-svg-pendulum-cascade" aria-label="Deep link to Pendulum Cascade"><code>procedural-svg-pendulum-cascade</code></a>
+        <p class="card-description">Pivoted rods use distinct integer frequencies on one master clock, so their wave envelope recurs exactly at the loop boundary.</p>
+        <p class="signature">θᵢ(t)=Aᵢsin(2πnᵢt), nᵢ∈ℤ</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>integer-related angular phase</li>
+          <li>seed 995474</li>
+          <li>8000 ms</li>
+          <li>109 elements</li>
+          <li>sha 4c27df92da53</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Pendulum Cascade">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-pendulum-cascade.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-gear-train" data-example-id="gear-train" data-pattern-id="procedural-svg-gear-train" data-family-id="transform" data-driver="SMIL transforms" data-renderer="transform" data-technique="ratio-constrained rotation" data-search="procedural-svg-gear-train gear train transform smil transforms ratio-constrained rotation z₁ω₁+z₂ω₂=0 pitch-circle-tangent gears derive alternating direction and exact angular-speed ratios from their tooth counts." data-playback-state="queued" data-svg-seed="334614" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="cb7d2d6c5e3a69f7e13c7f7e10ee2dcf1595edf1e5adecd3cfdd88c18b0fde5b" data-svg-sha256="77cfaf8360a9e92afb1b7a4bef8c1d9d79adbe6604b2f33c2234ddeafb0552ae" data-svg-motion-count="20" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-gear-train.svg" type="image/svg+xml" aria-label="Animated preview of Gear Train">
+          <a href="./patterns/procedural-svg-gear-train.svg">Open Gear Train SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Transform mechanics</span><span>SMIL transforms</span></div>
+        <h3>Gear Train</h3>
+        <a class="canonical-link" href="#procedural-svg-gear-train" aria-label="Deep link to Gear Train"><code>procedural-svg-gear-train</code></a>
+        <p class="card-description">Pitch-circle-tangent gears derive alternating direction and exact angular-speed ratios from their tooth counts.</p>
+        <p class="signature">z₁ω₁+z₂ω₂=0</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>ratio-constrained rotation</li>
+          <li>seed 334614</li>
+          <li>8000 ms</li>
+          <li>49 elements</li>
+          <li>sha 77cfaf8360a9</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Gear Train">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-gear-train.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-kinematic-arm" data-example-id="kinematic-arm" data-pattern-id="procedural-svg-kinematic-arm" data-family-id="transform" data-driver="SMIL transforms" data-renderer="transform" data-technique="forward kinematics" data-search="procedural-svg-kinematic-arm kinematic arm transform smil transforms forward kinematics t₀r₀t₁r₁t₂r₂ nested transforms articulate a multi-joint arm while preserving explicit pivots and link lengths." data-playback-state="queued" data-svg-seed="931099" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="5d496d74e4475426490c91f820a22e68c3c9bcfc713cda36374898692e7c1dfd" data-svg-sha256="33d7525854d223f877bf03406940af56ae91bc850adf6143f7a87fa8407e32d4" data-svg-motion-count="20" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-kinematic-arm.svg" type="image/svg+xml" aria-label="Animated preview of Kinematic Arm">
+          <a href="./patterns/procedural-svg-kinematic-arm.svg">Open Kinematic Arm SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Transform mechanics</span><span>SMIL transforms</span></div>
+        <h3>Kinematic Arm</h3>
+        <a class="canonical-link" href="#procedural-svg-kinematic-arm" aria-label="Deep link to Kinematic Arm"><code>procedural-svg-kinematic-arm</code></a>
+        <p class="card-description">Nested transforms articulate a multi-joint arm while preserving explicit pivots and link lengths.</p>
+        <p class="signature">T₀R₀T₁R₁T₂R₂</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>forward kinematics</li>
+          <li>seed 931099</li>
+          <li>8000 ms</li>
+          <li>49 elements</li>
+          <li>sha 33d7525854d2</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Kinematic Arm">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-kinematic-arm.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-parallax-layers" data-example-id="parallax-layers" data-pattern-id="procedural-svg-parallax-layers" data-family-id="transform" data-driver="CSS keyframes" data-renderer="transform" data-technique="depth-scaled displacement" data-search="procedural-svg-parallax-layers parallax layers transform css keyframes depth-scaled displacement δx(layer)=cameraδ/depth shared camera motion is scaled per layer to synthesize depth without 3d rendering." data-playback-state="queued" data-svg-seed="850878" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="7b913b6100f6a232c7655c61e5b8ba69830bae9d9ac5cfa2f4004935b598fccb" data-svg-sha256="11686ec7725504b622e5b15d599a46248b8f9c0437400b1d120cfedbdb7d8542" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-parallax-layers.svg" type="image/svg+xml" aria-label="Animated preview of Parallax Layers">
+          <a href="./patterns/procedural-svg-parallax-layers.svg">Open Parallax Layers SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Transform mechanics</span><span>CSS keyframes</span></div>
+        <h3>Parallax Layers</h3>
+        <a class="canonical-link" href="#procedural-svg-parallax-layers" aria-label="Deep link to Parallax Layers"><code>procedural-svg-parallax-layers</code></a>
+        <p class="card-description">Shared camera motion is scaled per layer to synthesize depth without 3D rendering.</p>
+        <p class="signature">Δx(layer)=cameraΔ/depth</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>depth-scaled displacement</li>
+          <li>seed 850878</li>
+          <li>8000 ms</li>
+          <li>24 elements</li>
+          <li>sha 11686ec77255</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Parallax Layers">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-parallax-layers.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-stroke-draw" data-example-id="stroke-draw" data-pattern-id="procedural-svg-stroke-draw" data-family-id="path" data-driver="CSS dash animation" data-renderer="path" data-technique="path-length reveal" data-search="procedural-svg-stroke-draw stroke draw path css dash animation path-length reveal dasharray=l; dashoffset:l→0 a measured path is revealed from start to finish with dash offset while final geometry stays intact." data-playback-state="queued" data-svg-seed="614569" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="e120f974b985a87db6d5449226ba64eaae62867b4ea7e312f537597ad2dbe4da" data-svg-sha256="b63950630ddd1906c10f42384abd5e89e14c28ae9849b2ac3acda227d13ce880" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-stroke-draw.svg" type="image/svg+xml" aria-label="Animated preview of Stroke Draw">
+          <a href="./patterns/procedural-svg-stroke-draw.svg">Open Stroke Draw SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Path choreography</span><span>CSS dash animation</span></div>
+        <h3>Stroke Draw</h3>
+        <a class="canonical-link" href="#procedural-svg-stroke-draw" aria-label="Deep link to Stroke Draw"><code>procedural-svg-stroke-draw</code></a>
+        <p class="card-description">A measured path is revealed from start to finish with dash offset while final geometry stays intact.</p>
+        <p class="signature">dasharray=L; dashoffset:L→0</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>path-length reveal</li>
+          <li>seed 614569</li>
+          <li>8000 ms</li>
+          <li>20 elements</li>
+          <li>sha b63950630ddd</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Stroke Draw">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-stroke-draw.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-dash-conveyor" data-example-id="dash-conveyor" data-pattern-id="procedural-svg-dash-conveyor" data-family-id="path" data-driver="CSS dash animation" data-renderer="path" data-technique="flowing dash phase" data-search="procedural-svg-dash-conveyor dash conveyor path css dash animation flowing dash phase dashoffset(t) mod period a repeating dash pattern moves continuously to encode direction and transport." data-playback-state="queued" data-svg-seed="296644" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="fdc7cc69faada287e3e4dcd1c90a3cb2b4afba804ec5af444ec6abd6522b9445" data-svg-sha256="17e82423a2f15f388cd4fa7e15b488a4799d565d7b087285c487e688d235eef9" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-dash-conveyor.svg" type="image/svg+xml" aria-label="Animated preview of Dash Conveyor">
+          <a href="./patterns/procedural-svg-dash-conveyor.svg">Open Dash Conveyor SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Path choreography</span><span>CSS dash animation</span></div>
+        <h3>Dash Conveyor</h3>
+        <a class="canonical-link" href="#procedural-svg-dash-conveyor" aria-label="Deep link to Dash Conveyor"><code>procedural-svg-dash-conveyor</code></a>
+        <p class="card-description">A repeating dash pattern moves continuously to encode direction and transport.</p>
+        <p class="signature">dashoffset(t) mod period</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>flowing dash phase</li>
+          <li>seed 296644</li>
+          <li>8000 ms</li>
+          <li>24 elements</li>
+          <li>sha 17e82423a2f1</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Dash Conveyor">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-dash-conveyor.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-motion-follow" data-example-id="motion-follow" data-pattern-id="procedural-svg-motion-follow" data-family-id="path" data-driver="SMIL animateMotion" data-renderer="path" data-technique="path-constrained motion" data-search="procedural-svg-motion-follow motion follow path smil animatemotion path-constrained motion heading ∥ tangent(path,t) a marker follows a reusable path and automatically rotates its forward axis to the local tangent." data-playback-state="queued" data-svg-seed="144817" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="a198d30151864297196ff2c1d248dca0b061ee94af2ccbf6e21fe83168e3a29d" data-svg-sha256="b11da0564d9fff8e946207efaaaba92ada715e8ee5639284f187cae58e2a19bf" data-svg-motion-count="27" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-motion-follow.svg" type="image/svg+xml" aria-label="Animated preview of Motion Follow">
+          <a href="./patterns/procedural-svg-motion-follow.svg">Open Motion Follow SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Path choreography</span><span>SMIL animateMotion</span></div>
+        <h3>Motion Follow</h3>
+        <a class="canonical-link" href="#procedural-svg-motion-follow" aria-label="Deep link to Motion Follow"><code>procedural-svg-motion-follow</code></a>
+        <p class="card-description">A marker follows a reusable path and automatically rotates its forward axis to the local tangent.</p>
+        <p class="signature">heading ∥ tangent(path,t)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>path-constrained motion</li>
+          <li>seed 144817</li>
+          <li>8000 ms</li>
+          <li>53 elements</li>
+          <li>sha b11da0564d9f</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Motion Follow">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-motion-follow.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-path-morph" data-example-id="path-morph" data-pattern-id="procedural-svg-path-morph" data-family-id="path" data-driver="SMIL path values" data-renderer="path" data-technique="topology-safe morph" data-search="procedural-svg-path-morph path morph path smil path values topology-safe morph equal command topology compatible cubic paths interpolate between silhouettes without resampling artifacts." data-playback-state="queued" data-svg-seed="147812" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="5a42a8c60adf181c37cbee92deb4ad8826a1be1aeea1464cd480d2a73374f305" data-svg-sha256="0686dbb1cde552261bb1539dd11d6c51fca0473ea04c20151565f5d0aa5548aa" data-svg-motion-count="18" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-path-morph.svg" type="image/svg+xml" aria-label="Animated preview of Path Morph">
+          <a href="./patterns/procedural-svg-path-morph.svg">Open Path Morph SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Path choreography</span><span>SMIL path values</span></div>
+        <h3>Path Morph</h3>
+        <a class="canonical-link" href="#procedural-svg-path-morph" aria-label="Deep link to Path Morph"><code>procedural-svg-path-morph</code></a>
+        <p class="card-description">Compatible cubic paths interpolate between silhouettes without resampling artifacts.</p>
+        <p class="signature">equal command topology</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>topology-safe morph</li>
+          <li>seed 147812</li>
+          <li>8000 ms</li>
+          <li>19 elements</li>
+          <li>sha 0686dbb1cde5</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Path Morph">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-path-morph.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-trim-window" data-example-id="trim-window" data-pattern-id="procedural-svg-trim-window" data-family-id="path" data-driver="CSS dash animation" data-renderer="path" data-technique="moving stroke window" data-search="procedural-svg-trim-window trim window path css dash animation moving stroke window visible segment = [s(t), s(t)+w] coordinated dash array and offset expose only a moving window of a longer route." data-playback-state="queued" data-svg-seed="346323" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="7bb4ab01f870ac3d15e2b0b1ebde0311bd0b9ebdf898a40b7ea41751a3ab8a53" data-svg-sha256="47a52a62530f32cd87e052e568f2c7f3a2fdd9fe09e9f29d68633a9c0592705b" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-trim-window.svg" type="image/svg+xml" aria-label="Animated preview of Trim Window">
+          <a href="./patterns/procedural-svg-trim-window.svg">Open Trim Window SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Path choreography</span><span>CSS dash animation</span></div>
+        <h3>Trim Window</h3>
+        <a class="canonical-link" href="#procedural-svg-trim-window" aria-label="Deep link to Trim Window"><code>procedural-svg-trim-window</code></a>
+        <p class="card-description">Coordinated dash array and offset expose only a moving window of a longer route.</p>
+        <p class="signature">visible segment = [s(t), s(t)+w]</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>moving stroke window</li>
+          <li>seed 346323</li>
+          <li>8000 ms</li>
+          <li>20 elements</li>
+          <li>sha 47a52a62530f</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Trim Window">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-trim-window.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-handwriting-reveal" data-example-id="handwriting-reveal" data-pattern-id="procedural-svg-handwriting-reveal" data-family-id="path" data-driver="CSS mask + SMIL follower" data-renderer="path" data-technique="authored trace reveal" data-search="procedural-svg-handwriting-reveal handwriting reveal path css mask + smil follower authored trace reveal stroke trace drives ink mask a pressure-like trace reveals a wider ink path while pen and lettering remain separate layers." data-playback-state="queued" data-svg-seed="262051" data-svg-duration-ms="8000" data-svg-motion-engine="mixed" data-svg-parameter-hash="229c5f0818e589a7e70d7101f90c64a73f8e1ed8ba6b2226a81943d3f48ed961" data-svg-sha256="e2843233401c183dfcca23bebccf8e6e2688e56c76ab359a6f90c694d537180f" data-svg-motion-count="19" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-handwriting-reveal.svg" type="image/svg+xml" aria-label="Animated preview of Handwriting Reveal">
+          <a href="./patterns/procedural-svg-handwriting-reveal.svg">Open Handwriting Reveal SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Path choreography</span><span>CSS mask + SMIL follower</span></div>
+        <h3>Handwriting Reveal</h3>
+        <a class="canonical-link" href="#procedural-svg-handwriting-reveal" aria-label="Deep link to Handwriting Reveal"><code>procedural-svg-handwriting-reveal</code></a>
+        <p class="card-description">A pressure-like trace reveals a wider ink path while pen and lettering remain separate layers.</p>
+        <p class="signature">stroke trace drives ink mask</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>authored trace reveal</li>
+          <li>seed 262051</li>
+          <li>8000 ms</li>
+          <li>37 elements</li>
+          <li>sha e2843233401c</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Handwriting Reveal">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-handwriting-reveal.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-lissajous-bloom" data-example-id="lissajous-bloom" data-pattern-id="procedural-svg-lissajous-bloom" data-family-id="parametric" data-driver="generated path + CSS/SMIL" data-renderer="parametric" data-technique="frequency-ratio curve" data-search="procedural-svg-lissajous-bloom lissajous bloom parametric generated path + css/smil frequency-ratio curve x=sin(at+δ), y=sin(bt) frequency ratios and phase generate closed harmonic figures that bloom through rotation and draw." data-playback-state="queued" data-svg-seed="166897" data-svg-duration-ms="8000" data-svg-motion-engine="mixed" data-svg-parameter-hash="5dd0a1b50778f367080716aa024ede3b9e147507604d94e45db29a314914ce32" data-svg-sha256="2a350faf98f26f0229f9f0d0fded643f589b392610afe07f48663c1960ba7cf8" data-svg-motion-count="18" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-lissajous-bloom.svg" type="image/svg+xml" aria-label="Animated preview of Lissajous Bloom">
+          <a href="./patterns/procedural-svg-lissajous-bloom.svg">Open Lissajous Bloom SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Parametric geometry</span><span>generated path + CSS/SMIL</span></div>
+        <h3>Lissajous Bloom</h3>
+        <a class="canonical-link" href="#procedural-svg-lissajous-bloom" aria-label="Deep link to Lissajous Bloom"><code>procedural-svg-lissajous-bloom</code></a>
+        <p class="card-description">Frequency ratios and phase generate closed harmonic figures that bloom through rotation and draw.</p>
+        <p class="signature">x=sin(at+δ), y=sin(bt)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>frequency-ratio curve</li>
+          <li>seed 166897</li>
+          <li>8000 ms</li>
+          <li>21 elements</li>
+          <li>sha 2a350faf98f2</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Lissajous Bloom">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-lissajous-bloom.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-rose-curve" data-example-id="rose-curve" data-pattern-id="procedural-svg-rose-curve" data-family-id="parametric" data-driver="generated path + CSS/SMIL" data-renderer="parametric" data-technique="polar harmonic" data-search="procedural-svg-rose-curve rose curve parametric generated path + css/smil polar harmonic r=cos(7θ); φ(t)=2πt a fixed sevenfold polar harmonic is sampled deterministically, progressively revealed, and rigidly phase-rotated without changing petal topology." data-playback-state="queued" data-svg-seed="612293" data-svg-duration-ms="8000" data-svg-motion-engine="mixed" data-svg-parameter-hash="3e17d5760dedbbcfece1ae211e2793bbdb947b3d4e9504e2dfc9dc8fe3678723" data-svg-sha256="2652e1c255410b73a2a2872770f197ef1ac8316f69019e2343d996093f3e6f3f" data-svg-motion-count="18" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-rose-curve.svg" type="image/svg+xml" aria-label="Animated preview of Rose Curve">
+          <a href="./patterns/procedural-svg-rose-curve.svg">Open Rose Curve SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Parametric geometry</span><span>generated path + CSS/SMIL</span></div>
+        <h3>Rose Curve</h3>
+        <a class="canonical-link" href="#procedural-svg-rose-curve" aria-label="Deep link to Rose Curve"><code>procedural-svg-rose-curve</code></a>
+        <p class="card-description">A fixed sevenfold polar harmonic is sampled deterministically, progressively revealed, and rigidly phase-rotated without changing petal topology.</p>
+        <p class="signature">r=cos(7θ); φ(t)=2πt</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>polar harmonic</li>
+          <li>seed 612293</li>
+          <li>8000 ms</li>
+          <li>21 elements</li>
+          <li>sha 2652e1c25541</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Rose Curve">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-rose-curve.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-spirograph" data-example-id="spirograph" data-pattern-id="procedural-svg-spirograph" data-family-id="parametric" data-driver="generated path + SMIL" data-renderer="parametric" data-technique="hypotrochoid" data-search="procedural-svg-spirograph spirograph parametric generated path + smil hypotrochoid rolling circle inside circle integer radii and pen offset generate repeatable hypotrochoid families and exact closure periods." data-playback-state="queued" data-svg-seed="196871" data-svg-duration-ms="8000" data-svg-motion-engine="mixed" data-svg-parameter-hash="9be42c7df4f31e18839ae46d63fbc9aff70813e44a73f5264f05fcea86a744a7" data-svg-sha256="c7c12938e7ad2918ee4457a5d738a71dac4699b06ee89f34b314064010574498" data-svg-motion-count="18" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-spirograph.svg" type="image/svg+xml" aria-label="Animated preview of Spirograph">
+          <a href="./patterns/procedural-svg-spirograph.svg">Open Spirograph SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Parametric geometry</span><span>generated path + SMIL</span></div>
+        <h3>Spirograph</h3>
+        <a class="canonical-link" href="#procedural-svg-spirograph" aria-label="Deep link to Spirograph"><code>procedural-svg-spirograph</code></a>
+        <p class="card-description">Integer radii and pen offset generate repeatable hypotrochoid families and exact closure periods.</p>
+        <p class="signature">rolling circle inside circle</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>hypotrochoid</li>
+          <li>seed 196871</li>
+          <li>8000 ms</li>
+          <li>21 elements</li>
+          <li>sha c7c12938e7ad</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Spirograph">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-spirograph.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-fourier-epicycles" data-example-id="fourier-epicycles" data-pattern-id="procedural-svg-fourier-epicycles" data-family-id="parametric" data-driver="nested SMIL transforms + trace" data-renderer="parametric" data-technique="harmonic vector sum" data-search="procedural-svg-fourier-epicycles fourier epicycles parametric nested smil transforms + trace harmonic vector sum σ aₙe^(i(nωt+φₙ)) nested relative rotations produce independent absolute harmonic vectors whose endpoint follows the sampled sum trace." data-playback-state="queued" data-svg-seed="655188" data-svg-duration-ms="8000" data-svg-motion-engine="mixed" data-svg-parameter-hash="5a40241bb9bf8a85f3894dab9e25a90c755d0791047d25d85776a6d0721bc049" data-svg-sha256="98d287fd269d9af76b7c0e3ed4cb36ec977538d219ece5cea3aeb803a0152a69" data-svg-motion-count="21" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-fourier-epicycles.svg" type="image/svg+xml" aria-label="Animated preview of Fourier Epicycles">
+          <a href="./patterns/procedural-svg-fourier-epicycles.svg">Open Fourier Epicycles SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Parametric geometry</span><span>nested SMIL transforms + trace</span></div>
+        <h3>Fourier Epicycles</h3>
+        <a class="canonical-link" href="#procedural-svg-fourier-epicycles" aria-label="Deep link to Fourier Epicycles"><code>procedural-svg-fourier-epicycles</code></a>
+        <p class="card-description">Nested relative rotations produce independent absolute harmonic vectors whose endpoint follows the sampled sum trace.</p>
+        <p class="signature">Σ aₙe^(i(nωt+φₙ))</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>harmonic vector sum</li>
+          <li>seed 655188</li>
+          <li>8000 ms</li>
+          <li>68 elements</li>
+          <li>sha 98d287fd269d</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Fourier Epicycles">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-fourier-epicycles.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-superformula" data-example-id="superformula" data-pattern-id="procedural-svg-superformula" data-family-id="parametric" data-driver="generated compatible paths" data-renderer="parametric" data-technique="superformula sampling" data-search="procedural-svg-superformula superformula parametric generated compatible paths superformula sampling r(φ;m,n₁,n₂,n₃) sampled superformula coefficients form a family between rounded, star-like, and organic silhouettes." data-playback-state="queued" data-svg-seed="807544" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="2eb2a2019f0d60d1f09dac33aee7df549a04e600327c8ea6c5b3f64f79ffc239" data-svg-sha256="1f4230103559cdd99eaf682b3d56375095bfb39feb77a3800817c28aab7e13c9" data-svg-motion-count="18" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-superformula.svg" type="image/svg+xml" aria-label="Animated preview of Superformula">
+          <a href="./patterns/procedural-svg-superformula.svg">Open Superformula SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Parametric geometry</span><span>generated compatible paths</span></div>
+        <h3>Superformula</h3>
+        <a class="canonical-link" href="#procedural-svg-superformula" aria-label="Deep link to Superformula"><code>procedural-svg-superformula</code></a>
+        <p class="card-description">Sampled superformula coefficients form a family between rounded, star-like, and organic silhouettes.</p>
+        <p class="signature">r(φ;m,n₁,n₂,n₃)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>superformula sampling</li>
+          <li>seed 807544</li>
+          <li>8000 ms</li>
+          <li>19 elements</li>
+          <li>sha 1f4230103559</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Superformula">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-superformula.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-wave-interference" data-example-id="wave-interference" data-pattern-id="procedural-svg-wave-interference" data-family-id="parametric" data-driver="precomputed SMIL path frames" data-renderer="parametric" data-technique="signal superposition" data-search="procedural-svg-wave-interference wave interference parametric precomputed smil path frames signal superposition y=σaᵢsin(kᵢx-ωᵢt+φᵢ) precomputed temporal-phase frames animate seven harmonic sums through constructive and destructive interference." data-playback-state="queued" data-svg-seed="238793" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="063cfa33c8da4c221d359ccb9b6a5aadab8636d656c5d2520efeda0b7be9a269" data-svg-sha256="f5ecff099594a10c35a968e54556da4ef7dbc52c655f3381504a8b079c1306c0" data-svg-motion-count="24" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-wave-interference.svg" type="image/svg+xml" aria-label="Animated preview of Wave Interference">
+          <a href="./patterns/procedural-svg-wave-interference.svg">Open Wave Interference SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Parametric geometry</span><span>precomputed SMIL path frames</span></div>
+        <h3>Wave Interference</h3>
+        <a class="canonical-link" href="#procedural-svg-wave-interference" aria-label="Deep link to Wave Interference"><code>procedural-svg-wave-interference</code></a>
+        <p class="card-description">Precomputed temporal-phase frames animate seven harmonic sums through constructive and destructive interference.</p>
+        <p class="signature">y=ΣAᵢsin(kᵢx-ωᵢt+φᵢ)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>signal superposition</li>
+          <li>seed 238793</li>
+          <li>8000 ms</li>
+          <li>37 elements</li>
+          <li>sha f5ecff099594</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Wave Interference">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-wave-interference.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-vector-field" data-example-id="vector-field" data-pattern-id="procedural-svg-vector-field" data-family-id="field" data-driver="generated glyphs + SMIL" data-renderer="field" data-technique="grid sampling" data-search="procedural-svg-vector-field vector field field generated glyphs + smil grid sampling v(x,y)→angle,length a sampled vector function maps local direction and magnitude to glyph orientation and length." data-playback-state="queued" data-svg-seed="656528" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="c11589752077b351f70b091320cc2f09a37f4e5ca21509f3d16af3f44f460671" data-svg-sha256="3efb357ac4214644a2627931b5e1297d139f39c4e54bcd0ee8eccb57fc7dc8ce" data-svg-motion-count="152" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-vector-field.svg" type="image/svg+xml" aria-label="Animated preview of Vector Field">
+          <a href="./patterns/procedural-svg-vector-field.svg">Open Vector Field SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Fields and sampling</span><span>generated glyphs + SMIL</span></div>
+        <h3>Vector Field</h3>
+        <a class="canonical-link" href="#procedural-svg-vector-field" aria-label="Deep link to Vector Field"><code>procedural-svg-vector-field</code></a>
+        <p class="card-description">A sampled vector function maps local direction and magnitude to glyph orientation and length.</p>
+        <p class="signature">v(x,y)→angle,length</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>grid sampling</li>
+          <li>seed 656528</li>
+          <li>8000 ms</li>
+          <li>421 elements</li>
+          <li>sha 3efb357ac421</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Vector Field">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-vector-field.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-curl-streamlines" data-example-id="curl-streamlines" data-pattern-id="procedural-svg-curl-streamlines" data-family-id="field" data-driver="precomputed integration" data-renderer="field" data-technique="streamline advection" data-search="procedural-svg-curl-streamlines curl streamlines field precomputed integration streamline advection pₙ₊₁=pₙ+h·v(pₙ) seeded particles are numerically integrated through a curl-like field to create coherent streamlines." data-playback-state="queued" data-svg-seed="728260" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="57e61e812952d2f0bdcbb9235f6a0a16f78e0fddf4ba9ddc43960df719f276ff" data-svg-sha256="d14c8991090d533605566ae0aca67d0f651c07507563611858ee1532ce247366" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-curl-streamlines.svg" type="image/svg+xml" aria-label="Animated preview of Curl Streamlines">
+          <a href="./patterns/procedural-svg-curl-streamlines.svg">Open Curl Streamlines SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Fields and sampling</span><span>precomputed integration</span></div>
+        <h3>Curl Streamlines</h3>
+        <a class="canonical-link" href="#procedural-svg-curl-streamlines" aria-label="Deep link to Curl Streamlines"><code>procedural-svg-curl-streamlines</code></a>
+        <p class="card-description">Seeded particles are numerically integrated through a curl-like field to create coherent streamlines.</p>
+        <p class="signature">pₙ₊₁=pₙ+h·v(pₙ)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>streamline advection</li>
+          <li>seed 728260</li>
+          <li>8000 ms</li>
+          <li>72 elements</li>
+          <li>sha d14c8991090d</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Curl Streamlines">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-curl-streamlines.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-noise-ribbons" data-example-id="noise-ribbons" data-pattern-id="procedural-svg-noise-ribbons" data-family-id="field" data-driver="seeded value-noise keyframes" data-renderer="field" data-technique="multi-octave displacement" data-search="procedural-svg-noise-ribbons noise ribbons field seeded value-noise keyframes multi-octave displacement σ amplitudeₒ·noise(frequencyₒ(x+t)) seeded periodic value-noise lattices displace parallel paths into a seamless animated ribbon field." data-playback-state="queued" data-svg-seed="541123" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="ff18d22b434c9389f88a7a6936ca7469b50ea336ae860b14489d92e44481e0e1" data-svg-sha256="5b970dcbe0429705a21ff03e23a3d61550b50f3b1cf010580cc0c9c85dc182f8" data-svg-motion-count="29" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-noise-ribbons.svg" type="image/svg+xml" aria-label="Animated preview of Noise Ribbons">
+          <a href="./patterns/procedural-svg-noise-ribbons.svg">Open Noise Ribbons SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Fields and sampling</span><span>seeded value-noise keyframes</span></div>
+        <h3>Noise Ribbons</h3>
+        <a class="canonical-link" href="#procedural-svg-noise-ribbons" aria-label="Deep link to Noise Ribbons"><code>procedural-svg-noise-ribbons</code></a>
+        <p class="card-description">Seeded periodic value-noise lattices displace parallel paths into a seamless animated ribbon field.</p>
+        <p class="signature">Σ amplitudeₒ·noise(frequencyₒ(x+t))</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>multi-octave displacement</li>
+          <li>seed 541123</li>
+          <li>8000 ms</li>
+          <li>52 elements</li>
+          <li>sha 5b970dcbe042</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Noise Ribbons">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-noise-ribbons.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-particle-advection" data-example-id="particle-advection" data-pattern-id="procedural-svg-particle-advection" data-family-id="field" data-driver="SMIL motion paths" data-renderer="field" data-technique="field-traced particles" data-search="procedural-svg-particle-advection particle advection field smil motion paths field-traced particles seed → integrate → loop particles follow bounded precomputed field trajectories with deterministic phase-offset playback." data-playback-state="queued" data-svg-seed="1031022" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="5776bc5e02f9d0f9c50e1b3de6a318545c089f3807c83fdcdbddf74b02d5cebe" data-svg-sha256="f114cc8928587de7f2e9e0d1144c507ea838569e48b62b340189ec84f1a709f9" data-svg-motion-count="35" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-particle-advection.svg" type="image/svg+xml" aria-label="Animated preview of Particle Advection">
+          <a href="./patterns/procedural-svg-particle-advection.svg">Open Particle Advection SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Fields and sampling</span><span>SMIL motion paths</span></div>
+        <h3>Particle Advection</h3>
+        <a class="canonical-link" href="#procedural-svg-particle-advection" aria-label="Deep link to Particle Advection"><code>procedural-svg-particle-advection</code></a>
+        <p class="card-description">Particles follow bounded precomputed field trajectories with deterministic phase-offset playback.</p>
+        <p class="signature">seed → integrate → loop</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>field-traced particles</li>
+          <li>seed 1031022</li>
+          <li>8000 ms</li>
+          <li>124 elements</li>
+          <li>sha f114cc892858</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Particle Advection">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-particle-advection.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-distance-contours" data-example-id="distance-contours" data-pattern-id="procedural-svg-distance-contours" data-family-id="field" data-driver="marching squares + CSS" data-renderer="field" data-technique="nearest-site scalar sampling" data-search="procedural-svg-distance-contours distance contours field marching squares + css nearest-site scalar sampling iso(minᵢ ‖p-sᵢ‖) marching squares extracts nested union boundaries from a seeded nearest-site distance field." data-playback-state="queued" data-svg-seed="983213" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="a04553ab623611cb2c67e64133efb940cdd266ef6936d5146cadd484fdd103ad" data-svg-sha256="519e3ffc25fe91c70b3404802d5c5859f31d29a0637dd275baeeb8e7b2f7247d" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-distance-contours.svg" type="image/svg+xml" aria-label="Animated preview of Distance Contours">
+          <a href="./patterns/procedural-svg-distance-contours.svg">Open Distance Contours SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Fields and sampling</span><span>marching squares + CSS</span></div>
+        <h3>Distance Contours</h3>
+        <a class="canonical-link" href="#procedural-svg-distance-contours" aria-label="Deep link to Distance Contours"><code>procedural-svg-distance-contours</code></a>
+        <p class="card-description">Marching squares extracts nested union boundaries from a seeded nearest-site distance field.</p>
+        <p class="signature">iso(minᵢ ‖p-sᵢ‖)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>nearest-site scalar sampling</li>
+          <li>seed 983213</li>
+          <li>8000 ms</li>
+          <li>38 elements</li>
+          <li>sha 519e3ffc25fe</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Distance Contours">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-distance-contours.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-metaball-field" data-example-id="metaball-field" data-pattern-id="procedural-svg-metaball-field" data-family-id="field" data-driver="SVG blur + alpha threshold" data-renderer="field" data-technique="Gaussian density approximation" data-search="procedural-svg-metaball-field metaball field field svg blur + alpha threshold gaussian density approximation blur(source disks) → alpha contrast moving source disks merge into an implicit-looking surface through blur and component-transfer thresholding." data-playback-state="queued" data-svg-seed="257297" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="a9cb1b6d63b318bd3dd06b1b67f0398e78601dd9f4ae59f6393579a6df1038a8" data-svg-sha256="3b713035bf355247b6335b680b0d05a309669c3229527280f61dac069d481f10" data-svg-motion-count="33" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-metaball-field.svg" type="image/svg+xml" aria-label="Animated preview of Metaball Field">
+          <a href="./patterns/procedural-svg-metaball-field.svg">Open Metaball Field SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Fields and sampling</span><span>SVG blur + alpha threshold</span></div>
+        <h3>Metaball Field</h3>
+        <a class="canonical-link" href="#procedural-svg-metaball-field" aria-label="Deep link to Metaball Field"><code>procedural-svg-metaball-field</code></a>
+        <p class="card-description">Moving source disks merge into an implicit-looking surface through blur and component-transfer thresholding.</p>
+        <p class="signature">blur(source disks) → alpha contrast</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>Gaussian density approximation</li>
+          <li>seed 257297</li>
+          <li>8000 ms</li>
+          <li>58 elements</li>
+          <li>sha 3b713035bf35</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Metaball Field">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-metaball-field.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-boid-flock" data-example-id="boid-flock" data-pattern-id="procedural-svg-boid-flock" data-family-id="simulation" data-driver="precomputed simulation" data-renderer="simulation" data-technique="separation + alignment + cohesion" data-search="procedural-svg-boid-flock boid flock simulation precomputed simulation separation + alignment + cohesion local steering rules → emergent flock a seeded boid system records stable trajectories from three local steering behaviors." data-playback-state="queued" data-svg-seed="222616" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="16e6881e63e285d322882b180df3c3272404bb960cf60ea829158e4d8f2cf8ff" data-svg-sha256="f5b2abbd9d02e8c327261969c3c77d43e4a578771522bd24b37be6d288b5472d" data-svg-motion-count="49" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-boid-flock.svg" type="image/svg+xml" aria-label="Animated preview of Boid Flock">
+          <a href="./patterns/procedural-svg-boid-flock.svg">Open Boid Flock SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Simulation systems</span><span>precomputed simulation</span></div>
+        <h3>Boid Flock</h3>
+        <a class="canonical-link" href="#procedural-svg-boid-flock" aria-label="Deep link to Boid Flock"><code>procedural-svg-boid-flock</code></a>
+        <p class="card-description">A seeded boid system records stable trajectories from three local steering behaviors.</p>
+        <p class="signature">local steering rules → emergent flock</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>separation + alignment + cohesion</li>
+          <li>seed 222616</li>
+          <li>8000 ms</li>
+          <li>176 elements</li>
+          <li>sha f5b2abbd9d02</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Boid Flock">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-boid-flock.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-verlet-cloth" data-example-id="verlet-cloth" data-pattern-id="procedural-svg-verlet-cloth" data-family-id="simulation" data-driver="precomputed constraint frames" data-renderer="simulation" data-technique="Verlet integration" data-search="procedural-svg-verlet-cloth verlet cloth simulation precomputed constraint frames verlet integration x&#x27;=2x-x₋₁+aδt²; project constraints a point lattice advances with verlet integration and repeated distance-constraint projection." data-playback-state="queued" data-svg-seed="853344" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="5319278e0b1db3a46e332f666b07b0e3ce6353f002b3e5ef63fc88a32e39830a" data-svg-sha256="84b318031d00c5734904a596d48f4790e0d03504708b9c4db8f82f157e1cce41" data-svg-motion-count="36" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-verlet-cloth.svg" type="image/svg+xml" aria-label="Animated preview of Verlet Cloth">
+          <a href="./patterns/procedural-svg-verlet-cloth.svg">Open Verlet Cloth SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Simulation systems</span><span>precomputed constraint frames</span></div>
+        <h3>Verlet Cloth</h3>
+        <a class="canonical-link" href="#procedural-svg-verlet-cloth" aria-label="Deep link to Verlet Cloth"><code>procedural-svg-verlet-cloth</code></a>
+        <p class="card-description">A point lattice advances with Verlet integration and repeated distance-constraint projection.</p>
+        <p class="signature">x'=2x-x₋₁+aΔt²; project constraints</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>Verlet integration</li>
+          <li>seed 853344</li>
+          <li>8000 ms</li>
+          <li>97 elements</li>
+          <li>sha 84b318031d00</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Verlet Cloth">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-verlet-cloth.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-spring-mesh" data-example-id="spring-mesh" data-pattern-id="procedural-svg-spring-mesh" data-family-id="simulation" data-driver="precomputed keyframes" data-renderer="simulation" data-technique="mass-spring coupling" data-search="procedural-svg-spring-mesh spring mesh simulation precomputed keyframes mass-spring coupling f=-kx-cv coupled damped springs distribute an impulse across a compact node mesh." data-playback-state="queued" data-svg-seed="926336" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="36f4610e221e72016cac69e551c0c99d183e892f878e8fe1f52314e8de0dcb26" data-svg-sha256="a583aaaf253970102cbd33f5022a6d7a4d293758f2ae79583101b3004b3794e1" data-svg-motion-count="76" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-spring-mesh.svg" type="image/svg+xml" aria-label="Animated preview of Spring Mesh">
+          <a href="./patterns/procedural-svg-spring-mesh.svg">Open Spring Mesh SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Simulation systems</span><span>precomputed keyframes</span></div>
+        <h3>Spring Mesh</h3>
+        <a class="canonical-link" href="#procedural-svg-spring-mesh" aria-label="Deep link to Spring Mesh"><code>procedural-svg-spring-mesh</code></a>
+        <p class="card-description">Coupled damped springs distribute an impulse across a compact node mesh.</p>
+        <p class="signature">F=-kx-cv</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>mass-spring coupling</li>
+          <li>seed 926336</li>
+          <li>8000 ms</li>
+          <li>193 elements</li>
+          <li>sha a583aaaf2539</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Spring Mesh">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-spring-mesh.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-cellular-automaton" data-example-id="cellular-automaton" data-pattern-id="procedural-svg-cellular-automaton" data-family-id="simulation" data-driver="discrete SMIL frames" data-renderer="simulation" data-technique="local neighborhood update" data-search="procedural-svg-cellular-automaton cellular automaton simulation discrete smil frames local neighborhood update grid(t+1)=rule(neighbors(t)) a seeded binary grid exposes several deterministic generations of a local update rule." data-playback-state="queued" data-svg-seed="566561" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="7ea57b2631907dc6a03aae598e05fc4a23c1a7e125e249900cf8379130b3c2d4" data-svg-sha256="c88f44e020c2be42a505e7f7ec23bb2b728949206a55e1dc8245426ef40ed6a5" data-svg-motion-count="417" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-cellular-automaton.svg" type="image/svg+xml" aria-label="Animated preview of Cellular Automaton">
+          <a href="./patterns/procedural-svg-cellular-automaton.svg">Open Cellular Automaton SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Simulation systems</span><span>discrete SMIL frames</span></div>
+        <h3>Cellular Automaton</h3>
+        <a class="canonical-link" href="#procedural-svg-cellular-automaton" aria-label="Deep link to Cellular Automaton"><code>procedural-svg-cellular-automaton</code></a>
+        <p class="card-description">A seeded binary grid exposes several deterministic generations of a local update rule.</p>
+        <p class="signature">grid(t+1)=rule(neighbors(t))</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>local neighborhood update</li>
+          <li>seed 566561</li>
+          <li>8000 ms</li>
+          <li>1216 elements</li>
+          <li>sha c88f44e020c2</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Cellular Automaton">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-cellular-automaton.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-reaction-diffusion" data-example-id="reaction-diffusion" data-pattern-id="procedural-svg-reaction-diffusion" data-family-id="simulation" data-driver="precomputed Gray-Scott field" data-renderer="simulation" data-technique="coupled diffusion and reaction" data-search="procedural-svg-reaction-diffusion reaction diffusion simulation precomputed gray-scott field coupled diffusion and reaction ∂u/∂t=dᵤ∇²u-uv²+f(1-u) a compact gray-scott simulation converts evolving chemical concentration into thresholded svg cells." data-playback-state="queued" data-svg-seed="1022196" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="0332acf9d95e246af192df123193ae79cbbf56f221b317a439a2689f662c613c" data-svg-sha256="fa6a7990ba5b51389c9852b351c4eaf57cf85d3dc411f6f262f859c784a2463a" data-svg-motion-count="657" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-reaction-diffusion.svg" type="image/svg+xml" aria-label="Animated preview of Reaction Diffusion">
+          <a href="./patterns/procedural-svg-reaction-diffusion.svg">Open Reaction Diffusion SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Simulation systems</span><span>precomputed Gray-Scott field</span></div>
+        <h3>Reaction Diffusion</h3>
+        <a class="canonical-link" href="#procedural-svg-reaction-diffusion" aria-label="Deep link to Reaction Diffusion"><code>procedural-svg-reaction-diffusion</code></a>
+        <p class="card-description">A compact Gray-Scott simulation converts evolving chemical concentration into thresholded SVG cells.</p>
+        <p class="signature">∂u/∂t=Dᵤ∇²u-uv²+f(1-u)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>coupled diffusion and reaction</li>
+          <li>seed 1022196</li>
+          <li>8000 ms</li>
+          <li>1936 elements</li>
+          <li>sha fa6a7990ba5b</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Reaction Diffusion">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-reaction-diffusion.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-diffusion-limited" data-example-id="diffusion-limited" data-pattern-id="procedural-svg-diffusion-limited" data-family-id="simulation" data-driver="seeded aggregation" data-renderer="simulation" data-technique="random walk + sticking" data-search="procedural-svg-diffusion-limited diffusion limited aggregation simulation seeded aggregation random walk + sticking walker touches cluster → freeze seeded walkers accrete into a branching cluster and reveal their attachment order." data-playback-state="queued" data-svg-seed="181557" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="311566baa620cd355063ebf94b4bd8e07a3c9154fcee7ba1d3e77dfff3dc1ffd" data-svg-sha256="d0ba3840b8a4c9a9d86eebeb1603b0a193c8faabcff58aa7a00e1523bd07f27b" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-diffusion-limited.svg" type="image/svg+xml" aria-label="Animated preview of Diffusion Limited Aggregation">
+          <a href="./patterns/procedural-svg-diffusion-limited.svg">Open Diffusion Limited Aggregation SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Simulation systems</span><span>seeded aggregation</span></div>
+        <h3>Diffusion Limited Aggregation</h3>
+        <a class="canonical-link" href="#procedural-svg-diffusion-limited" aria-label="Deep link to Diffusion Limited Aggregation"><code>procedural-svg-diffusion-limited</code></a>
+        <p class="card-description">Seeded walkers accrete into a branching cluster and reveal their attachment order.</p>
+        <p class="signature">walker touches cluster → freeze</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>random walk + sticking</li>
+          <li>seed 181557</li>
+          <li>8000 ms</li>
+          <li>894 elements</li>
+          <li>sha d0ba3840b8a4</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Diffusion Limited Aggregation">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-diffusion-limited.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-lsystem-canopy" data-example-id="lsystem-canopy" data-pattern-id="procedural-svg-lsystem-canopy" data-family-id="growth" data-driver="grammar expansion + CSS" data-renderer="growth" data-technique="parallel string rewriting" data-search="procedural-svg-lsystem-canopy l-system canopy growth grammar expansion + css parallel string rewriting axiom + productions + turtle a deterministic grammar expands into turtle commands and reveals a recursive plant canopy by depth." data-playback-state="queued" data-svg-seed="564705" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="c2dda1a9eeb68d0ab14086bf54cf7c90e706b61e21f9913c132741ef84f6d5f1" data-svg-sha256="653417d8368950bfb87ef24c8f63efb2f537fa5b405f3ae51f806b6cc69ca039" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-lsystem-canopy.svg" type="image/svg+xml" aria-label="Animated preview of L-System Canopy">
+          <a href="./patterns/procedural-svg-lsystem-canopy.svg">Open L-System Canopy SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Recursive growth</span><span>grammar expansion + CSS</span></div>
+        <h3>L-System Canopy</h3>
+        <a class="canonical-link" href="#procedural-svg-lsystem-canopy" aria-label="Deep link to L-System Canopy"><code>procedural-svg-lsystem-canopy</code></a>
+        <p class="card-description">A deterministic grammar expands into turtle commands and reveals a recursive plant canopy by depth.</p>
+        <p class="signature">axiom + productions + turtle</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>parallel string rewriting</li>
+          <li>seed 564705</li>
+          <li>8000 ms</li>
+          <li>266 elements</li>
+          <li>sha 653417d83689</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for L-System Canopy">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-lsystem-canopy.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-phyllotaxis-bloom" data-example-id="phyllotaxis-bloom" data-pattern-id="procedural-svg-phyllotaxis-bloom" data-family-id="growth" data-driver="generated marks + CSS" data-renderer="growth" data-technique="golden-angle packing" data-search="procedural-svg-phyllotaxis-bloom phyllotaxis bloom growth generated marks + css golden-angle packing θₙ=n·137.507°, rₙ=c√n seeds appear in index order along a golden-angle spiral, producing dense radial packing." data-playback-state="queued" data-svg-seed="241073" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="16bbc1a77603c165c9aa53246f5f078ec2c48660f8d184a94d5363d9d29214e6" data-svg-sha256="976e51fbfbca725591c197976054f17c2d7227de5b3a01d74720e36eb5419da7" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-phyllotaxis-bloom.svg" type="image/svg+xml" aria-label="Animated preview of Phyllotaxis Bloom">
+          <a href="./patterns/procedural-svg-phyllotaxis-bloom.svg">Open Phyllotaxis Bloom SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Recursive growth</span><span>generated marks + CSS</span></div>
+        <h3>Phyllotaxis Bloom</h3>
+        <a class="canonical-link" href="#procedural-svg-phyllotaxis-bloom" aria-label="Deep link to Phyllotaxis Bloom"><code>procedural-svg-phyllotaxis-bloom</code></a>
+        <p class="card-description">Seeds appear in index order along a golden-angle spiral, producing dense radial packing.</p>
+        <p class="signature">θₙ=n·137.507°, rₙ=c√n</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>golden-angle packing</li>
+          <li>seed 241073</li>
+          <li>8000 ms</li>
+          <li>536 elements</li>
+          <li>sha 976e51fbfbca</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Phyllotaxis Bloom">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-phyllotaxis-bloom.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-fractal-lightning" data-example-id="fractal-lightning" data-pattern-id="procedural-svg-fractal-lightning" data-family-id="growth" data-driver="seeded midpoint displacement" data-renderer="growth" data-technique="recursive branching" data-search="procedural-svg-fractal-lightning fractal lightning growth seeded midpoint displacement recursive branching segment → jittered subdivisions + branches recursive midpoint displacement and branching create a deterministic electrical growth path." data-playback-state="queued" data-svg-seed="684860" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="276feb7001f48f803a4c432f88e2d58f2d6352dfd976754ff29f59f000e9418a" data-svg-sha256="a287493df65a960accebe09fb86a1a3f0b32dcf1ae1bdc3090bcec69bda32751" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-fractal-lightning.svg" type="image/svg+xml" aria-label="Animated preview of Fractal Lightning">
+          <a href="./patterns/procedural-svg-fractal-lightning.svg">Open Fractal Lightning SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Recursive growth</span><span>seeded midpoint displacement</span></div>
+        <h3>Fractal Lightning</h3>
+        <a class="canonical-link" href="#procedural-svg-fractal-lightning" aria-label="Deep link to Fractal Lightning"><code>procedural-svg-fractal-lightning</code></a>
+        <p class="card-description">Recursive midpoint displacement and branching create a deterministic electrical growth path.</p>
+        <p class="signature">segment → jittered subdivisions + branches</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>recursive branching</li>
+          <li>seed 684860</li>
+          <li>8000 ms</li>
+          <li>112 elements</li>
+          <li>sha a287493df65a</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Fractal Lightning">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-fractal-lightning.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-space-colonization" data-example-id="space-colonization" data-pattern-id="procedural-svg-space-colonization" data-family-id="growth" data-driver="precomputed attraction growth" data-renderer="growth" data-technique="attractor-driven branching" data-search="procedural-svg-space-colonization space colonization growth precomputed attraction growth attractor-driven branching nearby attractors steer active tips branch tips advance toward a field of attractors, splitting coverage into vein-like territories." data-playback-state="queued" data-svg-seed="309042" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="e33e2b61f269269e7db94186bceca61a6fe73b4fc8cd989645ed3eb8ffaa2cf7" data-svg-sha256="3ce31d2181a16889d1074dac3b88bca9942821b3bd02a555be9309e1cef14c61" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-space-colonization.svg" type="image/svg+xml" aria-label="Animated preview of Space Colonization">
+          <a href="./patterns/procedural-svg-space-colonization.svg">Open Space Colonization SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Recursive growth</span><span>precomputed attraction growth</span></div>
+        <h3>Space Colonization</h3>
+        <a class="canonical-link" href="#procedural-svg-space-colonization" aria-label="Deep link to Space Colonization"><code>procedural-svg-space-colonization</code></a>
+        <p class="card-description">Branch tips advance toward a field of attractors, splitting coverage into vein-like territories.</p>
+        <p class="signature">nearby attractors steer active tips</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>attractor-driven branching</li>
+          <li>seed 309042</li>
+          <li>8000 ms</li>
+          <li>708 elements</li>
+          <li>sha 3ce31d2181a1</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Space Colonization">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-space-colonization.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-vein-growth" data-example-id="vein-growth" data-pattern-id="procedural-svg-vein-growth" data-family-id="growth" data-driver="ordered branch synthesis" data-renderer="growth" data-technique="hierarchical transport network" data-search="procedural-svg-vein-growth vein growth growth ordered branch synthesis hierarchical transport network primary axis → lateral veins → capillaries quadratic lateral veins and tangent-derived capillaries build a three-level leaf transport hierarchy." data-playback-state="queued" data-svg-seed="773596" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="b8508c401d2a225898fb7ef9892f1eaad10542c793de84863e2ea3a8a56d2fdb" data-svg-sha256="21e57742dbcf1fbb467e832d17291894c6eeeb52c5503b61ccf39bc0974e50c8" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-vein-growth.svg" type="image/svg+xml" aria-label="Animated preview of Vein Growth">
+          <a href="./patterns/procedural-svg-vein-growth.svg">Open Vein Growth SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Recursive growth</span><span>ordered branch synthesis</span></div>
+        <h3>Vein Growth</h3>
+        <a class="canonical-link" href="#procedural-svg-vein-growth" aria-label="Deep link to Vein Growth"><code>procedural-svg-vein-growth</code></a>
+        <p class="card-description">Quadratic lateral veins and tangent-derived capillaries build a three-level leaf transport hierarchy.</p>
+        <p class="signature">primary axis → lateral veins → capillaries</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>hierarchical transport network</li>
+          <li>seed 773596</li>
+          <li>8000 ms</li>
+          <li>164 elements</li>
+          <li>sha 21e57742dbcf</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Vein Growth">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-vein-growth.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-recursive-coral" data-example-id="recursive-coral" data-pattern-id="procedural-svg-recursive-coral" data-family-id="growth" data-driver="seeded recursion + CSS" data-renderer="growth" data-technique="angle-limited recursive growth" data-search="procedural-svg-recursive-coral recursive coral growth seeded recursion + css angle-limited recursive growth branch(depth,scale,turn) a recursively scaled branching rule grows a coral silhouette with depth-specific reveal timing." data-playback-state="queued" data-svg-seed="922909" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="03dece6b391fba18799045df94382b3a2c97f6274f7f182d4b1c1a5fc7386d54" data-svg-sha256="9de2dfe572d159ea53047475ce60976b933a6bd01ae4d2b79682de4c593a1ccd" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-recursive-coral.svg" type="image/svg+xml" aria-label="Animated preview of Recursive Coral">
+          <a href="./patterns/procedural-svg-recursive-coral.svg">Open Recursive Coral SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Recursive growth</span><span>seeded recursion + CSS</span></div>
+        <h3>Recursive Coral</h3>
+        <a class="canonical-link" href="#procedural-svg-recursive-coral" aria-label="Deep link to Recursive Coral"><code>procedural-svg-recursive-coral</code></a>
+        <p class="card-description">A recursively scaled branching rule grows a coral silhouette with depth-specific reveal timing.</p>
+        <p class="signature">branch(depth,scale,turn)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>angle-limited recursive growth</li>
+          <li>seed 922909</li>
+          <li>8000 ms</li>
+          <li>792 elements</li>
+          <li>sha 9de2dfe572d1</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Recursive Coral">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-recursive-coral.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-truchet-flow" data-example-id="truchet-flow" data-pattern-id="procedural-svg-truchet-flow" data-family-id="tiling" data-driver="seeded tiles + CSS" data-renderer="tiling" data-technique="edge-compatible tile rotation" data-search="procedural-svg-truchet-flow truchet flow tiling seeded tiles + css edge-compatible tile rotation binary tile orientation seeded quarter-arc tiles form long accidental paths that animate as a connected flow texture." data-playback-state="queued" data-svg-seed="368586" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="89636aea9136d4cf58cbd24e8c31163ea713dffa4361b39270f7324f359ff16f" data-svg-sha256="a7f11dd3edcc5d31130ca4185dd27468a1300124175afe5ec1c662353d6a05c9" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-truchet-flow.svg" type="image/svg+xml" aria-label="Animated preview of Truchet Flow">
+          <a href="./patterns/procedural-svg-truchet-flow.svg">Open Truchet Flow SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Tiling and symmetry</span><span>seeded tiles + CSS</span></div>
+        <h3>Truchet Flow</h3>
+        <a class="canonical-link" href="#procedural-svg-truchet-flow" aria-label="Deep link to Truchet Flow"><code>procedural-svg-truchet-flow</code></a>
+        <p class="card-description">Seeded quarter-arc tiles form long accidental paths that animate as a connected flow texture.</p>
+        <p class="signature">binary tile orientation</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>edge-compatible tile rotation</li>
+          <li>seed 368586</li>
+          <li>8000 ms</li>
+          <li>560 elements</li>
+          <li>sha a7f11dd3edcc</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Truchet Flow">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-truchet-flow.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-hex-wave" data-example-id="hex-wave" data-pattern-id="procedural-svg-hex-wave" data-family-id="tiling" data-driver="generated lattice + CSS" data-renderer="tiling" data-technique="polar phase on hex grid" data-search="procedural-svg-hex-wave hex wave tiling generated lattice + css polar phase on hex grid phase(q,r)=normalized distance+angle a hexagonal lattice combines radial distance and polar angle into a spiraling scale-and-color wave." data-playback-state="queued" data-svg-seed="978168" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="1125863f367bc815143f3484067c4793fdd1745651d80d9af5660896157ef8c9" data-svg-sha256="1df41a20f44ff823aa2d98fa9aed5e3be1f3505ba2670c25931c5f2141ebdf7d" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-hex-wave.svg" type="image/svg+xml" aria-label="Animated preview of Hex Wave">
+          <a href="./patterns/procedural-svg-hex-wave.svg">Open Hex Wave SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Tiling and symmetry</span><span>generated lattice + CSS</span></div>
+        <h3>Hex Wave</h3>
+        <a class="canonical-link" href="#procedural-svg-hex-wave" aria-label="Deep link to Hex Wave"><code>procedural-svg-hex-wave</code></a>
+        <p class="card-description">A hexagonal lattice combines radial distance and polar angle into a spiraling scale-and-color wave.</p>
+        <p class="signature">phase(q,r)=normalized distance+angle</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>polar phase on hex grid</li>
+          <li>seed 978168</li>
+          <li>8000 ms</li>
+          <li>240 elements</li>
+          <li>sha 1df41a20f44f</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Hex Wave">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-hex-wave.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-voronoi-pulse" data-example-id="voronoi-pulse" data-pattern-id="procedural-svg-voronoi-pulse" data-family-id="tiling" data-driver="sampled nearest-site cells" data-renderer="tiling" data-technique="Voronoi-like partition" data-search="procedural-svg-voronoi-pulse voronoi pulse tiling sampled nearest-site cells voronoi-like partition cell(p)=argminᵢ|p-sᵢ| a compact sampled partition pulses by site order while retaining deterministic region ownership." data-playback-state="queued" data-svg-seed="561236" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="6aed3717e61b281c65ad50f00acd82a0bbd23225c1d0792800002632afef17ab" data-svg-sha256="5b64e0be7e6f971a09278b123af7e1a751f5f439b798eceba66ef86334449bf7" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-voronoi-pulse.svg" type="image/svg+xml" aria-label="Animated preview of Voronoi Pulse">
+          <a href="./patterns/procedural-svg-voronoi-pulse.svg">Open Voronoi Pulse SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Tiling and symmetry</span><span>sampled nearest-site cells</span></div>
+        <h3>Voronoi Pulse</h3>
+        <a class="canonical-link" href="#procedural-svg-voronoi-pulse" aria-label="Deep link to Voronoi Pulse"><code>procedural-svg-voronoi-pulse</code></a>
+        <p class="card-description">A compact sampled partition pulses by site order while retaining deterministic region ownership.</p>
+        <p class="signature">cell(p)=argminᵢ|p-sᵢ|</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>Voronoi-like partition</li>
+          <li>seed 561236</li>
+          <li>8000 ms</li>
+          <li>1532 elements</li>
+          <li>sha 5b64e0be7e6f</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Voronoi Pulse">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-voronoi-pulse.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-moire-rotation" data-example-id="moire-rotation" data-pattern-id="procedural-svg-moire-rotation" data-family-id="tiling" data-driver="SMIL transforms" data-renderer="tiling" data-technique="interference of repeated line sets" data-search="procedural-svg-moire-rotation moiré rotation tiling smil transforms interference of repeated line sets pattern a ⊕ rotated pattern b two dense line lattices rotate through complementary phases to create large-scale interference bands." data-playback-state="queued" data-svg-seed="151068" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="85ff87ac154ea2b89d0c7c6ee10b583eee365d55cbee7bcf6237ad96c7c3b4ed" data-svg-sha256="d29e0c1a7e9b9b3567718537c1e0cf4425fdc3d4e79e4cf7c74cd3bdf3f98d63" data-svg-motion-count="19" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-moire-rotation.svg" type="image/svg+xml" aria-label="Animated preview of Moiré Rotation">
+          <a href="./patterns/procedural-svg-moire-rotation.svg">Open Moiré Rotation SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Tiling and symmetry</span><span>SMIL transforms</span></div>
+        <h3>Moiré Rotation</h3>
+        <a class="canonical-link" href="#procedural-svg-moire-rotation" aria-label="Deep link to Moiré Rotation"><code>procedural-svg-moire-rotation</code></a>
+        <p class="card-description">Two dense line lattices rotate through complementary phases to create large-scale interference bands.</p>
+        <p class="signature">pattern A ⊕ rotated pattern B</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>interference of repeated line sets</li>
+          <li>seed 151068</li>
+          <li>8000 ms</li>
+          <li>260 elements</li>
+          <li>sha d29e0c1a7e9b</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Moiré Rotation">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-moire-rotation.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-kaleidoscope" data-example-id="kaleidoscope" data-pattern-id="procedural-svg-kaleidoscope" data-family-id="tiling" data-driver="SVG use + transforms" data-renderer="tiling" data-technique="sector reflection" data-search="procedural-svg-kaleidoscope kaleidoscope tiling svg use + transforms sector reflection motif × dihedral symmetry one animated motif is reflected and rotated into a reusable dihedral symmetry system." data-playback-state="queued" data-svg-seed="685268" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="0823886fdf886ac520137a936038a4dbe908adefa0e66fed287aced8f830d9b6" data-svg-sha256="b51cbd807709202a1ff95dd3f8ffa530bd3b4bbd26520b99ba218a4dbb649d51" data-svg-motion-count="18" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-kaleidoscope.svg" type="image/svg+xml" aria-label="Animated preview of Kaleidoscope">
+          <a href="./patterns/procedural-svg-kaleidoscope.svg">Open Kaleidoscope SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Tiling and symmetry</span><span>SVG use + transforms</span></div>
+        <h3>Kaleidoscope</h3>
+        <a class="canonical-link" href="#procedural-svg-kaleidoscope" aria-label="Deep link to Kaleidoscope"><code>procedural-svg-kaleidoscope</code></a>
+        <p class="card-description">One animated motif is reflected and rotated into a reusable dihedral symmetry system.</p>
+        <p class="signature">motif × dihedral symmetry</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>sector reflection</li>
+          <li>seed 685268</li>
+          <li>8000 ms</li>
+          <li>51 elements</li>
+          <li>sha b51cbd807709</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Kaleidoscope">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-kaleidoscope.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-quasicrystal" data-example-id="quasicrystal" data-pattern-id="procedural-svg-quasicrystal" data-family-id="tiling" data-driver="generated wave samples" data-renderer="tiling" data-technique="multi-axis interference" data-search="procedural-svg-quasicrystal quasicrystal tiling generated wave samples multi-axis interference σcos(kᵢ·p+φᵢ) several evenly rotated plane waves combine into a non-periodic-looking thresholded dot field." data-playback-state="queued" data-svg-seed="552648" data-svg-duration-ms="8000" data-svg-motion-engine="css" data-svg-parameter-hash="4fb3dadde63ef342b29471ca51855086d08ec96f88f9674fc964b8dedf0bec4e" data-svg-sha256="503f97ed2e9c3f885055b4e2de9c17a403d3f23365879278c3c6914d7c95e8d0" data-svg-motion-count="17" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-quasicrystal.svg" type="image/svg+xml" aria-label="Animated preview of Quasicrystal">
+          <a href="./patterns/procedural-svg-quasicrystal.svg">Open Quasicrystal SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Tiling and symmetry</span><span>generated wave samples</span></div>
+        <h3>Quasicrystal</h3>
+        <a class="canonical-link" href="#procedural-svg-quasicrystal" aria-label="Deep link to Quasicrystal"><code>procedural-svg-quasicrystal</code></a>
+        <p class="card-description">Several evenly rotated plane waves combine into a non-periodic-looking thresholded dot field.</p>
+        <p class="signature">Σcos(kᵢ·p+φᵢ)</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>multi-axis interference</li>
+          <li>seed 552648</li>
+          <li>8000 ms</li>
+          <li>500 elements</li>
+          <li>sha 503f97ed2e9c</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Quasicrystal">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-quasicrystal.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-gradient-cycle" data-example-id="gradient-cycle" data-pattern-id="procedural-svg-gradient-cycle" data-family-id="paint" data-driver="SMIL stops" data-renderer="paint" data-technique="animated color field" data-search="procedural-svg-gradient-cycle gradient cycle paint smil stops animated color field stop color + offset phase gradient stops change color and position while geometry remains static and reusable." data-playback-state="queued" data-svg-seed="271041" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="3d989d2bb94428aafc4c1ab1dc33ece319b5ef0537e9877c91201cfe836951eb" data-svg-sha256="1907735347f5d2854d16051a4ffdbddc5e053f01f40ffab7aeb42006d612eac9" data-svg-motion-count="25" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-gradient-cycle.svg" type="image/svg+xml" aria-label="Animated preview of Gradient Cycle">
+          <a href="./patterns/procedural-svg-gradient-cycle.svg">Open Gradient Cycle SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Paint and compositing</span><span>SMIL stops</span></div>
+        <h3>Gradient Cycle</h3>
+        <a class="canonical-link" href="#procedural-svg-gradient-cycle" aria-label="Deep link to Gradient Cycle"><code>procedural-svg-gradient-cycle</code></a>
+        <p class="card-description">Gradient stops change color and position while geometry remains static and reusable.</p>
+        <p class="signature">stop color + offset phase</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>animated color field</li>
+          <li>seed 271041</li>
+          <li>8000 ms</li>
+          <li>52 elements</li>
+          <li>sha 1907735347f5</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Gradient Cycle">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-gradient-cycle.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-mask-wipe" data-example-id="mask-wipe" data-pattern-id="procedural-svg-mask-wipe" data-family-id="paint" data-driver="SMIL mask geometry" data-renderer="paint" data-technique="luminance reveal" data-search="procedural-svg-mask-wipe mask wipe paint smil mask geometry luminance reveal animated white mask over source a procedural mask reveals layered geometry without mutating the source artwork." data-playback-state="queued" data-svg-seed="783356" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="35afc88313b53f14ab1404a6254ede69eebbe26d4a2466ebd2667ad825df8301" data-svg-sha256="c5c76848f1137ef45f7e7cba53eb652d9792437f04a370835d30f93442af6df1" data-svg-motion-count="18" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-mask-wipe.svg" type="image/svg+xml" aria-label="Animated preview of Mask Wipe">
+          <a href="./patterns/procedural-svg-mask-wipe.svg">Open Mask Wipe SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Paint and compositing</span><span>SMIL mask geometry</span></div>
+        <h3>Mask Wipe</h3>
+        <a class="canonical-link" href="#procedural-svg-mask-wipe" aria-label="Deep link to Mask Wipe"><code>procedural-svg-mask-wipe</code></a>
+        <p class="card-description">A procedural mask reveals layered geometry without mutating the source artwork.</p>
+        <p class="signature">animated white mask over source</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>luminance reveal</li>
+          <li>seed 783356</li>
+          <li>8000 ms</li>
+          <li>51 elements</li>
+          <li>sha c5c76848f113</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Mask Wipe">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-mask-wipe.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-clip-morph" data-example-id="clip-morph" data-pattern-id="procedural-svg-clip-morph" data-family-id="paint" data-driver="SMIL clip path" data-renderer="paint" data-technique="topology-safe clipping" data-search="procedural-svg-clip-morph clip morph paint smil clip path topology-safe clipping compatible clip silhouettes a compatible clip path morphs between apertures while the clipped texture stays fixed." data-playback-state="queued" data-svg-seed="334717" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="bbc456e35c4f3f22c3d94feea3a9f5ea9a12c387225082aa4eadf2bbd8eaf459" data-svg-sha256="d2b024d4361cbd954db1564def5bb03224050c7047eea321d7a06c42e13aa1d1" data-svg-motion-count="18" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-clip-morph.svg" type="image/svg+xml" aria-label="Animated preview of Clip Morph">
+          <a href="./patterns/procedural-svg-clip-morph.svg">Open Clip Morph SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Paint and compositing</span><span>SMIL clip path</span></div>
+        <h3>Clip Morph</h3>
+        <a class="canonical-link" href="#procedural-svg-clip-morph" aria-label="Deep link to Clip Morph"><code>procedural-svg-clip-morph</code></a>
+        <p class="card-description">A compatible clip path morphs between apertures while the clipped texture stays fixed.</p>
+        <p class="signature">compatible clip silhouettes</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>topology-safe clipping</li>
+          <li>seed 334717</li>
+          <li>8000 ms</li>
+          <li>69 elements</li>
+          <li>sha d2b024d4361c</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Clip Morph">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-clip-morph.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-turbulence-warp" data-example-id="turbulence-warp" data-pattern-id="procedural-svg-turbulence-warp" data-family-id="paint" data-driver="SVG filter animation" data-renderer="paint" data-technique="noise displacement" data-search="procedural-svg-turbulence-warp turbulence warp paint svg filter animation noise displacement feturbulence → fedisplacementmap animated turbulence frequency and displacement scale turn a stable path field into an organic warp." data-playback-state="queued" data-svg-seed="190328" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="05e3cd1a231625d109691c08ba2aa9fc6d66aa8e122c5d7d4f31d4d2f233a8d5" data-svg-sha256="9b72a20da63aaf914b689e51afb91cc605f82637024e02a275b073811637875e" data-svg-motion-count="19" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-turbulence-warp.svg" type="image/svg+xml" aria-label="Animated preview of Turbulence Warp">
+          <a href="./patterns/procedural-svg-turbulence-warp.svg">Open Turbulence Warp SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Paint and compositing</span><span>SVG filter animation</span></div>
+        <h3>Turbulence Warp</h3>
+        <a class="canonical-link" href="#procedural-svg-turbulence-warp" aria-label="Deep link to Turbulence Warp"><code>procedural-svg-turbulence-warp</code></a>
+        <p class="card-description">Animated turbulence frequency and displacement scale turn a stable path field into an organic warp.</p>
+        <p class="signature">feTurbulence → feDisplacementMap</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>noise displacement</li>
+          <li>seed 190328</li>
+          <li>8000 ms</li>
+          <li>54 elements</li>
+          <li>sha 9b72a20da63a</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Turbulence Warp">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-turbulence-warp.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-gooey-merge" data-example-id="gooey-merge" data-pattern-id="procedural-svg-gooey-merge" data-family-id="paint" data-driver="SVG filter + SMIL positions" data-renderer="paint" data-technique="blur threshold compositing" data-search="procedural-svg-gooey-merge gooey merge paint svg filter + smil positions blur threshold compositing blur → alpha contrast moving shapes blur and threshold into a single merging surface while a sharp overlay preserves detail." data-playback-state="queued" data-svg-seed="248707" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="d94fbf4f799a750bbb05a7ea7d9df3a7fb2e63930c6fb3020d285b841d7b7562" data-svg-sha256="ef5e56e5194b418e25151df900c609a9bdd89ef44198598e191823538e95ef47" data-svg-motion-count="45" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-gooey-merge.svg" type="image/svg+xml" aria-label="Animated preview of Gooey Merge">
+          <a href="./patterns/procedural-svg-gooey-merge.svg">Open Gooey Merge SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Paint and compositing</span><span>SVG filter + SMIL positions</span></div>
+        <h3>Gooey Merge</h3>
+        <a class="canonical-link" href="#procedural-svg-gooey-merge" aria-label="Deep link to Gooey Merge"><code>procedural-svg-gooey-merge</code></a>
+        <p class="card-description">Moving shapes blur and threshold into a single merging surface while a sharp overlay preserves detail.</p>
+        <p class="signature">blur → alpha contrast</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>blur threshold compositing</li>
+          <li>seed 248707</li>
+          <li>8000 ms</li>
+          <li>82 elements</li>
+          <li>sha ef5e56e5194b</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Gooey Merge">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-gooey-merge.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-lighting-sweep" data-example-id="lighting-sweep" data-pattern-id="procedural-svg-lighting-sweep" data-family-id="paint" data-driver="SVG lighting filter" data-renderer="paint" data-technique="animated light source" data-search="procedural-svg-lighting-sweep lighting sweep paint svg lighting filter animated light source height field → specular response an animated light source sweeps across a generated relief field using svg lighting primitives." data-playback-state="queued" data-svg-seed="576833" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="5102a412d8cac56e95ee2bb5bd14534323bd232d55ebc113fed0ffb81232a45b" data-svg-sha256="b25118e2ca099fb34368ce75739defd6c02cc31500a060b42c33b16405bea57d" data-svg-motion-count="18" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-lighting-sweep.svg" type="image/svg+xml" aria-label="Animated preview of Lighting Sweep">
+          <a href="./patterns/procedural-svg-lighting-sweep.svg">Open Lighting Sweep SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Paint and compositing</span><span>SVG lighting filter</span></div>
+        <h3>Lighting Sweep</h3>
+        <a class="canonical-link" href="#procedural-svg-lighting-sweep" aria-label="Deep link to Lighting Sweep"><code>procedural-svg-lighting-sweep</code></a>
+        <p class="card-description">An animated light source sweeps across a generated relief field using SVG lighting primitives.</p>
+        <p class="signature">height field → specular response</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>animated light source</li>
+          <li>seed 576833</li>
+          <li>8000 ms</li>
+          <li>33 elements</li>
+          <li>sha b25118e2ca09</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Lighting Sweep">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-lighting-sweep.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-pulse-network" data-example-id="pulse-network" data-pattern-id="procedural-svg-pulse-network" data-family-id="composition" data-driver="shared clock + dash reveals + motion tokens" data-renderer="composition" data-technique="breadth-first causal choreography" data-search="procedural-svg-pulse-network pulse network composition shared clock + dash reveals + motion tokens breadth-first causal choreography reveal depth → emit pulse → settle target one master clock reveals dag edges by depth, sends hidden-reset tokens forward, and settles each target after arrival." data-playback-state="queued" data-svg-seed="222124" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="df465ccb8220f14869b9cf26cd1016912899f00e6e8b798f6e0edf0d8c46ee29" data-svg-sha256="d329135191c71226e5c5b0044bb68ac7db4dd861f5aa47820eda2c645e616f27" data-svg-motion-count="41" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-pulse-network.svg" type="image/svg+xml" aria-label="Animated preview of Pulse Network">
+          <a href="./patterns/procedural-svg-pulse-network.svg">Open Pulse Network SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Hybrid compositions</span><span>shared clock + dash reveals + motion tokens</span></div>
+        <h3>Pulse Network</h3>
+        <a class="canonical-link" href="#procedural-svg-pulse-network" aria-label="Deep link to Pulse Network"><code>procedural-svg-pulse-network</code></a>
+        <p class="card-description">One master clock reveals DAG edges by depth, sends hidden-reset tokens forward, and settles each target after arrival.</p>
+        <p class="signature">reveal depth → emit pulse → settle target</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>breadth-first causal choreography</li>
+          <li>seed 222124</li>
+          <li>8000 ms</li>
+          <li>88 elements</li>
+          <li>sha d329135191c7</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Pulse Network">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-pulse-network.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-growth-to-flow" data-example-id="growth-to-flow" data-pattern-id="procedural-svg-growth-to-flow" data-family-id="composition" data-driver="level reveal + root-to-leaf transport" data-renderer="composition" data-technique="structural-to-operational handoff" data-search="procedural-svg-growth-to-flow growth to flow composition level reveal + root-to-leaf transport structural-to-operational handoff grow branch levels → activate complete routes recursive branch levels finish revealing before tokens traverse deterministic root-to-leaf paths during a separate operating phase." data-playback-state="queued" data-svg-seed="919800" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="88331434427c060651f0c05bed55a27e729db4647f7045740895d85f60ce9d77" data-svg-sha256="a720f264b06b1216d8592a9e7eaa3e472332d398922335fa810813b1b7f2316e" data-svg-motion-count="176" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-growth-to-flow.svg" type="image/svg+xml" aria-label="Animated preview of Growth to Flow">
+          <a href="./patterns/procedural-svg-growth-to-flow.svg">Open Growth to Flow SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Hybrid compositions</span><span>level reveal + root-to-leaf transport</span></div>
+        <h3>Growth to Flow</h3>
+        <a class="canonical-link" href="#procedural-svg-growth-to-flow" aria-label="Deep link to Growth to Flow"><code>procedural-svg-growth-to-flow</code></a>
+        <p class="card-description">Recursive branch levels finish revealing before tokens traverse deterministic root-to-leaf paths during a separate operating phase.</p>
+        <p class="signature">grow branch levels → activate complete routes</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>structural-to-operational handoff</li>
+          <li>seed 919800</li>
+          <li>8000 ms</li>
+          <li>334 elements</li>
+          <li>sha a720f264b06b</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Growth to Flow">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-growth-to-flow.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-field-glyph-morph" data-example-id="field-glyph-morph" data-pattern-id="procedural-svg-field-glyph-morph" data-family-id="composition" data-driver="field snapshots + compatible SMIL morph" data-renderer="composition" data-technique="field-controlled glyph state" data-search="procedural-svg-field-glyph-morph field glyph morph composition field snapshots + compatible smil morph field-controlled glyph state sample two fields → map direction and magnitude → interpolate two vector-field snapshots drive each glyph&#x27;s orientation, opacity, and topology-compatible four-point geometry on one clock." data-playback-state="queued" data-svg-seed="377013" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="3ba4bc1443ec1886a5f4cdd7b29c84991c78472687be11718d69de70208992d1" data-svg-sha256="216c2caaedba46d9a6880716055b511cea46a86354b2b042cfcd06c404782148" data-svg-motion-count="269" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-field-glyph-morph.svg" type="image/svg+xml" aria-label="Animated preview of Field Glyph Morph">
+          <a href="./patterns/procedural-svg-field-glyph-morph.svg">Open Field Glyph Morph SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Hybrid compositions</span><span>field snapshots + compatible SMIL morph</span></div>
+        <h3>Field Glyph Morph</h3>
+        <a class="canonical-link" href="#procedural-svg-field-glyph-morph" aria-label="Deep link to Field Glyph Morph"><code>procedural-svg-field-glyph-morph</code></a>
+        <p class="card-description">Two vector-field snapshots drive each glyph's orientation, opacity, and topology-compatible four-point geometry on one clock.</p>
+        <p class="signature">sample two fields → map direction and magnitude → interpolate</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>field-controlled glyph state</li>
+          <li>seed 377013</li>
+          <li>8000 ms</li>
+          <li>772 elements</li>
+          <li>sha 216c2caaedba</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Field Glyph Morph">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-field-glyph-morph.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-orbit-trail-system" data-example-id="orbit-trail-system" data-pattern-id="procedural-svg-orbit-trail-system" data-family-id="composition" data-driver="nested transforms + precomputed endpoint path" data-renderer="composition" data-technique="kinematics with phase-decayed traces" data-search="procedural-svg-orbit-trail-system orbit trail system composition nested transforms + precomputed endpoint path kinematics with phase-decayed traces nested frame sum → endpoint trace → dash echoes a three-link nested transform chain and its equation-matched closed endpoint path produce phase-shifted, decaying dash trails." data-playback-state="queued" data-svg-seed="659248" data-svg-duration-ms="8000" data-svg-motion-engine="mixed" data-svg-parameter-hash="f230dc231c62e50e15ddd20c6e54653bf92505308f9c3d1bbd68108cebf62573" data-svg-sha256="e500e21174bf4bfd0be1dc918df1d1d3a2fe00a889eb26781e80ddf80241b18b" data-svg-motion-count="20" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-orbit-trail-system.svg" type="image/svg+xml" aria-label="Animated preview of Orbit Trail System">
+          <a href="./patterns/procedural-svg-orbit-trail-system.svg">Open Orbit Trail System SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Hybrid compositions</span><span>nested transforms + precomputed endpoint path</span></div>
+        <h3>Orbit Trail System</h3>
+        <a class="canonical-link" href="#procedural-svg-orbit-trail-system" aria-label="Deep link to Orbit Trail System"><code>procedural-svg-orbit-trail-system</code></a>
+        <p class="card-description">A three-link nested transform chain and its equation-matched closed endpoint path produce phase-shifted, decaying dash trails.</p>
+        <p class="signature">nested frame sum → endpoint trace → dash echoes</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>kinematics with phase-decayed traces</li>
+          <li>seed 659248</li>
+          <li>8000 ms</li>
+          <li>61 elements</li>
+          <li>sha e500e21174bf</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Orbit Trail System">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-orbit-trail-system.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-tiled-wavefront" data-example-id="tiled-wavefront" data-pattern-id="procedural-svg-tiled-wavefront" data-family-id="composition" data-driver="tiling + adjacency BFS + timed opacity" data-renderer="composition" data-technique="topology-aware propagation" data-search="procedural-svg-tiled-wavefront tiled wavefront composition tiling + adjacency bfs + timed opacity topology-aware propagation four-neighbor distance(cell) → activation phase a breadth-first wave crosses four-neighbor tiles and bends through deterministic barrier gates instead of following dom or euclidean order." data-playback-state="queued" data-svg-seed="993393" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="e38c92af0d3d1b8849d613a230dbb776cb80ed00a2a3b33f03f3a06d4d722054" data-svg-sha256="cd5ab05da5ad5da00a43c714a48d2388c2d9acbad18aa471b0b72bc6fff39827" data-svg-motion-count="129" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-tiled-wavefront.svg" type="image/svg+xml" aria-label="Animated preview of Tiled Wavefront">
+          <a href="./patterns/procedural-svg-tiled-wavefront.svg">Open Tiled Wavefront SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Hybrid compositions</span><span>tiling + adjacency BFS + timed opacity</span></div>
+        <h3>Tiled Wavefront</h3>
+        <a class="canonical-link" href="#procedural-svg-tiled-wavefront" aria-label="Deep link to Tiled Wavefront"><code>procedural-svg-tiled-wavefront</code></a>
+        <p class="card-description">A breadth-first wave crosses four-neighbor tiles and bends through deterministic barrier gates instead of following DOM or Euclidean order.</p>
+        <p class="signature">four-neighbor distance(cell) → activation phase</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>topology-aware propagation</li>
+          <li>seed 993393</li>
+          <li>8000 ms</li>
+          <li>382 elements</li>
+          <li>sha cd5ab05da5ad</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Tiled Wavefront">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-tiled-wavefront.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+    <article class="pattern-card" id="procedural-svg-stateful-infographic" data-example-id="stateful-infographic" data-pattern-id="procedural-svg-stateful-infographic" data-family-id="composition" data-driver="four-state clock + spotlight mask + routes" data-renderer="composition" data-technique="semantic scene sequencing" data-search="procedural-svg-stateful-infographic stateful infographic composition four-state clock + spotlight mask + routes semantic scene sequencing context → transition → focus → reset one four-state clock coordinates card emphasis, staged route reveals, forward tokens, and a masked spotlight before returning to context." data-playback-state="queued" data-svg-seed="741874" data-svg-duration-ms="8000" data-svg-motion-engine="smil" data-svg-parameter-hash="b1b3afc9d7618e58483038c43ef0c04ef49b6a532afa6edf9839cba8fc4cc416" data-svg-sha256="5da5a1af532b709df56ba2c2a8e28fa914e59320e5d0ed9918e0028c6dbde820" data-svg-motion-count="34" data-svg-reduced-motion="true">
+      <div class="preview-shell">
+        <span class="preview-state" data-preview-state>Queued</span>
+        <object class="pattern-preview" data-pattern-preview data-source="./patterns/procedural-svg-stateful-infographic.svg" type="image/svg+xml" aria-label="Animated preview of Stateful Infographic">
+          <a href="./patterns/procedural-svg-stateful-infographic.svg">Open Stateful Infographic SVG</a>
+        </object>
+      </div>
+      <div class="card-body">
+        <div class="card-kicker"><span class="family-label">Hybrid compositions</span><span>four-state clock + spotlight mask + routes</span></div>
+        <h3>Stateful Infographic</h3>
+        <a class="canonical-link" href="#procedural-svg-stateful-infographic" aria-label="Deep link to Stateful Infographic"><code>procedural-svg-stateful-infographic</code></a>
+        <p class="card-description">One four-state clock coordinates card emphasis, staged route reveals, forward tokens, and a masked spotlight before returning to context.</p>
+        <p class="signature">context → transition → focus → reset</p>
+        <ul class="metadata-list" aria-label="SVG audit metadata">
+          <li>semantic scene sequencing</li>
+          <li>seed 741874</li>
+          <li>8000 ms</li>
+          <li>83 elements</li>
+          <li>sha 5da5a1af532b</li>
+        </ul>
+        <div class="card-controls" aria-label="Playback controls for Stateful Infographic">
+          <button class="button" type="button" data-action="pause">Pause</button>
+          <button class="button" type="button" data-action="play">Play</button>
+          <button class="button" type="button" data-action="replay">Replay</button>
+        </div>
+        <a class="open-svg" href="./patterns/procedural-svg-stateful-infographic.svg" target="_blank" rel="noopener">Open standalone SVG</a>
+      </div>
+    </article>
+      </div>
+      <div class="empty-state" id="empty-state" data-visible="false">
+        <h3>No patterns match those filters.</h3>
+        <p>Reset the catalog or broaden the search term.</p>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <span>Generated from <code>assets/pattern-specs.json</code>.</span>
+      <span>Catalog fingerprint <code>1b75b2148656f433</code></span>
+    </footer>
+  </main>
+  <script src="./gallery.js"></script>
+</body>
+</html>

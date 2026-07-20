@@ -91,6 +91,11 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "plantuml-colorset-renderer-cs1",
+    "procedural-svg-animation": SKILLS
+    / "procedural-svg-animation"
+    / "assets"
+    / "examples"
+    / "procedural-svg-animation",
     "slidev-animejs": SKILLS / "slidev-animejs" / "assets" / "examples" / "slidev-animejs",
     "slidev-echarts": SKILLS / "slidev-echarts" / "assets" / "examples" / "slidev-echarts",
     "threejs-animated-3d": SKILLS
@@ -162,6 +167,14 @@ PUBLISHED_EXAMPLE_SETS = [
         "href": "examples/d3-logo-textures/",
         "kind": "D3 texture",
         "description": "Forty reusable SVG texture mechanisms with stable IDs, adjustable parameters, and colorset1/colorset2 previews.",
+    },
+    {
+        "id": "procedural-svg-animation",
+        "source": "procedural-svg-animation",
+        "title": "Procedural SVG Animation Patterns",
+        "href": "examples/procedural-svg-animation/",
+        "kind": "Procedural SVG",
+        "description": "Sixty deterministic procedural SVG motion systems across timing, geometry, fields, simulations, growth, tiling, paint, and hybrid compositions.",
     },
     {
         "id": "mermaid-svg-animated",
@@ -665,6 +678,7 @@ def build_docs() -> None:
     )
     copy_tree(example_source("d3-logo-design"), DOCS / "examples" / "d3-logo-design")
     copy_tree(example_source("d3-logo-textures"), DOCS / "examples" / "d3-logo-textures")
+    copy_tree(example_source("procedural-svg-animation"), DOCS / "examples" / "procedural-svg-animation")
     copy_tree(example_source("mermaid"), DOCS / "examples" / "mermaid")
     copy_tree(example_source("mermaid-svg-animated"), DOCS / "examples" / "mermaid-svg-animated")
     copy_tree(example_source("mermaid-animation-directives"), DOCS / "examples" / "mermaid-animation-directives")
