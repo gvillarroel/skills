@@ -183,4 +183,6 @@ Strict run `procedural-svg-animation-mastery-20260720-spark-3` used `openai-code
 
 ### Mastery publication
 
-Publication remains the only open release gate. After pushing the mastery commit, record the commit, successful Pages workflow, and live 66-pattern fingerprint check here.
+Mastery implementation commit `b6ba7de8593d4569cac45bf57c5b70d6388e7ba7` was pushed to `main`. GitHub Pages workflow [29765369621](https://github.com/gvillarroel/skills/actions/runs/29765369621) passed validation, diagram coverage, payload checking, build, upload, and deployment.
+
+The live gallery at <https://gvillarroel.github.io/skills/examples/procedural-svg-animation/> returned HTTP 200 with 66 HTML pattern cards, 66 manifest entries, 11 families, catalog fingerprint `49c622bd3c49a64b`, and a working `procedural-svg-stable-fluid` artifact reporting 5/5 invariants. The main Pages index also exposes the gallery as a discoverable example set.
