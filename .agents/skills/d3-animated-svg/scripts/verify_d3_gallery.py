@@ -237,6 +237,52 @@ def main() -> int:
                     f"Solar Terminator timestamp/astronomy contract is inconsistent: {solar_contract}; deltas={solar_deltas}"
                 )
 
+            dither = page.locator('[data-example="surface-stable-dither"] svg')
+            if dither.count() != 1:
+                raise SystemExit(f"Expected one Surface-Stable Fractal Dither SVG, found {dither.count()}.")
+            dither_contract = dither.evaluate(
+                """svg => {
+                    const dots = Array.from(svg.querySelectorAll("circle.fractal-dot"));
+                    const zoomAnimation = svg.querySelector('animateTransform[type="scale"]');
+                    return {
+                        method: svg.dataset.ditherMethod || "",
+                        thresholdFamily: svg.dataset.thresholdFamily || "",
+                        levels: svg.dataset.fractalLevels || "",
+                        subLayerCount: Number(svg.dataset.subLayerCount),
+                        zoomRange: svg.dataset.zoomRange || "",
+                        shadingMode: svg.dataset.shadingMode || "",
+                        candidateCount: Number(svg.dataset.candidateCount),
+                        dotCount: dots.length,
+                        declaredDotCount: Number(svg.dataset.dotCount),
+                        persistentDotCount: dots.filter(dot => dot.dataset.subLayer === "1").length,
+                        declaredPersistentDotCount: Number(svg.dataset.persistentDotCount),
+                        pinnedCount: dots.filter(dot => dot.dataset.pinned === "true").length,
+                        subLayers: Array.from(new Set(dots.map(dot => Number(dot.dataset.subLayer)))).sort((a, b) => a - b),
+                        zoomFrom: zoomAnimation?.getAttribute("from") || "",
+                        zoomTo: zoomAnimation?.getAttribute("to") || "",
+                        radiusAnimationCount: dots.filter(dot => dot.querySelector('animate[attributeName="r"]')).length
+                    };
+                }"""
+            )
+            if (
+                dither_contract["method"] != "surface-stable-fractal"
+                or dither_contract["thresholdFamily"] != "recursive-bayer-2x2"
+                or dither_contract["levels"] != "0,1"
+                or dither_contract["subLayerCount"] != 4
+                or dither_contract["zoomRange"] != "1,2"
+                or dither_contract["shadingMode"] != "bayer-count"
+                or dither_contract["candidateCount"] <= dither_contract["dotCount"]
+                or dither_contract["dotCount"] != dither_contract["declaredDotCount"]
+                or dither_contract["persistentDotCount"] != dither_contract["declaredPersistentDotCount"]
+                or dither_contract["dotCount"] <= dither_contract["persistentDotCount"]
+                or dither_contract["pinnedCount"] != 1
+                or dither_contract["subLayers"] != [1, 2, 3, 4]
+                or dither_contract["zoomFrom"] != "1"
+                or dither_contract["zoomTo"] != "2"
+                or dither_contract["radiusAnimationCount"] != dither_contract["dotCount"]
+            ):
+                raise SystemExit(f"Surface-Stable Fractal Dither contract is inconsistent: {dither_contract}")
+
             replay_buttons = page.locator("[data-example] [data-replay]")
             replay_button_count = replay_buttons.count()
             if replay_button_count != expected:

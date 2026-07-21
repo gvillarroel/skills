@@ -33,6 +33,7 @@ For standalone HTML requests in these families, read the named pattern reference
 
 | Request mentions | Pattern reference | Preferred script |
 | --- | --- | --- |
+| dithering, Bayer matrices, halftone dots, pixel-art conversion, surface-stable dots, fractal dither, zoom-stable texture | `references/patterns/surface-stable-dither.md` | `scripts/dither_d3_output.py` for static conversion; `assets/templates/surface-stable-fractal-dither.js` for zoom/scale |
 | circuit boards, PCB traces, signal pulses, bus handshakes, fault isolation, reroutes | `references/patterns/circuit-signal-traces.md` | `scripts/build_circuit_signal_traces.py` |
 | P&ID, piping and instrumentation, process equipment, valves, instrument bubbles, control loops, interlocks | `references/patterns/process-control-loop.md` | `scripts/build_process_pid_control_loop.py` |
 | SEV incidents, incident response, outage escalation, on-call pages, SLA countdowns, mitigations, recovery | `references/patterns/incident-escalation.md` | `scripts/build_critical_incident_escalation.py` |
@@ -56,3 +57,4 @@ For standalone HTML requests in these families, read the named pattern reference
 - For overlapping scopes, shared task membership, asymmetric circles, or tasks belonging to one, two, or three-or-more sets, read `references/patterns/task-overlap.md`.
 - For a Kanban board with assignee dots, people legends, or alternate legend placement, read `references/patterns/kanban-assignees.md`. Choose `legendMode: "top-row"`, `"virtual-column"`, or `"distributed-columns"` before coding so data, dimensions, and validation hooks stay consistent.
 - For sketchy rendering, preserve data geometry and roughen marks, axes, links, and containers with seeded jitter, double strokes, and optional hachures while keeping text crisp.
+- For surface-stable dithering, key dots by surface coordinates, derive levels from `floor(log2(scale))`, and use the recursive Bayer point order from `references/patterns/surface-stable-dither.md`. Do not call a screen-fixed filter surface-stable.

@@ -1,6 +1,6 @@
 ---
 name: d3-animated-svg
-description: "Create, animate, troubleshoot, and validate D3-generated SVG visualizations that complement Mermaid diagrams. Use when Codex needs bespoke data-driven SVG geometry or animated visuals Mermaid does not cover well: simulations, dense hierarchies, edge bundling, chords, parallel sets, asymmetric set-overlap task maps, Voronoi/Delaunay, quadtrees, geospatial projections, cartograms, spike/bubble/hexbin maps, contours, calendar and vaccine-style heatmaps, word clouds, beeswarms, population pyramids, statistical diagnostics, uncertainty views, temporal playback, missing-data series, scientific charts, raster/image analysis, shape/path/arc/text tweens, brush/zoom/selection views, custom glyphs, ternary plots, or animated annotations."
+description: "Create, animate, troubleshoot, and validate D3-generated SVG visualizations that complement Mermaid diagrams. Use when Codex needs bespoke data-driven SVG geometry or animated visuals Mermaid does not cover well: simulations, dense hierarchies, edge bundling, chords, parallel sets, asymmetric set-overlap task maps, Voronoi/Delaunay, quadtrees, geospatial projections, cartograms, spike/bubble/hexbin maps, contours, calendar and vaccine-style heatmaps, word clouds, beeswarms, population pyramids, statistical diagnostics, uncertainty views, temporal playback, missing-data series, scientific charts, raster/image analysis, ordered or error-diffusion dithering, surface-stable fractal dithering, shape/path/arc/text tweens, brush/zoom/selection views, custom glyphs, ternary plots, or animated annotations."
 ---
 
 # D3 Animated SVG
@@ -19,7 +19,8 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
    - Read `references/pattern-routing.md` when the request names or strongly resembles a reusable `d3-*` family, asks for exact mark counts, asks for small/medium/large variants, or mentions a builder-backed pattern such as critical queues, cache stampedes, circuit breakers, P&ID loops, organic growth, or Kanban assignee boards.
    - If the request names exact `d3-*` IDs, extract the complete unique set and read each matching `references/patterns/<id-without-prefix>.md` before coding.
    - For exact `d3-agent-loop-overlay` standalone HTML, run `scripts/build_agent_loop_overlay.py <exact-output.html>` directly. The builder embeds the PNG, validates forbidden dependencies, and reports the canonical pattern and region IDs; after an `ok: true` result, verify only the literal requested path unless the builder fails.
-   - If the request asks for a closest gallery pattern without naming an exact ID, search `references/pattern-index.md`, choose one pattern, then read only that matching file under `references/patterns/`.
+    - If the request asks for a closest gallery pattern without naming an exact ID, search `references/pattern-index.md`, choose one pattern, then read only that matching file under `references/patterns/`.
+    - For dithering, Bayer or halftone treatments, pixel-art conversion, or dot fields that must remain stable through zoom, read `references/patterns/surface-stable-dither.md`. Use its runtime helper for animated scale/zoom and its capture script for a static conversion of any rendered element.
    - Do not read the gallery fixture for normal pattern generation; use it only when maintaining that fixture.
 5. Keep data deterministic. Inline small data, load local files for larger data, and seed or pre-tick force layouts so exported geometry is reproducible.
 6. Build the SVG with a stable `viewBox`, `title`, `desc`, semantic groups, stable IDs/classes, and fixed dimensions. Ensure the final frame is a faithful data state, not only an animation midpoint.
@@ -44,6 +45,7 @@ description: "Create, animate, troubleshoot, and validate D3-generated SVG visua
 - `references/gallery-patterns.md`: read only when extending or validating the multi-example gallery fixture.
 - `references/command-reference.md`: read when you need exact capture, self-contained, contract, cardinality, gallery, or composition verification commands.
 - `references/maintenance-validation.md`: read before changing this skill, its pattern references, scripts, examples, gallery, or composition sheets.
+- `references/patterns/surface-stable-dither.md`: read for arbitrary static dithering, recursive Bayer dot fields, or surface-stable dithering during D3 zoom/scale changes.
 
 ## Complementarity Rules
 

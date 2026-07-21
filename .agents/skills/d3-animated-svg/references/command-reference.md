@@ -16,6 +16,20 @@ Use a custom SVG selector:
 uv run --script .agents/skills/d3-animated-svg/scripts/render_d3_svg.py scene.html --selector "svg#viz" -o projects/<project-id>/artifacts/svgs/scene.svg --wait-ms 2500
 ```
 
+## Dithering
+
+Convert any settled SVG, HTML element, canvas, or image into a portable ordered-dither SVG:
+
+```powershell
+uv run --script .agents/skills/d3-animated-svg/scripts/dither_d3_output.py scene.html -o projects/<project-id>/artifacts/svgs/scene-dithered.svg --selector "svg#viz" --algorithm ordered --matrix-size 4 --cell-size 4 --palette "#000000,#ffffff" --preview-png projects/<project-id>/artifacts/screenshots/scene-dithered.png --json-report projects/<project-id>/artifacts/data/scene-dithered.json
+```
+
+Use `--algorithm floyd-steinberg` or `--algorithm atkinson` only for settled frames. For zoom/scale animation that must keep points attached to surface coordinates, use `assets/templates/surface-stable-fractal-dither.js` and validate its nested boundary:
+
+```powershell
+node -e "const d=require('./.agents/skills/d3-animated-svg/assets/templates/surface-stable-fractal-dither.js'); const r=d.validateZoomSequence(); console.log(JSON.stringify(r)); if(!r.ok) process.exit(1)"
+```
+
 ## Artifact Checks
 
 Check that a generated HTML artifact is self-contained:
@@ -54,19 +68,19 @@ uv run --script .agents/skills/d3-animated-svg/scripts/audit_dynamic_symmetry.py
 Verify composition variant sheets expose curated SVG variants with stable composition IDs:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 70 --expected-reviewed-patterns 224 --required-variant d3-composition-radial-force-network --expect-clean
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_composition_sheets.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 70 --expected-reviewed-patterns 225 --required-variant d3-composition-radial-force-network --expect-clean
 ```
 
 Verify the colorset2 gallery version against the bundled `assets/palettes/colorset2.yaml`:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_colorset2_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-colorset2/index.html --expected 224 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-colorset2.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-colorset2.json --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_colorset2_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-colorset2/index.html --expected 225 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-colorset2.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-colorset2.json --wait-ms 2200
 ```
 
 Verify the CS1 gallery version against the bundled `assets/palettes/colorset1.yml`:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_style_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-cs1/index.html --palette-file .agents/skills/d3-animated-svg/assets/palettes/colorset1.yml --style-version cs1 --color-set colorset1 --palette-name basic-red-neutral-style --pattern-id-suffix cs1 --expected 224 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-cs1.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-cs1.json --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_style_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-cs1/index.html --palette-file .agents/skills/d3-animated-svg/assets/palettes/colorset1.yml --style-version cs1 --color-set colorset1 --palette-name basic-red-neutral-style --pattern-id-suffix cs1 --expected 225 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-cs1.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-cs1.json --wait-ms 2200
 ```
 
 ## Full Gallery Visual Review
@@ -74,7 +88,7 @@ uv run --script .agents/skills/d3-animated-svg/scripts/verify_style_gallery.py .
 Capture every settled SVG as a labeled card, build contact sheets, and write per-pattern text-fit signals:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/review_gallery_visuals.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --expected 224 --output-dir projects/d3-animated-svg-validation/artifacts/screenshots/gallery-review --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-review.json --markdown-report projects/d3-animated-svg-validation/artifacts/reviews/gallery-review.md --expect-clean
+uv run --script .agents/skills/d3-animated-svg/scripts/review_gallery_visuals.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --expected 225 --output-dir projects/d3-animated-svg-validation/artifacts/screenshots/gallery-review --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-review.json --markdown-report projects/d3-animated-svg-validation/artifacts/reviews/gallery-review.md --expect-clean
 ```
 
 Run the same command with `--viewport 390x900` and a separate output directory for mobile review. Treat overlap, overflow, and tiny-text counts as critique signals; inspect the labeled contact sheets before editing protected data geometry.
@@ -82,8 +96,8 @@ Run the same command with `--viewport 390x900` and a separate output directory f
 Validate release replay behavior across every card and confirm reference/index coverage:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --expected 224 --replay-all --wait-ms 2200
-uv run --script .agents/skills/d3-animated-svg/scripts/extract_gallery_pattern_references.py --check-only --expected 224
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --expected 225 --replay-all --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/extract_gallery_pattern_references.py --check-only --expected 225
 ```
 
 ## Saturated Task Overlap

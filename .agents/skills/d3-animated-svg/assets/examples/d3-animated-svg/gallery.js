@@ -413,6 +413,7 @@
     { id: "versor-dragging", kicker: "Projection", title: "Versor Dragging", copy: "A globe rotates along a drag arc using spherical interpolation.", render: renderVersorDragging },
     { id: "you-draw-it", kicker: "Prediction", title: "You Draw It", copy: "A guessed trajectory reveals against the observed series.", render: renderYouDrawIt },
     { id: "image-histogram", kicker: "Raster", title: "Image Histogram", copy: "A brushed image region links to a pixel-value distribution.", render: renderMonaHistogram },
+    { id: "surface-stable-dither", kicker: "Dithering", title: "Surface-Stable Fractal Dither", copy: "A recursive Bayer dot field stays pinned to surface coordinates while zoom reveals new dots at nearly constant screen size.", render: renderSurfaceStableFractalDither },
     { id: "population-pyramid", kicker: "Demography", title: "Population Pyramid", copy: "Mirrored age bins compare two demographic groups.", render: renderPopulationPyramid },
     { id: "hr-diagram", kicker: "Science", title: "H-R Diagram", copy: "Stars map temperature and luminosity into a scientific scatter.", render: renderHrDiagram },
     { id: "solar-path", kicker: "Astronomy", title: "Solar Path", copy: "Seasonal sun arcs cross a local horizon diagram.", render: renderSolarPath },
@@ -14064,6 +14065,194 @@
       .attr("class", "hist").attr("x", d => x(d.x0) + 1).attr("width", d => Math.max(1, x(d.x1) - x(d.x0) - 2))
       .attr("y", d => y(d.length)).attr("height", d => y(0) - y(d.length)).attr("fill", palette.blue);
     grow(bars, "height", 1, d => y(0) - y(d.length), .16, .65);
+  }
+
+  function renderSurfaceStableFractalDither() {
+    const svg = prepareSvg(
+      "surface-stable-dither",
+      "Surface-stable fractal dither",
+      "A recursive Bayer dot field zooms from one fractal level to the next. Existing points stay pinned to the surface, three sub-layers appear, and dot radii compensate for the zoom."
+    );
+    const frame = { x: 44, y: 66, w: 472, h: 254 };
+    const center = { x: frame.x + frame.w / 2, y: frame.y + frame.h / 2 };
+    const cell = 30;
+    const zoomDuration = 1.6;
+    const bayerOffsets = [[0, 0], [.5, .5], [.5, 0], [0, .5]];
+    const clipId = "surface-stable-dither-clip";
+    const clamp01 = value => Math.max(0, Math.min(1, value));
+    const brightnessAt = (x, y) => {
+      const nx = (x - frame.x) / frame.w;
+      const ny = (y - frame.y) / frame.h;
+      const radial = Math.exp(-(((nx - .48) / .34) ** 2 + ((ny - .46) / .3) ** 2));
+      const wave = .5 + .5 * Math.sin(nx * 15 - ny * 8);
+      const ridge = Math.exp(-(((ny - (.72 - nx * .42)) / .12) ** 2));
+      return clamp01(.08 + radial * .52 + wave * .16 + ridge * .28);
+    };
+
+    svg
+      .attr("data-dither-method", "surface-stable-fractal")
+      .attr("data-threshold-family", "recursive-bayer-2x2")
+      .attr("data-fractal-levels", "0,1")
+      .attr("data-sub-layer-count", 4)
+      .attr("data-zoom-range", "1,2")
+      .attr("data-shading-mode", "bayer-count");
+
+    svg.append("defs").append("clipPath")
+      .attr("id", clipId)
+      .append("rect")
+      .attr("x", frame.x)
+      .attr("y", frame.y)
+      .attr("width", frame.w)
+      .attr("height", frame.h)
+      .attr("rx", 4);
+
+    svg.append("text")
+      .attr("class", "mark-label")
+      .attr("x", frame.x)
+      .attr("y", 44)
+      .text("surface coordinates • zoom 1×");
+    svg.append("path")
+      .attr("d", `M${frame.x + 190},40H${frame.x + frame.w - 82}`)
+      .attr("fill", "none")
+      .attr("stroke", palette.red)
+      .attr("stroke-width", 2)
+      .attr("stroke-linecap", "round")
+      .attr("marker-end", addArrowMarker(svg, "surface-stable-dither-zoom", palette.red));
+    svg.append("text")
+      .attr("class", "mark-label")
+      .attr("x", frame.x + frame.w)
+      .attr("y", 44)
+      .attr("text-anchor", "end")
+      .text("2× • next level");
+
+    svg.append("rect")
+      .attr("x", frame.x)
+      .attr("y", frame.y)
+      .attr("width", frame.w)
+      .attr("height", frame.h)
+      .attr("rx", 4)
+      .attr("fill", palette.ink);
+
+    const candidates = [];
+    for (let y = frame.y - cell; y <= frame.y + frame.h + cell; y += cell) {
+      for (let x = frame.x - cell; x <= frame.x + frame.w + cell; x += cell) {
+        bayerOffsets.forEach(([ox, oy], order) => {
+          const dotX = x + ox * cell;
+          const dotY = y + oy * cell;
+          const brightness = brightnessAt(dotX, dotY);
+          candidates.push({
+            id: `${dotX.toFixed(1)}:${dotY.toFixed(1)}`,
+            x: dotX,
+            y: dotY,
+            order,
+            brightness,
+            threshold: (order + .5) / 4,
+            startRadius: 3.2
+          });
+        });
+      }
+    }
+    const dots = candidates.filter(dot => dot.brightness >= dot.threshold);
+    const persistent = dots.filter(dot => dot.order === 0);
+    const pinned = persistent.reduce((best, dot) => {
+      const distance = Math.hypot(dot.x - center.x, dot.y - center.y);
+      return !best || distance < best.distance ? { dot, distance } : best;
+    }, null).dot;
+    svg
+      .attr("data-candidate-count", candidates.length)
+      .attr("data-dot-count", dots.length)
+      .attr("data-persistent-dot-count", persistent.length)
+      .attr("data-pinned-dot-id", pinned.id);
+
+    const viewport = svg.append("g").attr("clip-path", `url(#${clipId})`);
+    const centered = viewport.append("g").attr("transform", `translate(${center.x},${center.y})`);
+    const zoom = centered.append("g").attr("transform", "scale(2)");
+    zoom.append("animateTransform")
+      .attr("attributeName", "transform")
+      .attr("type", "scale")
+      .attr("from", 1)
+      .attr("to", 2)
+      .attr("dur", `${zoomDuration}s`)
+      .attr("begin", "0s")
+      .attr("fill", "freeze");
+    const surface = zoom.append("g").attr("transform", `translate(${-center.x},${-center.y})`);
+    const marks = surface.selectAll("circle.fractal-dot")
+      .data(dots, dot => dot.id)
+      .join("circle")
+      .attr("class", dot => `fractal-dot fractal-sub-layer-${dot.order + 1}`)
+      .attr("data-dot-id", dot => dot.id)
+      .attr("data-sub-layer", dot => dot.order + 1)
+      .attr("data-pinned", dot => dot.id === pinned.id ? "true" : "false")
+      .attr("cx", dot => dot.x)
+      .attr("cy", dot => dot.y)
+      .attr("r", dot => dot.startRadius / 2)
+      .attr("fill", palette.surface)
+      .attr("fill-opacity", .94)
+      .attr("stroke", dot => dot.id === pinned.id ? palette.red : "none")
+      .attr("stroke-width", dot => dot.id === pinned.id ? 1.4 : 0)
+      .attr("vector-effect", "non-scaling-stroke")
+      .attr("opacity", 1);
+
+    marks.each(function (dot) {
+      d3.select(this).append("animate")
+        .attr("attributeName", "r")
+        .attr("values", `${dot.startRadius};${(dot.startRadius / 1.5).toFixed(3)};${(dot.startRadius / 2).toFixed(3)}`)
+        .attr("keyTimes", "0;0.585;1")
+        .attr("dur", `${zoomDuration}s`)
+        .attr("begin", "0s")
+        .attr("fill", "freeze");
+      d3.select(this).append("animate")
+        .attr("attributeName", "opacity")
+        .attr("from", dot.order === 0 ? 1 : 0)
+        .attr("to", 1)
+        .attr("dur", dot.order === 0 ? ".01s" : ".24s")
+        .attr("begin", `${dot.order * .38}s`)
+        .attr("fill", "freeze");
+    });
+
+    svg.append("rect")
+      .attr("x", frame.x)
+      .attr("y", frame.y)
+      .attr("width", frame.w)
+      .attr("height", frame.h)
+      .attr("rx", 4)
+      .attr("fill", "none")
+      .attr("stroke", palette.gray300)
+      .attr("stroke-width", 1.2);
+
+    const notes = [
+      { x: 52, label: "pinned surface IDs", color: palette.red },
+      { x: 216, label: "1 → 4 Bayer layers", color: palette.blue },
+      { x: 386, label: "constant screen radius", color: palette.green }
+    ];
+    const noteGroups = svg.append("g").selectAll("g.fractal-note").data(notes).join("g")
+      .attr("class", "fractal-note")
+      .attr("transform", note => `translate(${note.x},356)`);
+    noteGroups.append("circle").attr("r", 5).attr("fill", note => note.color);
+    noteGroups.append("text")
+      .attr("class", "caption")
+      .attr("x", 11)
+      .attr("y", 4)
+      .text(note => note.label);
+    fadeIn(noteGroups, .2, .55);
+
+    const sequence = svg.append("g").attr("transform", "translate(210,386)");
+    const sequencePoints = bayerOffsets.map(([x, y], order) => ({ x: x * 24, y: y * 24, order }));
+    const sequenceLine = sequence.append("path")
+      .datum(sequencePoints)
+      .attr("d", d3.line().x(point => point.x).y(point => point.y))
+      .attr("fill", "none")
+      .attr("stroke", palette.gray500)
+      .attr("stroke-width", 1.3);
+    drawPath(sequenceLine, .18, .75);
+    sequence.selectAll("circle").data(sequencePoints).join("circle")
+      .attr("cx", point => point.x)
+      .attr("cy", point => point.y)
+      .attr("r", 4)
+      .attr("fill", point => point.order === 0 ? palette.red : palette.surface)
+      .attr("stroke", palette.ink)
+      .attr("stroke-width", 1);
+    svg.append("text").attr("class", "caption").attr("x", 252).attr("y", 394).text("recursive X order");
   }
 
   function renderPopulationPyramid() {

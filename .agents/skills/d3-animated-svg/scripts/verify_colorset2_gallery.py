@@ -227,7 +227,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("input", nargs="?", default=str(DEFAULT_SOURCE), help="Colorset2 gallery HTML file, file URL, or HTTP URL")
     parser.add_argument("--palette-file", type=Path, default=DEFAULT_PALETTE)
-    parser.add_argument("--expected", type=int, default=224)
+    parser.add_argument("--expected", type=int, default=225)
     parser.add_argument("--wait-ms", type=int, default=1800)
     parser.add_argument("--timeout-ms", type=int, default=60000)
     parser.add_argument("--viewport", type=parse_viewport, default=parse_viewport("1440x1100"))

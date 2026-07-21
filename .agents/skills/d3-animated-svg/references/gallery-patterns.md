@@ -53,6 +53,7 @@ Use varied animation patterns across a large gallery:
 - precision pen-rendered line art where a single persistent pen mark traverses hidden connector paths while visible strokes reveal pressure-modulated ribbons, not rough freehand jitter
 - projection edge-case and scientific catalog views such as antimeridian cutting, adaptive sampling, satellite footprints, and exoplanet orbit catalogs
 - sketchy variants or overlays for any D3 pattern, inspired by Jo Wood's Rough.js-backed Plot wrapper, where the data geometry remains faithful but SVG marks, axes, links, containers, tables, and comparison scorecards use deterministic seeded jitter, double strokes, and optional hachure texture in the repository color palette
+- recursive Bayer and surface-stable fractal dithering where point IDs stay attached to local surface coordinates, zoom level comes from `floor(log2(scale))`, one-to-four sub-layers fill in through the Bayer X order, and local dot radius compensates for scale so screen size stays approximately constant
 
 Avoid adding examples that only restyle an existing chart. Prefer a new D3 module, geometry generator, interaction model, or data story.
 
@@ -69,6 +70,8 @@ For inline bar tables, scale each embedded bar against the largest visible numer
 For Kanban boards with assignee dots, choose a legend layout before drawing columns. Use a top-row legend for maximum card width, a virtual legend column when symmetry matters more than card width, or distributed footer legend chips when the board has spare column height. Preserve square column/card edges, content-sized task cards, bottom-right assignee dots, and `data-legend-mode` / `data-legend-placement` hooks for browser validation.
 
 For sketchy variants, preserve the existing chart or diagram's data semantics and use a seeded rough renderer so replay and exported SVGs are stable. Treat sketchiness as an overlay that can be applied to quantitative charts, maps, tables, model scorecards, comparison cards, and explanatory diagrams. Prefer reusable helpers for rough paths, rough rectangles, rough blobs, sketch axes, and hachure fills. Keep labels crisp and readable; apply sketchiness to marks, grids, axes, links, containers, and outlines rather than distorting text.
+
+For dithering, distinguish static conversion from scale-aware rendering. Use `scripts/dither_d3_output.py` to turn any settled SVG, page element, canvas, or image into a portable dithered SVG. Use `assets/templates/surface-stable-fractal-dither.js` when dots must remain pinned and gain or lose only nested Bayer points during zoom. Keep text and controls crisp by default.
 
 ## Visual Critique Pass
 
@@ -116,8 +119,8 @@ For gallery updates, verify:
 Use the gallery verifier for deterministic checks:
 
 ```powershell
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --expected 224 --replay-all --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery.png --wait-ms 2200
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 224 --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-mobile.png --wait-ms 2200
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_colorset2_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-colorset2/index.html --expected 224 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-colorset2.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-colorset2.json --wait-ms 2200
-uv run --script .agents/skills/d3-animated-svg/scripts/verify_style_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-cs1/index.html --palette-file .agents/skills/d3-animated-svg/assets/palettes/colorset1.yml --style-version cs1 --color-set colorset1 --palette-name basic-red-neutral-style --pattern-id-suffix cs1 --expected 224 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-cs1.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-cs1.json --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --expected 225 --replay-all --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery.png --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 225 --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-mobile.png --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_colorset2_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-colorset2/index.html --expected 225 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-colorset2.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-colorset2.json --wait-ms 2200
+uv run --script .agents/skills/d3-animated-svg/scripts/verify_style_gallery.py .agents/skills/d3-animated-svg/assets/examples/d3-animated-svg-cs1/index.html --palette-file .agents/skills/d3-animated-svg/assets/palettes/colorset1.yml --style-version cs1 --color-set colorset1 --palette-name basic-red-neutral-style --pattern-id-suffix cs1 --expected 225 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-cs1.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-cs1.json --wait-ms 2200
 ```

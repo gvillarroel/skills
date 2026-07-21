@@ -165,8 +165,8 @@ def validate_d3_registry(root: Path, findings: list[Finding]) -> set[str]:
     missing = sorted(set(expected) - set(indexed))
     if missing:
         add(findings, index_path, f"D3 pattern index is missing {len(missing)} ID(s): {', '.join(missing[:8])}")
-    if len(expected) != 241:
-        add(findings, index_path, f"expected 241 canonical D3 registry IDs, found {len(expected)}")
+    if len(expected) != 242:
+        add(findings, index_path, f"expected 242 canonical D3 registry IDs, found {len(expected)}")
     return set(expected)
 
 
@@ -298,14 +298,14 @@ def validate_family_inventories(
     d3_gallery = d3_gallery_path.read_text(encoding="utf-8")
     d3_examples_block = extract_block(d3_gallery, "const examples = [", "\n  ];\n\n  function assignPatternIds", d3_gallery_path, findings)
     d3_sources = re.findall(r'\{\s*id:\s*"([a-z0-9-]+)"', d3_examples_block)
-    if len(d3_sources) != 224 or len(set(d3_sources)) != 224:
-        add(findings, d3_gallery_path, f"D3 gallery must expose 224 unique source IDs, found {len(set(d3_sources))}")
+    if len(d3_sources) != 225 or len(set(d3_sources)) != 225:
+        add(findings, d3_gallery_path, f"D3 gallery must expose 225 unique source IDs, found {len(set(d3_sources))}")
     missing_d3_sources = sorted({f"d3-{source_id}" for source_id in d3_sources} - d3_registry)
     if missing_d3_sources:
         add(findings, d3_gallery_path, f"D3 gallery IDs missing from registry: {', '.join(missing_d3_sources[:8])}")
-    register_family("d3-base", sorted(d3_registry), 241, d3_gallery_path, findings, global_ids, review_ids, family_counts)
-    register_family("d3-cs1", [f"d3-{source_id}-cs1" for source_id in d3_sources], 224, d3_gallery_path, findings, global_ids, review_ids, family_counts)
-    register_family("d3-cs2", [f"d3-{source_id}-cs2" for source_id in d3_sources], 224, d3_gallery_path, findings, global_ids, review_ids, family_counts)
+    register_family("d3-base", sorted(d3_registry), 242, d3_gallery_path, findings, global_ids, review_ids, family_counts)
+    register_family("d3-cs1", [f"d3-{source_id}-cs1" for source_id in d3_sources], 225, d3_gallery_path, findings, global_ids, review_ids, family_counts)
+    register_family("d3-cs2", [f"d3-{source_id}-cs2" for source_id in d3_sources], 225, d3_gallery_path, findings, global_ids, review_ids, family_counts)
 
     composition_path = d3_gallery_path.with_name("composition-sheets.js")
     composition_content = composition_path.read_text(encoding="utf-8")

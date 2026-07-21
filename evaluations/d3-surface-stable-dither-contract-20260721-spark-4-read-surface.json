@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019f8475-e1ab-7c94-8ad6-17d108389285",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-surface-stable-dither-contract-20260721-spark-4\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 7
+  },
+  "providers": {
+    "openai-codex": 7
+  },
+  "usageTotals": {
+    "input": 5848,
+    "output": 3400,
+    "cacheRead": 20096,
+    "cacheWrite": 0,
+    "totalTokens": 29344
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 3,
+    "write": 1,
+    "bash": 2
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2815
+    },
+    {
+      "path": "outputs/source.html",
+      "calls": 1,
+      "resultBytes": 95
+    },
+    {
+      "path": "outputs/dither-report.json",
+      "calls": 1,
+      "resultBytes": 670
+    },
+    {
+      "path": "outputs/fractal-validation.json",
+      "calls": 1,
+      "resultBytes": 1108
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2815
+    },
+    {
+      "path": "outputs/dither-report.json",
+      "calls": 1,
+      "resultBytes": 670
+    },
+    {
+      "path": "outputs/fractal-validation.json",
+      "calls": 1,
+      "resultBytes": 1108
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/dither-report.json",
+      "calls": 1
+    },
+    {
+      "path": "outputs/fractal-validation.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 4593,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2815
+    },
+    {
+      "line": 27,
+      "tool": "write",
+      "path": "outputs/source.html",
+      "policyPath": "outputs/source.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 95
+    },
+    {
+      "line": 43,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/d3-animated-svg/scripts/dither_d3_output.py outputs/source.html -o outputs/dithered.svg --selector \"svg#source\" --algorithm ordered --matrix-size 4 --cell-size 4 --palette \"#000000,#ffffff\" --animate --wait-ms 100 --t",
+      "isError": false,
+      "resultBytes": 701
+    },
+    {
+      "line": 57,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "node -e \"const fs=require('fs'); const helper=require('./skills/d3-animated-svg/assets/templates/surface-stable-fractal-dither.js'); const report=helper.validateZoomSequence(); fs.writeFileSync('outputs/fractal-validation.json', JSON.string",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 70,
+      "tool": "read",
+      "path": "outputs/dither-report.json",
+      "policyPath": "outputs/dither-report.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 670
+    },
+    {
+      "line": 81,
+      "tool": "read",
+      "path": "outputs/fractal-validation.json",
+      "policyPath": "outputs/fractal-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1108
+    }
+  ],
+  "findings": []
+}

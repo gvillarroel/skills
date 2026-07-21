@@ -239,7 +239,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--palette-name", default="basic-red-neutral-style")
     parser.add_argument("--pattern-id-prefix", default="")
     parser.add_argument("--pattern-id-suffix", default="cs1")
-    parser.add_argument("--expected", type=int, default=224)
+    parser.add_argument("--expected", type=int, default=225)
     parser.add_argument("--wait-ms", type=int, default=1800)
     parser.add_argument("--timeout-ms", type=int, default=60000)
     parser.add_argument("--viewport", type=parse_viewport, default=parse_viewport("1440x1100"))

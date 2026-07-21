@@ -223,6 +223,7 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-versor-dragging` | Projection | Versor Dragging | `references/patterns/versor-dragging.md` |
 | `d3-you-draw-it` | Prediction | You Draw It | `references/patterns/you-draw-it.md` |
 | `d3-image-histogram` | Raster | Image Histogram | `references/patterns/image-histogram.md` |
+| `d3-surface-stable-dither` | Dithering | Surface-Stable Fractal Dither | `references/patterns/surface-stable-dither.md` |
 | `d3-population-pyramid` | Demography | Population Pyramid | `references/patterns/population-pyramid.md` |
 | `d3-hr-diagram` | Science | H-R Diagram | `references/patterns/hr-diagram.md` |
 | `d3-solar-path` | Astronomy | Solar Path | `references/patterns/solar-path.md` |
