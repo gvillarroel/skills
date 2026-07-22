@@ -1,9 +1,0 @@
-@startgantt
-title Gantt
-Project starts 2026-07-06
-[Discover] lasts 2 days
-[Design] lasts 3 days
-[Build] lasts 4 days
-[Design] starts at [Discover]'s end
-[Build] starts at [Design]'s end
-@endgantt

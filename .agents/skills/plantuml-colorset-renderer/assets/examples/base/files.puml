@@ -1,8 +1,0 @@
-@startfiles
-/src/app.py
-/src/render.py
-/tests/test_app.py
-/assets/theme.puml
-/README.md
-/LICENSE
-@endfiles

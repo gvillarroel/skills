@@ -1,4 +1,0 @@
-interface:
-  display_name: "PlantUML Colorset Renderer"
-  short_description: "Render PlantUML with 1,500+ AWS, GCP, and tech logos"
-  default_prompt: "Use $plantuml-colorset-renderer to find normalized AWS, GCP, company, and technical SVG logos, insert them without distortion, and render this PlantUML work with the requested colorset theme."

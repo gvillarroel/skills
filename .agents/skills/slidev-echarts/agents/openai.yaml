@@ -1,4 +1,0 @@
-interface:
-  display_name: "Slidev ECharts"
-  short_description: "Build responsive ECharts stories in Slidev"
-  default_prompt: "Use $slidev-echarts to add a responsive, click-driven ECharts story to this Slidev deck."

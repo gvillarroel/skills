@@ -1,4 +1,0 @@
-@startregex
-title Regex
-^[A-Z]{2}-\d{4}$
-@endregex

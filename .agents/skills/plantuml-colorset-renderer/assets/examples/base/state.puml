@@ -1,8 +1,0 @@
-@startuml
-title State
-[*] --> Draft
-Draft --> Review : submit
-Review --> Approved : approve
-Review --> Draft : request changes
-Approved --> [*]
-@enduml
