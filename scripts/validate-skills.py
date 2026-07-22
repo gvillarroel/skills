@@ -48,7 +48,7 @@ MAX_SKILL_NAME_LENGTH = 64
 INDEPENDENCE_TEXT_SUFFIXES = {".md", ".py", ".ts", ".js", ".mjs", ".cjs", ".json", ".yaml", ".yml", ".toml"}
 INDEPENDENCE_IGNORED_DIRS = {"__pycache__", "node_modules"}
 DIRECT_SKILL_PATH_RE = re.compile(
-    r"(?i)(?P<prefix>\.agents[\\/]skills|(?<![.a-z0-9_-])skills)[\\/](?P<skill>[a-z0-9]+(?:-[a-z0-9]+)*)"
+    r"(?i)(?P<prefix>(?<![.a-z0-9_-])skills)[\\/](?P<skill>[a-z0-9]+(?:-[a-z0-9]+)*)"
 )
 SCRIPT_ROOT_ESCAPE_RE = re.compile(
     r"Path\(\s*__file__\s*\)\.resolve\(\)\.parents\[(?P<level>\d+)\]"
@@ -309,8 +309,7 @@ def validate_skill_independence(skill_dir: Path, root: Path, findings: list[Find
 
         for match in DIRECT_SKILL_PATH_RE.finditer(content):
             target_skill = match.group("skill")
-            source_tree_path = match.group("prefix").lower().startswith(".agents")
-            if target_skill != skill_name and (source_tree_path or target_skill in known_skill_names):
+            if target_skill != skill_name and target_skill in known_skill_names:
                 add(
                     findings,
                     path,
@@ -462,7 +461,7 @@ def validate_example_catalog(root: Path, findings: list[Finding]) -> None:
 
 
 def skills_root(root: Path) -> Path:
-    return root / ".agents" / "skills"
+    return root / "skills"
 
 
 def skill_directories(root: Path) -> Iterable[Path]:
@@ -482,7 +481,7 @@ def validate_repo(root: Path) -> list[Finding]:
     if not (root / "SKILLS.md").exists():
         add(findings, root / "SKILLS.md", "SKILLS.md backlog is required")
     if not skills_root(root).exists():
-        add(findings, skills_root(root), "skills root .agents/skills is required")
+        add(findings, skills_root(root), "skills root skills is required")
 
     validate_script_tree(root / "scripts", root, findings)
     validate_example_catalog(root, findings)
@@ -490,7 +489,7 @@ def validate_repo(root: Path) -> list[Finding]:
 
     for child in root.iterdir():
         if child.is_dir() and (child / "SKILL.md").exists():
-            add(findings, child, "skill directories must live under .agents/skills")
+            add(findings, child, "skill directories must live under skills")
 
     for skill_dir in skill_directories(root):
         validate_skill_dir(skill_dir, root, findings)

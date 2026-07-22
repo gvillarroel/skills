@@ -524,7 +524,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Run an isolated pi forward test with only one skill bundle copied into the workspace."
     )
-    parser.add_argument("skill", help="Skill directory name under .agents/skills.")
+    parser.add_argument("skill", help="Skill directory name under skills.")
     prompt_group = parser.add_mutually_exclusive_group(required=True)
     prompt_group.add_argument("--prompt", help="Evaluation prompt text.")
     prompt_group.add_argument("--prompt-file", type=Path, help="Path to a prompt file.")
@@ -648,7 +648,7 @@ def main() -> int:
             return 2
 
     root = repo_root()
-    source_skill = root / ".agents" / "skills" / args.skill
+    source_skill = root / "skills" / args.skill
     if not source_skill.is_dir() or not (source_skill / "SKILL.md").is_file():
         print(f"Skill not found: {source_skill}", file=sys.stderr)
         return 2

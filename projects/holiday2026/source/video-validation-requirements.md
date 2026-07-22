@@ -116,7 +116,7 @@ All paths must be project-root-relative. Every path declared in `source/package-
 Set the skill path once:
 
 ```powershell
-$env:AWSOME_VIDEOS_SKILL = (Resolve-Path '../../../../.agents/skills/awsome-videos').Path
+$env:AWSOME_VIDEOS_SKILL = (Resolve-Path '../../../../skills/awsome-videos').Path
 ```
 
 1. Preflight, then finish source contracts and replace all scaffold prose:

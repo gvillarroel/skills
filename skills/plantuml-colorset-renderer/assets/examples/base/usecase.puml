@@ -1,0 +1,13 @@
+@startuml
+title Use Case
+left to right direction
+actor Customer
+actor Operator
+rectangle "Order System" {
+  usecase "Place order" as UC1
+  usecase "Review exception" as UC2
+}
+Customer --> UC1
+Operator --> UC2
+UC1 ..> UC2 : extends
+@enduml

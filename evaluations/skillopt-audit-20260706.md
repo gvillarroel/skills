@@ -27,8 +27,8 @@ Result: 3 sessions and 3 tasks were harvested. The harvested tasks were too broa
 Dry-ran SkillOpt-Sleep against `mermaid-colorset-styler` and `html-d3-anime-video-workflow` with the mock backend:
 
 ```powershell
-skillopt-sleep dry-run --project . --source codex --backend mock --lookback-hours 0 --max-sessions 100 --max-tasks 20 --target-skill-path .agents\skills\mermaid-colorset-styler\SKILL.md --json
-skillopt-sleep dry-run --project . --source codex --backend mock --lookback-hours 0 --max-sessions 100 --max-tasks 20 --target-skill-path .agents\skills\html-d3-anime-video-workflow\SKILL.md --json
+skillopt-sleep dry-run --project . --source codex --backend mock --lookback-hours 0 --max-sessions 100 --max-tasks 20 --target-skill-path skills\mermaid-colorset-styler\SKILL.md --json
+skillopt-sleep dry-run --project . --source codex --backend mock --lookback-hours 0 --max-sessions 100 --max-tasks 20 --target-skill-path skills\html-d3-anime-video-workflow\SKILL.md --json
 ```
 
 Both runs produced no accepted edits, with `baseline: 0`, `candidate: 0`, and `gate_action: reject`.
@@ -36,7 +36,7 @@ Both runs produced no accepted edits, with `baseline: 0`, `candidate: 0`, and `g
 Dry-ran SkillOpt-Sleep against `html-d3-anime-video-workflow` with the Codex backend:
 
 ```powershell
-skillopt-sleep dry-run --project . --source codex --backend codex --lookback-hours 0 --max-sessions 20 --max-tasks 1 --target-skill-path .agents\skills\html-d3-anime-video-workflow\SKILL.md --progress --json
+skillopt-sleep dry-run --project . --source codex --backend codex --lookback-hours 0 --max-sessions 20 --max-tasks 1 --target-skill-path skills\html-d3-anime-video-workflow\SKILL.md --progress --json
 ```
 
 Result: no accepted edits, with `baseline: 0`, `candidate: 0`, and `gate_action: reject`.

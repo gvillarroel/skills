@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slidev Video"
+  short_description: "Turn Slidev decks into validated videos"
+  default_prompt: "Use $slidev-video to record a Slidev deck as a validated MP4 or WebM video."

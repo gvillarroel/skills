@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const repoRoot = resolve(__dirname, "..", "..", "..");
 const projectDir = resolve(repoRoot, "projects", "ai-concept-videos");
-const deckDir = resolve(repoRoot, ".agents", "skills", "html-d3-anime-video-workflow", "assets", "examples", "ai-concept-videos");
+const deckDir = resolve(repoRoot, "skills", "html-d3-anime-video-workflow", "assets", "examples", "ai-concept-videos");
 const { concepts } = await import(pathToFileURL(join(deckDir, "concepts.js")).href);
 const defaultRoot = resolve(projectDir, "artifacts", "video-renders", "final");
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scene Composition Director"
+  short_description: "Plan visual composition for each scene"
+  default_prompt: "Use $scene-composition-director to turn the current prompt or ../prompt.md into validation-ready scene composition briefs with explicit alignment grids, armatures, safe zones, edge/corner policy, zero-padding box models, and grayscale hierarchy levels."

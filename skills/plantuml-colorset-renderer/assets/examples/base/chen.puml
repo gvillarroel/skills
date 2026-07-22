@@ -1,0 +1,15 @@
+@startchen
+title Chen ER
+entity CUSTOMER {
+  id
+  name
+}
+entity ORDER {
+  number
+  total
+}
+relationship PLACES {
+}
+CUSTOMER -N- PLACES
+PLACES -1- ORDER
+@endchen

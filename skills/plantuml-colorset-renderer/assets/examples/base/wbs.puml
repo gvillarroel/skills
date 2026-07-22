@@ -1,0 +1,12 @@
+@startwbs
+title WBS
+* PlantUML delivery
+** Theme
+*** CS2
+** Renderer
+*** SVG
+*** PNG
+** Validation
+*** Local
+*** Isolated pi
+@endwbs

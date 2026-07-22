@@ -41,9 +41,9 @@ A final post-hardening smoke test loaded all 60 SVG documents, verified every ca
 The following passed on 2026-07-20:
 
 ```powershell
-python C:\Users\villa\.codex\skills\.system\skill-creator\scripts\quick_validate.py .agents\skills\procedural-svg-animation
-uv run --script .agents/skills/procedural-svg-animation/scripts/build_procedural_gallery.py --check
-uv run --script .agents/skills/procedural-svg-animation/scripts/validate_procedural_svg.py <all-60-gallery-svgs> --require-motion --require-standalone
+python C:\Users\villa\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills\procedural-svg-animation
+uv run --script skills/procedural-svg-animation/scripts/build_procedural_gallery.py --check
+uv run --script skills/procedural-svg-animation/scripts/validate_procedural_svg.py <all-60-gallery-svgs> --require-motion --require-standalone
 uv run --script scripts/build-pages.py
 uv run --script scripts/validate-pages-pattern-format.py
 uv run --script scripts/validate-pattern-ids.py
@@ -162,10 +162,10 @@ The release gallery audit used two independent desktop contexts with caching dis
 ### Skill-specific release commands
 
 ```powershell
-uv run --script .agents/skills/procedural-svg-animation/scripts/multistrata_core.py --self-test
-uv run --script .agents/skills/procedural-svg-animation/scripts/test_multistrata_contracts.py
-uv run --script .agents/skills/procedural-svg-animation/scripts/build_procedural_gallery.py --check
-python C:\Users\villa\.codex\skills\.system\skill-creator\scripts\quick_validate.py .agents\skills\procedural-svg-animation
+uv run --script skills/procedural-svg-animation/scripts/multistrata_core.py --self-test
+uv run --script skills/procedural-svg-animation/scripts/test_multistrata_contracts.py
+uv run --script skills/procedural-svg-animation/scripts/build_procedural_gallery.py --check
+python C:\Users\villa\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills\procedural-svg-animation
 uv run --script scripts/build-pages.py
 uv run --script scripts/validate-pages-pattern-format.py
 uv run --script scripts/validate-pattern-ids.py

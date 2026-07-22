@@ -1,6 +1,6 @@
 # Codex Skills Repository
 
-This repository is the source of truth for a curated backlog of Codex skills, their reusable resources, and their validation fixtures. The canonical skill source lives under `.agents/skills/`; `SKILLS.md` remains the authoritative backlog and status log.
+This repository is the source of truth for a curated backlog of Codex skills, their reusable resources, and their validation fixtures. The canonical skill source lives under `skills/`; `SKILLS.md` remains the authoritative backlog and status log.
 
 ![Animated repository organization diagram](assets/readme/diagrams/repo-organization.animated.svg)
 
@@ -8,13 +8,25 @@ This repository is the source of truth for a curated backlog of Codex skills, th
 
 | Path | Purpose |
 | --- | --- |
-| `.agents/skills/` | Canonical skill directories. Each skill has `SKILL.md` and optional `references/`, `scripts/`, `assets/`, and `agents/`. |
+| `skills/` | Canonical skill directories. Each skill has `SKILL.md` and optional `references/`, `scripts/`, `assets/`, and `agents/`. |
+| `.agents/skills/` | Ignored repository-local installation copied from `skills/`; never use it as canonical source. |
 | `SKILLS.md` | Backlog, status, expected resources, and validation notes for every skill. |
 | `scripts/` | Repository-level validators and builders. |
 | `evaluations/` | Durable evaluation notes and summaries. Local bulky runs stay ignored under `evaluations/runs/`. |
 | `projects/` | Project-scoped private workspaces. Each subfolder is a stable project ID with scripts, source notes, and generated artifacts under `artifacts/`. |
 | `assets/readme/diagrams/` | Mermaid sources plus generated static and animated SVG diagrams used by this README. |
 | `output/`, `docs/`, `examples/` | Disposable legacy scratch output or generated GitHub Pages output; these are ignored by git. |
+
+## Local Skill Installation
+
+Keep source changes under `skills/`. Refresh the ignored repository-local installation after cloning or changing skill sources:
+
+```powershell
+uv run --script scripts/sync-local-skills.py
+uv run --script scripts/sync-local-skills.py --check
+```
+
+The synchronizer updates source-owned files under `.agents/skills/` and leaves additional locally installed skills and files untouched.
 
 ## Example Catalog
 
@@ -31,18 +43,18 @@ This table highlights current skill status; `SKILLS.md` is authoritative.
 
 | Skill | Status | Use When |
 | --- | --- | --- |
-| [mermaid-animated-svg](.agents/skills/mermaid-animated-svg/SKILL.md) | `done` | Render Mermaid diagrams to static and animated SVG while preserving Mermaid geometry. |
-| [d3-animated-svg](.agents/skills/d3-animated-svg/SKILL.md) | `done` | Build bespoke D3-generated SVG visualizations and galleries. |
-| [procedural-svg-animation](.agents/skills/procedural-svg-animation/SKILL.md) | `done` | Build deterministic standalone SVG motion systems from reusable procedural techniques. |
-| [echarts-animated-svg](.agents/skills/echarts-animated-svg/SKILL.md) | `done` | Animate already-rendered Apache ECharts SVG output. |
-| [animated-svg-to-gif](.agents/skills/animated-svg-to-gif/SKILL.md) | `done` | Convert animated SVG assets into browser-rendered GIFs. |
-| [slidev-animejs](.agents/skills/slidev-animejs/SKILL.md) | `done` | Build and validate Anime.js animation patterns inside Slidev decks. |
-| [slidev-echarts](.agents/skills/slidev-echarts/SKILL.md) | `done` | Build and validate ECharts chart labs inside Slidev decks. |
-| [slidev-quality-audit](.agents/skills/slidev-quality-audit/SKILL.md) | `done` | Audit Slidev decks for visual quality regressions. |
-| [slidev-video](.agents/skills/slidev-video/SKILL.md) | `done` | Record, export, and validate Slidev decks as video. |
-| [html-d3-anime-video-workflow](.agents/skills/html-d3-anime-video-workflow/SKILL.md) | `done` | Produce standalone HTML+D3+Anime.js video workflows. |
-| [manim-svg-video](.agents/skills/manim-svg-video/SKILL.md) | `done` | Compose many SVG or animated SVG assets into a Manim-rendered MP4. |
-| [threejs-animated-3d](.agents/skills/threejs-animated-3d/SKILL.md) | `done` | Build and verify browser-rendered Three.js/WebGL scenes. |
+| [mermaid-animated-svg](skills/mermaid-animated-svg/SKILL.md) | `done` | Render Mermaid diagrams to static and animated SVG while preserving Mermaid geometry. |
+| [d3-animated-svg](skills/d3-animated-svg/SKILL.md) | `done` | Build bespoke D3-generated SVG visualizations and galleries. |
+| [procedural-svg-animation](skills/procedural-svg-animation/SKILL.md) | `done` | Build deterministic standalone SVG motion systems from reusable procedural techniques. |
+| [echarts-animated-svg](skills/echarts-animated-svg/SKILL.md) | `done` | Animate already-rendered Apache ECharts SVG output. |
+| [animated-svg-to-gif](skills/animated-svg-to-gif/SKILL.md) | `done` | Convert animated SVG assets into browser-rendered GIFs. |
+| [slidev-animejs](skills/slidev-animejs/SKILL.md) | `done` | Build and validate Anime.js animation patterns inside Slidev decks. |
+| [slidev-echarts](skills/slidev-echarts/SKILL.md) | `done` | Build and validate ECharts chart labs inside Slidev decks. |
+| [slidev-quality-audit](skills/slidev-quality-audit/SKILL.md) | `done` | Audit Slidev decks for visual quality regressions. |
+| [slidev-video](skills/slidev-video/SKILL.md) | `done` | Record, export, and validate Slidev decks as video. |
+| [html-d3-anime-video-workflow](skills/html-d3-anime-video-workflow/SKILL.md) | `done` | Produce standalone HTML+D3+Anime.js video workflows. |
+| [manim-svg-video](skills/manim-svg-video/SKILL.md) | `done` | Compose many SVG or animated SVG assets into a Manim-rendered MP4. |
+| [threejs-animated-3d](skills/threejs-animated-3d/SKILL.md) | `done` | Build and verify browser-rendered Three.js/WebGL scenes. |
 
 ## Validation Flow
 

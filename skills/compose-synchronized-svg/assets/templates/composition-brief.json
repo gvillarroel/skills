@@ -1,0 +1,238 @@
+{
+  "compositionId": "workshop-throughput-atlas",
+  "title": "Workshop Throughput Atlas",
+  "subtitle": "One operating model viewed through capacity, flow, quality, and overflow",
+  "provenance": "Illustrative values supplied in this brief; all outputs are synthetic planning estimates.",
+  "locale": "en-US",
+  "initialScenario": "steady-shift",
+  "armature": "causal-flow-spine",
+  "concepts": [
+    {
+      "id": "input-rate",
+      "label": "Incoming work",
+      "unit": "items/hour",
+      "default": 60,
+      "domain": [0, 120]
+    },
+    {
+      "id": "capacity",
+      "label": "Processing capacity",
+      "unit": "items/hour",
+      "default": 80,
+      "domain": [40, 140]
+    },
+    {
+      "id": "success-rate",
+      "label": "First-pass success",
+      "unit": "fraction",
+      "default": 0.82,
+      "domain": [0, 1]
+    }
+  ],
+  "derived": [
+    {
+      "id": "processed-rate",
+      "label": "Capacity applied",
+      "unit": "items/hour",
+      "compute": {
+        "op": "min",
+        "args": [{"ref": "input-rate"}, {"ref": "capacity"}]
+      }
+    },
+    {
+      "id": "completed-rate",
+      "label": "Completed work",
+      "unit": "items/hour",
+      "compute": {
+        "op": "multiply",
+        "args": [{"ref": "processed-rate"}, {"ref": "success-rate"}]
+      }
+    },
+    {
+      "id": "first-pass-failure-rate",
+      "label": "First-pass failures",
+      "unit": "items/hour",
+      "compute": {
+        "op": "multiply",
+        "args": [
+          {"ref": "processed-rate"},
+          {
+            "op": "subtract",
+            "args": [1, {"ref": "success-rate"}]
+          }
+        ]
+      }
+    },
+    {
+      "id": "demand-capacity-ratio",
+      "label": "Demand / capacity",
+      "unit": "fraction",
+      "compute": {
+        "op": "divide",
+        "args": [{"ref": "input-rate"}, {"ref": "capacity"}]
+      }
+    },
+    {
+      "id": "capacity-gap",
+      "label": "Capacity gap",
+      "unit": "items/hour",
+      "compute": {
+        "op": "subtract",
+        "args": [{"ref": "capacity"}, {"ref": "input-rate"}]
+      }
+    },
+    {
+      "id": "unserved-rate",
+      "label": "Excess arrivals",
+      "unit": "items/hour",
+      "compute": {
+        "op": "max",
+        "args": [
+          {
+            "op": "subtract",
+            "args": [{"ref": "input-rate"}, {"ref": "capacity"}]
+          },
+          0
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "steady-shift",
+      "label": "Steady shift",
+      "values": {
+        "input-rate": 60,
+        "capacity": 80,
+        "success-rate": 0.82
+      }
+    },
+    {
+      "id": "rush-window",
+      "label": "Rush window",
+      "values": {
+        "input-rate": 105,
+        "capacity": 92,
+        "success-rate": 0.74
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "operating-system",
+      "question": "Which inputs determine processed, completed, and excess arrivals?",
+      "claim": "Demand, capacity, and first-pass quality form one causal operating model.",
+      "assetType": "network-diagram",
+      "selectionRationale": "A dependency network exposes the shared inputs and derived outcomes as one causal system.",
+      "rejectedAlternative": "A table was rejected because it would list the values without showing their dependency structure.",
+      "values": ["input-rate", "capacity", "success-rate", "processed-rate", "completed-rate", "unserved-rate"]
+    },
+    {
+      "id": "quality-yield",
+      "question": "What share of processed work succeeds on the first pass?",
+      "claim": "First-pass success shows the exact yield applied to processed work.",
+      "assetType": "radial-gauge",
+      "selectionRationale": "A radial gauge makes one bounded fraction and its distance from a perfect yield immediately legible.",
+      "rejectedAlternative": "A line chart was rejected because the brief supplies scenarios, not a sampled historical series.",
+      "values": ["success-rate"]
+    },
+    {
+      "id": "capacity-pressure",
+      "question": "How close is demand to the available processing ceiling?",
+      "claim": "The load ratio crosses 100% exactly when demand exceeds capacity.",
+      "assetType": "bullet-chart",
+      "selectionRationale": "A bullet chart compares the demand-to-capacity ratio against a meaningful 100 percent threshold.",
+      "rejectedAlternative": "A decorative gauge was rejected because the threshold comparison is more important than circular progress.",
+      "values": ["demand-capacity-ratio"]
+    },
+    {
+      "id": "work-routing",
+      "question": "Where does each incoming item land after the first processing pass?",
+      "claim": "Incoming work resolves to completed, first-pass failed, or excess arrivals.",
+      "assetType": "sankey-diagram",
+      "selectionRationale": "A Sankey-style flow keeps the incoming total connected to its three mutually related outcomes.",
+      "rejectedAlternative": "Independent bars were rejected because they would obscure the shared source and conservation reading.",
+      "values": ["input-rate", "completed-rate", "first-pass-failure-rate", "unserved-rate"]
+    },
+    {
+      "id": "operating-ledger",
+      "question": "What are the exact current operating values?",
+      "claim": "A compact ledger anchors visual readings in inspectable numbers.",
+      "assetType": "comparison-table",
+      "selectionRationale": "A compact table is the most precise cross-check for the exact values already encoded visually elsewhere.",
+      "rejectedAlternative": "Another chart was rejected because this module's task is exact lookup rather than pattern detection.",
+      "values": ["input-rate", "capacity", "completed-rate", "demand-capacity-ratio", "capacity-gap"]
+    },
+    {
+      "id": "capacity-overflow-bridge",
+      "question": "How does capacity split incoming demand into processed and excess arrivals?",
+      "claim": "Excess arrivals appear only when incoming work exceeds available capacity.",
+      "assetType": "waterfall-chart",
+      "selectionRationale": "A waterfall makes the arithmetic bridge from arrivals through processed work to overflow explicit.",
+      "rejectedAlternative": "A pie chart was rejected because signed arithmetic and the capacity boundary would be ambiguous.",
+      "values": ["input-rate", "processed-rate", "unserved-rate"]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "system-to-routing",
+      "source": "operating-system",
+      "target": "work-routing",
+      "kind": "flow",
+      "label": "Processed work enters the outcome flow"
+    },
+    {
+      "id": "system-to-overflow",
+      "source": "operating-system",
+      "target": "capacity-overflow-bridge",
+      "kind": "dependency",
+      "label": "Demand and capacity determine excess arrivals"
+    },
+    {
+      "id": "overflow-to-system-feedback",
+      "source": "capacity-overflow-bridge",
+      "target": "operating-system",
+      "kind": "feedback",
+      "label": "Excess arrivals feed the next capacity-planning cycle"
+    }
+  ],
+  "focusGroups": [
+    {
+      "id": "drivers-story",
+      "label": "Drivers and constraints",
+      "moduleIds": ["operating-system", "quality-yield", "capacity-pressure"]
+    },
+    {
+      "id": "outcomes-story",
+      "label": "Outcomes and consequences",
+      "moduleIds": ["work-routing", "operating-ledger", "capacity-overflow-bridge"]
+    }
+  ],
+  "timeline": {
+    "durationMs": 9000,
+    "loop": true,
+    "baseScenario": "steady-shift",
+    "interpolation": "smooth",
+    "autoplay": false,
+    "phases": [
+      {
+        "id": "drivers-phase",
+        "label": "Drivers",
+        "focusId": "drivers-story",
+        "values": {"input-rate": 60, "capacity": 80, "success-rate": 0.82}
+      },
+      {
+        "id": "pressure-phase",
+        "label": "Pressure",
+        "focusId": "outcomes-story",
+        "values": {"input-rate": 105, "capacity": 92, "success-rate": 0.74}
+      },
+      {
+        "id": "recovery-phase",
+        "label": "Recovery",
+        "focusId": "drivers-story",
+        "values": {"input-rate": 60, "capacity": 80, "success-rate": 0.82}
+      }
+    ]
+  }
+}

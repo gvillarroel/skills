@@ -26,7 +26,7 @@ Official source: https://plotly-r.com/
 
 ## Pattern Targets
 
-- `.agents/skills/d3-animated-svg/references/pattern-selection-contracts.md`: Linked View Query Contract, Uncertainty And Model Contract.
+- `skills/d3-animated-svg/references/pattern-selection-contracts.md`: Linked View Query Contract, Uncertainty And Model Contract.
 - `pattern-opportunities.md`: Linked Brushing Dashboard and Publishable Accessibility Contract.
 
 ## Copyright And Use Boundary

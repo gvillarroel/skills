@@ -41,5 +41,5 @@
 ## Render Command
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root projects/metro-design-repair-contracts-full/videos/what-is-an-mcp --title "What is an MCP" --output-id what-is-an-mcp --pattern dependency-map
+uv run --script skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root projects/metro-design-repair-contracts-full/videos/what-is-an-mcp --title "What is an MCP" --output-id what-is-an-mcp --pattern dependency-map
 ```

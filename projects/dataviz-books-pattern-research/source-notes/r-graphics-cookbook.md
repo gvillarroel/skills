@@ -30,7 +30,7 @@ Official source: https://r-graphics.org/
 
 ## Pattern Targets
 
-- `.agents/skills/d3-animated-svg/references/pattern-selection-contracts.md`: Overplotting Ladder, Scale And Summary Semantics, Uncertainty And Model Contract.
+- `skills/d3-animated-svg/references/pattern-selection-contracts.md`: Overplotting Ladder, Scale And Summary Semantics, Uncertainty And Model Contract.
 - `pattern-opportunities.md`: Overplotting Resolution Ladder and Visual Grammar Contract.
 
 ## Copyright And Use Boundary

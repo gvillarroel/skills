@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILLS = ROOT / ".agents" / "skills"
+SKILLS = ROOT / "skills"
 SOURCE_DIR = SKILLS / "mermaid-animated-svg" / "assets" / "examples" / "mermaid"
 OUTPUT_DIR = SKILLS / "mermaid-animated-svg" / "assets" / "examples" / "mermaid-animation-directives" / "by-type"
 COVERAGE_MANIFEST = SKILLS / "mermaid-animated-svg" / "references" / "diagram-family-coverage.json"
@@ -903,9 +903,9 @@ def write_manifest(coverage_by_label: dict[str, dict[str, object]]) -> None:
             "family": coverage_by_label[example["type"]]["id"],
             "slug": example["slug"],
             "type": example["type"],
-            "source": f".agents/skills/mermaid-animated-svg/assets/examples/mermaid/{example['source']}.mmd",
+            "source": f"skills/mermaid-animated-svg/assets/examples/mermaid/{example['source']}.mmd",
             "directiveSource": (
-                ".agents/skills/mermaid-animated-svg/assets/examples/"
+                "skills/mermaid-animated-svg/assets/examples/"
                 f"mermaid-animation-directives/by-type/{example['slug']}.mmd"
             ),
             "frames": bool(example.get("frames", True)),

@@ -1,0 +1,11 @@
+@startmindmap
+title Mind Map
+* PlantUML renderer
+** Theme
+*** CS2 palette
+** Outputs
+*** SVG
+*** PNG
+** Validation
+*** report JSON
+@endmindmap

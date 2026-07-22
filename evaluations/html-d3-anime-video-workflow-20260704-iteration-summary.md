@@ -29,7 +29,7 @@ This iteration improved `html-d3-anime-video-workflow` standalone video generati
 ## Final Local Gates
 
 - `uv run python -m py_compile` for the changed helper and validation scripts: passed.
-- `uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/check_standalone_pattern_contracts.py --output evaluations/runs/local-pattern-contracts-final2-20260704/pattern-contract-check.json`: passed with `patternsChecked: 17`.
+- `uv run --script skills/html-d3-anime-video-workflow/scripts/check_standalone_pattern_contracts.py --output evaluations/runs/local-pattern-contracts-final2-20260704/pattern-contract-check.json`: passed with `patternsChecked: 17`.
 - `uv run --script scripts/validate-skills.py`: passed.
 - `uv run --script scripts/check-repo-payload.py`: passed.
 - `git diff --check`: passed with only the expected `SKILLS.md` CRLF warning.

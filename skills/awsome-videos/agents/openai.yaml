@@ -1,0 +1,4 @@
+interface:
+  display_name: "Awesome/Fireship Video Director"
+  short_description: "Produce polished tech explainers with real assets"
+  default_prompt: "Use $awsome-videos to create a production-ready technical explainer with a timed brief, specialist assets, deliberate scene composition, an MP4, and visual validation reports."

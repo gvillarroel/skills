@@ -1,0 +1,6 @@
+@startebnf
+title EBNF
+order = "order", id, { line };
+line = sku, ":", quantity;
+id = ? UUID ?;
+@endebnf

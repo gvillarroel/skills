@@ -7,9 +7,9 @@
 
 ## Deterministic and visual validation
 
-- `uv run --script .agents/skills/plantuml-colorset-renderer/scripts/sync_normalized_logos.py --check` — passed for all ten assets.
-- `uv run --script .agents/skills/plantuml-colorset-renderer/scripts/sync_normalized_logos.py --export projects/plantuml-colorset-renderer/artifacts/logo-export` followed by `--check --output ...` — passed and preserved the full bundle.
-- `uv run --script .agents/skills/plantuml-colorset-renderer/scripts/test_plantuml_coverage.py` — 16 tests passed.
+- `uv run --script skills/plantuml-colorset-renderer/scripts/sync_normalized_logos.py --check` — passed for all ten assets.
+- `uv run --script skills/plantuml-colorset-renderer/scripts/sync_normalized_logos.py --export projects/plantuml-colorset-renderer/artifacts/logo-export` followed by `--check --output ...` — passed and preserved the full bundle.
+- `uv run --script skills/plantuml-colorset-renderer/scripts/test_plantuml_coverage.py` — 16 tests passed.
 - Playwright Chromium grid check — all ten images reported natural dimensions `256×256`, rendered in `96×96` boxes, decoded successfully, and produced zero console errors after adding an empty data favicon. Visual inspection found no stretching or clipping.
 - `uv run --script scripts/validate-pattern-ids.py` — passed.
 - `uv run --script scripts/validate-skills.py` — passed.

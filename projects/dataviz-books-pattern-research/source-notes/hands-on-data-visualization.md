@@ -24,7 +24,7 @@ Official source: https://handsondataviz.org/
 
 ## Pattern Targets
 
-- `.agents/skills/d3-animated-svg/references/pattern-selection-contracts.md`: Chart Purpose Gate, Map Fit Contract, Publication Data Contract.
+- `skills/d3-animated-svg/references/pattern-selection-contracts.md`: Chart Purpose Gate, Map Fit Contract, Publication Data Contract.
 - `pattern-opportunities.md`: Map Story Fit Check and Publishable Accessibility Contract.
 
 ## Copyright And Use Boundary

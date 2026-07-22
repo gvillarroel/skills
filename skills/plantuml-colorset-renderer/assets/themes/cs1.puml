@@ -1,0 +1,151 @@
+' plantuml-colorset-renderer: cs1 custom theme
+skinparam backgroundColor #ffffff
+skinparam shadowing false
+skinparam DefaultFontName Arial
+skinparam DefaultFontColor #333e48
+skinparam ArrowColor #696969
+skinparam BorderColor #696969
+skinparam RoundCorner 6
+
+skinparam TitleFontColor #333e48
+skinparam NoteBackgroundColor #e7e7e7
+skinparam NoteBorderColor #9c9c9c
+skinparam NoteFontColor #333e48
+
+skinparam SequenceParticipantBackgroundColor #ffccd5
+skinparam SequenceParticipantBorderColor #9e1b32
+skinparam SequenceActorBackgroundColor #ffffff
+skinparam SequenceActorBorderColor #6d1222
+skinparam SequenceLifeLineBorderColor #696969
+skinparam SequenceArrowColor #696969
+
+skinparam UsecaseBackgroundColor #ffffff
+skinparam UsecaseBorderColor #9e1b32
+skinparam ActorBackgroundColor #ffccd5
+skinparam ActorBorderColor #6d1222
+
+skinparam ClassBackgroundColor #ffffff
+skinparam ClassBorderColor #9e1b32
+skinparam ClassHeaderBackgroundColor #ffccd5
+skinparam ObjectBackgroundColor #ffffff
+skinparam ObjectBorderColor #6d1222
+
+skinparam ActivityBackgroundColor #ffffff
+skinparam ActivityBorderColor #9e1b32
+skinparam ActivityStartColor #333e48
+skinparam ActivityEndColor #e8002a
+skinparam ActivityDiamondBackgroundColor #ffccd5
+skinparam ActivityDiamondBorderColor #6d1222
+
+skinparam ComponentBackgroundColor #ffffff
+skinparam ComponentBorderColor #9e1b32
+skinparam InterfaceBackgroundColor #ffccd5
+skinparam InterfaceBorderColor #6d1222
+skinparam NodeBackgroundColor #e7e7e7
+skinparam NodeBorderColor #333e48
+skinparam DatabaseBackgroundColor #ffccd5
+skinparam DatabaseBorderColor #9e1b32
+skinparam CloudBackgroundColor #e7e7e7
+skinparam CloudBorderColor #696969
+skinparam QueueBackgroundColor #ffffff
+skinparam QueueBorderColor #9e1b32
+
+skinparam StateBackgroundColor #ffffff
+skinparam StateBorderColor #9e1b32
+skinparam StateStartColor #333e48
+skinparam StateEndColor #e8002a
+
+skinparam TimingBackgroundColor #ffffff
+skinparam TimingFontColor #333e48
+skinparam TimingLineColor #696969
+
+skinparam LegendBackgroundColor #ffffff
+skinparam LegendBorderColor #cfcfcf
+
+<style>
+root {
+  FontColor #333e48
+  LineColor #696969
+  BackgroundColor #ffffff
+  HyperLinkColor #9e1b32
+}
+element {
+  FontColor #333e48
+  LineColor #696969
+  BackGroundColor #ffffff
+}
+header {
+  FontColor #333e48
+  BackGroundColor #e7e7e7
+  LineColor #9c9c9c
+}
+node, artifact, folder, frame, rectangle, card {
+  FontColor #333e48
+  LineColor #9e1b32
+  BackGroundColor #ffccd5
+}
+component, interface {
+  FontColor #333e48
+  LineColor #9e1b32
+  BackGroundColor #ffffff
+}
+database, storage, collections {
+  FontColor #333e48
+  LineColor #9e1b32
+  BackGroundColor #ffccd5
+}
+cloud {
+  FontColor #333e48
+  LineColor #696969
+  BackGroundColor #e7e7e7
+}
+queue {
+  FontColor #333e48
+  LineColor #9e1b32
+  BackGroundColor #ffffff
+}
+agent, actor, participant {
+  FontColor #333e48
+  LineColor #6d1222
+  BackGroundColor #ffccd5
+}
+class {
+  FontColor #333e48
+  LineColor #9e1b32
+  BackGroundColor #ffffff
+}
+diamond {
+  FontColor #333e48
+  LineColor #6d1222
+  BackGroundColor #ffccd5
+}
+arrow {
+  FontColor #333e48
+  LineColor #696969
+}
+chartDiagram {
+  BackGroundColor #ffffff
+  FontColor #333e48
+  axis {
+    LineColor #696969
+    FontColor #333e48
+  }
+  grid {
+    LineColor #e7e7e7
+  }
+  bar {
+    LineColor #9e1b32
+    BackGroundColor #ffccd5
+  }
+  line {
+    LineColor #6d1222
+  }
+  scatter {
+    MarkerColor #e8002a
+  }
+  legend {
+    FontColor #333e48
+    BackGroundColor #ffffff
+  }
+}
+</style>

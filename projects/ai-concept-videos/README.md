@@ -1,6 +1,6 @@
 # AI Concept Videos
 
-Project workspace for the AI concept video series. The public, reusable scene fixture remains in `.agents/skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos/`.
+Project workspace for the AI concept video series. The public, reusable scene fixture remains in `skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos/`.
 
 Run from the repository root:
 

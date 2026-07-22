@@ -18,8 +18,8 @@ The expansion deliberately rejects font, palette, texture, seed, rotation, densi
 Commands:
 
 ```powershell
-uv run --script .agents/skills/d3-logo-design/scripts/build_logo_studio.py --output .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html
-uv run --script .agents/skills/d3-logo-design/scripts/validate_logo_artifact.py .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html --expect-patterns 60 --expect-textures 10 --expect-compositions 60 --require-colorset colorset1
+uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --output skills/d3-logo-design/assets/examples/d3-logo-design/index.html
+uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py skills/d3-logo-design/assets/examples/d3-logo-design/index.html --expect-patterns 60 --expect-textures 10 --expect-compositions 60 --require-colorset colorset1
 ```
 
 Result: pass. The artifact contains 60 patterns, 10 textures, 60 compositions, 60 local example IDs, 60 pattern signatures, 60 renderer registrations, exact engine/manifest parity, embedded D3 7.9.0, and no static findings. All ten textures are used; the new batch uses each texture exactly three times.
@@ -43,7 +43,7 @@ Commands:
 
 ```powershell
 uv run --script scripts/build-pages.py
-uv run --script .agents/skills/d3-logo-design/scripts/validate_logo_artifact.py docs/examples/d3-logo-design/index.html --expect-patterns 60 --expect-textures 10 --expect-compositions 60 --require-colorset colorset1
+uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py docs/examples/d3-logo-design/index.html --expect-patterns 60 --expect-textures 10 --expect-compositions 60 --require-colorset colorset1
 uv run --script scripts/validate-pattern-ids.py
 uv run --script scripts/validate-skills.py
 uv run --script scripts/check-repo-payload.py

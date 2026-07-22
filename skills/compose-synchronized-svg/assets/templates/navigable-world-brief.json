@@ -1,0 +1,501 @@
+{
+  "compositionId": "service-operations-skill-tree",
+  "title": "Service Operations Skill Tree",
+  "subtitle": "A navigable operating model from arrivals and capacity to quality and fulfilled demand",
+  "provenance": "All values are synthetic planning assumptions supplied by this template; no empirical performance claim is implied.",
+  "locale": "en-US",
+  "initialScenario": "balanced-day",
+  "armature": "radial-operating-skill-tree",
+  "concepts": [
+    {
+      "id": "demand-rate",
+      "label": "Incoming demand",
+      "unit": "items/hour",
+      "default": 72,
+      "domain": [30, 120]
+    },
+    {
+      "id": "capacity",
+      "label": "Available capacity",
+      "unit": "items/hour",
+      "default": 90,
+      "domain": [60, 150]
+    },
+    {
+      "id": "first-pass-yield",
+      "label": "First-pass yield",
+      "unit": "fraction",
+      "default": 0.86,
+      "domain": [0.6, 0.98]
+    }
+  ],
+  "derived": [
+    {
+      "id": "served-rate",
+      "label": "Served demand",
+      "unit": "items/hour",
+      "compute": {
+        "op": "min",
+        "args": [
+          {"ref": "demand-rate"},
+          {"ref": "capacity"}
+        ]
+      }
+    },
+    {
+      "id": "completed-rate",
+      "label": "Completed on first pass",
+      "unit": "items/hour",
+      "compute": {
+        "op": "multiply",
+        "args": [
+          {"ref": "served-rate"},
+          {"ref": "first-pass-yield"}
+        ]
+      }
+    },
+    {
+      "id": "rework-rate",
+      "label": "Sent to rework",
+      "unit": "items/hour",
+      "compute": {
+        "op": "multiply",
+        "args": [
+          {"ref": "served-rate"},
+          {
+            "op": "subtract",
+            "args": [1, {"ref": "first-pass-yield"}]
+          }
+        ]
+      }
+    },
+    {
+      "id": "unserved-rate",
+      "label": "Unserved demand",
+      "unit": "items/hour",
+      "compute": {
+        "op": "max",
+        "args": [
+          {
+            "op": "subtract",
+            "args": [
+              {"ref": "demand-rate"},
+              {"ref": "capacity"}
+            ]
+          },
+          0
+        ]
+      }
+    },
+    {
+      "id": "load-ratio",
+      "label": "Demand / capacity load ratio",
+      "unit": "fraction",
+      "compute": {
+        "op": "divide",
+        "args": [
+          {"ref": "demand-rate"},
+          {"ref": "capacity"}
+        ]
+      }
+    },
+    {
+      "id": "capacity-gap",
+      "label": "Capacity minus demand",
+      "unit": "items/hour",
+      "compute": {
+        "op": "subtract",
+        "args": [
+          {"ref": "capacity"},
+          {"ref": "demand-rate"}
+        ]
+      }
+    },
+    {
+      "id": "fulfilled-share",
+      "label": "Demand completed on first pass",
+      "unit": "fraction",
+      "compute": {
+        "op": "min",
+        "args": [
+          {
+            "op": "divide",
+            "args": [
+              {"ref": "completed-rate"},
+              {"ref": "demand-rate"}
+            ]
+          },
+          1
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "balanced-day",
+      "label": "Balanced day",
+      "values": {
+        "demand-rate": 72,
+        "capacity": 90,
+        "first-pass-yield": 0.86
+      }
+    },
+    {
+      "id": "surge-day",
+      "label": "Surge day",
+      "values": {
+        "demand-rate": 118,
+        "capacity": 86,
+        "first-pass-yield": 0.72
+      }
+    }
+  ],
+  "modules": [
+    {
+      "id": "operating-core",
+      "navigationLabel": "Operating core",
+      "question": "Which capabilities turn incoming demand into completed work?",
+      "claim": "Demand and capacity meet at the service gate, then first-pass yield determines completed work.",
+      "assetType": "structural-skill-tree",
+      "selectionRationale": "A qualitative skill tree makes the prerequisite structure explicit while binding every recurring operating value once.",
+      "rejectedAlternative": "A dashboard card was rejected because it would hide the prerequisite and merge structure.",
+      "values": [
+        "demand-rate",
+        "capacity",
+        "served-rate",
+        "first-pass-yield",
+        "completed-rate"
+      ],
+      "diagram": {
+        "layout": "tree",
+        "nodes": [
+          {
+            "id": "demand-node",
+            "label": "Incoming demand",
+            "kind": "root",
+            "bind": "demand-rate"
+          },
+          {
+            "id": "capacity-node",
+            "label": "Capacity gate",
+            "kind": "gate",
+            "bind": "capacity"
+          },
+          {
+            "id": "served-node",
+            "label": "Served workload",
+            "kind": "merge",
+            "bind": "served-rate"
+          },
+          {
+            "id": "yield-node",
+            "label": "First-pass capability",
+            "kind": "notable",
+            "bind": "first-pass-yield"
+          },
+          {
+            "id": "completed-node",
+            "label": "Completed work",
+            "kind": "leaf",
+            "bind": "completed-rate"
+          }
+        ],
+        "links": [
+          {
+            "id": "demand-to-served",
+            "source": "demand-node",
+            "target": "served-node",
+            "kind": "flow",
+            "label": "Requests enter the service gate"
+          },
+          {
+            "id": "capacity-to-served",
+            "source": "capacity-node",
+            "target": "served-node",
+            "kind": "prerequisite",
+            "label": "Capacity limits service"
+          },
+          {
+            "id": "served-to-completed",
+            "source": "served-node",
+            "target": "completed-node",
+            "kind": "flow",
+            "label": "Served work attempts completion"
+          },
+          {
+            "id": "yield-to-completed",
+            "source": "yield-node",
+            "target": "completed-node",
+            "kind": "dependency",
+            "label": "Yield determines successful completion"
+          }
+        ]
+      }
+    },
+    {
+      "id": "intake-ledger",
+      "navigationLabel": "Intake ledger",
+      "question": "What are the exact intake and service quantities?",
+      "claim": "The ledger distinguishes demand, capacity, served demand, and unserved demand without implying extra arithmetic.",
+      "assetType": "comparison-table",
+      "selectionRationale": "A table provides an exact numerical cross-check for quantities echoed across the world.",
+      "rejectedAlternative": "A pie chart was rejected because capacity is a constraint, not a disjoint part of demand.",
+      "values": ["demand-rate", "capacity", "served-rate", "unserved-rate"]
+    },
+    {
+      "id": "demand-capacity-bars",
+      "navigationLabel": "Demand vs capacity",
+      "question": "How large is incoming demand relative to available capacity?",
+      "claim": "One shared zero baseline reveals whether capacity stands above or below incoming demand.",
+      "assetType": "comparison-bar-chart",
+      "selectionRationale": "Shared-scale bars support a direct magnitude comparison in the same unit.",
+      "rejectedAlternative": "Independent gauges were rejected because they would conceal the common scale.",
+      "values": ["demand-rate", "capacity"]
+    },
+    {
+      "id": "load-threshold",
+      "navigationLabel": "Load threshold",
+      "question": "Does demand cross the available-capacity threshold?",
+      "claim": "The load ratio crosses 100 percent exactly when demand exceeds capacity.",
+      "assetType": "bullet-chart",
+      "selectionRationale": "A bullet chart preserves values above 100 percent and makes the capacity threshold explicit.",
+      "rejectedAlternative": "A radial utilization gauge was rejected because legal overload can exceed 100 percent.",
+      "values": ["load-ratio"]
+    },
+    {
+      "id": "capacity-gap-ledger",
+      "navigationLabel": "Capacity gap",
+      "question": "What is the signed difference between capacity and demand?",
+      "claim": "A positive gap is headroom, while a negative gap is an explicit capacity deficit.",
+      "assetType": "exact-table",
+      "selectionRationale": "A table retains the signed value honestly without forcing it onto an unsupported diverging bar.",
+      "rejectedAlternative": "A comparative bar was rejected because the legal capacity-gap domain crosses zero.",
+      "values": ["capacity", "demand-rate", "capacity-gap"]
+    },
+    {
+      "id": "bottleneck-network",
+      "navigationLabel": "Bottleneck model",
+      "question": "How do demand and capacity determine served and unserved work?",
+      "claim": "The bottleneck takes the minimum as served demand and exposes only the positive excess as unserved demand.",
+      "assetType": "dependency-network",
+      "selectionRationale": "A dependency network displays both direct parents for each bottleneck outcome.",
+      "rejectedAlternative": "A flow diagram was rejected because capacity is a constraint rather than a conserved branch of demand.",
+      "values": ["demand-rate", "capacity", "served-rate", "unserved-rate"]
+    },
+    {
+      "id": "first-pass-gauge",
+      "navigationLabel": "First-pass yield",
+      "question": "What bounded share of served work succeeds on its first attempt?",
+      "claim": "First-pass yield stays within zero and one across the full legal domain.",
+      "assetType": "radial-gauge",
+      "selectionRationale": "A radial gauge is truthful for one bounded fraction with a meaningful perfect-yield endpoint.",
+      "rejectedAlternative": "A line chart was rejected because the brief contains scenarios rather than a sampled time series.",
+      "values": ["first-pass-yield"]
+    },
+    {
+      "id": "work-disposition-flow",
+      "navigationLabel": "Work disposition",
+      "question": "Where does every served item go after its first attempt?",
+      "claim": "Served work is conserved exactly as completed work plus rework in every legal state.",
+      "assetType": "sankey-diagram",
+      "selectionRationale": "A conserved flow is justified because completed and rework rates are mutually exclusive branches whose algebraic sum equals served rate.",
+      "rejectedAlternative": "Independent bars were rejected because they would hide the shared conserved source.",
+      "values": ["served-rate", "completed-rate", "rework-rate"]
+    },
+    {
+      "id": "quality-outcome-bars",
+      "navigationLabel": "Quality outcomes",
+      "question": "How far apart are first-pass completions and rework volume?",
+      "claim": "Completed and rework rates share one zero baseline and one items-per-hour scale.",
+      "assetType": "comparison-bar-chart",
+      "selectionRationale": "Shared-scale bars make the magnitude gap between the two disjoint outcomes immediately legible.",
+      "rejectedAlternative": "Another flow was rejected because this module asks for magnitude comparison rather than routing.",
+      "values": ["completed-rate", "rework-rate"]
+    },
+    {
+      "id": "fulfilled-demand-gauge",
+      "navigationLabel": "Fulfilled demand",
+      "question": "What share of all incoming demand completes on the first pass?",
+      "claim": "The fulfilled share combines the capacity bottleneck with first-pass quality and remains bounded by 100 percent.",
+      "assetType": "radial-gauge",
+      "selectionRationale": "A bounded gauge summarizes the end-to-end share without hiding its exact readout.",
+      "rejectedAlternative": "A load bullet was rejected because this ratio cannot exceed 100 percent.",
+      "values": ["fulfilled-share"]
+    },
+    {
+      "id": "demand-reconciliation",
+      "navigationLabel": "Demand reconciliation",
+      "question": "How does unserved demand reconcile incoming demand to served demand?",
+      "claim": "Incoming demand minus nonnegative unserved demand equals served demand in every legal state.",
+      "assetType": "waterfall-chart",
+      "selectionRationale": "A waterfall makes the exact opening-minus-deduction-equals-ending identity visible.",
+      "rejectedAlternative": "A stack was rejected because the explanatory task is ordered reconciliation rather than part composition.",
+      "values": ["demand-rate", "unserved-rate", "served-rate"]
+    },
+    {
+      "id": "outcome-mix-bars",
+      "navigationLabel": "Outcome mix",
+      "question": "What are the magnitudes of completed, rework, and unserved outcomes?",
+      "claim": "Three disjoint outcome rates are compared on one shared items-per-hour scale.",
+      "assetType": "comparison-bar-chart",
+      "selectionRationale": "Shared-scale bars compare outcome magnitudes without implying that constraints are flow branches.",
+      "rejectedAlternative": "A second Sankey was rejected because unserved demand never enters the served-work disposition flow.",
+      "values": ["completed-rate", "rework-rate", "unserved-rate"]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "core-to-bottleneck",
+      "source": "operating-core",
+      "target": "bottleneck-network",
+      "kind": "dependency",
+      "label": "Served demand links the operating core to the bottleneck model"
+    }
+  ],
+  "focusGroups": [
+    {
+      "id": "intake-story",
+      "label": "Intake and operating core",
+      "moduleIds": ["operating-core", "intake-ledger", "demand-capacity-bars"]
+    },
+    {
+      "id": "capacity-story",
+      "label": "Capacity and bottleneck",
+      "moduleIds": ["load-threshold", "capacity-gap-ledger", "bottleneck-network"]
+    },
+    {
+      "id": "quality-story",
+      "label": "Quality and disposition",
+      "moduleIds": ["first-pass-gauge", "work-disposition-flow", "quality-outcome-bars"]
+    },
+    {
+      "id": "outcome-story",
+      "label": "End-to-end outcomes",
+      "moduleIds": ["fulfilled-demand-gauge", "demand-reconciliation", "outcome-mix-bars"]
+    }
+  ],
+  "timeline": null,
+  "world": {
+    "mode": "navigable-atlas",
+    "armature": "radial-skill-tree",
+    "rootDistrictId": "intake-core",
+    "districts": [
+      {
+        "id": "intake-core",
+        "label": "Intake Core",
+        "summary": "The central branch establishes demand, capacity, and the operating prerequisite tree.",
+        "role": "Semantic root and shared operating inputs",
+        "localArmature": "radial",
+        "moduleIds": ["operating-core", "intake-ledger", "demand-capacity-bars"]
+      },
+      {
+        "id": "capacity-branch",
+        "label": "Capacity Branch",
+        "summary": "This branch explains threshold pressure, signed headroom, and the service bottleneck.",
+        "role": "Constraint and overload analysis",
+        "localArmature": "branch",
+        "moduleIds": ["load-threshold", "capacity-gap-ledger", "bottleneck-network"]
+      },
+      {
+        "id": "quality-branch",
+        "label": "Quality Branch",
+        "summary": "This branch follows served work through first-pass completion and rework.",
+        "role": "Quality gate and conserved disposition",
+        "localArmature": "lanes",
+        "moduleIds": ["first-pass-gauge", "work-disposition-flow", "quality-outcome-bars"]
+      },
+      {
+        "id": "outcome-branch",
+        "label": "Outcome Branch",
+        "summary": "This branch reconciles demand and summarizes end-to-end fulfillment outcomes.",
+        "role": "Outcome synthesis and exact reconciliation",
+        "localArmature": "orbit",
+        "moduleIds": ["fulfilled-demand-gauge", "demand-reconciliation", "outcome-mix-bars"]
+      }
+    ],
+    "links": [
+      {
+        "id": "intake-to-capacity",
+        "source": "intake-core",
+        "target": "capacity-branch",
+        "kind": "dependency",
+        "label": "Demand and capacity define branch pressure"
+      },
+      {
+        "id": "intake-to-quality",
+        "source": "intake-core",
+        "target": "quality-branch",
+        "kind": "dependency",
+        "label": "Served demand enters the quality gate"
+      },
+      {
+        "id": "intake-to-outcomes",
+        "source": "intake-core",
+        "target": "outcome-branch",
+        "kind": "dependency",
+        "label": "Incoming demand anchors final reconciliation"
+      }
+    ],
+    "navigation": {
+      "initialTarget": "world",
+      "route": {
+        "loop": true,
+        "autoplay": false,
+        "stops": [
+          {
+            "id": "world-opening",
+            "label": "Whole operating world",
+            "target": "world",
+            "travelMs": 0,
+            "holdMs": 1800,
+            "handoff": "Begin at the complete operating skill tree"
+          },
+          {
+            "id": "visit-intake",
+            "label": "Visit the intake core",
+            "target": "intake-core",
+            "travelMs": 1200,
+            "holdMs": 1800,
+            "focusId": "intake-story",
+            "handoff": "Establish the shared demand, capacity, and quality inputs"
+          },
+          {
+            "id": "visit-capacity",
+            "label": "Follow the capacity branch",
+            "target": "capacity-branch",
+            "travelMs": 1200,
+            "holdMs": 1800,
+            "focusId": "capacity-story",
+            "handoff": "Trace how demand pressure reaches the bottleneck"
+          },
+          {
+            "id": "visit-quality",
+            "label": "Follow the quality branch",
+            "target": "quality-branch",
+            "travelMs": 1200,
+            "holdMs": 1800,
+            "focusId": "quality-story",
+            "handoff": "Carry served work through completion and rework"
+          },
+          {
+            "id": "visit-outcomes",
+            "label": "Follow the outcome branch",
+            "target": "outcome-branch",
+            "travelMs": 1200,
+            "holdMs": 1800,
+            "focusId": "outcome-story",
+            "handoff": "Reconcile demand and inspect end-to-end fulfillment"
+          },
+          {
+            "id": "world-return",
+            "label": "Return to the whole world",
+            "target": "world",
+            "travelMs": 1400,
+            "holdMs": 1800,
+            "handoff": "Restore the complete topology for a clean loop seam"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -44,7 +44,7 @@ def add(findings: list[Finding], path: Path, message: str) -> None:
 
 
 def iter_active_sources(root: Path):
-    source_roots = (root / ".agents" / "skills", root / "evaluations")
+    source_roots = (root / "skills", root / "evaluations")
     for source_root in source_roots:
         if not source_root.exists():
             continue
@@ -119,7 +119,7 @@ def collect_explicit_ids(root: Path, findings: list[Finding]) -> tuple[dict[str,
 
 
 def validate_d3_registry(root: Path, findings: list[Finding]) -> set[str]:
-    reference_root = root / ".agents" / "skills" / "d3-animated-svg" / "references"
+    reference_root = root / "skills" / "d3-animated-svg" / "references"
     patterns_root = reference_root / "patterns"
     index_path = reference_root / "pattern-index.md"
     expected: dict[str, Path] = {}
@@ -294,7 +294,7 @@ def validate_family_inventories(
     review_ids: set[str] = set()
     family_counts: dict[str, int] = {}
 
-    d3_gallery_path = root / ".agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/gallery.js"
+    d3_gallery_path = root / "skills/d3-animated-svg/assets/examples/d3-animated-svg/gallery.js"
     d3_gallery = d3_gallery_path.read_text(encoding="utf-8")
     d3_examples_block = extract_block(d3_gallery, "const examples = [", "\n  ];\n\n  function assignPatternIds", d3_gallery_path, findings)
     d3_sources = re.findall(r'\{\s*id:\s*"([a-z0-9-]+)"', d3_examples_block)
@@ -319,7 +319,7 @@ def validate_family_inventories(
     composition_ids = re.findall(r'"(d3-composition-[a-z0-9-]+)"', composition_block)
     register_family("d3-composition", composition_ids, 78, composition_path, findings, global_ids, review_ids, family_counts)
 
-    logo_manifest_path = root / ".agents/skills/d3-logo-design/assets/catalog/logo-manifest.json"
+    logo_manifest_path = root / "skills/d3-logo-design/assets/catalog/logo-manifest.json"
     try:
         logo_manifest = json.loads(logo_manifest_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
@@ -339,7 +339,7 @@ def validate_family_inventories(
         family_counts,
     )
 
-    echarts_path = root / ".agents/skills/echarts-animated-svg/assets/examples/echarts-animated-svg/index.html"
+    echarts_path = root / "skills/echarts-animated-svg/assets/examples/echarts-animated-svg/index.html"
     echarts_content = echarts_path.read_text(encoding="utf-8")
     echarts_tags = re.findall(r'<article class="chart-card[^>]+>', echarts_content)
     echarts_ids: list[str] = []
@@ -355,7 +355,7 @@ def validate_family_inventories(
             add(findings, echarts_path, f"ECharts legacy alias equals canonical ID: {pattern_id}")
     register_family("echarts", echarts_ids, 43, echarts_path, findings, global_ids, review_ids, family_counts)
 
-    mermaid_base_path = root / ".agents/skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/index.html"
+    mermaid_base_path = root / "skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/index.html"
     mermaid_base = mermaid_base_path.read_text(encoding="utf-8")
     mermaid_base_block = extract_block(mermaid_base, "const examples = [", "];", mermaid_base_path, findings)
     mermaid_source_ids = re.findall(r'^\s*\["([a-z0-9-]+)"', mermaid_base_block, re.MULTILINE)
@@ -363,7 +363,7 @@ def validate_family_inventories(
     mermaid_ids = [f"mermaid-{mermaid_slug_map.get(source_id, source_id)}" for source_id in mermaid_source_ids]
     register_family("mermaid", mermaid_ids, 41, mermaid_base_path, findings, global_ids, review_ids, family_counts)
 
-    directives_path = root / ".agents/skills/mermaid-animated-svg/assets/examples/mermaid-animation-directives/index.html"
+    directives_path = root / "skills/mermaid-animated-svg/assets/examples/mermaid-animation-directives/index.html"
     directives = directives_path.read_text(encoding="utf-8")
     directive_block = extract_block(directives, "const directiveExamples = [", "];\n\n      const notes", directives_path, findings)
     directive_sources = re.findall(r'\bname:\s*"([a-z0-9-]+)"', directive_block)
@@ -379,7 +379,7 @@ def validate_family_inventories(
     if "legacyPatternId && legacyPatternId !== patternId" not in directives:
         add(findings, directives_path, "Mermaid directives must omit legacy aliases that equal the canonical ID")
 
-    plant_root = root / ".agents/skills/plantuml-colorset-renderer/assets/examples"
+    plant_root = root / "skills/plantuml-colorset-renderer/assets/examples"
     for directory, suffix, family in (
         ("plantuml-colorset-renderer", "cs2", "plantuml-cs2"),
         ("plantuml-colorset-renderer-cs1", "cs1", "plantuml-cs1"),
@@ -394,7 +394,7 @@ def validate_family_inventories(
         if 'legacyPatternId === patternIdFor(example) ? "" : legacyPatternId' not in gallery_content:
             add(findings, gallery_path, "PlantUML must omit legacy aliases that equal the canonical ID")
 
-    three_path = root / ".agents/skills/threejs-animated-3d/assets/examples/threejs-animated-3d/src/main.js"
+    three_path = root / "skills/threejs-animated-3d/assets/examples/threejs-animated-3d/src/main.js"
     three_content = three_path.read_text(encoding="utf-8")
     three_slug_map = string_map(three_content, "const PATTERN_SLUGS = new Map([", three_path, findings)
     three_block = extract_block(three_content, "const examples = [", "\n]\n\nconst gallery", three_path, findings)
@@ -402,7 +402,7 @@ def validate_family_inventories(
     three_ids = [f"threejs-{three_slug_map.get(source_id, source_id)}" for source_id in three_sources]
     register_family("threejs", three_ids, 24, three_path, findings, global_ids, review_ids, family_counts)
 
-    slidev_echarts_root = root / ".agents/skills/slidev-echarts/assets/examples/slidev-echarts"
+    slidev_echarts_root = root / "skills/slidev-echarts/assets/examples/slidev-echarts"
     chart_lab_path = slidev_echarts_root / "lib" / "chart-lab.js"
     chart_lab = chart_lab_path.read_text(encoding="utf-8")
     chart_block = extract_block(chart_lab, "export const chartSpecs = {", "\n}\n\nexport const chartOrder", chart_lab_path, findings)
@@ -438,14 +438,14 @@ def validate_family_inventories(
         if 'data-example-id="slidev-echarts"' in component_path.read_text(encoding="utf-8"):
             add(findings, component_path, "item surfaces must use a local data-example-id, not the page-set ID")
 
-    slidev_anime_root = root / ".agents/skills/slidev-animejs/assets/examples/slidev-animejs"
+    slidev_anime_root = root / "skills/slidev-animejs/assets/examples/slidev-animejs"
     anime_demo_path = slidev_anime_root / "lib" / "anime-demos.js"
     anime_demos = anime_demo_path.read_text(encoding="utf-8")
     feature_block = extract_block(anime_demos, "export const featureOrder = [", "]", anime_demo_path, findings)
     feature_ids = re.findall(r"'([a-z0-9-]+)'", feature_block)
     svg_asset_path = (
         root
-        / ".agents/skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/lib/svg-assets.js"
+        / "skills/slidev-animejs/assets/templates/slidev-svg-asset-pack/lib/svg-assets.js"
     )
     svg_assets = svg_asset_path.read_text(encoding="utf-8")
     asset_block = extract_block(svg_assets, "export const svgAssetOrder = [", "]", svg_asset_path, findings)
@@ -457,7 +457,7 @@ def validate_family_inventories(
         if 'data-example-id="slidev-animejs"' in component_path.read_text(encoding="utf-8"):
             add(findings, component_path, "item surfaces must use a local data-example-id, not the page-set ID")
 
-    ai_path = root / ".agents/skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos/concepts.js"
+    ai_path = root / "skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos/concepts.js"
     ai_content = ai_path.read_text(encoding="utf-8")
     ai_ids = re.findall(r'^\s*patternId:\s*"(ai-[a-z0-9-]+)"', ai_content, re.MULTILINE)
     register_family("ai-concepts", ai_ids, 11, ai_path, findings, global_ids, review_ids, family_counts)
@@ -466,7 +466,7 @@ def validate_family_inventories(
     if not ai_main_match or ai_main_match.group(1) == "ai-concept-videos":
         add(findings, ai_index_path, "AI concept item surface must use the local concept ID")
 
-    procedural_manifest_path = root / ".agents/skills/procedural-svg-animation/assets/pattern-specs.json"
+    procedural_manifest_path = root / "skills/procedural-svg-animation/assets/pattern-specs.json"
     procedural_ids = manifest_pattern_ids(procedural_manifest_path, "procedural-svg", findings)
     register_family(
         "procedural-svg",
@@ -485,42 +485,42 @@ def validate_family_inventories(
 def require_contracts(root: Path, findings: list[Finding]) -> None:
     contracts = (
         (
-            ".agents/skills/d3-animated-svg/assets/examples/d3-animated-svg/gallery.js",
+            "skills/d3-animated-svg/assets/examples/d3-animated-svg/gallery.js",
             r"`d3-\$\{example\.id\}`",
             "D3 gallery must derive base IDs as d3-<source>",
         ),
         (
-            ".agents/skills/echarts-animated-svg/assets/examples/echarts-animated-svg/scripts/build-gallery.mjs",
+            "skills/echarts-animated-svg/assets/examples/echarts-animated-svg/scripts/build-gallery.mjs",
             r"`echarts-\$\{patternSlug\}`",
             "ECharts gallery must derive IDs as echarts-<slug>",
         ),
         (
-            ".agents/skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/index.html",
+            "skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/index.html",
             r"`mermaid-\$\{patternSlugs\.get\(name\) \|\| name\}`",
             "Mermaid gallery must derive IDs as mermaid-<slug>",
         ),
         (
-            ".agents/skills/mermaid-animated-svg/assets/examples/mermaid-animation-directives/index.html",
+            "skills/mermaid-animated-svg/assets/examples/mermaid-animation-directives/index.html",
             r"`mermaid-directive-\$\{patternSlug\}`",
             "Mermaid directives must derive IDs as mermaid-directive-<slug>",
         ),
         (
-            ".agents/skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/plantuml-gallery.js",
+            "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/plantuml-gallery.js",
             r"`plantuml-\$\{patternSlugs\.get\(example\.id\) \|\| example\.id\}\$\{patternSuffix\}`",
             "PlantUML gallery must append the style suffix to plantuml-<slug>",
         ),
         (
-            ".agents/skills/threejs-animated-3d/assets/examples/threejs-animated-3d/src/main.js",
+            "skills/threejs-animated-3d/assets/examples/threejs-animated-3d/src/main.js",
             r"`threejs-\$\{PATTERN_SLUGS\.get\(example\.id\) \|\| example\.id\}`",
             "Three.js gallery must derive IDs as threejs-<slug>",
         ),
         (
-            ".agents/skills/slidev-echarts/assets/examples/slidev-echarts/components/CompositionScene.vue",
+            "skills/slidev-echarts/assets/examples/slidev-echarts/components/CompositionScene.vue",
             r"`slidev-echarts-\$\{scene\}`",
             "Slidev ECharts compositions must omit the redundant composition segment",
         ),
         (
-            ".agents/skills/slidev-animejs/assets/examples/slidev-animejs/components/AnimeFeatureSlide.vue",
+            "skills/slidev-animejs/assets/examples/slidev-animejs/components/AnimeFeatureSlide.vue",
             r"`slidev-animejs-\$\{spec\.type\}`",
             "Slidev Anime.js features must omit the redundant feature segment",
         ),

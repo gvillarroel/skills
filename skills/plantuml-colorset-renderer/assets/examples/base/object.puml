@@ -1,0 +1,14 @@
+@startuml
+title Object
+object checkout {
+  state = "collecting payment"
+}
+object cart {
+  items = 3
+}
+object payment {
+  status = "authorized"
+}
+checkout --> cart
+checkout --> payment
+@enduml

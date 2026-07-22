@@ -26,7 +26,7 @@ Official source: https://github.com/z3tt/beyond-bar-and-box-plots
 
 ## Pattern Targets
 
-- `.agents/skills/d3-animated-svg/references/pattern-selection-contracts.md`: Distribution Pattern Choice, Uncertainty And Model Contract.
+- `skills/d3-animated-svg/references/pattern-selection-contracts.md`: Distribution Pattern Choice, Uncertainty And Model Contract.
 - `pattern-opportunities.md`: Distribution Alternatives Composite and Layered Refinement Animation.
 
 ## Copyright And Use Boundary

@@ -516,7 +516,7 @@ Reference basis for narration: GitHub skill docs, Claude skill docs, OpenCode sk
 | Why are skills useful? | They make recurring workflows repeatable and easier to discover. citeturn10view3turn9view2 | citeturn10view3turn9view2 |
 | What is progressive disclosure here? | Long procedures stay available but load only when needed. citeturn9view2 | citeturn9view2 |
 | Do skills reduce cost? | Often yes, because they avoid repeating long instructions every session. citeturn9view2turn28view0 | citeturn9view2turn28view0 |
-| Where do Copilot skills live? | In project or personal skill folders, including `.github/skills`, `.claude/skills`, or `.agents/skills`. citeturn10view3 | citeturn10view3 |
+| Where do Copilot skills live? | In project or personal skill folders, including `.github/skills`, `.claude/skills`, or `skills`. citeturn10view3 | citeturn10view3 |
 | Can Claude skills be invoked directly? | Yes, via slash-style invocation as skills or commands. citeturn9view2 | citeturn9view2 |
 | Does OpenCode support Claude-style skills? | Yes. It discovers Claude-compatible `SKILL.md` locations. citeturn11view2 | citeturn11view2 |
 | What is the usual beginner mistake? | Writing skills that are too broad, verbose, or always relevant. | — |

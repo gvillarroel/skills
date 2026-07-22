@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
-SKILLS = ROOT / ".agents" / "skills"
+SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
     "ai-concept-videos": SKILLS
     / "html-d3-anime-video-workflow"

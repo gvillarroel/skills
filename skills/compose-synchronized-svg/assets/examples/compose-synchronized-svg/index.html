@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="example-id" content="compose-synchronized-svg">
+  <meta name="pattern-id" content="compose-synchronized-svg">
+  <meta name="pattern-page" content="true">
+  <title>Synchronized SVG Compositions</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --page: #eef3f8;
+      --surface: #ffffff;
+      --ink: #10233f;
+      --muted: #526176;
+      --line: #cbd5e1;
+      --blue: #1d4ed8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+    }
+    main {
+      width: min(100% - 32px, 1640px);
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+    .gallery {
+      display: grid;
+      gap: 32px;
+    }
+    article {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgb(255 255 255 / 72%);
+    }
+    .example-header {
+      margin-bottom: 16px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+      letter-spacing: -0.04em;
+    }
+    h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.35rem, 2.4vw, 2rem);
+      letter-spacing: -0.025em;
+    }
+    p {
+      max-width: 78ch;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    a {
+      color: var(--blue);
+      font-weight: 700;
+      text-underline-offset: 3px;
+    }
+    .canvas {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--surface);
+      box-shadow: 0 18px 50px rgb(15 35 65 / 12%);
+    }
+    .canvas.world { aspect-ratio: 16 / 9; }
+    object {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .note {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--blue);
+      background: rgb(255 255 255 / 76%);
+    }
+    @media (max-width: 760px) {
+      header { grid-template-columns: 1fr; }
+      nav { justify-content: flex-start; }
+      main { width: min(100% - 20px, 1640px); padding-top: 20px; }
+      article { padding: 12px; border-radius: 14px; }
+      .canvas { border-radius: 10px; }
+    }
+  </style>
+</head>
+<body data-example-id="compose-synchronized-svg" data-pattern-id="compose-synchronized-svg" data-pattern-page="true">
+  <main>
+    <header>
+      <div>
+        <h1>Synchronized SVG Compositions</h1>
+        <p>Two standalone compositions demonstrate the same semantic contract at different scales: a fitted sixteen-module causal megacanvas and a thirty-six-module world explored through districts and complete local diagrams.</p>
+      </div>
+      <nav aria-label="Example resources">
+        <a href="#compose-synchronized-svg-heatwave-tree">Navigable world</a>
+        <a href="#compose-synchronized-svg-inference-pulse">Compact megacanvas</a>
+      </nav>
+    </header>
+    <section class="gallery" aria-label="Published synchronized SVG examples">
+      <article id="compose-synchronized-svg-heatwave-tree" data-example-id="heatwave-tree" data-pattern-id="compose-synchronized-svg-heatwave-tree">
+        <header class="example-header">
+          <div>
+            <h2>Heatwave Resilience Tree</h2>
+            <p>A PoE-like radial world connects eight districts and thirty-six linked local diagrams, including explicit structural trees and feedback systems. Semantic zoom moves from the whole system to a district index and then to a complete module.</p>
+          </div>
+          <nav aria-label="Heatwave Tree resources">
+            <a href="heatwave-tree.svg">Open the standalone SVG</a>
+            <a href="heatwave-tree-brief.json">Inspect the source brief</a>
+          </nav>
+        </header>
+        <div class="canvas world">
+          <object
+            type="image/svg+xml"
+            data="heatwave-tree.svg"
+            data-example-id="heatwave-tree"
+            data-pattern-id="compose-synchronized-svg-heatwave-tree"
+            aria-label="Heatwave Resilience Tree interactive synchronized SVG world"
+          >
+            <a href="heatwave-tree.svg">Open the Heatwave Resilience Tree SVG.</a>
+          </object>
+        </div>
+        <p class="note">Use district hubs, local destinations, camera controls, deep links, or the deterministic route to travel through the world and capture narration or video. Shared heat, demand, vulnerability, and response concepts retain one identity across distant districts.</p>
+      </article>
+
+      <article id="compose-synchronized-svg-inference-pulse" data-example-id="inference-pulse" data-pattern-id="compose-synchronized-svg-inference-pulse">
+        <header class="example-header">
+          <div>
+            <h2>Inference Pulse</h2>
+            <p>Sixteen synchronized views follow one inference request through admission, retrieval, context, routing, compute, memory, sampling, streaming, service-level observation, and adaptive feedback.</p>
+          </div>
+          <nav aria-label="Inference Pulse resources">
+            <a href="inference-pulse.svg">Open the standalone SVG</a>
+            <a href="composition-brief.json">Inspect the source brief</a>
+          </nav>
+        </header>
+        <div class="canvas">
+          <object
+            type="image/svg+xml"
+            data="inference-pulse.svg"
+            data-example-id="inference-pulse"
+            data-pattern-id="compose-synchronized-svg-inference-pulse"
+            aria-label="Inference Pulse interactive synchronized SVG"
+          >
+            <a href="inference-pulse.svg">Open the Inference Pulse SVG.</a>
+          </object>
+        </div>
+        <p class="note">Use the scenario, timeline, and module focus controls to inspect how a single canonical state propagates through every view. The dashed exterior routes close the adaptive feedback loop.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

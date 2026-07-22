@@ -40,8 +40,8 @@ def main() -> int:
 
     with tempfile.TemporaryDirectory(prefix="skill-independence-") as temp_dir:
         root = Path(temp_dir)
-        skill = root / ".agents" / "skills" / "alpha-skill"
-        (root / ".agents" / "skills" / "beta-skill").mkdir(parents=True)
+        skill = root / "skills" / "alpha-skill"
+        (root / "skills" / "beta-skill").mkdir(parents=True)
         write(
             skill / "SKILL.md",
             "---\nname: alpha-skill\ndescription: Test fixture.\n---\n\n"

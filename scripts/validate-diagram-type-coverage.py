@@ -116,9 +116,9 @@ PLANTUML_FIXTURES = frozenset(
     }
 )
 
-MERMAID_STYLER = ROOT / ".agents" / "skills" / "mermaid-colorset-styler"
-MERMAID_ANIMATED = ROOT / ".agents" / "skills" / "mermaid-animated-svg"
-PLANTUML = ROOT / ".agents" / "skills" / "plantuml-colorset-renderer"
+MERMAID_STYLER = ROOT / "skills" / "mermaid-colorset-styler"
+MERMAID_ANIMATED = ROOT / "skills" / "mermaid-animated-svg"
+PLANTUML = ROOT / "skills" / "plantuml-colorset-renderer"
 
 
 def load_json(path: Path) -> dict[str, Any]:

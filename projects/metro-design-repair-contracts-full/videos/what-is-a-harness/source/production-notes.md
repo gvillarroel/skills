@@ -41,5 +41,5 @@
 ## Render Command
 
 ```powershell
-uv run --script .agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root projects/metro-design-repair-contracts-full/videos/what-is-a-harness --title "What is a Harness" --output-id what-is-a-harness --pattern systems-flow
+uv run --script skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py --project-root projects/metro-design-repair-contracts-full/videos/what-is-a-harness --title "What is a Harness" --output-id what-is-a-harness --pattern systems-flow
 ```

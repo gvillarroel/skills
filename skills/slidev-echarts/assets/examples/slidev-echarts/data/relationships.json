@@ -1,0 +1,29 @@
+{
+  "nodes": [
+    { "name": "Product", "value": 32 },
+    { "name": "Partners", "value": 24 },
+    { "name": "Events", "value": 21 },
+    { "name": "Outbound", "value": 23 },
+    { "name": "Signup", "value": 62 },
+    { "name": "Activation", "value": 47 },
+    { "name": "Expansion", "value": 22 }
+  ],
+  "links": [
+    { "source": "Product", "target": "Signup", "value": 32 },
+    { "source": "Partners", "target": "Signup", "value": 24 },
+    { "source": "Events", "target": "Signup", "value": 21 },
+    { "source": "Outbound", "target": "Signup", "value": 23 },
+    { "source": "Signup", "target": "Activation", "value": 47 },
+    { "source": "Activation", "target": "Expansion", "value": 22 },
+    { "source": "Partners", "target": "Expansion", "value": 10 }
+  ],
+  "chordLinks": [
+    { "source": "Product", "target": "Partners", "value": 18 },
+    { "source": "Product", "target": "Events", "value": 10 },
+    { "source": "Partners", "target": "Expansion", "value": 16 },
+    { "source": "Events", "target": "Outbound", "value": 8 },
+    { "source": "Outbound", "target": "Signup", "value": 14 },
+    { "source": "Signup", "target": "Activation", "value": 28 },
+    { "source": "Activation", "target": "Product", "value": 12 }
+  ]
+}

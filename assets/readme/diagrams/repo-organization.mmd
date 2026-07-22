@@ -3,7 +3,7 @@ flowchart LR
   Root["Repository root"]:::root
   Backlog["SKILLS.md<br/>Canonical backlog and status"]:::doc
   Readme["README.md<br/>Human overview"]:::doc
-  Agents[".agents/skills/<br/>Canonical skill source"]:::skills
+  Agents["skills/<br/>Canonical skill source"]:::skills
   Scripts["scripts/<br/>Repo validators and builders"]:::tool
   Evaluations["evaluations/<br/>Tracked summaries"]:::eval
   Runs["evaluations/runs/<br/>Ignored local runs"]:::ignored
@@ -28,7 +28,7 @@ flowchart LR
   Artifacts --> ArtifactTypes
   Assets --> Readme
 
-  subgraph SkillFamilies["Skill families under .agents/skills"]
+  subgraph SkillFamilies["Skill families under skills"]
     SVG["SVG animation<br/>Mermaid, D3, ECharts, GIF"]:::skills
     Slidev["Slidev workflow<br/>Anime.js, ECharts, QA, video"]:::skills
     Web3D["3D and video composition<br/>Three.js, Manim, HTML+D3+Anime"]:::skills

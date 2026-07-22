@@ -22,8 +22,8 @@ Release target: expand `d3-logo-design` from 60 to 90 canonical patterns and fro
 Run:
 
 ```powershell
-uv run --script .agents/skills/d3-logo-design/scripts/build_logo_studio.py --output .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html
-uv run --script .agents/skills/d3-logo-design/scripts/validate_logo_artifact.py .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html --expect-patterns 90 --expect-textures 10 --expect-compositions 90 --require-colorset colorset1 --json-report projects/d3-logo-design-math-expansion/artifacts/reviews/source-validation.json
+uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --output skills/d3-logo-design/assets/examples/d3-logo-design/index.html
+uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py skills/d3-logo-design/assets/examples/d3-logo-design/index.html --expect-patterns 90 --expect-textures 10 --expect-compositions 90 --require-colorset colorset1 --json-report projects/d3-logo-design-math-expansion/artifacts/reviews/source-validation.json
 ```
 
 Expected evidence: 90 unique pattern IDs, example IDs, geometry signatures, renderer registrations, and compositions; 10 registered and used textures; exact engine/manifest parity; embedded D3 7.9.0; valid text-clearance contracts; no palette leakage, gradients, external resources, deprecated APIs, or findings.
@@ -36,8 +36,8 @@ Evidence: `projects/d3-logo-design-math-expansion/artifacts/reviews/source-valid
 Run the complete verifier independently at both viewports:
 
 ```powershell
-uv run --script .agents/skills/d3-logo-design/scripts/verify_logo_gallery.py .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html --viewport 1440x1100 --json-report projects/d3-logo-design-math-expansion/artifacts/reviews/browser-desktop.json
-uv run --script .agents/skills/d3-logo-design/scripts/verify_logo_gallery.py .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html --viewport 390x844 --json-report projects/d3-logo-design-math-expansion/artifacts/reviews/browser-mobile.json
+uv run --script skills/d3-logo-design/scripts/verify_logo_gallery.py skills/d3-logo-design/assets/examples/d3-logo-design/index.html --viewport 1440x1100 --json-report projects/d3-logo-design-math-expansion/artifacts/reviews/browser-desktop.json
+uv run --script skills/d3-logo-design/scripts/verify_logo_gallery.py skills/d3-logo-design/assets/examples/d3-logo-design/index.html --viewport 390x844 --json-report projects/d3-logo-design-math-expansion/artifacts/reviews/browser-mobile.json
 ```
 
 Require 90 unique rendered geometry hashes, all 90 replay controls, palette checks in both colorsets, long-copy boundary states, deterministic control changes, zero clipped or unexpectedly occluded text, zero out-of-viewBox content, zero console/page errors, and zero external requests. Inspect all 30 new mathematical marks at default and boundary states. Use segmented mobile screenshots when the gallery exceeds the browser's reliable full-page raster height.
@@ -55,7 +55,7 @@ Run:
 
 ```powershell
 uv run --script scripts/build-pages.py
-uv run --script .agents/skills/d3-logo-design/scripts/validate_logo_artifact.py docs/examples/d3-logo-design/index.html --expect-patterns 90 --expect-textures 10 --expect-compositions 90 --require-colorset colorset1
+uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py docs/examples/d3-logo-design/index.html --expect-patterns 90 --expect-textures 10 --expect-compositions 90 --require-colorset colorset1
 uv run --script scripts/validate-pattern-ids.py
 uv run --script scripts/validate-skills.py
 uv run --script scripts/check-repo-payload.py

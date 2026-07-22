@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slidev Anime.js"
+  short_description: "Anime.js motion patterns for Slidev decks"
+  default_prompt: "Use $slidev-animejs to build and validate a Slidev deck with Anime.js animations."

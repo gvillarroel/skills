@@ -1,0 +1,27 @@
+{
+  "products": [
+    { "name": "Atlas", "value": 68, "previous": 54 },
+    { "name": "Beacon", "value": 52, "previous": 46 },
+    { "name": "Catalyst", "value": 44, "previous": 38 },
+    { "name": "Delta", "value": 36, "previous": 31 },
+    { "name": "Echo", "value": 29, "previous": 24 }
+  ],
+  "channelMix": [
+    { "name": "Product", "value": 32, "next": 38 },
+    { "name": "Partners", "value": 24, "next": 30 },
+    { "name": "Events", "value": 21, "next": 18 },
+    { "name": "Outbound", "value": 23, "next": 14 }
+  ],
+  "funnel": [
+    { "name": "Visitors", "value": 1000, "next": 1000 },
+    { "name": "Trials", "value": 620, "next": 700 },
+    { "name": "Activated", "value": 360, "next": 470 },
+    { "name": "Qualified", "value": 210, "next": 320 },
+    { "name": "Won", "value": 88, "next": 142 }
+  ],
+  "gauge": {
+    "label": "Readiness",
+    "value": 0.68,
+    "next": 0.86
+  }
+}

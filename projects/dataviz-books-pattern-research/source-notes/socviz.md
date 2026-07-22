@@ -24,7 +24,7 @@ Official source: https://socviz.co/
 
 ## Pattern Targets
 
-- `.agents/skills/d3-animated-svg/references/pattern-selection-contracts.md`: Chart Purpose Gate, Visualization Contract, Publication Data Contract.
+- `skills/d3-animated-svg/references/pattern-selection-contracts.md`: Chart Purpose Gate, Visualization Contract, Publication Data Contract.
 - `pattern-opportunities.md`: Layered Refinement Animation and Map Story Fit Check.
 
 ## Copyright And Use Boundary

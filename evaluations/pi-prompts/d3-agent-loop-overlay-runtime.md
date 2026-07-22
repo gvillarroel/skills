@@ -8,4 +8,4 @@ Acceptance criteria:
 - The HTML contains `data-pattern-id="d3-agent-loop-overlay"`.
 - The reference image uses `data:image/png;base64,`.
 - The five region IDs are present: `main-loop`, `prompt-builder`, `tool-system`, `sub-agents`, and `compaction`.
-- No `http://`, `https://`, CDN, `.agents/skills`, `skills/d3-animated-svg`, or `assets/examples` dependency remains in the output.
+- No `http://`, `https://`, CDN, `skills`, `skills/d3-animated-svg`, or `assets/examples` dependency remains in the output.

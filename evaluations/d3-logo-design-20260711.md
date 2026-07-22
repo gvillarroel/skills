@@ -36,11 +36,11 @@ The visual audit also corrected measured variable-axis glyph spacing and text-sa
 The following final gates passed:
 
 ```powershell
-uv run --script .agents/skills/d3-logo-design/scripts/build_logo_studio.py --output .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html
-uv run --script .agents/skills/d3-logo-design/scripts/validate_logo_artifact.py .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html --expect-patterns 30 --expect-textures 10 --expect-compositions 30 --require-colorset colorset1
-uv run --script .agents/skills/d3-logo-design/scripts/verify_logo_gallery.py .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html --viewport 1440x1100
-uv run --script .agents/skills/d3-logo-design/scripts/verify_logo_gallery.py .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html --viewport 390x844
-uv run --script .agents/skills/d3-logo-design/scripts/verify_logo_gallery.py .agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html --viewport 640x720 --wait-ms 0 --timeout-ms 5000 --small-only --small-logo-screenshot projects/d3-logo-design/artifacts/screenshots/studio-96x64-compact.png
+uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --output skills/d3-logo-design/assets/examples/d3-logo-design/index.html
+uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py skills/d3-logo-design/assets/examples/d3-logo-design/index.html --expect-patterns 30 --expect-textures 10 --expect-compositions 30 --require-colorset colorset1
+uv run --script skills/d3-logo-design/scripts/verify_logo_gallery.py skills/d3-logo-design/assets/examples/d3-logo-design/index.html --viewport 1440x1100
+uv run --script skills/d3-logo-design/scripts/verify_logo_gallery.py skills/d3-logo-design/assets/examples/d3-logo-design/index.html --viewport 390x844
+uv run --script skills/d3-logo-design/scripts/verify_logo_gallery.py skills/d3-logo-design/assets/examples/d3-logo-design/index.html --viewport 640x720 --wait-ms 0 --timeout-ms 5000 --small-only --small-logo-screenshot projects/d3-logo-design/artifacts/screenshots/studio-96x64-compact.png
 uv run --script scripts/build-pages.py
 uv run --script scripts/validate-pages-pattern-format.py
 uv run --script scripts/validate-pattern-ids.py

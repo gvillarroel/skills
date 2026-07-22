@@ -4,7 +4,7 @@ import { spawnSync } from "node:child_process";
 const args = [
   "run",
   "--script",
-  ".agents/skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
+  "skills/html-d3-anime-video-workflow/scripts/build_standalone_explainer.py",
   "--project-root",
   "projects/metro-design-repair-contracts-full/videos/what-ai-alternatives-we-have",
   "--title",

@@ -218,7 +218,7 @@ class RunnerUnitTests(unittest.TestCase):
 
 class RunnerIntegrationTests(unittest.TestCase):
     def make_repo(self, root: Path) -> Path:
-        skill = root / ".agents/skills/demo-skill"
+        skill = root / "skills/demo-skill"
         skill.mkdir(parents=True)
         (skill / "SKILL.md").write_text(
             "---\nname: demo-skill\ndescription: Test fixture.\n---\n\n# Demo\n",

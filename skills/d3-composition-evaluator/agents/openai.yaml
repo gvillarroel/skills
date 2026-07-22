@@ -1,0 +1,4 @@
+interface:
+  display_name: "D3 Composition Evaluator"
+  short_description: "Evaluate D3/SVG composition quality"
+  default_prompt: "Use $d3-composition-evaluator to evaluate this D3 or SVG composition and report concrete fixes."

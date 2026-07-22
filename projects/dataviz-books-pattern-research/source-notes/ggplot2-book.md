@@ -28,7 +28,7 @@ Official source: https://ggplot2-book.org/
 
 ## Pattern Targets
 
-- `.agents/skills/d3-animated-svg/references/pattern-selection-contracts.md`: Visualization Contract, Scale And Summary Semantics, Annotation And Finish.
+- `skills/d3-animated-svg/references/pattern-selection-contracts.md`: Visualization Contract, Scale And Summary Semantics, Annotation And Finish.
 - `pattern-opportunities.md`: Visual Grammar Contract and Overplotting Resolution Ladder.
 
 ## Copyright And Use Boundary

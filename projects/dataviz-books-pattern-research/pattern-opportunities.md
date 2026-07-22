@@ -24,7 +24,7 @@ The main gap is not missing basic chart types. The best opportunities are compos
 
 Create a reusable D3 pattern that compares multiple distribution encodings from the same dataset: raw points, jittered points, beeswarm, boxplot, violin, ridgeline, half-eye or interval summary, and compact dot plot. This should be a decision pattern, not just a gallery.
 
-Recommended owner: `.agents/skills/d3-animated-svg/`
+Recommended owner: `skills/d3-animated-svg/`
 
 Why it matters:
 
@@ -42,7 +42,7 @@ Pattern contract:
 
 Add a compact metadata contract for generated patterns: data variables, aesthetic mappings, statistical transform, scale, coordinate system, facet/grouping rule, annotation layer, and interaction state.
 
-Recommended owner: `.agents/skills/d3-animated-svg/` or shared video pattern references.
+Recommended owner: `skills/d3-animated-svg/` or shared video pattern references.
 
 Why it matters:
 
@@ -59,7 +59,7 @@ Pattern contract:
 
 Create a linked-view pattern where a selection in one view drives highlight, filter, or detail states in other views. Candidate combinations: scatterplot plus table, map plus histogram, density plus raw points, scatterplot matrix plus detail panel.
 
-Recommended owner: `.agents/skills/d3-animated-svg/`
+Recommended owner: `skills/d3-animated-svg/`
 
 Why it matters:
 
@@ -77,7 +77,7 @@ Pattern contract:
 
 Promote a reusable animation sequence that moves from raw data to analytical summary to uncertainty to annotation. This can be used in standalone SVG, HTML/D3/Anime.js, and Slidev scenes.
 
-Recommended owner: `.agents/skills/html-d3-anime-video-workflow/` with a D3 reference link when needed.
+Recommended owner: `skills/html-d3-anime-video-workflow/` with a D3 reference link when needed.
 
 Why it matters:
 
@@ -93,7 +93,7 @@ Pattern contract:
 
 Create a decision ladder for dense point data: transparency, hollow or smaller marks, jitter, faceting, bin2d, hexbin, density contours, and summarization.
 
-Recommended owner: `.agents/skills/d3-animated-svg/`
+Recommended owner: `skills/d3-animated-svg/`
 
 Why it matters:
 
@@ -110,7 +110,7 @@ Pattern contract:
 
 Add a geospatial decision checklist before creating a map pattern: whether geography is truly the story, what geographic level is defensible, how classification breaks affect interpretation, and what non-map comparison should accompany the view.
 
-Recommended owner: `.agents/skills/d3-animated-svg/` geospatial references.
+Recommended owner: `skills/d3-animated-svg/` geospatial references.
 
 Why it matters:
 
@@ -126,7 +126,7 @@ Pattern contract:
 
 Promote a focused annotation pattern for direct labels, leader lines, label lanes, clipping/margin control, and compact legend alternatives.
 
-Recommended owner: `.agents/skills/d3-animated-svg/` and video quality audit references.
+Recommended owner: `skills/d3-animated-svg/` and video quality audit references.
 
 Why it matters:
 
@@ -163,6 +163,6 @@ Pattern contract:
 
 ## Suggested Next Skill Work
 
-The highest-leverage reference step has been promoted to `.agents/skills/d3-animated-svg/references/pattern-selection-contracts.md`. The promoted reference covers the visual grammar contract, distribution selection, overplotting ladder, linked brushing, map fit, annotation finish, and publishable accessibility checks.
+The highest-leverage reference step has been promoted to `skills/d3-animated-svg/references/pattern-selection-contracts.md`. The promoted reference covers the visual grammar contract, distribution selection, overplotting ladder, linked brushing, map fit, annotation finish, and publishable accessibility checks.
 
 The next substantive pattern promotion should be a small distribution composite acceptance fixture with stable item IDs and a validator that checks scale sharing, label visibility, raw/summary state transitions, and interval semantics.

@@ -1,0 +1,11 @@
+@startsalt
+title Salt Wireframe
+{
+  Login
+  {T
+    Username | "alex@example.com"
+    Password | "********"
+  }
+  [Cancel] | [Sign in]
+}
+@endsalt

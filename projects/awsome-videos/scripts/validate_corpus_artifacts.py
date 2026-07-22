@@ -22,7 +22,7 @@ sys.dont_write_bytecode = True
 
 DEFAULT_PROJECT = Path(__file__).resolve().parents[1]
 DEFAULT_REPO = DEFAULT_PROJECT.parents[1]
-DEFAULT_SKILL = DEFAULT_REPO / ".agents" / "skills" / "awsome-videos"
+DEFAULT_SKILL = DEFAULT_REPO / "skills" / "awsome-videos"
 
 CHANNELS = {
     "Awesome": {

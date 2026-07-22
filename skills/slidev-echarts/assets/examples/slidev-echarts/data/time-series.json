@@ -1,0 +1,21 @@
+{
+  "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+  "revenue": {
+    "baseline": [44, 47, 50, 54, 58, 61, 64, 67],
+    "scenario": [44, 52, 63, 75, 86, 96, 104, 112],
+    "target": [46, 50, 55, 61, 68, 76, 85, 94]
+  },
+  "channels": {
+    "Paid Search": [42, 48, 51, 46, 39, 35, 33, 32],
+    "Partners": [18, 22, 25, 30, 36, 43, 49, 55],
+    "Product Led": [28, 34, 43, 49, 58, 64, 71, 78],
+    "Events": [14, 18, 22, 20, 26, 31, 35, 38]
+  },
+  "quality": [62, 66, 71, 74, 78, 83, 86, 88],
+  "routeVolume": [
+    { "from": "Awareness", "to": "Signup", "value": 42 },
+    { "from": "Signup", "to": "Activation", "value": 34 },
+    { "from": "Activation", "to": "Expansion", "value": 22 },
+    { "from": "Partner", "to": "Activation", "value": 18 }
+  ]
+}

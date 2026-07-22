@@ -1,0 +1,10 @@
+@startjson
+title JSON
+{
+  "order": {
+    "id": "A-100",
+    "status": "accepted",
+    "items": 3
+  }
+}
+@endjson

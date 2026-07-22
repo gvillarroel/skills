@@ -5,7 +5,8 @@
 This repository is the source of truth for a backlog of Codex skills to create, improve, and validate.
 
 - Keep planned work in [SKILLS.md](SKILLS.md).
-- Keep one concrete skill per directory under `.agents/skills/`, named with the skill name.
+- Keep one concrete skill per directory under `skills/`, named with the skill name.
+- Treat `skills/` as the only versioned source. `.agents/skills/` is an ignored local installation populated from `skills/` and must not contain canonical edits.
 - Treat skill validation as part of the work, not an optional follow-up.
 
 ## Language Rules
@@ -34,8 +35,9 @@ Update the backlog whenever a skill is added, removed, renamed, rejected, or val
 When continuing this repository, start from [SKILLS.md](SKILLS.md), especially the backlog table and recent validation notes. Treat each backlog row as the current state record for that skill.
 
 - Move the skill status forward as work progresses, and leave open questions in the validation notes when a follow-up agent needs context.
+- After changing versioned skill sources, run `uv run --script scripts/sync-local-skills.py` when the repository-local Codex installation must be refreshed.
 - When changing skill behavior, run an isolated `pi` runtime validation before marking the skill `done`. If validation is not possible in the current pass, keep or move the skill to `validating` and record the blocker in [SKILLS.md](SKILLS.md).
-- Keep acceptance fixtures and GitHub Pages example sources under the owning skill's `assets/examples/` directory, and keep reusable skill instructions under the matching `.agents/skills/<skill-name>/` directory.
+- Keep acceptance fixtures and GitHub Pages example sources under the owning skill's `assets/examples/` directory, and keep reusable skill instructions under the matching `skills/<skill-name>/` directory.
 - Regenerate GitHub Pages examples with `uv run --script scripts/build-pages.py` after changing examples that should be published.
 - Keep generated media, local build output, screenshots, and large verification artifacts out of git unless they are intentionally small static examples stored under the owning skill's `assets/examples/` for Pages.
 - Keep reusable or summarized skill evaluation material under `evaluations/`. Store bulky local evaluation runs under `evaluations/runs/`, which is ignored by git.
@@ -46,17 +48,17 @@ When continuing this repository, start from [SKILLS.md](SKILLS.md), especially t
 
 ## Slidev ECharts Track
 
-- Keep the reusable skill in `.agents/skills/slidev-echarts/`.
-- Keep the runnable validation deck in `.agents/skills/slidev-echarts/assets/examples/slidev-echarts/`.
+- Keep the reusable skill in `skills/slidev-echarts/`.
+- Keep the runnable validation deck in `skills/slidev-echarts/assets/examples/slidev-echarts/`.
 - Treat the example deck as the acceptance fixture for the skill. When the skill guidance changes, update the deck if needed and validate that it still builds and renders charts.
-- For chart-type coverage, keep one dedicated reference file per chart type under `.agents/skills/slidev-echarts/references/charts/` and use shared synthetic data files under `.agents/skills/slidev-echarts/assets/examples/slidev-echarts/data/`.
+- For chart-type coverage, keep one dedicated reference file per chart type under `skills/slidev-echarts/references/charts/` and use shared synthetic data files under `skills/slidev-echarts/assets/examples/slidev-echarts/data/`.
 - Keep generated Slidev build output, screenshots, and other transient verification artifacts out of skill directories. Use `projects/<project-id>/artifacts/` for project-specific verification artifacts that should be kept locally.
 
 ## Skill Authoring Rules
 
-- Use one `.agents/skills/<skill-name>/` directory per skill.
+- Use one `skills/<skill-name>/` directory per skill.
 - Use the owning skill's `assets/examples/` for acceptance fixtures and Pages example sources; do not add a new top-level `examples/` source tree.
-- Name directories under `.agents/skills/` with lowercase letters, digits, and hyphens only.
+- Name directories under `skills/` with lowercase letters, digits, and hyphens only.
 - Keep skill names under 64 characters.
 - Every skill directory must contain `SKILL.md`.
 - In new skills, `SKILL.md` frontmatter must contain only `name` and `description`.
@@ -87,7 +89,7 @@ When an example, fixture, scene, chart, conversion setting, recording flow, audi
 Published examples must be referenceable and discoverable from the repository's main examples page.
 
 - Every published example set must have a stable lowercase hyphen-case ID. Use the same ID in source metadata, gallery DOM attributes, generated Pages cards, validation notes, and pattern references.
-- When adding an example set under `.agents/skills/<skill-name>/assets/examples/`, add it to `PUBLISHED_EXAMPLE_SETS` in `scripts/build-pages.py` unless it is only a raw support folder for another published gallery. Support-only folders must be named in `UNLISTED_EXAMPLE_SOURCES` with a short comment.
+- When adding an example set under `skills/<skill-name>/assets/examples/`, add it to `PUBLISHED_EXAMPLE_SETS` in `scripts/build-pages.py` unless it is only a raw support folder for another published gallery. Support-only folders must be named in `UNLISTED_EXAMPLE_SOURCES` with a short comment.
 - The main GitHub Pages index is the canonical list of published example sets. Do not publish a Pages example that is reachable only by knowing its path.
 - Individual gallery items should also expose stable item IDs when the gallery contains more than one example. Prefer `id`, `data-example-id`, `data-pattern-id`, `data-chart-type`, or a domain-specific equivalent that appears in verification output.
 - After changing published examples or the example catalog, run `uv run --script scripts/build-pages.py` and `uv run --script scripts/validate-skills.py`.
@@ -114,7 +116,7 @@ Use one canonical grammar for reusable and published pattern IDs:
 Validate skills as standalone bundles before treating them as done. The target question is: can an agent with only the evaluated skill, a task prompt, and normal local tools produce a good result?
 
 - Use `pi` as the isolated harness for forward tests. Use `gpt-5.3-codex-spark` through `--model openai-codex/gpt-5.3-codex-spark` unless a backlog note explicitly records a different model.
-- Run `pi` from a temporary workspace under `evaluations/runs/`, not from the repository root. Copy only `.agents/skills/<skill-name>/` into that workspace.
+- Run `pi` from a temporary workspace under `evaluations/runs/`, not from the repository root. Copy only `skills/<skill-name>/` into that workspace.
 - Use the runtime payload profile for normal skill-use tests: include `SKILL.md`, `agents/`, `references/`, `scripts/`, and runtime `assets/` such as templates, but exclude acceptance fixtures under `assets/examples/` and dependency folders such as `node_modules`. Use a full payload only when the task is to maintain or validate the fixture itself.
 - Disable ambient context and skill discovery with `--no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes`, and load exactly the copied skill with `--skill skills/<skill-name>`.
 - Treat the copied `skills/<skill-name>/` directory as a read-only resource during forward tests. Generated task files should be written to the workspace root or a requested project/artifact directory, not into the copied skill directory.

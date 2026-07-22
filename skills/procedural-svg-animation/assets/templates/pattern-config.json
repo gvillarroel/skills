@@ -1,0 +1,16 @@
+{
+  "pattern": "procedural-svg-optimal-transport",
+  "seed": 104729,
+  "width": 960,
+  "height": 600,
+  "duration_ms": 8000,
+  "palette": "colorset2",
+  "motion": "full",
+  "loop": true,
+  "parameters": {
+    "site_count": 10,
+    "epsilon": 0.1,
+    "minimum_iterations": 100,
+    "frame_count": 7
+  }
+}

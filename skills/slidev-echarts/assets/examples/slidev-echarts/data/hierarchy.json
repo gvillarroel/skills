@@ -1,0 +1,55 @@
+{
+  "tree": {
+    "name": "Growth System",
+    "children": [
+      {
+        "name": "Demand",
+        "children": [
+          { "name": "Product Led", "value": 78 },
+          { "name": "Partners", "value": 55 },
+          { "name": "Events", "value": 38 }
+        ]
+      },
+      {
+        "name": "Conversion",
+        "children": [
+          { "name": "Activation", "value": 64 },
+          { "name": "Qualification", "value": 42 }
+        ]
+      },
+      {
+        "name": "Expansion",
+        "children": [
+          { "name": "Lifecycle", "value": 47 },
+          { "name": "Success", "value": 58 }
+        ]
+      }
+    ]
+  },
+  "portfolio": [
+    {
+      "name": "Demand",
+      "children": [
+        { "name": "Product Led", "value": 78 },
+        { "name": "Partners", "value": 55 },
+        { "name": "Events", "value": 38 }
+      ]
+    },
+    {
+      "name": "Conversion",
+      "children": [
+        { "name": "Activation", "value": 64 },
+        { "name": "Qualification", "value": 42 },
+        { "name": "Trial Coach", "value": 36 }
+      ]
+    },
+    {
+      "name": "Expansion",
+      "children": [
+        { "name": "Lifecycle", "value": 47 },
+        { "name": "Success", "value": 58 },
+        { "name": "Account Plans", "value": 33 }
+      ]
+    }
+  ]
+}

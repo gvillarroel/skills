@@ -5,7 +5,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const repoRoot = resolve(__dirname, "..", "..", "..");
-const deckDir = resolve(repoRoot, ".agents", "skills", "html-d3-anime-video-workflow", "assets", "examples", "ai-concept-videos");
+const deckDir = resolve(repoRoot, "skills", "html-d3-anime-video-workflow", "assets", "examples", "ai-concept-videos");
 const { beats, concepts, palette, researchNotes } = await import(pathToFileURL(join(deckDir, "concepts.js")).href);
 
 const errors = [];

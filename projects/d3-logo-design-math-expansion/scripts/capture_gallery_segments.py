@@ -17,7 +17,7 @@ from playwright.sync_api import sync_playwright
 
 
 ROOT = Path(__file__).resolve().parents[3]
-SOURCE = ROOT / ".agents/skills/d3-logo-design/assets/examples/d3-logo-design/index.html"
+SOURCE = ROOT / "skills/d3-logo-design/assets/examples/d3-logo-design/index.html"
 OUTPUT = ROOT / "projects/d3-logo-design-math-expansion/artifacts/screenshots"
 
 
