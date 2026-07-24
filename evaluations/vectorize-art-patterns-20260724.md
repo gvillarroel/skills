@@ -138,14 +138,21 @@ copies the 300 SVG downloads, reports, manifest, responsive page, and gallery
 runtime into `docs/examples/vectorize-art-patterns/` (34.95 MiB total Pages
 output in the final local build).
 
-The previous eight-item gallery was published through:
+The 300-pattern gallery was published through:
 
-- implementation PR `#18`;
-- merge commit `54d1ca5c`;
-- successful Pages workflow `30105911161`.
+- implementation PR `#20`;
+- merge commit `d5073f434a6d2d476042c97689357b7e903ec22f`;
+- successful Pages workflow `30132325089`;
+- live URL:
+  `https://gvillarroel.github.io/skills/examples/vectorize-art-patterns/`.
 
-Publication identifiers and production verification for the 300-pattern
-replacement will be appended after merge.
+Production verification returned HTTP 200 for the page and manifest, matched
+catalog fingerprint
+`061c68d2c797a1acf0d497abc65adaadeb836f3b457ec0b5310ab10fd7589c74`,
+and fetched all 300 SVGs successfully. Every live SVG reported
+`image/svg+xml`, was nonempty, and matched its manifest SHA-256. Production
+Playwright repeated the desktop/mobile, filtering, pagination, direct-link,
+footer, and visible-image checks with zero console errors.
 
 ## Repository Gates
 
