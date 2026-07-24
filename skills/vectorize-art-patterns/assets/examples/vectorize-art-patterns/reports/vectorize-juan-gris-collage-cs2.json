@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "skills/vectorize-art-patterns/assets/base-images/juan-gris-still-life-1919.jpg",
+  "input_sha256": "2f2d277467ede0c568ce79d4ac22b74868e0e5ad2faca2987e3f2a1a1c586f97",
+  "output": "skills/vectorize-art-patterns/assets/examples/vectorize-art-patterns/svgs/vectorize-juan-gris-collage-cs2.svg",
+  "output_sha256": "91628e829128dea43fad7876fbf7b5a1e01a911350fa4978b8bfe7a4bf77641f",
+  "pattern_id": "vectorize-juan-gris-collage-cs2",
+  "mode": "collage",
+  "tile": "none",
+  "palette_method": "median-cut",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "colorset_mapping": [
+    {
+      "source": "#1b1e1b",
+      "target": "#1c1c1c"
+    },
+    {
+      "source": "#f2f6f1",
+      "target": "#f7f7f7"
+    },
+    {
+      "source": "#738fa8",
+      "target": "#828282"
+    },
+    {
+      "source": "#e9e5d6",
+      "target": "#cfcfcf"
+    },
+    {
+      "source": "#d7b762",
+      "target": "#f1c319"
+    },
+    {
+      "source": "#39629b",
+      "target": "#007298"
+    },
+    {
+      "source": "#283730",
+      "target": "#333e48"
+    },
+    {
+      "source": "#5d7187",
+      "target": "#004d66"
+    }
+  ],
+  "source_width": 960,
+  "source_height": 1387,
+  "vector_width": 388,
+  "vector_height": 560,
+  "render_width": 388,
+  "render_height": 560,
+  "palette": [
+    "#1c1c1c",
+    "#f7f7f7",
+    "#828282",
+    "#cfcfcf",
+    "#f1c319",
+    "#007298",
+    "#333e48",
+    "#004d66"
+  ],
+  "path_count": 7,
+  "contour_count": 212,
+  "point_count": 2707,
+  "output_bytes": 28486,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "juan-gris-still-life-1919",
+    "license": "Public-Domain",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Juan_Gris_003.jpg",
+    "attribution": "Juan Gris; The Yorck Project (2002) 10.000 Meisterwerke der Malerei (DVD-ROM), distributed by DIRECTMEDIA Publishing GmbH. ISBN : 3936122202 .",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "2f2d277467ede0c568ce79d4ac22b74868e0e5ad2faca2987e3f2a1a1c586f97"
+  }
+}
