@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "skills/vectorize-art-patterns/assets/base-images/hilma-primordial-chaos-16.jpg",
+  "input_sha256": "2e4e637dc0c70e99f8b6b81c84d17dc022d9a1f650939176aa07ea426d547817",
+  "output": "skills/vectorize-art-patterns/assets/examples/vectorize-art-patterns/svgs/vectorize-cellular-tide-04-cs2.svg",
+  "output_sha256": "9686739194cf7196b1a34c5685580ab92bd4bba8295e8ff74a65c1cb9d45cc25",
+  "pattern_id": "vectorize-cellular-tide-04-cs2",
+  "mode": "organic",
+  "tile": "none",
+  "palette_method": "max-coverage",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "colorset_mapping": [
+    {
+      "source": "#373f83",
+      "target": "#333e48"
+    },
+    {
+      "source": "#5b708f",
+      "target": "#007298"
+    },
+    {
+      "source": "#8d9692",
+      "target": "#828282"
+    },
+    {
+      "source": "#7e785f",
+      "target": "#45842a"
+    },
+    {
+      "source": "#a49f75",
+      "target": "#cfcfcf"
+    },
+    {
+      "source": "#5e6566",
+      "target": "#004d66"
+    }
+  ],
+  "variation": {
+    "seed": 331685,
+    "crop_scale": 0.6726,
+    "crop_x": 0.7479,
+    "crop_y": 0.4423,
+    "rotation": -2.447,
+    "flow_strength": 8.624,
+    "flow_frequency": 1.837,
+    "composition_sha256": "89583338f89f40ef2d457be07db105720d2c413fd469ff09f45605fbeb8c0974"
+  },
+  "composition_sha256": "89583338f89f40ef2d457be07db105720d2c413fd469ff09f45605fbeb8c0974",
+  "parameters": {
+    "colors": 7,
+    "smoothing": 0.777,
+    "detail": 0.647,
+    "min_area": 9.46,
+    "max_dimension": 293,
+    "palette_method": "max-coverage",
+    "outline": 0.026,
+    "variation": {
+      "seed": 331685,
+      "crop_scale": 0.6726,
+      "crop_x": 0.7479,
+      "crop_y": 0.4423,
+      "rotation": -2.447,
+      "flow_strength": 8.624,
+      "flow_frequency": 1.837,
+      "composition_sha256": "89583338f89f40ef2d457be07db105720d2c413fd469ff09f45605fbeb8c0974"
+    }
+  },
+  "source_width": 960,
+  "source_height": 1329,
+  "vector_width": 212,
+  "vector_height": 293,
+  "render_width": 212,
+  "render_height": 293,
+  "palette": [
+    "#333e48",
+    "#007298",
+    "#828282",
+    "#45842a",
+    "#cfcfcf",
+    "#004d66"
+  ],
+  "path_count": 5,
+  "contour_count": 57,
+  "point_count": 406,
+  "output_bytes": 14785,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "hilma-primordial-chaos-16",
+    "license": "Public-Domain",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint,_1906-07,_Primordial_Chaos_-_No_16.jpg",
+    "attribution": "Hilma af Klint; [1]",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "2e4e637dc0c70e99f8b6b81c84d17dc022d9a1f650939176aa07ea426d547817"
+  }
+}

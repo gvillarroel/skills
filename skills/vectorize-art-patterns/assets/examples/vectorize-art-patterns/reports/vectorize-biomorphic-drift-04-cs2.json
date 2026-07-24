@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "skills/vectorize-art-patterns/assets/base-images/kandinsky-improvisation-27.jpg",
+  "input_sha256": "fd40933f2efaae993e9d7103a45cb9cc5dfa807548e4770dc18a43cabe80ad28",
+  "output": "skills/vectorize-art-patterns/assets/examples/vectorize-art-patterns/svgs/vectorize-biomorphic-drift-04-cs2.svg",
+  "output_sha256": "1ba56131b38d735bd2302d4db27a8f44bf8de4ef05acffd51bcd496628c664c9",
+  "pattern_id": "vectorize-biomorphic-drift-04-cs2",
+  "mode": "organic",
+  "tile": "none",
+  "palette_method": "max-coverage",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "colorset_mapping": [
+    {
+      "source": "#cc8a3a",
+      "target": "#f7f7f7"
+    },
+    {
+      "source": "#a5b99d",
+      "target": "#007298"
+    },
+    {
+      "source": "#edede8",
+      "target": "#ffffff"
+    },
+    {
+      "source": "#6a6436",
+      "target": "#45842a"
+    },
+    {
+      "source": "#241e13",
+      "target": "#1c1c1c"
+    },
+    {
+      "source": "#52639d",
+      "target": "#004d66"
+    }
+  ],
+  "variation": {
+    "seed": 231682,
+    "crop_scale": 0.6604,
+    "crop_x": 0.4792,
+    "crop_y": 0.3081,
+    "rotation": 11.69,
+    "flow_strength": 16.29,
+    "flow_frequency": 2.432,
+    "composition_sha256": "d49526152f553f39d11409a236b7a444f8c6768b4a208be9eae84161d88e1247"
+  },
+  "composition_sha256": "d49526152f553f39d11409a236b7a444f8c6768b4a208be9eae84161d88e1247",
+  "parameters": {
+    "colors": 6,
+    "smoothing": 0.848,
+    "detail": 0.517,
+    "min_area": 17.98,
+    "max_dimension": 335,
+    "palette_method": "max-coverage",
+    "outline": 0.372,
+    "variation": {
+      "seed": 231682,
+      "crop_scale": 0.6604,
+      "crop_x": 0.4792,
+      "crop_y": 0.3081,
+      "rotation": 11.69,
+      "flow_strength": 16.29,
+      "flow_frequency": 2.432,
+      "composition_sha256": "d49526152f553f39d11409a236b7a444f8c6768b4a208be9eae84161d88e1247"
+    }
+  },
+  "source_width": 627,
+  "source_height": 536,
+  "vector_width": 335,
+  "vector_height": 286,
+  "render_width": 335,
+  "render_height": 286,
+  "palette": [
+    "#f7f7f7",
+    "#007298",
+    "#ffffff",
+    "#45842a",
+    "#1c1c1c",
+    "#004d66"
+  ],
+  "path_count": 5,
+  "contour_count": 71,
+  "point_count": 793,
+  "output_bytes": 26729,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "kandinsky-improvisation-27",
+    "license": "Public-Domain",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Vassily_Kandinsky,_1912_-_Improvisation_27,_Garden_of_Love_II.jpg",
+    "attribution": "Wassily Kandinsky; https://www.metmuseum.org/toah/works-of-art/49.70.1",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "fd40933f2efaae993e9d7103a45cb9cc5dfa807548e4770dc18a43cabe80ad28"
+  }
+}

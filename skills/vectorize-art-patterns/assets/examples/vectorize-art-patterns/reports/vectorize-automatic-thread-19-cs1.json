@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "skills/vectorize-art-patterns/assets/base-images/hilma-primordial-chaos-16.jpg",
+  "input_sha256": "2e4e637dc0c70e99f8b6b81c84d17dc022d9a1f650939176aa07ea426d547817",
+  "output": "skills/vectorize-art-patterns/assets/examples/vectorize-art-patterns/svgs/vectorize-automatic-thread-19-cs1.svg",
+  "output_sha256": "5422ea5c7430b2711125d5124a57a1416833979ee16253acc620929e37ee6a7f",
+  "pattern_id": "vectorize-automatic-thread-19-cs1",
+  "mode": "ink",
+  "tile": "none",
+  "palette_method": "median-cut",
+  "colorset": "colorset1",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "colorset_mapping": [
+    {
+      "source": "#ffffff",
+      "target": "#f7f7f7"
+    },
+    {
+      "source": "#111111",
+      "target": "#9e1b32"
+    }
+  ],
+  "variation": {
+    "seed": 1150491,
+    "crop_scale": 0.7606,
+    "crop_x": 0.3741,
+    "crop_y": 0.0378,
+    "rotation": 14.422,
+    "flow_strength": 9.256,
+    "flow_frequency": 1.893,
+    "composition_sha256": "e5f8205e1e1db752cfc4133e20f86ab73546a9a697c52167ef356b95e80993f7"
+  },
+  "composition_sha256": "e5f8205e1e1db752cfc4133e20f86ab73546a9a697c52167ef356b95e80993f7",
+  "parameters": {
+    "colors": 2,
+    "smoothing": 0.672,
+    "detail": 0.627,
+    "min_area": 7.79,
+    "max_dimension": 294,
+    "palette_method": "median-cut",
+    "outline": 0.0,
+    "variation": {
+      "seed": 1150491,
+      "crop_scale": 0.7606,
+      "crop_x": 0.3741,
+      "crop_y": 0.0378,
+      "rotation": 14.422,
+      "flow_strength": 9.256,
+      "flow_frequency": 1.893,
+      "composition_sha256": "e5f8205e1e1db752cfc4133e20f86ab73546a9a697c52167ef356b95e80993f7"
+    }
+  },
+  "source_width": 960,
+  "source_height": 1329,
+  "vector_width": 212,
+  "vector_height": 294,
+  "render_width": 212,
+  "render_height": 294,
+  "palette": [
+    "#f7f7f7",
+    "#9e1b32"
+  ],
+  "path_count": 1,
+  "contour_count": 157,
+  "point_count": 1060,
+  "output_bytes": 31480,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "hilma-primordial-chaos-16",
+    "license": "Public-Domain",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint,_1906-07,_Primordial_Chaos_-_No_16.jpg",
+    "attribution": "Hilma af Klint; [1]",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "2e4e637dc0c70e99f8b6b81c84d17dc022d9a1f650939176aa07ea426d547817"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "skills/vectorize-art-patterns/assets/base-images/redon-flower-clouds.jpg",
+  "input_sha256": "96e1d097485e49b260d1c738de783e6a6602a9df8e5198f4b474fdccbe0e96ba",
+  "output": "skills/vectorize-art-patterns/assets/examples/vectorize-art-patterns/svgs/vectorize-clouded-pulse-07-cs1.svg",
+  "output_sha256": "eb41abb157de82344d7f3d6dbdcc218962632cc1f9ce7b87903aae985988ecb1",
+  "pattern_id": "vectorize-clouded-pulse-07-cs1",
+  "mode": "stain",
+  "tile": "none",
+  "palette_method": "median-cut",
+  "colorset": "colorset1",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "colorset_mapping": [
+    {
+      "source": "#7e6e66",
+      "target": "#333e48"
+    },
+    {
+      "source": "#805d4c",
+      "target": "#828282"
+    },
+    {
+      "source": "#68544f",
+      "target": "#6d1222"
+    },
+    {
+      "source": "#936957",
+      "target": "#e8002a"
+    },
+    {
+      "source": "#8f796f",
+      "target": "#cfcfcf"
+    },
+    {
+      "source": "#90614c",
+      "target": "#9e1b32"
+    }
+  ],
+  "variation": {
+    "seed": 755454,
+    "crop_scale": 0.7684,
+    "crop_x": 0.9834,
+    "crop_y": 0.1115,
+    "rotation": 1.065,
+    "flow_strength": 5.11,
+    "flow_frequency": 1.926,
+    "composition_sha256": "1d6b155e70ead62eda2f23810f78dfff797102ba41a1e8a6ffeafa52551ae8f8"
+  },
+  "composition_sha256": "1d6b155e70ead62eda2f23810f78dfff797102ba41a1e8a6ffeafa52551ae8f8",
+  "parameters": {
+    "colors": 6,
+    "smoothing": 0.724,
+    "detail": 0.364,
+    "min_area": 26.29,
+    "max_dimension": 338,
+    "palette_method": "median-cut",
+    "outline": 0.03,
+    "variation": {
+      "seed": 755454,
+      "crop_scale": 0.7684,
+      "crop_x": 0.9834,
+      "crop_y": 0.1115,
+      "rotation": 1.065,
+      "flow_strength": 5.11,
+      "flow_frequency": 1.926,
+      "composition_sha256": "1d6b155e70ead62eda2f23810f78dfff797102ba41a1e8a6ffeafa52551ae8f8"
+    }
+  },
+  "source_width": 960,
+  "source_height": 796,
+  "vector_width": 338,
+  "vector_height": 280,
+  "render_width": 338,
+  "render_height": 280,
+  "palette": [
+    "#333e48",
+    "#828282",
+    "#6d1222",
+    "#e8002a",
+    "#cfcfcf",
+    "#9e1b32"
+  ],
+  "path_count": 5,
+  "contour_count": 38,
+  "point_count": 408,
+  "output_bytes": 15964,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "redon-flower-clouds",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/76395",
+    "attribution": "Odilon Redon French, 1840-1916; Through prior bequest of Mr. and Mrs. Martin A. Ryerson Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "96e1d097485e49b260d1c738de783e6a6602a9df8e5198f4b474fdccbe0e96ba"
+  }
+}

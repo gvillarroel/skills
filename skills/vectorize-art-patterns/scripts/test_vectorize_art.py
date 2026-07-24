@@ -130,6 +130,7 @@ def run_vectorizer(
     tile: str,
     colorset: str | None,
     suffix: str = "",
+    variation_args: list[str] | None = None,
 ) -> tuple[Path, dict[str, Any]]:
     output = workspace / f"{mode}-{tile}{suffix}.svg"
     report = workspace / f"{mode}-{tile}{suffix}.json"
@@ -156,6 +157,8 @@ def run_vectorizer(
     ]
     if colorset:
         argv.extend(["--colorset", colorset])
+    if variation_args:
+        argv.extend(variation_args)
     args = vectorizer.apply_mode_defaults(vectorizer.build_parser().parse_args(argv))
     vector_report = vectorizer.vectorize(args)
     validation_args = validator.build_parser().parse_args(
@@ -191,7 +194,117 @@ def run_vectorizer(
             raise RuntimeError(
                 f"{colorset} validator reported unexpected color tokens"
             )
+        anchor_role = "primary" if colorset == "colorset1" else "secondary"
+        anchor = contract["colorsets"][colorset]["roles"][anchor_role]
+        if anchor not in vector_report["palette"]:
+            raise RuntimeError(f"{colorset} output did not retain its anchor color")
     return output, vector_report
+
+
+def assert_variation_contract(workspace: Path, manifest: Path) -> dict[str, Any]:
+    common = [
+        "--variation-seed",
+        "8675309",
+        "--crop-scale",
+        "0.72",
+        "--crop-x",
+        "0.23",
+        "--crop-y",
+        "0.67",
+        "--rotation",
+        "-11.5",
+        "--flow-strength",
+        "8.25",
+        "--flow-frequency",
+        "2.4",
+    ]
+    first, first_report = run_vectorizer(
+        workspace,
+        manifest,
+        "organic",
+        "none",
+        "colorset2",
+        "-variation-a",
+        common,
+    )
+    second, second_report = run_vectorizer(
+        workspace,
+        manifest,
+        "organic",
+        "none",
+        "colorset2",
+        "-variation-b",
+        common,
+    )
+    if first.read_bytes() != second.read_bytes():
+        raise RuntimeError("Seeded variation was not byte-deterministic")
+    if first_report["composition_sha256"] != second_report["composition_sha256"]:
+        raise RuntimeError("Seeded variation composition hash was not deterministic")
+
+    changed, changed_report = run_vectorizer(
+        workspace,
+        manifest,
+        "organic",
+        "none",
+        "colorset2",
+        "-variation-c",
+        [
+            *common[:1],
+            "8675310",
+            *common[2:],
+        ],
+    )
+    if changed_report["composition_sha256"] == first_report["composition_sha256"]:
+        raise RuntimeError("Different variation seeds reused a composition hash")
+    if changed.read_bytes() == first.read_bytes():
+        raise RuntimeError("Different variation seeds produced identical SVG bytes")
+
+    inspected = validator.inspect_svg(first)
+    if inspected["variation_seed"] != 8675309:
+        raise RuntimeError("Variation seed was not embedded in the SVG root")
+    validation_args = validator.build_parser().parse_args(
+        [
+            str(first),
+            "--expected-variation-seed",
+            "8675309",
+        ]
+    )
+    validator.validate_against_args(inspected, validation_args)
+
+    for option, value in (
+        ("--crop-scale", "0.2"),
+        ("--flow-strength", "-1"),
+        ("--flow-frequency", "0"),
+    ):
+        output = workspace / f"invalid-{option[2:]}.svg"
+        report = workspace / f"invalid-{option[2:]}.json"
+        argv = [
+            str(workspace / "source.png"),
+            str(output),
+            "--mode",
+            "organic",
+            "--rights-basis",
+            "user-owned",
+            "--report",
+            str(report),
+            option,
+            value,
+        ]
+        args = vectorizer.apply_mode_defaults(
+            vectorizer.build_parser().parse_args(argv)
+        )
+        try:
+            vectorizer.vectorize(args)
+        except vectorizer.VectorizeError:
+            continue
+        raise RuntimeError(f"Invalid variation option was accepted: {option}={value}")
+
+    return {
+        "seed": 8675309,
+        "composition_sha256": first_report["composition_sha256"],
+        "different_seed_changes_composition": True,
+        "invalid_variation_rejected": True,
+    }
 
 
 def assert_rejected_license(workspace: Path, image: Path) -> None:
@@ -334,6 +447,7 @@ def run_tests() -> dict[str, Any]:
         assert_rejected_license(workspace, source)
         assert_asset_manifest_checks(workspace, manifest)
         assert_user_owned_path(workspace)
+        variation = assert_variation_contract(workspace, manifest)
 
         return {
             "ok": True,
@@ -345,6 +459,8 @@ def run_tests() -> dict[str, Any]:
             "user_owned_path": True,
             "colorset1_safe": True,
             "colorset2_safe": True,
+            "colorset_anchors_visible": True,
+            "variation": variation,
         }
 
 

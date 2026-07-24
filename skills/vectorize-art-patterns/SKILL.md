@@ -1,6 +1,6 @@
 ---
 name: vectorize-art-patterns
-description: Simplify openly licensed or user-owned raster artwork and organic artistic patterns into editable standalone SVGs using deterministic smoothing, palette reduction, canonical colorset1/colorset2 adaptation, ink, stain, collage, contour-tracing, and tiling pipelines. Use when Codex needs to vectorize or reinterpret raster art, derive non-geometric abstract or Cubist material patterns, generate repeatable SVG pattern tiles, create palette-matched comparison galleries or GitHub Pages examples, preserve licensed base-image assets with provenance, or validate that an SVG is truly vector rather than a raster wrapper.
+description: Simplify openly licensed or user-owned raster artwork and organic artistic patterns into editable standalone SVGs using deterministic smoothing, palette reduction, seeded composition variation, canonical colorset1/colorset2 adaptation, ink, stain, collage, contour-tracing, and tiling pipelines. Use when Codex needs to vectorize or reinterpret raster art, derive non-geometric abstract or Cubist material patterns, build multi-pattern collections with no reused compositions or paths, generate repeatable SVG pattern tiles, create palette-matched comparison galleries or GitHub Pages examples, preserve licensed base-image assets with provenance, or validate that an SVG is truly vector rather than a raster wrapper.
 ---
 
 # Vectorize Art Patterns
@@ -20,6 +20,7 @@ Create a rights-traceable vector interpretation, not a pixel-perfect autotrace. 
    - `stain`: watercolor, marbling, clouds, soft color fields.
    - `collage`: Synthetic Cubism, pasted-paper masses, torn silhouettes.
    - Read `references/pipeline-selection.md` before tuning an unfamiliar source or adding a technique.
+   - For a multi-pattern collection, also read `references/collection-generation.md` before choosing parameters or counting outputs.
 4. Choose the paint contract:
    - Omit `--colorset` to retain a simplified source-derived palette.
    - Use `--colorset colorset1` for red-neutral work.
@@ -29,7 +30,8 @@ Create a rights-traceable vector interpretation, not a pixel-perfect autotrace. 
 6. Validate the image catalog with `scripts/validate_open_assets.py`.
 7. Vectorize with the bundled script and write a report.
 8. Run the structural validator, then inspect the SVG directly in a browser at full size and thumbnail size. For tiles, inspect every seam and the four-way junction.
-9. Deliver the SVG, report, and required attribution. State that it is a modified vector interpretation.
+9. For a collection, reject every repeated composition, complete geometry, or individual path signature. Do not count recolors as independent drawings.
+10. Deliver the SVG, report, and required attribution. State that it is a modified vector interpretation.
 
 ## Acquire an Open Image
 
@@ -73,6 +75,13 @@ uv run --script skills/vectorize-art-patterns/scripts/vectorize_art.py `
   --mode organic `
   --colorset colorset2 `
   --tile mirror `
+  --variation-seed 140021 `
+  --crop-scale 0.72 `
+  --crop-x 0.28 `
+  --crop-y 0.63 `
+  --rotation -9 `
+  --flow-strength 7.5 `
+  --flow-frequency 2.4 `
   --pattern-id hilma-organic-pattern `
   --source-manifest assets/base-images/manifest.json `
   --source-id hilma-pleiade-14 `
@@ -112,6 +121,11 @@ For paired colorset variants, run the same source and vector parameters twice
 with different `--colorset` values and variant-suffixed pattern IDs. Geometry
 must remain byte-identical after isolating `viewBox` and path data.
 
+For independent collections, do the opposite: give every member distinct
+composition parameters and validate that no complete geometry or individual
+path data repeats. Colorset variants are comparison outputs, not additional
+unique drawings. Follow `references/collection-generation.md`.
+
 ## Publish the Example Gallery
 
 Use the bundled acceptance fixture when maintaining this repository's GitHub
@@ -123,9 +137,11 @@ uv run --script skills/vectorize-art-patterns/scripts/validate_example_gallery.p
 uv run --script scripts/build-pages.py
 ```
 
-The published set uses the stable page ID `vectorize-art-patterns`, four base
-motifs, and `-cs1` / `-cs2` pattern-ID suffixes. Rebuild and validate the
-fixture before publishing Pages.
+The published set uses the stable page ID `vectorize-art-patterns`, 300
+independent drawings across 15 families, and `-cs1` / `-cs2` pattern-ID
+suffixes. It contains 150 members of each colorset; no colorset pair shares
+composition, complete geometry, or path data. Rebuild and validate the fixture
+before publishing Pages.
 
 Browser review must confirm:
 
@@ -133,6 +149,8 @@ Browser review must confirm:
 - no dominant contour is clipped, folded, or replaced by accidental spikes;
 - color regions do not expose unexpected holes;
 - the SVG remains legible at small size;
+- a stratified family sample has meaningful contrast and each Colorset 2
+  member retains a visible chromatic anchor;
 - mirrored tiles have no obvious seams or broken four-way junctions;
 - the result does not collapse into unwanted rigid geometry;
 - the SVG and JSON report retain the correct source license and hash.
@@ -144,6 +162,9 @@ Browser review must confirm:
 - Embed the source SHA-256, rights basis, license, source URL, and pipeline parameters in `<metadata>`.
 - Embed `data-colorset`, the colorset name, and the bundled palette-contract SHA-256. Use only exact palette tokens when a colorset is selected.
 - Keep paired colorset variants geometry-identical; map paint only after tracing.
+- For a unique collection, keep every composition, complete geometry, and
+  individual path signature distinct. Forbid `<use>` and do not count recolors,
+  transforms, tile wrappers, or renamed copies as new members.
 - Use compound paths with `fill-rule="evenodd"` for holes.
 - Use `<pattern>` only for requested repeat or mirror output.
 - Do not embed the original raster, remote CSS, fonts, scripts, or external image links.
@@ -168,9 +189,10 @@ Do not add a new mode as an untested stylistic alias.
 - `scripts/validate_open_assets.py`: verify base-image hashes, dimensions, MIME types, source URLs, and derivative-friendly licenses.
 - `scripts/vectorize_art.py`: generate deterministic organic, ink, stain, or collage SVG paths and a sidecar report.
 - `scripts/validate_art_svg.py`: enforce the editable standalone SVG contract.
-- `scripts/build_example_gallery.py`: regenerate the eight paired Pages SVGs and their manifest.
-- `scripts/validate_example_gallery.py`: enforce page, manifest, geometry-pair, SVG, report, and colorset parity.
-- `scripts/test_vectorize_art.py`: exercise all modes, both colorsets, determinism, restricted-license rejection, and tampered-asset detection.
+- `scripts/build_example_gallery.py`: regenerate the 300-member, 15-family Pages collection and its uniqueness manifest.
+- `scripts/validate_example_gallery.py`: enforce page/manifest parity, 300 unique compositions and geometries, globally unique path data, no reusable SVG elements, report parity, and colorset anchors.
+- `scripts/test_vectorize_art.py`: exercise all modes, both colorsets, seeded variation, determinism, invalid variation bounds, restricted-license rejection, and tampered-asset detection.
+- `references/collection-generation.md`: generate deterministic collections and enforce no-reuse semantics.
 - `references/colorset-adaptation.md`: select colorsets and preserve geometry across palette variants.
 - `references/pipeline-selection.md`: choose and tune filters or research an extension.
 - `references/rights-and-provenance.md`: apply the license allowlist and attribution rules.
