@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vectorize Art Patterns"
+  short_description: "Turn open raster art into palette-safe SVG"
+  default_prompt: "Use $vectorize-art-patterns to simplify an open-licensed or user-owned artwork into a validated editable SVG using colorset1 or colorset2."

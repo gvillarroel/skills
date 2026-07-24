@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "pageId": "vectorize-art-patterns",
+  "patterns": [
+    {
+      "slug": "hilma-chaos-organic",
+      "idBase": "vectorize-hilma-chaos-organic",
+      "title": "Primordial Spiral Field",
+      "description": "Biomorphic spirals and drifting marks reduced to broad editable color masses.",
+      "sourceId": "hilma-primordial-chaos-16",
+      "mode": "organic",
+      "tile": "none",
+      "maxDimension": 560,
+      "minArea": 20,
+      "minPaths": 3
+    },
+    {
+      "slug": "hilma-chaos-stain-mirror",
+      "idBase": "vectorize-hilma-chaos-stain-mirror",
+      "title": "Mirrored Stain Field",
+      "description": "Soft color regions mirrored into a continuous four-way abstract field.",
+      "sourceId": "hilma-primordial-chaos-16",
+      "mode": "stain",
+      "tile": "mirror",
+      "maxDimension": 480,
+      "minArea": 22,
+      "minPaths": 3
+    },
+    {
+      "slug": "hilma-pleiade-ink-mirror",
+      "idBase": "vectorize-hilma-pleiade-ink-mirror",
+      "title": "Pleiades Calligraphic Mirror",
+      "description": "Hand-drawn loops simplified to one compound ink path and mirrored without raster content.",
+      "sourceId": "hilma-pleiade-14",
+      "mode": "ink",
+      "tile": "mirror",
+      "maxDimension": 480,
+      "minArea": 12,
+      "minPaths": 1
+    },
+    {
+      "slug": "juan-gris-collage",
+      "idBase": "vectorize-juan-gris-collage",
+      "title": "Cubist Paper Masses",
+      "description": "Overlapping still-life fragments retained as irregular cut-paper silhouettes rather than generic facets.",
+      "sourceId": "juan-gris-still-life-1919",
+      "mode": "collage",
+      "tile": "none",
+      "maxDimension": 560,
+      "minArea": 20,
+      "minPaths": 4
+    }
+  ]
+}

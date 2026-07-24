@@ -103,6 +103,11 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "threejs-animated-3d",
+    "vectorize-art-patterns": SKILLS
+    / "vectorize-art-patterns"
+    / "assets"
+    / "examples"
+    / "vectorize-art-patterns",
 }
 UNLISTED_EXAMPLE_SOURCES = {
     # Raw source folders copied for linked galleries or verification assets, not standalone landing pages.
@@ -215,6 +220,14 @@ PUBLISHED_EXAMPLE_SETS = [
         "href": "examples/threejs-animated-3d/",
         "kind": "WebGL",
         "description": "Browser-rendered 3D scenes built from the reusable Three.js skill patterns.",
+    },
+    {
+        "id": "vectorize-art-patterns",
+        "source": "vectorize-art-patterns",
+        "title": "Vectorized Art Patterns",
+        "href": "examples/vectorize-art-patterns/",
+        "kind": "Editable SVG",
+        "description": "Open-source Hilma af Klint and Juan Gris works simplified into four editable motifs with geometry-matched colorset1 and colorset2 variants.",
     },
     {
         "id": "slidev-echarts",
@@ -684,6 +697,7 @@ def build_docs() -> None:
     copy_tree(example_source("mermaid-animation-directives"), DOCS / "examples" / "mermaid-animation-directives")
     copy_tree(example_source("plantuml-colorset-renderer"), DOCS / "examples" / "plantuml-colorset-renderer")
     copy_tree(example_source("plantuml-colorset-renderer-cs1"), DOCS / "examples" / "plantuml-colorset-renderer-cs1")
+    copy_tree(example_source("vectorize-art-patterns"), DOCS / "examples" / "vectorize-art-patterns")
     copy_tree(
         example_source("mermaid-directive-frames"),
         DOCS / "examples" / "playwright" / "mermaid-animation-directives",
