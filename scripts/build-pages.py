@@ -227,7 +227,7 @@ PUBLISHED_EXAMPLE_SETS = [
         "title": "Vectorized Art Patterns",
         "href": "examples/vectorize-art-patterns/",
         "kind": "Editable SVG",
-        "description": "Open-source Hilma af Klint and Juan Gris works simplified into four editable motifs with geometry-matched colorset1 and colorset2 variants.",
+        "description": "Three hundred non-geometric abstract and Cubist-derived SVG patterns across 15 families, with no reused compositions, complete geometry, or path data.",
     },
     {
         "id": "slidev-echarts",

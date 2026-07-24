@@ -20,6 +20,7 @@ from pathlib import Path
 import re
 import sys
 import tempfile
+import time
 from typing import Any, Iterable
 from xml.sax.saxutils import escape, quoteattr
 
@@ -87,7 +88,14 @@ def atomic_write_text(path: Path, text: str) -> None:
             stream.write(text)
             stream.flush()
             os.fsync(stream.fileno())
-        os.replace(temp_name, path)
+        for attempt in range(8):
+            try:
+                os.replace(temp_name, path)
+                break
+            except PermissionError:
+                if attempt == 7:
+                    raise
+                time.sleep(0.05 * (attempt + 1))
     finally:
         if os.path.exists(temp_name):
             os.unlink(temp_name)
@@ -208,20 +216,33 @@ def apply_colorset(
         ]
         mapped_layers = [dict(layer) for layer in layers]
         fixed_assignments: dict[int, str] = {}
-        if colorset_name == "colorset1" and mapped_layers:
-            chromatic_index = max(
-                range(len(mapped_layers)),
-                key=lambda index: (
-                    max(parse_hex_color(str(mapped_layers[index]["fill"])))
-                    - min(parse_hex_color(str(mapped_layers[index]["fill"]))),
-                    int(mapped_layers[index].get("pixel_count", 0)),
-                    -index,
-                ),
-            )
-            primary = str(colorset["roles"]["primary"]).lower()
-            fixed_assignments[chromatic_index] = primary
-            if primary in candidates:
-                candidates.remove(primary)
+        if mapped_layers:
+            if colorset_name == "colorset1":
+                anchor_index = max(
+                    range(len(mapped_layers)),
+                    key=lambda index: (
+                        max(parse_hex_color(str(mapped_layers[index]["fill"])))
+                        - min(parse_hex_color(str(mapped_layers[index]["fill"]))),
+                        int(mapped_layers[index].get("pixel_count", 0)),
+                        -index,
+                    ),
+                )
+                anchor_role = "primary"
+            else:
+                anchor_index = max(
+                    range(len(mapped_layers)),
+                    key=lambda index: (
+                        int(mapped_layers[index].get("pixel_count", 0)),
+                        max(parse_hex_color(str(mapped_layers[index]["fill"])))
+                        - min(parse_hex_color(str(mapped_layers[index]["fill"]))),
+                        -index,
+                    ),
+                )
+                anchor_role = "secondary"
+            anchor = str(colorset["roles"][anchor_role]).lower()
+            fixed_assignments[anchor_index] = anchor
+            if anchor in candidates:
+                candidates.remove(anchor)
 
         for index, layer in enumerate(mapped_layers):
             if index in fixed_assignments:
@@ -394,6 +415,97 @@ def load_image(
         )
         rgb_image = rgb_image.resize(resized, Image.Resampling.LANCZOS)
     return np.asarray(rgb_image, dtype=np.uint8), source_size
+
+
+def sha256_array(array: np.ndarray) -> str:
+    digest = hashlib.sha256()
+    digest.update(str(array.shape).encode("ascii"))
+    digest.update(str(array.dtype).encode("ascii"))
+    digest.update(array.tobytes(order="C"))
+    return digest.hexdigest()
+
+
+def compose_variation(
+    rgb: np.ndarray,
+    *,
+    seed: int,
+    crop_scale: float,
+    crop_x: float,
+    crop_y: float,
+    rotation: float,
+    flow_strength: float,
+    flow_frequency: float,
+) -> tuple[np.ndarray, dict[str, Any]]:
+    """Apply a deterministic crop, affine turn, and organic displacement field."""
+    height, width = rgb.shape[:2]
+    crop_width = max(4, min(width, int(round(width * crop_scale))))
+    crop_height = max(4, min(height, int(round(height * crop_scale))))
+    x0 = int(round((width - crop_width) * crop_x))
+    y0 = int(round((height - crop_height) * crop_y))
+    cropped = rgb[y0 : y0 + crop_height, x0 : x0 + crop_width]
+    composed = cv2.resize(
+        cropped,
+        (width, height),
+        interpolation=cv2.INTER_LANCZOS4,
+    )
+
+    if abs(rotation) > 1e-9:
+        matrix = cv2.getRotationMatrix2D(
+            ((width - 1) / 2.0, (height - 1) / 2.0),
+            rotation,
+            1.0,
+        )
+        composed = cv2.warpAffine(
+            composed,
+            matrix,
+            (width, height),
+            flags=cv2.INTER_LINEAR,
+            borderMode=cv2.BORDER_REFLECT_101,
+        )
+
+    if flow_strength > 1e-9:
+        grid_x, grid_y = np.meshgrid(
+            np.arange(width, dtype=np.float32),
+            np.arange(height, dtype=np.float32),
+        )
+        normalized_x = grid_x / max(1.0, float(width - 1))
+        normalized_y = grid_y / max(1.0, float(height - 1))
+        phase = math.fmod(seed * 2.399963229728653, math.tau)
+        diagonal = normalized_x * 0.63 + normalized_y * 0.37
+        counter = normalized_x * 0.41 - normalized_y * 0.79
+        displacement_x = flow_strength * (
+            np.sin(math.tau * flow_frequency * normalized_y + phase)
+            + 0.5
+            * np.sin(
+                math.tau * flow_frequency * 0.71 * diagonal + phase * 1.7
+            )
+        ) / 1.5
+        displacement_y = flow_strength * (
+            np.cos(math.tau * flow_frequency * normalized_x - phase * 0.71)
+            + 0.5
+            * np.sin(
+                math.tau * flow_frequency * 0.53 * counter + phase * 1.3
+            )
+        ) / 1.5
+        composed = cv2.remap(
+            composed,
+            (grid_x + displacement_x).astype(np.float32),
+            (grid_y + displacement_y).astype(np.float32),
+            interpolation=cv2.INTER_LINEAR,
+            borderMode=cv2.BORDER_REFLECT_101,
+        )
+
+    record = {
+        "seed": seed,
+        "crop_scale": crop_scale,
+        "crop_x": crop_x,
+        "crop_y": crop_y,
+        "rotation": rotation,
+        "flow_strength": flow_strength,
+        "flow_frequency": flow_frequency,
+        "composition_sha256": sha256_array(composed),
+    }
+    return composed, record
 
 
 def odd_kernel(value: float, minimum: int = 3, maximum: int = 15) -> int:
@@ -723,6 +835,7 @@ def render_svg(
     smoothing: float,
     detail: float,
     min_area: float,
+    max_dimension: int,
     palette_method: str,
     colorset: str,
     palette_contract_sha256: str,
@@ -730,6 +843,7 @@ def render_svg(
     layers: list[dict[str, Any]],
     rights: dict[str, Any],
     outline: float,
+    variation: dict[str, Any],
 ) -> str:
     metadata = {
         "schema_version": 1,
@@ -740,11 +854,13 @@ def render_svg(
             "smoothing": smoothing,
             "detail": detail,
             "min_area": min_area,
+            "max_dimension": max_dimension,
             "palette_method": palette_method,
             "colorset": colorset,
             "palette_contract_sha256": palette_contract_sha256,
             "tile": tile,
             "outline": outline,
+            "variation": variation,
         },
         "source": rights,
     }
@@ -791,6 +907,7 @@ def render_svg(
             f'viewBox="0 0 {view_width} {view_height}" '
             f'role="img" data-pattern-id="{pattern_id}" data-mode="{mode}" '
             f'data-tile="{tile}" data-colorset="{colorset}" '
+            f'data-variation-seed="{variation["seed"]}" '
             f'data-source-sha256="{rights["input_sha256"]}">',
             f"  <title>{escape(title)}</title>",
             f"  <desc>{escape(description)}</desc>",
@@ -824,6 +941,18 @@ def vectorize(args: argparse.Namespace) -> dict[str, Any]:
         raise VectorizeError("--min-area must be positive")
     if args.outline < 0 or args.outline > 8:
         raise VectorizeError("--outline must be between 0 and 8")
+    if args.variation_seed < 0 or args.variation_seed > 2_147_483_647:
+        raise VectorizeError("--variation-seed must be between 0 and 2147483647")
+    if not 0.35 <= args.crop_scale <= 1.0:
+        raise VectorizeError("--crop-scale must be between 0.35 and 1")
+    if not 0.0 <= args.crop_x <= 1.0 or not 0.0 <= args.crop_y <= 1.0:
+        raise VectorizeError("--crop-x and --crop-y must be between 0 and 1")
+    if not -180.0 <= args.rotation <= 180.0:
+        raise VectorizeError("--rotation must be between -180 and 180")
+    if not 0.0 <= args.flow_strength <= 64.0:
+        raise VectorizeError("--flow-strength must be between 0 and 64")
+    if not 0.25 <= args.flow_frequency <= 8.0:
+        raise VectorizeError("--flow-frequency must be between 0.25 and 8")
 
     background_rgb = parse_hex_color(args.background)
     rights = validate_rights(
@@ -837,6 +966,16 @@ def vectorize(args: argparse.Namespace) -> dict[str, Any]:
     )
     rgb, source_size = load_image(
         input_path, args.max_dimension, background_rgb
+    )
+    rgb, variation = compose_variation(
+        rgb,
+        seed=args.variation_seed,
+        crop_scale=args.crop_scale,
+        crop_x=args.crop_x,
+        crop_y=args.crop_y,
+        rotation=args.rotation,
+        flow_strength=args.flow_strength,
+        flow_frequency=args.flow_frequency,
     )
     height, width = rgb.shape[:2]
     background, layers, trace_stats = build_layers(
@@ -878,6 +1017,7 @@ def vectorize(args: argparse.Namespace) -> dict[str, Any]:
         smoothing=args.smoothing,
         detail=args.detail,
         min_area=args.min_area,
+        max_dimension=args.max_dimension,
         palette_method=args.palette_method,
         colorset=colorset_name,
         palette_contract_sha256=palette_contract_sha256,
@@ -885,6 +1025,7 @@ def vectorize(args: argparse.Namespace) -> dict[str, Any]:
         layers=layers,
         rights=rights,
         outline=args.outline,
+        variation=variation,
     )
     atomic_write_text(output_path, svg)
     output_digest = sha256_path(output_path)
@@ -904,6 +1045,18 @@ def vectorize(args: argparse.Namespace) -> dict[str, Any]:
         "colorset": colorset_name,
         "palette_contract_sha256": palette_contract_sha256,
         "colorset_mapping": colorset_mapping,
+        "variation": variation,
+        "composition_sha256": variation["composition_sha256"],
+        "parameters": {
+            "colors": args.colors,
+            "smoothing": args.smoothing,
+            "detail": args.detail,
+            "min_area": args.min_area,
+            "max_dimension": args.max_dimension,
+            "palette_method": args.palette_method,
+            "outline": args.outline,
+            "variation": variation,
+        },
         "source_width": source_size[0],
         "source_height": source_size[1],
         "vector_width": width,
@@ -957,6 +1110,18 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--description")
     parser.add_argument("--background", default="#ffffff")
     parser.add_argument("--outline", type=float, default=0.0)
+    parser.add_argument(
+        "--variation-seed",
+        type=int,
+        default=0,
+        help="Deterministic seed for organic coordinate displacement.",
+    )
+    parser.add_argument("--crop-scale", type=float, default=1.0)
+    parser.add_argument("--crop-x", type=float, default=0.5)
+    parser.add_argument("--crop-y", type=float, default=0.5)
+    parser.add_argument("--rotation", type=float, default=0.0)
+    parser.add_argument("--flow-strength", type=float, default=0.0)
+    parser.add_argument("--flow-frequency", type=float, default=1.0)
     parser.add_argument("--report", type=Path)
     parser.add_argument("--source-manifest", type=Path)
     parser.add_argument("--source-id")

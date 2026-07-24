@@ -29,7 +29,8 @@ source-derived palette.
 The vectorizer maps the background to a suitable light or dark surface, assigns
 ink explicitly, and maps color layers deterministically by perceptual
 proximity. Colorset1 reserves its primary red for the strongest chromatic
-source layer.
+source layer. Colorset2 reserves its secondary blue for the largest traced
+layer so light source crops retain a visible expressive anchor.
 
 ## Validate Paired Outputs
 
@@ -42,16 +43,20 @@ values. The digest must match even though the complete SVG hashes differ.
 ## Published Gallery Contract
 
 The acceptance fixture at
-`assets/examples/vectorize-art-patterns/` contains four base motifs and two
-variants per motif:
-
-- organic field;
-- stain mirror;
-- ink mirror;
-- Cubist collage.
+`assets/examples/vectorize-art-patterns/` contains 300 independent drawings in
+15 organic, stain, ink, and Cubist-derived collage families. It distributes
+150 drawings to each colorset. The two palettes are not paired recolors:
+composition, complete geometry, and every individual path are unique across
+the entire collection.
 
 Run `scripts/build_example_gallery.py`, then
-`scripts/validate_example_gallery.py`. The validator requires eight unique
-pattern IDs, four shared geometry digests, exact page/manifest parity, four
-variants per colorset, palette-safe page colors, valid provenance, and no stale
-SVG or report files.
+`scripts/validate_example_gallery.py`. The validator requires 300 stable
+pattern IDs, 300 composition hashes, 300 complete-geometry hashes, globally
+unique path signatures, exact page/manifest parity, visible colorset anchors,
+palette-safe page colors, valid provenance, no `<use>`, and no stale SVG or
+report files.
+
+For an intentional paint-comparison pair, keep geometry identical as described
+above. For a collection whose members are advertised as unique, follow
+`references/collection-generation.md` and never count a paint-only variant as
+another drawing.

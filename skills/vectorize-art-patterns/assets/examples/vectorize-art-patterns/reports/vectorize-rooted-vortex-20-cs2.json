@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "skills/vectorize-art-patterns/assets/base-images/hilma-pleiade-14.jpg",
+  "input_sha256": "b3d035505baf6e14921862f395b0a088ae1e81c1091b486f733a6b59ccb0d5ea",
+  "output": "skills/vectorize-art-patterns/assets/examples/vectorize-art-patterns/svgs/vectorize-rooted-vortex-20-cs2.svg",
+  "output_sha256": "9aa73b7ea9d7e929610bdfb985dfe299430c88d6d3811e905c620556423a8162",
+  "pattern_id": "vectorize-rooted-vortex-20-cs2",
+  "mode": "organic",
+  "tile": "none",
+  "palette_method": "max-coverage",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "colorset_mapping": [
+    {
+      "source": "#f5e9cf",
+      "target": "#f7f7f7"
+    },
+    {
+      "source": "#e9d2b9",
+      "target": "#007298"
+    },
+    {
+      "source": "#fffffe",
+      "target": "#ffffff"
+    },
+    {
+      "source": "#e9d198",
+      "target": "#cfcfcf"
+    }
+  ],
+  "variation": {
+    "seed": 558392,
+    "crop_scale": 0.7787,
+    "crop_x": 0.8615,
+    "crop_y": 0.2741,
+    "rotation": 10.44,
+    "flow_strength": 14.993,
+    "flow_frequency": 1.062,
+    "composition_sha256": "3f7093962fa1c4f338dfd39fbf37beb51b4909c841e82062eb33c78f7599bdda"
+  },
+  "composition_sha256": "3f7093962fa1c4f338dfd39fbf37beb51b4909c841e82062eb33c78f7599bdda",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.402,
+    "detail": 0.734,
+    "min_area": 12.3,
+    "max_dimension": 287,
+    "palette_method": "max-coverage",
+    "outline": 0.671,
+    "variation": {
+      "seed": 558392,
+      "crop_scale": 0.7787,
+      "crop_x": 0.8615,
+      "crop_y": 0.2741,
+      "rotation": 10.44,
+      "flow_strength": 14.993,
+      "flow_frequency": 1.062,
+      "composition_sha256": "3f7093962fa1c4f338dfd39fbf37beb51b4909c841e82062eb33c78f7599bdda"
+    }
+  },
+  "source_width": 960,
+  "source_height": 1170,
+  "vector_width": 235,
+  "vector_height": 287,
+  "render_width": 235,
+  "render_height": 287,
+  "palette": [
+    "#f7f7f7",
+    "#007298",
+    "#ffffff",
+    "#cfcfcf"
+  ],
+  "path_count": 3,
+  "contour_count": 16,
+  "point_count": 294,
+  "output_bytes": 11582,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "hilma-pleiade-14",
+    "license": "Public-Domain",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Hilma_af_Klint_1908_-_Pleiade_nr_14.jpg",
+    "attribution": "Hilma af Klint; http://www.hilmaafklint.se/",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "b3d035505baf6e14921862f395b0a088ae1e81c1091b486f733a6b59ccb0d5ea"
+  }
+}

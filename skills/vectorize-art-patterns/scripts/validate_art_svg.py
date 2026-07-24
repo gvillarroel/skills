@@ -122,12 +122,20 @@ def inspect_svg(path: Path) -> dict[str, Any]:
     mode = root.get("data-mode", "")
     tile = root.get("data-tile", "")
     colorset = root.get("data-colorset", "source")
+    variation_seed_text = root.get("data-variation-seed", "")
     if mode not in {"organic", "ink", "stain", "collage"}:
         raise ValidationError(f"Unsupported or missing data-mode: {mode}")
     if tile not in {"none", "repeat", "mirror"}:
         raise ValidationError(f"Unsupported or missing data-tile: {tile}")
     if colorset not in {"source", "colorset1", "colorset2"}:
         raise ValidationError(f"Unsupported data-colorset: {colorset}")
+    if not re.fullmatch(r"\d{1,10}", variation_seed_text):
+        raise ValidationError(
+            "Root data-variation-seed must be a nonnegative integer"
+        )
+    variation_seed = int(variation_seed_text)
+    if variation_seed > 2_147_483_647:
+        raise ValidationError("Root data-variation-seed exceeds the supported range")
     source_sha256 = root.get("data-source-sha256", "")
     if not re.fullmatch(r"[0-9a-f]{64}", source_sha256):
         raise ValidationError("Root data-source-sha256 must be a lowercase SHA-256")
@@ -195,6 +203,14 @@ def inspect_svg(path: Path) -> dict[str, Any]:
         raise ValidationError("Metadata tile does not match root data-tile")
     if metadata.get("pipeline", {}).get("colorset", "source") != colorset:
         raise ValidationError("Metadata colorset does not match root data-colorset")
+    variation = metadata.get("pipeline", {}).get("variation")
+    if not isinstance(variation, dict) or variation.get("seed") != variation_seed:
+        raise ValidationError(
+            "Metadata variation seed does not match root data-variation-seed"
+        )
+    composition_sha256 = str(variation.get("composition_sha256", ""))
+    if not re.fullmatch(r"[0-9a-f]{64}", composition_sha256):
+        raise ValidationError("Metadata composition SHA-256 is missing or invalid")
     if metadata.get("source", {}).get("input_sha256") != source_sha256:
         raise ValidationError("Metadata source SHA-256 does not match the root")
     palette_contract_sha256 = str(
@@ -228,6 +244,8 @@ def inspect_svg(path: Path) -> dict[str, Any]:
         "mode": mode,
         "tile": tile,
         "colorset": colorset,
+        "variation_seed": variation_seed,
+        "composition_sha256": composition_sha256,
         "palette_contract_sha256": palette_contract_sha256,
         "visible_color_tokens": sorted(visible_color_tokens),
         "unexpected_color_tokens": unexpected_color_tokens,
@@ -237,6 +255,7 @@ def inspect_svg(path: Path) -> dict[str, Any]:
         "path_data_bytes": path_bytes,
         "fill_count": len(fills),
         "pattern_element_count": counts.get("pattern", 0),
+        "use_element_count": counts.get("use", 0),
         "image_element_count": counts.get("image", 0),
         "script_element_count": counts.get("script", 0),
         "external_reference_count": len(external_references),
@@ -266,6 +285,14 @@ def validate_against_args(
         raise ValidationError(
             f"Expected colorset {args.expected_colorset}, "
             f"found {result['colorset']}"
+        )
+    if (
+        args.expected_variation_seed is not None
+        and result["variation_seed"] != args.expected_variation_seed
+    ):
+        raise ValidationError(
+            f"Expected variation seed {args.expected_variation_seed}, "
+            f"found {result['variation_seed']}"
         )
     if args.require_pattern and result["pattern_element_count"] < 1:
         raise ValidationError("A tile pattern was required but no <pattern> exists")
@@ -319,6 +346,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--expected-colorset",
         choices=("source", "colorset1", "colorset2"),
     )
+    parser.add_argument("--expected-variation-seed", type=int)
     parser.add_argument("--require-pattern", action="store_true")
     parser.add_argument("--min-paths", type=int, default=1)
     parser.add_argument("--max-paths", type=int)

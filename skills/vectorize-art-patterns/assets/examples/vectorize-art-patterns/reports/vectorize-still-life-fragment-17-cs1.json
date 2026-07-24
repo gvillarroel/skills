@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "skills/vectorize-art-patterns/assets/base-images/juan-gris-still-life-1919.jpg",
+  "input_sha256": "2f2d277467ede0c568ce79d4ac22b74868e0e5ad2faca2987e3f2a1a1c586f97",
+  "output": "skills/vectorize-art-patterns/assets/examples/vectorize-art-patterns/svgs/vectorize-still-life-fragment-17-cs1.svg",
+  "output_sha256": "9f8f36fffd1219bc2adef7578944624fd05e34e2e8583a513588ab85e05969ab",
+  "pattern_id": "vectorize-still-life-fragment-17-cs1",
+  "mode": "collage",
+  "tile": "none",
+  "palette_method": "median-cut",
+  "colorset": "colorset1",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "colorset_mapping": [
+    {
+      "source": "#dbb85e",
+      "target": "#f7f7f7"
+    },
+    {
+      "source": "#2b3627",
+      "target": "#333e48"
+    },
+    {
+      "source": "#405c8a",
+      "target": "#9e1b32"
+    },
+    {
+      "source": "#f2f4f6",
+      "target": "#ffffff"
+    },
+    {
+      "source": "#e9e1d0",
+      "target": "#cfcfcf"
+    },
+    {
+      "source": "#1f2619",
+      "target": "#1c1c1c"
+    },
+    {
+      "source": "#576878",
+      "target": "#828282"
+    },
+    {
+      "source": "#aea478",
+      "target": "#ffccd5"
+    }
+  ],
+  "variation": {
+    "seed": 1434662,
+    "crop_scale": 0.5543,
+    "crop_x": 0.0777,
+    "crop_y": 0.3101,
+    "rotation": 11.891,
+    "flow_strength": 5.389,
+    "flow_frequency": 3.001,
+    "composition_sha256": "d5fa747c8b1421e82e44437c1a3de0ec22dc6abdf233de9b10cb2cece4887b49"
+  },
+  "composition_sha256": "d5fa747c8b1421e82e44437c1a3de0ec22dc6abdf233de9b10cb2cece4887b49",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.366,
+    "detail": 0.85,
+    "min_area": 14.6,
+    "max_dimension": 341,
+    "palette_method": "median-cut",
+    "outline": 0.581,
+    "variation": {
+      "seed": 1434662,
+      "crop_scale": 0.5543,
+      "crop_x": 0.0777,
+      "crop_y": 0.3101,
+      "rotation": 11.891,
+      "flow_strength": 5.389,
+      "flow_frequency": 3.001,
+      "composition_sha256": "d5fa747c8b1421e82e44437c1a3de0ec22dc6abdf233de9b10cb2cece4887b49"
+    }
+  },
+  "source_width": 960,
+  "source_height": 1387,
+  "vector_width": 236,
+  "vector_height": 341,
+  "render_width": 236,
+  "render_height": 341,
+  "palette": [
+    "#f7f7f7",
+    "#333e48",
+    "#9e1b32",
+    "#ffffff",
+    "#cfcfcf",
+    "#1c1c1c",
+    "#828282",
+    "#ffccd5"
+  ],
+  "path_count": 7,
+  "contour_count": 86,
+  "point_count": 1926,
+  "output_bytes": 20578,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "juan-gris-still-life-1919",
+    "license": "Public-Domain",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Juan_Gris_003.jpg",
+    "attribution": "Juan Gris; The Yorck Project (2002) 10.000 Meisterwerke der Malerei (DVD-ROM), distributed by DIRECTMEDIA Publishing GmbH. ISBN : 3936122202 .",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "2f2d277467ede0c568ce79d4ac22b74868e0e5ad2faca2987e3f2a1a1c586f97"
+  }
+}

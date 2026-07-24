@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "skills/vectorize-art-patterns/assets/base-images/bailly-beauties-fancy.jpg",
+  "input_sha256": "b02f5fd07a02c51eca284f75fe25848bf4fe00618b486d8b2059651760d3943e",
+  "output": "skills/vectorize-art-patterns/assets/examples/vectorize-art-patterns/svgs/vectorize-pasted-rhythm-11-cs1.svg",
+  "output_sha256": "4160614373686998d4a52bbf887bbc526348c157a2eaff83d47bc9ccab61f246",
+  "pattern_id": "vectorize-pasted-rhythm-11-cs1",
+  "mode": "collage",
+  "tile": "none",
+  "palette_method": "median-cut",
+  "colorset": "colorset1",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "colorset_mapping": [
+    {
+      "source": "#aa8b74",
+      "target": "#333e48"
+    },
+    {
+      "source": "#0c1f20",
+      "target": "#1c1c1c"
+    },
+    {
+      "source": "#efddda",
+      "target": "#ffccd5"
+    },
+    {
+      "source": "#755d4e",
+      "target": "#9e1b32"
+    },
+    {
+      "source": "#bbafa6",
+      "target": "#cfcfcf"
+    },
+    {
+      "source": "#2d2a23",
+      "target": "#6d1222"
+    },
+    {
+      "source": "#374b4a",
+      "target": "#828282"
+    },
+    {
+      "source": "#7e7f71",
+      "target": "#e8002a"
+    }
+  ],
+  "variation": {
+    "seed": 1587154,
+    "crop_scale": 0.6765,
+    "crop_x": 0.2993,
+    "crop_y": 0.3177,
+    "rotation": -6.794,
+    "flow_strength": 4.379,
+    "flow_frequency": 2.005,
+    "composition_sha256": "a835b001e76cab530556ab681dead9339916bafff04aa479319763a8d0c159df"
+  },
+  "composition_sha256": "a835b001e76cab530556ab681dead9339916bafff04aa479319763a8d0c159df",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.386,
+    "detail": 0.681,
+    "min_area": 23.8,
+    "max_dimension": 321,
+    "palette_method": "median-cut",
+    "outline": 0.221,
+    "variation": {
+      "seed": 1587154,
+      "crop_scale": 0.6765,
+      "crop_x": 0.2993,
+      "crop_y": 0.3177,
+      "rotation": -6.794,
+      "flow_strength": 4.379,
+      "flow_frequency": 2.005,
+      "composition_sha256": "a835b001e76cab530556ab681dead9339916bafff04aa479319763a8d0c159df"
+    }
+  },
+  "source_width": 960,
+  "source_height": 768,
+  "vector_width": 321,
+  "vector_height": 257,
+  "render_width": 321,
+  "render_height": 257,
+  "palette": [
+    "#333e48",
+    "#1c1c1c",
+    "#ffccd5",
+    "#9e1b32",
+    "#cfcfcf",
+    "#6d1222",
+    "#828282",
+    "#e8002a"
+  ],
+  "path_count": 7,
+  "contour_count": 190,
+  "point_count": 2740,
+  "output_bytes": 28276,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "bailly-beauties-fancy",
+    "license": "Public-Domain",
+    "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Le_caprice_des_belles_by_Alice_Bailly.jpg",
+    "attribution": "Alice Bailly; www.sothebys.com : Home : Info",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "b02f5fd07a02c51eca284f75fe25848bf4fe00618b486d8b2059651760d3943e"
+  }
+}
