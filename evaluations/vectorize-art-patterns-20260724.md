@@ -150,6 +150,24 @@ Playwright CLI then inspected the built Pages output at 1,440 × 1,000 and
 Screenshots and the machine-readable gallery report remain in the ignored
 `projects/vectorize-art-patterns-validation/artifacts/` tree.
 
+## Publication
+
+- Implementation commit: `c708b01f`
+- Pull request: `#18`
+- Merge commit: `54d1ca5c`
+- Pages workflow: `30105911161`, successful in 1m53s
+- Live gallery:
+  `https://gvillarroel.github.io/skills/examples/vectorize-art-patterns/`
+
+Post-deploy verification fetched the live main catalog, gallery, manifest, and
+all eight SVG resources. The catalog contained the gallery link, the gallery
+contained all eight stable pattern IDs, the remote manifest SHA-256 matched
+`9c743dfdec9ecbf2b588d1ef44cd40401b311415d0929db25ffea07f11474c24`
+exactly, and every SVG returned HTTP 200 with media type `image/svg+xml`.
+Production Playwright reached `data-ready="true"`, showed four default
+`colorset2` cards, found zero horizontal overflow, and reported zero console
+errors or warnings.
+
 ## Repository Gates
 
 The following checks passed:
