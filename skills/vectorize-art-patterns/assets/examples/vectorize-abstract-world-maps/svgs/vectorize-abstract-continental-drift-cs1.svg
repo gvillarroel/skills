@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img"
+  data-pattern-id="vectorize-abstract-continental-drift-cs1" data-mode="collage" data-tile="none"
+  data-composition-id="reciprocal-diagonal"
+  data-source-pattern-id="vectorize-biomorphic-drift-03-cs1"
+  data-composition-pattern-id="d3-composition-reciprocal-diagonal-vectorize-biomorphic-drift-03-cs1"
+  data-colorset="colorset1" data-variation-seed="947203"
+  data-source-sha256="9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9">
+  <title>Abstract Continental Drift — Colorset 1</title>
+  <desc>A deliberately imprecise world mnemonic built from straight-edged red, charcoal, gray, pink, and white continental fragments.</desc>
+  <metadata>{"schema_version":1,"pattern_id":"vectorize-abstract-continental-drift-cs1","rights_basis":"original-generative-composition","style_reference":{"pattern_id":"vectorize-biomorphic-drift-03-cs1","relationship":"Palette hierarchy and displaced color-mass rhythm only; no path geometry was copied."},"pipeline":{"mode":"collage","geometry":"straight-line angular masses","cartographic_precision":"intentionally low","layout_basis":"approximate world mnemonic, not a projected map","composition_armature":"reciprocal-diagonal","colorset":"colorset1","palette_contract_sha256":"c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5","variation_seed":947203,"composition_sha256":"b7e0b5b09b23afe5b9eaac4f7605c652e2885169790615029899979cb4ae91ca"},"geographic_reference":{"source_id":"natural-earth-110m-land","title":"Natural Earth 1:110m land polygons","source_url":"https://github.com/nvkelso/natural-earth-vector","download_url":"https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.geojson","input_sha256":"9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9","license":"Public-Domain","license_url":"https://www.naturalearthdata.com/about/terms-of-use/","transformation_allowed":true,"use":"Loose placement and relative-scale reference only; source contours are not present in the derivative."}}</metadata>
+  <rect width="1600" height="900" fill="#f7f7f7"/>
+  <g id="continental-masses">
+    <path id="north-america-crown" data-continent-hint="north-america" fill="#e7e7e7" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 111 235 L 245 151 L 430 143 L 515 190 L 456 231 L 365 214 L 330 237 L 261 207 L 184 302 Z"/>
+    <path id="north-america-core" data-continent-hint="north-america" fill="#6d1222" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 176 258 L 337 204 L 503 239 L 531 320 L 426 376 L 302 344 L 220 404 L 148 333 Z"/>
+    <path id="north-america-west" data-continent-hint="north-america" fill="#9e1b32" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 124 282 L 176 258 L 220 404 L 174 438 L 119 354 Z"/>
+    <path id="north-america-east" data-continent-hint="north-america" fill="#ffffff" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 386 243 L 503 239 L 531 320 L 457 350 L 417 307 Z"/>
+    <path id="north-america-south" data-continent-hint="north-america" fill="#1c1c1c" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 302 344 L 426 376 L 395 437 L 325 468 L 260 412 Z"/>
+    <path id="south-america-core" data-continent-hint="south-america" fill="#828282" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 404 454 L 522 472 L 568 558 L 531 654 L 470 785 L 408 704 L 431 609 L 383 520 Z"/>
+    <path id="south-america-west" data-continent-hint="south-america" fill="#1c1c1c" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 383 520 L 431 609 L 408 704 L 370 641 L 367 553 Z"/>
+    <path id="south-america-east" data-continent-hint="south-america" fill="#cfcfcf" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 431 609 L 568 558 L 531 654 L 487 708 L 449 662 Z"/>
+    <path id="south-america-tip" data-continent-hint="south-america" fill="#6d1222" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 449 662 L 487 708 L 470 785 L 432 741 Z"/>
+    <path id="europe-west" data-continent-hint="europe" fill="#6d1222" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 661 263 L 724 229 L 765 249 L 736 296 L 676 306 Z"/>
+    <path id="europe-core" data-continent-hint="europe" fill="#ffccd5" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 724 286 L 765 241 L 831 255 L 849 302 L 785 326 Z"/>
+    <path id="europe-east" data-continent-hint="europe" fill="#1c1c1c" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 831 255 L 901 241 L 919 293 L 849 302 Z"/>
+    <path id="europe-south" data-continent-hint="europe" fill="#9e1b32" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 698 310 L 724 286 L 785 326 L 752 351 L 691 341 Z"/>
+    <path id="africa-north" data-continent-hint="africa" fill="#6d1222" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 691 341 L 785 326 L 899 355 L 949 404 L 847 431 L 739 406 Z"/>
+    <path id="africa-core" data-continent-hint="africa" fill="#9e1b32" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 739 406 L 847 431 L 835 535 L 770 590 L 714 534 Z"/>
+    <path id="africa-west" data-continent-hint="africa" fill="#ffffff" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 680 409 L 739 406 L 714 534 L 678 510 L 651 459 Z"/>
+    <path id="africa-east" data-continent-hint="africa" fill="#1c1c1c" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 847 431 L 949 404 L 920 520 L 855 575 L 835 535 Z"/>
+    <path id="africa-south" data-continent-hint="africa" fill="#ffccd5" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 742 599 L 800 648 L 770 720 L 712 668 Z"/>
+    <path id="asia-west" data-continent-hint="asia" fill="#1c1c1c" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 901 241 L 1018 213 L 1075 285 L 1040 354 L 919 293 Z"/>
+    <path id="asia-north" data-continent-hint="asia" fill="#e7e7e7" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1018 213 L 1084 157 L 1262 151 L 1454 228 L 1372 295 L 1288 278 L 1242 312 L 1186 281 L 1075 285 Z"/>
+    <path id="asia-core" data-continent-hint="asia" fill="#cfcfcf" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1075 285 L 1186 281 L 1372 295 L 1318 409 L 1131 396 L 1040 354 Z"/>
+    <path id="asia-east" data-continent-hint="asia" fill="#828282" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1372 295 L 1454 228 L 1490 333 L 1411 428 L 1318 409 Z"/>
+    <path id="asia-south" data-continent-hint="asia" fill="#ffffff" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1040 354 L 1131 396 L 1204 459 L 1124 498 L 1022 438 Z"/>
+    <path id="asia-red-axis" data-continent-hint="asia" fill="#6d1222" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1131 396 L 1318 409 L 1262 466 L 1204 459 Z"/>
+    <path id="asia-pacific-accent" data-continent-hint="asia" fill="#9e1b32" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1411 428 L 1490 333 L 1512 401 L 1461 464 Z"/>
+    <path id="asia-southern-shadow" data-continent-hint="asia" fill="#333e48" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1022 438 L 1124 498 L 1069 548 L 976 486 Z"/>
+    <path id="oceania-core" data-continent-hint="oceania" fill="#1c1c1c" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1218 587 L 1352 568 L 1439 626 L 1396 713 L 1275 733 L 1191 667 Z"/>
+    <path id="oceania-north" data-continent-hint="oceania" fill="#828282" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1218 587 L 1302 543 L 1394 566 L 1352 568 Z"/>
+    <path id="oceania-east" data-continent-hint="oceania" fill="#cfcfcf" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1352 568 L 1439 626 L 1477 690 L 1396 713 Z"/>
+    <path id="oceania-south" data-continent-hint="oceania" fill="#6d1222" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1275 733 L 1396 713 L 1437 757 L 1315 783 Z"/>
+    <path id="antarctica-west" data-continent-hint="antarctica" fill="#6d1222" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 222 802 L 382 785 L 458 802 L 420 826 L 263 832 Z"/>
+    <path id="antarctica-midwest" data-continent-hint="antarctica" fill="#828282" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 477 842 L 514 813 L 677 802 L 728 830 L 617 850 Z"/>
+    <path id="antarctica-center" data-continent-hint="antarctica" fill="#9e1b32" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 698 832 L 774 812 L 949 784 L 1020 807 L 904 834 Z"/>
+    <path id="antarctica-east" data-continent-hint="antarctica" fill="#6d1222" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 981 846 L 1055 820 L 1265 798 L 1370 818 L 1250 846 Z"/>
+    <path id="atlantic-fragment" data-continent-hint="atlantic" fill="#cfcfcf" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 601 421 L 630 405 L 651 436 L 621 455 Z"/>
+    <path id="indian-ocean-fragment" data-continent-hint="indian-ocean" fill="#6d1222" stroke="#f7f7f7" stroke-width="3.5" stroke-linejoin="miter" d="M 1011 628 L 1043 601 L 1060 655 L 1026 683 Z"/>
+  </g>
+  <g id="directional-axes">
+    <path id="axis-north-america-01" data-continent-hint="north-america" fill="none" stroke="#333e48" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter" vector-effect="non-scaling-stroke" d="M 136 299 L 286 279 L 456 302"/>
+    <path id="axis-north-america-02" data-continent-hint="north-america" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" vector-effect="non-scaling-stroke" d="M 245 180 L 351 247 L 493 238"/>
+    <path id="axis-south-america-01" data-continent-hint="south-america" fill="none" stroke="#6d1222" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter" vector-effect="non-scaling-stroke" d="M 414 491 L 493 572 L 458 726"/>
+    <path id="axis-africa-01" data-continent-hint="africa" fill="none" stroke="#333e48" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter" vector-effect="non-scaling-stroke" d="M 720 413 L 797 469 L 751 585"/>
+    <path id="axis-asia-01" data-continent-hint="asia" fill="none" stroke="#6d1222" stroke-width="9" stroke-linecap="square" stroke-linejoin="miter" vector-effect="non-scaling-stroke" d="M 927 259 L 1118 320 L 1314 258 L 1443 302"/>
+    <path id="axis-eurasia-01" data-continent-hint="europe" fill="none" stroke="#333e48" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter" vector-effect="non-scaling-stroke" d="M 683 287 L 779 273 L 952 295 L 1178 348 L 1389 394"/>
+    <path id="axis-oceania-01" data-continent-hint="oceania" fill="none" stroke="#9e1b32" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter" vector-effect="non-scaling-stroke" d="M 1213 634 L 1321 612 L 1422 673"/>
+  </g>
+</svg>

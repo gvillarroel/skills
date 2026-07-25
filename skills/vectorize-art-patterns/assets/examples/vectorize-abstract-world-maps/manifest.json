@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "exampleSetId": "vectorize-abstract-world-maps",
+  "title": "Abstract World Map Studies",
+  "colorset": "colorset1",
+  "styleReferenceId": "vectorize-biomorphic-drift-03-cs1",
+  "geographicReference": {
+    "id": "natural-earth-110m-land",
+    "provider": "Natural Earth",
+    "sourceUrl": "https://github.com/nvkelso/natural-earth-vector",
+    "downloadUrl": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_land.geojson",
+    "license": "Public-Domain",
+    "licenseUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9"
+  },
+  "patterns": [
+    {
+      "id": "vectorize-abstract-continental-drift-cs1",
+      "title": "Abstract Continental Drift",
+      "file": "svgs/vectorize-abstract-continental-drift-cs1.svg",
+      "sha256": "8648fc8262a3dc6cfdae713f43463eb265426c14e5c7809fe0fb6f6f3b0d5c8f",
+      "viewBox": "0 0 1600 900",
+      "mode": "collage",
+      "role": "final-abstract-study",
+      "geometry": {
+        "filledMasses": 36,
+        "straightAxes": 7,
+        "curveCommands": 0,
+        "cartographicContours": 0
+      }
+    },
+    {
+      "id": "vectorize-biomorphic-world-map-cs1",
+      "title": "Biomorphic World Map",
+      "file": "svgs/vectorize-biomorphic-world-map-cs1.svg",
+      "sha256": "cabfebc1e663fe5684abd3a33ebf17f312cdfee368df580ac05a46a985f5027e",
+      "viewBox": "0 0 1600 900",
+      "mode": "organic",
+      "role": "cartographic-study",
+      "geometry": {
+        "artPaths": 25,
+        "sourceFeatures": 127,
+        "projection": "Equal Earth"
+      }
+    }
+  ]
+}

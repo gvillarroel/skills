@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Two editable Colorset 1 world-map studies: a biomorphic Equal Earth silhouette and an intentionally imprecise straight-line continental collage."
+    />
+    <title>Abstract World Map Studies</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --background: #f7f7f7;
+        --surface: #ffffff;
+        --ink: #333e48;
+        --ink-dark: #1c1c1c;
+        --primary: #9e1b32;
+        --primary-dark: #6d1222;
+        --muted: #828282;
+        --line: #cfcfcf;
+        --quiet: #e7e7e7;
+        --soft: #ffccd5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--background);
+        color: var(--ink-dark);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+      }
+
+      a {
+        color: var(--primary-dark);
+      }
+
+      a:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid var(--primary);
+        outline-offset: 4px;
+      }
+
+      .shell {
+        width: min(1480px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+        border-bottom: 1px solid var(--line);
+        gap: 24px;
+      }
+
+      .topbar a {
+        font-size: 0.86rem;
+        font-weight: 760;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .crumbs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .palette {
+        display: flex;
+        gap: 5px;
+      }
+
+      .palette span {
+        display: block;
+        width: 18px;
+        height: 18px;
+        border: 1px solid var(--line);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+        gap: clamp(32px, 7vw, 112px);
+        padding: clamp(64px, 10vw, 140px) 0 clamp(52px, 8vw, 104px);
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--primary);
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 900px;
+        margin: 0;
+        font-size: clamp(3rem, 8.5vw, 8.2rem);
+        font-weight: 840;
+        letter-spacing: -0.065em;
+        line-height: 0.85;
+      }
+
+      .hero-copy {
+        align-self: end;
+        max-width: 570px;
+      }
+
+      .hero-copy p {
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(1.05rem, 1.7vw, 1.45rem);
+        line-height: 1.55;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        margin-top: 34px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+
+      .stat {
+        min-height: 92px;
+        padding: 18px;
+        background: var(--surface);
+      }
+
+      .stat strong,
+      .stat span {
+        display: block;
+      }
+
+      .stat strong {
+        margin-bottom: 6px;
+        color: var(--primary-dark);
+        font-size: 1.35rem;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .gallery {
+        display: grid;
+        gap: 28px;
+        padding-bottom: 80px;
+      }
+
+      .study {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(300px, 0.6fr);
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .preview {
+        display: grid;
+        min-height: 420px;
+        padding: clamp(14px, 2vw, 28px);
+        background: var(--background);
+        border-right: 1px solid var(--line);
+        place-items: center;
+      }
+
+      .preview img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 680px;
+        object-fit: contain;
+      }
+
+      .study-copy {
+        display: flex;
+        flex-direction: column;
+        padding: clamp(28px, 4vw, 56px);
+      }
+
+      .badge {
+        align-self: flex-start;
+        margin-bottom: 28px;
+        padding: 7px 10px;
+        color: var(--surface);
+        background: var(--primary-dark);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 4.6rem);
+        letter-spacing: -0.045em;
+        line-height: 0.96;
+      }
+
+      .study-copy > p {
+        margin: 24px 0 0;
+        color: var(--ink);
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      .facts {
+        display: grid;
+        gap: 0;
+        margin: 34px 0 0;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid var(--line);
+      }
+
+      .facts li {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .facts strong {
+        color: var(--ink-dark);
+        text-align: right;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: auto;
+        padding-top: 34px;
+      }
+
+      .button {
+        padding: 12px 16px;
+        border: 1px solid var(--ink-dark);
+        color: var(--surface);
+        background: var(--ink-dark);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .button.secondary {
+        color: var(--ink-dark);
+        background: transparent;
+      }
+
+      .notes {
+        margin-bottom: 96px;
+        padding: clamp(30px, 5vw, 64px);
+        background: var(--ink-dark);
+        color: var(--surface);
+      }
+
+      .notes h2 {
+        max-width: 720px;
+      }
+
+      .notes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 32px;
+        margin-top: 48px;
+      }
+
+      .notes h3 {
+        margin: 0 0 12px;
+        color: var(--soft);
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .notes p {
+        margin: 0;
+        color: var(--quiet);
+        line-height: 1.65;
+      }
+
+      .notes a {
+        color: var(--soft);
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 28px 0 44px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 920px) {
+        .hero,
+        .study {
+          grid-template-columns: 1fr;
+        }
+
+        .study-copy {
+          min-height: 440px;
+        }
+
+        .preview {
+          min-height: 280px;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .notes-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .shell {
+          width: min(100% - 24px, 1480px);
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 18px 0;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .study-copy {
+          min-height: 0;
+        }
+
+        footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body data-example-set-id="vectorize-abstract-world-maps">
+    <header class="shell topbar">
+      <nav class="crumbs" aria-label="Example navigation">
+        <a href="../../">All examples</a>
+        <a href="../vectorize-art-patterns/">300-pattern gallery</a>
+        <a href="../vectorize-art-patterns/#vectorize-biomorphic-drift-03-cs1"
+          >Style reference</a
+        >
+      </nav>
+      <div class="palette" aria-label="Colorset 1 palette">
+        <span style="background: #9e1b32"></span>
+        <span style="background: #6d1222"></span>
+        <span style="background: #1c1c1c"></span>
+        <span style="background: #828282"></span>
+        <span style="background: #ffccd5"></span>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Colorset 1 · Editable SVG · Two studies</p>
+          <h1 id="page-title">World maps remembered, not measured.</h1>
+        </div>
+        <div class="hero-copy">
+          <p>
+            One map retains an Equal Earth land silhouette and fills it with
+            biomorphic drift. The other discards coastlines entirely and relies
+            on position, straight edges, color, and negative space to suggest
+            continents.
+          </p>
+          <div class="stats" aria-label="Collection summary">
+            <div class="stat"><strong>2</strong><span>Independent SVGs</span></div>
+            <div class="stat"><strong>CS1</strong><span>Exact palette</span></div>
+            <div class="stat"><strong>PD</strong><span>Map reference</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery" aria-label="World map studies">
+        <article
+          class="study"
+          id="vectorize-abstract-continental-drift-cs1"
+          data-pattern-id="vectorize-abstract-continental-drift-cs1"
+        >
+          <div class="preview">
+            <img
+              src="svgs/vectorize-abstract-continental-drift-cs1.svg"
+              alt="Abstract world mnemonic made from straight-edged red, charcoal, gray, pink, and white continental fragments."
+              width="1600"
+              height="900"
+            />
+          </div>
+          <div class="study-copy">
+            <span class="badge">Final abstract study</span>
+            <h2>Continental Drift</h2>
+            <p>
+              A reciprocal-diagonal collage that refuses cartographic
+              precision. Seven continental groups remain readable through
+              relative placement and visual weight alone.
+            </p>
+            <ul class="facts">
+              <li><span>Geometry</span><strong>36 masses + 7 axes</strong></li>
+              <li><span>Vocabulary</span><strong>Straight lines only</strong></li>
+              <li><span>Map contour</span><strong>None</strong></li>
+              <li><span>Smallest reviewed size</span><strong>320 × 180</strong></li>
+            </ul>
+            <div class="actions">
+              <a
+                class="button"
+                href="svgs/vectorize-abstract-continental-drift-cs1.svg"
+                >Open SVG</a
+              >
+              <a
+                class="button secondary"
+                href="svgs/vectorize-abstract-continental-drift-cs1.svg"
+                download
+                >Download</a
+              >
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="study"
+          id="vectorize-biomorphic-world-map-cs1"
+          data-pattern-id="vectorize-biomorphic-world-map-cs1"
+        >
+          <div class="preview">
+            <img
+              src="svgs/vectorize-biomorphic-world-map-cs1.svg"
+              alt="Equal Earth world land silhouette filled with biomorphic Colorset 1 masses."
+              width="1600"
+              height="900"
+            />
+          </div>
+          <div class="study-copy">
+            <span class="badge">Cartographic study</span>
+            <h2>Biomorphic World</h2>
+            <p>
+              A recognizable global silhouette remains intact while broad
+              biomorphic currents replace geographic color. It is the
+              cartographic counterpoint to the final abstract collage.
+            </p>
+            <ul class="facts">
+              <li><span>Projection</span><strong>Equal Earth</strong></li>
+              <li><span>Art geometry</span><strong>25 organic paths</strong></li>
+              <li><span>Land source</span><strong>Natural Earth 1:110m</strong></li>
+              <li><span>Embedding</span><strong>No raster assets</strong></li>
+            </ul>
+            <div class="actions">
+              <a
+                class="button"
+                href="svgs/vectorize-biomorphic-world-map-cs1.svg"
+                >Open SVG</a
+              >
+              <a
+                class="button secondary"
+                href="svgs/vectorize-biomorphic-world-map-cs1.svg"
+                download
+                >Download</a
+              >
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="notes" aria-labelledby="notes-title">
+        <h2 id="notes-title">The maps share a source trail, not geometry.</h2>
+        <div class="notes-grid">
+          <div>
+            <h3>Visual lineage</h3>
+            <p>
+              Both studies borrow the flat color hierarchy and displaced mass
+              rhythm of
+              <a href="../vectorize-art-patterns/#vectorize-biomorphic-drift-03-cs1"
+                >Biomorphic Drift 03</a
+              >. No path geometry was copied from that pattern.
+            </p>
+          </div>
+          <div>
+            <h3>Geographic provenance</h3>
+            <p>
+              The precise study uses Natural Earth land polygons. The abstract
+              study uses the same public-domain dataset only as a loose
+              placement and relative-scale reference.
+            </p>
+          </div>
+          <div>
+            <h3>Rights</h3>
+            <p>
+              Natural Earth permits modification and all forms of reuse.
+              <a
+                href="https://www.naturalearthdata.com/about/terms-of-use/"
+                rel="noreferrer"
+                >Read its public-domain terms</a
+              >.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell">
+      <span>Stable example set: vectorize-abstract-world-maps</span>
+      <span>Standalone SVG · Colorset 1 · No external runtime dependencies</span>
+    </footer>
+  </body>
+</html>
