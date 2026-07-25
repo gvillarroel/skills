@@ -32,6 +32,7 @@ ROOT_IGNORE_DIRS = {
     "examples",
     "node_modules",
     "output",
+    "results",
     "scripts",
     "videos",
 }

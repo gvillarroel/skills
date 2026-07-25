@@ -534,6 +534,7 @@
     svg.selectAll("*").remove();
     svg
       .attr("viewBox", `0 0 ${width} ${height}`)
+      .attr("font-family", "Open Sans, Arial, sans-serif")
       .attr("aria-labelledby", `${id}-title ${id}-desc`);
     svg
       .attr("data-style-version", galleryStyleVersion)
@@ -4033,7 +4034,7 @@
     const dotRadius = isVirtualColumn ? 7.7 : 9.4;
     const dotSpacing = isVirtualColumn ? 15.2 : 18;
     const dotRight = isVirtualColumn ? 9.5 : 12;
-    const dotFontSize = isVirtualColumn ? 5.7 : 6.4;
+    const dotFontSize = isVirtualColumn ? 6.2 : 6.4;
 
     function fitKanbanTitleLine(probe, value, width) {
       let fitted = value.trim();
@@ -8121,7 +8122,7 @@
     lane.append("text")
       .attr("class", "mark-label")
       .attr("text-anchor", "end")
-      .attr("x", 68)
+      .attr("x", 74)
       .attr("y", 4)
       .attr("font-size", 10)
       .text(d => d);
@@ -10000,26 +10001,12 @@
       if (/[A-Z0-9]/.test(char)) return sum + 6.2;
       return sum + 5.2;
     }, 0);
-    const measureLayer = svg.append("g")
-      .attr("class", "pen-label-measure")
-      .attr("opacity", 0)
-      .attr("pointer-events", "none");
-    measureLayer.selectAll("text")
-      .data(points)
-      .join("text")
-      .attr("class", "mark-label")
-      .attr("x", -900)
-      .attr("y", -900)
-      .attr("font-size", 8.8)
-      .attr("font-weight", d => d.priority > 76 ? 900 : 700)
-      .text(d => d.label)
-      .each(function (d) {
-        const measured = typeof this.getComputedTextLength === "function" ? this.getComputedTextLength() : 0;
-        const boxWidth = typeof this.getBBox === "function" ? this.getBBox().width : 0;
-        d.labelWidth = Math.ceil(Math.max(measured || 0, boxWidth || 0, estimateLabelWidth(d.label)));
-        d.labelLength = d.label.length;
-      });
-    measureLayer.remove();
+    points.forEach(d => {
+      // Keep label geometry stable before and after the web font finishes loading.
+      // Browser text metrics can otherwise change the selected readable subset on replay.
+      d.labelWidth = Math.ceil(estimateLabelWidth(d.label));
+      d.labelLength = d.label.length;
+    });
     const labelLengthExtent = d3.extent(points, d => d.labelLength);
     const labelWidthExtent = d3.extent(points, d => d.labelWidth);
     const labelSize = d => ({ w: Math.max(22, d.labelWidth + 10), h: 17 });
@@ -12352,7 +12339,7 @@
       ["paths", 43], ["axis", 38], ["hierarchy", 36], ["voronoi", 34], ["motion", 31], ["shape", 29],
       ["data", 27], ["brush", 25], ["ticks", 23], ["ribbon", 21], ["cells", 19], ["labels", 18]
     ].map(([text, value], i) => ({ text, value, i }));
-    const size = d3.scaleSqrt().domain(d3.extent(terms, d => d.value)).range([14, 54]);
+    const size = d3.scaleSqrt().domain(d3.extent(terms, d => d.value)).range([10, 24]);
     const color = d3.scaleOrdinal(terms.map(d => d.text), [palette.ink, palette.blue, palette.red, palette.orange, palette.green, palette.purple, palette.gray700]);
     const boxes = [];
     const placed = terms.map((d, i) => {
@@ -13910,7 +13897,7 @@
     ];
     const group = svg.append("g").selectAll("g").data(metrics).join("g").attr("transform", (d, i) => `translate(${122 + i * 158},${height / 2})`);
     group.append("circle").attr("r", 56).attr("fill", d => d.fill).attr("fill-opacity", .78).attr("stroke", d => d.c).attr("stroke-width", 2.8);
-    const text = group.append("text").attr("text-anchor", "middle").attr("dy", ".18em").attr("font-size", 32).attr("font-weight", 800).attr("fill", palette.ink).text(d => d.to);
+    const text = group.append("text").attr("text-anchor", "middle").attr("dy", ".18em").attr("font-size", 24).attr("font-weight", 800).attr("fill", palette.ink).text(d => d.to);
     text.each(function (d, i) {
       const node = d3.select(this);
       node.append("animate").attr("attributeName", "opacity").attr("from", 0).attr("to", 1).attr("dur", ".25s").attr("begin", `${.08 + i * .08}s`).attr("fill", "freeze");

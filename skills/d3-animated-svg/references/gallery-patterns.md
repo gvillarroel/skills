@@ -2,6 +2,8 @@
 
 Use this reference when extending a gallery of multiple D3-generated SVG examples or building a browsable examples page.
 
+Do not read this as the default workflow for ordinary user deliverables. The skill gallery under `assets/examples/` is a validation fixture. For a user's requested visualization, read `user-artifact-workflow.md`, create or generate a new artifact in the user's output directory, and use the gallery only as read-only pattern reference unless the user explicitly asks to update the skill gallery.
+
 ## Card Contract
 
 - Keep one data record per example with `id`, `kicker`, `title`, `copy`, and `render`.
@@ -110,16 +112,19 @@ For gallery updates, verify:
 - every card contains exactly one SVG and one replay control
 - every SVG has positive dimensions, nontrivial element count, and animation nodes
 - truth-sensitive metadata stays internally consistent; the verifier independently recomputes the Solar Terminator equation of time, declination, and subsolar longitude from its UTC timestamp
+- every SVG sets an exportable root `font-family` matching `Open Sans, Arial, sans-serif`
+- every visible SVG `text` node uses the shared family, stays within 7–24 px, and remains inside the SVG viewport
 - release verification replays every card and updates only the targeted card render pass; use sampled replay only for fast smoke checks
 - replay resets the SVG timeline near zero and the timeline advances after the click
 - repeated replay does not leave duplicated marks or empty SVGs
 - desktop and mobile screenshots preserve readable card headers, replay controls, labels, and SVG framing
 - publication is completed, not just built locally: run `uv run --script scripts/build-pages.py`, commit the updated gallery source and pattern references, push the Pages-deploying branch, then verify the GitHub Pages workflow before relying on the new `d3-*` URL in another task
 
-Use the gallery verifier for deterministic checks:
+Use the gallery verifiers for deterministic checks. Run the visual audit after any gallery-wide style, text, animation, or replay change; it audits every card rather than sampling:
 
 ```powershell
 uv run --script skills/d3-animated-svg/scripts/verify_d3_gallery.py skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --expected 225 --replay-all --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery.png --wait-ms 2200
+uv run --script skills/d3-animated-svg/scripts/audit_d3_gallery_visuals.py skills/d3-animated-svg/assets/examples/d3-animated-svg/index.html --expected 225 --wait-ms 4500 --report projects/d3-animated-svg-validation/artifacts/data/gallery-visual-audit.json
 uv run --script skills/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 225 --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-mobile.png --wait-ms 2200
 uv run --script skills/d3-animated-svg/scripts/verify_colorset2_gallery.py skills/d3-animated-svg/assets/examples/d3-animated-svg-colorset2/index.html --expected 225 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-colorset2.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-colorset2.json --wait-ms 2200
 uv run --script skills/d3-animated-svg/scripts/verify_style_gallery.py skills/d3-animated-svg/assets/examples/d3-animated-svg-cs1/index.html --palette-file skills/d3-animated-svg/assets/palettes/colorset1.yml --style-version cs1 --color-set colorset1 --palette-name basic-red-neutral-style --pattern-id-suffix cs1 --expected 225 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-cs1.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-cs1.json --wait-ms 2200
