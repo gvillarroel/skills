@@ -108,6 +108,11 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "vectorize-art-patterns",
+    "vectorize-abstract-world-maps": SKILLS
+    / "vectorize-art-patterns"
+    / "assets"
+    / "examples"
+    / "vectorize-abstract-world-maps",
 }
 UNLISTED_EXAMPLE_SOURCES = {
     # Raw source folders copied for linked galleries or verification assets, not standalone landing pages.
@@ -228,6 +233,14 @@ PUBLISHED_EXAMPLE_SETS = [
         "href": "examples/vectorize-art-patterns/",
         "kind": "Editable SVG",
         "description": "Three hundred non-geometric abstract and Cubist-derived SVG patterns across 15 families, with no reused compositions, complete geometry, or path data.",
+    },
+    {
+        "id": "vectorize-abstract-world-maps",
+        "source": "vectorize-abstract-world-maps",
+        "title": "Abstract World Map Studies",
+        "href": "examples/vectorize-abstract-world-maps/",
+        "kind": "Editable SVG",
+        "description": "Two Colorset 1 global studies compare a biomorphic Equal Earth silhouette with an intentionally imprecise straight-line continental collage.",
     },
     {
         "id": "slidev-echarts",
@@ -698,6 +711,10 @@ def build_docs() -> None:
     copy_tree(example_source("plantuml-colorset-renderer"), DOCS / "examples" / "plantuml-colorset-renderer")
     copy_tree(example_source("plantuml-colorset-renderer-cs1"), DOCS / "examples" / "plantuml-colorset-renderer-cs1")
     copy_tree(example_source("vectorize-art-patterns"), DOCS / "examples" / "vectorize-art-patterns")
+    copy_tree(
+        example_source("vectorize-abstract-world-maps"),
+        DOCS / "examples" / "vectorize-abstract-world-maps",
+    )
     copy_tree(
         example_source("mermaid-directive-frames"),
         DOCS / "examples" / "playwright" / "mermaid-animation-directives",

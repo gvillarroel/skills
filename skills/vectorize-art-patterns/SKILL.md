@@ -143,6 +143,12 @@ suffixes. It contains 150 members of each colorset; no colorset pair shares
 composition, complete geometry, or path data. Rebuild and validate the fixture
 before publishing Pages.
 
+For global art that ranges from a recognizable land silhouette to an
+intentionally imprecise continental mnemonic, read
+`references/abstract-world-map-recipe.md`. The focused Pages fixture uses the
+stable ID `vectorize-abstract-world-maps`; validate it with
+`scripts/validate_abstract_world_map_examples.py`.
+
 Browser review must confirm:
 
 - the subject or visual rhythm remains recognizable at the requested simplification level;
@@ -191,7 +197,9 @@ Do not add a new mode as an untested stylistic alias.
 - `scripts/validate_art_svg.py`: enforce the editable standalone SVG contract.
 - `scripts/build_example_gallery.py`: regenerate the 300-member, 15-family Pages collection and its uniqueness manifest.
 - `scripts/validate_example_gallery.py`: enforce page/manifest parity, 300 unique compositions and geometries, globally unique path data, no reusable SVG elements, report parity, and colorset anchors.
+- `scripts/validate_abstract_world_map_examples.py`: validate the two focused world-map SVGs, page/manifest parity, palette, geometry contracts, hashes, and provenance.
 - `scripts/test_vectorize_art.py`: exercise all modes, both colorsets, seeded variation, determinism, invalid variation bounds, restricted-license rejection, and tampered-asset detection.
+- `references/abstract-world-map-recipe.md`: create recognizable or intentionally imprecise global artwork without confusing abstract placement with cartographic accuracy.
 - `references/collection-generation.md`: generate deterministic collections and enforce no-reuse semantics.
 - `references/colorset-adaptation.md`: select colorsets and preserve geometry across palette variants.
 - `references/pipeline-selection.md`: choose and tune filters or research an extension.
@@ -199,3 +207,4 @@ Do not add a new mode as an untested stylistic alias.
 - `assets/palettes/colorsets.json`: self-contained colorset1/colorset2 token contract.
 - `assets/base-images/manifest.json`: canonical metadata and hashes for bundled open source images.
 - `assets/examples/vectorize-art-patterns/`: published acceptance fixture; exclude it from ordinary runtime reads.
+- `assets/examples/vectorize-abstract-world-maps/`: focused Pages fixture for the biomorphic and straight-line global studies.
