@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/van-gogh-bedroom.jpg",
+  "input_sha256": "87b5a913aa11a4eab725f5b7fb5ea8ceb28a7837b7389569a20c675502387842",
+  "output": "svgs/vectorize-van-gogh-bedroom-cs2.svg",
+  "output_sha256": "2982dcca3c0b801bcee86e814f062c2450fe118706bc68f1911faa37dd1bb580",
+  "pattern_id": "vectorize-van-gogh-bedroom-cs2",
+  "mode": "collage",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "403b4aa7475eaf76cd375059e98c48077f2ba174f9bfc7213f432b83c8e99c21",
+  "parameters": {
+    "colors": 9,
+    "smoothing": 0.34,
+    "palette_method": "median-cut",
+    "max_dimension": 560,
+    "filter_speckle": 18,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#948c75",
+          "target": "#007298"
+        },
+        {
+          "source": "#a77a11",
+          "target": "#e77204"
+        },
+        {
+          "source": "#7e9a98",
+          "target": "#828282"
+        },
+        {
+          "source": "#79807a",
+          "target": "#45842a"
+        },
+        {
+          "source": "#9f6c1b",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#a5a489",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#998065",
+          "target": "#004d66"
+        },
+        {
+          "source": "#646451",
+          "target": "#652f6c"
+        }
+      ],
+      "source_colors": [
+        "#728c9f",
+        "#948c75",
+        "#a77a11",
+        "#7e9a98",
+        "#79807a",
+        "#9f6c1b",
+        "#a5a489",
+        "#998065",
+        "#646451"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#007298",
+        "#e77204",
+        "#828282",
+        "#45842a",
+        "#9e1b32",
+        "#cfcfcf",
+        "#004d66",
+        "#652f6c"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 705,
+  "vector_width": 560,
+  "vector_height": 439,
+  "render_width": 560,
+  "render_height": 439,
+  "palette": [
+    "#004d66",
+    "#007298",
+    "#333e48",
+    "#45842a",
+    "#652f6c",
+    "#828282",
+    "#9e1b32",
+    "#cfcfcf",
+    "#e77204"
+  ],
+  "path_count": 171,
+  "output_bytes": 263045,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "van-gogh-bedroom",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/28560",
+    "attribution": "Vincent van Gogh (Dutch, 1853–1890); Helen Birch Bartlett Memorial Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "87b5a913aa11a4eab725f5b7fb5ea8ceb28a7837b7389569a20c675502387842"
+  },
+  "backend": "vtracer-0.6.15"
+}

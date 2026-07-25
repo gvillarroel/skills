@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/tanner-two-disciples.jpg",
+  "input_sha256": "71e0c2dd7811295e362be0cdf004e32ae7090f823b063aab0f3543f2591bf050",
+  "output": "svgs/vectorize-tanner-two-disciples-cs2.svg",
+  "output_sha256": "d8908e0f0d952328bab0ecd510dfde1433802f4fe7a51641daf210e620257621",
+  "pattern_id": "vectorize-tanner-two-disciples-cs2",
+  "mode": "organic",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "1c7283ec5fc182d9a2363a2f2cccf62bd24b84def3332946ad251140ecb798be",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.54,
+    "palette_method": "max-coverage",
+    "max_dimension": 560,
+    "filter_speckle": 24,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#1c1c1c",
+      "layers": [
+        {
+          "source": "#5f3703",
+          "target": "#007298"
+        },
+        {
+          "source": "#7a5826",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#4e523e",
+          "target": "#333e48"
+        },
+        {
+          "source": "#9e5703",
+          "target": "#e77204"
+        },
+        {
+          "source": "#a38137",
+          "target": "#828282"
+        },
+        {
+          "source": "#d5950f",
+          "target": "#f1c319"
+        },
+        {
+          "source": "#d4ae5f",
+          "target": "#cfcfcf"
+        }
+      ],
+      "source_colors": [
+        "#211f14",
+        "#5f3703",
+        "#7a5826",
+        "#4e523e",
+        "#9e5703",
+        "#a38137",
+        "#d5950f",
+        "#d4ae5f"
+      ],
+      "target_colors": [
+        "#1c1c1c",
+        "#007298",
+        "#9e1b32",
+        "#333e48",
+        "#e77204",
+        "#828282",
+        "#f1c319",
+        "#cfcfcf"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 1100,
+  "vector_width": 458,
+  "vector_height": 560,
+  "render_width": 458,
+  "render_height": 560,
+  "palette": [
+    "#007298",
+    "#1c1c1c",
+    "#333e48",
+    "#828282",
+    "#9e1b32",
+    "#cfcfcf",
+    "#e77204",
+    "#f1c319"
+  ],
+  "path_count": 17,
+  "output_bytes": 46665,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "tanner-two-disciples",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/87643",
+    "attribution": "Henry Ossawa Tanner (American, 1859–1937); Robert A. Waller Fund",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "71e0c2dd7811295e362be0cdf004e32ae7090f823b063aab0f3543f2591bf050"
+  },
+  "backend": "vtracer-0.6.15"
+}

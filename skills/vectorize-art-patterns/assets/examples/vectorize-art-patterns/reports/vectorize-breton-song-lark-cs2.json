@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/breton-song-lark.jpg",
+  "input_sha256": "04cd98272b805ae0a16d05bb9cd52da513e19d2dc66271f6635d36e4b005ab46",
+  "output": "svgs/vectorize-breton-song-lark-cs2.svg",
+  "output_sha256": "7ca195e69e23bd437cda1efd72c8f3b4732572da5308f8223942618be292cbb5",
+  "pattern_id": "vectorize-breton-song-lark-cs2",
+  "mode": "collage",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "1493664ecf2f49395e141bd99e0fc56ccb64ad632d651d7d809a74f37cf50ee9",
+  "parameters": {
+    "colors": 9,
+    "smoothing": 0.4,
+    "palette_method": "median-cut",
+    "max_dimension": 560,
+    "filter_speckle": 22,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#f7f7f7",
+      "layers": [
+        {
+          "source": "#daad7a",
+          "target": "#007298"
+        },
+        {
+          "source": "#554838",
+          "target": "#333e48"
+        },
+        {
+          "source": "#3c3b31",
+          "target": "#004d66"
+        },
+        {
+          "source": "#484034",
+          "target": "#1c1c1c"
+        },
+        {
+          "source": "#675945",
+          "target": "#828282"
+        },
+        {
+          "source": "#302a2a",
+          "target": "#652f6c"
+        },
+        {
+          "source": "#54533f",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#847059",
+          "target": "#45842a"
+        }
+      ],
+      "source_colors": [
+        "#af9f79",
+        "#daad7a",
+        "#554838",
+        "#3c3b31",
+        "#484034",
+        "#675945",
+        "#302a2a",
+        "#54533f",
+        "#847059"
+      ],
+      "target_colors": [
+        "#f7f7f7",
+        "#007298",
+        "#333e48",
+        "#004d66",
+        "#1c1c1c",
+        "#828282",
+        "#652f6c",
+        "#9e1b32",
+        "#45842a"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 1167,
+  "vector_width": 432,
+  "vector_height": 560,
+  "render_width": 432,
+  "render_height": 560,
+  "palette": [
+    "#004d66",
+    "#007298",
+    "#1c1c1c",
+    "#333e48",
+    "#45842a",
+    "#652f6c",
+    "#828282",
+    "#9e1b32",
+    "#f7f7f7"
+  ],
+  "path_count": 93,
+  "output_bytes": 219480,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "breton-song-lark",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/94841",
+    "attribution": "Jules Breton (French, 1827–1906); Henry Field Memorial Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "04cd98272b805ae0a16d05bb9cd52da513e19d2dc66271f6635d36e4b005ab46"
+  },
+  "backend": "vtracer-0.6.15"
+}

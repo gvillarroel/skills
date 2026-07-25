@@ -48,6 +48,9 @@ Choose the pipeline from the source's visual structure, not from its art-histori
 
 Research a new pipeline only when the four shipped modes do not preserve the source's defining structure. Prefer primary technical documentation and record the chosen parameters in the output report.
 
+For backend selection, color autotracing, and binary silhouette tools, read
+`vectorizer-selection.md`.
+
 - OpenCV image filtering and morphology: <https://docs.opencv.org/4.x/d4/d86/group__imgproc__filter.html>
 - OpenCV thresholding: <https://docs.opencv.org/4.x/d7/d4d/tutorial_py_thresholding.html>
 - OpenCV contour approximation: <https://docs.opencv.org/4.x/dd/d49/tutorial_py_contour_features.html>

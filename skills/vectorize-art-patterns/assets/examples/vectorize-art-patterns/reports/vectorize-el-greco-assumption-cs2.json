@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/el-greco-assumption.jpg",
+  "input_sha256": "0bf0ec0b8a39a7c2bb2a8f3321971c6088485e5fb978fd478a9a538da0c5622d",
+  "output": "svgs/vectorize-el-greco-assumption-cs2.svg",
+  "output_sha256": "7d3b3a12c5704747b2154478c25c2e91fd568cec66eb6f9560583847aa02c87a",
+  "pattern_id": "vectorize-el-greco-assumption-cs2",
+  "mode": "organic",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "a054b8f84fa6b172014ff7ed617ca9c69e569d286faff0363c09e23ecd3b0429",
+  "parameters": {
+    "colors": 9,
+    "smoothing": 0.48,
+    "palette_method": "max-coverage",
+    "max_dimension": 620,
+    "filter_speckle": 22,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#656b67",
+          "target": "#007298"
+        },
+        {
+          "source": "#a37982",
+          "target": "#828282"
+        },
+        {
+          "source": "#82512f",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#171008",
+          "target": "#1c1c1c"
+        },
+        {
+          "source": "#10395a",
+          "target": "#004d66"
+        },
+        {
+          "source": "#82abbe",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#376f99",
+          "target": "#652f6c"
+        },
+        {
+          "source": "#d0c7a9",
+          "target": "#f7f7f7"
+        }
+      ],
+      "source_colors": [
+        "#3c4921",
+        "#656b67",
+        "#a37982",
+        "#82512f",
+        "#171008",
+        "#10395a",
+        "#82abbe",
+        "#376f99",
+        "#d0c7a9"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#007298",
+        "#828282",
+        "#9e1b32",
+        "#1c1c1c",
+        "#004d66",
+        "#cfcfcf",
+        "#652f6c",
+        "#f7f7f7"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 1721,
+  "vector_width": 324,
+  "vector_height": 620,
+  "render_width": 324,
+  "render_height": 620,
+  "palette": [
+    "#004d66",
+    "#007298",
+    "#1c1c1c",
+    "#333e48",
+    "#652f6c",
+    "#828282",
+    "#9e1b32",
+    "#cfcfcf",
+    "#f7f7f7"
+  ],
+  "path_count": 97,
+  "output_bytes": 179831,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "el-greco-assumption",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/87479",
+    "attribution": "El Greco (Doménikos Theotokópoulos; Greek, active in Spain, 1541–1614); Gift of Nancy Atwood Sprague in memory of Albert Arnold Sprague",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "0bf0ec0b8a39a7c2bb2a8f3321971c6088485e5fb978fd478a9a538da0c5622d"
+  },
+  "backend": "vtracer-0.6.15"
+}

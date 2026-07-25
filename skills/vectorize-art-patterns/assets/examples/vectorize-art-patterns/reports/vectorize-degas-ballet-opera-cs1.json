@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/degas-ballet-opera.jpg",
+  "input_sha256": "c2d302129b902fefa71f784a3ada8701c9204d6eabcdcf8f108b993f8f5df767",
+  "output": "svgs/vectorize-degas-ballet-opera-cs1.svg",
+  "output_sha256": "a7c6c94d38cbf76102fa534ae727722698849244ac8c32642773d4df4be769dc",
+  "pattern_id": "vectorize-degas-ballet-opera-cs1",
+  "mode": "collage",
+  "tile": "none",
+  "colorset": "colorset1",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "95a0083aacba6a4d72f433850eae9c55bd39c7c69b80e5837ec20ee255ef5907",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.4,
+    "palette_method": "median-cut",
+    "max_dimension": 560,
+    "filter_speckle": 20,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#90887c",
+          "target": "#828282"
+        },
+        {
+          "source": "#777264",
+          "target": "#6d1222"
+        },
+        {
+          "source": "#c9bdb0",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#626c5d",
+          "target": "#1c1c1c"
+        },
+        {
+          "source": "#32312d",
+          "target": "#e8002a"
+        },
+        {
+          "source": "#565245",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#424c47",
+          "target": "#ffccd5"
+        }
+      ],
+      "source_colors": [
+        "#606153",
+        "#90887c",
+        "#777264",
+        "#c9bdb0",
+        "#626c5d",
+        "#32312d",
+        "#565245",
+        "#424c47"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#828282",
+        "#6d1222",
+        "#9e1b32",
+        "#1c1c1c",
+        "#e8002a",
+        "#cfcfcf",
+        "#ffccd5"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 450,
+  "vector_width": 560,
+  "vector_height": 280,
+  "render_width": 560,
+  "render_height": 280,
+  "palette": [
+    "#1c1c1c",
+    "#333e48",
+    "#6d1222",
+    "#828282",
+    "#9e1b32",
+    "#cfcfcf",
+    "#e8002a",
+    "#ffccd5"
+  ],
+  "path_count": 120,
+  "output_bytes": 196308,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "degas-ballet-opera",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/61603",
+    "attribution": "Edgar Degas French, 1834-1917; Gift of Mary and Leigh Block",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "c2d302129b902fefa71f784a3ada8701c9204d6eabcdcf8f108b993f8f5df767"
+  },
+  "backend": "vtracer-0.6.15"
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/hiroshige-sudden-shower.jpg",
+  "input_sha256": "155beee4cb5698ee542361c69e67db82a7f0d4899d4dde77186c0106533fb31d",
+  "output": "svgs/vectorize-hiroshige-sudden-shower-cs1.svg",
+  "output_sha256": "672dd724d8841ffc0e622034c94efa91c81fa27b7adeea972e9319f26c6f271a",
+  "pattern_id": "vectorize-hiroshige-sudden-shower-cs1",
+  "mode": "collage",
+  "tile": "none",
+  "colorset": "colorset1",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "a9035ca6af317f81102a474d8c38f3347b1ff5ef75378d6e9b50139ae6573762",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.34,
+    "palette_method": "median-cut",
+    "max_dimension": 620,
+    "filter_speckle": 16,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#dbbc9d",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#64594f",
+          "target": "#828282"
+        },
+        {
+          "source": "#73786e",
+          "target": "#6d1222"
+        },
+        {
+          "source": "#3a3b3e",
+          "target": "#1c1c1c"
+        },
+        {
+          "source": "#aca08a",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#98806e",
+          "target": "#e8002a"
+        },
+        {
+          "source": "#edd5bb",
+          "target": "#ffccd5"
+        }
+      ],
+      "source_colors": [
+        "#8d9587",
+        "#dbbc9d",
+        "#64594f",
+        "#73786e",
+        "#3a3b3e",
+        "#aca08a",
+        "#98806e",
+        "#edd5bb"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#9e1b32",
+        "#828282",
+        "#6d1222",
+        "#1c1c1c",
+        "#cfcfcf",
+        "#e8002a",
+        "#ffccd5"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 1314,
+  "vector_width": 425,
+  "vector_height": 620,
+  "render_width": 425,
+  "render_height": 620,
+  "palette": [
+    "#1c1c1c",
+    "#333e48",
+    "#6d1222",
+    "#828282",
+    "#9e1b32",
+    "#cfcfcf",
+    "#e8002a",
+    "#ffccd5"
+  ],
+  "path_count": 98,
+  "output_bytes": 213485,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "hiroshige-sudden-shower",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/64447",
+    "attribution": "Utagawa Hiroshige 歌川 広重 Japanese, 1797-1858; Mary and Earle Ludgin Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "155beee4cb5698ee542361c69e67db82a7f0d4899d4dde77186c0106533fb31d"
+  },
+  "backend": "vtracer-0.6.15"
+}

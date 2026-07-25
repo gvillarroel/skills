@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/homer-herring-net.jpg",
+  "input_sha256": "6689d158714e04bb50b430978f32e644999a54dfd6d3a1e75e4bad39b5a7f256",
+  "output": "svgs/vectorize-homer-herring-net-cs1.svg",
+  "output_sha256": "451c43771e6b6ef782812626ffc56fdc341c6340982b31946c9c58734926b61e",
+  "pattern_id": "vectorize-homer-herring-net-cs1",
+  "mode": "organic",
+  "tile": "none",
+  "colorset": "colorset1",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "ccd08b385c872a36ee4ac00db3ee39bcf4e0aaac4ef4a19a4db92fb97502a849",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.5,
+    "palette_method": "max-coverage",
+    "max_dimension": 560,
+    "filter_speckle": 22,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#435845",
+          "target": "#828282"
+        },
+        {
+          "source": "#8e8068",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#1c1711",
+          "target": "#1c1c1c"
+        },
+        {
+          "source": "#5a2e1e",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#1f4329",
+          "target": "#6d1222"
+        },
+        {
+          "source": "#c1b997",
+          "target": "#ffccd5"
+        },
+        {
+          "source": "#ece8d5",
+          "target": "#f7f7f7"
+        }
+      ],
+      "source_colors": [
+        "#7a5e3f",
+        "#435845",
+        "#8e8068",
+        "#1c1711",
+        "#5a2e1e",
+        "#1f4329",
+        "#c1b997",
+        "#ece8d5"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#828282",
+        "#cfcfcf",
+        "#1c1c1c",
+        "#9e1b32",
+        "#6d1222",
+        "#ffccd5",
+        "#f7f7f7"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 553,
+  "vector_width": 560,
+  "vector_height": 344,
+  "render_width": 560,
+  "render_height": 344,
+  "palette": [
+    "#1c1c1c",
+    "#333e48",
+    "#6d1222",
+    "#828282",
+    "#9e1b32",
+    "#cfcfcf"
+  ],
+  "path_count": 37,
+  "output_bytes": 83797,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "homer-herring-net",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/25865",
+    "attribution": "Winslow Homer (American, 1836–1910); Mr. and Mrs. Martin A. Ryerson Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "6689d158714e04bb50b430978f32e644999a54dfd6d3a1e75e4bad39b5a7f256"
+  },
+  "backend": "vtracer-0.6.15"
+}

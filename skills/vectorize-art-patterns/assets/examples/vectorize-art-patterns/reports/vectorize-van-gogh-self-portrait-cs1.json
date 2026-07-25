@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/van-gogh-self-portrait.jpg",
+  "input_sha256": "2c452724d2a65af0aa9d88ace86003b8aa863b666d683cfaa11af6af5e880061",
+  "output": "svgs/vectorize-van-gogh-self-portrait-cs1.svg",
+  "output_sha256": "1ad34f9410e6bfa849d160a5e35474aff1ca05c293c312a3b5e276e287cbca44",
+  "pattern_id": "vectorize-van-gogh-self-portrait-cs1",
+  "mode": "organic",
+  "tile": "none",
+  "colorset": "colorset1",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "3d2c855ce6697a0883c96e1e6a3f37ebe383a412ab35d6e085ce75a4005dcfa6",
+  "parameters": {
+    "colors": 9,
+    "smoothing": 0.46,
+    "palette_method": "max-coverage",
+    "max_dimension": 560,
+    "filter_speckle": 20,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#1c1c1c",
+      "layers": [
+        {
+          "source": "#695938",
+          "target": "#333e48"
+        },
+        {
+          "source": "#495967",
+          "target": "#828282"
+        },
+        {
+          "source": "#a06046",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#c1a27b",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#8f9579",
+          "target": "#ffccd5"
+        },
+        {
+          "source": "#762623",
+          "target": "#6d1222"
+        },
+        {
+          "source": "#6f7860",
+          "target": "#e8002a"
+        },
+        {
+          "source": "#bdbda7",
+          "target": "#f7f7f7"
+        }
+      ],
+      "source_colors": [
+        "#262829",
+        "#695938",
+        "#495967",
+        "#a06046",
+        "#c1a27b",
+        "#8f9579",
+        "#762623",
+        "#6f7860",
+        "#bdbda7"
+      ],
+      "target_colors": [
+        "#1c1c1c",
+        "#333e48",
+        "#828282",
+        "#9e1b32",
+        "#cfcfcf",
+        "#ffccd5",
+        "#6d1222",
+        "#e8002a",
+        "#f7f7f7"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 1147,
+  "vector_width": 439,
+  "vector_height": 560,
+  "render_width": 439,
+  "render_height": 560,
+  "palette": [
+    "#1c1c1c",
+    "#333e48",
+    "#6d1222",
+    "#828282",
+    "#9e1b32",
+    "#cfcfcf",
+    "#e8002a",
+    "#f7f7f7",
+    "#ffccd5"
+  ],
+  "path_count": 51,
+  "output_bytes": 199716,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "van-gogh-self-portrait",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/80607",
+    "attribution": "Vincent van Gogh (Dutch, 1853–1890); Joseph Winterbotham Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "2c452724d2a65af0aa9d88ace86003b8aa863b666d683cfaa11af6af5e880061"
+  },
+  "backend": "vtracer-0.6.15"
+}

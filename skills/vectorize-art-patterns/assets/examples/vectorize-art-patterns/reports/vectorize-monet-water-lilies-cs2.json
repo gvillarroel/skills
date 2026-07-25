@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/monet-water-lilies.jpg",
+  "input_sha256": "ff684c1a344422bb2ac4c51585524dc1afdb416715cfe3127c88ccd5c40e2c7f",
+  "output": "svgs/vectorize-monet-water-lilies-cs2.svg",
+  "output_sha256": "427af879f228eec0d5bfb148b976cd98f3032291f408fd64b93d15c5b4311b24",
+  "pattern_id": "vectorize-monet-water-lilies-cs2",
+  "mode": "stain",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "7a949867623d00462831eebeeba129f2eedc7bc0d711e3ace65408c164693c51",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.72,
+    "palette_method": "max-coverage",
+    "max_dimension": 560,
+    "filter_speckle": 28,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#4c83a5",
+          "target": "#007298"
+        },
+        {
+          "source": "#767891",
+          "target": "#828282"
+        },
+        {
+          "source": "#6c6064",
+          "target": "#004d66"
+        },
+        {
+          "source": "#214b51",
+          "target": "#652f6c"
+        },
+        {
+          "source": "#466d42",
+          "target": "#45842a"
+        },
+        {
+          "source": "#899c75",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#b1ada9",
+          "target": "#f7f7f7"
+        }
+      ],
+      "source_colors": [
+        "#3b5d7f",
+        "#4c83a5",
+        "#767891",
+        "#6c6064",
+        "#214b51",
+        "#466d42",
+        "#899c75",
+        "#b1ada9"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#007298",
+        "#828282",
+        "#004d66",
+        "#652f6c",
+        "#45842a",
+        "#cfcfcf",
+        "#f7f7f7"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 864,
+  "vector_width": 560,
+  "vector_height": 538,
+  "render_width": 560,
+  "render_height": 538,
+  "palette": [
+    "#004d66",
+    "#007298",
+    "#333e48",
+    "#45842a",
+    "#652f6c",
+    "#828282"
+  ],
+  "path_count": 38,
+  "output_bytes": 111958,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "monet-water-lilies",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/16568",
+    "attribution": "Claude Monet (French, 1840–1926); Mr. and Mrs. Martin A. Ryerson Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "ff684c1a344422bb2ac4c51585524dc1afdb416715cfe3127c88ccd5c40e2c7f"
+  },
+  "backend": "vtracer-0.6.15"
+}

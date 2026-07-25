@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/cezanne-basket-apples.jpg",
+  "input_sha256": "cec937b803d6288fe88859167676291af8549fe0070337cd22a6e0743d3694c4",
+  "output": "svgs/vectorize-cezanne-basket-apples-cs1.svg",
+  "output_sha256": "39bd482d398382b3060fd8de64246e52c266ecf02856502739449d9577dd811e",
+  "pattern_id": "vectorize-cezanne-basket-apples-cs1",
+  "mode": "collage",
+  "tile": "none",
+  "colorset": "colorset1",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "5744765221001b2e142cdff03d53f70bc73faf59cf2cfa198357e8583abd2b77",
+  "parameters": {
+    "colors": 9,
+    "smoothing": 0.38,
+    "palette_method": "median-cut",
+    "max_dimension": 560,
+    "filter_speckle": 18,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#846740",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#3b3e3a",
+          "target": "#1c1c1c"
+        },
+        {
+          "source": "#909687",
+          "target": "#828282"
+        },
+        {
+          "source": "#624c39",
+          "target": "#6d1222"
+        },
+        {
+          "source": "#606455",
+          "target": "#e8002a"
+        },
+        {
+          "source": "#a1a699",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#b3af9b",
+          "target": "#ffccd5"
+        },
+        {
+          "source": "#8d8870",
+          "target": "#f7f7f7"
+        }
+      ],
+      "source_colors": [
+        "#768578",
+        "#846740",
+        "#3b3e3a",
+        "#909687",
+        "#624c39",
+        "#606455",
+        "#a1a699",
+        "#b3af9b",
+        "#8d8870"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#9e1b32",
+        "#1c1c1c",
+        "#828282",
+        "#6d1222",
+        "#e8002a",
+        "#cfcfcf",
+        "#ffccd5",
+        "#f7f7f7"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 718,
+  "vector_width": 560,
+  "vector_height": 447,
+  "render_width": 560,
+  "render_height": 447,
+  "palette": [
+    "#1c1c1c",
+    "#333e48",
+    "#6d1222",
+    "#828282",
+    "#9e1b32",
+    "#cfcfcf",
+    "#e8002a",
+    "#f7f7f7",
+    "#ffccd5"
+  ],
+  "path_count": 161,
+  "output_bytes": 251472,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "cezanne-basket-apples",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/111436",
+    "attribution": "Paul Cezanne (French, 1839–1906); Helen Birch Bartlett Memorial Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "cec937b803d6288fe88859167676291af8549fe0070337cd22a6e0743d3694c4"
+  },
+  "backend": "vtracer-0.6.15"
+}

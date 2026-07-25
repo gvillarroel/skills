@@ -20,6 +20,7 @@ Create a rights-traceable vector interpretation, not a pixel-perfect autotrace. 
    - `stain`: watercolor, marbling, clouds, soft color fields.
    - `collage`: Synthetic Cubism, pasted-paper masses, torn silhouettes.
    - Read `references/pipeline-selection.md` before tuning an unfamiliar source or adding a technique.
+   - Read `references/vectorizer-selection.md` when choosing between the bundled OpenCV tracer, VTracer, Potrace, or Inkscape.
    - For a multi-pattern collection, also read `references/collection-generation.md` before choosing parameters or counting outputs.
 4. Choose the paint contract:
    - Omit `--colorset` to retain a simplified source-derived palette.
@@ -101,6 +102,23 @@ uv run --script skills/vectorize-art-patterns/scripts/vectorize_art.py `
 
 Preserve exact output paths. Do not write task artifacts into `skills/`.
 
+For detailed color paintings or prints, use the bundled VTracer backend. It
+quantizes once in the source color space, traces that raster, then applies
+Colorset paint so paired variants retain identical path geometry:
+
+```powershell
+uv run --script skills/vectorize-art-patterns/scripts/vectorize_with_vtracer.py `
+  assets/base-images/hokusai-great-wave.jpg `
+  outputs/hokusai-great-wave-cs1.svg `
+  --mode collage `
+  --colors 10 `
+  --colorset colorset1 `
+  --pattern-id hokusai-great-wave-cs1 `
+  --source-manifest assets/base-images/manifest.json `
+  --source-id hokusai-great-wave `
+  --report outputs/hokusai-great-wave-cs1.json
+```
+
 ## Validate
 
 ```powershell
@@ -137,10 +155,10 @@ uv run --script skills/vectorize-art-patterns/scripts/validate_example_gallery.p
 uv run --script scripts/build-pages.py
 ```
 
-The published set uses the stable page ID `vectorize-art-patterns`, 300
-independent drawings across 15 families, and `-cs1` / `-cs2` pattern-ID
-suffixes. It contains 150 members of each colorset; no colorset pair shares
-composition, complete geometry, or path data. Rebuild and validate the fixture
+The published set uses the stable page ID `vectorize-art-patterns`. It presents
+30 distinct open artworks by 28 creators as 60 VTracer SVGs: one
+geometry-locked `-cs1` / `-cs2` pair per source. The pair is a paint
+comparison, not two independent drawings. Rebuild and validate the fixture
 before publishing Pages.
 
 For global art that ranges from a recognizable land silhouette to an
@@ -194,15 +212,18 @@ Do not add a new mode as an untested stylistic alias.
 - `scripts/fetch_open_image.py`: verify a supported provider, download one open image, and update its provenance manifest.
 - `scripts/validate_open_assets.py`: verify base-image hashes, dimensions, MIME types, source URLs, and derivative-friendly licenses.
 - `scripts/vectorize_art.py`: generate deterministic organic, ink, stain, or collage SVG paths and a sidecar report.
+- `scripts/vectorize_with_vtracer.py`: trace detailed color artwork with the MIT-licensed VTracer backend while preserving geometry across Colorset variants.
 - `scripts/validate_art_svg.py`: enforce the editable standalone SVG contract.
-- `scripts/build_example_gallery.py`: regenerate the 300-member, 15-family Pages collection and its uniqueness manifest.
-- `scripts/validate_example_gallery.py`: enforce page/manifest parity, 300 unique compositions and geometries, globally unique path data, no reusable SVG elements, report parity, and colorset anchors.
+- `scripts/build_example_gallery.py`: regenerate the 30-work, 60-variant VTracer Pages collection and its provenance manifest.
+- `scripts/validate_example_gallery.py`: enforce page/manifest parity, distinct source bytes, 30 unique geometries, geometry-locked Colorset pairs, no raster wrappers, report parity, and colorset anchors.
+- `scripts/test_vectorize_with_vtracer.py`: exercise deterministic VTracer output, Colorset pairing, palette locks, and rights rejection.
 - `scripts/validate_abstract_world_map_examples.py`: validate the two focused world-map SVGs, page/manifest parity, palette, geometry contracts, hashes, and provenance.
 - `scripts/test_vectorize_art.py`: exercise all modes, both colorsets, seeded variation, determinism, invalid variation bounds, restricted-license rejection, and tampered-asset detection.
 - `references/abstract-world-map-recipe.md`: create recognizable or intentionally imprecise global artwork without confusing abstract placement with cartographic accuracy.
 - `references/collection-generation.md`: generate deterministic collections and enforce no-reuse semantics.
 - `references/colorset-adaptation.md`: select colorsets and preserve geometry across palette variants.
 - `references/pipeline-selection.md`: choose and tune filters or research an extension.
+- `references/vectorizer-selection.md`: select an OSS tracing backend from source structure and output needs.
 - `references/rights-and-provenance.md`: apply the license allowlist and attribution rules.
 - `assets/palettes/colorsets.json`: self-contained colorset1/colorset2 token contract.
 - `assets/base-images/manifest.json`: canonical metadata and hashes for bundled open source images.

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/rembrandt-old-man-gold-chain.jpg",
+  "input_sha256": "b1971f3ed733f26980900b8671ca56afa2b999391b176cb31bb06726f58e5698",
+  "output": "svgs/vectorize-rembrandt-old-man-gold-chain-cs1.svg",
+  "output_sha256": "58c60b074084af34359cbed09b1ffcff88f7ee9fc5c886d54da810919539052a",
+  "pattern_id": "vectorize-rembrandt-old-man-gold-chain-cs1",
+  "mode": "organic",
+  "tile": "none",
+  "colorset": "colorset1",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "92fbece86b188ffc0551746e323807bcfe55014a79d6a2f1899291deacc583e2",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.5,
+    "palette_method": "max-coverage",
+    "max_dimension": 560,
+    "filter_speckle": 22,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#0c0808",
+          "target": "#1c1c1c"
+        },
+        {
+          "source": "#51514f",
+          "target": "#828282"
+        },
+        {
+          "source": "#7a512e",
+          "target": "#6d1222"
+        },
+        {
+          "source": "#ab814f",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#706e69",
+          "target": "#e8002a"
+        },
+        {
+          "source": "#a8a194",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#928777",
+          "target": "#ffccd5"
+        }
+      ],
+      "source_colors": [
+        "#363431",
+        "#0c0808",
+        "#51514f",
+        "#7a512e",
+        "#ab814f",
+        "#706e69",
+        "#a8a194",
+        "#928777"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#1c1c1c",
+        "#828282",
+        "#6d1222",
+        "#9e1b32",
+        "#e8002a",
+        "#cfcfcf",
+        "#ffccd5"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 980,
+  "vector_width": 514,
+  "vector_height": 560,
+  "render_width": 514,
+  "render_height": 560,
+  "palette": [
+    "#1c1c1c",
+    "#333e48",
+    "#6d1222",
+    "#828282",
+    "#9e1b32"
+  ],
+  "path_count": 13,
+  "output_bytes": 38871,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "rembrandt-old-man-gold-chain",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/95998",
+    "attribution": "Rembrandt van Rijn (Dutch, 1606–1669); Mr. and Mrs. W. W. Kimball Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "b1971f3ed733f26980900b8671ca56afa2b999391b176cb31bb06726f58e5698"
+  },
+  "backend": "vtracer-0.6.15"
+}

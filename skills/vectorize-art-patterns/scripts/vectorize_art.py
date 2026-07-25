@@ -1147,6 +1147,8 @@ def apply_mode_defaults(args: argparse.Namespace) -> argparse.Namespace:
 
 
 def main(argv: list[str] | None = None) -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     args = apply_mode_defaults(build_parser().parse_args(argv))
     report = vectorize(args)
     print(json.dumps(report, indent=2, ensure_ascii=False))

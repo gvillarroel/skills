@@ -519,6 +519,8 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     args = build_parser().parse_args(argv)
     if not 200 <= args.max_width <= 2400:
         raise FetchError("--max-width must be between 200 and 2400")

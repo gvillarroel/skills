@@ -1,49 +1,56 @@
 #!/usr/bin/env -S uv run --script
 # /// script
-# requires-python = ">=3.11"
+# requires-python = ">=3.11,<3.14"
 # dependencies = [
 #   "numpy>=2.0",
 #   "opencv-python-headless>=4.10",
 #   "pillow>=11.0",
+#   "vtracer==0.6.15",
 # ]
 # ///
-"""Build the deterministic 300-pattern Pages acceptance gallery."""
+"""Build the 30-work, 60-variant open-masterpiece Pages gallery."""
 
 from __future__ import annotations
 
 import argparse
-from collections import Counter
 import hashlib
 import importlib.util
 import json
-import os
 from pathlib import Path
+import re
+import shutil
 import sys
 from typing import Any
 import xml.etree.ElementTree as ET
 
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-SKILL_ROOT = SCRIPT_DIR.parent
-DEFAULT_EXAMPLE_ROOT = (
+SKILL_ROOT = Path(__file__).resolve().parents[1]
+FIXTURE_ROOT = (
     SKILL_ROOT / "assets" / "examples" / "vectorize-art-patterns"
 )
-EXPECTED_PATTERN_COUNT = 300
-EXPECTED_FAMILY_COUNT = 15
-sys.dont_write_bytecode = True
+SPEC_PATH = FIXTURE_ROOT / "gallery-spec.json"
+SOURCE_MANIFEST_PATH = SKILL_ROOT / "assets" / "base-images" / "manifest.json"
+VECTORIZE_VTRACER_PATH = Path(__file__).with_name("vectorize_with_vtracer.py")
+EXPECTED_ARTWORK_COUNT = 30
+EXPECTED_VARIANT_COUNT = 60
+COLORSET_SUFFIXES = {"colorset1": "cs1", "colorset2": "cs2"}
 
 
-def load_module(name: str, path: Path) -> Any:
+class BuildError(RuntimeError):
+    """Raised when the gallery cannot be built safely."""
+
+
+def load_module(path: Path, name: str) -> Any:
     spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
-        raise RuntimeError(f"Cannot load module: {path}")
+        raise BuildError(f"Cannot load gallery dependency: {path}")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
 
 
-vectorizer = load_module("vectorize_art", SCRIPT_DIR / "vectorize_art.py")
-validator = load_module("validate_art_svg", SCRIPT_DIR / "validate_art_svg.py")
+VT = load_module(VECTORIZE_VTRACER_PATH, "vectorize_with_vtracer_gallery")
+VA = VT.VA
 
 
 def sha256_path(path: Path) -> str:
@@ -54,570 +61,282 @@ def sha256_path(path: Path) -> str:
     return digest.hexdigest()
 
 
-def sha256_json(payload: Any) -> str:
-    encoded = json.dumps(
-        payload,
-        sort_keys=True,
-        separators=(",", ":"),
-        ensure_ascii=False,
-    ).encode("utf-8")
-    return hashlib.sha256(encoded).hexdigest()
-
-
-def relative_path(path: Path) -> Path:
-    return Path(os.path.relpath(path.resolve(), Path.cwd().resolve()))
-
-
-def svg_geometry_record(svg: Path) -> dict[str, Any]:
-    root = ET.fromstring(svg.read_text(encoding="utf-8"))
-    paths = [
-        element.get("d", "")
-        for element in root.iter()
-        if element.tag.rsplit("}", 1)[-1] == "path"
-    ]
-    if not paths or any(not path for path in paths):
-        raise RuntimeError(f"SVG has missing path data: {svg}")
-    return {
-        "geometrySha256": sha256_json(
-            {"viewBox": root.get("viewBox", ""), "paths": paths}
-        ),
-        "pathSignatures": [
-            hashlib.sha256(path.encode("utf-8")).hexdigest() for path in paths
-        ],
-    }
-
-
-def normalize_report_paths(
-    report: dict[str, Any],
-    *,
-    input_path: Path,
-    output_path: Path,
-) -> dict[str, Any]:
-    normalized = dict(report)
-    normalized["input"] = relative_path(input_path).as_posix()
-    normalized["output"] = relative_path(output_path).as_posix()
-    return normalized
-
-
-def load_json(path: Path) -> dict[str, Any]:
+def read_json(path: Path) -> dict[str, Any]:
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
-        raise RuntimeError(f"Cannot read JSON {path}: {exc}") from exc
+        raise BuildError(f"Cannot read JSON {path}: {exc}") from exc
     if not isinstance(payload, dict):
-        raise RuntimeError(f"Expected a JSON object: {path}")
+        raise BuildError(f"Expected a JSON object: {path}")
     return payload
 
 
-def halton(index: int, base: int) -> float:
-    if index < 1 or base < 2:
-        raise RuntimeError("Halton index/base is invalid")
-    result = 0.0
-    fraction = 1.0
-    value = index
-    while value:
-        fraction /= base
-        result += fraction * (value % base)
-        value //= base
-    return result
-
-
-def ranged(
-    family: dict[str, Any],
-    key: str,
-    sequence_index: int,
-    base: int,
-    *,
-    digits: int,
-) -> float:
-    values = family.get(key)
-    if (
-        not isinstance(values, list)
-        or len(values) != 2
-        or not all(isinstance(value, (int, float)) for value in values)
-    ):
-        raise RuntimeError(f"Family {family.get('id')} has invalid {key}")
-    low, high = float(values[0]), float(values[1])
-    if low > high:
-        raise RuntimeError(f"Family {family.get('id')} reverses {key}")
-    return round(low + (high - low) * halton(sequence_index, base), digits)
-
-
-def integer_range(
-    family: dict[str, Any],
-    key: str,
-    sequence_index: int,
-    base: int,
-) -> int:
-    return int(round(ranged(family, key, sequence_index, base, digits=6)))
-
-
 def validate_spec(spec: dict[str, Any]) -> list[dict[str, Any]]:
-    if spec.get("schemaVersion") != 2:
-        raise RuntimeError("Gallery spec schemaVersion must be 2")
-    if spec.get("pageId") != "vectorize-art-patterns":
-        raise RuntimeError("Gallery spec pageId is incorrect")
-    families = spec.get("families")
-    if not isinstance(families, list) or len(families) != EXPECTED_FAMILY_COUNT:
-        raise RuntimeError(
-            f"Gallery spec must contain {EXPECTED_FAMILY_COUNT} families"
+    if spec.get("schemaVersion") != 3:
+        raise BuildError("Gallery spec must use schemaVersion 3")
+    artworks = spec.get("artworks")
+    if not isinstance(artworks, list) or len(artworks) != EXPECTED_ARTWORK_COUNT:
+        raise BuildError(
+            f"Gallery spec must contain {EXPECTED_ARTWORK_COUNT} artworks"
         )
-    if spec.get("targetPatternCount") != EXPECTED_PATTERN_COUNT:
-        raise RuntimeError("Gallery spec targetPatternCount must be 300")
-    if spec.get("patternsPerFamily") != 20:
-        raise RuntimeError("Gallery spec patternsPerFamily must be 20")
-    family_ids: set[str] = set()
-    total = 0
-    for family in families:
-        if not isinstance(family, dict):
-            raise RuntimeError("Every gallery family must be an object")
-        family_id = family.get("id")
-        if not isinstance(family_id, str) or not vectorizer.PATTERN_ID_RE.fullmatch(
-            family_id
-        ):
-            raise RuntimeError(f"Invalid gallery family ID: {family_id!r}")
-        if family_id in family_ids:
-            raise RuntimeError(f"Duplicate gallery family ID: {family_id}")
-        family_ids.add(family_id)
-        if family.get("count") != 20:
-            raise RuntimeError(f"Family {family_id} must contain 20 patterns")
-        if family.get("mode") not in vectorizer.MODE_DEFAULTS:
-            raise RuntimeError(f"Family {family_id} has an invalid mode")
-        if not isinstance(family.get("paletteMethods"), list) or not family[
-            "paletteMethods"
-        ]:
-            raise RuntimeError(f"Family {family_id} has no palette methods")
-        if not isinstance(family.get("minPaths"), int) or family["minPaths"] < 1:
-            raise RuntimeError(f"Family {family_id} has invalid minPaths")
-        total += int(family["count"])
-    if total != EXPECTED_PATTERN_COUNT:
-        raise RuntimeError(f"Gallery spec expands to {total}, expected 300")
-    return families
+    if spec.get("artworkCount") != EXPECTED_ARTWORK_COUNT:
+        raise BuildError("Gallery spec artworkCount does not match the artwork list")
+    if spec.get("variantCount") != EXPECTED_VARIANT_COUNT:
+        raise BuildError("Gallery spec variantCount must be 60")
+    if spec.get("colorsets") != ["colorset1", "colorset2"]:
+        raise BuildError("Gallery spec must define colorset1 and colorset2")
+
+    seen: set[str] = set()
+    for artwork in artworks:
+        if not isinstance(artwork, dict):
+            raise BuildError("Every artwork spec must be an object")
+        source_id = str(artwork.get("id", ""))
+        if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", source_id):
+            raise BuildError(f"Invalid artwork/source ID: {source_id}")
+        if source_id in seen:
+            raise BuildError(f"Repeated source ID in gallery spec: {source_id}")
+        seen.add(source_id)
+        if artwork.get("mode") not in {"organic", "ink", "stain", "collage"}:
+            raise BuildError(f"Unsupported mode for {source_id}")
+        if artwork.get("paletteMethod") not in {"median-cut", "max-coverage"}:
+            raise BuildError(f"Unsupported palette method for {source_id}")
+        if not isinstance(artwork.get("genre"), str) or not artwork["genre"]:
+            raise BuildError(f"Missing genre for {source_id}")
+    return artworks
 
 
-def recipe_for(
-    family: dict[str, Any],
-    *,
-    family_index: int,
-    item_index: int,
-    ordinal: int,
-) -> dict[str, Any]:
-    sequence_index = ordinal + 1
-    colorset = "colorset1" if ordinal % 2 == 0 else "colorset2"
-    variant = "cs1" if colorset == "colorset1" else "cs2"
-    item_number = item_index + 1
-    family_id = str(family["id"])
-    pattern_id = f"vectorize-{family_id}-{item_number:02d}-{variant}"
-    seed = (family_index + 1) * 100_003 + item_number * 7_919
-    palette_methods = [str(value) for value in family["paletteMethods"]]
-    return {
-        "id": pattern_id,
-        "exampleId": f"{family_id}-{item_number:02d}",
-        "ordinal": ordinal + 1,
-        "familyId": family_id,
-        "familyTitle": str(family["title"]),
-        "title": f"{family['title']} {item_number:02d}",
-        "description": str(family["description"]),
-        "sourceId": str(family["sourceId"]),
-        "mode": str(family["mode"]),
-        "tile": "none",
-        "colorset": colorset,
-        "variant": variant,
-        "variationSeed": seed,
-        "colors": integer_range(family, "colors", sequence_index, 3),
-        "smoothing": ranged(
-            family, "smoothing", sequence_index, 5, digits=3
-        ),
-        "detail": ranged(family, "detail", sequence_index, 7, digits=3),
-        "minArea": ranged(
-            family, "minArea", sequence_index, 11, digits=2
-        ),
-        "maxDimension": integer_range(
-            family, "maxDimension", sequence_index, 13
-        ),
-        "cropScale": ranged(
-            family, "cropScale", sequence_index, 17, digits=4
-        ),
-        "cropX": round(halton(sequence_index + family_index * 23, 19), 4),
-        "cropY": round(halton(sequence_index + family_index * 29, 23), 4),
-        "rotation": ranged(
-            family, "rotation", sequence_index, 29, digits=3
-        ),
-        "flowStrength": ranged(
-            family, "flowStrength", sequence_index, 31, digits=3
-        ),
-        "flowFrequency": ranged(
-            family, "flowFrequency", sequence_index, 37, digits=3
-        ),
-        "outline": ranged(family, "outline", sequence_index, 41, digits=3),
-        "paletteMethod": palette_methods[
-            (item_index + family_index) % len(palette_methods)
-        ],
-        "minPaths": int(family["minPaths"]),
+def source_records() -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    manifest = read_json(SOURCE_MANIFEST_PATH)
+    if manifest.get("schema_version") != 1:
+        raise BuildError("Unsupported base-image manifest")
+    assets = manifest.get("assets")
+    if not isinstance(assets, list):
+        raise BuildError("Base-image manifest is missing assets")
+    records = {
+        str(asset["id"]): asset
+        for asset in assets
+        if isinstance(asset, dict) and asset.get("id")
     }
+    return records, manifest
 
 
-def remove_stale(directory: Path, expected: set[str], suffix: str) -> list[str]:
-    resolved = directory.resolve()
-    removed: list[str] = []
-    for path in directory.glob(f"*{suffix}"):
-        if path.parent.resolve() != resolved:
-            raise RuntimeError(f"Refusing to remove a file outside {directory}")
-        if path.name not in expected:
-            path.unlink()
-            removed.append(path.name)
-    return sorted(removed)
+def reset_generated_directory(path: Path) -> None:
+    fixture = FIXTURE_ROOT.resolve()
+    target = path.resolve()
+    if target.parent != fixture:
+        raise BuildError(f"Refusing to reset a path outside the fixture: {target}")
+    if target.exists():
+        shutil.rmtree(target)
+    target.mkdir(parents=True)
 
 
-def build_gallery(example_root: Path) -> dict[str, Any]:
-    spec = load_json(example_root / "gallery-spec.json")
-    families = validate_spec(spec)
-    source_manifest_path = SKILL_ROOT / "assets" / "base-images" / "manifest.json"
-    source_manifest = load_json(source_manifest_path)
-    source_records = {
-        item["id"]: item
-        for item in source_manifest.get("assets", [])
-        if isinstance(item, dict) and isinstance(item.get("id"), str)
-    }
-    output_dir = example_root / "svgs"
-    report_dir = example_root / "reports"
-    output_dir.mkdir(parents=True, exist_ok=True)
-    report_dir.mkdir(parents=True, exist_ok=True)
+def path_geometry(path: Path) -> tuple[str, int]:
+    try:
+        root = ET.parse(path).getroot()
+    except (OSError, ET.ParseError) as exc:
+        raise BuildError(f"Cannot inspect generated SVG {path}: {exc}") from exc
+    path_data = [
+        element.get("d", "").strip()
+        for element in root.iter()
+        if element.tag.rsplit("}", 1)[-1] == "path"
+    ]
+    if not path_data or any(not value for value in path_data):
+        raise BuildError(f"Generated SVG has empty path data: {path}")
+    digest = hashlib.sha256("\n".join(path_data).encode("utf-8")).hexdigest()
+    return digest, len(path_data)
 
-    entries: list[dict[str, Any]] = []
-    geometry_owners: dict[str, str] = {}
-    path_owners: dict[str, str] = {}
-    composition_owners: dict[str, str] = {}
-    ordinal = 0
-    for family_index, family in enumerate(families):
-        source_id = str(family["sourceId"])
-        source = source_records.get(source_id)
-        if source is None:
-            raise RuntimeError(f"Unknown sourceId in gallery spec: {source_id}")
-        source_path = SKILL_ROOT / "assets" / "base-images" / source["filename"]
-        for item_index in range(int(family["count"])):
-            recipe = recipe_for(
-                family,
-                family_index=family_index,
-                item_index=item_index,
-                ordinal=ordinal,
-            )
-            pattern_id = str(recipe["id"])
-            svg_path = output_dir / f"{pattern_id}.svg"
-            report_path = report_dir / f"{pattern_id}.json"
-            colorset = str(recipe["colorset"])
-            argv = [
-                str(relative_path(source_path)),
-                str(relative_path(svg_path)),
-                "--mode",
-                str(recipe["mode"]),
-                "--tile",
-                "none",
-                "--max-dimension",
-                str(recipe["maxDimension"]),
-                "--min-area",
-                str(recipe["minArea"]),
-                "--colors",
-                str(recipe["colors"]),
-                "--smoothing",
-                str(recipe["smoothing"]),
-                "--detail",
-                str(recipe["detail"]),
-                "--outline",
-                str(recipe["outline"]),
-                "--palette-method",
-                str(recipe["paletteMethod"]),
-                "--pattern-id",
-                pattern_id,
-                "--title",
-                f"{recipe['title']} — {colorset.title()}",
-                "--description",
-                (
-                    f"{recipe['description']} Unique collection member "
-                    f"{recipe['ordinal']} of {EXPECTED_PATTERN_COUNT}."
+
+def inventory_digest(paths: list[Path]) -> str:
+    digest = hashlib.sha256()
+    for path in sorted(paths, key=lambda item: item.as_posix()):
+        relative = path.relative_to(FIXTURE_ROOT).as_posix()
+        digest.update(relative.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(bytes.fromhex(sha256_path(path)))
+    return digest.hexdigest()
+
+
+def build() -> dict[str, Any]:
+    spec = read_json(SPEC_PATH)
+    artwork_specs = validate_spec(spec)
+    sources, _source_manifest = source_records()
+    missing = [artwork["id"] for artwork in artwork_specs if artwork["id"] not in sources]
+    if missing:
+        raise BuildError(f"Gallery sources are missing from the manifest: {missing}")
+
+    svg_root = FIXTURE_ROOT / "svgs"
+    report_root = FIXTURE_ROOT / "reports"
+    reset_generated_directory(svg_root)
+    reset_generated_directory(report_root)
+
+    default_max_dimension = int(spec.get("defaultMaxDimension", 560))
+    generated_paths: list[Path] = []
+    artwork_entries: list[dict[str, Any]] = []
+    global_geometry_hashes: set[str] = set()
+    variant_count = 0
+
+    for artwork_spec in artwork_specs:
+        source_id = str(artwork_spec["id"])
+        source = sources[source_id]
+        source_path = SOURCE_MANIFEST_PATH.parent / str(source["filename"])
+        if not source_path.is_file():
+            raise BuildError(f"Gallery source file is missing: {source_path}")
+        title = str(
+            artwork_spec.get("displayTitle")
+            or source.get("title")
+            or source_id.replace("-", " ").title()
+        )
+        creator = str(source.get("creator") or "Unknown creator")
+        variants: dict[str, Any] = {}
+        pair_geometry: str | None = None
+        pair_composition: str | None = None
+
+        for colorset_name, suffix in COLORSET_SUFFIXES.items():
+            pattern_id = f"vectorize-{source_id}-{suffix}"
+            svg_path = svg_root / f"{pattern_id}.svg"
+            report_path = report_root / f"{pattern_id}.json"
+            args = argparse.Namespace(
+                input=source_path,
+                output=svg_path,
+                mode=str(artwork_spec["mode"]),
+                colorset=colorset_name,
+                colors=int(artwork_spec["colors"]),
+                smoothing=float(artwork_spec["smoothing"]),
+                palette_method=str(artwork_spec["paletteMethod"]),
+                max_dimension=int(
+                    artwork_spec.get("maxDimension", default_max_dimension)
                 ),
-                "--colorset",
-                colorset,
-                "--variation-seed",
-                str(recipe["variationSeed"]),
-                "--crop-scale",
-                str(recipe["cropScale"]),
-                "--crop-x",
-                str(recipe["cropX"]),
-                "--crop-y",
-                str(recipe["cropY"]),
-                "--rotation",
-                str(recipe["rotation"]),
-                "--flow-strength",
-                str(recipe["flowStrength"]),
-                "--flow-frequency",
-                str(recipe["flowFrequency"]),
-                "--source-manifest",
-                str(relative_path(source_manifest_path)),
-                "--source-id",
-                source_id,
-                "--report",
-                str(relative_path(report_path)),
-            ]
-            args = vectorizer.apply_mode_defaults(
-                vectorizer.build_parser().parse_args(argv)
+                filter_speckle=int(artwork_spec["filterSpeckle"]),
+                curve_mode="spline",
+                pattern_id=pattern_id,
+                title=f"{title} — {colorset_name}",
+                description=(
+                    f"Editable {colorset_name} VTracer reinterpretation of "
+                    f"{title} by {creator}, derived from a verified open image."
+                ),
+                report=report_path,
+                source_manifest=SOURCE_MANIFEST_PATH,
+                source_id=source_id,
+                rights_basis=None,
+                source_url=None,
             )
-            report = normalize_report_paths(
-                vectorizer.vectorize(args),
-                input_path=source_path,
-                output_path=svg_path,
-            )
-            vectorizer.atomic_write_json(report_path, report)
-            validation_args = validator.build_parser().parse_args(
-                [
-                    str(svg_path),
-                    "--report",
-                    str(report_path),
-                    "--expected-pattern-id",
-                    pattern_id,
-                    "--expected-mode",
-                    str(recipe["mode"]),
-                    "--expected-tile",
-                    "none",
-                    "--expected-colorset",
-                    colorset,
-                    "--expected-variation-seed",
-                    str(recipe["variationSeed"]),
-                    "--min-paths",
-                    str(recipe["minPaths"]),
-                ]
-            )
-            inspection = validator.validate_against_args(
-                validator.inspect_svg(svg_path),
-                validation_args,
-            )
-            if inspection["pattern_element_count"] or inspection["use_element_count"]:
-                raise RuntimeError(
-                    f"Collection member reuses SVG elements: {pattern_id}"
-                )
+            report = VT.vectorize(args)
+            report["input"] = f"assets/base-images/{source['filename']}"
+            report["output"] = f"svgs/{svg_path.name}"
+            VA.atomic_write_json(report_path, report)
+            geometry_sha256, path_count = path_geometry(svg_path)
+            if pair_geometry is None:
+                pair_geometry = geometry_sha256
+                pair_composition = str(report["composition_sha256"])
+            elif geometry_sha256 != pair_geometry:
+                raise BuildError(f"Colorset pair changed geometry for {source_id}")
+            elif str(report["composition_sha256"]) != pair_composition:
+                raise BuildError(f"Colorset pair changed composition for {source_id}")
+            variants[colorset_name] = {
+                "patternId": pattern_id,
+                "file": f"svgs/{svg_path.name}",
+                "report": f"reports/{report_path.name}",
+                "sha256": str(report["output_sha256"]),
+                "bytes": int(report["output_bytes"]),
+                "pathCount": path_count,
+                "palette": report["palette"],
+            }
+            generated_paths.extend((svg_path, report_path))
+            variant_count += 1
 
-            geometry = svg_geometry_record(svg_path)
-            geometry_digest = str(geometry["geometrySha256"])
-            previous_geometry = geometry_owners.get(geometry_digest)
-            if previous_geometry:
-                raise RuntimeError(
-                    f"Geometry reused by {previous_geometry} and {pattern_id}"
-                )
-            geometry_owners[geometry_digest] = pattern_id
-            for signature in geometry["pathSignatures"]:
-                previous_path = path_owners.get(signature)
-                if previous_path:
-                    raise RuntimeError(
-                        f"Path data reused by {previous_path} and {pattern_id}"
-                    )
-                path_owners[signature] = pattern_id
-            composition_digest = str(report["composition_sha256"])
-            previous_composition = composition_owners.get(composition_digest)
-            if previous_composition:
-                raise RuntimeError(
-                    "Raster composition reused by "
-                    f"{previous_composition} and {pattern_id}"
-                )
-            composition_owners[composition_digest] = pattern_id
-
-            entries.append(
-                {
-                    "id": pattern_id,
-                    "exampleId": recipe["exampleId"],
-                    "ordinal": recipe["ordinal"],
-                    "familyId": recipe["familyId"],
-                    "familyTitle": recipe["familyTitle"],
-                    "variant": recipe["variant"],
-                    "colorset": colorset,
-                    "colorsetLabel": (
-                        "Colorset 1"
-                        if colorset == "colorset1"
-                        else "Colorset 2"
+        if pair_geometry in global_geometry_hashes:
+            raise BuildError(f"Two source artworks produced the same geometry: {source_id}")
+        global_geometry_hashes.add(str(pair_geometry))
+        artwork_entries.append(
+            {
+                "id": source_id,
+                "genre": artwork_spec["genre"],
+                "mode": artwork_spec["mode"],
+                "title": title,
+                "creator": creator,
+                "date": source.get("date", ""),
+                "sourceId": source_id,
+                "sourcePage": source.get("source_page", ""),
+                "provider": source.get("provider", ""),
+                "license": source.get("license", ""),
+                "licenseUrl": source.get("license_url", ""),
+                "sourceSha256": source.get("sha256", ""),
+                "geometrySha256": pair_geometry,
+                "compositionSha256": pair_composition,
+                "parameters": {
+                    "colors": artwork_spec["colors"],
+                    "smoothing": artwork_spec["smoothing"],
+                    "paletteMethod": artwork_spec["paletteMethod"],
+                    "filterSpeckle": artwork_spec["filterSpeckle"],
+                    "maxDimension": artwork_spec.get(
+                        "maxDimension", default_max_dimension
                     ),
-                    "title": recipe["title"],
-                    "description": recipe["description"],
-                    "mode": recipe["mode"],
-                    "tile": "none",
-                    "svg": f"svgs/{pattern_id}.svg",
-                    "report": f"reports/{pattern_id}.json",
-                    "sha256": report["output_sha256"],
-                    "geometrySha256": geometry_digest,
-                    "pathSignatures": geometry["pathSignatures"],
-                    "compositionSha256": composition_digest,
-                    "bytes": report["output_bytes"],
-                    "pathCount": report["path_count"],
-                    "contourCount": report["contour_count"],
-                    "pointCount": report["point_count"],
-                    "palette": report["palette"],
-                    "visibleColorTokens": inspection["visible_color_tokens"],
-                    "variationSeed": recipe["variationSeed"],
-                    "parameters": {
-                        key: recipe[key]
-                        for key in (
-                            "colors",
-                            "smoothing",
-                            "detail",
-                            "minArea",
-                            "maxDimension",
-                            "cropScale",
-                            "cropX",
-                            "cropY",
-                            "rotation",
-                            "flowStrength",
-                            "flowFrequency",
-                            "outline",
-                            "paletteMethod",
-                        )
-                    },
-                    "sourceId": source_id,
-                    "sourceTitle": source["title"],
-                    "creator": source["creator"],
-                    "sourcePage": source["source_page"],
-                    "license": source["license"],
-                    "licenseUrl": source["license_url"],
-                }
-            )
-            ordinal += 1
-            if ordinal % 25 == 0:
-                print(
-                    f"Generated {ordinal}/{EXPECTED_PATTERN_COUNT} unique patterns.",
-                    file=sys.stderr,
-                    flush=True,
-                )
-
-    if len(entries) != EXPECTED_PATTERN_COUNT:
-        raise RuntimeError(
-            f"Generated {len(entries)} patterns, expected {EXPECTED_PATTERN_COUNT}"
-        )
-    expected_svgs = {f"{entry['id']}.svg" for entry in entries}
-    expected_reports = {f"{entry['id']}.json" for entry in entries}
-    removed_svgs = remove_stale(output_dir, expected_svgs, ".svg")
-    removed_reports = remove_stale(report_dir, expected_reports, ".json")
-    actual_svgs = {path.name for path in output_dir.glob("*.svg")}
-    actual_reports = {path.name for path in report_dir.glob("*.json")}
-    if actual_svgs != expected_svgs:
-        raise RuntimeError(
-            f"SVG inventory mismatch: {sorted(actual_svgs ^ expected_svgs)}"
-        )
-    if actual_reports != expected_reports:
-        raise RuntimeError(
-            f"Report inventory mismatch: {sorted(actual_reports ^ expected_reports)}"
-        )
-
-    colorset_contract = vectorizer.load_colorset_contract()
-    colorset_counts = Counter(str(entry["colorset"]) for entry in entries)
-    mode_counts = Counter(str(entry["mode"]) for entry in entries)
-    source_counts = Counter(str(entry["sourceId"]) for entry in entries)
-    family_summaries = []
-    for family in families:
-        family_entries = [
-            entry for entry in entries if entry["familyId"] == family["id"]
-        ]
-        family_summaries.append(
-            {
-                "id": family["id"],
-                "title": family["title"],
-                "description": family["description"],
-                "mode": family["mode"],
-                "sourceId": family["sourceId"],
-                "patternCount": len(family_entries),
-                "colorsetCounts": dict(
-                    sorted(
-                        Counter(
-                            str(entry["colorset"]) for entry in family_entries
-                        ).items()
-                    )
-                ),
+                },
+                "variants": variants,
             }
         )
-    catalog_fingerprint = sha256_json(
-        [
-            {
-                "id": entry["id"],
-                "geometrySha256": entry["geometrySha256"],
-                "pathSignatures": entry["pathSignatures"],
-                "compositionSha256": entry["compositionSha256"],
-            }
-            for entry in entries
-        ]
-    )
+
+    if variant_count != EXPECTED_VARIANT_COUNT:
+        raise BuildError(
+            f"Built {variant_count} variants, expected {EXPECTED_VARIANT_COUNT}"
+        )
+
     manifest = {
-        "schemaVersion": 2,
-        "pageId": "vectorize-art-patterns",
-        "namespace": "vectorize",
-        "title": "300 Unique Vectorized Art Patterns",
+        "schemaVersion": 3,
+        "pageId": spec["pageId"],
+        "title": spec["title"],
         "description": (
-            "Three hundred non-geometric abstract and Cubist-derived SVG "
-            "patterns with no reused path data or complete geometry."
+            "Thirty distinct open-source or public-domain artworks, each traced "
+            "once and painted as geometry-locked Colorset 1 and Colorset 2 SVGs."
         ),
-        "generatedBy": "scripts/build_example_gallery.py",
+        "generator": "vectorize_with_vtracer.py",
+        "backend": "vtracer-0.6.15",
+        "artworkCount": len(artwork_entries),
+        "variantCount": variant_count,
+        "uniqueSourceCount": len({entry["sourceSha256"] for entry in artwork_entries}),
+        "geometryLockedPairCount": len(artwork_entries),
         "sourceManifest": "assets/base-images/manifest.json",
-        "colorsetContractSha256": sha256_path(
-            vectorizer.DEFAULT_COLORSET_CONTRACT
-        ),
-        "colorsets": {
-            name: {
-                "name": colorset_contract["colorsets"][name]["name"],
-                "allowed": colorset_contract["colorsets"][name]["allowed"],
-            }
-            for name in vectorizer.COLORSET_NAMES
-        },
-        "patternCount": len(entries),
-        "familyCount": len(families),
-        "uniqueGeometryCount": len(geometry_owners),
-        "uniquePathCount": len(path_owners),
-        "uniqueCompositionCount": len(composition_owners),
-        "colorsetCounts": dict(sorted(colorset_counts.items())),
-        "modeCounts": dict(sorted(mode_counts.items())),
-        "sourceCounts": dict(sorted(source_counts.items())),
-        "catalogFingerprint": catalog_fingerprint,
-        "uniquenessContract": {
-            "canonicalPatternCount": EXPECTED_PATTERN_COUNT,
-            "completeGeometryReuseAllowed": False,
-            "pathDataReuseAllowed": False,
-            "compositionReuseAllowed": False,
-            "svgUseElementsAllowed": False,
-            "tileMode": "none",
-        },
-        "families": family_summaries,
-        "patterns": entries,
+        "sourceManifestSha256": sha256_path(SOURCE_MANIFEST_PATH),
+        "paletteContractSha256": VA.sha256_path(VA.DEFAULT_COLORSET_CONTRACT),
+        "inventorySha256": inventory_digest(generated_paths),
+        "genres": sorted({str(entry["genre"]) for entry in artwork_entries}),
+        "artworks": artwork_entries,
     }
-    vectorizer.atomic_write_json(example_root / "manifest.json", manifest)
-    return {
-        "ok": True,
-        "example_root": str(example_root),
-        "family_count": len(families),
-        "pattern_count": len(entries),
-        "colorset_counts": dict(sorted(colorset_counts.items())),
-        "mode_counts": dict(sorted(mode_counts.items())),
-        "unique_geometry_count": len(geometry_owners),
-        "unique_path_count": len(path_owners),
-        "unique_composition_count": len(composition_owners),
-        "catalog_fingerprint": catalog_fingerprint,
-        "removed_stale_svg_count": len(removed_svgs),
-        "removed_stale_report_count": len(removed_reports),
-        "manifest_sha256": sha256_path(example_root / "manifest.json"),
-    }
+    manifest_path = FIXTURE_ROOT / "manifest.json"
+    VA.atomic_write_json(manifest_path, manifest)
+    return manifest
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description="Build the 300-pattern vectorize-art-patterns gallery."
+    return argparse.ArgumentParser(
+        description="Build the open-masterpiece vectorized art gallery."
     )
-    parser.add_argument(
-        "--example-root",
-        type=Path,
-        default=DEFAULT_EXAMPLE_ROOT,
-    )
-    return parser
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
-    result = build_gallery(args.example_root.resolve())
-    print(json.dumps(result, indent=2))
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+    build_parser().parse_args(argv)
+    manifest = build()
+    print(
+        json.dumps(
+            {
+                "ok": True,
+                "pageId": manifest["pageId"],
+                "artworkCount": manifest["artworkCount"],
+                "variantCount": manifest["variantCount"],
+                "uniqueSourceCount": manifest["uniqueSourceCount"],
+                "inventorySha256": manifest["inventorySha256"],
+            },
+            indent=2,
+        )
+    )
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except (BuildError, VT.VTracerError, VA.VectorizeError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        raise SystemExit(2)

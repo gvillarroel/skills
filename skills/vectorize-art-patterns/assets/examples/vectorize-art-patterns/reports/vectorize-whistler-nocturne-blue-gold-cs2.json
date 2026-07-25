@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/whistler-nocturne-blue-gold.jpg",
+  "input_sha256": "bee14ae88b745943494ad3ad62124681755813549919045c9071c30a9c00f9cc",
+  "output": "svgs/vectorize-whistler-nocturne-blue-gold-cs2.svg",
+  "output_sha256": "165074fbeb8e9ac7b96d2ea5ddfece21941362b01bdad01dfc3aff733949525a",
+  "pattern_id": "vectorize-whistler-nocturne-blue-gold-cs2",
+  "mode": "stain",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "930dc80870672b2a5d22fe337c8ccea37144d2c665fc45931dc3c5e41b7c219c",
+  "parameters": {
+    "colors": 7,
+    "smoothing": 0.76,
+    "palette_method": "max-coverage",
+    "max_dimension": 560,
+    "filter_speckle": 30,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#5f625c",
+          "target": "#007298"
+        },
+        {
+          "source": "#676d66",
+          "target": "#828282"
+        },
+        {
+          "source": "#72766d",
+          "target": "#45842a"
+        },
+        {
+          "source": "#44483e",
+          "target": "#004d66"
+        },
+        {
+          "source": "#7d8170",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#75705e",
+          "target": "#652f6c"
+        }
+      ],
+      "source_colors": [
+        "#555847",
+        "#5f625c",
+        "#676d66",
+        "#72766d",
+        "#44483e",
+        "#7d8170",
+        "#75705e"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#007298",
+        "#828282",
+        "#45842a",
+        "#004d66",
+        "#9e1b32",
+        "#652f6c"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 595,
+  "vector_width": 560,
+  "vector_height": 370,
+  "render_width": 560,
+  "render_height": 370,
+  "palette": [
+    "#004d66",
+    "#007298",
+    "#333e48",
+    "#45842a",
+    "#828282",
+    "#9e1b32"
+  ],
+  "path_count": 13,
+  "output_bytes": 24102,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "whistler-nocturne-blue-gold",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/56905",
+    "attribution": "James McNeill Whistler (American, 1834–1903); Stickney Fund",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "bee14ae88b745943494ad3ad62124681755813549919045c9071c30a9c00f9cc"
+  },
+  "backend": "vtracer-0.6.15"
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/renoir-two-sisters.jpg",
+  "input_sha256": "385098ad88f6be0095e025f7484073bc24ef8de9b863d46a56807097eb127e35",
+  "output": "svgs/vectorize-renoir-two-sisters-cs2.svg",
+  "output_sha256": "b914bbd0580609e25e990aedf175cc73c5463273018093a9d6838007ebc28d07",
+  "pattern_id": "vectorize-renoir-two-sisters-cs2",
+  "mode": "organic",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "0f060850941bfc4318e2384c93b82b4f2c0be3a86c48460045828620e032e6a9",
+  "parameters": {
+    "colors": 9,
+    "smoothing": 0.5,
+    "palette_method": "max-coverage",
+    "max_dimension": 560,
+    "filter_speckle": 22,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#a5ac8d",
+          "target": "#007298"
+        },
+        {
+          "source": "#608245",
+          "target": "#45842a"
+        },
+        {
+          "source": "#232d32",
+          "target": "#1c1c1c"
+        },
+        {
+          "source": "#195187",
+          "target": "#004d66"
+        },
+        {
+          "source": "#823036",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#d6dad4",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#c66751",
+          "target": "#e77204"
+        },
+        {
+          "source": "#5487b4",
+          "target": "#828282"
+        }
+      ],
+      "source_colors": [
+        "#8a6d79",
+        "#a5ac8d",
+        "#608245",
+        "#232d32",
+        "#195187",
+        "#823036",
+        "#d6dad4",
+        "#c66751",
+        "#5487b4"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#007298",
+        "#45842a",
+        "#1c1c1c",
+        "#004d66",
+        "#9e1b32",
+        "#cfcfcf",
+        "#e77204",
+        "#828282"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 1117,
+  "vector_width": 451,
+  "vector_height": 560,
+  "render_width": 451,
+  "render_height": 560,
+  "palette": [
+    "#004d66",
+    "#007298",
+    "#1c1c1c",
+    "#333e48",
+    "#45842a",
+    "#828282",
+    "#9e1b32",
+    "#cfcfcf",
+    "#e77204"
+  ],
+  "path_count": 81,
+  "output_bytes": 222429,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "renoir-two-sisters",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/14655",
+    "attribution": "Pierre-Auguste Renoir (French, 1841–1919); Mr. and Mrs. Lewis Larned Coburn Memorial Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "385098ad88f6be0095e025f7484073bc24ef8de9b863d46a56807097eb127e35"
+  },
+  "backend": "vtracer-0.6.15"
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/courbet-rock-hautepierre.jpg",
+  "input_sha256": "047199df08b28ab30c2cdb0ef4d48e1104373ec038524f4cd260e4833d78c7cd",
+  "output": "svgs/vectorize-courbet-rock-hautepierre-cs2.svg",
+  "output_sha256": "243e717fa04d683dbdda650cc96fff5b4341318453302cbdca35fbd845e67905",
+  "pattern_id": "vectorize-courbet-rock-hautepierre-cs2",
+  "mode": "stain",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "e6c30420ed8421ec5a531128075369fc6f1846e97775d79706cdf4a04fb36a6e",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.64,
+    "palette_method": "max-coverage",
+    "max_dimension": 560,
+    "filter_speckle": 26,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#333e48",
+      "layers": [
+        {
+          "source": "#192b20",
+          "target": "#007298"
+        },
+        {
+          "source": "#3d4948",
+          "target": "#004d66"
+        },
+        {
+          "source": "#5a7373",
+          "target": "#828282"
+        },
+        {
+          "source": "#939785",
+          "target": "#45842a"
+        },
+        {
+          "source": "#89775d",
+          "target": "#9e1b32"
+        },
+        {
+          "source": "#59684c",
+          "target": "#652f6c"
+        },
+        {
+          "source": "#775538",
+          "target": "#1c1c1c"
+        }
+      ],
+      "source_colors": [
+        "#4d5112",
+        "#192b20",
+        "#3d4948",
+        "#5a7373",
+        "#939785",
+        "#89775d",
+        "#59684c",
+        "#775538"
+      ],
+      "target_colors": [
+        "#333e48",
+        "#007298",
+        "#004d66",
+        "#828282",
+        "#45842a",
+        "#9e1b32",
+        "#652f6c",
+        "#1c1c1c"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 721,
+  "vector_width": 560,
+  "vector_height": 449,
+  "render_width": 560,
+  "render_height": 449,
+  "palette": [
+    "#004d66",
+    "#007298",
+    "#1c1c1c",
+    "#333e48",
+    "#45842a",
+    "#652f6c",
+    "#828282",
+    "#9e1b32"
+  ],
+  "path_count": 22,
+  "output_bytes": 69019,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "courbet-rock-hautepierre",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/27027",
+    "attribution": "Gustave Courbet (French, 1819–1877); Emily Crane Chadbourne Fund and Major Acquisitions Centennial Fund",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "047199df08b28ab30c2cdb0ef4d48e1104373ec038524f4cd260e4833d78c7cd"
+  },
+  "backend": "vtracer-0.6.15"
+}

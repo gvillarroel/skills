@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/morisot-woman-toilette.jpg",
+  "input_sha256": "2889eb24afc56bd4753d09806cc1bcc9a33039e9e2d0d3544dbcfe93f511ba5c",
+  "output": "svgs/vectorize-morisot-woman-toilette-cs2.svg",
+  "output_sha256": "f5e36d84f156d5210673ae2300b2cfe8e41e209fa1e65f21b2f2199b525a18a6",
+  "pattern_id": "vectorize-morisot-woman-toilette-cs2",
+  "mode": "stain",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "e37b8e9a9f89593e206f9d1bb3cba3ff7294337549d43fec32c10a3e3af70858",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.62,
+    "palette_method": "max-coverage",
+    "max_dimension": 560,
+    "filter_speckle": 24,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#f7f7f7",
+      "layers": [
+        {
+          "source": "#7d8589",
+          "target": "#007298"
+        },
+        {
+          "source": "#606361",
+          "target": "#828282"
+        },
+        {
+          "source": "#977c5c",
+          "target": "#45842a"
+        },
+        {
+          "source": "#cfb9a0",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#644f28",
+          "target": "#333e48"
+        },
+        {
+          "source": "#172a30",
+          "target": "#1c1c1c"
+        },
+        {
+          "source": "#d4d2d2",
+          "target": "#ffffff"
+        }
+      ],
+      "source_colors": [
+        "#9da2a7",
+        "#7d8589",
+        "#606361",
+        "#977c5c",
+        "#cfb9a0",
+        "#644f28",
+        "#172a30",
+        "#d4d2d2"
+      ],
+      "target_colors": [
+        "#f7f7f7",
+        "#007298",
+        "#828282",
+        "#45842a",
+        "#cfcfcf",
+        "#333e48",
+        "#1c1c1c",
+        "#ffffff"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 674,
+  "vector_width": 560,
+  "vector_height": 419,
+  "render_width": 560,
+  "render_height": 419,
+  "palette": [
+    "#007298",
+    "#1c1c1c",
+    "#333e48",
+    "#45842a",
+    "#828282",
+    "#cfcfcf",
+    "#f7f7f7"
+  ],
+  "path_count": 34,
+  "output_bytes": 67805,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "morisot-woman-toilette",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/11723",
+    "attribution": "Berthe Morisot (French, 1841–1895); Stickney Fund",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "2889eb24afc56bd4753d09806cc1bcc9a33039e9e2d0d3544dbcfe93f511ba5c"
+  },
+  "backend": "vtracer-0.6.15"
+}

@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/caillebotte-paris-street.jpg",
+  "input_sha256": "8c0a02f942e0bb5bbb09f2751ece75ed6cdb2437732c8bf567653d094eaebe0a",
+  "output": "svgs/vectorize-caillebotte-paris-street-cs2.svg",
+  "output_sha256": "dd696f050caddc7280a0e7d3420d4a7ed027902d8b0edb98c58f72d49bf87130",
+  "pattern_id": "vectorize-caillebotte-paris-street-cs2",
+  "mode": "collage",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "768d5ddf8945a7443bedb2149934af3ba22047c6444a59679834e7f4916eeab4",
+  "parameters": {
+    "colors": 9,
+    "smoothing": 0.38,
+    "palette_method": "median-cut",
+    "max_dimension": 560,
+    "filter_speckle": 20,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#f7f7f7",
+      "layers": [
+        {
+          "source": "#7c706d",
+          "target": "#007298"
+        },
+        {
+          "source": "#192026",
+          "target": "#1c1c1c"
+        },
+        {
+          "source": "#333a41",
+          "target": "#333e48"
+        },
+        {
+          "source": "#b2b2ac",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#889093",
+          "target": "#828282"
+        },
+        {
+          "source": "#4f5c62",
+          "target": "#004d66"
+        },
+        {
+          "source": "#d9cfc1",
+          "target": "#ffffff"
+        },
+        {
+          "source": "#c7c3ba",
+          "target": "#f1c319"
+        }
+      ],
+      "source_colors": [
+        "#a29d94",
+        "#7c706d",
+        "#192026",
+        "#333a41",
+        "#b2b2ac",
+        "#889093",
+        "#4f5c62",
+        "#d9cfc1",
+        "#c7c3ba"
+      ],
+      "target_colors": [
+        "#f7f7f7",
+        "#007298",
+        "#1c1c1c",
+        "#333e48",
+        "#cfcfcf",
+        "#828282",
+        "#004d66",
+        "#ffffff",
+        "#f1c319"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 699,
+  "vector_width": 560,
+  "vector_height": 435,
+  "render_width": 560,
+  "render_height": 435,
+  "palette": [
+    "#004d66",
+    "#007298",
+    "#1c1c1c",
+    "#333e48",
+    "#828282",
+    "#cfcfcf",
+    "#f1c319",
+    "#f7f7f7",
+    "#ffffff"
+  ],
+  "path_count": 123,
+  "output_bytes": 221583,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "caillebotte-paris-street",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/20684",
+    "attribution": "Gustave Caillebotte (French, 1848–1894); Charles H. and Mary F. S. Worcester Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "8c0a02f942e0bb5bbb09f2751ece75ed6cdb2437732c8bf567653d094eaebe0a"
+  },
+  "backend": "vtracer-0.6.15"
+}

@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "ok": true,
+  "input": "assets/base-images/hokusai-great-wave.jpg",
+  "input_sha256": "14d2887f90578eb14a3e9894d05a0d5558717fe520c14dc662ae98fb5b85171c",
+  "output": "svgs/vectorize-hokusai-great-wave-cs2.svg",
+  "output_sha256": "aef0466476ba4aaa00573d8efa7ec7177bbe809598b0c9e3b64317abf18f97b2",
+  "pattern_id": "vectorize-hokusai-great-wave-cs2",
+  "mode": "collage",
+  "tile": "none",
+  "colorset": "colorset2",
+  "palette_contract_sha256": "c81d32ffb0d55d44e7d3102c7470e251baf34f0bb6472fbede7753df8b9a9eb5",
+  "variation_seed": 0,
+  "composition_sha256": "ca359b3f26aea20b91b65107392b975da6fdf006a5417a9d07d6c73047144b12",
+  "parameters": {
+    "colors": 8,
+    "smoothing": 0.36,
+    "palette_method": "median-cut",
+    "max_dimension": 620,
+    "filter_speckle": 18,
+    "curve_mode": "spline",
+    "hierarchical": "cutout",
+    "color_mapping": {
+      "background": "#f7f7f7",
+      "layers": [
+        {
+          "source": "#c3b196",
+          "target": "#007298"
+        },
+        {
+          "source": "#22344d",
+          "target": "#333e48"
+        },
+        {
+          "source": "#d4c0a1",
+          "target": "#cfcfcf"
+        },
+        {
+          "source": "#a1a8a0",
+          "target": "#828282"
+        },
+        {
+          "source": "#576771",
+          "target": "#004d66"
+        },
+        {
+          "source": "#efe0c5",
+          "target": "#ffffff"
+        },
+        {
+          "source": "#c1baa4",
+          "target": "#f1c319"
+        }
+      ],
+      "source_colors": [
+        "#dcccae",
+        "#c3b196",
+        "#22344d",
+        "#d4c0a1",
+        "#a1a8a0",
+        "#576771",
+        "#efe0c5",
+        "#c1baa4"
+      ],
+      "target_colors": [
+        "#f7f7f7",
+        "#007298",
+        "#333e48",
+        "#cfcfcf",
+        "#828282",
+        "#004d66",
+        "#ffffff",
+        "#f1c319"
+      ]
+    }
+  },
+  "source_width": 900,
+  "source_height": 617,
+  "vector_width": 620,
+  "vector_height": 425,
+  "render_width": 620,
+  "render_height": 425,
+  "palette": [
+    "#004d66",
+    "#007298",
+    "#333e48",
+    "#828282",
+    "#cfcfcf",
+    "#f1c319",
+    "#f7f7f7",
+    "#ffffff"
+  ],
+  "path_count": 127,
+  "output_bytes": 280633,
+  "rights": {
+    "basis": "source-manifest",
+    "source_id": "hokusai-great-wave",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "source_url": "https://www.artic.edu/artworks/24645",
+    "attribution": "Katsushika Hokusai 葛飾 北斎 Japanese, 1760-1849; Clarence Buckingham Collection",
+    "attribution_required": false,
+    "share_alike": false,
+    "input_sha256": "14d2887f90578eb14a3e9894d05a0d5558717fe520c14dc662ae98fb5b85171c"
+  },
+  "backend": "vtracer-0.6.15"
+}

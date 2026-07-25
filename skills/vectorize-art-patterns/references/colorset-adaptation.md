@@ -43,18 +43,17 @@ values. The digest must match even though the complete SVG hashes differ.
 ## Published Gallery Contract
 
 The acceptance fixture at
-`assets/examples/vectorize-art-patterns/` contains 300 independent drawings in
-15 organic, stain, ink, and Cubist-derived collage families. It distributes
-150 drawings to each colorset. The two palettes are not paired recolors:
-composition, complete geometry, and every individual path are unique across
-the entire collection.
+`assets/examples/vectorize-art-patterns/` contains 30 distinct open artworks
+by 28 creators. Each source produces one Colorset 1 and one Colorset 2 SVG, for
+60 variants total. Every pair shares ordered path geometry and composition;
+only paint and variant metadata change. Different sources must retain distinct
+source hashes and complete geometry.
 
 Run `scripts/build_example_gallery.py`, then
-`scripts/validate_example_gallery.py`. The validator requires 300 stable
-pattern IDs, 300 composition hashes, 300 complete-geometry hashes, globally
-unique path signatures, exact page/manifest parity, visible colorset anchors,
-palette-safe page colors, valid provenance, no `<use>`, and no stale SVG or
-report files.
+`scripts/validate_example_gallery.py`. The validator requires 60 stable pattern
+IDs, 30 geometry-locked pairs, 30 distinct source hashes and geometries, exact
+page/manifest parity, visible colorset anchors, palette-safe page colors, valid
+provenance, no raster wrappers, and no stale SVG or report files.
 
 For an intentional paint-comparison pair, keep geometry identical as described
 above. For a collection whose members are advertised as unique, follow

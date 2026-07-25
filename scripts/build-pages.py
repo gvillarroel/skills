@@ -232,7 +232,7 @@ PUBLISHED_EXAMPLE_SETS = [
         "title": "Vectorized Art Patterns",
         "href": "examples/vectorize-art-patterns/",
         "kind": "Editable SVG",
-        "description": "Three hundred non-geometric abstract and Cubist-derived SVG patterns across 15 families, with no reused compositions, complete geometry, or path data.",
+        "description": "Thirty distinct open masterpieces by 28 creators, each traced once and shown as a geometry-locked Colorset 1 and Colorset 2 SVG pair.",
     },
     {
         "id": "vectorize-abstract-world-maps",
