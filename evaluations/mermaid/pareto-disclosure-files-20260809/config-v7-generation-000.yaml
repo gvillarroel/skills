@@ -1,0 +1,41 @@
+schemaVersion: 1
+
+search:
+  id: mermaid-disclosure-files-20260809-v7
+  baselineSkill: ../../../evaluations/runs/mermaid-pareto-disclosure-files-20260809-v7/candidates/baseline/mermaid
+  baselineCandidate: baseline
+  outputDir: ../../../evaluations/runs/mermaid-pareto-disclosure-files-20260809-v7/search-output
+  generation: 0
+  selectedCandidate: reference-safe-label
+  developmentArchive: ../../../evaluations/runs/mermaid-pareto-disclosure-files-20260809-v7/search-output/development/generation-000/pareto-archive.json
+
+harbor:
+  developmentJob: ../../../evaluations/runs/mermaid-pareto-disclosure-files-20260809-v7/dataset/development-job.yaml
+  holdoutJob: ../../../evaluations/runs/mermaid-pareto-disclosure-files-20260809-v7/dataset/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 1
+  requiredRewards:
+    routing: 1
+    palette: 1
+    visual_palette: 1
+    palette_influence: 1
+    render: 1
+    fidelity: 1
+    metadata: 1
+  requiredEnv: []
+
+candidates:
+  - id: baseline
+    skill: ../../../evaluations/runs/mermaid-pareto-disclosure-files-20260809-v7/candidates/baseline/mermaid
+    parents: []
+    rationale: Frozen 36-file canonical bundle used as the comparison baseline.
+  - id: reference-safe-label
+    skill: ../../../evaluations/runs/mermaid-pareto-disclosure-files-20260809-v7/candidates/reference-safe-label/mermaid
+    parents:
+      - baseline
+    rationale: Consolidate to 14 files, shorten core routing, make standard geometry visibly colored, and keep ER reversal and quoted-label guards in the conditional authoring reference.
+
+promotion:
+  minimumMeanGain: 0
+  allowCaseRegressions: false
+  requireNoErrors: true

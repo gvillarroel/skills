@@ -22,7 +22,7 @@ MERMAID_VERSION = "11.16.0"
 MERMAID_FAMILY_COUNT = 31
 MERMAID_CURRENT_DECLARATION_COUNT = 40
 MERMAID_RENDERABLE_DECLARATION_COUNT = 48
-MERMAID_CLASSDEF_FAMILY_COUNT = 9
+MERMAID_CLASSDEF_FAMILY_COUNT = 8
 MERMAID_FAMILIES = frozenset(
     {
         "architecture", "block", "c4", "classDiagram", "cynefin", "erDiagram", "eventmodeling",
@@ -56,42 +56,8 @@ MERMAID_RENDERABLE_DECLARATIONS = frozenset(
     }
 )
 MERMAID_CLASSDEF_FAMILIES = frozenset(
-    {"block", "classDiagram", "erDiagram", "flowchart", "quadrantChart", "requirementDiagram", "stateDiagram", "swimlane", "treemap"}
+    {"block", "classDiagram", "erDiagram", "flowchart", "requirementDiagram", "stateDiagram", "swimlane", "treemap"}
 )
-MERMAID_ANIMATED_TO_STYLER_FAMILY = {
-    "flowchart": "flowchart",
-    "swimlane": "swimlane",
-    "sequence": "sequenceDiagram",
-    "class": "classDiagram",
-    "state": "stateDiagram",
-    "entity-relationship": "erDiagram",
-    "journey": "journey",
-    "gantt": "gantt",
-    "pie": "pie",
-    "quadrant": "quadrantChart",
-    "requirement": "requirementDiagram",
-    "gitgraph": "gitGraph",
-    "c4": "c4",
-    "mindmap": "mindmap",
-    "timeline": "timeline",
-    "zenuml": "zenuml",
-    "sankey": "sankey",
-    "xychart": "xyChart",
-    "block": "block",
-    "packet": "packet",
-    "kanban": "kanban",
-    "architecture": "architecture",
-    "radar": "radar",
-    "event-modeling": "eventmodeling",
-    "treemap": "treemap",
-    "venn": "venn",
-    "ishikawa": "ishikawa",
-    "wardley": "wardley",
-    "cynefin": "cynefin",
-    "tree-view": "treeView",
-    "railroad": "railroad",
-}
-
 PLANTUML_VERSION = "1.2026.6"
 PLANTUML_CANONICAL_FAMILY_COUNT = 27
 PLANTUML_RELEASE_EXTRA_FAMILY_COUNT = 1
@@ -116,8 +82,7 @@ PLANTUML_FIXTURES = frozenset(
     }
 )
 
-MERMAID_STYLER = ROOT / "skills" / "mermaid-colorset-styler"
-MERMAID_ANIMATED = ROOT / "skills" / "mermaid-animated-svg"
+MERMAID = ROOT / "skills" / "mermaid"
 PLANTUML = ROOT / "skills" / "plantuml-colorset-renderer"
 
 
@@ -172,50 +137,32 @@ def run_check(name: str, command: list[str]) -> tuple[dict[str, Any], list[str]]
     return record, findings
 
 
-def validate_mermaid_taxonomies() -> tuple[dict[str, Any], list[str]]:
+def validate_mermaid_taxonomy() -> tuple[dict[str, Any], list[str]]:
     findings: list[str] = []
-    styler = load_json(MERMAID_STYLER / "references" / "diagram-types.json")
-    animated = load_json(MERMAID_ANIMATED / "references" / "diagram-family-coverage.json")
+    manifest = load_json(MERMAID / "references" / "diagram-types.json")
+    require_equal(findings, "Mermaid version", manifest.get("upstream", {}).get("version"), MERMAID_VERSION)
 
-    require_equal(findings, "Mermaid styler version", styler.get("upstream", {}).get("version"), MERMAID_VERSION)
-    require_equal(findings, "Mermaid animated version", animated.get("mermaidVersion"), MERMAID_VERSION)
+    families = manifest.get("families")
+    if not isinstance(families, list) or not all(isinstance(family, dict) for family in families):
+        return {}, findings + ["Mermaid families must be a list of objects"]
 
-    styler_families = styler.get("families")
-    animated_families = animated.get("families")
-    if not isinstance(styler_families, list) or not all(isinstance(family, dict) for family in styler_families):
-        return {}, findings + ["Mermaid styler families must be a list of objects"]
-    if not isinstance(animated_families, list) or not all(isinstance(family, dict) for family in animated_families):
-        return {}, findings + ["Mermaid animated families must be a list of objects"]
-
-    require_equal(findings, "Mermaid styler family count", len(styler_families), MERMAID_FAMILY_COUNT)
-    require_equal(findings, "Mermaid animated required family count", animated.get("requiredFamilyCount"), MERMAID_FAMILY_COUNT)
-    require_equal(findings, "Mermaid animated family count", len(animated_families), MERMAID_FAMILY_COUNT)
-
-    styler_ids = [str(family.get("id")) for family in styler_families]
-    animated_ids = [str(family.get("id")) for family in animated_families]
-    if duplicate_ids := duplicates(styler_ids):
-        findings.append(f"Mermaid styler has duplicate family ids: {duplicate_ids}")
-    if duplicate_ids := duplicates(animated_ids):
-        findings.append(f"Mermaid animated has duplicate family ids: {duplicate_ids}")
-    require_exact_set(findings, "Mermaid family identities", styler_ids, MERMAID_FAMILIES)
-    require_exact_set(
-        findings,
-        "Mermaid animated family identities",
-        animated_ids,
-        frozenset(MERMAID_ANIMATED_TO_STYLER_FAMILY),
-    )
+    require_equal(findings, "Mermaid family count", len(families), MERMAID_FAMILY_COUNT)
+    family_ids = [str(family.get("id")) for family in families]
+    if duplicate_ids := duplicates(family_ids):
+        findings.append(f"Mermaid has duplicate family ids: {duplicate_ids}")
+    require_exact_set(findings, "Mermaid family identities", family_ids, MERMAID_FAMILIES)
 
     current_declarations = [
         str(declaration)
-        for family in styler_families
+        for family in families
         for declaration in family.get("currentDeclarations", [])
     ]
     renderable_declarations = [
         str(declaration)
-        for family in styler_families
+        for family in families
         for declaration in family.get("acceptedDeclarations", [])
     ]
-    classdef_families = [family for family in styler_families if family.get("classDef") is True]
+    classdef_families = [family for family in families if family.get("classDef") is True]
     require_equal(findings, "Mermaid current declaration count", len(current_declarations), MERMAID_CURRENT_DECLARATION_COUNT)
     require_equal(findings, "Mermaid renderable declaration count", len(renderable_declarations), MERMAID_RENDERABLE_DECLARATION_COUNT)
     require_equal(findings, "Mermaid classDef family count", len(classdef_families), MERMAID_CLASSDEF_FAMILY_COUNT)
@@ -239,50 +186,10 @@ def validate_mermaid_taxonomies() -> tuple[dict[str, Any], list[str]]:
     if "architecture-beta" not in renderable_declarations:
         findings.append("Mermaid renderable declaration 'architecture-beta' is missing")
 
-    declaration_to_styler_family: dict[str, dict[str, Any]] = {}
-    for family in styler_families:
-        for declaration in family.get("acceptedDeclarations", []):
-            declaration_to_styler_family[str(declaration)] = family
-
-    mapped_styler_ids: list[str] = []
-    for family in animated_families:
-        family_id = str(family.get("id"))
-        source_declaration = str(family.get("sourceDeclaration"))
-        styler_family = declaration_to_styler_family.get(source_declaration)
-        if styler_family is None:
-            findings.append(
-                f"Mermaid animated family {family_id} uses untracked source declaration {source_declaration!r}"
-            )
-            continue
-        mapped_styler_id = str(styler_family["id"])
-        mapped_styler_ids.append(mapped_styler_id)
-        expected_styler_id = MERMAID_ANIMATED_TO_STYLER_FAMILY.get(family_id)
-        if expected_styler_id is not None and mapped_styler_id != expected_styler_id:
-            findings.append(
-                f"Mermaid animated family {family_id} maps to {mapped_styler_id!r}; expected {expected_styler_id!r}"
-            )
-        animated_declarations = {str(value) for value in family.get("declarations", [])}
-        accepted_declarations = {str(value) for value in styler_family.get("acceptedDeclarations", [])}
-        unexpected = sorted(animated_declarations - accepted_declarations)
-        if unexpected:
-            findings.append(
-                f"Mermaid animated family {family_id} lists declarations outside its styler family: {unexpected}"
-            )
-
-    if duplicate_values := duplicates(mapped_styler_ids):
-        findings.append(f"Multiple Mermaid animated families map to the same styler family: {duplicate_values}")
-    missing_animated_families = sorted(set(styler_ids) - set(mapped_styler_ids))
-    unexpected_animated_families = sorted(set(mapped_styler_ids) - set(styler_ids))
-    if missing_animated_families:
-        findings.append(f"Mermaid animated coverage misses styler families: {missing_animated_families}")
-    if unexpected_animated_families:
-        findings.append(f"Mermaid animated coverage has unexpected styler families: {unexpected_animated_families}")
-
     return {
         "version": MERMAID_VERSION,
-        "familyCount": len(styler_families),
-        "animatedFamilyCount": len(set(mapped_styler_ids)),
-        "familyCoveragePercent": round(100.0 * len(set(mapped_styler_ids)) / MERMAID_FAMILY_COUNT, 2),
+        "familyCount": len(families),
+        "familyCoveragePercent": round(100.0 * len(families) / MERMAID_FAMILY_COUNT, 2),
         "currentDeclarationCount": len(current_declarations),
         "renderableDeclarationCount": len(renderable_declarations),
         "classDefFamilyCount": len(classdef_families),
@@ -376,32 +283,13 @@ def main() -> int:
     args = parser.parse_args()
 
     findings: list[str] = []
-    mermaid, taxonomy_findings = validate_mermaid_taxonomies()
+    mermaid, taxonomy_findings = validate_mermaid_taxonomy()
     findings.extend(taxonomy_findings)
     plantuml, taxonomy_findings = validate_plantuml_taxonomy()
     findings.extend(taxonomy_findings)
 
     checks: list[dict[str, Any]] = []
-    mermaid_render_command = [
-        sys.executable,
-        str(MERMAID_STYLER / "scripts" / "validate_mermaid_render_coverage.py"),
-    ]
-    if args.disable_mermaid_browser_sandbox:
-        mermaid_render_command.append("--disable-browser-sandbox")
-
     commands = [
-        (
-            "Mermaid colorset exact coverage",
-            [sys.executable, str(MERMAID_STYLER / "scripts" / "test_style_mermaid_directory.py")],
-        ),
-        (
-            "Mermaid animated family coverage",
-            [sys.executable, str(MERMAID_ANIMATED / "scripts" / "validate_mermaid_family_coverage.py")],
-        ),
-        (
-            "Mermaid fresh batch render coverage",
-            mermaid_render_command,
-        ),
         (
             "PlantUML fixture, render-report, and gallery coverage",
             [

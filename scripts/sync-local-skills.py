@@ -36,14 +36,27 @@ def source_files(source: Path) -> list[Path]:
         return sorted(path for path in source.rglob("*") if path.is_file())
 
     result = subprocess.run(
-        ["git", "-C", str(ROOT), "ls-files", "-z", "--", relative_source.as_posix()],
+        [
+            "git",
+            "-C",
+            str(ROOT),
+            "ls-files",
+            "-z",
+            "--cached",
+            "--others",
+            "--exclude-standard",
+            "--",
+            relative_source.as_posix(),
+        ],
         check=True,
         capture_output=True,
     )
     return sorted(
-        ROOT / os.fsdecode(item)
+        path
         for item in result.stdout.split(b"\0")
         if item
+        for path in [ROOT / os.fsdecode(item)]
+        if path.is_file()
     )
 
 

@@ -1,0 +1,44 @@
+schemaVersion: 1
+
+search:
+  id: mermaid-hardening-20260810-v27-final
+  baselineSkill: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v6-holdout-baseline-live/development/generation-000/candidate-staging/baseline/skills/mermaid
+  baselineCandidate: baseline
+  outputDir: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v6
+  generation: 0
+  selectedCandidate: visible-data-canonical-family
+  developmentArchive: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v6/development/generation-000/pareto-archive.json
+
+harbor:
+  developmentJob: ../../../evaluations/runs/mermaid-hardening-20260809-v8/dataset-final-v5/development-job.yaml
+  holdoutJob: ../../../evaluations/runs/mermaid-hardening-20260809-v8/dataset-final-v6/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 1
+  requiredRewards:
+    routing: 1
+    palette: 1
+    visual_palette: 1
+    palette_influence: 1
+    render: 1
+    visual_fidelity: 1
+    fidelity: 1
+    metadata: 1
+  requiredEnv: []
+
+candidates:
+  - id: baseline
+    skill: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v6-holdout-baseline-live/development/generation-000/candidate-staging/baseline/skills/mermaid
+    holdoutJobDirectory: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v6-holdout-baseline-live/development/generation-000/harbor-jobs/mermaid-hardening-20260810-v28-holdout-baseline-live-g000-development-baseline
+    parents: []
+    rationale: Exact frozen baseline staging bundle and its isolated V6 holdout job.
+  - id: visible-data-canonical-family
+    skill: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v6-holdout-candidate-live/development/generation-000/candidate-staging/visible-data-canonical-family/skills/mermaid
+    holdoutJobDirectory: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v6-holdout-candidate-live/development/generation-000/harbor-jobs/mermaid-hardening-20260810-v29-holdout-candidate-live-g000-development-visible-data-canonical-family
+    parents:
+      - baseline
+    rationale: Exact frozen selected candidate staging bundle and its isolated V6 holdout job.
+
+promotion:
+  minimumMeanGain: 0
+  allowCaseRegressions: false
+  requireNoErrors: true

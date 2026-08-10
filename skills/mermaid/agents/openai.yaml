@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mermaid"
+  short_description: "Create, style, render, and animate Mermaid diagrams"
+  default_prompt: "Use $mermaid to choose the right Mermaid diagram, apply colorset1 unless extended colors are requested, and validate the rendered result."

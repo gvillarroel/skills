@@ -54,28 +54,6 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "echarts-animated-svg",
-    "mermaid": SKILLS / "mermaid-animated-svg" / "assets" / "examples" / "mermaid",
-    "mermaid-animation-directives": SKILLS
-    / "mermaid-animated-svg"
-    / "assets"
-    / "examples"
-    / "mermaid-animation-directives",
-    "mermaid-directive-frames": SKILLS
-    / "mermaid-animated-svg"
-    / "assets"
-    / "examples"
-    / "playwright"
-    / "mermaid-animation-directives",
-    "mermaid-colorset-styler-base": SKILLS
-    / "mermaid-colorset-styler"
-    / "assets"
-    / "examples"
-    / "base",
-    "mermaid-svg-animated": SKILLS
-    / "mermaid-animated-svg"
-    / "assets"
-    / "examples"
-    / "mermaid-svg-animated",
     "plantuml-colorset-renderer-base": SKILLS
     / "plantuml-colorset-renderer"
     / "assets"
@@ -116,9 +94,6 @@ EXAMPLE_SOURCES = {
 }
 UNLISTED_EXAMPLE_SOURCES = {
     # Raw source folders copied for linked galleries or verification assets, not standalone landing pages.
-    "mermaid",
-    "mermaid-directive-frames",
-    "mermaid-colorset-styler-base",
     "plantuml-colorset-renderer-base",
 }
 PUBLISHED_EXAMPLE_SETS = [
@@ -185,22 +160,6 @@ PUBLISHED_EXAMPLE_SETS = [
         "href": "examples/procedural-svg-animation/",
         "kind": "Procedural SVG",
         "description": "A deterministic catalog of procedural SVG motion systems spanning timing, geometry, fields, simulations, growth, compositing, and auditable multi-strata solvers.",
-    },
-    {
-        "id": "mermaid-svg-animated",
-        "source": "mermaid-svg-animated",
-        "title": "Mermaid Animated SVG Gallery",
-        "href": "examples/mermaid-svg-animated/",
-        "kind": "Mermaid",
-        "description": "Animated and static SVG pairs for supported Mermaid diagram types.",
-    },
-    {
-        "id": "mermaid-animation-directives",
-        "source": "mermaid-animation-directives",
-        "title": "Mermaid Animation Directives",
-        "href": "examples/mermaid-animation-directives/",
-        "kind": "Directive demos",
-        "description": "Generated directive examples with animated, static, and inspected frames.",
     },
     {
         "id": "plantuml-colorset-renderer",
@@ -705,9 +664,6 @@ def build_docs() -> None:
     copy_tree(example_source("d3-logo-design"), DOCS / "examples" / "d3-logo-design")
     copy_tree(example_source("d3-logo-textures"), DOCS / "examples" / "d3-logo-textures")
     copy_tree(example_source("procedural-svg-animation"), DOCS / "examples" / "procedural-svg-animation")
-    copy_tree(example_source("mermaid"), DOCS / "examples" / "mermaid")
-    copy_tree(example_source("mermaid-svg-animated"), DOCS / "examples" / "mermaid-svg-animated")
-    copy_tree(example_source("mermaid-animation-directives"), DOCS / "examples" / "mermaid-animation-directives")
     copy_tree(example_source("plantuml-colorset-renderer"), DOCS / "examples" / "plantuml-colorset-renderer")
     copy_tree(example_source("plantuml-colorset-renderer-cs1"), DOCS / "examples" / "plantuml-colorset-renderer-cs1")
     copy_tree(example_source("vectorize-art-patterns"), DOCS / "examples" / "vectorize-art-patterns")
@@ -715,11 +671,6 @@ def build_docs() -> None:
         example_source("vectorize-abstract-world-maps"),
         DOCS / "examples" / "vectorize-abstract-world-maps",
     )
-    copy_tree(
-        example_source("mermaid-directive-frames"),
-        DOCS / "examples" / "playwright" / "mermaid-animation-directives",
-    )
-
     threejs_project = example_source("threejs-animated-3d")
     slidev_echarts_project = example_source("slidev-echarts")
     slidev_animejs_project = example_source("slidev-animejs")

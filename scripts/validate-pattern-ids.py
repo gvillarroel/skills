@@ -355,30 +355,6 @@ def validate_family_inventories(
             add(findings, echarts_path, f"ECharts legacy alias equals canonical ID: {pattern_id}")
     register_family("echarts", echarts_ids, 43, echarts_path, findings, global_ids, review_ids, family_counts)
 
-    mermaid_base_path = root / "skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/index.html"
-    mermaid_base = mermaid_base_path.read_text(encoding="utf-8")
-    mermaid_base_block = extract_block(mermaid_base, "const examples = [", "];", mermaid_base_path, findings)
-    mermaid_source_ids = re.findall(r'^\s*\["([a-z0-9-]+)"', mermaid_base_block, re.MULTILINE)
-    mermaid_slug_map = string_map(mermaid_base, "const patternSlugs = new Map([", mermaid_base_path, findings)
-    mermaid_ids = [f"mermaid-{mermaid_slug_map.get(source_id, source_id)}" for source_id in mermaid_source_ids]
-    register_family("mermaid", mermaid_ids, 41, mermaid_base_path, findings, global_ids, review_ids, family_counts)
-
-    directives_path = root / "skills/mermaid-animated-svg/assets/examples/mermaid-animation-directives/index.html"
-    directives = directives_path.read_text(encoding="utf-8")
-    directive_block = extract_block(directives, "const directiveExamples = [", "];\n\n      const notes", directives_path, findings)
-    directive_sources = re.findall(r'\bname:\s*"([a-z0-9-]+)"', directive_block)
-    manifest_path = directives_path.parent / "by-type" / "manifest.json"
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    by_type_sources = [item["slug"] for item in manifest]
-    directive_slug_map = string_map(directives, "const directivePatternSlugs = new Map([", directives_path, findings)
-    directive_ids = [
-        f"mermaid-directive-{directive_slug_map.get(source_id, source_id)}"
-        for source_id in [*directive_sources, *by_type_sources]
-    ]
-    register_family("mermaid-directive", directive_ids, 36, directives_path, findings, global_ids, review_ids, family_counts)
-    if "legacyPatternId && legacyPatternId !== patternId" not in directives:
-        add(findings, directives_path, "Mermaid directives must omit legacy aliases that equal the canonical ID")
-
     plant_root = root / "skills/plantuml-colorset-renderer/assets/examples"
     for directory, suffix, family in (
         ("plantuml-colorset-renderer", "cs2", "plantuml-cs2"),
@@ -493,16 +469,6 @@ def require_contracts(root: Path, findings: list[Finding]) -> None:
             "skills/echarts-animated-svg/assets/examples/echarts-animated-svg/scripts/build-gallery.mjs",
             r"`echarts-\$\{patternSlug\}`",
             "ECharts gallery must derive IDs as echarts-<slug>",
-        ),
-        (
-            "skills/mermaid-animated-svg/assets/examples/mermaid-svg-animated/index.html",
-            r"`mermaid-\$\{patternSlugs\.get\(name\) \|\| name\}`",
-            "Mermaid gallery must derive IDs as mermaid-<slug>",
-        ),
-        (
-            "skills/mermaid-animated-svg/assets/examples/mermaid-animation-directives/index.html",
-            r"`mermaid-directive-\$\{patternSlug\}`",
-            "Mermaid directives must derive IDs as mermaid-directive-<slug>",
         ),
         (
             "skills/plantuml-colorset-renderer/assets/examples/plantuml-colorset-renderer/plantuml-gallery.js",
