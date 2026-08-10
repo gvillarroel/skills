@@ -87,7 +87,7 @@
       "kind": "diagram",
       "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 1 with visible source-bound destination imagery.",
       "output": "artifacts/images/a01-proximity-map.png",
-      "sha256": "5eecaadabb8072cdf1439089fa0caa894b37d36fe52bc7d672cf83c2e40c9c5e",
+      "sha256": "07758512bc0f4fb8cb7ccf5b6280c22f99ead05084d33ad6ae7465918c757395",
       "origin": {
         "type": "generated",
         "uri": "project-dataset:bakeries-cafes-desserts:a01-proximity-map",
@@ -97,33 +97,33 @@
         "embeddedSources": [
           {
             "rank": 1,
-            "name": "Vanilla Café Gelato",
-            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
-            "imageUrl": null,
-            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "name": "The Peach Cobbler Factory — Alpharetta",
+            "pageUrl": "https://peachcobblerfactory.com/location/673-alpharetta-ga/",
+            "imageUrl": "https://peachcobblerfactory.com/wp-content/uploads/2025/10/tn-peach-cobbler-catering.jpg",
+            "imageSha256": "438bad77d7ac93c48a58fd713bdca9f4e59ff115a7dd0ad152670eb72f9ccf73",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+            "method": "official-meta-image",
+            "attribution": "Official source image for The Peach Cobbler Factory — Alpharetta; verify reuse terms before public publication."
           },
           {
             "rank": 2,
-            "name": "Jeremia's Italian Ice",
-            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
-            "imageUrl": null,
-            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "name": "Copacabana Brazilian Bakery",
+            "pageUrl": "https://www.copacabanabakery.com/",
+            "imageUrl": "https://www.copacabanabakery.com/food/evedark_A_highly_realistic_gourmet_food_photograph_of_a_brazi_7af63940-c81d-4d6b-bf73-bd2324dc1288_0.png?dpl=dpl_5LvEf73EhpRKTY2kacBzfEMeo19j",
+            "imageSha256": "445baa519484086cae8b2129d54c2e3cd7684939f2c4ab7832cc152578863840",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Copacabana Brazilian Bakery; verify reuse terms before public publication."
           },
           {
             "rank": 3,
-            "name": "Scoops Sugar Hill",
-            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
-            "imageUrl": null,
-            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "name": "Where's the Scoop?",
+            "pageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageSha256": "17eb77fa6b62e03c7d8a90f7f63ec1f6f6d190194a8e0063165a7b810d1f4b5c",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Where's the Scoop?; verify reuse terms before public publication."
           }
         ]
       },
@@ -160,23 +160,23 @@
       "kind": "screenshot",
       "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 2 with visible source-bound destination imagery.",
       "output": "artifacts/images/a02-top-1-source.png",
-      "sha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+      "sha256": "438bad77d7ac93c48a58fd713bdca9f4e59ff115a7dd0ad152670eb72f9ccf73",
       "origin": {
         "type": "captured",
-        "uri": "https://www.openstreetmap.org/node/11985939675",
+        "uri": "https://peachcobblerfactory.com/location/673-alpharetta-ga/",
         "rightsStatus": "official-source",
         "rightsNote": "official-source-private-family-planning-use",
-        "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use.",
+        "attribution": "Official source image for The Peach Cobbler Factory — Alpharetta; verify reuse terms before public publication.",
         "embeddedSources": [
           {
             "rank": 1,
-            "name": "Vanilla Café Gelato",
-            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
-            "imageUrl": null,
-            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "name": "The Peach Cobbler Factory — Alpharetta",
+            "pageUrl": "https://peachcobblerfactory.com/location/673-alpharetta-ga/",
+            "imageUrl": "https://peachcobblerfactory.com/wp-content/uploads/2025/10/tn-peach-cobbler-catering.jpg",
+            "imageSha256": "438bad77d7ac93c48a58fd713bdca9f4e59ff115a7dd0ad152670eb72f9ccf73",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+            "method": "official-meta-image",
+            "attribution": "Official source image for The Peach Cobbler Factory — Alpharetta; verify reuse terms before public publication."
           }
         ]
       },
@@ -213,23 +213,23 @@
       "kind": "screenshot",
       "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 3 with visible source-bound destination imagery.",
       "output": "artifacts/images/a03-top-2-source.png",
-      "sha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+      "sha256": "445baa519484086cae8b2129d54c2e3cd7684939f2c4ab7832cc152578863840",
       "origin": {
         "type": "captured",
-        "uri": "https://www.openstreetmap.org/node/12874339998",
+        "uri": "https://www.copacabanabakery.com/",
         "rightsStatus": "official-source",
         "rightsNote": "official-source-private-family-planning-use",
-        "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use.",
+        "attribution": "Official source image for Copacabana Brazilian Bakery; verify reuse terms before public publication.",
         "embeddedSources": [
           {
             "rank": 2,
-            "name": "Jeremia's Italian Ice",
-            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
-            "imageUrl": null,
-            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "name": "Copacabana Brazilian Bakery",
+            "pageUrl": "https://www.copacabanabakery.com/",
+            "imageUrl": "https://www.copacabanabakery.com/food/evedark_A_highly_realistic_gourmet_food_photograph_of_a_brazi_7af63940-c81d-4d6b-bf73-bd2324dc1288_0.png?dpl=dpl_5LvEf73EhpRKTY2kacBzfEMeo19j",
+            "imageSha256": "445baa519484086cae8b2129d54c2e3cd7684939f2c4ab7832cc152578863840",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Copacabana Brazilian Bakery; verify reuse terms before public publication."
           }
         ]
       },
@@ -266,23 +266,23 @@
       "kind": "screenshot",
       "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 4 with visible source-bound destination imagery.",
       "output": "artifacts/images/a04-top-3-source.png",
-      "sha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+      "sha256": "17eb77fa6b62e03c7d8a90f7f63ec1f6f6d190194a8e0063165a7b810d1f4b5c",
       "origin": {
         "type": "captured",
-        "uri": "https://www.openstreetmap.org/node/10252222344",
+        "uri": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
         "rightsStatus": "official-source",
         "rightsNote": "official-source-private-family-planning-use",
-        "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use.",
+        "attribution": "Official source image for Where's the Scoop?; verify reuse terms before public publication.",
         "embeddedSources": [
           {
             "rank": 3,
-            "name": "Scoops Sugar Hill",
-            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
-            "imageUrl": null,
-            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "name": "Where's the Scoop?",
+            "pageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageSha256": "17eb77fa6b62e03c7d8a90f7f63ec1f6f6d190194a8e0063165a7b810d1f4b5c",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Where's the Scoop?; verify reuse terms before public publication."
           }
         ]
       },
@@ -319,7 +319,7 @@
       "kind": "diagram",
       "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 5 with visible source-bound destination imagery.",
       "output": "artifacts/images/a05-top-five.png",
-      "sha256": "17811030a5c5025da3783e538e3f57784abee9ff63d024c78717ec639d8ff050",
+      "sha256": "ab89a39ee9e952c328f9a86ac86630cdc88a4dc95ee00382f315dd25b18e6376",
       "origin": {
         "type": "generated",
         "uri": "project-dataset:bakeries-cafes-desserts:a05-top-five",
@@ -329,53 +329,53 @@
         "embeddedSources": [
           {
             "rank": 1,
-            "name": "Vanilla Café Gelato",
-            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
-            "imageUrl": null,
-            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "name": "The Peach Cobbler Factory — Alpharetta",
+            "pageUrl": "https://peachcobblerfactory.com/location/673-alpharetta-ga/",
+            "imageUrl": "https://peachcobblerfactory.com/wp-content/uploads/2025/10/tn-peach-cobbler-catering.jpg",
+            "imageSha256": "438bad77d7ac93c48a58fd713bdca9f4e59ff115a7dd0ad152670eb72f9ccf73",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+            "method": "official-meta-image",
+            "attribution": "Official source image for The Peach Cobbler Factory — Alpharetta; verify reuse terms before public publication."
           },
           {
             "rank": 2,
-            "name": "Jeremia's Italian Ice",
-            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
-            "imageUrl": null,
-            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "name": "Copacabana Brazilian Bakery",
+            "pageUrl": "https://www.copacabanabakery.com/",
+            "imageUrl": "https://www.copacabanabakery.com/food/evedark_A_highly_realistic_gourmet_food_photograph_of_a_brazi_7af63940-c81d-4d6b-bf73-bd2324dc1288_0.png?dpl=dpl_5LvEf73EhpRKTY2kacBzfEMeo19j",
+            "imageSha256": "445baa519484086cae8b2129d54c2e3cd7684939f2c4ab7832cc152578863840",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Copacabana Brazilian Bakery; verify reuse terms before public publication."
           },
           {
             "rank": 3,
-            "name": "Scoops Sugar Hill",
-            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
-            "imageUrl": null,
-            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "name": "Where's the Scoop?",
+            "pageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageSha256": "17eb77fa6b62e03c7d8a90f7f63ec1f6f6d190194a8e0063165a7b810d1f4b5c",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Where's the Scoop?; verify reuse terms before public publication."
           },
           {
             "rank": 4,
-            "name": "Vampire Penguin",
-            "pageUrl": "https://www.openstreetmap.org/node/12164439045",
-            "imageUrl": null,
-            "imageSha256": "94a72cfd4d8acf999f55f0f0a57d97901e8194a07481b2666b528814928a4cae",
+            "name": "Qamaria Yemeni Coffee",
+            "pageUrl": "https://www.qamariacoffee.com/",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/5e6e8046c2dd7d466861e6b8/1609947503918-W9W21BDFUV7XBVYI62BP/_DSC0504.jpg?format=1500w",
+            "imageSha256": "9091f5768e212927cbb2ba3b694e165a78e14aea3cd2699ba8a1765c48923c95",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Vampire Penguin; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Qamaria Yemeni Coffee; verify reuse terms before public publication."
           },
           {
             "rank": 5,
-            "name": "Sarah Donuts",
-            "pageUrl": "https://www.sarahdonuts.com/",
-            "imageUrl": "https://cdn.prod.website-files.com/675ef9c1bee91b289f7233ba/675f241ac7e72aec12dfd166_Group%2096-p-1080.png",
-            "imageSha256": "24046e20633ae1d1c88cfe68b63c96bf39677e7633cd662f8a39a8149e62212a",
+            "name": "Fluffy Fluffy — Duluth",
+            "pageUrl": "https://images.squarespace-cdn.com/content/v1/5b196ee731d4df831f0acadd/1735404912855-HEUMZCVQTH28OZCL8CZR/4L8A0525.jpg",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/5b196ee731d4df831f0acadd/1735404912855-HEUMZCVQTH28OZCL8CZR/4L8A0525.jpg",
+            "imageSha256": "af98914c51e177e6049452e1df8af3db4c00153feada59a112efdc95a71f6910",
             "status": "strong",
             "method": "official-hero-image",
-            "attribution": "Official source image for Sarah Donuts; verify reuse terms before public publication."
+            "attribution": "Official source image for Fluffy Fluffy — Duluth; verify reuse terms before public publication."
           }
         ]
       },
@@ -412,7 +412,7 @@
       "kind": "diagram",
       "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 6 with visible source-bound destination imagery.",
       "output": "artifacts/images/a06-preference-bars.png",
-      "sha256": "361b74f4319124bfe9e7f29e8d9a992b101b6e5632466d2997ba81f350d27b6a",
+      "sha256": "ead7523134d59be9464513f2faa1818660e00a86a43e4a9434c35e2c1849afb2",
       "origin": {
         "type": "generated",
         "uri": "project-dataset:bakeries-cafes-desserts:a06-preference-bars",
@@ -422,83 +422,83 @@
         "embeddedSources": [
           {
             "rank": 1,
-            "name": "Vanilla Café Gelato",
-            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
-            "imageUrl": null,
-            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "name": "The Peach Cobbler Factory — Alpharetta",
+            "pageUrl": "https://peachcobblerfactory.com/location/673-alpharetta-ga/",
+            "imageUrl": "https://peachcobblerfactory.com/wp-content/uploads/2025/10/tn-peach-cobbler-catering.jpg",
+            "imageSha256": "438bad77d7ac93c48a58fd713bdca9f4e59ff115a7dd0ad152670eb72f9ccf73",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+            "method": "official-meta-image",
+            "attribution": "Official source image for The Peach Cobbler Factory — Alpharetta; verify reuse terms before public publication."
           },
           {
             "rank": 2,
-            "name": "Jeremia's Italian Ice",
-            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
-            "imageUrl": null,
-            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "name": "Copacabana Brazilian Bakery",
+            "pageUrl": "https://www.copacabanabakery.com/",
+            "imageUrl": "https://www.copacabanabakery.com/food/evedark_A_highly_realistic_gourmet_food_photograph_of_a_brazi_7af63940-c81d-4d6b-bf73-bd2324dc1288_0.png?dpl=dpl_5LvEf73EhpRKTY2kacBzfEMeo19j",
+            "imageSha256": "445baa519484086cae8b2129d54c2e3cd7684939f2c4ab7832cc152578863840",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Copacabana Brazilian Bakery; verify reuse terms before public publication."
           },
           {
             "rank": 3,
-            "name": "Scoops Sugar Hill",
-            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
-            "imageUrl": null,
-            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "name": "Where's the Scoop?",
+            "pageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageSha256": "17eb77fa6b62e03c7d8a90f7f63ec1f6f6d190194a8e0063165a7b810d1f4b5c",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Where's the Scoop?; verify reuse terms before public publication."
           },
           {
             "rank": 4,
-            "name": "Vampire Penguin",
-            "pageUrl": "https://www.openstreetmap.org/node/12164439045",
-            "imageUrl": null,
-            "imageSha256": "94a72cfd4d8acf999f55f0f0a57d97901e8194a07481b2666b528814928a4cae",
+            "name": "Qamaria Yemeni Coffee",
+            "pageUrl": "https://www.qamariacoffee.com/",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/5e6e8046c2dd7d466861e6b8/1609947503918-W9W21BDFUV7XBVYI62BP/_DSC0504.jpg?format=1500w",
+            "imageSha256": "9091f5768e212927cbb2ba3b694e165a78e14aea3cd2699ba8a1765c48923c95",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Vampire Penguin; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Qamaria Yemeni Coffee; verify reuse terms before public publication."
           },
           {
             "rank": 5,
-            "name": "Sarah Donuts",
-            "pageUrl": "https://www.sarahdonuts.com/",
-            "imageUrl": "https://cdn.prod.website-files.com/675ef9c1bee91b289f7233ba/675f241ac7e72aec12dfd166_Group%2096-p-1080.png",
-            "imageSha256": "24046e20633ae1d1c88cfe68b63c96bf39677e7633cd662f8a39a8149e62212a",
+            "name": "Fluffy Fluffy — Duluth",
+            "pageUrl": "https://images.squarespace-cdn.com/content/v1/5b196ee731d4df831f0acadd/1735404912855-HEUMZCVQTH28OZCL8CZR/4L8A0525.jpg",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/5b196ee731d4df831f0acadd/1735404912855-HEUMZCVQTH28OZCL8CZR/4L8A0525.jpg",
+            "imageSha256": "af98914c51e177e6049452e1df8af3db4c00153feada59a112efdc95a71f6910",
             "status": "strong",
             "method": "official-hero-image",
-            "attribution": "Official source image for Sarah Donuts; verify reuse terms before public publication."
+            "attribution": "Official source image for Fluffy Fluffy — Duluth; verify reuse terms before public publication."
           },
           {
             "rank": 6,
-            "name": "Tiger Sugar",
-            "pageUrl": "https://www.openstreetmap.org/node/11221413688",
-            "imageUrl": null,
-            "imageSha256": "1f3b8424d4a526fe5ed6269934e752b46c330136d899ad7a96f4b4944af13840",
+            "name": "Sweet Hut Bakery & Cafe — Duluth",
+            "pageUrl": "https://www.sweethutbakery.com/",
+            "imageUrl": "https://www.sweethutbakery.com/sweethut/dessert-spread.webp",
+            "imageSha256": "46cb3e260e1b5c1a725b8325d0874a17d6fb3481db5dc7997620a842d2123871",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Tiger Sugar; private family-planning use."
+            "method": "official-meta-image",
+            "attribution": "Official source image for Sweet Hut Bakery & Cafe — Duluth; verify reuse terms before public publication."
           },
           {
             "rank": 7,
-            "name": "Pearl's Tea",
-            "pageUrl": "https://www.openstreetmap.org/way/1085221722",
-            "imageUrl": null,
-            "imageSha256": "446aced1d0dfddcacc02bd13679421b91cf3b183e2d71ae0b8a647deb3959ceb",
+            "name": "Matcha Cafe Maiko — Duluth",
+            "pageUrl": "https://www.matchacafeatl.com/",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/5e1d726bf9d8514b273b2ebd/b62192b4-692c-44a1-aad6-219b96b1f605/top-pc.jpg?format=1500w",
+            "imageSha256": "869a0d4847e48469a61ddb6f5cfd1fa31ef4b2b5def1826f4b69643faedc46c7",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Pearl's Tea; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Matcha Cafe Maiko — Duluth; verify reuse terms before public publication."
           },
           {
             "rank": 8,
-            "name": "Hey Boba Tea & Snacks",
-            "pageUrl": "https://www.openstreetmap.org/node/13179023862",
-            "imageUrl": null,
-            "imageSha256": "68035bbe130e07edbe7a87860db4632b5d30aa1fd3b13940066a241c5a6b5678",
+            "name": "Beard Papa's — Duluth",
+            "pageUrl": "https://www.beardpapas.com/duluth",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/600a96cbf8894d79eb1e1b1f/1623875922301-L6MRBWYCVYUQTU4C4JQJ/_34A7873.jpg?format=1500w",
+            "imageSha256": "99253ea42ae1b7961514d6de5fa07dd9409c36101c08a6037ee884fc909754d2",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Hey Boba Tea & Snacks; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Beard Papa's — Duluth; verify reuse terms before public publication."
           }
         ]
       },
@@ -535,7 +535,7 @@
       "kind": "diagram",
       "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 7 with visible source-bound destination imagery.",
       "output": "artifacts/images/a07-decision-board.png",
-      "sha256": "ce082617ded2427b96febe8e1fee65a39570eaf54453aeece29cf5afcdf651b6",
+      "sha256": "4dd0a60698c728ef783a6952b879cfb6c825d7410fd52cee1f2266ed11bff831",
       "origin": {
         "type": "generated",
         "uri": "project-dataset:bakeries-cafes-desserts:a07-decision-board",
@@ -545,43 +545,43 @@
         "embeddedSources": [
           {
             "rank": 1,
-            "name": "Vanilla Café Gelato",
-            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
-            "imageUrl": null,
-            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "name": "The Peach Cobbler Factory — Alpharetta",
+            "pageUrl": "https://peachcobblerfactory.com/location/673-alpharetta-ga/",
+            "imageUrl": "https://peachcobblerfactory.com/wp-content/uploads/2025/10/tn-peach-cobbler-catering.jpg",
+            "imageSha256": "438bad77d7ac93c48a58fd713bdca9f4e59ff115a7dd0ad152670eb72f9ccf73",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+            "method": "official-meta-image",
+            "attribution": "Official source image for The Peach Cobbler Factory — Alpharetta; verify reuse terms before public publication."
           },
           {
             "rank": 2,
-            "name": "Jeremia's Italian Ice",
-            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
-            "imageUrl": null,
-            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "name": "Copacabana Brazilian Bakery",
+            "pageUrl": "https://www.copacabanabakery.com/",
+            "imageUrl": "https://www.copacabanabakery.com/food/evedark_A_highly_realistic_gourmet_food_photograph_of_a_brazi_7af63940-c81d-4d6b-bf73-bd2324dc1288_0.png?dpl=dpl_5LvEf73EhpRKTY2kacBzfEMeo19j",
+            "imageSha256": "445baa519484086cae8b2129d54c2e3cd7684939f2c4ab7832cc152578863840",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Copacabana Brazilian Bakery; verify reuse terms before public publication."
           },
           {
             "rank": 3,
-            "name": "Scoops Sugar Hill",
-            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
-            "imageUrl": null,
-            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "name": "Where's the Scoop?",
+            "pageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageSha256": "17eb77fa6b62e03c7d8a90f7f63ec1f6f6d190194a8e0063165a7b810d1f4b5c",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Where's the Scoop?; verify reuse terms before public publication."
           },
           {
             "rank": 4,
-            "name": "Vampire Penguin",
-            "pageUrl": "https://www.openstreetmap.org/node/12164439045",
-            "imageUrl": null,
-            "imageSha256": "94a72cfd4d8acf999f55f0f0a57d97901e8194a07481b2666b528814928a4cae",
+            "name": "Qamaria Yemeni Coffee",
+            "pageUrl": "https://www.qamariacoffee.com/",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/5e6e8046c2dd7d466861e6b8/1609947503918-W9W21BDFUV7XBVYI62BP/_DSC0504.jpg?format=1500w",
+            "imageSha256": "9091f5768e212927cbb2ba3b694e165a78e14aea3cd2699ba8a1765c48923c95",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Vampire Penguin; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Qamaria Yemeni Coffee; verify reuse terms before public publication."
           }
         ]
       },
@@ -618,7 +618,7 @@
       "kind": "diagram",
       "claim": "Show the Bakeries, Cafes & Desserts evidence required for scene 8 with visible source-bound destination imagery.",
       "output": "artifacts/images/a08-planner-callback.png",
-      "sha256": "777c689126d58087bc1584685605cdcf41ddf09f9ec9d16deaffbc3894738233",
+      "sha256": "58e4fb8c1a912fd2f5796ddb22807f093dfc409401064d5d49a17618312b6d6f",
       "origin": {
         "type": "generated",
         "uri": "project-dataset:bakeries-cafes-desserts:a08-planner-callback",
@@ -628,63 +628,63 @@
         "embeddedSources": [
           {
             "rank": 1,
-            "name": "Vanilla Café Gelato",
-            "pageUrl": "https://www.openstreetmap.org/node/11985939675",
-            "imageUrl": null,
-            "imageSha256": "6d8b5671c6bc2ff55de4e81798ff9589f67eeeaef3ce70acdeefa81073d2b932",
+            "name": "The Peach Cobbler Factory — Alpharetta",
+            "pageUrl": "https://peachcobblerfactory.com/location/673-alpharetta-ga/",
+            "imageUrl": "https://peachcobblerfactory.com/wp-content/uploads/2025/10/tn-peach-cobbler-catering.jpg",
+            "imageSha256": "438bad77d7ac93c48a58fd713bdca9f4e59ff115a7dd0ad152670eb72f9ccf73",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Vanilla Café Gelato; private family-planning use."
+            "method": "official-meta-image",
+            "attribution": "Official source image for The Peach Cobbler Factory — Alpharetta; verify reuse terms before public publication."
           },
           {
             "rank": 2,
-            "name": "Jeremia's Italian Ice",
-            "pageUrl": "https://www.openstreetmap.org/node/12874339998",
-            "imageUrl": null,
-            "imageSha256": "fc34627a52b883e7f1ab56724f7afa216ff586dab49d8ddecf8ea682020377e5",
+            "name": "Copacabana Brazilian Bakery",
+            "pageUrl": "https://www.copacabanabakery.com/",
+            "imageUrl": "https://www.copacabanabakery.com/food/evedark_A_highly_realistic_gourmet_food_photograph_of_a_brazi_7af63940-c81d-4d6b-bf73-bd2324dc1288_0.png?dpl=dpl_5LvEf73EhpRKTY2kacBzfEMeo19j",
+            "imageSha256": "445baa519484086cae8b2129d54c2e3cd7684939f2c4ab7832cc152578863840",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Jeremia's Italian Ice; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Copacabana Brazilian Bakery; verify reuse terms before public publication."
           },
           {
             "rank": 3,
-            "name": "Scoops Sugar Hill",
-            "pageUrl": "https://www.openstreetmap.org/node/10252222344",
-            "imageUrl": null,
-            "imageSha256": "1e5eee50e1eaa13dc1100fc0ef9cef8a1cd1ec3293d1e81c352cc4d30a16eefd",
+            "name": "Where's the Scoop?",
+            "pageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageUrl": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+            "imageSha256": "17eb77fa6b62e03c7d8a90f7f63ec1f6f6d190194a8e0063165a7b810d1f4b5c",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Scoops Sugar Hill; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Where's the Scoop?; verify reuse terms before public publication."
           },
           {
             "rank": 4,
-            "name": "Vampire Penguin",
-            "pageUrl": "https://www.openstreetmap.org/node/12164439045",
-            "imageUrl": null,
-            "imageSha256": "94a72cfd4d8acf999f55f0f0a57d97901e8194a07481b2666b528814928a4cae",
+            "name": "Qamaria Yemeni Coffee",
+            "pageUrl": "https://www.qamariacoffee.com/",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/5e6e8046c2dd7d466861e6b8/1609947503918-W9W21BDFUV7XBVYI62BP/_DSC0504.jpg?format=1500w",
+            "imageSha256": "9091f5768e212927cbb2ba3b694e165a78e14aea3cd2699ba8a1765c48923c95",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Vampire Penguin; private family-planning use."
+            "method": "official-hero-image",
+            "attribution": "Official source image for Qamaria Yemeni Coffee; verify reuse terms before public publication."
           },
           {
             "rank": 5,
-            "name": "Sarah Donuts",
-            "pageUrl": "https://www.sarahdonuts.com/",
-            "imageUrl": "https://cdn.prod.website-files.com/675ef9c1bee91b289f7233ba/675f241ac7e72aec12dfd166_Group%2096-p-1080.png",
-            "imageSha256": "24046e20633ae1d1c88cfe68b63c96bf39677e7633cd662f8a39a8149e62212a",
+            "name": "Fluffy Fluffy — Duluth",
+            "pageUrl": "https://images.squarespace-cdn.com/content/v1/5b196ee731d4df831f0acadd/1735404912855-HEUMZCVQTH28OZCL8CZR/4L8A0525.jpg",
+            "imageUrl": "https://images.squarespace-cdn.com/content/v1/5b196ee731d4df831f0acadd/1735404912855-HEUMZCVQTH28OZCL8CZR/4L8A0525.jpg",
+            "imageSha256": "af98914c51e177e6049452e1df8af3db4c00153feada59a112efdc95a71f6910",
             "status": "strong",
             "method": "official-hero-image",
-            "attribution": "Official source image for Sarah Donuts; verify reuse terms before public publication."
+            "attribution": "Official source image for Fluffy Fluffy — Duluth; verify reuse terms before public publication."
           },
           {
             "rank": 6,
-            "name": "Tiger Sugar",
-            "pageUrl": "https://www.openstreetmap.org/node/11221413688",
-            "imageUrl": null,
-            "imageSha256": "1f3b8424d4a526fe5ed6269934e752b46c330136d899ad7a96f4b4944af13840",
+            "name": "Sweet Hut Bakery & Cafe — Duluth",
+            "pageUrl": "https://www.sweethutbakery.com/",
+            "imageUrl": "https://www.sweethutbakery.com/sweethut/dessert-spread.webp",
+            "imageSha256": "46cb3e260e1b5c1a725b8325d0874a17d6fb3481db5dc7997620a842d2123871",
             "status": "strong",
-            "method": "official-visual-page",
-            "attribution": "Official visual page for Tiger Sugar; private family-planning use."
+            "method": "official-meta-image",
+            "attribution": "Official source image for Sweet Hut Bakery & Cafe — Duluth; verify reuse terms before public publication."
           }
         ]
       },

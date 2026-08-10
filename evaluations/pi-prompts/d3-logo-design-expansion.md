@@ -1,6 +1,6 @@
 Use the loaded `d3-logo-design` skill to generate and validate one deterministic logo studio that exercises a newly added optical construction mechanism.
 
-Work only from this prompt and the loaded skill at `skills/d3-logo-design/`. Treat the skill directory as read-only. Write only under `outputs/`. Do not inspect parent directories, sibling skills, repository documentation, evaluation files, acceptance examples, hidden context, or the network. Do not install packages or substitute tools.
+Work only from this prompt and the loaded skill at `skills/d3/`. Treat the skill directory as read-only. Write only under `outputs/`. Do not inspect parent directories, sibling skills, repository documentation, evaluation files, acceptance examples, hidden context, or the network. Do not install packages or substitute tools.
 
 Create these exact deliverables:
 

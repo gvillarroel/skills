@@ -10,7 +10,7 @@ Runtime: 0:48
 
 ## Hook
 
-Cold-open line: Every option allows children. From 100 possibilities, culture comes first.
+Cold-open line: All 117 options allow children. Culture comes first.
 
 First visual: A home marker emits only child-permitted route dots; the selected-pool count appears as the visible result.
 
@@ -21,9 +21,9 @@ Audio cue: Short route tick, narration enters immediately, and the low bed ducks
 | Time | Beat ID | Scene ID | Script purpose | Visual | Animation | Transition | Audio |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 0:00-0:06 | b01 | s01 | Child-access gate and hook | Proximity map with the ranked pool and home marker | Child-permitted map dots reveal from home | Hard axis reveal | Narration with low bed and route tick |
-| 0:06-0:12 | b02 | s02 | Top pick | Official page capture for Vanilla Café Gelato | Source image settles with rank badge | Match cut axis | Narration with low bed and route tick |
-| 0:12-0:18 | b03 | s03 | Second pick | Official page capture for Jeremia's Italian Ice | Image reverses to the opposite axis | Persistent route marker | Narration with low bed and route tick |
-| 0:18-0:24 | b04 | s04 | Third pick | Official page capture for Scoops Sugar Hill | Full-bleed image reveals under source label | Camera move | Narration with low bed and route tick |
+| 0:06-0:12 | b02 | s02 | Top pick | Official page capture for The Peach Cobbler Factory — Alpharetta | Source image settles with rank badge | Match cut axis | Narration with low bed and route tick |
+| 0:12-0:18 | b03 | s03 | Second pick | Official page capture for Copacabana Brazilian Bakery | Image reverses to the opposite axis | Persistent route marker | Narration with low bed and route tick |
+| 0:18-0:24 | b04 | s04 | Third pick | Official page capture for Where's the Scoop? | Full-bleed image reveals under source label | Camera move | Narration with low bed and route tick |
 | 0:24-0:30 | b05 | s05 | Top-five comparison | Top-five strict-preference comparison | Preference scores resolve in order | Color handoff | Narration with low bed and route tick |
 | 0:30-0:36 | b06 | s06 | Preference profiles | Culture, international-experience and affordability profile bars | Culture, world and cost bars grow together | Spatial portal reveal | Narration with low bed and route tick |
 | 0:36-0:42 | b07 | s07 | Decision rule | Overall, most cultural, world-experience and lowest-cost decision board | Decision quadrants reveal by priority | Semantic morph | Narration with low bed and route tick |
@@ -36,7 +36,7 @@ Audio cue: Short route tick, narration enters immediately, and the low bed ducks
 - Rights: official promotional/source pages are used only inside this private family-planning package with source attribution.
 - Fallback: if a remote page blocks the browser, create a source-bound local card and label the fallback in the capture log.
 
-Source links: https://www.vanillacafegelato.com/, https://www.openstreetmap.org/node/12874339998, https://www.scoopsicecream.com/, https://www.vampirepenguin.com/locations/cumminggeorgia, https://www.sarahdonuts.com/, https://www.openstreetmap.org/node/11221413688, https://www.openstreetmap.org/way/1085221722, https://www.openstreetmap.org/node/13179023862
+Source links: https://peachcobblerfactory.com/location/673-alpharetta-ga/, https://www.copacabanabakery.com/, https://www.wheresthescoop.com/, https://www.qamariacoffee.com/, https://www.fluffyfluffy.com/locations/duluth, https://www.sweethutbakery.com/, https://www.matchacafeatl.com/, https://www.beardpapas.com/duluth
 
 ## Visual Production Contract
 
@@ -60,14 +60,14 @@ Source links: https://www.vanillacafegelato.com/, https://www.openstreetmap.org/
 
 ## Voiceover Draft
 
-- 0:00-0:06: Every option allows children. From 100 possibilities, culture comes first.
-- 0:06-0:12: The leader is Vanilla Café Gelato, scoring 4.3 for culture.
-- 0:12-0:18: Second, Jeremia's Italian Ice brings Italy.
-- 0:18-0:24: Third, Scoops Sugar Hill: cost score 4.6.
-- 0:24-0:30: The top five keep that same culture, world, then price order.
-- 0:30-0:36: These bars compare culture, international experience, and affordability for eight leaders.
-- 0:36-0:42: Choose the overall leader, strongest culture, world experience, or lowest cost.
-- 0:42-0:48: Open the Excel for all 50 child-permitted choices, conditions, directions, and sources.
+- 0:00-0:06: All 117 options allow children. Culture comes first.
+- 0:06-0:12: Peach Cobbler Factory leads on culture.
+- 0:12-0:18: Second, Copacabana Brazilian Bakery brings Brazil.
+- 0:18-0:24: Third, Where's the Scoop? is a low-cost choice.
+- 0:24-0:30: The top five follow culture, world, then price.
+- 0:30-0:36: Bars compare culture, world experience, and price.
+- 0:36-0:42: Choose the leader, culture, world experience, or lowest cost.
+- 0:42-0:48: Excel lists all 50 choices and sources.
 
 ## Script Style Notes
 

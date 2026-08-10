@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 12,
+    "headSha256": "74aa41ce2760587edb20a158f00fee29645bb9d64973243c2c38add8324a3a8e"
+  },
+  "progress": {
+    "completedCount": 0,
+    "completionPercent": 0.0,
+    "stageCount": 4
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-medium-3x-browser-palette-v1",
+    "createdAt": "2026-08-09T22:52:45Z",
+    "studyId": "d3-unified-20260809-v1",
+    "title": "Unified D3 skill evaluation"
+  }
+}

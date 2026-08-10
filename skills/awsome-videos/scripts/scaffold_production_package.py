@@ -511,7 +511,7 @@ def scene_specs(args: argparse.Namespace) -> list[dict[str, str]]:
             "focal": f"{concept} definition mechanism",
             "assetKind": "diagram",
             "assetRole": "definition diagram",
-            "producerSkill": "mermaid-animated-svg",
+            "producerSkill": "mermaid",
             "outputSuffix": "svg",
         },
         {
@@ -522,7 +522,7 @@ def scene_specs(args: argparse.Namespace) -> list[dict[str, str]]:
             "focal": f"{concept} input route",
             "assetKind": "diagram",
             "assetRole": "mechanism input",
-            "producerSkill": "d3-animated-svg",
+            "producerSkill": "d3",
             "outputSuffix": "svg",
         },
         {
@@ -533,7 +533,7 @@ def scene_specs(args: argparse.Namespace) -> list[dict[str, str]]:
             "focal": f"{concept} state transition",
             "assetKind": "diagram",
             "assetRole": "state mechanism",
-            "producerSkill": "d3-animated-svg",
+            "producerSkill": "d3",
             "outputSuffix": "svg",
         },
         {
@@ -555,7 +555,7 @@ def scene_specs(args: argparse.Namespace) -> list[dict[str, str]]:
             "focal": f"{concept} failure-control contrast",
             "assetKind": "diagram",
             "assetRole": "contrast mechanism",
-            "producerSkill": "d3-animated-svg",
+            "producerSkill": "d3",
             "outputSuffix": "svg",
         },
         {
@@ -566,7 +566,7 @@ def scene_specs(args: argparse.Namespace) -> list[dict[str, str]]:
             "focal": f"{concept} rule sequence",
             "assetKind": "diagram",
             "assetRole": "rule summary",
-            "producerSkill": "mermaid-animated-svg",
+            "producerSkill": "mermaid",
             "outputSuffix": "svg",
         },
         {
@@ -577,7 +577,7 @@ def scene_specs(args: argparse.Namespace) -> list[dict[str, str]]:
             "focal": f"complete {concept} system",
             "assetKind": "diagram",
             "assetRole": "callback system",
-            "producerSkill": "d3-animated-svg",
+            "producerSkill": "d3",
             "outputSuffix": "svg",
         },
     ]
@@ -823,7 +823,7 @@ def build_asset_manifest(args: argparse.Namespace, project_id: str) -> dict[str,
             },
             {
                 "stage": "asset-generation",
-                "skill": "d3-animated-svg",
+                "skill": "d3",
                 "reason": "Build custom source-bound mechanism geometry and state motion.",
                 "output": "artifacts/images/*.svg",
                 "outputPaths": [
@@ -837,7 +837,7 @@ def build_asset_manifest(args: argparse.Namespace, project_id: str) -> dict[str,
             },
             {
                 "stage": "asset-generation",
-                "skill": "mermaid-animated-svg",
+                "skill": "mermaid",
                 "reason": "Build conventional definition and rule diagrams with explicit semantic reveal order.",
                 "output": "artifacts/images/a02-definition-diagram.svg and artifacts/images/a07-rule-summary.svg",
                 "outputPaths": [

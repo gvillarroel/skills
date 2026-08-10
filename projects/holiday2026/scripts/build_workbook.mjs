@@ -322,12 +322,12 @@ for (const category of categories) {
     sheet.getRange(`Y${firstDataRow}:AC${lastDataRow}`).format.wrapText = true;
     sheet.getRange(`A${firstDataRow}:X${lastDataRow}`).format.verticalAlignment = "center";
     sheet.getRange(`Y${firstDataRow}:AC${lastDataRow}`).format.verticalAlignment = "top";
-    sheet.getRange(`A${firstDataRow}:AG${lastDataRow}`).format.rowHeight = 48;
+    sheet.getRange(`A${firstDataRow}:AG${lastDataRow}`).format.rowHeight = 68;
   } else {
     sheet.getRange("A8:AG8").values = [["No child-permitted candidates were available in this build.", ...Array(32).fill(null)]];
     sheet.getRange("A8:AG8").format = { fill: "#F3E3C8", font: { color: palette.ink, italic: true } };
   }
-  setWidths(sheet, [7, 28, 21, 13, 26, 10, 12, 12, 24, 13, 11, 10, 13, 20, 15, 10, 10, 10, 11, 10, 9, 12, 11, 10, 45, 42, 34, 42, 42, 13, 30, 9, 16]);
+  setWidths(sheet, [7, 32, 34, 13, 28, 10, 12, 12, 25, 13, 11, 10, 13, 20, 15, 10, 10, 10, 11, 10, 9, 12, 11, 10, 52, 48, 42, 46, 46, 13, 30, 9, 16]);
   sheet.freezePanes.freezeRows(7);
   sheet.freezePanes.freezeColumns(2);
 }

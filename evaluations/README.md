@@ -10,9 +10,36 @@ Use `openai-codex/gpt-5.3-codex-spark` as the default forward-test model. Record
 - Store independent acceptance contracts under `evaluations/contracts/`.
 - Store compact, durable summaries directly under `evaluations/` or a skill-specific subdirectory.
 - Store raw prompts, copied workspaces, JSONL events, stdout, stderr, manifests, and generated artifacts under `evaluations/runs/`. This directory is ignored by Git.
+- Store reusable dataset definitions under `evaluations/datasets/<dataset-id>/`. Keep source notes, licenses, schemas, manifests, and transformation configuration versioned at the dataset root.
+- Store downloaded or captured source records under a dataset's `raw/` directory and derived rows, indexes, caches, or exports under its `processed/` directory. Both data directories are ignored by Git; only lightweight `README.md`, manifest, schema, config, and `.gitkeep` control files are eligible for versioning there.
 - Keep screenshots, rendered media, and dependency folders out of tracked evaluation paths.
 
 Every recorded result must identify the skill, case, date, model, command, required outputs, validators, pass/fail outcome, and failure classification. Link the durable result from the matching `SKILLS.md` validation note.
+
+### Canonical directory shape
+
+```text
+evaluations/
+|-- README.md
+|-- contracts/                 # Versioned evaluator-owned acceptance contracts
+|-- pi-prompts/                # Versioned reusable forward-test prompts
+|-- datasets/
+|   `-- <dataset-id>/
+|       |-- README.md          # Provenance, rights, scope, and regeneration notes
+|       |-- manifest.json      # Versioned identities, hashes, and source inventory
+|       |-- schema.json        # Optional versioned data contract
+|       |-- config.yaml        # Optional versioned transformation configuration
+|       |-- raw/               # Ignored downloaded or captured source data
+|       `-- processed/         # Ignored generated or normalized data
+|-- <skill-name>/              # Preferred home for grouped durable skill evidence
+|   `-- <case>-<date>.md
+|-- <skill>-<case>-<date>.md   # Supported historical flat summary
+`-- runs/                      # Ignored bulky, reproducible local runs
+```
+
+Do not reorganize historical flat summaries only for cosmetic consistency: their paths may be cited by `SKILLS.md` or release records. Put new multi-file evidence in the owning skill directory, and move an existing record only when all inbound references are updated in the same change.
+
+Keep generated data reproducible from the versioned controls. A dataset manifest should record the dataset ID, source identity or URL, retrieval date when applicable, license or usage constraints, hashes or immutable versions, schema version, transformation command, and expected output inventory. Do not place credentials, private source payloads, or large generated rows in a manifest.
 
 ## Release Gates
 

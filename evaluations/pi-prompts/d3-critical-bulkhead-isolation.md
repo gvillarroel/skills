@@ -1,11 +1,11 @@
 Create a self-contained standalone HTML file at exactly `bulkhead.html`.
 
-Read this exact pattern reference first: `skills/d3-animated-svg/references/patterns/bulkhead-isolation.md`.
+Read this exact pattern reference first: `skills/d3/references/patterns/bulkhead-isolation.md`.
 
 The only valid way to create the artifact is to run the bundled builder:
 
 ```powershell
-uv run --script skills/d3-animated-svg/scripts/build_critical_bulkhead_isolation.py bulkhead.html
+uv run --script skills/d3/scripts/build_critical_bulkhead_isolation.py bulkhead.html
 ```
 
 Do not hand-author a substitute artifact. Do not create a canvas, CSS-only demo, generic HTML card, or JavaScript-rendered empty SVG. After running the builder, inspect `bulkhead.html` and confirm it contains `<svg id="bulkhead-isolation"` and `data-pattern-id="d3-bulkhead-isolation"`.

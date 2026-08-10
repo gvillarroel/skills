@@ -1,0 +1,35 @@
+schemaVersion: 1
+
+search:
+  id: mermaid-hardening-20260810-v29-holdout-candidate-live
+  baselineSkill: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v5-canonical-candidate/development/generation-000/candidate-staging/visible-data-canonical-family/skills/mermaid
+  baselineCandidate: visible-data-canonical-family
+  outputDir: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v6-holdout-candidate-live
+  generation: 0
+
+harbor:
+  developmentJob: ../../../evaluations/runs/mermaid-hardening-20260809-v8/dataset-final-v6/holdout-job.yaml
+  holdoutJob: ../../../evaluations/runs/mermaid-hardening-20260809-v8/dataset-final-v6/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 1
+  requiredRewards:
+    routing: 1
+    palette: 1
+    visual_palette: 1
+    palette_influence: 1
+    render: 1
+    visual_fidelity: 1
+    fidelity: 1
+    metadata: 1
+  requiredEnv: []
+
+candidates:
+  - id: visible-data-canonical-family
+    skill: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v5-canonical-candidate/development/generation-000/candidate-staging/visible-data-canonical-family/skills/mermaid
+    parents: []
+    rationale: Run only the frozen selected candidate against the untouched V6 holdout so the two comparison jobs remain operationally isolated.
+
+promotion:
+  minimumMeanGain: 0
+  allowCaseRegressions: false
+  requireNoErrors: true

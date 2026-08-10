@@ -637,12 +637,12 @@ def build_visual_contract_fixture(project: Path) -> dict[str, Any]:
 
     asset_skills = [
         "imagegen",
-        "d3-animated-svg",
-        "mermaid-animated-svg",
+        "d3",
+        "mermaid",
         "echarts-animated-svg",
         "imagegen",
-        "d3-animated-svg",
-        "mermaid-animated-svg",
+        "d3",
+        "mermaid",
         "echarts-animated-svg",
     ]
     assets: list[dict[str, Any]] = []
@@ -4398,7 +4398,7 @@ def test_scaffold_manifest_duration(tmp: Path) -> dict[str, Any]:
             and bool(route.get("outputPaths"))
             for route in asset_manifest.get("skillRouting", [])
         )
-        and any(route.get("skill") == "mermaid-animated-svg" for route in asset_manifest.get("skillRouting", []))
+        and any(route.get("skill") == "mermaid" for route in asset_manifest.get("skillRouting", []))
         and manifest.get("toolchain") == asset_manifest.get("skillRouting")
     )
     scaffold_wireframe_ok = bool(

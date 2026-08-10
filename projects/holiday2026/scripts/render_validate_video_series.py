@@ -53,12 +53,44 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def clean_json_output(output: str) -> str | None:
+    """Return the last complete top-level JSON document in command output."""
+    stripped = output.strip()
+    if not stripped:
+        return None
+    try:
+        payload = json.loads(stripped)
+        return json.dumps(payload, indent=2, ensure_ascii=False) + "\n"
+    except json.JSONDecodeError:
+        pass
+
+    decoder = json.JSONDecoder()
+    documents = []
+    cursor = 0
+    while cursor < len(output):
+        openings = [position for token in ("{", "[") if (position := output.find(token, cursor)) >= 0]
+        if not openings:
+            break
+        start = min(openings)
+        try:
+            payload, consumed = decoder.raw_decode(output[start:])
+        except json.JSONDecodeError:
+            cursor = start + 1
+            continue
+        documents.append(payload)
+        cursor = start + consumed
+    if not documents:
+        return None
+    return json.dumps(documents[-1], indent=2, ensure_ascii=False) + "\n"
+
+
 def run(command: list[str], cwd: Path, *, report: Path | None = None, label: str = "command") -> str:
     result = subprocess.run(command, cwd=cwd, capture_output=True, text=True, check=False)
     combined = (result.stdout or "") + ("\n" + result.stderr if result.stderr else "")
     if report is not None:
         report.parent.mkdir(parents=True, exist_ok=True)
-        report.write_text(combined.rstrip() + "\n", encoding="utf-8")
+        report_text = clean_json_output(result.stdout or "") if report.suffix.lower() == ".json" else None
+        report.write_text(report_text or combined.rstrip() + "\n", encoding="utf-8")
     if result.returncode != 0:
         tail = combined[-5000:]
         raise RuntimeError(f"{label} failed with exit {result.returncode}:\n{tail}")

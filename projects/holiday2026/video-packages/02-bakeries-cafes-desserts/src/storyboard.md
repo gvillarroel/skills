@@ -6,7 +6,7 @@ Literal anchor: 7010 Brassfield Dr, Cumming
 
 - Viewer task: Locate the ranked field around home.
 - Visual: diagonal proximity map using asset a01-proximity-map.
-- Source anchor: https://www.vanillacafegelato.com/
+- Source anchor: https://peachcobblerfactory.com/location/673-alpharetta-ga/
 - Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
 - Transition: match cut axis with the route marker visible.
 - Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
@@ -15,7 +15,7 @@ Literal anchor: 7010 Brassfield Dr, Cumming
 
 - Viewer task: Inspect the image, read the decision signal, and follow the route marker.
 - Visual: asymmetric source proof using asset a02-top-1-source.
-- Source anchor: https://www.openstreetmap.org/node/12874339998
+- Source anchor: https://www.copacabanabakery.com/
 - Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
 - Transition: persistent object with the route marker visible.
 - Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
@@ -24,7 +24,7 @@ Literal anchor: 7010 Brassfield Dr, Cumming
 
 - Viewer task: Inspect the image, read the decision signal, and follow the route marker.
 - Visual: reverse editorial proof using asset a03-top-2-source.
-- Source anchor: https://www.scoopsicecream.com/
+- Source anchor: https://www.wheresthescoop.com/
 - Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
 - Transition: camera move with the route marker visible.
 - Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
@@ -33,7 +33,7 @@ Literal anchor: 7010 Brassfield Dr, Cumming
 
 - Viewer task: Inspect the image, read the decision signal, and follow the route marker.
 - Visual: full-bleed source proof using asset a04-top-3-source.
-- Source anchor: https://www.vampirepenguin.com/locations/cumminggeorgia
+- Source anchor: https://www.qamariacoffee.com/
 - Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
 - Transition: color handoff with the route marker visible.
 - Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
@@ -42,7 +42,7 @@ Literal anchor: 7010 Brassfield Dr, Cumming
 
 - Viewer task: Inspect the image, read the decision signal, and follow the route marker.
 - Visual: ranked comparison strip using asset a05-top-five.
-- Source anchor: https://www.sarahdonuts.com/
+- Source anchor: https://www.fluffyfluffy.com/locations/duluth
 - Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
 - Transition: spatial portal reveal with the route marker visible.
 - Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
@@ -51,7 +51,7 @@ Literal anchor: 7010 Brassfield Dr, Cumming
 
 - Viewer task: Inspect the image, read the decision signal, and follow the route marker.
 - Visual: preference profile chart using asset a06-preference-bars.
-- Source anchor: https://www.openstreetmap.org/node/11221413688
+- Source anchor: https://www.sweethutbakery.com/
 - Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
 - Transition: morph continuity with the route marker visible.
 - Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
@@ -60,7 +60,7 @@ Literal anchor: 7010 Brassfield Dr, Cumming
 
 - Viewer task: Inspect the image, read the decision signal, and follow the route marker.
 - Visual: decision matrix using asset a07-decision-board.
-- Source anchor: https://www.openstreetmap.org/way/1085221722
+- Source anchor: https://www.matchacafeatl.com/
 - Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
 - Transition: negative space cut with the route marker visible.
 - Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.
@@ -69,7 +69,7 @@ Literal anchor: 7010 Brassfield Dr, Cumming
 
 - Viewer task: Inspect the image, read the decision signal, and follow the route marker.
 - Visual: planner callback map using asset a08-planner-callback.
-- Source anchor: https://www.openstreetmap.org/node/13179023862
+- Source anchor: https://www.beardpapas.com/duluth
 - Motion: entrance reveal, readable hold, ranked emphasis, semantic handoff.
 - Transition: final callback hold with the route marker visible.
 - Validation: focal image is decoded and unclipped; a silent three-second sample shows object, action and result.

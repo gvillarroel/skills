@@ -60,8 +60,8 @@ Treat each result as a pipeline:
 
 ## Routing
 
-- Use `d3-animated-svg` when data binding, scales, projections, chart marks, or interactive quantitative exploration are the primary problem.
-- Use `mermaid-animated-svg` when Mermaid source notation and diagram geometry must be preserved.
+- Use `d3` when data binding, scales, projections, chart marks, or interactive quantitative exploration are the primary problem.
+- Use `mermaid` when Mermaid source notation and diagram geometry must be preserved.
 - Use `echarts-animated-svg` when animating existing ECharts SVG output.
 - Use `compose-synchronized-svg` when many semantic modules must share canonical business or system state.
 - Use this skill when the mechanism itself is procedural and can be expressed as `state = f(time, seed, parameters)`.

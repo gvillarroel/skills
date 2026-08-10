@@ -5,7 +5,7 @@ The artifact must be a self-contained standalone HTML file with one inline SVG n
 Use this exact builder command first:
 
 ```powershell
-uv run --script skills/d3-animated-svg/scripts/build_rotating_dot_rings.py rotating-dot-rings.html --gap-percent 0.07 --gap-center-degrees -48
+uv run --script skills/d3/scripts/build_rotating_dot_rings.py rotating-dot-rings.html --gap-percent 0.07 --gap-center-degrees -48
 ```
 
 Requirements:

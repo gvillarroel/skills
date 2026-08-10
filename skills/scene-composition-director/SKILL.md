@@ -50,8 +50,8 @@ If the user asks for both Markdown and JSON, make the Markdown readable by human
 ## Routing
 
 - Use this skill after `source-to-video-director` when source facts and shot contracts already exist and the missing layer is visual composition per scene.
-- Hand off implementation to `html-d3-anime-video-workflow`, `slidev-animejs`, `slidev-video`, `manim-svg-video`, `d3-animated-svg`, `echarts-animated-svg`, `mermaid-animated-svg`, or `threejs-animated-3d` only after the composition brief is clear.
-- Use `d3-composition-recomposer` or `d3-composition-evaluator` for D3/SVG-only armature conversion or critique. Use this skill when the unit is a whole scene or shot.
+- Hand off implementation to `html-d3-anime-video-workflow`, `slidev-animejs`, `slidev-video`, `manim-svg-video`, `d3`, `echarts-animated-svg`, `mermaid`, or `threejs-animated-3d` only after the composition brief is clear.
+- Use `d3` for D3/SVG-only armature conversion or critique. Use this skill when the unit is a whole scene or shot.
 
 ## Validation
 

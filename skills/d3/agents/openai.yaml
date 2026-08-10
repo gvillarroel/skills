@@ -1,0 +1,4 @@
+interface:
+  display_name: "D3"
+  short_description: "D3 visuals, animation, composition, and logos"
+  default_prompt: "Use $d3 to create and validate deterministic D3 work. Preserve every requested literal, use colorset1 by default or colorset2 only for explicit extended color, use the visual contract builder for supported bars/networks/logos, and use the evaluation-report builder for composition audits."

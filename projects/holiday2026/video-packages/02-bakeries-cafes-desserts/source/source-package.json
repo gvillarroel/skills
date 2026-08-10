@@ -12,15 +12,15 @@
   "literalAnchors": [
     "7010 Brassfield Dr, Cumming",
     "Bakeries, Cafes & Desserts",
-    "Vanilla Café Gelato"
+    "The Peach Cobbler Factory — Alpharetta"
   ],
   "facts": [
     {
       "id": "f01",
       "beatId": "b01",
       "time": "0:00-0:06",
-      "claim": "Every option allows children. From 100 possibilities, culture comes first. The claim is backed by the ranked dataset and linked official source.",
-      "sourceUrl": "https://www.vanillacafegelato.com/",
+      "claim": "All 117 options allow children. Culture comes first. The claim is backed by the ranked dataset and linked official source.",
+      "sourceUrl": "https://peachcobblerfactory.com/location/673-alpharetta-ga/",
       "rightsStatus": "official-source",
       "verificationStatus": "verified"
     },
@@ -28,8 +28,8 @@
       "id": "f02",
       "beatId": "b02",
       "time": "0:06-0:12",
-      "claim": "The leader is Vanilla Café Gelato, scoring 4.3 for culture. The claim is backed by the ranked dataset and linked official source.",
-      "sourceUrl": "https://www.openstreetmap.org/node/12874339998",
+      "claim": "Peach Cobbler Factory leads on culture. The claim is backed by the ranked dataset and linked official source.",
+      "sourceUrl": "https://www.copacabanabakery.com/",
       "rightsStatus": "official-source",
       "verificationStatus": "verified"
     },
@@ -37,8 +37,8 @@
       "id": "f03",
       "beatId": "b03",
       "time": "0:12-0:18",
-      "claim": "Second, Jeremia's Italian Ice brings Italy. The claim is backed by the ranked dataset and linked official source.",
-      "sourceUrl": "https://www.scoopsicecream.com/",
+      "claim": "Second, Copacabana Brazilian Bakery brings Brazil. The claim is backed by the ranked dataset and linked official source.",
+      "sourceUrl": "https://www.wheresthescoop.com/",
       "rightsStatus": "official-source",
       "verificationStatus": "verified"
     },
@@ -46,8 +46,8 @@
       "id": "f04",
       "beatId": "b04",
       "time": "0:18-0:24",
-      "claim": "Third, Scoops Sugar Hill: cost score 4.6. The claim is backed by the ranked dataset and linked official source.",
-      "sourceUrl": "https://www.vampirepenguin.com/locations/cumminggeorgia",
+      "claim": "Third, Where's the Scoop? is a low-cost choice. The claim is backed by the ranked dataset and linked official source.",
+      "sourceUrl": "https://www.qamariacoffee.com/",
       "rightsStatus": "official-source",
       "verificationStatus": "verified"
     },
@@ -55,8 +55,8 @@
       "id": "f05",
       "beatId": "b05",
       "time": "0:24-0:30",
-      "claim": "The top five keep that same culture, world, then price order. The claim is backed by the ranked dataset and linked official source.",
-      "sourceUrl": "https://www.sarahdonuts.com/",
+      "claim": "The top five follow culture, world, then price. The claim is backed by the ranked dataset and linked official source.",
+      "sourceUrl": "https://www.fluffyfluffy.com/locations/duluth",
       "rightsStatus": "official-source",
       "verificationStatus": "verified"
     },
@@ -64,8 +64,8 @@
       "id": "f06",
       "beatId": "b06",
       "time": "0:30-0:36",
-      "claim": "These bars compare culture, international experience, and affordability for eight leaders. The claim is backed by the ranked dataset and linked official source.",
-      "sourceUrl": "https://www.openstreetmap.org/node/11221413688",
+      "claim": "Bars compare culture, world experience, and price. The claim is backed by the ranked dataset and linked official source.",
+      "sourceUrl": "https://www.sweethutbakery.com/",
       "rightsStatus": "official-source",
       "verificationStatus": "verified"
     },
@@ -73,8 +73,8 @@
       "id": "f07",
       "beatId": "b07",
       "time": "0:36-0:42",
-      "claim": "Choose the overall leader, strongest culture, world experience, or lowest cost. The claim is backed by the ranked dataset and linked official source.",
-      "sourceUrl": "https://www.openstreetmap.org/way/1085221722",
+      "claim": "Choose the leader, culture, world experience, or lowest cost. The claim is backed by the ranked dataset and linked official source.",
+      "sourceUrl": "https://www.matchacafeatl.com/",
       "rightsStatus": "official-source",
       "verificationStatus": "verified"
     },
@@ -82,8 +82,8 @@
       "id": "f08",
       "beatId": "b08",
       "time": "0:42-0:48",
-      "claim": "Open the Excel for all 50 child-permitted choices, conditions, directions, and sources. The claim is backed by the ranked dataset and linked official source.",
-      "sourceUrl": "https://www.openstreetmap.org/node/13179023862",
+      "claim": "Excel lists all 50 choices and sources. The claim is backed by the ranked dataset and linked official source.",
+      "sourceUrl": "https://www.beardpapas.com/duluth",
       "rightsStatus": "official-source",
       "verificationStatus": "verified"
     }

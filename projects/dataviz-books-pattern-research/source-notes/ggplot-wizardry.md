@@ -25,7 +25,7 @@ Official source: https://github.com/z3tt/outlierconf2021
 
 ## Pattern Targets
 
-- `skills/d3-animated-svg/references/pattern-selection-contracts.md`: Annotation And Finish, Distribution Pattern Choice.
+- `skills/d3/references/pattern-selection-contracts.md`: Annotation And Finish, Distribution Pattern Choice.
 - `pattern-opportunities.md`: Annotation And Direct Label Polish and Distribution Alternatives Composite.
 
 ## Copyright And Use Boundary

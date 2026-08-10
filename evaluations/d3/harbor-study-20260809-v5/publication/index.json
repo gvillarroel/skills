@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": true,
+  "ledger": {
+    "eventCount": 32,
+    "headSha256": "16a8f7b2159928ef88055aab54ed5b744ecdcb28facacd648d953b81863d43db"
+  },
+  "progress": {
+    "completedCount": 5,
+    "completionPercent": 100.0,
+    "stageCount": 5
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-medium-3x-browser-palette-release-v5",
+    "createdAt": "2026-08-10T01:24:58Z",
+    "studyId": "d3-unified-20260809-v5",
+    "title": "Unified D3 skill Harbor release evaluation"
+  }
+}

@@ -50,10 +50,10 @@ RIGHTS_STATUSES = {
 }
 SPECIALIST_ASSET_SKILLS = {
     "browser:control-in-app-browser",
-    "d3-animated-svg",
+    "d3",
     "echarts-animated-svg",
     "imagegen",
-    "mermaid-animated-svg",
+    "mermaid",
     "plantuml-colorset-renderer",
     "playwright",
     "repo-native",

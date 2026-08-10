@@ -27,7 +27,7 @@ import requests
 HOME_ADDRESS = "7010 Brassfield Dr, Cumming, GA 30041"
 HOME_LAT = 34.079099895469
 HOME_LON = -84.183167025532
-CHECKED_DATE = "2026-07-11"
+CHECKED_DATE = "2026-07-28"
 VACATION_START = date(2026, 7, 11)
 VACATION_END = date(2026, 7, 20)
 
@@ -104,13 +104,17 @@ NATION_CULTURE_PATTERNS = [
     ("Thailand", 5.0, ("thai", "thailand")),
     ("Vietnam", 5.0, ("vietnamese", "vietnam", "pho", "banh mi")),
     ("Persia / Iran", 5.0, ("persian", "iranian", "rumi s kitchen")),
+    ("Yemen", 5.0, ("yemeni", "yemen", "adeni", "qishr", "mufawaar")),
+    ("Palestine", 5.0, ("palestinian", "palestine", "booza", "kunafa")),
+    ("South Africa", 5.0, ("south african", "malva pudding", "milk tart", "rooibos")),
+    ("Taiwan / Hong Kong", 5.0, ("taiwanese", "taiwan", "hong kong", "cantonese")),
     ("Mexico / Latin America", 5.0, ("mexican", "latin", "taqueria", "plaza fiesta", "mariachi")),
     ("France", 4.8, ("french", "france", "patisserie", "macaron", "crepe", "croissant")),
-    ("Italy", 4.5, ("italian", "italy", "gelato", "venetian")),
+    ("Italy", 4.5, ("italian", "italy", "venetian")),
     ("Germany / Bavaria", 5.0, ("german", "germany", "bavarian", "bavaria")),
     ("Greece / Mediterranean", 4.7, ("greek", "greece", "mediterranean")),
-    ("Middle East", 4.7, ("middle eastern", "levant", "arabic", "halal")),
-    ("Africa", 4.8, ("ethiopian", "african diaspora", "pan african")),
+    ("Middle East", 4.7, ("middle eastern", "levant", "arabic", "halal", "baklava", "knafeh")),
+    ("Africa", 4.8, ("ethiopian", "african diaspora", "pan african", "south african")),
     ("Caribbean", 4.8, ("caribbean", "jamaican", "cuban", "puerto rican")),
     ("Brazil", 5.0, ("brazilian", "brazil", "churrascaria")),
     ("Tibet / Buddhism", 5.0, ("tibetan", "buddhist", "buddhism", "drepung")),
@@ -418,6 +422,8 @@ def nation_culture_tags(row: dict[str, Any]) -> tuple[list[str], float]:
             filtered_phrases = tuple(phrase for phrase in phrases if phrase != "indian")
         if label == "Greece / Mediterranean" and "greek revival" in text:
             filtered_phrases = tuple(phrase for phrase in phrases if phrase != "greek")
+        if label == "Italy" and "italian ice" in text:
+            filtered_phrases = tuple(phrase for phrase in phrases if phrase != "italian")
         if label in {"Cherokee Nation", "Indigenous nations"} and row.get("category_id") not in {
             "museums-science-history",
             "arts-culture-spiritual-heritage",
@@ -496,6 +502,20 @@ def infer_cultural_priority(row: dict[str, Any], international_score: float) -> 
             score = 4.6
         elif "festival" in text:
             score = 3.8
+    elif category in {"family-restaurants", "bakeries-cafes-desserts"}:
+        if any(marker in text for marker in (
+            "georgia peach tradition",
+            "peach state food heritage",
+            "southern dessert heritage",
+            "southern food heritage",
+        )):
+            score = 4.8
+        elif any(marker in text for marker in (
+            "culinary heritage",
+            "traditional culinary technique",
+            "cultural dessert experience",
+        )):
+            score = max(score, 4.5)
     if international_score >= 4.5 and category in {"family-restaurants", "bakeries-cafes-desserts"}:
         score = max(score, 4.3)
     return round(max(1.0, min(5.0, score)), 2)

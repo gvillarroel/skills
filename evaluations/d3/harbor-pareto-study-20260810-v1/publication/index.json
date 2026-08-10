@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 10,
+    "headSha256": "c4bda514e40316f76708774a80b5190ab124ccfc9bb79d2b445bdc2cd3679043"
+  },
+  "progress": {
+    "completedCount": 0,
+    "completionPercent": 0.0,
+    "stageCount": 5
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-2x-semantic90-bundle10-v1",
+    "createdAt": "2026-08-10T12:33:25Z",
+    "studyId": "d3-pareto-20260810-v1",
+    "title": "D3 unified-skill Pareto evolution"
+  }
+}

@@ -1,8 +1,8 @@
 Use the loaded `d3-logo-design` skill to generate and validate one deterministic standalone logo studio that exercises the new Lorenz-attractor mathematical mechanism.
 
-Work only from this prompt and the loaded skill at `skills/d3-logo-design/`. Treat the skill directory as read-only. Write only under `outputs/`. Do not inspect parent directories, sibling skills, repository documentation, evaluation files, acceptance examples, hidden context, or the network. Do not install packages or substitute tools.
+Work only from this prompt and the loaded skill at `skills/d3/`. Treat the skill directory as read-only. Write only under `outputs/`. Do not inspect parent directories, sibling skills, repository documentation, evaluation files, acceptance examples, hidden context, or the network. Do not install packages or substitute tools.
 
-Immediately after reading this prompt, read `skills/d3-logo-design/SKILL.md`. There is no skill README: do not probe `README.md`, list directories, or run either script with `--help`. The two exact commands below contain every required argument.
+Immediately after reading this prompt, read `skills/d3/SKILL.md`. There is no skill README: do not probe `README.md`, list directories, or run either script with `--help`. The two exact commands below contain every required argument.
 
 Create these exact deliverables:
 
@@ -23,8 +23,8 @@ Use only the exact bundled colorset1 and colorset2 tokens. Do not add gradients,
 Run these exact commands in order:
 
 ```bash
-uv run --script skills/d3-logo-design/scripts/build_logo_studio.py --output outputs/lorenz-attractor-logo.html --brand "CHAOS FIELD" --tagline "Order inside motion" --colorset colorset2 --pattern d3-logo-lorenz-attractor --texture d3-logo-topographic-lines --font monospace --density 1.1 --curvature 0.68 --scale 1 --rotation 0 --texture-strength 0.34 --seed 171
-uv run --script skills/d3-logo-design/scripts/validate_logo_artifact.py outputs/lorenz-attractor-logo.html --expect-patterns 90 --expect-textures 10 --expect-compositions 90 --require-colorset colorset2 --json-report outputs/lorenz-attractor-evidence.json
+uv run --script skills/d3/scripts/build_logo_studio.py --output outputs/lorenz-attractor-logo.html --brand "CHAOS FIELD" --tagline "Order inside motion" --colorset colorset2 --pattern d3-logo-lorenz-attractor --texture d3-logo-topographic-lines --font monospace --density 1.1 --curvature 0.68 --scale 1 --rotation 0 --texture-strength 0.34 --seed 171
+uv run --script skills/d3/scripts/validate_logo_artifact.py outputs/lorenz-attractor-logo.html --expect-patterns 90 --expect-textures 10 --expect-compositions 90 --require-colorset colorset2 --json-report outputs/lorenz-attractor-evidence.json
 ```
 
 Make the validator write its own JSON report to the exact evidence path; do not hand-author or post-process that report. Read the generated report and fail the task if any required value differs:

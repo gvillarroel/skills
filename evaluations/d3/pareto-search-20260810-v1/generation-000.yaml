@@ -1,0 +1,38 @@
+schemaVersion: 1
+
+search:
+  id: d3-pareto-20260810-v1
+  baselineSkill: ../../runs/d3-pareto-20260810-v1/candidates/baseline/d3
+  baselineCandidate: baseline
+  outputDir: ../../runs/d3-pareto-20260810-v1/search
+  generation: 0
+
+harbor:
+  developmentJob: ../../runs/d3-pareto-20260810-v1-dataset/development-job.yaml
+  holdoutJob: ../../runs/d3-pareto-20260810-v1-dataset/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 0.9
+  requiredRewards:
+    semantic_reward: 1
+  requiredEnv: []
+
+candidates:
+  - id: baseline
+    skill: ../../runs/d3-pareto-20260810-v1/candidates/baseline/d3
+    parents: []
+    rationale: Frozen unified D3 runtime baseline.
+  - id: concise-entrypoint
+    skill: ../../runs/d3-pareto-20260810-v1/candidates/concise-entrypoint/d3
+    parents:
+      - baseline
+    rationale: Replace duplicated entrypoint guidance with a route-first progressive-disclosure contract while preserving every runtime resource.
+  - id: lean-runtime
+    skill: ../../runs/d3-pareto-20260810-v1/candidates/lean-runtime/d3
+    parents:
+      - concise-entrypoint
+    rationale: Preserve all 238 compact pattern recipes and core generators while removing runtime-only gallery maintenance, duplicated routing references, and tests that belong in repository evaluation.
+
+promotion:
+  minimumMeanGain: 0.01
+  allowCaseRegressions: false
+  requireNoErrors: true

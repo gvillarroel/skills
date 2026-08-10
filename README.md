@@ -43,8 +43,8 @@ This table highlights current skill status; `SKILLS.md` is authoritative.
 
 | Skill | Status | Use When |
 | --- | --- | --- |
-| [mermaid-animated-svg](skills/mermaid-animated-svg/SKILL.md) | `done` | Render Mermaid diagrams to static and animated SVG while preserving Mermaid geometry. |
-| [d3-animated-svg](skills/d3-animated-svg/SKILL.md) | `done` | Build bespoke D3-generated SVG visualizations and galleries. |
+| [mermaid](skills/mermaid/SKILL.md) | `done` | Select, create, style, render, and animate Mermaid diagrams with colorset1 by default or extended colorset2 on request. |
+| [d3](skills/d3/SKILL.md) | `validating` | Create, animate, inspect, recompose, and validate D3 visuals and parametric SVG logos with colorset1 by default. |
 | [procedural-svg-animation](skills/procedural-svg-animation/SKILL.md) | `done` | Build deterministic standalone SVG motion systems from reusable procedural techniques. |
 | [echarts-animated-svg](skills/echarts-animated-svg/SKILL.md) | `done` | Animate already-rendered Apache ECharts SVG output. |
 | [animated-svg-to-gif](skills/animated-svg-to-gif/SKILL.md) | `done` | Convert animated SVG assets into browser-rendered GIFs. |

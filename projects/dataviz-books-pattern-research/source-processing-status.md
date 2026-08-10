@@ -2,7 +2,7 @@
 
 This tracker records which downloaded or mirrored book sources have been reviewed and assimilated into current reusable pattern guidance.
 
-`processed` means the source was inspected locally, useful non-derivative guidance was summarized in `source-notes/`, and the reusable guidance was folded into `skills/d3-animated-svg/references/pattern-selection-contracts.md` or recorded as a future pattern opportunity.
+`processed` means the source was inspected locally, useful non-derivative guidance was summarized in `source-notes/`, and the reusable guidance was folded into `skills/d3/references/pattern-selection-contracts.md` or recorded as a future pattern opportunity.
 
 | Source | Status | Local evidence | Assimilation target |
 | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ This tracker records which downloaded or mirrored book sources have been reviewe
 
 ## Current Assimilation
 
-The first runtime promotion is `skills/d3-animated-svg/references/pattern-selection-contracts.md`. It now includes:
+The first runtime promotion is `skills/d3/references/pattern-selection-contracts.md`. It now includes:
 
 - Chart purpose selection before picking a chart family.
 - Explicit visual grammar fields for mappings, transforms, scales, ordering, interaction, and accessibility.

@@ -32,9 +32,38 @@ __pycache__/
 /examples/
 dist/
 
-# Local evaluation runs
+# Local evaluation runs and generated datasets
 /results/
 /evaluations/runs/
+/evaluations/**/raw/**
+/evaluations/**/processed/**
+
+# Keep lightweight dataset documentation and control metadata versionable even
+# when it lives beside ignored evaluation data.
+!/evaluations/**/raw/**/
+!/evaluations/**/processed/**/
+!/evaluations/**/raw/**/.gitkeep
+!/evaluations/**/processed/**/.gitkeep
+!/evaluations/**/raw/**/README.md
+!/evaluations/**/processed/**/README.md
+!/evaluations/**/raw/**/manifest.json
+!/evaluations/**/processed/**/manifest.json
+!/evaluations/**/raw/**/manifest.yaml
+!/evaluations/**/processed/**/manifest.yaml
+!/evaluations/**/raw/**/manifest.yml
+!/evaluations/**/processed/**/manifest.yml
+!/evaluations/**/raw/**/schema.json
+!/evaluations/**/processed/**/schema.json
+!/evaluations/**/raw/**/*.schema.json
+!/evaluations/**/processed/**/*.schema.json
+!/evaluations/**/raw/**/config.json
+!/evaluations/**/processed/**/config.json
+!/evaluations/**/raw/**/config.yaml
+!/evaluations/**/processed/**/config.yaml
+!/evaluations/**/raw/**/config.yml
+!/evaluations/**/processed/**/config.yml
+!/evaluations/**/raw/**/config.toml
+!/evaluations/**/processed/**/config.toml
 
 # Project-scoped generated artifacts
 /projects/*/artifacts/

@@ -97,7 +97,7 @@ Requirements:
 - Use the skill's visual tokens and portable CSS or SVG-native animation.
 - Include a reduced-motion fallback that keeps the final state visible.
 - Keep labels readable at every dataset size; for large variants, label only representative or grouped marks instead of every mark.
-- Treat the copied `skills/d3-animated-svg/` directory as read-only. Do not write into it.
+- Treat the copied `skills/d3/` directory as read-only. Do not write into it.
 - Do not read files outside the current workspace.
 
 Return only a brief completion note after writing the file.

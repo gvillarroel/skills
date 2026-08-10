@@ -1,4 +1,4 @@
-Use the loaded evaluator skill. Treat `skills/d3-composition-evaluator/` as read-only. Create exactly `evaluation.md` in the workspace root. Do not write elsewhere and do not inspect parent directories, sibling skills, repository fixtures, or evaluation contracts.
+Use the loaded evaluator skill. Treat `skills/d3/` as read-only. Create exactly `evaluation.md` in the workspace root. Do not write elsewhere and do not inspect parent directories, sibling skills, repository fixtures, or evaluation contracts.
 
 Evaluate radial variant `d3-composition-radial-force-network` from this SVG:
 

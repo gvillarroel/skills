@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 18,
+    "headSha256": "c60968d19069ca64da072e5a7a17772a3002de4d3e7e4ebb0479cc08e706f446"
+  },
+  "progress": {
+    "completedCount": 1,
+    "completionPercent": 25.0,
+    "stageCount": 4
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-medium-3x-browser-palette-observable-v4",
+    "createdAt": "2026-08-10T01:02:55Z",
+    "studyId": "d3-unified-20260809-v4",
+    "title": "Unified D3 skill Harbor evaluation v4"
+  }
+}

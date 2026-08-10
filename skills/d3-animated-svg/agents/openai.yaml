@@ -1,4 +1,0 @@
-interface:
-  display_name: "D3 Animated SVG"
-  short_description: "Animated and style-checked D3 SVG beyond Mermaid"
-  default_prompt: "Use $d3-animated-svg to choose, create, adapt, style-compare, and validate an animated D3 SVG visualization or visual pattern that complements Mermaid diagrams."

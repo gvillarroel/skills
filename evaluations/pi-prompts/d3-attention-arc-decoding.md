@@ -16,5 +16,5 @@ Requirements:
 - Include SVG-native animation, not D3 transitions that disappear from exported markup.
 - Expose `data-pattern-id="d3-attention-arc-decoding"` on the SVG.
 - Expose `data-decode-step`, `data-source-token`, `data-target-token`, and `data-attention-weight` on attention arc paths.
-- Do not read or write inside `skills/d3-animated-svg/assets/examples/`.
+- Do not read or write inside `skills/d3/assets/examples/`.
 - Do not use CDN scripts, remote fonts, or network resources.

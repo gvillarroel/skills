@@ -1,0 +1,935 @@
+{
+  "metadata": {
+    "project": "Holiday 2026 Family Guide",
+    "reference_address": "7010 Brassfield Dr, Cumming, GA 30041",
+    "checked_date": "2026-07-28",
+    "purpose": "Curated family dessert experiences added after the user prioritized cultural learning, experiences from different nations, low prices, and unusual places similar to Fluffy Fluffy and Georgia Peach World.",
+    "methods": [
+      "Verified current operation, address, menu identity, or hours with official venue pages and current direct-order or local destination sources.",
+      "Required children to be allowed; normal dessert venues are retained only when no adult-only restriction was found.",
+      "Recorded practical family-of-four sampling costs and highlighted shareable or low-cost starter items.",
+      "Separated the nearby Peach Cobbler Factory from the coastal Georgia Peach World trip so a local outing is not confused with an overnight excursion."
+    ]
+  },
+  "candidates": [
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "The Peach Cobbler Factory — Alpharetta",
+      "address": "4915 Windward Parkway, Suite 110",
+      "city": "Alpharetta",
+      "state": "GA",
+      "zip": "30004",
+      "official_url": "https://peachcobblerfactory.com/location/673-alpharetta-ga/",
+      "corroborating_url": "https://www.awesomealpharetta.com/dine/restaurant/the-peach-cobbler-factory/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$$",
+      "cuisine_or_specialty": "Southern dessert heritage; peach cobbler, banana pudding, dessert flights and cobbler shakes",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 3,
+      "estimated_visit_hours": 1,
+      "cost_note": "Individual cobblers are about $12 on current delivery menus; sharing a dessert flight or two desserts keeps a tasting for four near $25-$35 before tax.",
+      "why_good": "A nearby Peach State food heritage experience where the whole concept revolves around cobblers, puddings and oversized Southern sweets.",
+      "caveat": "Very sweet and not the cheapest single-serving stop; share portions and verify pickup pricing because delivery prices can be higher.",
+      "age_notes": "Children are allowed; the bright counter-service dessert format works well for a family visit.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://peachcobblerfactory.com/location/673-alpharetta-ga/",
+          "method": "Official Alpharetta location-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://www.awesomealpharetta.com/dine/restaurant/the-peach-cobbler-factory/",
+          "method": "Official local destination-directory page capture",
+          "rights_note": "Editorial source capture; retain page attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Georgia Peach World — Richmond Hill",
+      "eligible": false,
+      "eligibility_reason": "Not local to Cumming; retained only in day trips to avoid presenting a five-hour drive as a nearby dessert outing.",
+      "address": "4090 US-17",
+      "city": "Richmond Hill",
+      "state": "GA",
+      "zip": "31324",
+      "official_url": "https://www.georgiapeachworld.com/",
+      "corroborating_url": "https://exploregeorgia.org/townsend/agritourism/farm-to-table/georgia-peach-world",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "premium trip",
+      "cuisine_or_specialty": "Georgia peach tradition; peach cobbler, peach ice cream, slushies, lemonade, taffy, fudge, preserves and sauces",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 2,
+      "estimated_visit_hours": 1,
+      "cost_note": "Entry and parking are free and small treats start around $4-$6, but the roughly five-hour drive each way makes this an expensive coastal add-on rather than a cheap local dessert run.",
+      "why_good": "This is the clearest 'peach everything' Peach State food heritage stop: fresh cobbler, soft-serve, drinks, candy and pantry products centered on Georgia's signature fruit.",
+      "caveat": "Not near Cumming. Combine it with Savannah, Richmond Hill, Darien or a coastal overnight; do not drive five hours only for one dessert.",
+      "age_notes": "All ages are welcome; Explore Georgia lists it as family friendly with free entry and public restrooms.",
+      "indoor_outdoor": "mixed",
+      "image_candidates": [
+        {
+          "page_url": "https://www.georgiapeachworld.com/pages/fresh-served-daily",
+          "method": "Official product-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://commons.wikimedia.org/wiki/File:Georgia_Peach_World_South_Bound_Exit_58.jpg",
+          "method": "Wikimedia Commons licensed image page",
+          "rights_note": "Michael Rivera, CC BY-SA 4.0; attribute, link license and share adaptations alike."
+        },
+        {
+          "page_url": "https://commons.wikimedia.org/wiki/File:Peach_Cobbler.jpg",
+          "method": "Wikimedia Commons illustrative image page",
+          "rights_note": "Ralph H. Daily, CC BY 2.0; illustrative cobbler image, not the venue's exact serving."
+        }
+      ]
+    },
+    {
+      "category_id": "day-trips-unusual-experiences",
+      "name": "Georgia Peach World — Richmond Hill",
+      "address": "4090 US-17",
+      "city": "Richmond Hill",
+      "state": "GA",
+      "zip": "31324",
+      "official_url": "https://www.georgiapeachworld.com/",
+      "corroborating_url": "https://exploregeorgia.org/townsend/agritourism/farm-to-table/georgia-peach-world",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "premium trip",
+      "cuisine_or_specialty": "Coastal Georgia road-trip stop and Peach State culinary heritage experience",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 2,
+      "estimated_visit_hours": 1,
+      "cost_note": "Free entry and parking, but transportation and a likely overnight dominate the total family cost.",
+      "why_good": "A memorable cultural food stop to pair with Savannah or the Georgia coast, with nearly every sweet, drink and pantry item built around peaches.",
+      "caveat": "About five hours each way from Cumming; plan it only as part of a multi-day coastal itinerary.",
+      "age_notes": "All ages are welcome and the tourism listing identifies the venue as family friendly.",
+      "indoor_outdoor": "mixed",
+      "image_candidates": [
+        {
+          "page_url": "https://www.georgiapeachworld.com/pages/fresh-served-daily",
+          "method": "Official product-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://commons.wikimedia.org/wiki/File:Georgia_Peach_World_South_Bound_Exit_58.jpg",
+          "method": "Wikimedia Commons licensed image page",
+          "rights_note": "Michael Rivera, CC BY-SA 4.0; attribution and ShareAlike apply."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Fluffy Fluffy — Duluth",
+      "address": "2180 Pleasant Hill Road, Suite B4",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.fluffyfluffy.com/locations/duluth",
+      "corroborating_url": "https://www.toasttab.com/local/order/fluffy-fluffy-duluth-new-2180-pleasant-hill-road/r-78c7c3bd-74db-4965-8862-7207807ecfab",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Japanese soufflé pancakes, croffles and light café desserts using a traditional culinary technique",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1.25,
+      "cost_note": "Croffles are roughly $5-$7.50 and pancake plates about $14-$16; a family can share two pancake plates and one or two smaller items for about $35-$45.",
+      "why_good": "The pancakes rise into tall, jiggly stacks, so the preparation is part of the cultural dessert experience and fun for children to watch.",
+      "caveat": "Soufflé pancakes are made to order and can require a wait; portions are best shared if keeping the cost low.",
+      "age_notes": "Children are allowed; the visual, shareable desserts are especially family friendly.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://images.squarespace-cdn.com/content/v1/5b196ee731d4df831f0acadd/1735404912855-HEUMZCVQTH28OZCL8CZR/4L8A0525.jpg",
+          "method": "Original Duluth soufflé-pancake photo published by Atlanta Coffee Shops",
+          "rights_note": "Editorial source image; retain Atlanta Coffee Shops attribution."
+        },
+        {
+          "page_url": "https://www.fluffyfluffy.com/locations/duluth",
+          "method": "Official Duluth location-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://www.atlantacoffeeshops.com/fluffy-fluffy-dessert-cafe",
+          "method": "Local editorial page with original photos of the Duluth café and its soufflé pancakes",
+          "rights_note": "Editorial source capture; retain Atlanta Coffee Shops attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "The Creek Café + Gelato",
+      "address": "11890 Douglas Road, Suite 101",
+      "city": "Johns Creek",
+      "state": "GA",
+      "zip": "30005",
+      "official_url": "https://www.thecreekjc.com/",
+      "corroborating_url": "https://www.thecreekjc.com/menu",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "South African family café; malva pudding, milk tart, rooibos, savory pies and gelato",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "Gelato starts at $5.75; milk tart is $8.50 and malva pudding with gelato $9.25. Four people can share two South African desserts plus scoops for about $25-$35.",
+      "why_good": "A South African immigrant family's community café, offering a genuine culinary heritage experience only a few minutes from home.",
+      "caveat": "Milk tart and malva pudding rotate by week; check the menu or call before going specifically for one.",
+      "age_notes": "Children are allowed; the owners explicitly describe a welcoming family and after-school community atmosphere.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.thecreekjc.com/about-us",
+          "method": "Official family-story page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://www.thecreekjc.com/menu",
+          "method": "Official menu-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Rose Valley Sweets",
+      "address": "6000 Medlock Bridge Parkway, Suite B100",
+      "city": "Johns Creek",
+      "state": "GA",
+      "zip": "30022",
+      "official_url": "https://www.rosevalleysweets.com/",
+      "corroborating_url": "https://visitjohnscreek.com/dining/rose-valley-sweets/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "Persian bakery and coffee shop; saffron ice cream, rose water, pistachio, cardamom and high tea",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "Saffron ice cream is about $7 per half pound and a tasting combo about $12; a Persian tea set for four to six is about $26. Too Good To Go surprise bags sometimes appear near $5.",
+      "why_good": "A close, child-friendly Persian culinary heritage experience built around rose, saffron, pistachio and cardamom rather than familiar American flavors.",
+      "caveat": "High tea costs much more than a quick pastry tasting and may need advance arrangements; verify current package details.",
+      "age_notes": "Children are allowed; the official site explicitly mentions kid-friendly options and easy parking.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.rosevalleysweets.com/",
+          "method": "Official venue-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://visitjohnscreek.com/dining/rose-valley-sweets/",
+          "method": "Official destination-directory capture",
+          "rights_note": "Editorial source capture; retain page attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Copacabana Brazilian Bakery",
+      "address": "4005 Old Milton Parkway",
+      "city": "Alpharetta",
+      "state": "GA",
+      "zip": "30022",
+      "official_url": "https://www.copacabanabakery.com/",
+      "corroborating_url": "https://www.copacabanabakery.com/foodmenu",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Brazilian bakery and market; brigadeiro, beijinho, passion-fruit mousse, pão de queijo and pamonha",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 5,
+      "estimated_visit_hours": 1,
+      "cost_note": "Pão de queijo is about $0.69, brigadeiro and beijinho about $3.99, and mousse about $4.99, making a varied family tasting possible near $20-$30.",
+      "why_good": "A low-cost Brazilian culinary heritage stop where the bakery, savory counter and small grocery section make the visit feel broader than a single dessert.",
+      "caveat": "Some menu items are savory meals rather than sweets; ask the counter to build a small mixed tasting and confirm allergens.",
+      "age_notes": "Children are allowed; casual counter service and many small shareable bites suit families.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.copacabanabakery.com/",
+          "method": "Official venue-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://www.copacabanabakery.com/foodmenu",
+          "method": "Official menu-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Qamaria Yemeni Coffee",
+      "address": "2645 North Berkeley Lake Road NW, Unit 221",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.qamariacoffee.com/",
+      "corroborating_url": "https://www.toasttab.com/local/order/qamaria-yemeni-coffee-duluth-ga",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Yemeni coffeehouse; qishr, Adeni chai, cardamom coffee, honeycomb bread, baklava and rose desserts",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "Traditional drinks are generally about $5-$8; a family can share pastries and order non-coffee drinks or hot cocoa for roughly $25-$35.",
+      "why_good": "A family-friendly Yemeni culinary heritage experience that connects coffee history with cardamom, ginger, cinnamon and social café traditions.",
+      "caveat": "Many signature drinks contain caffeine and some desserts sell out; choose children’s drinks carefully and verify current stock.",
+      "age_notes": "Children are allowed; the current direct-order page explicitly labels the Duluth location family friendly.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.qamariacoffee.com/",
+          "method": "Official brand-story page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://www.toasttab.com/local/order/qamaria-yemeni-coffee-duluth-ga",
+          "method": "Current direct-order menu capture",
+          "rights_note": "Editorial menu evidence; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "WowBooza",
+      "address": "1630 Pleasant Hill Road, Suite 170",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://wowbooza.com/",
+      "corroborating_url": "https://www.restaurantji.com/ga/duluth/wowbooza-/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "Palestinian-style stretchy booza ice cream; mastic, saffron rose, kunafa, baklava and Dubai chocolate",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "Plan roughly $25-$45 for four people sampling ice cream and one pastry; exact current prices vary by flavor and portion.",
+      "why_good": "The chewy, elastic texture created with mastic makes this one of the most different Palestinian cultural dessert experiences near Cumming.",
+      "caveat": "The shop opens later than many bakeries and can stay open past midnight; visit earlier with children and confirm same-day hours.",
+      "age_notes": "Children are allowed; it is a normal all-ages ice-cream and pastry shop.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://wowbooza.com/",
+          "method": "Official venue-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://www.restaurantji.com/ga/duluth/wowbooza-/",
+          "method": "Current operation and menu corroboration capture",
+          "rights_note": "Editorial source capture; retain page attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Matcha Cafe Maiko — Duluth",
+      "address": "2131 Pleasant Hill Road, Suite 139",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.matchacafeatl.com/",
+      "corroborating_url": "https://www.matchacafe-maiko.com/eng/store/index.html?country=usa&region=ga&target=ga-duluth",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Japanese Kyoto matcha café; matcha and ube soft serve, parfaits, kakigori, red bean and mochi",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 0.75,
+      "cost_note": "Soft serve is typically around $6-$7 and parfaits or shaved ice about $8-$10; four simple items are roughly $25-$35.",
+      "why_good": "An approachable Japanese cultural dessert experience centered on ceremonial-grade matcha from Kyoto, with visible contrasts between matcha, ube, sesame and red bean.",
+      "caveat": "Matcha contains caffeine and the bold bitterness may surprise younger children; start with a matcha-vanilla or ube swirl.",
+      "age_notes": "Children are allowed; soft serve and small portions make it easy to share and compare flavors.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.matchacafeatl.com/",
+          "method": "Official local venue-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://www.matchacafe-maiko.com/eng/store/index.html?country=usa&region=ga&target=ga-duluth",
+          "method": "Official brand location-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Sweet Hut Bakery & Cafe — Duluth",
+      "address": "2180 Pleasant Hill Road, Suite 18",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.sweethutbakery.com/",
+      "corroborating_url": "https://www.guidetogwinnett.com/duluth/food-drink/sweet-hut-bakery-and-cafe",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Cantonese and Hong Kong bakery culture; pork buns, egg tarts, milk bread, cakes and boba",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 5,
+      "estimated_visit_hours": 1,
+      "cost_note": "Many buns cost roughly $3 each, so a family can select six to eight different pieces for about $20-$30. Too Good To Go surprise bags sometimes cost about $7.",
+      "why_good": "A low-cost Cantonese culinary heritage tasting where children can choose visually from trays and compare sweet, savory and filled breads.",
+      "caveat": "Selection changes throughout the day and popular buns can sell out; food-allergy labeling should be checked item by item.",
+      "age_notes": "Children are allowed; counter service, broad selection and inexpensive individual pieces work well for families.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.sweethutbakery.com/",
+          "method": "Official venue and location-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Lemon Sweets Bakery & Cafe",
+      "address": "3531 Peachtree Industrial Boulevard",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.lemonsweetsbakery.com/",
+      "corroborating_url": "https://www.restaurantji.com/ga/duluth/lemon-sweets-bakery-and-cafe-/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "Modern Chinese and Asian bakery; snow mochi, box cakes, grass jelly, taro, salted egg-yolk buns and fruit tea",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "Plan about $25-$40 for four people sharing small cakes, mochi or buns and one or two drinks.",
+      "why_good": "A modern Chinese cultural dessert experience with textures children may not know yet: mochi, grass jelly, taro purée and salted egg yolk.",
+      "caveat": "Some pastries contain pork floss, egg, dairy or nuts; verify fillings before giving children an unfamiliar item.",
+      "age_notes": "Children are allowed; the visual cases and individually portioned sweets suit a tasting visit.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.lemonsweetsbakery.com/",
+          "method": "Official venue-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://www.lemonsweetsbakery.com/contact-us",
+          "method": "Official current address and hours capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Beard Papa's — Duluth",
+      "address": "3350 Steve Reynolds Boulevard, Suite 103",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.beardpapas.com/duluth",
+      "corroborating_url": "https://www.beardpapas.com/duluth",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Japanese cream-puff shop; crisp shells filled to order with rotating custards",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 0.75,
+      "cost_note": "Cream puffs are generally about $4-$5 each, so one per person is roughly $16-$20 before tax.",
+      "why_good": "A focused Japanese cultural dessert experience where children can watch the hollow pastry shells filled just before serving.",
+      "caveat": "Closed Tuesdays and primarily takeout; verify rotating shell and custard flavors before a special trip.",
+      "age_notes": "Children are allowed; the single-item format is simple and easy to portion.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.beardpapas.com/duluth",
+          "method": "Official Duluth location-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Mochinut — Suwanee",
+      "address": "315 Peachtree Industrial Boulevard, Suite 106",
+      "city": "Suwanee",
+      "state": "GA",
+      "zip": "30024",
+      "official_url": "https://www.mochinut.com/",
+      "corroborating_url": "https://suwaneemagazine.com/mochinut-opens-in-suwanee/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Japanese-American mochi doughnuts and Korean rice corn dogs",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 4,
+      "value_1_5": 4,
+      "estimated_visit_hours": 0.75,
+      "cost_note": "A mixed box lets four people split several rotating flavors; plan roughly $20-$35 depending on box size and drinks.",
+      "why_good": "A playful cross-cultural dessert experience combining the chew of Japanese mochi with an American doughnut shape, plus Korean-style corn dogs.",
+      "caveat": "Mochi doughnuts are not necessarily gluten free and flavors rotate; check ingredients and same-day availability.",
+      "age_notes": "Children are allowed; bright rotating flavors and shareable rings make this an easy family tasting.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.mochinut.com/",
+          "method": "Official brand product-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://suwaneemagazine.com/mochinut-opens-in-suwanee/",
+          "method": "Local source location and concept capture",
+          "rights_note": "Editorial source capture; retain page attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Tiger Sugar",
+      "address": "10820 Abbotts Bridge Road, Suite 370",
+      "city": "Johns Creek",
+      "state": "GA",
+      "zip": "30097",
+      "official_url": "https://www.tigersugarusa.com/",
+      "corroborating_url": "https://order.online/store/tiger-sugar-duluth-31279929",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Taiwanese brown-sugar boba tradition; tiger-striped milk drinks, mango sago, mochi boba and tea",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 4,
+      "value_1_5": 4,
+      "estimated_visit_hours": 0.75,
+      "cost_note": "Most current drinks are about $7-$8; four drinks cost roughly $28-$34, or order two large drinks to share.",
+      "why_good": "A close Taiwanese cultural drink experience with a visible brown-sugar 'tiger stripe' preparation and chewy texture.",
+      "caveat": "Signature drinks can be high in sugar and may not allow sweetness adjustments; ask about caffeine and dairy before ordering for children.",
+      "age_notes": "Children are allowed; choose caffeine-free drinks and supervise young children with tapioca pearls.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.tigersugarusa.com/",
+          "method": "Official brand-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://order.online/store/tiger-sugar-duluth-31279929",
+          "method": "Current local direct-order menu capture",
+          "rights_note": "Editorial menu evidence; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Goodwin Tea House & More",
+      "address": "3455 Peachtree Industrial Boulevard, Suite 205",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.goodwinteahouse.com/",
+      "corroborating_url": "https://www.restaurantji.com/ga/duluth/goodwin-tea-house-and-more-/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "Southern Fujian Chinese tea-house culture; traditional tea, milk tea, fruit tea and regional snacks",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "Tea drinks are generally around $8-$9 and snacks around $10; two drinks and two snacks to share cost roughly $35-$40.",
+      "why_good": "The owners explicitly connect the menu to Southern Fujian culinary heritage, making this more educational than a generic bubble-tea stop.",
+      "caveat": "Many snacks include meat, seafood, peanuts or other allergens and full meals cost more; ask for a simple shared tea-and-snack tasting.",
+      "age_notes": "Children are allowed; select low-caffeine drinks and supervise tapioca pearls for younger children.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.goodwinteahouse.com/",
+          "method": "Official venue and cultural-story page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Yezi Coconut Dessert",
+      "address": "2174 Pleasant Hill Road, Suite 106",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.yezicoconutatl.com/",
+      "corroborating_url": "https://www.restaurantji.com/ga/duluth/yezi-coconut-dessert-and-drink-/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "Chinese and Asian coconut dessert culture; coconut jelly, mango, taro, ube, black sesame and durian",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 0.75,
+      "cost_note": "Plan roughly $25-$40 for four people sharing several coconut jars or drinks; prices vary by fruit and premium toppings.",
+      "why_good": "Georgia's unusual coconut-focused cultural dessert experience, with silky puddings, reusable jars and flavors such as durian, black sesame and taro.",
+      "caveat": "Some premium fruit combinations are relatively expensive, and durian is polarizing; start with mango or double coconut.",
+      "age_notes": "Children are allowed; small jars are easy to share, but verify allergens and supervise glass containers.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.yezicoconutatl.com/",
+          "method": "Official venue-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "TwoHa's Cafe",
+      "address": "2645 North Berkeley Lake Road NW, Suite 231",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.twohascafe.com/",
+      "corroborating_url": "https://www.restaurantji.com/ga/duluth/twohas-cafe-/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$$",
+      "cuisine_or_specialty": "Korean café culture; large bingsu bowls, black sesame, sweet corn, multigrain and fish-shaped pastries",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 4,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "Large bingsu bowls are around $27-$28 but are designed to share; one bowl plus a small pastry order can serve a family tasting near $35-$45.",
+      "why_good": "A Korean cultural dessert experience with genuinely unusual sweet-corn, black-sesame and multigrain shaved-ice choices.",
+      "caveat": "It is on the second floor and stays open late; one large bowl is better value than ordering four separate desserts.",
+      "age_notes": "Children are allowed; visit before the late-evening crowd and share one large bingsu.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.twohascafe.com/",
+          "method": "Official venue-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "The Cream",
+      "address": "3455 Duluth Highway",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.thecreamduluth.com/",
+      "corroborating_url": "https://www.thecreamduluth.com/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "Korean Seoul-inspired café; snowflake desserts, croffles, matcha, mango and Korean-inspired plates",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "Plan roughly $25-$45 for a family sharing one snowflake dessert, one croffle and drinks.",
+      "why_good": "A Korean cultural café experience inspired by Seoul's café streets, combining bingsu-like snow desserts with croffles and colorful drinks.",
+      "caveat": "The menu also includes full meals and evening service; keep the visit focused on one or two shareable desserts for value.",
+      "age_notes": "Children are allowed; dessert gatherings and family meals are part of the venue's stated concept.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.thecreamduluth.com/",
+          "method": "Official venue and gallery-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Mozart Bakery Cafe — Duluth",
+      "address": "2131 Pleasant Hill Road, Suite 148",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.cafemozartbakery.com/",
+      "corroborating_url": "https://www.cafemozartbakery.com/contact",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "Korean bakery café; manjoo filled with red bean, chestnut or pumpkin, mochi, breads and cakes",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "A family tasting of several small breads or manjoo and drinks is typically about $25-$40.",
+      "why_good": "A Korean culinary heritage bakery where children can compare red bean, chestnut, pumpkin and mochi textures in small portions.",
+      "caveat": "The case changes through the day; ask staff which items are freshest and confirm nut or bean fillings.",
+      "age_notes": "Children are allowed; broad cases and small pieces make it easy to build a shared tasting.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.cafemozartbakery.com/",
+          "method": "Official venue-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Hansel & Gretel Bakery Cafe",
+      "address": "1291 Old Peachtree Road NW, Suite 405",
+      "city": "Suwanee",
+      "state": "GA",
+      "zip": "30024",
+      "official_url": "https://hanselgretelbakerycafe.com/",
+      "corroborating_url": "https://www.restaurantji.com/ga/suwanee/hansel-and-gretel-bakery-cafe-/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "Korean bakery café; fresh-cream cakes, chestnut loaves, mousse figures and snow bingsu",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 4,
+      "evidence_quality_1_5": 4,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "Plan about $25-$40 for four people sampling several breads or one bingsu and smaller pastries.",
+      "why_good": "A Korean cultural bakery experience with less-sweet breads, chestnut flavors and character-shaped mousse desserts children can explore visually.",
+      "caveat": "Reviews on specific novelty pastries are mixed; choose fresh breads, cream cake or bingsu and inspect the case before ordering.",
+      "age_notes": "Children are allowed and recent local sources describe it as a family-and-friends café.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.restaurantji.com/ga/suwanee/hansel-and-gretel-bakery-cafe-/",
+          "method": "Current operation, menu and photo-page capture",
+          "rights_note": "Editorial source capture; retain page attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Vincent Bakery — Alpharetta",
+      "address": "178 South Main Street, Suite 200",
+      "city": "Alpharetta",
+      "state": "GA",
+      "zip": "30009",
+      "official_url": "https://www.awesomealpharetta.com/dine/restaurant/vincent-bakery/",
+      "corroborating_url": "https://www.awesomealpharetta.com/dine/restaurant/vincent-bakery/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "Korean bakery café with breads, cakes and modern Asian pastries",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 4,
+      "evidence_quality_1_5": 4,
+      "value_1_5": 4,
+      "estimated_visit_hours": 0.75,
+      "cost_note": "Plan roughly $20-$35 for four people sharing several breads or pastries; verify current case pricing.",
+      "why_good": "A newer Korean cultural bakery option in downtown Alpharetta, useful when the family wants Asian breads without driving to Duluth.",
+      "caveat": "The Alpharetta branch is newer and its selection can change; confirm hours and available breads before a dedicated trip.",
+      "age_notes": "Children are allowed; it is a normal all-ages bakery café.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.awesomealpharetta.com/dine/restaurant/vincent-bakery/",
+          "method": "Official local destination-directory capture",
+          "rights_note": "Editorial source capture; retain page attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Where's the Scoop?",
+      "address": "26 Old Roswell Street, Suite 102",
+      "city": "Alpharetta",
+      "state": "GA",
+      "zip": "30009",
+      "official_url": "https://www.wheresthescoop.com/",
+      "corroborating_url": "https://www.awesomealpharetta.com/food-drink/the-scoop-on-alpharettas-ice-cream-treats/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Rolled ice-cream performance with international flavors such as Thai tea, taro, rose and vegan horchata",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 0.75,
+      "cost_note": "Current comparable rolled-ice-cream prices are around $7; four servings are roughly $28-$35, or share two creations.",
+      "why_good": "The ice cream is frozen and rolled in front of the family, turning Thai, Mexican and Asian-inspired flavor choices into a visible cultural dessert experience.",
+      "caveat": "Closed Mondays and opens later on weekdays; check hours before driving to downtown Alpharetta.",
+      "age_notes": "Children are allowed; watching the cold-plate rolling process is a central part of the visit.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://static.wixstatic.com/media/8f4e66_ecf93410eac248f9a76979d845010b42~mv2_d_5541_3694_s_4_2.jpg",
+          "method": "Official branded ice-cream product photo",
+          "rights_note": "Official venue image captured for an editorial family guide; retain source attribution."
+        },
+        {
+          "page_url": "https://www.wheresthescoop.com/",
+          "method": "Official venue-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Melt n Dip — Johns Creek",
+      "address": "11025 Jones Bridge Road",
+      "city": "Johns Creek",
+      "state": "GA",
+      "zip": "30022",
+      "official_url": "https://www.meltndipatl.com/",
+      "corroborating_url": "https://order.toasttab.com/online/melt-n-dip-johns-creek",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$$",
+      "cuisine_or_specialty": "Middle Eastern and Belgian-chocolate dessert spectacle; kunafa, Dubai chocolate, crepes, waffles and gelato",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 3,
+      "estimated_visit_hours": 1,
+      "cost_note": "Many signature crepes cost about $15-$18; share two large desserts among four people for roughly $30-$40.",
+      "why_good": "A close, theatrical dessert experience where Middle Eastern kunafa and Dubai-chocolate trends meet Belgian chocolate plating.",
+      "caveat": "It is comparatively expensive and stays open very late; go in the afternoon and share large plates.",
+      "age_notes": "Children are allowed; the official site explicitly lists family gatherings and birthday celebrations.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.meltndipatl.com/",
+          "method": "Official venue and menu-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Vampire Penguin",
+      "address": "440 Vision Drive, Suite C103",
+      "city": "Cumming",
+      "state": "GA",
+      "zip": "30040",
+      "official_url": "https://www.shaved-snow.com/menu",
+      "corroborating_url": "https://www.shaved-snow.com/menu",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Shaved-snow dessert with peach cobbler, horchata, chamoy, taro and seasonal flavors",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 4,
+      "value_1_5": 4,
+      "estimated_visit_hours": 0.75,
+      "cost_note": "Plan about $20-$35 for four depending on sizes and toppings; sharing two larger creations reduces cost.",
+      "why_good": "A nearby texture-first dessert where the family can compare Peach Cobbler with Mexican-inspired horchata or chamoy and Asian taro flavors.",
+      "caveat": "Flavor availability varies and some toppings are very sweet or spicy; ask for a sample before committing.",
+      "age_notes": "Children are allowed; the whimsical branding and fluffy shaved texture are especially kid friendly.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.shaved-snow.com/menu",
+          "method": "Official menu-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "La Michoacana Ice Cream Shop — Cumming",
+      "address": "3671 Hutchinson Road",
+      "city": "Cumming",
+      "state": "GA",
+      "zip": "30040",
+      "official_url": "https://www.restaurantji.com/ga/cumming/la-michoacana-/",
+      "corroborating_url": "https://www.restaurantji.com/ga/cumming/la-michoacana-/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$",
+      "cuisine_or_specialty": "Mexican paletería tradition; house ice cream, fruit cups, licuados, chamoyadas and frozen fruit treats",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 5,
+      "evidence_quality_1_5": 4,
+      "value_1_5": 5,
+      "estimated_visit_hours": 0.75,
+      "cost_note": "Most visits can stay near $15-$30 for four with simple scoops, paletas or fruit drinks.",
+      "why_good": "A low-cost Mexican cultural dessert experience close to home, especially good for fruit, chamoy and paleta-style flavors.",
+      "caveat": "The local shop has limited official web information; confirm same-day hours and ask about spice level, dairy and allergens.",
+      "age_notes": "Children are allowed; choose mild fruit flavors before spicy chamoy combinations.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.restaurantji.com/ga/cumming/la-michoacana-/",
+          "method": "Current local operation, menu and photo-page capture",
+          "rights_note": "Editorial source capture; retain page attribution."
+        }
+      ]
+    },
+    {
+      "category_id": "bakeries-cafes-desserts",
+      "name": "Ginkgo Bakery Cafe",
+      "address": "3550 West Lawrenceville Street, Suite 340",
+      "city": "Duluth",
+      "state": "GA",
+      "zip": "30096",
+      "official_url": "https://www.ginkgobakery.com/",
+      "corroborating_url": "https://www.ginkgobakery.com/",
+      "checked_date": "2026-07-28",
+      "operational_status": "active-verified",
+      "price_level": "$-$$",
+      "cuisine_or_specialty": "Independent seasonal bakery café with rotating pastries, crepes, sandwiches, soup and tea",
+      "family_fit_1_5": 5,
+      "uniqueness_1_5": 4,
+      "evidence_quality_1_5": 5,
+      "value_1_5": 4,
+      "estimated_visit_hours": 1,
+      "cost_note": "Plan roughly $20-$35 for four people sharing a few rotating pastries and drinks.",
+      "why_good": "An independent, seasonal bakery stop in downtown Duluth where the case changes frequently and encourages the family to try something new.",
+      "caveat": "This is distinctive and local but not tied to one nation; check the rotating menu before a special trip.",
+      "age_notes": "Children are allowed; daytime hours and a casual bakery format suit families.",
+      "indoor_outdoor": "indoor",
+      "image_candidates": [
+        {
+          "page_url": "https://www.ginkgobakery.com/",
+          "method": "Official venue and gallery-page capture",
+          "rights_note": "Official venue page captured for an editorial family guide; retain source attribution."
+        }
+      ]
+    }
+  ]
+}

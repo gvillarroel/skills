@@ -23,7 +23,7 @@ description: Create engine-agnostic video source packages, storyboards, shot con
 8. Keep output engine-agnostic. Describe motion as semantic intent and timestamped states, not as library calls or framework code. Do not include GSAP dependencies, timeline snippets, or renderer-specific implementation unless the user explicitly asks for that renderer.
 9. For implementation after the contract is approved, route to the owning renderer skill:
    - Use `html-d3-anime-video-workflow` for standalone HTML, D3, Anime.js preview, Playwright frame capture, and ffmpeg workflows.
-   - Use `d3-animated-svg`, `echarts-animated-svg`, `mermaid-animated-svg`, or `threejs-animated-3d` for component visuals.
+   - Use `d3`, `echarts-animated-svg`, `mermaid`, or `threejs-animated-3d` for component visuals.
    - Use `slidev-video`, `manim-svg-video`, or `animated-svg-to-gif` for their specific export surfaces.
 10. Validate the contract before handoff. Prefer `scripts/validate_video_contract.py` when JSON artifacts exist. Add one `--require-anchor` for each supplied title, identifier, filename, event, constant, behavior phrase, audience, duration, style, and audio constraint that must survive into the artifacts. If the prompt gives an exact shot count or range, pass `--expect-shots`, `--min-shots`, or `--max-shots`. Also inspect the files manually for literal source facts, missing paths, placeholder text, forbidden engine terms, and shot/story mismatch.
 

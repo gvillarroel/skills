@@ -1,4 +1,4 @@
-Use the loaded `$d3-composition-evaluator` skill to review a dependency-flow composition for a product team. Treat `skills/d3-composition-evaluator/` as read-only and do not inspect parent directories, sibling skills, repository fixtures, or evaluation contracts.
+Use the loaded `$d3` skill to review a dependency-flow composition for a product team. Treat `skills/d3/` as read-only and do not inspect parent directories, sibling skills, repository fixtures, or evaluation contracts.
 
 Write the review to exactly `reports/service-dependency-review.md`. Make it useful to an engineer deciding whether this SVG is ready for a dashboard: identify the artifact exactly, assess the composition and implementation contract, give one overall score from 0 to 100, and recommend the minimum concrete fixes. Preserve the four service nodes and three dependency links; do not invent or remove data entities.
 

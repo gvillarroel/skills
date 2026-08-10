@@ -1,0 +1,42 @@
+schemaVersion: 1
+
+search:
+  id: mermaid-hardening-20260810-v27-final
+  baselineSkill: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v5-baseline/development/generation-000/candidate-staging/baseline/skills/mermaid
+  baselineCandidate: baseline
+  outputDir: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v6
+  generation: 0
+
+harbor:
+  developmentJob: ../../../evaluations/runs/mermaid-hardening-20260809-v8/dataset-final-v5/development-job.yaml
+  holdoutJob: ../../../evaluations/runs/mermaid-hardening-20260809-v8/dataset-final-v6/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 1
+  requiredRewards:
+    routing: 1
+    palette: 1
+    visual_palette: 1
+    palette_influence: 1
+    render: 1
+    visual_fidelity: 1
+    fidelity: 1
+    metadata: 1
+  requiredEnv: []
+
+candidates:
+  - id: baseline
+    skill: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v5-baseline/development/generation-000/candidate-staging/baseline/skills/mermaid
+    jobDirectory: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v5-baseline/development/generation-000/harbor-jobs/mermaid-hardening-20260810-v25-final-baseline-g000-development-baseline
+    parents: []
+    rationale: Exact frozen 14-file canonical baseline and its completed two-attempt hard-development Harbor job.
+  - id: visible-data-canonical-family
+    skill: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v5-canonical-candidate/development/generation-000/candidate-staging/visible-data-canonical-family/skills/mermaid
+    jobDirectory: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v5-canonical-candidate/development/generation-000/harbor-jobs/mermaid-hardening-20260810-v26-canonical-candidate-g000-development-visible-data-canonical-family
+    parents:
+      - baseline
+    rationale: Exact frozen 14-file candidate with visible-data safeguards, vivid Treemap rendering, functional YAML merging, and deterministic canonical routing metadata synchronization.
+
+promotion:
+  minimumMeanGain: 0
+  allowCaseRegressions: false
+  requireNoErrors: true

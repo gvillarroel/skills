@@ -742,30 +742,29 @@ def scene_times(index: int) -> tuple[int, int, str]:
 
 
 def voiceover_lines(category: dict, items: list[dict]) -> list[str]:
+    def spoken_name(item: dict, max_words: int = 4) -> str:
+        name = re.split(r"\s+[—-]\s+", item["name"], maxsplit=1)[0]
+        name = re.sub(r"^the\s+", "", name, flags=re.IGNORECASE)
+        return " ".join(name.split()[:max_words])
+
     count = len(items)
     pool = int(items[0].get("pool_size") or count)
     top = items[:5]
-    leader_score = float(top[0].get("cultural_priority_1_5") or 0)
-    leader_line = (
-        f"Leader: {top[0]['name']}. Culture {leader_score:.1f}."
-        if len(top[0]["name"].split()) >= 5
-        else f"The leader is {top[0]['name']}, scoring {leader_score:.1f} for culture."
-    )
     second_tags = "; ".join(top[1].get("nation_culture_tags") or []) or "a different cultural lens"
     international_line = (
-        f"Second, {top[1]['name']} brings {second_tags}."
+        f"Second, {spoken_name(top[1])} brings {second_tags}."
         if float(top[1].get("international_experience_1_5") or 0) >= 4
-        else "Second comes international experience; rank two still leads mainly on culture."
+        else f"Second is {spoken_name(top[1])}, led by culture rather than an international tag."
     )
     return [
-        f"Every option allows children. From {pool} possibilities, culture comes first.",
-        leader_line,
+        f"All {pool} options allow children. Culture comes first.",
+        f"{spoken_name(top[0])} leads on culture.",
         international_line,
-        f"Third, {top[2]['name']}: cost score {float(top[2].get('affordability_1_5') or 0):.1f}.",
-        "The top five keep that same culture, world, then price order.",
-        "These bars compare culture, international experience, and affordability for eight leaders.",
-        "Choose the overall leader, strongest culture, world experience, or lowest cost.",
-        f"Open the Excel for all {count} child-permitted choices, conditions, directions, and sources.",
+        f"Third, {spoken_name(top[2])} is a low-cost choice.",
+        "The top five follow culture, world, then price.",
+        "Bars compare culture, world experience, and price.",
+        "Choose the leader, culture, world experience, or lowest cost.",
+        f"Excel lists all {count} choices and sources.",
     ]
 
 

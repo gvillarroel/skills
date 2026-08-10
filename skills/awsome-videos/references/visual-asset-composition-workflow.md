@@ -9,7 +9,7 @@ Keep one owner per decision:
 - `awsome-videos` owns promise, beats, voiceover, style, audio, and final acceptance.
 - Prefer `source-to-video-director` to freeze source facts, storyboard, and shot contracts for source-backed or finished work.
 - Prefer `scene-composition-director` for scene framing, focal hierarchy, safe areas, depth, asset roles, and motion phases. Prefer `scene-transition-director` for every multi-scene transition chain.
-- Route each asset to one producer: `imagegen` for raster work; `mermaid-animated-svg` for conventional diagrams; `d3-animated-svg` for bespoke geometry/data motion; ECharts for charts; Three.js only when depth carries meaning.
+- Route each asset to one producer: `imagegen` for raster work; `mermaid` for conventional diagrams; `d3` for bespoke geometry/data motion; ECharts for charts; Three.js only when depth carries meaning.
 - Select exactly one renderer owner. Prefer `html-d3-anime-video-workflow` for complex browser animation, Slidev plus its animation/chart skills for slide-first work, or `manim-svg-video` for an SVG mosaic or Manim-native sequence. Do not let two renderer skills encode competing finals.
 - Run renderer checks, the applicable visual audit, and the final MP4/style/readiness/package gates.
 

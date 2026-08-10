@@ -1,12 +1,12 @@
 Create a self-contained standalone HTML file at exactly `rate-limit.html`.
 
-Read this exact pattern reference first: `skills/d3-animated-svg/references/patterns/token-bucket.md`.
+Read this exact pattern reference first: `skills/d3/references/patterns/token-bucket.md`.
 
 The only valid way to create the artifact is to run the bundled builder. First confirm the builder exists, then run it:
 
 ```powershell
-Get-ChildItem skills/d3-animated-svg/scripts/build_critical_rate_limit_token_bucket.py
-uv run --script skills/d3-animated-svg/scripts/build_critical_rate_limit_token_bucket.py rate-limit.html
+Get-ChildItem skills/d3/scripts/build_critical_rate_limit_token_bucket.py
+uv run --script skills/d3/scripts/build_critical_rate_limit_token_bucket.py rate-limit.html
 ```
 
 Do not hand-author a substitute artifact. Do not create a canvas, CSS-only demo, generic HTML card, placeholder, or JavaScript-rendered empty SVG. If the builder command fails, stop and report the failure instead of writing any fallback file.

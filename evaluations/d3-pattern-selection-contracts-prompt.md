@@ -7,4 +7,4 @@ The artifact should visualize a deterministic inline dataset with dense observat
 - SVG `title` and `desc`, visible source/unit text, and a visible selected/clear state.
 - No network dependencies and no writes inside the copied skill directory.
 
-Use the d3-animated-svg skill guidance only. Keep the output path exactly `dense-linked-view.html`.
+Use the d3 skill guidance only. Keep the output path exactly `dense-linked-view.html`.

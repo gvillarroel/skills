@@ -27,7 +27,7 @@ Official source: https://clauswilke.com/dataviz/
 
 ## Pattern Targets
 
-- `skills/d3-animated-svg/references/pattern-selection-contracts.md`: Visualization Contract, Scale And Summary Semantics, Publication Data Contract.
+- `skills/d3/references/pattern-selection-contracts.md`: Visualization Contract, Scale And Summary Semantics, Publication Data Contract.
 - `pattern-opportunities.md`: Visual Grammar Contract, Overplotting Resolution Ladder, Publishable Accessibility Contract.
 
 ## Copyright And Use Boundary

@@ -15,7 +15,7 @@ Use `html-d3-anime-video-workflow` for:
 
 ## Route To Existing Skills
 
-Use `d3-animated-svg` when the question is mainly:
+Use `d3` when the question is mainly:
 
 - which D3 visualization form to use
 - how to construct deterministic SVG geometry

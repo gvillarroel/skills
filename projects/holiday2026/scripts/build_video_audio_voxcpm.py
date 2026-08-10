@@ -36,7 +36,7 @@ PACKAGES = PROJECT / "video-packages"
 SERIES_AUDIO = PROJECT / "artifacts" / "audio"
 RUNTIME = 48.0
 BEAT_SECONDS = 6.0
-VOICE_OFFSET = 0.16
+VOICE_OFFSET = 0.36
 MAX_CUE_SECONDS = 5.68
 TARGET_LUFS = -16.0
 TARGET_TRUE_PEAK = -1.5
@@ -134,7 +134,7 @@ def generate_anchor(model: VoxCPM, path: Path, force: bool) -> None:
     write_wav(path, audio)
 
 
-def generate_cue(model: VoxCPM, text: str, path: Path, anchor: Path, seed: int, force: bool) -> None:
+def generate_cue(model: VoxCPM | None, text: str, path: Path, anchor: Path, seed: int, force: bool) -> None:
     text_cache = path.with_suffix(".source.txt")
     cache_matches = text_cache.exists() and text_cache.read_text(encoding="utf-8").strip() == text.strip()
     cache_key = cue_cache_key(text, anchor)
@@ -148,6 +148,11 @@ def generate_cue(model: VoxCPM, text: str, path: Path, anchor: Path, seed: int, 
         shared.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(path, shared)
         return
+    if model is None:
+        raise RuntimeError(
+            f"Missing cached neural cue for mix-only mode: {text}. "
+            "Run again without --mix-only to synthesize it."
+        )
     canonical_seed = int(cache_key[:8], 16)
     seed_all(canonical_seed)
     audio = model.generate(
@@ -212,7 +217,7 @@ def build_category_audio(
     category: dict,
     items: list[dict],
     narration: list[str],
-    model: VoxCPM,
+    model: VoxCPM | None,
     anchor: Path,
     force: bool,
     max_tempo: float,
@@ -278,7 +283,7 @@ def build_category_audio(
         "[2:a]lowpass=f=1500,highpass=f=100,volume=0.012,asplit=2[nl][nr];"
         "[a0][nl]amix=inputs=2:normalize=0[left];"
         "[a1][nr]amix=inputs=2:normalize=0[right];"
-        f"[left][right]join=inputs=2:channel_layout=stereo,afade=t=in:st=0:d=0.9,afade=t=out:st={RUNTIME - 1.6}:d=1.6[bed]"
+        f"[left][right]join=inputs=2:channel_layout=stereo,afade=t=in:st=0:d=0.9,afade=t=out:st={RUNTIME - 0.8}:d=0.8[bed]"
     )
     run(
         [
@@ -366,16 +371,95 @@ def build_category_audio(
     return report
 
 
+def write_series_summary(categories: list[dict]) -> dict:
+    """Aggregate the current per-package audio reports into one series gate."""
+    reports: list[dict] = []
+    for category in categories:
+        report_path = (
+            PACKAGES
+            / category["video_slug"]
+            / "artifacts"
+            / "audio"
+            / "neural-audio-build-report.json"
+        )
+        if not report_path.exists():
+            reports.append(
+                {
+                    "videoSlug": category["video_slug"],
+                    "ok": False,
+                    "failure": f"missing {report_path}",
+                }
+            )
+            continue
+        try:
+            item = json.loads(report_path.read_text(encoding="utf-8"))
+            reports.append(
+                {
+                    "videoSlug": item["videoSlug"],
+                    "ok": bool(item["ok"]),
+                    "integratedLufs": item["measured"]["input_i"],
+                    "truePeakDbtp": item["measured"]["input_tp"],
+                    "maxTempo": max(cue["tempo"] for cue in item["cues"]),
+                }
+            )
+        except (KeyError, TypeError, ValueError, json.JSONDecodeError, OSError) as exc:
+            reports.append(
+                {
+                    "videoSlug": category["video_slug"],
+                    "ok": False,
+                    "failure": f"invalid audio report: {exc}",
+                }
+            )
+
+    summary = {
+        "schemaVersion": 1,
+        "ok": len(reports) == len(categories) and all(item["ok"] for item in reports),
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "voiceModel": "VoxCPM2",
+        "modelId": MODEL_ID,
+        "categoryCount": len(reports),
+        "reports": reports,
+    }
+    (PROJECT / "artifacts" / "reviews" / "neural-audio-series-validation.json").write_text(
+        json.dumps(summary, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return summary
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build VoxCPM2 narration and final mixes for Holiday 2026.")
     parser.add_argument("--category", action="append", help="Category ID or video slug; repeat to select multiple.")
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--force", action="store_true")
+    parser.add_argument(
+        "--force-anchor",
+        action="store_true",
+        help="Regenerate the synthetic voice anchor; normally reuse it for voice consistency.",
+    )
     parser.add_argument("--max-tempo", type=float, default=1.18)
+    parser.add_argument(
+        "--summarize-existing",
+        action="store_true",
+        help="Rebuild the 12-category audio validation report without synthesizing audio.",
+    )
+    parser.add_argument(
+        "--mix-only",
+        action="store_true",
+        help="Reuse all cached neural cues and rebuild only processing, mix, and validation.",
+    )
     args = parser.parse_args()
 
     prepare = load_prepare_module()
-    categories = json.loads((PROJECT / "source" / "categories.json").read_text(encoding="utf-8"))
+    all_categories = json.loads((PROJECT / "source" / "categories.json").read_text(encoding="utf-8"))
+    if args.summarize_existing:
+        if args.category:
+            raise SystemExit("--summarize-existing cannot be combined with --category")
+        summary = write_series_summary(all_categories)
+        print(json.dumps(summary, indent=2))
+        return 0 if summary["ok"] else 1
+
+    categories = all_categories
     ranked = json.loads((PROJECT / "artifacts" / "data" / "ranked-places.json").read_text(encoding="utf-8"))
     requested = set(args.category or [])
     if requested:
@@ -387,9 +471,17 @@ def main() -> int:
 
     SERIES_AUDIO.mkdir(parents=True, exist_ok=True)
     anchor = SERIES_AUDIO / "holiday2026-synthetic-voice-anchor.wav"
-    print(f"Loading {MODEL_ID} once on {args.device}...", flush=True)
-    model = VoxCPM.from_pretrained(MODEL_ID, load_denoiser=False, device=args.device)
-    generate_anchor(model, anchor, args.force)
+    if args.mix_only:
+        if args.force or args.force_anchor:
+            raise SystemExit("--mix-only cannot be combined with --force or --force-anchor")
+        if not anchor.exists():
+            raise SystemExit(f"Missing voice anchor required by --mix-only: {anchor}")
+        model = None
+        print("Mix-only mode: reusing the existing voice anchor and cached neural cues.", flush=True)
+    else:
+        print(f"Loading {MODEL_ID} once on {args.device}...", flush=True)
+        model = VoxCPM.from_pretrained(MODEL_ID, load_denoiser=False, device=args.device)
+        generate_anchor(model, anchor, args.force_anchor)
 
     reports: list[dict] = []
     for category in categories:
@@ -399,25 +491,7 @@ def main() -> int:
         print(f"Building neural audio: {category['video_slug']}", flush=True)
         reports.append(build_category_audio(category, items, narration, model, anchor, args.force, args.max_tempo))
 
-    summary = {
-        "schemaVersion": 1,
-        "ok": all(item["ok"] for item in reports),
-        "generatedAt": datetime.now(timezone.utc).isoformat(),
-        "voiceModel": "VoxCPM2",
-        "modelId": MODEL_ID,
-        "categoryCount": len(reports),
-        "reports": [
-            {
-                "videoSlug": item["videoSlug"],
-                "ok": item["ok"],
-                "integratedLufs": item["measured"]["input_i"],
-                "truePeakDbtp": item["measured"]["input_tp"],
-                "maxTempo": max(cue["tempo"] for cue in item["cues"]),
-            }
-            for item in reports
-        ],
-    }
-    (PROJECT / "artifacts" / "reviews" / "neural-audio-series-validation.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    summary = write_series_summary(all_categories)
     print(json.dumps(summary, indent=2))
     return 0 if summary["ok"] else 1
 

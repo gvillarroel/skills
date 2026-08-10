@@ -176,3 +176,10 @@ uv run --script scripts/test-skill-independence.py
 The validator checks repo structure, backlog presence, skill metadata, skill naming, script conventions, in-bundle Markdown links, direct sibling-skill paths, and skill scripts that derive repository roots above their own bundle. It cannot prove that prose is English, so review language manually before finalizing.
 
 When updating one skill, also run any skill-specific tests or representative scripts that were changed.
+
+## Update Access Scope
+
+- Writable project root: `C:\Users\villa\dev\skills`.
+- Agents may create, modify, move, or delete files only inside this root and its descendants when the task requires it.
+- Treat paths outside this root as read-only unless the user explicitly authorizes a broader scope.
+- A reference to another repository or shared tool does not grant write access to it.

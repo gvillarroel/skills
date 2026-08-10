@@ -1,0 +1,35 @@
+schemaVersion: 1
+
+search:
+  id: mermaid-hardening-20260810-v28-holdout-baseline-live
+  baselineSkill: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v5-baseline/development/generation-000/candidate-staging/baseline/skills/mermaid
+  baselineCandidate: baseline
+  outputDir: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v6-holdout-baseline-live
+  generation: 0
+
+harbor:
+  developmentJob: ../../../evaluations/runs/mermaid-hardening-20260809-v8/dataset-final-v6/holdout-job.yaml
+  holdoutJob: ../../../evaluations/runs/mermaid-hardening-20260809-v8/dataset-final-v6/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 1
+  requiredRewards:
+    routing: 1
+    palette: 1
+    visual_palette: 1
+    palette_influence: 1
+    render: 1
+    visual_fidelity: 1
+    fidelity: 1
+    metadata: 1
+  requiredEnv: []
+
+candidates:
+  - id: baseline
+    skill: ../../../evaluations/runs/mermaid-hardening-20260809-v8/search-output-final-v5-baseline/development/generation-000/candidate-staging/baseline/skills/mermaid
+    parents: []
+    rationale: Run only the frozen baseline against the untouched V6 holdout so the two comparison jobs remain operationally isolated.
+
+promotion:
+  minimumMeanGain: 0
+  allowCaseRegressions: false
+  requireNoErrors: true

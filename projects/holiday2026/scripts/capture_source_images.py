@@ -153,8 +153,12 @@ def soft_fallback(path: Path, item: dict, category: dict, rank: int, reason: str
 
 
 def page_urls(item: dict) -> list[str]:
-    values = [item.get("official_url")]
-    values.extend(candidate.get("page_url") for candidate in item.get("image_candidates", []) if isinstance(candidate, dict))
+    values = [
+        candidate.get("page_url")
+        for candidate in item.get("image_candidates", [])
+        if isinstance(candidate, dict)
+    ]
+    values.append(item.get("official_url"))
     values.append(item.get("corroborating_url"))
     output: list[str] = []
     for value in values:

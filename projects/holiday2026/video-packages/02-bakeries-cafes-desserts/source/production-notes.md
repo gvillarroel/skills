@@ -45,18 +45,18 @@ uv run --script $env:AWSOME_VIDEOS_SKILL/scripts/check_production_package.py --b
 
 ## Visual Review
 
-- Renderer contract passed: yes; 14 sampled states in ../artifacts/reviews/renderer-contract.json
-- Readiness score: 22/24 ready; no weak categories; report ../artifacts/reviews/readiness-score.json
-- Contact sheet inspected: ../artifacts/reviews/contact-sheet.jpg generated (109298 bytes); approved visual review ../artifacts/reviews/visual-review.json.
-- Asset quality check: 8/8 declared assets are ready; producer skills ['d3-animated-svg', 'playwright']; hash-bound report ../artifacts/reviews/asset-composition-validation.json.
-- Composition check: 8 scenes use 8 composition families and 8 armatures; report ../artifacts/reviews/asset-composition-validation.json.
-- Renderer asset-binding check: visible asset coverage=True, manifest binding=True, composition coverage=True, observed assets=8; report ../artifacts/reviews/renderer-contract.json.
-- Legibility check: contact sheet and sampled frames passed nonblank quality review in ../artifacts/reviews/quality-report.json.
-- Beat coverage check: all sampled brief beats covered by renderer state in ../artifacts/reviews/renderer-contract.json.
-- Visual mechanism check: reported visual pattern; final visibleMechanismCount=8; output/final callback visible=true/true.
-- Pacing/transition check: yes; motion changing pairs 48, subtle pairs 48; quality samples 6; reports ../artifacts/reviews/motion-report.json and ../artifacts/reviews/quality-report.json.
-- Source-binding check: declared asset IDs, scene uses, visible DOM IDs, and reviewed frames agree in ../artifacts/reviews/asset-composition-validation.json.
-- Motion/quality checks passed: yes; motion changing pairs 48, subtle pairs 48; quality samples 6; reports ../artifacts/reviews/motion-report.json and ../artifacts/reviews/quality-report.json
-- Audio sync check: final audio ready; duration coverage True; report ../artifacts/reviews/audio-report.json
-- Final audio duration checked: final audio ready; duration coverage True; report ../artifacts/reviews/audio-report.json
+- Renderer contract passed: yes; 14 sampled states in C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\renderer-contract.json
+- Readiness score: 22/24 ready; no weak categories; report C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\readiness-score.json
+- Contact sheet inspected: C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\contact-sheet.jpg generated (149749 bytes); approved visual review C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\visual-review.json.
+- Asset quality check: 8/8 declared assets are ready; producer skills ['d3-animated-svg', 'playwright']; hash-bound report C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\asset-composition-validation.json.
+- Composition check: 8 scenes use 8 composition families and 8 armatures; report C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\asset-composition-validation.json.
+- Renderer asset-binding check: visible asset coverage=True, manifest binding=True, composition coverage=True, observed assets=8; report C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\renderer-contract.json.
+- Legibility check: contact sheet and sampled frames passed nonblank quality review in C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\quality-report.json.
+- Beat coverage check: all sampled brief beats covered by renderer state in C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\renderer-contract.json.
+- Visual mechanism check: reported visual pattern; final visibleMechanismCount=?; output/final callback visible=?.
+- Pacing/transition check: yes; motion changing pairs 45, subtle pairs 48; quality samples 6; reports C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\motion-report.json and C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\quality-report.json.
+- Source-binding check: declared asset IDs, scene uses, visible DOM IDs, and reviewed frames agree in C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\asset-composition-validation.json.
+- Motion/quality checks passed: yes; motion changing pairs 45, subtle pairs 48; quality samples 6; reports C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\motion-report.json and C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\quality-report.json
+- Audio sync check: final audio ready; duration coverage True; report C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\audio-report.json
+- Final audio duration checked: final audio ready; duration coverage True; report C:\Users\villa\dev\skills\projects\holiday2026\video-packages\02-bakeries-cafes-desserts\artifacts\reviews\audio-report.json
 - Known caveats: final audio is listed; review any project-specific footage, source, or rights limitations separately.
