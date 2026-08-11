@@ -54,6 +54,11 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "echarts-animated-svg",
+    "mermaid-max-elements": SKILLS
+    / "mermaid"
+    / "assets"
+    / "examples"
+    / "mermaid-max-elements",
     "plantuml-colorset-renderer-base": SKILLS
     / "plantuml-colorset-renderer"
     / "assets"
@@ -94,6 +99,7 @@ EXAMPLE_SOURCES = {
 }
 UNLISTED_EXAMPLE_SOURCES = {
     # Raw source folders copied for linked galleries or verification assets, not standalone landing pages.
+    "mermaid-max-elements",
     "plantuml-colorset-renderer-base",
 }
 PUBLISHED_EXAMPLE_SETS = [

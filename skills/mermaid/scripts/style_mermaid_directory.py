@@ -196,38 +196,28 @@ CORE_THEME_KEYS = [
     "titleColor",
 ]
 
-SERIES_THEME_KEYS = [
-    "cScale0",
-    "cScale1",
-    "cScale2",
-    "cScale3",
-    "cScale4",
-    "cScale5",
-    "cScale6",
-    "cScale7",
-]
+THEME_COLOR_LIMIT = 12
+GIT_COLOR_LIMIT = 8
+FILL_TYPE_LIMIT = 8
+VENN_COLOR_LIMIT = 8
 
+SERIES_THEME_KEYS = [f"cScale{index}" for index in range(THEME_COLOR_LIMIT)]
 SERIES_LABEL_THEME_KEYS = [
-    "cScaleLabel0",
-    "cScaleLabel1",
-    "cScaleLabel2",
-    "cScaleLabel3",
-    "cScaleLabel4",
-    "cScaleLabel5",
-    "cScaleLabel6",
-    "cScaleLabel7",
+    f"cScaleLabel{index}" for index in range(THEME_COLOR_LIMIT)
 ]
-
 SERIES_INVERSE_THEME_KEYS = [
-    "cScaleInv0",
-    "cScaleInv1",
-    "cScaleInv2",
-    "cScaleInv3",
-    "cScaleInv4",
-    "cScaleInv5",
-    "cScaleInv6",
-    "cScaleInv7",
+    f"cScaleInv{index}" for index in range(THEME_COLOR_LIMIT)
 ]
+SERIES_PEER_THEME_KEYS = [
+    f"cScalePeer{index}" for index in range(THEME_COLOR_LIMIT)
+]
+GIT_THEME_KEYS = [f"git{index}" for index in range(GIT_COLOR_LIMIT)]
+GIT_INVERSE_THEME_KEYS = [f"gitInv{index}" for index in range(GIT_COLOR_LIMIT)]
+GIT_BRANCH_LABEL_THEME_KEYS = [
+    f"gitBranchLabel{index}" for index in range(GIT_COLOR_LIMIT)
+]
+FILL_TYPE_THEME_KEYS = [f"fillType{index}" for index in range(FILL_TYPE_LIMIT)]
+VENN_THEME_KEYS = [f"venn{index}" for index in range(1, VENN_COLOR_LIMIT + 1)]
 
 FAMILY_THEME_KEYS = {
     "sequenceDiagram": [
@@ -260,28 +250,22 @@ FAMILY_THEME_KEYS = {
     "swimlane": ["classText"],
     "treemap": [
         "classText",
+        "THEME_COLOR_LIMIT",
         *SERIES_THEME_KEYS,
         *SERIES_LABEL_THEME_KEYS,
         *SERIES_INVERSE_THEME_KEYS,
+        *SERIES_PEER_THEME_KEYS,
     ],
     "gitGraph": [
         "commitLabelColor",
         "commitLabelBackground",
         "tagLabelColor",
         "tagLabelBackground",
-        "git0",
-        "git1",
-        "git2",
-        "git3",
-        "git4",
-        "git5",
-        "git6",
-        "git7",
-        "gitBranchLabel0",
-        "gitBranchLabel1",
-        "gitBranchLabel2",
-        "gitBranchLabel3",
+        *GIT_THEME_KEYS,
+        *GIT_INVERSE_THEME_KEYS,
+        *GIT_BRANCH_LABEL_THEME_KEYS,
     ],
+    "journey": [*FILL_TYPE_THEME_KEYS],
     "gantt": [
         "sectionBkgColor",
         "altSectionBkgColor",
@@ -338,6 +322,7 @@ FAMILY_THEME_KEYS = {
         "quadrantTitleFill",
     ],
     "mindmap": [
+        "THEME_COLOR_LIMIT",
         "git0",
         "gitBranchLabel0",
         *SERIES_THEME_KEYS,
@@ -345,13 +330,43 @@ FAMILY_THEME_KEYS = {
         *SERIES_INVERSE_THEME_KEYS,
     ],
     "timeline": [
+        "THEME_COLOR_LIMIT",
         *SERIES_THEME_KEYS,
         *SERIES_LABEL_THEME_KEYS,
         *SERIES_INVERSE_THEME_KEYS,
     ],
+    "kanban": [
+        "THEME_COLOR_LIMIT",
+        *SERIES_THEME_KEYS,
+        *SERIES_LABEL_THEME_KEYS,
+        *SERIES_INVERSE_THEME_KEYS,
+    ],
+    "architecture": [
+        "archEdgeColor",
+        "archEdgeArrowColor",
+        "archEdgeWidth",
+        "archGroupBorderColor",
+        "archGroupBorderWidth",
+    ],
     "sankey": [],
     "xyChart": ["xyChart"],
-    "radar": ["radar"],
+    "radar": ["THEME_COLOR_LIMIT", *SERIES_THEME_KEYS, "radar"],
+    "eventmodeling": [
+        "emUiFill",
+        "emUiStroke",
+        "emProcessorFill",
+        "emProcessorStroke",
+        "emReadModelFill",
+        "emReadModelStroke",
+        "emCommandFill",
+        "emCommandStroke",
+        "emEventFill",
+        "emEventStroke",
+        "emArrowhead",
+        "emRelationStroke",
+    ],
+    "venn": [*VENN_THEME_KEYS, "vennTitleTextColor", "vennSetTextColor"],
+    "wardley": ["wardleyEvolutionColor", "wardley"],
     "cynefin": ["cynefin"],
 }
 
@@ -438,10 +453,95 @@ class DiagramResult:
     skipped_class_defs: list[str]
 
 
+def relative_luminance(color: str) -> float:
+    channels = [int(color[index : index + 2], 16) / 255 for index in (1, 3, 5)]
+    linear = [
+        channel / 12.92
+        if channel <= 0.04045
+        else ((channel + 0.055) / 1.055) ** 2.4
+        for channel in channels
+    ]
+    return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2]
+
+
+def contrast_ratio(first: str, second: str) -> float:
+    high, low = sorted(
+        (relative_luminance(first), relative_luminance(second)), reverse=True
+    )
+    return (high + 0.05) / (low + 0.05)
+
+
+def readable_text_color(fill: str, palette: dict[str, str]) -> str:
+    candidates = (palette["surface"], palette["ink"], palette["gray900"])
+    return max(candidates, key=lambda candidate: contrast_ratio(fill, candidate))
+
+
+def series_colors(palette: dict[str, str], extended: bool) -> list[str]:
+    roles = (
+        (
+            "primary",
+            "accent",
+            "warning",
+            "success",
+            "special",
+            "info",
+            "critical",
+            "primary_dark",
+            "gray700",
+            "gray500",
+            "gray900",
+            "gray400",
+        )
+        if extended
+        else (
+            "primary",
+            "gray700",
+            "gray500",
+            "ink",
+            "gray600",
+            "critical",
+            "primary_dark",
+            "gray800",
+            "gray400",
+            "gray900",
+            "gray300",
+            "primary_light",
+        )
+    )
+    return [palette[role] for role in roles]
+
+
 def theme_variables(colorset: str, family: str | None = None) -> dict[str, object]:
     p = PALETTES[colorset]
     extended = colorset == "colorset2"
+    scale_colors = series_colors(p, extended)
+    scale_labels = [readable_text_color(color, p) for color in scale_colors]
+    fill_type_roles = (
+        (
+            "primary_light",
+            "accent_light",
+            "warning_light",
+            "success_light",
+            "special_light",
+            "neutral_light",
+            "gray200",
+            "gray300",
+        )
+        if extended
+        else (
+            "primary_light",
+            "gray100",
+            "gray200",
+            "gray300",
+            "gray400",
+            "gray500",
+            "gray600",
+            "gray700",
+        )
+    )
+    fill_type_colors = [p[role] for role in fill_type_roles]
     variables = {
+        "THEME_COLOR_LIMIT": THEME_COLOR_LIMIT,
         "background": p["background"],
         "primaryColor": p["primary_light"],
         "primaryTextColor": p["ink"],
@@ -487,18 +587,18 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
         "commitLabelBackground": p["surface"],
         "tagLabelColor": p["ink"],
         "tagLabelBackground": p["neutral_light"],
-        "git0": p["primary"],
-        "git1": p["accent"],
-        "git2": p["warning"],
-        "git3": p["success"],
-        "git4": p["special"],
-        "git5": p["gray500"],
-        "git6": p["gray700"],
-        "git7": p["critical"],
-        "gitBranchLabel0": p["surface"],
-        "gitBranchLabel1": p["surface"],
-        "gitBranchLabel2": p["ink"],
-        "gitBranchLabel3": p["surface"],
+        **{
+            f"git{index}": color
+            for index, color in enumerate(scale_colors[:GIT_COLOR_LIMIT])
+        },
+        **{
+            f"gitInv{index}": scale_labels[index]
+            for index in range(GIT_COLOR_LIMIT)
+        },
+        **{
+            f"gitBranchLabel{index}": scale_labels[index]
+            for index in range(GIT_COLOR_LIMIT)
+        },
         "sectionBkgColor": p["accent_light"] if extended else p["gray100"],
         "altSectionBkgColor": p["warning_light"] if extended else p["gray200"],
         "sectionBkgColor2": p["success_light"] if extended else p["gray100"],
@@ -517,54 +617,32 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
         "excludeBkgColor": p["gray100"],
         "gridColor": p["gray400"],
         "todayLineColor": p["critical"],
-        "pie1": p["primary"],
-        "pie2": p["accent"],
-        "pie3": p["warning"],
-        "pie4": p["success"],
-        "pie5": p["special"],
-        "pie6": p["gray500"],
-        "pie7": p["gray700"],
-        "pie8": p["critical"],
-        "pie9": p["primary_light"],
-        "pie10": p["accent_light"],
-        "pie11": p["warning_light"],
-        "pie12": p["success_light"],
+        **{
+            f"pie{index + 1}": color for index, color in enumerate(scale_colors)
+        },
         "pieTitleTextColor": p["ink"],
         "pieLegendTextColor": p["ink"],
         "pieSectionTextColor": p["surface"],
         "pieStrokeColor": p["surface"],
-        "fillType0": p["primary_light"],
-        "fillType1": p["accent_light"],
-        "fillType2": p["warning_light"],
-        "fillType3": p["success_light"],
-        "fillType4": p["special_light"],
-        "fillType5": p["neutral_light"],
-        "fillType6": p["gray200"],
-        "fillType7": p["gray300"],
-        "cScale0": p["primary"],
-        "cScale1": p["accent"],
-        "cScale2": p["warning"],
-        "cScale3": p["success"],
-        "cScale4": p["special"],
-        "cScale5": p["gray500"],
-        "cScale6": p["gray700"],
-        "cScale7": p["critical"],
-        "cScaleLabel0": p["surface"],
-        "cScaleLabel1": p["surface"],
-        "cScaleLabel2": p["surface"],
-        "cScaleLabel3": p["surface"],
-        "cScaleLabel4": p["surface"],
-        "cScaleLabel5": p["surface"],
-        "cScaleLabel6": p["surface"],
-        "cScaleLabel7": p["surface"],
-        "cScaleInv0": p["primary_light"],
-        "cScaleInv1": p["accent_light"],
-        "cScaleInv2": p["warning_light"],
-        "cScaleInv3": p["success_light"],
-        "cScaleInv4": p["special_light"],
-        "cScaleInv5": p["gray200"],
-        "cScaleInv6": p["gray300"],
-        "cScaleInv7": p["primary_light"],
+        **{
+            f"fillType{index}": color
+            for index, color in enumerate(fill_type_colors)
+        },
+        **{
+            f"cScale{index}": color for index, color in enumerate(scale_colors)
+        },
+        **{
+            f"cScaleLabel{index}": color
+            for index, color in enumerate(scale_labels)
+        },
+        **{
+            f"cScaleInv{index}": color
+            for index, color in enumerate(scale_labels)
+        },
+        **{
+            f"cScalePeer{index}": color
+            for index, color in enumerate(scale_colors)
+        },
         "quadrant1Fill": p["success_light"] if extended else p["primary_light"],
         "quadrant2Fill": p["accent_light"] if extended else p["neutral_light"],
         "quadrant3Fill": p["special_light"] if extended else p["gray200"],
@@ -580,6 +658,44 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
         "quadrantInternalBorderStrokeFill": p["muted"],
         "quadrantExternalBorderStrokeFill": p["accent"] if extended else p["primary"],
         "quadrantTitleFill": p["ink"],
+        **{
+            f"venn{index + 1}": color
+            for index, color in enumerate(scale_colors[:VENN_COLOR_LIMIT])
+        },
+        "vennTitleTextColor": p["ink"],
+        "vennSetTextColor": p["ink"],
+        "archEdgeColor": p["muted"],
+        "archEdgeArrowColor": p["muted"],
+        "archEdgeWidth": "3",
+        "archGroupBorderColor": p["primary"],
+        "archGroupBorderWidth": "2px",
+        "emUiFill": p["surface"],
+        "emUiStroke": p["gray400"],
+        "emProcessorFill": p["special_light"],
+        "emProcessorStroke": p["special"],
+        "emReadModelFill": p["success_light"],
+        "emReadModelStroke": p["success"],
+        "emCommandFill": p["accent_light"],
+        "emCommandStroke": p["accent"],
+        "emEventFill": p["warning_light"],
+        "emEventStroke": p["warning"],
+        "emArrowhead": p["primary"],
+        "emRelationStroke": p["muted"],
+        "wardleyEvolutionColor": p["critical"],
+        "wardley": {
+            "backgroundColor": p["background"],
+            "axisColor": p["muted"],
+            "axisTextColor": p["ink"],
+            "gridColor": p["gray400"],
+            "componentFill": p["surface"],
+            "componentStroke": p["primary"],
+            "componentLabelColor": p["ink"],
+            "linkStroke": p["muted"],
+            "evolutionStroke": p["critical"],
+            "annotationStroke": p["accent"] if extended else p["gray600"],
+            "annotationTextColor": p["ink"],
+            "annotationFill": p["neutral_light"],
+        },
         "xyChart": {
             "backgroundColor": p["surface"],
             "titleColor": p["ink"],

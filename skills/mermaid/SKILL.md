@@ -18,6 +18,7 @@ description: Create, select, style, render, validate, and animate Mermaid diagra
 
 - Read `references/diagram-selection.md` when no family is specified, when authoring from data, or when orientation, fidelity, or semantic color roles need judgment.
 - Read `references/diagram-types.json` only for an exact declaration, alias, canonical family ID, or `classDef` capability.
+- Read `references/palette-capacity.md` when a task asks for maximum distinct colors, a palette boundary, or enough peer branches, sections, curves, groups, sets, slices, columns, or series to approach cycling.
 - Read `references/animation.md` only for animated output, custom choreography, or directive selectors.
 - Execute scripts without reading their implementation. Inspect script source only to debug a failed command.
 - For a source-only task that delegates rendering to an evaluator, do not read animation material or render locally.
@@ -26,10 +27,11 @@ description: Create, select, style, render, validate, and animate Mermaid diagra
 
 1. Extract exact outputs, requested family, facts, ordering constraints, and palette language.
 2. Select the family when needed, then write one concise Mermaid message. Create requested routing metadata before styling and keep the canonical family ID distinct from its declaration (`xyChart` versus `xychart`). Split overload only when the output contract permits it.
-3. Apply the palette to the source directory. Omit `--colorset` for standard; pass `--colorset colorset2` only for explicit extended styling.
-4. Run the styler with `--check` and require the expected declaration, colorset, and `missingStyleCount: 0`.
-5. Unless rendering is explicitly out of scope, render SVG with `--animation none` for static output or `--animation auto` for animation.
-6. Inspect rendered geometry—not just configuration—for palette color, label clearance, density, direction, fidelity, and Mermaid error markers. Revise and rerender if any check fails.
+3. For indexed-color density, distinguish Mermaid's reachable palette capacity from an unlimited node count. Author through the last requested slot, include a boundary-cycle element only when requested, and keep unlimited families role-based rather than inventing a maximum.
+4. Apply the palette to the source directory. Omit `--colorset` for standard; pass `--colorset colorset2` only for explicit extended styling.
+5. Run the styler with `--check` and require the expected declaration, colorset, and `missingStyleCount: 0`.
+6. Unless rendering is explicitly out of scope, render SVG with `--animation none` for static output or `--animation auto` for animation.
+7. Inspect rendered geometry—not just configuration—for palette color, label clearance, density, direction, fidelity, and Mermaid error markers. Revise and rerender if any check fails.
 
 ## Commands
 
@@ -53,5 +55,6 @@ Before custom animation ordering or selectors, run the renderer with `--list-ele
 - The source uses the requested palette, YAML frontmatter, and no generated JSON init directive.
 - Styler validation passes with no missing styles.
 - Required labels and facts remain literal, complete, and correctly ordered.
+- Dense indexed diagrams reach the intended terminal slot without premature cycling; any requested boundary element exhibits the documented cycle.
 - Rendered SVG is legible, error-free, and visibly uses the requested palette.
 - Animated SVG settles to the static render's geometry, labels, markers, and colors.

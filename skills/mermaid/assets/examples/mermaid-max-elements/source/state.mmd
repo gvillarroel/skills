@@ -1,0 +1,21 @@
+stateDiagram-v2
+  direction LR
+  [*] --> StateRole01
+  StateRole01 --> StateRole02
+  StateRole02 --> StateRole03
+  StateRole03 --> StateRole04
+  StateRole04 --> StateRole05
+  StateRole05 --> StateRole06
+  StateRole06 --> StateRole07
+  StateRole07 --> StateRole08
+  StateRole08 --> StateRole09
+  StateRole09 --> [*]
+  class StateRole01 csPrimary
+  class StateRole02 csAccent
+  class StateRole03 csMuted
+  class StateRole04 csCritical
+  class StateRole05 csWarning
+  class StateRole06 csSuccess
+  class StateRole07 csInfo
+  class StateRole08 csSpecial
+  class StateRole09 csNeutral

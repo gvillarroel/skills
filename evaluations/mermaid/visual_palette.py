@@ -7,6 +7,7 @@
 
 from __future__ import annotations
 
+import colorsys
 import struct
 import zlib
 from dataclasses import dataclass
@@ -189,6 +190,29 @@ def _rgb(hex_color: str) -> tuple[int, int, int]:
     return tuple(bytes.fromhex(hex_color.removeprefix("#")))  # type: ignore[return-value]
 
 
+def _lighten_rgb(hex_color: str, amount: float) -> tuple[int, int, int]:
+    red, green, blue = (channel / 255.0 for channel in _rgb(hex_color))
+    hue, lightness, saturation = colorsys.rgb_to_hls(red, green, blue)
+    lightness = min(1.0, lightness + amount / 100.0)
+    adjusted = colorsys.hls_to_rgb(hue, lightness, saturation)
+    return tuple(round(channel * 255) for channel in adjusted)
+
+
+def _token_candidates(tokens: tuple[str, ...]) -> dict[str, tuple[int, int, int]]:
+    candidates: dict[str, tuple[int, int, int]] = {}
+    for token in tokens:
+        candidates[token] = _rgb(token)
+        # Mermaid 11.16.0 Kanban paints each reachable cScale color through
+        # khroma lighten(color, 10). Keep the canonical token as the reporting
+        # identity while accepting that renderer-owned visible transformation.
+        candidates[f"{token}@lighten10"] = _lighten_rgb(token, 10)
+    return candidates
+
+
+def _canonical_token(candidate: str) -> str:
+    return candidate.split("@", 1)[0]
+
+
 def _signature_tokens(colorset: str) -> tuple[str, ...]:
     try:
         groups = COLORSET_GROUPS[colorset]
@@ -251,9 +275,9 @@ def analyze_visible_palette(
     tolerance: int = 6,
 ) -> dict[str, object]:
     expected_tokens = _signature_tokens(colorset)
-    expected_rgb = {token: _rgb(token) for token in expected_tokens}
+    expected_rgb = _token_candidates(expected_tokens)
     forbidden_tokens = _signature_tokens("colorset2") if colorset == "colorset1" else ()
-    forbidden_rgb = {token: _rgb(token) for token in forbidden_tokens}
+    forbidden_rgb = _token_candidates(forbidden_tokens)
     token_pixels = {token: 0.0 for token in expected_tokens}
     forbidden_pixels = {token: 0.0 for token in forbidden_tokens}
     painted_pixels = 0.0
@@ -265,17 +289,17 @@ def analyze_visible_palette(
             continue
         weight = alpha / 255.0
         painted_pixels += weight
-        token = _nearest_token(red, green, blue, expected_rgb, tolerance)
-        if token is not None:
-            token_pixels[token] += weight
+        candidate = _nearest_token(red, green, blue, expected_rgb, tolerance)
+        if candidate is not None:
+            token_pixels[_canonical_token(candidate)] += weight
             continue
         # Forbidden palette tokens must be exact. Browser font anti-aliasing can
         # create a few near-matching fringe pixels even when the SVG never
         # declares the forbidden color; real fills and strokes retain exact
         # full-opacity token pixels after rasterization.
-        forbidden = _nearest_token(red, green, blue, forbidden_rgb, 0)
-        if forbidden is not None:
-            forbidden_pixels[forbidden] += weight
+        forbidden_candidate = _nearest_token(red, green, blue, forbidden_rgb, 0)
+        if forbidden_candidate is not None:
+            forbidden_pixels[_canonical_token(forbidden_candidate)] += weight
 
     visible_tokens = sorted(
         token for token, count in token_pixels.items() if count >= min_pixels_per_color

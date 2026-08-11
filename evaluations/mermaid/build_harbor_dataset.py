@@ -1478,6 +1478,269 @@ HARD_SEALED_HOLDOUT_V6_TASKS = (
 )
 
 
+MAX_CAPACITY_DEVELOPMENT_TASKS = (
+    TaskSpec(
+        task_id="capacity-dev-mindmap-standard",
+        split="development",
+        prompt="""Create a Mermaid mindmap that consumes every distinct first-level branch color once before cycling. Use the root label `Capacity map`. Name its direct children `Mind branch 01`, `Mind branch 02`, and so on, stopping exactly at Mermaid 11.16.0's last non-cycling first-level branch. Add no deeper child levels. Use the standard palette.""",
+        family="mindmap",
+        declarations=("mindmap",),
+        colorset="colorset1",
+        required_terms=("Capacity map",)
+        + tuple(f"Mind branch {index:02d}" for index in range(1, 12)),
+        patterns=tuple(
+            rf"^\s+Mind branch {index:02d}\s*$" for index in range(1, 12)
+        ),
+        forbidden_patterns=(r"Mind branch 12",),
+        minimum_indented_lines=11,
+        visible_terms=("Capacity map", "Mind branch 01", "Mind branch 06", "Mind branch 11"),
+        minimum_rendered_text_items=12,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("primary",),
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-dev-gitgraph-extended",
+        split="development",
+        prompt="""Create a Mermaid GitGraph that consumes every branch color exactly once before cycling. Count the main branch as the first branch. Give main one commit named `main-slot`, then create sequential branches `branch-01`, `branch-02`, and so on through Mermaid 11.16.0's final distinct branch slot; give each branch one matching commit and return to main before creating the next. Stop before the palette cycles. Use the extended full-color palette.""",
+        family="gitGraph",
+        declarations=("gitGraph",),
+        colorset="colorset2",
+        required_terms=("main-slot",)
+        + tuple(f"branch-{index:02d}" for index in range(1, 8)),
+        patterns=tuple(
+            rf"^\s*branch\s+branch-{index:02d}\s*$" for index in range(1, 8)
+        ),
+        forbidden_patterns=(r"branch-08",),
+        visible_terms=("main", "branch-01", "branch-04", "branch-07"),
+        minimum_rendered_text_items=8,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.02,
+    ),
+    TaskSpec(
+        task_id="capacity-dev-journey-boundary-standard",
+        split="development",
+        prompt="""Create a Mermaid Journey that demonstrates its reachable section-color boundary. Use one task per section. Consume every distinct reachable section class once, then add exactly one more section that proves the first color cycle. Name sections sequentially `Journey slot 01`, `Journey slot 02`, and so on; name their tasks `Step 01`, `Step 02`, and so on. Use agent `Owner` and the standard palette.""",
+        family="journey",
+        declarations=("journey",),
+        colorset="colorset1",
+        required_terms=tuple(f"Journey slot {index:02d}" for index in range(1, 9))
+        + tuple(f"Step {index:02d}" for index in range(1, 9)),
+        patterns=tuple(
+            rf"^\s*section\s+Journey slot {index:02d}\s*$"
+            for index in range(1, 9)
+        ),
+        forbidden_patterns=(r"Journey slot 09", r"Step 09"),
+        visible_terms=("Journey slot 01", "Journey slot 07", "Journey slot 08", "Step 08"),
+        minimum_rendered_text_items=16,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("primary",),
+        minimum_palette_ratio=0.01,
+    ),
+)
+
+
+MAX_CAPACITY_HOLDOUT_TASKS = (
+    TaskSpec(
+        task_id="capacity-holdout-radar-extended",
+        split="holdout",
+        prompt="""Create a Mermaid Radar chart that consumes every non-cycling curve color exactly once. Use axes `Quality`, `Speed`, `Cost`, and `Reliability`. Name curves sequentially `Radar curve 01`, `Radar curve 02`, and so on, stopping at Mermaid 11.16.0's last distinct curve slot. Give every curve four values from 1 to 5 and keep every curve visible. Use the extended full-color palette.""",
+        family="radar",
+        declarations=("radar-beta",),
+        colorset="colorset2",
+        required_terms=("Quality", "Speed", "Cost", "Reliability")
+        + tuple(f"Radar curve {index:02d}" for index in range(1, 13)),
+        patterns=tuple(
+            rf"^\s*curve\s+\w+\[\"Radar curve {index:02d}\"\]"
+            for index in range(1, 13)
+        ),
+        forbidden_patterns=(r"Radar curve 13",),
+        visible_terms=("Radar curve 01", "Radar curve 06", "Radar curve 12"),
+        minimum_rendered_text_items=16,
+        maximum_aspect_ratio=6.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.02,
+    ),
+    TaskSpec(
+        task_id="capacity-holdout-treemap-standard",
+        split="holdout",
+        prompt="""Create a Mermaid Treemap that consumes every non-cycling group color exactly once. Use root `Capacity portfolio`. Add sequential direct groups `Treemap group 01`, `Treemap group 02`, and so on through Mermaid 11.16.0's final distinct group slot. Give each group exactly one matching leaf `Leaf 01`, `Leaf 02`, and so on, with descending positive integer values. Stop before the group palette cycles. Use the standard palette and keep every leaf label visible.""",
+        family="treemap",
+        declarations=("treemap-beta",),
+        colorset="colorset1",
+        required_terms=("Capacity portfolio",)
+        + tuple(f"Treemap group {index:02d}" for index in range(1, 13))
+        + tuple(f"Leaf {index:02d}" for index in range(1, 13)),
+        patterns=tuple(
+            rf"\"Treemap group {index:02d}\"" for index in range(1, 13)
+        )
+        + tuple(rf"\"Leaf {index:02d}\"\s*:" for index in range(1, 13)),
+        forbidden_patterns=(r"Treemap group 13", r"Leaf 13"),
+        visible_terms=("Leaf 01", "Leaf 06", "Leaf 12"),
+        minimum_rendered_text_items=25,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("primary",),
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-holdout-kanban-extended",
+        split="holdout",
+        prompt="""Create a Mermaid Kanban board that consumes every column color Mermaid 11.16.0 can reach before its generated section rules stop. Name columns sequentially `Kanban slot 01`, `Kanban slot 02`, and so on through the last reachable colored column. Put exactly one matching task `Work 01`, `Work 02`, and so on in each column. Do not add an uncolored overflow column. Use the extended full-color palette.""",
+        family="kanban",
+        declarations=("kanban",),
+        colorset="colorset2",
+        required_terms=tuple(f"Kanban slot {index:02d}" for index in range(1, 11))
+        + tuple(f"Work {index:02d}" for index in range(1, 11)),
+        patterns=tuple(
+            rf"Kanban slot {index:02d}" for index in range(1, 11)
+        ),
+        forbidden_patterns=(r"Kanban slot 11", r"Work 11"),
+        visible_terms=("Kanban slot 01", "Kanban slot 05", "Kanban slot 10", "Work 10"),
+        minimum_rendered_text_items=20,
+        maximum_aspect_ratio=12.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+)
+
+
+# The v1 holdout is retained verbatim as historical evidence. Its failures were
+# opened as v2 development evidence; the v2 holdout below uses new families and
+# prompts so it remains disjoint and untouched until promotion time.
+MAX_CAPACITY_V2_DEVELOPMENT_TASKS = (
+    TaskSpec(
+        task_id="capacity-v2-dev-radar-extended",
+        split="development",
+        prompt="""Create a Mermaid Radar chart that consumes every non-cycling curve color exactly once. Use axes `Quality`, `Speed`, `Cost`, and `Reliability`. Name curves sequentially `Radar curve 01`, `Radar curve 02`, and so on, stopping at Mermaid 11.16.0's last distinct curve slot. Give every curve four values from 1 to 5 and keep every curve visible. Use the extended full-color palette.""",
+        family="radar",
+        declarations=("radar-beta",),
+        colorset="colorset2",
+        required_terms=("Quality", "Speed", "Cost", "Reliability")
+        + tuple(f"Radar curve {index:02d}" for index in range(1, 13)),
+        patterns=tuple(
+            rf"^\s*curve\s+\w+\[\"Radar curve {index:02d}\"\]"
+            for index in range(1, 13)
+        ),
+        forbidden_patterns=(r"Radar curve 13",),
+        visible_terms=("Radar curve 01", "Radar curve 06", "Radar curve 12"),
+        minimum_rendered_text_items=16,
+        maximum_aspect_ratio=6.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-v2-dev-treemap-standard",
+        split="development",
+        prompt="""Create a Mermaid Treemap that consumes every non-cycling named hierarchy color exactly once. Use the named wrapper root `Capacity portfolio`; remember that this wrapper owns the first visible color. Add sequential direct groups `Treemap group 01`, `Treemap group 02`, and so on through the last child group that remains colored before cycling. Give each group exactly one matching leaf `Leaf 01`, `Leaf 02`, and so on, with descending positive integer values. Use the standard palette and keep every leaf label visible.""",
+        family="treemap",
+        declarations=("treemap-beta",),
+        colorset="colorset1",
+        required_terms=("Capacity portfolio",)
+        + tuple(f"Treemap group {index:02d}" for index in range(1, 12))
+        + tuple(f"Leaf {index:02d}" for index in range(1, 12)),
+        patterns=tuple(
+            rf"\"Treemap group {index:02d}\"" for index in range(1, 12)
+        )
+        + tuple(rf"\"Leaf {index:02d}\"\s*:" for index in range(1, 12)),
+        forbidden_patterns=(r"Treemap group 12", r"Leaf 12"),
+        visible_terms=("Leaf 01", "Leaf 06", "Leaf 11"),
+        minimum_rendered_text_items=23,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("primary",),
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-v2-dev-kanban-extended",
+        split="development",
+        prompt="""Create a Mermaid Kanban board that consumes every column color Mermaid 11.16.0 can reach before its generated section rules stop. Name columns sequentially `Kanban slot 01`, `Kanban slot 02`, and so on through the last reachable colored column. Put exactly one matching task `Work 01`, `Work 02`, and so on in each column. Do not add an uncolored overflow column. Use the extended full-color palette.""",
+        family="kanban",
+        declarations=("kanban",),
+        colorset="colorset2",
+        required_terms=tuple(f"Kanban slot {index:02d}" for index in range(1, 11))
+        + tuple(f"Work {index:02d}" for index in range(1, 11)),
+        patterns=tuple(rf"Kanban slot {index:02d}" for index in range(1, 11)),
+        forbidden_patterns=(r"Kanban slot 11", r"Work 11"),
+        visible_terms=("Kanban slot 01", "Kanban slot 05", "Kanban slot 10", "Work 10"),
+        minimum_rendered_text_items=20,
+        maximum_aspect_ratio=24.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+)
+
+
+MAX_CAPACITY_V2_HOLDOUT_TASKS = (
+    TaskSpec(
+        task_id="capacity-v2-holdout-timeline-extended",
+        split="holdout",
+        prompt="""Create a Mermaid Timeline that consumes every section color exactly once before cycling. Name sections sequentially `Timeline slot 01`, `Timeline slot 02`, and so on through Mermaid 11.16.0's final distinct section slot. Give each section exactly one matching dated event `Event 01`, `Event 02`, and so on, using consecutive ISO dates beginning 2040-01-01. Stop before the palette cycles and use the extended full-color palette.""",
+        family="timeline",
+        declarations=("timeline",),
+        colorset="colorset2",
+        required_terms=tuple(f"Timeline slot {index:02d}" for index in range(1, 13))
+        + tuple(f"Event {index:02d}" for index in range(1, 13)),
+        patterns=tuple(
+            rf"^\s*section\s+Timeline slot {index:02d}\s*$"
+            for index in range(1, 13)
+        ),
+        forbidden_patterns=(r"Timeline slot 13", r"Event 13"),
+        visible_terms=("Timeline slot 01", "Timeline slot 06", "Timeline slot 12", "Event 12"),
+        minimum_rendered_text_items=24,
+        maximum_aspect_ratio=10.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-v2-holdout-pie-extended",
+        split="holdout",
+        prompt="""Create a Mermaid Pie chart that consumes every slice color exactly once before cycling. Name slices sequentially `Pie slot 01`, `Pie slot 02`, and so on through Mermaid 11.16.0's final distinct slice slot. Assign descending positive integer values, show the data, stop before the palette cycles, and use the extended full-color palette.""",
+        family="pie",
+        declarations=("pie",),
+        colorset="colorset2",
+        required_terms=tuple(f"Pie slot {index:02d}" for index in range(1, 13)),
+        patterns=tuple(
+            rf"[\"']Pie slot {index:02d}[\"']\s*:\s*\d+"
+            for index in range(1, 13)
+        ),
+        forbidden_patterns=(r"Pie slot 13",),
+        visible_terms=("Pie slot 01", "Pie slot 06", "Pie slot 12"),
+        minimum_rendered_text_items=24,
+        maximum_aspect_ratio=4.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.05,
+    ),
+    TaskSpec(
+        task_id="capacity-v2-holdout-venn-extended",
+        split="holdout",
+        prompt="""Create a Mermaid Venn diagram that consumes every distinct set color exactly once before cycling. Declare independent sets with stable IDs `S01`, `S02`, and so on and labels `Venn set 01`, `Venn set 02`, and so on through Mermaid 11.16.0's final distinct set slot. Give them descending positive sizes, declare no intersections, stop before the palette cycles, and use the extended full-color palette.""",
+        family="venn",
+        declarations=("venn-beta",),
+        colorset="colorset2",
+        required_terms=tuple(f"S{index:02d}" for index in range(1, 9))
+        + tuple(f"Venn set {index:02d}" for index in range(1, 9)),
+        patterns=tuple(
+            rf"^\s*set\s+S{index:02d}\[\"Venn set {index:02d}\"\]\s*:\s*\d+"
+            for index in range(1, 9)
+        ),
+        forbidden_patterns=(r"S09", r"Venn set 09"),
+        visible_terms=("Venn set 01", "Venn set 04", "Venn set 08"),
+        minimum_rendered_text_items=8,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.002,
+    ),
+)
+
+
 TASK_PROFILES = {
     "visible-v6": TASKS,
     "pareto-v1": PARETO_TASKS,
@@ -1495,6 +1758,8 @@ TASK_PROFILES = {
     "hard-final-v6": HARD_VISIBILITY_DEVELOPMENT_TASKS + HARD_SEALED_HOLDOUT_V6_TASKS,
     "hard-visibility-smoke": HARD_VISIBILITY_DEVELOPMENT_TASKS[-1:] + PARETO_SEALED_HOLDOUT_TASKS[:1],
     "hard-visibility-discovery": HARD_VISIBILITY_DEVELOPMENT_TASKS + PARETO_SEALED_HOLDOUT_TASKS[:1],
+    "max-capacity-v1": MAX_CAPACITY_DEVELOPMENT_TASKS + MAX_CAPACITY_HOLDOUT_TASKS,
+    "max-capacity-v2": MAX_CAPACITY_V2_DEVELOPMENT_TASKS + MAX_CAPACITY_V2_HOLDOUT_TASKS,
 }
 
 

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "mermaidVersion": "11.16.0",
+  "purpose": "Exercise every finite palette capacity and account for every Mermaid family that allows multiple elements.",
+  "semanticClasses": [
+    "csPrimary",
+    "csAccent",
+    "csMuted",
+    "csCritical",
+    "csWarning",
+    "csSuccess",
+    "csInfo",
+    "csSpecial",
+    "csNeutral"
+  ],
+  "renderContracts": {
+    "journey": {
+      "ranges": [{"prefix":"class=\"journey-section section-type-","suffix":"\"","start":0,"end":6}],
+      "counts": [{"token":"class=\"journey-section section-type-0\"","count":6}],
+      "styleRanges": [{"prefix":"fillType","start":0,"end":6}],
+      "cssBindings": [{"selectorTemplate":".section-type-{index}","selectorStart":0,"selectorEnd":6,"themePrefix":"fillType","themeStart":0,"property":"fill"}]
+    },
+    "pie": {
+      "counts": [{"token":"class=\"slice\"","count":12}],
+      "styleRanges": [{"prefix":"pie","start":1,"end":12}]
+    },
+    "gitGraph": {
+      "ranges": [
+        {"prefix":"class=\"branch branch","suffix":"\"","start":0,"end":7},
+        {"prefix":"class=\"branchLabelBkg label","suffix":"\"","start":0,"end":7}
+      ],
+      "styleRanges": [
+        {"prefix":"git","start":0,"end":7},
+        {"prefix":"gitInv","start":0,"end":7},
+        {"prefix":"gitBranchLabel","start":0,"end":7}
+      ],
+      "cssBindings": [{"selectorTemplate":".commit{index}","selectorStart":0,"selectorEnd":7,"themePrefix":"git","themeStart":0,"property":"fill"}]
+    },
+    "mindmap": {
+      "tokens": ["class=\"node mindmap-node section-root section--1\""],
+      "ranges": [{"prefix":"class=\"node mindmap-node section-","suffix":"\"","start":0,"end":10}],
+      "styleRanges": [{"prefix":"cScale","start":0,"end":11}],
+      "cssBindings": [{"selectorTemplate":".section-{index} rect","selectorStart":-1,"selectorEnd":10,"themePrefix":"cScale","themeStart":0,"property":"fill"}]
+    },
+    "timeline": {
+      "ranges": [{"prefix":"class=\"timeline-node section-","suffix":"\"","start":-1,"end":10}],
+      "styleRanges": [{"prefix":"cScale","start":0,"end":11}],
+      "cssBindings": [{"selectorTemplate":".section-{index} rect","selectorStart":-1,"selectorEnd":10,"themePrefix":"cScale","themeStart":0,"property":"fill"}]
+    },
+    "sankey": {
+      "counts": [{"token":"class=\"node\"","count":8}],
+      "sankeyNodeColors": true
+    },
+    "xyChart": {
+      "tokens": ["class=\"bar-plot-0\"","class=\"line-plot-1\"","class=\"bar-plot-2\"","class=\"line-plot-3\"","class=\"bar-plot-4\"","class=\"line-plot-5\""],
+      "xyPaletteColors": true
+    },
+    "kanban": {
+      "ranges": [{"prefix":"class=\"cluster undefined section-","suffix":"\"","start":1,"end":10}],
+      "styleRanges": [{"prefix":"cScale","start":2,"end":11}],
+      "cssBindings": [{"selectorTemplate":".section-{index} rect","selectorStart":1,"selectorEnd":10,"themePrefix":"cScale","themeStart":2,"property":"fill","transform":"lighten","amount":10}]
+    },
+    "radar": {
+      "ranges": [{"prefix":"class=\"radarCurve-","suffix":"\"","start":0,"end":11}],
+      "styleRanges": [{"prefix":"cScale","start":0,"end":11}],
+      "cssBindings": [{"selectorTemplate":".radarCurve-{index}","selectorStart":0,"selectorEnd":11,"themePrefix":"cScale","themeStart":0,"property":"fill"}]
+    },
+    "treemap": {
+      "ranges": [
+        {"prefix":"class=\"treemapNode treemapLeafGroup leaf","suffix":"x\"","start":0,"end":10},
+        {"prefix":"class=\"treemapSection section","suffix":"\"","start":1,"end":12}
+      ],
+      "styleRanges": [{"prefix":"cScale","start":0,"end":11}]
+    },
+    "venn": {
+      "ranges": [{"prefix":"class=\"venn-area venn-circle venn-set-","suffix":"\"","start":0,"end":7}],
+      "styleRanges": [{"prefix":"venn","start":1,"end":8}]
+    }
+  },
+  "families": [
+    {"id":"flowchart","source":"source/flowchart.mmd","capacityKind":"semantic-classes","maxSlots":9,"fixtureElementCount":9,"style":{"ranges":[{"prefix":"class:","start":0,"end":8}]},"probes":[{"prefix":"Flow role ","start":1,"end":9,"pad":2}]},
+    {"id":"swimlane","source":"source/swimlane.mmd","capacityKind":"semantic-classes","maxSlots":9,"fixtureElementCount":9,"style":{"ranges":[{"prefix":"class:","start":0,"end":8}]},"probes":[{"prefix":"Lane role ","start":1,"end":9,"pad":2}]},
+    {"id":"sequenceDiagram","source":"source/sequence.mmd","capacityKind":"unbounded-uniform","maxSlots":null,"fixtureElementCount":4,"requiredLabels":["Client","Gateway","Worker","Store"]},
+    {"id":"classDiagram","source":"source/class.mmd","capacityKind":"semantic-classes","maxSlots":9,"fixtureElementCount":9,"style":{"ranges":[{"prefix":"class:","start":0,"end":8}]},"probes":[{"prefix":"ClassRole","start":1,"end":9,"pad":2}]},
+    {"id":"stateDiagram","source":"source/state.mmd","capacityKind":"semantic-classes","maxSlots":9,"fixtureElementCount":9,"style":{"ranges":[{"prefix":"class:","start":0,"end":8}]},"probes":[{"prefix":"StateRole","start":1,"end":9,"pad":2}]},
+    {"id":"erDiagram","source":"source/er.mmd","capacityKind":"semantic-classes","maxSlots":9,"fixtureElementCount":9,"style":{"ranges":[{"prefix":"class:","start":0,"end":8}]},"probes":[{"prefix":"ENTITY_","start":1,"end":9,"pad":2}]},
+    {"id":"journey","source":"source/journey.mmd","capacityKind":"reachable-cycle","maxSlots":7,"fixtureElementCount":8,"style":{"ranges":[{"prefix":"fillType","start":0,"end":7}]},"probes":[{"prefix":"Journey slot ","start":1,"end":8,"pad":2}]},
+    {"id":"gantt","source":"source/gantt.mmd","capacityKind":"semantic-roles","maxSlots":6,"fixtureElementCount":6,"requiredLabels":["Normal task","Active task","Done task","Critical task","Active critical task","Done critical task"]},
+    {"id":"pie","source":"source/pie.mmd","capacityKind":"fixed-cycle","maxSlots":12,"fixtureElementCount":12,"style":{"ranges":[{"prefix":"pie","start":1,"end":12}]},"probes":[{"prefix":"Pie slot ","start":1,"end":12,"pad":2}]},
+    {"id":"quadrantChart","source":"source/quadrant.mmd","capacityKind":"semantic-roles","maxSlots":4,"fixtureElementCount":4,"style":{"ranges":[{"prefix":"quadrant","suffix":"Fill","start":1,"end":4}]},"probes":[{"prefix":"Quadrant point ","start":1,"end":4,"pad":2}]},
+    {"id":"requirementDiagram","source":"source/requirement.mmd","capacityKind":"semantic-classes","maxSlots":9,"fixtureElementCount":9,"style":{"ranges":[{"prefix":"class:","start":0,"end":8}]},"probes":[{"prefix":"REQ-","start":1,"end":9,"pad":2}]},
+    {"id":"gitGraph","source":"source/gitgraph.mmd","capacityKind":"fixed-cycle","maxSlots":8,"fixtureElementCount":8,"style":{"ranges":[{"prefix":"git","start":0,"end":7},{"prefix":"gitInv","start":0,"end":7},{"prefix":"gitBranchLabel","start":0,"end":7}]},"requiredLabels":["main","branch-01","branch-02","branch-03","branch-04","branch-05","branch-06","branch-07"]},
+    {"id":"c4","source":"source/c4.mmd","capacityKind":"unbounded-uniform","maxSlots":null,"fixtureElementCount":4,"requiredLabels":["User","API","Database","Queue"]},
+    {"id":"mindmap","source":"source/mindmap.mmd","capacityKind":"fixed-cycle","maxSlots":12,"fixtureElementCount":12,"style":{"exact":["THEME_COLOR_LIMIT","git0","gitBranchLabel0"],"ranges":[{"prefix":"cScale","start":0,"end":11},{"prefix":"cScaleLabel","start":0,"end":11},{"prefix":"cScaleInv","start":0,"end":11}]},"probes":[{"prefix":"Mind branch ","start":1,"end":11,"pad":2}],"requiredLabels":["Mind root"]},
+    {"id":"timeline","source":"source/timeline.mmd","capacityKind":"fixed-cycle","maxSlots":12,"fixtureElementCount":12,"style":{"exact":["THEME_COLOR_LIMIT"],"ranges":[{"prefix":"cScale","start":0,"end":11},{"prefix":"cScaleLabel","start":0,"end":11},{"prefix":"cScaleInv","start":0,"end":11}]},"probes":[{"prefix":"Timeline slot ","start":1,"end":12,"pad":2}]},
+    {"id":"zenuml","source":"source/zenuml.mmd","capacityKind":"unbounded-uniform","maxSlots":null,"fixtureElementCount":3,"requiredLabels":["Client","Gateway","Worker"]},
+    {"id":"sankey","source":"source/sankey.mmd","capacityKind":"configured-cycle","maxSlots":8,"fixtureElementCount":8,"style":{"sankeyNodeCount":8},"probes":[{"prefix":"Sankey node ","start":1,"end":8,"pad":2}]},
+    {"id":"xyChart","source":"source/xychart.mmd","capacityKind":"configured-cycle","maxSlots":6,"fixtureElementCount":6,"style":{"xyPalette":{"colorset1":5,"colorset2":6},"plotDirectiveCount":6},"requiredLabels":["XY configured palette capacity"]},
+    {"id":"block","source":"source/block.mmd","capacityKind":"semantic-classes","maxSlots":9,"fixtureElementCount":9,"style":{"ranges":[{"prefix":"class:","start":0,"end":8}]},"probes":[{"prefix":"Block role ","start":1,"end":9,"pad":2}]},
+    {"id":"packet","source":"source/packet.mmd","capacityKind":"unbounded-uniform","maxSlots":null,"fixtureElementCount":8,"probes":[{"prefix":"Field ","start":1,"end":8,"pad":2}]},
+    {"id":"kanban","source":"source/kanban.mmd","capacityKind":"reachable-cycle","maxSlots":10,"fixtureElementCount":10,"style":{"exact":["THEME_COLOR_LIMIT"],"ranges":[{"prefix":"cScale","start":0,"end":11},{"prefix":"cScaleLabel","start":0,"end":11},{"prefix":"cScaleInv","start":0,"end":11}]},"probes":[{"prefix":"Kanban slot ","start":1,"end":10,"pad":2}]},
+    {"id":"architecture","source":"source/architecture.mmd","capacityKind":"semantic-roles","maxSlots":2,"fixtureElementCount":6,"style":{"exact":["archEdgeColor","archEdgeArrowColor","archGroupBorderColor"]},"requiredLabels":["Ingress","API","Worker","Database","Queue","Archive"]},
+    {"id":"radar","source":"source/radar.mmd","capacityKind":"fixed-cycle","maxSlots":12,"fixtureElementCount":12,"style":{"exact":["THEME_COLOR_LIMIT","radar"],"ranges":[{"prefix":"cScale","start":0,"end":11}]},"probes":[{"prefix":"Radar curve ","start":1,"end":12,"pad":2}]},
+    {"id":"eventmodeling","source":"source/eventmodeling.mmd","capacityKind":"semantic-roles","maxSlots":5,"fixtureElementCount":5,"style":{"exact":["emUiFill","emUiStroke","emProcessorFill","emProcessorStroke","emReadModelFill","emReadModelStroke","emCommandFill","emCommandStroke","emEventFill","emEventStroke","emArrowhead","emRelationStroke"]},"requiredLabels":["UserInterface","Processor","ReadModel","Command","Event"]},
+    {"id":"treemap","source":"source/treemap.mmd","capacityKind":"fixed-cycle","maxSlots":12,"fixtureElementCount":12,"style":{"exact":["THEME_COLOR_LIMIT"],"ranges":[{"prefix":"cScale","start":0,"end":11},{"prefix":"cScalePeer","start":0,"end":11},{"prefix":"cScaleLabel","start":0,"end":11}]},"probes":[{"prefix":"Treemap group ","start":1,"end":11,"pad":2}],"requiredLabels":["Treemap capacity"],"renderProbes":[{"prefix":"Leaf ","start":1,"end":11,"pad":2}]},
+    {"id":"venn","source":"source/venn.mmd","capacityKind":"fixed-cycle","maxSlots":8,"fixtureElementCount":8,"style":{"ranges":[{"prefix":"venn","start":1,"end":8}]},"probes":[{"prefix":"Venn set ","start":1,"end":8,"pad":2}]},
+    {"id":"ishikawa","source":"source/ishikawa.mmd","capacityKind":"unbounded-uniform","maxSlots":null,"fixtureElementCount":8,"requiredLabels":["Process","People","Platform","Policy"]},
+    {"id":"wardley","source":"source/wardley.mmd","capacityKind":"semantic-roles","maxSlots":4,"fixtureElementCount":6,"style":{"exact":["wardleyEvolutionColor","wardley"]},"requiredLabels":["User","Interface","API","Worker","Database","Archive"]},
+    {"id":"cynefin","source":"source/cynefin.mmd","capacityKind":"semantic-roles","maxSlots":5,"fixtureElementCount":5,"style":{"exact":["cynefin"]},"requiredLabels":["Complex item","Complicated item","Clear item","Chaotic item","Confusion item"]},
+    {"id":"treeView","source":"source/treeview.mmd","capacityKind":"unbounded-uniform","maxSlots":null,"fixtureElementCount":8,"requiredLabels":["src/","tests/","reports/"],"renderRequiredLabels":["src","tests","reports"]},
+    {"id":"railroad","source":"source/railroad.mmd","capacityKind":"semantic-roles","maxSlots":4,"fixtureElementCount":6,"requiredLabels":["identifier","expression","number","operator"]}
+  ]
+}
