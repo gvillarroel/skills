@@ -172,6 +172,23 @@ FAMILY_FUNCTIONAL_CONFIG_KEYS = {
     "treemap": TREEMAP_FUNCTIONAL_CONFIG_KEYS,
 }
 
+SEMANTIC_CAPACITY_LAYOUTS: dict[str, tuple[str, dict[str, int]]] = {
+    "erDiagram": (
+        "er",
+        {
+            "minEntityWidth": 180,
+            "rankSpacing": 20,
+        },
+    ),
+    "swimlane": (
+        "flowchart",
+        {
+            "nodeSpacing": 10,
+            "rankSpacing": 20,
+        },
+    ),
+}
+
 CORE_THEME_KEYS = [
     "background",
     "primaryColor",
@@ -818,11 +835,17 @@ def colorset_config(
     family: str | None = None,
     source: str = "",
     functional_options: dict[str, object] | None = None,
+    existing_config_keys: set[str] | None = None,
 ) -> dict[str, object]:
     config: dict[str, object] = {
         "theme": "base",
         "themeVariables": theme_variables(colorset, family),
     }
+    layout = SEMANTIC_CAPACITY_LAYOUTS.get(family or "")
+    if layout and set(referenced_color_classes(source)) == COLOR_CLASSES:
+        config_key, defaults = layout
+        if config_key not in (existing_config_keys or set()):
+            config[config_key] = dict(defaults)
     if family == "sankey":
         config["sankey"] = {
             **(functional_options or {}),
@@ -860,10 +883,18 @@ def generated_config_lines(
     indent: int = 0,
     source: str = "",
     functional_options: dict[str, object] | None = None,
+    existing_config_keys: set[str] | None = None,
 ) -> list[str]:
     prefix = " " * indent
     return [f"{prefix}{CONFIG_BEGIN}"] + yaml_mapping_lines(
-        colorset_config(colorset, family, source, functional_options), indent
+        colorset_config(
+            colorset,
+            family,
+            source,
+            functional_options,
+            existing_config_keys,
+        ),
+        indent,
     ) + [f"{prefix}{CONFIG_END}"]
 
 
@@ -880,7 +911,11 @@ def colorset_frontmatter(
 ) -> str:
     lines = ["---"]
     lines.extend([CONFIG_BEGIN, "config:"])
-    lines.extend(yaml_mapping_lines(colorset_config(colorset, family, source, functional_options), 2))
+    lines.extend(
+        yaml_mapping_lines(
+            colorset_config(colorset, family, source, functional_options), 2
+        )
+    )
     lines.append(CONFIG_END)
     lines.extend(generated_metadata_lines(colorset))
     lines.append("---")
@@ -971,6 +1006,25 @@ def child_indent(lines: list[str], start: int, end: int) -> int:
         if line.strip() and not line.lstrip().startswith("#") and leading_spaces(line) > leading_spaces(lines[start])
     ]
     return min(indents) if indents else leading_spaces(lines[start]) + 2
+
+
+def existing_config_child_keys(frontmatter: str) -> set[str]:
+    if not frontmatter:
+        return set()
+    lines = frontmatter.splitlines()[1:-1]
+    config_index = find_top_level_key(lines, "config")
+    if config_index is None:
+        return set()
+    end = find_mapping_end(lines, config_index)
+    indent = child_indent(lines, config_index, end)
+    keys: set[str] = set()
+    for line in lines[config_index + 1 : end]:
+        if leading_spaces(line) != indent or line.lstrip().startswith("#"):
+            continue
+        match = re.match(r"(?P<key>[A-Za-z_][A-Za-z0-9_-]*)\s*:", line.strip())
+        if match:
+            keys.add(match.group("key"))
+    return keys
 
 
 def parse_simple_yaml_scalar(value: str) -> object:
@@ -1074,6 +1128,8 @@ def inject_colorset_frontmatter(
     if not clean_frontmatter:
         return colorset_frontmatter(colorset, family, source, functional_options)
 
+    existing_config_keys = existing_config_child_keys(clean_frontmatter)
+
     lines = clean_frontmatter.splitlines()
     body = lines[1:-1]
     config_index = find_top_level_key(body, "config")
@@ -1081,14 +1137,30 @@ def inject_colorset_frontmatter(
         if body and body[-1].strip():
             body.append("")
         body.extend([CONFIG_BEGIN, "config:"])
-        body.extend(yaml_mapping_lines(colorset_config(colorset, family, source, functional_options), 2))
+        body.extend(
+            yaml_mapping_lines(
+                colorset_config(
+                    colorset,
+                    family,
+                    source,
+                    functional_options,
+                    existing_config_keys,
+                ),
+                2,
+            )
+        )
         body.append(CONFIG_END)
     else:
         end = find_mapping_end(body, config_index)
         indent = child_indent(body, config_index, end)
         cleaned_config = remove_config_style_keys(body, config_index, end, indent, family)
         body = body[: config_index + 1] + cleaned_config + generated_config_lines(
-            colorset, family, indent, source, functional_options
+            colorset,
+            family,
+            indent,
+            source,
+            functional_options,
+            existing_config_keys,
         ) + body[end:]
 
     if body and body[-1].strip():

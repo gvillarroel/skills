@@ -56,4 +56,11 @@ Use the assignment form that the selected grammar renders:
 - Class diagram declarations: `class ClassRole01:::csPrimary`. A separate `class ClassRole01 csPrimary` line is parsed as another class, not as styling.
 - State, ER, Requirement, and Block elements: declare the element first, then use `class R01 csPrimary`. Block diagrams do not accept the inline `:::` form reliably.
 
+At the full nine-role boundary, the styler adds compact Mermaid 11.16.0 layout defaults when no explicit family layout is present:
+
+- ER uses `config.er.minEntityWidth: 180` and `rankSpacing: 20`; keep `direction TB` for a long linear chain. This prevents nine short entity IDs from rendering as an excessively narrow column.
+- Swimlane uses `config.flowchart.nodeSpacing: 10` and `rankSpacing: 20`. Prefer `swimlane-beta TB` for three dense lanes unless left-to-right order is itself required; the compact LR form remains suitable when direction matters.
+
+Explicit user layout settings take precedence. In State diagrams, an alias replaces the visible state ID. When the input supplies IDs without separate display labels, use the IDs directly; do not invent `state "Label" as ID` aliases that hide required visible terms.
+
 For families with unlimited, uniformly styled elements, do not claim a finite maximum. Use multiple elements to prove parsing and layout, and validate every distinct visual role the family actually exposes.

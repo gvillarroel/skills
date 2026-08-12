@@ -85,6 +85,44 @@ class MaximumElementCoverageTests(unittest.TestCase):
                 self.assertEqual(second_metadata["family"], case["id"])
                 self.assertEqual(restyled, styled)
 
+    def test_dense_semantic_er_and_swimlane_receive_compact_layouts(self) -> None:
+        cases = {
+            case["id"]: case
+            for case in manifest["families"]
+            if case["id"] in {"erDiagram", "swimlane"}
+        }
+        er_styled, _ = styler.style_mermaid_block(
+            validator.source_for_case(manifest, cases["erDiagram"]), "colorset2"
+        )
+        self.assertIn("  er:\n    minEntityWidth: 180\n    rankSpacing: 20", er_styled)
+
+        swimlane_styled, _ = styler.style_mermaid_block(
+            validator.source_for_case(manifest, cases["swimlane"]), "colorset2"
+        )
+        self.assertIn(
+            "  flowchart:\n    nodeSpacing: 10\n    rankSpacing: 20",
+            swimlane_styled,
+        )
+
+    def test_dense_semantic_layout_preserves_explicit_user_spacing(self) -> None:
+        case = next(
+            case for case in manifest["families"] if case["id"] == "swimlane"
+        )
+        source = (
+            "---\n"
+            "config:\n"
+            "  flowchart:\n"
+            "    nodeSpacing: 77\n"
+            "    rankSpacing: 66\n"
+            "---\n"
+            + validator.source_for_case(manifest, case)
+        )
+        styled, _ = styler.style_mermaid_block(source, "colorset2")
+        self.assertEqual(styled.count("flowchart:"), 1)
+        self.assertIn("nodeSpacing: 77", styled)
+        self.assertIn("rankSpacing: 66", styled)
+        self.assertNotIn("nodeSpacing: 10", styled)
+
     def test_semantic_binding_gate_rejects_a_role_without_geometry(self) -> None:
         class_names = ["csPrimary", "csAccent"]
         declarations = "".join(

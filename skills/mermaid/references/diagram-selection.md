@@ -149,6 +149,7 @@ stateDiagram-v2
 ```
 
 In state diagrams, every transition operand must be an identifier. For labels with spaces or punctuation, declare `state "Human label" as StableId` once and use only `StableId` in transitions; never write `"Human label" --> ...`.
+An alias replaces the identifier in rendered text. If the input gives a stable ID but no separate human label, render that ID directly rather than inventing an alias; exact visible identifiers remain part of the fidelity contract.
 
 ```mermaid
 gantt
