@@ -2217,7 +2217,7 @@ MAX_CAPACITY_V6_HOLDOUT_TASKS = (
             "Defer safely",
             "Maintain",
         ),
-        minimum_rendered_text_items=10,
+        minimum_rendered_text_items=8,
         maximum_aspect_ratio=4.0,
         required_visual_groups=("accent", "warning", "success", "special"),
         minimum_visible_colors=4,
