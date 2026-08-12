@@ -26,6 +26,14 @@ kanban
     card01[Work 01]
 ```
 
+Radar axes and curves likewise require IDs before quoted bracketed labels:
+
+```mermaid
+radar-beta
+  axis a["Quality"], b["Speed"], c["Cost"]
+  curve c01["Radar curve 01"]{1, 2, 3}
+```
+
 ## Configured and semantic slots
 
 - The generated Sankey node map uses eight colors and cycles only after eight distinct node IDs.
