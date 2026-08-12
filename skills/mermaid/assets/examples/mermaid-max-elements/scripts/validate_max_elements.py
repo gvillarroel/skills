@@ -130,7 +130,7 @@ def rendered_color_forms(color: str) -> tuple[str, str, str]:
 
 
 def css_color_to_rgb(value: str) -> tuple[int, int, int] | None:
-    normalized = value.strip().lower()
+    normalized = re.sub(r"\s*!important\s*$", "", value.strip().lower())
     hex_match = re.fullmatch(r"#([0-9a-f]{6})", normalized)
     if hex_match:
         payload = hex_match.group(1)
@@ -415,6 +415,81 @@ def validate_inline_geometry_colors(
                 str(theme[f"venn{index + 1}"]),
                 findings,
             )
+
+
+def validate_semantic_class_bindings(
+    styler,
+    family: str,
+    colorset: str,
+    semantic_classes: list[str],
+    svg: str,
+    findings: list[str],
+) -> None:
+    """Prove every semantic role is bound to distinct rendered geometry."""
+
+    try:
+        root = ET.fromstring(svg)
+    except ET.ParseError as error:
+        findings.append(f"{family}/{colorset}: could not parse rendered SVG XML: {error}")
+        return
+
+    geometry_tags = {"circle", "ellipse", "path", "polygon", "rect"}
+    css_svg = html.unescape(svg)
+    carriers: dict[str, ET.Element] = {}
+    for class_name in semantic_classes:
+        carrier = next(
+            (
+                element
+                for element in root.iter()
+                if class_name in _class_tokens(element)
+                and any(_local_name(child) in geometry_tags for child in element.iter())
+            ),
+            None,
+        )
+        if carrier is None:
+            findings.append(
+                f"{family}/{colorset}: semantic role {class_name} is not bound "
+                "to rendered geometry"
+            )
+            continue
+        carriers[class_name] = carrier
+        expected_declaration = styler.class_style(colorset, class_name)
+        for property_name in ("fill", "stroke"):
+            expected_match = re.search(
+                rf"\b{property_name}:([^,;]+)", expected_declaration
+            )
+            actual_value = next(
+                (
+                    value
+                    for child in carrier.iter()
+                    if _local_name(child) in geometry_tags
+                    for value in [_paint_value(child, property_name)]
+                    if value
+                    and value.casefold() not in {"none", "transparent"}
+                ),
+                None,
+            )
+            if not actual_value or actual_value.casefold() in {"none", "transparent"}:
+                actual_value = css_property_for_selector(
+                    css_svg, f".{class_name}>*", property_name
+                )
+            expected_value = expected_match.group(1).strip() if expected_match else ""
+            _assert_geometry_color(
+                family,
+                colorset,
+                f"semantic role {class_name} {property_name}",
+                actual_value,
+                expected_value,
+                findings,
+            )
+
+    if len(carriers) == len(semantic_classes) and len(
+        {id(element) for element in carriers.values()}
+    ) != len(semantic_classes):
+        findings.append(
+            f"{family}/{colorset}: semantic roles are not bound to "
+            f"{len(semantic_classes)} distinct rendered elements"
+        )
 
 
 def iter_hex_colors(value: object) -> Iterable[str]:
@@ -801,7 +876,8 @@ def render_cases(
                 family = str(case["id"])
                 findings.extend(f"{family}/{colorset}: {item}" for item in approve_svg(svg_path))
                 if svg_path.is_file():
-                    svg = html.unescape(svg_path.read_text(encoding="utf-8", errors="replace"))
+                    raw_svg = svg_path.read_text(encoding="utf-8", errors="replace")
+                    svg = html.unescape(raw_svg)
                     normalized_text = normalized_svg_text(svg)
                     for label in rendered_probe_labels(case):
                         normalized_label = " ".join(label.split())
@@ -818,6 +894,18 @@ def render_cases(
                             colorset,
                             source_for_case(manifest, case),
                             svg,
+                            findings,
+                        )
+                    if case.get("capacityKind") == "semantic-classes":
+                        validate_semantic_class_bindings(
+                            styler,
+                            family,
+                            colorset,
+                            [
+                                str(value)
+                                for value in manifest.get("semanticClasses", [])
+                            ],
+                            raw_svg,
                             findings,
                         )
                     rendered[colorset][family] = svg_path

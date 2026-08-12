@@ -43,4 +43,10 @@ radar-beta
 - Gantt has no maximum task count. Exercise normal, active, done, critical, active-critical, and done-critical tasks instead of inventing a node limit.
 - Families for which `references/diagram-types.json` reports `classDef: true` can consume nine labeled roles: `csPrimary`, `csAccent`, `csMuted`, `csCritical`, `csWarning`, `csSuccess`, `csInfo`, `csSpecial`, and `csNeutral`. Use each role once to exercise the boundary; further elements may reuse roles by meaning.
 
+Use the assignment form that the selected grammar renders:
+
+- Flowchart and Swimlane nodes: `R01["Role 01"]:::csPrimary`.
+- Class diagram declarations: `class ClassRole01:::csPrimary`. A separate `class ClassRole01 csPrimary` line is parsed as another class, not as styling.
+- State, ER, Requirement, and Block elements: declare the element first, then use `class R01 csPrimary`. Block diagrams do not accept the inline `:::` form reliably.
+
 For families with unlimited, uniformly styled elements, do not claim a finite maximum. Use multiple elements to prove parsing and layout, and validate every distinct visual role the family actually exposes.

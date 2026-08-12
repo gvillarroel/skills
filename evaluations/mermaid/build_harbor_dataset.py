@@ -1978,6 +1978,139 @@ MAX_CAPACITY_V4_HOLDOUT_TASKS = (
 )
 
 
+# V4 exposed grammar-specific assignment rules and overly narrow aspect-ratio
+# contracts. Reopen those cases as corrected development tasks. V5 seals three
+# new semantic-class families that have never appeared in a capacity holdout.
+MAX_CAPACITY_V5_EXPOSED_OVERRIDES = {
+    "flowchart": {
+        "prompt": """Create a compact top-to-bottom Mermaid flowchart that exercises every semantic palette role exactly once in canonical order. Use stable node IDs `F01`, `F02`, and so on through the last role, with matching labels `Pipeline checkpoint 01`, `Pipeline checkpoint 02`, and so on. Attach each role inline with Mermaid's `:::` syntax, connect the nodes as one directed chain, add no overflow node, and use the extended full-color palette.""",
+        "patterns": tuple(
+            rf"F{index:02d}[^\n]*:::\s*{role}"
+            for index, role in enumerate(SEMANTIC_CLASS_ROLES, start=1)
+        ),
+        "maximum_aspect_ratio": 8.0,
+    },
+    "classDiagram": {
+        "prompt": """Create a compact top-to-bottom Mermaid class diagram that exercises every semantic palette role exactly once in canonical order. Declare stable classes `ServiceRole01`, `ServiceRole02`, and so on through the last role. Attach each role inline to its class declaration with `:::`, connect consecutive classes with directed associations, add no overflow class, and use the extended full-color palette.""",
+        "patterns": tuple(
+            rf"^\s*class\s+ServiceRole{index:02d}:::\s*{role}\s*$"
+            for index, role in enumerate(SEMANTIC_CLASS_ROLES, start=1)
+        ),
+        "maximum_aspect_ratio": 8.0,
+    },
+    "block": {
+        "prompt": """Create a Mermaid block diagram with three columns that exercises every semantic palette role exactly once in canonical order. Use stable block IDs `B01`, `B02`, and so on through the last role, with matching labels `Delivery tile 01`, `Delivery tile 02`, and so on. Lay them out as three complete rows, connect each row left to right, and assign roles with separate `class ID csRole` statements; do not use inline `:::` styling. Add no overflow block and use the extended full-color palette.""",
+        "patterns": tuple(
+            rf"^\s*class\s+B{index:02d}\s+{role}\s*$"
+            for index, role in enumerate(SEMANTIC_CLASS_ROLES, start=1)
+        ),
+        "maximum_aspect_ratio": 8.0,
+    },
+}
+
+
+MAX_CAPACITY_V5_DEVELOPMENT_TASKS = (
+    MAX_CAPACITY_V4_DEVELOPMENT_TASKS
+    + tuple(
+        replace(
+            spec,
+            task_id=spec.task_id.replace(
+                "capacity-v4-holdout-", "capacity-v5-dev-exposed-"
+            ),
+            split="development",
+            **MAX_CAPACITY_V5_EXPOSED_OVERRIDES[spec.family],
+        )
+        for spec in MAX_CAPACITY_V4_HOLDOUT_TASKS
+    )
+)
+
+
+MAX_CAPACITY_V5_HOLDOUT_TASKS = (
+    TaskSpec(
+        task_id="capacity-v5-holdout-swimlane-semantic-extended",
+        split="holdout",
+        prompt="""Create a Mermaid Swimlane diagram that exercises every semantic palette role exactly once in canonical order. Use three lanes named `Discovery lane`, `Delivery lane`, and `Assurance lane`. Use stable node IDs `W01`, `W02`, and so on through the last role, with matching labels `Work checkpoint 01`, `Work checkpoint 02`, and so on. Put three consecutive nodes in each lane, attach roles inline with `:::`, connect all nodes as one directed chain, add no overflow node, and use the extended full-color palette.""",
+        family="swimlane",
+        declarations=("swimlane-beta",),
+        colorset="colorset2",
+        required_terms=("Discovery lane", "Delivery lane", "Assurance lane")
+        + tuple(f"W{index:02d}" for index in range(1, 10))
+        + tuple(f"Work checkpoint {index:02d}" for index in range(1, 10))
+        + SEMANTIC_CLASS_ROLES,
+        patterns=tuple(
+            rf"W{index:02d}[^\n]*:::\s*{role}"
+            for index, role in enumerate(SEMANTIC_CLASS_ROLES, start=1)
+        )
+        + (
+            r"^\s*subgraph\s+\w+\s*\[Discovery lane\]\s*$",
+            r"^\s*subgraph\s+\w+\s*\[Delivery lane\]\s*$",
+            r"^\s*subgraph\s+\w+\s*\[Assurance lane\]\s*$",
+        ),
+        forbidden_patterns=(r"W10", r"Work checkpoint 10"),
+        minimum_arrow_count=8,
+        visible_terms=(
+            "Discovery lane",
+            "Work checkpoint 01",
+            "Work checkpoint 05",
+            "Work checkpoint 09",
+        ),
+        minimum_rendered_text_items=12,
+        maximum_aspect_ratio=32.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-v5-holdout-state-semantic-extended",
+        split="holdout",
+        prompt="""Create a compact top-to-bottom Mermaid state diagram that exercises every semantic palette role exactly once in canonical order. Use stable state IDs `LifecycleState01`, `LifecycleState02`, and so on through the last role. Connect consecutive states as one directed chain, assign roles with separate `class ID csRole` statements, add no overflow state, and use the extended full-color palette.""",
+        family="stateDiagram",
+        declarations=("stateDiagram", "stateDiagram-v2"),
+        colorset="colorset2",
+        required_terms=tuple(f"LifecycleState{index:02d}" for index in range(1, 10))
+        + SEMANTIC_CLASS_ROLES,
+        patterns=tuple(
+            rf"^\s*class\s+LifecycleState{index:02d}\s+{role}\s*$"
+            for index, role in enumerate(SEMANTIC_CLASS_ROLES, start=1)
+        ),
+        forbidden_patterns=(r"LifecycleState10",),
+        minimum_arrow_count=8,
+        visible_terms=("LifecycleState01", "LifecycleState05", "LifecycleState09"),
+        minimum_rendered_text_items=9,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-v5-holdout-er-semantic-extended",
+        split="holdout",
+        prompt="""Create a Mermaid ER diagram that exercises every semantic palette role exactly once in canonical order. Use stable entity IDs `DOMAIN_01`, `DOMAIN_02`, and so on through the last role. Connect each consecutive pair with an exactly-one to zero-or-many relationship labeled `feeds`, assign roles with separate `class ID csRole` statements, add no overflow entity, and use the extended full-color palette.""",
+        family="erDiagram",
+        declarations=("erDiagram",),
+        colorset="colorset2",
+        required_terms=tuple(f"DOMAIN_{index:02d}" for index in range(1, 10))
+        + ("feeds",)
+        + SEMANTIC_CLASS_ROLES,
+        patterns=tuple(
+            rf"^\s*class\s+DOMAIN_{index:02d}\s+{role}\s*$"
+            for index, role in enumerate(SEMANTIC_CLASS_ROLES, start=1)
+        )
+        + tuple(
+            rf"^\s*DOMAIN_{index:02d}\s+\|\|\s*--\s*o\{{\s+DOMAIN_{index + 1:02d}\s*:\s*feeds\s*$"
+            for index in range(1, 9)
+        ),
+        forbidden_patterns=(r"DOMAIN_10",),
+        visible_terms=("DOMAIN_01", "DOMAIN_05", "DOMAIN_09", "feeds"),
+        minimum_rendered_text_items=17,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+)
+
+
 TASK_PROFILES = {
     "visible-v6": TASKS,
     "pareto-v1": PARETO_TASKS,
@@ -2001,6 +2134,8 @@ TASK_PROFILES = {
     + MAX_CAPACITY_V3_HOLDOUT_TASKS,
     "max-capacity-v4-pareto": MAX_CAPACITY_V4_DEVELOPMENT_TASKS
     + MAX_CAPACITY_V4_HOLDOUT_TASKS,
+    "max-capacity-v5-pareto": MAX_CAPACITY_V5_DEVELOPMENT_TASKS
+    + MAX_CAPACITY_V5_HOLDOUT_TASKS,
 }
 
 

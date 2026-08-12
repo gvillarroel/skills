@@ -43,6 +43,76 @@ manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
 class MaximumCapacityDatasetTests(unittest.TestCase):
+    def test_v5_profile_reclassifies_v4_holdout_and_seals_new_families(self) -> None:
+        tasks = builder.TASK_PROFILES["max-capacity-v5-pareto"]
+        development = [task for task in tasks if task.split == "development"]
+        holdout = [task for task in tasks if task.split == "holdout"]
+        self.assertEqual(len(development), 15)
+        self.assertEqual(len(holdout), 3)
+        self.assertEqual(len({task.task_id for task in tasks}), 18)
+        self.assertEqual(len({task.prompt for task in tasks}), 18)
+        self.assertTrue(
+            {task.family for task in development}.isdisjoint(
+                task.family for task in holdout
+            )
+        )
+        self.assertEqual(
+            {task.family for task in holdout},
+            {"swimlane", "stateDiagram", "erDiagram"},
+        )
+
+    def test_v5_holdout_is_fresh_against_every_prior_capacity_profile(self) -> None:
+        holdout = {
+            task.task_id: task
+            for task in builder.TASK_PROFILES["max-capacity-v5-pareto"]
+            if task.split == "holdout"
+        }
+        prior = tuple(builder.TASK_PROFILES["max-capacity-v1"])
+        prior += tuple(builder.TASK_PROFILES["max-capacity-v2"])
+        prior += tuple(builder.TASK_PROFILES["max-capacity-v3-pareto"])
+        prior += tuple(builder.TASK_PROFILES["max-capacity-v4-pareto"])
+        self.assertTrue(set(holdout).isdisjoint(task.task_id for task in prior))
+        self.assertTrue(
+            {task.prompt for task in holdout.values()}.isdisjoint(
+                task.prompt for task in prior
+            )
+        )
+
+    def test_v5_holdout_reaches_the_nine_role_semantic_boundary(self) -> None:
+        capacity_by_family = {
+            case["id"]: case["fixtureElementCount"] for case in manifest["families"]
+        }
+        terminal_labels = {
+            "swimlane": "Work checkpoint 09",
+            "stateDiagram": "LifecycleState09",
+            "erDiagram": "DOMAIN_09",
+        }
+        holdout = [
+            task
+            for task in builder.TASK_PROFILES["max-capacity-v5-pareto"]
+            if task.split == "holdout"
+        ]
+        for task in holdout:
+            self.assertEqual(capacity_by_family[task.family], 9, task.task_id)
+            self.assertNotIn(terminal_labels[task.family], task.prompt)
+            for role in builder.SEMANTIC_CLASS_ROLES:
+                self.assertIn(role, task.required_terms, task.task_id)
+                self.assertTrue(
+                    any(role in pattern for pattern in task.patterns),
+                    f"{task.task_id} does not bind {role}",
+                )
+
+    def test_v5_exposed_tasks_encode_family_specific_assignment_forms(self) -> None:
+        exposed = {
+            task.family: task
+            for task in builder.MAX_CAPACITY_V5_DEVELOPMENT_TASKS
+            if task.task_id.startswith("capacity-v5-dev-exposed-")
+        }
+        self.assertIn("`:::`", exposed["classDiagram"].prompt)
+        self.assertIn("`:::`", exposed["flowchart"].prompt)
+        self.assertIn("do not use inline `:::`", exposed["block"].prompt)
+        self.assertTrue(all(task.maximum_aspect_ratio <= 8 for task in exposed.values()))
+
     def test_v4_profile_reclassifies_v3_holdout_and_seals_new_families(self) -> None:
         tasks = builder.TASK_PROFILES["max-capacity-v4-pareto"]
         development = [task for task in tasks if task.split == "development"]

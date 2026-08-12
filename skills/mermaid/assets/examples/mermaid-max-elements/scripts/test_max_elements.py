@@ -41,6 +41,22 @@ class MaximumElementCoverageTests(unittest.TestCase):
         self.assertEqual(len(cases), 31)
         self.assertEqual(len(manifest["renderContracts"]), 11)
 
+    def test_every_classdef_family_has_a_nine_role_capacity_fixture(self) -> None:
+        classdef_families = {
+            family["id"]
+            for family in diagram_types["families"]
+            if family["classDef"] and family["id"] != "treemap"
+        }
+        semantic_cases = {
+            case["id"]: case
+            for case in manifest["families"]
+            if case["capacityKind"] == "semantic-classes"
+        }
+        self.assertEqual(set(semantic_cases), classdef_families)
+        for case in semantic_cases.values():
+            self.assertEqual(case["maxSlots"], 9)
+            self.assertEqual(case["fixtureElementCount"], 9)
+
     def test_general_scale_has_twelve_distinct_palette_colors(self) -> None:
         for colorset in ("colorset1", "colorset2"):
             theme = styler.theme_variables(colorset, "timeline")
@@ -68,6 +84,34 @@ class MaximumElementCoverageTests(unittest.TestCase):
                 self.assertEqual(metadata["family"], case["id"])
                 self.assertEqual(second_metadata["family"], case["id"])
                 self.assertEqual(restyled, styled)
+
+    def test_semantic_binding_gate_rejects_a_role_without_geometry(self) -> None:
+        class_names = ["csPrimary", "csAccent"]
+        declarations = "".join(
+            styler.class_style("colorset2", class_name) for class_name in class_names
+        )
+        primary = styler.class_style("colorset2", "csPrimary")
+        primary_fill = primary.split("fill:", 1)[1].split(",", 1)[0]
+        primary_stroke = primary.split("stroke:", 1)[1].split(",", 1)[0]
+        svg = (
+            "<svg><style>"
+            f".csPrimary&gt;*{{fill:{primary_fill};stroke:{primary_stroke};}}"
+            f"{declarations}"
+            "</style><g class=\"node csPrimary\"><rect/></g></svg>"
+        )
+        findings: list[str] = []
+        validator.validate_semantic_class_bindings(
+            styler,
+            "flowchart",
+            "colorset2",
+            class_names,
+            svg,
+            findings,
+        )
+        self.assertTrue(
+            any("csAccent is not bound" in finding for finding in findings),
+            findings,
+        )
 
     def test_render_contract_detects_a_missing_terminal_slot(self) -> None:
         case = next(case for case in manifest["families"] if case["id"] == "mindmap")
