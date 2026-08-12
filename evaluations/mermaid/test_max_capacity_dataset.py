@@ -43,6 +43,70 @@ manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
 class MaximumCapacityDatasetTests(unittest.TestCase):
+    def test_v4_profile_reclassifies_v3_holdout_and_seals_new_families(self) -> None:
+        tasks = builder.TASK_PROFILES["max-capacity-v4-pareto"]
+        development = [task for task in tasks if task.split == "development"]
+        holdout = [task for task in tasks if task.split == "holdout"]
+        self.assertEqual(len(development), 12)
+        self.assertEqual(len(holdout), 3)
+        self.assertEqual(len({task.task_id for task in tasks}), 15)
+        self.assertEqual(len({task.prompt for task in tasks}), 15)
+        self.assertTrue(
+            {task.family for task in development}.isdisjoint(
+                task.family for task in holdout
+            )
+        )
+        self.assertEqual(
+            {task.family for task in holdout},
+            {"flowchart", "classDiagram", "block"},
+        )
+
+    def test_v4_holdout_is_fresh_against_every_prior_capacity_profile(self) -> None:
+        holdout = {
+            task.task_id: task
+            for task in builder.TASK_PROFILES["max-capacity-v4-pareto"]
+            if task.split == "holdout"
+        }
+        prior = tuple(builder.TASK_PROFILES["max-capacity-v1"])
+        prior += tuple(builder.TASK_PROFILES["max-capacity-v2"])
+        prior += tuple(builder.TASK_PROFILES["max-capacity-v3-pareto"])
+        self.assertTrue(set(holdout).isdisjoint(task.task_id for task in prior))
+        self.assertTrue(
+            {task.prompt for task in holdout.values()}.isdisjoint(
+                task.prompt for task in prior
+            )
+        )
+
+    def test_v4_holdout_reaches_the_nine_role_semantic_boundary(self) -> None:
+        capacity_by_family = {
+            case["id"]: case["fixtureElementCount"] for case in manifest["families"]
+        }
+        terminal_labels = {
+            "flowchart": "Pipeline checkpoint 09",
+            "classDiagram": "ServiceRole09",
+            "block": "Delivery tile 09",
+        }
+        holdout = [
+            task
+            for task in builder.TASK_PROFILES["max-capacity-v4-pareto"]
+            if task.split == "holdout"
+        ]
+        for task in holdout:
+            self.assertEqual(len(task.patterns), 9, task.task_id)
+            self.assertEqual(capacity_by_family[task.family], 9, task.task_id)
+            self.assertNotIn(terminal_labels[task.family], task.prompt)
+            for role in builder.SEMANTIC_CLASS_ROLES:
+                self.assertIn(role, task.required_terms, task.task_id)
+
+    def test_v4_exposed_sankey_contract_states_every_expected_weight(self) -> None:
+        sankey = next(
+            task
+            for task in builder.MAX_CAPACITY_V4_DEVELOPMENT_TASKS
+            if task.task_id == "capacity-v4-dev-exposed-sankey-extended"
+        )
+        for weight in (80, 70, 60, 50, 40, 30, 20):
+            self.assertIn(f"`{weight}`", sankey.prompt)
+
     def test_v3_profile_reclassifies_exposed_cases_and_seals_new_families(self) -> None:
         tasks = builder.TASK_PROFILES["max-capacity-v3-pareto"]
         development = [task for task in tasks if task.split == "development"]

@@ -16,6 +16,7 @@ from pathlib import Path
 
 COLOR_GROUPS = {
     "primary": ("#9e1b32", "#6d1222", "#ffccd5", "#e8002a"),
+    "neutral": ("#333e48", "#4f4f4f", "#696969", "#828282"),
     "accent": ("#007298", "#cdf3ff"),
     "warning": ("#e77204", "#ffe5cc"),
     "success": ("#45842a", "#dbffcc"),
@@ -24,7 +25,7 @@ COLOR_GROUPS = {
 }
 
 COLORSET_GROUPS = {
-    "colorset1": ("primary",),
+    "colorset1": ("primary", "neutral"),
     "colorset2": ("accent", "warning", "success", "info", "special"),
 }
 
@@ -33,6 +34,10 @@ COUNTERFACTUAL_COLORS = {
     "#6d1222": "#20e0f0",
     "#ffccd5": "#7020f0",
     "#e8002a": "#f0e010",
+    "#333e48": "#e000c0",
+    "#4f4f4f": "#00b0e0",
+    "#696969": "#d08000",
+    "#828282": "#30c000",
     "#007298": "#ff00aa",
     "#cdf3ff": "#4a00ff",
     "#e77204": "#00ff66",
@@ -199,9 +204,11 @@ def _lighten_rgb(hex_color: str, amount: float) -> tuple[int, int, int]:
 
 
 def _token_candidates(tokens: tuple[str, ...]) -> dict[str, tuple[int, int, int]]:
-    candidates: dict[str, tuple[int, int, int]] = {}
+    # Insert every canonical token before renderer transforms. Some palette
+    # values are exactly equal to another token's lightened form; canonical
+    # attribution must win those zero-distance ties.
+    candidates = {token: _rgb(token) for token in tokens}
     for token in tokens:
-        candidates[token] = _rgb(token)
         # Mermaid 11.16.0 Kanban paints each reachable cScale color through
         # khroma lighten(color, 10). Keep the canonical token as the reporting
         # identity while accepting that renderer-owned visible transformation.

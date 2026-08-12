@@ -1864,6 +1864,120 @@ MAX_CAPACITY_V3_HOLDOUT_TASKS = (
 )
 
 
+# The v3 holdout exposed one skill gap and two verifier-contract gaps. Preserve
+# the opened cases as v4 development evidence, with the Sankey weights made
+# explicit so its exact-value oracle matches the task. The v4 holdout remains
+# disjoint by exercising the nine semantic classes through three new grammars.
+MAX_CAPACITY_V4_EXPOSED_PROMPTS = {
+    "sankey": """Create a Mermaid Sankey diagram that consumes every configured node color exactly once before cycling. Build one weighted chain. Name its nodes sequentially `Transfer node 01`, `Transfer node 02`, and so on, stopping at Mermaid 11.16.0's final distinct Sankey node slot. Use these descending integer link weights in order: `80`, `70`, `60`, `50`, `40`, `30`, `20`. Keep every node visible, add no overflow node, and use the extended full-color palette.""",
+}
+
+
+MAX_CAPACITY_V4_DEVELOPMENT_TASKS = (
+    MAX_CAPACITY_V3_DEVELOPMENT_TASKS
+    + tuple(
+        replace(
+            spec,
+            task_id=spec.task_id.replace(
+                "capacity-v3-holdout-", "capacity-v4-dev-exposed-"
+            ),
+            split="development",
+            prompt=MAX_CAPACITY_V4_EXPOSED_PROMPTS.get(spec.family, spec.prompt),
+        )
+        for spec in MAX_CAPACITY_V3_HOLDOUT_TASKS
+    )
+)
+
+
+SEMANTIC_CLASS_ROLES = (
+    "csPrimary",
+    "csAccent",
+    "csMuted",
+    "csCritical",
+    "csWarning",
+    "csSuccess",
+    "csInfo",
+    "csSpecial",
+    "csNeutral",
+)
+
+
+MAX_CAPACITY_V4_HOLDOUT_TASKS = (
+    TaskSpec(
+        task_id="capacity-v4-holdout-flowchart-semantic-extended",
+        split="holdout",
+        prompt="""Create a left-to-right Mermaid flowchart that exercises every semantic palette role exactly once in canonical order. Use stable node IDs `F01`, `F02`, and so on through the last role, with matching labels `Pipeline checkpoint 01`, `Pipeline checkpoint 02`, and so on. Connect them as one directed chain, add no overflow node, and use the extended full-color palette.""",
+        family="flowchart",
+        declarations=("flowchart", "graph"),
+        colorset="colorset2",
+        required_terms=tuple(f"F{index:02d}" for index in range(1, 10))
+        + tuple(f"Pipeline checkpoint {index:02d}" for index in range(1, 10))
+        + SEMANTIC_CLASS_ROLES,
+        patterns=tuple(
+            rf"(?:F{index:02d}[^\n]*:::\s*{role}|^\s*class\s+F{index:02d}\s+{role}\s*$)"
+            for index, role in enumerate(SEMANTIC_CLASS_ROLES, start=1)
+        ),
+        forbidden_patterns=(r"F10", r"Pipeline checkpoint 10"),
+        minimum_arrow_count=8,
+        visible_terms=(
+            "Pipeline checkpoint 01",
+            "Pipeline checkpoint 05",
+            "Pipeline checkpoint 09",
+        ),
+        minimum_rendered_text_items=9,
+        maximum_aspect_ratio=16.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-v4-holdout-class-semantic-extended",
+        split="holdout",
+        prompt="""Create a Mermaid class diagram directed left to right that exercises every semantic palette role exactly once in canonical order. Declare stable classes `ServiceRole01`, `ServiceRole02`, and so on through the last role. Connect consecutive classes with directed associations, assign one role per class, add no overflow class, and use the extended full-color palette.""",
+        family="classDiagram",
+        declarations=("classDiagram",),
+        colorset="colorset2",
+        required_terms=tuple(f"ServiceRole{index:02d}" for index in range(1, 10))
+        + SEMANTIC_CLASS_ROLES,
+        patterns=tuple(
+            rf"^\s*class\s+ServiceRole{index:02d}\s+{role}\s*$"
+            for index, role in enumerate(SEMANTIC_CLASS_ROLES, start=1)
+        ),
+        forbidden_patterns=(r"ServiceRole10",),
+        minimum_arrow_count=8,
+        visible_terms=("ServiceRole01", "ServiceRole05", "ServiceRole09"),
+        minimum_rendered_text_items=9,
+        maximum_aspect_ratio=16.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-v4-holdout-block-semantic-extended",
+        split="holdout",
+        prompt="""Create a Mermaid block diagram with three columns that exercises every semantic palette role exactly once in canonical order. Use stable block IDs `B01`, `B02`, and so on through the last role, with matching labels `Delivery tile 01`, `Delivery tile 02`, and so on. Lay them out as three complete rows, connect each row left to right, assign one role per block, add no overflow block, and use the extended full-color palette.""",
+        family="block",
+        declarations=("block", "block-beta"),
+        colorset="colorset2",
+        required_terms=tuple(f"B{index:02d}" for index in range(1, 10))
+        + tuple(f"Delivery tile {index:02d}" for index in range(1, 10))
+        + SEMANTIC_CLASS_ROLES,
+        patterns=tuple(
+            rf"^\s*class\s+B{index:02d}\s+{role}\s*$"
+            for index, role in enumerate(SEMANTIC_CLASS_ROLES, start=1)
+        ),
+        forbidden_patterns=(r"B10", r"Delivery tile 10"),
+        minimum_arrow_count=6,
+        visible_terms=("Delivery tile 01", "Delivery tile 05", "Delivery tile 09"),
+        minimum_rendered_text_items=9,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+)
+
+
 TASK_PROFILES = {
     "visible-v6": TASKS,
     "pareto-v1": PARETO_TASKS,
@@ -1885,6 +1999,8 @@ TASK_PROFILES = {
     "max-capacity-v2": MAX_CAPACITY_V2_DEVELOPMENT_TASKS + MAX_CAPACITY_V2_HOLDOUT_TASKS,
     "max-capacity-v3-pareto": MAX_CAPACITY_V3_DEVELOPMENT_TASKS
     + MAX_CAPACITY_V3_HOLDOUT_TASKS,
+    "max-capacity-v4-pareto": MAX_CAPACITY_V4_DEVELOPMENT_TASKS
+    + MAX_CAPACITY_V4_HOLDOUT_TASKS,
 }
 
 

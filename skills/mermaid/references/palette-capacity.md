@@ -41,6 +41,6 @@ radar-beta
 - Quadrant and Cynefin use four and five fixed domains respectively.
 - Event Modeling uses five semantic element roles: UI, processor, read model, command, and event.
 - Gantt has no maximum task count. Exercise normal, active, done, critical, active-critical, and done-critical tasks instead of inventing a node limit.
-- Families using `classDef` can consume the skill's nine semantic classes. Exercise every class when maintaining the styler.
+- Families for which `references/diagram-types.json` reports `classDef: true` can consume nine labeled roles: `csPrimary`, `csAccent`, `csMuted`, `csCritical`, `csWarning`, `csSuccess`, `csInfo`, `csSpecial`, and `csNeutral`. Use each role once to exercise the boundary; further elements may reuse roles by meaning.
 
 For families with unlimited, uniformly styled elements, do not claim a finite maximum. Use multiple elements to prove parsing and layout, and validate every distinct visual role the family actually exposes.

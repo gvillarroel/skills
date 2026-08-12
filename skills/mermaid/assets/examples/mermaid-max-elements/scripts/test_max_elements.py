@@ -49,6 +49,14 @@ class MaximumElementCoverageTests(unittest.TestCase):
             self.assertEqual(len(colors), 12)
             self.assertEqual(len(set(colors)), 12)
 
+    def test_standard_xy_palette_has_five_distinct_red_neutral_colors(self) -> None:
+        palette = styler.theme_variables("colorset1", "xyChart")["xyChart"][
+            "plotColorPalette"
+        ]
+        colors = [color.strip() for color in palette.split(",")]
+        self.assertEqual(len(colors), 5)
+        self.assertEqual(len(set(colors)), 5)
+
     def test_all_sources_style_idempotently(self) -> None:
         for case in manifest["families"]:
             source = validator.source_for_case(manifest, case)
