@@ -11,7 +11,7 @@ import argparse
 import hashlib
 import json
 import os
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 
 
@@ -1741,6 +1741,129 @@ MAX_CAPACITY_V2_HOLDOUT_TASKS = (
 )
 
 
+# Every v2 holdout below has already been opened and reported. Reclassify those
+# cases as development evidence for v3; the new holdout uses disjoint families,
+# task identities, labels, and facts and remains sealed until a winner is frozen.
+MAX_CAPACITY_V3_DEVELOPMENT_TASKS = (
+    MAX_CAPACITY_DEVELOPMENT_TASKS
+    + MAX_CAPACITY_V2_DEVELOPMENT_TASKS
+    + tuple(
+        replace(
+            spec,
+            task_id=spec.task_id.replace(
+                "capacity-v2-holdout-", "capacity-v3-dev-exposed-"
+            ),
+            split="development",
+        )
+        for spec in MAX_CAPACITY_V2_HOLDOUT_TASKS
+    )
+)
+
+
+MAX_CAPACITY_V3_HOLDOUT_TASKS = (
+    TaskSpec(
+        task_id="capacity-v3-holdout-sankey-extended",
+        split="holdout",
+        prompt="""Create a Mermaid Sankey diagram that consumes every configured node color exactly once before cycling. Build one weighted chain. Name its nodes sequentially `Transfer node 01`, `Transfer node 02`, and so on, stopping at Mermaid 11.16.0's final distinct Sankey node slot. Use descending positive integer weights, keep every node visible, add no overflow node, and use the extended full-color palette.""",
+        family="sankey",
+        declarations=("sankey", "sankey-beta"),
+        colorset="colorset2",
+        required_terms=tuple(f"Transfer node {index:02d}" for index in range(1, 9))
+        + ("80", "70", "60", "50", "40", "30", "20"),
+        patterns=tuple(
+            rf"Transfer node {index:02d}\s*,\s*Transfer node {index + 1:02d}\s*,\s*{90 - index * 10}(?:\.0+)?\b"
+            for index in range(1, 8)
+        ),
+        forbidden_patterns=(r"Transfer node 09",),
+        visible_terms=(
+            "Transfer node 01",
+            "Transfer node 04",
+            "Transfer node 08",
+        ),
+        minimum_rendered_text_items=8,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-v3-holdout-xy-standard-boundary",
+        split="holdout",
+        prompt="""Create a Mermaid XY chart titled `Standard plot boundary`. Use x-axis labels `A`, `B`, `C`, and `D`, and a y-axis labeled `Score` from 0 through 12. Consume every distinct standard plot color once, then add exactly one boundary plot that demonstrates the first color cycle. Alternate bar and line plots starting with bar. Use these arrays in order: `[1,2,3,4]`, `[2,3,4,5]`, `[3,4,5,6]`, `[4,5,6,7]`, `[5,6,7,8]`, and `[6,7,8,9]`. Add no other plot and use the standard palette.""",
+        family="xyChart",
+        declarations=("xychart", "xychart-beta"),
+        colorset="colorset1",
+        required_terms=("Standard plot boundary", "A", "B", "C", "D", "Score"),
+        patterns=(
+            r"^\s*bar\s*\[\s*1\s*,\s*2\s*,\s*3\s*,\s*4\s*\]",
+            r"^\s*line\s*\[\s*2\s*,\s*3\s*,\s*4\s*,\s*5\s*\]",
+            r"^\s*bar\s*\[\s*3\s*,\s*4\s*,\s*5\s*,\s*6\s*\]",
+            r"^\s*line\s*\[\s*4\s*,\s*5\s*,\s*6\s*,\s*7\s*\]",
+            r"^\s*bar\s*\[\s*5\s*,\s*6\s*,\s*7\s*,\s*8\s*\]",
+            r"^\s*line\s*\[\s*6\s*,\s*7\s*,\s*8\s*,\s*9\s*\]",
+        ),
+        forbidden_patterns=(r"^\s*(?:bar|line)\s*\[\s*7\s*,",),
+        visible_terms=("Standard plot boundary", "A", "D", "Score"),
+        minimum_rendered_text_items=7,
+        maximum_aspect_ratio=5.0,
+        required_visual_groups=("primary",),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-v3-holdout-gantt-roles-extended",
+        split="holdout",
+        prompt="""Create an explicit Mermaid Gantt diagram titled `Release role matrix` with date format `YYYY-MM-DD`. Under section `Roles`, include exactly these six one-day tasks in order: `Queued work` is normal on 2044-02-01; `Running work` is active on 2044-02-02; `Finished work` is done on 2044-02-03; `Blocking work` is critical on 2044-02-04; `Running blocker` is active and critical on 2044-02-05; `Finished blocker` is done and critical on 2044-02-06. Give every task a stable lowercase underscore ID derived from its label. Preserve every semantic status and use the extended full-color palette visibly.""",
+        family="gantt",
+        declarations=("gantt",),
+        colorset="colorset2",
+        required_terms=(
+            "Release role matrix",
+            "Roles",
+            "Queued work",
+            "Running work",
+            "Finished work",
+            "Blocking work",
+            "Running blocker",
+            "Finished blocker",
+            "2044-02-01",
+            "2044-02-02",
+            "2044-02-03",
+            "2044-02-04",
+            "2044-02-05",
+            "2044-02-06",
+            "queued_work",
+            "running_work",
+            "finished_work",
+            "blocking_work",
+            "running_blocker",
+            "finished_blocker",
+        ),
+        patterns=(
+            r"Queued work\s*:\s*queued_work\s*,\s*2044-02-01\s*,\s*1d",
+            r"Running work\s*:\s*active\s*,\s*running_work\s*,\s*2044-02-02\s*,\s*1d",
+            r"Finished work\s*:\s*done\s*,\s*finished_work\s*,\s*2044-02-03\s*,\s*1d",
+            r"Blocking work\s*:\s*crit\s*,\s*blocking_work\s*,\s*2044-02-04\s*,\s*1d",
+            r"Running blocker\s*:\s*crit\s*,\s*active\s*,\s*running_blocker\s*,\s*2044-02-05\s*,\s*1d",
+            r"Finished blocker\s*:\s*crit\s*,\s*done\s*,\s*finished_blocker\s*,\s*2044-02-06\s*,\s*1d",
+        ),
+        visible_terms=(
+            "Queued work",
+            "Running work",
+            "Finished work",
+            "Blocking work",
+            "Running blocker",
+            "Finished blocker",
+        ),
+        minimum_rendered_text_items=10,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("accent", "warning", "success"),
+        minimum_visible_colors=3,
+        minimum_palette_ratio=0.02,
+    ),
+)
+
+
 TASK_PROFILES = {
     "visible-v6": TASKS,
     "pareto-v1": PARETO_TASKS,
@@ -1760,6 +1883,8 @@ TASK_PROFILES = {
     "hard-visibility-discovery": HARD_VISIBILITY_DEVELOPMENT_TASKS + PARETO_SEALED_HOLDOUT_TASKS[:1],
     "max-capacity-v1": MAX_CAPACITY_DEVELOPMENT_TASKS + MAX_CAPACITY_HOLDOUT_TASKS,
     "max-capacity-v2": MAX_CAPACITY_V2_DEVELOPMENT_TASKS + MAX_CAPACITY_V2_HOLDOUT_TASKS,
+    "max-capacity-v3-pareto": MAX_CAPACITY_V3_DEVELOPMENT_TASKS
+    + MAX_CAPACITY_V3_HOLDOUT_TASKS,
 }
 
 

@@ -43,6 +43,53 @@ manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
 class MaximumCapacityDatasetTests(unittest.TestCase):
+    def test_v3_profile_reclassifies_exposed_cases_and_seals_new_families(self) -> None:
+        tasks = builder.TASK_PROFILES["max-capacity-v3-pareto"]
+        development = [task for task in tasks if task.split == "development"]
+        holdout = [task for task in tasks if task.split == "holdout"]
+        self.assertEqual(len(development), 9)
+        self.assertEqual(len(holdout), 3)
+        self.assertEqual(len({task.task_id for task in tasks}), 12)
+        self.assertEqual(len({task.prompt for task in tasks}), 12)
+        self.assertTrue(
+            {task.family for task in development}.isdisjoint(
+                task.family for task in holdout
+            )
+        )
+        self.assertEqual(
+            {task.family for task in holdout}, {"sankey", "xyChart", "gantt"}
+        )
+
+    def test_v3_holdout_is_disjoint_from_every_prior_capacity_profile(self) -> None:
+        holdout = {
+            task.task_id: task
+            for task in builder.TASK_PROFILES["max-capacity-v3-pareto"]
+            if task.split == "holdout"
+        }
+        prior = tuple(builder.TASK_PROFILES["max-capacity-v1"]) + tuple(
+            builder.TASK_PROFILES["max-capacity-v2"]
+        )
+        self.assertTrue(set(holdout).isdisjoint(task.task_id for task in prior))
+        self.assertTrue(
+            {task.prompt for task in holdout.values()}.isdisjoint(
+                task.prompt for task in prior
+            )
+        )
+
+    def test_v3_holdout_contracts_reach_configured_or_semantic_boundaries(self) -> None:
+        holdout = {
+            task.family: task
+            for task in builder.TASK_PROFILES["max-capacity-v3-pareto"]
+            if task.split == "holdout"
+        }
+        self.assertEqual(
+            sum(term.startswith("Transfer node ") for term in holdout["sankey"].required_terms),
+            8,
+        )
+        self.assertEqual(len(holdout["xyChart"].patterns), 6)
+        self.assertEqual(len(holdout["gantt"].patterns), 6)
+        self.assertNotIn("Transfer node 08", holdout["sankey"].prompt)
+
     def test_v2_profile_is_balanced_disjoint_and_unique(self) -> None:
         tasks = builder.TASK_PROFILES["max-capacity-v2"]
         development = [task for task in tasks if task.split == "development"]
