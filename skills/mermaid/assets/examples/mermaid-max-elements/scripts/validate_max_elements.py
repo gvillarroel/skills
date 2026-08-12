@@ -25,7 +25,6 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 EXAMPLE_DIR = SCRIPT_DIR.parent
 SKILL_DIR = EXAMPLE_DIR.parents[2]
 MANIFEST_PATH = EXAMPLE_DIR / "manifest.json"
-SOURCE_DIR = EXAMPLE_DIR / "source"
 STYLER_PATH = SKILL_DIR / "scripts" / "style_mermaid_directory.py"
 DIAGRAM_TYPES_PATH = SKILL_DIR / "references" / "diagram-types.json"
 MERMAID_CLI_PACKAGE = "@mermaid-js/mermaid-cli@11.16.0"
@@ -47,6 +46,14 @@ def load_styler():
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
     return module
+
+
+def source_for_case(manifest: dict[str, Any], case: dict[str, Any]) -> str:
+    sources = manifest.get("sources", {})
+    if not isinstance(sources, dict):
+        return ""
+    source = sources.get(str(case.get("source", "")), "")
+    return source if isinstance(source, str) else ""
 
 
 def probe_labels(case: dict[str, Any]) -> list[str]:
@@ -461,12 +468,34 @@ def validate_manifest(
         findings.append("manifest renderContracts must be an object of objects")
         render_contracts = {}
 
+    sources = manifest.get("sources")
+    if not isinstance(sources, dict) or not all(
+        isinstance(key, str) and isinstance(value, str) and value.strip()
+        for key, value in sources.items()
+    ):
+        findings.append("manifest sources must map source names to non-empty Mermaid text")
+        sources = {}
+
+    referenced_sources = {str(case.get("source", "")) for case in cases}
+    if set(sources) != referenced_sources:
+        findings.append(
+            "manifest embedded sources differ from family source references: "
+            f"missing={sorted(referenced_sources - set(sources))}, "
+            f"unexpected={sorted(set(sources) - referenced_sources)}"
+        )
+
     for case in cases:
         family = str(case.get("id"))
-        source_path = EXAMPLE_DIR / str(case.get("source", ""))
-        if not source_path.is_file():
-            findings.append(f"{family}: source does not exist: {source_path}")
-            continue
+        source_name = str(case.get("source", ""))
+        source_path = Path(source_name)
+        if (
+            source_path.is_absolute()
+            or ".." in source_path.parts
+            or source_path.suffix.casefold() != ".mmd"
+        ):
+            findings.append(f"{family}: source must be a portable relative .mmd name")
+        if not source_for_case(manifest, case).strip():
+            findings.append(f"{family}: embedded source is missing or empty")
         if case.get("capacityKind") not in valid_capacity_kinds:
             findings.append(f"{family}: unknown capacityKind {case.get('capacityKind')!r}")
         max_slots = case.get("maxSlots")
@@ -509,8 +538,8 @@ def validate_sources_and_style(
 
     for case in cases:
         family = str(case["id"])
-        source_path = EXAMPLE_DIR / str(case["source"])
-        source = source_path.read_text(encoding="utf-8")
+        source_name = Path(str(case["source"])).name
+        source = source_for_case(manifest, case)
         declaration = styler.first_declaration(source)
         detected_family = styler.canonical_family(declaration)
         if detected_family != family:
@@ -590,7 +619,7 @@ def validate_sources_and_style(
             if restyled != styled:
                 findings.append(f"{family}/{colorset}: styling is not idempotent")
 
-            output_path = work_dir / "styled" / colorset / source_path.name
+            output_path = work_dir / "styled" / colorset / source_name
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_text(styled, encoding="utf-8")
             styled_paths[colorset][family] = output_path
@@ -624,6 +653,7 @@ def validate_render_contract(
     case: dict[str, Any],
     contract: dict[str, Any],
     colorset: str,
+    source: str,
     svg: str,
     findings: list[str],
 ) -> None:
@@ -655,7 +685,6 @@ def validate_render_contract(
             continue
         expected_colors.extend(iter_hex_colors(theme[key]))
 
-    source = (EXAMPLE_DIR / str(case["source"])).read_text(encoding="utf-8")
     if contract.get("sankeyNodeColors") is True:
         expected_colors.extend(styler.sankey_node_colors(source, colorset).values())
     if contract.get("xyPaletteColors") is True:
@@ -783,7 +812,13 @@ def render_cases(
                     contract = render_contracts.get(family)
                     if isinstance(contract, dict):
                         validate_render_contract(
-                            styler, case, contract, colorset, svg, findings
+                            styler,
+                            case,
+                            contract,
+                            colorset,
+                            source_for_case(manifest, case),
+                            svg,
+                            findings,
                         )
                     rendered[colorset][family] = svg_path
     return rendered

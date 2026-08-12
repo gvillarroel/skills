@@ -1,9 +1,0 @@
-C4Container
-  title C4 multi-element probe
-  Person(user, "User")
-  Container(api, "API", "HTTP", "Accepts requests")
-  ContainerDb(database, "Database", "SQL", "Stores records")
-  Container(queue, "Queue", "Broker", "Buffers work")
-  Rel(user, api, "Calls")
-  Rel(api, queue, "Publishes")
-  Rel(queue, database, "Writes")

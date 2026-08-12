@@ -51,7 +51,7 @@ class MaximumElementCoverageTests(unittest.TestCase):
 
     def test_all_sources_style_idempotently(self) -> None:
         for case in manifest["families"]:
-            source = (EXAMPLE_DIR / case["source"]).read_text(encoding="utf-8")
+            source = validator.source_for_case(manifest, case)
             for colorset in ("colorset1", "colorset2"):
                 styled, metadata = styler.style_mermaid_block(source, colorset)
                 restyled, second_metadata = styler.style_mermaid_block(
@@ -88,7 +88,13 @@ class MaximumElementCoverageTests(unittest.TestCase):
 
         findings: list[str] = []
         validator.validate_render_contract(
-            styler, case, contract, "colorset2", synthetic_svg, findings
+            styler,
+            case,
+            contract,
+            "colorset2",
+            validator.source_for_case(manifest, case),
+            synthetic_svg,
+            findings,
         )
         self.assertEqual(findings, [])
 
@@ -96,7 +102,13 @@ class MaximumElementCoverageTests(unittest.TestCase):
         broken_svg = synthetic_svg.replace(terminal_token, "", 1)
         broken_findings: list[str] = []
         validator.validate_render_contract(
-            styler, case, contract, "colorset2", broken_svg, broken_findings
+            styler,
+            case,
+            contract,
+            "colorset2",
+            validator.source_for_case(manifest, case),
+            broken_svg,
+            broken_findings,
         )
         self.assertTrue(
             any(terminal_token in finding for finding in broken_findings),
@@ -118,7 +130,7 @@ class MaximumElementCoverageTests(unittest.TestCase):
 
     def test_treemap_named_root_leaves_eleven_direct_group_slots(self) -> None:
         case = next(case for case in manifest["families"] if case["id"] == "treemap")
-        source = (EXAMPLE_DIR / case["source"]).read_text(encoding="utf-8")
+        source = validator.source_for_case(manifest, case)
         self.assertEqual(case["maxSlots"], 12)
         self.assertEqual(case["fixtureElementCount"], 12)
         self.assertIn("Treemap capacity", source)
