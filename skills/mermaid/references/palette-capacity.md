@@ -34,13 +34,20 @@ radar-beta
   curve c01["Radar curve 01"]{1, 2, 3}
 ```
 
+Venn sets use a colon before the numeric size; `size 80` does not parse:
+
+```mermaid
+venn-beta
+  set S01["Venn set 01"]: 80
+```
+
 ## Configured and semantic slots
 
-- The generated Sankey node map uses eight colors and cycles only after eight distinct node IDs.
+- The generated Sankey node map uses eight colors and cycles only after eight distinct node IDs. Write comma-safe labels as unquoted CSV fields, for example `Transfer node 01,Transfer node 02,80`. Use CSV double quotes only when a label itself requires them; single quotes become visible label characters.
 - The extended XY palette contains six plot colors; the standard palette contains five. A six-series acceptance case exercises both the extended tail and standard cycling behavior.
 - Quadrant and Cynefin use four and five fixed domains respectively.
 - Event Modeling uses five semantic element roles: UI, processor, read model, command, and event.
-- Gantt has no maximum task count. Exercise normal, active, done, critical, active-critical, and done-critical tasks instead of inventing a node limit.
+- Gantt has no maximum task count. Exercise normal, active, done, critical, active-critical, and done-critical tasks instead of inventing a node limit. Prefer `crit, active, id` and `crit, done, id` for combined states; Mermaid 11.16.0 also renders the reversed status order.
 - Families for which `references/diagram-types.json` reports `classDef: true` can consume nine labeled roles: `csPrimary`, `csAccent`, `csMuted`, `csCritical`, `csWarning`, `csSuccess`, `csInfo`, `csSpecial`, and `csNeutral`. Use each role once to exercise the boundary; further elements may reuse roles by meaning.
 
 Use the assignment form that the selected grammar renders:

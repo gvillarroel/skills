@@ -2009,8 +2009,23 @@ MAX_CAPACITY_V5_EXPOSED_OVERRIDES = {
 }
 
 
+MAX_CAPACITY_V5_GANTT_PATTERNS = (
+    r"Queued work\s*:\s*queued_work\s*,\s*2044-02-01\s*,\s*1d",
+    r"Running work\s*:\s*active\s*,\s*running_work\s*,\s*2044-02-02\s*,\s*1d",
+    r"Finished work\s*:\s*done\s*,\s*finished_work\s*,\s*2044-02-03\s*,\s*1d",
+    r"Blocking work\s*:\s*crit\s*,\s*blocking_work\s*,\s*2044-02-04\s*,\s*1d",
+    r"Running blocker\s*:\s*(?:crit\s*,\s*active|active\s*,\s*crit)\s*,\s*running_blocker\s*,\s*2044-02-05\s*,\s*1d",
+    r"Finished blocker\s*:\s*(?:crit\s*,\s*done|done\s*,\s*crit)\s*,\s*finished_blocker\s*,\s*2044-02-06\s*,\s*1d",
+)
+
+
 MAX_CAPACITY_V5_DEVELOPMENT_TASKS = (
-    MAX_CAPACITY_V4_DEVELOPMENT_TASKS
+    tuple(
+        replace(spec, patterns=MAX_CAPACITY_V5_GANTT_PATTERNS)
+        if spec.task_id == "capacity-v4-dev-exposed-gantt-roles-extended"
+        else spec
+        for spec in MAX_CAPACITY_V4_DEVELOPMENT_TASKS
+    )
     + tuple(
         replace(
             spec,

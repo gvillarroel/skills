@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -112,6 +113,23 @@ class MaximumCapacityDatasetTests(unittest.TestCase):
         self.assertIn("`:::`", exposed["flowchart"].prompt)
         self.assertIn("do not use inline `:::`", exposed["block"].prompt)
         self.assertTrue(all(task.maximum_aspect_ratio <= 8 for task in exposed.values()))
+
+    def test_v5_gantt_contract_accepts_both_renderable_combined_orders(self) -> None:
+        gantt = next(
+            task
+            for task in builder.MAX_CAPACITY_V5_DEVELOPMENT_TASKS
+            if task.task_id == "capacity-v4-dev-exposed-gantt-roles-extended"
+        )
+        for source in (
+            "Running blocker :crit, active, running_blocker, 2044-02-05, 1d",
+            "Running blocker :active, crit, running_blocker, 2044-02-05, 1d",
+        ):
+            self.assertRegex(source, re.compile(gantt.patterns[4], re.IGNORECASE))
+        for source in (
+            "Finished blocker :crit, done, finished_blocker, 2044-02-06, 1d",
+            "Finished blocker :done, crit, finished_blocker, 2044-02-06, 1d",
+        ):
+            self.assertRegex(source, re.compile(gantt.patterns[5], re.IGNORECASE))
 
     def test_v4_profile_reclassifies_v3_holdout_and_seals_new_families(self) -> None:
         tasks = builder.TASK_PROFILES["max-capacity-v4-pareto"]
