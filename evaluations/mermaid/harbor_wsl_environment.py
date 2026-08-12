@@ -187,7 +187,7 @@ class WorkspaceWSLEnvironment(BaseEnvironment):
         timeout_sec: int | None = None,
         user: str | int | None = None,
     ) -> ExecResult:
-        del user
+        effective_user = self._resolve_user(user)
         if not self._started:
             await self.start(force_build=False)
 
@@ -240,8 +240,12 @@ class WorkspaceWSLEnvironment(BaseEnvironment):
             f"{self._translate(command)}"
         )
         executable = shutil.which("wsl.exe") or shutil.which("wsl") or "wsl.exe"
+        wsl_user_arguments = (
+            ["--user", str(effective_user)] if effective_user is not None else []
+        )
         process = await asyncio.create_subprocess_exec(
             executable,
+            *wsl_user_arguments,
             "bash",
             "-s",
             stdin=asyncio.subprocess.PIPE,

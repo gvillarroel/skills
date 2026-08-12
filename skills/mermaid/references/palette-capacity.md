@@ -18,6 +18,14 @@ Use this reference for dense diagrams whose elements consume indexed or semantic
 
 The general Mermaid theme scale contains 12 entries. Configure `cScale`, `cScaleLabel`, and `cScaleInv` for all 12 entries whenever a family consumes that scale. Treemap also consumes all 12 `cScalePeer` entries.
 
+Kanban columns and cards require stable IDs before bracketed labels. Bare multiword lines do not parse:
+
+```mermaid
+kanban
+  slot01[Kanban slot 01]
+    card01[Work 01]
+```
+
 ## Configured and semantic slots
 
 - The generated Sankey node map uses eight colors and cycles only after eight distinct node IDs.
