@@ -2126,6 +2126,158 @@ MAX_CAPACITY_V5_HOLDOUT_TASKS = (
 )
 
 
+# V5 exposed compact-layout and visible-ID failures in the three remaining
+# semantic-class grammars. Reopen those cases as v6 development tasks. The v6
+# holdout is disjoint and exercises three finite-capacity families that have not
+# appeared in any previous maximum-capacity Harbor cohort.
+MAX_CAPACITY_V6_EXPOSED_PROMPTS = {
+    "swimlane": """Create a compact top-to-bottom Mermaid Swimlane diagram that exercises every semantic palette role exactly once in canonical order. Use three lanes named `Discovery lane`, `Delivery lane`, and `Assurance lane`. Use stable node IDs `W01`, `W02`, and so on through the last role, with matching labels `Work checkpoint 01`, `Work checkpoint 02`, and so on. Put three consecutive nodes in each lane, attach roles inline with `:::`, connect all nodes as one directed chain, add no overflow node, and use the extended full-color palette.""",
+    "stateDiagram": """Create a compact top-to-bottom Mermaid state diagram that exercises every semantic palette role exactly once in canonical order. Use stable state IDs `LifecycleState01`, `LifecycleState02`, and so on through the last role, and keep those IDs as the visible state labels rather than replacing them with aliases. Connect consecutive states as one directed chain, assign roles with separate `class ID csRole` statements, add no overflow state, and use the extended full-color palette.""",
+    "erDiagram": """Create a compact top-to-bottom Mermaid ER diagram that exercises every semantic palette role exactly once in canonical order. Use stable entity IDs `DOMAIN_01`, `DOMAIN_02`, and so on through the last role. Connect each consecutive pair with an exactly-one to zero-or-many relationship labeled `feeds`, assign roles with separate `class ID csRole` statements, add no overflow entity, and use the extended full-color palette.""",
+}
+
+
+MAX_CAPACITY_V6_DEVELOPMENT_TASKS = (
+    MAX_CAPACITY_V5_DEVELOPMENT_TASKS
+    + tuple(
+        replace(
+            spec,
+            task_id=spec.task_id.replace(
+                "capacity-v5-holdout-", "capacity-v6-dev-exposed-"
+            ),
+            split="development",
+            prompt=MAX_CAPACITY_V6_EXPOSED_PROMPTS[spec.family],
+        )
+        for spec in MAX_CAPACITY_V5_HOLDOUT_TASKS
+    )
+)
+
+
+MAX_CAPACITY_V6_HOLDOUT_TASKS = (
+    TaskSpec(
+        task_id="capacity-v6-holdout-requirement-semantic-extended",
+        split="holdout",
+        prompt="""Create a compact top-to-bottom Mermaid Requirement diagram that exercises every semantic palette role exactly once in canonical order. Use stable internal names `capReq01`, `capReq02`, and so on through the last role. Give them matching visible IDs `CAP-01`, `CAP-02`, and so on and matching text `Capacity requirement 01`, `Capacity requirement 02`, and so on. Set every risk to `low` and every verification method to `test`. Connect consecutive requirements with `contains` relationships, assign roles with separate `class ID csRole` statements, add no overflow requirement, and use the extended full-color palette.""",
+        family="requirementDiagram",
+        declarations=("requirementDiagram",),
+        colorset="colorset2",
+        required_terms=tuple(f"capReq{index:02d}" for index in range(1, 10))
+        + tuple(f"CAP-{index:02d}" for index in range(1, 10))
+        + tuple(f"Capacity requirement {index:02d}" for index in range(1, 10))
+        + ("low", "test", "contains")
+        + SEMANTIC_CLASS_ROLES,
+        patterns=tuple(
+            rf"^\s*class\s+capReq{index:02d}\s+{role}\s*$"
+            for index, role in enumerate(SEMANTIC_CLASS_ROLES, start=1)
+        )
+        + tuple(
+            rf"^\s*capReq{index:02d}\s*-\s*contains\s*->\s*capReq{index + 1:02d}\s*$"
+            for index in range(1, 9)
+        ),
+        forbidden_patterns=(r"capReq10", r"CAP-10", r"Capacity requirement 10"),
+        visible_terms=("CAP-01", "CAP-05", "CAP-09"),
+        minimum_rendered_text_items=27,
+        maximum_aspect_ratio=12.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.01,
+    ),
+    TaskSpec(
+        task_id="capacity-v6-holdout-quadrant-domains-extended",
+        split="holdout",
+        prompt="""Create a Mermaid Quadrant chart that exercises all four fixed palette domains. Use x-axis `Readiness: Low` to `Readiness: High` and y-axis `Value: Low` to `Value: High`. Preserve exactly these labeled points and coordinates: `Scale now` [0.75, 0.75], `Explore next` [0.25, 0.75], `Defer safely` [0.25, 0.25], and `Maintain` [0.75, 0.25]. Add no fifth point and use the extended full-color palette.""",
+        family="quadrantChart",
+        declarations=("quadrantChart",),
+        colorset="colorset2",
+        required_terms=(
+            "Readiness: Low",
+            "Readiness: High",
+            "Value: Low",
+            "Value: High",
+            "Scale now",
+            "Explore next",
+            "Defer safely",
+            "Maintain",
+            "0.75",
+            "0.25",
+        ),
+        patterns=(
+            r"Scale now[\"']?\s*:\s*\[\s*0\.75\s*,\s*0\.75\s*\]",
+            r"Explore next[\"']?\s*:\s*\[\s*0\.25\s*,\s*0\.75\s*\]",
+            r"Defer safely[\"']?\s*:\s*\[\s*0\.25\s*,\s*0\.25\s*\]",
+            r"Maintain[\"']?\s*:\s*\[\s*0\.75\s*,\s*0\.25\s*\]",
+        ),
+        visible_terms=(
+            "Readiness: Low",
+            "Readiness: High",
+            "Value: Low",
+            "Value: High",
+            "Scale now",
+            "Explore next",
+            "Defer safely",
+            "Maintain",
+        ),
+        minimum_rendered_text_items=10,
+        maximum_aspect_ratio=4.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.15,
+    ),
+    TaskSpec(
+        task_id="capacity-v6-holdout-eventmodeling-roles-extended",
+        split="holdout",
+        prompt="""Create a Mermaid Event Modeling diagram that exercises each of its five semantic element roles exactly once in this order: UI `CheckoutScreen`, processor `PricingProcessor`, read model `PriceReadModel`, command `RepriceCommand`, and event `PriceUpdated`. Use time-frame slots `11` through `15` respectively, add no sixth element, and use the extended full-color palette.""",
+        family="eventmodeling",
+        declarations=("eventmodeling",),
+        colorset="colorset2",
+        required_terms=(
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "ui",
+            "pcr",
+            "rmo",
+            "cmd",
+            "evt",
+            "CheckoutScreen",
+            "PricingProcessor",
+            "PriceReadModel",
+            "RepriceCommand",
+            "PriceUpdated",
+        ),
+        patterns=(
+            r"^\s*tf\s+11\s+ui\s+CheckoutScreen\s*$",
+            r"^\s*tf\s+12\s+pcr\s+PricingProcessor\s*$",
+            r"^\s*tf\s+13\s+rmo\s+PriceReadModel\s*$",
+            r"^\s*tf\s+14\s+cmd\s+RepriceCommand\s*$",
+            r"^\s*tf\s+15\s+evt\s+PriceUpdated\s*$",
+        ),
+        forbidden_patterns=(r"^\s*tf\s+16\b",),
+        ordered_terms=(
+            "CheckoutScreen",
+            "PricingProcessor",
+            "PriceReadModel",
+            "RepriceCommand",
+            "PriceUpdated",
+        ),
+        visible_terms=(
+            "CheckoutScreen",
+            "PricingProcessor",
+            "PriceReadModel",
+            "RepriceCommand",
+            "PriceUpdated",
+        ),
+        minimum_rendered_text_items=5,
+        maximum_aspect_ratio=8.0,
+        required_visual_groups=("accent", "warning", "success", "special"),
+        minimum_visible_colors=4,
+        minimum_palette_ratio=0.02,
+    ),
+)
+
+
 TASK_PROFILES = {
     "visible-v6": TASKS,
     "pareto-v1": PARETO_TASKS,
@@ -2151,6 +2303,8 @@ TASK_PROFILES = {
     + MAX_CAPACITY_V4_HOLDOUT_TASKS,
     "max-capacity-v5-pareto": MAX_CAPACITY_V5_DEVELOPMENT_TASKS
     + MAX_CAPACITY_V5_HOLDOUT_TASKS,
+    "max-capacity-v6-pareto": MAX_CAPACITY_V6_DEVELOPMENT_TASKS
+    + MAX_CAPACITY_V6_HOLDOUT_TASKS,
 }
 
 

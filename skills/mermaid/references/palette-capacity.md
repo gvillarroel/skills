@@ -63,4 +63,28 @@ At the full nine-role boundary, the styler adds compact Mermaid 11.16.0 layout d
 
 Explicit user layout settings take precedence. In State diagrams, an alias replaces the visible state ID. When the input supplies IDs without separate display labels, use the IDs directly; do not invent `state "Label" as ID` aliases that hide required visible terms.
 
+Use Mermaid 11.16.0's compact Event Modeling role codes in canonical order:
+
+```mermaid
+eventmodeling
+  tf 01 ui UserInterface
+  tf 02 pcr Processor
+  tf 03 rmo ReadModel
+  tf 04 cmd Command
+  tf 05 evt Event
+```
+
+Requirement elements need their complete field block before a separate semantic class assignment:
+
+```mermaid
+requirementDiagram
+  requirement req01 {
+    id: "REQ-01"
+    text: "Requirement 01"
+    risk: low
+    verifymethod: test
+  }
+  class req01 csPrimary
+```
+
 For families with unlimited, uniformly styled elements, do not claim a finite maximum. Use multiple elements to prove parsing and layout, and validate every distinct visual role the family actually exposes.

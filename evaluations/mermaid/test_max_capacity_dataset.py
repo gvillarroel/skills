@@ -44,6 +44,77 @@ manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
 class MaximumCapacityDatasetTests(unittest.TestCase):
+    def test_v6_profile_reclassifies_v5_holdout_and_seals_new_families(self) -> None:
+        tasks = builder.TASK_PROFILES["max-capacity-v6-pareto"]
+        development = [task for task in tasks if task.split == "development"]
+        holdout = [task for task in tasks if task.split == "holdout"]
+        self.assertEqual(len(development), 18)
+        self.assertEqual(len(holdout), 3)
+        self.assertEqual(len({task.task_id for task in tasks}), 21)
+        self.assertEqual(len({task.prompt for task in tasks}), 21)
+        self.assertTrue(
+            {task.family for task in development}.isdisjoint(
+                task.family for task in holdout
+            )
+        )
+        self.assertEqual(
+            {task.family for task in holdout},
+            {"requirementDiagram", "quadrantChart", "eventmodeling"},
+        )
+
+    def test_v6_holdout_is_fresh_against_every_prior_capacity_profile(self) -> None:
+        holdout = {
+            task.task_id: task
+            for task in builder.TASK_PROFILES["max-capacity-v6-pareto"]
+            if task.split == "holdout"
+        }
+        prior = tuple(builder.TASK_PROFILES["max-capacity-v1"])
+        prior += tuple(builder.TASK_PROFILES["max-capacity-v2"])
+        prior += tuple(builder.TASK_PROFILES["max-capacity-v3-pareto"])
+        prior += tuple(builder.TASK_PROFILES["max-capacity-v4-pareto"])
+        prior += tuple(builder.TASK_PROFILES["max-capacity-v5-pareto"])
+        self.assertTrue(set(holdout).isdisjoint(task.task_id for task in prior))
+        self.assertTrue(
+            {task.prompt for task in holdout.values()}.isdisjoint(
+                task.prompt for task in prior
+            )
+        )
+
+    def test_v6_holdout_reaches_each_family_capacity(self) -> None:
+        capacity_by_family = {
+            case["id"]: case["fixtureElementCount"] for case in manifest["families"]
+        }
+        holdout = [
+            task
+            for task in builder.TASK_PROFILES["max-capacity-v6-pareto"]
+            if task.split == "holdout"
+        ]
+        self.assertEqual(
+            {task.family: capacity_by_family[task.family] for task in holdout},
+            {"requirementDiagram": 9, "quadrantChart": 4, "eventmodeling": 5},
+        )
+        requirement = next(
+            task for task in holdout if task.family == "requirementDiagram"
+        )
+        self.assertEqual(len(requirement.patterns), 17)
+        for role in builder.SEMANTIC_CLASS_ROLES:
+            self.assertTrue(any(role in pattern for pattern in requirement.patterns))
+        eventmodeling = next(
+            task for task in holdout if task.family == "eventmodeling"
+        )
+        self.assertEqual(len(eventmodeling.patterns), 5)
+        self.assertTrue(all("tf" in pattern for pattern in eventmodeling.patterns))
+
+    def test_v6_exposed_prompts_encode_layout_and_visible_id_repairs(self) -> None:
+        exposed = {
+            task.family: task
+            for task in builder.MAX_CAPACITY_V6_DEVELOPMENT_TASKS
+            if task.task_id.startswith("capacity-v6-dev-exposed-")
+        }
+        self.assertIn("top-to-bottom", exposed["swimlane"].prompt)
+        self.assertIn("visible state labels", exposed["stateDiagram"].prompt)
+        self.assertIn("top-to-bottom", exposed["erDiagram"].prompt)
+
     def test_v5_profile_reclassifies_v4_holdout_and_seals_new_families(self) -> None:
         tasks = builder.TASK_PROFILES["max-capacity-v5-pareto"]
         development = [task for task in tasks if task.split == "development"]
