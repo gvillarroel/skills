@@ -355,6 +355,21 @@ def validate_family_inventories(
             add(findings, echarts_path, f"ECharts legacy alias equals canonical ID: {pattern_id}")
     register_family("echarts", echarts_ids, 43, echarts_path, findings, global_ids, review_ids, family_counts)
 
+    mermaid_manifest_path = (
+        root / "skills/mermaid/assets/examples/mermaid-max-complexity/gallery.json"
+    )
+    mermaid_ids = manifest_pattern_ids(mermaid_manifest_path, "mermaid", findings)
+    register_family(
+        "mermaid",
+        mermaid_ids,
+        62,
+        mermaid_manifest_path,
+        findings,
+        global_ids,
+        review_ids,
+        family_counts,
+    )
+
     plant_root = root / "skills/plantuml-colorset-renderer/assets/examples"
     for directory, suffix, family in (
         ("plantuml-colorset-renderer", "cs2", "plantuml-cs2"),

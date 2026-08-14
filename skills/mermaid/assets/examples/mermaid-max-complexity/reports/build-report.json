@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "familyCount": 31,
+  "patternCount": 62,
+  "sourceCount": 62,
+  "staticSvgCount": 62,
+  "animatedSvgCount": 62,
+  "finiteCapacityCaseCount": 25,
+  "finiteCapacitySlots": 200,
+  "manifestSha256": "fa01cf77e50cb224faa73163797ec9719c1af503de612f09891a2aaee0fcd3fb"
+}

@@ -1,0 +1,25 @@
+zenuml
+  title Source-to-gallery publication trace
+  @Actor Author
+  @Boundary GalleryBuilder
+  @Database Repository
+  @Entity MermaidCLI
+  @Entity BrowserAudit
+
+  Author->GalleryBuilder: Build all families
+  GalleryBuilder->Repository: Load capacity contracts
+  Repository->GalleryBuilder: Return canonical sources
+  GalleryBuilder->MermaidCLI: Render Colorset 1 and Colorset 2
+  if(render succeeds) {
+    MermaidCLI->GalleryBuilder: Return static SVG
+    GalleryBuilder->BrowserAudit: Publish animated preview
+    BrowserAudit->GalleryBuilder: Return layout and interaction findings
+    if(findings are empty) {
+      GalleryBuilder->Author: Release 31-family gallery
+    } else {
+      GalleryBuilder->Author: Request source revision
+    }
+  } else {
+    MermaidCLI->GalleryBuilder: Return parser error
+    GalleryBuilder->Author: Stop publication
+  }

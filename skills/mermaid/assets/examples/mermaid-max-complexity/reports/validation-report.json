@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "familyCount": 31,
+  "patternCount": 62,
+  "checkedStaticAnimatedPairs": 62,
+  "sourceCount": 62,
+  "staticSvgCount": 62,
+  "animatedSvgCount": 62,
+  "minimumColorset1SvgColors": 5,
+  "minimumColorset2SvgColors": 5,
+  "findings": []
+}

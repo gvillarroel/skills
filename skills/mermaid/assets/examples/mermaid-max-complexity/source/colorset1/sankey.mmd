@@ -1,0 +1,53 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#e7e7e7"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#4f4f4f"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#ffccd5"
+    nodeBkg: "#ffccd5"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+  sankey:
+    linkColor: "gradient"
+    nodeColors:
+      "Sankey node 01": "#9e1b32"
+      "Sankey node 02": "#4f4f4f"
+      "Sankey node 03": "#828282"
+      "Sankey node 04": "#b5b5b5"
+      "Sankey node 05": "#6d1222"
+      "Sankey node 06": "#696969"
+      "Sankey node 07": "#9c9c9c"
+      "Sankey node 08": "#363636"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+sankey
+Sankey node 01,Sankey node 02,8
+Sankey node 02,Sankey node 03,7
+Sankey node 03,Sankey node 04,6
+Sankey node 04,Sankey node 05,5
+Sankey node 05,Sankey node 06,4
+Sankey node 06,Sankey node 07,3
+Sankey node 07,Sankey node 08,2

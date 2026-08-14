@@ -1,0 +1,80 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#e7e7e7"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#4f4f4f"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#ffccd5"
+    nodeBkg: "#ffccd5"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+ishikawa-beta
+  accTitle: Ishikawa maximum complexity showcase
+  accDescr: Delivery delay is traced to process, people, platform, policy, data, and environment branches, each with three nested causes.
+  Delivery delay
+    Process
+      Rework
+        Incomplete acceptance criteria
+      Handoffs
+        Unclear ownership
+      Queues
+        Batch approval
+    People
+      Training
+        New tooling
+      Availability
+        Shared specialists
+      Communication
+        Late escalation
+    Platform
+      Capacity
+        Saturated workers
+      Reliability
+        Retry storms
+      Observability
+        Missing queue age
+    Policy
+      Approval
+        Multiple sign-offs
+      Scheduling
+        Fixed release windows
+      Compliance
+        Manual evidence
+    Data
+      Quality
+        Invalid records
+      Freshness
+        Delayed imports
+      Schema
+        Breaking changes
+    Environment
+      Network
+        Regional latency
+      Vendor
+        Rate limits
+      Demand
+        Seasonal spikes

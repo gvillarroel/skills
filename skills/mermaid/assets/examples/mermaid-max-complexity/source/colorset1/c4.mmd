@@ -1,0 +1,54 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#e7e7e7"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#4f4f4f"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#ffccd5"
+    nodeBkg: "#ffccd5"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+C4Context
+  accTitle: C4 maximum complexity showcase
+  accDescr: A skill author updates a repository that supplies Mermaid source to an external renderer and browser, with four directed review and publication relationships.
+  title Mermaid Skill Publication Context
+  Person(author, "Skill Author", "Maintains the reusable skill and its examples.")
+  System(repo, "Skills Repository", "Stores skill instructions, validators, and public fixtures.")
+  System_Ext(renderer, "Mermaid Renderer", "Turns styled Mermaid source into static SVG.")
+  System_Ext(animator, "SVG Animator", "Adds replayable construction without replacing Mermaid geometry.")
+  SystemDb_Ext(pages, "GitHub Pages", "Publishes the verified gallery.")
+  System_Ext(browser, "Documentation Browser", "Displays and replays the rendered diagrams.")
+
+  Rel(author, repo, "Updates and validates")
+  Rel(repo, renderer, "Provides styled .mmd source")
+  Rel(renderer, animator, "Provides canonical static SVG")
+  Rel(animator, pages, "Publishes animated SVG")
+  Rel(renderer, pages, "Publishes static SVG")
+  Rel(pages, browser, "Serves gallery assets")
+  Rel(author, browser, "Reviews desktop and mobile output")
+
+  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")

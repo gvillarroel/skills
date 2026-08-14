@@ -1,0 +1,182 @@
+<svg id="my-svg" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 1663.5px; background-color: white;" viewBox="0 0 1663.5 507" role="graphics-document document" aria-roledescription="zenuml" aria-labelledby="mermaid-zenuml-colorset2-title" aria-describedby="mermaid-zenuml-colorset2-desc"><title id="mermaid-zenuml-colorset2-title">ZenUML maximum complexity showcase</title><desc id="mermaid-zenuml-colorset2-desc">An author asks a documentation boundary to load Mermaid source from a repository, then receives either a colored render or a parser error according to frontmatter validity.</desc><defs>
+  <style>
+  .frame-border-outer { fill: #666; }
+  .frame-border-inner { fill: #ffffff; }
+  .frame-header-bg { fill: #ffffff; }
+  .frame-header-line { stroke: #666; stroke-width: 1; shape-rendering: crispEdges; }
+  .frame-title { font-family: Helvetica, Verdana, serif; font-size: 16px; font-weight: 600; fill: #222; }
+  .participant-box { fill: #ffffff; stroke: #666; stroke-width: 2; }
+  .participant-label { font-family: Helvetica, Verdana, serif; font-size: 16px; fill: #222; }
+  .participant-icon { color: #222; }
+  .participant-icon [fill="currentColor"]:not([stroke]) { stroke: #666; stroke-width: 1; }
+  .lifeline { stroke: #666; stroke-width: 1; }
+  .message-line { stroke: #000; stroke-width: 2; shape-rendering: crispEdges; }
+  .message-label { font-family: Helvetica, Verdana, serif; font-size: 14px; fill: #222; }
+  .arrow-head { fill: #000; stroke: #000; stroke-width: 2; }
+  .arrow-open { fill: none; }
+  .occurrence { fill: #dedede; stroke: #666; stroke-width: 2; shape-rendering: crispEdges; }
+  .fragment-border { fill: none; stroke: #666; stroke-width: 1; shape-rendering: crispEdges; }
+  .fragment-header { fill: #dedede; fill-opacity: 0.498; stroke: none; shape-rendering: crispEdges; }
+  .fragment-label { font-family: Helvetica, Verdana, serif; font-size: 14px; font-weight: 600; fill: #000; }
+  .fragment-condition { font-family: Helvetica, Verdana, serif; font-size: 14px; fill: #000; }
+  .fragment-separator { stroke: #e5e7eb; stroke-width: 1; shape-rendering: crispEdges; }
+  .fragment-section-label { font-family: Helvetica, Verdana, serif; font-size: 14px; fill: #000; }
+  .return-line { stroke: #000; stroke-width: 2; stroke-dasharray: 6,4; shape-rendering: crispEdges; }
+  .return-arrow { stroke: #000; stroke-width: 2; fill: none; }
+  .return-label { font-family: Helvetica, Verdana, serif; font-size: 14px; fill: #222; }
+  .return-icon { fill: #222; }
+  .divider-line { stroke: #aaaa33; stroke-width: 1; }
+  .divider-bg { fill: #fff5ad; stroke: #aaaa33; stroke-width: 1; }
+  .divider-label { font-family: Helvetica, Verdana, serif; font-size: 14px; fill: #333; }
+  .comment-text { font-family: Helvetica, Verdana, serif; font-size: 14px; fill: #333; opacity: 0.5; }
+  .seq-number { font-family: Helvetica, Verdana, serif; font-size: 12px; font-weight: 100; fill: #6b7280; }
+  .group-outline { fill: none; stroke: #666; }
+  .group-title-bg { fill: #ffffff; stroke: none; }
+  .group-title-text { font-family: Helvetica, Verdana, serif; font-size: 13px; font-weight: 400; fill: #222; }
+</style>
+</defs>
+<rect class="frame-border-outer" x="0" y="0" width="1663.5" height="507" rx="4" fill="#666"/>
+<rect class="frame-border-inner" x="1" y="1" width="1661.5" height="505" rx="3" fill="#fff"/>
+<line class="frame-header-line" x1="1" y1="33.5" x2="1662.5" y2="33.5"/>
+
+<g transform="translate(11, 34)">
+<line x1="56" y1="68" x2="56" y2="472" class="lifeline" stroke-dasharray="5,5" stroke-dashoffset="5" shape-rendering="crispEdges"/>
+<line x1="674" y1="68" x2="674" y2="472" class="lifeline" stroke-dasharray="5,5" stroke-dashoffset="5" shape-rendering="crispEdges"/>
+<line x1="1292" y1="68" x2="1292" y2="472" class="lifeline" stroke-dasharray="5,5" stroke-dashoffset="5" shape-rendering="crispEdges"/>
+<line x1="1392" y1="68" x2="1392" y2="472" class="lifeline" stroke-dasharray="5,5" stroke-dashoffset="5" shape-rendering="crispEdges"/>
+<line x1="1492" y1="68" x2="1492" y2="472" class="lifeline" stroke-dasharray="5,5" stroke-dashoffset="5" shape-rendering="crispEdges"/>
+<line x1="1592" y1="68" x2="1592" y2="472" class="lifeline" stroke-dasharray="5,5" stroke-dashoffset="5" shape-rendering="crispEdges"/>
+<g class="participant participant-starter" data-participant="_STARTER_">
+  <rect x="16.5" y="29" width="78" height="38" rx="3" class="participant-box"/>
+  <g class="participant-icon" transform="translate(41.5, 36) scale(1)" fill="none">
+    <g>
+    <path d="M15.5489 4.19771C15.5489 5.18773 15.1485 6.13721 14.4358 6.83726C13.7231 7.53731 12.7565 7.93058 11.7486 7.93058C10.7407 7.93058 9.77403 7.53731 9.06133 6.83726C8.34863 6.13721 7.94824 5.18773 7.94824 4.19771C7.94824 3.20768 8.34863 2.25822 9.06133 1.55818C9.77403 0.858126 10.7407 0.464844 11.7486 0.464844C12.7565 0.464844 13.7231 0.858126 14.4358 1.55818C15.1485 2.25822 15.5489 3.20768 15.5489 4.19771Z" stroke="currentColor"/>
+    <path d="M6.54883 11.2152L17.2025 11.2073M11.7471 8.06641V19.5806V8.06641ZM11.7471 19.4385L6.79789 23.5738L11.7471 19.4385ZM11.7551 19.4385L17.1864 23.3055L11.7551 19.4385Z" stroke="currentColor"/>
+  </g>
+  </g>
+</g>
+<g class="participant" data-participant="accTitle">
+  <rect x="634.5" y="29" width="78" height="38" rx="3" class="participant-box"/>
+
+
+
+  <text x="673.5" y="47.75" text-anchor="middle" dominant-baseline="central" class="participant-label">accTitle</text>
+</g>
+<g class="participant" data-participant="accDescr">
+  <rect x="1251.16015625" y="29" width="80.6796875" height="38" rx="3" class="participant-box"/>
+
+
+
+  <text x="1291.5" y="47.75" text-anchor="middle" dominant-baseline="central" class="participant-label">accDescr</text>
+</g>
+<g class="participant" data-participant="Source">
+  <rect x="1352.5" y="29" width="78" height="38" rx="3" class="participant-box"/>
+
+
+
+  <text x="1391.5" y="47.75" text-anchor="middle" dominant-baseline="central" class="participant-label">Source</text>
+</g>
+<g class="participant" data-participant="to">
+  <rect x="1452.5" y="29" width="78" height="38" rx="3" class="participant-box"/>
+
+
+
+  <text x="1491.5" y="47.75" text-anchor="middle" dominant-baseline="central" class="participant-label">to</text>
+</g>
+<g class="participant" data-participant="gallery">
+  <rect x="1552.5" y="29" width="78" height="38" rx="3" class="participant-box"/>
+
+
+
+  <text x="1591.5" y="47.75" text-anchor="middle" dominant-baseline="central" class="participant-label">gallery</text>
+</g>
+<rect x="49.5" y="165" width="13" height="22" rx="1" class="occurrence" data-participant="_STARTER_"/>
+<rect x="49.5" y="325" width="13" height="22" rx="1" class="occurrence" data-participant="_STARTER_"/>
+<rect x="49.5" y="393" width="13" height="22" rx="1" class="occurrence" data-participant="_STARTER_"/>
+<g class="message">
+  <line x1="56.5" y1="87" x2="673.5" y2="87" class="message-line"/>
+  <svg x="666.5" y="82" width="7" height="10" viewBox="0 0 7 9" overflow="visible" class="arrow-head arrow-open">
+    <g>
+      <path d="M1 1.25 L6.15 4.5 L1 7.75" stroke="#000" stroke-linecap="round" stroke-width="2" fill="none"/>
+    </g>
+  </svg>
+  <text x="361.5" y="84" text-anchor="middle" class="message-label">ZenUML maximum complexity showcase</text>
+  <text x="52.5" y="84" text-anchor="end" class="seq-number">1</text>
+</g>
+<g class="message">
+  <line x1="56.5" y1="119" x2="1291.5" y2="119" class="message-line"/>
+  <svg x="1284.5" y="114" width="7" height="10" viewBox="0 0 7 9" overflow="visible" class="arrow-head arrow-open">
+    <g>
+      <path d="M1 1.25 L6.15 4.5 L1 7.75" stroke="#000" stroke-linecap="round" stroke-width="2" fill="none"/>
+    </g>
+  </svg>
+  <text x="670.5" y="116" text-anchor="middle" class="message-label">An author asks a documentation boundary to load Mermaid source from a repository, then receives either a colored render or a parser error according to frontmatter validity.</text>
+  <text x="52.5" y="116" text-anchor="end" class="seq-number">2</text>
+</g>
+<g class="message">
+  <line x1="1492.5" y1="279" x2="1591.5" y2="279" class="message-line"/>
+  <svg x="1584.5" y="274" width="7" height="10" viewBox="0 0 7 9" overflow="visible" class="arrow-head arrow-open">
+    <g>
+      <path d="M1 1.25 L6.15 4.5 L1 7.75" stroke="#000" stroke-linecap="round" stroke-width="2" fill="none"/>
+    </g>
+  </svg>
+  <text x="1538.5" y="276" text-anchor="middle" class="message-label"/>
+  <text x="1488.5" y="276" text-anchor="end" class="seq-number">5</text>
+</g>
+<g class="message self-call">
+  <svg x="56.5" y="150" width="30" height="24">
+    <path d="M0,2 L26,2 Q28,2 28,4 L28,13 Q28,15 26,15 L14,15" fill="none" stroke="#000" stroke-width="2"/>
+    <g transform="translate(7, 10)">
+      <svg height="10" width="7" viewBox="0 0 7 9">
+        <g transform="scale(-1, 1) translate(-7, 0)">
+          <path d="M1 1.25 L6.15 4.5 L1 7.75 Z" stroke="#000" stroke-linecap="round" fill="#000" stroke-width="2"/>
+        </g>
+      </svg>
+    </g>
+  </svg>
+  <text x="61.5" y="148" text-anchor="start" class="message-label">title</text>
+  <text x="52.5" y="148" text-anchor="end" class="seq-number">3</text>
+</g>
+<g class="message self-call">
+  <svg x="1392.5" y="224" width="30" height="24">
+    <path d="M0,2 L26,2 Q28,2 28,4 L28,13 Q28,15 26,15 L1,15" fill="none" stroke="#000" stroke-width="2"/>
+    <g transform="translate(0, 10)">
+      <svg height="10" width="7" viewBox="0 0 7 9">
+        <g transform="scale(-1, 1) translate(-7, 0)">
+          <path d="M1 1.25 L6.15 4.5 L1 7.75" stroke="#000" stroke-linecap="round" fill="none" stroke-width="2"/>
+        </g>
+      </svg>
+    </g>
+  </svg>
+  <text x="1397.5" y="219" text-anchor="start" class="message-label"/>
+  <text x="1388.5" y="216" text-anchor="end" class="seq-number">4</text>
+</g>
+<g class="message self-call">
+  <svg x="56.5" y="310" width="30" height="24">
+    <path d="M0,2 L26,2 Q28,2 28,4 L28,13 Q28,15 26,15 L14,15" fill="none" stroke="#000" stroke-width="2"/>
+    <g transform="translate(7, 10)">
+      <svg height="10" width="7" viewBox="0 0 7 9">
+        <g transform="scale(-1, 1) translate(-7, 0)">
+          <path d="M1 1.25 L6.15 4.5 L1 7.75 Z" stroke="#000" stroke-linecap="round" fill="#000" stroke-width="2"/>
+        </g>
+      </svg>
+    </g>
+  </svg>
+  <text x="61.5" y="308" text-anchor="start" class="message-label">publication</text>
+  <text x="52.5" y="308" text-anchor="end" class="seq-number">6</text>
+</g>
+<g class="message self-call">
+  <svg x="56.5" y="378" width="30" height="24">
+    <path d="M0,2 L26,2 Q28,2 28,4 L28,13 Q28,15 26,15 L14,15" fill="none" stroke="#000" stroke-width="2"/>
+    <g transform="translate(7, 10)">
+      <svg height="10" width="7" viewBox="0 0 7 9">
+        <g transform="scale(-1, 1) translate(-7, 0)">
+          <path d="M1 1.25 L6.15 4.5 L1 7.75 Z" stroke="#000" stroke-linecap="round" fill="#000" stroke-width="2"/>
+        </g>
+      </svg>
+    </g>
+  </svg>
+  <text x="61.5" y="376" text-anchor="start" class="message-label">trace</text>
+  <text x="52.5" y="376" text-anchor="end" class="seq-number">7</text>
+</g>
+</g></svg>

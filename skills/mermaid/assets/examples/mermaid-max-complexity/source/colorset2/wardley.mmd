@@ -1,0 +1,63 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#cdf3ff"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#007298"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#cdf3ff"
+    nodeBkg: "#cdf3ff"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+    wardleyEvolutionColor: "#e8002a"
+    wardley:
+      backgroundColor: "#ffffff"
+      axisColor: "#696969"
+      axisTextColor: "#333e48"
+      gridColor: "#9c9c9c"
+      componentFill: "#ffffff"
+      componentStroke: "#9e1b32"
+      componentLabelColor: "#333e48"
+      linkStroke: "#696969"
+      evolutionStroke: "#e8002a"
+      annotationStroke: "#007298"
+      annotationTextColor: "#333e48"
+      annotationFill: "#e7e7e7"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset2"
+  mode: "extended"
+  palette: "full-color-style"
+# mermaid: metadata end
+---
+wardley-beta
+  accTitle: Wardley maximum complexity showcase
+  accDescr: A user value chain descends through interface, API, worker, database, and archive components while moving from genesis toward commodity evolution.
+  title Wardley semantic roles
+  anchor User [0.95, 0.95]
+  component Interface [0.82, 0.82] (build)
+  component API [0.68, 0.68] (build)
+  component Worker [0.54, 0.54] (build)
+  component Database [0.40, 0.40] (buy)
+  component Archive [0.25, 0.25] (outsource)
+  User -> Interface
+  Interface -> API
+  API -> Worker
+  Worker -> Database
+  Database -> Archive

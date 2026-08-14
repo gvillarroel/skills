@@ -1,0 +1,61 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#cdf3ff"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#007298"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#cdf3ff"
+    nodeBkg: "#cdf3ff"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset2"
+  mode: "extended"
+  palette: "full-color-style"
+# mermaid: metadata end
+---
+zenuml
+  accTitle: ZenUML maximum complexity showcase
+  accDescr: An author asks a documentation boundary to load Mermaid source from a repository, then receives either a colored render or a parser error according to frontmatter validity.
+  title Source-to-gallery publication trace
+  @Actor Author
+  @Boundary GalleryBuilder
+  @Database Repository
+  @Entity MermaidCLI
+  @Entity BrowserAudit
+
+  Author->GalleryBuilder: Build all families
+  GalleryBuilder->Repository: Load capacity contracts
+  Repository->GalleryBuilder: Return canonical sources
+  GalleryBuilder->MermaidCLI: Render Colorset 1 and Colorset 2
+  if(render succeeds) {
+    MermaidCLI->GalleryBuilder: Return static SVG
+    GalleryBuilder->BrowserAudit: Publish animated preview
+    BrowserAudit->GalleryBuilder: Return layout and interaction findings
+    if(findings are empty) {
+      GalleryBuilder->Author: Release 31-family gallery
+    } else {
+      GalleryBuilder->Author: Request source revision
+    }
+  } else {
+    MermaidCLI->GalleryBuilder: Return parser error
+    GalleryBuilder->Author: Stop publication
+  }

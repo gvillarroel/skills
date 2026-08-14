@@ -1,0 +1,40 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#cdf3ff"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#007298"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#cdf3ff"
+    nodeBkg: "#cdf3ff"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset2"
+  mode: "extended"
+  palette: "full-color-style"
+# mermaid: metadata end
+---
+railroad-ebnf-beta
+  accTitle: Railroad maximum complexity showcase
+  accDescr: The root grammar requires an identifier and expression, may include an operator, and resolves the expression to a number.
+title "Railroad semantic roles"
+root = "identifier", expression, [ "operator" ];
+expression = "number";

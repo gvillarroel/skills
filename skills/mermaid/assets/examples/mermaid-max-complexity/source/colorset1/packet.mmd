@@ -1,0 +1,57 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#e7e7e7"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#4f4f4f"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#ffccd5"
+    nodeBkg: "#ffccd5"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+packet
+  accTitle: Packet maximum complexity showcase
+  accDescr: A 32-bit transport header is divided into source and destination ports, sequence and acknowledgment values, control flags, window, checksum, pointer, options, and payload fields.
+  title Transport header arranged in 32-bit rows
+  +16: "Source port"
+  +16: "Destination port"
+  +32: "Sequence number"
+  +32: "Acknowledgment number"
+  +4: "Data offset"
+  +3: "Reserved"
+  +1: "NS"
+  +1: "CWR"
+  +1: "ECE"
+  +1: "URG"
+  +1: "ACK"
+  +1: "PSH"
+  +1: "RST"
+  +1: "SYN"
+  +1: "FIN"
+  +16: "Window size"
+  +16: "Checksum"
+  +16: "Urgent pointer"
+  +32: "Options and padding"

@@ -1,0 +1,60 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#cdf3ff"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#007298"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#cdf3ff"
+    nodeBkg: "#cdf3ff"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+    cynefin:
+      complexBg: "#cdf3ff"
+      complicatedBg: "#e7e7e7"
+      clearBg: "#dbffcc"
+      chaoticBg: "#ffccd5"
+      confusionBg: "#ffe5cc"
+      boundaryColor: "#696969"
+      cliffColor: "#e8002a"
+      arrowColor: "#9e1b32"
+      labelColor: "#333e48"
+      textColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset2"
+  mode: "extended"
+  palette: "full-color-style"
+# mermaid: metadata end
+---
+cynefin-beta
+  accTitle: Cynefin maximum complexity showcase
+  accDescr: One item occupies each of the complex, complicated, clear, chaotic, and confusion domains, with an analysis transition from complex to complicated.
+  title Cynefin semantic capacity
+  complex
+    "Complex item"
+  complicated
+    "Complicated item"
+  clear
+    "Clear item"
+  chaotic
+    "Chaotic item"
+  confusion
+    "Confusion item"
+  complex --> complicated : "Analyze"

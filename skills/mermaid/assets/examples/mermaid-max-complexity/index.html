@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A verified gallery of every Mermaid 11.16.0 diagram family at its maximum finite palette or semantic-role capacity, shown in Colorset 1 and Colorset 2.">
+    <title>Mermaid Maximum Complexity Gallery</title>
+    <link rel="stylesheet" href="gallery.css">
+  </head>
+  <body data-example-id="mermaid-max-complexity" data-pattern-page="true">
+    <a class="skip-link" href="#gallery">Skip to gallery</a>
+    <header class="hero">
+      <div class="hero__content">
+        <p class="eyebrow">Mermaid 11.16.0 · verified skill output</p>
+        <h1>Maximum complexity,<br>family by family.</h1>
+        <p class="hero__lede">
+          Every public Mermaid family rendered from the same skill contract. Finite color and semantic-role
+          surfaces reach their documented terminal slot; unbounded families use an advanced, legible syntax fixture.
+        </p>
+        <div class="hero__stats" aria-label="Gallery coverage">
+          <div><strong id="family-count">31</strong><span>public families</span></div>
+          <div><strong id="pattern-count">62</strong><span>palette variants</span></div>
+          <div><strong id="capacity-count">200</strong><span>finite slots exercised</span></div>
+          <div><strong id="output-count">124</strong><span>static + animated SVGs</span></div>
+        </div>
+      </div>
+      <div class="hero__mark" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </header>
+
+    <main>
+      <section class="method" aria-labelledby="method-title">
+        <div>
+          <p class="section-kicker">What maximum means here</p>
+          <h2 id="method-title">A measured ceiling, not decorative density.</h2>
+        </div>
+        <div class="method__copy">
+          <p>
+            Mermaid has finite indexed palettes and semantic role surfaces, but most families do not have a finite
+            node limit. The gallery therefore distinguishes <strong>terminal capacity</strong> from
+            <strong>advanced representative syntax</strong> instead of claiming that an arbitrary node count is maximal.
+          </p>
+          <ul>
+            <li><strong>Colorset 1</strong> is the standard red-neutral palette.</li>
+            <li><strong>Colorset 2</strong> is the explicit extended full-color comparison.</li>
+            <li>Every source, static SVG, and animated SVG is downloadable and hash-verified.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="catalog" aria-labelledby="catalog-title">
+        <div class="catalog__heading">
+          <div>
+            <p class="section-kicker">31 / 31 families</p>
+            <h2 id="catalog-title">Compare the complete surface.</h2>
+          </div>
+          <p id="visible-count" class="visible-count" aria-live="polite">Loading gallery…</p>
+        </div>
+
+        <div class="controls" aria-label="Gallery controls">
+          <label class="search-control">
+            <span>Search</span>
+            <input id="search" type="search" placeholder="Flowchart, hierarchy, capacity…" autocomplete="off">
+          </label>
+          <label class="select-control">
+            <span>Relationship</span>
+            <select id="category-filter">
+              <option value="all">All relationships</option>
+            </select>
+          </label>
+          <fieldset class="palette-control">
+            <legend>Palette view</legend>
+            <div role="group" aria-label="Palette view">
+              <button type="button" class="is-active" data-palette-view="both" aria-pressed="true">Compare</button>
+              <button type="button" data-palette-view="cs1" aria-pressed="false">Colorset 1</button>
+              <button type="button" data-palette-view="cs2" aria-pressed="false">Colorset 2</button>
+            </div>
+          </fieldset>
+        </div>
+
+        <nav id="family-nav" class="family-nav" aria-label="Jump to a Mermaid family"></nav>
+        <div id="gallery" class="gallery" aria-busy="true"></div>
+        <p id="empty-state" class="empty-state" hidden>No Mermaid families match this filter.</p>
+        <noscript>This gallery requires JavaScript to load its verified manifest and SVG previews.</noscript>
+      </section>
+    </main>
+
+    <footer>
+      <p>Rendered with Mermaid 11.16.0. Static geometry remains the source of truth for every animation.</p>
+      <a href="gallery.json">Open the machine-readable gallery manifest</a>
+    </footer>
+    <script type="module" src="gallery.js"></script>
+  </body>
+</html>

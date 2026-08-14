@@ -59,6 +59,11 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "mermaid-max-elements",
+    "mermaid-max-complexity": SKILLS
+    / "mermaid"
+    / "assets"
+    / "examples"
+    / "mermaid-max-complexity",
     "plantuml-colorset-renderer-base": SKILLS
     / "plantuml-colorset-renderer"
     / "assets"
@@ -118,6 +123,14 @@ PUBLISHED_EXAMPLE_SETS = [
         "href": "examples/echarts-animated-svg/",
         "kind": "Inline SVG",
         "description": "Replayable ECharts chart-type examples rendered as portable SVG.",
+    },
+    {
+        "id": "mermaid-max-complexity",
+        "source": "mermaid-max-complexity",
+        "title": "Mermaid Maximum Complexity Gallery",
+        "href": "examples/mermaid-max-complexity/",
+        "kind": "Mermaid SVG",
+        "description": "All 31 Mermaid 11.16.0 diagram families at their documented palette or practical complexity boundary, paired in Colorset 1 and Colorset 2 with static and replayable SVG output.",
     },
     {
         "id": "d3-animated-svg",
@@ -631,6 +644,16 @@ def build_docs() -> None:
 
     copy_tree(example_source("compose-synchronized-svg"), DOCS / "examples" / "compose-synchronized-svg")
     copy_tree(example_source("echarts-animated-svg"), DOCS / "examples" / "echarts-animated-svg")
+    mermaid_gallery = example_source("mermaid-max-complexity")
+    copy_tree(mermaid_gallery, DOCS / "examples" / "mermaid-max-complexity")
+    copy_tree(
+        mermaid_gallery / "legacy" / "mermaid-svg-animated",
+        DOCS / "examples" / "mermaid-svg-animated",
+    )
+    copy_tree(
+        mermaid_gallery / "legacy" / "mermaid-animation-directives",
+        DOCS / "examples" / "mermaid-animation-directives",
+    )
 
     copy_tree(example_source("d3-animated-svg"), DOCS / "examples" / "d3-animated-svg")
     patch_file(

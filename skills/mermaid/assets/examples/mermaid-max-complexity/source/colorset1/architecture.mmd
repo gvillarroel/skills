@@ -1,0 +1,55 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#e7e7e7"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#4f4f4f"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#ffccd5"
+    nodeBkg: "#ffccd5"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+    archEdgeColor: "#696969"
+    archEdgeArrowColor: "#696969"
+    archEdgeWidth: "3"
+    archGroupBorderColor: "#9e1b32"
+    archGroupBorderWidth: "2px"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+architecture-beta
+  accTitle: Architecture maximum complexity showcase
+  accDescr: Ingress reaches an API and worker across edge and core groups; the worker routes to database, queue, and archive services.
+  group edge(cloud)[Edge]
+  group core(cloud)[Core]
+  service ingress(internet)[Ingress] in edge
+  service api(server)[API] in core
+  service worker(server)[Worker] in core
+  service database(database)[Database] in core
+  service queue(disk)[Queue] in core
+  service archive(disk)[Archive] in core
+  ingress:R --> L:api
+  api:R --> L:worker
+  worker:B --> T:database
+  worker:R --> L:queue
+  queue:B --> T:archive

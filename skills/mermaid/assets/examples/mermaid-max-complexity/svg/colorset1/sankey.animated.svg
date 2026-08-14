@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="my-svg" width="100%" style="max-width: 600px; background-color: white;" viewBox="0 -3.886821420273634e-14 600 400" role="graphics-document document" aria-roledescription="sankey" data-animated-mermaid="true" data-animation="sequence" data-element-count="23" aria-labelledby="mermaid-sankey-colorset1-title" aria-describedby="mermaid-sankey-colorset1-desc"><title id="mermaid-sankey-colorset1-title">Sankey maximum complexity showcase</title><desc id="mermaid-sankey-colorset1-desc">Eight nodes form a descending weighted flow from value eight to value two and consume every configured Sankey node color.</desc><style>#my-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333e48;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#e7e7e7;}#my-svg .error-text{fill:#333e48;stroke:#333e48;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#696969;stroke:#696969;}#my-svg .marker.cross{stroke:#696969;}#my-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#my-svg p{margin:0;}#my-svg .label{font-family:"trebuchet ms",verdana,arial,sans-serif;}#my-svg .node-labels{font-family:"trebuchet ms",verdana,arial,sans-serif;}#my-svg .sankey-label-bg{stroke:#ffccd5;stroke-width:4px;stroke-linejoin:round;paint-order:stroke;}#my-svg .sankey-label-fg{fill:#333e48;}#my-svg .node rect{shape-rendering:crispEdges;}#my-svg .link{fill:none;stroke-opacity:0.5;mix-blend-mode:multiply;}#my-svg .node .neo-node{stroke:#9e1b32;}#my-svg [data-look="neo"].node rect,#my-svg [data-look="neo"].cluster rect,#my-svg [data-look="neo"].node polygon{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].swimlane.cluster rect{filter:none;}#my-svg [data-look="neo"].node path{stroke:url(#my-svg-gradient);stroke-width:1px;}#my-svg [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node .neo-line path{stroke:#9e1b32;filter:none;}#my-svg [data-look="neo"].node circle{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node circle .state-start{fill:#000000;}#my-svg [data-look="neo"].icon-shape .icon{fill:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].icon-shape .icon-neo path{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><style id="animated-mermaid-style" type="text/css">
+.am-step {
+  animation-delay: var(--am-delay, 0ms);
+  animation-duration: var(--am-duration, 650ms);
+  animation-fill-mode: backwards;
+  animation-timing-function: var(--am-easing, cubic-bezier(.2, .8, .2, 1));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.am-effect-fade { animation-name: am-fade; }
+.am-effect-pop { animation-name: am-pop; }
+.am-effect-slide-up { animation-name: am-slide-up; }
+.am-effect-slide-left { animation-name: am-slide-left; }
+.am-effect-zoom { animation-name: am-zoom; }
+.am-effect-draw { animation-name: am-draw; }
+.am-effect-radial-arrow,
+.am-effect-grow-arrow {
+  animation-name: am-grow-arrow;
+  animation-timing-function: cubic-bezier(.16, .84, .28, 1);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.am-effect-radial-arrow { animation-name: am-radial-arrow; }
+@keyframes am-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes am-pop {
+  0% { opacity: 0; transform: scale(.92); }
+  70% { opacity: 1; transform: scale(1.025); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes am-slide-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-slide-left {
+  from { opacity: 0; transform: translateX(18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-zoom {
+  from { opacity: 0; transform: scale(.86); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-draw {
+  from {
+    opacity: 0;
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: var(--am-draw-distance, 10000);
+  }
+  12% { opacity: 1; }
+  to {
+    opacity: 1;
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes am-grow-arrow {
+  0% {
+    opacity: 0;
+    marker-start: none;
+    marker-mid: none;
+    marker-end: none;
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: var(--am-draw-distance, 10000);
+  }
+  8% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+  }
+  34% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: var(--am-grow-distance-a, 6600);
+  }
+  62% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: var(--am-grow-distance-b, 2400);
+  }
+  84% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: var(--am-grow-distance-c, 360);
+  }
+  100% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes am-radial-arrow {
+  0% {
+    opacity: 0;
+    marker-start: none;
+    marker-mid: none;
+    marker-end: none;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  10% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+  }
+  38% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: 1;
+    stroke-dashoffset: .66;
+  }
+  66% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: .24;
+  }
+  86% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: .05;
+  }
+  100% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .am-step {
+    animation: none !important;
+    opacity: initial !important;
+    transform: none !important;
+    stroke-dasharray: initial !important;
+    stroke-dashoffset: initial !important;
+  }
+}
+</style><g /><g class="nodes"><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 100.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="0"><g class="node" id="node-1" transform="translate(0,-3.886821420273634e-14)" x="0" y="-3.886821420273634e-14"><rect height="400.00000000000006" width="10" fill="#9e1b32" /></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 1190.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="2"><g class="node" id="node-2" transform="translate(84.28571428571429,-3.526835194178935e-14)" x="84.28571428571429" y="-3.526835194178935e-14"><rect height="400" width="10" fill="#4f4f4f" /></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 2280.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="4"><g class="node" id="node-3" transform="translate(168.57142857142858,0.009154960451224076)" x="168.57142857142858" y="0.009154960451224076"><rect height="349.99999999999994" width="10" fill="#828282" /></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 3370.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="6"><g class="node" id="node-4" transform="translate(252.8571428571429,0.01822915921983148)" x="252.8571428571429" y="0.01822915921983148"><rect height="300.00000000000006" width="10" fill="#b5b5b5" /></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 4460.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="8"><g class="node" id="node-5" transform="translate(337.14285714285717,0.02715636086283224)" x="337.14285714285717" y="0.02715636086283224"><rect height="249.99999999999997" width="10" fill="#6d1222" /></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 5550.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="10"><g class="node" id="node-6" transform="translate(421.42857142857144,0.035871580979502715)" x="421.42857142857144" y="0.035871580979502715"><rect height="200.00000000000003" width="10" fill="#696969" /></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 6640.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="12"><g class="node" id="node-7" transform="translate(505.7142857142858,0.04431132150503522)" x="505.7142857142858" y="0.04431132150503522"><rect height="150.00000000000003" width="10" fill="#9c9c9c" /></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 7730.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="14"><g class="node" id="node-8" transform="translate(590,0.05241380061784515)" x="590" y="0.05241380061784515"><rect height="100.00000000000001" width="10" fill="#363636" /></g></g></g><g class="node-labels" font-size="14"><text x="16" y="199.99999999999997" dy="0em" text-anchor="start" class="am-step am-role-label am-effect-fade" style="--am-delay: 100.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="0">Sankey node 01
+8</text><text x="100.28571428571429" y="199.99999999999994" dy="0em" text-anchor="start" class="am-step am-role-label am-effect-fade" style="--am-delay: 1190.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="2">Sankey node 02
+8</text><text x="184.57142857142858" y="175.00915496045118" dy="0em" text-anchor="start" class="am-step am-role-label am-effect-fade" style="--am-delay: 2280.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="4">Sankey node 03
+7</text><text x="268.8571428571429" y="150.01822915921989" dy="0em" text-anchor="start" class="am-step am-role-label am-effect-fade" style="--am-delay: 3370.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="6">Sankey node 04
+6</text><text x="331.14285714285717" y="125.0271563608628" dy="0em" text-anchor="end" class="am-step am-role-label am-effect-fade" style="--am-delay: 4460.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="8">Sankey node 05
+5</text><text x="415.42857142857144" y="100.0358715809795" dy="0em" text-anchor="end" class="am-step am-role-label am-effect-fade" style="--am-delay: 5550.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="10">Sankey node 06
+4</text><text x="499.7142857142858" y="75.04431132150505" dy="0em" text-anchor="end" class="am-step am-role-label am-effect-fade" style="--am-delay: 6640.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="12">Sankey node 07
+3</text><text x="584" y="50.05241380061785" dy="0em" text-anchor="end" class="am-step am-role-label am-effect-fade" style="--am-delay: 7730.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="14">Sankey node 08
+2</text></g><g class="links" fill="none" stroke-opacity="0.5"><g class="link" style="mix-blend-mode: multiply;"><linearGradient id="linearGradient-9" gradientUnits="userSpaceOnUse" x1="10" x2="84.28571428571429"><stop offset="0%" stop-color="#9e1b32" /><stop offset="100%" stop-color="#4f4f4f" /></linearGradient><path d="M10,199.99999999999997C47.142857142857146,199.99999999999997,47.142857142857146,199.99999999999997,84.28571428571429,199.99999999999997" stroke="url(#linearGradient-9)" stroke-width="400" class="am-step am-role-edge am-effect-grow-arrow am-sankey-link" pathLength="10000.0" style="--am-delay: 645.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0; stroke-linecap: butt; --am-grow-distance-a: 6600.000; --am-grow-distance-b: 2400.000; --am-grow-distance-c: 360.000;" data-am-stage="1" /></g><g class="link" style="mix-blend-mode: multiply;"><linearGradient id="linearGradient-10" gradientUnits="userSpaceOnUse" x1="94.28571428571429" x2="168.57142857142858"><stop offset="0%" stop-color="#4f4f4f" /><stop offset="100%" stop-color="#828282" /></linearGradient><path d="M94.28571428571429,174.99999999999997C131.42857142857144,174.99999999999997,131.42857142857144,175.0091549604512,168.57142857142858,175.0091549604512" stroke="url(#linearGradient-10)" stroke-width="350" class="am-step am-role-edge am-effect-grow-arrow am-sankey-link" pathLength="10000.0" style="--am-delay: 1735.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0; stroke-linecap: butt; --am-grow-distance-a: 6600.000; --am-grow-distance-b: 2400.000; --am-grow-distance-c: 360.000;" data-am-stage="3" /></g><g class="link" style="mix-blend-mode: multiply;"><linearGradient id="linearGradient-11" gradientUnits="userSpaceOnUse" x1="178.57142857142858" x2="252.8571428571429"><stop offset="0%" stop-color="#828282" /><stop offset="100%" stop-color="#b5b5b5" /></linearGradient><path d="M178.57142857142858,150.0091549604512C215.71428571428572,150.0091549604512,215.71428571428572,150.01822915921983,252.8571428571429,150.01822915921983" stroke="url(#linearGradient-11)" stroke-width="300" class="am-step am-role-edge am-effect-grow-arrow am-sankey-link" pathLength="10000.0" style="--am-delay: 2825.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0; stroke-linecap: butt; --am-grow-distance-a: 6600.000; --am-grow-distance-b: 2400.000; --am-grow-distance-c: 360.000;" data-am-stage="5" /></g><g class="link" style="mix-blend-mode: multiply;"><linearGradient id="linearGradient-12" gradientUnits="userSpaceOnUse" x1="262.8571428571429" x2="337.14285714285717"><stop offset="0%" stop-color="#b5b5b5" /><stop offset="100%" stop-color="#6d1222" /></linearGradient><path d="M262.8571428571429,125.01822915921983C300,125.01822915921983,300,125.02715636086283,337.14285714285717,125.02715636086283" stroke="url(#linearGradient-12)" stroke-width="250" class="am-step am-role-edge am-effect-grow-arrow am-sankey-link" pathLength="10000.0" style="--am-delay: 3915.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0; stroke-linecap: butt; --am-grow-distance-a: 6600.000; --am-grow-distance-b: 2400.000; --am-grow-distance-c: 360.000;" data-am-stage="7" /></g><g class="link" style="mix-blend-mode: multiply;"><linearGradient id="linearGradient-13" gradientUnits="userSpaceOnUse" x1="347.14285714285717" x2="421.42857142857144"><stop offset="0%" stop-color="#6d1222" /><stop offset="100%" stop-color="#696969" /></linearGradient><path d="M347.14285714285717,100.02715636086283C384.28571428571433,100.02715636086283,384.28571428571433,100.0358715809795,421.42857142857144,100.0358715809795" stroke="url(#linearGradient-13)" stroke-width="200" class="am-step am-role-edge am-effect-grow-arrow am-sankey-link" pathLength="10000.0" style="--am-delay: 5005.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0; stroke-linecap: butt; --am-grow-distance-a: 6600.000; --am-grow-distance-b: 2400.000; --am-grow-distance-c: 360.000;" data-am-stage="9" /></g><g class="link" style="mix-blend-mode: multiply;"><linearGradient id="linearGradient-14" gradientUnits="userSpaceOnUse" x1="431.42857142857144" x2="505.7142857142858"><stop offset="0%" stop-color="#696969" /><stop offset="100%" stop-color="#9c9c9c" /></linearGradient><path d="M431.42857142857144,75.0358715809795C468.5714285714286,75.0358715809795,468.5714285714286,75.04431132150503,505.7142857142858,75.04431132150503" stroke="url(#linearGradient-14)" stroke-width="150" class="am-step am-role-edge am-effect-grow-arrow am-sankey-link" pathLength="10000.0" style="--am-delay: 6095.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0; stroke-linecap: butt; --am-grow-distance-a: 6600.000; --am-grow-distance-b: 2400.000; --am-grow-distance-c: 360.000;" data-am-stage="11" /></g><g class="link" style="mix-blend-mode: multiply;"><linearGradient id="linearGradient-15" gradientUnits="userSpaceOnUse" x1="515.7142857142858" x2="590"><stop offset="0%" stop-color="#9c9c9c" /><stop offset="100%" stop-color="#363636" /></linearGradient><path d="M515.7142857142858,50.044311321505035C552.8571428571429,50.044311321505035,552.8571428571429,50.05241380061784,590,50.05241380061784" stroke="url(#linearGradient-15)" stroke-width="100" class="am-step am-role-edge am-effect-grow-arrow am-sankey-link" pathLength="10000.0" style="--am-delay: 7185.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0; stroke-linecap: butt; --am-grow-distance-a: 6600.000; --am-grow-distance-b: 2400.000; --am-grow-distance-c: 360.000;" data-am-stage="13" /></g></g></svg>

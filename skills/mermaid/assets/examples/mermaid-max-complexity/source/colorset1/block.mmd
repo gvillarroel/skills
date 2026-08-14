@@ -1,0 +1,60 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#e7e7e7"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#4f4f4f"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#ffccd5"
+    nodeBkg: "#ffccd5"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+block
+  columns 3
+  R01["Block role 01"] R02["Block role 02"] R03["Block role 03"]
+  R04["Block role 04"] R05["Block role 05"] R06["Block role 06"]
+  R07["Block role 07"] R08["Block role 08"] R09["Block role 09"]
+  R01 --> R02 --> R03
+  R04 --> R05 --> R06
+  R07 --> R08 --> R09
+  class R01 csPrimary
+  class R02 csAccent
+  class R03 csMuted
+  class R04 csCritical
+  class R05 csWarning
+  class R06 csSuccess
+  class R07 csInfo
+  class R08 csSpecial
+  class R09 csNeutral
+  classDef csPrimary fill:#ffccd5,stroke:#9e1b32,color:#333e48,stroke-width:2px;
+  classDef csAccent fill:#e7e7e7,stroke:#4f4f4f,color:#333e48,stroke-width:2px;
+  classDef csMuted fill:#e7e7e7,stroke:#828282,color:#333e48,stroke-width:2px;
+  classDef csCritical fill:#ffccd5,stroke:#e8002a,color:#333e48,stroke-width:2px;
+  classDef csWarning fill:#e7e7e7,stroke:#828282,color:#333e48,stroke-width:2px;
+  classDef csSuccess fill:#cfcfcf,stroke:#333e48,color:#333e48,stroke-width:2px;
+  classDef csInfo fill:#ffccd5,stroke:#9e1b32,color:#333e48,stroke-width:2px;
+  classDef csSpecial fill:#e7e7e7,stroke:#696969,color:#333e48,stroke-width:2px;
+  classDef csNeutral fill:#e7e7e7,stroke:#333e48,color:#333e48,stroke-width:2px;

@@ -1,0 +1,66 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#cdf3ff"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#007298"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#cdf3ff"
+    nodeBkg: "#cdf3ff"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    classText: "#333e48"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+  flowchart:
+    nodeSpacing: 10
+    rankSpacing: 20
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset2"
+  mode: "extended"
+  palette: "full-color-style"
+# mermaid: metadata end
+---
+swimlane-beta LR
+  accTitle: Swimlane maximum complexity showcase
+  accDescr: Nine styled process roles move in order across three responsibility lanes and expose two cross-lane handoffs.
+  subgraph lane_a [Lane A]
+    R01["Lane role 01"]:::csPrimary
+    R02["Lane role 02"]:::csAccent
+    R03["Lane role 03"]:::csMuted
+  end
+  subgraph lane_b [Lane B]
+    R04["Lane role 04"]:::csCritical
+    R05["Lane role 05"]:::csWarning
+    R06["Lane role 06"]:::csSuccess
+  end
+  subgraph lane_c [Lane C]
+    R07["Lane role 07"]:::csInfo
+    R08["Lane role 08"]:::csSpecial
+    R09["Lane role 09"]:::csNeutral
+  end
+  R01 --> R02 --> R03 --> R04 --> R05 --> R06 --> R07 --> R08 --> R09
+  classDef csPrimary fill:#ffccd5,stroke:#9e1b32,color:#333e48,stroke-width:2px;
+  classDef csAccent fill:#cdf3ff,stroke:#007298,color:#333e48,stroke-width:2px;
+  classDef csMuted fill:#e7e7e7,stroke:#828282,color:#333e48,stroke-width:2px;
+  classDef csCritical fill:#ffccd5,stroke:#e8002a,color:#333e48,stroke-width:2px;
+  classDef csWarning fill:#ffe5cc,stroke:#e77204,color:#333e48,stroke-width:2px;
+  classDef csSuccess fill:#dbffcc,stroke:#45842a,color:#333e48,stroke-width:2px;
+  classDef csInfo fill:#cdf3ff,stroke:#00ace6,color:#333e48,stroke-width:2px;
+  classDef csSpecial fill:#f9ccff,stroke:#652f6c,color:#333e48,stroke-width:2px;
+  classDef csNeutral fill:#e7e7e7,stroke:#333e48,color:#333e48,stroke-width:2px;

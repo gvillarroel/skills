@@ -1,0 +1,18 @@
+C4Context
+  title Mermaid Skill Publication Context
+  Person(author, "Skill Author", "Maintains the reusable skill and its examples.")
+  System(repo, "Skills Repository", "Stores skill instructions, validators, and public fixtures.")
+  System_Ext(renderer, "Mermaid Renderer", "Turns styled Mermaid source into static SVG.")
+  System_Ext(animator, "SVG Animator", "Adds replayable construction without replacing Mermaid geometry.")
+  SystemDb_Ext(pages, "GitHub Pages", "Publishes the verified gallery.")
+  System_Ext(browser, "Documentation Browser", "Displays and replays the rendered diagrams.")
+
+  Rel(author, repo, "Updates and validates")
+  Rel(repo, renderer, "Provides styled .mmd source")
+  Rel(renderer, animator, "Provides canonical static SVG")
+  Rel(animator, pages, "Publishes animated SVG")
+  Rel(renderer, pages, "Publishes static SVG")
+  Rel(pages, browser, "Serves gallery assets")
+  Rel(author, browser, "Reviews desktop and mobile output")
+
+  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")

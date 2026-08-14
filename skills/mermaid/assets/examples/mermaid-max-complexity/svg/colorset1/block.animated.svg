@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" id="my-svg" width="100%" style="max-width: 329.094px; background-color: white;" viewBox="-5 -81 329.09375 162" role="graphics-document document" aria-roledescription="block" data-animated-mermaid="true" data-animation="sequence" data-element-count="10" aria-labelledby="mermaid-block-colorset1-title" aria-describedby="mermaid-block-colorset1-desc"><title id="mermaid-block-colorset1-title">Block maximum complexity showcase</title><desc id="mermaid-block-colorset1-desc">Nine styled blocks occupy a three-column grid and form three ordered relationship rows.</desc><style>#my-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333e48;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#e7e7e7;}#my-svg .error-text{fill:#333e48;stroke:#333e48;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#696969;stroke:#696969;}#my-svg .marker.cross{stroke:#696969;}#my-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#my-svg p{margin:0;}#my-svg .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333e48;}#my-svg .cluster-label text{fill:#333e48;}#my-svg .cluster-label span,#my-svg p{color:#333e48;}#my-svg .label text,#my-svg span,#my-svg p{fill:#333e48;color:#333e48;}#my-svg .node rect,#my-svg .node circle,#my-svg .node ellipse,#my-svg .node polygon,#my-svg .node path{fill:#ffccd5;stroke:#9e1b32;stroke-width:1px;}#my-svg .flowchart-label text{text-anchor:middle;}#my-svg .node .label{text-align:center;}#my-svg .node.clickable{cursor:pointer;}#my-svg .arrowheadPath{fill:#000000;}#my-svg .edgePath .path{stroke:#696969;stroke-width:2.0px;}#my-svg .flowchart-link{stroke:#696969;fill:none;}#my-svg .edgeLabel{background-color:#ffffff;text-align:center;}#my-svg .edgeLabel p{margin:0;padding:0;display:inline;}#my-svg .edgeLabel rect{opacity:0.5;background-color:#ffffff;fill:#ffffff;}#my-svg .labelBkg{background-color:#ffffff;}#my-svg .node .cluster{fill:rgba(231, 231, 231, 0.5);stroke:rgba(156, 156, 156, 0.2);box-shadow:rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;stroke-width:1px;}#my-svg .cluster text{fill:#333e48;}#my-svg .cluster span,#my-svg p{color:#333e48;}#my-svg div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:#e7e7e7;border:1px solid #9c9c9c;border-radius:2px;pointer-events:none;z-index:100;}#my-svg .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333e48;}#my-svg .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#my-svg .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#my-svg .node .neo-node{stroke:#9e1b32;}#my-svg [data-look="neo"].node rect,#my-svg [data-look="neo"].cluster rect,#my-svg [data-look="neo"].node polygon{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].swimlane.cluster rect{filter:none;}#my-svg [data-look="neo"].node path{stroke:url(#my-svg-gradient);stroke-width:1px;}#my-svg [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node .neo-line path{stroke:#9e1b32;filter:none;}#my-svg [data-look="neo"].node circle{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node circle .state-start{fill:#000000;}#my-svg [data-look="neo"].icon-shape .icon{fill:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].icon-shape .icon-neo path{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}#my-svg .csPrimary&gt;*{fill:rgb(255, 204, 213)!important;stroke:rgb(158, 27, 50)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csPrimary span{fill:rgb(255, 204, 213)!important;stroke:rgb(158, 27, 50)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csPrimary tspan{fill:rgb(51, 62, 72)!important;}#my-svg .csAccent&gt;*{fill:rgb(231, 231, 231)!important;stroke:rgb(79, 79, 79)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csAccent span{fill:rgb(231, 231, 231)!important;stroke:rgb(79, 79, 79)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csAccent tspan{fill:rgb(51, 62, 72)!important;}#my-svg .csMuted&gt;*{fill:rgb(231, 231, 231)!important;stroke:rgb(130, 130, 130)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csMuted span{fill:rgb(231, 231, 231)!important;stroke:rgb(130, 130, 130)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csMuted tspan{fill:rgb(51, 62, 72)!important;}#my-svg .csCritical&gt;*{fill:rgb(255, 204, 213)!important;stroke:rgb(232, 0, 42)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csCritical span{fill:rgb(255, 204, 213)!important;stroke:rgb(232, 0, 42)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csCritical tspan{fill:rgb(51, 62, 72)!important;}#my-svg .csWarning&gt;*{fill:rgb(231, 231, 231)!important;stroke:rgb(130, 130, 130)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csWarning span{fill:rgb(231, 231, 231)!important;stroke:rgb(130, 130, 130)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csWarning tspan{fill:rgb(51, 62, 72)!important;}#my-svg .csSuccess&gt;*{fill:rgb(207, 207, 207)!important;stroke:rgb(51, 62, 72)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csSuccess span{fill:rgb(207, 207, 207)!important;stroke:rgb(51, 62, 72)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csSuccess tspan{fill:rgb(51, 62, 72)!important;}#my-svg .csInfo&gt;*{fill:rgb(255, 204, 213)!important;stroke:rgb(158, 27, 50)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csInfo span{fill:rgb(255, 204, 213)!important;stroke:rgb(158, 27, 50)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csInfo tspan{fill:rgb(51, 62, 72)!important;}#my-svg .csSpecial&gt;*{fill:rgb(231, 231, 231)!important;stroke:rgb(105, 105, 105)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csSpecial span{fill:rgb(231, 231, 231)!important;stroke:rgb(105, 105, 105)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csSpecial tspan{fill:rgb(51, 62, 72)!important;}#my-svg .csNeutral&gt;*{fill:rgb(231, 231, 231)!important;stroke:rgb(51, 62, 72)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csNeutral span{fill:rgb(231, 231, 231)!important;stroke:rgb(51, 62, 72)!important;color:rgb(51, 62, 72)!important;stroke-width:2px!important;}#my-svg .csNeutral tspan{fill:rgb(51, 62, 72)!important;}</style><style id="animated-mermaid-style" type="text/css">
+.am-step {
+  animation-delay: var(--am-delay, 0ms);
+  animation-duration: var(--am-duration, 650ms);
+  animation-fill-mode: backwards;
+  animation-timing-function: var(--am-easing, cubic-bezier(.2, .8, .2, 1));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.am-effect-fade { animation-name: am-fade; }
+.am-effect-pop { animation-name: am-pop; }
+.am-effect-slide-up { animation-name: am-slide-up; }
+.am-effect-slide-left { animation-name: am-slide-left; }
+.am-effect-zoom { animation-name: am-zoom; }
+.am-effect-draw { animation-name: am-draw; }
+.am-effect-radial-arrow,
+.am-effect-grow-arrow {
+  animation-name: am-grow-arrow;
+  animation-timing-function: cubic-bezier(.16, .84, .28, 1);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.am-effect-radial-arrow { animation-name: am-radial-arrow; }
+@keyframes am-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes am-pop {
+  0% { opacity: 0; transform: scale(.92); }
+  70% { opacity: 1; transform: scale(1.025); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes am-slide-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-slide-left {
+  from { opacity: 0; transform: translateX(18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-zoom {
+  from { opacity: 0; transform: scale(.86); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-draw {
+  from {
+    opacity: 0;
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: var(--am-draw-distance, 10000);
+  }
+  12% { opacity: 1; }
+  to {
+    opacity: 1;
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes am-grow-arrow {
+  0% {
+    opacity: 0;
+    marker-start: none;
+    marker-mid: none;
+    marker-end: none;
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: var(--am-draw-distance, 10000);
+  }
+  8% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+  }
+  34% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: var(--am-grow-distance-a, 6600);
+  }
+  62% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: var(--am-grow-distance-b, 2400);
+  }
+  84% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: var(--am-grow-distance-c, 360);
+  }
+  100% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes am-radial-arrow {
+  0% {
+    opacity: 0;
+    marker-start: none;
+    marker-mid: none;
+    marker-end: none;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  10% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+  }
+  38% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: 1;
+    stroke-dashoffset: .66;
+  }
+  66% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: .24;
+  }
+  86% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: .05;
+  }
+  100% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .am-step {
+    animation: none !important;
+    opacity: initial !important;
+    transform: none !important;
+    stroke-dasharray: initial !important;
+    stroke-dashoffset: initial !important;
+  }
+}
+</style><g /><marker id="my-svg_block-pointEnd" class="marker block" viewBox="0 0 10 10" refX="6" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;" /></marker><marker id="my-svg_block-pointStart" class="marker block" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;" /></marker><marker id="my-svg_block-circleEnd" class="marker block" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;" /></marker><marker id="my-svg_block-circleStart" class="marker block" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;" /></marker><marker id="my-svg_block-crossEnd" class="marker cross block" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;" /></marker><marker id="my-svg_block-crossStart" class="marker cross block" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;" /></marker><g class="block"><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 100.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;"><g class="node default csPrimary flowchart-label" id="my-svg-R01" transform="translate(50.515625, -60)"><rect class="basic label-container" style="" rx="0" ry="0" x="-50.515625" y="-16" width="101.03125" height="32" /><g class="label" style="" transform="translate(-46.515625, -12)"><rect /><foreignObject width="93.03125" height="24"><html:div style="display: table-cell; white-space: nowrap; line-height: 1.5;"><html:span class="nodeLabel"><html:p>Block role 01</html:p></html:span></html:div></foreignObject></g></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 165.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;"><g class="node default csAccent flowchart-label" id="my-svg-R02" transform="translate(159.546875, -60)"><rect class="basic label-container" style="" rx="0" ry="0" x="-50.515625" y="-16" width="101.03125" height="32" /><g class="label" style="" transform="translate(-46.515625, -12)"><rect /><foreignObject width="93.03125" height="24"><html:div style="display: table-cell; white-space: nowrap; line-height: 1.5;"><html:span class="nodeLabel"><html:p>Block role 02</html:p></html:span></html:div></foreignObject></g></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 230.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;"><g class="node default csMuted flowchart-label" id="my-svg-R03" transform="translate(268.578125, -60)"><rect class="basic label-container" style="" rx="0" ry="0" x="-50.515625" y="-16" width="101.03125" height="32" /><g class="label" style="" transform="translate(-46.515625, -12)"><rect /><foreignObject width="93.03125" height="24"><html:div style="display: table-cell; white-space: nowrap; line-height: 1.5;"><html:span class="nodeLabel"><html:p>Block role 03</html:p></html:span></html:div></foreignObject></g></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 295.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;"><g class="node default csCritical flowchart-label" id="my-svg-R04" transform="translate(50.515625, -20)"><rect class="basic label-container" style="" rx="0" ry="0" x="-50.515625" y="-16" width="101.03125" height="32" /><g class="label" style="" transform="translate(-46.515625, -12)"><rect /><foreignObject width="93.03125" height="24"><html:div style="display: table-cell; white-space: nowrap; line-height: 1.5;"><html:span class="nodeLabel"><html:p>Block role 04</html:p></html:span></html:div></foreignObject></g></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 360.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;"><g class="node default csWarning flowchart-label" id="my-svg-R05" transform="translate(159.546875, -20)"><rect class="basic label-container" style="" rx="0" ry="0" x="-50.515625" y="-16" width="101.03125" height="32" /><g class="label" style="" transform="translate(-46.515625, -12)"><rect /><foreignObject width="93.03125" height="24"><html:div style="display: table-cell; white-space: nowrap; line-height: 1.5;"><html:span class="nodeLabel"><html:p>Block role 05</html:p></html:span></html:div></foreignObject></g></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 425.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;"><g class="node default csSuccess flowchart-label" id="my-svg-R06" transform="translate(268.578125, -20)"><rect class="basic label-container" style="" rx="0" ry="0" x="-50.515625" y="-16" width="101.03125" height="32" /><g class="label" style="" transform="translate(-46.515625, -12)"><rect /><foreignObject width="93.03125" height="24"><html:div style="display: table-cell; white-space: nowrap; line-height: 1.5;"><html:span class="nodeLabel"><html:p>Block role 06</html:p></html:span></html:div></foreignObject></g></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 490.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;"><g class="node default csInfo flowchart-label" id="my-svg-R07" transform="translate(50.515625, 20)"><rect class="basic label-container" style="" rx="0" ry="0" x="-50.515625" y="-16" width="101.03125" height="32" /><g class="label" style="" transform="translate(-46.515625, -12)"><rect /><foreignObject width="93.03125" height="24"><html:div style="display: table-cell; white-space: nowrap; line-height: 1.5;"><html:span class="nodeLabel"><html:p>Block role 07</html:p></html:span></html:div></foreignObject></g></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 555.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;"><g class="node default csSpecial flowchart-label" id="my-svg-R08" transform="translate(159.546875, 20)"><rect class="basic label-container" style="" rx="0" ry="0" x="-50.515625" y="-16" width="101.03125" height="32" /><g class="label" style="" transform="translate(-46.515625, -12)"><rect /><foreignObject width="93.03125" height="24"><html:div style="display: table-cell; white-space: nowrap; line-height: 1.5;"><html:span class="nodeLabel"><html:p>Block role 08</html:p></html:span></html:div></foreignObject></g></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 620.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;"><g class="node default csNeutral flowchart-label" id="my-svg-R09" transform="translate(268.578125, 20)"><rect class="basic label-container" style="" rx="0" ry="0" x="-50.515625" y="-16" width="101.03125" height="32" /><g class="label" style="" transform="translate(-46.515625, -12)"><rect /><foreignObject width="93.03125" height="24"><html:div style="display: table-cell; white-space: nowrap; line-height: 1.5;"><html:span class="nodeLabel"><html:p>Block role 09</html:p></html:span></html:div></foreignObject></g></g></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 685.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;"><g class="node default default flowchart-label" id="my-svg-undefined" transform="translate(50.515625, 60)"><rect class="basic label-container" style="" rx="0" ry="0" x="-50.515625" y="-16" width="101.03125" height="32" /><g class="label" style="" transform="translate(0, 0)"><rect /><foreignObject width="0" height="0"><html:div style="display: table-cell; white-space: nowrap; line-height: 1.5;"><html:span class="nodeLabel" /></html:div></foreignObject></g></g></g></g></svg>

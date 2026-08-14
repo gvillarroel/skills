@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="my-svg" width="100%" viewBox="0 0 784 244" style="max-width: 784px; background-color: white;" role="graphics-document document" aria-roledescription="gantt" aria-describedby="chart-desc-my-svg" aria-labelledby="chart-title-my-svg" data-animated-mermaid="true" data-animation="sequence" data-element-count="19"><title id="chart-title-my-svg">Gantt maximum complexity showcase</title><desc id="chart-desc-my-svg">Six dated tasks expose every Gantt status combination from normal through done-critical.</desc><style>#my-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333e48;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#e7e7e7;}#my-svg .error-text{fill:#333e48;stroke:#333e48;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#696969;stroke:#696969;}#my-svg .marker.cross{stroke:#696969;}#my-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#my-svg p{margin:0;}#my-svg .mermaid-main-font{font-family:"trebuchet ms",verdana,arial,sans-serif;}#my-svg .exclude-range{fill:#e7e7e7;}#my-svg .section{stroke:none;opacity:0.2;}#my-svg .section0{fill:#e7e7e7;}#my-svg .section2{fill:#e7e7e7;}#my-svg .section1,#my-svg .section3{fill:#cfcfcf;opacity:0.2;}#my-svg .sectionTitle0{fill:#333e48;}#my-svg .sectionTitle1{fill:#333e48;}#my-svg .sectionTitle2{fill:#333e48;}#my-svg .sectionTitle3{fill:#333e48;}#my-svg .sectionTitle{text-anchor:start;font-family:"trebuchet ms",verdana,arial,sans-serif;}#my-svg .grid .tick{stroke:#9c9c9c;opacity:0.8;shape-rendering:crispEdges;}#my-svg .grid .tick text{font-family:"trebuchet ms",verdana,arial,sans-serif;fill:#333e48;}#my-svg .grid path{stroke-width:0;}#my-svg .today{fill:none;stroke:#e8002a;stroke-width:2px;}#my-svg .task{stroke-width:2;}#my-svg .taskText{text-anchor:middle;font-family:"trebuchet ms",verdana,arial,sans-serif;}#my-svg .taskTextOutsideRight{fill:#333e48;text-anchor:start;font-family:"trebuchet ms",verdana,arial,sans-serif;}#my-svg .taskTextOutsideLeft{fill:#333e48;text-anchor:end;}#my-svg .task.clickable{cursor:pointer;}#my-svg .taskText.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#my-svg .taskTextOutsideLeft.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#my-svg .taskTextOutsideRight.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#my-svg .taskText0,#my-svg .taskText1,#my-svg .taskText2,#my-svg .taskText3{fill:#333e48;}#my-svg .task0,#my-svg .task1,#my-svg .task2,#my-svg .task3{fill:#ffccd5;stroke:#9e1b32;}#my-svg .taskTextOutside0,#my-svg .taskTextOutside2{fill:#333e48;}#my-svg .taskTextOutside1,#my-svg .taskTextOutside3{fill:#333e48;}#my-svg .active0,#my-svg .active1,#my-svg .active2,#my-svg .active3{fill:#ffccd5;stroke:#9e1b32;}#my-svg .activeText0,#my-svg .activeText1,#my-svg .activeText2,#my-svg .activeText3{fill:#333e48!important;}#my-svg .done0,#my-svg .done1,#my-svg .done2,#my-svg .done3{stroke:#696969;fill:#b5b5b5;stroke-width:2;}#my-svg .doneText0,#my-svg .doneText1,#my-svg .doneText2,#my-svg .doneText3{fill:#333e48!important;}#my-svg .doneText0.taskTextOutsideLeft,#my-svg .doneText0.taskTextOutsideRight,#my-svg .doneText1.taskTextOutsideLeft,#my-svg .doneText1.taskTextOutsideRight,#my-svg .doneText2.taskTextOutsideLeft,#my-svg .doneText2.taskTextOutsideRight,#my-svg .doneText3.taskTextOutsideLeft,#my-svg .doneText3.taskTextOutsideRight{fill:#333e48!important;}#my-svg .crit0,#my-svg .crit1,#my-svg .crit2,#my-svg .crit3{stroke:#e8002a;fill:#9e1b32;stroke-width:2;}#my-svg .activeCrit0,#my-svg .activeCrit1,#my-svg .activeCrit2,#my-svg .activeCrit3{stroke:#e8002a;fill:#ffccd5;stroke-width:2;}#my-svg .doneCrit0,#my-svg .doneCrit1,#my-svg .doneCrit2,#my-svg .doneCrit3{stroke:#e8002a;fill:#b5b5b5;stroke-width:2;cursor:pointer;shape-rendering:crispEdges;}#my-svg .milestone{transform:rotate(45deg) scale(0.8,0.8);}#my-svg .milestoneText{font-style:italic;}#my-svg .doneCritText0,#my-svg .doneCritText1,#my-svg .doneCritText2,#my-svg .doneCritText3{fill:#333e48!important;}#my-svg .doneCritText0.taskTextOutsideLeft,#my-svg .doneCritText0.taskTextOutsideRight,#my-svg .doneCritText1.taskTextOutsideLeft,#my-svg .doneCritText1.taskTextOutsideRight,#my-svg .doneCritText2.taskTextOutsideLeft,#my-svg .doneCritText2.taskTextOutsideRight,#my-svg .doneCritText3.taskTextOutsideLeft,#my-svg .doneCritText3.taskTextOutsideRight{fill:#333e48!important;}#my-svg .vert{stroke:navy;}#my-svg .vertText{font-size:15px;text-anchor:middle;fill:navy!important;}#my-svg .activeCritText0,#my-svg .activeCritText1,#my-svg .activeCritText2,#my-svg .activeCritText3{fill:#333e48!important;}#my-svg .titleText{text-anchor:middle;font-size:18px;fill:#333e48;font-family:"trebuchet ms",verdana,arial,sans-serif;}#my-svg .node .neo-node{stroke:#9e1b32;}#my-svg [data-look="neo"].node rect,#my-svg [data-look="neo"].cluster rect,#my-svg [data-look="neo"].node polygon{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].swimlane.cluster rect{filter:none;}#my-svg [data-look="neo"].node path{stroke:url(#my-svg-gradient);stroke-width:1px;}#my-svg [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node .neo-line path{stroke:#9e1b32;filter:none;}#my-svg [data-look="neo"].node circle{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].node circle .state-start{fill:#000000;}#my-svg [data-look="neo"].icon-shape .icon{fill:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg [data-look="neo"].icon-shape .icon-neo path{stroke:url(#my-svg-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><style id="animated-mermaid-style" type="text/css">
+.am-step {
+  animation-delay: var(--am-delay, 0ms);
+  animation-duration: var(--am-duration, 650ms);
+  animation-fill-mode: backwards;
+  animation-timing-function: var(--am-easing, cubic-bezier(.2, .8, .2, 1));
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.am-effect-fade { animation-name: am-fade; }
+.am-effect-pop { animation-name: am-pop; }
+.am-effect-slide-up { animation-name: am-slide-up; }
+.am-effect-slide-left { animation-name: am-slide-left; }
+.am-effect-zoom { animation-name: am-zoom; }
+.am-effect-draw { animation-name: am-draw; }
+.am-effect-radial-arrow,
+.am-effect-grow-arrow {
+  animation-name: am-grow-arrow;
+  animation-timing-function: cubic-bezier(.16, .84, .28, 1);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.am-effect-radial-arrow { animation-name: am-radial-arrow; }
+@keyframes am-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes am-pop {
+  0% { opacity: 0; transform: scale(.92); }
+  70% { opacity: 1; transform: scale(1.025); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes am-slide-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-slide-left {
+  from { opacity: 0; transform: translateX(18px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-zoom {
+  from { opacity: 0; transform: scale(.86); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes am-draw {
+  from {
+    opacity: 0;
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: var(--am-draw-distance, 10000);
+  }
+  12% { opacity: 1; }
+  to {
+    opacity: 1;
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes am-grow-arrow {
+  0% {
+    opacity: 0;
+    marker-start: none;
+    marker-mid: none;
+    marker-end: none;
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: var(--am-draw-distance, 10000);
+  }
+  8% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+  }
+  34% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: var(--am-grow-distance-a, 6600);
+  }
+  62% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: var(--am-grow-distance-b, 2400);
+  }
+  84% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: var(--am-grow-distance-c, 360);
+  }
+  100% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: var(--am-draw-distance, 10000);
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes am-radial-arrow {
+  0% {
+    opacity: 0;
+    marker-start: none;
+    marker-mid: none;
+    marker-end: none;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+  10% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+  }
+  38% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: 1;
+    stroke-dashoffset: .66;
+  }
+  66% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: .24;
+  }
+  86% {
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dashoffset: .05;
+  }
+  100% {
+    opacity: 1;
+    marker-start: var(--am-marker-start, none);
+    marker-mid: var(--am-marker-mid, none);
+    marker-end: var(--am-marker-end, none);
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .am-step {
+    animation: none !important;
+    opacity: initial !important;
+    transform: none !important;
+    stroke-dasharray: initial !important;
+    stroke-dashoffset: initial !important;
+  }
+}
+</style><g /><g class="grid" transform="translate(75, 194)" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle"><path class="domain" stroke="currentColor" d="M0.5,-159V0.5H634.5V-159" /><g class="tick" opacity="1" transform="translate(0.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-01</text></g><g class="tick" opacity="1" transform="translate(53.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-01</text></g><g class="tick" opacity="1" transform="translate(106.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-02</text></g><g class="tick" opacity="1" transform="translate(159.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-02</text></g><g class="tick" opacity="1" transform="translate(211.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-03</text></g><g class="tick" opacity="1" transform="translate(264.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-03</text></g><g class="tick" opacity="1" transform="translate(317.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-04</text></g><g class="tick" opacity="1" transform="translate(370.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-04</text></g><g class="tick" opacity="1" transform="translate(423.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-05</text></g><g class="tick" opacity="1" transform="translate(476.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-05</text></g><g class="tick" opacity="1" transform="translate(528.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-06</text></g><g class="tick" opacity="1" transform="translate(581.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-06</text></g><g class="tick" opacity="1" transform="translate(634.5,0)"><line stroke="currentColor" y2="-159" /><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2026-01-07</text></g></g><g><rect x="0" y="48" width="746.5" height="24" class="section section0 am-step am-role-row am-effect-fade" style="--am-delay: 100.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="0" /><rect x="0" y="72" width="746.5" height="24" class="section section0 am-step am-role-row am-effect-fade" style="--am-delay: 645.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="1" /><rect x="0" y="96" width="746.5" height="24" class="section section0 am-step am-role-row am-effect-fade" style="--am-delay: 1190.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="2" /><rect x="0" y="120" width="746.5" height="24" class="section section0 am-step am-role-row am-effect-fade" style="--am-delay: 1735.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="3" /><rect x="0" y="144" width="746.5" height="24" class="section section0 am-step am-role-row am-effect-fade" style="--am-delay: 2280.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="4" /><rect x="0" y="168" width="746.5" height="24" class="section section0 am-step am-role-row am-effect-fade" style="--am-delay: 2825.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="5" /></g><g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 100.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="0"><rect id="my-svg-normal" rx="3" ry="3" x="75" y="50" width="106" height="20" transform-origin="128px 60px" class="task task0" /></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 645.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="1"><rect id="my-svg-active_task" rx="3" ry="3" x="181" y="74" width="105" height="20" transform-origin="233.5px 84px" class="task active0" /></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 1190.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="2"><rect id="my-svg-done_task" rx="3" ry="3" x="286" y="98" width="106" height="20" transform-origin="339px 108px" class="task done0" /></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 1735.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="3"><rect id="my-svg-critical_task" rx="3" ry="3" x="392" y="122" width="106" height="20" transform-origin="445px 132px" class="task crit0" /></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 2280.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="4"><rect id="my-svg-active_critical" rx="3" ry="3" x="498" y="146" width="105" height="20" transform-origin="550.5px 156px" class="task activeCrit0" /></g><g class="am-wrapper am-step am-role-node am-effect-pop" style="--am-delay: 2825.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="5"><rect id="my-svg-done_critical" rx="3" ry="3" x="603" y="170" width="106" height="20" transform-origin="656px 180px" class="task doneCrit0" /></g><text id="my-svg-normal-text" font-size="11" x="128" y="63.5" class="taskText taskText0 width-59.259765625 am-step am-role-label am-effect-fade" style="--am-delay: 100.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="0">Normal task </text><text id="my-svg-active_task-text" font-size="11" x="233.5" y="87.5" class="taskText taskText0 activeText0 width-55.7265625 am-step am-role-label am-effect-fade" style="--am-delay: 645.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="1">Active task </text><text id="my-svg-done_task-text" font-size="11" x="339" y="111.5" class="taskText taskText0 doneText0 width-48.56591796875 am-step am-role-label am-effect-fade" style="--am-delay: 1190.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="2">Done task </text><text id="my-svg-critical_task-text" font-size="11" x="445" y="135.5" class="taskText taskText0 critText0 width-59.86669921875 am-step am-role-label am-effect-fade" style="--am-delay: 1735.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="3">Critical task </text><text id="my-svg-active_critical-text" font-size="11" x="550.5" y="159.5" class="taskText taskText0 activeCritText0 critText0 width-93.86669921875 am-step am-role-label am-effect-fade" style="--am-delay: 2280.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="4">Active critical task </text><text id="my-svg-done_critical-text" font-size="11" x="656" y="183.5" class="taskText taskText0 doneCritText0 width-86.7060546875 am-step am-role-label am-effect-fade" style="--am-delay: 2825.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="5">Done critical task </text></g><g><text dy="0em" x="10" y="122" font-size="11" class="sectionTitle sectionTitle0 am-step am-role-label am-effect-fade" style="--am-delay: 1190.000ms; --am-duration: 480.000ms; --am-easing: cubic-bezier(.2, .8, .2, 1); --am-draw-distance: 10000.0;" data-am-stage="2"><tspan alignment-baseline="central" x="10">Capacity</tspan></text></g><g class="today"><line x1="23898" x2="23898" y1="25" y2="219" class="today" /></g><text x="392" y="25" class="titleText">Gantt semantic roles</text></svg>

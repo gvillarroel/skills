@@ -1,0 +1,64 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#cdf3ff"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#007298"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#cdf3ff"
+    nodeBkg: "#cdf3ff"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+    sectionBkgColor: "#cdf3ff"
+    altSectionBkgColor: "#ffe5cc"
+    sectionBkgColor2: "#dbffcc"
+    taskBkgColor: "#007298"
+    taskBorderColor: "#007298"
+    taskTextColor: "#ffffff"
+    taskTextDarkColor: "#333e48"
+    taskTextLightColor: "#ffffff"
+    taskTextOutsideColor: "#333e48"
+    activeTaskBkgColor: "#e77204"
+    activeTaskBorderColor: "#e77204"
+    doneTaskBkgColor: "#45842a"
+    doneTaskBorderColor: "#45842a"
+    critBkgColor: "#9e1b32"
+    critBorderColor: "#e8002a"
+    excludeBkgColor: "#e7e7e7"
+    gridColor: "#9c9c9c"
+    todayLineColor: "#e8002a"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset2"
+  mode: "extended"
+  palette: "full-color-style"
+# mermaid: metadata end
+---
+gantt
+  accTitle: Gantt maximum complexity showcase
+  accDescr: Six dated tasks expose every Gantt status combination from normal through done-critical.
+  title Gantt semantic roles
+  dateFormat YYYY-MM-DD
+  section Capacity
+    Normal task :normal, 2026-01-01, 1d
+    Active task :active, active_task, 2026-01-02, 1d
+    Done task :done, done_task, 2026-01-03, 1d
+    Critical task :crit, critical_task, 2026-01-04, 1d
+    Active critical task :crit, active, active_critical, 2026-01-05, 1d
+    Done critical task :crit, done, done_critical, 2026-01-06, 1d

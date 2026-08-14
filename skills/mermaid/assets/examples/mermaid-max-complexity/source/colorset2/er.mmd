@@ -1,0 +1,66 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#cdf3ff"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#007298"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#cdf3ff"
+    nodeBkg: "#cdf3ff"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+  er:
+    minEntityWidth: 180
+    rankSpacing: 20
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset2"
+  mode: "extended"
+  palette: "full-color-style"
+# mermaid: metadata end
+---
+erDiagram
+  accTitle: Entity Relationship maximum complexity showcase
+  accDescr: Nine entities form eight ordered one-to-many relationships and expose every semantic class available to the styler.
+  ENTITY_01 ||--o{ ENTITY_02 : relates
+  ENTITY_02 ||--o{ ENTITY_03 : relates
+  ENTITY_03 ||--o{ ENTITY_04 : relates
+  ENTITY_04 ||--o{ ENTITY_05 : relates
+  ENTITY_05 ||--o{ ENTITY_06 : relates
+  ENTITY_06 ||--o{ ENTITY_07 : relates
+  ENTITY_07 ||--o{ ENTITY_08 : relates
+  ENTITY_08 ||--o{ ENTITY_09 : relates
+  class ENTITY_01 csPrimary
+  class ENTITY_02 csAccent
+  class ENTITY_03 csMuted
+  class ENTITY_04 csCritical
+  class ENTITY_05 csWarning
+  class ENTITY_06 csSuccess
+  class ENTITY_07 csInfo
+  class ENTITY_08 csSpecial
+  class ENTITY_09 csNeutral
+  classDef csPrimary fill:#ffccd5,stroke:#9e1b32,color:#333e48,stroke-width:2px;
+  classDef csAccent fill:#cdf3ff,stroke:#007298,color:#333e48,stroke-width:2px;
+  classDef csMuted fill:#e7e7e7,stroke:#828282,color:#333e48,stroke-width:2px;
+  classDef csCritical fill:#ffccd5,stroke:#e8002a,color:#333e48,stroke-width:2px;
+  classDef csWarning fill:#ffe5cc,stroke:#e77204,color:#333e48,stroke-width:2px;
+  classDef csSuccess fill:#dbffcc,stroke:#45842a,color:#333e48,stroke-width:2px;
+  classDef csInfo fill:#cdf3ff,stroke:#00ace6,color:#333e48,stroke-width:2px;
+  classDef csSpecial fill:#f9ccff,stroke:#652f6c,color:#333e48,stroke-width:2px;
+  classDef csNeutral fill:#e7e7e7,stroke:#333e48,color:#333e48,stroke-width:2px;

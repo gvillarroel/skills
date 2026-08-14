@@ -1,0 +1,118 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#cdf3ff"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#007298"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#cdf3ff"
+    nodeBkg: "#cdf3ff"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    classText: "#333e48"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset2"
+  mode: "extended"
+  palette: "full-color-style"
+# mermaid: metadata end
+---
+requirementDiagram
+  accTitle: Requirement maximum complexity showcase
+  accDescr: Nine requirements with low, medium, and high risk form an eight-link containment trace and expose every semantic class.
+  requirement req01 {
+    id: "REQ-01"
+    text: "Requirement role 01"
+    risk: low
+    verifymethod: test
+  }
+  requirement req02 {
+    id: "REQ-02"
+    text: "Requirement role 02"
+    risk: low
+    verifymethod: test
+  }
+  requirement req03 {
+    id: "REQ-03"
+    text: "Requirement role 03"
+    risk: low
+    verifymethod: test
+  }
+  requirement req04 {
+    id: "REQ-04"
+    text: "Requirement role 04"
+    risk: medium
+    verifymethod: test
+  }
+  requirement req05 {
+    id: "REQ-05"
+    text: "Requirement role 05"
+    risk: medium
+    verifymethod: test
+  }
+  requirement req06 {
+    id: "REQ-06"
+    text: "Requirement role 06"
+    risk: medium
+    verifymethod: test
+  }
+  requirement req07 {
+    id: "REQ-07"
+    text: "Requirement role 07"
+    risk: high
+    verifymethod: test
+  }
+  requirement req08 {
+    id: "REQ-08"
+    text: "Requirement role 08"
+    risk: high
+    verifymethod: test
+  }
+  requirement req09 {
+    id: "REQ-09"
+    text: "Requirement role 09"
+    risk: high
+    verifymethod: test
+  }
+  req01 - contains -> req02
+  req02 - contains -> req03
+  req03 - contains -> req04
+  req04 - contains -> req05
+  req05 - contains -> req06
+  req06 - contains -> req07
+  req07 - contains -> req08
+  req08 - contains -> req09
+  class req01 csPrimary
+  class req02 csAccent
+  class req03 csMuted
+  class req04 csCritical
+  class req05 csWarning
+  class req06 csSuccess
+  class req07 csInfo
+  class req08 csSpecial
+  class req09 csNeutral
+  classDef csPrimary fill:#ffccd5,stroke:#9e1b32,color:#333e48,stroke-width:2px;
+  classDef csAccent fill:#cdf3ff,stroke:#007298,color:#333e48,stroke-width:2px;
+  classDef csMuted fill:#e7e7e7,stroke:#828282,color:#333e48,stroke-width:2px;
+  classDef csCritical fill:#ffccd5,stroke:#e8002a,color:#333e48,stroke-width:2px;
+  classDef csWarning fill:#ffe5cc,stroke:#e77204,color:#333e48,stroke-width:2px;
+  classDef csSuccess fill:#dbffcc,stroke:#45842a,color:#333e48,stroke-width:2px;
+  classDef csInfo fill:#cdf3ff,stroke:#00ace6,color:#333e48,stroke-width:2px;
+  classDef csSpecial fill:#f9ccff,stroke:#652f6c,color:#333e48,stroke-width:2px;
+  classDef csNeutral fill:#e7e7e7,stroke:#333e48,color:#333e48,stroke-width:2px;
