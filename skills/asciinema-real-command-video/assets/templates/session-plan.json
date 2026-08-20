@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "title": "Three real GitHub Copilot CLI prompts",
+  "working_directory": ".",
+  "declared_scope": "Read-only explanatory prompts with no file changes or external actions.",
+  "target": {
+    "name": "GitHub Copilot CLI",
+    "executable": "copilot",
+    "version_args": [
+      "--version"
+    ]
+  },
+  "interaction": {
+    "mode": "tui",
+    "launch_args": [
+      "--no-auto-update",
+      "--no-remote",
+      "--no-remote-export",
+      "--no-mouse",
+      "--no-custom-instructions",
+      "--no-experimental"
+    ],
+    "typing_interval_seconds": 0.035,
+    "pre_submit_pause_seconds": 0.5,
+    "startup_timeout_seconds": 120,
+    "ready_pattern": "(?m)^❯\\s*$",
+    "busy_pattern": "(?mi)Working.*esc interrupt|esc interrupt",
+    "settle_seconds": 1.5,
+    "shutdown_mode": "exit-text",
+    "exit_text": "/exit",
+    "exit_timeout_seconds": 60,
+    "expected_exit_codes": [
+      0
+    ]
+  },
+  "terminal": {
+    "cols": 110,
+    "rows": 34
+  },
+  "render": {
+    "theme": "github-dark",
+    "font_size": 18,
+    "line_height": 1.4,
+    "fps": 30,
+    "speed": 1.0,
+    "idle_time_limit": null,
+    "last_frame_duration": 0.5,
+    "start_at": "tui-ready"
+  },
+  "steps": [
+    {
+      "id": "prompt-1",
+      "prompt": "Explain what a Git commit is in two sentences.",
+      "timeout_seconds": 600,
+      "pause_after_seconds": 1.0
+    },
+    {
+      "id": "prompt-2",
+      "prompt": "Building on the previous answer, compare a commit and a branch in three bullets.",
+      "timeout_seconds": 600,
+      "pause_after_seconds": 1.0
+    },
+    {
+      "id": "prompt-3",
+      "prompt": "Give one concise example workflow that uses both commits and branches.",
+      "timeout_seconds": 600,
+      "pause_after_seconds": 1.0
+    }
+  ]
+}

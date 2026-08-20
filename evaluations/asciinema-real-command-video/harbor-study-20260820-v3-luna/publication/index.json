@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 13,
+    "headSha256": "f4f51ee04085fc39543bdf13e5b7a5ca80aa50a759a4b379ac6dc85eeb938738"
+  },
+  "progress": {
+    "completedCount": 2,
+    "completionPercent": 100.0,
+    "stageCount": 2
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "harbor-0.18.0|workspace-windows-pi-adapter-v1|pi-0.84.2|openai-codex/gpt-5.6-luna|thinking-high|attempts-1|concurrency-1|coverage-only-not-spark-comparable",
+    "createdAt": "2026-08-20T17:09:28Z",
+    "studyId": "asciinema-real-command-video-harbor-pi-20260820-v3-luna",
+    "title": "Asciinema terminal-video Luna coverage study"
+  }
+}
