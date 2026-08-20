@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 10,
+    "headSha256": "27eb81983d54b4c60056038f6e9dbc3ecf658fd3e35b1e85961d82b1aa3c098a"
+  },
+  "progress": {
+    "completedCount": 0,
+    "completionPercent": 0.0,
+    "stageCount": 2
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "harbor-0.18.0|pi-0.84.2|openai-codex/gpt-5.3-codex-spark|thinking-high|attempts-1|concurrency-1|component-and-binary-reward",
+    "createdAt": "2026-08-20T16:41:29Z",
+    "studyId": "asciinema-real-command-video-harbor-pi-20260820-v1",
+    "title": "Asciinema real command video live CLI evaluation"
+  }
+}

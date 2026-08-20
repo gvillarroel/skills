@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 12,
+    "headSha256": "7c6a22a54f37f9c278f808596588a5549c927f6abd59cef4c1e93501e756b3c8"
+  },
+  "progress": {
+    "completedCount": 1,
+    "completionPercent": 50.0,
+    "stageCount": 2
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "harbor-0.18.0|workspace-windows-pi-adapter-v2-node-entrypoint|pi-0.84.2|openai-codex/gpt-5.6-luna|thinking-high|attempts-1|concurrency-1|full-multiline-prompt-sha256",
+    "createdAt": "2026-08-20T17:29:42Z",
+    "studyId": "arcv-harbor-pi-20260820-v4-luna-corrected",
+    "title": "Asciinema terminal-video corrected multiline Pi study"
+  }
+}

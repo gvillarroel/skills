@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "title": "Three real Python prompt arguments",
+  "working_directory": ".",
+  "declared_scope": "Read-only local Python invocations used to validate authentic process capture.",
+  "target": {
+    "name": "CPython",
+    "executable": "python3",
+    "version_args": [
+      "--version"
+    ]
+  },
+  "terminal": {
+    "cols": 92,
+    "rows": 24
+  },
+  "render": {
+    "theme": "github-dark",
+    "font_size": 16,
+    "line_height": 1.35,
+    "fps": 24,
+    "speed": 1.0,
+    "idle_time_limit": 1.0,
+    "last_frame_duration": 1.5
+  },
+  "steps": [
+    {
+      "id": "prompt-1",
+      "prompt": "Count the words in this exact first prompt.",
+      "args": [
+        "-c",
+        "import hashlib,sys; p=sys.argv[1]; print('REAL CPYTHON PROCESS'); print('EXECUTABLE=' + sys.executable); print('PROMPT=' + p); print('WORDS=' + str(len(p.split()))); print('SHA256=' + hashlib.sha256(p.encode()).hexdigest())",
+        "{prompt}"
+      ],
+      "timeout_seconds": 30,
+      "pause_after_seconds": 0.3,
+      "expected_exit_codes": [
+        0
+      ]
+    },
+    {
+      "id": "prompt-2",
+      "prompt": "Hash this second exact prompt with SHA-256.",
+      "args": [
+        "-c",
+        "import hashlib,sys; p=sys.argv[1]; print('REAL CPYTHON PROCESS'); print('EXECUTABLE=' + sys.executable); print('PROMPT=' + p); print('WORDS=' + str(len(p.split()))); print('SHA256=' + hashlib.sha256(p.encode()).hexdigest())",
+        "{prompt}"
+      ],
+      "timeout_seconds": 30,
+      "pause_after_seconds": 0.3,
+      "expected_exit_codes": [
+        0
+      ]
+    },
+    {
+      "id": "prompt-3",
+      "prompt": "Report the Python executable handling this third prompt.",
+      "args": [
+        "-c",
+        "import hashlib,sys; p=sys.argv[1]; print('REAL CPYTHON PROCESS'); print('EXECUTABLE=' + sys.executable); print('PROMPT=' + p); print('WORDS=' + str(len(p.split()))); print('SHA256=' + hashlib.sha256(p.encode()).hexdigest())",
+        "{prompt}"
+      ],
+      "timeout_seconds": 30,
+      "pause_after_seconds": 0.3,
+      "expected_exit_codes": [
+        0
+      ]
+    }
+  ]
+}

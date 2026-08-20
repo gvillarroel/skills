@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 9,
+    "headSha256": "265b1a06dfb90ee6fb38fe447794244e70097cd0772e294749a07957a963a1c5"
+  },
+  "progress": {
+    "completedCount": 1,
+    "completionPercent": 100.0,
+    "stageCount": 1
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "harbor-0.18.0|workspace-windows-pi-adapter-v2-node-entrypoint|verifier-v3-collected-artifacts|pi-0.84.2|openai-codex/gpt-5.6-luna|thinking-high|attempts-1|concurrency-1",
+    "createdAt": "2026-08-20T17:48:09Z",
+    "studyId": "arcv-harbor-pi-20260820-v5-tui-final",
+    "title": "Asciinema terminal-video final TUI validation study"
+  }
+}
