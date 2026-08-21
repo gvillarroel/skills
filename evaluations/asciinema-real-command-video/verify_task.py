@@ -41,6 +41,10 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def sha256_text(value: str) -> str:
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
 def asciicast_text(path: Path, findings: list[str]) -> tuple[str, dict[str, Any]]:
     try:
         lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
@@ -268,7 +272,148 @@ def effective_validation_checks(validation: dict[str, Any]) -> set[str]:
         checks.add("target-exit")
     if float(nested(validation, "presentation", "source_cast_duration_seconds") or 0.0) > 0:
         checks.add("real-time-duration")
+    if (
+        nested(validation, "presentation", "start_at") == "tui-ready"
+        and "before-final-key-presentation" in checks
+    ):
+        # Older validator builds fully verified the ready-marker trim for this
+        # presentation mode but omitted its descriptive check label.
+        checks.add("tui-ready-presentation")
     return checks
+
+
+def verify_complexity_contract(
+    contract: dict[str, Any],
+    plan: dict[str, Any],
+    runtime: dict[str, Any],
+    manifest: dict[str, Any],
+    findings: list[str],
+) -> tuple[bool, dict[str, Any]]:
+    """Verify optional long-form and interaction-sequence requirements.
+
+    Version-one contracts omit these fields and therefore remain valid. New
+    complex cohorts can independently require authentic source duration,
+    explicit dwell time, and exact prompt/text/key sequences.
+    """
+
+    plan_steps = plan.get("steps") if isinstance(plan.get("steps"), list) else []
+    runtime_steps = (
+        runtime.get("steps") if isinstance(runtime.get("steps"), list) else []
+    )
+    prompts: list[str] = []
+    text_actions: list[str] = []
+    key_actions: list[str] = []
+    action_types: list[str] = []
+    pause_seconds = 0.0
+    pause_action_count = 0
+    runtime_matches_plan = len(runtime_steps) == len(plan_steps)
+
+    for step_index, planned_step in enumerate(plan_steps):
+        observed_step = runtime_steps[step_index] if step_index < len(runtime_steps) else {}
+        if "prompt" in planned_step:
+            prompt = str(planned_step.get("prompt") or "")
+            prompts.append(prompt)
+            if observed_step.get("prompt_sha256") != sha256_text(prompt):
+                runtime_matches_plan = False
+            continue
+
+        planned_actions = (
+            planned_step.get("actions")
+            if isinstance(planned_step.get("actions"), list)
+            else []
+        )
+        observed_actions = (
+            observed_step.get("actions")
+            if isinstance(observed_step.get("actions"), list)
+            else []
+        )
+        if len(observed_actions) != len(planned_actions):
+            runtime_matches_plan = False
+        for action_index, planned_action in enumerate(planned_actions):
+            action_type = str(planned_action.get("type") or "")
+            action_types.append(action_type)
+            observed_action = (
+                observed_actions[action_index]
+                if action_index < len(observed_actions)
+                and isinstance(observed_actions[action_index], dict)
+                else {}
+            )
+            if observed_action.get("type") != action_type:
+                runtime_matches_plan = False
+            if action_type == "text":
+                text_value = str(planned_action.get("text") or "")
+                text_actions.append(text_value)
+                if observed_action.get("text_sha256") != sha256_text(text_value):
+                    runtime_matches_plan = False
+            elif action_type == "key":
+                key_value = str(planned_action.get("key") or "")
+                key_actions.append(key_value)
+                if observed_action.get("key") != key_value:
+                    runtime_matches_plan = False
+            elif action_type == "pause":
+                seconds = float(planned_action.get("seconds") or 0.0)
+                pause_seconds += seconds
+                pause_action_count += 1
+                try:
+                    observed_seconds = float(observed_action.get("seconds"))
+                except (TypeError, ValueError):
+                    observed_seconds = -1.0
+                if not math.isclose(
+                    observed_seconds, seconds, rel_tol=0.0, abs_tol=0.001
+                ):
+                    runtime_matches_plan = False
+
+    requirements = {
+        "requiredPromptSequence": contract.get("requiredPromptSequence") or [],
+        "requiredTextSequence": contract.get("requiredTextSequence") or [],
+        "requiredKeySequence": contract.get("requiredKeySequence") or [],
+        "minActionCount": int(contract.get("minActionCount") or 0),
+        "minPauseActionCount": int(contract.get("minPauseActionCount") or 0),
+        "minPlannedPauseSeconds": float(contract.get("minPlannedPauseSeconds") or 0.0),
+        "minSourceDurationSeconds": float(contract.get("minSourceDurationSeconds") or 0.0),
+    }
+    source_duration = float(
+        nested(manifest, "presentation", "source_cast_duration_seconds")
+        or nested(manifest, "recording", "duration_seconds")
+        or 0.0
+    )
+    checks = {
+        "runtimeMatchesPlan": runtime_matches_plan,
+        "promptSequence": prompts == requirements["requiredPromptSequence"]
+        if requirements["requiredPromptSequence"]
+        else True,
+        "textSequence": text_actions == requirements["requiredTextSequence"]
+        if requirements["requiredTextSequence"]
+        else True,
+        "keySequence": key_actions == requirements["requiredKeySequence"]
+        if requirements["requiredKeySequence"]
+        else True,
+        "actionCount": len(action_types) >= requirements["minActionCount"],
+        "pauseActionCount": pause_action_count
+        >= requirements["minPauseActionCount"],
+        "plannedPauseSeconds": pause_seconds
+        >= requirements["minPlannedPauseSeconds"],
+        "sourceDuration": source_duration
+        >= requirements["minSourceDurationSeconds"],
+    }
+    for name, passed in checks.items():
+        if not passed:
+            findings.append(f"complex interaction requirement failed: {name}")
+    evidence = {
+        "requirements": requirements,
+        "observed": {
+            "prompts": prompts,
+            "textSequence": text_actions,
+            "keySequence": key_actions,
+            "actionTypes": action_types,
+            "actionCount": len(action_types),
+            "pauseActionCount": pause_action_count,
+            "plannedPauseSeconds": round(pause_seconds, 3),
+            "sourceDurationSeconds": source_duration,
+        },
+        "checks": checks,
+    }
+    return all(checks.values()), evidence
 
 
 def verify() -> dict[str, Any]:
@@ -421,6 +566,10 @@ def verify() -> dict[str, Any]:
         if not interaction_ok:
             findings.append("real TUI step/process evidence is incomplete")
 
+    complexity_ok, complexity_evidence = verify_complexity_contract(
+        contract, plan, runtime, manifest, findings
+    )
+
     output_ok = True
     for term in contract["requiredCastTerms"]:
         if term.casefold() not in evidence_text:
@@ -444,6 +593,7 @@ def verify() -> dict[str, Any]:
                 visual_ok,
                 presentation_ok,
                 interaction_ok,
+                complexity_ok,
                 output_ok,
             )
         )
@@ -457,6 +607,7 @@ def verify() -> dict[str, Any]:
         "visual": 1.0 if visual_ok else 0.0,
         "presentation": 1.0 if presentation_ok else 0.0,
         "interaction": 1.0 if interaction_ok else 0.0,
+        "complexity": 1.0 if complexity_ok else 0.0,
         "output": 1.0 if output_ok else 0.0,
     }
     return {
@@ -471,6 +622,7 @@ def verify() -> dict[str, Any]:
         "lastFrame": last_frame,
         "target": target,
         "validationChecks": sorted(validation_checks),
+        "complexityEvidence": complexity_evidence,
         "authorizedMutation": contract["authorizedMutation"],
     }
 

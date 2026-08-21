@@ -34,6 +34,10 @@ from typing import Any, Iterable, Mapping, Sequence
 SCHEMA_VERSION = 1
 MARKER_NAMESPACE = "ARCV"
 SKILL_ROOT = Path(__file__).resolve().parents[1]
+WINDOWS_WORKING_DIRECTORY_TOKEN = "{windows_working_directory}"
+SUBST_DRIVE_LETTERS = "ZYXWVUTSRQPONMLKJIHGFED"
+NATIVE_WSLPATH = Path("/usr/bin/wslpath")
+NATIVE_WSL_GIT = Path("/usr/bin/git")
 
 TOP_LEVEL_FIELDS = {
     "schema_version",
@@ -548,6 +552,12 @@ def validate_plan_data(plan_path: Path, data: Any) -> LoadedPlan:
                 raise CommandVideoError(
                     "interaction.launch_args cannot contain {prompt}; TUI prompts are typed"
                 )
+        if any(WINDOWS_WORKING_DIRECTORY_TOKEN in item for item in launch_args):
+            executable_name = str(target["executable"]).lower()
+            if not executable_name.endswith(".exe"):
+                raise CommandVideoError(
+                    f"{WINDOWS_WORKING_DIRECTORY_TOKEN} is only valid for a native Windows .exe target"
+                )
         require_number(
             interaction["typing_interval_seconds"],
             label="interaction.typing_interval_seconds",
@@ -926,8 +936,243 @@ def terminate_process(process: subprocess.Popen[Any]) -> None:
             pass
 
 
-def expanded_launch_argv(executable: Path, args: Sequence[str], run_id: str) -> list[str]:
-    return [str(executable)] + [item.replace("{run_id}", run_id) for item in args]
+def launch_args_request_windows_working_directory(args: Sequence[str]) -> bool:
+    return any(WINDOWS_WORKING_DIRECTORY_TOKEN in item for item in args)
+
+
+def plan_targets_lazygit(plan: LoadedPlan | Mapping[str, Any]) -> bool:
+    data = plan.data if isinstance(plan, LoadedPlan) else plan
+    target = data.get("target", {})
+    if not isinstance(target, Mapping):
+        return False
+    return "lazygit" in str(target.get("name", "")).lower() or "lazygit" in str(
+        target.get("executable", "")
+    ).lower()
+
+
+def expanded_launch_argv(
+    executable: Path,
+    args: Sequence[str],
+    run_id: str,
+    *,
+    windows_working_directory: str | None = None,
+) -> list[str]:
+    if launch_args_request_windows_working_directory(args) and windows_working_directory is None:
+        raise CommandVideoError(
+            f"Launch arguments require {WINDOWS_WORKING_DIRECTORY_TOKEN}, but no verified Windows path bridge is active"
+        )
+    expanded: list[str] = [str(executable)]
+    for item in args:
+        value = item.replace("{run_id}", run_id)
+        if windows_working_directory is not None:
+            value = value.replace(
+                WINDOWS_WORKING_DIRECTORY_TOKEN, windows_working_directory
+            )
+        expanded.append(value)
+    return expanded
+
+
+def resolve_windows_path_bridge_helpers(
+    *, working_directory: Path, env: Mapping[str, str]
+) -> tuple[Path, Path]:
+    if not is_wsl():
+        raise CommandVideoError(
+            f"{WINDOWS_WORKING_DIRECTORY_TOKEN} requires WSL2 with Windows interoperability"
+        )
+    path_value = env.get("PATH", "")
+    native_wslpath = NATIVE_WSLPATH
+    if not native_wslpath.is_file() or not os.access(native_wslpath, os.X_OK):
+        raise CommandVideoError(
+            f"{WINDOWS_WORKING_DIRECTORY_TOKEN} requires the native WSL helper /usr/bin/wslpath"
+        )
+    # Preserve the wslpath argv[0] dispatch name. Resolving its /init symlink
+    # makes WSL interpret "-w" as an /init argument instead of a path mode.
+    wslpath = native_wslpath
+    subst = resolve_executable(
+        "subst.exe", working_directory=working_directory, path_value=path_value
+    )
+    return wslpath, subst
+
+
+def windows_path_bridge_preflight(
+    *, working_directory: Path, target: Path | None, env: Mapping[str, str]
+) -> dict[str, Any]:
+    if target is not None and target.suffix.lower() != ".exe":
+        raise CommandVideoError(
+            f"{WINDOWS_WORKING_DIRECTORY_TOKEN} requires a native Windows .exe target"
+        )
+    wslpath, subst = resolve_windows_path_bridge_helpers(
+        working_directory=working_directory, env=env
+    )
+    code, windows_path = command_output(
+        [str(wslpath), "-w", str(working_directory)],
+        cwd=working_directory,
+        env=env,
+    )
+    windows_path = windows_path.strip()
+    if code != 0 or not re.fullmatch(r"[A-Za-z]:\\.*", windows_path):
+        raise CommandVideoError(
+            f"Could not translate the TUI working directory to a Windows path: {windows_path or 'no output'}"
+        )
+    list_code, _ = command_output(
+        [str(subst)], cwd=working_directory, env=env
+    )
+    if list_code != 0:
+        raise CommandVideoError("subst.exe could not enumerate Windows drive mappings")
+    return {
+        "mode": "temporary-subst-drive",
+        "token": WINDOWS_WORKING_DIRECTORY_TOKEN,
+        "source_working_directory": str(working_directory),
+        "windows_source_path": windows_path,
+        "wslpath": str(wslpath),
+        "wslpath_sha256": sha256_file(wslpath),
+        "subst": str(subst),
+        "subst_sha256": sha256_file(subst),
+        "candidate_drive_count": len(SUBST_DRIVE_LETTERS),
+    }
+
+
+def lazygit_longpaths_preflight(
+    *, working_directory: Path, env: Mapping[str, str]
+) -> dict[str, Any]:
+    native_git = NATIVE_WSL_GIT
+    if not native_git.is_file() or not os.access(native_git, os.X_OK):
+        raise CommandVideoError(
+            "Native Windows lazygit path bridging requires /usr/bin/git for project-local checks"
+        )
+    code, output = command_output(
+        [
+            str(native_git),
+            "-C",
+            str(working_directory),
+            "config",
+            "--local",
+            "--bool",
+            "core.longpaths",
+        ],
+        cwd=working_directory,
+        env=env,
+    )
+    if code != 0 or output.strip().lower() != "true":
+        raise CommandVideoError(
+            "Before recording lazygit.exe through the Windows path bridge, set "
+            "core.longpaths=true in that repository's local Git config"
+        )
+    return {
+        "status": "passed",
+        "scope": "project-local",
+        "setting": "core.longpaths",
+        "value": True,
+        "git": str(native_git),
+        "git_sha256": sha256_file(native_git),
+    }
+
+
+def acquire_windows_working_directory_bridge(
+    *, working_directory: Path, env: Mapping[str, str], run_id: str
+) -> dict[str, Any]:
+    preflight = windows_path_bridge_preflight(
+        working_directory=working_directory,
+        target=None,
+        env=env,
+    )
+    subst = Path(preflight["subst"])
+    windows_path = str(preflight["windows_source_path"])
+    failure_details: list[str] = []
+    for letter in SUBST_DRIVE_LETTERS:
+        drive = f"{letter}:"
+        lock_path = Path(tempfile.gettempdir()) / (
+            f"asciinema-real-command-video-subst-{letter.lower()}.lock"
+        )
+        descriptor: int | None = None
+        mapping_created = False
+        try:
+            descriptor = os.open(lock_path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        except FileExistsError:
+            continue
+        try:
+            with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+                descriptor = None
+                handle.write(run_id + "\n")
+                handle.flush()
+                os.fsync(handle.fileno())
+            completed = subprocess.run(
+                [str(subst), drive, windows_path],
+                cwd=str(working_directory),
+                env=dict(env),
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                timeout=10,
+                check=False,
+            )
+            if completed.returncode == 0:
+                mapping_created = True
+                return {
+                    **preflight,
+                    "status": "active",
+                    "created": True,
+                    "released": False,
+                    "drive": drive,
+                    "mount_root": f"{drive}/",
+                    "create_exit_code": completed.returncode,
+                    "_lock_path": str(lock_path),
+                }
+            detail = completed.stdout.strip()
+            failure_details.append(f"{drive}={completed.returncode}:{detail[:160]}")
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            failure_details.append(f"{drive}:{exc}")
+        finally:
+            if descriptor is not None:
+                os.close(descriptor)
+            if not mapping_created and lock_path.exists():
+                try:
+                    lock_path.unlink()
+                except FileNotFoundError:
+                    pass
+    detail = "; ".join(failure_details[-3:]) or "no candidate drive was available"
+    raise CommandVideoError(f"Could not create a temporary Windows path bridge: {detail}")
+
+
+def release_windows_working_directory_bridge(
+    bridge: Mapping[str, Any], *, working_directory: Path, env: Mapping[str, str]
+) -> dict[str, Any]:
+    subst = Path(str(bridge["subst"]))
+    drive = str(bridge["drive"])
+    lock_path = Path(str(bridge["_lock_path"]))
+    exit_code: int | None = None
+    detail = ""
+    try:
+        completed = subprocess.run(
+            [str(subst), drive, "/d"],
+            cwd=str(working_directory),
+            env=dict(env),
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=10,
+            check=False,
+        )
+        exit_code = completed.returncode
+        detail = completed.stdout.strip()[:512]
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        detail = str(exc)
+    finally:
+        try:
+            lock_path.unlink()
+        except FileNotFoundError:
+            pass
+    return {
+        "released": exit_code == 0,
+        "release_exit_code": exit_code,
+        "release_output": detail,
+    }
 
 
 def tmux_run(
@@ -1315,6 +1560,7 @@ def execute_tui_target(
         "started_at_utc": utc_now(),
     }
     return_code = 2
+    windows_bridge: dict[str, Any] | None = None
     try:
         if plan_mode(plan) != "tui":
             raise CommandVideoError("run-tui-target requires a TUI interaction plan")
@@ -1330,7 +1576,25 @@ def execute_tui_target(
             path_value=runtime_env.get("PATH", ""),
         )
         interaction = plan.data["interaction"]
-        argv = expanded_launch_argv(target_path, interaction["launch_args"], run_id)
+        windows_working_directory: str | None = None
+        if launch_args_request_windows_working_directory(interaction["launch_args"]):
+            windows_bridge = acquire_windows_working_directory_bridge(
+                working_directory=plan.working_directory,
+                env=runtime_env,
+                run_id=run_id,
+            )
+            windows_working_directory = str(windows_bridge["mount_root"])
+            status["windows_working_directory_bridge"] = {
+                key: value
+                for key, value in windows_bridge.items()
+                if not key.startswith("_")
+            }
+        argv = expanded_launch_argv(
+            target_path,
+            interaction["launch_args"],
+            run_id,
+            windows_working_directory=windows_working_directory,
+        )
         if "copilot" in target["name"].lower() or "copilot" in target["executable"].lower():
             if runtime_env.get("COPILOT_ALLOW_ALL", "").strip().lower() in {
                 "1",
@@ -1367,6 +1631,23 @@ def execute_tui_target(
     except Exception as exc:
         status["error"] = str(exc)
     finally:
+        if windows_bridge is not None:
+            release = release_windows_working_directory_bridge(
+                windows_bridge,
+                working_directory=plan.working_directory,
+                env=runtime_env,
+            )
+            status["windows_working_directory_bridge"].update(release)
+            status["windows_working_directory_bridge"]["status"] = (
+                "released" if release["released"] else "release-failed"
+            )
+            if not release["released"]:
+                status["status"] = "failed"
+                status["error"] = (
+                    "The temporary Windows path bridge could not be released: "
+                    f"{release['release_output']}"
+                )
+                return_code = 2
         status["finished_at_utc"] = utc_now()
         write_json_atomic(status_path.resolve(), status)
     return return_code
@@ -2301,6 +2582,24 @@ def verify_runtime_and_cast(
     output_text = cast.get("output_text")
     if not isinstance(output_text, str):
         raise CommandVideoError("Asciicast output could not be reconstructed")
+    if (
+        plan_targets_lazygit(plan)
+        and plan_mode(plan) == "tui"
+        and launch_args_request_windows_working_directory(
+            plan.data["interaction"]["launch_args"]
+        )
+    ):
+        normalized_output = output_text.lower()
+        lazygit_path_failures = (
+            "filename too long",
+            "fatal: '$git_dir' too big",
+            "error getting repo paths",
+        )
+        if any(term in normalized_output for term in lazygit_path_failures):
+            raise CommandVideoError(
+                "The lazygit cast contains a Windows repository path failure"
+            )
+        checks.append("lazygit-path-clean")
     header = cast.get("header")
     command = header.get("command", "") if isinstance(header, dict) else ""
     if "run-plan" not in command or run_id not in command:
@@ -2324,6 +2623,56 @@ def verify_runtime_and_cast(
             raise CommandVideoError("Runtime report does not prove TUI keystroke delivery")
         if interaction.get("shutdown_mode", "exit-text") != tui_shutdown_mode(plan):
             raise CommandVideoError("Runtime report TUI shutdown mode does not match the plan")
+        target_status_evidence = interaction.get("target_status")
+        if launch_args_request_windows_working_directory(
+            planned_interaction["launch_args"]
+        ):
+            if not isinstance(target_status_evidence, dict):
+                raise CommandVideoError(
+                    "Runtime report is missing Windows working-directory bridge evidence"
+                )
+            bridge = target_status_evidence.get("windows_working_directory_bridge")
+            if (
+                not isinstance(bridge, dict)
+                or bridge.get("status") != "released"
+                or bridge.get("created") is not True
+                or bridge.get("released") is not True
+                or bridge.get("source_working_directory")
+                != str(plan.working_directory)
+                or not re.fullmatch(r"[D-Z]:/", str(bridge.get("mount_root", "")))
+                or bridge.get("create_exit_code") != 0
+                or bridge.get("release_exit_code") != 0
+            ):
+                raise CommandVideoError(
+                    "Runtime report does not prove a created and released Windows working-directory bridge"
+                )
+            launch_argv = target_status_evidence.get("launch_argv")
+            resolved_executable = target_status_evidence.get("resolved_executable")
+            if not isinstance(launch_argv, list) or not isinstance(
+                resolved_executable, str
+            ):
+                raise CommandVideoError(
+                    "Runtime report is missing the bridged target launch argv"
+                )
+            expected_launch_argv = expanded_launch_argv(
+                Path(resolved_executable),
+                planned_interaction["launch_args"],
+                run_id,
+                windows_working_directory=str(bridge["mount_root"]),
+            )
+            if launch_argv != expected_launch_argv or any(
+                WINDOWS_WORKING_DIRECTORY_TOKEN in str(item) for item in launch_argv
+            ):
+                raise CommandVideoError(
+                    "Runtime bridged target launch argv does not match the reviewed plan"
+                )
+            checks.append("windows-working-directory-bridge")
+        elif isinstance(target_status_evidence, dict) and target_status_evidence.get(
+            "windows_working_directory_bridge"
+        ) is not None:
+            raise CommandVideoError(
+                "Runtime report contains an undeclared Windows working-directory bridge"
+            )
         if render_start_at(plan) == "tui-ready":
             if marker(run_id, "TUI", "READY") not in output_text:
                 raise CommandVideoError("Asciicast is missing the TUI-ready presentation marker")
@@ -2395,11 +2744,10 @@ def verify_runtime_and_cast(
         if final_exit_code not in planned_interaction["expected_exit_codes"]:
             raise CommandVideoError(f"Unexpected final TUI target exit code: {final_exit_code}")
         if render_start_at(plan) == "tui-ready":
-            target_status = interaction.get("target_status")
             if (
-                not isinstance(target_status, dict)
+                not isinstance(target_status_evidence, dict)
                 or abs(
-                    float(target_status.get("final_hold_seconds", -1.0))
+                    float(target_status_evidence.get("final_hold_seconds", -1.0))
                     - float(plan.data["render"]["last_frame_duration"])
                 )
                 > 0.001
@@ -2591,7 +2939,8 @@ def claim_recording_attempt(
         },
         "policy": (
             "This immutable plan-scoped claim permits exactly one record transaction. "
-            "Preserve failed evidence and create a new reviewed plan path for any later session."
+            "Preserve failed evidence. A different plan path or output name does not authorize "
+            "a retry for the same user-requested deliverable."
         ),
     }
     ledger_path.parent.mkdir(parents=True, exist_ok=True)
@@ -3015,6 +3364,21 @@ def build_preflight_context(plan: LoadedPlan, args: argparse.Namespace) -> Prefl
             env=env,
         ),
     }
+    bridge_preflight: dict[str, Any] | None = None
+    if plan_mode(plan) == "tui" and launch_args_request_windows_working_directory(
+        plan.data["interaction"]["launch_args"]
+    ):
+        bridge_preflight = windows_path_bridge_preflight(
+            working_directory=plan.working_directory,
+            target=target,
+            env=env,
+        )
+        if plan_targets_lazygit(plan):
+            bridge_preflight["lazygit_longpaths"] = lazygit_longpaths_preflight(
+                working_directory=plan.working_directory,
+                env=env,
+            )
+        toolchain["windows_working_directory_bridge"] = bridge_preflight
     if tmux is not None:
         toolchain["tmux"] = tool_record(
             args.tmux, tmux, ["-V"], cwd=plan.working_directory, env=env
@@ -3034,6 +3398,10 @@ def build_preflight_context(plan: LoadedPlan, args: argparse.Namespace) -> Prefl
         target=target,
         pty_allocator=pty_allocator,
     )
+    if bridge_preflight is not None:
+        terminal_control["components"]["windows_working_directory_bridge"] = str(
+            bridge_preflight["subst"]
+        )
     return PreflightContext(
         env=env,
         tools_dir=tools_dir,
@@ -3198,6 +3566,8 @@ def record_session(args: argparse.Namespace) -> dict[str, Any]:
             }
         )
         evidence_checks.append("before-final-key-presentation")
+        if presentation_start == "tui-ready":
+            evidence_checks.append("tui-ready-presentation")
     elif presentation_start == "tui-ready":
         terminal_restore_seconds = cast_output_text_time(cast_path, "\033[?1049l")
         presentation_end_seconds = max(
@@ -3550,6 +3920,38 @@ def validate_existing_artifacts(
             raise CommandVideoError("Manifest terminal-control components are incomplete")
         if mode == "tui" and not components.get("multiplexer"):
             raise CommandVideoError("Manifest does not identify the TUI terminal multiplexer")
+        if mode == "tui" and launch_args_request_windows_working_directory(
+            plan.data["interaction"]["launch_args"]
+        ):
+            if not components.get("windows_working_directory_bridge"):
+                raise CommandVideoError(
+                    "Manifest does not identify the Windows working-directory bridge"
+                )
+            bridge_preflight = manifest.get("toolchain", {}).get(
+                "windows_working_directory_bridge"
+            )
+            if (
+                not isinstance(bridge_preflight, dict)
+                or bridge_preflight.get("mode") != "temporary-subst-drive"
+                or bridge_preflight.get("token")
+                != WINDOWS_WORKING_DIRECTORY_TOKEN
+            ):
+                raise CommandVideoError(
+                    "Manifest Windows working-directory bridge preflight is incomplete"
+                )
+            if plan_targets_lazygit(plan):
+                longpaths = bridge_preflight.get("lazygit_longpaths")
+                if (
+                    not isinstance(longpaths, dict)
+                    or longpaths.get("status") != "passed"
+                    or longpaths.get("scope") != "project-local"
+                    or longpaths.get("setting") != "core.longpaths"
+                    or longpaths.get("value") is not True
+                ):
+                    raise CommandVideoError(
+                        "Manifest does not prove project-local lazygit long-path support"
+                    )
+                checks.append("lazygit-project-longpaths")
         checks.append("terminal-control-lifecycle")
 
     planned_start = render_start_at(plan)
@@ -3587,6 +3989,7 @@ def validate_existing_artifacts(
                 raise CommandVideoError("Manifest TUI-ready marker time does not match the cast")
             if presentation_trim_seconds <= 0:
                 raise CommandVideoError("TUI-ready presentation did not remove the controller lead-in")
+            checks.append("tui-ready-presentation")
 
         if plan_mode(plan) == "tui" and planned_end == "before-final-key":
             final_key_marker_seconds = cast_output_text_time(
@@ -3685,7 +4088,7 @@ def validate_existing_artifacts(
             ):
                 raise CommandVideoError("Manifest final TUI hold does not match the plan")
             presentation_end_seconds = expected_presentation_end
-            checks.extend(["tui-ready-presentation", "tui-exit-presentation"])
+            checks.append("tui-exit-presentation")
 
     env = dict(os.environ)
     env["PATH"] = path_with_tools(env, tools_dir)
@@ -3824,7 +4227,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "preflight",
         "record",
         "validate",
-    }:
+    } and not any(token in {"-h", "--help"} for token in raw_argv[1:]):
         try:
             return forward_windows_command_to_wsl(raw_argv)
         except CommandVideoError as exc:

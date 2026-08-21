@@ -23,6 +23,109 @@ SPEC.loader.exec_module(VERIFIER)
 
 
 class VerifyTaskTests(unittest.TestCase):
+    def test_complexity_contract_matches_prompt_and_action_runtime(self) -> None:
+        prompt = "First real prompt"
+        plan = {
+            "steps": [
+                {"id": "prompt-one", "prompt": prompt},
+                {
+                    "id": "navigate",
+                    "actions": [
+                        {"type": "text", "text": "taz"},
+                        {"type": "pause", "seconds": 5.5},
+                        {"type": "key", "key": "BSpace"},
+                        {"type": "key", "key": "Enter"},
+                    ],
+                },
+            ]
+        }
+        runtime = {
+            "steps": [
+                {"prompt_sha256": VERIFIER.sha256_text(prompt)},
+                {
+                    "actions": [
+                        {
+                            "type": "text",
+                            "text_sha256": VERIFIER.sha256_text("taz"),
+                        },
+                        {"type": "pause", "seconds": 5.5},
+                        {"type": "key", "key": "BSpace"},
+                        {"type": "key", "key": "Enter"},
+                    ]
+                },
+            ]
+        }
+        contract = {
+            "requiredPromptSequence": [prompt],
+            "requiredTextSequence": ["taz"],
+            "requiredKeySequence": ["BSpace", "Enter"],
+            "minActionCount": 4,
+            "minPauseActionCount": 1,
+            "minPlannedPauseSeconds": 5.0,
+            "minSourceDurationSeconds": 12.0,
+        }
+        findings: list[str] = []
+        ok, evidence = VERIFIER.verify_complexity_contract(
+            contract,
+            plan,
+            runtime,
+            {"recording": {"duration_seconds": 12.5}},
+            findings,
+        )
+        self.assertTrue(ok)
+        self.assertEqual(findings, [])
+        self.assertEqual(evidence["observed"]["actionCount"], 4)
+
+    def test_complexity_contract_rejects_short_or_changed_runtime(self) -> None:
+        plan = {
+            "steps": [
+                {
+                    "id": "navigate",
+                    "actions": [
+                        {"type": "pause", "seconds": 2.0},
+                        {"type": "key", "key": "Enter"},
+                    ],
+                }
+            ]
+        }
+        runtime = {
+            "steps": [
+                {
+                    "actions": [
+                        {"type": "pause", "seconds": 1.0},
+                        {"type": "key", "key": "Escape"},
+                    ]
+                }
+            ]
+        }
+        findings: list[str] = []
+        ok, evidence = VERIFIER.verify_complexity_contract(
+            {
+                "requiredKeySequence": ["Enter"],
+                "minActionCount": 3,
+                "minPauseActionCount": 2,
+                "minPlannedPauseSeconds": 10.0,
+                "minSourceDurationSeconds": 10.0,
+            },
+            plan,
+            runtime,
+            {"recording": {"duration_seconds": 4.0}},
+            findings,
+        )
+        self.assertFalse(ok)
+        self.assertFalse(evidence["checks"]["runtimeMatchesPlan"])
+        self.assertFalse(evidence["checks"]["sourceDuration"])
+        self.assertGreaterEqual(len(findings), 5)
+
+    def test_legacy_contract_has_no_complexity_requirements(self) -> None:
+        findings: list[str] = []
+        ok, evidence = VERIFIER.verify_complexity_contract(
+            {}, {"steps": []}, {"steps": []}, {}, findings
+        )
+        self.assertTrue(ok)
+        self.assertTrue(all(evidence["checks"].values()))
+        self.assertEqual(findings, [])
+
     def test_argv_exit_status_uses_runtime_steps(self) -> None:
         runtime = {
             "steps": [
@@ -49,6 +152,18 @@ class VerifyTaskTests(unittest.TestCase):
             }
         )
         self.assertTrue({"exit-codes", "target-exit", "real-time-duration"} <= checks)
+
+    def test_effective_checks_normalize_legacy_before_final_key_label(self) -> None:
+        checks = VERIFIER.effective_validation_checks(
+            {
+                "checks": ["before-final-key-presentation"],
+                "presentation": {
+                    "start_at": "tui-ready",
+                    "source_cast_duration_seconds": 15.0,
+                },
+            }
+        )
+        self.assertIn("tui-ready-presentation", checks)
 
     def test_collected_artifact_workspace_wins_over_empty_app(self) -> None:
         required = ["source/session-plan.json", "deliverables/session.mp4"]

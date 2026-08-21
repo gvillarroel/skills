@@ -42,6 +42,7 @@ Install tmux, ffmpeg, and ffprobe through the environment's normal trusted mecha
 - Windows programs exposed through WSL usually resolve with their `.exe` suffix, such as `copilot.exe`, `ffmpeg.exe`, and `ffprobe.exe`.
 - The bridge automatically resolves native Windows ffmpeg/ffprobe and the recorder converts their media paths for interop.
 - If Copilot is installed only on Windows, set `target.executable` to `copilot.exe`. WSL's normal Windows-path import resolves the authentic binary; use an absolute WSL-visible executable path only when PATH import is disabled.
+- Some native Windows TUIs pass the working directory back to Windows tools and fail on a deep WSL-mounted path. Put `{windows_working_directory}` in reviewed TUI `launch_args` only when the target needs a Windows path. Preflight verifies native `/usr/bin/wslpath` and `subst.exe`; the target runner then claims an unused drive letter, maps the exact working directory for that process lifetime, records the expanded argv and helper hashes, removes the mapping, and refuses success without release evidence. For `lazygit.exe`, also set `core.longpaths=true` in the repository-local Git config; preflight rejects a missing value and cast validation rejects long-path errors. Do not create or remove drive mappings manually or change global Git configuration.
 
 ## Rendering facts
 

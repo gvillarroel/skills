@@ -12,12 +12,14 @@ import importlib.util
 import io
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
 import uuid
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
+from unittest import mock
 
 
 sys.dont_write_bytecode = True
@@ -103,6 +105,44 @@ def one_shot_tui_plan(executable: str, actions: list[dict[str, object]]) -> dict
 
 
 class PlanValidationTests(unittest.TestCase):
+    def test_windows_subcommand_help_does_not_require_or_forward_a_plan(self) -> None:
+        with mock.patch.object(MODULE, "forward_windows_command_to_wsl") as forward:
+            with self.assertRaises(SystemExit) as raised, redirect_stdout(io.StringIO()):
+                MODULE.main(["record", "--help"])
+        self.assertEqual(raised.exception.code, 0)
+        forward.assert_not_called()
+
+    def test_bundled_lazygit_template_is_valid_from_source_directory(self) -> None:
+        template_path = MODULE_PATH.parents[1] / "assets" / "templates" / "lazygit-session-plan.json"
+        payload = json.loads(template_path.read_text(encoding="utf-8"))
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "source").mkdir()
+            (root / "fixture" / "repo").mkdir(parents=True)
+            plan_path = root / "source" / "session-plan.json"
+            plan_path.write_text(json.dumps(payload), encoding="utf-8")
+            plan = MODULE.load_plan(plan_path)
+        self.assertEqual(plan.working_directory, (root / "fixture" / "repo").resolve())
+        self.assertEqual(MODULE.render_end_at(plan), "before-final-key")
+        self.assertEqual(plan.data["steps"][0]["actions"][-1]["key"], "q")
+        self.assertEqual(
+            plan.data["interaction"]["launch_args"],
+            [
+                "--use-config-dir",
+                "{windows_working_directory}.git/lazygit-config",
+                "--path",
+                "{windows_working_directory}",
+            ],
+        )
+
+    def test_bundled_lazygit_config_suppresses_dynamic_startup_ui(self) -> None:
+        config_path = MODULE_PATH.parents[1] / "assets" / "templates" / "lazygit-config.yml"
+        config = config_path.read_text(encoding="utf-8")
+        self.assertIn("disableStartupPopups: true\n", config)
+        self.assertIn("update:\n  method: never\n", config)
+        self.assertIn("git:\n  autoFetch: false\n", config)
+        self.assertNotIn("gui:\n  disableStartupPopups:", config)
+
     def test_valid_plan_and_summary(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -169,6 +209,54 @@ class PlanValidationTests(unittest.TestCase):
             self.assertEqual(summary["mode"], "tui")
             self.assertIsNone(summary["render"]["idle_time_limit"])
             self.assertNotIn("args", plan.data["steps"][0])
+
+    def test_windows_working_directory_token_requires_windows_executable(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            payload = tui_plan(sys.executable)
+            payload["target"]["executable"] = "python"
+            payload["interaction"]["launch_args"] = [
+                "--path",
+                "{windows_working_directory}",
+            ]
+            plan_path = root / "plan.json"
+            plan_path.write_text(json.dumps(payload), encoding="utf-8")
+            with self.assertRaisesRegex(
+                MODULE.CommandVideoError, "native Windows .exe target"
+            ):
+                MODULE.load_plan(plan_path)
+
+    def test_windows_working_directory_token_requires_and_uses_bridge(self) -> None:
+        args = [
+            "--use-config-dir",
+            "{windows_working_directory}.git/lazygit-config",
+            "--path",
+            "{windows_working_directory}",
+            "--session",
+            "{run_id}",
+        ]
+        with self.assertRaisesRegex(
+            MODULE.CommandVideoError, "no verified Windows path bridge"
+        ):
+            MODULE.expanded_launch_argv(Path("lazygit.exe"), args, "run-123")
+        argv = MODULE.expanded_launch_argv(
+            Path("lazygit.exe"),
+            args,
+            "run-123",
+            windows_working_directory="Z:/",
+        )
+        self.assertEqual(
+            argv,
+            [
+                "lazygit.exe",
+                "--use-config-dir",
+                "Z:/.git/lazygit-config",
+                "--path",
+                "Z:/",
+                "--session",
+                "run-123",
+            ],
+        )
 
     def test_tui_steps_reject_direct_argv_fields(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -430,6 +518,7 @@ class DirectExecutionTests(unittest.TestCase):
             original = ledger_path.read_bytes()
             self.assertEqual(ledger["status"], "claimed")
             self.assertEqual(ledger["run_id"], run_id)
+            self.assertIn("does not authorize a retry", ledger["policy"])
             with self.assertRaisesRegex(MODULE.CommandVideoError, "already claimed"):
                 MODULE.claim_recording_attempt(
                     plan, run_id=str(uuid.uuid4()), **paths
@@ -907,6 +996,72 @@ class TerminalControlContractTests(unittest.TestCase):
 
 
 class ToolPinTests(unittest.TestCase):
+    def test_lazygit_longpaths_preflight_requires_project_local_true(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            native_git = root / "git"
+            native_git.write_bytes(b"test-git")
+            native_git.chmod(0o755)
+            with (
+                mock.patch.object(MODULE, "NATIVE_WSL_GIT", native_git),
+                mock.patch.object(MODULE, "command_output", return_value=(0, "true\n")),
+            ):
+                result = MODULE.lazygit_longpaths_preflight(
+                    working_directory=root, env={"PATH": ""}
+                )
+            self.assertEqual(result["scope"], "project-local")
+            self.assertIs(result["value"], True)
+
+            with (
+                mock.patch.object(MODULE, "NATIVE_WSL_GIT", native_git),
+                mock.patch.object(MODULE, "command_output", return_value=(1, "")),
+                self.assertRaisesRegex(
+                    MODULE.CommandVideoError, "core.longpaths=true"
+                ),
+            ):
+                MODULE.lazygit_longpaths_preflight(
+                    working_directory=root, env={"PATH": ""}
+                )
+
+    def test_temporary_windows_path_bridge_is_locked_and_released(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            subst = root / "subst.exe"
+            subst.write_bytes(b"test-subst")
+            preflight = {
+                "mode": "temporary-subst-drive",
+                "token": MODULE.WINDOWS_WORKING_DIRECTORY_TOKEN,
+                "source_working_directory": str(root),
+                "windows_source_path": r"C:\very\long\workspace",
+                "wslpath": str(root / "wslpath"),
+                "wslpath_sha256": "a" * 64,
+                "subst": str(subst),
+                "subst_sha256": MODULE.sha256_file(subst),
+                "candidate_drive_count": len(MODULE.SUBST_DRIVE_LETTERS),
+            }
+            completed = subprocess.CompletedProcess([], 0, stdout="")
+            with (
+                mock.patch.object(
+                    MODULE, "windows_path_bridge_preflight", return_value=preflight
+                ),
+                mock.patch.object(MODULE.tempfile, "gettempdir", return_value=temp),
+                mock.patch.object(MODULE.subprocess, "run", return_value=completed) as run,
+            ):
+                bridge = MODULE.acquire_windows_working_directory_bridge(
+                    working_directory=root,
+                    env={"PATH": ""},
+                    run_id=str(uuid.uuid4()),
+                )
+                lock_path = Path(bridge["_lock_path"])
+                self.assertTrue(lock_path.is_file())
+                self.assertEqual(bridge["mount_root"], "Z:/")
+                released = MODULE.release_windows_working_directory_bridge(
+                    bridge, working_directory=root, env={"PATH": ""}
+                )
+            self.assertTrue(released["released"])
+            self.assertFalse(lock_path.exists())
+            self.assertEqual(run.call_count, 2)
+
     def test_windows_path_translation_is_deterministic(self) -> None:
         translated = MODULE.windows_path_to_wsl(Path(r"C:\Workspace With Space\demo.cast"))
         self.assertEqual(translated, "/mnt/c/Workspace With Space/demo.cast")

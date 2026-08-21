@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "title": "Authentic lazygit navigation and quit",
+  "working_directory": "../fixture/repo",
+  "declared_scope": "Inspect one prepared local Git repository and deliver only the reviewed navigation and quit keys.",
+  "target": {
+    "name": "lazygit",
+    "executable": "lazygit.exe",
+    "version_args": [
+      "--version"
+    ]
+  },
+  "interaction": {
+    "mode": "tui",
+    "launch_args": [
+      "--use-config-dir",
+      "{windows_working_directory}.git/lazygit-config",
+      "--path",
+      "{windows_working_directory}"
+    ],
+    "typing_interval_seconds": 0.08,
+    "pre_submit_pause_seconds": 0.5,
+    "startup_timeout_seconds": 30,
+    "ready_pattern": "(?s)Files - Worktrees - Submodule.*(?:Local branches|Commits \\([^)]+\\))",
+    "busy_pattern": "(?!)",
+    "settle_seconds": 0.75,
+    "shutdown_mode": "target-exit",
+    "exit_timeout_seconds": 30,
+    "expected_exit_codes": [
+      0
+    ]
+  },
+  "terminal": {
+    "cols": 110,
+    "rows": 32
+  },
+  "render": {
+    "theme": "github-dark",
+    "font_size": 18,
+    "line_height": 1.4,
+    "fps": 30,
+    "speed": 1.0,
+    "idle_time_limit": null,
+    "last_frame_duration": 1.0,
+    "start_at": "tui-ready",
+    "end_at": "before-final-key"
+  },
+  "steps": [
+    {
+      "id": "navigate-and-quit",
+      "actions": [
+        {
+          "type": "pause",
+          "seconds": 1.0
+        },
+        {
+          "type": "key",
+          "key": "q"
+        }
+      ],
+      "completion": "target-exit",
+      "timeout_seconds": 30,
+      "pause_after_seconds": 0.0
+    }
+  ]
+}

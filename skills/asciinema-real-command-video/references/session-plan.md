@@ -49,7 +49,7 @@ Use this mode when the video must show a real application UI, prompt typing, Ent
 }
 ```
 
-- `launch_args` starts the real target exactly once. It may contain `{run_id}` but never `{prompt}`.
+- `launch_args` starts the real target exactly once. It may contain `{run_id}` but never `{prompt}`. For a native Windows `.exe` that must receive the real WSL working directory as a short Windows path, it may also contain `{windows_working_directory}`. The token expands only while a verified temporary `subst.exe` mapping is active; it includes the trailing slash, so append relative children directly, for example `{windows_working_directory}.git/config`.
 - `typing_interval_seconds` is the delay after every Unicode character. Use roughly `0.025` to `0.06` for readable typing.
 - `pre_submit_pause_seconds` leaves the complete prompt visible before the controller sends a real `Enter` key.
 - `ready_pattern` must match the target's empty input editor. Anchor it narrowly so output text cannot satisfy it accidentally.
@@ -128,7 +128,7 @@ lazygit, and fixed PowerShell pipeline plans.
 - Put the exact user-approved text in `prompt`.
 - `args` is an argv array, not a command string. It must contain `{prompt}` exactly once. The runner replaces it inside that single argument, so prompt punctuation cannot become shell syntax.
 - `{run_id}` is optional and expands to the recording UUID. Reuse it in each step when the target supports explicit session IDs.
-- Only `{prompt}` and `{run_id}` are substituted. Other braces remain literal, so Python f-strings, JSON snippets, and similar argv content are preserved unchanged.
+- In direct-argv step arguments, only `{prompt}` and `{run_id}` are substituted. Other braces remain literal, so Python f-strings, JSON snippets, and similar argv content are preserved unchanged. `{windows_working_directory}` is reserved for TUI `launch_args`.
 - Set a finite `timeout_seconds` for each real process.
 - Use `pause_after_seconds` only for watchability; it does not alter target output.
 - List every acceptable process status in `expected_exit_codes`. Use `[0]` for normal prompt sessions.
@@ -140,9 +140,11 @@ Do not assume any other placeholder is expanded. Do not put secrets in prompts o
 After preflight passes, `record` atomically creates an immutable hidden ledger
 next to the plan, named `.<plan-stem>.recording-attempt.json`. A second record
 transaction for that plan fails even if previous output paths were moved or
-deleted. Preserve the ledger and failed evidence. A genuinely new recording
-session needs a new reviewed plan path; never copy or rename a plan merely to
-turn a failed trial into a pass.
+deleted. Preserve the ledger and failed evidence. The one-attempt contract is
+broader than this file guard: a different plan path, output name, or launch
+adapter does not authorize another attempt for the same user-requested
+deliverable. Stop after a failed `record`. Only a later user request or
+explicit authorization may define a genuinely new recording session.
 
 ## Terminal and render settings
 
