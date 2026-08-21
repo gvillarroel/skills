@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "title": "Real fzf and Television sequence",
+  "working_directory": ".",
+  "declared_scope": "Read the reviewed local picker fixtures and select one item in each of two installed TUI tools.",
+  "terminal": {
+    "cols": 100,
+    "rows": 30
+  },
+  "render": {
+    "theme": "github-dark",
+    "font_size": 18,
+    "line_height": 1.4,
+    "fps": 30,
+    "speed": 1.0,
+    "idle_time_limit": null,
+    "last_frame_duration": 2.0,
+    "start_at": "tui-ready",
+    "end_at": "target-exit"
+  },
+  "tui_sessions": [
+    {
+      "id": "fzf-picker",
+      "target": {
+        "name": "fzf",
+        "executable": "fzf.exe",
+        "version_args": [
+          "--version"
+        ]
+      },
+      "interaction": {
+        "mode": "tui",
+        "launch_args": [
+          "--prompt=QUERY> ",
+          "--bind=start:reload(pwsh.exe -NoLogo -NoProfile -NonInteractive -Command \"Get-Content -LiteralPath fixture/fzf-items.txt\")"
+        ],
+        "typing_interval_seconds": 0.08,
+        "pre_submit_pause_seconds": 0.5,
+        "startup_timeout_seconds": 30,
+        "ready_pattern": "(?m)(?:^QUERY>\\s*$|^gamma\\s*$)",
+        "busy_pattern": "(?!)",
+        "settle_seconds": 0.5,
+        "shutdown_mode": "target-exit",
+        "exit_timeout_seconds": 30,
+        "expected_exit_codes": [
+          0
+        ]
+      },
+      "steps": [
+        {
+          "id": "fzf-select-gamma",
+          "actions": [
+            {
+              "type": "pause",
+              "seconds": 2.0
+            },
+            {
+              "type": "text",
+              "text": "ga"
+            },
+            {
+              "type": "pause",
+              "seconds": 4.0
+            },
+            {
+              "type": "key",
+              "key": "Enter"
+            }
+          ],
+          "completion": "target-exit",
+          "timeout_seconds": 30,
+          "pause_after_seconds": 0.0
+        }
+      ]
+    },
+    {
+      "id": "television-picker",
+      "target": {
+        "name": "Television",
+        "executable": "tv.exe",
+        "version_args": [
+          "--version"
+        ]
+      },
+      "interaction": {
+        "mode": "tui",
+        "launch_args": [
+          "--source-command",
+          "pwsh.exe -NoLogo -NoProfile -NonInteractive -Command \"Get-Content -LiteralPath fixture/tv-items.txt\"",
+          "--source-output",
+          "{}",
+          "--no-preview",
+          "--no-remote",
+          "--no-help-panel",
+          "--input-prompt",
+          "FILTER> "
+        ],
+        "typing_interval_seconds": 0.08,
+        "pre_submit_pause_seconds": 0.5,
+        "startup_timeout_seconds": 30,
+        "ready_pattern": "(?m)(?:FILTER>|beta\\.txt)",
+        "busy_pattern": "(?!)",
+        "settle_seconds": 0.75,
+        "shutdown_mode": "target-exit",
+        "exit_timeout_seconds": 30,
+        "expected_exit_codes": [
+          0
+        ]
+      },
+      "steps": [
+        {
+          "id": "television-select-beta",
+          "actions": [
+            {
+              "type": "pause",
+              "seconds": 2.0
+            },
+            {
+              "type": "text",
+              "text": "be"
+            },
+            {
+              "type": "pause",
+              "seconds": 5.0
+            },
+            {
+              "type": "key",
+              "key": "Enter"
+            }
+          ],
+          "completion": "target-exit",
+          "timeout_seconds": 30,
+          "pause_after_seconds": 0.0
+        }
+      ]
+    }
+  ]
+}

@@ -8,7 +8,7 @@ Asciinema records through a Unix pseudo-terminal. Use native Linux or macOS. On 
 - `agg`: renders the cast to a one-pass GIF intermediary.
 - `ffmpeg`: converts the intermediary to H.264/yuv420p MP4.
 - `ffprobe`: verifies codec, pixel format, dimensions, frame rate, and duration.
-- `tmux`: provides the real inner terminal emulator used to launch one TUI process, inject timed text and explicit keys, and inspect ready/busy or target-exit state.
+- `tmux`: provides the real inner terminal emulator used to launch one TUI process or an ordered sequence of distinct TUI processes, inject timed text and explicit keys, inspect ready/busy or target-exit state, and preserve one attached recorded PTY across multi-tool handoffs.
 - `script`: required only when an automated shell lacks a TTY; the bundled recorder uses the util-linux implementation to allocate one.
 
 The workflow never enables Asciinema input capture. TUI keystrokes go to tmux's inner PTY and become visible output frames in the outer Asciinema recording. It also never uploads to asciinema.org.

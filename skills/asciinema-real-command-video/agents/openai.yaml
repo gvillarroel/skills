@@ -1,4 +1,4 @@
 interface:
   display_name: "Asciinema Real Command Video"
-  short_description: "Record real TUI typing as verified MP4"
-  default_prompt: "Use $asciinema-real-command-video to preflight and perform exactly one claimed real-terminal recording: start Asciinema and the PTY, launch the authentic CLI, deliver the reviewed prompt or explicit text/key actions, gate each step on ready or real target exit, close cleanly, then convert and validate the MP4 while retaining the full cast and attempt ledger."
+  short_description: "Record one or several real TUIs as verified MP4"
+  default_prompt: "Use $asciinema-real-command-video to preflight and perform exactly one claimed real-terminal recording: start Asciinema and the PTY, launch each authentic CLI in the reviewed order, deliver its reviewed prompt or explicit text/key actions, gate every step and multi-tool handoff on ready and real target exit, close cleanly, then convert and validate the MP4 while retaining the full cast and attempt ledger."

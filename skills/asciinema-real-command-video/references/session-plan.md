@@ -8,11 +8,11 @@ Use one JSON plan as the reviewed source for target identity, prompt order, inte
 - `title`: non-empty recording title.
 - `working_directory`: existing directory, resolved relative to the plan file when not absolute.
 - `declared_scope`: plain-English statement of authorized behavior. This is evidence, not a sandbox; enforce restrictions with the target's own permission flags.
-- `target`: target identity object.
 - `terminal`: terminal geometry object.
 - `render`: deterministic render settings.
-- `steps`: one to fifty ordered prompt or explicit-action steps.
-- `interaction`: optional TUI controller. Include it when prompts must be typed into one persistent interactive process; omit it for direct-argv mode.
+- Choose exactly one execution shape:
+  - `target` plus `steps`, and optional `interaction`, for direct-argv or one TUI.
+  - `tui_sessions` for two to eight sequential real TUIs in one recording. Omit top-level `target`, `steps`, and `interaction` in this shape.
 
 ## Target
 
@@ -110,6 +110,59 @@ ends the process and command-key TUIs that quit with `q` without Enter.
 
 Read [interaction-recipes.md](interaction-recipes.md) for fzf, Television,
 lazygit, and fixed PowerShell pipeline plans.
+
+## Sequential multi-TUI mode
+
+Use `tui_sessions` only when one cast and MP4 must visibly exercise more than
+one authentic terminal application. Each entry contains its own `id`,
+`target`, `interaction`, and `steps` using the same single-TUI contracts above:
+
+```json
+{
+  "tui_sessions": [
+    {
+      "id": "search-with-fzf",
+      "target": {
+        "name": "fzf",
+        "executable": "fzf.exe",
+        "version_args": ["--version"]
+      },
+      "interaction": {"mode": "tui", "launch_args": [], "...": "..."},
+      "steps": [{"id": "select-alpha", "actions": [], "...": "..."}]
+    },
+    {
+      "id": "search-with-television",
+      "target": {
+        "name": "Television",
+        "executable": "tv.exe",
+        "version_args": ["--version"]
+      },
+      "interaction": {"mode": "tui", "launch_args": [], "...": "..."},
+      "steps": [{"id": "select-beta", "actions": [], "...": "..."}]
+    }
+  ]
+}
+```
+
+- Declare two to eight sessions and at least two distinct executable strings.
+  Runtime validation also requires at least two distinct resolved executable
+  identities and hashes.
+- Use unique lowercase hyphen-case session IDs and globally unique step IDs.
+- The supervisor launches sessions in array order. A session must reach its
+  real ready gate, complete every action, and exit with an allowed status
+  before the next start gate opens.
+- The outer recorder, tmux client, run UUID, cast, runtime report, attempt
+  ledger, MP4, and manifest remain singular. Each target has separate version,
+  executable hash, launch argv, ready, action, exit, and optional Windows path
+  bridge evidence.
+- `render.start_at: "tui-ready"` refers to the first target. `render.end_at:
+  "before-final-key"` refers only to the final target and requires that final
+  session to satisfy the normal target-exit/final-key contract. With
+  `end_at: "target-exit"`, the MP4 ends at the final alternate-screen restore,
+  not an intermediate handoff.
+
+Read [multi-tui-sequences.md](multi-tui-sequences.md) before recording and
+start from `assets/templates/multi-tui-session-plan.json`.
 
 ## Direct-argv mode
 

@@ -174,6 +174,65 @@ def executable_basename(value: Any) -> str:
     return str(value or "").replace("\\", "/").rsplit("/", 1)[-1].casefold()
 
 
+def plan_tui_sessions(plan: dict[str, Any]) -> list[dict[str, Any]]:
+    sessions = plan.get("tui_sessions")
+    if not isinstance(sessions, list):
+        return []
+    return [session for session in sessions if isinstance(session, dict)]
+
+
+def flattened_plan_steps(plan: dict[str, Any]) -> list[dict[str, Any]]:
+    sessions = plan_tui_sessions(plan)
+    if sessions:
+        return [
+            step
+            for session in sessions
+            for step in session.get("steps", [])
+            if isinstance(step, dict)
+        ]
+    steps = plan.get("steps")
+    return [step for step in steps if isinstance(step, dict)] if isinstance(steps, list) else []
+
+
+def disclosed_plan_mode(plan: dict[str, Any]) -> str:
+    if plan_tui_sessions(plan):
+        return "tui-sequence"
+    return "tui" if isinstance(plan.get("interaction"), dict) else "argv"
+
+
+def sequence_target_evidence_ok(
+    contract: dict[str, Any], payload: dict[str, Any]
+) -> bool:
+    targets = payload.get("targets") if isinstance(payload.get("targets"), list) else []
+    expected_names = contract.get("targetNames") or []
+    executable_sequence = contract.get("executableSequence") or []
+    if not (
+        len(targets) == len(expected_names) == len(executable_sequence)
+        and len(targets) >= 2
+    ):
+        return False
+    identities: set[tuple[str, str]] = set()
+    for target, expected_name, allowed_executables in zip(
+        targets, expected_names, executable_sequence, strict=True
+    ):
+        if not isinstance(target, dict):
+            return False
+        allowed = {str(item).casefold() for item in allowed_executables}
+        resolved = str(target.get("resolved_executable") or "")
+        digest = str(target.get("executable_sha256") or "")
+        if not (
+            target.get("name") == expected_name
+            and executable_basename(resolved) in allowed
+            and re.fullmatch(r"[0-9a-f]{64}", digest)
+            and target.get("version_exit_code") == 0
+            and str(target.get("version_output") or "").strip()
+            and target.get("final_exit_code") == 0
+        ):
+            return False
+        identities.add((resolved.casefold(), digest))
+    return len(identities) >= 2
+
+
 def media_command(name: str) -> str:
     """Resolve native Unix or Windows-interoperability media commands."""
     for candidate in (name, f"{name}.exe"):
@@ -253,6 +312,16 @@ def runtime_exit_ok(
     target: dict[str, Any],
     prompt_count: int,
 ) -> bool:
+    if mode == "tui-sequence":
+        targets = runtime.get("targets") if isinstance(runtime.get("targets"), list) else []
+        return bool(
+            target.get("final_exit_code") == 0
+            and len(targets) >= 2
+            and all(
+                isinstance(item, dict) and item.get("final_exit_code") == 0
+                for item in targets
+            )
+        )
     if mode == "tui":
         return target.get("final_exit_code") == 0
     steps = runtime.get("steps") if isinstance(runtime.get("steps"), list) else []
@@ -296,7 +365,7 @@ def verify_complexity_contract(
     explicit dwell time, and exact prompt/text/key sequences.
     """
 
-    plan_steps = plan.get("steps") if isinstance(plan.get("steps"), list) else []
+    plan_steps = flattened_plan_steps(plan)
     runtime_steps = (
         runtime.get("steps") if isinstance(runtime.get("steps"), list) else []
     )
@@ -459,30 +528,62 @@ def verify() -> dict[str, Any]:
         [cast_text, json.dumps(runtime, ensure_ascii=False), json.dumps(plan, ensure_ascii=False)]
     ).casefold()
 
-    plan_mode = "tui" if isinstance(plan.get("interaction"), dict) else "argv"
-    plan_steps = plan.get("steps") if isinstance(plan.get("steps"), list) else []
+    plan_mode = disclosed_plan_mode(plan)
+    plan_steps = flattened_plan_steps(plan)
     plan_ok = bool(
         plan
         and plan.get("schema_version") == 1
         and plan_mode == contract["mode"]
         and len(plan_steps) == contract["promptCount"]
-        and nested(plan, "target", "name") == contract["targetName"]
         and int(nested(plan, "render", "fps") or 0) == contract["fps"]
     )
+    if plan_mode == "tui-sequence":
+        sessions = plan_tui_sessions(plan)
+        expected_session_ids = contract.get("sessionIds") or []
+        expected_target_names = contract.get("targetNames") or []
+        executable_sequence = contract.get("executableSequence") or []
+        plan_ok = plan_ok and bool(
+            len(sessions)
+            == len(expected_session_ids)
+            == len(expected_target_names)
+            == len(executable_sequence)
+            and [session.get("id") for session in sessions] == expected_session_ids
+            and [nested(session, "target", "name") for session in sessions]
+            == expected_target_names
+            and all(
+                executable_basename(nested(session, "target", "executable"))
+                in {str(item).casefold() for item in allowed}
+                for session, allowed in zip(
+                    sessions, executable_sequence, strict=True
+                )
+            )
+        )
+    else:
+        plan_ok = plan_ok and nested(plan, "target", "name") == contract["targetName"]
     if not plan_ok:
         findings.append("session plan does not match the disclosed task contract")
 
     target = manifest.get("target") if isinstance(manifest.get("target"), dict) else {}
     executable_names = {item.casefold() for item in contract["executableNames"]}
-    target_ok = bool(
-        target.get("name") == contract["targetName"]
-        and executable_basename(target.get("resolved_executable")) in executable_names
-        and runtime_exit_ok(
-            contract["mode"], runtime, target, contract["promptCount"]
+    if contract["mode"] == "tui-sequence":
+        target_ok = bool(
+            target.get("name") == contract["targetName"]
+            and runtime_exit_ok(
+                contract["mode"], runtime, target, contract["promptCount"]
+            )
+            and sequence_target_evidence_ok(contract, manifest)
+            and sequence_target_evidence_ok(contract, runtime)
         )
-        and target.get("version_exit_code") == 0
-        and str(target.get("version_output") or "").strip()
-    )
+    else:
+        target_ok = bool(
+            target.get("name") == contract["targetName"]
+            and executable_basename(target.get("resolved_executable")) in executable_names
+            and runtime_exit_ok(
+                contract["mode"], runtime, target, contract["promptCount"]
+            )
+            and target.get("version_exit_code") == 0
+            and str(target.get("version_output") or "").strip()
+        )
     if not target_ok:
         findings.append("resolved target identity, version, or final exit status is incorrect")
 
@@ -497,6 +598,10 @@ def verify() -> dict[str, Any]:
         and validation_exit_ok
         and required_checks.issubset(validation_checks)
     )
+    if contract["mode"] == "tui-sequence":
+        validation_ok = validation_ok and sequence_target_evidence_ok(
+            contract, validation
+        )
     if not validation_ok:
         findings.append("independent validation status or required checks are incomplete")
 
@@ -565,6 +670,34 @@ def verify() -> dict[str, Any]:
         )
         if not interaction_ok:
             findings.append("real TUI step/process evidence is incomplete")
+    elif contract["mode"] == "tui-sequence":
+        runtime_steps = runtime.get("steps") if isinstance(runtime.get("steps"), list) else []
+        runtime_sessions = (
+            runtime.get("tui_sessions")
+            if isinstance(runtime.get("tui_sessions"), list)
+            else []
+        )
+        expected_session_ids = contract.get("sessionIds") or []
+        interaction_ok = bool(
+            runtime.get("status") == "passed"
+            and runtime.get("mode") == "tui-sequence"
+            and len(runtime_steps) == contract["promptCount"]
+            and len(runtime_sessions) == len(expected_session_ids)
+            and [session.get("id") for session in runtime_sessions]
+            == expected_session_ids
+            and all(
+                isinstance(session, dict)
+                and nested(session, "interaction", "target_status", "exit_code")
+                == 0
+                and all(
+                    isinstance(step, dict) and step.get("status") == "passed"
+                    for step in session.get("steps", [])
+                )
+                for session in runtime_sessions
+            )
+        )
+        if not interaction_ok:
+            findings.append("real multi-TUI session/process evidence is incomplete")
 
     complexity_ok, complexity_evidence = verify_complexity_contract(
         contract, plan, runtime, manifest, findings

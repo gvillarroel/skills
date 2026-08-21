@@ -104,6 +104,51 @@ def one_shot_tui_plan(executable: str, actions: list[dict[str, object]]) -> dict
     return payload
 
 
+def multi_tui_plan(
+    first_executable: str = "first-tui",
+    second_executable: str = "second-tui",
+) -> dict[str, object]:
+    first = one_shot_tui_plan(
+        first_executable,
+        [
+            {"type": "pause", "seconds": 0.25},
+            {"type": "key", "key": "q"},
+        ],
+    )
+    second = one_shot_tui_plan(
+        second_executable,
+        [
+            {"type": "text", "text": "beta"},
+            {"type": "pause", "seconds": 0.25},
+            {"type": "key", "key": "Enter"},
+        ],
+    )
+    return {
+        "schema_version": 1,
+        "title": "Real multi-tool TUI test",
+        "working_directory": ".",
+        "declared_scope": "Two installed TUI tools and local fixture files only.",
+        "terminal": first["terminal"],
+        "render": first["render"],
+        "tui_sessions": [
+            {
+                "id": "first-tool",
+                "target": first["target"],
+                "interaction": first["interaction"],
+                "steps": first["steps"],
+            },
+            {
+                "id": "second-tool",
+                "target": second["target"],
+                "interaction": second["interaction"],
+                "steps": [
+                    {**second["steps"][0], "id": "interaction-2"},
+                ],
+            },
+        ],
+    }
+
+
 class PlanValidationTests(unittest.TestCase):
     def test_windows_subcommand_help_does_not_require_or_forward_a_plan(self) -> None:
         with mock.patch.object(MODULE, "forward_windows_command_to_wsl") as forward:
@@ -142,6 +187,24 @@ class PlanValidationTests(unittest.TestCase):
         self.assertIn("update:\n  method: never\n", config)
         self.assertIn("git:\n  autoFetch: false\n", config)
         self.assertNotIn("gui:\n  disableStartupPopups:", config)
+
+    def test_bundled_multi_tui_template_is_valid_and_long_running(self) -> None:
+        template_path = (
+            MODULE_PATH.parents[1]
+            / "assets"
+            / "templates"
+            / "multi-tui-session-plan.json"
+        )
+        plan = MODULE.load_plan(template_path)
+        pauses = [
+            float(action["seconds"])
+            for step in MODULE.plan_steps(plan)
+            for action in step.get("actions", [])
+            if action["type"] == "pause"
+        ]
+        self.assertEqual(MODULE.plan_mode(plan), "tui-sequence")
+        self.assertEqual(len(MODULE.plan_targets(plan)), 2)
+        self.assertGreater(sum(pauses), 10.0)
 
     def test_valid_plan_and_summary(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -209,6 +272,44 @@ class PlanValidationTests(unittest.TestCase):
             self.assertEqual(summary["mode"], "tui")
             self.assertIsNone(summary["render"]["idle_time_limit"])
             self.assertNotIn("args", plan.data["steps"][0])
+
+    def test_multi_tui_plan_requires_and_summarizes_distinct_targets(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "multi-tui.json"
+            path.write_text(json.dumps(multi_tui_plan()), encoding="utf-8")
+            plan = MODULE.load_plan(path)
+            summary = MODULE.plan_summary(plan)
+            self.assertEqual(MODULE.plan_mode(plan), "tui-sequence")
+            self.assertEqual(summary["tui_session_count"], 2)
+            self.assertEqual(summary["prompt_count"], 2)
+            self.assertEqual(
+                [session["id"] for session in summary["tui_sessions"]],
+                ["first-tool", "second-tool"],
+            )
+            self.assertEqual(len(summary["targets"]), 2)
+
+    def test_multi_tui_plan_rejects_one_repeated_executable(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "multi-tui.json"
+            path.write_text(
+                json.dumps(multi_tui_plan("same-tui", "same-tui")),
+                encoding="utf-8",
+            )
+            with self.assertRaisesRegex(
+                MODULE.CommandVideoError, "two distinct target executables"
+            ):
+                MODULE.load_plan(path)
+
+    def test_multi_tui_plan_rejects_duplicate_step_ids_across_sessions(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            payload = multi_tui_plan()
+            payload["tui_sessions"][1]["steps"][0]["id"] = "interaction-1"
+            path = Path(temp) / "multi-tui.json"
+            path.write_text(json.dumps(payload), encoding="utf-8")
+            with self.assertRaisesRegex(
+                MODULE.CommandVideoError, "Duplicate step id across TUI sessions"
+            ):
+                MODULE.load_plan(path)
 
     def test_windows_working_directory_token_requires_windows_executable(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
@@ -524,6 +625,64 @@ class DirectExecutionTests(unittest.TestCase):
                     plan, run_id=str(uuid.uuid4()), **paths
                 )
             self.assertEqual(ledger_path.read_bytes(), original)
+
+    def test_multi_tui_supervisor_launches_targets_in_order_with_one_final_hold(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            payload = multi_tui_plan()
+            payload["render"]["last_frame_duration"] = 2.5
+            plan_path = root / "multi-tui.json"
+            plan_path.write_text(json.dumps(payload), encoding="utf-8")
+            plan = MODULE.load_plan(plan_path)
+            calls: list[dict[str, object]] = []
+
+            def fake_execute(
+                selected_plan: object,
+                *,
+                status_path: Path,
+                gate_path: Path,
+                run_id: str,
+                env: object,
+                session_id: str,
+                final_hold_seconds: float,
+            ) -> int:
+                calls.append(
+                    {
+                        "session_id": session_id,
+                        "status_path": status_path,
+                        "gate_path": gate_path,
+                        "run_id": run_id,
+                        "final_hold_seconds": final_hold_seconds,
+                    }
+                )
+                MODULE.write_json_atomic(
+                    status_path,
+                    {"status": "passed", "exit_code": 0},
+                )
+                return 0
+
+            run_id = str(uuid.uuid4())
+            with mock.patch.object(
+                MODULE, "execute_tui_target", side_effect=fake_execute
+            ):
+                code = MODULE.execute_tui_sequence_targets(
+                    plan,
+                    state_directory=root / "state",
+                    run_id=run_id,
+                    env=os.environ,
+                )
+            self.assertEqual(code, 0)
+            self.assertEqual(
+                [call["session_id"] for call in calls],
+                ["first-tool", "second-tool"],
+            )
+            self.assertEqual(
+                [call["final_hold_seconds"] for call in calls], [0.0, 2.5]
+            )
+            self.assertEqual(
+                [Path(call["gate_path"]).name for call in calls],
+                ["00-first-tool.gate", "01-second-tool.gate"],
+            )
 
 
 class CastEvidenceTests(unittest.TestCase):
@@ -935,6 +1094,171 @@ class TuiCastEvidenceTests(unittest.TestCase):
             )
             self.assertIn("before-final-key-marker", checks)
 
+    def test_multi_tui_runtime_proves_order_boundaries_and_distinct_targets(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            first = tui_plan("first-tui")
+            second = tui_plan("second-tui")
+            second["steps"][0]["id"] = "prompt-2"
+            second["steps"][0]["prompt"] = "beta"
+            payload = {
+                "schema_version": 1,
+                "title": "Two authentic TUIs",
+                "working_directory": ".",
+                "declared_scope": "Two local test TUIs.",
+                "terminal": first["terminal"],
+                "render": first["render"],
+                "tui_sessions": [
+                    {
+                        "id": "first-tool",
+                        "target": first["target"],
+                        "interaction": first["interaction"],
+                        "steps": first["steps"],
+                    },
+                    {
+                        "id": "second-tool",
+                        "target": second["target"],
+                        "interaction": second["interaction"],
+                        "steps": second["steps"],
+                    },
+                ],
+            }
+            plan_path = root / "multi-tui.json"
+            plan_path.write_text(json.dumps(payload), encoding="utf-8")
+            plan = MODULE.load_plan(plan_path)
+            run_id = str(uuid.uuid4())
+            output_fragments = [MODULE.marker(run_id, "RUN", "BEGIN")]
+            observed_sessions = []
+            observed_targets = []
+            flattened_steps = []
+            for index, session in enumerate(payload["tui_sessions"], start=1):
+                session_id = session["id"]
+                planned_step = session["steps"][0]
+                prompt = planned_step["prompt"]
+                prompt_hash = MODULE.sha256_text(prompt)
+                typed_screen = f"READY> {prompt}\n"
+                response_screen = "REAL RESULT\nREADY>\n"
+                target = {
+                    "session_id": session_id,
+                    "name": session["target"]["name"],
+                    "requested_executable": session["target"]["executable"],
+                    "resolved_executable": f"/tools/{session_id}",
+                    "executable_sha256": ("a" if index == 1 else "b") * 64,
+                    "final_exit_code": 0,
+                }
+                interaction = {
+                    "mode": "tui",
+                    "input_delivery": "tmux-send-keys",
+                    "shutdown_mode": "exit-text",
+                    "startup_ready_at_utc": "2026-08-21T00:00:00Z",
+                    "target_status": {"status": "passed", "exit_code": 0},
+                }
+                observed_step = {
+                    "id": planned_step["id"],
+                    "status": "passed",
+                    "prompt_sha256": prompt_hash,
+                    "typing_method": "tmux-send-keys",
+                    "keystroke_count": len(prompt),
+                    "submit_key": "Enter",
+                    "prompt_visible_before_submit": True,
+                    "ready_after_response": True,
+                    "busy_after_response": False,
+                    "typed_screen": typed_screen,
+                    "typed_screen_sha256": MODULE.sha256_text(typed_screen),
+                    "response_screen": response_screen,
+                    "response_screen_sha256": MODULE.sha256_text(response_screen),
+                }
+                output_fragments.extend(
+                    [
+                        MODULE.marker(
+                            run_id,
+                            "TUI-SEQUENCE",
+                            "HANDOFF",
+                            str(index),
+                            session_id,
+                        ),
+                        MODULE.marker(run_id, "TUI-SESSION", session_id, "BEGIN"),
+                        MODULE.marker(run_id, "TUI-SESSION", session_id, "READY"),
+                        MODULE.marker(run_id, "STEP", planned_step["id"], "BEGIN"),
+                        MODULE.marker(
+                            run_id,
+                            "TYPING",
+                            planned_step["id"],
+                            "BEGIN",
+                            prompt_hash,
+                        ),
+                        MODULE.marker(
+                            run_id,
+                            "TYPING",
+                            planned_step["id"],
+                            "END",
+                            prompt_hash,
+                        ),
+                        MODULE.marker(
+                            run_id, "SUBMIT", planned_step["id"], "ENTER"
+                        ),
+                        MODULE.marker(
+                            run_id, "STEP", planned_step["id"], "END", "0"
+                        ),
+                        MODULE.marker(
+                            run_id, "TUI-SESSION", session_id, "EXIT", "0"
+                        ),
+                        MODULE.marker(run_id, "TARGET", "EXIT", "0"),
+                    ]
+                )
+                observed_targets.append(target)
+                observed_sessions.append(
+                    {
+                        "id": session_id,
+                        "index": index,
+                        "target": target,
+                        "interaction": interaction,
+                        "steps": [observed_step],
+                    }
+                )
+                flattened_steps.append(observed_step)
+            output_fragments.append(MODULE.marker(run_id, "RUN", "END", "0"))
+            cast_path = root / "session.cast"
+            cast_path.write_text(
+                "\n".join(
+                    [
+                        json.dumps(
+                            {
+                                "version": 3,
+                                "term": {"cols": 80, "rows": 24},
+                                "command": (
+                                    "python asciinema_command_video.py run-plan "
+                                    f"--run-id {run_id}"
+                                ),
+                            }
+                        ),
+                        json.dumps([0.1, "o", "\n".join(output_fragments)]),
+                        json.dumps([0.1, "x", "0"]),
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            runtime = {
+                "schema_version": 1,
+                "status": "passed",
+                "mode": "tui-sequence",
+                "run_id": run_id,
+                "plan_sha256": plan.sha256,
+                "asciinema_session": "test-session",
+                "tty": {"stdin": True, "stdout": True, "stderr": True},
+                "target": {"name": "multi-tool-tui-sequence", "final_exit_code": 0},
+                "targets": observed_targets,
+                "tui_sessions": observed_sessions,
+                "steps": flattened_steps,
+            }
+            checks = MODULE.verify_runtime_and_cast(
+                plan, runtime, MODULE.parse_cast(cast_path)
+            )
+            self.assertIn("multi-tui-sequence", checks)
+            self.assertIn("multi-target-provenance", checks)
+            self.assertIn("tui-session-boundaries", checks)
+
 
 class TerminalControlContractTests(unittest.TestCase):
     def test_tui_lifecycle_covers_record_interact_shutdown_and_convert(self) -> None:
@@ -950,7 +1274,7 @@ class TerminalControlContractTests(unittest.TestCase):
                 tmux=Path("/usr/bin/tmux"),
                 ffmpeg=Path("/usr/bin/ffmpeg"),
                 ffprobe=Path("/usr/bin/ffprobe"),
-                target=Path("/usr/bin/target"),
+                targets=[Path("/usr/bin/target")],
                 pty_allocator=Path("/usr/bin/script"),
             )
             states = contract["state_order"]
@@ -968,6 +1292,29 @@ class TerminalControlContractTests(unittest.TestCase):
             self.assertLess(states.index("cast-validated"), states.index("render-complete"))
             self.assertEqual(states[-1], "media-validated")
             self.assertEqual(Path(contract["components"]["multiplexer"]).name, "tmux")
+
+    def test_multi_tui_lifecycle_declares_handoff_and_repeated_targets(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            plan_path = Path(temp) / "multi-tui.json"
+            plan_path.write_text(json.dumps(multi_tui_plan()), encoding="utf-8")
+            plan = MODULE.load_plan(plan_path)
+            contract = MODULE.terminal_control_contract(
+                plan,
+                asciinema=Path("/tools/asciinema"),
+                agg=Path("/tools/agg"),
+                tmux=Path("/usr/bin/tmux"),
+                ffmpeg=Path("/usr/bin/ffmpeg"),
+                ffprobe=Path("/usr/bin/ffprobe"),
+                targets=[Path("/usr/bin/first"), Path("/usr/bin/second")],
+                pty_allocator=Path("/usr/bin/script"),
+            )
+            self.assertEqual(contract["mode"], "tui-sequence")
+            self.assertIn("target-handoff", contract["state_order"])
+            self.assertIn("target-launched", contract["repeatable_states"])
+            self.assertEqual(
+                contract["components"]["targets"],
+                [str(Path("/usr/bin/first")), str(Path("/usr/bin/second"))],
+            )
 
     def test_preflight_parser_accepts_all_terminal_components(self) -> None:
         args = MODULE.build_parser().parse_args(

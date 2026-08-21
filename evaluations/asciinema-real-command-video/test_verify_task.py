@@ -144,6 +144,92 @@ class VerifyTaskTests(unittest.TestCase):
         self.assertTrue(VERIFIER.runtime_exit_ok("tui", {}, {"final_exit_code": 0}, 2))
         self.assertFalse(VERIFIER.runtime_exit_ok("tui", {}, {"final_exit_code": 1}, 2))
 
+    def test_multi_tui_exit_and_distinct_target_provenance(self) -> None:
+        contract = {
+            "targetNames": ["fzf", "Television"],
+            "executableSequence": [["fzf.exe"], ["tv.exe"]],
+        }
+        targets = [
+            {
+                "name": "fzf",
+                "resolved_executable": "/tools/fzf.exe",
+                "executable_sha256": "a" * 64,
+                "version_exit_code": 0,
+                "version_output": "0.60.0",
+                "final_exit_code": 0,
+            },
+            {
+                "name": "Television",
+                "resolved_executable": "/tools/tv.exe",
+                "executable_sha256": "b" * 64,
+                "version_exit_code": 0,
+                "version_output": "0.14.4",
+                "final_exit_code": 0,
+            },
+        ]
+        runtime = {"targets": targets}
+        self.assertTrue(
+            VERIFIER.runtime_exit_ok(
+                "tui-sequence", runtime, {"final_exit_code": 0}, 2
+            )
+        )
+        self.assertTrue(
+            VERIFIER.sequence_target_evidence_ok(contract, {"targets": targets})
+        )
+        duplicated = [dict(targets[0]), dict(targets[0])]
+        duplicated[1]["name"] = "Television"
+        duplicated[1]["resolved_executable"] = "/tools/fzf.exe"
+        duplicated[1]["executable_sha256"] = "a" * 64
+        duplicated[1]["version_output"] = "0.14.4"
+        self.assertFalse(
+            VERIFIER.sequence_target_evidence_ok(
+                contract, {"targets": duplicated}
+            )
+        )
+
+    def test_complexity_contract_flattens_multi_tui_session_steps(self) -> None:
+        plan = {
+            "tui_sessions": [
+                {
+                    "steps": [
+                        {
+                            "id": "first",
+                            "actions": [{"type": "pause", "seconds": 6.0}],
+                        }
+                    ]
+                },
+                {
+                    "steps": [
+                        {
+                            "id": "second",
+                            "actions": [{"type": "key", "key": "Enter"}],
+                        }
+                    ]
+                },
+            ]
+        }
+        runtime = {
+            "steps": [
+                {"actions": [{"type": "pause", "seconds": 6.0}]},
+                {"actions": [{"type": "key", "key": "Enter"}]},
+            ]
+        }
+        findings: list[str] = []
+        ok, evidence = VERIFIER.verify_complexity_contract(
+            {
+                "requiredKeySequence": ["Enter"],
+                "minActionCount": 2,
+                "minPauseActionCount": 1,
+                "minPlannedPauseSeconds": 6.0,
+            },
+            plan,
+            runtime,
+            {},
+            findings,
+        )
+        self.assertTrue(ok)
+        self.assertEqual(evidence["observed"]["actionCount"], 2)
+
     def test_effective_checks_normalize_argv_contract_terms(self) -> None:
         checks = VERIFIER.effective_validation_checks(
             {
