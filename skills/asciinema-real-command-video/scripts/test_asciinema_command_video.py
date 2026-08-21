@@ -206,6 +206,18 @@ class PlanValidationTests(unittest.TestCase):
         self.assertEqual(len(MODULE.plan_targets(plan)), 2)
         self.assertGreater(sum(pauses), 10.0)
 
+    def test_bundled_direct_argv_template_omits_interaction(self) -> None:
+        template_path = (
+            MODULE_PATH.parents[1]
+            / "assets"
+            / "templates"
+            / "direct-argv-session-plan.json"
+        )
+        plan = MODULE.load_plan(template_path)
+        self.assertEqual(MODULE.plan_mode(plan), "argv")
+        self.assertNotIn("interaction", plan.data)
+        self.assertEqual(plan.data["target"]["executable"], "python3")
+
     def test_valid_plan_and_summary(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -514,6 +526,251 @@ class PlanValidationTests(unittest.TestCase):
             plan_path.write_text(json.dumps(payload), encoding="utf-8")
             with self.assertRaisesRegex(MODULE.CommandVideoError, "supported named key"):
                 MODULE.load_plan(plan_path)
+
+
+class VideoBundleTests(unittest.TestCase):
+    def initialize_bundle(self, root: Path, name: str = "first-video") -> object:
+        directory = root / name
+        MODULE.initialize_video_directory(directory, template_name="single-tui")
+        return MODULE.video_bundle_paths(directory)
+
+    def write_matching_preflight(self, paths: object) -> object:
+        plan = MODULE.load_plan(paths.plan)
+        MODULE.write_json_atomic(
+            paths.preflight,
+            {
+                "schema_version": 1,
+                "status": "passed",
+                "plan": str(plan.path),
+                "plan_sha256": plan.sha256,
+                "video_id": paths.directory.name,
+                "video_directory": str(paths.directory),
+            },
+        )
+        return plan
+
+    def test_init_video_creates_one_fresh_fixed_layout(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            directory = root / "first-video"
+            result = MODULE.initialize_video_directory(
+                directory, template_name="single-tui"
+            )
+            paths = MODULE.video_bundle_paths(directory)
+            template = (
+                MODULE.SKILL_ROOT
+                / "assets"
+                / "templates"
+                / "session-plan.json"
+            )
+            self.assertEqual(paths.plan.read_bytes(), template.read_bytes())
+            self.assertEqual(result["video_id"], "first-video")
+            self.assertEqual(
+                {Path(path).parent for path in result["artifact_layout"].values()},
+                {directory.resolve()},
+            )
+            with self.assertRaisesRegex(MODULE.CommandVideoError, "Refusing to reuse"):
+                MODULE.initialize_video_directory(
+                    directory, template_name="single-tui"
+                )
+
+    def test_init_video_supports_a_valid_direct_argv_template(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            directory = Path(temp) / "direct-command"
+            MODULE.initialize_video_directory(
+                directory, template_name="direct-argv"
+            )
+            plan = MODULE.load_plan(directory / "session-plan.json")
+            self.assertEqual(MODULE.plan_mode(plan), "argv")
+            self.assertNotIn("interaction", plan.data)
+
+    def test_video_directory_requires_lowercase_hyphen_case(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            with self.assertRaisesRegex(MODULE.CommandVideoError, "hyphen-case"):
+                MODULE.initialize_video_directory(
+                    Path(temp) / "First Video", template_name="single-tui"
+                )
+
+    def test_preflight_video_writes_and_refreshes_only_before_recording(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            paths = self.initialize_bundle(Path(temp))
+            plan = MODULE.load_plan(paths.plan)
+            preflight_result = {
+                "schema_version": 1,
+                "status": "passed",
+                "plan": str(plan.path),
+                "plan_sha256": plan.sha256,
+            }
+            args = MODULE.argparse.Namespace(video_directory=str(paths.directory))
+            with mock.patch.object(
+                MODULE, "preflight_session", return_value=preflight_result
+            ) as preflight:
+                first = MODULE.preflight_video_bundle(args)
+                second = MODULE.preflight_video_bundle(args)
+            self.assertEqual(preflight.call_count, 2)
+            self.assertEqual(first["preflight_report"], str(paths.preflight))
+            self.assertEqual(second["video_directory"], str(paths.directory))
+            self.assertEqual(MODULE.load_json(paths.preflight)["status"], "passed")
+            paths.cast.write_text("recording evidence", encoding="utf-8")
+            with self.assertRaisesRegex(
+                MODULE.CommandVideoError, "cannot change after recording evidence"
+            ):
+                MODULE.preflight_video_bundle(args)
+
+    def test_record_video_derives_every_output_from_its_directory(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            paths = self.initialize_bundle(Path(temp))
+            plan = self.write_matching_preflight(paths)
+            args = MODULE.argparse.Namespace(
+                video_directory=str(paths.directory), retain_gif=False
+            )
+
+            def fake_record(forwarded: object) -> dict[str, object]:
+                derived = {
+                    "plan": Path(forwarded.plan),
+                    "cast": Path(forwarded.cast),
+                    "mp4": Path(forwarded.mp4),
+                    "manifest": Path(forwarded.manifest),
+                    "runtime_report": Path(forwarded.runtime_report),
+                }
+                self.assertEqual(
+                    {path.parent for path in derived.values()}, {paths.directory}
+                )
+                self.assertEqual(derived["plan"], paths.plan)
+                self.assertEqual(derived["cast"], paths.cast)
+                self.assertEqual(derived["mp4"], paths.mp4)
+                self.assertEqual(derived["manifest"], paths.manifest)
+                self.assertEqual(derived["runtime_report"], paths.runtime_report)
+                self.assertIsNone(forwarded.gif)
+                return {
+                    "schema_version": 1,
+                    "status": "passed",
+                    "plan": str(plan.path),
+                    "plan_sha256": plan.sha256,
+                }
+
+            with mock.patch.object(MODULE, "record_session", side_effect=fake_record):
+                result = MODULE.record_video_bundle(args)
+            self.assertEqual(result["record_result"], str(paths.record_result))
+            self.assertTrue(paths.record_result.is_file())
+            with self.assertRaisesRegex(MODULE.CommandVideoError, "Refusing to overwrite"):
+                MODULE.record_video_bundle(args)
+
+    def test_record_video_rejects_a_plan_changed_after_preflight(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            paths = self.initialize_bundle(Path(temp))
+            self.write_matching_preflight(paths)
+            payload = MODULE.load_json(paths.plan)
+            payload["title"] = "Changed after preflight"
+            paths.plan.write_text(json.dumps(payload), encoding="utf-8")
+            args = MODULE.argparse.Namespace(
+                video_directory=str(paths.directory), retain_gif=False
+            )
+            with self.assertRaisesRegex(MODULE.CommandVideoError, "plan changed"):
+                MODULE.record_video_bundle(args)
+
+    def test_validate_video_seals_only_sibling_artifacts(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            paths = self.initialize_bundle(Path(temp))
+            plan = self.write_matching_preflight(paths)
+            paths.recording_attempt.write_text("attempt", encoding="utf-8")
+            paths.cast.write_text("cast", encoding="utf-8")
+            paths.runtime_report.write_text("runtime", encoding="utf-8")
+            paths.mp4.write_bytes(b"mp4")
+            paths.manifest.write_text("manifest", encoding="utf-8")
+            MODULE.write_json_atomic(
+                paths.record_result,
+                {
+                    "schema_version": 1,
+                    "status": "passed",
+                    "plan": str(paths.plan),
+                    "plan_sha256": plan.sha256,
+                    "video_directory": str(paths.directory),
+                },
+            )
+            validation = {
+                "schema_version": 1,
+                "status": "passed",
+                "run_id": str(uuid.uuid4()),
+                "checks": {"manifest": "passed"},
+            }
+            args = MODULE.argparse.Namespace(
+                video_directory=str(paths.directory),
+                tools_dir=None,
+                ffprobe="ffprobe",
+            )
+            with mock.patch.object(
+                MODULE, "validate_existing_artifacts", return_value=validation
+            ):
+                result = MODULE.validate_video_bundle(args)
+            index = MODULE.load_json(paths.bundle_index)
+            self.assertEqual(result["bundle_artifact_count"], 9)
+            self.assertEqual(index["artifact_count"], 9)
+            self.assertEqual(
+                set(index["artifacts"]),
+                {
+                    "plan",
+                    "preflight",
+                    "recording_attempt",
+                    "cast",
+                    "runtime_report",
+                    "mp4",
+                    "manifest",
+                    "record_result",
+                    "validation",
+                },
+            )
+            for artifact in index["artifacts"].values():
+                self.assertNotIn("/", artifact["relative_path"])
+                self.assertNotIn("\\", artifact["relative_path"])
+                self.assertEqual(Path(artifact["path"]).parent, paths.directory)
+            with self.assertRaisesRegex(MODULE.CommandVideoError, "Refusing to overwrite"):
+                MODULE.validate_video_bundle(args)
+
+    def test_batch_audit_detects_cross_directory_artifact_paths(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            bundles = [
+                self.initialize_bundle(root, "first-video"),
+                self.initialize_bundle(root, "second-video"),
+            ]
+            for paths in bundles:
+                for key, filename in MODULE.VIDEO_BUNDLE_FILENAMES.items():
+                    if key in {"plan", "bundle_index", "gif_intermediary"}:
+                        continue
+                    (paths.directory / filename).write_text(key, encoding="utf-8")
+                artifacts = {
+                    key: MODULE.video_bundle_artifact_record(
+                        getattr(paths, key), directory=paths.directory
+                    )
+                    for key in MODULE.VIDEO_BUNDLE_FILENAMES
+                    if key not in {"bundle_index", "gif_intermediary"}
+                }
+                MODULE.write_json_atomic(
+                    paths.bundle_index,
+                    {
+                        "schema_version": 1,
+                        "status": "passed",
+                        "video_id": paths.directory.name,
+                        "video_directory": str(paths.directory),
+                        "artifact_count": len(artifacts),
+                        "run_id": str(uuid.uuid4()),
+                        "artifacts": artifacts,
+                    },
+                )
+            args = MODULE.argparse.Namespace(
+                video_directories=[str(paths.directory) for paths in bundles]
+            )
+            result = MODULE.audit_video_bundles(args)
+            self.assertEqual(result["status"], "passed")
+            self.assertEqual(result["video_count"], 2)
+            self.assertEqual(result["video_ids"], ["first-video", "second-video"])
+
+            second_index = MODULE.load_json(bundles[1].bundle_index)
+            second_index["artifacts"]["cast"]["path"] = str(bundles[0].cast)
+            MODULE.write_json_atomic(bundles[1].bundle_index, second_index)
+            with self.assertRaisesRegex(MODULE.CommandVideoError, "points outside"):
+                MODULE.audit_video_bundles(args)
 
 
 class DirectExecutionTests(unittest.TestCase):

@@ -38,6 +38,26 @@ WINDOWS_WORKING_DIRECTORY_TOKEN = "{windows_working_directory}"
 SUBST_DRIVE_LETTERS = "ZYXWVUTSRQPONMLKJIHGFED"
 NATIVE_WSLPATH = Path("/usr/bin/wslpath")
 NATIVE_WSL_GIT = Path("/usr/bin/git")
+VIDEO_DIRECTORY_ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+VIDEO_BUNDLE_FILENAMES = {
+    "plan": "session-plan.json",
+    "preflight": "preflight.json",
+    "recording_attempt": ".session-plan.recording-attempt.json",
+    "cast": "session.cast",
+    "runtime_report": "session.runtime.json",
+    "mp4": "session.mp4",
+    "manifest": "session.manifest.json",
+    "record_result": "record-result.json",
+    "validation": "validation.json",
+    "bundle_index": "bundle.json",
+    "gif_intermediary": "session.gif",
+}
+VIDEO_TEMPLATE_FILES = {
+    "direct-argv": "direct-argv-session-plan.json",
+    "single-tui": "session-plan.json",
+    "multi-tui": "multi-tui-session-plan.json",
+    "lazygit": "lazygit-session-plan.json",
+}
 
 TOP_LEVEL_FIELDS = {
     "schema_version",
@@ -206,6 +226,22 @@ class LoadedPlan:
     data: dict[str, Any]
     sha256: str
     working_directory: Path
+
+
+@dataclass(frozen=True)
+class VideoBundlePaths:
+    directory: Path
+    plan: Path
+    preflight: Path
+    recording_attempt: Path
+    cast: Path
+    runtime_report: Path
+    mp4: Path
+    manifest: Path
+    record_result: Path
+    validation: Path
+    bundle_index: Path
+    gif_intermediary: Path
 
 
 @dataclass(frozen=True)
@@ -3717,12 +3753,88 @@ def bootstrap_tools(directory: Path) -> dict[str, Any]:
     return {**manifest, "manifest": str(manifest_path)}
 
 
+def ensure_path_outside_skill(path: Path, *, label: str) -> Path:
+    candidate = path.expanduser().resolve()
+    if candidate == SKILL_ROOT or SKILL_ROOT in candidate.parents:
+        raise CommandVideoError(f"{label} must stay outside the skill directory: {candidate}")
+    return candidate
+
+
+def video_bundle_paths(directory: Path) -> VideoBundlePaths:
+    resolved = ensure_path_outside_skill(directory, label="Video directory")
+    if not VIDEO_DIRECTORY_ID_PATTERN.fullmatch(resolved.name):
+        raise CommandVideoError(
+            "The video-directory name must be a unique lowercase hyphen-case ID"
+        )
+    return VideoBundlePaths(
+        directory=resolved,
+        **{
+            key: resolved / filename
+            for key, filename in VIDEO_BUNDLE_FILENAMES.items()
+        },
+    )
+
+
+def video_bundle_layout(paths: VideoBundlePaths) -> dict[str, str]:
+    return {
+        key: str(getattr(paths, key))
+        for key in VIDEO_BUNDLE_FILENAMES
+    }
+
+
+def initialize_video_directory(directory: Path, *, template_name: str) -> dict[str, Any]:
+    paths = video_bundle_paths(directory)
+    template_filename = VIDEO_TEMPLATE_FILES.get(template_name)
+    if template_filename is None:
+        raise CommandVideoError(f"Unsupported video template: {template_name}")
+    template_path = SKILL_ROOT / "assets" / "templates" / template_filename
+    if not template_path.is_file():
+        raise CommandVideoError(f"Bundled video template is missing: {template_path}")
+    if paths.directory.exists():
+        raise CommandVideoError(
+            f"Refusing to reuse an existing video directory: {paths.directory}"
+        )
+    paths.directory.mkdir(parents=True, exist_ok=False)
+    try:
+        with paths.plan.open("xb") as destination:
+            destination.write(template_path.read_bytes())
+    except Exception:
+        try:
+            paths.directory.rmdir()
+        except OSError:
+            pass
+        raise
+    return {
+        "status": "initialized",
+        "video_id": paths.directory.name,
+        "video_directory": str(paths.directory),
+        "template": template_name,
+        "template_source": str(template_path),
+        "plan": str(paths.plan),
+        "artifact_layout": video_bundle_layout(paths),
+    }
+
+
+def video_bundle_artifact_record(path: Path, *, directory: Path) -> dict[str, Any]:
+    resolved = path.expanduser().resolve()
+    if resolved.parent != directory:
+        raise CommandVideoError(
+            f"Video-bundle artifact escaped its directory: {resolved}"
+        )
+    if not resolved.is_file():
+        raise CommandVideoError(f"Video-bundle artifact is missing: {resolved}")
+    return {
+        "path": str(resolved),
+        "relative_path": resolved.name,
+        "sha256": sha256_file(resolved),
+        "size_bytes": resolved.stat().st_size,
+    }
+
+
 def ensure_output_paths(paths: Iterable[Path]) -> None:
     resolved: list[Path] = []
     for path in paths:
-        candidate = path.expanduser().resolve()
-        if candidate == SKILL_ROOT or SKILL_ROOT in candidate.parents:
-            raise CommandVideoError(f"Generated outputs must stay outside the skill directory: {candidate}")
+        candidate = ensure_path_outside_skill(path, label="Generated output")
         if candidate.exists():
             raise CommandVideoError(f"Refusing to overwrite existing evidence: {candidate}")
         resolved.append(candidate)
@@ -3834,6 +3946,7 @@ def forward_windows_command_to_wsl(raw_argv: Sequence[str]) -> int:
     path_options_by_command = {
         "bootstrap-tools": {"--directory"},
         "preflight": {"--tools-dir"},
+        "preflight-video": {"--tools-dir"},
         "record": {
             "--cast",
             "--mp4",
@@ -3842,14 +3955,17 @@ def forward_windows_command_to_wsl(raw_argv: Sequence[str]) -> int:
             "--gif",
             "--tools-dir",
         },
+        "record-video": {"--tools-dir"},
         "validate": {"--plan", "--cast", "--mp4", "--manifest", "--tools-dir"},
+        "validate-video": {"--tools-dir"},
     }
     path_options = path_options_by_command[command]
     translated: list[str] = [command]
     index = 1
-    if command in {"preflight", "record"}:
+    if command in {"preflight", "preflight-video", "record", "record-video", "validate-video"}:
         if index >= len(raw_argv) or raw_argv[index].startswith("-"):
-            raise CommandVideoError(f"{command} requires a plan path")
+            required = "a plan path" if command in {"preflight", "record"} else "a video-directory path"
+            raise CommandVideoError(f"{command} requires {required}")
         translated.append(
             windows_path_to_wsl(resolve_windows_path_argument(raw_argv[index]))
         )
@@ -3886,7 +4002,14 @@ def forward_windows_command_to_wsl(raw_argv: Sequence[str]) -> int:
             continue
         index += 1
 
-    if command in {"preflight", "record", "validate"} and "--ffprobe" not in translated:
+    if command in {
+        "preflight",
+        "preflight-video",
+        "record",
+        "record-video",
+        "validate",
+        "validate-video",
+    } and "--ffprobe" not in translated:
         native_ffprobe = shutil.which("ffprobe")
         translated.extend(
             [
@@ -3896,7 +4019,7 @@ def forward_windows_command_to_wsl(raw_argv: Sequence[str]) -> int:
                 else "ffprobe.exe",
             ]
         )
-    if command in {"preflight", "record"} and "--ffmpeg" not in translated:
+    if command in {"preflight", "preflight-video", "record", "record-video"} and "--ffmpeg" not in translated:
         native_ffmpeg = shutil.which("ffmpeg")
         translated.extend(
             [
@@ -4310,6 +4433,62 @@ def preflight_session(args: argparse.Namespace) -> dict[str, Any]:
     }
 
 
+def preflight_video_bundle(args: argparse.Namespace) -> dict[str, Any]:
+    paths = video_bundle_paths(Path(args.video_directory))
+    if not paths.directory.is_dir():
+        raise CommandVideoError(
+            f"Initialize the video directory before preflight: {paths.directory}"
+        )
+    plan = load_plan(paths.plan)
+    locked_paths = [
+        paths.recording_attempt,
+        paths.cast,
+        paths.runtime_report,
+        paths.mp4,
+        paths.manifest,
+        paths.record_result,
+        paths.validation,
+        paths.bundle_index,
+        paths.gif_intermediary,
+    ]
+    locked = [path for path in locked_paths if path.exists()]
+    if locked:
+        raise CommandVideoError(
+            "Video-directory preflight cannot change after recording evidence exists: "
+            + ", ".join(str(path) for path in locked)
+        )
+    forwarded = argparse.Namespace(**{**vars(args), "plan": str(paths.plan)})
+    result = preflight_session(forwarded)
+    result.update(
+        {
+            "video_id": paths.directory.name,
+            "video_directory": str(paths.directory),
+            "artifact_layout": video_bundle_layout(paths),
+        }
+    )
+    write_json_atomic(paths.preflight, result)
+    return {**result, "preflight_report": str(paths.preflight)}
+
+
+def require_matching_video_preflight(
+    paths: VideoBundlePaths, plan: LoadedPlan
+) -> dict[str, Any]:
+    if not paths.preflight.is_file():
+        raise CommandVideoError(
+            f"Run preflight-video before recording: {paths.preflight}"
+        )
+    report = load_json(paths.preflight)
+    if not isinstance(report, dict) or report.get("status") != "passed":
+        raise CommandVideoError("Video-directory preflight report did not pass")
+    if report.get("plan") != str(plan.path) or report.get("plan_sha256") != plan.sha256:
+        raise CommandVideoError(
+            "Video-directory plan changed after preflight; run preflight-video again before recording"
+        )
+    if report.get("video_directory") != str(paths.directory):
+        raise CommandVideoError("Preflight report belongs to a different video directory")
+    return report
+
+
 def record_session(args: argparse.Namespace) -> dict[str, Any]:
     if platform.system().lower() == "windows":
         raise CommandVideoError("Run the Asciinema recording pipeline inside WSL2, not native Windows")
@@ -4710,6 +4889,50 @@ def record_session(args: argparse.Namespace) -> dict[str, Any]:
             temporary_directory.cleanup()
 
 
+def record_video_bundle(args: argparse.Namespace) -> dict[str, Any]:
+    paths = video_bundle_paths(Path(args.video_directory))
+    if not paths.directory.is_dir():
+        raise CommandVideoError(
+            f"Initialize the video directory before recording: {paths.directory}"
+        )
+    plan = load_plan(paths.plan)
+    require_matching_video_preflight(paths, plan)
+    reserved_outputs = [
+        paths.recording_attempt,
+        paths.cast,
+        paths.runtime_report,
+        paths.mp4,
+        paths.manifest,
+        paths.record_result,
+        paths.validation,
+        paths.bundle_index,
+        paths.gif_intermediary,
+    ]
+    ensure_output_paths(reserved_outputs)
+    forwarded = argparse.Namespace(
+        **{
+            **vars(args),
+            "plan": str(paths.plan),
+            "cast": str(paths.cast),
+            "mp4": str(paths.mp4),
+            "manifest": str(paths.manifest),
+            "runtime_report": str(paths.runtime_report),
+            "gif": str(paths.gif_intermediary) if args.retain_gif else None,
+        }
+    )
+    result = record_session(forwarded)
+    result.update(
+        {
+            "video_id": paths.directory.name,
+            "video_directory": str(paths.directory),
+            "record_result": str(paths.record_result),
+            "artifact_layout": video_bundle_layout(paths),
+        }
+    )
+    write_json_atomic(paths.record_result, result)
+    return result
+
+
 def verify_artifact_record(
     manifest: Mapping[str, Any], name: str, supplied_path: Path
 ) -> list[str]:
@@ -5068,6 +5291,208 @@ def validate_existing_artifacts(
     }
 
 
+def validate_video_bundle(args: argparse.Namespace) -> dict[str, Any]:
+    paths = video_bundle_paths(Path(args.video_directory))
+    if not paths.directory.is_dir():
+        raise CommandVideoError(f"Video directory does not exist: {paths.directory}")
+    plan = load_plan(paths.plan)
+    require_matching_video_preflight(paths, plan)
+    expected_attempt = recording_attempt_ledger_path(plan)
+    if expected_attempt != paths.recording_attempt:
+        raise CommandVideoError("Video-directory recording-attempt path is not canonical")
+    ensure_output_paths([paths.validation, paths.bundle_index])
+    required_before_validation = {
+        "plan": paths.plan,
+        "preflight": paths.preflight,
+        "recording_attempt": paths.recording_attempt,
+        "cast": paths.cast,
+        "runtime_report": paths.runtime_report,
+        "mp4": paths.mp4,
+        "manifest": paths.manifest,
+        "record_result": paths.record_result,
+    }
+    missing = [
+        str(path) for path in required_before_validation.values() if not path.is_file()
+    ]
+    if missing:
+        raise CommandVideoError(
+            "Video directory is missing required recording artifacts: "
+            + ", ".join(missing)
+        )
+    record_result = load_json(paths.record_result)
+    if (
+        not isinstance(record_result, dict)
+        or record_result.get("status") != "passed"
+        or record_result.get("video_directory") != str(paths.directory)
+        or record_result.get("plan") != str(paths.plan)
+    ):
+        raise CommandVideoError("Record result does not match this video directory")
+    validation = validate_existing_artifacts(
+        plan_path=paths.plan,
+        cast_path=paths.cast,
+        mp4_path=paths.mp4,
+        manifest_path=paths.manifest,
+        ffprobe_name=args.ffprobe,
+        tools_dir=Path(args.tools_dir) if args.tools_dir else None,
+    )
+    validation_report = {
+        **validation,
+        "video_id": paths.directory.name,
+        "video_directory": str(paths.directory),
+        "artifact_layout": video_bundle_layout(paths),
+    }
+    write_json_atomic(paths.validation, validation_report)
+    bundle_artifacts = {
+        key: video_bundle_artifact_record(path, directory=paths.directory)
+        for key, path in {
+            **required_before_validation,
+            "validation": paths.validation,
+        }.items()
+    }
+    if paths.gif_intermediary.is_file():
+        bundle_artifacts["gif_intermediary"] = video_bundle_artifact_record(
+            paths.gif_intermediary, directory=paths.directory
+        )
+    bundle_index = {
+        "schema_version": SCHEMA_VERSION,
+        "status": "passed",
+        "generated_at_utc": utc_now(),
+        "video_id": paths.directory.name,
+        "video_directory": str(paths.directory),
+        "plan_sha256": plan.sha256,
+        "run_id": validation["run_id"],
+        "artifact_count": len(bundle_artifacts),
+        "artifacts": bundle_artifacts,
+        "validation_checks": validation["checks"],
+        "index_path": str(paths.bundle_index),
+    }
+    write_json_atomic(paths.bundle_index, bundle_index)
+    return {
+        **validation_report,
+        "validation_report": str(paths.validation),
+        "bundle_index": str(paths.bundle_index),
+        "bundle_artifact_count": len(bundle_artifacts),
+    }
+
+
+def audit_video_bundles(args: argparse.Namespace) -> dict[str, Any]:
+    directories = [
+        video_bundle_paths(Path(directory))
+        for directory in args.video_directories
+    ]
+    if len(directories) < 2:
+        raise CommandVideoError("Audit at least two video directories as one batch")
+    resolved_directories = [paths.directory for paths in directories]
+    if len(set(resolved_directories)) != len(resolved_directories):
+        raise CommandVideoError("Every audited video directory must be distinct")
+    video_ids = [paths.directory.name for paths in directories]
+    if len(set(video_ids)) != len(video_ids):
+        raise CommandVideoError("Every audited video ID must be distinct")
+
+    reports: list[dict[str, Any]] = []
+    required_keys = set(VIDEO_BUNDLE_FILENAMES) - {
+        "bundle_index",
+        "gif_intermediary",
+    }
+    required_entries = {
+        VIDEO_BUNDLE_FILENAMES[key]
+        for key in required_keys
+    } | {VIDEO_BUNDLE_FILENAMES["bundle_index"]}
+    for paths in directories:
+        if not paths.directory.is_dir():
+            raise CommandVideoError(f"Video directory does not exist: {paths.directory}")
+        gif_present = paths.gif_intermediary.is_file()
+        expected_keys = set(required_keys)
+        expected_entries = set(required_entries)
+        if gif_present:
+            expected_keys.add("gif_intermediary")
+            expected_entries.add(VIDEO_BUNDLE_FILENAMES["gif_intermediary"])
+        actual_entries = {entry.name for entry in paths.directory.iterdir()}
+        if actual_entries != expected_entries:
+            missing = sorted(expected_entries - actual_entries)
+            extra = sorted(actual_entries - expected_entries)
+            raise CommandVideoError(
+                f"Video directory {paths.directory} has a non-canonical layout; "
+                f"missing={missing}, extra={extra}"
+            )
+        index = load_json(paths.bundle_index)
+        if not isinstance(index, dict) or index.get("status") != "passed":
+            raise CommandVideoError(f"Bundle index did not pass: {paths.bundle_index}")
+        if index.get("video_id") != paths.directory.name:
+            raise CommandVideoError(f"Bundle index has the wrong video ID: {paths.bundle_index}")
+        normalized_directory = str(index.get("video_directory", "")).replace("\\", "/")
+        if not normalized_directory.rstrip("/").endswith(
+            f"/{paths.directory.name}"
+        ):
+            raise CommandVideoError(
+                f"Bundle index points to another video directory: {paths.bundle_index}"
+            )
+        artifacts = index.get("artifacts")
+        if not isinstance(artifacts, dict) or set(artifacts) != expected_keys:
+            raise CommandVideoError(
+                f"Bundle index has the wrong artifact set: {paths.bundle_index}"
+            )
+        if index.get("artifact_count") != len(expected_keys):
+            raise CommandVideoError(
+                f"Bundle index has the wrong artifact count: {paths.bundle_index}"
+            )
+        for key in sorted(expected_keys):
+            record = artifacts[key]
+            if not isinstance(record, dict):
+                raise CommandVideoError(
+                    f"Bundle artifact record is invalid: {paths.bundle_index}#{key}"
+                )
+            expected_name = VIDEO_BUNDLE_FILENAMES[key]
+            if record.get("relative_path") != expected_name:
+                raise CommandVideoError(
+                    f"Bundle artifact is not a canonical sibling: {paths.bundle_index}#{key}"
+                )
+            local_path = paths.directory / expected_name
+            normalized_path = str(record.get("path", "")).replace("\\", "/")
+            if not normalized_path.endswith(
+                f"/{paths.directory.name}/{expected_name}"
+            ):
+                raise CommandVideoError(
+                    f"Bundle artifact points outside its video directory: {paths.bundle_index}#{key}"
+                )
+            if not local_path.is_file():
+                raise CommandVideoError(f"Indexed artifact is missing: {local_path}")
+            if record.get("sha256") != sha256_file(local_path):
+                raise CommandVideoError(f"Indexed artifact hash changed: {local_path}")
+            if record.get("size_bytes") != local_path.stat().st_size:
+                raise CommandVideoError(f"Indexed artifact size changed: {local_path}")
+        reports.append(
+            {
+                "video_id": paths.directory.name,
+                "video_directory": str(paths.directory),
+                "bundle_index": str(paths.bundle_index),
+                "entry_count": len(actual_entries),
+                "artifact_count": len(expected_keys),
+                "gif_intermediary": gif_present,
+                "run_id": index.get("run_id"),
+                "mp4_sha256": artifacts["mp4"]["sha256"],
+            }
+        )
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "status": "passed",
+        "video_count": len(reports),
+        "video_ids": video_ids,
+        "isolation_checks": [
+            "distinct-directories",
+            "distinct-video-ids",
+            "canonical-entry-set",
+            "bundle-status",
+            "bundle-directory",
+            "sibling-relative-paths",
+            "artifact-path-suffixes",
+            "artifact-hashes",
+            "artifact-sizes",
+        ],
+        "videos": reports,
+    }
+
+
 def add_common_json_flag(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--json", action="store_true", help="Print structured JSON output")
 
@@ -5097,12 +5522,31 @@ def build_parser() -> argparse.ArgumentParser:
     bootstrap_parser.add_argument("--directory", required=True)
     add_common_json_flag(bootstrap_parser)
 
+    init_video_parser = subparsers.add_parser(
+        "init-video", help="Create one fresh artifact directory and copy its plan template"
+    )
+    init_video_parser.add_argument("video_directory")
+    init_video_parser.add_argument(
+        "--template",
+        choices=sorted(VIDEO_TEMPLATE_FILES),
+        default="single-tui",
+    )
+    add_common_json_flag(init_video_parser)
+
     preflight_parser = subparsers.add_parser(
         "preflight", help="Verify the recorder, PTY controller, target, and converters before recording"
     )
     preflight_parser.add_argument("plan")
     add_recording_tool_args(preflight_parser)
     add_common_json_flag(preflight_parser)
+
+    preflight_video_parser = subparsers.add_parser(
+        "preflight-video",
+        help="Preflight the fixed plan inside one isolated video directory",
+    )
+    preflight_video_parser.add_argument("video_directory")
+    add_recording_tool_args(preflight_video_parser)
+    add_common_json_flag(preflight_video_parser)
 
     run_parser = subparsers.add_parser("run-plan", help=argparse.SUPPRESS)
     run_parser.add_argument("--plan", required=True)
@@ -5133,6 +5577,19 @@ def build_parser() -> argparse.ArgumentParser:
     add_recording_tool_args(record_parser)
     add_common_json_flag(record_parser)
 
+    record_video_parser = subparsers.add_parser(
+        "record-video",
+        help="Record one isolated video directory using fixed artifact names",
+    )
+    record_video_parser.add_argument("video_directory")
+    record_video_parser.add_argument(
+        "--retain-gif",
+        action="store_true",
+        help="Keep session.gif beside the other video artifacts",
+    )
+    add_recording_tool_args(record_video_parser)
+    add_common_json_flag(record_video_parser)
+
     validate_parser = subparsers.add_parser("validate", help="Independently validate existing artifacts")
     validate_parser.add_argument("--plan", required=True)
     validate_parser.add_argument("--cast", required=True)
@@ -5141,6 +5598,22 @@ def build_parser() -> argparse.ArgumentParser:
     validate_parser.add_argument("--tools-dir")
     validate_parser.add_argument("--ffprobe", default="ffprobe")
     add_common_json_flag(validate_parser)
+
+    validate_video_parser = subparsers.add_parser(
+        "validate-video",
+        help="Validate one video directory and seal its artifact index",
+    )
+    validate_video_parser.add_argument("video_directory")
+    validate_video_parser.add_argument("--tools-dir")
+    validate_video_parser.add_argument("--ffprobe", default="ffprobe")
+    add_common_json_flag(validate_video_parser)
+
+    audit_video_bundles_parser = subparsers.add_parser(
+        "audit-video-bundles",
+        help="Audit two or more completed video directories for artifact isolation",
+    )
+    audit_video_bundles_parser.add_argument("video_directories", nargs="+")
+    add_common_json_flag(audit_video_bundles_parser)
     return parser
 
 
@@ -5163,8 +5636,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     if os.name == "nt" and raw_argv and raw_argv[0] in {
         "bootstrap-tools",
         "preflight",
+        "preflight-video",
         "record",
+        "record-video",
         "validate",
+        "validate-video",
     } and not any(token in {"-h", "--help"} for token in raw_argv[1:]):
         try:
             return forward_windows_command_to_wsl(raw_argv)
@@ -5182,8 +5658,18 @@ def main(argv: Sequence[str] | None = None) -> int:
             result = bootstrap_tools(Path(args.directory))
             print_result(result, as_json=args.json)
             return 0
+        if args.command == "init-video":
+            result = initialize_video_directory(
+                Path(args.video_directory), template_name=args.template
+            )
+            print_result(result, as_json=args.json)
+            return 0
         if args.command == "preflight":
             result = preflight_session(args)
+            print_result(result, as_json=args.json)
+            return 0
+        if args.command == "preflight-video":
+            result = preflight_video_bundle(args)
             print_result(result, as_json=args.json)
             return 0
         if args.command == "run-plan":
@@ -5210,6 +5696,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             result = record_session(args)
             print_result(result, as_json=args.json)
             return 0
+        if args.command == "record-video":
+            result = record_video_bundle(args)
+            print_result(result, as_json=args.json)
+            return 0
         if args.command == "validate":
             result = validate_existing_artifacts(
                 plan_path=Path(args.plan),
@@ -5219,6 +5709,14 @@ def main(argv: Sequence[str] | None = None) -> int:
                 ffprobe_name=args.ffprobe,
                 tools_dir=Path(args.tools_dir) if args.tools_dir else None,
             )
+            print_result(result, as_json=args.json)
+            return 0
+        if args.command == "validate-video":
+            result = validate_video_bundle(args)
+            print_result(result, as_json=args.json)
+            return 0
+        if args.command == "audit-video-bundles":
+            result = audit_video_bundles(args)
             print_result(result, as_json=args.json)
             return 0
         raise CommandVideoError(f"Unsupported command: {args.command}")

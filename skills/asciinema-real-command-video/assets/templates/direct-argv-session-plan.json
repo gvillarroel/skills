@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "title": "One real direct-argv command",
+  "working_directory": ".",
+  "declared_scope": "Run one read-only local process and record its authentic output.",
+  "target": {
+    "name": "Python 3",
+    "executable": "python3",
+    "version_args": [
+      "--version"
+    ]
+  },
+  "terminal": {
+    "cols": 90,
+    "rows": 24
+  },
+  "render": {
+    "theme": "github-dark",
+    "font_size": 18,
+    "line_height": 1.4,
+    "fps": 30,
+    "speed": 1.0,
+    "idle_time_limit": null,
+    "last_frame_duration": 1.0
+  },
+  "steps": [
+    {
+      "id": "prompt-1",
+      "prompt": "This prompt is passed as one real argv item.",
+      "args": [
+        "-c",
+        "import sys; print(sys.argv[1])",
+        "{prompt}"
+      ],
+      "timeout_seconds": 30,
+      "pause_after_seconds": 1.0,
+      "expected_exit_codes": [
+        0
+      ]
+    }
+  ]
+}

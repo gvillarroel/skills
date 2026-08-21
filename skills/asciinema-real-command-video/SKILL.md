@@ -1,6 +1,6 @@
 ---
 name: asciinema-real-command-video
-description: Record authentic persistent, one-shot, command-key, or sequential multi-tool TUI executions and direct-argv runs of installed terminal programs as local Asciinema casts and derived H.264 MP4 videos with executable, action, process, single-attempt, and media provenance. Use when a demo must visibly interact with real CLIs, including GitHub Copilot, pickers, or several TUIs in one continuous video, instead of showing a simulated terminal.
+description: Record authentic persistent, one-shot, command-key, or sequential multi-tool TUI executions and direct-argv runs of installed terminal programs as isolated per-video Asciinema artifact bundles with H.264 MP4 derivatives and executable, action, process, single-attempt, and media provenance. Use when one or several demos must visibly interact with real CLIs, including GitHub Copilot, pickers, or several TUIs in one continuous video, instead of showing a simulated terminal.
 ---
 
 # Asciinema Real Command Video
@@ -18,8 +18,9 @@ Run the capture pipeline natively on Linux or macOS. On Windows, the bundled com
 - In single-TUI mode, launch one target process inside an isolated tmux terminal. In multi-TUI mode, require two to eight ordered sessions with at least two distinct resolved executables; launch each process exactly once and finish it before handing the same recorded PTY to the next target. Use a `prompt` step only for text that is visibly typed, submitted with real Enter, and followed by a stable ready-without-busy screen. Use explicit `text`, `key`, and `pause` actions when Enter exits a picker or a command key such as `q` ends the TUI; never invent prompt text or Enter.
 - In direct-argv mode, pass each prompt as one direct argument. Preserve conversation context with an explicit session identifier rather than a global "most recent session."
 - Record the target inside `asciinema rec`. Require an Asciinema session ID, a PTY, step/action markers, input hashes, observed exit codes, and zero Asciinema input events. TUI keystrokes are injected into the inner PTY and recorded as visible terminal output, not secret-bearing cast input events.
-- Allow exactly one `record` transaction per user-requested deliverable. The runner atomically claims an immutable plan-adjacent attempt ledger after preflight. Freeze the plan and exact output paths first; a renamed plan, alternate output path, or technically adjusted launch does not authorize a retry. Preserve the ledger and every failed artifact.
-- Keep the plan, `.cast`, runtime report, MP4, and final manifest. Hash every evidence artifact and independently validate them after rendering.
+- Give every user-requested video one fresh lowercase-hyphen-case directory. Keep its plan, preflight, attempt ledger, cast, runtime report, MP4, manifest, record result, validation report, and sealed bundle index together there. Never share artifact paths between videos or write several videos into one directory.
+- Allow exactly one `record-video` transaction per user-requested deliverable. The runner derives every output path from the video directory and atomically claims an immutable plan-adjacent attempt ledger after preflight. A renamed plan, alternate directory, output path, or technically adjusted launch does not authorize a retry. Preserve the directory and every failed artifact.
+- Hash every evidence artifact and independently validate the completed directory after rendering.
 - Preserve real-time TUI timing with render speed `1.0` and no idle-time cap. Do not shorten Copilot thinking time or response latency.
 - For a user-facing TUI deliverable, set `render.start_at` to `tui-ready`. Keep the complete technical lead-in in the cast and manifest, while starting the MP4 on the real product UI instead of blank frames or the controller provenance card. For a command-key TUI that clears its screen on quit, also set `render.end_at` to `before-final-key` so the derivative freezes the last authentic in-app frame while the full cast still proves delivery of the quit key and the real process status.
 - Do not claim that a successful render proves the target behaved correctly. Report the target exit codes and inspect the visible response.
@@ -40,41 +41,55 @@ If target startup, interaction, shutdown, or cast validation fails, preserve the
 
 ## Workflow
 
-1. Freeze the exact prompts or actions, their order, target executable, working directory, interaction and shutdown modes, completion signals, allowed side effects, and exact output paths. Do not broaden tool permissions merely to make an unattended recording finish.
-2. Authenticate and accept any first-run trust prompt outside the recording. Never place credentials, tokens, passwords, private keys, or authentication UI in the plan or video.
-3. Copy `assets/templates/session-plan.json` outside the skill and adapt it. When one video must show several TUIs, copy `assets/templates/multi-tui-session-plan.json` and read [references/multi-tui-sequences.md](references/multi-tui-sequences.md). For a native Windows lazygit command-key recording, copy both `assets/templates/lazygit-session-plan.json` and `assets/templates/lazygit-config.yml` to the plan and repository paths documented in [references/interaction-recipes.md](references/interaction-recipes.md), and enable `core.longpaths=true` in that repository's local Git config only. Keep the template's `{windows_working_directory}` arguments: during the single recorded launch, the controller creates a collision-checked temporary drive mapping for the real repository, expands the reviewed token, records the exact launch argv, and removes the mapping before reporting success. Read [references/session-plan.md](references/session-plan.md) for the schema. For GitHub Copilot CLI, also read [references/github-copilot-cli.md](references/github-copilot-cli.md). For one-shot pickers, raw command keys, or a fixed PowerShell pipeline, read [references/interaction-recipes.md](references/interaction-recipes.md).
-4. Validate the plan before executing it:
+1. Choose one new lowercase-hyphen-case ID and directory for each requested video. Initialize every directory exactly once; use a different directory even when several videos use the same target. For example:
 
    ```bash
-   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" validate-plan source/session-plan.json --json
+   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" init-video projects/demo/artifacts/terminal-videos/copilot-three-prompts --template single-tui --json
+   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" init-video projects/demo/artifacts/terminal-videos/fzf-to-television --template multi-tui --json
+   ```
+
+   `init-video` refuses an existing directory and creates only `session-plan.json`; later commands derive all other names inside that same directory. Read [references/video-bundles.md](references/video-bundles.md) before producing more than one video.
+2. Freeze the exact prompts or actions, their order, target executable, working directory, interaction and shutdown modes, completion signals, and allowed side effects in each directory's `session-plan.json`. Do not broaden tool permissions merely to make an unattended recording finish.
+3. Authenticate and accept any first-run trust prompt outside the recording. Never place credentials, tokens, passwords, private keys, or authentication UI in the plan or video.
+4. Adapt the initialized plan. Use `single-tui` for a persistent TUI, `direct-argv` for a non-interactive process, `multi-tui` when one video must show several TUIs, and `lazygit` for the native Windows lazygit recipe. A direct-argv plan must omit the entire `interaction` key; never set it to `null` or `{}`. For a multi-tool video, read [references/multi-tui-sequences.md](references/multi-tui-sequences.md). For native Windows lazygit, copy `assets/templates/lazygit-config.yml` to the repository path documented in [references/interaction-recipes.md](references/interaction-recipes.md), enable `core.longpaths=true` in that repository's local Git config only, and keep the template's `{windows_working_directory}` arguments. Read [references/session-plan.md](references/session-plan.md) for the schema. For GitHub Copilot CLI, also read [references/github-copilot-cli.md](references/github-copilot-cli.md). For one-shot pickers, raw command keys, or a fixed PowerShell pipeline, read [references/interaction-recipes.md](references/interaction-recipes.md).
+5. Validate each plan before executing it:
+
+   ```bash
+   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" validate-plan projects/demo/artifacts/terminal-videos/copilot-three-prompts/session-plan.json --json
    ```
 
    In a Windows Git Bash tool shell, avoid variable/path rewriting ambiguity by using the literal relative path and `MSYS_NO_PATHCONV=1`, for example:
 
    ```bash
-   MSYS_NO_PATHCONV=1 uv run --script skills/asciinema-real-command-video/scripts/asciinema_command_video.py validate-plan source/session-plan.json --json
+   MSYS_NO_PATHCONV=1 uv run --script skills/asciinema-real-command-video/scripts/asciinema_command_video.py validate-plan projects/demo/artifacts/terminal-videos/copilot-three-prompts/session-plan.json --json
    ```
 
-5. Confirm `asciinema`, `agg`, `ffmpeg`, and `ffprobe` are available in the same Unix environment. TUI mode also requires `tmux`. If Asciinema or agg is absent, read [references/platform-and-tooling.md](references/platform-and-tooling.md) and install the pinned official binaries into a project-local tool directory.
-6. Run terminal preflight before creating recording artifacts. It verifies every lifecycle component, the target version, the PTY allocator for non-interactive automation, and the expected state order:
+6. Confirm `asciinema`, `agg`, `ffmpeg`, and `ffprobe` are available in the same Unix environment. TUI mode also requires `tmux`. If Asciinema or agg is absent, read [references/platform-and-tooling.md](references/platform-and-tooling.md) and install the pinned official binaries into a project-local tool directory.
+7. Preflight the directory before recording. This writes or refreshes `preflight.json` beside the plan and verifies every lifecycle component, target version, PTY allocator, and expected state order. Preflight can refresh only before any recording evidence exists:
 
    ```bash
-   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" preflight source/session-plan.json --tools-dir .tools/asciinema --json
+   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" preflight-video projects/demo/artifacts/terminal-videos/copilot-three-prompts --tools-dir .tools/asciinema --json
    ```
 
-7. Record and render the frozen deliverable to its exact new paths once. `record` repeats preflight, atomically creates the immutable attempt ledger, starts Asciinema, and refuses existing evidence or a second transaction for the plan. Never create `retry`, `fixed`, numbered, or alternate plan/output names after this command begins:
+8. Record and render the frozen deliverable once. `record-video` requires the matching preflight, derives every artifact path from the directory, atomically creates the immutable attempt ledger, starts Asciinema, and refuses any reserved artifact that already exists. Never create `retry`, `fixed`, numbered, or alternate directories after this command begins:
 
    ```bash
-   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" record source/session-plan.json --cast artifacts/casts/session.cast --mp4 artifacts/videos/session.mp4 --manifest artifacts/manifests/session.manifest.json --tools-dir .tools/asciinema --json
+   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" record-video projects/demo/artifacts/terminal-videos/copilot-three-prompts --tools-dir .tools/asciinema --json
    ```
 
-8. Run the independent gate even though `record` validates internally:
+9. Run the independent directory gate even though recording validates internally. It writes `validation.json` and then seals `bundle.json` with the relative name, SHA-256, and size of every artifact:
 
    ```bash
-   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" validate --plan source/session-plan.json --cast artifacts/casts/session.cast --mp4 artifacts/videos/session.mp4 --manifest artifacts/manifests/session.manifest.json --json
+   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" validate-video projects/demo/artifacts/terminal-videos/copilot-three-prompts --tools-dir .tools/asciinema --json
    ```
 
-9. Replay the cast and inspect the MP4 at full resolution. Sample the opening, every typed-text-before-key state, command-key effect, active work, completed response or selection, every multi-TUI handoff, and the final exit. In a multi-TUI video, require visible authentic UI from every declared tool in the planned order; reject a hidden launch, skipped session, duplicated executable, shell substitute, or transition that ends the video after the first alternate-screen restore. For `tui-ready` presentation, require the first frame to belong to the first target and the last frame to belong to the final target, with no controller card, blank startup interval, tmux `[exited]` screen, or restored outer terminal. For `before-final-key`, verify the held last frame is the actual final target screen immediately before the declared key; verify the key effect and exit in the cast/runtime evidence because they are intentionally outside the presentation derivative. If review fails, report and diagnose the preserved failed attempt; do not rerecord the deliverable under any name.
+10. For a batch, audit all completed directories together. The read-only audit requires distinct IDs and directories, exact canonical entry sets, sibling-only index paths, and unchanged hashes and sizes:
+
+   ```bash
+   uv run --script "$ASCIINEMA_VIDEO_SKILL/scripts/asciinema_command_video.py" audit-video-bundles projects/demo/artifacts/terminal-videos/copilot-three-prompts projects/demo/artifacts/terminal-videos/fzf-to-television --json
+   ```
+
+11. Replay `session.cast` and inspect `session.mp4` at full resolution inside each video directory. Sample the opening, every typed-text-before-key state, command-key effect, active work, completed response or selection, every multi-TUI handoff, and the final exit. In a multi-TUI video, require visible authentic UI from every declared tool in the planned order; reject a hidden launch, skipped session, duplicated executable, shell substitute, or transition that ends the video after the first alternate-screen restore. For `tui-ready` presentation, require the first frame to belong to the first target and the last frame to belong to the final target, with no controller card, blank startup interval, tmux `[exited]` screen, or restored outer terminal. For `before-final-key`, verify the held last frame is the actual final target screen immediately before the declared key; verify the key effect and exit in the cast/runtime evidence because they are intentionally outside the presentation derivative. If review fails, report and diagnose the preserved failed attempt; do not rerecord the deliverable under any name.
 
 ## Boundaries and safety
 
@@ -88,4 +103,4 @@ If target startup, interaction, shutdown, or cast validation fails, preserve the
 
 ## Delivery
 
-Return the preflight result, session plan, immutable attempt ledger, `.cast`, runtime report, MP4, and manifest, plus the validation result and every target version. For TUI work, state which real process received each reviewed prompt or explicit action sequence, how each step and session completed, and that conversion began only after all targets and the recording closed and the cast passed. When a Windows working-directory bridge was requested, include its created-and-released runtime evidence. Disclose every presentation trim. If the MP4 uses `before-final-key`, state which final key is proven by the full cast/runtime report and that the MP4 intentionally freezes the preceding authentic final-target frame. Confirm that the full cast remains untrimmed and disclose any authorized side effects.
+Return one clearly labeled video directory per requested video. Link `session.mp4` first, then `bundle.json`, and retain the plan, preflight, immutable attempt ledger, cast, runtime report, manifest, record result, and validation report beside them. For TUI work, state which real process received each reviewed prompt or explicit action sequence, how each step and session completed, and that conversion began only after all targets and the recording closed and the cast passed. When a Windows working-directory bridge was requested, include its created-and-released runtime evidence. Disclose every presentation trim. If the MP4 uses `before-final-key`, state which final key is proven by the full cast/runtime report and that the MP4 intentionally freezes the preceding authentic final-target frame. Confirm that the full cast remains untrimmed and disclose any authorized side effects.

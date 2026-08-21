@@ -166,6 +166,10 @@ start from `assets/templates/multi-tui-session-plan.json`.
 
 ## Direct-argv mode
 
+Start from `assets/templates/direct-argv-session-plan.json`. Omit the entire
+top-level `interaction` key in this mode; `"interaction": null` and an empty
+object are invalid because the presence of that key selects the TUI contract.
+
 ```json
 {
   "id": "prompt-1",
@@ -190,14 +194,17 @@ Do not assume any other placeholder is expanded. Do not put secrets in prompts o
 
 ## One-record claim
 
-After preflight passes, `record` atomically creates an immutable hidden ledger
-next to the plan, named `.<plan-stem>.recording-attempt.json`. A second record
-transaction for that plan fails even if previous output paths were moved or
-deleted. Preserve the ledger and failed evidence. The one-attempt contract is
-broader than this file guard: a different plan path, output name, or launch
-adapter does not authorize another attempt for the same user-requested
-deliverable. Stop after a failed `record`. Only a later user request or
-explicit authorization may define a genuinely new recording session.
+For new work, initialize one directory with `init-video`, preflight it with
+`preflight-video`, and capture it with `record-video`. The recording command
+derives every output path from the directory and atomically creates the hidden
+`.session-plan.recording-attempt.json` ledger beside `session-plan.json`. A
+second recording transaction fails even if artifacts were moved or deleted.
+Preserve the directory and failed evidence. The one-attempt contract is
+broader than this file guard: a different plan path, directory, output name,
+or launch adapter does not authorize another attempt for the same
+user-requested deliverable. Stop after a failed recording. Only a later user
+request or explicit authorization may define a genuinely new recording
+session. See [video-bundles.md](video-bundles.md) for the fixed layout.
 
 ## Terminal and render settings
 
