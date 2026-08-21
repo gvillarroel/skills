@@ -1,176 +1,86 @@
 ---
 name: d3
-description: Create, select, animate, inspect, recompose, and validate D3-powered HTML and SVG visuals. Use when Codex needs bespoke data-driven geometry, quantitative charts, simulations, projections, dense or linked views, portable SVG animation, D3 interaction, deterministic visual reconstruction, composition critique or armature conversion, dithering, or parametric D3/SVG logos and textures; use colorset1 as the standard palette and colorset2 only for explicit extended/full-color requests.
+description: Create, animate, inspect, recompose, and validate D3-powered HTML and SVG visuals, including charts, simulations, linked views, audits, parametric logos, textures, and portable SVG; use colorset1 as standard and colorset2 only for explicit extended requests, and invoke the bundled deterministic builder first for supported forms.
 ---
 
 # D3
 
-## Start Here: Deterministic Contract Builder
+## Mandatory first command
 
-If the task asks for a new bar chart, node-link network, or orbit/type logo, your first command after reading this file must be:
-
-```text
-python3 <d3-skill>/scripts/build_contract_artifact.py --help
-```
-
-Use that builder to create the requested `visual.html` and `decision.json`; do not read or inline the vendored D3 runtime, hand-author either file, or edit the generated files afterward. Map every public acceptance-contract literal to a builder flag. For an allowed-value array, choose exactly one listed value rather than joining values. Re-run the builder with corrected flags if validation fails. Hand-author only forms the builder does not support. In a skill-maintenance task, extend and test the builder instead of bypassing it when a supported form lacks a required flag.
-
-If the task asks for a composition evaluation or audit report, your first command after reading this file must be:
+For a bar chart, horizontal lollipop, node-link network, flow spine, orbit logo, or radial-wedge logo, your first command after reading this file MUST be:
 
 ```text
-python3 <d3-skill>/scripts/build_evaluation_report.py --help
+python "<d3-skill>/scripts/build_contract_artifact.py" --help
 ```
 
-Use that builder for the report and decision record. Pass every public `requiredTerms` entry unchanged through a repeated `--required-term`; do not replace spaces with hyphens or normalize punctuation, selectors, or case. Supply traceable composition findings, implementation-contract findings, and validation checks as separate flags. Do not hand-author or post-edit a supported evaluation report.
+Replace `<d3-skill>` with the exact directory containing this `SKILL.md`; do not guess `.agents` or probe alternate paths. Use `python` when available; on `command not found`, immediately rerun the same command with `python3`. Do not plan, inspect the runtime, or write a deliverable before this command succeeds. A missing interpreter alias never permits hand-authoring: use the builder for the final files, and never replace or post-edit a supported form. Correct flags and rerun. The wedge builder already satisfies colorset2 accent, warning/orange, success/green, and special/purple groups.
 
-## Core Contract
+For an evaluation or composition audit, your first command after reading this file MUST instead be `python "<d3-skill>/scripts/build_evaluation_report.py" --help` with the same exact-directory rule. Use its outputs without post-editing.
 
-1. Treat every requested output path and every requested tag, ID, class, data attribute, label, value, unit, order, count, route, colorset, and pattern ID as a fixed API value. Copy each literal exactly; a clearer synonym or alternate stable ID is still a contract failure.
-2. Use D3 when custom geometry, data binding, scales, projections, simulation, interaction, or animated transformation is the point. Use Mermaid for notation-first conventional diagrams and ECharts for standard dashboard charts when its built-in chart already fits.
-3. Use `colorset1` by default. Use `colorset2` only when the user explicitly requests an extended, expanded, full-color, or multicolor palette. An ordinary request for a colored or polished visual does not override the default.
-4. Resolve visible paint through `assets/palettes/colorsets.json`. Use exact lowercase six-digit hex tokens from the active colorset; use opacity for transparency. Do not introduce arbitrary colors, named colors, RGB/HSL/LCH values, or raw D3 chromatic interpolators.
-5. Preserve supplied labels, language, values, units, order, counts, relationships, and quantitative geometry. Do not add or remove entities merely to improve composition.
-6. Keep output deterministic. Seed random layouts, pre-tick simulations before export, use stable IDs/classes, and make the final frame a truthful settled data state.
-7. Give every SVG a stable `viewBox`, `<title>`, `<desc>`, semantic groups, readable labels, and explicit active-colorset metadata through `data-colorset` or `data-color-set`.
-8. For standalone or offline work, bundle the D3 runtime and data. A portable SVG must contain its own geometry and CSS/SMIL animation; extracted SVG cannot depend on D3 transitions or external JavaScript.
+## Preserve the public contract
 
-## Mandatory Preflight And Hard Stop
+- Treat every requested path, ID, class, attribute, label, value, unit, order, count, relationship, route, colorset, and pattern ID as immutable API data.
+- Use `colorset1` by default. Use `colorset2` only for an explicit extended, expanded, multicolor, or full-color request.
+- Read visible paint from `assets/palettes/colorsets.json`; use exact lowercase six-digit tokens and opacity, never arbitrary colors, functional color syntax, or raw D3 chromatic scales.
+- Preserve supplied data and deterministic geometry. Seed layouts, pre-tick simulations, and make the settled frame truthful.
+- Give each SVG a stable `viewBox`, `<title>`, `<desc>`, semantic groups, readable labels, stable IDs, and active-colorset metadata.
+- Bundle runtime and data for offline HTML. Portable SVG must not depend on JavaScript or a network after extraction.
 
-Before writing code, make a compact checklist from the prompt:
+## Map builder flags exactly
 
-- exact output files and decision metadata;
-- route and active colorset;
-- literal labels, values, units, order, entities, and links;
-- exact tag, ID, class, data-attribute, and cardinality requirements;
-- required animation, interaction, accessibility, offline, and final-state behavior.
+Map every public acceptance literal to a flag. Use `--kind flow` with `--svg-pattern-id` when the decision variant differs from SVG pattern metadata, and repeat `--attribute`, `--flow-node`, `--link`, and `--link-value` in contract order. Keep titles generic or include only a leading prefix of ordered data labels; never mention a later label before intervening labels. Use `--kind logo --logo-mode wedges` for radial wedges; its colorset2 sequence already covers visible accent, warning/orange, success/green, and special/purple groups.
 
-Read `assets/palettes/colorsets.json` before choosing paint. Use these compact roles when no narrower role is supplied:
+For `check_visual_contract.py`, express exact cardinality as `--require-class CLASS:COUNT` and repeat `--ordered-text` only for the data tokens whose rendered occurrences must follow that order. Quote every complete CLI value that contains whitespace, such as `--require-attribute "viewBox=0 0 960 540"`; never issue a known-invalid command as a probe. For logos emitted by `build_contract_artifact.py`, use the self-contained, palette, render, and visual-contract checks; `validate_logo_artifact.py` is only for full logo-studio outputs.
 
-- `colorset1` standard: background `#f7f7f7`, surface `#ffffff`, ink `#333e48`, dark ink `#1c1c1c`, primary `#9e1b32`, primary dark `#6d1222`, accent `#e8002a`, accent soft `#ffccd5`, muted `#828282`, line `#cfcfcf`, quiet `#e7e7e7`.
-- `colorset2` extended: all colorset1 roles plus blue `#007298` / dark blue `#004d66`, orange `#e77204`, green `#45842a`, purple `#652f6c`, and yellow `#f1c319`. Use these extra hues only for explicit extended requests and meaningful categories.
+During skill maintenance, extend and test the builder when a required supported contract cannot be expressed.
 
-Never substitute familiar framework colors. Use `fill-opacity`, `stroke-opacity`, or `opacity` instead of `rgba()`, `hsla()`, or eight-digit hex. Apply prompt-specified IDs/classes to the exact rendered elements, not near-equivalent wrappers.
+Pass each `requiredTerms` value unchanged with repeated `--required-term`; keep composition, implementation-contract, and validation findings separate. Do not post-edit supported reports.
 
-Do not finish immediately after writing. Run every applicable gate, fix every failure, and rerun until all pass:
+## Preflight and workflow
+
+1. List exact outputs and decision fields; route and colorset; literal data order; IDs, classes, attributes, and counts; motion, interaction, accessibility, offline, and final-state requirements.
+2. Choose D3 when custom geometry, joins, scales, projections, simulation, interaction, or animated transformation is material. Prefer Mermaid for notation-first diagrams and ECharts for conventional dashboards.
+3. Choose the narrow route below and read only its linked references.
+4. Build with D3 joins, scales, layouts, shape generators, projections, or transitions. Use documented APIs such as `Math.hypot` and `d3.easeCubicOut`.
+5. Validate independently after the last write, render the settled state, inspect it at the intended size, fix every failure, and rerun.
+
+## Progressive-disclosure routes
+
+- Form selection and implementation: `references/visualization-type-index.md`, `references/layout-patterns.md`, and `references/pattern-selection-contracts.md`.
+- Named or nearest reusable pattern: `references/pattern-routing.md` and `references/pattern-index.md`; read only the matching anchored pattern recipe. For exact counts, also read `references/cardinality-generalization.md`.
+- Offline or animated output: `references/self-contained-output.md` and `references/animation-patterns.md`.
+- Composition audit or conversion: `references/evaluation-rubric.md` and `references/recomposition-recipes.md`.
+- Logo, identity, or texture: `references/pattern-catalog.md`, `references/mathematical-patterns.md`, and `references/palette-contract.md`; add `references/texture-catalog.md` only for texture selection.
+- Source-SVG reconstruction: `references/svg-replication.md`.
+- Dithering: `references/patterns/surface-stable-dither.md`.
+- Output ownership or maintenance: `references/user-artifact-workflow.md` and `references/maintenance-validation.md`.
+
+## Palette standard
+
+- `colorset1` standard roles: background `#f7f7f7`, surface `#ffffff`, ink `#333e48`, dark ink `#1c1c1c`, primary `#9e1b32`, dark primary `#6d1222`, accent `#e8002a`, soft accent `#ffccd5`, muted `#828282`, line `#cfcfcf`, quiet `#e7e7e7`.
+- `colorset2` extended adds blue `#007298`, dark blue `#004d66`, orange `#e77204`, green `#45842a`, purple `#652f6c`, and yellow `#f1c319`. Use additions for meaningful categories or states.
+- Embed an unchanged offline runtime inside `<script id="d3-runtime">` only when hand-authoring an unsupported form. Never reveal an author-CSS-hidden mark solely through a presentation attribute.
+
+## Mandatory validation
 
 ```text
 python <d3-skill>/scripts/check_self_contained_html.py <artifact.html>
 python <d3-skill>/scripts/check_palette_contract.py <artifact.html> --colorset colorset1
 python <d3-skill>/scripts/check_palette_contract.py <artifact.html> --colorset colorset2 --require-extended
+python <d3-skill>/scripts/render_d3_svg.py <artifact.html> --output <settled.svg>
+python <d3-skill>/scripts/check_visual_contract.py <settled.svg> <exact-contract-flags>
 ```
 
-For dynamic HTML, render the settled SVG with `scripts/render_d3_svg.py`, then check prompt literals with `scripts/check_visual_contract.py`. Pass every exact requirement as a flag; for example:
+Run only the palette command matching the active colorset. Keep temporary checks outside deliverables. A missing tool is not a pass; use an equivalent browser/parser check. Use route-specific validators for logos, recompositions, galleries, or replication.
 
-```text
-python <d3-skill>/scripts/check_visual_contract.py <rendered.svg> --require-id service-network --require-class node:5 --require-class link:6 --require-tag circle:5 --require-attribute data-layout=force
-```
+After the applicable bundled validators pass, you MUST stop issuing tool calls and report the result. Never run `grep`, inline Python, or a second ad hoc parser to reconfirm a condition already covered by those validators; raw first-occurrence logic can disagree with rendered accessibility text.
 
-Keep temporary render/check artifacts outside the requested deliverables. A missing tool is not a pass: use another browser or parser and perform the same checks. Do not claim completion while any checklist item or validator is unresolved.
+## Acceptance gate
 
-The contract builder writes exactly one offline `visual.html` and one `decision.json`, uses only the selected palette, and accepts exact IDs, classes, and data attributes as arguments. Render and validate its outputs before finishing.
+- Exact non-empty outputs exist outside the skill; decision metadata and all public literals match.
+- Form, quantitative geometry, values, units, order, entities, links, and visible palette influence match the source contract.
+- Standalone output is offline; SVG metadata, accessibility, stable IDs, and deterministic settled state are present.
+- Browser output is nonblank, readable, unclipped, collision-free, replay-safe, and faithful at its final frame.
+- Every applicable self-contained, palette, rendered-structure, and route-specific check passed after the last edit.
 
-## Workflow
-
-1. Extract the output contract, source data, required interactions or motion, exact cardinalities, and palette request.
-2. Choose the route:
-   - For a new visualization, read `references/pattern-selection-contracts.md` when the form is open and `references/pattern-routing.md` when a named `d3-*` family or builder is requested.
-   - For portable or offline output, read `references/self-contained-output.md` and `references/animation-patterns.md` as applicable.
-   - For composition critique, scoring, or comparison, read `references/evaluation-rubric.md`.
-   - For armature conversion, read `references/recomposition-recipes.md`.
-   - For logos, wordmarks, seals, monograms, masks, or texture systems, read `references/pattern-catalog.md` and `references/palette-contract.md`; read `references/texture-catalog.md` only when choosing a texture.
-   - For source-SVG grammar reconstruction, read `references/svg-replication.md`.
-   - For ordered/error-diffusion or zoom-stable dithering, read `references/patterns/surface-stable-dither.md`.
-3. Declare the active colorset before choosing marks. Start with colorset1 semantic roles. If colorset2 is explicitly requested, use its extra hues only for meaningful categories or states.
-4. Build from deterministic data with D3 joins, scales, layouts, shape generators, projections, or transitions. Prefer a small workspace-local source file over one-off coordinate editing.
-5. Validate the artifact independently of the implementation; this step is mandatory, not optional:
-   - Run `scripts/check_self_contained_html.py` for standalone HTML.
-   - Run `scripts/check_palette_contract.py` with the selected colorset.
-   - Render HTML/SVG with `scripts/render_d3_svg.py` when browser-visible output is in scope.
-   - Use the route-specific validator for logos, recompositions, gallery work, or source-style replication.
-6. Inspect the rendered result at its intended size. Fix blank states, clipping, tiny text, label collisions, occluded marks, misleading geometry, weak contrast, replay duplication, and a final frame that differs from the promised data.
-
-## Route-Specific Operations
-
-### Visualizations and animation
-
-- Search `references/pattern-index.md` when the user asks for the closest existing pattern without naming an exact ID. Read only the selected pattern reference.
-- When exact `d3-*` IDs are supplied, read every matching file under `references/patterns/` before coding.
-- Read `references/cardinality-generalization.md` for exact mark counts, IDs, or small/medium/large variants.
-- Use `scripts/create_d3_svg_starter.py` for a bounded editable project and `scripts/render_d3_svg.py` for SVG export and screenshots.
-- Use CSS or SMIL for portable SVG motion. Use D3 transitions only in live HTML.
-
-### Composition evaluation and recomposition
-
-- Render or inspect the actual SVG before judging it; do not score only source text when visual tooling is available.
-- Start evaluation reports with `Artifact: <exact ID, selector, or file>` and separate composition findings from implementation-contract findings.
-- Preserve the source pattern meaning and assign recomposed variants as `d3-composition-<composition-id>-<source-id>`.
-- Validate a recomposition with:
-
-```powershell
-uv run --script skills/d3/scripts/check_recomposition_contract.py <output.html> --source-id <source-id> --composition-id <composition-id>
-```
-
-- For gallery-level scoring, run `scripts/evaluate_composition_variants.py` with both the composition page and base gallery supplied explicitly, then inspect the lowest-score screenshots.
-
-### Logos and textures
-
-- Preserve requested brand text exactly and keep animal or organic shapes generic. Never trace or imitate a protected logo or mascot.
-- Use `colorset1` unless the brief explicitly asks for an extended/full-color identity and multiple semantic hues materially improve it.
-- Prefer parameterized copy, pattern, texture, density, curvature, scale, rotation, and strength over one-off coordinate changes.
-- Build a deterministic offline studio with:
-
-```powershell
-uv run --script skills/d3/scripts/build_logo_studio.py --output outputs/logo-studio.html --brand "Northlight" --tagline "Signal in motion" --colorset colorset1 --pattern d3-logo-type-orbit --texture d3-logo-diagonal-hatch
-```
-
-- Validate logo artifacts with `scripts/validate_logo_artifact.py` and browser-visible galleries with `scripts/verify_logo_gallery.py` or `scripts/verify_logo_texture_gallery.py`. Test detailed marks at 96 px and reduce texture before sacrificing text clearance.
-
-## Palette Gate
-
-Validate standard output:
-
-```powershell
-uv run --script skills/d3/scripts/check_palette_contract.py artifact.html --colorset colorset1 --json-report palette-report.json
-```
-
-For an explicit extended request, require at least one colorset2-only token:
-
-```powershell
-uv run --script skills/d3/scripts/check_palette_contract.py artifact.svg --colorset colorset2 --require-extended --json-report palette-report.json
-```
-
-For dynamic HTML, the static palette check covers visible markup and styles but intentionally ignores JavaScript runtime bodies. Also render the artifact and inspect computed SVG paint; logo validators already perform this runtime palette gate.
-
-## Progressive Disclosure
-
-- `references/visualization-type-index.md`: choose a D3 form or compare D3 with Mermaid.
-- `references/layout-patterns.md`: joins, scales, hierarchy, force, projection, and layout mechanics.
-- `references/animation-patterns.md`: staged reveals, path drawing, morphing, replay, and final-frame rules.
-- `references/pattern-selection-contracts.md`: dense data, distributions, uncertainty, linked views, maps, annotations, and accessibility.
-- `references/pattern-routing.md` and `references/pattern-index.md`: exact or nearest reusable `d3-*` patterns.
-- `references/self-contained-output.md`: portable HTML/SVG and dependency rules.
-- `references/evaluation-rubric.md`: dynamic symmetry, balance, reading path, clearance, and scoring.
-- `references/recomposition-recipes.md`: balance, diagonal, proportional, grid, radial, flow, and label-lane armatures.
-- `references/palette-contract.md`: colorset roles, allowed tokens, contrast, and logo-specific restrictions.
-- `references/pattern-catalog.md`, `references/mathematical-patterns.md`, and `references/texture-catalog.md`: parametric logo mechanisms.
-- `references/user-artifact-workflow.md`: output ownership and starter usage.
-- `references/maintenance-validation.md`: skill, gallery, composition-sheet, palette, and publication maintenance.
-
-## Acceptance Checks
-
-Require all applicable checks before finishing:
-
-- Exact non-empty outputs exist outside the skill.
-- Every prompt-specified ID, class, attribute, tag count, metadata value, label, and order is present literally in the settled output.
-- The visualization form matches the relationship the viewer must understand.
-- Default work uses only colorset1; colorset2 appears only after an explicit extended/full-color request and materially affects visible marks.
-- Values, labels, units, order, entity counts, and relationships match the source contract.
-- SVG accessibility metadata, stable IDs, viewBox, and deterministic final state are present.
-- Standalone output has no undeclared network dependency.
-- Browser-visible output is nonblank, readable, unclipped, replay-safe, and faithful at the final frame.
-- Composition and logo routes pass their dedicated validators.
-- The self-contained, palette, settled-structure, and route-specific commands were actually run after the last edit and all exited successfully.
-
-## Maintenance
-
-Read `references/maintenance-validation.md` before changing bundled patterns, scripts, examples, galleries, palettes, or composition sheets. Preserve published example and pattern IDs even though this unified skill replaces the former D3 skill names.
+Before changing bundled patterns, scripts, examples, galleries, palettes, or composition sheets, read `references/maintenance-validation.md` and preserve published IDs.

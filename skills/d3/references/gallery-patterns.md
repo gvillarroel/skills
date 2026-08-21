@@ -89,7 +89,7 @@ For large galleries, review every card visually before delivery. Generate screen
 - replay-safe fixes that survive clearing and rebuilding one card at a time
 - dynamic-symmetry alignment for composition-heavy patterns: use `scripts/audit_dynamic_symmetry.py` when points, centers, label lanes, routes, or major containers feel arbitrary even though collision and text-fit checks pass
 
-Use `scripts/review_gallery_visuals.py` to capture every settled card, create labeled contact sheets, and record per-pattern text overflow, text overlap, rendered text size, and horizontal overflow signals. Run both desktop and mobile viewports. These signals are advisory: inspect the corresponding card before moving marks, and never distort protected chart or map geometry merely to clear a heuristic.
+Use the acceptance fixture's settled-frame review command to capture every card, create labeled contact sheets, and record per-pattern text overflow, text overlap, rendered text size, and horizontal overflow signals. Run both desktop and mobile viewports. These signals are advisory: inspect the corresponding card before moving marks, and never distort protected chart or map geometry merely to clear a heuristic.
 
 Integrate repeated findings through shared CSS, token ramps, and a gallery-level post-render polish function before adding chart-specific tweaks. Use chart-specific code when the color encodes data meaning, such as heatmaps, density bins, vaccine-impact ramps, bivariate keys, missing-data annotations, or selected/focus states.
 
@@ -97,9 +97,15 @@ Integrate repeated findings through shared CSS, token ramps, and a gallery-level
 
 Use a separate published source such as `assets/examples/d3-animated-svg-colorset2/` when the full gallery needs a palette/style version without changing the base gallery. Load `colorset2-config.js` before the shared `gallery.js`; the shared renderer assigns `d3-<slug>-cs2` IDs, preserves each `d3-<slug>` base ID in metadata, and remaps rendered SVG paint values to the tokens in `assets/palettes/colorset2.yaml`.
 
-Keep the version page flat and modular: no decorative shadows, no gradient/orb backgrounds, compact card headers, and rectangular surfaces that can read as a large visual map. Validate it with `scripts/verify_colorset2_gallery.py` so every SVG exposes `data-style-version="colorset2"`, `data-color-set="colorset2"`, `data-palette-name="full-color-style"`, and no SVG paint value falls outside the colorset2 palette.
+Keep the version page flat and modular: no decorative shadows, no gradient/orb backgrounds, compact card headers, and rectangular surfaces that can read as a large visual map. Use the acceptance fixture's colorset2 gallery verifier so every SVG exposes `data-style-version="colorset2"`, `data-color-set="colorset2"`, `data-palette-name="full-color-style"`, and no SVG paint value falls outside the colorset2 palette.
 
-Use `assets/examples/d3-animated-svg-cs1/` for the colorset1 red-neutral version. Load `cs1-config.js` before the shared `gallery.js`; the shared renderer assigns suffixed IDs such as `d3-force-network-cs1`, keeps `data-base-pattern-id="d3-force-network"`, and remaps all SVG paint values to `assets/palettes/colorset1.yml`. Validate it with `scripts/verify_style_gallery.py` so every SVG exposes `data-style-version="cs1"`, `data-color-set="colorset1"`, `data-palette-name="basic-red-neutral-style"`, and only uses colors from the colorset1 palette.
+Use `assets/examples/d3-animated-svg-cs1/` for the colorset1 red-neutral version. Load `cs1-config.js` before the shared `gallery.js`; the shared renderer assigns suffixed IDs such as `d3-force-network-cs1`, keeps `data-base-pattern-id="d3-force-network"`, and remaps all SVG paint values to `assets/palettes/colorset1.yml`. Use the acceptance fixture's style-gallery verifier so every SVG exposes `data-style-version="cs1"`, `data-color-set="colorset1"`, `data-palette-name="basic-red-neutral-style"`, and only uses colors from the colorset1 palette.
+
+## Unified Pages Hub
+
+Publish exactly one repository-home card for this skill with canonical example-set ID `d3` and source `assets/examples/d3/`. Use that compact hub to explain the complete capability surface and link to the focused pattern, Colorset 1, Colorset 2, composition, logo, and texture views.
+
+Keep the five detailed gallery directories as unlisted support sources so their established routes and item hashes continue to work. Do not restore a separate root catalog card for a palette variant or a formerly separate D3 skill. When inventory counts or support routes change, update the hub metadata and the repository's Pages-format validation gate together, rebuild Pages, and verify every hub link in Chromium at desktop and mobile sizes.
 
 ## Verification
 
@@ -116,6 +122,7 @@ For gallery updates, verify:
 - every visible SVG `text` node uses the shared family, stays within 7–24 px, and remains inside the SVG viewport
 - release verification replays every card and updates only the targeted card render pass; use sampled replay only for fast smoke checks
 - replay resets the SVG timeline near zero and the timeline advances after the click
+- replay verification waits beyond any deferred unpause window so it measures progress instead of racing the restart callback
 - repeated replay does not leave duplicated marks or empty SVGs
 - desktop and mobile screenshots preserve readable card headers, replay controls, labels, and SVG framing
 - publication is completed, not just built locally: run `uv run --script scripts/build-pages.py`, commit the updated gallery source and pattern references, push the Pages-deploying branch, then verify the GitHub Pages workflow before relying on the new `d3-*` URL in another task
@@ -123,9 +130,7 @@ For gallery updates, verify:
 Use the gallery verifiers for deterministic checks. Run the visual audit after any gallery-wide style, text, animation, or replay change; it audits every card rather than sampling:
 
 ```powershell
-uv run --script skills/d3/scripts/verify_d3_gallery.py skills/d3/assets/examples/d3-animated-svg/index.html --expected 225 --replay-all --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery.png --wait-ms 2200
-uv run --script skills/d3/scripts/audit_d3_gallery_visuals.py skills/d3/assets/examples/d3-animated-svg/index.html --expected 225 --wait-ms 4500 --report projects/d3-animated-svg-validation/artifacts/data/gallery-visual-audit.json
-uv run --script skills/d3/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 225 --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-mobile.png --wait-ms 2200
-uv run --script skills/d3/scripts/verify_colorset2_gallery.py skills/d3/assets/examples/d3-animated-svg-colorset2/index.html --expected 225 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-colorset2.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-colorset2.json --wait-ms 2200
-uv run --script skills/d3/scripts/verify_style_gallery.py skills/d3/assets/examples/d3-animated-svg-cs1/index.html --palette-file skills/d3/assets/palettes/colorset1.yml --style-version cs1 --color-set colorset1 --palette-name basic-red-neutral-style --pattern-id-suffix cs1 --expected 225 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-cs1.png --json-report projects/d3-animated-svg-validation/artifacts/data/gallery-cs1.json --wait-ms 2200
+uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/verify_d3_gallery.py skills/d3/assets/examples/d3-animated-svg/index.html --expected 225 --replay-all --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery.png --wait-ms 2200
+uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/audit_d3_gallery_visuals.py skills/d3/assets/examples/d3-animated-svg/index.html --expected 225 --wait-ms 4500 --report projects/d3-animated-svg-validation/artifacts/data/gallery-visual-audit.json
+uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 225 --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-mobile.png --wait-ms 2200
 ```

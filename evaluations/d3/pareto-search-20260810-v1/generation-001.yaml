@@ -1,0 +1,34 @@
+schemaVersion: 1
+
+search:
+  id: d3-pareto-20260810-v1
+  baselineSkill: ../../runs/d3-pareto-20260810-v1/candidates/baseline/d3
+  baselineCandidate: baseline
+  outputDir: ../../runs/d3-pareto-20260810-v1/search
+  generation: 1
+  previousGenerationLog: ../../runs/d3-pareto-20260810-v1/search/development/generation-000/pareto-archive.json
+
+harbor:
+  developmentJob: ../../runs/d3-pareto-20260810-v1-dataset/development-job.yaml
+  holdoutJob: ../../runs/d3-pareto-20260810-v1-dataset/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 0.9
+  requiredRewards:
+    semantic_reward: 1
+  requiredEnv: []
+
+candidates:
+  - id: baseline
+    skill: ../../runs/d3-pareto-20260810-v1/candidates/baseline/d3
+    parents: []
+    rationale: Frozen generation-zero Pareto member and semantic reference.
+  - id: baseline-pruned
+    skill: ../../runs/d3-pareto-20260810-v1/candidates/baseline-pruned/d3
+    parents:
+      - baseline
+    rationale: Preserve the byte-identical proven SKILL.md, all 238 compact pattern recipes, and every resource observed in passing development traces; remove only orphaned, fixture-maintenance, test, and duplicate routing files from the normal runtime payload.
+
+promotion:
+  minimumMeanGain: 0.01
+  allowCaseRegressions: false
+  requireNoErrors: true

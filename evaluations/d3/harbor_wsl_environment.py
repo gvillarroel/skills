@@ -285,15 +285,19 @@ class WorkspaceWSLEnvironment(BaseEnvironment):
             # nearest project-local skill wins over any ambient repository
             # installation in an ancestor directory.
             'if [ -d "$HOME/.agents/skills" ]; then\n'
-            '  mkdir -p "$HARBOR_APP_DIR/.agents/skills"\n'
-            '  cp -a "$HOME/.agents/skills/." "$HARBOR_APP_DIR/.agents/skills/"\n'
+            '  if [ ! -f "$HARBOR_APP_DIR/.agents/skills/d3/SKILL.md" ]; then\n'
+            '    mkdir -p "$HARBOR_APP_DIR/.agents/skills"\n'
+            '    cp -a "$HOME/.agents/skills/." "$HARBOR_APP_DIR/.agents/skills/"\n'
+            '  fi\n'
             # Codex 0.147 can advertise a registered Harbor skill under its
             # system-skill locator even though Harbor installed it in HOME.
             # Populate that advertised locator so agents never need to search
             # an ambient parent repository after a stale-path read fails.
             '  if [ -n "${CODEX_HOME:-}" ]; then\n'
-            '    mkdir -p "$CODEX_HOME/skills/.system"\n'
-            '    cp -a "$HOME/.agents/skills/." "$CODEX_HOME/skills/.system/"\n'
+            '    if [ ! -f "$CODEX_HOME/skills/.system/d3/SKILL.md" ]; then\n'
+            '      mkdir -p "$CODEX_HOME/skills/.system"\n'
+            '      cp -a "$HOME/.agents/skills/." "$CODEX_HOME/skills/.system/"\n'
+            '    fi\n'
             "  fi\n"
             "fi\n"
             'if [ -z "${HARBOR_BROWSER_PATH:-}" ]; then\n'

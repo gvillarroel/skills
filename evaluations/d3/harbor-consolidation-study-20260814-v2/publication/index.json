@@ -1,0 +1,34 @@
+{
+  "holdoutReleased": true,
+  "ledger": {
+    "eventCount": 26,
+    "headSha256": "bb40364b6f04d76ae3697b2ab189038797d8f5af2e19c72f03021d8019bd8327"
+  },
+  "progress": {
+    "completedCount": 4,
+    "completionPercent": 100.0,
+    "stageCount": 4
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [
+    {
+      "artifactType": "file",
+      "byteCount": 1095,
+      "evidenceId": "d3-consolidation-v3-final-decision",
+      "fileCount": 1,
+      "kind": "decision",
+      "role": "decision",
+      "sha256": "cd950a9c2352092651aa8d92949f29c32d3b8a0985d2c5561ce079aa1f0db67a",
+      "stageId": "final-decision-v2",
+      "visibility": "public"
+    }
+  ],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-2x-semantic90-bundle10-consolidation-v2",
+    "createdAt": "2026-08-14T18:10:14Z",
+    "studyId": "d3-consolidation-20260814-v2",
+    "title": "D3 unified skill and Pages release validation v2"
+  }
+}

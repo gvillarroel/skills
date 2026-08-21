@@ -28,6 +28,7 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "compose-synchronized-svg",
+    "d3": SKILLS / "d3" / "assets" / "examples" / "d3",
     "d3-animated-svg": SKILLS / "d3" / "assets" / "examples" / "d3-animated-svg",
     "d3-animated-svg-cs1": SKILLS
     / "d3"
@@ -104,6 +105,12 @@ EXAMPLE_SOURCES = {
 }
 UNLISTED_EXAMPLE_SOURCES = {
     # Raw source folders copied for linked galleries or verification assets, not standalone landing pages.
+    # The unified `d3` hub links these focused views while the old public routes remain stable.
+    "d3-animated-svg",
+    "d3-animated-svg-cs1",
+    "d3-animated-svg-colorset2",
+    "d3-logo-design",
+    "d3-logo-textures",
     "mermaid-max-elements",
     "plantuml-colorset-renderer-base",
 }
@@ -133,44 +140,12 @@ PUBLISHED_EXAMPLE_SETS = [
         "description": "All 31 Mermaid 11.16.0 diagram families at their documented palette or practical complexity boundary, paired in Colorset 1 and Colorset 2 with static and replayable SVG output.",
     },
     {
-        "id": "d3-animated-svg",
-        "source": "d3-animated-svg",
-        "title": "D3 Animated SVG Gallery",
-        "href": "examples/d3-animated-svg/",
+        "id": "d3",
+        "source": "d3",
+        "title": "D3 Skill Gallery",
+        "href": "examples/d3/",
         "kind": "D3",
-        "description": "A broad gallery of D3-generated SVG forms with replay controls.",
-    },
-    {
-        "id": "d3-animated-svg-cs1",
-        "source": "d3-animated-svg-cs1",
-        "title": "D3 Patterns CS1",
-        "href": "examples/d3-animated-svg-cs1/",
-        "kind": "D3 cs1",
-        "description": "The full D3 pattern catalog rendered with the colorset1 red-neutral palette and CS1-suffixed IDs.",
-    },
-    {
-        "id": "d3-animated-svg-colorset2",
-        "source": "d3-animated-svg-colorset2",
-        "title": "D3 Patterns Colorset2",
-        "href": "examples/d3-animated-svg-colorset2/",
-        "kind": "D3 colorset2",
-        "description": "The full D3 pattern catalog rendered as a colorset2-aligned version.",
-    },
-    {
-        "id": "d3-logo-design",
-        "source": "d3-logo-design",
-        "title": "D3 Logo Design Patterns",
-        "href": "examples/d3-logo-design/",
-        "kind": "D3 logo",
-        "description": "Ninety adjustable logo compositions, including thirty mathematical mechanisms, with forty SVG textures constrained to colorset1 and colorset2.",
-    },
-    {
-        "id": "d3-logo-textures",
-        "source": "d3-logo-textures",
-        "title": "D3 Logo Texture Atlas",
-        "href": "examples/d3-logo-textures/",
-        "kind": "D3 texture",
-        "description": "Forty reusable SVG texture mechanisms with stable IDs, adjustable parameters, and colorset1/colorset2 previews.",
+        "description": "One entry point for custom charts, networks, maps, simulations, interaction, composition analysis, parametric logos, textures, and portable SVG output.",
     },
     {
         "id": "procedural-svg-animation",
@@ -655,6 +630,7 @@ def build_docs() -> None:
         DOCS / "examples" / "mermaid-animation-directives",
     )
 
+    copy_tree(example_source("d3"), DOCS / "examples" / "d3")
     copy_tree(example_source("d3-animated-svg"), DOCS / "examples" / "d3-animated-svg")
     patch_file(
         DOCS / "examples" / "d3-animated-svg" / "index.html",

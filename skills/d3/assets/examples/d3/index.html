@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="example-id" content="d3">
+  <meta name="pattern-id" content="d3">
+  <meta name="pattern-page" content="true">
+  <link rel="icon" href="data:,">
+  <title>D3 Skill Gallery</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #f7f7f7;
+      --surface: #ffffff;
+      --ink: #333e48;
+      --ink-dark: #1c1c1c;
+      --primary: #9e1b32;
+      --primary-dark: #6d1222;
+      --accent: #e8002a;
+      --accent-soft: #ffccd5;
+      --muted: #828282;
+      --line: #cfcfcf;
+      --quiet: #e7e7e7;
+      --blue: #007298;
+      --green: #45842a;
+      --orange: #e77204;
+      --purple: #652f6c;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--page);
+      color: var(--ink);
+      font: 15px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .site-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 58px;
+      border-bottom: 1px solid var(--line);
+    }
+    .site-nav a {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .site-nav a:hover { color: var(--primary); }
+    .brand {
+      color: var(--primary) !important;
+      font-size: 15px !important;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+      gap: clamp(32px, 6vw, 72px);
+      align-items: center;
+      padding: clamp(52px, 8vw, 92px) 0 44px;
+    }
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      color: var(--ink-dark);
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+    .lede {
+      max-width: 690px;
+      margin: 22px 0 0;
+      color: #5f6974;
+      font-size: clamp(17px, 2vw, 20px);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      border: 1px solid var(--primary);
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: var(--primary);
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button.primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .button:hover { border-color: var(--accent); }
+    .button.primary:hover { background: var(--primary-dark); }
+    .hero-visual {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--surface);
+      padding: 18px;
+      box-shadow: 0 18px 44px rgba(51, 62, 72, .08);
+    }
+    .hero-visual svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      font-family: "Open Sans", Arial, sans-serif;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+    .metric {
+      min-width: 0;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+    }
+    .metric:last-child { border-right: 0; }
+    .metric strong {
+      display: block;
+      color: var(--primary);
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1;
+    }
+    .metric span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    section { padding-top: 64px; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, .65fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+    h2 {
+      margin: 0;
+      color: var(--ink-dark);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.06;
+      letter-spacing: -.03em;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .capability {
+      min-height: 206px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 18px;
+    }
+    .capability-index {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--quiet);
+      border-radius: 50%;
+      color: var(--primary);
+      font: 800 12px/1 Consolas, monospace;
+    }
+    .capability h3 {
+      margin: 24px 0 8px;
+      color: var(--ink-dark);
+      font-size: 18px;
+      line-height: 1.2;
+    }
+    .capability p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .gallery-link {
+      display: grid;
+      min-height: 196px;
+      align-content: space-between;
+      gap: 28px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 20px;
+      text-decoration: none;
+      transition: border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+    }
+    .gallery-link:hover {
+      transform: translateY(-2px);
+      border-color: #aab3bd;
+      box-shadow: 0 14px 28px rgba(51, 62, 72, .08);
+    }
+    .gallery-link[data-accent="red"] { border-top: 4px solid var(--primary); }
+    .gallery-link[data-accent="blue"] { border-top: 4px solid var(--blue); }
+    .gallery-link[data-accent="green"] { border-top: 4px solid var(--green); }
+    .gallery-link[data-accent="orange"] { border-top: 4px solid var(--orange); }
+    .gallery-link[data-accent="purple"] { border-top: 4px solid var(--purple); }
+    .gallery-link[data-accent="ink"] { border-top: 4px solid var(--ink); }
+    .gallery-kicker {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .gallery-link h3 {
+      margin: 8px 0 6px;
+      color: var(--ink-dark);
+      font-size: 22px;
+      line-height: 1.15;
+    }
+    .gallery-link p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .gallery-cta {
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .decision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      padding-bottom: 72px;
+    }
+    .decision-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 22px;
+    }
+    .decision-card h3 {
+      margin: 0 0 10px;
+      color: var(--ink-dark);
+      font-size: 20px;
+    }
+    .decision-card p { margin: 0; color: var(--muted); }
+    .decision-card strong { color: var(--primary); }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 22px 0 34px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { max-width: 620px; }
+      .metrics { grid-template-columns: repeat(3, 1fr); }
+      .metric:nth-child(3) { border-right: 0; }
+      .metric:nth-child(n + 4) { border-top: 1px solid var(--line); }
+      .capability-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 22px, 1180px); }
+      .site-nav { min-height: 52px; }
+      .hero { padding-top: 38px; }
+      .hero-visual { padding: 10px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .metric { border-top: 1px solid var(--line); }
+      .metric:nth-child(-n + 2) { border-top: 0; }
+      .metric:nth-child(2n) { border-right: 0; }
+      .metric:last-child { grid-column: 1 / -1; }
+      .section-head { grid-template-columns: 1fr; gap: 10px; }
+      .capability-grid, .gallery-grid, .decision { grid-template-columns: 1fr; }
+      .capability { min-height: 0; }
+    }
+  </style>
+</head>
+<body data-example-id="d3" data-pattern-id="d3" data-pattern-page="true" data-page-kind="skill-hub" data-capability-count="8" data-gallery-link-count="6">
+  <nav class="wrap site-nav" aria-label="Site navigation">
+    <a class="brand" href="../../">Codex Skills</a>
+    <a href="#explore">Explore D3</a>
+  </nav>
+
+  <main class="wrap">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">One unified skill</p>
+        <h1>Shape data into systems you can see.</h1>
+        <p class="lede">D3 owns custom charts, networks, maps, simulations, interactions, composition analysis, parametric identities, textures, and portable SVG output in one compact bundle.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#explore">See every capability</a>
+          <a class="button" href="../d3-animated-svg/">Open the 225-pattern gallery</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="A compact D3 capability preview">
+        <svg viewBox="0 0 520 340" role="img" aria-labelledby="hero-title hero-desc">
+          <title id="hero-title">D3 capability preview</title>
+          <desc id="hero-desc">A chart, connected network, radial form, flow path, and map-like geometry share one visual system.</desc>
+          <rect x="1" y="1" width="518" height="338" rx="8" fill="#ffffff" stroke="#cfcfcf"/>
+          <g aria-label="bar chart" transform="translate(30 34)">
+            <path d="M0 110H180M0 110V0" fill="none" stroke="#828282"/>
+            <rect x="18" y="62" width="26" height="48" fill="#ffccd5"/>
+            <rect x="56" y="24" width="26" height="86" fill="#9e1b32"/>
+            <rect x="94" y="46" width="26" height="64" fill="#e8002a"/>
+            <rect x="132" y="10" width="26" height="100" fill="#6d1222"/>
+          </g>
+          <g aria-label="node link network" transform="translate(290 30)" fill="none" stroke="#cfcfcf" stroke-width="2">
+            <path d="M18 72L82 18L152 54L128 118L58 126Z"/>
+            <path d="M18 72L128 118M82 18L58 126"/>
+            <g fill="#ffffff" stroke="#007298" stroke-width="4">
+              <circle cx="18" cy="72" r="10"/><circle cx="82" cy="18" r="10"/><circle cx="152" cy="54" r="10"/><circle cx="128" cy="118" r="10"/><circle cx="58" cy="126" r="10"/>
+            </g>
+          </g>
+          <g aria-label="flow path" transform="translate(28 206)">
+            <path d="M12 38C90 38 86 4 164 4S246 68 328 68S398 28 464 28" fill="none" stroke="#e77204" stroke-width="8" stroke-linecap="round"/>
+            <g fill="#ffffff" stroke="#333e48" stroke-width="3">
+              <circle cx="12" cy="38" r="9"/><circle cx="164" cy="4" r="9"/><circle cx="328" cy="68" r="9"/><circle cx="464" cy="28" r="9"/>
+            </g>
+          </g>
+          <g aria-label="radial logo" transform="translate(238 172)">
+            <path d="M0 0L0-46A46 46 0 0 1 32.5-32.5Z" fill="#9e1b32"/>
+            <path d="M0 0L32.5-32.5A46 46 0 0 1 46 0Z" fill="#e77204"/>
+            <path d="M0 0L46 0A46 46 0 0 1 32.5 32.5Z" fill="#45842a"/>
+            <path d="M0 0L32.5 32.5A46 46 0 0 1 0 46Z" fill="#007298"/>
+            <path d="M0 0L0 46A46 46 0 0 1-32.5 32.5Z" fill="#652f6c"/>
+            <path d="M0 0L-32.5 32.5A46 46 0 0 1-46 0Z" fill="#e8002a"/>
+            <path d="M0 0L-46 0A46 46 0 0 1-32.5-32.5Z" fill="#6d1222"/>
+            <path d="M0 0L-32.5-32.5A46 46 0 0 1 0-46Z" fill="#333e48"/>
+            <circle r="14" fill="#ffffff"/>
+          </g>
+        </svg>
+      </div>
+    </header>
+
+    <div class="metrics" aria-label="D3 skill inventory">
+      <div class="metric"><strong>242</strong><span>pattern routes</span></div>
+      <div class="metric"><strong>225</strong><span>live gallery cards</span></div>
+      <div class="metric"><strong>78</strong><span>composition variants</span></div>
+      <div class="metric"><strong>90</strong><span>logo mechanisms</span></div>
+      <div class="metric"><strong>40</strong><span>texture systems</span></div>
+    </div>
+
+    <section aria-labelledby="capabilities-title">
+      <div class="section-head">
+        <h2 id="capabilities-title">Everything the skill can do</h2>
+        <p>Use D3 when the geometry, data binding, motion, interaction, or exported SVG itself is part of the product—not just a standard dashboard preset.</p>
+      </div>
+      <div class="capability-grid">
+        <article class="capability" data-capability-id="quantitative-charts"><span class="capability-index">01</span><h3>Quantitative charts</h3><p>Bars, lines, areas, distributions, uncertainty, dense comparisons, matrices, tables, and small multiples.</p></article>
+        <article class="capability" data-capability-id="networks-flows"><span class="capability-index">02</span><h3>Networks &amp; flows</h3><p>Force layouts, trees, Sankey and alluvial paths, dependency graphs, lifelines, pipelines, and routed systems.</p></article>
+        <article class="capability" data-capability-id="maps-spatial"><span class="capability-index">03</span><h3>Maps &amp; spatial geometry</h3><p>Projections, choropleths, Voronoi regions, contours, cartograms, geospatial symbols, and scientific fields.</p></article>
+        <article class="capability" data-capability-id="motion-interaction"><span class="capability-index">04</span><h3>Motion &amp; interaction</h3><p>Replayable reveals, transitions, simulation settles, brushing, zoom, focus/context, linked views, and playback.</p></article>
+        <article class="capability" data-capability-id="ai-system-explainers"><span class="capability-index">05</span><h3>AI &amp; system explainers</h3><p>Attention, token sampling, caches, model flow, capacity grids, execution traces, queues, and operational diagrams.</p></article>
+        <article class="capability" data-capability-id="composition-audit"><span class="capability-index">06</span><h3>Composition &amp; audit</h3><p>Score visible SVGs, find collision and reading-path problems, and recompose source marks on purposeful armatures.</p></article>
+        <article class="capability" data-capability-id="logos-textures"><span class="capability-index">07</span><h3>Logos &amp; textures</h3><p>Parametric marks, mathematical mechanisms, wordmarks, seals, motion-ready identity systems, and SVG textures.</p></article>
+        <article class="capability" data-capability-id="portable-output"><span class="capability-index">08</span><h3>Portable output</h3><p>Offline HTML, accessible standalone SVG, deterministic settled frames, palette contracts, and validation reports.</p></article>
+      </div>
+    </section>
+
+    <section id="explore" aria-labelledby="explore-title">
+      <div class="section-head">
+        <h2 id="explore-title">Explore the complete surface</h2>
+        <p>The repository home exposes one D3 entry. These focused views preserve every detailed example and every previously published route.</p>
+      </div>
+      <div class="gallery-grid">
+        <a class="gallery-link" data-gallery-id="patterns" data-accent="red" href="../d3-animated-svg/">
+          <div><span class="gallery-kicker">225 examples</span><h3>Pattern gallery</h3><p>Charts, maps, networks, simulations, AI explainers, tables, diagrams, and interaction patterns.</p></div><span class="gallery-cta">Open patterns →</span>
+        </a>
+        <a class="gallery-link" data-gallery-id="colorset1" data-accent="ink" href="../d3-animated-svg-cs1/">
+          <div><span class="gallery-kicker">Standard palette</span><h3>Colorset 1</h3><p>The full catalog in the default red-neutral visual system with stable suffixed IDs.</p></div><span class="gallery-cta">Open Colorset 1 →</span>
+        </a>
+        <a class="gallery-link" data-gallery-id="colorset2" data-accent="blue" href="../d3-animated-svg-colorset2/">
+          <div><span class="gallery-kicker">Extended palette</span><h3>Colorset 2</h3><p>The full catalog with meaningful blue, orange, green, purple, and yellow categories.</p></div><span class="gallery-cta">Open Colorset 2 →</span>
+        </a>
+        <a class="gallery-link" data-gallery-id="compositions" data-accent="orange" href="../d3-animated-svg/composition-sheets.html">
+          <div><span class="gallery-kicker">78 variants</span><h3>Composition sheets</h3><p>Curated radial, diagonal, flow-spine, quadrant, lane, and field recompositions.</p></div><span class="gallery-cta">Open compositions →</span>
+        </a>
+        <a class="gallery-link" data-gallery-id="logos" data-accent="purple" href="../d3-logo-design/">
+          <div><span class="gallery-kicker">90 mechanisms</span><h3>Logo studio</h3><p>Adjustable mathematical, organic, orbital, typographic, and symbolic identity systems.</p></div><span class="gallery-cta">Open logos →</span>
+        </a>
+        <a class="gallery-link" data-gallery-id="textures" data-accent="green" href="../d3-logo-textures/">
+          <div><span class="gallery-kicker">40 systems</span><h3>Texture atlas</h3><p>Reusable deterministic SVG surface mechanisms with both supported palette modes.</p></div><span class="gallery-cta">Open textures →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="decision" aria-label="D3 routing guidance">
+      <div class="decision-card"><h3>Choose D3 when…</h3><p><strong>custom geometry or behavior matters:</strong> joins, scales, layouts, projections, simulation, interaction, animated transformation, or exact portable SVG.</p></div>
+      <div class="decision-card"><h3>Choose a narrower renderer when…</h3><p>Use Mermaid for notation-first diagrams and ECharts for conventional dashboard charts whose built-in grammar already fits.</p></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Canonical example set <code>d3</code>. Detailed legacy routes remain available as focused supporting galleries.</div></footer>
+</body>
+</html>

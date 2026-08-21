@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 21,
+    "headSha256": "67f8a64d24343df68961f432a5e4be0aad1449809bd3af8713c060e5d7515419"
+  },
+  "progress": {
+    "completedCount": 1,
+    "completionPercent": 16.67,
+    "stageCount": 6
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-2x-semantic90-bundle10-v6",
+    "createdAt": "2026-08-10T17:00:11Z",
+    "studyId": "d3-pareto-20260810-v6",
+    "title": "D3 unified-skill Pareto cycle with run-namespaced randomized cohorts"
+  }
+}

@@ -446,6 +446,7 @@ def main() -> int:
                 args.concurrency,
                 args.model,
                 repo_root / "skills" / "d3",
+                prime_environment_skill=False,
             )
         )
         for split in ("development", "validation", "holdout")

@@ -134,9 +134,14 @@ def check(args: argparse.Namespace) -> dict[str, object]:
     for token in args.require_text:
         if token.casefold() not in folded:
             findings.append(f"missing visible text: {token}")
-    positions = [folded.find(token.casefold()) for token in args.ordered_text]
-    if positions and (any(position < 0 for position in positions) or positions != sorted(positions)):
-        findings.append("ordered visible text is missing or out of order")
+    cursor = 0
+    for token in args.ordered_text:
+        folded_token = token.casefold()
+        position = folded.find(folded_token, cursor)
+        if position < 0:
+            findings.append("ordered visible text is missing or out of order")
+            break
+        cursor = position + len(folded_token)
 
     return {
         "ok": not findings,

@@ -108,5 +108,5 @@ When adding a variant:
 Validate the sheets after adding, removing, or renaming D3 patterns:
 
 ```powershell
-uv run --script skills/d3/scripts/verify_composition_sheets.py skills/d3/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 70 --expected-reviewed-patterns 225 --required-variant d3-composition-radial-force-network --expect-clean
+uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/verify_composition_sheets.py skills/d3/assets/examples/d3-animated-svg/composition-sheets.html --min-variants 70 --expected-reviewed-patterns 225 --required-variant d3-composition-radial-force-network --expect-clean
 ```

@@ -45,6 +45,9 @@ jobs:
       - name: Build Pages from skill assets
         run: uv run --script scripts/build-pages.py
 
+      - name: Validate unified Pages output
+        run: uv run --script scripts/validate-pages-pattern-format.py
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

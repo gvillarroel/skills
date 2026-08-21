@@ -36,15 +36,15 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-agent-loop-overlay` | Image Overlay | Agent Loop Partial Covers | `references/patterns/agent-loop-overlay.md` |
 | `d3-task-overlap` | Set Overlap | Asymmetric Task Overlap | `references/patterns/task-overlap.md` |
 | `d3-task-overlap-dense` | Set Overlap | Saturated Task Overlap | `references/patterns/task-overlap-dense.md` |
-| `d3-venn-3` | Set Overlap | Venn Three Circle | `references/patterns/venn-3.md` |
-| `d3-venn-5` | Set Overlap | Venn Five Overlap | `references/patterns/venn-5.md` |
-| `d3-venn-7` | Set Overlap | Venn Seven Overlap | `references/patterns/venn-7.md` |
-| `d3-overlap-3-rosette` | Symmetric Overlap | Symmetric Three Circle Rosette | `references/patterns/overlap-3-rosette.md` |
-| `d3-overlap-5-rosette` | Symmetric Overlap | Symmetric Five Circle Rosette | `references/patterns/overlap-5-rosette.md` |
+| `d3-venn-3` | Set Overlap | Venn Three Circle | `references/patterns/overlap-collection.md#d3-venn-3` |
+| `d3-venn-5` | Set Overlap | Venn Five Overlap | `references/patterns/overlap-collection.md#d3-venn-5` |
+| `d3-venn-7` | Set Overlap | Venn Seven Overlap | `references/patterns/overlap-collection.md#d3-venn-7` |
+| `d3-overlap-3-rosette` | Symmetric Overlap | Symmetric Three Circle Rosette | `references/patterns/overlap-collection.md#d3-overlap-3-rosette` |
+| `d3-overlap-5-rosette` | Symmetric Overlap | Symmetric Five Circle Rosette | `references/patterns/overlap-collection.md#d3-overlap-5-rosette` |
 | `d3-overlap-7-flower` | Symmetric Overlap | Symmetric Seven Circle Flower | `references/patterns/overlap-7-flower.md` |
-| `d3-overlap-3-chain` | Asymmetric Overlap | Asymmetric Three Circle Chain | `references/patterns/overlap-3-chain.md` |
-| `d3-overlap-5-cluster` | Asymmetric Overlap | Asymmetric Five Circle Cluster | `references/patterns/overlap-5-cluster.md` |
-| `d3-overlap-7-bridge` | Asymmetric Overlap | Asymmetric Seven Circle Bridge | `references/patterns/overlap-7-bridge.md` |
+| `d3-overlap-3-chain` | Asymmetric Overlap | Asymmetric Three Circle Chain | `references/patterns/overlap-collection.md#d3-overlap-3-chain` |
+| `d3-overlap-5-cluster` | Asymmetric Overlap | Asymmetric Five Circle Cluster | `references/patterns/overlap-collection.md#d3-overlap-5-cluster` |
+| `d3-overlap-7-bridge` | Asymmetric Overlap | Asymmetric Seven Circle Bridge | `references/patterns/overlap-collection.md#d3-overlap-7-bridge` |
 | `d3-sankey` | Flow | Sankey Pipeline | `references/patterns/sankey.md` |
 | `d3-flowchart-dag` | Diagram | D3 Flowchart DAG | `references/patterns/flowchart-dag.md` |
 | `d3-sequence-lifelines` | Diagram | D3 Sequence Lifelines | `references/patterns/sequence-lifelines.md` |
@@ -57,27 +57,27 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-kanban-legend-column` | Diagram | Kanban Virtual Legend | `references/patterns/kanban-legend-column.md` |
 | `d3-kanban-legend-footer` | Diagram | Kanban Distributed Legend | `references/patterns/kanban-legend-footer.md` |
 | `d3-user-journey` | Diagram | D3 User Journey | `references/patterns/user-journey.md` |
-| `d3-parallel-coordinates` | Multivariate | Parallel Coordinates | `references/patterns/parallel-coordinates.md` |
-| `d3-bubble-scatter` | Correlation | Bubble Scatter | `references/patterns/bubble-scatter.md` |
+| `d3-parallel-coordinates` | Multivariate | Parallel Coordinates | `references/patterns/density-radial-collection.md#d3-parallel-coordinates` |
+| `d3-bubble-scatter` | Correlation | Bubble Scatter | `references/patterns/quantitative-collection.md#d3-bubble-scatter` |
 | `d3-point-cloud` | Distribution | Point Cloud | `references/patterns/point-cloud.md` |
-| `d3-connected-scatter` | Correlation | Connected Scatter | `references/patterns/connected-scatter.md` |
+| `d3-connected-scatter` | Correlation | Connected Scatter | `references/patterns/quantitative-collection.md#d3-connected-scatter` |
 | `d3-sketchy-line-chart` | Sketchy | Sketchy Line Chart | `references/patterns/sketchy-line-chart.md` |
-| `d3-histogram` | Distribution | Histogram | `references/patterns/histogram.md` |
+| `d3-histogram` | Distribution | Histogram | `references/patterns/quantitative-collection.md#d3-histogram` |
 | `d3-sketchy-histogram` | Sketchy | Sketchy Histogram | `references/patterns/sketchy-histogram.md` |
 | `d3-sketchy-gemma-comparison` | Sketchy AI | Sketchy Gemma Compare | `references/patterns/sketchy-gemma-comparison.md` |
 | `d3-gemma-comparison` | AI Model | Gemma Compare | `references/patterns/gemma-comparison.md` |
-| `d3-boxplot` | Distribution | Box Plot | `references/patterns/boxplot.md` |
-| `d3-violin` | Distribution | Violin Plot | `references/patterns/violin.md` |
-| `d3-ridgeline` | Distribution | Ridgeline | `references/patterns/ridgeline.md` |
-| `d3-contours` | Density | Density Contours | `references/patterns/contours.md` |
-| `d3-hexbin` | Density | Hexbin Field | `references/patterns/hexbin.md` |
-| `d3-calendar` | Heatmap | Calendar Heatmap | `references/patterns/calendar.md` |
-| `d3-lollipop` | Ranking | Lollipop | `references/patterns/lollipop.md` |
+| `d3-boxplot` | Distribution | Box Plot | `references/patterns/statistical-collection.md#d3-boxplot` |
+| `d3-violin` | Distribution | Violin Plot | `references/patterns/quantitative-collection.md#d3-violin` |
+| `d3-ridgeline` | Distribution | Ridgeline | `references/patterns/quantitative-collection.md#d3-ridgeline` |
+| `d3-contours` | Density | Density Contours | `references/patterns/density-radial-collection.md#d3-contours` |
+| `d3-hexbin` | Density | Hexbin Field | `references/patterns/density-radial-collection.md#d3-hexbin` |
+| `d3-calendar` | Heatmap | Calendar Heatmap | `references/patterns/density-radial-collection.md#d3-calendar` |
+| `d3-lollipop` | Ranking | Lollipop | `references/patterns/quantitative-collection.md#d3-lollipop` |
 | `d3-circular-bar` | Ranking | Circular Barplot | `references/patterns/circular-bar.md` |
 | `d3-rotating-dot-rings` | Radial pattern | Rotating Dot Rings | `references/patterns/rotating-dot-rings.md` |
 | `d3-radar` | Multivariate | Radar Profile | `references/patterns/radar.md` |
-| `d3-bump` | Temporal | Bump Chart | `references/patterns/bump.md` |
-| `d3-slope` | Temporal | Slope Chart | `references/patterns/slope.md` |
+| `d3-bump` | Temporal | Bump Chart | `references/patterns/quantitative-collection.md#d3-bump` |
+| `d3-slope` | Temporal | Slope Chart | `references/patterns/quantitative-collection.md#d3-slope` |
 | `d3-horizon` | Temporal | Horizon Chart | `references/patterns/horizon.md` |
 | `d3-geo-route` | Geospatial | Projected Routes | `references/patterns/geo-route.md` |
 | `d3-symbol-glyphs` | Glyphs | Symbol Glyphs | `references/patterns/symbol-glyphs.md` |
@@ -86,7 +86,7 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-alluvial` | Flow | Alluvial Bands | `references/patterns/alluvial.md` |
 | `d3-cluster-hulls` | Proximity | Cluster Hulls | `references/patterns/cluster-hulls.md` |
 | `d3-delaunay-mesh` | Proximity | Delaunay Mesh | `references/patterns/delaunay-mesh.md` |
-| `d3-waffle` | Part-to-whole | Waffle Matrix | `references/patterns/waffle.md` |
+| `d3-waffle` | Part-to-whole | Waffle Matrix | `references/patterns/density-radial-collection.md#d3-waffle` |
 | `d3-context-window-matrix` | Context | Context Window Matrix | `references/patterns/context-window-matrix.md` |
 | `d3-context-window-fill` | Context | Token Boxes To Context Window | `references/patterns/context-window-fill.md` |
 | `d3-token-sampler` | LLM | Token Probability Sampler | `references/patterns/token-sampler.md` |
@@ -126,14 +126,14 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-waterfall` | Accounting | Waterfall | `references/patterns/waterfall.md` |
 | `d3-diverging-stack` | Sentiment | Diverging Stack | `references/patterns/diverging-stack.md` |
 | `d3-ternary` | Composition | Ternary Plot | `references/patterns/ternary.md` |
-| `d3-point-range` | Uncertainty | Point Range | `references/patterns/point-range.md` |
-| `d3-bullet` | Performance | Bullet Chart | `references/patterns/bullet.md` |
-| `d3-facet-sparklines` | Small multiples | Facet Sparklines | `references/patterns/facet-sparklines.md` |
-| `d3-barcode-plot` | Events | Barcode Plot | `references/patterns/barcode-plot.md` |
+| `d3-point-range` | Uncertainty | Point Range | `references/patterns/statistical-collection.md#d3-point-range` |
+| `d3-bullet` | Performance | Bullet Chart | `references/patterns/statistical-collection.md#d3-bullet` |
+| `d3-facet-sparklines` | Small multiples | Facet Sparklines | `references/patterns/statistical-collection.md#d3-facet-sparklines` |
+| `d3-barcode-plot` | Events | Barcode Plot | `references/patterns/statistical-collection.md#d3-barcode-plot` |
 | `d3-event-cascade` | Causality | Event Cascade | `references/patterns/event-cascade.md` |
 | `d3-geofence-join` | Spatial join | Geofenced Activity | `references/patterns/geofence-join.md` |
 | `d3-isoline-terrain` | Surface | Isoline Terrain | `references/patterns/isoline-terrain.md` |
-| `d3-ecdf` | Distribution | Empirical CDF | `references/patterns/ecdf.md` |
+| `d3-ecdf` | Distribution | Empirical CDF | `references/patterns/statistical-collection.md#d3-ecdf` |
 | `d3-forecast-fan` | Uncertainty | Forecast Fan | `references/patterns/forecast-fan.md` |
 | `d3-lasso-selection` | Selection | Lasso Selection | `references/patterns/lasso-selection.md` |
 | `d3-freehand-trace` | Motion | Freehand Trace | `references/patterns/freehand-trace.md` |
@@ -176,57 +176,57 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-smooth-zoom` | Focus | Smooth Zoom | `references/patterns/smooth-zoom.md` |
 | `d3-projection-switch` | Projection | Projection Switch | `references/patterns/projection-switch.md` |
 | `d3-world-tour` | Geospatial | World Tour | `references/patterns/world-tour.md` |
-| `d3-moving-average` | Analysis | Moving Average | `references/patterns/moving-average.md` |
+| `d3-moving-average` | Analysis | Moving Average | `references/patterns/statistical-collection.md#d3-moving-average` |
 | `d3-bollinger-bands` | Financial | Bollinger Bands | `references/patterns/bollinger-bands.md` |
-| `d3-qq-plot` | Diagnostics | Q-Q Plot | `references/patterns/qq-plot.md` |
+| `d3-qq-plot` | Diagnostics | Q-Q Plot | `references/patterns/statistical-collection.md#d3-qq-plot` |
 | `d3-scatterplot-matrix` | Multivariate | Scatterplot Matrix | `references/patterns/scatterplot-matrix.md` |
-| `d3-variable-color-line` | Encoding | Variable Color Line | `references/patterns/variable-color-line.md` |
+| `d3-variable-color-line` | Encoding | Variable Color Line | `references/patterns/statistical-collection.md#d3-variable-color-line` |
 | `d3-marey-trains` | Schedule | Marey Trains | `references/patterns/marey-trains.md` |
 | `d3-radial-stacked-bars` | Radial | Radial Stacked Bars | `references/patterns/radial-stacked-bars.md` |
 | `d3-bivariate-choropleth` | Geospatial | Bivariate Choropleth | `references/patterns/bivariate-choropleth.md` |
 | `d3-projection-comparison` | Projection | Projection Comparison | `references/patterns/projection-comparison.md` |
-| `d3-tissot-indicatrix` | Projection | Tissot Indicatrix | `references/patterns/tissot-indicatrix.md` |
-| `d3-vector-field` | Field | Vector Field | `references/patterns/vector-field.md` |
+| `d3-tissot-indicatrix` | Projection | Tissot Indicatrix | `references/patterns/science-geometry-collection.md#d3-tissot-indicatrix` |
+| `d3-vector-field` | Field | Vector Field | `references/patterns/science-geometry-collection.md#d3-vector-field` |
 | `d3-solar-terminator` | Geospatial | Solar Terminator | `references/patterns/solar-terminator.md` |
 | `d3-star-map` | Astronomy | Star Map | `references/patterns/star-map.md` |
-| `d3-polar-clock` | Radial | Polar Clock | `references/patterns/polar-clock.md` |
+| `d3-polar-clock` | Radial | Polar Clock | `references/patterns/density-radial-collection.md#d3-polar-clock` |
 | `d3-moon-phases` | Astronomy | Moon Phases | `references/patterns/moon-phases.md` |
-| `d3-parabolic-arcs` | Geometry | Parabolic Arcs | `references/patterns/parabolic-arcs.md` |
+| `d3-parabolic-arcs` | Geometry | Parabolic Arcs | `references/patterns/science-geometry-collection.md#d3-parabolic-arcs` |
 | `d3-burtin-antibiotics` | Radial matrix | Burtin Antibiotics | `references/patterns/burtin-antibiotics.md` |
 | `d3-sized-donut-multiples` | Multiples | Sized Donut Multiples | `references/patterns/sized-donut-multiples.md` |
 | `d3-colorbrewer-splines` | Color | ColorBrewer Splines | `references/patterns/colorbrewer-splines.md` |
-| `d3-apollonius-circles` | Geometry | Apollonius Circles | `references/patterns/apollonius-circles.md` |
+| `d3-apollonius-circles` | Geometry | Apollonius Circles | `references/patterns/science-geometry-collection.md#d3-apollonius-circles` |
 | `d3-spike-map` | Geospatial | Spike Map | `references/patterns/spike-map.md` |
 | `d3-bubble-map` | Geospatial | Bubble Map | `references/patterns/bubble-map.md` |
-| `d3-normalized-stacked-area` | Temporal | Normalized Stacked Area | `references/patterns/normalized-stacked-area.md` |
+| `d3-normalized-stacked-area` | Temporal | Normalized Stacked Area | `references/patterns/statistical-collection.md#d3-normalized-stacked-area` |
 | `d3-directed-chord` | Flow | Directed Chord | `references/patterns/directed-chord.md` |
-| `d3-volcano-contours` | Surface | Volcano Contours | `references/patterns/volcano-contours.md` |
-| `d3-radial-area` | Radial | Radial Area | `references/patterns/radial-area.md` |
+| `d3-volcano-contours` | Surface | Volcano Contours | `references/patterns/density-radial-collection.md#d3-volcano-contours` |
+| `d3-radial-area` | Radial | Radial Area | `references/patterns/density-radial-collection.md#d3-radial-area` |
 | `d3-mirrored-beeswarm` | Distribution | Mirrored Beeswarm | `references/patterns/mirrored-beeswarm.md` |
 | `d3-index-chart` | Temporal | Index Chart | `references/patterns/index-chart.md` |
 | `d3-quadtree-partition` | Indexing | Animated Quadtree | `references/patterns/quadtree-partition.md` |
 | `d3-drag-collisions` | Simulation | Drag Collisions | `references/patterns/drag-collisions.md` |
-| `d3-dot-plot` | Ranking | Dot Plot | `references/patterns/dot-plot.md` |
+| `d3-dot-plot` | Ranking | Dot Plot | `references/patterns/statistical-collection.md#d3-dot-plot` |
 | `d3-line-missing-data` | Temporal | Line with Missing Data | `references/patterns/line-missing-data.md` |
 | `d3-area-missing-data` | Temporal | Area with Missing Data | `references/patterns/area-missing-data.md` |
 | `d3-orthographic-shading` | Projection | Orthographic Shading | `references/patterns/orthographic-shading.md` |
 | `d3-parallel-sets` | Flow | Parallel Sets | `references/patterns/parallel-sets.md` |
-| `d3-shape-tween` | Morph | Shape Tween | `references/patterns/shape-tween.md` |
-| `d3-arc-tween` | Morph | Arc Tween | `references/patterns/arc-tween.md` |
-| `d3-path-tween` | Morph | Path Tween | `references/patterns/path-tween.md` |
-| `d3-text-tween` | Motion | Text Tween | `references/patterns/text-tween.md` |
-| `d3-brush-handles` | Interaction | Brush Handles | `references/patterns/brush-handles.md` |
-| `d3-brush-snapping` | Interaction | Brush Snapping | `references/patterns/brush-snapping.md` |
-| `d3-ordinal-brushing` | Interaction | Ordinal Brushing | `references/patterns/ordinal-brushing.md` |
-| `d3-zoomable-bar` | Focus | Zoomable Bar | `references/patterns/zoomable-bar.md` |
-| `d3-xy-zoom` | Focus | X/Y Zoom | `references/patterns/xy-zoom.md` |
-| `d3-versor-dragging` | Projection | Versor Dragging | `references/patterns/versor-dragging.md` |
-| `d3-you-draw-it` | Prediction | You Draw It | `references/patterns/you-draw-it.md` |
+| `d3-shape-tween` | Morph | Shape Tween | `references/patterns/interaction-motion-collection.md#d3-shape-tween` |
+| `d3-arc-tween` | Morph | Arc Tween | `references/patterns/interaction-motion-collection.md#d3-arc-tween` |
+| `d3-path-tween` | Morph | Path Tween | `references/patterns/interaction-motion-collection.md#d3-path-tween` |
+| `d3-text-tween` | Motion | Text Tween | `references/patterns/interaction-motion-collection.md#d3-text-tween` |
+| `d3-brush-handles` | Interaction | Brush Handles | `references/patterns/interaction-motion-collection.md#d3-brush-handles` |
+| `d3-brush-snapping` | Interaction | Brush Snapping | `references/patterns/interaction-motion-collection.md#d3-brush-snapping` |
+| `d3-ordinal-brushing` | Interaction | Ordinal Brushing | `references/patterns/interaction-motion-collection.md#d3-ordinal-brushing` |
+| `d3-zoomable-bar` | Focus | Zoomable Bar | `references/patterns/interaction-motion-collection.md#d3-zoomable-bar` |
+| `d3-xy-zoom` | Focus | X/Y Zoom | `references/patterns/interaction-motion-collection.md#d3-xy-zoom` |
+| `d3-versor-dragging` | Projection | Versor Dragging | `references/patterns/interaction-motion-collection.md#d3-versor-dragging` |
+| `d3-you-draw-it` | Prediction | You Draw It | `references/patterns/interaction-motion-collection.md#d3-you-draw-it` |
 | `d3-image-histogram` | Raster | Image Histogram | `references/patterns/image-histogram.md` |
 | `d3-surface-stable-dither` | Dithering | Surface-Stable Fractal Dither | `references/patterns/surface-stable-dither.md` |
 | `d3-population-pyramid` | Demography | Population Pyramid | `references/patterns/population-pyramid.md` |
-| `d3-hr-diagram` | Science | H-R Diagram | `references/patterns/hr-diagram.md` |
-| `d3-solar-path` | Astronomy | Solar Path | `references/patterns/solar-path.md` |
+| `d3-hr-diagram` | Science | H-R Diagram | `references/patterns/science-geometry-collection.md#d3-hr-diagram` |
+| `d3-solar-path` | Astronomy | Solar Path | `references/patterns/science-geometry-collection.md#d3-solar-path` |
 | `d3-non-contiguous-cartogram` | Geospatial | Non-contiguous Cartogram | `references/patterns/non-contiguous-cartogram.md` |
 | `d3-hexbin-map` | Geospatial | Hexbin Map | `references/patterns/hexbin-map.md` |
 | `d3-airport-voronoi` | Geospatial | Airports Voronoi | `references/patterns/airport-voronoi.md` |
@@ -238,11 +238,11 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-line-cursor` | Interaction | Line Cursor | `references/patterns/line-cursor.md` |
 | `d3-cluster-dendrogram` | Hierarchy | Cluster Dendrogram | `references/patterns/cluster-dendrogram.md` |
 | `d3-antimeridian-cutting` | Projection | Antimeridian Cutting | `references/patterns/antimeridian-cutting.md` |
-| `d3-adaptive-sampling` | Geometry | Adaptive Sampling | `references/patterns/adaptive-sampling.md` |
-| `d3-curve-contexts` | Geometry | Context to Curve | `references/patterns/curve-contexts.md` |
-| `d3-satellite-projection` | Projection | Satellite Projection | `references/patterns/satellite-projection.md` |
-| `d3-exoplanet-orbits` | Science | Exoplanet Orbits | `references/patterns/exoplanet-orbits.md` |
-| `d3-epicyclic-gearing` | Geometry | Epicyclic Gearing | `references/patterns/epicyclic-gearing.md` |
+| `d3-adaptive-sampling` | Geometry | Adaptive Sampling | `references/patterns/science-geometry-collection.md#d3-adaptive-sampling` |
+| `d3-curve-contexts` | Geometry | Context to Curve | `references/patterns/science-geometry-collection.md#d3-curve-contexts` |
+| `d3-satellite-projection` | Projection | Satellite Projection | `references/patterns/science-geometry-collection.md#d3-satellite-projection` |
+| `d3-exoplanet-orbits` | Science | Exoplanet Orbits | `references/patterns/science-geometry-collection.md#d3-exoplanet-orbits` |
+| `d3-epicyclic-gearing` | Geometry | Epicyclic Gearing | `references/patterns/science-geometry-collection.md#d3-epicyclic-gearing` |
 | `d3-organic-growth` | Organic growth | Organic Growth Patterns | `references/patterns/organic-growth.md` |
 | `d3-phyllotaxis-seed-head` | Organic growth | Phyllotaxis Seed Head | `references/patterns/organic-growth.md` |
 | `d3-lsystem-canopy` | Organic growth | L-system Canopy | `references/patterns/organic-growth.md` |

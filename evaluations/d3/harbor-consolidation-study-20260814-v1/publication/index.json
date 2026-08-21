@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 13,
+    "headSha256": "69e60f18b2d8936d2738509871e622f2254dc2344efc637508a8cbd2de0c9e54"
+  },
+  "progress": {
+    "completedCount": 1,
+    "completionPercent": 25.0,
+    "stageCount": 4
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-2x-semantic90-bundle10-consolidation-v1",
+    "createdAt": "2026-08-14T17:22:24Z",
+    "studyId": "d3-consolidation-20260814-v1",
+    "title": "D3 unified skill and Pages release validation"
+  }
+}

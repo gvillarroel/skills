@@ -19,7 +19,7 @@ from typing import Any
 from verify_pareto_task import bundle_profile, runtime_files
 
 
-EXPECTED_PATTERN_COUNT = 238
+EXPECTED_PATTERN_ROUTE_COUNT = 242
 REQUIRED_RESOURCES = (
     "SKILL.md",
     "agents/openai.yaml",
@@ -42,7 +42,10 @@ REQUIRED_RESOURCES = (
     "scripts/validate_logo_artifact.py",
 )
 PATH_TOKEN = re.compile(r"`((?:skills/d3/)?(?:references|scripts|assets)/[^`]+)`")
-INDEX_PATTERN = re.compile(r"`(references/patterns/[a-z0-9-]+\.md)`")
+INDEX_ROW = re.compile(
+    r"(?m)^\|\s*`(?P<id>d3-[a-z0-9-]+)`\s*\|[^|\n]*\|[^|\n]*\|\s*"
+    r"`(?P<route>references/patterns/[a-z0-9-]+\.md(?:#[a-z0-9-]+)?)`\s*\|\s*$"
+)
 RETIRED_D3_SKILL = re.compile(
     r"skills/d3-(?:animated-svg|composition-evaluator|composition-recomposer|logo-design)(?:/|\b)"
 )
@@ -147,12 +150,19 @@ def validate(root: Path, policy: dict[str, Any]) -> dict[str, Any]:
         findings.append("SKILL.md routes normal use into acceptance examples")
 
     pattern_files = sorted((root / "references" / "patterns").glob("*.md"))
-    if len(pattern_files) != EXPECTED_PATTERN_COUNT:
-        findings.append(
-            f"Expected {EXPECTED_PATTERN_COUNT} compact pattern references, found {len(pattern_files)}"
-        )
     index_text = (root / "references" / "pattern-index.md").read_text(encoding="utf-8")
-    indexed = set(INDEX_PATTERN.findall(index_text))
+    index_rows = [(match.group("id"), match.group("route")) for match in INDEX_ROW.finditer(index_text)]
+    if len(index_rows) != EXPECTED_PATTERN_ROUTE_COUNT:
+        findings.append(
+            f"Expected {EXPECTED_PATTERN_ROUTE_COUNT} indexed pattern routes, found {len(index_rows)}"
+        )
+    pattern_ids = [pattern_id for pattern_id, _ in index_rows]
+    duplicate_ids = sorted(
+        pattern_id for pattern_id in set(pattern_ids) if pattern_ids.count(pattern_id) > 1
+    )
+    if duplicate_ids:
+        findings.append(f"Duplicate pattern IDs in index: {duplicate_ids[:5]}")
+    indexed = {route.split("#", 1)[0] for _, route in index_rows}
     actual = {
         path.relative_to(root).as_posix()
         for path in pattern_files
@@ -163,6 +173,18 @@ def validate(root: Path, policy: dict[str, Any]) -> dict[str, Any]:
         findings.append(
             f"Pattern index mismatch: missing={missing[:5]}, stale={stale[:5]}"
         )
+    for pattern_id, route in index_rows:
+        relative, separator, fragment = route.partition("#")
+        target = root / relative
+        if not target.is_file():
+            continue
+        target_text = target.read_text(encoding="utf-8", errors="replace")
+        if f"`{pattern_id}`" not in target_text:
+            findings.append(f"Pattern route {route} does not contain Pattern ID {pattern_id}")
+        if separator and not re.search(
+            rf"(?m)^#{{1,6}}\s+{re.escape(fragment)}\s*$", target_text
+        ):
+            findings.append(f"Pattern route fragment is missing: {route}")
 
     profile = bundle_profile(root, policy)
     findings.extend(profile["findings"])
@@ -172,7 +194,9 @@ def validate(root: Path, policy: dict[str, Any]) -> dict[str, Any]:
         "sha256": digest_files(root, files),
         "fileCount": len(files),
         "byteCount": sum(path.stat().st_size for path in files),
-        "patternReferenceCount": len(pattern_files),
+        "patternReferenceCount": len(index_rows),
+        "patternFileCount": len(pattern_files),
+        "consolidatedPatternRouteCount": sum("#" in route for _, route in index_rows),
         "bundleProfile": profile,
         "findings": sorted(set(findings)),
     }

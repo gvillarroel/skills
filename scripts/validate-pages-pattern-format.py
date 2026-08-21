@@ -22,6 +22,8 @@ class AttributeParser(HTMLParser):
         self.body: dict[str, str] | None = None
         self.cards: list[dict[str, str]] = []
         self.icons: list[dict[str, str]] = []
+        self.d3_capabilities: list[dict[str, str]] = []
+        self.d3_gallery_links: list[dict[str, str]] = []
         self.meta: dict[str, str] = {}
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
@@ -30,6 +32,10 @@ class AttributeParser(HTMLParser):
             self.body = attributes
         if tag == "a" and "data-example-id" in attributes:
             self.cards.append(attributes)
+        if "data-capability-id" in attributes:
+            self.d3_capabilities.append(attributes)
+        if tag == "a" and "data-gallery-id" in attributes:
+            self.d3_gallery_links.append(attributes)
         if tag == "meta" and "name" in attributes and "content" in attributes:
             self.meta[attributes["name"]] = attributes["content"]
         if tag == "link" and "icon" in attributes.get("rel", "").lower().split():
@@ -61,6 +67,70 @@ def require_nonempty_attr(attrs: dict[str, str] | None, name: str, context: str)
     actual = attrs.get(name)
     if not actual:
         fail(f"{context} is missing non-empty {name}")
+
+
+def validate_unified_d3(catalog: list[dict[str, object]]) -> None:
+    canonical_id = "d3"
+    legacy_ids = {
+        "d3-animated-svg",
+        "d3-animated-svg-cs1",
+        "d3-animated-svg-colorset2",
+        "d3-logo-design",
+        "d3-logo-textures",
+    }
+    d3_entries = [
+        entry.get("id")
+        for entry in catalog
+        if entry.get("id") == canonical_id or str(entry.get("id", "")).startswith("d3-")
+    ]
+    if d3_entries != [canonical_id]:
+        fail(f"D3 must have exactly one catalog entry ({canonical_id}), found {d3_entries}")
+
+    canonical_path = DOCS / "examples" / canonical_id / "index.html"
+    page = parse_html(canonical_path)
+    context = canonical_path.relative_to(ROOT).as_posix()
+    require_attr(page.body, "data-page-kind", "skill-hub", context)
+    require_attr(page.body, "data-capability-count", "8", context)
+    require_attr(page.body, "data-gallery-link-count", "6", context)
+
+    expected_capabilities = {
+        "quantitative-charts",
+        "networks-flows",
+        "maps-spatial",
+        "motion-interaction",
+        "ai-system-explainers",
+        "composition-audit",
+        "logos-textures",
+        "portable-output",
+    }
+    capability_ids = {item.get("data-capability-id") for item in page.d3_capabilities}
+    if capability_ids != expected_capabilities or len(page.d3_capabilities) != len(expected_capabilities):
+        fail(f"unified D3 hub has incomplete or duplicate capabilities: {sorted(capability_ids)}")
+
+    expected_galleries = {
+        "patterns": "../d3-animated-svg/",
+        "colorset1": "../d3-animated-svg-cs1/",
+        "colorset2": "../d3-animated-svg-colorset2/",
+        "compositions": "../d3-animated-svg/composition-sheets.html",
+        "logos": "../d3-logo-design/",
+        "textures": "../d3-logo-textures/",
+    }
+    gallery_links = {
+        item.get("data-gallery-id"): item.get("href") for item in page.d3_gallery_links
+    }
+    if gallery_links != expected_galleries or len(page.d3_gallery_links) != len(expected_galleries):
+        fail(f"unified D3 hub has incomplete or duplicate focused gallery links: {gallery_links}")
+    for gallery_id, href in gallery_links.items():
+        target = (canonical_path.parent / str(href)).resolve()
+        if target.is_dir():
+            target = target / "index.html"
+        if not target.is_file():
+            fail(f"unified D3 hub link {gallery_id} has no generated target: {href}")
+
+    for legacy_id in legacy_ids:
+        legacy_path = DOCS / "examples" / legacy_id / "index.html"
+        if not legacy_path.is_file():
+            fail(f"legacy D3 route was not preserved: {legacy_path.relative_to(ROOT).as_posix()}")
 
 
 def main() -> int:
@@ -118,6 +188,8 @@ def main() -> int:
             fail(f"{context} is missing meta pattern-page='true'")
         if not page.icons or not page.icons[0].get("href"):
             fail(f"{context} is missing a non-empty favicon link")
+
+    validate_unified_d3(catalog)
 
     print(f"Validated {len(catalog)} published Pages entries with stable pattern-page metadata.")
     return 0

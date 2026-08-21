@@ -1,0 +1,34 @@
+schemaVersion: 1
+
+search:
+  id: d3-pareto-20260810-v1
+  baselineSkill: ../../runs/d3-pareto-20260810-v1/candidates/baseline/d3
+  baselineCandidate: baseline
+  outputDir: ../../runs/d3-pareto-20260810-v1/search
+  generation: 2
+  previousGenerationLog: ../../runs/d3-pareto-20260810-v1/search/development/generation-001/pareto-archive.json
+
+harbor:
+  developmentJob: ../../runs/d3-pareto-20260810-v1-dataset/development-job.yaml
+  holdoutJob: ../../runs/d3-pareto-20260810-v1-dataset/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 0.9
+  requiredRewards:
+    semantic_reward: 1
+  requiredEnv: []
+
+candidates:
+  - id: baseline
+    skill: ../../runs/d3-pareto-20260810-v1/candidates/baseline/d3
+    parents: []
+    rationale: Preserve the immutable semantic reference while checking run-to-run variance.
+  - id: baseline-runtime-pruned
+    skill: ../../runs/d3-pareto-20260810-v1/candidates/baseline-runtime-pruned/d3
+    parents:
+      - baseline
+    rationale: Preserve baseline instructions and references, remove seventeen fixture-maintenance or repository-test scripts from the runtime payload, route every root reference conditionally, and add two development-trace-derived guards for offline D3 embedding and valid JavaScript math APIs.
+
+promotion:
+  minimumMeanGain: 0.01
+  allowCaseRegressions: false
+  requireNoErrors: true

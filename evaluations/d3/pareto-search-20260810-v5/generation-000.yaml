@@ -1,0 +1,49 @@
+schemaVersion: 1
+
+search:
+  id: d3-pareto-20260810-v5
+  baselineSkill: ../../runs/d3-pareto-20260810-v8/sealed/mandatory-builder-hard-stop/candidate/skills/d3
+  baselineCandidate: mandatory-builder-hard-stop
+  outputDir: ../../runs/d3-pareto-20260810-v15/search
+  generation: 0
+  selectedCandidate: correlated-metadata-resolver
+  developmentArchive: ../../runs/d3-pareto-20260810-v15/search/development/generation-000/pareto-archive.json
+
+harbor:
+  developmentJob: ../../runs/d3-pareto-20260810-v10/validation/configs/validation-v3.yaml
+  holdoutJob: ../../runs/d3-pareto-20260810-v14-dataset/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 0.9
+  requiredRewards:
+    semantic_reward: 1
+  requiredEnv: []
+
+candidates:
+  - id: mandatory-builder-hard-stop
+    skill: ../../runs/d3-pareto-20260810-v8/sealed/mandatory-builder-hard-stop/candidate/skills/d3
+    parents: []
+    jobDirectory: ../../runs/d3-pareto-20260810-v10/validation/jobs/d3-v10-validation-v3
+    rationale: Preserve the prior compact 309-file winner as the exact control on randomized validation-v3, where one literal-ID mutation remained.
+  - id: literal-id-guard
+    skill: ../../runs/d3-pareto-20260810-v13/sealed/literal-id-guard/candidate/skills/d3
+    parents:
+      - mandatory-builder-hard-stop
+    jobDirectory: ../../runs/d3-pareto-20260810-v13/development/jobs/d3-v13-dev-consumed-v3-original-checksum
+    rationale: Cross-check canonical recomposition IDs inside the existing builder and prohibit ID normalization while retaining 309 runtime files, 83 SKILL.md lines, and zero orphan root references.
+  - id: managed-metadata-guard
+    skill: ../../runs/d3-pareto-20260810-v16/sealed/managed-metadata-guard/candidate/skills/d3
+    parents:
+      - literal-id-guard
+    jobDirectory: ../../runs/d3-pareto-20260810-v16/development/jobs/d3-v16-dev-consumed-v3
+    rationale: Accept exact redundant builder-managed metadata and keep the logo pattern bound to patternId; retain as rejected evidence because one flow retry still degraded correlated IDs.
+  - id: correlated-metadata-resolver
+    skill: ../../runs/d3-pareto-20260810-v17/sealed/correlated-metadata-resolver/candidate/skills/d3
+    parents:
+      - managed-metadata-guard
+    jobDirectory: ../../runs/d3-pareto-20260810-v17/development/jobs/d3-v17-dev-consumed-v3
+    rationale: Resolve redundant recomposition flags and exact attributes as one correlated contract while remaining fail-closed on genuine conflicts; achieved eight of eight semantic passes with no errors.
+
+promotion:
+  minimumMeanGain: 0.01
+  allowCaseRegressions: false
+  requireNoErrors: true

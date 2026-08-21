@@ -46,6 +46,11 @@ Use these when evaluating a recomposed variant against the source pattern that g
 - The simplified preview keeps a reasonable mark vocabulary from the base SVG: node-link patterns keep circles and connectors, matrices keep cells, flows keep connectors, dense-label views keep labels and leaders.
 - Lower source-closeness scores are acceptable for highly abstract previews, but the score should explain what became more generic.
 
+For deeper composition comparison or skill maintenance, read
+`composition-audit.md`, `composition-contract.md`, and
+`composition-variants.md`. Read `research-foundations.md` only when the task
+asks for methodological provenance.
+
 ## Scripted Scoring
 
 For gallery-level composition sheets, prefer `scripts/evaluate_composition_variants.py` after basic render validation. It opens the rendered composition sheet and base gallery in Chromium and reports:

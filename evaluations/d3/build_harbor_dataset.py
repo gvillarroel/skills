@@ -569,12 +569,20 @@ def write_job_config(
     skill_source: Path | None = None,
     config_path: Path | None = None,
     job_name: str | None = None,
+    prime_environment_skill: bool = True,
+    jobs_dir: Path | None = None,
 ) -> Path:
     config_path = config_path or output_root / f"{split}-job.yaml"
     job_name = job_name or f"{run_id}-{split}-spark"
+    jobs_dir = (jobs_dir or output_root / "jobs").resolve()
     skill_source = (skill_source or repo_root / "skills" / "d3").resolve()
+    environment_skill_line = (
+        f"    skill_source_dir: {quoted(skill_source)}\n"
+        if prime_environment_skill
+        else ""
+    )
     config = f"""job_name: {quoted(job_name)}
-jobs_dir: {quoted(output_root / 'jobs')}
+jobs_dir: {quoted(jobs_dir)}
 n_attempts: {attempts}
 n_concurrent_trials: {concurrency}
 quiet: true
@@ -587,7 +595,7 @@ environment:
   memory_enforcement_policy: ignore
   kwargs:
     shared_cache_dir: {quoted(repo_root / 'evaluations' / 'runs' / 'harbor-shared-cache')}
-    skill_source_dir: {quoted(skill_source)}
+{environment_skill_line.rstrip()}
 agents:
   - name: codex
     model_name: {quoted(model)}
@@ -606,6 +614,7 @@ artifacts:
   - source: "/app/deliverables"
     destination: "deliverables"
 """
+    config_path.parent.mkdir(parents=True, exist_ok=True)
     config_path.write_text(config, encoding="utf-8", newline="\n")
     return config_path
 

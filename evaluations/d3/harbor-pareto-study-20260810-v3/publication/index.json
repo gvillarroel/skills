@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 33,
+    "headSha256": "32c7292e119c0f9625d5ca93dc30a17cdf2aa9ff4cb5a810f4258046d52baa2c"
+  },
+  "progress": {
+    "completedCount": 3,
+    "completionPercent": 50.0,
+    "stageCount": 6
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-2x-semantic90-bundle10-v3",
+    "createdAt": "2026-08-10T15:31:51Z",
+    "studyId": "d3-pareto-20260810-v3",
+    "title": "D3 unified-skill Pareto selection and sealed final holdout"
+  }
+}

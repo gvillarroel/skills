@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 15,
+    "headSha256": "0f47463439ab2fc0ff150d9c9d56fa91ab5421bc76e8eab7eaf419e8e716c58b"
+  },
+  "progress": {
+    "completedCount": 1,
+    "completionPercent": 20.0,
+    "stageCount": 5
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-2x-semantic100-bundle-pareto-v7",
+    "createdAt": "2026-08-10T17:22:22Z",
+    "studyId": "d3-pareto-20260810-v7",
+    "title": "D3 unified-skill clean final gate"
+  }
+}
