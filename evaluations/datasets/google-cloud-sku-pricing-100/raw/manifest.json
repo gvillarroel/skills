@@ -1,0 +1,37 @@
+{
+  "apiVersion": "v2beta",
+  "currencyCode": "USD",
+  "datasetId": "google-cloud-sku-pricing-100",
+  "pageSize": 5000,
+  "paginationComplete": true,
+  "retrievalCompletedAt": "2026-08-26T01:29:04.265784+00:00",
+  "retrievalStartedAt": "2026-08-26T01:26:56.054841+00:00",
+  "schemaVersion": 1,
+  "snapshotId": "gcp-pricing-636387a8dd1a10dc",
+  "sources": [
+    {
+      "collection": "services",
+      "endpoint": "https://cloudbilling.googleapis.com/v2beta/services",
+      "file": "services.jsonl",
+      "pages": 1,
+      "rows": 1776,
+      "sha256": "f877d75d9a71c55195c497dde4a0c8942b2ee71c5e9156b30dbb0c27cb8f17d5"
+    },
+    {
+      "collection": "skus",
+      "endpoint": "https://cloudbilling.googleapis.com/v2beta/skus",
+      "file": "skus.jsonl",
+      "pages": 21,
+      "rows": 102518,
+      "sha256": "2286c82dc0ed5ed04cb1be3f725b81cffc8c1a80ad8b2de8443cdcd87f01b30e"
+    },
+    {
+      "collection": "prices",
+      "endpoint": "https://cloudbilling.googleapis.com/v2beta/skus/-/prices",
+      "file": "prices-usd.jsonl",
+      "pages": 21,
+      "rows": 102518,
+      "sha256": "0ab78a958ae292f67167fec51bfeed612caf190026ea67cef4d2bfd56a75ca35"
+    }
+  ]
+}

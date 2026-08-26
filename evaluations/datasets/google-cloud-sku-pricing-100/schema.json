@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/google-cloud-sku-pricing-question-batch.schema.json",
+  "title": "Google Cloud SKU pricing question batch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "dataset_id", "snapshot_id", "batch_id", "questions"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "dataset_id": {"const": "google-cloud-sku-pricing-100"},
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "batch_id": {"type": "string", "minLength": 1},
+    "questions": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "family", "prompt"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^gcp-[a-z-]+-[0-9]{2}$"},
+          "family": {"type": "string", "minLength": 1},
+          "prompt": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
+

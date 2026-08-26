@@ -1,0 +1,33 @@
+{
+  "bigQueryScenario": "regional-contract-price-in-account-currency",
+  "canonicalAnswersStoredInManifest": false,
+  "datasetId": "google-cloud-sku-pricing-dual-source-holdout-v2-20260826",
+  "freshParquetQuestions": {
+    "namedSkuCount": 11,
+    "questionContractSha256": "02a27591efc3347644599604a0382dd294576d97e01338f20f62637782962b76",
+    "questionCount": 10,
+    "releasedNamedSkuCount": 176,
+    "releasedNamedSkuOverlapCount": 0,
+    "releasedPromptCount": 160,
+    "releasedPromptOverlapCount": 0,
+    "seed": 20260828
+  },
+  "holdoutReleased": true,
+  "holdoutRelease": {
+    "decision": "keep-baseline",
+    "releasedAt": "2026-08-26T14:33:23.3334389Z",
+    "runJson": "evaluations/runs/google-cloud-sku-pricing-dual-source-evolution-20260826-v2/run.json"
+  },
+  "modeTaskCounts": {
+    "bigquery": 1,
+    "parquet": 1
+  },
+  "parquet": {
+    "bytes": 4399121,
+    "sha256": "20275538572f0b9c19e2efceaa98127385edb28ba0942097fe029ecb3aebf5c0"
+  },
+  "reason": "Fresh holdout after the first dual-source gate was released and one transferable exact-copy instruction was added.",
+  "schemaVersion": 1,
+  "snapshotId": "gcp-pricing-636387a8dd1a10dc",
+  "taskCount": 2
+}

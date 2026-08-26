@@ -1,0 +1,17 @@
+n_concurrent_trials: 1
+
+environment:
+  import_path: evaluations.google-cloud-sku-pricing.harbor_wsl_environment:PricingWorkspaceWSLEnvironment
+
+agents:
+  - name: evaluations.google-cloud-sku-pricing.harbor_pi_agent:PricingWorkspaceWindowsPi
+    model_name: openai-codex/gpt-5.6-luna
+    skills:
+      - skills/google-cloud-sku-pricing
+    kwargs:
+      wrapper_path: C:/Users/villa/dev/skills/evaluations/google-cloud-sku-pricing/harbor_pi_wrapper.py
+      expected_version: "0.84.2"
+      thinking: high
+
+datasets:
+  - path: evaluations/runs/google-cloud-sku-pricing-mixed-load-60-20260826-tasks/holdout

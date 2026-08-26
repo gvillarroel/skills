@@ -1,0 +1,56 @@
+schemaVersion: 1
+
+evolution:
+  id: google-cloud-sku-pricing-correctness-20260825
+  baselineSkill: ../../skills/google-cloud-sku-pricing
+  outputDir: ../runs/google-cloud-sku-pricing-evolution-20260825-v5-clean
+  objective: >-
+    Improve exact structured-answer correctness across Google Cloud SKU
+    geography, identity, consumption models, list and normalized rates,
+    marginal tiers, progressive costs, regional membership, catalog counts,
+    and compatible SKU comparisons from a supplied normalized snapshot.
+  background: >-
+    The catalog and 100-question benchmark are frozen under snapshot
+    gcp-pricing-636387a8dd1a10dc with sealed holdout revision v2. Change only
+    transferable SKILL.md instructions.
+    Never add SKU IDs, prompt phrases, prices, counts, canonical answers,
+    question-family fixtures, or holdout facts. Preserve the bundled helper and
+    references unchanged. Train, validation, and sealed holdout tasks use
+    disjoint named-SKU provenance; holdout is final validation only. Favor a
+    reliable inspect-query-transform workflow, exact requested JSON shapes,
+    Decimal preservation, explicit model selection, and source-only reasoning.
+
+harbor:
+  agent:
+    name: evaluations.google-cloud-sku-pricing.harbor_pi_agent:PricingWorkspaceWindowsPi
+    model: openai-codex/gpt-5.3-codex-spark
+    kwargs:
+      version: "0.84.2"
+      expected_version: "0.84.2"
+      wrapper_path: C:/Users/villa/dev/skills/evaluations/google-cloud-sku-pricing/harbor_pi_wrapper.py
+      thinking: high
+  environment: evaluations.google-cloud-sku-pricing.harbor_wsl_environment:PricingWorkspaceWSLEnvironment
+  concurrency: 2
+  rewardKey: reward
+  holdoutAttempts: 2
+  requiredEnv: []
+
+gepa:
+  reflectionModel: local-pi/openai-codex-gpt-5.3-codex-spark
+  reflectionMinibatchSize: 2
+  maxMetricCalls: 12
+  maxCandidateProposals: 3
+  seed: 20260825
+
+splits:
+  train:
+    - ../runs/google-cloud-sku-pricing-100-holdout-v2-tasks/train
+  validation:
+    - ../runs/google-cloud-sku-pricing-100-holdout-v2-tasks/validation
+  holdout:
+    - ../runs/google-cloud-sku-pricing-100-holdout-v2-tasks/holdout
+
+promotion:
+  minimumMeanGain: 0
+  allowTaskRegressions: false
+  requireNoErrors: true

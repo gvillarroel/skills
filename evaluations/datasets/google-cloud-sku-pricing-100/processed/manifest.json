@@ -1,0 +1,99 @@
+{
+  "apiVersion": "v2beta",
+  "benchmark": {
+    "batchCounts": {
+      "holdout": 2,
+      "train": 6,
+      "validation": 2
+    },
+    "canonicalAnswersStoredInManifest": false,
+    "familyCounts": {
+      "compatible_comparison": 10,
+      "filtered_count": 10,
+      "geography": 10,
+      "list_rate": 10,
+      "marginal_tier": 10,
+      "model_inventory": 10,
+      "normalized_rate": 10,
+      "progressive_cost": 10,
+      "region_membership": 10,
+      "sku_identity": 10
+    },
+    "file": "benchmark.sqlite",
+    "questionContractSha256": "76376df25f81fcaa169fb401b50187affa6411ae6c875c4015b1238100efa437",
+    "questionCount": 100,
+    "seed": 20260825,
+    "sha256": "708a655816661bddbf09739b386e436b70326440276debc68aacd37b8b7e6c33",
+    "splitCounts": {
+      "holdout": 20,
+      "train": 60,
+      "validation": 20
+    }
+  },
+  "catalog": {
+    "file": "catalog.sqlite",
+    "sha256": "0edf0ff1d16f24fb8a47c03311c12e6a59ed4c5d6f1cdcbd7653c662cad8cee7",
+    "tables": {
+      "metadata": 6,
+      "price_models": 157646,
+      "price_tiers": 167737,
+      "product_categories": 572599,
+      "services": 1776,
+      "sku_regions": 96265,
+      "skus": 102518
+    }
+  },
+  "currencyCode": "USD",
+  "datasetId": "google-cloud-sku-pricing-100",
+  "normalizationMetrics": {
+    "price_models": 157646,
+    "price_tiers": 167737,
+    "product_categories": 572599,
+    "rejected_non_rate_models": 168,
+    "services": 1776,
+    "sku_regions": 96265,
+    "skus": 102518
+  },
+  "paginationComplete": true,
+  "rawSources": [
+    {
+      "collection": "services",
+      "endpoint": "https://cloudbilling.googleapis.com/v2beta/services",
+      "file": "services.jsonl",
+      "pages": 1,
+      "rows": 1776,
+      "sha256": "f877d75d9a71c55195c497dde4a0c8942b2ee71c5e9156b30dbb0c27cb8f17d5"
+    },
+    {
+      "collection": "skus",
+      "endpoint": "https://cloudbilling.googleapis.com/v2beta/skus",
+      "file": "skus.jsonl",
+      "pages": 21,
+      "rows": 102518,
+      "sha256": "2286c82dc0ed5ed04cb1be3f725b81cffc8c1a80ad8b2de8443cdcd87f01b30e"
+    },
+    {
+      "collection": "prices",
+      "endpoint": "https://cloudbilling.googleapis.com/v2beta/skus/-/prices",
+      "file": "prices-usd.jsonl",
+      "pages": 21,
+      "rows": 102518,
+      "sha256": "0ab78a958ae292f67167fec51bfeed612caf190026ea67cef4d2bfd56a75ca35"
+    }
+  ],
+  "retrievalCompletedAt": "2026-08-26T01:29:04.265784+00:00",
+  "schemaVersion": 1,
+  "snapshotId": "gcp-pricing-636387a8dd1a10dc",
+  "taskInstructionSha256": {
+    "holdout/holdout-01": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "holdout/holdout-02": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-01": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-02": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-03": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-04": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-05": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-06": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "validation/validation-01": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "validation/validation-02": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a"
+  }
+}

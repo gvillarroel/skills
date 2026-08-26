@@ -1,0 +1,62 @@
+{
+  "bigQueryScenarios": [
+    {
+      "name": "bigquery-train-regional",
+      "scenario": "regional-marginal-list-price",
+      "split": "train"
+    },
+    {
+      "name": "bigquery-train-progressive",
+      "scenario": "progressive-list-cost",
+      "split": "train"
+    },
+    {
+      "name": "bigquery-validation-view",
+      "scenario": "latest-normalized-pricing-view",
+      "split": "validation"
+    },
+    {
+      "name": "bigquery-holdout-contract",
+      "scenario": "separate-list-and-contract-marginal-prices",
+      "split": "holdout"
+    }
+  ],
+  "canonicalAnswersStoredInManifest": false,
+  "datasetId": "google-cloud-sku-pricing-dual-source-20260826",
+  "freshParquetQuestions": {
+    "crossSplitNamedSkuOverlapCount": 0,
+    "historicalNamedSkuCount": 132,
+    "historicalNamedSkuOverlapCount": 0,
+    "historicalPromptCount": 120,
+    "historicalPromptOverlapCount": 0,
+    "questionContractSha256": "a7f0222ba2c1534538e523b85c1b6f3e1ccb943c4e1fbfc25824ebf8e3b88cd4",
+    "seed": 20260827,
+    "selectedNamedSkuCount": 44,
+    "selectedQuestionCount": 40
+  },
+  "holdoutReleased": true,
+  "holdoutRelease": {
+    "decision": "keep-baseline",
+    "releasedAt": "2026-08-26T14:33:23.3334389Z",
+    "runJson": "evaluations/runs/google-cloud-sku-pricing-dual-source-evolution-20260826-v1/run.json"
+  },
+  "modeTaskCounts": {
+    "bigquery": 4,
+    "parquet": 4
+  },
+  "parquet": {
+    "bytes": 4399121,
+    "compression": "ZSTD",
+    "compressionLevel": 22,
+    "rows": 167737,
+    "sha256": "20275538572f0b9c19e2efceaa98127385edb28ba0942097fe029ecb3aebf5c0"
+  },
+  "schemaVersion": 1,
+  "snapshotId": "gcp-pricing-636387a8dd1a10dc",
+  "splitTaskCounts": {
+    "holdout": 2,
+    "train": 4,
+    "validation": 2
+  },
+  "taskCount": 8
+}

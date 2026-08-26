@@ -1,0 +1,48 @@
+{
+  "baseDatasetId": "google-cloud-sku-pricing-100",
+  "benchmarkSha256": "9802f9d5157dda77c56442f073ff5a77f85004633af64af208f1ce0c2495bb1c",
+  "canonicalAnswersStoredInManifest": false,
+  "catalogSha256": "0edf0ff1d16f24fb8a47c03311c12e6a59ed4c5d6f1cdcbd7653c662cad8cee7",
+  "datasetId": "google-cloud-sku-pricing-100-holdout-v2",
+  "familyCounts": {
+    "compatible_comparison": 10,
+    "filtered_count": 10,
+    "geography": 10,
+    "list_rate": 10,
+    "marginal_tier": 10,
+    "model_inventory": 10,
+    "normalized_rate": 10,
+    "progressive_cost": 10,
+    "region_membership": 10,
+    "sku_identity": 10
+  },
+  "freshHoldoutNamedSkuCount": 22,
+  "freshHoldoutQuestions": 20,
+  "holdoutContractSha256": "b7b37e0cf24ecf49caeac72277bebac76b4d9e4744aeae9ae8307026a18e3e70",
+  "holdoutSeed": 20260826,
+  "preservedTrainValidationQuestions": 80,
+  "questionCount": 100,
+  "reason": "Replace holdout prompts exposed to a reflection model in rejected run v4.",
+  "reservedV1SkuCount": 110,
+  "schemaVersion": 1,
+  "snapshotId": "gcp-pricing-636387a8dd1a10dc",
+  "splitCounts": {
+    "holdout": 20,
+    "train": 60,
+    "validation": 20
+  },
+  "taskInstructionSha256": {
+    "holdout/holdout-01": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "holdout/holdout-02": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-01": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-02": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-03": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-04": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-05": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "train/train-06": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "validation/validation-01": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a",
+    "validation/validation-02": "c2d6625ba3132260fa4adcc4e5563d7e616b04e67f1faeabe7966294b35a500a"
+  },
+  "v1PromptOverlapCount": 0,
+  "v1SkuOverlapCount": 0
+}
