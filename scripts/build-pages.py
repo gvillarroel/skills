@@ -15,7 +15,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DOCS = ROOT / "docs"
+PAGES_ROOT = ROOT / "dist" / "pages"
 SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
     "ai-concept-videos": SKILLS
@@ -271,7 +271,7 @@ def write_favicon() -> None:
     )
     transparent_pixel = b"\x00\x00\x00\x00"
     transparency_mask = b"\x00\x00\x00\x00"
-    (DOCS / "favicon.ico").write_bytes(icon_header + icon_entry + bitmap_header + transparent_pixel + transparency_mask)
+    (PAGES_ROOT / "favicon.ico").write_bytes(icon_header + icon_entry + bitmap_header + transparent_pixel + transparency_mask)
 
 
 def require_path(path: Path) -> Path:
@@ -559,7 +559,7 @@ def write_index() -> None:
 </body>
 </html>
 """
-    (DOCS / "index.html").write_text(index, encoding="utf-8", newline="\n")
+    (PAGES_ROOT / "index.html").write_text(index, encoding="utf-8", newline="\n")
 
 
 def write_catalog() -> None:
@@ -578,7 +578,7 @@ def write_catalog() -> None:
         for card in PUBLISHED_EXAMPLE_SETS
     )
     catalog += "\n]\n"
-    (DOCS / "example-catalog.json").write_text(catalog, encoding="utf-8", newline="\n")
+    (PAGES_ROOT / "example-catalog.json").write_text(catalog, encoding="utf-8", newline="\n")
 
 
 def normalize_text_file(path: Path) -> None:
@@ -610,71 +610,79 @@ def normalize_text_tree(root: Path) -> None:
             normalize_text_file(path)
 
 
+def reset_pages_output() -> None:
+    # Refuse symlink/junction escapes or an accidentally widened cleanup target.
+    expected = ROOT.resolve() / "dist" / "pages"
+    if PAGES_ROOT.resolve() != expected or PAGES_ROOT.is_symlink():
+        raise ValueError("Pages cleanup is restricted to the repository's dist/pages directory")
+    if PAGES_ROOT.exists():
+        shutil.rmtree(PAGES_ROOT)
+    PAGES_ROOT.mkdir(parents=True)
+
+
 def build_docs() -> None:
-    if DOCS.exists():
-        shutil.rmtree(DOCS)
-    DOCS.mkdir(parents=True)
-    (DOCS / ".nojekyll").write_text("", encoding="utf-8")
+    reset_pages_output()
+    (PAGES_ROOT / ".nojekyll").write_text("", encoding="utf-8")
     write_favicon()
 
-    copy_tree(example_source("compose-synchronized-svg"), DOCS / "examples" / "compose-synchronized-svg")
-    copy_tree(example_source("echarts-animated-svg"), DOCS / "examples" / "echarts-animated-svg")
+    copy_tree(example_source("compose-synchronized-svg"), PAGES_ROOT / "examples" / "compose-synchronized-svg")
+    copy_tree(example_source("echarts-animated-svg"), PAGES_ROOT / "examples" / "echarts-animated-svg")
     mermaid_gallery = example_source("mermaid-max-complexity")
-    copy_tree(mermaid_gallery, DOCS / "examples" / "mermaid-max-complexity")
+    copy_tree(mermaid_gallery, PAGES_ROOT / "examples" / "mermaid-max-complexity")
     copy_tree(
         mermaid_gallery / "legacy" / "mermaid-svg-animated",
-        DOCS / "examples" / "mermaid-svg-animated",
+        PAGES_ROOT / "examples" / "mermaid-svg-animated",
     )
     copy_tree(
         mermaid_gallery / "legacy" / "mermaid-animation-directives",
-        DOCS / "examples" / "mermaid-animation-directives",
+        PAGES_ROOT / "examples" / "mermaid-animation-directives",
     )
 
-    copy_tree(example_source("d3"), DOCS / "examples" / "d3")
-    copy_tree(example_source("d3-animated-svg"), DOCS / "examples" / "d3-animated-svg")
+    copy_tree(example_source("d3"), PAGES_ROOT / "examples" / "d3")
+    copy_tree(example_source("d3-animated-svg"), PAGES_ROOT / "examples" / "d3-animated-svg")
     patch_file(
-        DOCS / "examples" / "d3-animated-svg" / "index.html",
+        PAGES_ROOT / "examples" / "d3-animated-svg" / "index.html",
         {
             "./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
             "./node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
         },
     )
     patch_file(
-        DOCS / "examples" / "d3-animated-svg" / "composition-sheets.html",
+        PAGES_ROOT / "examples" / "d3-animated-svg" / "composition-sheets.html",
         {
             "./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
             "./node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
         },
     )
     patch_file(
-        DOCS / "examples" / "d3-animated-svg" / "force-beeswarm.html",
+        PAGES_ROOT / "examples" / "d3-animated-svg" / "force-beeswarm.html",
         {"./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"},
     )
-    copy_tree(example_source("d3-animated-svg-colorset2"), DOCS / "examples" / "d3-animated-svg-colorset2")
+    copy_tree(example_source("d3-animated-svg-colorset2"), PAGES_ROOT / "examples" / "d3-animated-svg-colorset2")
     patch_file(
-        DOCS / "examples" / "d3-animated-svg-colorset2" / "index.html",
+        PAGES_ROOT / "examples" / "d3-animated-svg-colorset2" / "index.html",
         {
             "../d3-animated-svg/node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
             "../d3-animated-svg/node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
         },
     )
-    copy_tree(example_source("d3-animated-svg-cs1"), DOCS / "examples" / "d3-animated-svg-cs1")
+    copy_tree(example_source("d3-animated-svg-cs1"), PAGES_ROOT / "examples" / "d3-animated-svg-cs1")
     patch_file(
-        DOCS / "examples" / "d3-animated-svg-cs1" / "index.html",
+        PAGES_ROOT / "examples" / "d3-animated-svg-cs1" / "index.html",
         {
             "../d3-animated-svg/node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
             "../d3-animated-svg/node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
         },
     )
-    copy_tree(example_source("d3-logo-design"), DOCS / "examples" / "d3-logo-design")
-    copy_tree(example_source("d3-logo-textures"), DOCS / "examples" / "d3-logo-textures")
-    copy_tree(example_source("procedural-svg-animation"), DOCS / "examples" / "procedural-svg-animation")
-    copy_tree(example_source("plantuml-colorset-renderer"), DOCS / "examples" / "plantuml-colorset-renderer")
-    copy_tree(example_source("plantuml-colorset-renderer-cs1"), DOCS / "examples" / "plantuml-colorset-renderer-cs1")
-    copy_tree(example_source("vectorize-art-patterns"), DOCS / "examples" / "vectorize-art-patterns")
+    copy_tree(example_source("d3-logo-design"), PAGES_ROOT / "examples" / "d3-logo-design")
+    copy_tree(example_source("d3-logo-textures"), PAGES_ROOT / "examples" / "d3-logo-textures")
+    copy_tree(example_source("procedural-svg-animation"), PAGES_ROOT / "examples" / "procedural-svg-animation")
+    copy_tree(example_source("plantuml-colorset-renderer"), PAGES_ROOT / "examples" / "plantuml-colorset-renderer")
+    copy_tree(example_source("plantuml-colorset-renderer-cs1"), PAGES_ROOT / "examples" / "plantuml-colorset-renderer-cs1")
+    copy_tree(example_source("vectorize-art-patterns"), PAGES_ROOT / "examples" / "vectorize-art-patterns")
     copy_tree(
         example_source("vectorize-abstract-world-maps"),
-        DOCS / "examples" / "vectorize-abstract-world-maps",
+        PAGES_ROOT / "examples" / "vectorize-abstract-world-maps",
     )
     threejs_project = example_source("threejs-animated-3d")
     slidev_echarts_project = example_source("slidev-echarts")
@@ -688,13 +696,13 @@ def build_docs() -> None:
     run_npm_script(slidev_echarts_project, "build:html")
     run_npm_script(slidev_animejs_project, "export:html")
 
-    copy_tree(threejs_project / "dist", DOCS / "examples" / "threejs-animated-3d")
-    copy_tree(slidev_echarts_html, DOCS / "examples" / "slidev-echarts")
-    copy_tree(slidev_animejs_html, DOCS / "examples" / "slidev-animejs")
+    copy_tree(threejs_project / "dist", PAGES_ROOT / "examples" / "threejs-animated-3d")
+    copy_tree(slidev_echarts_html, PAGES_ROOT / "examples" / "slidev-echarts")
+    copy_tree(slidev_animejs_html, PAGES_ROOT / "examples" / "slidev-animejs")
 
-    copy_tree(example_source("ai-concept-videos"), DOCS / "examples" / "ai-concept-videos")
+    copy_tree(example_source("ai-concept-videos"), PAGES_ROOT / "examples" / "ai-concept-videos")
     patch_file(
-        DOCS / "examples" / "ai-concept-videos" / "index.html",
+        PAGES_ROOT / "examples" / "ai-concept-videos" / "index.html",
         {
             "./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
             "./node_modules/animejs/dist/bundles/anime.umd.min.js": "https://cdn.jsdelivr.net/npm/animejs@4.4.1/dist/bundles/anime.umd.min.js",
@@ -702,14 +710,14 @@ def build_docs() -> None:
     )
 
     for card in PUBLISHED_EXAMPLE_SETS:
-        index_path = DOCS / card["href"] / "index.html"
+        index_path = PAGES_ROOT / card["href"] / "index.html"
         if not index_path.exists():
             raise FileNotFoundError(f"Published example page is missing: {index_path.relative_to(ROOT).as_posix()}")
         patch_page_metadata(card["id"], index_path)
 
     write_index()
     write_catalog()
-    normalize_text_tree(DOCS)
+    normalize_text_tree(PAGES_ROOT)
 
 
 def main() -> int:
@@ -719,9 +727,9 @@ def main() -> int:
         print(f"Pages build failed: {error}")
         return 1
 
-    total = sum(path.stat().st_size for path in DOCS.rglob("*") if path.is_file())
-    files = sum(1 for path in DOCS.rglob("*") if path.is_file())
-    print(f"Pages built in docs/ with {files} files, {total / 1024 / 1024:.2f} MiB.")
+    total = sum(path.stat().st_size for path in PAGES_ROOT.rglob("*") if path.is_file())
+    files = sum(1 for path in PAGES_ROOT.rglob("*") if path.is_file())
+    print(f"Pages built in dist/pages/ with {files} files, {total / 1024 / 1024:.2f} MiB.")
     return 0
 
 

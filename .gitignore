@@ -28,7 +28,10 @@ __pycache__/
 
 # Generated verification output and local builds
 /output/
-/docs/
+# Keep authored Markdown while ignoring legacy generated Pages files.
+/docs/**
+!/docs/**/
+!/docs/**/*.md
 /examples/
 dist/
 

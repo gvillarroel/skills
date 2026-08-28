@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DOCS = ROOT / "docs"
+PAGES_ROOT = ROOT / "dist" / "pages"
 
 
 class AttributeParser(HTMLParser):
@@ -86,7 +86,7 @@ def validate_unified_d3(catalog: list[dict[str, object]]) -> None:
     if d3_entries != [canonical_id]:
         fail(f"D3 must have exactly one catalog entry ({canonical_id}), found {d3_entries}")
 
-    canonical_path = DOCS / "examples" / canonical_id / "index.html"
+    canonical_path = PAGES_ROOT / "examples" / canonical_id / "index.html"
     page = parse_html(canonical_path)
     context = canonical_path.relative_to(ROOT).as_posix()
     require_attr(page.body, "data-page-kind", "skill-hub", context)
@@ -128,14 +128,14 @@ def validate_unified_d3(catalog: list[dict[str, object]]) -> None:
             fail(f"unified D3 hub link {gallery_id} has no generated target: {href}")
 
     for legacy_id in legacy_ids:
-        legacy_path = DOCS / "examples" / legacy_id / "index.html"
+        legacy_path = PAGES_ROOT / "examples" / legacy_id / "index.html"
         if not legacy_path.is_file():
             fail(f"legacy D3 route was not preserved: {legacy_path.relative_to(ROOT).as_posix()}")
 
 
 def main() -> int:
-    catalog_path = DOCS / "example-catalog.json"
-    index_path = DOCS / "index.html"
+    catalog_path = PAGES_ROOT / "example-catalog.json"
+    index_path = PAGES_ROOT / "index.html"
     if not catalog_path.exists() or not index_path.exists():
         fail("run uv run --script scripts/build-pages.py before validating Pages output")
 
@@ -148,11 +148,11 @@ def main() -> int:
         fail("example-catalog.json contains duplicate ids")
 
     root = parse_html(index_path)
-    require_attr(root.body, "data-example-id", "codex-skills-examples", "docs/index.html")
-    require_attr(root.body, "data-pattern-id", "codex-skills-examples", "docs/index.html")
-    require_attr(root.body, "data-pattern-page", "catalog", "docs/index.html")
+    require_attr(root.body, "data-example-id", "codex-skills-examples", "dist/pages/index.html")
+    require_attr(root.body, "data-pattern-id", "codex-skills-examples", "dist/pages/index.html")
+    require_attr(root.body, "data-pattern-page", "catalog", "dist/pages/index.html")
     if not root.icons or not root.icons[0].get("href"):
-        fail("docs/index.html is missing a non-empty favicon link")
+        fail("dist/pages/index.html is missing a non-empty favicon link")
 
     root_cards = {card.get("data-example-id"): card for card in root.cards}
     for entry in catalog:
@@ -165,14 +165,14 @@ def main() -> int:
             fail(f"catalog entry {example_id} must expose pageFormat='pattern-gallery'")
         card = root_cards.get(example_id)
         if card is None:
-            fail(f"docs/index.html is missing a card for {example_id}")
+            fail(f"dist/pages/index.html is missing a card for {example_id}")
         if card.get("data-pattern-id") != example_id:
-            fail(f"docs/index.html card {example_id} is missing matching data-pattern-id")
+            fail(f"dist/pages/index.html card {example_id} is missing matching data-pattern-id")
 
         href = entry.get("href")
         if not isinstance(href, str) or not href.startswith("examples/"):
             fail(f"catalog entry {example_id} has invalid href {href!r}")
-        page_path = DOCS / href / "index.html"
+        page_path = PAGES_ROOT / href / "index.html"
         if not page_path.exists():
             fail(f"published page is missing: {page_path.relative_to(ROOT).as_posix()}")
         page = parse_html(page_path)

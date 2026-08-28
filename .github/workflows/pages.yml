@@ -42,6 +42,9 @@ jobs:
       - name: Check repository payload
         run: uv run --script scripts/check-repo-payload.py
 
+      - name: Test generated Pages output boundary
+        run: uv run --script scripts/test-pages-output.py
+
       - name: Build Pages from skill assets
         run: uv run --script scripts/build-pages.py
 
@@ -54,7 +57,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: docs
+          path: dist/pages
 
       - name: Deploy Pages
         id: deployment
