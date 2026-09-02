@@ -1,0 +1,201 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "019ffda6-1efe-7bdd-ab01-38717c3e8c00",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\video-compositor-regression-20260813-spark-7\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 6
+  },
+  "providers": {
+    "openai-codex": 6
+  },
+  "usageTotals": {
+    "input": 17514,
+    "output": 10358,
+    "cacheRead": 43136,
+    "cacheWrite": 0,
+    "totalTokens": 71008
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 6,
+    "write": 1,
+    "bash": 1
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 4484
+    },
+    {
+      "path": "skills/video/SKILL.md",
+      "calls": 1,
+      "resultBytes": 8123
+    },
+    {
+      "path": "skills/video/references/output-format-contract.md",
+      "calls": 1,
+      "resultBytes": 1624
+    },
+    {
+      "path": "skills/video/assets/templates/scene-contract.json",
+      "calls": 1,
+      "resultBytes": 4270
+    },
+    {
+      "path": "skills/video/references/scene-interaction-contract.md",
+      "calls": 1,
+      "resultBytes": 4370
+    },
+    {
+      "path": "deliverables/scene-contract.json",
+      "calls": 1,
+      "resultBytes": 108
+    },
+    {
+      "path": "deliverables/scene-validation.json",
+      "calls": 1,
+      "resultBytes": 856
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 4484
+    },
+    {
+      "path": "skills/video/SKILL.md",
+      "calls": 1,
+      "resultBytes": 8123
+    },
+    {
+      "path": "skills/video/references/output-format-contract.md",
+      "calls": 1,
+      "resultBytes": 1624
+    },
+    {
+      "path": "skills/video/assets/templates/scene-contract.json",
+      "calls": 1,
+      "resultBytes": 4270
+    },
+    {
+      "path": "skills/video/references/scene-interaction-contract.md",
+      "calls": 1,
+      "resultBytes": 4370
+    },
+    {
+      "path": "deliverables/scene-validation.json",
+      "calls": 1,
+      "resultBytes": 856
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/video/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/video/references/output-format-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/video/assets/templates/scene-contract.json",
+      "calls": 1
+    },
+    {
+      "path": "skills/video/references/scene-interaction-contract.md",
+      "calls": 1
+    },
+    {
+      "path": "deliverables/scene-validation.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 23727,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4484
+    },
+    {
+      "line": 39,
+      "tool": "read",
+      "path": "skills/video/SKILL.md",
+      "policyPath": "skills/video/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8123
+    },
+    {
+      "line": 40,
+      "tool": "read",
+      "path": "skills/video/references/output-format-contract.md",
+      "policyPath": "skills/video/references/output-format-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1624
+    },
+    {
+      "line": 41,
+      "tool": "read",
+      "path": "skills/video/assets/templates/scene-contract.json",
+      "policyPath": "skills/video/assets/templates/scene-contract.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4270
+    },
+    {
+      "line": 42,
+      "tool": "read",
+      "path": "skills/video/references/scene-interaction-contract.md",
+      "policyPath": "skills/video/references/scene-interaction-contract.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 4370
+    },
+    {
+      "line": 61,
+      "tool": "write",
+      "path": "deliverables/scene-contract.json",
+      "policyPath": "deliverables/scene-contract.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 108
+    },
+    {
+      "line": 76,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/video/scripts/validate_scene_contract.py deliverables/scene-contract.json --project-root . --output deliverables/scene-validation.json --json",
+      "isError": false,
+      "resultBytes": 916
+    },
+    {
+      "line": 89,
+      "tool": "read",
+      "path": "deliverables/scene-validation.json",
+      "policyPath": "deliverables/scene-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 856
+    }
+  ],
+  "findings": []
+}

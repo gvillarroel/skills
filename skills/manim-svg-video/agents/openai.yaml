@@ -1,4 +1,4 @@
 interface:
   display_name: "Manim SVG Video"
-  short_description: "Compose animated SVGs into Manim videos"
-  default_prompt: "Use $manim-svg-video to compose multiple SVG animations into a timed Manim video."
+  short_description: "Render SVG-only sequences as validated MP4"
+  default_prompt: "Use $manim-svg-video to render these SVG assets as an SVG-only Manim MP4 and return its manifest and validation evidence."

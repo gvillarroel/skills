@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a06374-5eb8-74d0-b098-928be18bce78",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260902-threejs-runtime-token-orbit-spark-2\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 8
+  },
+  "providers": {
+    "openai-codex": 8
+  },
+  "usageTotals": {
+    "input": 6853,
+    "output": 2341,
+    "cacheRead": 25088,
+    "cacheWrite": 0,
+    "totalTokens": 34282
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 2,
+    "bash": 5
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1510
+    },
+    {
+      "path": "skills/threejs-animated-3d/SKILL.md",
+      "calls": 1,
+      "resultBytes": 7537
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1510
+    },
+    {
+      "path": "skills/threejs-animated-3d/SKILL.md",
+      "calls": 1,
+      "resultBytes": 7537
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/threejs-animated-3d/SKILL.md",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 9047,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1510
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/threejs-animated-3d/SKILL.md",
+      "policyPath": "skills/threejs-animated-3d/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7537
+    },
+    {
+      "line": 42,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la",
+      "isError": false,
+      "resultBytes": 190
+    },
+    {
+      "line": 57,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/threejs-animated-3d/scripts/build_standalone_threejs.py scene.html",
+      "isError": false,
+      "resultBytes": 196
+    },
+    {
+      "line": 74,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la scene.html && [ -f scene.html ] && echo \"scene.html exists\" && [ ! -f portable-3d-scene.html ] && echo \"portable-3d-scene.html absent\" && [ ! -f three.module.min.js ] && echo \"three.module.min.js absent in root\" && python - <<'PY'\nim",
+      "isError": false,
+      "resultBytes": 213
+    },
+    {
+      "line": 90,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/threejs-animated-3d/scripts/validate_standalone_threejs.py scene.html --report scene-validation.json --screenshot scene.png",
+      "isError": false,
+      "resultBytes": 3261
+    },
+    {
+      "line": 107,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la scene-validation.json scene.png && echo \"--- scene-validation.json excerpt ---\" && python - <<'PY'\nimport json\nfrom pathlib import Path\np=Path('scene-validation.json')\nprint('exists', p.exists(), 'size', p.stat().st_size)\nif p.exists",
+      "isError": false,
+      "resultBytes": 345
+    }
+  ],
+  "findings": []
+}

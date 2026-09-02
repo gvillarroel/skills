@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video composite scene</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+    body { background: #000; }
+    #stage {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .video-element {
+      position: absolute;
+      transform-origin: 50% 50%;
+      will-change: transform, opacity;
+    }
+    .video-element[data-overflow="hidden"] { overflow: hidden; }
+    .video-element > img,
+    .video-element > video,
+    .video-element > canvas,
+    .video-element > iframe,
+    .video-element > svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-element[data-fit="contain"] > img,
+    .video-element[data-fit="contain"] > video { object-fit: contain; }
+    .video-element[data-fit="cover"] > img,
+    .video-element[data-fit="cover"] > video { object-fit: cover; }
+    .video-element[data-fit="stretch"] > img,
+    .video-element[data-fit="stretch"] > video { object-fit: fill; }
+    .interaction-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <main id="stage"></main>
+  <script id="video-scene-contract" type="application/json">__VIDEO_SCENE_JSON__</script>
+  <script id="video-asset-payloads" type="application/json">__VIDEO_PAYLOAD_JSON__</script>
+  <script>
+    (() => {
+      "use strict";
+
+      const contract = JSON.parse(document.querySelector("#video-scene-contract").textContent);
+      const payloads = JSON.parse(document.querySelector("#video-asset-payloads").textContent);
+      const stage = document.querySelector("#stage");
+      const runtimeElements = new Map();
+      const runtimeInteractions = new Map();
+      const tracksByElement = new Map();
+      const canvas = contract.canvas;
+      if (!Array.isArray(window.__VIDEO_ASSET_RESOURCE_LOG)) {
+        window.__VIDEO_ASSET_RESOURCE_LOG = [];
+      }
+
+      stage.style.background = canvas.background;
+      stage.dataset.compositionId = contract.id;
+      stage.dataset.videoId = contract.id;
+
+      const resolveUrl = (value) => new URL(value, document.baseURI).href;
+      const logResource = (url, ok = true) => {
+        const resolved = resolveUrl(url);
+        if (!window.__VIDEO_ASSET_RESOURCE_LOG.some((entry) => entry.url === resolved)) {
+          window.__VIDEO_ASSET_RESOURCE_LOG.push({ url: resolved, ok });
+        }
+      };
+
+      const applyAssetMetadata = (visual, element, payload, resourceBacked = false) => {
+        visual.dataset.assetId = element.assetId;
+        visual.dataset.assetSrc = element.src;
+        visual.dataset.assetSha256 = payload.sha256;
+        visual.dataset.elementId = element.id;
+        if (resourceBacked) {
+          visual.dataset.assetResourceSrc = payload.url;
+          logResource(payload.url, true);
+        }
+      };
+
+      const loadImage = (src) => new Promise((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error(`Unable to decode image frame: ${src.slice(0, 96)}`));
+        image.src = src;
+      });
+
+      const buildElement = async (element) => {
+        const payload = payloads[element.id];
+        const wrapper = document.createElement("section");
+        wrapper.className = "video-element";
+        wrapper.id = `video-element-${element.id}`;
+        wrapper.dataset.elementId = element.id;
+        wrapper.dataset.fit = element.fit;
+        wrapper.dataset.overflow = element.overflow;
+        wrapper.style.left = `${element.bounds.x * 100}%`;
+        wrapper.style.top = `${element.bounds.y * 100}%`;
+        wrapper.style.width = `${element.bounds.width * 100}%`;
+        wrapper.style.height = `${element.bounds.height * 100}%`;
+        wrapper.style.zIndex = String(element.zIndex);
+        wrapper.style.background = element.background === "transparent" ? "transparent" : element.background;
+        stage.appendChild(wrapper);
+
+        let visual;
+        let gifFrames = null;
+        if (payload.type === "svg") {
+          wrapper.innerHTML = payload.content;
+          visual = wrapper.querySelector("svg");
+          if (!visual) throw new Error(`SVG payload for ${element.id} has no root svg`);
+          visual.removeAttribute("width");
+          visual.removeAttribute("height");
+          visual.style.maxWidth = "none";
+          visual.style.width = "100%";
+          visual.style.height = "100%";
+          visual.setAttribute("preserveAspectRatio", element.fit === "stretch" ? "none" : "xMidYMid meet");
+          visual.pauseAnimations?.();
+          applyAssetMetadata(visual, element, payload, true);
+        } else if (payload.type === "gif-frames") {
+          visual = document.createElement("canvas");
+          visual.width = Math.max(1, Math.round(canvas.width * element.bounds.width));
+          visual.height = Math.max(1, Math.round(canvas.height * element.bounds.height));
+          wrapper.appendChild(visual);
+          applyAssetMetadata(visual, element, payload, true);
+          gifFrames = await Promise.all(payload.frames.map(loadImage));
+        } else if (payload.type === "raster") {
+          visual = document.createElement("img");
+          visual.alt = "";
+          visual.src = payload.url;
+          wrapper.appendChild(visual);
+          applyAssetMetadata(visual, element, payload, false);
+          await visual.decode();
+        } else if (payload.type === "html") {
+          visual = document.createElement("iframe");
+          if (typeof payload.content === "string") {
+            const assetUrl = new URL(payload.url, window.location.href);
+            const assetBase = new URL(".", assetUrl).href;
+            const baseTag = `<base href="${assetBase.replaceAll('"', '&quot;')}">`;
+            visual.srcdoc = /<head(?:\s[^>]*)?>/i.test(payload.content)
+              ? payload.content.replace(/<head(?:\s[^>]*)?>/i, (head) => `${head}${baseTag}`)
+              : `${baseTag}${payload.content}`;
+          } else {
+            visual.src = payload.url;
+          }
+          wrapper.appendChild(visual);
+          applyAssetMetadata(visual, element, payload, false);
+          await new Promise((resolve, reject) => {
+            visual.addEventListener("load", resolve, { once: true });
+            visual.addEventListener("error", reject, { once: true });
+          });
+        } else if (payload.type === "video") {
+          visual = document.createElement("video");
+          visual.src = payload.url;
+          visual.preload = "auto";
+          visual.muted = true;
+          visual.playsInline = true;
+          wrapper.appendChild(visual);
+          applyAssetMetadata(visual, element, payload, false);
+          await new Promise((resolve, reject) => {
+            visual.addEventListener("loadeddata", resolve, { once: true });
+            visual.addEventListener("error", reject, { once: true });
+          });
+          visual.pause();
+        } else {
+          throw new Error(`Unsupported payload type: ${payload.type}`);
+        }
+
+        runtimeElements.set(element.id, { element, payload, wrapper, visual, gifFrames, state: null });
+      };
+
+      const buildInteraction = (interaction) => {
+        const overlay = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        overlay.classList.add("interaction-overlay");
+        overlay.setAttribute("viewBox", `0 0 ${canvas.width} ${canvas.height}`);
+        overlay.setAttribute("aria-hidden", "true");
+        overlay.dataset.interactionId = interaction.id;
+        overlay.style.zIndex = String(interaction.connector?.zIndex ?? 1000);
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("fill", "none");
+        path.setAttribute("stroke", interaction.connector?.color ?? "#ff0000");
+        path.setAttribute("stroke-width", String(interaction.connector?.width ?? 3));
+        path.setAttribute("stroke-linecap", "round");
+        path.setAttribute("stroke-linejoin", "round");
+        const signal = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        signal.setAttribute("r", String(Math.max(3, Number(interaction.connector?.width ?? 3) * 1.75)));
+        signal.setAttribute("fill", interaction.connector?.color ?? "#ff0000");
+        overlay.append(path, signal);
+        stage.appendChild(overlay);
+        runtimeInteractions.set(interaction.id, { interaction, overlay, path, signal, progress: 0 });
+      };
+
+      const ready = (async () => {
+        for (const element of contract.elements) await buildElement(element);
+        for (const interaction of contract.interactions) buildInteraction(interaction);
+        for (const track of contract.tracks) {
+          const list = tracksByElement.get(track.elementId) ?? [];
+          list.push(track);
+          tracksByElement.set(track.elementId, list);
+        }
+      })();
+
+      const clamp01 = (value) => Math.max(0, Math.min(1, value));
+      const ease = (name, value) => {
+        const t = clamp01(value);
+        if (name === "ease-in") return t * t;
+        if (name === "ease-out") return 1 - ((1 - t) * (1 - t));
+        if (name === "ease-in-out") return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+        return t;
+      };
+
+      const trackValue = (track, seconds) => {
+        const frames = track.keyframes;
+        if (track.property === "state") {
+          let current = frames[0].value;
+          for (const frame of frames) if (seconds >= frame.at) current = frame.value;
+          return current;
+        }
+        if (seconds <= frames[0].at) return Number(frames[0].value);
+        if (seconds >= frames[frames.length - 1].at) return Number(frames[frames.length - 1].value);
+        for (let index = 0; index < frames.length - 1; index += 1) {
+          const left = frames[index];
+          const right = frames[index + 1];
+          if (seconds >= left.at && seconds <= right.at) {
+            const span = Math.max(0.000001, right.at - left.at);
+            const amount = ease(right.easing ?? left.easing ?? "linear", (seconds - left.at) / span);
+            return Number(left.value) + ((Number(right.value) - Number(left.value)) * amount);
+          }
+        }
+        return Number(frames[frames.length - 1].value);
+      };
+
+      const drawGifFrame = (runtime, seconds) => {
+        const { element, payload, visual, gifFrames } = runtime;
+        const offsetMs = Number(element.playback?.offsetSeconds ?? 0) * 1000;
+        const totalMs = payload.totalMs;
+        let timeMs = Math.max(0, (seconds * 1000) + offsetMs);
+        if (element.playback?.loop === false) timeMs = Math.min(timeMs, Math.max(0, totalMs - 0.001));
+        else timeMs %= totalMs;
+        let elapsed = 0;
+        let frameIndex = payload.frames.length - 1;
+        for (let index = 0; index < payload.durationsMs.length; index += 1) {
+          elapsed += payload.durationsMs[index];
+          if (timeMs < elapsed) { frameIndex = index; break; }
+        }
+        const image = gifFrames[frameIndex];
+        const context = visual.getContext("2d");
+        context.clearRect(0, 0, visual.width, visual.height);
+        const scale = element.fit === "cover"
+          ? Math.max(visual.width / image.width, visual.height / image.height)
+          : (element.fit === "stretch" ? null : Math.min(visual.width / image.width, visual.height / image.height));
+        if (scale === null) {
+          context.drawImage(image, 0, 0, visual.width, visual.height);
+        } else if (element.fit === "none") {
+          context.drawImage(image, 0, 0);
+        } else {
+          const width = image.width * scale;
+          const height = image.height * scale;
+          context.drawImage(image, (visual.width - width) / 2, (visual.height - height) / 2, width, height);
+        }
+        return frameIndex;
+      };
+
+      const applyElementFrame = async (runtime, seconds) => {
+        const values = { opacity: 1, rotate: 0, scale: 1, translateX: 0, translateY: 0, state: runtime.element.initialState ?? null };
+        for (const track of tracksByElement.get(runtime.element.id) ?? []) {
+          let value = trackValue(track, seconds);
+          if (track.property === "translateX" && track.unit === "normalized") value *= canvas.width;
+          if (track.property === "translateY" && track.unit === "normalized") value *= canvas.height;
+          values[track.property] = value;
+        }
+        runtime.wrapper.style.opacity = String(values.opacity);
+        runtime.wrapper.style.transform = `translate(${values.translateX}px, ${values.translateY}px) rotate(${values.rotate}deg) scale(${values.scale})`;
+        runtime.state = values.state;
+        if (values.state) {
+          runtime.wrapper.dataset.videoState = values.state;
+          runtime.visual.dataset.videoState = values.state;
+        } else {
+          delete runtime.wrapper.dataset.videoState;
+          delete runtime.visual.dataset.videoState;
+        }
+        let gifFrame = null;
+        if (runtime.payload.type === "gif-frames") gifFrame = drawGifFrame(runtime, seconds);
+        if (runtime.payload.type === "svg") {
+          runtime.visual.pauseAnimations?.();
+          runtime.visual.setCurrentTime?.(seconds);
+        }
+        if (runtime.payload.type === "video") {
+          const duration = Number.isFinite(runtime.visual.duration) ? runtime.visual.duration : canvas.durationSeconds;
+          const requested = runtime.element.playback?.loop === false ? Math.min(seconds, duration) : (duration > 0 ? seconds % duration : seconds);
+          if (Math.abs(runtime.visual.currentTime - requested) > 0.001) {
+            runtime.visual.currentTime = requested;
+            await new Promise((resolve) => runtime.visual.addEventListener("seeked", resolve, { once: true }));
+          }
+          runtime.visual.pause();
+        }
+        if (runtime.payload.type === "html") {
+          const frame = runtime.visual.contentWindow;
+          if (typeof frame?.setVideoState === "function" && values.state) await frame.setVideoState(values.state);
+          if (typeof frame?.renderVideoFrame === "function") await frame.renderVideoFrame(seconds, { state: values.state, duration: canvas.durationSeconds });
+          else if (typeof frame?.renderConceptFrame === "function") await frame.renderConceptFrame(undefined, seconds, { state: values.state, duration: canvas.durationSeconds });
+        }
+        return { ...values, gifFrame };
+      };
+
+      const portPosition = (endpoint) => {
+        const runtime = runtimeElements.get(endpoint.element);
+        const port = runtime.element.ports.find((candidate) => candidate.id === endpoint.port);
+        const stageRect = stage.getBoundingClientRect();
+        if (port.runtimeSelector || port.selector) {
+          const selector = port.runtimeSelector ?? port.selector;
+          const target = runtime.visual.querySelector?.(selector);
+          if (target) {
+            const rect = target.getBoundingClientRect();
+            const anchors = {
+              bottom: [rect.left + rect.width / 2, rect.bottom],
+              center: [rect.left + rect.width / 2, rect.top + rect.height / 2],
+              left: [rect.left, rect.top + rect.height / 2],
+              right: [rect.right, rect.top + rect.height / 2],
+              top: [rect.left + rect.width / 2, rect.top],
+            };
+            const [x, y] = anchors[port.anchor ?? "center"];
+            return { x: (x - stageRect.left) * (canvas.width / stageRect.width), y: (y - stageRect.top) * (canvas.height / stageRect.height) };
+          }
+        }
+        const rect = runtime.wrapper.getBoundingClientRect();
+        return {
+          x: ((rect.left + (rect.width * Number(port.x))) - stageRect.left) * (canvas.width / stageRect.width),
+          y: ((rect.top + (rect.height * Number(port.y))) - stageRect.top) * (canvas.height / stageRect.height),
+        };
+      };
+
+      const interactionPath = (interaction, source, target) => {
+        if (interaction.connector?.path === "straight") return `M ${source.x} ${source.y} L ${target.x} ${target.y}`;
+        const offset = Math.max(40, Math.abs(target.x - source.x) * 0.45);
+        return `M ${source.x} ${source.y} C ${source.x + offset} ${source.y}, ${target.x - offset} ${target.y}, ${target.x} ${target.y}`;
+      };
+
+      const applyInteractionFrame = (runtime, seconds) => {
+        const { interaction, overlay, path, signal } = runtime;
+        const raw = (seconds - interaction.start) / Math.max(0.000001, interaction.end - interaction.start);
+        const progress = clamp01(raw);
+        const active = seconds >= interaction.start && seconds <= interaction.end;
+        const persisted = interaction.connector?.persistAfter === true && seconds > interaction.end;
+        const visible = active || persisted;
+        const source = portPosition(interaction.source);
+        const target = portPosition(interaction.target);
+        path.setAttribute("d", interactionPath(interaction, source, target));
+        const length = Math.max(0.001, path.getTotalLength());
+        path.style.strokeDasharray = String(length);
+        path.style.strokeDashoffset = String(length * (1 - progress));
+        overlay.style.opacity = visible ? "1" : "0";
+        const point = path.getPointAtLength(length * progress);
+        signal.setAttribute("cx", String(point.x));
+        signal.setAttribute("cy", String(point.y));
+        signal.style.opacity = active ? "1" : "0";
+        runtime.progress = progress;
+        return { active, progress, source, target };
+      };
+
+      window.renderConceptFrame = async (videoId, seconds, options = {}) => {
+        await ready;
+        const duration = Number(options.duration ?? canvas.durationSeconds);
+        const at = Math.max(0, Math.min(Number(seconds) || 0, Math.max(0, duration - 0.0001)));
+        const elementStates = {};
+        for (const runtime of runtimeElements.values()) elementStates[runtime.element.id] = await applyElementFrame(runtime, at);
+        const interactionStates = {};
+        const activeInteractionIds = [];
+        for (const runtime of runtimeInteractions.values()) {
+          const state = applyInteractionFrame(runtime, at);
+          interactionStates[runtime.interaction.id] = state;
+          if (state.active) activeInteractionIds.push(runtime.interaction.id);
+        }
+        for (const runtime of runtimeElements.values()) {
+          const active = contract.interactions
+            .filter((item) => activeInteractionIds.includes(item.id) && (item.source.element === runtime.element.id || item.target.element === runtime.element.id))
+            .map((item) => item.id);
+          runtime.wrapper.dataset.activeInteractions = active.join(" ");
+        }
+        const activeElementIds = [...runtimeElements.values()]
+          .filter((runtime) => Number(getComputedStyle(runtime.wrapper).opacity) > 0.01)
+          .map((runtime) => runtime.element.id);
+        const activeAssetIds = [...new Set(activeElementIds.map((id) => runtimeElements.get(id).element.assetId))];
+        const emittedEvents = contract.events.filter((event) => event.at <= at).map((event) => event.id);
+        return {
+          videoId: videoId ?? contract.id,
+          sceneId: contract.id,
+          compositionId: contract.id,
+          activeCompositionId: contract.id,
+          activeBeat: 1,
+          seconds: at,
+          activeElementIds,
+          activeAssetIds,
+          activeInteractionIds,
+          emittedEvents,
+          elementStates,
+          interactionStates,
+        };
+      };
+
+      window.getVideoSceneContract = () => structuredClone(contract);
+      window.__VIDEO_READY = ready;
+      ready.then(() => window.renderConceptFrame(contract.id, 0, { duration: canvas.durationSeconds }));
+    })();
+  </script>
+</body>
+</html>

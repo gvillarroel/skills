@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 30,
+    "headSha256": "21099af6b79b720fe699e8d9c714b11f03ed20868f491ed88aa0962007b4730d"
+  },
+  "progress": {
+    "completedCount": 2,
+    "completionPercent": 33.33,
+    "stageCount": 6
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-2x-semantic90-bundle10-v4",
+    "createdAt": "2026-08-10T15:58:59Z",
+    "studyId": "d3-pareto-20260810-v4",
+    "title": "D3 unified-skill Pareto cycle with randomized validation and holdout"
+  }
+}

@@ -68,6 +68,12 @@ for event in events:
 
 
 class RunnerUnitTests(unittest.TestCase):
+    def test_launcher_names_canonical_skill_entry_point(self) -> None:
+        prompt = RUNNER.build_launcher_prompt("demo-skill")
+        self.assertIn("read the bundle entry point at `skills/demo-skill/SKILL.md`", prompt)
+        self.assertIn("do not probe for README.md", prompt)
+        self.assertLess(prompt.index("`../prompt.md`"), prompt.index("`skills/demo-skill/SKILL.md`"))
+
     def test_safe_workspace_paths(self) -> None:
         self.assertTrue(RUNNER.is_safe_workspace_relative(Path("outputs/result.json")))
         self.assertFalse(RUNNER.is_safe_workspace_relative(Path(".")))

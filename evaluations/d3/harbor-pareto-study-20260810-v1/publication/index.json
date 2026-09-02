@@ -1,12 +1,12 @@
 {
   "holdoutReleased": false,
   "ledger": {
-    "eventCount": 10,
-    "headSha256": "c4bda514e40316f76708774a80b5190ab124ccfc9bb79d2b445bdc2cd3679043"
+    "eventCount": 23,
+    "headSha256": "4e3c743c318935c7f36e280eac57c26f791222f49c755255cc2db463ea439cb2"
   },
   "progress": {
-    "completedCount": 0,
-    "completionPercent": 0.0,
+    "completedCount": 2,
+    "completionPercent": 40.0,
     "stageCount": 5
   },
   "publicationPolicy": "indexes-and-result-tables-only-v1",

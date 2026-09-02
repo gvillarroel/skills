@@ -29,7 +29,7 @@ For patterns expected to work in isolated skill-only workspaces, include a minim
 After changing this skill, references, scripts, or examples, run:
 
 ```powershell
-uv run --script skills/d3/scripts/test_palette_contract.py
+uv run --script skills/d3/assets/examples/skill-tests/test_palette_contract.py
 uv run --script scripts/validate-pattern-ids.py
 uv run --script scripts/validate-skills.py
 uv run --script scripts/test-skill-independence.py
@@ -51,13 +51,13 @@ Verify that:
 
 For large galleries, create contact sheets and run an explicit visual critique pass by example or batch before final validation. Integrate the critique centrally when possible: shared token ramps, label halos, axis/grid contrast, and replay-safe post-render polish should handle recurring issues before adding one-off chart fixes.
 
-Generate the full settled-frame review with `scripts/review_gallery_visuals.py` for desktop and mobile viewports. Keep its cards, contact sheets, JSON, and Markdown reports under `projects/<project-id>/artifacts/`; do not commit generated review media.
+Generate the full settled-frame review with the acceptance fixture's review command for desktop and mobile viewports. Keep its cards, contact sheets, JSON, and Markdown reports under `projects/<project-id>/artifacts/`; do not commit generated review media.
 
-Before release, validate reference and index coverage with `uv run --script skills/d3/scripts/extract_gallery_pattern_references.py --check-only --expected 225`.
+Before release, validate reference and index coverage with `uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/extract_gallery_pattern_references.py --check-only --expected 225`.
 
 ## Composition Sheet Changes
 
-When changing the composition sheets, run `scripts/verify_composition_sheets.py`.
+When changing the composition sheets, run the acceptance fixture's composition-sheet verifier.
 
 Confirm that:
 
@@ -84,8 +84,8 @@ unused CSS is not evidence.
 ## Logo and Texture Changes
 
 Keep the pattern, texture, and composition inventories synchronized across the
-manifest, engine, templates, and validators. Run `validate_logo_artifact.py`,
-`validate_texture_gallery.py`, and both browser verifiers at desktop and mobile
+manifest, engine, templates, and validators. Run `scripts/validate_logo_artifact.py`,
+`assets/examples/d3-logo-textures/scripts/validate_texture_gallery.py`, and both browser verifiers at desktop and mobile
 sizes. Inspect the 96 px logo state and text-clearance findings.
 
 ## Release
@@ -95,3 +95,9 @@ the skill done, run the repository payload check, Pi harness tests, an isolated
 runtime forward test, and the declared Harbor development/validation/final-
 holdout protocol. Freeze the selected bundle before releasing holdout; never
 use holdout output to revise the score or continue evolution.
+
+For Pages releases, keep one canonical `d3` card on the repository index and
+route it through `assets/examples/d3/`; retain the detailed gallery URLs as
+unlisted supporting views. Run the repository's Pages-format validation gate
+after the Pages build so duplicate D3 cards, missing capability groups, broken
+hub links, or dropped legacy routes fail the release.

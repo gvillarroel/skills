@@ -1,0 +1,41 @@
+schemaVersion: 1
+
+search:
+  id: d3-pareto-20260810-v4
+  baselineSkill: ../../runs/d3-pareto-20260810-v4/development/candidate-staging/reference-consolidation/skills/d3
+  baselineCandidate: reference-consolidation
+  outputDir: ../../runs/d3-pareto-20260810-v9/search
+  generation: 0
+
+harbor:
+  developmentJob: ../../runs/d3-pareto-20260810-v2-dataset/validation-job.yaml
+  holdoutJob: ../../runs/d3-pareto-20260810-v6-dataset/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 0.9
+  requiredRewards:
+    semantic_reward: 1
+  requiredEnv: []
+
+candidates:
+  - id: reference-consolidation
+    skill: ../../runs/d3-pareto-20260810-v4/development/candidate-staging/reference-consolidation/skills/d3
+    parents: []
+    jobDirectory: ../../runs/d3-pareto-20260810-v8/development/jobs/d3-v8-dev-parent-a2
+    rationale: Use the previously selected immutable parent as the control on the exact current development task checksum and Spark profile.
+  - id: contract-hardening
+    skill: ../../runs/d3-pareto-20260810-v7/sealed/contract-hardening/candidate/skills/d3
+    parents:
+      - reference-consolidation
+    jobDirectory: ../../runs/d3-pareto-20260810-v7/development/jobs/d3-pareto-20260810-v7-development-contract-hardening-attempt-002
+    rationale: Correct ordered accessibility descriptions and colorset2 wedge coverage while reducing SKILL.md from 182 to 82 lines; retain as rejected evidence because only half of the attempts obeyed the builder route.
+  - id: mandatory-builder-hard-stop
+    skill: ../../runs/d3-pareto-20260810-v8/sealed/mandatory-builder-hard-stop/candidate/skills/d3
+    parents:
+      - contract-hardening
+    jobDirectory: ../../runs/d3-pareto-20260810-v8/development/jobs/d3-pareto-20260810-v8-development-mandatory-builder-hard-stop
+    rationale: Preserve the corrected builder and compact progressive disclosure while restoring an executable first-command hard stop that produced builder use and semantic success in all eight development attempts.
+
+promotion:
+  minimumMeanGain: 0.01
+  allowCaseRegressions: false
+  requireNoErrors: true

@@ -19,7 +19,7 @@ Prefer fixing layout structure before suppressing findings. Use exception marker
 | `clipped-text` | A text element has scroll dimensions larger than its visible box. | Increase the container, reduce copy, lower the local font size, or allow wrapping. |
 | `hidden-final-text` | Text remains hidden after the final detected click state. | Remove stale hidden content, add the missing click step, or mark intentional alternates with `data-allow-hidden`. |
 | `overlapping-text` | Two visible text blocks intersect significantly. | Adjust grid/flex constraints, add gap, reduce text, or fix absolute positioning. |
-| `covered-content` | The center of a visible text/media element is covered by another element. | Move the overlay, lower z-index, add padding, or make the overlay non-covering. |
+| `covered-content` | The center of every rendered fragment of a visible text/media element is covered by another element. | Move the overlay, lower z-index, add padding, or make the overlay non-covering. |
 | `low-contrast-text` | Computed foreground/background contrast falls below the configured threshold. | Darken the text, lighten the background, or add a solid text backing behind image/gradient areas. |
 | `tiny-text` | Visible text is below the configured minimum font size. | Use larger type, fewer words, or split content across slides. |
 | `zero-size-media` | Canvas, SVG, image, video, iframe, object, or embed surfaces render too small. | Give the container stable dimensions and verify hidden Slidev slides resize after activation. |
@@ -44,6 +44,12 @@ Use threshold flags when a deck has a deliberate house style:
 - `--overflow-tolerance 8` for animated decks where subpixel transforms create small false positives.
 
 Do not lower thresholds globally when only one decorative or animated element is intentional. Add a local exception marker instead. Use `data-allow-overflow` for deliberate bleed, crop, or split-text wrapper clipping.
+
+Line-wrapped inline text can have a bounding box whose geometric center falls in
+another inline token even though the painted fragments do not overlap. Probe the
+centers returned by `getClientRects()` and report `covered-content` only when no
+rendered fragment resolves to the text node, one of its descendants, or an
+ancestor. Do not suppress a whole code block to work around this geometry case.
 
 ## Validation Pattern
 

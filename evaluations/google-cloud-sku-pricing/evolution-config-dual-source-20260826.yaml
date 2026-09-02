@@ -1,0 +1,54 @@
+schemaVersion: 1
+
+evolution:
+  id: google-cloud-sku-pricing-dual-source-20260826
+  baselineSkill: ../../skills/google-cloud-sku-pricing
+  outputDir: ../runs/google-cloud-sku-pricing-dual-source-evolution-20260826-v1
+  objective: >-
+    Improve the skill's exact, source-aware reliability when a user needs
+    Google Cloud SKU prices from either cloud_pricing_export in BigQuery or a
+    complete highly compressed Pricing API Parquet fallback, while preserving
+    tier, unit, region, consumption-model, currency, and effective-time
+    semantics.
+  background: >-
+    Change only transferable SKILL.md instructions. The bundled scripts and
+    references are frozen resources. Never add task literals, SKU IDs, prompt
+    phrases, SQL verifier expressions, prices, counts, canonical answers, or
+    holdout facts. BigQuery tasks require documented Standard SQL over
+    cloud_pricing_export. Parquet tasks require exact structured answers from
+    a supplied complete public snapshot. Holdout is final validation only.
+
+harbor:
+  agent:
+    name: evaluations.google-cloud-sku-pricing.harbor_pi_agent:PricingWorkspaceWindowsPi
+    model: openai-codex/gpt-5.4-mini
+    kwargs:
+      version: "0.84.2"
+      expected_version: "0.84.2"
+      wrapper_path: C:/Users/villa/dev/skills/evaluations/google-cloud-sku-pricing/harbor_pi_wrapper.py
+      thinking: high
+  environment: evaluations.google-cloud-sku-pricing.harbor_wsl_environment:PricingWorkspaceWSLEnvironment
+  concurrency: 2
+  rewardKey: reward
+  holdoutAttempts: 2
+  requiredEnv: []
+
+gepa:
+  reflectionModel: local-pi/openai-codex-gpt-5.4-mini
+  reflectionMinibatchSize: 2
+  maxMetricCalls: 18
+  maxCandidateProposals: 4
+  seed: 20260826
+
+splits:
+  train:
+    - ../runs/google-cloud-sku-pricing-dual-source-20260826-tasks/train
+  validation:
+    - ../runs/google-cloud-sku-pricing-dual-source-20260826-tasks/validation
+  holdout:
+    - ../runs/google-cloud-sku-pricing-dual-source-20260826-tasks/holdout
+
+promotion:
+  minimumMeanGain: 0.001
+  allowTaskRegressions: false
+  requireNoErrors: true

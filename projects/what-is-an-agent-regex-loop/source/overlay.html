@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What Is an Agent — Video Overlay</title>
+  <style>
+    :root {
+      --ink: #f7f7f7;
+      --muted: #9c9c9c;
+      --line: #696969;
+      --red: #e8002a;
+      --red-dark: #9e1b32;
+      --panel: #1c1c1c;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: transparent;
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+    #frame {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    #grid {
+      position: absolute;
+      inset: 0;
+      opacity: .16;
+      background-image:
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, black 0%, transparent 88%);
+    }
+    #header {
+      position: absolute;
+      left: 48px;
+      right: 48px;
+      top: 30px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font: 600 13px/1 Consolas, "Courier New", monospace;
+      letter-spacing: .16em;
+      color: #cfcfcf;
+    }
+    #header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -15px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--red) 0 80px, #696969 80px 100%);
+    }
+    #counter { color: var(--red); }
+    #progress {
+      position: absolute;
+      left: 48px;
+      right: 48px;
+      top: 74px;
+      height: 3px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+    #progress span { background: #333e48; }
+    #progress span.active { background: var(--red); }
+    #formula {
+      position: absolute;
+      left: 48px;
+      right: 48px;
+      top: 96px;
+      text-align: center;
+      font: 700 25px/1.25 Consolas, "Courier New", monospace;
+      letter-spacing: .01em;
+      color: #ffffff;
+      white-space: nowrap;
+      text-shadow: 0 2px 12px #000000;
+    }
+    #formula .op { color: var(--red); }
+    #formula .dim { color: #cfcfcf; }
+    #hook {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform-origin: center;
+    }
+    #hook .eyebrow {
+      margin-bottom: 18px;
+      font: 700 15px/1 Consolas, "Courier New", monospace;
+      letter-spacing: .18em;
+      color: var(--red);
+    }
+    #hook h1 {
+      margin: 0;
+      font-size: 80px;
+      line-height: .94;
+      letter-spacing: -.045em;
+      font-weight: 760;
+    }
+    #hook p {
+      margin: 24px 0 0;
+      font: 500 22px/1.35 Consolas, "Courier New", monospace;
+      color: #cfcfcf;
+    }
+    #caption {
+      position: absolute;
+      left: 72px;
+      right: 72px;
+      bottom: 44px;
+      display: grid;
+      grid-template-columns: 185px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    #caption .tag {
+      padding-top: 3px;
+      font: 700 13px/1.2 Consolas, "Courier New", monospace;
+      letter-spacing: .13em;
+      color: var(--red);
+      text-transform: uppercase;
+    }
+    #caption .copy {
+      max-width: 920px;
+      font-size: 26px;
+      line-height: 1.18;
+      font-weight: 610;
+      letter-spacing: -.015em;
+      text-shadow: 0 2px 10px #000000;
+    }
+    #caption .copy strong { color: #ffffff; }
+    #iteration {
+      position: absolute;
+      right: 70px;
+      top: 176px;
+      padding: 8px 12px 7px;
+      border: 1px solid #696969;
+      background: rgba(28,28,28,.90);
+      color: #ffffff;
+      font: 700 13px/1 Consolas, "Courier New", monospace;
+      letter-spacing: .12em;
+    }
+    #motion {
+      position: absolute;
+      inset: 0;
+      width: 1280px;
+      height: 720px;
+      overflow: visible;
+    }
+    #trace {
+      fill: none;
+      stroke: var(--red);
+      stroke-width: 4;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+      opacity: .32;
+    }
+    #token-halo { fill: var(--red); opacity: .16; }
+    #token { fill: var(--red); stroke: #ffffff; stroke-width: 3; }
+    #recap {
+      position: absolute;
+      inset: 125px 80px 95px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      gap: 1px;
+    }
+    .recap-item {
+      position: relative;
+      height: 270px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top: 1px solid #696969;
+      border-bottom: 1px solid #696969;
+      background: rgba(28,28,28,.82);
+      padding: 0 30px;
+    }
+    .recap-item + .recap-item { border-left: 1px solid #696969; }
+    .recap-item .term {
+      font: 800 38px/1 Consolas, "Courier New", monospace;
+      color: #ffffff;
+    }
+    .recap-item .verb {
+      margin-top: 18px;
+      font-size: 31px;
+      font-weight: 650;
+      color: #cfcfcf;
+    }
+    .recap-item.active .term,
+    .recap-item.active .verb { color: #ffffff; }
+    .recap-item::after {
+      content: "";
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      bottom: 34px;
+      height: 5px;
+      background: #333e48;
+    }
+    .recap-item.active::after { background: var(--red); }
+    #metaphor-note {
+      position: absolute;
+      left: 50%;
+      top: 594px;
+      transform: translateX(-50%);
+      font: 500 13px/1 Consolas, "Courier New", monospace;
+      letter-spacing: .09em;
+      color: #9c9c9c;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <main id="frame">
+    <div id="grid"></div>
+    <header id="header">
+      <span>AUTÓMATAS PARA ENTENDER AGENTES</span>
+      <span id="counter">01 / 05</span>
+    </header>
+    <nav id="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></nav>
+    <div id="formula"></div>
+    <section id="hook" aria-label="¿QUÉ ES UN AGENTE?">
+      <div class="eyebrow">UNA METÁFORA DE REGEX</div>
+      <h1>¿QUÉ ES<br/>UN AGENTE?</h1>
+      <p>Primero, sigamos una ficha por el recorrido.</p>
+    </section>
+    <section id="caption">
+      <div class="tag"></div>
+      <div class="copy"></div>
+    </section>
+    <div id="iteration">ITERACIÓN 01</div>
+    <svg id="motion" viewBox="0 0 1280 720" aria-hidden="true">
+      <path id="trace" d="M 0 0" />
+      <circle id="token-halo" cx="0" cy="0" r="23" />
+      <circle id="token" cx="0" cy="0" r="10" />
+    </svg>
+    <section id="recap">
+      <div class="recap-item"><div class="term">LM</div><div class="verb">genera</div></div>
+      <div class="recap-item"><div class="term">AGENTE</div><div class="verb">itera</div></div>
+      <div class="recap-item"><div class="term">HARNESS</div><div class="verb">gobierna</div></div>
+    </section>
+    <div id="metaphor-note">La notación es una metáfora visual: no una regex ejecutable.</div>
+  </main>
+  <script>
+    (() => {
+      "use strict";
+      const $ = (selector) => document.querySelector(selector);
+      const clamp = (value, min = 0, max = 1) => Math.max(min, Math.min(max, value));
+      const smooth = (value) => {
+        const t = clamp(value);
+        return t * t * (3 - (2 * t));
+      };
+      const windowOpacity = (seconds, start, end, fade = 0.45) => {
+        const enter = smooth((seconds - start) / fade);
+        const exit = smooth((end - seconds) / fade);
+        return Math.min(enter, exit);
+      };
+      const point = (x, y) => ({ x, y });
+      const interpolate = (a, b, amount) => point(a.x + ((b.x - a.x) * amount), a.y + ((b.y - a.y) * amount));
+      const polylinePoint = (points, amount) => {
+        const lengths = [];
+        let total = 0;
+        for (let i = 0; i < points.length - 1; i += 1) {
+          const dx = points[i + 1].x - points[i].x;
+          const dy = points[i + 1].y - points[i].y;
+          const length = Math.hypot(dx, dy);
+          lengths.push(length);
+          total += length;
+        }
+        let target = clamp(amount) * total;
+        for (let i = 0; i < lengths.length; i += 1) {
+          if (target <= lengths[i]) return interpolate(points[i], points[i + 1], target / Math.max(.001, lengths[i]));
+          target -= lengths[i];
+        }
+        return points[points.length - 1];
+      };
+      const polylineSlice = (points, amount) => {
+        if (points.length < 2) return points;
+        const lengths = [];
+        let total = 0;
+        for (let i = 0; i < points.length - 1; i += 1) {
+          const length = Math.hypot(points[i + 1].x - points[i].x, points[i + 1].y - points[i].y);
+          lengths.push(length);
+          total += length;
+        }
+        let target = clamp(amount) * total;
+        const visible = [points[0]];
+        for (let i = 0; i < lengths.length; i += 1) {
+          if (target >= lengths[i]) {
+            visible.push(points[i + 1]);
+            target -= lengths[i];
+            continue;
+          }
+          visible.push(interpolate(points[i], points[i + 1], target / Math.max(.001, lengths[i])));
+          break;
+        }
+        return visible;
+      };
+      const pathData = (points) => points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x} ${p.y}`).join(" ");
+      const setOpacity = (element, value) => { element.style.opacity = String(clamp(value)); };
+      const setToken = (position, visible = true, scale = 1) => {
+        for (const element of [$("#token"), $("#token-halo")]) {
+          element.setAttribute("cx", String(position.x));
+          element.setAttribute("cy", String(position.y));
+          element.style.opacity = visible ? "1" : "0";
+          element.style.transformOrigin = `${position.x}px ${position.y}px`;
+          element.style.transform = `scale(${scale})`;
+        }
+      };
+      const setFormula = (html, size = 25) => {
+        $("#formula").innerHTML = html;
+        $("#formula").style.fontSize = `${size}px`;
+      };
+      const setCaption = (tag, html) => {
+        $("#caption .tag").textContent = tag;
+        $("#caption .copy").innerHTML = html;
+      };
+
+      window.renderVideoFrame = async (seconds) => {
+        const t = clamp(Number(seconds) || 0, 0, 29.999);
+        const scene = t < 4 ? 0 : t < 9 ? 1 : t < 18 ? 2 : t < 27 ? 3 : 4;
+        $("#counter").textContent = `0${scene + 1} / 05`;
+        [...$("#progress").children].forEach((item, index) => item.classList.toggle("active", index <= scene));
+        setOpacity($("#hook"), windowOpacity(t, 0, 4, .7));
+        const hookScale = .94 + (.06 * smooth(t / 1.2));
+        $("#hook").style.transform = `scale(${hookScale})`;
+        setOpacity($("#formula"), scene === 0 ? 0 : windowOpacity(t, scene === 1 ? 4 : scene === 2 ? 9 : 18, scene === 1 ? 9 : scene === 2 ? 18 : 27, .55));
+        setOpacity($("#caption"), scene === 0 || scene === 4 ? 0 : windowOpacity(t, scene === 1 ? 4 : scene === 2 ? 9 : 18, scene === 1 ? 9 : scene === 2 ? 18 : 27, .65));
+        setOpacity($("#iteration"), scene === 2 ? windowOpacity(t, 10, 17.6, .5) : 0);
+        setOpacity($("#recap"), smooth((t - 27) / .65));
+        setOpacity($("#metaphor-note"), scene > 0 && scene < 4 ? .8 : 0);
+
+        let tokenPosition = point(180, 430);
+        let tokenVisible = true;
+        let tracePoints = [point(180, 430), point(1100, 430)];
+        let progress = 0;
+
+        if (scene === 0) {
+          progress = smooth(clamp((t - 1.2) / 2.2));
+          tokenPosition = polylinePoint(tracePoints, progress);
+          setCaption("METÁFORA", "Una expresión define un <strong>recorrido</strong>. Sigamos la ficha que lo ejecuta.");
+        } else if (scene === 1) {
+          setFormula('<span class="dim">LM</span> <span class="op">:=</span> CONTEXTO · MODELO · RESPUESTA');
+          setCaption("UNA PASADA", "El <strong>LM</strong> recibe contexto y genera una respuesta. El recorrido termina ahí.");
+          tracePoints = [point(200, 335), point(1080, 335)];
+          progress = smooth(clamp((t - 4.8) / 3.5));
+          tokenPosition = polylinePoint(tracePoints, progress);
+        } else if (scene === 2) {
+          setFormula('<span class="dim">AGENTE</span> <span class="op">:=</span> OBJETIVO · (OBSERVAR · LM · ACTUAR)<span class="op">+</span> · TERMINAR', 22);
+          setCaption("REPETICIÓN", "El <strong>agente</strong> agrega el ciclo: observa, usa el LM para decidir, actúa y vuelve a observar.");
+          const loopOne = [
+            point(185, 310), point(380, 310), point(1000, 310), point(1000, 382),
+            point(380, 382), point(380, 310), point(1000, 310), point(1000, 382),
+            point(380, 382), point(380, 310), point(1135, 310)
+          ];
+          tracePoints = loopOne;
+          progress = smooth(clamp((t - 9.8) / 7.5));
+          tokenPosition = polylinePoint(tracePoints, progress);
+          $("#iteration").textContent = progress < .48 ? "ITERACIÓN 01" : "ITERACIÓN 02";
+        } else if (scene === 3) {
+          setFormula('<span class="dim">HARNESS</span> <span class="op">:=</span> REGLAS · MEMORIA · PERMISOS · AGENTE(HERRAMIENTAS) · EVALUAR', 19);
+          setCaption("SISTEMA DE CONTROL", "El <strong>harness</strong> ejecuta y gobierna el loop: aporta contexto, herramientas, memoria, permisos y criterios de salida.");
+          tracePoints = [
+            point(145, 335), point(365, 310), point(560, 285), point(870, 335),
+            point(1095, 250), point(630, 405), point(890, 510), point(365, 310), point(1120, 505)
+          ];
+          progress = smooth(clamp((t - 18.7) / 7.7));
+          tokenPosition = polylinePoint(tracePoints, progress);
+        } else {
+          setFormula("");
+          setCaption("", "");
+          tracePoints = [point(855, 545), point(1150, 545)];
+          progress = smooth(clamp((t - 27.1) / 1.2));
+          tokenPosition = polylinePoint(tracePoints, progress);
+          [...document.querySelectorAll(".recap-item")].forEach((item, index) => {
+            const threshold = 27.2 + (index * .42);
+            item.classList.toggle("active", t >= threshold);
+            item.style.opacity = String(smooth((t - threshold) / .45));
+            item.style.transform = `translateY(${(1 - smooth((t - threshold) / .45)) * 24}px)`;
+          });
+        }
+
+        $("#trace").setAttribute("d", pathData(polylineSlice(tracePoints, progress)));
+        $("#trace").style.strokeDasharray = "10 10";
+        $("#trace").style.opacity = scene === 4 ? ".55" : ".30";
+        tokenVisible = !(scene === 0 && t < .5);
+        setToken(tokenPosition, tokenVisible, scene === 4 ? 1.1 : 1);
+
+        return {
+          sceneId: ["s01-metaphor", "s02-lm", "s03-agent", "s04-harness", "s05-recap"][scene],
+          activeBeat: scene + 1,
+          seconds: t,
+          token: { x: tokenPosition.x, y: tokenPosition.y, progress },
+          formula: $("#formula").textContent,
+          iteration: scene === 2 ? $("#iteration").textContent : null
+        };
+      };
+
+      window.setVideoState = async () => {};
+      window.renderConceptFrame = async (_videoId, seconds) => window.renderVideoFrame(seconds);
+      window.__VIDEO_OVERLAY_READY = true;
+      window.renderVideoFrame(0);
+    })();
+  </script>
+</body>
+</html>

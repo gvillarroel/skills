@@ -1,6 +1,6 @@
 # Three.js Validation
 
-Use browser verification for Three.js because static DOM checks cannot prove WebGL scenes rendered.
+Use browser verification for Three.js because static DOM checks cannot prove WebGL scenes rendered. For output from `build_standalone_threejs.py`, run `scripts/validate_standalone_threejs.py` rather than recreating these probes ad hoc.
 
 ## Required Checks
 
@@ -16,6 +16,12 @@ Use browser verification for Three.js because static DOM checks cannot prove Web
 7. Click replay controls and confirm replay state changes without duplicating canvases or listeners.
 8. Perform a pointer drag on at least one canvas and confirm interaction state changes.
 9. Capture desktop and mobile screenshots and inspect them for framing, overlap, and text fit.
+
+Do not probe undocumented Playwright properties to discover launch APIs. Do not
+run an expected-negative `grep` as a bare command: a correct no-match result has
+exit code 1 and becomes a false tool failure. The bundled validator expresses
+negative network-reference checks as assertions and uses the supported Chromium
+launch path.
 
 ## Canvas Pixel Probe
 

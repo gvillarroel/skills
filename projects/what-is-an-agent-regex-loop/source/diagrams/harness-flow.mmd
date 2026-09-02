@@ -1,0 +1,72 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#e7e7e7"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#4f4f4f"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#ffccd5"
+    nodeBkg: "#ffccd5"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    classText: "#333e48"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+flowchart LR
+  accTitle: El harness gobierna el ciclo del agente
+  accDescr: El harness aporta instrucciones y memoria, contiene al agente con su modelo de lenguaje, controla permisos y herramientas, y evalúa si continuar, pedir aprobación o devolver el resultado.
+
+  subgraph H[HARNESS]
+    direction LR
+    C[Instrucciones<br/>+ memoria]
+
+    subgraph A[AGENTE]
+      direction LR
+      LM[LM] --> ACT[Acción]
+      ACT --> OBS[Observación]
+      OBS --> LM
+    end
+
+    C --> LM
+    ACT --> P{Permiso}
+    P -->|autoriza| T[Herramienta]
+    T --> OBS
+    P -->|bloquea| R[Detener<br/>o aprobar]
+    OBS --> E{¿Terminar?}
+    E -->|no| LM
+    E -->|sí| Z[Resultado]
+  end
+
+  class C,OBS csNeutral
+  class LM,ACT csPrimary
+  class P,E csWarning
+  class T csInfo
+  class R csCritical
+  class Z csSuccess
+  classDef csPrimary fill:#ffccd5,stroke:#9e1b32,color:#333e48,stroke-width:2px;
+  classDef csCritical fill:#ffccd5,stroke:#e8002a,color:#333e48,stroke-width:2px;
+  classDef csWarning fill:#e7e7e7,stroke:#828282,color:#333e48,stroke-width:2px;
+  classDef csSuccess fill:#cfcfcf,stroke:#333e48,color:#333e48,stroke-width:2px;
+  classDef csInfo fill:#ffccd5,stroke:#9e1b32,color:#333e48,stroke-width:2px;
+  classDef csNeutral fill:#e7e7e7,stroke:#333e48,color:#333e48,stroke-width:2px;

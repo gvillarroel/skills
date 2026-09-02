@@ -1,0 +1,52 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#e7e7e7"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#4f4f4f"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#ffccd5"
+    nodeBkg: "#ffccd5"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    noteBkgColor: "#e7e7e7"
+    noteTextColor: "#333e48"
+    noteBorderColor: "#9c9c9c"
+    actorBkg: "#ffccd5"
+    actorBorder: "#9e1b32"
+    actorTextColor: "#333e48"
+    actorLineColor: "#9e1b32"
+    signalColor: "#696969"
+    signalTextColor: "#333e48"
+    activationBorderColor: "#9e1b32"
+    activationBkgColor: "#ffccd5"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+sequenceDiagram
+  participant Client
+  participant Service
+  Client->>Service: Request
+  activate Service
+  Service-->>Client: Response
+  deactivate Service

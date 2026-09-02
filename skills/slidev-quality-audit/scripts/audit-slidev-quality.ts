@@ -714,10 +714,20 @@ async function inspectState(page: any, options: Options): Promise<StateInspectio
 
     for (const node of textBlocks.slice(0, 120)) {
       const rect = node.getBoundingClientRect()
-      const centerX = clamp(rect.left + rect.width / 2, 0, innerWidth - 1)
-      const centerY = clamp(rect.top + rect.height / 2, 0, innerHeight - 1)
-      const topNode = document.elementFromPoint(centerX, centerY)
-      if (topNode && layout.contains(topNode) && topNode !== node && !node.contains(topNode) && !topNode.contains(node) && !matchesClosest(node, auditOptions.allowOverflowSelector) && !matchesClosest(topNode, auditOptions.ignoreSelector)) {
+      const fragments = [...node.getClientRects()]
+        .filter(fragment => fragment.width > 1 && fragment.height > 1)
+      const probes = fragments.length ? fragments : [rect]
+      const coveringNodes = probes.map((fragment) => {
+        const centerX = clamp(fragment.left + fragment.width / 2, 0, innerWidth - 1)
+        const centerY = clamp(fragment.top + fragment.height / 2, 0, innerHeight - 1)
+        return document.elementFromPoint(centerX, centerY)
+      })
+      const isOwnTextSurface = (topNode: Element | null) => topNode === node
+        || (topNode !== null && node.contains(topNode))
+        || (topNode !== null && topNode.contains(node))
+      const topNode = coveringNodes.find(candidate => !isOwnTextSurface(candidate))
+      const hasUncoveredFragment = coveringNodes.some(isOwnTextSurface)
+      if (topNode && !hasUncoveredFragment && layout.contains(topNode) && !matchesClosest(node, auditOptions.allowOverflowSelector) && !matchesClosest(topNode, auditOptions.ignoreSelector)) {
         add(
           findings,
           'covered-content',

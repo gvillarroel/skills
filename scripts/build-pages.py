@@ -15,11 +15,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DOCS = ROOT / "docs"
+PAGES_ROOT = ROOT / "dist" / "pages"
 SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
     "ai-concept-videos": SKILLS
-    / "html-d3-anime-video-workflow"
+    / "video"
     / "assets"
     / "examples"
     / "ai-concept-videos",
@@ -28,6 +28,7 @@ EXAMPLE_SOURCES = {
     / "assets"
     / "examples"
     / "compose-synchronized-svg",
+    "d3": SKILLS / "d3" / "assets" / "examples" / "d3",
     "d3-animated-svg": SKILLS / "d3" / "assets" / "examples" / "d3-animated-svg",
     "d3-animated-svg-cs1": SKILLS
     / "d3"
@@ -99,8 +100,15 @@ EXAMPLE_SOURCES = {
 }
 UNLISTED_EXAMPLE_SOURCES = {
     # Raw source folders copied for linked galleries or verification assets, not standalone landing pages.
+    # The unified `d3` hub links these focused views while the old public routes remain stable.
+    "d3-animated-svg",
+    "d3-animated-svg-cs1",
+    "d3-animated-svg-colorset2",
+    "d3-logo-design",
+    "d3-logo-textures",
     "mermaid-max-elements",
     "plantuml-colorset-renderer-base",
+    "plantuml-colorset-renderer-cs1",
 }
 PUBLISHED_EXAMPLE_SETS = [
     {
@@ -120,44 +128,12 @@ PUBLISHED_EXAMPLE_SETS = [
         "description": "Replayable ECharts chart-type examples rendered as portable SVG.",
     },
     {
-        "id": "d3-animated-svg",
-        "source": "d3-animated-svg",
-        "title": "D3 Animated SVG Gallery",
-        "href": "examples/d3-animated-svg/",
+        "id": "d3",
+        "source": "d3",
+        "title": "D3 Skill Gallery",
+        "href": "examples/d3/",
         "kind": "D3",
-        "description": "A broad gallery of D3-generated SVG forms with replay controls.",
-    },
-    {
-        "id": "d3-animated-svg-cs1",
-        "source": "d3-animated-svg-cs1",
-        "title": "D3 Patterns CS1",
-        "href": "examples/d3-animated-svg-cs1/",
-        "kind": "D3 cs1",
-        "description": "The full D3 pattern catalog rendered with the colorset1 red-neutral palette and CS1-suffixed IDs.",
-    },
-    {
-        "id": "d3-animated-svg-colorset2",
-        "source": "d3-animated-svg-colorset2",
-        "title": "D3 Patterns Colorset2",
-        "href": "examples/d3-animated-svg-colorset2/",
-        "kind": "D3 colorset2",
-        "description": "The full D3 pattern catalog rendered as a colorset2-aligned version.",
-    },
-    {
-        "id": "d3-logo-design",
-        "source": "d3-logo-design",
-        "title": "D3 Logo Design Patterns",
-        "href": "examples/d3-logo-design/",
-        "kind": "D3 logo",
-        "description": "Ninety adjustable logo compositions, including thirty mathematical mechanisms, with forty SVG textures constrained to colorset1 and colorset2.",
-    },
-    {
-        "id": "d3-logo-textures",
-        "source": "d3-logo-textures",
-        "title": "D3 Logo Texture Atlas",
-        "href": "examples/d3-logo-textures/",
-        "kind": "D3 texture",
-        "description": "Forty reusable SVG texture mechanisms with stable IDs, adjustable parameters, and colorset1/colorset2 previews.",
+        "description": "One entry point for custom charts, networks, maps, simulations, interaction, composition analysis, parametric logos, textures, and portable SVG output.",
     },
     {
         "id": "procedural-svg-animation",
@@ -170,18 +146,10 @@ PUBLISHED_EXAMPLE_SETS = [
     {
         "id": "plantuml-colorset-renderer",
         "source": "plantuml-colorset-renderer",
-        "title": "PlantUML Colorset2 Renderer",
+        "title": "PlantUML Skill Gallery",
         "href": "examples/plantuml-colorset-renderer/",
-        "kind": "PlantUML colorset2",
-        "description": "Colorset2 PlantUML coverage examples with inline SVG cards and replayable reveal motion.",
-    },
-    {
-        "id": "plantuml-colorset-renderer-cs1",
-        "source": "plantuml-colorset-renderer-cs1",
-        "title": "PlantUML CS1 Renderer",
-        "href": "examples/plantuml-colorset-renderer-cs1/",
-        "kind": "PlantUML cs1",
-        "description": "Colorset1 red-neutral PlantUML coverage examples with CS1-suffixed SVG gallery item IDs.",
+        "kind": "PlantUML",
+        "description": "One gallery for 28 published PlantUML coverage examples across every available family, switchable Colorset 1 and Colorset 2 renders, SVG/PNG output, replay motion, engine options, and the normalized technical-logo catalog.",
     },
     {
         "id": "threejs-animated-3d",
@@ -283,7 +251,7 @@ def write_favicon() -> None:
     )
     transparent_pixel = b"\x00\x00\x00\x00"
     transparency_mask = b"\x00\x00\x00\x00"
-    (DOCS / "favicon.ico").write_bytes(icon_header + icon_entry + bitmap_header + transparent_pixel + transparency_mask)
+    (PAGES_ROOT / "favicon.ico").write_bytes(icon_header + icon_entry + bitmap_header + transparent_pixel + transparency_mask)
 
 
 def require_path(path: Path) -> Path:
@@ -397,6 +365,36 @@ def patch_page_metadata(example_id: str, index_path: Path) -> None:
     }.items():
         content = ensure_body_attribute(content, name, value)
     index_path.write_text(content, encoding="utf-8", newline="\n")
+
+
+def write_plantuml_legacy_redirect() -> None:
+    legacy_index = PAGES_ROOT / "examples" / "plantuml-colorset-renderer-cs1" / "index.html"
+    legacy_index.write_text(
+        """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=../plantuml-colorset-renderer/?theme=colorset1">
+  <link rel="canonical" href="../plantuml-colorset-renderer/?theme=colorset1">
+  <link rel="icon" href="../../favicon.ico">
+  <title>PlantUML gallery moved</title>
+</head>
+<body data-legacy-redirect="plantuml-colorset-renderer-cs1">
+  <p>The Colorset 1 examples now live in the unified <a id="canonical-link" href="../plantuml-colorset-renderer/?theme=colorset1">PlantUML Skill Gallery</a>.</p>
+  <script>
+    const target = new URL("../plantuml-colorset-renderer/", window.location.href);
+    target.searchParams.set("theme", "colorset1");
+    target.hash = window.location.hash;
+    document.querySelector("#canonical-link").href = target.href;
+    window.location.replace(target.href);
+  </script>
+</body>
+</html>
+""",
+        encoding="utf-8",
+        newline="\n",
+    )
 
 
 def write_index() -> None:
@@ -571,7 +569,7 @@ def write_index() -> None:
 </body>
 </html>
 """
-    (DOCS / "index.html").write_text(index, encoding="utf-8", newline="\n")
+    (PAGES_ROOT / "index.html").write_text(index, encoding="utf-8", newline="\n")
 
 
 def write_catalog() -> None:
@@ -590,7 +588,7 @@ def write_catalog() -> None:
         for card in PUBLISHED_EXAMPLE_SETS
     )
     catalog += "\n]\n"
-    (DOCS / "example-catalog.json").write_text(catalog, encoding="utf-8", newline="\n")
+    (PAGES_ROOT / "example-catalog.json").write_text(catalog, encoding="utf-8", newline="\n")
 
 
 def normalize_text_file(path: Path) -> None:
@@ -622,60 +620,70 @@ def normalize_text_tree(root: Path) -> None:
             normalize_text_file(path)
 
 
+def reset_pages_output() -> None:
+    # Refuse symlink/junction escapes or an accidentally widened cleanup target.
+    expected = ROOT.resolve() / "dist" / "pages"
+    if PAGES_ROOT.resolve() != expected or PAGES_ROOT.is_symlink():
+        raise ValueError("Pages cleanup is restricted to the repository's dist/pages directory")
+    if PAGES_ROOT.exists():
+        shutil.rmtree(PAGES_ROOT)
+    PAGES_ROOT.mkdir(parents=True)
+
+
 def build_docs() -> None:
-    if DOCS.exists():
-        shutil.rmtree(DOCS)
-    DOCS.mkdir(parents=True)
-    (DOCS / ".nojekyll").write_text("", encoding="utf-8")
+    reset_pages_output()
+    (PAGES_ROOT / ".nojekyll").write_text("", encoding="utf-8")
     write_favicon()
 
-    copy_tree(example_source("compose-synchronized-svg"), DOCS / "examples" / "compose-synchronized-svg")
-    copy_tree(example_source("echarts-animated-svg"), DOCS / "examples" / "echarts-animated-svg")
+    copy_tree(example_source("compose-synchronized-svg"), PAGES_ROOT / "examples" / "compose-synchronized-svg")
+    copy_tree(example_source("echarts-animated-svg"), PAGES_ROOT / "examples" / "echarts-animated-svg")
 
-    copy_tree(example_source("d3-animated-svg"), DOCS / "examples" / "d3-animated-svg")
+    copy_tree(example_source("d3"), PAGES_ROOT / "examples" / "d3")
+    copy_tree(example_source("d3-animated-svg"), PAGES_ROOT / "examples" / "d3-animated-svg")
     patch_file(
-        DOCS / "examples" / "d3-animated-svg" / "index.html",
+        PAGES_ROOT / "examples" / "d3-animated-svg" / "index.html",
         {
             "./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
             "./node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
         },
     )
     patch_file(
-        DOCS / "examples" / "d3-animated-svg" / "composition-sheets.html",
+        PAGES_ROOT / "examples" / "d3-animated-svg" / "composition-sheets.html",
         {
             "./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
             "./node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
         },
     )
     patch_file(
-        DOCS / "examples" / "d3-animated-svg" / "force-beeswarm.html",
+        PAGES_ROOT / "examples" / "d3-animated-svg" / "force-beeswarm.html",
         {"./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"},
     )
-    copy_tree(example_source("d3-animated-svg-colorset2"), DOCS / "examples" / "d3-animated-svg-colorset2")
+    copy_tree(example_source("d3-animated-svg-colorset2"), PAGES_ROOT / "examples" / "d3-animated-svg-colorset2")
     patch_file(
-        DOCS / "examples" / "d3-animated-svg-colorset2" / "index.html",
+        PAGES_ROOT / "examples" / "d3-animated-svg-colorset2" / "index.html",
         {
             "../d3-animated-svg/node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
             "../d3-animated-svg/node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
         },
     )
-    copy_tree(example_source("d3-animated-svg-cs1"), DOCS / "examples" / "d3-animated-svg-cs1")
+    copy_tree(example_source("d3-animated-svg-cs1"), PAGES_ROOT / "examples" / "d3-animated-svg-cs1")
     patch_file(
-        DOCS / "examples" / "d3-animated-svg-cs1" / "index.html",
+        PAGES_ROOT / "examples" / "d3-animated-svg-cs1" / "index.html",
         {
             "../d3-animated-svg/node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
             "../d3-animated-svg/node_modules/d3-sankey/dist/d3-sankey.min.js": "https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js",
         },
     )
-    copy_tree(example_source("d3-logo-design"), DOCS / "examples" / "d3-logo-design")
-    copy_tree(example_source("d3-logo-textures"), DOCS / "examples" / "d3-logo-textures")
-    copy_tree(example_source("procedural-svg-animation"), DOCS / "examples" / "procedural-svg-animation")
-    copy_tree(example_source("plantuml-colorset-renderer"), DOCS / "examples" / "plantuml-colorset-renderer")
-    copy_tree(example_source("plantuml-colorset-renderer-cs1"), DOCS / "examples" / "plantuml-colorset-renderer-cs1")
-    copy_tree(example_source("vectorize-art-patterns"), DOCS / "examples" / "vectorize-art-patterns")
+    copy_tree(example_source("d3-logo-design"), PAGES_ROOT / "examples" / "d3-logo-design")
+    copy_tree(example_source("d3-logo-textures"), PAGES_ROOT / "examples" / "d3-logo-textures")
+    copy_tree(example_source("procedural-svg-animation"), PAGES_ROOT / "examples" / "procedural-svg-animation")
+    copy_tree(example_source("plantuml-colorset-renderer"), PAGES_ROOT / "examples" / "plantuml-colorset-renderer")
+    copy_tree(example_source("plantuml-colorset-renderer-cs1"), PAGES_ROOT / "examples" / "plantuml-colorset-renderer-cs1")
+    write_plantuml_legacy_redirect()
+    copy_tree(example_source("vectorize-art-patterns"), PAGES_ROOT / "examples" / "vectorize-art-patterns")
     copy_tree(
         example_source("vectorize-abstract-world-maps"),
-        DOCS / "examples" / "vectorize-abstract-world-maps",
+        PAGES_ROOT / "examples" / "vectorize-abstract-world-maps",
     )
     threejs_project = example_source("threejs-animated-3d")
     slidev_echarts_project = example_source("slidev-echarts")
@@ -689,13 +697,13 @@ def build_docs() -> None:
     run_npm_script(slidev_echarts_project, "build:html")
     run_npm_script(slidev_animejs_project, "export:html")
 
-    copy_tree(threejs_project / "dist", DOCS / "examples" / "threejs-animated-3d")
-    copy_tree(slidev_echarts_html, DOCS / "examples" / "slidev-echarts")
-    copy_tree(slidev_animejs_html, DOCS / "examples" / "slidev-animejs")
+    copy_tree(threejs_project / "dist", PAGES_ROOT / "examples" / "threejs-animated-3d")
+    copy_tree(slidev_echarts_html, PAGES_ROOT / "examples" / "slidev-echarts")
+    copy_tree(slidev_animejs_html, PAGES_ROOT / "examples" / "slidev-animejs")
 
-    copy_tree(example_source("ai-concept-videos"), DOCS / "examples" / "ai-concept-videos")
+    copy_tree(example_source("ai-concept-videos"), PAGES_ROOT / "examples" / "ai-concept-videos")
     patch_file(
-        DOCS / "examples" / "ai-concept-videos" / "index.html",
+        PAGES_ROOT / "examples" / "ai-concept-videos" / "index.html",
         {
             "./node_modules/d3/dist/d3.min.js": "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js",
             "./node_modules/animejs/dist/bundles/anime.umd.min.js": "https://cdn.jsdelivr.net/npm/animejs@4.4.1/dist/bundles/anime.umd.min.js",
@@ -703,14 +711,14 @@ def build_docs() -> None:
     )
 
     for card in PUBLISHED_EXAMPLE_SETS:
-        index_path = DOCS / card["href"] / "index.html"
+        index_path = PAGES_ROOT / card["href"] / "index.html"
         if not index_path.exists():
             raise FileNotFoundError(f"Published example page is missing: {index_path.relative_to(ROOT).as_posix()}")
         patch_page_metadata(card["id"], index_path)
 
     write_index()
     write_catalog()
-    normalize_text_tree(DOCS)
+    normalize_text_tree(PAGES_ROOT)
 
 
 def main() -> int:
@@ -720,9 +728,9 @@ def main() -> int:
         print(f"Pages build failed: {error}")
         return 1
 
-    total = sum(path.stat().st_size for path in DOCS.rglob("*") if path.is_file())
-    files = sum(1 for path in DOCS.rglob("*") if path.is_file())
-    print(f"Pages built in docs/ with {files} files, {total / 1024 / 1024:.2f} MiB.")
+    total = sum(path.stat().st_size for path in PAGES_ROOT.rglob("*") if path.is_file())
+    files = sum(1 for path in PAGES_ROOT.rglob("*") if path.is_file())
+    print(f"Pages built in dist/pages/ with {files} files, {total / 1024 / 1024:.2f} MiB.")
     return 0
 
 

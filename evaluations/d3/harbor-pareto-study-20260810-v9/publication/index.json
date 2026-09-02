@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": true,
+  "ledger": {
+    "eventCount": 36,
+    "headSha256": "2acb5e52e4570ebf82234052d1a1de873f9cb90860a87a84424a3f8b7bf0ea37"
+  },
+  "progress": {
+    "completedCount": 6,
+    "completionPercent": 100.0,
+    "stageCount": 6
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-2x-semantic100-bundle-release-v9",
+    "createdAt": "2026-08-10T19:20:02Z",
+    "studyId": "d3-pareto-20260810-v9",
+    "title": "D3 unified release realization and untouched holdout"
+  }
+}

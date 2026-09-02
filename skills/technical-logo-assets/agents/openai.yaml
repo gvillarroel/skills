@@ -1,0 +1,4 @@
+interface:
+  display_name: "Technical Logo Assets"
+  short_description: "Search and export verified technical SVG logos"
+  default_prompt: "Use $technical-logo-assets to find an exact technical brand logo, choose the right SVG variant, and export it with provenance and license sidecars."

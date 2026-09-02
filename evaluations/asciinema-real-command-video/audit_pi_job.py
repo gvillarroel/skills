@@ -15,7 +15,7 @@ import re
 import sys
 
 
-SKILL_COMMAND = r"asciinema_command_video\.py\s+"
+SKILL_COMMAND = r"asciinema_command_video\.py(?:['\"])?\s+"
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -32,6 +32,16 @@ def sha256_text(value: str) -> str:
 
 def audit_trial(trial: Path, dataset_root: Path) -> dict[str, object]:
     task_id = trial.name.split("__", 1)[0]
+    result_path = trial / "result.json"
+    if result_path.is_file():
+        try:
+            trial_result = json.loads(result_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            trial_result = {}
+        if isinstance(trial_result, dict) and isinstance(
+            trial_result.get("task_name"), str
+        ):
+            task_id = trial_result["task_name"]
     expected = (dataset_root / task_id / "instruction.md").read_text(encoding="utf-8")
     trace_path = trial / "agent" / "pi.txt"
     wrapper_marker: dict[str, object] = {}
@@ -80,7 +90,9 @@ def audit_trial(trial: Path, dataset_root: Path) -> dict[str, object]:
         and wrapper_marker.get("promptBytes") == prompt_bytes
     )
     command_text = "\n".join(commands)
-    record_calls = len(re.findall(SKILL_COMMAND + r"record(?:\s|$)", command_text))
+    record_calls = len(
+        re.findall(SKILL_COMMAND + r"record(?!\s+--help)(?:\s|$)", command_text)
+    )
     preflight_calls = len(re.findall(SKILL_COMMAND + r"preflight(?:\s|$)", command_text))
     plan_validation_calls = len(
         re.findall(SKILL_COMMAND + r"validate-plan(?:\s|$)", command_text)
@@ -100,10 +112,12 @@ def audit_trial(trial: Path, dataset_root: Path) -> dict[str, object]:
     direct_recorder_calls = len(
         re.findall(r"(?:^|\s)(?:[^\s]*asciinema)(?:\.exe)?\s+rec(?:\s|$)", command_text)
     )
-    retry_mutations = len(
-        re.findall(
-            r"(?:rm|mv)[^\n]*(?:deliverables/)?session(?:\.|-)",
-            command_text,
+    retry_mutations = sum(
+        1
+        for command in commands
+        if re.search(
+            r"(?:^|&&\s*|;\s*|\|\s*)(?:rm|mv)\s+[^\n;&|]*(?:deliverables/)?session(?:\.|-)",
+            command,
             flags=re.IGNORECASE,
         )
     )

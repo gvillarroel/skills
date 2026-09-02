@@ -1,0 +1,33 @@
+schemaVersion: 1
+
+search:
+  id: d3-pareto-20260810-v3r1
+  baselineSkill: ../../runs/d3-pareto-20260810-v1/search/development/generation-002/candidate-staging/baseline-runtime-pruned/skills/d3
+  baselineCandidate: baseline-runtime-pruned
+  outputDir: ../../runs/d3-pareto-20260810-v3r1/search
+  generation: 0
+
+harbor:
+  developmentJob: ../../runs/d3-pareto-20260810-v1-dataset/validation-job.yaml
+  holdoutJob: ../../runs/d3-pareto-20260810-v2-dataset/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 0.9
+  requiredRewards:
+    semantic_reward: 1
+  requiredEnv: []
+
+candidates:
+  - id: baseline-runtime-pruned
+    skill: ../../runs/d3-pareto-20260810-v1/search/development/generation-002/candidate-staging/baseline-runtime-pruned/skills/d3
+    parents: []
+    rationale: Preserve the selected immutable parent and reclassify the consumed validation-v1 cohort only as development evidence.
+  - id: contract-builders
+    skill: ../../runs/d3-pareto-20260810-v3/candidates/contract-builders/d3
+    parents:
+      - baseline-runtime-pruned
+    rationale: Extend the deterministic contract builder for horizontal lollipops, flow-spine recompositions, and radial-wedge logos; preserve the parent's runtime pruning and progressive-disclosure routes while fixing only failures observed on the consumed development cohort.
+
+promotion:
+  minimumMeanGain: 0.01
+  allowCaseRegressions: false
+  requireNoErrors: true

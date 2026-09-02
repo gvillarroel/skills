@@ -34,6 +34,30 @@ from typing import Any, Iterable, Mapping, Sequence
 SCHEMA_VERSION = 1
 MARKER_NAMESPACE = "ARCV"
 SKILL_ROOT = Path(__file__).resolve().parents[1]
+WINDOWS_WORKING_DIRECTORY_TOKEN = "{windows_working_directory}"
+SUBST_DRIVE_LETTERS = "ZYXWVUTSRQPONMLKJIHGFED"
+NATIVE_WSLPATH = Path("/usr/bin/wslpath")
+NATIVE_WSL_GIT = Path("/usr/bin/git")
+VIDEO_DIRECTORY_ID_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+VIDEO_BUNDLE_FILENAMES = {
+    "plan": "session-plan.json",
+    "preflight": "preflight.json",
+    "recording_attempt": ".session-plan.recording-attempt.json",
+    "cast": "session.cast",
+    "runtime_report": "session.runtime.json",
+    "mp4": "session.mp4",
+    "manifest": "session.manifest.json",
+    "record_result": "record-result.json",
+    "validation": "validation.json",
+    "bundle_index": "bundle.json",
+    "gif_intermediary": "session.gif",
+}
+VIDEO_TEMPLATE_FILES = {
+    "direct-argv": "direct-argv-session-plan.json",
+    "single-tui": "session-plan.json",
+    "multi-tui": "multi-tui-session-plan.json",
+    "lazygit": "lazygit-session-plan.json",
+}
 
 TOP_LEVEL_FIELDS = {
     "schema_version",
@@ -45,9 +69,18 @@ TOP_LEVEL_FIELDS = {
     "render",
     "steps",
     "interaction",
+    "tui_sessions",
 }
-TOP_LEVEL_REQUIRED_FIELDS = TOP_LEVEL_FIELDS - {"interaction"}
+TOP_LEVEL_REQUIRED_FIELDS = {
+    "schema_version",
+    "title",
+    "working_directory",
+    "declared_scope",
+    "terminal",
+    "render",
+}
 TARGET_FIELDS = {"name", "executable", "version_args"}
+TUI_SESSION_FIELDS = {"id", "target", "interaction", "steps"}
 TERMINAL_FIELDS = {"cols", "rows"}
 RENDER_FIELDS = {
     "theme",
@@ -196,6 +229,22 @@ class LoadedPlan:
 
 
 @dataclass(frozen=True)
+class VideoBundlePaths:
+    directory: Path
+    plan: Path
+    preflight: Path
+    recording_attempt: Path
+    cast: Path
+    runtime_report: Path
+    mp4: Path
+    manifest: Path
+    record_result: Path
+    validation: Path
+    bundle_index: Path
+    gif_intermediary: Path
+
+
+@dataclass(frozen=True)
 class PreflightContext:
     env: dict[str, str]
     tools_dir: Path | None
@@ -205,6 +254,7 @@ class PreflightContext:
     ffmpeg: Path
     ffprobe: Path
     target: Path
+    targets: list[Path]
     pty_allocator: Path | None
     toolchain: dict[str, Any]
     terminal_control: dict[str, Any]
@@ -351,6 +401,13 @@ def tui_shutdown_mode(plan: LoadedPlan | Mapping[str, Any]) -> str:
     return str(interaction.get("shutdown_mode", "exit-text"))
 
 
+def final_tui_shutdown_mode(plan: LoadedPlan | Mapping[str, Any]) -> str:
+    sessions = plan_tui_sessions(plan)
+    if sessions:
+        return tui_shutdown_mode(sessions[-1])
+    return tui_shutdown_mode(plan)
+
+
 def tui_step_completion(step: Mapping[str, Any]) -> str:
     return str(step.get("completion", "ready"))
 
@@ -359,6 +416,87 @@ def tui_step_input_sha256(step: Mapping[str, Any]) -> str:
     if "prompt" in step:
         return sha256_text(str(step["prompt"]))
     return sha256_json(step.get("actions", []))
+
+
+def is_tui_mode(mode: str) -> bool:
+    return mode in {"tui", "tui-sequence"}
+
+
+def plan_tui_sessions(
+    plan: LoadedPlan | Mapping[str, Any],
+) -> list[dict[str, Any]]:
+    data = plan.data if isinstance(plan, LoadedPlan) else plan
+    declared = data.get("tui_sessions")
+    if isinstance(declared, list):
+        return [dict(session) for session in declared if isinstance(session, Mapping)]
+    interaction = data.get("interaction")
+    if isinstance(interaction, Mapping) and interaction.get("mode") == "tui":
+        return [
+            {
+                "id": "primary",
+                "target": data["target"],
+                "interaction": interaction,
+                "steps": data["steps"],
+            }
+        ]
+    return []
+
+
+def plan_steps(plan: LoadedPlan | Mapping[str, Any]) -> list[dict[str, Any]]:
+    data = plan.data if isinstance(plan, LoadedPlan) else plan
+    sessions = plan_tui_sessions(data)
+    if sessions:
+        return [dict(step) for session in sessions for step in session["steps"]]
+    steps = data.get("steps", [])
+    return [dict(step) for step in steps if isinstance(step, Mapping)]
+
+
+def plan_targets(plan: LoadedPlan | Mapping[str, Any]) -> list[dict[str, Any]]:
+    data = plan.data if isinstance(plan, LoadedPlan) else plan
+    sessions = plan_tui_sessions(data)
+    if sessions:
+        return [dict(session["target"]) for session in sessions]
+    target = data.get("target")
+    return [dict(target)] if isinstance(target, Mapping) else []
+
+
+def loaded_tui_session(plan: LoadedPlan, session: Mapping[str, Any]) -> LoadedPlan:
+    data = {
+        key: value
+        for key, value in plan.data.items()
+        if key not in {"tui_sessions", "target", "interaction", "steps"}
+    }
+    data.update(
+        {
+            "target": session["target"],
+            "interaction": session["interaction"],
+            "steps": session["steps"],
+        }
+    )
+    return LoadedPlan(
+        path=plan.path,
+        data=data,
+        sha256=plan.sha256,
+        working_directory=plan.working_directory,
+    )
+
+
+def select_tui_session_plan(
+    plan: LoadedPlan, session_id: str | None
+) -> tuple[str, LoadedPlan]:
+    sessions = plan_tui_sessions(plan)
+    if not sessions:
+        raise CommandVideoError("The plan does not declare a TUI session")
+    if plan_mode(plan) == "tui-sequence":
+        if session_id is None:
+            raise CommandVideoError("A TUI sequence target requires --session-id")
+        matches = [session for session in sessions if session["id"] == session_id]
+        if len(matches) != 1:
+            raise CommandVideoError(f"Unknown TUI session id: {session_id}")
+        return session_id, loaded_tui_session(plan, matches[0])
+    if session_id not in {None, "primary"}:
+        raise CommandVideoError("A single-target TUI plan only accepts session id 'primary'")
+    return "primary", loaded_tui_session(plan, sessions[0])
 
 
 def validate_tui_key(key: Any, *, label: str) -> str:
@@ -427,6 +565,8 @@ def validate_tui_actions(value: Any, *, label: str) -> list[dict[str, Any]]:
 
 def plan_mode(plan: LoadedPlan | Mapping[str, Any]) -> str:
     data = plan.data if isinstance(plan, LoadedPlan) else plan
+    if isinstance(data.get("tui_sessions"), list):
+        return "tui-sequence"
     interaction = data.get("interaction")
     return "tui" if isinstance(interaction, dict) and interaction.get("mode") == "tui" else "argv"
 
@@ -445,7 +585,8 @@ def render_end_at(plan: LoadedPlan | Mapping[str, Any]) -> str:
 
 def tui_ready_presentation_lead_seconds(plan: LoadedPlan | Mapping[str, Any]) -> float:
     data = plan.data if isinstance(plan, LoadedPlan) else plan
-    interaction = data.get("interaction", {})
+    sessions = plan_tui_sessions(data)
+    interaction = sessions[0]["interaction"] if sessions else data.get("interaction", {})
     if not isinstance(interaction, Mapping):
         raise CommandVideoError("TUI-ready presentation requires an interaction object")
     settle_seconds = float(interaction.get("settle_seconds", 0.0))
@@ -468,6 +609,96 @@ def validate_plan_data(plan_path: Path, data: Any) -> LoadedPlan:
         plan["working_directory"], label="working_directory", maximum=4096
     )
     require_string(plan["declared_scope"], label="declared_scope", maximum=2000)
+
+    if "tui_sessions" in plan:
+        conflicting = sorted(set(plan) & {"target", "interaction", "steps"})
+        if conflicting:
+            raise CommandVideoError(
+                "tui_sessions cannot be combined with top-level " + ", ".join(conflicting)
+            )
+        sessions = plan["tui_sessions"]
+        if not isinstance(sessions, list) or not 2 <= len(sessions) <= 8:
+            raise CommandVideoError("tui_sessions must contain between 2 and 8 TUI sessions")
+        seen_session_ids: set[str] = set()
+        seen_step_ids: set[str] = set()
+        executable_identities: set[str] = set()
+        for session_index, raw_session in enumerate(sessions):
+            session_label = f"tui_sessions[{session_index}]"
+            session = require_exact_fields(
+                raw_session,
+                label=session_label,
+                allowed=TUI_SESSION_FIELDS,
+                required=TUI_SESSION_FIELDS,
+            )
+            session_id = require_string(
+                session["id"], label=f"{session_label}.id", maximum=63
+            )
+            if not re.fullmatch(
+                r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?", session_id
+            ):
+                raise CommandVideoError(
+                    f"{session_label}.id must be lowercase hyphen-case"
+                )
+            if session_id in seen_session_ids:
+                raise CommandVideoError(f"Duplicate TUI session id: {session_id}")
+            seen_session_ids.add(session_id)
+            if not isinstance(session.get("target"), dict):
+                raise CommandVideoError(f"{session_label}.target must be a JSON object")
+            executable_identity = str(session["target"].get("executable", "")).casefold()
+            if executable_identity:
+                executable_identities.add(executable_identity)
+            session_steps = session.get("steps")
+            if isinstance(session_steps, list):
+                for raw_step in session_steps:
+                    if not isinstance(raw_step, dict):
+                        continue
+                    step_id = raw_step.get("id")
+                    if isinstance(step_id, str):
+                        if step_id in seen_step_ids:
+                            raise CommandVideoError(
+                                f"Duplicate step id across TUI sessions: {step_id}"
+                            )
+                        seen_step_ids.add(step_id)
+
+            session_render = dict(plan["render"]) if isinstance(plan.get("render"), dict) else plan.get("render")
+            if (
+                isinstance(session_render, dict)
+                and session_index < len(sessions) - 1
+                and session_render.get("end_at", "target-exit") == "before-final-key"
+            ):
+                session_render["end_at"] = "target-exit"
+            synthetic = {
+                "schema_version": plan["schema_version"],
+                "title": f"{plan['title']} — {session_id}",
+                "working_directory": plan["working_directory"],
+                "declared_scope": plan["declared_scope"],
+                "target": session["target"],
+                "terminal": plan["terminal"],
+                "render": session_render,
+                "steps": session["steps"],
+                "interaction": session["interaction"],
+            }
+            validate_plan_data(plan_path, synthetic)
+        if len(executable_identities) < 2:
+            raise CommandVideoError(
+                "tui_sessions must declare at least two distinct target executables"
+            )
+        resolved_plan_path = plan_path.resolve()
+        working_directory = normalize_working_directory(
+            resolved_plan_path, working_value
+        )
+        return LoadedPlan(
+            path=resolved_plan_path,
+            data=plan,
+            sha256=sha256_file(resolved_plan_path),
+            working_directory=working_directory,
+        )
+
+    missing_legacy = sorted({"target", "steps"} - set(plan))
+    if missing_legacy:
+        raise CommandVideoError(
+            "Single-target plans are missing fields: " + ", ".join(missing_legacy)
+        )
 
     target = require_exact_fields(
         plan["target"], label="target", allowed=TARGET_FIELDS, required=TARGET_FIELDS
@@ -547,6 +778,12 @@ def validate_plan_data(plan_path: Path, data: Any) -> LoadedPlan:
             if "{prompt}" in item:
                 raise CommandVideoError(
                     "interaction.launch_args cannot contain {prompt}; TUI prompts are typed"
+                )
+        if any(WINDOWS_WORKING_DIRECTORY_TOKEN in item for item in launch_args):
+            executable_name = str(target["executable"]).lower()
+            if not executable_name.endswith(".exe"):
+                raise CommandVideoError(
+                    f"{WINDOWS_WORKING_DIRECTORY_TOKEN} is only valid for a native Windows .exe target"
                 )
         require_number(
             interaction["typing_interval_seconds"],
@@ -781,6 +1018,35 @@ def load_plan(path_value: str | Path) -> LoadedPlan:
 
 
 def plan_summary(plan: LoadedPlan) -> dict[str, Any]:
+    mode = plan_mode(plan)
+    steps = plan_steps(plan)
+    sessions = plan_tui_sessions(plan)
+    step_summaries = [
+        {
+            "id": step["id"],
+            "input_kind": "prompt" if "prompt" in step else "actions",
+            "input_sha256": tui_step_input_sha256(step),
+            "prompt_sha256": (
+                sha256_text(step["prompt"]) if "prompt" in step else None
+            ),
+            "actions": (
+                [
+                    {
+                        "type": action["type"],
+                        "sha256": sha256_json(action),
+                    }
+                    for action in step.get("actions", [])
+                ]
+                or None
+            ),
+            "completion": (
+                tui_step_completion(step) if is_tui_mode(mode) else "process-exit"
+            ),
+            "args_template": step.get("args"),
+            "timeout_seconds": step["timeout_seconds"],
+        }
+        for step in steps
+    ]
     return {
         "status": "passed",
         "schema_version": SCHEMA_VERSION,
@@ -789,40 +1055,25 @@ def plan_summary(plan: LoadedPlan) -> dict[str, Any]:
         "title": plan.data["title"],
         "working_directory": str(plan.working_directory),
         "declared_scope": plan.data["declared_scope"],
-        "target": plan.data["target"],
-        "mode": plan_mode(plan),
+        "target": plan.data.get("target"),
+        "targets": plan_targets(plan),
+        "mode": mode,
         "interaction": plan.data.get("interaction"),
+        "tui_session_count": len(sessions),
+        "tui_sessions": [
+            {
+                "id": session["id"],
+                "target": session["target"],
+                "step_ids": [step["id"] for step in session["steps"]],
+            }
+            for session in sessions
+        ],
         "terminal": plan.data["terminal"],
         "render": plan.data["render"],
-        "prompt_count": len(plan.data["steps"]),
-        "text_prompt_count": sum("prompt" in step for step in plan.data["steps"]),
-        "action_count": sum(len(step.get("actions", [])) for step in plan.data["steps"]),
-        "steps": [
-            {
-                "id": step["id"],
-                "input_kind": "prompt" if "prompt" in step else "actions",
-                "input_sha256": tui_step_input_sha256(step),
-                "prompt_sha256": (
-                    sha256_text(step["prompt"]) if "prompt" in step else None
-                ),
-                "actions": (
-                    [
-                        {
-                            "type": action["type"],
-                            "sha256": sha256_json(action),
-                        }
-                        for action in step.get("actions", [])
-                    ]
-                    or None
-                ),
-                "completion": (
-                    tui_step_completion(step) if plan_mode(plan) == "tui" else "process-exit"
-                ),
-                "args_template": step.get("args"),
-                "timeout_seconds": step["timeout_seconds"],
-            }
-            for step in plan.data["steps"]
-        ],
+        "prompt_count": len(steps),
+        "text_prompt_count": sum("prompt" in step for step in steps),
+        "action_count": sum(len(step.get("actions", [])) for step in steps),
+        "steps": step_summaries,
     }
 
 
@@ -926,8 +1177,257 @@ def terminate_process(process: subprocess.Popen[Any]) -> None:
             pass
 
 
-def expanded_launch_argv(executable: Path, args: Sequence[str], run_id: str) -> list[str]:
-    return [str(executable)] + [item.replace("{run_id}", run_id) for item in args]
+def launch_args_request_windows_working_directory(args: Sequence[str]) -> bool:
+    return any(WINDOWS_WORKING_DIRECTORY_TOKEN in item for item in args)
+
+
+def plan_targets_lazygit(plan: LoadedPlan | Mapping[str, Any]) -> bool:
+    for target in plan_targets(plan):
+        if "lazygit" in str(target.get("name", "")).lower() or "lazygit" in str(
+            target.get("executable", "")
+        ).lower():
+            return True
+    return False
+
+
+def plan_has_bridged_lazygit(plan: LoadedPlan | Mapping[str, Any]) -> bool:
+    for session in plan_tui_sessions(plan):
+        target = session["target"]
+        if not (
+            "lazygit" in str(target.get("name", "")).lower()
+            or "lazygit" in str(target.get("executable", "")).lower()
+        ):
+            continue
+        if launch_args_request_windows_working_directory(
+            session["interaction"]["launch_args"]
+        ):
+            return True
+    return False
+
+
+def expanded_launch_argv(
+    executable: Path,
+    args: Sequence[str],
+    run_id: str,
+    *,
+    windows_working_directory: str | None = None,
+) -> list[str]:
+    if launch_args_request_windows_working_directory(args) and windows_working_directory is None:
+        raise CommandVideoError(
+            f"Launch arguments require {WINDOWS_WORKING_DIRECTORY_TOKEN}, but no verified Windows path bridge is active"
+        )
+    expanded: list[str] = [str(executable)]
+    for item in args:
+        value = item.replace("{run_id}", run_id)
+        if windows_working_directory is not None:
+            value = value.replace(
+                WINDOWS_WORKING_DIRECTORY_TOKEN, windows_working_directory
+            )
+        expanded.append(value)
+    return expanded
+
+
+def resolve_windows_path_bridge_helpers(
+    *, working_directory: Path, env: Mapping[str, str]
+) -> tuple[Path, Path]:
+    if not is_wsl():
+        raise CommandVideoError(
+            f"{WINDOWS_WORKING_DIRECTORY_TOKEN} requires WSL2 with Windows interoperability"
+        )
+    path_value = env.get("PATH", "")
+    native_wslpath = NATIVE_WSLPATH
+    if not native_wslpath.is_file() or not os.access(native_wslpath, os.X_OK):
+        raise CommandVideoError(
+            f"{WINDOWS_WORKING_DIRECTORY_TOKEN} requires the native WSL helper /usr/bin/wslpath"
+        )
+    # Preserve the wslpath argv[0] dispatch name. Resolving its /init symlink
+    # makes WSL interpret "-w" as an /init argument instead of a path mode.
+    wslpath = native_wslpath
+    subst = resolve_executable(
+        "subst.exe", working_directory=working_directory, path_value=path_value
+    )
+    return wslpath, subst
+
+
+def windows_path_bridge_preflight(
+    *, working_directory: Path, target: Path | None, env: Mapping[str, str]
+) -> dict[str, Any]:
+    if target is not None and target.suffix.lower() != ".exe":
+        raise CommandVideoError(
+            f"{WINDOWS_WORKING_DIRECTORY_TOKEN} requires a native Windows .exe target"
+        )
+    wslpath, subst = resolve_windows_path_bridge_helpers(
+        working_directory=working_directory, env=env
+    )
+    code, windows_path = command_output(
+        [str(wslpath), "-w", str(working_directory)],
+        cwd=working_directory,
+        env=env,
+    )
+    windows_path = windows_path.strip()
+    if code != 0 or not re.fullmatch(r"[A-Za-z]:\\.*", windows_path):
+        raise CommandVideoError(
+            f"Could not translate the TUI working directory to a Windows path: {windows_path or 'no output'}"
+        )
+    list_code, _ = command_output(
+        [str(subst)], cwd=working_directory, env=env
+    )
+    if list_code != 0:
+        raise CommandVideoError("subst.exe could not enumerate Windows drive mappings")
+    return {
+        "mode": "temporary-subst-drive",
+        "token": WINDOWS_WORKING_DIRECTORY_TOKEN,
+        "source_working_directory": str(working_directory),
+        "windows_source_path": windows_path,
+        "wslpath": str(wslpath),
+        "wslpath_sha256": sha256_file(wslpath),
+        "subst": str(subst),
+        "subst_sha256": sha256_file(subst),
+        "candidate_drive_count": len(SUBST_DRIVE_LETTERS),
+    }
+
+
+def lazygit_longpaths_preflight(
+    *, working_directory: Path, env: Mapping[str, str]
+) -> dict[str, Any]:
+    native_git = NATIVE_WSL_GIT
+    if not native_git.is_file() or not os.access(native_git, os.X_OK):
+        raise CommandVideoError(
+            "Native Windows lazygit path bridging requires /usr/bin/git for project-local checks"
+        )
+    code, output = command_output(
+        [
+            str(native_git),
+            "-C",
+            str(working_directory),
+            "config",
+            "--local",
+            "--bool",
+            "core.longpaths",
+        ],
+        cwd=working_directory,
+        env=env,
+    )
+    if code != 0 or output.strip().lower() != "true":
+        raise CommandVideoError(
+            "Before recording lazygit.exe through the Windows path bridge, set "
+            "core.longpaths=true in that repository's local Git config"
+        )
+    return {
+        "status": "passed",
+        "scope": "project-local",
+        "setting": "core.longpaths",
+        "value": True,
+        "git": str(native_git),
+        "git_sha256": sha256_file(native_git),
+    }
+
+
+def acquire_windows_working_directory_bridge(
+    *, working_directory: Path, env: Mapping[str, str], run_id: str
+) -> dict[str, Any]:
+    preflight = windows_path_bridge_preflight(
+        working_directory=working_directory,
+        target=None,
+        env=env,
+    )
+    subst = Path(preflight["subst"])
+    windows_path = str(preflight["windows_source_path"])
+    failure_details: list[str] = []
+    for letter in SUBST_DRIVE_LETTERS:
+        drive = f"{letter}:"
+        lock_path = Path(tempfile.gettempdir()) / (
+            f"asciinema-real-command-video-subst-{letter.lower()}.lock"
+        )
+        descriptor: int | None = None
+        mapping_created = False
+        try:
+            descriptor = os.open(lock_path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        except FileExistsError:
+            continue
+        try:
+            with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+                descriptor = None
+                handle.write(run_id + "\n")
+                handle.flush()
+                os.fsync(handle.fileno())
+            completed = subprocess.run(
+                [str(subst), drive, windows_path],
+                cwd=str(working_directory),
+                env=dict(env),
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                timeout=10,
+                check=False,
+            )
+            if completed.returncode == 0:
+                mapping_created = True
+                return {
+                    **preflight,
+                    "status": "active",
+                    "created": True,
+                    "released": False,
+                    "drive": drive,
+                    "mount_root": f"{drive}/",
+                    "create_exit_code": completed.returncode,
+                    "_lock_path": str(lock_path),
+                }
+            detail = completed.stdout.strip()
+            failure_details.append(f"{drive}={completed.returncode}:{detail[:160]}")
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            failure_details.append(f"{drive}:{exc}")
+        finally:
+            if descriptor is not None:
+                os.close(descriptor)
+            if not mapping_created and lock_path.exists():
+                try:
+                    lock_path.unlink()
+                except FileNotFoundError:
+                    pass
+    detail = "; ".join(failure_details[-3:]) or "no candidate drive was available"
+    raise CommandVideoError(f"Could not create a temporary Windows path bridge: {detail}")
+
+
+def release_windows_working_directory_bridge(
+    bridge: Mapping[str, Any], *, working_directory: Path, env: Mapping[str, str]
+) -> dict[str, Any]:
+    subst = Path(str(bridge["subst"]))
+    drive = str(bridge["drive"])
+    lock_path = Path(str(bridge["_lock_path"]))
+    exit_code: int | None = None
+    detail = ""
+    try:
+        completed = subprocess.run(
+            [str(subst), drive, "/d"],
+            cwd=str(working_directory),
+            env=dict(env),
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=10,
+            check=False,
+        )
+        exit_code = completed.returncode
+        detail = completed.stdout.strip()[:512]
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        detail = str(exc)
+    finally:
+        try:
+            lock_path.unlink()
+        except FileNotFoundError:
+            pass
+    return {
+        "released": exit_code == 0,
+        "release_exit_code": exit_code,
+        "release_output": detail,
+    }
 
 
 def tmux_run(
@@ -1306,15 +1806,20 @@ def execute_tui_target(
     gate_path: Path,
     run_id: str,
     env: Mapping[str, str] | None = None,
+    session_id: str | None = None,
+    final_hold_seconds: float | None = None,
 ) -> int:
+    selected_session_id, plan = select_tui_session_plan(plan, session_id)
     runtime_env = dict(env or os.environ)
     status: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
         "status": "failed",
         "run_id": run_id,
+        "session_id": selected_session_id,
         "started_at_utc": utc_now(),
     }
     return_code = 2
+    windows_bridge: dict[str, Any] | None = None
     try:
         if plan_mode(plan) != "tui":
             raise CommandVideoError("run-tui-target requires a TUI interaction plan")
@@ -1330,7 +1835,25 @@ def execute_tui_target(
             path_value=runtime_env.get("PATH", ""),
         )
         interaction = plan.data["interaction"]
-        argv = expanded_launch_argv(target_path, interaction["launch_args"], run_id)
+        windows_working_directory: str | None = None
+        if launch_args_request_windows_working_directory(interaction["launch_args"]):
+            windows_bridge = acquire_windows_working_directory_bridge(
+                working_directory=plan.working_directory,
+                env=runtime_env,
+                run_id=run_id,
+            )
+            windows_working_directory = str(windows_bridge["mount_root"])
+            status["windows_working_directory_bridge"] = {
+                key: value
+                for key, value in windows_bridge.items()
+                if not key.startswith("_")
+            }
+        argv = expanded_launch_argv(
+            target_path,
+            interaction["launch_args"],
+            run_id,
+            windows_working_directory=windows_working_directory,
+        )
         if "copilot" in target["name"].lower() or "copilot" in target["executable"].lower():
             if runtime_env.get("COPILOT_ALLOW_ALL", "").strip().lower() in {
                 "1",
@@ -1360,16 +1883,282 @@ def execute_tui_target(
         return_code = process.wait()
         status["exit_code"] = return_code
         status["status"] = "passed"
-        final_hold_seconds = float(plan.data["render"]["last_frame_duration"])
-        status["final_hold_seconds"] = final_hold_seconds
-        if final_hold_seconds > 0:
-            time.sleep(final_hold_seconds)
+        configured_hold = (
+            float(plan.data["render"]["last_frame_duration"])
+            if final_hold_seconds is None
+            else float(final_hold_seconds)
+        )
+        status["final_hold_seconds"] = configured_hold
+        if configured_hold > 0:
+            time.sleep(configured_hold)
     except Exception as exc:
         status["error"] = str(exc)
     finally:
+        if windows_bridge is not None:
+            release = release_windows_working_directory_bridge(
+                windows_bridge,
+                working_directory=plan.working_directory,
+                env=runtime_env,
+            )
+            status["windows_working_directory_bridge"].update(release)
+            status["windows_working_directory_bridge"]["status"] = (
+                "released" if release["released"] else "release-failed"
+            )
+            if not release["released"]:
+                status["status"] = "failed"
+                status["error"] = (
+                    "The temporary Windows path bridge could not be released: "
+                    f"{release['release_output']}"
+                )
+                return_code = 2
         status["finished_at_utc"] = utc_now()
         write_json_atomic(status_path.resolve(), status)
     return return_code
+
+
+def execute_tui_sequence_targets(
+    plan: LoadedPlan,
+    *,
+    state_directory: Path,
+    run_id: str,
+    env: Mapping[str, str] | None = None,
+) -> int:
+    if plan_mode(plan) != "tui-sequence":
+        raise CommandVideoError("run-tui-sequence-targets requires a TUI sequence plan")
+    state_root = state_directory.resolve()
+    state_root.mkdir(parents=True, exist_ok=True)
+    sessions = plan_tui_sessions(plan)
+    for index, session in enumerate(sessions):
+        session_id = str(session["id"])
+        status_path = state_root / f"{index:02d}-{session_id}.status.json"
+        gate_path = state_root / f"{index:02d}-{session_id}.gate"
+        return_code = execute_tui_target(
+            plan,
+            status_path=status_path,
+            gate_path=gate_path,
+            run_id=run_id,
+            env=env,
+            session_id=session_id,
+            final_hold_seconds=(
+                float(plan.data["render"]["last_frame_duration"])
+                if index == len(sessions) - 1
+                else 0.0
+            ),
+        )
+        status = load_json(status_path)
+        expected = session["interaction"]["expected_exit_codes"]
+        if (
+            return_code not in expected
+            or not isinstance(status, dict)
+            or status.get("status") != "passed"
+            or status.get("exit_code") not in expected
+        ):
+            return 1
+    return 0
+
+
+def automate_tui_session(
+    session_plan: LoadedPlan,
+    *,
+    session_id: str,
+    runtime_target: dict[str, Any],
+    runtime_interaction: dict[str, Any],
+    runtime_steps: list[dict[str, Any]],
+    target_status_path: Path,
+    run_id: str,
+    tmux: Path,
+    server_name: str,
+    session_name: str,
+    cwd: Path,
+    env: Mapping[str, str],
+    emit_primary_ready: bool,
+    hold_before_final_key: bool,
+    emit_final_target_exit: bool,
+) -> dict[str, Any]:
+    interaction = session_plan.data["interaction"]
+    emit_hidden_marker(run_id, "TUI-SESSION", session_id, "BEGIN")
+    ready_screen = wait_for_ready_screen(
+        tmux,
+        server_name,
+        session_name,
+        ready_pattern=interaction["ready_pattern"],
+        busy_pattern=interaction["busy_pattern"],
+        timeout_seconds=interaction["startup_timeout_seconds"],
+        settle_seconds=min(0.75, float(interaction["settle_seconds"])),
+        baseline=None,
+        cwd=cwd,
+        env=env,
+    )
+    runtime_interaction["startup_ready_screen_sha256"] = sha256_text(ready_screen)
+    runtime_interaction["startup_ready_at_utc"] = utc_now()
+    emit_hidden_marker(run_id, "TUI-SESSION", session_id, "READY")
+    if emit_primary_ready:
+        emit_hidden_marker(run_id, "TUI", "READY")
+
+    target_status: dict[str, Any] | None = None
+    for index, step in enumerate(session_plan.data["steps"], start=1):
+        if "actions" in step:
+            step_report, observed_target_status = execute_tui_action_step(
+                step,
+                index=index,
+                interaction=interaction,
+                target_status_path=target_status_path,
+                run_id=run_id,
+                tmux=tmux,
+                server_name=server_name,
+                session_name=session_name,
+                hold_before_final_key=(
+                    hold_before_final_key
+                    and index == len(session_plan.data["steps"])
+                ),
+                cwd=cwd,
+                env=env,
+            )
+            runtime_steps.append(step_report)
+            if observed_target_status is not None:
+                target_status = observed_target_status
+        else:
+            prompt = step["prompt"]
+            prompt_hash = sha256_text(prompt)
+            started_at = utc_now()
+            started_monotonic = time.monotonic()
+            emit_hidden_marker(run_id, "STEP", step["id"], "BEGIN")
+            emit_hidden_marker(run_id, "TYPING", step["id"], "BEGIN", prompt_hash)
+            typing_started = time.monotonic()
+            tmux_send_literal(
+                tmux,
+                server_name,
+                session_name,
+                prompt,
+                interval_seconds=float(interaction["typing_interval_seconds"]),
+                cwd=cwd,
+                env=env,
+            )
+            typing_elapsed = time.monotonic() - typing_started
+            pre_submit_pause = float(interaction["pre_submit_pause_seconds"])
+            if pre_submit_pause:
+                time.sleep(pre_submit_pause)
+            typed_screen = tmux_capture_pane(
+                tmux,
+                server_name,
+                session_name,
+                cwd=cwd,
+                env=env,
+            )
+            if prompt not in typed_screen:
+                raise CommandVideoError(
+                    f"TUI did not visibly echo the exact prompt before Enter: {step['id']}"
+                )
+            emit_hidden_marker(run_id, "TYPING", step["id"], "END", prompt_hash)
+            emit_hidden_marker(run_id, "SUBMIT", step["id"], "ENTER")
+            tmux_send_key(
+                tmux,
+                server_name,
+                session_name,
+                "Enter",
+                cwd=cwd,
+                env=env,
+            )
+            submitted_at = utc_now()
+            response_screen = wait_for_ready_screen(
+                tmux,
+                server_name,
+                session_name,
+                ready_pattern=interaction["ready_pattern"],
+                busy_pattern=interaction["busy_pattern"],
+                timeout_seconds=step["timeout_seconds"],
+                settle_seconds=interaction["settle_seconds"],
+                baseline=typed_screen,
+                cwd=cwd,
+                env=env,
+            )
+            elapsed = time.monotonic() - started_monotonic
+            runtime_steps.append(
+                {
+                    "id": step["id"],
+                    "index": index,
+                    "status": "passed",
+                    "input_kind": "prompt",
+                    "input_sha256": prompt_hash,
+                    "completion": "ready",
+                    "started_at_utc": started_at,
+                    "submitted_at_utc": submitted_at,
+                    "finished_at_utc": utc_now(),
+                    "elapsed_seconds": round(elapsed, 6),
+                    "typing_elapsed_seconds": round(typing_elapsed, 6),
+                    "typing_method": "tmux-send-keys",
+                    "keystroke_count": len(prompt),
+                    "submit_key": "Enter",
+                    "prompt_sha256": prompt_hash,
+                    "typed_screen_sha256": sha256_text(typed_screen),
+                    "response_screen_sha256": sha256_text(response_screen),
+                    "prompt_visible_before_submit": True,
+                    "ready_after_response": screen_matches_ready(
+                        response_screen, interaction["ready_pattern"]
+                    ),
+                    "busy_after_response": screen_matches_busy(
+                        response_screen, interaction["busy_pattern"]
+                    ),
+                    "typed_screen": bounded_screen_snapshot(typed_screen),
+                    "response_screen": bounded_screen_snapshot(response_screen),
+                }
+            )
+            emit_hidden_marker(run_id, "STEP", step["id"], "END", "0")
+        pause = float(step["pause_after_seconds"])
+        if pause:
+            time.sleep(pause)
+
+    if tui_shutdown_mode(session_plan) == "exit-text":
+        emit_hidden_marker(run_id, "TUI-SESSION", session_id, "EXIT", "BEGIN")
+        tmux_send_literal(
+            tmux,
+            server_name,
+            session_name,
+            interaction["exit_text"],
+            interval_seconds=float(interaction["typing_interval_seconds"]),
+            cwd=cwd,
+            env=env,
+        )
+        if interaction["pre_submit_pause_seconds"]:
+            time.sleep(float(interaction["pre_submit_pause_seconds"]))
+        tmux_send_key(
+            tmux,
+            server_name,
+            session_name,
+            "Enter",
+            cwd=cwd,
+            env=env,
+        )
+        emit_hidden_marker(run_id, "TUI-SESSION", session_id, "EXIT", "ENTER")
+        target_status, _ = wait_for_target_status(
+            target_status_path,
+            tmux,
+            server_name,
+            session_name,
+            timeout_seconds=float(interaction["exit_timeout_seconds"]),
+            initial_screen=ready_screen,
+            cwd=cwd,
+            env=env,
+        )
+    elif target_status is None:
+        raise CommandVideoError(
+            f"TUI session {session_id} completed without a target status report"
+        )
+    assert target_status is not None
+    target_exit_code = target_status.get("exit_code")
+    runtime_target["final_exit_code"] = target_exit_code
+    runtime_interaction["target_status"] = target_status
+    if target_exit_code not in interaction["expected_exit_codes"]:
+        raise CommandVideoError(
+            f"TUI session {session_id} exited with {target_exit_code}; "
+            f"expected {interaction['expected_exit_codes']}"
+        )
+    emit_hidden_marker(
+        run_id, "TUI-SESSION", session_id, "EXIT", str(target_exit_code)
+    )
+    if emit_final_target_exit:
+        emit_hidden_marker(run_id, "TARGET", "EXIT", str(target_exit_code))
+    return target_status
 
 
 def execute_tui_plan(
@@ -1569,181 +2358,23 @@ def execute_tui_plan(
                 else:
                     raise CommandVideoError("tmux client did not attach to the recording session")
                 gate_path.write_text(run_id + "\n", encoding="utf-8")
-                ready_screen = wait_for_ready_screen(
-                    tmux,
-                    server_name,
-                    session_name,
-                    ready_pattern=interaction["ready_pattern"],
-                    busy_pattern=interaction["busy_pattern"],
-                    timeout_seconds=interaction["startup_timeout_seconds"],
-                    settle_seconds=min(0.75, float(interaction["settle_seconds"])),
-                    baseline=None,
+                automate_tui_session(
+                    plan,
+                    session_id="primary",
+                    runtime_target=base_report["target"],
+                    runtime_interaction=base_report["interaction"],
+                    runtime_steps=base_report["steps"],
+                    target_status_path=target_status_path,
+                    run_id=run_id,
+                    tmux=tmux,
+                    server_name=server_name,
+                    session_name=session_name,
                     cwd=plan.working_directory,
                     env=tmux_env,
+                    emit_primary_ready=True,
+                    hold_before_final_key=(render_end_at(plan) == "before-final-key"),
+                    emit_final_target_exit=True,
                 )
-                base_report["interaction"]["startup_ready_screen_sha256"] = sha256_text(
-                    ready_screen
-                )
-                base_report["interaction"]["startup_ready_at_utc"] = utc_now()
-                emit_hidden_marker(run_id, "TUI", "READY")
-
-                target_status: dict[str, Any] | None = None
-                for index, step in enumerate(plan.data["steps"], start=1):
-                    if "actions" in step:
-                        step_report, observed_target_status = execute_tui_action_step(
-                            step,
-                            index=index,
-                            interaction=interaction,
-                            target_status_path=target_status_path,
-                            run_id=run_id,
-                            tmux=tmux,
-                            server_name=server_name,
-                            session_name=session_name,
-                            hold_before_final_key=(
-                                render_end_at(plan) == "before-final-key"
-                                and index == len(plan.data["steps"])
-                            ),
-                            cwd=plan.working_directory,
-                            env=tmux_env,
-                        )
-                        base_report["steps"].append(step_report)
-                        if observed_target_status is not None:
-                            target_status = observed_target_status
-                    else:
-                        prompt = step["prompt"]
-                        prompt_hash = sha256_text(prompt)
-                        started_at = utc_now()
-                        started_monotonic = time.monotonic()
-                        emit_hidden_marker(run_id, "STEP", step["id"], "BEGIN")
-                        emit_hidden_marker(run_id, "TYPING", step["id"], "BEGIN", prompt_hash)
-                        typing_started = time.monotonic()
-                        tmux_send_literal(
-                            tmux,
-                            server_name,
-                            session_name,
-                            prompt,
-                            interval_seconds=float(interaction["typing_interval_seconds"]),
-                            cwd=plan.working_directory,
-                            env=tmux_env,
-                        )
-                        typing_elapsed = time.monotonic() - typing_started
-                        pre_submit_pause = float(interaction["pre_submit_pause_seconds"])
-                        if pre_submit_pause:
-                            time.sleep(pre_submit_pause)
-                        typed_screen = tmux_capture_pane(
-                            tmux,
-                            server_name,
-                            session_name,
-                            cwd=plan.working_directory,
-                            env=tmux_env,
-                        )
-                        if prompt not in typed_screen:
-                            raise CommandVideoError(
-                                f"TUI did not visibly echo the exact prompt before Enter: {step['id']}"
-                            )
-                        emit_hidden_marker(run_id, "TYPING", step["id"], "END", prompt_hash)
-                        emit_hidden_marker(run_id, "SUBMIT", step["id"], "ENTER")
-                        tmux_send_key(
-                            tmux,
-                            server_name,
-                            session_name,
-                            "Enter",
-                            cwd=plan.working_directory,
-                            env=tmux_env,
-                        )
-                        submitted_at = utc_now()
-                        response_screen = wait_for_ready_screen(
-                            tmux,
-                            server_name,
-                            session_name,
-                            ready_pattern=interaction["ready_pattern"],
-                            busy_pattern=interaction["busy_pattern"],
-                            timeout_seconds=step["timeout_seconds"],
-                            settle_seconds=interaction["settle_seconds"],
-                            baseline=typed_screen,
-                            cwd=plan.working_directory,
-                            env=tmux_env,
-                        )
-                        elapsed = time.monotonic() - started_monotonic
-                        step_report = {
-                            "id": step["id"],
-                            "index": index,
-                            "status": "passed",
-                            "input_kind": "prompt",
-                            "input_sha256": prompt_hash,
-                            "completion": "ready",
-                            "started_at_utc": started_at,
-                            "submitted_at_utc": submitted_at,
-                            "finished_at_utc": utc_now(),
-                            "elapsed_seconds": round(elapsed, 6),
-                            "typing_elapsed_seconds": round(typing_elapsed, 6),
-                            "typing_method": "tmux-send-keys",
-                            "keystroke_count": len(prompt),
-                            "submit_key": "Enter",
-                            "prompt_sha256": prompt_hash,
-                            "typed_screen_sha256": sha256_text(typed_screen),
-                            "response_screen_sha256": sha256_text(response_screen),
-                            "prompt_visible_before_submit": True,
-                            "ready_after_response": screen_matches_ready(
-                                response_screen, interaction["ready_pattern"]
-                            ),
-                            "busy_after_response": screen_matches_busy(
-                                response_screen, interaction["busy_pattern"]
-                            ),
-                            "typed_screen": bounded_screen_snapshot(typed_screen),
-                            "response_screen": bounded_screen_snapshot(response_screen),
-                        }
-                        base_report["steps"].append(step_report)
-                        emit_hidden_marker(run_id, "STEP", step["id"], "END", "0")
-                    pause = float(step["pause_after_seconds"])
-                    if pause:
-                        time.sleep(pause)
-
-                if tui_shutdown_mode(plan) == "exit-text":
-                    emit_hidden_marker(run_id, "TUI", "EXIT", "BEGIN")
-                    tmux_send_literal(
-                        tmux,
-                        server_name,
-                        session_name,
-                        interaction["exit_text"],
-                        interval_seconds=float(interaction["typing_interval_seconds"]),
-                        cwd=plan.working_directory,
-                        env=tmux_env,
-                    )
-                    if interaction["pre_submit_pause_seconds"]:
-                        time.sleep(float(interaction["pre_submit_pause_seconds"]))
-                    tmux_send_key(
-                        tmux,
-                        server_name,
-                        session_name,
-                        "Enter",
-                        cwd=plan.working_directory,
-                        env=tmux_env,
-                    )
-                    emit_hidden_marker(run_id, "TUI", "EXIT", "ENTER")
-                    target_status, _ = wait_for_target_status(
-                        target_status_path,
-                        tmux,
-                        server_name,
-                        session_name,
-                        timeout_seconds=float(interaction["exit_timeout_seconds"]),
-                        initial_screen=ready_screen,
-                        cwd=plan.working_directory,
-                        env=tmux_env,
-                    )
-                elif target_status is None:
-                    raise CommandVideoError(
-                        "Target-exit shutdown completed without a target status report"
-                    )
-                assert target_status is not None
-                target_exit_code = target_status.get("exit_code")
-                base_report["target"]["final_exit_code"] = target_exit_code
-                base_report["interaction"]["target_status"] = target_status
-                if target_exit_code not in interaction["expected_exit_codes"]:
-                    raise CommandVideoError(
-                        f"TUI target exited with {target_exit_code}; expected {interaction['expected_exit_codes']}"
-                    )
-                emit_hidden_marker(run_id, "TARGET", "EXIT", str(target_exit_code))
                 emit_hidden_marker(run_id, "RUN", "END", "0")
                 base_report["status"] = "passed"
                 worker_state["return_code"] = 0
@@ -1799,6 +2430,365 @@ def execute_tui_plan(
             try:
                 temporary_path.unlink()
             except FileNotFoundError:
+                pass
+    return return_code
+
+
+def execute_tui_sequence_plan(
+    plan: LoadedPlan,
+    *,
+    report_path: Path,
+    run_id: str,
+    env: Mapping[str, str] | None = None,
+    require_asciinema_session: bool = True,
+    require_tty: bool = True,
+) -> int:
+    runtime_env = dict(env or os.environ)
+    tmux_env = dict(runtime_env)
+    tmux_env.pop("TMUX", None)
+    asciinema_session = runtime_env.get("ASCIINEMA_SESSION", "")
+    tty_state = {
+        "stdin": bool(getattr(sys.stdin, "isatty", lambda: False)()),
+        "stdout": bool(getattr(sys.stdout, "isatty", lambda: False)()),
+        "stderr": bool(getattr(sys.stderr, "isatty", lambda: False)()),
+    }
+    sessions = plan_tui_sessions(plan)
+    base_report: dict[str, Any] = {
+        "schema_version": SCHEMA_VERSION,
+        "status": "failed",
+        "mode": "tui-sequence",
+        "run_id": run_id,
+        "plan": str(plan.path),
+        "plan_sha256": plan.sha256,
+        "started_at_utc": utc_now(),
+        "working_directory": str(plan.working_directory),
+        "asciinema_session": asciinema_session,
+        "tty": tty_state,
+        "target": {
+            "name": "multi-tool-tui-sequence",
+            "target_count": len(sessions),
+        },
+        "targets": [],
+        "tui_sessions": [],
+        "steps": [],
+    }
+    report_path = report_path.resolve()
+    state_directory = report_path.with_name(
+        f".{report_path.stem}.{run_id}.tui-sequence"
+    )
+    server_name = f"arcv-{run_id.replace('-', '')[:20]}"
+    tmux_session_name = "recording"
+    tmux: Path | None = None
+    worker: threading.Thread | None = None
+    worker_state: dict[str, Any] = {}
+    return_code = 2
+    try:
+        uuid.UUID(run_id)
+        if require_asciinema_session and not asciinema_session:
+            raise CommandVideoError(
+                "ASCIINEMA_SESSION is missing; the plan is not running inside Asciinema"
+            )
+        if require_tty and not all(tty_state.values()):
+            raise CommandVideoError(
+                "The TUI sequence runner requires a real PTY on stdin, stdout, and stderr"
+            )
+        if state_directory.exists():
+            raise CommandVideoError("Temporary TUI sequence evidence path already exists")
+        state_directory.mkdir(parents=False)
+
+        target_records: list[dict[str, Any]] = []
+        for session in sessions:
+            target = session["target"]
+            target_path = resolve_executable(
+                target["executable"],
+                working_directory=plan.working_directory,
+                path_value=runtime_env.get("PATH", ""),
+            )
+            target_digest = sha256_file(target_path)
+            version_argv = [str(target_path), *target["version_args"]]
+            version_code, version_output = command_output(
+                version_argv, cwd=plan.working_directory, env=runtime_env
+            )
+            if version_code != 0:
+                raise CommandVideoError(
+                    f"TUI session {session['id']} version command exited with "
+                    f"{version_code}: {shlex.join(version_argv)}"
+                )
+            target_records.append(
+                {
+                    "session_id": session["id"],
+                    "name": target["name"],
+                    "requested_executable": target["executable"],
+                    "resolved_executable": str(target_path),
+                    "executable_sha256": target_digest,
+                    "version_argv": version_argv,
+                    "version_exit_code": version_code,
+                    "version_output": version_output,
+                }
+            )
+        base_report["targets"] = [dict(record) for record in target_records]
+
+        tmux_requested = runtime_env.get("ASCIINEMA_TMUX", "tmux")
+        tmux = resolve_executable(
+            tmux_requested,
+            working_directory=plan.working_directory,
+            path_value=runtime_env.get("PATH", ""),
+        )
+        tmux_code, tmux_version = command_output(
+            [str(tmux), "-V"], cwd=plan.working_directory, env=tmux_env
+        )
+        if tmux_code != 0:
+            raise CommandVideoError("tmux version check failed")
+        tmux_record = {
+            "requested": tmux_requested,
+            "resolved_executable": str(tmux),
+            "executable_sha256": sha256_file(tmux),
+            "version_output": tmux_version.strip(),
+            "isolated_server": server_name,
+            "session": tmux_session_name,
+        }
+
+        print("\033[2J\033[H", end="")
+        emit_hidden_marker(run_id, "RUN", "BEGIN")
+        print(f"REAL MULTI-TOOL TUI SESSION: {plan.data['title']}")
+        for index, target_record in enumerate(target_records, start=1):
+            print(
+                f"Target {index}/{len(target_records)}: {target_record['name']} "
+                f"({target_record['resolved_executable']})"
+            )
+            print(
+                "Executable SHA-256: "
+                f"{target_record['executable_sha256'][:16]}... (full value in manifest)"
+            )
+            print("Version command output:")
+            print(str(target_record["version_output"]).rstrip())
+        print(f"Declared scope: {plan.data['declared_scope']}")
+        print("Input method: reviewed timed text and explicit PTY key actions")
+        print(f"Plan SHA-256: {plan.sha256[:16]}... (full value in manifest)", flush=True)
+        emit_hidden_marker(run_id, "IDENTITY", "END")
+        time.sleep(0.75)
+
+        wrapper_argv = [
+            sys.executable,
+            str(Path(__file__).resolve()),
+            "run-tui-sequence-targets",
+            "--plan",
+            str(plan.path),
+            "--state-directory",
+            str(state_directory),
+            "--run-id",
+            run_id,
+        ]
+        terminal = plan.data["terminal"]
+        tmux_run(
+            tmux,
+            server_name,
+            [
+                "-f",
+                "/dev/null",
+                "new-session",
+                "-d",
+                "-x",
+                str(terminal["cols"]),
+                "-y",
+                str(terminal["rows"]),
+                "-s",
+                tmux_session_name,
+                shlex.join(wrapper_argv),
+            ],
+            cwd=plan.working_directory,
+            env=tmux_env,
+            check=True,
+        )
+        tmux_run(
+            tmux,
+            server_name,
+            ["set-option", "-g", "history-limit", "100000"],
+            cwd=plan.working_directory,
+            env=tmux_env,
+            check=True,
+        )
+        tmux_run(
+            tmux,
+            server_name,
+            ["set-option", "-g", "status", "off"],
+            cwd=plan.working_directory,
+            env=tmux_env,
+            check=True,
+        )
+
+        def automate_sequence() -> None:
+            try:
+                client_deadline = time.monotonic() + 15.0
+                while time.monotonic() < client_deadline:
+                    clients = tmux_run(
+                        tmux,
+                        server_name,
+                        ["list-clients", "-F", "#{client_session}"],
+                        cwd=plan.working_directory,
+                        env=tmux_env,
+                    )
+                    if (
+                        clients.returncode == 0
+                        and tmux_session_name in clients.stdout.splitlines()
+                    ):
+                        break
+                    time.sleep(0.05)
+                else:
+                    raise CommandVideoError(
+                        "tmux client did not attach to the multi-tool recording session"
+                    )
+
+                for index, session in enumerate(sessions):
+                    session_id = str(session["id"])
+                    session_plan = loaded_tui_session(plan, session)
+                    status_path = state_directory / f"{index:02d}-{session_id}.status.json"
+                    gate_path = state_directory / f"{index:02d}-{session_id}.gate"
+                    if gate_path.exists() or status_path.exists():
+                        raise CommandVideoError(
+                            f"Temporary TUI session evidence already exists: {session_id}"
+                        )
+                    runtime_target = dict(target_records[index])
+                    interaction = session["interaction"]
+                    runtime_interaction: dict[str, Any] = {
+                        "mode": "tui",
+                        "input_delivery": "tmux-send-keys",
+                        "action_model": "prompt-or-explicit-actions",
+                        "shutdown_mode": tui_shutdown_mode(session),
+                        "submit_key": (
+                            "Enter"
+                            if all("prompt" in step for step in session["steps"])
+                            else "per-step"
+                        ),
+                        "typing_interval_seconds": interaction[
+                            "typing_interval_seconds"
+                        ],
+                        "pre_submit_pause_seconds": interaction[
+                            "pre_submit_pause_seconds"
+                        ],
+                        "ready_pattern_sha256": sha256_text(
+                            interaction["ready_pattern"]
+                        ),
+                        "busy_pattern_sha256": sha256_text(
+                            interaction["busy_pattern"]
+                        ),
+                        "tmux": dict(tmux_record),
+                    }
+                    runtime_steps: list[dict[str, Any]] = []
+                    emit_hidden_marker(
+                        run_id,
+                        "TUI-SEQUENCE",
+                        "HANDOFF",
+                        str(index + 1),
+                        session_id,
+                    )
+                    gate_path.write_text(run_id + "\n", encoding="utf-8")
+                    automate_tui_session(
+                        session_plan,
+                        session_id=session_id,
+                        runtime_target=runtime_target,
+                        runtime_interaction=runtime_interaction,
+                        runtime_steps=runtime_steps,
+                        target_status_path=status_path,
+                        run_id=run_id,
+                        tmux=tmux,
+                        server_name=server_name,
+                        session_name=tmux_session_name,
+                        cwd=plan.working_directory,
+                        env=tmux_env,
+                        emit_primary_ready=(index == 0),
+                        hold_before_final_key=(
+                            index == len(sessions) - 1
+                            and render_end_at(plan) == "before-final-key"
+                        ),
+                        emit_final_target_exit=True,
+                    )
+                    base_report["targets"][index] = runtime_target
+                    base_report["tui_sessions"].append(
+                        {
+                            "id": session_id,
+                            "index": index + 1,
+                            "target": runtime_target,
+                            "interaction": runtime_interaction,
+                            "steps": runtime_steps,
+                        }
+                    )
+                    base_report["steps"].extend(runtime_steps)
+
+                last_target = base_report["targets"][-1]
+                base_report["target"]["final_exit_code"] = last_target.get(
+                    "final_exit_code"
+                )
+                emit_hidden_marker(run_id, "RUN", "END", "0")
+                base_report["status"] = "passed"
+                worker_state["return_code"] = 0
+            except Exception as exc:
+                base_report["status"] = "failed"
+                base_report["error"] = str(exc)
+                worker_state["error"] = str(exc)
+                worker_state["return_code"] = 1
+                emit_hidden_marker(run_id, "RUN", "END", "1")
+                tmux_run(
+                    tmux,
+                    server_name,
+                    ["kill-server"],
+                    cwd=plan.working_directory,
+                    env=tmux_env,
+                )
+
+        worker = threading.Thread(
+            target=automate_sequence,
+            name="tui-sequence-automation",
+            daemon=True,
+        )
+        worker.start()
+        attach = subprocess.run(
+            [str(tmux), "-L", server_name, "attach-session", "-t", tmux_session_name],
+            cwd=str(plan.working_directory),
+            env=tmux_env,
+            stdin=None,
+            stdout=None,
+            stderr=None,
+            check=False,
+        )
+        base_report["tmux_attach_exit_code"] = attach.returncode
+        worker.join(timeout=5.0)
+        if worker.is_alive():
+            raise CommandVideoError(
+                "TUI sequence automation did not finish after tmux detached"
+            )
+        return_code = int(worker_state.get("return_code", 1))
+        if return_code != 0 and worker_state.get("error"):
+            print(
+                f"Multi-tool TUI runner failed: {worker_state['error']}",
+                file=sys.stderr,
+            )
+    except Exception as exc:
+        base_report["status"] = "failed"
+        base_report["error"] = str(exc)
+        print(f"Multi-tool TUI runner failed: {exc}", file=sys.stderr, flush=True)
+        return_code = 2
+    finally:
+        if tmux is not None:
+            tmux_run(
+                tmux,
+                server_name,
+                ["kill-server"],
+                cwd=plan.working_directory,
+                env=tmux_env,
+            )
+        base_report["finished_at_utc"] = utc_now()
+        write_json_atomic(report_path, base_report)
+        if state_directory.is_dir():
+            for temporary_path in state_directory.iterdir():
+                if temporary_path.is_file():
+                    try:
+                        temporary_path.unlink()
+                    except FileNotFoundError:
+                        pass
+            try:
+                state_directory.rmdir()
+            except OSError:
                 pass
     return return_code
 
@@ -1988,7 +2978,17 @@ def execute_plan(
     require_asciinema_session: bool = True,
     require_tty: bool = True,
 ) -> int:
-    if plan_mode(plan) == "tui":
+    mode = plan_mode(plan)
+    if mode == "tui-sequence":
+        return execute_tui_sequence_plan(
+            plan,
+            report_path=report_path,
+            run_id=run_id,
+            env=env,
+            require_asciinema_session=require_asciinema_session,
+            require_tty=require_tty,
+        )
+    if mode == "tui":
         return execute_tui_plan(
             plan,
             report_path=report_path,
@@ -2085,8 +3085,10 @@ def parse_cast(path: Path) -> dict[str, Any]:
     }
 
 
-def cast_output_text_time(path: Path, expected_text: str) -> float:
-    """Return the cast-relative time of one output fragment."""
+def cast_output_text_time(
+    path: Path, expected_text: str, *, last: bool = False
+) -> float:
+    """Return the cast-relative time of the first or last output fragment."""
     lines = path.read_text(encoding="utf-8").splitlines()
     if not lines:
         raise CommandVideoError("Asciicast is empty")
@@ -2098,6 +3100,7 @@ def cast_output_text_time(path: Path, expected_text: str) -> float:
         raise CommandVideoError("Asciicast must use format version 2 or 3")
     version = int(header["version"])
     elapsed = 0.0
+    found_at: float | None = None
     for line_number, line in enumerate(lines[1:], start=2):
         if not line or line.startswith("#"):
             continue
@@ -2110,7 +3113,11 @@ def cast_output_text_time(path: Path, expected_text: str) -> float:
         event_time = float(event[0])
         elapsed = elapsed + event_time if version == 3 else event_time
         if event[1] == "o" and isinstance(event[2], str) and expected_text in event[2]:
-            return elapsed
+            found_at = elapsed
+            if not last:
+                return found_at
+    if found_at is not None:
+        return found_at
     raise CommandVideoError(f"Asciicast is missing presentation fragment: {expected_text!r}")
 
 
@@ -2301,6 +3308,18 @@ def verify_runtime_and_cast(
     output_text = cast.get("output_text")
     if not isinstance(output_text, str):
         raise CommandVideoError("Asciicast output could not be reconstructed")
+    if plan_has_bridged_lazygit(plan):
+        normalized_output = output_text.lower()
+        lazygit_path_failures = (
+            "filename too long",
+            "fatal: '$git_dir' too big",
+            "error getting repo paths",
+        )
+        if any(term in normalized_output for term in lazygit_path_failures):
+            raise CommandVideoError(
+                "The lazygit cast contains a Windows repository path failure"
+            )
+        checks.append("lazygit-path-clean")
     header = cast.get("header")
     command = header.get("command", "") if isinstance(header, dict) else ""
     if "run-plan" not in command or run_id not in command:
@@ -2309,10 +3328,152 @@ def verify_runtime_and_cast(
         raise CommandVideoError("Asciicast is missing run boundary markers")
     checks.extend(["no-input-events", "cast-command", "run-markers"])
 
+    mode = plan_mode(plan)
+    planned_steps = plan_steps(plan)
     runtime_steps = runtime.get("steps")
-    if not isinstance(runtime_steps, list) or len(runtime_steps) != len(plan.data["steps"]):
+    if not isinstance(runtime_steps, list) or len(runtime_steps) != len(planned_steps):
         raise CommandVideoError("Runtime report step count does not match the plan")
-    if plan_mode(plan) == "tui":
+    if mode == "tui-sequence":
+        if runtime.get("mode") != "tui-sequence":
+            raise CommandVideoError("Runtime report does not identify a TUI sequence")
+        planned_sessions = plan_tui_sessions(plan)
+        observed_sessions = runtime.get("tui_sessions")
+        observed_targets = runtime.get("targets")
+        if (
+            not isinstance(observed_sessions, list)
+            or not isinstance(observed_targets, list)
+            or len(observed_sessions) != len(planned_sessions)
+            or len(observed_targets) != len(planned_sessions)
+        ):
+            raise CommandVideoError(
+                "Runtime report does not contain every planned TUI session and target"
+            )
+        observed_step_offset = 0
+        resolved_target_identities: set[tuple[str, str]] = set()
+        previous_boundary = -1
+        for index, (planned_session, observed_session, observed_target) in enumerate(
+            zip(
+                planned_sessions,
+                observed_sessions,
+                observed_targets,
+                strict=True,
+            )
+        ):
+            if not isinstance(observed_session, dict) or not isinstance(
+                observed_target, dict
+            ):
+                raise CommandVideoError("Runtime TUI sequence entry is not an object")
+            session_id = str(planned_session["id"])
+            if (
+                observed_session.get("id") != session_id
+                or observed_session.get("index") != index + 1
+                or observed_session.get("target") != observed_target
+            ):
+                raise CommandVideoError(
+                    f"Runtime TUI sequence order or target mismatch: {session_id}"
+                )
+            session_steps = observed_session.get("steps")
+            if not isinstance(session_steps, list) or len(session_steps) != len(
+                planned_session["steps"]
+            ):
+                raise CommandVideoError(
+                    f"Runtime TUI session step count mismatch: {session_id}"
+                )
+            flattened_slice = runtime_steps[
+                observed_step_offset : observed_step_offset + len(session_steps)
+            ]
+            if flattened_slice != session_steps:
+                raise CommandVideoError(
+                    f"Runtime flattened steps do not preserve TUI session {session_id}"
+                )
+            observed_step_offset += len(session_steps)
+
+            resolved_executable = observed_target.get("resolved_executable")
+            executable_digest = observed_target.get("executable_sha256")
+            if not isinstance(resolved_executable, str) or not re.fullmatch(
+                r"[0-9a-f]{64}", str(executable_digest)
+            ):
+                raise CommandVideoError(
+                    f"Runtime target provenance is incomplete: {session_id}"
+                )
+            resolved_target_identities.add(
+                (resolved_executable.casefold(), str(executable_digest))
+            )
+
+            boundary_fragments = [
+                marker(
+                    run_id,
+                    "TUI-SEQUENCE",
+                    "HANDOFF",
+                    str(index + 1),
+                    session_id,
+                ),
+                marker(run_id, "TUI-SESSION", session_id, "BEGIN"),
+                marker(run_id, "TUI-SESSION", session_id, "READY"),
+                marker(
+                    run_id,
+                    "TUI-SESSION",
+                    session_id,
+                    "EXIT",
+                    str(observed_target.get("final_exit_code")),
+                ),
+            ]
+            boundary_positions = [output_text.find(fragment) for fragment in boundary_fragments]
+            if any(position < 0 for position in boundary_positions) or boundary_positions != sorted(
+                boundary_positions
+            ):
+                raise CommandVideoError(
+                    f"Asciicast TUI session boundaries are missing or out of order: {session_id}"
+                )
+            if boundary_positions[0] <= previous_boundary:
+                raise CommandVideoError("Asciicast TUI sessions are not sequential")
+            previous_boundary = boundary_positions[-1]
+
+            session_plan = loaded_tui_session(plan, planned_session)
+            session_data = dict(session_plan.data)
+            session_render = dict(session_data["render"])
+            if index < len(planned_sessions) - 1:
+                session_render["end_at"] = "target-exit"
+                session_render["last_frame_duration"] = 0.0
+            session_data["render"] = session_render
+            session_plan = LoadedPlan(
+                path=session_plan.path,
+                data=session_data,
+                sha256=session_plan.sha256,
+                working_directory=session_plan.working_directory,
+            )
+            session_runtime = {
+                "schema_version": runtime["schema_version"],
+                "status": runtime["status"],
+                "mode": "tui",
+                "run_id": run_id,
+                "plan_sha256": runtime["plan_sha256"],
+                "asciinema_session": runtime["asciinema_session"],
+                "tty": runtime["tty"],
+                "target": observed_target,
+                "interaction": observed_session.get("interaction"),
+                "steps": session_steps,
+            }
+            checks.extend(verify_runtime_and_cast(session_plan, session_runtime, cast))
+        if observed_step_offset != len(runtime_steps):
+            raise CommandVideoError("Runtime contains unassigned TUI sequence steps")
+        if len(resolved_target_identities) < 2:
+            raise CommandVideoError(
+                "Runtime report does not prove at least two distinct TUI executables"
+            )
+        checks.extend(
+            [
+                "multi-tui-sequence",
+                "multi-target-provenance",
+                "tui-session-boundaries",
+                "step-count",
+            ]
+        )
+        if cast.get("version") == 3 and cast.get("exit_codes") and cast["exit_codes"][-1] != 0:
+            raise CommandVideoError("Asciicast exit event is not successful")
+        checks.append("cast-exit")
+        return checks
+    if mode == "tui":
         interaction = runtime.get("interaction")
         planned_interaction = plan.data["interaction"]
         if (
@@ -2324,6 +3485,56 @@ def verify_runtime_and_cast(
             raise CommandVideoError("Runtime report does not prove TUI keystroke delivery")
         if interaction.get("shutdown_mode", "exit-text") != tui_shutdown_mode(plan):
             raise CommandVideoError("Runtime report TUI shutdown mode does not match the plan")
+        target_status_evidence = interaction.get("target_status")
+        if launch_args_request_windows_working_directory(
+            planned_interaction["launch_args"]
+        ):
+            if not isinstance(target_status_evidence, dict):
+                raise CommandVideoError(
+                    "Runtime report is missing Windows working-directory bridge evidence"
+                )
+            bridge = target_status_evidence.get("windows_working_directory_bridge")
+            if (
+                not isinstance(bridge, dict)
+                or bridge.get("status") != "released"
+                or bridge.get("created") is not True
+                or bridge.get("released") is not True
+                or bridge.get("source_working_directory")
+                != str(plan.working_directory)
+                or not re.fullmatch(r"[D-Z]:/", str(bridge.get("mount_root", "")))
+                or bridge.get("create_exit_code") != 0
+                or bridge.get("release_exit_code") != 0
+            ):
+                raise CommandVideoError(
+                    "Runtime report does not prove a created and released Windows working-directory bridge"
+                )
+            launch_argv = target_status_evidence.get("launch_argv")
+            resolved_executable = target_status_evidence.get("resolved_executable")
+            if not isinstance(launch_argv, list) or not isinstance(
+                resolved_executable, str
+            ):
+                raise CommandVideoError(
+                    "Runtime report is missing the bridged target launch argv"
+                )
+            expected_launch_argv = expanded_launch_argv(
+                Path(resolved_executable),
+                planned_interaction["launch_args"],
+                run_id,
+                windows_working_directory=str(bridge["mount_root"]),
+            )
+            if launch_argv != expected_launch_argv or any(
+                WINDOWS_WORKING_DIRECTORY_TOKEN in str(item) for item in launch_argv
+            ):
+                raise CommandVideoError(
+                    "Runtime bridged target launch argv does not match the reviewed plan"
+                )
+            checks.append("windows-working-directory-bridge")
+        elif isinstance(target_status_evidence, dict) and target_status_evidence.get(
+            "windows_working_directory_bridge"
+        ) is not None:
+            raise CommandVideoError(
+                "Runtime report contains an undeclared Windows working-directory bridge"
+            )
         if render_start_at(plan) == "tui-ready":
             if marker(run_id, "TUI", "READY") not in output_text:
                 raise CommandVideoError("Asciicast is missing the TUI-ready presentation marker")
@@ -2395,11 +3606,10 @@ def verify_runtime_and_cast(
         if final_exit_code not in planned_interaction["expected_exit_codes"]:
             raise CommandVideoError(f"Unexpected final TUI target exit code: {final_exit_code}")
         if render_start_at(plan) == "tui-ready":
-            target_status = interaction.get("target_status")
             if (
-                not isinstance(target_status, dict)
+                not isinstance(target_status_evidence, dict)
                 or abs(
-                    float(target_status.get("final_hold_seconds", -1.0))
+                    float(target_status_evidence.get("final_hold_seconds", -1.0))
                     - float(plan.data["render"]["last_frame_duration"])
                 )
                 > 0.001
@@ -2543,12 +3753,88 @@ def bootstrap_tools(directory: Path) -> dict[str, Any]:
     return {**manifest, "manifest": str(manifest_path)}
 
 
+def ensure_path_outside_skill(path: Path, *, label: str) -> Path:
+    candidate = path.expanduser().resolve()
+    if candidate == SKILL_ROOT or SKILL_ROOT in candidate.parents:
+        raise CommandVideoError(f"{label} must stay outside the skill directory: {candidate}")
+    return candidate
+
+
+def video_bundle_paths(directory: Path) -> VideoBundlePaths:
+    resolved = ensure_path_outside_skill(directory, label="Video directory")
+    if not VIDEO_DIRECTORY_ID_PATTERN.fullmatch(resolved.name):
+        raise CommandVideoError(
+            "The video-directory name must be a unique lowercase hyphen-case ID"
+        )
+    return VideoBundlePaths(
+        directory=resolved,
+        **{
+            key: resolved / filename
+            for key, filename in VIDEO_BUNDLE_FILENAMES.items()
+        },
+    )
+
+
+def video_bundle_layout(paths: VideoBundlePaths) -> dict[str, str]:
+    return {
+        key: str(getattr(paths, key))
+        for key in VIDEO_BUNDLE_FILENAMES
+    }
+
+
+def initialize_video_directory(directory: Path, *, template_name: str) -> dict[str, Any]:
+    paths = video_bundle_paths(directory)
+    template_filename = VIDEO_TEMPLATE_FILES.get(template_name)
+    if template_filename is None:
+        raise CommandVideoError(f"Unsupported video template: {template_name}")
+    template_path = SKILL_ROOT / "assets" / "templates" / template_filename
+    if not template_path.is_file():
+        raise CommandVideoError(f"Bundled video template is missing: {template_path}")
+    if paths.directory.exists():
+        raise CommandVideoError(
+            f"Refusing to reuse an existing video directory: {paths.directory}"
+        )
+    paths.directory.mkdir(parents=True, exist_ok=False)
+    try:
+        with paths.plan.open("xb") as destination:
+            destination.write(template_path.read_bytes())
+    except Exception:
+        try:
+            paths.directory.rmdir()
+        except OSError:
+            pass
+        raise
+    return {
+        "status": "initialized",
+        "video_id": paths.directory.name,
+        "video_directory": str(paths.directory),
+        "template": template_name,
+        "template_source": str(template_path),
+        "plan": str(paths.plan),
+        "artifact_layout": video_bundle_layout(paths),
+    }
+
+
+def video_bundle_artifact_record(path: Path, *, directory: Path) -> dict[str, Any]:
+    resolved = path.expanduser().resolve()
+    if resolved.parent != directory:
+        raise CommandVideoError(
+            f"Video-bundle artifact escaped its directory: {resolved}"
+        )
+    if not resolved.is_file():
+        raise CommandVideoError(f"Video-bundle artifact is missing: {resolved}")
+    return {
+        "path": str(resolved),
+        "relative_path": resolved.name,
+        "sha256": sha256_file(resolved),
+        "size_bytes": resolved.stat().st_size,
+    }
+
+
 def ensure_output_paths(paths: Iterable[Path]) -> None:
     resolved: list[Path] = []
     for path in paths:
-        candidate = path.expanduser().resolve()
-        if candidate == SKILL_ROOT or SKILL_ROOT in candidate.parents:
-            raise CommandVideoError(f"Generated outputs must stay outside the skill directory: {candidate}")
+        candidate = ensure_path_outside_skill(path, label="Generated output")
         if candidate.exists():
             raise CommandVideoError(f"Refusing to overwrite existing evidence: {candidate}")
         resolved.append(candidate)
@@ -2591,7 +3877,8 @@ def claim_recording_attempt(
         },
         "policy": (
             "This immutable plan-scoped claim permits exactly one record transaction. "
-            "Preserve failed evidence and create a new reviewed plan path for any later session."
+            "Preserve failed evidence. A different plan path or output name does not authorize "
+            "a retry for the same user-requested deliverable."
         ),
     }
     ledger_path.parent.mkdir(parents=True, exist_ok=True)
@@ -2659,6 +3946,7 @@ def forward_windows_command_to_wsl(raw_argv: Sequence[str]) -> int:
     path_options_by_command = {
         "bootstrap-tools": {"--directory"},
         "preflight": {"--tools-dir"},
+        "preflight-video": {"--tools-dir"},
         "record": {
             "--cast",
             "--mp4",
@@ -2667,14 +3955,17 @@ def forward_windows_command_to_wsl(raw_argv: Sequence[str]) -> int:
             "--gif",
             "--tools-dir",
         },
+        "record-video": {"--tools-dir"},
         "validate": {"--plan", "--cast", "--mp4", "--manifest", "--tools-dir"},
+        "validate-video": {"--tools-dir"},
     }
     path_options = path_options_by_command[command]
     translated: list[str] = [command]
     index = 1
-    if command in {"preflight", "record"}:
+    if command in {"preflight", "preflight-video", "record", "record-video", "validate-video"}:
         if index >= len(raw_argv) or raw_argv[index].startswith("-"):
-            raise CommandVideoError(f"{command} requires a plan path")
+            required = "a plan path" if command in {"preflight", "record"} else "a video-directory path"
+            raise CommandVideoError(f"{command} requires {required}")
         translated.append(
             windows_path_to_wsl(resolve_windows_path_argument(raw_argv[index]))
         )
@@ -2711,7 +4002,14 @@ def forward_windows_command_to_wsl(raw_argv: Sequence[str]) -> int:
             continue
         index += 1
 
-    if command in {"preflight", "record", "validate"} and "--ffprobe" not in translated:
+    if command in {
+        "preflight",
+        "preflight-video",
+        "record",
+        "record-video",
+        "validate",
+        "validate-video",
+    } and "--ffprobe" not in translated:
         native_ffprobe = shutil.which("ffprobe")
         translated.extend(
             [
@@ -2721,7 +4019,7 @@ def forward_windows_command_to_wsl(raw_argv: Sequence[str]) -> int:
                 else "ffprobe.exe",
             ]
         )
-    if command in {"preflight", "record"} and "--ffmpeg" not in translated:
+    if command in {"preflight", "preflight-video", "record", "record-video"} and "--ffmpeg" not in translated:
         native_ffmpeg = shutil.which("ffmpeg")
         translated.extend(
             [
@@ -2878,8 +4176,8 @@ def tool_record(
 
 
 def terminal_control_state_order(mode: str) -> list[str]:
-    if mode == "tui":
-        return [
+    if is_tui_mode(mode):
+        states = [
             "preflight-passed",
             "recording-started",
             "pty-attached",
@@ -2895,6 +4193,9 @@ def terminal_control_state_order(mode: str) -> list[str]:
             "encode-complete",
             "media-validated",
         ]
+        if mode == "tui-sequence":
+            states.insert(states.index("target-exit-requested"), "target-handoff")
+        return states
     return [
         "preflight-passed",
         "recording-started",
@@ -2917,12 +4218,12 @@ def terminal_control_contract(
     tmux: Path | None,
     ffmpeg: Path,
     ffprobe: Path,
-    target: Path,
+    targets: Sequence[Path],
     pty_allocator: Path | None,
 ) -> dict[str, Any]:
     mode = plan_mode(plan)
     state_order = terminal_control_state_order(mode)
-    if mode == "tui":
+    if is_tui_mode(mode):
         interaction = (
             "reviewed timed text and explicit PTY keys with ready/busy or target-exit gating"
         )
@@ -2935,20 +4236,32 @@ def terminal_control_contract(
             "recorder": str(asciinema),
             "pty_allocator": str(pty_allocator) if pty_allocator else "inherited-tty",
             "multiplexer": str(tmux) if tmux else None,
-            "target": str(target),
+            "target": str(targets[0]),
+            "targets": [str(target) for target in targets],
             "renderer": str(agg),
             "encoder": str(ffmpeg),
             "media_probe": str(ffprobe),
         },
         "interaction": interaction,
         "repeatable_states": (
-            ["input-action-delivered", "interaction-step-complete"]
-            if mode == "tui"
+            (
+                [
+                    "target-launched",
+                    "target-ready",
+                    "input-action-delivered",
+                    "interaction-step-complete",
+                    "target-exit-requested",
+                    "target-exited",
+                ]
+                if mode == "tui-sequence"
+                else ["input-action-delivered", "interaction-step-complete"]
+            )
+            if is_tui_mode(mode)
             else ["target-launched", "command-exited"]
         ),
         "shutdown": (
             "verify target-driven exit, detach PTY, then stop recording"
-            if mode == "tui" and tui_shutdown_mode(plan) == "target-exit"
+            if is_tui_mode(mode) and final_tui_shutdown_mode(plan) == "target-exit"
             else "request target exit, verify status, detach PTY, then stop recording"
         ),
         "conversion": "validate cast before agg render; validate H.264 MP4 after ffmpeg encode",
@@ -2971,7 +4284,7 @@ def build_preflight_context(plan: LoadedPlan, args: argparse.Namespace) -> Prefl
         args.agg, working_directory=plan.working_directory, path_value=env["PATH"]
     )
     tmux: Path | None = None
-    if plan_mode(plan) == "tui":
+    if is_tui_mode(plan_mode(plan)):
         tmux = resolve_executable(
             args.tmux, working_directory=plan.working_directory, path_value=env["PATH"]
         )
@@ -2982,11 +4295,16 @@ def build_preflight_context(plan: LoadedPlan, args: argparse.Namespace) -> Prefl
     ffprobe = resolve_executable(
         args.ffprobe, working_directory=plan.working_directory, path_value=env["PATH"]
     )
-    target = resolve_executable(
-        plan.data["target"]["executable"],
-        working_directory=plan.working_directory,
-        path_value=env["PATH"],
-    )
+    target_specs = plan_targets(plan)
+    targets = [
+        resolve_executable(
+            target_spec["executable"],
+            working_directory=plan.working_directory,
+            path_value=env["PATH"],
+        )
+        for target_spec in target_specs
+    ]
+    target = targets[0]
 
     pty_allocator: Path | None = None
     if not (sys.stdin.isatty() and sys.stdout.isatty() and sys.stderr.isatty()):
@@ -3008,13 +4326,55 @@ def build_preflight_context(plan: LoadedPlan, args: argparse.Namespace) -> Prefl
             args.ffprobe, ffprobe, ["-version"], cwd=plan.working_directory, env=env
         ),
         "target_preflight": tool_record(
-            plan.data["target"]["executable"],
+            target_specs[0]["executable"],
             target,
-            plan.data["target"]["version_args"],
+            target_specs[0]["version_args"],
             cwd=plan.working_directory,
             env=env,
         ),
     }
+    target_preflights = []
+    for index, (target_spec, resolved_target) in enumerate(
+        zip(target_specs, targets, strict=True)
+    ):
+        record = tool_record(
+            target_spec["executable"],
+            resolved_target,
+            target_spec["version_args"],
+            cwd=plan.working_directory,
+            env=env,
+        )
+        sessions = plan_tui_sessions(plan)
+        if sessions:
+            record["session_id"] = sessions[index]["id"]
+        target_preflights.append(record)
+    toolchain["target_preflights"] = target_preflights
+
+    bridge_preflights: list[dict[str, Any]] = []
+    for index, session in enumerate(plan_tui_sessions(plan)):
+        if not launch_args_request_windows_working_directory(
+            session["interaction"]["launch_args"]
+        ):
+            continue
+        bridge_preflight = windows_path_bridge_preflight(
+            working_directory=plan.working_directory,
+            target=targets[index],
+            env=env,
+        )
+        bridge_preflight["session_id"] = session["id"]
+        target_spec = session["target"]
+        if "lazygit" in str(target_spec.get("name", "")).lower() or "lazygit" in str(
+            target_spec.get("executable", "")
+        ).lower():
+            bridge_preflight["lazygit_longpaths"] = lazygit_longpaths_preflight(
+                working_directory=plan.working_directory,
+                env=env,
+            )
+        bridge_preflights.append(bridge_preflight)
+    if bridge_preflights:
+        toolchain["windows_working_directory_bridges"] = bridge_preflights
+        if plan_mode(plan) == "tui" and len(bridge_preflights) == 1:
+            toolchain["windows_working_directory_bridge"] = bridge_preflights[0]
     if tmux is not None:
         toolchain["tmux"] = tool_record(
             args.tmux, tmux, ["-V"], cwd=plan.working_directory, env=env
@@ -3031,9 +4391,17 @@ def build_preflight_context(plan: LoadedPlan, args: argparse.Namespace) -> Prefl
         tmux=tmux,
         ffmpeg=ffmpeg,
         ffprobe=ffprobe,
-        target=target,
+        targets=targets,
         pty_allocator=pty_allocator,
     )
+    if bridge_preflights:
+        terminal_control["components"]["windows_working_directory_bridges"] = [
+            str(bridge["subst"]) for bridge in bridge_preflights
+        ]
+        if plan_mode(plan) == "tui" and len(bridge_preflights) == 1:
+            terminal_control["components"]["windows_working_directory_bridge"] = str(
+                bridge_preflights[0]["subst"]
+            )
     return PreflightContext(
         env=env,
         tools_dir=tools_dir,
@@ -3043,6 +4411,7 @@ def build_preflight_context(plan: LoadedPlan, args: argparse.Namespace) -> Prefl
         ffmpeg=ffmpeg,
         ffprobe=ffprobe,
         target=target,
+        targets=targets,
         pty_allocator=pty_allocator,
         toolchain=toolchain,
         terminal_control=terminal_control,
@@ -3058,15 +4427,73 @@ def preflight_session(args: argparse.Namespace) -> dict[str, Any]:
         "plan_sha256": plan.sha256,
         "working_directory": str(plan.working_directory),
         "target": context.toolchain["target_preflight"],
+        "targets": context.toolchain["target_preflights"],
         "toolchain": context.toolchain,
         "terminal_control": context.terminal_control,
     }
+
+
+def preflight_video_bundle(args: argparse.Namespace) -> dict[str, Any]:
+    paths = video_bundle_paths(Path(args.video_directory))
+    if not paths.directory.is_dir():
+        raise CommandVideoError(
+            f"Initialize the video directory before preflight: {paths.directory}"
+        )
+    plan = load_plan(paths.plan)
+    locked_paths = [
+        paths.recording_attempt,
+        paths.cast,
+        paths.runtime_report,
+        paths.mp4,
+        paths.manifest,
+        paths.record_result,
+        paths.validation,
+        paths.bundle_index,
+        paths.gif_intermediary,
+    ]
+    locked = [path for path in locked_paths if path.exists()]
+    if locked:
+        raise CommandVideoError(
+            "Video-directory preflight cannot change after recording evidence exists: "
+            + ", ".join(str(path) for path in locked)
+        )
+    forwarded = argparse.Namespace(**{**vars(args), "plan": str(paths.plan)})
+    result = preflight_session(forwarded)
+    result.update(
+        {
+            "video_id": paths.directory.name,
+            "video_directory": str(paths.directory),
+            "artifact_layout": video_bundle_layout(paths),
+        }
+    )
+    write_json_atomic(paths.preflight, result)
+    return {**result, "preflight_report": str(paths.preflight)}
+
+
+def require_matching_video_preflight(
+    paths: VideoBundlePaths, plan: LoadedPlan
+) -> dict[str, Any]:
+    if not paths.preflight.is_file():
+        raise CommandVideoError(
+            f"Run preflight-video before recording: {paths.preflight}"
+        )
+    report = load_json(paths.preflight)
+    if not isinstance(report, dict) or report.get("status") != "passed":
+        raise CommandVideoError("Video-directory preflight report did not pass")
+    if report.get("plan") != str(plan.path) or report.get("plan_sha256") != plan.sha256:
+        raise CommandVideoError(
+            "Video-directory plan changed after preflight; run preflight-video again before recording"
+        )
+    if report.get("video_directory") != str(paths.directory):
+        raise CommandVideoError("Preflight report belongs to a different video directory")
+    return report
 
 
 def record_session(args: argparse.Namespace) -> dict[str, Any]:
     if platform.system().lower() == "windows":
         raise CommandVideoError("Run the Asciinema recording pipeline inside WSL2, not native Windows")
     plan = load_plan(args.plan)
+    planned_steps = plan_steps(plan)
     cast_path = Path(args.cast).expanduser().resolve()
     mp4_path = Path(args.mp4).expanduser().resolve()
     manifest_path = Path(args.manifest).expanduser().resolve()
@@ -3176,7 +4603,7 @@ def record_session(args: argparse.Namespace) -> dict[str, Any]:
                 "lead_seconds": presentation_lead_seconds,
             }
         )
-    if plan_mode(plan) == "tui" and render_end_at(plan) == "before-final-key":
+    if is_tui_mode(plan_mode(plan)) and render_end_at(plan) == "before-final-key":
         final_key_marker_seconds = cast_output_text_time(
             cast_path, marker(run_id, "TUI", "FINAL-KEY")
         )
@@ -3198,8 +4625,14 @@ def record_session(args: argparse.Namespace) -> dict[str, Any]:
             }
         )
         evidence_checks.append("before-final-key-presentation")
+        if presentation_start == "tui-ready":
+            evidence_checks.append("tui-ready-presentation")
     elif presentation_start == "tui-ready":
-        terminal_restore_seconds = cast_output_text_time(cast_path, "\033[?1049l")
+        terminal_restore_seconds = cast_output_text_time(
+            cast_path,
+            "\033[?1049l",
+            last=(plan_mode(plan) == "tui-sequence"),
+        )
         presentation_end_seconds = max(
             0.0, terminal_restore_seconds - TUI_EXIT_PRESENTATION_MARGIN_SECONDS
         )
@@ -3328,7 +4761,7 @@ def record_session(args: argparse.Namespace) -> dict[str, Any]:
             raise CommandVideoError(
                 f"MP4 frame rate is {video_probe['avg_frame_rate_decimal']}, expected {render['fps']}"
             )
-        if plan_mode(plan) == "tui" and render["idle_time_limit"] is None:
+        if is_tui_mode(plan_mode(plan)) and render["idle_time_limit"] is None:
             expected_timeline_seconds = max(
                 0.0,
                 presentation_end_seconds - presentation_trim_seconds,
@@ -3385,19 +4818,22 @@ def record_session(args: argparse.Namespace) -> dict[str, Any]:
                 "mode": plan_mode(plan),
                 "declared_scope": plan.data["declared_scope"],
                 "working_directory": str(plan.working_directory),
-                "prompt_count": len(plan.data["steps"]),
-                "text_prompt_count": sum("prompt" in step for step in plan.data["steps"]),
+                "prompt_count": len(planned_steps),
+                "text_prompt_count": sum("prompt" in step for step in planned_steps),
                 "prompt_sha256": [
                     sha256_text(step["prompt"])
-                    for step in plan.data["steps"]
+                    for step in planned_steps
                     if "prompt" in step
                 ],
                 "step_input_sha256": [
-                    tui_step_input_sha256(step) for step in plan.data["steps"]
+                    tui_step_input_sha256(step) for step in planned_steps
                 ],
+                "tui_session_count": len(plan_tui_sessions(plan)),
             },
             "recording_attempt": attempt_ledger,
             "target": runtime["target"],
+            "targets": runtime.get("targets", [runtime["target"]]),
+            "tui_sessions": runtime.get("tui_sessions", []),
             "recording": {
                 key: value for key, value in cast_info.items() if key not in {"header", "output_text"}
             },
@@ -3439,6 +4875,8 @@ def record_session(args: argparse.Namespace) -> dict[str, Any]:
             "recording_attempt": str(attempt_ledger_path),
             "gif_intermediary": str(gif_path) if gif_path else None,
             "target": runtime["target"],
+            "targets": runtime.get("targets", [runtime["target"]]),
+            "tui_sessions": runtime.get("tui_sessions", []),
             "video_probe": video_probe,
             "validation": validation,
             "terminal_control": preflight.terminal_control,
@@ -3449,6 +4887,50 @@ def record_session(args: argparse.Namespace) -> dict[str, Any]:
             temporary_mp4.unlink()
         if temporary_directory is not None:
             temporary_directory.cleanup()
+
+
+def record_video_bundle(args: argparse.Namespace) -> dict[str, Any]:
+    paths = video_bundle_paths(Path(args.video_directory))
+    if not paths.directory.is_dir():
+        raise CommandVideoError(
+            f"Initialize the video directory before recording: {paths.directory}"
+        )
+    plan = load_plan(paths.plan)
+    require_matching_video_preflight(paths, plan)
+    reserved_outputs = [
+        paths.recording_attempt,
+        paths.cast,
+        paths.runtime_report,
+        paths.mp4,
+        paths.manifest,
+        paths.record_result,
+        paths.validation,
+        paths.bundle_index,
+        paths.gif_intermediary,
+    ]
+    ensure_output_paths(reserved_outputs)
+    forwarded = argparse.Namespace(
+        **{
+            **vars(args),
+            "plan": str(paths.plan),
+            "cast": str(paths.cast),
+            "mp4": str(paths.mp4),
+            "manifest": str(paths.manifest),
+            "runtime_report": str(paths.runtime_report),
+            "gif": str(paths.gif_intermediary) if args.retain_gif else None,
+        }
+    )
+    result = record_session(forwarded)
+    result.update(
+        {
+            "video_id": paths.directory.name,
+            "video_directory": str(paths.directory),
+            "record_result": str(paths.record_result),
+            "artifact_layout": video_bundle_layout(paths),
+        }
+    )
+    write_json_atomic(paths.record_result, result)
+    return result
 
 
 def verify_artifact_record(
@@ -3526,6 +5008,13 @@ def validate_existing_artifacts(
         raise CommandVideoError("Manifest and runtime report run IDs do not match")
     if attempt is not None and attempt.get("run_id") != runtime.get("run_id"):
         raise CommandVideoError("Recording-attempt and runtime report run IDs do not match")
+    if plan_mode(plan) == "tui-sequence" and (
+        manifest.get("targets") != runtime.get("targets")
+        or manifest.get("tui_sessions") != runtime.get("tui_sessions")
+    ):
+        raise CommandVideoError(
+            "Manifest multi-TUI target or session evidence does not match runtime"
+        )
     checks.append("run-id")
 
     terminal_control = manifest.get("terminal_control")
@@ -3548,8 +5037,68 @@ def validate_existing_artifacts(
             )
         ):
             raise CommandVideoError("Manifest terminal-control components are incomplete")
-        if mode == "tui" and not components.get("multiplexer"):
+        if is_tui_mode(mode) and not components.get("multiplexer"):
             raise CommandVideoError("Manifest does not identify the TUI terminal multiplexer")
+        if mode == "tui-sequence":
+            component_targets = components.get("targets")
+            if (
+                not isinstance(component_targets, list)
+                or len(component_targets) != len(plan_targets(plan))
+            ):
+                raise CommandVideoError(
+                    "Manifest does not identify every TUI sequence target"
+                )
+        bridged_sessions = [
+            session
+            for session in plan_tui_sessions(plan)
+            if launch_args_request_windows_working_directory(
+                session["interaction"]["launch_args"]
+            )
+        ]
+        if bridged_sessions:
+            component_bridges = components.get("windows_working_directory_bridges")
+            bridge_preflights = manifest.get("toolchain", {}).get(
+                "windows_working_directory_bridges"
+            )
+            if (
+                not isinstance(component_bridges, list)
+                or not isinstance(bridge_preflights, list)
+                or len(component_bridges) != len(bridged_sessions)
+                or len(bridge_preflights) != len(bridged_sessions)
+            ):
+                raise CommandVideoError(
+                    "Manifest does not identify every Windows working-directory bridge"
+                )
+            for planned_session, bridge_preflight in zip(
+                bridged_sessions, bridge_preflights, strict=True
+            ):
+                if (
+                    not isinstance(bridge_preflight, dict)
+                    or bridge_preflight.get("session_id") != planned_session["id"]
+                    or bridge_preflight.get("mode") != "temporary-subst-drive"
+                    or bridge_preflight.get("token")
+                    != WINDOWS_WORKING_DIRECTORY_TOKEN
+                ):
+                    raise CommandVideoError(
+                        "Manifest Windows working-directory bridge preflight is incomplete"
+                    )
+                target_spec = planned_session["target"]
+                if "lazygit" in str(target_spec.get("name", "")).lower() or "lazygit" in str(
+                    target_spec.get("executable", "")
+                ).lower():
+                    longpaths = bridge_preflight.get("lazygit_longpaths")
+                    if (
+                        not isinstance(longpaths, dict)
+                        or longpaths.get("status") != "passed"
+                        or longpaths.get("scope") != "project-local"
+                        or longpaths.get("setting") != "core.longpaths"
+                        or longpaths.get("value") is not True
+                    ):
+                        raise CommandVideoError(
+                            "Manifest does not prove project-local lazygit long-path support"
+                        )
+                    checks.append("lazygit-project-longpaths")
+            checks.append("windows-working-directory-bridges")
         checks.append("terminal-control-lifecycle")
 
     planned_start = render_start_at(plan)
@@ -3587,8 +5136,9 @@ def validate_existing_artifacts(
                 raise CommandVideoError("Manifest TUI-ready marker time does not match the cast")
             if presentation_trim_seconds <= 0:
                 raise CommandVideoError("TUI-ready presentation did not remove the controller lead-in")
+            checks.append("tui-ready-presentation")
 
-        if plan_mode(plan) == "tui" and planned_end == "before-final-key":
+        if is_tui_mode(plan_mode(plan)) and planned_end == "before-final-key":
             final_key_marker_seconds = cast_output_text_time(
                 cast_path, marker(runtime["run_id"], "TUI", "FINAL-KEY")
             )
@@ -3643,7 +5193,11 @@ def validate_existing_artifacts(
             presentation_end_seconds = expected_presentation_end
             checks.append("before-final-key-presentation")
         elif planned_start != "recording":
-            terminal_restore_seconds = cast_output_text_time(cast_path, "\033[?1049l")
+            terminal_restore_seconds = cast_output_text_time(
+                cast_path,
+                "\033[?1049l",
+                last=(plan_mode(plan) == "tui-sequence"),
+            )
             expected_presentation_end = max(
                 0.0, terminal_restore_seconds - TUI_EXIT_PRESENTATION_MARGIN_SECONDS
             )
@@ -3685,7 +5239,7 @@ def validate_existing_artifacts(
             ):
                 raise CommandVideoError("Manifest final TUI hold does not match the plan")
             presentation_end_seconds = expected_presentation_end
-            checks.extend(["tui-ready-presentation", "tui-exit-presentation"])
+            checks.append("tui-exit-presentation")
 
     env = dict(os.environ)
     env["PATH"] = path_with_tools(env, tools_dir)
@@ -3698,7 +5252,7 @@ def validate_existing_artifacts(
         raise CommandVideoError(
             f"MP4 frame rate is {probe['avg_frame_rate_decimal']}, expected {expected_fps}"
         )
-    if plan_mode(plan) == "tui" and plan.data["render"]["idle_time_limit"] is None:
+    if is_tui_mode(plan_mode(plan)) and plan.data["render"]["idle_time_limit"] is None:
         expected_timeline_seconds = max(
             0.0,
             presentation_end_seconds - presentation_trim_seconds,
@@ -3720,7 +5274,9 @@ def validate_existing_artifacts(
         "mp4_sha256": sha256_file(mp4_path),
         "run_id": runtime["run_id"],
         "target": runtime["target"],
-        "prompt_count": len(plan.data["steps"]),
+        "targets": runtime.get("targets", [runtime["target"]]),
+        "tui_sessions": runtime.get("tui_sessions", []),
+        "prompt_count": len(plan_steps(plan)),
         "presentation": (
             presentation
             if isinstance(presentation, dict)
@@ -3732,6 +5288,208 @@ def validate_existing_artifacts(
         ),
         "video_probe": probe,
         "checks": sorted(set(checks)),
+    }
+
+
+def validate_video_bundle(args: argparse.Namespace) -> dict[str, Any]:
+    paths = video_bundle_paths(Path(args.video_directory))
+    if not paths.directory.is_dir():
+        raise CommandVideoError(f"Video directory does not exist: {paths.directory}")
+    plan = load_plan(paths.plan)
+    require_matching_video_preflight(paths, plan)
+    expected_attempt = recording_attempt_ledger_path(plan)
+    if expected_attempt != paths.recording_attempt:
+        raise CommandVideoError("Video-directory recording-attempt path is not canonical")
+    ensure_output_paths([paths.validation, paths.bundle_index])
+    required_before_validation = {
+        "plan": paths.plan,
+        "preflight": paths.preflight,
+        "recording_attempt": paths.recording_attempt,
+        "cast": paths.cast,
+        "runtime_report": paths.runtime_report,
+        "mp4": paths.mp4,
+        "manifest": paths.manifest,
+        "record_result": paths.record_result,
+    }
+    missing = [
+        str(path) for path in required_before_validation.values() if not path.is_file()
+    ]
+    if missing:
+        raise CommandVideoError(
+            "Video directory is missing required recording artifacts: "
+            + ", ".join(missing)
+        )
+    record_result = load_json(paths.record_result)
+    if (
+        not isinstance(record_result, dict)
+        or record_result.get("status") != "passed"
+        or record_result.get("video_directory") != str(paths.directory)
+        or record_result.get("plan") != str(paths.plan)
+    ):
+        raise CommandVideoError("Record result does not match this video directory")
+    validation = validate_existing_artifacts(
+        plan_path=paths.plan,
+        cast_path=paths.cast,
+        mp4_path=paths.mp4,
+        manifest_path=paths.manifest,
+        ffprobe_name=args.ffprobe,
+        tools_dir=Path(args.tools_dir) if args.tools_dir else None,
+    )
+    validation_report = {
+        **validation,
+        "video_id": paths.directory.name,
+        "video_directory": str(paths.directory),
+        "artifact_layout": video_bundle_layout(paths),
+    }
+    write_json_atomic(paths.validation, validation_report)
+    bundle_artifacts = {
+        key: video_bundle_artifact_record(path, directory=paths.directory)
+        for key, path in {
+            **required_before_validation,
+            "validation": paths.validation,
+        }.items()
+    }
+    if paths.gif_intermediary.is_file():
+        bundle_artifacts["gif_intermediary"] = video_bundle_artifact_record(
+            paths.gif_intermediary, directory=paths.directory
+        )
+    bundle_index = {
+        "schema_version": SCHEMA_VERSION,
+        "status": "passed",
+        "generated_at_utc": utc_now(),
+        "video_id": paths.directory.name,
+        "video_directory": str(paths.directory),
+        "plan_sha256": plan.sha256,
+        "run_id": validation["run_id"],
+        "artifact_count": len(bundle_artifacts),
+        "artifacts": bundle_artifacts,
+        "validation_checks": validation["checks"],
+        "index_path": str(paths.bundle_index),
+    }
+    write_json_atomic(paths.bundle_index, bundle_index)
+    return {
+        **validation_report,
+        "validation_report": str(paths.validation),
+        "bundle_index": str(paths.bundle_index),
+        "bundle_artifact_count": len(bundle_artifacts),
+    }
+
+
+def audit_video_bundles(args: argparse.Namespace) -> dict[str, Any]:
+    directories = [
+        video_bundle_paths(Path(directory))
+        for directory in args.video_directories
+    ]
+    if len(directories) < 2:
+        raise CommandVideoError("Audit at least two video directories as one batch")
+    resolved_directories = [paths.directory for paths in directories]
+    if len(set(resolved_directories)) != len(resolved_directories):
+        raise CommandVideoError("Every audited video directory must be distinct")
+    video_ids = [paths.directory.name for paths in directories]
+    if len(set(video_ids)) != len(video_ids):
+        raise CommandVideoError("Every audited video ID must be distinct")
+
+    reports: list[dict[str, Any]] = []
+    required_keys = set(VIDEO_BUNDLE_FILENAMES) - {
+        "bundle_index",
+        "gif_intermediary",
+    }
+    required_entries = {
+        VIDEO_BUNDLE_FILENAMES[key]
+        for key in required_keys
+    } | {VIDEO_BUNDLE_FILENAMES["bundle_index"]}
+    for paths in directories:
+        if not paths.directory.is_dir():
+            raise CommandVideoError(f"Video directory does not exist: {paths.directory}")
+        gif_present = paths.gif_intermediary.is_file()
+        expected_keys = set(required_keys)
+        expected_entries = set(required_entries)
+        if gif_present:
+            expected_keys.add("gif_intermediary")
+            expected_entries.add(VIDEO_BUNDLE_FILENAMES["gif_intermediary"])
+        actual_entries = {entry.name for entry in paths.directory.iterdir()}
+        if actual_entries != expected_entries:
+            missing = sorted(expected_entries - actual_entries)
+            extra = sorted(actual_entries - expected_entries)
+            raise CommandVideoError(
+                f"Video directory {paths.directory} has a non-canonical layout; "
+                f"missing={missing}, extra={extra}"
+            )
+        index = load_json(paths.bundle_index)
+        if not isinstance(index, dict) or index.get("status") != "passed":
+            raise CommandVideoError(f"Bundle index did not pass: {paths.bundle_index}")
+        if index.get("video_id") != paths.directory.name:
+            raise CommandVideoError(f"Bundle index has the wrong video ID: {paths.bundle_index}")
+        normalized_directory = str(index.get("video_directory", "")).replace("\\", "/")
+        if not normalized_directory.rstrip("/").endswith(
+            f"/{paths.directory.name}"
+        ):
+            raise CommandVideoError(
+                f"Bundle index points to another video directory: {paths.bundle_index}"
+            )
+        artifacts = index.get("artifacts")
+        if not isinstance(artifacts, dict) or set(artifacts) != expected_keys:
+            raise CommandVideoError(
+                f"Bundle index has the wrong artifact set: {paths.bundle_index}"
+            )
+        if index.get("artifact_count") != len(expected_keys):
+            raise CommandVideoError(
+                f"Bundle index has the wrong artifact count: {paths.bundle_index}"
+            )
+        for key in sorted(expected_keys):
+            record = artifacts[key]
+            if not isinstance(record, dict):
+                raise CommandVideoError(
+                    f"Bundle artifact record is invalid: {paths.bundle_index}#{key}"
+                )
+            expected_name = VIDEO_BUNDLE_FILENAMES[key]
+            if record.get("relative_path") != expected_name:
+                raise CommandVideoError(
+                    f"Bundle artifact is not a canonical sibling: {paths.bundle_index}#{key}"
+                )
+            local_path = paths.directory / expected_name
+            normalized_path = str(record.get("path", "")).replace("\\", "/")
+            if not normalized_path.endswith(
+                f"/{paths.directory.name}/{expected_name}"
+            ):
+                raise CommandVideoError(
+                    f"Bundle artifact points outside its video directory: {paths.bundle_index}#{key}"
+                )
+            if not local_path.is_file():
+                raise CommandVideoError(f"Indexed artifact is missing: {local_path}")
+            if record.get("sha256") != sha256_file(local_path):
+                raise CommandVideoError(f"Indexed artifact hash changed: {local_path}")
+            if record.get("size_bytes") != local_path.stat().st_size:
+                raise CommandVideoError(f"Indexed artifact size changed: {local_path}")
+        reports.append(
+            {
+                "video_id": paths.directory.name,
+                "video_directory": str(paths.directory),
+                "bundle_index": str(paths.bundle_index),
+                "entry_count": len(actual_entries),
+                "artifact_count": len(expected_keys),
+                "gif_intermediary": gif_present,
+                "run_id": index.get("run_id"),
+                "mp4_sha256": artifacts["mp4"]["sha256"],
+            }
+        )
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "status": "passed",
+        "video_count": len(reports),
+        "video_ids": video_ids,
+        "isolation_checks": [
+            "distinct-directories",
+            "distinct-video-ids",
+            "canonical-entry-set",
+            "bundle-status",
+            "bundle-directory",
+            "sibling-relative-paths",
+            "artifact-path-suffixes",
+            "artifact-hashes",
+            "artifact-sizes",
+        ],
+        "videos": reports,
     }
 
 
@@ -3764,12 +5522,31 @@ def build_parser() -> argparse.ArgumentParser:
     bootstrap_parser.add_argument("--directory", required=True)
     add_common_json_flag(bootstrap_parser)
 
+    init_video_parser = subparsers.add_parser(
+        "init-video", help="Create one fresh artifact directory and copy its plan template"
+    )
+    init_video_parser.add_argument("video_directory")
+    init_video_parser.add_argument(
+        "--template",
+        choices=sorted(VIDEO_TEMPLATE_FILES),
+        default="single-tui",
+    )
+    add_common_json_flag(init_video_parser)
+
     preflight_parser = subparsers.add_parser(
         "preflight", help="Verify the recorder, PTY controller, target, and converters before recording"
     )
     preflight_parser.add_argument("plan")
     add_recording_tool_args(preflight_parser)
     add_common_json_flag(preflight_parser)
+
+    preflight_video_parser = subparsers.add_parser(
+        "preflight-video",
+        help="Preflight the fixed plan inside one isolated video directory",
+    )
+    preflight_video_parser.add_argument("video_directory")
+    add_recording_tool_args(preflight_video_parser)
+    add_common_json_flag(preflight_video_parser)
 
     run_parser = subparsers.add_parser("run-plan", help=argparse.SUPPRESS)
     run_parser.add_argument("--plan", required=True)
@@ -3781,6 +5558,14 @@ def build_parser() -> argparse.ArgumentParser:
     tui_target_parser.add_argument("--status", required=True)
     tui_target_parser.add_argument("--gate", required=True)
     tui_target_parser.add_argument("--run-id", required=True)
+    tui_target_parser.add_argument("--session-id")
+
+    tui_sequence_parser = subparsers.add_parser(
+        "run-tui-sequence-targets", help=argparse.SUPPRESS
+    )
+    tui_sequence_parser.add_argument("--plan", required=True)
+    tui_sequence_parser.add_argument("--state-directory", required=True)
+    tui_sequence_parser.add_argument("--run-id", required=True)
 
     record_parser = subparsers.add_parser("record", help="Record a plan and render its MP4")
     record_parser.add_argument("plan")
@@ -3792,6 +5577,19 @@ def build_parser() -> argparse.ArgumentParser:
     add_recording_tool_args(record_parser)
     add_common_json_flag(record_parser)
 
+    record_video_parser = subparsers.add_parser(
+        "record-video",
+        help="Record one isolated video directory using fixed artifact names",
+    )
+    record_video_parser.add_argument("video_directory")
+    record_video_parser.add_argument(
+        "--retain-gif",
+        action="store_true",
+        help="Keep session.gif beside the other video artifacts",
+    )
+    add_recording_tool_args(record_video_parser)
+    add_common_json_flag(record_video_parser)
+
     validate_parser = subparsers.add_parser("validate", help="Independently validate existing artifacts")
     validate_parser.add_argument("--plan", required=True)
     validate_parser.add_argument("--cast", required=True)
@@ -3800,6 +5598,22 @@ def build_parser() -> argparse.ArgumentParser:
     validate_parser.add_argument("--tools-dir")
     validate_parser.add_argument("--ffprobe", default="ffprobe")
     add_common_json_flag(validate_parser)
+
+    validate_video_parser = subparsers.add_parser(
+        "validate-video",
+        help="Validate one video directory and seal its artifact index",
+    )
+    validate_video_parser.add_argument("video_directory")
+    validate_video_parser.add_argument("--tools-dir")
+    validate_video_parser.add_argument("--ffprobe", default="ffprobe")
+    add_common_json_flag(validate_video_parser)
+
+    audit_video_bundles_parser = subparsers.add_parser(
+        "audit-video-bundles",
+        help="Audit two or more completed video directories for artifact isolation",
+    )
+    audit_video_bundles_parser.add_argument("video_directories", nargs="+")
+    add_common_json_flag(audit_video_bundles_parser)
     return parser
 
 
@@ -3822,9 +5636,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     if os.name == "nt" and raw_argv and raw_argv[0] in {
         "bootstrap-tools",
         "preflight",
+        "preflight-video",
         "record",
+        "record-video",
         "validate",
-    }:
+        "validate-video",
+    } and not any(token in {"-h", "--help"} for token in raw_argv[1:]):
         try:
             return forward_windows_command_to_wsl(raw_argv)
         except CommandVideoError as exc:
@@ -3841,8 +5658,18 @@ def main(argv: Sequence[str] | None = None) -> int:
             result = bootstrap_tools(Path(args.directory))
             print_result(result, as_json=args.json)
             return 0
+        if args.command == "init-video":
+            result = initialize_video_directory(
+                Path(args.video_directory), template_name=args.template
+            )
+            print_result(result, as_json=args.json)
+            return 0
         if args.command == "preflight":
             result = preflight_session(args)
+            print_result(result, as_json=args.json)
+            return 0
+        if args.command == "preflight-video":
+            result = preflight_video_bundle(args)
             print_result(result, as_json=args.json)
             return 0
         if args.command == "run-plan":
@@ -3857,9 +5684,20 @@ def main(argv: Sequence[str] | None = None) -> int:
                 status_path=Path(args.status),
                 gate_path=Path(args.gate),
                 run_id=args.run_id,
+                session_id=args.session_id,
+            )
+        if args.command == "run-tui-sequence-targets":
+            return execute_tui_sequence_targets(
+                load_plan(args.plan),
+                state_directory=Path(args.state_directory),
+                run_id=args.run_id,
             )
         if args.command == "record":
             result = record_session(args)
+            print_result(result, as_json=args.json)
+            return 0
+        if args.command == "record-video":
+            result = record_video_bundle(args)
             print_result(result, as_json=args.json)
             return 0
         if args.command == "validate":
@@ -3871,6 +5709,14 @@ def main(argv: Sequence[str] | None = None) -> int:
                 ffprobe_name=args.ffprobe,
                 tools_dir=Path(args.tools_dir) if args.tools_dir else None,
             )
+            print_result(result, as_json=args.json)
+            return 0
+        if args.command == "validate-video":
+            result = validate_video_bundle(args)
+            print_result(result, as_json=args.json)
+            return 0
+        if args.command == "audit-video-bundles":
+            result = audit_video_bundles(args)
             print_result(result, as_json=args.json)
             return 0
         raise CommandVideoError(f"Unsupported command: {args.command}")

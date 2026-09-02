@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": false,
+  "ledger": {
+    "eventCount": 5,
+    "headSha256": "52800a0a599e1c33d7407c32a62b46c2fb03dbcab100780d713f2ed6cb404998"
+  },
+  "progress": {
+    "completedCount": 0,
+    "completionPercent": 0.0,
+    "stageCount": 0
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-2x-semantic90-bundle10-v5",
+    "createdAt": "2026-08-10T16:57:32Z",
+    "studyId": "d3-pareto-20260810-v5",
+    "title": "D3 unified-skill Pareto cycle after randomized validation-v3"
+  }
+}

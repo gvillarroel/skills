@@ -17,6 +17,7 @@ from pathlib import Path
 
 
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+TEMPLATE_PLACEHOLDER_RE = re.compile(r"^__[A-Z][A-Z0-9_]*__$")
 MAX_ID_LENGTH = 64
 REVIEW_ID_LENGTH = 48
 GENERIC_SEGMENTS = {"pattern", "item", "example", "feature"}
@@ -77,7 +78,12 @@ def collect_explicit_ids(root: Path, findings: list[Finding]) -> tuple[dict[str,
         for pattern in STATIC_ID_PATTERNS:
             for match in pattern.finditer(content):
                 pattern_id = match.group(1).strip()
-                if not pattern_id or pattern_id.endswith("-*") or any(token in pattern_id for token in "{}"):
+                if (
+                    not pattern_id
+                    or pattern_id.endswith("-*")
+                    or any(token in pattern_id for token in "{}")
+                    or TEMPLATE_PLACEHOLDER_RE.fullmatch(pattern_id)
+                ):
                     continue
                 validate_id(pattern_id, path, findings)
                 observed.setdefault(pattern_id, set()).add(path)
@@ -122,10 +128,33 @@ def validate_d3_registry(root: Path, findings: list[Finding]) -> set[str]:
     reference_root = root / "skills" / "d3" / "references"
     patterns_root = reference_root / "patterns"
     index_path = reference_root / "pattern-index.md"
-    expected: dict[str, Path] = {}
+    expected: dict[str, str] = {}
+
+    def register(pattern_id: str, route: str, path: Path) -> None:
+        if pattern_id in expected:
+            add(findings, path, f"duplicate D3 registry pattern ID: {pattern_id}")
+        expected[pattern_id] = route
 
     for path in sorted(patterns_root.glob("*.md")):
         content = path.read_text(encoding="utf-8")
+        collection_sections = list(re.finditer(r"^##\s+(d3-[a-z0-9-]+)\s*$", content, re.MULTILINE))
+        if collection_sections:
+            for index, heading in enumerate(collection_sections):
+                pattern_id = heading.group(1)
+                section_end = collection_sections[index + 1].start() if index + 1 < len(collection_sections) else len(content)
+                section = content[heading.end():section_end]
+                declared_match = re.search(r"(?:\*\*)?Pattern ID(?:\*\*)?:?[^\n]*", section)
+                declared_ids = re.findall(r"`(d3-[a-z0-9-]+)`", declared_match.group(0)) if declared_match else []
+                source_match = re.search(r"\*\*Gallery source ID:\*\*\s*`([^`]+)`", section)
+                if declared_ids != [pattern_id]:
+                    add(findings, path, f"collection section {pattern_id} must declare only its heading Pattern ID")
+                if source_match and ID_RE.fullmatch(source_match.group(1)):
+                    canonical = f"d3-{source_match.group(1)}"
+                    if pattern_id != canonical:
+                        add(findings, path, f"collection section {pattern_id} does not match Gallery source ID {source_match.group(1)}")
+                register(pattern_id, f"{path.name}#{pattern_id}", path)
+            continue
+
         header = "\n".join(content.splitlines()[:15])
         declaration_match = re.search(r"(?:\*\*)?Pattern IDs?(?:\*\*)?:?[^\n]*", header)
         source_match = re.search(r"\*\*Gallery source ID:\*\*\s*`([^`]+)`", content)
@@ -141,13 +170,11 @@ def validate_d3_registry(root: Path, findings: list[Finding]) -> set[str]:
             if path.stem != source_id:
                 add(findings, path, f"D3 reference filename must match Gallery source ID {source_id}")
         for pattern_id in declared_ids:
-            if pattern_id in expected:
-                add(findings, path, f"duplicate D3 registry pattern ID: {pattern_id}")
-            expected[pattern_id] = path
+            register(pattern_id, path.name, path)
 
     index_content = index_path.read_text(encoding="utf-8")
     rows = re.findall(
-        r"^\|\s*`(d3-[^`]+)`\s*\|.*?\|\s*`references/patterns/([^`]+\.md)`\s*\|\s*$",
+        r"^\|\s*`(d3-[^`]+)`\s*\|.*?\|\s*`references/patterns/([^`]+\.md(?:#d3-[a-z0-9-]+)?)`\s*\|\s*$",
         index_content,
         re.MULTILINE,
     )
@@ -156,17 +183,17 @@ def validate_d3_registry(root: Path, findings: list[Finding]) -> set[str]:
         if pattern_id in indexed:
             add(findings, index_path, f"duplicate D3 pattern-index ID: {pattern_id}")
         indexed[pattern_id] = filename
-        expected_path = expected.get(pattern_id)
-        if expected_path is None:
+        expected_route = expected.get(pattern_id)
+        if expected_route is None:
             add(findings, index_path, f"D3 pattern-index ID has no reference: {pattern_id}")
-        elif expected_path.name != filename:
+        elif expected_route != filename:
             add(findings, index_path, f"D3 pattern-index path mismatch for {pattern_id}: {filename}")
 
     missing = sorted(set(expected) - set(indexed))
     if missing:
         add(findings, index_path, f"D3 pattern index is missing {len(missing)} ID(s): {', '.join(missing[:8])}")
-    if len(expected) != 242:
-        add(findings, index_path, f"expected 242 canonical D3 registry IDs, found {len(expected)}")
+    if len(expected) != 243:
+        add(findings, index_path, f"expected 243 canonical D3 registry IDs, found {len(expected)}")
     return set(expected)
 
 
@@ -303,7 +330,7 @@ def validate_family_inventories(
     missing_d3_sources = sorted({f"d3-{source_id}" for source_id in d3_sources} - d3_registry)
     if missing_d3_sources:
         add(findings, d3_gallery_path, f"D3 gallery IDs missing from registry: {', '.join(missing_d3_sources[:8])}")
-    register_family("d3-base", sorted(d3_registry), 242, d3_gallery_path, findings, global_ids, review_ids, family_counts)
+    register_family("d3-base", sorted(d3_registry), 243, d3_gallery_path, findings, global_ids, review_ids, family_counts)
     register_family("d3-cs1", [f"d3-{source_id}-cs1" for source_id in d3_sources], 225, d3_gallery_path, findings, global_ids, review_ids, family_counts)
     register_family("d3-cs2", [f"d3-{source_id}-cs2" for source_id in d3_sources], 225, d3_gallery_path, findings, global_ids, review_ids, family_counts)
 
@@ -433,7 +460,7 @@ def validate_family_inventories(
         if 'data-example-id="slidev-animejs"' in component_path.read_text(encoding="utf-8"):
             add(findings, component_path, "item surfaces must use a local data-example-id, not the page-set ID")
 
-    ai_path = root / "skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos/concepts.js"
+    ai_path = root / "skills/video/assets/examples/ai-concept-videos/concepts.js"
     ai_content = ai_path.read_text(encoding="utf-8")
     ai_ids = re.findall(r'^\s*patternId:\s*"(ai-[a-z0-9-]+)"', ai_content, re.MULTILINE)
     register_family("ai-concepts", ai_ids, 11, ai_path, findings, global_ids, review_ids, family_counts)

@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "sourcePackage": "source/source-package.json",
+  "durationSeconds": 30,
+  "aspect": "16:9",
+  "rendering": {
+    "engine": "deterministic-browser-compositor",
+    "seekDeterministic": true,
+    "forbiddenDependencies": ["gsap"]
+  },
+  "shots": [
+    {
+      "id": "s01-metaphor",
+      "start": 0,
+      "duration": 4,
+      "purpose": "Establish the regex and railroad metaphor.",
+      "sourceAnchors": ["¿QUÉ ES UN AGENTE?"],
+      "visual": {"heroFrame": "Large title with one red syntax token.", "roles": ["title", "syntax token", "railroad baseline"]},
+      "motionIntent": [{"verb": "scan", "subject": "syntax token", "target": "empty railroad baseline", "timing": "1.2-3.6s"}],
+      "media": {"narration": null, "music": null, "captions": true, "assets": []},
+      "validation": ["Title is fully visible", "persistent token is established"]
+    },
+    {
+      "id": "s02-lm",
+      "start": 4,
+      "duration": 5,
+      "purpose": "Contrast one LM pass with later repetition.",
+      "sourceAnchors": ["LM := CONTEXTO · MODELO · RESPUESTA"],
+      "visual": {"heroFrame": "One-pass railroad diagram centered in frame.", "roles": ["context", "LM", "response", "syntax token"]},
+      "motionIntent": [{"verb": "route", "subject": "syntax token", "target": "response", "timing": "5.0-8.2s"}],
+      "media": {"narration": null, "music": null, "captions": true, "assets": ["artifacts/svgs/lm-railroad.svg"]},
+      "validation": ["No repetition branch appears", "all three semantic stages are visible"]
+    },
+    {
+      "id": "s03-agent",
+      "start": 9,
+      "duration": 9,
+      "purpose": "Show the LM inside a repeated observe-decide-act cycle.",
+      "sourceAnchors": ["AGENTE := OBJETIVO · (OBSERVAR · LM · ACTUAR)+ · TERMINAR"],
+      "visual": {"heroFrame": "Railroad repetition loop with a visible return branch.", "roles": ["objective", "observation", "LM", "action", "return path", "stop"]},
+      "motionIntent": [{"verb": "repeat", "subject": "syntax token", "target": "agent branch", "timing": "11.0-16.8s"}],
+      "media": {"narration": null, "music": null, "captions": true, "assets": ["artifacts/svgs/agent-railroad.svg"]},
+      "validation": ["Loop is visually unambiguous", "LM remains a component rather than the whole agent"]
+    },
+    {
+      "id": "s04-harness",
+      "start": 18,
+      "duration": 9,
+      "purpose": "Reveal the runtime that supplies and governs the loop.",
+      "sourceAnchors": ["HARNESS := REGLAS · MEMORIA · PERMISOS · AGENTE(HERRAMIENTAS) · EVALUAR"],
+      "visual": {"heroFrame": "Outer HARNESS boundary containing context, AGENTE loop, permissions, tools, evaluation, and outcomes.", "roles": ["harness boundary", "agent boundary", "LM", "tools", "permissions", "evaluation"]},
+      "motionIntent": [{"verb": "pull out", "subject": "agent loop", "target": "harness boundary", "timing": "18.0-21.5s"}, {"verb": "activate", "subject": "governing surfaces", "target": "agent loop", "timing": "21.5-26.5s"}],
+      "media": {"narration": null, "music": null, "captions": true, "assets": ["artifacts/svgs/harness-flow.svg"]},
+      "validation": ["AGENTE is nested inside HARNESS", "LM is nested inside AGENTE", "permissions and evaluation have explicit outcomes"]
+    },
+    {
+      "id": "s05-recap",
+      "start": 27,
+      "duration": 3,
+      "purpose": "Land the distinction between the model, loop, and runtime.",
+      "sourceAnchors": ["LM genera. El agente itera. El harness gobierna."],
+      "visual": {"heroFrame": "Three aligned mnemonic clauses.", "roles": ["LM", "agent", "harness", "syntax token"]},
+      "motionIntent": [{"verb": "compress", "subject": "full harness", "target": "three-part mnemonic", "timing": "27.0-28.0s"}, {"verb": "hold", "subject": "mnemonic", "target": "viewer", "timing": "28.0-30.0s"}],
+      "media": {"narration": null, "music": null, "captions": true, "assets": []},
+      "validation": ["Final mnemonic holds for two seconds"]
+    }
+  ],
+  "literalAnchors": [
+    "¿QUÉ ES UN AGENTE?",
+    "LM := CONTEXTO · MODELO · RESPUESTA",
+    "AGENTE := OBJETIVO · (OBSERVAR · LM · ACTUAR)+ · TERMINAR",
+    "HARNESS := REGLAS · MEMORIA · PERMISOS · AGENTE(HERRAMIENTAS) · EVALUAR",
+    "LM genera. El agente itera. El harness gobierna."
+  ],
+  "missingFacts": []
+}

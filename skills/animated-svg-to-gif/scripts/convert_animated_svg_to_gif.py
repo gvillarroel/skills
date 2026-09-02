@@ -74,7 +74,7 @@ def main() -> int:
     if args.output and len(inputs) != 1:
         raise SystemExit("--output can only be used with exactly one input SVG.")
 
-    output_dir = args.output_dir.resolve()
+    output_dir = resolve_output_directory(args)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     results: list[ConversionResult] = []
@@ -103,6 +103,13 @@ def main() -> int:
     print(f"Converted {len(results)} SVG file(s).")
     print(f"Manifest: {run_manifest}")
     return 0
+
+
+def resolve_output_directory(args: argparse.Namespace) -> Path:
+    """Keep the batch manifest beside an explicitly named single GIF."""
+    if args.output is not None:
+        return args.output.resolve().parent
+    return args.output_dir.resolve()
 
 
 def parse_args() -> argparse.Namespace:

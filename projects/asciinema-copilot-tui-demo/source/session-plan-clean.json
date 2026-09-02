@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "title": "Three prompts typed into the real GitHub Copilot CLI TUI",
+  "working_directory": ".",
+  "declared_scope": "A single authenticated Copilot CLI TUI answers three read-only coding questions. No tools, file changes, shell commands, remote control, or session export are requested.",
+  "target": {
+    "name": "GitHub Copilot CLI",
+    "executable": "copilot.exe",
+    "version_args": ["--version"]
+  },
+  "interaction": {
+    "mode": "tui",
+    "launch_args": [
+      "--no-auto-update",
+      "--no-remote",
+      "--no-remote-export",
+      "--no-mouse",
+      "--no-custom-instructions",
+      "--no-experimental"
+    ],
+    "typing_interval_seconds": 0.035,
+    "pre_submit_pause_seconds": 0.5,
+    "startup_timeout_seconds": 120,
+    "ready_pattern": "(?m)^❯\\s*$",
+    "busy_pattern": "(?mi)Working.*esc interrupt|esc interrupt",
+    "settle_seconds": 1.5,
+    "exit_text": "/exit",
+    "exit_timeout_seconds": 60,
+    "expected_exit_codes": [0]
+  },
+  "terminal": {"cols": 110, "rows": 34},
+  "render": {
+    "theme": "github-dark",
+    "font_size": 18,
+    "line_height": 1.4,
+    "fps": 30,
+    "speed": 1.0,
+    "idle_time_limit": null,
+    "last_frame_duration": 0.5,
+    "start_at": "tui-ready"
+  },
+  "steps": [
+    {
+      "id": "prompt-1",
+      "prompt": "Show only a Python add(a, b) function. Do not use tools.",
+      "timeout_seconds": 300,
+      "pause_after_seconds": 1.5
+    },
+    {
+      "id": "prompt-2",
+      "prompt": "Add integer type hints and a one-line docstring to that function. Do not use tools.",
+      "timeout_seconds": 300,
+      "pause_after_seconds": 1.5
+    },
+    {
+      "id": "prompt-3",
+      "prompt": "Give three concise pytest assertions for the final function. Do not use tools.",
+      "timeout_seconds": 300,
+      "pause_after_seconds": 4.0
+    }
+  ]
+}

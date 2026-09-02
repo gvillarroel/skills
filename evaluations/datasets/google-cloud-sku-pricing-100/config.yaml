@@ -1,0 +1,28 @@
+schemaVersion: 1
+datasetId: google-cloud-sku-pricing-100
+seed: 20260825
+currencyCode: USD
+apiVersion: v2beta
+pageSize: 5000
+questionCount: 100
+families:
+  - geography
+  - sku_identity
+  - model_inventory
+  - list_rate
+  - normalized_rate
+  - marginal_tier
+  - progressive_cost
+  - region_membership
+  - filtered_count
+  - compatible_comparison
+splitQuestionCounts:
+  train: 60
+  validation: 20
+  holdout: 20
+batchQuestionCount: 10
+splitBatchCounts:
+  train: 6
+  validation: 2
+  holdout: 2
+

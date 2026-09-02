@@ -1,0 +1,22 @@
+{
+  "holdoutReleased": true,
+  "ledger": {
+    "eventCount": 32,
+    "headSha256": "b4be2f10a2590ff6f3ff48886ecdf5e5bb53b2b49a1375850ef693c0effa9f7e"
+  },
+  "progress": {
+    "completedCount": 5,
+    "completionPercent": 100.0,
+    "stageCount": 5
+  },
+  "publicationPolicy": "indexes-and-result-tables-only-v1",
+  "resultIndex": [],
+  "resultTables": [],
+  "schemaVersion": 1,
+  "study": {
+    "comparisonProfile": "d3-spark-2x-semantic100-bundle-pareto-v8",
+    "createdAt": "2026-08-10T17:58:31Z",
+    "studyId": "d3-pareto-20260810-v8",
+    "title": "D3 unified-skill clean final gate after dataset restoration"
+  }
+}

@@ -55,6 +55,57 @@ def candidate_report(candidates: list[Candidate]) -> list[dict[str, object]]:
     ]
 
 
+def _local_name(tag: str) -> str:
+    return tag.rsplit("}", 1)[-1]
+
+
+def assert_accessible_svg(root: ET.Element, path: Path) -> None:
+    """Require a rendered Mermaid SVG with resolvable title and description metadata."""
+    if _local_name(root.tag) != "svg":
+        raise ValueError(f"Rendered document {path} must have an <svg> root")
+
+    id_counts: dict[str, int] = {}
+    for element in root.iter():
+        element_id = element.get("id", "").strip()
+        if element_id:
+            id_counts[element_id] = id_counts.get(element_id, 0) + 1
+    duplicate_ids = sorted(element_id for element_id, count in id_counts.items() if count > 1)
+    if duplicate_ids:
+        raise ValueError(
+            f"Rendered SVG {path} contains duplicate element IDs: {', '.join(duplicate_ids)}"
+        )
+
+    direct_children = {_local_name(child.tag): child for child in root}
+    requirements = (
+        ("title", "aria-labelledby"),
+        ("desc", "aria-describedby"),
+    )
+    errors: list[str] = []
+    for element_name, aria_attribute in requirements:
+        element = direct_children.get(element_name)
+        if element is None or not "".join(element.itertext()).strip():
+            errors.append(f"non-empty <{element_name}>")
+            continue
+        element_id = element.get("id", "").strip()
+        references = root.get(aria_attribute, "").split()
+        if not element_id:
+            errors.append(f"<{element_name}> id")
+        elif element_id not in references:
+            errors.append(f"root {aria_attribute} reference to {element_id!r}")
+        unresolved = sorted(reference for reference in references if id_counts.get(reference) != 1)
+        if unresolved:
+            errors.append(
+                f"root {aria_attribute} contains unresolved or ambiguous ID reference(s): "
+                + ", ".join(unresolved)
+            )
+
+    if errors:
+        raise ValueError(
+            f"Rendered SVG {path} does not satisfy the accessibility contract: "
+            + "; ".join(errors)
+        )
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Render a Mermaid diagram to a normal SVG, then inject high-quality SVG animation."
@@ -179,6 +230,14 @@ def parse_args() -> argparse.Namespace:
         help="Read Mermaid animation directives from a sidecar file. Source .mmd/.md files are scanned automatically.",
     )
     parser.add_argument("--strict-order", action="store_true", help="Fail when an order token matches no element.")
+    parser.add_argument(
+        "--require-accessibility",
+        action="store_true",
+        help=(
+            "Fail unless the rendered SVG has non-empty title and description elements whose IDs are "
+            "referenced by root aria-labelledby and aria-describedby attributes."
+        ),
+    )
     parser.add_argument("--list-elements", action="store_true", help="Print detected animation elements as JSON.")
     args = parser.parse_args()
 
@@ -234,6 +293,8 @@ def main() -> int:
             if root.get("data-animated-mermaid") == "true":
                 raise ValueError("Input SVG already appears to be animated. Use a fresh static Mermaid SVG.")
             assert_not_mermaid_error_svg(root, static_path)
+            if args.require_accessibility:
+                assert_accessible_svg(root, static_path)
 
             candidates = discover_candidates(root)
             order_tokens = parse_order_entries(args.order, args.order_file)

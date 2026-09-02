@@ -52,6 +52,7 @@ Animate a pre-rendered SVG:
 $StaticSvg = "chart.static.svg"
 $AnimatedSvg = "chart.animated.svg"
 uv run --script skills/echarts-animated-svg/scripts/animate_echarts_svg.py $StaticSvg --chart-type line -o $AnimatedSvg
+uv run --script skills/echarts-animated-svg/scripts/validate_animated_svg.py $StaticSvg $AnimatedSvg --chart-type line --report chart-validation.json
 if (!(Test-Path -LiteralPath $StaticSvg) -or !(Test-Path -LiteralPath $AnimatedSvg)) { throw "Missing requested ECharts SVG output path." }
 ```
 
@@ -62,6 +63,7 @@ $StaticSvg = "bar.static.svg"
 $AnimatedSvg = "bar.animated.svg"
 Copy-Item skills/echarts-animated-svg/assets/templates/static-bar-chart.svg $StaticSvg
 uv run --script skills/echarts-animated-svg/scripts/animate_echarts_svg.py $StaticSvg --chart-type bar -o $AnimatedSvg --duration-ms 800 --stagger-ms 90
+uv run --script skills/echarts-animated-svg/scripts/validate_animated_svg.py $StaticSvg $AnimatedSvg --chart-type bar --duration-ms 800 --stagger-ms 90 --report bar-validation.json
 if (!(Test-Path -LiteralPath $StaticSvg) -or !(Test-Path -LiteralPath $AnimatedSvg)) { throw "Missing requested ECharts SVG output path." }
 ```
 
@@ -80,6 +82,12 @@ npm run verify --prefix <skill-root>/assets/examples/echarts-animated-svg
 ```
 
 ## Validation
+
+For a task-level static/animated pair, use the bundled validator instead of
+ad-hoc XML or regex probes. It checks XML validity, source geometry and label
+preservation, animation roles and ordering, requested timing, replay metadata,
+reduced-motion CSS, and external references. A nonzero exit is a real failed
+check; fix the artifact rather than layering exploratory validators on top.
 
 After changing this skill, its scripts, references, or examples, run:
 

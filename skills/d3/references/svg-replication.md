@@ -28,7 +28,7 @@ Use this path when the user provides an SVG and asks for a recreated pattern wit
 Before saying a recreated SVG is ready, compare the source and candidate:
 
 ```powershell
-uv run --script C:\Users\villa\dev\skills\d3\scripts\compare_svg_style_signatures.py --pair source\example.svg=expected\example-recreated.svg --report output\style-compare.json
+uv run --script skills/d3/scripts/compare_svg_style_signatures.py --pair source\example.svg=expected\example-recreated.svg --report output\style-compare.json
 ```
 
 Treat failures as implementation defects, not as acceptable variation. Fix the D3 code until the comparison passes. The gate checks:
@@ -59,13 +59,13 @@ Template mode is the preferred gate for 200+ pattern sweeps because it preserves
 Prepare one template manually:
 
 ```powershell
-uv run --script C:\Users\villa\dev\skills\d3\scripts\prepare_svg_recreation_templates.py source\example.svg --template-dir template --expected-dir expected --manifest output\template-manifest.json
+uv run --script skills/d3/scripts/prepare_svg_recreation_templates.py source\example.svg --template-dir template --expected-dir expected --manifest output\template-manifest.json
 ```
 
 For `pi` forward tests, run from a temporary directory outside this repository and load the skill explicitly:
 
 ```powershell
-pi --no-session --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --tools read,write --skill C:\Users\villa\dev\skills\d3 --model openai-codex/gpt-5.4 --thinking medium -p @prompt.md @source\example.svg
+pi --no-session --no-context-files --no-extensions --no-skills --no-prompt-templates --no-themes --tools read,write --skill skills/d3 --model openai-codex/gpt-5.3-codex-spark --thinking medium -p @prompt.md @source\example.svg
 ```
 
 Use `--no-skills` together with explicit `--skill`; `pi` preserves CLI-provided skill paths while disabling discovered skills. Use `--tools read,write` for isolation so `pi` cannot search the filesystem or run shell commands for extra context. The prompt should require a D3 implementation, new data, a browser-openable output file, and notes describing preserved grammar and data changes. The outer harness should run `compare_svg_style_signatures.py` against every source SVG after `pi` writes candidates. Do not accept the `pi` result until that external comparison passes for every source/candidate pair.
@@ -74,8 +74,8 @@ For all-gallery forward tests, export the gallery first, then run the batch harn
 
 ```powershell
 $root = "$env:TEMP\pi-d3-svg-gallery"
-uv run --script skills/d3/scripts/export_d3_gallery_svgs.py skills/d3/assets/examples/d3-animated-svg/index.html --out-dir "$root\source-all" --manifest "$root\source-manifest.json" --expected 202 --wait-ms 4500
-uv run --script C:\Users\villa\dev\skills\d3\scripts\run_pi_svg_gallery_recreation.py --source-dir "$root\source-all" --manifest "$root\source-manifest.json" --work-dir "$root\pi-run" --batch-size 4 --retries 1 --timeout-seconds 900
+uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/export_d3_gallery_svgs.py skills/d3/assets/examples/d3-animated-svg/index.html --out-dir "$root\source-all" --manifest "$root\source-manifest.json" --expected 202 --wait-ms 4500
+uv run --script skills/d3/assets/examples/skill-tests/run_pi_svg_gallery_recreation.py --source-dir "$root\source-all" --manifest "$root\source-manifest.json" --work-dir "$root\pi-run" --batch-size 4 --retries 1 --timeout-seconds 900
 ```
 
 The harness writes one batch directory per `pi` call with `source/`, `template/`, `expected/`, logs, style reports, and a resumable `run-manifest.json`. Template mode is enabled by default; pass `--no-templates` only when intentionally testing from-scratch reconstruction. Use `--offset`, `--limit`, and separate `--work-dir` values for non-overlapping parallel ranges. Count a batch as accepted only when the manifest marks it `ok` and every expected SVG passes the style-signature comparison.
@@ -336,6 +336,6 @@ uv run --script scripts/validate-skills.py
 For served gallery checks:
 
 ```powershell
-uv run --script skills/d3/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 225 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-225-http.png --wait-ms 2200
-uv run --script skills/d3/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 225 --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-225-mobile.png --wait-ms 2200
+uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 225 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-225-http.png --wait-ms 2200
+uv run --script skills/d3/assets/examples/d3-animated-svg/scripts/verify_d3_gallery.py http://127.0.0.1:4177/index.html --expected 225 --viewport 390x900 --screenshot projects/d3-animated-svg-validation/artifacts/screenshots/gallery-225-mobile.png --wait-ms 2200
 ```

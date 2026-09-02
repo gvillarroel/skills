@@ -1,0 +1,36 @@
+schemaVersion: 1
+
+search:
+  id: d3-pareto-20260810-v3r1
+  baselineSkill: ../../runs/d3-pareto-20260810-v3r1/search/development/generation-000/candidate-staging/baseline-runtime-pruned/skills/d3
+  baselineCandidate: baseline-runtime-pruned
+  outputDir: ../../runs/d3-pareto-20260810-v3r1/search
+  generation: 1
+  previousGenerationLog: ../../runs/d3-pareto-20260810-v3r1/search/development/generation-000/pareto-archive.json
+
+harbor:
+  developmentJob: ../../runs/d3-pareto-20260810-v1-dataset/validation-job.yaml
+  holdoutJob: ../../runs/d3-pareto-20260810-v2-dataset/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 0.9
+  requiredRewards:
+    semantic_reward: 1
+  requiredEnv: []
+
+candidates:
+  - id: baseline-runtime-pruned
+    skill: ../../runs/d3-pareto-20260810-v3r1/search/development/generation-000/candidate-staging/baseline-runtime-pruned/skills/d3
+    parents: []
+    jobDirectory: ../../runs/d3-pareto-20260810-v3r1/search/development/generation-000/harbor-jobs/d3-pareto-20260810-v3r1-g000-development-baseline-runtime-pruned
+    rationale: Reuse the immutable qualified baseline job from generation zero under the identical development profile.
+  - id: reference-consolidation
+    skill: ../../runs/d3-pareto-20260810-v4/development/candidate-staging/reference-consolidation/skills/d3
+    parents:
+      - baseline-runtime-pruned
+    jobDirectory: ../../runs/d3-pareto-20260810-v4/development/jobs/d3-pareto-20260810-v4-development-reference-consolidation
+    rationale: Preserve the deterministic lollipop, flow-spine, and radial-wedge builders; losslessly consolidate twenty-four compact pattern references into three directly anchored collections, reducing the runtime bundle from 330 to 309 files while preserving all 242 indexed pattern routes and zero orphan root references.
+
+promotion:
+  minimumMeanGain: 0.01
+  allowCaseRegressions: false
+  requireNoErrors: true

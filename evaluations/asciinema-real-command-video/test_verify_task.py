@@ -23,6 +23,109 @@ SPEC.loader.exec_module(VERIFIER)
 
 
 class VerifyTaskTests(unittest.TestCase):
+    def test_complexity_contract_matches_prompt_and_action_runtime(self) -> None:
+        prompt = "First real prompt"
+        plan = {
+            "steps": [
+                {"id": "prompt-one", "prompt": prompt},
+                {
+                    "id": "navigate",
+                    "actions": [
+                        {"type": "text", "text": "taz"},
+                        {"type": "pause", "seconds": 5.5},
+                        {"type": "key", "key": "BSpace"},
+                        {"type": "key", "key": "Enter"},
+                    ],
+                },
+            ]
+        }
+        runtime = {
+            "steps": [
+                {"prompt_sha256": VERIFIER.sha256_text(prompt)},
+                {
+                    "actions": [
+                        {
+                            "type": "text",
+                            "text_sha256": VERIFIER.sha256_text("taz"),
+                        },
+                        {"type": "pause", "seconds": 5.5},
+                        {"type": "key", "key": "BSpace"},
+                        {"type": "key", "key": "Enter"},
+                    ]
+                },
+            ]
+        }
+        contract = {
+            "requiredPromptSequence": [prompt],
+            "requiredTextSequence": ["taz"],
+            "requiredKeySequence": ["BSpace", "Enter"],
+            "minActionCount": 4,
+            "minPauseActionCount": 1,
+            "minPlannedPauseSeconds": 5.0,
+            "minSourceDurationSeconds": 12.0,
+        }
+        findings: list[str] = []
+        ok, evidence = VERIFIER.verify_complexity_contract(
+            contract,
+            plan,
+            runtime,
+            {"recording": {"duration_seconds": 12.5}},
+            findings,
+        )
+        self.assertTrue(ok)
+        self.assertEqual(findings, [])
+        self.assertEqual(evidence["observed"]["actionCount"], 4)
+
+    def test_complexity_contract_rejects_short_or_changed_runtime(self) -> None:
+        plan = {
+            "steps": [
+                {
+                    "id": "navigate",
+                    "actions": [
+                        {"type": "pause", "seconds": 2.0},
+                        {"type": "key", "key": "Enter"},
+                    ],
+                }
+            ]
+        }
+        runtime = {
+            "steps": [
+                {
+                    "actions": [
+                        {"type": "pause", "seconds": 1.0},
+                        {"type": "key", "key": "Escape"},
+                    ]
+                }
+            ]
+        }
+        findings: list[str] = []
+        ok, evidence = VERIFIER.verify_complexity_contract(
+            {
+                "requiredKeySequence": ["Enter"],
+                "minActionCount": 3,
+                "minPauseActionCount": 2,
+                "minPlannedPauseSeconds": 10.0,
+                "minSourceDurationSeconds": 10.0,
+            },
+            plan,
+            runtime,
+            {"recording": {"duration_seconds": 4.0}},
+            findings,
+        )
+        self.assertFalse(ok)
+        self.assertFalse(evidence["checks"]["runtimeMatchesPlan"])
+        self.assertFalse(evidence["checks"]["sourceDuration"])
+        self.assertGreaterEqual(len(findings), 5)
+
+    def test_legacy_contract_has_no_complexity_requirements(self) -> None:
+        findings: list[str] = []
+        ok, evidence = VERIFIER.verify_complexity_contract(
+            {}, {"steps": []}, {"steps": []}, {}, findings
+        )
+        self.assertTrue(ok)
+        self.assertTrue(all(evidence["checks"].values()))
+        self.assertEqual(findings, [])
+
     def test_argv_exit_status_uses_runtime_steps(self) -> None:
         runtime = {
             "steps": [
@@ -41,6 +144,92 @@ class VerifyTaskTests(unittest.TestCase):
         self.assertTrue(VERIFIER.runtime_exit_ok("tui", {}, {"final_exit_code": 0}, 2))
         self.assertFalse(VERIFIER.runtime_exit_ok("tui", {}, {"final_exit_code": 1}, 2))
 
+    def test_multi_tui_exit_and_distinct_target_provenance(self) -> None:
+        contract = {
+            "targetNames": ["fzf", "Television"],
+            "executableSequence": [["fzf.exe"], ["tv.exe"]],
+        }
+        targets = [
+            {
+                "name": "fzf",
+                "resolved_executable": "/tools/fzf.exe",
+                "executable_sha256": "a" * 64,
+                "version_exit_code": 0,
+                "version_output": "0.60.0",
+                "final_exit_code": 0,
+            },
+            {
+                "name": "Television",
+                "resolved_executable": "/tools/tv.exe",
+                "executable_sha256": "b" * 64,
+                "version_exit_code": 0,
+                "version_output": "0.14.4",
+                "final_exit_code": 0,
+            },
+        ]
+        runtime = {"targets": targets}
+        self.assertTrue(
+            VERIFIER.runtime_exit_ok(
+                "tui-sequence", runtime, {"final_exit_code": 0}, 2
+            )
+        )
+        self.assertTrue(
+            VERIFIER.sequence_target_evidence_ok(contract, {"targets": targets})
+        )
+        duplicated = [dict(targets[0]), dict(targets[0])]
+        duplicated[1]["name"] = "Television"
+        duplicated[1]["resolved_executable"] = "/tools/fzf.exe"
+        duplicated[1]["executable_sha256"] = "a" * 64
+        duplicated[1]["version_output"] = "0.14.4"
+        self.assertFalse(
+            VERIFIER.sequence_target_evidence_ok(
+                contract, {"targets": duplicated}
+            )
+        )
+
+    def test_complexity_contract_flattens_multi_tui_session_steps(self) -> None:
+        plan = {
+            "tui_sessions": [
+                {
+                    "steps": [
+                        {
+                            "id": "first",
+                            "actions": [{"type": "pause", "seconds": 6.0}],
+                        }
+                    ]
+                },
+                {
+                    "steps": [
+                        {
+                            "id": "second",
+                            "actions": [{"type": "key", "key": "Enter"}],
+                        }
+                    ]
+                },
+            ]
+        }
+        runtime = {
+            "steps": [
+                {"actions": [{"type": "pause", "seconds": 6.0}]},
+                {"actions": [{"type": "key", "key": "Enter"}]},
+            ]
+        }
+        findings: list[str] = []
+        ok, evidence = VERIFIER.verify_complexity_contract(
+            {
+                "requiredKeySequence": ["Enter"],
+                "minActionCount": 2,
+                "minPauseActionCount": 1,
+                "minPlannedPauseSeconds": 6.0,
+            },
+            plan,
+            runtime,
+            {},
+            findings,
+        )
+        self.assertTrue(ok)
+        self.assertEqual(evidence["observed"]["actionCount"], 2)
+
     def test_effective_checks_normalize_argv_contract_terms(self) -> None:
         checks = VERIFIER.effective_validation_checks(
             {
@@ -49,6 +238,18 @@ class VerifyTaskTests(unittest.TestCase):
             }
         )
         self.assertTrue({"exit-codes", "target-exit", "real-time-duration"} <= checks)
+
+    def test_effective_checks_normalize_legacy_before_final_key_label(self) -> None:
+        checks = VERIFIER.effective_validation_checks(
+            {
+                "checks": ["before-final-key-presentation"],
+                "presentation": {
+                    "start_at": "tui-ready",
+                    "source_cast_duration_seconds": 15.0,
+                },
+            }
+        )
+        self.assertIn("tui-ready-presentation", checks)
 
     def test_collected_artifact_workspace_wins_over_empty_app(self) -> None:
         required = ["source/session-plan.json", "deliverables/session.mp4"]

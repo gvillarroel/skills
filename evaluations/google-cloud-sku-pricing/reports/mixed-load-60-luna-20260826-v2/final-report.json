@@ -1,0 +1,524 @@
+{
+  "schemaVersion": 1,
+  "source": "harbor",
+  "harborVersion": "0.18.0",
+  "title": "Google Cloud SKU pricing mixed-load 60-question Luna 5.6 evaluation",
+  "generatedAt": "2026-08-26T15:38:54.076248+00:00",
+  "rewardKey": "reward",
+  "passThreshold": 1.0,
+  "comparison": {
+    "enabled": false,
+    "baseline": null,
+    "fairnessBasis": null,
+    "warning": null,
+    "deltas": []
+  },
+  "jobs": [
+    {
+      "label": "google-cloud-sku-pricing-mixed-load-60-luna-20260826-v2",
+      "jobDirectory": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\harbor-jobs\\google-cloud-sku-pricing-mixed-load-60-luna-20260826-v2",
+      "jobId": "6924467e-0fda-40fe-820d-ca34ecfe9a22",
+      "startedAt": "2026-08-26T11:27:21.837268",
+      "finishedAt": "2026-08-26T11:38:36.230474",
+      "harborVersion": "0.18.0",
+      "complete": true,
+      "completenessProblems": [],
+      "skillProvenance": [
+        {
+          "name": "google-cloud-sku-pricing",
+          "digest": "sha256:7e0e2dd6c775e076ae344d3a9fd1cfbb8ceae9e141a65ea0d43f2ea51c0ac14c",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ],
+      "summary": {
+        "requestedTrials": 6,
+        "completedTrials": 6,
+        "passedTrials": 6,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 0,
+        "passRate": 1.0,
+        "reward": {
+          "count": 6,
+          "total": 6.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 6,
+          "total": 452005.0,
+          "average": 75334.16666666667,
+          "stddev": 12166.272236757193,
+          "minimum": 55964.0,
+          "maximum": 90981.0
+        },
+        "agentLatencyMs": {
+          "count": 6,
+          "total": 432973.078,
+          "average": 72162.17966666666,
+          "stddev": 7011.742518472696,
+          "minimum": 65287.429000000004,
+          "maximum": 85882.72899999999
+        },
+        "costUsd": {
+          "count": 6,
+          "total": 0.05631304,
+          "average": 0.009385506666666666,
+          "stddev": 0.0014816924031060639,
+          "minimum": 0.0071418,
+          "maximum": 0.01212152
+        }
+      },
+      "breakdowns": [
+        {
+          "taskName": "parquet-mixed-load-01",
+          "taskChecksum": "d28d6e3d113b05cf7b87321ebc426d54f1585ee0e01e6138531ef0db29daca7d",
+          "agent": "pi",
+          "model": "openai-codex/gpt-5.6-luna",
+          "requestedTrials": 1,
+          "completedTrials": 1,
+          "passedTrials": 1,
+          "verifierFailedTrials": 0,
+          "erroredTrials": 0,
+          "passRate": 1.0,
+          "reward": {
+            "count": 1,
+            "total": 1.0,
+            "average": 1.0,
+            "stddev": 0.0,
+            "minimum": 1.0,
+            "maximum": 1.0
+          },
+          "totalTokens": {
+            "count": 1,
+            "total": 90981.0,
+            "average": 90981.0,
+            "stddev": 0.0,
+            "minimum": 90981.0,
+            "maximum": 90981.0
+          },
+          "agentLatencyMs": {
+            "count": 1,
+            "total": 85882.72899999999,
+            "average": 85882.72899999999,
+            "stddev": 0.0,
+            "minimum": 85882.72899999999,
+            "maximum": 85882.72899999999
+          },
+          "costUsd": {
+            "count": 1,
+            "total": 0.01212152,
+            "average": 0.01212152,
+            "stddev": 0.0,
+            "minimum": 0.01212152,
+            "maximum": 0.01212152
+          }
+        },
+        {
+          "taskName": "parquet-mixed-load-02",
+          "taskChecksum": "c13a10ace943cacad584624ba81e7e82080eb2142ecd4663514331806b8558be",
+          "agent": "pi",
+          "model": "openai-codex/gpt-5.6-luna",
+          "requestedTrials": 1,
+          "completedTrials": 1,
+          "passedTrials": 1,
+          "verifierFailedTrials": 0,
+          "erroredTrials": 0,
+          "passRate": 1.0,
+          "reward": {
+            "count": 1,
+            "total": 1.0,
+            "average": 1.0,
+            "stddev": 0.0,
+            "minimum": 1.0,
+            "maximum": 1.0
+          },
+          "totalTokens": {
+            "count": 1,
+            "total": 82795.0,
+            "average": 82795.0,
+            "stddev": 0.0,
+            "minimum": 82795.0,
+            "maximum": 82795.0
+          },
+          "agentLatencyMs": {
+            "count": 1,
+            "total": 67136.081,
+            "average": 67136.081,
+            "stddev": 0.0,
+            "minimum": 67136.081,
+            "maximum": 67136.081
+          },
+          "costUsd": {
+            "count": 1,
+            "total": 0.008865080000000001,
+            "average": 0.008865080000000001,
+            "stddev": 0.0,
+            "minimum": 0.008865080000000001,
+            "maximum": 0.008865080000000001
+          }
+        },
+        {
+          "taskName": "parquet-mixed-load-03",
+          "taskChecksum": "6651d2b7ca0f91290ff1d9faf9d407394d2eddb63e8df854d137b57589b6fd88",
+          "agent": "pi",
+          "model": "openai-codex/gpt-5.6-luna",
+          "requestedTrials": 1,
+          "completedTrials": 1,
+          "passedTrials": 1,
+          "verifierFailedTrials": 0,
+          "erroredTrials": 0,
+          "passRate": 1.0,
+          "reward": {
+            "count": 1,
+            "total": 1.0,
+            "average": 1.0,
+            "stddev": 0.0,
+            "minimum": 1.0,
+            "maximum": 1.0
+          },
+          "totalTokens": {
+            "count": 1,
+            "total": 55964.0,
+            "average": 55964.0,
+            "stddev": 0.0,
+            "minimum": 55964.0,
+            "maximum": 55964.0
+          },
+          "agentLatencyMs": {
+            "count": 1,
+            "total": 67024.208,
+            "average": 67024.208,
+            "stddev": 0.0,
+            "minimum": 67024.208,
+            "maximum": 67024.208
+          },
+          "costUsd": {
+            "count": 1,
+            "total": 0.0071418,
+            "average": 0.0071418,
+            "stddev": 0.0,
+            "minimum": 0.0071418,
+            "maximum": 0.0071418
+          }
+        },
+        {
+          "taskName": "parquet-mixed-load-04",
+          "taskChecksum": "e797b6dbc25d529508565b1337eed114f06bdfcc5b29b0c1402f1169d60ff374",
+          "agent": "pi",
+          "model": "openai-codex/gpt-5.6-luna",
+          "requestedTrials": 1,
+          "completedTrials": 1,
+          "passedTrials": 1,
+          "verifierFailedTrials": 0,
+          "erroredTrials": 0,
+          "passRate": 1.0,
+          "reward": {
+            "count": 1,
+            "total": 1.0,
+            "average": 1.0,
+            "stddev": 0.0,
+            "minimum": 1.0,
+            "maximum": 1.0
+          },
+          "totalTokens": {
+            "count": 1,
+            "total": 75255.0,
+            "average": 75255.0,
+            "stddev": 0.0,
+            "minimum": 75255.0,
+            "maximum": 75255.0
+          },
+          "agentLatencyMs": {
+            "count": 1,
+            "total": 65287.429000000004,
+            "average": 65287.429000000004,
+            "stddev": 0.0,
+            "minimum": 65287.429000000004,
+            "maximum": 65287.429000000004
+          },
+          "costUsd": {
+            "count": 1,
+            "total": 0.009745080000000001,
+            "average": 0.009745080000000001,
+            "stddev": 0.0,
+            "minimum": 0.009745080000000001,
+            "maximum": 0.009745080000000001
+          }
+        },
+        {
+          "taskName": "parquet-mixed-load-05",
+          "taskChecksum": "ae7cd3758a61a91662e9f9aada58078f43f972d3384cdb38c0103cc3b087a7cd",
+          "agent": "pi",
+          "model": "openai-codex/gpt-5.6-luna",
+          "requestedTrials": 1,
+          "completedTrials": 1,
+          "passedTrials": 1,
+          "verifierFailedTrials": 0,
+          "erroredTrials": 0,
+          "passRate": 1.0,
+          "reward": {
+            "count": 1,
+            "total": 1.0,
+            "average": 1.0,
+            "stddev": 0.0,
+            "minimum": 1.0,
+            "maximum": 1.0
+          },
+          "totalTokens": {
+            "count": 1,
+            "total": 83647.0,
+            "average": 83647.0,
+            "stddev": 0.0,
+            "minimum": 83647.0,
+            "maximum": 83647.0
+          },
+          "agentLatencyMs": {
+            "count": 1,
+            "total": 74895.011,
+            "average": 74895.011,
+            "stddev": 0.0,
+            "minimum": 74895.011,
+            "maximum": 74895.011
+          },
+          "costUsd": {
+            "count": 1,
+            "total": 0.009533960000000001,
+            "average": 0.009533960000000001,
+            "stddev": 0.0,
+            "minimum": 0.009533960000000001,
+            "maximum": 0.009533960000000001
+          }
+        },
+        {
+          "taskName": "parquet-mixed-load-06",
+          "taskChecksum": "7e69bbc8be2ee6176b6e16ee7a64a1aea9f960dcefc2298315a90ca4bb313bd2",
+          "agent": "pi",
+          "model": "openai-codex/gpt-5.6-luna",
+          "requestedTrials": 1,
+          "completedTrials": 1,
+          "passedTrials": 1,
+          "verifierFailedTrials": 0,
+          "erroredTrials": 0,
+          "passRate": 1.0,
+          "reward": {
+            "count": 1,
+            "total": 1.0,
+            "average": 1.0,
+            "stddev": 0.0,
+            "minimum": 1.0,
+            "maximum": 1.0
+          },
+          "totalTokens": {
+            "count": 1,
+            "total": 63363.0,
+            "average": 63363.0,
+            "stddev": 0.0,
+            "minimum": 63363.0,
+            "maximum": 63363.0
+          },
+          "agentLatencyMs": {
+            "count": 1,
+            "total": 72747.62,
+            "average": 72747.62,
+            "stddev": 0.0,
+            "minimum": 72747.62,
+            "maximum": 72747.62
+          },
+          "costUsd": {
+            "count": 1,
+            "total": 0.0089056,
+            "average": 0.0089056,
+            "stddev": 0.0,
+            "minimum": 0.0089056,
+            "maximum": 0.0089056
+          }
+        }
+      ],
+      "trials": [
+        {
+          "id": "1bc9e767-b8f4-4dd5-a1e9-0a7db0f01515",
+          "trialName": "parquet-mixed-load-01__PXD9Fkf",
+          "taskName": "parquet-mixed-load-01",
+          "taskChecksum": "d28d6e3d113b05cf7b87321ebc426d54f1585ee0e01e6138531ef0db29daca7d",
+          "source": "holdout",
+          "agent": "pi",
+          "agentVersion": "0.84.2",
+          "model": "openai-codex/gpt-5.6-luna",
+          "skills": [
+            "google-cloud-sku-pricing"
+          ],
+          "reward": 1.0,
+          "rewards": {
+            "correctness": 1.0,
+            "format": 1.0,
+            "reward": 1.0
+          },
+          "passed": true,
+          "error": null,
+          "tokens": {
+            "input": 88024,
+            "cachedInput": 50176,
+            "output": 2957,
+            "total": 90981
+          },
+          "costUsd": 0.01212152,
+          "agentLatencyMs": 85882.72899999999,
+          "resultPath": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\harbor-jobs\\google-cloud-sku-pricing-mixed-load-60-luna-20260826-v2\\parquet-mixed-load-01__PXD9Fkf\\result.json"
+        },
+        {
+          "id": "a42c0dbc-b328-4446-9ade-2dd98f99105a",
+          "trialName": "parquet-mixed-load-02__QDU8BKr",
+          "taskName": "parquet-mixed-load-02",
+          "taskChecksum": "c13a10ace943cacad584624ba81e7e82080eb2142ecd4663514331806b8558be",
+          "source": "holdout",
+          "agent": "pi",
+          "agentVersion": "0.84.2",
+          "model": "openai-codex/gpt-5.6-luna",
+          "skills": [
+            "google-cloud-sku-pricing"
+          ],
+          "reward": 1.0,
+          "rewards": {
+            "correctness": 1.0,
+            "format": 1.0,
+            "reward": 1.0
+          },
+          "passed": true,
+          "error": null,
+          "tokens": {
+            "input": 80167,
+            "cachedInput": 57344,
+            "output": 2628,
+            "total": 82795
+          },
+          "costUsd": 0.008865080000000001,
+          "agentLatencyMs": 67136.081,
+          "resultPath": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\harbor-jobs\\google-cloud-sku-pricing-mixed-load-60-luna-20260826-v2\\parquet-mixed-load-02__QDU8BKr\\result.json"
+        },
+        {
+          "id": "d3d644a0-6f04-4bd3-8ee3-18a5b90d9ce9",
+          "trialName": "parquet-mixed-load-03__7gGR34Z",
+          "taskName": "parquet-mixed-load-03",
+          "taskChecksum": "6651d2b7ca0f91290ff1d9faf9d407394d2eddb63e8df854d137b57589b6fd88",
+          "source": "holdout",
+          "agent": "pi",
+          "agentVersion": "0.84.2",
+          "model": "openai-codex/gpt-5.6-luna",
+          "skills": [
+            "google-cloud-sku-pricing"
+          ],
+          "reward": 1.0,
+          "rewards": {
+            "correctness": 1.0,
+            "format": 1.0,
+            "reward": 1.0
+          },
+          "passed": true,
+          "error": null,
+          "tokens": {
+            "input": 53103,
+            "cachedInput": 38400,
+            "output": 2861,
+            "total": 55964
+          },
+          "costUsd": 0.0071418,
+          "agentLatencyMs": 67024.208,
+          "resultPath": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\harbor-jobs\\google-cloud-sku-pricing-mixed-load-60-luna-20260826-v2\\parquet-mixed-load-03__7gGR34Z\\result.json"
+        },
+        {
+          "id": "2a94dad4-d28e-4186-85e1-cc7ef62634d2",
+          "trialName": "parquet-mixed-load-04__THJAjKF",
+          "taskName": "parquet-mixed-load-04",
+          "taskChecksum": "e797b6dbc25d529508565b1337eed114f06bdfcc5b29b0c1402f1169d60ff374",
+          "source": "holdout",
+          "agent": "pi",
+          "agentVersion": "0.84.2",
+          "model": "openai-codex/gpt-5.6-luna",
+          "skills": [
+            "google-cloud-sku-pricing"
+          ],
+          "reward": 1.0,
+          "rewards": {
+            "correctness": 1.0,
+            "format": 1.0,
+            "reward": 1.0
+          },
+          "passed": true,
+          "error": null,
+          "tokens": {
+            "input": 72543,
+            "cachedInput": 44544,
+            "output": 2712,
+            "total": 75255
+          },
+          "costUsd": 0.009745080000000001,
+          "agentLatencyMs": 65287.429000000004,
+          "resultPath": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\harbor-jobs\\google-cloud-sku-pricing-mixed-load-60-luna-20260826-v2\\parquet-mixed-load-04__THJAjKF\\result.json"
+        },
+        {
+          "id": "f12d6908-f76d-4b48-a6b5-b44e059541a6",
+          "trialName": "parquet-mixed-load-05__cbyz8aK",
+          "taskName": "parquet-mixed-load-05",
+          "taskChecksum": "ae7cd3758a61a91662e9f9aada58078f43f972d3384cdb38c0103cc3b087a7cd",
+          "source": "holdout",
+          "agent": "pi",
+          "agentVersion": "0.84.2",
+          "model": "openai-codex/gpt-5.6-luna",
+          "skills": [
+            "google-cloud-sku-pricing"
+          ],
+          "reward": 1.0,
+          "rewards": {
+            "correctness": 1.0,
+            "format": 1.0,
+            "reward": 1.0
+          },
+          "passed": true,
+          "error": null,
+          "tokens": {
+            "input": 80797,
+            "cachedInput": 55808,
+            "output": 2850,
+            "total": 83647
+          },
+          "costUsd": 0.009533960000000001,
+          "agentLatencyMs": 74895.011,
+          "resultPath": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\harbor-jobs\\google-cloud-sku-pricing-mixed-load-60-luna-20260826-v2\\parquet-mixed-load-05__cbyz8aK\\result.json"
+        },
+        {
+          "id": "108a289e-1d94-4f8a-9515-fc27be57ee96",
+          "trialName": "parquet-mixed-load-06__hrR5Foj",
+          "taskName": "parquet-mixed-load-06",
+          "taskChecksum": "7e69bbc8be2ee6176b6e16ee7a64a1aea9f960dcefc2298315a90ca4bb313bd2",
+          "source": "holdout",
+          "agent": "pi",
+          "agentVersion": "0.84.2",
+          "model": "openai-codex/gpt-5.6-luna",
+          "skills": [
+            "google-cloud-sku-pricing"
+          ],
+          "reward": 1.0,
+          "rewards": {
+            "correctness": 1.0,
+            "format": 1.0,
+            "reward": 1.0
+          },
+          "passed": true,
+          "error": null,
+          "tokens": {
+            "input": 60218,
+            "cachedInput": 38400,
+            "output": 3145,
+            "total": 63363
+          },
+          "costUsd": 0.0089056,
+          "agentLatencyMs": 72747.62,
+          "resultPath": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\harbor-jobs\\google-cloud-sku-pricing-mixed-load-60-luna-20260826-v2\\parquet-mixed-load-06__hrR5Foj\\result.json"
+        }
+      ]
+    }
+  ]
+}

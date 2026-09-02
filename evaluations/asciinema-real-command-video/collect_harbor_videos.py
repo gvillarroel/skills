@@ -70,6 +70,16 @@ def main() -> int:
         job_root = job_root_value.resolve()
         for trial in sorted(path for path in job_root.iterdir() if path.is_dir()):
             task_id = trial.name.split("__", 1)[0]
+            result_path = trial / "result.json"
+            if result_path.is_file():
+                try:
+                    trial_result = json.loads(result_path.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    trial_result = {}
+                if isinstance(trial_result, dict) and isinstance(
+                    trial_result.get("task_name"), str
+                ):
+                    task_id = trial_result["task_name"]
             if task_id in seen:
                 raise SystemExit(f"Duplicate task ID across jobs: {task_id}")
             source = trial / "artifacts" / "deliverables" / "session.mp4"

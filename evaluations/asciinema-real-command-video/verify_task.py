@@ -41,6 +41,10 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def sha256_text(value: str) -> str:
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
 def asciicast_text(path: Path, findings: list[str]) -> tuple[str, dict[str, Any]]:
     try:
         lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
@@ -170,6 +174,65 @@ def executable_basename(value: Any) -> str:
     return str(value or "").replace("\\", "/").rsplit("/", 1)[-1].casefold()
 
 
+def plan_tui_sessions(plan: dict[str, Any]) -> list[dict[str, Any]]:
+    sessions = plan.get("tui_sessions")
+    if not isinstance(sessions, list):
+        return []
+    return [session for session in sessions if isinstance(session, dict)]
+
+
+def flattened_plan_steps(plan: dict[str, Any]) -> list[dict[str, Any]]:
+    sessions = plan_tui_sessions(plan)
+    if sessions:
+        return [
+            step
+            for session in sessions
+            for step in session.get("steps", [])
+            if isinstance(step, dict)
+        ]
+    steps = plan.get("steps")
+    return [step for step in steps if isinstance(step, dict)] if isinstance(steps, list) else []
+
+
+def disclosed_plan_mode(plan: dict[str, Any]) -> str:
+    if plan_tui_sessions(plan):
+        return "tui-sequence"
+    return "tui" if isinstance(plan.get("interaction"), dict) else "argv"
+
+
+def sequence_target_evidence_ok(
+    contract: dict[str, Any], payload: dict[str, Any]
+) -> bool:
+    targets = payload.get("targets") if isinstance(payload.get("targets"), list) else []
+    expected_names = contract.get("targetNames") or []
+    executable_sequence = contract.get("executableSequence") or []
+    if not (
+        len(targets) == len(expected_names) == len(executable_sequence)
+        and len(targets) >= 2
+    ):
+        return False
+    identities: set[tuple[str, str]] = set()
+    for target, expected_name, allowed_executables in zip(
+        targets, expected_names, executable_sequence, strict=True
+    ):
+        if not isinstance(target, dict):
+            return False
+        allowed = {str(item).casefold() for item in allowed_executables}
+        resolved = str(target.get("resolved_executable") or "")
+        digest = str(target.get("executable_sha256") or "")
+        if not (
+            target.get("name") == expected_name
+            and executable_basename(resolved) in allowed
+            and re.fullmatch(r"[0-9a-f]{64}", digest)
+            and target.get("version_exit_code") == 0
+            and str(target.get("version_output") or "").strip()
+            and target.get("final_exit_code") == 0
+        ):
+            return False
+        identities.add((resolved.casefold(), digest))
+    return len(identities) >= 2
+
+
 def media_command(name: str) -> str:
     """Resolve native Unix or Windows-interoperability media commands."""
     for candidate in (name, f"{name}.exe"):
@@ -249,6 +312,16 @@ def runtime_exit_ok(
     target: dict[str, Any],
     prompt_count: int,
 ) -> bool:
+    if mode == "tui-sequence":
+        targets = runtime.get("targets") if isinstance(runtime.get("targets"), list) else []
+        return bool(
+            target.get("final_exit_code") == 0
+            and len(targets) >= 2
+            and all(
+                isinstance(item, dict) and item.get("final_exit_code") == 0
+                for item in targets
+            )
+        )
     if mode == "tui":
         return target.get("final_exit_code") == 0
     steps = runtime.get("steps") if isinstance(runtime.get("steps"), list) else []
@@ -268,7 +341,148 @@ def effective_validation_checks(validation: dict[str, Any]) -> set[str]:
         checks.add("target-exit")
     if float(nested(validation, "presentation", "source_cast_duration_seconds") or 0.0) > 0:
         checks.add("real-time-duration")
+    if (
+        nested(validation, "presentation", "start_at") == "tui-ready"
+        and "before-final-key-presentation" in checks
+    ):
+        # Older validator builds fully verified the ready-marker trim for this
+        # presentation mode but omitted its descriptive check label.
+        checks.add("tui-ready-presentation")
     return checks
+
+
+def verify_complexity_contract(
+    contract: dict[str, Any],
+    plan: dict[str, Any],
+    runtime: dict[str, Any],
+    manifest: dict[str, Any],
+    findings: list[str],
+) -> tuple[bool, dict[str, Any]]:
+    """Verify optional long-form and interaction-sequence requirements.
+
+    Version-one contracts omit these fields and therefore remain valid. New
+    complex cohorts can independently require authentic source duration,
+    explicit dwell time, and exact prompt/text/key sequences.
+    """
+
+    plan_steps = flattened_plan_steps(plan)
+    runtime_steps = (
+        runtime.get("steps") if isinstance(runtime.get("steps"), list) else []
+    )
+    prompts: list[str] = []
+    text_actions: list[str] = []
+    key_actions: list[str] = []
+    action_types: list[str] = []
+    pause_seconds = 0.0
+    pause_action_count = 0
+    runtime_matches_plan = len(runtime_steps) == len(plan_steps)
+
+    for step_index, planned_step in enumerate(plan_steps):
+        observed_step = runtime_steps[step_index] if step_index < len(runtime_steps) else {}
+        if "prompt" in planned_step:
+            prompt = str(planned_step.get("prompt") or "")
+            prompts.append(prompt)
+            if observed_step.get("prompt_sha256") != sha256_text(prompt):
+                runtime_matches_plan = False
+            continue
+
+        planned_actions = (
+            planned_step.get("actions")
+            if isinstance(planned_step.get("actions"), list)
+            else []
+        )
+        observed_actions = (
+            observed_step.get("actions")
+            if isinstance(observed_step.get("actions"), list)
+            else []
+        )
+        if len(observed_actions) != len(planned_actions):
+            runtime_matches_plan = False
+        for action_index, planned_action in enumerate(planned_actions):
+            action_type = str(planned_action.get("type") or "")
+            action_types.append(action_type)
+            observed_action = (
+                observed_actions[action_index]
+                if action_index < len(observed_actions)
+                and isinstance(observed_actions[action_index], dict)
+                else {}
+            )
+            if observed_action.get("type") != action_type:
+                runtime_matches_plan = False
+            if action_type == "text":
+                text_value = str(planned_action.get("text") or "")
+                text_actions.append(text_value)
+                if observed_action.get("text_sha256") != sha256_text(text_value):
+                    runtime_matches_plan = False
+            elif action_type == "key":
+                key_value = str(planned_action.get("key") or "")
+                key_actions.append(key_value)
+                if observed_action.get("key") != key_value:
+                    runtime_matches_plan = False
+            elif action_type == "pause":
+                seconds = float(planned_action.get("seconds") or 0.0)
+                pause_seconds += seconds
+                pause_action_count += 1
+                try:
+                    observed_seconds = float(observed_action.get("seconds"))
+                except (TypeError, ValueError):
+                    observed_seconds = -1.0
+                if not math.isclose(
+                    observed_seconds, seconds, rel_tol=0.0, abs_tol=0.001
+                ):
+                    runtime_matches_plan = False
+
+    requirements = {
+        "requiredPromptSequence": contract.get("requiredPromptSequence") or [],
+        "requiredTextSequence": contract.get("requiredTextSequence") or [],
+        "requiredKeySequence": contract.get("requiredKeySequence") or [],
+        "minActionCount": int(contract.get("minActionCount") or 0),
+        "minPauseActionCount": int(contract.get("minPauseActionCount") or 0),
+        "minPlannedPauseSeconds": float(contract.get("minPlannedPauseSeconds") or 0.0),
+        "minSourceDurationSeconds": float(contract.get("minSourceDurationSeconds") or 0.0),
+    }
+    source_duration = float(
+        nested(manifest, "presentation", "source_cast_duration_seconds")
+        or nested(manifest, "recording", "duration_seconds")
+        or 0.0
+    )
+    checks = {
+        "runtimeMatchesPlan": runtime_matches_plan,
+        "promptSequence": prompts == requirements["requiredPromptSequence"]
+        if requirements["requiredPromptSequence"]
+        else True,
+        "textSequence": text_actions == requirements["requiredTextSequence"]
+        if requirements["requiredTextSequence"]
+        else True,
+        "keySequence": key_actions == requirements["requiredKeySequence"]
+        if requirements["requiredKeySequence"]
+        else True,
+        "actionCount": len(action_types) >= requirements["minActionCount"],
+        "pauseActionCount": pause_action_count
+        >= requirements["minPauseActionCount"],
+        "plannedPauseSeconds": pause_seconds
+        >= requirements["minPlannedPauseSeconds"],
+        "sourceDuration": source_duration
+        >= requirements["minSourceDurationSeconds"],
+    }
+    for name, passed in checks.items():
+        if not passed:
+            findings.append(f"complex interaction requirement failed: {name}")
+    evidence = {
+        "requirements": requirements,
+        "observed": {
+            "prompts": prompts,
+            "textSequence": text_actions,
+            "keySequence": key_actions,
+            "actionTypes": action_types,
+            "actionCount": len(action_types),
+            "pauseActionCount": pause_action_count,
+            "plannedPauseSeconds": round(pause_seconds, 3),
+            "sourceDurationSeconds": source_duration,
+        },
+        "checks": checks,
+    }
+    return all(checks.values()), evidence
 
 
 def verify() -> dict[str, Any]:
@@ -314,30 +528,62 @@ def verify() -> dict[str, Any]:
         [cast_text, json.dumps(runtime, ensure_ascii=False), json.dumps(plan, ensure_ascii=False)]
     ).casefold()
 
-    plan_mode = "tui" if isinstance(plan.get("interaction"), dict) else "argv"
-    plan_steps = plan.get("steps") if isinstance(plan.get("steps"), list) else []
+    plan_mode = disclosed_plan_mode(plan)
+    plan_steps = flattened_plan_steps(plan)
     plan_ok = bool(
         plan
         and plan.get("schema_version") == 1
         and plan_mode == contract["mode"]
         and len(plan_steps) == contract["promptCount"]
-        and nested(plan, "target", "name") == contract["targetName"]
         and int(nested(plan, "render", "fps") or 0) == contract["fps"]
     )
+    if plan_mode == "tui-sequence":
+        sessions = plan_tui_sessions(plan)
+        expected_session_ids = contract.get("sessionIds") or []
+        expected_target_names = contract.get("targetNames") or []
+        executable_sequence = contract.get("executableSequence") or []
+        plan_ok = plan_ok and bool(
+            len(sessions)
+            == len(expected_session_ids)
+            == len(expected_target_names)
+            == len(executable_sequence)
+            and [session.get("id") for session in sessions] == expected_session_ids
+            and [nested(session, "target", "name") for session in sessions]
+            == expected_target_names
+            and all(
+                executable_basename(nested(session, "target", "executable"))
+                in {str(item).casefold() for item in allowed}
+                for session, allowed in zip(
+                    sessions, executable_sequence, strict=True
+                )
+            )
+        )
+    else:
+        plan_ok = plan_ok and nested(plan, "target", "name") == contract["targetName"]
     if not plan_ok:
         findings.append("session plan does not match the disclosed task contract")
 
     target = manifest.get("target") if isinstance(manifest.get("target"), dict) else {}
     executable_names = {item.casefold() for item in contract["executableNames"]}
-    target_ok = bool(
-        target.get("name") == contract["targetName"]
-        and executable_basename(target.get("resolved_executable")) in executable_names
-        and runtime_exit_ok(
-            contract["mode"], runtime, target, contract["promptCount"]
+    if contract["mode"] == "tui-sequence":
+        target_ok = bool(
+            target.get("name") == contract["targetName"]
+            and runtime_exit_ok(
+                contract["mode"], runtime, target, contract["promptCount"]
+            )
+            and sequence_target_evidence_ok(contract, manifest)
+            and sequence_target_evidence_ok(contract, runtime)
         )
-        and target.get("version_exit_code") == 0
-        and str(target.get("version_output") or "").strip()
-    )
+    else:
+        target_ok = bool(
+            target.get("name") == contract["targetName"]
+            and executable_basename(target.get("resolved_executable")) in executable_names
+            and runtime_exit_ok(
+                contract["mode"], runtime, target, contract["promptCount"]
+            )
+            and target.get("version_exit_code") == 0
+            and str(target.get("version_output") or "").strip()
+        )
     if not target_ok:
         findings.append("resolved target identity, version, or final exit status is incorrect")
 
@@ -352,6 +598,10 @@ def verify() -> dict[str, Any]:
         and validation_exit_ok
         and required_checks.issubset(validation_checks)
     )
+    if contract["mode"] == "tui-sequence":
+        validation_ok = validation_ok and sequence_target_evidence_ok(
+            contract, validation
+        )
     if not validation_ok:
         findings.append("independent validation status or required checks are incomplete")
 
@@ -420,6 +670,38 @@ def verify() -> dict[str, Any]:
         )
         if not interaction_ok:
             findings.append("real TUI step/process evidence is incomplete")
+    elif contract["mode"] == "tui-sequence":
+        runtime_steps = runtime.get("steps") if isinstance(runtime.get("steps"), list) else []
+        runtime_sessions = (
+            runtime.get("tui_sessions")
+            if isinstance(runtime.get("tui_sessions"), list)
+            else []
+        )
+        expected_session_ids = contract.get("sessionIds") or []
+        interaction_ok = bool(
+            runtime.get("status") == "passed"
+            and runtime.get("mode") == "tui-sequence"
+            and len(runtime_steps) == contract["promptCount"]
+            and len(runtime_sessions) == len(expected_session_ids)
+            and [session.get("id") for session in runtime_sessions]
+            == expected_session_ids
+            and all(
+                isinstance(session, dict)
+                and nested(session, "interaction", "target_status", "exit_code")
+                == 0
+                and all(
+                    isinstance(step, dict) and step.get("status") == "passed"
+                    for step in session.get("steps", [])
+                )
+                for session in runtime_sessions
+            )
+        )
+        if not interaction_ok:
+            findings.append("real multi-TUI session/process evidence is incomplete")
+
+    complexity_ok, complexity_evidence = verify_complexity_contract(
+        contract, plan, runtime, manifest, findings
+    )
 
     output_ok = True
     for term in contract["requiredCastTerms"]:
@@ -444,6 +726,7 @@ def verify() -> dict[str, Any]:
                 visual_ok,
                 presentation_ok,
                 interaction_ok,
+                complexity_ok,
                 output_ok,
             )
         )
@@ -457,6 +740,7 @@ def verify() -> dict[str, Any]:
         "visual": 1.0 if visual_ok else 0.0,
         "presentation": 1.0 if presentation_ok else 0.0,
         "interaction": 1.0 if interaction_ok else 0.0,
+        "complexity": 1.0 if complexity_ok else 0.0,
         "output": 1.0 if output_ok else 0.0,
     }
     return {
@@ -471,6 +755,7 @@ def verify() -> dict[str, Any]:
         "lastFrame": last_frame,
         "target": target,
         "validationChecks": sorted(validation_checks),
+        "complexityEvidence": complexity_evidence,
         "authorizedMutation": contract["authorizedMutation"],
     }
 

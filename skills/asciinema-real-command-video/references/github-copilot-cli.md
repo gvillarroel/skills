@@ -41,7 +41,7 @@ Running `copilot` without `-p` opens the authentic interactive interface. The em
 
 The controller types every prompt character into the TUI, pauses with the complete text visible, sends `Enter`, waits until `Working ... esc interrupt` disappears and the empty editor is stable, then types the next prompt. After the last response, the `exit-text` shutdown types `/exit`, presses Enter, and records Copilot's own session summary and process status. All prompts therefore share one real Copilot process and conversational context. Do not convert Copilot prompts to explicit actions unless the user requested a nonstandard editor-key sequence.
 
-Do not add `--yolo`, `--allow-all`, or broad tool permissions. If a prompt needs tools, add only explicit permission flags authorized for this recording. Keep `--no-custom-instructions` when the video must demonstrate only the reviewed prompts rather than ambient repository instructions. A real Copilot run can consume the signed-in account's usage allowance. Disclose this and never delete the attempt ledger or rerecord the same plan to improve an already captured result.
+Do not add `--yolo`, `--allow-all`, or broad tool permissions. If a prompt needs tools, add only explicit permission flags authorized for this recording. Keep `--no-custom-instructions` when the video must demonstrate only the reviewed prompts rather than ambient repository instructions. A real Copilot run can consume the signed-in account's usage allowance. Disclose this and never delete the attempt ledger or rerecord the requested deliverable under the same or an alternate plan/output name to improve an already captured result.
 
 ## Non-interactive alternative
 

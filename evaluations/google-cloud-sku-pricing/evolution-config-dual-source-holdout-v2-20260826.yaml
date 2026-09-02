@@ -1,0 +1,52 @@
+schemaVersion: 1
+
+evolution:
+  id: google-cloud-sku-pricing-dual-source-holdout-v2-20260826
+  baselineSkill: ../../skills/google-cloud-sku-pricing
+  outputDir: ../runs/google-cloud-sku-pricing-dual-source-evolution-20260826-v2
+  objective: >-
+    Improve exact source-aware reliability for Google Cloud pricing from
+    cloud_pricing_export or a complete Parquet fallback, preserving every
+    helper-returned decimal verbatim and retaining documented account-currency,
+    region, tier, unit, model, and effective-time dimensions.
+  background: >-
+    Change only transferable SKILL.md instructions. Never add task literals,
+    SKU IDs, prompt phrases, SQL verifier expressions, prices, counts,
+    canonical answers, or holdout facts. Scripts and references are frozen.
+    The v2 holdout is disjoint from every released prompt and named SKU and is
+    final validation only.
+
+harbor:
+  agent:
+    name: evaluations.google-cloud-sku-pricing.harbor_pi_agent:PricingWorkspaceWindowsPi
+    model: openai-codex/gpt-5.4-mini
+    kwargs:
+      version: "0.84.2"
+      expected_version: "0.84.2"
+      wrapper_path: C:/Users/villa/dev/skills/evaluations/google-cloud-sku-pricing/harbor_pi_wrapper.py
+      thinking: high
+  environment: evaluations.google-cloud-sku-pricing.harbor_wsl_environment:PricingWorkspaceWSLEnvironment
+  concurrency: 2
+  rewardKey: reward
+  holdoutAttempts: 2
+  requiredEnv: []
+
+gepa:
+  reflectionModel: local-pi/openai-codex-gpt-5.4-mini
+  reflectionMinibatchSize: 2
+  maxMetricCalls: 12
+  maxCandidateProposals: 2
+  seed: 20260828
+
+splits:
+  train:
+    - ../runs/google-cloud-sku-pricing-dual-source-20260826-tasks/train
+  validation:
+    - ../runs/google-cloud-sku-pricing-dual-source-20260826-tasks/validation
+  holdout:
+    - ../runs/google-cloud-sku-pricing-dual-source-20260826-holdout-v2-tasks/holdout
+
+promotion:
+  minimumMeanGain: 0.001
+  allowTaskRegressions: false
+  requireNoErrors: true

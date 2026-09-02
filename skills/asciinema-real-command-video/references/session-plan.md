@@ -8,11 +8,11 @@ Use one JSON plan as the reviewed source for target identity, prompt order, inte
 - `title`: non-empty recording title.
 - `working_directory`: existing directory, resolved relative to the plan file when not absolute.
 - `declared_scope`: plain-English statement of authorized behavior. This is evidence, not a sandbox; enforce restrictions with the target's own permission flags.
-- `target`: target identity object.
 - `terminal`: terminal geometry object.
 - `render`: deterministic render settings.
-- `steps`: one to fifty ordered prompt or explicit-action steps.
-- `interaction`: optional TUI controller. Include it when prompts must be typed into one persistent interactive process; omit it for direct-argv mode.
+- Choose exactly one execution shape:
+  - `target` plus `steps`, and optional `interaction`, for direct-argv or one TUI.
+  - `tui_sessions` for two to eight sequential real TUIs in one recording. Omit top-level `target`, `steps`, and `interaction` in this shape.
 
 ## Target
 
@@ -49,7 +49,7 @@ Use this mode when the video must show a real application UI, prompt typing, Ent
 }
 ```
 
-- `launch_args` starts the real target exactly once. It may contain `{run_id}` but never `{prompt}`.
+- `launch_args` starts the real target exactly once. It may contain `{run_id}` but never `{prompt}`. For a native Windows `.exe` that must receive the real WSL working directory as a short Windows path, it may also contain `{windows_working_directory}`. The token expands only while a verified temporary `subst.exe` mapping is active; it includes the trailing slash, so append relative children directly, for example `{windows_working_directory}.git/config`.
 - `typing_interval_seconds` is the delay after every Unicode character. Use roughly `0.025` to `0.06` for readable typing.
 - `pre_submit_pause_seconds` leaves the complete prompt visible before the controller sends a real `Enter` key.
 - `ready_pattern` must match the target's empty input editor. Anchor it narrowly so output text cannot satisfy it accidentally.
@@ -111,7 +111,64 @@ ends the process and command-key TUIs that quit with `q` without Enter.
 Read [interaction-recipes.md](interaction-recipes.md) for fzf, Television,
 lazygit, and fixed PowerShell pipeline plans.
 
+## Sequential multi-TUI mode
+
+Use `tui_sessions` only when one cast and MP4 must visibly exercise more than
+one authentic terminal application. Each entry contains its own `id`,
+`target`, `interaction`, and `steps` using the same single-TUI contracts above:
+
+```json
+{
+  "tui_sessions": [
+    {
+      "id": "search-with-fzf",
+      "target": {
+        "name": "fzf",
+        "executable": "fzf.exe",
+        "version_args": ["--version"]
+      },
+      "interaction": {"mode": "tui", "launch_args": [], "...": "..."},
+      "steps": [{"id": "select-alpha", "actions": [], "...": "..."}]
+    },
+    {
+      "id": "search-with-television",
+      "target": {
+        "name": "Television",
+        "executable": "tv.exe",
+        "version_args": ["--version"]
+      },
+      "interaction": {"mode": "tui", "launch_args": [], "...": "..."},
+      "steps": [{"id": "select-beta", "actions": [], "...": "..."}]
+    }
+  ]
+}
+```
+
+- Declare two to eight sessions and at least two distinct executable strings.
+  Runtime validation also requires at least two distinct resolved executable
+  identities and hashes.
+- Use unique lowercase hyphen-case session IDs and globally unique step IDs.
+- The supervisor launches sessions in array order. A session must reach its
+  real ready gate, complete every action, and exit with an allowed status
+  before the next start gate opens.
+- The outer recorder, tmux client, run UUID, cast, runtime report, attempt
+  ledger, MP4, and manifest remain singular. Each target has separate version,
+  executable hash, launch argv, ready, action, exit, and optional Windows path
+  bridge evidence.
+- `render.start_at: "tui-ready"` refers to the first target. `render.end_at:
+  "before-final-key"` refers only to the final target and requires that final
+  session to satisfy the normal target-exit/final-key contract. With
+  `end_at: "target-exit"`, the MP4 ends at the final alternate-screen restore,
+  not an intermediate handoff.
+
+Read [multi-tui-sequences.md](multi-tui-sequences.md) before recording and
+start from `assets/templates/multi-tui-session-plan.json`.
+
 ## Direct-argv mode
+
+Start from `assets/templates/direct-argv-session-plan.json`. Omit the entire
+top-level `interaction` key in this mode; `"interaction": null` and an empty
+object are invalid because the presence of that key selects the TUI contract.
 
 ```json
 {
@@ -128,7 +185,7 @@ lazygit, and fixed PowerShell pipeline plans.
 - Put the exact user-approved text in `prompt`.
 - `args` is an argv array, not a command string. It must contain `{prompt}` exactly once. The runner replaces it inside that single argument, so prompt punctuation cannot become shell syntax.
 - `{run_id}` is optional and expands to the recording UUID. Reuse it in each step when the target supports explicit session IDs.
-- Only `{prompt}` and `{run_id}` are substituted. Other braces remain literal, so Python f-strings, JSON snippets, and similar argv content are preserved unchanged.
+- In direct-argv step arguments, only `{prompt}` and `{run_id}` are substituted. Other braces remain literal, so Python f-strings, JSON snippets, and similar argv content are preserved unchanged. `{windows_working_directory}` is reserved for TUI `launch_args`.
 - Set a finite `timeout_seconds` for each real process.
 - Use `pause_after_seconds` only for watchability; it does not alter target output.
 - List every acceptable process status in `expected_exit_codes`. Use `[0]` for normal prompt sessions.
@@ -137,12 +194,17 @@ Do not assume any other placeholder is expanded. Do not put secrets in prompts o
 
 ## One-record claim
 
-After preflight passes, `record` atomically creates an immutable hidden ledger
-next to the plan, named `.<plan-stem>.recording-attempt.json`. A second record
-transaction for that plan fails even if previous output paths were moved or
-deleted. Preserve the ledger and failed evidence. A genuinely new recording
-session needs a new reviewed plan path; never copy or rename a plan merely to
-turn a failed trial into a pass.
+For new work, initialize one directory with `init-video`, preflight it with
+`preflight-video`, and capture it with `record-video`. The recording command
+derives every output path from the directory and atomically creates the hidden
+`.session-plan.recording-attempt.json` ledger beside `session-plan.json`. A
+second recording transaction fails even if artifacts were moved or deleted.
+Preserve the directory and failed evidence. The one-attempt contract is
+broader than this file guard: a different plan path, directory, output name,
+or launch adapter does not authorize another attempt for the same
+user-requested deliverable. Stop after a failed recording. Only a later user
+request or explicit authorization may define a genuinely new recording
+session. See [video-bundles.md](video-bundles.md) for the fixed layout.
 
 ## Terminal and render settings
 

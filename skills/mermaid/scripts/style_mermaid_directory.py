@@ -90,6 +90,16 @@ LEGACY_COLORSET_DIRECTIVE_RE = re.compile(
     r"^\s*%%\{init:\s*\{.*?\"(?:mermaid-colorset-styler|mermaid)\".*?\}\}%%\s*$"
 )
 FENCE_RE = re.compile(r"(?P<open>^[ \t]*```[ \t]*mermaid[^\n]*\n)(?P<body>.*?)(?P<close>^[ \t]*```[ \t]*$)", re.MULTILINE | re.DOTALL)
+ACC_TITLE_RE = re.compile(
+    r"^[ \t]*accTitle[ \t]*:[ \t]*(?P<value>\S.*?)[ \t]*$", re.MULTILINE
+)
+ACC_DESCR_LINE_RE = re.compile(
+    r"^[ \t]*accDescr[ \t]*:[ \t]*(?P<value>\S.*?)[ \t]*$", re.MULTILINE
+)
+ACC_DESCR_BLOCK_RE = re.compile(
+    r"^[ \t]*accDescr[ \t]*\{(?P<value>.*?)^[ \t]*\}[ \t]*$",
+    re.MULTILINE | re.DOTALL,
+)
 CLASS_DEF_RE = re.compile(r"^\s*classDef\s+(?P<classes>[A-Za-z0-9_, -]+)\s+.*$", re.MULTILINE)
 TRIPLE_CLASS_RE = re.compile(r":::\s*(?P<classes>[A-Za-z0-9_ -]+)")
 CLASS_LINE_RE = re.compile(r"^\s*class\s+[^;\n]+?\s+(?P<classes>[A-Za-z0-9_ -]+)\s*;?\s*$", re.MULTILINE)
@@ -448,6 +458,8 @@ class DiagramResult:
     family: str
     changed: bool
     has_style: bool
+    has_accessible_title: bool
+    has_accessible_description: bool
     referenced_classes: list[str]
     inserted_class_defs: list[str]
     skipped_class_defs: list[str]
@@ -901,6 +913,17 @@ def split_frontmatter(source: str) -> tuple[str, str]:
     return "", source
 
 
+def accessibility_metadata(source: str) -> tuple[bool, bool]:
+    _, body = split_frontmatter(source)
+    title_match = ACC_TITLE_RE.search(body)
+    description_match = ACC_DESCR_LINE_RE.search(body) or ACC_DESCR_BLOCK_RE.search(body)
+    has_title = bool(title_match and title_match.group("value").strip())
+    has_description = bool(
+        description_match and description_match.group("value").strip()
+    )
+    return has_title, has_description
+
+
 def strip_generated_frontmatter(frontmatter: str) -> str:
     if not frontmatter:
         return ""
@@ -1250,11 +1273,14 @@ def style_mermaid_block(body: str, colorset: str) -> tuple[str, dict[str, object
         ) + "\n"
     if original.endswith("\n") and not styled.endswith("\n"):
         styled += "\n"
+    has_accessible_title, has_accessible_description = accessibility_metadata(styled)
     return styled, {
         "diagramType": declaration,
         "family": family,
         "changed": styled != original,
         "hasStyle": f'colorset: "{colorset}"' in styled and 'theme: "base"' in styled,
+        "hasAccessibleTitle": has_accessible_title,
+        "hasAccessibleDescription": has_accessible_description,
         "referencedClasses": referenced,
         "insertedClassDefs": inserted_classes,
         "skippedClassDefs": skipped_classes,
@@ -1288,6 +1314,8 @@ def style_file(path: Path, root: Path, colorset: str) -> tuple[str, list[Diagram
                 family=str(meta["family"]),
                 changed=bool(meta["changed"]),
                 has_style=bool(meta["hasStyle"]),
+                has_accessible_title=bool(meta["hasAccessibleTitle"]),
+                has_accessible_description=bool(meta["hasAccessibleDescription"]),
                 referenced_classes=list(meta["referencedClasses"]),
                 inserted_class_defs=list(meta["insertedClassDefs"]),
                 skipped_class_defs=list(meta["skippedClassDefs"]),
@@ -1311,6 +1339,8 @@ def style_file(path: Path, root: Path, colorset: str) -> tuple[str, list[Diagram
                 family=str(meta["family"]),
                 changed=bool(meta["changed"]),
                 has_style=bool(meta["hasStyle"]),
+                has_accessible_title=bool(meta["hasAccessibleTitle"]),
+                has_accessible_description=bool(meta["hasAccessibleDescription"]),
                 referenced_classes=list(meta["referencedClasses"]),
                 inserted_class_defs=list(meta["insertedClassDefs"]),
                 skipped_class_defs=list(meta["skippedClassDefs"]),
@@ -1370,8 +1400,20 @@ def normalize_routing_metadata(
     return path if changed else None, rendered, status
 
 
-def build_report(root: Path, colorset: str, diagrams: list[DiagramResult], changed_files: list[str], check: bool) -> dict[str, object]:
+def build_report(
+    root: Path,
+    colorset: str,
+    diagrams: list[DiagramResult],
+    changed_files: list[str],
+    check: bool,
+    require_accessibility: bool = False,
+) -> dict[str, object]:
     missing = [d for d in diagrams if not d.has_style]
+    missing_accessibility = [
+        d
+        for d in diagrams
+        if not (d.has_accessible_title and d.has_accessible_description)
+    ]
     declarations_seen = sorted({d.diagram_type for d in diagrams})
     families_seen = sorted({d.family for d in diagrams})
     declaration_counts = {declaration: 0 for declaration in SUPPORTED_DECLARATIONS}
@@ -1394,10 +1436,28 @@ def build_report(root: Path, colorset: str, diagrams: list[DiagramResult], chang
         "mermaidVersion": MERMAID_VERSION,
         "diagramTypeManifest": "references/diagram-types.json",
         "check": check,
+        "requireAccessibility": require_accessibility,
         "diagramCount": len(diagrams),
         "changedFileCount": len(changed_files),
         "changedFiles": changed_files,
         "missingStyleCount": len(missing),
+        "accessibleDiagramCount": len(diagrams) - len(missing_accessibility),
+        "missingAccessibilityCount": len(missing_accessibility),
+        "missingAccessibility": [
+            {
+                "file": diagram.file,
+                "blockIndex": diagram.block_index,
+                "missing": [
+                    name
+                    for name, present in (
+                        ("accTitle", diagram.has_accessible_title),
+                        ("accDescr", diagram.has_accessible_description),
+                    )
+                    if not present
+                ],
+            }
+            for diagram in missing_accessibility
+        ],
         "declarationsSeen": declarations_seen,
         "familiesSeen": families_seen,
         "officialFamilyCount": len(OFFICIAL_FAMILIES),
@@ -1453,17 +1513,31 @@ def run(args: argparse.Namespace) -> int:
         for path, styled_text in pending_writes:
             path.write_text(styled_text, encoding="utf-8")
 
-    report = build_report(root, args.colorset, diagrams, changed_files, args.check)
+    report = build_report(
+        root,
+        args.colorset,
+        diagrams,
+        changed_files,
+        args.check,
+        args.require_accessibility,
+    )
     report["routingMetadata"] = routing_metadata
     if args.report:
         write_report(args.report, report)
     else:
         print(json.dumps(report, indent=2, sort_keys=True))
 
+    failed = False
     if args.check and changed_files:
         print(f"{len(changed_files)} file(s) need colorset updates.", file=sys.stderr)
-        return 1
-    return 0
+        failed = True
+    if args.require_accessibility and report["missingAccessibilityCount"]:
+        print(
+            f"{report['missingAccessibilityCount']} diagram(s) are missing accTitle or accDescr.",
+            file=sys.stderr,
+        )
+        failed = True
+    return 1 if failed else 0
 
 
 def main() -> int:
@@ -1479,6 +1553,11 @@ def main() -> int:
     )
     parser.add_argument("--write", action="store_true", help="Write styled diagrams in place.")
     parser.add_argument("--check", action="store_true", help="Fail if any file would change.")
+    parser.add_argument(
+        "--require-accessibility",
+        action="store_true",
+        help="Fail when any Mermaid diagram lacks a non-empty accTitle or accDescr directive.",
+    )
     parser.add_argument("--report", type=Path, help="Write a JSON report.")
     return run(parser.parse_args())
 

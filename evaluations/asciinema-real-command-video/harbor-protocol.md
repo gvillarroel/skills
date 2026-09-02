@@ -146,3 +146,26 @@ aggregate summaries with checksums and pointers to the private evidence.
 
 The 2026-08-20 live outcome and failure classifications are recorded in
 [`harbor-pi-live-cli-20260820.md`](harbor-pi-live-cli-20260820.md).
+
+## Sequential multi-TUI extension
+
+Use `build_multi_tui_harbor_dataset.py` when one recording must prove ordered
+interaction with multiple distinct TUI executables. Its three frozen splits
+exercise fzf → Television, Television → fzf → lazygit, and a final-only
+Copilot → Television holdout. Every task requires a source cast and MP4 longer
+than ten seconds, one recording attempt, ordered per-session boundaries,
+distinct executable provenance, real-time interaction, and stable collected
+artifact reverification.
+
+Run development and validation first. Freeze and independently recompute the
+candidate tree digest before releasing holdout exactly once; do not change the
+skill payload after that release. The builder accepts `--runtime-resource-root`
+when immutable skill sources live in a clean worktree but large cached binaries
+and installed recording tools must remain in the primary ignored evaluation
+root. Set `PYTHONUTF8=1` and `PYTHONIOENCODING=utf-8` before Harbor launches Pi
+so Unicode skill references cross the Windows wrapper without locale-dependent
+decoding.
+
+The 2026-08-21 three-case result, digests, video hashes, frame review, and
+failure-preservation record are in
+[`multi-tui-harbor-20260821.md`](multi-tui-harbor-20260821.md).

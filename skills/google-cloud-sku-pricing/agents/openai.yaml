@@ -1,0 +1,4 @@
+interface:
+  display_name: "Google Cloud SKU Pricing"
+  short_description: "Query or export regional GCP SKU prices"
+  default_prompt: "Use $google-cloud-sku-pricing to retrieve, export, or compare Google Cloud SKU prices by region with exact tier and unit handling."

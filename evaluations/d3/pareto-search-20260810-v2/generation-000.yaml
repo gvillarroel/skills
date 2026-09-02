@@ -1,0 +1,35 @@
+schemaVersion: 1
+
+search:
+  id: d3-pareto-20260810-v2
+  baselineSkill: ../../runs/d3-pareto-20260810-v1/search/development/generation-002/candidate-staging/baseline/skills/d3
+  baselineCandidate: baseline
+  outputDir: ../../runs/d3-pareto-20260810-v2/search
+  generation: 0
+
+harbor:
+  developmentJob: ../../runs/d3-pareto-20260810-v1-dataset/development-job.yaml
+  holdoutJob: ../../runs/d3-pareto-20260810-v1-dataset/holdout-job.yaml
+  rewardKey: reward
+  passThreshold: 0.9
+  requiredRewards:
+    semantic_reward: 1
+  requiredEnv: []
+
+candidates:
+  - id: baseline
+    skill: ../../runs/d3-pareto-20260810-v1/search/development/generation-002/candidate-staging/baseline/skills/d3
+    parents: []
+    jobDirectory: ../../runs/d3-pareto-20260810-v1/search/development/generation-002/harbor-jobs/d3-pareto-20260810-v1-g002-development-baseline
+    rationale: Immutable semantic reference evaluated on the frozen development cohort.
+  - id: baseline-runtime-pruned
+    skill: ../../runs/d3-pareto-20260810-v1/search/development/generation-002/candidate-staging/baseline-runtime-pruned/skills/d3
+    parents:
+      - baseline
+    jobDirectory: ../../runs/d3-pareto-20260810-v1/search/development/generation-002/harbor-jobs/d3-pareto-20260810-v1-g002-development-baseline-runtime-pruned
+    rationale: Analyze the already-completed native Harbor evidence after restarting the Pareto lineage from the last generation in which both candidates qualified; no trial is rerun or relabeled.
+
+promotion:
+  minimumMeanGain: 0.01
+  allowCaseRegressions: false
+  requireNoErrors: true

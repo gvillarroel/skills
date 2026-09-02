@@ -135,6 +135,11 @@ uv run --script skills/vectorize-art-patterns/scripts/validate_art_svg.py `
 
 The validator requires editable paths, provenance metadata, direct `title` and `desc`, finite geometry, internal-only references, and no raster `<image>`, scripts, or `foreignObject`.
 
+Match tile validation to the generated contract. Add `--require-pattern` only
+when `--expected-tile` is `repeat` or `mirror`. Never add it when the requested
+and expected tile mode is `none`; a non-tiled SVG is correct without a
+`<pattern>` element.
+
 For paired colorset variants, run the same source and vector parameters twice
 with different `--colorset` values and variant-suffixed pattern IDs. Geometry
 must remain byte-identical after isolating `viewBox` and path data.

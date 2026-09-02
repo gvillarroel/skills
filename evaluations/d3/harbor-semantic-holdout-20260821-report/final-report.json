@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "source": "harbor",
+  "harborVersion": "0.18.0",
+  "title": "Harbor Final Evaluation Report",
+  "generatedAt": "2026-09-02T10:44:02.685935+00:00",
+  "rewardKey": "semantic_reward",
+  "passThreshold": 1.0,
+  "comparison": {
+    "enabled": false,
+    "baseline": null,
+    "fairnessBasis": null,
+    "warning": null,
+    "deltas": []
+  },
+  "jobs": [
+    {
+      "label": "d3-evolution-20260821-v2-holdout-pi-openrouter",
+      "jobDirectory": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-evolution-20260821-v2-dataset\\jobs\\d3-evolution-20260821-v2-holdout-pi-openrouter",
+      "jobId": "19b20b3e-18b3-4ece-b89a-a4f8f6124261",
+      "startedAt": "2026-08-21T05:45:19.537645",
+      "finishedAt": "2026-08-21T05:57:13.339430",
+      "harborVersion": "0.18.0",
+      "complete": true,
+      "completenessProblems": [],
+      "skillProvenance": [
+        {
+          "name": "d3",
+          "digest": "sha256:a7ab4103248e1d58a4698681620311a839a56b807496acaa440d02d6380dc084",
+          "gitUrl": null,
+          "gitCommitId": null
+        }
+      ],
+      "summary": {
+        "requestedTrials": 4,
+        "completedTrials": 4,
+        "passedTrials": 4,
+        "verifierFailedTrials": 0,
+        "erroredTrials": 0,
+        "passRate": 1.0,
+        "reward": {
+          "count": 4,
+          "total": 4.0,
+          "average": 1.0,
+          "stddev": 0.0,
+          "minimum": 1.0,
+          "maximum": 1.0
+        },
+        "totalTokens": {
+          "count": 4,
+          "total": 428363.0,
+          "average": 107090.75,
+          "stddev": 96359.08379954378,
+          "minimum": 24342.0,
+          "maximum": 269726.0
+        },
+        "agentLatencyMs": {
+          "count": 4,
+          "total": 585711.8969999999,
+          "average": 146427.97424999997,
+          "stddev": 105674.75752900375,
+          "minimum": 73854.55399999999,
+          "maximum": 327918.03099999996
+        },
+        "costUsd": {
+          "count": 4,
+          "total": 0.49868725,
+          "average": 0.1246718125,
+          "stddev": 0.09598471515548958,
+          "minimum": 0.06123750000000001,
+          "maximum": 0.29070050000000003
+        }
+      },
+      "breakdowns": [
+        {
+          "taskName": "hold-4b75f6bd59-composition-audit",
+          "taskChecksum": "bcdb4f265ab46b58c0b855e49735b2e70d1e494e98972bb869ec607fcfeabf70",
+          "agent": "pi",
+          "model": "openrouter/openai/gpt-5.1",
+          "requestedTrials": 1,
+          "completedTrials": 1,
+          "passedTrials": 1,
+          "verifierFailedTrials": 0,
+          "erroredTrials": 0,
+          "passRate": 1.0,
+          "reward": {
+            "count": 1,
+            "total": 1.0,
+            "average": 1.0,
+            "stddev": 0.0,
+            "minimum": 1.0,
+            "maximum": 1.0
+          },
+          "totalTokens": {
+            "count": 1,
+            "total": 24342.0,
+            "average": 24342.0,
+            "stddev": 0.0,
+            "minimum": 24342.0,
+            "maximum": 24342.0
+          },
+          "agentLatencyMs": {
+            "count": 1,
+            "total": 73854.55399999999,
+            "average": 73854.55399999999,
+            "stddev": 0.0,
+            "minimum": 73854.55399999999,
+            "maximum": 73854.55399999999
+          },
+          "costUsd": {
+            "count": 1,
+            "total": 0.07347999999999999,
+            "average": 0.07347999999999999,
+            "stddev": 0.0,
+            "minimum": 0.07347999999999999,
+            "maximum": 0.07347999999999999
+          }
+        },
+        {
+          "taskName": "hold-4b75f6bd59-flow-recomposition",
+          "taskChecksum": "454c66f7681cd608d3573bc7469d18dcf900d0b4a41b602b03f3f9a19fdd7183",
+          "agent": "pi",
+          "model": "openrouter/openai/gpt-5.1",
+          "requestedTrials": 1,
+          "completedTrials": 1,
+          "passedTrials": 1,
+          "verifierFailedTrials": 0,
+          "erroredTrials": 0,
+          "passRate": 1.0,
+          "reward": {
+            "count": 1,
+            "total": 1.0,
+            "average": 1.0,
+            "stddev": 0.0,
+            "minimum": 1.0,
+            "maximum": 1.0
+          },
+          "totalTokens": {
+            "count": 1,
+            "total": 85200.0,
+            "average": 85200.0,
+            "stddev": 0.0,
+            "minimum": 85200.0,
+            "maximum": 85200.0
+          },
+          "agentLatencyMs": {
+            "count": 1,
+            "total": 108273.92899999999,
+            "average": 108273.92899999999,
+            "stddev": 0.0,
+            "minimum": 108273.92899999999,
+            "maximum": 108273.92899999999
+          },
+          "costUsd": {
+            "count": 1,
+            "total": 0.07326925000000001,
+            "average": 0.07326925000000001,
+            "stddev": 0.0,
+            "minimum": 0.07326925000000001,
+            "maximum": 0.07326925000000001
+          }
+        },
+        {
+          "taskName": "hold-4b75f6bd59-lollipop",
+          "taskChecksum": "4246431c80aead1bd0b82c5d948112ef9a39dc7dc3dacaee7d564a345c1944f7",
+          "agent": "pi",
+          "model": "openrouter/openai/gpt-5.1",
+          "requestedTrials": 1,
+          "completedTrials": 1,
+          "passedTrials": 1,
+          "verifierFailedTrials": 0,
+          "erroredTrials": 0,
+          "passRate": 1.0,
+          "reward": {
+            "count": 1,
+            "total": 1.0,
+            "average": 1.0,
+            "stddev": 0.0,
+            "minimum": 1.0,
+            "maximum": 1.0
+          },
+          "totalTokens": {
+            "count": 1,
+            "total": 49095.0,
+            "average": 49095.0,
+            "stddev": 0.0,
+            "minimum": 49095.0,
+            "maximum": 49095.0
+          },
+          "agentLatencyMs": {
+            "count": 1,
+            "total": 75665.383,
+            "average": 75665.383,
+            "stddev": 0.0,
+            "minimum": 75665.383,
+            "maximum": 75665.383
+          },
+          "costUsd": {
+            "count": 1,
+            "total": 0.06123750000000001,
+            "average": 0.06123750000000001,
+            "stddev": 0.0,
+            "minimum": 0.06123750000000001,
+            "maximum": 0.06123750000000001
+          }
+        },
+        {
+          "taskName": "hold-4b75f6bd59-wedge-logo",
+          "taskChecksum": "c063bef0cecd43643744f70c77883239a2b6a639eadbfdabb15a54499bb2a9a8",
+          "agent": "pi",
+          "model": "openrouter/openai/gpt-5.1",
+          "requestedTrials": 1,
+          "completedTrials": 1,
+          "passedTrials": 1,
+          "verifierFailedTrials": 0,
+          "erroredTrials": 0,
+          "passRate": 1.0,
+          "reward": {
+            "count": 1,
+            "total": 1.0,
+            "average": 1.0,
+            "stddev": 0.0,
+            "minimum": 1.0,
+            "maximum": 1.0
+          },
+          "totalTokens": {
+            "count": 1,
+            "total": 269726.0,
+            "average": 269726.0,
+            "stddev": 0.0,
+            "minimum": 269726.0,
+            "maximum": 269726.0
+          },
+          "agentLatencyMs": {
+            "count": 1,
+            "total": 327918.03099999996,
+            "average": 327918.03099999996,
+            "stddev": 0.0,
+            "minimum": 327918.03099999996,
+            "maximum": 327918.03099999996
+          },
+          "costUsd": {
+            "count": 1,
+            "total": 0.29070050000000003,
+            "average": 0.29070050000000003,
+            "stddev": 0.0,
+            "minimum": 0.29070050000000003,
+            "maximum": 0.29070050000000003
+          }
+        }
+      ],
+      "trials": [
+        {
+          "id": "03b9e1f2-f3fa-4ec9-a380-c4bba3c08c3c",
+          "trialName": "hold-4b75f6bd59-composition-audi__j969Nbc",
+          "taskName": "hold-4b75f6bd59-composition-audit",
+          "taskChecksum": "bcdb4f265ab46b58c0b855e49735b2e70d1e494e98972bb869ec607fcfeabf70",
+          "source": "holdout",
+          "agent": "pi",
+          "agentVersion": "0.84.2",
+          "model": "openrouter/openai/gpt-5.1",
+          "skills": [
+            "d3"
+          ],
+          "reward": 1.0,
+          "rewards": {
+            "bundle_efficiency": 0.903509,
+            "d3_contract": 1.0,
+            "fidelity": 1.0,
+            "metadata": 1.0,
+            "palette": 1.0,
+            "progressive_disclosure": 0.860023,
+            "render": 1.0,
+            "reward": 0.990351,
+            "routing": 1.0,
+            "semantic_reward": 1.0
+          },
+          "passed": true,
+          "error": null,
+          "tokens": {
+            "input": 17776,
+            "cachedInput": 12800,
+            "output": 6566,
+            "total": 24342
+          },
+          "costUsd": 0.07347999999999999,
+          "agentLatencyMs": 73854.55399999999,
+          "resultPath": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-evolution-20260821-v2-dataset\\jobs\\d3-evolution-20260821-v2-holdout-pi-openrouter\\hold-4b75f6bd59-composition-audi__j969Nbc\\result.json"
+        },
+        {
+          "id": "1db43d50-5d3f-4daf-bbaa-9762dcb7f0c6",
+          "trialName": "hold-4b75f6bd59-flow-recompositi__46yzyUd",
+          "taskName": "hold-4b75f6bd59-flow-recomposition",
+          "taskChecksum": "454c66f7681cd608d3573bc7469d18dcf900d0b4a41b602b03f3f9a19fdd7183",
+          "source": "holdout",
+          "agent": "pi",
+          "agentVersion": "0.84.2",
+          "model": "openrouter/openai/gpt-5.1",
+          "skills": [
+            "d3"
+          ],
+          "reward": 1.0,
+          "rewards": {
+            "bundle_efficiency": 0.903509,
+            "d3_contract": 1.0,
+            "fidelity": 1.0,
+            "metadata": 1.0,
+            "palette": 1.0,
+            "palette_influence": 1.0,
+            "progressive_disclosure": 0.860023,
+            "render": 1.0,
+            "reward": 0.990351,
+            "routing": 1.0,
+            "semantic_reward": 1.0,
+            "visual_palette": 1.0
+          },
+          "passed": true,
+          "error": null,
+          "tokens": {
+            "input": 80473,
+            "cachedInput": 66304,
+            "output": 4727,
+            "total": 85200
+          },
+          "costUsd": 0.07326925000000001,
+          "agentLatencyMs": 108273.92899999999,
+          "resultPath": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-evolution-20260821-v2-dataset\\jobs\\d3-evolution-20260821-v2-holdout-pi-openrouter\\hold-4b75f6bd59-flow-recompositi__46yzyUd\\result.json"
+        },
+        {
+          "id": "67e14b86-50b9-42cc-8cd4-8d22c44c15b5",
+          "trialName": "hold-4b75f6bd59-lollipop__aYYbTCf",
+          "taskName": "hold-4b75f6bd59-lollipop",
+          "taskChecksum": "4246431c80aead1bd0b82c5d948112ef9a39dc7dc3dacaee7d564a345c1944f7",
+          "source": "holdout",
+          "agent": "pi",
+          "agentVersion": "0.84.2",
+          "model": "openrouter/openai/gpt-5.1",
+          "skills": [
+            "d3"
+          ],
+          "reward": 1.0,
+          "rewards": {
+            "bundle_efficiency": 0.903509,
+            "d3_contract": 1.0,
+            "fidelity": 1.0,
+            "metadata": 1.0,
+            "palette": 1.0,
+            "palette_influence": 1.0,
+            "progressive_disclosure": 0.860023,
+            "render": 1.0,
+            "reward": 0.990351,
+            "routing": 1.0,
+            "semantic_reward": 1.0,
+            "visual_palette": 1.0
+          },
+          "passed": true,
+          "error": null,
+          "tokens": {
+            "input": 45078,
+            "cachedInput": 31360,
+            "output": 4017,
+            "total": 49095
+          },
+          "costUsd": 0.06123750000000001,
+          "agentLatencyMs": 75665.383,
+          "resultPath": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-evolution-20260821-v2-dataset\\jobs\\d3-evolution-20260821-v2-holdout-pi-openrouter\\hold-4b75f6bd59-lollipop__aYYbTCf\\result.json"
+        },
+        {
+          "id": "d20d1e67-fc2a-4553-8979-7066dbe7c73a",
+          "trialName": "hold-4b75f6bd59-wedge-logo__kqoqJs9",
+          "taskName": "hold-4b75f6bd59-wedge-logo",
+          "taskChecksum": "c063bef0cecd43643744f70c77883239a2b6a639eadbfdabb15a54499bb2a9a8",
+          "source": "holdout",
+          "agent": "pi",
+          "agentVersion": "0.84.2",
+          "model": "openrouter/openai/gpt-5.1",
+          "skills": [
+            "d3"
+          ],
+          "reward": 1.0,
+          "rewards": {
+            "bundle_efficiency": 0.903509,
+            "d3_contract": 1.0,
+            "fidelity": 1.0,
+            "metadata": 1.0,
+            "palette": 1.0,
+            "palette_influence": 1.0,
+            "progressive_disclosure": 0.860023,
+            "render": 1.0,
+            "reward": 0.990351,
+            "routing": 1.0,
+            "semantic_reward": 1.0,
+            "visual_palette": 1.0
+          },
+          "passed": true,
+          "error": null,
+          "tokens": {
+            "input": 247914,
+            "cachedInput": 210944,
+            "output": 21812,
+            "total": 269726
+          },
+          "costUsd": 0.29070050000000003,
+          "agentLatencyMs": 327918.03099999996,
+          "resultPath": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\d3-evolution-20260821-v2-dataset\\jobs\\d3-evolution-20260821-v2-holdout-pi-openrouter\\hold-4b75f6bd59-wedge-logo__kqoqJs9\\result.json"
+        }
+      ]
+    }
+  ]
+}

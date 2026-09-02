@@ -449,8 +449,10 @@ def write_job_config(
     attempts: int,
     model: str,
     pi_version: str,
+    runtime_resource_root: Path | None = None,
 ) -> Path:
     skill_source = (repo_root / "skills" / "asciinema-real-command-video").resolve()
+    resource_root = (runtime_resource_root or repo_root).resolve()
     pi_wrapper = (
         repo_root
         / "evaluations"
@@ -471,9 +473,9 @@ environment:
   cpu_enforcement_policy: ignore
   memory_enforcement_policy: ignore
   kwargs:
-    shared_cache_dir: {quoted(repo_root / 'evaluations' / 'runs' / 'harbor-shared-cache')}
+    shared_cache_dir: {quoted(resource_root / 'evaluations' / 'runs' / 'harbor-shared-cache')}
     skill_source_dir: {quoted(skill_source)}
-    recording_tools_dir: {quoted(repo_root / 'projects' / 'asciinema-real-command-video' / 'artifacts' / 'tools')}
+    recording_tools_dir: {quoted(resource_root / 'projects' / 'asciinema-real-command-video' / 'artifacts' / 'tools')}
 agents:
   - import_path: "evaluations.asciinema-real-command-video.harbor_pi_agent:WorkspaceWindowsPi"
     model_name: {quoted(model)}

@@ -1,57 +1,36 @@
 ---
 name: manim-svg-video
-description: Compose many SVG or animated-SVG assets into one configurable Manim-rendered video. Use when Codex needs to discover `.animated.svg` files, place multiple SVG animations in a shared timeline, keep completed SVGs occupying their final mosaic positions, generate a timed MP4 such as a 10-minute showcase, tune Manim layout/timing/import options, or validate SVG-to-video rendering.
+description: Render one or many SVG or animated-SVG source assets into a configurable Manim-authored MP4 with SVG-only sequencing, vector or raster import, exact-duration repair, and a composition manifest. Use for standalone SVG-to-video work, animated-SVG showcases, replacement or mosaic timelines, and Manim SVG render troubleshooting that does not need mixed-media composition, cross-producer interactions, narration, or a broader video production workflow.
 ---
 
 # Manim SVG Video
 
-## Core Workflow
+Set `$env:MANIM_SVG_VIDEO_SKILL` to this skill directory before invoking bundled commands.
 
-1. Discover source SVGs first, normally with `**/*.animated.svg`, and keep generated artifacts outside skill directories under `projects/<project-id>/artifacts/videos/`.
-2. Prefer `scripts/compose_svg_video.py` for video generation. It writes a manifest, rasterizes SVGs when needed, generates a Manim scene, and optionally renders MP4.
-3. Use `--duration 600` for a 10-minute video. Use `--layout replace --active-slots 1` for one full-screen SVG at a time, `--active-slots 2` for two half-screen SVGs, or `--active-slots 4` for four quarter-screen SVGs.
-4. Use `replace` when each completed SVG animation should leave and be replaced by the next source. Use `mosaic` only when completed SVGs should accumulate and remain visible in their final positions.
-5. Keep exact-duration post-processing enabled unless debugging; the script pads or trims the rendered MP4 with ffmpeg when Manim frame rounding misses the target duration.
-6. Start with `--dry-run` or a short `--duration` smoke render, then render the full video after the manifest lists the expected assets.
-7. Inspect the manifest and at least one rendered frame/video. Treat missing or failed assets as findings to resolve or explicitly report.
+## Ownership boundary
 
-## Resource Routing
+- Own SVG discovery, final-state companion selection, Manim import, SVG-only layout and timing, scene generation, MP4 rendering, exact-duration repair, and the composition manifest.
+- Preserve source SVGs. Treat their authoring, semantics, geometry, accessibility, and native animation as producer-owned.
+- Do not claim that Manim executes CSS or SMIL embedded in an SVG. Read `references/manim-svg-import.md` before choosing a source or import mode.
+- Hand off the finished MP4 and manifest to `video` only when a later task needs mixed media, cross-asset interactions, narration/audio, storyboarding, or final-program composition.
 
-- Read `references/composition-config.md` when tuning duration, wave size, layout, import mode, source discovery, or manifest fields.
-- Read `references/manim-svg-import.md` when deciding between raster image import and vector `SVGMobject`, when text disappears, or when intrinsic SVG animation behavior matters.
-- Run `scripts/compose_svg_video.py` directly. Read or patch the script only when changing compositor behavior.
+## Workflow
 
-## Common Commands
+1. Confirm that the requested deliverable is an SVG-only MP4 or SVG sequence. Route broader production work to `video` instead of recreating its contracts here.
+2. Read `references/composition-config.md`; select exact duration, dimensions, fps, source order, layout, active slots, and output path.
+3. Read `references/manim-svg-import.md`; choose the source state and vector or raster import deliberately.
+4. Run `scripts/compose_svg_video.py` in dry-run mode. Inspect `composition-manifest.json` for the expected assets, ordering, `render_source`, and conversion failures.
+5. Render a short, low-resolution smoke. Inspect visible content and timing before increasing quality or duration.
+6. Render the requested MP4, keep exact-duration repair enabled, then complete the validation checklist in `references/composition-config.md`.
+7. Return the MP4, manifest, generated scene, source/import warnings, and exact validation results. For downstream `video` composition, also report dimensions, fps, duration, background behavior, and the final artifact path.
 
-Generate a manifest and Manim scene without rendering:
+## Resource routing
 
-```powershell
-uv run --script skills/manim-svg-video/scripts/compose_svg_video.py --discover-root . --out projects/<project-id>/artifacts/videos/repo-animated-svg-10min --duration 600 --dry-run
-```
+- `references/composition-config.md`: commands, discovery, timing, layouts, output fields, and validation.
+- `references/manim-svg-import.md`: CSS/SMIL limitations, static companions, vector-versus-raster selection, and fallback behavior.
+- `references/visual-tokens.md`: optional palette and typography tokens when the user asks to restyle the Manim wrapper.
+- `scripts/compose_svg_video.py`: deterministic discovery, manifest generation, Manim scene generation, rendering, and duration repair.
 
-Render a 10-minute MP4 from repository animated SVGs:
+## Maintenance
 
-```powershell
-uv run --script skills/manim-svg-video/scripts/compose_svg_video.py --discover-root . --out projects/<project-id>/artifacts/videos/repo-animated-svg-10min-replace-white --duration 600 --layout replace --active-slots 4 --import-mode svg --render --quality l --fps 5 --resolution 854,480
-```
-
-Render a faster smoke test with only a few assets:
-
-```powershell
-uv run --script skills/manim-svg-video/scripts/compose_svg_video.py --discover-root path/to/animated-svgs --out projects/<project-id>/artifacts/videos/smoke --duration 12 --max-assets 6 --render --quality l --fps 5 --resolution 640,360
-```
-
-## Operating Notes
-
-- Manim controls the timeline and coexistence choreography. Browser-native CSS or SMIL animation inside an SVG is not executed by `SVGMobject`; use Manim animations for video motion.
-- Prefer static companion SVGs such as `.static.svg` for final-frame fidelity when composing from `.animated.svg`; the script resolves companions automatically when possible.
-- Use the default white background and light tile palette unless the user asks for another style. Tune `--background`, `--tile-fill`, `--tile-stroke`, and `--title-color` together so titles and frames remain visible.
-- Read `references/visual-tokens.md` before changing default video palettes or title styling. Use the documented brand neutral for text, page/video background defaults where appropriate, and the brand palette for editable tile, highlight, and title colors.
-- Use `--layout replace --active-slots 1|2|4` for full-screen, half-screen, or quarter-screen replacement videos.
-- Use the default vector import for portability. Use image import only when ImageMagick, `rsvg-convert`, or Inkscape is available and raster fidelity matters more than vector editability.
-- Keep long renders low resolution and low fps during validation, then increase quality only when the scene is correct.
-- Treat `SVGMobject` text warnings as expected for SVGs with text nodes; switch to `--import-mode image` only when a rasterizer is installed and text fidelity is more important than vector import.
-
-## Pattern Promotion
-
-When a composition layout, source discovery rule, SVG import workaround, duration repair, or mosaic/replacement behavior proves reusable, update the owning reference before finishing. Use `references/composition-config.md` for layout and manifest patterns, and `references/manim-svg-import.md` for import/text/rasterization patterns. Include trigger, command, source contract, layout contract, validation checks, and any renderer limitation.
+Keep reusable Manim timing or layout rules in `references/composition-config.md` and import workarounds in `references/manim-svg-import.md`. Test the script with a dry run and a real short MP4, then run repository and isolated-skill validation before marking behavior done.

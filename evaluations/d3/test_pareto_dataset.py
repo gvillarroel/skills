@@ -99,7 +99,8 @@ class ParetoDatasetTests(unittest.TestCase):
             for other in EXPECTED_SPLITS:
                 if other != split:
                     self.assertNotIn(f"{normalized_root}/{other}", config)
-            self.assertIn("skill_source_dir:", config)
+            self.assertNotIn("skill_source_dir:", config)
+            self.assertIn("skills/d3", config)
 
     def test_prompts_disclose_every_verifier_contract_field(self) -> None:
         for split in EXPECTED_SPLITS:

@@ -106,20 +106,62 @@ Enter action. Selection is the exit request.
 
 ## lazygit command-key exit
 
-Point `working_directory` at the prepared repository. Before recording, create
-the isolated config directory, set `disableStartupPopups: true` in its
-`config.yml`, and run `lazygit --use-config-dir <dir>` outside the recording if
-any other first-run dialog still needs acknowledgement. Then launch lazygit
-with that same project-local config directory:
+Copy `assets/templates/lazygit-session-plan.json` to `source/session-plan.json`
+when the prepared repository lives at `fixture/repo/`. Copy
+`assets/templates/lazygit-config.yml` to
+`fixture/repo/.git/lazygit-config/config.yml`. The templates preserve the
+plan-relative `../fixture/repo` path, valid popup suppression, disabled update
+and fetch activity, JSON regex escaping, target-exit lifecycle,
+before-final-key presentation, and a short-path bridge for the native Windows
+executable. Adapt only the reviewed action sequence, terminal geometry,
+timing, and declared scope that the task actually changes.
+
+After creating the fixture repository and before plan validation, enable long
+paths in that repository only:
+
+```bash
+git -C fixture/repo config --local core.longpaths true
+```
+
+If the host Git cannot reach an already deep path, run the equivalent with
+native WSL `/usr/bin/git`. Do not change the user's global or system Git
+configuration. Preflight refuses the native Windows lazygit bridge unless the
+project-local value is exactly true.
+
+Point `working_directory` at the prepared repository and launch lazygit with
+the copied project-local config directory. Keep both reviewed
+`{windows_working_directory}` arguments when the target is `lazygit.exe`:
+the controller maps the real repository to a collision-checked temporary
+Windows drive only for the recorded target lifetime. This avoids relative-path
+resolution through WSL and Windows Git failures on deeply nested evaluation
+paths. Preflight verifies `wslpath` and `subst.exe`; runtime evidence records
+the expanded argv and proves that the mapping was released. Do not create a
+mapping manually, hard-code a drive letter, or replace the repository with a
+short-path copy.
+
+Do not add
+`gui.disableStartupPopups`: it is not a valid key, can invalidate the config,
+and can expose lazygit's delayed startup modal after the ready screen was
+first observed. Do not prelaunch or warm up lazygit; the bundled config makes
+the first recorded launch deterministic:
 
 ```json
 {
-  "launch_args": ["--use-config-dir", ".git/lazygit-config"],
-  "ready_pattern": "(?s)Files - Worktrees - Submodule.*(?:Local branches|Commits \\(main\\))",
+  "launch_args": [
+    "--use-config-dir",
+    "{windows_working_directory}.git/lazygit-config",
+    "--path",
+    "{windows_working_directory}"
+  ],
+  "ready_pattern": "(?s)Files - Worktrees - Submodule.*(?:Local branches|Commits \\([^)]+\\))",
   "busy_pattern": "(?!)",
   "shutdown_mode": "target-exit"
 }
 ```
+
+For a native Unix `lazygit` binary, omit the Windows token and use repository-
+relative paths. Never switch plans or output names after `record` begins. If
+startup or navigation fails, preserve that single failed attempt and stop.
 
 The final step should dwell on the authentic interface and send only `q`:
 
@@ -154,8 +196,9 @@ cleared or restored terminal.
 
 Do not add a dummy text prompt, a numeric panel-selection key, or Enter merely
 to dismiss first-run UI or fit a prompt-oriented controller. Treat an
-unexpected modal as a failed preserved attempt, prepare a new reviewed session
-outside the recording, and use a new plan path.
+unexpected modal as a failed preserved attempt and stop that requested
+deliverable. Diagnose it from the cast and runtime report; do not prepare a
+replacement plan or output unless the user later authorizes a new recording.
 
 ## Fixed PowerShell pipeline with inert input
 

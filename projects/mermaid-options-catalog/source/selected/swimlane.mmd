@@ -1,0 +1,49 @@
+---
+# mermaid: config begin
+config:
+  theme: "base"
+  themeVariables:
+    background: "#ffffff"
+    primaryColor: "#ffccd5"
+    primaryTextColor: "#333e48"
+    primaryBorderColor: "#9e1b32"
+    secondaryColor: "#e7e7e7"
+    secondaryTextColor: "#333e48"
+    secondaryBorderColor: "#4f4f4f"
+    tertiaryColor: "#e7e7e7"
+    tertiaryTextColor: "#333e48"
+    tertiaryBorderColor: "#9c9c9c"
+    lineColor: "#696969"
+    textColor: "#333e48"
+    mainBkg: "#ffccd5"
+    nodeBkg: "#ffccd5"
+    nodeBorder: "#9e1b32"
+    clusterBkg: "#e7e7e7"
+    clusterBorder: "#9c9c9c"
+    defaultLinkColor: "#696969"
+    edgeLabelBackground: "#ffffff"
+    classText: "#333e48"
+    labelColor: "#333e48"
+    titleColor: "#333e48"
+# mermaid: config end
+# mermaid: metadata begin
+mermaid:
+  colorset: "colorset1"
+  mode: "standard"
+  palette: "basic-red-neutral-style"
+# mermaid: metadata end
+---
+swimlane-beta LR
+  subgraph team_a [Team A]
+    intake[Request]:::csPrimary
+    approve{Approve?}:::csWarning
+  end
+  subgraph team_b [Team B]
+    build[Build]:::csAccent
+    done([Done]):::csSuccess
+  end
+  intake --> approve --> build --> done
+  classDef csPrimary fill:#ffccd5,stroke:#9e1b32,color:#333e48,stroke-width:2px;
+  classDef csAccent fill:#e7e7e7,stroke:#4f4f4f,color:#333e48,stroke-width:2px;
+  classDef csWarning fill:#e7e7e7,stroke:#828282,color:#333e48,stroke-width:2px;
+  classDef csSuccess fill:#cfcfcf,stroke:#333e48,color:#333e48,stroke-width:2px;
