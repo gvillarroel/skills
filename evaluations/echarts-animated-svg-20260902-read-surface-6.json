@@ -1,0 +1,144 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a063f5-109e-7933-bf84-e1e7dbe1a36e",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260902-echarts-runtime-bar-spark-6\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 8
+  },
+  "providers": {
+    "openai-codex": 8
+  },
+  "usageTotals": {
+    "input": 6475,
+    "output": 1757,
+    "cacheRead": 21248,
+    "cacheWrite": 0,
+    "totalTokens": 29480
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 3,
+    "bash": 4
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1319
+    },
+    {
+      "path": "skills/echarts-animated-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6779
+    },
+    {
+      "path": "bar-validation.json",
+      "calls": 1,
+      "resultBytes": 1413
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1319
+    },
+    {
+      "path": "skills/echarts-animated-svg/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6779
+    },
+    {
+      "path": "bar-validation.json",
+      "calls": 1,
+      "resultBytes": 1413
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/echarts-animated-svg/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "bar-validation.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 9511,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1319
+    },
+    {
+      "line": 29,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la",
+      "isError": false,
+      "resultBytes": 190
+    },
+    {
+      "line": 44,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la skills/echarts-animated-svg",
+      "isError": false,
+      "resultBytes": 415
+    },
+    {
+      "line": 57,
+      "tool": "read",
+      "path": "skills/echarts-animated-svg/SKILL.md",
+      "policyPath": "skills/echarts-animated-svg/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6779
+    },
+    {
+      "line": 73,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "cp skills/echarts-animated-svg/assets/templates/static-bar-chart.svg bar.static.svg\nuv run --script skills/echarts-animated-svg/scripts/animate_echarts_svg.py bar.static.svg --chart-type bar -o bar.animated.svg --duration-ms 800 --stagger-m",
+      "isError": false,
+      "resultBytes": 1461
+    },
+    {
+      "line": 88,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la bar.static.svg bar.animated.svg bar-validation.json",
+      "isError": false,
+      "resultBytes": 230
+    },
+    {
+      "line": 101,
+      "tool": "read",
+      "path": "bar-validation.json",
+      "policyPath": "bar-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1413
+    }
+  ],
+  "findings": []
+}

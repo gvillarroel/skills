@@ -1,9 +1,35 @@
 let examples = [];
+let activeThemeId = "colorset2";
+let activeCapabilityId = "all";
+let themeLoadVersion = 0;
 
 const gallery = document.querySelector("#gallery");
 const exampleCount = document.querySelector("#example-count");
-const styleVersion = document.body.dataset.styleVersion || "colorset2";
-const patternSuffix = styleVersion === "cs1" ? "-cs1" : "-cs2";
+const visibleCount = document.querySelector("#visible-count");
+const activeThemeLabel = document.querySelector("#active-theme");
+const activeRenderReport = document.querySelector("#active-render-report");
+const themeButtons = [...document.querySelectorAll("[data-theme]")];
+const capabilityButtons = [...document.querySelectorAll("[data-capability-filter]")];
+const themeSources = {
+  colorset2: {
+    baseUrl: ".",
+    styleVersion: "colorset2",
+    colorSet: "colorset2",
+    paletteName: "cs2",
+    label: "Colorset 2",
+    reportUrl: "./render-report.json"
+  },
+  colorset1: {
+    baseUrl: "../plantuml-colorset-renderer-cs1",
+    styleVersion: "cs1",
+    colorSet: "colorset1",
+    paletteName: "basic-red-neutral-style",
+    label: "Colorset 1",
+    reportUrl: "../plantuml-colorset-renderer-cs1/render-report.json"
+  }
+};
+let styleVersion = themeSources[activeThemeId].styleVersion;
+let patternSuffix = styleVersion === "cs1" ? "-cs1" : "-cs2";
 const patternSlugs = new Map([
   ["usecase", "use-case"],
   ["math", "asciimath"],
@@ -13,6 +39,21 @@ const patternSlugs = new Map([
   ["files", "file-tree"],
   ["packetdiag", "packet"]
 ]);
+const capabilityByKicker = new Map([
+  ["UML", "uml-behavior"],
+  ["Workflow", "uml-behavior"],
+  ["Architecture", "architecture-network"],
+  ["Network", "architecture-network"],
+  ["Data", "data-notation"],
+  ["Grammar", "data-notation"],
+  ["Entity Relation", "data-notation"],
+  ["Planning", "planning-structure"],
+  ["Structure", "planning-structure"],
+  ["Wireframe", "visual-specialist"],
+  ["ASCII Art", "visual-specialist"],
+  ["Mathematics", "visual-specialist"],
+  ["Chart", "visual-specialist"]
+]);
 
 function patternIdFor(example) {
   return `plantuml-${patternSlugs.get(example.id) || example.id}${patternSuffix}`;
@@ -21,6 +62,10 @@ function patternIdFor(example) {
 function legacyPatternIdFor(example) {
   const legacyPatternId = `plantuml-${example.id}${styleVersion === "cs1" ? "-cs1" : ""}`;
   return legacyPatternId === patternIdFor(example) ? "" : legacyPatternId;
+}
+
+function capabilityIdFor(example) {
+  return capabilityByKicker.get(example.kicker) || "visual-specialist";
 }
 
 function escapeHtml(value) {
@@ -36,9 +81,10 @@ function renderCards() {
     const patternId = patternIdFor(example);
     const legacyPatternId = legacyPatternIdFor(example);
     const legacyPatternAttribute = legacyPatternId ? ` data-legacy-pattern-id="${legacyPatternId}"` : "";
+    const capabilityId = capabilityIdFor(example);
     const wideClass = example.size === "wide" ? " example-card--wide" : "";
     return `
-      <article class="example-card${wideClass}" id="${patternId}" data-example-id="${example.id}" data-pattern-id="${patternId}"${legacyPatternAttribute} data-source="${escapeHtml(example.source)}" data-asset-format="${escapeHtml(example.assetFormat)}" data-replay-state="idle">
+      <article class="example-card${wideClass}" id="${patternId}" data-example-id="${example.id}" data-pattern-id="${patternId}"${legacyPatternAttribute} data-capability="${capabilityId}" data-source="${escapeHtml(example.source)}" data-asset-format="${escapeHtml(example.assetFormat)}" data-replay-state="idle">
         <div class="example-header">
           <div class="example-header-top">
             <p class="example-kicker">${escapeHtml(example.kicker)}</p>
@@ -54,6 +100,20 @@ function renderCards() {
       </article>`;
   }).join("");
   exampleCount.textContent = String(examples.length);
+  applyCapabilityFilter();
+}
+
+function applyCapabilityFilter() {
+  let shown = 0;
+  document.querySelectorAll(".example-card").forEach((card) => {
+    const visible = activeCapabilityId === "all" || card.dataset.capability === activeCapabilityId;
+    card.hidden = !visible;
+    if (visible) shown += 1;
+  });
+  capabilityButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.capabilityFilter === activeCapabilityId));
+  });
+  visibleCount.textContent = String(shown);
 }
 
 function prepareSvg(svg, example) {
@@ -126,12 +186,14 @@ async function fetchSvgText(url) {
   throw lastError;
 }
 
-async function loadExample(example) {
+async function loadExample(example, loadVersion) {
   const mount = document.querySelector(`#${CSS.escape(example.id)}-mount`);
   const card = mount.closest(".example-card");
+  const assetUrl = `${themeSources[activeThemeId].baseUrl}/${example.asset}`;
   try {
     if (example.assetFormat === "svg") {
-      const text = await fetchSvgText(`./${example.asset}`);
+      const text = await fetchSvgText(assetUrl);
+      if (loadVersion !== themeLoadVersion) return;
       const doc = new DOMParser().parseFromString(text, "image/svg+xml");
       const svg = doc.querySelector("svg");
       if (!svg) {
@@ -143,8 +205,9 @@ async function loadExample(example) {
       const image = new Image();
       image.className = "plantuml-raster";
       image.alt = `${example.title} PlantUML diagram`;
-      image.src = `./${example.asset}`;
+      image.src = assetUrl;
       await image.decode();
+      if (loadVersion !== themeLoadVersion) return;
       mount.replaceChildren(image);
     } else {
       throw new Error(`unsupported asset format: ${example.assetFormat}`);
@@ -157,14 +220,14 @@ async function loadExample(example) {
   }
 }
 
-async function loadAllExamples() {
+async function loadAllExamples(loadVersion) {
   let nextIndex = 0;
   const workerCount = Math.min(1, examples.length);
   const workers = Array.from({ length: workerCount }, async () => {
     while (nextIndex < examples.length) {
       const example = examples[nextIndex];
       nextIndex += 1;
-      await loadExample(example);
+      await loadExample(example, loadVersion);
     }
   });
   await Promise.all(workers);
@@ -181,8 +244,69 @@ function bindReplayButtons() {
   });
 }
 
-async function initialize() {
-  const response = await fetch("./coverage.json");
+function themeIdFromHash() {
+  const hash = decodeURIComponent(window.location.hash.slice(1));
+  if (hash.endsWith("-cs1")) return "colorset1";
+  if (hash.endsWith("-cs2")) return "colorset2";
+  return "";
+}
+
+function initialThemeId() {
+  const requested = new URL(window.location.href).searchParams.get("theme");
+  if (requested && themeSources[requested]) return requested;
+  return themeIdFromHash() || "colorset2";
+}
+
+function exampleIdFromCurrentHash() {
+  const hash = decodeURIComponent(window.location.hash.slice(1));
+  if (!hash) return "";
+  const card = [...document.querySelectorAll(".example-card")].find(
+    (item) => item.id === hash || item.dataset.legacyPatternId === hash
+  );
+  return card?.dataset.exampleId || "";
+}
+
+function updateThemeUi(themeId) {
+  const theme = themeSources[themeId];
+  document.body.dataset.styleVersion = theme.styleVersion;
+  document.body.dataset.colorSet = theme.colorSet;
+  document.body.dataset.paletteName = theme.paletteName;
+  document.body.dataset.activeTheme = themeId;
+  activeThemeLabel.textContent = theme.label;
+  activeRenderReport.setAttribute("href", theme.reportUrl);
+  themeButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.theme === themeId));
+  });
+  document.title = `PlantUML Skill Gallery · ${theme.label}`;
+}
+
+function updateThemeLocation(linkedExampleId = "") {
+  const url = new URL(window.location.href);
+  if (activeThemeId === "colorset1") {
+    url.searchParams.set("theme", activeThemeId);
+  } else {
+    url.searchParams.delete("theme");
+  }
+  if (linkedExampleId) {
+    const linkedExample = examples.find((example) => example.id === linkedExampleId);
+    if (linkedExample) url.hash = patternIdFor(linkedExample);
+  }
+  history.replaceState(null, "", url.pathname + url.search + url.hash);
+}
+
+async function setTheme(themeId, { syncLocation = true } = {}) {
+  const theme = themeSources[themeId];
+  if (!theme) throw new Error(`unsupported theme: ${themeId}`);
+
+  const linkedExampleId = exampleIdFromCurrentHash();
+  const loadVersion = ++themeLoadVersion;
+  activeThemeId = themeId;
+  styleVersion = theme.styleVersion;
+  patternSuffix = styleVersion === "cs1" ? "-cs1" : "-cs2";
+  updateThemeUi(themeId);
+  gallery.setAttribute("aria-busy", "true");
+
+  const response = await fetch(`${theme.baseUrl}/coverage.json`);
   if (!response.ok) {
     throw new Error(`coverage metadata HTTP ${response.status}`);
   }
@@ -190,12 +314,59 @@ async function initialize() {
   if (!Array.isArray(metadata.items)) {
     throw new Error("coverage metadata items must be an array");
   }
+  if (metadata.colorset !== theme.colorSet) {
+    throw new Error(`coverage metadata expected ${theme.colorSet}, found ${metadata.colorset}`);
+  }
+  if (loadVersion !== themeLoadVersion) return;
+
   examples = metadata.items;
   renderCards();
+  if (syncLocation) updateThemeLocation(linkedExampleId);
   redirectLegacyPatternHash();
-  window.addEventListener("hashchange", redirectLegacyPatternHash);
+  await loadAllExamples(loadVersion);
+  if (loadVersion !== themeLoadVersion) return;
+  gallery.setAttribute("aria-busy", "false");
+  document.body.dataset.loadState = "loaded";
+  delete document.body.dataset.error;
+}
+
+function bindThemeButtons() {
+  themeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.dataset.theme === activeThemeId) return;
+      setTheme(button.dataset.theme).catch(reportLoadError);
+    });
+  });
+}
+
+function bindCapabilityButtons() {
+  capabilityButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeCapabilityId = button.dataset.capabilityFilter;
+      applyCapabilityFilter();
+    });
+  });
+}
+
+function reportLoadError(error) {
+  gallery.setAttribute("aria-busy", "false");
+  document.body.dataset.loadState = "error";
+  document.body.dataset.error = error.message;
+}
+
+async function initialize() {
   bindReplayButtons();
-  await loadAllExamples();
+  bindThemeButtons();
+  bindCapabilityButtons();
+  window.addEventListener("hashchange", () => {
+    const requestedTheme = themeIdFromHash();
+    if (requestedTheme && requestedTheme !== activeThemeId) {
+      setTheme(requestedTheme, { syncLocation: false }).catch(reportLoadError);
+      return;
+    }
+    redirectLegacyPatternHash();
+  });
+  await setTheme(initialThemeId(), { syncLocation: false });
 }
 
 function redirectLegacyPatternHash() {
@@ -208,6 +379,5 @@ function redirectLegacyPatternHash() {
 }
 
 initialize().catch((error) => {
-  document.body.dataset.loadState = "error";
-  document.body.dataset.error = error.message;
+  reportLoadError(error);
 });

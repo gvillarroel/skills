@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "id": "what-is-an-agent-regex-loop",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9",
+    "fps": 30,
+    "durationSeconds": 30,
+    "background": "#101010",
+    "safeArea": {
+      "top": 30,
+      "right": 48,
+      "bottom": 36,
+      "left": 48
+    }
+  },
+  "masterClock": {
+    "mode": "deterministic",
+    "loop": false
+  },
+  "elements": [
+    {
+      "id": "lm-railroad-diagram",
+      "assetId": "lm-railroad",
+      "producerSkill": "mermaid",
+      "kind": "svg",
+      "src": "artifacts/svgs/lm-railroad.svg",
+      "sha256": "5908814e69444d78afd042a1d97c2b75c99619676a435b3c14902f874fcfe879",
+      "validationReport": "artifacts/manifests/mermaid-producer-report.json",
+      "intrinsic": {"viewBox": "0 0 339.625 87.5"},
+      "background": "#f7f7f7",
+      "bounds": {"x": 0.12, "y": 0.275, "width": 0.76, "height": 0.36},
+      "zIndex": 10,
+      "fit": "contain",
+      "overflow": "hidden",
+      "clock": "static",
+      "ports": [
+        {"id": "entry", "x": 0.06, "y": 0.50},
+        {"id": "exit", "x": 0.94, "y": 0.50}
+      ],
+      "states": []
+    },
+    {
+      "id": "agent-railroad-diagram",
+      "assetId": "agent-railroad",
+      "producerSkill": "mermaid",
+      "kind": "svg",
+      "src": "artifacts/svgs/agent-railroad.svg",
+      "sha256": "b9d3bc14784cc6f6d9629964a020ae3d0ecd83bce0d9b9deddeb4506c7ee1113",
+      "validationReport": "artifacts/manifests/mermaid-producer-report.json",
+      "intrinsic": {"viewBox": "0 0 684.625 127"},
+      "background": "#f7f7f7",
+      "bounds": {"x": 0.04, "y": 0.30, "width": 0.92, "height": 0.30},
+      "zIndex": 11,
+      "fit": "contain",
+      "overflow": "hidden",
+      "clock": "static",
+      "ports": [
+        {"id": "entry", "x": 0.12, "y": 0.43},
+        {"id": "loop", "x": 0.54, "y": 0.70},
+        {"id": "exit", "x": 0.96, "y": 0.43}
+      ],
+      "states": []
+    },
+    {
+      "id": "harness-flow-diagram",
+      "assetId": "harness-flow",
+      "producerSkill": "mermaid",
+      "kind": "svg",
+      "src": "artifacts/svgs/harness-flow.svg",
+      "sha256": "4491aac9a4a5a421464f645201925d02cf01d312d94184dc242bc8cd6de6a437",
+      "validationReport": "artifacts/manifests/mermaid-producer-report.json",
+      "intrinsic": {"viewBox": "0 0 1459.21875 450.2265625"},
+      "background": "#f7f7f7",
+      "bounds": {"x": 0.04, "y": 0.22, "width": 0.92, "height": 0.58},
+      "zIndex": 12,
+      "fit": "contain",
+      "overflow": "hidden",
+      "clock": "static",
+      "ports": [
+        {"id": "agent-core", "x": 0.36, "y": 0.36},
+        {"id": "harness-shell", "x": 0.50, "y": 0.50},
+        {"id": "result-exit", "x": 0.91, "y": 0.76}
+      ],
+      "states": []
+    },
+    {
+      "id": "editorial-overlay",
+      "assetId": "video-editorial-overlay",
+      "producerSkill": "repo-native",
+      "fallbackReason": "Timecoded editorial captions and the persistent execution token are video-level composition, not Mermaid diagram internals.",
+      "kind": "html",
+      "src": "source/overlay.html",
+      "sha256": "dcd6626a8902b29fb2ae1755ab3e0ab4f3aa4b461723b6c7e83a83d145fad5b2",
+      "validationReport": "artifacts/manifests/overlay-producer-report.json",
+      "intrinsic": {"width": 1280, "height": 720},
+      "background": "transparent",
+      "bounds": {"x": 0, "y": 0, "width": 1, "height": 1},
+      "zIndex": 50,
+      "fit": "stretch",
+      "overflow": "hidden",
+      "clock": "master",
+      "ports": [
+        {"id": "recap-landing", "x": 0.88, "y": 0.76}
+      ],
+      "states": []
+    }
+  ],
+  "events": [
+    {"id": "metaphor-ready", "at": 1.2},
+    {"id": "lm-pass-complete", "at": 8.3},
+    {"id": "agent-loop-complete", "at": 17.2},
+    {"id": "harness-revealed", "at": 19.0},
+    {"id": "recap-ready", "at": 27.8}
+  ],
+  "tracks": [
+    {
+      "id": "lm-opacity",
+      "elementId": "lm-railroad-diagram",
+      "property": "opacity",
+      "keyframes": [
+        {"at": 0, "value": 0},
+        {"at": 3.7, "value": 0},
+        {"at": 4.4, "value": 1, "easing": "ease-out"},
+        {"at": 8.4, "value": 1},
+        {"at": 9.2, "value": 0, "easing": "ease-in"},
+        {"at": 30, "value": 0}
+      ]
+    },
+    {
+      "id": "lm-scale",
+      "elementId": "lm-railroad-diagram",
+      "property": "scale",
+      "keyframes": [
+        {"at": 0, "value": 0.96},
+        {"at": 4.4, "value": 0.96},
+        {"at": 8.4, "value": 1},
+        {"at": 30, "value": 1}
+      ]
+    },
+    {
+      "id": "agent-opacity",
+      "elementId": "agent-railroad-diagram",
+      "property": "opacity",
+      "keyframes": [
+        {"at": 0, "value": 0},
+        {"at": 8.5, "value": 0},
+        {"at": 9.3, "value": 1, "easing": "ease-out"},
+        {"at": 17.3, "value": 1},
+        {"at": 18.6, "value": 0, "easing": "ease-in"},
+        {"at": 30, "value": 0}
+      ]
+    },
+    {
+      "id": "agent-scale",
+      "elementId": "agent-railroad-diagram",
+      "property": "scale",
+      "keyframes": [
+        {"at": 0, "value": 0.96},
+        {"at": 9.3, "value": 0.96},
+        {"at": 16.8, "value": 1},
+        {"at": 18.6, "value": 0.82, "easing": "ease-in-out"},
+        {"at": 30, "value": 0.82}
+      ]
+    },
+    {
+      "id": "harness-opacity",
+      "elementId": "harness-flow-diagram",
+      "property": "opacity",
+      "keyframes": [
+        {"at": 0, "value": 0},
+        {"at": 17.6, "value": 0},
+        {"at": 19.0, "value": 1, "easing": "ease-out"},
+        {"at": 26.6, "value": 1},
+        {"at": 27.5, "value": 0, "easing": "ease-in"},
+        {"at": 30, "value": 0}
+      ]
+    },
+    {
+      "id": "harness-scale",
+      "elementId": "harness-flow-diagram",
+      "property": "scale",
+      "keyframes": [
+        {"at": 0, "value": 0.90},
+        {"at": 17.6, "value": 0.90},
+        {"at": 19.0, "value": 1, "easing": "ease-out"},
+        {"at": 27.5, "value": 1},
+        {"at": 30, "value": 1}
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "lm-to-agent",
+      "type": "one-pass-becomes-loop",
+      "channel": "handoff",
+      "source": {"element": "lm-railroad-diagram", "port": "exit"},
+      "target": {"element": "agent-railroad-diagram", "port": "entry"},
+      "start": 8.5,
+      "end": 9.2,
+      "emits": ["agent-loop-complete"],
+      "consumes": ["lm-pass-complete"],
+      "meaning": "The completed LM pass is redirected into the repeated observe-LM-act agent route.",
+      "connector": {"path": "curve", "color": "#e8002a", "width": 4, "zIndex": 42, "persistAfter": false},
+      "validationChecks": ["The red handoff starts at the LM exit and lands at the agent railroad entrance during the crossfade."]
+    },
+    {
+      "id": "agent-to-harness",
+      "type": "mechanism-to-runtime-context",
+      "channel": "camera-follow",
+      "source": {"element": "agent-railroad-diagram", "port": "loop"},
+      "target": {"element": "harness-flow-diagram", "port": "agent-core"},
+      "start": 17.6,
+      "end": 18.8,
+      "emits": ["harness-revealed"],
+      "consumes": ["agent-loop-complete"],
+      "meaning": "The agent loop shrinks into the AGENTE subsystem while the surrounding harness is revealed.",
+      "connector": {"path": "curve", "color": "#e8002a", "width": 4, "zIndex": 43, "persistAfter": false},
+      "validationChecks": ["The outgoing loop and incoming AGENTE region overlap long enough to preserve identity during the pull-back."]
+    },
+    {
+      "id": "harness-to-recap",
+      "type": "system-to-mnemonic",
+      "channel": "handoff",
+      "source": {"element": "harness-flow-diagram", "port": "result-exit"},
+      "target": {"element": "editorial-overlay", "port": "recap-landing"},
+      "start": 26.7,
+      "end": 27.4,
+      "emits": ["recap-ready"],
+      "consumes": ["harness-revealed"],
+      "meaning": "The harness result exits the system and becomes the final generate-iterate-govern mnemonic.",
+      "connector": {"path": "straight", "color": "#e8002a", "width": 4, "zIndex": 44, "persistAfter": false},
+      "validationChecks": ["The red handoff remains visible while the harness fades and the three recap clauses land."]
+    }
+  ]
+}

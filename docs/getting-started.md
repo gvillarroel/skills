@@ -53,9 +53,8 @@ This table highlights current skill status; `SKILLS.md` is authoritative.
 | [slidev-animejs](../skills/slidev-animejs/SKILL.md) | `done` | Build and validate Anime.js animation patterns inside Slidev decks. |
 | [slidev-echarts](../skills/slidev-echarts/SKILL.md) | `done` | Build and validate ECharts chart labs inside Slidev decks. |
 | [slidev-quality-audit](../skills/slidev-quality-audit/SKILL.md) | `done` | Audit Slidev decks for visual quality regressions. |
-| [slidev-video](../skills/slidev-video/SKILL.md) | `done` | Record, export, and validate Slidev decks as video. |
-| [html-d3-anime-video-workflow](../skills/html-d3-anime-video-workflow/SKILL.md) | `done` | Produce standalone HTML+D3+Anime.js video workflows. |
-| [manim-svg-video](../skills/manim-svg-video/SKILL.md) | `done` | Compose many SVG or animated SVG assets into a Manim-rendered MP4. |
+| [video](../skills/video/SKILL.md) | `done` | Orchestrate specialist visuals, compose mixed-media interactions, and render validated video at exact dimensions. |
+| [manim-svg-video](../skills/manim-svg-video/SKILL.md) | `done` | Render standalone SVG-only sequences as manifest-backed Manim MP4s. |
 | [threejs-animated-3d](../skills/threejs-animated-3d/SKILL.md) | `done` | Build and verify browser-rendered Three.js/WebGL scenes. |
 
 ## Validation Flow

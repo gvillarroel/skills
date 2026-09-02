@@ -1,0 +1,240 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a06312-e703-7f2c-a80c-3507125e0296",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260902-animated-svg-to-gif-runtime-spark-1\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 14
+  },
+  "providers": {
+    "openai-codex": 14
+  },
+  "usageTotals": {
+    "input": 13102,
+    "output": 2416,
+    "cacheRead": 86784,
+    "cacheWrite": 0,
+    "totalTokens": 102302
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 6,
+    "bash": 7
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1165
+    },
+    {
+      "path": "skills/animated-svg-to-gif/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6474
+    },
+    {
+      "path": "skills/animated-svg-to-gif/assets/templates/pulse.animated.svg",
+      "calls": 1,
+      "resultBytes": 807
+    },
+    {
+      "path": "skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py",
+      "calls": 1,
+      "resultBytes": 21290
+    },
+    {
+      "path": "pulse.manifest.json",
+      "calls": 1,
+      "resultBytes": 817
+    },
+    {
+      "path": "conversion-manifest.json",
+      "calls": 1,
+      "resultBytes": 997
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1165
+    },
+    {
+      "path": "skills/animated-svg-to-gif/SKILL.md",
+      "calls": 1,
+      "resultBytes": 6474
+    },
+    {
+      "path": "skills/animated-svg-to-gif/assets/templates/pulse.animated.svg",
+      "calls": 1,
+      "resultBytes": 807
+    },
+    {
+      "path": "skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py",
+      "calls": 1,
+      "resultBytes": 21290
+    },
+    {
+      "path": "pulse.manifest.json",
+      "calls": 1,
+      "resultBytes": 817
+    },
+    {
+      "path": "conversion-manifest.json",
+      "calls": 1,
+      "resultBytes": 997
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/animated-svg-to-gif/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/animated-svg-to-gif/assets/templates/pulse.animated.svg",
+      "calls": 1
+    },
+    {
+      "path": "skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py",
+      "calls": 1
+    },
+    {
+      "path": "pulse.manifest.json",
+      "calls": 1
+    },
+    {
+      "path": "conversion-manifest.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 31550,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1165
+    },
+    {
+      "line": 29,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la",
+      "isError": false,
+      "resultBytes": 190
+    },
+    {
+      "line": 44,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls -la skills/animated-svg-to-gif",
+      "isError": false,
+      "resultBytes": 358
+    },
+    {
+      "line": 57,
+      "tool": "read",
+      "path": "skills/animated-svg-to-gif/SKILL.md",
+      "policyPath": "skills/animated-svg-to-gif/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 6474
+    },
+    {
+      "line": 70,
+      "tool": "read",
+      "path": "skills/animated-svg-to-gif/assets/templates/pulse.animated.svg",
+      "policyPath": "skills/animated-svg-to-gif/assets/templates/pulse.animated.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 807
+    },
+    {
+      "line": 83,
+      "tool": "read",
+      "path": "skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py",
+      "policyPath": "skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py",
+      "command": null,
+      "isError": false,
+      "resultBytes": 21290
+    },
+    {
+      "line": 98,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "pwd",
+      "isError": false,
+      "resultBytes": 142
+    },
+    {
+      "line": 112,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "cp skills/animated-svg-to-gif/assets/templates/pulse.animated.svg pulse.animated.svg",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 128,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/animated-svg-to-gif/scripts/convert_animated_svg_to_gif.py pulse.animated.svg -o pulse.gif --fps 12 --width 360 --duration 2 --scale 1 --background \"#ffffff\"",
+      "isError": false,
+      "resultBytes": 548
+    },
+    {
+      "line": 144,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ffprobe -v error -show_entries stream=width,height,r_frame_rate,duration -show_entries format=duration -of json pulse.gif",
+      "isError": false,
+      "resultBytes": 406
+    },
+    {
+      "line": 160,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "bash -lc 'for f in pulse.animated.svg pulse.gif pulse.manifest.json conversion-manifest.json; do [ -f \"$f\" ] && echo \"OK $f\" || echo \"MISSING $f\"; done && stat -c \"%n %s\" pulse.gif pulse.manifest.json conversion-manifest.json pulse.animated",
+      "isError": false,
+      "resultBytes": 229
+    },
+    {
+      "line": 173,
+      "tool": "read",
+      "path": "pulse.manifest.json",
+      "policyPath": "pulse.manifest.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 817
+    },
+    {
+      "line": 186,
+      "tool": "read",
+      "path": "conversion-manifest.json",
+      "policyPath": "conversion-manifest.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 997
+    }
+  ],
+  "findings": []
+}

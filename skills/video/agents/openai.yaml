@@ -1,0 +1,4 @@
+interface:
+  display_name: "Video"
+  short_description: "Compose specialist visuals into validated video"
+  default_prompt: "Use $video to compose these specialist-produced assets into a synchronized scene at my requested dimensions and deliver a validated video."

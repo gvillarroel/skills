@@ -2,6 +2,27 @@
 
 Use `scripts/compose_svg_video.py` as the stable entrypoint for Manim SVG video composition.
 
+Set `$env:MANIM_SVG_VIDEO_SKILL` to the skill directory, then invoke the script through
+`$env:MANIM_SVG_VIDEO_SKILL/scripts/compose_svg_video.py`. Keep outputs in the current
+project rather than in the skill bundle.
+
+## Commands
+
+Generate the manifest and Manim scene without rendering:
+
+```powershell
+uv run --script $env:MANIM_SVG_VIDEO_SKILL/scripts/compose_svg_video.py --discover-root path/to/animated-svgs --out projects/<project-id>/artifacts/videos/svg-sequence --duration 12 --max-assets 6 --dry-run
+```
+
+Render a low-cost smoke MP4 before a long render:
+
+```powershell
+uv run --script $env:MANIM_SVG_VIDEO_SKILL/scripts/compose_svg_video.py --discover-root path/to/animated-svgs --out projects/<project-id>/artifacts/videos/svg-sequence-smoke --duration 12 --max-assets 6 --layout replace --active-slots 1 --render --quality l --fps 5 --resolution 640,360
+```
+
+After the smoke passes, keep the same source and layout contract while increasing duration,
+fps, resolution, or Manim quality for the requested deliverable.
+
 ## Timing
 
 - `--duration`: total target video length in seconds. Use `600` for 10 minutes.
@@ -61,3 +82,13 @@ Each run writes:
 - `rendered_video_raw` in the manifest when the raw Manim MP4 required duration repair.
 
 Keep all of these under `projects/<project-id>/artifacts/videos/` for project-scoped validation hygiene.
+
+## Validation
+
+Before delivery:
+
+1. Confirm `asset_count` and source ordering in `composition-manifest.json`.
+2. Resolve or report every non-null `conversion_error`.
+3. Inspect at least the first, middle, and final rendered states at full resolution.
+4. Probe the MP4 with `ffprobe`; verify exact width, height, fps, codec, and duration against the request.
+5. Confirm the manifest's `rendered_video` exists and that exact-duration repair did not silently replace the requested visual settings.

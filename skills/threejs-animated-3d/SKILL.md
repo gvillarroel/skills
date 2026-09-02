@@ -32,6 +32,7 @@ Replace the example value with the exact requested path. Do not substitute descr
 - `references/scene-patterns.md`: read when choosing scene types, structuring a Three.js gallery, or implementing cameras, lights, materials, particles, and resize-safe renderers.
 - `references/validation.md`: read when writing Playwright checks, canvas pixel probes, movement checks, replay checks, or screenshot verification for Three.js output.
 - `scripts/build_standalone_threejs.py`: run for isolated runtime smoke tests or any task that needs a portable no-network HTML scene at an exact path.
+- `scripts/validate_standalone_threejs.py`: run after the standalone builder; it performs static, desktop/mobile canvas, animation, replay, pointer, overflow, and browser-error checks in one fail-closed command.
 - `assets/templates/self-contained-token-orbit.html`: builder source template; do not copy it directly because its runtime marker must be expanded.
 - `assets/vendor/three.module.min.js` and `assets/vendor/three.core.min.js`: bundled inputs that the builder embeds into the standalone HTML.
 
@@ -46,7 +47,12 @@ if (!(Test-Path -LiteralPath $OutputHtml)) { throw "Missing requested Three.js H
 if (Test-Path -LiteralPath "portable-3d-scene.html") { throw "Wrong output filename: use the exact requested path." }
 if (Test-Path -LiteralPath "three.module.min.js") { throw "Standalone build must not copy vendor files to the workspace root." }
 Select-String -Path $OutputHtml -Pattern "https?://|//cdn|unpkg|jsdelivr|esm.sh" -Quiet | ForEach-Object { if ($_) { throw "External network reference found." } }
+uv run --script skills/threejs-animated-3d/scripts/validate_standalone_threejs.py $OutputHtml --report scene-validation.json --screenshot scene.png
 ```
+
+Use the bundled validator instead of probing Playwright object internals or
+issuing an unguarded `grep` whose expected no-match exit code becomes a tool
+error. Treat its nonzero exit as the validation failure and fix the artifact.
 
 For repository acceptance-fixture maintenance only, set `<skill-root>` to the full `threejs-animated-3d` source directory. The commands below require `assets/examples/`, which is intentionally excluded from the normal runtime payload.
 
@@ -86,6 +92,7 @@ After changing this skill, its references, or examples, run:
 
 ```powershell
 uv run --script scripts/validate-skills.py
+uv run --script skills/threejs-animated-3d/scripts/validate_standalone_threejs.py <artifact.html> --report <report.json> --screenshot <preview.png>
 ```
 
 When changing the example gallery, also run the `Common Commands` build and verify steps. Inspect generated screenshots under `projects/threejs-animated-3d-validation/artifacts/screenshots/` and confirm all canvases are nonblank, animated, color-tokened, responsive, and interactive.

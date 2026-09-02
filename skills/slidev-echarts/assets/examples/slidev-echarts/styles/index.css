@@ -47,7 +47,7 @@
 }
 
 .eyebrow {
-  color: #45842a !important;
+  color: #294d19 !important;
   font-size: 0.82rem;
   font-weight: 750;
   letter-spacing: 0.08em;
@@ -289,7 +289,7 @@
 }
 
 .dashboard-metrics span {
-  color: #828282;
+  color: #4f4f4f;
   display: block;
   font-size: 0.75rem;
   font-weight: 700;
@@ -365,7 +365,7 @@
   background: #f7f7f7;
   border: 1px solid #cfcfcf;
   border-radius: 8px;
-  color: #828282;
+  color: #4f4f4f;
   font-size: 0.75rem;
   font-weight: 700;
   min-height: 28px;
@@ -408,7 +408,7 @@
 }
 
 .spotlight-callouts span {
-  color: #828282;
+  color: #4f4f4f;
   display: block;
   font-size: 0.75rem;
   font-weight: 700;

@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "sourceId": "what-is-an-agent-regex-loop",
+  "route": "topic-explainer",
+  "createdFor": "Explain what an agent and a harness are through regular-expression and railroad-diagram metaphors.",
+  "deliverables": [
+    "source/storyboard.md",
+    "source/shot-contract.json",
+    "source/scene-contract.json",
+    "artifacts/videos/what-is-an-agent-regex-loop.mp4"
+  ],
+  "constraints": {
+    "durationSeconds": 30,
+    "aspect": "16:9",
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "audience": "Spanish-speaking mixed technical audience",
+    "style": "Dark technical canvas with regular-expression and railroad-diagram language",
+    "audio": "silent first iteration with on-screen explanation"
+  },
+  "facts": [
+    {
+      "id": "lm-pass",
+      "value": "A language model transforms the supplied context into a response in one inference pass.",
+      "source": "user prompt interpreted as a concise educational model",
+      "useInVideo": "contrast the model with the agent loop"
+    },
+    {
+      "id": "agent-loop",
+      "value": "An agent repeatedly observes, uses the language model to choose an action, executes the action, and feeds the resulting observation back into the next iteration until a stopping condition is met.",
+      "source": "user prompt",
+      "useInVideo": "core loop"
+    },
+    {
+      "id": "harness-runtime",
+      "value": "A harness is the surrounding software that supplies instructions and context, exposes tools and memory, enforces permissions, manages loop execution, and evaluates when to continue or stop.",
+      "source": "user prompt interpreted as a concise educational model",
+      "useInVideo": "pull back from the agent loop to the governing runtime"
+    }
+  ],
+  "literalAnchors": [
+    "¿QUÉ ES UN AGENTE?",
+    "LM := CONTEXTO · MODELO · RESPUESTA",
+    "AGENTE := OBJETIVO · (OBSERVAR · LM · ACTUAR)+ · TERMINAR",
+    "HARNESS := REGLAS · MEMORIA · PERMISOS · AGENTE(HERRAMIENTAS) · EVALUAR",
+    "LM genera. El agente itera. El harness gobierna."
+  ],
+  "assets": [
+    {
+      "id": "lm-railroad",
+      "producerSkill": "mermaid",
+      "role": "one-pass language-model railroad diagram"
+    },
+    {
+      "id": "agent-railroad",
+      "producerSkill": "mermaid",
+      "role": "repeating agent railroad diagram"
+    },
+    {
+      "id": "harness-flow",
+      "producerSkill": "mermaid",
+      "role": "nested harness and agent loop diagram"
+    }
+  ],
+  "missingFacts": [],
+  "risks": [
+    "The regex notation is an explanatory metaphor, not a formal executable definition.",
+    "A silent first iteration must remain understandable without narration."
+  ]
+}

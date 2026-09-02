@@ -48,6 +48,7 @@ Pass each `requiredTerms` value unchanged with repeated `--required-term`; keep 
 
 - Form selection and implementation: `references/visualization-type-index.md`, `references/layout-patterns.md`, and `references/pattern-selection-contracts.md`.
 - Named or nearest reusable pattern: `references/pattern-routing.md` and `references/pattern-index.md`; read only the matching anchored pattern recipe. For exact counts, also read `references/cardinality-generalization.md`.
+- Kinetic or deconstructed typography: `references/patterns/kinetic-glyph-mosaic.md`; use `scripts/build_kinetic_type.py` for ordinary-looking text that reveals moving tile, line, dot, or hybrid glyph components. Follow that route's HTML-specific validation commands; do not substitute the generic settled-SVG contract check or look for acceptance fixtures in a runtime bundle.
 - Offline or animated output: `references/self-contained-output.md` and `references/animation-patterns.md`.
 - Composition audit or conversion: `references/evaluation-rubric.md` and `references/recomposition-recipes.md`.
 - Logo, identity, or texture: `references/pattern-catalog.md`, `references/mathematical-patterns.md`, and `references/palette-contract.md`; add `references/texture-catalog.md` only for texture selection.

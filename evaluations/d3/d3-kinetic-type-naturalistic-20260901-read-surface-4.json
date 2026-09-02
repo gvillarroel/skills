@@ -1,0 +1,194 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a06263-5131-7d6a-a642-dfe461841d98",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260901-d3-kinetic-type-naturalistic-spark-4\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 12
+  },
+  "providers": {
+    "openai-codex": 12
+  },
+  "usageTotals": {
+    "input": 14647,
+    "output": 3502,
+    "cacheRead": 71936,
+    "cacheWrite": 0,
+    "totalTokens": 90085
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 5,
+    "bash": 6
+  },
+  "paths": [
+    {
+      "path": "artifacts/kinetic-launch.html",
+      "calls": 2,
+      "resultBytes": 21953
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1438
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1,
+      "resultBytes": 8589
+    },
+    {
+      "path": "skills/d3/references/patterns/kinetic-glyph-mosaic.md",
+      "calls": 1,
+      "resultBytes": 10543
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "artifacts/kinetic-launch.html",
+      "calls": 2,
+      "resultBytes": 21953
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1438
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1,
+      "resultBytes": 8589
+    },
+    {
+      "path": "skills/d3/references/patterns/kinetic-glyph-mosaic.md",
+      "calls": 1,
+      "resultBytes": 10543
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "artifacts/kinetic-launch.html",
+      "calls": 2
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3/references/patterns/kinetic-glyph-mosaic.md",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 42523,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1438
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/d3/SKILL.md",
+      "policyPath": "skills/d3/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8589
+    },
+    {
+      "line": 40,
+      "tool": "read",
+      "path": "skills/d3/references/patterns/kinetic-glyph-mosaic.md",
+      "policyPath": "skills/d3/references/patterns/kinetic-glyph-mosaic.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 10543
+    },
+    {
+      "line": 55,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/build_kinetic_type.py\" --help",
+      "isError": false,
+      "resultBytes": 1208
+    },
+    {
+      "line": 70,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/build_kinetic_type.py\" \"artifacts/kinetic-launch.html\" --text \"PLAN\" --variant tiles --text \"BUILD\" --variant lines --text \"VERIFY\" --variant dots --text \"SHIP\" --variant hybrid --title \"From plan to ship\" --colors",
+      "isError": false,
+      "resultBytes": 191
+    },
+    {
+      "line": 85,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/check_self_contained_html.py\" \"artifacts/kinetic-launch.html\"",
+      "isError": false,
+      "resultBytes": 80
+    },
+    {
+      "line": 100,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/check_palette_contract.py\" \"artifacts/kinetic-launch.html\" --colorset colorset1",
+      "isError": false,
+      "resultBytes": 908
+    },
+    {
+      "line": 115,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/check_visual_contract.py\" \"artifacts/kinetic-launch.html\" --require-class \"kinetic-word:4\" --require-attribute \"data-pattern-id=d3-kinetic-glyph-mosaic\" --require-attribute \"data-colorset=colorset1\" --require-attri",
+      "isError": false,
+      "resultBytes": 1457
+    },
+    {
+      "line": 130,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python \"skills/d3/scripts/render_d3_svg.py\" \"artifacts/kinetic-launch.html\" --selector \"svg#kinetic-word-1\" --output \"artifacts/kinetic-launch-idle.svg\" --screenshot \"artifacts/kinetic-launch-idle.png\" --wait-ms 1200",
+      "isError": false,
+      "resultBytes": 459
+    },
+    {
+      "line": 143,
+      "tool": "read",
+      "path": "artifacts/kinetic-launch.html",
+      "policyPath": "artifacts/kinetic-launch.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2170
+    },
+    {
+      "line": 156,
+      "tool": "read",
+      "path": "artifacts/kinetic-launch.html",
+      "policyPath": "artifacts/kinetic-launch.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 19783
+    }
+  ],
+  "findings": []
+}

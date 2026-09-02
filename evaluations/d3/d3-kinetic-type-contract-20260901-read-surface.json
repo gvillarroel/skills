@@ -1,0 +1,135 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a061cf-1c81-7ba7-a98a-95d926d7d7fa",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260901-d3-kinetic-type-contract-spark-2\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 6
+  },
+  "providers": {
+    "openai-codex": 6
+  },
+  "usageTotals": {
+    "input": 10138,
+    "output": 2639,
+    "cacheRead": 16384,
+    "cacheWrite": 0,
+    "totalTokens": 29161
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 3,
+    "bash": 3
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1605
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1,
+      "resultBytes": 8424
+    },
+    {
+      "path": "outputs/kinetic-type.html",
+      "calls": 1,
+      "resultBytes": 26504
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1605
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1,
+      "resultBytes": 8424
+    },
+    {
+      "path": "outputs/kinetic-type.html",
+      "calls": 1,
+      "resultBytes": 26504
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/d3/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/kinetic-type.html",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 36533,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1605
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/d3/SKILL.md",
+      "policyPath": "skills/d3/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 8424
+    },
+    {
+      "line": 42,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python skills/d3/scripts/build_kinetic_type.py outputs/kinetic-type.html --text \"TRACE\" --variant tiles --text \"SIGNAL\" --variant lines --text \"SYSTEM\" --variant dots --text \"REVEAL\" --variant hybrid --motion energetic --colorset colorset1 ",
+      "isError": false,
+      "resultBytes": 187
+    },
+    {
+      "line": 63,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python skills/d3/scripts/check_self_contained_html.py outputs/kinetic-type.html",
+      "isError": false,
+      "resultBytes": 80
+    },
+    {
+      "line": 64,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "python skills/d3/scripts/check_palette_contract.py outputs/kinetic-type.html --colorset colorset1",
+      "isError": false,
+      "resultBytes": 900
+    },
+    {
+      "line": 79,
+      "tool": "read",
+      "path": "outputs/kinetic-type.html",
+      "policyPath": "outputs/kinetic-type.html",
+      "command": null,
+      "isError": false,
+      "resultBytes": 26504
+    }
+  ],
+  "findings": []
+}

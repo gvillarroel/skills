@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'/&gt;">
+  <title>Vector logo variant audit</title>
+  <style>
+    :root{font:15px/1.45 system-ui,sans-serif;color:#172434;background:#edf1f5}
+    *{box-sizing:border-box}body{margin:0;padding:28px}h1{margin:0 0 8px;font-size:29px}p{margin:6px 0 16px}
+    header{max-width:1180px;margin:auto}.controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:18px 0}
+    button{padding:10px 16px;border:0;border-radius:7px;background:#173b63;color:white;cursor:pointer}
+    input{vertical-align:middle}#progress{font-variant-numeric:tabular-nums}#report{max-height:300px;overflow:auto;white-space:pre-wrap}
+    main{max-width:1180px;margin:auto}.row{display:grid;grid-template-columns:180px repeat(6,minmax(0,1fr));gap:8px;margin:10px 0}
+    .identity{padding:14px 4px;overflow-wrap:anywhere}.identity strong{display:block}.identity small{font-size:11px;color:#526173}
+    .cell{min-width:0;border:1px solid #d9e0e8;border-radius:7px;background:white;padding:8px;text-align:center}
+    .cell img,.cell svg{width:90px;height:90px;max-width:100%;display:block;margin:2px auto}
+    .cell label{display:block;font-size:11px;letter-spacing:.02em}.dark{background:#172434;color:white}.adaptive{color:var(--chosen-color,#007298)}
+    .unavailable{color:#64748b;display:flex;flex-direction:column;justify-content:center;font-size:10px;min-height:123px}
+    #adaptive-probe{position:fixed;left:-10000px;top:0;width:96px;height:96px}
+    @media(max-width:800px){body{padding:14px}.row{grid-template-columns:repeat(3,minmax(0,1fr))}.identity{grid-column:1/-1}.cell img,.cell svg{width:76px;height:76px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vector logo variant audit</h1>
+    <p>Source-matched SVGs · labeled variants · preserved negative space · explicit license exceptions</p>
+    <div class="controls">
+      <label>Adaptive color <input id="chosen-color" type="color" value="#007298"></label>
+      <button id="run-audit">Run full SVG audit</button>
+      <button id="save-report" disabled>Download audit report</button>
+      <span id="progress" role="status">Ready</span>
+    </div>
+    <details><summary>Machine-readable audit result</summary><pre id="report"></pre></details>
+  </header>
+  <main id="gallery"></main><div id="adaptive-probe" aria-hidden="true"></div>
+  <script id="audit-data" type="application/json">__LOGO_AUDIT_DATA__</script>
+  <script>
+    const data = JSON.parse(document.getElementById('audit-data').textContent);
+    const decode = value => new TextDecoder().decode(Uint8Array.from(atob(value), char => char.charCodeAt(0)));
+    const svgUrl = record => 'data:image/svg+xml;base64,' + record.svg;
+    const gallery = document.getElementById('gallery');
+    const byKey = new Map(data.records.map(record => [record.id + '/' + record.variant, record]));
+    for (const id of data.representatives) {
+      const row = document.createElement('section'); row.className = 'row'; row.dataset.logoId = id;
+      const identity = document.createElement('div'); identity.className = 'identity';
+      const title = document.createElement('strong'); title.textContent = byKey.get(id + '/original').title;
+      const subtitle = document.createElement('small'); subtitle.textContent = id;
+      identity.append(title, subtitle); row.append(identity);
+      for (const kind of data.kinds) {
+        const cell = document.createElement('div'); cell.className = 'cell'; cell.dataset.variant = kind;
+        const label = document.createElement('label'); label.textContent = kind; cell.append(label);
+        const record = byKey.get(id + '/' + kind);
+        if (!record) {
+          cell.classList.add('unavailable'); const reason = document.createElement('p'); reason.textContent = data.availability[id][kind]; cell.append(reason);
+        } else if (kind === 'adaptive') {
+          cell.classList.add('adaptive'); const content = document.createElement('div'); content.innerHTML = decode(record.svg); cell.append(content);
+        } else {
+          if (kind === 'mono-white') cell.classList.add('dark');
+          const image = new Image(); image.alt = record.title + ' ' + kind; image.src = svgUrl(record); cell.append(image);
+        }
+        row.append(cell);
+      }
+      gallery.append(row);
+    }
+    document.getElementById('chosen-color').addEventListener('input', event => document.documentElement.style.setProperty('--chosen-color', event.target.value));
+    const nextFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
+    function checkPixels(context, kind) {
+      const pixels = context.getImageData(0, 0, 96, 96).data;
+      let painted = 0, wrong = 0;
+      for (let index = 0; index < pixels.length; index += 4) {
+        if (!pixels[index + 3]) continue;
+        painted++;
+        if (pixels[index + 3] < 64) continue;
+        const r = pixels[index], g = pixels[index+1], b = pixels[index+2];
+        if (kind === 'mono-black' && Math.max(r,g,b) > 2) wrong++;
+        if (kind === 'mono-white' && Math.min(r,g,b) < 253) wrong++;
+        if (kind === 'grayscale' && Math.max(r,g,b) - Math.min(r,g,b) > 3) wrong++;
+      }
+      return {painted, wrong};
+    }
+    async function checkImage(record) {
+      const image = new Image(); image.src = svgUrl(record); await image.decode();
+      const canvas = document.createElement('canvas'); canvas.width = canvas.height = 96;
+      const context = canvas.getContext('2d', {willReadFrequently:true}); context.drawImage(image,0,0,96,96);
+      const pixels = checkPixels(context,record.variant);
+      if (image.naturalWidth !== 256 || image.naturalHeight !== 256) throw new Error('incorrect intrinsic size');
+      if (!pixels.painted) throw new Error('no visible vector paint');
+      if (pixels.wrong) throw new Error('unexpected palette pixels: ' + pixels.wrong);
+      return pixels.painted;
+    }
+    async function checkAdaptive(records, failures) {
+      const probe = document.getElementById('adaptive-probe'); let checked = 0;
+      for (const record of records) {
+        probe.innerHTML = decode(record.svg);
+        const shapes = [...probe.querySelectorAll('path,rect,circle,ellipse,line,polyline,polygon,use')].filter(node => !node.closest('clipPath'));
+        for (const color of ['rgb(0, 114, 152)','rgb(209, 47, 103)']) {
+          probe.style.color = color;
+          const bad = shapes.some(node => {
+            const style = getComputedStyle(node);
+            return [style.fill,style.stroke].some(paint => paint !== 'none' && paint !== color && paint !== 'rgba(0, 0, 0, 0)');
+          });
+          if (bad) failures.push({id:record.id,variant:'adaptive',error:'CSS color did not reach every painted shape',color});
+        }
+        checked++; if (checked % 100 === 0) await nextFrame();
+      }
+      probe.replaceChildren(); return checked;
+    }
+    window.runLogoAudit = async function() {
+      const start = performance.now(), failures = []; let decoded = 0, painted = 0;
+      document.getElementById('run-audit').disabled = true;
+      for (let index = 0; index < data.records.length; index += 16) {
+        await Promise.all(data.records.slice(index,index+16).map(async record => {
+          try {painted += await checkImage(record); decoded++;}
+          catch (error) {failures.push({id:record.id,variant:record.variant,error:String(error)});}
+        }));
+        document.getElementById('progress').textContent = `Checked ${Math.min(index+16,data.records.length)} / ${data.records.length}`;
+        await nextFrame();
+      }
+      const adaptiveChecked = await checkAdaptive(data.records.filter(record => record.variant === 'adaptive'), failures);
+      const result = {ok:failures.length === 0,expected:data.records.length,decoded,paintedPixels:painted,adaptiveChecked,
+        adaptiveColorChecks:adaptiveChecked*2,coverage:data.coverage,failures,elapsedMs:Math.round(performance.now()-start)};
+      window.logoAuditResult = result;
+      document.getElementById('report').textContent = JSON.stringify(result,null,2);
+      document.getElementById('progress').textContent = `${result.ok ? 'PASS' : 'FAIL'} · ${decoded} SVGs · ${adaptiveChecked} adaptive logos · ${failures.length} failures`;
+      document.getElementById('run-audit').disabled = false; document.getElementById('save-report').disabled = false;
+      return result;
+    };
+    document.getElementById('run-audit').addEventListener('click', () => window.runLogoAudit());
+    document.getElementById('save-report').addEventListener('click', () => {
+      const link = document.createElement('a'); link.href = URL.createObjectURL(new Blob([JSON.stringify(window.logoAuditResult,null,2)],{type:'application/json'}));
+      link.download = 'logo-vector-browser-audit.json'; link.click(); URL.revokeObjectURL(link.href);
+    });
+  </script>
+</body>
+</html>

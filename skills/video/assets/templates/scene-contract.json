@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "id": "replace-scene-id",
+  "canvas": {
+    "width": 1280,
+    "height": 720,
+    "aspectRatio": "16:9",
+    "fps": 30,
+    "durationSeconds": 8,
+    "background": "#101010",
+    "safeArea": {
+      "top": 36,
+      "right": 48,
+      "bottom": 36,
+      "left": 48
+    }
+  },
+  "masterClock": {
+    "mode": "deterministic",
+    "loop": false
+  },
+  "elements": [
+    {
+      "id": "diagram-element",
+      "assetId": "diagram-svg",
+      "producerSkill": "mermaid",
+      "kind": "svg",
+      "src": "artifacts/svgs/diagram.svg",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "validationReport": "artifacts/reviews/diagram-producer.json",
+      "intrinsic": {
+        "viewBox": "0 0 800 500"
+      },
+      "background": "transparent",
+      "bounds": {
+        "x": 0.05,
+        "y": 0.08,
+        "width": 0.55,
+        "height": 0.45
+      },
+      "zIndex": 10,
+      "fit": "contain",
+      "overflow": "hidden",
+      "clock": "static",
+      "ports": [
+        {
+          "id": "diagram-out",
+          "selector": "#result-node",
+          "anchor": "right"
+        }
+      ],
+      "states": [
+        "idle",
+        "active"
+      ]
+    },
+    {
+      "id": "result-element",
+      "assetId": "result-gif",
+      "producerSkill": "animated-svg-to-gif",
+      "kind": "gif",
+      "src": "artifacts/gifs/result.gif",
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "validationReport": "artifacts/reviews/result-producer.json",
+      "intrinsic": {
+        "width": 480,
+        "height": 480
+      },
+      "background": "transparent",
+      "bounds": {
+        "x": 0.68,
+        "y": 0.18,
+        "width": 0.24,
+        "height": 0.43
+      },
+      "zIndex": 20,
+      "fit": "contain",
+      "overflow": "hidden",
+      "clock": "master",
+      "playback": {
+        "mode": "decoded",
+        "loop": true,
+        "offsetSeconds": 0
+      },
+      "ports": [
+        {
+          "id": "result-center",
+          "x": 0.5,
+          "y": 0.5
+        }
+      ],
+      "states": []
+    }
+  ],
+  "events": [
+    {
+      "id": "result-ready",
+      "at": 4
+    }
+  ],
+  "tracks": [
+    {
+      "id": "diagram-state",
+      "elementId": "diagram-element",
+      "property": "state",
+      "keyframes": [
+        {
+          "at": 0,
+          "value": "idle"
+        },
+        {
+          "at": 2,
+          "value": "active"
+        }
+      ]
+    },
+    {
+      "id": "result-reveal",
+      "elementId": "result-element",
+      "property": "opacity",
+      "keyframes": [
+        {
+          "at": 0,
+          "value": 0
+        },
+        {
+          "at": 3,
+          "value": 0
+        },
+        {
+          "at": 4,
+          "value": 1,
+          "easing": "ease-out"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "diagram-to-result",
+      "type": "state-result",
+      "channel": "handoff",
+      "source": {
+        "element": "diagram-element",
+        "port": "diagram-out"
+      },
+      "target": {
+        "element": "result-element",
+        "port": "result-center"
+      },
+      "start": 3,
+      "end": 4,
+      "emits": [
+        "result-ready"
+      ],
+      "consumes": [],
+      "meaning": "The completed diagram state hands its result to the animated result asset.",
+      "connector": {
+        "path": "curve",
+        "color": "#e8002a",
+        "width": 4,
+        "zIndex": 30,
+        "persistAfter": false
+      },
+      "validationChecks": [
+        "The connector starts at diagram-out and reaches result-center between 3 and 4 seconds.",
+        "The result becomes visible when result-ready is emitted."
+      ]
+    }
+  ]
+}

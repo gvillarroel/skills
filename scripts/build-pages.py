@@ -19,7 +19,7 @@ PAGES_ROOT = ROOT / "dist" / "pages"
 SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
     "ai-concept-videos": SKILLS
-    / "html-d3-anime-video-workflow"
+    / "video"
     / "assets"
     / "examples"
     / "ai-concept-videos",
@@ -113,6 +113,7 @@ UNLISTED_EXAMPLE_SOURCES = {
     "d3-logo-textures",
     "mermaid-max-elements",
     "plantuml-colorset-renderer-base",
+    "plantuml-colorset-renderer-cs1",
 }
 PUBLISHED_EXAMPLE_SETS = [
     {
@@ -158,18 +159,10 @@ PUBLISHED_EXAMPLE_SETS = [
     {
         "id": "plantuml-colorset-renderer",
         "source": "plantuml-colorset-renderer",
-        "title": "PlantUML Colorset2 Renderer",
+        "title": "PlantUML Skill Gallery",
         "href": "examples/plantuml-colorset-renderer/",
-        "kind": "PlantUML colorset2",
-        "description": "Colorset2 PlantUML coverage examples with inline SVG cards and replayable reveal motion.",
-    },
-    {
-        "id": "plantuml-colorset-renderer-cs1",
-        "source": "plantuml-colorset-renderer-cs1",
-        "title": "PlantUML CS1 Renderer",
-        "href": "examples/plantuml-colorset-renderer-cs1/",
-        "kind": "PlantUML cs1",
-        "description": "Colorset1 red-neutral PlantUML coverage examples with CS1-suffixed SVG gallery item IDs.",
+        "kind": "PlantUML",
+        "description": "One gallery for 28 published PlantUML coverage examples across every available family, switchable Colorset 1 and Colorset 2 renders, SVG/PNG output, replay motion, engine options, and the normalized technical-logo catalog.",
     },
     {
         "id": "threejs-animated-3d",
@@ -385,6 +378,36 @@ def patch_page_metadata(example_id: str, index_path: Path) -> None:
     }.items():
         content = ensure_body_attribute(content, name, value)
     index_path.write_text(content, encoding="utf-8", newline="\n")
+
+
+def write_plantuml_legacy_redirect() -> None:
+    legacy_index = PAGES_ROOT / "examples" / "plantuml-colorset-renderer-cs1" / "index.html"
+    legacy_index.write_text(
+        """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=../plantuml-colorset-renderer/?theme=colorset1">
+  <link rel="canonical" href="../plantuml-colorset-renderer/?theme=colorset1">
+  <link rel="icon" href="../../favicon.ico">
+  <title>PlantUML gallery moved</title>
+</head>
+<body data-legacy-redirect="plantuml-colorset-renderer-cs1">
+  <p>The Colorset 1 examples now live in the unified <a id="canonical-link" href="../plantuml-colorset-renderer/?theme=colorset1">PlantUML Skill Gallery</a>.</p>
+  <script>
+    const target = new URL("../plantuml-colorset-renderer/", window.location.href);
+    target.searchParams.set("theme", "colorset1");
+    target.hash = window.location.hash;
+    document.querySelector("#canonical-link").href = target.href;
+    window.location.replace(target.href);
+  </script>
+</body>
+</html>
+""",
+        encoding="utf-8",
+        newline="\n",
+    )
 
 
 def write_index() -> None:
@@ -679,6 +702,7 @@ def build_docs() -> None:
     copy_tree(example_source("procedural-svg-animation"), PAGES_ROOT / "examples" / "procedural-svg-animation")
     copy_tree(example_source("plantuml-colorset-renderer"), PAGES_ROOT / "examples" / "plantuml-colorset-renderer")
     copy_tree(example_source("plantuml-colorset-renderer-cs1"), PAGES_ROOT / "examples" / "plantuml-colorset-renderer-cs1")
+    write_plantuml_legacy_redirect()
     copy_tree(example_source("vectorize-art-patterns"), PAGES_ROOT / "examples" / "vectorize-art-patterns")
     copy_tree(
         example_source("vectorize-abstract-world-maps"),

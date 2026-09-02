@@ -32,6 +32,12 @@ node -e "const d=require('./skills/d3/assets/templates/surface-stable-fractal-di
 
 ## Artifact Checks
 
+Build ordinary-looking text that reveals deterministic square, line, dot, or hybrid glyph components on hover, focus, or press:
+
+```powershell
+uv run --script skills/d3/scripts/build_kinetic_type.py projects/<project-id>/artifacts/html/kinetic-type.html --text "MOTION" --variant hybrid --motion energetic --colorset colorset1 --seed 73
+```
+
 Check that a generated HTML artifact is self-contained:
 
 ```powershell

@@ -104,6 +104,20 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def build_launcher_prompt(skill_name: str) -> str:
+    """Build the deterministic bootstrap prompt for an isolated skill run."""
+    return (
+        f"You are running an isolated forward test for `{skill_name}`. "
+        "Use the read tool to read `../prompt.md` first, then follow it exactly. "
+        f"The loaded bundle is rooted at `skills/{skill_name}` from the current workspace; never prefix that path with `../`. "
+        f"Immediately after the prompt, read the bundle entry point at `skills/{skill_name}/SKILL.md`; "
+        "do not probe for README.md or other conventional entry-point filenames. "
+        "The shell tool is bash, not PowerShell; do not run PowerShell commands. "
+        "Do not list directories or inspect script source before reading the prompt. "
+        "If the prompt gives an exact command, run it verbatim and verify the required outputs."
+    )
+
+
 def snapshot_tree(root: Path) -> dict[str, dict[str, Any]]:
     snapshot: dict[str, dict[str, Any]] = {}
     for path in sorted(root.rglob("*")):
@@ -705,14 +719,7 @@ def main() -> int:
     prompt_path.write_text(prompt, encoding="utf-8")
     initial_skill_snapshot = snapshot_tree(skill_target)
 
-    launcher_prompt = (
-        f"You are running an isolated forward test for `{args.skill}`. "
-        "Use the read tool to read `../prompt.md` first, then follow it exactly. "
-        f"The loaded bundle is rooted at `skills/{args.skill}` from the current workspace; never prefix that path with `../`. "
-        "The shell tool is bash, not PowerShell; do not run PowerShell commands. "
-        "Do not list directories or inspect script source before reading the prompt. "
-        "If the prompt gives an exact command, run it verbatim and verify the required outputs."
-    )
+    launcher_prompt = build_launcher_prompt(args.skill)
 
     command = [
         *pi_prefix,

@@ -165,6 +165,7 @@ Do not read the gallery source for normal pattern generation. Use the gallery so
 | `d3-calendar-year` | Calendar | Calendar Year | `references/patterns/calendar-year.md` |
 | `d3-vaccine-impact` | Public health | Vaccine Impact | `references/patterns/vaccine-impact.md` |
 | `d3-word-cloud` | Text | Word Cloud | `references/patterns/word-cloud.md` |
+| `d3-kinetic-glyph-mosaic` | Text interaction | Kinetic Glyph Mosaic | `references/patterns/kinetic-glyph-mosaic.md` |
 | `d3-voronoi-stippling` | Sampling | Voronoi Stippling | `references/patterns/voronoi-stippling.md` |
 | `d3-creature-stippling` | Sampling | Pocket Monster Stippling | `references/patterns/creature-stippling.md` |
 | `d3-tanglegram` | Comparison | Tanglegram | `references/patterns/tanglegram.md` |

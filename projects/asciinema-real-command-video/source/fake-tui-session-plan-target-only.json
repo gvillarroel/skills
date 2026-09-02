@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "title": "Three prompts typed into a real TUI",
+  "working_directory": "../scripts",
+  "declared_scope": "A deterministic local TUI reads three prompts and returns text without file or network side effects.",
+  "target": {
+    "name": "Deterministic Python TUI",
+    "executable": "python3",
+    "version_args": ["--version"]
+  },
+  "interaction": {
+    "mode": "tui",
+    "launch_args": ["fake_tui.py"],
+    "typing_interval_seconds": 0.025,
+    "pre_submit_pause_seconds": 0.3,
+    "startup_timeout_seconds": 30,
+    "ready_pattern": "(?m)^READY>\\s*$",
+    "busy_pattern": "(?!)",
+    "settle_seconds": 0.5,
+    "exit_text": "/exit",
+    "exit_timeout_seconds": 30,
+    "expected_exit_codes": [0]
+  },
+  "terminal": {"cols": 100, "rows": 30},
+  "render": {
+    "theme": "github-dark",
+    "font_size": 18,
+    "line_height": 1.4,
+    "fps": 30,
+    "speed": 1.0,
+    "idle_time_limit": null,
+    "last_frame_duration": 2.0,
+    "start_at": "tui-ready"
+  },
+  "steps": [
+    {
+      "id": "prompt-1",
+      "prompt": "first real prompt",
+      "timeout_seconds": 30,
+      "pause_after_seconds": 0.5
+    },
+    {
+      "id": "prompt-2",
+      "prompt": "second real prompt",
+      "timeout_seconds": 30,
+      "pause_after_seconds": 0.5
+    },
+    {
+      "id": "prompt-3",
+      "prompt": "third real prompt",
+      "timeout_seconds": 30,
+      "pause_after_seconds": 1.0
+    }
+  ]
+}

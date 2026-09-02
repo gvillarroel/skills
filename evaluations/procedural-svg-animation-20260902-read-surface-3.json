@@ -1,0 +1,203 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a063f8-d57e-7799-a752-3180cfd5fec5",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260902-procedural-kinetic-bloom-spark-3\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 13
+  },
+  "providers": {
+    "openai-codex": 13
+  },
+  "usageTotals": {
+    "input": 11706,
+    "output": 2858,
+    "cacheRead": 55808,
+    "cacheWrite": 0,
+    "totalTokens": 70372
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 4,
+    "bash": 8
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1049
+    },
+    {
+      "path": "skills/procedural-svg-animation/SKILL.md",
+      "calls": 1,
+      "resultBytes": 7662
+    },
+    {
+      "path": "outputs/kinetic-bloom.svg",
+      "calls": 1,
+      "resultBytes": 9041
+    },
+    {
+      "path": "outputs/kinetic-bloom-validation.json",
+      "calls": 1,
+      "resultBytes": 2273
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1049
+    },
+    {
+      "path": "skills/procedural-svg-animation/SKILL.md",
+      "calls": 1,
+      "resultBytes": 7662
+    },
+    {
+      "path": "outputs/kinetic-bloom.svg",
+      "calls": 1,
+      "resultBytes": 9041
+    },
+    {
+      "path": "outputs/kinetic-bloom-validation.json",
+      "calls": 1,
+      "resultBytes": 2273
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/procedural-svg-animation/SKILL.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/kinetic-bloom.svg",
+      "calls": 1
+    },
+    {
+      "path": "outputs/kinetic-bloom-validation.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 20025,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1049
+    },
+    {
+      "line": 29,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls",
+      "isError": false,
+      "resultBytes": 51
+    },
+    {
+      "line": 44,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "ls skills/procedural-svg-animation",
+      "isError": false,
+      "resultBytes": 90
+    },
+    {
+      "line": 57,
+      "tool": "read",
+      "path": "skills/procedural-svg-animation/SKILL.md",
+      "policyPath": "skills/procedural-svg-animation/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 7662
+    },
+    {
+      "line": 72,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/procedural-svg-animation/scripts/build_procedural_svg.py --describe procedural-svg-phyllotaxis-bloom",
+      "isError": false,
+      "resultBytes": 380
+    },
+    {
+      "line": 87,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/procedural-svg-animation/scripts/build_procedural_svg.py --list",
+      "isError": false,
+      "resultBytes": 3925
+    },
+    {
+      "line": 102,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/procedural-svg-animation/scripts/build_procedural_svg.py --help",
+      "isError": false,
+      "resultBytes": 2227
+    },
+    {
+      "line": 117,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/procedural-svg-animation/scripts/validate_procedural_svg.py --help",
+      "isError": false,
+      "resultBytes": 1894
+    },
+    {
+      "line": 132,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/procedural-svg-animation/scripts/build_procedural_svg.py --pattern procedural-svg-phyllotaxis-bloom --output outputs/kinetic-bloom.svg --seed 104729 --width 960 --height 600 --duration-ms 7200 --palette colorset2 --fu",
+      "isError": false,
+      "resultBytes": 220
+    },
+    {
+      "line": 145,
+      "tool": "read",
+      "path": "outputs/kinetic-bloom.svg",
+      "policyPath": "outputs/kinetic-bloom.svg",
+      "command": null,
+      "isError": false,
+      "resultBytes": 9041
+    },
+    {
+      "line": 160,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "uv run --script skills/procedural-svg-animation/scripts/validate_procedural_svg.py outputs/kinetic-bloom.svg --require-motion --require-standalone --expected-pattern-id procedural-svg-phyllotaxis-bloom --expected-seed 104729 --report output",
+      "isError": false,
+      "resultBytes": 2578
+    },
+    {
+      "line": 173,
+      "tool": "read",
+      "path": "outputs/kinetic-bloom-validation.json",
+      "policyPath": "outputs/kinetic-bloom-validation.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2273
+    }
+  ],
+  "findings": []
+}

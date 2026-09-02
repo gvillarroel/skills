@@ -8,6 +8,8 @@
 *.pdf binary
 
 *.svg text eol=lf
+# Hash-pinned provider snapshots and generated variants retain exact bytes.
+skills/technical-logo-assets/assets/logos/**/*.svg binary
 *.md text eol=lf
 *.mmd text eol=lf
 *.html text eol=lf

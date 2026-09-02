@@ -17,6 +17,7 @@ from pathlib import Path
 
 
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+TEMPLATE_PLACEHOLDER_RE = re.compile(r"^__[A-Z][A-Z0-9_]*__$")
 MAX_ID_LENGTH = 64
 REVIEW_ID_LENGTH = 48
 GENERIC_SEGMENTS = {"pattern", "item", "example", "feature"}
@@ -77,7 +78,12 @@ def collect_explicit_ids(root: Path, findings: list[Finding]) -> tuple[dict[str,
         for pattern in STATIC_ID_PATTERNS:
             for match in pattern.finditer(content):
                 pattern_id = match.group(1).strip()
-                if not pattern_id or pattern_id.endswith("-*") or any(token in pattern_id for token in "{}"):
+                if (
+                    not pattern_id
+                    or pattern_id.endswith("-*")
+                    or any(token in pattern_id for token in "{}")
+                    or TEMPLATE_PLACEHOLDER_RE.fullmatch(pattern_id)
+                ):
                     continue
                 validate_id(pattern_id, path, findings)
                 observed.setdefault(pattern_id, set()).add(path)
@@ -186,8 +192,8 @@ def validate_d3_registry(root: Path, findings: list[Finding]) -> set[str]:
     missing = sorted(set(expected) - set(indexed))
     if missing:
         add(findings, index_path, f"D3 pattern index is missing {len(missing)} ID(s): {', '.join(missing[:8])}")
-    if len(expected) != 242:
-        add(findings, index_path, f"expected 242 canonical D3 registry IDs, found {len(expected)}")
+    if len(expected) != 243:
+        add(findings, index_path, f"expected 243 canonical D3 registry IDs, found {len(expected)}")
     return set(expected)
 
 
@@ -324,7 +330,7 @@ def validate_family_inventories(
     missing_d3_sources = sorted({f"d3-{source_id}" for source_id in d3_sources} - d3_registry)
     if missing_d3_sources:
         add(findings, d3_gallery_path, f"D3 gallery IDs missing from registry: {', '.join(missing_d3_sources[:8])}")
-    register_family("d3-base", sorted(d3_registry), 242, d3_gallery_path, findings, global_ids, review_ids, family_counts)
+    register_family("d3-base", sorted(d3_registry), 243, d3_gallery_path, findings, global_ids, review_ids, family_counts)
     register_family("d3-cs1", [f"d3-{source_id}-cs1" for source_id in d3_sources], 225, d3_gallery_path, findings, global_ids, review_ids, family_counts)
     register_family("d3-cs2", [f"d3-{source_id}-cs2" for source_id in d3_sources], 225, d3_gallery_path, findings, global_ids, review_ids, family_counts)
 
@@ -469,7 +475,7 @@ def validate_family_inventories(
         if 'data-example-id="slidev-animejs"' in component_path.read_text(encoding="utf-8"):
             add(findings, component_path, "item surfaces must use a local data-example-id, not the page-set ID")
 
-    ai_path = root / "skills/html-d3-anime-video-workflow/assets/examples/ai-concept-videos/concepts.js"
+    ai_path = root / "skills/video/assets/examples/ai-concept-videos/concepts.js"
     ai_content = ai_path.read_text(encoding="utf-8")
     ai_ids = re.findall(r'^\s*patternId:\s*"(ai-[a-z0-9-]+)"', ai_content, re.MULTILINE)
     register_family("ai-concepts", ai_ids, 11, ai_path, findings, global_ids, review_ids, family_counts)

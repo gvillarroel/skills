@@ -22,6 +22,8 @@ class AttributeParser(HTMLParser):
         self.body: dict[str, str] | None = None
         self.cards: list[dict[str, str]] = []
         self.icons: list[dict[str, str]] = []
+        self.theme_controls: list[dict[str, str]] = []
+        self.capability_controls: list[dict[str, str]] = []
         self.d3_capabilities: list[dict[str, str]] = []
         self.d3_gallery_links: list[dict[str, str]] = []
         self.meta: dict[str, str] = {}
@@ -32,6 +34,10 @@ class AttributeParser(HTMLParser):
             self.body = attributes
         if tag == "a" and "data-example-id" in attributes:
             self.cards.append(attributes)
+        if "data-theme" in attributes:
+            self.theme_controls.append(attributes)
+        if "data-capability-filter" in attributes:
+            self.capability_controls.append(attributes)
         if "data-capability-id" in attributes:
             self.d3_capabilities.append(attributes)
         if tag == "a" and "data-gallery-id" in attributes:
@@ -67,6 +73,71 @@ def require_nonempty_attr(attrs: dict[str, str] | None, name: str, context: str)
     actual = attrs.get(name)
     if not actual:
         fail(f"{context} is missing non-empty {name}")
+
+
+def validate_unified_plantuml(catalog: list[dict[str, object]]) -> None:
+    canonical_id = "plantuml-colorset-renderer"
+    legacy_id = "plantuml-colorset-renderer-cs1"
+    plantuml_entries = [
+        entry.get("id") for entry in catalog if str(entry.get("id", "")).startswith("plantuml-")
+    ]
+    if plantuml_entries != [canonical_id]:
+        fail(f"PlantUML must have exactly one catalog entry ({canonical_id}), found {plantuml_entries}")
+
+    canonical_path = PAGES_ROOT / "examples" / canonical_id / "index.html"
+    public_plantuml_pages: list[Path] = []
+    for index_path in (PAGES_ROOT / "examples").rglob("index.html"):
+        page = parse_html(index_path)
+        if (
+            page.body
+            and page.body.get("data-pattern-page") == "true"
+            and "plantuml" in index_path.as_posix().lower()
+        ):
+            public_plantuml_pages.append(index_path)
+    if public_plantuml_pages != [canonical_path]:
+        rendered = [path.relative_to(PAGES_ROOT).as_posix() for path in public_plantuml_pages]
+        fail(f"PlantUML must expose exactly one pattern page, found {rendered}")
+
+    canonical_page = parse_html(canonical_path)
+    theme_ids = {control.get("data-theme") for control in canonical_page.theme_controls}
+    if theme_ids != {"colorset1", "colorset2"}:
+        fail(f"unified PlantUML page must expose Colorset 1 and Colorset 2 controls, found {sorted(theme_ids)}")
+    expected_capabilities = {
+        "all",
+        "uml-behavior",
+        "architecture-network",
+        "data-notation",
+        "planning-structure",
+        "visual-specialist",
+    }
+    capability_ids = {control.get("data-capability-filter") for control in canonical_page.capability_controls}
+    if capability_ids != expected_capabilities:
+        fail(f"unified PlantUML page has incomplete capability controls: {sorted(capability_ids)}")
+
+    legacy_root = PAGES_ROOT / "examples" / legacy_id
+    for theme_root, expected_colorset in (
+        (canonical_path.parent, "colorset2"),
+        (legacy_root, "colorset1"),
+    ):
+        coverage_path = theme_root / "coverage.json"
+        report_path = theme_root / "render-report.json"
+        if not coverage_path.exists() or not report_path.exists():
+            fail(f"PlantUML {expected_colorset} assets are missing coverage.json or render-report.json")
+        coverage = json.loads(coverage_path.read_text(encoding="utf-8"))
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        if coverage.get("colorset") != expected_colorset or coverage.get("itemCount") != 28:
+            fail(f"PlantUML {expected_colorset} coverage must contain exactly 28 items")
+        if report.get("colorset") != expected_colorset or report.get("ok") is not True:
+            fail(f"PlantUML {expected_colorset} render report must be successful")
+
+    legacy_path = legacy_root / "index.html"
+    legacy_page = parse_html(legacy_path)
+    require_attr(legacy_page.body, "data-legacy-redirect", legacy_id, legacy_path.relative_to(ROOT).as_posix())
+    if legacy_page.body and legacy_page.body.get("data-pattern-page"):
+        fail("legacy PlantUML CS1 route must redirect rather than expose a second pattern page")
+    legacy_text = legacy_path.read_text(encoding="utf-8")
+    if "../plantuml-colorset-renderer/" not in legacy_text or "theme\", \"colorset1" not in legacy_text:
+        fail("legacy PlantUML CS1 route must preserve links by redirecting to the unified Colorset 1 view")
 
 
 def validate_unified_d3(catalog: list[dict[str, object]]) -> None:
@@ -190,6 +261,7 @@ def main() -> int:
             fail(f"{context} is missing a non-empty favicon link")
 
     validate_unified_d3(catalog)
+    validate_unified_plantuml(catalog)
 
     print(f"Validated {len(catalog)} published Pages entries with stable pattern-page metadata.")
     return 0
