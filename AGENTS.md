@@ -160,6 +160,11 @@ Scripts may be TypeScript or `uv` Python.
 # ///
 ```
 
+When a standalone skill script ships with a uv lock, keep `<script>.py.lock`
+beside its sibling Python file, regenerate it with `uv lock --script <script>`,
+and verify it with `uv lock --check --script <script>`. Orphan script locks are
+invalid.
+
 - TypeScript scripts must be `.ts` files and include a shebang or documented run command that uses a TypeScript runner such as `tsx`.
 - Declare TypeScript dependencies in `package.json` when the repo or skill has one. For standalone scripts, document required packages in a short header comment.
 

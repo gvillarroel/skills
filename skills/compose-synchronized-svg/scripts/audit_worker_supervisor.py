@@ -93,6 +93,222 @@ def worker_popen_options() -> dict[str, Any]:
 
 
 WINDOWS_JOB_HANDLE_ATTRIBUTE = "_sync_svg_kill_job_handle"
+WINDOWS_DESCENDANT_HANDLES_ATTRIBUTE = "_sync_svg_descendant_handles"
+WINDOWS_PROCESS_SWEEP_ACCESS = 0x00101001
+WINDOWS_PROCESS_JOB_ACCESS = WINDOWS_PROCESS_SWEEP_ACCESS | 0x00000100
+
+
+def _windows_descendant_process_ids(root_process_id: int) -> list[int]:
+    """Snapshot the live descendants of one Windows process, deepest first."""
+
+    if os.name != "nt" or root_process_id <= 0:
+        return []
+    try:
+        import ctypes
+        from ctypes import wintypes
+
+        class ProcessEntry(ctypes.Structure):
+            _fields_ = [
+                ("dwSize", wintypes.DWORD),
+                ("cntUsage", wintypes.DWORD),
+                ("th32ProcessID", wintypes.DWORD),
+                ("th32DefaultHeapID", ctypes.c_size_t),
+                ("th32ModuleID", wintypes.DWORD),
+                ("cntThreads", wintypes.DWORD),
+                ("th32ParentProcessID", wintypes.DWORD),
+                ("pcPriClassBase", wintypes.LONG),
+                ("dwFlags", wintypes.DWORD),
+                ("szExeFile", wintypes.WCHAR * 260),
+            ]
+
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.CreateToolhelp32Snapshot.argtypes = [
+            wintypes.DWORD,
+            wintypes.DWORD,
+        ]
+        kernel32.CreateToolhelp32Snapshot.restype = wintypes.HANDLE
+        kernel32.Process32FirstW.argtypes = [wintypes.HANDLE, ctypes.POINTER(ProcessEntry)]
+        kernel32.Process32FirstW.restype = wintypes.BOOL
+        kernel32.Process32NextW.argtypes = [wintypes.HANDLE, ctypes.POINTER(ProcessEntry)]
+        kernel32.Process32NextW.restype = wintypes.BOOL
+        kernel32.CloseHandle.argtypes = [wintypes.HANDLE]
+        kernel32.CloseHandle.restype = wintypes.BOOL
+
+        snapshot = kernel32.CreateToolhelp32Snapshot(0x00000002, 0)
+        invalid_handle = ctypes.c_void_p(-1).value
+        if not snapshot or int(snapshot) == invalid_handle:
+            return []
+        parent_by_process: dict[int, int] = {}
+        try:
+            entry = ProcessEntry()
+            entry.dwSize = ctypes.sizeof(entry)
+            has_entry = bool(kernel32.Process32FirstW(snapshot, ctypes.byref(entry)))
+            while has_entry:
+                parent_by_process[int(entry.th32ProcessID)] = int(
+                    entry.th32ParentProcessID
+                )
+                has_entry = bool(kernel32.Process32NextW(snapshot, ctypes.byref(entry)))
+        finally:
+            kernel32.CloseHandle(snapshot)
+
+        descendants: list[int] = []
+        frontier = {root_process_id}
+        seen = {root_process_id}
+        while frontier:
+            next_frontier = {
+                process_id
+                for process_id, parent_process_id in parent_by_process.items()
+                if parent_process_id in frontier and process_id not in seen
+            }
+            if not next_frontier:
+                break
+            descendants.extend(sorted(next_frontier))
+            seen.update(next_frontier)
+            frontier = next_frontier
+        descendants.reverse()
+        return descendants
+    except (AttributeError, ImportError, OSError, TypeError, ValueError):
+        return []
+
+
+def _windows_process_creation_time(process_handle: int) -> int | None:
+    """Return one process creation FILETIME while its identity handle is open."""
+
+    if os.name != "nt" or process_handle <= 0:
+        return None
+    try:
+        import ctypes
+        from ctypes import wintypes
+
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.GetProcessTimes.argtypes = [
+            wintypes.HANDLE,
+            ctypes.POINTER(wintypes.FILETIME),
+            ctypes.POINTER(wintypes.FILETIME),
+            ctypes.POINTER(wintypes.FILETIME),
+            ctypes.POINTER(wintypes.FILETIME),
+        ]
+        kernel32.GetProcessTimes.restype = wintypes.BOOL
+        creation = wintypes.FILETIME()
+        exit_time = wintypes.FILETIME()
+        kernel_time = wintypes.FILETIME()
+        user_time = wintypes.FILETIME()
+        if not kernel32.GetProcessTimes(
+            wintypes.HANDLE(process_handle),
+            ctypes.byref(creation),
+            ctypes.byref(exit_time),
+            ctypes.byref(kernel_time),
+            ctypes.byref(user_time),
+        ):
+            return None
+        return (int(creation.dwHighDateTime) << 32) | int(creation.dwLowDateTime)
+    except (AttributeError, ImportError, OSError, TypeError, ValueError):
+        return None
+
+
+def _capture_windows_descendant_handles(
+    root_process_ids: list[int],
+    *,
+    not_before: int | None,
+    access: int = WINDOWS_PROCESS_SWEEP_ACCESS,
+) -> list[tuple[int, int, int]]:
+    """Open and validate handles for descendants created after a stable root."""
+
+    if os.name != "nt" or not root_process_ids or not_before is None:
+        return []
+    captured: list[tuple[int, int, int]] = []
+    try:
+        import ctypes
+        from ctypes import wintypes
+
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.OpenProcess.argtypes = [wintypes.DWORD, wintypes.BOOL, wintypes.DWORD]
+        kernel32.OpenProcess.restype = wintypes.HANDLE
+        kernel32.GetProcessId.argtypes = [wintypes.HANDLE]
+        kernel32.GetProcessId.restype = wintypes.DWORD
+        kernel32.CloseHandle.argtypes = [wintypes.HANDLE]
+        kernel32.CloseHandle.restype = wintypes.BOOL
+
+        candidate_ids: list[int] = []
+        for root_process_id in root_process_ids:
+            candidate_ids.extend(_windows_descendant_process_ids(root_process_id))
+        for process_id in dict.fromkeys(candidate_ids):
+            process_handle = kernel32.OpenProcess(
+                access,
+                False,
+                process_id,
+            )
+            if not process_handle:
+                continue
+            handle = int(process_handle)
+            creation_time = _windows_process_creation_time(handle)
+            if creation_time is None or creation_time < not_before:
+                kernel32.CloseHandle(wintypes.HANDLE(handle))
+                continue
+            captured.append((process_id, handle, creation_time))
+
+        # Opening a process by PID races with process exit and PID reuse. Holding
+        # each handle prevents any further reuse; a fresh ancestry snapshot plus
+        # GetProcessId rejects a handle that was opened for an intervening process.
+        validated_ids: set[int] = set()
+        for root_process_id in root_process_ids:
+            validated_ids.update(_windows_descendant_process_ids(root_process_id))
+        validated_handles: list[tuple[int, int, int]] = []
+        for process_id, process_handle, creation_time in captured:
+            if (
+                process_id in validated_ids
+                and int(kernel32.GetProcessId(wintypes.HANDLE(process_handle)))
+                == process_id
+            ):
+                validated_handles.append(
+                    (process_id, process_handle, creation_time)
+                )
+            else:
+                kernel32.CloseHandle(wintypes.HANDLE(process_handle))
+        return validated_handles
+    except (AttributeError, ImportError, OSError, TypeError, ValueError):
+        _close_windows_process_handles([handle for _, handle, _ in captured])
+        return []
+
+
+def _terminate_windows_process_handles(process_handles: list[int]) -> None:
+    """Terminate captured Windows process identities and wait briefly for exit."""
+
+    if os.name != "nt" or not process_handles:
+        return
+    try:
+        import ctypes
+        from ctypes import wintypes
+
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.TerminateProcess.argtypes = [wintypes.HANDLE, wintypes.UINT]
+        kernel32.TerminateProcess.restype = wintypes.BOOL
+        kernel32.WaitForSingleObject.argtypes = [wintypes.HANDLE, wintypes.DWORD]
+        kernel32.WaitForSingleObject.restype = wintypes.DWORD
+        for process_handle in process_handles:
+            handle = wintypes.HANDLE(process_handle)
+            kernel32.TerminateProcess(handle, 1)
+            kernel32.WaitForSingleObject(handle, 2000)
+    except (AttributeError, ImportError, OSError, TypeError, ValueError):
+        return
+
+
+def _close_windows_process_handles(process_handles: list[int]) -> None:
+    """Close retained Windows process handles without acting on their PIDs."""
+
+    if os.name != "nt" or not process_handles:
+        return
+    try:
+        import ctypes
+        from ctypes import wintypes
+
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.CloseHandle.argtypes = [wintypes.HANDLE]
+        kernel32.CloseHandle.restype = wintypes.BOOL
+        for process_handle in process_handles:
+            kernel32.CloseHandle(wintypes.HANDLE(process_handle))
+    except (AttributeError, ImportError, OSError, TypeError, ValueError):
+        return
 
 
 def attach_worker_containment(process: subprocess.Popen[str]) -> None:
@@ -105,6 +321,7 @@ def attach_worker_containment(process: subprocess.Popen[str]) -> None:
         return
 
     job_handle: int | None = None
+    retained_descendants: list[tuple[int, int, int]] = []
     try:
         import ctypes
         from ctypes import wintypes
@@ -168,15 +385,55 @@ def attach_worker_containment(process: subprocess.Popen[str]) -> None:
             ctypes.byref(information),
             ctypes.sizeof(information),
         )
-        assigned = configured and kernel32.AssignProcessToJobObject(
-            wintypes.HANDLE(job_handle),
-            wintypes.HANDLE(process_handle),
+        assigned = bool(
+            configured
+            and kernel32.AssignProcessToJobObject(
+                wintypes.HANDLE(job_handle),
+                wintypes.HANDLE(process_handle),
+            )
         )
+        process_id = getattr(process, "pid", None)
+        root_creation_time = _windows_process_creation_time(process_handle)
+        if (
+            configured
+            and isinstance(process_id, int)
+            and process_id > 0
+            and root_creation_time is not None
+        ):
+            # A venv launcher can create the real interpreter before the launcher
+            # itself is assigned. Capture that already-running branch explicitly;
+            # any later children inherit containment from an assigned ancestor.
+            retained_descendants = _capture_windows_descendant_handles(
+                [process_id],
+                not_before=root_creation_time,
+                access=WINDOWS_PROCESS_JOB_ACCESS,
+            )
+            for _, descendant_handle, _ in retained_descendants:
+                descendant_assigned = bool(
+                    kernel32.AssignProcessToJobObject(
+                        wintypes.HANDLE(job_handle),
+                        wintypes.HANDLE(descendant_handle),
+                    )
+                )
+                assigned = descendant_assigned or assigned
+        if retained_descendants:
+            setattr(
+                process,
+                WINDOWS_DESCENDANT_HANDLES_ATTRIBUTE,
+                retained_descendants,
+            )
         if not assigned:
             kernel32.CloseHandle(wintypes.HANDLE(job_handle))
             return
         setattr(process, WINDOWS_JOB_HANDLE_ATTRIBUTE, job_handle)
     except (AttributeError, ImportError, OSError, TypeError, ValueError):
+        _close_windows_process_handles(
+            [process_handle for _, process_handle, _ in retained_descendants]
+        )
+        try:
+            delattr(process, WINDOWS_DESCENDANT_HANDLES_ATTRIBUTE)
+        except AttributeError:
+            pass
         if job_handle is not None:
             try:
                 import ctypes
@@ -193,23 +450,81 @@ def close_worker_containment(process: subprocess.Popen[str]) -> None:
     """Kill any surviving descendants after a worker has exited or hung."""
 
     if os.name == "nt":
+        process_id = getattr(process, "pid", None)
+        root_process_ids = (
+            [process_id]
+            if isinstance(process_id, int) and process_id > 0
+            else []
+        )
+        retained_records = getattr(
+            process,
+            WINDOWS_DESCENDANT_HANDLES_ATTRIBUTE,
+            None,
+        )
+        retained_descendants = (
+            [
+                (process_id, process_handle, creation_time)
+                for process_id, process_handle, creation_time in retained_records
+                if isinstance(process_id, int)
+                and process_id > 0
+                and isinstance(process_handle, int)
+                and isinstance(creation_time, int)
+                and creation_time > 0
+            ]
+            if isinstance(retained_records, list)
+            else []
+        )
+        root_process_ids.extend(
+            process_id for process_id, _, _ in retained_descendants
+        )
+        root_process_handle = getattr(process, "_handle", None)
+        root_creation_time = (
+            _windows_process_creation_time(root_process_handle)
+            if isinstance(root_process_handle, int)
+            else None
+        )
+        captured_descendants = _capture_windows_descendant_handles(
+            root_process_ids,
+            not_before=root_creation_time,
+        )
         job_handle = getattr(process, WINDOWS_JOB_HANDLE_ATTRIBUTE, None)
-        if not isinstance(job_handle, int):
-            return
-        try:
-            import ctypes
-            from ctypes import wintypes
+        if isinstance(job_handle, int):
+            try:
+                import ctypes
+                from ctypes import wintypes
 
-            kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
-            kernel32.CloseHandle.argtypes = [wintypes.HANDLE]
-            kernel32.CloseHandle.restype = wintypes.BOOL
-            kernel32.CloseHandle(wintypes.HANDLE(job_handle))
-        except (AttributeError, ImportError, OSError, TypeError, ValueError):
-            pass
+                kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+                kernel32.CloseHandle.argtypes = [wintypes.HANDLE]
+                kernel32.CloseHandle.restype = wintypes.BOOL
+                kernel32.CloseHandle(wintypes.HANDLE(job_handle))
+            except (AttributeError, ImportError, OSError, TypeError, ValueError):
+                pass
+            try:
+                delattr(process, WINDOWS_JOB_HANDLE_ATTRIBUTE)
+            except AttributeError:
+                pass
         try:
-            delattr(process, WINDOWS_JOB_HANDLE_ATTRIBUTE)
+            delattr(process, WINDOWS_DESCENDANT_HANDLES_ATTRIBUTE)
         except AttributeError:
             pass
+        retained_handles = [
+            process_handle for _, process_handle, _ in retained_descendants
+        ]
+        # Stop uncontained launch intermediaries before the second snapshot so
+        # they cannot create another descendant between discovery and cleanup.
+        _terminate_windows_process_handles(retained_handles)
+        captured_descendants.extend(
+            _capture_windows_descendant_handles(
+                root_process_ids,
+                not_before=root_creation_time,
+            )
+        )
+        captured_handles = [
+            process_handle for _, process_handle, _ in captured_descendants
+        ]
+        _terminate_windows_process_handles(captured_handles)
+        _close_windows_process_handles(captured_handles)
+        _close_windows_process_handles(retained_handles)
         return
 
     process_id = getattr(process, "pid", None)

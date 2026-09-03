@@ -8,6 +8,8 @@
 *.pdf binary
 
 *.svg text eol=lf
+# Raw provider snapshots are digest-sealed byte-for-byte; preserve source EOLs and suppress text diffs.
+skills/technical-logo-assets/assets/logos/sources/*.source.svg binary
 *.md text eol=lf
 *.mmd text eol=lf
 *.html text eol=lf

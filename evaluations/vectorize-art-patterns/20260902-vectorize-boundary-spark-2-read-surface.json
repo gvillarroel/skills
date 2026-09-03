@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a06447-badc-7182-ac1b-a5c4b66f5212",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260902-vectorize-boundary-spark-2\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 5
+  },
+  "providers": {
+    "openai-codex": 5
+  },
+  "usageTotals": {
+    "input": 1948,
+    "output": 782,
+    "cacheRead": 8704,
+    "cacheWrite": 0,
+    "totalTokens": 11434
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 2,
+    "bash": 1,
+    "write": 1
+  },
+  "paths": [
+    {
+      "path": "outputs/boundary/license-decision.json",
+      "calls": 2,
+      "resultBytes": 401
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1096
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1096
+    },
+    {
+      "path": "outputs/boundary/license-decision.json",
+      "calls": 1,
+      "resultBytes": 288
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/boundary/license-decision.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 1384,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1096
+    },
+    {
+      "line": 28,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p outputs/boundary",
+      "isError": false,
+      "resultBytes": 54
+    },
+    {
+      "line": 41,
+      "tool": "write",
+      "path": "outputs/boundary/license-decision.json",
+      "policyPath": "outputs/boundary/license-decision.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 113
+    },
+    {
+      "line": 54,
+      "tool": "read",
+      "path": "outputs/boundary/license-decision.json",
+      "policyPath": "outputs/boundary/license-decision.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 288
+    }
+  ],
+  "findings": []
+}

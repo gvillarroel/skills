@@ -1,0 +1,71 @@
+.slidev-layout {
+  background: #f7fafc;
+  color: #172033;
+  padding: 64px 88px;
+}
+
+h1 {
+  color: #17365d;
+  font-size: 42px;
+  line-height: 1.15;
+  margin-bottom: 32px;
+}
+
+.regression-card,
+.control-wrap {
+  background: #ffffff;
+  border: 2px solid #9fb3c8;
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(23, 54, 93, 0.12);
+  font-size: 25px;
+  line-height: 1.5;
+  padding: 30px 34px;
+  width: 520px;
+}
+
+.regression-card p {
+  margin: 0;
+}
+
+.regression-stage {
+  position: relative;
+}
+
+.regression-card code {
+  background: #dfeaf4;
+  border-radius: 5px;
+  color: #17365d;
+  font-size: 22px;
+  padding: 2px 6px;
+}
+
+.wrapped-inline {
+  color: #174c3c;
+  font-weight: 700;
+  line-height: 48px;
+}
+
+.gap-token {
+  left: 160px;
+  position: absolute;
+  top: 96px;
+}
+
+.control-wrap {
+  width: 620px;
+}
+
+.cover-stage {
+  display: inline-block;
+  position: relative;
+}
+
+.real-overlay {
+  background: rgba(23, 54, 93, 0.94);
+  border-radius: 6px;
+  height: 100%;
+  inset: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}

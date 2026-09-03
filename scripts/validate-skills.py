@@ -46,6 +46,17 @@ DISALLOWED_SKILL_DOCS = {
 SKILL_NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 EXAMPLE_ID_RE = SKILL_NAME_RE
 MAX_SKILL_NAME_LENGTH = 64
+BACKLOG_STATUSES = {
+    "candidate",
+    "planned",
+    "in-progress",
+    "validating",
+    "done",
+    "rejected",
+}
+BACKLOG_ROW_RE = re.compile(
+    r"^\|\s*(?P<name>[a-z0-9]+(?:-[a-z0-9]+)*)\s*\|\s*(?P<status>[^|]*?)\s*\|"
+)
 INDEPENDENCE_TEXT_SUFFIXES = {".md", ".py", ".ts", ".js", ".mjs", ".cjs", ".json", ".yaml", ".yml", ".toml"}
 INDEPENDENCE_IGNORED_DIRS = {"__pycache__", "node_modules"}
 DIRECT_SKILL_PATH_RE = re.compile(
@@ -232,8 +243,20 @@ def validate_script_tree(
             validate_python_script(script, findings)
         elif script.suffix == ".ts":
             validate_typescript_script(script, dependency_root or root, findings)
+        elif script.name.endswith(".py.lock"):
+            python_script = script.with_suffix("")
+            if not python_script.is_file():
+                add(
+                    findings,
+                    script,
+                    "uv script lock must have a sibling Python script",
+                )
         else:
-            add(findings, script, "scripts must be TypeScript (.ts) or uv Python (.py)")
+            add(
+                findings,
+                script,
+                "scripts must be TypeScript (.ts), uv Python (.py), or a matching .py.lock",
+            )
 
 
 def is_runtime_independence_file(path: Path, skill_dir: Path) -> bool:
@@ -474,6 +497,58 @@ def skill_directories(root: Path) -> Iterable[Path]:
             yield child
 
 
+def validate_skill_backlog(root: Path, findings: list[Finding]) -> None:
+    """Require one canonical SKILLS.md row for every canonical skill bundle."""
+
+    backlog = root / "SKILLS.md"
+    if not backlog.is_file() or not skills_root(root).is_dir():
+        return
+
+    rows: dict[str, list[tuple[int, str]]] = {}
+    for line_number, line in enumerate(
+        backlog.read_text(encoding="utf-8").splitlines(), start=1
+    ):
+        match = BACKLOG_ROW_RE.match(line)
+        if match is None:
+            continue
+        rows.setdefault(match.group("name"), []).append(
+            (line_number, match.group("status").strip())
+        )
+
+    directory_names = {path.name for path in skill_directories(root)}
+    row_names = set(rows)
+
+    for name in sorted(directory_names - row_names):
+        add(findings, backlog, f"backlog is missing skill row: {name}")
+    for name in sorted(row_names - directory_names):
+        add(findings, backlog, f"backlog row has no matching skill directory: {name}")
+
+    for name, entries in sorted(rows.items()):
+        if len(entries) != 1:
+            locations = ", ".join(str(line_number) for line_number, _ in entries)
+            add(
+                findings,
+                backlog,
+                f"backlog skill row must be unique: {name} (lines {locations})",
+            )
+        for line_number, status_cell in entries:
+            status_match = re.fullmatch(r"`([^`]+)`", status_cell)
+            if status_match is None:
+                add(
+                    findings,
+                    backlog,
+                    f"backlog status must use canonical unescaped backticks on line {line_number}: {name}",
+                )
+                continue
+            status = status_match.group(1)
+            if status not in BACKLOG_STATUSES:
+                add(
+                    findings,
+                    backlog,
+                    f"backlog status is invalid on line {line_number}: {name}={status}",
+                )
+
+
 def validate_repo(root: Path) -> list[Finding]:
     findings: list[Finding] = []
 
@@ -487,6 +562,7 @@ def validate_repo(root: Path) -> list[Finding]:
     validate_script_tree(root / "scripts", root, findings)
     validate_example_catalog(root, findings)
     validate_pattern_id_registry(root, findings)
+    validate_skill_backlog(root, findings)
 
     for child in root.iterdir():
         if child.is_dir() and (child / "SKILL.md").exists():

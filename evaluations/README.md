@@ -41,6 +41,42 @@ Do not reorganize historical flat summaries only for cosmetic consistency: their
 
 Keep generated data reproducible from the versioned controls. A dataset manifest should record the dataset ID, source identity or URL, retrieval date when applicable, license or usage constraints, hashes or immutable versions, schema version, transformation command, and expected output inventory. Do not place credentials, private source payloads, or large generated rows in a manifest.
 
+## Harbor Dataset Authoring and Study Isolation
+
+Use
+[`harbor-author-evaluation-datasets`](../skills/harbor-author-evaluation-datasets/SKILL.md)
+before registering a new native Harbor dataset. Assign complete semantic
+families to splits before rendering variants: `development` is the only
+optimizer-visible split that may drive mutation or candidate selection;
+`validation` is a sealed one-way gate for one digest-frozen winner; and
+`holdout` is an optional final sealed gate released only after validation
+succeeds. If validation feedback causes another change, end the study and use
+fresh validation in a new study.
+
+Keep public controls, schemas, adapters, deterministic tests, provenance,
+licenses, reviewed aggregate tables, and sanitized commitments in Git. Keep
+private blueprints and seeds, materialized validation or holdout tasks,
+solutions, private verifiers, jobs, trials, traces, candidate bundles, and
+case-level diagnostics outside Git and outside optimizer-visible workspaces.
+An ignore rule is a publication safeguard, not an access-control boundary.
+
+Vary accidental response surfaces deterministically and per task: working
+directory, input and output roots, filenames, nesting, artifact count, and
+serialization may change when the instruction and verifier change together.
+Do not make `answer.txt`, `/app`, or any other fixed convention a hidden
+requirement.
+
+After native Harbor runs have produced sanitized schema-version-1
+`final-report.json` artifacts, the bundle's report consolidator can emit
+`comparison-report.json`, `comparison-report.md`,
+`quality-comparison.svg`, `resource-comparison.svg`, and
+`efficiency-frontier.svg`. The aggregate reports include correctness, token
+usage, reported USD cost, agent and wall time, throughput, coverage, and
+baseline deltas without exposing task names, prompts, answers, or per-case
+diagnostics. Incomplete token, cost, or agent-time coverage may remain visible
+with its observed/completed fraction, but it must not produce per-trial
+efficiency deltas or participate in Pareto/frontier calculations.
+
 ## Release Gates
 
 Run the gates in order. Stop and repair the earliest failing layer before interpreting later results.

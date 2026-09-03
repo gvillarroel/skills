@@ -1,0 +1,15 @@
+{
+  "name": "slidev-quality-audit-wrapped-inline-fixture",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@slidev/cli": "52.16.0",
+    "@slidev/theme-default": "0.25.0"
+  },
+  "devDependencies": {
+    "playwright": "1.60.0",
+    "tsx": "4.23.12",
+    "vite": "8.0.16"
+  }
+}
