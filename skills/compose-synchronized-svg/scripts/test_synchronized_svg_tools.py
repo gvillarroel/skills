@@ -287,6 +287,293 @@ class SynchronizedSvgToolTests(unittest.TestCase):
             audit_supervisor.close_worker_containment(process)
         killpg.assert_not_called()
 
+    def test_audit_supervisor_windows_capture_rejects_stale_or_unprovable_processes(
+        self,
+    ) -> None:
+        import ctypes
+
+        def handle_value(raw_handle: object) -> int:
+            return int(getattr(raw_handle, "value", raw_handle))
+
+        kernel32 = mock.Mock()
+        kernel32.OpenProcess = mock.Mock(
+            side_effect=lambda _access, _inherit, process_id: process_id + 1000
+        )
+        kernel32.GetProcessId = mock.Mock(
+            side_effect=lambda process_handle: handle_value(process_handle) - 1000
+        )
+        kernel32.CloseHandle = mock.Mock(return_value=True)
+        creation_times = {
+            1101: 99,
+            1102: None,
+            1103: 100,
+        }
+
+        with (
+            mock.patch.object(audit_supervisor.os, "name", "nt"),
+            mock.patch.object(ctypes, "WinDLL", return_value=kernel32, create=True),
+            mock.patch.object(
+                audit_supervisor,
+                "_windows_descendant_process_ids",
+                side_effect=[[101, 102, 103], [101, 102, 103]],
+            ),
+            mock.patch.object(
+                audit_supervisor,
+                "_windows_process_creation_time",
+                side_effect=lambda process_handle: creation_times[process_handle],
+            ),
+        ):
+            captured = audit_supervisor._capture_windows_descendant_handles(
+                [10],
+                not_before=100,
+            )
+
+        self.assertEqual(captured, [(103, 1103, 100)])
+        self.assertEqual(
+            [handle_value(call.args[0]) for call in kernel32.CloseHandle.call_args_list],
+            [1101, 1102],
+        )
+
+    def test_audit_supervisor_windows_capture_revalidates_pid_and_ancestry(self) -> None:
+        import ctypes
+
+        def handle_value(raw_handle: object) -> int:
+            return int(getattr(raw_handle, "value", raw_handle))
+
+        kernel32 = mock.Mock()
+        kernel32.OpenProcess = mock.Mock(
+            side_effect=lambda _access, _inherit, process_id: process_id + 2000
+        )
+        kernel32.GetProcessId = mock.Mock(
+            side_effect=lambda process_handle: {
+                2201: 201,
+                2202: 202,
+                2203: 999,
+            }[handle_value(process_handle)]
+        )
+        kernel32.CloseHandle = mock.Mock(return_value=True)
+
+        with (
+            mock.patch.object(audit_supervisor.os, "name", "nt"),
+            mock.patch.object(ctypes, "WinDLL", return_value=kernel32, create=True),
+            mock.patch.object(
+                audit_supervisor,
+                "_windows_descendant_process_ids",
+                side_effect=[[201, 202, 203], [201, 203]],
+            ),
+            mock.patch.object(
+                audit_supervisor,
+                "_windows_process_creation_time",
+                return_value=500,
+            ),
+        ):
+            captured = audit_supervisor._capture_windows_descendant_handles(
+                [20],
+                not_before=400,
+            )
+
+        self.assertEqual(captured, [(201, 2201, 500)])
+        self.assertEqual(
+            [handle_value(call.args[0]) for call in kernel32.CloseHandle.call_args_list],
+            [2202, 2203],
+        )
+
+    def test_audit_supervisor_windows_missing_root_identity_fails_closed(self) -> None:
+        class Process:
+            pid = 31
+            _handle = 3100
+
+        process = Process()
+        setattr(
+            process,
+            audit_supervisor.WINDOWS_DESCENDANT_HANDLES_ATTRIBUTE,
+            [(32, 3200, 25)],
+        )
+
+        with (
+            mock.patch.object(audit_supervisor.os, "name", "nt"),
+            mock.patch.object(
+                audit_supervisor,
+                "_windows_process_creation_time",
+                return_value=None,
+            ),
+            mock.patch.object(
+                audit_supervisor,
+                "_windows_descendant_process_ids",
+            ) as discover,
+            mock.patch.object(
+                audit_supervisor,
+                "_terminate_windows_process_handles",
+            ) as terminate,
+            mock.patch.object(
+                audit_supervisor,
+                "_close_windows_process_handles",
+            ) as close,
+        ):
+            audit_supervisor.close_worker_containment(process)
+
+        discover.assert_not_called()
+        self.assertEqual(
+            [call.args[0] for call in terminate.call_args_list],
+            [[3200], []],
+        )
+        self.assertEqual(
+            [call.args[0] for call in close.call_args_list],
+            [[], [3200]],
+        )
+        self.assertFalse(
+            hasattr(process, audit_supervisor.WINDOWS_DESCENDANT_HANDLES_ATTRIBUTE)
+        )
+
+    def test_audit_supervisor_windows_job_assignment_failure_keeps_safe_fallback(
+        self,
+    ) -> None:
+        import ctypes
+
+        class Process:
+            pid = 41
+            _handle = 4100
+
+        process = Process()
+        kernel32 = mock.Mock()
+        kernel32.CreateJobObjectW = mock.Mock(return_value=400)
+        kernel32.SetInformationJobObject = mock.Mock(return_value=True)
+        kernel32.AssignProcessToJobObject = mock.Mock(return_value=False)
+        kernel32.CloseHandle = mock.Mock(return_value=True)
+        retained = [(42, 4200, 110)]
+
+        with (
+            mock.patch.object(audit_supervisor.os, "name", "nt"),
+            mock.patch.object(ctypes, "WinDLL", return_value=kernel32, create=True),
+            mock.patch.object(
+                audit_supervisor,
+                "_windows_process_creation_time",
+                return_value=100,
+            ),
+            mock.patch.object(
+                audit_supervisor,
+                "_capture_windows_descendant_handles",
+                return_value=retained,
+            ),
+        ):
+            audit_supervisor.attach_worker_containment(process)
+
+        self.assertFalse(hasattr(process, audit_supervisor.WINDOWS_JOB_HANDLE_ATTRIBUTE))
+        self.assertEqual(
+            getattr(process, audit_supervisor.WINDOWS_DESCENDANT_HANDLES_ATTRIBUTE),
+            retained,
+        )
+        self.assertEqual(kernel32.AssignProcessToJobObject.call_count, 2)
+        self.assertEqual(kernel32.CloseHandle.call_count, 1)
+
+    def test_audit_supervisor_windows_cleanup_is_idempotent_and_sweeps_twice(
+        self,
+    ) -> None:
+        import ctypes
+
+        def handle_value(raw_handle: object) -> int:
+            return int(getattr(raw_handle, "value", raw_handle))
+
+        class Process:
+            pid = 51
+            _handle = 5100
+
+        process = Process()
+        setattr(process, audit_supervisor.WINDOWS_JOB_HANDLE_ATTRIBUTE, 500)
+        setattr(
+            process,
+            audit_supervisor.WINDOWS_DESCENDANT_HANDLES_ATTRIBUTE,
+            [(52, 5200, 101)],
+        )
+        kernel32 = mock.Mock()
+        kernel32.CloseHandle = mock.Mock(return_value=True)
+        capture_results = [
+            [(53, 5300, 102)],
+            [(54, 5400, 103)],
+            [],
+            [],
+        ]
+
+        with (
+            mock.patch.object(audit_supervisor.os, "name", "nt"),
+            mock.patch.object(ctypes, "WinDLL", return_value=kernel32, create=True),
+            mock.patch.object(
+                audit_supervisor,
+                "_windows_process_creation_time",
+                return_value=100,
+            ),
+            mock.patch.object(
+                audit_supervisor,
+                "_capture_windows_descendant_handles",
+                side_effect=capture_results,
+            ) as capture,
+            mock.patch.object(
+                audit_supervisor,
+                "_terminate_windows_process_handles",
+            ) as terminate,
+            mock.patch.object(
+                audit_supervisor,
+                "_close_windows_process_handles",
+            ) as close,
+        ):
+            audit_supervisor.close_worker_containment(process)
+            audit_supervisor.close_worker_containment(process)
+
+        self.assertEqual(
+            [call.kwargs["not_before"] for call in capture.call_args_list],
+            [100, 100, 100, 100],
+        )
+        self.assertEqual(capture.call_args_list[0].args[0], [51, 52])
+        self.assertEqual(capture.call_args_list[1].args[0], [51, 52])
+        self.assertEqual(capture.call_args_list[2].args[0], [51])
+        self.assertEqual(capture.call_args_list[3].args[0], [51])
+        terminated_handles = [
+            process_handle
+            for call in terminate.call_args_list
+            for process_handle in call.args[0]
+        ]
+        closed_handles = [
+            process_handle
+            for call in close.call_args_list
+            for process_handle in call.args[0]
+        ]
+        self.assertEqual(terminated_handles, [5200, 5300, 5400])
+        self.assertEqual(closed_handles, [5300, 5400, 5200])
+        self.assertEqual(
+            [handle_value(call.args[0]) for call in kernel32.CloseHandle.call_args_list],
+            [500],
+        )
+        self.assertFalse(hasattr(process, audit_supervisor.WINDOWS_JOB_HANDLE_ATTRIBUTE))
+        self.assertFalse(
+            hasattr(process, audit_supervisor.WINDOWS_DESCENDANT_HANDLES_ATTRIBUTE)
+        )
+
+    @unittest.skipUnless(os.name == "nt", "Windows process containment only")
+    def test_audit_supervisor_real_cleanup_preserves_unrelated_sleeper(self) -> None:
+        sleeper = subprocess.Popen(
+            [sys.executable, "-c", "import time; time.sleep(30)"],
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        try:
+            result = audit_supervisor.run_worker_attempt(
+                [sys.executable, "-c", "pass"],
+                5,
+            )
+
+            self.assertIs(result.timed_out, False)
+            self.assertEqual(result.returncode, 0)
+            self.assertIsNone(sleeper.poll())
+        finally:
+            if sleeper.poll() is None:
+                sleeper.terminate()
+                try:
+                    sleeper.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    sleeper.kill()
+                    sleeper.wait(timeout=5)
+
     def test_audit_supervisor_timeout_drains_large_real_pipes(self) -> None:
         command = [
             sys.executable,

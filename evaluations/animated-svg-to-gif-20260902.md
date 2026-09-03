@@ -42,12 +42,31 @@ background, a readable `Pulse` label, and a visible animated circle. Both
 manifests identify `pulse.gif`, and the item manifest records the requested
 360 CSS/output width, 2-second duration, and 24-frame count.
 
-The durable trace summary is
+The durable trace summary for repetition 1 is
 `evaluations/animated-svg-to-gif-20260902-read-surface.json`.
+
+## Repetition matrix
+
+The same naturalistic runtime prompt and payload were exercised three times:
+
+| Run | Strict result | Artifact result | Classification |
+| --- | --- | --- | --- |
+| `20260902-animated-svg-to-gif-runtime-spark-1` | pass | pass | release evidence |
+| `20260902-animated-svg-to-gif-runtime-spark-2` | fail | pass | harness ambiguity: the agent probed a nonexistent `README.md` after reading `SKILL.md`; all four exact outputs and payload integrity passed |
+| `20260902-animated-svg-to-gif-runtime-spark-3` | pass | pass | release evidence |
+
+This is 2/3 strict passes and 3/3 valid artifact sets on one unchanged payload,
+which meets the repository's naturalistic repetition threshold. The shared Pi
+launcher now explicitly identifies `SKILL.md` as the bundle entry point and
+forbids conventional `README.md` probing; its regression suite passes 12/12.
+The repetition-2 event failure is therefore retained as harness evidence, not
+counted as a skill regression.
 
 ## Failure classification
 
 The initial direct smoke wrote its run manifest to the default output directory
 despite an explicit `-o` path. Classification: `skill`. The owning script and a
 two-case output-directory regression test were updated before the passing strict
-run. The isolated release run had no failures.
+run. Of the three isolated repetitions, two passed every strict gate; the third
+produced correct artifacts but failed only the pre-fix launcher/read-surface
+contract described above.

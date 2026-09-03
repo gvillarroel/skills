@@ -56,11 +56,27 @@ def main() -> int:
         )
         write(
             skill / "scripts" / "run.py",
-            "from pathlib import Path\nSKILL_ROOT = Path(__file__).resolve().parents[1]\n",
+            "#!/usr/bin/env -S uv run --script\n"
+            "# /// script\n"
+            "# requires-python = \">=3.11\"\n"
+            "# dependencies = []\n"
+            "# ///\n"
+            "from pathlib import Path\n"
+            "SKILL_ROOT = Path(__file__).resolve().parents[1]\n",
+        )
+        write(
+            skill / "scripts" / "run.py.lock",
+            'version = 1\nrevision = 3\nrequires-python = ">=3.11"\n',
         )
 
         clean_findings: list[object] = []
         validator.validate_skill_independence(skill, root, clean_findings)
+        validator.validate_script_tree(
+            skill / "scripts",
+            root,
+            clean_findings,
+            dependency_root=skill,
+        )
         if clean_findings:
             print(f"Clean fixture failed: {messages(clean_findings)}", file=sys.stderr)
             return 1
@@ -75,12 +91,22 @@ def main() -> int:
             "from pathlib import Path\nREPO_ROOT = Path(__file__).resolve().parents[4]\n",
         )
         write(
+            skill / "scripts" / "orphan.py.lock",
+            'version = 1\nrevision = 3\nrequires-python = ">=3.11"\n',
+        )
+        write(
             skill / "assets" / "examples" / "demo" / "package.json",
             '{"scripts":{"render":"node ../../../../../../projects/demo/scripts/render.mjs"}}\n',
         )
 
         bad_findings: list[object] = []
         validator.validate_skill_independence(skill, root, bad_findings)
+        validator.validate_script_tree(
+            skill / "scripts",
+            root,
+            bad_findings,
+            dependency_root=skill,
+        )
         observed = "\n".join(messages(bad_findings))
         expected_fragments = [
             "direct path to sibling skill 'beta-skill'",
@@ -89,6 +115,7 @@ def main() -> int:
             "referenced local resource does not exist inside the skill bundle",
             "derives a path above its own bundle",
             "acceptance fixture package scripts must not execute project-level scripts",
+            "uv script lock must have a sibling Python script",
         ]
         missing = [fragment for fragment in expected_fragments if fragment not in observed]
         if missing:

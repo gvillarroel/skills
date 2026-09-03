@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a06443-de35-77dc-8310-663788eea4bb",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260902-vectorize-contract-spark-2\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 5
+  },
+  "providers": {
+    "openai-codex": 5
+  },
+  "usageTotals": {
+    "input": 11802,
+    "output": 1636,
+    "cacheRead": 21120,
+    "cacheWrite": 0,
+    "totalTokens": 34558
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 2,
+    "bash": 2
+  },
+  "paths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2980
+    },
+    {
+      "path": "skills/vectorize-art-patterns/SKILL.md",
+      "calls": 1,
+      "resultBytes": 13258
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 2980
+    },
+    {
+      "path": "skills/vectorize-art-patterns/SKILL.md",
+      "calls": 1,
+      "resultBytes": 13258
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "skills/vectorize-art-patterns/SKILL.md",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 16238,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 2980
+    },
+    {
+      "line": 27,
+      "tool": "read",
+      "path": "skills/vectorize-art-patterns/SKILL.md",
+      "policyPath": "skills/vectorize-art-patterns/SKILL.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 13258
+    },
+    {
+      "line": 47,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "mkdir -p outputs/contract\nuv run --script skills/vectorize-art-patterns/scripts/validate_open_assets.py skills/vectorize-art-patterns/assets/base-images/manifest.json --output-report outputs/contract/base-assets-validation.json\nuv run --scr",
+      "isError": false,
+      "resultBytes": 18723
+    },
+    {
+      "line": 63,
+      "tool": "bash",
+      "path": null,
+      "policyPath": null,
+      "command": "wc -c outputs/contract/base-assets-validation.json outputs/contract/hilma-organic-mirror.svg outputs/contract/hilma-organic-mirror.json outputs/contract/hilma-organic-mirror-validation.json",
+      "isError": false,
+      "resultBytes": 268
+    }
+  ],
+  "findings": []
+}

@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "session": {
+    "version": 3,
+    "id": "01a06447-be5b-7cea-9a6b-75b5791888f6",
+    "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\20260902-vectorize-boundary-spark-1\\workspace"
+  },
+  "models": {
+    "gpt-5.3-codex-spark": 4
+  },
+  "providers": {
+    "openai-codex": 4
+  },
+  "usageTotals": {
+    "input": 1673,
+    "output": 793,
+    "cacheRead": 6656,
+    "cacheWrite": 0,
+    "totalTokens": 9122
+  },
+  "invalidJsonLineCount": 0,
+  "invalidJsonLineSamples": [],
+  "invalidEventRecordCount": 0,
+  "invalidEventRecordLineSamples": [],
+  "toolCounts": {
+    "read": 2,
+    "write": 1
+  },
+  "paths": [
+    {
+      "path": "outputs/boundary/license-decision.json",
+      "calls": 2,
+      "resultBytes": 397
+    },
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1096
+    }
+  ],
+  "readPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1,
+      "resultBytes": 1096
+    },
+    {
+      "path": "outputs/boundary/license-decision.json",
+      "calls": 1,
+      "resultBytes": 284
+    }
+  ],
+  "policyReadPaths": [
+    {
+      "path": "../prompt.md",
+      "calls": 1
+    },
+    {
+      "path": "outputs/boundary/license-decision.json",
+      "calls": 1
+    }
+  ],
+  "totalReadResultBytes": 1380,
+  "calls": [
+    {
+      "line": 14,
+      "tool": "read",
+      "path": "../prompt.md",
+      "policyPath": "../prompt.md",
+      "command": null,
+      "isError": false,
+      "resultBytes": 1096
+    },
+    {
+      "line": 27,
+      "tool": "write",
+      "path": "outputs/boundary/license-decision.json",
+      "policyPath": "outputs/boundary/license-decision.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 113
+    },
+    {
+      "line": 40,
+      "tool": "read",
+      "path": "outputs/boundary/license-decision.json",
+      "policyPath": "outputs/boundary/license-decision.json",
+      "command": null,
+      "isError": false,
+      "resultBytes": 284
+    }
+  ],
+  "findings": []
+}
