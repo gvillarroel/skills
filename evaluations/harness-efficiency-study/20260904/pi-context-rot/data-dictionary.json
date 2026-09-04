@@ -1,0 +1,990 @@
+{
+  "missing_value": "Empty CSV field; no NA/NaN/sentinel encoding.",
+  "schema_version": "1.0.0",
+  "tables": {
+    "break-even.csv.gz": {
+      "columns": [
+        {
+          "description": "Break even id.",
+          "name": "break_even_id"
+        },
+        {
+          "description": "Quality contrast id.",
+          "name": "quality_contrast_id"
+        },
+        {
+          "description": "Parameter set id.",
+          "name": "parameter_set_id"
+        },
+        {
+          "description": "Model.",
+          "name": "model"
+        },
+        {
+          "description": "Comparison strategy id.",
+          "name": "comparison_strategy_id"
+        },
+        {
+          "description": "Provider cost savings per assigned session usd.",
+          "name": "provider_cost_savings_per_assigned_session_usd"
+        },
+        {
+          "description": "Completion probability loss.",
+          "name": "completion_probability_loss"
+        },
+        {
+          "description": "Break even failure loss usd per incremental unresolved session.",
+          "name": "break_even_failure_loss_usd_per_incremental_unresolved_session"
+        },
+        {
+          "description": "Break even status.",
+          "name": "break_even_status"
+        },
+        {
+          "description": "Interpretation.",
+          "name": "interpretation"
+        },
+        {
+          "description": "Data classification; simulated for model-generated results.",
+          "name": "source_type"
+        }
+      ],
+      "grain": "One monetized unresolved-session break-even per quality contrast.",
+      "storage": "gzip-compressed CSV with deterministic metadata"
+    },
+    "evidence-curves.csv": {
+      "columns": [
+        {
+          "description": "Evidence id.",
+          "name": "evidence_id"
+        },
+        {
+          "description": "Series id.",
+          "name": "series_id"
+        },
+        {
+          "description": "Study.",
+          "name": "study"
+        },
+        {
+          "description": "Model.",
+          "name": "model"
+        },
+        {
+          "description": "Task.",
+          "name": "task"
+        },
+        {
+          "description": "Metric.",
+          "name": "metric"
+        },
+        {
+          "description": "Context tokens.",
+          "name": "context_tokens"
+        },
+        {
+          "description": "Score.",
+          "name": "score"
+        },
+        {
+          "description": "Score unit.",
+          "name": "score_unit"
+        },
+        {
+          "description": "Sample size.",
+          "name": "sample_size"
+        },
+        {
+          "description": "Sample unit.",
+          "name": "sample_unit"
+        },
+        {
+          "description": "Evidence status.",
+          "name": "evidence_status"
+        },
+        {
+          "description": "Numeric precision.",
+          "name": "numeric_precision"
+        },
+        {
+          "description": "Source location.",
+          "name": "source_location"
+        },
+        {
+          "description": "Source url.",
+          "name": "source_url"
+        },
+        {
+          "description": "Derivation.",
+          "name": "derivation"
+        },
+        {
+          "description": "Uncertainty.",
+          "name": "uncertainty"
+        },
+        {
+          "description": "Limitations.",
+          "name": "limitations"
+        },
+        {
+          "description": "Whether evidence is historical proxy or hypothetical sensitivity only.",
+          "name": "target_model_scope"
+        },
+        {
+          "description": "Anchor eligible.",
+          "name": "anchor_eligible"
+        },
+        {
+          "description": "Reference evidence id.",
+          "name": "reference_evidence_id"
+        },
+        {
+          "description": "Reference context tokens.",
+          "name": "reference_context_tokens"
+        },
+        {
+          "description": "Reference score.",
+          "name": "reference_score"
+        },
+        {
+          "description": "Retention.",
+          "name": "retention"
+        },
+        {
+          "description": "Curve order.",
+          "name": "curve_order"
+        }
+      ],
+      "grain": "One authored evidence row with reference-normalized retention and anchor eligibility.",
+      "storage": "plain UTF-8 CSV"
+    },
+    "evidence-onsets.csv": {
+      "columns": [
+        {
+          "description": "Evidence onset id.",
+          "name": "evidence_onset_id"
+        },
+        {
+          "description": "Series id.",
+          "name": "series_id"
+        },
+        {
+          "description": "Study.",
+          "name": "study"
+        },
+        {
+          "description": "Model.",
+          "name": "model"
+        },
+        {
+          "description": "Task.",
+          "name": "task"
+        },
+        {
+          "description": "Metric.",
+          "name": "metric"
+        },
+        {
+          "description": "Retention threshold.",
+          "name": "retention_threshold"
+        },
+        {
+          "description": "interpolated when bracketed; otherwise unidentifiable.",
+          "name": "threshold_status"
+        },
+        {
+          "description": "Interpolated context tokens.",
+          "name": "interpolated_context_tokens"
+        },
+        {
+          "description": "Lower evidence id.",
+          "name": "lower_evidence_id"
+        },
+        {
+          "description": "Upper evidence id.",
+          "name": "upper_evidence_id"
+        },
+        {
+          "description": "Lower context tokens.",
+          "name": "lower_context_tokens"
+        },
+        {
+          "description": "Upper context tokens.",
+          "name": "upper_context_tokens"
+        },
+        {
+          "description": "Lower retention.",
+          "name": "lower_retention"
+        },
+        {
+          "description": "Upper retention.",
+          "name": "upper_retention"
+        },
+        {
+          "description": "Interpolation scale.",
+          "name": "interpolation_scale"
+        },
+        {
+          "description": "Anchor count.",
+          "name": "anchor_count"
+        },
+        {
+          "description": "Whether evidence is historical proxy or hypothetical sensitivity only.",
+          "name": "target_model_scope"
+        },
+        {
+          "description": "Limitations.",
+          "name": "limitations"
+        }
+      ],
+      "grain": "One evidence series/retention threshold with bracketed log2 interpolation or unidentifiable status.",
+      "storage": "plain UTF-8 CSV"
+    },
+    "fidelity-boundaries.csv": {
+      "columns": [
+        {
+          "description": "Boundary id.",
+          "name": "boundary_id"
+        },
+        {
+          "description": "Parameter set id.",
+          "name": "parameter_set_id"
+        },
+        {
+          "description": "Model.",
+          "name": "model"
+        },
+        {
+          "description": "Baseline strategy id.",
+          "name": "baseline_strategy_id"
+        },
+        {
+          "description": "Comparison strategy id.",
+          "name": "comparison_strategy_id"
+        },
+        {
+          "description": "Onset tokens.",
+          "name": "onset_tokens"
+        },
+        {
+          "description": "Evidence profile.",
+          "name": "evidence_profile"
+        },
+        {
+          "description": "Max attempts.",
+          "name": "max_attempts"
+        },
+        {
+          "description": "Baseline beta for fidelity search.",
+          "name": "baseline_beta_for_fidelity_search"
+        },
+        {
+          "description": "Fixed fidelity for beta search.",
+          "name": "fixed_fidelity_for_beta_search"
+        },
+        {
+          "description": "Fidelity search lower bound.",
+          "name": "fidelity_search_lower_bound"
+        },
+        {
+          "description": "Fidelity search upper bound.",
+          "name": "fidelity_search_upper_bound"
+        },
+        {
+          "description": "Beta search lower bound.",
+          "name": "beta_search_lower_bound"
+        },
+        {
+          "description": "Beta search upper bound.",
+          "name": "beta_search_upper_bound"
+        },
+        {
+          "description": "Bisection tolerance.",
+          "name": "bisection_tolerance"
+        },
+        {
+          "description": "Bisection max iterations.",
+          "name": "bisection_max_iterations"
+        },
+        {
+          "description": "Minimum fidelity cost per success not above grow.",
+          "name": "minimum_fidelity_cost_per_success_not_above_grow"
+        },
+        {
+          "description": "Minimum fidelity cost status.",
+          "name": "minimum_fidelity_cost_status"
+        },
+        {
+          "description": "Minimum fidelity completion slo.",
+          "name": "minimum_fidelity_completion_slo"
+        },
+        {
+          "description": "Minimum fidelity completion slo status.",
+          "name": "minimum_fidelity_completion_slo_status"
+        },
+        {
+          "description": "Minimum beta at f095 cost per success not above grow.",
+          "name": "minimum_beta_at_f095_cost_per_success_not_above_grow"
+        },
+        {
+          "description": "Minimum beta cost status.",
+          "name": "minimum_beta_cost_status"
+        },
+        {
+          "description": "Grow cost per attempt usd.",
+          "name": "grow_cost_per_attempt_usd"
+        },
+        {
+          "description": "Comparison cost per attempt usd.",
+          "name": "comparison_cost_per_attempt_usd"
+        },
+        {
+          "description": "Data classification; simulated for model-generated results.",
+          "name": "source_type"
+        }
+      ],
+      "grain": "One primary model/compact-strategy row with three analytic decision boundaries.",
+      "storage": "plain UTF-8 CSV"
+    },
+    "monte-carlo-summary.csv": {
+      "columns": [
+        {
+          "description": "Monte carlo id.",
+          "name": "monte_carlo_id"
+        },
+        {
+          "description": "Parameter set id.",
+          "name": "parameter_set_id"
+        },
+        {
+          "description": "Model.",
+          "name": "model"
+        },
+        {
+          "description": "Baseline strategy id.",
+          "name": "baseline_strategy_id"
+        },
+        {
+          "description": "Comparison strategy id.",
+          "name": "comparison_strategy_id"
+        },
+        {
+          "description": "Task count.",
+          "name": "task_count"
+        },
+        {
+          "description": "Seed.",
+          "name": "seed"
+        },
+        {
+          "description": "Rng.",
+          "name": "rng"
+        },
+        {
+          "description": "Coupling.",
+          "name": "coupling"
+        },
+        {
+          "description": "Max attempts.",
+          "name": "max_attempts"
+        },
+        {
+          "description": "Analytic baseline completion probability.",
+          "name": "analytic_baseline_completion_probability"
+        },
+        {
+          "description": "Analytic comparison completion probability.",
+          "name": "analytic_comparison_completion_probability"
+        },
+        {
+          "description": "Analytic delta completion probability.",
+          "name": "analytic_delta_completion_probability"
+        },
+        {
+          "description": "Mc baseline completion probability.",
+          "name": "mc_baseline_completion_probability"
+        },
+        {
+          "description": "Mc comparison completion probability.",
+          "name": "mc_comparison_completion_probability"
+        },
+        {
+          "description": "Mc delta completion probability.",
+          "name": "mc_delta_completion_probability"
+        },
+        {
+          "description": "Mcse delta completion probability.",
+          "name": "mcse_delta_completion_probability"
+        },
+        {
+          "description": "Ci95 low delta completion probability.",
+          "name": "ci95_low_delta_completion_probability"
+        },
+        {
+          "description": "Ci95 high delta completion probability.",
+          "name": "ci95_high_delta_completion_probability"
+        },
+        {
+          "description": "Analytic baseline cost per successful session usd.",
+          "name": "analytic_baseline_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Analytic comparison cost per successful session usd.",
+          "name": "analytic_comparison_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Analytic delta cost per successful session usd.",
+          "name": "analytic_delta_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Mc baseline cost per successful session usd.",
+          "name": "mc_baseline_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Mc comparison cost per successful session usd.",
+          "name": "mc_comparison_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Mc delta cost per successful session usd.",
+          "name": "mc_delta_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Mcse delta cost per successful session usd.",
+          "name": "mcse_delta_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Ci95 low delta cost per successful session usd.",
+          "name": "ci95_low_delta_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Ci95 high delta cost per successful session usd.",
+          "name": "ci95_high_delta_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Completion delta analytic inside ci95.",
+          "name": "completion_delta_analytic_inside_ci95"
+        },
+        {
+          "description": "Cost delta analytic inside ci95.",
+          "name": "cost_delta_analytic_inside_ci95"
+        },
+        {
+          "description": "Data classification; simulated for model-generated results.",
+          "name": "source_type"
+        }
+      ],
+      "grain": "One paired common-random-number primary sentinel comparison; no raw tasks.",
+      "storage": "plain UTF-8 CSV"
+    },
+    "quality-aggregate-results.csv.gz": {
+      "columns": [
+        {
+          "description": "Parameter set id.",
+          "name": "parameter_set_id"
+        },
+        {
+          "description": "Design role.",
+          "name": "design_role"
+        },
+        {
+          "description": "Model.",
+          "name": "model"
+        },
+        {
+          "description": "Strategy id.",
+          "name": "strategy_id"
+        },
+        {
+          "description": "Source scenario id.",
+          "name": "source_scenario_id"
+        },
+        {
+          "description": "Source contrast id.",
+          "name": "source_contrast_id"
+        },
+        {
+          "description": "Source role.",
+          "name": "source_role"
+        },
+        {
+          "description": "Calibration id.",
+          "name": "calibration_id"
+        },
+        {
+          "description": "Onset tokens.",
+          "name": "onset_tokens"
+        },
+        {
+          "description": "Beta.",
+          "name": "beta"
+        },
+        {
+          "description": "Beta provenance.",
+          "name": "beta_provenance"
+        },
+        {
+          "description": "Whether evidence is historical proxy or hypothetical sensitivity only.",
+          "name": "target_model_scope"
+        },
+        {
+          "description": "Per compaction fidelity.",
+          "name": "per_compaction_fidelity"
+        },
+        {
+          "description": "Evidence profile.",
+          "name": "evidence_profile"
+        },
+        {
+          "description": "Max attempts.",
+          "name": "max_attempts"
+        },
+        {
+          "description": "Excess-context exposure in fixed 100k-token units per call: sum(max(prompt-onset,0))/(100000*n).",
+          "name": "normalized_excess_auc"
+        },
+        {
+          "description": "Profile-weighted mean of f raised to subsequent compaction count.",
+          "name": "effective_evidence_fidelity"
+        },
+        {
+          "description": "Weighted baseline success probability.",
+          "name": "weighted_baseline_success_probability"
+        },
+        {
+          "description": "Weighted single attempt success probability.",
+          "name": "weighted_single_attempt_success_probability"
+        },
+        {
+          "description": "Task-mix probability of success within the capped attempts.",
+          "name": "completion_probability"
+        },
+        {
+          "description": "Task-mix expected number of charged attempts, including the first.",
+          "name": "expected_attempts"
+        },
+        {
+          "description": "Provider cost per attempt usd.",
+          "name": "provider_cost_per_attempt_usd"
+        },
+        {
+          "description": "Provider cost per assigned session usd.",
+          "name": "provider_cost_per_assigned_session_usd"
+        },
+        {
+          "description": "Provider cost per successful session usd.",
+          "name": "provider_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Completion slo target.",
+          "name": "completion_slo_target"
+        },
+        {
+          "description": "Completion slo met.",
+          "name": "completion_slo_met"
+        },
+        {
+          "description": "Data classification; simulated for model-generated results.",
+          "name": "source_type"
+        }
+      ],
+      "grain": "One parameter/model/strategy task-mix aggregate.",
+      "storage": "gzip-compressed CSV with deterministic metadata"
+    },
+    "quality-contrast-results.csv.gz": {
+      "columns": [
+        {
+          "description": "Quality contrast id.",
+          "name": "quality_contrast_id"
+        },
+        {
+          "description": "Parameter set id.",
+          "name": "parameter_set_id"
+        },
+        {
+          "description": "Design role.",
+          "name": "design_role"
+        },
+        {
+          "description": "Model.",
+          "name": "model"
+        },
+        {
+          "description": "Baseline strategy id.",
+          "name": "baseline_strategy_id"
+        },
+        {
+          "description": "Comparison strategy id.",
+          "name": "comparison_strategy_id"
+        },
+        {
+          "description": "Calibration id.",
+          "name": "calibration_id"
+        },
+        {
+          "description": "Onset tokens.",
+          "name": "onset_tokens"
+        },
+        {
+          "description": "Beta.",
+          "name": "beta"
+        },
+        {
+          "description": "Per compaction fidelity.",
+          "name": "per_compaction_fidelity"
+        },
+        {
+          "description": "Evidence profile.",
+          "name": "evidence_profile"
+        },
+        {
+          "description": "Max attempts.",
+          "name": "max_attempts"
+        },
+        {
+          "description": "Baseline completion probability.",
+          "name": "baseline_completion_probability"
+        },
+        {
+          "description": "Comparison completion probability.",
+          "name": "comparison_completion_probability"
+        },
+        {
+          "description": "Delta completion probability comparison minus baseline.",
+          "name": "delta_completion_probability_comparison_minus_baseline"
+        },
+        {
+          "description": "Baseline expected attempts.",
+          "name": "baseline_expected_attempts"
+        },
+        {
+          "description": "Comparison expected attempts.",
+          "name": "comparison_expected_attempts"
+        },
+        {
+          "description": "Delta expected attempts comparison minus baseline.",
+          "name": "delta_expected_attempts_comparison_minus_baseline"
+        },
+        {
+          "description": "Baseline provider cost per assigned session usd.",
+          "name": "baseline_provider_cost_per_assigned_session_usd"
+        },
+        {
+          "description": "Comparison provider cost per assigned session usd.",
+          "name": "comparison_provider_cost_per_assigned_session_usd"
+        },
+        {
+          "description": "Provider cost savings per assigned session usd.",
+          "name": "provider_cost_savings_per_assigned_session_usd"
+        },
+        {
+          "description": "Baseline provider cost per successful session usd.",
+          "name": "baseline_provider_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Comparison provider cost per successful session usd.",
+          "name": "comparison_provider_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Delta provider cost per successful session usd.",
+          "name": "delta_provider_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Baseline completion slo met.",
+          "name": "baseline_completion_slo_met"
+        },
+        {
+          "description": "Comparison completion slo met.",
+          "name": "comparison_completion_slo_met"
+        },
+        {
+          "description": "Dominance status.",
+          "name": "dominance_status"
+        },
+        {
+          "description": "Data classification; simulated for model-generated results.",
+          "name": "source_type"
+        }
+      ],
+      "grain": "One compact-strategy minus grow-strategy contrast at matched assumptions.",
+      "storage": "gzip-compressed CSV with deterministic metadata"
+    },
+    "quality-stratum-results.csv.gz": {
+      "columns": [
+        {
+          "description": "Parameter set id.",
+          "name": "parameter_set_id"
+        },
+        {
+          "description": "Design role.",
+          "name": "design_role"
+        },
+        {
+          "description": "Model.",
+          "name": "model"
+        },
+        {
+          "description": "Strategy id.",
+          "name": "strategy_id"
+        },
+        {
+          "description": "Source scenario id.",
+          "name": "source_scenario_id"
+        },
+        {
+          "description": "Source contrast id.",
+          "name": "source_contrast_id"
+        },
+        {
+          "description": "Source role.",
+          "name": "source_role"
+        },
+        {
+          "description": "Calibration id.",
+          "name": "calibration_id"
+        },
+        {
+          "description": "Onset tokens.",
+          "name": "onset_tokens"
+        },
+        {
+          "description": "Beta.",
+          "name": "beta"
+        },
+        {
+          "description": "Beta provenance.",
+          "name": "beta_provenance"
+        },
+        {
+          "description": "Whether evidence is historical proxy or hypothetical sensitivity only.",
+          "name": "target_model_scope"
+        },
+        {
+          "description": "Per compaction fidelity.",
+          "name": "per_compaction_fidelity"
+        },
+        {
+          "description": "Evidence profile.",
+          "name": "evidence_profile"
+        },
+        {
+          "description": "Max attempts.",
+          "name": "max_attempts"
+        },
+        {
+          "description": "Excess-context exposure in fixed 100k-token units per call: sum(max(prompt-onset,0))/(100000*n).",
+          "name": "normalized_excess_auc"
+        },
+        {
+          "description": "Profile-weighted mean of f raised to subsequent compaction count.",
+          "name": "effective_evidence_fidelity"
+        },
+        {
+          "description": "Stratum id.",
+          "name": "stratum_id"
+        },
+        {
+          "description": "Stratum weight.",
+          "name": "stratum_weight"
+        },
+        {
+          "description": "Baseline success probability.",
+          "name": "baseline_success_probability"
+        },
+        {
+          "description": "Single attempt success probability.",
+          "name": "single_attempt_success_probability"
+        },
+        {
+          "description": "Task-mix probability of success within the capped attempts.",
+          "name": "completion_probability"
+        },
+        {
+          "description": "Task-mix expected number of charged attempts, including the first.",
+          "name": "expected_attempts"
+        },
+        {
+          "description": "Provider cost per attempt usd.",
+          "name": "provider_cost_per_attempt_usd"
+        },
+        {
+          "description": "Weighted completion contribution.",
+          "name": "weighted_completion_contribution"
+        },
+        {
+          "description": "Weighted attempts contribution.",
+          "name": "weighted_attempts_contribution"
+        },
+        {
+          "description": "Weighted assigned cost contribution usd.",
+          "name": "weighted_assigned_cost_contribution_usd"
+        },
+        {
+          "description": "Data classification; simulated for model-generated results.",
+          "name": "source_type"
+        }
+      ],
+      "grain": "One parameter/model/strategy/task-stratum analytic quality result.",
+      "storage": "gzip-compressed CSV with deterministic metadata"
+    },
+    "scale-results.csv.gz": {
+      "columns": [
+        {
+          "description": "Scale result id.",
+          "name": "scale_result_id"
+        },
+        {
+          "description": "Parameter set id.",
+          "name": "parameter_set_id"
+        },
+        {
+          "description": "Design role.",
+          "name": "design_role"
+        },
+        {
+          "description": "Model.",
+          "name": "model"
+        },
+        {
+          "description": "Strategy id.",
+          "name": "strategy_id"
+        },
+        {
+          "description": "Calibration id.",
+          "name": "calibration_id"
+        },
+        {
+          "description": "Onset tokens.",
+          "name": "onset_tokens"
+        },
+        {
+          "description": "Beta.",
+          "name": "beta"
+        },
+        {
+          "description": "Per compaction fidelity.",
+          "name": "per_compaction_fidelity"
+        },
+        {
+          "description": "Evidence profile.",
+          "name": "evidence_profile"
+        },
+        {
+          "description": "Max attempts.",
+          "name": "max_attempts"
+        },
+        {
+          "description": "Assigned sessions.",
+          "name": "assigned_sessions"
+        },
+        {
+          "description": "Expected completed sessions.",
+          "name": "expected_completed_sessions"
+        },
+        {
+          "description": "Expected unresolved sessions.",
+          "name": "expected_unresolved_sessions"
+        },
+        {
+          "description": "Expected provider spend usd.",
+          "name": "expected_provider_spend_usd"
+        },
+        {
+          "description": "Provider cost per successful session usd.",
+          "name": "provider_cost_per_successful_session_usd"
+        },
+        {
+          "description": "Task-mix probability of success within the capped attempts.",
+          "name": "completion_probability"
+        },
+        {
+          "description": "Data classification; simulated for model-generated results.",
+          "name": "source_type"
+        }
+      ],
+      "grain": "One aggregate projected algebraically to 1,000 or 1,000,000 sessions.",
+      "storage": "gzip-compressed CSV with deterministic metadata"
+    },
+    "trajectory-metrics.csv": {
+      "columns": [
+        {
+          "description": "Trajectory id.",
+          "name": "trajectory_id"
+        },
+        {
+          "description": "Model.",
+          "name": "model"
+        },
+        {
+          "description": "Strategy id.",
+          "name": "strategy_id"
+        },
+        {
+          "description": "Source contrast id.",
+          "name": "source_contrast_id"
+        },
+        {
+          "description": "Source scenario id.",
+          "name": "source_scenario_id"
+        },
+        {
+          "description": "Source role.",
+          "name": "source_role"
+        },
+        {
+          "description": "Main call count.",
+          "name": "main_call_count"
+        },
+        {
+          "description": "Compaction count.",
+          "name": "compaction_count"
+        },
+        {
+          "description": "Compaction positions json.",
+          "name": "compaction_positions_json"
+        },
+        {
+          "description": "Prompt sequence tokens json.",
+          "name": "prompt_sequence_tokens_json"
+        },
+        {
+          "description": "Minimum prompt tokens.",
+          "name": "minimum_prompt_tokens"
+        },
+        {
+          "description": "Mean prompt tokens.",
+          "name": "mean_prompt_tokens"
+        },
+        {
+          "description": "Maximum prompt tokens.",
+          "name": "maximum_prompt_tokens"
+        },
+        {
+          "description": "Provider cost per attempt usd.",
+          "name": "provider_cost_per_attempt_usd"
+        },
+        {
+          "description": "Onset tokens.",
+          "name": "onset_tokens"
+        },
+        {
+          "description": "Excess token call area.",
+          "name": "excess_token_call_area"
+        },
+        {
+          "description": "Excess-context exposure in fixed 100k-token units per call: sum(max(prompt-onset,0))/(100000*n).",
+          "name": "normalized_excess_auc"
+        },
+        {
+          "description": "Normalization formula.",
+          "name": "normalization_formula"
+        },
+        {
+          "description": "Data classification; simulated for model-generated results.",
+          "name": "source_type"
+        }
+      ],
+      "grain": "One strategy/model/onset trajectory derived from the cost ledger.",
+      "storage": "plain UTF-8 CSV"
+    }
+  }
+}

@@ -1,0 +1,583 @@
+{
+  "schemaVersion": "1.0.0",
+  "studyId": "pi-context-rot-cost-quality-sensitivity-20260904",
+  "title": "Offline Pi context-length, compaction-quality, retry, and cost sensitivity study",
+  "asOf": "2026-09-04",
+  "currency": "USD",
+  "objective": "Compare long-session context policies under a deterministic Pi-to-GitHub-Copilot cost ledger and an explicitly hypothetical context-quality mechanism, then locate the assumptions under which one strategy becomes preferable to another.",
+  "executionPolicy": {
+    "mode": "offline-analytic-with-monte-carlo-validation",
+    "realPiExecutionsAllowed": false,
+    "realCopilotExecutionsAllowed": false,
+    "networkModelCallsAllowed": false,
+    "providerCostLayer": "deterministic",
+    "qualityLayer": "assumption-driven",
+    "monteCarloPurpose": "validate analytic retry and ratio calculations only",
+    "monthlyScaling": "algebraic-only"
+  },
+  "artifactLinks": {
+    "deterministicCostSpec": "pi-cost-elasticity-spec-20260904.json",
+    "method": "pi-context-rot-method-20260904.md",
+    "evidenceInput": "context-rot-evidence-20260904.csv",
+    "costSourceContrast": "long-cap-200k-uncached"
+  },
+  "scope": {
+    "harness": "Pi coding agent",
+    "providerRoute": "GitHub Copilot",
+    "costModels": [
+      "gpt-5.6-luna",
+      "gpt-5.6-terra",
+      "gpt-5.6-sol"
+    ],
+    "qualityTarget": "hypothetical heterogeneous Pi session",
+    "claimScope": "model-internal",
+    "excludedClaims": [
+      "observed GPT-5.6 quality or context rot",
+      "observed Pi or Copilot retry rate",
+      "causal effect of context length in production",
+      "empirical summary fidelity",
+      "actual cache eligibility or third-party 800K availability",
+      "overall harness or model superiority"
+    ]
+  },
+  "sessionDesign": {
+    "assignedTaskUnit": "one hypothetical long Pi session",
+    "mainCallCount": 39,
+    "logicalUncompactedPromptTokens": {
+      "formula": "40000 + 20000 * (i - 1), for i = 1..39",
+      "minimum": 40000,
+      "maximum": 800000,
+      "increment": 20000
+    },
+    "mainOutputTokensPerCall": 1000,
+    "cap200kMainPromptSequence": {
+      "formula": "repeat [40000,60000,80000,100000,120000,140000,160000,180000,200000] four times, then [40000,60000,80000]",
+      "compactionLogicalPositions": [
+        9,
+        18,
+        27,
+        36
+      ],
+      "compactionCount": 4,
+      "summaryTokens": 20000,
+      "retainedSystemTokens": 20000,
+      "postCompactionCacheMode": "cold_write"
+    },
+    "conditionalAvailability": "The 800000-token Pi path is theoretical. Pi catalogs a 1050000-token window, but GitHub's public one-million-token client guarantee names supported Copilot clients rather than third-party Pi."
+  },
+  "strategies": [
+    {
+      "strategyId": "grow_to_800k",
+      "sourceContrastId": "long-cap-200k-uncached",
+      "sourceRole": "baseline",
+      "compactionPolicy": "none"
+    },
+    {
+      "strategyId": "cap_200k_uncached",
+      "sourceContrastId": "long-cap-200k-uncached",
+      "sourceRole": "comparison",
+      "compactionPolicy": "cap_200k",
+      "compactionInputMode": "uncached"
+    },
+    {
+      "strategyId": "cap_200k_cache_read",
+      "sourceContrastId": "compaction-input-cache-read-sensitivity",
+      "sourceRole": "comparison",
+      "compactionPolicy": "cap_200k",
+      "compactionInputMode": "cache_read"
+    },
+    {
+      "strategyId": "cap_200k_cache_write",
+      "sourceContrastId": "compaction-input-cache-write-sensitivity",
+      "sourceRole": "comparison",
+      "compactionPolicy": "cap_200k",
+      "compactionInputMode": "cache_write"
+    },
+    {
+      "strategyId": "cap_pricing_threshold_uncached",
+      "sourceContrastId": "long-cap-pricing-threshold-uncached",
+      "sourceRole": "comparison",
+      "compactionPolicy": "cap_at_model_specific_copilot_pricing_threshold",
+      "compactionInputMode": "uncached"
+    }
+  ],
+  "primaryContrast": {
+    "baselineStrategyId": "grow_to_800k",
+    "comparisonStrategyId": "cap_200k_uncached",
+    "direction": "comparison minus baseline for completion and cost per successful session; baseline minus comparison for provider savings",
+    "models": "all cost models",
+    "interpretation": "Conditional cost-quality tradeoff, not an empirical policy recommendation"
+  },
+  "deterministicCostLayer": {
+    "source": "validated outputs of the offline pi-cost-elasticity study",
+    "requestAccounting": "For every request, total input equals mutually exclusive uncached input plus cache-read plus cache-write tokens; output is separate.",
+    "tierRule": "All token categories in a request use the long-context rates only when total request input is strictly greater than the model-specific GitHub Copilot threshold.",
+    "retryAttemptCostRule": "A retry repeats the same complete strategy trajectory and therefore has the same deterministic provider cost as the first attempt.",
+    "automaticSelectionDiscountFraction": 0.0,
+    "providerCostOraclesUsdPerAttempt": [
+      {
+        "model": "luna",
+        "grow_to_800k": 1.0204,
+        "cap_200k_uncached": 0.5952
+      },
+      {
+        "model": "terra",
+        "grow_to_800k": 9.904,
+        "cap_200k_uncached": 5.952
+      },
+      {
+        "model": "sol",
+        "grow_to_800k": 19.598,
+        "cap_200k_uncached": 11.428
+      }
+    ],
+    "cashBoundary": "Values are provider token value before included GitHub AI Credits, subscription allocation, or overage state."
+  },
+  "qualityLayer": {
+    "status": "hypothetical-sensitivity-model",
+    "taskStrata": [
+      {
+        "stratumId": "easy",
+        "weight": 0.25,
+        "baselineSuccessProbability": 0.95
+      },
+      {
+        "stratumId": "typical",
+        "weight": 0.5,
+        "baselineSuccessProbability": 0.8
+      },
+      {
+        "stratumId": "hard",
+        "weight": 0.25,
+        "baselineSuccessProbability": 0.55
+      }
+    ],
+    "weightedBaselineSuccessProbability": 0.775,
+    "contextExposure": {
+      "name": "normalized_excess_auc",
+      "formula": "sum_i(max(activePromptTokens_i - onsetTokens, 0)) / (100000 * 39)",
+      "unit": "mean excess 100000-token-call units",
+      "activePromptRule": "Use the active main-request input after any compaction, not the discarded logical history.",
+      "fixedUnitRationale": "The fixed 100000-token denominator keeps beta comparable across onset values and compatible with the historical two-anchor logit slopes."
+    },
+    "evidencePositionProfiles": [
+      {
+        "profileId": "uniform",
+        "callWeightFormula": "v_i = 1"
+      },
+      {
+        "profileId": "front_loaded",
+        "callWeightFormula": "v_i = 40 - i"
+      },
+      {
+        "profileId": "back_loaded",
+        "callWeightFormula": "v_i = i"
+      }
+    ],
+    "effectiveEvidenceFidelity": {
+      "compactionCountForEvidenceAtCall": "c_i = count(j in compactionLogicalPositions where j >= i)",
+      "formula": "F = sum_i(v_i * perCompactionFidelity ^ c_i) / sum_i(v_i)",
+      "boundary": "F = 1 for an uncompacted trajectory or when perCompactionFidelity = 1",
+      "semanticMeaning": "Retained task-relevant information, not token compression ratio"
+    },
+    "singleAttemptProbability": {
+      "stratumFormula": "p_s = logistic(logit(p0_s) - beta * normalized_excess_auc + ln(F))",
+      "aggregateFormula": "sum_s(weight_s * p_s)",
+      "betaUnit": "log-odds decrease per mean excess 100000-token-call unit"
+    },
+    "aggregationRule": "Compute quality, completion, attempts, and assigned cost within each stratum; then weight the stratum quantities. Never apply the nonlinear retry formula only to the weighted p0."
+  },
+  "retryLayer": {
+    "mechanism": "Independent identically distributed attempts conditional on task stratum and strategy",
+    "attemptCaps": [
+      1,
+      3
+    ],
+    "completionFormula": "1 - (1 - p_s) ^ K",
+    "expectedAttemptsFormula": "sum_j=0..K-1((1 - p_s) ^ j)",
+    "assignedProviderCostFormula": "providerCostPerAttempt * expectedAttempts",
+    "aggregateAssignedCostFormula": "sum_s(weight_s * assignedProviderCost_s)",
+    "aggregateCompletionFormula": "sum_s(weight_s * completion_s)",
+    "providerCostPerSuccessfulSessionFormula": "aggregateAssignedProviderCost / aggregateCompletionProbability",
+    "failureDependenceCaveat": "Repeated attempts may fail for the same missing evidence or bad summary in reality; correlated retries are a required challenge case outside the primary analytic mechanism."
+  },
+  "design": {
+    "canonicalUnit": "strategy x parameter_set x model x task_stratum, with stochastic tasks used only for selected Monte Carlo sentinels",
+    "genericSensitivityGrid": {
+      "calibrationId": "generic-elasticity-grid",
+      "designRole": "sensitivity",
+      "onsetTokens": [
+        16000,
+        32000,
+        113000,
+        200000,
+        400000,
+        600000
+      ],
+      "beta": [
+        0.0,
+        0.25,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "perCompactionFidelity": [
+        1.0,
+        0.99,
+        0.97,
+        0.95,
+        0.9,
+        0.8
+      ],
+      "maxAttempts": [
+        1,
+        3
+      ],
+      "evidenceProfile": [
+        "uniform",
+        "front_loaded",
+        "back_loaded"
+      ],
+      "parameterSetCount": 1080,
+      "parameterSetIdFormula": "sensitivity-o{onset_slug}-b{beta_slug}-f{fidelity_slug}-k{max_attempts}-{evidence_profile}",
+      "targetModelScope": "hypothetical-not-empirical-calibration"
+    },
+    "historicalProxyGrid": {
+      "designRole": "historical_proxy_challenge",
+      "crossWith": {
+        "perCompactionFidelity": [
+          1.0,
+          0.99,
+          0.97,
+          0.95,
+          0.9,
+          0.8
+        ],
+        "maxAttempts": [
+          1,
+          3
+        ],
+        "evidenceProfile": [
+          "uniform",
+          "front_loaded",
+          "back_loaded"
+        ]
+      },
+      "profiles": [
+        {
+          "calibrationId": "chroma-context-rot-proxy",
+          "onsetTokens": 268.617647,
+          "beta": 1.260046681,
+          "lowAnchor": {
+            "contextTokens": 268.617647,
+            "probability": 0.872549019607843,
+            "count": "267/306"
+          },
+          "highAnchor": {
+            "contextTokens": 112672.843137,
+            "probability": 0.624183006535948,
+            "count": "191/306"
+          }
+        },
+        {
+          "calibrationId": "ruler-gpt-4-1106-proxy",
+          "onsetTokens": 4000,
+          "beta": 1.519149139,
+          "lowAnchor": {
+            "contextTokens": 4000,
+            "probability": 0.966
+          },
+          "highAnchor": {
+            "contextTokens": 128000,
+            "probability": 0.812
+          }
+        },
+        {
+          "calibrationId": "nolima-gpt-4-1-proxy",
+          "onsetTokens": 1000,
+          "beta": 1.947000033,
+          "lowAnchor": {
+            "contextTokens": 1000,
+            "probability": 0.956
+          },
+          "highAnchor": {
+            "contextTokens": 128000,
+            "probability": 0.647
+          }
+        }
+      ],
+      "betaDerivationFormula": "(logit(p_low) - logit(p_high)) / ((context_high - context_low) / 100000)",
+      "parameterSetCount": 108,
+      "parameterSetIdFormula": "proxy-{calibration_id}-f{fidelity_slug}-k{max_attempts}-{evidence_profile}",
+      "targetModelScope": "historical-proxy-not-gpt-5.6-calibration"
+    },
+    "primaryParameterSet": {
+      "parameterSetId": "primary-onset-200k-half-odds-f095-k3-uniform",
+      "designRole": "primary",
+      "calibrationId": "primary-half-odds-at-grow-trajectory",
+      "onsetTokens": 200000,
+      "growNormalizedExcessAuc": 2.3846153846153846,
+      "growNormalizedExcessAucExact": "31/13",
+      "beta": 0.2906746241057835,
+      "betaExactFormula": "ln(2) * 13 / 31",
+      "growExposureOddsMultiplier": 0.5,
+      "perCompactionFidelity": 0.95,
+      "cap200kUniformEffectiveEvidenceFidelity": 0.890241826923077,
+      "maxAttempts": 3,
+      "evidenceProfile": "uniform",
+      "targetModelScope": "hypothetical-not-empirical-calibration"
+    },
+    "totalParameterSetCount": 1189
+  },
+  "evidencePolicy": {
+    "inputSchema": [
+      "evidence_id",
+      "series_id",
+      "study",
+      "model",
+      "task",
+      "metric",
+      "context_tokens",
+      "score",
+      "score_unit",
+      "sample_size",
+      "sample_unit",
+      "evidence_status",
+      "numeric_precision",
+      "source_location",
+      "source_url",
+      "derivation",
+      "uncertainty",
+      "limitations",
+      "target_model_scope"
+    ],
+    "eligibleInterpolationAnchor": "Finite positive context_tokens and proportion score, plus either (a) evidence_status = source-reported with numeric_precision in {exact, rounded}, or (b) evidence_status = independently-derived with numeric_precision = exact and an explicitly approved immutable digest-pinned row-level source. The approved derived series is chroma-gpt41-longmemeval-reanalysis.",
+    "ineligibleRowsRemainVisible": "Approximate, inequality, count, p_value, tokenless, non-context, and non-approved independently derived statistics remain in the evidence inventory but cannot silently become interpolation anchors.",
+    "referenceRule": "Within each series, divide score by the earliest eligible context anchor score.",
+    "retentionThresholds": [
+      0.95,
+      0.9,
+      0.85,
+      0.8,
+      0.7,
+      0.5
+    ],
+    "interpolationFormula": "log2(x*) = log2(x0) + ((r* - r0) / (r1 - r0)) * (log2(x1) - log2(x0))",
+    "crossingRule": "Use the first adjacent downward crossing with r0 >= target and r1 < target.",
+    "identifiedStatus": "interpolated",
+    "notIdentifiedStatus": "unidentifiable",
+    "extrapolation": "forbidden",
+    "transferRule": "No evidence series is a GPT-5.6 or Pi calibration unless collected on the target model, harness, task mix, and protocol."
+  },
+  "monteCarloValidation": {
+    "role": "numerical validation of exact analytic expectations",
+    "taskCountPerSentinel": 200000,
+    "seed": 20260904,
+    "rng": "python.random.Random-MT19937",
+    "taskStratumDraw": "one common uniform mapped to easy below 0.25, typical below 0.75, and hard otherwise",
+    "attemptDraws": "one common uniform per allowed attempt",
+    "coupling": "paired-common-task-stratum-and-attempt-uniforms",
+    "sentinelPairs": [
+      {
+        "model": "luna",
+        "comparisonStrategyId": "cap_200k_uncached"
+      },
+      {
+        "model": "terra",
+        "comparisonStrategyId": "cap_200k_uncached"
+      },
+      {
+        "model": "sol",
+        "comparisonStrategyId": "cap_200k_uncached"
+      },
+      {
+        "model": "luna",
+        "comparisonStrategyId": "cap_200k_cache_read"
+      },
+      {
+        "model": "terra",
+        "comparisonStrategyId": "cap_pricing_threshold_uncached"
+      },
+      {
+        "model": "sol",
+        "comparisonStrategyId": "cap_pricing_threshold_uncached"
+      }
+    ],
+    "parameterSetId": "primary-onset-200k-half-odds-f095-k3-uniform",
+    "completionMcse": "paired sample standard deviation of comparison-minus-baseline completion divided by sqrt(task_count)",
+    "costPerSuccessMcse": "paired delta-method influence-function standard error for the difference of cost-to-success ratios",
+    "interval": "normal 95 percent with z = 1.959963984540054",
+    "acceptance": "The analytic completion delta and analytic cost-per-success delta must each lie inside the corresponding fixed-seed Monte Carlo 95 percent interval.",
+    "rawTaskRowsRetained": false
+  },
+  "estimands": {
+    "primary": [
+      "completion_probability",
+      "provider_cost_per_assigned_session_usd",
+      "provider_cost_per_successful_session_usd",
+      "delta_completion_probability_comparison_minus_baseline",
+      "provider_cost_savings_per_assigned_session_usd",
+      "delta_provider_cost_per_successful_session_usd"
+    ],
+    "mechanism": [
+      "normalized_excess_auc",
+      "effective_evidence_fidelity",
+      "single_attempt_success_probability_by_stratum",
+      "expected_attempts",
+      "compaction_positions",
+      "provider_cost_per_attempt_usd"
+    ],
+    "completionSlo": 0.95,
+    "monthlyAssignedSessionVolumes": [
+      1000,
+      1000000
+    ]
+  },
+  "breakEven": {
+    "comparisonDirection": "Each compact strategy versus grow_to_800k",
+    "providerSavingsFormula": "baseline provider cost per assigned session - comparison provider cost per assigned session",
+    "completionLossFormula": "max(baseline completion probability - comparison completion probability, 0)",
+    "failureLossThresholdFormula": "provider savings per assigned session / completion probability loss",
+    "identifiedStatus": "identified_tradeoff when savings and completion loss are both positive",
+    "otherStatuses": [
+      "comparison_weakly_dominates",
+      "baseline_weakly_dominates",
+      "comparison_costs_more_for_quality_gain"
+    ],
+    "meaning": "When identified, compaction is economically preferred only if one additional unresolved session is valued below the threshold, conditional on all model assumptions.",
+    "primaryDecisionBoundaries": {
+      "output": "fidelity-boundaries.csv",
+      "models": [
+        "luna",
+        "terra",
+        "sol"
+      ],
+      "comparisonStrategies": [
+        "cap_200k_uncached",
+        "cap_200k_cache_read"
+      ],
+      "fixedOnsetTokens": 200000,
+      "evidenceProfile": "uniform",
+      "maxAttempts": 3,
+      "fidelitySearch": {
+        "lower": 0.0,
+        "upper": 1.0,
+        "fixedBeta": 0.2906746241057835,
+        "targets": [
+          "minimum fidelity with compact cost per successful session not above grow",
+          "minimum fidelity with compact completion probability at least 0.95"
+        ]
+      },
+      "betaSearch": {
+        "lower": 0.0,
+        "upper": 10.0,
+        "fixedPerCompactionFidelity": 0.95,
+        "target": "minimum beta with compact cost per successful session not above grow"
+      },
+      "solver": "monotone bisection",
+      "tolerance": 1e-12,
+      "maximumIterations": 100,
+      "statuses": [
+        "identified_by_bisection",
+        "already_satisfied_at_lower_bound",
+        "not_reached_within_bounds"
+      ]
+    }
+  },
+  "assumptions": [
+    {
+      "assumptionId": "q01-quality-link",
+      "statement": "Mean excess context changes log-odds linearly through beta after onset.",
+      "status": "assumed",
+      "challenge": "threshold, probability-scale, and stratum-specific alternatives"
+    },
+    {
+      "assumptionId": "q02-task-mix",
+      "statement": "The 25/50/25 easy/typical/hard mixture and its p0 values represent the hypothetical workload.",
+      "status": "assumed",
+      "challenge": "report strata separately and change mixture weights"
+    },
+    {
+      "assumptionId": "q03-summary-fidelity",
+      "statement": "Each compaction independently retains a constant fraction of relevant evidence and losses multiply.",
+      "status": "assumed",
+      "challenge": "lossless, severe-loss, correlated-loss, and evidence-position profiles"
+    },
+    {
+      "assumptionId": "q04-retry-independence",
+      "statement": "Retries are independent conditional on task stratum and strategy and repeat the same full provider-cost trajectory.",
+      "status": "assumed",
+      "challenge": "perfectly correlated failures and changed retry prompts or cache state"
+    },
+    {
+      "assumptionId": "q05-cost-source",
+      "statement": "The validated deterministic cost bundle correctly represents provider token value for each selected strategy.",
+      "status": "model-derived",
+      "challenge": "compaction cache modes and model-specific pricing caps"
+    },
+    {
+      "assumptionId": "q06-historical-transfer",
+      "statement": "Historical benchmark slopes are useful stress profiles but do not estimate GPT-5.6 Pi-session behavior.",
+      "status": "explicit-non-calibration",
+      "challenge": "target-task evaluation required"
+    },
+    {
+      "assumptionId": "q07-availability",
+      "statement": "The theoretical 800K route is available and behaves as represented by the cost ledger.",
+      "status": "conditional",
+      "challenge": "report cap policies without claiming third-party service support"
+    }
+  ],
+  "validationRequirements": [
+    "All cost trajectories are imported from a passing independently validated deterministic cost bundle.",
+    "The grow trajectory has exactly 39 main prompts from 40000 through 800000 in 20000-token increments.",
+    "The cap-200K trajectory has exactly 39 main prompts and compactions at logical positions 9, 18, 27, and 36.",
+    "At onset 200000, grow normalized excess AUC equals 31/13 and cap-200K normalized excess AUC equals zero.",
+    "At fidelity 0.95 with uniform evidence positions, cap-200K effective evidence fidelity equals 0.890241826923077 within numerical tolerance.",
+    "Every probability is finite and in [0,1]; every provider cost and expected attempt count is finite and nonnegative.",
+    "Stratum weights sum to one and aggregate outputs independently recompute from stratum rows.",
+    "K=1 and K=3 retry expectations match the closed-form geometric formulas.",
+    "Scaling to 1000 and 1000000 assigned sessions is exact multiplication without materializing one row per task.",
+    "Evidence interpolation uses only eligible source-reported anchors or the approved exact digest-pinned Chroma proportion anchors, performs no extrapolation, and marks every unbracketed threshold unidentifiable.",
+    "The fixed-seed paired Monte Carlo sentinels bracket their analytic completion and cost-per-success deltas in the declared 95 percent intervals.",
+    "Primary fidelity and beta decision boundaries satisfy their defining predicates and bisection bounds independently within the declared 1e-12 tolerance.",
+    "An independent validator recomputes trajectory, quality, retry, break-even, scaling, Monte Carlo, and evidence-onset results without importing the simulator."
+  ],
+  "provenance": {
+    "chromaContextRotRepository": {
+      "url": "https://github.com/chroma-core/context-rot",
+      "commit": "af80a08018f2b7257c0336d04bcd02f936088106",
+      "focusedEvaluatedCsv": {
+        "path": "results/gpt_4_1_longmemeval_focused_evaluated.csv",
+        "sha256": "03AB9D9798263CC9C02D87DA111B8715E1822C5A874F9CA29AFBB7710135D874"
+      },
+      "fullEvaluatedCsv": {
+        "path": "results/gpt_4_1_longmemeval_full_evaluated.csv",
+        "sha256": "037FD6E862D173DCA9AD15793CCA15D9609840D200DD17A0C754903AE070FF80"
+      }
+    },
+    "primaryEvidenceSources": [
+      {
+        "title": "Context Rot: How Increasing Input Tokens Impacts LLM Performance",
+        "url": "https://www.trychroma.com/research/context-rot"
+      },
+      {
+        "title": "NoLiMa official repository",
+        "url": "https://github.com/adobe-research/NoLiMa"
+      },
+      {
+        "title": "RULER paper",
+        "url": "https://openreview.net/forum?id=kIoBbc76Sy"
+      },
+      {
+        "title": "Lost in the Middle paper",
+        "url": "https://aclanthology.org/2024.tacl-1.9/"
+      },
+      {
+        "title": "Lost in the Middle official repository",
+        "url": "https://github.com/nelson-liu/lost-in-the-middle"
+      }
+    ]
+  },
+  "inferenceBoundary": "The study estimates consequences of a declared cost ledger and hypothetical quality/retry equations. Its generic grid is sensitivity analysis, and its Chroma, RULER, NoLiMa, and Lost-in-the-Middle values are historical evidence or proxies. None is a GPT-5.6 Pi calibration or a production forecast."
+}

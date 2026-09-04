@@ -77,6 +77,35 @@ ledger and the corrected thresholds. The earlier stochastic results remain the
 frozen evidence for their declared synthetic design; they have not been
 silently recomputed under the corrected Luna boundary.
 
+### Context-rot extension
+
+`pi-context-rot/` adds a fully offline, assumption-driven quality layer to the
+corrected Pi cost ledger. It does not execute Pi, Copilot, GPT-5.6, or any other
+model. Across 1,189 parameter sets it varies context-decay onset and strength,
+summary fidelity, evidence position, retries, compaction cache treatment, and
+model cost tier.
+
+The named primary case compares the 39-call grow-to-800k trajectory with a
+fixed 200k cap. Under an assumed 200k degradation onset, context effect that
+halves grow-session odds, 95% evidence survival per compaction, uniform evidence
+positions, and three attempts, grow resolves 92.1484% of assigned sessions and
+the cap resolves 96.7227%. Luna expected provider spend per assigned session is
+$1.530381 versus $0.788915 after retries. At one million assigned sessions that
+is a model-conditional reduction of $741,466 and 45,742 additional completions.
+
+The 95% completion SLO requires at least 83.9632% evidence survival per
+compaction in this fixture. Cost alone is much less restrictive: the uncached
+cap remains no more expensive per completed session down to 22.7543% survival
+for Luna, 24.9478% for Terra, and 22.7318% for Sol. These boundaries are model
+outputs, not empirical summary-quality estimates.
+
+The evidence inventory includes NoLiMa, RULER, Lost in the Middle, and a
+commit-pinned reanalysis of Chroma LongMemEval. It demonstrates why no universal
+failure length is defensible: historical curves range from steep degradation
+to near-flat behavior through 128k, while evidence position and distractor
+structure also alter outcomes. Details, equations, decision tables, and source
+links are in `pi-context-rot/README.md`.
+
 ## Variables included
 
 | Layer | Material variables represented |
@@ -295,6 +324,12 @@ The exact release inputs and validation digests are preserved in the three
 `*-validation.json` files. The canonical experiment specs and model are
 versioned under `projects/harness-efficiency-study/`.
 
+The context-rot extension separately passes 16 deterministic/oracle tests and
+5,116,530 implementation-independent recomputations with zero failures or
+warnings. Its six paired 200,000-task Monte Carlo sentinels validate analytic
+completion and cost-per-completion arithmetic only; they do not validate the
+hypothetical quality equations against production behavior.
+
 ## Exploration map
 
 - `scenario-summary.csv`: portfolio and cohort averages by outcome.
@@ -310,6 +345,10 @@ versioned under `projects/harness-efficiency-study/`.
 - `explore.sql`: DuckDB views and starter questions over the versioned CSVs.
 - `*-hypotheses.json`: full generated hypothesis evidence.
 - `*-validation.json`: release and digest evidence.
+- `pi-cost-elasticity/`: deterministic Pi request, cache, tool, and compaction
+  cost ledger.
+- `pi-context-rot/`: context-quality sensitivity surface, empirical evidence
+  inventory, decision boundaries, and independent validation report.
 - `checksums.sha256`: SHA-256 integrity ledger for every other versioned file.
 
 Run DuckDB from this directory:

@@ -1,0 +1,157 @@
+{
+  "artifacts": {
+    "break-even.csv.gz": {
+      "bytes": 222600,
+      "compression": {
+        "format": "gzip",
+        "level": 9,
+        "mtime": 0,
+        "original_filename": "",
+        "python_version": "3.14.7",
+        "zlib_build_version": "1.3.1.zlib-ng",
+        "zlib_runtime_version": "1.3.1.zlib-ng"
+      },
+      "rows": 14268,
+      "sha256": "7bd3f04aacd64a4ba57eba401a70d552b35b999b864004d07d4d33db09bd70a0",
+      "uncompressed_bytes": 5320221,
+      "uncompressed_sha256": "0537d6bcfb01988db9acd09a96512091930b27da78978004159e6343c43cfaba"
+    },
+    "data-dictionary.json": {
+      "bytes": 29592,
+      "rows": null,
+      "sha256": "9f9bcd579084bdc913991d1d0e4b3f3d89d7899adbcdc26da138f56634665368"
+    },
+    "evidence-curves.csv": {
+      "bytes": 28767,
+      "rows": 47,
+      "sha256": "def409833e49eae9a4236ecfb4e34a4c401bcfbe7fa540310222a9b828caee00"
+    },
+    "evidence-onsets.csv": {
+      "bytes": 36289,
+      "rows": 54,
+      "sha256": "86c8e125f65b85bdf7750769c22e51177adcdbec09049fcd26c54ef0b6e56fa1"
+    },
+    "explore.sql": {
+      "bytes": 1743,
+      "rows": null,
+      "sha256": "e0da1aaf9dd9ce9fcbe2a7673321c0e534ef4d4c4ac8e06db6d3200bd6523685"
+    },
+    "fidelity-boundaries.csv": {
+      "bytes": 2641,
+      "rows": 6,
+      "sha256": "35b6c72e49023bdcd9bfd39ca09093221b2e2a8bc2686202863f87698ae0b247"
+    },
+    "monte-carlo-summary.csv": {
+      "bytes": 4467,
+      "rows": 6,
+      "sha256": "f71f3f8c8884328e085c052d18877e35769a579b6d2e9cae7b5af55a4ec5f067"
+    },
+    "quality-aggregate-results.csv.gz": {
+      "bytes": 354631,
+      "compression": {
+        "format": "gzip",
+        "level": 9,
+        "mtime": 0,
+        "original_filename": "",
+        "python_version": "3.14.7",
+        "zlib_build_version": "1.3.1.zlib-ng",
+        "zlib_runtime_version": "1.3.1.zlib-ng"
+      },
+      "rows": 17835,
+      "sha256": "973803e5269e50f8e1777bb6226367fb8706c850266a81e6840c028a44cc0770",
+      "uncompressed_bytes": 7913030,
+      "uncompressed_sha256": "1f1d2c4fcc497e006e5f62bb5e984a59fabac19aa08d7e5b8b26cb483f8321bb"
+    },
+    "quality-contrast-results.csv.gz": {
+      "bytes": 571324,
+      "compression": {
+        "format": "gzip",
+        "level": 9,
+        "mtime": 0,
+        "original_filename": "",
+        "python_version": "3.14.7",
+        "zlib_build_version": "1.3.1.zlib-ng",
+        "zlib_runtime_version": "1.3.1.zlib-ng"
+      },
+      "rows": 14268,
+      "sha256": "4f40777f80a2c00a2a6561ed025303f3ff835c1c8c2374f42061b765cfeeec77",
+      "uncompressed_bytes": 6311671,
+      "uncompressed_sha256": "28c13cc48a22e78855207417b20ab23c9ac2928bd66bc63e426e2c92a02e3ac4"
+    },
+    "quality-stratum-results.csv.gz": {
+      "bytes": 1011318,
+      "compression": {
+        "format": "gzip",
+        "level": 9,
+        "mtime": 0,
+        "original_filename": "",
+        "python_version": "3.14.7",
+        "zlib_build_version": "1.3.1.zlib-ng",
+        "zlib_runtime_version": "1.3.1.zlib-ng"
+      },
+      "rows": 53505,
+      "sha256": "bc76afb817bc7409a4c82dc4a39a9a598e142b6129f536f31405c8931453b444",
+      "uncompressed_bytes": 24210613,
+      "uncompressed_sha256": "6099963164a54e8068ae2ab0fda4a68af8413db8d161e05a7c9b413780e461d4"
+    },
+    "scale-results.csv.gz": {
+      "bytes": 646689,
+      "compression": {
+        "format": "gzip",
+        "level": 9,
+        "mtime": 0,
+        "original_filename": "",
+        "python_version": "3.14.7",
+        "zlib_build_version": "1.3.1.zlib-ng",
+        "zlib_runtime_version": "1.3.1.zlib-ng"
+      },
+      "rows": 35670,
+      "sha256": "2b14f881fa2e745a5361cf129d782a5a92e78ac3f074056dad0ac60bd750143c",
+      "uncompressed_bytes": 10837339,
+      "uncompressed_sha256": "cead36aeac832b76d080d3fc623a4f639eef98037d9e987a7cdf36f5d5bde199"
+    },
+    "study-results.json": {
+      "bytes": 56545,
+      "rows": null,
+      "sha256": "edf0d43d7e4e797964be4616d2485e005e89d1fd7691cf2a5dde139d6a009cb2"
+    },
+    "summary.md": {
+      "bytes": 3043,
+      "rows": null,
+      "sha256": "1bf33b65f59804ee3053237e6ead9b6c81b18693928317ce81b56c9500c3295e"
+    },
+    "trajectory-metrics.csv": {
+      "bytes": 75627,
+      "rows": 135,
+      "sha256": "15d7dde22a9bb4e0be097913e53198e724bf432d466443ee7c493f0e72a63154"
+    }
+  },
+  "engine": "python-standard-library",
+  "execution_mode": "offline-statistical-simulation",
+  "input_files": {
+    "call-ledger.csv": {
+      "sha256": "6aa6079996b78e1f4d5df0ae238ed248049adef1650cc1c8b2b540e0fe385008"
+    },
+    "context-rot-evidence-20260904.csv": {
+      "sha256": "779fd6dea2a97087c0b3ad11e241bcd63796964279881e0f13b47b991fdf9a3d"
+    },
+    "pi-context-rot-spec-20260904.json": {
+      "sha256": "6b8f3c3a09f006c2f1bb21658b118890890c6436c7b8766c71a157f1d3a1939f"
+    },
+    "scenario-results.csv": {
+      "sha256": "f6ffdebc7686e690656bd2cdaccb681436b326b0dc19583a5d648e737cac0e61"
+    }
+  },
+  "model_version": "1.0.0",
+  "monte_carlo": {
+    "raw_task_rows_retained": false,
+    "seed": 20260904,
+    "task_count_per_sentinel": 200000
+  },
+  "monte_carlo_uncertainty_scope": "conditional-on-declared-model-and-assumptions",
+  "real_pi_or_copilot_or_model_calls": false,
+  "reproducibility": "exact-within-python-and-zlib-runtime-for-analytic-seeded-mc-and-gzip",
+  "schema_version": "1.0.0",
+  "source_type": "simulated",
+  "study_id": "pi-context-rot-cost-quality-sensitivity-20260904"
+}

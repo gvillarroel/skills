@@ -113,6 +113,9 @@ workload in memory.
 - Encode each supported core contrast as `comparison - baseline`, classify every
   design point as primary or challenge, and use the declared paired, independent,
   or deterministic mode. Keep design points separate.
+- For context-length degradation, summary fidelity, retry economics, or a
+  quality-adjusted compaction break-even, read
+  [references/context-quality-cost.md](references/context-quality-cost.md).
 - Report effect size, interval, practical threshold, replication count, and
   Monte Carlo standard error where applicable. A small p-value is not a
   substitute for a useful effect or a stable result.

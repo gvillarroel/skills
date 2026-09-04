@@ -36,6 +36,22 @@ output size, and extra model roundtrips. Its quality layer reports the maximum
 external loss that token savings can tolerate; it does not invent an empirical
 quality effect.
 
+## Pi context-rot extension
+
+The `pi-context-rot` extension joins that deterministic cost ledger to an
+explicitly hypothetical session-quality model. It compares the same 39-call
+grow-to-800k trajectory with fixed-200k and model-threshold compaction policies,
+then varies degradation onset and strength, per-compaction evidence survival,
+evidence position, retry cap, cache treatment, and model cost tier.
+
+Historical NoLiMa, RULER, Chroma LongMemEval, and Lost in the Middle results are
+stored as a source-bound evidence inventory. They define observed endpoints and
+stress profiles, not a GPT-5.6 calibration. Retention thresholds are
+interpolated only within observed brackets and never extrapolated. The named
+primary case, all 1,188 challenge points, and the exact decision boundaries are
+therefore labeled model-conditional. The bundle remains fully offline and makes
+no Pi, Copilot, or model call.
+
 ## Project layout
 
 - `source/`: official rate snapshot, assumptions, and live calibration summary.
@@ -49,6 +65,13 @@ quality effect.
 - `scripts/run_pi_cost_elasticity.py`: offline bundle generator.
 - `scripts/test_pi_cost_elasticity.py`: closed-form regression oracles.
 - `scripts/validate_pi_cost_elasticity.py`: independent bundle recomputation.
+- `src/pi_context_rot.py`: context-length, fidelity, retry, and cost model.
+- `scripts/run_pi_context_rot.py`: offline context-rot bundle generator.
+- `scripts/test_pi_context_rot.py`: deterministic and Monte Carlo regression
+  oracles.
+- `scripts/validate_pi_context_rot.py`: independent context-rot recomputation.
+- `source/pi-context-rot-spec-20260904.json`: frozen context-rot preregistration.
+- `source/context-rot-evidence-20260904.csv`: source-bound empirical inventory.
 - `artifacts/`: ignored raw run bundles and temporary verification output.
 - `../../evaluations/harness-efficiency-study/20260904/`: versioned findings,
   validation evidence, and compact exploration tables.
@@ -76,6 +99,20 @@ python -B projects\harness-efficiency-study\scripts\run_pi_cost_elasticity.py `
   --output-dir projects\harness-efficiency-study\artifacts\runs\pi-cost-elasticity
 python -B projects\harness-efficiency-study\scripts\validate_pi_cost_elasticity.py `
   projects\harness-efficiency-study\artifacts\runs\pi-cost-elasticity
+```
+
+Reproduce the context-rot extension without any provider/model execution with:
+
+```powershell
+python -B projects\harness-efficiency-study\scripts\test_pi_context_rot.py
+python -B projects\harness-efficiency-study\scripts\run_pi_context_rot.py `
+  --cost-bundle evaluations\harness-efficiency-study\20260904\pi-cost-elasticity `
+  --evidence-csv projects\harness-efficiency-study\source\context-rot-evidence-20260904.csv `
+  --spec-json projects\harness-efficiency-study\source\pi-context-rot-spec-20260904.json `
+  --output-dir projects\harness-efficiency-study\artifacts\runs\pi-context-rot
+python -B projects\harness-efficiency-study\scripts\validate_pi_context_rot.py `
+  projects\harness-efficiency-study\artifacts\runs\pi-context-rot `
+  --cost-bundle evaluations\harness-efficiency-study\20260904\pi-cost-elasticity
 ```
 
 ## Inference boundary

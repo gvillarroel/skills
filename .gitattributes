@@ -6,6 +6,7 @@
 *.webp binary
 *.ico binary
 *.pdf binary
+*.gz binary
 
 *.svg text eol=lf
 # Hash-pinned provider snapshots and generated variants retain exact bytes.

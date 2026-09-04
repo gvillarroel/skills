@@ -1,0 +1,16 @@
+{
+  "bundle": "C:\\Users\\villa\\dev\\skills\\evaluations\\harness-efficiency-study\\20260904\\pi-context-rot",
+  "bundle_checksums_sha256": "d3733536af1cb4b9258170c711dbce2623c271bdff1a02e7a56dbecb960918e6",
+  "bundle_manifest_sha256": "9b0c3ace6d656c9ba9a9a06c7067d4b0fee7d9b0c0663e47c5b14e1ef5e3a984",
+  "checks": 5116530,
+  "cost_source_bundle": "C:\\Users\\villa\\dev\\skills\\evaluations\\harness-efficiency-study\\20260904\\pi-cost-elasticity",
+  "failure_count": 0,
+  "failures": [],
+  "mode": "offline-independent-validation",
+  "no_external_calls": true,
+  "schema_version": "1.0",
+  "status": "pass",
+  "validator": "independent-pi-context-rot-audit",
+  "warning_count": 0,
+  "warnings": []
+}
