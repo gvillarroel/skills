@@ -1,0 +1,208 @@
+{
+  "review_id": "context-retry-structural-challenge-20260904",
+  "analysis_mode": "offline-deterministic-structural-sensitivity",
+  "source_name": "study-results.json",
+  "source_sha256": "edf0d43d7e4e797964be4616d2485e005e89d1fd7691cf2a5dde139d6a009cb2",
+  "analysis_code_sha256": "db4ec050844075058f923b74bb17a2fb0d1c21c8b35a5766b1991a352f169f33",
+  "enumerated_oracle_cases_passed": 80,
+  "claim_scope": "conditional-on-frozen-quality-and-cost-inputs-and-mixture-mechanism",
+  "interpretation": [
+    "rho is assumed within-stratum correlation, not measured agent correlation.",
+    "Single-attempt quality, cost, task mix, context, and three-attempt cap remain frozen.",
+    "The frozen study's original outputs are unchanged; this is a separate exploratory challenge.",
+    "Provider token value is not necessarily incremental cash after plan allowances."
+  ],
+  "challenge_inventory": [
+    {
+      "case_id": "persistent-retry-mixture",
+      "status": "tested",
+      "values": [
+        0,
+        0.1,
+        0.25,
+        0.5,
+        1
+      ],
+      "evidence": "retry-mixture.csv"
+    },
+    {
+      "case_id": "critical-fact-loss",
+      "status": "deferred",
+      "reason": "Requires declared critical-fact counts and dependence; average fidelity is not their estimate."
+    },
+    {
+      "case_id": "peak-context-cliff",
+      "status": "deferred",
+      "reason": "Requires a separately parameterized rival exposure mechanism."
+    },
+    {
+      "case_id": "retry-cache-or-prompt-change",
+      "status": "deferred",
+      "reason": "Requires a new conditional attempt-cost and recovery ledger."
+    }
+  ],
+  "slo_boundaries": [
+    {
+      "strategy_id": "cap_200k_uncached",
+      "maximum_rho_meeting_completion_slo": 0.0818225423957884,
+      "status": "identified_by_linear_mixture"
+    },
+    {
+      "strategy_id": "grow_to_800k",
+      "maximum_rho_meeting_completion_slo": null,
+      "status": "already_below_target_at_independence"
+    }
+  ],
+  "rows": [
+    {
+      "case_id": "retry-mixture-cap_200k_uncached-rho-0",
+      "model": "luna",
+      "strategy_id": "cap_200k_uncached",
+      "rho": 0.0,
+      "max_attempts": 3,
+      "single_attempt_success_probability": 0.7566914346480351,
+      "completion_probability": 0.9672265155858337,
+      "completion_slo_target": 0.95,
+      "completion_slo_met": true,
+      "expected_attempts": 1.3254619949008621,
+      "provider_cost_per_assigned_session_usd": 0.7889149793649931,
+      "provider_cost_per_successful_session_usd": 0.8156465591590609,
+      "source_type": "simulated"
+    },
+    {
+      "case_id": "retry-mixture-cap_200k_uncached-rho-0.1",
+      "model": "luna",
+      "strategy_id": "cap_200k_uncached",
+      "rho": 0.1,
+      "max_attempts": 3,
+      "single_attempt_success_probability": 0.7566914346480351,
+      "completion_probability": 0.9461730074920538,
+      "completion_slo_target": 0.95,
+      "completion_slo_met": false,
+      "expected_attempts": 1.3415775084811687,
+      "provider_cost_per_assigned_session_usd": 0.7985069330479916,
+      "provider_cost_per_successful_session_usd": 0.8439333258560514,
+      "source_type": "simulated"
+    },
+    {
+      "case_id": "retry-mixture-cap_200k_uncached-rho-0.25",
+      "model": "luna",
+      "strategy_id": "cap_200k_uncached",
+      "rho": 0.25,
+      "max_attempts": 3,
+      "single_attempt_success_probability": 0.7566914346480351,
+      "completion_probability": 0.914592745351384,
+      "completion_slo_target": 0.95,
+      "completion_slo_met": false,
+      "expected_attempts": 1.3657507788516292,
+      "provider_cost_per_assigned_session_usd": 0.8128948635724896,
+      "provider_cost_per_successful_session_usd": 0.8888052826836907,
+      "source_type": "simulated"
+    },
+    {
+      "case_id": "retry-mixture-cap_200k_uncached-rho-0.5",
+      "model": "luna",
+      "strategy_id": "cap_200k_uncached",
+      "rho": 0.5,
+      "max_attempts": 3,
+      "single_attempt_success_probability": 0.7566914346480351,
+      "completion_probability": 0.8619589751169344,
+      "completion_slo_target": 0.95,
+      "completion_slo_met": false,
+      "expected_attempts": 1.406039562802396,
+      "provider_cost_per_assigned_session_usd": 0.836874747779986,
+      "provider_cost_per_successful_session_usd": 0.9708985832724285,
+      "source_type": "simulated"
+    },
+    {
+      "case_id": "retry-mixture-cap_200k_uncached-rho-1",
+      "model": "luna",
+      "strategy_id": "cap_200k_uncached",
+      "rho": 1.0,
+      "max_attempts": 3,
+      "single_attempt_success_probability": 0.7566914346480351,
+      "completion_probability": 0.7566914346480351,
+      "completion_slo_target": 0.95,
+      "completion_slo_met": false,
+      "expected_attempts": 1.4866171307039298,
+      "provider_cost_per_assigned_session_usd": 0.8848345161949789,
+      "provider_cost_per_successful_session_usd": 1.169346546927081,
+      "source_type": "simulated"
+    },
+    {
+      "case_id": "retry-mixture-grow_to_800k-rho-0",
+      "model": "luna",
+      "strategy_id": "grow_to_800k",
+      "rho": 0.0,
+      "max_attempts": 3,
+      "single_attempt_success_probability": 0.6543513957307061,
+      "completion_probability": 0.9214844732483582,
+      "completion_slo_target": 0.95,
+      "completion_slo_met": false,
+      "expected_attempts": 1.499785645530507,
+      "provider_cost_per_assigned_session_usd": 1.5303812726993293,
+      "provider_cost_per_successful_session_usd": 1.660778143449913,
+      "source_type": "simulated"
+    },
+    {
+      "case_id": "retry-mixture-grow_to_800k-rho-0.1",
+      "model": "luna",
+      "strategy_id": "grow_to_800k",
+      "rho": 0.1,
+      "max_attempts": 3,
+      "single_attempt_success_probability": 0.6543513957307061,
+      "completion_probability": 0.894771165496593,
+      "completion_slo_target": 0.95,
+      "completion_slo_met": false,
+      "expected_attempts": 1.5189368018313152,
+      "provider_cost_per_assigned_session_usd": 1.5499231125886739,
+      "provider_cost_per_successful_session_usd": 1.7322005584841071,
+      "source_type": "simulated"
+    },
+    {
+      "case_id": "retry-mixture-grow_to_800k-rho-0.25",
+      "model": "luna",
+      "strategy_id": "grow_to_800k",
+      "rho": 0.25,
+      "max_attempts": 3,
+      "single_attempt_success_probability": 0.6543513957307061,
+      "completion_probability": 0.8547012038689452,
+      "completion_slo_target": 0.95,
+      "completion_slo_met": false,
+      "expected_attempts": 1.5476635362825273,
+      "provider_cost_per_assigned_session_usd": 1.5792358724226907,
+      "provider_cost_per_successful_session_usd": 1.8477052158976968,
+      "source_type": "simulated"
+    },
+    {
+      "case_id": "retry-mixture-grow_to_800k-rho-0.5",
+      "model": "luna",
+      "strategy_id": "grow_to_800k",
+      "rho": 0.5,
+      "max_attempts": 3,
+      "single_attempt_success_probability": 0.6543513957307061,
+      "completion_probability": 0.7879179344895322,
+      "completion_slo_target": 0.95,
+      "completion_slo_met": false,
+      "expected_attempts": 1.5955414270345474,
+      "provider_cost_per_assigned_session_usd": 1.628090472146052,
+      "provider_cost_per_successful_session_usd": 2.0663198549996733,
+      "source_type": "simulated"
+    },
+    {
+      "case_id": "retry-mixture-grow_to_800k-rho-1",
+      "model": "luna",
+      "strategy_id": "grow_to_800k",
+      "rho": 1.0,
+      "max_attempts": 3,
+      "single_attempt_success_probability": 0.6543513957307061,
+      "completion_probability": 0.6543513957307061,
+      "completion_slo_target": 0.95,
+      "completion_slo_met": false,
+      "expected_attempts": 1.6912972085385878,
+      "provider_cost_per_assigned_session_usd": 1.725799671592775,
+      "provider_cost_per_successful_session_usd": 2.6374203262233373,
+      "source_type": "simulated"
+    }
+  ]
+}

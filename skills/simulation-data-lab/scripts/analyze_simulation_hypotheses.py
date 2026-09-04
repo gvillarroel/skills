@@ -4,7 +4,7 @@
 # dependencies = []
 # ///
 
-"""Calculate preregistered v1 scenario contrasts from a completed bundle."""
+"""Calculate preregistered v2 scenario contrasts from a schema-v1 bundle."""
 
 from __future__ import annotations
 
@@ -33,7 +33,8 @@ from run_simulation_experiment import (
 )
 
 
-ANALYZER_ID = "mean-difference-v1"
+ANALYZER_ID = "mean-difference-v2"
+MIN_NORMAL_REPLICATIONS = 30
 RESULT_STATUSES = {
     "supports-under-model",
     "challenges-under-model",
@@ -89,6 +90,23 @@ def result_limitations(spec: dict[str, Any], hypothesis: dict[str, Any]) -> list
         for assumption_id in hypothesis["assumptionIds"]
     ]
     limitations.append("The conclusion is conditional on the implemented model and analyzed design range.")
+    analysis = hypothesis["analysis"]
+    if spec["uncertaintyMode"] == "stochastic" and analysis["kind"] == "scenario-contrast":
+        if analysis["intervalMethod"] == "normal-approximation-bonferroni":
+            limitations.append(
+                "Bonferroni controls the declared family of design-point intervals within "
+                "this hypothesis only, conditional on adequate marginal normal approximations."
+            )
+        else:
+            limitations.append(
+                "Intervals are pointwise; the declared level does not give simultaneous "
+                "coverage across design points or hypotheses."
+            )
+        limitations.append(
+            "At least 30 replications and nonzero observed contrast variance are required "
+            "for automated normal-Wald decisions; these guards do not establish adequate "
+            "coverage for skewed, rare-event, clustered, or adaptively stopped samples."
+        )
     if hypothesis["externalValidationRequired"]:
         limitations.append("External empirical validation is required before applying the result to reality.")
     return sorted(set(limitations))
@@ -148,7 +166,7 @@ def analyze_point(
         complete_pairs = len(differences)
         estimate_raw = math.fsum(differences) / complete_pairs
         mcse_raw = math.sqrt(sample_variance(differences, estimate_raw) / complete_pairs)
-        interval_method = "normal-wald-paired-v1"
+        interval_method = "normal-wald-paired-v2"
     elif pairing == "independent":
         baseline_mean = math.fsum(baseline_values) / len(baseline_values)
         comparison_mean = math.fsum(comparison_values) / len(comparison_values)
@@ -159,7 +177,7 @@ def analyze_point(
             baseline_variance / len(baseline_values)
             + comparison_variance / len(comparison_values)
         )
-        interval_method = "normal-wald-unpaired-v1"
+        interval_method = "normal-wald-unpaired-v2"
     else:
         estimate_raw = comparison_values[0] - baseline_values[0]
         mcse_raw = 0.0
@@ -170,7 +188,16 @@ def analyze_point(
     interval: dict[str, Any] | None
     if spec["uncertaintyMode"] == "stochastic":
         level = analysis["intervalLevel"]
-        z_value = statistics.NormalDist().inv_cdf(0.5 + level / 2)
+        if analysis["intervalMethod"] == "normal-approximation-bonferroni":
+            family_size = len(analysis["primaryDesignPointIds"]) + len(
+                analysis["challengeDesignPointIds"]
+            )
+            level = 1 - (1 - level) / family_size
+            interval_method = interval_method.replace("-v2", "-bonferroni-v2")
+        quantile_probability = 0.5 + level / 2
+        if not 0 < quantile_probability < 1:
+            raise SimulationError("interval level is too close to one for stable normal quantiles")
+        z_value = statistics.NormalDist().inv_cdf(quantile_probability)
         interval = {
             "level": level,
             "low": canonical_number(estimate_raw - z_value * mcse_raw),
@@ -180,11 +207,21 @@ def analyze_point(
     else:
         interval = None
 
+    diagnostics = []
+    if spec["uncertaintyMode"] == "stochastic":
+        if planned < MIN_NORMAL_REPLICATIONS:
+            diagnostics.append("insufficient-replications-for-normal-decision")
+        if mcse_raw == 0:
+            diagnostics.append("zero-observed-contrast-variance")
     threshold = hypothesis["practicalThreshold"]
     return {
         "designPointId": design_point_id,
         "role": role,
-        "status": point_status(threshold["operator"], threshold["value"], estimate, interval),
+        "status": (
+            "inconclusive" if diagnostics
+            else point_status(threshold["operator"], threshold["value"], estimate, interval)
+        ),
+        "inferenceDiagnostics": diagnostics,
         "estimate": estimate,
         "interval": interval,
         "mcse": mcse,
@@ -201,7 +238,7 @@ def decision_text(status: str, hypothesis_id: str) -> str:
     messages = {
         "supports-under-model": "Every primary and challenge design point meets the preregistered threshold.",
         "challenges-under-model": "At least one primary or challenge design point contradicts the preregistered threshold.",
-        "inconclusive-under-model": "No design point contradicts the threshold, but at least one interval crosses it.",
+        "inconclusive-under-model": "No eligible design point contradicts the threshold, but at least one interval crosses it or an inference guard prevents a decision.",
         "not-identifiable-from-design": "The declared design cannot identify the requested contrast.",
     }
     return f"{hypothesis_id}: {messages[status]}"

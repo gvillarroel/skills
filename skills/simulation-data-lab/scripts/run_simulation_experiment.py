@@ -754,9 +754,12 @@ def normalize_spec(value: Any) -> dict[str, Any]:
                     raise SimulationError(
                         f"{label}.analysis pairing requires seedPolicy {expected_seed_policy}"
                     )
-                if interval_method != "normal-approximation":
+                if interval_method not in {
+                    "normal-approximation", "normal-approximation-bonferroni"
+                }:
                     raise SimulationError(
-                        f"{label}.analysis.intervalMethod must be normal-approximation in schema v1"
+                        f"{label}.analysis.intervalMethod must be normal-approximation "
+                        "or normal-approximation-bonferroni in schema v1"
                     )
                 interval_level = require_finite_number(
                     interval_level, f"{label}.analysis.intervalLevel"

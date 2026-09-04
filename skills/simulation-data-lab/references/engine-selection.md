@@ -4,6 +4,15 @@ Choose the simplest paradigm that represents the mechanism capable of changing
 the requested outcome. The common experiment and data contract is more
 important than forcing every model into one library.
 
+All choices below are engines for an offline mathematical representation, not
+permission to run the system under study. Inspect supplied models for live
+connectors before execution. Disable or replace hardware-in-the-loop,
+production SDKs, target-program callbacks, remote simulation services, and real
+model/tool calls with explicit mathematical mechanisms. If that substitution
+would invalidate the intended model, report the limitation instead of running
+the target. Local numerical engines are allowed; an engine name matching a
+studied product does not authorize launching that product for measurement.
+
 ## Default routing
 
 | System structure | Default | Use it when | Escalate when |
@@ -31,8 +40,9 @@ specialists for the main paradigms, and does not require a commercial license.
 The bundled runner therefore orchestrates a narrow Python adapter while leaving
 the inner engine open.
 
-Before selecting an optional engine, check that its runtime and exact version
-are installed and that it can execute headlessly in the current environment.
+Before selecting an optional mathematical engine, check its local installation
+metadata and exact version. Version probes may concern the numerical runtime,
+not the emulated target's executable. Require headless offline execution.
 Do not install a large dependency or change engines silently. For a small model,
 use the Python standard library when it represents the mechanism faithfully; if
 the required engine is unavailable and a fallback would change semantics,
@@ -68,8 +78,8 @@ There is no universal winner:
   system dynamics. Its licensing and project format make it a poor default
   dependency for a portable skill.
 - [Simulink](https://www.mathworks.com/help/simulink/index.html) is preferable
-  when an engineering organization already relies on block models, physical
-  domains, test harnesses, or code generation.
+  when an engineering organization already supplies an offline block or
+  physical-domain mathematical model; exclude hardware and target-code execution.
 - [NetLogo BehaviorSpace](https://ccl.northwestern.edu/netlogo/docs/behaviorspace.html)
   is excellent for approachable ABM parameter sweeps and classroom use.
 
@@ -86,7 +96,8 @@ Before implementation, answer these questions:
    whole system?
 6. Can the engine run headlessly with explicit seeds and export every failed as
    well as successful run?
-7. What runtime, memory, license, cloud, or hardware cost bounds apply?
+7. What local runtime, memory, license, or numerical-compute cost bounds apply?
+8. Can every live connector, target callback, and hardware dependency be excluded?
 
 Record the installed engine, solver, RNG, and library versions after execution;
 do not write `latest` or `unknown` into provenance.

@@ -589,7 +589,9 @@ def audit_point_status(
     return "inconclusive"
 
 
-def audit_limitations(spec: dict[str, Any], hypothesis: dict[str, Any]) -> list[str]:
+def audit_limitations(
+    spec: dict[str, Any], hypothesis: dict[str, Any], analyzer: str
+) -> list[str]:
     assumptions = {
         item["assumptionId"]: item["statement"] for item in spec["assumptions"]
     }
@@ -598,18 +600,44 @@ def audit_limitations(spec: dict[str, Any], hypothesis: dict[str, Any]) -> list[
         for assumption_id in hypothesis["assumptionIds"]
     ]
     values.append("The conclusion is conditional on the implemented model and analyzed design range.")
+    analysis = hypothesis["analysis"]
+    if (
+        analyzer == "mean-difference-v2"
+        and spec["uncertaintyMode"] == "stochastic"
+        and analysis["kind"] == "scenario-contrast"
+    ):
+        if analysis["intervalMethod"] == "normal-approximation-bonferroni":
+            values.append(
+                "Bonferroni controls the declared family of design-point intervals within "
+                "this hypothesis only, conditional on adequate marginal normal approximations."
+            )
+        else:
+            values.append(
+                "Intervals are pointwise; the declared level does not give simultaneous "
+                "coverage across design points or hypotheses."
+            )
+        values.append(
+            "At least 30 replications and nonzero observed contrast variance are required "
+            "for automated normal-Wald decisions; these guards do not establish adequate "
+            "coverage for skewed, rare-event, clustered, or adaptively stopped samples."
+        )
     if hypothesis["externalValidationRequired"]:
         values.append("External empirical validation is required before applying the result to reality.")
     return sorted(set(values))
 
 
-def audit_decision_text(status: str, hypothesis_id: str) -> str:
+def audit_decision_text(status: str, hypothesis_id: str, analyzer: str) -> str:
     messages = {
         "supports-under-model": "Every primary and challenge design point meets the preregistered threshold.",
         "challenges-under-model": "At least one primary or challenge design point contradicts the preregistered threshold.",
         "inconclusive-under-model": "No design point contradicts the threshold, but at least one interval crosses it.",
         "not-identifiable-from-design": "The declared design cannot identify the requested contrast.",
     }
+    if analyzer == "mean-difference-v2":
+        messages["inconclusive-under-model"] = (
+            "No eligible design point contradicts the threshold, but at least one interval "
+            "crosses it or an inference guard prevents a decision."
+        )
     return f"{hypothesis_id}: {messages[status]}"
 
 
@@ -620,6 +648,7 @@ def audit_point_result(
     role: str,
     outcomes: list[dict[str, Any]],
     seeds_by_run: dict[str, int],
+    analyzer: str,
 ) -> dict[str, Any]:
     analysis = hypothesis["analysis"]
     relevant: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
@@ -679,6 +708,16 @@ def audit_point_result(
     mcse = audit_number(mcse_raw)
     if spec["uncertaintyMode"] == "stochastic":
         level = analysis["intervalLevel"]
+        if analyzer == "mean-difference-v2":
+            interval_method = interval_method.replace("-v1", "-v2")
+            if analysis["intervalMethod"] == "normal-approximation-bonferroni":
+                comparisons = len(analysis["primaryDesignPointIds"]) + len(
+                    analysis["challengeDesignPointIds"]
+                )
+                level = 1.0 - (1.0 - level) / comparisons
+                interval_method = interval_method.replace("-v2", "-bonferroni-v2")
+        if not 0 < 0.5 + level / 2 < 1:
+            raise SimulationError("normal quantile is outside the representable open unit interval")
         quantile = statistics.NormalDist().inv_cdf(0.5 + level / 2)
         interval: dict[str, Any] | None = {
             "level": level,
@@ -689,7 +728,7 @@ def audit_point_result(
     else:
         interval = None
     threshold = hypothesis["practicalThreshold"]
-    return {
+    result = {
         "designPointId": design_point_id,
         "role": role,
         "status": audit_point_status(threshold["operator"], threshold["value"], estimate, interval),
@@ -703,6 +742,17 @@ def audit_point_result(
             "completePairs": complete_pairs,
         },
     }
+    if analyzer == "mean-difference-v2":
+        diagnostics = []
+        if spec["uncertaintyMode"] == "stochastic":
+            if planned < 30:
+                diagnostics.append("insufficient-replications-for-normal-decision")
+            if mcse_raw == 0:
+                diagnostics.append("zero-observed-contrast-variance")
+        result["inferenceDiagnostics"] = diagnostics
+        if diagnostics:
+            result["status"] = "inconclusive"
+    return result
 
 
 def audit_hypothesis_result(
@@ -710,9 +760,10 @@ def audit_hypothesis_result(
     hypothesis: dict[str, Any],
     outcomes: list[dict[str, Any]],
     seeds_by_run: dict[str, int],
+    analyzer: str,
 ) -> dict[str, Any]:
     analysis = hypothesis["analysis"]
-    limitations = audit_limitations(spec, hypothesis)
+    limitations = audit_limitations(spec, hypothesis, analyzer)
     if analysis["kind"] == "not-identifiable":
         status = "not-identifiable-from-design"
         return {
@@ -722,7 +773,7 @@ def audit_hypothesis_result(
             "analysisMethod": analysis,
             "threshold": hypothesis["practicalThreshold"],
             "designPointResults": [],
-            "decision": audit_decision_text(status, hypothesis["hypothesisId"]),
+            "decision": audit_decision_text(status, hypothesis["hypothesisId"], analyzer),
             "modelConditional": True,
             "challengeSearch": {
                 "performed": False,
@@ -738,7 +789,7 @@ def audit_hypothesis_result(
         **{value: "challenge" for value in analysis["challengeDesignPointIds"]},
     }
     points = [
-        audit_point_result(spec, hypothesis, design_id, roles[design_id], outcomes, seeds_by_run)
+        audit_point_result(spec, hypothesis, design_id, roles[design_id], outcomes, seeds_by_run, analyzer)
         for design_id in sorted(roles)
     ]
     challenging = sorted(
@@ -766,7 +817,7 @@ def audit_hypothesis_result(
         "analysisMethod": analysis,
         "threshold": hypothesis["practicalThreshold"],
         "designPointResults": points,
-        "decision": audit_decision_text(status, hypothesis["hypothesisId"]),
+        "decision": audit_decision_text(status, hypothesis["hypothesisId"], analyzer),
         "modelConditional": True,
         "challengeSearch": {
             "performed": True,
@@ -817,8 +868,14 @@ def validate_hypothesis_results(
     )
     if report_schema_version != SCHEMA_VERSION or report["toolVersion"] != TOOL_VERSION:
         raise SimulationError("hypothesis results schema or tool version is unsupported")
-    if report["analyzer"] != "mean-difference-v1":
+    analyzer = require_text(report["analyzer"], "analysis/hypothesis-results.json.analyzer")
+    if analyzer not in {"mean-difference-v1", "mean-difference-v2"}:
         raise SimulationError("hypothesis results analyzer is unsupported")
+    if report["analyzer"] == "mean-difference-v1" and any(
+        h["analysis"].get("intervalMethod") == "normal-approximation-bonferroni"
+        for h in spec["hypotheses"]
+    ):
+        raise SimulationError("legacy analyzer cannot certify Bonferroni intervals")
     if report["experimentId"] != spec["experimentId"] or report["analysisPhase"] != spec["phase"]:
         raise SimulationError("hypothesis results identity differs from experiment.json")
     parse_iso8601(report["generatedAt"], "analysis/hypothesis-results.json.generatedAt")
@@ -831,7 +888,7 @@ def validate_hypothesis_results(
         raise SimulationError("hypothesis results input hashes do not match the validated bundle")
     seeds_by_run = {row["run_id"]: int(row["seed"]) for row in runs}
     expected_results = [
-        audit_hypothesis_result(spec, hypothesis, outcomes, seeds_by_run)
+        audit_hypothesis_result(spec, hypothesis, outcomes, seeds_by_run, report["analyzer"])
         for hypothesis in spec["hypotheses"]
     ]
     if canonical_json_bytes(report["results"]) != canonical_json_bytes(expected_results):

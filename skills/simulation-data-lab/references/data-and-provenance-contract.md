@@ -37,7 +37,9 @@ provenance from multiple attempts.
 
 ## Adapter interface
 
-The model file must expose concrete metadata and a one-run function:
+The model file implements equations or synthetic state transitions, not a
+wrapper around target execution. It must expose concrete metadata and a one-run
+function:
 
 ```python
 import random
@@ -141,7 +143,7 @@ hypothesis uses a structured mean-difference analysis:
   "primaryDesignPointIds": ["typical-demand"],
   "challengeDesignPointIds": ["low-demand"],
   "pairing": "paired",
-  "intervalMethod": "normal-approximation",
+  "intervalMethod": "normal-approximation-bonferroni",
   "intervalLevel": 0.95,
   "aggregationRule": "all-design-points"
 }
@@ -163,12 +165,33 @@ primary point. The practical threshold is on the contrast scale:
   `value=3`.
 
 For a stochastic experiment, use `paired` with
-`paired-across-scenarios` or `independent` with `independent-by-run`; the v1
-method calculates a normal-Wald interval at the declared level. For a
+`paired-across-scenarios` or `independent` with `independent-by-run`.
+`normal-approximation-bonferroni` uses the declared `intervalLevel` as the nominal
+family coverage over all primary and challenge points in this hypothesis. Each
+exported interval records its adjusted marginal level
+`1-(1-intervalLevel)/number_of_points` and a `bonferroni-v2` method suffix.
+`normal-approximation` retains pointwise intervals and explicitly states the
+absence of simultaneous coverage. Neither option controls error across separate
+hypotheses. Both assume adequate marginal normal approximations. For a
 deterministic experiment, use exactly one replication, `independent-by-run`,
 `pairing=deterministic`, `intervalMethod=none`, and `intervalLevel=null`. The
 result then has `mcse=0` and no interval; this does not remove structural or
 parameter uncertainty.
+
+The current analyzer ID is `mean-difference-v2`; the bundle envelope remains
+schema 1. Each point adds `inferenceDiagnostics`. Stochastic points with fewer
+than 30 replications or zero observed contrast variance are `inconclusive`, even
+when their descriptive interval falls wholly on one side of the threshold.
+Diagnostics do not invalidate the simulated measurements. Do not interpret a
+zero-width empirical interval as a population bound. Resolve it with an
+appropriate method or a separate exact oracle. The 30-replication rule is a
+conservative automation floor, not proof that the normal approximation is valid.
+
+The validator can replay immutable `mean-difference-v1` reports under their
+original pointwise arithmetic. This preserves historical evidence; replay does
+not upgrade its statistical coverage. Generate new analyses in fresh bundles
+and keep their analyzer identity. Never relabel an old report as v2 or edit its
+conclusions in place.
 
 When the requested contrast is absent, declare it instead of inventing a
 mechanism:
@@ -221,10 +244,14 @@ outcomes, and summaries, and independently recomputes hypothesis contrasts.
 The core runner reads, hashes, compiles, and executes the same `model.py` source
 bytes directly, bypassing stale bytecode caches, and rejects source mutation
 during import or execution. It does not sandbox that code or discover and hash
-every imported module, native library, network response, or external file. Run
-only reviewed code. Keep core adapters self-contained; when external
-calibration data or dependencies are material, add immutable input identities,
-hashes, access classification, licenses, and a lockfile or container digest.
+every imported module, native library, or external file. Review source before
+import; reject target launches, network/inference clients, real agent/tool
+execution, credential access, and undeclared side effects. A model that fetches
+live data or runs the target violates this skill even if its output says
+`source_type=simulated`. Keep adapters self-contained; prepare immutable existing
+calibration inputs outside their execution path and record input hashes,
+classification, licenses, and dependency locks. Integrity validation does not
+certify that arbitrary Python is harmless or that the target was isolated.
 
 The local runner also enforces a one-million-row joint materialization budget
 across the plan, run records, outcomes, summaries, observations, events, and

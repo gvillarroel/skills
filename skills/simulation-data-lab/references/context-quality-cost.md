@@ -5,6 +5,11 @@ changes both provider cost and the probability that a task completes correctly.
 The result is a conditional decision model, not an empirical evaluation of a
 model or harness.
 
+Do not run the studied harness, its tools, a local LLM, or an inference API.
+Generate token ledgers, cache events, failures, and quality outcomes from the
+declared mathematical model. Use existing evidence for calibration; missing
+target-task evidence remains a limitation rather than triggering a live pilot.
+
 ## Keep four layers separate
 
 1. **Deterministic accounting** maps a declared request ledger to token cost.
@@ -18,7 +23,8 @@ model or harness.
 Give each layer its own inputs and outputs. Never fit a curve to one model and
 benchmark and describe it as calibration for an untested model, agent harness,
 or production task. Label such a curve `historical-proxy`, keep a generic
-sensitivity grid, and require target-task validation before operational use.
+sensitivity grid, and record missing target-task validation as a limitation on
+operational use. Do not collect it through a live run in this workflow.
 
 ## Build an evidence table before a curve
 
@@ -110,6 +116,16 @@ Challenge it with a probability-scale decline, a threshold cliff, interactions
 between difficulty and length, or task-specific `beta_s` when those alternatives
 could reverse the decision.
 
+Average exposure and average fidelity can hide a critical failure. If success
+requires every one of `r` facts to survive `c` compactions, an independent
+fact-survival alternative has retention `f^(r*c)`, not an average `F` used as an
+odds multiplier. State the independence assumption and challenge it with shared
+loss of related facts. A peak-context cliff or an all-required-steps mechanism
+is likewise different from changing the slope of average exposure. Keep each
+rival mechanism in a separate declared case. Define the `F=0` limit explicitly
+as zero success for the displayed link; never evaluate `log(0)` or manufacture
+a finite cost per completion when no completion is possible.
+
 An empirical two-anchor hinge proxy may derive
 
 ```text
@@ -138,34 +154,11 @@ plan allowances.
 
 ## Calculate retry economics exactly
 
-For independent attempts with constant success probability `p` and at most `K`
-attempts:
-
-```text
-P_complete = 1 - (1 - p)^K
-E[attempts] = sum_(j=0)^(K-1) (1 - p)^j
-            = (1 - (1 - p)^K) / p
-```
-
-If each attempt costs `C`, expected provider spend is
-`C * E[attempts]`. Cohort cost per completed task, including spend on exhausted
-failures, is `expected_spend / P_complete`. For task strata, first weight
-expected spend and completion probability across strata, then divide; averaging
-stratum-level ratios answers a different question.
-
-If attempt costs or success probabilities vary, use reach probabilities:
-
-```text
-Pr(reach attempt j) = product_(h < j) (1 - p_h)
-expected_spend = sum_j Pr(reach attempt j) * C_j
-P_complete = 1 - product_j (1 - p_j)
-```
-
-State whether a retry rebuilds context, reuses cache, changes the prompt, invokes
-a human, or pays extra latency. Independence is often optimistic because the
-same missing evidence or bad summary can make every retry fail. Include
-perfectly correlated failures and a conditional-recovery model as challenge
-cases.
+For bounded retries, read [retry-economics.md](retry-economics.md) before
+calculating completion or cost per success. It defines independent, conditional,
+and persistent-failure mechanisms, task-stratum aggregation, zero-success
+boundaries, and exact validation oracles. Changing an attempt cap alone does not
+test dependent failure.
 
 ## Compare strategies and locate break-even points
 
@@ -223,7 +216,14 @@ At minimum test:
   unidentifiable retention thresholds;
 - loss values large enough to reverse a token-cost recommendation.
 
+Record a challenge inventory with case IDs, mechanisms, ranges, evidence paths,
+and `tested`, `deferred`, or `not-applicable` status. A coefficient grid does
+not execute a correlated-retry or critical-fact-loss mechanism. State explicitly
+when any required structural challenge remains unresolved; do not label the
+entire study robust merely because its arithmetic validator passes.
+
 Deliver the strongest reversal found. State that conclusions are conditional on
 the cost ledger, quality link, parameter grid, task mix, retry semantics, and
-context availability. Require a target-task evaluation before describing the
-selected policy as empirically better.
+context availability. Existing target-task evidence is required before describing
+the selected policy as empirically better; do not execute that evaluation as
+part of this skill or as an automatic follow-up.

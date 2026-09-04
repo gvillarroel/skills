@@ -35,6 +35,14 @@ is a tautology, not a verification gate.
 A failed numerical or structural diagnostic makes the affected inference
 invalid. It is not evidence against the substantive hypothesis.
 
+Check parameter activation, not just parameter serialization: perturb each
+material declared factor and compare a mechanism-specific intermediate or
+expected output. An unchanged value may be a valid saturation regime; justify
+it with an oracle or try an active regime. A hash-bound but ignored setting is
+a contract defect. Keep numerical verification, empirical calibration, and
+structural challenge coverage as separate evidence. Millions of recomputed
+cells can verify arithmetic without testing a single alternative mechanism.
+
 ## Monte Carlo precision
 
 For an IID replication-level mean, estimate
@@ -47,6 +55,31 @@ Check convergence by cumulative batches or independent repetitions of the
 experiment design. A fixed seed proves repeatability, not statistical stability.
 If the interval or decision changes materially under a larger budget, report the
 result as inconclusive.
+
+For zero observed Bernoulli events in `n` independent trials, the exact one-sided
+upper limit at confidence `1-alpha` is `1-alpha**(1/n)`, not zero. At 32 trials
+and 95% confidence it is approximately 8.94%. Paired differences need a paired
+method; do not combine unrelated marginal bounds as a paired interval. The
+generic normal analyzer cannot replace an exact/binomial, clustered, weighted,
+or tail-aware method. It records an empirical zero MCSE but marks stochastic
+zero-variance decisions inconclusive, including constant paired differences.
+A constant sample alone does not prove a constant population contrast.
+
+The v2 normal analyzer also leaves samples below 30 replications inconclusive.
+This is a conservative automation rule, not a theorem that 30 observations
+ensure valid coverage. Inspect skew, tails, effective sample size, and event
+counts. An exact contrast oracle can be evaluated in a separate deterministic
+adapter without relabeling a stochastic model as deterministic.
+
+The template uses Bonferroni intervals because looking for any reversal across
+many points is a multiple-comparison claim. For `m` declared points and family
+level `1-alpha`, each interval uses `1-alpha/m`. Dependence between points does
+not invalidate the union bound, but invalid marginal intervals do. Pointwise
+95% intervals can have only `0.95**20 = 35.85%` simultaneous coverage for 20
+independent exact-normal intervals. Do not call a grid-wide decision “95%
+confident” when it was based on pointwise intervals. A predeclared all-points
+support test has different intersection-union logic; the correction here is
+chosen to cover displayed intervals and the search for any contradiction.
 
 When common random numbers are declared, compute within-`coupling_id` contrasts
 and estimate uncertainty over paired differences. Do not analyze the same rows
@@ -91,6 +124,13 @@ Report the strongest counterexample even when the headline claim remains
 supported. Keep the range searched and budget visible so “no reversal found” is
 not mistaken for “no reversal exists.”
 
+For a policy recommendation, include at least one rival mechanism when structure
+is uncertain, not merely different coefficients inside the same equation. Record
+each selected challenge with its mechanism, case ID, tested values, result
+artifact, and `tested`, `deferred`, or `not-applicable` status with a reason.
+If a decision-critical challenge is deferred, label robustness to it unresolved.
+Code coverage and parameter-grid size do not substitute for this inventory.
+
 Keep role and result language separate. A preregistered `challenge` point is the
 place where refutation was attempted. The point closest to a practical threshold
 is determined from the correctly oriented interval margin and can be a different
@@ -124,6 +164,12 @@ than one aggregate: distributions, temporal patterns, cross-variable relations,
 and behavior under interventions when available. A good fit to one target does
 not identify the mechanism.
 
+Use existing observations only. Do not execute the actual system, launch a real
+agent, make inference/tool calls, or run a live benchmark to create this evidence.
+When evidence is absent, report the missing calibration or validation and keep
+the conclusion conditional. Neither a failed validation gate nor a desired
+confidence level authorizes a live run.
+
 For medical, safety, financial, legal, infrastructure, or policy decisions,
 simulation evidence should complement domain review, empirical data, and
 appropriate validation. Keep the conclusion explicitly conditional and surface
@@ -145,3 +191,8 @@ Before delivery, require:
 9. `source_type=simulated` visible in generated measurements;
 10. exploration queries and a data dictionary that let another analyst begin
     without reading model internals.
+
+Method references: [Morris, White, and Crowther on simulation study design and
+Monte Carlo error](https://pmc.ncbi.nlm.nih.gov/articles/PMC6492164/),
+[NIST exact binomial limits](https://itl.nist.gov/div898/software/dataplot/refman2/auxillar/exacbino.htm),
+and [NIST simultaneous Bonferroni intervals](https://www.itl.nist.gov/div898/handbook/prc/section4/prc463.htm).

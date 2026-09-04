@@ -5,6 +5,12 @@ scenarios, performance outcomes, and replication/robustness/refutation. The
 specification freezes what will be learned before repeated simulation makes
 almost any small difference appear precise.
 
+The executable object is a mathematical representation, never the target
+program or service. A pilot, calibration, robustness run, or confirmation sample
+in this workflow uses the simulator and existing evidence only. Treat
+`externalValidationRequired=true` as an unresolved evidence condition, not an
+instruction to collect new real-system data.
+
 ## Operationalize the claim
 
 For each claim, define:
@@ -52,6 +58,15 @@ Do not pool stochastic, epistemic, structural, and numerical uncertainty into
 one unlabeled set of draws. With stochastic and parameter uncertainty, place
 parameter points outside and replications inside. Evaluate variability at both
 levels.
+
+Separate accounting contrasts from intervention claims. A one-factor-at-a-time
+contrast can price an extra tool result while holding everything else fixed;
+it cannot establish the real policy effect if removing that tool changes
+reasoning, correctness, retries, or later context. Declare the frozen downstream
+mechanisms, then test their plausible response when selecting a policy. Use
+factorial or joint sensitivity points for interactions. Fractions of an
+arbitrary grid that favor a policy are coverage of that grid, not probabilities
+that the policy is best; probability statements need justified joint weights.
 
 Use `uncertaintyMode=deterministic` only when the model has no stochastic draw
 and each scenario/design-point cell runs once. Use `stochastic` otherwise. A
@@ -126,6 +141,21 @@ precision target. Track interval width or MCSE by batches. If using a precision
 stopping rule, declare the outcome, formula, target, minimum, maximum, and check
 frequency in advance. Repeatedly simulating until a preferred conclusion appears
 is not a valid rule.
+
+Planning a stopping rule does not by itself make fixed-sample intervals valid
+after optional stopping. The bundled analyzer assumes a fixed replication
+count. Use a sequentially valid method or a fresh fixed-count confirmation
+sample when stopping on observed precision or a decision. Reserve new random
+seeds or an independent confirmation design after choosing a candidate from
+exploratory results; document the selected candidate and frozen rule first.
+
+Freeze the family of comparisons as well as the run count. For searching any
+contradiction over a hypothesis's design points, prefer
+`intervalMethod=normal-approximation-bonferroni`: `intervalLevel` is the nominal
+simultaneous level across that hypothesis's primary and challenge points.
+Correction does not make inadequate marginal normal approximations valid.
+Across multiple hypotheses or outcomes, declare a larger family and use an
+appropriate external analyzer if a study-wide error guarantee is needed.
 
 Estimate expanded run count, per-run time, memory, and projected output size
 before a costly run. Use a bounded pilot and a hard maximum. Do not log every

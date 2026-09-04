@@ -1,7 +1,10 @@
 """Executable model-adapter template for simulation-data-lab.
 
 Copy this file into a fresh experiment bundle, then replace the model and
-metadata with the user's actual mechanism. The narrow ``simulate(run)``
+metadata with a mathematical representation of the user's mechanism. Never
+launch the system being represented, call its APIs/tools, or collect live data.
+Represent disturbances with declared distributions and dependencies, not real
+failures injected into a target. The narrow ``simulate(run)``
 interface lets the bundled runner stay independent of the chosen engine.
 """
 

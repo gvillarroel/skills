@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "experimentId": "inventory-policy-demo",
   "title": "Inventory policy under uncertain demand",
-  "description": "A small executable template. Replace its claim, assumptions, scenarios, design points, and outcomes with the user's system before treating it as evidence.",
+  "description": "An offline mathematical-simulation template, not a target-program execution. Replace its claim, assumptions, scenarios, design points, and outcomes with a mathematical representation of the user's system before treating it as evidence.",
   "phase": "exploratory",
   "paradigm": "monte-carlo",
   "engine": {
@@ -123,7 +123,7 @@
           "low-demand"
         ],
         "pairing": "paired",
-        "intervalMethod": "normal-approximation",
+        "intervalMethod": "normal-approximation-bonferroni",
         "intervalLevel": 0.95,
         "aggregationRule": "all-design-points"
       },
@@ -132,7 +132,7 @@
         "unit": "1",
         "operator": "ge"
       },
-      "decisionRule": "Support within the model only if the 95% paired interval lower endpoint is at least 0.05 at every primary and challenge design point; challenge if an interval upper endpoint is below 0.05; otherwise report inconclusive.",
+      "decisionRule": "Use Bonferroni normal intervals with nominal 95% simultaneous coverage over this hypothesis's design points. Subject to inference guards, support if every lower endpoint is at least 0.05; challenge if any upper endpoint is below 0.05; otherwise report inconclusive.",
       "falsificationRule": "Use the low-demand challenge point to test whether added stock no longer clears the 0.05 improvement threshold."
     }
   ],
@@ -150,7 +150,21 @@
   ],
   "extensions": {
     "simulation-data-lab": {
-      "template": "inventory-policy-v1"
+      "template": "inventory-policy-v1",
+      "executionBoundary": {
+        "mode": "mathematical-simulation-only",
+        "targetExecution": "forbidden",
+        "liveTargetCalls": "forbidden",
+        "calibrationInputs": "existing-evidence-or-explicit-assumptions",
+        "enforcementScope": "workflow-contract-not-a-security-sandbox"
+      },
+      "uncertaintyContract": {
+        "systemVariability": "Independent nonnegative Gaussian demand draws conditional on each design point; an illustrative assumption, not a universal demand model.",
+        "simulationError": "Finite-replication uncertainty for the declared paired mean contrast, subject to analyzer guards.",
+        "parameterUncertainty": "Separate explicit demand design points; no probability weights are inferred from this grid.",
+        "structuralUncertainty": "Demand shape, temporal dependence, and carry-over mechanisms remain assumptions to challenge in an adapted study.",
+        "predictiveScope": "Replication-level demand fulfillment, not a measured production forecast. Add a separate validated analysis for predictive quantiles or tail risk when requested."
+      }
     }
   }
 }

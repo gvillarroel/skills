@@ -1,6 +1,6 @@
 ---
 name: simulation-data-lab
-description: Design, run, audit, and compare reproducible stochastic or deterministic simulations that generate analysis-ready datasets for scenario exploration, sensitivity analysis, and support or challenge hypotheses under explicit model assumptions. Use for Monte Carlo, discrete-event, agent-based, dynamical-system, or counterfactual experiments; do not use for purely visual animation, Harbor evaluation datasets, or claims of empirical causal proof.
+description: Build and execute mathematical models, never the systems being modeled, to generate explorable simulated data, expected behavior, risk estimates, and explicitly conditional uncertainty. Use for stochastic, deterministic, discrete-event, agent-based, dynamical-system, sensitivity, or counterfactual simulations; not for live benchmarks, target-program execution, real agent/model calls, or empirical causal proof.
 ---
 
 # Simulation Data Lab
@@ -10,18 +10,37 @@ model or chart. Treat every conclusion as conditional on the model, assumptions,
 parameter range, and diagnostics. A simulation alone cannot prove or refute a
 claim about the real world.
 
+## Simulation-only boundary
+
+- Execute only mathematical model code, local numerical/simulation engines, and
+  local analysis/validation helpers. Do not execute, import as a live client,
+  benchmark, instrument, or drive the actual program, agent, service, model,
+  hardware, or workflow being emulated. This includes Pi/Copilot sessions,
+  inference APIs, local LLM inference, and real tool calls by simulated agents.
+- Represent tools, caches, failures, retries, latency, and quality as equations,
+  state transitions, probability distributions, and synthetic events. An
+  agent-based simulation means modeled actors, not real LLM agents.
+- Use supplied or already existing datasets, logs, source files, published
+  measurements, and read-only documentation for assumptions or calibration.
+  Do not start live pilots, probes, benchmarks, or new target executions to
+  obtain missing inputs. Label them assumed, sweep plausible ranges, or report
+  non-identifiability. Every pilot in this workflow is a pilot of the simulator.
+- External-validation requirements record an evidence gap, not a command to
+  close it. Do not automatically launch, delegate, or schedule a real evaluation
+  as a follow-up. An explicit empirical-evaluation request is a different
+  workflow outside this skill; it does not become a simulation step.
+
 ## Route the request
 
-- Preserve an engine, model format, or output path chosen by the user. Wrap an
-  existing model instead of translating it silently.
+- Preserve a local mathematical engine, model format, or output path chosen by
+  the user. Wrap only an offline mathematical model, not the target application.
 - When the engine is open, select it from the system structure rather than from
   domain nouns. Read [references/engine-selection.md](references/engine-selection.md).
 - Use this skill when persistent simulated data and an auditable experiment are
   primary. Use a visualization workflow when the request is only an interactive
-  explanation or animation; use Harbor dataset tooling only for agent-evaluation
-  tasks.
-- If a proprietary model cannot be executed locally, create a precise run and
-  export plan, but do not fabricate results or claim that it ran.
+  explanation or animation. Live agent-evaluation tasks are outside this skill.
+- If a mathematical model cannot run locally, supply its equations, execution
+  plan, and limitations without fabricated results or a remote target run.
 
 ## Build the experiment
 
@@ -30,6 +49,8 @@ claim about the real world.
    threshold, primary and challenge design points, time horizon or stopping
    condition, uncertain inputs, and explicit assumptions. Read
    [references/experiment-design.md](references/experiment-design.md).
+   For realistic disturbances and behavioral uncertainty, read
+   [references/uncertainty-and-behavior.md](references/uncertainty-and-behavior.md).
 2. Separate interventions into `scenarios`, epistemic or sensitivity settings
    into `designPoints`, and stochastic repetitions into `replications`. Do not
    count events, time steps, or agents within one run as independent replicates.
@@ -54,8 +75,8 @@ claim about the real world.
 python <skill-directory>/scripts/run_simulation_experiment.py plan --spec <bundle>/experiment.json --output-dir <bundle>/design
 ```
 
-Inspect the run count before execution. Use a bounded pilot first when runtime,
-memory, or external cost is uncertain.
+Inspect the run count before execution. Use a bounded simulator-only pilot when
+local runtime, memory, or numerical stability is uncertain.
 
 Treat bundled scripts as executable interfaces during normal work. Use the
 commands documented here and in the references; do not read their source merely
@@ -68,8 +89,12 @@ to discover arguments or output fields.
   described in
   [references/data-and-provenance-contract.md](references/data-and-provenance-contract.md).
 - Execute only agent-authored or reviewed, trusted model code. Importing a model
-  runs arbitrary Python in the current process; inspect its imports and reject
-  undeclared network, credential, subprocess, or filesystem side effects.
+  runs Python in the current process; inspect imports and all top-level code
+  before import. Reject target-program launches, target SDKs, inference calls,
+  network requests, credential access, and undeclared external-data reads or
+  writes, even when described as calibration. Keep the adapter computational;
+  let the runner write the declared artifacts. The runner is not a security
+  sandbox, and a declaration or static check is not proof of isolation.
 - Consume the assigned run seed through an explicit RNG object. Never use
   ambient global randomness or derive seeds from worker completion order.
 - Use `paired-across-scenarios` only when common random numbers have a valid
@@ -81,6 +106,9 @@ to discover arguments or output fields.
   extreme inputs, domain invariants, and a perturbation expected to change an
   outcome. For continuous solvers, also test time-step or tolerance convergence;
   for steady-state models, test warm-up and horizon sensitivity.
+- Verify that changing a declared input reaches the implemented mechanism and
+  changes the expected output or intermediate state. Hashing a specification
+  only establishes its identity; it does not establish that the model uses it.
 - Collect only what the estimands and diagnostics require. Replication outcomes
   are mandatory; dense observations, events, and agent state are opt-in because
   they can dominate storage without adding inferential information.
@@ -96,9 +124,9 @@ python <skill-directory>/scripts/run_simulation_experiment.py run --root <bundle
 
 The runner records every planned run, preserves failures, rejects non-finite or
 schema-drifting output, calculates descriptive summaries and Monte Carlo error,
-and emits starter DuckDB queries. If the chosen engine needs native parallel or
-distributed execution, preserve the same run IDs, semantic seed keys, table
-grains, and failure records in its adapter.
+and emits starter DuckDB queries. Local numerical parallelism must preserve run
+IDs, semantic seed keys, table grains, and failure records. It must not launch
+the emulated system or distribute real target work.
 
 The bundled runner is for bounded local work. Individual ceilings are 100,000
 runs, 100 declared outcomes, and 10,000 observation, event, or diagnostic rows
@@ -119,6 +147,10 @@ workload in memory.
 - Report effect size, interval, practical threshold, replication count, and
   Monte Carlo standard error where applicable. A small p-value is not a
   substitute for a useful effect or a stable result.
+- Report expected behavior, predictive quantiles and threshold-exceedance risk
+  when relevant. Separate those from Monte Carlo confidence intervals and from
+  parameter/structural sensitivity; do not collapse them into one confidence
+  score. Follow the uncertainty reference for the required reporting contract.
 - Actively try to make each evaluated claim fail within plausible bounds:
   stress assumptions, alternate input distributions, inspect failed-run regions,
   test numerical settings, or compare a rival mechanism. Read
@@ -126,7 +158,7 @@ workload in memory.
 - Use only `supports-under-model`, `challenges-under-model`,
   `inconclusive-under-model`, or `not-identifiable-from-design`. Never say that
   the simulation proved reality. State when external calibration or validation
-  remains necessary.
+  remains missing, without attempting real-system execution to resolve it.
 - Do not hand-author inferential numbers or statuses. For declared hypotheses,
   generate the result from validated replication outcomes:
 
@@ -134,15 +166,18 @@ workload in memory.
 python <skill-directory>/scripts/analyze_simulation_hypotheses.py --root <bundle>
 ```
 
-The v1 analyzer supports model-conditional mean differences with normal-Wald
-Monte Carlo intervals for paired or independent stochastic replications, plus
-exact deterministic contrasts and explicit non-identifiability. Read the result
-contract before using a different estimand.
+The current `mean-difference-v2` analyzer supports model-conditional mean
+differences, exact deterministic contrasts, and non-identifiability. For a
+stochastic search across design points, use the template's Bonferroni normal
+intervals; plain normal intervals remain explicitly pointwise. Fewer than 30
+replications or zero observed contrast variance prevent an automated normal
+decision. These guards do not establish normal coverage. Read the result
+contract for rare events, other estimands, and legacy v1 replay.
 
 ## Validate and deliver
 
 Run the bundle integrity audit after analysis. It separately recomputes every
-v1 estimate, MCSE, interval, per-design-point decision, aggregate status, and
+supported estimate, MCSE, interval, per-design-point decision, aggregate status, and
 challenge result from the generated tables:
 
 ```text
