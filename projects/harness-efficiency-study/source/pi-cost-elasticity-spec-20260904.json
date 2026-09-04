@@ -1,0 +1,570 @@
+{
+  "schemaVersion": "1.0.0",
+  "studyId": "pi-copilot-cost-elasticity-20260904",
+  "title": "Offline deterministic Pi-to-GitHub-Copilot cost elasticity study",
+  "asOf": "2026-09-04",
+  "currency": "USD",
+  "objective": "Estimate how provider token value changes when one Pi harness or session-policy variable changes while all other modeled inputs remain fixed.",
+  "executionPolicy": {
+    "mode": "offline-deterministic-simulation",
+    "realPiExecutionsAllowed": false,
+    "realCopilotExecutionsAllowed": false,
+    "networkModelCallsAllowed": false,
+    "randomSamplingUsed": false,
+    "volumeScaling": "algebraic-only"
+  },
+  "scope": {
+    "harness": "Pi coding agent",
+    "providerRoute": "GitHub Copilot",
+    "modelSelection": "fixed-manual-model-per-contrast",
+    "models": [
+      "gpt-5.6-luna",
+      "gpt-5.6-terra",
+      "gpt-5.6-sol"
+    ],
+    "estimand": "provider-token-value-usd",
+    "excludedEstimands": [
+      "empirical task quality",
+      "empirical latency",
+      "empirical cache hit rate",
+      "empirical Pi or Copilot reliability",
+      "actual monthly cash charge without a supplied account allowance state"
+    ]
+  },
+  "rateCard": {
+    "unit": "USD per 1,000,000 tokens",
+    "tierRule": "Use the long-context rates for every billed token category in a request when total request input tokens are strictly greater than the model-specific Copilot threshold.",
+    "inputReconciliation": "totalInputTokens = uncachedInputTokens + cacheReadTokens + cacheWriteTokens",
+    "models": {
+      "gpt-5.6-luna": {
+        "copilotLongContextThresholdInputTokens": 200000,
+        "catalogContextWindowTokens": 1050000,
+        "shortRates": {
+          "uncachedInput": 0.2,
+          "cacheRead": 0.02,
+          "cacheWrite": 0.25,
+          "output": 1.2
+        },
+        "longRates": {
+          "uncachedInput": 0.4,
+          "cacheRead": 0.04,
+          "cacheWrite": 0.5,
+          "output": 1.8
+        }
+      },
+      "gpt-5.6-terra": {
+        "copilotLongContextThresholdInputTokens": 272000,
+        "catalogContextWindowTokens": 1050000,
+        "shortRates": {
+          "uncachedInput": 2.0,
+          "cacheRead": 0.2,
+          "cacheWrite": 2.5,
+          "output": 12.0
+        },
+        "longRates": {
+          "uncachedInput": 4.0,
+          "cacheRead": 0.4,
+          "cacheWrite": 5.0,
+          "output": 18.0
+        }
+      },
+      "gpt-5.6-sol": {
+        "copilotLongContextThresholdInputTokens": 272000,
+        "catalogContextWindowTokens": 1050000,
+        "shortRates": {
+          "uncachedInput": 4.0,
+          "cacheRead": 0.4,
+          "cacheWrite": 5.0,
+          "output": 20.0
+        },
+        "longRates": {
+          "uncachedInput": 8.0,
+          "cacheRead": 0.8,
+          "cacheWrite": 10.0,
+          "output": 30.0
+        }
+      }
+    }
+  },
+  "billing": {
+    "usdPerGitHubAiCredit": 0.01,
+    "fixedModelAutomaticSelectionDiscountFraction": 0.0,
+    "discountRationale": "GitHub documents the automatic-model-selection discount for supported Copilot clients. This study fixes the model in third-party Pi and therefore applies no automatic-selection discount.",
+    "piSolCatalogDiscrepancy": "The observed Pi Sol catalog showed older lower prices than GitHub's current route billing table. The simulation uses GitHub's official table as the source of truth.",
+    "providerValueFormula": "providerUsd = (uncachedInputTokens * uncachedInputRate + cacheReadTokens * cacheReadRate + cacheWriteTokens * cacheWriteRate + outputTokens * outputRate) / 1000000",
+    "aiCreditsFormula": "aiCredits = providerUsd / usdPerGitHubAiCredit",
+    "cashBoundary": "Provider value and AI-credit consumption are reported before plan allowances. Actual incremental cash requires the user's remaining included-credit balance and overage settings.",
+    "incrementalCashFormulaWhenAllowanceIsKnown": "max(0, comparisonCredits - remainingIncludedCredits) * usdPerGitHubAiCredit - max(0, baselineCredits - remainingIncludedCredits) * usdPerGitHubAiCredit"
+  },
+  "cacheModel": {
+    "bucketsAreMutuallyExclusive": true,
+    "stablePrefixRule": "The first request cache-writes the stable prompt. Each append-only continuation cache-reads the previously written prefix and cache-writes only the newly appended suffix.",
+    "uncachedRule": "Tokens deliberately modeled as non-reusable are charged at uncached-input rates and are not also counted as cache reads or writes.",
+    "toolArgumentRule": "Tool-call arguments are output tokens when generated and become part of the appended input suffix, together with the tool result, on the next request.",
+    "prefixChurnRule": "A mutation before the reusable-prefix boundary invalidates downstream reuse; the affected full prompt is cache-written again.",
+    "modelSwitchRule": "No scenario switches models inside an execution because model switches can invalidate the provider cache and would confound the fixed-model contrasts.",
+    "idleExpiryRule": "No idle expiry is modeled; a dedicated prefix-churn contrast represents the conservative all-cold boundary."
+  },
+  "piCompactionFacts": {
+    "catalogContextWindowTokens": 1050000,
+    "defaultReserveTokens": 16384,
+    "defaultKeepRecentTokens": 20000,
+    "defaultAutomaticTriggerFormula": "contextWindowTokens - reserveTokens",
+    "defaultAutomaticTriggerTokens": 1033616,
+    "cap200kIsDefault": false,
+    "cap200kImplementationInterpretation": "A 200,000-token strategy requires manual or custom compaction, or an effective configured context window of approximately 216,384 tokens when the default 16,384-token reserve is retained.",
+    "compactionCall": "Compaction is an additional model request that consumes the pre-compaction context and emits a summary.",
+    "freshRoutingSession": "Pi compaction requests use a fresh routing-session identifier and disable cache writes where supported; the primary simulation therefore charges compaction input as uncached and the next main request as a cold cache write.",
+    "availabilityCaveat": "Pi's model catalog exposes a 1,050,000-token window, but GitHub's public one-million-token context guarantee is documented for VS Code and Copilot CLI rather than third-party Pi. The 800,000-token path is a conditional theoretical scenario, not a verified service guarantee."
+  },
+  "globalInvariants": {
+    "executionUnit": "one hypothetical Pi task or session",
+    "monthlyExecutionVolumes": [
+      1000,
+      1000000
+    ],
+    "externalToolFeeUsd": 0.0,
+    "retryCount": 0,
+    "providerFailureCount": 0,
+    "humanLaborCostUsd": 0.0,
+    "latencyCostUsd": 0.0,
+    "subscriptionFeeAllocationUsd": 0.0,
+    "qualityPenaltyUsd": 0.0,
+    "outputRetention": "scenario-specific and explicit",
+    "sameBehaviorForDisplayLabels": true
+  },
+  "metrics": {
+    "primary": [
+      "providerUsdPerExecution",
+      "providerUsdAt1000Executions",
+      "providerUsdAt1000000Executions",
+      "githubAiCreditsPerExecution",
+      "deltaProviderUsdPerExecution",
+      "deltaProviderUsdAtVolume",
+      "percentCostChange"
+    ],
+    "mechanism": [
+      "modelRequests",
+      "toolInvocations",
+      "compactionRequests",
+      "shortTierRequests",
+      "longTierRequests",
+      "uncachedInputTokens",
+      "cacheReadTokens",
+      "cacheWriteTokens",
+      "outputTokens",
+      "maximumRequestInputTokens",
+      "discardedContextTokens",
+      "summaryOutputTokens"
+    ],
+    "elasticity": {
+      "arcFormula": "((comparisonCost - baselineCost) / baselineCost) / ((comparisonValue - baselineValue) / baselineValue)",
+      "marginalFormula": "(comparisonCost - baselineCost) / (comparisonValue - baselineValue)",
+      "thresholdHandling": "Report the finite difference and a tier-switch indicator; do not interpret a discontinuity as a smooth derivative."
+    }
+  },
+  "scenarios": [
+    {
+      "id": "stable-system-1-call",
+      "study_family": "system_prompt",
+      "models": "all",
+      "changed_parameter": "system_prompt_tokens",
+      "baseline_value": 4000,
+      "comparison_value": 5000,
+      "invariants": {
+        "other_prompt_tokens": 46000,
+        "system_cache_mode": "stable",
+        "model_calls": 1,
+        "output_tokens_per_call": 500
+      }
+    },
+    {
+      "id": "stable-system-10-calls",
+      "study_family": "system_prompt",
+      "models": "all",
+      "changed_parameter": "system_prompt_tokens",
+      "baseline_value": 4000,
+      "comparison_value": 5000,
+      "invariants": {
+        "other_prompt_tokens": 46000,
+        "system_cache_mode": "stable",
+        "model_calls": 10,
+        "output_tokens_per_call": 500
+      }
+    },
+    {
+      "id": "stable-system-50-calls",
+      "study_family": "system_prompt",
+      "models": "all",
+      "changed_parameter": "system_prompt_tokens",
+      "baseline_value": 4000,
+      "comparison_value": 5000,
+      "invariants": {
+        "other_prompt_tokens": 46000,
+        "system_cache_mode": "stable",
+        "model_calls": 50,
+        "output_tokens_per_call": 500
+      }
+    },
+    {
+      "id": "dynamic-system-10-calls",
+      "study_family": "system_prompt",
+      "models": "all",
+      "changed_parameter": "system_prompt_tokens",
+      "baseline_value": 4000,
+      "comparison_value": 5000,
+      "invariants": {
+        "other_prompt_tokens": 46000,
+        "system_cache_mode": "dynamic",
+        "model_calls": 10,
+        "output_tokens_per_call": 500
+      }
+    },
+    {
+      "id": "system-threshold-cold",
+      "study_family": "threshold_discontinuity",
+      "models": "all",
+      "changed_parameter": "system_prompt_tokens",
+      "baseline_value": 4000,
+      "comparison_value": 5000,
+      "invariants": {
+        "cache_state": "cold",
+        "output_tokens_per_call": 1000
+      },
+      "builder_derived": {
+        "other_prompt_tokens": "model_copilot_threshold_tokens - 4500",
+        "baseline_total_input_tokens": "model_copilot_threshold_tokens - 500",
+        "comparison_total_input_tokens": "model_copilot_threshold_tokens + 500"
+      }
+    },
+    {
+      "id": "system-threshold-warm",
+      "study_family": "threshold_discontinuity",
+      "models": "all",
+      "changed_parameter": "system_prompt_tokens",
+      "baseline_value": 4000,
+      "comparison_value": 5000,
+      "invariants": {
+        "cache_state": "warm",
+        "output_tokens_per_call": 1000
+      },
+      "builder_derived": {
+        "other_prompt_tokens": "model_copilot_threshold_tokens - 4500",
+        "baseline_total_input_tokens": "model_copilot_threshold_tokens - 500",
+        "comparison_total_input_tokens": "model_copilot_threshold_tokens + 500"
+      }
+    },
+    {
+      "id": "sequential-tools-4-to-5",
+      "study_family": "tool_invocations",
+      "models": "all",
+      "changed_parameter": "tool_count",
+      "baseline_value": 4,
+      "comparison_value": 5,
+      "invariants": {
+        "execution_mode": "sequential",
+        "initial_prompt_tokens": 50000,
+        "tool_argument_tokens": 100,
+        "tool_result_tokens": 2000,
+        "retain_tool_results": true,
+        "final_output_tokens": 500
+      }
+    },
+    {
+      "id": "batched-tools-4-to-5",
+      "study_family": "tool_invocations",
+      "models": "all",
+      "changed_parameter": "tool_count",
+      "baseline_value": 4,
+      "comparison_value": 5,
+      "invariants": {
+        "execution_mode": "batched",
+        "initial_prompt_tokens": 50000,
+        "tool_argument_tokens": 100,
+        "tool_result_tokens": 2000,
+        "retain_tool_results": true,
+        "final_output_tokens": 500
+      }
+    },
+    {
+      "id": "tool-count-4-vs-5-sequential-800k",
+      "study_family": "tool_invocations",
+      "models": "all",
+      "changed_parameter": "tool_count",
+      "baseline_value": 4,
+      "comparison_value": 5,
+      "conditional_on_third_party_800k_availability": true,
+      "invariants": {
+        "execution_mode": "sequential",
+        "initial_prompt_tokens": 800000,
+        "tool_argument_tokens": 100,
+        "tool_result_tokens": 2000,
+        "retain_tool_results": true,
+        "final_output_tokens": 500
+      }
+    },
+    {
+      "id": "stable-tool-schema-10-calls",
+      "study_family": "tool_schema",
+      "models": "all",
+      "changed_parameter": "visible_tool_schema_tokens",
+      "baseline_value": 19000,
+      "comparison_value": 20000,
+      "invariants": {
+        "other_prompt_tokens": 31000,
+        "model_calls": 10,
+        "output_tokens_per_call": 500
+      }
+    },
+    {
+      "id": "output-1k-one-call",
+      "study_family": "output",
+      "models": "all",
+      "changed_parameter": "output_tokens_per_call",
+      "baseline_value": 500,
+      "comparison_value": 1500,
+      "invariants": {
+        "prompt_tokens": 50000,
+        "model_calls": 1
+      }
+    },
+    {
+      "id": "retain-tool-results-4-tools",
+      "study_family": "tool_results",
+      "models": "all",
+      "changed_parameter": "retain_tool_results",
+      "baseline_value": false,
+      "comparison_value": true,
+      "invariants": {
+        "tool_count": 4,
+        "execution_mode": "sequential",
+        "initial_prompt_tokens": 50000,
+        "tool_argument_tokens": 100,
+        "tool_result_tokens": 2000,
+        "final_output_tokens": 500
+      }
+    },
+    {
+      "id": "tool-result-size-plus-1k",
+      "study_family": "tool_results",
+      "models": "all",
+      "changed_parameter": "tool_result_tokens",
+      "baseline_value": 2000,
+      "comparison_value": 3000,
+      "invariants": {
+        "tool_count": 4,
+        "execution_mode": "sequential",
+        "initial_prompt_tokens": 50000,
+        "tool_argument_tokens": 100,
+        "retain_tool_results": true,
+        "final_output_tokens": 500
+      }
+    },
+    {
+      "id": "tool-result-2k-vs-10k-sequential-4",
+      "study_family": "tool_results",
+      "models": "all",
+      "changed_parameter": "tool_result_tokens",
+      "baseline_value": 2000,
+      "comparison_value": 10000,
+      "invariants": {
+        "tool_count": 4,
+        "execution_mode": "sequential",
+        "initial_prompt_tokens": 50000,
+        "tool_argument_tokens": 100,
+        "retain_tool_results": true,
+        "final_output_tokens": 500
+      }
+    },
+    {
+      "id": "prefix-churn-10-calls",
+      "study_family": "cache_policy",
+      "models": "all",
+      "changed_parameter": "prefix_churn",
+      "baseline_value": false,
+      "comparison_value": true,
+      "invariants": {
+        "prompt_tokens": 50000,
+        "model_calls": 10,
+        "output_tokens_per_call": 500
+      }
+    },
+    {
+      "id": "extra-roundtrip-10-to-11",
+      "study_family": "roundtrips",
+      "models": "all",
+      "changed_parameter": "model_calls",
+      "baseline_value": 10,
+      "comparison_value": 11,
+      "invariants": {
+        "prompt_tokens": 50000,
+        "output_tokens_per_call": 500
+      }
+    },
+    {
+      "id": "long-cap-200k-uncached",
+      "study_family": "long_session",
+      "models": "all",
+      "changed_parameter": "compaction_strategy",
+      "baseline_value": "none",
+      "comparison_value": "cap_200k",
+      "conditional_on_third_party_800k_availability": true,
+      "invariants": {
+        "main_calls": 39,
+        "initial_prompt_tokens": 40000,
+        "growth_tokens_per_call": 20000,
+        "main_output_tokens": 1000,
+        "compaction_input_mode": "uncached",
+        "post_compaction_cache_mode": "cold_write",
+        "summary_tokens": 20000,
+        "retained_system_tokens": 20000
+      }
+    },
+    {
+      "id": "long-cap-pricing-threshold-uncached",
+      "study_family": "long_session",
+      "models": "all",
+      "changed_parameter": "compaction_strategy",
+      "baseline_value": "none",
+      "comparison_value": "cap_pricing_threshold",
+      "conditional_on_third_party_800k_availability": true,
+      "invariants": {
+        "main_calls": 39,
+        "initial_prompt_tokens": 40000,
+        "growth_tokens_per_call": 20000,
+        "main_output_tokens": 1000,
+        "compaction_input_mode": "uncached",
+        "post_compaction_cache_mode": "cold_write",
+        "summary_tokens": 20000,
+        "retained_system_tokens": 20000
+      }
+    },
+    {
+      "id": "compaction-input-cache-read-sensitivity",
+      "study_family": "compaction_sensitivity",
+      "models": "all",
+      "changed_parameter": "compaction_input_mode",
+      "baseline_value": "uncached",
+      "comparison_value": "cache_read",
+      "invariants": {
+        "main_calls": 39,
+        "initial_prompt_tokens": 40000,
+        "growth_tokens_per_call": 20000,
+        "main_output_tokens": 1000,
+        "compaction_strategy": "cap_200k",
+        "post_compaction_cache_mode": "cold_write",
+        "summary_tokens": 20000,
+        "retained_system_tokens": 20000
+      }
+    },
+    {
+      "id": "compaction-input-cache-write-sensitivity",
+      "study_family": "compaction_sensitivity",
+      "models": "all",
+      "changed_parameter": "compaction_input_mode",
+      "baseline_value": "uncached",
+      "comparison_value": "cache_write",
+      "invariants": {
+        "main_calls": 39,
+        "initial_prompt_tokens": 40000,
+        "growth_tokens_per_call": 20000,
+        "main_output_tokens": 1000,
+        "compaction_strategy": "cap_200k",
+        "post_compaction_cache_mode": "cold_write",
+        "summary_tokens": 20000,
+        "retained_system_tokens": 20000
+      }
+    },
+    {
+      "id": "compaction-retained-system-sensitivity",
+      "study_family": "compaction_sensitivity",
+      "models": "all",
+      "changed_parameter": "post_compaction_cache_mode",
+      "baseline_value": "cold_write",
+      "comparison_value": "retain_system_prefix",
+      "invariants": {
+        "main_calls": 39,
+        "initial_prompt_tokens": 40000,
+        "growth_tokens_per_call": 20000,
+        "main_output_tokens": 1000,
+        "compaction_strategy": "cap_200k",
+        "compaction_input_mode": "uncached",
+        "summary_tokens": 20000,
+        "retained_system_tokens": 20000
+      }
+    }
+  ],
+  "compactionSensitivityModes": [
+    {
+      "contrast_id": "compaction-input-cache-read-sensitivity",
+      "changed_parameter": "compaction_input_mode",
+      "baseline_value": "uncached",
+      "comparison_value": "cache_read"
+    },
+    {
+      "contrast_id": "compaction-input-cache-write-sensitivity",
+      "changed_parameter": "compaction_input_mode",
+      "baseline_value": "uncached",
+      "comparison_value": "cache_write"
+    },
+    {
+      "contrast_id": "compaction-retained-system-sensitivity",
+      "changed_parameter": "post_compaction_cache_mode",
+      "baseline_value": "cold_write",
+      "comparison_value": "retain_system_prefix"
+    }
+  ],
+  "qualityBreakEven": {
+    "purpose": "Translate simulated token savings into the maximum tolerable quality or rework penalty; do not claim an empirical quality effect.",
+    "lossPerDegradedExecutionUsdGrid": [
+      10,
+      50,
+      100,
+      500,
+      1000
+    ],
+    "decisionRule": "Prefer the lower-token-cost policy only when tokenSavingsUsdPerExecution exceeds expectedAdditionalQualityLossUsd plus expectedAdditionalHumanReworkUsd plus expectedAdditionalLatencyUsd plus implementationOverheadUsd.",
+    "expectedQualityLossFormula": "degradationProbability * lossPerDegradedExecutionUsd",
+    "breakEvenProbabilityFormula": "max(0, tokenSavingsUsdPerExecution - otherIncrementalPenaltyUsd) / lossPerDegradedExecutionUsd",
+    "independentPerCompactionProbabilityFormula": "max(0, tokenSavingsUsdPerExecution - otherIncrementalPenaltyUsd) / (compactionsPerExecution * lossPerDegradedCompactionUsd)",
+    "interpretation": "Use the per-execution probability when degradation is assessed once per session. Use the per-compaction probability only when each compaction independently risks the full declared loss. Below the applicable threshold the compact policy has lower modeled total cost; above it the uncompacted policy has lower modeled total cost."
+  },
+  "validationRequirements": [
+    "Every request reconciles total input to exactly one of uncached input, cache read, or cache write.",
+    "Every baseline/comparison pair changes only its declared decision variable; downstream token and request counts may change mechanically.",
+    "The long tier activates only for request input strictly greater than the model-specific Copilot threshold.",
+    "The threshold-crossing fixture is 500 tokens below versus 500 tokens above its model threshold.",
+    "The 200,000-token compaction fixture produces 39 main requests, four compaction requests, and no main request above 200,000 tokens.",
+    "Scaling to 1,000 and 1,000,000 executions equals per-execution values multiplied by the volume; no rows are materialized per execution.",
+    "An independent validator recomputes costs from token ledgers rather than trusting summary values.",
+    "Scenario labels have no effect on modeled behavior."
+  ],
+  "inferenceBoundary": "This simulation identifies accounting consequences of declared token-flow assumptions. It does not establish the actual cache behavior, context availability, task quality, or overall superiority of Pi, GitHub Copilot, or any model.",
+  "sources": [
+    {
+      "title": "GitHub Copilot models and pricing",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing",
+      "supports": "GitHub Copilot model token rates, per-model long-context thresholds, AI-credit accounting, and automatic-selection discount scope"
+    },
+    {
+      "title": "Optimize AI usage and reduce costs",
+      "url": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage",
+      "supports": "Cache-read economics, cache invalidation by model switching, and cache-expiry considerations"
+    },
+    {
+      "title": "Pi compaction documentation",
+      "url": "https://github.com/earendil-works/pi-mono/blob/main/packages/coding-agent/docs/compaction.md",
+      "supports": "Pi compaction trigger, reserve and keep-recent defaults, summary request, and rebuilt context behavior"
+    },
+    {
+      "title": "Pi model and tier configuration",
+      "url": "https://pi.dev/docs/latest/models",
+      "supports": "Pi tier-selection arithmetic, model catalog configuration, and extended-context overrides"
+    },
+    {
+      "title": "OpenAI GPT-5.6 Luna model documentation",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+      "supports": "Direct OpenAI context-window and pricing cross-check; not used as the Pi-through-Copilot rate card"
+    }
+  ]
+}

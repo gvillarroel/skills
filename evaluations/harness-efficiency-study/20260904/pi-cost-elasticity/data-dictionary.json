@@ -1,0 +1,26 @@
+{
+  "ai_credit_formula": "provider_cost_usd / 0.01",
+  "billing_partition_invariant": "full_input_tokens = input_uncached_tokens + cache_read_tokens + cache_write_tokens; the three buckets are mutually exclusive",
+  "break_even_probability_units": {
+    "break_even_failure_probability_per_compaction_independent": "savings per execution divided by compactions per execution and loss per independently degraded compaction",
+    "break_even_incremental_failure_probability": "savings per execution divided by loss per degraded execution"
+  },
+  "cost_formula": "sum(tokens_in_bucket * tier_rate_per_million / 1,000,000)",
+  "grain": {
+    "break-even.csv": "one long-session contrast, model, and failure-loss value",
+    "call-ledger.csv": "one hypothetical provider request",
+    "contrast-results.csv": "one OFAT contrast and model",
+    "scale-results.csv": "one contrast, model, and algebraic volume",
+    "scenario-results.csv": "one scenario arm and model"
+  },
+  "model_version": "pi-copilot-cost-elasticity-1.0.0",
+  "pricing_tier_rule": "short when full_input_tokens <= model threshold; long otherwise; the selected tier prices the entire request",
+  "row_counts": {
+    "break_even": 30,
+    "contrasts": 63,
+    "ledger": 2059,
+    "scale_results": 126,
+    "scenarios": 126
+  },
+  "scale_rule": "per-execution deterministic result multiplied by volume; no rows are materialized per execution"
+}

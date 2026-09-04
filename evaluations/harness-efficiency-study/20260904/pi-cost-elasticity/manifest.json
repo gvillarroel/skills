@@ -1,0 +1,27 @@
+{
+  "execution_mode": "deterministic-offline-simulation",
+  "model_version": "pi-copilot-cost-elasticity-1.0.0",
+  "real_pi_or_copilot_calls": false,
+  "row_counts": {
+    "break_even": 30,
+    "contrasts": 63,
+    "ledger": 2059,
+    "scale_results": 126,
+    "scenarios": 126
+  },
+  "sha256": {
+    "break-even.csv": "4b25fadffaf82585e5128d51bdc0b727ca12db70d1444c4218cf46689348b631",
+    "call-ledger.csv": "6aa6079996b78e1f4d5df0ae238ed248049adef1650cc1c8b2b540e0fe385008",
+    "contrast-results.csv": "c65e2838e07a2fd661c9a9ddfa8a5e4c8d94be43271506933676a72ac7938768",
+    "data-dictionary.json": "cc81a7a43091d34f9598d8a549969586a280dadbf6f77995d2775a0b66ba514b",
+    "explore.sql": "c8c448a7ae2c94259d0d67bb995fe31da48180225537fb1016eaea06bf678e3d",
+    "scale-results.csv": "ef008db5821eae72e4a5dad9d920f6c2dbc6558ca497d6c8ead3c070fc44bc84",
+    "scenario-results.csv": "f6ffdebc7686e690656bd2cdaccb681436b326b0dc19583a5d648e737cac0e61",
+    "study-results.json": "3df8d31c3db454d6560afa2256ead3fd7514a82ef982c84b5aa117000743af86",
+    "summary.md": "1c5e715fe1a1af059bb831d6d4858250c3bc7870d07c08030e64dbdb05cf486c"
+  },
+  "volumes": [
+    1000,
+    1000000
+  ]
+}

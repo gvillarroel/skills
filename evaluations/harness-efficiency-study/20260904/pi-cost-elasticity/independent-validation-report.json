@@ -1,0 +1,59 @@
+{
+  "bundle": "C:\\Users\\villa\\dev\\skills\\evaluations\\harness-efficiency-study\\20260904\\pi-cost-elasticity",
+  "checks": 50792,
+  "failure_count": 0,
+  "failures": [],
+  "mode": "offline_deterministic_validation",
+  "rate_card_oracle": {
+    "luna": {
+      "long": {
+        "output": "1.80",
+        "read": "0.04",
+        "uncached": "0.40",
+        "write": "0.50"
+      },
+      "short": {
+        "output": "1.20",
+        "read": "0.02",
+        "uncached": "0.20",
+        "write": "0.25"
+      },
+      "threshold": 200000
+    },
+    "sol": {
+      "long": {
+        "output": "30.00",
+        "read": "0.80",
+        "uncached": "8.00",
+        "write": "10.00"
+      },
+      "short": {
+        "output": "20.00",
+        "read": "0.40",
+        "uncached": "4.00",
+        "write": "5.00"
+      },
+      "threshold": 272000
+    },
+    "terra": {
+      "long": {
+        "output": "18.00",
+        "read": "0.40",
+        "uncached": "4.00",
+        "write": "5.00"
+      },
+      "short": {
+        "output": "12.00",
+        "read": "0.20",
+        "uncached": "2.00",
+        "write": "2.50"
+      },
+      "threshold": 272000
+    }
+  },
+  "schema_version": "1.0",
+  "status": "pass",
+  "validator": "independent-pi-cost-elasticity-audit",
+  "warning_count": 0,
+  "warnings": []
+}

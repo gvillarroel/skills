@@ -65,6 +65,18 @@ Prices and product behavior are time-varying. Refresh
 `projects/harness-efficiency-study/source/rate-card-20260904.json` before using
 this study for a later purchasing decision.
 
+### Long-context threshold correction
+
+The original three stochastic bundles used a uniform 272,000-token
+long-context threshold for Luna, Terra, and Sol. Current GitHub Copilot pricing
+uses a route-specific 200,000-token threshold for Luna and 272,000 for Terra and
+Sol. Therefore, do not use the original bundle to estimate Luna long-context or
+compaction economics. The offline Pi-only cost-elasticity extension in
+`pi-cost-elasticity/` supersedes that part of the analysis with a call-level
+ledger and the corrected thresholds. The earlier stochastic results remain the
+frozen evidence for their declared synthetic design; they have not been
+silently recomputed under the corrected Luna boundary.
+
 ## Variables included
 
 | Layer | Material variables represented |
@@ -324,5 +336,8 @@ The full raw bundle also contains tidy replication-level `runs.csv`,
 - Copilot Cloud agent Actions minutes and remote-environment overhead are outside
   the local CLI comparison.
 - Pi's catalog cost on the Copilot route is not verified cash billing.
+- The Pi-only 800k extension is conditional price arithmetic: Pi exposes a
+  1.05M catalog window, while GitHub's public 1M client guarantee does not name
+  third-party Pi. It is not an availability claim.
 - Rate cards, included allowances, default tools, model aliases, context rules,
   and harness versions can change. Recalibrate before operational use.

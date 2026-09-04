@@ -4,6 +4,8 @@
   "tokenPriceUnit": "per 1,000,000 tokens",
   "models": {
     "gpt-5.6-luna": {
+      "copilotLongContextThresholdInputTokens": 200000,
+      "openAiDirectLongContextThresholdInputTokens": 272000,
       "input": 0.2,
       "cacheRead": 0.02,
       "cacheWrite": 0.25,
@@ -14,6 +16,8 @@
       "longContextOutput": 1.8
     },
     "gpt-5.6-terra": {
+      "copilotLongContextThresholdInputTokens": 272000,
+      "openAiDirectLongContextThresholdInputTokens": 272000,
       "input": 2.0,
       "cacheRead": 0.2,
       "cacheWrite": 2.5,
@@ -24,6 +28,8 @@
       "longContextOutput": 18.0
     },
     "gpt-5.6-sol": {
+      "copilotLongContextThresholdInputTokens": 272000,
+      "openAiDirectLongContextThresholdInputTokens": 272000,
       "input": 4.0,
       "cacheRead": 0.4,
       "cacheWrite": 5.0,
@@ -58,7 +64,10 @@
     "normalIndividualBillingSince": "2026-06-01",
     "normalUnit": "tokens converted to GitHub AI Credits",
     "legacyPremiumRequestsExcludedFromPrimaryStudy": true,
-    "cloudAgentActionsMinutesExcludedFromLocalCliComparison": true
+    "cloudAgentActionsMinutesExcludedFromLocalCliComparison": true,
+    "piFixedModelAutomaticSelectionDiscountFraction": 0.0,
+    "piThirdPartyCodingAgentConsumesAiCredits": true,
+    "extendedContextViaPiCopilotStatus": "Pi catalogs 1,050,000 tokens for this route, but GitHub's public 1M-context client guarantee names VS Code and Copilot CLI; 800K Pi scenarios are conditional simulations, not availability claims."
   },
   "sources": [
     {
@@ -78,12 +87,24 @@
       "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna"
     },
     {
+      "title": "OpenAI GPT-5.6 Terra model pricing",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+    },
+    {
       "title": "OpenAI GPT-5.6 Sol model pricing",
       "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
     },
     {
       "title": "OpenAI model comparison",
       "url": "https://developers.openai.com/api/docs/models/compare"
+    },
+    {
+      "title": "Pi model and tier configuration",
+      "url": "https://pi.dev/docs/latest/models"
+    },
+    {
+      "title": "Pi compaction and branch summarization",
+      "url": "https://pi.dev/docs/latest/compaction"
     }
   ]
 }
