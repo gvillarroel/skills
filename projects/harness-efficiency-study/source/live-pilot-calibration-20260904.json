@@ -1,0 +1,136 @@
+{
+  "asOf": "2026-09-04",
+  "purpose": "Small live calibration of prompt/tool-registry and warm-cache accounting. These are not task-quality trials and cannot establish harness superiority.",
+  "prompt": "Reply with exactly OK. Do not use tools.",
+  "model": "gpt-5.6-luna",
+  "reasoning": "off/none",
+  "providerRoute": "github-copilot",
+  "copilotCli": {
+    "reportedVersion": "1.0.73 in OTel agent metadata; launcher printed 1.0.75 during local inspection",
+    "runs": [
+      {
+        "id": "copilot-default-tools-cold",
+        "toolDefinitions": 22,
+        "inputTokens": 18181,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 18178,
+        "outputTokens": 5,
+        "serverDurationMs": 1180,
+        "nanoAiu": 455110000,
+        "aiCredits": 0.45511,
+        "cashEquivalentUsd": 0.0045511
+      },
+      {
+        "id": "copilot-default-tools-hot-continuation",
+        "toolDefinitions": 22,
+        "inputTokens": 18257,
+        "cacheReadTokens": 18067,
+        "cacheWriteTokens": 187,
+        "outputTokens": 5,
+        "serverDurationMs": 1102,
+        "nanoAiu": 41469000,
+        "aiCredits": 0.041469,
+        "cashEquivalentUsd": 0.00041469
+      },
+      {
+        "id": "copilot-rg-glob-cold",
+        "toolDefinitions": 2,
+        "inputTokens": 4899,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 4896,
+        "outputTokens": 5,
+        "serverDurationMs": 1054,
+        "nanoAiu": 123060000,
+        "aiCredits": 0.12306,
+        "cashEquivalentUsd": 0.0012306
+      },
+      {
+        "id": "copilot-zero-tools-cold-via-unknown-allowlist",
+        "toolDefinitions": 0,
+        "inputTokens": 4256,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 4253,
+        "outputTokens": 5,
+        "serverDurationMs": 780,
+        "nanoAiu": 106985000,
+        "aiCredits": 0.106985,
+        "cashEquivalentUsd": 0.00106985,
+        "caveat": "The invocation requested an unknown tool name, and the CLI explicitly disabled all tools. It is retained as an observed zero-tool condition, not as a recommended command."
+      },
+      {
+        "id": "copilot-zero-tools-hot-continuation",
+        "toolDefinitions": 0,
+        "inputTokens": 4303,
+        "cacheReadTokens": 4168,
+        "cacheWriteTokens": 132,
+        "outputTokens": 5,
+        "serverDurationMs": 1324,
+        "nanoAiu": 12296000,
+        "aiCredits": 0.012296,
+        "cashEquivalentUsd": 0.00012296
+      }
+    ]
+  },
+  "pi": {
+    "version": "0.84.2",
+    "runs": [
+      {
+        "id": "pi-zero-tools-cold",
+        "builtInTools": 0,
+        "inputTokens": 429,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0,
+        "outputTokens": 5,
+        "catalogCostUsd": 0.0000918,
+        "wallSeconds": 3.8019427
+      },
+      {
+        "id": "pi-default-tools-cold",
+        "builtInTools": 4,
+        "inputTokens": 3,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 1107,
+        "outputTokens": 5,
+        "catalogCostUsd": 0.0000066,
+        "wallSeconds": 3.3168646,
+        "caveat": "Pi's catalog cost reported zero cache-write cost on the GitHub Copilot route even though it reported 1,107 cache-write tokens. This is a ledger estimate, not verified cash billing."
+      },
+      {
+        "id": "pi-default-tools-hot-continuation",
+        "builtInTools": 4,
+        "inputTokens": 3,
+        "cacheReadTokens": 1107,
+        "cacheWriteTokens": 21,
+        "outputTokens": 5,
+        "catalogCostUsd": 0.00002874,
+        "wallSeconds": 2.9294292,
+        "caveat": "Reported catalog cost includes cache reads but again values cache writes at zero on this route."
+      }
+    ]
+  },
+  "derivedObservations": {
+    "copilotColdInputReductionFullToTwoToolsFraction": 0.7305428744293493,
+    "copilotColdInputReductionFullToZeroToolsFraction": 0.7659094659259666,
+    "copilotHotCostReductionDefaultToolsFraction": 0.9088813693392807,
+    "copilotHotCostReductionZeroToolsFraction": 0.8850680001869421,
+    "piZeroToolInputRelativeToCopilotZeroToolFraction": 0.10079887218045112
+  },
+  "rawArtifacts": "projects/harness-efficiency-study/artifacts/live-pilots (git-ignored)",
+  "methodLimits": [
+    "Single trivial prompts isolate fixed context overhead but do not measure coding quality or multi-turn behavior.",
+    "Runs were sequential and therefore do not estimate provider congestion.",
+    "Copilot CLI AI-credit telemetry and Pi catalog cost use different accounting surfaces.",
+    "The Pi route did not expose GitHub AI-credit telemetry, so Pi catalog cost must not be treated as the user's Copilot cash charge.",
+    "System prompts, tool contracts, skill registries, and harness behavior were intentionally not equalized in the whole-harness observations."
+  ],
+  "sources": [
+    {
+      "title": "Copilot CLI command and OpenTelemetry reference",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference"
+    },
+    {
+      "title": "Pi coding agent repository",
+      "url": "https://github.com/earendil-works/pi"
+    }
+  ]
+}

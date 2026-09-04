@@ -1,0 +1,4 @@
+interface:
+  display_name: "Simulation Data Lab"
+  short_description: "Build reproducible simulations and explorable datasets"
+  default_prompt: "Use $simulation-data-lab to design and run a reproducible simulation that generates explorable data and tests a claim under explicit assumptions."

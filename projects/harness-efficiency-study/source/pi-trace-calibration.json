@@ -1,0 +1,73 @@
+{
+  "asOf": "2026-09-04",
+  "purpose": "Observed local Pi traces used only to bound plausible multi-turn workload ranges.",
+  "model": "gpt-5.3-codex-spark",
+  "runs": [
+    {
+      "id": "contract-smoke-4",
+      "modelCalls": 30,
+      "inputTokens": 26216,
+      "outputTokens": 8012,
+      "cacheReadTokens": 428416,
+      "cacheWriteTokens": 0,
+      "totalTokens": 462644,
+      "toolCalls": 29,
+      "toolErrors": 0,
+      "toolReadBytes": 57249
+    },
+    {
+      "id": "contract-smoke-5",
+      "modelCalls": 24,
+      "inputTokens": 21167,
+      "outputTokens": 7163,
+      "cacheReadTokens": 268672,
+      "cacheWriteTokens": 0,
+      "totalTokens": 297002,
+      "toolCalls": 23,
+      "toolErrors": 0,
+      "toolReadBytes": 43327
+    },
+    {
+      "id": "naturalistic-2",
+      "modelCalls": 23,
+      "inputTokens": 78132,
+      "outputTokens": 12114,
+      "cacheReadTokens": 564608,
+      "cacheWriteTokens": 0,
+      "totalTokens": 654854,
+      "toolCalls": 35,
+      "toolErrors": 1,
+      "toolReadBytes": 143934
+    },
+    {
+      "id": "naturalistic-3",
+      "modelCalls": 31,
+      "inputTokens": 99433,
+      "outputTokens": 13548,
+      "cacheReadTokens": 1081728,
+      "cacheWriteTokens": 0,
+      "totalTokens": 1194709,
+      "toolCalls": 46,
+      "toolErrors": 1,
+      "toolReadBytes": 348357
+    },
+    {
+      "id": "underidentified-1",
+      "modelCalls": 26,
+      "inputTokens": 35489,
+      "outputTokens": 9861,
+      "cacheReadTokens": 418304,
+      "cacheWriteTokens": 0,
+      "totalTokens": 463654,
+      "toolCalls": 34,
+      "toolErrors": 1,
+      "toolReadBytes": 89132
+    }
+  ],
+  "limits": [
+    "These traces came from skill-validation tasks, not matched Copilot CLI trials.",
+    "The model differs from the GPT-5.6 models in the rate-card study.",
+    "A reported zero cache-write count can mean implicit or unreported writes and must not be interpreted as proof that writes were free.",
+    "The sample is small and intentionally used for range calibration, not inference about comparative quality."
+  ]
+}

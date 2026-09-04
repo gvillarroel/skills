@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "experimentId": "inventory-policy-demo",
+  "title": "Inventory policy under uncertain demand",
+  "description": "A small executable template. Replace its claim, assumptions, scenarios, design points, and outcomes with the user's system before treating it as evidence.",
+  "phase": "exploratory",
+  "paradigm": "monte-carlo",
+  "engine": {
+    "name": "python-standard-library",
+    "versionConstraint": ">=3.11"
+  },
+  "rootSeed": 20260903,
+  "uncertaintyMode": "stochastic",
+  "seedPolicy": "paired-across-scenarios",
+  "replications": 32,
+  "scenarios": [
+    {
+      "scenarioId": "baseline-stock",
+      "label": "Baseline stock",
+      "description": "Start each period with 100 units.",
+      "tags": ["baseline"],
+      "parameters": [
+        {
+          "name": "stock_units",
+          "value": 100,
+          "unit": "item",
+          "sourceType": "assumed",
+          "description": "Units available at the start of the period."
+        }
+      ]
+    },
+    {
+      "scenarioId": "higher-stock",
+      "label": "Higher stock",
+      "description": "Start each period with 115 units.",
+      "tags": ["intervention"],
+      "parameters": [
+        {
+          "name": "stock_units",
+          "value": 115,
+          "unit": "item",
+          "sourceType": "assumed",
+          "description": "Units available at the start of the period."
+        }
+      ]
+    }
+  ],
+  "designPoints": [
+    {
+      "designPointId": "typical-demand",
+      "description": "Central demand assumption.",
+      "parameters": [
+        {
+          "name": "demand_mean",
+          "value": 105,
+          "unit": "item",
+          "sourceType": "assumed"
+        },
+        {
+          "name": "demand_sd",
+          "value": 15,
+          "unit": "item",
+          "sourceType": "assumed"
+        }
+      ]
+    },
+    {
+      "designPointId": "low-demand",
+      "description": "Challenge point where added stock may have little practical benefit.",
+      "parameters": [
+        {
+          "name": "demand_mean",
+          "value": 75,
+          "unit": "item",
+          "sourceType": "assumed"
+        },
+        {
+          "name": "demand_sd",
+          "value": 10,
+          "unit": "item",
+          "sourceType": "assumed"
+        }
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "name": "fill_rate",
+      "unit": "1",
+      "description": "Share of simulated demand fulfilled from available stock."
+    },
+    {
+      "name": "unmet_units",
+      "unit": "item",
+      "description": "Simulated demand that could not be fulfilled."
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesisId": "h1-fill-rate",
+      "claim": "The higher-stock policy improves mean fill rate by at least 0.05 relative to baseline across the declared demand range.",
+      "claimScope": "conditional-real-world",
+      "assumptionIds": [
+        "a1-demand-shape",
+        "a2-single-period"
+      ],
+      "externalValidationRequired": true,
+      "outcome": "fill_rate",
+      "scenarioIds": [
+        "baseline-stock",
+        "higher-stock"
+      ],
+      "estimand": "paired mean difference in fill_rate (higher-stock minus baseline-stock)",
+      "analysis": {
+        "kind": "scenario-contrast",
+        "estimator": "mean-difference",
+        "baselineScenarioId": "baseline-stock",
+        "comparisonScenarioId": "higher-stock",
+        "primaryDesignPointIds": [
+          "typical-demand"
+        ],
+        "challengeDesignPointIds": [
+          "low-demand"
+        ],
+        "pairing": "paired",
+        "intervalMethod": "normal-approximation",
+        "intervalLevel": 0.95,
+        "aggregationRule": "all-design-points"
+      },
+      "practicalThreshold": {
+        "value": 0.05,
+        "unit": "1",
+        "operator": "ge"
+      },
+      "decisionRule": "Support within the model only if the 95% paired interval lower endpoint is at least 0.05 at every primary and challenge design point; challenge if an interval upper endpoint is below 0.05; otherwise report inconclusive.",
+      "falsificationRule": "Use the low-demand challenge point to test whether added stock no longer clears the 0.05 improvement threshold."
+    }
+  ],
+  "assumptions": [
+    {
+      "assumptionId": "a1-demand-shape",
+      "statement": "Period demand is adequately represented by a non-negative Gaussian draw at each declared design point.",
+      "sourceType": "assumed"
+    },
+    {
+      "assumptionId": "a2-single-period",
+      "statement": "Unmet demand is lost and stock does not carry between periods.",
+      "sourceType": "assumed"
+    }
+  ],
+  "extensions": {
+    "simulation-data-lab": {
+      "template": "inventory-policy-v1"
+    }
+  }
+}

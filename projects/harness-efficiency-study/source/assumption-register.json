@@ -1,0 +1,77 @@
+{
+  "asOf": "2026-09-04",
+  "assumptions": [
+    {
+      "id": "a01-factorial-boundary",
+      "statement": "Harness, provider/auth route, model, tool policy, cache policy, workload, and billing policy are separate factors.",
+      "sourceType": "structural",
+      "validation": "Controlled comparisons hold all but one factor fixed."
+    },
+    {
+      "id": "a02-whole-harness-overhead",
+      "statement": "Tool definitions, system instructions, skills, custom agents, and MCP registries consume input or cache-write tokens on a cold request.",
+      "sourceType": "observed",
+      "validation": "Local Copilot CLI and Pi calibration records prompt-token usage under full, minimal, and zero-tool policies."
+    },
+    {
+      "id": "a03-cache-economics",
+      "statement": "A stable reusable prefix can turn repeated input into cheaper cache reads, while prefix churn, model switches, idle expiry, and some compactions require new writes.",
+      "sourceType": "documented-and-observed",
+      "validation": "Hot continuation pilots and explicit low/high stability challenge points."
+    },
+    {
+      "id": "a04-quality-mechanism",
+      "statement": "Quality depends on task difficulty, model tier, relevant-tool success, tool confusion, provider failures, retries, verification strength, and compaction loss.",
+      "sourceType": "assumed",
+      "validation": "Wide one-at-a-time and joint challenge points; no empirical-real-world claim is identified."
+    },
+    {
+      "id": "a05-time-mechanism",
+      "statement": "Wall time is mediated by model calls, processed context, tool latency, retries, approvals, parallelizable work, coordination overhead, and conflicts.",
+      "sourceType": "assumed",
+      "validation": "Concurrency, latency, failure, and conflict challenges."
+    },
+    {
+      "id": "a06-pricing",
+      "statement": "Token rates and Copilot plan allowances equal the official public values captured on 2026-09-04.",
+      "sourceType": "observed",
+      "validation": "Refresh the rate-card source before later decisions because prices are time-varying."
+    },
+    {
+      "id": "a07-ledger-vs-cash",
+      "statement": "Provider token value, marginal cash outlay, allocated subscription fee, and economic loss are different estimands.",
+      "sourceType": "structural",
+      "validation": "The model emits all four ledgers and never substitutes Pi's catalog estimate for Copilot cash billing."
+    },
+    {
+      "id": "a08-subscription-allocation",
+      "statement": "A monthly subscription may have zero marginal cash cost while credits remain, but the fee still has an allocated cost and an opportunity cost.",
+      "sourceType": "accounting-choice",
+      "validation": "Low-, medium-, and high-volume portfolios plus allowance-exhaustion challenges."
+    },
+    {
+      "id": "a09-common-random-numbers",
+      "statement": "Matched scenarios share latent task difficulty, tool reliability, provider reliability, and human-review draws through named SHA-256 substreams.",
+      "sourceType": "design",
+      "validation": "Same-behavior-label negative-control tests and paired hypothesis analysis."
+    },
+    {
+      "id": "a10-external-validation",
+      "statement": "No simulation-only contrast identifies which harness is better on real repositories.",
+      "sourceType": "inference-boundary",
+      "validation": "The real-world supremacy hypotheses are explicitly not-identifiable; matched tasks with a fixed external verifier are required."
+    },
+    {
+      "id": "a11-tool-pruning-tradeoff",
+      "statement": "Removing irrelevant tools reduces context and selection confusion, but removing required tools lowers success and can increase retries or human rework.",
+      "sourceType": "assumed-and-observed-overhead",
+      "validation": "Both tool-sprawl and under-provisioned challenge points are included."
+    },
+    {
+      "id": "a12-phase-routing",
+      "statement": "Cheap planning and routine execution with stronger verification can improve cost efficiency when routing errors remain bounded.",
+      "sourceType": "assumed",
+      "validation": "Compare fixed-tier policies against phase routing under easy, hard, and verification-heavy workloads."
+    }
+  ]
+}

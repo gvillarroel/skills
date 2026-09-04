@@ -1,0 +1,89 @@
+{
+  "asOf": "2026-09-04",
+  "currency": "USD",
+  "tokenPriceUnit": "per 1,000,000 tokens",
+  "models": {
+    "gpt-5.6-luna": {
+      "input": 0.2,
+      "cacheRead": 0.02,
+      "cacheWrite": 0.25,
+      "output": 1.2,
+      "longContextInput": 0.4,
+      "longContextCacheRead": 0.04,
+      "longContextCacheWrite": 0.5,
+      "longContextOutput": 1.8
+    },
+    "gpt-5.6-terra": {
+      "input": 2.0,
+      "cacheRead": 0.2,
+      "cacheWrite": 2.5,
+      "output": 12.0,
+      "longContextInput": 4.0,
+      "longContextCacheRead": 0.4,
+      "longContextCacheWrite": 5.0,
+      "longContextOutput": 18.0
+    },
+    "gpt-5.6-sol": {
+      "input": 4.0,
+      "cacheRead": 0.4,
+      "cacheWrite": 5.0,
+      "output": 20.0,
+      "longContextInput": 8.0,
+      "longContextCacheRead": 0.8,
+      "longContextCacheWrite": 10.0,
+      "longContextOutput": 30.0
+    }
+  },
+  "githubCopilotIndividualPlans": {
+    "pro": {
+      "monthlyFee": 10.0,
+      "includedAiCredits": 1500,
+      "includedAiCreditRetailValue": 15.0
+    },
+    "proPlus": {
+      "monthlyFee": 39.0,
+      "includedAiCredits": 7000,
+      "includedAiCreditRetailValue": 70.0
+    },
+    "max": {
+      "monthlyFee": 100.0,
+      "includedAiCredits": 20000,
+      "includedAiCreditRetailValue": 200.0
+    },
+    "usdPerAiCredit": 0.01,
+    "paidPlanAutomaticModelSelectionDiscountFraction": 0.1,
+    "includedCreditsRollover": false
+  },
+  "billingBoundary": {
+    "normalIndividualBillingSince": "2026-06-01",
+    "normalUnit": "tokens converted to GitHub AI Credits",
+    "legacyPremiumRequestsExcludedFromPrimaryStudy": true,
+    "cloudAgentActionsMinutesExcludedFromLocalCliComparison": true
+  },
+  "sources": [
+    {
+      "title": "GitHub Copilot models and pricing",
+      "url": "https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing"
+    },
+    {
+      "title": "Usage-based billing for individuals",
+      "url": "https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals"
+    },
+    {
+      "title": "GitHub Copilot plans",
+      "url": "https://docs.github.com/en/copilot/get-started/plans"
+    },
+    {
+      "title": "OpenAI GPT-5.6 Luna model pricing",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna"
+    },
+    {
+      "title": "OpenAI GPT-5.6 Sol model pricing",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
+    },
+    {
+      "title": "OpenAI model comparison",
+      "url": "https://developers.openai.com/api/docs/models/compare"
+    }
+  ]
+}
