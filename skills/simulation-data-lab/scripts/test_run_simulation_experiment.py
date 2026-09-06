@@ -542,7 +542,7 @@ def simulate(run):
                 len(run_rows),
                 len(spec["scenarios"]) * len(spec["designPoints"]),
                 len(spec["outcomes"]),
-            )
+            ) + runner["review_row_count"](spec)
             command_run = runner["command_run"]
             command_run.__globals__["MAX_IN_MEMORY_MATERIALIZED_ROWS"] = (
                 planned_core_rows + 1

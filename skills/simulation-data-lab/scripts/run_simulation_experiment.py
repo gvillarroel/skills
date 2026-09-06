@@ -27,6 +27,12 @@ from pathlib import Path, PurePosixPath
 from types import ModuleType
 from typing import Any, Callable, Iterable
 
+from model_variable_review import (
+    build_variable_review_files,
+    review_row_count,
+    validate_variable_review,
+)
+
 
 SCHEMA_VERSION = 1
 TOOL_VERSION = "1.0.0"
@@ -892,6 +898,11 @@ def normalize_spec(value: Any) -> dict[str, Any]:
         normalized["timeUnit"] = require_text(spec["timeUnit"], "experiment.timeUnit")
     if "extensions" in spec:
         normalized["extensions"] = normalize_json_value(spec["extensions"], "experiment.extensions")
+    try:
+        validate_variable_review(normalized)
+    except ValueError as error:
+        raise SimulationError(str(error)) from error
+    enforce_materialized_row_budget(core_row_count + review_row_count(normalized))
     return normalized
 
 
@@ -981,14 +992,24 @@ def build_plan(spec: dict[str, Any]) -> dict[str, bytes]:
         for point in spec["designPoints"]
         for parameter in point["parameters"]
     ]
-    return {
+    files = {
         "run-plan.csv": csv_bytes(RUN_PLAN_COLUMNS, run_rows),
         "scenario-factors.csv": csv_bytes(PARAMETER_COLUMNS, scenario_rows),
         "design-point-parameters.csv": csv_bytes(PARAMETER_COLUMNS, design_rows),
     }
+    files.update(build_variable_review_files(spec))
+    return files
 
 
 def build_plan_manifest(spec: dict[str, Any], spec_raw: bytes, files: dict[str, bytes]) -> dict[str, Any]:
+    records = []
+    for name, raw in sorted(files.items()):
+        record = {"path": name, "sha256": sha256_bytes(raw)}
+        if name.endswith(".csv"):
+            record["rows"] = max(
+                0, len(list(csv.reader(io.StringIO(raw.decode("utf-8"), newline="")))) - 1,
+            )
+        records.append(record)
     return {
         "schemaVersion": SCHEMA_VERSION,
         "toolVersion": TOOL_VERSION,
@@ -1002,17 +1023,7 @@ def build_plan_manifest(spec: dict[str, Any], spec_raw: bytes, files: dict[str, 
         "seedDerivation": SEED_DERIVATION,
         "specSha256": sha256_bytes(spec_raw),
         "normalizedSpecSha256": sha256_bytes(canonical_json_bytes(spec)),
-        "files": [
-            {
-                "path": name,
-                "sha256": sha256_bytes(raw),
-                "rows": max(
-                    0,
-                    len(list(csv.reader(io.StringIO(raw.decode("utf-8"), newline="")))) - 1,
-                ),
-            }
-            for name, raw in sorted(files.items())
-        ],
+        "files": records,
     }
 
 
@@ -1066,6 +1077,8 @@ def verify_plan(root: Path) -> tuple[dict[str, Any], bytes, list[dict[str, str]]
 def command_plan(args: argparse.Namespace) -> int:
     value, raw = load_json(args.spec.resolve(), "experiment spec")
     spec = normalize_spec(value)
+    if getattr(args, "require_variable_review", False) and validate_variable_review(spec) is None:
+        raise SimulationError("new studies require extensions.simulation-data-lab.variableReview")
     files = build_plan(spec)
     manifest = build_plan_manifest(spec, raw, files)
     output = args.output_dir.resolve()
@@ -1610,7 +1623,7 @@ def command_run(args: argparse.Namespace) -> int:
         len(plan_rows),
         len(spec["scenarios"]) * len(spec["designPoints"]),
         len(expected_outcomes),
-    )
+    ) + review_row_count(spec)
 
     run_rows: list[dict[str, Any]] = []
     outcome_rows: list[dict[str, Any]] = []
@@ -1864,6 +1877,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     plan_parser.add_argument("--spec", type=Path, required=True)
     plan_parser.add_argument("--output-dir", type=Path, required=True)
+    plan_parser.add_argument(
+        "--require-variable-review", action="store_true",
+        help="require the declared variable review for a new study; omit only for legacy replay",
+    )
     plan_parser.set_defaults(handler=command_plan)
 
     run_parser = subparsers.add_parser(

@@ -15,6 +15,8 @@ experiment/
 |   |-- run-plan.csv
 |   |-- scenario-factors.csv
 |   |-- design-point-parameters.csv
+|   |-- model-review.md
+|   |-- variable-inventory.csv
 |   `-- plan-manifest.json
 |-- data/
 |   |-- runs.csv
@@ -25,7 +27,8 @@ experiment/
 |-- analysis/
 |   |-- summary.csv
 |   |-- explore.sql
-|   `-- hypothesis-results.json
+|   |-- hypothesis-results.json
+|   `-- model-review-followup.md
 |-- data-dictionary.json
 |-- execution-manifest.json
 `-- validation-report.json
@@ -34,6 +37,15 @@ experiment/
 The `plan` and `run` commands refuse to replace their output directories. Use a
 fresh bundle for a changed spec, seed, model, or analysis rather than mixing
 provenance from multiple attempts.
+
+New studies include the declared variable review described in
+[model-variable-review.md](model-variable-review.md). The planner generates its
+two `design/` views, binds them in the plan manifest, and verifies that they
+regenerate from the spec. The authored post-run follow-up is required by the
+workflow but is not certified by the core table/claim validator. Legacy specs
+without this extension retain their original plan inventory; new studies use
+`plan --require-variable-review`. The final audit exposes a separate
+`modelReview` status, never an exhaustiveness or code-coverage score.
 
 ## Adapter interface
 
@@ -118,8 +130,10 @@ independent seeds instead of claiming a paired contrast.
 | `events.csv` | Ordered event | `run_id`, `event_index` |
 | `diagnostics.csv` | Model or numerical check | `run_id`, `diagnostic_index` |
 | `summary.csv` | Descriptive distribution within one design point | `scenario_id`, `design_point_id`, `outcome_name` |
+| `variable-inventory.csv` | Authored candidate-variable declaration, not a measurement | `experiment_id`, `variable_id` |
 
-Core outputs always use `source_type=simulated`. Parameter inputs retain
+Core measurement outputs use `source_type=simulated`. The variable inventory
+uses `model-review-declaration`. Parameter inputs retain
 `assumed`, `calibrated`, `observed`, `synthetic`, or `literature`. Never mix
 observed and simulated values in one unlabeled field. Use an explicit unit for
 every numeric measure; use `1` for dimensionless outcomes. Interpret
@@ -268,8 +282,9 @@ certify that arbitrary Python is harmless or that the target was isolated.
 
 The local runner also enforces a one-million-row joint materialization budget
 across the plan, run records, outcomes, summaries, observations, events, and
-diagnostics. Treat that as a safety ceiling, not a performance target. Use a
-streaming or partitioned adapter for larger studies.
+diagnostics, plus the variable inventory when present. Treat that as a safety
+ceiling, not a performance target. Use a streaming or partitioned adapter for
+larger studies.
 
 For publication-grade work, extend provenance with a lockfile or container
 digest, external input identities and licenses, calibration/validation split,

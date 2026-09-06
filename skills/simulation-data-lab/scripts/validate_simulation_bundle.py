@@ -19,6 +19,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from model_variable_review import build_variable_review_files, variable_review_summary
+
 from run_simulation_experiment import (
     DIAGNOSTIC_COLUMNS,
     EVENT_COLUMNS,
@@ -1003,6 +1005,7 @@ def command_validate(args: argparse.Namespace) -> int:
             "recomputedSummaries": summary_count,
         },
         "hypothesisStatuses": dict(sorted(hypothesis_statuses.items())),
+        "modelReview": variable_review_summary(spec),
         "unresolvedHypothesisIds": (
             [] if complete else [item["hypothesisId"] for item in spec["hypotheses"]]
         ),
@@ -1012,7 +1015,10 @@ def command_validate(args: argparse.Namespace) -> int:
             "executionManifest": sha256_file(root / "execution-manifest.json"),
             "hypothesisResults": hypothesis_digest,
         },
-        "verifiedFiles": sorted(REQUIRED_MANIFEST_FILES),
+        "verifiedFiles": sorted([
+            *REQUIRED_MANIFEST_FILES,
+            *(f"design/{name}" for name in build_variable_review_files(spec)),
+        ]),
     }
     payload = canonical_json_bytes(report)
     if args.report is not None:

@@ -169,6 +169,182 @@
         "calibrationInputs": "existing-evidence-or-explicit-assumptions",
         "enforcementScope": "workflow-contract-not-a-security-sandbox"
       },
+      "variableReview": {
+        "schemaVersion": 1,
+        "scope": "Compare single-period fulfillment at assumed demand settings. This does not establish the economically best operating policy. Adapt this inventory to the new problem; do not preserve inventory-specific candidates mechanically.",
+        "variables": [
+          {
+            "variableId": "stock",
+            "label": "Available starting stock",
+            "role": "control",
+            "unit": "item",
+            "treatment": "modeled",
+            "parameterNames": ["stock_units"],
+            "affectsOutcomes": ["fill_rate", "unmet_units"],
+            "mechanism": "Fulfilled demand is min(stock, realized demand); adding stock helps only when demand exceeds the original stock.",
+            "evidence": "Assumed policy levels; a3-fill-rate-support supplies the accounting bound.",
+            "decisionImpact": "high",
+            "reason": "This is the intervention, not an independent random demand draw.",
+            "nextCheck": "With demand fixed at 110, compare stock 100 and 115; verify fulfilled demand and both outcomes by hand."
+          },
+          {
+            "variableId": "demand-location",
+            "label": "Demand distribution location",
+            "role": "exogenous",
+            "unit": "item",
+            "treatment": "modeled",
+            "parameterNames": ["demand_mean"],
+            "affectsOutcomes": ["fill_rate", "unmet_units"],
+            "mechanism": "Changes the Gaussian location before clipping at zero. It is not exactly the mean of realized clipped demand.",
+            "evidence": "Assumed typical and low-demand settings, not calibrated measurements.",
+            "decisionImpact": "high",
+            "reason": "Different demand regimes may change whether extra stock clears the practical threshold.",
+            "nextCheck": "Set demand_sd to zero and vary demand_mean across the stock threshold; verify the expected piecewise response."
+          },
+          {
+            "variableId": "demand-spread",
+            "label": "Demand distribution spread",
+            "role": "exogenous",
+            "unit": "item",
+            "treatment": "modeled",
+            "parameterNames": ["demand_sd"],
+            "affectsOutcomes": ["fill_rate", "unmet_units"],
+            "mechanism": "Changes variability before clipping and the mass above the stock threshold.",
+            "evidence": "Assumed dispersion; the two demonstration design points change location and spread jointly.",
+            "decisionImpact": "high",
+            "reason": "Variability changes shortages; the present grid cannot isolate its marginal effect from location.",
+            "nextCheck": "Use a fresh crossed location-by-spread design for sensitivity; include the zero-spread boundary."
+          },
+          {
+            "variableId": "demand-shape",
+            "label": "Demand shape and tail behavior",
+            "role": "structural",
+            "unit": "1",
+            "treatment": "fixed",
+            "parameterNames": [],
+            "affectsOutcomes": ["fill_rate", "unmet_units"],
+            "mechanism": "a1-demand-shape fixes max(0, Gaussian(location, spread)), including a point mass at zero.",
+            "evidence": "Illustrative assumption, not evidence that real demand follows this family.",
+            "decisionImpact": "high",
+            "reason": "The template demonstrates one mechanism; it does not compare distribution families.",
+            "nextCheck": "In a fresh mathematical model, compare a skewed or mixture demand family at comparable realized moments."
+          },
+          {
+            "variableId": "fulfilled-demand",
+            "label": "Fulfilled demand and outcome accounting",
+            "role": "derived",
+            "unit": "item",
+            "treatment": "modeled",
+            "parameterNames": [],
+            "affectsOutcomes": ["fill_rate", "unmet_units"],
+            "mechanism": "Derive fulfilled=min(stock,demand), unmet=demand-fulfilled and fill_rate=fulfilled/demand; define fill_rate=1 when demand=0.",
+            "evidence": "Model identities and a3-fill-rate-support, not a separately sampled input.",
+            "decisionImpact": "high",
+            "reason": "Keeping the accounting derived prevents impossible independent combinations or double counting.",
+            "nextCheck": "Verify conservation, zero demand, zero stock, and fill_rate in [0,1] for all tested draws."
+          },
+          {
+            "variableId": "carry-over",
+            "label": "Stock carry-over and backlogged demand",
+            "role": "state",
+            "unit": "item",
+            "treatment": "excluded",
+            "parameterNames": [],
+            "affectsOutcomes": ["fill_rate", "unmet_units"],
+            "mechanism": "Inventory and unmet demand can affect later periods; the single-period model has no such state transition.",
+            "evidence": "a2-single-period excludes both mechanisms by scope, not by measured insignificance.",
+            "decisionImpact": "high",
+            "reason": "The current estimand is single-period fulfillment, not a multi-period operating policy.",
+            "nextCheck": "Ask whether unmet demand is lost or backlogged and whether inventory persists; if needed build a separate multi-period simulation."
+          },
+          {
+            "variableId": "demand-dependence",
+            "label": "Demand persistence, seasonality and customer mix",
+            "role": "structural",
+            "unit": "1",
+            "treatment": "excluded",
+            "parameterNames": [],
+            "affectsOutcomes": ["fill_rate", "unmet_units"],
+            "mechanism": "Correlated demand or heterogeneous customers can change aggregate risk and the applicability of independent-period results.",
+            "evidence": "No time series or subgroup evidence supplied; independence is an assumption.",
+            "decisionImpact": "unknown",
+            "reason": "The demonstration has independent replications, no calendar and no customer-level state.",
+            "nextCheck": "Inspect existing evidence for regimes and dependence; use assumed regimes in a fresh simulator if decision-relevant."
+          },
+          {
+            "variableId": "supply-availability",
+            "label": "Starting-stock availability constraint",
+            "role": "exogenous",
+            "unit": "item",
+            "treatment": "unresolved",
+            "parameterNames": [],
+            "affectsOutcomes": ["fill_rate", "unmet_units"],
+            "mechanism": "Delayed or capped supply can make the declared starting-stock policy infeasible.",
+            "evidence": "No existing supply constraints supplied; both stock levels are assumed available.",
+            "decisionImpact": "high",
+            "reason": "Policy feasibility is not established by a conditional fulfillment comparison.",
+            "nextCheck": "Ask whether both stock levels can be supplied; test bounded availability or lead-time scenarios mathematically."
+          },
+          {
+            "variableId": "economic-objective",
+            "label": "Holding, shortage and purchase costs; budget",
+            "role": "structural",
+            "unit": "currency/period",
+            "treatment": "excluded",
+            "parameterNames": [],
+            "affectsOutcomes": [],
+            "mechanism": "Higher fulfillment may not justify its cost; economic utility is absent from the declared outcomes.",
+            "evidence": "No prices or objective weights supplied; no economic-optimality claim is identified.",
+            "decisionImpact": "high",
+            "reason": "This candidate affects the broader decision even though it does not alter the present accounting outcomes.",
+            "nextCheck": "Ask which costs, budgets and service constraints define a better policy; add outcomes and assumptions in a fresh economic model."
+          }
+        ],
+        "interactions": [
+          {
+            "interactionId": "stock-demand-threshold",
+            "variableIds": ["stock", "demand-location", "demand-spread", "fulfilled-demand"],
+            "treatment": "modeled",
+            "decisionImpact": "high",
+            "mechanism": "The min operation makes the stock benefit depend jointly on demand location and spread, with a saturation region.",
+            "reason": "Separate one-factor averages can miss the region where added stock stops helping.",
+            "nextCheck": "Check below, at and above stock thresholds, then cross location and spread in a fresh sensitivity design."
+          },
+          {
+            "interactionId": "shape-shortage-risk",
+            "variableIds": ["demand-shape", "demand-spread", "stock"],
+            "treatment": "modeled",
+            "decisionImpact": "high",
+            "mechanism": "The fixed demand family and dispersion jointly determine tail mass above available stock.",
+            "reason": "The mechanism is present but robustness across demand families is not tested.",
+            "nextCheck": "Compare rival mathematical tail mechanisms without asserting that this template has already tested them."
+          },
+          {
+            "interactionId": "temporal-inventory-feedback",
+            "variableIds": ["carry-over", "demand-dependence", "stock"],
+            "treatment": "excluded",
+            "decisionImpact": "high",
+            "mechanism": "Persistent demand and remaining inventory can jointly amplify future shortages.",
+            "reason": "There are no multiple periods or feedback states in this model.",
+            "nextCheck": "For a multi-period decision, compare an explicit state-transition model under plausible persistence and backlog assumptions."
+          }
+        ],
+        "coverageChecks": [
+          {"dimension": "outcome-backtrace", "status": "reviewed", "variableIds": ["stock", "demand-location", "demand-spread", "fulfilled-demand"], "note": "Trace both outcomes through fulfillment to the three implemented parameters; inspect the economic objective separately."},
+          {"dimension": "lifecycle", "status": "reviewed", "variableIds": ["supply-availability", "stock", "fulfilled-demand", "carry-over"], "note": "Consider supply, starting stock, demand fulfillment, then remaining stock or unmet demand. Only the middle single-period stage is modeled."},
+          {"dimension": "dependencies-and-feedback", "status": "reviewed", "variableIds": ["demand-location", "demand-spread", "carry-over", "demand-dependence"], "note": "Location and spread vary jointly in the demo; feedback and temporal dependence remain omitted."},
+          {"dimension": "heterogeneity-and-selection", "status": "reviewed", "variableIds": ["demand-dependence", "demand-shape"], "note": "No customer segments or selected demand history are represented; one family need not generalize to a mixture."},
+          {"dimension": "time-and-scale", "status": "reviewed", "variableIds": ["carry-over", "demand-dependence", "supply-availability"], "note": "Do not extrapolate independent single periods into a validated long-horizon capacity policy."},
+          {"dimension": "constraints-and-accounting", "status": "reviewed", "variableIds": ["fulfilled-demand", "supply-availability", "economic-objective"], "note": "Check conservation and support bounds; distinguish a mathematically defined stock level from feasible supply or budget."},
+          {"dimension": "rival-mechanisms", "status": "reviewed", "variableIds": ["demand-shape", "carry-over"], "note": "Skewed demand and a multi-period backlog mechanism are untested alternatives, not additional replication noise."},
+          {"dimension": "evidence-gaps", "status": "reviewed", "variableIds": ["demand-location", "demand-spread", "supply-availability", "economic-objective"], "note": "Inputs are assumptions. Missing evidence must remain visible; it does not authorize executing the real system."}
+        ],
+        "openQuestions": [
+          "Is the decision strictly about single-period service, or must it include cost, feasibility and future periods?",
+          "Which existing evidence bounds demand regimes, supply availability and the cost of a shortage?",
+          "What omitted mechanism would most plausibly reverse your preference between the two policies?"
+        ]
+      },
       "uncertaintyContract": {
         "systemVariability": "Independent max(0, Gaussian(mean, sd)) demand draws conditional on each design point; an illustrative clipped-demand assumption, not a universal demand model.",
         "simulationError": "Conservative finite-sample uncertainty for the paired mean contrast under fixed-count independent pairs and a priori arm support; the empirical MCSE is separate from the Hoeffding interval width.",

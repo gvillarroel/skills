@@ -1,4 +1,4 @@
 interface:
   display_name: "Simulation Data Lab"
   short_description: "Simulate mathematical models, never the target system"
-  default_prompt: "Use $simulation-data-lab to build and run only a mathematical simulation, model realistic variability, and report expected behavior, risk, and conditional uncertainty without executing the system being emulated."
+  default_prompt: "Use $simulation-data-lab to review candidate variables, interactions and omissions with me, then build and run only a mathematical simulation and report expected behavior, risk and conditional uncertainty without executing the system being emulated."

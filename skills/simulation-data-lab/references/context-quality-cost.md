@@ -26,6 +26,26 @@ or production task. Label such a curve `historical-proxy`, keep a generic
 sensitivity grid, and record missing target-task validation as a limitation on
 operational use. Do not collect it through a live run in this workflow.
 
+## Review candidate variables and their relationships
+
+Apply [model-variable-review.md](model-variable-review.md) before freezing the
+cost ledger and quality mechanism. Candidate groups include prompt/system/tool-
+schema size and order; tool count versus model round trips; output and tool-
+result retention; cache prefix stability, TTL, reads, writes and expiry; pricing
+boundaries; context growth, compaction requests, retained facts and post-
+compaction cache; task mix, difficulty, context degradation, failure persistence
+and retries; volume, shared load, latency, capacity, allowances and failure/rework
+value. These are review prompts, not universal facts or a mandatory maximal model.
+
+Removing one tool call can directly save a ledger entry, but may also change
+evidence quality, future context, cache reuse and retries. Adding 1,000 system
+tokens can affect prefix identity or a pricing boundary. Neither effect is a
+constant global elasticity by default. Distinguish controlled accounting with
+named variables frozen from a policy comparison propagating downstream effects.
+If quality mechanisms are absent, report token-accounting savings only, not
+better overall efficiency. Verify pricing and cache semantics against existing
+relevant evidence; do not invent live calibration.
+
 ## Build an evidence table before a curve
 
 Store one source-reported or independently derived statistic per row. At

@@ -11,6 +11,12 @@ in this workflow uses the simulator and existing evidence only. Treat
 `externalValidationRequired=true` as an unresolved evidence condition, not an
 instruction to collect new real-system data.
 
+Before freezing the model, complete the
+[model-variable review](model-variable-review.md). Trace outcomes to candidates,
+record relevant dependencies and omissions, and choose challenge cases from the
+most plausible decision reversals. The resulting inventory teaches the human
+which factors matter without pretending that a checklist proves completeness.
+
 ## Operationalize the claim
 
 For each claim, define:

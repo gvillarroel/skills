@@ -51,6 +51,13 @@ claim about the real world.
    [references/experiment-design.md](references/experiment-design.md).
    For realistic disturbances and behavioral uncertainty, read
    [references/uncertainty-and-behavior.md](references/uncertainty-and-behavior.md).
+   For every new study, read
+   [references/model-variable-review.md](references/model-variable-review.md)
+   and author its candidate-variable and interaction review. Work backward from
+   the outcomes and scan the wider lifecycle, not only the inputs the user names.
+   Explain included, fixed, excluded, and unresolved factors to the human; do
+   not claim exhaustive discovery or expose private deliberation. Prioritize
+   omissions that could reverse the decision rather than maximizing model size.
 2. Separate interventions into `scenarios`, epistemic or sensitivity settings
    into `designPoints`, and stochastic repetitions into `replications`. Do not
    count events, time steps, or agents within one run as independent replicates.
@@ -66,17 +73,25 @@ claim about the real world.
 4. Create a fresh output directory outside this read-only skill. When starting
    a Python model, copy and adapt `assets/templates/experiment.json` and
    `assets/templates/model.py`; remove template-specific claims and assumptions.
+   Replace the template's `extensions.simulation-data-lab.variableReview` with
+   the reviewed candidates, mechanisms, evidence, and next checks for this task.
    Preserve every required hypothesis field from the experiment template,
    including both `decisionRule` and `falsificationRule`, even when
    `analysis.kind=not-identifiable`.
 5. Validate and expand the spec into a stable run matrix:
 
 ```text
-python <skill-directory>/scripts/run_simulation_experiment.py plan --spec <bundle>/experiment.json --output-dir <bundle>/design
+python <skill-directory>/scripts/run_simulation_experiment.py plan --spec <bundle>/experiment.json --output-dir <bundle>/design --require-variable-review
 ```
 
 Inspect the run count before execution. Use a bounded simulator-only pilot when
 local runtime, memory, or numerical stability is uncertain.
+Inspect and share `design/model-review.md` and `design/variable-inventory.csv`,
+which the planner generates from the spec. Resolve inconsistent parameter links
+or units before running. High-impact or unknown-impact omissions require an
+explicitly narrower conclusion or further mathematical sensitivity work, not a
+silent assumption. Missing human input need not block a labeled exploratory
+calculation; ask only when it would materially change the problem or decision.
 
 Treat bundled scripts as executable interfaces during normal work. Use the
 commands documented here and in the references; do not read their source merely
@@ -109,6 +124,9 @@ to discover arguments or output fields.
 - Verify that changing a declared input reaches the implemented mechanism and
   changes the expected output or intermediate state. Hashing a specification
   only establishes its identity; it does not establish that the model uses it.
+  Use the review's `nextCheck` entries to test activation, fixed assumptions,
+  interaction boundaries, and plausible omitted mechanisms. Distinguish
+  conditional one-factor accounting from policy effects propagated downstream.
 - Collect only what the estimands and diagnostics require. Replication outcomes
   are mandatory; dense observations, events, and agent state are opt-in because
   they can dominate storage without adding inferential information.
@@ -132,9 +150,9 @@ The bundled runner is for bounded local work. Individual ceilings are 100,000
 runs, 100 declared outcomes, and 10,000 observation, event, or diagnostic rows
 of each kind per run, but one stricter joint ceiling permits at most 1,000,000
 materialized rows across the plan, runs, outcomes, summaries, observations,
-events, and diagnostics. Use an engine-native streaming or partitioned Parquet
-adapter for larger jobs; do not raise the limit and materialize an unsafe
-workload in memory.
+events, diagnostics, and variable inventory. Use an engine-native streaming or
+partitioned Parquet adapter for larger jobs; do not raise the limit and
+materialize an unsafe workload in memory.
 
 ## Analyze and challenge
 
@@ -155,6 +173,12 @@ workload in memory.
   stress assumptions, alternate input distributions, inspect failed-run regions,
   test numerical settings, or compare a rival mechanism. Read
   [references/diagnostics-and-inference.md](references/diagnostics-and-inference.md).
+- Revisit the frozen variable review after results. Write
+  `analysis/model-review-followup.md` with evidence paths for checks actually
+  performed, decision reversals, new blind spots, unresolved items, and remaining
+  questions. Separate measured sensitivity from a priori impact judgments. A new
+  variable, changed mechanism, or selected strategy needs a fresh declared study;
+  do not retrofit the original plan or count exploratory discovery as confirmation.
 - Use only `supports-under-model`, `challenges-under-model`,
   `inconclusive-under-model`, or `not-identifiable-from-design`. Never say that
   the simulation proved reality. State when external calibration or validation
@@ -193,6 +217,10 @@ an explicitly non-release diagnostic report with `ok=false` and still exits 2;
 use it only while repairing the model. Read
 [references/data-and-provenance-contract.md](references/data-and-provenance-contract.md)
 before changing the core tables or moving high-volume data to Parquet.
+`releaseEligible` certifies the computational bundle contract only. The separate
+`modelReview` status checks declarations, not exhaustiveness, actual code
+coverage, empirical validity, or the truth of the authored follow-up. Do not
+use a passing integrity audit to erase a decision-critical evidence gap.
 
 Hand off the question, model boundary, engine choice, run/failed counts, main
 effect with uncertainty, strongest counterexample, unresolved assumptions,
@@ -201,3 +229,8 @@ validation result, and exact artifact paths. Distinguish a preregistered
 and label either claim correctly. Point the user to
 `analysis/explore.sql`, `analysis/summary.csv`, and the data dictionary so
 exploration can continue without reverse-engineering the model.
+Also deliver the variable inventory, readable preflight review, and post-run
+follow-up: teach which additional factors could matter, why they were treated
+that way, and which existing evidence or mathematical comparison would reduce
+the most consequential uncertainty. State explicitly that unrecognized factors
+can remain even after this review.
