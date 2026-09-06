@@ -658,6 +658,7 @@ def normalize_spec(value: Any) -> dict[str, Any]:
                     "aggregationRule",
                 },
                 f"{label}.analysis",
+                optional={"outcomeBounds"},
             )
             estimator = require_text(raw_analysis["estimator"], f"{label}.analysis.estimator")
             if estimator != "mean-difference":
@@ -755,11 +756,12 @@ def normalize_spec(value: Any) -> dict[str, Any]:
                         f"{label}.analysis pairing requires seedPolicy {expected_seed_policy}"
                     )
                 if interval_method not in {
-                    "normal-approximation", "normal-approximation-bonferroni"
+                    "normal-approximation", "normal-approximation-bonferroni",
+                    "bounded-hoeffding-bonferroni",
                 }:
                     raise SimulationError(
                         f"{label}.analysis.intervalMethod must be normal-approximation "
-                        "or normal-approximation-bonferroni in schema v1"
+                        "or normal-approximation-bonferroni or bounded-hoeffding-bonferroni"
                     )
                 interval_level = require_finite_number(
                     interval_level, f"{label}.analysis.intervalLevel"
@@ -789,6 +791,32 @@ def normalize_spec(value: Any) -> dict[str, Any]:
                 "intervalLevel": interval_level,
                 "aggregationRule": aggregation_rule,
             }
+            if interval_method == "bounded-hoeffding-bonferroni":
+                bounds_label = f"{label}.analysis.outcomeBounds"
+                bounds = require_object(raw_analysis.get("outcomeBounds"), bounds_label)
+                require_exact_keys(bounds, {"baseline", "comparison", "assumptionId"}, bounds_label)
+                support_assumption = require_id(bounds["assumptionId"], f"{bounds_label}.assumptionId")
+                if support_assumption not in used_assumptions:
+                    raise SimulationError(f"{bounds_label}.assumptionId must be in hypothesis.assumptionIds")
+                normalized_bounds: dict[str, Any] = {"assumptionId": support_assumption}
+                for arm in ("baseline", "comparison"):
+                    arm_bounds = require_object(bounds[arm], f"{bounds_label}.{arm}")
+                    require_exact_keys(arm_bounds, {"low", "high"}, f"{bounds_label}.{arm}")
+                    low = require_finite_number(arm_bounds["low"], f"{bounds_label}.{arm}.low")
+                    high = require_finite_number(arm_bounds["high"], f"{bounds_label}.{arm}.high")
+                    if low > high or not math.isfinite(high - low):
+                        raise SimulationError(f"{bounds_label}.{arm} must have ordered, finite-width support")
+                    normalized_bounds[arm] = {"low": low, "high": high}
+                left, right = normalized_bounds["baseline"], normalized_bounds["comparison"]
+                contrast_low = right["low"] - left["high"]
+                contrast_high = right["high"] - left["low"]
+                if not all(math.isfinite(number) for number in (
+                    contrast_low, contrast_high, contrast_high - contrast_low,
+                )):
+                    raise SimulationError(f"{bounds_label} must give finite-width contrast support")
+                normalized_analysis["outcomeBounds"] = normalized_bounds
+            elif "outcomeBounds" in raw_analysis:
+                raise SimulationError(f"{label}.analysis.outcomeBounds requires bounded-hoeffding-bonferroni")
         threshold = require_object(hypothesis["practicalThreshold"], f"{label}.practicalThreshold")
         require_exact_keys(threshold, {"value", "unit", "operator"}, f"{label}.practicalThreshold")
         operator = require_text(threshold["operator"], f"{label}.practicalThreshold.operator")

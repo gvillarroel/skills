@@ -71,6 +71,9 @@ class AnalyzerTests(unittest.TestCase):
     def template_spec(self) -> dict[str, Any]:
         spec = json.loads(TEMPLATE_SPEC.read_text("utf-8"))
         spec["replications"] = 6
+        # Keep the normal-method regression cohort separate from the bounded template.
+        spec["hypotheses"][0]["analysis"]["intervalMethod"] = "normal-approximation-bonferroni"
+        spec["hypotheses"][0]["analysis"].pop("outcomeBounds", None)
         return spec
 
     def test_paired_analysis_reports_every_design_point_and_complete_pairs(self) -> None:
@@ -99,7 +102,7 @@ class AnalyzerTests(unittest.TestCase):
             report = self.analyze_and_validate(root)
             for point in report["results"][0]["designPointResults"]:
                 self.assertIsNone(point["sample"]["completePairs"])
-                self.assertEqual(point["interval"]["method"], "normal-wald-unpaired-bonferroni-v2")
+                self.assertEqual(point["interval"]["method"], "normal-wald-unpaired-bonferroni-v3")
 
     def test_deterministic_analysis_has_no_interval_and_zero_mcse(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

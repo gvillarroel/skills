@@ -150,10 +150,13 @@ seeds or an independent confirmation design after choosing a candidate from
 exploratory results; document the selected candidate and frozen rule first.
 
 Freeze the family of comparisons as well as the run count. For searching any
-contradiction over a hypothesis's design points, prefer
-`intervalMethod=normal-approximation-bonferroni`: `intervalLevel` is the nominal
-simultaneous level across that hypothesis's primary and challenge points.
-Correction does not make inadequate marginal normal approximations valid.
+contradiction over a hypothesis's design points, use an appropriate simultaneous
+method: `intervalLevel` covers that hypothesis's primary and challenge points.
+For a priori finite support, use the template's `bounded-hoeffding-bonferroni`
+route and read [bounded-mean-inference.md](bounded-mean-inference.md). Otherwise,
+`normal-approximation-bonferroni` requires a justified marginal normal
+approximation; correction alone does not supply one. Choose the method from the
+mechanism and estimand, not from whichever interval yields a preferred decision.
 Across multiple hypotheses or outcomes, declare a larger family and use an
 appropriate external analyzer if a study-wide error guarantee is needed.
 

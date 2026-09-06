@@ -166,13 +166,17 @@ workload in memory.
 python <skill-directory>/scripts/analyze_simulation_hypotheses.py --root <bundle>
 ```
 
-The current `mean-difference-v2` analyzer supports model-conditional mean
-differences, exact deterministic contrasts, and non-identifiability. For a
-stochastic search across design points, use the template's Bonferroni normal
-intervals; plain normal intervals remain explicitly pointwise. Fewer than 30
-replications or zero observed contrast variance prevent an automated normal
-decision. These guards do not establish normal coverage. Read the result
-contract for rare events, other estimands, and legacy v1 replay.
+The current `mean-difference-v3` analyzer supports model-conditional mean
+differences, exact deterministic contrasts, and non-identifiability. Choose the
+interval method before seeing outcomes. For known finite support, read
+[references/bounded-mean-inference.md](references/bounded-mean-inference.md);
+the template uses its conservative Hoeffding-Bonferroni method. Never infer
+support bounds from sample extrema. Normal intervals remain available when
+their approximation is justified; fewer than 30 replications or zero observed
+contrast variance prevent an automated normal decision, but passing those
+guards does not establish coverage. Keep authoritative numbers at full
+round-trip precision and round only presentation. Read the result contract for
+unsupported estimands and immutable legacy replay.
 
 ## Validate and deliver
 

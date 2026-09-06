@@ -57,6 +57,7 @@ class ValidatorTests(unittest.TestCase):
             analysis["pairing"] = "deterministic"
             analysis["intervalMethod"] = "none"
             analysis["intervalLevel"] = None
+            analysis.pop("outcomeBounds", None)
             spec["hypotheses"][0]["practicalThreshold"]["value"] = 0.0
         else:
             spec["replications"] = 12

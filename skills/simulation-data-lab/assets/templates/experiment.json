@@ -102,7 +102,8 @@
       "claimScope": "conditional-real-world",
       "assumptionIds": [
         "a1-demand-shape",
-        "a2-single-period"
+        "a2-single-period",
+        "a3-fill-rate-support"
       ],
       "externalValidationRequired": true,
       "outcome": "fill_rate",
@@ -123,28 +124,38 @@
           "low-demand"
         ],
         "pairing": "paired",
-        "intervalMethod": "normal-approximation-bonferroni",
+        "intervalMethod": "bounded-hoeffding-bonferroni",
         "intervalLevel": 0.95,
-        "aggregationRule": "all-design-points"
+        "aggregationRule": "all-design-points",
+        "outcomeBounds": {
+          "baseline": {"low": 0, "high": 1},
+          "comparison": {"low": 0, "high": 1},
+          "assumptionId": "a3-fill-rate-support"
+        }
       },
       "practicalThreshold": {
         "value": 0.05,
         "unit": "1",
         "operator": "ge"
       },
-      "decisionRule": "Use Bonferroni normal intervals with nominal 95% simultaneous coverage over this hypothesis's design points. Subject to inference guards, support if every lower endpoint is at least 0.05; challenge if any upper endpoint is below 0.05; otherwise report inconclusive.",
+      "decisionRule": "Use Hoeffding-Bonferroni intervals with at least 95% simultaneous coverage over this hypothesis's design points, conditional on independent replication pairs and valid a priori arm bounds. Support if every lower endpoint is at least 0.05; challenge if any upper endpoint is below 0.05; otherwise report inconclusive. The small demonstration budget may be insufficient for a decision.",
       "falsificationRule": "Use the low-demand challenge point to test whether added stock no longer clears the 0.05 improvement threshold."
     }
   ],
   "assumptions": [
     {
       "assumptionId": "a1-demand-shape",
-      "statement": "Period demand is adequately represented by a non-negative Gaussian draw at each declared design point.",
+      "statement": "Period demand is represented by max(0, Gaussian(mean, sd)), a clipped draw with a point mass at zero, independently across replications at each design point.",
       "sourceType": "assumed"
     },
     {
       "assumptionId": "a2-single-period",
       "statement": "Unmet demand is lost and stock does not carry between periods.",
+      "sourceType": "assumed"
+    },
+    {
+      "assumptionId": "a3-fill-rate-support",
+      "statement": "For nonnegative stock and demand, fulfilled demand is between zero and demand; define fill rate as one for zero demand. Both policies therefore have fill rate in [0, 1] for every possible draw, not just for observed draws.",
       "sourceType": "assumed"
     }
   ],
@@ -159,8 +170,8 @@
         "enforcementScope": "workflow-contract-not-a-security-sandbox"
       },
       "uncertaintyContract": {
-        "systemVariability": "Independent nonnegative Gaussian demand draws conditional on each design point; an illustrative assumption, not a universal demand model.",
-        "simulationError": "Finite-replication uncertainty for the declared paired mean contrast, subject to analyzer guards.",
+        "systemVariability": "Independent max(0, Gaussian(mean, sd)) demand draws conditional on each design point; an illustrative clipped-demand assumption, not a universal demand model.",
+        "simulationError": "Conservative finite-sample uncertainty for the paired mean contrast under fixed-count independent pairs and a priori arm support; the empirical MCSE is separate from the Hoeffding interval width.",
         "parameterUncertainty": "Separate explicit demand design points; no probability weights are inferred from this grid.",
         "structuralUncertainty": "Demand shape, temporal dependence, and carry-over mechanisms remain assumptions to challenge in an adapted study.",
         "predictiveScope": "Replication-level demand fulfillment, not a measured production forecast. Add a separate validated analysis for predictive quantiles or tail risk when requested."

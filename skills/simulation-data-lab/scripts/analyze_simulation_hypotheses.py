@@ -4,7 +4,7 @@
 # dependencies = []
 # ///
 
-"""Calculate preregistered v2 scenario contrasts from a schema-v1 bundle."""
+"""Calculate preregistered v3 scenario contrasts from a schema-v1 bundle."""
 
 from __future__ import annotations
 
@@ -33,7 +33,7 @@ from run_simulation_experiment import (
 )
 
 
-ANALYZER_ID = "mean-difference-v2"
+ANALYZER_ID = "mean-difference-v3"
 MIN_NORMAL_REPLICATIONS = 30
 RESULT_STATUSES = {
     "supports-under-model",
@@ -46,8 +46,8 @@ RESULT_STATUSES = {
 def canonical_number(value: float) -> float:
     if not math.isfinite(value):
         raise SimulationError("hypothesis calculation produced a non-finite number")
-    result = float(format(value, ".15g"))
-    return 0.0 if result == 0.0 else result
+    # JSON round-trips binary64 values. Display rounding must not change a decision.
+    return 0.0 if value == 0.0 else value
 
 
 def sample_variance(values: list[float], mean: float) -> float:
@@ -92,7 +92,18 @@ def result_limitations(spec: dict[str, Any], hypothesis: dict[str, Any]) -> list
     limitations.append("The conclusion is conditional on the implemented model and analyzed design range.")
     analysis = hypothesis["analysis"]
     if spec["uncertaintyMode"] == "stochastic" and analysis["kind"] == "scenario-contrast":
-        if analysis["intervalMethod"] == "normal-approximation-bonferroni":
+        if analysis["intervalMethod"] == "bounded-hoeffding-bonferroni":
+            limitations.append(
+                "Hoeffding-Bonferroni intervals cover this hypothesis's declared design-point "
+                "family conditional on fixed sample sizes, independent replications, and "
+                "valid a priori outcome bounds; observed extrema do not establish those bounds."
+            )
+            limitations.append(
+                "The distribution-free intervals may be conservative. Empirical MCSE is "
+                "descriptive and does not determine their width; no sequential, clustered, "
+                "or across-hypothesis coverage is claimed."
+            )
+        elif analysis["intervalMethod"] == "normal-approximation-bonferroni":
             limitations.append(
                 "Bonferroni controls the declared family of design-point intervals within "
                 "this hypothesis only, conditional on adequate marginal normal approximations."
@@ -102,11 +113,12 @@ def result_limitations(spec: dict[str, Any], hypothesis: dict[str, Any]) -> list
                 "Intervals are pointwise; the declared level does not give simultaneous "
                 "coverage across design points or hypotheses."
             )
-        limitations.append(
-            "At least 30 replications and nonzero observed contrast variance are required "
-            "for automated normal-Wald decisions; these guards do not establish adequate "
-            "coverage for skewed, rare-event, clustered, or adaptively stopped samples."
-        )
+        if analysis["intervalMethod"] != "bounded-hoeffding-bonferroni":
+            limitations.append(
+                "At least 30 replications and nonzero observed contrast variance are required "
+                "for automated normal-Wald decisions; these guards do not establish adequate "
+                "coverage for skewed, rare-event, clustered, or adaptively stopped samples."
+            )
     if hypothesis["externalValidationRequired"]:
         limitations.append("External empirical validation is required before applying the result to reality.")
     return sorted(set(limitations))
@@ -122,6 +134,39 @@ def outcome_index(
     for rows in groups.values():
         rows.sort(key=lambda item: item["run_id"])
     return groups
+
+
+def bounded_interval(
+    analysis: dict[str, Any], baseline: list[float], comparison: list[float], estimate: float,
+) -> dict[str, Any]:
+    """Invert the two-sided Hoeffding inequality, then intersect known support."""
+    support = analysis["outcomeBounds"]
+    widths = []
+    for arm, values in (("baseline", baseline), ("comparison", comparison)):
+        low, high = support[arm]["low"], support[arm]["high"]
+        if any(not low <= value <= high for value in values):
+            raise SimulationError(f"{arm} outcome violates declared a priori bounds")
+        widths.append(high - low)
+    family_size = len(analysis["primaryDesignPointIds"]) + len(analysis["challengeDesignPointIds"])
+    level = 1 - (1 - analysis["intervalLevel"]) / family_size
+    if not 0 < level < 1:
+        raise SimulationError("adjusted interval level is outside the representable open unit interval")
+    log_tail = math.log(2) + math.log(family_size) - math.log1p(-analysis["intervalLevel"])
+    if analysis["pairing"] == "paired":
+        scale = math.fsum(widths) / math.sqrt(len(baseline))
+        method = "hoeffding-paired-bonferroni-v3"
+    else:
+        scale = math.hypot(widths[0] / math.sqrt(len(baseline)), widths[1] / math.sqrt(len(comparison)))
+        method = "hoeffding-unpaired-bonferroni-v3"
+    radius = canonical_number(scale * math.sqrt(log_tail / 2))
+    support_low = canonical_number(support["comparison"]["low"] - support["baseline"]["high"])
+    support_high = canonical_number(support["comparison"]["high"] - support["baseline"]["low"])
+    return {
+        "level": level,
+        "low": canonical_number(max(support_low, estimate - radius)),
+        "high": canonical_number(min(support_high, estimate + radius)),
+        "method": method,
+    }
 
 
 def analyze_point(
@@ -166,7 +211,7 @@ def analyze_point(
         complete_pairs = len(differences)
         estimate_raw = math.fsum(differences) / complete_pairs
         mcse_raw = math.sqrt(sample_variance(differences, estimate_raw) / complete_pairs)
-        interval_method = "normal-wald-paired-v2"
+        interval_method = "normal-wald-paired-v3"
     elif pairing == "independent":
         baseline_mean = math.fsum(baseline_values) / len(baseline_values)
         comparison_mean = math.fsum(comparison_values) / len(comparison_values)
@@ -177,7 +222,7 @@ def analyze_point(
             baseline_variance / len(baseline_values)
             + comparison_variance / len(comparison_values)
         )
-        interval_method = "normal-wald-unpaired-v2"
+        interval_method = "normal-wald-unpaired-v3"
     else:
         estimate_raw = comparison_values[0] - baseline_values[0]
         mcse_raw = 0.0
@@ -186,14 +231,17 @@ def analyze_point(
     estimate = canonical_number(estimate_raw)
     mcse = canonical_number(mcse_raw)
     interval: dict[str, Any] | None
-    if spec["uncertaintyMode"] == "stochastic":
+    is_bounded = analysis["intervalMethod"] == "bounded-hoeffding-bonferroni"
+    if is_bounded:
+        interval = bounded_interval(analysis, baseline_values, comparison_values, estimate_raw)
+    elif spec["uncertaintyMode"] == "stochastic":
         level = analysis["intervalLevel"]
         if analysis["intervalMethod"] == "normal-approximation-bonferroni":
             family_size = len(analysis["primaryDesignPointIds"]) + len(
                 analysis["challengeDesignPointIds"]
             )
             level = 1 - (1 - level) / family_size
-            interval_method = interval_method.replace("-v2", "-bonferroni-v2")
+            interval_method = interval_method.replace("-v3", "-bonferroni-v3")
         quantile_probability = 0.5 + level / 2
         if not 0 < quantile_probability < 1:
             raise SimulationError("interval level is too close to one for stable normal quantiles")
@@ -208,7 +256,7 @@ def analyze_point(
         interval = None
 
     diagnostics = []
-    if spec["uncertaintyMode"] == "stochastic":
+    if spec["uncertaintyMode"] == "stochastic" and not is_bounded:
         if planned < MIN_NORMAL_REPLICATIONS:
             diagnostics.append("insufficient-replications-for-normal-decision")
         if mcse_raw == 0:

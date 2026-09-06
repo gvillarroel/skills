@@ -65,13 +65,20 @@ or tail-aware method. It records an empirical zero MCSE but marks stochastic
 zero-variance decisions inconclusive, including constant paired differences.
 A constant sample alone does not prove a constant population contrast.
 
-The v2 normal analyzer also leaves samples below 30 replications inconclusive.
+The v2/v3 normal analyzer also leaves samples below 30 replications inconclusive.
 This is a conservative automation rule, not a theorem that 30 observations
 ensure valid coverage. Inspect skew, tails, effective sample size, and event
 counts. An exact contrast oracle can be evaluated in a separate deterministic
 adapter without relabeling a stochastic model as deterministic.
 
-The template uses Bonferroni intervals because looking for any reversal across
+The template uses bounded Hoeffding-Bonferroni intervals; read
+[bounded-mean-inference.md](bounded-mean-inference.md) before adapting its support
+assumptions. This provides a conservative finite-sample alternative for bounded
+means, including skewed or rare-shock outcomes, rather than relying on sample
+size and nonzero variance as evidence of normal adequacy. Normal-Wald remains
+an opt-in approximation, not an automatic fallback when bounds are unavailable.
+
+The simultaneous methods use Bonferroni because looking for any reversal across
 many points is a multiple-comparison claim. For `m` declared points and family
 level `1-alpha`, each interval uses `1-alpha/m`. Dependence between points does
 not invalidate the union bound, but invalid marginal intervals do. Pointwise

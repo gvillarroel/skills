@@ -553,10 +553,10 @@ def validate_file_records(root: Path, manifest: dict[str, Any]) -> dict[str, int
     return row_counts
 
 
-def audit_number(value: float) -> float:
+def audit_number(value: float, analyzer: str = "mean-difference-v2") -> float:
     if not math.isfinite(value):
         raise SimulationError("hypothesis recomputation produced a non-finite number")
-    result = float(format(value, ".15g"))
+    result = value if analyzer == "mean-difference-v3" else float(format(value, ".15g"))
     return 0.0 if result == 0.0 else result
 
 
@@ -602,11 +602,22 @@ def audit_limitations(
     values.append("The conclusion is conditional on the implemented model and analyzed design range.")
     analysis = hypothesis["analysis"]
     if (
-        analyzer == "mean-difference-v2"
+        analyzer in {"mean-difference-v2", "mean-difference-v3"}
         and spec["uncertaintyMode"] == "stochastic"
         and analysis["kind"] == "scenario-contrast"
     ):
-        if analysis["intervalMethod"] == "normal-approximation-bonferroni":
+        if analysis["intervalMethod"] == "bounded-hoeffding-bonferroni":
+            values.append(
+                "Hoeffding-Bonferroni intervals cover this hypothesis's declared design-point "
+                "family conditional on fixed sample sizes, independent replications, and "
+                "valid a priori outcome bounds; observed extrema do not establish those bounds."
+            )
+            values.append(
+                "The distribution-free intervals may be conservative. Empirical MCSE is "
+                "descriptive and does not determine their width; no sequential, clustered, "
+                "or across-hypothesis coverage is claimed."
+            )
+        elif analysis["intervalMethod"] == "normal-approximation-bonferroni":
             values.append(
                 "Bonferroni controls the declared family of design-point intervals within "
                 "this hypothesis only, conditional on adequate marginal normal approximations."
@@ -616,11 +627,12 @@ def audit_limitations(
                 "Intervals are pointwise; the declared level does not give simultaneous "
                 "coverage across design points or hypotheses."
             )
-        values.append(
-            "At least 30 replications and nonzero observed contrast variance are required "
-            "for automated normal-Wald decisions; these guards do not establish adequate "
-            "coverage for skewed, rare-event, clustered, or adaptively stopped samples."
-        )
+        if analysis["intervalMethod"] != "bounded-hoeffding-bonferroni":
+            values.append(
+                "At least 30 replications and nonzero observed contrast variance are required "
+                "for automated normal-Wald decisions; these guards do not establish adequate "
+                "coverage for skewed, rare-event, clustered, or adaptively stopped samples."
+            )
     if hypothesis["externalValidationRequired"]:
         values.append("External empirical validation is required before applying the result to reality.")
     return sorted(set(values))
@@ -633,12 +645,48 @@ def audit_decision_text(status: str, hypothesis_id: str, analyzer: str) -> str:
         "inconclusive-under-model": "No design point contradicts the threshold, but at least one interval crosses it.",
         "not-identifiable-from-design": "The declared design cannot identify the requested contrast.",
     }
-    if analyzer == "mean-difference-v2":
+    if analyzer in {"mean-difference-v2", "mean-difference-v3"}:
         messages["inconclusive-under-model"] = (
             "No eligible design point contradicts the threshold, but at least one interval "
             "crosses it or an inference guard prevents a decision."
         )
     return f"{hypothesis_id}: {messages[status]}"
+
+
+def audit_bounded_interval(
+    analysis: dict[str, Any], baseline: list[float], comparison: list[float], center: float,
+) -> dict[str, Any]:
+    """Recompute bounded inference from raw observations, not the reported MCSE."""
+    bounds = analysis["outcomeBounds"]
+    widths: dict[str, float] = {}
+    for name, sample in (("baseline", baseline), ("comparison", comparison)):
+        lower, upper = bounds[name]["low"], bounds[name]["high"]
+        if min(sample) < lower or max(sample) > upper:
+            raise SimulationError("observations violate the preregistered support bounds")
+        widths[name] = upper - lower
+    count = len(analysis["primaryDesignPointIds"]) + len(analysis["challengeDesignPointIds"])
+    marginal = 1 - (1 - analysis["intervalLevel"]) / count
+    if not 0 < marginal < 1:
+        raise SimulationError("adjusted bounded interval level is not representable")
+    logarithm = math.log(2) + math.log(count) - math.log1p(-analysis["intervalLevel"])
+    if analysis["pairing"] == "paired":
+        spread = math.fsum([widths["baseline"], widths["comparison"]]) / math.sqrt(len(baseline))
+        mode = "paired"
+    else:
+        spread = math.hypot(
+            widths["baseline"] / math.sqrt(len(baseline)),
+            widths["comparison"] / math.sqrt(len(comparison)),
+        )
+        mode = "unpaired"
+    half_width = audit_number(spread * math.sqrt(logarithm / 2), "mean-difference-v3")
+    floor = audit_number(bounds["comparison"]["low"] - bounds["baseline"]["high"], "mean-difference-v3")
+    ceiling = audit_number(bounds["comparison"]["high"] - bounds["baseline"]["low"], "mean-difference-v3")
+    return {
+        "level": marginal,
+        "low": audit_number(max(floor, center - half_width), "mean-difference-v3"),
+        "high": audit_number(min(ceiling, center + half_width), "mean-difference-v3"),
+        "method": f"hoeffding-{mode}-bonferroni-v3",
+    }
 
 
 def audit_point_result(
@@ -704,25 +752,29 @@ def audit_point_result(
         estimate_raw = comparison_values[0] - baseline_values[0]
         mcse_raw = 0.0
         interval_method = "none"
-    estimate = audit_number(estimate_raw)
-    mcse = audit_number(mcse_raw)
-    if spec["uncertaintyMode"] == "stochastic":
+    estimate = audit_number(estimate_raw, analyzer)
+    mcse = audit_number(mcse_raw, analyzer)
+    is_bounded = analysis["intervalMethod"] == "bounded-hoeffding-bonferroni"
+    if is_bounded:
+        interval = audit_bounded_interval(analysis, baseline_values, comparison_values, estimate_raw)
+    elif spec["uncertaintyMode"] == "stochastic":
         level = analysis["intervalLevel"]
-        if analyzer == "mean-difference-v2":
-            interval_method = interval_method.replace("-v1", "-v2")
+        if analyzer in {"mean-difference-v2", "mean-difference-v3"}:
+            suffix = analyzer.rsplit("-", 1)[1]
+            interval_method = interval_method.replace("-v1", f"-{suffix}")
             if analysis["intervalMethod"] == "normal-approximation-bonferroni":
                 comparisons = len(analysis["primaryDesignPointIds"]) + len(
                     analysis["challengeDesignPointIds"]
                 )
                 level = 1.0 - (1.0 - level) / comparisons
-                interval_method = interval_method.replace("-v2", "-bonferroni-v2")
+                interval_method = interval_method.replace(f"-{suffix}", f"-bonferroni-{suffix}")
         if not 0 < 0.5 + level / 2 < 1:
             raise SimulationError("normal quantile is outside the representable open unit interval")
         quantile = statistics.NormalDist().inv_cdf(0.5 + level / 2)
         interval: dict[str, Any] | None = {
             "level": level,
-            "low": audit_number(estimate_raw - quantile * mcse_raw),
-            "high": audit_number(estimate_raw + quantile * mcse_raw),
+            "low": audit_number(estimate_raw - quantile * mcse_raw, analyzer),
+            "high": audit_number(estimate_raw + quantile * mcse_raw, analyzer),
             "method": interval_method,
         }
     else:
@@ -742,9 +794,9 @@ def audit_point_result(
             "completePairs": complete_pairs,
         },
     }
-    if analyzer == "mean-difference-v2":
+    if analyzer in {"mean-difference-v2", "mean-difference-v3"}:
         diagnostics = []
-        if spec["uncertaintyMode"] == "stochastic":
+        if spec["uncertaintyMode"] == "stochastic" and not is_bounded:
             if planned < 30:
                 diagnostics.append("insufficient-replications-for-normal-decision")
             if mcse_raw == 0:
@@ -869,8 +921,13 @@ def validate_hypothesis_results(
     if report_schema_version != SCHEMA_VERSION or report["toolVersion"] != TOOL_VERSION:
         raise SimulationError("hypothesis results schema or tool version is unsupported")
     analyzer = require_text(report["analyzer"], "analysis/hypothesis-results.json.analyzer")
-    if analyzer not in {"mean-difference-v1", "mean-difference-v2"}:
+    if analyzer not in {"mean-difference-v1", "mean-difference-v2", "mean-difference-v3"}:
         raise SimulationError("hypothesis results analyzer is unsupported")
+    if analyzer != "mean-difference-v3" and any(
+        h["analysis"].get("intervalMethod") == "bounded-hoeffding-bonferroni"
+        for h in spec["hypotheses"]
+    ):
+        raise SimulationError("bounded inference requires mean-difference-v3")
     if report["analyzer"] == "mean-difference-v1" and any(
         h["analysis"].get("intervalMethod") == "normal-approximation-bonferroni"
         for h in spec["hypotheses"]

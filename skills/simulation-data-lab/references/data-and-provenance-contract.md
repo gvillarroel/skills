@@ -169,7 +169,8 @@ For a stochastic experiment, use `paired` with
 `normal-approximation-bonferroni` uses the declared `intervalLevel` as the nominal
 family coverage over all primary and challenge points in this hypothesis. Each
 exported interval records its adjusted marginal level
-`1-(1-intervalLevel)/number_of_points` and a `bonferroni-v2` method suffix.
+`1-(1-intervalLevel)/number_of_points` and a `bonferroni-v3` method suffix in new
+reports.
 `normal-approximation` retains pointwise intervals and explicitly states the
 absence of simultaneous coverage. Neither option controls error across separate
 hypotheses. Both assume adequate marginal normal approximations. For a
@@ -178,20 +179,32 @@ deterministic experiment, use exactly one replication, `independent-by-run`,
 result then has `mcse=0` and no interval; this does not remove structural or
 parameter uncertainty.
 
-The current analyzer ID is `mean-difference-v2`; the bundle envelope remains
-schema 1. Each point adds `inferenceDiagnostics`. Stochastic points with fewer
-than 30 replications or zero observed contrast variance are `inconclusive`, even
+The bounded template instead selects `bounded-hoeffding-bonferroni` with an
+explicit `analysis.outcomeBounds` contract and linked support assumption. Read
+[bounded-mean-inference.md](bounded-mean-inference.md) for its formulas, sampling
+requirements, precision planning, and limitations. It supports paired and
+independent mean differences without a normal approximation; empirical MCSE
+does not determine its interval width. Remove `outcomeBounds` when selecting
+another method, including a deterministic analysis.
+
+The current analyzer ID is `mean-difference-v3`; the bundle envelope remains
+schema 1. Each point has `inferenceDiagnostics`. Under a normal method,
+stochastic points with fewer than 30 replications or zero observed contrast
+variance are `inconclusive`, even
 when their descriptive interval falls wholly on one side of the threshold.
 Diagnostics do not invalidate the simulated measurements. Do not interpret a
 zero-width empirical interval as a population bound. Resolve it with an
 appropriate method or a separate exact oracle. The 30-replication rule is a
 conservative automation floor, not proof that the normal approximation is valid.
 
-The validator can replay immutable `mean-difference-v1` reports under their
-original pointwise arithmetic. This preserves historical evidence; replay does
-not upgrade its statistical coverage. Generate new analyses in fresh bundles
-and keep their analyzer identity. Never relabel an old report as v2 or edit its
-conclusions in place.
+V3 preserves full binary64 round-trip precision in estimates, MCSEs, and
+intervals. Threshold decisions use those values, never presentation rounding.
+The validator can replay immutable `mean-difference-v1` and `mean-difference-v2`
+reports under their original arithmetic, including their 15-significant-digit
+rounding. This preserves historical evidence; replay does not upgrade its
+statistical coverage or repair old boundary decisions. Generate new analyses in
+fresh bundles and keep their analyzer identity. Never relabel an old report or
+edit its conclusions in place. Bounded inference requires v3.
 
 When the requested contrast is absent, declare it instead of inventing a
 mechanism:

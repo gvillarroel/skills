@@ -1,0 +1,49 @@
+{
+  "review": "simulation-methodology-20260906",
+  "source_type": "simulated",
+  "execution": "exact finite-distribution enumeration; no target or inference calls",
+  "scope": "one point in a predeclared two-point family; a development counterexample, not empirical calibration",
+  "outcome_interpretation": "a hypothetical bounded loss in unit 1; template names are test plumbing, not inventory evidence",
+  "distribution": [
+    {
+      "value": 0,
+      "probability": 0.495
+    },
+    {
+      "value": 0.001,
+      "probability": 0.495
+    },
+    {
+      "value": 1,
+      "probability": 0.01
+    }
+  ],
+  "baseline": 0,
+  "true_mean_contrast": 0.010495,
+  "threshold": 0.005,
+  "replications": 32,
+  "family_size": 2,
+  "family_level": 0.95,
+  "marginal_level": 0.975,
+  "count_vectors": 561,
+  "independent_recomputations": 1122,
+  "results": {
+    "normal": {
+      "mean_interval_coverage": 0.2750069807149205,
+      "erroneous_challenge_probability": 0.7249803356202582,
+      "inconclusive_probability": 0.27500358779062434
+    },
+    "bounded": {
+      "mean_interval_coverage": 0.9999999999772121,
+      "erroneous_challenge_probability": 0.0,
+      "inconclusive_probability": 0.9999999999772121
+    }
+  },
+  "code_sha256": {
+    "audit": "c35ca80bcd8e57f72977ebb1ef3fc0aa86496099cd1b7a32bfc498730385bd50",
+    "analyze_simulation_hypotheses.py": "980a75f8f611651bfe096d897e3aaa2a29a0cb25c7318d8800b03dd877445513",
+    "validate_simulation_bundle.py": "27a1e7994c5c23048c7b279883d1c28c83b71383864eb039f3e9ab661028492d",
+    "run_simulation_experiment.py": "6b0afb40816232fb309bf9256beb8f35b60fb361bc631ad4590d1a13ec49db63"
+  },
+  "template_sha256": "5c54c6d6909c498e7e131c64e15eb553509367319c734d75863ed286bf89be89"
+}
