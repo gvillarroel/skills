@@ -1,0 +1,268 @@
+{
+  "id": "five-regional-histories",
+  "title": "FIVE REGIONS THROUGH TIME",
+  "mode": "timeline",
+  "width": 1800,
+  "height": 2400,
+  "groups": [
+    {
+      "id": "g0",
+      "label": "Riverlands",
+      "color": "#F18C79"
+    },
+    {
+      "id": "g1",
+      "label": "Highlands",
+      "color": "#77BEDB"
+    },
+    {
+      "id": "g2",
+      "label": "Coastlands",
+      "color": "#F4C948"
+    },
+    {
+      "id": "g3",
+      "label": "Islands",
+      "color": "#A6C49B"
+    },
+    {
+      "id": "g4",
+      "label": "Northlands",
+      "color": "#BE9CCB"
+    }
+  ],
+  "source_note": "Synthetic study by Codex, 2026. All names, institutions, relationships, and dates are invented.",
+  "pattern_id": "usefulcharts-parallel-history",
+  "subtitle": "Comparing the same 1,000 years across five fictional regions",
+  "frame_color": "#575444",
+  "time": {
+    "start": 1000,
+    "end": 2000,
+    "step": 100
+  },
+  "lanes": [
+    {
+      "id": "l0",
+      "label": "Riverlands"
+    },
+    {
+      "id": "l1",
+      "label": "Highlands"
+    },
+    {
+      "id": "l2",
+      "label": "Coastlands"
+    },
+    {
+      "id": "l3",
+      "label": "Islands"
+    },
+    {
+      "id": "l4",
+      "label": "Northlands"
+    }
+  ],
+  "periods": [
+    {
+      "id": "era-0-0",
+      "label": "River Settlements",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1000,
+      "end": 1180
+    },
+    {
+      "id": "era-0-1",
+      "label": "Canal League",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1180,
+      "end": 1390
+    },
+    {
+      "id": "era-0-2",
+      "label": "Delta Cities",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1390,
+      "end": 1580
+    },
+    {
+      "id": "era-0-3",
+      "label": "Valley Union",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1580,
+      "end": 1780
+    },
+    {
+      "id": "era-0-4",
+      "label": "River Republic",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1780,
+      "end": 2000
+    },
+    {
+      "id": "era-1-0",
+      "label": "Hill Communities",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1000,
+      "end": 1230
+    },
+    {
+      "id": "era-1-1",
+      "label": "Mountain Houses",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1230,
+      "end": 1420
+    },
+    {
+      "id": "era-1-2",
+      "label": "Highland Council",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1420,
+      "end": 1660
+    },
+    {
+      "id": "era-1-3",
+      "label": "Ridge Federation",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1660,
+      "end": 1840
+    },
+    {
+      "id": "era-1-4",
+      "label": "Plateau Assembly",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1840,
+      "end": 2000
+    },
+    {
+      "id": "era-2-0",
+      "label": "Coastal Harbors",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1000,
+      "end": 1160
+    },
+    {
+      "id": "era-2-1",
+      "label": "Maritime League",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1160,
+      "end": 1380
+    },
+    {
+      "id": "era-2-2",
+      "label": "Port Cities",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1380,
+      "end": 1620
+    },
+    {
+      "id": "era-2-3",
+      "label": "Coastal Union",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1620,
+      "end": 1810
+    },
+    {
+      "id": "era-2-4",
+      "label": "Harbor Republic",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1810,
+      "end": 2000
+    },
+    {
+      "id": "era-3-0",
+      "label": "Island Villages",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1000,
+      "end": 1220
+    },
+    {
+      "id": "era-3-1",
+      "label": "Voyaging Houses",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1220,
+      "end": 1450
+    },
+    {
+      "id": "era-3-2",
+      "label": "Island Council",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1450,
+      "end": 1640
+    },
+    {
+      "id": "era-3-3",
+      "label": "Archipelago League",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1640,
+      "end": 1850
+    },
+    {
+      "id": "era-3-4",
+      "label": "Island Assembly",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1850,
+      "end": 2000
+    },
+    {
+      "id": "era-4-0",
+      "label": "Northern Camps",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1000,
+      "end": 1190
+    },
+    {
+      "id": "era-4-1",
+      "label": "Forest Towns",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1190,
+      "end": 1410
+    },
+    {
+      "id": "era-4-2",
+      "label": "Northern Council",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1410,
+      "end": 1670
+    },
+    {
+      "id": "era-4-3",
+      "label": "Lake Federation",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1670,
+      "end": 1830
+    },
+    {
+      "id": "era-4-4",
+      "label": "Northern Commons",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1830,
+      "end": 2000
+    }
+  ],
+  "reading_note": "All intervals use one linear year scale. Matching horizontal positions in time are contemporaneous. Adjacent phases do not imply descent or political continuity."
+}

@@ -1,0 +1,27 @@
+{
+  "id": "usefulcharts-style",
+  "data_provenance": "Original synthetic fixtures; no UsefulCharts artwork is redistributed.",
+  "items": [
+    {
+      "id": "aurelian-families",
+      "patternId": "usefulcharts-dynastic-genealogy",
+      "mode": "genealogy",
+      "svg": "aurelian-families.svg",
+      "source": "aurelian-families.json"
+    },
+    {
+      "id": "atlas-of-inquiry",
+      "patternId": "usefulcharts-branching-lineage",
+      "mode": "lineage",
+      "svg": "atlas-of-inquiry.svg",
+      "source": "atlas-of-inquiry.json"
+    },
+    {
+      "id": "five-regional-histories",
+      "patternId": "usefulcharts-parallel-history",
+      "mode": "timeline",
+      "svg": "five-regional-histories.svg",
+      "source": "five-regional-histories.json"
+    }
+  ]
+}

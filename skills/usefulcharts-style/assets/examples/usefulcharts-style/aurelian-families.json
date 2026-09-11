@@ -1,0 +1,1022 @@
+{
+  "id": "aurelian-families",
+  "title": "FAMILIES OF THE AURELIAN COAST",
+  "mode": "genealogy",
+  "width": 1800,
+  "height": 2400,
+  "groups": [
+    {
+      "id": "g0",
+      "label": "House Alder",
+      "color": "#F18C79"
+    },
+    {
+      "id": "g1",
+      "label": "House Bay",
+      "color": "#77BEDB"
+    },
+    {
+      "id": "g2",
+      "label": "House Cress",
+      "color": "#F4C948"
+    },
+    {
+      "id": "g3",
+      "label": "House Dell",
+      "color": "#A6C49B"
+    },
+    {
+      "id": "g4",
+      "label": "House Elm",
+      "color": "#BE9CCB"
+    }
+  ],
+  "source_note": "Synthetic study by Codex, 2026. All names, institutions, relationships, and dates are invented.",
+  "pattern_id": "usefulcharts-dynastic-genealogy",
+  "subtitle": "Five houses, seven generations, and their recorded partnerships",
+  "columns": 10,
+  "rows": [
+    "Generation 1",
+    "Generation 2",
+    "Generation 3",
+    "Generation 4",
+    "Generation 5",
+    "Generation 6",
+    "Generation 7"
+  ],
+  "nodes": [
+    {
+      "id": "p0-0",
+      "label": "Arden Alder",
+      "detail": "b. 1640",
+      "row": 0,
+      "col": 0,
+      "group": "g0",
+      "emphasis": true
+    },
+    {
+      "id": "p0-1",
+      "label": "Mira",
+      "detail": "b. 1643",
+      "row": 0,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p0-2",
+      "label": "Basil Bay",
+      "detail": "b. 1640",
+      "row": 0,
+      "col": 2,
+      "group": "g1",
+      "emphasis": true
+    },
+    {
+      "id": "p0-3",
+      "label": "Nora",
+      "detail": "b. 1643",
+      "row": 0,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p0-4",
+      "label": "Celia Cress",
+      "detail": "b. 1640",
+      "row": 0,
+      "col": 4,
+      "group": "g2",
+      "emphasis": true
+    },
+    {
+      "id": "p0-5",
+      "label": "Orin",
+      "detail": "b. 1643",
+      "row": 0,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p0-6",
+      "label": "Dorian Dell",
+      "detail": "b. 1640",
+      "row": 0,
+      "col": 6,
+      "group": "g3",
+      "emphasis": true
+    },
+    {
+      "id": "p0-7",
+      "label": "Pia",
+      "detail": "b. 1643",
+      "row": 0,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p0-8",
+      "label": "Elian Elm",
+      "detail": "b. 1640",
+      "row": 0,
+      "col": 8,
+      "group": "g4",
+      "emphasis": true
+    },
+    {
+      "id": "p0-9",
+      "label": "Rosa",
+      "detail": "b. 1643",
+      "row": 0,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p1-0",
+      "label": "Alaric Alder",
+      "detail": "b. 1668",
+      "row": 1,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p1-1",
+      "label": "Sera",
+      "detail": "b. 1671",
+      "row": 1,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p1-2",
+      "label": "Brina Bay",
+      "detail": "b. 1668",
+      "row": 1,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p1-3",
+      "label": "Tarin",
+      "detail": "b. 1671",
+      "row": 1,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p1-4",
+      "label": "Corin Cress",
+      "detail": "b. 1668",
+      "row": 1,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p1-5",
+      "label": "Una",
+      "detail": "b. 1671",
+      "row": 1,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p1-6",
+      "label": "Dalia Dell",
+      "detail": "b. 1668",
+      "row": 1,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p1-7",
+      "label": "Vero",
+      "detail": "b. 1671",
+      "row": 1,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p1-8",
+      "label": "Emil Elm",
+      "detail": "b. 1668",
+      "row": 1,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p1-9",
+      "label": "Willa",
+      "detail": "b. 1671",
+      "row": 1,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p2-0",
+      "label": "Aster Alder",
+      "detail": "b. 1696",
+      "row": 2,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p2-1",
+      "label": "Yara",
+      "detail": "b. 1699",
+      "row": 2,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p2-2",
+      "label": "Beren Bay",
+      "detail": "b. 1696",
+      "row": 2,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p2-3",
+      "label": "Zora",
+      "detail": "b. 1699",
+      "row": 2,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p2-4",
+      "label": "Calla Cress",
+      "detail": "b. 1696",
+      "row": 2,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p2-5",
+      "label": "Ivo",
+      "detail": "b. 1699",
+      "row": 2,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p2-6",
+      "label": "Dara Dell",
+      "detail": "b. 1696",
+      "row": 2,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p2-7",
+      "label": "Jorin",
+      "detail": "b. 1699",
+      "row": 2,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p2-8",
+      "label": "Eris Elm",
+      "detail": "b. 1696",
+      "row": 2,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p2-9",
+      "label": "Kira",
+      "detail": "b. 1699",
+      "row": 2,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p3-0",
+      "label": "Alden Alder",
+      "detail": "b. 1724",
+      "row": 3,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p3-1",
+      "label": "Liora",
+      "detail": "b. 1727",
+      "row": 3,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p3-2",
+      "label": "Briar Bay",
+      "detail": "b. 1724",
+      "row": 3,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p3-3",
+      "label": "Marek",
+      "detail": "b. 1727",
+      "row": 3,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p3-4",
+      "label": "Cora Cress",
+      "detail": "b. 1724",
+      "row": 3,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p3-5",
+      "label": "Neri",
+      "detail": "b. 1727",
+      "row": 3,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p3-6",
+      "label": "Davin Dell",
+      "detail": "b. 1724",
+      "row": 3,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p3-7",
+      "label": "Opal",
+      "detail": "b. 1727",
+      "row": 3,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p3-8",
+      "label": "Esme Elm",
+      "detail": "b. 1724",
+      "row": 3,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p3-9",
+      "label": "Perrin",
+      "detail": "b. 1727",
+      "row": 3,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p4-0",
+      "label": "Ansel Alder",
+      "detail": "b. 1752",
+      "row": 4,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p4-1",
+      "label": "Rhea",
+      "detail": "b. 1755",
+      "row": 4,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p4-2",
+      "label": "Bela Bay",
+      "detail": "b. 1752",
+      "row": 4,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p4-3",
+      "label": "Sorin",
+      "detail": "b. 1755",
+      "row": 4,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p4-4",
+      "label": "Carys Cress",
+      "detail": "b. 1752",
+      "row": 4,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p4-5",
+      "label": "Tessa",
+      "detail": "b. 1755",
+      "row": 4,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p4-6",
+      "label": "Demi Dell",
+      "detail": "b. 1752",
+      "row": 4,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p4-7",
+      "label": "Uria",
+      "detail": "b. 1755",
+      "row": 4,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p4-8",
+      "label": "Evan Elm",
+      "detail": "b. 1752",
+      "row": 4,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p4-9",
+      "label": "Veda",
+      "detail": "b. 1755",
+      "row": 4,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p5-0",
+      "label": "Ada Alder",
+      "detail": "b. 1780",
+      "row": 5,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p5-1",
+      "label": "Wren",
+      "detail": "b. 1783",
+      "row": 5,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p5-2",
+      "label": "Bram Bay",
+      "detail": "b. 1780",
+      "row": 5,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p5-3",
+      "label": "Xara",
+      "detail": "b. 1783",
+      "row": 5,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p5-4",
+      "label": "Ciro Cress",
+      "detail": "b. 1780",
+      "row": 5,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p5-5",
+      "label": "Ysol",
+      "detail": "b. 1783",
+      "row": 5,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p5-6",
+      "label": "Dena Dell",
+      "detail": "b. 1780",
+      "row": 5,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p5-7",
+      "label": "Zeph",
+      "detail": "b. 1783",
+      "row": 5,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p5-8",
+      "label": "Enid Elm",
+      "detail": "b. 1780",
+      "row": 5,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p5-9",
+      "label": "Isla",
+      "detail": "b. 1783",
+      "row": 5,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "p6-0",
+      "label": "Ari Alder",
+      "detail": "b. 1808",
+      "row": 6,
+      "col": 0,
+      "group": "g0",
+      "emphasis": true
+    },
+    {
+      "id": "p6-1",
+      "label": "Jessa",
+      "detail": "b. 1811",
+      "row": 6,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "p6-2",
+      "label": "Bryn Bay",
+      "detail": "b. 1808",
+      "row": 6,
+      "col": 2,
+      "group": "g1",
+      "emphasis": true
+    },
+    {
+      "id": "p6-3",
+      "label": "Kelan",
+      "detail": "b. 1811",
+      "row": 6,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "p6-4",
+      "label": "Cleo Cress",
+      "detail": "b. 1808",
+      "row": 6,
+      "col": 4,
+      "group": "g2",
+      "emphasis": true
+    },
+    {
+      "id": "p6-5",
+      "label": "Luca",
+      "detail": "b. 1811",
+      "row": 6,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "p6-6",
+      "label": "Dion Dell",
+      "detail": "b. 1808",
+      "row": 6,
+      "col": 6,
+      "group": "g3",
+      "emphasis": true
+    },
+    {
+      "id": "p6-7",
+      "label": "Mina",
+      "detail": "b. 1811",
+      "row": 6,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "p6-8",
+      "label": "Eira Elm",
+      "detail": "b. 1808",
+      "row": 6,
+      "col": 8,
+      "group": "g4",
+      "emphasis": true
+    },
+    {
+      "id": "p6-9",
+      "label": "Nico",
+      "detail": "b. 1811",
+      "row": 6,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    }
+  ],
+  "unions": [
+    {
+      "id": "u0-0",
+      "partners": [
+        "p0-0",
+        "p0-1"
+      ],
+      "children": [
+        "p1-0"
+      ]
+    },
+    {
+      "id": "u0-1",
+      "partners": [
+        "p0-2",
+        "p0-3"
+      ],
+      "children": [
+        "p1-2"
+      ]
+    },
+    {
+      "id": "u0-2",
+      "partners": [
+        "p0-4",
+        "p0-5"
+      ],
+      "children": [
+        "p1-4"
+      ]
+    },
+    {
+      "id": "u0-3",
+      "partners": [
+        "p0-6",
+        "p0-7"
+      ],
+      "children": [
+        "p1-6"
+      ]
+    },
+    {
+      "id": "u0-4",
+      "partners": [
+        "p0-8",
+        "p0-9"
+      ],
+      "children": [
+        "p1-8"
+      ]
+    },
+    {
+      "id": "u1-0",
+      "partners": [
+        "p1-0",
+        "p1-1"
+      ],
+      "children": [
+        "p2-0",
+        "p2-3"
+      ]
+    },
+    {
+      "id": "u1-1",
+      "partners": [
+        "p1-2",
+        "p1-3"
+      ],
+      "children": [
+        "p2-2"
+      ]
+    },
+    {
+      "id": "u1-2",
+      "partners": [
+        "p1-4",
+        "p1-5"
+      ],
+      "children": [
+        "p2-4"
+      ]
+    },
+    {
+      "id": "u1-3",
+      "partners": [
+        "p1-6",
+        "p1-7"
+      ],
+      "children": [
+        "p2-6"
+      ]
+    },
+    {
+      "id": "u1-4",
+      "partners": [
+        "p1-8",
+        "p1-9"
+      ],
+      "children": [
+        "p2-8"
+      ]
+    },
+    {
+      "id": "u2-0",
+      "partners": [
+        "p2-0",
+        "p2-1"
+      ],
+      "children": [
+        "p3-0"
+      ]
+    },
+    {
+      "id": "u2-1",
+      "partners": [
+        "p2-2",
+        "p2-3"
+      ],
+      "children": []
+    },
+    {
+      "id": "u2-2",
+      "partners": [
+        "p2-4",
+        "p2-5"
+      ],
+      "children": [
+        "p3-4"
+      ]
+    },
+    {
+      "id": "u2-3",
+      "partners": [
+        "p2-6",
+        "p2-7"
+      ],
+      "children": [
+        "p3-6",
+        "p3-9"
+      ]
+    },
+    {
+      "id": "u2-4",
+      "partners": [
+        "p2-8",
+        "p2-9"
+      ],
+      "children": [
+        "p3-8"
+      ]
+    },
+    {
+      "id": "u3-0",
+      "partners": [
+        "p3-0",
+        "p3-1"
+      ],
+      "children": [
+        "p4-0"
+      ]
+    },
+    {
+      "id": "u3-1",
+      "partners": [
+        "p3-2",
+        "p3-3"
+      ],
+      "children": [
+        "p4-2"
+      ]
+    },
+    {
+      "id": "u3-2",
+      "partners": [
+        "p3-4",
+        "p3-5"
+      ],
+      "children": [
+        "p4-4"
+      ]
+    },
+    {
+      "id": "u3-3",
+      "partners": [
+        "p3-6",
+        "p3-7"
+      ],
+      "children": [
+        "p4-6"
+      ]
+    },
+    {
+      "id": "u3-4",
+      "partners": [
+        "p3-8",
+        "p3-9"
+      ],
+      "children": [
+        "p4-8"
+      ]
+    },
+    {
+      "id": "u4-0",
+      "partners": [
+        "p4-0",
+        "p4-1"
+      ],
+      "children": [
+        "p5-0"
+      ]
+    },
+    {
+      "id": "u4-1",
+      "partners": [
+        "p4-2",
+        "p4-3"
+      ],
+      "children": [
+        "p5-2"
+      ]
+    },
+    {
+      "id": "u4-2",
+      "partners": [
+        "p4-4",
+        "p4-5"
+      ],
+      "children": [
+        "p5-4"
+      ]
+    },
+    {
+      "id": "u4-3",
+      "partners": [
+        "p4-6",
+        "p4-7"
+      ],
+      "children": [
+        "p5-6"
+      ]
+    },
+    {
+      "id": "u4-4",
+      "partners": [
+        "p4-8",
+        "p4-9"
+      ],
+      "children": [
+        "p5-8"
+      ]
+    },
+    {
+      "id": "u5-0",
+      "partners": [
+        "p5-0",
+        "p5-1"
+      ],
+      "children": [
+        "p6-0"
+      ]
+    },
+    {
+      "id": "u5-1",
+      "partners": [
+        "p5-2",
+        "p5-3"
+      ],
+      "children": [
+        "p6-2"
+      ]
+    },
+    {
+      "id": "u5-2",
+      "partners": [
+        "p5-4",
+        "p5-5"
+      ],
+      "children": [
+        "p6-4"
+      ]
+    },
+    {
+      "id": "u5-3",
+      "partners": [
+        "p5-6",
+        "p5-7"
+      ],
+      "children": [
+        "p6-6"
+      ]
+    },
+    {
+      "id": "u5-4",
+      "partners": [
+        "p5-8",
+        "p5-9"
+      ],
+      "children": [
+        "p6-8"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "uncertain-briar",
+      "source": "u2-1",
+      "target": "p3-2",
+      "kind": "uncertain"
+    }
+  ],
+  "reading_note": "Double lines join partners; children descend from the junction. Dashed descent is uncertain. Generations are schematic; unlinked spouses have no recorded ancestry here.",
+  "lanes": [
+    {
+      "label": "House Alder",
+      "group": "g0",
+      "col": 0,
+      "span": 2
+    },
+    {
+      "label": "House Bay",
+      "group": "g1",
+      "col": 2,
+      "span": 2
+    },
+    {
+      "label": "House Cress",
+      "group": "g2",
+      "col": 4,
+      "span": 2
+    },
+    {
+      "label": "House Dell",
+      "group": "g3",
+      "col": 6,
+      "span": 2
+    },
+    {
+      "label": "House Elm",
+      "group": "g4",
+      "col": 8,
+      "span": 2
+    }
+  ]
+}

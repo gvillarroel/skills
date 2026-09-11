@@ -1,0 +1,4 @@
+interface:
+  display_name: "UsefulCharts-style Posters"
+  short_description: "Editable genealogy, lineage, and timeline posters"
+  default_prompt: "Use $usefulcharts-style to turn my data into a polished educational poster with meaningful colors and carefully routed relationships."

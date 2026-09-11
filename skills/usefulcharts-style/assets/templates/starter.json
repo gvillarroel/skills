@@ -1,0 +1,42 @@
+{
+  "id": "harbor-workshops",
+  "title": "THE HARBOR WORKSHOPS",
+  "subtitle": "Three branches of a fictional craft tradition",
+  "mode": "lineage",
+  "width": 1200,
+  "height": 1500,
+  "columns": 5,
+  "rows": ["Founding", "First branches", "Independent schools", "New generation"],
+  "groups": [
+    {"id": "common", "label": "Shared origin", "color": "#CDC7B3"},
+    {"id": "glass", "label": "Glassmakers", "color": "#77BEDB"},
+    {"id": "wood", "label": "Woodworkers", "color": "#A6C49B"},
+    {"id": "metal", "label": "Metalworkers", "color": "#F4C948"}
+  ],
+  "nodes": [
+    {"id": "a", "label": "Harbor Guild", "detail": "Established 1800", "group": "common", "row": 0, "col": 2, "emphasis": true},
+    {"id": "b", "label": "Glass Hall", "detail": "1818", "group": "glass", "row": 1, "col": 0},
+    {"id": "c", "label": "Timber Hall", "detail": "1824", "group": "wood", "row": 1, "col": 2},
+    {"id": "d", "label": "Iron Hall", "detail": "1830", "group": "metal", "row": 1, "col": 4},
+    {"id": "e", "label": "Prism Studio", "detail": "1860", "group": "glass", "row": 2, "col": 0},
+    {"id": "f", "label": "Oak Studio", "detail": "1863", "group": "wood", "row": 2, "col": 2},
+    {"id": "g", "label": "Forge Studio", "detail": "1870", "group": "metal", "row": 2, "col": 4},
+    {"id": "h", "label": "Coastal Glass", "detail": "1900", "group": "glass", "row": 3, "col": 0},
+    {"id": "i", "label": "Timber Commons", "detail": "1905", "group": "wood", "row": 3, "col": 2},
+    {"id": "j", "label": "Open Forge", "detail": "1910", "group": "metal", "row": 3, "col": 4}
+  ],
+  "edges": [
+    {"id": "ab", "source": "a", "target": "b", "kind": "branch"},
+    {"id": "ac", "source": "a", "target": "c", "kind": "branch"},
+    {"id": "ad", "source": "a", "target": "d", "kind": "branch"},
+    {"id": "be", "source": "b", "target": "e", "kind": "branch"},
+    {"id": "cf", "source": "c", "target": "f", "kind": "branch"},
+    {"id": "dg", "source": "d", "target": "g", "kind": "branch"},
+    {"id": "eh", "source": "e", "target": "h", "kind": "branch"},
+    {"id": "fi", "source": "f", "target": "i", "kind": "branch"},
+    {"id": "gj", "source": "g", "target": "j", "kind": "branch"},
+    {"id": "fg", "source": "f", "target": "j", "kind": "influence"}
+  ],
+  "source_note": "Synthetic demonstration data; institutions and dates are invented.",
+  "reading_note": "Read top to bottom. Vertical spacing shows schematic stages, not elapsed time."
+}

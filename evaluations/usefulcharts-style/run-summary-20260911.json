@@ -1,0 +1,771 @@
+{
+  "date": "2026-09-11",
+  "skill": "usefulcharts-style",
+  "trials": [
+    {
+      "run_id": "usefulcharts-boundary-v3-20260911-spark-1",
+      "harness_passed": true,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 15.618,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "06ab3de5a1a53a40f6534254f1fb23cec7a2775105858a723b0520f076a2e55b"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "review/diagnostic.json",
+        "review/source.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md"
+      ],
+      "events_sha256": "714b2199a371b9e9398f5cc322278dfc814f6cd6bf8580e51109ebc487b8f551"
+    },
+    {
+      "run_id": "usefulcharts-contract-20260911-spark-1",
+      "harness_passed": true,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 15.466,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "28ad1cb4fe2af9f9dbe04085bbed82b3f64a542ef23e1e69314962ddfd16725a"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "deliverables/chart.html",
+        "deliverables/layout.json",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "events_sha256": "e5b9cb3cf5b57f8e1a4ee1e258fd3bc7a6e54389405ace5b4e628243b193642c"
+    },
+    {
+      "run_id": "usefulcharts-contract-dev-20260911-spark-1",
+      "harness_passed": true,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 17.283,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 9,
+        "payloadSha256": "b0e2db9b0db37045b9673e553d3e891b9ffd0ee9ac650ea6984ca77bdb42efd0"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "deliverables/layout.json",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "events_sha256": "a7629bc232b6f2c023d6e66cb55b5835b20a3515d2372c4b3771f92c69c6a3f7"
+    },
+    {
+      "run_id": "usefulcharts-contract-v3-20260911-spark-1",
+      "harness_passed": true,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 18.936,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "06ab3de5a1a53a40f6534254f1fb23cec7a2775105858a723b0520f076a2e55b"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "deliverables/chart.svg",
+        "deliverables/layout.json",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "events_sha256": "983cf0792732534eebcdebc05dd55b32827a6f09d73c917fb13cab9878ac6f3d"
+    },
+    {
+      "run_id": "usefulcharts-generalization-20260911-spark-1",
+      "harness_passed": true,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 35.429,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "28ad1cb4fe2af9f9dbe04085bbed82b3f64a542ef23e1e69314962ddfd16725a"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "museum/browser.json",
+        "museum/data.json",
+        "museum/layout.json",
+        "museum/timeline.svg",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "58aeeb5baf6375f6aad50ec2920a6a946c92bc7f54555ad60e9787baaa0ff77a"
+    },
+    {
+      "run_id": "usefulcharts-generalization-v3-20260911-spark-1",
+      "harness_passed": true,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 29.255,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "06ab3de5a1a53a40f6534254f1fb23cec7a2775105858a723b0520f076a2e55b"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "museum/browser.json",
+        "museum/layout.json",
+        "museum/timeline.svg",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "34bb03ff78f066a452cda421d6027facd6658637b8162de740b4624de3a71de7"
+    },
+    {
+      "run_id": "usefulcharts-generalization-v3-20260911-spark-2",
+      "harness_passed": false,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 54.805,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "06ab3de5a1a53a40f6534254f1fb23cec7a2775105858a723b0520f076a2e55b"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 2,
+      "tool_errors": [
+        "Chart could not be rendered: Expecting ',' delimiter: line 212 column 3 (char 4389)\r\n\n\nCommand exited with code 2",
+        "Could not find the exact text in museum/data.json. The old text must match exactly including all whitespace and newlines."
+      ],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "museum/browser.json",
+        "museum/data.json",
+        "museum/layout.json",
+        "museum/timeline.svg",
+        "museum/viewer.html",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "6c2e41961465fe5dcb5962f0b57c56ce3f1fcfca2669a72ce36a07ad69da7164"
+    },
+    {
+      "run_id": "usefulcharts-generalization-v3-20260911-spark-3",
+      "harness_passed": false,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 41.345,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "06ab3de5a1a53a40f6534254f1fb23cec7a2775105858a723b0520f076a2e55b"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 1,
+      "tool_errors": [
+        "Chart could not be rendered: Expecting ',' delimiter: line 42 column 3 (char 2961)\r\n\n\nCommand exited with code 2"
+      ],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "museum/browser.json",
+        "museum/data.json",
+        "museum/layout.json",
+        "museum/timeline.svg",
+        "museum/viewer.html",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "09a4c3f83c092ac5cc5771eaddcffd409deee474b8490751bad8e903d07ff15b"
+    },
+    {
+      "run_id": "usefulcharts-generalization-v4-20260911-spark-1",
+      "harness_passed": false,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 17.17,
+      "gates": {
+        "artifacts": false,
+        "events": true,
+        "jsonFields": false,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "9e01f4e1f4e772faa2c2bf1927cb9d82539060d4304f4a8cead1d5bc1e6eaeaa"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [
+        "Codex error: The usage limit has been reached"
+      ],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "museum/data.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "a23c71f98d87baca308a40f1d70aeb3fe159e244f4b8db28b835a37c5d9a7a60"
+    },
+    {
+      "run_id": "usefulcharts-generalization-v4-20260911-spark-2",
+      "harness_passed": false,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 17.297,
+      "gates": {
+        "artifacts": false,
+        "events": true,
+        "jsonFields": false,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "9e01f4e1f4e772faa2c2bf1927cb9d82539060d4304f4a8cead1d5bc1e6eaeaa"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [
+        "Codex error: The usage limit has been reached"
+      ],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "museum/data.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "610870629b5cdc8cfc06e7414449ce6871d40a01350d515d3096a6ecb941f208"
+    },
+    {
+      "run_id": "usefulcharts-generalization-v4-20260911-spark-3",
+      "harness_passed": false,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 15.252,
+      "gates": {
+        "artifacts": false,
+        "events": true,
+        "jsonFields": false,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "9e01f4e1f4e772faa2c2bf1927cb9d82539060d4304f4a8cead1d5bc1e6eaeaa"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [
+        "Codex error: The usage limit has been reached"
+      ],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md",
+        "skills/usefulcharts-style/scripts/audit_chart.py",
+        "skills/usefulcharts-style/scripts/render_chart.py"
+      ],
+      "events_sha256": "670022e6354e04f2031dbd806b79f651d358cb2c858e93af899274afa7062345"
+    },
+    {
+      "run_id": "usefulcharts-naturalistic-20260911-spark-1",
+      "harness_passed": false,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 60.82,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "28ad1cb4fe2af9f9dbe04085bbed82b3f64a542ef23e1e69314962ddfd16725a"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 5,
+      "tool_errors": [
+        "Chart could not be rendered: Word 'Developmental' cannot fit. Widen its node/page or add an explicit line break.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Word 'Spectrum' cannot fit. Widen its node/page or add an explicit line break.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Word 'Spectrum' cannot fit. Widen its node/page or add an explicit line break.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Word 'Spectrum' cannot fit. Widen its node/page or add an explicit line break.\r\n\n\nCommand exited with code 2",
+        "Offset 120 is beyond end of file (100 lines total)"
+      ],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "result/browser.json",
+        "result/layout.json",
+        "result/poster.svg",
+        "result/source.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "4db830997f4e6a88b0b4e4e57189987b369f30191eb2cc7bef5ff658e51f7180"
+    },
+    {
+      "run_id": "usefulcharts-naturalistic-v2-20260911-spark-1",
+      "harness_passed": false,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 69.604,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "04971100c088432923c658fb6fd12bed93d0bb4dde9aa184e6cd871e6adc02c7"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 4,
+      "tool_errors": [
+        "Chart could not be rendered: node_width must be >=70 and <=88% of a column pitch. Use fewer columns or a wider page.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Nodes joinery-studio and heat-studio overlap or lack an 8-unit gutter.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Word 'Joinery' cannot fit. Widen its node/page or add an explicit line break.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Word 'Spectrum' cannot fit. Widen its node/page or add an explicit line break.\r\n\n\nCommand exited with code 2"
+      ],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "result/browser.json",
+        "result/layout.json",
+        "result/poster.svg",
+        "result/source.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "9ac4ddf345d3b2167b8279e53da63edc5145f9fcea71a6f418fdd841a8f4fe5a"
+    },
+    {
+      "run_id": "usefulcharts-naturalistic-v2-20260911-spark-2",
+      "harness_passed": false,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 51.914,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "04971100c088432923c658fb6fd12bed93d0bb4dde9aa184e6cd871e6adc02c7"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 2,
+      "tool_errors": [
+        "Chart could not be rendered: Word 'Established' cannot fit. Widen its node/page or add an explicit line break.\r\n\n\nCommand exited with code 2",
+        "Traceback (most recent call last):\r\n  File \"<stdin>\", line 1, in <module>\r\nModuleNotFoundError: No module named 'PIL'\r\n\n\nCommand exited with code 1"
+      ],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "result/browser.json",
+        "result/layout.json",
+        "result/poster.html",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md"
+      ],
+      "events_sha256": "61248e732805b4783985b0258f9f69b3825cf6ba328053f5668608ac8d6d3c2d"
+    },
+    {
+      "run_id": "usefulcharts-naturalistic-v2-20260911-spark-3",
+      "harness_passed": false,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 61.266,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "04971100c088432923c658fb6fd12bed93d0bb4dde9aa184e6cd871e6adc02c7"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 3,
+      "tool_errors": [
+        "Chart could not be rendered: Invalid lowercase hyphen-case ID: 'quay_guild'\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Word 'Joinery' cannot fit. Widen its node/page or add an explicit line break.\r\n\n\nCommand exited with code 2",
+        "Traceback (most recent call last):\r\n  File \"<stdin>\", line 1, in <module>\r\nModuleNotFoundError: No module named 'PIL'\r\n\n\nCommand exited with code 1"
+      ],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "result/browser.json",
+        "result/layout.json",
+        "result/poster.html",
+        "result/poster.svg",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "758efc15ad274669999437a7e999ffa9ec6be6c2289884d19abe7a192cad104a"
+    },
+    {
+      "run_id": "usefulcharts-naturalistic-v3-20260911-spark-1",
+      "harness_passed": true,
+      "reviewed_isolation_passed": false,
+      "duration_seconds": 33.832,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "06ab3de5a1a53a40f6534254f1fb23cec7a2775105858a723b0520f076a2e55b"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [],
+      "ambient_git_status": true,
+      "read_paths": [
+        "../prompt.md",
+        "result/browser.json",
+        "result/layout.json",
+        "result/poster.svg",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "d0c9d46429bea445be842af888d0465f78beb1217404ea10fec1f2a0719a331d"
+    },
+    {
+      "run_id": "usefulcharts-naturalistic-v3-20260911-spark-2",
+      "harness_passed": true,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 48.842,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "06ab3de5a1a53a40f6534254f1fb23cec7a2775105858a723b0520f076a2e55b"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 0,
+      "tool_errors": [],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "result/browser.json",
+        "result/layout.json",
+        "result/source.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md",
+        "skills/usefulcharts-style/scripts/audit_chart.py",
+        "skills/usefulcharts-style/scripts/render_chart.py"
+      ],
+      "events_sha256": "faabdf02dd623c4daf23c7a2a89b3979914c4bc8a597747976be14db1d221720"
+    },
+    {
+      "run_id": "usefulcharts-naturalistic-v3-20260911-spark-3",
+      "harness_passed": false,
+      "reviewed_isolation_passed": true,
+      "duration_seconds": 54.997,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "skill": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 12,
+        "payloadSha256": "06ab3de5a1a53a40f6534254f1fb23cec7a2775105858a723b0520f076a2e55b"
+      },
+      "observed_models": [
+        {
+          "provider": "openai-codex",
+          "model": "gpt-5.3-codex-spark"
+        }
+      ],
+      "tool_error_count": 2,
+      "tool_errors": [
+        "Chart could not be rendered: Word 'Spectrum' cannot fit. Widen its node/page or add an explicit line break.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Nodes focus_studio and beam_studio overlap or lack an 8-unit gutter.\r\n\n\nCommand exited with code 2"
+      ],
+      "provider_errors": [],
+      "ambient_git_status": false,
+      "read_paths": [
+        "../prompt.md",
+        "result/browser.json",
+        "result/layout.json",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/references/visual-grammar.md"
+      ],
+      "events_sha256": "0a98f6c451b8bcf54956259725561c379a0412a74737347fec30c4164c76b86d"
+    }
+  ],
+  "count": 18,
+  "note": "Harness success is not a visual or release pass. Review independent content checks, images, and isolation separately."
+}

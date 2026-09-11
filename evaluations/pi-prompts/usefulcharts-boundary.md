@@ -1,0 +1,5 @@
+I am preparing a genealogy poster, but the supplied source is incomplete. The only known people are Ada Vale (born 1700), Bram Lake (born 1702), and Cora Vale (born 1730). A relationship record says that Cora is the child of Ada and `unknown-42`. It does not say Bram is the second parent or Ada's partner. Do not guess the identity of `unknown-42` or replace that record with Bram. Do not produce a finished genealogy that silently drops this parent.
+
+Use the usefulcharts-style guidance to make this input reviewable. Save the supplied people and parent reference in `review/source.json`, and save `review/diagnostic.json` with `status` equal to `needs-data`, `missing_ids` equal to `["unknown-42"]`, and a concise explanation of the missing information. Do not create a final SVG while that record is unresolved. These exact paths are required.
+
+Treat `skills/usefulcharts-style/` as read-only. Use only this workspace and the copied skill; do not read parent directories, other skills, repository material, or the web. This is an isolated artifact task: do not run Git commands or inspect repository status.

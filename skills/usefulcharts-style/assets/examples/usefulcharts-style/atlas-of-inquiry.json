@@ -1,0 +1,1212 @@
+{
+  "id": "atlas-of-inquiry",
+  "title": "AN ATLAS OF SHARED INQUIRY",
+  "mode": "lineage",
+  "width": 1800,
+  "height": 2400,
+  "groups": [
+    {
+      "id": "g0",
+      "label": "Astronomy",
+      "color": "#F18C79"
+    },
+    {
+      "id": "g1",
+      "label": "Navigation",
+      "color": "#77BEDB"
+    },
+    {
+      "id": "g2",
+      "label": "Mechanics",
+      "color": "#F4C948"
+    },
+    {
+      "id": "g3",
+      "label": "Optics",
+      "color": "#A6C49B"
+    },
+    {
+      "id": "g4",
+      "label": "Cartography",
+      "color": "#BE9CCB"
+    },
+    {
+      "id": "g5",
+      "label": "Common origins",
+      "color": "#CDC7B3"
+    }
+  ],
+  "source_note": "Synthetic study by Codex, 2026. All names, institutions, relationships, and dates are invented.",
+  "pattern_id": "usefulcharts-branching-lineage",
+  "subtitle": "A fictional history of five traditions of knowledge",
+  "columns": 10,
+  "node_width": 140,
+  "rows": [
+    "Origins",
+    "Traditions",
+    "Early schools",
+    "Branches",
+    "Workshops",
+    "Institutes",
+    "Networks",
+    "Modern schools",
+    "New directions"
+  ],
+  "nodes": [
+    {
+      "id": "origin",
+      "label": "Common Inquiry",
+      "detail": "Observing \u2022 making \u2022 recording",
+      "row": 0,
+      "col": 4.5,
+      "group": "g5",
+      "emphasis": true
+    },
+    {
+      "id": "t0",
+      "label": "Sky Records",
+      "detail": "Early tradition",
+      "row": 1,
+      "col": 0.5,
+      "group": "g0",
+      "emphasis": true
+    },
+    {
+      "id": "n2-0-0",
+      "label": "Star Tables",
+      "detail": "c. 1530",
+      "row": 2,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n2-0-1",
+      "label": "Lunar School",
+      "detail": "c. 1539",
+      "row": 2,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n3-0-0",
+      "label": "Open-Sky Hall",
+      "detail": "c. 1585",
+      "row": 3,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n3-0-1",
+      "label": "Calendar House",
+      "detail": "c. 1594",
+      "row": 3,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n4-0-0",
+      "label": "Meridian Circle",
+      "detail": "c. 1640",
+      "row": 4,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n4-0-1",
+      "label": "Night Observatory",
+      "detail": "c. 1649",
+      "row": 4,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n5-0-0",
+      "label": "Orbit Institute",
+      "detail": "c. 1695",
+      "row": 5,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n5-0-1",
+      "label": "Variable Stars",
+      "detail": "c. 1704",
+      "row": 5,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n6-0-0",
+      "label": "Sky Network",
+      "detail": "c. 1750",
+      "row": 6,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n6-0-1",
+      "label": "Deep-Sky Lab",
+      "detail": "c. 1759",
+      "row": 6,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n7-0-0",
+      "label": "Stellar Commons",
+      "detail": "c. 1805",
+      "row": 7,
+      "col": 0,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n7-0-1",
+      "label": "Timekeeping Lab",
+      "detail": "c. 1814",
+      "row": 7,
+      "col": 1,
+      "group": "g0",
+      "emphasis": false
+    },
+    {
+      "id": "n8-0-0",
+      "label": "Orbital Mapping",
+      "detail": "c. 1860",
+      "row": 8,
+      "col": 0,
+      "group": "g0",
+      "emphasis": true
+    },
+    {
+      "id": "n8-0-1",
+      "label": "Night-Sky Archive",
+      "detail": "c. 1869",
+      "row": 8,
+      "col": 1,
+      "group": "g0",
+      "emphasis": true
+    },
+    {
+      "id": "t1",
+      "label": "Coastal Pilots",
+      "detail": "Early tradition",
+      "row": 1,
+      "col": 2.5,
+      "group": "g1",
+      "emphasis": true
+    },
+    {
+      "id": "n2-1-0",
+      "label": "Tidal Pilots",
+      "detail": "c. 1537",
+      "row": 2,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n2-1-1",
+      "label": "Bluewater School",
+      "detail": "c. 1546",
+      "row": 2,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n3-1-0",
+      "label": "Coastal Routes",
+      "detail": "c. 1592",
+      "row": 3,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n3-1-1",
+      "label": "Ocean Workshop",
+      "detail": "c. 1601",
+      "row": 3,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n4-1-0",
+      "label": "Current Institute",
+      "detail": "c. 1647",
+      "row": 4,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n4-1-1",
+      "label": "Compass Hall",
+      "detail": "c. 1656",
+      "row": 4,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n5-1-0",
+      "label": "Sea Academy",
+      "detail": "c. 1702",
+      "row": 5,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n5-1-1",
+      "label": "Harbor Network",
+      "detail": "c. 1711",
+      "row": 5,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n6-1-0",
+      "label": "Open Passage",
+      "detail": "c. 1757",
+      "row": 6,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n6-1-1",
+      "label": "Pelagic Institute",
+      "detail": "c. 1766",
+      "row": 6,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n7-1-0",
+      "label": "Route Commons",
+      "detail": "c. 1812",
+      "row": 7,
+      "col": 2,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n7-1-1",
+      "label": "Voyage Archive",
+      "detail": "c. 1821",
+      "row": 7,
+      "col": 3,
+      "group": "g1",
+      "emphasis": false
+    },
+    {
+      "id": "n8-1-0",
+      "label": "Current Atlas",
+      "detail": "c. 1867",
+      "row": 8,
+      "col": 2,
+      "group": "g1",
+      "emphasis": true
+    },
+    {
+      "id": "n8-1-1",
+      "label": "Navigation Lab",
+      "detail": "c. 1876",
+      "row": 8,
+      "col": 3,
+      "group": "g1",
+      "emphasis": true
+    },
+    {
+      "id": "t2",
+      "label": "Practical Arts",
+      "detail": "Early tradition",
+      "row": 1,
+      "col": 4.5,
+      "group": "g2",
+      "emphasis": true
+    },
+    {
+      "id": "n2-2-0",
+      "label": "Lever School",
+      "detail": "c. 1544",
+      "row": 2,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n2-2-1",
+      "label": "Water Engines",
+      "detail": "c. 1553",
+      "row": 2,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n3-2-0",
+      "label": "Wheel Workshop",
+      "detail": "c. 1599",
+      "row": 3,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n3-2-1",
+      "label": "Clockmakers",
+      "detail": "c. 1608",
+      "row": 3,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n4-2-0",
+      "label": "Motion Institute",
+      "detail": "c. 1654",
+      "row": 4,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n4-2-1",
+      "label": "Engine School",
+      "detail": "c. 1663",
+      "row": 4,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n5-2-0",
+      "label": "Power Network",
+      "detail": "c. 1709",
+      "row": 5,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n5-2-1",
+      "label": "Precision Hall",
+      "detail": "c. 1718",
+      "row": 5,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n6-2-0",
+      "label": "Kinetic Lab",
+      "detail": "c. 1764",
+      "row": 6,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n6-2-1",
+      "label": "Systems College",
+      "detail": "c. 1773",
+      "row": 6,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n7-2-0",
+      "label": "Open Machines",
+      "detail": "c. 1819",
+      "row": 7,
+      "col": 4,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n7-2-1",
+      "label": "Mechanism Archive",
+      "detail": "c. 1828",
+      "row": 7,
+      "col": 5,
+      "group": "g2",
+      "emphasis": false
+    },
+    {
+      "id": "n8-2-0",
+      "label": "Resilient Motion",
+      "detail": "c. 1874",
+      "row": 8,
+      "col": 4,
+      "group": "g2",
+      "emphasis": true
+    },
+    {
+      "id": "n8-2-1",
+      "label": "Energy Workshop",
+      "detail": "c. 1883",
+      "row": 8,
+      "col": 5,
+      "group": "g2",
+      "emphasis": true
+    },
+    {
+      "id": "t3",
+      "label": "Study of Light",
+      "detail": "Early tradition",
+      "row": 1,
+      "col": 6.5,
+      "group": "g3",
+      "emphasis": true
+    },
+    {
+      "id": "n2-3-0",
+      "label": "Mirror School",
+      "detail": "c. 1551",
+      "row": 2,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n2-3-1",
+      "label": "Lens Makers",
+      "detail": "c. 1560",
+      "row": 2,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n3-3-0",
+      "label": "Prism Workshop",
+      "detail": "c. 1606",
+      "row": 3,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n3-3-1",
+      "label": "Glass Institute",
+      "detail": "c. 1615",
+      "row": 3,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n4-3-0",
+      "label": "Spectrum Hall",
+      "detail": "c. 1661",
+      "row": 4,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n4-3-1",
+      "label": "Imaging School",
+      "detail": "c. 1670",
+      "row": 4,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n5-3-0",
+      "label": "Wave Institute",
+      "detail": "c. 1716",
+      "row": 5,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n5-3-1",
+      "label": "Light Network",
+      "detail": "c. 1725",
+      "row": 5,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n6-3-0",
+      "label": "Photon Lab",
+      "detail": "c. 1771",
+      "row": 6,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n6-3-1",
+      "label": "Visual College",
+      "detail": "c. 1780",
+      "row": 6,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n7-3-0",
+      "label": "Open Optics",
+      "detail": "c. 1826",
+      "row": 7,
+      "col": 6,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n7-3-1",
+      "label": "Lens Archive",
+      "detail": "c. 1835",
+      "row": 7,
+      "col": 7,
+      "group": "g3",
+      "emphasis": false
+    },
+    {
+      "id": "n8-3-0",
+      "label": "Coherent Light",
+      "detail": "c. 1881",
+      "row": 8,
+      "col": 6,
+      "group": "g3",
+      "emphasis": true
+    },
+    {
+      "id": "n8-3-1",
+      "label": "Adaptive Imaging",
+      "detail": "c. 1890",
+      "row": 8,
+      "col": 7,
+      "group": "g3",
+      "emphasis": true
+    },
+    {
+      "id": "t4",
+      "label": "Land Surveys",
+      "detail": "Early tradition",
+      "row": 1,
+      "col": 8.5,
+      "group": "g4",
+      "emphasis": true
+    },
+    {
+      "id": "n2-4-0",
+      "label": "Survey School",
+      "detail": "c. 1558",
+      "row": 2,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n2-4-1",
+      "label": "Map Scribes",
+      "detail": "c. 1567",
+      "row": 2,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n3-4-0",
+      "label": "Terrain Guild",
+      "detail": "c. 1613",
+      "row": 3,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n3-4-1",
+      "label": "Coast Atlas",
+      "detail": "c. 1622",
+      "row": 3,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n4-4-0",
+      "label": "Geodesy Hall",
+      "detail": "c. 1668",
+      "row": 4,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n4-4-1",
+      "label": "Map Institute",
+      "detail": "c. 1677",
+      "row": 4,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n5-4-0",
+      "label": "Grid Network",
+      "detail": "c. 1723",
+      "row": 5,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n5-4-1",
+      "label": "Relief School",
+      "detail": "c. 1732",
+      "row": 5,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n6-4-0",
+      "label": "Earth Lab",
+      "detail": "c. 1778",
+      "row": 6,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n6-4-1",
+      "label": "Spatial College",
+      "detail": "c. 1787",
+      "row": 6,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n7-4-0",
+      "label": "Open Maps",
+      "detail": "c. 1833",
+      "row": 7,
+      "col": 8,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n7-4-1",
+      "label": "Regional Archive",
+      "detail": "c. 1842",
+      "row": 7,
+      "col": 9,
+      "group": "g4",
+      "emphasis": false
+    },
+    {
+      "id": "n8-4-0",
+      "label": "Shared Terrain",
+      "detail": "c. 1888",
+      "row": 8,
+      "col": 8,
+      "group": "g4",
+      "emphasis": true
+    },
+    {
+      "id": "n8-4-1",
+      "label": "Living Atlas",
+      "detail": "c. 1897",
+      "row": 8,
+      "col": 9,
+      "group": "g4",
+      "emphasis": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "root-0",
+      "source": "origin",
+      "target": "t0",
+      "kind": "branch"
+    },
+    {
+      "id": "e2-0-0",
+      "source": "t0",
+      "target": "n2-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e2-0-1",
+      "source": "t0",
+      "target": "n2-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e3-0-0",
+      "source": "n2-0-0",
+      "target": "n3-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e3-0-1",
+      "source": "n2-0-1",
+      "target": "n3-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e4-0-0",
+      "source": "n3-0-0",
+      "target": "n4-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e4-0-1",
+      "source": "n3-0-1",
+      "target": "n4-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e5-0-0",
+      "source": "n4-0-0",
+      "target": "n5-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e5-0-1",
+      "source": "n4-0-1",
+      "target": "n5-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e6-0-0",
+      "source": "n5-0-0",
+      "target": "n6-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e6-0-1",
+      "source": "n5-0-1",
+      "target": "n6-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e7-0-0",
+      "source": "n6-0-0",
+      "target": "n7-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e7-0-1",
+      "source": "n6-0-1",
+      "target": "n7-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e8-0-0",
+      "source": "n7-0-0",
+      "target": "n8-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e8-0-1",
+      "source": "n7-0-1",
+      "target": "n8-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "root-1",
+      "source": "origin",
+      "target": "t1",
+      "kind": "branch"
+    },
+    {
+      "id": "e2-1-0",
+      "source": "t1",
+      "target": "n2-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e2-1-1",
+      "source": "t1",
+      "target": "n2-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e3-1-0",
+      "source": "n2-1-0",
+      "target": "n3-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e3-1-1",
+      "source": "n2-1-1",
+      "target": "n3-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e4-1-0",
+      "source": "n3-1-0",
+      "target": "n4-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e4-1-1",
+      "source": "n3-1-1",
+      "target": "n4-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e5-1-0",
+      "source": "n4-1-0",
+      "target": "n5-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e5-1-1",
+      "source": "n4-1-1",
+      "target": "n5-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e6-1-0",
+      "source": "n5-1-0",
+      "target": "n6-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e6-1-1",
+      "source": "n5-1-1",
+      "target": "n6-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e7-1-0",
+      "source": "n6-1-0",
+      "target": "n7-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e7-1-1",
+      "source": "n6-1-1",
+      "target": "n7-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e8-1-0",
+      "source": "n7-1-0",
+      "target": "n8-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e8-1-1",
+      "source": "n7-1-1",
+      "target": "n8-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "root-2",
+      "source": "origin",
+      "target": "t2",
+      "kind": "branch"
+    },
+    {
+      "id": "e2-2-0",
+      "source": "t2",
+      "target": "n2-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e2-2-1",
+      "source": "t2",
+      "target": "n2-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e3-2-0",
+      "source": "n2-2-0",
+      "target": "n3-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e3-2-1",
+      "source": "n2-2-1",
+      "target": "n3-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e4-2-0",
+      "source": "n3-2-0",
+      "target": "n4-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e4-2-1",
+      "source": "n3-2-1",
+      "target": "n4-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e5-2-0",
+      "source": "n4-2-0",
+      "target": "n5-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e5-2-1",
+      "source": "n4-2-1",
+      "target": "n5-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e6-2-0",
+      "source": "n5-2-0",
+      "target": "n6-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e6-2-1",
+      "source": "n5-2-1",
+      "target": "n6-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e7-2-0",
+      "source": "n6-2-0",
+      "target": "n7-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e7-2-1",
+      "source": "n6-2-1",
+      "target": "n7-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e8-2-0",
+      "source": "n7-2-0",
+      "target": "n8-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e8-2-1",
+      "source": "n7-2-1",
+      "target": "n8-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "root-3",
+      "source": "origin",
+      "target": "t3",
+      "kind": "branch"
+    },
+    {
+      "id": "e2-3-0",
+      "source": "t3",
+      "target": "n2-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e2-3-1",
+      "source": "t3",
+      "target": "n2-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e3-3-0",
+      "source": "n2-3-0",
+      "target": "n3-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e3-3-1",
+      "source": "n2-3-1",
+      "target": "n3-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e4-3-0",
+      "source": "n3-3-0",
+      "target": "n4-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e4-3-1",
+      "source": "n3-3-1",
+      "target": "n4-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e5-3-0",
+      "source": "n4-3-0",
+      "target": "n5-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e5-3-1",
+      "source": "n4-3-1",
+      "target": "n5-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e6-3-0",
+      "source": "n5-3-0",
+      "target": "n6-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e6-3-1",
+      "source": "n5-3-1",
+      "target": "n6-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e7-3-0",
+      "source": "n6-3-0",
+      "target": "n7-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e7-3-1",
+      "source": "n6-3-1",
+      "target": "n7-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e8-3-0",
+      "source": "n7-3-0",
+      "target": "n8-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e8-3-1",
+      "source": "n7-3-1",
+      "target": "n8-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "root-4",
+      "source": "origin",
+      "target": "t4",
+      "kind": "branch"
+    },
+    {
+      "id": "e2-4-0",
+      "source": "t4",
+      "target": "n2-4-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e2-4-1",
+      "source": "t4",
+      "target": "n2-4-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e3-4-0",
+      "source": "n2-4-0",
+      "target": "n3-4-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e3-4-1",
+      "source": "n2-4-1",
+      "target": "n3-4-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e4-4-0",
+      "source": "n3-4-0",
+      "target": "n4-4-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e4-4-1",
+      "source": "n3-4-1",
+      "target": "n4-4-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e5-4-0",
+      "source": "n4-4-0",
+      "target": "n5-4-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e5-4-1",
+      "source": "n4-4-1",
+      "target": "n5-4-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e6-4-0",
+      "source": "n5-4-0",
+      "target": "n6-4-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e6-4-1",
+      "source": "n5-4-1",
+      "target": "n6-4-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e7-4-0",
+      "source": "n6-4-0",
+      "target": "n7-4-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e7-4-1",
+      "source": "n6-4-1",
+      "target": "n7-4-1",
+      "kind": "branch"
+    },
+    {
+      "id": "e8-4-0",
+      "source": "n7-4-0",
+      "target": "n8-4-0",
+      "kind": "branch"
+    },
+    {
+      "id": "e8-4-1",
+      "source": "n7-4-1",
+      "target": "n8-4-1",
+      "kind": "branch"
+    },
+    {
+      "id": "influence-n3-0-1",
+      "source": "n3-0-1",
+      "target": "n4-1-0",
+      "kind": "influence"
+    },
+    {
+      "id": "influence-n5-2-1",
+      "source": "n5-2-1",
+      "target": "n6-3-0",
+      "kind": "influence"
+    },
+    {
+      "id": "influence-n6-3-1",
+      "source": "n6-3-1",
+      "target": "n7-4-0",
+      "kind": "influence"
+    }
+  ],
+  "reading_note": "Solid paths show an institutional branch. Dotted arrows show influence between traditions. Rows are schematic stages, not a uniform measure of time."
+}

@@ -1,0 +1,166 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["playwright>=1.55,<2"]
+# ///
+"""Inspect an authored poster with Chromium and export a full-resolution preview."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+from playwright.sync_api import sync_playwright
+
+AUDIT = r"""() => {
+  const svg = document.querySelector('svg');
+  const meta = JSON.parse(svg.querySelector('#chart-data').textContent);
+  const view = svg.viewBox.baseVal;
+  const findings = [];
+  const bounds = el => {
+    const b=el.getBBox(); return {x:b.x,y:b.y,w:b.width,h:b.height};
+  };
+  const intersect=(a,b,p=0)=>a.x<b.x+b.w-p && a.x+a.w>b.x+p && a.y<b.y+b.h-p && a.y+a.h>b.y+p;
+  const contained=(a,b,p=0)=>a.x>=b.x-p && a.y>=b.y-p && a.x+a.w<=b.x+b.w+p && a.y+a.h<=b.y+b.h+p;
+  const lum=color=>{
+    const rgb=color.startsWith('#')?[1,3,5].map(i=>parseInt(color.slice(i,i+2),16)):color.match(/[\d.]+/g).slice(0,3).map(Number);
+    return rgb.map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
+  };
+  const contrast=(a,b)=>{const [lo,hi]=[lum(a),lum(b)].sort((x,y)=>x-y);return (hi+.05)/(lo+.05)};
+  const nodes=[...svg.querySelectorAll('[data-node-id]')].map(el=>({id:el.dataset.nodeId,box:bounds(el.querySelector('[data-node-box]'))}));
+  const byId=Object.fromEntries(nodes.map(n=>[n.id,n]));
+  const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,d:el.getAttribute('d')}));
+  const unions=[...svg.querySelectorAll('[data-union-id]')].map(el=>({id:el.dataset.unionId,d:el.getAttribute('d')}));
+  const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
+  const setEqual=(a,b)=>a.length===b.length && [...a].sort().join('\n')===[...b].sort().join('\n');
+  if(!setEqual(nodes.map(n=>n.id),meta.node_ids))findings.push({type:'node-inventory'});
+  if(!setEqual(edges.map(e=>e.id),meta.edge_ids))findings.push({type:'edge-inventory'});
+  if(texts.map(t=>t.text).join('\n')!==meta.expected_text.join('\n'))findings.push({type:'text-inventory'});
+  for(const n of nodes)if(!contained(n.box,{x:0,y:0,w:view.width,h:view.height}))findings.push({type:'node-outside-page',id:n.id});
+  for(const t of texts){
+    if(!contained(t.box,{x:24,y:0,w:view.width-48,h:view.height-24},.5))findings.push({type:'text-outside-page',text:t.text});
+    if(t.owner!=='page' && (!byId[t.owner] || !contained(t.box,byId[t.owner].box,-2)))findings.push({type:'label-outside-node',id:t.owner,text:t.text,box:t.box});
+    if(t.contrast<4.5-.01)findings.push({type:'text-contrast',text:t.text,ratio:t.contrast});
+    if(t.box.w<.1||t.box.h<.1)findings.push({type:'empty-text-geometry',text:t.text});
+  }
+  for(let i=0;i<texts.length;i++)for(let j=i+1;j<texts.length;j++)if(intersect(texts[i].box,texts[j].box,1.2))findings.push({type:'text-overlap',a:texts[i].text,b:texts[j].text});
+  for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)if(intersect(nodes[i].box,nodes[j].box,.5))findings.push({type:'node-overlap',a:nodes[i].id,b:nodes[j].id});
+  for(const t of texts)for(const n of nodes)if(t.owner!==n.id && intersect(t.box,n.box,.5))findings.push({type:'text-other-node',text:t.text,node:n.id});
+  const points=d=>(d.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number).reduce((a,n,i,all)=>{if(i%2===0)a.push([n,all[i+1]]);return a},[]);
+  for(const e of edges){
+    const p=points(e.d);
+    for(let i=0;i<p.length-1;i++){
+      const [a,b]=[p[i],p[i+1]];
+      if(a[0]!==b[0]&&a[1]!==b[1])findings.push({type:'non-orthogonal-edge',id:e.id});
+      for(const n of nodes){
+        const r=n.box;
+        const hit=a[0]===b[0]?a[0]>r.x+.1&&a[0]<r.x+r.w-.1&&Math.max(Math.min(a[1],b[1]),r.y)<Math.min(Math.max(a[1],b[1]),r.y+r.h)-.1:a[1]>r.y+.1&&a[1]<r.y+r.h-.1&&Math.max(Math.min(a[0],b[0]),r.x)<Math.min(Math.max(a[0],b[0]),r.x+r.w)-.1;
+        if(hit)findings.push({type:'edge-node-collision',edge:e.id,node:n.id});
+      }
+    }
+    const target=byId[e.target]?.box,last=p.at(-1);
+    if(!target||last[0]<target.x+5||last[0]>target.x+target.w-5||Math.abs(last[1]-target.y)>.1)findings.push({type:'detached-target',id:e.id});
+    const origin=byId[e.source]?.box,first=p[0];
+    if(origin&&(first[0]<origin.x+5||first[0]>origin.x+origin.w-5||Math.abs(first[1]-origin.y-origin.h)>.1))findings.push({type:'detached-source',id:e.id});
+  }
+  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,nodes,edges,unions,texts,metadata:meta};
+}"""
+
+
+def check_source(report, data):
+    import re
+    nodes = data.get("periods", []) if data["mode"] == "timeline" else data.get("nodes", [])
+    if sorted(n["id"] for n in nodes) != sorted(n["id"] for n in report["nodes"]):
+        report["findings"].append({"type": "source-node-inventory"})
+    relations = list(data.get("edges", []))
+    for union in data.get("unions", []):
+        relations.extend({"id": f'{union["id"]}-{child}', "source": union["id"], "target": child, "kind": "descent"} for child in union.get("children", []))
+        partner_boxes=sorted((n["box"] for n in report["nodes"] if n["id"] in union["partners"]),key=lambda b:b["x"])
+        drawn=[p for p in report["unions"] if p["id"]==union["id"]]
+        if len(partner_boxes)!=2 or len(drawn)!=2:
+            report["findings"].append({"type":"source-union-inventory","id":union["id"]})
+            continue
+        a,b=partner_boxes
+        for path in drawn:
+            values=[float(v) for v in re.findall(r"-?\d+(?:\.\d+)?",path["d"])]
+            if len(values)!=4 or abs(values[0]-a["x"]-a["w"])>.1 or abs(values[2]-b["x"])>.1:
+                report["findings"].append({"type":"source-union-endpoint","id":union["id"]})
+        midpoint=((a["x"]+a["w"]+b["x"])/2,a["y"]+a["h"]/2)
+        for edge in report["edges"]:
+            if edge["source"]==union["id"]:
+                values=[float(v) for v in re.findall(r"-?\d+(?:\.\d+)?",edge["d"])]
+                if abs(values[0]-midpoint[0])>.1 or abs(values[1]-midpoint[1])>.1:
+                    report["findings"].append({"type":"source-union-origin","edge":edge["id"]})
+    fields = ("id", "source", "target", "kind")
+    if sorted(tuple(e[k] for k in fields) for e in relations) != sorted(tuple(e[k] for k in fields) for e in report["edges"]):
+        report["findings"].append({"type": "source-relation-inventory"})
+    # Text may wrap across lines; retain word order when checking node labels.
+    for node in nodes:
+        actual = " ".join(t["text"] for t in report["texts"] if t["owner"] == node["id"])
+        if " ".join(node["label"].split()) not in actual:
+            report["findings"].append({"type": "source-label-missing", "id": node["id"]})
+    if data["mode"] == "timeline":
+        y0, y1 = report["metadata"]["time_y"]
+        start, end = data["time"]["start"], data["time"]["end"]
+        boxes = {n["id"]: n["box"] for n in report["nodes"]}
+        for node in nodes:
+            box = boxes.get(node["id"])
+            if not box:
+                continue
+            expected_y = y0 + (node["start"] - start)/(end - start)*(y1-y0)
+            expected_h = (node["end"]-node["start"])/(end-start)*(y1-y0)
+            if abs(box["y"]-expected_y)>.1 or abs(box["h"]-expected_h)>.1:
+                report["findings"].append({"type": "numeric-time-mismatch", "id": node["id"]})
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("svg", type=Path)
+    parser.add_argument("--report", type=Path, required=True)
+    parser.add_argument("--png", type=Path)
+    parser.add_argument("--source", type=Path)
+    parser.add_argument("--browser-executable", type=Path)
+    args = parser.parse_args()
+    try:
+        outputs = [p.resolve() for p in (args.svg,args.report,args.png,args.source) if p]
+        if len(outputs) != len(set(outputs)):
+            raise ValueError("Input and output paths must be distinct.")
+        with sync_playwright() as p:
+            browser = None
+            attempts = [{"executable_path": str(args.browser_executable)}] if args.browser_executable else [{},{"channel":"chrome"},{"channel":"msedge"}]
+            for options in attempts:
+                try:
+                    browser = p.chromium.launch(headless=True, **options)
+                    break
+                except Exception:
+                    continue
+            if browser is None:
+                raise RuntimeError("No Chromium browser available; install Playwright Chromium or use --browser-executable.")
+            page = browser.new_page(viewport={"width":1600,"height":1000},device_scale_factor=1)
+            page.goto(args.svg.resolve().as_uri())
+            page.evaluate("document.fonts.ready")
+            report = page.evaluate(AUDIT)
+            report["browser"] = browser.version
+            if args.source:
+                check_source(report,json.loads(args.source.read_text(encoding="utf-8-sig")))
+            report["status"] = "fail" if report["findings"] else "pass"
+            if args.png:
+                args.png.parent.mkdir(parents=True,exist_ok=True)
+                w,h = report["canvas"]
+                page.set_viewport_size({"width":int(w),"height":min(int(h),1200)})
+                page.locator("svg").screenshot(path=str(args.png.resolve()))
+            browser.close()
+        report["visual_review"] = "Inspect the preview separately; these checks do not rate stylistic resemblance."
+        args.report.parent.mkdir(parents=True,exist_ok=True)
+        args.report.write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+        print(json.dumps({k:report[k] for k in ("status","id","node_count","edge_count","text_count","min_contrast","findings")}))
+        return 0 if report["status"] == "pass" else 1
+    except Exception as error:
+        print(f"Browser audit could not complete: {error}",file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGES_ROOT = ROOT / "dist" / "pages"
 SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
+    "usefulcharts-style": SKILLS / "usefulcharts-style" / "assets" / "examples" / "usefulcharts-style",
     "ai-concept-videos": SKILLS
     / "video"
     / "assets"
@@ -116,6 +117,14 @@ UNLISTED_EXAMPLE_SOURCES = {
     "plantuml-colorset-renderer-cs1",
 }
 PUBLISHED_EXAMPLE_SETS = [
+    {
+        "id": "usefulcharts-style",
+        "source": "usefulcharts-style",
+        "title": "Educational Poster Studies",
+        "href": "examples/usefulcharts-style/",
+        "kind": "Editable SVG posters",
+        "description": "Original UsefulCharts-inspired genealogy, branching lineage, and parallel-history posters with semantic color, deliberate connector routing, source data, and zoomable SVG views.",
+    },
     {
         "id": "compose-synchronized-svg",
         "source": "compose-synchronized-svg",
@@ -647,6 +656,8 @@ def build_docs() -> None:
     reset_pages_output()
     (PAGES_ROOT / ".nojekyll").write_text("", encoding="utf-8")
     write_favicon()
+
+    copy_tree(example_source("usefulcharts-style"), PAGES_ROOT / "examples" / "usefulcharts-style")
 
     copy_tree(example_source("compose-synchronized-svg"), PAGES_ROOT / "examples" / "compose-synchronized-svg")
     copy_tree(example_source("echarts-animated-svg"), PAGES_ROOT / "examples" / "echarts-animated-svg")
