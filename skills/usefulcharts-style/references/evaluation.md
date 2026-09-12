@@ -8,7 +8,7 @@ uv run --script <skill-dir>/scripts/audit_chart.py chart.svg --report audit.json
 
 The audit uses Playwright and an available Chromium browser. It first tries Playwright's bundled Chromium, then installed Chrome and Edge. If none is available, install the Playwright browser using the same environment (`uv run --with playwright python -m playwright install chromium`) or pass `--browser-executable` to a known compatible browser. Follow the workspace's installation scope. An unavailable browser is an infrastructure failure, not a visual pass.
 
-The audit recomputes actual text bounding boxes in Chromium, tests node label containment, unrelated text overlap, page bounds, missing text, and text/fill contrast. It also checks the SVG's declared node and edge inventory against rendered DOM elements. The JSON records measured boxes and findings. A preview is written even when geometry fails so the issue can be diagnosed.
+The audit recomputes actual text bounding boxes in Chromium, tests node label containment, unrelated text overlap, page bounds, missing text, and text/fill contrast. With `--source`, it checks the source revision hash before comparing visible records and numeric dates. A stale SVG from a failed rerender must not pass against a newer brief. It also checks the SVG's declared node and edge inventory against rendered DOM elements. The JSON records measured boxes and findings. A preview is written even when geometry fails so the issue can be diagnosed.
 
 At page scale, check the whole silhouette. At full resolution, inspect the densest branch, each union, route crossings, long names, and footnotes. Treat a zero-finding report as necessary evidence; judge visual character separately.
 

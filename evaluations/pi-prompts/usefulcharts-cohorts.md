@@ -10,6 +10,6 @@ Partnerships and parentage:
 - Nella and Felix are partners. Their children are Anya and Simon.
 - Leda and Simon are partners. Their children are June, Leo, and Iris.
 
-Use a neutral founding family. Rowan's line is the coral Alder branch; Vera's line is the blue Vey branch. Keep Nella and her descendants in the Alder branch, and Cedric/Ines's descendants in the Vey branch. Ivo and Oren have no recorded descendants. Draw every child from its actual parental union. A shared surname or adjacency does not create a relationship.
+Use a neutral founding family for Alden, Mara and Ivo. The coral Alder branch contains Rowan, Elise, Cedric, Nella, Felix, Anya and Simon. The blue Vey branch contains Vera, Tomas, Ines, Oren, Leda, Remy, June, Leo and Iris. These are explicit category assignments: cross-family marriage preserves both ancestries and does not change a person's category. Ivo and Oren have no recorded descendants. Draw every child from its actual parental union. A shared surname or adjacency does not create a relationship.
 
 Deliver exactly `result/source.json`, `result/poster.svg`, `result/poster.html`, `result/layout.json`, `result/browser.json`, and `result/poster.png`. Inspect browser geometry and source fidelity, then view the actual preview. The skill bundle is read-only. Generated files belong in this workspace, outside `skills/`. Do not read repository documentation, other skills, parent directories, or previous runs. Do not run Git commands. No external research is necessary for these invented records.

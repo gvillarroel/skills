@@ -1,6 +1,6 @@
 # Editorial renderer contract
 
-Set `design: editorial` and run `render_chart.py` normally. Shared fields and relationship semantics remain as described in [data-contract.md](data-contract.md). Default page: 1800 × 2700; default body size: 13. Use the classic profile only for simple schematic compatibility. Optional `imprint` is an array of up to three short author/edition lines in the header. State synthetic data only when that is true.
+Set `design: editorial` and run `render_chart.py` normally. Shared fields and relationship semantics remain as described in [data-contract.md](data-contract.md). Dense authored page defaults: 1800 × 2700 and 13-unit body size. Small automatic lineages and genealogical cohorts measure a compact page with 18-unit names. Use the classic profile only for simple schematic compatibility. Optional `imprint` is an array of up to three short author/edition lines in the header; leave it at its default unless the brief needs specific author details. State synthetic data only when that is true.
 
 ## Graph placement and treatments
 
@@ -21,6 +21,8 @@ Original art types: `shield`, `crown`, `star`, `compass`, `globe`, `astrolabe`, 
 
 Source illustrations use `illustration-astrolabe-observation` (a mariner observing an angle) or `illustration-sextant-1904` (an encyclopedia drawing). Their original bytes, authors, dates, rights and hashes are in [the illustration provenance](../assets/illustrations/provenance.json). They preserve aspect ratio and are embedded once per source in a reusable SVG symbol. Use them for their actual subjects; the publication date is not an invention date or proof of a fictional event. Do not read the large SVG source merely to use its ID.
 
+Also available: `illustration-telescope-observer` (a large refractor and observer) and `illustration-cuneiform-tablet` (an identified Library of Congress tablet). Both have transparent fields. Their subjects and actual dates remain distinct from any synthetic chart event. Inspect the visible silhouette at its placed size; do not confuse an opaque white PNG with a transparent illustration. A consistent text landmark is preferable to an unrelated decorative object or a conspicuous photo rectangle.
+
 Keep partnered people at exactly the same `y`, with at least 16 units of space between their measured boxes. Parentage must go to a later `y`. A node may retain legacy `row`/`col` placement instead of explicit centers. The source brief is preserved in the report hash.
 
 Routes use rounded orthogonal corridors and preserve source/target semantics. `corridor_y` requests a horizontal bend level; the router repairs it if it would enter a box. For a deliberately composed route, `via` is an array of absolute `[x,y]` bends between the source bottom/union midpoint and target top. Every segment must be orthogonal. Routes that enter any entity, including their own source or target, are rejected. Reserve visible space below a source and above a target before arranging bends.
@@ -37,6 +39,8 @@ Instead of `x,y`, use `node` with optional `dx,dy` to anchor an annotation to a 
 - `map` uses the supplied `countries` mapping from Natural Earth country IDs to category IDs, plus a short `note`. Unassigned countries are neutral; unknown category IDs fail. Set `legend: true` for a nearby key derived from the mapped categories. Allow enough height for its rows. Reserve a region of the page that does not contain nodes or connector corridors.
 
 ## Chronological ribbon composition
+
+For a few parallel phase sequences, use `layout: compact` and [compact chronology](compact-chronology.md): horizontal names, visible endpoint dates and measured page dimensions. The following authored fields apply to the dense ribbon route; do not impose them on a compact first preview.
 
 Use `mode: timeline`, shared numeric `time`, named `lanes`, and `periods`. Each period provides normal dates/category/lane plus:
 

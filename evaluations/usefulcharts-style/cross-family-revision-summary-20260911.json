@@ -1,0 +1,906 @@
+{
+  "status": "validating",
+  "runs": [
+    {
+      "id": "usefulcharts-cohorts-v11-20260911-gpt55-1",
+      "case": "cohorts",
+      "version": "v11",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "dcbbe7a98e22b1fd0c8aaec2b4065ded565d2ef9edcab31c8d7d37aecb4ecaa9"
+      },
+      "prompt_sha256": "089f13083e23551159b9c120f09aab2f49eb362c961f55ba1b412895dfe59b6c",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "duration_seconds": 150.053,
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:06:26.216424+00:00",
+        "finishedAtUtc": "2026-09-12T02:08:56.268092+00:00",
+        "durationSeconds": 150.053,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "not-applicable",
+        "reason": "See the authored baseline review or separate command-contract browser audit."
+      },
+      "read_summary_returncode": 1,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "total_read_bytes": 184161,
+      "tool_errors": [
+        "Chart could not be rendered: Use up to three short imprint lines.\r\n\n\nCommand exited with code 2"
+      ]
+    },
+    {
+      "id": "usefulcharts-transport-v11-20260911-gpt55-1",
+      "case": "transport",
+      "version": "v11",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "dcbbe7a98e22b1fd0c8aaec2b4065ded565d2ef9edcab31c8d7d37aecb4ecaa9"
+      },
+      "prompt_sha256": "2997712181c92a795ae5325858e94f1322381f2577949f2e60310b65794a4351",
+      "expected_outputs": [
+        "museum/data.json",
+        "museum/timeline.svg",
+        "museum/viewer.html",
+        "museum/layout.json",
+        "museum/browser.json",
+        "museum/preview.png"
+      ],
+      "duration_seconds": 92.97,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:07:15.490763+00:00",
+        "finishedAtUtc": "2026-09-12T02:08:48.459985+00:00",
+        "durationSeconds": 92.97,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "not-applicable",
+        "reason": "See the authored baseline review or separate command-contract browser audit."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "museum/preview.png",
+        "museum/browser.json",
+        "museum/layout.json"
+      ],
+      "total_read_bytes": 355516,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-boundary-v11-20260911-spark-1",
+      "case": "boundary",
+      "version": "v11",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "dcbbe7a98e22b1fd0c8aaec2b4065ded565d2ef9edcab31c8d7d37aecb4ecaa9"
+      },
+      "prompt_sha256": "73f91e447401c48dde98ee117f755bcaeea4576cf818f0b8264da645c5fe0b8a",
+      "expected_outputs": [
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "duration_seconds": 13.875,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:07:15.715710+00:00",
+        "finishedAtUtc": "2026-09-12T02:07:29.591110+00:00",
+        "durationSeconds": 13.875,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "findings": []
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "review/diagnostic.json",
+        "review/source.json"
+      ],
+      "total_read_bytes": 8485,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-cohorts-v12-20260911-gpt55-1",
+      "case": "cohorts",
+      "version": "v12",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "6046e30017873e01d37c63fbdd58740bcf66ddb5a4be74e779bebfc3988e698c"
+      },
+      "prompt_sha256": "c8a0f00f5ce4d7e3a634368513851e3776f4f3265f1fa50f9b54b5db5048713f",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "duration_seconds": 146.346,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:27:37.282024+00:00",
+        "finishedAtUtc": "2026-09-12T02:30:03.627568+00:00",
+        "durationSeconds": 146.346,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "run": "usefulcharts-cohorts-v12-20260911-gpt55-1",
+        "case": "cohorts",
+        "status": "pass",
+        "findings": [],
+        "canvas": [
+          1000,
+          854.7999877929688
+        ],
+        "record_count": 19,
+        "preview_reads": 3,
+        "median_record_font": 15.93,
+        "limitation": "Data and geometry checks do not certify composition or visual parity; inspect the actual image separately."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "result/poster.png",
+        "result/browser.json",
+        "result/layout.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md"
+      ],
+      "total_read_bytes": 309448,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-transport-v12-20260911-gpt55-1",
+      "case": "transport",
+      "version": "v12",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "6046e30017873e01d37c63fbdd58740bcf66ddb5a4be74e779bebfc3988e698c"
+      },
+      "prompt_sha256": "2997712181c92a795ae5325858e94f1322381f2577949f2e60310b65794a4351",
+      "expected_outputs": [
+        "museum/data.json",
+        "museum/timeline.svg",
+        "museum/viewer.html",
+        "museum/layout.json",
+        "museum/browser.json",
+        "museum/preview.png"
+      ],
+      "duration_seconds": 77.96,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:27:37.336567+00:00",
+        "finishedAtUtc": "2026-09-12T02:28:55.295750+00:00",
+        "durationSeconds": 77.96,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "run": "usefulcharts-transport-v12-20260911-gpt55-1",
+        "case": "transport",
+        "status": "pass",
+        "findings": [],
+        "canvas": [
+          1000,
+          770
+        ],
+        "record_count": 15,
+        "preview_reads": 1,
+        "median_record_font": 15.93,
+        "limitation": "Data and geometry checks do not certify composition or visual parity; inspect the actual image separately."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "museum/browser.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-chronology.md",
+        "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+        "museum/preview.png",
+        "museum/layout.json"
+      ],
+      "total_read_bytes": 118737,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-contract-v12-20260911-spark-1",
+      "case": "contract",
+      "version": "v12",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "6046e30017873e01d37c63fbdd58740bcf66ddb5a4be74e779bebfc3988e698c"
+      },
+      "prompt_sha256": "cebabd9bf1ad121d141b06d0e8733e0b984102f99b467f9b1b64523902e90af9",
+      "expected_outputs": [
+        "deliverables/chart.svg",
+        "deliverables/chart.html",
+        "deliverables/layout.json"
+      ],
+      "duration_seconds": 22.364,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:27:37.676615+00:00",
+        "finishedAtUtc": "2026-09-12T02:28:00.040704+00:00",
+        "durationSeconds": 22.364,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "not-applicable",
+        "reason": "See the authored baseline review or separate command-contract browser audit."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "deliverables/layout.json",
+        "deliverables/chart.html"
+      ],
+      "total_read_bytes": 12283,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-cohorts-v13-20260911-gpt55-1",
+      "case": "cohorts",
+      "version": "v13",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "5fb3de42911cd4b1fb39356cd5accbb188aca6da900f7bcc1a536be784264b3c"
+      },
+      "prompt_sha256": "c8a0f00f5ce4d7e3a634368513851e3776f4f3265f1fa50f9b54b5db5048713f",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "duration_seconds": 85.527,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:40:11.736207+00:00",
+        "finishedAtUtc": "2026-09-12T02:41:37.262700+00:00",
+        "durationSeconds": 85.527,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "run": "usefulcharts-cohorts-v13-20260911-gpt55-1",
+        "case": "cohorts",
+        "status": "pass",
+        "findings": [],
+        "canvas": [
+          1000,
+          854.7999877929688
+        ],
+        "record_count": 19,
+        "preview_reads": 1,
+        "median_record_font": 15.93,
+        "limitation": "Data and geometry checks do not certify composition or visual parity; inspect the actual image separately."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "result/browser.json",
+        "result/layout.json",
+        "result/poster.png"
+      ],
+      "total_read_bytes": 136350,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-cohorts-v13-20260911-gpt55-2",
+      "case": "cohorts",
+      "version": "v13",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "5fb3de42911cd4b1fb39356cd5accbb188aca6da900f7bcc1a536be784264b3c"
+      },
+      "prompt_sha256": "c8a0f00f5ce4d7e3a634368513851e3776f4f3265f1fa50f9b54b5db5048713f",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "duration_seconds": 80.798,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:41:44.875696+00:00",
+        "finishedAtUtc": "2026-09-12T02:43:05.672716+00:00",
+        "durationSeconds": 80.798,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "run": "usefulcharts-cohorts-v13-20260911-gpt55-2",
+        "case": "cohorts",
+        "status": "pass",
+        "findings": [],
+        "canvas": [
+          1000,
+          854.7999877929688
+        ],
+        "record_count": 19,
+        "preview_reads": 1,
+        "median_record_font": 15.93,
+        "limitation": "Data and geometry checks do not certify composition or visual parity; inspect the actual image separately."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "result/browser.json",
+        "result/layout.json",
+        "result/poster.png"
+      ],
+      "total_read_bytes": 135853,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-cohorts-v13-20260911-gpt55-3",
+      "case": "cohorts",
+      "version": "v13",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "5fb3de42911cd4b1fb39356cd5accbb188aca6da900f7bcc1a536be784264b3c"
+      },
+      "prompt_sha256": "c8a0f00f5ce4d7e3a634368513851e3776f4f3265f1fa50f9b54b5db5048713f",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "duration_seconds": 78.763,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:43:57.429394+00:00",
+        "finishedAtUtc": "2026-09-12T02:45:16.192034+00:00",
+        "durationSeconds": 78.763,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "run": "usefulcharts-cohorts-v13-20260911-gpt55-3",
+        "case": "cohorts",
+        "status": "pass",
+        "findings": [],
+        "canvas": [
+          1000,
+          854.7999877929688
+        ],
+        "record_count": 19,
+        "preview_reads": 1,
+        "median_record_font": 15.93,
+        "limitation": "Data and geometry checks do not certify composition or visual parity; inspect the actual image separately."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "result/browser.json",
+        "result/layout.json",
+        "result/poster.png"
+      ],
+      "total_read_bytes": 135808,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-transport-v13-20260911-gpt55-1",
+      "case": "transport",
+      "version": "v13",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "5fb3de42911cd4b1fb39356cd5accbb188aca6da900f7bcc1a536be784264b3c"
+      },
+      "prompt_sha256": "2997712181c92a795ae5325858e94f1322381f2577949f2e60310b65794a4351",
+      "expected_outputs": [
+        "museum/data.json",
+        "museum/timeline.svg",
+        "museum/viewer.html",
+        "museum/layout.json",
+        "museum/browser.json",
+        "museum/preview.png"
+      ],
+      "duration_seconds": 63.496,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:40:11.736185+00:00",
+        "finishedAtUtc": "2026-09-12T02:41:15.232196+00:00",
+        "durationSeconds": 63.496,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "run": "usefulcharts-transport-v13-20260911-gpt55-1",
+        "case": "transport",
+        "status": "pass",
+        "findings": [],
+        "canvas": [
+          1000,
+          770
+        ],
+        "record_count": 15,
+        "preview_reads": 1,
+        "median_record_font": 15.93,
+        "limitation": "Data and geometry checks do not certify composition or visual parity; inspect the actual image separately."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+        "skills/usefulcharts-style/references/compact-chronology.md",
+        "museum/preview.png",
+        "museum/layout.json",
+        "museum/browser.json"
+      ],
+      "total_read_bytes": 117370,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-transport-v13-20260911-gpt55-2",
+      "case": "transport",
+      "version": "v13",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "5fb3de42911cd4b1fb39356cd5accbb188aca6da900f7bcc1a536be784264b3c"
+      },
+      "prompt_sha256": "2997712181c92a795ae5325858e94f1322381f2577949f2e60310b65794a4351",
+      "expected_outputs": [
+        "museum/data.json",
+        "museum/timeline.svg",
+        "museum/viewer.html",
+        "museum/layout.json",
+        "museum/browser.json",
+        "museum/preview.png"
+      ],
+      "duration_seconds": 72.905,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:41:44.625762+00:00",
+        "finishedAtUtc": "2026-09-12T02:42:57.529981+00:00",
+        "durationSeconds": 72.905,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "run": "usefulcharts-transport-v13-20260911-gpt55-2",
+        "case": "transport",
+        "status": "pass",
+        "findings": [],
+        "canvas": [
+          1000,
+          770
+        ],
+        "record_count": 15,
+        "preview_reads": 1,
+        "median_record_font": 15.93,
+        "limitation": "Data and geometry checks do not certify composition or visual parity; inspect the actual image separately."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+        "skills/usefulcharts-style/references/compact-chronology.md",
+        "museum/preview.png",
+        "museum/layout.json",
+        "museum/browser.json"
+      ],
+      "total_read_bytes": 118136,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-transport-v13-20260911-gpt55-3",
+      "case": "transport",
+      "version": "v13",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "5fb3de42911cd4b1fb39356cd5accbb188aca6da900f7bcc1a536be784264b3c"
+      },
+      "prompt_sha256": "2997712181c92a795ae5325858e94f1322381f2577949f2e60310b65794a4351",
+      "expected_outputs": [
+        "museum/data.json",
+        "museum/timeline.svg",
+        "museum/viewer.html",
+        "museum/layout.json",
+        "museum/browser.json",
+        "museum/preview.png"
+      ],
+      "duration_seconds": 68.561,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:43:57.484868+00:00",
+        "finishedAtUtc": "2026-09-12T02:45:06.045290+00:00",
+        "durationSeconds": 68.561,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "run": "usefulcharts-transport-v13-20260911-gpt55-3",
+        "case": "transport",
+        "status": "pass",
+        "findings": [],
+        "canvas": [
+          1000,
+          770
+        ],
+        "record_count": 15,
+        "preview_reads": 1,
+        "median_record_font": 15.93,
+        "limitation": "Data and geometry checks do not certify composition or visual parity; inspect the actual image separately."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+        "skills/usefulcharts-style/references/compact-chronology.md",
+        "museum/layout.json",
+        "museum/browser.json",
+        "museum/preview.png"
+      ],
+      "total_read_bytes": 118002,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-contract-v13-20260911-spark-1",
+      "case": "contract",
+      "version": "v13",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "5fb3de42911cd4b1fb39356cd5accbb188aca6da900f7bcc1a536be784264b3c"
+      },
+      "prompt_sha256": "cebabd9bf1ad121d141b06d0e8733e0b984102f99b467f9b1b64523902e90af9",
+      "expected_outputs": [
+        "deliverables/chart.svg",
+        "deliverables/chart.html",
+        "deliverables/layout.json"
+      ],
+      "duration_seconds": 21.288,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:40:12.085200+00:00",
+        "finishedAtUtc": "2026-09-12T02:40:33.373325+00:00",
+        "durationSeconds": 21.288,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "not-applicable",
+        "reason": "See the authored baseline review or separate command-contract browser audit."
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "deliverables/layout.json",
+        "deliverables/chart.html"
+      ],
+      "total_read_bytes": 12283,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-boundary-v13-20260911-spark-1",
+      "case": "boundary",
+      "version": "v13",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "5fb3de42911cd4b1fb39356cd5accbb188aca6da900f7bcc1a536be784264b3c"
+      },
+      "prompt_sha256": "73f91e447401c48dde98ee117f755bcaeea4576cf818f0b8264da645c5fe0b8a",
+      "expected_outputs": [
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "duration_seconds": 20.65,
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:41:17.063518+00:00",
+        "finishedAtUtc": "2026-09-12T02:41:37.713278+00:00",
+        "durationSeconds": 20.65,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "findings": []
+      },
+      "read_summary_returncode": 1,
+      "read_paths": [
+        "review/source.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "review/diagnostic.json"
+      ],
+      "total_read_bytes": 19220,
+      "tool_errors": [
+        "ENOENT: no such file or directory, access 'C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\usefulcharts-boundary-v13-20260911-spark-1\\workspace\\review\\source.json'"
+      ]
+    },
+    {
+      "id": "usefulcharts-boundary-v13-20260911-spark-2",
+      "case": "boundary",
+      "version": "v13",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "5fb3de42911cd4b1fb39356cd5accbb188aca6da900f7bcc1a536be784264b3c"
+      },
+      "prompt_sha256": "73f91e447401c48dde98ee117f755bcaeea4576cf818f0b8264da645c5fe0b8a",
+      "expected_outputs": [
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "duration_seconds": 26.728,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:43:57.782618+00:00",
+        "finishedAtUtc": "2026-09-12T02:44:24.510542+00:00",
+        "durationSeconds": 26.728,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "findings": []
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "total_read_bytes": 9130,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-boundary-v13-20260911-spark-3",
+      "case": "boundary",
+      "version": "v13",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 60,
+        "payloadSha256": "5fb3de42911cd4b1fb39356cd5accbb188aca6da900f7bcc1a536be784264b3c"
+      },
+      "prompt_sha256": "73f91e447401c48dde98ee117f755bcaeea4576cf818f0b8264da645c5fe0b8a",
+      "expected_outputs": [
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "duration_seconds": 23.754,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T02:45:01.250632+00:00",
+        "finishedAtUtc": "2026-09-12T02:45:25.004910+00:00",
+        "durationSeconds": 23.754,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "findings": []
+      },
+      "read_summary_returncode": 0,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "total_read_bytes": 23720,
+      "tool_errors": []
+    }
+  ],
+  "visual_parity": "Not established. Source and geometry checks do not grade resemblance."
+}

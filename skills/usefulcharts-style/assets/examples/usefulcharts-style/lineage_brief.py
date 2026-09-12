@@ -210,6 +210,7 @@ def build_lineage(base):
             edge['via']=[[503,1357.24],[436,1357.24],[436,1608],[139,1608]]
     records['observatories'].update(icon='illustration-astrolabe-observation',icon_width=70,width=238)
     records['pilotage'].update(icon='illustration-sextant-1904',icon_width=53,width=185)
+    records['public-sky'].update(icon='illustration-telescope-observer',icon_width=59,width=204)
     data['source_note']='Original synthetic history · All institutions, dates and relationships are invented. Source illustrations: Pearson Scott Foresman and Nordisk familjebok; provenance embedded.'
     # Insets explain this particular source. The map explicitly repeats its key.
     data['insets'] = [dict(kind='isotype', title='Institutions represented in this study', box=[78,178,398,409],groups=[f'g{i}' for i in range(5)]),

@@ -854,13 +854,13 @@
       "group": "g0",
       "x": 894,
       "y": 1670,
-      "width": 171,
+      "width": 204,
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
       "detail": "1765 \u00b7 The university opens its instruments",
-      "icon": "orbit",
-      "icon_width": 29
+      "icon": "illustration-telescope-observer",
+      "icon_width": 59
     },
     {
       "id": "comet",

@@ -4,7 +4,7 @@
   "mode": "timeline",
   "design": "editorial",
   "width": 1800,
-  "height": 2700,
+  "height": 2400,
   "font_size": 12.2,
   "imprint": [
     "ORIGINAL STUDY",
@@ -38,7 +38,7 @@
       "color": "#B88BC6"
     }
   ],
-  "source_note": "Original synthetic history \u00b7 All periods, events, and relationships are invented. Illustrations: museum samples, Pearson Scott Foresman and Nordisk familjebok; provenance embedded.",
+  "source_note": "Synthetic history \u00b7 All periods, events and relationships are invented. Contextual art: Pearson Scott Foresman, Library of Congress and Nordisk familjebok; provenance embedded.",
   "annotations": [],
   "pattern_id": "usefulcharts-parallel-history",
   "subtitle": "Divisions, unions, and changing societies in five fictional regions, 1000\u20132000",
@@ -1198,8 +1198,10 @@
       "size": 10.6,
       "detail_size": 9.5,
       "group": "g0",
-      "icon": "object-246",
-      "art_size": 70
+      "icon": "illustration-cuneiform-tablet",
+      "art_size": 120,
+      "art_width": 62,
+      "art_height": 103.61
     },
     {
       "id": "event-0-2",
@@ -1267,8 +1269,8 @@
       "year": 1692,
       "label": "1692 \u00b7 Canal locks",
       "detail": "Canal boats reach the upper valley.",
-      "offset": 56.0,
-      "width": 58.0,
+      "offset": 168,
+      "width": 52,
       "size": 10.6,
       "detail_size": 9.5,
       "group": "g0"
@@ -1291,8 +1293,8 @@
       "year": 1830,
       "label": "1830 \u00b7 Steam on the rivers",
       "detail": "Scheduled packets link inland manufacturing towns.",
-      "offset": 81.0,
-      "width": 133.0,
+      "offset": 87,
+      "width": 130,
       "size": 10.6,
       "detail_size": 9.5,
       "group": "g0"
@@ -1413,11 +1415,9 @@
       "detail": "Small workshops specialize in precision escapements.",
       "offset": 95.0,
       "width": 131.0,
-      "size": 10.6,
-      "detail_size": 9.5,
-      "group": "g1",
-      "icon": "object-57819",
-      "art_size": 70
+      "size": 13.2,
+      "detail_size": 10.2,
+      "group": "g1"
     },
     {
       "id": "event-1-8",
@@ -1485,7 +1485,7 @@
       "year": 1131,
       "label": "1131 \u00b7 Seasonal convoys",
       "detail": "Merchants coordinate voyages through the straits.",
-      "offset": 77.5,
+      "offset": 55.5,
       "width": 148,
       "size": 10.6,
       "detail_size": 9.5,
@@ -1552,8 +1552,8 @@
       "group": "g2",
       "icon": "illustration-astrolabe-observation",
       "art_size": 120,
-      "art_width": 120,
-      "art_height": 82.65
+      "art_width": 108,
+      "art_height": 74.38
     },
     {
       "id": "event-2-7",
@@ -1574,11 +1574,10 @@
       "label": "1741 \u00b7 Offshore survey",
       "detail": "Crews chart the outer banks.",
       "offset": 178.0,
-      "width": 82.0,
+      "width": 62.0,
       "size": 10.6,
       "detail_size": 9.5,
       "group": "g2",
-      "icon": "illustration-sextant-1904",
       "art_size": 65
     },
     {
@@ -1673,11 +1672,9 @@
       "detail": "Ceremonial gifts sustain relations across the archipelago.",
       "offset": 80.5,
       "width": 148,
-      "size": 10.6,
-      "detail_size": 9.5,
-      "group": "g3",
-      "icon": "object-60878",
-      "art_size": 70
+      "size": 13.2,
+      "detail_size": 10.2,
+      "group": "g3"
     },
     {
       "id": "event-3-5",
@@ -1846,8 +1843,10 @@
       "size": 10.6,
       "detail_size": 9.5,
       "group": "g4",
-      "icon": "object-15190",
-      "art_size": 70
+      "icon": "illustration-telescope-observer",
+      "art_size": 79.0,
+      "art_width": 64,
+      "art_height": 91.65
     },
     {
       "id": "event-4-7",
@@ -1938,5 +1937,5 @@
       "label": "Modern age"
     }
   ],
-  "reading_note": "One linear year scale. Bridges: succession, division, or union; dotted links: uncertain continuity. Width is compositional, not a quantity. Decorative map: Milner, 1850."
+  "reading_note": "One year scale. Bridges: succession, division or union; dots: uncertain continuity. Width is compositional. Objects illustrate subjects, not these fictional events. Decorative map: Milner, 1850."
 }

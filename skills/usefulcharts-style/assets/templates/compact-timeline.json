@@ -1,0 +1,28 @@
+{
+  "id": "parallel-workshops",
+  "design": "editorial",
+  "mode": "timeline",
+  "layout": "compact",
+  "title": "Three Workshops Through Time",
+  "source_note": "Synthetic workshop histories and dates.",
+  "reading_note": "Every ribbon uses the same year scale. Ribbon length shows duration; colors identify workshops.",
+  "groups": [
+    {"id": "glass", "label": "Glass workshop", "color": "#77BDDD"},
+    {"id": "paper", "label": "Paper workshop", "color": "#98BD92"},
+    {"id": "metal", "label": "Metal workshop", "color": "#F5C825"}
+  ],
+  "time": {"start": 1800, "end": 1900, "step": 10},
+  "lanes": [
+    {"id": "glass", "label": "Glass workshop"},
+    {"id": "paper", "label": "Paper workshop"},
+    {"id": "metal", "label": "Metal workshop"}
+  ],
+  "periods": [
+    {"id": "glass-furnace", "label": "The first furnace", "group": "glass", "lane": "glass", "start": 1800, "end": 1845},
+    {"id": "glass-cooperative", "label": "Glassmakers' cooperative", "group": "glass", "lane": "glass", "start": 1845, "end": 1900},
+    {"id": "paper-mill", "label": "The river mill", "group": "paper", "lane": "paper", "start": 1800, "end": 1860},
+    {"id": "paper-hall", "label": "Paperworkers' hall", "group": "paper", "lane": "paper", "start": 1860, "end": 1900},
+    {"id": "metal-guild", "label": "The casting guild", "group": "metal", "lane": "metal", "start": 1800, "end": 1830},
+    {"id": "metal-foundry", "label": "A common foundry", "group": "metal", "lane": "metal", "start": 1830, "end": 1900}
+  ]
+}

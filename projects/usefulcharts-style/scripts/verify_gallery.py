@@ -37,8 +37,11 @@ def main():
             assert zoom>initial
             page.locator("#full").click();full=page.locator("#paper").bounding_box()["width"]
             assert full==1800
-            image_sizes=page.evaluate("""()=>[...document.querySelectorAll('#paper svg svg')].map(s=>({declared:Number(s.getAttribute('width')),actual:s.getBoundingClientRect().width}))""")
-            assert all(abs(s['actual']-s['declared'])<.1 for s in image_sizes),image_sizes
+            # A portrait fitted into a square SVG legitimately has a narrower
+            # painted bounding box. Compare the transformed viewport, then verify that
+            # the painted artwork stays within it; do not demand distortion.
+            image_sizes=page.evaluate("""()=>[...document.querySelectorAll('#paper svg svg')].map(s=>{const m=s.getScreenCTM(),v=s.viewBox.baseVal,b=s.getBoundingClientRect();return {declared:Number(s.getAttribute('width')),declaredHeight:Number(s.getAttribute('height')),viewport:v.width*Math.hypot(m.a,m.b),viewportHeight:v.height*Math.hypot(m.c,m.d),paintedWidth:b.width,paintedHeight:b.height}})""")
+            assert all(abs(s['viewport']-s['declared'])<.1 and abs(s['viewportHeight']-s['declaredHeight'])<.1 and s['paintedWidth']<=s['viewport']+.1 and s['paintedHeight']<=s['viewportHeight']+.1 for s in image_sizes),image_sizes
             page.locator("#fit").click();assert page.locator("#paper").bounding_box()["width"]==initial
             page.screenshot(path=str(args.artifacts/f"viewer-{name}.png"))
             # Capture a dense part from the actual SVG at full resolution.

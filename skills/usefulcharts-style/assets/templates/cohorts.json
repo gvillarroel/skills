@@ -1,0 +1,31 @@
+{
+  "id": "family-study",
+  "design": "editorial",
+  "mode": "genealogy",
+  "layout": "cohorts",
+  "title": "The Estuary Family",
+  "source_note": "Synthetic family and dates, created for a layout demonstration.",
+  "reading_note": "Double lines join partners. Descent begins at the parental union. Spacing is schematic.",
+  "groups": [
+    {"id": "founders", "label": "Founding family", "color": "#AAA593"},
+    {"id": "estuary", "label": "Estuary branch", "color": "#F56550"},
+    {"id": "hill", "label": "Hill branch", "color": "#77BDDD"}
+  ],
+  "nodes": [
+    {"id": "morgan", "label": "Morgan", "detail": "1800–1872", "group": "founders", "row": 0},
+    {"id": "arden", "label": "Arden", "detail": "1805–1881", "group": "founders", "row": 0},
+    {"id": "ellis", "label": "Ellis", "detail": "1829–1901", "group": "estuary", "row": 1},
+    {"id": "robin", "label": "Robin", "detail": "1833–1913", "group": "estuary", "row": 1},
+    {"id": "sage", "label": "Sage", "detail": "1835–1899", "group": "hill", "row": 1},
+    {"id": "quinn", "label": "Quinn", "detail": "1831–1911", "group": "hill", "row": 1},
+    {"id": "river", "label": "River", "detail": "1857–1932", "group": "estuary", "row": 2},
+    {"id": "wren", "label": "Wren", "detail": "1860–1944", "group": "estuary", "row": 2},
+    {"id": "fern", "label": "Fern", "detail": "1862–1938", "group": "hill", "row": 2}
+  ],
+  "unions": [
+    {"id": "founding-union", "partners": ["morgan", "arden"], "children": ["ellis", "sage"]},
+    {"id": "estuary-union", "partners": ["ellis", "robin"], "children": ["river", "wren"]},
+    {"id": "hill-union", "partners": ["sage", "quinn"], "children": ["fern"]}
+  ],
+  "edges": []
+}

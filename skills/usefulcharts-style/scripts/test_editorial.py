@@ -36,6 +36,60 @@ def timeline():
 
 
 class EditorialTests(unittest.TestCase):
+    def test_compact_cohort_key_wraps_above_the_first_generation(self):
+        data=graph();data.update(mode='genealogy',layout='cohorts',edges=[])
+        data.pop('width');data.pop('height')
+        palette=['#77BDDD','#F56550','#98BD92','#EBCB3C','#B992C9','#EFAC63','#A7A49D']
+        data['groups']=[dict(id=f'g{i}',label=f'Founding house {i} and its documented descendants',color=palette[i]) for i in range(7)]
+        data['nodes']=[dict(id='a',label='First founder',group='g0',row=0),dict(id='c',label='Second founder',group='g2',row=0),dict(id='b',label='Their child',group='g1',row=1)]
+        data['unions']=[dict(id='u',partners=['a','c'],children=['b'])]
+        poster=EditorialPoster(data);svg,_=poster.render()
+        key=poster.data['_cohort_key'];self.assertEqual(len(key['cells']),7)
+        self.assertGreater(key['height'],25)
+        first=min(box[1] for box in poster.boxes.values())
+        self.assertLess(max(c['box'][1]+c['box'][3] for c in key['cells']),first)
+        for group in data['groups']:self.assertIn(group['label'].split()[2],svg)
+        data['legend']=False;without_key=EditorialPoster(data);without_key.render()
+        self.assertNotIn('_cohort_key',without_key.data)
+        self.assertLess(without_key.h,poster.h)
+
+    def test_small_cohorts_measure_page_and_keep_partner_categories(self):
+        data=graph();data.update(mode='genealogy',layout='cohorts',edges=[])
+        data.pop('width');data.pop('height')
+        data['nodes']=[dict(id='a',label='A long founding name',detail='1800–1870',group='red',row=0),
+                       dict(id='b',label='A second founder',detail='1802–1878',group='blue',row=0),
+                       dict(id='c',label='The recorded child',detail='1830–1900',group='blue',row=1)]
+        data['unions']=[dict(id='u',partners=['a','b'],children=['c'])]
+        before=copy.deepcopy(data);poster=EditorialPoster(data);svg,report=poster.render()
+        self.assertEqual(data,before);self.assertLess(poster.h,1000);self.assertEqual(poster.font,18)
+        root=ET.fromstring(svg)
+        self.assertEqual(root.find('.//s:g[@data-node-id="c"]',NS).get('data-group'),'blue')
+        positions={n['id']:n for n in report['resolved_layout']['nodes']}
+        self.assertEqual(positions['a']['y'],positions['b']['y'])
+        self.assertLess(positions['c']['y']-positions['a']['y'],400)
+
+    def test_compact_timeline_has_readable_horizontal_dates_and_exact_duration(self):
+        data=timeline();data.update(layout='compact',events=[])
+        data.pop('width');data.pop('height')
+        for period in data['periods']:
+            for key in ('offset','bar_width'):period.pop(key,None)
+        before=copy.deepcopy(data);poster=EditorialPoster(data);svg,_=poster.render();root=ET.fromstring(svg)
+        self.assertEqual(data,before);self.assertLess(poster.h,1200)
+        for period in data['periods']:
+            node=root.find(f'.//s:g[@data-node-id="{period["id"]}"]',NS)
+            self.assertIsNotNone(node.find('s:rect[@data-label-box="true"]',NS))
+            labels=node.findall('s:text',NS)
+            self.assertTrue(all('transform' not in t.attrib for t in labels))
+            self.assertIn(str(period['start']),''.join(t.text or '' for t in labels))
+            box=poster.boxes[period['id']]
+            self.assertAlmostEqual(box[1],poster.top+(period['start']-1000)/1000*(poster.bottom-poster.top))
+            self.assertAlmostEqual(box[3],(period['end']-period['start'])/1000*(poster.bottom-poster.top))
+
+    def test_compact_timeline_rejects_short_page_without_falsifying_dates(self):
+        data=timeline();data.update(layout='compact',height=600,events=[])
+        data['periods'][0].update(end=1002,label='A consequential event with a long exact name')
+        with self.assertRaisesRegex(ValueError,'more vertical space'):EditorialPoster(data).render()
+
     def test_compact_auto_measures_content_and_keeps_merger_category(self):
         data=graph();data.update(layout='auto')
         data.pop('width');data.pop('height')

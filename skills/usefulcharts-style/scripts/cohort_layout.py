@@ -12,6 +12,44 @@ import math
 from collections import defaultdict
 
 
+def compact_cohort_defaults(data, measure):
+    """Measure a small family before choosing its canvas and generation spacing."""
+    result=copy.deepcopy(data)
+    rows=defaultdict(list)
+    partners={p for u in result.get('unions',[]) for p in u['partners']}
+    for node in result['nodes']:
+        if type(node.get('row')) is not int or node['row']<0:
+            raise ValueError('Cohort nodes require a nonnegative integer row.')
+        node.setdefault('width',138+(node.get('icon_width',44) if node.get('icon') else 0))
+        node.setdefault('style','hero' if node.get('emphasis') else 'pill' if node['row']==0 else 'card' if node['id'] in partners else 'plain')
+        rows[node['row']].append(node)
+    gap=float(result.get('cohort_gap',30));partner_gap=float(result.get('partner_gap',24))
+    widths=[]
+    for row,nodes in rows.items():
+        unions=sum(1 for u in result.get('unions',[]) if any(n['id']==u['partners'][0] for n in nodes))
+        widths.append(sum(n['width'] for n in nodes)+unions*partner_gap+max(0,len(nodes)-unions-1)*gap)
+    result.setdefault('width',max(1000,130+max(widths)))
+    levels=sorted(rows)
+    heights={row:max(measure(n,n['width'])[2] for n in rows[row]) for row in levels}
+    weights=result.get('cohort_weights',{})
+    distances=[]
+    for before,after in zip(levels,levels[1:]):
+        weight=float(weights.get(str(after),weights.get(after,1)))
+        if not math.isfinite(weight) or weight<=0:
+            raise ValueError('Cohort spacing weights must be finite and positive.')
+        distances.append((heights[before]+heights[after])/2+76*weight)
+    top=185+heights[levels[0]]/2
+    natural_height=top+sum(distances)+heights[levels[-1]]/2+110
+    result.setdefault('height',max(720,natural_height))
+    result.setdefault('cohort_top',top)
+    result.setdefault('cohort_bottom',result['height']-110-heights[levels[-1]]/2)
+    # The packer accepts relative row weights. Include actual label heights so
+    # a wrapped generation does not steal the next generation's connector gap.
+    result['cohort_weights']={str(row):distance for row,distance in zip(levels[1:],distances)}
+    result.setdefault('cohort_gap',gap)
+    return result
+
+
 def place_cohorts(data, measure, left, right, top, bottom):
     """Preserve entities/relations while allocating space to family units.
 

@@ -32,7 +32,7 @@ AUDIT = r"""() => {
     return rgb.map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
   };
   const contrast=(a,b)=>{const [lo,hi]=[lum(a),lum(b)].sort((x,y)=>x-y);return (hi+.05)/(lo+.05)};
-  const nodes=[...svg.querySelectorAll('[data-node-id]')].map(el=>({id:el.dataset.nodeId,box:bounds(el.querySelector('[data-node-box]'))}));
+  const nodes=[...svg.querySelectorAll('[data-node-id]')].map(el=>({id:el.dataset.nodeId,box:bounds(el.querySelector('[data-node-box]')),label_box:el.querySelector('[data-label-box]')?bounds(el.querySelector('[data-label-box]')):null}));
   const byId=Object.fromEntries(nodes.map(n=>[n.id,n]));
   const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,d:el.getAttribute('d'),curved:el.dataset.routeStyle==='rounded'}));
   const events=[...svg.querySelectorAll('[data-event-id]')].map(el=>({id:el.dataset.eventId,year:Number(el.dataset.year),origin_y:Number(el.dataset.originY),text:el.textContent}));
@@ -46,7 +46,7 @@ AUDIT = r"""() => {
   for(const n of nodes)if(!contained(n.box,{x:0,y:0,w:view.width,h:view.height}))findings.push({type:'node-outside-page',id:n.id});
   for(const t of texts){
     if(!contained(t.box,{x:24,y:0,w:view.width-48,h:view.height-24},.5))findings.push({type:'text-outside-page',text:t.text});
-    if(t.owner!=='page' && (!byId[t.owner] || !contained(t.box,byId[t.owner].box,-2)))findings.push({type:'label-outside-node',id:t.owner,text:t.text,box:t.box});
+    if(t.owner!=='page' && (!byId[t.owner] || !contained(t.box,byId[t.owner].label_box||byId[t.owner].box,-2)))findings.push({type:'label-outside-node',id:t.owner,text:t.text,box:t.box});
     if(t.contrast<4.5-.01)findings.push({type:'text-contrast',text:t.text,ratio:t.contrast});
     if(t.box.w<.1||t.box.h<.1)findings.push({type:'empty-text-geometry',text:t.text});
   }
@@ -108,6 +108,10 @@ AUDIT = r"""() => {
 
 def check_source(report, data):
     import re
+    import hashlib
+    source_hash=hashlib.sha256(json.dumps(data,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
+    if report['metadata'].get('data_sha256')!=source_hash:
+        report['findings'].append({'type':'source-revision-mismatch','expected_sha256':source_hash,'rendered_sha256':report['metadata'].get('data_sha256')})
     nodes = data.get("periods", []) if data["mode"] == "timeline" else data.get("nodes", [])
     if sorted(n["id"] for n in nodes) != sorted(n["id"] for n in report["nodes"]):
         report["findings"].append({"type": "source-node-inventory"})

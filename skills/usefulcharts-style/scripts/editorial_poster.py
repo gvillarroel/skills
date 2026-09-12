@@ -16,7 +16,7 @@ from pathlib import Path
 
 from render_chart import Poster, require, number, color, ident, wrap, fmt, text_color, contrast, overlaps, segment_hits, route, compress, KINDS, automatic_lineage, text_width
 from editorial_art import symbol
-from cohort_layout import place_cohorts
+from cohort_layout import place_cohorts, compact_cohort_defaults
 
 
 def measured_content(node, width, font):
@@ -27,6 +27,23 @@ def measured_content(node, width, font):
     detail=wrap(node.get('detail',''),usable,node.get('detail_size',size*.77))
     height=13+len(name)*size*1.18+len(detail)*size*.94
     return name,detail,max(height,icon_width+4 if icon_width else 0)
+
+
+def cohort_key(data,width):
+    """Keep category identification in a key, clear of genealogical branches."""
+    rows=[[]];used=0
+    for group in data['groups']:
+        w=min(260,text_width(group['label'],13,True)+32)
+        if rows[-1] and used+w+18>width-130:rows.append([]);used=0
+        rows[-1].append((group,w));used+=w+18
+    cells=[];y=140
+    for row in rows:
+        total=sum(w for _,w in row)+18*(len(row)-1);x=(width-total)/2
+        height=max(len(wrap(g['label'],w-22,13,True))*15+10 for g,w in row)
+        for group,w in row:
+            cells.append(dict(group=group['id'],label=group['label'],box=[x,y,w,height]));x+=w+18
+        y+=height+10
+    return dict(cells=cells,height=y-140-10)
 
 
 def rounded_path(points, radius=9):
@@ -47,7 +64,9 @@ class EditorialPoster(Poster):
     def __init__(self,data):
         original=copy.deepcopy(data)
         adjusted=copy.deepcopy(data)
-        compact=adjusted.get('layout')=='auto' and len(adjusted.get('nodes',[]))<=30
+        compact=adjusted.get('layout') in ('auto','cohorts') and len(adjusted.get('nodes',[]))<=30
+        compact_time=adjusted.get('mode')=='timeline' and adjusted.get('layout')=='compact'
+        compact=compact or compact_time
         font=original.get('font_size',18 if compact else 13)
         if adjusted.get('layout')=='auto':
             adjusted=automatic_lineage(adjusted)
@@ -77,6 +96,32 @@ class EditorialPoster(Poster):
                         n['y']=cursor+h/2
                 cursor+=h+52+spare/max(1,len(row_heights)-1)
             adjusted['layout']='resolved'
+        elif adjusted.get('layout')=='cohorts' and compact:
+            adjusted=compact_cohort_defaults(adjusted,lambda n,w:measured_content(n,w,font))
+            if adjusted.get('legend',True):
+                adjusted['_cohort_key']=cohort_key(adjusted,adjusted['width'])
+                extra=max(0,adjusted['_cohort_key']['height']-25)
+                if 'cohort_top' not in original:adjusted['cohort_top']+=extra
+                if 'cohort_bottom' not in original:adjusted['cohort_bottom']+=extra
+                if 'height' not in original:adjusted['height']+=extra
+        elif compact_time:
+            require(adjusted.get('lanes') and adjusted.get('periods'),'Compact timelines require named lanes and periods.')
+            lane_count=len(adjusted['lanes'])
+            adjusted.setdefault('width',max(1000,175+lane_count*275))
+            pitch=(adjusted['width']-175)/lane_count
+            span=adjusted['time']['end']-adjusted['time']['start']
+            require(span>0,'Invalid time scale.')
+            scale_needed=0
+            for period in adjusted['periods']:
+                period.setdefault('size',font)
+                period.setdefault('bar_width',22)
+                period.setdefault('offset',12)
+                period.setdefault('label_width',pitch-period['offset']-period['bar_width']-30)
+                label_height=12+len(wrap(period['label'],period['label_width'],period['size'],True))*period['size']*1.18+period['size']*.82
+                duration=period['end']-period['start']
+                require(duration>0,'Compact timeline periods require positive duration.')
+                scale_needed=max(scale_needed,(label_height+30)/duration)
+            adjusted.setdefault('height',max(760,302+span*scale_needed))
         else:
             adjusted.setdefault('width',1800);adjusted.setdefault('height',2700)
         adjusted.setdefault('frame_color','#902F29');adjusted.setdefault('paper_color','#EDEAD8')
@@ -145,6 +190,11 @@ class EditorialPoster(Poster):
         require(len(imprint)<=3 and all(isinstance(s,str) and text_width(s,10)<145 for s in imprint),'Use up to three short imprint lines.')
         for i,line in enumerate(imprint):
             self.text(self.w-45,38+i*16,line,10 if i==0 else 9.5,'#FFFFFF',anchor='end',bold=i==0,background=self.frame)
+        for item in self.data.get('_cohort_key',{}).get('cells',[]):
+            x,y,w,h=item['box'];paint=self.groups[item['group']]['color']
+            self.rect((x,y,w,h),'#FFFEF7',paint,2,12)
+            for i,line in enumerate(wrap(item['label'],w-22,13,True)):
+                self.text(x+w/2,y+17+i*15,line,13,bold=True,background='#FFFEF7')
 
     def footer(self):
         lines=wrap(self.data['source_note']+' '+self.data.get('reading_note',self.default_note()),self.w-155,10)
@@ -402,9 +452,16 @@ class EditorialPoster(Poster):
             x=self.left+pitch*lanes[n['lane']]+n.get('offset',18)
             height=scale(b)-scale(a)
             size=n.get('size',13)
-            names=wrap(n['label'],height-14,size,True)
-            require(len(names)*size*1.1<=width-4,f'Period {nid} label needs a wider ribbon or shorter wording.')
-            n['_vertical_lines']=names
+            if d.get('layout')=='compact':
+                names=wrap(n['label'],n['label_width'],size,True)
+                label_height=len(names)*size*1.18+size*.82+10
+                require(label_height<=height-12,f'Period {nid} needs more vertical space for its horizontal label; increase page height.')
+                n['_horizontal_lines']=names
+                n['_label_box']=(x+width+12,scale(a)+(height-label_height)/2,n['label_width'],label_height)
+            else:
+                names=wrap(n['label'],height-14,size,True)
+                require(len(names)*size*1.1<=width-4,f'Period {nid} label needs a wider ribbon or shorter wording.')
+                n['_vertical_lines']=names
             self.make_node(n,(x,scale(a),width,height))
         for nid,a in self.boxes.items():
             for oid,b in self.boxes.items():
@@ -470,6 +527,15 @@ class EditorialPoster(Poster):
             x,y,w,h=self.boxes[nid];paint=self.groups[n['group']]['color'];ink=text_color(paint)
             self.add(f'<g id="node-{nid}" data-node-id="{nid}" data-group="{n["group"]}">')
             self.rect((x,y,w,h),paint,self.paper,1,5,extra='data-node-box="true"')
+            if '_horizontal_lines' in n:
+                lx,ly,lw,lh=n['_label_box'];size=n['size']
+                self.rect((lx,ly,lw,lh),self.paper,extra='data-label-box="true"')
+                for i,line in enumerate(n['_horizontal_lines']):
+                    self.text(lx+3,ly+size+i*size*1.18,line,size,bold=True,anchor='start',owner=nid)
+                dates=self.year_label(n['start'])+'\u2013'+self.year_label(n['end'])
+                self.text(lx+3,ly+lh-7,dates,size*.77,anchor='start',owner=nid)
+                self.add('</g>')
+                continue
             size=n.get('size',13);lines=n['_vertical_lines'];cx=x+w/2;cy=y+h/2
             for i,line in enumerate(lines):
                 self.text(cx,cy+(i-(len(lines)-1)/2)*size*1.1+size*.3,line,size,ink,bold=True,owner=nid,background=paint,

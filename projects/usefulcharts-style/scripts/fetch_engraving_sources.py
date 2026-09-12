@@ -3,7 +3,7 @@
 # requires-python = ">=3.11"
 # dependencies = []
 # ///
-"""Retain selected original Commons illustration bytes for local visual review."""
+"""Retain unmodified selected and rejected Commons candidates for local review."""
 
 import hashlib
 import json
@@ -16,7 +16,15 @@ from pathlib import Path
 FILES = {
     'observing-astrolabe.svg': 'Astrolabe PSF.svg',
     'sextant.png': 'Stronomiska instrument, Sextant, Nordisk familjebok transparent.png',
+    'vase-psf.png': 'Vase (PSF).png',
+    'pendulum-psf.png': 'Pendulum 2 (PSF).png',
+    'telescope-psf.svg': 'Telescope (PSF).svg',
+    'cuneiform-tablet.png': 'Cuneiform script2.png',
+    'conch-psf.png': 'Conch (PSF).png',
 }
+
+# Vase, pendulum and conch were rejected after inspection of their opaque
+# backgrounds. Keeping this local evidence does not add them to the skill.
 
 
 def main():

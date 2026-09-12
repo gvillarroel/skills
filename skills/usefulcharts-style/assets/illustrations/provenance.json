@@ -36,6 +36,43 @@
       "width": 413,
       "height": 396,
       "background": "Indexed PNG with transparent palette index 0; visually inspected on the poster paper."
+    },
+    {
+      "id": "telescope-observer",
+      "file": "telescope-observer.svg",
+      "title": "Observer at a large refracting telescope",
+      "creator": "Pearson Scott Foresman; SVG uploaded by AzaToth",
+      "source_revision": 1112658303,
+      "rights": "Public domain dedication by Pearson Scott Foresman, confirmed by Wikimedia VRTS ticket 2010061110041093.",
+      "date_note": "Undated explanatory illustration; vector file uploaded on 2007-12-02. This is not evidence of an instrument at a fictional event.",
+      "background": "Transparent SVG field, visually inspected against the poster paper.",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Telescope_%28PSF%29.svg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Telescope_%28PSF%29.svg",
+      "sha256": "0d6f7043cebdf939be2e82264d220c702d3580e97607b689c87ca31054da1466",
+      "bytes": 117104,
+      "modified": false,
+      "width": 194.0,
+      "height": 278.0,
+      "mime_type": "image/svg+xml"
+    },
+    {
+      "id": "cuneiform-tablet",
+      "file": "cuneiform-tablet.png",
+      "title": "Cuneiform tablet, Kirkor Minassian collection, Library of Congress, cf0013",
+      "creator": "Library of Congress; transparent derivative by Yjenith",
+      "source_revision": 911771686,
+      "collection_url": "https://hdl.loc.gov/loc.amed/amcune.cf0013",
+      "rights": "Source marked PD-USGov and Public Domain Mark 1.0 on Wikimedia Commons.",
+      "date_note": "Tablet dated 2041–2040 BCE in the source description. Transparent derivative uploaded on 2012-02-28. Contextual illustration, not a record of fictional Riverlands.",
+      "background": "PNG with transparency, visually inspected against the poster paper.",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cuneiform_script2.png",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Cuneiform_script2.png",
+      "sha256": "47f330f9b68cdb3388871f93f9742639ac6d72724406eb456083d55bae38671f",
+      "bytes": 416361,
+      "modified": false,
+      "width": 374,
+      "height": 625,
+      "mime_type": "image/png"
     }
   ]
 }

@@ -26,6 +26,9 @@ def main():
     ns={"s":"http://www.w3.org/2000/svg"};ET.register_namespace("",ns["s"])
     original=ET.parse(args.svg).getroot();source=json.loads(args.source.read_text(encoding="utf-8"))
     mutations=[]
+    node=copy.deepcopy(original);metadata=node.find('.//s:metadata[@id="chart-data"]',ns)
+    values=json.loads(metadata.text);values['data_sha256']='0'*64;metadata.text=json.dumps(values)
+    mutations.append(('stale-source-revision',node,'source-revision-mismatch'))
     node=copy.deepcopy(original);target=node.find(".//s:g[@data-node-id]",ns);node.remove(target)
     mutations.append(("deleted-node",node,"node-inventory"))
     node=copy.deepcopy(original);node.find(".//s:g[@data-node-id]/s:text",ns).set("font-size","300")

@@ -10,11 +10,11 @@ def build_timeline(base):
     labels=['Riverlands','Highlands','Coastlands','Islands','Northlands']
     d=base('five-regional-histories','FIVE REGIONS THROUGH TIME','timeline',labels)
     for key in ('nodes','edges','unions','insets'):d.pop(key)
-    d.update(pattern_id='usefulcharts-parallel-history',subtitle='Divisions, unions, and changing societies in five fictional regions, 1000–2000',frame_color='#665D48',
+    d.update(pattern_id='usefulcharts-parallel-history',subtitle='Divisions, unions, and changing societies in five fictional regions, 1000–2000',frame_color='#665D48',height=2400,
         time=dict(start=1000,end=2000,step=25),lanes=[dict(id=f'l{i}',label=v) for i,v in enumerate(labels)],periods=[],transitions=[],events=[],map_texture='milner-1850',
         eras=[dict(start=a,end=b,label=label) for a,b,label in [(1000,1200,'Early city states'),(1200,1450,'Maritime kingdoms'),(1450,1650,'Age of exchange'),(1650,1850,'Federations'),(1850,2000,'Modern age')]],
-        source_note='Original synthetic history · All periods, events, and relationships are invented. Illustrations: museum samples, Pearson Scott Foresman and Nordisk familjebok; provenance embedded.',
-        reading_note='One linear year scale. Bridges: succession, division, or union; dotted links: uncertain continuity. Width is compositional, not a quantity. Decorative map: Milner, 1850.')
+        source_note='Synthetic history · All periods, events and relationships are invented. Contextual art: Pearson Scott Foresman, Library of Congress and Nordisk familjebok; provenance embedded.',
+        reading_note='One year scale. Bridges: succession, division or union; dots: uncertain continuity. Width is compositional. Objects illustrate subjects, not these fictional events. Decorative map: Milner, 1850.')
     # id, name, first year, last year, lane-relative x, width. The differing
     # number of simultaneous polities is part of the source, not a decoration.
     records=[[
@@ -128,9 +128,9 @@ def build_timeline(base):
         (1950,'The public university','Regional colleges unite under a common charter.')]]
     # An object is used once, where its subject supports the fictional event.
     # Its real identity and date remain in the SVG's embedded provenance.
-    art={(0,1):'object-246',(1,7):'object-57819',(2,6):'illustration-astrolabe-observation',
-         (2,8):'illustration-sextant-1904',(2,9):'object-27881',(3,4):'object-60878',(4,6):'object-15190'}
-    landmarks={(0,4),(1,2),(2,4),(3,5),(4,2),(4,9)}
+    art={(0,1):'illustration-cuneiform-tablet',(2,6):'illustration-astrolabe-observation',
+         (2,8):'illustration-sextant-1904',(4,6):'illustration-telescope-observer'}
+    landmarks={(0,4),(1,2),(1,7),(2,4),(3,4),(3,5),(4,2),(4,9)}
     major_periods={(0,'river'),(1,'silver'),(2,'maritime'),(3,'voyage'),(4,'birch')}
     for g,rows in enumerate(records):
         lookup={r[0]:r for r in rows}
@@ -148,7 +148,7 @@ def build_timeline(base):
             # Find the widest quiet interval through the complete event height,
             # including its optional artwork, rather than assigning two tracks.
             image_id=art.get((g,i));height=150 if image_id else 84
-            stop=year+height/2.398
+            stop=year+height/((d['height']-302)/1000)
             occupied=sorted((x-8,x+w+8) for _,_,a,b,x,w in rows if a<stop and b>year)
             merged=[]
             for a,b in occupied:
@@ -164,8 +164,12 @@ def build_timeline(base):
             e=dict(id=f'event-{g}-{i}',lane=f'l{g}',year=year,label=f'{year} · {label}',detail=detail,offset=x,width=width,size=10.6,detail_size=9.5,group=f'g{g}')
             if (g,i) in landmarks:e.update(size=13.2,detail_size=10.2)
             if (g,i)==(2,10):e.update(label='1900 · Dock unions',detail='Workers agree common pay and work hours.',offset=1,width=62)
+            if (g,i)==(0,9):e.update(offset=87,width=130)
+            if (g,i)==(0,7):e.update(offset=168,width=52)
             if image_id and width>=65:e.update(icon=image_id,art_size=min(120 if image_id.startswith('illustration-') else 70,width))
             if (g,i)==(2,8):e['art_size']=65
-            if (g,i)==(2,6):e.update(art_width=120,art_height=82.65)
+            if (g,i)==(2,6):e.update(art_width=108,art_height=74.38)
+            if (g,i)==(0,1):e.update(art_width=62,art_height=103.61)
+            if (g,i)==(4,6):e.update(art_width=64,art_height=91.65)
             d['events'].append(e)
     return d
