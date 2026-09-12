@@ -27,9 +27,14 @@ def main():
     automatic=crossed_brief();shared=copy.deepcopy(automatic)
     shared['edges'][0]['via']=[[200,430],[850,430]];shared['edges'][1]['via']=[[500,430],[1100,430]]
     crossing=copy.deepcopy(shared);crossing['edges'][1]['via']=[[500,470],[1100,470]]
+    near=copy.deepcopy(shared);near['edges'][1]['via']=[[500,430.022173913],[1100,430.022173913]]
+    painted=copy.deepcopy(shared);painted['edges'][1]['via']=[[500,432],[1100,432]]
+    separated=copy.deepcopy(shared);separated['edges'][1]['via']=[[500,438],[1100,438]]
     sibling=copy.deepcopy(automatic);sibling['nodes']=[n for n in sibling['nodes'] if n['id']!='c'];sibling['edges'][1]['source']='a'
     cases=[('automatic',automatic,False,False),('authored-shared',shared,True,False),('perpendicular-crossing',crossing,False,False),
-           ('legitimate-siblings',sibling,False,False),('forged-route-metadata',shared,True,True)]
+           ('legitimate-siblings',sibling,False,False),('forged-route-metadata',shared,True,True),
+           ('rounded-coordinate-overlap',near,True,False),('painted-width-overlap',painted,True,False),
+           ('parallel-gutter',separated,False,False)]
     results=[]
     with sync_playwright() as pw:
         browser=pw.chromium.launch();page=browser.new_page(viewport={'width':1400,'height':1000})

@@ -20,10 +20,10 @@ def route_score(path,segments):
     return length+24*max(0,len(path)-2)+90*crossings
 
 
-def compose_influences(source,replace_authored=False):
+def compose_influences(source,replace_authored=False,*,local_first=False):
     """Return a complete editable brief; never mutate the supplied source."""
     require(source.get('design')=='editorial' and source.get('mode')=='lineage','Influence composition requires an editorial institutional lineage.')
-    require(source.get('layout') not in ('auto','packed','cohorts'),
+    require(source.get('layout') not in ('auto','packed','cohorts','branches'),
         'Resolve the first layout before composing influences: copy the reported node centers, measured widths and canvas into an authored brief.')
     selected={edge['id'] for edge in source.get('edges',[]) if edge['kind']=='influence' and
         (replace_authored or not any(key in edge for key in ('via','corridor_y','source_port','target_port')))}
@@ -41,21 +41,23 @@ def compose_influences(source,replace_authored=False):
         reserved=[(a,b) for prior in routes.values() if not {edge['source'],edge['target']}&{prior['source'],prior['target']}
                   for a,b in zip(prior['points'],prior['points'][1:])]
         candidates=[]
-        for sp,tp in [('left','right'),('right','left'),('left','left'),('right','right'),('bottom','top')]:
-            start,a=attachment_port(poster.boxes[edge['source']],sp);end,b=attachment_port(poster.boxes[edge['target']],tp)
-            if any(x-7<p[0]<x+w+7 and y-7<p[1]<y+h+7 for p in (a,b) for x,y,w,h in obstacles):continue
-            regions=[(max(world[0],min(a[0],b[0])-margin),max(world[1],min(a[1],b[1])-margin),
-                min(world[2],max(a[0],b[0])+margin),min(world[3],max(a[1],b[1])+margin))
-                for margin in (30,90,220,600,max(poster.w,poster.h))]
-            try:path=compress([start]+route_regions(a,b,obstacles,regions,segments,reserved=reserved)+[end])
-            except ValueError:continue
-            if any(segment_hits(p,q,box,0) for p,q in zip(path,path[1:]) for box in obstacles):continue
-            candidates.append((route_score(path,segments),sp,tp,path))
+        searches=[(30,90),(30,90,220,600,max(poster.w,poster.h))] if local_first else [(30,90,220,600,max(poster.w,poster.h))]
+        for search_index,margins in enumerate(searches):
+            for sp,tp in [('left','right'),('right','left'),('left','left'),('right','right'),('bottom','top')]:
+                start,a=attachment_port(poster.boxes[edge['source']],sp);end,b=attachment_port(poster.boxes[edge['target']],tp)
+                if any(x-7<p[0]<x+w+7 and y-7<p[1]<y+h+7 for p in (a,b) for x,y,w,h in obstacles):continue
+                regions=[(max(world[0],min(a[0],b[0])-margin),max(world[1],min(a[1],b[1])-margin),
+                    min(world[2],max(a[0],b[0])+margin),min(world[3],max(a[1],b[1])+margin)) for margin in margins]
+                try:path=compress([start]+route_regions(a,b,obstacles,regions,segments,reserved=reserved)+[end])
+                except ValueError:continue
+                if any(segment_hits(p,q,box,0) for p,q in zip(path,path[1:]) for box in obstacles):continue
+                candidates.append((route_score(path,segments),sp,tp,path))
+            if candidates:break
         require(candidates,f'No complete influence route for {edge["id"]}; move its local group or author a corridor.')
         value,sp,tp,path=min(candidates,key=lambda result:result[0])
         routes[edge['id']]=dict(edge,source_port=sp,target_port=tp,points=path)
         segments.extend(zip(path,path[1:]));choices.append(dict(id=edge['id'],source_port=sp,target_port=tp,
-            route_cost=value,candidate_count=len(candidates)))
+            route_cost=value,candidate_count=len(candidates),search='local' if local_first and search_index==0 else 'full'))
     result=copy.deepcopy(source)
     for edge in result['edges']:
         route=routes[edge['id']]

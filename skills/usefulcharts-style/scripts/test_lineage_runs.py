@@ -35,6 +35,13 @@ class SeparateRunsTests(unittest.TestCase):
         self.assertEqual((path[0],path[-1]),((200,200),(600,400)))
         self.assertFalse(any(collinear_overlap(a,b,c,d)>.05 for a,b in zip(path,path[1:]) for c,d in reserved))
 
+    def test_almost_coincident_painted_runs_keep_a_visible_gutter(self):
+        for offset in (.022173913, 1.5, 3.9):
+            reserved=[((250,300+offset),(550,300+offset))]
+            path=route((200,200),(600,400),[],(0,0,800,600),reserved,reserved=reserved)
+            self.assertFalse(any(collinear_overlap(a,b,c,d,tolerance=4)>.05
+                                 for a,b in zip(path,path[1:]) for c,d in reserved))
+
     def test_unrelated_automatic_paths_do_not_share_a_trunk(self):
         data=crossed_brief();original=copy.deepcopy(data);poster=EditorialPoster(data);poster.render()
         first,second=poster.routes

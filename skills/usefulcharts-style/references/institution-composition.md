@@ -2,7 +2,7 @@
 
 Use this procedure for a dense `usefulcharts-branching-lineage` poster. It addresses a visible failure: exchanging city names inside a fixed sequence of institution types still produces a template, even if cards have different colors and positions.
 
-For 30 records or fewer without prescribed positions, begin with [compact lineage](compact-lineage.md). For a medium history of roughly 31–100 records, use [packed stories](packed-stories.md) to measure a page from relative neighborhoods. Small institutional mergers are supported by automatic placement. Reserve the authored workflow below for a specific difficulty observed in the first preview, prescribed coordinates, or a larger, denser source.
+For 30 records or fewer without prescribed positions, begin with [compact lineage](compact-lineage.md). For a medium history of roughly 31–100 records, use [data-first branches](data-first-branches.md); use [packed stories](packed-stories.md) when relative neighborhoods are supplied. Small institutional mergers are supported by automatic placement. Reserve the authored workflow below for a specific difficulty observed in the first preview, prescribed coordinates, or a larger, denser source.
 
 ## Write the records before the geometry
 

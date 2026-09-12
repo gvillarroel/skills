@@ -10,7 +10,7 @@ An institutional lineage is normally schematic. Keep structural predecessors abo
 
 Describe two to four local chapters before placing a substantial history. For each, name the continuing branches, the stories that finish, and the later family that can use the released space. These are composition notes, not additional historical entities. Give an expanding family several nearby descendant positions; avoid scattering its last merger across the entire page to fill an empty corner. Keep the predecessors of that merger close enough to trace.
 
-Use relative hints and [packed stories](packed-stories.md) for a medium first preview. For a dense authored page, reserve the complete name/date/caption envelopes and selected family labels before drawing routes. Authoring smaller colored rectangles does not reduce the space occupied by unchanged captions.
+Use [data-first branches](data-first-branches.md) for a medium first preview without prescribed geometry; use relative hints and [packed stories](packed-stories.md) for a deliberate arrangement. For a dense authored page, reserve the complete name/date/caption envelopes and selected family labels before drawing routes. Authoring smaller colored rectangles does not reduce the space occupied by unchanged captions.
 
 ## Edit only material within the brief's editorial scope
 
@@ -22,7 +22,7 @@ Keep every required supplied note visible. Do not move it to a custom JSON field
 
 After moving institutions, remove stale absolute bends and recompose them. The automatic institutional router reserves existing runs belonging to edges with no shared endpoint. Perpendicular crossings remain possible; siblings and merger parents may share a legitimate junction. Explicit authored corridors are preserved for review.
 
-The browser audit reports `unrelated-shared-run` when two unrelated institutional edges share more than four units of a visible straight stroke. It reads the rendered SVG path commands and transforms rather than trusting saved route metadata. This is a composition warning: it does not prove historical meaning, inspect every curve, or excuse a false junction. Open the PNG and trace both named relations. Separate unintended shared runs, then render and audit again. Use [influence routes](influence-routes.md) for dotted arrows and their side attachments.
+The browser audit reports `unrelated-shared-run` when two unrelated institutional edges overlap along more than four units of a visible straight stroke. It reads rendered SVG path commands, transforms and stroke widths rather than trusting saved route metadata. Almost coincident coordinates can still paint over one another; automatic routes reserve four units beside unrelated parallel runs. This is a composition warning: it does not prove historical meaning, inspect every curve, or excuse a false junction. Open the PNG and trace both named relations. Separate unintended shared runs, then render and audit again. Use [influence routes](influence-routes.md) for dotted arrows and their side attachments.
 
 Compare the whole page and a dense detail at equal display width. Write the three largest remaining differences. A shorter page may increase detours, bends and ambiguous intersections. Reject that tradeoff if readers cannot follow the history more easily. A better occupancy statistic is not a visual acceptance criterion.
 

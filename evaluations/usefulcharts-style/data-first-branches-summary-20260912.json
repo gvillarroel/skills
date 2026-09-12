@@ -1,0 +1,1635 @@
+{
+  "date": "2026-09-12",
+  "baseline": "2ea5183bb71e6737a74cbac3554d82ea2a10aca0",
+  "goal_status": "active; visual parity is not established",
+  "decision": "Promote the data-first composition helper and the reviewed local corridor repair. Reject every new composition as a public gallery replacement.",
+  "current_runtime": {
+    "file_count": 97,
+    "sha256": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c"
+  },
+  "attempts": [
+    {
+      "id": "local",
+      "status": "complete",
+      "direct_png_review": true,
+      "critique": "Local vertical compaction of the previous 59-record source; large common-origin pocket remains.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "browser.json": {
+          "bytes": 187268,
+          "sha256": "9ca8b9db333d4f72476e85ef473d442277d34c6df84152e9092e29e4c984b63c"
+        },
+        "driver.py": {
+          "bytes": 4149,
+          "sha256": "f9203f5b357ba276dfdd91e2d2810eae979d10329703df2ef8a732a76ee3f124"
+        },
+        "layout.json": {
+          "bytes": 7946,
+          "sha256": "0c1619b019f79fc4f6c187f078d44a2ecb2ce5083d83bee1072b70ef99b3260e"
+        },
+        "poster.html": {
+          "bytes": 1027579,
+          "sha256": "7231bbb64f2eb43ea42130e6cf1e6898ac9d60821cc692ef213768a014808683"
+        },
+        "poster.png": {
+          "bytes": 253388,
+          "sha256": "4d14afea2a733ac66c047844e60a77d454707cc7c122197034adb357fb092f4c"
+        },
+        "poster.svg": {
+          "bytes": 1026090,
+          "sha256": "d0b9dbe6ba86ee97af958071fc1be88ea55a7f6da19e54a1314b83bf3e24c008"
+        },
+        "source.json": {
+          "bytes": 22801,
+          "sha256": "158ea1a42663733c9551d8b61d8e9c04794957933056f62ce8d33eccda06ce09"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "workshops-to-optical-science",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1962.0,
+          2524.74
+        ],
+        "node_count": 59,
+        "edge_count": 65,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 1,
+        "data_sha256": "3e58b9b79869cd4d015bb383baa79e1bb67040075d325471c35b36cb12f0a177",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1962,
+          2524.739990234375
+        ],
+        "node_count": 59,
+        "edge_count": 65,
+        "text_count": 208,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "alternating",
+      "status": "complete",
+      "direct_png_review": false,
+      "critique": "Four alternating-axis cycles return the same dimensions and positions as local; SVG retained, no separate PNG review.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "driver.py": {
+          "bytes": 4149,
+          "sha256": "f9203f5b357ba276dfdd91e2d2810eae979d10329703df2ef8a732a76ee3f124"
+        },
+        "layout.json": {
+          "bytes": 7958,
+          "sha256": "f0d85a9f824e269dc2ba4f046a5bb208448a4653cb4387541047948f4caf2507"
+        },
+        "poster.html": {
+          "bytes": 1027702,
+          "sha256": "0c362dd606b78681accd09785b44aab08a4c551305c2a8a31118a4a64c11e12b"
+        },
+        "poster.svg": {
+          "bytes": 1026213,
+          "sha256": "bbc53f253c064117ccf424f6850512e548187da4fdd15e9a2152d9204156f808"
+        },
+        "source.json": {
+          "bytes": 22801,
+          "sha256": "158ea1a42663733c9551d8b61d8e9c04794957933056f62ce8d33eccda06ce09"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "workshops-to-optical-science",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1962.0,
+          2524.74
+        ],
+        "node_count": 59,
+        "edge_count": 65,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 1,
+        "data_sha256": "3e58b9b79869cd4d015bb383baa79e1bb67040075d325471c35b36cb12f0a177",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      }
+    },
+    {
+      "id": "layered",
+      "status": "complete",
+      "direct_png_review": true,
+      "critique": "Measured structural stages reduce width but retain a tall common-origin area.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "browser.json": {
+          "bytes": 189767,
+          "sha256": "f95c906b9f41965101dc2a07218d313a85864f4d54578d6143406d3dfe2a0c0c"
+        },
+        "driver.py": {
+          "bytes": 5944,
+          "sha256": "97d386147d86c34a65dc2c880d3ab85152294b8891397d07f8db28e2dfed51cb"
+        },
+        "layout.json": {
+          "bytes": 7439,
+          "sha256": "0bad1cc4d96ceae7bf0e8d67fb7d004e7729e67fa4ea1b3507061a6ebed2fd0d"
+        },
+        "poster.html": {
+          "bytes": 1030201,
+          "sha256": "e70ed37ad6613d0f28deabc6c456902b7fe84c6ba79f4ad2d034375c3476db23"
+        },
+        "poster.png": {
+          "bytes": 237797,
+          "sha256": "c0fe67fd9b2837102e341da38deb7c57a0322db686528305e291540993a7be48"
+        },
+        "poster.svg": {
+          "bytes": 1028712,
+          "sha256": "cbd942d2f2060c88130f7d358c0529134b706c7ca07fb58c86acce8f5d137f7a"
+        },
+        "source.json": {
+          "bytes": 22801,
+          "sha256": "158ea1a42663733c9551d8b61d8e9c04794957933056f62ce8d33eccda06ce09"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "workshops-to-optical-science",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1530.0,
+          2603.505
+        ],
+        "node_count": 59,
+        "edge_count": 65,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 4,
+        "data_sha256": "3e58b9b79869cd4d015bb383baa79e1bb67040075d325471c35b36cb12f0a177",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1530,
+          2603.510009765625
+        ],
+        "node_count": 59,
+        "edge_count": 65,
+        "text_count": 208,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "active",
+      "status": "complete",
+      "direct_png_review": true,
+      "critique": "Local horizontal-overlap constraints compact 59 records; four crossings and broad quiet fields remain.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "browser.json": {
+          "bytes": 187783,
+          "sha256": "3a251568341dd9d939b3bdc12559dc156edf2ed68a1258788a382660c273ce4f"
+        },
+        "layout.json": {
+          "bytes": 7713,
+          "sha256": "8f4074b680823c15016c0e1a8c1b8d423ba23dca310d5895be9e81bd151d4bd1"
+        },
+        "poster.html": {
+          "bytes": 1030730,
+          "sha256": "756741c6ea6cdd2c56e8b2ad9347a68bbc29286725e3f80ab6204341c0274b2e"
+        },
+        "poster.png": {
+          "bytes": 241873,
+          "sha256": "2ecc42b4e4dba44ec19c180ab3d0b10473933641700132138c83a9bda6dd3c10"
+        },
+        "poster.svg": {
+          "bytes": 1029241,
+          "sha256": "cc53d39eb6569acef3dc7fe627308079dda8b2f31a2cb7363bf5f8f1d19f4b72"
+        },
+        "source.json": {
+          "bytes": 20737,
+          "sha256": "ba06338d7fef6724e9c9472217edad771815c06ef9fe9f62a72cf85bf58ecc0c"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "workshops-to-optical-science",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1530.0,
+          2392.39
+        ],
+        "node_count": 59,
+        "edge_count": 65,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 4,
+        "data_sha256": "779e6ee8629fcb615689414f4d58f7c20d6a59d126886630a492dd495cb2e7a6",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1530,
+          2392.389892578125
+        ],
+        "node_count": 59,
+        "edge_count": 65,
+        "text_count": 208,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "publishing-natural",
+      "status": "complete",
+      "direct_png_review": true,
+      "critique": "Initial causal ordering of 70 records separates unrelated founding centuries too strongly.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "browser.json": {
+          "bytes": 250565,
+          "sha256": "b469dd5ed26e9b4d0fae41a972e73c0ced663c8d2be1c4495e31052f7657456b"
+        },
+        "layout.json": {
+          "bytes": 8906,
+          "sha256": "062e1ceeeb16324aad9be4c4719891d99616f753e0319ec9056a39d8e892c11f"
+        },
+        "poster.html": {
+          "bytes": 2104338,
+          "sha256": "6f018e9b499a75db8bce6ed941de672aac8c4c570af3dad69dd5a26a1c4170d1"
+        },
+        "poster.png": {
+          "bytes": 322188,
+          "sha256": "b900e7f8710c383a7cf58c8475cc0d24bb311978e100fc38770b1feaea3f0fb4"
+        },
+        "poster.svg": {
+          "bytes": 2102835,
+          "sha256": "acfaf181e613bc31fcab2ceb02c1bf82b7ad130d60e872cdf76a9a313fa3eb3f"
+        },
+        "recovered-input.json": {
+          "bytes": 27860,
+          "sha256": "ef5a4bc9a6c3d7ebb9cb4668b18ed45186e636c4e3431cd410408a6df4f067fd"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "northbridge-publishing",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1988.0,
+          1877.1100000000001
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 65,
+        "data_sha256": "3b83e9c57c4c0d1709fe6db345a92b8b19c89b812fa807da65c9059a6646d39f",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          1877.1099853515625
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 246,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "publishing-dated",
+      "status": "complete",
+      "direct_png_review": true,
+      "critique": "Ordinal date bands improve ordering; long spines remain.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "browser.json": {
+          "bytes": 255658,
+          "sha256": "5d35755e1b13694c27d0a7b607cb34a681b7b1549a33669657a4c11352ad87e8"
+        },
+        "layout.json": {
+          "bytes": 8951,
+          "sha256": "6528e0db2cfb57e872c050acdd1744d4a0cb303239a11e4834fb055c3fa518ea"
+        },
+        "poster.html": {
+          "bytes": 2105056,
+          "sha256": "4d22070bdcc8c04cc63edbc3d16450e479d7256eb17d7df01656fecc38faa074"
+        },
+        "poster.png": {
+          "bytes": 319831,
+          "sha256": "52ac6d8ebc44a0fc6bacf83428ecd47a92601fb30ff9906f787206b3b3d2e1c4"
+        },
+        "poster.svg": {
+          "bytes": 2103553,
+          "sha256": "a00ea760ca2e6ae7bdccd5dac545f767528a5bc8918e4a404c157ae7dc2d7072"
+        },
+        "recovered-input.json": {
+          "bytes": 27860,
+          "sha256": "ef5a4bc9a6c3d7ebb9cb4668b18ed45186e636c4e3431cd410408a6df4f067fd"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "northbridge-publishing",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1988.0,
+          2016.8850000000002
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 66,
+        "data_sha256": "3b83e9c57c4c0d1709fe6db345a92b8b19c89b812fa807da65c9059a6646d39f",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 246,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "publishing-ordered",
+      "status": "complete",
+      "direct_png_review": true,
+      "critique": "Uses local vertical slack for chronology; painted-width audit exposes an unrelated shared run.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "browser.json": {
+          "bytes": 258726,
+          "sha256": "98e49924fa18cb6cd5400378e49eedb5b15fbb94925293cbda2cf51e070b3dd2"
+        },
+        "layout.json": {
+          "bytes": 9215,
+          "sha256": "ee586ec8e7b1d343441731875b9cf8a3d9312496e4bf73799aeecef7ae7ee154"
+        },
+        "poster.html": {
+          "bytes": 2108008,
+          "sha256": "516e339ad7405e622dfb1baaed02312615e486bd3d33389304e2f38c118f5eac"
+        },
+        "poster.png": {
+          "bytes": 327238,
+          "sha256": "6eecd93392451eccf90f95343c7b58c9e92884683b44f2d93a42eab88a239535"
+        },
+        "poster.svg": {
+          "bytes": 2106505,
+          "sha256": "53a8879bf5bf03b22ddec5f5dc2f278c2b582c5d4e080210e895e53a5889884f"
+        },
+        "recovered-input.json": {
+          "bytes": 27860,
+          "sha256": "ef5a4bc9a6c3d7ebb9cb4668b18ed45186e636c4e3431cd410408a6df4f067fd"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "northbridge-publishing",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1988.0,
+          2016.8850000000002
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 68,
+        "data_sha256": "3b83e9c57c4c0d1709fe6db345a92b8b19c89b812fa807da65c9059a6646d39f",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 246,
+        "findings": [],
+        "composition_warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "rail-to-regional",
+            "second": "schoolatlas-to-reference",
+            "length": 111
+          }
+        ]
+      }
+    },
+    {
+      "id": "publishing-clear",
+      "status": "layout-failure",
+      "direct_png_review": false,
+      "critique": "Four-unit run reservation cannot route review-to-pictures. The attempted follow-up audit has no SVG.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {},
+      "observed_error": "Cannot route relationship review-to-pictures: No clear connector corridor. Separate nodes or increase the page size.",
+      "evidence_limit": "Observed terminal error. No accepted SVG; initial driver did not persist stderr or the transient algorithm version."
+    },
+    {
+      "id": "publishing-protected",
+      "status": "layout-failure",
+      "direct_png_review": false,
+      "critique": "Ten-unit future-port stems do not repair the same corridor failure; experimental reservation reverted.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {},
+      "observed_error": "Cannot route relationship review-to-pictures: No clear connector corridor. Separate nodes or increase the page size.",
+      "evidence_limit": "Observed terminal error. No accepted SVG; initial driver did not persist stderr or the transient algorithm version."
+    },
+    {
+      "id": "publishing-ports",
+      "status": "layout-failure",
+      "direct_png_review": false,
+      "critique": "Eighteen-unit future-port stems also fail; experimental reservation reverted.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {},
+      "observed_error": "Cannot route relationship review-to-pictures: No clear connector corridor. Separate nodes or increase the page size.",
+      "evidence_limit": "Observed terminal error. No accepted SVG; initial driver did not persist stderr or the transient algorithm version."
+    },
+    {
+      "id": "publishing-composed",
+      "status": "complete",
+      "direct_png_review": false,
+      "critique": "Full port-pair search completes successfully and retains authored source/report. No separate PNG. It was not cancelled.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "composition.json": {
+          "bytes": 3396,
+          "sha256": "3cdd1e582fa45e01f58353a6c06d69488e1080a6781cb73643952719cc7806bc"
+        },
+        "source.json": {
+          "bytes": 63198,
+          "sha256": "b5cb18396b04a552497a395bd18e9d1b9790ffb6e5840c4e91b76399284e246a"
+        }
+      }
+    },
+    {
+      "id": "publishing-local-first",
+      "status": "complete",
+      "direct_png_review": true,
+      "critique": "Final local-first composer retains all 70 records and 97 relationships with zero painted-run warnings.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "browser.json": {
+          "bytes": 282954,
+          "sha256": "83de56ad757e90aee26249062d6c9ff1a5bf31d43d2c907a7a3fd8216fd26fa3"
+        },
+        "composition.json": {
+          "bytes": 3838,
+          "sha256": "941203a5dfdb0e94cbd8cf64222507edfc5e986865ae288af584cae8e0319bcd"
+        },
+        "layout.json": {
+          "bytes": 485,
+          "sha256": "8661e2330c19a51a948cbbe605b0132c229fa8426827c432098d21e0ed1fade1"
+        },
+        "poster.html": {
+          "bytes": 2118362,
+          "sha256": "d779a3266773b02c2b93e502d551266355e44a8355877ebfb19765836c8e5c14"
+        },
+        "poster.png": {
+          "bytes": 329356,
+          "sha256": "76ca265f853590517c10b4a01027ab8f24dbaf6164b737a98c2e5493a321c5c2"
+        },
+        "poster.svg": {
+          "bytes": 2116859,
+          "sha256": "4b263e1eecc6fb1e23e4f9e77445d6d0eb77474de5ff3c3b371ac024a8c6fe61"
+        },
+        "source.json": {
+          "bytes": 63200,
+          "sha256": "4b444314c88ceaff78338cc4e0fe8347fd3db97932b109b7a149bcbc8357b4c9"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "northbridge-publishing",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1988.0,
+          2016.8850000000002
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 59,
+        "data_sha256": "7ff8eec29f0604b287c44a77ccd4b1d7126c047a543aff75ae18565e759df0a9",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 246,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "medium-final",
+      "status": "complete",
+      "direct_png_review": true,
+      "critique": "Final helper on the earlier complete 59-record source retains typography and facts; oversized common-origin area remains.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "browser.json": {
+          "bytes": 200282,
+          "sha256": "61d75cc463498ce13687d4785254ea653bb77509a2c12de2667c008b4e4eee56"
+        },
+        "composition.json": {
+          "bytes": 505,
+          "sha256": "0cc54e73f4511d6e05ac09a628eca4812171239170f52c3ee04ad416b9fef6f0"
+        },
+        "layout.json": {
+          "bytes": 479,
+          "sha256": "0fc65b26ebacf98997e9a18a0a0cb48df3841c4202fa92f1bac98074ee4980ea"
+        },
+        "poster.html": {
+          "bytes": 1035487,
+          "sha256": "44b9792cc3a596268cb565e4d2127827cad6571a09b8b7cd801b0eeb7f0fcf66"
+        },
+        "poster.png": {
+          "bytes": 241345,
+          "sha256": "9c34a0754c66cd8bd5e74dc93adc20cfa87c22c0e7b24abeb39f6dc5501321f7"
+        },
+        "poster.svg": {
+          "bytes": 1033998,
+          "sha256": "87158f71fe8d5ef3ac759334ec6c781c79c6802abee8cd7a6db863c71e5f342d"
+        },
+        "source.json": {
+          "bytes": 41264,
+          "sha256": "6f5565fd5d8cb89664b7c6f25cac1cf699cfbc3aa3b14b882b56025cadce5247"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "workshops-to-optical-science",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1530.0,
+          2392.39
+        ],
+        "node_count": 59,
+        "edge_count": 65,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 4,
+        "data_sha256": "d26af0b51759901a5b9df28c41c3f2dd8fd6d353a7925b45a81ac16985d9bc1d",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1530,
+          2392.389892578125
+        ],
+        "node_count": 59,
+        "edge_count": 65,
+        "text_count": 208,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "published-separated",
+      "status": "complete",
+      "direct_png_review": true,
+      "critique": "Accepted only as a local corridor correction in the existing mural; all node geometry and information unchanged.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": true,
+      "files": {
+        "browser.json": {
+          "bytes": 564348,
+          "sha256": "fbbef98caf146447d00d53770a6809a532401215d9e2d693e509af45134ada20"
+        },
+        "layout.json": {
+          "bytes": 469,
+          "sha256": "35b9b14ad69a8b2b347e1239a129be4fab37136e4e0bad87a8de47e63a7a4bec"
+        },
+        "poster.html": {
+          "bytes": 2576873,
+          "sha256": "2ce20bf6fca567122af9ed0c63835d3f4351f9fc6f923a94bddc0a9493a15a5b"
+        },
+        "poster.png": {
+          "bytes": 628718,
+          "sha256": "be522f1cf7235e9e239ad5def7489cf12b9a55dba64d7539a03604a490174d08"
+        },
+        "poster.svg": {
+          "bytes": 2575398,
+          "sha256": "2f8cd4b855a8fc19ffedb0f6670f8d2d65cbcd0df6cb67c698874e36ea744735"
+        },
+        "separation.json": {
+          "bytes": 3939,
+          "sha256": "ee7a602dd0c1020739a5417ca741b0669ac369642b7b97104305869d5e34c1a6"
+        },
+        "source.json": {
+          "bytes": 124601,
+          "sha256": "3d41a4921458e5014cf5f8e477c6a9a7bd646ef4c3557bdb19d0b0c1a17aa668"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "atlas-of-inquiry",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1620.0,
+          2430.0
+        ],
+        "node_count": 141,
+        "edge_count": 171,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 76,
+        "data_sha256": "d42603e6ad36074ece94d8a8d93fea1327e534d2916a7d69fef0bfc72ba255b7",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1620,
+          2430
+        ],
+        "node_count": 141,
+        "edge_count": 171,
+        "text_count": 648,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "publishing-final",
+      "status": "complete",
+      "direct_png_review": true,
+      "critique": "Post-cohort author correction from Five to Six Centuries; every node, edge and placement is unchanged.",
+      "selected_as_gallery_recomposition": false,
+      "selected_as_corridor_repair": false,
+      "files": {
+        "browser.json": {
+          "bytes": 282953,
+          "sha256": "21ef4b7d4749ed3deebdee3143ba0145c97cb18a25331ff1365c2f4441824c1b"
+        },
+        "layout.json": {
+          "bytes": 485,
+          "sha256": "bf3c1ca72820950f387c880080eb23f8a28892b31c00ab23da41fb9aa85f6ba8"
+        },
+        "poster.html": {
+          "bytes": 2118357,
+          "sha256": "56fac39d35946a720360d6ef6ca5acaecb8de496866cf70c0ae3ac687647ea15"
+        },
+        "poster.png": {
+          "bytes": 331065,
+          "sha256": "2df086a1110b047be6666738066f971e0d52f1d07323438c9bec0d12dc19069e"
+        },
+        "poster.svg": {
+          "bytes": 2116856,
+          "sha256": "bc1ae708dfe67da930d41ce8a0984b4d3cb8ac4e94103a505b8a87a060a847f9"
+        },
+        "source.json": {
+          "bytes": 63199,
+          "sha256": "b6d75ce6678589c2dfdce33dbe350efcce0c14e898c578182d2ed62b5d68cd73"
+        }
+      },
+      "layout": {
+        "status": "pass",
+        "id": "northbridge-publishing",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1988.0,
+          2016.8850000000002
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 59,
+        "data_sha256": "062d41c0200566385fc6aca29c41090061e85e31900dcb00191643097299b3ba",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 246,
+        "findings": [],
+        "composition_warnings": []
+      }
+    }
+  ],
+  "recovered_inputs": [
+    {
+      "id": "publishing-natural",
+      "expected_data_sha256": "3b83e9c57c4c0d1709fe6db345a92b8b19c89b812fa807da65c9059a6646d39f",
+      "reconstructed_data_sha256": "3b83e9c57c4c0d1709fe6db345a92b8b19c89b812fa807da65c9059a6646d39f",
+      "matched": true,
+      "path": "projects/usefulcharts-style/artifacts/reviews/local-stories-v31/publishing-natural/recovered-input.json"
+    },
+    {
+      "id": "publishing-dated",
+      "expected_data_sha256": "3b83e9c57c4c0d1709fe6db345a92b8b19c89b812fa807da65c9059a6646d39f",
+      "reconstructed_data_sha256": "3b83e9c57c4c0d1709fe6db345a92b8b19c89b812fa807da65c9059a6646d39f",
+      "matched": true,
+      "path": "projects/usefulcharts-style/artifacts/reviews/local-stories-v31/publishing-dated/recovered-input.json"
+    },
+    {
+      "id": "publishing-ordered",
+      "expected_data_sha256": "3b83e9c57c4c0d1709fe6db345a92b8b19c89b812fa807da65c9059a6646d39f",
+      "reconstructed_data_sha256": "3b83e9c57c4c0d1709fe6db345a92b8b19c89b812fa807da65c9059a6646d39f",
+      "matched": true,
+      "path": "projects/usefulcharts-style/artifacts/reviews/local-stories-v31/publishing-ordered/recovered-input.json"
+    }
+  ],
+  "forward_runs": [
+    {
+      "id": "usefulcharts-v31-publishing-1-20260912",
+      "model": "openai-codex/gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 97,
+        "payloadSha256": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-data-first-publishing.md",
+        "sizeBytes": 28292,
+        "sha256": "cb485062d0f1a5c4e3bc3bc37ff1f61d6e6034045e0fdec83c8cc1fe240efa16"
+      },
+      "strict_pass": true,
+      "duration_seconds": 97.937,
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "event_findings": [],
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c",
+        "afterDigest": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "trace_pass": true,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 35234
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12058
+        },
+        {
+          "path": "skills/usefulcharts-style/references/data-first-branches.md",
+          "calls": 1,
+          "resultBytes": 5813
+        },
+        {
+          "path": "result/poster.png",
+          "calls": 1,
+          "resultBytes": 1641779
+        }
+      ],
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v31-publishing-1-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed new-subject development task. Exact content and artifact checks do not grade aesthetic parity."
+      },
+      "evaluator_browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 246,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "76ca265f853590517c10b4a01027ab8f24dbaf6164b737a98c2e5493a321c5c2",
+      "scope": "naturalistic-forward; disclosed new-subject development"
+    },
+    {
+      "id": "usefulcharts-v31-publishing-2-20260912",
+      "model": "openai-codex/gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 97,
+        "payloadSha256": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-data-first-publishing.md",
+        "sizeBytes": 28292,
+        "sha256": "cb485062d0f1a5c4e3bc3bc37ff1f61d6e6034045e0fdec83c8cc1fe240efa16"
+      },
+      "strict_pass": true,
+      "duration_seconds": 111.805,
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "event_findings": [],
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c",
+        "afterDigest": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "trace_pass": true,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 35234
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12058
+        },
+        {
+          "path": "skills/usefulcharts-style/references/data-first-branches.md",
+          "calls": 1,
+          "resultBytes": 5813
+        },
+        {
+          "path": "result/poster.png",
+          "calls": 1,
+          "resultBytes": 1641779
+        },
+        {
+          "path": "result/source.json",
+          "calls": 1,
+          "resultBytes": 5698
+        }
+      ],
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v31-publishing-2-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed new-subject development task. Exact content and artifact checks do not grade aesthetic parity."
+      },
+      "evaluator_browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 246,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "76ca265f853590517c10b4a01027ab8f24dbaf6164b737a98c2e5493a321c5c2",
+      "scope": "naturalistic-forward; disclosed new-subject development"
+    },
+    {
+      "id": "usefulcharts-v31-publishing-3-20260912",
+      "model": "openai-codex/gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 97,
+        "payloadSha256": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-data-first-publishing.md",
+        "sizeBytes": 28292,
+        "sha256": "cb485062d0f1a5c4e3bc3bc37ff1f61d6e6034045e0fdec83c8cc1fe240efa16"
+      },
+      "strict_pass": true,
+      "duration_seconds": 91.711,
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "event_findings": [],
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c",
+        "afterDigest": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "trace_pass": true,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 35234
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12058
+        },
+        {
+          "path": "skills/usefulcharts-style/references/data-first-branches.md",
+          "calls": 1,
+          "resultBytes": 5813
+        },
+        {
+          "path": "result/poster.png",
+          "calls": 1,
+          "resultBytes": 1641779
+        },
+        {
+          "path": "result/layout.json",
+          "calls": 1,
+          "resultBytes": 602
+        },
+        {
+          "path": "result/browser.json",
+          "calls": 1,
+          "resultBytes": 5226
+        }
+      ],
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v31-publishing-3-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed new-subject development task. Exact content and artifact checks do not grade aesthetic parity."
+      },
+      "evaluator_browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 246,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "76ca265f853590517c10b4a01027ab8f24dbaf6164b737a98c2e5493a321c5c2",
+      "scope": "naturalistic-forward; disclosed new-subject development"
+    },
+    {
+      "id": "usefulcharts-v31-contract-spark-20260912",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 97,
+        "payloadSha256": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-data-first-contract.md",
+        "sizeBytes": 2392,
+        "sha256": "91813df4068de62c9442888aa55a4a3ace6ed23b933b29c7c0401ad7ba25987b"
+      },
+      "strict_pass": true,
+      "duration_seconds": 20.435,
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/composition.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "event_findings": [],
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c",
+        "afterDigest": "d49bf99fe163dc1e69fb15381b6e85157bb9ee2e6ac01cf9faceb227e3aaf23c",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "trace_pass": true,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 2890
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12058
+        },
+        {
+          "path": "result/composition.json",
+          "calls": 1,
+          "resultBytes": 378
+        },
+        {
+          "path": "result/layout.json",
+          "calls": 1,
+          "resultBytes": 584
+        },
+        {
+          "path": "result/browser.json",
+          "calls": 1,
+          "resultBytes": 16103
+        },
+        {
+          "path": "result/source.json",
+          "calls": 1,
+          "resultBytes": 3043
+        }
+      ],
+      "artifact_contract": {
+        "status": "pass",
+        "exact_prompt_source": true,
+        "scope": "Exact captured JSON and evaluator browser replay; no agent image requirement."
+      },
+      "evaluator_browser": {
+        "status": "pass",
+        "canvas": [
+          1000,
+          720
+        ],
+        "node_count": 4,
+        "edge_count": 4,
+        "text_count": 18,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "71f855fa5f0183996efbcce3a8a2e676fad5b18d5dbc3fb12e8e55911fe5d125",
+      "scope": "contract-smoke"
+    }
+  ],
+  "strict_passes": 4,
+  "strict_total": 4,
+  "independent_contract_passes": 4,
+  "naturalistic_passes": 3,
+  "naturalistic_total": 3,
+  "image_review": {
+    "identical_naturalistic_pngs": true,
+    "sha256": "76ca265f853590517c10b4a01027ab8f24dbaf6164b737a98c2e5493a321c5c2",
+    "author_review": "One shared image was directly inspected after confirming identical SHA-256 values across all three outputs. Every agent read its own final PNG."
+  },
+  "model_exception": "GPT-5.5 for three image-dependent naturalistic cases, as recorded before execution. Default Spark for one exact-command control.",
+  "case_scope": "Original fictional publishing subject with 70 individually authored institutions, 97 typed relationships and all supplied notes. It drove development before the three forward repetitions; no blind, sealed validation or holdout claim.",
+  "headline_correction": {
+    "before": "Five Centuries of Northbridge Publishing",
+    "after": "Six Centuries of Northbridge Publishing",
+    "reason": "1428 through 2024 spans approximately six centuries.",
+    "timing": "After the frozen cohort; captured prompts and raw Pi outputs retain the original supplied Five title. Current reusable prompts and author display use Six. No runtime change or extra agent repetition.",
+    "invariant": "Every node and edge field, including placements, remains identical."
+  },
+  "other_source_correction": "Railway News Service became Roadside News Service before Pi, matching the coach illustration. Early natural/dated/ordered prototypes retain Railway.",
+  "trace_limitation": "All three agents removed temporary builders and data-first drafts despite the guide recommending their retention; complete authored source and captured inputs survive.",
+  "comparison": {
+    "status": "pass",
+    "all_node_fields_unchanged": true,
+    "non_geometry_edge_fields_unchanged": true,
+    "changed_edges": [
+      "atlas-room-to-geography",
+      "camera-to-silver-image",
+      "comet-to-stellar",
+      "land-register-to-mapping",
+      "machine-to-port-lab",
+      "meridian-net-to-triangulation",
+      "opticians-to-instrument-firm",
+      "pilotage-to-longitude",
+      "precision-to-beacon-college",
+      "silver-image-to-photometry",
+      "southern-survey-to-southern-tables",
+      "southern-to-southern-survey"
+    ],
+    "printed_notes": 133,
+    "captures": [
+      {
+        "id": "comparison",
+        "png_sha256": "f70e0d506a674cb36195dc2eb42da2a0726388856d81206989ed6bb0920a74e0"
+      },
+      {
+        "id": "detail",
+        "png_sha256": "99a6cda578c0c901fb934bd5a2bea2449bfa1c276b2f3a95982e7c1ce287f1b3"
+      },
+      {
+        "id": "publishing",
+        "png_sha256": "be8fca9f5341af91e81e4bea129a4bfb6ca0ddc7061d60733241be507876dbd7"
+      }
+    ]
+  },
+  "corridor_promotion": {
+    "edges": [
+      "atlas-room-to-geography",
+      "camera-to-silver-image",
+      "comet-to-stellar",
+      "land-register-to-mapping",
+      "machine-to-port-lab",
+      "meridian-net-to-triangulation",
+      "opticians-to-instrument-firm",
+      "pilotage-to-longitude",
+      "precision-to-beacon-college",
+      "silver-image-to-photometry",
+      "southern-survey-to-southern-tables",
+      "southern-to-southern-survey"
+    ],
+    "shifts": 13,
+    "preserved_nodes": 141,
+    "preserved_edges": 171
+  },
+  "before_browser": {
+    "status": "pass",
+    "canvas": [
+      1620,
+      2430
+    ],
+    "node_count": 141,
+    "edge_count": 171,
+    "text_count": 648,
+    "findings": [],
+    "composition_warnings": [
+      {
+        "type": "unrelated-shared-run",
+        "first": "pilotage-to-longitude",
+        "second": "southern-to-southern-survey",
+        "length": 114.3599999999999
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "pilotage-to-longitude",
+        "second": "pilots-to-tide",
+        "length": 49.5
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "north-station-to-variable",
+        "second": "meridian-net-to-triangulation",
+        "length": 18.74000000000001
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "valley-to-public-sky",
+        "second": "southern-survey-to-southern-tables",
+        "length": 51
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "silver-image-to-photometry",
+        "second": "southern-tables-to-southern-union",
+        "length": 40.5
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "precision-to-instruments-lab",
+        "second": "comet-to-stellar",
+        "length": 35
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "precision-to-instruments-lab",
+        "second": "camera-to-silver-image",
+        "length": 49
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "precision-to-instruments-lab",
+        "second": "opticians-to-instrument-firm",
+        "length": 72
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "comet-to-stellar",
+        "second": "precision-to-beacon-college",
+        "length": 99
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "public-sky-to-astronomical",
+        "second": "machine-to-port-lab",
+        "length": 24.5
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "precision-to-beacon-college",
+        "second": "spectrum-to-wave",
+        "length": 142
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "precision-to-beacon-college",
+        "second": "atlas-room-to-geography",
+        "length": 67.5
+      },
+      {
+        "type": "unrelated-shared-run",
+        "first": "machine-to-port-lab",
+        "second": "land-register-to-mapping",
+        "length": 11.5
+      }
+    ]
+  },
+  "final_murals": {
+    "genealogy": {
+      "status": "pass",
+      "canvas": [
+        1890,
+        2835
+      ],
+      "node_count": 561,
+      "edge_count": 323,
+      "text_count": 1154,
+      "findings": [],
+      "composition_warnings": []
+    },
+    "institution": {
+      "status": "pass",
+      "canvas": [
+        1620,
+        2430
+      ],
+      "node_count": 141,
+      "edge_count": 171,
+      "text_count": 648,
+      "findings": [],
+      "composition_warnings": []
+    },
+    "timeline": {
+      "status": "pass",
+      "canvas": [
+        1680,
+        2300
+      ],
+      "node_count": 50,
+      "edge_count": 55,
+      "text_count": 353,
+      "findings": [],
+      "composition_warnings": []
+    }
+  },
+  "route_metrics": [
+    {
+      "id": "before",
+      "canvas": [
+        1620,
+        2430
+      ],
+      "edge_count": 171,
+      "total_length": 32045.171895980835,
+      "total_bends": 488,
+      "unrelated_collinear_overlaps": 0,
+      "mixed_kind_endpoint_overlaps": 9
+    },
+    {
+      "id": "after",
+      "canvas": [
+        1620,
+        2430
+      ],
+      "edge_count": 171,
+      "total_length": 31960.019750595093,
+      "total_bends": 488,
+      "unrelated_collinear_overlaps": 0,
+      "mixed_kind_endpoint_overlaps": 9
+    }
+  ],
+  "browser_controls": {
+    "status": "pass",
+    "cases": [
+      {
+        "id": "automatic",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "authored-shared",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "perpendicular-crossing",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "legitimate-siblings",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "forged-route-metadata",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "rounded-coordinate-overlap",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "painted-width-overlap",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "parallel-gutter",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      }
+    ],
+    "scope": "Independent visible SVG command/transform inspection. Warnings do not establish aesthetic parity."
+  },
+  "mutations": {
+    "status": "pass",
+    "mutations": [
+      {
+        "mutation": "changed-influence-source-side",
+        "expected_finding": "source-relation-port",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "detached-lateral-source",
+        "expected_finding": "detached-source",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "lateral-influence-changed-to-descent",
+        "expected_finding": "invalid-lateral-relation",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "invalid-influence-target-side",
+        "expected_finding": "detached-target",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "stale-source-revision",
+        "expected_finding": "source-revision-mismatch",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "changed-date",
+        "expected_finding": "source-date-label-missing",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "changed-caption",
+        "expected_finding": "source-detail-missing",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "deleted-node",
+        "expected_finding": "node-inventory",
+        "detected": true,
+        "finding_count": 6
+      },
+      {
+        "mutation": "oversized-label",
+        "expected_finding": "label-outside-node",
+        "detected": true,
+        "finding_count": 14
+      },
+      {
+        "mutation": "invisible-label",
+        "expected_finding": "text-contrast",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "wrong-relation-kind",
+        "expected_finding": "source-relation-inventory",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "detached-source",
+        "expected_finding": "detached-source",
+        "detected": true,
+        "finding_count": 8
+      },
+      {
+        "mutation": "source-reentry",
+        "expected_finding": "edge-node-collision",
+        "detected": true,
+        "finding_count": 11
+      }
+    ]
+  },
+  "gallery": {
+    "status": "pass",
+    "checks": [
+      {
+        "width": 1440,
+        "cards": 3,
+        "ids": [
+          "usefulcharts-dynastic-genealogy",
+          "usefulcharts-branching-lineage",
+          "usefulcharts-parallel-history"
+        ],
+        "overflow": false
+      },
+      {
+        "width": 390,
+        "cards": 3,
+        "ids": [
+          "usefulcharts-dynastic-genealogy",
+          "usefulcharts-branching-lineage",
+          "usefulcharts-parallel-history"
+        ],
+        "overflow": false
+      },
+      {
+        "viewer": "aurelian-families",
+        "fit_width": 1000,
+        "zoom_width": 1250,
+        "full_width": 1890,
+        "embedded_images_checked": 17
+      },
+      {
+        "viewer": "atlas-of-inquiry",
+        "fit_width": 1000,
+        "zoom_width": 1250,
+        "full_width": 1620,
+        "embedded_images_checked": 7
+      },
+      {
+        "viewer": "five-regional-histories",
+        "fit_width": 1000,
+        "zoom_width": 1250,
+        "full_width": 1680,
+        "embedded_images_checked": 7
+      }
+    ],
+    "page_errors": []
+  },
+  "unit_tests": {
+    "total": 158,
+    "passed": 158,
+    "new_branching": 6,
+    "lineage_runs": 6,
+    "pi_harness": 14
+  },
+  "audit_scope": "Straight visible institutional path segments and painted widths in the generated poster coordinate space. Shared endpoints are exempt; arbitrary transformed stroke widths and every curved coincidence are not comprehensively covered.",
+  "remaining_gaps": [
+    "Upper-right whitespace and a long isolated education spine in the 70-record publishing case.",
+    "A large common-origin pocket remains in the 59-record case despite dimensional compaction.",
+    "The 141-record mural still uses persistent large regions and repeated captions with limited illustration variety.",
+    "The previously documented genealogy and chronology composition gaps remain."
+  ]
+}

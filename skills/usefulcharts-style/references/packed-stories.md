@@ -1,6 +1,6 @@
 # Pack an institutional story around its records
 
-Use `design: editorial`, `mode: lineage`, `layout: packed` for a medium history with several local stories, typically 31–100 records. This route preserves a chosen arrangement while measuring its page. It addresses a recurring failure: fifty small labels scattered over an enormous authored canvas.
+Use `design: editorial`, `mode: lineage`, `layout: packed` for a medium history with a deliberate relative arrangement, typically 31–100 records. This route preserves the chosen arrangement while measuring its page. When only records and relationships are supplied, start from [data-first branches](data-first-branches.md) instead of inventing dozens of placement hints.
 
 Read [the small template](../assets/templates/packed-lineage.json) only when a complete input example is useful. It is invented data. Replace every record and relationship with the supplied subject.
 

@@ -18,6 +18,7 @@ from render_chart import Poster, require, number, color, ident, wrap, fmt, attr,
 from editorial_art import symbol
 from cohort_layout import place_cohorts, compact_cohort_defaults
 from story_layout import pack_stories
+from branching_layout import arrange_branches
 from editorial_landmarks import landmark_content
 from timeline_geometry import lane_geometry, duration_width, transition_geometry, period_parts
 from timeline_annotations import event_content
@@ -97,11 +98,12 @@ class EditorialPoster(Poster):
         original=copy.deepcopy(data)
         adjusted=copy.deepcopy(data)
         packed=adjusted.get('layout')=='packed'
-        compact=(adjusted.get('layout') in ('auto','cohorts') and len(adjusted.get('nodes',[]))<=30) or packed
+        branching=adjusted.get('layout')=='branches'
+        compact=(adjusted.get('layout') in ('auto','cohorts') and len(adjusted.get('nodes',[]))<=30) or packed or branching
         compact_time=adjusted.get('mode')=='timeline' and adjusted.get('layout')=='compact'
         compact=compact or compact_time
         font=original.get('font_size',18 if compact else 13)
-        if packed:
+        if packed or branching:
             structural=[e for e in adjusted.get('edges',[]) if e['kind']!='influence']
             for n in adjusted['nodes']:
                 n.setdefault('detail_position','outside')
@@ -111,10 +113,11 @@ class EditorialPoster(Poster):
                 n.setdefault('size',font+2 if major else font)
                 if n.get('icon'):n.setdefault('icon_width',50)
                 n.setdefault('width',max(176,max(text_width(word,n['size'],True)+18 for word in n['label'].split()))+(24 if major else 0)+n.get('icon_width',0))
-            first=pack_stories(adjusted,lambda n,w:measured_content(n,w,font))
+            arrange=arrange_branches if branching else pack_stories
+            first=arrange(adjusted,lambda n,w:measured_content(n,w,font))
             if adjusted.get('legend',True):
                 key=cohort_key(first,first['width']);extra=max(0,key['height']-25)
-                adjusted=pack_stories(adjusted,lambda n,w:measured_content(n,w,font),top=190+extra)
+                adjusted=arrange(adjusted,lambda n,w:measured_content(n,w,font),top=190+extra)
                 adjusted['_cohort_key']=key
             else:adjusted=first
         elif adjusted.get('layout')=='auto':
@@ -339,7 +342,7 @@ class EditorialPoster(Poster):
                 # Ports touch their own boxes; every other part must stay outside,
                 # including a corridor that was requested beyond the target top.
                 if not any(segment_hits(p,q,box,0) for p,q in zip(trial,trial[1:]) for box in self.boxes.values()) and not any(
-                    collinear_overlap(p,q,r,s)>.05 for p,q in zip(trial,trial[1:]) for r,s in reserved):
+                    collinear_overlap(p,q,r,s,tolerance=4)>.05 for p,q in zip(trial,trial[1:]) for r,s in reserved):
                     path=trial
                 else:
                     # An occupied search endpoint cannot be repaired by a larger

@@ -156,13 +156,13 @@ AUDIT = r"""() => {
       }
       return result;
     };
-    const strokes=edges.map(e=>({edge:e,segments:straights(e)}));
+    const strokes=edges.map(e=>({edge:e,segments:straights(e),width:parseFloat(getComputedStyle(svg.querySelector(`[data-edge-id="${CSS.escape(e.id)}"]`)).strokeWidth)}));
     for(let i=0;i<strokes.length;i++)for(let j=i+1;j<strokes.length;j++){
       const a=strokes[i],b=strokes[j];
       if([a.edge.source,a.edge.target].some(id=>[b.edge.source,b.edge.target].includes(id)))continue;
       let longest=0;
       for(const [p,q] of a.segments)for(const [r,s] of b.segments)for(const axis of [0,1]){
-        if(Math.max(p[axis],q[axis],r[axis],s[axis])-Math.min(p[axis],q[axis],r[axis],s[axis])>.02)continue;
+        if(Math.max(p[axis],q[axis],r[axis],s[axis])-Math.min(p[axis],q[axis],r[axis],s[axis])>Math.max(.03,(a.width+b.width)/2))continue;
         const k=1-axis;longest=Math.max(longest,Math.min(Math.max(p[k],q[k]),Math.max(r[k],s[k]))-Math.max(Math.min(p[k],q[k]),Math.min(r[k],s[k])));
       }
       if(longest>4)composition_warnings.push({type:'unrelated-shared-run',first:a.edge.id,second:b.edge.id,length:longest});

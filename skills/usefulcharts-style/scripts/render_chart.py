@@ -166,7 +166,7 @@ def route(start, end, boxes, bounds, existing, *, _grid_margin=14, _retry_narrow
     start,end=tuple(start),tuple(end)
     @lru_cache(maxsize=32768)
     def clear(a, b):
-        return not any(segment_hits(a, b, box, 7) for box in boxes) and not any(collinear_overlap(a,b,c,d)>.05 for c,d in reserved)
+        return not any(segment_hits(a, b, box, 7) for box in boxes) and not any(collinear_overlap(a,b,c,d,tolerance=4)>.05 for c,d in reserved)
 
     @lru_cache(maxsize=32768)
     def crossing_cost(a, b):
@@ -693,7 +693,7 @@ class Poster:
                   "data_sha256": meta["data_sha256"], "visual_review": "Required; geometric preflight is not a visual quality score."}
         if self.data.get("layout")=="auto":
             report["resolved_layout"]={"columns":self.data["columns"],"rows":self.data["rows"],"nodes":[{"id":n["id"],"row":n["row"],"col":n["col"],"x":self.boxes[n['id']][0]+self.boxes[n['id']][2]/2,"y":self.boxes[n['id']][1]+self.boxes[n['id']][3]/2,"width":self.boxes[n['id']][2]} for n in self.nodes.values()]}
-        elif self.data.get("layout") in ("cohorts","packed"):
+        elif self.data.get("layout") in ("cohorts","packed","branches"):
             report["resolved_layout"]={"layout":self.data['layout'],"nodes":[{"id":nid,"x":b[0]+b[2]/2,"y":b[1]+b[3]/2,"width":b[2]} for nid,b in self.boxes.items()]}
         return svg, report
 
