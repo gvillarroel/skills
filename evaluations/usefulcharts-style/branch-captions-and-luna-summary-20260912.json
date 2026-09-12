@@ -1,0 +1,1964 @@
+{
+  "date": "2026-09-12",
+  "baseline_commit": "08e6f1836a9860881a48f242f4c0d4a1dd6df4e6",
+  "current_runtime": {
+    "file_count": 111,
+    "sha256": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf"
+  },
+  "status": "validating; full aesthetic parity is unproven",
+  "decision": "Promote complete caption envelopes, source-field preservation checking and a coupled poster export. Reject both full mural reflows; all eleven published gallery files remain byte-identical.",
+  "scope": "A disclosed 70-record, 97-relation development case with five mandatory captions. All naturalistic prompts are identical across A/B/C. No new-subject generalization, blind attribution, statistical model ranking or sealed holdout claim.",
+  "model_exception": "GPT-5.5 and Luna high were registered for the exploratory image-dependent comparison. Default Spark supplies each exact-command control. Cohorts B/C test observed workflow repairs on Luna only.",
+  "cohorts": {
+    "v33-gpt55": {
+      "total": 3,
+      "strict_passes": 2,
+      "independent_artifact_passes": 3,
+      "complete_passes": 2
+    },
+    "v33-luna": {
+      "total": 3,
+      "strict_passes": 1,
+      "independent_artifact_passes": 3,
+      "complete_passes": 1
+    },
+    "v33b-luna": {
+      "total": 3,
+      "strict_passes": 2,
+      "independent_artifact_passes": 1,
+      "complete_passes": 1
+    },
+    "v33c-luna": {
+      "total": 3,
+      "strict_passes": 3,
+      "independent_artifact_passes": 3,
+      "complete_passes": 3
+    }
+  },
+  "forward_runs": [
+    {
+      "id": "usefulcharts-v33-captions-gpt55-1-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.5",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 107,
+        "payloadSha256": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": true,
+      "duration_seconds": 99.191,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "result/poster.png",
+        "work/detail.png"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "afterDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "run": "usefulcharts-v33-captions-gpt55-1-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+      "previous_content_only_contract_status": "pass"
+    },
+    {
+      "id": "usefulcharts-v33-captions-gpt55-2-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.5",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 107,
+        "payloadSha256": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": false,
+      "trace_pass": false,
+      "complete_pass": false,
+      "duration_seconds": 154.423,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "result/poster.png",
+        "work/detail.png",
+        "result/layout.json",
+        "result/source.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/browser.json"
+      ],
+      "event_findings": [
+        {
+          "code": "tool-error",
+          "line": 1014,
+          "tool": "bash"
+        }
+      ],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "afterDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "run": "usefulcharts-v33-captions-gpt55-2-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+      "previous_content_only_contract_status": "pass"
+    },
+    {
+      "id": "usefulcharts-v33-captions-gpt55-3-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.5",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 107,
+        "payloadSha256": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": true,
+      "duration_seconds": 94.848,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "result/poster.png",
+        "work/detail-central.png"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "afterDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "run": "usefulcharts-v33-captions-gpt55-3-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+      "previous_content_only_contract_status": "pass"
+    },
+    {
+      "id": "usefulcharts-v33-captions-luna-1-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 107,
+        "payloadSha256": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": true,
+      "duration_seconds": 133.672,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "authored.json",
+        "result/detail.png"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "afterDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "run": "usefulcharts-v33-captions-luna-1-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 2,
+        "findings": [],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+      "previous_content_only_contract_status": "pass"
+    },
+    {
+      "id": "usefulcharts-v33-captions-luna-2-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 107,
+        "payloadSha256": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": false,
+      "trace_pass": false,
+      "complete_pass": false,
+      "duration_seconds": 148.426,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/references/branch-structure.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "skills/usefulcharts-style/references/note-hierarchy.md",
+        "result/source.json",
+        "detail.png",
+        "result/poster.png",
+        "top_detail.png"
+      ],
+      "event_findings": [
+        {
+          "code": "tool-error",
+          "line": 817,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 1038,
+          "tool": "bash"
+        }
+      ],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "afterDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "run": "usefulcharts-v33-captions-luna-2-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+      "previous_content_only_contract_status": "pass"
+    },
+    {
+      "id": "usefulcharts-v33-captions-luna-3-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 107,
+        "payloadSha256": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": false,
+      "trace_pass": false,
+      "complete_pass": false,
+      "duration_seconds": 219.553,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "result/detail.png",
+        "result/poster.png"
+      ],
+      "event_findings": [
+        {
+          "code": "tool-error",
+          "line": 4631,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 4878,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 5192,
+          "tool": "bash"
+        }
+      ],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "afterDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "run": "usefulcharts-v33-captions-luna-3-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+      "previous_content_only_contract_status": "pass"
+    },
+    {
+      "id": "usefulcharts-v33-captions-contract-spark-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 107,
+        "payloadSha256": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions-contract.md",
+        "sizeBytes": 2552,
+        "sha256": "fc38604ff7ba2c6775356037653d138d3b7c09b98f5469e83278bfc480a227a9"
+      },
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/composition.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": true,
+      "duration_seconds": 18.951,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "afterDigest": "38bfa45253277201998b9a4903496a9dacce6a3880ac9d93afb10a42d87ab6d2",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "scope": "Exact-command control, not an aesthetic review.",
+        "version": 2
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          1000,
+          720
+        ],
+        "node_count": 4,
+        "edge_count": 4,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "f037bac5a5d684a59007bd998dab4a166bb548a6966564aa52a6ea16ea8faccc",
+      "previous_content_only_contract_status": "pass"
+    },
+    {
+      "id": "usefulcharts-v33b-captions-luna-1-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 109,
+        "payloadSha256": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": false,
+      "duration_seconds": 131.976,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/semantic-emblems.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "detail.png",
+        "result/poster.png",
+        "brief.json",
+        "composition.json",
+        "result/layout.json"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168",
+        "afterDigest": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "fail",
+        "run": "usefulcharts-v33b-captions-luna-1-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2186,
+          1952.9000244140625
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [
+          "Independent replay of the delivered source and SVG fails or retains composition warnings."
+        ],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "fail",
+        "canvas": [
+          2186,
+          1952.9000244140625
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [
+          {
+            "type": "source-revision-mismatch",
+            "expected_sha256": "58f6110fff11d6ec645708e0340cf30a4244c407e0ef406db80e95ada8222640",
+            "rendered_sha256": "585a9cbd3ec75814095bee74b3700202ad760af1478817a7ee7a45d097a80f0c"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "type-to-engravers"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "gazette-to-almanac"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "almanac-to-maps"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "geography-to-botany"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "schoolatlas-to-reference"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "dispatch-to-magazine"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "research-to-universitybooks"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "magazine-to-syndicate"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "scienceindex-to-electronic"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "electronic-to-openjournals"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "electronic-to-network"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "ebooks-to-learningnet"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "electronic-to-digitalarchive"
+          },
+          {
+            "type": "source-relation-port",
+            "id": "openjournals-to-commons"
+          }
+        ],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "450a028ad83351c235014b8f50facf42f30a70b234d949166c6bd43ce2082091",
+      "previous_content_only_contract_status": "pass"
+    },
+    {
+      "id": "usefulcharts-v33b-captions-luna-2-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 109,
+        "payloadSha256": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": false,
+      "trace_pass": false,
+      "complete_pass": false,
+      "duration_seconds": 105.704,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "composed.json",
+        "result/poster.png",
+        "result/detail.png"
+      ],
+      "event_findings": [
+        {
+          "code": "tool-error",
+          "line": 350,
+          "tool": "bash"
+        }
+      ],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168",
+        "afterDigest": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "fail",
+        "run": "usefulcharts-v33b-captions-luna-2-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [
+          "Independent replay of the final source and SVG did not produce a report."
+        ],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "error",
+        "explanation": "Independent replay could not produce a report; retain its adjacent log."
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+      "previous_content_only_contract_status": "pass"
+    },
+    {
+      "id": "usefulcharts-v33b-captions-luna-3-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 109,
+        "payloadSha256": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": true,
+      "duration_seconds": 93.943,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "result/detail.png",
+        "result/poster.png"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168",
+        "afterDigest": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "run": "usefulcharts-v33b-captions-luna-3-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+      "previous_content_only_contract_status": "pass"
+    },
+    {
+      "id": "usefulcharts-v33b-captions-contract-spark-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 109,
+        "payloadSha256": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions-contract.md",
+        "sizeBytes": 2690,
+        "sha256": "84d1e4a73e44020144213aa5e0c9ac9b9484749ec77c97d4ed9ae4801ab2e96b"
+      },
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/composition.json",
+        "result/source-check.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": true,
+      "duration_seconds": 25.965,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "result/source.json",
+        "result/composition.json",
+        "result/source-check.json",
+        "result/layout.json",
+        "result/browser.json"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168",
+        "afterDigest": "f79a9e6e49c354d6ebc23522d288d30666a2ae66ce6d91ce747ce5fd1224a168",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "scope": "Exact-command control, not an aesthetic review.",
+        "version": 2
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          1000,
+          720
+        ],
+        "node_count": 4,
+        "edge_count": 4,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "f037bac5a5d684a59007bd998dab4a166bb548a6966564aa52a6ea16ea8faccc"
+    },
+    {
+      "id": "usefulcharts-v33c-captions-luna-1-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 111,
+        "payloadSha256": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": true,
+      "duration_seconds": 106.407,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "result/poster.png",
+        "detail.png",
+        "result/browser.json"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf",
+        "afterDigest": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "run": "usefulcharts-v33c-captions-luna-1-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f"
+    },
+    {
+      "id": "usefulcharts-v33c-captions-luna-2-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 111,
+        "payloadSha256": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": true,
+      "duration_seconds": 90.458,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "result/poster.png",
+        "busy-detail.png"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf",
+        "afterDigest": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "run": "usefulcharts-v33c-captions-luna-2-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f"
+    },
+    {
+      "id": "usefulcharts-v33c-captions-luna-3-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.6-luna",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 111,
+        "payloadSha256": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions.md",
+        "sizeBytes": 29534,
+        "sha256": "f131707b0d7c9bc31b086fcbd6979b485edba0b155dc974809b3ac4715811691"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": true,
+      "duration_seconds": 102.569,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-first-branches.md",
+        "result/poster.png",
+        "detail.png",
+        "result/browser.json"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf",
+        "afterDigest": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "run": "usefulcharts-v33c-captions-luna-3-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Disclosed 70-record data-first development task with five supplied captions. No full-mural generalization or aesthetic-parity claim.",
+        "version": 2,
+        "caption_count": 5
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          2032,
+          1944.75
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f"
+    },
+    {
+      "id": "usefulcharts-v33c-captions-contract-spark-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 111,
+        "payloadSha256": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-captions-contract.md",
+        "sizeBytes": 2179,
+        "sha256": "c5480cfc380f166883ef39cf37d02c1f7e2388389dff140919dbc9351552c526"
+      },
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict_pass": true,
+      "trace_pass": true,
+      "complete_pass": true,
+      "duration_seconds": 21.843,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf",
+        "afterDigest": "16c9d0d2edef6551ac51654dbea96bf45d4fde0220f1c78b0da6332e9a34c5bf",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_v2": {
+        "status": "pass",
+        "scope": "Exact-command control, not an aesthetic review.",
+        "version": 2
+      },
+      "browser_v2": {
+        "status": "pass",
+        "canvas": [
+          1000,
+          720
+        ],
+        "node_count": 4,
+        "edge_count": 4,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "final_png_sha256": "f037bac5a5d684a59007bd998dab4a166bb548a6966564aa52a6ea16ea8faccc"
+    }
+  ],
+  "paired_png_sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+  "grading_revision": "The retained v1 content-only reports failed to establish final source/SVG consistency. Version 2 explicitly requires a fresh evaluator browser replay of the delivered source and SVG. All A/B/C outputs were reevaluated; old v1 files and failed B artifacts remain untouched.",
+  "failures": {
+    "cohort_a_gpt55": "One missing re import in a self-check.",
+    "cohort_a_luna": "Two runs compare entire source arrays against augmented layout arrays, then repair their checks.",
+    "cohort_b_luna": "One strict tool failure; two final sources differ from the source rendered. Only one complete pass.",
+    "full_mural": "Initial caption/routing failures followed by two completed but aesthetically rejected reflows."
+  },
+  "tests": {
+    "total": 189,
+    "suites": [
+      {
+        "script": "skills/usefulcharts-style/scripts/test_branch_bundle.py",
+        "exit_code": 0,
+        "tests": 3
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_branch_caption_audit.py",
+        "exit_code": 0,
+        "tests": 4
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_branch_source.py",
+        "exit_code": 0,
+        "tests": 3
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_branching_layout.py",
+        "exit_code": 0,
+        "tests": 10
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_chart.py",
+        "exit_code": 0,
+        "tests": 27
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_context_landmarks.py",
+        "exit_code": 0,
+        "tests": 13
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_editorial.py",
+        "exit_code": 0,
+        "tests": 51
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_editorial_art.py",
+        "exit_code": 0,
+        "tests": 3
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_editorial_insets.py",
+        "exit_code": 0,
+        "tests": 14
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_family_baselines.py",
+        "exit_code": 0,
+        "tests": 19
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_lineage_runs.py",
+        "exit_code": 0,
+        "tests": 6
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_timeline_events.py",
+        "exit_code": 0,
+        "tests": 25
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts/test_timeline_geometry.py",
+        "exit_code": 0,
+        "tests": 11
+      }
+    ]
+  },
+  "baseline_replay": {
+    "frozen_bundle_sha256": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4",
+    "frozen_bundle_files": 104,
+    "bundle_unchanged": true,
+    "caption_request": [
+      {
+        "step": 0,
+        "exit_code": 1,
+        "tail": "ster=EditorialPoster(structural);poster.render()\n                                       ~~~~~~~~~~~~~^^\n  File \"C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\usefulcharts-v32b-context-1-20260912\\workspace\\skills\\usefulcharts-style\\scripts\\render_chart.py\", line 657, in render\n    self.graph_layout()\n    ~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\usefulcharts-v32b-context-1-20260912\\workspace\\skills\\usefulcharts-style\\scripts\\editorial_poster.py\", line 286, in graph_layout\n    self.draw_annotations()\n    ~~~~~~~~~~~~~~~~~~~~~^^\n  File \"C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\usefulcharts-v32b-context-1-20260912\\workspace\\skills\\usefulcharts-style\\scripts\\editorial_poster.py\", line 509, in draw_annotations\n    require(safe,f'No clear placement for annotation {a[\"label\"]!r}. Move its anchor.')\n    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\usefulcharts-v32b-context-1-20260912\\workspace\\skills\\usefulcharts-style\\scripts\\render_chart.py\", line 36, in require\n    raise ValueError(message)\nValueError: No clear placement for annotation 'THE CIVIC PRESS'. Move its anchor.\n"
+      }
+    ],
+    "without_captions": [
+      {
+        "step": 0,
+        "exit_code": 0,
+        "tail": "{\"status\": \"pass\", \"canvas\": [1988.0, 2016.8850000000002], \"node_count\": 70, \"edge_count\": 97, \"crossing_count\": 59, \"order\": \"founded\", \"visual_review\": \"Required. Stage allocation and route length do not measure aesthetic quality.\"}\n"
+      },
+      {
+        "step": 1,
+        "exit_code": 0,
+        "tail": "{\"status\": \"pass\", \"id\": \"northbridge-publishing\", \"mode\": \"lineage\", \"design\": \"editorial\", \"canvas\": [1988.0, 2016.8850000000002], \"node_count\": 70, \"edge_count\": 97, \"union_count\": 0, \"node_collisions\": 0, \"connector_node_collisions\": 0, \"crossing_count\": 59, \"data_sha256\": \"0c98278484bbf1eaf5307e6e23677639ae66a399116ea26cbe0d5a82d1cc7e71\", \"visual_review\": \"Required; geometric preflight is not a visual quality score.\"}\n"
+      },
+      {
+        "step": 2,
+        "exit_code": 0,
+        "tail": "{\"status\": \"pass\", \"id\": \"northbridge-publishing\", \"node_count\": 70, \"edge_count\": 97, \"text_count\": 246, \"min_contrast\": 4.949075393281342, \"findings\": [], \"composition_warnings\": []}\n"
+      }
+    ],
+    "scope": "Deterministic counterfactual replay on the retained runtime, not another model trial."
+  },
+  "attempts": [
+    {
+      "id": "founded",
+      "status": "failed",
+      "note": "The baseline does not reserve the optical-family caption.",
+      "files": {
+        "draft.json": "186732be96e1589330577950305bbbf88ea01511fe1f3312eb6586bb2330d971",
+        "execution.json": "fcd299c286656ce7363359d53f1fd7aff9f1e33f0719bce3d96820df46c4e3b6",
+        "original.json": "3d41a4921458e5014cf5f8e477c6a9a7bd646ef4c3557bdb19d0b0c1a17aa668",
+        "retained-context.json": "827ec602be8c9dba0b6f2878ada283eb4f97316f2250e441734ca24082f9af7b",
+        "step-0.log": "653f1bf705687ea485781e7e87a06ef0d541badb7d5d806782380df67317b005"
+      }
+    },
+    {
+      "id": "causal",
+      "status": "failed",
+      "note": "An influence route exceeds the routing budget.",
+      "files": {
+        "draft.json": "7ea464d8b27e5ecfb0d39dbffc122983a3990078fdd9c675ead9109f0d24b407",
+        "execution.json": "fcd299c286656ce7363359d53f1fd7aff9f1e33f0719bce3d96820df46c4e3b6",
+        "original.json": "3d41a4921458e5014cf5f8e477c6a9a7bd646ef4c3557bdb19d0b0c1a17aa668",
+        "retained-context.json": "827ec602be8c9dba0b6f2878ada283eb4f97316f2250e441734ca24082f9af7b",
+        "step-0.log": "d9edc1ebdf2d9d05f85f8557deb8e4d5fc0132d12a106374953649f7eca7ad81"
+      }
+    },
+    {
+      "id": "founded-reserved",
+      "status": "rejected",
+      "note": "Complete main graph, but no original insets; long vertical stretches and an unrelated shared run.",
+      "files": {
+        "browser.json": "fca3515f32e0a3c7c1b5c869222858fc8c8200c7b3cd5e4c4615fc3428197061",
+        "composition.json": "db0a055cedf10193b93a2352793b05625ad006b69868a3a99db5b37ac1324d60",
+        "draft.json": "186732be96e1589330577950305bbbf88ea01511fe1f3312eb6586bb2330d971",
+        "execution.json": "1d6b537cc66222004776305bfab84622aad6acedfe4e31bbd702d4690cb3c9b7",
+        "layout.json": "b16724c758998d17308bec915ec4aa622ffcf89915eba4db4abdc8b694ef5005",
+        "original.json": "3d41a4921458e5014cf5f8e477c6a9a7bd646ef4c3557bdb19d0b0c1a17aa668",
+        "poster.html": "4a18548d965da96f036da2c064d66963e1b83254344cda271c724208fbdacaaf",
+        "poster.png": "62462785d5edac5a70a5abfdfa2e42951d8bda2baae4cece68439849d4db9140",
+        "poster.svg": "75850ca8cdc235ff28fe9d84adfdab6887b40251000ce926d43668c3f6543ea0",
+        "retained-context.json": "827ec602be8c9dba0b6f2878ada283eb4f97316f2250e441734ca24082f9af7b",
+        "source.json": "21eea33c50bb36ada1a0dac76756770d1b9940bd8d97f1b0e39e6dec9905f076",
+        "step-0.log": "fde339af5d54120726951bb36c0c5a3adfbff3bfe9a12268b3dd1830f725c7f3",
+        "step-1.log": "5032dcf27d6f77885ecf4f3aa8bf088423bc08bad4c7459e2fbf32162ecf9828",
+        "step-2.log": "1f1f37e8fb9c9ccbd614331aebcb222d78474bfd419ae0f4994c19bfa73edd13"
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          2055,
+          2779.199951171875
+        ],
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": [],
+        "composition_warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "equinox-to-newcalendar",
+            "second": "transits-to-charts",
+            "length": 39.180000000000064
+          }
+        ]
+      }
+    },
+    {
+      "id": "causal-reserved",
+      "status": "rejected",
+      "note": "Complete main graph, but no original insets; a wide fan, long influences and an unrelated shared run.",
+      "files": {
+        "browser.json": "50344999f8f363052239fcbeb91ef79e4669031550e9d25afacd70111f3879ec",
+        "composition.json": "da7053ea046e040efe4a5df3421be9aa21f88317ab68adcc07f02b866c5a819f",
+        "draft.json": "7ea464d8b27e5ecfb0d39dbffc122983a3990078fdd9c675ead9109f0d24b407",
+        "execution.json": "1d6b537cc66222004776305bfab84622aad6acedfe4e31bbd702d4690cb3c9b7",
+        "layout.json": "1a843bc822d2780e726b55f133be115ec3a67c5b6b3a73fe0f0091c322c39991",
+        "original.json": "3d41a4921458e5014cf5f8e477c6a9a7bd646ef4c3557bdb19d0b0c1a17aa668",
+        "poster.html": "46ae56970d3b252ef50d6843569acb35997db6604fe39cd17780364a09388653",
+        "poster.png": "25b72901a6f862e8c05e49ea5c480209cf29384bd442cc72ed79ceade7050fb6",
+        "poster.svg": "f6111599df3706d3bc34d3c1e918af2e6c1d35670f73c388278c23f084a30446",
+        "retained-context.json": "827ec602be8c9dba0b6f2878ada283eb4f97316f2250e441734ca24082f9af7b",
+        "source.json": "1f63ec5d4da57ff6d7a5e11b693a84bf683f426a4f874a35ce12a5e25cffb374",
+        "step-0.log": "849af7a1d08ca7d90ac1aa5f3a01c87d9c391370624ab531ee9cfa95459a619b",
+        "step-1.log": "7f826a91289eeb191b67c9d9b8d7502c5d5dafe18b55d8959b0be40cfcd5f4e7",
+        "step-2.log": "cc5fe9978d2122b402e67b8f86ae693af95775b342a60c6b9475dced7ebfa17e"
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          2502,
+          2197.22998046875
+        ],
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": [],
+        "composition_warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "silver-image-to-photometry",
+            "second": "harbour-board-to-lifeboat",
+            "length": 129.39999999999998
+          }
+        ]
+      }
+    },
+    {
+      "id": "founded-geometry",
+      "status": "diagnostic",
+      "note": "Nodes only. Edges and insets omitted; never an accepted poster.",
+      "files": {
+        "browser.json": "b74a7367e48039c5dac67cdc2664b24e52c052aa0d8304654fc022e217d0c62d",
+        "draft.json": "186732be96e1589330577950305bbbf88ea01511fe1f3312eb6586bb2330d971",
+        "execution.json": "96d8ab36df77c8740258ca4e6e8f3b29c4f9608c1954a81e6a5620a20db65e5e",
+        "layout.json": "2348ec00bf8248431abb5dc09c4a8f9a7eb116008b60650d4be0c74e7005e7d3",
+        "original.json": "3d41a4921458e5014cf5f8e477c6a9a7bd646ef4c3557bdb19d0b0c1a17aa668",
+        "poster.html": "d901742d7329f025ec7b9aacfb7b2aae6484046575cb6a809f5b6d3479a3cce7",
+        "poster.png": "ba1173a2b77ff2b754a8aeea6b59adc4b89f1462fb8f5d1290134b2c79542bf9",
+        "poster.svg": "97647efc29f714b23e801e8e30b05843ad59ea69351c8899786aa625f420c259",
+        "retained-context.json": "827ec602be8c9dba0b6f2878ada283eb4f97316f2250e441734ca24082f9af7b",
+        "source.json": "bd301925e1f3923782989f098f7634c1d6f65465dc431a08ae06ebd5e7bacab6",
+        "step-0.log": "c3785cc6fcc0a12fe1e817eb5338788bcb978fef03bed3d961e51b37a5e2ad34",
+        "step-1.log": "c3d0d79ff8480fa139845688fc2b30cfd90df61f5bb461426d90195e6f69edd3"
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          2055,
+          2779.199951171875
+        ],
+        "node_count": 141,
+        "edge_count": 0,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "causal-geometry",
+      "status": "diagnostic",
+      "note": "Nodes only. Edges and insets omitted; never an accepted poster.",
+      "files": {
+        "browser.json": "b0a444232495727c81ae5e707021e5d5e0baf34fdef86fc7511a5d2eccc96de0",
+        "draft.json": "7ea464d8b27e5ecfb0d39dbffc122983a3990078fdd9c675ead9109f0d24b407",
+        "execution.json": "96d8ab36df77c8740258ca4e6e8f3b29c4f9608c1954a81e6a5620a20db65e5e",
+        "layout.json": "c51efbabad5e34a448258ef0ab1250eb4ed1fadd588afea10ec514086fec12d3",
+        "original.json": "3d41a4921458e5014cf5f8e477c6a9a7bd646ef4c3557bdb19d0b0c1a17aa668",
+        "poster.html": "f63d52cde682843e1aadd54b8d93c18504baa47a0ff18ea894248fec7b859bbc",
+        "poster.png": "d23c37897bd6c1160df8d1911afe21344655a00eb55bb5636b420fc05bc390ed",
+        "poster.svg": "355fdfe1c6ef751e70f3ac83494203d855a4a82ff15e7280bddfe44a95eadd9d",
+        "retained-context.json": "827ec602be8c9dba0b6f2878ada283eb4f97316f2250e441734ca24082f9af7b",
+        "source.json": "05df05f26665b40e505f912e5c1c0332c321cab3b68fb4702ef7b96cb5cf73f3",
+        "step-0.log": "b292e4c8d605256c35bda3e51e77c47bb6e5af0e8af9b4e45c897215da16c64b",
+        "step-1.log": "c3d0d79ff8480fa139845688fc2b30cfd90df61f5bb461426d90195e6f69edd3"
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          2502,
+          2197.22998046875
+        ],
+        "node_count": 141,
+        "edge_count": 0,
+        "findings": [],
+        "composition_warnings": []
+      }
+    }
+  ],
+  "source_regression": [
+    {
+      "file": "atlas-of-inquiry.html",
+      "sha256": "98c70def1f00a633333cd9b058e44e5f34230025429ca461edb4a6ab45c12406",
+      "identical_to_published_source": true
+    },
+    {
+      "file": "atlas-of-inquiry.json",
+      "sha256": "3d41a4921458e5014cf5f8e477c6a9a7bd646ef4c3557bdb19d0b0c1a17aa668",
+      "identical_to_published_source": true
+    },
+    {
+      "file": "atlas-of-inquiry.svg",
+      "sha256": "c67d8045125ceec290720c2451757707e00159aee788795d7d7f52c67a85e81a",
+      "identical_to_published_source": true
+    },
+    {
+      "file": "aurelian-families.html",
+      "sha256": "510e598b7ec207ed489acb0b047e5acebe31cf699c82b07f1540c9e48efce490",
+      "identical_to_published_source": true
+    },
+    {
+      "file": "aurelian-families.json",
+      "sha256": "89a0bba6972f1c240d1deaa37844276a5c3b3a7f24a937ec3242a43203044328",
+      "identical_to_published_source": true
+    },
+    {
+      "file": "aurelian-families.svg",
+      "sha256": "147571087e0cbe772934bc04a95c8636dc66247ecab45fd46d92283d9750bfc0",
+      "identical_to_published_source": true
+    },
+    {
+      "file": "five-regional-histories.html",
+      "sha256": "a88c999d88b7887acf39fa286d309584915744fb1cff920630818a720c81d8ac",
+      "identical_to_published_source": true
+    },
+    {
+      "file": "five-regional-histories.json",
+      "sha256": "a073e9d23328918ffb342aeb01b567fd5d870dc96102811bebfdae27ee6d8c74",
+      "identical_to_published_source": true
+    },
+    {
+      "file": "five-regional-histories.svg",
+      "sha256": "00bbdf2fe89192ee55b94edee8263264286dbef45343e671752a3d6c339e9ae9",
+      "identical_to_published_source": true
+    },
+    {
+      "file": "index.html",
+      "sha256": "2ca770f4f39b7eb823f9c1f3aceb33cae22c2b1e9cb3300c825eef7b502362bc",
+      "identical_to_published_source": true
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "2b2ad84df9b753067f8b87a3e0c67bd363483443492019a92ac1bd2b27128686",
+      "identical_to_published_source": true
+    }
+  ],
+  "murals": {
+    "aurelian-families": {
+      "status": "pass",
+      "canvas": [
+        1890,
+        2835
+      ],
+      "node_count": 561,
+      "edge_count": 323,
+      "findings": [],
+      "composition_warnings": []
+    },
+    "atlas-of-inquiry": {
+      "status": "pass",
+      "canvas": [
+        1620,
+        2430
+      ],
+      "node_count": 141,
+      "edge_count": 171,
+      "findings": [],
+      "composition_warnings": []
+    },
+    "five-regional-histories": {
+      "status": "pass",
+      "canvas": [
+        1680,
+        2300
+      ],
+      "node_count": 50,
+      "edge_count": 55,
+      "findings": [],
+      "composition_warnings": []
+    }
+  },
+  "mutation_tests": {
+    "status": "pass",
+    "mutations": [
+      {
+        "mutation": "changed-influence-source-side",
+        "expected_finding": "source-relation-port",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "detached-lateral-source",
+        "expected_finding": "detached-source",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "lateral-influence-changed-to-descent",
+        "expected_finding": "invalid-lateral-relation",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "invalid-influence-target-side",
+        "expected_finding": "detached-target",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "stale-source-revision",
+        "expected_finding": "source-revision-mismatch",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "changed-date",
+        "expected_finding": "source-date-label-missing",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "changed-caption",
+        "expected_finding": "source-detail-missing",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "deleted-node",
+        "expected_finding": "node-inventory",
+        "detected": true,
+        "finding_count": 6
+      },
+      {
+        "mutation": "oversized-label",
+        "expected_finding": "label-outside-node",
+        "detected": true,
+        "finding_count": 14
+      },
+      {
+        "mutation": "invisible-label",
+        "expected_finding": "text-contrast",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "wrong-relation-kind",
+        "expected_finding": "source-relation-inventory",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "detached-source",
+        "expected_finding": "detached-source",
+        "detected": true,
+        "finding_count": 8
+      },
+      {
+        "mutation": "source-reentry",
+        "expected_finding": "edge-node-collision",
+        "detected": true,
+        "finding_count": 11
+      }
+    ]
+  },
+  "paint_controls": {
+    "status": "pass",
+    "cases": [
+      {
+        "id": "automatic",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "authored-shared",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "perpendicular-crossing",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "legitimate-siblings",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "forged-route-metadata",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "rounded-coordinate-overlap",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "painted-width-overlap",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "parallel-gutter",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      }
+    ],
+    "scope": "Independent visible SVG command/transform inspection. Warnings do not establish aesthetic parity."
+  },
+  "gallery": {
+    "status": "pass",
+    "checks": [
+      {
+        "width": 1440,
+        "cards": 3,
+        "ids": [
+          "usefulcharts-dynastic-genealogy",
+          "usefulcharts-branching-lineage",
+          "usefulcharts-parallel-history"
+        ],
+        "overflow": false
+      },
+      {
+        "width": 390,
+        "cards": 3,
+        "ids": [
+          "usefulcharts-dynastic-genealogy",
+          "usefulcharts-branching-lineage",
+          "usefulcharts-parallel-history"
+        ],
+        "overflow": false
+      },
+      {
+        "viewer": "aurelian-families",
+        "fit_width": 1000,
+        "zoom_width": 1250,
+        "full_width": 1890,
+        "embedded_images_checked": 17
+      },
+      {
+        "viewer": "atlas-of-inquiry",
+        "fit_width": 1000,
+        "zoom_width": 1250,
+        "full_width": 1620,
+        "embedded_images_checked": 7
+      },
+      {
+        "viewer": "five-regional-histories",
+        "fit_width": 1000,
+        "zoom_width": 1250,
+        "full_width": 1680,
+        "embedded_images_checked": 7
+      }
+    ],
+    "page_errors": []
+  },
+  "comparison": {
+    "status": "pass",
+    "scope": "Private visual review; no blind equivalence claim.",
+    "groups": [
+      {
+        "title": "Local family titles",
+        "images": [
+          {
+            "title": "Before: complete records, no local titles",
+            "path": "projects\\usefulcharts-style\\artifacts\\reviews\\full-branches-v33\\publishing-without-captions\\poster.png",
+            "sha256": "2df086a1110b047be6666738066f971e0d52f1d07323438c9bec0d12dc19069e",
+            "note": "70 institutions and 97 typed relationships. The frozen v32 runtime cannot place the same five requested captions; this completed control omits only those captions."
+          },
+          {
+            "title": "After: the five requested family titles",
+            "path": "projects\\usefulcharts-style\\artifacts\\reviews\\full-branches-v33\\captioned-publishing\\poster.png",
+            "sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+            "note": "The same 70 institutions and 97 relationships, with all five anchored titles. The original fields, name sizes and note sizes are preserved. This is a development case."
+          }
+        ]
+      },
+      {
+        "title": "Original reference and current development output",
+        "images": [
+          {
+            "title": "UsefulCharts reference",
+            "path": "projects\\usefulcharts-style\\artifacts\\images\\reference-denominations.png",
+            "sha256": "05db9954eb790dfcba475daa2c178ee8fed815b5bb504abaa58b970043ed331d",
+            "note": "Christian Denominations Family Tree, UsefulCharts. Private visual review only; different source data and record count. Equal display width is not an experimental control."
+          },
+          {
+            "title": "Skill output",
+            "path": "projects\\usefulcharts-style\\artifacts\\reviews\\full-branches-v33\\captioned-publishing\\poster.png",
+            "sha256": "92affff9f51077661a65b016a25ca0e248777c9c60a977e1dfdf83ab05282a3f",
+            "note": "Fictional publishing history. Local family titles improve hierarchy; the long dotted influences and persistent column rhythm still weaken the comparison."
+          }
+        ]
+      },
+      {
+        "title": "Full mural: rejected automatic alternatives",
+        "images": [
+          {
+            "title": "Current published composition",
+            "path": "projects\\usefulcharts-style\\artifacts\\reviews\\full-branches-v33\\gallery\\atlas-of-inquiry.png",
+            "sha256": "af27177e1ae2411e20d6e00db63bbeaa63648bf6d184fd7afbf1d01b644d85b2",
+            "note": "141 institutions and 171 typed relationships. Complete contextual insets. The canonical gallery remains unchanged."
+          },
+          {
+            "title": "Rejected: founded-year order",
+            "path": "projects\\usefulcharts-style\\artifacts\\reviews\\full-branches-v33\\founded-reserved\\poster.png",
+            "sha256": "62462785d5edac5a70a5abfdfa2e42951d8bda2baae4cece68439849d4db9140",
+            "note": "141 institutions and 171 relationships; 112 crossings and one unrelated shared run. Context insets are omitted in this probe. The long vertical stretches weaken the page."
+          },
+          {
+            "title": "Rejected: causal order",
+            "path": "projects\\usefulcharts-style\\artifacts\\reviews\\full-branches-v33\\causal-reserved\\poster.png",
+            "sha256": "25b72901a6f862e8c05e49ea5c480209cf29384bd442cc72ed79ceade7050fb6",
+            "note": "141 institutions and 171 relationships; 114 crossings and one unrelated shared run. Context insets are omitted in this probe. The wide fan and long influences weaken the page."
+          }
+        ]
+      }
+    ],
+    "controls": {
+      "image_count": 7,
+      "detail_width": 1600,
+      "mobile_overflow": false,
+      "page_errors": []
+    }
+  },
+  "visual_review": "The shared final naturalistic PNG was directly inspected after byte equality across all six A and all three C runs was established. Each final Luna C trace reads its full PNG and a detail. The private comparison, original reference and both rejected full mural variants were inspected. No claim that nine identical PNGs were separately reviewed.",
+  "remaining_gaps": [
+    "Persistent broad families and long influence paths in the medium poster.",
+    "The dense left illustration cluster and repeated ordinary names weaken local hierarchy.",
+    "The full institutional mural, repeated genealogy panels and regional chronology still need composition review beyond this medium-case feature."
+  ]
+}

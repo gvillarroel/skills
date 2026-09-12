@@ -10,7 +10,8 @@ import unittest
 
 from compose_branching_history import compose_history
 from editorial_poster import EditorialPoster
-from render_chart import collinear_overlap
+from render_chart import collinear_overlap, overlaps, segment_hits
+from branching_envelopes import caption_box
 
 
 def history():
@@ -35,6 +36,64 @@ def history():
 
 
 class BranchingLayoutTests(unittest.TestCase):
+    def test_wide_family_caption_is_reserved_without_widening_its_name(self):
+        source = history()
+        source['nodes'][2]['width'] = 190
+        source['annotations'] = [dict(node='garden', kind='pill', width=420, size=22,
+                                     label='NATURAL HISTORY AND FIELD COLLECTIONS', group='science')]
+        original = copy.deepcopy(source)
+        result, _ = compose_history(source)
+        self.assertEqual(source, original)
+        node = next(n for n in result['nodes'] if n['id'] == 'garden')
+        self.assertEqual(node['width'], 190)
+        for key, value in source['nodes'][2].items():
+            self.assertEqual(node[key], value)
+        poster = EditorialPoster(result)
+        poster.render()
+        box = caption_box(result['annotations'][0], node, poster.boxes['garden'])
+        self.assertIn(box, poster.annotation_boxes)
+        self.assertTrue(all(not overlaps(box, other, 4) for other in poster.boxes.values()))
+        for route in poster.routes:
+            if route['target'] != 'garden':
+                self.assertTrue(all(not segment_hits(p, q, box, 0) for p, q in zip(route['points'], route['points'][1:])))
+
+    def test_source_landmark_and_illustrated_heading_reserve_complete_envelopes(self):
+        source = history()
+        source['nodes'][2]['place'] = 'The Estuary Field Station'
+        source['annotations'] = [
+            dict(node='garden', kind='landmark', field='place', width=230, size=20, icon='leaf', art_size=45),
+            dict(node='society', kind='heading', label='The Western Reading Tradition', width=255, size=19, icon='book'),
+        ]
+        result, _ = compose_history(source)
+        poster = EditorialPoster(result)
+        svg, _ = poster.render()
+        self.assertIn('The Estuary Field Station', svg)
+        for annotation in result['annotations']:
+            nid = annotation['node']
+            box = caption_box(annotation, poster.nodes[nid], poster.boxes[nid])
+            self.assertGreaterEqual(box[1], 130)
+            self.assertTrue(all(not overlaps(box, other, 4) for other in poster.boxes.values()))
+            for route in poster.routes:
+                self.assertTrue(all(not segment_hits(p, q, box, 0) for p, q in zip(route['points'], route['points'][1:])))
+
+    def test_supplied_offsets_and_unknown_anchors_are_validated(self):
+        source = history()
+        source['annotations'] = [dict(node='garden', kind='pill', label='FIELD COLLECTIONS', width=230, dx=19, dy=-125)]
+        result, _ = compose_history(source)
+        self.assertEqual(result['annotations'], source['annotations'])
+        source['annotations'][0]['dy'] = 0
+        with self.assertRaisesRegex(ValueError, 'overlap their own content'):
+            compose_history(source)
+        source['annotations'][0]['node'] = 'unknown'
+        with self.assertRaisesRegex(ValueError, 'unknown institution'):
+            compose_history(source)
+
+    def test_wide_caption_must_fit_the_prescribed_page(self):
+        source = history()
+        source.update(width=1000, annotations=[dict(node='garden', kind='pill', label='A deliberately wide family caption', width=1100)])
+        with self.assertRaisesRegex(ValueError, 'widest branching stage'):
+            compose_history(source)
+
     def test_complete_composition_preserves_facts_and_chooses_influence_ports(self):
         source = history()
         source['nodes'][2]['research'] = {'shelf': 'B', 'wording': 'exact source wording'}

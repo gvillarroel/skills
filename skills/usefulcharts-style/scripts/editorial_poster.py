@@ -19,6 +19,7 @@ from editorial_art import symbol
 from cohort_layout import place_cohorts, compact_cohort_defaults
 from story_layout import pack_stories
 from branching_layout import arrange_branches
+from branching_envelopes import caption_box
 from editorial_insets import CONTEXT_KINDS, inset_content, draw_context_inset
 from editorial_landmarks import landmark_content
 from timeline_geometry import lane_geometry, duration_width, transition_geometry, period_parts
@@ -296,6 +297,7 @@ class EditorialPoster(Poster):
     def build_routes(self):
         seen=set();pairs=set();segments=[]
         context_boxes={}
+        caption_targets={}
         inset_ids=set()
         for index,item in enumerate(self.data.get('insets',[])):
             if item.get('kind') not in CONTEXT_KINDS:continue
@@ -310,7 +312,18 @@ class EditorialPoster(Poster):
             context_boxes[f'inset-{iid}']=box
             self.annotation_boxes.append(box)
         for i,annotation in enumerate(self.data.get('annotations',[])):
-            if annotation.get('kind')!='landmark':continue
+            if annotation.get('kind')!='landmark':
+                if not self.data.get('_branch_annotation_envelopes'):continue
+                nid=annotation.get('node')
+                require(nid in self.boxes,'Branch annotation references an unknown institution.')
+                key=f'branch-caption-{i}'
+                context_boxes[key]=caption_box(annotation,self.nodes[nid],self.boxes[nid])
+                require(not any(overlaps(context_boxes[key],box,4) for box in self.boxes.values()),
+                        'A reserved branch caption covers an institution. Recompose the complete caption envelope.')
+                # A family pill may label its own incoming trunk. It must not
+                # conceal an unrelated path; open headings remain clear of all.
+                if annotation.get('kind')=='pill':caption_targets[key]=nid
+                continue
             require(annotation.get('node') in self.boxes,'A landmark requires a known person or institution anchor.')
             anchor=self.boxes[annotation['node']];content=landmark_content(annotation,self.nodes[annotation['node']])
             x=anchor[0]+anchor[2]/2+annotation.get('dx',0);y=anchor[1]+anchor[3]/2+annotation.get('dy',0)
@@ -326,6 +339,7 @@ class EditorialPoster(Poster):
             row_bands[row]=(min(lo,box[1]),max(hi,box[1]+box[3]))
         for edge in self.relations:
             eid,source,target,kind=(edge[k] for k in ('id','source','target','kind'))
+            edge_context={key:box for key,box in context_boxes.items() if caption_targets.get(key)!=target}
             ident(eid)
             require(eid not in seen and (source,target,kind) not in pairs,f'Duplicate relationship {eid}')
             seen.add(eid);pairs.add((source,target,kind))
@@ -373,8 +387,8 @@ class EditorialPoster(Poster):
                         regions.append(bounds)
                     try:path=compress([start]+route_regions(a,b,list(self.boxes.values()),regions,segments,reserved=reserved)+[end])
                     except ValueError as error:raise ValueError(f'Cannot route relationship {eid}: {error}') from error
-            if any(segment_hits(p,q,box,4) for p,q in zip(path,path[1:]) for box in context_boxes.values()):
-                obstacles=self.boxes|context_boxes
+            if any(segment_hits(p,q,box,4) for p,q in zip(path,path[1:]) for box in edge_context.values()):
+                obstacles=self.boxes|edge_context
                 for port,point in (('source',a),('target',b)):
                     blocked=[nid for nid,(x,y,w,h) in obstacles.items() if x-7<point[0]<x+w+7 and y-7<point[1]<y+h+7]
                     require(not blocked,f'Relationship {eid} has a crowded {port} port near {", ".join(blocked)}. Reserve at least 18 units at the attachment.')
@@ -511,6 +525,8 @@ class EditorialPoster(Poster):
             self.add(f'<g data-annotation-id="annotation-{annotation_index}" data-annotation-kind="{attr(a.get("kind","note"))}">')
             if a.get('kind')=='pill':self.rect((x-w/2,y-h/2,w,h),'#FFFEF7',paint,2.5,12)
             if a.get('kind')=='heading':
+                if self.data.get('_branch_annotation_envelopes') and a.get('node'):
+                    self.annotation_boxes.append(caption_box(a,self.nodes[a['node']],self.boxes[a['node']]))
                 if a.get('icon'):self.artwork(a['icon'],x-22,y-h/2-57,44,49,paint,a.get('variant',0))
             yy=y-h/2+size
             for line in lines:

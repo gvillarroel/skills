@@ -19,6 +19,7 @@ from playwright.sync_api import sync_playwright
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from audit_timeline_annotations import check_annotations
 from audit_context_insets import BROWSER_AUDIT, check_insets
+from audit_branch_captions import BROWSER_AUDIT as BRANCH_CAPTION_AUDIT, check_captions
 
 AUDIT = r"""() => {
   const svg = document.querySelector('svg');
@@ -70,7 +71,7 @@ AUDIT = r"""() => {
   const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,event:el.closest('[data-event-id]')?.dataset.eventId,role:el.dataset.eventTextRole||null,origin:{x:textOrigin(el).x,y:textOrigin(el).y},box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background),runs:[...el.querySelectorAll('tspan')].map(run=>({text:run.textContent,role:run.dataset.eventRunRole||null,font:parseFloat(getComputedStyle(run).fontSize),weight:Number(getComputedStyle(run).fontWeight),origin:glyphPoint(run),end:glyphPoint(run,true),contrast:contrast(getComputedStyle(run).fill,el.dataset.background),...painted(run)}))}));
   const illustrations=[...svg.querySelectorAll('[data-event-id] [data-artwork]')].map(el=>({event:el.closest('[data-event-id]').dataset.eventId,kind:el.dataset.artwork,illustration_id:el.dataset.illustrationId||null,use_href:el.querySelector('use')?.getAttribute('href')||null,viewport:viewport(el),...painted(el)}));
   const landmarks=[...svg.querySelectorAll('[data-annotation-kind="landmark"]')].map(el=>({id:el.dataset.annotationId,node:el.dataset.contextNode,group:el.dataset.contextGroup,field:el.dataset.sourceField,value:el.dataset.sourceValue,box:bounds(el.querySelector('[data-annotation-box]')),heraldry_fill:el.querySelector('[data-artwork="heraldry"]>path')?getComputedStyle(el.querySelector('[data-artwork="heraldry"]>path')).fill:null,label:[...el.querySelectorAll('[data-content-role="landmark-label"]')].map(t=>t.textContent).join(' ')}));
-""" + BROWSER_AUDIT + r"""
+""" + BROWSER_AUDIT + BRANCH_CAPTION_AUDIT + r"""
   const setEqual=(a,b)=>a.length===b.length && [...a].sort().join('\n')===[...b].sort().join('\n');
   if(!setEqual(nodes.map(n=>n.id),meta.node_ids))findings.push({type:'node-inventory'});
   if(!setEqual(edges.map(e=>e.id),meta.edge_ids))findings.push({type:'edge-inventory'});
@@ -190,7 +191,7 @@ AUDIT = r"""() => {
     for(const t of texts)if(t.owner==='page'&&clippedArea(poly,t.box)>1)findings.push({type:'transition-fill-text-collision',edge:fill.dataset.transitionFill,text:t.text});
     for(const art of illustrations)if(clippedArea(poly,art.box)>1)findings.push({type:'transition-fill-illustration-collision',edge:fill.dataset.transitionFill,event:art.event});
   }
-  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,composition_warnings,nodes,edges,events,unions,texts,illustrations,landmarks,context_insets,metadata:meta};
+  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,composition_warnings,nodes,edges,events,unions,texts,illustrations,landmarks,context_insets,branch_captions,metadata:meta};
 }"""
 
 
@@ -202,6 +203,7 @@ def check_source(report, data):
         report['findings'].append({'type':'source-revision-mismatch','expected_sha256':source_hash,'rendered_sha256':report['metadata'].get('data_sha256')})
     nodes = data.get("periods", []) if data["mode"] == "timeline" else data.get("nodes", [])
     check_insets(report,data)
+    check_captions(report,data)
     contexts={f'annotation-{i}':a for i,a in enumerate(data.get('annotations',[])) if a.get('kind')=='landmark'}
     actual_contexts={a['id']:a for a in report.get('landmarks',[])}
     if sorted(contexts)!=sorted(actual_contexts):report['findings'].append({'type':'source-landmark-inventory'})

@@ -20,17 +20,32 @@ Connect its two stated predecessors with two `branch` edges. An intellectual or 
 
 If every record has a finite numeric `founded` year, source order helps place later institutions in later parts of the composition. Otherwise the default uses causal depth. Optional `branch_order: causal` explicitly selects causal order; `branch_order: founded` requires complete numeric years. This remains a schematic lineage: order and attachment space determine distances, **not a common numeric time scale**. Use the timeline workflow for exact elapsed-time comparisons.
 
-## Compose before rendering
+## Compose and export a consistent poster
+
+For a normal poster bundle, use one command:
+
+```sh
+uv run --script <skill-dir>/scripts/create_branch_poster.py draft.json --output-dir result
+```
+
+It writes `result/source.json`, `poster.svg`, `poster.html`, `layout.json`, `browser.json` and `poster.png`. The source is the **composed, render-ready brief**, with the exact coordinates and routes used by that SVG. The command checks the original supplied fields and audits these final file paths. It supplies the editorial/lineage/branches profile when those fields are absent; explicit conflicting profiles remain errors. Open the final PNG and a dense detail, then write the user's requested review. Keep the original `draft.json` outside the bundle. Do not replace the delivered `source.json` with that draft after rendering.
+
+When the user requests different filenames or a specific intermediate editing step, use the individual operations below with those exact final paths. Audit the delivered source and SVG again after any copying or later edits:
 
 ```sh
 uv run --script <skill-dir>/scripts/compose_branching_history.py draft.json --output brief.json --report composition.json
+uv run --script <skill-dir>/scripts/verify_branch_source.py draft.json brief.json --report source-check.json
 uv run --script <skill-dir>/scripts/render_chart.py brief.json --svg poster.svg --html poster.html --report layout.json
 uv run --script <skill-dir>/scripts/audit_chart.py poster.svg --source brief.json --report browser.json --png poster.png
 ```
 
 Use the exact output paths requested by the user. Keep `draft.json` as the original data-first input. The helper writes an authored `brief.json` containing measured readable typography, complete content envelopes, the category key, resolved coordinates and calculated corridors. It first composes structural descent, then tries lateral attachments for influence. This avoids forcing every influence through a bottom-to-top connection before side ports can be chosen.
 
+Use the bundled source check before rendering; put its report outside an exact final deliverable directory unless requested there. Layout resolution adds coordinates to records, `via` bends and ports to edges, and offsets to captions. Whole-object or whole-array equality therefore gives false alarms. The source check matches stable identities, requires every original item and supplied field, and allows additional layout fields; it does not replace the independent SVG audit or visual inspection.
+
 The helper tries five attachment pairs in nearby corridors first. If none works, it broadens the search. This is a bounded preference for local connections, not a claim of a globally optimal layout; difficult large graphs can still take substantial time. A valid path is a proposal for visual review. The report records selected ports and whether each search needed the broader pass.
+
+Declare meaningful local family captions before composing. An anchored `pill`, illustrated `heading`, or source-bound `landmark` is measured together with its institution, including wrapped text and the complete illustration. For example, `{"node":"library","kind":"pill","label":"PUBLIC READING TRADITIONS","width":280,"size":16,"group":"civic"}` gives the local branch a name. Omit `dx` and `dy` for a title immediately above its institution. Explicit offsets are retained and must clear that institution and its other captions. A caption can be wider than its name panel: the composer allocates the larger footprint without widening the panel or changing the text size. It also protects the caption from unrelated routes; a family pill may sit on its own incoming trunk. The resolved source retains these reservations when rendered again.
 
 Explicit page dimensions are honored only when complete records fit. A too-small page produces an explanation instead of shrinking text or losing records. Cycles, unknown endpoints, partnerships, fixed insets and prescribed coordinates need their appropriate workflow. Do not repeatedly retry an unchanged structural error.
 

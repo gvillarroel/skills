@@ -10,6 +10,7 @@ import math
 from collections import defaultdict
 
 from cohort_layout import place_cohorts
+from branching_envelopes import branch_envelopes
 from render_chart import number, require
 
 
@@ -52,8 +53,11 @@ def arrange_branches(data, measure, top=190):
             ranks[nid] = max([bands[nid]] + [ranks[p] + 1 for p in parents[nid]])
             by_id[nid]['row'] = ranks[nid]
             pending.remove(nid)
-    widths = {n['id']: number(n['width'], f'{n["id"]}.width') for n in nodes}
-    heights = {n['id']: measure(n, widths[n['id']])[2] for n in nodes}
+    envelopes = branch_envelopes(result, measure)
+    if result.get('annotations'):
+        result['_branch_annotation_envelopes'] = True
+    widths = {nid: bounds['width'] for nid, bounds in envelopes.items()}
+    heights = {nid: bounds['height'] for nid, bounds in envelopes.items()}
     rows = defaultdict(list)
     for node in nodes:
         rows[node['row']].append(node)
@@ -66,7 +70,10 @@ def arrange_branches(data, measure, top=190):
     result['cohort_gap'] = 28
     result.pop('cohort_weights', None)
     result.pop('cohort_spread', None)
-    placed = place_cohorts(result, measure, 65, width - 65, 0, 1)
+    cells = copy.deepcopy(result)
+    for node in cells['nodes']:
+        node['width'] = widths[node['id']]
+    placed = place_cohorts(cells, lambda n, w: ([], [], heights[n['id']]), 65, width - 65, 0, 1)
     xs = {n['id']: n['x'] for n in placed}
     ordered = sorted(nodes, key=lambda n: (ranks[n['id']], xs[n['id']], n['id']))
     incoming = {nid: {} for nid in by_id}
@@ -105,7 +112,7 @@ def arrange_branches(data, measure, top=190):
             f'The branching stories need at least {minimum_height:.1f} units; omit the fixed height or enlarge it.')
     for node in nodes:
         nid = node['id']
-        node.update(x=xs[nid], y=top + ys[nid])
+        node.update(x=xs[nid] - envelopes[nid]['dx'], y=top + ys[nid] - envelopes[nid]['dy'])
         node.pop('row', None)
     result.pop('cohort_gap', None)
     result.update(width=width, height=height, layout='branches', branch_order=order_mode)
