@@ -3,8 +3,8 @@
   "title": "DYNASTIES OF THE AURELIAN COAST",
   "mode": "genealogy",
   "design": "editorial",
-  "width": 1800.0,
-  "height": 2700.0,
+  "width": 1890.0,
+  "height": 2835.0,
   "font_size": 10.6,
   "imprint": [
     "ORIGINAL STUDY",
@@ -62,15 +62,15 @@
       "realm": "the Alder March",
       "role": "landmark ruler",
       "row": 0,
-      "width": 115.11185,
+      "width": 142.75805,
       "style": "hero",
-      "size": 13.5,
+      "size": 15.5,
       "icon": "museum-862",
-      "icon_width": 36,
+      "icon_width": 52,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 876.197,
-      "y": 195.0
+      "x": 907.813,
+      "y": 204.75
     },
     {
       "id": "consort-0-0",
@@ -84,8 +84,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 982.253,
-      "y": 195.0
+      "x": 1027.692,
+      "y": 204.75
     },
     {
       "id": "person-1-0",
@@ -104,8 +104,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 788.094,
-      "y": 259.337
+      "x": 779.562,
+      "y": 277.087
     },
     {
       "id": "consort-1-0",
@@ -119,8 +119,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 869.619,
-      "y": 259.337
+      "x": 861.087,
+      "y": 277.087
     },
     {
       "id": "person-1-1",
@@ -134,15 +134,15 @@
       "realm": "Bayeux",
       "role": "house founder",
       "row": 1,
-      "width": 86.69225,
+      "width": 106.737875,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-15708",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 965.842,
-      "y": 280.179
+      "x": 1029.455,
+      "y": 304.429
     },
     {
       "id": "consort-1-1",
@@ -156,8 +156,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1057.688,
-      "y": 280.179
+      "x": 1131.324,
+      "y": 304.429
     },
     {
       "id": "person-2-0",
@@ -176,8 +176,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 608.029,
-      "y": 313.636
+      "x": 538.377,
+      "y": 331.386
     },
     {
       "id": "consort-2-0",
@@ -191,8 +191,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 689.554,
-      "y": 313.636
+      "x": 619.902,
+      "y": 331.386
     },
     {
       "id": "person-2-1",
@@ -206,15 +206,15 @@
       "realm": "the Corven Coast",
       "role": "house founder",
       "row": 2,
-      "width": 96.82903999999999,
+      "width": 118.16324,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-24684",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 784.468,
-      "y": 334.478
+      "x": 780.056,
+      "y": 358.728
     },
     {
       "id": "consort-2-1",
@@ -228,8 +228,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 881.383,
-      "y": 334.478
+      "x": 887.638,
+      "y": 358.728
     },
     {
       "id": "person-2-2",
@@ -248,8 +248,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 971.367,
-      "y": 343.016
+      "x": 1026.702,
+      "y": 373.766
     },
     {
       "id": "consort-2-2",
@@ -263,8 +263,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1052.892,
-      "y": 343.016
+      "x": 1108.227,
+      "y": 373.766
     },
     {
       "id": "person-2-3",
@@ -278,15 +278,15 @@
       "realm": "Daleshire",
       "role": "house founder",
       "row": 2,
-      "width": 100.37081,
+      "width": 122.155235,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-864",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1149.577,
-      "y": 351.554
+      "x": 1271.135,
+      "y": 388.804
     },
     {
       "id": "consort-2-3",
@@ -300,8 +300,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1248.863,
-      "y": 351.554
+      "x": 1381.313,
+      "y": 388.804
     },
     {
       "id": "person-3-0",
@@ -320,8 +320,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 442.598,
-      "y": 367.935
+      "x": 337.538,
+      "y": 385.685
     },
     {
       "id": "consort-3-0",
@@ -335,8 +335,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 524.123,
-      "y": 367.935
+      "x": 419.063,
+      "y": 385.685
     },
     {
       "id": "person-3-1",
@@ -355,8 +355,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 619.115,
-      "y": 397.315
+      "x": 566.388,
+      "y": 428.065
     },
     {
       "id": "consort-3-1",
@@ -370,8 +370,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 700.64,
-      "y": 397.315
+      "x": 647.913,
+      "y": 428.065
     },
     {
       "id": "person-3-2",
@@ -385,15 +385,15 @@
       "realm": "the Everen Isles",
       "role": "house founder",
       "row": 3,
-      "width": 93.53153,
+      "width": 114.446555,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-105945",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 793.906,
-      "y": 418.157
+      "x": 794.861,
+      "y": 455.407
     },
     {
       "id": "consort-3-2",
@@ -407,8 +407,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 889.172,
-      "y": 418.157
+      "x": 900.585,
+      "y": 455.407
     },
     {
       "id": "person-3-3",
@@ -427,8 +427,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 971.006,
-      "y": 397.315
+      "x": 1026.182,
+      "y": 428.065
     },
     {
       "id": "consort-3-3",
@@ -442,8 +442,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1054.84,
-      "y": 397.315
+      "x": 1110.016,
+      "y": 428.065
     },
     {
       "id": "person-3-4",
@@ -457,15 +457,15 @@
       "realm": "Falken",
       "role": "house founder",
       "row": 3,
-      "width": 93.53153,
+      "width": 114.446555,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-95998",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1148.106,
-      "y": 435.233
+      "x": 1257.503,
+      "y": 485.483
     },
     {
       "id": "consort-3-4",
@@ -479,8 +479,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1243.371,
-      "y": 435.233
+      "x": 1363.226,
+      "y": 485.483
     },
     {
       "id": "person-3-5",
@@ -499,8 +499,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1322.896,
-      "y": 414.391
+      "x": 1485.976,
+      "y": 458.141
     },
     {
       "id": "consort-3-5",
@@ -514,8 +514,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1404.421,
-      "y": 414.391
+      "x": 1567.501,
+      "y": 458.141
     },
     {
       "id": "person-4-0",
@@ -532,8 +532,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 320.649,
-      "y": 434.198
+      "x": 225.494,
+      "y": 456.957
     },
     {
       "id": "consort-4-0",
@@ -547,8 +547,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 406.649,
-      "y": 434.198
+      "x": 311.494,
+      "y": 456.957
     },
     {
       "id": "person-4-1",
@@ -567,8 +567,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 497.245,
-      "y": 455.198
+      "x": 441.693,
+      "y": 482.364
     },
     {
       "id": "consort-4-1",
@@ -582,8 +582,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 586.27,
-      "y": 455.198
+      "x": 530.718,
+      "y": 482.364
     },
     {
       "id": "person-4-2",
@@ -602,8 +602,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 721.293,
-      "y": 480.994
+      "x": 716.698,
+      "y": 524.744
     },
     {
       "id": "consort-4-2",
@@ -617,8 +617,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 802.818,
-      "y": 480.994
+      "x": 798.223,
+      "y": 524.744
     },
     {
       "id": "person-4-3",
@@ -632,15 +632,15 @@
       "realm": "Rosene",
       "role": "house founder",
       "row": 4,
-      "width": 93.04301000000001,
+      "width": 113.89593500000001,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-89043",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 895.839,
-      "y": 501.836
+      "x": 934.041,
+      "y": 539.782
     },
     {
       "id": "consort-4-3",
@@ -654,8 +654,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 990.861,
-      "y": 501.836
+      "x": 1039.489,
+      "y": 539.782
     },
     {
       "id": "person-4-4",
@@ -674,8 +674,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1070.386,
-      "y": 498.07
+      "x": 1151.384,
+      "y": 553.346
     },
     {
       "id": "consort-4-4",
@@ -689,8 +689,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1151.911,
-      "y": 498.07
+      "x": 1232.909,
+      "y": 553.346
     },
     {
       "id": "person-4-5",
@@ -709,8 +709,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1233.984,
-      "y": 498.07
+      "x": 1343.612,
+      "y": 554.82
     },
     {
       "id": "consort-4-5",
@@ -724,8 +724,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1318.057,
-      "y": 498.07
+      "x": 1427.685,
+      "y": 554.82
     },
     {
       "id": "person-4-6",
@@ -744,8 +744,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1397.582,
-      "y": 468.69
+      "x": 1535.84,
+      "y": 512.44
     },
     {
       "id": "consort-4-6",
@@ -759,8 +759,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1479.107,
-      "y": 468.69
+      "x": 1617.365,
+      "y": 512.44
     },
     {
       "id": "person-5-0",
@@ -779,8 +779,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 211.439,
-      "y": 496.247
+      "x": 149.115,
+      "y": 522.259
     },
     {
       "id": "consort-5-0",
@@ -794,8 +794,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 295.512,
-      "y": 496.247
+      "x": 233.188,
+      "y": 522.259
     },
     {
       "id": "person-5-1",
@@ -814,8 +814,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 388.113,
-      "y": 518.747
+      "x": 352.839,
+      "y": 544.759
     },
     {
       "id": "consort-5-1",
@@ -829,8 +829,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 474.734,
-      "y": 518.747
+      "x": 439.46,
+      "y": 544.759
     },
     {
       "id": "person-5-2",
@@ -849,8 +849,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 627.816,
-      "y": 535.293
+      "x": 629.179,
+      "y": 579.043
     },
     {
       "id": "consort-5-2",
@@ -864,8 +864,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 711.889,
-      "y": 535.293
+      "x": 713.252,
+      "y": 579.043
     },
     {
       "id": "person-5-3",
@@ -882,8 +882,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 795.889,
-      "y": 563.2
+      "x": 816.861,
+      "y": 607.645
     },
     {
       "id": "consort-5-3",
@@ -897,8 +897,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 881.889,
-      "y": 563.2
+      "x": 902.861,
+      "y": 607.645
     },
     {
       "id": "person-5-4",
@@ -917,8 +917,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 966.51,
-      "y": 564.673
+      "x": 1007.458,
+      "y": 609.119
     },
     {
       "id": "consort-5-4",
@@ -932,8 +932,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1053.731,
-      "y": 564.673
+      "x": 1094.679,
+      "y": 609.119
     },
     {
       "id": "person-5-5",
@@ -952,8 +952,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1136.404,
-      "y": 552.369
+      "x": 1197.103,
+      "y": 607.645
     },
     {
       "id": "consort-5-5",
@@ -967,8 +967,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1220.477,
-      "y": 552.369
+      "x": 1281.176,
+      "y": 607.645
     },
     {
       "id": "person-5-6",
@@ -987,8 +987,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1305.098,
-      "y": 552.369
+      "x": 1385.477,
+      "y": 609.119
     },
     {
       "id": "consort-5-6",
@@ -1002,8 +1002,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1391.719,
-      "y": 552.369
+      "x": 1472.098,
+      "y": 609.119
     },
     {
       "id": "person-5-7",
@@ -1022,8 +1022,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1473.792,
-      "y": 522.989
+      "x": 1573.852,
+      "y": 566.739
     },
     {
       "id": "consort-5-7",
@@ -1037,8 +1037,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1557.865,
-      "y": 522.989
+      "x": 1657.925,
+      "y": 566.739
     },
     {
       "id": "person-6-0",
@@ -1057,8 +1057,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 182.622,
-      "y": 558.316
+      "x": 148.197,
+      "y": 590.352
     },
     {
       "id": "consort-6-0",
@@ -1072,8 +1072,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 269.243,
-      "y": 558.316
+      "x": 234.818,
+      "y": 590.352
     },
     {
       "id": "person-6-1",
@@ -1092,8 +1092,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 359.375,
-      "y": 577.043
+      "x": 339.623,
+      "y": 608.352
     },
     {
       "id": "consort-6-1",
@@ -1107,8 +1107,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 445.996,
-      "y": 577.043
+      "x": 426.244,
+      "y": 608.352
     },
     {
       "id": "person-6-2",
@@ -1127,8 +1127,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 614.756,
-      "y": 589.592
+      "x": 615.765,
+      "y": 633.342
     },
     {
       "id": "consort-6-2",
@@ -1142,8 +1142,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 701.377,
-      "y": 589.592
+      "x": 702.386,
+      "y": 633.342
     },
     {
       "id": "person-6-3",
@@ -1162,8 +1162,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 943.261,
-      "y": 618.972
+      "x": 964.479,
+      "y": 663.418
     },
     {
       "id": "consort-6-3",
@@ -1177,8 +1177,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1030.482,
-      "y": 618.972
+      "x": 1051.7,
+      "y": 663.418
     },
     {
       "id": "person-6-4",
@@ -1197,8 +1197,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1126.854,
-      "y": 617.499
+      "x": 1171.91,
+      "y": 661.944
     },
     {
       "id": "consort-6-4",
@@ -1212,8 +1212,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1213.475,
-      "y": 617.499
+      "x": 1258.531,
+      "y": 661.944
     },
     {
       "id": "person-6-5",
@@ -1232,8 +1232,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1298.096,
-      "y": 616.883
+      "x": 1353.141,
+      "y": 663.418
     },
     {
       "id": "consort-6-5",
@@ -1247,8 +1247,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1384.717,
-      "y": 616.883
+      "x": 1439.762,
+      "y": 663.418
     },
     {
       "id": "person-6-6",
@@ -1265,8 +1265,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1551.717,
-      "y": 576.875
+      "x": 1621.556,
+      "y": 620.624
     },
     {
       "id": "consort-6-6",
@@ -1280,8 +1280,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1637.717,
-      "y": 576.875
+      "x": 1707.556,
+      "y": 620.624
     },
     {
       "id": "collateral-6-0",
@@ -1293,8 +1293,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1463.717,
-      "y": 604.877
+      "x": 1526.177,
+      "y": 661.627
     },
     {
       "id": "person-7-0",
@@ -1313,8 +1313,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 139.869,
-      "y": 612.615
+      "x": 147.648,
+      "y": 649.411
     },
     {
       "id": "consort-7-0",
@@ -1328,8 +1328,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 226.49,
-      "y": 612.615
+      "x": 234.269,
+      "y": 649.411
     },
     {
       "id": "person-7-1",
@@ -1348,8 +1348,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 311.111,
-      "y": 631.342
+      "x": 318.89,
+      "y": 668.138
     },
     {
       "id": "consort-7-1",
@@ -1363,8 +1363,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 397.732,
-      "y": 631.342
+      "x": 405.511,
+      "y": 668.138
     },
     {
       "id": "person-7-2",
@@ -1381,8 +1381,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 481.732,
-      "y": 645.778
+      "x": 489.511,
+      "y": 686.167
     },
     {
       "id": "consort-7-2",
@@ -1396,8 +1396,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 567.732,
-      "y": 645.778
+      "x": 575.511,
+      "y": 686.167
     },
     {
       "id": "person-7-3",
@@ -1416,8 +1416,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 652.353,
-      "y": 643.891
+      "x": 660.132,
+      "y": 687.641
     },
     {
       "id": "consort-7-3",
@@ -1431,8 +1431,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 738.974,
-      "y": 643.891
+      "x": 746.753,
+      "y": 687.641
     },
     {
       "id": "person-7-4",
@@ -1451,8 +1451,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 908.561,
-      "y": 673.271
+      "x": 923.924,
+      "y": 717.717
     },
     {
       "id": "consort-7-4",
@@ -1466,8 +1466,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 995.182,
-      "y": 673.271
+      "x": 1010.545,
+      "y": 717.717
     },
     {
       "id": "person-7-5",
@@ -1486,8 +1486,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1257.935,
-      "y": 671.798
+      "x": 1277.273,
+      "y": 717.717
     },
     {
       "id": "consort-7-5",
@@ -1501,8 +1501,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1344.556,
-      "y": 671.798
+      "x": 1363.894,
+      "y": 717.717
     },
     {
       "id": "person-7-6",
@@ -1521,8 +1521,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1161.289,
-      "y": 673.271
+      "x": 1180.628,
+      "y": 717.717
     },
     {
       "id": "consort-7-6",
@@ -1536,8 +1536,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1072.265,
-      "y": 673.271
+      "x": 1091.603,
+      "y": 717.717
     },
     {
       "id": "person-7-7",
@@ -1556,8 +1556,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1491.235,
-      "y": 657.384
+      "x": 1524.991,
+      "y": 714.134
     },
     {
       "id": "consort-7-7",
@@ -1571,8 +1571,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1577.856,
-      "y": 657.384
+      "x": 1611.612,
+      "y": 714.134
     },
     {
       "id": "person-8-0",
@@ -1592,7 +1592,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 666.914
+      "y": 703.71
     },
     {
       "id": "consort-8-0",
@@ -1607,7 +1607,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 189.742,
-      "y": 666.914
+      "y": 703.71
     },
     {
       "id": "person-8-1",
@@ -1627,7 +1627,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 357.363,
-      "y": 698.404
+      "y": 738.579
     },
     {
       "id": "consort-8-1",
@@ -1642,7 +1642,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 443.984,
-      "y": 698.404
+      "y": 738.579
     },
     {
       "id": "person-8-2",
@@ -1662,7 +1662,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 528.605,
-      "y": 699.663
+      "y": 740.466
     },
     {
       "id": "consort-8-2",
@@ -1677,7 +1677,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 615.226,
-      "y": 699.663
+      "y": 740.466
     },
     {
       "id": "person-8-3",
@@ -1697,7 +1697,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 699.847,
-      "y": 698.19
+      "y": 741.94
     },
     {
       "id": "consort-8-3",
@@ -1712,7 +1712,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 786.468,
-      "y": 698.19
+      "y": 741.94
     },
     {
       "id": "person-8-4",
@@ -1732,7 +1732,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 954.089,
-      "y": 727.57
+      "y": 772.016
     },
     {
       "id": "consort-8-4",
@@ -1747,7 +1747,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 1040.71,
-      "y": 727.57
+      "y": 772.016
     },
     {
       "id": "person-8-5",
@@ -1765,7 +1765,7 @@
       "style": "plain",
       "size": 10.6,
       "x": 1124.71,
-      "y": 727.156
+      "y": 771.602
     },
     {
       "id": "consort-8-5",
@@ -1780,7 +1780,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 1210.71,
-      "y": 727.156
+      "y": 771.602
     },
     {
       "id": "collateral-8-0",
@@ -1793,7 +1793,7 @@
       "size": 9.3,
       "role": "collateral relative",
       "x": 268.742,
-      "y": 683.85
+      "y": 720.646
     },
     {
       "id": "collateral-8-1",
@@ -1806,7 +1806,7 @@
       "size": 9.3,
       "role": "collateral relative",
       "x": 865.468,
-      "y": 725.779
+      "y": 770.224
     },
     {
       "id": "person-9-0",
@@ -1826,8 +1826,8 @@
       "court": "Lorn",
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 123.601,
-      "y": 734.884
+      "x": 124.222,
+      "y": 771.68
     },
     {
       "id": "consort-9-0",
@@ -1841,8 +1841,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 212.625,
-      "y": 734.884
+      "x": 213.246,
+      "y": 771.68
     },
     {
       "id": "person-9-1",
@@ -1859,8 +1859,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 656.965,
-      "y": 752.075
+      "x": 658.663,
+      "y": 795.825
     },
     {
       "id": "consort-9-1",
@@ -1874,8 +1874,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 742.965,
-      "y": 752.075
+      "x": 744.663,
+      "y": 795.825
     },
     {
       "id": "person-9-2",
@@ -1894,8 +1894,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 927.388,
-      "y": 781.869
+      "x": 929.369,
+      "y": 826.315
     },
     {
       "id": "consort-9-2",
@@ -1909,8 +1909,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1014.009,
-      "y": 781.869
+      "x": 1015.99,
+      "y": 826.315
     },
     {
       "id": "person-9-3",
@@ -1929,8 +1929,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1098.722,
-      "y": 781.042
+      "x": 1101.231,
+      "y": 825.488
     },
     {
       "id": "consort-9-3",
@@ -1944,8 +1944,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1185.343,
-      "y": 781.042
+      "x": 1187.852,
+      "y": 825.488
     },
     {
       "id": "collateral-9-0",
@@ -1957,8 +1957,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 821.965,
-      "y": 776.495
+      "x": 823.663,
+      "y": 820.94
     },
     {
       "id": "collateral-9-1",
@@ -1970,8 +1970,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 291.625,
-      "y": 756.79
+      "x": 292.246,
+      "y": 794.63
     },
     {
       "id": "person-10-0",
@@ -1990,8 +1990,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 110.571,
-      "y": 789.183
+      "x": 111.951,
+      "y": 825.979
     },
     {
       "id": "consort-10-0",
@@ -2005,8 +2005,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 197.192,
-      "y": 789.183
+      "x": 198.572,
+      "y": 825.979
     },
     {
       "id": "person-10-1",
@@ -2025,8 +2025,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 409.338,
-      "y": 805.961
+      "x": 412.474,
+      "y": 849.711
     },
     {
       "id": "consort-10-1",
@@ -2040,8 +2040,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 495.959,
-      "y": 805.961
+      "x": 499.095,
+      "y": 849.711
     },
     {
       "id": "person-10-2",
@@ -2060,8 +2060,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 664.822,
-      "y": 815.926
+      "x": 669.469,
+      "y": 871.974
     },
     {
       "id": "consort-10-2",
@@ -2075,8 +2075,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 751.443,
-      "y": 815.926
+      "x": 756.09,
+      "y": 871.974
     },
     {
       "id": "person-10-3",
@@ -2095,8 +2095,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1038.245,
-      "y": 850.116
+      "x": 1043.062,
+      "y": 903.222
     },
     {
       "id": "consort-10-3",
@@ -2110,8 +2110,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1124.866,
-      "y": 850.116
+      "x": 1129.683,
+      "y": 903.222
     },
     {
       "id": "person-10-4",
@@ -2128,8 +2128,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1208.866,
-      "y": 834.927
+      "x": 1213.683,
+      "y": 879.373
     },
     {
       "id": "consort-10-4",
@@ -2143,8 +2143,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1294.866,
-      "y": 834.927
+      "x": 1299.683,
+      "y": 879.373
     },
     {
       "id": "collateral-10-0",
@@ -2156,8 +2156,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 949.624,
-      "y": 834.376
+      "x": 954.441,
+      "y": 878.822
     },
     {
       "id": "collateral-10-1",
@@ -2169,8 +2169,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 830.443,
-      "y": 827.211
+      "x": 835.09,
+      "y": 871.656
     },
     {
       "id": "person-11-0",
@@ -2188,7 +2188,7 @@
       "style": "plain",
       "size": 10.6,
       "x": 102.5,
-      "y": 843.068
+      "y": 881.315
     },
     {
       "id": "consort-11-0",
@@ -2203,7 +2203,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 188.5,
-      "y": 843.068
+      "y": 881.315
     },
     {
       "id": "person-11-1",
@@ -2217,15 +2217,15 @@
       "realm": "Bayeux",
       "role": "landmark ruler",
       "row": 11,
-      "width": 96.09626,
+      "width": 117.33731,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-16367",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 283.048,
-      "y": 858.786
+      "x": 293.669,
+      "y": 902.536
     },
     {
       "id": "consort-11-1",
@@ -2239,8 +2239,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 379.596,
-      "y": 858.786
+      "x": 400.837,
+      "y": 902.536
     },
     {
       "id": "person-11-2",
@@ -2259,8 +2259,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 464.217,
-      "y": 873.649
+      "x": 485.458,
+      "y": 918.815
     },
     {
       "id": "consort-11-2",
@@ -2274,8 +2274,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 550.838,
-      "y": 873.649
+      "x": 572.079,
+      "y": 918.815
     },
     {
       "id": "person-11-3",
@@ -2294,8 +2294,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 718.459,
-      "y": 878.245
+      "x": 739.7,
+      "y": 926.273
     },
     {
       "id": "consort-11-3",
@@ -2309,8 +2309,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 805.08,
-      "y": 878.245
+      "x": 826.321,
+      "y": 926.273
     },
     {
       "id": "person-11-4",
@@ -2329,8 +2329,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1058.653,
-      "y": 904.415
+      "x": 1062.871,
+      "y": 959.315
     },
     {
       "id": "consort-11-4",
@@ -2344,8 +2344,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1145.274,
-      "y": 904.415
+      "x": 1149.492,
+      "y": 959.315
     },
     {
       "id": "person-11-5",
@@ -2359,15 +2359,15 @@
       "realm": "Falken",
       "role": "landmark ruler",
       "row": 11,
-      "width": 83.15048,
+      "width": 102.74588,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-87760",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1233.349,
-      "y": 897.351
+      "x": 1247.365,
+      "y": 948.297
     },
     {
       "id": "consort-11-5",
@@ -2381,8 +2381,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1323.425,
-      "y": 897.351
+      "x": 1347.238,
+      "y": 948.297
     },
     {
       "id": "person-11-6",
@@ -2401,8 +2401,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1408.046,
-      "y": 906.562
+      "x": 1431.859,
+      "y": 950.315
     },
     {
       "id": "consort-11-6",
@@ -2416,8 +2416,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1495.267,
-      "y": 906.562
+      "x": 1519.08,
+      "y": 950.315
     },
     {
       "id": "collateral-11-0",
@@ -2429,8 +2429,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 629.838,
-      "y": 875.062
+      "x": 651.079,
+      "y": 924.482
     },
     {
       "id": "person-12-0",
@@ -2449,8 +2449,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 103.571,
-      "y": 896.954
+      "x": 106.229,
+      "y": 940.929
     },
     {
       "id": "consort-12-0",
@@ -2464,8 +2464,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 190.192,
-      "y": 896.954
+      "x": 192.85,
+      "y": 940.929
     },
     {
       "id": "person-12-1",
@@ -2484,8 +2484,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 280.397,
-      "y": 921.623
+      "x": 289.427,
+      "y": 971.873
     },
     {
       "id": "consort-12-1",
@@ -2499,8 +2499,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 367.018,
-      "y": 921.623
+      "x": 376.048,
+      "y": 971.873
     },
     {
       "id": "person-12-2",
@@ -2519,8 +2519,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 457.595,
-      "y": 927.948
+      "x": 472.998,
+      "y": 975.429
     },
     {
       "id": "consort-12-2",
@@ -2534,8 +2534,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 544.216,
-      "y": 927.948
+      "x": 559.619,
+      "y": 975.429
     },
     {
       "id": "person-12-3",
@@ -2552,8 +2552,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 628.216,
-      "y": 936.448
+      "x": 643.619,
+      "y": 983.157
     },
     {
       "id": "consort-12-3",
@@ -2567,8 +2567,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 714.216,
-      "y": 936.448
+      "x": 729.619,
+      "y": 983.157
     },
     {
       "id": "person-12-4",
@@ -2587,8 +2587,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 798.837,
-      "y": 932.543
+      "x": 814.24,
+      "y": 980.572
     },
     {
       "id": "consort-12-4",
@@ -2602,8 +2602,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 885.458,
-      "y": 932.543
+      "x": 900.861,
+      "y": 980.572
     },
     {
       "id": "person-12-5",
@@ -2622,8 +2622,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1088.162,
-      "y": 958.714
+      "x": 1095.815,
+      "y": 1016.16
     },
     {
       "id": "consort-12-5",
@@ -2637,8 +2637,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1174.783,
-      "y": 958.714
+      "x": 1182.436,
+      "y": 1016.16
     },
     {
       "id": "person-12-6",
@@ -2657,8 +2657,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1261.476,
-      "y": 960.188
+      "x": 1275.008,
+      "y": 1017.634
     },
     {
       "id": "consort-12-6",
@@ -2672,8 +2672,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1348.097,
-      "y": 960.188
+      "x": 1361.629,
+      "y": 1017.634
     },
     {
       "id": "person-12-7",
@@ -2692,8 +2692,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1435.151,
-      "y": 965.491
+      "x": 1454.561,
+      "y": 1013.157
     },
     {
       "id": "consort-12-7",
@@ -2707,8 +2707,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1521.772,
-      "y": 965.491
+      "x": 1541.182,
+      "y": 1013.157
     },
     {
       "id": "person-13-0",
@@ -2728,7 +2728,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 951.253
+      "y": 995.228
     },
     {
       "id": "consort-13-0",
@@ -2743,7 +2743,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 189.742,
-      "y": 951.253
+      "y": 995.228
     },
     {
       "id": "person-13-1",
@@ -2763,7 +2763,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 351.363,
-      "y": 975.922
+      "y": 1026.172
     },
     {
       "id": "consort-13-1",
@@ -2778,7 +2778,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 264.742,
-      "y": 975.922
+      "y": 1026.172
     },
     {
       "id": "person-13-2",
@@ -2797,8 +2797,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 465.078,
-      "y": 982.247
+      "x": 473.101,
+      "y": 1029.728
     },
     {
       "id": "consort-13-2",
@@ -2812,8 +2812,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 551.699,
-      "y": 982.247
+      "x": 559.722,
+      "y": 1029.728
     },
     {
       "id": "person-13-3",
@@ -2832,8 +2832,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 636.32,
-      "y": 993.333
+      "x": 644.343,
+      "y": 1043.0
     },
     {
       "id": "consort-13-3",
@@ -2847,8 +2847,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 722.941,
-      "y": 993.333
+      "x": 730.964,
+      "y": 1043.0
     },
     {
       "id": "person-13-4",
@@ -2867,8 +2867,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 807.562,
-      "y": 997.833
+      "x": 815.585,
+      "y": 1047.5
     },
     {
       "id": "consort-13-4",
@@ -2882,8 +2882,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 894.183,
-      "y": 997.833
+      "x": 902.206,
+      "y": 1047.5
     },
     {
       "id": "person-13-5",
@@ -2902,8 +2902,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 978.804,
-      "y": 1011.54
+      "x": 986.827,
+      "y": 1068.986
     },
     {
       "id": "consort-13-5",
@@ -2917,8 +2917,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1065.425,
-      "y": 1011.54
+      "x": 1073.448,
+      "y": 1068.986
     },
     {
       "id": "person-13-6",
@@ -2935,8 +2935,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1149.425,
-      "y": 1013.013
+      "x": 1157.448,
+      "y": 1070.459
     },
     {
       "id": "consort-13-6",
@@ -2950,8 +2950,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1235.425,
-      "y": 1013.013
+      "x": 1243.448,
+      "y": 1070.459
     },
     {
       "id": "person-13-7",
@@ -2970,8 +2970,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1397.046,
-      "y": 1019.79
+      "x": 1405.069,
+      "y": 1071.933
     },
     {
       "id": "consort-13-7",
@@ -2985,8 +2985,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1310.425,
-      "y": 1019.79
+      "x": 1318.448,
+      "y": 1071.933
     },
     {
       "id": "person-13-8",
@@ -3005,8 +3005,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1493.203,
-      "y": 1023.238
+      "x": 1501.226,
+      "y": 1076.0
     },
     {
       "id": "consort-13-8",
@@ -3020,8 +3020,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1581.739,
-      "y": 1023.238
+      "x": 1589.763,
+      "y": 1076.0
     },
     {
       "id": "person-14-0",
@@ -3041,7 +3041,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 1009.268
+      "y": 1063.093
     },
     {
       "id": "consort-14-0",
@@ -3056,7 +3056,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 189.742,
-      "y": 1009.268
+      "y": 1063.093
     },
     {
       "id": "person-14-1",
@@ -3075,8 +3075,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 295.278,
-      "y": 1030.221
+      "x": 295.906,
+      "y": 1080.471
     },
     {
       "id": "consort-14-1",
@@ -3090,8 +3090,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 381.899,
-      "y": 1030.221
+      "x": 382.527,
+      "y": 1080.471
     },
     {
       "id": "person-14-2",
@@ -3108,8 +3108,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 619.569,
-      "y": 1052.469
+      "x": 627.173,
+      "y": 1105.093
     },
     {
       "id": "consort-14-2",
@@ -3123,8 +3123,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 705.569,
-      "y": 1052.469
+      "x": 713.173,
+      "y": 1105.093
     },
     {
       "id": "person-14-3",
@@ -3143,8 +3143,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 790.811,
-      "y": 1062.969
+      "x": 798.415,
+      "y": 1115.593
     },
     {
       "id": "consort-14-3",
@@ -3158,8 +3158,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 877.432,
-      "y": 1062.969
+      "x": 885.036,
+      "y": 1115.593
     },
     {
       "id": "person-14-4",
@@ -3178,8 +3178,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 962.053,
-      "y": 1065.839
+      "x": 969.657,
+      "y": 1123.285
     },
     {
       "id": "consort-14-4",
@@ -3193,8 +3193,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1048.674,
-      "y": 1065.839
+      "x": 1056.278,
+      "y": 1123.285
     },
     {
       "id": "person-14-5",
@@ -3213,8 +3213,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1216.295,
-      "y": 1077.537
+      "x": 1223.899,
+      "y": 1134.175
     },
     {
       "id": "consort-14-5",
@@ -3228,8 +3228,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1302.916,
-      "y": 1077.537
+      "x": 1310.52,
+      "y": 1134.175
     },
     {
       "id": "person-14-6",
@@ -3248,8 +3248,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1387.537,
-      "y": 1076.064
+      "x": 1395.141,
+      "y": 1132.093
     },
     {
       "id": "consort-14-6",
@@ -3263,8 +3263,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1474.158,
-      "y": 1076.064
+      "x": 1481.762,
+      "y": 1132.093
     },
     {
       "id": "collateral-14-0",
@@ -3276,8 +3276,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1127.674,
-      "y": 1065.107
+      "x": 1135.278,
+      "y": 1122.553
     },
     {
       "id": "person-15-0",
@@ -3296,8 +3296,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 121.106,
-      "y": 1063.567
+      "x": 121.586,
+      "y": 1122.979
     },
     {
       "id": "consort-15-0",
@@ -3311,8 +3311,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 207.727,
-      "y": 1063.567
+      "x": 208.207,
+      "y": 1122.979
     },
     {
       "id": "person-15-1",
@@ -3331,8 +3331,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 308.754,
-      "y": 1084.52
+      "x": 310.489,
+      "y": 1134.77
     },
     {
       "id": "consort-15-1",
@@ -3346,8 +3346,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 395.375,
-      "y": 1084.52
+      "x": 397.11,
+      "y": 1134.77
     },
     {
       "id": "person-15-2",
@@ -3366,8 +3366,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 620.752,
-      "y": 1111.605
+      "x": 628.417,
+      "y": 1167.185
     },
     {
       "id": "consort-15-2",
@@ -3381,8 +3381,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 707.373,
-      "y": 1111.605
+      "x": 715.038,
+      "y": 1167.185
     },
     {
       "id": "person-15-3",
@@ -3401,8 +3401,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 791.994,
-      "y": 1121.247
+      "x": 799.659,
+      "y": 1184.168
     },
     {
       "id": "consort-15-3",
@@ -3416,8 +3416,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 878.615,
-      "y": 1121.247
+      "x": 886.28,
+      "y": 1184.168
     },
     {
       "id": "person-15-4",
@@ -3436,8 +3436,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1364.659,
-      "y": 1130.363
+      "x": 1372.099,
+      "y": 1187.001
     },
     {
       "id": "consort-15-4",
@@ -3451,8 +3451,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1451.28,
-      "y": 1130.363
+      "x": 1458.72,
+      "y": 1187.001
     },
     {
       "id": "collateral-15-0",
@@ -3464,8 +3464,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 474.375,
-      "y": 1090.542
+      "x": 476.11,
+      "y": 1140.792
     },
     {
       "id": "collateral-15-1",
@@ -3477,8 +3477,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 984.087,
-      "y": 1118.346
+      "x": 991.752,
+      "y": 1175.792
     },
     {
       "id": "person-16-0",
@@ -3497,8 +3497,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 108.417,
-      "y": 1117.866
+      "x": 109.409,
+      "y": 1177.278
     },
     {
       "id": "consort-16-0",
@@ -3512,8 +3512,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 195.038,
-      "y": 1117.866
+      "x": 196.03,
+      "y": 1177.278
     },
     {
       "id": "person-16-1",
@@ -3530,8 +3530,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 356.038,
-      "y": 1138.406
+      "x": 357.03,
+      "y": 1188.656
     },
     {
       "id": "consort-16-1",
@@ -3545,8 +3545,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 270.038,
-      "y": 1138.406
+      "x": 271.03,
+      "y": 1188.656
     },
     {
       "id": "person-16-2",
@@ -3566,8 +3566,8 @@
       "court": "Whitehaven",
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 687.792,
-      "y": 1189.217
+      "x": 696.679,
+      "y": 1252.138
     },
     {
       "id": "consort-16-2",
@@ -3581,8 +3581,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 774.413,
-      "y": 1189.217
+      "x": 783.3,
+      "y": 1252.138
     },
     {
       "id": "person-16-3",
@@ -3601,8 +3601,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1330.594,
-      "y": 1184.662
+      "x": 1338.979,
+      "y": 1241.3
     },
     {
       "id": "consort-16-3",
@@ -3616,8 +3616,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1417.215,
-      "y": 1184.662
+      "x": 1425.6,
+      "y": 1241.3
     },
     {
       "id": "collateral-16-0",
@@ -3629,8 +3629,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 444.038,
-      "y": 1141.257
+      "x": 445.03,
+      "y": 1191.507
     },
     {
       "id": "collateral-16-1",
@@ -3642,8 +3642,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1496.215,
-      "y": 1182.87
+      "x": 1504.6,
+      "y": 1239.508
     },
     {
       "id": "person-17-0",
@@ -3663,7 +3663,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 1172.165
+      "y": 1231.577
     },
     {
       "id": "consort-17-0",
@@ -3678,7 +3678,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 190.342,
-      "y": 1172.165
+      "y": 1231.577
     },
     {
       "id": "person-17-1",
@@ -3698,7 +3698,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 358.563,
-      "y": 1192.292
+      "y": 1242.542
     },
     {
       "id": "consort-17-1",
@@ -3713,7 +3713,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 445.184,
-      "y": 1192.292
+      "y": 1242.542
     },
     {
       "id": "person-17-2",
@@ -3732,8 +3732,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 658.502,
-      "y": 1243.516
+      "x": 667.004,
+      "y": 1306.437
     },
     {
       "id": "consort-17-2",
@@ -3747,8 +3747,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 745.123,
-      "y": 1243.516
+      "x": 753.625,
+      "y": 1306.437
     },
     {
       "id": "person-17-3",
@@ -3767,8 +3767,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 829.744,
-      "y": 1243.516
+      "x": 838.246,
+      "y": 1306.437
     },
     {
       "id": "consort-17-3",
@@ -3782,8 +3782,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 916.365,
-      "y": 1243.516
+      "x": 924.867,
+      "y": 1306.437
     },
     {
       "id": "person-17-4",
@@ -3800,8 +3800,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1293.809,
-      "y": 1238.547
+      "x": 1300.241,
+      "y": 1295.185
     },
     {
       "id": "consort-17-4",
@@ -3815,8 +3815,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1379.809,
-      "y": 1238.547
+      "x": 1386.241,
+      "y": 1295.185
     },
     {
       "id": "person-17-5",
@@ -3835,8 +3835,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1464.43,
-      "y": 1238.961
+      "x": 1470.862,
+      "y": 1296.62
     },
     {
       "id": "consort-17-5",
@@ -3850,8 +3850,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1551.051,
-      "y": 1238.961
+      "x": 1557.483,
+      "y": 1296.62
     },
     {
       "id": "collateral-17-0",
@@ -3864,7 +3864,7 @@
       "size": 9.3,
       "role": "collateral relative",
       "x": 524.184,
-      "y": 1194.083
+      "y": 1257.898
     },
     {
       "id": "collateral-17-1",
@@ -3877,7 +3877,7 @@
       "size": 9.3,
       "role": "collateral relative",
       "x": 269.942,
-      "y": 1194.083
+      "y": 1244.333
     },
     {
       "id": "person-18-0",
@@ -3895,7 +3895,7 @@
       "style": "plain",
       "size": 10.6,
       "x": 102.5,
-      "y": 1226.05
+      "y": 1290.067
     },
     {
       "id": "consort-18-0",
@@ -3910,7 +3910,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 188.5,
-      "y": 1226.05
+      "y": 1290.067
     },
     {
       "id": "person-18-1",
@@ -3924,15 +3924,15 @@
       "realm": "Bayeux",
       "role": "landmark ruler",
       "row": 18,
-      "width": 93.53153,
+      "width": 114.446555,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-15708",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 281.766,
-      "y": 1255.129
+      "x": 292.223,
+      "y": 1311.879
     },
     {
       "id": "consort-18-1",
@@ -3946,8 +3946,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 377.032,
-      "y": 1255.129
+      "x": 397.947,
+      "y": 1311.879
     },
     {
       "id": "person-18-2",
@@ -3966,8 +3966,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 461.653,
-      "y": 1246.591
+      "x": 482.568,
+      "y": 1310.405
     },
     {
       "id": "consort-18-2",
@@ -3981,8 +3981,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 548.274,
-      "y": 1246.591
+      "x": 569.189,
+      "y": 1310.405
     },
     {
       "id": "person-18-3",
@@ -4001,8 +4001,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 647.527,
-      "y": 1297.815
+      "x": 660.994,
+      "y": 1360.963
     },
     {
       "id": "consort-18-3",
@@ -4016,8 +4016,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 734.148,
-      "y": 1297.815
+      "x": 747.615,
+      "y": 1360.963
     },
     {
       "id": "person-18-4",
@@ -4036,8 +4036,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 818.769,
-      "y": 1297.815
+      "x": 832.236,
+      "y": 1360.736
     },
     {
       "id": "consort-18-4",
@@ -4051,8 +4051,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 905.39,
-      "y": 1297.815
+      "x": 918.857,
+      "y": 1360.736
     },
     {
       "id": "person-18-5",
@@ -4071,8 +4071,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 990.011,
-      "y": 1299.288
+      "x": 1003.478,
+      "y": 1362.597
     },
     {
       "id": "consort-18-5",
@@ -4086,8 +4086,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1076.632,
-      "y": 1299.288
+      "x": 1090.099,
+      "y": 1362.597
     },
     {
       "id": "person-18-6",
@@ -4101,15 +4101,15 @@
       "realm": "Falken",
       "role": "landmark ruler",
       "row": 18,
-      "width": 100.37081,
+      "width": 122.155235,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-24684",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1295.498,
-      "y": 1300.971
+      "x": 1302.973,
+      "y": 1364.109
     },
     {
       "id": "consort-18-6",
@@ -4123,8 +4123,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1394.183,
-      "y": 1300.971
+      "x": 1412.55,
+      "y": 1364.109
     },
     {
       "id": "person-18-7",
@@ -4141,8 +4141,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1478.183,
-      "y": 1301.012
+      "x": 1496.55,
+      "y": 1365.463
     },
     {
       "id": "consort-18-7",
@@ -4156,8 +4156,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1564.783,
-      "y": 1301.012
+      "x": 1583.15,
+      "y": 1365.463
     },
     {
       "id": "person-19-0",
@@ -4177,7 +4177,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 1279.936
+      "y": 1343.952
     },
     {
       "id": "consort-19-0",
@@ -4192,7 +4192,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 189.742,
-      "y": 1279.936
+      "y": 1343.952
     },
     {
       "id": "person-19-1",
@@ -4212,7 +4212,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 351.363,
-      "y": 1317.966
+      "y": 1381.216
     },
     {
       "id": "consort-19-1",
@@ -4227,7 +4227,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 264.742,
-      "y": 1317.966
+      "y": 1381.216
     },
     {
       "id": "person-19-2",
@@ -4246,8 +4246,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 459.756,
-      "y": 1300.889
+      "x": 472.305,
+      "y": 1364.704
     },
     {
       "id": "consort-19-2",
@@ -4261,8 +4261,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 548.292,
-      "y": 1300.889
+      "x": 560.841,
+      "y": 1364.704
     },
     {
       "id": "person-19-3",
@@ -4279,8 +4279,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 640.295,
-      "y": 1351.7
+      "x": 648.375,
+      "y": 1415.556
     },
     {
       "id": "consort-19-3",
@@ -4294,8 +4294,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 726.295,
-      "y": 1351.7
+      "x": 734.375,
+      "y": 1415.556
     },
     {
       "id": "person-19-4",
@@ -4314,8 +4314,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 837.851,
-      "y": 1352.114
+      "x": 849.901,
+      "y": 1415.422
     },
     {
       "id": "consort-19-4",
@@ -4329,8 +4329,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 924.472,
-      "y": 1352.114
+      "x": 936.522,
+      "y": 1415.422
     },
     {
       "id": "person-19-5",
@@ -4349,8 +4349,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1013.625,
-      "y": 1355.803
+      "x": 1025.688,
+      "y": 1424.556
     },
     {
       "id": "consort-19-5",
@@ -4364,8 +4364,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1100.246,
-      "y": 1355.803
+      "x": 1112.309,
+      "y": 1424.556
     },
     {
       "id": "person-19-6",
@@ -4384,8 +4384,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1184.867,
-      "y": 1363.214
+      "x": 1196.93,
+      "y": 1436.429
     },
     {
       "id": "consort-19-6",
@@ -4399,8 +4399,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1271.488,
-      "y": 1363.214
+      "x": 1283.551,
+      "y": 1436.429
     },
     {
       "id": "person-19-7",
@@ -4419,8 +4419,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1433.109,
-      "y": 1363.808
+      "x": 1445.172,
+      "y": 1433.446
     },
     {
       "id": "consort-19-7",
@@ -4434,8 +4434,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1346.488,
-      "y": 1363.808
+      "x": 1358.551,
+      "y": 1433.446
     },
     {
       "id": "person-19-8",
@@ -4454,8 +4454,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1527.351,
-      "y": 1358.648
+      "x": 1539.414,
+      "y": 1426.056
     },
     {
       "id": "consort-19-8",
@@ -4469,8 +4469,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1613.972,
-      "y": 1358.648
+      "x": 1626.035,
+      "y": 1426.056
     },
     {
       "id": "person-20-0",
@@ -4489,8 +4489,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 127.167,
-      "y": 1369.318
+      "x": 127.779,
+      "y": 1432.568
     },
     {
       "id": "consort-20-0",
@@ -4504,8 +4504,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 213.788,
-      "y": 1369.318
+      "x": 214.4,
+      "y": 1432.568
     },
     {
       "id": "person-20-1",
@@ -4524,8 +4524,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 303.449,
-      "y": 1372.264
+      "x": 304.06,
+      "y": 1435.514
     },
     {
       "id": "consort-20-1",
@@ -4539,8 +4539,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 390.67,
-      "y": 1372.264
+      "x": 391.281,
+      "y": 1435.514
     },
     {
       "id": "person-20-2",
@@ -4559,8 +4559,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 646.292,
-      "y": 1405.586
+      "x": 654.692,
+      "y": 1473.148
     },
     {
       "id": "consort-20-2",
@@ -4574,8 +4574,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 732.913,
-      "y": 1405.586
+      "x": 741.313,
+      "y": 1473.148
     },
     {
       "id": "person-20-3",
@@ -4594,8 +4594,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 879.75,
-      "y": 1408.629
+      "x": 891.054,
+      "y": 1477.648
     },
     {
       "id": "consort-20-3",
@@ -4609,8 +4609,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 966.371,
-      "y": 1408.629
+      "x": 977.675,
+      "y": 1477.648
     },
     {
       "id": "person-20-4",
@@ -4629,8 +4629,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1060.066,
-      "y": 1416.04
+      "x": 1071.385,
+      "y": 1489.254
     },
     {
       "id": "consort-20-4",
@@ -4644,8 +4644,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1146.687,
-      "y": 1416.04
+      "x": 1158.006,
+      "y": 1489.254
     },
     {
       "id": "person-20-5",
@@ -4664,8 +4664,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1360.247,
-      "y": 1423.784
+      "x": 1371.907,
+      "y": 1494.148
     },
     {
       "id": "consort-20-5",
@@ -4679,8 +4679,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1446.868,
-      "y": 1423.784
+      "x": 1458.528,
+      "y": 1494.148
     },
     {
       "id": "person-20-6",
@@ -4697,8 +4697,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1531.241,
-      "y": 1417.784
+      "x": 1542.9,
+      "y": 1488.148
     },
     {
       "id": "consort-20-6",
@@ -4712,8 +4712,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1617.241,
-      "y": 1417.784
+      "x": 1628.9,
+      "y": 1488.148
     },
     {
       "id": "collateral-20-0",
@@ -4725,8 +4725,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 504.873,
-      "y": 1375.529
+      "x": 513.014,
+      "y": 1447.468
     },
     {
       "id": "person-21-0",
@@ -4746,7 +4746,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 1423.617
+      "y": 1486.867
     },
     {
       "id": "consort-21-0",
@@ -4761,7 +4761,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 190.342,
-      "y": 1423.617
+      "y": 1486.867
     },
     {
       "id": "person-21-1",
@@ -4781,7 +4781,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 358.563,
-      "y": 1426.563
+      "y": 1498.502
     },
     {
       "id": "consort-21-1",
@@ -4796,7 +4796,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 445.184,
-      "y": 1426.563
+      "y": 1498.502
     },
     {
       "id": "person-21-2",
@@ -4813,8 +4813,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 629.696,
-      "y": 1459.471
+      "x": 637.166,
+      "y": 1535.698
     },
     {
       "id": "consort-21-2",
@@ -4828,8 +4828,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 715.696,
-      "y": 1459.471
+      "x": 723.166,
+      "y": 1535.698
     },
     {
       "id": "person-21-3",
@@ -4848,8 +4848,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 873.158,
-      "y": 1468.67
+      "x": 882.588,
+      "y": 1541.991
     },
     {
       "id": "consort-21-3",
@@ -4863,8 +4863,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 959.779,
-      "y": 1468.67
+      "x": 969.209,
+      "y": 1541.991
     },
     {
       "id": "person-21-4",
@@ -4883,8 +4883,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1127.4,
-      "y": 1470.339
+      "x": 1136.83,
+      "y": 1545.124
     },
     {
       "id": "consort-21-4",
@@ -4898,8 +4898,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1214.021,
-      "y": 1470.339
+      "x": 1223.451,
+      "y": 1545.124
     },
     {
       "id": "person-21-5",
@@ -4918,8 +4918,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1341.346,
-      "y": 1483.522
+      "x": 1351.42,
+      "y": 1560.284
     },
     {
       "id": "consort-21-5",
@@ -4933,8 +4933,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1427.967,
-      "y": 1483.522
+      "x": 1438.041,
+      "y": 1560.284
     },
     {
       "id": "collateral-21-0",
@@ -4947,7 +4947,7 @@
       "size": 9.3,
       "role": "collateral relative",
       "x": 269.942,
-      "y": 1429.828
+      "y": 1501.767
     },
     {
       "id": "collateral-21-1",
@@ -4959,8 +4959,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1038.779,
-      "y": 1468.547
+      "x": 1048.209,
+      "y": 1541.762
     },
     {
       "id": "person-22-0",
@@ -4980,7 +4980,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 1477.916
+      "y": 1541.166
     },
     {
       "id": "consort-22-0",
@@ -4995,7 +4995,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 189.742,
-      "y": 1477.916
+      "y": 1541.166
     },
     {
       "id": "person-22-1",
@@ -5015,7 +5015,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 351.363,
-      "y": 1480.862
+      "y": 1552.801
     },
     {
       "id": "consort-22-1",
@@ -5030,7 +5030,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 264.742,
-      "y": 1480.862
+      "y": 1552.801
     },
     {
       "id": "person-22-2",
@@ -5049,8 +5049,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 631.394,
-      "y": 1513.357
+      "x": 638.57,
+      "y": 1589.583
     },
     {
       "id": "consort-22-2",
@@ -5064,8 +5064,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 718.015,
-      "y": 1513.357
+      "x": 725.191,
+      "y": 1589.583
     },
     {
       "id": "person-22-3",
@@ -5084,8 +5084,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 805.04,
-      "y": 1535.995
+      "x": 812.216,
+      "y": 1613.751
     },
     {
       "id": "consort-22-3",
@@ -5099,8 +5099,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 894.064,
-      "y": 1535.995
+      "x": 901.241,
+      "y": 1613.751
     },
     {
       "id": "person-22-4",
@@ -5119,8 +5119,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 978.685,
-      "y": 1523.164
+      "x": 985.862,
+      "y": 1597.95
     },
     {
       "id": "consort-22-4",
@@ -5134,8 +5134,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1065.306,
-      "y": 1523.164
+      "x": 1072.483,
+      "y": 1597.95
     },
     {
       "id": "person-22-5",
@@ -5152,8 +5152,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1149.306,
-      "y": 1524.224
+      "x": 1156.483,
+      "y": 1603.223
     },
     {
       "id": "consort-22-5",
@@ -5167,8 +5167,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1235.306,
-      "y": 1524.224
+      "x": 1242.483,
+      "y": 1603.223
     },
     {
       "id": "person-22-6",
@@ -5187,8 +5187,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1396.927,
-      "y": 1537.821
+      "x": 1404.104,
+      "y": 1614.583
     },
     {
       "id": "consort-22-6",
@@ -5202,8 +5202,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1310.306,
-      "y": 1537.821
+      "x": 1317.483,
+      "y": 1614.583
     },
     {
       "id": "person-22-7",
@@ -5222,8 +5222,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1491.169,
-      "y": 1537.821
+      "x": 1498.346,
+      "y": 1615.251
     },
     {
       "id": "consort-22-7",
@@ -5237,8 +5237,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1577.79,
-      "y": 1537.821
+      "x": 1584.967,
+      "y": 1615.251
     },
     {
       "id": "person-23-0",
@@ -5257,8 +5257,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 244.822,
-      "y": 1535.161
+      "x": 245.959,
+      "y": 1607.1
     },
     {
       "id": "consort-23-0",
@@ -5272,8 +5272,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 331.443,
-      "y": 1535.161
+      "x": 332.58,
+      "y": 1607.1
     },
     {
       "id": "person-23-1",
@@ -5290,8 +5290,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 580.195,
-      "y": 1567.242
+      "x": 587.145,
+      "y": 1643.469
     },
     {
       "id": "consort-23-1",
@@ -5305,8 +5305,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 666.195,
-      "y": 1567.242
+      "x": 673.145,
+      "y": 1643.469
     },
     {
       "id": "person-23-2",
@@ -5325,8 +5325,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 833.816,
-      "y": 1603.619
+      "x": 840.766,
+      "y": 1684.176
     },
     {
       "id": "consort-23-2",
@@ -5340,8 +5340,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 921.037,
-      "y": 1603.619
+      "x": 927.987,
+      "y": 1684.176
     },
     {
       "id": "person-23-3",
@@ -5360,8 +5360,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1124.054,
-      "y": 1578.11
+      "x": 1132.301,
+      "y": 1657.109
     },
     {
       "id": "consort-23-3",
@@ -5375,8 +5375,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1210.675,
-      "y": 1578.11
+      "x": 1218.922,
+      "y": 1657.109
     },
     {
       "id": "person-23-4",
@@ -5395,8 +5395,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1295.296,
-      "y": 1592.12
+      "x": 1303.543,
+      "y": 1668.882
     },
     {
       "id": "consort-23-4",
@@ -5410,8 +5410,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1381.917,
-      "y": 1592.12
+      "x": 1390.164,
+      "y": 1668.882
     },
     {
       "id": "person-23-5",
@@ -5430,8 +5430,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1466.538,
-      "y": 1606.441
+      "x": 1474.785,
+      "y": 1685.676
     },
     {
       "id": "consort-23-5",
@@ -5445,8 +5445,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1553.159,
-      "y": 1606.441
+      "x": 1561.406,
+      "y": 1685.676
     },
     {
       "id": "collateral-23-0",
@@ -5458,8 +5458,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1632.159,
-      "y": 1590.329
+      "x": 1640.406,
+      "y": 1667.758
     },
     {
       "id": "collateral-23-1",
@@ -5471,8 +5471,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 745.195,
-      "y": 1588.502
+      "x": 752.145,
+      "y": 1666.258
     },
     {
       "id": "person-24-0",
@@ -5491,8 +5491,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 212.21,
-      "y": 1589.46
+      "x": 215.085,
+      "y": 1663.747
     },
     {
       "id": "consort-24-0",
@@ -5506,8 +5506,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 298.831,
-      "y": 1589.46
+      "x": 301.706,
+      "y": 1663.747
     },
     {
       "id": "person-24-1",
@@ -5526,8 +5526,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 548.576,
-      "y": 1640.077
+      "x": 555.893,
+      "y": 1722.269
     },
     {
       "id": "consort-24-1",
@@ -5541,8 +5541,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 635.797,
-      "y": 1640.077
+      "x": 643.114,
+      "y": 1722.269
     },
     {
       "id": "person-24-2",
@@ -5561,8 +5561,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 801.403,
-      "y": 1657.918
+      "x": 808.921,
+      "y": 1744.462
     },
     {
       "id": "consort-24-2",
@@ -5576,8 +5576,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 888.024,
-      "y": 1657.918
+      "x": 895.542,
+      "y": 1744.462
     },
     {
       "id": "person-24-3",
@@ -5597,8 +5597,8 @@
       "court": "Westmere",
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1093.598,
-      "y": 1646.079
+      "x": 1103.429,
+      "y": 1725.078
     },
     {
       "id": "consort-24-3",
@@ -5612,8 +5612,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1180.219,
-      "y": 1646.079
+      "x": 1190.05,
+      "y": 1725.078
     },
     {
       "id": "collateral-24-0",
@@ -5625,8 +5625,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 377.831,
-      "y": 1609.263
+      "x": 380.706,
+      "y": 1691.263
     },
     {
       "id": "collateral-24-1",
@@ -5638,8 +5638,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1259.219,
-      "y": 1644.628
+      "x": 1269.05,
+      "y": 1726.019
     },
     {
       "id": "person-25-0",
@@ -5656,8 +5656,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 178.876,
-      "y": 1643.346
+      "x": 185.199,
+      "y": 1717.633
     },
     {
       "id": "consort-25-0",
@@ -5671,8 +5671,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 264.876,
-      "y": 1643.346
+      "x": 271.199,
+      "y": 1717.633
     },
     {
       "id": "person-25-1",
@@ -5691,8 +5691,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 641.892,
-      "y": 1712.217
+      "x": 651.249,
+      "y": 1798.761
     },
     {
       "id": "consort-25-1",
@@ -5706,8 +5706,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 728.513,
-      "y": 1712.217
+      "x": 737.87,
+      "y": 1798.761
     },
     {
       "id": "person-25-2",
@@ -5726,8 +5726,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 813.134,
-      "y": 1712.217
+      "x": 822.491,
+      "y": 1798.761
     },
     {
       "id": "consort-25-2",
@@ -5741,8 +5741,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 899.755,
-      "y": 1712.217
+      "x": 909.112,
+      "y": 1798.761
     },
     {
       "id": "person-25-3",
@@ -5761,8 +5761,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1061.376,
-      "y": 1712.217
+      "x": 1070.733,
+      "y": 1798.761
     },
     {
       "id": "consort-25-3",
@@ -5776,8 +5776,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 974.755,
-      "y": 1712.217
+      "x": 984.112,
+      "y": 1798.761
     },
     {
       "id": "person-25-4",
@@ -5796,8 +5796,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1155.618,
-      "y": 1700.378
+      "x": 1164.975,
+      "y": 1779.377
     },
     {
       "id": "consort-25-4",
@@ -5811,8 +5811,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1242.239,
-      "y": 1700.378
+      "x": 1251.596,
+      "y": 1779.377
     },
     {
       "id": "collateral-25-0",
@@ -5824,8 +5824,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 553.271,
-      "y": 1702.963
+      "x": 562.628,
+      "y": 1788.111
     },
     {
       "id": "collateral-25-1",
@@ -5837,8 +5837,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 343.876,
-      "y": 1659.979
+      "x": 350.199,
+      "y": 1741.979
     },
     {
       "id": "person-26-0",
@@ -5858,7 +5858,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 1697.232
+      "y": 1772.35
     },
     {
       "id": "consort-26-0",
@@ -5873,7 +5873,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 189.742,
-      "y": 1697.232
+      "y": 1772.35
     },
     {
       "id": "person-26-1",
@@ -5887,15 +5887,15 @@
       "realm": "the Corven Coast",
       "role": "landmark ruler",
       "row": 26,
-      "width": 96.82903999999999,
+      "width": 118.16324,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-864",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 284.657,
-      "y": 1721.025
+      "x": 295.324,
+      "y": 1809.525
     },
     {
       "id": "consort-26-1",
@@ -5909,8 +5909,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 381.571,
-      "y": 1721.025
+      "x": 402.905,
+      "y": 1809.525
     },
     {
       "id": "person-26-2",
@@ -5929,8 +5929,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 542.534,
-      "y": 1766.516
+      "x": 546.807,
+      "y": 1853.204
     },
     {
       "id": "consort-26-2",
@@ -5944,8 +5944,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 629.155,
-      "y": 1766.516
+      "x": 633.428,
+      "y": 1853.204
     },
     {
       "id": "person-26-3",
@@ -5962,8 +5962,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 713.155,
-      "y": 1767.989
+      "x": 717.428,
+      "y": 1854.837
     },
     {
       "id": "consort-26-3",
@@ -5977,8 +5977,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 799.755,
-      "y": 1767.989
+      "x": 804.028,
+      "y": 1854.837
     },
     {
       "id": "person-26-4",
@@ -5997,8 +5997,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 884.976,
-      "y": 1766.516
+      "x": 889.249,
+      "y": 1853.204
     },
     {
       "id": "consort-26-4",
@@ -6012,8 +6012,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 971.597,
-      "y": 1766.516
+      "x": 975.87,
+      "y": 1853.204
     },
     {
       "id": "person-26-5",
@@ -6032,8 +6032,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1056.218,
-      "y": 1766.516
+      "x": 1060.491,
+      "y": 1853.06
     },
     {
       "id": "consort-26-5",
@@ -6047,8 +6047,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1142.839,
-      "y": 1766.516
+      "x": 1147.112,
+      "y": 1853.06
     },
     {
       "id": "person-26-6",
@@ -6062,15 +6062,15 @@
       "realm": "Falken",
       "role": "landmark ruler",
       "row": 26,
-      "width": 93.53153,
+      "width": 114.44655499999999,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-111317",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1236.105,
-      "y": 1763.215
+      "x": 1250.836,
+      "y": 1848.714
     },
     {
       "id": "consort-26-6",
@@ -6084,8 +6084,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1331.371,
-      "y": 1763.215
+      "x": 1356.559,
+      "y": 1848.714
     },
     {
       "id": "person-26-7",
@@ -6104,8 +6104,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1415.992,
-      "y": 1763.599
+      "x": 1441.18,
+      "y": 1851.704
     },
     {
       "id": "consort-26-7",
@@ -6119,8 +6119,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1502.613,
-      "y": 1763.599
+      "x": 1527.801,
+      "y": 1851.704
     },
     {
       "id": "person-27-0",
@@ -6140,7 +6140,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 1751.531
+      "y": 1826.649
     },
     {
       "id": "consort-27-0",
@@ -6155,7 +6155,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 189.742,
-      "y": 1751.531
+      "y": 1826.649
     },
     {
       "id": "person-27-1",
@@ -6174,8 +6174,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 280.539,
-      "y": 1783.862
+      "x": 286.939,
+      "y": 1878.862
     },
     {
       "id": "consort-27-1",
@@ -6189,8 +6189,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 367.16,
-      "y": 1783.862
+      "x": 373.56,
+      "y": 1878.862
     },
     {
       "id": "person-27-2",
@@ -6209,8 +6209,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 515.96,
-      "y": 1822.735
+      "x": 521.226,
+      "y": 1913.796
     },
     {
       "id": "consort-27-2",
@@ -6224,8 +6224,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 602.581,
-      "y": 1822.735
+      "x": 607.847,
+      "y": 1913.796
     },
     {
       "id": "person-27-3",
@@ -6244,8 +6244,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 687.202,
-      "y": 1835.656
+      "x": 692.468,
+      "y": 1930.296
     },
     {
       "id": "consort-27-3",
@@ -6259,8 +6259,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 773.823,
-      "y": 1835.656
+      "x": 779.089,
+      "y": 1930.296
     },
     {
       "id": "person-27-4",
@@ -6279,8 +6279,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 858.444,
-      "y": 1820.815
+      "x": 863.71,
+      "y": 1907.663
     },
     {
       "id": "consort-27-4",
@@ -6294,8 +6294,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 945.065,
-      "y": 1820.815
+      "x": 950.331,
+      "y": 1907.663
     },
     {
       "id": "person-27-5",
@@ -6314,8 +6314,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1029.686,
-      "y": 1828.769
+      "x": 1034.952,
+      "y": 1923.68
     },
     {
       "id": "consort-27-5",
@@ -6329,8 +6329,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1116.307,
-      "y": 1828.769
+      "x": 1121.573,
+      "y": 1923.68
     },
     {
       "id": "person-27-6",
@@ -6347,8 +6347,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1205.842,
-      "y": 1825.639
+      "x": 1217.382,
+      "y": 1917.638
     },
     {
       "id": "consort-27-6",
@@ -6362,8 +6362,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1291.842,
-      "y": 1825.639
+      "x": 1303.382,
+      "y": 1917.638
     },
     {
       "id": "person-27-7",
@@ -6382,8 +6382,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1382.022,
-      "y": 1821.235
+      "x": 1399.836,
+      "y": 1912.296
     },
     {
       "id": "consort-27-7",
@@ -6397,8 +6397,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1468.643,
-      "y": 1821.235
+      "x": 1486.457,
+      "y": 1912.296
     },
     {
       "id": "person-27-8",
@@ -6417,8 +6417,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1553.264,
-      "y": 1839.235
+      "x": 1571.078,
+      "y": 1930.296
     },
     {
       "id": "consort-27-8",
@@ -6432,8 +6432,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1639.885,
-      "y": 1839.235
+      "x": 1657.699,
+      "y": 1930.296
     },
     {
       "id": "person-28-0",
@@ -6453,7 +6453,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 1805.83
+      "y": 1894.889
     },
     {
       "id": "consort-28-0",
@@ -6468,7 +6468,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 189.742,
-      "y": 1805.83
+      "y": 1894.889
     },
     {
       "id": "person-28-1",
@@ -6488,7 +6488,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 351.363,
-      "y": 1838.161
+      "y": 1933.161
     },
     {
       "id": "consort-28-1",
@@ -6503,7 +6503,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 264.742,
-      "y": 1838.161
+      "y": 1933.161
     },
     {
       "id": "person-28-2",
@@ -6520,8 +6520,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 627.577,
-      "y": 1889.541
+      "x": 649.215,
+      "y": 1988.617
     },
     {
       "id": "consort-28-2",
@@ -6535,8 +6535,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 713.577,
-      "y": 1889.541
+      "x": 735.215,
+      "y": 1988.617
     },
     {
       "id": "person-28-3",
@@ -6555,8 +6555,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 951.172,
-      "y": 1883.068
+      "x": 971.008,
+      "y": 1978.858
     },
     {
       "id": "consort-28-3",
@@ -6570,8 +6570,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1037.793,
-      "y": 1883.068
+      "x": 1057.629,
+      "y": 1978.858
     },
     {
       "id": "person-28-4",
@@ -6590,8 +6590,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1144.323,
-      "y": 1881.595
+      "x": 1167.796,
+      "y": 1976.505
     },
     {
       "id": "consort-28-4",
@@ -6605,8 +6605,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1230.944,
-      "y": 1881.595
+      "x": 1254.417,
+      "y": 1976.505
     },
     {
       "id": "person-28-5",
@@ -6625,8 +6625,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1392.565,
-      "y": 1880.37
+      "x": 1416.038,
+      "y": 1974.389
     },
     {
       "id": "consort-28-5",
@@ -6640,8 +6640,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1305.944,
-      "y": 1880.37
+      "x": 1329.417,
+      "y": 1974.389
     },
     {
       "id": "person-28-6",
@@ -6660,8 +6660,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1544.632,
-      "y": 1905.054
+      "x": 1583.464,
+      "y": 2002.029
     },
     {
       "id": "consort-28-6",
@@ -6675,8 +6675,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1631.253,
-      "y": 1905.054
+      "x": 1670.085,
+      "y": 2002.029
     },
     {
       "id": "collateral-28-0",
@@ -6689,7 +6689,7 @@
       "size": 9.3,
       "role": "collateral relative",
       "x": 439.984,
-      "y": 1880.37
+      "y": 1974.389
     },
     {
       "id": "person-29-0",
@@ -6709,7 +6709,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 103.121,
-      "y": 1860.129
+      "y": 1953.231
     },
     {
       "id": "consort-29-0",
@@ -6724,7 +6724,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 189.742,
-      "y": 1860.129
+      "y": 1953.231
     },
     {
       "id": "person-29-1",
@@ -6744,7 +6744,7 @@
       "detail_position": "outside",
       "detail_size": 9.1,
       "x": 274.363,
-      "y": 1892.46
+      "y": 1987.46
     },
     {
       "id": "consort-29-1",
@@ -6759,7 +6759,7 @@
       "size": 9.6,
       "role": "consort",
       "x": 360.984,
-      "y": 1892.46
+      "y": 1987.46
     },
     {
       "id": "person-29-2",
@@ -6778,8 +6778,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 565.402,
-      "y": 1943.427
+      "x": 602.951,
+      "y": 2042.503
     },
     {
       "id": "consort-29-2",
@@ -6793,8 +6793,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 652.023,
-      "y": 1943.427
+      "x": 689.572,
+      "y": 2042.503
     },
     {
       "id": "person-29-3",
@@ -6813,8 +6813,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 870.044,
-      "y": 1938.614
+      "x": 903.919,
+      "y": 2038.697
     },
     {
       "id": "consort-29-3",
@@ -6828,8 +6828,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 956.665,
-      "y": 1938.614
+      "x": 990.54,
+      "y": 2038.697
     },
     {
       "id": "person-29-4",
@@ -6848,8 +6848,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1079.656,
-      "y": 1935.894
+      "x": 1114.332,
+      "y": 2031.684
     },
     {
       "id": "consort-29-4",
@@ -6863,8 +6863,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1166.877,
-      "y": 1935.894
+      "x": 1201.553,
+      "y": 2031.684
     },
     {
       "id": "person-29-5",
@@ -6881,8 +6881,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1251.669,
-      "y": 1934.834
+      "x": 1286.345,
+      "y": 2030.624
     },
     {
       "id": "consort-29-5",
@@ -6896,8 +6896,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1337.669,
-      "y": 1934.834
+      "x": 1372.345,
+      "y": 2030.624
     },
     {
       "id": "person-29-6",
@@ -6916,8 +6916,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1448.637,
-      "y": 1959.353
+      "x": 1538.637,
+      "y": 2056.328
     },
     {
       "id": "consort-29-6",
@@ -6931,8 +6931,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1535.258,
-      "y": 1959.353
+      "x": 1625.258,
+      "y": 2056.328
     },
     {
       "id": "person-29-7",
@@ -6951,8 +6951,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1619.879,
-      "y": 1970.424
+      "x": 1709.879,
+      "y": 2068.878
     },
     {
       "id": "consort-29-7",
@@ -6966,8 +6966,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1706.5,
-      "y": 1970.424
+      "x": 1796.5,
+      "y": 2068.878
     },
     {
       "id": "person-30-0",
@@ -6986,8 +6986,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 500.957,
-      "y": 1997.726
+      "x": 554.116,
+      "y": 2096.846
     },
     {
       "id": "consort-30-0",
@@ -7001,8 +7001,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 587.578,
-      "y": 1997.726
+      "x": 640.737,
+      "y": 2096.846
     },
     {
       "id": "person-30-1",
@@ -7019,8 +7019,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 786.504,
-      "y": 1992.913
+      "x": 833.986,
+      "y": 2096.324
     },
     {
       "id": "consort-30-1",
@@ -7034,8 +7034,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 872.504,
-      "y": 1992.913
+      "x": 919.986,
+      "y": 2096.324
     },
     {
       "id": "person-30-2",
@@ -7054,8 +7054,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1013.886,
-      "y": 1991.44
+      "x": 1058.949,
+      "y": 2091.522
     },
     {
       "id": "consort-30-2",
@@ -7069,8 +7069,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1100.507,
-      "y": 1991.44
+      "x": 1145.57,
+      "y": 2091.522
     },
     {
       "id": "person-30-3",
@@ -7089,8 +7089,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1185.128,
-      "y": 1988.719
+      "x": 1230.191,
+      "y": 2084.509
     },
     {
       "id": "consort-30-3",
@@ -7104,8 +7104,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1272.349,
-      "y": 1988.719
+      "x": 1317.412,
+      "y": 2084.509
     },
     {
       "id": "person-30-4",
@@ -7124,8 +7124,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1365.357,
-      "y": 2019.982
+      "x": 1455.532,
+      "y": 2123.482
     },
     {
       "id": "consort-30-4",
@@ -7139,8 +7139,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1451.978,
-      "y": 2019.982
+      "x": 1542.153,
+      "y": 2123.482
     },
     {
       "id": "person-30-5",
@@ -7159,8 +7159,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1619.599,
-      "y": 2024.723
+      "x": 1709.774,
+      "y": 2123.177
     },
     {
       "id": "consort-30-5",
@@ -7174,8 +7174,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1706.22,
-      "y": 2024.723
+      "x": 1796.395,
+      "y": 2123.177
     },
     {
       "id": "collateral-30-0",
@@ -7187,8 +7187,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1530.978,
-      "y": 2011.861
+      "x": 1621.153,
+      "y": 2108.836
     },
     {
       "id": "collateral-30-1",
@@ -7200,8 +7200,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 306.275,
-      "y": 1998.642
+      "x": 306.856,
+      "y": 2098.574
     },
     {
       "id": "person-31-0",
@@ -7220,8 +7220,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 404.22,
-      "y": 2052.025
+      "x": 471.586,
+      "y": 2151.145
     },
     {
       "id": "consort-31-0",
@@ -7235,8 +7235,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 490.841,
-      "y": 2052.025
+      "x": 558.207,
+      "y": 2151.145
     },
     {
       "id": "person-31-1",
@@ -7255,8 +7255,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 652.462,
-      "y": 2052.025
+      "x": 719.828,
+      "y": 2153.313
     },
     {
       "id": "consort-31-1",
@@ -7270,8 +7270,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 565.841,
-      "y": 2052.025
+      "x": 633.207,
+      "y": 2153.313
     },
     {
       "id": "person-31-2",
@@ -7290,8 +7290,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 936.153,
-      "y": 2045.739
+      "x": 1006.182,
+      "y": 2145.821
     },
     {
       "id": "consort-31-2",
@@ -7305,8 +7305,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1022.774,
-      "y": 2045.739
+      "x": 1092.803,
+      "y": 2145.821
     },
     {
       "id": "person-31-3",
@@ -7325,8 +7325,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1107.395,
-      "y": 2044.265
+      "x": 1177.784,
+      "y": 2144.348
     },
     {
       "id": "consort-31-3",
@@ -7340,8 +7340,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1194.016,
-      "y": 2044.265
+      "x": 1264.405,
+      "y": 2144.348
     },
     {
       "id": "person-31-4",
@@ -7358,8 +7358,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1278.016,
-      "y": 2073.868
+      "x": 1368.016,
+      "y": 2177.368
     },
     {
       "id": "consort-31-4",
@@ -7373,8 +7373,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1364.016,
-      "y": 2073.868
+      "x": 1454.016,
+      "y": 2177.368
     },
     {
       "id": "person-31-5",
@@ -7393,8 +7393,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1525.637,
-      "y": 2081.625
+      "x": 1615.637,
+      "y": 2187.471
     },
     {
       "id": "consort-31-5",
@@ -7408,8 +7408,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1439.016,
-      "y": 2081.625
+      "x": 1529.016,
+      "y": 2187.471
     },
     {
       "id": "person-31-6",
@@ -7428,8 +7428,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1619.879,
-      "y": 2099.778
+      "x": 1709.879,
+      "y": 2202.667
     },
     {
       "id": "consort-31-6",
@@ -7443,8 +7443,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1706.5,
-      "y": 2099.778
+      "x": 1796.5,
+      "y": 2202.667
     },
     {
       "id": "collateral-31-0",
@@ -7456,8 +7456,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 803.828,
-      "y": 2049.842
+      "x": 858.855,
+      "y": 2154.209
     },
     {
       "id": "person-32-0",
@@ -7474,8 +7474,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 246.999,
-      "y": 2116.914
+      "x": 336.999,
+      "y": 2222.759
     },
     {
       "id": "consort-32-0",
@@ -7489,8 +7489,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 332.999,
-      "y": 2116.914
+      "x": 422.999,
+      "y": 2222.759
     },
     {
       "id": "person-32-1",
@@ -7509,8 +7509,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 420.023,
-      "y": 2107.731
+      "x": 510.023,
+      "y": 2210.475
     },
     {
       "id": "consort-32-1",
@@ -7524,8 +7524,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 509.048,
-      "y": 2107.731
+      "x": 599.048,
+      "y": 2210.475
     },
     {
       "id": "person-32-2",
@@ -7544,8 +7544,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 593.669,
-      "y": 2106.324
+      "x": 683.669,
+      "y": 2207.612
     },
     {
       "id": "consort-32-2",
@@ -7559,8 +7559,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 680.29,
-      "y": 2106.324
+      "x": 770.29,
+      "y": 2207.612
     },
     {
       "id": "person-32-3",
@@ -7579,8 +7579,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 764.911,
-      "y": 2102.35
+      "x": 854.911,
+      "y": 2206.717
     },
     {
       "id": "consort-32-3",
@@ -7594,8 +7594,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 851.532,
-      "y": 2102.35
+      "x": 941.532,
+      "y": 2206.717
     },
     {
       "id": "person-32-4",
@@ -7614,8 +7614,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 936.153,
-      "y": 2100.038
+      "x": 1026.153,
+      "y": 2204.759
     },
     {
       "id": "consort-32-4",
@@ -7629,8 +7629,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1022.774,
-      "y": 2100.038
+      "x": 1112.774,
+      "y": 2204.759
     },
     {
       "id": "person-32-5",
@@ -7649,8 +7649,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1107.395,
-      "y": 2127.753
+      "x": 1197.395,
+      "y": 2232.727
     },
     {
       "id": "consort-32-5",
@@ -7664,8 +7664,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1194.016,
-      "y": 2127.753
+      "x": 1284.016,
+      "y": 2232.727
     },
     {
       "id": "person-32-6",
@@ -7684,8 +7684,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1278.637,
-      "y": 2127.753
+      "x": 1368.637,
+      "y": 2231.253
     },
     {
       "id": "consort-32-6",
@@ -7699,8 +7699,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1365.258,
-      "y": 2127.753
+      "x": 1455.258,
+      "y": 2231.253
     },
     {
       "id": "person-32-7",
@@ -7717,8 +7717,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1449.258,
-      "y": 2135.511
+      "x": 1539.258,
+      "y": 2241.356
     },
     {
       "id": "consort-32-7",
@@ -7732,8 +7732,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1535.258,
-      "y": 2135.511
+      "x": 1625.258,
+      "y": 2241.356
     },
     {
       "id": "person-32-8",
@@ -7752,8 +7752,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1619.879,
-      "y": 2156.847
+      "x": 1709.879,
+      "y": 2265.65
     },
     {
       "id": "consort-32-8",
@@ -7767,8 +7767,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1706.5,
-      "y": 2156.847
+      "x": 1796.5,
+      "y": 2265.65
     },
     {
       "id": "person-33-0",
@@ -7787,8 +7787,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 219.997,
-      "y": 2183.549
+      "x": 306.793,
+      "y": 2292.352
     },
     {
       "id": "consort-33-0",
@@ -7802,8 +7802,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 306.618,
-      "y": 2183.549
+      "x": 393.414,
+      "y": 2292.352
     },
     {
       "id": "person-33-1",
@@ -7817,15 +7817,15 @@
       "realm": "the Everen Isles",
       "role": "landmark ruler",
       "row": 33,
-      "width": 97.31756,
+      "width": 118.71386000000001,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-95998",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 438.234,
-      "y": 2170.568
+      "x": 521.731,
+      "y": 2279.812
     },
     {
       "id": "consort-33-1",
@@ -7839,8 +7839,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 535.393,
-      "y": 2170.568
+      "x": 629.588,
+      "y": 2279.812
     },
     {
       "id": "person-33-2",
@@ -7859,8 +7859,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 620.014,
-      "y": 2167.049
+      "x": 714.209,
+      "y": 2275.852
     },
     {
       "id": "consort-33-2",
@@ -7874,8 +7874,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 706.635,
-      "y": 2167.049
+      "x": 800.83,
+      "y": 2275.852
     },
     {
       "id": "person-33-3",
@@ -7892,8 +7892,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 834.188,
-      "y": 2171.549
+      "x": 920.351,
+      "y": 2280.352
     },
     {
       "id": "consort-33-3",
@@ -7907,8 +7907,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 920.188,
-      "y": 2171.549
+      "x": 1006.351,
+      "y": 2280.352
     },
     {
       "id": "person-33-4",
@@ -7927,8 +7927,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1004.822,
-      "y": 2180.579
+      "x": 1090.984,
+      "y": 2285.552
     },
     {
       "id": "consort-33-4",
@@ -7942,8 +7942,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1092.043,
-      "y": 2180.579
+      "x": 1178.205,
+      "y": 2285.552
     },
     {
       "id": "person-33-5",
@@ -7957,15 +7957,15 @@
       "realm": "Bayeux",
       "role": "landmark ruler",
       "row": 33,
-      "width": 86.69225,
+      "width": 106.737875,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-105600",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1285.158,
-      "y": 2190.59
+      "x": 1371.911,
+      "y": 2300.59
     },
     {
       "id": "consort-33-5",
@@ -7979,8 +7979,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1377.004,
-      "y": 2190.59
+      "x": 1473.779,
+      "y": 2300.59
     },
     {
       "id": "person-33-6",
@@ -7999,8 +7999,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1593.69,
-      "y": 2211.146
+      "x": 1684.452,
+      "y": 2319.949
     },
     {
       "id": "consort-33-6",
@@ -8014,8 +8014,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1680.311,
-      "y": 2211.146
+      "x": 1771.073,
+      "y": 2319.949
     },
     {
       "id": "collateral-33-0",
@@ -8027,8 +8027,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1456.004,
-      "y": 2187.605
+      "x": 1552.779,
+      "y": 2293.45
     },
     {
       "id": "person-34-0",
@@ -8047,8 +8047,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 421.488,
-      "y": 2233.405
+      "x": 502.193,
+      "y": 2349.149
     },
     {
       "id": "consort-34-0",
@@ -8062,8 +8062,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 508.109,
-      "y": 2233.405
+      "x": 588.814,
+      "y": 2349.149
     },
     {
       "id": "person-34-1",
@@ -8082,8 +8082,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 669.73,
-      "y": 2241.185
+      "x": 750.435,
+      "y": 2352.944
     },
     {
       "id": "consort-34-1",
@@ -8097,8 +8097,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 583.109,
-      "y": 2241.185
+      "x": 663.814,
+      "y": 2352.944
     },
     {
       "id": "person-34-2",
@@ -8117,8 +8117,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 871.86,
-      "y": 2233.404
+      "x": 959.959,
+      "y": 2339.444
     },
     {
       "id": "consort-34-2",
@@ -8132,8 +8132,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 958.481,
-      "y": 2233.404
+      "x": 1046.58,
+      "y": 2339.444
     },
     {
       "id": "person-34-3",
@@ -8152,8 +8152,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1120.102,
-      "y": 2234.878
+      "x": 1208.201,
+      "y": 2346.944
     },
     {
       "id": "consort-34-3",
@@ -8167,8 +8167,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1033.481,
-      "y": 2234.878
+      "x": 1121.58,
+      "y": 2346.944
     },
     {
       "id": "person-34-4",
@@ -8187,8 +8187,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1309.208,
-      "y": 2253.427
+      "x": 1397.662,
+      "y": 2369.927
     },
     {
       "id": "consort-34-4",
@@ -8202,8 +8202,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1395.829,
-      "y": 2253.427
+      "x": 1484.283,
+      "y": 2369.927
     },
     {
       "id": "collateral-34-0",
@@ -8215,8 +8215,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1595.773,
-      "y": 2263.654
+      "x": 1691.202,
+      "y": 2372.456
     },
     {
       "id": "collateral-34-1",
@@ -8228,8 +8228,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 758.351,
-      "y": 2235.185
+      "x": 839.056,
+      "y": 2346.944
     },
     {
       "id": "person-35-0",
@@ -8249,8 +8249,8 @@
       "court": "Dunport",
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 389.993,
-      "y": 2301.374
+      "x": 463.156,
+      "y": 2417.118
     },
     {
       "id": "consort-35-0",
@@ -8264,8 +8264,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 476.614,
-      "y": 2301.374
+      "x": 549.777,
+      "y": 2417.118
     },
     {
       "id": "person-35-1",
@@ -8284,8 +8284,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 647.442,
-      "y": 2297.114
+      "x": 727.463,
+      "y": 2413.309
     },
     {
       "id": "consort-35-1",
@@ -8299,8 +8299,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 734.063,
-      "y": 2297.114
+      "x": 814.084,
+      "y": 2413.309
     },
     {
       "id": "person-35-2",
@@ -8317,8 +8317,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 920.208,
-      "y": 2287.289
+      "x": 1005.504,
+      "y": 2399.287
     },
     {
       "id": "consort-35-2",
@@ -8332,8 +8332,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1006.208,
-      "y": 2287.289
+      "x": 1091.504,
+      "y": 2399.287
     },
     {
       "id": "person-35-3",
@@ -8352,8 +8352,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1115.647,
-      "y": 2289.177
+      "x": 1200.943,
+      "y": 2405.046
     },
     {
       "id": "consort-35-3",
@@ -8367,8 +8367,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1202.268,
-      "y": 2289.177
+      "x": 1287.564,
+      "y": 2405.046
     },
     {
       "id": "collateral-35-0",
@@ -8380,8 +8380,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 555.614,
-      "y": 2294.321
+      "x": 628.777,
+      "y": 2409.037
     },
     {
       "id": "collateral-35-1",
@@ -8393,8 +8393,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1281.268,
-      "y": 2305.935
+      "x": 1366.564,
+      "y": 2422.435
     },
     {
       "id": "person-36-0",
@@ -8413,8 +8413,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 228.106,
-      "y": 2355.673
+      "x": 273.191,
+      "y": 2471.417
     },
     {
       "id": "consort-36-0",
@@ -8428,8 +8428,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 314.727,
-      "y": 2355.673
+      "x": 359.812,
+      "y": 2471.417
     },
     {
       "id": "person-36-1",
@@ -8448,8 +8448,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 438.662,
-      "y": 2357.202
+      "x": 512.544,
+      "y": 2473.702
     },
     {
       "id": "consort-36-1",
@@ -8463,8 +8463,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 525.283,
-      "y": 2357.202
+      "x": 599.165,
+      "y": 2473.702
     },
     {
       "id": "person-36-2",
@@ -8483,8 +8483,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 694.829,
-      "y": 2351.413
+      "x": 772.825,
+      "y": 2467.608
     },
     {
       "id": "consort-36-2",
@@ -8498,8 +8498,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 781.45,
-      "y": 2351.413
+      "x": 859.446,
+      "y": 2467.608
     },
     {
       "id": "person-36-3",
@@ -8518,8 +8518,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 866.071,
-      "y": 2365.74
+      "x": 944.067,
+      "y": 2486.13
     },
     {
       "id": "consort-36-3",
@@ -8533,8 +8533,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 952.692,
-      "y": 2365.74
+      "x": 1030.688,
+      "y": 2486.13
     },
     {
       "id": "person-36-4",
@@ -8553,8 +8553,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1037.313,
-      "y": 2343.476
+      "x": 1115.309,
+      "y": 2457.871
     },
     {
       "id": "consort-36-4",
@@ -8568,8 +8568,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1123.934,
-      "y": 2343.476
+      "x": 1201.93,
+      "y": 2457.871
     },
     {
       "id": "person-36-5",
@@ -8586,8 +8586,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1207.934,
-      "y": 2358.029
+      "x": 1285.93,
+      "y": 2473.469
     },
     {
       "id": "consort-36-5",
@@ -8601,8 +8601,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1293.934,
-      "y": 2358.029
+      "x": 1371.93,
+      "y": 2473.469
     },
     {
       "id": "person-36-6",
@@ -8621,8 +8621,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1378.555,
-      "y": 2354.957
+      "x": 1456.551,
+      "y": 2472.228
     },
     {
       "id": "consort-36-6",
@@ -8636,8 +8636,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1465.176,
-      "y": 2354.957
+      "x": 1543.172,
+      "y": 2472.228
     },
     {
       "id": "collateral-36-0",
@@ -8649,8 +8649,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 604.283,
-      "y": 2353.882
+      "x": 678.165,
+      "y": 2471.13
     },
     {
       "id": "person-37-0",
@@ -8669,8 +8669,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 142.071,
-      "y": 2411.261
+      "x": 153.389,
+      "y": 2533.222
     },
     {
       "id": "consort-37-0",
@@ -8684,8 +8684,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 232.867,
-      "y": 2411.261
+      "x": 244.185,
+      "y": 2533.222
     },
     {
       "id": "person-37-1",
@@ -8702,8 +8702,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 897.821,
-      "y": 2423.613
+      "x": 972.088,
+      "y": 2545.721
     },
     {
       "id": "consort-37-1",
@@ -8717,8 +8717,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 983.821,
-      "y": 2423.613
+      "x": 1058.088,
+      "y": 2545.721
     },
     {
       "id": "person-37-2",
@@ -8737,8 +8737,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 555.958,
-      "y": 2410.027
+      "x": 630.225,
+      "y": 2526.527
     },
     {
       "id": "consort-37-2",
@@ -8752,8 +8752,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 642.579,
-      "y": 2410.027
+      "x": 716.846,
+      "y": 2526.527
     },
     {
       "id": "person-37-3",
@@ -8772,8 +8772,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 727.2,
-      "y": 2420.039
+      "x": 801.467,
+      "y": 2543.039
     },
     {
       "id": "consort-37-3",
@@ -8787,8 +8787,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 813.821,
-      "y": 2420.039
+      "x": 888.088,
+      "y": 2543.039
     },
     {
       "id": "person-37-4",
@@ -8807,8 +8807,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1068.442,
-      "y": 2410.441
+      "x": 1142.709,
+      "y": 2525.881
     },
     {
       "id": "consort-37-4",
@@ -8822,8 +8822,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1155.063,
-      "y": 2410.441
+      "x": 1229.33,
+      "y": 2525.881
     },
     {
       "id": "person-37-5",
@@ -8842,8 +8842,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1239.684,
-      "y": 2411.914
+      "x": 1313.951,
+      "y": 2528.828
     },
     {
       "id": "consort-37-5",
@@ -8857,8 +8857,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1326.305,
-      "y": 2411.914
+      "x": 1400.572,
+      "y": 2528.828
     },
     {
       "id": "person-37-6",
@@ -8877,8 +8877,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1487.926,
-      "y": 2411.914
+      "x": 1562.193,
+      "y": 2527.354
     },
     {
       "id": "consort-37-6",
@@ -8892,8 +8892,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1401.305,
-      "y": 2411.914
+      "x": 1475.572,
+      "y": 2527.354
     },
     {
       "id": "person-37-7",
@@ -8912,8 +8912,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1582.168,
-      "y": 2410.027
+      "x": 1656.435,
+      "y": 2526.527
     },
     {
       "id": "consort-37-7",
@@ -8927,8 +8927,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1668.789,
-      "y": 2410.027
+      "x": 1743.056,
+      "y": 2526.527
     },
     {
       "id": "person-38-0",
@@ -8947,8 +8947,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 116.55,
-      "y": 2465.56
+      "x": 124.172,
+      "y": 2587.815
     },
     {
       "id": "consort-38-0",
@@ -8962,8 +8962,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 203.171,
-      "y": 2465.56
+      "x": 210.793,
+      "y": 2587.815
     },
     {
       "id": "person-38-1",
@@ -8982,8 +8982,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 555.402,
-      "y": 2464.326
+      "x": 623.671,
+      "y": 2580.826
     },
     {
       "id": "consort-38-1",
@@ -8997,8 +8997,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 642.023,
-      "y": 2464.326
+      "x": 710.292,
+      "y": 2580.826
     },
     {
       "id": "person-38-2",
@@ -9017,8 +9017,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 729.986,
-      "y": 2474.338
+      "x": 801.354,
+      "y": 2597.338
     },
     {
       "id": "consort-38-2",
@@ -9032,8 +9032,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 816.607,
-      "y": 2474.338
+      "x": 887.975,
+      "y": 2597.338
     },
     {
       "id": "person-38-3",
@@ -9052,8 +9052,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1176.147,
-      "y": 2466.213
+      "x": 1248.099,
+      "y": 2583.315
     },
     {
       "id": "consort-38-3",
@@ -9067,8 +9067,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1262.768,
-      "y": 2466.213
+      "x": 1334.72,
+      "y": 2583.315
     },
     {
       "id": "person-38-4",
@@ -9085,8 +9085,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1352.943,
-      "y": 2465.8
+      "x": 1425.395,
+      "y": 2581.24
     },
     {
       "id": "consort-38-4",
@@ -9100,8 +9100,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1438.943,
-      "y": 2465.8
+      "x": 1511.395,
+      "y": 2581.24
     },
     {
       "id": "person-38-5",
@@ -9120,8 +9120,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1606.564,
-      "y": 2464.326
+      "x": 1679.016,
+      "y": 2580.826
     },
     {
       "id": "consort-38-5",
@@ -9135,8 +9135,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1693.185,
-      "y": 2464.326
+      "x": 1765.637,
+      "y": 2580.826
     },
     {
       "id": "collateral-38-0",
@@ -9148,8 +9148,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1517.943,
-      "y": 2466.117
+      "x": 1590.395,
+      "y": 2582.617
     },
     {
       "id": "collateral-38-1",
@@ -9161,8 +9161,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 921.707,
-      "y": 2475.707
+      "x": 993.075,
+      "y": 2597.815
     },
     {
       "id": "person-39-0",
@@ -9179,8 +9179,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 110.93,
-      "y": 2520.364
+      "x": 115.503,
+      "y": 2646.907
     },
     {
       "id": "consort-39-0",
@@ -9194,8 +9194,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 196.93,
-      "y": 2520.364
+      "x": 201.503,
+      "y": 2646.907
     },
     {
       "id": "person-39-1",
@@ -9209,15 +9209,15 @@
       "realm": "Falken",
       "role": "landmark ruler",
       "row": 39,
-      "width": 99.63803000000001,
+      "width": 121.329305,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-16367",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 574.77,
-      "y": 2527.163
+      "x": 637.928,
+      "y": 2650.163
     },
     {
       "id": "consort-39-1",
@@ -9231,8 +9231,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 673.089,
-      "y": 2527.163
+      "x": 747.093,
+      "y": 2650.163
     },
     {
       "id": "person-39-2",
@@ -9251,8 +9251,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 757.71,
-      "y": 2533.864
+      "x": 831.714,
+      "y": 2660.407
     },
     {
       "id": "consort-39-2",
@@ -9266,8 +9266,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 844.331,
-      "y": 2533.864
+      "x": 918.335,
+      "y": 2660.407
     },
     {
       "id": "person-39-3",
@@ -9286,8 +9286,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1011.503,
-      "y": 2524.864
+      "x": 1081.457,
+      "y": 2651.407
     },
     {
       "id": "consort-39-3",
@@ -9301,8 +9301,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1098.124,
-      "y": 2524.864
+      "x": 1168.078,
+      "y": 2651.407
     },
     {
       "id": "person-39-4",
@@ -9321,8 +9321,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1265.745,
-      "y": 2523.364
+      "x": 1335.699,
+      "y": 2649.907
     },
     {
       "id": "consort-39-4",
@@ -9336,8 +9336,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1352.366,
-      "y": 2523.364
+      "x": 1422.32,
+      "y": 2649.907
     },
     {
       "id": "person-39-5",
@@ -9351,15 +9351,15 @@
       "realm": "the Corven Coast",
       "role": "landmark ruler",
       "row": 39,
-      "width": 86.69225,
+      "width": 106.737875,
       "style": "emblem",
-      "size": 11.8,
+      "size": 13.3,
       "icon": "museum-87760",
-      "icon_width": 33,
+      "icon_width": 46,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1442.212,
-      "y": 2527.163
+      "x": 1522.189,
+      "y": 2650.163
     },
     {
       "id": "consort-39-5",
@@ -9373,8 +9373,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1534.058,
-      "y": 2527.163
+      "x": 1624.058,
+      "y": 2650.163
     },
     {
       "id": "person-39-6",
@@ -9393,8 +9393,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1618.679,
-      "y": 2535.364
+      "x": 1708.679,
+      "y": 2661.907
     },
     {
       "id": "consort-39-6",
@@ -9408,8 +9408,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1705.9,
-      "y": 2535.364
+      "x": 1795.9,
+      "y": 2661.907
     },
     {
       "id": "collateral-39-0",
@@ -9421,8 +9421,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1177.124,
-      "y": 2530.864
+      "x": 1247.078,
+      "y": 2657.407
     },
     {
       "id": "person-40-0",
@@ -9441,8 +9441,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 110.782,
-      "y": 2587.75
+      "x": 109.157,
+      "y": 2717.25
     },
     {
       "id": "consort-40-0",
@@ -9456,8 +9456,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 197.403,
-      "y": 2587.75
+      "x": 195.778,
+      "y": 2717.25
     },
     {
       "id": "person-40-1",
@@ -9476,8 +9476,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 778.394,
-      "y": 2590.0
+      "x": 833.757,
+      "y": 2719.5
     },
     {
       "id": "consort-40-1",
@@ -9491,8 +9491,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 691.773,
-      "y": 2590.0
+      "x": 747.136,
+      "y": 2719.5
     },
     {
       "id": "person-40-2",
@@ -9511,8 +9511,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1011.503,
-      "y": 2589.25
+      "x": 1075.53,
+      "y": 2718.75
     },
     {
       "id": "consort-40-2",
@@ -9526,8 +9526,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1098.124,
-      "y": 2589.25
+      "x": 1162.151,
+      "y": 2718.75
     },
     {
       "id": "person-40-3",
@@ -9544,8 +9544,8 @@
       "width": 75,
       "style": "plain",
       "size": 10.6,
-      "x": 1186.667,
-      "y": 2587.75
+      "x": 1273.087,
+      "y": 2717.25
     },
     {
       "id": "consort-40-3",
@@ -9559,8 +9559,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1272.667,
-      "y": 2587.75
+      "x": 1359.087,
+      "y": 2717.25
     },
     {
       "id": "person-40-4",
@@ -9579,8 +9579,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1434.288,
-      "y": 2590.0
+      "x": 1520.708,
+      "y": 2719.5
     },
     {
       "id": "consort-40-4",
@@ -9594,8 +9594,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1347.667,
-      "y": 2590.0
+      "x": 1434.087,
+      "y": 2719.5
     },
     {
       "id": "person-40-5",
@@ -9614,8 +9614,8 @@
       "size": 11.8,
       "detail_position": "outside",
       "detail_size": 9.1,
-      "x": 1615.704,
-      "y": 2590.0
+      "x": 1702.125,
+      "y": 2719.5
     },
     {
       "id": "consort-40-5",
@@ -9629,8 +9629,8 @@
       "style": "plain",
       "size": 9.6,
       "role": "consort",
-      "x": 1706.5,
-      "y": 2590.0
+      "x": 1792.92,
+      "y": 2719.5
     },
     {
       "id": "collateral-40-0",
@@ -9642,8 +9642,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 1522.909,
-      "y": 2590.0
+      "x": 1609.329,
+      "y": 2719.5
     },
     {
       "id": "collateral-40-1",
@@ -9655,8 +9655,8 @@
       "style": "plain",
       "size": 9.3,
       "role": "collateral relative",
-      "x": 612.773,
-      "y": 2590.0
+      "x": 668.136,
+      "y": 2719.5
     }
   ],
   "edges": [
@@ -12315,7 +12315,7 @@
     {
       "node": "person-1-1",
       "dx": 0.0,
-      "dy": -42.3395,
+      "dy": -48.8395,
       "width": 108,
       "label": "HOUSE OF BAYEUX",
       "kind": "pill",
@@ -12325,7 +12325,7 @@
     {
       "node": "person-2-1",
       "dx": 0.0,
-      "dy": -42.3395,
+      "dy": -48.8395,
       "width": 108,
       "label": "HOUSE OF CORVEN",
       "kind": "pill",
@@ -12335,7 +12335,7 @@
     {
       "node": "person-2-3",
       "dx": 0.0,
-      "dy": -47.4915,
+      "dy": -53.9915,
       "width": 108,
       "label": "HOUSE OF DALESHIRE",
       "kind": "pill",
@@ -12345,7 +12345,7 @@
     {
       "node": "person-3-2",
       "dx": 0.0,
-      "dy": -42.3395,
+      "dy": -48.8395,
       "width": 108,
       "label": "HOUSE OF EVEREN",
       "kind": "pill",
@@ -12355,7 +12355,7 @@
     {
       "node": "person-3-4",
       "dx": 0.0,
-      "dy": -42.3395,
+      "dy": -48.8395,
       "width": 108,
       "label": "HOUSE OF FALKEN",
       "kind": "pill",
@@ -12365,7 +12365,7 @@
     {
       "node": "person-4-3",
       "dx": 0.0,
-      "dy": -42.3395,
+      "dy": -48.8395,
       "width": 108,
       "label": "HOUSE OF ROSENE",
       "kind": "pill",
@@ -12438,14 +12438,14 @@
       "kind": "landmark",
       "node": "person-6-0",
       "field": "realm",
-      "width": 146,
+      "width": 112,
       "size": 17,
       "icon": "heraldry",
       "art_size": 32,
-      "art_position": "beside",
+      "art_position": "above",
       "variant": 0,
-      "dx": -60,
-      "dy": -112,
+      "dx": -44,
+      "dy": -160,
       "vertical_radius": 170
     },
     {
@@ -12473,7 +12473,7 @@
       "art_position": "beside",
       "variant": 2,
       "dx": -128,
-      "dy": 124,
+      "dy": 132,
       "vertical_radius": 170
     },
     {
@@ -12486,8 +12486,8 @@
       "art_size": 32,
       "art_position": "beside",
       "variant": 3,
-      "dx": -212,
-      "dy": 48,
+      "dx": -228,
+      "dy": 52,
       "vertical_radius": 170
     },
     {
@@ -12500,15 +12500,15 @@
       "art_size": 32,
       "art_position": "beside",
       "variant": 4,
-      "dx": -204,
-      "dy": 96,
+      "dx": -212,
+      "dy": 100,
       "vertical_radius": 170
     },
     {
       "kind": "landmark",
       "node": "person-35-1",
       "field": "realm",
-      "width": 146,
+      "width": 112,
       "size": 17,
       "icon": "heraldry",
       "art_size": 32,
@@ -12529,15 +12529,15 @@
       "art_position": "beside",
       "variant": 6,
       "dx": -32,
-      "dy": -128,
+      "dy": -132,
       "vertical_radius": 170
     }
   ],
   "insets": [],
   "pattern_id": "usefulcharts-dynastic-genealogy",
   "layout": "authored",
-  "cohort_top": 195,
-  "cohort_bottom": 2590,
+  "cohort_top": 204.75,
+  "cohort_bottom": 2719.5,
   "cohort_gap": 18,
   "partner_gap": 20,
   "cohort_weights": {
@@ -12548,5 +12548,13 @@
     "5": 1.1
   },
   "subtitle": "A founding family, seven houses, and the marriages that joined their branches",
-  "reading_note": "Double lines: partners. Descent starts at the union; dotted descent is uncertain. r. marks a reign; other intervals are lifespans. Vertical spacing is schematic."
+  "reading_note": "Double lines: partners. Descent starts at the union; dotted descent is uncertain. r. marks a reign; other intervals are lifespans. Vertical spacing is schematic.",
+  "cohort_spread": {
+    "1": 1.3499999999999999,
+    "2": 1.2916666666666667,
+    "3": 1.2333333333333334,
+    "4": 1.175,
+    "5": 1.1166666666666667,
+    "6": 1.0583333333333333
+  }
 }

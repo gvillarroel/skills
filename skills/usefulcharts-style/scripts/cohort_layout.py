@@ -125,6 +125,26 @@ def place_cohorts(data, measure, left, right, top, bottom):
                     barycenter=sum(positions[i] for i in linked)/len(linked) if linked else positions[key]
                     desired.append(.6*barycenter+.4*positions[key])
                 positions.update(project(keys,desired))
+    spread=data.get('cohort_spread',{})
+    if not isinstance(spread,dict) or any(str(key) not in {str(row) for row in levels} for key in spread):
+        raise ValueError('Cohort spread must map existing generation rows to expansion factors.')
+    for row in levels:
+        factor=spread.get(str(row),spread.get(row,1))
+        if type(factor) not in (int,float) or not math.isfinite(factor) or not 1<=factor<=2:
+            raise ValueError('Cohort spread factors must be finite numbers from one to two.')
+        keys=rows[row]
+        if len(keys)<2 or factor==1:continue
+        minimum=min(positions[key]-units[key]['width']/2 for key in keys)
+        maximum=max(positions[key]+units[key]['width']/2 for key in keys)
+        anchor=(minimum+maximum)/2;limits=[factor]
+        for key in keys:
+            offset=positions[key]-anchor;half=units[key]['width']/2
+            if offset>0:limits.append((right-half-anchor)/offset)
+            elif offset<0:limits.append((anchor-left-half)/-offset)
+        applied=max(1,min(limits))
+        # Expand complete partnerships after relaxation, preserving order and
+        # internal gaps. The existing page bounds limit the authored preference.
+        for key in keys:positions[key]=anchor+(positions[key]-anchor)*applied
     weights=data.get('cohort_weights',{})
     intervals=[float(weights.get(str(row),weights.get(row,1))) for row in levels[1:]]
     if any(not math.isfinite(w) or w<=0 for w in intervals):raise ValueError('Cohort spacing weights must be finite and positive.')

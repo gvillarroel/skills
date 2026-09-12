@@ -14,7 +14,7 @@ import html
 import math
 from pathlib import Path
 
-from render_chart import Poster, require, number, color, ident, wrap, fmt, attr, text_color, contrast, overlaps, segment_hits, route, compress, KINDS, automatic_lineage, text_width
+from render_chart import Poster, require, number, color, ident, wrap, fmt, attr, text_color, contrast, overlaps, segment_hits, route_regions, compress, KINDS, automatic_lineage, text_width
 from editorial_art import symbol
 from cohort_layout import place_cohorts, compact_cohort_defaults
 from story_layout import pack_stories
@@ -326,27 +326,24 @@ class EditorialPoster(Poster):
                     for port,point in (('source',a),('target',b)):
                         blocked=[nid for nid,(x,y,w,h) in self.boxes.items() if x-7<point[0]<x+w+7 and y-7<point[1]<y+h+7]
                         require(not blocked,f'Relationship {eid} has a crowded {port} port near {", ".join(blocked)}. Reserve at least 18 units at the attachment.')
-                    path=None;last_error=None
                     world=(self.left-12,self.top-26,self.right+12,self.bottom+12)
+                    regions=[]
                     for margin in (30,90,220,600,max(self.w,self.h)):
                         bounds=(max(world[0],min(a[0],b[0])-margin),max(world[1],min(a[1],b[1])-margin),min(world[2],max(a[0],b[0])+margin),min(world[3],max(a[1],b[1])+margin))
-                        nearby=[box for box in self.boxes.values() if box[0]-14<bounds[2] and box[0]+box[2]+14>bounds[0] and box[1]-14<bounds[3] and box[1]+box[3]+14>bounds[1]]
-                        try:
-                            path=compress([start]+route(a,b,nearby,bounds,segments)+[end]);break
-                        except ValueError as error:last_error=error
-                    require(path is not None,f'Cannot route relationship {eid}: {last_error}')
+                        regions.append(bounds)
+                    try:path=compress([start]+route_regions(a,b,list(self.boxes.values()),regions,segments)+[end])
+                    except ValueError as error:raise ValueError(f'Cannot route relationship {eid}: {error}') from error
             if any(segment_hits(p,q,box,4) for p,q in zip(path,path[1:]) for box in context_boxes.values()):
                 obstacles=self.boxes|context_boxes
                 for port,point in (('source',a),('target',b)):
                     blocked=[nid for nid,(x,y,w,h) in obstacles.items() if x-7<point[0]<x+w+7 and y-7<point[1]<y+h+7]
                     require(not blocked,f'Relationship {eid} has a crowded {port} port near {", ".join(blocked)}. Reserve at least 18 units at the attachment.')
-                path=None;last_error=None;world=(self.left-12,self.top-26,self.right+12,self.bottom+12)
+                world=(self.left-12,self.top-26,self.right+12,self.bottom+12);regions=[]
                 for margin in (30,90,220,600,max(self.w,self.h)):
                     bounds=(max(world[0],min(a[0],b[0])-margin),max(world[1],min(a[1],b[1])-margin),min(world[2],max(a[0],b[0])+margin),min(world[3],max(a[1],b[1])+margin))
-                    nearby=[box for box in obstacles.values() if box[0]-14<bounds[2] and box[0]+box[2]+14>bounds[0] and box[1]-14<bounds[3] and box[1]+box[3]+14>bounds[1]]
-                    try:path=compress([start]+route(a,b,nearby,bounds,segments)+[end]);break
-                    except ValueError as error:last_error=error
-                require(path is not None,f'Cannot route relationship {eid} around its context: {last_error}')
+                    regions.append(bounds)
+                try:path=compress([start]+route_regions(a,b,list(obstacles.values()),regions,segments)+[end])
+                except ValueError as error:raise ValueError(f'Cannot route relationship {eid} around its context: {error}') from error
             require(not any(segment_hits(p,q,box,0) for p,q in zip(path,path[1:]) for box in self.boxes.values()),f'Relationship {eid} crosses a node, including its own source or target.')
             group=edge.get('group',self.nodes[target]['group']);paint=self.groups[group]['color']
             width=edge.get('weight',2.8 if kind in ('branch','descent') else 1.8)

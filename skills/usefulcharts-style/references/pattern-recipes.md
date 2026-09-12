@@ -17,6 +17,8 @@ Input: `design: editorial`, `mode: genealogy`; nodes with stable IDs and categor
 
 For territorial orientation inside a dense family, follow [source-bound landmarks](context-landmarks.md). Bind selected captions to actual node fields and keep original fictional devices consistent with source categories. Compose them near their own branch and review nearby competing colors; full-path clearance alone does not establish the right association.
 
+For source-supported figures that need stronger prominence or an overly tapered opening, follow [focal people](focal-people.md). Measure a limited set of larger portrait/name groups and optionally expand early complete family units with `cohort_spread`. Preserve all dates and memberships, refit the original context bindings, and judge the full page at equal display width.
+
 Validation: run `render_chart.py` and `audit_chart.py`; inspect every edge touching two categories. Pitfalls: repeated names without unique IDs; multiple marriages overlapping on one row; descendants connected to a sibling bar as if it were a spouse; crossing lines mistaken for junctions. Use aliases with an explicit same-person note for a deliberately repeated person; never silently duplicate identity.
 
 ## Branching institutional or idea history

@@ -1,0 +1,884 @@
+{
+  "status": "validating",
+  "runs": [
+    {
+      "id": "usefulcharts-v24-emphasis-contract-20260912-spark-1",
+      "case": "contract-smoke",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 80,
+        "payloadSha256": "eacada1f8275db839a2c3f6ae4da60af9366b14fe3ebd4c6be18cdccc1d47067"
+      },
+      "prompt_sha256": "ffe4f04e07bd87f9f899ab04809e224b67258da8cdaac17497f40594d1f5e4f1",
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/placement.json",
+        "result/poster.svg",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T07:47:37.063745+00:00",
+        "finishedAtUtc": "2026-09-12T07:47:56.392560+00:00",
+        "durationSeconds": 19.329,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_preserved": true,
+        "placement": "pass",
+        "independent_browser": "pass"
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "tool_errors": [],
+      "invalid_event_lines": [],
+      "supported_image_results": [],
+      "visual_review": "Command control only."
+    },
+    {
+      "id": "usefulcharts-v24-family-emphasis-20260912-gpt55-1",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 80,
+        "payloadSha256": "eacada1f8275db839a2c3f6ae4da60af9366b14fe3ebd4c6be18cdccc1d47067"
+      },
+      "prompt_sha256": "d0c886b30f6ed5f3ca852778c970a486e94fcc1994aa5e6224748c657e9e5670",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T07:47:36.350740+00:00",
+        "finishedAtUtc": "2026-09-12T07:50:26.503413+00:00",
+        "durationSeconds": 170.153,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1528.64 1291.58",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 21,
+            "position": {
+              "x": 668.6699829101562,
+              "y": 291.54998779296875,
+              "w": 158,
+              "h": 60.400001525878906
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 21,
+            "position": {
+              "x": 978.9199829101562,
+              "y": 493.0199890136719,
+              "w": 145,
+              "h": 60.400001525878906
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 304.260009765625,
+              "y": 898.02001953125,
+              "w": 175,
+              "h": 58
+            }
+          }
+        ],
+        "focal_people": [
+          {
+            "node": "p01",
+            "icon": "museum-75374",
+            "visible_image": true,
+            "visible_max_type": 21,
+            "ordinary_median_type": 18,
+            "icon_width": 50,
+            "passed": true
+          },
+          {
+            "node": "p05",
+            "icon": "museum-105600",
+            "visible_image": true,
+            "visible_max_type": 19,
+            "ordinary_median_type": 18,
+            "icon_width": 46,
+            "passed": true
+          },
+          {
+            "node": "p11",
+            "icon": "museum-31233",
+            "visible_image": true,
+            "visible_max_type": 19,
+            "ordinary_median_type": 18,
+            "icon_width": 46,
+            "passed": true
+          }
+        ],
+        "page_notes": [
+          "Synthetic fictional records; museum portraits are public-domain decorative samples, not likenesses. Double lines join partners; descent starts at the parental union. Dotted line marks uncertain descent from Henrik to Xavier; spacing and devices are schematic fiction."
+        ]
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/focal-people.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/assets/portraits/provenance.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "result/poster.png",
+        "result/source.json"
+      ],
+      "tool_errors": [],
+      "invalid_event_lines": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 199940
+        }
+      ],
+      "visual_review": {
+        "reviewer": "Primary author, direct unblinded PNG inspection",
+        "scope": "Compact naturalistic development case; not a dense-reference parity test",
+        "status": "accepted-with-residual-differences",
+        "visible_strengths": [
+          "Ada, Elin and Klara have readable portraits and larger names without hiding their spouses.",
+          "All three serif place captions belong visibly to the correct nearby person and house.",
+          "Names, dates, partnerships and the uncertain connection are readable."
+        ],
+        "residual_differences": [
+          "The central cross-family corridors remain long and dominate several gaps.",
+          "The opening is wide and the lower leaf spacing is still schematic.",
+          "Dark principal panels and white labels depart from the predominantly lighter panels and black type in the dense reference."
+        ],
+        "visual_parity": "not-established"
+      }
+    },
+    {
+      "id": "usefulcharts-v24-family-emphasis-20260912-gpt55-2",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 80,
+        "payloadSha256": "eacada1f8275db839a2c3f6ae4da60af9366b14fe3ebd4c6be18cdccc1d47067"
+      },
+      "prompt_sha256": "d0c886b30f6ed5f3ca852778c970a486e94fcc1994aa5e6224748c657e9e5670",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T07:47:36.411994+00:00",
+        "finishedAtUtc": "2026-09-12T07:50:23.122512+00:00",
+        "durationSeconds": 166.711,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1525.64 1281.05",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 19,
+            "position": {
+              "x": 608.6799926757811,
+              "y": 292.57998657226557,
+              "w": 150,
+              "h": 55.599998474121094
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 19,
+            "position": {
+              "x": 521.9600219726561,
+              "y": 491.7699890136718,
+              "w": 142,
+              "h": 55.59999847412104
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 18,
+            "position": {
+              "x": 1128.3599853515623,
+              "y": 894.4899902343749,
+              "w": 170,
+              "h": 53.20000076293945
+            }
+          }
+        ],
+        "focal_people": [
+          {
+            "node": "p01",
+            "icon": "museum-105600",
+            "visible_image": true,
+            "visible_max_type": 20,
+            "ordinary_median_type": 18,
+            "icon_width": 48,
+            "passed": true
+          },
+          {
+            "node": "p05",
+            "icon": "museum-75374",
+            "visible_image": true,
+            "visible_max_type": 20,
+            "ordinary_median_type": 18,
+            "icon_width": 48,
+            "passed": true
+          },
+          {
+            "node": "p11",
+            "icon": "museum-31233",
+            "visible_image": true,
+            "visible_max_type": 20,
+            "ordinary_median_type": 18,
+            "icon_width": 48,
+            "passed": true
+          }
+        ],
+        "page_notes": [
+          "Synthetic fictional records; museum portrait samples are public-domain decorations, not likenesses. Double lines mark partnerships; descent begins at union dots. Dotted line marks uncertain Henrik\u2013Xavier descent; spacing and heraldic devices are fictional/schematic."
+        ]
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/source.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/focal-people.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/portraits/provenance.json",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "result/poster.png"
+      ],
+      "tool_errors": [],
+      "invalid_event_lines": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 195140
+        }
+      ],
+      "visual_review": {
+        "reviewer": "Primary author, direct unblinded PNG inspection",
+        "scope": "Compact naturalistic development case; not a dense-reference parity test",
+        "status": "accepted-with-residual-differences",
+        "visible_strengths": [
+          "The three selected people form clear image-name groups with subordinate dates.",
+          "The Cedar archive and Alder school retain distinct local ownership even though their people share a house.",
+          "No clipped label or visibly covered portrait appears in the final page."
+        ],
+        "residual_differences": [
+          "The second and third generation still have broad connector shelves.",
+          "Several lower routes wind around other branches and are slower to follow.",
+          "Dark fills with white names are readable but differ from the light-panel reference treatment."
+        ],
+        "visual_parity": "not-established"
+      }
+    },
+    {
+      "id": "usefulcharts-v24-family-emphasis-20260912-gpt55-3",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 80,
+        "payloadSha256": "eacada1f8275db839a2c3f6ae4da60af9366b14fe3ebd4c6be18cdccc1d47067"
+      },
+      "prompt_sha256": "d0c886b30f6ed5f3ca852778c970a486e94fcc1994aa5e6224748c657e9e5670",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T07:47:36.708315+00:00",
+        "finishedAtUtc": "2026-09-12T07:50:37.222866+00:00",
+        "durationSeconds": 180.515,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1513.64 1287.32",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 593.8300170898438,
+              "y": 299.25,
+              "w": 170,
+              "h": 58
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 509.9599914550781,
+              "y": 501.3599853515625,
+              "w": 160,
+              "h": 58
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 19,
+            "position": {
+              "x": 1102.5899658203125,
+              "y": 904.6199951171875,
+              "w": 190,
+              "h": 55.599998474121094
+            }
+          }
+        ],
+        "focal_people": [
+          {
+            "node": "p01",
+            "icon": "museum-75374",
+            "visible_image": true,
+            "visible_max_type": 23,
+            "ordinary_median_type": 18,
+            "icon_width": 54,
+            "passed": true
+          },
+          {
+            "node": "p05",
+            "icon": "museum-31233",
+            "visible_image": true,
+            "visible_max_type": 21,
+            "ordinary_median_type": 18,
+            "icon_width": 48,
+            "passed": true
+          },
+          {
+            "node": "p11",
+            "icon": "museum-105945",
+            "visible_image": true,
+            "visible_max_type": 21,
+            "ordinary_median_type": 18,
+            "icon_width": 48,
+            "passed": true
+          }
+        ],
+        "page_notes": [
+          "Synthetic fictional records: all dates, houses and relationships are invented demonstration data. Double lines join partners; descent begins at the union circle. Dotted line marks uncertain descent from Henrik to Xavier, not u16; spacing is schematic. Devices are fictional; Art",
+          "Institute samples decorate Ada, Elin and Klara only, not likenesses."
+        ]
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "result/poster.png",
+        "result/source.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/focal-people.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/portraits/provenance.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "result/browser.json"
+      ],
+      "tool_errors": [
+        "result/browser.json\nresult/layout.json\nresult/poster.html\nresult/poster.png\nresult/poster.svg\nresult/source.json\n  File \"<stdin>\", line 3\r\n    found={str(p).replace('\\','/') for p in pathlib.Path('result').iterdir() if p.is_file()}\r\n                                                                ^\r\nSyntaxError: unterminated string literal (detected at line 3)\r\n\n\nCommand exited with code 1"
+      ],
+      "invalid_event_lines": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 205528
+        },
+        {
+          "mime": "image/png",
+          "encoded_bytes": 205608
+        }
+      ],
+      "visual_review": {
+        "reviewer": "Primary author, direct unblinded PNG inspection",
+        "scope": "Compact naturalistic development case; not a dense-reference parity test",
+        "status": "artifact-accepted-strict-run-failed",
+        "visible_strengths": [
+          "Ada has the strongest focal scale, while Elin and Klara remain distinct from ordinary names.",
+          "The three bound captions and decorative devices are readable and local.",
+          "The dotted Henrik-to-Xavier relationship and unknown birth remain visible."
+        ],
+        "residual_differences": [
+          "Long middle connectors and uniform secondary panels preserve a schematic appearance.",
+          "Dark fills and white names differ from the dense reference palette treatment.",
+          "The printed reading note exposes the internal union ID u16, an editorial defect."
+        ],
+        "failure_classification": "agent",
+        "strict_failure": "An auxiliary post-render file check used an incorrectly escaped backslash in Python. The generated artifact passes the independent contract, but the recorded tool error remains a strict failure.",
+        "visual_parity": "not-established"
+      }
+    }
+  ],
+  "local_development_attempts": [
+    {
+      "id": "founders-44",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 44.0,
+      "spread": 1.35,
+      "scope": "founders",
+      "page_scale": 1.0,
+      "error": "Cannot route relationship marriage-6-1-person-7-2: No clear connector corridor. Separate nodes or increase the page size.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "founders-44-corridors",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 44.0,
+      "spread": 1.35,
+      "scope": "founders",
+      "page_scale": 1.0,
+      "error": "No local pocket for person-6-0.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "founders-44-formats",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 44.0,
+      "spread": 1.35,
+      "scope": "founders",
+      "page_scale": 1.0,
+      "error": "No readable format fits person-6-0.realm; [{'format': {}, 'error': 'No local pocket for person-6-0.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.'}, {'format': {'width': 112, 'art_position': 'above'}, 'error': 'No local pocket for person-6-0.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.'}, {'format': {'width': 112, 'art_position': 'beside'}, 'error': 'No local pocket for person-6-0.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.'}]",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "founders-46",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 46.0,
+      "spread": 1.35,
+      "scope": "founders",
+      "page_scale": 1.0,
+      "error": "The full genealogy needs 2398.99 vertical units; only 2395.00 are available.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "later-42",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 42.0,
+      "spread": 1.35,
+      "scope": "later",
+      "page_scale": 1.0,
+      "error": "Cannot route relationship marriage-27-1-collateral-28-0: No clear connector corridor. Separate nodes or increase the page size.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "portraits-40-corridors",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 40.0,
+      "spread": 1.35,
+      "scope": "all",
+      "page_scale": 1.02,
+      "error": "No local pocket for person-6-0.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "portraits-40-formats",
+      "status": "pass",
+      "before": "b910a022",
+      "portrait": 40.0,
+      "spread": 1.35,
+      "scope": "all",
+      "page_scale": 1.02,
+      "error": null,
+      "all_source_facts_preserved": true
+    },
+    {
+      "id": "portraits-40-room",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 40.0,
+      "spread": 1.35,
+      "scope": "all",
+      "page_scale": 1.02,
+      "error": "Cannot route relationship marriage-27-1-collateral-28-0: No clear connector corridor. Separate nodes or increase the page size.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "portraits-40-spread",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 40.0,
+      "spread": 1.35,
+      "scope": "all",
+      "page_scale": 1.0,
+      "error": "The full genealogy needs 2409.49 vertical units; only 2395.00 are available.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "portraits-46",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 46.0,
+      "spread": 1.0,
+      "scope": null,
+      "page_scale": null,
+      "error": "The full genealogy needs 2484.83 vertical units; only 2395.00 are available.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "portraits-46-corridors",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 46.0,
+      "spread": 1.35,
+      "scope": "all",
+      "page_scale": 1.05,
+      "error": "No local pocket for person-6-0.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "portraits-46-formats",
+      "status": "pass",
+      "before": "b910a022",
+      "portrait": 46.0,
+      "spread": 1.35,
+      "scope": "all",
+      "page_scale": 1.05,
+      "error": null,
+      "all_source_facts_preserved": true
+    },
+    {
+      "id": "portraits-46-room",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 46.0,
+      "spread": 1.35,
+      "scope": "all",
+      "page_scale": 1.05,
+      "error": "Cannot route relationship marriage-27-1-collateral-28-0: No clear connector corridor. Separate nodes or increase the page size.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "portraits-46-room-debug",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 46.0,
+      "spread": 1.35,
+      "scope": "all",
+      "page_scale": 1.05,
+      "error": "Cannot route relationship marriage-27-1-collateral-28-0: No clear connector corridor. Separate nodes or increase the page size.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "portraits-46-spread",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 46.0,
+      "spread": 1.35,
+      "scope": null,
+      "page_scale": null,
+      "error": "The full genealogy needs 2458.96 vertical units; only 2395.00 are available.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "portraits-52",
+      "status": "fail",
+      "before": "b910a022",
+      "portrait": 52.0,
+      "spread": 1.0,
+      "scope": null,
+      "page_scale": null,
+      "error": "The full genealogy needs 2537.08 vertical units; only 2395.00 are available.",
+      "all_source_facts_preserved": null
+    }
+  ],
+  "final_facts": {
+    "status": "pass",
+    "before_revision": "b910a022",
+    "failures": [],
+    "nodes": 561,
+    "unions": 261,
+    "relationships": 323,
+    "source_sha256": "ff07689ac54f41a50f0ed71c444df136634ec5e089f620e13637dd9f88cd1e85",
+    "all_nonvisual_node_fields_preserved": true,
+    "additional_source_bound_landmarks": 0,
+    "changed_fields": [
+      "art_position",
+      "cohort_bottom",
+      "cohort_spread",
+      "cohort_top",
+      "cohort_weights",
+      "detail_position",
+      "detail_size",
+      "dx",
+      "dy",
+      "height",
+      "icon_width",
+      "layout",
+      "size",
+      "width",
+      "x",
+      "y"
+    ]
+  },
+  "final_murals": [
+    {
+      "id": "aurelian-families",
+      "svg_sha256": "61d7a11d5fd5dd3c424bb8cece96d9278c30dd1c6ac6ae4bbab391540eab03ac",
+      "unchanged_from_before": false,
+      "canvas": [
+        1890,
+        2835
+      ],
+      "browser_status": "pass",
+      "browser_findings": [],
+      "mutations_detected": 19
+    },
+    {
+      "id": "atlas-of-inquiry",
+      "svg_sha256": "92fac6718d8484e9d8666b92720d99653b68e1887e00499db450da707a3ed5f6",
+      "unchanged_from_before": true,
+      "canvas": [
+        1800,
+        2700
+      ],
+      "browser_status": "pass",
+      "browser_findings": [],
+      "mutations_detected": 9
+    },
+    {
+      "id": "five-regional-histories",
+      "svg_sha256": "d91311f0f1882f066f1762aa34cf46ac7d5bcb7fa17b3635871a2236d678d0c3",
+      "unchanged_from_before": true,
+      "canvas": [
+        1800,
+        2400
+      ],
+      "browser_status": "pass",
+      "browser_findings": [],
+      "mutations_detected": 14
+    }
+  ],
+  "prototype_retention": "These exploratory attempts used an evolving project driver and router. Preserve their outcomes, not a claim of frozen per-attempt reproducibility. Composition-stage files omit required captions and never count as final passes.",
+  "evaluation_scope": "Development reuse of the full Silver Vale family, with three requested focal people. Not a sealed holdout or a substitute for the dense three-family target.",
+  "visual_parity": "Not established. Preserve dense genealogy, institutional lineage and chronology requirements and previous unresolved findings."
+}

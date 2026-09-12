@@ -50,6 +50,17 @@ def result(data):
 
 
 class ChartTests(unittest.TestCase):
+    def test_narrow_corridor_remains_reachable_without_reducing_clearance(self):
+        # Reduced from a full genealogy: the previous visibility grid could not
+        # leave the parental gap, although a clear route existed below it.
+        boxes=[(291.385,505.7635,76.242,36.299),(287.44,560.0625,76.242,36.299),
+               (383.682,561.536,57,33.352),(364.842,615.835,57,33.352)]
+        start=(373.682,588.212);end=(477.342,643.682)
+        path=renderer.route(start,end,boxes,(283.682,498.212,567.342,733.682),[])
+        self.assertEqual(path[0],start);self.assertEqual(path[-1],end)
+        self.assertFalse(any(renderer.segment_hits(a,b,box,7) for a,b in zip(path,path[1:]) for box in boxes))
+        self.assertLess(sum(abs(a[0]-b[0])+abs(a[1]-b[1]) for a,b in zip(path,path[1:])),180)
+
     def test_exact_semantic_inventory_and_union_origin(self):
         root,meta,report=result(graph())
         self.assertEqual(set(meta["node_ids"]),{"a","b","c","d","e"})

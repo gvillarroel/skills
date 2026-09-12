@@ -151,7 +151,7 @@ def proper_cross(a, b, c, d):
     return False
 
 
-def route(start, end, boxes, bounds, existing):
+def route(start, end, boxes, bounds, existing, *, _grid_margin=14, _retry_narrow=True):
     """Sparse visibility-grid A* with obstacle rejection and crossing penalties."""
     def clear(a, b):
         return not any(segment_hits(a, b, box, 7) for box in boxes)
@@ -177,8 +177,11 @@ def route(start, end, boxes, bounds, existing):
     xs = {start[0], end[0], bounds[0], bounds[2]}
     ys = {start[1], end[1], bounds[1], bounds[3], mid}
     for x, y, w, h in boxes:
-        xs.update((x - 14, x + w + 14))
-        ys.update((y - 14, y + h + 14))
+        # Preserve broad corridors first. An eight-unit fallback exposes legal
+        # narrow passages while retaining the same seven-unit clearance.
+        for offset in {_grid_margin,14}:
+            xs.update((x-offset,x+w+offset))
+            ys.update((y-offset,y+h+offset))
     xs = sorted(x for x in xs if bounds[0] <= x <= bounds[2])
     ys = sorted(y for y in ys if bounds[1] <= y <= bounds[3])
     origin = (xs.index(start[0]), ys.index(start[1]), -1)
@@ -218,7 +221,21 @@ def route(start, end, boxes, bounds, existing):
             parent[new_state] = state
             estimate = abs(next_point[0] - end[0]) + abs(next_point[1] - end[1])
             heapq.heappush(queue, (new_cost + estimate, new_cost, new_state))
+    if _retry_narrow:
+        return route(start,end,boxes,bounds,existing,_grid_margin=8,_retry_narrow=False)
     raise ValueError("No clear connector corridor. Separate nodes or increase the page size.")
+
+
+def route_regions(start,end,boxes,regions,existing):
+    """Try all broad search regions before using a closer visibility grid."""
+    last_error=None
+    for grid in (14,8):
+        for bounds in regions:
+            nearby=[box for box in boxes if box[0]-14<bounds[2] and box[0]+box[2]+14>bounds[0]
+                    and box[1]-14<bounds[3] and box[1]+box[3]+14>bounds[1]]
+            try:return route(start,end,nearby,bounds,existing,_grid_margin=grid,_retry_narrow=False)
+            except ValueError as error:last_error=error
+    raise ValueError(str(last_error) if last_error else 'No connector search regions were supplied.')
 
 
 def automatic_lineage(data):

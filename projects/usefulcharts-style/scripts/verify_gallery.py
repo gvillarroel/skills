@@ -36,7 +36,8 @@ def main():
             page.locator("#plus").click();zoom=page.locator("#paper").bounding_box()["width"]
             assert zoom>initial
             page.locator("#full").click();full=page.locator("#paper").bounding_box()["width"]
-            assert full==1800
+            expected_width=json.loads((args.gallery/f'{name}.json').read_text(encoding='utf-8'))['width']
+            assert full==expected_width
             # A portrait fitted into a square SVG legitimately has a narrower
             # painted bounding box. Compare the transformed viewport, then verify that
             # the painted artwork stays within it; do not demand distortion.

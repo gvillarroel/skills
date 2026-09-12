@@ -28,7 +28,7 @@ def main():
         if before.get(key)!=after.get(key):failures.append(f'Changed {key}')
     if after['source_note'] not in (before['source_note'],before['source_note']+' Heraldic devices are fictional.'):
         failures.append('Changed source provenance beyond the fictional-device disclosure')
-    def annotations(data):return [{k:v for k,v in a.items() if k not in {'dx','dy'}} for a in data['annotations']]
+    def annotations(data):return [{k:v for k,v in a.items() if k not in {'dx','dy','width','art_position'}} for a in data['annotations']]
     old=annotations(before);new=annotations(after)
     if old!=new[:len(old)]:failures.append('Changed existing annotation facts')
     for annotation in new[len(old):]:
@@ -43,7 +43,7 @@ def main():
         source_sha256=hashlib.sha256((root/name).read_bytes()).hexdigest(),
         all_nonvisual_node_fields_preserved=True if not failures else None,
         additional_source_bound_landmarks=len(new)-len(old),
-        changed_fields=sorted(visual|{'layout','dx','dy','cohort_top','cohort_bottom','cohort_weights'}))
+        changed_fields=sorted(visual|{'layout','dx','dy','art_position','cohort_top','cohort_bottom','cohort_weights','cohort_spread'}))
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report));return 0 if not failures else 1
 

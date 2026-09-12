@@ -33,6 +33,30 @@ def unit(row,left=0,right=40,height=20):
 
 
 class BaselineTests(unittest.TestCase):
+    def test_authored_opening_spread_keeps_facts_and_partner_gap(self):
+        from cohort_layout import place_cohorts
+        from editorial_poster import measured_content
+        data=family()
+        for node in data['nodes']:node['width']=120
+        measure=lambda node,width:measured_content(node,width,18)
+        before=place_cohorts(data,measure,50,500,200,600)
+        data['cohort_spread']={'1':1.8};frozen=copy.deepcopy(data)
+        after=place_cohorts(data,measure,50,500,200,600)
+        self.assertEqual(data,frozen)
+        old={n['id']:n for n in before};new={n['id']:n for n in after}
+        self.assertGreater(max(n['x'] for n in after if n['row']==1)-min(n['x'] for n in after if n['row']==1),
+            max(n['x'] for n in before if n['row']==1)-min(n['x'] for n in before if n['row']==1))
+        self.assertEqual(new['p2']['x']-new['p1']['x'],old['p2']['x']-old['p1']['x'])
+        for node in after:
+            self.assertEqual({k:v for k,v in node.items() if k!='x'},{k:v for k,v in old[node['id']].items() if k!='x'})
+            self.assertGreaterEqual(node['x']-node.get('width',82)/2,50)
+            self.assertLessEqual(node['x']+node.get('width',82)/2,500)
+
+    def test_opening_spread_rejects_unknown_rows_and_invalid_factors(self):
+        for spread in ({'9':1.2},{'1':.5},{'1':3},{'1':float('nan')},{'1':True},[]):
+            data=family();data['cohort_spread']=spread
+            with self.subTest(spread=spread),self.assertRaisesRegex(ValueError,'Cohort spread'):space_branches(data)
+
     def test_reserved_context_keeps_records_and_routes_around_caption(self):
         data=family();data['nodes'][2]['place']='Alder school'
         data['annotations']=[dict(kind='landmark',node='c1',field='place',width=160,size=20,icon='heraldry',art_size=32,art_position='beside')]

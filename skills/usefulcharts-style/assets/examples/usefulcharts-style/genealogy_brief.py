@@ -112,22 +112,27 @@ def build_genealogy(base):
         dict(node='person-0-0',dx=270,dy=3,width=195,label='A thousand years\nof recorded descent',kind='heading',icon='crown',group='g2',size=18)])
     # The source records above determine hierarchy. Compact nameplates and
     # complete date envelopes are composed before local baseline fitting.
-    d.update(cohort_top=195,cohort_bottom=2590,cohort_weights={str(row):1.1 for row in range(1,6)})
+    d.update(width=1890,height=2835,cohort_top=204.75,cohort_bottom=2719.5,
+        cohort_weights={str(row):1.1 for row in range(1,6)},
+        cohort_spread={str(row):1+.35*(7-row)/6 for row in range(1,7)})
     for node in d['nodes']:
         if node.get('style')=='plain':continue
         node.update(detail_position='outside',size=13.5 if node['row']==0 else 11.8,detail_size=9.1)
         if node.get('icon'):node['icon_width']=36 if node['row']==0 else 33
-        node['width']=max(58,text_width(node['label'],node['size'],True)+14+node.get('icon_width',0),
+        if node.get('icon'):
+            node['size']=15.5 if node['row']==0 else 13.3
+            node['icon_width']=52 if node['row']==0 else 46
+        node['width']=max(58,text_width(node['label'],node['size'],True)+(16 if node.get('icon') else 14)+node.get('icon_width',0),
             text_width(node.get('detail',''),node['detail_size'])+16)
     for annotation in d['annotations']:
         if annotation.get('kind')=='heading':annotation['dy']=35
     resolved,_=space_branches(d,date_scale=3,local_labels=True)
     # Source-bound territorial orientation points, chosen after whole-page and
     # detail review. They are not additional events or invented relationships.
-    landmarks=[('person-6-0',-60,-112),('person-11-1',120,-108),('person-19-3',-128,124),
-        ('person-28-2',-212,48),('person-33-1',-204,96),('person-35-1',-208,116),('person-27-7',-32,-128)]
+    landmarks=[('person-6-0',-44,-160),('person-11-1',120,-108),('person-19-3',-128,132),
+        ('person-28-2',-228,52),('person-33-1',-212,100),('person-35-1',-208,116),('person-27-7',-32,-132)]
     for variant,(node,dx,dy) in enumerate(landmarks):
-        resolved['annotations'].append(dict(kind='landmark',node=node,field='realm',width=146,size=17,
-            icon='heraldry',art_size=32,art_position='beside',variant=variant,dx=dx,dy=dy,vertical_radius=170))
+        resolved['annotations'].append(dict(kind='landmark',node=node,field='realm',width=112 if variant in (0,5) else 146,size=17,
+            icon='heraldry',art_size=32,art_position='above' if variant==0 else 'beside',variant=variant,dx=dx,dy=dy,vertical_radius=170))
     resolved['source_note']+=' Heraldic devices are fictional.'
     return resolved

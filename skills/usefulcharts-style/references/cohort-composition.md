@@ -18,6 +18,7 @@ Optional page controls:
 | `cohort_gap` | Minimum space between family units; default 22, minimum 5. |
 | `partner_gap` | Empty space between partners; default 24, minimum 16. |
 | `cohort_weights` | Object from row numbers to positive spacing weights before those rows. Reserve extra space for a consequential transition or family label. This is schematic spacing, not elapsed time. |
+| `cohort_spread` | Optional object from existing rows to expansion factors from 1 through 2. Expand whole family units within the existing page, preserving order and partner gaps. Use after a visible opening-composition problem; see [focal people](focal-people.md). |
 
 For 31–100 people, use [local family baselines](branch-baselines.md) with a data-first brief. Omit dimensions, generation bounds, node widths, fonts and repetitive style assignments for the initial preview; the helper measures a readable page and supplies varied structural treatments. For a substantial mural, set widths suited to the names and a page large enough for the busiest generation. A dense 1800 × 2700 poster can carry many generations, provided measured text and connector gutters fit. If a cohort exceeds the available width, widen the canvas or arrange that region explicitly. Never remove people to pass the check. Explicit dimensions override measured defaults and can recreate excessive blank space.
 
