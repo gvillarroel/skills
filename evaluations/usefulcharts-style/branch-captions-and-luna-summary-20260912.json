@@ -1960,5 +1960,86 @@
     "Persistent broad families and long influence paths in the medium poster.",
     "The dense left illustration cluster and repeated ordinary names weaken local hierarchy.",
     "The full institutional mural, repeated genealogy panels and regional chronology still need composition review beyond this medium-case feature."
-  ]
+  ],
+  "publication": {
+    "status": "pass",
+    "commit": "10ee9511a79bb65e7824eb48c22d191a0912cb02",
+    "workflow": {
+      "conclusion": "success",
+      "headSha": "10ee9511a79bb65e7824eb48c22d191a0912cb02",
+      "status": "completed",
+      "url": "https://github.com/gvillarroel/skills/actions/runs/34706815971"
+    },
+    "url": "https://gvillarroel.github.io/skills/examples/usefulcharts-style/",
+    "files": [
+      {
+        "file": "index.html",
+        "status": 200,
+        "bytes": 4239,
+        "sha256": "00c0624a0ef87404e01affb77d00250581b1d4a062546781776600709f839dba"
+      },
+      {
+        "file": "manifest.json",
+        "status": 200,
+        "bytes": 772,
+        "sha256": "edcae2f074e1c4331e9b3b3492bdbadd43fc611901621a9223bf7a61c53a4a6b"
+      },
+      {
+        "file": "aurelian-families.json",
+        "status": 200,
+        "bytes": 262154,
+        "sha256": "44dcdffdec447495b8b437e11067b8f71920a87692d00b18c742a977048f92e5"
+      },
+      {
+        "file": "aurelian-families.svg",
+        "status": 200,
+        "bytes": 1408673,
+        "sha256": "c6f50c05488c686a2cabba2c84cce9dece1eabc4253df67181f5b3304d05c02c"
+      },
+      {
+        "file": "aurelian-families.html",
+        "status": 200,
+        "bytes": 1410146,
+        "sha256": "7d91ce03e4a25c9aacd61533bd9a928baa977eb9c6cb80aed6cba558a2db3ee5"
+      },
+      {
+        "file": "atlas-of-inquiry.json",
+        "status": 200,
+        "bytes": 118606,
+        "sha256": "24b8a6951f74b742e27c60474d3515d03aea3993be9d75fe40ddf97623e37a97"
+      },
+      {
+        "file": "atlas-of-inquiry.svg",
+        "status": 200,
+        "bytes": 2568757,
+        "sha256": "61233a04d0c1e8fb9f5d676ad947d9a8adb8926e22260615128fd346f46e962f"
+      },
+      {
+        "file": "atlas-of-inquiry.html",
+        "status": 200,
+        "bytes": 2570220,
+        "sha256": "f178c7547319c738918166117ea701f6b673a2ce5834694fef4530551bf83d8a"
+      },
+      {
+        "file": "five-regional-histories.json",
+        "status": 200,
+        "bytes": 48882,
+        "sha256": "017d0f829367d33407680af1c0ee7d0d16362ed21b6d01578f52b7b010f5b9f0"
+      },
+      {
+        "file": "five-regional-histories.svg",
+        "status": 200,
+        "bytes": 2389153,
+        "sha256": "4ef60ed3fb88be1244a829c1e7acce50e816188a46e606c03817dfebb3bcf2b0"
+      },
+      {
+        "file": "five-regional-histories.html",
+        "status": 200,
+        "bytes": 2390614,
+        "sha256": "d2bd45545be8d3cf1b27dfb2d655fe7a1eb218723e29798d709cc590a8cfe05b"
+      }
+    ],
+    "main_catalog_link": true,
+    "transformations": "The standard Pages build adds gallery metadata/favicon and normalizes trailing whitespace and line endings. Compare the complete expected published bytes after those documented transforms."
+  }
 }
