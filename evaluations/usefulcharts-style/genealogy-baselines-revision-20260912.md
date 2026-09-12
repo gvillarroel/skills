@@ -95,3 +95,11 @@ uv run --script scripts/summarize-pi-json-events.py evaluations/runs/<fresh-fami
 ```
 
 Release gates: pattern IDs, skill structure, independence, payload, quick skill validation, Pages build, local synchronization, responsive gallery verification and diff review. Keep the skill `validating`: remaining dense narrative hierarchy, long institutional corridors, timeline lane regularity and previously recorded unresolved-source reliability gaps are not closed by this revision.
+
+## Publication verification
+
+Implementation commit `3ebb1fff158e4d8fa3a62ddc9599140c03eca8c1` is pushed to `main` and passes [Pages workflow 34676903143](https://github.com/gvillarroel/skills/actions/runs/34676903143). The public gallery, manifest and all nine poster/viewer/source files match the committed sources after the documented standard Pages metadata and whitespace transforms. The main examples catalog contains the stable example-set link. The revised [genealogy poster](https://gvillarroel.github.io/skills/examples/usefulcharts-style/aurelian-families.html) and [three-poster gallery](https://gvillarroel.github.io/skills/examples/usefulcharts-style/) retain their existing routes.
+
+```powershell
+uv run --script projects/usefulcharts-style/scripts/verify_publication.py --commit 3ebb1fff158e4d8fa3a62ddc9599140c03eca8c1 --workflow 34676903143 --report projects/usefulcharts-style/artifacts/reviews/genealogy-baselines-publication-verification.json
+```
