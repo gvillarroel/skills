@@ -35,6 +35,7 @@ AUDIT = r"""() => {
   const nodes=[...svg.querySelectorAll('[data-node-id]')].map(el=>({id:el.dataset.nodeId,box:bounds(el.querySelector('[data-node-box]'))}));
   const byId=Object.fromEntries(nodes.map(n=>[n.id,n]));
   const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,d:el.getAttribute('d'),curved:el.dataset.routeStyle==='rounded'}));
+  const events=[...svg.querySelectorAll('[data-event-id]')].map(el=>({id:el.dataset.eventId,year:Number(el.dataset.year),origin_y:Number(el.dataset.originY),text:el.textContent}));
   const unions=[...svg.querySelectorAll('[data-union-id]')].map(el=>({id:el.dataset.unionId,d:el.getAttribute('d')}));
   const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
   const setEqual=(a,b)=>a.length===b.length && [...a].sort().join('\n')===[...b].sort().join('\n');
@@ -71,7 +72,25 @@ AUDIT = r"""() => {
     const origin=byId[e.source]?.box,first=p[0];
     if(origin&&(first[0]<origin.x+5||first[0]>origin.x+origin.w-5||Math.abs(first[1]-origin.y-origin.h)>.1))findings.push({type:'detached-source',id:e.id});
   }
-  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,nodes,edges,unions,texts,metadata:meta};
+  const clippedArea=(poly,r)=>{
+    let out=poly;
+    for(const [axis,bound,greater] of [[0,r.x,true],[0,r.x+r.w,false],[1,r.y,true],[1,r.y+r.h,false]]){
+      const input=out;out=[];if(!input.length)break;
+      const inside=p=>greater?p[axis]>=bound:p[axis]<=bound;
+      for(let i=0;i<input.length;i++){
+        const a=input[i],b=input[(i+1)%input.length],ai=inside(a),bi=inside(b);
+        if(ai)out.push(a);
+        if(ai!==bi){const t=(bound-a[axis])/(b[axis]-a[axis]);out.push([a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1])]);}
+      }
+    }
+    return Math.abs(out.reduce((sum,p,i)=>{const q=out[(i+1)%out.length];return sum+p[0]*q[1]-q[0]*p[1]},0))/2;
+  };
+  for(const fill of svg.querySelectorAll('[data-transition-fill]')){
+    const poly=points(fill.getAttribute('d'));
+    for(const n of nodes)if(clippedArea(poly,n.box)>1)findings.push({type:'transition-fill-node-collision',edge:fill.dataset.transitionFill,node:n.id});
+    for(const t of texts)if(t.owner==='page'&&clippedArea(poly,t.box)>1)findings.push({type:'transition-fill-text-collision',edge:fill.dataset.transitionFill,text:t.text});
+  }
+  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,nodes,edges,events,unions,texts,metadata:meta};
 }"""
 
 
@@ -110,6 +129,14 @@ def check_source(report, data):
     if data["mode"] == "timeline":
         y0, y1 = report["metadata"]["time_y"]
         start, end = data["time"]["start"], data["time"]["end"]
+        actual_events={e['id']:e for e in report.get('events',[])}
+        expected_ids=[e.get('id',f'event-{i}') for i,e in enumerate(data.get('events',[]))]
+        if sorted(actual_events)!=sorted(expected_ids):report['findings'].append({'type':'source-event-inventory'})
+        for i,event in enumerate(data.get('events',[])):
+            actual=actual_events.get(event.get('id',f'event-{i}'))
+            if not actual:continue
+            expected_y=y0+(event['year']-start)/(end-start)*(y1-y0)
+            if abs(actual['year']-event['year'])>.001 or abs(actual['origin_y']-expected_y)>.1:report['findings'].append({'type':'event-time-mismatch','id':actual['id']})
         boxes = {n["id"]: n["box"] for n in report["nodes"]}
         for node in nodes:
             box = boxes.get(node["id"])

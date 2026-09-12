@@ -39,6 +39,14 @@ def main():
     node=copy.deepcopy(original);edge=node.find(".//s:path[@data-edge-id]",ns);tokens=edge.attrib["d"].split();x,y=float(tokens[1]),float(tokens[2])
     edge.set("d",f'M {x} {y} L {x} {y-12} L {x} {y} '+" ".join(tokens[3:]));edge.set("data-route-style","rounded")
     mutations.append(("source-reentry",node,"edge-node-collision"))
+    if original.find('.//s:path[@data-transition-fill]',ns) is not None:
+        node=copy.deepcopy(original);box=node.find('.//s:rect[@data-node-box]',ns)
+        x,y,w,h=[float(box.attrib[k]) for k in ('x','y','width','height')]
+        node.find('.//s:path[@data-transition-fill]',ns).set('d',f'M {x+1} {y+1} L {x+w-1} {y+1} L {x+w-1} {y+h-1} L {x+1} {y+h-1} Z')
+        mutations.append(('filled-bridge-over-period',node,'transition-fill-node-collision'))
+    if original.find('.//s:g[@data-event-id]',ns) is not None:
+        node=copy.deepcopy(original);event=node.find('.//s:g[@data-event-id]',ns);event.set('data-origin-y',str(float(event.attrib['data-origin-y'])+50))
+        mutations.append(('shifted-event-date-anchor',node,'event-time-mismatch'))
     results=[]
     with sync_playwright() as p:
         browser=p.chromium.launch();page=browser.new_page()

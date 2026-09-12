@@ -16,6 +16,7 @@ from pathlib import Path
 
 from render_chart import Poster, require, number, color, ident, wrap, fmt, text_color, contrast, overlaps, segment_hits, route, compress, KINDS, automatic_lineage, text_width
 from editorial_art import symbol
+from cohort_layout import place_cohorts
 
 
 def rounded_path(points, radius=9):
@@ -65,6 +66,7 @@ class EditorialPoster(Poster):
         self.top,self.bottom=170,self.h-80
         self.annotation_boxes=[]
         self.image_sources=set()
+        self.union_mark=(1.05,1.9,1.55)
 
     def line(self,points,paint,width=3,dash='',extra=''):
         d=rounded_path(compress(points),8)
@@ -116,6 +118,9 @@ class EditorialPoster(Poster):
 
     def graph_layout(self):
         data=self.data
+        if data.get('layout')=='cohorts':
+            require(self.mode=='genealogy','Cohort layout is for explicit genealogical relationships.')
+            data['nodes']=place_cohorts(data,self.node_content,self.left,self.right,data.get('cohort_top',225),data.get('cohort_bottom',self.bottom-45))
         for node in data['nodes']:
             n=copy.deepcopy(node);nid=ident(n['id'])
             require(nid not in self.nodes,f'Duplicate node ID: {nid}')
@@ -146,6 +151,11 @@ class EditorialPoster(Poster):
 
     def build_routes(self):
         seen=set();pairs=set();segments=[]
+        row_bands={}
+        for box in self.boxes.values():
+            row=round(box[1]+box[3]/2,3)
+            lo,hi=row_bands.get(row,(box[1],box[1]+box[3]))
+            row_bands[row]=(min(lo,box[1]),max(hi,box[1]+box[3]))
         for edge in self.relations:
             eid,source,target,kind=(edge[k] for k in ('id','source','target','kind'))
             ident(eid)
@@ -165,13 +175,26 @@ class EditorialPoster(Poster):
                 path=compress([start]+[tuple(map(float,p)) for p in edge['via']]+[end])
                 require(all(p[0]==q[0] or p[1]==q[1] for p,q in zip(path,path[1:])),f'Non-orthogonal authored corridor for {eid}')
             else:
-                middle=edge.get('corridor_y',(a[1]+b[1])/2)
+                default_middle=(a[1]+b[1])/2
+                if self.data.get('layout')=='cohorts':
+                    prior=row_bands.get(round(source_y,3));following=row_bands.get(round(self.nodes[target]['row'],3))
+                    if prior and following and following[0]>prior[1]:default_middle=(prior[1]+following[0])/2
+                middle=edge.get('corridor_y',default_middle)
                 trial=compress([start,(start[0],middle),(end[0],middle),end])
                 # Ports touch their own boxes; every other part must stay outside,
                 # including a corridor that was requested beyond the target top.
                 if not any(segment_hits(p,q,box,0) for p,q in zip(trial,trial[1:]) for box in self.boxes.values()):
                     path=trial
-                else:path=compress([start]+route(a,b,list(self.boxes.values()),(self.left-12,self.top-26,self.right+12,self.bottom+12),segments)+[end])
+                else:
+                    path=None;last_error=None
+                    world=(self.left-12,self.top-26,self.right+12,self.bottom+12)
+                    for margin in (30,90,220,600,max(self.w,self.h)):
+                        bounds=(max(world[0],min(a[0],b[0])-margin),max(world[1],min(a[1],b[1])-margin),min(world[2],max(a[0],b[0])+margin),min(world[3],max(a[1],b[1])+margin))
+                        nearby=[box for box in self.boxes.values() if box[0]-14<bounds[2] and box[0]+box[2]+14>bounds[0] and box[1]-14<bounds[3] and box[1]+box[3]+14>bounds[1]]
+                        try:
+                            path=compress([start]+route(a,b,nearby,bounds,segments)+[end]);break
+                        except ValueError as error:last_error=error
+                    require(path is not None,f'Cannot route relationship {eid}: {last_error}')
             require(not any(segment_hits(p,q,box,0) for p,q in zip(path,path[1:]) for box in self.boxes.values()),f'Relationship {eid} crosses a node, including its own source or target.')
             group=edge.get('group',self.nodes[target]['group']);paint=self.groups[group]['color']
             width=edge.get('weight',2.8 if kind in ('branch','descent') else 1.8)
@@ -210,7 +233,12 @@ class EditorialPoster(Poster):
 
     def draw_annotations(self):
         for a in self.data.get('annotations',[]):
-            x,y,w=a['x'],a['y'],a.get('width',130);size=a.get('size',13)
+            if a.get('node'):
+                require(a['node'] in self.boxes,'Annotation references an unknown node.')
+                anchor=self.boxes[a['node']]
+                x,y=anchor[0]+anchor[2]/2+a.get('dx',0),anchor[1]+anchor[3]/2+a.get('dy',0)
+            else:x,y=a['x'],a['y']
+            w=a.get('width',130);size=a.get('size',13)
             paint=self.groups[a['group']]['color'] if a.get('group') else self.ink
             lines=wrap(a['label'],w-10,size,True)
             h=len(lines)*size*1.12+7
@@ -276,12 +304,15 @@ class EditorialPoster(Poster):
         pitch=(self.right-self.left)/len(lanes)
         if d.get('map_texture'):
             self.add(f'<defs><clipPath id="chronology-field"><rect x="{self.left-40}" y="{self.top-10}" width="{self.right-self.left+55}" height="{self.bottom-self.top+20}"/></clipPath></defs><g clip-path="url(#chronology-field)">')
-            for i in range(3):
-                self.map_art(-480+(i%2)*240,self.top-160+i*850,2700,1087.5,opacity=.14)
-            for yy in range(int(self.top)-70,int(self.bottom)+70,145):
-                self.add(f'<path d="M {self.left-90} {yy} Q {self.w/2} {yy-170} {self.right+80} {yy}" fill="none" stroke="#AD9464" stroke-width="1" opacity=".22"/>')
-            for xx in range(0,int(self.w)+200,220):
-                self.add(f'<path d="M {xx} {self.top-50} Q {xx-250} {self.h/2} {xx+180} {self.bottom+60}" fill="none" stroke="#AD9464" stroke-width="1" opacity=".2"/>')
+            require(d['map_texture'] in (True,'natural-earth','milner-1850'),'Unknown map texture.')
+            if d['map_texture']=='milner-1850':
+                source=Path(__file__).resolve().parent.parent/'assets/maps/milner-1850.jpg'
+                record=json.loads(source.with_suffix('.json').read_text(encoding='utf-8'))
+                encoded=base64.b64encode(source.read_bytes()).decode('ascii')
+                self.add('<metadata data-artwork-source="milner-1850.jpg">'+html.escape(json.dumps(record))+'</metadata>')
+                self.add(f'<image data-artwork="historical-map" href="data:image/jpeg;base64,{encoded}" x="-700" y="135" width="3380" height="2630" opacity=".12" preserveAspectRatio="xMidYMid meet"/>')
+            else:
+                for i in range(3):self.map_art(-480+(i%2)*240,self.top-160+i*850,2700,1087.5,opacity=.14)
             self.add('</g>')
         for i,l in enumerate(d['lanes']):
             x=self.left+i*pitch
@@ -316,9 +347,12 @@ class EditorialPoster(Poster):
             ident(edge['id'])
             require(edge['id'] not in transition_ids,'Duplicate timeline transition ID.')
             transition_ids.add(edge['id'])
-            require(edge['source'] in self.nodes and edge['target'] in self.nodes and edge['kind']=='succession','Timeline transitions require known periods and succession semantics.')
+            require(edge['source'] in self.nodes and edge['target'] in self.nodes and edge['kind'] in ('succession','division','union','uncertain'),'Timeline transitions require known periods and an explicit succession, division, union, or uncertain relation.')
             a,b=self.boxes[edge['source']],self.boxes[edge['target']]
-            start_point=(a[0]+a[2]/2,a[1]+a[3]);end_point=(b[0]+b[2]/2,b[1])
+            source_port=number(edge.get('source_port',.5),'source_port')
+            target_port=number(edge.get('target_port',.5),'target_port')
+            require(5<=a[2]*source_port<=a[2]-5 and 5<=b[2]*target_port<=b[2]-5,'Timeline ports must remain at least 5 units inside their ribbon edges.')
+            start_point=(a[0]+a[2]*source_port,a[1]+a[3]);end_point=(b[0]+b[2]*target_port,b[1])
             require(end_point[1]>=start_point[1]-.01,'A timeline continuation must not go backward.')
             mid=(start_point[1]+end_point[1])/2
             points=compress([start_point,(start_point[0],mid),(end_point[0],mid),end_point])
@@ -327,21 +361,35 @@ class EditorialPoster(Poster):
             if edge.get('style')=='ribbon':
                 # An explicitly supplied transition occupies its own dated gap.
                 # It joins full-width ribbons without changing either period.
-                self.add(f'<path data-transition-fill="{edge["id"]}" d="M {fmt(a[0])} {fmt(start_point[1])} L {fmt(a[0]+a[2])} {fmt(start_point[1])} L {fmt(b[0]+b[2])} {fmt(end_point[1])} L {fmt(b[0])} {fmt(end_point[1])} Z" fill="{paint}"/>')
-            self.line(points,paint,2,'1 4',extra=f'data-edge-id="{edge["id"]}" data-source="{edge["source"]}" data-target="{edge["target"]}" data-kind="succession" data-route-style="rounded"')
+                flow=number(edge.get('ribbon_width',0),'ribbon_width')
+                if flow:
+                    require(flow>0 and flow/2<=min(a[2]*source_port,a[2]*(1-source_port),b[2]*target_port,b[2]*(1-target_port)),'Transition width exceeds its attachment port.')
+                    left_a,right_a=start_point[0]-flow/2,start_point[0]+flow/2
+                    left_b,right_b=end_point[0]-flow/2,end_point[0]+flow/2
+                else:left_a,right_a,left_b,right_b=a[0],a[0]+a[2],b[0],b[0]+b[2]
+                self.add(f'<path data-transition-fill="{edge["id"]}" d="M {fmt(left_a)} {fmt(start_point[1])} L {fmt(right_a)} {fmt(start_point[1])} L {fmt(right_b)} {fmt(end_point[1])} L {fmt(left_b)} {fmt(end_point[1])} Z" fill="{paint}"/>')
+                # The semantic path follows the center of the filled bridge.
+                # Drawing an orthogonal elbow as well creates a false second fork.
+                points=[start_point,end_point]
+            self.line(points,paint,2,'1 4' if edge.get('style','dotted')=='dotted' else '',extra=f'data-edge-id="{edge["id"]}" data-source="{edge["source"]}" data-target="{edge["target"]}" data-kind="{edge["kind"]}" data-route-style="rounded"')
             self.routes.append(dict(edge,points=points))
         # Event annotations are supplied data. Their dates use the same numeric scale.
-        for event in d.get('events',[]):
+        for index,event in enumerate(d.get('events',[])):
             require(event['lane'] in lanes and start<=event['year']<=end,'Invalid event lane or date.')
             x=self.left+pitch*lanes[event['lane']]+event.get('offset',64)
             yy=scale(event['year']);width=event.get('width',pitch-78)
-            if event.get('icon'):
-                size=event.get('art_size',56)
-                self.artwork(event['icon'],x+(width-size)/2,yy,size,size,self.groups[event.get('group',d['groups'][0]['id'])]['color'],event.get('variant',0))
-                yy+=size+4
+            event_id=ident(event.get('id',f'event-{index}'))
+            self.add(f'<g data-event-id="{event_id}" data-year="{event["year"]}" data-origin-y="{fmt(yy)}">')
             size=event.get('size',10.5)
-            for j,line in enumerate(wrap(event['label'],width,size,True)):
-                self.text(x,yy+size+j*size*1.18,line,size,anchor='start',bold=True)
+            for line in wrap(event['label'],width,size,True):
+                self.text(x,yy+size,line,size,anchor='start',bold=True);yy+=size*1.18
+            small=event.get('detail_size',size*.88)
+            for line in wrap(event.get('detail',''),width,small):
+                self.text(x,yy+small,line,small,anchor='start');yy+=small*1.18
+            if event.get('icon'):
+                art_size=event.get('art_size',56)
+                self.artwork(event['icon'],x+(width-art_size)/2,yy+5,art_size,art_size,self.groups[event.get('group',d['groups'][0]['id'])]['color'],event.get('variant',0))
+            self.add('</g>')
         self.draw_annotations()
 
     def draw_intervals(self):

@@ -1,0 +1,88 @@
+{
+  "skill": "usefulcharts-style",
+  "date": "2026-09-11",
+  "status": "validating",
+  "runtime": {
+    "name": "usefulcharts-style",
+    "profile": "runtime",
+    "fileCount": 49,
+    "payloadSha256": "a3e8ef0f612859749d9f8f726d07b0305deffdd42bc6cd58f1792d6b98eb831d"
+  },
+  "visual_review": {
+    "type": "unblinded author and independent critique",
+    "indistinguishability_proven": false,
+    "independent_verdict": "Parity rejected for all three families; final repairs address specific defects without an equivalence claim."
+  },
+  "tests": {
+    "classic": 26,
+    "editorial": 22,
+    "mutations": 8,
+    "source_browser_audits": 3,
+    "known_life_record_pairs": 566
+  },
+  "examples": [
+    {
+      "id": "aurelian-families",
+      "status": "pass",
+      "node_count": 561,
+      "edge_count": 323,
+      "event_count": 0,
+      "text_count": 1144,
+      "min_contrast": 4.949075393281342,
+      "findings": [],
+      "data_sha256": "f0cf01a0e43d15b6d30e382037f28b2c41b378a88eb792b026d5f8e9e3e8d112"
+    },
+    {
+      "id": "atlas-of-inquiry",
+      "status": "pass",
+      "node_count": 191,
+      "edge_count": 199,
+      "event_count": 0,
+      "text_count": 625,
+      "min_contrast": 4.949075393281342,
+      "findings": [],
+      "data_sha256": "4989a531f6fea19b7bd6aee75120002a017a2096e118be73b16078e8bd50b9a1"
+    },
+    {
+      "id": "five-regional-histories",
+      "status": "pass",
+      "node_count": 50,
+      "edge_count": 55,
+      "event_count": 60,
+      "text_count": 377,
+      "min_contrast": 4.949075393281342,
+      "findings": [],
+      "data_sha256": "15ccc74d21ca8fe92d47aecd595fd0e4cdd8b194fd5d28eaa767361a5f88bbb2"
+    }
+  ],
+  "isolated_attempt": {
+    "id": "usefulcharts-cohorts-v6-20260911-spark-1",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "outcome": "infrastructure-blocked",
+    "reason": "Provider usage limit before first tool call",
+    "required_outputs": 6,
+    "created_outputs": 0,
+    "payload_unchanged": true,
+    "runtime": {
+      "name": "usefulcharts-style",
+      "profile": "runtime",
+      "fileCount": 49,
+      "payloadSha256": "4a3703f68d62e80d430c44d6b3e1d1d7b95258dd62693ffeec354a3da4bcf25b"
+    }
+  },
+  "pages": {
+    "url": "https://gvillarroel.github.io/skills/examples/usefulcharts-style/",
+    "build": "pass",
+    "responsive_viewer": "pass"
+  },
+  "runtime_changes_after_attempt": [
+    "scripts/editorial_poster.py"
+  ],
+  "repository_gates": {
+    "pattern_ids": "pass",
+    "skill_structure": "pass",
+    "independence": "pass",
+    "payload": "pass",
+    "pages_build": "pass"
+  }
+}

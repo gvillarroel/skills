@@ -498,10 +498,11 @@ class Poster:
             require(end[0] - start[0] >= 16, f"Union {uid} needs at least a 16-unit gap.")
             require(not any(segment_hits(start, end, box, 4) for nid, box in self.boxes.items() if nid not in partners), f"Union {uid} crosses another person. Place partners next to one another.")
             self.unions[uid] = dict(union, partners=partners, point=((start[0]+end[0])/2, y))
-            for offset in (-3, 3):
-                self.line([(start[0], y+offset), (end[0], y+offset)], self.muted, 2,
+            stroke,offset_size,dot=getattr(self,'union_mark',(2,3,4))
+            for offset in (-offset_size,offset_size):
+                self.line([(start[0], y+offset), (end[0], y+offset)], self.muted, stroke,
                           extra=f'data-union-id="{uid}"')
-            self.add(f'<circle cx="{fmt((start[0]+end[0])/2)}" cy="{fmt(y)}" r="4" fill="{self.muted}"/>')
+            self.add(f'<circle cx="{fmt((start[0]+end[0])/2)}" cy="{fmt(y)}" r="{dot}" fill="{self.muted}"/>')
             children = union.get("children", [])
             require(len(set(children)) == len(children), f"Union {uid} has duplicate children.")
             for child in children:
@@ -653,6 +654,8 @@ class Poster:
                   "data_sha256": meta["data_sha256"], "visual_review": "Required; geometric preflight is not a visual quality score."}
         if self.data.get("layout")=="auto":
             report["resolved_layout"]={"columns":self.data["columns"],"rows":self.data["rows"],"nodes":[{"id":n["id"],"row":n["row"],"col":n["col"]} for n in self.nodes.values()]}
+        elif self.data.get("layout")=="cohorts":
+            report["resolved_layout"]={"layout":"cohorts","nodes":[{"id":nid,"x":b[0]+b[2]/2,"y":b[1]+b[3]/2,"width":b[2]} for nid,b in self.boxes.items()]}
         return svg, report
 
 

@@ -8,6 +8,8 @@ For ordinary lineage input use `mode: lineage`, `layout: auto`, groups, nodes, a
 
 For authored graphs, each node supplies `x` and `y` as the **center** in SVG units. Avoid `layout: auto` in this case. Supported node fields:
 
+For a genealogy with explicit generations, `layout: cohorts` accepts integer node rows and normal unions instead of coordinates. Read [cohort composition](cohort-composition.md) for spacing controls, limits, and conversion to authored positions.
+
 | Field | Meaning |
 | --- | --- |
 | `width` | Total card/label width, usually 60–140 for a dense page; selected landmarks may be wider. Height is measured from wrapped content. |
@@ -25,6 +27,8 @@ Routes use rounded orthogonal corridors and preserve source/target semantics. `c
 
 `annotations` contain `{x,y,width,label,size?,kind?,group?,icon?}`. `kind: pill` creates a family label and finds a nearby position clear of entity labels; `kind: heading` uses a serif place heading and optional crest above it. These are decoration/context positions, not numeric time assertions. Inspect their association with the correct branch after placement.
 
+Instead of `x,y`, use `node` with optional `dx,dy` to anchor an annotation to a measured node center after layout. Unknown node anchors fail.
+
 `insets` contain `kind`, `title`, and `box: [x,y,width,height]`:
 
 - `isotype` derives and displays actual node counts per category. One symbol equals one record; it does not invent a population statistic.
@@ -38,11 +42,13 @@ Use `mode: timeline`, shared numeric `time`, named `lanes`, and `periods`. Each 
 - `bar_width`: actual ribbon width; allow enough room for wrapped rotated type.
 - `size`: optional name size. Names are rotated inside the actual interval rectangle; dates are never stretched to fit.
 
-`events` contain `{lane,year,label,offset,width,size?,icon?,art_size?,group?}`. Their y position comes from the same year scale. Event text is horizontal. Supply only relevant, distinct events; repeated generic snippets create artificial texture. Reserve enough height for any illustration and wrapped text before the next event.
+`events` contain `{id?,lane,year,label,detail?,offset,width,size?,detail_size?,icon?,art_size?,group?}`. Their y position comes from the same year scale. A bold headline precedes normal-weight detail and any illustration. Event ID, year, and origin position remain independently inspectable in the SVG. Supply only relevant, distinct events and reserve enough height before the next event.
 
-`eras` contain `{start,end,label}` for shared horizontal dividers and rotated margin labels. `map_texture: true` adds a restrained geographic field behind the ruler.
+`eras` contain `{start,end,label}` for shared horizontal dividers and rotated margin labels. `map_texture: true` or `natural-earth` uses a restrained geographic field. `map_texture: milner-1850` embeds a public-domain historical map with its provenance. A decorative map is not a map of the chart's data; say so in the reading note. The historical image's source and rights record is `assets/maps/milner-1850.json`.
 
-`transitions` explicitly connect two known periods: `{id,source,target,kind:"succession",style?:"dotted"|"ribbon"}`. The default dotted bridge joins actual interval endpoints. `ribbon` fills the dated transition gap between the two ribbon widths. Neither form changes period dates, and transitions must not go backward. These are continuations, not inferred ancestry. Omit them when continuity is unknown; inspect filled transitions for interference with other content.
+`transitions` explicitly connect known periods: `{id,source,target,kind,style?,source_port?,target_port?,ribbon_width?}`. Use `succession`, `division`, `union`, or `uncertain` according to the source. An uncertain relation should use `style: dotted`; ordinary transitions may use `ribbon`. Dates never change and transitions cannot go backward.
+
+Ports are fractions of ribbon width, default 0.5, and must remain at least five units inside each edge. For a split or merger, separate the attachment ports and supply a narrow `ribbon_width` (for example 10). Omit width or use zero for a full-width continuation. The semantic center path follows the filled bridge, avoiding a second elbow that could look like another fork. Reserve its entire polygon, not just the centerline. Width is compositional unless the data explicitly defines a quantitative encoding.
 
 ## Validation
 

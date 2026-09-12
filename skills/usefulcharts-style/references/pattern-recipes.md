@@ -6,7 +6,7 @@
 
 Trigger: named people, generations, partners, parentage, and dynasty/category membership.
 
-Input: `design: editorial`, `mode: genealogy`; nodes with stable IDs, categories, and authored `x`/`y` centers; `unions` linking two partners with explicit children. Legacy ordered rows/columns remain supported. A union is a relationship object, not an invented person. Single-parent data may use a `descent` edge. Read [the editorial contract](editorial-contract.md) for treatments and geometry.
+Input: `design: editorial`, `mode: genealogy`; nodes with stable IDs and categories; `unions` linking two partners with explicit children. Use integer rows with `layout: cohorts` for a starting family-unit packing, or authored `x`/`y` centers for complex composition. A union is a relationship object, not an invented person. Single-parent data may use a `descent` edge. Read [cohort composition](cohort-composition.md) or [the editorial contract](editorial-contract.md) for the chosen placement.
 
 1. Arrange partners in the same row and reserve an empty gap between them.
 2. Put the next generation below. Center a lone child or a partner pair on its actual origin; vary supporting branches and prominence according to the data.
@@ -44,6 +44,6 @@ Input: `design: editorial`, `mode: timeline`; numeric `time.start`, `time.end`, 
 2. Derive all y coordinates and bar lengths from the same time mapping. Keep intervals within the declared bounds; reject reversed intervals.
 3. Set horizontal `offset` and `bar_width` for overlapping intervals in the same lane; overlap in time is valid, overlap of printed labels is not. Classic mode retains `track` and `tracks`.
 4. Vary ribbon width by supplied emphasis and rotate compact names inside longer intervals. Put horizontal events beside them. Short intervals may need a wider ribbon, external callout, or larger page; do not stretch duration to fit text.
-5. Include an explicit date scale, tick labels, source note, and relationship key. Supply `transitions` only for known continuity. Inspect full-width transition fills as well as their center paths.
+5. Include an explicit date scale, tick labels, source note, and relationship key. Supply typed `succession`, `division`, `union`, or `uncertain` transitions only when supported. Use distinct fractional ports and narrow filled bridges for splits/mergers. Inspect each complete polygon as well as its center path.
 
 Validation: compare at least three interval endpoints with the time mapping and check contemporary periods share their y coordinates. Pitfalls: inventing connecting descent from adjacent periods; hiding long gaps; mixing ordinal generations with metric years; equalizing lengths to improve appearance.

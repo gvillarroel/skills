@@ -36,6 +36,62 @@ def timeline():
 
 
 class EditorialTests(unittest.TestCase):
+    def test_cohorts_follow_family_units_and_preserve_all_records(self):
+        data=graph();data.update(mode='genealogy',layout='cohorts',edges=[],unions=[])
+        data['nodes']=[dict(id=f'p{i}',label=f'Person {i}',group='red',row=row,width=90,style='plain') for i,row in enumerate([0,0,1,1,1,1,1,2,2])]
+        data['unions']=[dict(id='u0',partners=['p0','p1'],children=['p2','p4','p6']),dict(id='u1',partners=['p2','p3'],children=['p7']),dict(id='u2',partners=['p4','p5'],children=['p8'])]
+        before=copy.deepcopy(data);svg,report=EditorialPoster(data).render()
+        self.assertEqual(data,before);self.assertEqual(report['node_count'],9);self.assertEqual(report['edge_count'],5)
+        nodes={n['id']:n for n in report['resolved_layout']['nodes']}
+        self.assertEqual(nodes['p2']['y'],nodes['p3']['y'])
+        self.assertLess(nodes['p2']['x'],nodes['p4']['x'])
+        self.assertGreater(nodes['p7']['y'],nodes['p2']['y'])
+
+    def test_cohorts_reject_backward_and_duplicate_unions(self):
+        data=graph();data.update(mode='genealogy',layout='cohorts',edges=[],unions=[dict(id='u',partners=['left','right'],children=['root'])])
+        for n in data['nodes']:n['row']=0 if n['id']=='root' else 1
+        with self.assertRaisesRegex(ValueError,'later row'):EditorialPoster(data).render()
+        data['unions'][0]['children']=[];data['unions']*=2
+        with self.assertRaisesRegex(ValueError,'Duplicate cohort union'):EditorialPoster(data).render()
+
+    def test_cohorts_reject_row_overflow_instead_of_losing_people(self):
+        data=graph();data.update(mode='genealogy',layout='cohorts',edges=[])
+        for n in data['nodes']:n.update(row=0,width=650)
+        with self.assertRaisesRegex(ValueError,'exceeds page width'):EditorialPoster(data).render()
+
+    def test_node_anchored_annotation_is_placed_after_layout(self):
+        data=graph();data['annotations']=[dict(node='left',dx=0,dy=-90,label='WESTERN BRANCH',kind='pill',width=180)]
+        svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+        text=next(t for t in root.findall('.//s:text',NS) if t.text=='WESTERN BRANCH')
+        self.assertEqual(float(text.attrib['x']),320)
+
+    def test_division_ports_keep_declared_semantics(self):
+        data=timeline();data['periods'].append(dict(data['periods'][1],id='c',offset=210))
+        data['transitions']=[dict(id='split-left',source='a',target='b',kind='division',style='ribbon',source_port=.3,ribbon_width=10),dict(id='split-right',source='a',target='c',kind='division',style='ribbon',source_port=.7,ribbon_width=10)]
+        svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+        self.assertEqual([p.attrib['data-kind'] for p in root.findall('.//s:path[@data-edge-id]',NS)],['division','division'])
+        self.assertEqual(len(root.findall('.//s:path[@data-transition-fill]',NS)),2)
+
+    def test_invalid_timeline_attachment_cannot_escape_the_period(self):
+        for changes in [dict(source_port=1.2),dict(style='ribbon',ribbon_width=80)]:
+            data=timeline();data['transitions'][0].update(changes)
+            with self.assertRaises(ValueError):EditorialPoster(data).render()
+
+    def test_event_has_an_independently_inspectable_date_anchor(self):
+        data=timeline();data['events'][0].update(id='recorded-event',detail='An explanatory consequence.')
+        svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+        event=root.find('.//s:g[@data-event-id="recorded-event"]',NS)
+        self.assertEqual(float(event.attrib['data-year']),1300)
+        meta=json.loads(root.find('.//s:metadata[@id="chart-data"]',NS).text)
+        top,bottom=meta['time_y'];self.assertAlmostEqual(float(event.attrib['data-origin-y']),top+.3*(bottom-top),places=2)
+        self.assertIn('explanatory consequence',svg)
+
+    def test_historical_map_is_self_contained_with_provenance(self):
+        data=timeline();data['map_texture']='milner-1850'
+        svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+        self.assertTrue(root.find('.//s:image[@data-artwork="historical-map"]',NS).attrib['href'].startswith('data:image/jpeg;base64,'))
+        self.assertEqual(json.loads(root.find('.//s:metadata[@data-artwork-source="milner-1850.jpg"]',NS).text)['date'],1850)
+
     def test_source_is_unchanged_and_all_entities_survive(self):
         data=graph();before=copy.deepcopy(data)
         svg,report=EditorialPoster(data).render();root=ET.fromstring(svg)
