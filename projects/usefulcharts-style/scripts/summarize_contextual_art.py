@@ -62,6 +62,10 @@ def main():
         source_sha256=hashlib.sha256(json.dumps(source,sort_keys=True,ensure_ascii=False).encode()).hexdigest(),
         comparison=json.loads((root/'projects/usefulcharts-style/artifacts/reviews/contextual-art-final-comparison/comparison.json').read_text()))
     report=dict(status='validating',runs=runs,explorations=explorations,mural=mural,visual_parity='Not established. Improved local art composition does not establish broad parity.')
+    receipt=root/'projects/usefulcharts-style/artifacts/reviews/contextual-art-publication-verification.json'
+    if receipt.exists():
+        published=json.loads(receipt.read_text())
+        report['publication']=dict(status=published['status'],commit=published['commit'],workflow=published['workflow']['url'],url=published['url'],files_verified=len(published['files']))
     (root/'evaluations/usefulcharts-style/contextual-art-summary-20260912.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(dict(runs=len(runs),strict_passes=sum(run.get('strict',{}).get('passed',False) for run in runs),
         independent_passes=sum(run.get('independent_artifact',{}).get('status')=='pass' for run in runs),

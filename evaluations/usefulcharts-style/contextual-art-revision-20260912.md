@@ -71,3 +71,9 @@ uv run --script scripts/summarize-pi-json-events.py evaluations/runs/usefulchart
 ```
 
 The author inspected `projects/usefulcharts-style/artifacts/reviews/contextual-art-final-comparison/comparison.png`, its `detail.png`, the final mural PNG, and all six naturalistic PNGs directly. Per-image decisions and remaining differences are preserved in [the visual reviews](contextual-art-visual-reviews-20260912.json). Private reference art stays outside Git.
+
+## Verified publication
+
+Implementation `4377c05731161cb94550798211e98c4ece5a9c41` passes [Pages workflow 34690575265](https://github.com/gvillarroel/skills/actions/runs/34690575265). All eleven public gallery, source and poster files match the committed bytes after standard Pages transformations. The main catalog retains the stable example-set link. The [revised chronology](https://gvillarroel.github.io/skills/examples/usefulcharts-style/five-regional-histories.html) is published at its existing route.
+
+Verification: `uv run --script projects/usefulcharts-style/scripts/verify_publication.py --commit 4377c057 --workflow 34690575265 --report projects/usefulcharts-style/artifacts/reviews/contextual-art-publication-verification.json`. The final rendered PNG matches the selected prototype exactly, SHA-256 `c5000269f2618d1c1724b441d19b5351f00629ec0b77b7553b54a7e82a47a932`. This is a reproducibility check, not a measure of similarity to UsefulCharts.
