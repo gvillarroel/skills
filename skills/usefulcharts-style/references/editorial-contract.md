@@ -4,7 +4,7 @@ Set `design: editorial` and run `render_chart.py` normally. Shared fields and re
 
 ## Graph placement and treatments
 
-For ordinary lineage input use `mode: lineage`, `layout: auto`, groups, nodes, and typed edges. Automatic placement assigns ranks and category-ordered branch columns, sizes the canvas from the content, and chooses simple root/card/plain treatments. Explicit page sizes are honored and may need repair. The automatic layout preserves topology; it is not a replacement for authored composition in a complex poster.
+For ordinary lineage input use `mode: lineage`, `layout: auto`, groups, nodes, and typed edges; [compact lineage](compact-lineage.md) is the short entry route. Automatic placement assigns ranks and category-ordered branch columns, measures row heights and reserves connector gaps. Briefs with at most 30 nodes default to 18-unit body type and may use a page shorter than 1200 units; omit page sizes initially. Consequential landmarks and structural mergers receive stronger treatment while retaining their source category. Explicit page sizes, sizes and treatments are honored and may need repair. The automatic layout preserves topology; it is not a replacement for authored composition in a complex poster.
 
 For authored graphs, each node supplies `x` and `y` as the **center** in SVG units. Avoid `layout: auto` in this case. Supported node fields:
 
@@ -19,6 +19,8 @@ For a genealogy with explicit generations, `layout: cohorts` accepts integer nod
 
 Original art types: `shield`, `crown`, `star`, `compass`, `globe`, `astrolabe`, `book`, `wheel`, `gear`, `lens`, `prism`, `ship`, `tower`, `observatory`, `press`, `obelisk`, `leaf`, and `portrait`. The vector `portrait` is fictional. Museum portraits use `museum-<artwork-id>` and complete objects use `object-<artwork-id>`; available IDs and accurate source/rights records are in `assets/portraits/provenance.json` and `assets/objects/provenance.json`. They are decorative samples for synthetic demonstrations, not identities or evidence for factual charts. The map's provenance is in `assets/maps/provenance.json`. Source identities are embedded alongside museum images; full objects preserve their aspect ratio.
 
+Source illustrations use `illustration-astrolabe-observation` (a mariner observing an angle) or `illustration-sextant-1904` (an encyclopedia drawing). Their original bytes, authors, dates, rights and hashes are in [the illustration provenance](../assets/illustrations/provenance.json). They preserve aspect ratio and are embedded once per source in a reusable SVG symbol. Use them for their actual subjects; the publication date is not an invention date or proof of a fictional event. Do not read the large SVG source merely to use its ID.
+
 Keep partnered people at exactly the same `y`, with at least 16 units of space between their measured boxes. Parentage must go to a later `y`. A node may retain legacy `row`/`col` placement instead of explicit centers. The source brief is preserved in the report hash.
 
 Routes use rounded orthogonal corridors and preserve source/target semantics. `corridor_y` requests a horizontal bend level; the router repairs it if it would enter a box. For a deliberately composed route, `via` is an array of absolute `[x,y]` bends between the source bottom/union midpoint and target top. Every segment must be orthogonal. Routes that enter any entity, including their own source or target, are rejected. Reserve visible space below a source and above a target before arranging bends.
@@ -31,8 +33,8 @@ Instead of `x,y`, use `node` with optional `dx,dy` to anchor an annotation to a 
 
 `insets` contain `kind`, `title`, and `box: [x,y,width,height]`:
 
-- `isotype` derives and displays actual node counts per category. One symbol equals one record; it does not invent a population statistic.
-- `map` uses the supplied `countries` mapping from Natural Earth country IDs to category IDs, plus a short `note`. Unassigned countries are neutral. Reserve a region of the page that does not contain nodes or connector corridors.
+- `isotype` derives and displays actual node counts per category. One symbol equals one record; it does not invent a population statistic. Supply `groups: ["category-id", ...]` to include small categories or choose an explicit order. Otherwise only categories with more than twelve records appear. Selected IDs must be unique and known.
+- `map` uses the supplied `countries` mapping from Natural Earth country IDs to category IDs, plus a short `note`. Unassigned countries are neutral; unknown category IDs fail. Set `legend: true` for a nearby key derived from the mapped categories. Allow enough height for its rows. Reserve a region of the page that does not contain nodes or connector corridors.
 
 ## Chronological ribbon composition
 
@@ -42,7 +44,7 @@ Use `mode: timeline`, shared numeric `time`, named `lanes`, and `periods`. Each 
 - `bar_width`: actual ribbon width; allow enough room for wrapped rotated type.
 - `size`: optional name size. Names are rotated inside the actual interval rectangle; dates are never stretched to fit.
 
-`events` contain `{id?,lane,year,label,detail?,offset,width,size?,detail_size?,icon?,art_size?,group?}`. Their y position comes from the same year scale. A bold headline precedes normal-weight detail and any illustration. Event ID, year, and origin position remain independently inspectable in the SVG. Supply only relevant, distinct events and reserve enough height before the next event.
+`events` contain `{id?,lane,year,label,detail?,offset,width,size?,detail_size?,icon?,art_size?,art_width?,art_height?,group?}`. Their y position comes from the same year scale. A bold headline precedes normal-weight detail and any illustration. Event ID, year, and origin position remain independently inspectable in the SVG. Supply only relevant, distinct events and reserve enough height before the next event. `art_size` defaults to a square; source illustrations may use `art_width` and `art_height` for a natural rectangular aspect ratio. Width must fit the event. Reserve the full wrapped headline, detail and artwork height, then check every transition polygon below it; the renderer rejects artwork covering a period and the browser also detects illustration/text and illustration/bridge collisions.
 
 `eras` contain `{start,end,label}` for shared horizontal dividers and rotated margin labels. `map_texture: true` or `natural-earth` uses a restrained geographic field. `map_texture: milner-1850` embeds a public-domain historical map with its provenance. A decorative map is not a map of the chart's data; say so in the reading note. The historical image's source and rights record is `assets/maps/milner-1850.json`.
 

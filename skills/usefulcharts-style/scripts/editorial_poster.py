@@ -19,6 +19,16 @@ from editorial_art import symbol
 from cohort_layout import place_cohorts
 
 
+def measured_content(node, width, font):
+    size=node.get('size',font)
+    icon_width=node.get('icon_width',30) if node.get('icon') else 0
+    usable=width-icon_width-10
+    name=wrap(node['label'],usable,size,True)
+    detail=wrap(node.get('detail',''),usable,node.get('detail_size',size*.77))
+    height=13+len(name)*size*1.18+len(detail)*size*.94
+    return name,detail,max(height,icon_width+4 if icon_width else 0)
+
+
 def rounded_path(points, radius=9):
     if len(points)<3:return 'M '+' L '.join(f'{fmt(x)} {fmt(y)}' for x,y in points)
     parts=[f'M {fmt(points[0][0])} {fmt(points[0][1])}']
@@ -37,16 +47,35 @@ class EditorialPoster(Poster):
     def __init__(self,data):
         original=copy.deepcopy(data)
         adjusted=copy.deepcopy(data)
+        compact=adjusted.get('layout')=='auto' and len(adjusted.get('nodes',[]))<=30
+        font=original.get('font_size',18 if compact else 13)
         if adjusted.get('layout')=='auto':
             adjusted=automatic_lineage(adjusted)
-            font=original.get('font_size',13)
-            width=max(104,max(text_width(word,font,True)+16 for n in adjusted['nodes'] for word in n['label'].split()))
-            adjusted['width']=original.get('width',max(1200,160+adjusted['columns']*(width+24)))
-            adjusted['height']=original.get('height',max(1200,300+len(adjusted['rows'])*135))
+            width=max(176 if compact else 104,max(text_width(word,font,True)+16 for n in adjusted['nodes'] for word in n['label'].split()))
             counts={n['id']:sum(e['source']==n['id'] and e['kind']!='influence' for e in adjusted['edges']) for n in adjusted['nodes']}
+            parents={n['id']:sum(e['target']==n['id'] and e['kind']!='influence' for e in adjusted['edges']) for n in adjusted['nodes']}
             for n in adjusted['nodes']:
-                n.setdefault('width',width)
-                n.setdefault('style','pill' if n['row']==0 else 'plain' if counts[n['id']]==1 and not n.get('emphasis') else 'card')
+                major=n.get('emphasis') or parents[n['id']]>1
+                n.setdefault('style','pill' if n['row']==0 else 'hero' if major else 'emblem' if n.get('icon') else 'plain' if counts[n['id']]==1 else 'card')
+                if compact:
+                    n.setdefault('size',font+2 if major else font)
+                    n.setdefault('icon_width',50 if n.get('icon') else 0)
+                n.setdefault('width',width+(35 if major else 0)+(n.get('icon_width',30) if n.get('icon') else 0))
+            column_width=max(n['width'] for n in adjusted['nodes'])
+            adjusted['width']=original.get('width',max(1000 if compact else 1200,130+adjusted['columns']*(column_width+26)))
+            row_heights=[max((measured_content(n,n['width'],font)[2] for n in adjusted['nodes'] if n['row']==r),default=0) for r in range(len(adjusted['rows']))]
+            natural_height=290+sum(row_heights)+52*(len(row_heights)-1)
+            adjusted['height']=original.get('height',max(720 if compact else 1200,natural_height))
+            # Measure the records first. Uniformly stretching a sparse graph over
+            # a wall-poster canvas creates long empty connectors and tiny labels.
+            spare=max(0,adjusted['height']-natural_height)
+            cursor=190
+            for row,h in enumerate(row_heights):
+                for n in adjusted['nodes']:
+                    if n['row']==row:
+                        n['x']=65+(adjusted['width']-130)*(n['col']+.5)/adjusted['columns']
+                        n['y']=cursor+h/2
+                cursor+=h+52+spare/max(1,len(row_heights)-1)
             adjusted['layout']='resolved'
         else:
             adjusted.setdefault('width',1800);adjusted.setdefault('height',2700)
@@ -55,7 +84,7 @@ class EditorialPoster(Poster):
         super().__init__(adjusted)
         if original.get('layout')=='auto':self.data['layout']='auto'
         self.source_data=original
-        self.font=number(original.get('font_size',13),'font_size')
+        self.font=number(font,'font_size')
         require(10<=self.font<=24,'Editorial body type must be 10–24 units; inspect it at intended print size.')
         self.title_height=118
         self.footer_height=44
@@ -73,6 +102,22 @@ class EditorialPoster(Poster):
         self.add(f'<path d="{d}" fill="none" stroke="{paint}" stroke-width="{width}" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="{dash}" {extra}/>')
 
     def artwork(self,kind,x,y,w,h,paint,variant=0):
+        if kind.startswith('illustration-'):
+            art_id=kind.removeprefix('illustration-')
+            folder=Path(__file__).resolve().parent.parent/'assets/illustrations'
+            records=json.loads((folder/'provenance.json').read_text(encoding='utf-8'))['items']
+            item=next((r for r in records if r['id']==art_id),None)
+            require(item is not None,'Unknown source illustration ID.')
+            filename=item['file']
+            require(Path(filename).name==filename and Path(filename).suffix in ('.svg','.png'),'Invalid bundled illustration filename.')
+            if kind not in self.image_sources:
+                self.add('<metadata data-artwork-source="'+filename+'">'+html.escape(json.dumps(item))+'</metadata>')
+                encoded=base64.b64encode((folder/filename).read_bytes()).decode('ascii')
+                iw,ih=item['width'],item['height']
+                self.add(f'<defs><symbol id="asset-{kind}" viewBox="0 0 {iw} {ih}"><image href="data:{item["mime_type"]};base64,{encoded}" width="{iw}" height="{ih}" preserveAspectRatio="xMidYMid meet"/></symbol></defs>')
+                self.image_sources.add(kind)
+            self.add(f'<svg data-artwork="source-illustration" data-illustration-id="{art_id}" x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" viewBox="0 0 {fmt(w)} {fmt(h)}"><use href="#asset-{kind}" width="{fmt(w)}" height="{fmt(h)}"/></svg>')
+            return
         if kind.startswith(('museum-','object-')):
             filename=kind.split('-',1)[1]+'.jpg'
             require(filename[:-4].isdigit(),'Museum sample IDs must be numeric.')
@@ -107,14 +152,7 @@ class EditorialPoster(Poster):
         for i,line in enumerate(lines):self.text(self.w/2,self.h-63+i*13,line,10)
 
     def node_content(self,node,width):
-        size=node.get('size',self.font)
-        icon_width=node.get('icon_width',30) if node.get('icon') else 0
-        usable=width-icon_width-10
-        name=wrap(node['label'],usable,size,True)
-        detail=wrap(node.get('detail',''),usable,node.get('detail_size',size*.77))
-        height=13+len(name)*size*1.18+len(detail)*size*.94
-        if icon_width:height=max(height,icon_width+4)
-        return name,detail,height
+        return measured_content(node,width,self.font)
 
     def graph_layout(self):
         data=self.data
@@ -186,6 +224,11 @@ class EditorialPoster(Poster):
                 if not any(segment_hits(p,q,box,0) for p,q in zip(trial,trial[1:]) for box in self.boxes.values()):
                     path=trial
                 else:
+                    # An occupied search endpoint cannot be repaired by a larger
+                    # search window. Explain the actual neighbouring obstruction.
+                    for port,point in (('source',a),('target',b)):
+                        blocked=[nid for nid,(x,y,w,h) in self.boxes.items() if x-7<point[0]<x+w+7 and y-7<point[1]<y+h+7]
+                        require(not blocked,f'Relationship {eid} has a crowded {port} port near {", ".join(blocked)}. Reserve at least 18 units at the attachment.')
                     path=None;last_error=None
                     world=(self.left-12,self.top-26,self.right+12,self.bottom+12)
                     for margin in (30,90,220,600,max(self.w,self.h)):
@@ -276,12 +319,28 @@ class EditorialPoster(Poster):
             x,y,w,h=item['box']
             self.text(x+w/2,y+14,item['title'],18,bold=True)
             if item['kind']=='map':
-                self.map_art(x,y+40,w,h-65,item.get('countries',{}))
+                mapping=item.get('countries',{})
+                require(all(g in self.groups for g in mapping.values()),'Map assignments reference an unknown group.')
+                legend_height=0
+                if item.get('legend'):
+                    selected=[g for g in self.groups.values() if g['id'] in set(mapping.values())]
+                    columns=min(3,len(selected))
+                    for i,g in enumerate(selected):
+                        xx=x+(i%columns)*w/columns
+                        yy=y+42+(i//columns)*22
+                        self.rect((xx,yy-9,10,10),g['color'])
+                        self.text(xx+16,yy,g['label'],10,anchor='start')
+                    legend_height=math.ceil(len(selected)/max(1,columns))*22
+                require(h>90+legend_height,'Map inset is too short for its key and outline.')
+                self.map_art(x,y+40+legend_height,w,h-65-legend_height,mapping)
                 self.text(x+w/2,y+h-4,item.get('note','Illustrative geography'),10,self.muted)
             elif item['kind']=='isotype':
                 groups=list(self.groups.values())
                 totals={gid:sum(n['group']==gid for n in self.data['nodes']) for gid in self.groups}
-                selected=[g for g in groups if totals[g['id']]>12]
+                if 'groups' in item:
+                    require(len(set(item['groups']))==len(item['groups']) and all(g in self.groups for g in item['groups']),'Isotype selection must contain unique known groups.')
+                    selected=[self.groups[g] for g in item['groups']]
+                else:selected=[g for g in groups if totals[g['id']]>12]
                 pitch=(h-55)/max(1,len(selected))
                 for i,g in enumerate(selected):
                     yy=y+43+i*pitch
@@ -323,7 +382,15 @@ class EditorialPoster(Poster):
             self.text(self.left-31,yy+4,self.year_label(start+i*step),10.5,anchor='end',bold=True)
         for era in d.get('eras',[]):
             yy=scale(era['start']);hh=scale(era['end'])-yy
-            self.line([(45,yy),(self.right+9,yy)],'#8F8874',2)
+            spans=[(self.left-24,self.right+9)]
+            for event in d.get('events',[]):
+                ex=self.left+pitch*lanes[event['lane']]+event.get('offset',64)
+                ew=event.get('width',pitch-78);es=event.get('size',10.5);small=event.get('detail_size',es*.88)
+                eh=len(wrap(event['label'],ew,es,True))*es*1.18+len(wrap(event.get('detail',''),ew,small))*small*1.18
+                if event.get('icon'):eh+=5+event.get('art_height',event.get('art_size',56))
+                if scale(event['year'])-2<=yy<=scale(event['year'])+eh+2:
+                    spans=[part for a,b in spans for part in [(a,min(b,ex-4)),(max(a,ex+ew+4),b)] if part[1]>part[0]]
+            for a,b in spans:self.line([(a,yy),(b,yy)],'#8F8874',2,extra=f'data-era-rule="{era["start"]}"')
             cx,cy=53,yy+hh/2
             self.text(cx,cy,era['label'].upper(),14,bold=True,css=f'transform="rotate(-90 {cx} {cy})" letter-spacing="2"')
         for period in d['periods']:
@@ -387,8 +454,14 @@ class EditorialPoster(Poster):
             for line in wrap(event.get('detail',''),width,small):
                 self.text(x,yy+small,line,small,anchor='start');yy+=small*1.18
             if event.get('icon'):
-                art_size=event.get('art_size',56)
-                self.artwork(event['icon'],x+(width-art_size)/2,yy+5,art_size,art_size,self.groups[event.get('group',d['groups'][0]['id'])]['color'],event.get('variant',0))
+                art_size=number(event.get('art_size',56),'event.art_size')
+                art_width=number(event.get('art_width',art_size),'event.art_width')
+                art_height=number(event.get('art_height',art_size),'event.art_height')
+                require(0<art_width<=width and art_height>0,'Event artwork must fit its declared width and have positive dimensions.')
+                art_box=(x+(width-art_width)/2,yy+5,art_width,art_height)
+                blocked=[nid for nid,box in self.boxes.items() if overlaps(art_box,box,0)]
+                require(not blocked,f'Event {event_id} artwork overlaps period {", ".join(blocked)}. Reserve its full height or recompose the event.')
+                self.artwork(event['icon'],*art_box,self.groups[event.get('group',d['groups'][0]['id'])]['color'],event.get('variant',0))
             self.add('</g>')
         self.draw_annotations()
 

@@ -38,6 +38,7 @@ AUDIT = r"""() => {
   const events=[...svg.querySelectorAll('[data-event-id]')].map(el=>({id:el.dataset.eventId,year:Number(el.dataset.year),origin_y:Number(el.dataset.originY),text:el.textContent}));
   const unions=[...svg.querySelectorAll('[data-union-id]')].map(el=>({id:el.dataset.unionId,d:el.getAttribute('d')}));
   const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
+  const illustrations=[...svg.querySelectorAll('[data-event-id] [data-artwork]')].map(el=>({event:el.closest('[data-event-id]').dataset.eventId,kind:el.dataset.artwork,box:bounds(el)}));
   const setEqual=(a,b)=>a.length===b.length && [...a].sort().join('\n')===[...b].sort().join('\n');
   if(!setEqual(nodes.map(n=>n.id),meta.node_ids))findings.push({type:'node-inventory'});
   if(!setEqual(edges.map(e=>e.id),meta.edge_ids))findings.push({type:'edge-inventory'});
@@ -52,6 +53,16 @@ AUDIT = r"""() => {
   for(let i=0;i<texts.length;i++)for(let j=i+1;j<texts.length;j++)if(intersect(texts[i].box,texts[j].box,1.2))findings.push({type:'text-overlap',a:texts[i].text,b:texts[j].text});
   for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)if(intersect(nodes[i].box,nodes[j].box,.5))findings.push({type:'node-overlap',a:nodes[i].id,b:nodes[j].id});
   for(const t of texts)for(const n of nodes)if(t.owner!==n.id && intersect(t.box,n.box,.5))findings.push({type:'text-other-node',text:t.text,node:n.id});
+  for(const art of illustrations){
+    if(!contained(art.box,{x:24,y:0,w:view.width-48,h:view.height-24},.5))findings.push({type:'illustration-outside-page',event:art.event});
+    for(const n of nodes)if(intersect(art.box,n.box,.5))findings.push({type:'illustration-node-collision',event:art.event,node:n.id});
+    for(const t of texts)if(intersect(art.box,t.box,.5))findings.push({type:'illustration-text-collision',event:art.event,text:t.text});
+  }
+  for(let i=0;i<illustrations.length;i++)for(let j=i+1;j<illustrations.length;j++)if(intersect(illustrations[i].box,illustrations[j].box,.5))findings.push({type:'illustration-overlap',a:illustrations[i].event,b:illustrations[j].event});
+  for(const rule of svg.querySelectorAll('[data-era-rule]')){
+    const b=bounds(rule),r={x:b.x,y:b.y-1,w:b.w,h:2};
+    for(const t of texts)if(t.owner==='page'&&intersect(r,t.box,.1))findings.push({type:'era-rule-text-collision',year:rule.dataset.eraRule,text:t.text});
+  }
   const points=d=>(d.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number).reduce((a,n,i,all)=>{if(i%2===0)a.push([n,all[i+1]]);return a},[]);
   for(const e of edges){
     const el=svg.querySelector(`[data-edge-id="${CSS.escape(e.id)}"]`);
@@ -89,8 +100,9 @@ AUDIT = r"""() => {
     const poly=points(fill.getAttribute('d'));
     for(const n of nodes)if(clippedArea(poly,n.box)>1)findings.push({type:'transition-fill-node-collision',edge:fill.dataset.transitionFill,node:n.id});
     for(const t of texts)if(t.owner==='page'&&clippedArea(poly,t.box)>1)findings.push({type:'transition-fill-text-collision',edge:fill.dataset.transitionFill,text:t.text});
+    for(const art of illustrations)if(clippedArea(poly,art.box)>1)findings.push({type:'transition-fill-illustration-collision',edge:fill.dataset.transitionFill,event:art.event});
   }
-  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,nodes,edges,events,unions,texts,metadata:meta};
+  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,nodes,edges,events,unions,texts,illustrations,metadata:meta};
 }"""
 
 

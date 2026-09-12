@@ -13,7 +13,7 @@ def build_timeline(base):
     d.update(pattern_id='usefulcharts-parallel-history',subtitle='Divisions, unions, and changing societies in five fictional regions, 1000–2000',frame_color='#665D48',
         time=dict(start=1000,end=2000,step=25),lanes=[dict(id=f'l{i}',label=v) for i,v in enumerate(labels)],periods=[],transitions=[],events=[],map_texture='milner-1850',
         eras=[dict(start=a,end=b,label=label) for a,b,label in [(1000,1200,'Early city states'),(1200,1450,'Maritime kingdoms'),(1450,1650,'Age of exchange'),(1650,1850,'Federations'),(1850,2000,'Modern age')]],
-        source_note='Original synthetic history · All periods, events, and relationships are invented. Museum objects are decorative samples; embedded provenance identifies the actual works.',
+        source_note='Original synthetic history · All periods, events, and relationships are invented. Illustrations: museum samples, Pearson Scott Foresman and Nordisk familjebok; provenance embedded.',
         reading_note='One linear year scale. Bridges: succession, division, or union; dotted links: uncertain continuity. Width is compositional, not a quantity. Decorative map: Milner, 1850.')
     # id, name, first year, last year, lane-relative x, width. The differing
     # number of simultaneous polities is part of the source, not a decoration.
@@ -94,9 +94,9 @@ def build_timeline(base):
         (1330,'The sea register','Ships carry standardized papers across the coast.'),
         (1434,'The maritime court','A single tribunal hears disputes between ports.'),
         (1516,'An ocean atlas','Chartmakers compare observations from distant voyages.'),
-        (1573,'The pearl observatory','Astronomers revise tables for offshore navigation.'),
+        (1573,'Pearl observatory','New tables guide offshore voyages.'),
         (1674,'Independent ports','Three administrations inherit the imperial docks.'),
-        (1741,'The lighthouse chain','Coastal signals make night passages more reliable.'),
+        (1741,'Offshore survey','Crews chart the outer banks.'),
         (1840,'Ocean steam routes','Regular services replace seasonal sail crossings.'),
         (1900,'Dockworkers organize','Port unions negotiate shared working conditions.'),
         (1955,'The coastal compact','Member ports adopt a joint commercial code.')],
@@ -128,11 +128,15 @@ def build_timeline(base):
         (1950,'The public university','Regional colleges unite under a common charter.')]]
     # An object is used once, where its subject supports the fictional event.
     # Its real identity and date remain in the SVG's embedded provenance.
-    art={(0,1):246,(1,7):57819,(2,6):90589,(2,9):27881,(3,4):60878,(4,6):15190}
+    art={(0,1):'object-246',(1,7):'object-57819',(2,6):'illustration-astrolabe-observation',
+         (2,8):'illustration-sextant-1904',(2,9):'object-27881',(3,4):'object-60878',(4,6):'object-15190'}
+    landmarks={(0,4),(1,2),(2,4),(3,5),(4,2),(4,9)}
+    major_periods={(0,'river'),(1,'silver'),(2,'maritime'),(3,'voyage'),(4,'birch')}
     for g,rows in enumerate(records):
         lookup={r[0]:r for r in rows}
         for key,label,a,b,x,w in rows:
-            d['periods'].append(dict(id=f'p{g}-{key}',label=label,start=a,end=b,lane=f'l{g}',group=f'g{g}',offset=x,bar_width=w,size=10.5 if w<45 else 13 if w<90 else 16))
+            size=20 if (g,key) in major_periods else 10.5 if w<45 else 13 if w<90 else 16
+            d['periods'].append(dict(id=f'p{g}-{key}',label=label,start=a,end=b,lane=f'l{g}',group=f'g{g}',offset=x,bar_width=w,size=size))
         for source,target,kind in links[g]:
             a,b=lookup[source],lookup[target]
             siblings=sorted([t for s,t,k in links[g] if s==source],key=lambda t:lookup[t][4])
@@ -158,7 +162,10 @@ def build_timeline(base):
             left,right=max(gaps,key=lambda p:p[1]-p[0])
             width=min(148,right-left);x=(left+right-width)/2
             e=dict(id=f'event-{g}-{i}',lane=f'l{g}',year=year,label=f'{year} · {label}',detail=detail,offset=x,width=width,size=10.6,detail_size=9.5,group=f'g{g}')
+            if (g,i) in landmarks:e.update(size=13.2,detail_size=10.2)
             if (g,i)==(2,10):e.update(label='1900 · Dock unions',detail='Workers agree common pay and work hours.',offset=1,width=62)
-            if image_id and width>=65:e.update(icon=f'object-{image_id}',art_size=min(70,width))
+            if image_id and width>=65:e.update(icon=image_id,art_size=min(120 if image_id.startswith('illustration-') else 70,width))
+            if (g,i)==(2,8):e['art_size']=65
+            if (g,i)==(2,6):e.update(art_width=120,art_height=82.65)
             d['events'].append(e)
     return d

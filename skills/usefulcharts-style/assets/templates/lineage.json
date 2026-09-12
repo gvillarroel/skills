@@ -1,0 +1,32 @@
+{
+  "id": "field-study-traditions",
+  "title": "A HISTORY OF FIELD STUDY",
+  "design": "editorial",
+  "mode": "lineage",
+  "layout": "auto",
+  "groups": [
+    {"id": "origin", "label": "Shared origin", "color": "#A6A18B"},
+    {"id": "botany", "label": "Botany", "color": "#A6C49B"},
+    {"id": "geology", "label": "Geology", "color": "#F4C948"}
+  ],
+  "nodes": [
+    {"id": "cabinet", "label": "The Common Cabinet", "detail": "1720 · A shared collection", "group": "origin"},
+    {"id": "garden", "label": "Garden Society", "detail": "1754 · Living collections", "group": "botany"},
+    {"id": "herbarium", "label": "Regional Herbarium", "detail": "1818 · Preserved specimens", "group": "botany"},
+    {"id": "seed", "label": "Seed Exchange", "detail": "1792 · Closed in 1851", "group": "botany"},
+    {"id": "survey", "label": "Mineral Survey", "detail": "1776 · Field records", "group": "geology"},
+    {"id": "museum", "label": "Geological Museum", "detail": "1840 · Public collections", "group": "geology", "emphasis": true, "icon": "book"},
+    {"id": "institute", "label": "Botanical Institute", "detail": "1880 · Garden and herbarium united", "group": "botany", "emphasis": true}
+  ],
+  "edges": [
+    {"id": "garden-founded", "source": "cabinet", "target": "garden", "kind": "branch"},
+    {"id": "survey-founded", "source": "cabinet", "target": "survey", "kind": "branch"},
+    {"id": "herbarium-founded", "source": "garden", "target": "herbarium", "kind": "branch"},
+    {"id": "seed-founded", "source": "garden", "target": "seed", "kind": "branch"},
+    {"id": "museum-founded", "source": "survey", "target": "museum", "kind": "succession"},
+    {"id": "garden-merged", "source": "garden", "target": "institute", "kind": "branch"},
+    {"id": "herbarium-merged", "source": "herbarium", "target": "institute", "kind": "branch"}
+  ],
+  "source_note": "Original synthetic history; institutions and dates are invented.",
+  "reading_note": "Solid links show branching; dash-dot links show succession. Two incoming links mark a merger. Vertical spacing is schematic, not elapsed time."
+}

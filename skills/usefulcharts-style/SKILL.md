@@ -5,49 +5,42 @@ description: Create editable educational posters inspired by UsefulCharts, with 
 
 # UsefulCharts-style posters
 
-Create an original information poster with a clear reading order, stable family colors, compact labels, and deliberate connector corridors. Use the user's data and wording. Treat UsefulCharts as a design reference; identify the result by its subject and author, without their logo or an implied affiliation. A cream background, colored boxes, and a condensed title do not establish a convincing resemblance.
+Create an original information poster with clear relationships, stable family colors, compact labels, and deliberate connector corridors. UsefulCharts is the design reference; identify the result by its subject and author. A cream background and colored boxes alone do not establish a convincing resemblance.
 
-## Choose and plan the composition
+## Select one construction route
 
-1. Identify the relationship model before drawing. Distinguish parentage, partnership, institutional branching, succession, and influence. A chronological neighbor is not automatically an ancestor. Record uncertain claims and sources; mark invented demonstration data visibly as synthetic.
-2. Read [editorial composition](references/editorial-composition.md) when matching this poster family. Choose a **genealogy** for generations and unions, **lineage** for branching categories or ideas, or **timeline** for comparable dated intervals. Read only the matching recipe in [pattern recipes](references/pattern-recipes.md).
-3. Design the page as a poster: a shallow dark title strip, continuous light chart field, most space reserved for relationships, and a quiet source footer. Use portrait 2:3 for a dense wall chart. Let source complexity determine the format; a short 20-record tree needs a compact composition, not a nearly empty giant canvas. Separate data from placement.
-4. Allocate space to family units and their actual descendants. Let an ending line release space, a large sibling group widen, and a marriage move the shared descendants. Reserve corridors for long connectors; fixed category columns should not dictate the whole composition. For timelines, derive every interval position from the same numeric year scale. For schematic rows, state that vertical spacing does not measure elapsed time.
+- **Lineage with 30 records or fewer, including institutional mergers:** read [compact lineage](references/compact-lineage.md) and adapt [the data-only template](assets/templates/lineage.json). Start with `design: editorial`, `mode: lineage`, `layout: auto`, unless the user explicitly prescribes positions. Omit dimensions, coordinates, custom imprint and font overrides for the first preview so the renderer measures the subject. Two incoming links do not make a small history a dense authored poster. Continue directly to rendering; use authored placement only if the preview exposes a specific composition problem.
+- **Genealogy with generations and partnerships:** read [cohort composition](references/cohort-composition.md) and the graph fields in [the editorial contract](references/editorial-contract.md). Use `layout: cohorts` to pack partnered family units; author difficult marriages after reviewing the result.
+- **Dense institutional history or a prescribed layout:** read [institutional composition](references/institution-composition.md) and the graph fields in [the editorial contract](references/editorial-contract.md). Write individual histories before coordinates, then compose the difficult mergers as local groups. Reserve the longest influence corridors.
+- **Parallel numeric timelines:** read the chronological section of [the editorial contract](references/editorial-contract.md). Place every interval and event on one numeric year scale. Preserve actual gaps, divisions and unions; reserve complete event and artwork bounds.
 
-## Build an editable result
+Use [the shared contract](references/data-contract.md) only for additional field detail or classic schematic compatibility. The classic renderer is not the poster aesthetic acceptance target. Use [composition critique](references/editorial-composition.md) when matching a dense reference, and [pattern recipes](references/pattern-recipes.md) when the task names a published pattern.
 
-For a deterministic SVG and a local zoomable HTML viewer, read [the input contract](references/data-contract.md), then write a JSON brief outside the skill directory. A small starting brief is available at [assets/templates/starter.json](assets/templates/starter.json); adapt it to the task rather than copying its subject or topology.
+## Preserve meaning while composing
 
-For the poster aesthetic, set **`design: editorial`** and read [the editorial renderer contract](references/editorial-contract.md). This profile provides compact typography, plain labels, colored cards, family pills, emblems, rounded routes, map/count insets, and annotated temporal ribbons. The older default renderer remains a simple schematic compatibility mode; it is not the aesthetic acceptance target.
+Distinguish descent, partnership, succession, branching, influence and uncertainty. A chronological neighbor is not automatically an ancestor. Keep every supplied label, date and relationship. Mark invented demonstration data visibly as synthetic; do not manufacture records or relationships to improve visual density.
 
-For an ordinary branching history, combine `design: editorial`, `mode: lineage`, and `layout: auto`: supply groups, nodes, and typed edges. For genealogy with explicit generations, `layout: cohorts` packs partnered units around their recorded parents and descendants; read [cohort composition](references/cohort-composition.md). Set a compact page for a small dataset. Use authored `x`/`y` placements when overlapping generations or complex marriages require deliberate composition. Vary emphasis by meaning rather than random decoration.
+Keep the source-defined category through mergers. Importance changes typography and treatment, not automatically the family color. Vary cards, plain names, family pills and selected illustrations by meaning. Give dates and explanatory consequences subordinate type. Keep explanatory prose concise rather than repeating every edge inside its target label.
 
-For a long brief, assemble a native Python/JavaScript object and write it with `json.dumps`/`JSON.stringify`; repeated hand-written JSON arrays are prone to mismatched closing brackets. Keep the source data human-readable with indentation.
+A short history needs a compact canvas. Reserve the portrait 2:3 wall format and dense 10–16-unit typography for substantial data. Let terminated branches release space; let large descendant groups widen. Avoid rigid persistent columns, equally weighted cards and illustrations placed at mechanical intervals. A schematic composition can have uneven gaps; a numeric time scale cannot.
 
-Run the bundled renderer without reading its implementation:
+## Render and inspect
+
+Write a UTF-8 JSON brief outside the skill bundle. For long data, assemble a Python or JavaScript object and serialize it rather than hand-writing repeated JSON arrays. Execute the bundled scripts using their documented command line; implementation and test files are maintenance resources, not prerequisites for ordinary use.
 
 ```sh
 uv run --script <skill-dir>/scripts/render_chart.py brief.json --svg poster.svg --html poster.html --report layout.json
+uv run --script <skill-dir>/scripts/audit_chart.py poster.svg --source brief.json --report browser.json --png poster.png
 ```
 
-Paths are explicit and relative to the working directory. Create exactly the paths requested by the user. The renderer has no third-party dependencies. It escapes labels, selects contrasting text, checks graph semantics, routes orthogonal lines around nodes, and fails on collisions it cannot repair. It never drops a node or edge to make a layout pass.
+Substitute exact requested paths. Both scripts create output parents. Keep footer notes to two short lines; leave implementation names and resource IDs out of the printable reading note. Image provenance is embedded automatically. The browser audit measures actual font geometry, source inventories, routes, time positions and illustration collisions. See [evaluation and repair](references/evaluation.md) if browser provisioning fails.
 
-Use explicit node widths and coordinates, lane positions, or the automatic layout to repair crowding. Editorial posters typically use 10–16-unit body type on an 1800-unit-wide canvas and must be inspected at intended print size; this is deliberately dense wall-chart typography. Do not shrink long labels repeatedly to rescue poor placement. The renderer's metrics are a preflight, not a visual quality verdict.
+**Open the final PNG with the image-reading tool.** Reading dimensions, metadata or an audit report does not inspect the preview. Check the whole page, the busiest merger, the longest label and the uncertain connection. Repair the brief, rerender, and inspect the final revision. Do not remove information or repeatedly shrink type to make a collision disappear.
 
-For unsupported structures, retain the same data and visual grammar and author an SVG directly or extend a copy of the renderer in the working directory. Do not force a cyclic network into a false tree. Keep full text, typed relationships, source notes, and a reproducible source file. The bundled browser audit supports its own SVG metadata; custom SVG requires equivalent geometry and semantic checks.
+If the model or tool explicitly cannot accept images, preserve the PNG for an external visual review and state that limitation. Importing Pillow or Matplotlib, converting to ASCII, or reading PNG headers cannot substitute for seeing the composition. The bundled browser audit already performs rendering and geometry checks without those packages.
 
-## Render, inspect, and repair
+Compare against a relevant reference at the same display width and compare a dense detail at the same relative scale. Write the three most visible differences before editing. Repair composition first, then hierarchy, connector rhythm, typography and artwork. Check actual transparency and the optical weight of illustrations at their placed size. A clean audit cannot override an obvious visual mismatch or prove indistinguishability.
 
-Run the browser audit for actual font geometry and export:
+For unsupported structures, retain the data and visual grammar and author an SVG directly or extend a copy of the renderer outside the bundle. Do not force a cyclic network into a false tree. Custom SVG needs equivalent geometry and semantic checks.
 
-```sh
-uv run --script <skill-dir>/scripts/audit_chart.py poster.svg --report browser.json --png poster.png
-```
-
-It uses Playwright Chromium (or installed Chrome/Edge); see [evaluation and repair](references/evaluation.md) for browser provisioning and the full rubric. Open the PNG with the available image-reading tool; the browser audit already supplies image rendering and measured geometry without Pillow. Inspect at page scale and zoom into the densest junction, longest label, and uncertain connection. Check the SVG/HTML at 100% zoom. Re-render after repairs and inspect the final output, not an earlier draft.
-
-Compare the final image beside a relevant reference at the same display width, then compare a dense detail at the same relative scale. Judge silhouette, asymmetry, focal hierarchy, supporting annotations, line weight, and texture separately from correctness. Identical chains, equally populated families, continuous uniform bars, and one card treatment everywhere are visible template artifacts. A clean audit cannot override an obvious aesthetic mismatch. Never claim an indistinguishable result or a numeric similarity percentage without the evidence to support it.
-
-Inspect the information texture as well: repeated dates across unrelated people, generic event snippets, and images placed at fixed intervals expose a template even when the outlines are clean. Start with coherent individual records, distinguish reigns from lifespans, and select landmarks from consequential events. Do not invent facts, children, divisions, or reunifications to manufacture asymmetry in a factual chart.
-
-Deliver the editable SVG, source JSON, a preview, and the viewer when useful. Explain what was verified and any unresolved limitation. A chart needs readable connected information, not just the frame and palette.
+Deliver the editable SVG, source JSON, preview and useful viewer. State what was verified and any remaining gap without inventing a similarity percentage or claiming unproven visual parity.

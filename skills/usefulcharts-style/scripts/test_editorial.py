@@ -36,6 +36,80 @@ def timeline():
 
 
 class EditorialTests(unittest.TestCase):
+    def test_compact_auto_measures_content_and_keeps_merger_category(self):
+        data=graph();data.update(layout='auto')
+        data.pop('width');data.pop('height')
+        for n in data['nodes']:
+            for k in ('x','y','width','style','icon'):n.pop(k,None)
+        data['nodes'].append(dict(id='merged',label='Regional Institute',group='red',detail='Two schools combined'))
+        data['edges']=[dict(id='a',source='root',target='left',kind='branch'),dict(id='b',source='root',target='right',kind='branch'),
+            dict(id='c',source='left',target='merged',kind='branch'),dict(id='d',source='right',target='merged',kind='branch')]
+        before=copy.deepcopy(data);poster=EditorialPoster(data);svg,report=poster.render();root=ET.fromstring(svg)
+        self.assertEqual(data,before);self.assertLess(poster.h,1200);self.assertEqual(poster.font,18)
+        merged=root.find('.//s:g[@data-node-id="merged"]',NS)
+        self.assertEqual(merged.attrib['data-group'],'red');self.assertEqual(merged.attrib['data-treatment'],'hero')
+        self.assertEqual((report['node_count'],report['edge_count']),(4,4))
+
+    def test_major_era_rules_leave_the_year_gutter_clear(self):
+        data=timeline();data['eras']=[dict(start=1200,end=1600,label='Middle era')]
+        poster=EditorialPoster(data);svg,_=poster.render();root=ET.fromstring(svg)
+        rule=root.find('.//s:path[@data-era-rule="1200"]',NS)
+        first_x=float(rule.attrib['d'].split()[1])
+        label=next(t for t in root.findall('.//s:text',NS) if t.text=='1200')
+        self.assertGreater(first_x,float(label.attrib['x'])+5)
+
+    def test_source_illustrations_embed_once_with_identity(self):
+        data=graph()
+        for node in data['nodes'][1:]:node.update(icon='illustration-astrolabe-observation',icon_width=25,width=170)
+        svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+        self.assertEqual(svg.count('data:image/svg+xml;base64,'),1)
+        self.assertEqual(len(root.findall('.//s:use',NS)),2)
+        credit=root.find('.//s:metadata[@data-artwork-source="astrolabe-observation.svg"]',NS)
+        self.assertIn('Pearson Scott Foresman',json.loads(credit.text)['creator'])
+        data['nodes'][1]['icon']='illustration-../../outside'
+        with self.assertRaisesRegex(ValueError,'Unknown source illustration'):EditorialPoster(data).render()
+
+    def test_timeline_artwork_cannot_cover_a_period(self):
+        data=timeline();data['events'][0].update(icon='illustration-sextant-1904',offset=0,width=65,art_size=60)
+        with self.assertRaisesRegex(ValueError,'artwork overlaps period'):EditorialPoster(data).render()
+
+    def test_rectangular_event_illustration_keeps_declared_viewport(self):
+        data=timeline();data['events'][0].update(icon='illustration-astrolabe-observation',art_width=160,art_height=110)
+        svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+        art=root.find('.//s:svg[@data-illustration-id="astrolabe-observation"]',NS)
+        self.assertEqual(art.attrib['viewBox'],'0 0 160 110')
+        use=art.find('s:use',NS)
+        self.assertEqual((use.attrib['width'],use.attrib['height']),('160','110'))
+        data['events'][0]['art_height']=-1
+        with self.assertRaisesRegex(ValueError,'positive dimensions'):EditorialPoster(data).render()
+
+    def test_map_has_an_adjacent_source_derived_key(self):
+        data=graph();data['insets']=[dict(kind='map',title='Regions',box=[90,780,450,350],countries={'FRA':'red','DEU':'blue'},legend=True)]
+        svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+        labels=[t for t in root.findall('.//s:text',NS) if t.text in ('Red','Blue')]
+        self.assertEqual({t.text for t in labels},{'Red','Blue'})
+        self.assertTrue(all(800<float(t.attrib['y'])<900 for t in labels))
+
+    def test_map_rejects_unresolved_categories(self):
+        data=graph();data['insets']=[dict(kind='map',title='Regions',box=[90,780,450,350],countries={'FRA':'missing'},legend=True)]
+        with self.assertRaisesRegex(ValueError,'unknown group'):EditorialPoster(data).render()
+
+    def test_isotype_can_include_a_small_named_category(self):
+        data=graph();data['insets']=[dict(kind='isotype',title='Records',box=[90,780,450,350],groups=['blue'])]
+        svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+        labels=[t.text for t in root.findall('.//s:text',NS)]
+        self.assertIn('Blue',labels);self.assertIn('1',labels)
+        data['insets'][0]['groups']=['blue','blue']
+        with self.assertRaisesRegex(ValueError,'unique known'):EditorialPoster(data).render()
+
+    def test_occupied_search_port_fails_with_the_neighbour(self):
+        data=graph();poster=EditorialPoster(data)
+        left=next(n for n in data['nodes'] if n['id']=='left');right=next(n for n in data['nodes'] if n['id']=='right')
+        left_height=poster.node_content(left,left['width'])[2]
+        right_height=poster.node_content(right,right['width'])[2]
+        right.update(x=left['x'],y=left['y']-left_height/2-12-right_height/2)
+        with self.assertRaisesRegex(ValueError,'crowded target port near right'):EditorialPoster(data).render()
+
     def test_cohorts_follow_family_units_and_preserve_all_records(self):
         data=graph();data.update(mode='genealogy',layout='cohorts',edges=[],unions=[])
         data['nodes']=[dict(id=f'p{i}',label=f'Person {i}',group='red',row=row,width=90,style='plain') for i,row in enumerate([0,0,1,1,1,1,1,2,2])]

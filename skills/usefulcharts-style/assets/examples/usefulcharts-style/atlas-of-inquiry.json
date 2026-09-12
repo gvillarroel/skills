@@ -43,3547 +43,3198 @@
       "color": "#A6A18B"
     }
   ],
-  "source_note": "Original synthetic study \u00b7 All people, institutions, events, dates, and relationships are invented. Vector illustrations are fictional.",
+  "source_note": "Original synthetic history \u00b7 All institutions, dates and relationships are invented. Source illustrations: Pearson Scott Foresman and Nordisk familjebok; provenance embedded.",
   "nodes": [
     {
       "id": "oral",
-      "label": "Oral calendars",
-      "detail": "",
-      "x": 900,
-      "y": 166,
-      "width": 80,
+      "label": "Seasonal calendars",
+      "founded": 860,
       "group": "g5",
+      "x": 888,
+      "y": 166,
+      "width": 81,
       "style": "plain",
-      "icon": null,
-      "icon_width": 32,
-      "size": 12
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "860 \u00b7 Oral tradition"
     },
     {
       "id": "craft",
-      "label": "Artisan traditions",
-      "detail": "",
-      "x": 776,
-      "y": 220,
-      "width": 84,
+      "label": "Artisan knowledge",
+      "founded": 940,
       "group": "g5",
+      "x": 764,
+      "y": 223,
+      "width": 90,
       "style": "plain",
-      "icon": null,
-      "icon_width": 32,
-      "size": 12
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "940 \u00b7 Workshops and guilds"
     },
     {
       "id": "record",
-      "label": "Written records",
-      "detail": "",
-      "x": 1012,
-      "y": 222,
-      "width": 82,
+      "label": "Written reckonings",
+      "founded": 962,
       "group": "g5",
+      "x": 1038,
+      "y": 238,
+      "width": 98,
       "style": "plain",
-      "icon": null,
-      "icon_width": 32,
-      "size": 12
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "962 \u00b7 Tables and chronicles"
     },
     {
-      "id": "measure",
-      "label": "Early measurement",
-      "detail": "c. 1080",
-      "x": 896,
-      "y": 293,
-      "width": 106,
+      "id": "instruments",
+      "label": "Measures and instruments",
+      "founded": 1018,
       "group": "g5",
-      "style": "pill",
-      "icon": null,
-      "icon_width": 32,
-      "size": 12
+      "x": 748,
+      "y": 311,
+      "width": 101,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1018"
     },
     {
-      "id": "study",
+      "id": "tables",
+      "label": "Calendar tables",
+      "founded": 1041,
+      "group": "g5",
+      "x": 1010,
+      "y": 326,
+      "width": 88,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1041"
+    },
+    {
+      "id": "natural",
       "label": "Schools of natural study",
-      "detail": "c. 1160",
-      "x": 899,
-      "y": 370,
-      "width": 128,
+      "founded": 1082,
       "group": "g5",
+      "x": 880,
+      "y": 404,
+      "width": 146,
       "style": "pill",
-      "icon": null,
-      "icon_width": 32,
-      "size": 12
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1082 \u00b7 Shared methods"
+    },
+    {
+      "id": "chroniclers",
+      "label": "Court chroniclers",
+      "founded": 1096,
+      "group": "g5",
+      "x": 1116,
+      "y": 419,
+      "width": 80,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1096 \u00b7 No institutional successors"
     },
     {
       "id": "inquiry",
-      "label": "COMMON INQUIRY",
-      "detail": "Five branches of study",
-      "x": 899,
-      "y": 461,
-      "width": 160,
+      "label": "THE HOUSE OF INQUIRY",
+      "founded": 1134,
       "group": "g5",
-      "style": "emblem",
+      "x": 875,
+      "y": 507,
+      "width": 201,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1134 \u00b7 Teachers, makers and observers",
       "icon": "book",
-      "icon_width": 32,
-      "size": 14
+      "icon_width": 37
     },
     {
       "id": "archive",
-      "label": "The shared archive",
-      "detail": "A common scholarly record",
-      "x": 899,
-      "y": 557,
-      "width": 136,
+      "label": "The common archive",
+      "founded": 1161,
       "group": "g5",
+      "x": 875,
+      "y": 592,
+      "width": 142,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1161 \u00b7 A shared scholarly record"
+    },
+    {
+      "id": "makers",
+      "label": "GUILD OF INSTRUMENT MAKERS",
+      "founded": 1193,
+      "group": "g2",
+      "x": 289,
+      "y": 694,
+      "width": 208,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1193 \u00b7 A charter for independent workshops",
+      "icon": "wheel",
+      "icon_width": 37
+    },
+    {
+      "id": "brass",
+      "label": "Brassworkers of Lorn",
+      "founded": 1228,
+      "group": "g2",
+      "x": 132,
+      "y": 828,
+      "width": 112,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1228 \u00b7 Balances and measures"
+    },
+    {
+      "id": "water",
+      "label": "Water-engine fraternity",
+      "founded": 1246,
+      "group": "g2",
+      "x": 336,
+      "y": 805,
+      "width": 126,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1246 \u00b7 Mills and pumps"
+    },
+    {
+      "id": "glass",
+      "label": "Corven glass furnaces",
+      "founded": 1281,
+      "group": "g2",
+      "x": 516,
+      "y": 850,
+      "width": 100,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1281 \u00b7 An independent craft"
+    },
+    {
+      "id": "scales",
+      "label": "Public assay office",
+      "founded": 1267,
+      "group": "g2",
+      "x": 100,
+      "y": 941,
+      "width": 88,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1267 \u00b7 Municipal standards"
+    },
+    {
+      "id": "dials",
+      "label": "Alder dial-makers",
+      "founded": 1275,
+      "group": "g2",
+      "x": 222,
+      "y": 925,
+      "width": 106,
       "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1275 \u00b7 Portable instruments",
+      "icon": "astrolabe",
+      "icon_width": 29
+    },
+    {
+      "id": "millwrights",
+      "label": "Fellowship of millwrights",
+      "founded": 1308,
+      "group": "g2",
+      "x": 345,
+      "y": 914,
+      "width": 102,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1308"
+    },
+    {
+      "id": "pumps",
+      "label": "Mine-drainage company",
+      "founded": 1322,
+      "group": "g2",
+      "x": 445,
+      "y": 991,
+      "width": 102,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1322 \u00b7 Closed after the floods"
+    },
+    {
+      "id": "clear-glass",
+      "label": "Clear-glass workshop",
+      "founded": 1314,
+      "group": "g2",
+      "x": 539,
+      "y": 1055,
+      "width": 90,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1314 \u00b7 Optical blanks"
+    },
+    {
+      "id": "balance",
+      "label": "College of Weights",
+      "founded": 1340,
+      "group": "g2",
+      "x": 106,
+      "y": 1066,
+      "width": 106,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1340 \u00b7 Public teaching begins"
+    },
+    {
+      "id": "clockmakers",
+      "label": "Brotherhood of Clockmakers",
+      "founded": 1351,
+      "group": "g2",
+      "x": 264,
+      "y": 1049,
+      "width": 149,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1351 \u00b7 The escapement dispute",
+      "icon": "gear",
+      "icon_width": 37
+    },
+    {
+      "id": "hydraulic",
+      "label": "School of Hydraulic Arts",
+      "founded": 1386,
+      "group": "g2",
+      "x": 399,
+      "y": 1137,
+      "width": 124,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1386 \u00b7 A teaching successor"
+    },
+    {
+      "id": "glass-union",
+      "label": "Union of Glassworkers",
+      "founded": 1392,
+      "group": "g2",
+      "x": 503,
+      "y": 1220,
+      "width": 106,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1392 \u00b7 Furnaces join a common guild"
+    },
+    {
+      "id": "testing",
+      "label": "Bureau of Testing",
+      "founded": 1420,
+      "group": "g2",
+      "x": 98,
+      "y": 1160,
+      "width": 89,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1420"
+    },
+    {
+      "id": "standards",
+      "label": "Lorn Standards Office",
+      "founded": 1446,
+      "group": "g2",
+      "x": 185,
+      "y": 1255,
+      "width": 97,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1446 \u00b7 Civic charter renewed"
+    },
+    {
+      "id": "pendulum",
+      "label": "The Pendulum Circle",
+      "founded": 1427,
+      "group": "g2",
+      "x": 370,
+      "y": 1225,
+      "width": 106,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1427 \u00b7 An informal research society"
+    },
+    {
+      "id": "horology",
+      "label": "Royal College of Horology",
+      "founded": 1458,
+      "group": "g2",
+      "x": 301,
+      "y": 1323,
+      "width": 149,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1458 \u00b7 Teaching and instrument repair",
+      "icon": "crown",
+      "icon_width": 29
+    },
+    {
+      "id": "canals",
+      "label": "Canal engineers",
+      "founded": 1462,
+      "group": "g2",
+      "x": 435,
+      "y": 1310,
+      "width": 92,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1462 \u00b7 Regional survey teams"
+    },
+    {
+      "id": "pump-school",
+      "label": "Alder Pump School",
+      "founded": 1498,
+      "group": "g2",
+      "x": 531,
+      "y": 1400,
+      "width": 95,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1498 \u00b7 Disbanded in 1531"
+    },
+    {
+      "id": "mechanical",
+      "label": "ACADEMY OF MECHANICAL ARTS",
+      "founded": 1544,
+      "group": "g2",
+      "x": 272,
+      "y": 1462,
+      "width": 202,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1544 \u00b7 The colleges unite",
+      "icon": "gear",
+      "icon_width": 37
+    },
+    {
+      "id": "metrology",
+      "label": "National Metrology Bureau",
+      "founded": 1571,
+      "group": "g2",
+      "x": 108,
+      "y": 1404,
+      "width": 114,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1571 \u00b7 Two civic offices combined"
+    },
+    {
+      "id": "engines",
+      "label": "Institute of Engines",
+      "founded": 1610,
+      "group": "g2",
+      "x": 326,
+      "y": 1572,
+      "width": 133,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1610 \u00b7 A separate technical college"
+    },
+    {
+      "id": "precision",
+      "label": "Precision Instrument Society",
+      "founded": 1628,
+      "group": "g2",
+      "x": 525,
+      "y": 1558,
+      "width": 120,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1628 \u00b7 Makers and observers collaborate"
+    },
+    {
+      "id": "engines-west",
+      "label": "Western Engine Works",
+      "founded": 1691,
+      "group": "g2",
+      "x": 338,
+      "y": 1683,
+      "width": 115,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1691 \u00b7 Transferred to the city in 1730"
+    },
+    {
+      "id": "rail",
+      "label": "College of Rail Engineering",
+      "founded": 1786,
+      "group": "g2",
+      "x": 429,
+      "y": 1772,
+      "width": 119,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1786 \u00b7 New transport faculty"
+    },
+    {
+      "id": "machine",
+      "label": "Machine Research Bureau",
+      "founded": 1842,
+      "group": "g2",
+      "x": 523,
+      "y": 1869,
+      "width": 111,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1842 \u00b7 A public laboratory"
+    },
+    {
+      "id": "calibration",
+      "label": "Central Calibration Service",
+      "founded": 1904,
+      "group": "g2",
+      "x": 110,
+      "y": 1521,
+      "width": 112,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1904 \u00b7 National measurement standards",
+      "icon": "wheel",
+      "icon_width": 29
+    },
+    {
+      "id": "sky",
+      "label": "COLLEGE OF THE NIGHT SKY",
+      "founded": 1187,
+      "group": "g0",
+      "x": 880,
+      "y": 724,
+      "width": 198,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1187 \u00b7 The first observatory charter",
+      "icon": "star",
+      "icon_width": 37
+    },
+    {
+      "id": "calendar",
+      "label": "Office of the Calendar",
+      "founded": 1216,
+      "group": "g0",
+      "x": 669,
+      "y": 848,
+      "width": 119,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1216 \u00b7 A civic appointment"
+    },
+    {
+      "id": "meridian",
+      "label": "Meridian Observatory",
+      "founded": 1239,
+      "group": "g0",
+      "x": 880,
+      "y": 848,
+      "width": 159,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1239 \u00b7 Daily positional records",
+      "icon": "observatory",
+      "icon_width": 29
+    },
+    {
+      "id": "watchers",
+      "label": "The Hill Watchers",
+      "founded": 1257,
+      "group": "g0",
+      "x": 1095,
+      "y": 842,
+      "width": 98,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1257 \u00b7 A lay observing circle"
+    },
+    {
+      "id": "almanac",
+      "label": "Almanac printers",
+      "founded": 1294,
+      "group": "g0",
+      "x": 615,
+      "y": 962,
+      "width": 87,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1294 \u00b7 Commercial tables"
+    },
+    {
+      "id": "equinox",
+      "label": "Equinox Commission",
+      "founded": 1310,
+      "group": "g0",
+      "x": 745,
+      "y": 1007,
+      "width": 105,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1310 \u00b7 An intermittent public body"
+    },
+    {
+      "id": "sunroom",
+      "label": "The Sun Room",
+      "founded": 1288,
+      "group": "g0",
+      "x": 884,
+      "y": 950,
+      "width": 88,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1288 \u00b7 Transit observations"
+    },
+    {
+      "id": "summit",
+      "label": "Summit Station",
+      "founded": 1336,
+      "group": "g0",
+      "x": 1032,
+      "y": 973,
+      "width": 93,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1336 \u00b7 Mountain observations"
+    },
+    {
+      "id": "nightbooks",
+      "label": "Night-book society",
+      "founded": 1362,
+      "group": "g0",
+      "x": 1130,
+      "y": 1065,
+      "width": 101,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1362 \u00b7 Records end in 1403"
+    },
+    {
+      "id": "newcalendar",
+      "label": "Institute of Calendar Reform",
+      "founded": 1384,
+      "group": "g0",
+      "x": 690,
+      "y": 1125,
+      "width": 155,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1384 \u00b7 The two traditions reconcile",
+      "icon": "sun",
+      "icon_width": 29
+    },
+    {
+      "id": "transits",
+      "label": "Transit Table Office",
+      "founded": 1411,
+      "group": "g0",
+      "x": 877,
+      "y": 1110,
+      "width": 104,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1411 \u00b7 A permanent observing service"
+    },
+    {
+      "id": "star-census",
+      "label": "The Star Census",
+      "founded": 1435,
+      "group": "g0",
+      "x": 1044,
+      "y": 1147,
+      "width": 104,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1435 \u00b7 A shared catalogue"
+    },
+    {
+      "id": "southern",
+      "label": "Southern Observatory",
+      "founded": 1470,
+      "group": "g0",
+      "x": 1172,
+      "y": 1222,
+      "width": 106,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1470 \u00b7 A new latitude station"
+    },
+    {
+      "id": "ephemerides",
+      "label": "Bureau of Ephemerides",
+      "founded": 1489,
+      "group": "g0",
+      "x": 621,
+      "y": 1243,
+      "width": 112,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1489 \u00b7 Published prediction tables"
+    },
+    {
+      "id": "computers",
+      "label": "The Human Computers",
+      "founded": 1517,
+      "group": "g0",
+      "x": 744,
+      "y": 1314,
+      "width": 101,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1517 \u00b7 Independent calculation teams"
+    },
+    {
+      "id": "observatories",
+      "label": "THE UNITED OBSERVATORIES",
+      "founded": 1552,
+      "group": "g0",
+      "x": 935,
+      "y": 1292,
+      "width": 238,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1552 \u00b7 The transit offices merge",
+      "icon": "illustration-astrolabe-observation",
+      "icon_width": 70
+    },
+    {
+      "id": "reformers",
+      "label": "Calendar reformers of Mere",
+      "founded": 1586,
+      "group": "g0",
+      "x": 651,
+      "y": 1413,
+      "width": 112,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1586 \u00b7 A short-lived dissenting school"
+    },
+    {
+      "id": "longitude",
+      "label": "Longitude Prize Board",
+      "founded": 1594,
+      "group": "g0",
+      "x": 1101,
+      "y": 1402,
+      "width": 126,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1594 \u00b7 Navigation problem, public reward"
+    },
+    {
+      "id": "meridian-net",
+      "label": "The Meridian Network",
+      "founded": 1618,
+      "group": "g0",
+      "x": 884,
+      "y": 1437,
+      "width": 125,
+      "style": "pill",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1618 \u00b7 Coordinated measurements"
+    },
+    {
+      "id": "north-station",
+      "label": "North Cape Station",
+      "founded": 1641,
+      "group": "g0",
+      "x": 720,
+      "y": 1542,
+      "width": 98,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1641"
+    },
+    {
+      "id": "valley",
+      "label": "Valley Observatory",
+      "founded": 1656,
+      "group": "g0",
+      "x": 857,
+      "y": 1552,
+      "width": 113,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1656 \u00b7 A local foundation"
+    },
+    {
+      "id": "island-station",
+      "label": "Island Transit House",
+      "founded": 1682,
+      "group": "g0",
+      "x": 1009,
+      "y": 1545,
+      "width": 107,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1682"
+    },
+    {
+      "id": "southern-survey",
+      "label": "Southern Sky Survey",
+      "founded": 1713,
+      "group": "g0",
+      "x": 1179,
+      "y": 1517,
+      "width": 110,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1713 \u00b7 Reuses the southern station"
+    },
+    {
+      "id": "variable",
+      "label": "Variable-star observers",
+      "founded": 1729,
+      "group": "g0",
+      "x": 706,
+      "y": 1680,
+      "width": 100,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1729 \u00b7 A correspondence network"
+    },
+    {
+      "id": "public-sky",
+      "label": "Public Observatory of Lorn",
+      "founded": 1765,
+      "group": "g0",
+      "x": 894,
+      "y": 1670,
+      "width": 171,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1765 \u00b7 The university opens its instruments",
+      "icon": "orbit",
+      "icon_width": 29
+    },
+    {
+      "id": "comet",
+      "label": "Comet correspondence",
+      "founded": 1774,
+      "group": "g0",
+      "x": 1068,
+      "y": 1666,
+      "width": 108,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1774 \u00b7 A voluntary network"
+    },
+    {
+      "id": "southern-tables",
+      "label": "Southern Tables Office",
+      "founded": 1809,
+      "group": "g0",
+      "x": 1180,
+      "y": 1768,
+      "width": 105,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1809 \u00b7 A national catalogue"
+    },
+    {
+      "id": "photometry",
+      "label": "Photometry Section",
+      "founded": 1837,
+      "group": "g0",
+      "x": 729,
+      "y": 1818,
+      "width": 99,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1837 \u00b7 New methods of measurement"
+    },
+    {
+      "id": "instruments-lab",
+      "label": "Observatory instrument shop",
+      "founded": 1851,
+      "group": "g0",
+      "x": 900,
+      "y": 1801,
+      "width": 123,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1851 \u00b7 Makers return to the observatory"
+    },
+    {
+      "id": "stellar",
+      "label": "Stellar Physics Society",
+      "founded": 1879,
+      "group": "g0",
+      "x": 1054,
+      "y": 1861,
+      "width": 115,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1879 \u00b7 A change in research program"
+    },
+    {
+      "id": "astronomical",
+      "label": "ASTRONOMICAL UNION",
+      "founded": 1908,
+      "group": "g0",
+      "x": 820,
+      "y": 1951,
+      "width": 189,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1908 \u00b7 Observatories and observers unite",
+      "icon": "star",
+      "icon_width": 37
+    },
+    {
+      "id": "radial",
+      "label": "Radial-velocity programme",
+      "founded": 1919,
+      "group": "g0",
+      "x": 1043,
+      "y": 1998,
+      "width": 118,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1919 \u00b7 A specialist working group"
+    },
+    {
+      "id": "southern-union",
+      "label": "Southern Astronomical Council",
+      "founded": 1933,
+      "group": "g0",
+      "x": 1191,
+      "y": 2085,
+      "width": 118,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1933 \u00b7 Regional observatories cooperate"
+    },
+    {
+      "id": "radio-sky",
+      "label": "Radio Sky Station",
+      "founded": 1947,
+      "group": "g0",
+      "x": 727,
+      "y": 2107,
+      "width": 109,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1947 \u00b7 An independent receiver array"
+    },
+    {
+      "id": "night-archive",
+      "label": "Night-sky archive",
+      "founded": 1956,
+      "group": "g0",
+      "x": 900,
+      "y": 2133,
+      "width": 103,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1956 \u00b7 Preserves the earlier ledgers"
+    },
+    {
+      "id": "space-science",
+      "label": "Institute of Space Science",
+      "founded": 1964,
+      "group": "g0",
+      "x": 751,
+      "y": 2251,
+      "width": 155,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1964 \u00b7 Space-borne instruments",
+      "icon": "orbit",
+      "icon_width": 29
+    },
+    {
+      "id": "stellar-centre",
+      "label": "Centre for Stellar Physics",
+      "founded": 1969,
+      "group": "g0",
+      "x": 1041,
+      "y": 2244,
+      "width": 125,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1969 \u00b7 A permanent institute"
+    },
+    {
+      "id": "sky-data",
+      "label": "Open Sky Data Service",
+      "founded": 1983,
+      "group": "g0",
+      "x": 898,
+      "y": 2360,
+      "width": 124,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1983 \u00b7 Catalogues are combined"
+    },
+    {
+      "id": "southern-array",
+      "label": "Southern Telescope Array",
+      "founded": 1988,
+      "group": "g0",
+      "x": 1158,
+      "y": 2410,
+      "width": 126,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1988 \u00b7 Three sites, one programme"
+    },
+    {
+      "id": "orbital",
+      "label": "Orbital Observatory Consortium",
+      "founded": 1997,
+      "group": "g0",
+      "x": 738,
+      "y": 2503,
+      "width": 148,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1997 \u00b7 Continuing international cooperation"
+    },
+    {
+      "id": "open-sky",
+      "label": "Open Sky Commons",
+      "founded": 2012,
+      "group": "g0",
+      "x": 1009,
+      "y": 2503,
+      "width": 161,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "2012 \u00b7 A shared public observing archive",
+      "icon": "star",
+      "icon_width": 37
+    },
+    {
+      "id": "seafarers",
+      "label": "FELLOWSHIP OF SEAFARERS",
+      "founded": 1224,
+      "group": "g1",
+      "x": 1454,
+      "y": 730,
+      "width": 207,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1224 \u00b7 A charter shared by coastal guilds",
+      "icon": "ship",
+      "icon_width": 37
+    },
+    {
+      "id": "pilots",
+      "label": "Lorn harbour pilots",
+      "founded": 1261,
+      "group": "g1",
+      "x": 1310,
+      "y": 858,
+      "width": 113,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1261 \u00b7 A municipal licence"
+    },
+    {
+      "id": "open-sea",
+      "label": "Open-sea masters",
+      "founded": 1286,
+      "group": "g1",
+      "x": 1520,
+      "y": 852,
+      "width": 101,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1286 \u00b7 Independent navigators"
+    },
+    {
+      "id": "boatmen",
+      "label": "River boatmen of Mere",
+      "founded": 1307,
+      "group": "g1",
+      "x": 1681,
+      "y": 918,
+      "width": 92,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1307 \u00b7 An inland tradition"
+    },
+    {
+      "id": "port-school",
+      "label": "The Port School",
+      "founded": 1338,
+      "group": "g1",
+      "x": 1240,
+      "y": 1003,
+      "width": 105,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1338 \u00b7 Apprentices begin formal study"
+    },
+    {
+      "id": "tide",
+      "label": "Tide recorders",
+      "founded": 1319,
+      "group": "g1",
+      "x": 1368,
+      "y": 957,
+      "width": 98,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1319"
+    },
+    {
+      "id": "pilotage",
+      "label": "COLLEGE OF PILOTAGE",
+      "founded": 1371,
+      "group": "g1",
+      "x": 1535,
+      "y": 1017,
+      "width": 185,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1371 \u00b7 The masters establish a school",
+      "icon": "illustration-sextant-1904",
+      "icon_width": 53
+    },
+    {
+      "id": "river-law",
+      "label": "River Navigation Board",
+      "founded": 1389,
+      "group": "g1",
+      "x": 1689,
+      "y": 1088,
+      "width": 93,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1389 \u00b7 Civic regulation"
+    },
+    {
+      "id": "charts",
+      "label": "Chamber of Sea Charts",
+      "founded": 1417,
+      "group": "g1",
+      "x": 1286,
+      "y": 1128,
+      "width": 125,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1417 \u00b7 Charts and astronomical tables"
+    },
+    {
+      "id": "coast-watch",
+      "label": "Coast-watch stations",
+      "founded": 1436,
+      "group": "g1",
+      "x": 1426,
+      "y": 1169,
+      "width": 101,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1436 \u00b7 A chain of local stations"
+    },
+    {
+      "id": "ocean",
+      "label": "Oceanic Academy",
+      "founded": 1463,
+      "group": "g1",
+      "x": 1557,
+      "y": 1200,
+      "width": 148,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1463 \u00b7 A public teaching foundation",
+      "icon": "ship",
+      "icon_width": 29
+    },
+    {
+      "id": "river-merger",
+      "label": "Inland Navigation Service",
+      "founded": 1502,
+      "group": "g1",
+      "x": 1685,
+      "y": 1287,
+      "width": 106,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1502 \u00b7 A regional public service"
+    },
+    {
+      "id": "soundings",
+      "label": "The Soundings Office",
+      "founded": 1521,
+      "group": "g1",
+      "x": 1325,
+      "y": 1296,
+      "width": 114,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1521 \u00b7 Hydrographic records"
+    },
+    {
+      "id": "beacons",
+      "label": "Lighthouse Commissioners",
+      "founded": 1534,
+      "group": "g1",
+      "x": 1445,
+      "y": 1370,
+      "width": 109,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1534 \u00b7 Beacons become a public duty"
+    },
+    {
+      "id": "pilot-union",
+      "label": "Union of Licensed Pilots",
+      "founded": 1583,
+      "group": "g1",
+      "x": 1634,
+      "y": 1447,
+      "width": 162,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1583 \u00b7 Coastal and inland licences converge",
+      "icon": "anchor",
+      "icon_width": 37
+    },
+    {
+      "id": "ocean-voyage",
+      "label": "Ocean-voyage School",
+      "founded": 1608,
+      "group": "g1",
+      "x": 1513,
+      "y": 1566,
+      "width": 111,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1608 \u00b7 Closed after the port fire"
+    },
+    {
+      "id": "channel",
+      "label": "Channel Pilot Service",
+      "founded": 1657,
+      "group": "g1",
+      "x": 1654,
+      "y": 1592,
+      "width": 110,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1657 \u00b7 A specialist service"
+    },
+    {
+      "id": "beacon-college",
+      "label": "College of Beacon Engineering",
+      "founded": 1684,
+      "group": "g1",
+      "x": 1445,
+      "y": 1654,
+      "width": 125,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1684 \u00b7 Lenses and signalling equipment"
+    },
+    {
+      "id": "harbour-board",
+      "label": "Lorn Harbour Board",
+      "founded": 1728,
+      "group": "g1",
+      "x": 1653,
+      "y": 1727,
+      "width": 109,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1728 \u00b7 Municipal reorganisation"
+    },
+    {
+      "id": "seamanship",
+      "label": "National School of Seamanship",
+      "founded": 1761,
+      "group": "g1",
+      "x": 1545,
+      "y": 1814,
+      "width": 162,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1761 \u00b7 Civil and naval instruction",
+      "icon": "ship",
+      "icon_width": 29
+    },
+    {
+      "id": "lifeboat",
+      "label": "Voluntary Lifeboat Society",
+      "founded": 1792,
+      "group": "g1",
+      "x": 1696,
+      "y": 1882,
+      "width": 91,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1792 \u00b7 An independent rescue service"
+    },
+    {
+      "id": "signals",
+      "label": "Maritime Signals Office",
+      "founded": 1826,
+      "group": "g1",
+      "x": 1437,
+      "y": 1889,
+      "width": 101,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1826 \u00b7 Standard signals adopted"
+    },
+    {
+      "id": "merchant",
+      "label": "Merchant Marine College",
+      "founded": 1858,
+      "group": "g1",
+      "x": 1555,
+      "y": 2001,
+      "width": 121,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1858 \u00b7 Civil instruction separates"
+    },
+    {
+      "id": "naval",
+      "label": "Naval Navigation School",
+      "founded": 1865,
+      "group": "g1",
+      "x": 1691,
+      "y": 2027,
+      "width": 90,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1865 \u00b7 Military instruction separates"
+    },
+    {
+      "id": "radio-sea",
+      "label": "Marine Radio Service",
+      "founded": 1902,
+      "group": "g1",
+      "x": 1416,
+      "y": 2062,
+      "width": 115,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1902 \u00b7 A new communication network"
+    },
+    {
+      "id": "port-lab",
+      "label": "Port Safety Laboratory",
+      "founded": 1921,
+      "group": "g1",
+      "x": 1550,
+      "y": 2126,
+      "width": 115,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1921 \u00b7 Research on navigation hazards"
+    },
+    {
+      "id": "rescue",
+      "label": "Sea Rescue Federation",
+      "founded": 1934,
+      "group": "g1",
+      "x": 1691,
+      "y": 2171,
+      "width": 101,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1934 \u00b7 Volunteer stations federate"
+    },
+    {
+      "id": "maritime",
+      "label": "MARITIME INSTITUTE",
+      "founded": 1951,
+      "group": "g1",
+      "x": 1513,
+      "y": 2257,
+      "width": 173,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1951 \u00b7 Research and communications unite",
+      "icon": "anchor",
+      "icon_width": 37
+    },
+    {
+      "id": "hydro-school",
+      "label": "Naval Hydrography School",
+      "founded": 1968,
+      "group": "g1",
+      "x": 1685,
+      "y": 2355,
+      "width": 110,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1968 \u00b7 A specialist successor"
+    },
+    {
+      "id": "sea-college",
+      "label": "College of Marine Systems",
+      "founded": 1986,
+      "group": "g1",
+      "x": 1423,
+      "y": 2436,
+      "width": 119,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1986 \u00b7 Teaching becomes autonomous"
+    },
+    {
+      "id": "ocean-safety",
+      "label": "Ocean Safety Authority",
+      "founded": 2001,
+      "group": "g1",
+      "x": 1568,
+      "y": 2513,
+      "width": 139,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "2001 \u00b7 A unified rescue and safety service",
+      "icon": "ship",
+      "icon_width": 29
+    },
+    {
+      "id": "naval-survey",
+      "label": "Naval Survey Unit",
+      "founded": 2009,
+      "group": "g1",
+      "x": 1704,
+      "y": 2511,
+      "width": 78,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "2009"
+    },
+    {
+      "id": "lenses",
+      "label": "The Lens Grinders",
+      "founded": 1405,
+      "group": "g3",
+      "x": 139,
+      "y": 1635,
+      "width": 125,
+      "style": "pill",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1405 \u00b7 A distinct trade"
+    },
+    {
+      "id": "light",
+      "label": "COLLEGE OF LIGHT",
+      "founded": 1491,
+      "group": "g3",
+      "x": 168,
+      "y": 1763,
+      "width": 179,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1491 \u00b7 An independent school of optical craft",
+      "icon": "lens",
+      "icon_width": 37
+    },
+    {
+      "id": "mirror",
+      "label": "Mirror makers of Tarn",
+      "founded": 1548,
+      "group": "g3",
+      "x": 100,
+      "y": 1885,
+      "width": 94,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1548 \u00b7 Workshop tradition"
+    },
+    {
+      "id": "refraction",
+      "label": "Circle of Refraction",
+      "founded": 1577,
+      "group": "g3",
+      "x": 263,
+      "y": 1883,
+      "width": 118,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1577 \u00b7 An experimental society"
+    },
+    {
+      "id": "telescope",
+      "label": "Long-tube workshop",
+      "founded": 1612,
+      "group": "g3",
+      "x": 411,
+      "y": 1959,
+      "width": 110,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1612 \u00b7 Optical instruments for observers"
+    },
+    {
+      "id": "glassworks",
+      "label": "Tarn Glassworks",
+      "founded": 1626,
+      "group": "g3",
+      "x": 110,
+      "y": 2010,
+      "width": 111,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1626 \u00b7 Commercial production"
+    },
+    {
+      "id": "camera",
+      "label": "Camera-obscura school",
+      "founded": 1641,
+      "group": "g3",
+      "x": 224,
+      "y": 2010,
+      "width": 103,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1641 \u00b7 A teaching circle"
+    },
+    {
+      "id": "spectrum",
+      "label": "The Spectrum Society",
+      "founded": 1679,
+      "group": "g3",
+      "x": 364,
+      "y": 2092,
+      "width": 159,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1679 \u00b7 Light studied as a physical problem",
+      "icon": "prism",
+      "icon_width": 29
+    },
+    {
+      "id": "opticians",
+      "label": "Guild of Practical Opticians",
+      "founded": 1706,
+      "group": "g3",
+      "x": 540,
+      "y": 2060,
+      "width": 130,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1706 \u00b7 An instrument trade"
+    },
+    {
+      "id": "glass-research",
+      "label": "Glass Research House",
+      "founded": 1750,
+      "group": "g3",
+      "x": 110,
+      "y": 2131,
+      "width": 108,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1750 \u00b7 Materials research"
+    },
+    {
+      "id": "silver-image",
+      "label": "Silver-image experimenters",
+      "founded": 1793,
+      "group": "g3",
+      "x": 234,
+      "y": 2194,
+      "width": 108,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1793 \u00b7 A voluntary correspondence group"
+    },
+    {
+      "id": "wave",
+      "label": "Wave Theory Seminar",
+      "founded": 1822,
+      "group": "g3",
+      "x": 355,
+      "y": 2207,
+      "width": 110,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1822 \u00b7 A university circle"
+    },
+    {
+      "id": "instrument-firm",
+      "label": "Fenn Optical Instruments",
+      "founded": 1836,
+      "group": "g3",
+      "x": 535,
+      "y": 2172,
+      "width": 129,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1836 \u00b7 A commercial successor"
+    },
+    {
+      "id": "photographic",
+      "label": "Photographic Society",
+      "founded": 1854,
+      "group": "g3",
+      "x": 149,
+      "y": 2296,
+      "width": 170,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1854 \u00b7 Experimenters and manufacturers unite",
+      "icon": "lens",
+      "icon_width": 29
+    },
+    {
+      "id": "optical-physics",
+      "label": "Institute of Optical Physics",
+      "founded": 1888,
+      "group": "g3",
+      "x": 370,
+      "y": 2325,
+      "width": 177,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1888 \u00b7 A permanent research institute",
+      "icon": "prism",
+      "icon_width": 37
+    },
+    {
+      "id": "medical-lenses",
+      "label": "Medical lens makers",
+      "founded": 1896,
+      "group": "g3",
+      "x": 555,
+      "y": 2287,
+      "width": 99,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1896 \u00b7 Specialist production"
+    },
+    {
+      "id": "cinema",
+      "label": "Moving-image Circle",
+      "founded": 1906,
+      "group": "g3",
+      "x": 100,
+      "y": 2417,
+      "width": 94,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1906 \u00b7 An independent association"
+    },
+    {
+      "id": "color",
+      "label": "Colour Laboratory",
+      "founded": 1923,
+      "group": "g3",
+      "x": 211,
+      "y": 2425,
+      "width": 106,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1923 \u00b7 Materials and perception"
+    },
+    {
+      "id": "laser",
+      "label": "Coherent Light Laboratory",
+      "founded": 1959,
+      "group": "g3",
+      "x": 374,
+      "y": 2431,
+      "width": 122,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1959 \u00b7 A new experimental programme"
+    },
+    {
+      "id": "microscopy",
+      "label": "Centre for Microscopy",
+      "founded": 1964,
+      "group": "g3",
+      "x": 543,
+      "y": 2418,
+      "width": 125,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1964 \u00b7 Biomedical imaging"
+    },
+    {
+      "id": "moving-image",
+      "label": "Institute of Moving Images",
+      "founded": 1978,
+      "group": "g3",
+      "x": 125,
+      "y": 2525,
+      "width": 138,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1978 \u00b7 Teaching and colour research merge"
+    },
+    {
+      "id": "photonics",
+      "label": "Photonics Research Council",
+      "founded": 1993,
+      "group": "g3",
+      "x": 332,
+      "y": 2525,
+      "width": 143,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1993 \u00b7 A research partnership",
+      "icon": "prism",
+      "icon_width": 29
+    },
+    {
+      "id": "imaging",
+      "label": "Imaging Sciences Institute",
+      "founded": 2004,
+      "group": "g3",
+      "x": 548,
+      "y": 2530,
+      "width": 152,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "2004 \u00b7 A multidisciplinary institute",
+      "icon": "lens",
+      "icon_width": 37
+    },
+    {
+      "id": "surveyors",
+      "label": "FELLOWSHIP OF SURVEYORS",
+      "founded": 1566,
+      "group": "g4",
+      "x": 1352,
+      "y": 1499,
+      "width": 179,
+      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1566 \u00b7 The chart office gains a land-survey branch",
+      "icon": "globe",
+      "icon_width": 37
+    },
+    {
+      "id": "fieldbooks",
+      "label": "Field-book exchange",
+      "founded": 1604,
+      "group": "g4",
+      "x": 1266,
+      "y": 1604,
+      "width": 102,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1604 \u00b7 A professional correspondence"
+    },
+    {
+      "id": "triangulation",
+      "label": "Triangulation Office",
+      "founded": 1643,
+      "group": "g4",
+      "x": 1361,
+      "y": 1741,
+      "width": 119,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1643 \u00b7 A state surveying service"
+    },
+    {
+      "id": "atlas-room",
+      "label": "The Atlas Room",
+      "founded": 1676,
+      "group": "g4",
+      "x": 1250,
+      "y": 1863,
+      "width": 114,
+      "style": "emblem",
+      "size": 11.5,
+      "detail_size": 8.2,
+      "detail": "1676 \u00b7 Collectors become publishers",
       "icon": "book",
-      "icon_width": 32,
-      "size": 14
+      "icon_width": 29
     },
     {
-      "id": "root-0",
-      "label": "Celestial Observatories",
-      "detail": "Calendars become systematic observations",
-      "x": 645.0,
-      "y": 728,
-      "width": 193,
-      "group": "g0",
+      "id": "land-register",
+      "label": "Land Registry Survey",
+      "founded": 1709,
+      "group": "g4",
+      "x": 1350,
+      "y": 1981,
+      "width": 98,
+      "style": "plain",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1709 \u00b7 Cadastral administration"
+    },
+    {
+      "id": "hydrography",
+      "label": "Hydrographic Bureau",
+      "founded": 1732,
+      "group": "g4",
+      "x": 1297,
+      "y": 2168,
+      "width": 134,
+      "style": "card",
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1732 \u00b7 Marine charts separate from land records"
+    },
+    {
+      "id": "geography",
+      "label": "GEOGRAPHICAL SOCIETY",
+      "founded": 1775,
+      "group": "g4",
+      "x": 1237,
+      "y": 2290,
+      "width": 190,
       "style": "hero",
-      "icon": "star",
-      "icon_width": 41,
-      "size": 16,
-      "detail_size": 9.5
-    },
-    {
-      "id": "school-0-0-0",
-      "label": "Lorn Sky Office",
-      "detail": "est. 1258",
-      "x": 259.08000000000004,
-      "y": 838.0,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-0-1",
-      "label": "Alder Sky Office",
-      "detail": "est. 1261",
-      "x": 645.0,
-      "y": 845.2743794146055,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-0-2",
-      "label": "Bayeux Sky Office",
-      "detail": "est. 1255",
-      "x": 1030.92,
-      "y": 831.9455800375366,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-1-0",
-      "label": "Rosene Sun College",
-      "detail": "est. 1305",
-      "x": 162.59999999999997,
-      "y": 950.3799598928324,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-1-1",
-      "label": "Varda Sun College",
-      "detail": "est. 1301",
-      "x": 355.56,
-      "y": 939.593734178483,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-1-2",
-      "label": "Mere Sun College",
-      "detail": "est. 1299",
-      "x": 548.52,
-      "y": 936.7556773954368,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-1-3",
-      "label": "Tarn Sun College",
-      "detail": "est. 1305",
-      "x": 741.48,
-      "y": 949.9039998141978,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-1-4",
-      "label": "Linden Sun College",
-      "detail": "est. 1302",
-      "x": 934.44,
-      "y": 941.7987910363055,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-1-5",
-      "label": "Iona Sun College",
-      "detail": "est. 1299",
-      "x": 1127.4,
-      "y": 935.3963826024925,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-2-0",
-      "label": "Oris Star House",
-      "detail": "est. 1346",
-      "x": 162.59999999999997,
-      "y": 1047.9289600644788,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-2-1",
-      "label": "Brune Star House",
-      "detail": "est. 1342",
-      "x": 283.2,
-      "y": 1039.128605802695,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-2-2",
-      "label": "Edda Star House",
-      "detail": "est. 1348",
-      "x": 403.79999999999995,
-      "y": 1052.0558927897503,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-2-3",
-      "label": "Haven Star House",
-      "detail": "est. 1347",
-      "x": 524.4,
-      "y": 1050.096947881934,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-2-4",
-      "label": "Sorn Star House",
-      "detail": "est. 1342",
-      "x": 645.0,
-      "y": 1038.8000783475943,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-2-5",
-      "label": "Fenn Star House",
-      "detail": "est. 1347",
-      "x": 765.6,
-      "y": 1050.1613362946132,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-2-6",
-      "label": "Luma Star House",
-      "detail": "est. 1348",
-      "x": 886.2,
-      "y": 1052.002302721257,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-2-7",
-      "label": "Neris Star House",
-      "detail": "est. 1342",
-      "x": 1006.8,
-      "y": 1039.1088200649635,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-2-8",
-      "label": "Oriel Star House",
-      "detail": "est. 1346",
-      "x": 1127.4,
-      "y": 1047.9990176773035,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-3-0",
-      "label": "Neris Sky Survey",
-      "detail": "est. 1386",
-      "x": 109.0,
-      "y": 1143.3797590586792,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-3-1",
-      "label": "Oriel Sky Survey",
-      "detail": "est. 1390",
-      "x": 216.2,
-      "y": 1152.9209599047026,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-3-2",
-      "label": "Rook Sky Survey",
-      "detail": "est. 1392",
-      "x": 323.40000000000003,
-      "y": 1157.587896900988,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-3-3",
-      "label": "Silva Sky Survey",
-      "detail": "est. 1387",
-      "x": 430.6,
-      "y": 1144.1624339202267,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-3-4",
-      "label": "Thorn Sky Survey",
-      "detail": "est. 1389",
-      "x": 537.8000000000001,
-      "y": 1150.6694248211904,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-3-5",
-      "label": "Vey Sky Survey",
-      "detail": "est. 1393",
-      "x": 645.0,
-      "y": 1158.6791604441976,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-3-6",
-      "label": "Wren Sky Survey",
-      "detail": "est. 1387",
-      "x": 752.1999999999999,
-      "y": 1145.505717261047,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-3-7",
-      "label": "Yarrow Sky Survey",
-      "detail": "est. 1388",
-      "x": 859.4,
-      "y": 1148.4601550522432,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-3-8",
-      "label": "Aster Sky Survey",
-      "detail": "est. 1393",
-      "x": 966.6,
-      "y": 1159.1746383542304,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-3-9",
-      "label": "Cairn Sky Survey",
-      "detail": "est. 1388",
-      "x": 1073.8,
-      "y": 1147.302603900316,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-3-10",
-      "label": "Elvan Sky Survey",
-      "detail": "est. 1388",
-      "x": 1181.0,
-      "y": 1146.469139761079,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-4-0",
-      "label": "Yarrow Transit House",
-      "detail": "est. 1432",
-      "x": 109.0,
-      "y": 1253.3646760144086,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-4-1",
-      "label": "Aster Transit House",
-      "detail": "est. 1437",
-      "x": 228.1111111111111,
-      "y": 1263.5148659729869,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-4-2",
-      "label": "Cairn Transit House",
-      "detail": "est. 1432",
-      "x": 347.22222222222223,
-      "y": 1251.247831112885,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-4-3",
-      "label": "Elvan Transit House",
-      "detail": "est. 1432",
-      "x": 466.3333333333333,
-      "y": 1251.3074166559963,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-4-4",
-      "label": "Glen Transit House",
-      "detail": "est. 1437",
-      "x": 585.4444444444445,
-      "y": 1263.5248588455588,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-4-5",
-      "label": "Isen Transit House",
-      "detail": "est. 1432",
-      "x": 704.5555555555555,
-      "y": 1253.2967734666795,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-4-6",
-      "label": "Leven Transit House",
-      "detail": "est. 1431",
-      "x": 823.6666666666666,
-      "y": 1249.5921020258265,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-4-7",
-      "label": "Mora Transit House",
-      "detail": "est. 1436",
-      "x": 942.7777777777778,
-      "y": 1262.903562005821,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-4-8",
-      "label": "Nacre Transit House",
-      "detail": "est. 1433",
-      "x": 1061.888888888889,
-      "y": 1255.5291895256767,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-4-9",
-      "label": "Lorn Transit House",
-      "detail": "est. 1430",
-      "x": 1181.0,
-      "y": 1248.355373103947,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-5-0",
-      "label": "Mora Deep Sky Lab",
-      "detail": "est. 1480",
-      "x": 109.0,
-      "y": 1367.5039998141979,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-5-1",
-      "label": "Nacre Deep Sky Lab",
-      "detail": "est. 1477",
-      "x": 243.0,
-      "y": 1359.3987910363055,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-5-2",
-      "label": "Lorn Deep Sky Lab",
-      "detail": "est. 1474",
-      "x": 377.0,
-      "y": 1352.9963826024925,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-5-3",
-      "label": "Alder Deep Sky Lab",
-      "detail": "est. 1480",
-      "x": 511.0,
-      "y": 1366.430275412413,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-5-4",
-      "label": "Bayeux Deep Sky Lab",
-      "detail": "est. 1478",
-      "x": 645.0,
-      "y": 1361.6517398555025,
-      "width": 89,
-      "group": "g0",
-      "style": "emblem",
-      "size": 10,
-      "icon": "star",
-      "icon_width": 18
-    },
-    {
-      "id": "school-0-5-5",
-      "label": "Corven Deep Sky Lab",
-      "detail": "est. 1474",
-      "x": 779.0,
-      "y": 1352.1949919562549,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-5-6",
-      "label": "Dale Deep Sky Lab",
-      "detail": "est. 1479",
-      "x": 913.0,
-      "y": 1364.8443189577567,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-5-7",
-      "label": "Everen Deep Sky Lab",
-      "detail": "est. 1479",
-      "x": 1047.0,
-      "y": 1363.7731120247536,
-      "width": 85,
-      "group": "g0",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-0-5-8",
-      "label": "Falken Deep Sky Lab",
-      "detail": "est. 1474",
-      "x": 1181.0,
-      "y": 1352.0153437761649,
-      "width": 85,
-      "group": "g0",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "root-1",
-      "label": "Maritime Academies",
-      "detail": "Pilot guilds formalize sea knowledge",
-      "x": 1490.0,
-      "y": 800,
-      "width": 193,
-      "group": "g1",
-      "style": "hero",
-      "icon": "ship",
-      "icon_width": 41,
-      "size": 16,
-      "detail_size": 9.5
-    },
-    {
-      "id": "school-1-0-0",
-      "label": "Everen Pilot Guild",
-      "detail": "est. 1291",
-      "x": 1370.48,
-      "y": 916.7317678784632,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-0-1",
-      "label": "Falken Pilot Guild",
-      "detail": "est. 1289",
-      "x": 1609.52,
-      "y": 911.128960064479,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-1-0",
-      "label": "Iona Tide School",
-      "detail": "est. 1329",
-      "x": 1324.0,
-      "y": 1007.5150498801044,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-1-1",
-      "label": "Keld Tide School",
-      "detail": "est. 1324",
-      "x": 1490.0,
-      "y": 994.907031785952,
-      "width": 89,
-      "group": "g1",
-      "style": "emblem",
-      "size": 10,
-      "icon": "ship",
-      "icon_width": 18
-    },
-    {
-      "id": "school-1-1-2",
-      "label": "Oris Tide School",
-      "detail": "est. 1328",
-      "x": 1656.0,
-      "y": 1004.4482326319753,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-2-0",
-      "label": "Fenn Chart Office",
-      "detail": "est. 1364",
-      "x": 1324.0,
-      "y": 1089.400125492082,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-2-1",
-      "label": "Luma Chart Office",
-      "detail": "est. 1365",
-      "x": 1490.0,
-      "y": 1093.2192214689542,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-2-2",
-      "label": "Neris Chart Office",
-      "detail": "est. 1369",
-      "x": 1656.0,
-      "y": 1103.3694114275324,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-3-0",
-      "label": "Vey Sea College",
-      "detail": "est. 1403",
-      "x": 1324.0,
-      "y": 1182.5374955772552,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-3-1",
-      "label": "Wren Sea College",
-      "detail": "est. 1408",
-      "x": 1656.0,
-      "y": 1195.685817996016,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-4-0",
-      "label": "Isen Harbor Board",
-      "detail": "est. 1446",
-      "x": 1324.0,
-      "y": 1286.1649836988413,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-4-1",
-      "label": "Leven Harbor Board",
-      "detail": "est. 1445",
-      "x": 1490.0,
-      "y": 1284.206038791025,
-      "width": 89,
-      "group": "g1",
-      "style": "emblem",
-      "size": 10,
-      "icon": "ship",
-      "icon_width": 18
-    },
-    {
-      "id": "school-1-4-2",
-      "label": "Mora Harbor Board",
-      "detail": "est. 1441",
-      "x": 1656.0,
-      "y": 1272.9091692566853,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-5-0",
-      "label": "Corven Ocean School",
-      "detail": "est. 1486",
-      "x": 1324.0,
-      "y": 1380.0242605373514,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-5-1",
-      "label": "Dale Ocean School",
-      "detail": "est. 1480",
-      "x": 1490.0,
-      "y": 1366.5987975565902,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-5-2",
-      "label": "Everen Ocean School",
-      "detail": "est. 1483",
-      "x": 1656.0,
-      "y": 1373.105788457554,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-6-0",
-      "label": "Tarn Pilot Union",
-      "detail": "est. 1520",
-      "x": 1324.0,
-      "y": 1462.0114674765216,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-6-1",
-      "label": "Linden Pilot Union",
-      "detail": "est. 1520",
-      "x": 1490.0,
-      "y": 1462.071053019633,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-6-2",
-      "label": "Iona Pilot Union",
-      "detail": "est. 1525",
-      "x": 1656.0,
-      "y": 1474.2884952091954,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-7-0",
-      "label": "Haven Tide Institute",
-      "detail": "est. 1558",
-      "x": 1324.0,
-      "y": 1552.0872916934015,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-7-1",
-      "label": "Sorn Tide Institute",
-      "detail": "est. 1564",
-      "x": 1656.0,
-      "y": 1565.521184503322,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-8-0",
-      "label": "Silva Sea Survey",
-      "detail": "est. 1601",
-      "x": 1324.0,
-      "y": 1655.1795181127952,
-      "width": 89,
-      "group": "g1",
-      "style": "emblem",
-      "size": 10,
-      "icon": "ship",
-      "icon_width": 18
-    },
-    {
-      "id": "school-1-8-1",
-      "label": "Thorn Sea Survey",
-      "detail": "est. 1602",
-      "x": 1490.0,
-      "y": 1657.020484539439,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-8-2",
-      "label": "Vey Sea Survey",
-      "detail": "est. 1597",
-      "x": 1656.0,
-      "y": 1644.1270018831456,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-9-0",
-      "label": "Elvan Mariners Guild",
-      "detail": "est. 1642",
-      "x": 1324.0,
-      "y": 1752.024614989652,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-9-1",
-      "label": "Glen Mariners Guild",
-      "detail": "est. 1636",
-      "x": 1490.0,
-      "y": 1738.8511718065015,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-9-2",
-      "label": "Isen Mariners Guild",
-      "detail": "est. 1638",
-      "x": 1656.0,
-      "y": 1741.8056095976976,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-10-0",
-      "label": "Alder Port Academy",
-      "detail": "est. 1677",
-      "x": 1324.0,
-      "y": 1834.9695007394068,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-10-1",
-      "label": "Bayeux Port Academy",
-      "detail": "est. 1675",
-      "x": 1656.0,
-      "y": 1831.2648292985539,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-11-0",
-      "label": "Varda Route Service",
-      "detail": "est. 1713",
-      "x": 1324.0,
-      "y": 1922.1949919562549,
-      "width": 89,
-      "group": "g1",
-      "style": "emblem",
-      "size": 10,
-      "icon": "ship",
-      "icon_width": 18
-    },
-    {
-      "id": "school-1-11-1",
-      "label": "Mere Route Service",
-      "detail": "est. 1719",
-      "x": 1490.0,
-      "y": 1934.8443189577567,
-      "width": 85,
-      "group": "g1",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-1-11-2",
-      "label": "Tarn Route Service",
-      "detail": "est. 1718",
-      "x": 1656.0,
-      "y": 1933.7731120247536,
-      "width": 85,
-      "group": "g1",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "root-2",
-      "label": "Schools of Mechanical Arts",
-      "detail": "Instrument makers organize workshops",
-      "x": 645.0,
-      "y": 1510,
-      "width": 193,
-      "group": "g2",
-      "style": "hero",
-      "icon": "wheel",
-      "icon_width": 41,
-      "size": 16,
-      "detail_size": 9.5
-    },
-    {
-      "id": "school-2-0-0",
-      "label": "Tarn Tool Guild",
-      "detail": "est. 1589",
-      "x": 259.08000000000004,
-      "y": 1627.2743794146054,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-0-1",
-      "label": "Linden Tool Guild",
-      "detail": "est. 1584",
-      "x": 516.36,
-      "y": 1613.9455800375365,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-0-2",
-      "label": "Iona Tool Guild",
-      "detail": "est. 1585",
-      "x": 773.64,
-      "y": 1617.7646760144087,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-0-3",
-      "label": "Keld Tool Guild",
-      "detail": "est. 1590",
-      "x": 1030.92,
-      "y": 1627.914865972987,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-1-0",
-      "label": "Haven Water School",
-      "detail": "est. 1618",
-      "x": 162.59999999999997,
-      "y": 1695.193734178483,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-1-1",
-      "label": "Sorn Water School",
-      "detail": "est. 1617",
-      "x": 355.56,
-      "y": 1692.355677395437,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-1-2",
-      "label": "Fenn Water School",
-      "detail": "est. 1622",
-      "x": 548.52,
-      "y": 1705.5039998141979,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-1-3",
-      "label": "Luma Water School",
-      "detail": "est. 1619",
-      "x": 741.48,
-      "y": 1697.3987910363055,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-1-4",
-      "label": "Neris Water School",
-      "detail": "est. 1616",
-      "x": 934.44,
-      "y": 1690.9963826024925,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-1-5",
-      "label": "Oriel Water School",
-      "detail": "est. 1622",
-      "x": 1127.4,
-      "y": 1704.430275412413,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-2-0",
-      "label": "Silva Clock House",
-      "detail": "est. 1649",
-      "x": 162.59999999999997,
-      "y": 1768.328605802695,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-2-1",
-      "label": "Thorn Clock House",
-      "detail": "est. 1654",
-      "x": 300.4285714285714,
-      "y": 1781.2558927897503,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-2-2",
-      "label": "Vey Clock House",
-      "detail": "est. 1653",
-      "x": 438.25714285714287,
-      "y": 1779.296947881934,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-2-3",
-      "label": "Wren Clock House",
-      "detail": "est. 1649",
-      "x": 576.0857142857143,
-      "y": 1768.0000783475944,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-2-4",
-      "label": "Yarrow Clock House",
-      "detail": "est. 1653",
-      "x": 713.9142857142857,
-      "y": 1779.3613362946132,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-2-5",
-      "label": "Aster Clock House",
-      "detail": "est. 1654",
-      "x": 851.7428571428571,
-      "y": 1781.202302721257,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-2-6",
-      "label": "Cairn Clock House",
-      "detail": "est. 1649",
-      "x": 989.5714285714286,
-      "y": 1768.3088200649636,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-2-7",
-      "label": "Elvan Clock House",
-      "detail": "est. 1652",
-      "x": 1127.4,
-      "y": 1777.1990176773036,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-3-0",
-      "label": "Elvan Engine Works",
-      "detail": "est. 1685",
-      "x": 109.0,
-      "y": 1855.7209599047026,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-3-1",
-      "label": "Glen Engine Works",
-      "detail": "est. 1687",
-      "x": 228.1111111111111,
-      "y": 1860.387896900988,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-3-2",
-      "label": "Isen Engine Works",
-      "detail": "est. 1682",
-      "x": 347.22222222222223,
-      "y": 1846.9624339202267,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-3-3",
-      "label": "Leven Engine Works",
-      "detail": "est. 1684",
-      "x": 466.3333333333333,
-      "y": 1853.4694248211904,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-3-4",
-      "label": "Mora Engine Works",
-      "detail": "est. 1688",
-      "x": 585.4444444444445,
-      "y": 1861.4791604441975,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-3-5",
-      "label": "Nacre Engine Works",
-      "detail": "est. 1682",
-      "x": 704.5555555555555,
-      "y": 1848.305717261047,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-3-6",
-      "label": "Lorn Engine Works",
-      "detail": "est. 1684",
-      "x": 823.6666666666666,
-      "y": 1851.2601550522431,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-3-7",
-      "label": "Alder Engine Works",
-      "detail": "est. 1688",
-      "x": 942.7777777777778,
-      "y": 1861.9746383542304,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-3-8",
-      "label": "Bayeux Engine Works",
-      "detail": "est. 1683",
-      "x": 1061.888888888889,
-      "y": 1850.102603900316,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-3-9",
-      "label": "Corven Engine Works",
-      "detail": "est. 1683",
-      "x": 1181.0,
-      "y": 1849.269139761079,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-4-0",
-      "label": "Alder Power College",
-      "detail": "est. 1721",
-      "x": 109.0,
-      "y": 1939.914865972987,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-4-1",
-      "label": "Bayeux Power College",
-      "detail": "est. 1716",
-      "x": 216.2,
-      "y": 1927.6478311128851,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-4-2",
-      "label": "Corven Power College",
-      "detail": "est. 1716",
-      "x": 323.40000000000003,
-      "y": 1927.7074166559964,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-4-3",
-      "label": "Dale Power College",
-      "detail": "est. 1721",
-      "x": 430.6,
-      "y": 1939.924858845559,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-4-4",
-      "label": "Everen Power College",
-      "detail": "est. 1716",
-      "x": 537.8000000000001,
-      "y": 1929.6967734666796,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-4-5",
-      "label": "Falken Power College",
-      "detail": "est. 1715",
-      "x": 645.0,
-      "y": 1925.9921020258266,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-4-6",
-      "label": "Rosene Power College",
-      "detail": "est. 1721",
-      "x": 752.1999999999999,
-      "y": 1939.303562005821,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-4-7",
-      "label": "Varda Power College",
-      "detail": "est. 1717",
-      "x": 859.4,
-      "y": 1931.9291895256767,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-4-8",
-      "label": "Mere Power College",
-      "detail": "est. 1714",
-      "x": 966.6,
-      "y": 1924.755373103947,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-4-9",
-      "label": "Tarn Power College",
-      "detail": "est. 1720",
-      "x": 1073.8,
-      "y": 1938.100467603837,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-4-10",
-      "label": "Linden Power College",
-      "detail": "est. 1718",
-      "x": 1181.0,
-      "y": 1934.1672463064629,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-5-0",
-      "label": "Varda Design Office",
-      "detail": "est. 1750",
-      "x": 109.0,
-      "y": 2009.3987910363055,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-5-1",
-      "label": "Mere Design Office",
-      "detail": "est. 1747",
-      "x": 228.1111111111111,
-      "y": 2002.9963826024925,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-5-2",
-      "label": "Tarn Design Office",
-      "detail": "est. 1753",
-      "x": 347.22222222222223,
-      "y": 2016.430275412413,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-5-3",
-      "label": "Linden Design Office",
-      "detail": "est. 1751",
-      "x": 466.3333333333333,
-      "y": 2011.6517398555025,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-5-4",
-      "label": "Iona Design Office",
-      "detail": "est. 1747",
-      "x": 585.4444444444445,
-      "y": 2002.1949919562549,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-5-5",
-      "label": "Keld Design Office",
-      "detail": "est. 1752",
-      "x": 704.5555555555555,
-      "y": 2014.8443189577567,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-5-6",
-      "label": "Oris Design Office",
-      "detail": "est. 1752",
-      "x": 823.6666666666666,
-      "y": 2013.7731120247536,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-5-7",
-      "label": "Brune Design Office",
-      "detail": "est. 1747",
-      "x": 942.7777777777778,
-      "y": 2002.0153437761649,
-      "width": 85,
-      "group": "g2",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-2-5-8",
-      "label": "Edda Design Office",
-      "detail": "est. 1751",
-      "x": 1061.888888888889,
-      "y": 2012.8724668321775,
-      "width": 89,
-      "group": "g2",
-      "style": "emblem",
-      "size": 10,
-      "icon": "wheel",
-      "icon_width": 18
-    },
-    {
-      "id": "school-2-5-9",
-      "label": "Haven Design Office",
-      "detail": "est. 1753",
-      "x": 1181.0,
-      "y": 2015.5939202532409,
-      "width": 85,
-      "group": "g2",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "root-3",
-      "label": "Colleges of Light",
-      "detail": "Glassmakers develop optical methods",
-      "x": 362.5,
-      "y": 2140,
-      "width": 193,
-      "group": "g3",
-      "style": "hero",
-      "icon": "lens",
-      "icon_width": 41,
-      "size": 16,
-      "detail_size": 9.5
-    },
-    {
-      "id": "school-3-0-0",
-      "label": "Brune Glass Guild",
-      "detail": "est. 1851",
-      "x": 179.98000000000002,
-      "y": 2251.128960064479,
-      "width": 89,
-      "group": "g3",
-      "style": "emblem",
-      "size": 10,
-      "icon": "lens",
-      "icon_width": 18
-    },
-    {
-      "id": "school-3-0-1",
-      "label": "Edda Glass Guild",
-      "detail": "est. 1848",
-      "x": 362.5,
-      "y": 2242.3286058026947,
-      "width": 85,
-      "group": "g3",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-0-2",
-      "label": "Haven Glass Guild",
-      "detail": "est. 1853",
-      "x": 545.02,
-      "y": 2255.2558927897503,
-      "width": 85,
-      "group": "g3",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-1-0",
-      "label": "Oriel Lens School",
-      "detail": "est. 1890",
-      "x": 134.35,
-      "y": 2342.1797590586793,
-      "width": 85,
-      "group": "g3",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-1-1",
-      "label": "Rook Lens School",
-      "detail": "est. 1894",
-      "x": 248.425,
-      "y": 2351.7209599047023,
-      "width": 85,
-      "group": "g3",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-1-2",
-      "label": "Silva Lens School",
-      "detail": "est. 1896",
-      "x": 362.5,
-      "y": 2356.387896900988,
-      "width": 89,
-      "group": "g3",
-      "style": "emblem",
-      "size": 10,
-      "icon": "lens",
-      "icon_width": 18
-    },
-    {
-      "id": "school-3-1-3",
-      "label": "Thorn Lens School",
-      "detail": "est. 1890",
-      "x": 476.575,
-      "y": 2342.9624339202264,
-      "width": 85,
-      "group": "g3",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-1-4",
-      "label": "Vey Lens School",
-      "detail": "est. 1893",
-      "x": 590.65,
-      "y": 2349.4694248211904,
-      "width": 85,
-      "group": "g3",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-2-0",
-      "label": "Aster Light College",
-      "detail": "est. 1934",
-      "x": 109.0,
-      "y": 2447.7646760144085,
-      "width": 85,
-      "group": "g3",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-2-1",
-      "label": "Cairn Light College",
-      "detail": "est. 1938",
-      "x": 210.4,
-      "y": 2457.914865972987,
-      "width": 89,
-      "group": "g3",
-      "style": "emblem",
-      "size": 10,
-      "icon": "lens",
-      "icon_width": 18
-    },
-    {
-      "id": "school-3-2-2",
-      "label": "Elvan Light College",
-      "detail": "est. 1933",
-      "x": 311.8,
-      "y": 2445.647831112885,
-      "width": 85,
-      "group": "g3",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-2-3",
-      "label": "Glen Light College",
-      "detail": "est. 1933",
-      "x": 413.2,
-      "y": 2445.7074166559964,
-      "width": 85,
-      "group": "g3",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-2-4",
-      "label": "Isen Light College",
-      "detail": "est. 1938",
-      "x": 514.6,
-      "y": 2457.924858845559,
-      "width": 89,
-      "group": "g3",
-      "style": "emblem",
-      "size": 10,
-      "icon": "lens",
-      "icon_width": 18
-    },
-    {
-      "id": "school-3-2-5",
-      "label": "Leven Light College",
-      "detail": "est. 1934",
-      "x": 616.0,
-      "y": 2447.6967734666796,
-      "width": 85,
-      "group": "g3",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-3-0",
-      "label": "Nacre Imaging Lab",
-      "detail": "est. 1980",
-      "x": 109.0,
-      "y": 2557.503999814198,
-      "width": 85,
-      "group": "g3",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-3-1",
-      "label": "Lorn Imaging Lab",
-      "detail": "est. 1977",
-      "x": 210.4,
-      "y": 2549.3987910363057,
-      "width": 85,
-      "group": "g3",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-3-2",
-      "label": "Alder Imaging Lab",
-      "detail": "est. 1974",
-      "x": 311.8,
-      "y": 2542.9963826024928,
-      "width": 85,
-      "group": "g3",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-3-3",
-      "label": "Bayeux Imaging Lab",
-      "detail": "est. 1980",
-      "x": 413.2,
-      "y": 2556.430275412413,
-      "width": 89,
-      "group": "g3",
-      "style": "emblem",
-      "size": 10,
-      "icon": "lens",
-      "icon_width": 18
-    },
-    {
-      "id": "school-3-3-4",
-      "label": "Corven Imaging Lab",
-      "detail": "est. 1978",
-      "x": 514.6,
-      "y": 2551.6517398555025,
-      "width": 85,
-      "group": "g3",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-3-3-5",
-      "label": "Dale Imaging Lab",
-      "detail": "est. 1974",
-      "x": 616.0,
-      "y": 2542.194991956255,
-      "width": 85,
-      "group": "g3",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "root-4",
-      "label": "Geographical Societies",
-      "detail": "Navigation gives rise to public surveys",
-      "x": 1227.5,
-      "y": 2160,
-      "width": 193,
-      "group": "g4",
-      "style": "hero",
+      "size": 15,
+      "detail_size": 9,
+      "detail": "1775 \u00b7 Public lectures and expeditions",
       "icon": "globe",
-      "icon_width": 41,
-      "size": 16,
-      "detail_size": 9.5
+      "icon_width": 37
     },
     {
-      "id": "school-4-0-0",
-      "label": "Luma Field Office",
-      "detail": "est. 1857",
-      "x": 918.98,
-      "y": 2263.9455800375367,
-      "width": 85,
+      "id": "mapping",
+      "label": "National Mapping Service",
+      "founded": 1829,
       "group": "g4",
+      "x": 1290,
+      "y": 2413,
+      "width": 112,
       "style": "card",
-      "size": 10.0
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1829 \u00b7 Centralised public cartography"
     },
     {
-      "id": "school-4-0-1",
-      "label": "Neris Field Office",
-      "detail": "est. 1858",
-      "x": 1124.66,
-      "y": 2267.7646760144085,
-      "width": 85,
+      "id": "earth-data",
+      "label": "Earth Information Office",
+      "founded": 1972,
       "group": "g4",
+      "x": 1256,
+      "y": 2534,
+      "width": 129,
       "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-0-2",
-      "label": "Oriel Field Office",
-      "detail": "est. 1863",
-      "x": 1330.34,
-      "y": 2277.914865972987,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-0-3",
-      "label": "Rook Field Office",
-      "detail": "est. 1858",
-      "x": 1536.02,
-      "y": 2265.647831112885,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-1-0",
-      "label": "Wren Survey Corps",
-      "detail": "est. 1896",
-      "x": 841.8499999999999,
-      "y": 2357.6890107287704,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-1-1",
-      "label": "Yarrow Survey Corps",
-      "detail": "est. 1902",
-      "x": 970.4,
-      "y": 2370.8373331475314,
-      "width": 89,
-      "group": "g4",
-      "style": "emblem",
-      "size": 10,
-      "icon": "globe",
-      "icon_width": 18
-    },
-    {
-      "id": "school-4-1-2",
-      "label": "Aster Survey Corps",
-      "detail": "est. 1898",
-      "x": 1098.95,
-      "y": 2362.732124369639,
-      "width": 85,
-      "group": "g4",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-1-3",
-      "label": "Cairn Survey Corps",
-      "detail": "est. 1896",
-      "x": 1227.5,
-      "y": 2356.3297159358262,
-      "width": 85,
-      "group": "g4",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-1-4",
-      "label": "Elvan Survey Corps",
-      "detail": "est. 1901",
-      "x": 1356.05,
-      "y": 2369.7636087457463,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-1-5",
-      "label": "Glen Survey Corps",
-      "detail": "est. 1899",
-      "x": 1484.6,
-      "y": 2364.985073188836,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-1-6",
-      "label": "Isen Survey Corps",
-      "detail": "est. 1895",
-      "x": 1613.15,
-      "y": 2355.5283252895883,
-      "width": 85,
-      "group": "g4",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-2-0",
-      "label": "Leven Atlas House",
-      "detail": "est. 1940",
-      "x": 841.8499999999999,
-      "y": 2461.922559456417,
-      "width": 89,
-      "group": "g4",
-      "style": "emblem",
-      "size": 10,
-      "icon": "globe",
-      "icon_width": 18
-    },
-    {
-      "id": "school-4-2-1",
-      "label": "Mora Atlas House",
-      "detail": "est. 1939",
-      "x": 938.2625,
-      "y": 2459.9636145486006,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-2-2",
-      "label": "Nacre Atlas House",
-      "detail": "est. 1934",
-      "x": 1034.675,
-      "y": 2448.666745014261,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-2-3",
-      "label": "Lorn Atlas House",
-      "detail": "est. 1939",
-      "x": 1131.0875,
-      "y": 2460.0280029612795,
-      "width": 89,
-      "group": "g4",
-      "style": "emblem",
-      "size": 10,
-      "icon": "globe",
-      "icon_width": 18
-    },
-    {
-      "id": "school-4-2-4",
-      "label": "Alder Atlas House",
-      "detail": "est. 1940",
-      "x": 1227.5,
-      "y": 2461.8689693879232,
-      "width": 85,
-      "group": "g4",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-2-5",
-      "label": "Bayeux Atlas House",
-      "detail": "est. 1935",
-      "x": 1323.9125,
-      "y": 2448.97548673163,
-      "width": 85,
-      "group": "g4",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-2-6",
-      "label": "Corven Atlas House",
-      "detail": "est. 1938",
-      "x": 1420.325,
-      "y": 2457.8656843439703,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-2-7",
-      "label": "Dale Atlas House",
-      "detail": "est. 1941",
-      "x": 1516.7375,
-      "y": 2463.359911774955,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-2-8",
-      "label": "Everen Atlas House",
-      "detail": "est. 1935",
-      "x": 1613.15,
-      "y": 2449.896903433265,
-      "width": 85,
-      "group": "g4",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-3-0",
-      "label": "Dale Mapping Agency",
-      "detail": "est. 1980",
-      "x": 799.0,
-      "y": 2556.387896900988,
-      "width": 85,
-      "group": "g4",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-3-1",
-      "label": "Everen Mapping Agency",
-      "detail": "est. 1974",
-      "x": 894.2222222222222,
-      "y": 2542.9624339202264,
-      "width": 85,
-      "group": "g4",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-3-2",
-      "label": "Falken Mapping Agency",
-      "detail": "est. 1977",
-      "x": 989.4444444444445,
-      "y": 2549.4694248211904,
-      "width": 89,
-      "group": "g4",
-      "style": "emblem",
-      "size": 10,
-      "icon": "globe",
-      "icon_width": 18
-    },
-    {
-      "id": "school-4-3-3",
-      "label": "Rosene Mapping Agency",
-      "detail": "est. 1980",
-      "x": 1084.6666666666667,
-      "y": 2557.4791604441975,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-3-4",
-      "label": "Varda Mapping Agency",
-      "detail": "est. 1975",
-      "x": 1179.888888888889,
-      "y": 2544.305717261047,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-3-5",
-      "label": "Mere Mapping Agency",
-      "detail": "est. 1976",
-      "x": 1275.111111111111,
-      "y": 2547.260155052243,
-      "width": 89,
-      "group": "g4",
-      "style": "emblem",
-      "size": 10,
-      "icon": "globe",
-      "icon_width": 18
-    },
-    {
-      "id": "school-4-3-6",
-      "label": "Tarn Mapping Agency",
-      "detail": "est. 1980",
-      "x": 1370.3333333333333,
-      "y": 2557.9746383542306,
-      "width": 85,
-      "group": "g4",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-3-7",
-      "label": "Linden Mapping Agency",
-      "detail": "est. 1975",
-      "x": 1465.5555555555557,
-      "y": 2546.102603900316,
-      "width": 85,
-      "group": "g4",
-      "style": "card",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-3-8",
-      "label": "Iona Mapping Agency",
-      "detail": "est. 1975",
-      "x": 1560.7777777777778,
-      "y": 2545.269139761079,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
-    },
-    {
-      "id": "school-4-3-9",
-      "label": "Keld Mapping Agency",
-      "detail": "est. 1980",
-      "x": 1656.0,
-      "y": 2557.8348611448314,
-      "width": 85,
-      "group": "g4",
-      "style": "plain",
-      "size": 10.0
+      "size": 10.5,
+      "detail_size": 8.2,
+      "detail": "1972 \u00b7 Maps become a shared data service"
     }
   ],
   "edges": [
     {
-      "id": "origin-0",
+      "id": "oral-to-craft",
       "source": "oral",
       "target": "craft",
       "kind": "branch",
-      "weight": 3.6
+      "weight": 2.5
     },
     {
-      "id": "origin-1",
+      "id": "oral-to-record",
       "source": "oral",
       "target": "record",
       "kind": "branch",
-      "weight": 3.6
+      "weight": 2.5
     },
     {
-      "id": "origin-2",
+      "id": "craft-to-instruments",
       "source": "craft",
-      "target": "measure",
+      "target": "instruments",
       "kind": "branch",
-      "weight": 3.6
+      "weight": 2.5
     },
     {
-      "id": "origin-3",
+      "id": "record-to-tables",
       "source": "record",
-      "target": "measure",
+      "target": "tables",
       "kind": "branch",
-      "weight": 3.6
+      "weight": 2.5
     },
     {
-      "id": "origin-4",
-      "source": "measure",
-      "target": "study",
+      "id": "instruments-to-natural",
+      "source": "instruments",
+      "target": "natural",
       "kind": "branch",
-      "weight": 3.6
+      "weight": 2.5
     },
     {
-      "id": "origin-5",
-      "source": "study",
+      "id": "tables-to-natural",
+      "source": "tables",
+      "target": "natural",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "record-to-chroniclers",
+      "source": "record",
+      "target": "chroniclers",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "natural-to-inquiry",
+      "source": "natural",
       "target": "inquiry",
       "kind": "branch",
-      "weight": 3.6
+      "weight": 2.5
     },
     {
-      "id": "origin-6",
+      "id": "inquiry-to-archive",
       "source": "inquiry",
       "target": "archive",
       "kind": "branch",
-      "weight": 3.6
+      "weight": 2.5
     },
     {
-      "id": "first-branch-0",
+      "id": "archive-to-makers",
       "source": "archive",
-      "target": "root-0",
+      "target": "makers",
       "kind": "branch",
-      "corridor_y": 620,
-      "weight": 4.2
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-0-0",
-      "source": "root-0",
-      "target": "school-0-0-0",
-      "kind": "branch"
+      "id": "makers-to-brass",
+      "source": "makers",
+      "target": "brass",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-0-1",
-      "source": "root-0",
-      "target": "school-0-0-1",
-      "kind": "branch"
+      "id": "makers-to-water",
+      "source": "makers",
+      "target": "water",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-0-2",
-      "source": "root-0",
-      "target": "school-0-0-2",
-      "kind": "branch"
+      "id": "makers-to-glass",
+      "source": "makers",
+      "target": "glass",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-1-0",
-      "source": "school-0-0-0",
-      "target": "school-0-1-0",
-      "kind": "branch"
+      "id": "brass-to-scales",
+      "source": "brass",
+      "target": "scales",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-1-1",
-      "source": "school-0-0-0",
-      "target": "school-0-1-1",
-      "kind": "branch"
+      "id": "brass-to-dials",
+      "source": "brass",
+      "target": "dials",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-1-2",
-      "source": "school-0-0-1",
-      "target": "school-0-1-2",
-      "kind": "branch"
+      "id": "water-to-millwrights",
+      "source": "water",
+      "target": "millwrights",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-1-3",
-      "source": "school-0-0-1",
-      "target": "school-0-1-3",
-      "kind": "branch"
+      "id": "water-to-pumps",
+      "source": "water",
+      "target": "pumps",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-1-4",
-      "source": "school-0-0-2",
-      "target": "school-0-1-4",
-      "kind": "branch"
+      "id": "glass-to-clear-glass",
+      "source": "glass",
+      "target": "clear-glass",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-1-5",
-      "source": "school-0-0-2",
-      "target": "school-0-1-5",
-      "kind": "branch"
+      "id": "scales-to-balance",
+      "source": "scales",
+      "target": "balance",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-2-0",
-      "source": "school-0-1-0",
-      "target": "school-0-2-0",
-      "kind": "branch"
+      "id": "dials-to-clockmakers",
+      "source": "dials",
+      "target": "clockmakers",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-2-1",
-      "source": "school-0-1-1",
-      "target": "school-0-2-1",
-      "kind": "branch"
+      "id": "millwrights-to-hydraulic",
+      "source": "millwrights",
+      "target": "hydraulic",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-2-2",
-      "source": "school-0-1-1",
-      "target": "school-0-2-2",
-      "kind": "branch"
+      "id": "clear-glass-to-glass-union",
+      "source": "clear-glass",
+      "target": "glass-union",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-2-3",
-      "source": "school-0-1-2",
-      "target": "school-0-2-3",
-      "kind": "branch"
+      "id": "balance-to-testing",
+      "source": "balance",
+      "target": "testing",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-2-4",
-      "source": "school-0-1-2",
-      "target": "school-0-2-4",
-      "kind": "branch"
+      "id": "balance-to-standards",
+      "source": "balance",
+      "target": "standards",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-2-5",
-      "source": "school-0-1-3",
-      "target": "school-0-2-5",
-      "kind": "branch"
+      "id": "clockmakers-to-pendulum",
+      "source": "clockmakers",
+      "target": "pendulum",
+      "kind": "branch",
+      "weight": 2.5,
+      "corridor_y": 1180
     },
     {
-      "id": "branch-school-0-2-6",
-      "source": "school-0-1-4",
-      "target": "school-0-2-6",
-      "kind": "branch"
+      "id": "clockmakers-to-horology",
+      "source": "clockmakers",
+      "target": "horology",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-2-7",
-      "source": "school-0-1-4",
-      "target": "school-0-2-7",
-      "kind": "branch"
+      "id": "hydraulic-to-canals",
+      "source": "hydraulic",
+      "target": "canals",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-2-8",
-      "source": "school-0-1-5",
-      "target": "school-0-2-8",
-      "kind": "branch"
+      "id": "hydraulic-to-pump-school",
+      "source": "hydraulic",
+      "target": "pump-school",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-3-0",
-      "source": "school-0-2-0",
-      "target": "school-0-3-0",
-      "kind": "branch"
+      "id": "horology-to-mechanical",
+      "source": "horology",
+      "target": "mechanical",
+      "kind": "branch",
+      "weight": 2.5,
+      "corridor_y": 1388
     },
     {
-      "id": "branch-school-0-3-1",
-      "source": "school-0-2-0",
-      "target": "school-0-3-1",
-      "kind": "branch"
+      "id": "canals-to-mechanical",
+      "source": "canals",
+      "target": "mechanical",
+      "kind": "branch",
+      "weight": 2.5,
+      "corridor_y": 1388
     },
     {
-      "id": "branch-school-0-3-2",
-      "source": "school-0-2-1",
-      "target": "school-0-3-2",
-      "kind": "branch"
+      "id": "testing-to-metrology",
+      "source": "testing",
+      "target": "metrology",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-3-3",
-      "source": "school-0-2-2",
-      "target": "school-0-3-3",
-      "kind": "branch"
+      "id": "standards-to-metrology",
+      "source": "standards",
+      "target": "metrology",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-3-4",
-      "source": "school-0-2-3",
-      "target": "school-0-3-4",
-      "kind": "branch"
+      "id": "mechanical-to-engines",
+      "source": "mechanical",
+      "target": "engines",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-3-5",
-      "source": "school-0-2-4",
-      "target": "school-0-3-5",
-      "kind": "branch"
+      "id": "mechanical-to-precision",
+      "source": "mechanical",
+      "target": "precision",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-3-6",
-      "source": "school-0-2-5",
-      "target": "school-0-3-6",
-      "kind": "branch"
+      "id": "meridian-to-precision",
+      "source": "meridian",
+      "target": "precision",
+      "kind": "influence",
+      "weight": 1.5
     },
     {
-      "id": "branch-school-0-3-7",
-      "source": "school-0-2-6",
-      "target": "school-0-3-7",
-      "kind": "branch"
+      "id": "engines-to-engines-west",
+      "source": "engines",
+      "target": "engines-west",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-3-8",
-      "source": "school-0-2-7",
-      "target": "school-0-3-8",
-      "kind": "branch"
+      "id": "engines-west-to-rail",
+      "source": "engines-west",
+      "target": "rail",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-3-9",
-      "source": "school-0-2-8",
-      "target": "school-0-3-9",
-      "kind": "branch"
+      "id": "rail-to-machine",
+      "source": "rail",
+      "target": "machine",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-3-10",
-      "source": "school-0-2-8",
-      "target": "school-0-3-10",
-      "kind": "branch"
+      "id": "metrology-to-calibration",
+      "source": "metrology",
+      "target": "calibration",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-0-4-0",
-      "source": "school-0-3-0",
-      "target": "school-0-4-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-4-1",
-      "source": "school-0-3-1",
-      "target": "school-0-4-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-4-2",
-      "source": "school-0-3-2",
-      "target": "school-0-4-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-4-3",
-      "source": "school-0-3-3",
-      "target": "school-0-4-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-4-4",
-      "source": "school-0-3-4",
-      "target": "school-0-4-4",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-4-5",
-      "source": "school-0-3-6",
-      "target": "school-0-4-5",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-4-6",
-      "source": "school-0-3-7",
-      "target": "school-0-4-6",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-4-7",
-      "source": "school-0-3-8",
-      "target": "school-0-4-7",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-4-8",
-      "source": "school-0-3-9",
-      "target": "school-0-4-8",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-4-9",
-      "source": "school-0-3-10",
-      "target": "school-0-4-9",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-5-0",
-      "source": "school-0-4-0",
-      "target": "school-0-5-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-5-1",
-      "source": "school-0-4-1",
-      "target": "school-0-5-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-5-2",
-      "source": "school-0-4-2",
-      "target": "school-0-5-2",
-      "kind": "branch"
-    },
-    {
-      "id": "merge-school-0-5-2",
-      "source": "school-0-4-1",
-      "target": "school-0-5-2",
-      "kind": "influence"
-    },
-    {
-      "id": "branch-school-0-5-3",
-      "source": "school-0-4-3",
-      "target": "school-0-5-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-5-4",
-      "source": "school-0-4-4",
-      "target": "school-0-5-4",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-5-5",
-      "source": "school-0-4-6",
-      "target": "school-0-5-5",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-5-6",
-      "source": "school-0-4-7",
-      "target": "school-0-5-6",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-5-7",
-      "source": "school-0-4-8",
-      "target": "school-0-5-7",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-0-5-8",
-      "source": "school-0-4-9",
-      "target": "school-0-5-8",
-      "kind": "branch"
-    },
-    {
-      "id": "first-branch-1",
+      "id": "archive-to-sky",
       "source": "archive",
-      "target": "root-1",
+      "target": "sky",
       "kind": "branch",
-      "corridor_y": 629,
-      "weight": 4.2
+      "weight": 2.5
     },
     {
-      "id": "branch-school-1-0-0",
-      "source": "root-1",
-      "target": "school-1-0-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-0-1",
-      "source": "root-1",
-      "target": "school-1-0-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-1-0",
-      "source": "school-1-0-0",
-      "target": "school-1-1-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-1-1",
-      "source": "school-1-0-0",
-      "target": "school-1-1-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-1-2",
-      "source": "school-1-0-1",
-      "target": "school-1-1-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-2-0",
-      "source": "school-1-1-0",
-      "target": "school-1-2-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-2-1",
-      "source": "school-1-1-1",
-      "target": "school-1-2-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-2-2",
-      "source": "school-1-1-2",
-      "target": "school-1-2-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-3-0",
-      "source": "school-1-2-0",
-      "target": "school-1-3-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-3-1",
-      "source": "school-1-2-2",
-      "target": "school-1-3-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-4-0",
-      "source": "school-1-3-0",
-      "target": "school-1-4-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-4-1",
-      "source": "school-1-3-0",
-      "target": "school-1-4-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-4-2",
-      "source": "school-1-3-1",
-      "target": "school-1-4-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-5-0",
-      "source": "school-1-4-0",
-      "target": "school-1-5-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-5-1",
-      "source": "school-1-4-1",
-      "target": "school-1-5-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-5-2",
-      "source": "school-1-4-2",
-      "target": "school-1-5-2",
-      "kind": "branch"
-    },
-    {
-      "id": "merge-school-1-5-2",
-      "source": "school-1-4-1",
-      "target": "school-1-5-2",
-      "kind": "influence"
-    },
-    {
-      "id": "branch-school-1-6-0",
-      "source": "school-1-5-0",
-      "target": "school-1-6-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-6-1",
-      "source": "school-1-5-1",
-      "target": "school-1-6-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-6-2",
-      "source": "school-1-5-2",
-      "target": "school-1-6-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-7-0",
-      "source": "school-1-6-0",
-      "target": "school-1-7-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-7-1",
-      "source": "school-1-6-2",
-      "target": "school-1-7-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-8-0",
-      "source": "school-1-7-0",
-      "target": "school-1-8-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-8-1",
-      "source": "school-1-7-0",
-      "target": "school-1-8-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-8-2",
-      "source": "school-1-7-1",
-      "target": "school-1-8-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-9-0",
-      "source": "school-1-8-0",
-      "target": "school-1-9-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-9-1",
-      "source": "school-1-8-1",
-      "target": "school-1-9-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-9-2",
-      "source": "school-1-8-2",
-      "target": "school-1-9-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-10-0",
-      "source": "school-1-9-0",
-      "target": "school-1-10-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-10-1",
-      "source": "school-1-9-2",
-      "target": "school-1-10-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-11-0",
-      "source": "school-1-10-0",
-      "target": "school-1-11-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-11-1",
-      "source": "school-1-10-0",
-      "target": "school-1-11-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-1-11-2",
-      "source": "school-1-10-1",
-      "target": "school-1-11-2",
-      "kind": "branch"
-    },
-    {
-      "id": "merge-school-1-11-2",
-      "source": "school-1-10-1",
-      "target": "school-1-11-2",
-      "kind": "influence"
-    },
-    {
-      "id": "first-branch-2",
-      "source": "school-0-5-6",
-      "target": "root-2",
+      "id": "sky-to-calendar",
+      "source": "sky",
+      "target": "calendar",
       "kind": "branch",
-      "corridor_y": 1408,
-      "weight": 4.2
+      "weight": 2.5
     },
     {
-      "id": "branch-school-2-0-0",
-      "source": "root-2",
-      "target": "school-2-0-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-0-1",
-      "source": "root-2",
-      "target": "school-2-0-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-0-2",
-      "source": "root-2",
-      "target": "school-2-0-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-0-3",
-      "source": "root-2",
-      "target": "school-2-0-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-1-0",
-      "source": "school-2-0-0",
-      "target": "school-2-1-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-1-1",
-      "source": "school-2-0-0",
-      "target": "school-2-1-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-1-2",
-      "source": "school-2-0-1",
-      "target": "school-2-1-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-1-3",
-      "source": "school-2-0-2",
-      "target": "school-2-1-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-1-4",
-      "source": "school-2-0-3",
-      "target": "school-2-1-4",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-1-5",
-      "source": "school-2-0-3",
-      "target": "school-2-1-5",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-2-0",
-      "source": "school-2-1-0",
-      "target": "school-2-2-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-2-1",
-      "source": "school-2-1-1",
-      "target": "school-2-2-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-2-2",
-      "source": "school-2-1-1",
-      "target": "school-2-2-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-2-3",
-      "source": "school-2-1-2",
-      "target": "school-2-2-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-2-4",
-      "source": "school-2-1-3",
-      "target": "school-2-2-4",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-2-5",
-      "source": "school-2-1-4",
-      "target": "school-2-2-5",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-2-6",
-      "source": "school-2-1-4",
-      "target": "school-2-2-6",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-2-7",
-      "source": "school-2-1-5",
-      "target": "school-2-2-7",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-3-0",
-      "source": "school-2-2-0",
-      "target": "school-2-3-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-3-1",
-      "source": "school-2-2-0",
-      "target": "school-2-3-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-3-2",
-      "source": "school-2-2-1",
-      "target": "school-2-3-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-3-3",
-      "source": "school-2-2-2",
-      "target": "school-2-3-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-3-4",
-      "source": "school-2-2-3",
-      "target": "school-2-3-4",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-3-5",
-      "source": "school-2-2-4",
-      "target": "school-2-3-5",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-3-6",
-      "source": "school-2-2-5",
-      "target": "school-2-3-6",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-3-7",
-      "source": "school-2-2-6",
-      "target": "school-2-3-7",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-3-8",
-      "source": "school-2-2-7",
-      "target": "school-2-3-8",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-3-9",
-      "source": "school-2-2-7",
-      "target": "school-2-3-9",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-0",
-      "source": "school-2-3-0",
-      "target": "school-2-4-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-1",
-      "source": "school-2-3-1",
-      "target": "school-2-4-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-2",
-      "source": "school-2-3-2",
-      "target": "school-2-4-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-3",
-      "source": "school-2-3-3",
-      "target": "school-2-4-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-4",
-      "source": "school-2-3-4",
-      "target": "school-2-4-4",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-5",
-      "source": "school-2-3-4",
-      "target": "school-2-4-5",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-6",
-      "source": "school-2-3-5",
-      "target": "school-2-4-6",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-7",
-      "source": "school-2-3-6",
-      "target": "school-2-4-7",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-8",
-      "source": "school-2-3-7",
-      "target": "school-2-4-8",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-9",
-      "source": "school-2-3-8",
-      "target": "school-2-4-9",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-4-10",
-      "source": "school-2-3-9",
-      "target": "school-2-4-10",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-5-0",
-      "source": "school-2-4-0",
-      "target": "school-2-5-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-5-1",
-      "source": "school-2-4-1",
-      "target": "school-2-5-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-5-2",
-      "source": "school-2-4-2",
-      "target": "school-2-5-2",
-      "kind": "branch"
-    },
-    {
-      "id": "merge-school-2-5-2",
-      "source": "school-2-4-1",
-      "target": "school-2-5-2",
-      "kind": "influence"
-    },
-    {
-      "id": "branch-school-2-5-3",
-      "source": "school-2-4-3",
-      "target": "school-2-5-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-5-4",
-      "source": "school-2-4-4",
-      "target": "school-2-5-4",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-5-5",
-      "source": "school-2-4-6",
-      "target": "school-2-5-5",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-5-6",
-      "source": "school-2-4-7",
-      "target": "school-2-5-6",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-5-7",
-      "source": "school-2-4-8",
-      "target": "school-2-5-7",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-5-8",
-      "source": "school-2-4-9",
-      "target": "school-2-5-8",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-2-5-9",
-      "source": "school-2-4-10",
-      "target": "school-2-5-9",
-      "kind": "branch"
-    },
-    {
-      "id": "first-branch-3",
-      "source": "school-2-5-1",
-      "target": "root-3",
+      "id": "sky-to-meridian",
+      "source": "sky",
+      "target": "meridian",
       "kind": "branch",
-      "corridor_y": 2038,
-      "weight": 4.2
+      "weight": 2.5
     },
     {
-      "id": "branch-school-3-0-0",
-      "source": "root-3",
-      "target": "school-3-0-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-0-1",
-      "source": "root-3",
-      "target": "school-3-0-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-0-2",
-      "source": "root-3",
-      "target": "school-3-0-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-1-0",
-      "source": "school-3-0-0",
-      "target": "school-3-1-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-1-1",
-      "source": "school-3-0-0",
-      "target": "school-3-1-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-1-2",
-      "source": "school-3-0-1",
-      "target": "school-3-1-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-1-3",
-      "source": "school-3-0-2",
-      "target": "school-3-1-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-1-4",
-      "source": "school-3-0-2",
-      "target": "school-3-1-4",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-2-0",
-      "source": "school-3-1-0",
-      "target": "school-3-2-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-2-1",
-      "source": "school-3-1-1",
-      "target": "school-3-2-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-2-2",
-      "source": "school-3-1-2",
-      "target": "school-3-2-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-2-3",
-      "source": "school-3-1-2",
-      "target": "school-3-2-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-2-4",
-      "source": "school-3-1-3",
-      "target": "school-3-2-4",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-2-5",
-      "source": "school-3-1-4",
-      "target": "school-3-2-5",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-3-0",
-      "source": "school-3-2-0",
-      "target": "school-3-3-0",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-3-1",
-      "source": "school-3-2-1",
-      "target": "school-3-3-1",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-3-2",
-      "source": "school-3-2-2",
-      "target": "school-3-3-2",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-3-3",
-      "source": "school-3-2-3",
-      "target": "school-3-3-3",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-3-4",
-      "source": "school-3-2-4",
-      "target": "school-3-3-4",
-      "kind": "branch"
-    },
-    {
-      "id": "branch-school-3-3-5",
-      "source": "school-3-2-5",
-      "target": "school-3-3-5",
-      "kind": "branch"
-    },
-    {
-      "id": "first-branch-4",
-      "source": "school-1-11-2",
-      "target": "root-4",
+      "id": "sky-to-watchers",
+      "source": "sky",
+      "target": "watchers",
       "kind": "branch",
-      "corridor_y": 2058,
-      "weight": 4.2
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-0-0",
-      "source": "root-4",
-      "target": "school-4-0-0",
-      "kind": "branch"
+      "id": "calendar-to-almanac",
+      "source": "calendar",
+      "target": "almanac",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-0-1",
-      "source": "root-4",
-      "target": "school-4-0-1",
-      "kind": "branch"
+      "id": "calendar-to-equinox",
+      "source": "calendar",
+      "target": "equinox",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-0-2",
-      "source": "root-4",
-      "target": "school-4-0-2",
-      "kind": "branch"
+      "id": "meridian-to-sunroom",
+      "source": "meridian",
+      "target": "sunroom",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-0-3",
-      "source": "root-4",
-      "target": "school-4-0-3",
-      "kind": "branch"
+      "id": "watchers-to-summit",
+      "source": "watchers",
+      "target": "summit",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-1-0",
-      "source": "school-4-0-0",
-      "target": "school-4-1-0",
-      "kind": "branch"
+      "id": "watchers-to-nightbooks",
+      "source": "watchers",
+      "target": "nightbooks",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-1-1",
-      "source": "school-4-0-0",
-      "target": "school-4-1-1",
-      "kind": "branch"
+      "id": "equinox-to-newcalendar",
+      "source": "equinox",
+      "target": "newcalendar",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-1-2",
-      "source": "school-4-0-1",
-      "target": "school-4-1-2",
-      "kind": "branch"
+      "id": "almanac-to-newcalendar",
+      "source": "almanac",
+      "target": "newcalendar",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-1-3",
-      "source": "school-4-0-1",
-      "target": "school-4-1-3",
-      "kind": "branch"
+      "id": "sunroom-to-transits",
+      "source": "sunroom",
+      "target": "transits",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-1-4",
-      "source": "school-4-0-2",
-      "target": "school-4-1-4",
-      "kind": "branch"
+      "id": "summit-to-star-census",
+      "source": "summit",
+      "target": "star-census",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-1-5",
-      "source": "school-4-0-3",
-      "target": "school-4-1-5",
-      "kind": "branch"
+      "id": "summit-to-southern",
+      "source": "summit",
+      "target": "southern",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-1-6",
-      "source": "school-4-0-3",
-      "target": "school-4-1-6",
-      "kind": "branch"
+      "id": "newcalendar-to-ephemerides",
+      "source": "newcalendar",
+      "target": "ephemerides",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-2-0",
-      "source": "school-4-1-0",
-      "target": "school-4-2-0",
-      "kind": "branch"
+      "id": "newcalendar-to-computers",
+      "source": "newcalendar",
+      "target": "computers",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-2-1",
-      "source": "school-4-1-1",
-      "target": "school-4-2-1",
-      "kind": "branch"
+      "id": "transits-to-observatories",
+      "source": "transits",
+      "target": "observatories",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-2-2",
-      "source": "school-4-1-1",
-      "target": "school-4-2-2",
-      "kind": "branch"
+      "id": "star-census-to-observatories",
+      "source": "star-census",
+      "target": "observatories",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-2-3",
-      "source": "school-4-1-2",
-      "target": "school-4-2-3",
-      "kind": "branch"
+      "id": "ephemerides-to-reformers",
+      "source": "ephemerides",
+      "target": "reformers",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-2-4",
-      "source": "school-4-1-3",
-      "target": "school-4-2-4",
-      "kind": "branch"
+      "id": "observatories-to-longitude",
+      "source": "observatories",
+      "target": "longitude",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-2-5",
-      "source": "school-4-1-4",
-      "target": "school-4-2-5",
-      "kind": "branch"
+      "id": "pilotage-to-longitude",
+      "source": "pilotage",
+      "target": "longitude",
+      "kind": "influence",
+      "weight": 1.5
     },
     {
-      "id": "branch-school-4-2-6",
-      "source": "school-4-1-5",
-      "target": "school-4-2-6",
-      "kind": "branch"
+      "id": "observatories-to-meridian-net",
+      "source": "observatories",
+      "target": "meridian-net",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-2-7",
-      "source": "school-4-1-5",
-      "target": "school-4-2-7",
-      "kind": "branch"
+      "id": "meridian-net-to-north-station",
+      "source": "meridian-net",
+      "target": "north-station",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-2-8",
-      "source": "school-4-1-6",
-      "target": "school-4-2-8",
-      "kind": "branch"
+      "id": "meridian-net-to-valley",
+      "source": "meridian-net",
+      "target": "valley",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-3-0",
-      "source": "school-4-2-0",
-      "target": "school-4-3-0",
-      "kind": "branch"
+      "id": "meridian-net-to-island-station",
+      "source": "meridian-net",
+      "target": "island-station",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-3-1",
-      "source": "school-4-2-1",
-      "target": "school-4-3-1",
-      "kind": "branch"
+      "id": "southern-to-southern-survey",
+      "source": "southern",
+      "target": "southern-survey",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-3-2",
-      "source": "school-4-2-2",
-      "target": "school-4-3-2",
-      "kind": "branch"
+      "id": "longitude-to-southern-survey",
+      "source": "longitude",
+      "target": "southern-survey",
+      "kind": "influence",
+      "weight": 1.5
     },
     {
-      "id": "branch-school-4-3-3",
-      "source": "school-4-2-3",
-      "target": "school-4-3-3",
-      "kind": "branch"
+      "id": "north-station-to-variable",
+      "source": "north-station",
+      "target": "variable",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-3-4",
-      "source": "school-4-2-4",
-      "target": "school-4-3-4",
-      "kind": "branch"
+      "id": "valley-to-public-sky",
+      "source": "valley",
+      "target": "public-sky",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-3-5",
-      "source": "school-4-2-4",
-      "target": "school-4-3-5",
-      "kind": "branch"
+      "id": "island-station-to-comet",
+      "source": "island-station",
+      "target": "comet",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-3-6",
-      "source": "school-4-2-5",
-      "target": "school-4-3-6",
-      "kind": "branch"
+      "id": "southern-survey-to-southern-tables",
+      "source": "southern-survey",
+      "target": "southern-tables",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-3-7",
-      "source": "school-4-2-6",
-      "target": "school-4-3-7",
-      "kind": "branch"
+      "id": "variable-to-photometry",
+      "source": "variable",
+      "target": "photometry",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "branch-school-4-3-8",
-      "source": "school-4-2-7",
-      "target": "school-4-3-8",
-      "kind": "branch"
+      "id": "silver-image-to-photometry",
+      "source": "silver-image",
+      "target": "photometry",
+      "kind": "influence",
+      "weight": 1.5
     },
     {
-      "id": "branch-school-4-3-9",
-      "source": "school-4-2-8",
-      "target": "school-4-3-9",
-      "kind": "branch"
+      "id": "public-sky-to-instruments-lab",
+      "source": "public-sky",
+      "target": "instruments-lab",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "exchange-0",
-      "source": "school-0-2-7",
-      "target": "school-1-4-0",
-      "kind": "influence"
+      "id": "precision-to-instruments-lab",
+      "source": "precision",
+      "target": "instruments-lab",
+      "kind": "influence",
+      "weight": 1.5
     },
     {
-      "id": "exchange-1",
-      "source": "school-1-6-0",
-      "target": "school-2-2-7",
-      "kind": "influence"
+      "id": "comet-to-stellar",
+      "source": "comet",
+      "target": "stellar",
+      "kind": "branch",
+      "weight": 2.5
     },
     {
-      "id": "exchange-2",
-      "source": "school-2-4-6",
-      "target": "root-4",
-      "kind": "influence"
+      "id": "spectrum-to-stellar",
+      "source": "spectrum",
+      "target": "stellar",
+      "kind": "influence",
+      "weight": 1.5
     },
     {
-      "id": "exchange-3",
-      "source": "school-3-1-4",
-      "target": "school-4-2-0",
-      "kind": "influence"
+      "id": "photometry-to-astronomical",
+      "source": "photometry",
+      "target": "astronomical",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "public-sky-to-astronomical",
+      "source": "public-sky",
+      "target": "astronomical",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "stellar-to-radial",
+      "source": "stellar",
+      "target": "radial",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "southern-tables-to-southern-union",
+      "source": "southern-tables",
+      "target": "southern-union",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "astronomical-to-radio-sky",
+      "source": "astronomical",
+      "target": "radio-sky",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "astronomical-to-night-archive",
+      "source": "astronomical",
+      "target": "night-archive",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "radio-sky-to-space-science",
+      "source": "radio-sky",
+      "target": "space-science",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "radial-to-stellar-centre",
+      "source": "radial",
+      "target": "stellar-centre",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "night-archive-to-sky-data",
+      "source": "night-archive",
+      "target": "sky-data",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "stellar-centre-to-sky-data",
+      "source": "stellar-centre",
+      "target": "sky-data",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "southern-union-to-southern-array",
+      "source": "southern-union",
+      "target": "southern-array",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "space-science-to-orbital",
+      "source": "space-science",
+      "target": "orbital",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "sky-data-to-open-sky",
+      "source": "sky-data",
+      "target": "open-sky",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "southern-array-to-open-sky",
+      "source": "southern-array",
+      "target": "open-sky",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "archive-to-seafarers",
+      "source": "archive",
+      "target": "seafarers",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "seafarers-to-pilots",
+      "source": "seafarers",
+      "target": "pilots",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "seafarers-to-open-sea",
+      "source": "seafarers",
+      "target": "open-sea",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "seafarers-to-boatmen",
+      "source": "seafarers",
+      "target": "boatmen",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "pilots-to-port-school",
+      "source": "pilots",
+      "target": "port-school",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "pilots-to-tide",
+      "source": "pilots",
+      "target": "tide",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "open-sea-to-pilotage",
+      "source": "open-sea",
+      "target": "pilotage",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "boatmen-to-river-law",
+      "source": "boatmen",
+      "target": "river-law",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "port-school-to-charts",
+      "source": "port-school",
+      "target": "charts",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "transits-to-charts",
+      "source": "transits",
+      "target": "charts",
+      "kind": "influence",
+      "weight": 1.5
+    },
+    {
+      "id": "tide-to-coast-watch",
+      "source": "tide",
+      "target": "coast-watch",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "pilotage-to-ocean",
+      "source": "pilotage",
+      "target": "ocean",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "river-law-to-river-merger",
+      "source": "river-law",
+      "target": "river-merger",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "charts-to-soundings",
+      "source": "charts",
+      "target": "soundings",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "coast-watch-to-beacons",
+      "source": "coast-watch",
+      "target": "beacons",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "ocean-to-pilot-union",
+      "source": "ocean",
+      "target": "pilot-union",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "river-merger-to-pilot-union",
+      "source": "river-merger",
+      "target": "pilot-union",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "ocean-to-ocean-voyage",
+      "source": "ocean",
+      "target": "ocean-voyage",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "pilot-union-to-channel",
+      "source": "pilot-union",
+      "target": "channel",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "beacons-to-beacon-college",
+      "source": "beacons",
+      "target": "beacon-college",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "precision-to-beacon-college",
+      "source": "precision",
+      "target": "beacon-college",
+      "kind": "influence",
+      "weight": 1.5
+    },
+    {
+      "id": "channel-to-harbour-board",
+      "source": "channel",
+      "target": "harbour-board",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "pilot-union-to-seamanship",
+      "source": "pilot-union",
+      "target": "seamanship",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "harbour-board-to-lifeboat",
+      "source": "harbour-board",
+      "target": "lifeboat",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "beacon-college-to-signals",
+      "source": "beacon-college",
+      "target": "signals",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "seamanship-to-merchant",
+      "source": "seamanship",
+      "target": "merchant",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "seamanship-to-naval",
+      "source": "seamanship",
+      "target": "naval",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "signals-to-radio-sea",
+      "source": "signals",
+      "target": "radio-sea",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "merchant-to-port-lab",
+      "source": "merchant",
+      "target": "port-lab",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "machine-to-port-lab",
+      "source": "machine",
+      "target": "port-lab",
+      "kind": "influence",
+      "weight": 1.5
+    },
+    {
+      "id": "lifeboat-to-rescue",
+      "source": "lifeboat",
+      "target": "rescue",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "radio-sea-to-rescue",
+      "source": "radio-sea",
+      "target": "rescue",
+      "kind": "influence",
+      "weight": 1.5
+    },
+    {
+      "id": "port-lab-to-maritime",
+      "source": "port-lab",
+      "target": "maritime",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "radio-sea-to-maritime",
+      "source": "radio-sea",
+      "target": "maritime",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "naval-to-hydro-school",
+      "source": "naval",
+      "target": "hydro-school",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "hydrography-to-hydro-school",
+      "source": "hydrography",
+      "target": "hydro-school",
+      "kind": "influence",
+      "weight": 1.5
+    },
+    {
+      "id": "maritime-to-sea-college",
+      "source": "maritime",
+      "target": "sea-college",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "maritime-to-ocean-safety",
+      "source": "maritime",
+      "target": "ocean-safety",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "rescue-to-ocean-safety",
+      "source": "rescue",
+      "target": "ocean-safety",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "hydro-school-to-naval-survey",
+      "source": "hydro-school",
+      "target": "naval-survey",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "glass-union-to-lenses",
+      "source": "glass-union",
+      "target": "lenses",
+      "kind": "branch",
+      "weight": 2.5,
+      "via": [
+        [
+          503,
+          1357.24
+        ],
+        [
+          436,
+          1357.24
+        ],
+        [
+          436,
+          1608
+        ],
+        [
+          139,
+          1608
+        ]
+      ]
+    },
+    {
+      "id": "lenses-to-light",
+      "source": "lenses",
+      "target": "light",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "light-to-mirror",
+      "source": "light",
+      "target": "mirror",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "light-to-refraction",
+      "source": "light",
+      "target": "refraction",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "light-to-telescope",
+      "source": "light",
+      "target": "telescope",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "observatories-to-telescope",
+      "source": "observatories",
+      "target": "telescope",
+      "kind": "influence",
+      "weight": 1.5
+    },
+    {
+      "id": "mirror-to-glassworks",
+      "source": "mirror",
+      "target": "glassworks",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "refraction-to-camera",
+      "source": "refraction",
+      "target": "camera",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "refraction-to-spectrum",
+      "source": "refraction",
+      "target": "spectrum",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "telescope-to-opticians",
+      "source": "telescope",
+      "target": "opticians",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "glassworks-to-glass-research",
+      "source": "glassworks",
+      "target": "glass-research",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "camera-to-silver-image",
+      "source": "camera",
+      "target": "silver-image",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "spectrum-to-wave",
+      "source": "spectrum",
+      "target": "wave",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "opticians-to-instrument-firm",
+      "source": "opticians",
+      "target": "instrument-firm",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "silver-image-to-photographic",
+      "source": "silver-image",
+      "target": "photographic",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "glass-research-to-photographic",
+      "source": "glass-research",
+      "target": "photographic",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "wave-to-optical-physics",
+      "source": "wave",
+      "target": "optical-physics",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "instrument-firm-to-medical-lenses",
+      "source": "instrument-firm",
+      "target": "medical-lenses",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "photographic-to-cinema",
+      "source": "photographic",
+      "target": "cinema",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "photographic-to-color",
+      "source": "photographic",
+      "target": "color",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "optical-physics-to-color",
+      "source": "optical-physics",
+      "target": "color",
+      "kind": "influence",
+      "weight": 1.5
+    },
+    {
+      "id": "optical-physics-to-laser",
+      "source": "optical-physics",
+      "target": "laser",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "medical-lenses-to-microscopy",
+      "source": "medical-lenses",
+      "target": "microscopy",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "cinema-to-moving-image",
+      "source": "cinema",
+      "target": "moving-image",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "color-to-moving-image",
+      "source": "color",
+      "target": "moving-image",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "laser-to-photonics",
+      "source": "laser",
+      "target": "photonics",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "microscopy-to-imaging",
+      "source": "microscopy",
+      "target": "imaging",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "color-to-imaging",
+      "source": "color",
+      "target": "imaging",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "soundings-to-surveyors",
+      "source": "soundings",
+      "target": "surveyors",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "surveyors-to-fieldbooks",
+      "source": "surveyors",
+      "target": "fieldbooks",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "surveyors-to-triangulation",
+      "source": "surveyors",
+      "target": "triangulation",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "meridian-net-to-triangulation",
+      "source": "meridian-net",
+      "target": "triangulation",
+      "kind": "influence",
+      "weight": 1.5
+    },
+    {
+      "id": "fieldbooks-to-atlas-room",
+      "source": "fieldbooks",
+      "target": "atlas-room",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "triangulation-to-land-register",
+      "source": "triangulation",
+      "target": "land-register",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "triangulation-to-hydrography",
+      "source": "triangulation",
+      "target": "hydrography",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "charts-to-hydrography",
+      "source": "charts",
+      "target": "hydrography",
+      "kind": "influence",
+      "weight": 1.5
+    },
+    {
+      "id": "atlas-room-to-geography",
+      "source": "atlas-room",
+      "target": "geography",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "land-register-to-mapping",
+      "source": "land-register",
+      "target": "mapping",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "mapping-to-earth-data",
+      "source": "mapping",
+      "target": "earth-data",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "geography-to-earth-data",
+      "source": "geography",
+      "target": "earth-data",
+      "kind": "branch",
+      "weight": 2.5
+    },
+    {
+      "id": "hydrography-to-earth-data",
+      "source": "hydrography",
+      "target": "earth-data",
+      "kind": "influence",
+      "weight": 1.5
     }
   ],
   "unions": [],
   "annotations": [
     {
-      "x": 645.0,
-      "y": 666,
-      "width": 178,
-      "label": "ASTRONOMY",
-      "kind": "pill",
-      "group": "g0",
-      "size": 13
-    },
-    {
-      "x": 645.0,
-      "y": 1001.8,
-      "width": 176,
-      "label": "MERIDIAN NETWORKS",
-      "kind": "pill",
-      "size": 10.5,
-      "group": "g0"
-    },
-    {
-      "x": 1490.0,
-      "y": 738,
-      "width": 178,
-      "label": "NAVIGATION",
-      "kind": "pill",
-      "group": "g1",
-      "size": 13
-    },
-    {
-      "x": 1490.0,
-      "y": 1050.4545454545455,
-      "width": 176,
-      "label": "OPEN-OCEAN PILOTAGE",
-      "kind": "pill",
-      "size": 10.5,
-      "group": "g1"
-    },
-    {
-      "x": 1490.0,
-      "y": 1606.818181818182,
-      "width": 176,
-      "label": "STEAM ROUTE SERVICES",
-      "kind": "pill",
-      "size": 10.5,
-      "group": "g1"
-    },
-    {
-      "x": 645.0,
-      "y": 1448,
-      "width": 178,
-      "label": "MECHANICS",
+      "node": "makers",
+      "dy": -76,
+      "width": 180,
+      "label": "MECHANICAL ARTS",
       "kind": "pill",
       "group": "g2",
-      "size": 13
+      "size": 12
     },
     {
-      "x": 645.0,
-      "y": 1731.0,
-      "width": 176,
-      "label": "PRECISION WORKSHOPS",
+      "node": "sky",
+      "dy": -78,
+      "width": 209,
+      "label": "ASTRONOMICAL TRADITIONS",
       "kind": "pill",
-      "size": 10.5,
-      "group": "g2"
+      "group": "g0",
+      "size": 12
     },
     {
-      "x": 362.5,
-      "y": 2078,
-      "width": 178,
-      "label": "OPTICS",
+      "node": "seafarers",
+      "dy": -74,
+      "width": 185,
+      "label": "SEAFARING SCHOOLS",
+      "kind": "pill",
+      "group": "g1",
+      "size": 12
+    },
+    {
+      "node": "light",
+      "dy": -81,
+      "width": 180,
+      "label": "THE OPTICAL TRADITION",
       "kind": "pill",
       "group": "g3",
-      "size": 13
+      "size": 12
     },
     {
-      "x": 362.5,
-      "y": 2405.0,
-      "width": 176,
-      "label": "SCHOOLS OF REFRACTION",
-      "kind": "pill",
-      "size": 10.5,
-      "group": "g3"
-    },
-    {
-      "x": 1227.5,
-      "y": 2098,
-      "width": 178,
-      "label": "CARTOGRAPHY",
+      "node": "surveyors",
+      "dy": -79,
+      "width": 185,
+      "label": "LAND AND SEA SURVEYS",
       "kind": "pill",
       "group": "g4",
-      "size": 13
-    },
-    {
-      "x": 1227.5,
-      "y": 2411.6666666666665,
-      "width": 176,
-      "label": "PUBLIC SURVEY OFFICES",
-      "kind": "pill",
-      "size": 10.5,
-      "group": "g4"
+      "size": 12
     }
   ],
   "insets": [
     {
       "kind": "isotype",
-      "title": "Institutions in the five traditions",
+      "title": "Institutions represented in this study",
       "box": [
-        84,
-        180,
-        400,
-        423
+        78,
+        178,
+        398,
+        409
+      ],
+      "groups": [
+        "g0",
+        "g1",
+        "g2",
+        "g3",
+        "g4"
       ]
     },
     {
       "kind": "map",
-      "title": "Illustrative regional presence",
+      "title": "Illustrative regional traditions",
       "box": [
-        1225,
-        181,
-        470,
-        365
+        1248,
+        178,
+        460,
+        396
       ],
       "countries": {
         "FJI": "g1",
@@ -3609,7 +3260,6 @@
         "FLK": "g1",
         "NOR": "g4",
         "GRL": "g2",
-        "ATF": "g2",
         "TLS": "g0",
         "ZAF": "g3",
         "LSO": "g3",
@@ -3763,10 +3413,11 @@
         "TTO": "g2",
         "SDS": "g3"
       },
-      "note": "Synthetic assignments \u00b7 Geographic outlines: Natural Earth"
+      "legend": true,
+      "note": "Fictional assignments \u00b7 Outlines: Natural Earth"
     }
   ],
   "pattern_id": "usefulcharts-branching-lineage",
-  "subtitle": "The fictional schools and societies of five scholarly traditions",
-  "reading_note": "Solid lines: institutional branching. Dotted arrows: influence. Vertical placement is schematic. Map colors are invented illustrative assignments."
+  "subtitle": "Individually authored fictional histories of institutions, unions and research traditions",
+  "reading_note": "Solid paths: descent or stated merger. Dotted arrows: influence. Positions are schematic. Dates: founding or reorganisation. Map assignments are fictional."
 }

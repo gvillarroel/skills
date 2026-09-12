@@ -29,6 +29,8 @@ The renderer includes original vector emblems, a public-domain Natural Earth loc
 
 Keep raster illustrations selective and embed them in the SVG. An illustrated accent may improve visual hierarchy; it cannot repair empty or repetitive topology. Original vector emblems are available when pictorial imagery is inappropriate.
 
+Check the actual image background before placement. A painted checkerboard is not transparency, and a uniform gray photo rectangle may look pasted onto the paper. Prefer a source vector or an already isolated image when appropriate. Inspect the entire illustration at its placed size, including padding and its proximity to timeline bridges. Small source drawings can be more useful than repeated generic category emblems.
+
 ## Critique loop
 
 Render the page and compare against the closest official product preview, normalized to the same width. Write the three most visible differences before editing. First repair composition and relative density, then hierarchy and connector rhythm, then typography and imagery. Inspect full resolution after every structural change. Check the revised result, not an earlier screenshot.

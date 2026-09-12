@@ -1,0 +1,674 @@
+{
+  "status": "validating",
+  "runs": [
+    {
+      "id": "usefulcharts-institutions-v7-20260911-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 53,
+        "payloadSha256": "2bf14f7e426519b5499b82fa59a878d4d7d821f4bbde16c4c6f1405679d581a8"
+      },
+      "duration_seconds": 80.391,
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:31:19.590844+00:00",
+        "finishedAtUtc": "2026-09-12T01:32:39.981498+00:00",
+        "durationSeconds": 80.391,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "fail",
+        "run": "usefulcharts-institutions-v7-20260911-spark-1",
+        "canvas": [
+          1800.0,
+          2700.0
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 0,
+        "omitted_image_count": 1,
+        "findings": [
+          "Family category changed: mechanical academy",
+          "Major merger lacks emphasis: mechanical academy",
+          "Family category changed: united observatories",
+          "Major merger lacks emphasis: united observatories",
+          "Fourteen records occupy an excessively large canvas for this compact case.",
+          "Most record text is too small for the compact case.",
+          "The trace has no supported image-reading result; omitted images and preview dimensions do not constitute visual inspection."
+        ],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "result/poster.svg",
+        "result/source.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/assets/templates/starter.json",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/scripts/test_chart.py",
+        "skills/usefulcharts-style/scripts/test_editorial.py",
+        "skills/usefulcharts-style/scripts/render_chart.py",
+        "skills/usefulcharts-style/scripts/editorial_poster.py",
+        "skills/usefulcharts-style/scripts/audit_chart.py",
+        "result/poster.png",
+        "result/browser.json",
+        "result/layout.json"
+      ],
+      "total_read_bytes": 497181,
+      "tool_errors": [
+        "/usr/bin/bash: line 1: class skills/usefulcharts-style/scripts/editorial_poster.py: No such file or directory\n\n\nCommand exited with code 127",
+        "ls: cannot access 'result': No such file or directory\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Nodes pendulum-circle and standards-bureau overlap or lack a 5-unit gutter.\r\n\n\nCommand exited with code 2"
+      ],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    },
+    {
+      "id": "usefulcharts-institutions-v8-20260911-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "d454651283d8ec2c9bbbd7e90cffe969ecffa711896ab2fa89cb1d7ef43faa1a"
+      },
+      "duration_seconds": 64.329,
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:42:41.855702+00:00",
+        "finishedAtUtc": "2026-09-12T01:43:46.184776+00:00",
+        "durationSeconds": 64.329,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "fail",
+        "run": "usefulcharts-institutions-v8-20260911-spark-1",
+        "canvas": [
+          1146.0,
+          1140.84
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 0,
+        "omitted_image_count": 0,
+        "findings": [
+          "The trace has no supported image-reading result; omitted images and preview dimensions do not constitute visual inspection."
+        ],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "skills/usefulcharts-style/scripts/render_chart.py",
+        "skills/usefulcharts-style/scripts/editorial_poster.py",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/portraits/provenance.json",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "result/source.json",
+        "result/browser.json",
+        "skills/usefulcharts-style/scripts/audit_chart.py",
+        "result/layout.json"
+      ],
+      "total_read_bytes": 194193,
+      "tool_errors": [
+        "Chart could not be rendered: Keep editorial source and reading notes to two compact lines.\r\n\n\nCommand exited with code 2",
+        "(no output)\n\nCommand exited with code 1"
+      ],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    },
+    {
+      "id": "usefulcharts-institutions-v9-20260911-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "b0e6284c8a0a77f7bbd733ec53ac1777602d14d040624e63e13bf391b8afe721"
+      },
+      "duration_seconds": 83.111,
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:46:46.490743+00:00",
+        "finishedAtUtc": "2026-09-12T01:48:09.601270+00:00",
+        "durationSeconds": 83.111,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "fail",
+        "run": "usefulcharts-institutions-v9-20260911-spark-1",
+        "canvas": [
+          1122.0,
+          1121.48
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 0,
+        "omitted_image_count": 1,
+        "findings": [
+          "The trace has no supported image-reading result; omitted images and preview dimensions do not constitute visual inspection."
+        ],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "result/poster.svg",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "result/poster.png",
+        "result/browser.json",
+        "result/layout.json",
+        "result/source.json"
+      ],
+      "total_read_bytes": 197297,
+      "tool_errors": [
+        "ls: cannot access 'result': No such file or directory\n\n\nCommand exited with code 2",
+        "Traceback (most recent call last):\r\n  File \"<stdin>\", line 1, in <module>\r\nModuleNotFoundError: No module named 'PIL'\r\n\n\nCommand exited with code 1",
+        "Traceback (most recent call last):\r\n  File \"<stdin>\", line 1, in <module>\r\nModuleNotFoundError: No module named 'matplotlib'\r\n\n\nCommand exited with code 1",
+        "/usr/bin/bash: line 1: magick: command not found\n\n\nCommand exited with code 127",
+        "  File \"<stdin>\", line 30\r\n    prev=b'\r\n         ^\r\nSyntaxError: unterminated string literal (detected at line 30)\r\n\n\nCommand exited with code 1"
+      ],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    },
+    {
+      "id": "usefulcharts-institutions-v9-20260911-spark-2",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "b0e6284c8a0a77f7bbd733ec53ac1777602d14d040624e63e13bf391b8afe721"
+      },
+      "duration_seconds": 64.991,
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:46:46.526138+00:00",
+        "finishedAtUtc": "2026-09-12T01:47:51.516526+00:00",
+        "durationSeconds": 64.991,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "fail",
+        "run": "usefulcharts-institutions-v9-20260911-spark-2",
+        "canvas": [
+          1138.0,
+          1110.68
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 0,
+        "omitted_image_count": 0,
+        "findings": [
+          "The trace has no supported image-reading result; omitted images and preview dimensions do not constitute visual inspection."
+        ],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/scripts/render_chart.py",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/scripts/editorial_poster.py",
+        "skills/usefulcharts-style/scripts/audit_chart.py",
+        "result/layout.json",
+        "result/browser.json"
+      ],
+      "total_read_bytes": 168413,
+      "tool_errors": [
+        "Traceback (most recent call last):\r\n  File \"<stdin>\", line 1, in <module>\r\nModuleNotFoundError: No module named 'PIL'\r\n\n\nCommand exited with code 1"
+      ],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    },
+    {
+      "id": "usefulcharts-institutions-v9-20260911-spark-3",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "b0e6284c8a0a77f7bbd733ec53ac1777602d14d040624e63e13bf391b8afe721"
+      },
+      "duration_seconds": 69.667,
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:46:46.882201+00:00",
+        "finishedAtUtc": "2026-09-12T01:47:56.548504+00:00",
+        "durationSeconds": 69.667,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "fail",
+        "run": "usefulcharts-institutions-v9-20260911-spark-3",
+        "canvas": [
+          1082.0,
+          1127.6
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 0,
+        "omitted_image_count": 0,
+        "findings": [
+          "The trace has no supported image-reading result; omitted images and preview dimensions do not constitute visual inspection."
+        ],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "result/source.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/references/pattern-recipes.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/references/editorial-composition.md",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.svg",
+        "result/poster.html"
+      ],
+      "total_read_bytes": 70357,
+      "tool_errors": [
+        "Chart could not be rendered: Keep editorial source and reading notes to two compact lines.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Expecting ',' delimiter: line 10 column 3 (char 494)\r\n\n\nCommand exited with code 2",
+        "Traceback (most recent call last):\r\n  File \"<stdin>\", line 1, in <module>\r\nModuleNotFoundError: No module named 'PIL'\r\n\n\nCommand exited with code 1",
+        "/usr/bin/bash: line 1: identify: command not found\n\n\nCommand exited with code 127",
+        "Traceback (most recent call last):\r\n  File \"<stdin>\", line 1, in <module>\r\nModuleNotFoundError: No module named 'matplotlib'\r\n\n\nCommand exited with code 1"
+      ],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    },
+    {
+      "id": "usefulcharts-institutions-v10-20260911-gpt55-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "1ea41bd9e8017b24b6b7014480afa099b50980436ceac0a538f05e99410ec7ec"
+      },
+      "duration_seconds": 148.344,
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:51:35.137741+00:00",
+        "finishedAtUtc": "2026-09-12T01:54:03.480613+00:00",
+        "durationSeconds": 148.344,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "fail",
+        "run": "usefulcharts-institutions-v10-20260911-gpt55-1",
+        "canvas": [
+          1500.0,
+          1450.0
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [
+          "Fourteen records occupy an excessively large canvas for this compact case."
+        ],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "result/poster.png"
+      ],
+      "total_read_bytes": 206200,
+      "tool_errors": [
+        "Chart could not be rendered: Use up to three short imprint lines.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Nodes pendulum-circle and transit-house overlap or lack a 5-unit gutter.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Relationship clockmakers-to-mechanical-academy crosses a node, including its own source or target.\r\n\n\nCommand exited with code 2"
+      ],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    },
+    {
+      "id": "usefulcharts-institutions-v10-20260911-gpt55-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "1ea41bd9e8017b24b6b7014480afa099b50980436ceac0a538f05e99410ec7ec"
+      },
+      "duration_seconds": 209.939,
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:52:08.127855+00:00",
+        "finishedAtUtc": "2026-09-12T01:55:38.065933+00:00",
+        "durationSeconds": 209.939,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "fail",
+        "run": "usefulcharts-institutions-v10-20260911-gpt55-2",
+        "canvas": [
+          1400.0,
+          1250.0
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [
+          "Most record text is too small for the compact case."
+        ],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "result/poster.png",
+        "result/browser.json",
+        "result/layout.json"
+      ],
+      "total_read_bytes": 205327,
+      "tool_errors": [
+        "Chart could not be rendered: Nodes pendulum-circle and transit-house overlap or lack a 5-unit gutter.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Nodes pendulum-circle and transit-house overlap or lack a 5-unit gutter.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Relationship clockmakers-to-mechanical-academy crosses a node, including its own source or target.\r\n\n\nCommand exited with code 2",
+        "Installed 4 packages in 200ms\n{\"status\": \"fail\", \"id\": \"synthetic-clockwork-sky-institutions\", \"node_count\": 14, \"edge_count\": 16, \"text_count\": 58, \"min_contrast\": 5.4037235709231055, \"findings\": [{\"type\": \"text-overlap\", \"a\": \"CLOCKWORK & SKY INSTITUTIONS\", \"b\": \"Synthetic fictional dataset\"}]}\r\n\n\nCommand exited with code 1"
+      ],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    },
+    {
+      "id": "usefulcharts-institutions-v10-20260911-gpt55-3",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "1ea41bd9e8017b24b6b7014480afa099b50980436ceac0a538f05e99410ec7ec"
+      },
+      "duration_seconds": 198.327,
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:52:08.355562+00:00",
+        "finishedAtUtc": "2026-09-12T01:55:26.681323+00:00",
+        "durationSeconds": 198.327,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-institutions-v10-20260911-gpt55-3",
+        "canvas": [
+          1298.0,
+          1278.08
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "result/poster.png",
+        "result/browser.json"
+      ],
+      "total_read_bytes": 271949,
+      "tool_errors": [
+        "Chart could not be rendered: Use up to three short imprint lines.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Node house-inquiry exceeds chart height.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Node house-inquiry exceeds chart height.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Node house-inquiry exceeds chart height.\r\n\n\nCommand exited with code 2",
+        "Installed 4 packages in 185ms\n{\"status\": \"fail\", \"id\": \"synthetic-inquiry-institutions\", \"node_count\": 14, \"edge_count\": 16, \"text_count\": 75, \"min_contrast\": 5.615526540513251, \"findings\": [{\"type\": \"text-overlap\", \"a\": \"Closed branch: no\", \"b\": \"1418\\u20131497 \\u2022 branches\"}, {\"type\": \"text-other-node\", \"text\": \"Closed branch: no\", \"node\": \"pendulum-circle\"}, {\"type\": \"text-other-node\", \"text\": \"Closed branch: no\", \"node\": \"star-census\"}, {\"type\": \"text-other-node\", \"text\": \"successor\", \"node\": \"pendulum-circle\"}]}\r\n\n\nCommand exited with code 1"
+      ],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    },
+    {
+      "id": "usefulcharts-institutions-v11-20260911-gpt55-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "dcbbe7a98e22b1fd0c8aaec2b4065ded565d2ef9edcab31c8d7d37aecb4ecaa9"
+      },
+      "duration_seconds": 104.092,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:57:04.258884+00:00",
+        "finishedAtUtc": "2026-09-12T01:58:48.350224+00:00",
+        "durationSeconds": 104.092,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-institutions-v11-20260911-gpt55-1",
+        "canvas": [
+          1278.0,
+          1142.72
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "result/poster.html",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "result/poster.png",
+        "result/layout.json",
+        "result/browser.json",
+        "skills/usefulcharts-style/references/editorial-contract.md"
+      ],
+      "total_read_bytes": 257649,
+      "tool_errors": [],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    },
+    {
+      "id": "usefulcharts-institutions-v11-20260911-gpt55-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "dcbbe7a98e22b1fd0c8aaec2b4065ded565d2ef9edcab31c8d7d37aecb4ecaa9"
+      },
+      "duration_seconds": 91.342,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:57:04.272785+00:00",
+        "finishedAtUtc": "2026-09-12T01:58:35.613893+00:00",
+        "durationSeconds": 91.342,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-institutions-v11-20260911-gpt55-2",
+        "canvas": [
+          1278.0,
+          1176.56
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "result/poster.png",
+        "result/layout.json",
+        "result/browser.json",
+        "skills/usefulcharts-style/references/editorial-contract.md"
+      ],
+      "total_read_bytes": 213288,
+      "tool_errors": [],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    },
+    {
+      "id": "usefulcharts-institutions-v11-20260911-gpt55-3",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 55,
+        "payloadSha256": "dcbbe7a98e22b1fd0c8aaec2b4065ded565d2ef9edcab31c8d7d37aecb4ecaa9"
+      },
+      "duration_seconds": 86.967,
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T01:57:04.532083+00:00",
+        "finishedAtUtc": "2026-09-12T01:58:31.498301+00:00",
+        "durationSeconds": 86.967,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-institutions-v11-20260911-gpt55-3",
+        "canvas": [
+          1278.0,
+          1188.8
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review."
+      },
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "result/poster.png",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.svg"
+      ],
+      "total_read_bytes": 205541,
+      "tool_errors": [],
+      "classification": "See the authored evaluation; model capability, agent execution and visual judgment are separate."
+    }
+  ],
+  "visual_parity": "Not established by these checks."
+}

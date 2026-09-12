@@ -281,7 +281,8 @@ class Poster:
         require(self.mode in ("genealogy", "lineage", "timeline"), "Unknown poster mode.")
         self.w = number(data.get("width", 1600), "width")
         self.h = number(data.get("height", 2400), "height")
-        require(1000 <= self.w <= 8000 and 1200 <= self.h <= 12000, "Canvas must be 1000–8000 by 1200–12000 units.")
+        minimum_height=600 if data.get('design')=='editorial' else 1200
+        require(1000 <= self.w <= 8000 and minimum_height <= self.h <= 12000, f"Canvas must be 1000–8000 by {minimum_height}–12000 units.")
         self.font = number(data.get("font_size", 18), "font_size")
         require(16 <= self.font <= 40, "font_size must be between 16 and 40.")
         self.frame = color(data.get("frame_color", "#813B37"))
@@ -322,7 +323,10 @@ class Poster:
         self.key_rows = math.ceil(len(self.kinds) / max(1, int((self.w - 130) / 300)))
         self.top = self.title_height + 84 + 38 * self.legend_rows + 34 * self.key_rows + 70
         self.bottom = self.h - self.footer_height - 68
-        require(self.bottom - self.top > 450, "Header/footer leave insufficient chart area. Enlarge the canvas or shorten notes.")
+        if data.get('design')=='editorial':
+            self.top,self.bottom=170,self.h-80
+        else:
+            require(self.bottom - self.top > 450, "Header/footer leave insufficient chart area. Enlarge the canvas or shorten notes.")
 
     def default_note(self):
         if self.mode == "timeline":
@@ -653,7 +657,7 @@ class Poster:
                   "node_collisions": 0, "connector_node_collisions": 0, "crossing_count": len(crossings),
                   "data_sha256": meta["data_sha256"], "visual_review": "Required; geometric preflight is not a visual quality score."}
         if self.data.get("layout")=="auto":
-            report["resolved_layout"]={"columns":self.data["columns"],"rows":self.data["rows"],"nodes":[{"id":n["id"],"row":n["row"],"col":n["col"]} for n in self.nodes.values()]}
+            report["resolved_layout"]={"columns":self.data["columns"],"rows":self.data["rows"],"nodes":[{"id":n["id"],"row":n["row"],"col":n["col"],"x":self.boxes[n['id']][0]+self.boxes[n['id']][2]/2,"y":self.boxes[n['id']][1]+self.boxes[n['id']][3]/2,"width":self.boxes[n['id']][2]} for n in self.nodes.values()]}
         elif self.data.get("layout")=="cohorts":
             report["resolved_layout"]={"layout":"cohorts","nodes":[{"id":nid,"x":b[0]+b[2]/2,"y":b[1]+b[3]/2,"width":b[2]} for nid,b in self.boxes.items()]}
         return svg, report

@@ -30,6 +30,8 @@ Input: `design: editorial`, `mode: lineage` with `layout: auto`; named category 
 4. Keep cross-branch paths in the inter-rank corridors and review their intersections.
 5. Explain schematic vertical spacing; a displayed date in a label does not make the layout a numeric time scale.
 
+For a dense authored poster, follow [institutional composition](institution-composition.md). It covers individual histories, local merger groups, meaningful emphasis, and reserved influence corridors without requiring the acceptance gallery.
+
 Validation: render and browser-audit; count nodes/edges against source, inspect the longest cross-branch route, and check semantic legends. Pitfalls: force-directed placement destroys reading order; a timeline ordered by attractive spacing misrepresents intervals; a hierarchy label does not prove a historical link.
 
 ## Parallel historical intervals

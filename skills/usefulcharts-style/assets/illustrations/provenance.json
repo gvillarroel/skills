@@ -1,0 +1,41 @@
+{
+  "purpose": "Original source illustrations for contextual educational use. These are identified historical or explanatory objects, not evidence of fictional institutions or events.",
+  "items": [
+    {
+      "id": "astrolabe-observation",
+      "file": "astrolabe-observation.svg",
+      "title": "Observation with a mariner's astrolabe",
+      "creator": "Pearson Scott Foresman; vector rendition uploaded by Belbury",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Astrolabe_PSF.svg",
+      "source_revision": 1115707816,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/88/Astrolabe_PSF.svg",
+      "rights": "Public domain dedication by Pearson Scott Foresman, confirmed by Wikimedia VRTS ticket 2010061110041093.",
+      "date_note": "Undated source illustration; SVG uploaded on 2021-10-14. The upload date is not the instrument's invention date.",
+      "modified": false,
+      "sha256": "c9ca9c4cfcc02aaa389e5bc1d1b659c39e2d94605069c1239322205b91d4b302",
+      "bytes": 89342,
+      "mime_type": "image/svg+xml",
+      "width": 3020,
+      "height": 2080,
+      "background": "Transparent vector field, visually inspected on the poster paper."
+    },
+    {
+      "id": "sextant-1904",
+      "file": "sextant-1904.png",
+      "title": "Sextant from Nordisk familjebok, 1904, volume 2, page 296",
+      "creator": "Anonymous encyclopedia illustrator; transparent derivative by Zache",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Stronomiska_instrument,_Sextant,_Nordisk_familjebok_transparent.png",
+      "source_revision": 975234322,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Stronomiska_instrument%2C_Sextant%2C_Nordisk_familjebok_transparent.png",
+      "rights": "Public domain anonymous historical illustration; source marked PD-Ugglan and PD-anon-70-EU. First published in 1904.",
+      "date_note": "Original illustration published in 1904; background removed by the Commons contributor in 2010. This bundled copy is unchanged.",
+      "modified": false,
+      "sha256": "b2fe0bf2acd852ed3932a7de1c0c51b5977c1fd1e5db5f0403db3dc91a26341f",
+      "bytes": 9083,
+      "mime_type": "image/png",
+      "width": 413,
+      "height": 396,
+      "background": "Indexed PNG with transparent palette index 0; visually inspected on the poster paper."
+    }
+  ]
+}

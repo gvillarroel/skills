@@ -47,6 +47,20 @@ def main():
     if original.find('.//s:g[@data-event-id]',ns) is not None:
         node=copy.deepcopy(original);event=node.find('.//s:g[@data-event-id]',ns);event.set('data-origin-y',str(float(event.attrib['data-origin-y'])+50))
         mutations.append(('shifted-event-date-anchor',node,'event-time-mismatch'))
+    if original.find('.//s:path[@data-era-rule]',ns) is not None:
+        node=copy.deepcopy(original);rule=node.find('.//s:path[@data-era-rule]',ns)
+        tokens=rule.attrib['d'].split();tokens[1]='45';rule.set('d',' '.join(tokens))
+        mutations.append(('era-rule-over-year',node,'era-rule-text-collision'))
+    if original.find('.//s:g[@data-event-id]/s:svg[@data-artwork]',ns) is not None:
+        node=copy.deepcopy(original);art=node.find('.//s:g[@data-event-id]/s:svg[@data-artwork]',ns)
+        box=node.find('.//s:rect[@data-node-box]',ns)
+        art.set('x',box.attrib['x']);art.set('y',str(float(box.attrib['y'])+30))
+        mutations.append(('illustration-over-period',node,'illustration-node-collision'))
+        if original.find('.//s:path[@data-transition-fill]',ns) is not None:
+            node=copy.deepcopy(original);art=node.find('.//s:g[@data-event-id]/s:svg[@data-artwork]',ns)
+            x,y,w,h=[float(art.attrib[k]) for k in ('x','y','width','height')]
+            node.find('.//s:path[@data-transition-fill]',ns).set('d',f'M {x+1} {y+1} L {x+w-1} {y+1} L {x+w-1} {y+h-1} L {x+1} {y+h-1} Z')
+            mutations.append(('bridge-over-illustration',node,'transition-fill-illustration-collision'))
     results=[]
     with sync_playwright() as p:
         browser=p.chromium.launch();page=browser.new_page()

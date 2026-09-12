@@ -9,7 +9,7 @@
 | `id` | Stable lowercase hyphen-case subject ID. |
 | `title`, `subtitle` | Required title and optional one-line context. Keep title under about 50 characters; the renderer wraps long titles. |
 | `mode` | `genealogy`, `lineage`, or `timeline`. |
-| `width`, `height` | Optional canvas dimensions, at least 1000 × 1200. Default 1600 × 2400. |
+| `width`, `height` | Optional canvas dimensions. Classic minimum: 1000 × 1200; editorial permits heights down to 600 for compact subjects. Classic default: 1600 × 2400. |
 | `groups` | Array of `{id, label, color}`; 1–8 categories. Color is `#RRGGBB`. Default palette can be copied from the starter. |
 | `source_note` | Required concise data provenance, including “Synthetic” for invented data. |
 | `reading_note` | Optional interpretation note; wrapping is automatic. |

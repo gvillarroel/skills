@@ -38,7 +38,7 @@
       "color": "#B88BC6"
     }
   ],
-  "source_note": "Original synthetic history \u00b7 All periods, events, and relationships are invented. Museum objects are decorative samples; embedded provenance identifies the actual works.",
+  "source_note": "Original synthetic history \u00b7 All periods, events, and relationships are invented. Illustrations: museum samples, Pearson Scott Foresman and Nordisk familjebok; provenance embedded.",
   "annotations": [],
   "pattern_id": "usefulcharts-parallel-history",
   "subtitle": "Divisions, unions, and changing societies in five fictional regions, 1000\u20132000",
@@ -124,7 +124,7 @@
       "group": "g0",
       "offset": 102.0,
       "bar_width": 78,
-      "size": 13
+      "size": 20
     },
     {
       "id": "p0-east",
@@ -256,7 +256,7 @@
       "group": "g1",
       "offset": 12.0,
       "bar_width": 75,
-      "size": 13
+      "size": 20
     },
     {
       "id": "p1-east",
@@ -344,7 +344,7 @@
       "group": "g2",
       "offset": 106.5,
       "bar_width": 78,
-      "size": 13
+      "size": 20
     },
     {
       "id": "p2-north",
@@ -465,7 +465,7 @@
       "group": "g3",
       "offset": 97.0,
       "bar_width": 78,
-      "size": 13
+      "size": 20
     },
     {
       "id": "p3-lagoon",
@@ -531,7 +531,7 @@
       "group": "g4",
       "offset": 103.5,
       "bar_width": 78,
-      "size": 13
+      "size": 20
     },
     {
       "id": "p4-taiga",
@@ -1233,8 +1233,8 @@
       "detail": "The new crown abolishes internal customs barriers.",
       "offset": 188.0,
       "width": 130.0,
-      "size": 10.6,
-      "detail_size": 9.5,
+      "size": 13.2,
+      "detail_size": 10.2,
       "group": "g0"
     },
     {
@@ -1353,8 +1353,8 @@
       "detail": "Pass councils fund bridges and mountain shelters.",
       "offset": 179.5,
       "width": 138.5,
-      "size": 10.6,
-      "detail_size": 9.5,
+      "size": 13.2,
+      "detail_size": 10.2,
       "group": "g1"
     },
     {
@@ -1523,8 +1523,8 @@
       "detail": "A single tribunal hears disputes between ports.",
       "offset": 192.5,
       "width": 125.5,
-      "size": 10.6,
-      "detail_size": 9.5,
+      "size": 13.2,
+      "detail_size": 10.2,
       "group": "g2"
     },
     {
@@ -1543,15 +1543,17 @@
       "id": "event-2-6",
       "lane": "l2",
       "year": 1573,
-      "label": "1573 \u00b7 The pearl observatory",
-      "detail": "Astronomers revise tables for offshore navigation.",
+      "label": "1573 \u00b7 Pearl observatory",
+      "detail": "New tables guide offshore voyages.",
       "offset": 192.5,
       "width": 125.5,
       "size": 10.6,
       "detail_size": 9.5,
       "group": "g2",
-      "icon": "object-90589",
-      "art_size": 70
+      "icon": "illustration-astrolabe-observation",
+      "art_size": 120,
+      "art_width": 120,
+      "art_height": 82.65
     },
     {
       "id": "event-2-7",
@@ -1569,13 +1571,15 @@
       "id": "event-2-8",
       "lane": "l2",
       "year": 1741,
-      "label": "1741 \u00b7 The lighthouse chain",
-      "detail": "Coastal signals make night passages more reliable.",
+      "label": "1741 \u00b7 Offshore survey",
+      "detail": "Crews chart the outer banks.",
       "offset": 178.0,
       "width": 82.0,
       "size": 10.6,
       "detail_size": 9.5,
-      "group": "g2"
+      "group": "g2",
+      "icon": "illustration-sextant-1904",
+      "art_size": 65
     },
     {
       "id": "event-2-9",
@@ -1683,8 +1687,8 @@
       "detail": "Crews receive sanctuary in every allied harbor.",
       "offset": 183.0,
       "width": 135.0,
-      "size": 10.6,
-      "detail_size": 9.5,
+      "size": 13.2,
+      "detail_size": 10.2,
       "group": "g3"
     },
     {
@@ -1791,8 +1795,8 @@
       "detail": "Lake and forest councils create a mutual-defense union.",
       "offset": 189.5,
       "width": 128.5,
-      "size": 10.6,
-      "detail_size": 9.5,
+      "size": 13.2,
+      "detail_size": 10.2,
       "group": "g4"
     },
     {
@@ -1877,8 +1881,8 @@
       "detail": "Representatives agree common border and trade rules.",
       "offset": 195.5,
       "width": 122.5,
-      "size": 10.6,
-      "detail_size": 9.5,
+      "size": 13.2,
+      "detail_size": 10.2,
       "group": "g4"
     },
     {
