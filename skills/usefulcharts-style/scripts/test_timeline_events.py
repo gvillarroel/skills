@@ -8,6 +8,7 @@
 import copy
 import unittest
 from pack_timeline_events import pack_events
+from timeline_annotations import event_content
 
 
 def brief():
@@ -77,6 +78,65 @@ class NarrativePlacementTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'backward'):pack_events(source)
         source=brief();source['transitions'][0]['source_port']=0
         with self.assertRaisesRegex(ValueError,'five units'):pack_events(source)
+
+    def test_above_image_reserves_a_preceding_period(self):
+        source=brief();source['transitions']=[]
+        source['events']=[dict(id='boundary',lane='east',year=1870,label='1870',width=150,offset=0,
+            icon='illustration-square-rigged-ship',art_position='above',art_width=100,art_height=120)]
+        result,_=pack_events(source)
+        self.assertGreater(result['events'][0]['offset'],0)
+        self.assertEqual(result['events'][0]['year'],1870)
+
+    def test_above_image_must_fit_below_timeline_header(self):
+        source=brief();source['events']=source['events'][:1]
+        source['events'][0].update(year=1800,icon='illustration-stagecoach',art_position='above',art_width=100,art_height=45)
+        with self.assertRaisesRegex(ValueError,'No readable placement'):pack_events(source)
+
+    def test_each_arrangement_keeps_words_dates_dimensions_and_type(self):
+        for position in ('above','below','left','right'):
+            with self.subTest(position=position):
+                source=brief();source['events']=source['events'][:1]
+                source['events'][0].update(icon='illustration-stagecoach',art_position=position,art_width=70,art_height=35)
+                result,_=pack_events(source,max_width=220)
+                result['events'][0].pop('offset');result['events'][0].pop('width')
+                self.assertEqual(result,source)
+
+    def test_invalid_art_arrangement_reports_the_actual_problem(self):
+        for extra in (dict(art_position='above'),dict(icon='illustration-stagecoach',art_position='under')):
+            source=brief();source['events'][0].update(extra)
+            with self.assertRaisesRegex(ValueError,'art_position'):pack_events(source)
+
+    def test_text_date_anchor_is_independent_of_image_direction(self):
+        for position in ('above','below','left','right'):
+            event=dict(label='A brief heading',detail='A complete explanatory note.',icon='illustration-stagecoach',
+                art_position=position,art_width=60,art_height=30,size=13,detail_size=11)
+            content=event_content(event,220);art=content['art'];line=content['lines'][0]
+            self.assertEqual(line['y'],0)
+            self.assertEqual(line['x'],68 if position=='left' else 0)
+            self.assertEqual(art[2:],(60,30))
+            if position=='above':self.assertEqual(art[1],-35)
+            elif position=='below':self.assertGreater(art[1],content['lines'][-1]['box'][1])
+            else:self.assertEqual(art[1],0)
+
+    def test_side_art_leaves_readable_text_width(self):
+        event=dict(label='A complete heading',icon='illustration-stagecoach',art_position='left',art_width=100,art_height=40)
+        with self.assertRaisesRegex(ValueError,'positive text width'):event_content(event,108)
+
+    def test_default_side_width_adds_image_to_the_prose_budget(self):
+        source=brief();source['events']=source['events'][:1]
+        source['events'][0].update(icon='illustration-stagecoach',art_position='left',art_width=110,art_height=45)
+        result,_=pack_events(source)
+        self.assertEqual(result['events'][0]['width'],288)
+        capped,_=pack_events(source,max_width=220)
+        self.assertLessEqual(capped['events'][0]['width'],220)
+
+    def test_an_earlier_note_cannot_be_covered_by_later_above_art(self):
+        source=brief();source['periods']=[];source['transitions']=[]
+        source['events']=[dict(id='one',lane='west',year=1900,label='Existing note',offset=0,width=160),
+            dict(id='two',lane='west',year=1910,label='Later note',offset=0,width=160,
+            icon='illustration-square-rigged-ship',art_position='above',art_width=110,art_height=110)]
+        result,_=pack_events(source)
+        self.assertGreater(result['events'][1]['offset'],result['events'][0]['offset'])
 
 
 if __name__=='__main__':unittest.main()

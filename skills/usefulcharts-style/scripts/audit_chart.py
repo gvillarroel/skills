@@ -14,6 +14,10 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
+# Support both direct execution and evaluator-owned importlib loading.
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from audit_timeline_annotations import check_annotations
+
 AUDIT = r"""() => {
   const svg = document.querySelector('svg');
   const meta = JSON.parse(svg.querySelector('#chart-data').textContent);
@@ -25,6 +29,13 @@ AUDIT = r"""() => {
     const xs=p.map(v=>v.x),ys=p.map(v=>v.y);
     return {x:Math.min(...xs),y:Math.min(...ys),w:Math.max(...xs)-Math.min(...xs),h:Math.max(...ys)-Math.min(...ys)};
   };
+  const viewport = el => {
+    if(!el.viewBox)return null;
+    const b=el.viewBox.baseVal,m=svg.getScreenCTM().inverse().multiply(el.getScreenCTM());
+    const a=new DOMPoint(b.x,b.y).matrixTransform(m),z=new DOMPoint(b.x+b.width,b.y+b.height).matrixTransform(m);
+    return {x:a.x,y:a.y,w:z.x-a.x,h:z.y-a.y};
+  };
+  const textOrigin=el=>new DOMPoint(el.x.baseVal[0]?.value||0,el.y.baseVal[0]?.value||0).matrixTransform(svg.getScreenCTM().inverse().multiply(el.getScreenCTM()));
   const intersect=(a,b,p=0)=>a.x<b.x+b.w-p && a.x+a.w>b.x+p && a.y<b.y+b.h-p && a.y+a.h>b.y+p;
   const contained=(a,b,p=0)=>a.x>=b.x-p && a.y>=b.y-p && a.x+a.w<=b.x+b.w+p && a.y+a.h<=b.y+b.h+p;
   const lum=color=>{
@@ -48,8 +59,8 @@ AUDIT = r"""() => {
   const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,source_port:el.dataset.sourcePort||'bottom',target_port:el.dataset.targetPort||'top',d:el.getAttribute('d'),curved:el.dataset.routeStyle==='rounded'}));
   const events=[...svg.querySelectorAll('[data-event-id]')].map(el=>({id:el.dataset.eventId,year:Number(el.dataset.year),origin_y:Number(el.dataset.originY),text:el.textContent}));
   const unions=[...svg.querySelectorAll('[data-union-id]')].map(el=>({id:el.dataset.unionId,d:el.getAttribute('d')}));
-  const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,event:el.closest('[data-event-id]')?.dataset.eventId,box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
-  const illustrations=[...svg.querySelectorAll('[data-event-id] [data-artwork]')].map(el=>({event:el.closest('[data-event-id]').dataset.eventId,kind:el.dataset.artwork,box:bounds(el)}));
+  const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,event:el.closest('[data-event-id]')?.dataset.eventId,role:el.dataset.eventTextRole||null,origin:{x:textOrigin(el).x,y:textOrigin(el).y},box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
+  const illustrations=[...svg.querySelectorAll('[data-event-id] [data-artwork]')].map(el=>({event:el.closest('[data-event-id]').dataset.eventId,kind:el.dataset.artwork,illustration_id:el.dataset.illustrationId||null,use_href:el.querySelector('use')?.getAttribute('href')||null,viewport:viewport(el),...painted(el)}));
   const landmarks=[...svg.querySelectorAll('[data-annotation-kind="landmark"]')].map(el=>({id:el.dataset.annotationId,node:el.dataset.contextNode,group:el.dataset.contextGroup,field:el.dataset.sourceField,value:el.dataset.sourceValue,box:bounds(el.querySelector('[data-annotation-box]')),heraldry_fill:el.querySelector('[data-artwork="heraldry"]>path')?getComputedStyle(el.querySelector('[data-artwork="heraldry"]>path')).fill:null,label:[...el.querySelectorAll('[data-content-role="landmark-label"]')].map(t=>t.textContent).join(' ')}));
   const setEqual=(a,b)=>a.length===b.length && [...a].sort().join('\n')===[...b].sort().join('\n');
   if(!setEqual(nodes.map(n=>n.id),meta.node_ids))findings.push({type:'node-inventory'});
@@ -229,6 +240,8 @@ def check_source(report, data):
         weights=[lane.get('weight',1) for lane in data['lanes']]
         lane_widths=[(report['canvas'][0]-175)*weight/sum(weights) for weight in weights]
         lane_origins={lane['id']:110+sum(lane_widths[:index]) for index,lane in enumerate(data['lanes'])}
+        if data.get('design')=='editorial' and data.get('layout')!='compact':
+            check_annotations(report,data,lane_origins,(y0,y1))
         for node in nodes:
             box = boxes.get(node["id"])
             if not box:

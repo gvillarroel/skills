@@ -1,0 +1,52 @@
+{
+  "contextual-art-v28d/side-ship": {
+    "viewed": ["projects/usefulcharts-style/artifacts/reviews/contextual-art-final-comparison/comparison.png", "projects/usefulcharts-style/artifacts/reviews/contextual-art-final-comparison/detail.png", "projects/usefulcharts-style/artifacts/reviews/contextual-art-v28d/side-ship/poster.png"],
+    "local_revision": "accepted",
+    "visual_parity": "rejected",
+    "critique": ["The side-by-side ship and note form a readable local group; the bridge above a note adds a different silhouette without moving its text date.", "The native-scale detail preserves clear type and keeps both new images separate from periods and filled bridges.", "Five persistent regional territories, repeated split/merge rhythms and limited image variety still distinguish the overall composition from the reference. The smaller source inventory is not an excuse to manufacture filler."]
+  },
+  "usefulcharts-v28-art-1-20260912": {
+    "image_inspected": true,
+    "local_art_composition": "rejected",
+    "visual_parity": "rejected",
+    "critique": ["All required drawings are visible and the broad history remains readable.", "The stagecoach leaves a conspicuously narrow column with nearly one word per line; the clock note is also cramped.", "Long bands, repeated right-side notes and a largely empty central area retain a schematic rhythm."]
+  },
+  "usefulcharts-v28-art-2-20260912": {
+    "image_inspected": true,
+    "local_art_composition": "accepted after agent repair",
+    "visual_parity": "rejected",
+    "critique": ["The clock, carriage and bridge use three legible arrangements; the wider note groups avoid the worst word-by-word wrapping.", "The 1600 by 1850 page leaves substantial unused space and a repeated division between bands and prose.", "The final picture does not erase the four recorded tool errors; the strict run fails."]
+  },
+  "usefulcharts-v28-art-3-20260912": {
+    "image_inspected": true,
+    "local_art_composition": "rejected",
+    "visual_parity": "rejected",
+    "critique": ["The three drawings have clear subject identities and retain their silhouettes.", "The stagecoach note forms a tall narrow paragraph despite room elsewhere in the lane; clock text is similarly pinched.", "The final source passes, but the earlier placement failure and obvious wrapping weakness require a skill change."]
+  },
+  "usefulcharts-v28b-art-1-20260912": {
+    "image_inspected": true,
+    "local_art_composition": "usable with reservations",
+    "visual_parity": "rejected",
+    "critique": ["All three images are correctly associated and have intact silhouettes; the initial placement succeeds.", "The stagecoach's note still has a narrow heading and short lines; the automatic allowance is not a guarantee of editorial line breaks.", "Large empty gaps and a 1500 by 1900 page retain the regular band-and-prose composition."]
+  },
+  "usefulcharts-v28b-art-2-20260912": {
+    "image_inspected": true,
+    "local_art_composition": "accepted",
+    "visual_parity": "rejected",
+    "critique": ["The clock below its explanation and the bridge above its explanation read as distinct local groups; the coach stays beside the winter-road note.", "The agent inspects the PNG twice and the final illustrated paragraphs are legible.", "The three persistent lanes and broadly similar note treatment remain visibly schematic; the 1400 by 1780 canvas still has large quiet stretches."]
+  },
+  "usefulcharts-v28b-art-3-20260912": {
+    "image_inspected": true,
+    "local_art_composition": "rejected",
+    "visual_parity": "rejected",
+    "critique": ["The source and browser correctly bind the above image to the 1820 clockmaking note.", "Visually the clock occupies the same horizontal band as the 1808 harbor note, creating an ambiguous association. Clearance alone cannot detect this reading problem.", "The illustration geometry works, but the association and narrow clock text require a later composition repair before aesthetic acceptance."]
+  },
+  "usefulcharts-v28b-contract-spark-20260912": {
+    "visual_parity": "not assessed",
+    "purpose": "Final runtime command control; all four arrangements preserve protected fields and pass independent geometry checks."
+  },
+  "usefulcharts-v28-contract-spark-20260912": {
+    "visual_parity": "not assessed",
+    "purpose": "Exact command and geometry control; all four image arrangements preserve protected fields."
+  }
+}

@@ -14,8 +14,9 @@ from shapely.geometry import LineString,Polygon,box
 from shapely.ops import unary_union
 from shapely.prepared import prep
 
-from render_chart import number,require,text_width,wrap
+from render_chart import number,require
 from timeline_geometry import lane_geometry,transition_geometry,period_parts
+from timeline_annotations import event_content
 
 
 def obstacles_for(data,scale,lanes):
@@ -46,7 +47,7 @@ def obstacles_for(data,scale,lanes):
     return obstacles
 
 
-def pack_events(source,max_width=170,clearance=2.5):
+def pack_events(source,max_width=None,clearance=2.5):
     """Change only event widths and offsets; preserve all semantic inputs."""
     data=copy.deepcopy(source)
     require(data.get('design')=='editorial' and data.get('mode')=='timeline' and data.get('layout')!='compact',
@@ -54,7 +55,7 @@ def pack_events(source,max_width=170,clearance=2.5):
     width=number(data.get('width',1800),'width');height=number(data.get('height',2700),'height')
     start,end=number(data['time']['start'],'time.start'),number(data['time']['end'],'time.end')
     require(width>400 and height>500 and end>start,'The timeline needs a positive year scale and a usable page.')
-    require(max_width>=54 and clearance>=0,'Use a maximum note width of at least 54 and nonnegative clearance.')
+    require((max_width is None or max_width>=54) and clearance>=0,'Use a maximum note width of at least 54 and nonnegative clearance.')
     lanes=lane_geometry(data['lanes'],width)
     scale=lambda year:190+(year-start)/(end-start)*(height-302)
     obstacles=obstacles_for(data,scale,lanes);envelopes=[];decisions=[];ids=set()
@@ -67,35 +68,40 @@ def pack_events(source,max_width=170,clearance=2.5):
         aw=number(event.get('art_width',event.get('art_size',56)),'art_width') if event.get('icon') else 0
         ah=number(event.get('art_height',event.get('art_size',56)),'art_height') if event.get('icon') else 0
         require(not event.get('icon') or (aw>0 and ah>0),'Event illustrations need positive dimensions.')
+        require(event.get('art_position','below') in ('above','below','left','right'),'Event art_position must be above, below, left or right.')
+        require(event.get('icon') or 'art_position' not in event,'art_position requires an event illustration.')
         # Notes start below their date. Padding must not extend the exact
         # endpoint of a preceding interval into later text.
-        active=[o for o in obstacles if o.bounds[3]>year_y+.001]+envelopes
+        above=event.get('icon') and event.get('art_position')=='above'
+        top=year_y-ah-5 if above else year_y
+        active=[o for o in obstacles if o.bounds[3]>top+.001]+envelopes
         blocked=unary_union(active);prepared=prep(blocked);candidates=[]
-        widths={float(w) for w in range(int(max_width),53,-12)}|{54.,min(max_width,float(event.get('width',max_width)))}
+        # Preserve a prose budget when an image is beside the note. An explicit
+        # maximum remains a hard cap on the complete image-and-text group.
+        side=bool(event.get('icon')) and event.get('art_position') in ('left','right')
+        limit=max_width if max_width is not None else min(pitch-3,170+(aw+8 if side else 0))
+        widths={float(w) for w in range(int(limit),53,-12)}|{54.,min(limit,float(event.get('width',limit)))}
         for note_width in sorted(widths,reverse=True):
             if note_width<aw or note_width>pitch-3:continue
-            try:names=wrap(event['label'],note_width,size,True);details=wrap(event.get('detail',''),note_width,small)
+            try:content=event_content(event,note_width)
             except ValueError:continue
-            note_height=len(names)*size*1.18+len(details)*small*1.18+(ah+5 if aw else 0)
-            if year_y+note_height>height-82:continue
+            note_height=content['bottom']-content['top']
+            if year_y+content['bottom']>height-82 or year_y+content['top']<190:continue
             preferred=event.get('offset',64)
             positions={0.,1.,3.,5.,pitch-note_width-5,preferred,*range(5,int(pitch-note_width-4),5)}
             for obstacle in active:
                 x1,y1,x2,y2=obstacle.bounds
-                if y1<year_y+note_height+7 and y2>year_y-7:
+                if y1<year_y+content['bottom']+7 and y2>year_y+content['top']-7:
                     positions.update((x2-lane_x+8,x1-lane_x-note_width-8))
             for offset in sorted(positions):
                 if offset<0 or offset+note_width>pitch-3:continue
-                x=lane_x+offset;y=year_y;pieces=[]
-                for lines,fs,bold in ((names,size,True),(details,small,False)):
-                    for line in lines:
-                        pieces.append(box(x,y,x+text_width(line,fs,bold),y+fs*1.18));y+=fs*1.18
-                if aw:
-                    ix=x+(note_width-aw)/2;iy=y+5;pieces.append(box(ix,iy,ix+aw,iy+ah))
+                x=lane_x+offset;pieces=[]
+                for bx,by,bw,bh in content['boxes']:
+                    pieces.append(box(x+bx,year_y+by,x+bx+bw,year_y+by+bh))
                 require(pieces,'Every event needs visible content.')
                 envelope=unary_union(pieces)
                 if prepared.intersects(envelope.buffer(clearance)):continue
-                score=(len(names)+len(details),-note_width,abs(offset-preferred),offset)
+                score=(content['line_count'],-note_width,abs(offset-preferred),offset)
                 candidates.append((score,offset,note_width,note_height,envelope))
         require(candidates,f'No readable placement for event {event["id"]}. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed.')
         _,offset,note_width,note_height,envelope=min(candidates,key=lambda item:item[0])
@@ -109,7 +115,7 @@ def pack_events(source,max_width=170,clearance=2.5):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('input',type=Path);parser.add_argument('--output',required=True,type=Path)
-    parser.add_argument('--report',type=Path);parser.add_argument('--max-width',default=170,type=float)
+    parser.add_argument('--report',type=Path);parser.add_argument('--max-width',type=float,help='Cap the complete note group. By default, side images add their footprint to a 170-unit prose budget.')
     args=parser.parse_args()
     try:data,report=pack_events(json.loads(args.input.read_text(encoding='utf-8')),args.max_width)
     except (ValueError,KeyError) as error:

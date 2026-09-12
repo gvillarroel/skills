@@ -20,6 +20,7 @@ from cohort_layout import place_cohorts, compact_cohort_defaults
 from story_layout import pack_stories
 from editorial_landmarks import landmark_content
 from timeline_geometry import lane_geometry, duration_width, transition_geometry, period_parts
+from timeline_annotations import event_content
 
 
 def separated_content(node,width,font):
@@ -575,10 +576,8 @@ class EditorialPoster(Poster):
             for event in d.get('events',[]):
                 lane_x,pitch=lanes[event['lane']]
                 ex=lane_x+event.get('offset',64)
-                ew=event.get('width',pitch-78);es=event.get('size',10.5);small=event.get('detail_size',es*.88)
-                eh=len(wrap(event['label'],ew,es,True))*es*1.18+len(wrap(event.get('detail',''),ew,small))*small*1.18
-                if event.get('icon'):eh+=5+event.get('art_height',event.get('art_size',56))
-                if scale(event['year'])-2<=yy<=scale(event['year'])+eh+2:
+                ew=event.get('width',pitch-78);content=event_content(event,ew)
+                if scale(event['year'])+content['top']-2<=yy<=scale(event['year'])+content['bottom']+2:
                     spans=[part for a,b in spans for part in [(a,min(b,ex-4)),(max(a,ex+ew+4),b)] if part[1]>part[0]]
             for a,b in spans:self.line([(a,yy),(b,yy)],'#8F8874',2,extra=f'data-era-rule="{era["start"]}"')
             cx,cy=53,yy+hh/2
@@ -636,20 +635,14 @@ class EditorialPoster(Poster):
             lane_x,pitch=lanes[event['lane']]
             x=lane_x+event.get('offset',64)
             yy=scale(event['year']);width=event.get('width',pitch-78)
+            content=event_content(event,width);anchor_y=yy
             event_id=ident(event.get('id',f'event-{index}'))
             self.add(f'<g data-event-id="{event_id}" data-year="{event["year"]}" data-origin-y="{fmt(yy)}">')
-            size=event.get('size',10.5)
-            for line in wrap(event['label'],width,size,True):
-                self.text(x,yy+size,line,size,anchor='start',bold=True);yy+=size*1.18
-            small=event.get('detail_size',size*.88)
-            for line in wrap(event.get('detail',''),width,small):
-                self.text(x,yy+small,line,small,anchor='start');yy+=small*1.18
-            if event.get('icon'):
-                art_size=number(event.get('art_size',56),'event.art_size')
-                art_width=number(event.get('art_width',art_size),'event.art_width')
-                art_height=number(event.get('art_height',art_size),'event.art_height')
-                require(0<art_width<=width and art_height>0,'Event artwork must fit its declared width and have positive dimensions.')
-                art_box=(x+(width-art_width)/2,yy+5,art_width,art_height)
+            for line in content['lines']:
+                self.text(x+line['x'],yy+line['font'],line['text'],line['font'],anchor='start',bold=line['bold'],css=f'data-event-text-role="{line["role"]}"')
+                yy+=line['font']*1.18
+            if content['art']:
+                ax,ay,aw,ah=content['art'];art_box=(x+ax,anchor_y+ay,aw,ah)
                 blocked=[nid for nid,box in self.boxes.items() if any(overlaps(art_box,part,0) for part in period_parts(self.nodes[nid],box))]
                 require(not blocked,f'Event {event_id} artwork overlaps period {", ".join(blocked)}. Reserve its full height or recompose the event.')
                 self.artwork(event['icon'],*art_box,self.groups[event.get('group',d['groups'][0]['id'])]['color'],event.get('variant',0))

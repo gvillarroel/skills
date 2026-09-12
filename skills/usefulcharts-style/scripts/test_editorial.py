@@ -36,6 +36,22 @@ def timeline():
 
 
 class EditorialTests(unittest.TestCase):
+    def test_all_image_arrangements_preserve_date_anchor_and_source_identity(self):
+        for position in ('above','below','left','right'):
+            for name in ('square-rigged-ship','suspension-bridge','stagecoach'):
+                with self.subTest(position=position,illustration=name):
+                    data=timeline();event=data['events'][0]
+                    event.update(icon='illustration-'+name,art_position=position,art_width=65,art_height=40)
+                    before=copy.deepcopy(data);svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+                    group=root.find('.//s:g[@data-event-id]',NS);text=group.find('s:text',NS)
+                    art=group.find('s:svg[@data-illustration-id]',NS)
+                    expected=190+.3*(1400-302)
+                    self.assertAlmostEqual(float(text.get('y'))-10.5,expected,places=2)
+                    self.assertEqual(text.get('data-event-text-role'),'heading')
+                    self.assertEqual(art.get('data-illustration-id'),name)
+                    self.assertEqual((art.get('width'),art.get('height')),('65','40'))
+                    self.assertEqual(data,before)
+
     def test_influence_attachments_follow_all_four_envelope_sides(self):
         from editorial_poster import attachment_port
         for source_side in ('left','right','top','bottom'):

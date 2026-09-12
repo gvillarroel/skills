@@ -27,6 +27,31 @@ def main():
     ns={"s":"http://www.w3.org/2000/svg"};ET.register_namespace("",ns["s"])
     original=ET.parse(args.svg).getroot();source=json.loads(args.source.read_text(encoding="utf-8"))
     mutations=[]
+    event_art=original.find('.//s:g[@data-event-id]/s:svg[@data-illustration-id]',ns)
+    if event_art is not None:
+        aid=event_art.get('data-illustration-id')
+        for name,attribute,value,expected in [
+            ('wrong-event-image-id','data-illustration-id','unknown-source','source-event-art-identity'),
+            ('displaced-event-image','x',str(float(event_art.get('x'))+8),'source-event-art-geometry'),
+            ('resized-event-image','width',str(float(event_art.get('width'))+8),'source-event-art-geometry'),
+            ('hidden-event-image','opacity','0','source-event-art-visibility'),
+        ]:
+            node=copy.deepcopy(original);node.find(f'.//s:svg[@data-illustration-id="{aid}"]',ns).set(attribute,value)
+            mutations.append((name,node,expected))
+        node=copy.deepcopy(original);node.find(f'.//s:svg[@data-illustration-id="{aid}"]/s:use',ns).set('href','#asset-illustration-stagecoach')
+        mutations.append(('swapped-image-symbol',node,'source-event-art-identity'))
+        node=copy.deepcopy(original)
+        for parent in node.findall('.//s:g[@data-event-id]',ns):
+            art=parent.find(f's:svg[@data-illustration-id="{aid}"]',ns)
+            if art is not None:parent.remove(art);break
+        mutations.append(('missing-event-image',node,'source-event-art-inventory'))
+        for name,attribute,value,expected in [
+            ('moved-event-text','transform','translate(0 6)','source-event-text-position'),
+            ('changed-event-text-size','font-size','8','source-event-text-size'),
+            ('changed-event-text-role','data-event-text-role','detail','source-event-text-content'),
+        ]:
+            node=copy.deepcopy(original);node.find('.//s:g[@data-event-id]/s:text[@data-event-text-role="heading"]',ns).set(attribute,value)
+            mutations.append((name,node,expected))
     stem_node=next((el for el in original.findall('.//s:g[@data-node-id]',ns) if el.find('s:rect[@data-period-stem]',ns) is not None),None)
     if stem_node is not None:
         nid=stem_node.get('data-node-id')

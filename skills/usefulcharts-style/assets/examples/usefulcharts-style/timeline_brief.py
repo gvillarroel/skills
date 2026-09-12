@@ -211,5 +211,15 @@ def build_timeline(base):
         if edge['target'] in stems:edge['target_port']=.5
     for event in d['events']:event['offset']=event['offset']/325*lanes[event['lane']][1]
     d['reading_note']='One year scale. Thin stems and full bands show exact durations; wider stem labels name periods. Bridges show succession, division or union; dots show uncertainty. Width is compositional. Contextual objects and map do not depict these fictional regions.'
-    d,_=pack_events(d)
+    d,_=pack_events(d,max_width=170)
+    # Bind images to existing observations and vary the local text relationship.
+    # The ship shares its note's year; the bridge occupies the clear space above.
+    contextual={
+        'event-2-1':('illustration-square-rigged-ship','left',78,76.17),
+        'event-1-2':('illustration-suspension-bridge','above',140,86.15),
+    }
+    for event in d['events']:
+        if event['id'] in contextual:
+            event['icon'],event['art_position'],event['art_width'],event['art_height']=contextual[event['id']]
+    d,_=pack_events(d,max_width=200)
     return d
