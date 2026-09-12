@@ -17,9 +17,29 @@ from pathlib import Path
 from render_chart import Poster, require, number, color, ident, wrap, fmt, text_color, contrast, overlaps, segment_hits, route, compress, KINDS, automatic_lineage, text_width
 from editorial_art import symbol
 from cohort_layout import place_cohorts, compact_cohort_defaults
+from story_layout import pack_stories
+
+
+def separated_content(node,width,font):
+    """Measure a named panel with an independent date and contextual caption."""
+    size=node.get('size',font);small=node.get('detail_size',size*.77)
+    icon_width=node.get('icon_width',30) if node.get('icon') else 0
+    names=wrap(node['label'],width-icon_width-10,size,True)
+    details=wrap(node.get('detail',''),width-12,small)
+    dates=wrap(str(node.get('date_label','')),width-12,small)
+    date_height=len(dates)*small*1.25+3 if dates else 0
+    panel_height=max(6+len(names)*size*1.18,icon_width+4 if icon_width else 0)
+    caption_height=3+len(details)*small*1.25 if details else 0
+    return dict(names=names,details=details,dates=dates,date_height=date_height,
+        panel_height=panel_height,caption_height=caption_height,height=date_height+panel_height+caption_height+2)
 
 
 def measured_content(node, width, font):
+    require(node.get('detail_position','inside') in ('inside','outside'),'Node detail_position must be inside or outside.')
+    require('date_label' not in node or node.get('detail_position')=='outside','A separate date_label requires detail_position: outside.')
+    if node.get('detail_position')=='outside':
+        parts=separated_content(node,width,font)
+        return parts['names'],parts['details'],parts['height']
     size=node.get('size',font)
     icon_width=node.get('icon_width',30) if node.get('icon') else 0
     usable=width-icon_width-10
@@ -64,11 +84,28 @@ class EditorialPoster(Poster):
     def __init__(self,data):
         original=copy.deepcopy(data)
         adjusted=copy.deepcopy(data)
-        compact=adjusted.get('layout') in ('auto','cohorts') and len(adjusted.get('nodes',[]))<=30
+        packed=adjusted.get('layout')=='packed'
+        compact=(adjusted.get('layout') in ('auto','cohorts') and len(adjusted.get('nodes',[]))<=30) or packed
         compact_time=adjusted.get('mode')=='timeline' and adjusted.get('layout')=='compact'
         compact=compact or compact_time
         font=original.get('font_size',18 if compact else 13)
-        if adjusted.get('layout')=='auto':
+        if packed:
+            structural=[e for e in adjusted.get('edges',[]) if e['kind']!='influence']
+            for n in adjusted['nodes']:
+                n.setdefault('detail_position','outside')
+                major=n.get('emphasis') or sum(e['target']==n['id'] for e in structural)>1
+                count=sum(e['source']==n['id'] for e in structural)
+                n.setdefault('style','hero' if major else 'emblem' if n.get('icon') else 'plain' if count<=1 else 'card')
+                n.setdefault('size',font+2 if major else font)
+                if n.get('icon'):n.setdefault('icon_width',50)
+                n.setdefault('width',max(176,max(text_width(word,n['size'],True)+18 for word in n['label'].split()))+(24 if major else 0)+n.get('icon_width',0))
+            first=pack_stories(adjusted,lambda n,w:measured_content(n,w,font))
+            if adjusted.get('legend',True):
+                key=cohort_key(first,first['width']);extra=max(0,key['height']-25)
+                adjusted=pack_stories(adjusted,lambda n,w:measured_content(n,w,font),top=190+extra)
+                adjusted['_cohort_key']=key
+            else:adjusted=first
+        elif adjusted.get('layout')=='auto':
             adjusted=automatic_lineage(adjusted)
             width=max(176 if compact else 104,max(text_width(word,font,True)+16 for n in adjusted['nodes'] for word in n['label'].split()))
             counts={n['id']:sum(e['source']==n['id'] and e['kind']!='influence' for e in adjusted['edges']) for n in adjusted['nodes']}
@@ -307,6 +344,9 @@ class EditorialPoster(Poster):
             fill=self.paper if style=='plain' else '#FFFEF7' if style=='pill' else paint
             ink=text_color(fill)
             self.add(f'<g id="node-{nid}" data-node-id="{nid}" data-group="{n["group"]}" data-treatment="{style}">')
+            if n.get('detail_position')=='outside':
+                self.draw_separated_node(nid,n,(x,y,w,h),fill,paint)
+                self.add('</g>');continue
             self.rect((x,y,w,h),fill,paint if style=='pill' else 'none',2.5,12 if style=='pill' else 1,extra='data-node-box="true"')
             iconw=n.get('icon_width',30) if n.get('icon') else 0
             if iconw:
@@ -323,6 +363,26 @@ class EditorialPoster(Poster):
             self.add('</g>')
         for u in self.unions.values():
             x,y=u['point'];self.add(f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="1.8" fill="{self.muted}"/>')
+
+    def draw_separated_node(self,nid,node,box,fill,paint):
+        x,y,w,h=box;parts=separated_content(node,w,self.font)
+        size=node.get('size',self.font);small=node.get('detail_size',size*.77)
+        iconw=node.get('icon_width',30) if node.get('icon') else 0
+        self.rect(box,self.paper,extra='data-node-box="true" data-content-envelope="true"')
+        for i,line in enumerate(parts['dates']):
+            self.text(x+w/2,y+small+3+i*small*1.25,line,small,owner=nid,css='data-content-role="date"')
+        py=y+parts['date_height'];ph=parts['panel_height']
+        self.rect((x,py,w,ph),fill,paint if node.get('style')=='pill' else 'none',2.5,12 if node.get('style')=='pill' else 1,extra='data-name-panel="true"')
+        if iconw:
+            self.rect((x+2,py+2,iconw,ph-4),'#FFFEF7')
+            self.artwork(node['icon'],x+2,py+(ph-iconw)/2,iconw,iconw,paint,node.get('variant',0))
+        xx=x+iconw+(w-iconw)/2
+        yy=py+(ph-len(parts['names'])*size*1.18)/2+size*.86
+        for line in parts['names']:
+            self.text(xx,yy,line,size,text_color(fill),bold=True,owner=nid,background=fill,css='data-content-role="name"');yy+=size*1.18
+        yy=py+ph+small+2
+        for line in parts['details']:
+            self.text(x+w/2,yy,line,small,owner=nid,css='data-content-role="caption"');yy+=small*1.25
 
     def draw_annotations(self):
         for a in self.data.get('annotations',[]):

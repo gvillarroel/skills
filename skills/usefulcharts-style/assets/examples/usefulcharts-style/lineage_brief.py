@@ -17,7 +17,7 @@ from pathlib import Path
 # id | name | year | x,y,width | treatment | predecessors | historical note | emblem
 # A predecessor prefixed with ~ is influence, not institutional descent.
 ORIGINS = """
-oral|Seasonal calendars|860|888,166,81|plain||Oral tradition|
+oral|Seasonal calendars|860|888,182,81|plain||Oral tradition|
 craft|Artisan knowledge|940|764,223,90|plain|oral|Workshops and guilds|
 record|Written reckonings|962|1038,238,98|plain|oral|Tables and chronicles|
 instruments|Measures and instruments|1018|748,311,101|plain|craft||
@@ -37,7 +37,7 @@ scales|Public assay office|1267|100,941,88|plain|brass|Municipal standards|
 dials|Alder dial-makers|1275|222,925,106|emblem|brass|Portable instruments|astrolabe
 millwrights|Fellowship of millwrights|1308|345,914,102|card|water||
 pumps|Mine-drainage company|1322|445,991,102|plain|water|Closed after the floods|
-clear-glass|Clear-glass workshop|1314|539,1055,90|card|glass|Optical blanks|
+clear-glass|Clear-glass workshop|1314|539,1063,90|card|glass|Optical blanks|
 balance|College of Weights|1340|106,1066,106|card|scales|Public teaching begins|
 clockmakers|Brotherhood of Clockmakers|1351|264,1049,149|hero|dials|The escapement dispute|gear
 hydraulic|School of Hydraulic Arts|1386|399,1137,124|card|millwrights|A teaching successor|
@@ -45,7 +45,7 @@ glass-union|Union of Glassworkers|1392|503,1220,106|plain|clear-glass|Furnaces j
 testing|Bureau of Testing|1420|98,1160,89|plain|balance||
 standards|Lorn Standards Office|1446|185,1255,97|card|balance|Civic charter renewed|
 pendulum|The Pendulum Circle|1427|370,1225,106|plain|clockmakers|An informal research society|
-horology|Royal College of Horology|1458|301,1323,149|emblem|clockmakers|Teaching and instrument repair|crown
+horology|Royal College of Horology|1458|301,1328,149|emblem|clockmakers|Teaching and instrument repair|crown
 canals|Canal engineers|1462|435,1310,92|plain|hydraulic|Regional survey teams|
 pump-school|Alder Pump School|1498|531,1400,95|plain|hydraulic|Disbanded in 1531|
 mechanical|ACADEMY OF MECHANICAL ARTS|1544|272,1462,202|hero|horology,canals|The colleges unite|gear
@@ -164,12 +164,12 @@ imaging|Imaging Sciences Institute|2004|548,2530,152|hero|microscopy,color|A mul
 """
 
 CARTOGRAPHY = """
-surveyors|FELLOWSHIP OF SURVEYORS|1566|1352,1499,179|hero|soundings|The chart office gains a land-survey branch|globe
+surveyors|FELLOWSHIP OF SURVEYORS|1566|1340,1499,179|hero|soundings|The chart office gains a land-survey branch|globe
 fieldbooks|Field-book exchange|1604|1266,1604,102|plain|surveyors|A professional correspondence|
 triangulation|Triangulation Office|1643|1361,1741,119|card|surveyors,~meridian-net|A state surveying service|
-atlas-room|The Atlas Room|1676|1250,1863,114|emblem|fieldbooks|Collectors become publishers|book
+atlas-room|The Atlas Room|1676|1270,1863,114|emblem|fieldbooks|Collectors become publishers|book
 land-register|Land Registry Survey|1709|1350,1981,98|plain|triangulation|Cadastral administration|
-hydrography|Hydrographic Bureau|1732|1297,2168,134|card|triangulation,~charts|Marine charts separate from land records|
+hydrography|Hydrographic Bureau|1732|1354,2168,134|card|triangulation,~charts|Marine charts separate from land records|
 geography|GEOGRAPHICAL SOCIETY|1775|1237,2290,190|hero|atlas-room|Public lectures and expeditions|globe
 mapping|National Mapping Service|1829|1290,2413,112|card|land-register|Centralised public cartography|
 earth-data|Earth Information Office|1972|1256,2534,129|card|mapping,geography,~hydrography|Maps become a shared data service|
@@ -191,7 +191,7 @@ def build_lineage(base):
             node = dict(id=nid, label=label, founded=int(year), group=group, x=x, y=y, width=width,
                 style=style, size=15 if emphasis else 11.5 if style=='emblem' else 10.5,
                 detail_size=9 if emphasis else 8.2,
-                detail=year + (' · '+note if note else ''))
+                detail_position='outside',date_label=year,detail=note)
             if icon:
                 node.update(icon=icon, icon_width=37 if emphasis else 29)
             data['nodes'].append(node)
@@ -203,15 +203,22 @@ def build_lineage(base):
     for edge in data['edges']:
         assert edge['source'] in records, edge
         assert records[edge['source']]['founded'] < records[edge['target']]['founded'], edge
-    corridors={'clockmakers-to-pendulum':1180,'horology-to-mechanical':1388,'canals-to-mechanical':1388}
+    corridors={'clockmakers-to-pendulum':1180,'horology-to-mechanical':1388,'canals-to-mechanical':1388,'atlas-room-to-geography':2230}
     for edge in data['edges']:
         if edge['id'] in corridors:edge['corridor_y']=corridors[edge['id']]
         if edge['id']=='glass-union-to-lenses':
             edge['via']=[[503,1357.24],[436,1357.24],[436,1608],[139,1608]]
+        if edge['id']=='charts-to-hydrography':
+            edge['via']=[[1286,1178],[1238,1178],[1238,1468],[1116,1468],[1116,1615],
+                [1136,1615],[1136,1720],[1117,1720],[1117,1812],[1173,1812],[1173,2030],[1354,2030]]
     records['observatories'].update(icon='illustration-astrolabe-observation',icon_width=70,width=238)
     records['pilotage'].update(icon='illustration-sextant-1904',icon_width=53,width=185)
     records['public-sky'].update(icon='illustration-telescope-observer',icon_width=59,width=204)
-    data['source_note']='Original synthetic history · All institutions, dates and relationships are invented. Source illustrations: Pearson Scott Foresman and Nordisk familjebok; provenance embedded.'
+    records['mechanical'].update(icon='illustration-cogwheel-psf',icon_width=43)
+    records['seafarers'].update(icon='illustration-compass-card-psf',icon_width=43)
+    records['surveyors'].update(icon='illustration-theodolite-psf',icon_width=58,width=194)
+    records['atlas-room'].update(icon='illustration-printing-press-bookman',icon_width=42,width=133)
+    data['source_note']='Original synthetic history · All institutions, dates and relationships are invented. Source illustrations: Pearson Scott Foresman, Nordisk familjebok and American Type Founders; provenance embedded.'
     # Insets explain this particular source. The map explicitly repeats its key.
     data['insets'] = [dict(kind='isotype', title='Institutions represented in this study', box=[78,178,398,409],groups=[f'g{i}' for i in range(5)]),
         dict(kind='map', title='Illustrative regional traditions', box=[1248,178,460,396],

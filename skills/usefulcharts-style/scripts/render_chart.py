@@ -658,8 +658,8 @@ class Poster:
                   "data_sha256": meta["data_sha256"], "visual_review": "Required; geometric preflight is not a visual quality score."}
         if self.data.get("layout")=="auto":
             report["resolved_layout"]={"columns":self.data["columns"],"rows":self.data["rows"],"nodes":[{"id":n["id"],"row":n["row"],"col":n["col"],"x":self.boxes[n['id']][0]+self.boxes[n['id']][2]/2,"y":self.boxes[n['id']][1]+self.boxes[n['id']][3]/2,"width":self.boxes[n['id']][2]} for n in self.nodes.values()]}
-        elif self.data.get("layout")=="cohorts":
-            report["resolved_layout"]={"layout":"cohorts","nodes":[{"id":nid,"x":b[0]+b[2]/2,"y":b[1]+b[3]/2,"width":b[2]} for nid,b in self.boxes.items()]}
+        elif self.data.get("layout") in ("cohorts","packed"):
+            report["resolved_layout"]={"layout":self.data['layout'],"nodes":[{"id":nid,"x":b[0]+b[2]/2,"y":b[1]+b[3]/2,"width":b[2]} for nid,b in self.boxes.items()]}
         return svg, report
 
 

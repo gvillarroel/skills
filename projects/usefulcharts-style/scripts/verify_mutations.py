@@ -29,6 +29,11 @@ def main():
     node=copy.deepcopy(original);metadata=node.find('.//s:metadata[@id="chart-data"]',ns)
     values=json.loads(metadata.text);values['data_sha256']='0'*64;metadata.text=json.dumps(values)
     mutations.append(('stale-source-revision',node,'source-revision-mismatch'))
+    for role,field in [('date','date-label'),('caption','detail')]:
+        if original.find(f'.//s:text[@data-content-role="{role}"]',ns) is not None:
+            node=copy.deepcopy(original);text=node.find(f'.//s:text[@data-content-role="{role}"]',ns)
+            text.text='Incorrect content'
+            mutations.append((f'changed-{role}',node,f'source-{field}-missing'))
     node=copy.deepcopy(original);target=node.find(".//s:g[@data-node-id]",ns);node.remove(target)
     mutations.append(("deleted-node",node,"node-inventory"))
     node=copy.deepcopy(original);node.find(".//s:g[@data-node-id]/s:text",ns).set("font-size","300")

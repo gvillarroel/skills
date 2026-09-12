@@ -36,6 +36,84 @@ def timeline():
 
 
 class EditorialTests(unittest.TestCase):
+    def test_packed_story_measures_page_without_mutating_relative_hints(self):
+        data=graph();data.update(layout='packed');data.pop('width');data.pop('height')
+        for node in data['nodes']:
+            node.pop('width');node.pop('style',None)
+            node.update(date_label='c. 1710',detail='A named historical consequence.')
+        before=copy.deepcopy(data);poster=EditorialPoster(data);svg,report=poster.render()
+        self.assertEqual(data,before);self.assertEqual(poster.font,18)
+        self.assertLess(poster.w*poster.h,1200*1400)
+        self.assertEqual(report['resolved_layout']['layout'],'packed')
+        by_id={n['id']:n for n in report['resolved_layout']['nodes']}
+        self.assertLess(by_id['left']['x'],by_id['root']['x']);self.assertLess(by_id['root']['x'],by_id['right']['x'])
+        self.assertLess(by_id['root']['y'],by_id['left']['y']);self.assertLess(by_id['left']['y'],by_id['right']['y'])
+        root=ET.fromstring(svg)
+        self.assertEqual(len(root.findall('.//s:text[@data-content-role="date"]',NS)),3)
+        self.assertLess(max(c['box'][1]+c['box'][3] for c in poster.data['_cohort_key']['cells']),min(b[1] for b in poster.boxes.values()))
+
+    def test_packed_story_rejects_ambiguous_hints_and_absolute_routes(self):
+        data=graph();data.update(layout='packed');data['nodes'][1].update(x=600,y=240)
+        with self.assertRaisesRegex(ValueError,'identical hints'):EditorialPoster(data).render()
+        data=graph();data.update(layout='packed');data['edges'][0]['corridor_y']=400
+        with self.assertRaisesRegex(ValueError,'absolute routes'):EditorialPoster(data).render()
+        data=graph();data.update(layout='packed');data['nodes'][1]['y']=100
+        with self.assertRaisesRegex(ValueError,'successor below'):EditorialPoster(data).render()
+
+    def test_packed_long_labels_keep_all_pairs_separated_and_all_merger_ports(self):
+        data=graph();data.update(layout='packed');data.pop('width');data.pop('height')
+        data['nodes']=[dict(id=f'n{i}',label=f'Public collection and historical reading society {i}',detail='A documented consequence retained in full.',date_label=str(1700+i),group='red' if i%2 else 'blue',x=(i%4)*3+(i//4)*.2,y=i//4+1) for i in range(16)]
+        data['edges']=[dict(id=f'e{i}',source=f'n{i-4}',target=f'n{i}',kind='branch') for i in range(4,16)]
+        data['edges'].append(dict(id='merger',source='n9',target='n12',kind='branch'))
+        poster=EditorialPoster(data);svg,report=poster.render()
+        self.assertEqual(report['node_count'],16);self.assertEqual(report['edge_count'],13)
+        self.assertEqual(report['node_collisions'],0)
+        self.assertTrue(all(n['size']>=18 for n in poster.nodes.values()))
+        self.assertTrue(all(not segment_hits(a,b,box,0) for edge in poster.routes for a,b in zip(edge['points'],edge['points'][1:]) for box in poster.boxes.values()))
+
+    def test_external_date_name_and_caption_preserve_content_and_compact_color(self):
+        data=graph()
+        data['nodes'][1].update(detail_position='outside',date_label='c. 1710–1715',detail='The two collections unite in a public institution.',style='card')
+        before=copy.deepcopy(data);poster=EditorialPoster(data);svg,_=poster.render();root=ET.fromstring(svg)
+        self.assertEqual(data,before)
+        node=root.find('.//s:g[@data-node-id="left"]',NS)
+        envelope=node.find('s:rect[@data-content-envelope]',NS);panel=node.find('s:rect[@data-name-panel]',NS)
+        top=float(panel.get('y'));bottom=top+float(panel.get('height'))
+        self.assertLess(float(panel.get('height')),float(envelope.get('height'))*.6)
+        for role,expected in [('date','c. 1710–1715'),('name','Western academy'),('caption',data['nodes'][1]['detail'])]:
+            lines=node.findall(f's:text[@data-content-role="{role}"]',NS)
+            self.assertEqual(' '.join(t.text for t in lines),expected)
+            for line in lines:
+                y=float(line.get('y'))
+                if role=='date':self.assertLess(y,top)
+                elif role=='caption':self.assertGreater(y,bottom)
+                else:self.assertTrue(top<y<bottom)
+
+    def test_routes_avoid_external_captions_and_connect_above_dates(self):
+        data=graph()
+        for n in data['nodes']:n.update(detail_position='outside',date_label='1750',detail='A documented historical consequence.')
+        poster=EditorialPoster(data);poster.render()
+        for edge in poster.routes:
+            source=poster.boxes[edge['source']];target=poster.boxes[edge['target']]
+            self.assertEqual(edge['points'][0][1],source[1]+source[3])
+            self.assertEqual(edge['points'][-1][1],target[1])
+            self.assertFalse(any(segment_hits(a,b,box,0) for a,b in zip(edge['points'],edge['points'][1:]) for box in poster.boxes.values()))
+
+    def test_separate_date_cannot_be_silently_dropped(self):
+        data=graph();data['nodes'][0]['date_label']='1720'
+        with self.assertRaisesRegex(ValueError,'date_label requires detail_position'):EditorialPoster(data).render()
+        data['nodes'][0].update(detail_position='floating')
+        with self.assertRaisesRegex(ValueError,'detail_position must be'):EditorialPoster(data).render()
+
+    def test_external_content_measures_empty_and_wrapped_variants(self):
+        for fields in ({},{'date_label':'1710'},{'detail':'Reorganised after the collections were combined.'},{'date_label':'Founded circa 1710; reorganised in 1740','detail':'Two predecessor societies unite.'}):
+            data=graph();data.update(layout='auto');data.pop('width');data.pop('height')
+            for node in data['nodes']:node.update(detail_position='outside',**fields)
+            svg,report=EditorialPoster(data).render()
+            self.assertEqual(report['node_count'],3)
+            root=ET.fromstring(svg)
+            self.assertEqual(len(root.findall('.//s:rect[@data-content-envelope]',NS)),3)
+
     def test_compact_cohort_key_wraps_above_the_first_generation(self):
         data=graph();data.update(mode='genealogy',layout='cohorts',edges=[])
         data.pop('width');data.pop('height')

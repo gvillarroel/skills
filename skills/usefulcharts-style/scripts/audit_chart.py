@@ -140,8 +140,9 @@ def check_source(report, data):
     # Text may wrap across lines; retain word order when checking node labels.
     for node in nodes:
         actual = " ".join(t["text"] for t in report["texts"] if t["owner"] == node["id"])
-        if " ".join(node["label"].split()) not in actual:
-            report["findings"].append({"type": "source-label-missing", "id": node["id"]})
+        for field in ('label','detail','date_label'):
+            if node.get(field) is not None and " ".join(str(node[field]).split()) not in actual:
+                report["findings"].append({"type": f"source-{field.replace('_','-')}-missing", "id": node["id"]})
     if data["mode"] == "timeline":
         y0, y1 = report["metadata"]["time_y"]
         start, end = data["time"]["start"], data["time"]["end"]

@@ -1,0 +1,35 @@
+{
+  "id": "public-collection-stories",
+  "title": "PUBLIC COLLECTIONS AND THEIR ORIGINS",
+  "design": "editorial",
+  "mode": "lineage",
+  "layout": "packed",
+  "groups": [
+    {"id":"origin","label":"Shared origins","color":"#A6A18B"},
+    {"id":"civic","label":"Civic collections","color":"#F4C948"},
+    {"id":"field","label":"Field study","color":"#98BD92"}
+  ],
+  "nodes": [
+    {"id":"cabinet","label":"The Common Cabinet","date_label":"c. 1720","detail":"A shared collection","group":"origin","x":3,"y":1},
+    {"id":"readers","label":"Readers' Society","date_label":"1754","detail":"Subscribers establish a reading room","group":"civic","x":2,"y":2},
+    {"id":"garden","label":"Garden Archive","date_label":"1761","detail":"Field notes become a collection","group":"field","x":5,"y":2.2},
+    {"id":"east","label":"Eastern Reading Room","date_label":"1792","detail":"A neighbourhood branch","group":"civic","x":1,"y":3},
+    {"id":"west","label":"Western Book Society","date_label":"1807","detail":"Independent subscribers organise","group":"civic","x":3,"y":3.2},
+    {"id":"seed","label":"Seed Register Office","date_label":"1818","detail":"Growers exchange records","group":"field","x":5,"y":3.4},
+    {"id":"library","label":"United Public Library","date_label":"1840","detail":"Two collections and staffs unite","group":"civic","x":2,"y":4.5,"emphasis":true,"icon":"book"},
+    {"id":"institute","label":"Field Study Institute","date_label":"1880","detail":"A teaching partnership","group":"field","x":4.4,"y":5.6,"emphasis":true}
+  ],
+  "edges": [
+    {"id":"civic-founded","source":"cabinet","target":"readers","kind":"branch"},
+    {"id":"field-founded","source":"cabinet","target":"garden","kind":"branch"},
+    {"id":"east-founded","source":"readers","target":"east","kind":"branch"},
+    {"id":"west-founded","source":"readers","target":"west","kind":"branch"},
+    {"id":"register-founded","source":"garden","target":"seed","kind":"branch"},
+    {"id":"east-merged","source":"east","target":"library","kind":"branch"},
+    {"id":"west-merged","source":"west","target":"library","kind":"branch"},
+    {"id":"institute-founded","source":"seed","target":"institute","kind":"branch"},
+    {"id":"shared-methods","source":"library","target":"institute","kind":"influence"}
+  ],
+  "source_note":"Original synthetic history; all institutions, dates and relationships are invented.",
+  "reading_note":"Solid paths: institutional descent or stated merger. Dotted arrows: influence. Vertical spacing is schematic."
+}

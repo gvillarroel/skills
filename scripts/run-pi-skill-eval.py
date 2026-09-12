@@ -247,10 +247,23 @@ def path_from_args(args: Any) -> str | None:
 
 def extract_fenced_commands(prompt: str) -> list[str]:
     commands: list[str] = []
-    for match in re.finditer(r"```(?:bash|sh|shell)?\s*\n(.*?)\n```", prompt, flags=re.IGNORECASE | re.DOTALL):
-        command = match.group(1).strip()
-        if command:
-            commands.append(command)
+    fence = 0
+    language = ""
+    lines: list[str] = []
+    for line in prompt.splitlines():
+        if not fence:
+            opening = re.fullmatch(r"\s*(`{3,})([^`]*)", line)
+            if opening:
+                fence = len(opening.group(1))
+                language = opening.group(2).strip().lower().split(" ")[0]
+                lines = []
+        elif re.fullmatch(rf"\s*`{{{fence},}}\s*", line):
+            command = "\n".join(lines).strip()
+            if command and language in ("", "bash", "sh", "shell"):
+                commands.append(command)
+            fence = 0
+        else:
+            lines.append(line)
     return commands
 
 

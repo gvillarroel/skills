@@ -29,7 +29,8 @@ def boundary_contract(folder):
     for union in data.get('unions',[]):pairs.extend((p,c) for p in union['partners'] for c in union.get('children',[]))
     for edge in data.get('edges',[]):pairs.append((edge['source'],edge['target']))
     for relationship in data.get('relationships',[])+data.get('parent_references',[]):
-        pairs.extend((p,relationship['child_id']) for p in relationship.get('parent_ids',[]))
+        child=relationship.get('child_id',relationship.get('child'))
+        pairs.extend((p,child) for p in relationship.get('parent_ids',relationship.get('parents',[])))
     actual={(names.get(p,p),names.get(c,c)) for p,c in pairs}
     if actual!={('Ada Vale','Cora Vale'),('unknown-42','Cora Vale')}:findings.append('Exact supplied parentage changed.')
     if list(workspace.glob('review/*.svg')):findings.append('An unresolved final SVG was produced.')

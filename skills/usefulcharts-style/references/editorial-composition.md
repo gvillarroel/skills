@@ -6,7 +6,7 @@ Use this reference to match the visual family, not just its palette. The first g
 
 1. **Page:** a 2:3 silhouette for dense material, approximately 4–5% height for a strong condensed title, a continuous ivory field, narrow perimeter, and compact provenance. Avoid a large app-like toolbar or explanatory panel inside the printable field.
 2. **Families:** allocate width to actual branch complexity. Origins may be central, but subsequent branches should follow their own history. Put white outlined family labels near the relevant branch, not in a rigid legend row divorced from the graph. Schematic positions may be uneven; numeric time positions may not.
-3. **Entities:** use several purposeful treatments. Colored cards mark principal actors; smaller unboxed names supply supporting lineage; white image/emblem panels distinguish selected landmarks; pills identify families or movements. A card's dimensions should follow its label and importance rather than one universal box size.
+3. **Entities:** use several purposeful treatments. Colored cards mark principal actors; smaller unboxed names supply supporting lineage; white image/emblem panels distinguish selected landmarks; pills identify families or movements. A card's dimensions should follow its label and importance rather than one universal box size. In dense institutional histories, keep dates above the colored name panel and contextual captions below it; the paper around these details helps separate the reading levels.
 4. **Detail:** subordinate dates, explanatory fragments, image credits, uncertain links, and fine context reward close reading. At whole-page scale these create texture; at 100% they must remain legible and correct.
 
 ## Distinguish the three morphologies

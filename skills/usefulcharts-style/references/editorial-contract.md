@@ -8,6 +8,8 @@ For ordinary lineage input use `mode: lineage`, `layout: auto`, groups, nodes, a
 
 For authored graphs, each node supplies `x` and `y` as the **center** in SVG units. Avoid `layout: auto` in this case. Supported node fields:
 
+For medium histories, `layout: packed` interprets x/y as relative neighborhood hints and measures the final centers/page from the records. Read [packed stories](packed-stories.md). Do not combine relative hints with absolute route coordinates or fixed page insets. The report exposes the measured centers for a later authored repair.
+
 For a genealogy with explicit generations, `layout: cohorts` accepts integer node rows and normal unions instead of coordinates. Read [cohort composition](cohort-composition.md) for spacing controls, limits, and conversion to authored positions.
 
 | Field | Meaning |
@@ -15,6 +17,7 @@ For a genealogy with explicit generations, `layout: cohorts` accepts integer nod
 | `width` | Total card/label width, usually 60–140 for a dense page; selected landmarks may be wider. Height is measured from wrapped content. |
 | `size`, `detail_size` | Main and subordinate type sizes. Names default to page `font_size`; details to 77% of it. |
 | `style` | `plain`, `card`, `pill`, `emblem`, or `hero`; choose by semantic importance. |
+| `detail_position`, `date_label` | Use `detail_position: outside` to put the exact optional `date_label` above the name panel and `detail` below it. The complete content envelope sets the measured height and connector ports. With the default `inside`, details remain in the panel and a separate `date_label` is rejected so it cannot silently disappear. |
 | `icon`, `icon_width`, `variant` | Optional art type, reserved panel width, and deterministic variation. Text width excludes this panel. |
 
 Original art types: `shield`, `crown`, `star`, `compass`, `globe`, `astrolabe`, `book`, `wheel`, `gear`, `lens`, `prism`, `ship`, `tower`, `observatory`, `press`, `obelisk`, `leaf`, and `portrait`. The vector `portrait` is fictional. Museum portraits use `museum-<artwork-id>` and complete objects use `object-<artwork-id>`; available IDs and accurate source/rights records are in `assets/portraits/provenance.json` and `assets/objects/provenance.json`. They are decorative samples for synthetic demonstrations, not identities or evidence for factual charts. The map's provenance is in `assets/maps/provenance.json`. Source identities are embedded alongside museum images; full objects preserve their aspect ratio.
@@ -22,6 +25,8 @@ Original art types: `shield`, `crown`, `star`, `compass`, `globe`, `astrolabe`, 
 Source illustrations use `illustration-astrolabe-observation` (a mariner observing an angle) or `illustration-sextant-1904` (an encyclopedia drawing). Their original bytes, authors, dates, rights and hashes are in [the illustration provenance](../assets/illustrations/provenance.json). They preserve aspect ratio and are embedded once per source in a reusable SVG symbol. Use them for their actual subjects; the publication date is not an invention date or proof of a fictional event. Do not read the large SVG source merely to use its ID.
 
 Also available: `illustration-telescope-observer` (a large refractor and observer) and `illustration-cuneiform-tablet` (an identified Library of Congress tablet). Both have transparent fields. Their subjects and actual dates remain distinct from any synthetic chart event. Inspect the visible silhouette at its placed size; do not confuse an opaque white PNG with a transparent illustration. A consistent text landmark is preferable to an unrelated decorative object or a conspicuous photo rectangle.
+
+For deliberate white image panels, use `illustration-cogwheel-psf` (two meshing wheels), `illustration-compass-card-psf` (a compass card), `illustration-theodolite-psf` (a surveyor and instrument), or `illustration-printing-press-bookman` (a 1923 typographic ornament depicting a press). These are unchanged sources; the PNGs retain their white field. Start with roughly 40–55 units for wheels/compass and 55–70 for the narrower full figures, then inspect the preview. Do not insert an opaque field directly onto a textured timeline without considering its visible rectangle. The illustration manifest carries exact source identities, rights, dimensions and hashes.
 
 Keep partnered people at exactly the same `y`, with at least 16 units of space between their measured boxes. Parentage must go to a later `y`. A node may retain legacy `row`/`col` placement instead of explicit centers. The source brief is preserved in the report hash.
 

@@ -22,7 +22,7 @@ Validation: run `render_chart.py` and `audit_chart.py`; inspect every edge touch
 
 Trigger: splits, inherited methods, institutional families, or an evolutionary classification whose relationship meaning is explicit.
 
-Input: `design: editorial`, `mode: lineage` with `layout: auto`; named category groups, nodes, and typed `branch`, `influence`, or `uncertain` edges. Let the renderer assign schematic rows and columns for a small brief. For a dense poster, use authored centers and unequal historical regions as described in [editorial composition](editorial-composition.md). Keep evidence on edges as well as nodes when the connections are factual claims.
+Input: `design: editorial`, `mode: lineage` with `layout: auto`; named category groups, nodes, and typed `branch`, `influence`, or `uncertain` edges. Let the renderer assign schematic rows and columns for a small brief. For a medium history use [packed stories](packed-stories.md): relative neighborhoods determine the arrangement, measured text and attachment gaps determine the page. For a dense poster, use authored centers and unequal historical regions as described in [editorial composition](editorial-composition.md). Keep evidence on edges as well as nodes when the connections are factual claims.
 
 1. Center shared precursors above the major branches.
 2. Give each branch a stable named color and enough area for its descendants. Families may arise at different stages; avoid equal parallel columns when the source is more asymmetric.
@@ -30,7 +30,7 @@ Input: `design: editorial`, `mode: lineage` with `layout: auto`; named category 
 4. Keep cross-branch paths in the inter-rank corridors and review their intersections.
 5. Explain schematic vertical spacing; a displayed date in a label does not make the layout a numeric time scale.
 
-For a dense authored poster, follow [institutional composition](institution-composition.md). It covers individual histories, local merger groups, meaningful emphasis, and reserved influence corridors without requiring the acceptance gallery.
+For a dense authored poster, follow [institutional composition](institution-composition.md). It covers individual histories, local merger groups, meaningful emphasis, and reserved influence corridors without requiring the acceptance gallery. Use `detail_position: outside` with an explicit `date_label` to separate a date, compact name panel and contextual caption. Reserve the entire measured envelope when composing attachments; the visible colored panel alone is not the node's occupied area.
 
 Validation: render and browser-audit; count nodes/edges against source, inspect the longest cross-branch route, and check semantic legends. Pitfalls: force-directed placement destroys reading order; a timeline ordered by attractive spacing misrepresents intervals; a hierarchy label does not prove a historical link.
 

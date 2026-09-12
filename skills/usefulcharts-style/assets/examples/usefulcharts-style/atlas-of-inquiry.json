@@ -43,7 +43,7 @@
       "color": "#A6A18B"
     }
   ],
-  "source_note": "Original synthetic history \u00b7 All institutions, dates and relationships are invented. Source illustrations: Pearson Scott Foresman and Nordisk familjebok; provenance embedded.",
+  "source_note": "Original synthetic history \u00b7 All institutions, dates and relationships are invented. Source illustrations: Pearson Scott Foresman, Nordisk familjebok and American Type Founders; provenance embedded.",
   "nodes": [
     {
       "id": "oral",
@@ -51,12 +51,14 @@
       "founded": 860,
       "group": "g5",
       "x": 888,
-      "y": 166,
+      "y": 182,
       "width": 81,
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "860 \u00b7 Oral tradition"
+      "detail_position": "outside",
+      "date_label": "860",
+      "detail": "Oral tradition"
     },
     {
       "id": "craft",
@@ -69,7 +71,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "940 \u00b7 Workshops and guilds"
+      "detail_position": "outside",
+      "date_label": "940",
+      "detail": "Workshops and guilds"
     },
     {
       "id": "record",
@@ -82,7 +86,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "962 \u00b7 Tables and chronicles"
+      "detail_position": "outside",
+      "date_label": "962",
+      "detail": "Tables and chronicles"
     },
     {
       "id": "instruments",
@@ -95,7 +101,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1018"
+      "detail_position": "outside",
+      "date_label": "1018",
+      "detail": ""
     },
     {
       "id": "tables",
@@ -108,7 +116,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1041"
+      "detail_position": "outside",
+      "date_label": "1041",
+      "detail": ""
     },
     {
       "id": "natural",
@@ -121,7 +131,9 @@
       "style": "pill",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1082 \u00b7 Shared methods"
+      "detail_position": "outside",
+      "date_label": "1082",
+      "detail": "Shared methods"
     },
     {
       "id": "chroniclers",
@@ -134,7 +146,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1096 \u00b7 No institutional successors"
+      "detail_position": "outside",
+      "date_label": "1096",
+      "detail": "No institutional successors"
     },
     {
       "id": "inquiry",
@@ -147,7 +161,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1134 \u00b7 Teachers, makers and observers",
+      "detail_position": "outside",
+      "date_label": "1134",
+      "detail": "Teachers, makers and observers",
       "icon": "book",
       "icon_width": 37
     },
@@ -162,7 +178,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1161 \u00b7 A shared scholarly record"
+      "detail_position": "outside",
+      "date_label": "1161",
+      "detail": "A shared scholarly record"
     },
     {
       "id": "makers",
@@ -175,7 +193,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1193 \u00b7 A charter for independent workshops",
+      "detail_position": "outside",
+      "date_label": "1193",
+      "detail": "A charter for independent workshops",
       "icon": "wheel",
       "icon_width": 37
     },
@@ -190,7 +210,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1228 \u00b7 Balances and measures"
+      "detail_position": "outside",
+      "date_label": "1228",
+      "detail": "Balances and measures"
     },
     {
       "id": "water",
@@ -203,7 +225,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1246 \u00b7 Mills and pumps"
+      "detail_position": "outside",
+      "date_label": "1246",
+      "detail": "Mills and pumps"
     },
     {
       "id": "glass",
@@ -216,7 +240,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1281 \u00b7 An independent craft"
+      "detail_position": "outside",
+      "date_label": "1281",
+      "detail": "An independent craft"
     },
     {
       "id": "scales",
@@ -229,7 +255,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1267 \u00b7 Municipal standards"
+      "detail_position": "outside",
+      "date_label": "1267",
+      "detail": "Municipal standards"
     },
     {
       "id": "dials",
@@ -242,7 +270,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1275 \u00b7 Portable instruments",
+      "detail_position": "outside",
+      "date_label": "1275",
+      "detail": "Portable instruments",
       "icon": "astrolabe",
       "icon_width": 29
     },
@@ -257,7 +287,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1308"
+      "detail_position": "outside",
+      "date_label": "1308",
+      "detail": ""
     },
     {
       "id": "pumps",
@@ -270,7 +302,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1322 \u00b7 Closed after the floods"
+      "detail_position": "outside",
+      "date_label": "1322",
+      "detail": "Closed after the floods"
     },
     {
       "id": "clear-glass",
@@ -278,12 +312,14 @@
       "founded": 1314,
       "group": "g2",
       "x": 539,
-      "y": 1055,
+      "y": 1063,
       "width": 90,
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1314 \u00b7 Optical blanks"
+      "detail_position": "outside",
+      "date_label": "1314",
+      "detail": "Optical blanks"
     },
     {
       "id": "balance",
@@ -296,7 +332,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1340 \u00b7 Public teaching begins"
+      "detail_position": "outside",
+      "date_label": "1340",
+      "detail": "Public teaching begins"
     },
     {
       "id": "clockmakers",
@@ -309,7 +347,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1351 \u00b7 The escapement dispute",
+      "detail_position": "outside",
+      "date_label": "1351",
+      "detail": "The escapement dispute",
       "icon": "gear",
       "icon_width": 37
     },
@@ -324,7 +364,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1386 \u00b7 A teaching successor"
+      "detail_position": "outside",
+      "date_label": "1386",
+      "detail": "A teaching successor"
     },
     {
       "id": "glass-union",
@@ -337,7 +379,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1392 \u00b7 Furnaces join a common guild"
+      "detail_position": "outside",
+      "date_label": "1392",
+      "detail": "Furnaces join a common guild"
     },
     {
       "id": "testing",
@@ -350,7 +394,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1420"
+      "detail_position": "outside",
+      "date_label": "1420",
+      "detail": ""
     },
     {
       "id": "standards",
@@ -363,7 +409,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1446 \u00b7 Civic charter renewed"
+      "detail_position": "outside",
+      "date_label": "1446",
+      "detail": "Civic charter renewed"
     },
     {
       "id": "pendulum",
@@ -376,7 +424,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1427 \u00b7 An informal research society"
+      "detail_position": "outside",
+      "date_label": "1427",
+      "detail": "An informal research society"
     },
     {
       "id": "horology",
@@ -384,12 +434,14 @@
       "founded": 1458,
       "group": "g2",
       "x": 301,
-      "y": 1323,
+      "y": 1328,
       "width": 149,
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1458 \u00b7 Teaching and instrument repair",
+      "detail_position": "outside",
+      "date_label": "1458",
+      "detail": "Teaching and instrument repair",
       "icon": "crown",
       "icon_width": 29
     },
@@ -404,7 +456,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1462 \u00b7 Regional survey teams"
+      "detail_position": "outside",
+      "date_label": "1462",
+      "detail": "Regional survey teams"
     },
     {
       "id": "pump-school",
@@ -417,7 +471,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1498 \u00b7 Disbanded in 1531"
+      "detail_position": "outside",
+      "date_label": "1498",
+      "detail": "Disbanded in 1531"
     },
     {
       "id": "mechanical",
@@ -430,9 +486,11 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1544 \u00b7 The colleges unite",
-      "icon": "gear",
-      "icon_width": 37
+      "detail_position": "outside",
+      "date_label": "1544",
+      "detail": "The colleges unite",
+      "icon": "illustration-cogwheel-psf",
+      "icon_width": 43
     },
     {
       "id": "metrology",
@@ -445,7 +503,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1571 \u00b7 Two civic offices combined"
+      "detail_position": "outside",
+      "date_label": "1571",
+      "detail": "Two civic offices combined"
     },
     {
       "id": "engines",
@@ -458,7 +518,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1610 \u00b7 A separate technical college"
+      "detail_position": "outside",
+      "date_label": "1610",
+      "detail": "A separate technical college"
     },
     {
       "id": "precision",
@@ -471,7 +533,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1628 \u00b7 Makers and observers collaborate"
+      "detail_position": "outside",
+      "date_label": "1628",
+      "detail": "Makers and observers collaborate"
     },
     {
       "id": "engines-west",
@@ -484,7 +548,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1691 \u00b7 Transferred to the city in 1730"
+      "detail_position": "outside",
+      "date_label": "1691",
+      "detail": "Transferred to the city in 1730"
     },
     {
       "id": "rail",
@@ -497,7 +563,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1786 \u00b7 New transport faculty"
+      "detail_position": "outside",
+      "date_label": "1786",
+      "detail": "New transport faculty"
     },
     {
       "id": "machine",
@@ -510,7 +578,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1842 \u00b7 A public laboratory"
+      "detail_position": "outside",
+      "date_label": "1842",
+      "detail": "A public laboratory"
     },
     {
       "id": "calibration",
@@ -523,7 +593,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1904 \u00b7 National measurement standards",
+      "detail_position": "outside",
+      "date_label": "1904",
+      "detail": "National measurement standards",
       "icon": "wheel",
       "icon_width": 29
     },
@@ -538,7 +610,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1187 \u00b7 The first observatory charter",
+      "detail_position": "outside",
+      "date_label": "1187",
+      "detail": "The first observatory charter",
       "icon": "star",
       "icon_width": 37
     },
@@ -553,7 +627,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1216 \u00b7 A civic appointment"
+      "detail_position": "outside",
+      "date_label": "1216",
+      "detail": "A civic appointment"
     },
     {
       "id": "meridian",
@@ -566,7 +642,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1239 \u00b7 Daily positional records",
+      "detail_position": "outside",
+      "date_label": "1239",
+      "detail": "Daily positional records",
       "icon": "observatory",
       "icon_width": 29
     },
@@ -581,7 +659,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1257 \u00b7 A lay observing circle"
+      "detail_position": "outside",
+      "date_label": "1257",
+      "detail": "A lay observing circle"
     },
     {
       "id": "almanac",
@@ -594,7 +674,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1294 \u00b7 Commercial tables"
+      "detail_position": "outside",
+      "date_label": "1294",
+      "detail": "Commercial tables"
     },
     {
       "id": "equinox",
@@ -607,7 +689,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1310 \u00b7 An intermittent public body"
+      "detail_position": "outside",
+      "date_label": "1310",
+      "detail": "An intermittent public body"
     },
     {
       "id": "sunroom",
@@ -620,7 +704,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1288 \u00b7 Transit observations"
+      "detail_position": "outside",
+      "date_label": "1288",
+      "detail": "Transit observations"
     },
     {
       "id": "summit",
@@ -633,7 +719,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1336 \u00b7 Mountain observations"
+      "detail_position": "outside",
+      "date_label": "1336",
+      "detail": "Mountain observations"
     },
     {
       "id": "nightbooks",
@@ -646,7 +734,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1362 \u00b7 Records end in 1403"
+      "detail_position": "outside",
+      "date_label": "1362",
+      "detail": "Records end in 1403"
     },
     {
       "id": "newcalendar",
@@ -659,7 +749,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1384 \u00b7 The two traditions reconcile",
+      "detail_position": "outside",
+      "date_label": "1384",
+      "detail": "The two traditions reconcile",
       "icon": "sun",
       "icon_width": 29
     },
@@ -674,7 +766,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1411 \u00b7 A permanent observing service"
+      "detail_position": "outside",
+      "date_label": "1411",
+      "detail": "A permanent observing service"
     },
     {
       "id": "star-census",
@@ -687,7 +781,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1435 \u00b7 A shared catalogue"
+      "detail_position": "outside",
+      "date_label": "1435",
+      "detail": "A shared catalogue"
     },
     {
       "id": "southern",
@@ -700,7 +796,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1470 \u00b7 A new latitude station"
+      "detail_position": "outside",
+      "date_label": "1470",
+      "detail": "A new latitude station"
     },
     {
       "id": "ephemerides",
@@ -713,7 +811,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1489 \u00b7 Published prediction tables"
+      "detail_position": "outside",
+      "date_label": "1489",
+      "detail": "Published prediction tables"
     },
     {
       "id": "computers",
@@ -726,7 +826,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1517 \u00b7 Independent calculation teams"
+      "detail_position": "outside",
+      "date_label": "1517",
+      "detail": "Independent calculation teams"
     },
     {
       "id": "observatories",
@@ -739,7 +841,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1552 \u00b7 The transit offices merge",
+      "detail_position": "outside",
+      "date_label": "1552",
+      "detail": "The transit offices merge",
       "icon": "illustration-astrolabe-observation",
       "icon_width": 70
     },
@@ -754,7 +858,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1586 \u00b7 A short-lived dissenting school"
+      "detail_position": "outside",
+      "date_label": "1586",
+      "detail": "A short-lived dissenting school"
     },
     {
       "id": "longitude",
@@ -767,7 +873,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1594 \u00b7 Navigation problem, public reward"
+      "detail_position": "outside",
+      "date_label": "1594",
+      "detail": "Navigation problem, public reward"
     },
     {
       "id": "meridian-net",
@@ -780,7 +888,9 @@
       "style": "pill",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1618 \u00b7 Coordinated measurements"
+      "detail_position": "outside",
+      "date_label": "1618",
+      "detail": "Coordinated measurements"
     },
     {
       "id": "north-station",
@@ -793,7 +903,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1641"
+      "detail_position": "outside",
+      "date_label": "1641",
+      "detail": ""
     },
     {
       "id": "valley",
@@ -806,7 +918,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1656 \u00b7 A local foundation"
+      "detail_position": "outside",
+      "date_label": "1656",
+      "detail": "A local foundation"
     },
     {
       "id": "island-station",
@@ -819,7 +933,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1682"
+      "detail_position": "outside",
+      "date_label": "1682",
+      "detail": ""
     },
     {
       "id": "southern-survey",
@@ -832,7 +948,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1713 \u00b7 Reuses the southern station"
+      "detail_position": "outside",
+      "date_label": "1713",
+      "detail": "Reuses the southern station"
     },
     {
       "id": "variable",
@@ -845,7 +963,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1729 \u00b7 A correspondence network"
+      "detail_position": "outside",
+      "date_label": "1729",
+      "detail": "A correspondence network"
     },
     {
       "id": "public-sky",
@@ -858,7 +978,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1765 \u00b7 The university opens its instruments",
+      "detail_position": "outside",
+      "date_label": "1765",
+      "detail": "The university opens its instruments",
       "icon": "illustration-telescope-observer",
       "icon_width": 59
     },
@@ -873,7 +995,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1774 \u00b7 A voluntary network"
+      "detail_position": "outside",
+      "date_label": "1774",
+      "detail": "A voluntary network"
     },
     {
       "id": "southern-tables",
@@ -886,7 +1010,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1809 \u00b7 A national catalogue"
+      "detail_position": "outside",
+      "date_label": "1809",
+      "detail": "A national catalogue"
     },
     {
       "id": "photometry",
@@ -899,7 +1025,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1837 \u00b7 New methods of measurement"
+      "detail_position": "outside",
+      "date_label": "1837",
+      "detail": "New methods of measurement"
     },
     {
       "id": "instruments-lab",
@@ -912,7 +1040,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1851 \u00b7 Makers return to the observatory"
+      "detail_position": "outside",
+      "date_label": "1851",
+      "detail": "Makers return to the observatory"
     },
     {
       "id": "stellar",
@@ -925,7 +1055,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1879 \u00b7 A change in research program"
+      "detail_position": "outside",
+      "date_label": "1879",
+      "detail": "A change in research program"
     },
     {
       "id": "astronomical",
@@ -938,7 +1070,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1908 \u00b7 Observatories and observers unite",
+      "detail_position": "outside",
+      "date_label": "1908",
+      "detail": "Observatories and observers unite",
       "icon": "star",
       "icon_width": 37
     },
@@ -953,7 +1087,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1919 \u00b7 A specialist working group"
+      "detail_position": "outside",
+      "date_label": "1919",
+      "detail": "A specialist working group"
     },
     {
       "id": "southern-union",
@@ -966,7 +1102,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1933 \u00b7 Regional observatories cooperate"
+      "detail_position": "outside",
+      "date_label": "1933",
+      "detail": "Regional observatories cooperate"
     },
     {
       "id": "radio-sky",
@@ -979,7 +1117,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1947 \u00b7 An independent receiver array"
+      "detail_position": "outside",
+      "date_label": "1947",
+      "detail": "An independent receiver array"
     },
     {
       "id": "night-archive",
@@ -992,7 +1132,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1956 \u00b7 Preserves the earlier ledgers"
+      "detail_position": "outside",
+      "date_label": "1956",
+      "detail": "Preserves the earlier ledgers"
     },
     {
       "id": "space-science",
@@ -1005,7 +1147,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1964 \u00b7 Space-borne instruments",
+      "detail_position": "outside",
+      "date_label": "1964",
+      "detail": "Space-borne instruments",
       "icon": "orbit",
       "icon_width": 29
     },
@@ -1020,7 +1164,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1969 \u00b7 A permanent institute"
+      "detail_position": "outside",
+      "date_label": "1969",
+      "detail": "A permanent institute"
     },
     {
       "id": "sky-data",
@@ -1033,7 +1179,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1983 \u00b7 Catalogues are combined"
+      "detail_position": "outside",
+      "date_label": "1983",
+      "detail": "Catalogues are combined"
     },
     {
       "id": "southern-array",
@@ -1046,7 +1194,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1988 \u00b7 Three sites, one programme"
+      "detail_position": "outside",
+      "date_label": "1988",
+      "detail": "Three sites, one programme"
     },
     {
       "id": "orbital",
@@ -1059,7 +1209,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1997 \u00b7 Continuing international cooperation"
+      "detail_position": "outside",
+      "date_label": "1997",
+      "detail": "Continuing international cooperation"
     },
     {
       "id": "open-sky",
@@ -1072,7 +1224,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "2012 \u00b7 A shared public observing archive",
+      "detail_position": "outside",
+      "date_label": "2012",
+      "detail": "A shared public observing archive",
       "icon": "star",
       "icon_width": 37
     },
@@ -1087,9 +1241,11 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1224 \u00b7 A charter shared by coastal guilds",
-      "icon": "ship",
-      "icon_width": 37
+      "detail_position": "outside",
+      "date_label": "1224",
+      "detail": "A charter shared by coastal guilds",
+      "icon": "illustration-compass-card-psf",
+      "icon_width": 43
     },
     {
       "id": "pilots",
@@ -1102,7 +1258,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1261 \u00b7 A municipal licence"
+      "detail_position": "outside",
+      "date_label": "1261",
+      "detail": "A municipal licence"
     },
     {
       "id": "open-sea",
@@ -1115,7 +1273,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1286 \u00b7 Independent navigators"
+      "detail_position": "outside",
+      "date_label": "1286",
+      "detail": "Independent navigators"
     },
     {
       "id": "boatmen",
@@ -1128,7 +1288,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1307 \u00b7 An inland tradition"
+      "detail_position": "outside",
+      "date_label": "1307",
+      "detail": "An inland tradition"
     },
     {
       "id": "port-school",
@@ -1141,7 +1303,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1338 \u00b7 Apprentices begin formal study"
+      "detail_position": "outside",
+      "date_label": "1338",
+      "detail": "Apprentices begin formal study"
     },
     {
       "id": "tide",
@@ -1154,7 +1318,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1319"
+      "detail_position": "outside",
+      "date_label": "1319",
+      "detail": ""
     },
     {
       "id": "pilotage",
@@ -1167,7 +1333,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1371 \u00b7 The masters establish a school",
+      "detail_position": "outside",
+      "date_label": "1371",
+      "detail": "The masters establish a school",
       "icon": "illustration-sextant-1904",
       "icon_width": 53
     },
@@ -1182,7 +1350,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1389 \u00b7 Civic regulation"
+      "detail_position": "outside",
+      "date_label": "1389",
+      "detail": "Civic regulation"
     },
     {
       "id": "charts",
@@ -1195,7 +1365,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1417 \u00b7 Charts and astronomical tables"
+      "detail_position": "outside",
+      "date_label": "1417",
+      "detail": "Charts and astronomical tables"
     },
     {
       "id": "coast-watch",
@@ -1208,7 +1380,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1436 \u00b7 A chain of local stations"
+      "detail_position": "outside",
+      "date_label": "1436",
+      "detail": "A chain of local stations"
     },
     {
       "id": "ocean",
@@ -1221,7 +1395,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1463 \u00b7 A public teaching foundation",
+      "detail_position": "outside",
+      "date_label": "1463",
+      "detail": "A public teaching foundation",
       "icon": "ship",
       "icon_width": 29
     },
@@ -1236,7 +1412,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1502 \u00b7 A regional public service"
+      "detail_position": "outside",
+      "date_label": "1502",
+      "detail": "A regional public service"
     },
     {
       "id": "soundings",
@@ -1249,7 +1427,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1521 \u00b7 Hydrographic records"
+      "detail_position": "outside",
+      "date_label": "1521",
+      "detail": "Hydrographic records"
     },
     {
       "id": "beacons",
@@ -1262,7 +1442,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1534 \u00b7 Beacons become a public duty"
+      "detail_position": "outside",
+      "date_label": "1534",
+      "detail": "Beacons become a public duty"
     },
     {
       "id": "pilot-union",
@@ -1275,7 +1457,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1583 \u00b7 Coastal and inland licences converge",
+      "detail_position": "outside",
+      "date_label": "1583",
+      "detail": "Coastal and inland licences converge",
       "icon": "anchor",
       "icon_width": 37
     },
@@ -1290,7 +1474,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1608 \u00b7 Closed after the port fire"
+      "detail_position": "outside",
+      "date_label": "1608",
+      "detail": "Closed after the port fire"
     },
     {
       "id": "channel",
@@ -1303,7 +1489,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1657 \u00b7 A specialist service"
+      "detail_position": "outside",
+      "date_label": "1657",
+      "detail": "A specialist service"
     },
     {
       "id": "beacon-college",
@@ -1316,7 +1504,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1684 \u00b7 Lenses and signalling equipment"
+      "detail_position": "outside",
+      "date_label": "1684",
+      "detail": "Lenses and signalling equipment"
     },
     {
       "id": "harbour-board",
@@ -1329,7 +1519,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1728 \u00b7 Municipal reorganisation"
+      "detail_position": "outside",
+      "date_label": "1728",
+      "detail": "Municipal reorganisation"
     },
     {
       "id": "seamanship",
@@ -1342,7 +1534,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1761 \u00b7 Civil and naval instruction",
+      "detail_position": "outside",
+      "date_label": "1761",
+      "detail": "Civil and naval instruction",
       "icon": "ship",
       "icon_width": 29
     },
@@ -1357,7 +1551,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1792 \u00b7 An independent rescue service"
+      "detail_position": "outside",
+      "date_label": "1792",
+      "detail": "An independent rescue service"
     },
     {
       "id": "signals",
@@ -1370,7 +1566,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1826 \u00b7 Standard signals adopted"
+      "detail_position": "outside",
+      "date_label": "1826",
+      "detail": "Standard signals adopted"
     },
     {
       "id": "merchant",
@@ -1383,7 +1581,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1858 \u00b7 Civil instruction separates"
+      "detail_position": "outside",
+      "date_label": "1858",
+      "detail": "Civil instruction separates"
     },
     {
       "id": "naval",
@@ -1396,7 +1596,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1865 \u00b7 Military instruction separates"
+      "detail_position": "outside",
+      "date_label": "1865",
+      "detail": "Military instruction separates"
     },
     {
       "id": "radio-sea",
@@ -1409,7 +1611,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1902 \u00b7 A new communication network"
+      "detail_position": "outside",
+      "date_label": "1902",
+      "detail": "A new communication network"
     },
     {
       "id": "port-lab",
@@ -1422,7 +1626,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1921 \u00b7 Research on navigation hazards"
+      "detail_position": "outside",
+      "date_label": "1921",
+      "detail": "Research on navigation hazards"
     },
     {
       "id": "rescue",
@@ -1435,7 +1641,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1934 \u00b7 Volunteer stations federate"
+      "detail_position": "outside",
+      "date_label": "1934",
+      "detail": "Volunteer stations federate"
     },
     {
       "id": "maritime",
@@ -1448,7 +1656,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1951 \u00b7 Research and communications unite",
+      "detail_position": "outside",
+      "date_label": "1951",
+      "detail": "Research and communications unite",
       "icon": "anchor",
       "icon_width": 37
     },
@@ -1463,7 +1673,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1968 \u00b7 A specialist successor"
+      "detail_position": "outside",
+      "date_label": "1968",
+      "detail": "A specialist successor"
     },
     {
       "id": "sea-college",
@@ -1476,7 +1688,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1986 \u00b7 Teaching becomes autonomous"
+      "detail_position": "outside",
+      "date_label": "1986",
+      "detail": "Teaching becomes autonomous"
     },
     {
       "id": "ocean-safety",
@@ -1489,7 +1703,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "2001 \u00b7 A unified rescue and safety service",
+      "detail_position": "outside",
+      "date_label": "2001",
+      "detail": "A unified rescue and safety service",
       "icon": "ship",
       "icon_width": 29
     },
@@ -1504,7 +1720,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "2009"
+      "detail_position": "outside",
+      "date_label": "2009",
+      "detail": ""
     },
     {
       "id": "lenses",
@@ -1517,7 +1735,9 @@
       "style": "pill",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1405 \u00b7 A distinct trade"
+      "detail_position": "outside",
+      "date_label": "1405",
+      "detail": "A distinct trade"
     },
     {
       "id": "light",
@@ -1530,7 +1750,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1491 \u00b7 An independent school of optical craft",
+      "detail_position": "outside",
+      "date_label": "1491",
+      "detail": "An independent school of optical craft",
       "icon": "lens",
       "icon_width": 37
     },
@@ -1545,7 +1767,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1548 \u00b7 Workshop tradition"
+      "detail_position": "outside",
+      "date_label": "1548",
+      "detail": "Workshop tradition"
     },
     {
       "id": "refraction",
@@ -1558,7 +1782,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1577 \u00b7 An experimental society"
+      "detail_position": "outside",
+      "date_label": "1577",
+      "detail": "An experimental society"
     },
     {
       "id": "telescope",
@@ -1571,7 +1797,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1612 \u00b7 Optical instruments for observers"
+      "detail_position": "outside",
+      "date_label": "1612",
+      "detail": "Optical instruments for observers"
     },
     {
       "id": "glassworks",
@@ -1584,7 +1812,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1626 \u00b7 Commercial production"
+      "detail_position": "outside",
+      "date_label": "1626",
+      "detail": "Commercial production"
     },
     {
       "id": "camera",
@@ -1597,7 +1827,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1641 \u00b7 A teaching circle"
+      "detail_position": "outside",
+      "date_label": "1641",
+      "detail": "A teaching circle"
     },
     {
       "id": "spectrum",
@@ -1610,7 +1842,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1679 \u00b7 Light studied as a physical problem",
+      "detail_position": "outside",
+      "date_label": "1679",
+      "detail": "Light studied as a physical problem",
       "icon": "prism",
       "icon_width": 29
     },
@@ -1625,7 +1859,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1706 \u00b7 An instrument trade"
+      "detail_position": "outside",
+      "date_label": "1706",
+      "detail": "An instrument trade"
     },
     {
       "id": "glass-research",
@@ -1638,7 +1874,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1750 \u00b7 Materials research"
+      "detail_position": "outside",
+      "date_label": "1750",
+      "detail": "Materials research"
     },
     {
       "id": "silver-image",
@@ -1651,7 +1889,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1793 \u00b7 A voluntary correspondence group"
+      "detail_position": "outside",
+      "date_label": "1793",
+      "detail": "A voluntary correspondence group"
     },
     {
       "id": "wave",
@@ -1664,7 +1904,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1822 \u00b7 A university circle"
+      "detail_position": "outside",
+      "date_label": "1822",
+      "detail": "A university circle"
     },
     {
       "id": "instrument-firm",
@@ -1677,7 +1919,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1836 \u00b7 A commercial successor"
+      "detail_position": "outside",
+      "date_label": "1836",
+      "detail": "A commercial successor"
     },
     {
       "id": "photographic",
@@ -1690,7 +1934,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1854 \u00b7 Experimenters and manufacturers unite",
+      "detail_position": "outside",
+      "date_label": "1854",
+      "detail": "Experimenters and manufacturers unite",
       "icon": "lens",
       "icon_width": 29
     },
@@ -1705,7 +1951,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1888 \u00b7 A permanent research institute",
+      "detail_position": "outside",
+      "date_label": "1888",
+      "detail": "A permanent research institute",
       "icon": "prism",
       "icon_width": 37
     },
@@ -1720,7 +1968,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1896 \u00b7 Specialist production"
+      "detail_position": "outside",
+      "date_label": "1896",
+      "detail": "Specialist production"
     },
     {
       "id": "cinema",
@@ -1733,7 +1983,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1906 \u00b7 An independent association"
+      "detail_position": "outside",
+      "date_label": "1906",
+      "detail": "An independent association"
     },
     {
       "id": "color",
@@ -1746,7 +1998,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1923 \u00b7 Materials and perception"
+      "detail_position": "outside",
+      "date_label": "1923",
+      "detail": "Materials and perception"
     },
     {
       "id": "laser",
@@ -1759,7 +2013,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1959 \u00b7 A new experimental programme"
+      "detail_position": "outside",
+      "date_label": "1959",
+      "detail": "A new experimental programme"
     },
     {
       "id": "microscopy",
@@ -1772,7 +2028,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1964 \u00b7 Biomedical imaging"
+      "detail_position": "outside",
+      "date_label": "1964",
+      "detail": "Biomedical imaging"
     },
     {
       "id": "moving-image",
@@ -1785,7 +2043,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1978 \u00b7 Teaching and colour research merge"
+      "detail_position": "outside",
+      "date_label": "1978",
+      "detail": "Teaching and colour research merge"
     },
     {
       "id": "photonics",
@@ -1798,7 +2058,9 @@
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1993 \u00b7 A research partnership",
+      "detail_position": "outside",
+      "date_label": "1993",
+      "detail": "A research partnership",
       "icon": "prism",
       "icon_width": 29
     },
@@ -1813,7 +2075,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "2004 \u00b7 A multidisciplinary institute",
+      "detail_position": "outside",
+      "date_label": "2004",
+      "detail": "A multidisciplinary institute",
       "icon": "lens",
       "icon_width": 37
     },
@@ -1822,15 +2086,17 @@
       "label": "FELLOWSHIP OF SURVEYORS",
       "founded": 1566,
       "group": "g4",
-      "x": 1352,
+      "x": 1340,
       "y": 1499,
-      "width": 179,
+      "width": 194,
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1566 \u00b7 The chart office gains a land-survey branch",
-      "icon": "globe",
-      "icon_width": 37
+      "detail_position": "outside",
+      "date_label": "1566",
+      "detail": "The chart office gains a land-survey branch",
+      "icon": "illustration-theodolite-psf",
+      "icon_width": 58
     },
     {
       "id": "fieldbooks",
@@ -1843,7 +2109,9 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1604 \u00b7 A professional correspondence"
+      "detail_position": "outside",
+      "date_label": "1604",
+      "detail": "A professional correspondence"
     },
     {
       "id": "triangulation",
@@ -1856,22 +2124,26 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1643 \u00b7 A state surveying service"
+      "detail_position": "outside",
+      "date_label": "1643",
+      "detail": "A state surveying service"
     },
     {
       "id": "atlas-room",
       "label": "The Atlas Room",
       "founded": 1676,
       "group": "g4",
-      "x": 1250,
+      "x": 1270,
       "y": 1863,
-      "width": 114,
+      "width": 133,
       "style": "emblem",
       "size": 11.5,
       "detail_size": 8.2,
-      "detail": "1676 \u00b7 Collectors become publishers",
-      "icon": "book",
-      "icon_width": 29
+      "detail_position": "outside",
+      "date_label": "1676",
+      "detail": "Collectors become publishers",
+      "icon": "illustration-printing-press-bookman",
+      "icon_width": 42
     },
     {
       "id": "land-register",
@@ -1884,20 +2156,24 @@
       "style": "plain",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1709 \u00b7 Cadastral administration"
+      "detail_position": "outside",
+      "date_label": "1709",
+      "detail": "Cadastral administration"
     },
     {
       "id": "hydrography",
       "label": "Hydrographic Bureau",
       "founded": 1732,
       "group": "g4",
-      "x": 1297,
+      "x": 1354,
       "y": 2168,
       "width": 134,
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1732 \u00b7 Marine charts separate from land records"
+      "detail_position": "outside",
+      "date_label": "1732",
+      "detail": "Marine charts separate from land records"
     },
     {
       "id": "geography",
@@ -1910,7 +2186,9 @@
       "style": "hero",
       "size": 15,
       "detail_size": 9,
-      "detail": "1775 \u00b7 Public lectures and expeditions",
+      "detail_position": "outside",
+      "date_label": "1775",
+      "detail": "Public lectures and expeditions",
       "icon": "globe",
       "icon_width": 37
     },
@@ -1925,7 +2203,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1829 \u00b7 Centralised public cartography"
+      "detail_position": "outside",
+      "date_label": "1829",
+      "detail": "Centralised public cartography"
     },
     {
       "id": "earth-data",
@@ -1938,7 +2218,9 @@
       "style": "card",
       "size": 10.5,
       "detail_size": 8.2,
-      "detail": "1972 \u00b7 Maps become a shared data service"
+      "detail_position": "outside",
+      "date_label": "1972",
+      "detail": "Maps become a shared data service"
     }
   ],
   "edges": [
@@ -3123,14 +3405,65 @@
       "source": "charts",
       "target": "hydrography",
       "kind": "influence",
-      "weight": 1.5
+      "weight": 1.5,
+      "via": [
+        [
+          1286,
+          1178
+        ],
+        [
+          1238,
+          1178
+        ],
+        [
+          1238,
+          1468
+        ],
+        [
+          1116,
+          1468
+        ],
+        [
+          1116,
+          1615
+        ],
+        [
+          1136,
+          1615
+        ],
+        [
+          1136,
+          1720
+        ],
+        [
+          1117,
+          1720
+        ],
+        [
+          1117,
+          1812
+        ],
+        [
+          1173,
+          1812
+        ],
+        [
+          1173,
+          2030
+        ],
+        [
+          1354,
+          2030
+        ]
+      ]
     },
     {
       "id": "atlas-room-to-geography",
       "source": "atlas-room",
       "target": "geography",
       "kind": "branch",
-      "weight": 2.5
+      "weight": 2.5,
+      "corridor_y": 2230
     },
     {
       "id": "land-register-to-mapping",

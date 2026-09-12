@@ -1,0 +1,550 @@
+{
+  "status": "validating",
+  "runs": [
+    {
+      "id": "usefulcharts-v14-libraries-20260912-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 64,
+        "payloadSha256": "ba3159980f962c5d152b840e3867b7ce866bdabaf3fb7c9e3a20939de784f75b"
+      },
+      "prompt_sha256": "2ad3cd393439bae3dd757634c19371446d1bddb696874720cbf937256b1bbfd2",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4294967295,
+        "piExitCode": 4294967295,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T03:16:31.889446+00:00",
+        "finishedAtUtc": "2026-09-12T03:20:39.060677+00:00",
+        "durationSeconds": 247.173,
+        "gates": {
+          "artifacts": false,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "not-evaluated"
+      },
+      "failure_classification": "evaluation-setup: invalid supplied ID/table formatting; cancelled with original evidence retained",
+      "read_surface_passed": false,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "skills/usefulcharts-style/references/data-contract.md"
+      ],
+      "read_bytes": 49077,
+      "tool_errors": [
+        "/usr/bin/bash: line 90: warning: here-document at line 1 delimited by end-of-file (wanted `PY')\n  File \"<stdin>\", line 79\r\n    n = {\r\n        ^\r\nSyntaxError: '{' was never closed\r\n\n\nCommand exited with code 1",
+        "Chart could not be rendered: Use up to three short imprint lines.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Invalid ID: \"children's\"\r\n\n\nCommand exited with code 2"
+      ]
+    },
+    {
+      "id": "usefulcharts-v14-libraries-20260912-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 64,
+        "payloadSha256": "ba3159980f962c5d152b840e3867b7ce866bdabaf3fb7c9e3a20939de784f75b"
+      },
+      "prompt_sha256": "3cc943a541df535a113c244dcd031c79960c9fbb3c590123b17dfaa397f08b40",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T03:20:42.166947+00:00",
+        "finishedAtUtc": "2026-09-12T03:26:55.858781+00:00",
+        "durationSeconds": 373.694,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "run": "usefulcharts-v14-libraries-20260912-2",
+        "nodes": 50,
+        "edges": 71,
+        "canvas": [
+          2200.0,
+          3300.0
+        ],
+        "image_read_count": 2,
+        "external_content_nodes": 50,
+        "findings": [],
+        "limitation": "This checks source meaning, supported preview inspection and geometry. Hierarchy and visual parity require a separate image review."
+      },
+      "failure_classification": "skill and agent: oversized authored page, uniform panels, temporary-path and layout/audit errors",
+      "read_surface_passed": false,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/institution-composition.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "result/layout.json",
+        "result/browser.json"
+      ],
+      "read_bytes": 1536532,
+      "tool_errors": [
+        "total 0\n\n\nCommand exited with code 1",
+        "C:\\Users\\villa\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\python.exe: can't open file 'C:\\\\Users\\\\villa\\\\AppData\\\\Local\\\\Temp\\\\build_source.py': [Errno 2] No such file or directory\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Nodes printers and evening overlap or lack a 5-unit gutter.\r\n\n\nCommand exited with code 2",
+        "Installed 4 packages in 198ms\n{\"status\": \"fail\", \"id\": \"fictional-library-learning-lineage\", \"node_count\": 50, \"edge_count\": 71, \"text_count\": 230, \"min_contrast\": 4.539671853921159, \"findings\": [{\"type\": \"text-outside-page\", \"text\": \"Relationship key: solid lines trace listed predecessors; two incoming solid lines mark\"}, {\"type\": \"text-outside-page\", \"text\": \"a stated merger; dotted influence lines are intellectual exchanges, not descent.\"}, {\"type\": \"text-outside-page\", \"text\": \"Bookman printing press ornament, American\"}, {\"type\": \"text-outside-page\", \"text\": \"Type Founders Company, 1923 \\u2014 bundled\"}, {\"type\": \"text-outside-page\", \"text\": \"historical illustration used as context, not as\"}]}\r\n\n\nCommand exited with code 1"
+      ]
+    },
+    {
+      "id": "usefulcharts-v14-separated-20260912-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 64,
+        "payloadSha256": "ba3159980f962c5d152b840e3867b7ce866bdabaf3fb7c9e3a20939de784f75b"
+      },
+      "prompt_sha256": "a958d67d2bc827bf86ab58d26e757548e522e2551ab286da488f8ff4196aba10",
+      "expected_outputs": [
+        "deliverables/source.json",
+        "deliverables/chart.svg",
+        "deliverables/chart.html",
+        "deliverables/layout.json"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T03:26:43.294489+00:00",
+        "finishedAtUtc": "2026-09-12T03:27:01.873781+00:00",
+        "durationSeconds": 18.579,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "exact_input_preserved": true
+      },
+      "failure_classification": "harness: mixed JSON/shell fence parsing rejected the correctly executed command",
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "deliverables/layout.json"
+      ],
+      "read_bytes": 9800,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-v15-boundary-20260912-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 67,
+        "payloadSha256": "e0d1b0ef459738e58c9520a6f0cea69a43b7ab569c809edb17f64d35849a4236"
+      },
+      "prompt_sha256": "73f91e447401c48dde98ee117f755bcaeea4576cf818f0b8264da645c5fe0b8a",
+      "expected_outputs": [
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T03:48:47.343866+00:00",
+        "finishedAtUtc": "2026-09-12T03:49:07.679197+00:00",
+        "durationSeconds": 20.335,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "fail",
+        "findings": [
+          "Known person inventory changed."
+        ]
+      },
+      "failure_classification": "agent: unnecessary directory/existence probes returned errors before creating the requested review files; source and diagnostic semantics are checked separately",
+      "read_surface_passed": false,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "read_bytes": 20116,
+      "tool_errors": [
+        "ls: cannot access 'review': No such file or directory\n\n\nCommand exited with code 2"
+      ]
+    },
+    {
+      "id": "usefulcharts-v15-boundary-20260912-spark-2",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 67,
+        "payloadSha256": "e0d1b0ef459738e58c9520a6f0cea69a43b7ab569c809edb17f64d35849a4236"
+      },
+      "prompt_sha256": "73f91e447401c48dde98ee117f755bcaeea4576cf818f0b8264da645c5fe0b8a",
+      "expected_outputs": [
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T03:48:47.343788+00:00",
+        "finishedAtUtc": "2026-09-12T03:49:15.337512+00:00",
+        "durationSeconds": 27.994,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "findings": []
+      },
+      "failure_classification": "agent: unnecessary directory/existence probes returned errors before creating the requested review files; source and diagnostic semantics are checked separately",
+      "read_surface_passed": false,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "read_bytes": 23860,
+      "tool_errors": [
+        "(no output)\n\nCommand exited with code 1",
+        "(no output)\n\nCommand exited with code 1"
+      ]
+    },
+    {
+      "id": "usefulcharts-v15-boundary-20260912-spark-3",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 67,
+        "payloadSha256": "e0d1b0ef459738e58c9520a6f0cea69a43b7ab569c809edb17f64d35849a4236"
+      },
+      "prompt_sha256": "73f91e447401c48dde98ee117f755bcaeea4576cf818f0b8264da645c5fe0b8a",
+      "expected_outputs": [
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T03:48:47.343890+00:00",
+        "finishedAtUtc": "2026-09-12T03:49:07.032731+00:00",
+        "durationSeconds": 19.689,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "findings": []
+      },
+      "failure_classification": null,
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "review/source.json",
+        "review/diagnostic.json"
+      ],
+      "read_bytes": 32662,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-v15-libraries-20260912-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 67,
+        "payloadSha256": "e0d1b0ef459738e58c9520a6f0cea69a43b7ab569c809edb17f64d35849a4236"
+      },
+      "prompt_sha256": "3cc943a541df535a113c244dcd031c79960c9fbb3c590123b17dfaa397f08b40",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T03:41:20.110956+00:00",
+        "finishedAtUtc": "2026-09-12T03:43:57.101445+00:00",
+        "durationSeconds": 156.992,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "run": "usefulcharts-v15-libraries-20260912-1",
+        "nodes": 50,
+        "edges": 71,
+        "canvas": [
+          1680.0,
+          2615.59
+        ],
+        "image_read_count": 1,
+        "external_content_nodes": 50,
+        "findings": [],
+        "limitation": "This checks source meaning, supported preview inspection and geometry. Hierarchy and visual parity require a separate image review."
+      },
+      "failure_classification": null,
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/packed-stories.md",
+        "skills/usefulcharts-style/assets/templates/packed-lineage.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "result/poster.png",
+        "result/browser.json"
+      ],
+      "read_bytes": 1462442,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-v15-libraries-20260912-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 67,
+        "payloadSha256": "e0d1b0ef459738e58c9520a6f0cea69a43b7ab569c809edb17f64d35849a4236"
+      },
+      "prompt_sha256": "3cc943a541df535a113c244dcd031c79960c9fbb3c590123b17dfaa397f08b40",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T03:43:01.046795+00:00",
+        "finishedAtUtc": "2026-09-12T03:46:11.750949+00:00",
+        "durationSeconds": 190.705,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "run": "usefulcharts-v15-libraries-20260912-2",
+        "nodes": 50,
+        "edges": 71,
+        "canvas": [
+          1580.0,
+          3075.44
+        ],
+        "image_read_count": 2,
+        "external_content_nodes": 50,
+        "findings": [],
+        "limitation": "This checks source meaning, supported preview inspection and geometry. Hierarchy and visual parity require a separate image review."
+      },
+      "failure_classification": null,
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/packed-stories.md",
+        "skills/usefulcharts-style/assets/templates/packed-lineage.json",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md"
+      ],
+      "read_bytes": 2123791,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-v15-libraries-20260912-3",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 67,
+        "payloadSha256": "e0d1b0ef459738e58c9520a6f0cea69a43b7ab569c809edb17f64d35849a4236"
+      },
+      "prompt_sha256": "3cc943a541df535a113c244dcd031c79960c9fbb3c590123b17dfaa397f08b40",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T03:43:01.216636+00:00",
+        "finishedAtUtc": "2026-09-12T03:45:43.020445+00:00",
+        "durationSeconds": 161.805,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "run": "usefulcharts-v15-libraries-20260912-3",
+        "nodes": 50,
+        "edges": 71,
+        "canvas": [
+          1414.0,
+          2874.47
+        ],
+        "image_read_count": 1,
+        "external_content_nodes": 50,
+        "findings": [],
+        "limitation": "This checks source meaning, supported preview inspection and geometry. Hierarchy and visual parity require a separate image review."
+      },
+      "failure_classification": null,
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/packed-stories.md",
+        "skills/usefulcharts-style/assets/templates/packed-lineage.json",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/poster.png"
+      ],
+      "read_bytes": 1120652,
+      "tool_errors": []
+    },
+    {
+      "id": "usefulcharts-v15-separated-20260912-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 67,
+        "payloadSha256": "e0d1b0ef459738e58c9520a6f0cea69a43b7ab569c809edb17f64d35849a4236"
+      },
+      "prompt_sha256": "a958d67d2bc827bf86ab58d26e757548e522e2551ab286da488f8ff4196aba10",
+      "expected_outputs": [
+        "deliverables/source.json",
+        "deliverables/chart.svg",
+        "deliverables/chart.html",
+        "deliverables/layout.json"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T03:41:30.273297+00:00",
+        "finishedAtUtc": "2026-09-12T03:41:42.550882+00:00",
+        "durationSeconds": 12.278,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "exact_input_preserved": true
+      },
+      "failure_classification": null,
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "deliverables/layout.json"
+      ],
+      "read_bytes": 10739,
+      "tool_errors": []
+    }
+  ],
+  "visual_parity": "Not established. Read the separate visual review; exact data and clean geometry do not prove resemblance."
+}

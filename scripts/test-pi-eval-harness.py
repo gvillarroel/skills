@@ -68,6 +68,14 @@ for event in events:
 
 
 class RunnerUnitTests(unittest.TestCase):
+    def test_command_extraction_skips_a_preceding_json_fence(self):
+        prompt='Write this data:\n```json\n{"name":"A"}\n```\n\nRun this command exactly:\n```sh\npython make.py --name A\n```\n'
+        self.assertEqual(RUNNER.extract_fenced_commands(prompt),['python make.py --name A'])
+
+    def test_command_extraction_preserves_multiline_shell_and_ignores_prose(self):
+        prompt='````bash\npython first.py\npython second.py\n````\nNext:\n```text\nA label, not a command\n```\n```\nuv run final.py\n```'
+        self.assertEqual(RUNNER.extract_fenced_commands(prompt),['python first.py\npython second.py','uv run final.py'])
+
     def test_launcher_names_canonical_skill_entry_point(self) -> None:
         prompt = RUNNER.build_launcher_prompt("demo-skill")
         self.assertIn("read the bundle entry point at `skills/demo-skill/SKILL.md`", prompt)
