@@ -148,6 +148,25 @@
       "date_note": "Published in the 1923 American Type Founders specimen book. Contextual illustration, not an institutional logo or evidence of a fictional event.",
       "background": "Placed on an intentional white image panel; source bytes are unchanged. The PNG sources retain their white field.",
       "source_revision": 1169853785
+    },
+    {
+      "id": "clock-escapement",
+      "file": "clock-escapement.svg",
+      "title": "Anchor escapement from The New Student's Reference Work",
+      "creator": "Chandler B. Beach and Frank Morton McMurry (editors); vector rendition by Rfc1394, corrected by Eiim",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Clock_gear.svg",
+      "source_revision": 1002886597,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Clock_gear.svg",
+      "rights": "Public-domain historical US reference-work illustration; source marked PD-US.",
+      "date_note": "Historical anchor-escapement drawing; original vector uploaded 2007-12-02 and corrected 2019-12-02. Contextual illustration, not evidence of a fictional event.",
+      "modified": false,
+      "sha256": "a8a305dcbf4f716a3af65d9b7fbd019d2ac3f66129480ccadb3fb9d3b8d3868f",
+      "bytes": 18375,
+      "mime_type": "image/svg+xml",
+      "width": 569.3333333333334,
+      "height": 737.3333333333334,
+      "background": "Transparent SVG field, inspected at 300px and 90px heights on the poster paper.",
+      "retrieved": "2026-09-12"
     }
   ]
 }

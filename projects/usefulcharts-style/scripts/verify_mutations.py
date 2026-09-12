@@ -9,6 +9,7 @@ import argparse
 import copy
 import importlib.util
 import json
+import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from playwright.sync_api import sync_playwright
@@ -34,6 +35,21 @@ def main():
             node=copy.deepcopy(original);text=node.find(f'.//s:text[@data-content-role="{role}"]',ns)
             text.text='Incorrect content'
             mutations.append((f'changed-{role}',node,f'source-{field}-missing'))
+    if original.find('.//s:g[@data-event-id]/s:text',ns) is not None:
+        node=copy.deepcopy(original);event_text=node.find('.//s:g[@data-event-id]/s:text',ns)
+        edge=node.find('.//s:path[@data-edge-id]',ns)
+        points=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?',edge.get('d'))]
+        x=float(event_text.get('x'))+8;y=float(event_text.get('y'))-3
+        edge.set('d',f'M {points[0]} {points[1]} L {x} {points[1]} L {x} {y} L {points[-2]} {y} L {points[-2]} {points[-1]}')
+        mutations.append(('path-through-event-text',node,'edge-event-text-collision'))
+        node=copy.deepcopy(original);event_art=node.find('.//s:g[@data-event-id]/s:svg[@data-artwork]',ns)
+        if event_art is not None:
+            edge=node.find('.//s:path[@data-edge-id]',ns)
+            points=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?',edge.get('d'))]
+            x=float(event_art.get('x'))+float(event_art.get('width'))/2
+            y=float(event_art.get('y'))+float(event_art.get('height'))/2
+            edge.set('d',f'M {points[0]} {points[1]} L {x} {points[1]} L {x} {y} L {points[-2]} {y} L {points[-2]} {points[-1]}')
+            mutations.append(('path-through-event-art',node,'edge-event-illustration-collision'))
     node=copy.deepcopy(original);target=node.find(".//s:g[@data-node-id]",ns);node.remove(target)
     mutations.append(("deleted-node",node,"node-inventory"))
     node=copy.deepcopy(original);node.find(".//s:g[@data-node-id]/s:text",ns).set("font-size","300")

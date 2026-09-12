@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = []
+# dependencies = ["shapely>=2,<3"]
 # ///
 """Regenerate the three original synthetic poster acceptance fixtures."""
 
@@ -23,6 +23,7 @@ def main():
     parser.add_argument("--output",type=Path,default=Path(__file__).resolve().parent)
     parser.add_argument("--only",choices=("aurelian-families","atlas-of-inquiry","five-regional-histories"))
     args=parser.parse_args()
+    sys.path.insert(0,str(args.renderer.resolve().parent))
     args.output.mkdir(parents=True,exist_ok=True)
     manifest={"id":"usefulcharts-style","data_provenance":"Original synthetic fixtures; no UsefulCharts artwork is redistributed.","items":[]}
     cards=[]

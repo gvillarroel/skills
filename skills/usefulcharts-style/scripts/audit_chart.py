@@ -37,7 +37,7 @@ AUDIT = r"""() => {
   const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,d:el.getAttribute('d'),curved:el.dataset.routeStyle==='rounded'}));
   const events=[...svg.querySelectorAll('[data-event-id]')].map(el=>({id:el.dataset.eventId,year:Number(el.dataset.year),origin_y:Number(el.dataset.originY),text:el.textContent}));
   const unions=[...svg.querySelectorAll('[data-union-id]')].map(el=>({id:el.dataset.unionId,d:el.getAttribute('d')}));
-  const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
+  const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,event:el.closest('[data-event-id]')?.dataset.eventId,box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
   const illustrations=[...svg.querySelectorAll('[data-event-id] [data-artwork]')].map(el=>({event:el.closest('[data-event-id]').dataset.eventId,kind:el.dataset.artwork,box:bounds(el)}));
   const setEqual=(a,b)=>a.length===b.length && [...a].sort().join('\n')===[...b].sort().join('\n');
   if(!setEqual(nodes.map(n=>n.id),meta.node_ids))findings.push({type:'node-inventory'});
@@ -69,6 +69,9 @@ AUDIT = r"""() => {
     const length=el.getTotalLength();
     const p=e.curved?Array.from({length:Math.ceil(length/2)+1},(_,i)=>{const p=el.getPointAtLength(Math.min(length,i*2));return [p.x,p.y]}):points(e.d);
     if(e.curved){const end=el.getPointAtLength(length);p.push([end.x,end.y]);}
+    const inside=(point,r)=>point[0]>r.x+.25&&point[0]<r.x+r.w-.25&&point[1]>r.y+.25&&point[1]<r.y+r.h-.25;
+    for(const t of texts)if(t.event&&p.some(point=>inside(point,t.box)))findings.push({type:'edge-event-text-collision',edge:e.id,event:t.event,text:t.text});
+    for(const art of illustrations)if(p.some(point=>inside(point,art.box)))findings.push({type:'edge-event-illustration-collision',edge:e.id,event:art.event});
     for(let i=0;i<p.length-1;i++){
       const [a,b]=[p[i],p[i+1]];
       if(!e.curved&&a[0]!==b[0]&&a[1]!==b[1])findings.push({type:'non-orthogonal-edge',id:e.id});

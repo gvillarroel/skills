@@ -1,0 +1,455 @@
+{
+  "status": "validating",
+  "runs": [
+    {
+      "id": "usefulcharts-v16-events-contract-20260912-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 71,
+        "payloadSha256": "95c3cbd71a1381e9dd11b4bd1dd12433f9ea77c57fde08a1809d33e70ecc6f87"
+      },
+      "prompt_sha256": "213a881b65be584fd5b0c691485c17a1da113a4e1f12f1dc72a5470b1da6cac1",
+      "expected_outputs": [
+        "draft.json",
+        "deliverables/brief.json",
+        "deliverables/placements.json",
+        "deliverables/poster.svg",
+        "deliverables/layout.json"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T04:30:34.438354+00:00",
+        "finishedAtUtc": "2026-09-12T04:30:49.701233+00:00",
+        "durationSeconds": 15.263,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "exact_source_preserved": true,
+        "placement_report": "pass",
+        "renderer_report": "pass"
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "read_bytes": 9793,
+      "tool_errors": [],
+      "visual_review": "Command control only; no aesthetic acceptance claim."
+    },
+    {
+      "id": "usefulcharts-v16-regions-20260912-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 71,
+        "payloadSha256": "95c3cbd71a1381e9dd11b4bd1dd12433f9ea77c57fde08a1809d33e70ecc6f87"
+      },
+      "prompt_sha256": "216f1a8eb48b4caaa12dbc6811e4f6be5a0b2c63a939ddd0d4eb2668a6c775c9",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T04:30:34.194566+00:00",
+        "finishedAtUtc": "2026-09-12T04:33:43.827020+00:00",
+        "durationSeconds": 189.634,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1800 2700",
+        "supported_image_reads": 2,
+        "findings": [],
+        "limitation": "Exact data and geometry do not establish visual parity; inspect the images separately."
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+        "result/source.json",
+        "result/browser.json"
+      ],
+      "read_bytes": 948285,
+      "tool_errors": [],
+      "visual_review": "Rejected: excessive page size and tiny narrative text."
+    },
+    {
+      "id": "usefulcharts-v16-regions-20260912-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 71,
+        "payloadSha256": "95c3cbd71a1381e9dd11b4bd1dd12433f9ea77c57fde08a1809d33e70ecc6f87"
+      },
+      "prompt_sha256": "216f1a8eb48b4caaa12dbc6811e4f6be5a0b2c63a939ddd0d4eb2668a6c775c9",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T04:30:34.201645+00:00",
+        "finishedAtUtc": "2026-09-12T04:33:20.802479+00:00",
+        "durationSeconds": 166.602,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1800 3600",
+        "supported_image_reads": 1,
+        "findings": [],
+        "limitation": "Exact data and geometry do not establish visual parity; inspect the images separately."
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+        "skills/usefulcharts-style/references/compact-chronology.md",
+        "result/placements.json",
+        "result/poster.png",
+        "result/browser.json",
+        "result/layout.json"
+      ],
+      "read_bytes": 349018,
+      "tool_errors": [
+        "Installed 2 packages in 846ms\n{\"status\": \"needs-layout\", \"message\": \"No readable placement for event ec2. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed.\"}\r\n\n\nCommand exited with code 1",
+        "ENOENT: no such file or directory, access 'C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\usefulcharts-v16-regions-20260912-2\\workspace\\result\\placements.json'",
+        "Found 12 occurrences of edits[1] in result/draft.json. Each oldText must be unique. Please provide more context to make it unique."
+      ],
+      "visual_review": "Rejected: excessive page size and tiny narrative text."
+    },
+    {
+      "id": "usefulcharts-v16-regions-20260912-3",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 71,
+        "payloadSha256": "95c3cbd71a1381e9dd11b4bd1dd12433f9ea77c57fde08a1809d33e70ecc6f87"
+      },
+      "prompt_sha256": "216f1a8eb48b4caaa12dbc6811e4f6be5a0b2c63a939ddd0d4eb2668a6c775c9",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T04:30:34.191641+00:00",
+        "finishedAtUtc": "2026-09-12T04:33:37.019732+00:00",
+        "durationSeconds": 182.829,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1800 2700",
+        "supported_image_reads": 3,
+        "findings": [],
+        "limitation": "Exact data and geometry do not establish visual parity; inspect the images separately."
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/assets/templates/compact-timeline.json",
+        "result/source.json",
+        "result/browser.json",
+        "result/layout.json"
+      ],
+      "read_bytes": 1403457,
+      "tool_errors": [],
+      "visual_review": "Rejected: excessive page size and tiny narrative text."
+    },
+    {
+      "id": "usefulcharts-v17-events-contract-20260912-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 72,
+        "payloadSha256": "f9da891285f01d53a9a32b289d6b90a831a0ce46588934ba51b4eaae991f4f9e"
+      },
+      "prompt_sha256": "213a881b65be584fd5b0c691485c17a1da113a4e1f12f1dc72a5470b1da6cac1",
+      "expected_outputs": [
+        "draft.json",
+        "deliverables/brief.json",
+        "deliverables/placements.json",
+        "deliverables/poster.svg",
+        "deliverables/layout.json"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T04:38:57.821541+00:00",
+        "finishedAtUtc": "2026-09-12T04:39:29.496351+00:00",
+        "durationSeconds": 31.675,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "exact_source_preserved": true,
+        "placement_report": "pass",
+        "renderer_report": "pass"
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "draft.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "read_bytes": 14597,
+      "tool_errors": [],
+      "visual_review": "Command control only; no aesthetic acceptance claim."
+    },
+    {
+      "id": "usefulcharts-v17-regions-20260912-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 72,
+        "payloadSha256": "f9da891285f01d53a9a32b289d6b90a831a0ce46588934ba51b4eaae991f4f9e"
+      },
+      "prompt_sha256": "216f1a8eb48b4caaa12dbc6811e4f6be5a0b2c63a939ddd0d4eb2668a6c775c9",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T04:38:57.303963+00:00",
+        "finishedAtUtc": "2026-09-12T04:41:15.160601+00:00",
+        "durationSeconds": 137.858,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1300 1700",
+        "supported_image_reads": 2,
+        "findings": [],
+        "limitation": "Exact data and geometry do not establish visual parity; inspect the images separately."
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "result/browser.json",
+        "result/source.json"
+      ],
+      "read_bytes": 474350,
+      "tool_errors": [],
+      "visual_review": "Improved small-history legibility: 1300 by 1700, readable notes and an integrated clock illustration. Not accepted as parity: the three persistent lanes and evenly recurring notes remain schematic; one illustration does not demonstrate dense editorial variety."
+    },
+    {
+      "id": "usefulcharts-v17-regions-20260912-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 72,
+        "payloadSha256": "f9da891285f01d53a9a32b289d6b90a831a0ce46588934ba51b4eaae991f4f9e"
+      },
+      "prompt_sha256": "216f1a8eb48b4caaa12dbc6811e4f6be5a0b2c63a939ddd0d4eb2668a6c775c9",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T04:38:57.381255+00:00",
+        "finishedAtUtc": "2026-09-12T04:41:07.503014+00:00",
+        "durationSeconds": 130.123,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1300 1700",
+        "supported_image_reads": 1,
+        "findings": [],
+        "limitation": "Exact data and geometry do not establish visual parity; inspect the images separately."
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "result/poster.png"
+      ],
+      "read_bytes": 256042,
+      "tool_errors": [],
+      "visual_review": "Improved small-history legibility: 1300 by 1700, readable notes and an integrated clock illustration. Not accepted as parity: the three persistent lanes and evenly recurring notes remain schematic; one illustration does not demonstrate dense editorial variety."
+    },
+    {
+      "id": "usefulcharts-v17-regions-20260912-3",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 72,
+        "payloadSha256": "f9da891285f01d53a9a32b289d6b90a831a0ce46588934ba51b4eaae991f4f9e"
+      },
+      "prompt_sha256": "216f1a8eb48b4caaa12dbc6811e4f6be5a0b2c63a939ddd0d4eb2668a6c775c9",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T04:38:57.562884+00:00",
+        "finishedAtUtc": "2026-09-12T04:41:30.611471+00:00",
+        "durationSeconds": 153.05,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1300 1700",
+        "supported_image_reads": 2,
+        "findings": [],
+        "limitation": "Exact data and geometry do not establish visual parity; inspect the images separately."
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "skills/usefulcharts-style/references/narrative-chronology.md"
+      ],
+      "read_bytes": 466856,
+      "tool_errors": [],
+      "visual_review": "Improved small-history legibility: 1300 by 1700, readable notes and an integrated clock illustration. Not accepted as parity: the three persistent lanes and evenly recurring notes remain schematic; one illustration does not demonstrate dense editorial variety."
+    }
+  ],
+  "visual_parity": "Not established. Technical checks and all failed attempts are retained separately from the visual critique."
+}

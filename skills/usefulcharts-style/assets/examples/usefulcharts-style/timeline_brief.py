@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = []
+# dependencies = ["shapely>=2,<3"]
 # ///
 """Authored fictional chronology: unequal political branches and distinct events."""
 
@@ -172,4 +172,26 @@ def build_timeline(base):
             if (g,i)==(0,1):e.update(art_width=62,art_height=103.61)
             if (g,i)==(4,6):e.update(art_width=64,art_height=91.65)
             d['events'].append(e)
+    # Reserve note space before reducing type. Two Highland periods move left
+    # to leave a continuous corridor for the uncertain Cairn succession.
+    for period in d['periods']:
+        old=period['bar_width'];width=max(20,min(50,old*.58))
+        major=period['size']==20
+        if major:width=50
+        period.update(offset=period['offset']+(old-width)/2,bar_width=width,
+            size=18 if major else 12 if old>=55 else 11)
+        if period['id'] in ('p1-cairn','p1-union'):period['offset']-=50
+    illustrations={
+        'event-2-6':('illustration-astrolabe-observation',95,65.43),
+        'event-1-7':('illustration-clock-escapement',67,86.71),
+        'event-3-6':('illustration-sextant-1904',65,62.32),
+    }
+    for event in d['events']:
+        if event['id'] in illustrations:
+            event['icon'],event['art_width'],event['art_height']=illustrations[event['id']]
+        landmark=event['size']>12
+        event.update(size=14.5 if landmark else 12.2,detail_size=11 if landmark else 10.7)
+    d['source_note']='Synthetic history · All periods, events and relationships are invented. Contextual art: PSF, Library of Congress, Nordisk familjebok and The New Student\'s Reference Work; provenance embedded.'
+    from pack_timeline_events import pack_events
+    d,_=pack_events(d)
     return d
