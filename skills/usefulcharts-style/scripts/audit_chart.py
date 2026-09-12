@@ -58,6 +58,13 @@ AUDIT = r"""() => {
     for(const n of nodes)if(intersect(art.box,n.box,.5))findings.push({type:'illustration-node-collision',event:art.event,node:n.id});
     for(const t of texts)if(intersect(art.box,t.box,.5))findings.push({type:'illustration-text-collision',event:art.event,text:t.text});
   }
+  for(const heading of svg.querySelectorAll('[data-annotation-kind="heading"]')){
+    for(const art of heading.querySelectorAll('[data-artwork]')){
+      const b=bounds(art);
+      if(!contained(b,{x:34,y:118,w:view.width-68,h:view.height-152},.5))findings.push({type:'heading-art-outside-paper',id:heading.dataset.annotationId});
+      for(const t of texts)if(intersect(b,t.box,.5))findings.push({type:'heading-art-text-collision',id:heading.dataset.annotationId,text:t.text});
+    }
+  }
   for(let i=0;i<illustrations.length;i++)for(let j=i+1;j<illustrations.length;j++)if(intersect(illustrations[i].box,illustrations[j].box,.5))findings.push({type:'illustration-overlap',a:illustrations[i].event,b:illustrations[j].event});
   for(const rule of svg.querySelectorAll('[data-era-rule]')){
     const b=bounds(rule),r={x:b.x,y:b.y-1,w:b.w,h:2};

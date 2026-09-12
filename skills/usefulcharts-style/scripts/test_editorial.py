@@ -36,6 +36,18 @@ def timeline():
 
 
 class EditorialTests(unittest.TestCase):
+    def test_heading_icon_clears_complete_multiline_heading(self):
+        data=graph();data['annotations']=[dict(x=950,y=320,width=180,size=18,kind='heading',
+            label='A thousand years\nof recorded descent',icon='crown')]
+        svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+        heading=root.find('.//s:g[@data-annotation-kind="heading"]',NS)
+        self.assertIsNotNone(heading);self.assertEqual(heading.get('data-annotation-id'),'annotation-0')
+        art=heading.find('s:g[@data-artwork="crown"]',NS)
+        import re
+        x,y,sx,sy=map(float,re.findall(r'-?\d+(?:\.\d+)?',art.get('transform')))
+        first=min(float(t.get('y')) for t in heading.findall('s:text',NS))
+        self.assertLessEqual(y+100*sy,first-18)
+
     def test_packed_story_measures_page_without_mutating_relative_hints(self):
         data=graph();data.update(layout='packed');data.pop('width');data.pop('height')
         for node in data['nodes']:

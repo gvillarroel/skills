@@ -14,7 +14,7 @@ import html
 import math
 from pathlib import Path
 
-from render_chart import Poster, require, number, color, ident, wrap, fmt, text_color, contrast, overlaps, segment_hits, route, compress, KINDS, automatic_lineage, text_width
+from render_chart import Poster, require, number, color, ident, wrap, fmt, attr, text_color, contrast, overlaps, segment_hits, route, compress, KINDS, automatic_lineage, text_width
 from editorial_art import symbol
 from cohort_layout import place_cohorts, compact_cohort_defaults
 from story_layout import pack_stories
@@ -377,7 +377,7 @@ class EditorialPoster(Poster):
             self.rect((x+2,py+2,iconw,ph-4),'#FFFEF7')
             self.artwork(node['icon'],x+2,py+(ph-iconw)/2,iconw,iconw,paint,node.get('variant',0))
         xx=x+iconw+(w-iconw)/2
-        yy=py+(ph-len(parts['names'])*size*1.18)/2+size*.86
+        yy=py+(ph-len(parts['names'])*size*1.18)/2+size*.92
         for line in parts['names']:
             self.text(xx,yy,line,size,text_color(fill),bold=True,owner=nid,background=fill,css='data-content-role="name"');yy+=size*1.18
         yy=py+ph+small+2
@@ -385,7 +385,7 @@ class EditorialPoster(Poster):
             self.text(x+w/2,yy,line,small,owner=nid,css='data-content-role="caption"');yy+=small*1.25
 
     def draw_annotations(self):
-        for a in self.data.get('annotations',[]):
+        for annotation_index,a in enumerate(self.data.get('annotations',[])):
             if a.get('node'):
                 require(a['node'] in self.boxes,'Annotation references an unknown node.')
                 anchor=self.boxes[a['node']]
@@ -407,13 +407,15 @@ class EditorialPoster(Poster):
                     safe.append((xx,yy,box))
                 require(safe,f'No clear placement for annotation {a["label"]!r}. Move its anchor.')
                 x,y,placed=safe[0];self.annotation_boxes.append(placed)
+            self.add(f'<g data-annotation-id="annotation-{annotation_index}" data-annotation-kind="{attr(a.get("kind","note"))}">')
             if a.get('kind')=='pill':self.rect((x-w/2,y-h/2,w,h),'#FFFEF7',paint,2.5,12)
             if a.get('kind')=='heading':
-                if a.get('icon'):self.artwork(a['icon'],x-22,y-64,44,49,paint,a.get('variant',0))
+                if a.get('icon'):self.artwork(a['icon'],x-22,y-h/2-57,44,49,paint,a.get('variant',0))
             yy=y-h/2+size
             for line in lines:
                 css='font-family="Georgia, serif" font-style="italic"' if a.get('kind')=='heading' else ''
                 self.text(x,yy,line,size,bold=a.get('kind')!='heading',css=css,background='#FFFEF7' if a.get('kind')=='pill' else self.paper);yy+=size*1.12
+            self.add('</g>')
 
     def map_art(self,x,y,w,h,mapping=None,opacity=1):
         source=json.loads((Path(__file__).resolve().parent.parent/'assets/maps/world-countries.json').read_text(encoding='utf-8'))

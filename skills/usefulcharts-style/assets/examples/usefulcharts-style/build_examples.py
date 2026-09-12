@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["shapely>=2,<3"]
+# dependencies = ["shapely>=2,<3", "osqp>=1,<2", "numpy>=2,<3", "scipy>=1.14,<2"]
 # ///
 """Regenerate the three original synthetic poster acceptance fixtures."""
 

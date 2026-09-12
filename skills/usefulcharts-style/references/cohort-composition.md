@@ -17,7 +17,9 @@ Optional page controls:
 | `partner_gap` | Empty space between partners; default 24, minimum 16. |
 | `cohort_weights` | Object from row numbers to positive spacing weights before those rows. Reserve extra space for a consequential transition or family label. This is schematic spacing, not elapsed time. |
 
-For more than 30 people, set node widths suited to their names and a page large enough for the busiest generation. A dense 1800 × 2700 poster can carry many generations, provided measured text and connector gutters fit. If a cohort exceeds the available width, widen the canvas or arrange that region explicitly. Never remove people to pass the check. Explicit dimensions override compact defaults and can recreate excessive blank space.
+For 31–100 people, use [local family baselines](branch-baselines.md) with a data-first brief. Omit dimensions, generation bounds, node widths, fonts and repetitive style assignments for the initial preview; the helper measures a readable page and supplies varied structural treatments. For a substantial mural, set widths suited to the names and a page large enough for the busiest generation. A dense 1800 × 2700 poster can carry many generations, provided measured text and connector gutters fit. If a cohort exceeds the available width, widen the canvas or arrange that region explicitly. Never remove people to pass the check. Explicit dimensions override measured defaults and can recreate excessive blank space.
+
+Use [local family baselines](branch-baselines.md) when repeated rows make a dense family look mechanical. The bundled helper resolves dates, full label envelopes and locally anchored family pills into an authored source. It preserves identities and relationships and never turns a schematic genealogy into a numeric time scale.
 
 Use the `resolved_layout.nodes` coordinates in the render report to inspect or start an authored composition. To refine those positions manually, copy them into the source and change `layout` to `authored`; the ordinary `x`/`y` path then uses them directly. Preserve all identity and relationship fields.
 

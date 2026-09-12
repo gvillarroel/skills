@@ -12,7 +12,8 @@ Input: `design: editorial`, `mode: genealogy`; nodes with stable IDs and categor
 2. Put the next generation below. Center a lone child or a partner pair on its actual origin; vary supporting branches and prominence according to the data.
 3. Give each branch a stable category; derive connector color from the child's category unless the data explicitly specifies another category.
 4. Use `uncertain` or `adopted` only when supported by the supplied data. Use `succession` separately from parentage. Do not invent a missing partner or use a partnership line to imply biological parenthood.
-5. Render, audit, and zoom into every partnership junction. Check the child source is the union midpoint, not the closer partner's box.
+5. For a dense tree with mechanical rows, follow [local family baselines](branch-baselines.md). Use source dates as placement preferences, separate nameplates from dates, reserve complete parental departure gutters, and keep family captions beside the people they identify.
+6. Render, audit, and zoom into every partnership junction. Check the child source is the union midpoint, not the closer partner's box.
 
 Validation: run `render_chart.py` and `audit_chart.py`; inspect every edge touching two categories. Pitfalls: repeated names without unique IDs; multiple marriages overlapping on one row; descendants connected to a sibling bar as if it were a spouse; crossing lines mistaken for junctions. Use aliases with an explicit same-person note for a deliberately repeated person; never silently duplicate identity.
 

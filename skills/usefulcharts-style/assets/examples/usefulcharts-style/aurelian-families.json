@@ -3,8 +3,8 @@
   "title": "DYNASTIES OF THE AURELIAN COAST",
   "mode": "genealogy",
   "design": "editorial",
-  "width": 1800,
-  "height": 2700,
+  "width": 1800.0,
+  "height": 2700.0,
   "font_size": 10.6,
   "imprint": [
     "ORIGINAL STUDY",
@@ -62,11 +62,15 @@
       "realm": "the Alder March",
       "role": "landmark ruler",
       "row": 0,
-      "width": 133,
+      "width": 115.11185,
       "style": "hero",
       "size": 13.5,
       "icon": "museum-862",
-      "icon_width": 36
+      "icon_width": 36,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 876.197,
+      "y": 195.0
     },
     {
       "id": "consort-0-0",
@@ -79,7 +83,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 982.253,
+      "y": 195.0
     },
     {
       "id": "person-1-0",
@@ -93,9 +99,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 1,
-      "width": 80,
+      "width": 66.05000000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 788.094,
+      "y": 259.337
     },
     {
       "id": "consort-1-0",
@@ -108,7 +118,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 869.619,
+      "y": 259.337
     },
     {
       "id": "person-1-1",
@@ -122,11 +134,15 @@
       "realm": "Bayeux",
       "role": "house founder",
       "row": 1,
-      "width": 107,
+      "width": 86.69225,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-15708",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 965.842,
+      "y": 280.179
     },
     {
       "id": "consort-1-1",
@@ -139,7 +155,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1057.688,
+      "y": 280.179
     },
     {
       "id": "person-2-0",
@@ -153,9 +171,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 2,
-      "width": 80,
+      "width": 66.05000000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 608.029,
+      "y": 313.636
     },
     {
       "id": "consort-2-0",
@@ -168,7 +190,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 689.554,
+      "y": 313.636
     },
     {
       "id": "person-2-1",
@@ -182,11 +206,15 @@
       "realm": "the Corven Coast",
       "role": "house founder",
       "row": 2,
-      "width": 107,
+      "width": 96.82903999999999,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-24684",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 784.468,
+      "y": 334.478
     },
     {
       "id": "consort-2-1",
@@ -199,7 +227,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 881.383,
+      "y": 334.478
     },
     {
       "id": "person-2-2",
@@ -213,9 +243,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 2,
-      "width": 80,
+      "width": 66.05000000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 971.367,
+      "y": 343.016
     },
     {
       "id": "consort-2-2",
@@ -228,7 +262,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1052.892,
+      "y": 343.016
     },
     {
       "id": "person-2-3",
@@ -242,11 +278,15 @@
       "realm": "Daleshire",
       "role": "house founder",
       "row": 2,
-      "width": 107,
+      "width": 100.37081,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-864",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1149.577,
+      "y": 351.554
     },
     {
       "id": "consort-2-3",
@@ -259,7 +299,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1248.863,
+      "y": 351.554
     },
     {
       "id": "person-3-0",
@@ -273,9 +315,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 3,
-      "width": 80,
+      "width": 66.05000000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 442.598,
+      "y": 367.935
     },
     {
       "id": "consort-3-0",
@@ -288,7 +334,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 524.123,
+      "y": 367.935
     },
     {
       "id": "person-3-1",
@@ -302,9 +350,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 3,
-      "width": 80,
+      "width": 66.05000000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 619.115,
+      "y": 397.315
     },
     {
       "id": "consort-3-1",
@@ -317,7 +369,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 700.64,
+      "y": 397.315
     },
     {
       "id": "person-3-2",
@@ -331,11 +385,15 @@
       "realm": "the Everen Isles",
       "role": "house founder",
       "row": 3,
-      "width": 107,
+      "width": 93.53153,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-105945",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 793.906,
+      "y": 418.157
     },
     {
       "id": "consort-3-2",
@@ -348,7 +406,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 889.172,
+      "y": 418.157
     },
     {
       "id": "person-3-3",
@@ -362,9 +422,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 3,
-      "width": 80,
+      "width": 70.66832000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 971.006,
+      "y": 397.315
     },
     {
       "id": "consort-3-3",
@@ -377,7 +441,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1054.84,
+      "y": 397.315
     },
     {
       "id": "person-3-4",
@@ -391,11 +457,15 @@
       "realm": "Falken",
       "role": "house founder",
       "row": 3,
-      "width": 107,
+      "width": 93.53153,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-95998",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1148.106,
+      "y": 435.233
     },
     {
       "id": "consort-3-4",
@@ -408,7 +478,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1243.371,
+      "y": 435.233
     },
     {
       "id": "person-3-5",
@@ -422,9 +494,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 3,
-      "width": 80,
+      "width": 66.05000000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1322.896,
+      "y": 414.391
     },
     {
       "id": "consort-3-5",
@@ -437,7 +513,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1404.421,
+      "y": 414.391
     },
     {
       "id": "person-4-0",
@@ -453,7 +531,9 @@
       "row": 4,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 320.649,
+      "y": 434.198
     },
     {
       "id": "consort-4-0",
@@ -466,7 +546,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 406.649,
+      "y": 434.198
     },
     {
       "id": "person-4-1",
@@ -480,9 +562,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 4,
-      "width": 80,
+      "width": 81.04937000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 497.245,
+      "y": 455.198
     },
     {
       "id": "consort-4-1",
@@ -495,7 +581,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 586.27,
+      "y": 455.198
     },
     {
       "id": "person-4-2",
@@ -509,9 +597,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 4,
-      "width": 80,
+      "width": 66.05000000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 721.293,
+      "y": 480.994
     },
     {
       "id": "consort-4-2",
@@ -524,7 +616,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 802.818,
+      "y": 480.994
     },
     {
       "id": "person-4-3",
@@ -538,11 +632,15 @@
       "realm": "Rosene",
       "role": "house founder",
       "row": 4,
-      "width": 107,
+      "width": 93.04301000000001,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-89043",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 895.839,
+      "y": 501.836
     },
     {
       "id": "consort-4-3",
@@ -555,7 +653,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 990.861,
+      "y": 501.836
     },
     {
       "id": "person-4-4",
@@ -569,9 +669,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 4,
-      "width": 80,
+      "width": 66.05000000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1070.386,
+      "y": 498.07
     },
     {
       "id": "consort-4-4",
@@ -584,7 +688,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1151.911,
+      "y": 498.07
     },
     {
       "id": "person-4-5",
@@ -598,9 +704,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 4,
-      "width": 80,
+      "width": 71.14600000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1233.984,
+      "y": 498.07
     },
     {
       "id": "consort-4-5",
@@ -613,7 +723,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1318.057,
+      "y": 498.07
     },
     {
       "id": "person-4-6",
@@ -627,9 +739,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 4,
-      "width": 80,
+      "width": 66.05000000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1397.582,
+      "y": 468.69
     },
     {
       "id": "consort-4-6",
@@ -642,7 +758,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1479.107,
+      "y": 468.69
     },
     {
       "id": "person-5-0",
@@ -656,9 +774,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 5,
-      "width": 80,
+      "width": 71.14600000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 211.439,
+      "y": 496.247
     },
     {
       "id": "consort-5-0",
@@ -671,7 +793,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 295.512,
+      "y": 496.247
     },
     {
       "id": "person-5-1",
@@ -685,9 +809,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 5,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 388.113,
+      "y": 518.747
     },
     {
       "id": "consort-5-1",
@@ -700,7 +828,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 474.734,
+      "y": 518.747
     },
     {
       "id": "person-5-2",
@@ -714,9 +844,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 5,
-      "width": 80,
+      "width": 71.14600000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 627.816,
+      "y": 535.293
     },
     {
       "id": "consort-5-2",
@@ -729,7 +863,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 711.889,
+      "y": 535.293
     },
     {
       "id": "person-5-3",
@@ -745,7 +881,9 @@
       "row": 5,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 795.889,
+      "y": 563.2
     },
     {
       "id": "consort-5-3",
@@ -758,7 +896,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 881.889,
+      "y": 563.2
     },
     {
       "id": "person-5-4",
@@ -772,9 +912,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 5,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 966.51,
+      "y": 564.673
     },
     {
       "id": "consort-5-4",
@@ -787,7 +931,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1053.731,
+      "y": 564.673
     },
     {
       "id": "person-5-5",
@@ -801,9 +947,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 5,
-      "width": 80,
+      "width": 71.14600000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1136.404,
+      "y": 552.369
     },
     {
       "id": "consort-5-5",
@@ -816,7 +966,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1220.477,
+      "y": 552.369
     },
     {
       "id": "person-5-6",
@@ -830,9 +982,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 5,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1305.098,
+      "y": 552.369
     },
     {
       "id": "consort-5-6",
@@ -845,7 +1001,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1391.719,
+      "y": 552.369
     },
     {
       "id": "person-5-7",
@@ -859,9 +1017,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 5,
-      "width": 80,
+      "width": 71.14600000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1473.792,
+      "y": 522.989
     },
     {
       "id": "consort-5-7",
@@ -874,7 +1036,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1557.865,
+      "y": 522.989
     },
     {
       "id": "person-6-0",
@@ -888,9 +1052,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 6,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 182.622,
+      "y": 558.316
     },
     {
       "id": "consort-6-0",
@@ -903,7 +1071,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 269.243,
+      "y": 558.316
     },
     {
       "id": "person-6-1",
@@ -917,9 +1087,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 6,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 359.375,
+      "y": 577.043
     },
     {
       "id": "consort-6-1",
@@ -932,7 +1106,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 445.996,
+      "y": 577.043
     },
     {
       "id": "person-6-2",
@@ -946,9 +1122,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 6,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 614.756,
+      "y": 589.592
     },
     {
       "id": "consort-6-2",
@@ -961,7 +1141,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 701.377,
+      "y": 589.592
     },
     {
       "id": "person-6-3",
@@ -975,9 +1157,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 6,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 943.261,
+      "y": 618.972
     },
     {
       "id": "consort-6-3",
@@ -990,7 +1176,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1030.482,
+      "y": 618.972
     },
     {
       "id": "person-6-4",
@@ -1004,9 +1192,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 6,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1126.854,
+      "y": 617.499
     },
     {
       "id": "consort-6-4",
@@ -1019,7 +1211,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1213.475,
+      "y": 617.499
     },
     {
       "id": "person-6-5",
@@ -1033,9 +1227,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 6,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1298.096,
+      "y": 616.883
     },
     {
       "id": "consort-6-5",
@@ -1048,7 +1246,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1384.717,
+      "y": 616.883
     },
     {
       "id": "person-6-6",
@@ -1064,7 +1264,9 @@
       "row": 6,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1551.717,
+      "y": 576.875
     },
     {
       "id": "consort-6-6",
@@ -1077,7 +1279,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1637.717,
+      "y": 576.875
     },
     {
       "id": "collateral-6-0",
@@ -1088,7 +1292,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1463.717,
+      "y": 604.877
     },
     {
       "id": "person-7-0",
@@ -1102,9 +1308,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 7,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 139.869,
+      "y": 612.615
     },
     {
       "id": "consort-7-0",
@@ -1117,7 +1327,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 226.49,
+      "y": 612.615
     },
     {
       "id": "person-7-1",
@@ -1131,9 +1343,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 7,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 311.111,
+      "y": 631.342
     },
     {
       "id": "consort-7-1",
@@ -1146,7 +1362,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 397.732,
+      "y": 631.342
     },
     {
       "id": "person-7-2",
@@ -1162,7 +1380,9 @@
       "row": 7,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 481.732,
+      "y": 645.778
     },
     {
       "id": "consort-7-2",
@@ -1175,7 +1395,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 567.732,
+      "y": 645.778
     },
     {
       "id": "person-7-3",
@@ -1189,9 +1411,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 7,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 652.353,
+      "y": 643.891
     },
     {
       "id": "consort-7-3",
@@ -1204,7 +1430,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 738.974,
+      "y": 643.891
     },
     {
       "id": "person-7-4",
@@ -1218,9 +1446,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 7,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 908.561,
+      "y": 673.271
     },
     {
       "id": "consort-7-4",
@@ -1233,7 +1465,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 995.182,
+      "y": 673.271
     },
     {
       "id": "person-7-5",
@@ -1247,9 +1481,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 7,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1257.935,
+      "y": 671.798
     },
     {
       "id": "consort-7-5",
@@ -1262,7 +1500,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1344.556,
+      "y": 671.798
     },
     {
       "id": "person-7-6",
@@ -1276,9 +1516,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 7,
-      "width": 80,
+      "width": 81.04937000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1161.289,
+      "y": 673.271
     },
     {
       "id": "consort-7-6",
@@ -1291,7 +1535,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1072.265,
+      "y": 673.271
     },
     {
       "id": "person-7-7",
@@ -1305,9 +1551,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 7,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1491.235,
+      "y": 657.384
     },
     {
       "id": "consort-7-7",
@@ -1320,7 +1570,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1577.856,
+      "y": 657.384
     },
     {
       "id": "person-8-0",
@@ -1334,9 +1586,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 8,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 666.914
     },
     {
       "id": "consort-8-0",
@@ -1349,7 +1605,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 189.742,
+      "y": 666.914
     },
     {
       "id": "person-8-1",
@@ -1363,9 +1621,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 8,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 357.363,
+      "y": 698.404
     },
     {
       "id": "consort-8-1",
@@ -1378,7 +1640,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 443.984,
+      "y": 698.404
     },
     {
       "id": "person-8-2",
@@ -1392,9 +1656,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 8,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 528.605,
+      "y": 699.663
     },
     {
       "id": "consort-8-2",
@@ -1407,7 +1675,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 615.226,
+      "y": 699.663
     },
     {
       "id": "person-8-3",
@@ -1421,9 +1691,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 8,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 699.847,
+      "y": 698.19
     },
     {
       "id": "consort-8-3",
@@ -1436,7 +1710,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 786.468,
+      "y": 698.19
     },
     {
       "id": "person-8-4",
@@ -1450,9 +1726,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 8,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 954.089,
+      "y": 727.57
     },
     {
       "id": "consort-8-4",
@@ -1465,7 +1745,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1040.71,
+      "y": 727.57
     },
     {
       "id": "person-8-5",
@@ -1481,7 +1763,9 @@
       "row": 8,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1124.71,
+      "y": 727.156
     },
     {
       "id": "consort-8-5",
@@ -1494,7 +1778,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1210.71,
+      "y": 727.156
     },
     {
       "id": "collateral-8-0",
@@ -1505,7 +1791,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 268.742,
+      "y": 683.85
     },
     {
       "id": "collateral-8-1",
@@ -1516,7 +1804,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 865.468,
+      "y": 725.779
     },
     {
       "id": "person-9-0",
@@ -1530,10 +1820,14 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 9,
-      "width": 80,
+      "width": 81.04937000000001,
       "style": "card",
-      "size": 10.6,
-      "court": "Lorn"
+      "size": 11.8,
+      "court": "Lorn",
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 123.601,
+      "y": 734.884
     },
     {
       "id": "consort-9-0",
@@ -1546,7 +1840,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 212.625,
+      "y": 734.884
     },
     {
       "id": "person-9-1",
@@ -1562,7 +1858,9 @@
       "row": 9,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 656.965,
+      "y": 752.075
     },
     {
       "id": "consort-9-1",
@@ -1575,7 +1873,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 742.965,
+      "y": 752.075
     },
     {
       "id": "person-9-2",
@@ -1589,9 +1889,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 9,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 927.388,
+      "y": 781.869
     },
     {
       "id": "consort-9-2",
@@ -1604,7 +1908,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1014.009,
+      "y": 781.869
     },
     {
       "id": "person-9-3",
@@ -1618,9 +1924,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 9,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1098.722,
+      "y": 781.042
     },
     {
       "id": "consort-9-3",
@@ -1633,7 +1943,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1185.343,
+      "y": 781.042
     },
     {
       "id": "collateral-9-0",
@@ -1644,7 +1956,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 821.965,
+      "y": 776.495
     },
     {
       "id": "collateral-9-1",
@@ -1655,7 +1969,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 291.625,
+      "y": 756.79
     },
     {
       "id": "person-10-0",
@@ -1669,9 +1985,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 10,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 110.571,
+      "y": 789.183
     },
     {
       "id": "consort-10-0",
@@ -1684,7 +2004,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 197.192,
+      "y": 789.183
     },
     {
       "id": "person-10-1",
@@ -1698,9 +2020,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 10,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 409.338,
+      "y": 805.961
     },
     {
       "id": "consort-10-1",
@@ -1713,7 +2039,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 495.959,
+      "y": 805.961
     },
     {
       "id": "person-10-2",
@@ -1727,9 +2055,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 10,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 664.822,
+      "y": 815.926
     },
     {
       "id": "consort-10-2",
@@ -1742,7 +2074,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 751.443,
+      "y": 815.926
     },
     {
       "id": "person-10-3",
@@ -1756,9 +2090,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 10,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1038.245,
+      "y": 850.116
     },
     {
       "id": "consort-10-3",
@@ -1771,7 +2109,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1124.866,
+      "y": 850.116
     },
     {
       "id": "person-10-4",
@@ -1787,7 +2127,9 @@
       "row": 10,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1208.866,
+      "y": 834.927
     },
     {
       "id": "consort-10-4",
@@ -1800,7 +2142,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1294.866,
+      "y": 834.927
     },
     {
       "id": "collateral-10-0",
@@ -1811,7 +2155,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 949.624,
+      "y": 834.376
     },
     {
       "id": "collateral-10-1",
@@ -1822,7 +2168,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 830.443,
+      "y": 827.211
     },
     {
       "id": "person-11-0",
@@ -1838,7 +2186,9 @@
       "row": 11,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 102.5,
+      "y": 843.068
     },
     {
       "id": "consort-11-0",
@@ -1851,7 +2201,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 188.5,
+      "y": 843.068
     },
     {
       "id": "person-11-1",
@@ -1865,11 +2217,15 @@
       "realm": "Bayeux",
       "role": "landmark ruler",
       "row": 11,
-      "width": 107,
+      "width": 96.09626,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-16367",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 283.048,
+      "y": 858.786
     },
     {
       "id": "consort-11-1",
@@ -1882,7 +2238,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 379.596,
+      "y": 858.786
     },
     {
       "id": "person-11-2",
@@ -1896,9 +2254,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 11,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 464.217,
+      "y": 873.649
     },
     {
       "id": "consort-11-2",
@@ -1911,7 +2273,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 550.838,
+      "y": 873.649
     },
     {
       "id": "person-11-3",
@@ -1925,9 +2289,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 11,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 718.459,
+      "y": 878.245
     },
     {
       "id": "consort-11-3",
@@ -1940,7 +2308,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 805.08,
+      "y": 878.245
     },
     {
       "id": "person-11-4",
@@ -1954,9 +2324,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 11,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1058.653,
+      "y": 904.415
     },
     {
       "id": "consort-11-4",
@@ -1969,7 +2343,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1145.274,
+      "y": 904.415
     },
     {
       "id": "person-11-5",
@@ -1983,11 +2359,15 @@
       "realm": "Falken",
       "role": "landmark ruler",
       "row": 11,
-      "width": 107,
+      "width": 83.15048,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-87760",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1233.349,
+      "y": 897.351
     },
     {
       "id": "consort-11-5",
@@ -2000,7 +2380,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1323.425,
+      "y": 897.351
     },
     {
       "id": "person-11-6",
@@ -2014,9 +2396,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 11,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1408.046,
+      "y": 906.562
     },
     {
       "id": "consort-11-6",
@@ -2029,7 +2415,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1495.267,
+      "y": 906.562
     },
     {
       "id": "collateral-11-0",
@@ -2040,7 +2428,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 629.838,
+      "y": 875.062
     },
     {
       "id": "person-12-0",
@@ -2054,9 +2444,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 12,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.571,
+      "y": 896.954
     },
     {
       "id": "consort-12-0",
@@ -2069,7 +2463,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 190.192,
+      "y": 896.954
     },
     {
       "id": "person-12-1",
@@ -2083,9 +2479,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 12,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 280.397,
+      "y": 921.623
     },
     {
       "id": "consort-12-1",
@@ -2098,7 +2498,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 367.018,
+      "y": 921.623
     },
     {
       "id": "person-12-2",
@@ -2112,9 +2514,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 12,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 457.595,
+      "y": 927.948
     },
     {
       "id": "consort-12-2",
@@ -2127,7 +2533,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 544.216,
+      "y": 927.948
     },
     {
       "id": "person-12-3",
@@ -2143,7 +2551,9 @@
       "row": 12,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 628.216,
+      "y": 936.448
     },
     {
       "id": "consort-12-3",
@@ -2156,7 +2566,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 714.216,
+      "y": 936.448
     },
     {
       "id": "person-12-4",
@@ -2170,9 +2582,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 12,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 798.837,
+      "y": 932.543
     },
     {
       "id": "consort-12-4",
@@ -2185,7 +2601,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 885.458,
+      "y": 932.543
     },
     {
       "id": "person-12-5",
@@ -2199,9 +2617,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 12,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1088.162,
+      "y": 958.714
     },
     {
       "id": "consort-12-5",
@@ -2214,7 +2636,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1174.783,
+      "y": 958.714
     },
     {
       "id": "person-12-6",
@@ -2228,9 +2652,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 12,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1261.476,
+      "y": 960.188
     },
     {
       "id": "consort-12-6",
@@ -2243,7 +2671,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1348.097,
+      "y": 960.188
     },
     {
       "id": "person-12-7",
@@ -2257,9 +2687,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 12,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1435.151,
+      "y": 965.491
     },
     {
       "id": "consort-12-7",
@@ -2272,7 +2706,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1521.772,
+      "y": 965.491
     },
     {
       "id": "person-13-0",
@@ -2286,9 +2722,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 13,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 951.253
     },
     {
       "id": "consort-13-0",
@@ -2301,7 +2741,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 189.742,
+      "y": 951.253
     },
     {
       "id": "person-13-1",
@@ -2315,9 +2757,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 13,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 351.363,
+      "y": 975.922
     },
     {
       "id": "consort-13-1",
@@ -2330,7 +2776,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 264.742,
+      "y": 975.922
     },
     {
       "id": "person-13-2",
@@ -2344,9 +2792,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 13,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 465.078,
+      "y": 982.247
     },
     {
       "id": "consort-13-2",
@@ -2359,7 +2811,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 551.699,
+      "y": 982.247
     },
     {
       "id": "person-13-3",
@@ -2373,9 +2827,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 13,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 636.32,
+      "y": 993.333
     },
     {
       "id": "consort-13-3",
@@ -2388,7 +2846,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 722.941,
+      "y": 993.333
     },
     {
       "id": "person-13-4",
@@ -2402,9 +2862,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 13,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 807.562,
+      "y": 997.833
     },
     {
       "id": "consort-13-4",
@@ -2417,7 +2881,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 894.183,
+      "y": 997.833
     },
     {
       "id": "person-13-5",
@@ -2431,9 +2897,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 13,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 978.804,
+      "y": 1011.54
     },
     {
       "id": "consort-13-5",
@@ -2446,7 +2916,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1065.425,
+      "y": 1011.54
     },
     {
       "id": "person-13-6",
@@ -2462,7 +2934,9 @@
       "row": 13,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1149.425,
+      "y": 1013.013
     },
     {
       "id": "consort-13-6",
@@ -2475,7 +2949,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1235.425,
+      "y": 1013.013
     },
     {
       "id": "person-13-7",
@@ -2489,9 +2965,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 13,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1397.046,
+      "y": 1019.79
     },
     {
       "id": "consort-13-7",
@@ -2504,7 +2984,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1310.425,
+      "y": 1019.79
     },
     {
       "id": "person-13-8",
@@ -2518,9 +3000,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 13,
-      "width": 80,
+      "width": 80.07233000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1493.203,
+      "y": 1023.238
     },
     {
       "id": "consort-13-8",
@@ -2533,7 +3019,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1581.739,
+      "y": 1023.238
     },
     {
       "id": "person-14-0",
@@ -2547,9 +3035,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 14,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 1009.268
     },
     {
       "id": "consort-14-0",
@@ -2562,7 +3054,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 189.742,
+      "y": 1009.268
     },
     {
       "id": "person-14-1",
@@ -2576,9 +3070,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 14,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 295.278,
+      "y": 1030.221
     },
     {
       "id": "consort-14-1",
@@ -2591,7 +3089,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 381.899,
+      "y": 1030.221
     },
     {
       "id": "person-14-2",
@@ -2607,7 +3107,9 @@
       "row": 14,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 619.569,
+      "y": 1052.469
     },
     {
       "id": "consort-14-2",
@@ -2620,7 +3122,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 705.569,
+      "y": 1052.469
     },
     {
       "id": "person-14-3",
@@ -2634,9 +3138,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 14,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 790.811,
+      "y": 1062.969
     },
     {
       "id": "consort-14-3",
@@ -2649,7 +3157,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 877.432,
+      "y": 1062.969
     },
     {
       "id": "person-14-4",
@@ -2663,9 +3173,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 14,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 962.053,
+      "y": 1065.839
     },
     {
       "id": "consort-14-4",
@@ -2678,7 +3192,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1048.674,
+      "y": 1065.839
     },
     {
       "id": "person-14-5",
@@ -2692,9 +3208,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 14,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1216.295,
+      "y": 1077.537
     },
     {
       "id": "consort-14-5",
@@ -2707,7 +3227,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1302.916,
+      "y": 1077.537
     },
     {
       "id": "person-14-6",
@@ -2721,9 +3243,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 14,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1387.537,
+      "y": 1076.064
     },
     {
       "id": "consort-14-6",
@@ -2736,7 +3262,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1474.158,
+      "y": 1076.064
     },
     {
       "id": "collateral-14-0",
@@ -2747,7 +3275,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1127.674,
+      "y": 1065.107
     },
     {
       "id": "person-15-0",
@@ -2761,9 +3291,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 15,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 121.106,
+      "y": 1063.567
     },
     {
       "id": "consort-15-0",
@@ -2776,7 +3310,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 207.727,
+      "y": 1063.567
     },
     {
       "id": "person-15-1",
@@ -2790,9 +3326,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 15,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 308.754,
+      "y": 1084.52
     },
     {
       "id": "consort-15-1",
@@ -2805,7 +3345,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 395.375,
+      "y": 1084.52
     },
     {
       "id": "person-15-2",
@@ -2819,9 +3361,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 15,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 620.752,
+      "y": 1111.605
     },
     {
       "id": "consort-15-2",
@@ -2834,7 +3380,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 707.373,
+      "y": 1111.605
     },
     {
       "id": "person-15-3",
@@ -2848,9 +3396,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 15,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 791.994,
+      "y": 1121.247
     },
     {
       "id": "consort-15-3",
@@ -2863,7 +3415,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 878.615,
+      "y": 1121.247
     },
     {
       "id": "person-15-4",
@@ -2877,9 +3431,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 15,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1364.659,
+      "y": 1130.363
     },
     {
       "id": "consort-15-4",
@@ -2892,7 +3450,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1451.28,
+      "y": 1130.363
     },
     {
       "id": "collateral-15-0",
@@ -2903,7 +3463,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 474.375,
+      "y": 1090.542
     },
     {
       "id": "collateral-15-1",
@@ -2914,7 +3476,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 984.087,
+      "y": 1118.346
     },
     {
       "id": "person-16-0",
@@ -2928,9 +3492,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 16,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 108.417,
+      "y": 1117.866
     },
     {
       "id": "consort-16-0",
@@ -2943,7 +3511,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 195.038,
+      "y": 1117.866
     },
     {
       "id": "person-16-1",
@@ -2959,7 +3529,9 @@
       "row": 16,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 356.038,
+      "y": 1138.406
     },
     {
       "id": "consort-16-1",
@@ -2972,7 +3544,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 270.038,
+      "y": 1138.406
     },
     {
       "id": "person-16-2",
@@ -2986,10 +3560,14 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 16,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6,
-      "court": "Whitehaven"
+      "size": 11.8,
+      "court": "Whitehaven",
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 687.792,
+      "y": 1189.217
     },
     {
       "id": "consort-16-2",
@@ -3002,7 +3580,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 774.413,
+      "y": 1189.217
     },
     {
       "id": "person-16-3",
@@ -3016,9 +3596,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 16,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1330.594,
+      "y": 1184.662
     },
     {
       "id": "consort-16-3",
@@ -3031,7 +3615,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1417.215,
+      "y": 1184.662
     },
     {
       "id": "collateral-16-0",
@@ -3042,7 +3628,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 444.038,
+      "y": 1141.257
     },
     {
       "id": "collateral-16-1",
@@ -3053,7 +3641,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1496.215,
+      "y": 1182.87
     },
     {
       "id": "person-17-0",
@@ -3067,9 +3657,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 17,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 1172.165
     },
     {
       "id": "consort-17-0",
@@ -3082,7 +3676,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 190.342,
+      "y": 1172.165
     },
     {
       "id": "person-17-1",
@@ -3096,9 +3692,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 17,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 358.563,
+      "y": 1192.292
     },
     {
       "id": "consort-17-1",
@@ -3111,7 +3711,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 445.184,
+      "y": 1192.292
     },
     {
       "id": "person-17-2",
@@ -3125,9 +3727,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 17,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 658.502,
+      "y": 1243.516
     },
     {
       "id": "consort-17-2",
@@ -3140,7 +3746,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 745.123,
+      "y": 1243.516
     },
     {
       "id": "person-17-3",
@@ -3154,9 +3762,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 17,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 829.744,
+      "y": 1243.516
     },
     {
       "id": "consort-17-3",
@@ -3169,7 +3781,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 916.365,
+      "y": 1243.516
     },
     {
       "id": "person-17-4",
@@ -3185,7 +3799,9 @@
       "row": 17,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1293.809,
+      "y": 1238.547
     },
     {
       "id": "consort-17-4",
@@ -3198,7 +3814,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1379.809,
+      "y": 1238.547
     },
     {
       "id": "person-17-5",
@@ -3212,9 +3830,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 17,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1464.43,
+      "y": 1238.961
     },
     {
       "id": "consort-17-5",
@@ -3227,7 +3849,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1551.051,
+      "y": 1238.961
     },
     {
       "id": "collateral-17-0",
@@ -3238,7 +3862,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 524.184,
+      "y": 1194.083
     },
     {
       "id": "collateral-17-1",
@@ -3249,7 +3875,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 269.942,
+      "y": 1194.083
     },
     {
       "id": "person-18-0",
@@ -3265,7 +3893,9 @@
       "row": 18,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 102.5,
+      "y": 1226.05
     },
     {
       "id": "consort-18-0",
@@ -3278,7 +3908,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 188.5,
+      "y": 1226.05
     },
     {
       "id": "person-18-1",
@@ -3292,11 +3924,15 @@
       "realm": "Bayeux",
       "role": "landmark ruler",
       "row": 18,
-      "width": 107,
+      "width": 93.53153,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-15708",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 281.766,
+      "y": 1255.129
     },
     {
       "id": "consort-18-1",
@@ -3309,7 +3945,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 377.032,
+      "y": 1255.129
     },
     {
       "id": "person-18-2",
@@ -3323,9 +3961,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 18,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 461.653,
+      "y": 1246.591
     },
     {
       "id": "consort-18-2",
@@ -3338,7 +3980,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 548.274,
+      "y": 1246.591
     },
     {
       "id": "person-18-3",
@@ -3352,9 +3996,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 18,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 647.527,
+      "y": 1297.815
     },
     {
       "id": "consort-18-3",
@@ -3367,7 +4015,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 734.148,
+      "y": 1297.815
     },
     {
       "id": "person-18-4",
@@ -3381,9 +4031,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 18,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 818.769,
+      "y": 1297.815
     },
     {
       "id": "consort-18-4",
@@ -3396,7 +4050,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 905.39,
+      "y": 1297.815
     },
     {
       "id": "person-18-5",
@@ -3410,9 +4066,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 18,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 990.011,
+      "y": 1299.288
     },
     {
       "id": "consort-18-5",
@@ -3425,7 +4085,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1076.632,
+      "y": 1299.288
     },
     {
       "id": "person-18-6",
@@ -3439,11 +4101,15 @@
       "realm": "Falken",
       "role": "landmark ruler",
       "row": 18,
-      "width": 107,
+      "width": 100.37081,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-24684",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1295.498,
+      "y": 1300.971
     },
     {
       "id": "consort-18-6",
@@ -3456,7 +4122,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1394.183,
+      "y": 1300.971
     },
     {
       "id": "person-18-7",
@@ -3472,7 +4140,9 @@
       "row": 18,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1478.183,
+      "y": 1301.012
     },
     {
       "id": "consort-18-7",
@@ -3485,7 +4155,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1564.783,
+      "y": 1301.012
     },
     {
       "id": "person-19-0",
@@ -3499,9 +4171,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 19,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 1279.936
     },
     {
       "id": "consort-19-0",
@@ -3514,7 +4190,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 189.742,
+      "y": 1279.936
     },
     {
       "id": "person-19-1",
@@ -3528,9 +4206,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 19,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 351.363,
+      "y": 1317.966
     },
     {
       "id": "consort-19-1",
@@ -3543,7 +4225,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 264.742,
+      "y": 1317.966
     },
     {
       "id": "person-19-2",
@@ -3557,9 +4241,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 19,
-      "width": 80,
+      "width": 80.07233000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 459.756,
+      "y": 1300.889
     },
     {
       "id": "consort-19-2",
@@ -3572,7 +4260,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 548.292,
+      "y": 1300.889
     },
     {
       "id": "person-19-3",
@@ -3588,7 +4278,9 @@
       "row": 19,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 640.295,
+      "y": 1351.7
     },
     {
       "id": "consort-19-3",
@@ -3601,7 +4293,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 726.295,
+      "y": 1351.7
     },
     {
       "id": "person-19-4",
@@ -3615,9 +4309,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 19,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 837.851,
+      "y": 1352.114
     },
     {
       "id": "consort-19-4",
@@ -3630,7 +4328,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 924.472,
+      "y": 1352.114
     },
     {
       "id": "person-19-5",
@@ -3644,9 +4344,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 19,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1013.625,
+      "y": 1355.803
     },
     {
       "id": "consort-19-5",
@@ -3659,7 +4363,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1100.246,
+      "y": 1355.803
     },
     {
       "id": "person-19-6",
@@ -3673,9 +4379,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 19,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1184.867,
+      "y": 1363.214
     },
     {
       "id": "consort-19-6",
@@ -3688,7 +4398,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1271.488,
+      "y": 1363.214
     },
     {
       "id": "person-19-7",
@@ -3702,9 +4414,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 19,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1433.109,
+      "y": 1363.808
     },
     {
       "id": "consort-19-7",
@@ -3717,7 +4433,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1346.488,
+      "y": 1363.808
     },
     {
       "id": "person-19-8",
@@ -3731,9 +4449,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 19,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1527.351,
+      "y": 1358.648
     },
     {
       "id": "consort-19-8",
@@ -3746,7 +4468,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1613.972,
+      "y": 1358.648
     },
     {
       "id": "person-20-0",
@@ -3760,9 +4484,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 20,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 127.167,
+      "y": 1369.318
     },
     {
       "id": "consort-20-0",
@@ -3775,7 +4503,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 213.788,
+      "y": 1369.318
     },
     {
       "id": "person-20-1",
@@ -3789,9 +4519,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 20,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 303.449,
+      "y": 1372.264
     },
     {
       "id": "consort-20-1",
@@ -3804,7 +4538,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 390.67,
+      "y": 1372.264
     },
     {
       "id": "person-20-2",
@@ -3818,9 +4554,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 20,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 646.292,
+      "y": 1405.586
     },
     {
       "id": "consort-20-2",
@@ -3833,7 +4573,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 732.913,
+      "y": 1405.586
     },
     {
       "id": "person-20-3",
@@ -3847,9 +4589,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 20,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 879.75,
+      "y": 1408.629
     },
     {
       "id": "consort-20-3",
@@ -3862,7 +4608,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 966.371,
+      "y": 1408.629
     },
     {
       "id": "person-20-4",
@@ -3876,9 +4624,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 20,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1060.066,
+      "y": 1416.04
     },
     {
       "id": "consort-20-4",
@@ -3891,7 +4643,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1146.687,
+      "y": 1416.04
     },
     {
       "id": "person-20-5",
@@ -3905,9 +4659,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 20,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1360.247,
+      "y": 1423.784
     },
     {
       "id": "consort-20-5",
@@ -3920,7 +4678,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1446.868,
+      "y": 1423.784
     },
     {
       "id": "person-20-6",
@@ -3936,7 +4696,9 @@
       "row": 20,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1531.241,
+      "y": 1417.784
     },
     {
       "id": "consort-20-6",
@@ -3949,7 +4711,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1617.241,
+      "y": 1417.784
     },
     {
       "id": "collateral-20-0",
@@ -3960,7 +4724,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 504.873,
+      "y": 1375.529
     },
     {
       "id": "person-21-0",
@@ -3974,9 +4740,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 21,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 1423.617
     },
     {
       "id": "consort-21-0",
@@ -3989,7 +4759,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 190.342,
+      "y": 1423.617
     },
     {
       "id": "person-21-1",
@@ -4003,9 +4775,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 21,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 358.563,
+      "y": 1426.563
     },
     {
       "id": "consort-21-1",
@@ -4018,7 +4794,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 445.184,
+      "y": 1426.563
     },
     {
       "id": "person-21-2",
@@ -4034,7 +4812,9 @@
       "row": 21,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 629.696,
+      "y": 1459.471
     },
     {
       "id": "consort-21-2",
@@ -4047,7 +4827,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 715.696,
+      "y": 1459.471
     },
     {
       "id": "person-21-3",
@@ -4061,9 +4843,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 21,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 873.158,
+      "y": 1468.67
     },
     {
       "id": "consort-21-3",
@@ -4076,7 +4862,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 959.779,
+      "y": 1468.67
     },
     {
       "id": "person-21-4",
@@ -4090,9 +4878,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 21,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1127.4,
+      "y": 1470.339
     },
     {
       "id": "consort-21-4",
@@ -4105,7 +4897,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1214.021,
+      "y": 1470.339
     },
     {
       "id": "person-21-5",
@@ -4119,9 +4913,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 21,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1341.346,
+      "y": 1483.522
     },
     {
       "id": "consort-21-5",
@@ -4134,7 +4932,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1427.967,
+      "y": 1483.522
     },
     {
       "id": "collateral-21-0",
@@ -4145,7 +4945,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 269.942,
+      "y": 1429.828
     },
     {
       "id": "collateral-21-1",
@@ -4156,7 +4958,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1038.779,
+      "y": 1468.547
     },
     {
       "id": "person-22-0",
@@ -4170,9 +4974,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 22,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 1477.916
     },
     {
       "id": "consort-22-0",
@@ -4185,7 +4993,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 189.742,
+      "y": 1477.916
     },
     {
       "id": "person-22-1",
@@ -4199,9 +5009,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 22,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 351.363,
+      "y": 1480.862
     },
     {
       "id": "consort-22-1",
@@ -4214,7 +5028,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 264.742,
+      "y": 1480.862
     },
     {
       "id": "person-22-2",
@@ -4228,9 +5044,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 22,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 631.394,
+      "y": 1513.357
     },
     {
       "id": "consort-22-2",
@@ -4243,7 +5063,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 718.015,
+      "y": 1513.357
     },
     {
       "id": "person-22-3",
@@ -4257,9 +5079,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 22,
-      "width": 80,
+      "width": 81.04937000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 805.04,
+      "y": 1535.995
     },
     {
       "id": "consort-22-3",
@@ -4272,7 +5098,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 894.064,
+      "y": 1535.995
     },
     {
       "id": "person-22-4",
@@ -4286,9 +5114,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 22,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 978.685,
+      "y": 1523.164
     },
     {
       "id": "consort-22-4",
@@ -4301,7 +5133,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1065.306,
+      "y": 1523.164
     },
     {
       "id": "person-22-5",
@@ -4317,7 +5151,9 @@
       "row": 22,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1149.306,
+      "y": 1524.224
     },
     {
       "id": "consort-22-5",
@@ -4330,7 +5166,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1235.306,
+      "y": 1524.224
     },
     {
       "id": "person-22-6",
@@ -4344,9 +5182,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 22,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1396.927,
+      "y": 1537.821
     },
     {
       "id": "consort-22-6",
@@ -4359,7 +5201,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1310.306,
+      "y": 1537.821
     },
     {
       "id": "person-22-7",
@@ -4373,9 +5217,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 22,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1491.169,
+      "y": 1537.821
     },
     {
       "id": "consort-22-7",
@@ -4388,7 +5236,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1577.79,
+      "y": 1537.821
     },
     {
       "id": "person-23-0",
@@ -4402,9 +5252,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 23,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 244.822,
+      "y": 1535.161
     },
     {
       "id": "consort-23-0",
@@ -4417,7 +5271,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 331.443,
+      "y": 1535.161
     },
     {
       "id": "person-23-1",
@@ -4433,7 +5289,9 @@
       "row": 23,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 580.195,
+      "y": 1567.242
     },
     {
       "id": "consort-23-1",
@@ -4446,7 +5304,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 666.195,
+      "y": 1567.242
     },
     {
       "id": "person-23-2",
@@ -4460,9 +5320,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 23,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 833.816,
+      "y": 1603.619
     },
     {
       "id": "consort-23-2",
@@ -4475,7 +5339,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 921.037,
+      "y": 1603.619
     },
     {
       "id": "person-23-3",
@@ -4489,9 +5355,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 23,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1124.054,
+      "y": 1578.11
     },
     {
       "id": "consort-23-3",
@@ -4504,7 +5374,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1210.675,
+      "y": 1578.11
     },
     {
       "id": "person-23-4",
@@ -4518,9 +5390,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 23,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1295.296,
+      "y": 1592.12
     },
     {
       "id": "consort-23-4",
@@ -4533,7 +5409,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1381.917,
+      "y": 1592.12
     },
     {
       "id": "person-23-5",
@@ -4547,9 +5425,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 23,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1466.538,
+      "y": 1606.441
     },
     {
       "id": "consort-23-5",
@@ -4562,7 +5444,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1553.159,
+      "y": 1606.441
     },
     {
       "id": "collateral-23-0",
@@ -4573,7 +5457,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1632.159,
+      "y": 1590.329
     },
     {
       "id": "collateral-23-1",
@@ -4584,7 +5470,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 745.195,
+      "y": 1588.502
     },
     {
       "id": "person-24-0",
@@ -4598,9 +5486,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 24,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 212.21,
+      "y": 1589.46
     },
     {
       "id": "consort-24-0",
@@ -4613,7 +5505,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 298.831,
+      "y": 1589.46
     },
     {
       "id": "person-24-1",
@@ -4627,9 +5521,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 24,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 548.576,
+      "y": 1640.077
     },
     {
       "id": "consort-24-1",
@@ -4642,7 +5540,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 635.797,
+      "y": 1640.077
     },
     {
       "id": "person-24-2",
@@ -4656,9 +5556,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 24,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 801.403,
+      "y": 1657.918
     },
     {
       "id": "consort-24-2",
@@ -4671,7 +5575,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 888.024,
+      "y": 1657.918
     },
     {
       "id": "person-24-3",
@@ -4685,10 +5591,14 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 24,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6,
-      "court": "Westmere"
+      "size": 11.8,
+      "court": "Westmere",
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1093.598,
+      "y": 1646.079
     },
     {
       "id": "consort-24-3",
@@ -4701,7 +5611,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1180.219,
+      "y": 1646.079
     },
     {
       "id": "collateral-24-0",
@@ -4712,7 +5624,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 377.831,
+      "y": 1609.263
     },
     {
       "id": "collateral-24-1",
@@ -4723,7 +5637,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1259.219,
+      "y": 1644.628
     },
     {
       "id": "person-25-0",
@@ -4739,7 +5655,9 @@
       "row": 25,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 178.876,
+      "y": 1643.346
     },
     {
       "id": "consort-25-0",
@@ -4752,7 +5670,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 264.876,
+      "y": 1643.346
     },
     {
       "id": "person-25-1",
@@ -4766,9 +5686,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 25,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 641.892,
+      "y": 1712.217
     },
     {
       "id": "consort-25-1",
@@ -4781,7 +5705,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 728.513,
+      "y": 1712.217
     },
     {
       "id": "person-25-2",
@@ -4795,9 +5721,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 25,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 813.134,
+      "y": 1712.217
     },
     {
       "id": "consort-25-2",
@@ -4810,7 +5740,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 899.755,
+      "y": 1712.217
     },
     {
       "id": "person-25-3",
@@ -4824,9 +5756,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 25,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1061.376,
+      "y": 1712.217
     },
     {
       "id": "consort-25-3",
@@ -4839,7 +5775,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 974.755,
+      "y": 1712.217
     },
     {
       "id": "person-25-4",
@@ -4853,9 +5791,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 25,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1155.618,
+      "y": 1700.378
     },
     {
       "id": "consort-25-4",
@@ -4868,7 +5810,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1242.239,
+      "y": 1700.378
     },
     {
       "id": "collateral-25-0",
@@ -4879,7 +5823,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 553.271,
+      "y": 1702.963
     },
     {
       "id": "collateral-25-1",
@@ -4890,7 +5836,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 343.876,
+      "y": 1659.979
     },
     {
       "id": "person-26-0",
@@ -4904,9 +5852,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 26,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 1697.232
     },
     {
       "id": "consort-26-0",
@@ -4919,7 +5871,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 189.742,
+      "y": 1697.232
     },
     {
       "id": "person-26-1",
@@ -4933,11 +5887,15 @@
       "realm": "the Corven Coast",
       "role": "landmark ruler",
       "row": 26,
-      "width": 107,
+      "width": 96.82903999999999,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-864",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 284.657,
+      "y": 1721.025
     },
     {
       "id": "consort-26-1",
@@ -4950,7 +5908,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 381.571,
+      "y": 1721.025
     },
     {
       "id": "person-26-2",
@@ -4964,9 +5924,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 26,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 542.534,
+      "y": 1766.516
     },
     {
       "id": "consort-26-2",
@@ -4979,7 +5943,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 629.155,
+      "y": 1766.516
     },
     {
       "id": "person-26-3",
@@ -4995,7 +5961,9 @@
       "row": 26,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 713.155,
+      "y": 1767.989
     },
     {
       "id": "consort-26-3",
@@ -5008,7 +5976,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 799.755,
+      "y": 1767.989
     },
     {
       "id": "person-26-4",
@@ -5022,9 +5992,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 26,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 884.976,
+      "y": 1766.516
     },
     {
       "id": "consort-26-4",
@@ -5037,7 +6011,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 971.597,
+      "y": 1766.516
     },
     {
       "id": "person-26-5",
@@ -5051,9 +6027,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 26,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1056.218,
+      "y": 1766.516
     },
     {
       "id": "consort-26-5",
@@ -5066,7 +6046,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1142.839,
+      "y": 1766.516
     },
     {
       "id": "person-26-6",
@@ -5080,11 +6062,15 @@
       "realm": "Falken",
       "role": "landmark ruler",
       "row": 26,
-      "width": 107,
+      "width": 93.53153,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-111317",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1236.105,
+      "y": 1763.215
     },
     {
       "id": "consort-26-6",
@@ -5097,7 +6083,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1331.371,
+      "y": 1763.215
     },
     {
       "id": "person-26-7",
@@ -5111,9 +6099,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 26,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1415.992,
+      "y": 1763.599
     },
     {
       "id": "consort-26-7",
@@ -5126,7 +6118,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1502.613,
+      "y": 1763.599
     },
     {
       "id": "person-27-0",
@@ -5140,9 +6134,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 27,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 1751.531
     },
     {
       "id": "consort-27-0",
@@ -5155,7 +6153,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 189.742,
+      "y": 1751.531
     },
     {
       "id": "person-27-1",
@@ -5169,9 +6169,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 27,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 280.539,
+      "y": 1783.862
     },
     {
       "id": "consort-27-1",
@@ -5184,7 +6188,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 367.16,
+      "y": 1783.862
     },
     {
       "id": "person-27-2",
@@ -5198,9 +6204,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 27,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 515.96,
+      "y": 1822.735
     },
     {
       "id": "consort-27-2",
@@ -5213,7 +6223,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 602.581,
+      "y": 1822.735
     },
     {
       "id": "person-27-3",
@@ -5227,9 +6239,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 27,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 687.202,
+      "y": 1835.656
     },
     {
       "id": "consort-27-3",
@@ -5242,7 +6258,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 773.823,
+      "y": 1835.656
     },
     {
       "id": "person-27-4",
@@ -5256,9 +6274,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 27,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 858.444,
+      "y": 1820.815
     },
     {
       "id": "consort-27-4",
@@ -5271,7 +6293,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 945.065,
+      "y": 1820.815
     },
     {
       "id": "person-27-5",
@@ -5285,9 +6309,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 27,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1029.686,
+      "y": 1828.769
     },
     {
       "id": "consort-27-5",
@@ -5300,7 +6328,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1116.307,
+      "y": 1828.769
     },
     {
       "id": "person-27-6",
@@ -5316,7 +6346,9 @@
       "row": 27,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1205.842,
+      "y": 1825.639
     },
     {
       "id": "consort-27-6",
@@ -5329,7 +6361,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1291.842,
+      "y": 1825.639
     },
     {
       "id": "person-27-7",
@@ -5343,9 +6377,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 27,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1382.022,
+      "y": 1821.235
     },
     {
       "id": "consort-27-7",
@@ -5358,7 +6396,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1468.643,
+      "y": 1821.235
     },
     {
       "id": "person-27-8",
@@ -5372,9 +6412,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 27,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1553.264,
+      "y": 1839.235
     },
     {
       "id": "consort-27-8",
@@ -5387,7 +6431,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1639.885,
+      "y": 1839.235
     },
     {
       "id": "person-28-0",
@@ -5401,9 +6447,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 28,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 1805.83
     },
     {
       "id": "consort-28-0",
@@ -5416,7 +6466,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 189.742,
+      "y": 1805.83
     },
     {
       "id": "person-28-1",
@@ -5430,9 +6482,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 28,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 351.363,
+      "y": 1838.161
     },
     {
       "id": "consort-28-1",
@@ -5445,7 +6501,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 264.742,
+      "y": 1838.161
     },
     {
       "id": "person-28-2",
@@ -5461,7 +6519,9 @@
       "row": 28,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 627.577,
+      "y": 1889.541
     },
     {
       "id": "consort-28-2",
@@ -5474,7 +6534,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 713.577,
+      "y": 1889.541
     },
     {
       "id": "person-28-3",
@@ -5488,9 +6550,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 28,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 951.172,
+      "y": 1883.068
     },
     {
       "id": "consort-28-3",
@@ -5503,7 +6569,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1037.793,
+      "y": 1883.068
     },
     {
       "id": "person-28-4",
@@ -5517,9 +6585,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 28,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1144.323,
+      "y": 1881.595
     },
     {
       "id": "consort-28-4",
@@ -5532,7 +6604,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1230.944,
+      "y": 1881.595
     },
     {
       "id": "person-28-5",
@@ -5546,9 +6620,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 28,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1392.565,
+      "y": 1880.37
     },
     {
       "id": "consort-28-5",
@@ -5561,7 +6639,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1305.944,
+      "y": 1880.37
     },
     {
       "id": "person-28-6",
@@ -5575,9 +6655,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 28,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1544.632,
+      "y": 1905.054
     },
     {
       "id": "consort-28-6",
@@ -5590,7 +6674,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1631.253,
+      "y": 1905.054
     },
     {
       "id": "collateral-28-0",
@@ -5601,7 +6687,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 439.984,
+      "y": 1880.37
     },
     {
       "id": "person-29-0",
@@ -5615,9 +6703,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 29,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 103.121,
+      "y": 1860.129
     },
     {
       "id": "consort-29-0",
@@ -5630,7 +6722,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 189.742,
+      "y": 1860.129
     },
     {
       "id": "person-29-1",
@@ -5644,9 +6738,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 29,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 274.363,
+      "y": 1892.46
     },
     {
       "id": "consort-29-1",
@@ -5659,7 +6757,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 360.984,
+      "y": 1892.46
     },
     {
       "id": "person-29-2",
@@ -5673,9 +6773,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 29,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 565.402,
+      "y": 1943.427
     },
     {
       "id": "consort-29-2",
@@ -5688,7 +6792,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 652.023,
+      "y": 1943.427
     },
     {
       "id": "person-29-3",
@@ -5702,9 +6808,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 29,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 870.044,
+      "y": 1938.614
     },
     {
       "id": "consort-29-3",
@@ -5717,7 +6827,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 956.665,
+      "y": 1938.614
     },
     {
       "id": "person-29-4",
@@ -5731,9 +6843,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 29,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1079.656,
+      "y": 1935.894
     },
     {
       "id": "consort-29-4",
@@ -5746,7 +6862,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1166.877,
+      "y": 1935.894
     },
     {
       "id": "person-29-5",
@@ -5762,7 +6880,9 @@
       "row": 29,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1251.669,
+      "y": 1934.834
     },
     {
       "id": "consort-29-5",
@@ -5775,7 +6895,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1337.669,
+      "y": 1934.834
     },
     {
       "id": "person-29-6",
@@ -5789,9 +6911,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 29,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1448.637,
+      "y": 1959.353
     },
     {
       "id": "consort-29-6",
@@ -5804,7 +6930,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1535.258,
+      "y": 1959.353
     },
     {
       "id": "person-29-7",
@@ -5818,9 +6946,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 29,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1619.879,
+      "y": 1970.424
     },
     {
       "id": "consort-29-7",
@@ -5833,7 +6965,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1706.5,
+      "y": 1970.424
     },
     {
       "id": "person-30-0",
@@ -5847,9 +6981,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 30,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 500.957,
+      "y": 1997.726
     },
     {
       "id": "consort-30-0",
@@ -5862,7 +7000,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 587.578,
+      "y": 1997.726
     },
     {
       "id": "person-30-1",
@@ -5878,7 +7018,9 @@
       "row": 30,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 786.504,
+      "y": 1992.913
     },
     {
       "id": "consort-30-1",
@@ -5891,7 +7033,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 872.504,
+      "y": 1992.913
     },
     {
       "id": "person-30-2",
@@ -5905,9 +7049,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 30,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1013.886,
+      "y": 1991.44
     },
     {
       "id": "consort-30-2",
@@ -5920,7 +7068,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1100.507,
+      "y": 1991.44
     },
     {
       "id": "person-30-3",
@@ -5934,9 +7084,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 30,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1185.128,
+      "y": 1988.719
     },
     {
       "id": "consort-30-3",
@@ -5949,7 +7103,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1272.349,
+      "y": 1988.719
     },
     {
       "id": "person-30-4",
@@ -5963,9 +7119,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 30,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1365.357,
+      "y": 2019.982
     },
     {
       "id": "consort-30-4",
@@ -5978,7 +7138,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1451.978,
+      "y": 2019.982
     },
     {
       "id": "person-30-5",
@@ -5992,9 +7154,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 30,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1619.599,
+      "y": 2024.723
     },
     {
       "id": "consort-30-5",
@@ -6007,7 +7173,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1706.22,
+      "y": 2024.723
     },
     {
       "id": "collateral-30-0",
@@ -6018,7 +7186,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1530.978,
+      "y": 2011.861
     },
     {
       "id": "collateral-30-1",
@@ -6029,7 +7199,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 306.275,
+      "y": 1998.642
     },
     {
       "id": "person-31-0",
@@ -6043,9 +7215,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 31,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 404.22,
+      "y": 2052.025
     },
     {
       "id": "consort-31-0",
@@ -6058,7 +7234,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 490.841,
+      "y": 2052.025
     },
     {
       "id": "person-31-1",
@@ -6072,9 +7250,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 31,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 652.462,
+      "y": 2052.025
     },
     {
       "id": "consort-31-1",
@@ -6087,7 +7269,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 565.841,
+      "y": 2052.025
     },
     {
       "id": "person-31-2",
@@ -6101,9 +7285,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 31,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 936.153,
+      "y": 2045.739
     },
     {
       "id": "consort-31-2",
@@ -6116,7 +7304,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1022.774,
+      "y": 2045.739
     },
     {
       "id": "person-31-3",
@@ -6130,9 +7320,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 31,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1107.395,
+      "y": 2044.265
     },
     {
       "id": "consort-31-3",
@@ -6145,7 +7339,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1194.016,
+      "y": 2044.265
     },
     {
       "id": "person-31-4",
@@ -6161,7 +7357,9 @@
       "row": 31,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1278.016,
+      "y": 2073.868
     },
     {
       "id": "consort-31-4",
@@ -6174,7 +7372,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1364.016,
+      "y": 2073.868
     },
     {
       "id": "person-31-5",
@@ -6188,9 +7388,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 31,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1525.637,
+      "y": 2081.625
     },
     {
       "id": "consort-31-5",
@@ -6203,7 +7407,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1439.016,
+      "y": 2081.625
     },
     {
       "id": "person-31-6",
@@ -6217,9 +7423,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 31,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1619.879,
+      "y": 2099.778
     },
     {
       "id": "consort-31-6",
@@ -6232,7 +7442,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1706.5,
+      "y": 2099.778
     },
     {
       "id": "collateral-31-0",
@@ -6243,7 +7455,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 803.828,
+      "y": 2049.842
     },
     {
       "id": "person-32-0",
@@ -6259,7 +7473,9 @@
       "row": 32,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 246.999,
+      "y": 2116.914
     },
     {
       "id": "consort-32-0",
@@ -6272,7 +7488,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 332.999,
+      "y": 2116.914
     },
     {
       "id": "person-32-1",
@@ -6286,9 +7504,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 32,
-      "width": 80,
+      "width": 81.04937000000001,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 420.023,
+      "y": 2107.731
     },
     {
       "id": "consort-32-1",
@@ -6301,7 +7523,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 509.048,
+      "y": 2107.731
     },
     {
       "id": "person-32-2",
@@ -6315,9 +7539,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 32,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 593.669,
+      "y": 2106.324
     },
     {
       "id": "consort-32-2",
@@ -6330,7 +7558,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 680.29,
+      "y": 2106.324
     },
     {
       "id": "person-32-3",
@@ -6344,9 +7574,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 32,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 764.911,
+      "y": 2102.35
     },
     {
       "id": "consort-32-3",
@@ -6359,7 +7593,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 851.532,
+      "y": 2102.35
     },
     {
       "id": "person-32-4",
@@ -6373,9 +7609,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 32,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 936.153,
+      "y": 2100.038
     },
     {
       "id": "consort-32-4",
@@ -6388,7 +7628,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1022.774,
+      "y": 2100.038
     },
     {
       "id": "person-32-5",
@@ -6402,9 +7644,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 32,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1107.395,
+      "y": 2127.753
     },
     {
       "id": "consort-32-5",
@@ -6417,7 +7663,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1194.016,
+      "y": 2127.753
     },
     {
       "id": "person-32-6",
@@ -6431,9 +7679,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 32,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1278.637,
+      "y": 2127.753
     },
     {
       "id": "consort-32-6",
@@ -6446,7 +7698,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1365.258,
+      "y": 2127.753
     },
     {
       "id": "person-32-7",
@@ -6462,7 +7716,9 @@
       "row": 32,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1449.258,
+      "y": 2135.511
     },
     {
       "id": "consort-32-7",
@@ -6475,7 +7731,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1535.258,
+      "y": 2135.511
     },
     {
       "id": "person-32-8",
@@ -6489,9 +7747,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 32,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1619.879,
+      "y": 2156.847
     },
     {
       "id": "consort-32-8",
@@ -6504,7 +7766,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1706.5,
+      "y": 2156.847
     },
     {
       "id": "person-33-0",
@@ -6518,9 +7782,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 33,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 219.997,
+      "y": 2183.549
     },
     {
       "id": "consort-33-0",
@@ -6533,7 +7801,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 306.618,
+      "y": 2183.549
     },
     {
       "id": "person-33-1",
@@ -6547,11 +7817,15 @@
       "realm": "the Everen Isles",
       "role": "landmark ruler",
       "row": 33,
-      "width": 107,
+      "width": 97.31756,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-95998",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 438.234,
+      "y": 2170.568
     },
     {
       "id": "consort-33-1",
@@ -6564,7 +7838,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 535.393,
+      "y": 2170.568
     },
     {
       "id": "person-33-2",
@@ -6578,9 +7854,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 33,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 620.014,
+      "y": 2167.049
     },
     {
       "id": "consort-33-2",
@@ -6593,7 +7873,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 706.635,
+      "y": 2167.049
     },
     {
       "id": "person-33-3",
@@ -6609,7 +7891,9 @@
       "row": 33,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 834.188,
+      "y": 2171.549
     },
     {
       "id": "consort-33-3",
@@ -6622,7 +7906,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 920.188,
+      "y": 2171.549
     },
     {
       "id": "person-33-4",
@@ -6636,9 +7922,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 33,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1004.822,
+      "y": 2180.579
     },
     {
       "id": "consort-33-4",
@@ -6651,7 +7941,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1092.043,
+      "y": 2180.579
     },
     {
       "id": "person-33-5",
@@ -6665,11 +7957,15 @@
       "realm": "Bayeux",
       "role": "landmark ruler",
       "row": 33,
-      "width": 107,
+      "width": 86.69225,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-105600",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1285.158,
+      "y": 2190.59
     },
     {
       "id": "consort-33-5",
@@ -6682,7 +7978,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1377.004,
+      "y": 2190.59
     },
     {
       "id": "person-33-6",
@@ -6696,9 +7994,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 33,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1593.69,
+      "y": 2211.146
     },
     {
       "id": "consort-33-6",
@@ -6711,7 +8013,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1680.311,
+      "y": 2211.146
     },
     {
       "id": "collateral-33-0",
@@ -6722,7 +8026,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1456.004,
+      "y": 2187.605
     },
     {
       "id": "person-34-0",
@@ -6736,9 +8042,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 34,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 421.488,
+      "y": 2233.405
     },
     {
       "id": "consort-34-0",
@@ -6751,7 +8061,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 508.109,
+      "y": 2233.405
     },
     {
       "id": "person-34-1",
@@ -6765,9 +8077,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 34,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 669.73,
+      "y": 2241.185
     },
     {
       "id": "consort-34-1",
@@ -6780,7 +8096,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 583.109,
+      "y": 2241.185
     },
     {
       "id": "person-34-2",
@@ -6794,9 +8112,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 34,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 871.86,
+      "y": 2233.404
     },
     {
       "id": "consort-34-2",
@@ -6809,7 +8131,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 958.481,
+      "y": 2233.404
     },
     {
       "id": "person-34-3",
@@ -6823,9 +8147,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 34,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1120.102,
+      "y": 2234.878
     },
     {
       "id": "consort-34-3",
@@ -6838,7 +8166,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1033.481,
+      "y": 2234.878
     },
     {
       "id": "person-34-4",
@@ -6852,9 +8182,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 34,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1309.208,
+      "y": 2253.427
     },
     {
       "id": "consort-34-4",
@@ -6867,7 +8201,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1395.829,
+      "y": 2253.427
     },
     {
       "id": "collateral-34-0",
@@ -6878,7 +8214,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1595.773,
+      "y": 2263.654
     },
     {
       "id": "collateral-34-1",
@@ -6889,7 +8227,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 758.351,
+      "y": 2235.185
     },
     {
       "id": "person-35-0",
@@ -6903,10 +8243,14 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 35,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6,
-      "court": "Dunport"
+      "size": 11.8,
+      "court": "Dunport",
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 389.993,
+      "y": 2301.374
     },
     {
       "id": "consort-35-0",
@@ -6919,7 +8263,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 476.614,
+      "y": 2301.374
     },
     {
       "id": "person-35-1",
@@ -6933,9 +8279,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 35,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 647.442,
+      "y": 2297.114
     },
     {
       "id": "consort-35-1",
@@ -6948,7 +8298,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 734.063,
+      "y": 2297.114
     },
     {
       "id": "person-35-2",
@@ -6964,7 +8316,9 @@
       "row": 35,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 920.208,
+      "y": 2287.289
     },
     {
       "id": "consort-35-2",
@@ -6977,7 +8331,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1006.208,
+      "y": 2287.289
     },
     {
       "id": "person-35-3",
@@ -6991,9 +8347,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 35,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1115.647,
+      "y": 2289.177
     },
     {
       "id": "consort-35-3",
@@ -7006,7 +8366,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1202.268,
+      "y": 2289.177
     },
     {
       "id": "collateral-35-0",
@@ -7017,7 +8379,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 555.614,
+      "y": 2294.321
     },
     {
       "id": "collateral-35-1",
@@ -7028,7 +8392,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1281.268,
+      "y": 2305.935
     },
     {
       "id": "person-36-0",
@@ -7042,9 +8408,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 36,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 228.106,
+      "y": 2355.673
     },
     {
       "id": "consort-36-0",
@@ -7057,7 +8427,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 314.727,
+      "y": 2355.673
     },
     {
       "id": "person-36-1",
@@ -7071,9 +8443,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 36,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 438.662,
+      "y": 2357.202
     },
     {
       "id": "consort-36-1",
@@ -7086,7 +8462,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 525.283,
+      "y": 2357.202
     },
     {
       "id": "person-36-2",
@@ -7100,9 +8478,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 36,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 694.829,
+      "y": 2351.413
     },
     {
       "id": "consort-36-2",
@@ -7115,7 +8497,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 781.45,
+      "y": 2351.413
     },
     {
       "id": "person-36-3",
@@ -7129,9 +8513,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 36,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 866.071,
+      "y": 2365.74
     },
     {
       "id": "consort-36-3",
@@ -7144,7 +8532,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 952.692,
+      "y": 2365.74
     },
     {
       "id": "person-36-4",
@@ -7158,9 +8548,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 36,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1037.313,
+      "y": 2343.476
     },
     {
       "id": "consort-36-4",
@@ -7173,7 +8567,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1123.934,
+      "y": 2343.476
     },
     {
       "id": "person-36-5",
@@ -7189,7 +8585,9 @@
       "row": 36,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1207.934,
+      "y": 2358.029
     },
     {
       "id": "consort-36-5",
@@ -7202,7 +8600,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1293.934,
+      "y": 2358.029
     },
     {
       "id": "person-36-6",
@@ -7216,9 +8616,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 36,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1378.555,
+      "y": 2354.957
     },
     {
       "id": "consort-36-6",
@@ -7231,7 +8635,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1465.176,
+      "y": 2354.957
     },
     {
       "id": "collateral-36-0",
@@ -7242,7 +8648,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 604.283,
+      "y": 2353.882
     },
     {
       "id": "person-37-0",
@@ -7256,9 +8664,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 37,
-      "width": 80,
+      "width": 84.59114,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 142.071,
+      "y": 2411.261
     },
     {
       "id": "consort-37-0",
@@ -7271,7 +8683,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 232.867,
+      "y": 2411.261
     },
     {
       "id": "person-37-1",
@@ -7287,7 +8701,9 @@
       "row": 37,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 897.821,
+      "y": 2423.613
     },
     {
       "id": "consort-37-1",
@@ -7300,7 +8716,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 983.821,
+      "y": 2423.613
     },
     {
       "id": "person-37-2",
@@ -7314,9 +8732,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 37,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 555.958,
+      "y": 2410.027
     },
     {
       "id": "consort-37-2",
@@ -7329,7 +8751,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 642.579,
+      "y": 2410.027
     },
     {
       "id": "person-37-3",
@@ -7343,9 +8767,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 37,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 727.2,
+      "y": 2420.039
     },
     {
       "id": "consort-37-3",
@@ -7358,7 +8786,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 813.821,
+      "y": 2420.039
     },
     {
       "id": "person-37-4",
@@ -7372,9 +8802,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 37,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1068.442,
+      "y": 2410.441
     },
     {
       "id": "consort-37-4",
@@ -7387,7 +8821,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1155.063,
+      "y": 2410.441
     },
     {
       "id": "person-37-5",
@@ -7401,9 +8837,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 37,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1239.684,
+      "y": 2411.914
     },
     {
       "id": "consort-37-5",
@@ -7416,7 +8856,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1326.305,
+      "y": 2411.914
     },
     {
       "id": "person-37-6",
@@ -7430,9 +8872,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 37,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1487.926,
+      "y": 2411.914
     },
     {
       "id": "consort-37-6",
@@ -7445,7 +8891,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1401.305,
+      "y": 2411.914
     },
     {
       "id": "person-37-7",
@@ -7459,9 +8907,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 37,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1582.168,
+      "y": 2410.027
     },
     {
       "id": "consort-37-7",
@@ -7474,7 +8926,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1668.789,
+      "y": 2410.027
     },
     {
       "id": "person-38-0",
@@ -7488,9 +8942,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 38,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 116.55,
+      "y": 2465.56
     },
     {
       "id": "consort-38-0",
@@ -7503,7 +8961,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 203.171,
+      "y": 2465.56
     },
     {
       "id": "person-38-1",
@@ -7517,9 +8977,13 @@
       "realm": "Falken",
       "role": "ruler",
       "row": 38,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 555.402,
+      "y": 2464.326
     },
     {
       "id": "consort-38-1",
@@ -7532,7 +8996,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 642.023,
+      "y": 2464.326
     },
     {
       "id": "person-38-2",
@@ -7546,9 +9012,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 38,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 729.986,
+      "y": 2474.338
     },
     {
       "id": "consort-38-2",
@@ -7561,7 +9031,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 816.607,
+      "y": 2474.338
     },
     {
       "id": "person-38-3",
@@ -7575,9 +9047,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 38,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1176.147,
+      "y": 2466.213
     },
     {
       "id": "consort-38-3",
@@ -7590,7 +9066,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1262.768,
+      "y": 2466.213
     },
     {
       "id": "person-38-4",
@@ -7606,7 +9084,9 @@
       "row": 38,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1352.943,
+      "y": 2465.8
     },
     {
       "id": "consort-38-4",
@@ -7619,7 +9099,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1438.943,
+      "y": 2465.8
     },
     {
       "id": "person-38-5",
@@ -7633,9 +9115,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 38,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1606.564,
+      "y": 2464.326
     },
     {
       "id": "consort-38-5",
@@ -7648,7 +9134,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1693.185,
+      "y": 2464.326
     },
     {
       "id": "collateral-38-0",
@@ -7659,7 +9147,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1517.943,
+      "y": 2466.117
     },
     {
       "id": "collateral-38-1",
@@ -7670,7 +9160,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 921.707,
+      "y": 2475.707
     },
     {
       "id": "person-39-0",
@@ -7686,7 +9178,9 @@
       "row": 39,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 110.93,
+      "y": 2520.364
     },
     {
       "id": "consort-39-0",
@@ -7699,7 +9193,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 196.93,
+      "y": 2520.364
     },
     {
       "id": "person-39-1",
@@ -7713,11 +9209,15 @@
       "realm": "Falken",
       "role": "landmark ruler",
       "row": 39,
-      "width": 107,
+      "width": 99.63803000000001,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-16367",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 574.77,
+      "y": 2527.163
     },
     {
       "id": "consort-39-1",
@@ -7730,7 +9230,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 673.089,
+      "y": 2527.163
     },
     {
       "id": "person-39-2",
@@ -7744,9 +9246,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 39,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 757.71,
+      "y": 2533.864
     },
     {
       "id": "consort-39-2",
@@ -7759,7 +9265,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 844.331,
+      "y": 2533.864
     },
     {
       "id": "person-39-3",
@@ -7773,9 +9281,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 39,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1011.503,
+      "y": 2524.864
     },
     {
       "id": "consort-39-3",
@@ -7788,7 +9300,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1098.124,
+      "y": 2524.864
     },
     {
       "id": "person-39-4",
@@ -7802,9 +9316,13 @@
       "realm": "Bayeux",
       "role": "ruler",
       "row": 39,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1265.745,
+      "y": 2523.364
     },
     {
       "id": "consort-39-4",
@@ -7817,7 +9335,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1352.366,
+      "y": 2523.364
     },
     {
       "id": "person-39-5",
@@ -7831,11 +9351,15 @@
       "realm": "the Corven Coast",
       "role": "landmark ruler",
       "row": 39,
-      "width": 107,
+      "width": 86.69225,
       "style": "emblem",
-      "size": 10.6,
+      "size": 11.8,
       "icon": "museum-87760",
-      "icon_width": 27
+      "icon_width": 33,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1442.212,
+      "y": 2527.163
     },
     {
       "id": "consort-39-5",
@@ -7848,7 +9372,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1534.058,
+      "y": 2527.163
     },
     {
       "id": "person-39-6",
@@ -7862,9 +9388,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 39,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1618.679,
+      "y": 2535.364
     },
     {
       "id": "consort-39-6",
@@ -7877,7 +9407,9 @@
       "width": 58.2,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1705.9,
+      "y": 2535.364
     },
     {
       "id": "collateral-39-0",
@@ -7888,7 +9420,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1177.124,
+      "y": 2530.864
     },
     {
       "id": "person-40-0",
@@ -7902,9 +9436,13 @@
       "realm": "the Everen Isles",
       "role": "ruler",
       "row": 40,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 110.782,
+      "y": 2587.75
     },
     {
       "id": "consort-40-0",
@@ -7917,7 +9455,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 197.403,
+      "y": 2587.75
     },
     {
       "id": "person-40-1",
@@ -7931,9 +9471,13 @@
       "realm": "Rosene",
       "role": "ruler",
       "row": 40,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 778.394,
+      "y": 2590.0
     },
     {
       "id": "consort-40-1",
@@ -7946,7 +9490,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 691.773,
+      "y": 2590.0
     },
     {
       "id": "person-40-2",
@@ -7960,9 +9506,13 @@
       "realm": "the Alder March",
       "role": "ruler",
       "row": 40,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1011.503,
+      "y": 2589.25
     },
     {
       "id": "consort-40-2",
@@ -7975,7 +9525,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1098.124,
+      "y": 2589.25
     },
     {
       "id": "person-40-3",
@@ -7991,7 +9543,9 @@
       "row": 40,
       "width": 75,
       "style": "plain",
-      "size": 10.6
+      "size": 10.6,
+      "x": 1186.667,
+      "y": 2587.75
     },
     {
       "id": "consort-40-3",
@@ -8004,7 +9558,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1272.667,
+      "y": 2587.75
     },
     {
       "id": "person-40-4",
@@ -8018,9 +9574,13 @@
       "realm": "the Corven Coast",
       "role": "ruler",
       "row": 40,
-      "width": 80,
+      "width": 76.24200000000002,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1434.288,
+      "y": 2590.0
     },
     {
       "id": "consort-40-4",
@@ -8033,7 +9593,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1347.667,
+      "y": 2590.0
     },
     {
       "id": "person-40-5",
@@ -8047,9 +9609,13 @@
       "realm": "Daleshire",
       "role": "ruler",
       "row": 40,
-      "width": 80,
+      "width": 84.59114,
       "style": "card",
-      "size": 10.6
+      "size": 11.8,
+      "detail_position": "outside",
+      "detail_size": 9.1,
+      "x": 1615.704,
+      "y": 2590.0
     },
     {
       "id": "consort-40-5",
@@ -8062,7 +9628,9 @@
       "width": 57,
       "style": "plain",
       "size": 9.6,
-      "role": "consort"
+      "role": "consort",
+      "x": 1706.5,
+      "y": 2590.0
     },
     {
       "id": "collateral-40-0",
@@ -8073,7 +9641,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 1522.909,
+      "y": 2590.0
     },
     {
       "id": "collateral-40-1",
@@ -8084,7 +9654,9 @@
       "width": 65,
       "style": "plain",
       "size": 9.3,
-      "role": "collateral relative"
+      "role": "collateral relative",
+      "x": 612.773,
+      "y": 2590.0
     }
   ],
   "edges": [
@@ -10742,8 +12314,8 @@
   "annotations": [
     {
       "node": "person-1-1",
-      "dx": 0,
-      "dy": -35,
+      "dx": 0.0,
+      "dy": -42.3395,
       "width": 108,
       "label": "HOUSE OF BAYEUX",
       "kind": "pill",
@@ -10752,8 +12324,8 @@
     },
     {
       "node": "person-2-1",
-      "dx": 0,
-      "dy": -35,
+      "dx": 0.0,
+      "dy": -42.3395,
       "width": 108,
       "label": "HOUSE OF CORVEN",
       "kind": "pill",
@@ -10762,8 +12334,8 @@
     },
     {
       "node": "person-2-3",
-      "dx": 0,
-      "dy": -35,
+      "dx": 0.0,
+      "dy": -47.4915,
       "width": 108,
       "label": "HOUSE OF DALESHIRE",
       "kind": "pill",
@@ -10772,8 +12344,8 @@
     },
     {
       "node": "person-3-2",
-      "dx": 0,
-      "dy": -35,
+      "dx": 0.0,
+      "dy": -42.3395,
       "width": 108,
       "label": "HOUSE OF EVEREN",
       "kind": "pill",
@@ -10782,8 +12354,8 @@
     },
     {
       "node": "person-3-4",
-      "dx": 0,
-      "dy": -35,
+      "dx": 0.0,
+      "dy": -42.3395,
       "width": 108,
       "label": "HOUSE OF FALKEN",
       "kind": "pill",
@@ -10792,8 +12364,8 @@
     },
     {
       "node": "person-4-3",
-      "dx": 0,
-      "dy": -35,
+      "dx": 0.0,
+      "dy": -42.3395,
       "width": 108,
       "label": "HOUSE OF ROSENE",
       "kind": "pill",
@@ -10802,8 +12374,8 @@
     },
     {
       "node": "person-9-0",
-      "dx": 350,
-      "dy": 0,
+      "dx": 0.0,
+      "dy": -35,
       "width": 148,
       "label": "ALDER OF LORN",
       "kind": "pill",
@@ -10812,8 +12384,8 @@
     },
     {
       "node": "person-16-2",
-      "dx": 330,
-      "dy": 0,
+      "dx": 0.0,
+      "dy": -35,
       "width": 148,
       "label": "CORVEN OF WHITEHAVEN",
       "kind": "pill",
@@ -10822,8 +12394,8 @@
     },
     {
       "node": "person-24-3",
-      "dx": 340,
-      "dy": 0,
+      "dx": 0.0,
+      "dy": -35,
       "width": 148,
       "label": "EVEREN OF WESTMERE",
       "kind": "pill",
@@ -10832,8 +12404,8 @@
     },
     {
       "node": "person-35-0",
-      "dx": -185,
-      "dy": 0,
+      "dx": 0.0,
+      "dy": -35,
       "width": 148,
       "label": "EVEREN OF DUNPORT",
       "kind": "pill",
@@ -10843,7 +12415,7 @@
     {
       "node": "person-0-0",
       "dx": -270,
-      "dy": 3,
+      "dy": 35,
       "width": 158,
       "label": "The coastal\nfounding family",
       "kind": "heading",
@@ -10854,7 +12426,7 @@
     {
       "node": "person-0-0",
       "dx": 270,
-      "dy": 3,
+      "dy": 35,
       "width": 195,
       "label": "A thousand years\nof recorded descent",
       "kind": "heading",
@@ -10865,17 +12437,17 @@
   ],
   "insets": [],
   "pattern_id": "usefulcharts-dynastic-genealogy",
-  "layout": "cohorts",
-  "cohort_top": 208,
-  "cohort_bottom": 2545,
+  "layout": "authored",
+  "cohort_top": 195,
+  "cohort_bottom": 2590,
   "cohort_gap": 18,
   "partner_gap": 20,
   "cohort_weights": {
-    "1": 1.65,
-    "2": 1.65,
-    "3": 1.65,
-    "4": 1.65,
-    "5": 1.65
+    "1": 1.1,
+    "2": 1.1,
+    "3": 1.1,
+    "4": 1.1,
+    "5": 1.1
   },
   "subtitle": "A founding family, seven houses, and the marriages that joined their branches",
   "reading_note": "Double lines: partners. Descent starts at the union; dotted descent is uncertain. r. marks a reign; other intervals are lifespans. Vertical spacing is schematic."

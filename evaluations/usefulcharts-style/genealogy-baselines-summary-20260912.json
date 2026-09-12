@@ -1,0 +1,666 @@
+{
+  "status": "validating",
+  "runs": [
+    {
+      "id": "usefulcharts-v18-contract-20260912-spark",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 75,
+        "payloadSha256": "fd6320cd3875794b7c2b2f6bc51985340b7dab29b8df63cc02210ace49606ec9"
+      },
+      "prompt_sha256": "d6624b21061576bce193f4e302ff8bb1950317573579bbb347953fec8e638790",
+      "expected_outputs": [
+        "draft.json",
+        "deliverables/brief.json",
+        "deliverables/spacing.json",
+        "deliverables/poster.svg",
+        "deliverables/layout.json"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T05:35:35.913357+00:00",
+        "finishedAtUtc": "2026-09-12T05:35:57.429903+00:00",
+        "durationSeconds": 21.517,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_preserved": true,
+        "spacing": "pass",
+        "render": "pass"
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "deliverables/brief.json",
+        "deliverables/spacing.json",
+        "deliverables/layout.json",
+        "draft.json"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [],
+      "visual_review": "Exact-command control only; no visual acceptance claim."
+    },
+    {
+      "id": "usefulcharts-v18-family-20260912-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 75,
+        "payloadSha256": "fd6320cd3875794b7c2b2f6bc51985340b7dab29b8df63cc02210ace49606ec9"
+      },
+      "prompt_sha256": "065806c332622dd66c123162fef0e4983331d59e8b30c14ed6644346841c6362",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T05:35:35.914388+00:00",
+        "finishedAtUtc": "2026-09-12T05:38:34.172836+00:00",
+        "durationSeconds": 178.26,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 2080 998.88",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks."
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/source.json"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "bytes": 523304
+        },
+        {
+          "mime": "image/png",
+          "bytes": 523304
+        }
+      ],
+      "visual_review": "Readable names, but repetitive filled boxes and long lateral routes. Rejected as visual parity."
+    },
+    {
+      "id": "usefulcharts-v18-family-20260912-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 75,
+        "payloadSha256": "fd6320cd3875794b7c2b2f6bc51985340b7dab29b8df63cc02210ace49606ec9"
+      },
+      "prompt_sha256": "065806c332622dd66c123162fef0e4983331d59e8b30c14ed6644346841c6362",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T05:35:36.095977+00:00",
+        "finishedAtUtc": "2026-09-12T05:39:22.617140+00:00",
+        "durationSeconds": 226.523,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1450 2600",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks."
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "result/source.json",
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md"
+      ],
+      "tool_errors": [
+        "Chart could not be rendered: Union u01 needs at least a 16-unit gap.\r\n\n\nCommand exited with code 2"
+      ],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "bytes": 342824
+        },
+        {
+          "mime": "image/png",
+          "bytes": 344944
+        },
+        {
+          "mime": "image/png",
+          "bytes": 344944
+        }
+      ],
+      "visual_review": "Rejected: excessive 1450 by 2600 canvas, small repeated cards and very long vertical gaps."
+    },
+    {
+      "id": "usefulcharts-v18-family-20260912-3",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 75,
+        "payloadSha256": "fd6320cd3875794b7c2b2f6bc51985340b7dab29b8df63cc02210ace49606ec9"
+      },
+      "prompt_sha256": "065806c332622dd66c123162fef0e4983331d59e8b30c14ed6644346841c6362",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T05:35:36.376943+00:00",
+        "finishedAtUtc": "2026-09-12T05:37:43.904381+00:00",
+        "durationSeconds": 127.528,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1996 900.71",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks."
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "result/poster.png",
+        "result/source.json"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "bytes": 137072
+        }
+      ],
+      "visual_review": "Compact but undersized names/dates and uniformly long nameplates. Rejected as visual parity."
+    },
+    {
+      "id": "usefulcharts-v19-contract-20260912-spark",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 75,
+        "payloadSha256": "23fae87d089c5d95dd50bbb86fadeb37c951ca4760b35c382eefb798dedea578"
+      },
+      "prompt_sha256": "d6624b21061576bce193f4e302ff8bb1950317573579bbb347953fec8e638790",
+      "expected_outputs": [
+        "draft.json",
+        "deliverables/brief.json",
+        "deliverables/spacing.json",
+        "deliverables/poster.svg",
+        "deliverables/layout.json"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T05:45:16.379956+00:00",
+        "finishedAtUtc": "2026-09-12T05:45:44.961707+00:00",
+        "durationSeconds": 28.582,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_preserved": true,
+        "spacing": "pass",
+        "render": "pass"
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "draft.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "deliverables/spacing.json",
+        "deliverables/layout.json",
+        "deliverables/brief.json",
+        "deliverables/poster.svg"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [],
+      "visual_review": "Exact-command control only; no visual acceptance claim."
+    },
+    {
+      "id": "usefulcharts-v19-family-20260912-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 75,
+        "payloadSha256": "23fae87d089c5d95dd50bbb86fadeb37c951ca4760b35c382eefb798dedea578"
+      },
+      "prompt_sha256": "065806c332622dd66c123162fef0e4983331d59e8b30c14ed6644346841c6362",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T05:45:16.530024+00:00",
+        "finishedAtUtc": "2026-09-12T05:47:59.125418+00:00",
+        "durationSeconds": 162.596,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1470.88 990.16",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks."
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/source.json",
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/layout.json",
+        "result/browser.json"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "bytes": 162600
+        },
+        {
+          "mime": "image/png",
+          "bytes": 162600
+        }
+      ],
+      "visual_review": {
+        "run": 1,
+        "verdict": "Accepted as a readable compact family composition; not accepted as visual parity.",
+        "observed": "Names and dates are legible, founding and contextual figures are emphasized, external partners and terminal relatives use plain names, all three contextual labels are locally attached. Long lateral intermarriage routes still dominate the middle.",
+        "method": "Direct inspection of final PNG by the implementation owner; unblinded qualitative review, no provenance-identification experiment."
+      }
+    },
+    {
+      "id": "usefulcharts-v19-family-20260912-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 75,
+        "payloadSha256": "23fae87d089c5d95dd50bbb86fadeb37c951ca4760b35c382eefb798dedea578"
+      },
+      "prompt_sha256": "065806c332622dd66c123162fef0e4983331d59e8b30c14ed6644346841c6362",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T05:45:16.858382+00:00",
+        "finishedAtUtc": "2026-09-12T05:48:10.768446+00:00",
+        "durationSeconds": 173.911,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1470.88 990.16",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks."
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/poster.png",
+        "result/source.json"
+      ],
+      "tool_errors": [
+        "Installed 8 packages in 2.16s\n{\"status\": \"needs-layout\", \"message\": \"Use numeric finite source dates; do not parse dates from formatted labels.\"}\r\n\n\nCommand exited with code 1"
+      ],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "bytes": 163008
+        }
+      ],
+      "visual_review": {
+        "run": 2,
+        "verdict": "Final artifact is a readable compact composition; strict execution fails after a malformed numeric birth date was repaired. Visual parity is not established.",
+        "observed": "The final page applies the same restrained nameplate and plain-name hierarchy. It preserves an explicit unknown birth and the uncertain dotted relationship. Its widest intermarriage corridors remain visually strong.",
+        "method": "Direct inspection of final PNG by the implementation owner; unblinded qualitative review, no provenance-identification experiment."
+      }
+    },
+    {
+      "id": "usefulcharts-v19-family-20260912-3",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 75,
+        "payloadSha256": "23fae87d089c5d95dd50bbb86fadeb37c951ca4760b35c382eefb798dedea578"
+      },
+      "prompt_sha256": "065806c332622dd66c123162fef0e4983331d59e8b30c14ed6644346841c6362",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T05:45:17.164404+00:00",
+        "finishedAtUtc": "2026-09-12T05:47:57.264933+00:00",
+        "durationSeconds": 160.102,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": true,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1470.88 990.16",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks."
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/source.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/poster.png"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "bytes": 162640
+        }
+      ],
+      "visual_review": {
+        "run": 3,
+        "verdict": "Accepted as a readable compact family composition; not accepted as visual parity.",
+        "observed": "The alternative green/gold/teal/purple palette maintains categories. Text is readable, external partners and final relatives are subordinate, and the Birch reading room label wraps in two clear lines next to Quinn. Long lateral routes and a limited middle layer of narrative landmarks remain.",
+        "method": "Direct inspection of final PNG by the implementation owner; unblinded qualitative review, no provenance-identification experiment."
+      }
+    }
+  ],
+  "visual_parity": "Not established. Keep strict execution, exact data and aesthetic findings separate."
+}

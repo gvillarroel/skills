@@ -30,6 +30,13 @@ def main():
     node=copy.deepcopy(original);metadata=node.find('.//s:metadata[@id="chart-data"]',ns)
     values=json.loads(metadata.text);values['data_sha256']='0'*64;metadata.text=json.dumps(values)
     mutations.append(('stale-source-revision',node,'source-revision-mismatch'))
+    if original.find('.//s:g[@data-annotation-kind="heading"]/*[@data-artwork]',ns) is not None:
+        for name,dy,expected in [('heading-art-over-text',55,'heading-art-text-collision'),
+                                 ('heading-art-above-paper',-200,'heading-art-outside-paper')]:
+            node=copy.deepcopy(original);heading=node.find('.//s:g[@data-annotation-kind="heading"]',ns)
+            art=heading.find('./*[@data-artwork]',ns);heading.remove(art)
+            wrapper=ET.SubElement(heading,'{'+ns['s']+'}g',{'transform':f'translate(0 {dy})'})
+            wrapper.append(art);mutations.append((name,node,expected))
     for role,field in [('date','date-label'),('caption','detail')]:
         if original.find(f'.//s:text[@data-content-role="{role}"]',ns) is not None:
             node=copy.deepcopy(original);text=node.find(f'.//s:text[@data-content-role="{role}"]',ns)
@@ -59,9 +66,16 @@ def main():
     node=copy.deepcopy(original);edge=node.find(".//s:path[@data-edge-id]",ns);edge.set("data-kind","adopted")
     mutations.append(("wrong-relation-kind",node,"source-relation-inventory"))
     node=copy.deepcopy(original);edge=node.find(".//s:path[@data-edge-id]",ns);tokens=edge.attrib["d"].split();tokens[1]=str(float(tokens[1])+100);edge.set("d"," ".join(tokens))
-    mutations.append(("detached-source",node,"detached-source"))
+    expected='source-union-origin' if edge.get('data-source') in {u['id'] for u in source.get('unions',[])} else 'detached-source'
+    mutations.append(("detached-source",node,expected))
     node=copy.deepcopy(original);edge=node.find(".//s:path[@data-edge-id]",ns);tokens=edge.attrib["d"].split();x,y=float(tokens[1]),float(tokens[2])
-    edge.set("d",f'M {x} {y} L {x} {y-12} L {x} {y} '+" ".join(tokens[3:]));edge.set("data-route-style","rounded")
+    origin_union=next((u for u in source.get('unions',[]) if u['id']==edge.get('data-source')),None)
+    if origin_union:
+        box=node.find(f'.//s:g[@data-node-id="{origin_union["partners"][0]}"]/s:rect[@data-node-box]',ns)
+        inside_x=float(box.get('x'))+float(box.get('width'))/2
+        detour=f'L {inside_x} {y}'
+    else:detour=f'L {x} {y-12}'
+    edge.set("d",f'M {x} {y} {detour} L {x} {y} '+" ".join(tokens[3:]));edge.set("data-route-style","rounded")
     mutations.append(("source-reentry",node,"edge-node-collision"))
     if original.find('.//s:path[@data-transition-fill]',ns) is not None:
         node=copy.deepcopy(original);box=node.find('.//s:rect[@data-node-box]',ns)

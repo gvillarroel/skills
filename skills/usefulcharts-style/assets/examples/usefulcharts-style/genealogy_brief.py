@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = []
+# dependencies = ["osqp>=1,<2", "numpy>=2,<3", "scipy>=1.14,<2"]
 # ///
 """Synthetic kinship records with expanding, ending, and intermarrying houses."""
 
@@ -9,6 +9,8 @@ from collections import Counter
 
 
 def build_genealogy(base):
+    from render_chart import text_width
+    from space_family_branches import space_branches
     houses=['Alder','Bayeux','Corven','Daleshire','Everen','Falken','Rosene']
     realms=['the Alder March','Bayeux','the Corven Coast','Daleshire','the Everen Isles','Falken','Rosene']
     d=base('aurelian-families','DYNASTIES OF THE AURELIAN COAST','genealogy',[f'House {h}' for h in houses])
@@ -108,4 +110,16 @@ def build_genealogy(base):
     d['annotations'].extend([
         dict(node='person-0-0',dx=-270,dy=3,width=158,label='The coastal\nfounding family',kind='heading',icon='shield',group='g0',size=18),
         dict(node='person-0-0',dx=270,dy=3,width=195,label='A thousand years\nof recorded descent',kind='heading',icon='crown',group='g2',size=18)])
-    return d
+    # The source records above determine hierarchy. Compact nameplates and
+    # complete date envelopes are composed before local baseline fitting.
+    d.update(cohort_top=195,cohort_bottom=2590,cohort_weights={str(row):1.1 for row in range(1,6)})
+    for node in d['nodes']:
+        if node.get('style')=='plain':continue
+        node.update(detail_position='outside',size=13.5 if node['row']==0 else 11.8,detail_size=9.1)
+        if node.get('icon'):node['icon_width']=36 if node['row']==0 else 33
+        node['width']=max(58,text_width(node['label'],node['size'],True)+14+node.get('icon_width',0),
+            text_width(node.get('detail',''),node['detail_size'])+16)
+    for annotation in d['annotations']:
+        if annotation.get('kind')=='heading':annotation['dy']=35
+    resolved,_=space_branches(d,date_scale=3,local_labels=True)
+    return resolved
