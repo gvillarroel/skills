@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -17,6 +18,7 @@ from playwright.sync_api import sync_playwright
 # Support both direct execution and evaluator-owned importlib loading.
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from audit_timeline_annotations import check_annotations
+from audit_context_insets import BROWSER_AUDIT, check_insets
 
 AUDIT = r"""() => {
   const svg = document.querySelector('svg');
@@ -68,6 +70,7 @@ AUDIT = r"""() => {
   const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,event:el.closest('[data-event-id]')?.dataset.eventId,role:el.dataset.eventTextRole||null,origin:{x:textOrigin(el).x,y:textOrigin(el).y},box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background),runs:[...el.querySelectorAll('tspan')].map(run=>({text:run.textContent,role:run.dataset.eventRunRole||null,font:parseFloat(getComputedStyle(run).fontSize),weight:Number(getComputedStyle(run).fontWeight),origin:glyphPoint(run),end:glyphPoint(run,true),contrast:contrast(getComputedStyle(run).fill,el.dataset.background),...painted(run)}))}));
   const illustrations=[...svg.querySelectorAll('[data-event-id] [data-artwork]')].map(el=>({event:el.closest('[data-event-id]').dataset.eventId,kind:el.dataset.artwork,illustration_id:el.dataset.illustrationId||null,use_href:el.querySelector('use')?.getAttribute('href')||null,viewport:viewport(el),...painted(el)}));
   const landmarks=[...svg.querySelectorAll('[data-annotation-kind="landmark"]')].map(el=>({id:el.dataset.annotationId,node:el.dataset.contextNode,group:el.dataset.contextGroup,field:el.dataset.sourceField,value:el.dataset.sourceValue,box:bounds(el.querySelector('[data-annotation-box]')),heraldry_fill:el.querySelector('[data-artwork="heraldry"]>path')?getComputedStyle(el.querySelector('[data-artwork="heraldry"]>path')).fill:null,label:[...el.querySelectorAll('[data-content-role="landmark-label"]')].map(t=>t.textContent).join(' ')}));
+""" + BROWSER_AUDIT + r"""
   const setEqual=(a,b)=>a.length===b.length && [...a].sort().join('\n')===[...b].sort().join('\n');
   if(!setEqual(nodes.map(n=>n.id),meta.node_ids))findings.push({type:'node-inventory'});
   if(!setEqual(edges.map(e=>e.id),meta.edge_ids))findings.push({type:'edge-inventory'});
@@ -187,7 +190,7 @@ AUDIT = r"""() => {
     for(const t of texts)if(t.owner==='page'&&clippedArea(poly,t.box)>1)findings.push({type:'transition-fill-text-collision',edge:fill.dataset.transitionFill,text:t.text});
     for(const art of illustrations)if(clippedArea(poly,art.box)>1)findings.push({type:'transition-fill-illustration-collision',edge:fill.dataset.transitionFill,event:art.event});
   }
-  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,composition_warnings,nodes,edges,events,unions,texts,illustrations,landmarks,metadata:meta};
+  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,composition_warnings,nodes,edges,events,unions,texts,illustrations,landmarks,context_insets,metadata:meta};
 }"""
 
 
@@ -198,6 +201,7 @@ def check_source(report, data):
     if report['metadata'].get('data_sha256')!=source_hash:
         report['findings'].append({'type':'source-revision-mismatch','expected_sha256':source_hash,'rendered_sha256':report['metadata'].get('data_sha256')})
     nodes = data.get("periods", []) if data["mode"] == "timeline" else data.get("nodes", [])
+    check_insets(report,data)
     contexts={f'annotation-{i}':a for i,a in enumerate(data.get('annotations',[])) if a.get('kind')=='landmark'}
     actual_contexts={a['id']:a for a in report.get('landmarks',[])}
     if sorted(contexts)!=sorted(actual_contexts):report['findings'].append({'type':'source-landmark-inventory'})
@@ -311,18 +315,35 @@ def check_source(report, data):
                         report['findings'].append({'type':'source-timeline-port','id':edge['id']})
 
 
+def capture_detail(page, output, box, canvas):
+    """Render a source-coordinate region directly, using the audit's browser."""
+    if len(box)!=4 or not all(math.isfinite(v) for v in box):
+        raise ValueError('Detail box must contain four finite SVG coordinates.')
+    x,y,w,h=box;cw,ch=canvas
+    if x<0 or y<0 or w<=0 or h<=0 or x+w>cw or y+h>ch:
+        raise ValueError('Detail box must stay inside the SVG canvas.')
+    page.set_viewport_size({'width':math.ceil(cw),'height':min(math.ceil(ch),1200)})
+    page.evaluate("""box=>{const svg=document.querySelector('svg');svg.setAttribute('viewBox',box.join(' '));svg.setAttribute('width',box[2]);svg.setAttribute('height',box[3]);}""",box)
+    output.parent.mkdir(parents=True,exist_ok=True)
+    page.locator('svg').first.screenshot(path=str(output.resolve()))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("svg", type=Path)
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--png", type=Path)
+    parser.add_argument('--detail-png',type=Path)
+    parser.add_argument('--detail-box',type=float,nargs=4,metavar=('X','Y','WIDTH','HEIGHT'))
     parser.add_argument("--source", type=Path)
     parser.add_argument("--browser-executable", type=Path)
     args = parser.parse_args()
     try:
-        outputs = [p.resolve() for p in (args.svg,args.report,args.png,args.source) if p]
+        outputs = [p.resolve() for p in (args.svg,args.report,args.png,args.source,args.detail_png) if p]
         if len(outputs) != len(set(outputs)):
             raise ValueError("Input and output paths must be distinct.")
+        if bool(args.detail_png)!=bool(args.detail_box):
+            raise ValueError('Use --detail-png and --detail-box together.')
         with sync_playwright() as p:
             browser = None
             attempts = [{"executable_path": str(args.browser_executable)}] if args.browser_executable else [{},{"channel":"chrome"},{"channel":"msedge"}]
@@ -347,6 +368,9 @@ def main():
                 w,h = report["canvas"]
                 page.set_viewport_size({"width":int(w),"height":min(int(h),1200)})
                 page.locator("svg").first.screenshot(path=str(args.png.resolve()))
+            if args.detail_png:
+                capture_detail(page,args.detail_png,args.detail_box,report['canvas'])
+                report['detail_preview']={'path':str(args.detail_png),'box':args.detail_box,'coordinates':'source SVG units'}
             browser.close()
         report["visual_review"] = "Inspect the preview separately; these checks do not rate stylistic resemblance."
         args.report.parent.mkdir(parents=True,exist_ok=True)

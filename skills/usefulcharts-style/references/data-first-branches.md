@@ -43,3 +43,5 @@ Inspect `unrelated-shared-run` warnings. Two almost coincident paths can look jo
 For a content or emphasis revision, edit the retained data-first draft, compose again and inspect the new output. For a specific difficult neighborhood, edit the authored result and remove only the stale routes affected by the move; recompose influences and audit the final source. Do not replace the whole graph with a larger empty page to fix one corridor.
 
 A source with one long common-origin chain still has one long common-origin chain. Choose meaningful supplied context for adjacent open space or a different demonstration subject when allowed. Do not manufacture branches, geographic prevalence or decorative statistics to fill the page. A smaller canvas, correct source inventory and clean audit do not establish visual parity with UsefulCharts.
+
+For a useful opening explanation or source-derived count overview, continue with [context insets](context-insets.md) on the complete authored result. It keeps the branch composition intact while measuring and reserving the new contextual footprints.

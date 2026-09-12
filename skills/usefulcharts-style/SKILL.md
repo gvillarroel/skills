@@ -33,6 +33,10 @@ For genealogical grouping, read [name and date groups](references/genealogy-name
 
 A short history needs a compact canvas. Reserve the portrait 2:3 wall format and dense 10–16-unit typography for substantial data. Let terminated branches release space; let large descendant groups widen. Avoid rigid persistent columns, equally weighted cards and illustrations placed at mechanical intervals. A schematic composition can have uneven gaps; a numeric time scale cannot.
 
+When small illustrations repeat or a pictured object needs a distinct identity, read [semantic emblems](references/semantic-emblems.md). Choose the source-appropriate subject and inspect its silhouette at the actual panel size; decorative variation alone does not improve the history.
+
+When a compact institutional origin leaves useful open pockets, read [context insets](references/context-insets.md). Add a source-backed illustrated explanation or counts of the actual institutions shown, then reserve and inspect those regions. Context complements the complete history; it must not conceal an unresolved branch layout.
+
 For institutional groups joined by conspicuous influence detours, read [lateral influence routes](references/influence-routes.md). Compose the local histories first, then choose explicit side attachments and short corridors. Compare the full page before accepting a smaller canvas: unchanged font units improve displayed readability only if the denser routing remains easy to follow.
 
 When an institutional poster still reads as persistent columns, use [branch structure](references/branch-structure.md). Separate causal order from a numeric calendar, plan which later histories use released space, and inspect the resulting routes. Review `unrelated-shared-run` warnings: independent edges sharing a painted trunk can suggest a false union. Do not hide supplied notes or add invented branches to improve density.
@@ -51,6 +55,8 @@ uv run --script <skill-dir>/scripts/audit_chart.py poster.svg --source brief.jso
 Substitute exact requested paths. Both scripts create output parents. Keep footer notes to two short lines; leave implementation names and resource IDs out of the printable reading note. Image provenance is embedded automatically. The browser audit measures actual font geometry, source inventories, routes, time positions and illustration collisions. See [evaluation and repair](references/evaluation.md) if browser provisioning fails.
 
 **Open the final PNG with the image-reading tool.** Reading dimensions, metadata or an audit report does not inspect the preview. Check the whole page, the busiest merger, the longest label and the uncertain connection. Repair the brief, rerender, and inspect the final revision. Do not remove information or repeatedly shrink type to make a collision disappear.
+
+To inspect a dense region at a larger display size, add `--detail-png detail.png --detail-box X Y WIDTH HEIGHT` to the audit command. Use coordinates from the source SVG inside its canvas, then open the detail PNG. The bundled browser renders it directly; an additional image-processing package is unnecessary.
 
 If the model or tool explicitly cannot accept images, preserve the PNG for an external visual review and state that limitation. Importing Pillow or Matplotlib, converting to ASCII, or reading PNG headers cannot substitute for seeing the composition. The bundled browser audit already performs rendering and geometry checks without those packages.
 

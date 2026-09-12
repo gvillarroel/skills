@@ -70,7 +70,30 @@ def symbol(kind, paint="#9A7332", variant=0):
                 path(f'M{x} {y-7}L{x+2} {y-2}L{x+7} {y-2}L{x+3} {y+2}L{x+5} {y+7}L{x} {y+4}L{x-5} {y+7}L{x-3} {y+2}L{x-7} {y-2}L{x-2} {y-2}Z','#F8D45C',ink,.8)
         path('M28 21L23 9L36 17L41 6L50 17L59 6L64 17L77 9L72 21Z','#D5AF50')
         path('M28 22H72V27H28Z','#F2D179')
-    elif kind in ("star","sun","compass"):
+    elif kind=='star':
+        # A celestial device, distinct from a compass rose at small print sizes.
+        points=[]
+        for i in range(16):
+            angle=-math.pi/2+i*math.pi/8;r=39 if i%2==0 else 12
+            points.append(f'{50+math.cos(angle)*r:.2f},{50+math.sin(angle)*r:.2f}')
+        p.append(f'<polygon points="{" ".join(points)}" fill="{paint}" stroke="{ink}" stroke-width="2"/>')
+        path('M50 11V89M11 50H89',stroke='#F6EBCF',width=2.3)
+        circle(50,50,8,'#F6EBCF',ink,1.6)
+        for x,y in ((18,18),(82,18),(18,82),(82,82)):
+            path(f'M{x} {y-4}V{y+4}M{x-4} {y}H{x+4}',stroke=ink,width=1.7)
+    elif kind=='sun':
+        for i in range(16):
+            angle=i*math.pi/8
+            a=angle-.07;b=angle+.07
+            points=[(50+math.cos(a)*27,50+math.sin(a)*27),
+                    (50+math.cos(angle)*45,50+math.sin(angle)*45),
+                    (50+math.cos(b)*27,50+math.sin(b)*27)]
+            path('M'+'L'.join(f'{x:.2f} {y:.2f}' for x,y in points)+'Z',paint,ink,1.1)
+        circle(50,50,26,'#F2D28A',ink,2)
+        circle(50,50,22,'none',paint,1)
+        path('M36 43Q41 39 46 43M55 43Q60 39 65 43M49 44L47 55H53M41 63Q50 68 60 61',width=1.7)
+        circle(41,45,1.7,ink,'none');circle(60,45,1.7,ink,'none')
+    elif kind=='compass':
         circle(50,50,36,"none",paint,4)
         for i in range(16):
             a=i*math.pi/8;r=43 if i%4==0 else 38
@@ -79,7 +102,30 @@ def symbol(kind, paint="#9A7332", variant=0):
             a=i*math.pi/4;dx,dy=math.sin(a),math.cos(a)
             path(f'M50 50L{50+dx*31:.1f} {50+dy*31:.1f}L{50+math.sin(a+.25)*9:.1f} {50+math.cos(a+.25)*9:.1f}Z',paint if i%2 else '#FBF7E5',ink,1)
         circle(50,50,5,'#FBF7E5',ink,1)
-    elif kind in ("globe","astrolabe","orbit"):
+    elif kind=='astrolabe':
+        circle(50,9,6,'none',ink,2)
+        path('M44 18L50 13L56 18V25H44Z',paint,ink,1.7)
+        circle(50,57,36,paint,ink,2)
+        circle(50,57,31,'#F6EBCF',ink,1.3)
+        circle(50,57,27,'none',paint,1.3)
+        for i in range(36):
+            a=i*math.pi/18
+            r=30 if i%3 else 28
+            path(f'M{50+math.cos(a)*r:.2f} {57+math.sin(a)*r:.2f}L{50+math.cos(a)*34:.2f} {57+math.sin(a)*34:.2f}',width=.8)
+        circle(50,63,21,'none',ink,1.1)
+        path('M24 67Q50 22 76 67M30 75Q50 42 70 75M50 27V84M23 57H77',stroke=paint,width=1.2)
+        path('M28 79L69 31L72 34L31 82Z',paint,ink,1.4)
+        circle(50,57,4,'#F6EBCF',ink,1.5)
+    elif kind=='orbit':
+        circle(49,48,24,'#F6EBCF',ink,1.8)
+        p.append(f'<ellipse cx="49" cy="48" rx="12" ry="24" {line}/>')
+        path('M25 48H73M28 37Q49 29 70 37M29 59Q49 66 69 59',stroke=paint,width=1.2)
+        p.append(f'<ellipse cx="50" cy="50" rx="46" ry="17" transform="rotate(-33 50 50)" fill="none" stroke="{ink}" stroke-width="2.2"/>')
+        path('M72 19L84 11L89 19L77 27Z',paint,ink,1.3)
+        path('M79 15L84 23M75 17L80 25',stroke='#F6EBCF',width=1)
+        circle(14,76,4,paint,ink,1.5)
+        path('M22 13V21M18 17H26M79 76V84M75 80H83',stroke=ink,width=1.3)
+    elif kind=='globe':
         circle(50,44,31,'#F6EBCF',paint,3)
         p.append(f'<ellipse cx="50" cy="44" rx="14" ry="31" {line}/>')
         p.append(f'<ellipse cx="50" cy="44" rx="31" ry="12" {line}/>')
@@ -92,7 +138,16 @@ def symbol(kind, paint="#9A7332", variant=0):
         path('M50 25V86M7 26V83Q30 79 50 91Q72 78 94 83V25',stroke=paint,width=4)
         for y in range(31,72,8):
             path(f'M18 {y}Q31 {y-3} 42 {y+3}M58 {y+3}Q70 {y-3} 84 {y}',stroke=ink,width=1.2)
-    elif kind in ("wheel","gear"):
+    elif kind=='wheel':
+        circle(50,50,39,'#9B7447',ink,2)
+        circle(50,50,31,'#F6EBCF',ink,1.5)
+        for i in range(10):
+            a=i*math.pi/5
+            path(f'M{50+math.cos(a)*7:.2f} {50+math.sin(a)*7:.2f}L{50+math.cos(a)*31:.2f} {50+math.sin(a)*31:.2f}',stroke='#8E693E',width=5)
+            x,y=50+math.cos(a)*35,50+math.sin(a)*35
+            circle(round(x,2),round(y,2),1.4,'#F6EBCF','none')
+        circle(50,50,9,paint,ink,2);circle(50,50,3,'#F6EBCF',ink,1)
+    elif kind=='gear':
         circle(50,50,28,paint,ink,2);circle(50,50,19,'#F6EBCF',ink,1.5)
         for i in range(12):
             a=i*math.pi/6
@@ -100,20 +155,40 @@ def symbol(kind, paint="#9A7332", variant=0):
             p.append(f'<rect x="{x-6}" y="{y-6}" width="12" height="12" transform="rotate({i*30} {x} {y})" fill="{paint}" stroke="{ink}" stroke-width="1.5"/>')
             path(f'M50 50L{50+math.cos(a)*18:.1f} {50+math.sin(a)*18:.1f}',stroke=ink,width=2)
         circle(50,50,5,paint)
-    elif kind in ("lens","prism"):
+    elif kind=='lens':
+        path('M4 50H97',stroke='#898779',width=1)
+        path('M48 12Q71 50 48 88Q28 50 48 12Z','#BEDBD8',ink,2)
+        path('M48 17Q58 50 48 83',stroke='#FAFFF5',width=2.5)
+        for yy in (28,50,72):
+            path(f'M3 {yy}H45L82 50L97 {50+(50-yy)*.4:.2f}',stroke=paint,width=2.3)
+        circle(82,50,3,ink,'none')
+        path('M48 89V94M35 95H61',stroke=ink,width=2)
+    elif kind=='prism':
         path('M16 80L49 17L86 80Z','#C1D7D3',ink,2)
         path('M49 17L57 65L86 80M16 80L57 65',stroke='#7497A7',width=1.5)
         path('M1 45L37 45L68 58L100 45',stroke=paint,width=3)
         for i,c in enumerate(('#E05D43','#E8BA2C','#93B18A','#689BC4','#B28BC0')):
             path(f'M68 58L99 {54+i*5}',stroke=c,width=2.5)
-    elif kind in ("ship","anchor"):
+    elif kind=='anchor':
+        circle(50,13,8,'none',ink,3)
+        path('M47 22H53V68Q65 76 79 59L72 57L89 46L87 66L82 62Q71 84 50 94Q29 84 18 62L13 66L11 46L28 57L21 59Q35 76 47 68Z',paint,ink,2)
+        path('M29 32H71V38H29Z','#8F744E',ink,2)
+        path('M50 25V74M28 69Q37 80 50 87Q63 80 72 69',stroke='#F6EBCF',width=1.6)
+    elif kind=='ship':
         path('M9 72Q48 83 91 67L79 84Q48 94 20 83Z','#795A36')
         path('M49 14V77M72 31V73',stroke='#55462D',width=3)
         path('M45 20Q24 35 21 60L45 60Z','#F6ECD3')
         path('M54 21Q71 41 67 62L54 62Z','#F9E9BB')
         path('M76 34L90 61H76Z','#EEE3C9')
         for yy in (89,94):path(f'M6 {yy}Q20 {yy-5} 34 {yy}T62 {yy}T90 {yy}',stroke=paint,width=2)
-    elif kind in ("tower","observatory"):
+    elif kind=='tower':
+        path('M18 92H82V97H18ZM26 31H74V92H26Z','#C9BD9C',ink,2)
+        path('M23 14H33V23H44V14H56V23H67V14H77V35H23Z',paint,ink,2)
+        path('M39 92V74Q50 59 61 74V92Z','#675E4B',ink,1.8)
+        path('M43 47Q50 35 57 47V59H43Z','#F6EBCF',ink,1.5)
+        for yy in (39,64,83):path(f'M27 {yy}H39M62 {yy}H73',stroke='#887D63',width=1.1)
+        path('M27 53H37M64 53H73M33 35V43M67 35V43M32 74V82M68 74V82',stroke='#887D63',width=1.1)
+    elif kind=='observatory':
         path('M15 88H86V94H15ZM24 43H77V87H24Z','#C9BD9C')
         path('M18 43Q20 18 50 13Q79 17 83 43Z',paint)
         path('M31 42Q30 18 50 13Q69 20 69 42M50 13V43',stroke=ink,width=1)

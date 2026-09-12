@@ -1,0 +1,1944 @@
+{
+  "date": "2026-09-12",
+  "baseline_commit": "3b524e6320914e52deb137347c8a02c8cc9306a5",
+  "goal_status": "active; visual parity is not established",
+  "current_runtime": {
+    "file_count": 104,
+    "sha256": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4"
+  },
+  "decision": "Promote distinct semantic emblems, source-backed context insets, bounded pocket fitting and browser detail capture. Publish the reviewed emblem change in the existing institutional mural.",
+  "scope": "Development/refinement of a disclosed authored layout. Positions and typography are supplied to the agent. No new data-first generalization, blind judgment or sealed holdout claim.",
+  "emblem_comparison": {
+    "count": 14,
+    "previous_unique": 6,
+    "revised_unique": 14,
+    "screenshot_sha256": "793dcc41e6e51416e4120f809f98d4df0a96865e0c40201528f621fd0d7ea703",
+    "scope": "Direct review required; distinct serialized marks alone do not prove good visual identity."
+  },
+  "changed_mural_illustrations": [
+    "makers",
+    "dials",
+    "calibration",
+    "sky",
+    "newcalendar",
+    "astronomical",
+    "space-science",
+    "open-sky",
+    "pilot-union",
+    "maritime",
+    "light",
+    "photographic",
+    "imaging"
+  ],
+  "original_composition": {
+    "node_count": 70,
+    "typed_edges": 97,
+    "moved_nodes": [
+      "school",
+      "teachers",
+      "children",
+      "languages",
+      "normal",
+      "primer",
+      "schoolatlas",
+      "textbooks",
+      "audio",
+      "learning",
+      "learningnet"
+    ],
+    "node_fields_except_xy_unchanged": true,
+    "typed_relations_unchanged": true,
+    "category_colors_unchanged": true,
+    "source": "native-context-frozen/source.json",
+    "final_png_sha256": "715399dd6dfbc7222490e96b0c5ea825e8347ea06c78fe0b3a1460f0777125f2"
+  },
+  "attempts": [
+    {
+      "id": "publishing-context",
+      "status": "complete",
+      "note": "Custom project prototype of the contextual opening.",
+      "author_png_review": true,
+      "files": {
+        "browser.json": {
+          "bytes": 290040,
+          "sha256": "a9c24161472be14ac24215c1456613fefdbde8daf580477f2d71dcaf82f26244"
+        },
+        "draft.json": {
+          "bytes": 62405,
+          "sha256": "05a3a97776c5e9c1f8a90ce50fd5a74a22dbf5783183387e1b7d9eb25664ec59"
+        },
+        "driver.py": {
+          "bytes": 4646,
+          "sha256": "1e458161d859d11ee7761da6d6eab002689c5e96fba38675cc0660c3f97a3ae0"
+        },
+        "layout.json": {
+          "bytes": 485,
+          "sha256": "3ff3d0fb33c2b39d2c815a09c2dc1ae4c4f6e9fe2c79974bc0c5b0918cfaad80"
+        },
+        "poster.html": {
+          "bytes": 2124785,
+          "sha256": "043fb7f3e6697145dc35a55b4539d8d82b6765b9ba71dbb488760b097e46f862"
+        },
+        "poster.png": {
+          "bytes": 347341,
+          "sha256": "fd879276f026aa9cbb93bfa27d82d9773e6b4ff854ab2b7fdf545780338a4c2b"
+        },
+        "poster.svg": {
+          "bytes": 2123284,
+          "sha256": "647de1a7b89b08a135ea0300a421d006477f9dff0655882cdd1028b3ce4c23d5"
+        },
+        "prototype.json": {
+          "bytes": 752,
+          "sha256": "a831bf8871b1ae295f1371215f4d35ccce63d58a37fa359eebb6eb3945d9eb6e"
+        },
+        "source.json": {
+          "bytes": 62405,
+          "sha256": "05a3a97776c5e9c1f8a90ce50fd5a74a22dbf5783183387e1b7d9eb25664ec59"
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 261,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "publishing-education",
+      "status": "layout-failure",
+      "note": "Textbooks and research lack a five-unit gutter.",
+      "author_png_review": false,
+      "files": {
+        "draft.json": {
+          "bytes": 39323,
+          "sha256": "a9e5893c70bc1a7dd566be203044b6ae9ffa3ae496ff924b3810285d9294dba6"
+        },
+        "driver.py": {
+          "bytes": 4646,
+          "sha256": "1e458161d859d11ee7761da6d6eab002689c5e96fba38675cc0660c3f97a3ae0"
+        },
+        "prototype.json": {
+          "bytes": 307,
+          "sha256": "1709b4895657001264e83a3186fd797c66da27c326499358c9e37ab2ae98e5fd"
+        }
+      }
+    },
+    {
+      "id": "publishing-education-gutter",
+      "status": "layout-failure",
+      "note": "The same neighboring records still lack a gutter after the first shift.",
+      "author_png_review": false,
+      "files": {
+        "draft.json": {
+          "bytes": 39323,
+          "sha256": "1aacf1715b16e280955da1d702a62b17ee5cde3cb32233627c4f6e72d50d1098"
+        },
+        "driver.py": {
+          "bytes": 4720,
+          "sha256": "3ce2291ff7c03ba99794ba4902aac2eab296d168c34899e4e45e4084386c3296"
+        },
+        "prototype.json": {
+          "bytes": 307,
+          "sha256": "1709b4895657001264e83a3186fd797c66da27c326499358c9e37ab2ae98e5fd"
+        }
+      }
+    },
+    {
+      "id": "publishing-education-clear",
+      "status": "layout-failure",
+      "note": "Children and language records lack a gutter.",
+      "author_png_review": false,
+      "files": {
+        "draft.json": {
+          "bytes": 39323,
+          "sha256": "dbc75bb63b856d35885f21a8cf7e2b49c155be0e8334d5e53a0c3622801b0e5b"
+        },
+        "driver.py": {
+          "bytes": 4720,
+          "sha256": "8f261d38890416b1c873857ee7d314cfb36b19c21493db95cb79bae82c553b2f"
+        },
+        "prototype.json": {
+          "bytes": 307,
+          "sha256": "73703aee7773d96d46512b9cabdad1b45d337412a3beb53ac1102c41dbeb94c7"
+        }
+      }
+    },
+    {
+      "id": "publishing-education-spacing",
+      "status": "layout-failure",
+      "note": "Scientific Index and Learning Media collide.",
+      "author_png_review": false,
+      "files": {
+        "draft.json": {
+          "bytes": 39323,
+          "sha256": "2b6b8f05f02968333ce8c0cfc82da65c762fb47db0c3bc97b61ded83f6fa163b"
+        },
+        "driver.py": {
+          "bytes": 4727,
+          "sha256": "fe560ff4c39c31bb9f513184da18cc8fa229e71f7d817871602fd2672f03d9c1"
+        },
+        "prototype.json": {
+          "bytes": 310,
+          "sha256": "08d757455f6782a06c772ae0444e1a2733084325e988e0147225d953f11a94d8"
+        }
+      }
+    },
+    {
+      "id": "publishing-education-group",
+      "status": "complete",
+      "note": "Eleven education records repositioned as one local history; both mergers are clearer.",
+      "author_png_review": true,
+      "files": {
+        "browser.json": {
+          "bytes": 288068,
+          "sha256": "88527bdcb9fef90de93630db056b8cfba067f8b3b56a2310901b8c6f4dc241f5"
+        },
+        "draft.json": {
+          "bytes": 39311,
+          "sha256": "64bcfd7127b0f5eae30ed022f723b3adb62366fbb63e7b2ae45aec11e6da5449"
+        },
+        "driver.py": {
+          "bytes": 4848,
+          "sha256": "e520cc71e03fcfa96dd2945a18c79a36f1c5008b10655b06d7b39265335b5738"
+        },
+        "layout.json": {
+          "bytes": 485,
+          "sha256": "afc3158e0b6a098094d1ae004d2af9ffbf915eb9bde59ca61181cd4aa7bd9535"
+        },
+        "poster.html": {
+          "bytes": 2123117,
+          "sha256": "393173a2478b3c9c4fbff1ad6671a47fb39681d3604090cbdf8b7521f0de7998"
+        },
+        "poster.png": {
+          "bytes": 345451,
+          "sha256": "d71341c254523fed23406f9cc98d5c56140bced7368a361e35ce6a422a729385"
+        },
+        "poster.svg": {
+          "bytes": 2121616,
+          "sha256": "8465c62798bd302c571988f4911daa9365168ba1b26fefc123ed25dc3210aa86"
+        },
+        "prototype.json": {
+          "bytes": 762,
+          "sha256": "048d84333845bc29296bd1728040ae127a3b8a3e0f20f27a43b46f5ed09b3ef7"
+        },
+        "routing.json": {
+          "bytes": 4766,
+          "sha256": "08b1ad1f43449fd6f43c2d61817be53129a429f75dd4a32c97d9b7a4f9bf952e"
+        },
+        "source.json": {
+          "bytes": 61712,
+          "sha256": "caeb49dce6c522b42e390cb574ac62e16c9b1b140597d144d2472ef03d52b5ff"
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 261,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "native-context",
+      "status": "layout-failure",
+      "note": "Native count layout requires 230.7 units of height; supplied box had 228.",
+      "author_png_review": false,
+      "files": {
+        "failure.json": {
+          "bytes": 133,
+          "sha256": "9cca56aa3708a2d5fe32a9508e4b26b0eb5e781e95921e850fdffe3d64fe715f"
+        },
+        "source.json": {
+          "bytes": 61929,
+          "sha256": "cf4c0ddd7b1d05422e9739625f44e2b7170e0e5558351a061f12f3f9cfaf9a9a"
+        }
+      }
+    },
+    {
+      "id": "native-context-sized",
+      "status": "complete",
+      "note": "Native contextual insets, enlarged count box; no separate final author image review.",
+      "author_png_review": false,
+      "files": {
+        "browser.json": {
+          "bytes": 314783,
+          "sha256": "155a8fe1d0acb446454b09c25fab52e0a868748fea8207185b5715a63468a1ca"
+        },
+        "layout.json": {
+          "bytes": 485,
+          "sha256": "4c053aae179dfb411a3e589354bb30e2479503ccae35bc7608b57300189c0d56"
+        },
+        "poster.html": {
+          "bytes": 2126104,
+          "sha256": "81df4cd8dadd4813e8670e30d7646497f307cea0ece21340be24a0a249b2545a"
+        },
+        "poster.png": {
+          "bytes": 344957,
+          "sha256": "715399dd6dfbc7222490e96b0c5ea825e8347ea06c78fe0b3a1460f0777125f2"
+        },
+        "poster.svg": {
+          "bytes": 2124603,
+          "sha256": "6776a48401138a470f380cf1dee366625be82612f44fa953683373a2555b68d9"
+        },
+        "source.json": {
+          "bytes": 61929,
+          "sha256": "62558d9b542662629dc1e7d738c6d08a16f3e6fd7af263e19580a6fe04d0675d"
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 261,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "native-context-frozen",
+      "status": "complete",
+      "note": "Native composer freezes routes around source-backed insets.",
+      "author_png_review": true,
+      "files": {
+        "browser.json": {
+          "bytes": 315308,
+          "sha256": "09f8c8f79e227aa464a1e2dea67cc7dedbea52e29e69858d77cf1df98ef677ec"
+        },
+        "composition.json": {
+          "bytes": 253,
+          "sha256": "1d0c342bd41e2927ac22a9c9a9af2b34d5a35eb60d4e39ff7a84a13ef6d17ee7"
+        },
+        "layout.json": {
+          "bytes": 485,
+          "sha256": "01aecd224ddb19f9eccc1894aa7d35c4803558ff972228fa6926375df2928f8c"
+        },
+        "poster.html": {
+          "bytes": 2126108,
+          "sha256": "00f4832537f6890944cfa50921c16ae49dcf9d2092e77dc7b6866d4887c13ea5"
+        },
+        "poster.png": {
+          "bytes": 344957,
+          "sha256": "715399dd6dfbc7222490e96b0c5ea825e8347ea06c78fe0b3a1460f0777125f2"
+        },
+        "poster.svg": {
+          "bytes": 2124607,
+          "sha256": "069d6158b8c8ff6a1951cf18d8151aca1d535b253c1859d050de806d35bee683"
+        },
+        "source.json": {
+          "bytes": 61933,
+          "sha256": "a54febb87c230ea56ed15a2003cd3c0ce42040e6ee0c92fcf0622a6d123e5799"
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 261,
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "contract-check",
+      "status": "complete",
+      "note": "Fourteen independent fictional collections; a technical control, not an aesthetic target.",
+      "author_png_review": true,
+      "files": {
+        "browser.json": {
+          "bytes": 33405,
+          "sha256": "b6346ec3a304a9c251603ff48ec0634caec845f950217262538da5ad4203fb65"
+        },
+        "context.json": {
+          "bytes": 240,
+          "sha256": "46fcd3e1903464cfed119d36b08aeecdac5d974390a6e0aa1f2cc5aa4611ce81"
+        },
+        "layout.json": {
+          "bytes": 475,
+          "sha256": "71fe4522e292a02e48339e35eaa20ecea20252a6fee0e243b8117dc841f9d35b"
+        },
+        "poster.html": {
+          "bytes": 199912,
+          "sha256": "5e812e5607b7bd6bd1f7193bae9e54cbed27d14ca05acef87e37c8e6a50ac181"
+        },
+        "poster.png": {
+          "bytes": 129653,
+          "sha256": "c8a9b1193eda0fb077ac0c62fc9ae6a8ed023c5833d94168f7f307a4c554926b"
+        },
+        "poster.svg": {
+          "bytes": 198451,
+          "sha256": "984149893ed56bcb9d50b4f1ad5d533e443bea8a99794fb8483a1bec6b4b9cc8"
+        },
+        "source.json": {
+          "bytes": 5162,
+          "sha256": "2dfa7b7fcd8708a177e033fedf1d21432d6136fcd1e443b0275eb6d54aff46d7"
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1400,
+          1570
+        ],
+        "node_count": 14,
+        "edge_count": 0,
+        "text_count": 43,
+        "findings": [],
+        "composition_warnings": []
+      }
+    }
+  ],
+  "forward_runs": [
+    {
+      "id": "usefulcharts-v32-context-1-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.5",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 104,
+        "payloadSha256": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-context-insets.md",
+        "sizeBytes": 60093,
+        "sha256": "2bebab65f6b5437ca8902994aba2297059bff9db54308700a8daec0246f5f12c"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": false,
+      "duration_seconds": 145.647,
+      "trace_pass": false,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 2,
+          "resultBytes": 126334
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12685
+        },
+        {
+          "path": "skills/usefulcharts-style/references/editorial-contract.md",
+          "calls": 1,
+          "resultBytes": 13855
+        },
+        {
+          "path": "skills/usefulcharts-style/references/institution-composition.md",
+          "calls": 1,
+          "resultBytes": 7030
+        },
+        {
+          "path": "skills/usefulcharts-style/references/editorial-composition.md",
+          "calls": 1,
+          "resultBytes": 7334
+        },
+        {
+          "path": "skills/usefulcharts-style/references/context-insets.md",
+          "calls": 1,
+          "resultBytes": 5289
+        },
+        {
+          "path": "result/browser.json",
+          "calls": 1,
+          "resultBytes": 5226
+        },
+        {
+          "path": "result/layout.json",
+          "calls": 1,
+          "resultBytes": 602
+        },
+        {
+          "path": "result/poster.png",
+          "calls": 1,
+          "resultBytes": 1762235
+        },
+        {
+          "path": "busy-local-group.png",
+          "calls": 1,
+          "resultBytes": 45630
+        }
+      ],
+      "event_findings": [
+        {
+          "code": "tool-error",
+          "line": 964,
+          "tool": "bash"
+        }
+      ],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89",
+        "afterDigest": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v32-context-1-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Naturalistic refinement of a disclosed authored development poster. Exact fields and visible inset content are checked; no blind visual-parity claim.",
+        "counts": 70
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 260,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "inset_boxes": [
+        {
+          "id": "workshop-roots-context",
+          "kind": "story",
+          "box": [
+            96,
+            130,
+            390,
+            270
+          ],
+          "columns": null
+        },
+        {
+          "id": "institution-counts",
+          "kind": "counts",
+          "box": [
+            1240,
+            130,
+            630,
+            270
+          ],
+          "columns": 2
+        }
+      ],
+      "fit_pockets_used": false,
+      "browser_detail_used": false,
+      "final_png_sha256": "3cfe9c4c973defab9d0a712667e4e21cf3d9e42acbcb459afc0c6ba1c2df2384",
+      "author_full_png_review": false,
+      "classification": "agent: assumed optional image tooling; skill: inset-placement workflow needed bounded fitting"
+    },
+    {
+      "id": "usefulcharts-v32-context-2-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.5",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 104,
+        "payloadSha256": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-context-insets.md",
+        "sizeBytes": 60093,
+        "sha256": "2bebab65f6b5437ca8902994aba2297059bff9db54308700a8daec0246f5f12c"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": false,
+      "duration_seconds": 127.096,
+      "trace_pass": false,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 2,
+          "resultBytes": 126334
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12685
+        },
+        {
+          "path": "skills/usefulcharts-style/references/institution-composition.md",
+          "calls": 1,
+          "resultBytes": 7030
+        },
+        {
+          "path": "skills/usefulcharts-style/references/editorial-contract.md",
+          "calls": 1,
+          "resultBytes": 13855
+        },
+        {
+          "path": "skills/usefulcharts-style/references/context-insets.md",
+          "calls": 1,
+          "resultBytes": 5289
+        },
+        {
+          "path": "result/poster.png",
+          "calls": 1,
+          "resultBytes": 1759251
+        },
+        {
+          "path": "busy-local-group.png",
+          "calls": 1,
+          "resultBytes": 88178
+        },
+        {
+          "path": "result/layout.json",
+          "calls": 1,
+          "resultBytes": 602
+        },
+        {
+          "path": "result/browser.json",
+          "calls": 1,
+          "resultBytes": 3179
+        }
+      ],
+      "event_findings": [
+        {
+          "code": "tool-error",
+          "line": 716,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 902,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 1206,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 1319,
+          "tool": "bash"
+        }
+      ],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89",
+        "afterDigest": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v32-context-2-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Naturalistic refinement of a disclosed authored development poster. Exact fields and visible inset content are checked; no blind visual-parity claim.",
+        "counts": 70
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 259,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "inset_boxes": [
+        {
+          "id": "workshop-roots-context",
+          "kind": "story",
+          "box": [
+            58,
+            132,
+            386,
+            212
+          ],
+          "columns": null
+        },
+        {
+          "id": "category-counts-context",
+          "kind": "counts",
+          "box": [
+            1222,
+            136,
+            650,
+            248
+          ],
+          "columns": 2
+        }
+      ],
+      "fit_pockets_used": false,
+      "browser_detail_used": false,
+      "final_png_sha256": "d406f15f4e04832d7a6056fc037454dc78f611e13048dcd2b1c83345e5132acd",
+      "author_full_png_review": false,
+      "classification": "agent: assumed optional image tooling; skill: inset-placement workflow needed bounded fitting"
+    },
+    {
+      "id": "usefulcharts-v32-context-3-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.5",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 104,
+        "payloadSha256": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-context-insets.md",
+        "sizeBytes": 60093,
+        "sha256": "2bebab65f6b5437ca8902994aba2297059bff9db54308700a8daec0246f5f12c"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": false,
+      "duration_seconds": 134.68,
+      "trace_pass": false,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 2,
+          "resultBytes": 126334
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12685
+        },
+        {
+          "path": "skills/usefulcharts-style/references/packed-stories.md",
+          "calls": 1,
+          "resultBytes": 4364
+        },
+        {
+          "path": "skills/usefulcharts-style/references/institution-composition.md",
+          "calls": 1,
+          "resultBytes": 7030
+        },
+        {
+          "path": "skills/usefulcharts-style/references/editorial-contract.md",
+          "calls": 1,
+          "resultBytes": 13855
+        },
+        {
+          "path": "skills/usefulcharts-style/references/context-insets.md",
+          "calls": 1,
+          "resultBytes": 5289
+        },
+        {
+          "path": "result/poster.png",
+          "calls": 1,
+          "resultBytes": 1755375
+        },
+        {
+          "path": "busy_crop.png",
+          "calls": 1,
+          "resultBytes": 45410
+        },
+        {
+          "path": "education_crop.png",
+          "calls": 1,
+          "resultBytes": 40738
+        }
+      ],
+      "event_findings": [
+        {
+          "code": "tool-error",
+          "line": 719,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 907,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 1214,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 1257,
+          "tool": "bash"
+        }
+      ],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89",
+        "afterDigest": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v32-context-3-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Naturalistic refinement of a disclosed authored development poster. Exact fields and visible inset content are checked; no blind visual-parity claim.",
+        "counts": 70
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 259,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "inset_boxes": [
+        {
+          "id": "workshop-roots",
+          "kind": "story",
+          "box": [
+            64,
+            132,
+            384,
+            220
+          ],
+          "columns": null
+        },
+        {
+          "id": "institution-counts",
+          "kind": "counts",
+          "box": [
+            1212,
+            142,
+            672,
+            250
+          ],
+          "columns": 2
+        }
+      ],
+      "fit_pockets_used": false,
+      "browser_detail_used": false,
+      "final_png_sha256": "f2589d3e06f2627ac4e1e78d497d7597f1995333fcad3a41247910d4a55427e0",
+      "author_full_png_review": false,
+      "classification": "agent: assumed optional image tooling; skill: inset-placement workflow needed bounded fitting"
+    },
+    {
+      "id": "usefulcharts-v32-contract-spark-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 104,
+        "payloadSha256": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-context-insets-contract.md",
+        "sizeBytes": 5895,
+        "sha256": "e1831fea5480120e510c39aeda93d1789fe7dbb2645b0a4a3c87f5b931f80b8a"
+      },
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/context.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict_pass": true,
+      "duration_seconds": 21.046,
+      "trace_pass": true,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 7251
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12685
+        },
+        {
+          "path": "result/source.json",
+          "calls": 1,
+          "resultBytes": 6243
+        },
+        {
+          "path": "result/browser.json",
+          "calls": 1,
+          "resultBytes": 39274
+        },
+        {
+          "path": "result/context.json",
+          "calls": 1,
+          "resultBytes": 321
+        },
+        {
+          "path": "result/layout.json",
+          "calls": 1,
+          "resultBytes": 592
+        }
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89",
+        "afterDigest": "d1fab9f6ee90214f0572828f3df17db5ed1576b3bdc5a992cdfa2eb3510c6a89",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "exact_prompt_source": true,
+        "scope": "Command control with 14 distinct symbols and two insets. No visual-parity or agent image-review claim."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1400,
+          1570
+        ],
+        "node_count": 14,
+        "edge_count": 0,
+        "text_count": 43,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "inset_boxes": [
+        {
+          "id": "instrument-story",
+          "kind": "story",
+          "box": [
+            80,
+            180,
+            470,
+            240
+          ],
+          "columns": null
+        },
+        {
+          "id": "collection-counts",
+          "kind": "counts",
+          "box": [
+            780,
+            180,
+            540,
+            240
+          ],
+          "columns": 2
+        }
+      ],
+      "fit_pockets_used": false,
+      "browser_detail_used": false,
+      "final_png_sha256": "c8a9b1193eda0fb077ac0c62fc9ae6a8ed023c5833d94168f7f307a4c554926b",
+      "author_full_png_review": false,
+      "classification": null
+    },
+    {
+      "id": "usefulcharts-v32b-context-1-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.5",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 104,
+        "payloadSha256": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-context-insets.md",
+        "sizeBytes": 60093,
+        "sha256": "2bebab65f6b5437ca8902994aba2297059bff9db54308700a8daec0246f5f12c"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "duration_seconds": 102.677,
+      "trace_pass": true,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 2,
+          "resultBytes": 126334
+        },
+        {
+          "path": "result/detail-local.png",
+          "calls": 2,
+          "resultBytes": 43664
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12999
+        },
+        {
+          "path": "skills/usefulcharts-style/references/context-insets.md",
+          "calls": 1,
+          "resultBytes": 6160
+        },
+        {
+          "path": "skills/usefulcharts-style/references/editorial-contract.md",
+          "calls": 1,
+          "resultBytes": 13855
+        },
+        {
+          "path": "skills/usefulcharts-style/references/institution-composition.md",
+          "calls": 1,
+          "resultBytes": 7030
+        },
+        {
+          "path": "result/poster.png",
+          "calls": 1,
+          "resultBytes": 1758955
+        },
+        {
+          "path": "result/layout.json",
+          "calls": 1,
+          "resultBytes": 602
+        },
+        {
+          "path": "result/browser.json",
+          "calls": 1,
+          "resultBytes": 3179
+        }
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4",
+        "afterDigest": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v32b-context-1-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Naturalistic refinement of a disclosed authored development poster. Exact fields and visible inset content are checked; no blind visual-parity claim.",
+        "counts": 70
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 259,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "inset_boxes": [
+        {
+          "id": "workshop-roots",
+          "kind": "story",
+          "box": [
+            70,
+            150,
+            405,
+            205
+          ],
+          "columns": null
+        },
+        {
+          "id": "category-overview",
+          "kind": "counts",
+          "box": [
+            1235,
+            150,
+            655,
+            245
+          ],
+          "columns": 3
+        }
+      ],
+      "fit_pockets_used": false,
+      "browser_detail_used": true,
+      "final_png_sha256": "a32b748082dd431411b925a895b7be35ec7dab09649530164dee7aa20a6a437c",
+      "author_full_png_review": true,
+      "classification": null
+    },
+    {
+      "id": "usefulcharts-v32b-context-2-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.5",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 104,
+        "payloadSha256": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-context-insets.md",
+        "sizeBytes": 60093,
+        "sha256": "2bebab65f6b5437ca8902994aba2297059bff9db54308700a8daec0246f5f12c"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "duration_seconds": 93.52,
+      "trace_pass": true,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 2,
+          "resultBytes": 126334
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12999
+        },
+        {
+          "path": "skills/usefulcharts-style/references/context-insets.md",
+          "calls": 1,
+          "resultBytes": 6160
+        },
+        {
+          "path": "skills/usefulcharts-style/references/editorial-contract.md",
+          "calls": 1,
+          "resultBytes": 13855
+        },
+        {
+          "path": "skills/usefulcharts-style/references/packed-stories.md",
+          "calls": 1,
+          "resultBytes": 4364
+        },
+        {
+          "path": "result/poster.png",
+          "calls": 1,
+          "resultBytes": 1754935
+        },
+        {
+          "path": "detail-education.png",
+          "calls": 1,
+          "resultBytes": 34498
+        }
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4",
+        "afterDigest": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v32b-context-2-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Naturalistic refinement of a disclosed authored development poster. Exact fields and visible inset content are checked; no blind visual-parity claim.",
+        "counts": 70
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 259,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "inset_boxes": [
+        {
+          "id": "workshops-to-readers",
+          "kind": "story",
+          "box": [
+            59.134000000000015,
+            143.51500000000044,
+            430.0,
+            285.0
+          ],
+          "columns": null
+        },
+        {
+          "id": "institutions-represented",
+          "kind": "counts",
+          "box": [
+            1258.0,
+            136.63,
+            660.0,
+            285.0
+          ],
+          "columns": 2
+        }
+      ],
+      "fit_pockets_used": true,
+      "browser_detail_used": true,
+      "final_png_sha256": "a1cad16d70c4d559318d54fbfacb1624c28e24b41746d8bc1ac0f5bc52be50d6",
+      "author_full_png_review": true,
+      "classification": null
+    },
+    {
+      "id": "usefulcharts-v32b-context-3-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.5",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 104,
+        "payloadSha256": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-context-insets.md",
+        "sizeBytes": 60093,
+        "sha256": "2bebab65f6b5437ca8902994aba2297059bff9db54308700a8daec0246f5f12c"
+      },
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "strict_pass": true,
+      "duration_seconds": 95.258,
+      "trace_pass": true,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 2,
+          "resultBytes": 126334
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12999
+        },
+        {
+          "path": "skills/usefulcharts-style/references/context-insets.md",
+          "calls": 1,
+          "resultBytes": 6160
+        },
+        {
+          "path": "skills/usefulcharts-style/references/packed-stories.md",
+          "calls": 1,
+          "resultBytes": 4364
+        },
+        {
+          "path": "skills/usefulcharts-style/references/institution-composition.md",
+          "calls": 1,
+          "resultBytes": 7030
+        },
+        {
+          "path": "skills/usefulcharts-style/references/editorial-contract.md",
+          "calls": 1,
+          "resultBytes": 13855
+        },
+        {
+          "path": "result/poster.png",
+          "calls": 1,
+          "resultBytes": 1751607
+        },
+        {
+          "path": "result/detail-education.png",
+          "calls": 1,
+          "resultBytes": 49798
+        },
+        {
+          "path": "result/browser.json",
+          "calls": 1,
+          "resultBytes": 5226
+        }
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4",
+        "afterDigest": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v32b-context-3-20260912",
+        "node_count": 70,
+        "edge_count": 97,
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 1,
+        "findings": [],
+        "scope": "Naturalistic refinement of a disclosed authored development poster. Exact fields and visible inset content are checked; no blind visual-parity claim.",
+        "counts": 70
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1988,
+          2016.8900146484375
+        ],
+        "node_count": 70,
+        "edge_count": 97,
+        "text_count": 260,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "inset_boxes": [
+        {
+          "id": "workshop-roots",
+          "kind": "story",
+          "box": [
+            72,
+            150,
+            320,
+            250
+          ],
+          "columns": null
+        },
+        {
+          "id": "category-overview",
+          "kind": "counts",
+          "box": [
+            1256,
+            150,
+            660,
+            266
+          ],
+          "columns": 3
+        }
+      ],
+      "fit_pockets_used": false,
+      "browser_detail_used": true,
+      "final_png_sha256": "3bac151582dc0ceeb51870b82898e91786737c613eb51dbd342ea459a6b4f1fa",
+      "author_full_png_review": true,
+      "classification": null
+    },
+    {
+      "id": "usefulcharts-v32b-contract-spark-20260912",
+      "model": {
+        "model": "openai-codex/gpt-5.3-codex-spark",
+        "thinking": "high",
+        "mode": "json",
+        "timeoutSeconds": 900
+      },
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 104,
+        "payloadSha256": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-context-insets-contract.md",
+        "sizeBytes": 5895,
+        "sha256": "e1831fea5480120e510c39aeda93d1789fe7dbb2645b0a4a3c87f5b931f80b8a"
+      },
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/context.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict_pass": true,
+      "duration_seconds": 21.313,
+      "trace_pass": true,
+      "read_surface": [
+        {
+          "path": "../prompt.md",
+          "calls": 1,
+          "resultBytes": 7251
+        },
+        {
+          "path": "skills/usefulcharts-style/SKILL.md",
+          "calls": 1,
+          "resultBytes": 12999
+        },
+        {
+          "path": "result/browser.json",
+          "calls": 1,
+          "resultBytes": 39274
+        }
+      ],
+      "event_findings": [],
+      "skill_integrity": {
+        "passed": true,
+        "beforeDigest": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4",
+        "afterDigest": "85f1eb0bf430e1b20692642d419d0c508ec75fba72bbcf0f8a3b7624997cdba4",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "artifact_contract": {
+        "status": "pass",
+        "exact_prompt_source": true,
+        "scope": "Command control with 14 distinct symbols and two insets. No visual-parity or agent image-review claim."
+      },
+      "browser": {
+        "status": "pass",
+        "canvas": [
+          1400,
+          1570
+        ],
+        "node_count": 14,
+        "edge_count": 0,
+        "text_count": 43,
+        "findings": [],
+        "composition_warnings": []
+      },
+      "inset_boxes": [
+        {
+          "id": "instrument-story",
+          "kind": "story",
+          "box": [
+            80,
+            180,
+            470,
+            240
+          ],
+          "columns": null
+        },
+        {
+          "id": "collection-counts",
+          "kind": "counts",
+          "box": [
+            780,
+            180,
+            540,
+            240
+          ],
+          "columns": 2
+        }
+      ],
+      "fit_pockets_used": false,
+      "browser_detail_used": false,
+      "final_png_sha256": "c8a9b1193eda0fb077ac0c62fc9ae6a8ed023c5833d94168f7f307a4c554926b",
+      "author_full_png_review": false,
+      "classification": null
+    }
+  ],
+  "cohort_a": {
+    "naturalistic_strict_passes": 0,
+    "naturalistic_total": 3,
+    "command_control_passes": 1,
+    "independent_artifact_passes": 4
+  },
+  "cohort_b": {
+    "naturalistic_strict_passes": 3,
+    "naturalistic_total": 3,
+    "command_control_passes": 1,
+    "independent_artifact_passes": 4
+  },
+  "model_exception": "GPT-5.5 for image-dependent naturalistic runs; Spark for command controls. Recorded before each cohort.",
+  "visual_review": "All three distinct final cohort-B whole-page PNGs, the author-composed context poster, fourteen-symbol table, three candidate murals and official references were directly inspected.",
+  "development_failures": [
+    "First inset browser mutations serialized an XML prefix that HTML parsing did not treat as SVG; tests corrected before cohort A.",
+    "First bounded fitting test exposed an obstructed connection attachment; fitter now reserves those regions, before cohort B.",
+    "Auxiliary quick_validate initially lacked PyYAML; rerun with an explicit uv dependency passed."
+  ],
+  "tests": {
+    "total": 175,
+    "suites": [
+      {
+        "script": "skills/usefulcharts-style/scripts\\test_timeline_geometry.py",
+        "exit_code": 0,
+        "tests": 11
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts\\test_timeline_events.py",
+        "exit_code": 0,
+        "tests": 25
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts\\test_lineage_runs.py",
+        "exit_code": 0,
+        "tests": 6
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts\\test_family_baselines.py",
+        "exit_code": 0,
+        "tests": 19
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts\\test_editorial_insets.py",
+        "exit_code": 0,
+        "tests": 14
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts\\test_editorial_art.py",
+        "exit_code": 0,
+        "tests": 3
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts\\test_editorial.py",
+        "exit_code": 0,
+        "tests": 51
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts\\test_context_landmarks.py",
+        "exit_code": 0,
+        "tests": 13
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts\\test_chart.py",
+        "exit_code": 0,
+        "tests": 27
+      },
+      {
+        "script": "skills/usefulcharts-style/scripts\\test_branching_layout.py",
+        "exit_code": 0,
+        "tests": 6
+      }
+    ],
+    "new_emblem_tests": 3,
+    "new_context_tests": 14
+  },
+  "mutation_tests": {
+    "status": "pass",
+    "mutations": [
+      {
+        "mutation": "changed-influence-source-side",
+        "expected_finding": "source-relation-port",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "detached-lateral-source",
+        "expected_finding": "detached-source",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "lateral-influence-changed-to-descent",
+        "expected_finding": "invalid-lateral-relation",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "invalid-influence-target-side",
+        "expected_finding": "detached-target",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "stale-source-revision",
+        "expected_finding": "source-revision-mismatch",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "changed-date",
+        "expected_finding": "source-date-label-missing",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "changed-caption",
+        "expected_finding": "source-detail-missing",
+        "detected": true,
+        "finding_count": 2
+      },
+      {
+        "mutation": "deleted-node",
+        "expected_finding": "node-inventory",
+        "detected": true,
+        "finding_count": 6
+      },
+      {
+        "mutation": "oversized-label",
+        "expected_finding": "label-outside-node",
+        "detected": true,
+        "finding_count": 14
+      },
+      {
+        "mutation": "invisible-label",
+        "expected_finding": "text-contrast",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "wrong-relation-kind",
+        "expected_finding": "source-relation-inventory",
+        "detected": true,
+        "finding_count": 1
+      },
+      {
+        "mutation": "detached-source",
+        "expected_finding": "detached-source",
+        "detected": true,
+        "finding_count": 8
+      },
+      {
+        "mutation": "source-reentry",
+        "expected_finding": "edge-node-collision",
+        "detected": true,
+        "finding_count": 11
+      }
+    ]
+  },
+  "paint_controls": {
+    "status": "pass",
+    "cases": [
+      {
+        "id": "automatic",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "authored-shared",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "perpendicular-crossing",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "legitimate-siblings",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "forged-route-metadata",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "rounded-coordinate-overlap",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "painted-width-overlap",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "parallel-gutter",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      }
+    ],
+    "scope": "Independent visible SVG command/transform inspection. Warnings do not establish aesthetic parity."
+  },
+  "gallery": {
+    "status": "pass",
+    "checks": [
+      {
+        "width": 1440,
+        "cards": 3,
+        "ids": [
+          "usefulcharts-dynastic-genealogy",
+          "usefulcharts-branching-lineage",
+          "usefulcharts-parallel-history"
+        ],
+        "overflow": false
+      },
+      {
+        "width": 390,
+        "cards": 3,
+        "ids": [
+          "usefulcharts-dynastic-genealogy",
+          "usefulcharts-branching-lineage",
+          "usefulcharts-parallel-history"
+        ],
+        "overflow": false
+      },
+      {
+        "viewer": "aurelian-families",
+        "fit_width": 1000,
+        "zoom_width": 1250,
+        "full_width": 1890,
+        "embedded_images_checked": 17
+      },
+      {
+        "viewer": "atlas-of-inquiry",
+        "fit_width": 1000,
+        "zoom_width": 1250,
+        "full_width": 1620,
+        "embedded_images_checked": 7
+      },
+      {
+        "viewer": "five-regional-histories",
+        "fit_width": 1000,
+        "zoom_width": 1250,
+        "full_width": 1680,
+        "embedded_images_checked": 7
+      }
+    ],
+    "page_errors": []
+  },
+  "comparison": {
+    "status": "pass",
+    "scope": "Private unblinded author comparison; no aesthetic parity score.",
+    "families": [
+      {
+        "id": "atlas-of-inquiry",
+        "source_unchanged": true,
+        "text_unchanged": true,
+        "edge_geometry_unchanged": true,
+        "old_svg_sha256": "2f8cd4b855a8fc19ffedb0f6670f8d2d65cbcd0df6cb67c698874e36ea744735",
+        "new_svg_sha256": "c67d8045125ceec290720c2451757707e00159aee788795d7d7f52c67a85e81a",
+        "svg_changed": true,
+        "critique": "The revised symbols now distinguish their subjects. Five large families still persist through most of the page; the reference has more major subdivisions, shifts of emphasis and local visual identities. Routing is preserved, so the emblem change alone cannot establish composition parity."
+      },
+      {
+        "id": "aurelian-families",
+        "source_unchanged": true,
+        "text_unchanged": true,
+        "edge_geometry_unchanged": true,
+        "old_svg_sha256": "147571087e0cbe772934bc04a95c8636dc66247ecab45fd46d92283d9750bfc0",
+        "new_svg_sha256": "147571087e0cbe772934bc04a95c8636dc66247ecab45fd46d92283d9750bfc0",
+        "svg_changed": false,
+        "critique": "The opening fan, compact nameplates and selected portraits give a recognizable family-tree structure. Much of the middle still repeats similar-sized boxes and small names. The retained synthetic genealogy has fewer varied contextual anchors than the reference. This revision does not change its composition."
+      },
+      {
+        "id": "five-regional-histories",
+        "source_unchanged": true,
+        "text_unchanged": true,
+        "edge_geometry_unchanged": true,
+        "old_svg_sha256": "00bbdf2fe89192ee55b94edee8263264286dbef45343e671752a3d6c339e9ae9",
+        "new_svg_sha256": "00bbdf2fe89192ee55b94edee8263264286dbef45343e671752a3d6c339e9ae9",
+        "svg_changed": false,
+        "critique": "Mixed stems and bands preserve the numeric scale and make important periods visible. The five regional histories remain more regular than the reference and several vertical labels dominate their adjoining prose. This revision does not change their composition."
+      }
+    ],
+    "captures": [
+      {
+        "id": "lineage",
+        "png_sha256": "7f97a345f30e5faf5809764828d00ee3ee03242839bad6dd80d0342829fc1785"
+      },
+      {
+        "id": "genealogy",
+        "png_sha256": "da262d5661c5f3dec82c0f2f98e3f083c337016de03c1f92b9df88b9b3c7e189"
+      },
+      {
+        "id": "timeline",
+        "png_sha256": "74512af8bb049d74313e9e04d6b742e2ce24854683886b985847c17f80d389c4"
+      },
+      {
+        "id": "publishing",
+        "png_sha256": "0c8965c6aeed7ff58131980ee50cb6a4fc87386f455d2027ea745dffe6d2f3e0"
+      }
+    ]
+  },
+  "final_murals": {
+    "atlas-of-inquiry": {
+      "status": "pass",
+      "canvas": [
+        1620,
+        2430
+      ],
+      "node_count": 141,
+      "edge_count": 171,
+      "text_count": 648,
+      "findings": [],
+      "composition_warnings": []
+    },
+    "aurelian-families": {
+      "status": "pass",
+      "canvas": [
+        1890,
+        2835
+      ],
+      "node_count": 561,
+      "edge_count": 323,
+      "text_count": 1154,
+      "findings": [],
+      "composition_warnings": []
+    },
+    "five-regional-histories": {
+      "status": "pass",
+      "canvas": [
+        1680,
+        2300
+      ],
+      "node_count": 50,
+      "edge_count": 55,
+      "text_count": 353,
+      "findings": [],
+      "composition_warnings": []
+    }
+  },
+  "remaining_gaps": [
+    "Persistent large institutional families and limited intermediate hierarchy in the 141-record mural.",
+    "Many long dotted influence paths remain in the 70-record case despite its improved opening and education group.",
+    "Genealogical repeated nameplate rhythm and chronologically regular regional treatments remain unchanged by this revision."
+  ]
+}

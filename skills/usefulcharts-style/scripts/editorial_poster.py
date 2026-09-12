@@ -19,6 +19,7 @@ from editorial_art import symbol
 from cohort_layout import place_cohorts, compact_cohort_defaults
 from story_layout import pack_stories
 from branching_layout import arrange_branches
+from editorial_insets import CONTEXT_KINDS, inset_content, draw_context_inset
 from editorial_landmarks import landmark_content
 from timeline_geometry import lane_geometry, duration_width, transition_geometry, period_parts
 from timeline_annotations import event_content
@@ -295,6 +296,19 @@ class EditorialPoster(Poster):
     def build_routes(self):
         seen=set();pairs=set();segments=[]
         context_boxes={}
+        inset_ids=set()
+        for index,item in enumerate(self.data.get('insets',[])):
+            if item.get('kind') not in CONTEXT_KINDS:continue
+            iid=ident(item.get('id',f'inset-{index}'))
+            require(iid not in inset_ids,'Contextual inset IDs must be unique.');inset_ids.add(iid)
+            box=inset_content(item,self.data)['box'];x,y,w,h=box
+            require(x>=48 and y>=130 and x+w<=self.w-48 and y+h<=self.h-85,'A contextual inset must stay inside the printable field.')
+            require(not any(overlaps(box,b,5) for b in self.boxes.values()),'A contextual inset covers an institution. Move it into an open pocket.')
+            other_insets=[tuple(other['box']) for j,other in enumerate(self.data.get('insets',[])) if j!=index]
+            require(not any(overlaps(box,b,5) for b in other_insets),'Contextual insets need separate pockets.')
+            require(not any(overlaps(box,cell['box'],5) for cell in self.data.get('_cohort_key',{}).get('cells',[])), 'A contextual inset covers the category key.')
+            context_boxes[f'inset-{iid}']=box
+            self.annotation_boxes.append(box)
         for i,annotation in enumerate(self.data.get('annotations',[])):
             if annotation.get('kind')!='landmark':continue
             require(annotation.get('node') in self.boxes,'A landmark requires a known person or institution anchor.')
@@ -303,6 +317,8 @@ class EditorialPoster(Poster):
             context_boxes[f'context-{i}']=(x-content['width']/2,y-content['height']/2,content['width'],content['height'])
             require(not any(overlaps(context_boxes[f'context-{i}'],box,4) for box in self.boxes.values()),
                 'A landmark covers a person or institution. Move it into a nearby open pocket.')
+            require(not any(overlaps(context_boxes[f'context-{i}'],box,4) for key,box in context_boxes.items() if key!=f'context-{i}'),
+                'A landmark overlaps another reserved contextual element.')
         row_bands={}
         for box in self.boxes.values():
             row=round(box[1]+box[3]/2,3)
@@ -512,7 +528,10 @@ class EditorialPoster(Poster):
         self.add('</g>')
 
     def draw_insets(self):
-        for item in self.data.get('insets',[]):
+        for index,item in enumerate(self.data.get('insets',[])):
+            if item.get('kind') in CONTEXT_KINDS:
+                draw_context_inset(self,item,index)
+                continue
             x,y,w,h=item['box']
             self.text(x+w/2,y+14,item['title'],18,bold=True)
             if item['kind']=='map':
