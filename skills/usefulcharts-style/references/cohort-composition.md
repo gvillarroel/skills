@@ -10,6 +10,8 @@ For 30 people or fewer, start from [the family template](../assets/templates/coh
 
 Write explicit category membership before unions. A cross-family marriage keeps two category colors; its children retain the branch specified by the source. Do not turn a marriage, convergence or mixed ancestry into a new category unless the source defines one. For ambiguous category membership, preserve the available fact and qualify it instead of asserting a blended family.
 
+Use [genealogical name and date groups](genealogy-nameplates.md) to distinguish compact principal records, selected portraits and plain supporting relatives. Keep short names/dates together, respect explicit treatments, and inspect the actual painted position of any manually composed family capsule.
+
 Optional page controls:
 
 | Field | Purpose |

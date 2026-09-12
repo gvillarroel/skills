@@ -11,6 +11,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from editorial_poster import EditorialPoster
 from space_family_branches import fit_baselines, space_branches
@@ -132,9 +133,30 @@ class BaselineTests(unittest.TestCase):
         self.assertEqual(len(result['nodes']),36);self.assertIn('_cohort_key',result)
         by_id={n['id']:n for n in result['nodes']}
         self.assertEqual(by_id['p0']['style'],'hero');self.assertEqual(by_id['p12']['style'],'card')
-        self.assertEqual(by_id['p35']['style'],'plain');self.assertEqual(by_id['p12']['detail_position'],'outside')
+        self.assertEqual(by_id['p35']['style'],'plain');self.assertEqual(by_id['p12']['detail_position'],'inside')
         self.assertEqual(by_id['p12']['size'],18);self.assertEqual(by_id['p12']['detail_size'],13)
         _,report=EditorialPoster(result).render();self.assertEqual(report['edge_count'],30)
+
+    def test_mixed_nameplate_defaults_keep_portraits_dates_and_explicit_captions(self):
+        data=family();data['unions']=[];data['edges']=[]
+        data['nodes']=[dict(id=f'n{i}',label=f'Name {i}',detail='1850–1915',birth=1850+i,
+            group='a',row=i//5) for i in range(35)]
+        data['nodes'][10].update(icon='museum-862',emphasis=True)
+        data['nodes'][11].update(emphasis=True,date_label='c. 1870',detail='A recorded family school.')
+        data['nodes'][12].update(emphasis=True,detail_position='outside')
+        data['nodes'][13].update(emphasis=True,detail_position='inside')
+        original=copy.deepcopy(data);result,_=space_branches(data)
+        self.assertEqual(data,original)
+        svg,_=EditorialPoster(result).render();root=ET.fromstring(svg);ns={'s':'http://www.w3.org/2000/svg'}
+        by_id={node['id']:node for node in result['nodes']}
+        for i in (10,11,12):
+            self.assertEqual(by_id[f'n{i}']['detail_position'],'outside')
+            self.assertIsNotNone(root.find(f'.//s:g[@data-node-id="n{i}"]/s:rect[@data-content-envelope]',ns))
+        self.assertEqual(by_id['n13']['detail_position'],'inside')
+        self.assertIsNone(root.find('.//s:g[@data-node-id="n13"]/s:rect[@data-content-envelope]',ns))
+        portrait=root.find('.//s:g[@data-node-id="n10"]/s:svg[@data-artwork="public-domain-museum-image"]',ns)
+        self.assertIsNotNone(portrait)
+        self.assertIn('c. 1870',svg);self.assertIn('A recorded family school.',svg)
 
     def test_medium_defaults_respect_explicit_typography_and_treatment(self):
         data=family();data['unions']=[]

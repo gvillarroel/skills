@@ -1,0 +1,1758 @@
+{
+  "status": "validating",
+  "runs": [
+    {
+      "id": "usefulcharts-v25-family-nameplates-20260912-gpt55-1",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 81,
+        "payloadSha256": "35f5c1657bc5511baffc3acd35d7e2c5c8aabb68caab5e0ffd361fcf61b8423c"
+      },
+      "prompt_sha256": "ebe0759cbc7a32dbe1efe1f72e32f72f329b828fc409fb1e843f79c8ad811971",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T08:25:23.986472+00:00",
+        "finishedAtUtc": "2026-09-12T08:28:08.425102+00:00",
+        "durationSeconds": 164.439,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1483.8 1304.31",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 18,
+            "position": {
+              "x": 608.7899780273438,
+              "y": 297.6499938964844,
+              "w": 128,
+              "h": 53.20000076293945
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 18,
+            "position": {
+              "x": 523,
+              "y": 493.67999267578125,
+              "w": 120,
+              "h": 53.20000076293945
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 17,
+            "position": {
+              "x": 1121.1400146484375,
+              "y": 888.6099853515625,
+              "w": 142,
+              "h": 71.19999694824219
+            }
+          }
+        ],
+        "focal_people": [
+          {
+            "node": "p01",
+            "icon": "museum-75374",
+            "visible_image": true,
+            "visible_max_type": 22,
+            "ordinary_median_type": 18,
+            "icon_width": 50,
+            "passed": true
+          },
+          {
+            "node": "p05",
+            "icon": "museum-105600",
+            "visible_image": true,
+            "visible_max_type": 21,
+            "ordinary_median_type": 18,
+            "icon_width": 46,
+            "passed": true
+          },
+          {
+            "node": "p11",
+            "icon": "museum-31233",
+            "visible_image": true,
+            "visible_max_type": 21,
+            "ordinary_median_type": 18,
+            "icon_width": 46,
+            "passed": true
+          }
+        ],
+        "page_notes": [
+          "Fictional Silver Vale records; all dates, houses, relationships and heraldic devices are invented. Museum portraits are disclosed decorative samples, not likenesses. Rows are supplied generations; double lines join partners and descent begins at the union. Dotted line",
+          "marks uncertain descent from Henrik to Xavier; spacing is schematic."
+        ],
+        "nameplate_observations": {
+          "colored_people": 30,
+          "solid_name_and_date": 27,
+          "dark_names": 30,
+          "people": [
+            {
+              "id": "p01",
+              "has_portrait": true,
+              "solid_name_and_date": false,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F6BFB6"
+            },
+            {
+              "id": "p02",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#A9D8EA"
+            },
+            {
+              "id": "p03",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F6BFB6"
+            },
+            {
+              "id": "p05",
+              "has_portrait": true,
+              "solid_name_and_date": false,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F6BFB6"
+            },
+            {
+              "id": "p07",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#A9D8EA"
+            },
+            {
+              "id": "p09",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F6BFB6"
+            },
+            {
+              "id": "p10",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F8E38A"
+            },
+            {
+              "id": "p11",
+              "has_portrait": true,
+              "solid_name_and_date": false,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F6BFB6"
+            },
+            {
+              "id": "p12",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C5DEBD"
+            },
+            {
+              "id": "p13",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#A9D8EA"
+            },
+            {
+              "id": "p15",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F8E38A"
+            },
+            {
+              "id": "p17",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F8E38A"
+            },
+            {
+              "id": "p19",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C5DEBD"
+            },
+            {
+              "id": "p21",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F6BFB6"
+            },
+            {
+              "id": "p22",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C5DEBD"
+            },
+            {
+              "id": "p23",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F8E38A"
+            },
+            {
+              "id": "p24",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F8E38A"
+            },
+            {
+              "id": "p25",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C5DEBD"
+            },
+            {
+              "id": "p26",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F6BFB6"
+            },
+            {
+              "id": "p27",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#A9D8EA"
+            },
+            {
+              "id": "p28",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C5DEBD"
+            },
+            {
+              "id": "p29",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F8E38A"
+            },
+            {
+              "id": "p31",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F6BFB6"
+            },
+            {
+              "id": "p33",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F6BFB6"
+            },
+            {
+              "id": "p34",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F8E38A"
+            },
+            {
+              "id": "p35",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C5DEBD"
+            },
+            {
+              "id": "p36",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F6BFB6"
+            },
+            {
+              "id": "p37",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F8E38A"
+            },
+            {
+              "id": "p38",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C5DEBD"
+            },
+            {
+              "id": "p41",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#A9D8EA"
+            }
+          ],
+          "limitation": "Descriptive browser/SVG evidence; direct visual review remains required and these counts do not establish aesthetic equivalence."
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/focal-people.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/genealogy-nameplates.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/assets/portraits/provenance.json",
+        "result/poster.png",
+        "result/layout.json",
+        "result/browser.json",
+        "result/source.json"
+      ],
+      "tool_errors": [],
+      "invalid_event_lines": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 199100
+        }
+      ],
+      "visual_review": {
+        "status": "pass",
+        "method": "Direct unblinded author inspection of the final PNG at readable size.",
+        "strengths": [
+          "Light family fills with dark names; ordinary names and dates form compact colored groups.",
+          "Three distinct portrait groups and all three locally bound place captions are visible.",
+          "Plain partners and terminal relatives are readable and remain visually subordinate."
+        ],
+        "remaining": [
+          "Long middle cross-family routes form broad horizontal shelves.",
+          "Regular family-unit shapes and a wide opening still differ from dense reference composition."
+        ],
+        "scope": "Compact development artifact only; no claim of dense-poster visual parity."
+      }
+    },
+    {
+      "id": "usefulcharts-v25-family-nameplates-20260912-gpt55-2",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 81,
+        "payloadSha256": "35f5c1657bc5511baffc3acd35d7e2c5c8aabb68caab5e0ffd361fcf61b8423c"
+      },
+      "prompt_sha256": "ebe0759cbc7a32dbe1efe1f72e32f72f329b828fc409fb1e843f79c8ad811971",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T08:25:23.985734+00:00",
+        "finishedAtUtc": "2026-09-12T08:28:28.739175+00:00",
+        "durationSeconds": 184.754,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1467.64 1321.11",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 581.0999755859376,
+              "y": 295.25000000000006,
+              "w": 152,
+              "h": 58
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 497.95999145507824,
+              "y": 495.57998657226574,
+              "w": 146,
+              "h": 58
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 19,
+            "position": {
+              "x": 1080.7099609375002,
+              "y": 897.039978027344,
+              "w": 164,
+              "h": 78.4000015258789
+            }
+          }
+        ],
+        "focal_people": [
+          {
+            "node": "p01",
+            "icon": "museum-75374",
+            "visible_image": true,
+            "visible_max_type": 22,
+            "ordinary_median_type": 18,
+            "icon_width": 50,
+            "passed": true
+          },
+          {
+            "node": "p05",
+            "icon": "museum-105600",
+            "visible_image": true,
+            "visible_max_type": 21,
+            "ordinary_median_type": 18,
+            "icon_width": 46,
+            "passed": true
+          },
+          {
+            "node": "p11",
+            "icon": "museum-31233",
+            "visible_image": true,
+            "visible_max_type": 21,
+            "ordinary_median_type": 18,
+            "icon_width": 46,
+            "passed": true
+          }
+        ],
+        "page_notes": [
+          "Synthetic fictional family records; museum portraits are decorative public-domain samples, not likenesses. Double lines join partners; descent drops from unions; dotted line = uncertain Henrik\u2192Xavier. Spacing and heraldic devices are fictional/schematic."
+        ],
+        "nameplate_observations": {
+          "colored_people": 30,
+          "solid_name_and_date": 27,
+          "dark_names": 30,
+          "people": [
+            {
+              "id": "p01",
+              "has_portrait": true,
+              "solid_name_and_date": false,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7B4AA"
+            },
+            {
+              "id": "p02",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#AEDBF1"
+            },
+            {
+              "id": "p03",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7B4AA"
+            },
+            {
+              "id": "p05",
+              "has_portrait": true,
+              "solid_name_and_date": false,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7B4AA"
+            },
+            {
+              "id": "p07",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#AEDBF1"
+            },
+            {
+              "id": "p09",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7B4AA"
+            },
+            {
+              "id": "p10",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7D96B"
+            },
+            {
+              "id": "p11",
+              "has_portrait": true,
+              "solid_name_and_date": false,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7B4AA"
+            },
+            {
+              "id": "p12",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#BFDDB8"
+            },
+            {
+              "id": "p13",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#AEDBF1"
+            },
+            {
+              "id": "p15",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7D96B"
+            },
+            {
+              "id": "p17",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7D96B"
+            },
+            {
+              "id": "p19",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#BFDDB8"
+            },
+            {
+              "id": "p21",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7B4AA"
+            },
+            {
+              "id": "p22",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#BFDDB8"
+            },
+            {
+              "id": "p23",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7D96B"
+            },
+            {
+              "id": "p24",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7D96B"
+            },
+            {
+              "id": "p25",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#BFDDB8"
+            },
+            {
+              "id": "p26",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7B4AA"
+            },
+            {
+              "id": "p27",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#AEDBF1"
+            },
+            {
+              "id": "p28",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#BFDDB8"
+            },
+            {
+              "id": "p29",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7D96B"
+            },
+            {
+              "id": "p31",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7B4AA"
+            },
+            {
+              "id": "p33",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7B4AA"
+            },
+            {
+              "id": "p34",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7D96B"
+            },
+            {
+              "id": "p35",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#BFDDB8"
+            },
+            {
+              "id": "p36",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7B4AA"
+            },
+            {
+              "id": "p37",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F7D96B"
+            },
+            {
+              "id": "p38",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#BFDDB8"
+            },
+            {
+              "id": "p41",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#AEDBF1"
+            }
+          ],
+          "limitation": "Descriptive browser/SVG evidence; direct visual review remains required and these counts do not establish aesthetic equivalence."
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/focal-people.md",
+        "skills/usefulcharts-style/references/genealogy-nameplates.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/portraits/provenance.json",
+        "result/source.json"
+      ],
+      "tool_errors": [],
+      "invalid_event_lines": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 208312
+        },
+        {
+          "mime": "image/png",
+          "encoded_bytes": 206396
+        }
+      ],
+      "visual_review": {
+        "status": "pass",
+        "method": "Direct unblinded author inspection of the final PNG at readable size.",
+        "strengths": [
+          "Clear compact ordinary records, dark names and visible light category colors.",
+          "The three portrait groups are distinct, with dates below the image/name group.",
+          "Place captions remain local and readable."
+        ],
+        "remaining": [
+          "Wide parallel connector shelves persist through the middle generations.",
+          "Lower routes retain angular detours and the page has a repeated family-unit rhythm."
+        ],
+        "scope": "Compact development artifact only; no claim of dense-poster visual parity."
+      }
+    },
+    {
+      "id": "usefulcharts-v25-family-nameplates-20260912-gpt55-3",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 81,
+        "payloadSha256": "35f5c1657bc5511baffc3acd35d7e2c5c8aabb68caab5e0ffd361fcf61b8423c"
+      },
+      "prompt_sha256": "ebe0759cbc7a32dbe1efe1f72e32f72f329b828fc409fb1e843f79c8ad811971",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T08:25:24.046377+00:00",
+        "finishedAtUtc": "2026-09-12T08:27:51.468332+00:00",
+        "durationSeconds": 147.422,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1525.64 1297.91",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 608.6799926757811,
+              "y": 293.24999999999994,
+              "w": 150,
+              "h": 58
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 521.9600219726561,
+              "y": 496.24999999999994,
+              "w": 142,
+              "h": 57.99999999999994
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 18,
+            "position": {
+              "x": 1128.3599853515623,
+              "y": 905.2499999999999,
+              "w": 170,
+              "h": 53.20000076293945
+            }
+          }
+        ],
+        "focal_people": [
+          {
+            "node": "p01",
+            "icon": "museum-75374",
+            "visible_image": true,
+            "visible_max_type": 22,
+            "ordinary_median_type": 18,
+            "icon_width": 48,
+            "passed": true
+          },
+          {
+            "node": "p05",
+            "icon": "museum-105600",
+            "visible_image": true,
+            "visible_max_type": 22,
+            "ordinary_median_type": 18,
+            "icon_width": 48,
+            "passed": true
+          },
+          {
+            "node": "p11",
+            "icon": "museum-31233",
+            "visible_image": true,
+            "visible_max_type": 22,
+            "ordinary_median_type": 18,
+            "icon_width": 48,
+            "passed": true
+          }
+        ],
+        "page_notes": [
+          "Synthetic fictional records: all Silver Vale people, dates, houses, places and heraldic devices are invented; museum portrait samples are decorative, not likenesses. Rows are declared generations; vertical spacing is schematic, not a time scale. The dotted p32\u2192p48 descent is",
+          "uncertain; partnerships and house memberships follow the source records."
+        ],
+        "nameplate_observations": {
+          "colored_people": 30,
+          "solid_name_and_date": 27,
+          "dark_names": 30,
+          "people": [
+            {
+              "id": "p01",
+              "has_portrait": true,
+              "solid_name_and_date": false,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F5B8AA"
+            },
+            {
+              "id": "p02",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#B7DDF2"
+            },
+            {
+              "id": "p03",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F5B8AA"
+            },
+            {
+              "id": "p05",
+              "has_portrait": true,
+              "solid_name_and_date": false,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F5B8AA"
+            },
+            {
+              "id": "p07",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#B7DDF2"
+            },
+            {
+              "id": "p09",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F5B8AA"
+            },
+            {
+              "id": "p10",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C9E1B8"
+            },
+            {
+              "id": "p11",
+              "has_portrait": true,
+              "solid_name_and_date": false,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F5B8AA"
+            },
+            {
+              "id": "p12",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#D6C1E8"
+            },
+            {
+              "id": "p13",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#B7DDF2"
+            },
+            {
+              "id": "p15",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C9E1B8"
+            },
+            {
+              "id": "p17",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C9E1B8"
+            },
+            {
+              "id": "p19",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#D6C1E8"
+            },
+            {
+              "id": "p21",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F5B8AA"
+            },
+            {
+              "id": "p22",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#D6C1E8"
+            },
+            {
+              "id": "p23",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C9E1B8"
+            },
+            {
+              "id": "p24",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C9E1B8"
+            },
+            {
+              "id": "p25",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#D6C1E8"
+            },
+            {
+              "id": "p26",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F5B8AA"
+            },
+            {
+              "id": "p27",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#B7DDF2"
+            },
+            {
+              "id": "p28",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#D6C1E8"
+            },
+            {
+              "id": "p29",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C9E1B8"
+            },
+            {
+              "id": "p31",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F5B8AA"
+            },
+            {
+              "id": "p33",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F5B8AA"
+            },
+            {
+              "id": "p34",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C9E1B8"
+            },
+            {
+              "id": "p35",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#D6C1E8"
+            },
+            {
+              "id": "p36",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#F5B8AA"
+            },
+            {
+              "id": "p37",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#C9E1B8"
+            },
+            {
+              "id": "p38",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#D6C1E8"
+            },
+            {
+              "id": "p41",
+              "has_portrait": false,
+              "solid_name_and_date": true,
+              "dark_name": true,
+              "visible_name_inks": [
+                "#242720"
+              ],
+              "fill": "#B7DDF2"
+            }
+          ],
+          "limitation": "Descriptive browser/SVG evidence; direct visual review remains required and these counts do not establish aesthetic equivalence."
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/genealogy-nameplates.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/focal-people.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/portraits/provenance.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "result/poster.png",
+        "result/source.json"
+      ],
+      "tool_errors": [],
+      "invalid_event_lines": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 208184
+        }
+      ],
+      "visual_review": {
+        "status": "fail",
+        "method": "Direct unblinded author inspection of the final PNG at readable size.",
+        "strengths": [
+          "Light coral, blue, green and lilac distinguish the four families with dark names.",
+          "All three portrait groups and local captions are visible.",
+          "Ordinary name/date blocks remain compact and readable."
+        ],
+        "remaining": [
+          "The footer leaks the internal relationship identifiers p32 and p48 instead of naming Henrik and Xavier. This is an editorial failure, even though the strict and factual gates pass.",
+          "Broad middle cross-family routes and regularly repeated family units remain."
+        ],
+        "scope": "Compact development artifact only; no claim of dense-poster visual parity.",
+        "failure_classification": "agent",
+        "failure_reason": "Internal source identifiers are visible in the printable footer."
+      }
+    },
+    {
+      "id": "usefulcharts-v25-nameplate-contract-20260912-spark-1",
+      "case": "contract-smoke",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 81,
+        "payloadSha256": "35f5c1657bc5511baffc3acd35d7e2c5c8aabb68caab5e0ffd361fcf61b8423c"
+      },
+      "prompt_sha256": "ffe4f04e07bd87f9f899ab04809e224b67258da8cdaac17497f40594d1f5e4f1",
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/placement.json",
+        "result/poster.svg",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T08:25:24.339923+00:00",
+        "finishedAtUtc": "2026-09-12T08:25:50.287391+00:00",
+        "durationSeconds": 25.948,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_preserved": true,
+        "placement": "pass",
+        "independent_browser": "pass"
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "tool_errors": [],
+      "invalid_event_lines": [],
+      "supported_image_results": [],
+      "visual_review": "Command control only."
+    }
+  ],
+  "local_development_attempts": [
+    {
+      "id": "solid-all",
+      "changed_people": 225,
+      "status": "fail",
+      "before": "5720173d",
+      "include_portraits": true,
+      "reflow": null,
+      "compact_captions": null,
+      "landmark_preferences": null,
+      "error": "Word '1154\u20131183' cannot fit. Widen its node/page or add an explicit line break.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "solid-all-compact-context",
+      "changed_people": 225,
+      "status": "fail",
+      "before": "5720173d",
+      "include_portraits": true,
+      "reflow": true,
+      "compact_captions": true,
+      "landmark_preferences": [
+        [
+          "person-33-1",
+          "-180",
+          "-60"
+        ]
+      ],
+      "error": "No readable format fits person-11-1.realm: [{'format': {}, 'error': 'No local pocket for person-11-1.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.'}, {'format': {'width': 112, 'art_position': 'above'}, 'error': 'No local pocket for person-11-1.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.'}, {'format': {'width': 112, 'art_position': 'beside'}, 'error': 'No local pocket for person-11-1.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.'}, {'format': {'width': 79.5, 'art_position': 'above'}, 'error': 'No local pocket for person-11-1.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.'}]",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "solid-all-reflow",
+      "changed_people": 225,
+      "status": "fail",
+      "before": "5720173d",
+      "include_portraits": true,
+      "reflow": true,
+      "compact_captions": null,
+      "landmark_preferences": null,
+      "error": "No readable format fits person-11-1.realm: [{'format': {}, 'error': 'No local pocket for person-11-1.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.'}, {'format': {'width': 112, 'art_position': 'above'}, 'error': 'No local pocket for person-11-1.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.'}, {'format': {'width': 112, 'art_position': 'beside'}, 'error': 'No local pocket for person-11-1.realm; author the surrounding region or omit this optional repeated landmark, preserving its source field.'}]",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "solid-principals",
+      "changed_people": 208,
+      "status": "fail",
+      "before": "5720173d",
+      "include_portraits": false,
+      "reflow": null,
+      "compact_captions": null,
+      "landmark_preferences": null,
+      "error": "Relationship marriage-2-2-person-3-3 has a crowded target port near person-2-2. Reserve at least 18 units at the attachment.",
+      "all_source_facts_preserved": null
+    },
+    {
+      "id": "solid-principals-realm-gap",
+      "changed_people": 208,
+      "status": "pass",
+      "before": "5720173d",
+      "include_portraits": false,
+      "reflow": true,
+      "compact_captions": null,
+      "landmark_preferences": [
+        [
+          "person-33-1",
+          "-180",
+          "-60"
+        ]
+      ],
+      "error": null,
+      "all_source_facts_preserved": true
+    },
+    {
+      "id": "solid-principals-reflow",
+      "changed_people": 208,
+      "status": "pass",
+      "before": "5720173d",
+      "include_portraits": false,
+      "reflow": true,
+      "compact_captions": null,
+      "landmark_preferences": null,
+      "error": null,
+      "all_source_facts_preserved": true
+    }
+  ],
+  "final_facts": {
+    "status": "pass",
+    "before_revision": "5720173d",
+    "failures": [],
+    "nodes": 561,
+    "unions": 261,
+    "relationships": 323,
+    "source_sha256": "89a0bba6972f1c240d1deaa37844276a5c3b3a7f24a937ec3242a43203044328",
+    "all_nonvisual_node_fields_preserved": true,
+    "additional_source_bound_landmarks": 0,
+    "changed_fields": [
+      "art_position",
+      "cohort_bottom",
+      "cohort_spread",
+      "cohort_top",
+      "cohort_weights",
+      "detail_position",
+      "detail_size",
+      "dx",
+      "dy",
+      "height",
+      "icon_width",
+      "layout",
+      "size",
+      "width",
+      "x",
+      "y"
+    ]
+  },
+  "final_murals": [
+    {
+      "id": "aurelian-families",
+      "svg_sha256": "147571087e0cbe772934bc04a95c8636dc66247ecab45fd46d92283d9750bfc0",
+      "unchanged_from_before": false,
+      "canvas": [
+        1890,
+        2835
+      ],
+      "browser_status": "pass",
+      "browser_findings": [],
+      "mutations_detected": 19
+    },
+    {
+      "id": "atlas-of-inquiry",
+      "svg_sha256": "92fac6718d8484e9d8666b92720d99653b68e1887e00499db450da707a3ed5f6",
+      "unchanged_from_before": true,
+      "canvas": [
+        1800,
+        2700
+      ],
+      "browser_status": "pass",
+      "browser_findings": [],
+      "mutations_detected": 9
+    },
+    {
+      "id": "five-regional-histories",
+      "svg_sha256": "d91311f0f1882f066f1762aa34cf46ac7d5bcb7fa17b3635871a2236d678d0c3",
+      "unchanged_from_before": true,
+      "canvas": [
+        1800,
+        2400
+      ],
+      "browser_status": "pass",
+      "browser_findings": [],
+      "mutations_detected": 14
+    }
+  ],
+  "naturalistic_visual_acceptance": {
+    "passed": 2,
+    "total": 3,
+    "scope": "Compact development output only. Strict execution and visual acceptance are separate gates."
+  },
+  "ineffective_context_move": {
+    "id": "solid-principals-realm-gap",
+    "geometry_status": "pass",
+    "visual_intent_achieved": false,
+    "requested_offset": [
+      -180,
+      -60
+    ],
+    "actual_offset": [
+      -212,
+      108
+    ],
+    "png_unchanged": true,
+    "finding": "The pocket search returned the previous realm location. A changed JSON preference was not a visible caption separation. The final local court treatment is independently checked below."
+  },
+  "court_composition": {
+    "status": "pass",
+    "node": "person-35-0",
+    "label": "EVEREN OF DUNPORT",
+    "requested_center": [
+      431.156,
+      2453.393
+    ],
+    "painted_center": [
+      431.16,
+      2453.39
+    ],
+    "painted_box": [
+      394.16,
+      2439.25,
+      74.0,
+      28.28
+    ],
+    "printed_lines": [
+      "EVEREN OF",
+      "DUNPORT"
+    ],
+    "silent_relocation": false,
+    "paths_through_caption": []
+  },
+  "canonical_png_matches_reviewed": true,
+  "prototype_retention": "These exploratory attempts used an evolving project driver with the unchanged v24 router. Preserve their outcomes, not a claim of frozen per-attempt reproducibility. Composition-stage files omit required captions and never count as final passes.",
+  "evaluation_scope": "Development reuse of the full Silver Vale family, with compact name/date groups, three focal people and a light palette. Not a sealed holdout or a substitute for the dense three-family target.",
+  "visual_parity": "Not established. Preserve dense genealogy, institutional lineage and chronology requirements and previous unresolved findings."
+}

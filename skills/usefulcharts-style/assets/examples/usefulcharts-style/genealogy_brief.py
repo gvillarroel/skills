@@ -117,7 +117,7 @@ def build_genealogy(base):
         cohort_spread={str(row):1+.35*(7-row)/6 for row in range(1,7)})
     for node in d['nodes']:
         if node.get('style')=='plain':continue
-        node.update(detail_position='outside',size=13.5 if node['row']==0 else 11.8,detail_size=9.1)
+        node.update(detail_position='outside' if node.get('icon') else 'inside',size=13.5 if node['row']==0 else 11.8,detail_size=9.1)
         if node.get('icon'):node['icon_width']=36 if node['row']==0 else 33
         if node.get('icon'):
             node['size']=15.5 if node['row']==0 else 13.3
@@ -129,10 +129,14 @@ def build_genealogy(base):
     resolved,_=space_branches(d,date_scale=3,local_labels=True)
     # Source-bound territorial orientation points, chosen after whole-page and
     # detail review. They are not additional events or invented relationships.
-    landmarks=[('person-6-0',-44,-160),('person-11-1',120,-108),('person-19-3',-128,132),
-        ('person-28-2',-228,52),('person-33-1',-212,100),('person-35-1',-208,116),('person-27-7',-32,-132)]
+    landmarks=[('person-6-0',-44,-160),('person-11-1',120,-112),('person-19-3',-128,148),
+        ('person-28-2',-232,52),('person-33-1',-212,108),('person-35-1',-208,116),('person-27-7',-32,-132)]
     for variant,(node,dx,dy) in enumerate(landmarks):
         resolved['annotations'].append(dict(kind='landmark',node=node,field='realm',width=112 if variant in (0,5) else 146,size=17,
             icon='heraldry',art_size=32,art_position='above' if variant==0 else 'beside',variant=variant,dx=dx,dy=dy,vertical_radius=170))
+    # Keep the realm heading and the specific court at distinct reading levels.
+    # A measured two-line capsule fits beside the actual named person's descent.
+    court=next(a for a in resolved['annotations'] if a.get('kind')=='pill' and a.get('node')=='person-35-0')
+    court.update(width=74,dx=-32,dy=40)
     resolved['source_note']+=' Heraldic devices are fictional.'
     return resolved

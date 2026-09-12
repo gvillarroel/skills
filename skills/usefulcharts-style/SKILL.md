@@ -7,6 +7,8 @@ description: Create editable educational posters inspired by UsefulCharts, with 
 
 Create an original information poster with clear relationships, stable family colors, compact labels, and deliberate connector corridors. UsefulCharts is the design reference; identify the result by its subject and author. A cream background and colored boxes alone do not establish a convincing resemblance.
 
+When no colors are supplied, use light category fills: coral `#F56550`, sky blue `#77BDDD`, gold `#F7CD26`, sage `#98BD92`, lilac `#B58CC9`, orange `#FF9D28`, and pink `#E99ABB`. Keep names predominantly black or near-black and verify contrast. Preserve any palette explicitly supplied by the user or source.
+
 ## Select one construction route
 
 - **Lineage with 30 records or fewer, including institutional mergers:** read [compact lineage](references/compact-lineage.md) and adapt [the data-only template](assets/templates/lineage.json). Start with `design: editorial`, `mode: lineage`, `layout: auto`, unless the user explicitly prescribes positions. Omit dimensions, coordinates, custom imprint and font overrides for the first preview so the renderer measures the subject. Two incoming links do not make a small history a dense authored poster. Continue directly to rendering; use authored placement only if the preview exposes a specific composition problem.
@@ -25,7 +27,7 @@ Store known `birth` and `death` years as JSON numbers. For an unknown date, omit
 
 Keep the source-defined category through mergers and marriages. Do not invent a blended category for descendants of two differently colored parents. Assign each person's stated branch before placing them; preserve it when relationships cross. Importance changes typography and treatment, not automatically the family color. Vary cards, plain names, family pills and selected illustrations by meaning. Give dates and explanatory consequences subordinate type. Keep explanatory prose concise rather than repeating every edge inside its target label.
 
-When important people still blend into repetitive nameplates, read [focal people and the opening fan](references/focal-people.md). Measure selected portraits and names together, and use bounded `cohort_spread` preferences only where the source's early branches need more room.
+For genealogical grouping, read [name and date groups](references/genealogy-nameplates.md). Ordinary principal names and short dates normally share a compact colored card; portraits and longer context use a different treatment. When important people still blend into repetitive nameplates, read [focal people and the opening fan](references/focal-people.md). Measure selected portraits and names together, and use bounded `cohort_spread` preferences only where the source's early branches need more room.
 
 A short history needs a compact canvas. Reserve the portrait 2:3 wall format and dense 10–16-unit typography for substantial data. Let terminated branches release space; let large descendant groups widen. Avoid rigid persistent columns, equally weighted cards and illustrations placed at mechanical intervals. A schematic composition can have uneven gaps; a numeric time scale cannot.
 

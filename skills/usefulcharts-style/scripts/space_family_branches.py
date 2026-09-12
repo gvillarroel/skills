@@ -100,7 +100,8 @@ def space_branches(source,date_field='birth',date_scale=None,local_labels=False,
             node.setdefault('style','hero' if founder else 'card' if principal else 'plain')
             node.setdefault('size',22 if founder or node.get('emphasis') else prepared['font_size'])
             node.setdefault('detail_size',13)
-            if node['style']!='plain':node.setdefault('detail_position','outside')
+            if node['style']!='plain':
+                node.setdefault('detail_position','outside' if node.get('icon') or node.get('date_label') is not None else 'inside')
             icon=node.get('icon_width',44) if node.get('icon') else 0
             if icon:node.setdefault('icon_width',icon)
             node.setdefault('width',max(64,text_width(node['label'],node['size'],True)+14+icon,
