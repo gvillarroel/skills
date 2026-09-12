@@ -104,3 +104,9 @@ The fourteen emblem subjects now have visibly different silhouettes at their act
 The institutional reference still has more intermediate subdivisions, stronger changes of emphasis and more varied local identities. The 141-record study retains five large families for much of its height. The 70-record study retains many long dotted influence paths in the middle and lower page. The genealogy repeats similar nameplate rhythms, while the chronology's five regional histories remain more regular and its larger vertical labels can dominate adjacent prose. This revision does not erase those differences.
 
 The observed improvements and clean technical checks therefore support continued use and refinement of the skill. They do not support an indistinguishability claim, a numeric similarity percentage, or marking the overall goal complete.
+
+## Verified publication
+
+Implementation commit `e040300ac38ebb53150b2d0a9ca4e4b9e936ad55` is on `main`. [Pages workflow 34702510644](https://github.com/gvillarroel/skills/actions/runs/34702510644) completed successfully, including repository validation, generated-output boundaries and unified Pages validation. All eleven public gallery/source/SVG/viewer files match the expected committed bytes after the documented Pages transforms, and the main catalog links to the example set. The [public gallery](https://gvillarroel.github.io/skills/examples/usefulcharts-style/) contains the reviewed institutional emblem change.
+
+The publication receipt is retained in the machine-readable summary and at `projects/usefulcharts-style/artifacts/reviews/semantic-emblems-v32/publication-verification.json`. Local synchronization completed with fifteen changed files; the canonical skill and its local installation are refreshed. The private original-reference comparison and publishing study remain local review artifacts.

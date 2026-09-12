@@ -120,6 +120,8 @@ def main():
                 remaining_gaps=['Persistent large institutional families and limited intermediate hierarchy in the 141-record mural.',
                                 'Many long dotted influence paths remain in the 70-record case despite its improved opening and education group.',
                                 'Genealogical repeated nameplate rhythm and chronologically regular regional treatments remain unchanged by this revision.'])
+    publication=ART/'publication-verification.json'
+    if publication.exists():report['publication']=load(publication)
     OUTPUT.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(dict(runtime=payload,tests=report['tests']['total'],cohort_a=report['cohort_a'],cohort_b=report['cohort_b'],
                           changed_mural_illustrations=len(changed_illustrations),moved_nodes=moved,visual_parity=False)))
