@@ -98,4 +98,10 @@ uv run --script evaluations/contracts/verify-usefulcharts-family-landmarks.py ev
 uv run --script scripts/summarize-pi-json-events.py evaluations/runs/<fresh-family-id>/events.jsonl --require-model gpt-5.5 --fail-on-invalid-json --fail-on-tool-error
 ```
 
-Pattern IDs, skill structure, independence, payload, quick skill validation, Pages generation and local installation synchronization pass. Publish only after final run inspection, diff review and explicit staging of this skill's changes. The live gallery keeps the existing three routes and stable pattern IDs.
+Pattern IDs, skill structure, independence, payload, quick skill validation, Pages generation and local installation synchronization pass. The local Pages build produces 639 files / 41.83 MiB. Final runtime copies and exact outputs were inspected before explicit staging of this skill's changes; unrelated working changes remain outside these commits.
+
+## Publication
+
+Implementation commit `e948a77cc891d2bac45c85944b5e8d506c2e5a6a` is published on `main`. The [Pages workflow 34680066156](https://github.com/gvillarroel/skills/actions/runs/34680066156) completed successfully. Independent HTTP verification compared all eleven gallery, manifest and poster files against the complete expected committed bytes after the standard Pages metadata and whitespace transformations. All matched and the main example catalog still links this gallery. Local evidence: `projects/usefulcharts-style/artifacts/reviews/context-landmarks-publication-verification.json`.
+
+The [published gallery](https://gvillarroel.github.io/skills/examples/usefulcharts-style/) retains its three stable routes. The updated [Aurelian genealogy](https://gvillarroel.github.io/skills/examples/usefulcharts-style/aurelian-families.html) exposes the seven source-bound realm captions. The institutional and timeline examples remain available with their earlier unresolved visual findings. Publication is delivery evidence, not an aesthetic pass; the skill and the indistinguishability objective remain in validation.
