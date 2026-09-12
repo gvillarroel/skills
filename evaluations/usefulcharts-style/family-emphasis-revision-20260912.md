@@ -86,8 +86,10 @@ uv run --script evaluations/contracts/verify-usefulcharts-family-emphasis.py eva
 uv run --script scripts/summarize-pi-json-events.py evaluations/runs/<fresh-family-id>/events.jsonl --require-model gpt-5.5 --fail-on-invalid-json --fail-on-tool-error
 ```
 
-Pattern IDs, repository structure, skill independence, payload, the 14 Pi-harness tests and quick skill validation pass. The local Pages build passes with 639 files / 41.83 MiB. Local installation synchronization copies the 14 changed skill files and preserves other local files. Publication is recorded below after completion.
+Pattern IDs, repository structure, skill independence, payload, the 14 Pi-harness tests and quick skill validation pass. The local Pages build passes with 639 files / 41.83 MiB. Local installation synchronization copies the 14 changed skill files and preserves other local files. The Pages workflow also passes its diagram coverage, generated-output boundary and unified Pages checks.
 
 ## Delivery state
 
-The v24 implementation is awaiting its normal Pages publication. The intended public route remains the existing [Aurelian genealogy](https://gvillarroel.github.io/skills/examples/usefulcharts-style/aurelian-families.html), discoverable from the main examples catalog. Publication will be checked against the committed bytes and its successful workflow before delivery. Visual parity remains unproven regardless of that technical result.
+Implementation `e8ed87e0ccdc150152fe808e55776b54fcf10eec` is committed and published on `main`. [Pages workflow 34682038023](https://github.com/gvillarroel/skills/actions/runs/34682038023) completed successfully. Independent HTTP verification compared all eleven gallery, manifest and poster files to their complete expected committed bytes after standard Pages metadata and whitespace transformations; all match. The main examples catalog still links the gallery. Local evidence: `projects/usefulcharts-style/artifacts/reviews/family-emphasis-publication-verification.json`.
+
+The revised [Aurelian genealogy](https://gvillarroel.github.io/skills/examples/usefulcharts-style/aurelian-families.html) is available at its unchanged route with the complete SVG and editable source. The [three-poster gallery](https://gvillarroel.github.io/skills/examples/usefulcharts-style/) preserves the institutional and chronology examples. Publication completes delivery of this revision, not the full quality-and-composition objective; visual parity remains unproven.
