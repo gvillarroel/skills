@@ -870,5 +870,12 @@
       ]
     }
   ],
-  "visual_parity": "Not established. Better paragraph hierarchy and local image groups do not resolve the repeated regional structure or prove broad parity."
+  "visual_parity": "Not established. Better paragraph hierarchy and local image groups do not resolve the repeated regional structure or prove broad parity.",
+  "publication": {
+    "status": "pass",
+    "commit": "91dab70d212b458f5aa41f9f0ac445a0a9d6dd95",
+    "workflow": "https://github.com/gvillarroel/skills/actions/runs/34692761288",
+    "url": "https://gvillarroel.github.io/skills/examples/usefulcharts-style/",
+    "files_verified": 11
+  }
 }

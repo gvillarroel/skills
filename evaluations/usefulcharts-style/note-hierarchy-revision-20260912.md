@@ -79,3 +79,11 @@ uv run --script scripts/summarize-pi-json-events.py evaluations/runs/usefulchart
 ```
 
 The author opened the selected full PNG, the equal-width comparison, native-scale trade/navigation details, the compact template preview and every completed naturalistic PNG directly. Private reference artwork and bulky run evidence remain outside Git.
+
+## Verified publication
+
+Implementation `91dab70d212b458f5aa41f9f0ac445a0a9d6dd95` passes [Pages workflow 34692761288](https://github.com/gvillarroel/skills/actions/runs/34692761288). All eleven public gallery/source/poster files match the committed bytes after standard Pages transformations; the main example catalog retains the stable link. The [revised chronology](https://gvillarroel.github.io/skills/examples/usefulcharts-style/five-regional-histories.html) is available at its existing route.
+
+Verification command: `uv run --script projects/usefulcharts-style/scripts/verify_publication.py --commit 91dab70d --workflow 34692761288 --report projects/usefulcharts-style/artifacts/reviews/note-hierarchy-publication-verification.json`.
+
+The published naturalistic prompt removes one trailing space from the request paragraph. The exact tested prompts and their original byte hashes remain in the run manifests; task wording is unchanged. The runtime skill payload is unchanged from the final v29b tests. Publication confirms availability and reproducibility; the skill remains `validating` for the documented reliability and visual gaps.
