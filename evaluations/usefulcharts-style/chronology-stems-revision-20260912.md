@@ -69,6 +69,12 @@ uv run --script scripts/run-pi-skill-eval.py usefulcharts-style --prompt-file ev
 uv run --script scripts/summarize-pi-json-events.py evaluations/runs/usefulcharts-v27-contract-spark-20260912/events.jsonl --require-model gpt-5.3-codex-spark --fail-on-invalid-json --fail-on-tool-error
 ```
 
-The complete equal-width reference/before/after view is `projects/usefulcharts-style/artifacts/reviews/chronology-stems-final-comparison/index.html`. Private reference art is not redistributed. Publication verification follows the committed source and is recorded below once confirmed. The skill remains validating because the user's quality-and-composition target is still broader than the evidence achieved here.
+The complete equal-width reference/before/after view is `projects/usefulcharts-style/artifacts/reviews/chronology-stems-final-comparison/index.html`. Private reference art is not redistributed. The skill remains validating because the user's quality-and-composition target is still broader than the evidence achieved here.
 
 The prototype command reproduces the selected final composition with the current renderer. Earlier v27/v27b reports retain the outcomes of the prior conservative obstacle implementation; replaying them with the revised visible-shape packer is not an exact historical rerun. The prototype refuses to overwrite an existing output folder so preserved attempts cannot be silently replaced.
+
+## Verified publication
+
+Implementation commit `f0e0f9375aa28288fe27c2a5878dbb65e21ec57e` passes [Pages workflow 34688838445](https://github.com/gvillarroel/skills/actions/runs/34688838445). All eleven public gallery, source and poster files match the committed expected bytes after the documented Pages transformations. The main examples catalog includes the stable example set. The [revised chronology](https://gvillarroel.github.io/skills/examples/usefulcharts-style/five-regional-histories.html) is published at its existing route.
+
+Verification command: `uv run --script projects/usefulcharts-style/scripts/verify_publication.py --commit f0e0f937 --workflow 34688838445 --report projects/usefulcharts-style/artifacts/reviews/chronology-stems-publication-verification.json`. The receipt is retained locally; the complete SVG files for genealogy and institutions are unchanged from `e35d36c3` after normalizing line endings.
