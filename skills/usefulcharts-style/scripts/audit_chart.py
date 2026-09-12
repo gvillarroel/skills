@@ -36,6 +36,12 @@ AUDIT = r"""() => {
     return {x:a.x,y:a.y,w:z.x-a.x,h:z.y-a.y};
   };
   const textOrigin=el=>new DOMPoint(el.x.baseVal[0]?.value||0,el.y.baseVal[0]?.value||0).matrixTransform(svg.getScreenCTM().inverse().multiply(el.getScreenCTM()));
+  const glyphPoint=(el,end=false)=>{
+    const count=el.getNumberOfChars();if(!count)return null;
+    const p=end?el.getEndPositionOfChar(count-1):el.getStartPositionOfChar(0);
+    const v=new DOMPoint(p.x,p.y).matrixTransform(svg.getScreenCTM().inverse().multiply(el.getScreenCTM()));
+    return {x:v.x,y:v.y};
+  };
   const intersect=(a,b,p=0)=>a.x<b.x+b.w-p && a.x+a.w>b.x+p && a.y<b.y+b.h-p && a.y+a.h>b.y+p;
   const contained=(a,b,p=0)=>a.x>=b.x-p && a.y>=b.y-p && a.x+a.w<=b.x+b.w+p && a.y+a.h<=b.y+b.h+p;
   const lum=color=>{
@@ -59,7 +65,7 @@ AUDIT = r"""() => {
   const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,source_port:el.dataset.sourcePort||'bottom',target_port:el.dataset.targetPort||'top',d:el.getAttribute('d'),curved:el.dataset.routeStyle==='rounded'}));
   const events=[...svg.querySelectorAll('[data-event-id]')].map(el=>({id:el.dataset.eventId,year:Number(el.dataset.year),origin_y:Number(el.dataset.originY),text:el.textContent}));
   const unions=[...svg.querySelectorAll('[data-union-id]')].map(el=>({id:el.dataset.unionId,d:el.getAttribute('d')}));
-  const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,event:el.closest('[data-event-id]')?.dataset.eventId,role:el.dataset.eventTextRole||null,origin:{x:textOrigin(el).x,y:textOrigin(el).y},box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
+  const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,event:el.closest('[data-event-id]')?.dataset.eventId,role:el.dataset.eventTextRole||null,origin:{x:textOrigin(el).x,y:textOrigin(el).y},box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background),runs:[...el.querySelectorAll('tspan')].map(run=>({text:run.textContent,role:run.dataset.eventRunRole||null,font:parseFloat(getComputedStyle(run).fontSize),weight:Number(getComputedStyle(run).fontWeight),origin:glyphPoint(run),end:glyphPoint(run,true),contrast:contrast(getComputedStyle(run).fill,el.dataset.background),...painted(run)}))}));
   const illustrations=[...svg.querySelectorAll('[data-event-id] [data-artwork]')].map(el=>({event:el.closest('[data-event-id]').dataset.eventId,kind:el.dataset.artwork,illustration_id:el.dataset.illustrationId||null,use_href:el.querySelector('use')?.getAttribute('href')||null,viewport:viewport(el),...painted(el)}));
   const landmarks=[...svg.querySelectorAll('[data-annotation-kind="landmark"]')].map(el=>({id:el.dataset.annotationId,node:el.dataset.contextNode,group:el.dataset.contextGroup,field:el.dataset.sourceField,value:el.dataset.sourceValue,box:bounds(el.querySelector('[data-annotation-box]')),heraldry_fill:el.querySelector('[data-artwork="heraldry"]>path')?getComputedStyle(el.querySelector('[data-artwork="heraldry"]>path')).fill:null,label:[...el.querySelectorAll('[data-content-role="landmark-label"]')].map(t=>t.textContent).join(' ')}));
   const setEqual=(a,b)=>a.length===b.length && [...a].sort().join('\n')===[...b].sort().join('\n');
@@ -319,7 +325,9 @@ def main():
         report["visual_review"] = "Inspect the preview separately; these checks do not rate stylistic resemblance."
         args.report.parent.mkdir(parents=True,exist_ok=True)
         args.report.write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
-        print(json.dumps({k:report[k] for k in ("status","id","node_count","edge_count","text_count","min_contrast","findings")}))
+        summary={k:report[k] for k in ("status","id","node_count","edge_count","text_count","min_contrast","findings")}
+        summary['composition_warnings']=report.get('composition_warnings',[])
+        print(json.dumps(summary))
         return 0 if report["status"] == "pass" else 1
     except Exception as error:
         print(f"Browser audit could not complete: {error}",file=sys.stderr)

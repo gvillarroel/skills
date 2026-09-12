@@ -38,6 +38,8 @@ def metrics(raw):
             areas.append(sw*sh+(lw-sw)*lh)
     sizes=[float(e.find('s:text',NS).get('font-size')) for e in events]
     return dict(colored_period_area=sum(areas),area_method='Union of painted rectangular bounds; rounded corners excluded from the approximation.',duration_stems=stems,median_event_heading_size=statistics.median(sizes),
+        paragraph_events=sum(e.find('s:text[@data-event-text-role="paragraph"]',NS) is not None for e in events),
+        mixed_lines=sum(len(text.findall('s:tspan',NS))>1 for event in events for text in event.findall('s:text',NS)),
         illustrated_events=sum(any(element.get('data-artwork') for element in event.iter()) for event in events))
 
 

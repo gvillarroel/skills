@@ -26,21 +26,46 @@ def check_annotations(report,data,lane_origins,time_y):
         year_y=y0+(event['year']-start)/(end-start)*(y1-y0)
         tx=x+aw+8 if event.get('icon') and position=='left' else x
         heading=event.get('size',10.5);detail=event.get('detail_size',heading*.88)
+        paragraph=event.get('text_layout')=='paragraph'
         has_roles=all(t.get('role') in ('heading','detail') for t in texts)
-        if any(t.get('role') for t in texts) and not has_roles:finding('source-event-text-role',eid)
-        if has_roles:
+        if paragraph:
+            runs=[run for text in texts for run in text.get('runs',[])]
+            if not runs or any(t.get('role')!='paragraph' or not t.get('runs') for t in texts) or any(run['role'] not in ('heading','detail') for run in runs):
+                finding('source-event-run-role',eid)
+            roles=[run['role'] for run in runs]
+            if 'detail' in roles and 'heading' in roles[roles.index('detail'):]:finding('source-event-run-role',eid)
+            for role,field in (('heading','label'),('detail','detail')):
+                expected=str(event.get(field,'')).strip()
+                if role=='heading' and expected and expected[-1] not in '.?!:':expected+='.'
+                actual=normalize(' '.join(run['text'] for run in runs if run['role']==role))
+                if actual!=normalize(expected):finding('source-event-text-content',eid)
+            for run in runs:
+                expected_font=heading if run['role']=='heading' else detail
+                expected_weight=700 if run['role']=='heading' else 400
+                if abs(run['font']-expected_font)>.02 or run['weight']!=expected_weight or not run['visible'] or run['opacity']<.99 or run['contrast']<4.49:
+                    finding('source-event-run-style',eid)
+        elif any(t.get('role') for t in texts) and not has_roles:finding('source-event-text-role',eid)
+        if has_roles and not paragraph:
             for role,field in (('heading','label'),('detail','detail')):
                 actual=normalize(' '.join(t['text'] for t in texts if t['role']==role))
                 if actual!=normalize(event.get(field,'')):finding('source-event-text-content',eid)
-        elif normalize(' '.join(t['text'] for t in texts))!=normalize(event['label']+' '+event.get('detail','')):
+        elif not paragraph and normalize(' '.join(t['text'] for t in texts))!=normalize(event['label']+' '+event.get('detail','')):
             finding('source-event-text-content',eid)
         y=year_y
         for text in texts:
-            font=heading if text.get('role')=='heading' else detail if text.get('role')=='detail' else text['font']
+            if paragraph and text.get('runs'):font=max(heading if run['role']=='heading' else detail for run in text['runs'])
+            else:font=heading if text.get('role')=='heading' else detail if text.get('role')=='detail' else text['font']
             if abs(text['font']-font)>.02:finding('source-event-text-size',eid)
             origin=text.get('origin',{})
             if abs(origin.get('x',tx)-tx)>.12 or abs(origin.get('y',y+font)-y-font)>.12:
                 finding('source-event-text-position',eid)
+            if paragraph:
+                previous_x=tx
+                for run in text.get('runs',[]):
+                    point=run.get('origin');end_point=run.get('end')
+                    if not point or not end_point or abs(point['y']-(y+font))>.12 or abs(point['x']-previous_x)>.2:
+                        finding('source-event-run-position',eid)
+                    if end_point:previous_x=end_point['x']
             y+=font*1.18
         if not arts or not event.get('icon'):continue
         art=arts[0]
@@ -53,3 +78,8 @@ def check_annotations(report,data,lane_origins,time_y):
             expected=dict(x=ax,y=ay,w=aw,h=ah);actual=art.get('viewport')
             if not actual or any(abs(actual[key]-value)>.12 for key,value in expected.items()):
                 finding('source-event-art-geometry',eid)
+            if actual:
+                competitors=[other.get('id',f'event-{j}') for j,other in enumerate(data.get('events',[]))
+                    if other is not event and other['lane']==event['lane'] and actual['y']<=y0+(other['year']-start)/(end-start)*(y1-y0)<=actual['y']+actual['h']]
+                if competitors:
+                    report.setdefault('composition_warnings',[]).append(dict(type='illustration-competing-date',event=eid,other_events=competitors))

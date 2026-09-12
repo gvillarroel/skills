@@ -52,6 +52,25 @@ def main():
         ]:
             node=copy.deepcopy(original);node.find('.//s:g[@data-event-id]/s:text[@data-event-text-role="heading"]',ns).set(attribute,value)
             mutations.append((name,node,expected))
+    paragraph=original.find('.//s:text[@data-event-text-role="paragraph"]',ns)
+    if paragraph is not None:
+        for name,attribute,value,expected in [
+            ('hidden-paragraph-run','opacity','0','source-event-run-style'),
+            ('faint-paragraph-run','fill','#eeeeee','source-event-run-style'),
+            ('unemphasized-paragraph-heading','font-weight','400','source-event-run-style'),
+            ('resized-paragraph-heading','font-size','8','source-event-run-style'),
+            ('displaced-paragraph-run','dx','8','source-event-run-position'),
+            ('wrong-paragraph-run-role','data-event-run-role','detail','source-event-text-content'),
+        ]:
+            node=copy.deepcopy(original)
+            node.find('.//s:text[@data-event-text-role="paragraph"]/s:tspan',ns).set(attribute,value)
+            mutations.append((name,node,expected))
+        node=copy.deepcopy(original);node.find('.//s:text[@data-event-text-role="paragraph"]/s:tspan',ns).text='Changed source words.'
+        mutations.append(('changed-paragraph-heading',node,'source-event-text-content'))
+        node=copy.deepcopy(original)
+        mixed=next(text for text in node.findall('.//s:text[@data-event-text-role="paragraph"]',ns) if len(list(text))>1)
+        first=list(mixed)[0];mixed.remove(first);mixed.append(first)
+        mutations.append(('reordered-paragraph-runs',node,'source-event-run-role'))
     stem_node=next((el for el in original.findall('.//s:g[@data-node-id]',ns) if el.find('s:rect[@data-period-stem]',ns) is not None),None)
     if stem_node is not None:
         nid=stem_node.get('data-node-id')

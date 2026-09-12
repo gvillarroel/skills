@@ -1,0 +1,12 @@
+{
+  "date": "2026-09-12",
+  "classification": "evaluator-defect",
+  "affected_validator": "evaluations/contracts/verify-usefulcharts-note-hierarchy.py",
+  "initial_observation": "The first independent check falsely reported paragraph-word changes in all fifteen ordinary notes of naturalistic runs 2 and 3. Their SVG and UTF-8 JSON contained the same words, including a middle-dot year separator.",
+  "affected_runs": ["usefulcharts-v29-notes-2-20260912", "usefulcharts-v29-notes-3-20260912"],
+  "cause": "Path.read_text() used the Windows default text encoding for JSON while ElementTree decoded the XML as UTF-8. The year separator therefore differed in the evaluator's decoded strings.",
+  "repair": "Read the source JSON explicitly as UTF-8. Keep full paragraph wording, order, type and date-band assertions. Re-evaluate the original untouched agent artifacts.",
+  "corrected_observation": "Both source contracts pass after the encoding repair, and evaluator-owned browser reruns pass. No Pi output or skill payload was changed by this correction.",
+  "retention": "The initial evaluator findings are recorded here; the independent-artifact.json files contain the corrected result. Raw Pi events, source documents and images remain in the original run directories.",
+  "separate_failure": "Run 1 retains its strict failure: a manual visual edit put the stagecoach prose over a duration stem. Its final artifact was corrected and passes the independent contract. That agent failure is not reclassified as an evaluator defect."
+}

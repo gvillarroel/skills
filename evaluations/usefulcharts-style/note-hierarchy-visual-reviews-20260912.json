@@ -1,0 +1,53 @@
+{
+  "mural-v29e": {
+    "preview": "projects/usefulcharts-style/artifacts/images/note-hierarchy-final.png",
+    "whole_page_reviewed": true,
+    "equal_width_reference_reviewed": true,
+    "native_scale_details_reviewed": true,
+    "local_result": "Accepted improvement: 54 paragraphs shorten ordinary explanations, six stacked landmarks retain emphasis, and the island histories release room for complete notes and the navigation instrument.",
+    "remaining_differences": ["Persistent regional columns and recurrent split/merge shapes remain evident.", "Illustration variety and optical weight remain less rich than the reference.", "Large quiet intervals and uneven paragraph widths still reveal a more schematic composition."],
+    "visual_parity": false
+  },
+  "usefulcharts-v29-notes-1-20260912": {
+    "preview": "evaluations/runs/usefulcharts-v29-notes-1-20260912/workspace/result/poster.png",
+    "image_opened_by_author": true,
+    "local_result": "Final clock ownership and separate landmarks are clear. The manually repaired coach group still leaves a narrow prose column, despite usable surrounding space.",
+    "remaining_differences": ["Repeated lanes and long quiet intervals dominate the page.", "The narrow coach paragraph receives a disproportionate amount of vertical space."],
+    "visual_parity": false
+  },
+  "usefulcharts-v29-notes-2-20260912": {
+    "preview": "evaluations/runs/usefulcharts-v29-notes-2-20260912/workspace/result/poster.png",
+    "image_opened_by_author": true,
+    "local_result": "The clock sits visibly with the 1820 schools. The bridge belongs to its road note, and the three requested landmarks are distinct.",
+    "remaining_differences": ["The coach note remains narrow.", "The full-height Highland band and nearly parallel lower branches maintain a schematic rhythm."],
+    "visual_parity": false
+  },
+  "usefulcharts-v29-notes-3-20260912": {
+    "preview": "evaluations/runs/usefulcharts-v29-notes-3-20260912/workspace/result/poster.png",
+    "image_opened_by_author": true,
+    "local_result": "Image ownership and ordinary versus landmark typography are readable. The clock is paired with the correct event rather than the earlier survey.",
+    "remaining_differences": ["The coach paragraph wraps into a thin column.", "Repeated vertical bands, sparse intervals and modest treatment variation remain conspicuous."],
+    "visual_parity": false
+  },
+  "usefulcharts-v29b-notes-1-20260912": {
+    "preview": "evaluations/runs/usefulcharts-v29b-notes-1-20260912/workspace/result/poster.png",
+    "image_opened_by_author": true,
+    "local_result": "The coach is explicitly beside its own note and the clock is clearly paired with the schools. Named landmarks have separate headings, while ordinary text flows into its explanation.",
+    "remaining_differences": ["The coach explanation still wraps narrowly.", "Long unbroken bands and repeated lane structure dominate the full page."],
+    "visual_parity": false
+  },
+  "usefulcharts-v29b-notes-2-20260912": {
+    "preview": "evaluations/runs/usefulcharts-v29b-notes-2-20260912/workspace/result/poster.png",
+    "image_opened_by_author": true,
+    "local_result": "The final repaired composition preserves readable notes, correct image ownership and three distinct landmarks. The complete source and browser audit pass after the initial placement failure.",
+    "remaining_differences": ["The coach paragraph remains relatively narrow.", "The dominant three-column silhouette and large quiet intervals remain schematic."],
+    "visual_parity": false
+  },
+  "usefulcharts-v29b-notes-3-20260912": {
+    "preview": "evaluations/runs/usefulcharts-v29b-notes-3-20260912/workspace/result/poster.png",
+    "image_opened_by_author": true,
+    "local_result": "The coach note uses a more comfortable paragraph width, its image remains beside it, and the clock belongs visibly to the 1820 schools. Landmark headings are readable and distinct.",
+    "remaining_differences": ["The page remains structured as three nearly persistent vertical histories.", "A small set of monochrome drawings and long sparse intervals cannot establish visual equivalence to the richer reference."],
+    "visual_parity": false
+  }
+}

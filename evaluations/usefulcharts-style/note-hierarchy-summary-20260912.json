@@ -1,0 +1,874 @@
+{
+  "status": "validating",
+  "runs": [
+    {
+      "id": "usefulcharts-v29-contract-spark-20260912",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 91,
+        "payloadSha256": "716e23981ec2eeebd3e915c4d5c485cda54675be45a970e97ba896f599a58028"
+      },
+      "prompt_sha256": "493e03eade564a163ea7d29642ba52961f7ae3f30944750b20ba0b8ddf5452a2",
+      "expected_outputs": [
+        "draft.json",
+        "deliverables/brief.json",
+        "deliverables/placements.json",
+        "deliverables/poster.svg",
+        "deliverables/layout.json",
+        "deliverables/browser.json",
+        "deliverables/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T11:49:51.490846+00:00",
+        "finishedAtUtc": "2026-09-12T11:50:23.485880+00:00",
+        "durationSeconds": 31.995,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "deliverables/brief.json",
+        "deliverables/placements.json",
+        "deliverables/layout.json",
+        "deliverables/browser.json"
+      ],
+      "read_bytes": 54120,
+      "independent_artifact": {
+        "status": "pass",
+        "findings": [],
+        "paragraphs": 4,
+        "events": 5,
+        "competing_dates": [],
+        "limitation": "Source, type and date-band checks cannot establish perceived ownership or aesthetic parity; inspect the final image."
+      },
+      "tool_errors": [],
+      "visual_review": "Pending image review.",
+      "preview_sha256": "d9f598a7bf70292111334510b472aa52796d93b76b660fed1e7b19a0309b66b3"
+    },
+    {
+      "id": "usefulcharts-v29-notes-1-20260912",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 91,
+        "payloadSha256": "716e23981ec2eeebd3e915c4d5c485cda54675be45a970e97ba896f599a58028"
+      },
+      "prompt_sha256": "b36a499e90c70f8bfc1bc164a676ff40a220383a4bcdd41db8e7319314c9d519",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T11:49:50.852673+00:00",
+        "finishedAtUtc": "2026-09-12T11:52:59.933303+00:00",
+        "durationSeconds": 189.082,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "result/source.json",
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/note-hierarchy.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "skills/usefulcharts-style/references/narrative-chronology.md"
+      ],
+      "read_bytes": 596673,
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1400 1750",
+        "supported_image_reads": 2,
+        "findings": [],
+        "limitation": "Source, type and date-band checks cannot establish perceived ownership or aesthetic parity; inspect the final image.",
+        "art_positions": [
+          "right",
+          "above",
+          "right"
+        ],
+        "illustrations_checked": 3,
+        "paragraphs": 15,
+        "competing_dates": []
+      },
+      "tool_errors": [
+        {
+          "arguments": {
+            "command": "uv run --script skills/usefulcharts-style/scripts/render_chart.py result/source.json --svg result/poster.svg --html result/poster.html --report result/layout.json && uv run --script skills/usefulcharts-style/scripts/audit_chart.py result/poster.svg --source result/source.json --report result/browser.json --png result/poster.png",
+            "timeout": 120
+          },
+          "messages": [
+            "{\"status\": \"pass\", \"id\": \"three-regions-valen-coast\", \"mode\": \"timeline\", \"design\": \"editorial\", \"canvas\": [1400.0, 1750.0], \"node_count\": 12, \"edge_count\": 11, \"union_count\": 0, \"node_collisions\": 0, \"connector_node_collisions\": 0, \"crossing_count\": 0, \"data_sha256\": \"4f45ec451f2f3d0dc66d3ed8376f971b42c546d08514fffdb5189c075715d649\", \"visual_review\": \"Required; geometric preflight is not a visual quality score.\"}\r\n{\"status\": \"fail\", \"id\": \"three-regions-valen-coast\", \"node_count\": 12, \"edge_count\": 11, \"text_count\": 101, \"min_contrast\": 7.235655007251666, \"findings\": [{\"type\": \"text-other-node\", \"text\": \"Pass shelters.\", \"node\": \"h1\"}, {\"type\": \"text-other-node\", \"text\": \"Estates maintain\", \"node\": \"h1\"}, {\"type\": \"text-other-node\", \"text\": \"refuges on winter\", \"node\": \"h1\"}, {\"type\": \"text-other-node\", \"text\": \"roads.\", \"node\": \"h1\"}], \"composition_warnings\": []}\r\n\n\nCommand exited with code 1"
+          ]
+        }
+      ],
+      "visual_review": {
+        "preview": "evaluations/runs/usefulcharts-v29-notes-1-20260912/workspace/result/poster.png",
+        "image_opened_by_author": true,
+        "local_result": "Final clock ownership and separate landmarks are clear. The manually repaired coach group still leaves a narrow prose column, despite usable surrounding space.",
+        "remaining_differences": [
+          "Repeated lanes and long quiet intervals dominate the page.",
+          "The narrow coach paragraph receives a disproportionate amount of vertical space."
+        ],
+        "visual_parity": false
+      },
+      "preview_sha256": "33057d89a27b3d0f196e8e3a3570510631d7c4a248b74cd152496c2bccceafc2",
+      "evaluator_browser": {
+        "status": "pass",
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "usefulcharts-v29-notes-2-20260912",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 91,
+        "payloadSha256": "716e23981ec2eeebd3e915c4d5c485cda54675be45a970e97ba896f599a58028"
+      },
+      "prompt_sha256": "b36a499e90c70f8bfc1bc164a676ff40a220383a4bcdd41db8e7319314c9d519",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T11:49:50.885136+00:00",
+        "finishedAtUtc": "2026-09-12T11:52:26.864299+00:00",
+        "durationSeconds": 155.98,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/note-hierarchy.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "result/poster.png"
+      ],
+      "read_bytes": 326862,
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1500 1780",
+        "supported_image_reads": 1,
+        "findings": [],
+        "limitation": "Source, type and date-band checks cannot establish perceived ownership or aesthetic parity; inspect the final image.",
+        "art_positions": [
+          "left",
+          "below",
+          "right"
+        ],
+        "illustrations_checked": 3,
+        "paragraphs": 15,
+        "competing_dates": []
+      },
+      "tool_errors": [],
+      "visual_review": {
+        "preview": "evaluations/runs/usefulcharts-v29-notes-2-20260912/workspace/result/poster.png",
+        "image_opened_by_author": true,
+        "local_result": "The clock sits visibly with the 1820 schools. The bridge belongs to its road note, and the three requested landmarks are distinct.",
+        "remaining_differences": [
+          "The coach note remains narrow.",
+          "The full-height Highland band and nearly parallel lower branches maintain a schematic rhythm."
+        ],
+        "visual_parity": false
+      },
+      "preview_sha256": "6766c08a846bfe28342abbc162eae3074173ff8414bb9bfc967efe02296b9d1e",
+      "evaluator_browser": {
+        "status": "pass",
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "usefulcharts-v29-notes-3-20260912",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 91,
+        "payloadSha256": "716e23981ec2eeebd3e915c4d5c485cda54675be45a970e97ba896f599a58028"
+      },
+      "prompt_sha256": "b36a499e90c70f8bfc1bc164a676ff40a220383a4bcdd41db8e7319314c9d519",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T11:49:51.201821+00:00",
+        "finishedAtUtc": "2026-09-12T11:52:33.634076+00:00",
+        "durationSeconds": 162.433,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/references/note-hierarchy.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/poster.png"
+      ],
+      "read_bytes": 333870,
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1500 1900",
+        "supported_image_reads": 1,
+        "findings": [],
+        "limitation": "Source, type and date-band checks cannot establish perceived ownership or aesthetic parity; inspect the final image.",
+        "art_positions": [
+          "right",
+          "above",
+          "right"
+        ],
+        "illustrations_checked": 3,
+        "paragraphs": 15,
+        "competing_dates": []
+      },
+      "tool_errors": [],
+      "visual_review": {
+        "preview": "evaluations/runs/usefulcharts-v29-notes-3-20260912/workspace/result/poster.png",
+        "image_opened_by_author": true,
+        "local_result": "Image ownership and ordinary versus landmark typography are readable. The clock is paired with the correct event rather than the earlier survey.",
+        "remaining_differences": [
+          "The coach paragraph wraps into a thin column.",
+          "Repeated vertical bands, sparse intervals and modest treatment variation remain conspicuous."
+        ],
+        "visual_parity": false
+      },
+      "preview_sha256": "de74d6f15a0a51e07d6e9516a55a609d052e2290369ea7aa2227bee5cf5bde85",
+      "evaluator_browser": {
+        "status": "pass",
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "usefulcharts-v29b-contract-spark-20260912",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 91,
+        "payloadSha256": "f151828b1fd620283b5334dbb629af9e8bcbb8af9d494bd82869674f433bd2f4"
+      },
+      "prompt_sha256": "493e03eade564a163ea7d29642ba52961f7ae3f30944750b20ba0b8ddf5452a2",
+      "expected_outputs": [
+        "draft.json",
+        "deliverables/brief.json",
+        "deliverables/placements.json",
+        "deliverables/poster.svg",
+        "deliverables/layout.json",
+        "deliverables/browser.json",
+        "deliverables/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T11:58:37.937344+00:00",
+        "finishedAtUtc": "2026-09-12T11:59:01.329202+00:00",
+        "durationSeconds": 23.392,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "deliverables/brief.json"
+      ],
+      "read_bytes": 18947,
+      "independent_artifact": {
+        "status": "pass",
+        "findings": [],
+        "paragraphs": 4,
+        "events": 5,
+        "competing_dates": [],
+        "limitation": "Source, type and date-band checks cannot establish perceived ownership or aesthetic parity; inspect the final image."
+      },
+      "tool_errors": [],
+      "visual_review": "Pending image review.",
+      "preview_sha256": "d9f598a7bf70292111334510b472aa52796d93b76b660fed1e7b19a0309b66b3"
+    },
+    {
+      "id": "usefulcharts-v29b-notes-1-20260912",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 91,
+        "payloadSha256": "f151828b1fd620283b5334dbb629af9e8bcbb8af9d494bd82869674f433bd2f4"
+      },
+      "prompt_sha256": "b36a499e90c70f8bfc1bc164a676ff40a220383a4bcdd41db8e7319314c9d519",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T11:58:37.300020+00:00",
+        "finishedAtUtc": "2026-09-12T12:01:19.417904+00:00",
+        "durationSeconds": 162.119,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/note-hierarchy.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json"
+      ],
+      "read_bytes": 599049,
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1500 1850",
+        "supported_image_reads": 2,
+        "findings": [],
+        "limitation": "Source, type and date-band checks cannot establish perceived ownership or aesthetic parity; inspect the final image.",
+        "art_positions": [
+          "right",
+          "above",
+          "left"
+        ],
+        "illustrations_checked": 3,
+        "paragraphs": 15,
+        "competing_dates": []
+      },
+      "tool_errors": [],
+      "visual_review": {
+        "preview": "evaluations/runs/usefulcharts-v29b-notes-1-20260912/workspace/result/poster.png",
+        "image_opened_by_author": true,
+        "local_result": "The coach is explicitly beside its own note and the clock is clearly paired with the schools. Named landmarks have separate headings, while ordinary text flows into its explanation.",
+        "remaining_differences": [
+          "The coach explanation still wraps narrowly.",
+          "Long unbroken bands and repeated lane structure dominate the full page."
+        ],
+        "visual_parity": false
+      },
+      "preview_sha256": "00194468813b2c2aa30c3f051cbf0b3ab7da3b9dae6b4231629fb138420f9022",
+      "evaluator_browser": {
+        "status": "pass",
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "usefulcharts-v29b-notes-2-20260912",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 91,
+        "payloadSha256": "f151828b1fd620283b5334dbb629af9e8bcbb8af9d494bd82869674f433bd2f4"
+      },
+      "prompt_sha256": "b36a499e90c70f8bfc1bc164a676ff40a220383a4bcdd41db8e7319314c9d519",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T11:58:37.318123+00:00",
+        "finishedAtUtc": "2026-09-12T12:01:50.915099+00:00",
+        "durationSeconds": 193.598,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/note-hierarchy.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "work/placements.json"
+      ],
+      "read_bytes": 633305,
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1600 1900",
+        "supported_image_reads": 2,
+        "findings": [],
+        "limitation": "Source, type and date-band checks cannot establish perceived ownership or aesthetic parity; inspect the final image.",
+        "art_positions": [
+          "right",
+          "above",
+          "right"
+        ],
+        "illustrations_checked": 3,
+        "paragraphs": 15,
+        "competing_dates": []
+      },
+      "tool_errors": [
+        {
+          "arguments": {
+            "command": "python build_valen.py && uv run --script skills/usefulcharts-style/scripts/pack_timeline_events.py work/valen_draft.json --output result/source.json --report work/placements.json",
+            "timeout": 120
+          },
+          "messages": [
+            "{\"status\": \"needs-layout\", \"message\": \"No readable placement for event eh1. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed.\"}\r\n\n\nCommand exited with code 1"
+          ]
+        },
+        {
+          "arguments": {
+            "path": "work/placements.json",
+            "limit": 50
+          },
+          "messages": [
+            "ENOENT: no such file or directory, access 'C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\usefulcharts-v29b-notes-2-20260912\\workspace\\work\\placements.json'"
+          ]
+        }
+      ],
+      "visual_review": {
+        "preview": "evaluations/runs/usefulcharts-v29b-notes-2-20260912/workspace/result/poster.png",
+        "image_opened_by_author": true,
+        "local_result": "The final repaired composition preserves readable notes, correct image ownership and three distinct landmarks. The complete source and browser audit pass after the initial placement failure.",
+        "remaining_differences": [
+          "The coach paragraph remains relatively narrow.",
+          "The dominant three-column silhouette and large quiet intervals remain schematic."
+        ],
+        "visual_parity": false
+      },
+      "preview_sha256": "1872d4965cbf4865305d9bd09beded26db2ceb89f77ef246bb65c8e71e9eaeb3",
+      "evaluator_browser": {
+        "status": "pass",
+        "findings": [],
+        "composition_warnings": []
+      }
+    },
+    {
+      "id": "usefulcharts-v29b-notes-3-20260912",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 91,
+        "payloadSha256": "f151828b1fd620283b5334dbb629af9e8bcbb8af9d494bd82869674f433bd2f4"
+      },
+      "prompt_sha256": "b36a499e90c70f8bfc1bc164a676ff40a220383a4bcdd41db8e7319314c9d519",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T11:58:37.614043+00:00",
+        "finishedAtUtc": "2026-09-12T12:01:45.789170+00:00",
+        "durationSeconds": 188.176,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "skills/usefulcharts-style/references/note-hierarchy.md",
+        "result/poster.png"
+      ],
+      "read_bytes": 326263,
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1500 1850",
+        "supported_image_reads": 1,
+        "findings": [],
+        "limitation": "Source, type and date-band checks cannot establish perceived ownership or aesthetic parity; inspect the final image.",
+        "art_positions": [
+          "right",
+          "above",
+          "right"
+        ],
+        "illustrations_checked": 3,
+        "paragraphs": 15,
+        "competing_dates": []
+      },
+      "tool_errors": [],
+      "visual_review": {
+        "preview": "evaluations/runs/usefulcharts-v29b-notes-3-20260912/workspace/result/poster.png",
+        "image_opened_by_author": true,
+        "local_result": "The coach note uses a more comfortable paragraph width, its image remains beside it, and the clock belongs visibly to the 1820 schools. Landmark headings are readable and distinct.",
+        "remaining_differences": [
+          "The page remains structured as three nearly persistent vertical histories.",
+          "A small set of monochrome drawings and long sparse intervals cannot establish visual equivalence to the richer reference."
+        ],
+        "visual_parity": false
+      },
+      "preview_sha256": "b0196943964d4f86231b1e0008ed0b2e6c8d7595d24dc24d661f298563ad8768",
+      "evaluator_browser": {
+        "status": "pass",
+        "findings": [],
+        "composition_warnings": []
+      }
+    }
+  ],
+  "explorations": [
+    {
+      "stage": "note-hierarchy-v29a",
+      "attempts": [
+        {
+          "id": "original-page",
+          "status": "rendered",
+          "canvas": [
+            1680,
+            2400
+          ],
+          "paragraphs": 47
+        },
+        {
+          "id": "shorter-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-1-8. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "id": "balanced-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-2-6. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "id": "compact-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-2-6. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        }
+      ]
+    },
+    {
+      "stage": "note-hierarchy-v29b",
+      "attempts": [
+        {
+          "id": "original-page",
+          "status": "rendered",
+          "canvas": [
+            1680,
+            2400
+          ],
+          "paragraphs": 54,
+          "art_positions": {
+            "event-0-1": "below",
+            "event-1-2": "below",
+            "event-1-7": "below",
+            "event-2-1": "below",
+            "event-2-6": "below",
+            "event-3-6": "above",
+            "event-4-6": "below"
+          },
+          "composition_warnings": []
+        },
+        {
+          "id": "shorter-page",
+          "status": "rendered",
+          "canvas": [
+            1680,
+            2200
+          ],
+          "paragraphs": 54,
+          "art_positions": {
+            "event-0-1": "below",
+            "event-1-2": "above",
+            "event-1-7": "below",
+            "event-2-1": "below",
+            "event-2-6": "below",
+            "event-3-6": "above",
+            "event-4-6": "below"
+          },
+          "composition_warnings": []
+        },
+        {
+          "id": "balanced-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-3-6. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "id": "compact-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-3-6. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        }
+      ]
+    },
+    {
+      "stage": "note-hierarchy-v29c",
+      "attempts": [
+        {
+          "id": "original-page",
+          "status": "rendered",
+          "canvas": [
+            1680,
+            2400
+          ],
+          "paragraphs": 54,
+          "art_positions": {
+            "event-0-1": "below",
+            "event-1-2": "below",
+            "event-1-7": "below",
+            "event-2-1": "below",
+            "event-2-6": "below",
+            "event-3-6": "above",
+            "event-4-6": "below"
+          },
+          "composition_warnings": []
+        },
+        {
+          "id": "shorter-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-3-7. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "id": "balanced-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-3-6. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "id": "compact-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-3-6. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        }
+      ]
+    },
+    {
+      "stage": "note-hierarchy-v29d",
+      "attempts": [
+        {
+          "id": "original-page",
+          "status": "rendered",
+          "canvas": [
+            1680,
+            2400
+          ],
+          "paragraphs": 54,
+          "art_positions": {
+            "event-0-1": "below",
+            "event-1-2": "below",
+            "event-1-7": "below",
+            "event-2-1": "below",
+            "event-2-6": "below",
+            "event-3-6": "below",
+            "event-4-6": "below"
+          },
+          "composition_warnings": []
+        },
+        {
+          "id": "shorter-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-3-7. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "id": "balanced-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-3-7. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "id": "compact-page",
+          "status": "needs-layout",
+          "message": "No readable placement for event event-3-7. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        }
+      ]
+    },
+    {
+      "stage": "note-hierarchy-v29e",
+      "attempts": [
+        {
+          "id": "moderate-page",
+          "status": "rendered",
+          "canvas": [
+            1680,
+            2300
+          ],
+          "paragraphs": 54,
+          "art_positions": {
+            "event-0-1": "below",
+            "event-1-2": "above",
+            "event-1-7": "below",
+            "event-2-1": "below",
+            "event-2-6": "below",
+            "event-3-6": "below",
+            "event-4-6": "below"
+          },
+          "composition_warnings": []
+        }
+      ]
+    }
+  ],
+  "mural": {
+    "periods": 50,
+    "transitions": 55,
+    "events": 60,
+    "paragraphs": 54,
+    "illustrations": 7,
+    "svg_sha256": "4ef60ed3fb88be1244a829c1e7acce50e816188a46e606c03817dfebb3bcf2b0",
+    "selected_svg_matches": true,
+    "selected_png_matches": true,
+    "png_sha256": "e4e50f484b47df39e7158584e5a8d3a7161e12b85d7ffd3c6724ffea70bdf63c",
+    "other_murals_unchanged": {
+      "aurelian-families": true,
+      "atlas-of-inquiry": true
+    },
+    "source_sha256": "16acc43d3a9aac44072d50bc5e2797c27a001e92db32978eb132482c9a6fca12",
+    "comparison": {
+      "status": "pass",
+      "before_revision": "5b2d3674",
+      "exact_source_facts_preserved": true,
+      "periods": 50,
+      "transitions": 55,
+      "events": 60,
+      "before": {
+        "colored_period_area": 363781.1136,
+        "area_method": "Union of painted rectangular bounds; rounded corners excluded from the approximation.",
+        "duration_stems": 18,
+        "median_event_heading_size": 12.2,
+        "paragraph_events": 0,
+        "mixed_lines": 0,
+        "illustrated_events": 7
+      },
+      "after": {
+        "colored_period_area": 348191.79360000003,
+        "area_method": "Union of painted rectangular bounds; rounded corners excluded from the approximation.",
+        "duration_stems": 18,
+        "median_event_heading_size": 12.2,
+        "paragraph_events": 54,
+        "mixed_lines": 35,
+        "illustrated_events": 7
+      },
+      "colored_area_change_percent": -4.285357160443848,
+      "all_type_sizes_preserved": true,
+      "before_canvas": [
+        1680,
+        2400
+      ],
+      "after_canvas": [
+        1680,
+        2300
+      ],
+      "limitation": "Area and typography measurements describe changes, not aesthetic similarity. All three pictures retain their natural aspect ratio at an equal display width."
+    }
+  },
+  "previous_association_check": [
+    {
+      "type": "illustration-competing-date",
+      "event": "ec2",
+      "other_events": [
+        "ec1"
+      ]
+    }
+  ],
+  "visual_parity": "Not established. Better paragraph hierarchy and local image groups do not resolve the repeated regional structure or prove broad parity."
+}

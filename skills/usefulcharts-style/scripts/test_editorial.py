@@ -36,6 +36,16 @@ def timeline():
 
 
 class EditorialTests(unittest.TestCase):
+    def test_paragraph_runs_remain_editable_and_escape_source_words(self):
+        data=timeline();data['events'][0].update(label='A & B',detail='Compare <three> routes.',text_layout='paragraph',size=14,detail_size=11)
+        original=copy.deepcopy(data);svg,_=EditorialPoster(data).render();root=ET.fromstring(svg)
+        lines=root.findall('.//s:text[@data-event-text-role="paragraph"]',NS)
+        runs=[run for line in lines for run in line.findall('s:tspan',NS)]
+        self.assertEqual(' '.join(''.join(line.itertext()) for line in lines),'A & B. Compare <three> routes.')
+        self.assertEqual([(run.get('data-event-run-role'),run.get('font-size'),run.get('font-weight')) for run in runs],
+            [('heading','14','700'),('detail','11','400')])
+        self.assertEqual(data,original)
+
     def test_all_image_arrangements_preserve_date_anchor_and_source_identity(self):
         for position in ('above','below','left','right'):
             for name in ('square-rigged-ship','suspension-bridge','stagecoach'):

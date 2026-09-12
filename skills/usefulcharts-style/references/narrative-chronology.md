@@ -14,7 +14,7 @@ Keep exact start/end years and typed transitions. Choose each period's horizonta
 
 Use the least colored area that accommodates the label and its attachment ports. On a substantial 1800-unit-wide poster, start around 20–30 units for quieter periods and 40–60 for major institutions. These are starting points, not fixed values: a long wrapped label or four branches can require more width. Keep every transition port at least five units inside its period and keep filled bridges inside their own dated gaps. Preserve actual gaps; do not stretch periods to conceal discontinuities.
 
-Give pivotal events a stronger heading. For a substantial poster, a useful first treatment is 12–13-unit ordinary headings, 14–15-unit landmarks, and 10–11-unit contextual text. Judge those sizes in the rendered page. Do not reduce all notes to fit a small opening beside a wide band; recompose the band first.
+Give pivotal events a stronger heading. For a substantial poster, a useful first treatment is 12–13-unit ordinary headings, 14–15-unit landmarks, and 10–11-unit contextual text. Use `text_layout: paragraph` to flow ordinary headings into their explanation; retain separate `stacked` headings for selected landmarks. Read [note hierarchy](note-hierarchy.md) for mixed type and image ownership. Judge sizes in the rendered page. Do not reduce all notes to fit a small opening beside a wide band; recompose the band first.
 
 ### Mix duration stems and full bands
 
@@ -40,7 +40,7 @@ uv run --script <skill-dir>/scripts/render_chart.py brief.json --svg poster.svg 
 uv run --script <skill-dir>/scripts/audit_chart.py poster.svg --source brief.json --report browser.json --png poster.png
 ```
 
-The helper changes only each event's horizontal `offset` and wrapping `width`. It preserves all words, dates, type sizes, image dimensions, intervals and relationships. It measures wrapped lines and the entire illustration viewport, reserves filled bridges and uncertain orthogonal connections, and places earlier events before later ones. For stems it reserves both the thin duration rectangle and the complete name capsule, allowing notes beside the genuinely unpainted part of the label envelope. The source-backed audit checks the visible stem's exact duration, width, center, color and visibility independently of that invisible envelope. It has no repository or acceptance-fixture dependency. `uv` provisions its declared Shapely dependency.
+The helper changes each event's horizontal `offset` and wrapping `width`, and resolves an optional `art_position: auto` to one concrete arrangement. It preserves explicit arrangements and all words, dates, type sizes, image dimensions, intervals and relationships. It measures wrapped lines and the entire illustration viewport, reserves filled bridges and uncertain orthogonal connections, and places earlier events before later ones. For stems it reserves both the thin duration rectangle and the complete name capsule. The source-backed audit checks the visible stem independently of that envelope. It has no repository or acceptance-fixture dependency. `uv` provisions its declared Shapely dependency.
 
 Inspect the resulting PNG. A placement pass is not an aesthetic verdict. Check the busiest division, a note exactly at a period endpoint, the narrowest paragraph and the footer. A complete note may occupy different widths on different lines; a connection can pass beside the short last line only when the browser confirms that it does not touch the text or image.
 

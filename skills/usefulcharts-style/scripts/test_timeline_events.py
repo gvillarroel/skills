@@ -8,7 +8,7 @@
 import copy
 import unittest
 from pack_timeline_events import pack_events
-from timeline_annotations import event_content
+from timeline_annotations import event_content,paragraph_lines
 
 
 def brief():
@@ -22,6 +22,67 @@ def brief():
 
 
 class NarrativePlacementTests(unittest.TestCase):
+    def test_paragraph_flow_preserves_words_fonts_and_emphasis(self):
+        event=dict(label='A common charter',detail='Delegates agree shared rules for local councils.',text_layout='paragraph')
+        original=copy.deepcopy(event);lines=paragraph_lines(event,220,14,11)
+        self.assertEqual(' '.join(line['text'] for line in lines),'A common charter. Delegates agree shared rules for local councils.')
+        self.assertTrue(any(len(line['runs'])==2 for line in lines))
+        for line in lines:
+            self.assertLessEqual(line['width'],220)
+            for run in line['runs']:
+                self.assertEqual((run['font'],run['bold']),(14,True) if run['role']=='heading' else (11,False))
+        self.assertEqual(event,original)
+
+    def test_paragraph_keeps_existing_punctuation(self):
+        for label in ('A charter.','A charter?','A charter!','A charter:'):
+            lines=paragraph_lines(dict(label=label,detail='A note.'),300,13,11)
+            self.assertEqual(lines[0]['text'],label+' A note.')
+
+    def test_paragraph_anchor_and_image_measurement_use_mixed_line_height(self):
+        event=dict(label='A charter',detail='Common rules are recorded.',text_layout='paragraph',size=15,detail_size=10,
+            icon='illustration-stagecoach',art_width=100,art_height=42)
+        content=event_content(event,250)
+        self.assertEqual(content['lines'][0]['y'],0)
+        self.assertEqual(content['art'][1],sum(line['font']*1.18 for line in content['lines'])+5)
+
+    def test_paragraph_rejects_an_unreadable_word_without_changing_source(self):
+        event=dict(label='Unbreakableword',detail='Complete explanation.',text_layout='paragraph')
+        with self.assertRaisesRegex(ValueError,'exceeds'):paragraph_lines(event,20,14,11)
+        self.assertEqual(event['label'],'Unbreakableword')
+
+    def test_auto_image_avoids_a_previous_event_reading_band(self):
+        source=brief();source['periods']=[];source['transitions']=[]
+        source['events']=[dict(id='previous',lane='west',year=1808,label='Harbor survey',offset=0,width=160),
+            dict(id='clock',lane='west',year=1820,label='Clockmaking schools',offset=250,width=170,
+                icon='illustration-clock-escapement',art_position='auto',art_width=75,art_height=110)]
+        result,report=pack_events(source)
+        self.assertNotEqual(result['events'][1]['art_position'],'above')
+        self.assertEqual(result['events'][1]['year'],1820)
+        self.assertEqual(report['composition_warnings'],[])
+        self.assertEqual(source['events'][1]['art_position'],'auto')
+
+    def test_explicit_image_position_is_preserved_and_ambiguity_is_reported(self):
+        source=brief();source['periods']=[];source['transitions']=[]
+        source['events']=[dict(id='previous',lane='west',year=1808,label='Harbor survey',offset=0,width=160),
+            dict(id='clock',lane='west',year=1820,label='Clockmaking schools',offset=250,width=170,
+                icon='illustration-clock-escapement',art_position='above',art_width=75,art_height=110)]
+        result,report=pack_events(source)
+        self.assertEqual(result['events'][1]['art_position'],'above')
+        self.assertEqual(report['composition_warnings'],[dict(type='illustration-competing-date',event='clock',other_events=['previous'])])
+
+    def test_auto_image_avoids_a_future_event_reading_band(self):
+        source=brief();source['periods']=[];source['transitions']=[]
+        source['events']=[dict(id='clock',lane='west',year=1870,label='Clockmaking schools',offset=250,width=170,
+                icon='illustration-clock-escapement',art_position='auto',art_width=75,art_height=120),
+            dict(id='next',lane='west',year=1888,label='A later convention',offset=0,width=160)]
+        result,report=pack_events(source)
+        self.assertEqual(result['events'][0]['art_position'],'above')
+        self.assertFalse(report['composition_warnings'])
+
+    def test_unresolved_auto_requires_the_packer_before_rendering(self):
+        with self.assertRaisesRegex(ValueError,'pack_timeline_events'):
+            event_content(dict(label='A note',icon='illustration-stagecoach',art_position='auto'),200)
+
     def test_preserves_complete_source_and_input_order(self):
         source=brief();original=copy.deepcopy(source);result,report=pack_events(source)
         self.assertEqual(source,original)

@@ -222,4 +222,17 @@ def build_timeline(base):
         if event['id'] in contextual:
             event['icon'],event['art_position'],event['art_width'],event['art_height']=contextual[event['id']]
     d,_=pack_events(d,max_width=200)
+    # Flow ordinary explanation while retaining six separate landmark headings.
+    # Move two island continuities left to widen their complete narrative groups.
+    previous_lanes=lane_geometry(d['lanes'],d['width'])
+    d['height']=2300
+    for period in d['periods']:
+        period['offset']=(period['offset']+period['bar_width']/2)/previous_lanes[period['lane']][1]*lanes[period['lane']][1]-period['bar_width']/2
+        if period['id'] in ('p3-voyage','p3-assembly'):period['offset']-=40
+    for event in d['events']:
+        if event['size']<14 or event.get('icon'):event['text_layout']='paragraph'
+        if event.get('icon'):event['art_position']='auto'
+        if event['id']=='event-3-6':event['art_position']='below'
+        event['offset']=event['offset']/previous_lanes[event['lane']][1]*lanes[event['lane']][1]
+    d,_=pack_events(d,max_width=200)
     return d

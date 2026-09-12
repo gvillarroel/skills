@@ -32,9 +32,9 @@
     {"id": "roads-union", "source": "roads", "target": "union", "kind": "union", "style": "ribbon", "target_port": 0.67, "ribbon_width": 8}
   ],
   "events": [
-    {"id": "school", "lane": "coast", "year": 1820, "label": "1820 · Clockmaking school", "detail": "Workshops teach the anchor escapement.", "size": 20, "detail_size": 15, "icon": "illustration-clock-escapement", "art_width": 67, "art_height": 86.71},
-    {"id": "railway", "lane": "hills", "year": 1860, "label": "1860 · The ridge railway", "detail": "Freight crosses the high pass.", "size": 18, "detail_size": 15},
-    {"id": "survey", "lane": "plains", "year": 1840, "label": "1840 · A road survey", "detail": "Engineers record bridges and distances.", "size": 18, "detail_size": 15},
-    {"id": "college", "lane": "hills", "year": 1950, "label": "1950 · A regional college", "detail": "Local schools share a curriculum.", "size": 18, "detail_size": 15}
+    {"id": "school", "lane": "coast", "year": 1820, "label": "1820 · Clockmaking school", "detail": "Workshops teach the anchor escapement.", "size": 20, "detail_size": 15, "icon": "illustration-clock-escapement", "art_position": "auto", "art_width": 67, "art_height": 86.71},
+    {"id": "railway", "lane": "hills", "year": 1860, "label": "1860 · The ridge railway", "detail": "Freight crosses the high pass.", "text_layout": "paragraph", "size": 18, "detail_size": 15},
+    {"id": "survey", "lane": "plains", "year": 1840, "label": "1840 · A road survey", "detail": "Engineers record bridges and distances.", "text_layout": "paragraph", "size": 18, "detail_size": 15},
+    {"id": "college", "lane": "hills", "year": 1950, "label": "1950 · A regional college", "detail": "Local schools share a curriculum.", "text_layout": "paragraph", "size": 18, "detail_size": 15}
   ]
 }

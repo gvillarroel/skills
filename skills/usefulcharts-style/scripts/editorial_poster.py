@@ -639,7 +639,12 @@ class EditorialPoster(Poster):
             event_id=ident(event.get('id',f'event-{index}'))
             self.add(f'<g data-event-id="{event_id}" data-year="{event["year"]}" data-origin-y="{fmt(yy)}">')
             for line in content['lines']:
-                self.text(x+line['x'],yy+line['font'],line['text'],line['font'],anchor='start',bold=line['bold'],css=f'data-event-text-role="{line["role"]}"')
+                if line.get('runs'):
+                    self.expected_text.append(line['text'])
+                    spans=''.join(f'<tspan data-event-run-role="{run["role"]}" font-size="{fmt(run["font"])}" font-weight="{700 if run["bold"] else 400}">{html.escape(run["text"])}</tspan>' for run in line['runs'])
+                    self.add(f'<text x="{fmt(x+line["x"])}" y="{fmt(yy+line["font"])}" font-size="{fmt(line["font"])}" fill="{self.ink}" text-anchor="start" font-weight="400" data-owner="page" data-background="{self.paper}" data-event-text-role="paragraph" xml:space="preserve">{spans}</text>')
+                else:
+                    self.text(x+line['x'],yy+line['font'],line['text'],line['font'],anchor='start',bold=line['bold'],css=f'data-event-text-role="{line["role"]}"')
                 yy+=line['font']*1.18
             if content['art']:
                 ax,ay,aw,ah=content['art'];art_box=(x+ax,anchor_y+ay,aw,ah)
