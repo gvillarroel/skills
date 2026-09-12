@@ -31,6 +31,8 @@ For genealogical grouping, read [name and date groups](references/genealogy-name
 
 A short history needs a compact canvas. Reserve the portrait 2:3 wall format and dense 10–16-unit typography for substantial data. Let terminated branches release space; let large descendant groups widen. Avoid rigid persistent columns, equally weighted cards and illustrations placed at mechanical intervals. A schematic composition can have uneven gaps; a numeric time scale cannot.
 
+For institutional groups joined by conspicuous influence detours, read [lateral influence routes](references/influence-routes.md). Compose the local histories first, then choose explicit side attachments and short corridors. Compare the full page before accepting a smaller canvas: unchanged font units improve displayed readability only if the denser routing remains easy to follow.
+
 When supplied places, courts or movements disappear among the names, read [source-bound landmarks](references/context-landmarks.md). For a new family, declare the bound captions before layout and run the baseline helper with `--reserve-context`; render its result directly. It reserves the full caption envelopes and routes around them. Use bounded pocket placement to refine an existing authored graph. Inspect actual branch ownership in the preview and preserve every required caption.
 
 ## Render and inspect

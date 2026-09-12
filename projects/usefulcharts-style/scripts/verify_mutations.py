@@ -27,6 +27,20 @@ def main():
     ns={"s":"http://www.w3.org/2000/svg"};ET.register_namespace("",ns["s"])
     original=ET.parse(args.svg).getroot();source=json.loads(args.source.read_text(encoding="utf-8"))
     mutations=[]
+    lateral=original.find('.//s:path[@data-source-port="right"]',ns)
+    if lateral is None:lateral=original.find('.//s:path[@data-source-port="left"]',ns)
+    if lateral is not None:
+        eid=lateral.get('data-edge-id')
+        node=copy.deepcopy(original);path=node.find(f'.//s:path[@data-edge-id="{eid}"]',ns)
+        path.set('data-source-port','top');mutations.append(('changed-influence-source-side',node,'source-relation-port'))
+        node=copy.deepcopy(original);path=node.find(f'.//s:path[@data-edge-id="{eid}"]',ns)
+        points=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?',path.get('d'))]
+        path.set('d',re.sub(r'^M [-\d.]+ [-\d.]+',f'M {points[0]+20} {points[1]}',path.get('d')))
+        mutations.append(('detached-lateral-source',node,'detached-source'))
+        node=copy.deepcopy(original);path=node.find(f'.//s:path[@data-edge-id="{eid}"]',ns)
+        path.set('data-kind','branch');mutations.append(('lateral-influence-changed-to-descent',node,'invalid-lateral-relation'))
+        node=copy.deepcopy(original);path=node.find(f'.//s:path[@data-edge-id="{eid}"]',ns)
+        path.set('data-target-port','diagonal');mutations.append(('invalid-influence-target-side',node,'detached-target'))
     node=copy.deepcopy(original);metadata=node.find('.//s:metadata[@id="chart-data"]',ns)
     values=json.loads(metadata.text);values['data_sha256']='0'*64;metadata.text=json.dumps(values)
     mutations.append(('stale-source-revision',node,'source-revision-mismatch'))

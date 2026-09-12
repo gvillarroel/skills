@@ -10,13 +10,13 @@
     {"id": "geology", "label": "Geology", "color": "#F4C948"}
   ],
   "nodes": [
-    {"id": "cabinet", "label": "The Common Cabinet", "detail": "1720 · A shared collection", "group": "origin"},
-    {"id": "garden", "label": "Garden Society", "detail": "1754 · Living collections", "group": "botany"},
-    {"id": "herbarium", "label": "Regional Herbarium", "detail": "1818 · Preserved specimens", "group": "botany"},
-    {"id": "seed", "label": "Seed Exchange", "detail": "1792 · Closed in 1851", "group": "botany"},
-    {"id": "survey", "label": "Mineral Survey", "detail": "1776 · Field records", "group": "geology"},
-    {"id": "museum", "label": "Geological Museum", "detail": "1840 · Public collections", "group": "geology", "emphasis": true, "icon": "book"},
-    {"id": "institute", "label": "Botanical Institute", "detail": "1880 · Garden and herbarium united", "group": "botany", "emphasis": true}
+    {"id": "cabinet", "label": "The Common Cabinet", "detail_position": "outside", "date_label": "1720", "detail": "A shared collection", "group": "origin"},
+    {"id": "garden", "label": "Garden Society", "detail_position": "outside", "date_label": "1754", "detail": "Living collections", "group": "botany"},
+    {"id": "herbarium", "label": "Regional Herbarium", "detail_position": "outside", "date_label": "1818", "detail": "Preserved specimens", "group": "botany"},
+    {"id": "seed", "label": "Seed Exchange", "detail_position": "outside", "date_label": "1792", "detail": "Closed in 1851", "group": "botany"},
+    {"id": "survey", "label": "Mineral Survey", "detail_position": "outside", "date_label": "1776", "detail": "Field records", "group": "geology"},
+    {"id": "museum", "label": "Geological Museum", "detail_position": "outside", "date_label": "1840", "detail": "Public collections", "group": "geology", "emphasis": true, "icon": "book"},
+    {"id": "institute", "label": "Botanical Institute", "detail_position": "outside", "date_label": "1880", "detail": "Garden and herbarium unite", "group": "botany", "emphasis": true}
   ],
   "edges": [
     {"id": "garden-founded", "source": "cabinet", "target": "garden", "kind": "branch"},

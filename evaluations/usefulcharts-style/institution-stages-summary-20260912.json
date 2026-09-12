@@ -1,0 +1,4889 @@
+{
+  "status": "validating",
+  "baseline": "2b9f6595dd51f0f7324b84523545fafb294b3c65",
+  "all_development_attempts": [
+    {
+      "id": "chronology",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "chronology",
+        "stage_weight": 1,
+        "status": "fail",
+        "error": "The requested neighborhoods need 308.55 more vertical units."
+      },
+      "browser": null
+    },
+    {
+      "id": "chronology-plane",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "chronology",
+        "stage_weight": 1,
+        "method": "cp",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "status": "pass",
+        "placement": {
+          "method": "cp",
+          "solver_status": "FEASIBLE",
+          "seconds": 45.0029978,
+          "objective": 88990.0,
+          "best_bound": 25412.0,
+          "window_x": 200,
+          "window_y": 300
+        },
+        "layout": {
+          "status": "pass",
+          "id": "atlas-of-inquiry",
+          "mode": "lineage",
+          "design": "editorial",
+          "canvas": [
+            1800.0,
+            2700.0
+          ],
+          "node_count": 141,
+          "edge_count": 171,
+          "union_count": 0,
+          "node_collisions": 0,
+          "connector_node_collisions": 0,
+          "crossing_count": 90,
+          "data_sha256": "5334539ecfd997a4bcf2d53f13c81063e0054cd7643634fdf7c09082a483210a",
+          "visual_review": "Required; geometric preflight is not a visual quality score."
+        },
+        "all_facts_preserved": true
+      },
+      "browser": {
+        "status": "pass",
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": []
+      }
+    },
+    {
+      "id": "compact-route-integral",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "cp",
+        "driver_sha256": "79006451468aa0afbbf99f5a3900307739a8c95a2fafdcda857972ac63b0e840",
+        "window_x": 1620,
+        "window_y": 650,
+        "seconds": 60.0,
+        "workers": 8,
+        "page_scale": 0.9,
+        "early_bias": 200.0,
+        "padding": 12,
+        "horizontal_cost": 2.0,
+        "vertical_cost": 12.0,
+        "route_cost": 4,
+        "crossing_cost": 400,
+        "anchors": null,
+        "hint": "projects\\usefulcharts-style\\artifacts\\reviews\\institution-stages-v26\\lateral-integral\\source.json",
+        "placement": {
+          "method": "cp",
+          "solver_status": "FEASIBLE",
+          "seconds": 60.0657574,
+          "objective": 366210.0,
+          "best_bound": 220554.0,
+          "window_x": 1620,
+          "window_y": 650,
+          "workers": 8,
+          "route_cost": 4,
+          "crossing_cost": 400,
+          "crossing_proxy_pairs": 1851,
+          "warning": "Endpoint-order penalties are a layout proxy; actual routed crossings and the final image must be inspected."
+        },
+        "all_facts_preserved": true,
+        "status": "pass",
+        "layout": {
+          "status": "pass",
+          "id": "atlas-of-inquiry",
+          "mode": "lineage",
+          "design": "editorial",
+          "canvas": [
+            1620.0,
+            2430.0
+          ],
+          "node_count": 141,
+          "edge_count": 171,
+          "union_count": 0,
+          "node_collisions": 0,
+          "connector_node_collisions": 0,
+          "crossing_count": 86,
+          "data_sha256": "de3e70971b824c9c3c509fd9f148ae743d8fcb5e2e89a1ab8cfc7403b9e7b28e",
+          "visual_review": "Required; geometric preflight is not a visual quality score."
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": []
+      }
+    },
+    {
+      "id": "compact-route-refinement",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "cp",
+        "window_x": 1620,
+        "window_y": 650,
+        "seconds": 60.0,
+        "workers": 8,
+        "page_scale": 0.9,
+        "early_bias": 200.0,
+        "padding": 12,
+        "horizontal_cost": 2.0,
+        "vertical_cost": 12.0,
+        "route_cost": 4,
+        "crossing_cost": 400,
+        "anchors": null,
+        "hint": "projects\\usefulcharts-style\\artifacts\\reviews\\institution-stages-v26\\lateral-compact\\source.json",
+        "status": "fail",
+        "error": "Plane search ended with UNKNOWN; no complete placement is accepted."
+      },
+      "browser": null
+    },
+    {
+      "id": "compact-route-second",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "cp",
+        "driver_sha256": "79006451468aa0afbbf99f5a3900307739a8c95a2fafdcda857972ac63b0e840",
+        "window_x": 1620,
+        "window_y": 650,
+        "seconds": 60.0,
+        "workers": 8,
+        "page_scale": 0.9,
+        "early_bias": 200.0,
+        "padding": 12,
+        "horizontal_cost": 2.0,
+        "vertical_cost": 12.0,
+        "route_cost": 4,
+        "crossing_cost": 800,
+        "anchors": null,
+        "hint": "projects\\usefulcharts-style\\artifacts\\reviews\\institution-stages-v26\\compact-route-integral\\source.json",
+        "placement": {
+          "method": "cp",
+          "solver_status": "FEASIBLE",
+          "seconds": 60.054521,
+          "objective": 369426.0,
+          "best_bound": 220827.0,
+          "window_x": 1620,
+          "window_y": 650,
+          "workers": 8,
+          "route_cost": 4,
+          "crossing_cost": 800,
+          "crossing_proxy_pairs": 1851,
+          "warning": "Endpoint-order penalties are a layout proxy; actual routed crossings and the final image must be inspected."
+        },
+        "all_facts_preserved": true,
+        "status": "pass",
+        "layout": {
+          "status": "pass",
+          "id": "atlas-of-inquiry",
+          "mode": "lineage",
+          "design": "editorial",
+          "canvas": [
+            1620.0,
+            2430.0
+          ],
+          "node_count": 141,
+          "edge_count": 171,
+          "union_count": 0,
+          "node_collisions": 0,
+          "connector_node_collisions": 0,
+          "crossing_count": 89,
+          "data_sha256": "b61da09d45bf5802da59ca811d1e1644d56e2ed100b5f0794ccf2164f60cafdd",
+          "visual_review": "Required; geometric preflight is not a visual quality score."
+        }
+      },
+      "browser": null
+    },
+    {
+      "id": "compact-side-ports",
+      "report": {
+        "status": "pass",
+        "id": "atlas-of-inquiry",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1620.0,
+          2430.0
+        ],
+        "node_count": 141,
+        "edge_count": 171,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 77,
+        "data_sha256": "4714ec90715d5a0ae132394940f203df4d37a75d33a9d1c005bd9d7b28553182",
+        "visual_review": "Required; geometric preflight is not a visual quality score.",
+        "source": "projects\\usefulcharts-style\\artifacts\\reviews\\institution-stages-v26\\compact-route-integral\\source.json",
+        "driver_sha256": "2efaa1e28e817626974280e5083ffcb0b4326734d3a10acf7a7a73c8705a8693",
+        "all_facts_preserved": true,
+        "port_choices": [
+          {
+            "id": "meridian-to-precision",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 1867.415,
+            "candidate_count": 5
+          },
+          {
+            "id": "pilotage-to-longitude",
+            "source_port": "left",
+            "target_port": "right",
+            "objective": 983.5,
+            "candidate_count": 5
+          },
+          {
+            "id": "longitude-to-southern-survey",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 95.47000000000003,
+            "candidate_count": 5
+          },
+          {
+            "id": "silver-image-to-photometry",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 1220.9699999999998,
+            "candidate_count": 5
+          },
+          {
+            "id": "precision-to-instruments-lab",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 1310.5,
+            "candidate_count": 5
+          },
+          {
+            "id": "spectrum-to-stellar",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 749.4149999999997,
+            "candidate_count": 5
+          },
+          {
+            "id": "transits-to-charts",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 851.22,
+            "candidate_count": 5
+          },
+          {
+            "id": "precision-to-beacon-college",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 2312.7200000000003,
+            "candidate_count": 5
+          },
+          {
+            "id": "machine-to-port-lab",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 2150.75,
+            "candidate_count": 5
+          },
+          {
+            "id": "radio-sea-to-rescue",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 79.47000000000003,
+            "candidate_count": 5
+          },
+          {
+            "id": "hydrography-to-hydro-school",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 839.5949999999998,
+            "candidate_count": 5
+          },
+          {
+            "id": "observatories-to-telescope",
+            "source_port": "left",
+            "target_port": "right",
+            "objective": 655.0,
+            "candidate_count": 5
+          },
+          {
+            "id": "optical-physics-to-color",
+            "source_port": "left",
+            "target_port": "right",
+            "objective": 129.5,
+            "candidate_count": 5
+          },
+          {
+            "id": "meridian-net-to-triangulation",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 877.0,
+            "candidate_count": 5
+          },
+          {
+            "id": "charts-to-hydrography",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 1343.665,
+            "candidate_count": 5
+          },
+          {
+            "id": "hydrography-to-earth-data",
+            "source_port": "right",
+            "target_port": "right",
+            "objective": 762.5,
+            "candidate_count": 5
+          }
+        ],
+        "scope": "Project-only experiment. The unchanged canonical browser audit assumes top/bottom ports; lateral attachments need separate source-backed inspection."
+      },
+      "browser": {
+        "status": "pass",
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": []
+      }
+    },
+    {
+      "id": "compact-smooth",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "relax",
+        "driver_sha256": "c9bd60c28a85c6a8b6483293c67d48df3e97c05c951c089468f740a30e33b8c3",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 0.9,
+        "early_bias": 200.0,
+        "padding": 12,
+        "horizontal_cost": 2.0,
+        "vertical_cost": 12.0,
+        "route_cost": 4,
+        "crossing_cost": 0,
+        "anchors": null,
+        "hint": "projects\\usefulcharts-style\\artifacts\\reviews\\institution-stages-v26\\compact-route-integral\\source.json",
+        "placement": {
+          "method": "relax",
+          "iterations": 5025,
+          "maximum_violation": 2.0853663045272697e-06,
+          "separation_constraints": 9053,
+          "scope": "Local optimum within the complete hint's chosen separation directions; not a global crossing optimum."
+        },
+        "all_facts_preserved": true,
+        "status": "pass",
+        "layout": {
+          "status": "pass",
+          "id": "atlas-of-inquiry",
+          "mode": "lineage",
+          "design": "editorial",
+          "canvas": [
+            1620.0,
+            2430.0
+          ],
+          "node_count": 141,
+          "edge_count": 171,
+          "union_count": 0,
+          "node_collisions": 0,
+          "connector_node_collisions": 0,
+          "crossing_count": 86,
+          "data_sha256": "a4c81f433f36a9fe3badce254779ad97cd899d6ca8ccbcb9bc2c4d20dcec494f",
+          "visual_review": "Required; geometric preflight is not a visual quality score."
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": []
+      }
+    },
+    {
+      "id": "greedy-compact",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 0.9,
+        "hint": null,
+        "status": "fail",
+        "error": "Greedy placement found no complete local envelope for photometry."
+      },
+      "browser": null
+    },
+    {
+      "id": "greedy-compact-gutters",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 0.9,
+        "early_bias": 400.0,
+        "padding": 9.0,
+        "anchors": null,
+        "hint": null,
+        "status": "fail",
+        "error": "Greedy placement found no complete local envelope for stellar-centre."
+      },
+      "browser": null
+    },
+    {
+      "id": "greedy-early-compact",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 0.9,
+        "early_bias": 200.0,
+        "hint": null,
+        "status": "fail",
+        "error": "Greedy placement found no complete local envelope for southern-array."
+      },
+      "browser": null
+    },
+    {
+      "id": "greedy-early-full",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 1.0,
+        "early_bias": 200.0,
+        "hint": null,
+        "placement": {
+          "method": "greedy",
+          "complete_units": 132,
+          "remaining_descendant_space": true,
+          "early_bias": 200.0
+        },
+        "all_facts_preserved": true,
+        "status": "pass",
+        "layout": {
+          "status": "pass",
+          "id": "atlas-of-inquiry",
+          "mode": "lineage",
+          "design": "editorial",
+          "canvas": [
+            1800.0,
+            2700.0
+          ],
+          "node_count": 141,
+          "edge_count": 171,
+          "union_count": 0,
+          "node_collisions": 0,
+          "connector_node_collisions": 0,
+          "crossing_count": 73,
+          "data_sha256": "ada485d76c81ab85834d2bb176102d67f1a82d22247e7485f49c47c5b91a4434",
+          "visual_review": "Required; geometric preflight is not a visual quality score."
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": []
+      }
+    },
+    {
+      "id": "greedy-full",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 1.0,
+        "hint": null,
+        "status": "fail",
+        "error": "Greedy placement found no complete local envelope for southern-array."
+      },
+      "browser": null
+    },
+    {
+      "id": "lateral-compact",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 0.9,
+        "early_bias": 200.0,
+        "padding": 12,
+        "horizontal_cost": 2.0,
+        "vertical_cost": 12.0,
+        "anchors": null,
+        "hint": null,
+        "placement": {
+          "method": "greedy",
+          "complete_units": 132,
+          "remaining_descendant_space": true,
+          "early_bias": 200.0,
+          "padding": 12,
+          "horizontal_cost": 2.0,
+          "vertical_cost": 12.0
+        },
+        "all_facts_preserved": true,
+        "status": "pass",
+        "layout": {
+          "status": "pass",
+          "id": "atlas-of-inquiry",
+          "mode": "lineage",
+          "design": "editorial",
+          "canvas": [
+            1620.0,
+            2430.0
+          ],
+          "node_count": 141,
+          "edge_count": 171,
+          "union_count": 0,
+          "node_collisions": 0,
+          "connector_node_collisions": 0,
+          "crossing_count": 125,
+          "data_sha256": "6bfbf92f5d22d26b0ce3a39c24c0f13d83ad1007f938d73a73842d7f1d9d7a37",
+          "visual_review": "Required; geometric preflight is not a visual quality score."
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": []
+      }
+    },
+    {
+      "id": "lateral-full",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 1.0,
+        "early_bias": 200.0,
+        "padding": 12,
+        "horizontal_cost": 2.0,
+        "vertical_cost": 12.0,
+        "anchors": null,
+        "hint": null,
+        "placement": {
+          "method": "greedy",
+          "complete_units": 132,
+          "remaining_descendant_space": true,
+          "early_bias": 200.0,
+          "padding": 12,
+          "horizontal_cost": 2.0,
+          "vertical_cost": 12.0
+        },
+        "all_facts_preserved": true,
+        "status": "pass",
+        "layout": {
+          "status": "pass",
+          "id": "atlas-of-inquiry",
+          "mode": "lineage",
+          "design": "editorial",
+          "canvas": [
+            1800.0,
+            2700.0
+          ],
+          "node_count": 141,
+          "edge_count": 171,
+          "union_count": 0,
+          "node_collisions": 0,
+          "connector_node_collisions": 0,
+          "crossing_count": 92,
+          "data_sha256": "bfbbc144e856f49c8ef6bd1200d6952687f1ee21970c3cb63a55b3569ad9ebb2",
+          "visual_review": "Required; geometric preflight is not a visual quality score."
+        }
+      },
+      "browser": null
+    },
+    {
+      "id": "lateral-integral",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "driver_sha256": "79006451468aa0afbbf99f5a3900307739a8c95a2fafdcda857972ac63b0e840",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 0.9,
+        "early_bias": 200.0,
+        "padding": 12,
+        "horizontal_cost": 2.0,
+        "vertical_cost": 12.0,
+        "route_cost": 1,
+        "crossing_cost": 0,
+        "anchors": null,
+        "hint": null,
+        "placement": {
+          "method": "greedy",
+          "complete_units": 132,
+          "remaining_descendant_space": true,
+          "early_bias": 200.0,
+          "padding": 12,
+          "horizontal_cost": 2.0,
+          "vertical_cost": 12.0,
+          "coordinates": "Integral with outward-rounded complete envelopes and attachment gaps."
+        },
+        "all_facts_preserved": true,
+        "status": "pass",
+        "layout": {
+          "status": "pass",
+          "id": "atlas-of-inquiry",
+          "mode": "lineage",
+          "design": "editorial",
+          "canvas": [
+            1620.0,
+            2430.0
+          ],
+          "node_count": 141,
+          "edge_count": 171,
+          "union_count": 0,
+          "node_collisions": 0,
+          "connector_node_collisions": 0,
+          "crossing_count": 121,
+          "data_sha256": "29a82fb218e3fef573dbd0b45c6698be9170e59baaf283e570366d7c4e370331",
+          "visual_review": "Required; geometric preflight is not a visual quality score."
+        }
+      },
+      "browser": null
+    },
+    {
+      "id": "published-side-ports",
+      "report": {
+        "status": "pass",
+        "id": "atlas-of-inquiry",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1800.0,
+          2700.0
+        ],
+        "node_count": 141,
+        "edge_count": 171,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 58,
+        "data_sha256": "25a81830bb4797465b5e183e3c388fb09f964fac9bb86709116c3f22736d0f2c",
+        "visual_review": "Required; geometric preflight is not a visual quality score.",
+        "source": "skills\\usefulcharts-style\\assets\\examples\\usefulcharts-style\\atlas-of-inquiry.json",
+        "driver_sha256": "2efaa1e28e817626974280e5083ffcb0b4326734d3a10acf7a7a73c8705a8693",
+        "all_facts_preserved": true,
+        "port_choices": [
+          {
+            "id": "meridian-to-precision",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 1095.415,
+            "candidate_count": 5
+          },
+          {
+            "id": "pilotage-to-longitude",
+            "source_port": "left",
+            "target_port": "right",
+            "objective": 1029.5,
+            "candidate_count": 5
+          },
+          {
+            "id": "longitude-to-southern-survey",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 171.47000000000003,
+            "candidate_count": 3
+          },
+          {
+            "id": "silver-image-to-photometry",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 1319.2499999999998,
+            "candidate_count": 3
+          },
+          {
+            "id": "precision-to-instruments-lab",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 772.5,
+            "candidate_count": 5
+          },
+          {
+            "id": "spectrum-to-stellar",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 1240.0,
+            "candidate_count": 5
+          },
+          {
+            "id": "transits-to-charts",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 540.5,
+            "candidate_count": 5
+          },
+          {
+            "id": "precision-to-beacon-college",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 1529.5,
+            "candidate_count": 5
+          },
+          {
+            "id": "machine-to-port-lab",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 2167.0,
+            "candidate_count": 5
+          },
+          {
+            "id": "radio-sea-to-rescue",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 552.0,
+            "candidate_count": 4
+          },
+          {
+            "id": "hydrography-to-hydro-school",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 714.0,
+            "candidate_count": 3
+          },
+          {
+            "id": "observatories-to-telescope",
+            "source_port": "left",
+            "target_port": "right",
+            "objective": 1563.0,
+            "candidate_count": 5
+          },
+          {
+            "id": "optical-physics-to-color",
+            "source_port": "left",
+            "target_port": "right",
+            "objective": 218.5,
+            "candidate_count": 3
+          },
+          {
+            "id": "meridian-net-to-triangulation",
+            "source_port": "right",
+            "target_port": "left",
+            "objective": 1121.0,
+            "candidate_count": 5
+          },
+          {
+            "id": "charts-to-hydrography",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 2602.665,
+            "candidate_count": 5
+          },
+          {
+            "id": "hydrography-to-earth-data",
+            "source_port": "bottom",
+            "target_port": "top",
+            "objective": 448.6650000000004,
+            "candidate_count": 5
+          }
+        ],
+        "scope": "Project-only experiment. The unchanged canonical browser audit assumes top/bottom ports; lateral attachments need separate source-backed inspection."
+      },
+      "browser": {
+        "status": "pass",
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": []
+      }
+    },
+    {
+      "id": "spines-compact",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 0.9,
+        "early_bias": 400.0,
+        "anchors": "projects\\usefulcharts-style\\artifacts\\data\\institution-spines-v26.json",
+        "hint": null,
+        "status": "fail",
+        "error": "Greedy placement found no complete local envelope for southern-union."
+      },
+      "browser": null
+    },
+    {
+      "id": "spines-compact-gutters",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 0.9,
+        "early_bias": 400.0,
+        "padding": 9.0,
+        "anchors": "projects\\usefulcharts-style\\artifacts\\data\\institution-spines-v26.json",
+        "hint": null,
+        "status": "fail",
+        "error": "Greedy placement found no complete local envelope for night-archive."
+      },
+      "browser": null
+    },
+    {
+      "id": "spines-full",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "greedy",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "workers": 1,
+        "page_scale": 1.0,
+        "early_bias": 200.0,
+        "anchors": "projects\\usefulcharts-style\\artifacts\\data\\institution-spines-v26.json",
+        "hint": null,
+        "placement": {
+          "method": "greedy",
+          "complete_units": 132,
+          "remaining_descendant_space": true,
+          "early_bias": 200.0
+        },
+        "all_facts_preserved": true,
+        "status": "pass",
+        "layout": {
+          "status": "pass",
+          "id": "atlas-of-inquiry",
+          "mode": "lineage",
+          "design": "editorial",
+          "canvas": [
+            1800.0,
+            2700.0
+          ],
+          "node_count": 141,
+          "edge_count": 171,
+          "union_count": 0,
+          "node_collisions": 0,
+          "connector_node_collisions": 0,
+          "crossing_count": 92,
+          "data_sha256": "fd00ede60d12398146f5860514cd18b58c6897150232053f979c7e15fd1b957e",
+          "visual_review": "Required; geometric preflight is not a visual quality score."
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": []
+      }
+    },
+    {
+      "id": "stages",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "status": "fail",
+        "error": "The requested neighborhoods need 794.41 more vertical units."
+      },
+      "browser": null
+    },
+    {
+      "id": "stages-compact",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "cp",
+        "window_x": 350,
+        "window_y": 300,
+        "seconds": 45.0,
+        "workers": 8,
+        "page_scale": 0.8333333333333334,
+        "hint": "projects\\usefulcharts-style\\artifacts\\reviews\\institution-stages-v26\\stages-plane-flexible\\source.json",
+        "status": "fail",
+        "error": "Plane search ended with UNKNOWN; no complete placement is accepted."
+      },
+      "browser": null
+    },
+    {
+      "id": "stages-compact-90",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "cp",
+        "window_x": 350,
+        "window_y": 420,
+        "seconds": 60.0,
+        "workers": 8,
+        "page_scale": 0.9,
+        "hint": "projects\\usefulcharts-style\\artifacts\\reviews\\institution-stages-v26\\stages-plane-flexible\\source.json",
+        "status": "fail",
+        "error": "Plane search ended with UNKNOWN; no complete placement is accepted."
+      },
+      "browser": null
+    },
+    {
+      "id": "stages-plane",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "cp",
+        "window_x": 200,
+        "window_y": 300,
+        "seconds": 45,
+        "status": "fail",
+        "error": "Plane search ended with UNKNOWN; no complete placement is accepted."
+      },
+      "browser": null
+    },
+    {
+      "id": "stages-plane-flexible",
+      "report": {
+        "before": "2b9f6595",
+        "profile": "stages",
+        "stage_weight": 1,
+        "method": "cp",
+        "window_x": 350,
+        "window_y": 300,
+        "seconds": 45.0,
+        "workers": 8,
+        "hint": "projects\\usefulcharts-style\\artifacts\\reviews\\institution-stages-v26\\chronology-plane\\source.json",
+        "placement": {
+          "method": "cp",
+          "solver_status": "FEASIBLE",
+          "seconds": 45.475964100000006,
+          "objective": 51288.0,
+          "best_bound": 24862.0,
+          "window_x": 350,
+          "window_y": 300,
+          "workers": 8
+        },
+        "all_facts_preserved": true,
+        "status": "pass",
+        "layout": {
+          "status": "pass",
+          "id": "atlas-of-inquiry",
+          "mode": "lineage",
+          "design": "editorial",
+          "canvas": [
+            1800.0,
+            2700.0
+          ],
+          "node_count": 141,
+          "edge_count": 171,
+          "union_count": 0,
+          "node_collisions": 0,
+          "connector_node_collisions": 0,
+          "crossing_count": 77,
+          "data_sha256": "3f3c2b9df906e819f0482205105f586d61596c7c1a0a6ba1460792039714a48b",
+          "visual_review": "Required; geometric preflight is not a visual quality score."
+        }
+      },
+      "browser": {
+        "status": "pass",
+        "node_count": 141,
+        "edge_count": 171,
+        "findings": []
+      }
+    }
+  ],
+  "runs": [
+    {
+      "id": "usefulcharts-v26-influence-contract-20260912-spark-1",
+      "case": "contract-smoke",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 83,
+        "payloadSha256": "2246995bab36db21364fa6edddf66f64a3479e16290ee98e5f38da4aaaa8f582"
+      },
+      "prompt_sha256": "d9bbb747d9e316550ce0ba198c831998d60c76cb110b9442a302fbd5605272e5",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T09:39:03.670159+00:00",
+        "finishedAtUtc": "2026-09-12T09:39:22.746933+00:00",
+        "durationSeconds": 19.077,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_and_coordinates_preserved": true,
+        "routing": {
+          "status": "pass",
+          "selected": [
+            "observatory-research"
+          ],
+          "choices": [
+            {
+              "id": "observatory-research",
+              "source_port": "left",
+              "target_port": "right",
+              "route_cost": 566.0,
+              "candidate_count": 5
+            }
+          ],
+          "changed": true,
+          "layout": {
+            "status": "pass",
+            "id": "influence-contract",
+            "mode": "lineage",
+            "design": "editorial",
+            "canvas": [
+              1100.0,
+              1000.0
+            ],
+            "node_count": 6,
+            "edge_count": 6,
+            "union_count": 0,
+            "node_collisions": 0,
+            "connector_node_collisions": 0,
+            "crossing_count": 0,
+            "data_sha256": "ed6f3fbd8bb16c58272bd7a8bebbd47bc99b02156b46af03949d824249649dd1",
+            "visual_review": "Required; geometric preflight is not a visual quality score."
+          },
+          "visual_review": "Required. The route cost is a local geometric heuristic, not an aesthetic score."
+        },
+        "scope": "Command contract only; no aesthetic acceptance.",
+        "independent_browser_pass": true
+      },
+      "read_surface_pass": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "used_influence_helper": true,
+      "explicit_side_attachments": 1,
+      "visual_review": "Command contract only."
+    },
+    {
+      "id": "usefulcharts-v26-institutions-20260912-gpt55-1",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 83,
+        "payloadSha256": "2246995bab36db21364fa6edddf66f64a3479e16290ee98e5f38da4aaaa8f582"
+      },
+      "prompt_sha256": "c2e1a46a4e59a1ce38a75a54271632d1f9bab45229449c8173b402ae87bead3b",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T09:39:03.120776+00:00",
+        "finishedAtUtc": "2026-09-12T09:40:30.624490+00:00",
+        "durationSeconds": 87.504,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "run": "usefulcharts-v26-institutions-20260912-gpt55-1",
+        "canvas": [
+          1278.0,
+          1195.36
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review.",
+        "independent_browser_pass": true
+      },
+      "read_surface_pass": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "result/poster.png",
+        "result/browser.json"
+      ],
+      "used_influence_helper": false,
+      "explicit_side_attachments": 0,
+      "visual_review": {
+        "status": "fail",
+        "findings": [
+          "Dates and repeated parentage explanations make the colored panels heavy.",
+          "The printed source note exposes isolated-forward-test wording.",
+          "The influence remains a long lower shelf."
+        ]
+      }
+    },
+    {
+      "id": "usefulcharts-v26-institutions-20260912-gpt55-2",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 83,
+        "payloadSha256": "2246995bab36db21364fa6edddf66f64a3479e16290ee98e5f38da4aaaa8f582"
+      },
+      "prompt_sha256": "c2e1a46a4e59a1ce38a75a54271632d1f9bab45229449c8173b402ae87bead3b",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T09:39:03.318187+00:00",
+        "finishedAtUtc": "2026-09-12T09:40:34.139842+00:00",
+        "durationSeconds": 90.822,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "run": "usefulcharts-v26-institutions-20260912-gpt55-2",
+        "canvas": [
+          1278.0,
+          1159.64
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review.",
+        "independent_browser_pass": true
+      },
+      "read_surface_pass": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/references/influence-routes.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "result/poster.png",
+        "result/browser.json",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "result/poster.svg"
+      ],
+      "used_influence_helper": false,
+      "explicit_side_attachments": 0,
+      "visual_review": {
+        "status": "fail",
+        "findings": [
+          "The long title loses the header's intended prominence.",
+          "Name, date and repeated source explanations share bulky colored panels.",
+          "The small observation figure sits in a tall, largely empty image strip."
+        ]
+      }
+    },
+    {
+      "id": "usefulcharts-v26-institutions-20260912-gpt55-3",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 83,
+        "payloadSha256": "2246995bab36db21364fa6edddf66f64a3479e16290ee98e5f38da4aaaa8f582"
+      },
+      "prompt_sha256": "c2e1a46a4e59a1ce38a75a54271632d1f9bab45229449c8173b402ae87bead3b",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T09:39:03.116593+00:00",
+        "finishedAtUtc": "2026-09-12T09:40:32.331345+00:00",
+        "durationSeconds": 89.215,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "run": "usefulcharts-v26-institutions-20260912-gpt55-3",
+        "canvas": [
+          1138.0,
+          1159.64
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review.",
+        "independent_browser_pass": true
+      },
+      "read_surface_pass": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/references/influence-routes.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "result/poster.png"
+      ],
+      "used_influence_helper": false,
+      "explicit_side_attachments": 0,
+      "visual_review": {
+        "status": "fail",
+        "findings": [
+          "The page is readable but retains heavy multi-line panels and repetitious relationship prose.",
+          "The illustration has insufficient visible scale inside its tall panel.",
+          "The lower influence shelf remains conspicuous."
+        ]
+      }
+    },
+    {
+      "id": "usefulcharts-v26b-influence-contract-20260912-spark-1",
+      "case": "contract-smoke",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 83,
+        "payloadSha256": "38f7c9978878280108dcf70a960430994e6bff3bd7521534e2d85ce730bd5cba"
+      },
+      "prompt_sha256": "d9bbb747d9e316550ce0ba198c831998d60c76cb110b9442a302fbd5605272e5",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T09:42:36.521248+00:00",
+        "finishedAtUtc": "2026-09-12T09:42:54.965150+00:00",
+        "durationSeconds": 18.444,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_and_coordinates_preserved": true,
+        "routing": {
+          "status": "pass",
+          "selected": [
+            "observatory-research"
+          ],
+          "choices": [
+            {
+              "id": "observatory-research",
+              "source_port": "left",
+              "target_port": "right",
+              "route_cost": 566.0,
+              "candidate_count": 5
+            }
+          ],
+          "changed": true,
+          "layout": {
+            "status": "pass",
+            "id": "influence-contract",
+            "mode": "lineage",
+            "design": "editorial",
+            "canvas": [
+              1100.0,
+              1000.0
+            ],
+            "node_count": 6,
+            "edge_count": 6,
+            "union_count": 0,
+            "node_collisions": 0,
+            "connector_node_collisions": 0,
+            "crossing_count": 0,
+            "data_sha256": "ed6f3fbd8bb16c58272bd7a8bebbd47bc99b02156b46af03949d824249649dd1",
+            "visual_review": "Required; geometric preflight is not a visual quality score."
+          },
+          "visual_review": "Required. The route cost is a local geometric heuristic, not an aesthetic score."
+        },
+        "scope": "Command contract only; no aesthetic acceptance.",
+        "independent_browser_pass": true
+      },
+      "read_surface_pass": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "used_influence_helper": true,
+      "explicit_side_attachments": 1,
+      "visual_review": "Command contract only."
+    },
+    {
+      "id": "usefulcharts-v26b-institutions-20260912-gpt55-1",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 83,
+        "payloadSha256": "38f7c9978878280108dcf70a960430994e6bff3bd7521534e2d85ce730bd5cba"
+      },
+      "prompt_sha256": "c2e1a46a4e59a1ce38a75a54271632d1f9bab45229449c8173b402ae87bead3b",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T09:42:35.873569+00:00",
+        "finishedAtUtc": "2026-09-12T09:44:06.391116+00:00",
+        "durationSeconds": 90.518,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "run": "usefulcharts-v26b-institutions-20260912-gpt55-1",
+        "canvas": [
+          1278.0,
+          1178.98
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review.",
+        "independent_browser_pass": true
+      },
+      "read_surface_pass": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "result/poster.png",
+        "result/browser.json",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json"
+      ],
+      "used_influence_helper": false,
+      "explicit_side_attachments": 0,
+      "visual_review": {
+        "status": "pass",
+        "findings": [
+          "Dates above compact name panels and context below them provide a clearer hierarchy.",
+          "Both mergers, the ended branch and all source dates remain readable.",
+          "Remaining gaps: repetitive captions, a small observation figure and the long lower influence shelf. This is a compact-case pass, not dense visual parity."
+        ]
+      }
+    },
+    {
+      "id": "usefulcharts-v26b-institutions-20260912-gpt55-2",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 83,
+        "payloadSha256": "38f7c9978878280108dcf70a960430994e6bff3bd7521534e2d85ce730bd5cba"
+      },
+      "prompt_sha256": "c2e1a46a4e59a1ce38a75a54271632d1f9bab45229449c8173b402ae87bead3b",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T09:42:35.936917+00:00",
+        "finishedAtUtc": "2026-09-12T09:45:08.090124+00:00",
+        "durationSeconds": 152.154,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "run": "usefulcharts-v26b-institutions-20260912-gpt55-2",
+        "canvas": [
+          1306.0,
+          1232.02
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 3,
+        "omitted_image_count": 0,
+        "findings": [],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review.",
+        "independent_browser_pass": true
+      },
+      "read_surface_pass": true,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "skills/usefulcharts-style/assets/illustrations/provenance.json",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/influence-routes.md"
+      ],
+      "used_influence_helper": false,
+      "explicit_side_attachments": 1,
+      "visual_review": {
+        "status": "pass",
+        "findings": [
+          "The observation illustration is visibly larger and the two major mergers remain distinct.",
+          "A left-to-right side attachment clarifies the influence without sharing the descent port.",
+          "Remaining gaps: repeated caption formulas, a regular automatic tree and a longer-than-needed title. This is a compact-case pass, not dense visual parity."
+        ]
+      }
+    },
+    {
+      "id": "usefulcharts-v26b-institutions-20260912-gpt55-3",
+      "case": "naturalistic-forward",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 83,
+        "payloadSha256": "38f7c9978878280108dcf70a960430994e6bff3bd7521534e2d85ce730bd5cba"
+      },
+      "prompt_sha256": "c2e1a46a4e59a1ce38a75a54271632d1f9bab45229449c8173b402ae87bead3b",
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T09:42:36.231869+00:00",
+        "finishedAtUtc": "2026-09-12T09:43:57.026882+00:00",
+        "durationSeconds": 80.796,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "run": "usefulcharts-v26b-institutions-20260912-gpt55-3",
+        "canvas": [
+          1278.0,
+          1196.3
+        ],
+        "node_count": 14,
+        "edge_count": 16,
+        "image_read_count": 1,
+        "omitted_image_count": 0,
+        "findings": [],
+        "limitation": "These checks cover this task contract. Visual quality and parity with a reference still require independent image review.",
+        "independent_browser_pass": true
+      },
+      "read_surface_pass": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/compact-lineage.md",
+        "skills/usefulcharts-style/assets/templates/lineage.json",
+        "result/poster.png"
+      ],
+      "used_influence_helper": false,
+      "explicit_side_attachments": 0,
+      "visual_review": {
+        "status": "pass",
+        "findings": [
+          "The compact date/name/caption groups improve scanning without deleting the end date or mergers.",
+          "Both category colors remain stable and principal names remain dark.",
+          "Remaining gaps: repeated parentage captions, a small observation figure and a broad lower shelf. This is a compact-case pass, not dense visual parity."
+        ]
+      }
+    }
+  ],
+  "final_facts": {
+    "status": "pass",
+    "checks": {
+      "all_node_facts_and_typography": true,
+      "all_typed_relationships": true,
+      "inset_data": true,
+      "other_source_fields": true,
+      "canonical_png_equals_reviewed": true
+    },
+    "node_count": 141,
+    "edge_count": 171,
+    "influence_count": 16,
+    "lateral_influences": 10,
+    "before_canvas": [
+      1800,
+      2700
+    ],
+    "after_canvas": [
+      1620,
+      2430
+    ],
+    "source_sha256": "9093f653c6f257040d4426dacc2fa1ed023d29ce916bc45e72b8fc77859a351e",
+    "png_sha256": "329a9f3d6ea591f84ef1303c5359f0316ade5a9b28bf85d7409f3789f449c374"
+  },
+  "final_murals": [
+    {
+      "id": "aurelian-families",
+      "svg_sha256": "147571087e0cbe772934bc04a95c8636dc66247ecab45fd46d92283d9750bfc0",
+      "unchanged_from_baseline": true,
+      "browser_status": "pass",
+      "findings": [],
+      "canvas": [
+        1890,
+        2835
+      ],
+      "crossings": 16,
+      "mutations_detected": 19
+    },
+    {
+      "id": "atlas-of-inquiry",
+      "svg_sha256": "6e979921e2f42c26c9e76a64b17db5d9371727e751f2321bb683fe4f539ce1fe",
+      "unchanged_from_baseline": false,
+      "browser_status": "pass",
+      "findings": [],
+      "canvas": [
+        1620,
+        2430
+      ],
+      "crossings": 77,
+      "mutations_detected": 13
+    },
+    {
+      "id": "five-regional-histories",
+      "svg_sha256": "d91311f0f1882f066f1762aa34cf46ac7d5bcb7fa17b3635871a2236d678d0c3",
+      "unchanged_from_baseline": true,
+      "browser_status": "pass",
+      "findings": [],
+      "canvas": [
+        1800,
+        2400
+      ],
+      "crossings": 0,
+      "mutations_detected": 14
+    }
+  ],
+  "route_metrics": {
+    "candidates": [
+      {
+        "id": "previous",
+        "canvas": [
+          1800,
+          2700
+        ],
+        "edge_count": 171,
+        "total_length": 37960.87191772461,
+        "total_bends": 422,
+        "longest": [
+          {
+            "id": "charts-to-hydrography",
+            "kind": "influence",
+            "length": 1386.644775390625,
+            "bends": 12
+          },
+          {
+            "id": "machine-to-port-lab",
+            "kind": "influence",
+            "length": 1216.0989990234375,
+            "bends": 8
+          },
+          {
+            "id": "observatories-to-telescope",
+            "kind": "influence",
+            "length": 1088.1563720703125,
+            "bends": 6
+          },
+          {
+            "id": "precision-to-beacon-college",
+            "kind": "influence",
+            "length": 1017.7064819335938,
+            "bends": 6
+          },
+          {
+            "id": "spectrum-to-stellar",
+            "kind": "influence",
+            "length": 1010.7666015625,
+            "bends": 6
+          },
+          {
+            "id": "meridian-to-precision",
+            "kind": "influence",
+            "length": 988.8607788085938,
+            "bends": 4
+          },
+          {
+            "id": "silver-image-to-photometry",
+            "kind": "influence",
+            "length": 984.3146362304688,
+            "bends": 4
+          },
+          {
+            "id": "pilotage-to-longitude",
+            "kind": "influence",
+            "length": 725.6563720703125,
+            "bends": 6
+          },
+          {
+            "id": "glass-union-to-lenses",
+            "kind": "branch",
+            "length": 711.0872192382812,
+            "bends": 4
+          },
+          {
+            "id": "meridian-net-to-triangulation",
+            "kind": "influence",
+            "length": 705.8963012695312,
+            "bends": 6
+          },
+          {
+            "id": "archive-to-seafarers",
+            "kind": "branch",
+            "length": 648.7818603515625,
+            "bends": 2
+          },
+          {
+            "id": "archive-to-makers",
+            "kind": "branch",
+            "length": 613.7318115234375,
+            "bends": 2
+          }
+        ],
+        "edges": [
+          {
+            "id": "charts-to-hydrography",
+            "kind": "influence",
+            "length": 1386.644775390625,
+            "bends": 12
+          },
+          {
+            "id": "machine-to-port-lab",
+            "kind": "influence",
+            "length": 1216.0989990234375,
+            "bends": 8
+          },
+          {
+            "id": "observatories-to-telescope",
+            "kind": "influence",
+            "length": 1088.1563720703125,
+            "bends": 6
+          },
+          {
+            "id": "precision-to-beacon-college",
+            "kind": "influence",
+            "length": 1017.7064819335938,
+            "bends": 6
+          },
+          {
+            "id": "spectrum-to-stellar",
+            "kind": "influence",
+            "length": 1010.7666015625,
+            "bends": 6
+          },
+          {
+            "id": "meridian-to-precision",
+            "kind": "influence",
+            "length": 988.8607788085938,
+            "bends": 4
+          },
+          {
+            "id": "silver-image-to-photometry",
+            "kind": "influence",
+            "length": 984.3146362304688,
+            "bends": 4
+          },
+          {
+            "id": "pilotage-to-longitude",
+            "kind": "influence",
+            "length": 725.6563720703125,
+            "bends": 6
+          },
+          {
+            "id": "glass-union-to-lenses",
+            "kind": "branch",
+            "length": 711.0872192382812,
+            "bends": 4
+          },
+          {
+            "id": "meridian-net-to-triangulation",
+            "kind": "influence",
+            "length": 705.8963012695312,
+            "bends": 6
+          },
+          {
+            "id": "archive-to-seafarers",
+            "kind": "branch",
+            "length": 648.7818603515625,
+            "bends": 2
+          },
+          {
+            "id": "archive-to-makers",
+            "kind": "branch",
+            "length": 613.7318115234375,
+            "bends": 2
+          },
+          {
+            "id": "land-register-to-mapping",
+            "kind": "branch",
+            "length": 549.656982421875,
+            "bends": 6
+          },
+          {
+            "id": "precision-to-instruments-lab",
+            "kind": "influence",
+            "length": 543.572265625,
+            "bends": 2
+          },
+          {
+            "id": "triangulation-to-hydrography",
+            "kind": "branch",
+            "length": 492.9669189453125,
+            "bends": 6
+          },
+          {
+            "id": "geography-to-earth-data",
+            "kind": "branch",
+            "length": 488.46734619140625,
+            "bends": 6
+          },
+          {
+            "id": "transits-to-charts",
+            "kind": "influence",
+            "length": 484.7063293457031,
+            "bends": 6
+          },
+          {
+            "id": "hydrography-to-hydro-school",
+            "kind": "influence",
+            "length": 448.27410888671875,
+            "bends": 2
+          },
+          {
+            "id": "hydrography-to-earth-data",
+            "kind": "influence",
+            "length": 401.38189697265625,
+            "bends": 6
+          },
+          {
+            "id": "radio-sea-to-rescue",
+            "kind": "influence",
+            "length": 395.71722412109375,
+            "bends": 6
+          },
+          {
+            "id": "rescue-to-ocean-safety",
+            "kind": "branch",
+            "length": 388.2521667480469,
+            "bends": 2
+          },
+          {
+            "id": "atlas-room-to-geography",
+            "kind": "branch",
+            "length": 380.772216796875,
+            "bends": 2
+          },
+          {
+            "id": "pilot-union-to-seamanship",
+            "kind": "branch",
+            "length": 364.9645690917969,
+            "bends": 4
+          },
+          {
+            "id": "color-to-imaging",
+            "kind": "branch",
+            "length": 357.6378173828125,
+            "bends": 2
+          },
+          {
+            "id": "light-to-telescope",
+            "kind": "branch",
+            "length": 356.6218566894531,
+            "bends": 2
+          },
+          {
+            "id": "naval-to-hydro-school",
+            "kind": "branch",
+            "length": 353.27484130859375,
+            "bends": 4
+          },
+          {
+            "id": "seafarers-to-boatmen",
+            "kind": "branch",
+            "length": 340.5819091796875,
+            "bends": 2
+          },
+          {
+            "id": "ocean-to-ocean-voyage",
+            "kind": "branch",
+            "length": 338.4519348144531,
+            "bends": 2
+          },
+          {
+            "id": "southern-union-to-southern-array",
+            "kind": "branch",
+            "length": 337.6050109863281,
+            "bends": 4
+          },
+          {
+            "id": "hydraulic-to-pump-school",
+            "kind": "branch",
+            "length": 324.87115478515625,
+            "bends": 4
+          },
+          {
+            "id": "summit-to-southern",
+            "kind": "branch",
+            "length": 324.7618408203125,
+            "bends": 2
+          },
+          {
+            "id": "lifeboat-to-rescue",
+            "kind": "branch",
+            "length": 310.48480224609375,
+            "bends": 4
+          },
+          {
+            "id": "makers-to-glass",
+            "kind": "branch",
+            "length": 302.5317687988281,
+            "bends": 2
+          },
+          {
+            "id": "seamanship-to-naval",
+            "kind": "branch",
+            "length": 276.0621337890625,
+            "bends": 2
+          },
+          {
+            "id": "public-sky-to-astronomical",
+            "kind": "branch",
+            "length": 266.70697021484375,
+            "bends": 4
+          },
+          {
+            "id": "mechanical-to-precision",
+            "kind": "branch",
+            "length": 266.33294677734375,
+            "bends": 2
+          },
+          {
+            "id": "sky-to-calendar",
+            "kind": "branch",
+            "length": 263.3818054199219,
+            "bends": 2
+          },
+          {
+            "id": "sky-to-watchers",
+            "kind": "branch",
+            "length": 256.2618103027344,
+            "bends": 2
+          },
+          {
+            "id": "southern-tables-to-southern-union",
+            "kind": "branch",
+            "length": 253.25599670410156,
+            "bends": 2
+          },
+          {
+            "id": "refraction-to-spectrum",
+            "kind": "branch",
+            "length": 239.7447052001953,
+            "bends": 4
+          },
+          {
+            "id": "ocean-to-pilot-union",
+            "kind": "branch",
+            "length": 236.80191040039062,
+            "bends": 2
+          },
+          {
+            "id": "southern-to-southern-survey",
+            "kind": "branch",
+            "length": 234.952880859375,
+            "bends": 2
+          },
+          {
+            "id": "clockmakers-to-horology",
+            "kind": "branch",
+            "length": 234.351806640625,
+            "bends": 2
+          },
+          {
+            "id": "maritime-to-ocean-safety",
+            "kind": "branch",
+            "length": 233.072265625,
+            "bends": 2
+          },
+          {
+            "id": "canals-to-mechanical",
+            "kind": "branch",
+            "length": 229.4117889404297,
+            "bends": 2
+          },
+          {
+            "id": "water-to-pumps",
+            "kind": "branch",
+            "length": 224.57179260253906,
+            "bends": 2
+          },
+          {
+            "id": "millwrights-to-hydraulic",
+            "kind": "branch",
+            "length": 214.55409240722656,
+            "bends": 4
+          },
+          {
+            "id": "beacons-to-beacon-college",
+            "kind": "branch",
+            "length": 214.469970703125,
+            "bends": 0
+          },
+          {
+            "id": "tide-to-coast-watch",
+            "kind": "branch",
+            "length": 212.38186645507812,
+            "bends": 2
+          },
+          {
+            "id": "makers-to-brass",
+            "kind": "branch",
+            "length": 210.5317840576172,
+            "bends": 2
+          },
+          {
+            "id": "radio-sea-to-maritime",
+            "kind": "branch",
+            "length": 210.36505126953125,
+            "bends": 4
+          },
+          {
+            "id": "meridian-net-to-north-station",
+            "kind": "branch",
+            "length": 210.31185913085938,
+            "bends": 2
+          },
+          {
+            "id": "seafarers-to-pilots",
+            "kind": "branch",
+            "length": 197.58184814453125,
+            "bends": 2
+          },
+          {
+            "id": "balance-to-standards",
+            "kind": "branch",
+            "length": 197.561767578125,
+            "bends": 2
+          },
+          {
+            "id": "clockmakers-to-pendulum",
+            "kind": "branch",
+            "length": 197.4868621826172,
+            "bends": 2
+          },
+          {
+            "id": "space-science-to-orbital",
+            "kind": "branch",
+            "length": 194.5223388671875,
+            "bends": 2
+          },
+          {
+            "id": "stellar-centre-to-sky-data",
+            "kind": "branch",
+            "length": 193.6923370361328,
+            "bends": 2
+          },
+          {
+            "id": "testing-to-metrology",
+            "kind": "branch",
+            "length": 192.45245361328125,
+            "bends": 2
+          },
+          {
+            "id": "maritime-to-sea-college",
+            "kind": "branch",
+            "length": 192.26235961914062,
+            "bends": 2
+          },
+          {
+            "id": "fieldbooks-to-atlas-room",
+            "kind": "branch",
+            "length": 189.48300170898438,
+            "bends": 2
+          },
+          {
+            "id": "oral-to-record",
+            "kind": "branch",
+            "length": 188.60418701171875,
+            "bends": 4
+          },
+          {
+            "id": "radial-to-stellar-centre",
+            "kind": "branch",
+            "length": 187.96688842773438,
+            "bends": 2
+          },
+          {
+            "id": "watchers-to-nightbooks",
+            "kind": "branch",
+            "length": 187.5718231201172,
+            "bends": 2
+          },
+          {
+            "id": "southern-survey-to-southern-tables",
+            "kind": "branch",
+            "length": 187.223388671875,
+            "bends": 2
+          },
+          {
+            "id": "astronomical-to-night-archive",
+            "kind": "branch",
+            "length": 185.26193237304688,
+            "bends": 2
+          },
+          {
+            "id": "observatories-to-longitude",
+            "kind": "branch",
+            "length": 184.64920043945312,
+            "bends": 2
+          },
+          {
+            "id": "record-to-chroniclers",
+            "kind": "branch",
+            "length": 183.4517822265625,
+            "bends": 2
+          },
+          {
+            "id": "optical-physics-to-color",
+            "kind": "influence",
+            "length": 182.77468872070312,
+            "bends": 2
+          },
+          {
+            "id": "triangulation-to-land-register",
+            "kind": "branch",
+            "length": 182.44586181640625,
+            "bends": 2
+          },
+          {
+            "id": "sky-data-to-open-sky",
+            "kind": "branch",
+            "length": 182.3822479248047,
+            "bends": 2
+          },
+          {
+            "id": "astronomical-to-radio-sky",
+            "kind": "branch",
+            "length": 178.45196533203125,
+            "bends": 2
+          },
+          {
+            "id": "oral-to-craft",
+            "kind": "branch",
+            "length": 177.60414123535156,
+            "bends": 4
+          },
+          {
+            "id": "surveyors-to-triangulation",
+            "kind": "branch",
+            "length": 175.45193481445312,
+            "bends": 2
+          },
+          {
+            "id": "meridian-net-to-island-station",
+            "kind": "branch",
+            "length": 174.31187438964844,
+            "bends": 2
+          },
+          {
+            "id": "instruments-to-natural",
+            "kind": "branch",
+            "length": 172.52175903320312,
+            "bends": 2
+          },
+          {
+            "id": "star-census-to-observatories",
+            "kind": "branch",
+            "length": 172.2719268798828,
+            "bends": 2
+          },
+          {
+            "id": "almanac-to-newcalendar",
+            "kind": "branch",
+            "length": 171.5118408203125,
+            "bends": 2
+          },
+          {
+            "id": "newcalendar-to-computers",
+            "kind": "branch",
+            "length": 171.38186645507812,
+            "bends": 2
+          },
+          {
+            "id": "southern-array-to-open-sky",
+            "kind": "branch",
+            "length": 171.2472381591797,
+            "bends": 2
+          },
+          {
+            "id": "glass-to-clear-glass",
+            "kind": "branch",
+            "length": 170.69174194335938,
+            "bends": 2
+          },
+          {
+            "id": "beacon-college-to-signals",
+            "kind": "branch",
+            "length": 170.45611572265625,
+            "bends": 2
+          },
+          {
+            "id": "calendar-to-equinox",
+            "kind": "branch",
+            "length": 164.57180786132812,
+            "bends": 2
+          },
+          {
+            "id": "night-archive-to-sky-data",
+            "kind": "branch",
+            "length": 163.83688354492188,
+            "bends": 2
+          },
+          {
+            "id": "telescope-to-opticians",
+            "kind": "branch",
+            "length": 159.57192993164062,
+            "bends": 2
+          },
+          {
+            "id": "tables-to-natural",
+            "kind": "branch",
+            "length": 155.61036682128906,
+            "bends": 2
+          },
+          {
+            "id": "pilots-to-port-school",
+            "kind": "branch",
+            "length": 150.76185607910156,
+            "bends": 2
+          },
+          {
+            "id": "standards-to-metrology",
+            "kind": "branch",
+            "length": 150.44180297851562,
+            "bends": 2
+          },
+          {
+            "id": "photometry-to-astronomical",
+            "kind": "branch",
+            "length": 147.26199340820312,
+            "bends": 2
+          },
+          {
+            "id": "transits-to-observatories",
+            "kind": "branch",
+            "length": 146.9618377685547,
+            "bends": 2
+          },
+          {
+            "id": "coast-watch-to-beacons",
+            "kind": "branch",
+            "length": 144.44189453125,
+            "bends": 2
+          },
+          {
+            "id": "hydraulic-to-canals",
+            "kind": "branch",
+            "length": 139.69210815429688,
+            "bends": 2
+          },
+          {
+            "id": "comet-to-stellar",
+            "kind": "branch",
+            "length": 139.31552124023438,
+            "bends": 2
+          },
+          {
+            "id": "light-to-refraction",
+            "kind": "branch",
+            "length": 137.75186157226562,
+            "bends": 2
+          },
+          {
+            "id": "charts-to-soundings",
+            "kind": "branch",
+            "length": 136.57186889648438,
+            "bends": 2
+          },
+          {
+            "id": "glass-research-to-photographic",
+            "kind": "branch",
+            "length": 132.45223999023438,
+            "bends": 2
+          },
+          {
+            "id": "river-law-to-river-merger",
+            "kind": "branch",
+            "length": 130.88311767578125,
+            "bends": 2
+          },
+          {
+            "id": "soundings-to-surveyors",
+            "kind": "branch",
+            "length": 130.8287353515625,
+            "bends": 2
+          },
+          {
+            "id": "summit-to-star-census",
+            "kind": "branch",
+            "length": 129.468994140625,
+            "bends": 2
+          },
+          {
+            "id": "seamanship-to-merchant",
+            "kind": "branch",
+            "length": 127.64270782470703,
+            "bends": 2
+          },
+          {
+            "id": "camera-to-silver-image",
+            "kind": "branch",
+            "length": 125.83259582519531,
+            "bends": 2
+          },
+          {
+            "id": "rail-to-machine",
+            "kind": "branch",
+            "length": 125.69189453125,
+            "bends": 2
+          },
+          {
+            "id": "pilotage-to-ocean",
+            "kind": "branch",
+            "length": 125.471923828125,
+            "bends": 2
+          },
+          {
+            "id": "watchers-to-summit",
+            "kind": "branch",
+            "length": 124.64183044433594,
+            "bends": 2
+          },
+          {
+            "id": "ephemerides-to-reformers",
+            "kind": "branch",
+            "length": 124.44181060791016,
+            "bends": 2
+          },
+          {
+            "id": "clear-glass-to-glass-union",
+            "kind": "branch",
+            "length": 122.5617904663086,
+            "bends": 2
+          },
+          {
+            "id": "island-station-to-comet",
+            "kind": "branch",
+            "length": 121.32191467285156,
+            "bends": 2
+          },
+          {
+            "id": "brass-to-dials",
+            "kind": "branch",
+            "length": 120.51178741455078,
+            "bends": 2
+          },
+          {
+            "id": "river-merger-to-pilot-union",
+            "kind": "branch",
+            "length": 119.79183197021484,
+            "bends": 2
+          },
+          {
+            "id": "signals-to-radio-sea",
+            "kind": "branch",
+            "length": 118.44204711914062,
+            "bends": 2
+          },
+          {
+            "id": "longitude-to-southern-survey",
+            "kind": "influence",
+            "length": 117.44187927246094,
+            "bends": 2
+          },
+          {
+            "id": "harbour-board-to-lifeboat",
+            "kind": "branch",
+            "length": 116.25199127197266,
+            "bends": 2
+          },
+          {
+            "id": "newcalendar-to-ephemerides",
+            "kind": "branch",
+            "length": 115.38187408447266,
+            "bends": 2
+          },
+          {
+            "id": "photographic-to-color",
+            "kind": "branch",
+            "length": 114.3321533203125,
+            "bends": 2
+          },
+          {
+            "id": "light-to-mirror",
+            "kind": "branch",
+            "length": 112.75184631347656,
+            "bends": 2
+          },
+          {
+            "id": "engines-west-to-rail",
+            "kind": "branch",
+            "length": 110.96599578857422,
+            "bends": 2
+          },
+          {
+            "id": "color-to-moving-image",
+            "kind": "branch",
+            "length": 110.72889709472656,
+            "bends": 2
+          },
+          {
+            "id": "silver-image-to-photographic",
+            "kind": "branch",
+            "length": 110.44473266601562,
+            "bends": 2
+          },
+          {
+            "id": "hydro-school-to-naval-survey",
+            "kind": "branch",
+            "length": 110.1220703125,
+            "bends": 2
+          },
+          {
+            "id": "boatmen-to-river-law",
+            "kind": "branch",
+            "length": 109.50611877441406,
+            "bends": 2
+          },
+          {
+            "id": "seafarers-to-open-sea",
+            "kind": "branch",
+            "length": 108.46187591552734,
+            "bends": 2
+          },
+          {
+            "id": "observatories-to-meridian-net",
+            "kind": "branch",
+            "length": 108.08177185058594,
+            "bends": 2
+          },
+          {
+            "id": "pilots-to-tide",
+            "kind": "branch",
+            "length": 104.51189422607422,
+            "bends": 2
+          },
+          {
+            "id": "calendar-to-almanac",
+            "kind": "branch",
+            "length": 102.69175720214844,
+            "bends": 2
+          },
+          {
+            "id": "radio-sky-to-space-science",
+            "kind": "branch",
+            "length": 102.58189392089844,
+            "bends": 2
+          },
+          {
+            "id": "port-school-to-charts",
+            "kind": "branch",
+            "length": 101.6318359375,
+            "bends": 2
+          },
+          {
+            "id": "equinox-to-newcalendar",
+            "kind": "branch",
+            "length": 101.3818588256836,
+            "bends": 2
+          },
+          {
+            "id": "sunroom-to-transits",
+            "kind": "branch",
+            "length": 101.02275085449219,
+            "bends": 2
+          },
+          {
+            "id": "refraction-to-camera",
+            "kind": "branch",
+            "length": 100.69190979003906,
+            "bends": 2
+          },
+          {
+            "id": "open-sea-to-pilotage",
+            "kind": "branch",
+            "length": 96.83871459960938,
+            "bends": 2
+          },
+          {
+            "id": "photographic-to-cinema",
+            "kind": "branch",
+            "length": 93.33216857910156,
+            "bends": 2
+          },
+          {
+            "id": "port-lab-to-maritime",
+            "kind": "branch",
+            "length": 91.25214385986328,
+            "bends": 2
+          },
+          {
+            "id": "mechanical-to-engines",
+            "kind": "branch",
+            "length": 89.73185729980469,
+            "bends": 2
+          },
+          {
+            "id": "north-station-to-variable",
+            "kind": "branch",
+            "length": 88.94540405273438,
+            "bends": 2
+          },
+          {
+            "id": "surveyors-to-fieldbooks",
+            "kind": "branch",
+            "length": 88.8915023803711,
+            "bends": 2
+          },
+          {
+            "id": "lenses-to-light",
+            "kind": "branch",
+            "length": 85.94197845458984,
+            "bends": 2
+          },
+          {
+            "id": "variable-to-photometry",
+            "kind": "branch",
+            "length": 85.44189453125,
+            "bends": 2
+          },
+          {
+            "id": "dials-to-clockmakers",
+            "kind": "branch",
+            "length": 84.3517837524414,
+            "bends": 2
+          },
+          {
+            "id": "horology-to-mechanical",
+            "kind": "branch",
+            "length": 81.35185241699219,
+            "bends": 2
+          },
+          {
+            "id": "stellar-to-radial",
+            "kind": "branch",
+            "length": 79.45584869384766,
+            "bends": 2
+          },
+          {
+            "id": "mapping-to-earth-data",
+            "kind": "branch",
+            "length": 79.44213104248047,
+            "bends": 2
+          },
+          {
+            "id": "medical-lenses-to-microscopy",
+            "kind": "branch",
+            "length": 79.19940185546875,
+            "bends": 2
+          },
+          {
+            "id": "pilot-union-to-channel",
+            "kind": "branch",
+            "length": 78.91194152832031,
+            "bends": 2
+          },
+          {
+            "id": "mirror-to-glassworks",
+            "kind": "branch",
+            "length": 78.1527099609375,
+            "bends": 2
+          },
+          {
+            "id": "makers-to-water",
+            "kind": "branch",
+            "length": 77.53176879882812,
+            "bends": 2
+          },
+          {
+            "id": "meridian-net-to-valley",
+            "kind": "branch",
+            "length": 76.69187927246094,
+            "bends": 2
+          },
+          {
+            "id": "archive-to-sky",
+            "kind": "branch",
+            "length": 75.726318359375,
+            "bends": 2
+          },
+          {
+            "id": "brass-to-scales",
+            "kind": "branch",
+            "length": 74.57178497314453,
+            "bends": 2
+          },
+          {
+            "id": "valley-to-public-sky",
+            "kind": "branch",
+            "length": 73.58189392089844,
+            "bends": 2
+          },
+          {
+            "id": "channel-to-harbour-board",
+            "kind": "branch",
+            "length": 71.21339416503906,
+            "bends": 2
+          },
+          {
+            "id": "instrument-firm-to-medical-lenses",
+            "kind": "branch",
+            "length": 69.69224548339844,
+            "bends": 2
+          },
+          {
+            "id": "glassworks-to-glass-research",
+            "kind": "branch",
+            "length": 67.91015625,
+            "bends": 0
+          },
+          {
+            "id": "laser-to-photonics",
+            "kind": "branch",
+            "length": 65.0580825805664,
+            "bends": 2
+          },
+          {
+            "id": "scales-to-balance",
+            "kind": "branch",
+            "length": 64.33951568603516,
+            "bends": 2
+          },
+          {
+            "id": "water-to-millwrights",
+            "kind": "branch",
+            "length": 61.95917510986328,
+            "bends": 2
+          },
+          {
+            "id": "wave-to-optical-physics",
+            "kind": "branch",
+            "length": 61.759124755859375,
+            "bends": 2
+          },
+          {
+            "id": "engines-to-engines-west",
+            "kind": "branch",
+            "length": 60.259010314941406,
+            "bends": 2
+          },
+          {
+            "id": "spectrum-to-wave",
+            "kind": "branch",
+            "length": 60.149322509765625,
+            "bends": 2
+          },
+          {
+            "id": "merchant-to-port-lab",
+            "kind": "branch",
+            "length": 58.59636306762695,
+            "bends": 2
+          },
+          {
+            "id": "cinema-to-moving-image",
+            "kind": "branch",
+            "length": 57.442047119140625,
+            "bends": 2
+          },
+          {
+            "id": "sky-to-meridian",
+            "kind": "branch",
+            "length": 57.22998046875,
+            "bends": 0
+          },
+          {
+            "id": "opticians-to-instrument-firm",
+            "kind": "branch",
+            "length": 55.83659362792969,
+            "bends": 2
+          },
+          {
+            "id": "public-sky-to-instruments-lab",
+            "kind": "branch",
+            "length": 54.219573974609375,
+            "bends": 2
+          },
+          {
+            "id": "record-to-tables",
+            "kind": "branch",
+            "length": 52.53535461425781,
+            "bends": 2
+          },
+          {
+            "id": "natural-to-inquiry",
+            "kind": "branch",
+            "length": 46.72630310058594,
+            "bends": 2
+          },
+          {
+            "id": "balance-to-testing",
+            "kind": "branch",
+            "length": 46.32598114013672,
+            "bends": 2
+          },
+          {
+            "id": "meridian-to-sunroom",
+            "kind": "branch",
+            "length": 45.103057861328125,
+            "bends": 2
+          },
+          {
+            "id": "metrology-to-calibration",
+            "kind": "branch",
+            "length": 40.75659942626953,
+            "bends": 2
+          },
+          {
+            "id": "microscopy-to-imaging",
+            "kind": "branch",
+            "length": 40.67644119262695,
+            "bends": 2
+          },
+          {
+            "id": "craft-to-instruments",
+            "kind": "branch",
+            "length": 40.53527069091797,
+            "bends": 2
+          },
+          {
+            "id": "optical-physics-to-laser",
+            "kind": "branch",
+            "length": 37.7833251953125,
+            "bends": 2
+          },
+          {
+            "id": "inquiry-to-archive",
+            "kind": "branch",
+            "length": 25.5999755859375,
+            "bends": 0
+          }
+        ],
+        "unrelated_collinear_overlaps": 0,
+        "mixed_kind_endpoint_overlaps": 30,
+        "overlaps": [
+          {
+            "first": "mechanical-to-precision",
+            "second": "meridian-to-precision",
+            "length": 4.1,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                525.0,
+                1519.13
+              ],
+              [
+                525.0,
+                1523.23
+              ]
+            ],
+            "other_segment": [
+              [
+                525.0,
+                1516.23
+              ],
+              [
+                525.0,
+                1523.23
+              ]
+            ]
+          },
+          {
+            "first": "meridian-to-precision",
+            "second": "meridian-to-sunroom",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                880.0,
+                878.82
+              ],
+              [
+                880.0,
+                883.82
+              ]
+            ],
+            "other_segment": [
+              [
+                880.0,
+                878.82
+              ],
+              [
+                880.0,
+                898.12
+              ]
+            ]
+          },
+          {
+            "first": "transits-to-observatories",
+            "second": "transits-to-charts",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                877.0,
+                1144.76
+              ],
+              [
+                877.0,
+                1184.26
+              ]
+            ],
+            "other_segment": [
+              [
+                877.0,
+                1144.76
+              ],
+              [
+                877.0,
+                1149.76
+              ]
+            ]
+          },
+          {
+            "first": "observatories-to-longitude",
+            "second": "pilotage-to-longitude",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1101.0,
+                1361.49
+              ],
+              [
+                1101.0,
+                1367.23
+              ]
+            ],
+            "other_segment": [
+              [
+                1101.0,
+                1362.23
+              ],
+              [
+                1101.0,
+                1367.23
+              ]
+            ]
+          },
+          {
+            "first": "observatories-to-longitude",
+            "second": "observatories-to-telescope",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                935.0,
+                1344.25
+              ],
+              [
+                935.0,
+                1350.0
+              ]
+            ],
+            "other_segment": [
+              [
+                935.0,
+                1344.25
+              ],
+              [
+                935.0,
+                1349.25
+              ]
+            ]
+          },
+          {
+            "first": "pilotage-to-longitude",
+            "second": "pilotage-to-ocean",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1535.0,
+                1059.75
+              ],
+              [
+                1535.0,
+                1064.75
+              ]
+            ],
+            "other_segment": [
+              [
+                1535.0,
+                1059.75
+              ],
+              [
+                1535.0,
+                1106.5
+              ]
+            ]
+          },
+          {
+            "first": "observatories-to-meridian-net",
+            "second": "observatories-to-telescope",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                935.0,
+                1344.25
+              ],
+              [
+                935.0,
+                1367.8
+              ]
+            ],
+            "other_segment": [
+              [
+                935.0,
+                1344.25
+              ],
+              [
+                935.0,
+                1349.25
+              ]
+            ]
+          },
+          {
+            "first": "meridian-net-to-north-station",
+            "second": "meridian-net-to-triangulation",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                884.0,
+                1466.64
+              ],
+              [
+                884.0,
+                1484.81
+              ]
+            ],
+            "other_segment": [
+              [
+                884.0,
+                1466.64
+              ],
+              [
+                884.0,
+                1471.64
+              ]
+            ]
+          },
+          {
+            "first": "meridian-net-to-valley",
+            "second": "meridian-net-to-triangulation",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                884.0,
+                1466.64
+              ],
+              [
+                884.0,
+                1486.5
+              ]
+            ],
+            "other_segment": [
+              [
+                884.0,
+                1466.64
+              ],
+              [
+                884.0,
+                1471.64
+              ]
+            ]
+          },
+          {
+            "first": "meridian-net-to-island-station",
+            "second": "meridian-net-to-triangulation",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                884.0,
+                1466.64
+              ],
+              [
+                884.0,
+                1486.31
+              ]
+            ],
+            "other_segment": [
+              [
+                884.0,
+                1466.64
+              ],
+              [
+                884.0,
+                1471.64
+              ]
+            ]
+          },
+          {
+            "first": "southern-to-southern-survey",
+            "second": "longitude-to-southern-survey",
+            "length": 14.73,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1179.0,
+                1370.44
+              ],
+              [
+                1179.0,
+                1482.23
+              ]
+            ],
+            "other_segment": [
+              [
+                1179.0,
+                1467.5
+              ],
+              [
+                1179.0,
+                1482.23
+              ]
+            ]
+          },
+          {
+            "first": "variable-to-photometry",
+            "second": "silver-image-to-photometry",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                729.0,
+                1757.0
+              ],
+              [
+                729.0,
+                1783.23
+              ]
+            ],
+            "other_segment": [
+              [
+                729.0,
+                1778.23
+              ],
+              [
+                729.0,
+                1783.23
+              ]
+            ]
+          },
+          {
+            "first": "silver-image-to-photometry",
+            "second": "silver-image-to-photographic",
+            "length": 7.84,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                234.0,
+                2228.77
+              ],
+              [
+                234.0,
+                2238.12
+              ]
+            ],
+            "other_segment": [
+              [
+                234.0,
+                2228.77
+              ],
+              [
+                234.0,
+                2236.61
+              ]
+            ]
+          },
+          {
+            "first": "public-sky-to-instruments-lab",
+            "second": "precision-to-instruments-lab",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                900.0,
+                1743.99
+              ],
+              [
+                900.0,
+                1766.23
+              ]
+            ],
+            "other_segment": [
+              [
+                900.0,
+                1761.23
+              ],
+              [
+                900.0,
+                1766.23
+              ]
+            ]
+          },
+          {
+            "first": "comet-to-stellar",
+            "second": "spectrum-to-stellar",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1054.0,
+                1767.94
+              ],
+              [
+                1054.0,
+                1826.23
+              ]
+            ],
+            "other_segment": [
+              [
+                1054.0,
+                1821.23
+              ],
+              [
+                1054.0,
+                1826.23
+              ]
+            ]
+          },
+          {
+            "first": "spectrum-to-stellar",
+            "second": "spectrum-to-wave",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                364.0,
+                2122.82
+              ],
+              [
+                364.0,
+                2127.82
+              ]
+            ],
+            "other_segment": [
+              [
+                364.0,
+                2122.82
+              ],
+              [
+                364.0,
+                2145.59
+              ]
+            ]
+          },
+          {
+            "first": "port-school-to-charts",
+            "second": "transits-to-charts",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1286.0,
+                1070.4
+              ],
+              [
+                1286.0,
+                1093.23
+              ]
+            ],
+            "other_segment": [
+              [
+                1286.0,
+                1088.23
+              ],
+              [
+                1286.0,
+                1093.23
+              ]
+            ]
+          },
+          {
+            "first": "charts-to-soundings",
+            "second": "charts-to-hydrography",
+            "length": 7.62,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1286.0,
+                1162.76
+              ],
+              [
+                1286.0,
+                1206.56
+              ]
+            ],
+            "other_segment": [
+              [
+                1286.0,
+                1162.76
+              ],
+              [
+                1286.0,
+                1170.38
+              ]
+            ]
+          },
+          {
+            "first": "beacons-to-beacon-college",
+            "second": "precision-to-beacon-college",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1445.0,
+                1404.76
+              ],
+              [
+                1445.0,
+                1619.23
+              ]
+            ],
+            "other_segment": [
+              [
+                1445.0,
+                1614.23
+              ],
+              [
+                1445.0,
+                1619.23
+              ]
+            ]
+          },
+          {
+            "first": "merchant-to-port-lab",
+            "second": "machine-to-port-lab",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1550.0,
+                2066.0
+              ],
+              [
+                1550.0,
+                2091.24
+              ]
+            ],
+            "other_segment": [
+              [
+                1550.0,
+                2086.24
+              ],
+              [
+                1550.0,
+                2091.24
+              ]
+            ]
+          },
+          {
+            "first": "lifeboat-to-rescue",
+            "second": "radio-sea-to-rescue",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1691.0,
+                2131.24
+              ],
+              [
+                1691.0,
+                2136.24
+              ]
+            ],
+            "other_segment": [
+              [
+                1691.0,
+                2131.24
+              ],
+              [
+                1691.0,
+                2136.24
+              ]
+            ]
+          },
+          {
+            "first": "radio-sea-to-rescue",
+            "second": "radio-sea-to-maritime",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1416.0,
+                2096.76
+              ],
+              [
+                1416.0,
+                2101.76
+              ]
+            ],
+            "other_segment": [
+              [
+                1416.0,
+                2096.76
+              ],
+              [
+                1416.0,
+                2117.43
+              ]
+            ]
+          },
+          {
+            "first": "naval-to-hydro-school",
+            "second": "hydrography-to-hydro-school",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1685.0,
+                2314.16
+              ],
+              [
+                1685.0,
+                2319.16
+              ]
+            ],
+            "other_segment": [
+              [
+                1685.0,
+                2313.06
+              ],
+              [
+                1685.0,
+                2319.16
+              ]
+            ]
+          },
+          {
+            "first": "light-to-telescope",
+            "second": "observatories-to-telescope",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                411.0,
+                1836.4
+              ],
+              [
+                411.0,
+                1924.23
+              ]
+            ],
+            "other_segment": [
+              [
+                411.0,
+                1919.23
+              ],
+              [
+                411.0,
+                1924.23
+              ]
+            ]
+          },
+          {
+            "first": "photographic-to-color",
+            "second": "optical-physics-to-color",
+            "length": 7.33,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                211.0,
+                2369.06
+              ],
+              [
+                211.0,
+                2390.24
+              ]
+            ],
+            "other_segment": [
+              [
+                211.0,
+                2382.91
+              ],
+              [
+                211.0,
+                2390.24
+              ]
+            ]
+          },
+          {
+            "first": "optical-physics-to-color",
+            "second": "optical-physics-to-laser",
+            "length": 7.32,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                370.0,
+                2360.95
+              ],
+              [
+                370.0,
+                2368.27
+              ]
+            ],
+            "other_segment": [
+              [
+                370.0,
+                2360.95
+              ],
+              [
+                370.0,
+                2376.59
+              ]
+            ]
+          },
+          {
+            "first": "surveyors-to-triangulation",
+            "second": "meridian-net-to-triangulation",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1361.0,
+                1639.12
+              ],
+              [
+                1361.0,
+                1711.36
+              ]
+            ],
+            "other_segment": [
+              [
+                1361.0,
+                1706.36
+              ],
+              [
+                1361.0,
+                1711.36
+              ]
+            ]
+          },
+          {
+            "first": "triangulation-to-hydrography",
+            "second": "charts-to-hydrography",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1354.0,
+                2134.43
+              ],
+              [
+                1354.0,
+                2139.43
+              ]
+            ],
+            "other_segment": [
+              [
+                1354.0,
+                2038.0
+              ],
+              [
+                1354.0,
+                2139.43
+              ]
+            ]
+          },
+          {
+            "first": "mapping-to-earth-data",
+            "second": "hydrography-to-earth-data",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1256.0,
+                2481.5
+              ],
+              [
+                1256.0,
+                2499.24
+              ]
+            ],
+            "other_segment": [
+              [
+                1256.0,
+                2494.24
+              ],
+              [
+                1256.0,
+                2499.24
+              ]
+            ]
+          },
+          {
+            "first": "geography-to-earth-data",
+            "second": "hydrography-to-earth-data",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1256.0,
+                2494.24
+              ],
+              [
+                1256.0,
+                2499.24
+              ]
+            ],
+            "other_segment": [
+              [
+                1256.0,
+                2494.24
+              ],
+              [
+                1256.0,
+                2499.24
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "revised",
+        "canvas": [
+          1620,
+          2430
+        ],
+        "edge_count": 171,
+        "total_length": 32045.171895980835,
+        "total_bends": 488,
+        "longest": [
+          {
+            "id": "meridian-to-precision",
+            "kind": "influence",
+            "length": 1262.275390625,
+            "bends": 16
+          },
+          {
+            "id": "precision-to-beacon-college",
+            "kind": "influence",
+            "length": 1054.84033203125,
+            "bends": 10
+          },
+          {
+            "id": "machine-to-port-lab",
+            "kind": "influence",
+            "length": 985.1863403320312,
+            "bends": 10
+          },
+          {
+            "id": "charts-to-hydrography",
+            "kind": "influence",
+            "length": 791.3651123046875,
+            "bends": 14
+          },
+          {
+            "id": "precision-to-instruments-lab",
+            "kind": "influence",
+            "length": 610.6763916015625,
+            "bends": 6
+          },
+          {
+            "id": "archive-to-seafarers",
+            "kind": "branch",
+            "length": 598.681884765625,
+            "bends": 2
+          },
+          {
+            "id": "pilotage-to-longitude",
+            "kind": "influence",
+            "length": 553.67626953125,
+            "bends": 6
+          },
+          {
+            "id": "southern-survey-to-southern-tables",
+            "kind": "branch",
+            "length": 525.6739501953125,
+            "bends": 4
+          },
+          {
+            "id": "silver-image-to-photometry",
+            "kind": "influence",
+            "length": 524.43896484375,
+            "bends": 6
+          },
+          {
+            "id": "hydrography-to-hydro-school",
+            "kind": "influence",
+            "length": 499.7666320800781,
+            "bends": 6
+          },
+          {
+            "id": "archive-to-makers",
+            "kind": "branch",
+            "length": 467.6318359375,
+            "bends": 2
+          },
+          {
+            "id": "testing-to-metrology",
+            "kind": "branch",
+            "length": 439.4242858886719,
+            "bends": 4
+          }
+        ],
+        "edges": [
+          {
+            "id": "meridian-to-precision",
+            "kind": "influence",
+            "length": 1262.275390625,
+            "bends": 16
+          },
+          {
+            "id": "precision-to-beacon-college",
+            "kind": "influence",
+            "length": 1054.84033203125,
+            "bends": 10
+          },
+          {
+            "id": "machine-to-port-lab",
+            "kind": "influence",
+            "length": 985.1863403320312,
+            "bends": 10
+          },
+          {
+            "id": "charts-to-hydrography",
+            "kind": "influence",
+            "length": 791.3651123046875,
+            "bends": 14
+          },
+          {
+            "id": "precision-to-instruments-lab",
+            "kind": "influence",
+            "length": 610.6763916015625,
+            "bends": 6
+          },
+          {
+            "id": "archive-to-seafarers",
+            "kind": "branch",
+            "length": 598.681884765625,
+            "bends": 2
+          },
+          {
+            "id": "pilotage-to-longitude",
+            "kind": "influence",
+            "length": 553.67626953125,
+            "bends": 6
+          },
+          {
+            "id": "southern-survey-to-southern-tables",
+            "kind": "branch",
+            "length": 525.6739501953125,
+            "bends": 4
+          },
+          {
+            "id": "silver-image-to-photometry",
+            "kind": "influence",
+            "length": 524.43896484375,
+            "bends": 6
+          },
+          {
+            "id": "hydrography-to-hydro-school",
+            "kind": "influence",
+            "length": 499.7666320800781,
+            "bends": 6
+          },
+          {
+            "id": "archive-to-makers",
+            "kind": "branch",
+            "length": 467.6318359375,
+            "bends": 2
+          },
+          {
+            "id": "testing-to-metrology",
+            "kind": "branch",
+            "length": 439.4242858886719,
+            "bends": 4
+          },
+          {
+            "id": "night-archive-to-sky-data",
+            "kind": "branch",
+            "length": 408.7024841308594,
+            "bends": 2
+          },
+          {
+            "id": "meridian-net-to-triangulation",
+            "kind": "influence",
+            "length": 398.6114196777344,
+            "bends": 8
+          },
+          {
+            "id": "hydrography-to-earth-data",
+            "kind": "influence",
+            "length": 386.7046813964844,
+            "bends": 4
+          },
+          {
+            "id": "microscopy-to-imaging",
+            "kind": "branch",
+            "length": 372.7645568847656,
+            "bends": 4
+          },
+          {
+            "id": "observatories-to-telescope",
+            "kind": "influence",
+            "length": 369.2043762207031,
+            "bends": 4
+          },
+          {
+            "id": "southern-to-southern-survey",
+            "kind": "branch",
+            "length": 363.7944641113281,
+            "bends": 4
+          },
+          {
+            "id": "land-register-to-mapping",
+            "kind": "branch",
+            "length": 355.54412841796875,
+            "bends": 4
+          },
+          {
+            "id": "standards-to-metrology",
+            "kind": "branch",
+            "length": 349.5913391113281,
+            "bends": 4
+          },
+          {
+            "id": "transits-to-charts",
+            "kind": "influence",
+            "length": 331.3021240234375,
+            "bends": 6
+          },
+          {
+            "id": "north-station-to-variable",
+            "kind": "branch",
+            "length": 316.4244079589844,
+            "bends": 4
+          },
+          {
+            "id": "atlas-room-to-geography",
+            "kind": "branch",
+            "length": 315.0045471191406,
+            "bends": 4
+          },
+          {
+            "id": "comet-to-stellar",
+            "kind": "branch",
+            "length": 314.7944641113281,
+            "bends": 4
+          },
+          {
+            "id": "southern-tables-to-southern-union",
+            "kind": "branch",
+            "length": 313.6045837402344,
+            "bends": 4
+          },
+          {
+            "id": "pilot-union-to-seamanship",
+            "kind": "branch",
+            "length": 297.9645080566406,
+            "bends": 4
+          },
+          {
+            "id": "photographic-to-cinema",
+            "kind": "branch",
+            "length": 292.32177734375,
+            "bends": 2
+          },
+          {
+            "id": "spectrum-to-wave",
+            "kind": "branch",
+            "length": 285.7442626953125,
+            "bends": 4
+          },
+          {
+            "id": "spectrum-to-stellar",
+            "kind": "influence",
+            "length": 282.8835144042969,
+            "bends": 4
+          },
+          {
+            "id": "radial-to-stellar-centre",
+            "kind": "branch",
+            "length": 280.9244689941406,
+            "bends": 4
+          },
+          {
+            "id": "coast-watch-to-beacons",
+            "kind": "branch",
+            "length": 274.6644287109375,
+            "bends": 4
+          },
+          {
+            "id": "wave-to-optical-physics",
+            "kind": "branch",
+            "length": 271.48406982421875,
+            "bends": 4
+          },
+          {
+            "id": "clockmakers-to-horology",
+            "kind": "branch",
+            "length": 266.9029846191406,
+            "bends": 4
+          },
+          {
+            "id": "ocean-to-ocean-voyage",
+            "kind": "branch",
+            "length": 265.568359375,
+            "bends": 4
+          },
+          {
+            "id": "refraction-to-spectrum",
+            "kind": "branch",
+            "length": 256.51190185546875,
+            "bends": 2
+          },
+          {
+            "id": "metrology-to-calibration",
+            "kind": "branch",
+            "length": 251.71432495117188,
+            "bends": 4
+          },
+          {
+            "id": "beacons-to-beacon-college",
+            "kind": "branch",
+            "length": 249.18165588378906,
+            "bends": 4
+          },
+          {
+            "id": "ocean-to-pilot-union",
+            "kind": "branch",
+            "length": 236.93222045898438,
+            "bends": 2
+          },
+          {
+            "id": "summit-to-star-census",
+            "kind": "branch",
+            "length": 236.19436645507812,
+            "bends": 4
+          },
+          {
+            "id": "pilots-to-tide",
+            "kind": "branch",
+            "length": 235.74435424804688,
+            "bends": 4
+          },
+          {
+            "id": "lifeboat-to-rescue",
+            "kind": "branch",
+            "length": 231.47471618652344,
+            "bends": 4
+          },
+          {
+            "id": "valley-to-public-sky",
+            "kind": "branch",
+            "length": 227.8145294189453,
+            "bends": 4
+          },
+          {
+            "id": "mechanical-to-precision",
+            "kind": "branch",
+            "length": 226.8807373046875,
+            "bends": 4
+          },
+          {
+            "id": "river-merger-to-pilot-union",
+            "kind": "branch",
+            "length": 226.78175354003906,
+            "bends": 2
+          },
+          {
+            "id": "merchant-to-port-lab",
+            "kind": "branch",
+            "length": 226.6745147705078,
+            "bends": 4
+          },
+          {
+            "id": "camera-to-silver-image",
+            "kind": "branch",
+            "length": 224.79444885253906,
+            "bends": 4
+          },
+          {
+            "id": "harbour-board-to-lifeboat",
+            "kind": "branch",
+            "length": 223.4845733642578,
+            "bends": 4
+          },
+          {
+            "id": "summit-to-southern",
+            "kind": "branch",
+            "length": 222.9944305419922,
+            "bends": 4
+          },
+          {
+            "id": "rescue-to-ocean-safety",
+            "kind": "branch",
+            "length": 222.50460815429688,
+            "bends": 4
+          },
+          {
+            "id": "watchers-to-nightbooks",
+            "kind": "branch",
+            "length": 221.8043670654297,
+            "bends": 4
+          },
+          {
+            "id": "sky-to-watchers",
+            "kind": "branch",
+            "length": 220.2617645263672,
+            "bends": 2
+          },
+          {
+            "id": "island-station-to-comet",
+            "kind": "branch",
+            "length": 216.55421447753906,
+            "bends": 4
+          },
+          {
+            "id": "triangulation-to-hydrography",
+            "kind": "branch",
+            "length": 212.99462890625,
+            "bends": 4
+          },
+          {
+            "id": "canals-to-mechanical",
+            "kind": "branch",
+            "length": 211.41175842285156,
+            "bends": 2
+          },
+          {
+            "id": "glass-research-to-photographic",
+            "kind": "branch",
+            "length": 209.68443298339844,
+            "bends": 4
+          },
+          {
+            "id": "balance-to-standards",
+            "kind": "branch",
+            "length": 208.79420471191406,
+            "bends": 4
+          },
+          {
+            "id": "public-sky-to-astronomical",
+            "kind": "branch",
+            "length": 208.50454711914062,
+            "bends": 4
+          },
+          {
+            "id": "signals-to-radio-sea",
+            "kind": "branch",
+            "length": 207.67449951171875,
+            "bends": 4
+          },
+          {
+            "id": "glass-union-to-lenses",
+            "kind": "branch",
+            "length": 204.00430297851562,
+            "bends": 4
+          },
+          {
+            "id": "seamanship-to-naval",
+            "kind": "branch",
+            "length": 200.294677734375,
+            "bends": 4
+          },
+          {
+            "id": "seafarers-to-pilots",
+            "kind": "branch",
+            "length": 199.5818328857422,
+            "bends": 2
+          },
+          {
+            "id": "hydraulic-to-canals",
+            "kind": "branch",
+            "length": 193.79421997070312,
+            "bends": 4
+          },
+          {
+            "id": "sky-to-calendar",
+            "kind": "branch",
+            "length": 193.3817901611328,
+            "bends": 2
+          },
+          {
+            "id": "seafarers-to-boatmen",
+            "kind": "branch",
+            "length": 191.5818634033203,
+            "bends": 2
+          },
+          {
+            "id": "transits-to-observatories",
+            "kind": "branch",
+            "length": 191.1943359375,
+            "bends": 4
+          },
+          {
+            "id": "millwrights-to-hydraulic",
+            "kind": "branch",
+            "length": 187.4521026611328,
+            "bends": 2
+          },
+          {
+            "id": "port-school-to-charts",
+            "kind": "branch",
+            "length": 184.87437438964844,
+            "bends": 4
+          },
+          {
+            "id": "radio-sea-to-maritime",
+            "kind": "branch",
+            "length": 184.4945526123047,
+            "bends": 4
+          },
+          {
+            "id": "opticians-to-instrument-firm",
+            "kind": "branch",
+            "length": 179.37335205078125,
+            "bends": 4
+          },
+          {
+            "id": "oral-to-record",
+            "kind": "branch",
+            "length": 179.2042694091797,
+            "bends": 4
+          },
+          {
+            "id": "sky-data-to-open-sky",
+            "kind": "branch",
+            "length": 177.38218688964844,
+            "bends": 2
+          },
+          {
+            "id": "pilotage-to-ocean",
+            "kind": "branch",
+            "length": 176.7045135498047,
+            "bends": 4
+          },
+          {
+            "id": "makers-to-brass",
+            "kind": "branch",
+            "length": 172.5317840576172,
+            "bends": 2
+          },
+          {
+            "id": "oral-to-craft",
+            "kind": "branch",
+            "length": 169.30429077148438,
+            "bends": 4
+          },
+          {
+            "id": "photographic-to-color",
+            "kind": "branch",
+            "length": 168.32179260253906,
+            "bends": 2
+          },
+          {
+            "id": "meridian-net-to-valley",
+            "kind": "branch",
+            "length": 167.92425537109375,
+            "bends": 4
+          },
+          {
+            "id": "light-to-telescope",
+            "kind": "branch",
+            "length": 166.6217803955078,
+            "bends": 2
+          },
+          {
+            "id": "surveyors-to-triangulation",
+            "kind": "branch",
+            "length": 165.68435668945312,
+            "bends": 4
+          },
+          {
+            "id": "makers-to-glass",
+            "kind": "branch",
+            "length": 164.53176879882812,
+            "bends": 2
+          },
+          {
+            "id": "engines-to-engines-west",
+            "kind": "branch",
+            "length": 163.7517852783203,
+            "bends": 2
+          },
+          {
+            "id": "geography-to-earth-data",
+            "kind": "branch",
+            "length": 163.3464813232422,
+            "bends": 4
+          },
+          {
+            "id": "lenses-to-light",
+            "kind": "branch",
+            "length": 162.94192504882812,
+            "bends": 2
+          },
+          {
+            "id": "water-to-pumps",
+            "kind": "branch",
+            "length": 161.57179260253906,
+            "bends": 2
+          },
+          {
+            "id": "newcalendar-to-ephemerides",
+            "kind": "branch",
+            "length": 159.38177490234375,
+            "bends": 2
+          },
+          {
+            "id": "light-to-mirror",
+            "kind": "branch",
+            "length": 158.7518768310547,
+            "bends": 2
+          },
+          {
+            "id": "record-to-chroniclers",
+            "kind": "branch",
+            "length": 158.55401611328125,
+            "bends": 2
+          },
+          {
+            "id": "engines-west-to-rail",
+            "kind": "branch",
+            "length": 154.5718536376953,
+            "bends": 2
+          },
+          {
+            "id": "color-to-imaging",
+            "kind": "branch",
+            "length": 154.45932006835938,
+            "bends": 2
+          },
+          {
+            "id": "mechanical-to-engines",
+            "kind": "branch",
+            "length": 153.13128662109375,
+            "bends": 2
+          },
+          {
+            "id": "charts-to-soundings",
+            "kind": "branch",
+            "length": 152.7943115234375,
+            "bends": 4
+          },
+          {
+            "id": "instruments-to-natural",
+            "kind": "branch",
+            "length": 150.01174926757812,
+            "bends": 2
+          },
+          {
+            "id": "calendar-to-equinox",
+            "kind": "branch",
+            "length": 148.57180786132812,
+            "bends": 2
+          },
+          {
+            "id": "ephemerides-to-reformers",
+            "kind": "branch",
+            "length": 146.44178771972656,
+            "bends": 2
+          },
+          {
+            "id": "port-lab-to-maritime",
+            "kind": "branch",
+            "length": 141.2620391845703,
+            "bends": 2
+          },
+          {
+            "id": "tables-to-natural",
+            "kind": "branch",
+            "length": 136.2697296142578,
+            "bends": 2
+          },
+          {
+            "id": "maritime-to-sea-college",
+            "kind": "branch",
+            "length": 136.251953125,
+            "bends": 2
+          },
+          {
+            "id": "variable-to-photometry",
+            "kind": "branch",
+            "length": 135.44192504882812,
+            "bends": 2
+          },
+          {
+            "id": "brass-to-scales",
+            "kind": "branch",
+            "length": 134.57179260253906,
+            "bends": 2
+          },
+          {
+            "id": "fieldbooks-to-atlas-room",
+            "kind": "branch",
+            "length": 133.96182250976562,
+            "bends": 2
+          },
+          {
+            "id": "seamanship-to-merchant",
+            "kind": "branch",
+            "length": 130.38201904296875,
+            "bends": 2
+          },
+          {
+            "id": "photometry-to-astronomical",
+            "kind": "branch",
+            "length": 129.26197814941406,
+            "bends": 2
+          },
+          {
+            "id": "color-to-moving-image",
+            "kind": "branch",
+            "length": 125.44190216064453,
+            "bends": 2
+          },
+          {
+            "id": "southern-array-to-open-sky",
+            "kind": "branch",
+            "length": 117.03361511230469,
+            "bends": 2
+          },
+          {
+            "id": "meridian-net-to-island-station",
+            "kind": "branch",
+            "length": 115.31184387207031,
+            "bends": 2
+          },
+          {
+            "id": "mapping-to-earth-data",
+            "kind": "branch",
+            "length": 114.44195556640625,
+            "bends": 2
+          },
+          {
+            "id": "observatories-to-meridian-net",
+            "kind": "branch",
+            "length": 113.08185577392578,
+            "bends": 2
+          },
+          {
+            "id": "almanac-to-newcalendar",
+            "kind": "branch",
+            "length": 111.5118179321289,
+            "bends": 2
+          },
+          {
+            "id": "telescope-to-opticians",
+            "kind": "branch",
+            "length": 110.5999755859375,
+            "bends": 0
+          },
+          {
+            "id": "astronomical-to-radio-sky",
+            "kind": "branch",
+            "length": 109.45206451416016,
+            "bends": 2
+          },
+          {
+            "id": "meridian-to-sunroom",
+            "kind": "branch",
+            "length": 105.58179473876953,
+            "bends": 2
+          },
+          {
+            "id": "archive-to-sky",
+            "kind": "branch",
+            "length": 105.4817886352539,
+            "bends": 2
+          },
+          {
+            "id": "refraction-to-camera",
+            "kind": "branch",
+            "length": 100.69183349609375,
+            "bends": 2
+          },
+          {
+            "id": "mirror-to-glassworks",
+            "kind": "branch",
+            "length": 98.89189147949219,
+            "bends": 2
+          },
+          {
+            "id": "naval-to-hydro-school",
+            "kind": "branch",
+            "length": 94.070068359375,
+            "bends": 0
+          },
+          {
+            "id": "observatories-to-longitude",
+            "kind": "branch",
+            "length": 93.95184326171875,
+            "bends": 2
+          },
+          {
+            "id": "astronomical-to-night-archive",
+            "kind": "branch",
+            "length": 85.25189208984375,
+            "bends": 2
+          },
+          {
+            "id": "rail-to-machine",
+            "kind": "branch",
+            "length": 78.69186401367188,
+            "bends": 2
+          },
+          {
+            "id": "beacon-college-to-signals",
+            "kind": "branch",
+            "length": 76.44192504882812,
+            "bends": 2
+          },
+          {
+            "id": "equinox-to-newcalendar",
+            "kind": "branch",
+            "length": 76.39178466796875,
+            "bends": 2
+          },
+          {
+            "id": "maritime-to-ocean-safety",
+            "kind": "branch",
+            "length": 74.08214569091797,
+            "bends": 2
+          },
+          {
+            "id": "glass-to-clear-glass",
+            "kind": "branch",
+            "length": 73.69173431396484,
+            "bends": 2
+          },
+          {
+            "id": "medical-lenses-to-microscopy",
+            "kind": "branch",
+            "length": 72.6919174194336,
+            "bends": 2
+          },
+          {
+            "id": "meridian-net-to-north-station",
+            "kind": "branch",
+            "length": 70.31183624267578,
+            "bends": 2
+          },
+          {
+            "id": "dials-to-clockmakers",
+            "kind": "branch",
+            "length": 68.3517837524414,
+            "bends": 2
+          },
+          {
+            "id": "silver-image-to-photographic",
+            "kind": "branch",
+            "length": 67.3318862915039,
+            "bends": 2
+          },
+          {
+            "id": "surveyors-to-fieldbooks",
+            "kind": "branch",
+            "length": 65.32188415527344,
+            "bends": 2
+          },
+          {
+            "id": "soundings-to-surveyors",
+            "kind": "branch",
+            "length": 64.7266845703125,
+            "bends": 2
+          },
+          {
+            "id": "star-census-to-observatories",
+            "kind": "branch",
+            "length": 63.271881103515625,
+            "bends": 2
+          },
+          {
+            "id": "clear-glass-to-glass-union",
+            "kind": "branch",
+            "length": 58.571800231933594,
+            "bends": 2
+          },
+          {
+            "id": "cinema-to-moving-image",
+            "kind": "branch",
+            "length": 55.44190216064453,
+            "bends": 2
+          },
+          {
+            "id": "pilot-union-to-channel",
+            "kind": "branch",
+            "length": 54.911888122558594,
+            "bends": 2
+          },
+          {
+            "id": "radio-sky-to-space-science",
+            "kind": "branch",
+            "length": 51.581993103027344,
+            "bends": 2
+          },
+          {
+            "id": "hydro-school-to-naval-survey",
+            "kind": "branch",
+            "length": 51.242454528808594,
+            "bends": 2
+          },
+          {
+            "id": "river-law-to-river-merger",
+            "kind": "branch",
+            "length": 50.90306091308594,
+            "bends": 2
+          },
+          {
+            "id": "public-sky-to-instruments-lab",
+            "kind": "branch",
+            "length": 48.451904296875,
+            "bends": 2
+          },
+          {
+            "id": "instrument-firm-to-medical-lenses",
+            "kind": "branch",
+            "length": 44.06871032714844,
+            "bends": 2
+          },
+          {
+            "id": "brass-to-dials",
+            "kind": "branch",
+            "length": 43.8885383605957,
+            "bends": 2
+          },
+          {
+            "id": "optical-physics-to-laser",
+            "kind": "branch",
+            "length": 43.62875747680664,
+            "bends": 2
+          },
+          {
+            "id": "record-to-tables",
+            "kind": "branch",
+            "length": 42.595008850097656,
+            "bends": 2
+          },
+          {
+            "id": "longitude-to-southern-survey",
+            "kind": "influence",
+            "length": 41.91657257080078,
+            "bends": 2
+          },
+          {
+            "id": "sunroom-to-transits",
+            "kind": "branch",
+            "length": 40.90250015258789,
+            "bends": 2
+          },
+          {
+            "id": "laser-to-photonics",
+            "kind": "branch",
+            "length": 40.652610778808594,
+            "bends": 2
+          },
+          {
+            "id": "scales-to-balance",
+            "kind": "branch",
+            "length": 40.20918273925781,
+            "bends": 2
+          },
+          {
+            "id": "triangulation-to-land-register",
+            "kind": "branch",
+            "length": 40.19935989379883,
+            "bends": 2
+          },
+          {
+            "id": "hydraulic-to-pump-school",
+            "kind": "branch",
+            "length": 37.213050842285156,
+            "bends": 2
+          },
+          {
+            "id": "horology-to-mechanical",
+            "kind": "branch",
+            "length": 36.24980163574219,
+            "bends": 2
+          },
+          {
+            "id": "glassworks-to-glass-research",
+            "kind": "branch",
+            "length": 36.156707763671875,
+            "bends": 2
+          },
+          {
+            "id": "natural-to-inquiry",
+            "kind": "branch",
+            "length": 36.10468292236328,
+            "bends": 2
+          },
+          {
+            "id": "tide-to-coast-watch",
+            "kind": "branch",
+            "length": 35.666595458984375,
+            "bends": 2
+          },
+          {
+            "id": "calendar-to-almanac",
+            "kind": "branch",
+            "length": 35.34331512451172,
+            "bends": 2
+          },
+          {
+            "id": "watchers-to-summit",
+            "kind": "branch",
+            "length": 35.2933349609375,
+            "bends": 2
+          },
+          {
+            "id": "stellar-to-radial",
+            "kind": "branch",
+            "length": 35.22337341308594,
+            "bends": 2
+          },
+          {
+            "id": "makers-to-water",
+            "kind": "branch",
+            "length": 35.18329620361328,
+            "bends": 2
+          },
+          {
+            "id": "seafarers-to-open-sea",
+            "kind": "branch",
+            "length": 35.1133918762207,
+            "bends": 2
+          },
+          {
+            "id": "sky-to-meridian",
+            "kind": "branch",
+            "length": 34.853309631347656,
+            "bends": 2
+          },
+          {
+            "id": "pilots-to-port-school",
+            "kind": "branch",
+            "length": 34.78997802734375,
+            "bends": 0
+          },
+          {
+            "id": "light-to-refraction",
+            "kind": "branch",
+            "length": 34.780029296875,
+            "bends": 0
+          },
+          {
+            "id": "stellar-centre-to-sky-data",
+            "kind": "branch",
+            "length": 34.72021484375,
+            "bends": 0
+          },
+          {
+            "id": "channel-to-harbour-board",
+            "kind": "branch",
+            "length": 34.5899658203125,
+            "bends": 0
+          },
+          {
+            "id": "boatmen-to-river-law",
+            "kind": "branch",
+            "length": 34.51995849609375,
+            "bends": 0
+          },
+          {
+            "id": "open-sea-to-pilotage",
+            "kind": "branch",
+            "length": 34.489990234375,
+            "bends": 0
+          },
+          {
+            "id": "clockmakers-to-pendulum",
+            "kind": "branch",
+            "length": 34.429931640625,
+            "bends": 0
+          },
+          {
+            "id": "space-science-to-orbital",
+            "kind": "branch",
+            "length": 34.419921875,
+            "bends": 0
+          },
+          {
+            "id": "newcalendar-to-computers",
+            "kind": "branch",
+            "length": 34.40997314453125,
+            "bends": 0
+          },
+          {
+            "id": "southern-union-to-southern-array",
+            "kind": "branch",
+            "length": 34.4000244140625,
+            "bends": 0
+          },
+          {
+            "id": "water-to-millwrights",
+            "kind": "branch",
+            "length": 34.3499755859375,
+            "bends": 0
+          },
+          {
+            "id": "balance-to-testing",
+            "kind": "branch",
+            "length": 34.3399658203125,
+            "bends": 0
+          },
+          {
+            "id": "craft-to-instruments",
+            "kind": "branch",
+            "length": 31.784860610961914,
+            "bends": 2
+          },
+          {
+            "id": "optical-physics-to-color",
+            "kind": "influence",
+            "length": 30.109283447265625,
+            "bends": 4
+          },
+          {
+            "id": "radio-sea-to-rescue",
+            "kind": "influence",
+            "length": 28.8328857421875,
+            "bends": 2
+          },
+          {
+            "id": "inquiry-to-archive",
+            "kind": "branch",
+            "length": 17.10003662109375,
+            "bends": 0
+          }
+        ],
+        "unrelated_collinear_overlaps": 0,
+        "mixed_kind_endpoint_overlaps": 9,
+        "overlaps": [
+          {
+            "first": "mechanical-to-precision",
+            "second": "meridian-to-precision",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                289.0,
+                1522.23
+              ],
+              [
+                289.0,
+                1527.23
+              ]
+            ],
+            "other_segment": [
+              [
+                289.0,
+                1522.23
+              ],
+              [
+                289.0,
+                1527.23
+              ]
+            ]
+          },
+          {
+            "first": "meridian-to-precision",
+            "second": "meridian-to-sunroom",
+            "length": 9.3,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                830.0,
+                803.82
+              ],
+              [
+                830.0,
+                813.57
+              ]
+            ],
+            "other_segment": [
+              [
+                830.0,
+                803.82
+              ],
+              [
+                830.0,
+                813.12
+              ]
+            ]
+          },
+          {
+            "first": "southern-to-southern-survey",
+            "second": "longitude-to-southern-survey",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1015.0,
+                1339.23
+              ],
+              [
+                1015.0,
+                1344.23
+              ]
+            ],
+            "other_segment": [
+              [
+                1015.0,
+                1336.87
+              ],
+              [
+                1015.0,
+                1344.23
+              ]
+            ]
+          },
+          {
+            "first": "spectrum-to-stellar",
+            "second": "spectrum-to-wave",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                717.0,
+                1526.82
+              ],
+              [
+                717.0,
+                1616.64
+              ]
+            ],
+            "other_segment": [
+              [
+                717.0,
+                1526.82
+              ],
+              [
+                717.0,
+                1531.82
+              ]
+            ]
+          },
+          {
+            "first": "charts-to-soundings",
+            "second": "charts-to-hydrography",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1292.0,
+                1024.77
+              ],
+              [
+                1292.0,
+                1029.77
+              ]
+            ],
+            "other_segment": [
+              [
+                1292.0,
+                1024.77
+              ],
+              [
+                1292.0,
+                1031.77
+              ]
+            ]
+          },
+          {
+            "first": "lifeboat-to-rescue",
+            "second": "radio-sea-to-rescue",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1368.0,
+                1833.23
+              ],
+              [
+                1368.0,
+                1838.23
+              ]
+            ],
+            "other_segment": [
+              [
+                1368.0,
+                1829.5
+              ],
+              [
+                1368.0,
+                1838.23
+              ]
+            ]
+          },
+          {
+            "first": "radio-sea-to-rescue",
+            "second": "radio-sea-to-maritime",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1361.0,
+                1813.76
+              ],
+              [
+                1361.0,
+                1822.5
+              ]
+            ],
+            "other_segment": [
+              [
+                1361.0,
+                1813.76
+              ],
+              [
+                1361.0,
+                1818.76
+              ]
+            ]
+          },
+          {
+            "first": "naval-to-hydro-school",
+            "second": "hydrography-to-hydro-school",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1488.0,
+                1838.09
+              ],
+              [
+                1488.0,
+                1932.16
+              ]
+            ],
+            "other_segment": [
+              [
+                1488.0,
+                1927.16
+              ],
+              [
+                1488.0,
+                1932.16
+              ]
+            ]
+          },
+          {
+            "first": "triangulation-to-hydrography",
+            "second": "charts-to-hydrography",
+            "length": 5.0,
+            "shared_endpoint": true,
+            "segment": [
+              [
+                1209.0,
+                1633.43
+              ],
+              [
+                1209.0,
+                1638.43
+              ]
+            ],
+            "other_segment": [
+              [
+                1209.0,
+                1633.1
+              ],
+              [
+                1209.0,
+                1638.43
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "scope": "Full rendered relationships, including influence. These geometric measures require whole-page and reading-scale visual interpretation."
+  },
+  "limits": [
+    "Unblinded author critique, not a human discrimination study.",
+    "Placement proxy objectives and shorter routes do not prove better composition.",
+    "All failed and budget-limited attempts are retained; early drivers evolved without per-run snapshots.",
+    "The compact institutions case is reused development data, not sealed holdout evidence.",
+    "Genealogy, institutional histories and chronology remain in the quality-and-composition objective."
+  ]
+}

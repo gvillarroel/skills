@@ -14,8 +14,11 @@ Set `design: editorial`, `mode: lineage`, and `layout: auto`. Supply:
   a tradition, house, discipline or other source-defined family. Keep it stable
   through mergers and changes of importance. A merger is a relationship and an
   emphasis decision; it is not automatically a new color category.
-- `nodes`: `{id, label, group, detail?}`. Put dates and short explanations in
-  `detail`; arbitrary extra data fields are retained but are not printed.
+- `nodes`: `{id, label, group, detail_position: "outside", date_label?, detail?}`.
+  Put the exact visible date in `date_label`, the institution name in `label`,
+  and only a short historical consequence in `detail`. Dates sit above the name
+  panel and context below it. Arbitrary extra data fields are retained but are
+  not printed. Preserve supplied uncertainty and closure dates explicitly.
 - `edges`: `{id, source, target, kind}`. Use `branch` or `succession` for structural
   links, and `influence` for a distinct dotted connection. Preserve every explicit
   incoming link to a merger. Succession is dash-dot; branch links are solid.
@@ -32,6 +35,14 @@ Set `emphasis: true` on consequential landmarks; explicit `style` values are
 `plain`, `card`, `pill`, `emblem`, and `hero`. Emphasis affects size/treatment,
 while `group` continues to control semantic color. Quieter intermediates can use
 `style: plain`. Ended branches remain ended; add their closure in `detail`.
+
+Keep colored panels focused on names. A caption such as “The two colleges unite”
+can explain a consequential merger, but do not restate every incoming edge as
+“Descends from [the institution already connected above].” State the tradition
+once beside its founding institution or in a concise key. Use a short subject
+title and put the fictional status in the source note; implementation names,
+evaluation language and artwork resource descriptions do not belong in cards.
+Preserve actual image provenance in the embedded source metadata.
 
 Optional `icon` uses an original vector emblem such as `book`, `wheel`, `globe`,
 `ship`, `star`, or `observatory`. For sourced observation artwork use
@@ -55,3 +66,8 @@ records to make it dense. If automatic ordering gives a poor merge or long detou
 use `resolved_layout.nodes` from `layout.json` as a starting point for authored
 placement. Fix positions and widths in the brief, then render again. Keep colors,
 dates, labels and the relationship inventory intact.
+
+If an influence still takes a conspicuous lower shelf, read
+[lateral influence routes](influence-routes.md) after resolving the first layout.
+Compare a side attachment with the original route; do not make a long shelf the
+default merely because automatic placement found a collision-free path.

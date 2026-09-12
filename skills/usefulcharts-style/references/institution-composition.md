@@ -18,6 +18,10 @@ Do not derive dates from coordinates, choose a parent by nearest x position, or 
 4. Let an old family persist beside a newer tradition when the records require it. Reclaim space after closures. Keep approximate chronological order across neighboring stories where possible; large backward influence paths often reveal inconsistent placement of the same historical period.
 5. Reserve long influence corridors before finalizing the cards. Give them specific entry and exit positions. Do not let a route search produce a large loop around several unrelated institutions merely to satisfy collision checks.
 
+When a later family emerges from an earlier one, place its founding group beside that actual predecessor and allow it to expand into space released by ended branches. Approximate date bands can guide neighboring stories without imposing a false numeric scale. Measure complete names, dates, captions and bound family headings together; a compact integer placement must round envelopes outward so fractional heights cannot silently consume a gutter. Horizontal freedom often resolves crowding better than increasing page height or shrinking type.
+
+For cross-disciplinary influence, [lateral influence routes](influence-routes.md) supplies explicit side ports and a deterministic corridor helper. It preserves the structural descent paths and source facts. Its shorter-route objective is a proposal: compare the actual curves, intersections and reading sequence after rendering.
+
 Use `corridor_y` to align a clear local merge, or `via` for deliberate orthogonal bends. Where two same-category paths represent the same stated merger, a common final corridor can be clearer than nearly parallel lines a few units apart. Inspect it as a relationship, not only as geometry. Crossings between unrelated paths must remain distinguishable from joins.
 
 If the renderer reports a crowded search port, move the neighboring node or reserve at least 18 units at the attachment. Enlarging the search area cannot repair an endpoint inside an obstacle. A substantial detour is also a reason to recompose the group rather than accept the first technically valid route.

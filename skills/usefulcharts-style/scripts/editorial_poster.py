@@ -50,6 +50,15 @@ def measured_content(node, width, font):
     return name,detail,max(height,icon_width+4 if icon_width else 0)
 
 
+def attachment_port(box,side):
+    """Return the exact content-envelope attachment and its outward search point."""
+    require(side in ('top','bottom','left','right'),'Unknown relationship attachment side.')
+    x,y,w,h=box
+    point={'top':(x+w/2,y),'bottom':(x+w/2,y+h),'left':(x,y+h/2),'right':(x+w,y+h/2)}[side]
+    normal={'top':(0,-1),'bottom':(0,1),'left':(-1,0),'right':(1,0)}[side]
+    return point,tuple(point[i]+10*normal[i] for i in (0,1))
+
+
 def cohort_key(data,width):
     """Keep category identification in a key, clear of genealogical branches."""
     rows=[[]];used=0
@@ -298,14 +307,17 @@ class EditorialPoster(Poster):
             seen.add(eid);pairs.add((source,target,kind))
             require(kind in KINDS and target in self.nodes and source in (self.nodes|self.unions),f'Unresolved relation {eid}')
             require(source!=target,f'Self-link {eid}')
-            t=self.boxes[target]
-            end=(t[0]+t[2]/2,t[1])
+            source_port=edge.get('source_port','bottom');target_port=edge.get('target_port','top')
+            require((source_port,target_port)==('bottom','top') or
+                (self.mode=='lineage' and kind=='influence' and source in self.nodes),
+                'Lateral or reversed attachments require an institutional influence between nodes.')
+            end,b=attachment_port(self.boxes[target],target_port)
             if source in self.unions:
                 start=self.unions[source]['point'];source_y=start[1]
+                a=(start[0],start[1]+10)
             else:
-                b=self.boxes[source];start=(b[0]+b[2]/2,b[1]+b[3]);source_y=self.nodes[source]['row']
+                start,a=attachment_port(self.boxes[source],source_port);source_y=self.nodes[source]['row']
             require(kind=='influence' or source_y<self.nodes[target]['row'],f'Relation {eid} goes backward.')
-            a,b=(start[0],start[1]+10),(end[0],end[1]-10)
             if edge.get('via'):
                 path=compress([start]+[tuple(map(float,p)) for p in edge['via']]+[end])
                 require(all(p[0]==q[0] or p[1]==q[1] for p,q in zip(path,path[1:])),f'Non-orthogonal authored corridor for {eid}')
@@ -315,7 +327,8 @@ class EditorialPoster(Poster):
                     prior=row_bands.get(round(source_y,3));following=row_bands.get(round(self.nodes[target]['row'],3))
                     if prior and following and following[0]>prior[1]:default_middle=(prior[1]+following[0])/2
                 middle=edge.get('corridor_y',default_middle)
-                trial=compress([start,(start[0],middle),(end[0],middle),end])
+                trial=compress([start,(start[0],middle),(end[0],middle),end]) if (source_port,target_port)==('bottom','top') else \
+                    compress([start,a,(a[0],b[1]),b,end])
                 # Ports touch their own boxes; every other part must stay outside,
                 # including a corridor that was requested beyond the target top.
                 if not any(segment_hits(p,q,box,0) for p,q in zip(trial,trial[1:]) for box in self.boxes.values()):
@@ -349,10 +362,15 @@ class EditorialPoster(Poster):
             width=edge.get('weight',2.8 if kind in ('branch','descent') else 1.8)
             dash={'influence':'1 5','uncertain':'1 4','adopted':'7 3 1 3','succession':'8 3 1 3'}.get(kind,'')
             self.line(path,self.paper,width+2.4)
-            self.line(path,paint,width,dash,extra=f'data-edge-id="{eid}" data-source="{source}" data-target="{target}" data-kind="{kind}" data-route-style="rounded"')
+            ports=''.join(f' data-{key.replace("_","-")}="{edge[key]}"' for key in ('source_port','target_port') if key in edge)
+            self.line(path,paint,width,dash,extra=f'data-edge-id="{eid}" data-source="{source}" data-target="{target}" data-kind="{kind}" data-route-style="rounded"{ports}')
             if kind=='influence':
                 x,y=end
-                self.add(f'<path d="M {fmt(x-3)} {fmt(y-6)} L {fmt(x)} {fmt(y)} L {fmt(x+3)} {fmt(y-6)}" fill="none" stroke="{paint}" stroke-width="1.5"/>')
+                if target_port=='top':
+                    self.add(f'<path d="M {fmt(x-3)} {fmt(y-6)} L {fmt(x)} {fmt(y)} L {fmt(x+3)} {fmt(y-6)}" fill="none" stroke="{paint}" stroke-width="1.5"/>')
+                else:
+                    dx,dy={'left':(1,0),'right':(-1,0),'bottom':(0,-1)}[target_port]
+                    self.add(f'<path d="M {fmt(x-6*dx-3*dy)} {fmt(y-6*dy+3*dx)} L {fmt(x)} {fmt(y)} L {fmt(x-6*dx+3*dy)} {fmt(y-6*dy-3*dx)}" fill="none" stroke="{paint}" stroke-width="1.5"/>')
             self.routes.append(dict(edge,points=path));segments.extend(zip(path,path[1:]))
 
     def draw_nodes(self):

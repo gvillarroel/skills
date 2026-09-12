@@ -32,6 +32,8 @@ Keep partnered people at exactly the same `y`, with at least 16 units of space b
 
 Routes use rounded orthogonal corridors and preserve source/target semantics. `corridor_y` requests a horizontal bend level; the router repairs it if it would enter a box. For a deliberately composed route, `via` is an array of absolute `[x,y]` bends between the source bottom/union midpoint and target top. Every segment must be orthogonal. Routes that enter any entity, including their own source or target, are rejected. Reserve visible space below a source and above a target before arranging bends.
 
+For `mode: lineage` and `kind: influence` between two nodes, optional `source_port` and `target_port` choose `left`, `right`, `top` or `bottom` on the complete content envelope. Defaults remain source `bottom` and target `top`. `via` bends begin and end at the chosen sides, and the arrow points into the actual target side. Other graph relationship kinds retain the default vertical attachments. The browser audit verifies the declared side against both the visible endpoint and independent source JSON. These string side names are separate from the numeric timeline fractions below. Read [influence routes](influence-routes.md) when selecting or recomposing them.
+
 ## Annotations and insets
 
 `annotations` contain `{x,y,width,label,size?,kind?,group?,icon?}`. `kind: pill` creates a family label and finds a nearby position clear of entity labels; `kind: heading` uses a serif place heading and optional crest above it. These are decoration/context positions, not numeric time assertions. Inspect their association with the correct branch after placement.

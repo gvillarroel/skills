@@ -25,6 +25,8 @@ Validation: run `render_chart.py` and `audit_chart.py`; inspect every edge touch
 
 **Pattern ID:** `usefulcharts-branching-lineage`
 
+For later influence repairs, use [lateral influence routes](influence-routes.md). The authored contract supports explicit side attachments and a source-preserving corridor helper. Inspect actual connections and equal-width composition after routing; packing and route-cost reductions are not visual acceptance.
+
 Trigger: splits, inherited methods, institutional families, or an evolutionary classification whose relationship meaning is explicit.
 
 Input: `design: editorial`, `mode: lineage` with `layout: auto`; named category groups, nodes, and typed `branch`, `influence`, or `uncertain` edges. Let the renderer assign schematic rows and columns for a small brief. For a medium history use [packed stories](packed-stories.md): relative neighborhoods determine the arrangement, measured text and attachment gaps determine the page. For a dense poster, use authored centers and unequal historical regions as described in [editorial composition](editorial-composition.md). Keep evidence on edges as well as nodes when the connections are factual claims.

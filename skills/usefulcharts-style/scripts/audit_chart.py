@@ -34,7 +34,7 @@ AUDIT = r"""() => {
   const contrast=(a,b)=>{const [lo,hi]=[lum(a),lum(b)].sort((x,y)=>x-y);return (hi+.05)/(lo+.05)};
   const nodes=[...svg.querySelectorAll('[data-node-id]')].map(el=>({id:el.dataset.nodeId,box:bounds(el.querySelector('[data-node-box]')),label_box:el.querySelector('[data-label-box]')?bounds(el.querySelector('[data-label-box]')):null}));
   const byId=Object.fromEntries(nodes.map(n=>[n.id,n]));
-  const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,d:el.getAttribute('d'),curved:el.dataset.routeStyle==='rounded'}));
+  const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,source_port:el.dataset.sourcePort||'bottom',target_port:el.dataset.targetPort||'top',d:el.getAttribute('d'),curved:el.dataset.routeStyle==='rounded'}));
   const events=[...svg.querySelectorAll('[data-event-id]')].map(el=>({id:el.dataset.eventId,year:Number(el.dataset.year),origin_y:Number(el.dataset.originY),text:el.textContent}));
   const unions=[...svg.querySelectorAll('[data-union-id]')].map(el=>({id:el.dataset.unionId,d:el.getAttribute('d')}));
   const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,event:el.closest('[data-event-id]')?.dataset.eventId,box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
@@ -86,6 +86,12 @@ AUDIT = r"""() => {
     for(const t of texts)if(t.owner==='page'&&intersect(r,t.box,.1))findings.push({type:'era-rule-text-collision',year:rule.dataset.eraRule,text:t.text});
   }
   const points=d=>(d.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number).reduce((a,n,i,all)=>{if(i%2===0)a.push([n,all[i+1]]);return a},[]);
+  const attached=(point,box,side)=>{
+    if(!box)return false;
+    if(side==='top'||side==='bottom')return point[0]>=box.x+5&&point[0]<=box.x+box.w-5&&Math.abs(point[1]-box.y-(side==='bottom'?box.h:0))<=.1;
+    if(side==='left'||side==='right')return point[1]>=box.y+5&&point[1]<=box.y+box.h-5&&Math.abs(point[0]-box.x-(side==='right'?box.w:0))<=.1;
+    return false;
+  };
   for(const e of edges){
     const el=svg.querySelector(`[data-edge-id="${CSS.escape(e.id)}"]`);
     const length=el.getTotalLength();
@@ -104,9 +110,10 @@ AUDIT = r"""() => {
       }
     }
     const target=byId[e.target]?.box,last=p.at(-1);
-    if(!target||last[0]<target.x+5||last[0]>target.x+target.w-5||Math.abs(last[1]-target.y)>.1)findings.push({type:'detached-target',id:e.id});
+    if(!attached(last,target,e.target_port))findings.push({type:'detached-target',id:e.id});
     const origin=byId[e.source]?.box,first=p[0];
-    if(origin&&(first[0]<origin.x+5||first[0]>origin.x+origin.w-5||Math.abs(first[1]-origin.y-origin.h)>.1))findings.push({type:'detached-source',id:e.id});
+    if(origin&&!attached(first,origin,e.source_port))findings.push({type:'detached-source',id:e.id});
+    if((e.source_port!=='bottom'||e.target_port!=='top')&&(meta.mode!=='lineage'||e.kind!=='influence'))findings.push({type:'invalid-lateral-relation',id:e.id});
   }
   const clippedArea=(poly,r)=>{
     let out=poly;
@@ -185,6 +192,11 @@ def check_source(report, data):
     fields = ("id", "source", "target", "kind")
     if sorted(tuple(e[k] for k in fields) for e in relations) != sorted(tuple(e[k] for k in fields) for e in report["edges"]):
         report["findings"].append({"type": "source-relation-inventory"})
+    actual_edges={edge['id']:edge for edge in report['edges']}
+    for edge in relations if data['mode']!='timeline' else []:
+        actual=actual_edges.get(edge['id'])
+        if actual and any(actual.get(key,default)!=edge.get(key,default) for key,default in (('source_port','bottom'),('target_port','top'))):
+            report['findings'].append({'type':'source-relation-port','id':edge['id']})
     # Text may wrap across lines; retain word order when checking node labels.
     for node in nodes:
         actual = " ".join(t["text"] for t in report["texts"] if t["owner"] == node["id"])

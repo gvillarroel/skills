@@ -1,0 +1,19 @@
+{
+  "review_type": "Unblinded author inspection of final PNGs and an equal-width reference/before/after comparison",
+  "scope": "Compact development readability and institution grouping are separate from dense reference parity. No similarity percentage or human discrimination result is asserted.",
+  "runs": {
+    "usefulcharts-v26-institutions-20260912-gpt55-1": {"status": "fail", "findings": ["Dates and repeated parentage explanations make the colored panels heavy.", "The printed source note exposes isolated-forward-test wording.", "The influence remains a long lower shelf."]},
+    "usefulcharts-v26-institutions-20260912-gpt55-2": {"status": "fail", "findings": ["The long title loses the header's intended prominence.", "Name, date and repeated source explanations share bulky colored panels.", "The small observation figure sits in a tall, largely empty image strip."]},
+    "usefulcharts-v26-institutions-20260912-gpt55-3": {"status": "fail", "findings": ["The page is readable but retains heavy multi-line panels and repetitious relationship prose.", "The illustration has insufficient visible scale inside its tall panel.", "The lower influence shelf remains conspicuous."]},
+    "usefulcharts-v26b-institutions-20260912-gpt55-1": {"status": "pass", "findings": ["Dates above compact name panels and context below them provide a clearer hierarchy.", "Both mergers, the ended branch and all source dates remain readable.", "Remaining gaps: repetitive captions, a small observation figure and the long lower influence shelf. This is a compact-case pass, not dense visual parity."]},
+    "usefulcharts-v26b-institutions-20260912-gpt55-2": {"status": "pass", "findings": ["The observation illustration is visibly larger and the two major mergers remain distinct.", "A left-to-right side attachment clarifies the influence without sharing the descent port.", "Remaining gaps: repeated caption formulas, a regular automatic tree and a longer-than-needed title. This is a compact-case pass, not dense visual parity."]},
+    "usefulcharts-v26b-institutions-20260912-gpt55-3": {"status": "pass", "findings": ["The compact date/name/caption groups improve scanning without deleting the end date or mergers.", "Both category colors remain stable and principal names remain dark.", "Remaining gaps: repeated parentage captions, a small observation figure and a broad lower shelf. This is a compact-case pass, not dense visual parity."]}
+  },
+  "dense_poster": {
+    "decision": "Accept as progress over the published v25 composition; keep the overall skill validating.",
+    "improvements": ["The complete source occupies a canvas with each dimension reduced by 10 percent, with unchanged type sizes.", "Optical institutions begin beside their actual precursor and expand earlier in the composition.", "Ten of sixteen influence paths use side attachments; source and target arrow directions remain explicit.", "All records, source notes, category meanings and imagery identities are preserved."],
+    "remaining_differences": ["Three broad vertical territories are still persistent, although the optical tradition interleaves more effectively.", "The dense reference has a more varied rhythm of local groups, visual identities and released branch space.", "The selected compact example has 77 crossings and 488 bends, compared with 63 and 422 in the prior full-size example. The shorter normalized total length is not an aesthetic equivalence score.", "The genealogy and chronology are unchanged and retain their previously documented composition gaps."],
+    "reference": "https://usefulcharts.com/products/christian-denominations-family-tree",
+    "local_comparison": "projects/usefulcharts-style/artifacts/reviews/institution-stages-final-comparison/index.html"
+  }
+}

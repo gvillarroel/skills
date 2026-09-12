@@ -36,6 +36,53 @@ def timeline():
 
 
 class EditorialTests(unittest.TestCase):
+    def test_influence_attachments_follow_all_four_envelope_sides(self):
+        from editorial_poster import attachment_port
+        for source_side in ('left','right','top','bottom'):
+            for target_side in ('left','right','top','bottom'):
+                with self.subTest(source=source_side,target=target_side):
+                    data=graph();data['edges'][1].update(source_port=source_side,target_port=target_side)
+                    before=copy.deepcopy(data);poster=EditorialPoster(data);svg,_=poster.render()
+                    route=next(edge for edge in poster.routes if edge['id']=='b')
+                    self.assertEqual(route['points'][0],attachment_port(poster.boxes['root'],source_side)[0])
+                    self.assertEqual(route['points'][-1],attachment_port(poster.boxes['right'],target_side)[0])
+                    self.assertFalse(any(segment_hits(a,b,box) for a,b in zip(route['points'],route['points'][1:]) for box in poster.boxes.values()))
+                    self.assertEqual(data,before)
+
+    def test_lateral_descent_and_unknown_ports_are_rejected(self):
+        for kind,side in [('branch','left'),('influence','diagonal')]:
+            with self.subTest(kind=kind,side=side):
+                data=graph();data['edges'][1].update(kind=kind,source_port=side)
+                with self.assertRaises(ValueError):EditorialPoster(data).render()
+
+    def test_lateral_authored_path_cannot_enter_its_own_target(self):
+        data=graph();data['edges'][1].update(source_port='right',target_port='left',via=[[900,240],[900,640]])
+        with self.assertRaisesRegex(ValueError,'crosses a node'):EditorialPoster(data).render()
+
+    def test_influence_composer_freezes_complete_facts_and_preserves_input(self):
+        from route_influences import compose_influences
+        data=graph();before=copy.deepcopy(data);result,report=compose_influences(data)
+        self.assertEqual(data,before);self.assertEqual(result['nodes'],before['nodes'])
+        self.assertEqual(report['selected'],['b'])
+        for original,edge in zip(data['edges'],result['edges']):
+            self.assertEqual({k:v for k,v in edge.items() if k not in ('via','source_port','target_port')},original)
+        self.assertEqual(EditorialPoster(result).render()[1]['edge_count'],2)
+
+    def test_influence_composer_retains_authored_choices_unless_requested(self):
+        from route_influences import compose_influences
+        data=graph();data['edges'][1].update(source_port='right',target_port='left')
+        result,report=compose_influences(data)
+        self.assertEqual(result,data);self.assertFalse(report['changed'])
+        result,report=compose_influences(data,replace_authored=True)
+        self.assertTrue(report['changed']);self.assertEqual(report['selected'],['b'])
+
+    def test_influence_composer_rejects_unresolved_coordinates(self):
+        from route_influences import compose_influences
+        for layout in ('auto','packed','cohorts'):
+            with self.subTest(layout=layout):
+                data=graph();data['layout']=layout
+                with self.assertRaisesRegex(ValueError,'Resolve the first layout'):compose_influences(data)
+
     def test_heading_icon_clears_complete_multiline_heading(self):
         data=graph();data['annotations']=[dict(x=950,y=320,width=180,size=18,kind='heading',
             label='A thousand years\nof recorded descent',icon='crown')]
