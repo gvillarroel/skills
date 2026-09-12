@@ -57,4 +57,6 @@ Input: `design: editorial`, `mode: timeline`; numeric `time.start`, `time.end`, 
 
 For annotated histories, use [narrative chronology](narrative-chronology.md) and `pack_timeline_events.py` to place complete notes around measured periods, filled bridges and uncertain connections. Keep period dates and event years fixed. Review the actual image weight on the paper; a white nameplate image can be unsuitable as a free-standing timeline illustration.
 
+When long colored bands dominate a substantial chart, mix selected `treatment: stem` periods with full ribbons. A stem spans the exact dates, while a local capsule names the period. Its centered ports and tapered bridges must join actual visible ink. Use lane `weight` when concurrent histories need unequal horizontal space, then recompose lane-relative offsets and repack complete notes. Preserve all names, words, years and relationships; quieter paint alone is not evidence of closer visual resemblance.
+
 Validation: compare at least three interval endpoints with the time mapping and check contemporary periods share their y coordinates. Audit connection paths against event text and full illustration viewports as well as the filled bridges. Pitfalls: inventing connecting descent from adjacent periods; hiding long gaps; mixing ordinal generations with metric years; equalizing lengths to improve appearance.

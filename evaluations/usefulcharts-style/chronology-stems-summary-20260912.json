@@ -1,0 +1,398 @@
+{
+  "status": "validating",
+  "runs": [
+    {
+      "id": "usefulcharts-v27-contract-spark-20260912",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 85,
+        "payloadSha256": "de4aa8b5eaeb024990cf4a6459621d5813fb1becc2cc16dc004c5ef45e1b13c3"
+      },
+      "prompt_sha256": "363b522ff83dc553b988d8a976d65ada103017ff9ffabc8a83cfb933a2134384",
+      "expected_outputs": [
+        "draft.json",
+        "deliverables/brief.json",
+        "deliverables/placements.json",
+        "deliverables/poster.svg",
+        "deliverables/layout.json",
+        "deliverables/browser.json",
+        "deliverables/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T10:23:58.350492+00:00",
+        "finishedAtUtc": "2026-09-12T10:24:24.251948+00:00",
+        "durationSeconds": 25.902,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "deliverables/brief.json",
+        "deliverables/placements.json",
+        "deliverables/layout.json",
+        "deliverables/browser.json"
+      ],
+      "read_bytes": 31943,
+      "independent_artifact": {
+        "status": "pass",
+        "exact_source_preserved": true,
+        "visible_stems": 2,
+        "findings": [],
+        "limitation": "Command control; no agent aesthetic judgement is required."
+      },
+      "tool_errors": [],
+      "visual_review": {
+        "decision": "Command control passes; aesthetic judgement is outside this case.",
+        "parity_accepted": false
+      }
+    },
+    {
+      "id": "usefulcharts-v27-regions-1-20260912",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 85,
+        "payloadSha256": "de4aa8b5eaeb024990cf4a6459621d5813fb1becc2cc16dc004c5ef45e1b13c3"
+      },
+      "prompt_sha256": "5187992de2079caa2cc424c5ed16a13217047a329379bb693c1bba6a81804370",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T10:23:57.712716+00:00",
+        "finishedAtUtc": "2026-09-12T10:26:34.065534+00:00",
+        "durationSeconds": 156.354,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "result/poster.png"
+      ],
+      "read_bytes": 279277,
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1500 1900",
+        "supported_image_reads": 1,
+        "findings": [],
+        "limitation": "Exact data and geometry do not establish visual parity; inspect the images separately.",
+        "stems": 3,
+        "full_bands": 9,
+        "lane_weights": [
+          1.15,
+          1.0,
+          1.3
+        ]
+      },
+      "tool_errors": [],
+      "visual_review": {
+        "image": "evaluations/runs/usefulcharts-v27-regions-1-20260912/workspace/result/poster.png",
+        "canvas": [
+          1500,
+          1900
+        ],
+        "decision": "Accept basic legibility and selective treatment transfer, with reservations about excess page area.",
+        "parity_accepted": false,
+        "observations": [
+          "All names and 18 notes are legible; the clock illustration is integrated beside its event and clear of later material.",
+          "Three stems and nine bands differentiate some quieter periods, and weighted lanes accommodate concurrent Plains histories.",
+          "Long broad early bands and substantial empty gaps remain. The 1500-unit page reduces displayed type size relative to the smaller trials without a clear visible benefit."
+        ]
+      }
+    },
+    {
+      "id": "usefulcharts-v27-regions-2-20260912",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 85,
+        "payloadSha256": "de4aa8b5eaeb024990cf4a6459621d5813fb1becc2cc16dc004c5ef45e1b13c3"
+      },
+      "prompt_sha256": "5187992de2079caa2cc424c5ed16a13217047a329379bb693c1bba6a81804370",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T10:23:57.718907+00:00",
+        "finishedAtUtc": "2026-09-12T10:26:25.871225+00:00",
+        "durationSeconds": 148.153,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/poster.png"
+      ],
+      "read_bytes": 265657,
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1350 1700",
+        "supported_image_reads": 1,
+        "findings": [],
+        "limitation": "Exact data and geometry do not establish visual parity; inspect the images separately.",
+        "stems": 5,
+        "full_bands": 7,
+        "lane_weights": [
+          1.25,
+          1.08,
+          1.0
+        ]
+      },
+      "tool_errors": [],
+      "visual_review": {
+        "image": "evaluations/runs/usefulcharts-v27-regions-2-20260912/workspace/result/poster.png",
+        "canvas": [
+          1350,
+          1700
+        ],
+        "decision": "Accept basic legibility and mixed treatment transfer; retain composition limitations.",
+        "parity_accepted": false,
+        "observations": [
+          "Five stems and seven bands remain easy to trace and give quieter continuities less visual weight.",
+          "The body notes and one contextual illustration remain readable at the smaller page size.",
+          "The upper coastal fork is shallow, and the three vertical histories still resemble persistent columns. Event text is predominantly placed on the same side of its history."
+        ]
+      }
+    },
+    {
+      "id": "usefulcharts-v27-regions-3-20260912",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 85,
+        "payloadSha256": "de4aa8b5eaeb024990cf4a6459621d5813fb1becc2cc16dc004c5ef45e1b13c3"
+      },
+      "prompt_sha256": "5187992de2079caa2cc424c5ed16a13217047a329379bb693c1bba6a81804370",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T10:23:58.030241+00:00",
+        "finishedAtUtc": "2026-09-12T10:26:53.243845+00:00",
+        "durationSeconds": 175.215,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": null,
+          "skillIntegrity": true
+        }
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/narrative-chronology.md",
+        "skills/usefulcharts-style/assets/templates/narrative-timeline.json",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/poster.png",
+        "result/browser.json"
+      ],
+      "read_bytes": 272213,
+      "independent_artifact": {
+        "status": "pass",
+        "periods": 12,
+        "events": 18,
+        "transitions": 11,
+        "canvas": "0 0 1400 1750",
+        "supported_image_reads": 1,
+        "findings": [],
+        "limitation": "Exact data and geometry do not establish visual parity; inspect the images separately.",
+        "stems": 4,
+        "full_bands": 8,
+        "lane_weights": [
+          1.25,
+          1.1,
+          0.95
+        ]
+      },
+      "tool_errors": [],
+      "visual_review": {
+        "image": "evaluations/runs/usefulcharts-v27-regions-3-20260912/workspace/result/poster.png",
+        "canvas": [
+          1400,
+          1750
+        ],
+        "decision": "Accept basic legibility and selective treatment transfer; retain composition limitations.",
+        "parity_accepted": false,
+        "observations": [
+          "Four stems and eight bands retain all explicit gaps and relationships, with readable horizontal annotations.",
+          "The clockmaking landmark is clear and its image is contained in a useful footprint.",
+          "Large consistent vertical gaps, broad early bands and the repeated placement of prose to the right remain schematic. The reading note could explain the name capsules more explicitly."
+        ]
+      }
+    }
+  ],
+  "explorations": [
+    {
+      "stage": "chronology-stems-v27",
+      "attempts": [
+        {
+          "variant": "stems",
+          "status": "rendered",
+          "stems": 45,
+          "canvas": [
+            1800,
+            2400
+          ]
+        },
+        {
+          "variant": "weighted-stems",
+          "status": "needs-layout",
+          "reason": "No readable placement for event event-4-8. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "variant": "compact-stems",
+          "status": "needs-layout",
+          "reason": "No readable placement for event event-2-6. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "variant": "compact-weighted",
+          "status": "needs-layout",
+          "reason": "No readable placement for event event-4-4. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        }
+      ]
+    },
+    {
+      "stage": "chronology-stems-v27b",
+      "attempts": [
+        {
+          "variant": "stems",
+          "status": "rendered",
+          "stems": 45,
+          "canvas": [
+            1800,
+            2400
+          ]
+        },
+        {
+          "variant": "weighted-stems",
+          "status": "rendered",
+          "stems": 45,
+          "canvas": [
+            1800,
+            2400
+          ]
+        },
+        {
+          "variant": "compact-stems",
+          "status": "needs-layout",
+          "reason": "No readable placement for event event-2-6. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "variant": "compact-weighted",
+          "status": "needs-layout",
+          "reason": "No readable placement for event event-4-4. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        }
+      ]
+    },
+    {
+      "stage": "chronology-stems-v27c",
+      "attempts": [
+        {
+          "variant": "portrait-weighted",
+          "status": "rendered",
+          "stems": 45,
+          "canvas": [
+            1680,
+            2400
+          ]
+        },
+        {
+          "variant": "portrait-selective",
+          "status": "needs-layout",
+          "reason": "No readable placement for event event-0-9. Recompose nearby periods, enlarge the page, or explicitly revise the event treatment; text and dates were not changed."
+        },
+        {
+          "variant": "full-selective",
+          "status": "rendered",
+          "stems": 16,
+          "canvas": [
+            1800,
+            2400
+          ]
+        }
+      ]
+    },
+    {
+      "stage": "chronology-stems-v27d",
+      "attempts": [
+        {
+          "variant": "portrait-balanced",
+          "status": "rendered",
+          "stems": 18,
+          "canvas": [
+            1680,
+            2400
+          ]
+        }
+      ]
+    }
+  ],
+  "visual_parity": "Not established. Technical validity, visual critique and exact-source preservation are distinct claims."
+}

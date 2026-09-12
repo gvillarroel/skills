@@ -27,6 +27,31 @@ def main():
     ns={"s":"http://www.w3.org/2000/svg"};ET.register_namespace("",ns["s"])
     original=ET.parse(args.svg).getroot();source=json.loads(args.source.read_text(encoding="utf-8"))
     mutations=[]
+    stem_node=next((el for el in original.findall('.//s:g[@data-node-id]',ns) if el.find('s:rect[@data-period-stem]',ns) is not None),None)
+    if stem_node is not None:
+        nid=stem_node.get('data-node-id')
+        for name,attribute,value,expected in [
+            ('shortened-duration-stem','height','20','source-period-stem-geometry'),
+            ('displaced-duration-stem','x','100','source-period-stem-geometry'),
+            ('hidden-duration-stem','opacity','0','source-period-stem-geometry'),
+            ('wrong-duration-color','fill','#0000FF','source-period-stem-geometry'),
+        ]:
+            node=copy.deepcopy(original);node.find(f'.//s:g[@data-node-id="{nid}"]/s:rect[@data-period-stem]',ns).set(attribute,value)
+            mutations.append((name,node,expected))
+        node=copy.deepcopy(original);group=node.find(f'.//s:g[@data-node-id="{nid}"]',ns)
+        group.remove(group.find('s:rect[@data-period-stem]',ns));mutations.append(('missing-duration-stem',node,'source-period-treatment'))
+        node=copy.deepcopy(original);node.find(f'.//s:g[@data-node-id="{nid}"]',ns).set('opacity','0')
+        mutations.append(('hidden-period-group',node,'source-period-stem-geometry'))
+        node=copy.deepcopy(original);node.find(f'.//s:g[@data-node-id="{nid}"]/s:rect[@data-period-label]',ns).set('fill','#FFFFFF')
+        mutations.append(('erased-name-capsule',node,'source-period-label-treatment'))
+        node=copy.deepcopy(original);node.find(f'.//s:g[@data-node-id="{nid}"]/s:rect[@data-period-label]',ns).set('y','90')
+        mutations.append(('misplaced-name-capsule',node,'source-period-label-geometry'))
+        node=copy.deepcopy(original);node.find(f'.//s:g[@data-node-id="{nid}"]',ns).set('transform','translate(10 0)')
+        mutations.append(('shifted-weighted-period',node,'source-period-lane-position'))
+        node=copy.deepcopy(original);edge=node.find(f'.//s:path[@data-source="{nid}"]',ns)
+        if edge is not None:
+            tokens=edge.get('d').split();tokens[1]=str(float(tokens[1])+3);edge.set('d',' '.join(tokens))
+            mutations.append(('port-beside-visible-stem',node,'source-timeline-port'))
     lateral=original.find('.//s:path[@data-source-port="right"]',ns)
     if lateral is None:lateral=original.find('.//s:path[@data-source-port="left"]',ns)
     if lateral is not None:

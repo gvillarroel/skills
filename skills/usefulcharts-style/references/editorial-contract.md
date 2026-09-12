@@ -56,6 +56,9 @@ Use `mode: timeline`, shared numeric `time`, named `lanes`, and `periods`. Each 
 - `offset`: horizontal units from its lane's left edge.
 - `bar_width`: actual ribbon width; allow enough room for wrapped rotated type.
 - `size`: optional name size. Names are rotated inside the actual interval rectangle; dates are never stretched to fit.
+- `treatment`: `ribbon` by default, or `stem` for a thin full-duration line with a local rotated name capsule. `bar_width` then measures the capsule's envelope; `stem_width` defaults to 5 and must be at least 2 and no wider than that envelope. Optional `label_position` is 0–1 across the capsule's available vertical travel, default 0.5. These two fields require stem treatment. Compact horizontal-label timelines retain their existing ribbon treatment.
+
+Each lane can provide a positive `weight`, default 1. The available width is distributed proportionally in source order. Changing weights never moves dates, but lane-relative offsets remain absolute units and need recomposition. Read [narrative chronology](narrative-chronology.md) for treatment selection and note placement against actual painted shapes.
 
 `events` contain `{id?,lane,year,label,detail?,offset,width,size?,detail_size?,icon?,art_size?,art_width?,art_height?,group?}`. Their y position comes from the same year scale. A bold headline precedes normal-weight detail and any illustration. Event ID, year, and origin position remain independently inspectable in the SVG. Supply only relevant, distinct events and reserve enough height before the next event. `art_size` defaults to a square; source illustrations may use `art_width` and `art_height` for a natural rectangular aspect ratio. Width must fit the event. Reserve the full wrapped headline, detail and artwork height, then check every transition polygon below it; the renderer rejects artwork covering a period and the browser also detects illustration/text and illustration/bridge collisions.
 
@@ -63,7 +66,7 @@ Use `mode: timeline`, shared numeric `time`, named `lanes`, and `periods`. Each 
 
 `transitions` explicitly connect known periods: `{id,source,target,kind,style?,source_port?,target_port?,ribbon_width?}`. Use `succession`, `division`, `union`, or `uncertain` according to the source. An uncertain relation should use `style: dotted`; ordinary transitions may use `ribbon`. Dates never change and transitions cannot go backward.
 
-Ports are fractions of ribbon width, default 0.5, and must remain at least five units inside each edge. For a split or merger, separate the attachment ports and supply a narrow `ribbon_width` (for example 10). Omit width or use zero for a full-width continuation. The semantic center path follows the filled bridge, avoiding a second elbow that could look like another fork. Reserve its entire polygon, not just the centerline. Width is compositional unless the data explicitly defines a quantitative encoding.
+Ports are fractions of ribbon width, default 0.5, and must remain at least five units inside each edge. For a split or merger on a full band, separate the attachment ports and supply a narrow `ribbon_width` (for example 10). Stem endpoints require 0.5 so the connection meets visible ink. A bridge tapers to the stem width at that end. Omit width or use zero for a continuation across the full visible endpoint widths. The semantic center path follows the filled bridge, avoiding a second elbow that could look like another fork. Reserve its entire polygon, not just the centerline. Width is compositional unless the data explicitly defines a quantitative encoding.
 
 ## Validation
 

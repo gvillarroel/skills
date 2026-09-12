@@ -19,6 +19,8 @@ When no colors are supplied, use light category fills: coral `#F56550`, sky blue
 
 Use [the shared contract](references/data-contract.md) only for additional field detail or classic schematic compatibility. The classic renderer is not the poster aesthetic acceptance target. Use [composition critique](references/editorial-composition.md) when matching a dense reference, and [pattern recipes](references/pattern-recipes.md) when the task names a published pattern.
 
+For chronology, vary the colored treatment selectively: full duration bands for principal periods, fine duration stems with local name capsules for quieter continuities. Give a region more horizontal space when its concurrent histories and notes need it. The [narrative chronology guide](references/narrative-chronology.md) describes weighted lanes, exact stem endpoints and measured note clearance. Converting every band to a thin line can create an empty framework; compare the mixed composition before accepting it.
+
 ## Preserve meaning while composing
 
 Distinguish descent, partnership, succession, branching, influence and uncertainty. A chronological neighbor is not automatically an ancestor. Keep every supplied label, date and relationship. Mark invented demonstration data visibly as synthetic; do not manufacture records or relationships to improve visual density.

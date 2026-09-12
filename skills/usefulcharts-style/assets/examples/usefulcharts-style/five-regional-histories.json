@@ -3,7 +3,7 @@
   "title": "FIVE REGIONS THROUGH TIME",
   "mode": "timeline",
   "design": "editorial",
-  "width": 1800,
+  "width": 1680,
   "height": 2400,
   "font_size": 12.2,
   "imprint": [
@@ -51,23 +51,28 @@
   "lanes": [
     {
       "id": "l0",
-      "label": "Riverlands"
+      "label": "Riverlands",
+      "weight": 1.02
     },
     {
       "id": "l1",
-      "label": "Highlands"
+      "label": "Highlands",
+      "weight": 1.04
     },
     {
       "id": "l2",
-      "label": "Coastlands"
+      "label": "Coastlands",
+      "weight": 1.12
     },
     {
       "id": "l3",
-      "label": "Islands"
+      "label": "Islands",
+      "weight": 0.78
     },
     {
       "id": "l4",
-      "label": "Northlands"
+      "label": "Northlands",
+      "weight": 1.04
     }
   ],
   "periods": [
@@ -78,9 +83,11 @@
       "end": 1190,
       "lane": "l0",
       "group": "g0",
-      "offset": 20.5,
+      "offset": 18.812646153846156,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p0-willow",
@@ -89,9 +96,11 @@
       "end": 1260,
       "lane": "l0",
       "group": "g0",
-      "offset": 252.0,
+      "offset": 237.50535384615387,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p0-delta",
@@ -100,9 +109,11 @@
       "end": 1380,
       "lane": "l0",
       "group": "g0",
-      "offset": 37.230000000000004,
+      "offset": 34.159569230769236,
       "bar_width": 36.54,
-      "size": 12
+      "size": 12,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p0-canal",
@@ -111,7 +122,7 @@
       "end": 1380,
       "lane": "l0",
       "group": "g0",
-      "offset": 243.5,
+      "offset": 229.47560000000004,
       "bar_width": 20,
       "size": 11
     },
@@ -122,8 +133,8 @@
       "end": 1580,
       "lane": "l0",
       "group": "g0",
-      "offset": 116.0,
-      "bar_width": 50,
+      "offset": 112.19944615384617,
+      "bar_width": 42,
       "size": 18
     },
     {
@@ -133,7 +144,7 @@
       "end": 1730,
       "lane": "l0",
       "group": "g0",
-      "offset": 231.5,
+      "offset": 218.13947692307696,
       "bar_width": 20,
       "size": 11
     },
@@ -144,7 +155,7 @@
       "end": 1720,
       "lane": "l0",
       "group": "g0",
-      "offset": 23.0,
+      "offset": 21.174338461538465,
       "bar_width": 20,
       "size": 11
     },
@@ -155,7 +166,7 @@
       "end": 1740,
       "lane": "l0",
       "group": "g0",
-      "offset": 130.19,
+      "offset": 122.36178461538464,
       "bar_width": 22.619999999999997,
       "size": 11
     },
@@ -166,9 +177,11 @@
       "end": 1850,
       "lane": "l0",
       "group": "g0",
-      "offset": 29.55,
+      "offset": 27.032800000000012,
       "bar_width": 31.9,
-      "size": 12
+      "size": 12,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p0-upper",
@@ -177,9 +190,11 @@
       "end": 1860,
       "lane": "l0",
       "group": "g0",
-      "offset": 235.02,
+      "offset": 221.02326153846155,
       "bar_width": 35.96,
-      "size": 12
+      "size": 12,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p0-civic",
@@ -188,7 +203,7 @@
       "end": 2000,
       "lane": "l0",
       "group": "g0",
-      "offset": 119.88,
+      "offset": 111.99646153846155,
       "bar_width": 45.239999999999995,
       "size": 12
     },
@@ -199,9 +214,11 @@
       "end": 1210,
       "lane": "l1",
       "group": "g1",
-      "offset": 41.0,
+      "offset": 39.123200000000004,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p1-pass",
@@ -210,7 +227,7 @@
       "end": 1370,
       "lane": "l1",
       "group": "g1",
-      "offset": 109.88,
+      "offset": 105.00400000000002,
       "bar_width": 45.239999999999995,
       "size": 12
     },
@@ -221,7 +238,7 @@
       "end": 1550,
       "lane": "l1",
       "group": "g1",
-      "offset": 19.98,
+      "offset": 18.8392,
       "bar_width": 22.04,
       "size": 11
     },
@@ -232,9 +249,11 @@
       "end": 1610,
       "lane": "l1",
       "group": "g1",
-      "offset": 92.0,
+      "offset": 88.24640000000001,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p1-stone",
@@ -243,7 +262,7 @@
       "end": 1540,
       "lane": "l1",
       "group": "g1",
-      "offset": 273.5,
+      "offset": 263.0672,
       "bar_width": 20,
       "size": 11
     },
@@ -254,8 +273,8 @@
       "end": 1770,
       "lane": "l1",
       "group": "g1",
-      "offset": 24.5,
-      "bar_width": 50,
+      "offset": 26.678400000000003,
+      "bar_width": 42,
       "size": 18
     },
     {
@@ -265,9 +284,11 @@
       "end": 1760,
       "lane": "l1",
       "group": "g1",
-      "offset": 246.81,
+      "offset": 237.07640000000004,
       "bar_width": 35.379999999999995,
-      "size": 12
+      "size": 12,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p1-union",
@@ -276,7 +297,7 @@
       "end": 1900,
       "lane": "l1",
       "group": "g1",
-      "offset": 77.12,
+      "offset": 73.51360000000001,
       "bar_width": 41.76,
       "size": 12
     },
@@ -287,7 +308,7 @@
       "end": 2000,
       "lane": "l1",
       "group": "g1",
-      "offset": 111.88,
+      "offset": 106.93040000000002,
       "bar_width": 45.239999999999995,
       "size": 12
     },
@@ -298,9 +319,11 @@
       "end": 1280,
       "lane": "l2",
       "group": "g2",
-      "offset": 19.5,
+      "offset": 20.600123076923076,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p2-amber",
@@ -309,7 +332,7 @@
       "end": 1150,
       "lane": "l2",
       "group": "g2",
-      "offset": 263.0,
+      "offset": 273.1808,
       "bar_width": 20,
       "size": 11
     },
@@ -320,9 +343,11 @@
       "end": 1390,
       "lane": "l2",
       "group": "g2",
-      "offset": 228.39,
+      "offset": 237.54526153846155,
       "bar_width": 34.22,
-      "size": 12
+      "size": 12,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p2-harbor",
@@ -331,7 +356,7 @@
       "end": 1390,
       "lane": "l2",
       "group": "g2",
-      "offset": 28.39,
+      "offset": 30.086800000000004,
       "bar_width": 34.22,
       "size": 12
     },
@@ -342,8 +367,8 @@
       "end": 1630,
       "lane": "l2",
       "group": "g2",
-      "offset": 120.5,
-      "bar_width": 50,
+      "offset": 129.92603076923075,
+      "bar_width": 42,
       "size": 18
     },
     {
@@ -353,7 +378,7 @@
       "end": 1780,
       "lane": "l2",
       "group": "g2",
-      "offset": 18.5,
+      "offset": 19.56283076923077,
       "bar_width": 20,
       "size": 11
     },
@@ -364,7 +389,7 @@
       "end": 1810,
       "lane": "l2",
       "group": "g2",
-      "offset": 144.5,
+      "offset": 150.26166153846154,
       "bar_width": 20,
       "size": 11
     },
@@ -375,7 +400,7 @@
       "end": 1790,
       "lane": "l2",
       "group": "g2",
-      "offset": 271.5,
+      "offset": 281.9977846153846,
       "bar_width": 20,
       "size": 11
     },
@@ -386,7 +411,7 @@
       "end": 1900,
       "lane": "l2",
       "group": "g2",
-      "offset": 27.860000000000003,
+      "offset": 29.612738461538466,
       "bar_width": 38.279999999999994,
       "size": 12
     },
@@ -397,7 +422,7 @@
       "end": 1920,
       "lane": "l2",
       "group": "g2",
-      "offset": 129.44,
+      "offset": 134.95926153846153,
       "bar_width": 37.12,
       "size": 12
     },
@@ -408,7 +433,7 @@
       "end": 1910,
       "lane": "l2",
       "group": "g2",
-      "offset": 258.92,
+      "offset": 269.1380923076923,
       "bar_width": 30.159999999999997,
       "size": 11
     },
@@ -419,7 +444,7 @@
       "end": 2000,
       "lane": "l2",
       "group": "g2",
-      "offset": 128.38,
+      "offset": 134.01113846153845,
       "bar_width": 45.239999999999995,
       "size": 12
     },
@@ -430,9 +455,11 @@
       "end": 1250,
       "lane": "l3",
       "group": "g3",
-      "offset": 101.0,
+      "offset": 70.1864,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p3-reef",
@@ -441,9 +468,11 @@
       "end": 1450,
       "lane": "l3",
       "group": "g3",
-      "offset": 21.0,
+      "offset": 12.394400000000005,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p3-cove",
@@ -452,9 +481,11 @@
       "end": 1450,
       "lane": "l3",
       "group": "g3",
-      "offset": 267.0,
+      "offset": 190.10480000000004,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p3-voyage",
@@ -463,8 +494,8 @@
       "end": 1680,
       "lane": "l3",
       "group": "g3",
-      "offset": 111.0,
-      "bar_width": 50,
+      "offset": 77.24640000000001,
+      "bar_width": 42,
       "size": 18
     },
     {
@@ -474,7 +505,7 @@
       "end": 1840,
       "lane": "l3",
       "group": "g3",
-      "offset": 29.650000000000002,
+      "offset": 16.186400000000003,
       "bar_width": 37.699999999999996,
       "size": 12
     },
@@ -485,9 +516,11 @@
       "end": 1880,
       "lane": "l3",
       "group": "g3",
-      "offset": 258.56,
+      "offset": 183.88560000000004,
       "bar_width": 20.88,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p3-assembly",
@@ -496,7 +529,7 @@
       "end": 2000,
       "lane": "l3",
       "group": "g3",
-      "offset": 126.88,
+      "offset": 85.37880000000001,
       "bar_width": 45.239999999999995,
       "size": 12
     },
@@ -507,9 +540,11 @@
       "end": 1220,
       "lane": "l4",
       "group": "g4",
-      "offset": 17.5,
+      "offset": 16.488000000000003,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p4-lake",
@@ -518,9 +553,11 @@
       "end": 1220,
       "lane": "l4",
       "group": "g4",
-      "offset": 274.5,
+      "offset": 264.03040000000004,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p4-birch",
@@ -529,8 +566,8 @@
       "end": 1460,
       "lane": "l4",
       "group": "g4",
-      "offset": 117.5,
-      "bar_width": 50,
+      "offset": 116.256,
+      "bar_width": 42,
       "size": 18
     },
     {
@@ -540,7 +577,7 @@
       "end": 1610,
       "lane": "l4",
       "group": "g4",
-      "offset": 16.0,
+      "offset": 15.043200000000002,
       "bar_width": 20,
       "size": 11
     },
@@ -551,9 +588,11 @@
       "end": 1670,
       "lane": "l4",
       "group": "g4",
-      "offset": 141.0,
+      "offset": 135.4432,
       "bar_width": 20,
-      "size": 11
+      "size": 11,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p4-glacial",
@@ -562,7 +601,7 @@
       "end": 1640,
       "lane": "l4",
       "group": "g4",
-      "offset": 270.5,
+      "offset": 260.17760000000004,
       "bar_width": 20,
       "size": 11
     },
@@ -573,9 +612,11 @@
       "end": 1810,
       "lane": "l4",
       "group": "g4",
-      "offset": 24.810000000000002,
+      "offset": 23.24600000000001,
       "bar_width": 35.379999999999995,
-      "size": 12
+      "size": 12,
+      "treatment": "stem",
+      "stem_width": 5
     },
     {
       "id": "p4-northern",
@@ -584,7 +625,7 @@
       "end": 1810,
       "lane": "l4",
       "group": "g4",
-      "offset": 140.61,
+      "offset": 134.99800000000002,
       "bar_width": 23.779999999999998,
       "size": 11
     },
@@ -595,7 +636,7 @@
       "end": 1810,
       "lane": "l4",
       "group": "g4",
-      "offset": 266.61,
+      "offset": 256.3612,
       "bar_width": 23.779999999999998,
       "size": 11
     },
@@ -606,7 +647,7 @@
       "end": 1910,
       "lane": "l4",
       "group": "g4",
-      "offset": 125.88,
+      "offset": 120.4152,
       "bar_width": 45.239999999999995,
       "size": 12
     },
@@ -617,7 +658,7 @@
       "end": 2000,
       "lane": "l4",
       "group": "g4",
-      "offset": 124.88,
+      "offset": 119.452,
       "bar_width": 45.239999999999995,
       "size": 12
     }
@@ -710,7 +751,7 @@
       "kind": "union",
       "style": "ribbon",
       "source_port": 0.5,
-      "target_port": 0.3333333333333333,
+      "target_port": 0.5,
       "ribbon_width": 10
     },
     {
@@ -720,7 +761,7 @@
       "kind": "union",
       "style": "ribbon",
       "source_port": 0.5,
-      "target_port": 0.6666666666666666,
+      "target_port": 0.5,
       "ribbon_width": 10
     },
     {
@@ -979,7 +1020,7 @@
       "target": "p3-reef",
       "kind": "division",
       "style": "ribbon",
-      "source_port": 0.3333333333333333,
+      "source_port": 0.5,
       "target_port": 0.5,
       "ribbon_width": 10
     },
@@ -989,7 +1030,7 @@
       "target": "p3-cove",
       "kind": "division",
       "style": "ribbon",
-      "source_port": 0.6666666666666666,
+      "source_port": 0.5,
       "target_port": 0.5,
       "ribbon_width": 10
     },
@@ -1181,7 +1222,7 @@
       "year": 1025,
       "label": "1025 \u00b7 The first embankments",
       "detail": "Villages pool labor to contain the spring floods.",
-      "offset": 71.0,
+      "offset": 67.072,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1193,7 +1234,7 @@
       "year": 1112,
       "label": "1112 \u00b7 A canal survey",
       "detail": "Surveyors record the river slope on fired clay.",
-      "offset": 71.0,
+      "offset": 67.072,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1209,7 +1250,7 @@
       "year": 1226,
       "label": "1226 \u00b7 The Saffron market",
       "detail": "A permanent grain exchange links delta towns.",
-      "offset": 81.77,
+      "offset": 75,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1221,7 +1262,7 @@
       "year": 1325,
       "label": "1325 \u00b7 Water courts",
       "detail": "Judges set common rules for irrigation disputes.",
-      "offset": 90,
+      "offset": 75,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1233,8 +1274,8 @@
       "year": 1431,
       "label": "1431 \u00b7 One river toll",
       "detail": "The new crown abolishes internal customs barriers.",
-      "offset": 174.0,
-      "width": 146.0,
+      "offset": 164.374,
+      "width": 134.0,
       "size": 14.5,
       "detail_size": 11,
       "group": "g0"
@@ -1245,8 +1286,8 @@
       "year": 1504,
       "label": "1504 \u00b7 A regional granary",
       "detail": "Emergency stores protect towns after crop failure.",
-      "offset": 174.0,
-      "width": 146.0,
+      "offset": 164.374,
+      "width": 134.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g0"
@@ -1257,7 +1298,7 @@
       "year": 1618,
       "label": "1618 \u00b7 Three rival courts",
       "detail": "A disputed inheritance separates the kingdom.",
-      "offset": 56.0,
+      "offset": 50,
       "width": 74.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1269,7 +1310,7 @@
       "year": 1692,
       "label": "1692 \u00b7 Canal locks",
       "detail": "Canal boats reach the upper valley.",
-      "offset": 55,
+      "offset": 50,
       "width": 74.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1282,7 +1323,7 @@
       "label": "1768 \u00b7 The towpath accord",
       "detail": "Two leagues share a continuous transport route.",
       "offset": 65,
-      "width": 170.0,
+      "width": 158.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g0"
@@ -1293,8 +1334,8 @@
       "year": 1830,
       "label": "1830 \u00b7 Steam on the rivers",
       "detail": "Scheduled packets link inland manufacturing towns.",
-      "offset": 65,
-      "width": 170.0,
+      "offset": 80,
+      "width": 158.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g0"
@@ -1305,8 +1346,8 @@
       "year": 1892,
       "label": "1892 \u00b7 An elected council",
       "detail": "Districts send delegates to a common assembly.",
-      "offset": 174.0,
-      "width": 146.0,
+      "offset": 164.374,
+      "width": 134.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g0"
@@ -1317,8 +1358,8 @@
       "year": 1951,
       "label": "1951 \u00b7 The basin authority",
       "detail": "A joint agency coordinates reservoirs and power.",
-      "offset": 174.0,
-      "width": 146.0,
+      "offset": 164.374,
+      "width": 134.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g0"
@@ -1329,7 +1370,7 @@
       "year": 1015,
       "label": "1015 \u00b7 Salt over the passes",
       "detail": "Pack routes connect isolated upland communities.",
-      "offset": 121.5,
+      "offset": 117.029,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1341,7 +1382,7 @@
       "year": 1104,
       "label": "1104 \u00b7 The Cairn archive",
       "detail": "Monasteries preserve land grants and family records.",
-      "offset": 121.5,
+      "offset": 117.029,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1353,8 +1394,8 @@
       "year": 1242,
       "label": "1242 \u00b7 A common road levy",
       "detail": "Pass councils fund bridges and mountain shelters.",
-      "offset": 163.12,
-      "width": 158.0,
+      "offset": 157.117,
+      "width": 146.0,
       "size": 14.5,
       "detail_size": 11,
       "group": "g1"
@@ -1365,8 +1406,8 @@
       "year": 1316,
       "label": "1316 \u00b7 The summit hospice",
       "detail": "Travelers gain a refuge on the winter route.",
-      "offset": 163.12,
-      "width": 158.0,
+      "offset": 157.117,
+      "width": 146.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g1"
@@ -1377,7 +1418,7 @@
       "year": 1413,
       "label": "1413 \u00b7 Three jurisdictions",
       "detail": "Ridge, Cairn, and Stone issue separate charters.",
-      "offset": 115,
+      "offset": 105,
       "width": 158.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1389,7 +1430,7 @@
       "year": 1505,
       "label": "1505 \u00b7 Silver workings",
       "detail": "Deep mines transform the ridge settlements.",
-      "offset": 130,
+      "offset": 120,
       "width": 158.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1401,8 +1442,8 @@
       "year": 1582,
       "label": "1582 \u00b7 The mint ordinance",
       "detail": "A new coin standard unites the western markets.",
-      "offset": 140,
-      "width": 134.0,
+      "offset": 108.746,
+      "width": 158.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g1"
@@ -1413,7 +1454,7 @@
       "year": 1650,
       "label": "1650 \u00b7 The clockmakers",
       "detail": "Small workshops specialize in precision escapements.",
-      "offset": 110,
+      "offset": 105.952,
       "width": 134.0,
       "size": 14.5,
       "detail_size": 11,
@@ -1428,7 +1469,7 @@
       "year": 1732,
       "label": "1732 \u00b7 A winter post",
       "detail": "Relay stations maintain a year-round mail service.",
-      "offset": 105,
+      "offset": 101.136,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1440,7 +1481,7 @@
       "year": 1816,
       "label": "1816 \u00b7 The union compact",
       "detail": "Cantons retain local courts under a shared council.",
-      "offset": 150.0,
+      "offset": 138.04,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1452,7 +1493,7 @@
       "year": 1880,
       "label": "1880 \u00b7 The summit railway",
       "detail": "An engineered pass opens to freight traffic.",
-      "offset": 150.0,
+      "offset": 138.04,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1464,8 +1505,8 @@
       "year": 1940,
       "label": "1940 \u00b7 The civic charter",
       "detail": "Universal local representation replaces estate seats.",
-      "offset": 162.0,
-      "width": 158.0,
+      "offset": 156.038,
+      "width": 146.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g1"
@@ -1476,7 +1517,7 @@
       "year": 1034,
       "label": "1034 \u00b7 Harbor soundings",
       "detail": "Pilots publish the first list of safe anchorages.",
-      "offset": 77.5,
+      "offset": 80.39,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1488,7 +1529,7 @@
       "year": 1131,
       "label": "1131 \u00b7 Seasonal convoys",
       "detail": "Merchants coordinate voyages through the straits.",
-      "offset": 55.5,
+      "offset": 57.57,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1500,7 +1541,7 @@
       "year": 1210,
       "label": "1210 \u00b7 The pilots' guild",
       "detail": "Experienced crews certify new harbor navigators.",
-      "offset": 55.5,
+      "offset": 57.57,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1512,7 +1553,7 @@
       "year": 1330,
       "label": "1330 \u00b7 The sea register",
       "detail": "Ships carry standardized papers across the coast.",
-      "offset": 75,
+      "offset": 77.797,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1524,7 +1565,7 @@
       "year": 1434,
       "label": "1434 \u00b7 The maritime court",
       "detail": "A single tribunal hears disputes between ports.",
-      "offset": 174.0,
+      "offset": 180.489,
       "width": 146.0,
       "size": 14.5,
       "detail_size": 11,
@@ -1536,7 +1577,7 @@
       "year": 1516,
       "label": "1516 \u00b7 An ocean atlas",
       "detail": "Chartmakers compare observations from distant voyages.",
-      "offset": 174.0,
+      "offset": 180.489,
       "width": 146.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1548,7 +1589,7 @@
       "year": 1573,
       "label": "1573 \u00b7 Pearl observatory",
       "detail": "New tables guide offshore voyages.",
-      "offset": 174.0,
+      "offset": 180.489,
       "width": 146.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1564,8 +1605,8 @@
       "year": 1674,
       "label": "1674 \u00b7 Independent ports",
       "detail": "Three administrations inherit the imperial docks.",
-      "offset": 178.0,
-      "width": 98.0,
+      "offset": 178.262,
+      "width": 110.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g2"
@@ -1576,8 +1617,8 @@
       "year": 1741,
       "label": "1741 \u00b7 Offshore survey",
       "detail": "Crews chart the outer banks.",
-      "offset": 178.0,
-      "width": 98.0,
+      "offset": 178.262,
+      "width": 110.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g2",
@@ -1589,8 +1630,8 @@
       "year": 1840,
       "label": "1840 \u00b7 Ocean steam routes",
       "detail": "Regular services replace seasonal sail crossings.",
-      "offset": 174.56,
-      "width": 86.0,
+      "offset": 175,
+      "width": 98.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g2"
@@ -1613,8 +1654,8 @@
       "year": 1955,
       "label": "1955 \u00b7 The coastal compact",
       "detail": "Member ports adopt a joint commercial code.",
-      "offset": 186.0,
-      "width": 134.0,
+      "offset": 187.251,
+      "width": 146.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g2"
@@ -1625,8 +1666,8 @@
       "year": 1030,
       "label": "1030 \u00b7 Reading the swells",
       "detail": "Navigators teach the routes between inhabited reefs.",
-      "offset": 151.0,
-      "width": 170.0,
+      "offset": 95.78,
+      "width": 134.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g3"
@@ -1637,8 +1678,8 @@
       "year": 1117,
       "label": "1117 \u00b7 The reef calendar",
       "detail": "Seasonal gatherings follow tides and migrating birds.",
-      "offset": 151.0,
-      "width": 170.0,
+      "offset": 95.78,
+      "width": 134.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g3"
@@ -1649,8 +1690,8 @@
       "year": 1201,
       "label": "1201 \u00b7 Deep-water canoes",
       "detail": "Longer hulls carry families beyond the inner islands.",
-      "offset": 151.0,
-      "width": 170.0,
+      "offset": 95.78,
+      "width": 134.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g3"
@@ -1661,7 +1702,7 @@
       "year": 1307,
       "label": "1307 \u00b7 Two island leagues",
       "detail": "Chiefs divide responsibility for the western sea roads.",
-      "offset": 80.5,
+      "offset": 30,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1673,7 +1714,7 @@
       "year": 1382,
       "label": "1382 \u00b7 The shell exchange",
       "detail": "Ceremonial gifts sustain relations across the archipelago.",
-      "offset": 80.5,
+      "offset": 58.153,
       "width": 170.0,
       "size": 14.5,
       "detail_size": 11,
@@ -1685,8 +1726,8 @@
       "year": 1497,
       "label": "1497 \u00b7 A voyaging compact",
       "detail": "Crews receive sanctuary in every allied harbor.",
-      "offset": 174.0,
-      "width": 146.0,
+      "offset": 125.698,
+      "width": 98.0,
       "size": 14.5,
       "detail_size": 11,
       "group": "g3"
@@ -1697,8 +1738,8 @@
       "year": 1565,
       "label": "1565 \u00b7 Schools of navigation",
       "detail": "Experienced navigators formalize route instruction.",
-      "offset": 174.0,
-      "width": 146.0,
+      "offset": 125.698,
+      "width": 98.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g3",
@@ -1712,8 +1753,8 @@
       "year": 1630,
       "label": "1630 \u00b7 The island chronicle",
       "detail": "Scribes collect oral accounts of early migrations.",
-      "offset": 3.0,
-      "width": 146.0,
+      "offset": 2.167,
+      "width": 74.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g3"
@@ -1724,8 +1765,8 @@
       "year": 1723,
       "label": "1723 \u00b7 The lagoon court",
       "detail": "A royal council governs the populous inner islands.",
-      "offset": 92.0,
-      "width": 170.0,
+      "offset": 66.461,
+      "width": 134.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g3"
@@ -1736,8 +1777,8 @@
       "year": 1793,
       "label": "1793 \u00b7 Outer-island assemblies",
       "detail": "Local councils negotiate their own trading agreements.",
-      "offset": 92.0,
-      "width": 170.0,
+      "offset": 66.461,
+      "width": 122.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g3"
@@ -1748,8 +1789,8 @@
       "year": 1912,
       "label": "1912 \u00b7 An archipelago assembly",
       "detail": "Delegates agree a shared public revenue system.",
-      "offset": 186.0,
-      "width": 134.0,
+      "offset": 134.366,
+      "width": 86.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g3"
@@ -1760,8 +1801,8 @@
       "year": 1960,
       "label": "1960 \u00b7 The inter-island service",
       "detail": "Regular ferries connect hospitals and schools.",
-      "offset": 186.0,
-      "width": 134.0,
+      "offset": 134.366,
+      "width": 86.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g3"
@@ -1772,7 +1813,7 @@
       "year": 1020,
       "label": "1020 \u00b7 Markets on the ice",
       "detail": "Winter roads connect forest settlements and lake towns.",
-      "offset": 82.5,
+      "offset": 79.464,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1784,7 +1825,7 @@
       "year": 1102,
       "label": "1102 \u00b7 The birch record",
       "detail": "Traders keep account marks on thin bark sheets.",
-      "offset": 82.5,
+      "offset": 79.464,
       "width": 170.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1796,7 +1837,7 @@
       "year": 1263,
       "label": "1263 \u00b7 The northern compact",
       "detail": "Lake and forest councils create a mutual-defense union.",
-      "offset": 175.5,
+      "offset": 162.04,
       "width": 146.0,
       "size": 14.5,
       "detail_size": 11,
@@ -1808,7 +1849,7 @@
       "year": 1350,
       "label": "1350 \u00b7 A navigable frontier",
       "detail": "Canals connect two major lake systems.",
-      "offset": 175.5,
+      "offset": 162.04,
       "width": 146.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1820,7 +1861,7 @@
       "year": 1430,
       "label": "1430 \u00b7 The survey lodges",
       "detail": "Teams record boundaries before new farms are granted.",
-      "offset": 186.0,
+      "offset": 174.04,
       "width": 134.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1832,8 +1873,8 @@
       "year": 1512,
       "label": "1512 \u00b7 Three regional estates",
       "detail": "Fir councils and frontier lords gain separate powers.",
-      "offset": 165,
-      "width": 122.0,
+      "offset": 158.928,
+      "width": 98.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g4"
@@ -1844,7 +1885,7 @@
       "year": 1600,
       "label": "1600 \u00b7 A winter observatory",
       "detail": "Long observations improve the northern calendar.",
-      "offset": 165,
+      "offset": 155.943,
       "width": 110.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1860,7 +1901,7 @@
       "year": 1703,
       "label": "1703 \u00b7 The timber code",
       "detail": "New limits protect forests close to navigable rivers.",
-      "offset": 181.0,
+      "offset": 174.339,
       "width": 86.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1872,7 +1913,7 @@
       "year": 1765,
       "label": "1765 \u00b7 The postal corridor",
       "detail": "Relay stations link widely scattered northern towns.",
-      "offset": 180,
+      "offset": 166.778,
       "width": 86.0,
       "size": 12.2,
       "detail_size": 10.7,
@@ -1884,8 +1925,8 @@
       "year": 1850,
       "label": "1850 \u00b7 A continental congress",
       "detail": "Representatives agree common border and trade rules.",
-      "offset": 174.0,
-      "width": 146.0,
+      "offset": 170,
+      "width": 134.0,
       "size": 14.5,
       "detail_size": 11,
       "group": "g4"
@@ -1896,8 +1937,8 @@
       "year": 1900,
       "label": "1900 \u00b7 Electrifying the lakes",
       "detail": "Hydroelectric schemes supply the industrial towns.",
-      "offset": 174.0,
-      "width": 146.0,
+      "offset": 170,
+      "width": 134.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g4"
@@ -1908,8 +1949,8 @@
       "year": 1950,
       "label": "1950 \u00b7 The public university",
       "detail": "Regional colleges unite under a common charter.",
-      "offset": 174.0,
-      "width": 146.0,
+      "offset": 167.597,
+      "width": 134.0,
       "size": 12.2,
       "detail_size": 10.7,
       "group": "g4"
@@ -1943,5 +1984,5 @@
       "label": "Modern age"
     }
   ],
-  "reading_note": "One year scale. Bridges: succession, division or union; dots: uncertain continuity. Width is compositional. Objects illustrate subjects, not these fictional events. Decorative map: Milner, 1850."
+  "reading_note": "One year scale. Thin stems and full bands show exact durations; wider stem labels name periods. Bridges show succession, division or union; dots show uncertainty. Width is compositional. Contextual objects and map do not depict these fictional regions."
 }

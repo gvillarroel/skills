@@ -32,7 +32,18 @@ AUDIT = r"""() => {
     return rgb.map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
   };
   const contrast=(a,b)=>{const [lo,hi]=[lum(a),lum(b)].sort((x,y)=>x-y);return (hi+.05)/(lo+.05)};
-  const nodes=[...svg.querySelectorAll('[data-node-id]')].map(el=>({id:el.dataset.nodeId,box:bounds(el.querySelector('[data-node-box]')),label_box:el.querySelector('[data-label-box]')?bounds(el.querySelector('[data-label-box]')):null}));
+  const painted=el=>{
+    if(!el)return null;
+    const style=getComputedStyle(el);let opacity=Number(style.fillOpacity),visible=true;
+    for(let current=el;current;current=current.parentElement){const css=getComputedStyle(current);opacity*=Number(css.opacity);visible&&=css.display!=='none'&&css.visibility==='visible';}
+    return {box:bounds(el),fill:style.fill,opacity,visible};
+  };
+  const nodes=[...svg.querySelectorAll('[data-node-id]')].map(el=>{
+    const body=el.querySelector('[data-node-box]'),label=el.querySelector('[data-label-box]'),stem=el.querySelector('[data-period-stem]');
+    return {id:el.dataset.nodeId,box:bounds(body),label_box:label?bounds(label):null,
+      period_stem:painted(stem),period_label:painted(el.querySelector('[data-period-label]')),
+      parts:stem?[bounds(stem),...(label?[bounds(label)]:[])]:[bounds(body)]};
+  });
   const byId=Object.fromEntries(nodes.map(n=>[n.id,n]));
   const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,source_port:el.dataset.sourcePort||'bottom',target_port:el.dataset.targetPort||'top',d:el.getAttribute('d'),curved:el.dataset.routeStyle==='rounded'}));
   const events=[...svg.querySelectorAll('[data-event-id]')].map(el=>({id:el.dataset.eventId,year:Number(el.dataset.year),origin_y:Number(el.dataset.originY),text:el.textContent}));
@@ -52,11 +63,11 @@ AUDIT = r"""() => {
     if(t.box.w<.1||t.box.h<.1)findings.push({type:'empty-text-geometry',text:t.text});
   }
   for(let i=0;i<texts.length;i++)for(let j=i+1;j<texts.length;j++)if(intersect(texts[i].box,texts[j].box,1.2))findings.push({type:'text-overlap',a:texts[i].text,b:texts[j].text});
-  for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)if(intersect(nodes[i].box,nodes[j].box,.5))findings.push({type:'node-overlap',a:nodes[i].id,b:nodes[j].id});
-  for(const t of texts)for(const n of nodes)if(t.owner!==n.id && intersect(t.box,n.box,.5))findings.push({type:'text-other-node',text:t.text,node:n.id});
+  for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)if(nodes[i].parts.some(a=>nodes[j].parts.some(b=>intersect(a,b,.5))))findings.push({type:'node-overlap',a:nodes[i].id,b:nodes[j].id});
+  for(const t of texts)for(const n of nodes)if(t.owner!==n.id && n.parts.some(part=>intersect(t.box,part,.5)))findings.push({type:'text-other-node',text:t.text,node:n.id});
   for(const art of illustrations){
     if(!contained(art.box,{x:24,y:0,w:view.width-48,h:view.height-24},.5))findings.push({type:'illustration-outside-page',event:art.event});
-    for(const n of nodes)if(intersect(art.box,n.box,.5))findings.push({type:'illustration-node-collision',event:art.event,node:n.id});
+    for(const n of nodes)if(n.parts.some(part=>intersect(art.box,part,.5)))findings.push({type:'illustration-node-collision',event:art.event,node:n.id});
     for(const t of texts)if(intersect(art.box,t.box,.5))findings.push({type:'illustration-text-collision',event:art.event,text:t.text});
   }
   for(const heading of svg.querySelectorAll('[data-annotation-kind="heading"]')){
@@ -103,8 +114,7 @@ AUDIT = r"""() => {
     for(let i=0;i<p.length-1;i++){
       const [a,b]=[p[i],p[i+1]];
       if(!e.curved&&a[0]!==b[0]&&a[1]!==b[1])findings.push({type:'non-orthogonal-edge',id:e.id});
-      for(const n of nodes){
-        const r=n.box;
+      for(const n of nodes)for(const r of n.parts){
         const hit=e.curved?a[0]>r.x+.6&&a[0]<r.x+r.w-.6&&a[1]>r.y+.6&&a[1]<r.y+r.h-.6:a[0]===b[0]?a[0]>r.x+.1&&a[0]<r.x+r.w-.1&&Math.max(Math.min(a[1],b[1]),r.y)<Math.min(Math.max(a[1],b[1]),r.y+r.h)-.1:a[1]>r.y+.1&&a[1]<r.y+r.h-.1&&Math.max(Math.min(a[0],b[0]),r.x)<Math.min(Math.max(a[0],b[0]),r.x+r.w)-.1;
         if(hit)findings.push({type:'edge-node-collision',edge:e.id,node:n.id});
       }
@@ -130,7 +140,7 @@ AUDIT = r"""() => {
   };
   for(const fill of svg.querySelectorAll('[data-transition-fill]')){
     const poly=points(fill.getAttribute('d'));
-    for(const n of nodes)if(clippedArea(poly,n.box)>1)findings.push({type:'transition-fill-node-collision',edge:fill.dataset.transitionFill,node:n.id});
+    for(const n of nodes)if(n.parts.some(part=>clippedArea(poly,part)>1))findings.push({type:'transition-fill-node-collision',edge:fill.dataset.transitionFill,node:n.id});
     for(const t of texts)if(t.owner==='page'&&clippedArea(poly,t.box)>1)findings.push({type:'transition-fill-text-collision',edge:fill.dataset.transitionFill,text:t.text});
     for(const art of illustrations)if(clippedArea(poly,art.box)>1)findings.push({type:'transition-fill-illustration-collision',edge:fill.dataset.transitionFill,event:art.event});
   }
@@ -215,6 +225,10 @@ def check_source(report, data):
             expected_y=y0+(event['year']-start)/(end-start)*(y1-y0)
             if abs(actual['year']-event['year'])>.001 or abs(actual['origin_y']-expected_y)>.1:report['findings'].append({'type':'event-time-mismatch','id':actual['id']})
         boxes = {n["id"]: n["box"] for n in report["nodes"]}
+        rendered_nodes={n['id']:n for n in report['nodes']}
+        weights=[lane.get('weight',1) for lane in data['lanes']]
+        lane_widths=[(report['canvas'][0]-175)*weight/sum(weights) for weight in weights]
+        lane_origins={lane['id']:110+sum(lane_widths[:index]) for index,lane in enumerate(data['lanes'])}
         for node in nodes:
             box = boxes.get(node["id"])
             if not box:
@@ -223,6 +237,33 @@ def check_source(report, data):
             expected_h = (node["end"]-node["start"])/(end-start)*(y1-y0)
             if abs(box["y"]-expected_y)>.1 or abs(box["h"]-expected_h)>.1:
                 report["findings"].append({"type": "numeric-time-mismatch", "id": node["id"]})
+            actual=rendered_nodes[node['id']];stem=actual.get('period_stem');label=actual.get('label_box')
+            if data.get('design')=='editorial' and data.get('layout')!='compact':
+                expected_x=lane_origins[node['lane']]+node.get('offset',18)
+                if abs(box['x']-expected_x)>.1 or abs(box['w']-node.get('bar_width',32))>.1:
+                    report['findings'].append({'type':'source-period-lane-position','id':node['id']})
+            if bool(stem)!=(node.get('treatment')=='stem'):
+                report['findings'].append({'type':'source-period-treatment','id':node['id']})
+            if node.get('treatment')=='stem' and stem:
+                sb=stem['box'];sw=node.get('stem_width',5)
+                expected_color=next(group['color'] for group in data['groups'] if group['id']==node['group'])
+                rgb='rgb('+', '.join(str(int(expected_color[i:i+2],16)) for i in (1,3,5))+')'
+                if any(abs(sb[key]-value)>.1 for key,value in dict(x=box['x']+(box['w']-sw)/2,y=expected_y,w=sw,h=expected_h).items()) or not stem['visible'] or stem['opacity']<.99 or stem['fill']!=rgb:
+                    report['findings'].append({'type':'source-period-stem-geometry','id':node['id']})
+                if not label or any([label['x']<box['x']-.1,label['x']+label['w']>box['x']+box['w']+.1,label['y']<expected_y-.1,label['y']+label['h']>expected_y+expected_h+.1]) or abs(label['y']-(expected_y+(expected_h-label['h'])*node.get('label_position',.5)))>.1:
+                    report['findings'].append({'type':'source-period-label-geometry','id':node['id']})
+                label_paint=actual.get('period_label')
+                if not label_paint or label_paint['fill']!=rgb or not label_paint['visible'] or label_paint['opacity']<.99:
+                    report['findings'].append({'type':'source-period-label-treatment','id':node['id']})
+        if data.get('design')=='editorial':
+            for edge in relations:
+                actual=actual_edges.get(edge['id'])
+                if not actual:continue
+                coords=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?',actual['d'])]
+                for node_id,fraction,point,bottom in ((edge['source'],edge.get('source_port',.5),coords[:2],True),(edge['target'],edge.get('target_port',.5),coords[-2:],False)):
+                    box=boxes.get(node_id)
+                    if box and (abs(point[0]-(box['x']+box['w']*fraction))>.1 or abs(point[1]-(box['y']+(box['h'] if bottom else 0)))>.1):
+                        report['findings'].append({'type':'source-timeline-port','id':edge['id']})
 
 
 def main():

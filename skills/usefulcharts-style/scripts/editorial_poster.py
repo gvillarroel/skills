@@ -19,6 +19,7 @@ from editorial_art import symbol
 from cohort_layout import place_cohorts, compact_cohort_defaults
 from story_layout import pack_stories
 from editorial_landmarks import landmark_content
+from timeline_geometry import lane_geometry, duration_width, transition_geometry, period_parts
 
 
 def separated_content(node,width,font):
@@ -155,11 +156,14 @@ class EditorialPoster(Poster):
             require(adjusted.get('lanes') and adjusted.get('periods'),'Compact timelines require named lanes and periods.')
             lane_count=len(adjusted['lanes'])
             adjusted.setdefault('width',max(1000,175+lane_count*275))
-            pitch=(adjusted['width']-175)/lane_count
+            lane_boxes=lane_geometry(adjusted['lanes'],adjusted['width'])
             span=adjusted['time']['end']-adjusted['time']['start']
             require(span>0,'Invalid time scale.')
             scale_needed=0
             for period in adjusted['periods']:
+                require(period['lane'] in lane_boxes,'Timeline periods require known lanes.')
+                require(period.get('treatment','ribbon')=='ribbon','Compact timelines already use separate horizontal labels; omit stem treatment.')
+                pitch=lane_boxes[period['lane']][1]
                 period.setdefault('size',font)
                 period.setdefault('bar_width',22)
                 period.setdefault('offset',12)
@@ -545,8 +549,7 @@ class EditorialPoster(Poster):
         require(end>start and step>0 and (end-start)/step<=100,'Invalid time scale.')
         self.top=190;self.bottom=self.h-112;self.left=110;self.right=self.w-65
         scale=lambda year:self.top+(year-start)/(end-start)*(self.bottom-self.top)
-        lanes={l['id']:i for i,l in enumerate(d['lanes'])}
-        pitch=(self.right-self.left)/len(lanes)
+        lanes=lane_geometry(d['lanes'],self.w)
         if d.get('map_texture'):
             self.add(f'<defs><clipPath id="chronology-field"><rect x="{self.left-40}" y="{self.top-10}" width="{self.right-self.left+55}" height="{self.bottom-self.top+20}"/></clipPath></defs><g clip-path="url(#chronology-field)">')
             require(d['map_texture'] in (True,'natural-earth','milner-1850'),'Unknown map texture.')
@@ -559,8 +562,8 @@ class EditorialPoster(Poster):
             else:
                 for i in range(3):self.map_art(-480+(i%2)*240,self.top-160+i*850,2700,1087.5,opacity=.14)
             self.add('</g>')
-        for i,l in enumerate(d['lanes']):
-            x=self.left+i*pitch
+        for l in d['lanes']:
+            x,pitch=lanes[l['id']]
             for j,line in enumerate(wrap(l['label'].upper(),pitch-14,13,True)):self.text(x+pitch/2,self.top-24+j*14,line,13,bold=True)
         for i in range(math.floor((end-start)/step)+1):
             yy=scale(start+i*step)
@@ -570,7 +573,8 @@ class EditorialPoster(Poster):
             yy=scale(era['start']);hh=scale(era['end'])-yy
             spans=[(self.left-24,self.right+9)]
             for event in d.get('events',[]):
-                ex=self.left+pitch*lanes[event['lane']]+event.get('offset',64)
+                lane_x,pitch=lanes[event['lane']]
+                ex=lane_x+event.get('offset',64)
                 ew=event.get('width',pitch-78);es=event.get('size',10.5);small=event.get('detail_size',es*.88)
                 eh=len(wrap(event['label'],ew,es,True))*es*1.18+len(wrap(event.get('detail',''),ew,small))*small*1.18
                 if event.get('icon'):eh+=5+event.get('art_height',event.get('art_size',56))
@@ -584,8 +588,10 @@ class EditorialPoster(Poster):
             require(nid not in self.nodes and n['lane'] in lanes and n['group'] in self.groups,f'Invalid period {nid}')
             a,b=number(n['start'],f'{nid}.start'),number(n['end'],f'{nid}.end')
             require(start<=a<b<=end,f'Invalid period dates {nid}')
-            width=n.get('bar_width',32)
-            x=self.left+pitch*lanes[n['lane']]+n.get('offset',18)
+            width=number(n.get('bar_width',32),'bar_width')
+            require(width>0,'A timeline interval needs positive width.')
+            n['_duration_width']=duration_width(n,width)
+            x=lanes[n['lane']][0]+n.get('offset',18)
             height=scale(b)-scale(a)
             size=n.get('size',13)
             if d.get('layout')=='compact':
@@ -598,10 +604,12 @@ class EditorialPoster(Poster):
                 names=wrap(n['label'],height-14,size,True)
                 require(len(names)*size*1.1<=width-4,f'Period {nid} label needs a wider ribbon or shorter wording.')
                 n['_vertical_lines']=names
+                if n.get('treatment')=='stem':
+                    n['_label_box']=period_parts(n,(x,scale(a),width,height))[1]
             self.make_node(n,(x,scale(a),width,height))
         for nid,a in self.boxes.items():
             for oid,b in self.boxes.items():
-                if nid<oid:require(not overlaps(a,b),f'Periods {nid} and {oid} overlap.')
+                if nid<oid:require(not any(overlaps(pa,pb) for pa in period_parts(self.nodes[nid],a) for pb in period_parts(self.nodes[oid],b)),f'Periods {nid} and {oid} overlap.')
         transition_ids=set()
         for edge in d.get('transitions',[]):
             ident(edge['id'])
@@ -609,24 +617,13 @@ class EditorialPoster(Poster):
             transition_ids.add(edge['id'])
             require(edge['source'] in self.nodes and edge['target'] in self.nodes and edge['kind'] in ('succession','division','union','uncertain'),'Timeline transitions require known periods and an explicit succession, division, union, or uncertain relation.')
             a,b=self.boxes[edge['source']],self.boxes[edge['target']]
-            source_port=number(edge.get('source_port',.5),'source_port')
-            target_port=number(edge.get('target_port',.5),'target_port')
-            require(5<=a[2]*source_port<=a[2]-5 and 5<=b[2]*target_port<=b[2]-5,'Timeline ports must remain at least 5 units inside their ribbon edges.')
-            start_point=(a[0]+a[2]*source_port,a[1]+a[3]);end_point=(b[0]+b[2]*target_port,b[1])
-            require(end_point[1]>=start_point[1]-.01,'A timeline continuation must not go backward.')
+            start_point,end_point,spans=transition_geometry(edge,self.nodes[edge['source']],self.nodes[edge['target']],a,b)
             mid=(start_point[1]+end_point[1])/2
             points=compress([start_point,(start_point[0],mid),(end_point[0],mid),end_point])
             paint=self.groups[self.nodes[edge['target']]['group']]['color']
             require(edge.get('style','dotted') in ('dotted','ribbon'),'Unknown timeline transition style.')
             if edge.get('style')=='ribbon':
-                # An explicitly supplied transition occupies its own dated gap.
-                # It joins full-width ribbons without changing either period.
-                flow=number(edge.get('ribbon_width',0),'ribbon_width')
-                if flow:
-                    require(flow>0 and flow/2<=min(a[2]*source_port,a[2]*(1-source_port),b[2]*target_port,b[2]*(1-target_port)),'Transition width exceeds its attachment port.')
-                    left_a,right_a=start_point[0]-flow/2,start_point[0]+flow/2
-                    left_b,right_b=end_point[0]-flow/2,end_point[0]+flow/2
-                else:left_a,right_a,left_b,right_b=a[0],a[0]+a[2],b[0],b[0]+b[2]
+                (left_a,right_a),(left_b,right_b)=spans
                 self.add(f'<path data-transition-fill="{edge["id"]}" d="M {fmt(left_a)} {fmt(start_point[1])} L {fmt(right_a)} {fmt(start_point[1])} L {fmt(right_b)} {fmt(end_point[1])} L {fmt(left_b)} {fmt(end_point[1])} Z" fill="{paint}"/>')
                 # The semantic path follows the center of the filled bridge.
                 # Drawing an orthogonal elbow as well creates a false second fork.
@@ -636,7 +633,8 @@ class EditorialPoster(Poster):
         # Event annotations are supplied data. Their dates use the same numeric scale.
         for index,event in enumerate(d.get('events',[])):
             require(event['lane'] in lanes and start<=event['year']<=end,'Invalid event lane or date.')
-            x=self.left+pitch*lanes[event['lane']]+event.get('offset',64)
+            lane_x,pitch=lanes[event['lane']]
+            x=lane_x+event.get('offset',64)
             yy=scale(event['year']);width=event.get('width',pitch-78)
             event_id=ident(event.get('id',f'event-{index}'))
             self.add(f'<g data-event-id="{event_id}" data-year="{event["year"]}" data-origin-y="{fmt(yy)}">')
@@ -652,7 +650,7 @@ class EditorialPoster(Poster):
                 art_height=number(event.get('art_height',art_size),'event.art_height')
                 require(0<art_width<=width and art_height>0,'Event artwork must fit its declared width and have positive dimensions.')
                 art_box=(x+(width-art_width)/2,yy+5,art_width,art_height)
-                blocked=[nid for nid,box in self.boxes.items() if overlaps(art_box,box,0)]
+                blocked=[nid for nid,box in self.boxes.items() if any(overlaps(art_box,part,0) for part in period_parts(self.nodes[nid],box))]
                 require(not blocked,f'Event {event_id} artwork overlaps period {", ".join(blocked)}. Reserve its full height or recompose the event.')
                 self.artwork(event['icon'],*art_box,self.groups[event.get('group',d['groups'][0]['id'])]['color'],event.get('variant',0))
             self.add('</g>')
@@ -662,7 +660,12 @@ class EditorialPoster(Poster):
         for nid,n in self.nodes.items():
             x,y,w,h=self.boxes[nid];paint=self.groups[n['group']]['color'];ink=text_color(paint)
             self.add(f'<g id="node-{nid}" data-node-id="{nid}" data-group="{n["group"]}">')
-            self.rect((x,y,w,h),paint,self.paper,1,5,extra='data-node-box="true"')
+            if n.get('treatment')=='stem':
+                self.rect((x,y,w,h),'none',extra='data-node-box="true"')
+                sw=n['_duration_width']
+                self.rect((x+(w-sw)/2,y,sw,h),paint,extra='data-period-stem="true"')
+                self.rect(n['_label_box'],paint,self.paper,1,4,extra='data-label-box="true" data-period-label="true"')
+            else:self.rect((x,y,w,h),paint,self.paper,1,5,extra='data-node-box="true"')
             if '_horizontal_lines' in n:
                 lx,ly,lw,lh=n['_label_box'];size=n['size']
                 self.rect((lx,ly,lw,lh),self.paper,extra='data-label-box="true"')
@@ -673,6 +676,8 @@ class EditorialPoster(Poster):
                 self.add('</g>')
                 continue
             size=n.get('size',13);lines=n['_vertical_lines'];cx=x+w/2;cy=y+h/2
+            if n.get('treatment')=='stem':
+                label=n['_label_box'];cy=label[1]+label[3]/2
             for i,line in enumerate(lines):
                 self.text(cx,cy+(i-(len(lines)-1)/2)*size*1.1+size*.3,line,size,ink,bold=True,owner=nid,background=paint,
                     css=f'transform="rotate(-90 {fmt(cx)} {fmt(cy)})"')

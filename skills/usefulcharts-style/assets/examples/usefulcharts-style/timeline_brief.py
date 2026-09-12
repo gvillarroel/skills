@@ -194,4 +194,22 @@ def build_timeline(base):
     d['source_note']='Synthetic history · All periods, events and relationships are invented. Contextual art: PSF, Library of Congress, Nordisk familjebok and The New Student\'s Reference Work; provenance embedded.'
     from pack_timeline_events import pack_events
     d,_=pack_events(d)
+    # Allocate more room to concurrent coastal histories and retain generous
+    # names while narrowing the page. Only selected quiet continuities use stems.
+    from timeline_geometry import lane_geometry
+    d['width']=1680
+    for lane,weight in zip(d['lanes'],[1.02,1.04,1.12,.78,1.04]):lane['weight']=weight
+    lanes=lane_geometry(d['lanes'],d['width']);stems=set()
+    for period in d['periods']:
+        period['offset']=(period['offset']+period['bar_width']/2)/325*lanes[period['lane']][1]-period['bar_width']/2
+        if period['size']<18 and (period['end']-period['start']>=175 or period['id'] in ('p0-lower','p0-upper')):
+            period.update(treatment='stem',stem_width=5);stems.add(period['id'])
+        if period['size']==18:
+            period['offset']+=(period['bar_width']-42)/2;period['bar_width']=42
+    for edge in d['transitions']:
+        if edge['source'] in stems:edge['source_port']=.5
+        if edge['target'] in stems:edge['target_port']=.5
+    for event in d['events']:event['offset']=event['offset']/325*lanes[event['lane']][1]
+    d['reading_note']='One year scale. Thin stems and full bands show exact durations; wider stem labels name periods. Bridges show succession, division or union; dots show uncertainty. Width is compositional. Contextual objects and map do not depict these fictional regions.'
+    d,_=pack_events(d)
     return d

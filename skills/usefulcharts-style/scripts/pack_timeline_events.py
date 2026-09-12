@@ -15,33 +15,30 @@ from shapely.ops import unary_union
 from shapely.prepared import prep
 
 from render_chart import number,require,text_width,wrap
+from timeline_geometry import lane_geometry,transition_geometry,period_parts
 
 
-def obstacles_for(data,scale,pitch,lanes):
+def obstacles_for(data,scale,lanes):
     rectangles={};obstacles=[]
+    periods={period['id']:period for period in data['periods']}
     for period in data['periods']:
         require(period['id'] not in rectangles,'Timeline period IDs must be distinct.')
         require(period['lane'] in lanes,'Timeline periods require known lanes.')
-        x=110+lanes[period['lane']]*pitch+period.get('offset',18)
+        x=lanes[period['lane']][0]+period.get('offset',18)
         y=scale(period['start']);width=number(period.get('bar_width',32),'bar_width')
         height=scale(period['end'])-y
         require(width>0 and height>0,'Timeline intervals need positive width and duration.')
         rectangles[period['id']]=(x,y,width,height)
-        obstacles.append(box(x,y,x+width,y+height))
+        for px,py,pw,ph in period_parts(period,(x,y,width,height)):
+            obstacles.append(box(px,py,px+pw,py+ph))
     for edge in data.get('transitions',[]):
         require(edge['source'] in rectangles and edge['target'] in rectangles,'Timeline transitions require known periods.')
         a,b=rectangles[edge['source']],rectangles[edge['target']]
-        sp,tp=number(edge.get('source_port',.5),'source_port'),number(edge.get('target_port',.5),'target_port')
-        require(5<=a[2]*sp<=a[2]-5 and 5<=b[2]*tp<=b[2]-5,'Timeline ports must remain five units inside each ribbon.')
-        sx,tx=a[0]+a[2]*sp,b[0]+b[2]*tp;sy,ty=a[1]+a[3],b[1]
-        require(ty>=sy,'Timeline transitions must not go backward.')
+        (sx,sy),(tx,ty),spans=transition_geometry(edge,periods[edge['source']],periods[edge['target']],a,b)
         style=edge.get('style','dotted')
         require(style in ('dotted','ribbon'),'Unknown timeline transition style.')
         if style=='ribbon':
-            flow=number(edge.get('ribbon_width',0),'ribbon_width')
-            require(flow>=0 and flow/2<=min(a[2]*sp,a[2]*(1-sp),b[2]*tp,b[2]*(1-tp)),'Transition width exceeds its attachment ports.')
-            sa,sb=(sx-flow/2,sx+flow/2) if flow else (a[0],a[0]+a[2])
-            ta,tb=(tx-flow/2,tx+flow/2) if flow else (b[0],b[0]+b[2])
+            (sa,sb),(ta,tb)=spans
             obstacles.append(Polygon([(sa,sy),(sb,sy),(tb,ty),(ta,ty)]))
         else:
             mid=(sy+ty)/2
@@ -58,16 +55,15 @@ def pack_events(source,max_width=170,clearance=2.5):
     start,end=number(data['time']['start'],'time.start'),number(data['time']['end'],'time.end')
     require(width>400 and height>500 and end>start,'The timeline needs a positive year scale and a usable page.')
     require(max_width>=54 and clearance>=0,'Use a maximum note width of at least 54 and nonnegative clearance.')
-    lanes={lane['id']:i for i,lane in enumerate(data['lanes'])}
-    require(lanes and len(lanes)==len(data['lanes']),'Timeline lane IDs must be distinct.')
-    pitch=(width-175)/len(lanes);scale=lambda year:190+(year-start)/(end-start)*(height-302)
-    obstacles=obstacles_for(data,scale,pitch,lanes);envelopes=[];decisions=[];ids=set()
+    lanes=lane_geometry(data['lanes'],width)
+    scale=lambda year:190+(year-start)/(end-start)*(height-302)
+    obstacles=obstacles_for(data,scale,lanes);envelopes=[];decisions=[];ids=set()
     for event in sorted(data.get('events',[]),key=lambda item:item['year']):
         require(event['id'] not in ids and event['lane'] in lanes,'Events require distinct IDs and known lanes.');ids.add(event['id'])
         require(start<=event['year']<=end,'Event dates must be inside the year scale.')
         size=number(event.get('size',10.5),'event.size');small=number(event.get('detail_size',size*.88),'event.detail_size')
         require(size>0 and small>0,'Event type sizes must be positive.')
-        year_y=scale(event['year']);lane_x=110+lanes[event['lane']]*pitch
+        year_y=scale(event['year']);lane_x,pitch=lanes[event['lane']]
         aw=number(event.get('art_width',event.get('art_size',56)),'art_width') if event.get('icon') else 0
         ah=number(event.get('art_height',event.get('art_size',56)),'art_height') if event.get('icon') else 0
         require(not event.get('icon') or (aw>0 and ah>0),'Event illustrations need positive dimensions.')

@@ -6,7 +6,7 @@
   "width": 1300,
   "height": 1700,
   "source_note": "Original fictional demonstration; all places and events are invented.",
-  "reading_note": "One numeric year scale. Bridges show declared succession or union. Width is compositional.",
+  "reading_note": "One numeric year scale. Stems and full bands show durations; wider stem labels name periods. Bridges show succession or union. Width is compositional.",
   "groups": [
     {"id": "coast", "label": "Coast", "color": "#77BDDD"},
     {"id": "hills", "label": "Hills", "color": "#98BD92"},
@@ -21,7 +21,7 @@
   "periods": [
     {"id": "harbor", "label": "Harbor council", "group": "coast", "lane": "coast", "start": 1800, "end": 1890, "offset": 20, "bar_width": 32, "size": 16},
     {"id": "ports", "label": "Port assembly", "group": "coast", "lane": "coast", "start": 1900, "end": 2000, "offset": 75, "bar_width": 36, "size": 16},
-    {"id": "highlands", "label": "Highland council", "group": "hills", "lane": "hills", "start": 1800, "end": 2000, "offset": 20, "bar_width": 32, "size": 16},
+    {"id": "highlands", "label": "Highland council", "group": "hills", "lane": "hills", "start": 1800, "end": 2000, "offset": 20, "bar_width": 32, "size": 16, "treatment": "stem", "stem_width": 5},
     {"id": "farms", "label": "Farm councils", "group": "plains", "lane": "plains", "start": 1800, "end": 1900, "offset": 20, "bar_width": 28, "size": 16},
     {"id": "roads", "label": "Road council", "group": "plains", "lane": "plains", "start": 1820, "end": 1900, "offset": 90, "bar_width": 28, "size": 16},
     {"id": "union", "label": "Land union", "group": "plains", "lane": "plains", "start": 1910, "end": 2000, "offset": 55, "bar_width": 36, "size": 16}

@@ -16,6 +16,20 @@ Use the least colored area that accommodates the label and its attachment ports.
 
 Give pivotal events a stronger heading. For a substantial poster, a useful first treatment is 12–13-unit ordinary headings, 14–15-unit landmarks, and 10–11-unit contextual text. Judge those sizes in the rendered page. Do not reduce all notes to fit a small opening beside a wide band; recompose the band first.
 
+### Mix duration stems and full bands
+
+When long, quiet intervals create broad strips of empty color, give selected periods `treatment: stem`, `stem_width: 5`, and a normal `bar_width` large enough for the name. The fine stem spans the exact start/end dates. A wider capsule contains the rotated name and does not assert a shorter duration. Retain full `ribbon` treatment for consequential periods and where the continuous colored area helps a reader follow a dense branch. Explain the distinction in the reading note, for example: “Stems and full bands show exact durations; wider stem labels name periods.”
+
+Keep treatment selection deliberate. Applying stems to every ordinary period can leave a skeletal page, while treating only long quiet continuities retains a useful contrast with important phases. Do not alternate styles or label positions mechanically. Optional `label_position` runs from 0 to 1 through the capsule's available vertical travel, default 0.5; use it to move a name closer to its local narrative while preserving the stem's dates.
+
+Stem ports must be centered (`source_port` or `target_port: 0.5`). Bridges taper to the actual visible stem width, including when the other endpoint is a full band. An explicit `ribbon_width` sets the bridge's maximum width; a thinner stem narrows that end. Recompute ports after changing treatment. The renderer rejects an attachment aimed at empty space beside a stem.
+
+### Allocate regional width by content
+
+Set optional positive `weight` on each lane to distribute available horizontal space proportionally. All unspecified weights are 1; equal weights preserve the original equal-width layout. For example, weights 1.2, 1, 0.8 give the region with more simultaneous histories extra room without changing any year position. `offset` remains measured from that lane's left edge in SVG units, so recompose offsets after changing weights or page width; they are not scaled automatically. Keep complete names and image dimensions readable in narrower lanes.
+
+Inspect the whole page and the busiest lower branch before reducing the canvas. Unchanged type units become larger at an equal displayed poster width, but longer wrapped paragraphs can erase that benefit. A successful packing pass does not decide this tradeoff.
+
 ## Place notes against the complete geometry
 
 Write an authored draft with `design: editorial`, `mode: timeline`, the numeric `time` scale, named `lanes`, and positioned `periods`. Each event needs a distinct `id`, exact `year`, `lane`, `label`, and optional `detail`. Specify its type sizes and any `icon`, `art_width`, and `art_height` deliberately. Events retain their source-array order. Existing event `offset` and `width` are placement preferences for the helper, not protected coordinates.
@@ -26,7 +40,7 @@ uv run --script <skill-dir>/scripts/render_chart.py brief.json --svg poster.svg 
 uv run --script <skill-dir>/scripts/audit_chart.py poster.svg --source brief.json --report browser.json --png poster.png
 ```
 
-The helper changes only each event's horizontal `offset` and wrapping `width`. It preserves all words, dates, type sizes, image dimensions, intervals and relationships. It measures wrapped lines and the entire illustration viewport, reserves filled bridges and uncertain orthogonal connections, and places earlier events before later ones. It has no repository or acceptance-fixture dependency. `uv` provisions its declared Shapely dependency.
+The helper changes only each event's horizontal `offset` and wrapping `width`. It preserves all words, dates, type sizes, image dimensions, intervals and relationships. It measures wrapped lines and the entire illustration viewport, reserves filled bridges and uncertain orthogonal connections, and places earlier events before later ones. For stems it reserves both the thin duration rectangle and the complete name capsule, allowing notes beside the genuinely unpainted part of the label envelope. The source-backed audit checks the visible stem's exact duration, width, center, color and visibility independently of that invisible envelope. It has no repository or acceptance-fixture dependency. `uv` provisions its declared Shapely dependency.
 
 Inspect the resulting PNG. A placement pass is not an aesthetic verdict. Check the busiest division, a note exactly at a period endpoint, the narrowest paragraph and the footer. A complete note may occupy different widths on different lines; a connection can pass beside the short last line only when the browser confirms that it does not touch the text or image.
 

@@ -1,0 +1,66 @@
+{
+  "mural": {
+    "reviewer": "Author image inspection; no blind or independent human discrimination panel.",
+    "reference": "https://usefulcharts.com/products/timeline-of-world-history",
+    "candidate": "chronology-stems-v27d/portrait-balanced",
+    "decision": "Accept as a local composition improvement; reject an indistinguishability claim.",
+    "images_inspected": [
+      "projects/usefulcharts-style/artifacts/images/reference-history.png",
+      "projects/usefulcharts-style/artifacts/images/stages-final-five-regional-histories.png",
+      "projects/usefulcharts-style/artifacts/reviews/chronology-stems-v27/stems/poster.png",
+      "projects/usefulcharts-style/artifacts/reviews/chronology-stems-v27c/portrait-weighted/poster.png",
+      "projects/usefulcharts-style/artifacts/reviews/chronology-stems-v27c/full-selective/poster.png",
+      "projects/usefulcharts-style/artifacts/reviews/chronology-stems-v27d/portrait-balanced/poster.png",
+      "projects/usefulcharts-style/artifacts/reviews/chronology-stems-final-comparison/comparison.png",
+      "projects/usefulcharts-style/artifacts/reviews/chronology-stems-gallery/detail-five-regional-histories.png"
+    ],
+    "improvements": [
+      "Selected long quiet continuities have less continuous colored area, while principal phases retain full bands.",
+      "Unequal regional widths allocate more space to concurrent coastal histories and less to the simpler island sequence.",
+      "The narrower page keeps all fonts unchanged and all notes readable; exact endpoint and attachment checks pass."
+    ],
+    "remaining_differences": [
+      "The reference has richer asynchronous branching and local changes in density; the fictional source retains five persistent territories.",
+      "The early region sequences and later split/merge rhythms remain regular.",
+      "Only five contextual illustrations are present, with limited placement variation.",
+      "The all-stem treatment looked skeletal, while the selected mixture still has conspicuous long bands and some narrow wrapped notes."
+    ]
+  },
+  "usefulcharts-v27-contract-spark-20260912": {
+    "decision": "Command control passes; aesthetic judgement is outside this case.",
+    "parity_accepted": false
+  },
+  "usefulcharts-v27-regions-1-20260912": {
+    "image": "evaluations/runs/usefulcharts-v27-regions-1-20260912/workspace/result/poster.png",
+    "canvas": [1500, 1900],
+    "decision": "Accept basic legibility and selective treatment transfer, with reservations about excess page area.",
+    "parity_accepted": false,
+    "observations": [
+      "All names and 18 notes are legible; the clock illustration is integrated beside its event and clear of later material.",
+      "Three stems and nine bands differentiate some quieter periods, and weighted lanes accommodate concurrent Plains histories.",
+      "Long broad early bands and substantial empty gaps remain. The 1500-unit page reduces displayed type size relative to the smaller trials without a clear visible benefit."
+    ]
+  },
+  "usefulcharts-v27-regions-2-20260912": {
+    "image": "evaluations/runs/usefulcharts-v27-regions-2-20260912/workspace/result/poster.png",
+    "canvas": [1350, 1700],
+    "decision": "Accept basic legibility and mixed treatment transfer; retain composition limitations.",
+    "parity_accepted": false,
+    "observations": [
+      "Five stems and seven bands remain easy to trace and give quieter continuities less visual weight.",
+      "The body notes and one contextual illustration remain readable at the smaller page size.",
+      "The upper coastal fork is shallow, and the three vertical histories still resemble persistent columns. Event text is predominantly placed on the same side of its history."
+    ]
+  },
+  "usefulcharts-v27-regions-3-20260912": {
+    "image": "evaluations/runs/usefulcharts-v27-regions-3-20260912/workspace/result/poster.png",
+    "canvas": [1400, 1750],
+    "decision": "Accept basic legibility and selective treatment transfer; retain composition limitations.",
+    "parity_accepted": false,
+    "observations": [
+      "Four stems and eight bands retain all explicit gaps and relationships, with readable horizontal annotations.",
+      "The clockmaking landmark is clear and its image is contained in a useful footprint.",
+      "Large consistent vertical gaps, broad early bands and the repeated placement of prose to the right remain schematic. The reading note could explain the name capsules more explicitly."
+    ]
+  }
+}
