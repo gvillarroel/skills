@@ -22,6 +22,8 @@ uv run --script <skill-dir>/scripts/audit_chart.py poster.svg --source routed.js
 
 The helper compares four side-pair choices and the ordinary bottom/top choice. It measures length, bends and proper crossings against existing paths, while reserving complete node, family-label and inset rectangles. It freezes the resulting corridors in the editable brief so rendering order cannot silently change the proposal. Explicit influence ports or corridors are preserved unless `--replace-authored` is requested. Coordinates and facts stay unchanged. Review the returned JSON and final preview; the local cost is not an aesthetic score or proof of an optimal route.
 
+Newly composed influences also reserve straight runs belonging to unrelated edges. The browser audit independently reports visible `unrelated-shared-run` warnings, including in preserved authored corridors. Review and repair unintended shared strokes; a geometry pass alone does not rule out a misleading junction. See [branch structure](branch-structure.md) when rerouting exposes a deeper arrangement problem.
+
 ## Inspect actual reading
 
 Trace the longest influence from its named source to its arrowhead, then trace both branches of the busiest merger. Check the side attachment at reading scale and the complete poster at the same display width as the prior version. Dotted arrows should remain subordinate to the solid institutional history. Keep the category meaning unchanged through a merger.

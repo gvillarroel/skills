@@ -39,6 +39,8 @@ Input: `design: editorial`, `mode: lineage` with `layout: auto`; named category 
 
 For a dense authored poster, follow [institutional composition](institution-composition.md). It covers individual histories, local merger groups, meaningful emphasis, and reserved influence corridors without requiring the acceptance gallery. Use `detail_position: outside` with an explicit `date_label` to separate a date, compact name panel and contextual caption. Reserve the entire measured envelope when composing attachments; the visible colored panel alone is not the node's occupied area.
 
+For recurring columns or empty corners, read [branch structure](branch-structure.md). Compose causal chapters without imposing a common calendar, retain required notes, and compare actual routes after moving groups. Review the independent `unrelated-shared-run` warning before accepting a denser page.
+
 Validation: render and browser-audit; count nodes/edges against source, inspect the longest cross-branch route, and check semantic legends. Pitfalls: force-directed placement destroys reading order; a timeline ordered by attractive spacing misrepresents intervals; a hierarchy label does not prove a historical link.
 
 ## Parallel historical intervals

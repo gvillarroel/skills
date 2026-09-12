@@ -14,7 +14,7 @@ import html
 import math
 from pathlib import Path
 
-from render_chart import Poster, require, number, color, ident, wrap, fmt, attr, text_color, contrast, overlaps, segment_hits, route_regions, compress, KINDS, automatic_lineage, text_width
+from render_chart import Poster, require, number, color, ident, wrap, fmt, attr, text_color, contrast, overlaps, segment_hits, route_regions, compress, KINDS, automatic_lineage, text_width, collinear_overlap
 from editorial_art import symbol
 from cohort_layout import place_cohorts, compact_cohort_defaults
 from story_layout import pack_stories
@@ -323,6 +323,8 @@ class EditorialPoster(Poster):
             else:
                 start,a=attachment_port(self.boxes[source],source_port);source_y=self.nodes[source]['row']
             require(kind=='influence' or source_y<self.nodes[target]['row'],f'Relation {eid} goes backward.')
+            reserved=[(p,q) for prior in self.routes if not {source,target}&{prior['source'],prior['target']}
+                      for p,q in zip(prior['points'],prior['points'][1:])] if self.mode=='lineage' else []
             if edge.get('via'):
                 path=compress([start]+[tuple(map(float,p)) for p in edge['via']]+[end])
                 require(all(p[0]==q[0] or p[1]==q[1] for p,q in zip(path,path[1:])),f'Non-orthogonal authored corridor for {eid}')
@@ -336,7 +338,8 @@ class EditorialPoster(Poster):
                     compress([start,a,(a[0],b[1]),b,end])
                 # Ports touch their own boxes; every other part must stay outside,
                 # including a corridor that was requested beyond the target top.
-                if not any(segment_hits(p,q,box,0) for p,q in zip(trial,trial[1:]) for box in self.boxes.values()):
+                if not any(segment_hits(p,q,box,0) for p,q in zip(trial,trial[1:]) for box in self.boxes.values()) and not any(
+                    collinear_overlap(p,q,r,s)>.05 for p,q in zip(trial,trial[1:]) for r,s in reserved):
                     path=trial
                 else:
                     # An occupied search endpoint cannot be repaired by a larger
@@ -349,7 +352,7 @@ class EditorialPoster(Poster):
                     for margin in (30,90,220,600,max(self.w,self.h)):
                         bounds=(max(world[0],min(a[0],b[0])-margin),max(world[1],min(a[1],b[1])-margin),min(world[2],max(a[0],b[0])+margin),min(world[3],max(a[1],b[1])+margin))
                         regions.append(bounds)
-                    try:path=compress([start]+route_regions(a,b,list(self.boxes.values()),regions,segments)+[end])
+                    try:path=compress([start]+route_regions(a,b,list(self.boxes.values()),regions,segments,reserved=reserved)+[end])
                     except ValueError as error:raise ValueError(f'Cannot route relationship {eid}: {error}') from error
             if any(segment_hits(p,q,box,4) for p,q in zip(path,path[1:]) for box in context_boxes.values()):
                 obstacles=self.boxes|context_boxes
@@ -360,7 +363,7 @@ class EditorialPoster(Poster):
                 for margin in (30,90,220,600,max(self.w,self.h)):
                     bounds=(max(world[0],min(a[0],b[0])-margin),max(world[1],min(a[1],b[1])-margin),min(world[2],max(a[0],b[0])+margin),min(world[3],max(a[1],b[1])+margin))
                     regions.append(bounds)
-                try:path=compress([start]+route_regions(a,b,list(obstacles.values()),regions,segments)+[end])
+                try:path=compress([start]+route_regions(a,b,list(obstacles.values()),regions,segments,reserved=reserved)+[end])
                 except ValueError as error:raise ValueError(f'Cannot route relationship {eid} around its context: {error}') from error
             require(not any(segment_hits(p,q,box,0) for p,q in zip(path,path[1:]) for box in self.boxes.values()),f'Relationship {eid} crosses a node, including its own source or target.')
             group=edge.get('group',self.nodes[target]['group']);paint=self.groups[group]['color']

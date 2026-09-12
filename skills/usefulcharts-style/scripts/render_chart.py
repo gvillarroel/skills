@@ -151,11 +151,24 @@ def proper_cross(a, b, c, d):
     return False
 
 
-def route(start, end, boxes, bounds, existing, *, _grid_margin=14, _retry_narrow=True):
-    """Sparse visibility-grid A* with obstacle rejection and crossing penalties."""
-    def clear(a, b):
-        return not any(segment_hits(a, b, box, 7) for box in boxes)
+def collinear_overlap(a,b,c,d,tolerance=.02):
+    """Measure a shared straight run, excluding a perpendicular crossing."""
+    for axis in (0,1):
+        other=1-axis
+        if max(a[axis],b[axis],c[axis],d[axis])-min(a[axis],b[axis],c[axis],d[axis])<=tolerance:
+            return max(0,min(max(a[other],b[other]),max(c[other],d[other]))-max(min(a[other],b[other]),min(c[other],d[other])))
+    return 0
 
+
+def route(start, end, boxes, bounds, existing, *, _grid_margin=14, _retry_narrow=True, reserved=()):
+    """Sparse visibility-grid A* with obstacle rejection and crossing penalties."""
+    from functools import lru_cache
+    start,end=tuple(start),tuple(end)
+    @lru_cache(maxsize=32768)
+    def clear(a, b):
+        return not any(segment_hits(a, b, box, 7) for box in boxes) and not any(collinear_overlap(a,b,c,d)>.05 for c,d in reserved)
+
+    @lru_cache(maxsize=32768)
     def crossing_cost(a, b):
         penalty = 90 * sum(proper_cross(a, b, c, d) for c, d in existing)
         for c, d in existing:
@@ -176,6 +189,9 @@ def route(start, end, boxes, bounds, existing, *, _grid_margin=14, _retry_narrow
 
     xs = {start[0], end[0], bounds[0], bounds[2]}
     ys = {start[1], end[1], bounds[1], bounds[3], mid}
+    for a,b in reserved:
+        if a[0]==b[0]:xs.update((a[0]-8,a[0]+8))
+        if a[1]==b[1]:ys.update((a[1]-8,a[1]+8))
     for x, y, w, h in boxes:
         # Preserve broad corridors first. An eight-unit fallback exposes legal
         # narrow passages while retaining the same seven-unit clearance.
@@ -222,18 +238,20 @@ def route(start, end, boxes, bounds, existing, *, _grid_margin=14, _retry_narrow
             estimate = abs(next_point[0] - end[0]) + abs(next_point[1] - end[1])
             heapq.heappush(queue, (new_cost + estimate, new_cost, new_state))
     if _retry_narrow:
-        return route(start,end,boxes,bounds,existing,_grid_margin=8,_retry_narrow=False)
+        return route(start,end,boxes,bounds,existing,_grid_margin=8,_retry_narrow=False,reserved=reserved)
     raise ValueError("No clear connector corridor. Separate nodes or increase the page size.")
 
 
-def route_regions(start,end,boxes,regions,existing):
+def route_regions(start,end,boxes,regions,existing,*,reserved=()):
     """Try all broad search regions before using a closer visibility grid."""
     last_error=None
     for grid in (14,8):
         for bounds in regions:
             nearby=[box for box in boxes if box[0]-14<bounds[2] and box[0]+box[2]+14>bounds[0]
                     and box[1]-14<bounds[3] and box[1]+box[3]+14>bounds[1]]
-            try:return route(start,end,nearby,bounds,existing,_grid_margin=grid,_retry_narrow=False)
+            local=[(a,b) for a,b in reserved if max(a[0],b[0])>=bounds[0] and min(a[0],b[0])<=bounds[2]
+                   and max(a[1],b[1])>=bounds[1] and min(a[1],b[1])<=bounds[3]]
+            try:return route(start,end,nearby,bounds,existing,_grid_margin=grid,_retry_narrow=False,reserved=local)
             except ValueError as error:last_error=error
     raise ValueError(str(last_error) if last_error else 'No connector search regions were supplied.')
 

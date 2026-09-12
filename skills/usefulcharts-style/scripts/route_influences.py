@@ -38,6 +38,8 @@ def compose_influences(source,replace_authored=False):
     routes={edge['id']:edge for edge in poster.routes};choices=[]
     for edge in source['edges']:
         if edge['id'] not in selected:continue
+        reserved=[(a,b) for prior in routes.values() if not {edge['source'],edge['target']}&{prior['source'],prior['target']}
+                  for a,b in zip(prior['points'],prior['points'][1:])]
         candidates=[]
         for sp,tp in [('left','right'),('right','left'),('left','left'),('right','right'),('bottom','top')]:
             start,a=attachment_port(poster.boxes[edge['source']],sp);end,b=attachment_port(poster.boxes[edge['target']],tp)
@@ -45,7 +47,7 @@ def compose_influences(source,replace_authored=False):
             regions=[(max(world[0],min(a[0],b[0])-margin),max(world[1],min(a[1],b[1])-margin),
                 min(world[2],max(a[0],b[0])+margin),min(world[3],max(a[1],b[1])+margin))
                 for margin in (30,90,220,600,max(poster.w,poster.h))]
-            try:path=compress([start]+route_regions(a,b,obstacles,regions,segments)+[end])
+            try:path=compress([start]+route_regions(a,b,obstacles,regions,segments,reserved=reserved)+[end])
             except ValueError:continue
             if any(segment_hits(p,q,box,0) for p,q in zip(path,path[1:]) for box in obstacles):continue
             candidates.append((route_score(path,segments),sp,tp,path))

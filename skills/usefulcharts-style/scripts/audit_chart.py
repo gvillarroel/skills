@@ -142,6 +142,32 @@ AUDIT = r"""() => {
     if(origin&&!attached(first,origin,e.source_port))findings.push({type:'detached-source',id:e.id});
     if((e.source_port!=='bottom'||e.target_port!=='top')&&(meta.mode!=='lineage'||e.kind!=='influence'))findings.push({type:'invalid-lateral-relation',id:e.id});
   }
+  const composition_warnings=[];
+  if(meta.mode==='lineage'){
+    const straights=e=>{
+      const element=svg.querySelector(`[data-edge-id="${CSS.escape(e.id)}"]`);
+      const matrix=svg.getScreenCTM().inverse().multiply(element.getScreenCTM());
+      const converted=p=>{const v=new DOMPoint(...p).matrixTransform(matrix);return [v.x,v.y]};
+      let at=null;const result=[];
+      for(const match of e.d.matchAll(/([MLQ])([^MLQ]*)/g)){
+        const values=points(match[2]);
+        if(match[1]==='L')for(const point of values){if(at)result.push([converted(at),converted(point)]);at=point;}
+        else at=values.at(-1);
+      }
+      return result;
+    };
+    const strokes=edges.map(e=>({edge:e,segments:straights(e)}));
+    for(let i=0;i<strokes.length;i++)for(let j=i+1;j<strokes.length;j++){
+      const a=strokes[i],b=strokes[j];
+      if([a.edge.source,a.edge.target].some(id=>[b.edge.source,b.edge.target].includes(id)))continue;
+      let longest=0;
+      for(const [p,q] of a.segments)for(const [r,s] of b.segments)for(const axis of [0,1]){
+        if(Math.max(p[axis],q[axis],r[axis],s[axis])-Math.min(p[axis],q[axis],r[axis],s[axis])>.02)continue;
+        const k=1-axis;longest=Math.max(longest,Math.min(Math.max(p[k],q[k]),Math.max(r[k],s[k]))-Math.max(Math.min(p[k],q[k]),Math.min(r[k],s[k])));
+      }
+      if(longest>4)composition_warnings.push({type:'unrelated-shared-run',first:a.edge.id,second:b.edge.id,length:longest});
+    }
+  }
   const clippedArea=(poly,r)=>{
     let out=poly;
     for(const [axis,bound,greater] of [[0,r.x,true],[0,r.x+r.w,false],[1,r.y,true],[1,r.y+r.h,false]]){
@@ -161,7 +187,7 @@ AUDIT = r"""() => {
     for(const t of texts)if(t.owner==='page'&&clippedArea(poly,t.box)>1)findings.push({type:'transition-fill-text-collision',edge:fill.dataset.transitionFill,text:t.text});
     for(const art of illustrations)if(clippedArea(poly,art.box)>1)findings.push({type:'transition-fill-illustration-collision',edge:fill.dataset.transitionFill,event:art.event});
   }
-  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,nodes,edges,events,unions,texts,illustrations,landmarks,metadata:meta};
+  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,composition_warnings,nodes,edges,events,unions,texts,illustrations,landmarks,metadata:meta};
 }"""
 
 

@@ -1,0 +1,615 @@
+{
+  "date": "2026-09-12",
+  "baseline": "0be67c64c8f9ce74708b2d35fe355204004f21df",
+  "decision": "Reject all new chapter compositions as gallery replacements. Promote routing correctness and the disclosed critique guidance only.",
+  "goal_status": "active; visual parity is not established",
+  "prototype_attempts": [
+    {
+      "id": "edited",
+      "before": "0be67c64",
+      "profile": "edited",
+      "driver_sha256": "e03454e0e342c0808c4248a02bf6b55ed54dfa04833be3f8b407da0988492dba",
+      "placement": {
+        "method": "Original centers with selected fictional captions."
+      },
+      "record_inventory_preserved": true,
+      "printed_captions": 33,
+      "complete_record_notes": 133,
+      "status": "pass",
+      "selected": false
+    },
+    {
+      "id": "chapters",
+      "before": "0be67c64",
+      "profile": "chapters",
+      "driver_sha256": "e03454e0e342c0808c4248a02bf6b55ed54dfa04833be3f8b407da0988492dba",
+      "status": "fail",
+      "error": "No complete chapter placement: UNKNOWN",
+      "selected": false
+    },
+    {
+      "id": "expanded",
+      "before": "0be67c64",
+      "profile": "expanded",
+      "driver_sha256": "e03454e0e342c0808c4248a02bf6b55ed54dfa04833be3f8b407da0988492dba",
+      "status": "fail",
+      "error": "No complete chapter placement: UNKNOWN",
+      "selected": false
+    },
+    {
+      "id": "chapters-greedy",
+      "before": "0be67c64",
+      "profile": "chapters",
+      "driver_sha256": "e629925fa522f2bc3a3b22d3615d5ebbc2b1127e205ab63e742577f47e896ba5",
+      "status": "fail",
+      "error": "No complete greedy chapter placement for astronomical",
+      "selected": false
+    },
+    {
+      "id": "expanded-greedy",
+      "before": "0be67c64",
+      "profile": "expanded",
+      "driver_sha256": "e629925fa522f2bc3a3b22d3615d5ebbc2b1127e205ab63e742577f47e896ba5",
+      "status": "fail",
+      "error": "No complete greedy chapter placement for astronomical",
+      "selected": false
+    },
+    {
+      "id": "chapters-causal",
+      "before": "0be67c64",
+      "profile": "chapters",
+      "driver_sha256": "1f2342f9d8730e2209e95dc09ebc6e6d2af273409c4f93e86891e46a42177530",
+      "status": "fail",
+      "error": "No complete greedy chapter placement for stellar-centre",
+      "selected": false
+    },
+    {
+      "id": "expanded-causal",
+      "before": "0be67c64",
+      "profile": "expanded",
+      "driver_sha256": "1f2342f9d8730e2209e95dc09ebc6e6d2af273409c4f93e86891e46a42177530",
+      "status": "fail",
+      "error": "No complete greedy chapter placement for sky-data",
+      "selected": false
+    },
+    {
+      "id": "chapters-early",
+      "before": "0be67c64",
+      "profile": "chapters",
+      "driver_sha256": "a53c72e348dc38cbcf6446e8eafc60c0d4b0722fc935d49bd356f526d3b636b6",
+      "placement": {
+        "method": "Greedy chapter preferences with complete content, descendant room and causal order.",
+        "global_calendar_alignment": false
+      },
+      "record_inventory_preserved": true,
+      "printed_captions": 33,
+      "complete_record_notes": 133,
+      "status": "pass",
+      "selected": false
+    },
+    {
+      "id": "expanded-early",
+      "before": "0be67c64",
+      "profile": "expanded",
+      "driver_sha256": "a53c72e348dc38cbcf6446e8eafc60c0d4b0722fc935d49bd356f526d3b636b6",
+      "placement": {
+        "method": "Greedy chapter preferences with complete content, descendant room and causal order.",
+        "global_calendar_alignment": false
+      },
+      "record_inventory_preserved": true,
+      "printed_captions": 33,
+      "complete_record_notes": 133,
+      "status": "pass",
+      "selected": false
+    },
+    {
+      "id": "chapters-relaxed",
+      "status": "fail",
+      "error": "OSQP maximum iterations (OSQPException: 7); preserved driver, no accepted output.",
+      "evidence": "Observed terminal output; the initial project driver did not catch this solver exception.",
+      "selected": false
+    },
+    {
+      "id": "expanded-relaxed",
+      "status": "fail",
+      "error": "OSQP maximum iterations (OSQPException: 7); preserved driver, no accepted output.",
+      "evidence": "Observed terminal output; the initial project driver did not catch this solver exception.",
+      "selected": false
+    },
+    {
+      "id": "chapters-relaxed-feasible",
+      "before": "0be67c64",
+      "profile": "chapters",
+      "driver_sha256": "2f6dfd8bcf556923c769948002743c3c72f603d4559266fb2c6f4c572bb87e5c",
+      "placement": {
+        "method": "Greedy chapter preferences with complete content, descendant room and causal order.",
+        "global_calendar_alignment": false,
+        "relaxation": {
+          "status": "solved",
+          "iterations": 19875,
+          "maximum_violation": 4.831690603168681e-13,
+          "method": "Feasible local quadratic relaxation of a complete seed; not a global optimum."
+        }
+      },
+      "record_inventory_preserved": true,
+      "printed_captions": 33,
+      "complete_record_notes": 133,
+      "status": "pass",
+      "selected": false
+    },
+    {
+      "id": "expanded-relaxed-feasible",
+      "before": "0be67c64",
+      "profile": "expanded",
+      "driver_sha256": "2f6dfd8bcf556923c769948002743c3c72f603d4559266fb2c6f4c572bb87e5c",
+      "placement": {
+        "method": "Greedy chapter preferences with complete content, descendant room and causal order.",
+        "global_calendar_alignment": false,
+        "relaxation": {
+          "status": "solved",
+          "iterations": 14000,
+          "maximum_violation": 0.00017082641446108937,
+          "method": "Feasible local quadratic relaxation of a complete seed; not a global optimum."
+        }
+      },
+      "record_inventory_preserved": true,
+      "printed_captions": 33,
+      "complete_record_notes": 133,
+      "status": "pass",
+      "selected": false
+    },
+    {
+      "id": "separate-runs",
+      "status": "cancelled",
+      "selected": false,
+      "error": "Author stopped the verified owned renderer process after prolonged routing; no finished output.",
+      "scope": "No timed speedup claim; bounded per-search memoization was subsequently added."
+    },
+    {
+      "id": "cached-separate-runs",
+      "status": "pass",
+      "selected": false,
+      "layout": {
+        "status": "pass",
+        "id": "atlas-of-inquiry",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1620.0,
+          2300.0
+        ],
+        "node_count": 141,
+        "edge_count": 171,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 126,
+        "data_sha256": "86a57708c642666b789d9367098ec2d342e27662f291571064d8bf6b3ca4612f",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      }
+    },
+    {
+      "id": "chapters-routed",
+      "status": "pass",
+      "selected": false,
+      "scope": "Earlier influence proposal without strict unrelated-run reservation.",
+      "layout": {
+        "status": "pass",
+        "id": "atlas-of-inquiry",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1620.0,
+          2300.0
+        ],
+        "node_count": 141,
+        "edge_count": 171,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 101,
+        "data_sha256": "b7869226ba086f04624ca302f815333819988209f0017963f419a0b40f16c18c",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      }
+    },
+    {
+      "id": "final-influence",
+      "status": "pass",
+      "selected": false,
+      "layout": {
+        "status": "pass",
+        "id": "atlas-of-inquiry",
+        "mode": "lineage",
+        "design": "editorial",
+        "canvas": [
+          1620.0,
+          2300.0
+        ],
+        "node_count": 141,
+        "edge_count": 171,
+        "union_count": 0,
+        "node_collisions": 0,
+        "connector_node_collisions": 0,
+        "crossing_count": 106,
+        "data_sha256": "1d551e4fc579def62675e4ee6851d92119092db8f8eb9fe5b7363adb598399d7",
+        "visual_review": "Required; geometric preflight is not a visual quality score."
+      }
+    }
+  ],
+  "forward_runs": [
+    {
+      "id": "usefulcharts-v30-branches-1-20260912",
+      "model": "openai-codex/gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 93,
+        "payloadSha256": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-structure.md",
+        "sizeBytes": 19654,
+        "sha256": "2a859fda7c1e157bf20cab1da9f68a8bc499e731a8f2ed78edfead2164d2dfb0"
+      },
+      "strict_pass": true,
+      "duration_seconds": 223.74,
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "event_findings": [],
+      "tool_errors": [],
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f",
+        "afterDigest": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "event_check": "evaluations/runs/usefulcharts-v30-branches-1-20260912/event-check.json",
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v30-branches-1-20260912",
+        "node_count": 59,
+        "edge_count": 65,
+        "canvas": [
+          1962,
+          2598.199951171875
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 2,
+        "findings": [],
+        "scope": "Disclosed development task; semantic and routing checks do not grade visual parity."
+      },
+      "evaluator_browser": {
+        "status": "pass",
+        "findings": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "usefulcharts-v30-branches-2-20260912",
+      "model": "openai-codex/gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 93,
+        "payloadSha256": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-structure.md",
+        "sizeBytes": 19654,
+        "sha256": "2a859fda7c1e157bf20cab1da9f68a8bc499e731a8f2ed78edfead2164d2dfb0"
+      },
+      "strict_pass": false,
+      "duration_seconds": 452.215,
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "event_findings": [
+        {
+          "code": "tool-error",
+          "line": 5523,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 5738,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 5775,
+          "tool": "bash"
+        }
+      ],
+      "tool_errors": [
+        {
+          "id": "call_aSO5F5MeDMVaiR8TtTVl1xOK|fc_015ccc462c4186c3016aa548bd583c87d19ff8ba095f78a9c6",
+          "message": "Chart could not be rendered: Lateral or reversed attachments require an institutional influence between nodes.\r\n\n\nCommand exited with code 2"
+        },
+        {
+          "id": "call_B5X2tfoIo2KxRNEnyAYwexWn|fc_015ccc462c4186c3016aa548c87aec87d195a5004f8170f822",
+          "message": "Chart could not be rendered: Omit absolute routes while packing; compose them after inspecting the resolved layout.\r\n{\"status\": \"fail\", \"id\": \"workshops-to-optical-science\", \"node_count\": 59, \"edge_count\": 65, \"text_count\": 208, \"min_contrast\": 5.838171646722622, \"findings\": [{\"type\": \"source-revision-mismatch\", \"expected_sha256\": \"ee4ceb111e6c7bb616f9d169ec8e3ac1f749428cf1a6a32ee71a27aeddf5f761\", \"rendered_sha256\": \"48b517b0edd1741f92882082e6925b3e2c43ed94239817b5192cc58d4116f0d6\"}], \"composition_warnings\": []}\r\n\n\nCommand exited with code 1"
+        },
+        {
+          "id": "call_tbzs3LrImLOLhNuxMBofENHz|fc_015ccc462c4186c3016aa548d47d5487d1b27cb2ef0314da45",
+          "message": "(no output)\n\nCommand exited with code 1"
+        }
+      ],
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f",
+        "afterDigest": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "event_check": "evaluations/runs/usefulcharts-v30-branches-2-20260912/event-check.json",
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v30-branches-2-20260912",
+        "node_count": 59,
+        "edge_count": 65,
+        "canvas": [
+          2154,
+          2608
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 7,
+        "findings": [],
+        "scope": "Disclosed development task; semantic and routing checks do not grade visual parity."
+      },
+      "evaluator_browser": {
+        "status": "pass",
+        "findings": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "usefulcharts-v30-branches-3-20260912",
+      "model": "openai-codex/gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 93,
+        "payloadSha256": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-structure.md",
+        "sizeBytes": 19654,
+        "sha256": "2a859fda7c1e157bf20cab1da9f68a8bc499e731a8f2ed78edfead2164d2dfb0"
+      },
+      "strict_pass": true,
+      "duration_seconds": 230.783,
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png",
+        "result/review.md"
+      ],
+      "event_findings": [],
+      "tool_errors": [],
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f",
+        "afterDigest": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "event_check": "evaluations/runs/usefulcharts-v30-branches-3-20260912/event-check.json",
+      "artifact_contract": {
+        "status": "pass",
+        "run": "usefulcharts-v30-branches-3-20260912",
+        "node_count": 59,
+        "edge_count": 65,
+        "canvas": [
+          1971,
+          2860.159912109375
+        ],
+        "warnings": [],
+        "supported_final_image_reads": 2,
+        "findings": [],
+        "scope": "Disclosed development task; semantic and routing checks do not grade visual parity."
+      },
+      "evaluator_browser": {
+        "status": "pass",
+        "findings": [],
+        "warnings": []
+      }
+    },
+    {
+      "id": "usefulcharts-v30-contract-spark-20260912",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 93,
+        "payloadSha256": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f"
+      },
+      "prompt": {
+        "source": "C:/Users/villa/dev/skills/evaluations/pi-prompts/usefulcharts-branch-structure-contract.md",
+        "sizeBytes": 2299,
+        "sha256": "01144c00ff4d5799f6d692cf35bd0620d30040863583430b62a727fcd3829453"
+      },
+      "strict_pass": true,
+      "duration_seconds": 20.226,
+      "expected_outputs": [
+        "draft.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "event_findings": [],
+      "tool_errors": [],
+      "integrity": {
+        "passed": true,
+        "beforeDigest": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f",
+        "afterDigest": "99793d4932a0e886278c0ea7bc734db69e1562de8952fbab1a2adc36730c4e0f",
+        "added": [],
+        "removed": [],
+        "modified": []
+      },
+      "event_check": "evaluations/runs/usefulcharts-v30-contract-spark-20260912/event-check.json",
+      "artifact_contract": {
+        "status": "pass",
+        "exact_prompt_source": true,
+        "scope": "Exact prompt JSON comparison plus independent evaluator browser replay."
+      },
+      "evaluator_browser": {
+        "status": "pass",
+        "findings": [],
+        "warnings": []
+      }
+    }
+  ],
+  "strict_passes": 3,
+  "strict_total": 4,
+  "final_artifact_contracts_pass": 4,
+  "model_exception": "GPT-5.5 for three image-dependent naturalistic cases; default Spark exact command control.",
+  "case_scope": "59 records and 65 edges selected from disclosed synthetic development material, with 15 supplied visible notes. Not blind, independent-subject, validation or holdout evidence.",
+  "full_comparison": {
+    "status": "pass",
+    "checks": {
+      "identities_dates_categories_illustrations_type": true,
+      "typed_edges": true,
+      "complete_research_notes": true,
+      "groups": true
+    },
+    "before": "0be67c64",
+    "node_count": 141,
+    "edge_count": 171,
+    "printed_notes_before": 133,
+    "printed_notes_after": 33,
+    "before_canvas": [
+      1620.0,
+      2430.0
+    ],
+    "after_canvas": [
+      1620.0,
+      2300.0
+    ],
+    "before_crossings": 77,
+    "after_crossings": 106,
+    "after_svg_sha256": "c4b327dd61d3dc8740f25dcede7576e470996a863e89c9978120c3c672514073",
+    "after_png_sha256": "5a44d37843cca97e3b75d9b15e1241d8b430fea1fc2959a0d7ec7fced7236866",
+    "limit": "Source preservation and route counts are diagnostics. Visual parity is not established; the printed content is an explicit editorial selection."
+  },
+  "visible_unrelated_pairs_before": 25,
+  "visible_unrelated_pairs_after": 0,
+  "route_metrics_before": {
+    "id": "baseline",
+    "canvas": [
+      1620,
+      2430
+    ],
+    "edge_count": 171,
+    "total_length": 32045.171895980835,
+    "total_bends": 488,
+    "unrelated_collinear_overlaps": 0,
+    "mixed_kind_endpoint_overlaps": 9
+  },
+  "route_metrics_after": {
+    "id": "final",
+    "canvas": [
+      1620,
+      2300
+    ],
+    "edge_count": 171,
+    "total_length": 36669.031129837036,
+    "total_bends": 556,
+    "unrelated_collinear_overlaps": 0,
+    "mixed_kind_endpoint_overlaps": 17
+  },
+  "browser_controls": {
+    "status": "pass",
+    "cases": [
+      {
+        "id": "automatic",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "authored-shared",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      },
+      {
+        "id": "perpendicular-crossing",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "legitimate-siblings",
+        "expected_warning": false,
+        "warning_detected": false,
+        "hard_findings": [],
+        "warnings": [],
+        "pass": true
+      },
+      {
+        "id": "forged-route-metadata",
+        "expected_warning": true,
+        "warning_detected": true,
+        "hard_findings": [],
+        "warnings": [
+          {
+            "type": "unrelated-shared-run",
+            "first": "first",
+            "second": "second",
+            "length": 334
+          }
+        ],
+        "pass": true
+      }
+    ],
+    "scope": "Independent visible SVG command/transform inspection. Warnings do not establish aesthetic parity."
+  },
+  "unit_tests": {
+    "total": 151,
+    "passed": 151,
+    "composition_tests": 5,
+    "existing_suites": 146
+  },
+  "remaining_gaps": [
+    "Persistent large regional structures in the full mural.",
+    "The candidate prints only 33 of 133 original research notes and still adds route complexity; it does not prove equal-information compaction.",
+    "All three isolated 59-record posters retain large quiet upper fields, long repeated steps and a displaced late optical chapter.",
+    "Generic small illustration panels and narrow typography variety remain visibly unlike the denser official reference.",
+    "Run 2 still needed repairs after invalid structural side ports and stale absolute routes in a packed layout."
+  ]
+}
