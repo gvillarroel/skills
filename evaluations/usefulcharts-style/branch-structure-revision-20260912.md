@@ -80,3 +80,9 @@ uv run --script evaluations/contracts/verify-usefulcharts-branch-structure.py ev
 uv run --script scripts/run-pi-skill-eval.py usefulcharts-style --prompt-file evaluations/pi-prompts/usefulcharts-branch-structure-contract.md --mode json --strict --run-id usefulcharts-v30-contract-spark-20260912 --timeout-seconds 900 --require-exact-command-from-prompt --expect-output draft.json --expect-output result/poster.svg --expect-output result/poster.html --expect-output result/layout.json --expect-output result/browser.json --expect-output result/poster.png
 uv run --script scripts/summarize-pi-json-events.py evaluations/runs/usefulcharts-v30-contract-spark-20260912/events.jsonl --require-model gpt-5.3-codex-spark --fail-on-invalid-json --fail-on-tool-error
 ```
+
+## Verified publication
+
+Implementation `75c79d6e4c801914c70d501b2ab51718105331ff` passes [Pages workflow 34695177110](https://github.com/gvillarroel/skills/actions/runs/34695177110). All eleven public gallery/poster/source files match the committed content after the standard Pages transformations; the main catalog link is present. The [public gallery](https://gvillarroel.github.io/skills/examples/usefulcharts-style/) retains the existing three posters. The new routing behavior, critique reference and evaluation evidence are available in the repository, and local synchronization refreshed nine skill files.
+
+Verification: `uv run --script projects/usefulcharts-style/scripts/verify_publication.py --commit 75c79d6e --workflow 34695177110 --report projects/usefulcharts-style/artifacts/reviews/institution-chapters-v30/publication-verification.json`. This verifies publication, not visual parity.
