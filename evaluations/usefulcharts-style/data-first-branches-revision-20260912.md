@@ -91,3 +91,9 @@ uv run --script scripts/summarize-pi-json-events.py evaluations/runs/usefulchart
 ```
 
 The next aesthetic pass should address purposeful use of the opening whitespace, varied illustration identity and the long separated education family, while preserving the supplied information. Another clean geometry report alone cannot satisfy the requested standard.
+
+## Verified publication
+
+Implementation `c7189ee31283f3f2cb9c2895c21a2c3c1ba63534` passes [Pages workflow 34699142231](https://github.com/gvillarroel/skills/actions/runs/34699142231). All eleven public gallery/poster/source files match the committed bytes after standard Pages transformations, and the main catalog link is present. The [revised institutional mural](https://gvillarroel.github.io/skills/examples/usefulcharts-style/atlas-of-inquiry.html) preserves its existing route. The three gallery items remain discoverable; the rejected development layouts are not added to the gallery. Local synchronization refreshed seventeen files.
+
+Verification: `uv run --script projects/usefulcharts-style/scripts/verify_publication.py --commit c7189ee31283f3f2cb9c2895c21a2c3c1ba63534 --workflow 34699142231 --report projects/usefulcharts-style/artifacts/reviews/local-stories-v31/publication-verification.json`. This verifies delivery of the correction, not visual parity.
