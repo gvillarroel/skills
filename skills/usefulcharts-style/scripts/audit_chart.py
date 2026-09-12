@@ -20,7 +20,10 @@ AUDIT = r"""() => {
   const view = svg.viewBox.baseVal;
   const findings = [];
   const bounds = el => {
-    const b=el.getBBox(); return {x:b.x,y:b.y,w:b.width,h:b.height};
+    const b=el.getBBox(),m=svg.getScreenCTM().inverse().multiply(el.getScreenCTM());
+    const p=[[b.x,b.y],[b.x+b.width,b.y],[b.x+b.width,b.y+b.height],[b.x,b.y+b.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(m));
+    const xs=p.map(v=>v.x),ys=p.map(v=>v.y);
+    return {x:Math.min(...xs),y:Math.min(...ys),w:Math.max(...xs)-Math.min(...xs),h:Math.max(...ys)-Math.min(...ys)};
   };
   const intersect=(a,b,p=0)=>a.x<b.x+b.w-p && a.x+a.w>b.x+p && a.y<b.y+b.h-p && a.y+a.h>b.y+p;
   const contained=(a,b,p=0)=>a.x>=b.x-p && a.y>=b.y-p && a.x+a.w<=b.x+b.w+p && a.y+a.h<=b.y+b.h+p;
@@ -31,7 +34,7 @@ AUDIT = r"""() => {
   const contrast=(a,b)=>{const [lo,hi]=[lum(a),lum(b)].sort((x,y)=>x-y);return (hi+.05)/(lo+.05)};
   const nodes=[...svg.querySelectorAll('[data-node-id]')].map(el=>({id:el.dataset.nodeId,box:bounds(el.querySelector('[data-node-box]'))}));
   const byId=Object.fromEntries(nodes.map(n=>[n.id,n]));
-  const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,d:el.getAttribute('d')}));
+  const edges=[...svg.querySelectorAll('[data-edge-id]')].map(el=>({id:el.dataset.edgeId,source:el.dataset.source,target:el.dataset.target,kind:el.dataset.kind,d:el.getAttribute('d'),curved:el.dataset.routeStyle==='rounded'}));
   const unions=[...svg.querySelectorAll('[data-union-id]')].map(el=>({id:el.dataset.unionId,d:el.getAttribute('d')}));
   const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
   const setEqual=(a,b)=>a.length===b.length && [...a].sort().join('\n')===[...b].sort().join('\n');
@@ -50,13 +53,16 @@ AUDIT = r"""() => {
   for(const t of texts)for(const n of nodes)if(t.owner!==n.id && intersect(t.box,n.box,.5))findings.push({type:'text-other-node',text:t.text,node:n.id});
   const points=d=>(d.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number).reduce((a,n,i,all)=>{if(i%2===0)a.push([n,all[i+1]]);return a},[]);
   for(const e of edges){
-    const p=points(e.d);
+    const el=svg.querySelector(`[data-edge-id="${CSS.escape(e.id)}"]`);
+    const length=el.getTotalLength();
+    const p=e.curved?Array.from({length:Math.ceil(length/2)+1},(_,i)=>{const p=el.getPointAtLength(Math.min(length,i*2));return [p.x,p.y]}):points(e.d);
+    if(e.curved){const end=el.getPointAtLength(length);p.push([end.x,end.y]);}
     for(let i=0;i<p.length-1;i++){
       const [a,b]=[p[i],p[i+1]];
-      if(a[0]!==b[0]&&a[1]!==b[1])findings.push({type:'non-orthogonal-edge',id:e.id});
+      if(!e.curved&&a[0]!==b[0]&&a[1]!==b[1])findings.push({type:'non-orthogonal-edge',id:e.id});
       for(const n of nodes){
         const r=n.box;
-        const hit=a[0]===b[0]?a[0]>r.x+.1&&a[0]<r.x+r.w-.1&&Math.max(Math.min(a[1],b[1]),r.y)<Math.min(Math.max(a[1],b[1]),r.y+r.h)-.1:a[1]>r.y+.1&&a[1]<r.y+r.h-.1&&Math.max(Math.min(a[0],b[0]),r.x)<Math.min(Math.max(a[0],b[0]),r.x+r.w)-.1;
+        const hit=e.curved?a[0]>r.x+.6&&a[0]<r.x+r.w-.6&&a[1]>r.y+.6&&a[1]<r.y+r.h-.6:a[0]===b[0]?a[0]>r.x+.1&&a[0]<r.x+r.w-.1&&Math.max(Math.min(a[1],b[1]),r.y)<Math.min(Math.max(a[1],b[1]),r.y+r.h)-.1:a[1]>r.y+.1&&a[1]<r.y+r.h-.1&&Math.max(Math.min(a[0],b[0]),r.x)<Math.min(Math.max(a[0],b[0]),r.x+r.w)-.1;
         if(hit)findings.push({type:'edge-node-collision',edge:e.id,node:n.id});
       }
     }
@@ -74,7 +80,7 @@ def check_source(report, data):
     nodes = data.get("periods", []) if data["mode"] == "timeline" else data.get("nodes", [])
     if sorted(n["id"] for n in nodes) != sorted(n["id"] for n in report["nodes"]):
         report["findings"].append({"type": "source-node-inventory"})
-    relations = list(data.get("edges", []))
+    relations = list(data.get("edges", [])) + list(data.get("transitions", []))
     for union in data.get("unions", []):
         relations.extend({"id": f'{union["id"]}-{child}', "source": union["id"], "target": child, "kind": "descent"} for child in union.get("children", []))
         partner_boxes=sorted((n["box"] for n in report["nodes"] if n["id"] in union["partners"]),key=lambda b:b["x"])
@@ -150,7 +156,7 @@ def main():
                 args.png.parent.mkdir(parents=True,exist_ok=True)
                 w,h = report["canvas"]
                 page.set_viewport_size({"width":int(w),"height":min(int(h),1200)})
-                page.locator("svg").screenshot(path=str(args.png.resolve()))
+                page.locator("svg").first.screenshot(path=str(args.png.resolve()))
             browser.close()
         report["visual_review"] = "Inspect the preview separately; these checks do not rate stylistic resemblance."
         args.report.parent.mkdir(parents=True,exist_ok=True)

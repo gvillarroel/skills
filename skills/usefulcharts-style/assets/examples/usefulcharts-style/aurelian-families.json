@@ -1,1022 +1,5840 @@
 {
   "id": "aurelian-families",
-  "title": "FAMILIES OF THE AURELIAN COAST",
+  "title": "DYNASTIES OF THE AURELIAN COAST",
   "mode": "genealogy",
+  "design": "editorial",
   "width": 1800,
-  "height": 2400,
+  "height": 2700,
+  "font_size": 12.2,
+  "imprint": [
+    "ORIGINAL STUDY",
+    "Synthetic source data",
+    "2026 \u00b7 Editable SVG"
+  ],
   "groups": [
     {
       "id": "g0",
       "label": "House Alder",
-      "color": "#F18C79"
+      "color": "#F56550"
     },
     {
       "id": "g1",
-      "label": "House Bay",
-      "color": "#77BEDB"
+      "label": "House Bayeux",
+      "color": "#77BDDD"
     },
     {
       "id": "g2",
-      "label": "House Cress",
-      "color": "#F4C948"
+      "label": "House Corven",
+      "color": "#F2C529"
     },
     {
       "id": "g3",
-      "label": "House Dell",
-      "color": "#A6C49B"
+      "label": "House Daleshire",
+      "color": "#98BD92"
     },
     {
       "id": "g4",
-      "label": "House Elm",
-      "color": "#BE9CCB"
+      "label": "House Everen",
+      "color": "#B88BC6"
+    },
+    {
+      "id": "g5",
+      "label": "House Falken",
+      "color": "#F49A2C"
+    },
+    {
+      "id": "g6",
+      "label": "House Rosene",
+      "color": "#EBA1BA"
     }
   ],
-  "source_note": "Synthetic study by Codex, 2026. All names, institutions, relationships, and dates are invented.",
-  "pattern_id": "usefulcharts-dynastic-genealogy",
-  "subtitle": "Five houses, seven generations, and their recorded partnerships",
-  "columns": 10,
-  "rows": [
-    "Generation 1",
-    "Generation 2",
-    "Generation 3",
-    "Generation 4",
-    "Generation 5",
-    "Generation 6",
-    "Generation 7"
-  ],
+  "source_note": "Original synthetic genealogy \u00b7 Names, dates, and relationships are invented. Public-domain museum portraits are decorative art samples, not likenesses of these fictional people.",
   "nodes": [
     {
-      "id": "p0-0",
-      "label": "Arden Alder",
+      "id": "progenitor",
+      "label": "Aurelian I",
+      "detail": "The coastal founder \u00b7 842\u2013889",
+      "group": "g3",
+      "x": 890,
+      "y": 190,
+      "width": 157,
+      "style": "hero",
+      "icon": "museum-864",
+      "icon_width": 38,
+      "size": 16,
+      "variant": 1
+    },
+    {
+      "id": "western-heir",
+      "label": "Berengar",
+      "detail": "King of the western marches",
+      "group": "g0",
+      "x": 570,
+      "y": 280,
+      "width": 121,
+      "style": "card"
+    },
+    {
+      "id": "eastern-heir",
+      "label": "Adalheid",
+      "detail": "Queen of the eastern ports",
+      "group": "g2",
+      "x": 1150,
+      "y": 280,
+      "width": 121,
+      "style": "card"
+    },
+    {
+      "id": "royal-0-0",
+      "label": "Adrian I",
+      "detail": "934\u2013962",
+      "group": "g0",
+      "x": 127,
+      "y": 395.0,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-862",
+      "icon_width": 32,
+      "variant": 0
+    },
+    {
+      "id": "partner-0-0",
+      "label": "Adele",
+      "detail": "b. 913",
+      "group": "g0",
+      "x": 234,
+      "y": 395.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-1",
+      "label": "Edmund I",
+      "detail": "970\u2013998",
+      "group": "g0",
+      "x": 134,
+      "y": 488.97,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-1",
+      "label": "Matilda",
+      "detail": "b. 949",
+      "group": "g0",
+      "x": 241,
+      "y": 488.97,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-2",
+      "label": "Hugh I",
+      "detail": "1009\u20131037",
+      "group": "g0",
+      "x": 138,
+      "y": 592.25,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-0-3",
+      "label": "Matilda I",
+      "detail": "1044\u20131072",
+      "group": "g0",
+      "x": 139,
+      "y": 683.81,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-3",
+      "label": "Frederick",
+      "detail": "b. 1023",
+      "group": "g0",
+      "x": 246,
+      "y": 683.81,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-4",
+      "label": "Philip I",
+      "detail": "1076\u20131104",
+      "group": "g0",
+      "x": 136,
+      "y": 769.08,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-4",
+      "label": "Anne",
+      "detail": "b. 1055",
+      "group": "g0",
+      "x": 243,
+      "y": 769.08,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-0-4",
+      "label": "Leo",
+      "detail": "b. 1060",
+      "group": "g0",
+      "x": 287,
+      "y": 818.3834289129893,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-5",
+      "label": "Louis I",
+      "detail": "1113\u20131141",
+      "group": "g0",
+      "x": 130,
+      "y": 867.69,
+      "width": 73,
+      "style": "plain",
+      "size": 12,
+      "icon_width": 32,
+      "variant": 5
+    },
+    {
+      "id": "partner-0-5",
+      "label": "Mary",
+      "detail": "b. 1092",
+      "group": "g0",
+      "x": 237,
+      "y": 867.69,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-6",
+      "label": "Henri I",
+      "detail": "1152\u20131180",
+      "group": "g0",
+      "x": 123,
+      "y": 969.16,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-6",
+      "label": "Irene",
+      "detail": "b. 1131",
+      "group": "g0",
+      "x": 230,
+      "y": 969.16,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-7",
+      "label": "Conrad II",
+      "detail": "1185\u20131213",
+      "group": "g0",
+      "x": 117,
+      "y": 1056.54,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-0-8",
+      "label": "Otto II",
+      "detail": "1218\u20131246",
+      "group": "g0",
+      "x": 115,
+      "y": 1144.7,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-8",
+      "label": "Adele",
+      "detail": "b. 1197",
+      "group": "g0",
+      "x": 222,
+      "y": 1144.7,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-0-8",
+      "label": "Hugh",
+      "detail": "b. 1202",
+      "group": "g0",
+      "x": 266,
+      "y": 1195.7196715235928,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-9",
+      "label": "Frederick II",
+      "detail": "1257\u20131285",
+      "group": "g0",
+      "x": 116,
+      "y": 1246.74,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-9",
+      "label": "Matilda",
+      "detail": "b. 1236",
+      "group": "g0",
+      "x": 223,
+      "y": 1246.74,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-10",
+      "label": "Sofia II",
+      "detail": "1294\u20131322",
+      "group": "g0",
+      "x": 121,
+      "y": 1344.43,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-11390",
+      "icon_width": 32,
+      "variant": 10
+    },
+    {
+      "id": "partner-0-10",
+      "label": "Hugh",
+      "detail": "b. 1273",
+      "group": "g0",
+      "x": 228,
+      "y": 1344.43,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-11",
+      "label": "Baldwin II",
+      "detail": "1326\u20131354",
+      "group": "g0",
+      "x": 128,
+      "y": 1429.36,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-11",
+      "label": "Emma",
+      "detail": "b. 1305",
+      "group": "g0",
+      "x": 235,
+      "y": 1429.36,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-12",
+      "label": "Roland II",
+      "detail": "1361\u20131389",
+      "group": "g0",
+      "x": 135,
+      "y": 1521.93,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "cadet-0-12",
+      "label": "Leo",
+      "detail": "b. 1345",
+      "group": "g0",
+      "x": 286,
+      "y": 1573.609556231314,
+      "width": 46,
+      "style": "card",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-13",
+      "label": "Victor II",
+      "detail": "1401\u20131429",
+      "group": "g0",
+      "x": 139,
+      "y": 1625.29,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-13",
+      "label": "Mary",
+      "detail": "b. 1380",
+      "group": "g0",
+      "x": 246,
+      "y": 1625.29,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-14",
+      "label": "Charles III",
+      "detail": "1436\u20131464",
+      "group": "g0",
+      "x": 139,
+      "y": 1718.23,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-14",
+      "label": "Irene",
+      "detail": "b. 1415",
+      "group": "g0",
+      "x": 246,
+      "y": 1718.23,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-15",
+      "label": "Leo III",
+      "detail": "1468\u20131496",
+      "group": "g0",
+      "x": 135,
+      "y": 1803.07,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-16367",
+      "icon_width": 32,
+      "variant": 15
+    },
+    {
+      "id": "partner-0-15",
+      "label": "Rose",
+      "detail": "b. 1447",
+      "group": "g0",
+      "x": 242,
+      "y": 1803.07,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-16",
+      "label": "Martin III",
+      "detail": "1505\u20131533",
+      "group": "g0",
+      "x": 128,
+      "y": 1900.41,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-16",
+      "label": "Adele",
+      "detail": "b. 1484",
+      "group": "g0",
+      "x": 235,
+      "y": 1900.41,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-0-16",
+      "label": "Hugh",
+      "detail": "b. 1489",
+      "group": "g0",
+      "x": 279,
+      "y": 1951.5219329044598,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-17",
+      "label": "Elise III",
+      "detail": "1544\u20131572",
+      "group": "g0",
+      "x": 122,
+      "y": 2002.63,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-0-18",
+      "label": "Stephen III",
+      "detail": "1577\u20131605",
+      "group": "g0",
+      "x": 116,
+      "y": 2091.1,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-18",
+      "label": "Alice",
+      "detail": "b. 1556",
+      "group": "g0",
+      "x": 223,
+      "y": 2091.1,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-19",
+      "label": "William III",
+      "detail": "1610\u20131638",
+      "group": "g0",
+      "x": 115,
+      "y": 2178.22,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-19",
+      "label": "Emma",
+      "detail": "b. 1589",
+      "group": "g0",
+      "x": 222,
+      "y": 2178.22,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-20",
+      "label": "Edward III",
+      "detail": "1649\u20131677",
+      "group": "g0",
+      "x": 117,
+      "y": 2279.45,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-111317",
+      "icon_width": 32,
+      "variant": 20
+    },
+    {
+      "id": "partner-0-20",
+      "label": "Anne",
+      "detail": "b. 1628",
+      "group": "g0",
+      "x": 224,
+      "y": 2279.45,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-0-20",
+      "label": "Leo",
+      "detail": "b. 1633",
+      "group": "g0",
+      "x": 268,
+      "y": 2328.9180295341366,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-21",
+      "label": "Francis IV",
+      "detail": "1686\u20131714",
+      "group": "g0",
+      "x": 123,
+      "y": 2378.39,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-0-21",
+      "label": "Mary",
+      "detail": "b. 1665",
+      "group": "g0",
+      "x": 230,
+      "y": 2378.39,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-0-22",
+      "label": "George IV",
+      "detail": "1719\u20131747",
+      "group": "g0",
+      "x": 129,
+      "y": 2463.8,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-0-23",
+      "label": "Albert IV",
+      "detail": "1753\u20131781",
+      "group": "g0",
+      "x": 136,
+      "y": 2555.0,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-16367",
+      "icon_width": 32,
+      "variant": 23
+    },
+    {
+      "id": "partner-0-23",
+      "label": "Rose",
+      "detail": "b. 1732",
+      "group": "g0",
+      "x": 243,
+      "y": 2555.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-0",
+      "label": "Philip I",
+      "detail": "954\u2013982",
+      "group": "g1",
+      "x": 374,
+      "y": 447.0,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-0",
+      "label": "Beatrice",
+      "detail": "b. 933",
+      "group": "g1",
+      "x": 481,
+      "y": 447.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-1",
+      "label": "Margaret I",
+      "detail": "986\u20131014",
+      "group": "g1",
+      "x": 376,
+      "y": 530.74,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-1-2",
+      "label": "Henri I",
+      "detail": "1016\u20131044",
+      "group": "g1",
+      "x": 374,
+      "y": 611.28,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-864",
+      "icon_width": 32,
+      "variant": 3
+    },
+    {
+      "id": "partner-1-2",
+      "label": "Joanna",
+      "detail": "b. 995",
+      "group": "g1",
+      "x": 481,
+      "y": 611.28,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-3",
+      "label": "Conrad I",
+      "detail": "1043\u20131071",
+      "group": "g1",
+      "x": 369,
+      "y": 681.17,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-3",
+      "label": "Sofia",
+      "detail": "b. 1022",
+      "group": "g1",
+      "x": 476,
+      "y": 681.17,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-4",
+      "label": "Otto I",
+      "detail": "1071\u20131099",
+      "group": "g1",
+      "x": 362,
+      "y": 757.0,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-4",
+      "label": "Helena",
+      "detail": "b. 1050",
+      "group": "g1",
+      "x": 469,
+      "y": 757.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-5",
+      "label": "Frederick I",
+      "detail": "1104\u20131132",
+      "group": "g1",
+      "x": 356,
+      "y": 841.95,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-5",
+      "label": "Clara",
+      "detail": "b. 1083",
+      "group": "g1",
+      "x": 463,
+      "y": 841.95,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-6",
+      "label": "Alaric I",
+      "detail": "1133\u20131161",
+      "group": "g1",
+      "x": 352,
+      "y": 918.61,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-1-7",
+      "label": "Baldwin II",
+      "detail": "1159\u20131187",
+      "group": "g1",
+      "x": 352,
+      "y": 988.29,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-862",
+      "icon_width": 32,
+      "variant": 8
+    },
+    {
+      "id": "partner-1-7",
+      "label": "Ada",
+      "detail": "b. 1138",
+      "group": "g1",
+      "x": 459,
+      "y": 988.29,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-8",
+      "label": "Anne II",
+      "detail": "1189\u20131217",
+      "group": "g1",
+      "x": 357,
+      "y": 1068.06,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-8",
+      "label": "Henry",
+      "detail": "b. 1168",
+      "group": "g0",
+      "x": 464,
+      "y": 1068.06,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-9",
+      "label": "Victor II",
+      "detail": "1221\u20131249",
+      "group": "g1",
+      "x": 364,
+      "y": 1152.21,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-9",
+      "label": "Isabel",
+      "detail": "b. 1200",
+      "group": "g1",
+      "x": 471,
+      "y": 1152.21,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-10",
+      "label": "Charles II",
+      "detail": "1249\u20131277",
+      "group": "g1",
+      "x": 370,
+      "y": 1225.14,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-10",
+      "label": "Joanna",
+      "detail": "b. 1228",
+      "group": "g1",
+      "x": 477,
+      "y": 1225.14,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-11",
+      "label": "Leo II",
+      "detail": "1276\u20131304",
+      "group": "g1",
+      "x": 375,
+      "y": 1296.58,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-1-12",
+      "label": "Martin II",
+      "detail": "1307\u20131335",
+      "group": "g1",
+      "x": 376,
+      "y": 1379.62,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-95998",
+      "icon_width": 32,
+      "variant": 13
+    },
+    {
+      "id": "partner-1-12",
+      "label": "Helena",
+      "detail": "b. 1286",
+      "group": "g1",
+      "x": 483,
+      "y": 1379.62,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-13",
+      "label": "Richard II",
+      "detail": "1338\u20131366",
+      "group": "g1",
+      "x": 374,
+      "y": 1461.17,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-13",
+      "label": "Clara",
+      "detail": "b. 1317",
+      "group": "g1",
+      "x": 481,
+      "y": 1461.17,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-14",
+      "label": "Stephen III",
+      "detail": "1365\u20131393",
+      "group": "g1",
+      "x": 367,
+      "y": 1531.49,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-14",
+      "label": "Diana",
+      "detail": "b. 1344",
+      "group": "g1",
+      "x": 474,
+      "y": 1531.49,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-15",
+      "label": "Diana III",
+      "detail": "1393\u20131421",
+      "group": "g1",
+      "x": 361,
+      "y": 1606.21,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-15",
+      "label": "Stephen",
+      "detail": "b. 1372",
+      "group": "g1",
+      "x": 468,
+      "y": 1606.21,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-16",
+      "label": "Edward III",
+      "detail": "1426\u20131454",
+      "group": "g1",
+      "x": 355,
+      "y": 1691.01,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-1-17",
+      "label": "Francis III",
+      "detail": "1455\u20131483",
+      "group": "g1",
+      "x": 352,
+      "y": 1768.82,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-24684",
+      "icon_width": 32,
+      "variant": 18
+    },
+    {
+      "id": "partner-1-17",
+      "label": "Isabel",
+      "detail": "b. 1434",
+      "group": "g0",
+      "x": 459,
+      "y": 1768.82,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-18",
+      "label": "George III",
+      "detail": "1481\u20131509",
+      "group": "g1",
+      "x": 353,
+      "y": 1838.35,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-18",
+      "label": "Joanna",
+      "detail": "b. 1460",
+      "group": "g1",
+      "x": 460,
+      "y": 1838.35,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-19",
+      "label": "Albert III",
+      "detail": "1511\u20131539",
+      "group": "g1",
+      "x": 358,
+      "y": 1917.0,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-19",
+      "label": "Sofia",
+      "detail": "b. 1490",
+      "group": "g1",
+      "x": 465,
+      "y": 1917.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-20",
+      "label": "Julian III",
+      "detail": "1543\u20131571",
+      "group": "g1",
+      "x": 364,
+      "y": 2001.59,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-20",
+      "label": "Helena",
+      "detail": "b. 1522",
+      "group": "g1",
+      "x": 471,
+      "y": 2001.59,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-21",
+      "label": "Henry IV",
+      "detail": "1571\u20131599",
+      "group": "g1",
+      "x": 371,
+      "y": 2075.52,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-1-22",
+      "label": "Eleanor IV",
+      "detail": "1598\u20131626",
+      "group": "g1",
+      "x": 376,
+      "y": 2146.27,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-31233",
+      "icon_width": 32,
+      "variant": 23
+    },
+    {
+      "id": "partner-1-22",
+      "label": "Baldwin",
+      "detail": "b. 1577",
+      "group": "g1",
+      "x": 483,
+      "y": 2146.27,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-23",
+      "label": "Felix IV",
+      "detail": "1629\u20131657",
+      "group": "g1",
+      "x": 376,
+      "y": 2228.49,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-23",
+      "label": "Ada",
+      "detail": "b. 1608",
+      "group": "g0",
+      "x": 483,
+      "y": 2228.49,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-1-24",
+      "label": "Adrian IV",
+      "detail": "1661\u20131689",
+      "group": "g1",
+      "x": 373,
+      "y": 2310.94,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-1-24",
+      "label": "Beatrice",
       "detail": "b. 1640",
-      "row": 0,
-      "col": 0,
-      "group": "g0",
-      "emphasis": true
-    },
-    {
-      "id": "p0-1",
-      "label": "Mira",
-      "detail": "b. 1643",
-      "row": 0,
-      "col": 1,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p0-2",
-      "label": "Basil Bay",
-      "detail": "b. 1640",
-      "row": 0,
-      "col": 2,
       "group": "g1",
-      "emphasis": true
+      "x": 480,
+      "y": 2310.94,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
     },
     {
-      "id": "p0-3",
-      "label": "Nora",
-      "detail": "b. 1643",
-      "row": 0,
-      "col": 3,
+      "id": "royal-1-25",
+      "label": "Edmund IV",
+      "detail": "1687\u20131715",
       "group": "g1",
-      "emphasis": false
+      "x": 366,
+      "y": 2381.86,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
     },
     {
-      "id": "p0-4",
-      "label": "Celia Cress",
-      "detail": "b. 1640",
-      "row": 0,
-      "col": 4,
-      "group": "g2",
-      "emphasis": true
-    },
-    {
-      "id": "p0-5",
-      "label": "Orin",
-      "detail": "b. 1643",
-      "row": 0,
-      "col": 5,
-      "group": "g2",
-      "emphasis": false
-    },
-    {
-      "id": "p0-6",
-      "label": "Dorian Dell",
-      "detail": "b. 1640",
-      "row": 0,
-      "col": 6,
-      "group": "g3",
-      "emphasis": true
-    },
-    {
-      "id": "p0-7",
-      "label": "Pia",
-      "detail": "b. 1643",
-      "row": 0,
-      "col": 7,
-      "group": "g3",
-      "emphasis": false
-    },
-    {
-      "id": "p0-8",
-      "label": "Elian Elm",
-      "detail": "b. 1640",
-      "row": 0,
-      "col": 8,
-      "group": "g4",
-      "emphasis": true
-    },
-    {
-      "id": "p0-9",
-      "label": "Rosa",
-      "detail": "b. 1643",
-      "row": 0,
-      "col": 9,
-      "group": "g4",
-      "emphasis": false
-    },
-    {
-      "id": "p1-0",
-      "label": "Alaric Alder",
-      "detail": "b. 1668",
-      "row": 1,
-      "col": 0,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p1-1",
-      "label": "Sera",
-      "detail": "b. 1671",
-      "row": 1,
-      "col": 1,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p1-2",
-      "label": "Brina Bay",
-      "detail": "b. 1668",
-      "row": 1,
-      "col": 2,
+      "id": "partner-1-25",
+      "label": "Isabel",
+      "detail": "b. 1666",
       "group": "g1",
-      "emphasis": false
+      "x": 473,
+      "y": 2381.86,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
     },
     {
-      "id": "p1-3",
-      "label": "Tarin",
-      "detail": "b. 1671",
-      "row": 1,
-      "col": 3,
+      "id": "royal-1-26",
+      "label": "Hugh IV",
+      "detail": "1715\u20131743",
       "group": "g1",
-      "emphasis": false
+      "x": 360,
+      "y": 2455.51,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
     },
     {
-      "id": "p1-4",
-      "label": "Corin Cress",
-      "detail": "b. 1668",
-      "row": 1,
-      "col": 4,
+      "id": "royal-1-27",
+      "label": "Robert IV",
+      "detail": "1747\u20131775",
+      "group": "g1",
+      "x": 354,
+      "y": 2540.0,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-111317",
+      "icon_width": 32,
+      "variant": 28
+    },
+    {
+      "id": "partner-1-27",
+      "label": "Sofia",
+      "detail": "b. 1726",
+      "group": "g1",
+      "x": 461,
+      "y": 2540.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-0",
+      "label": "Otto I",
+      "detail": "930\u2013958",
       "group": "g2",
-      "emphasis": false
+      "x": 612,
+      "y": 384.0,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
     },
     {
-      "id": "p1-5",
-      "label": "Una",
-      "detail": "b. 1671",
-      "row": 1,
-      "col": 5,
+      "id": "royal-2-1",
+      "label": "Frederick I",
+      "detail": "973\u20131001",
       "group": "g2",
-      "emphasis": false
+      "x": 607,
+      "y": 496.61,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
     },
     {
-      "id": "p1-6",
-      "label": "Dalia Dell",
-      "detail": "b. 1668",
-      "row": 1,
-      "col": 6,
+      "id": "partner-2-1",
+      "label": "Margaret",
+      "detail": "b. 952",
+      "group": "g2",
+      "x": 714,
+      "y": 496.61,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-2",
+      "label": "Alaric I",
+      "detail": "1010\u20131038",
+      "group": "g2",
+      "x": 601,
+      "y": 594.37,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-2",
+      "label": "Agnes",
+      "detail": "b. 989",
+      "group": "g2",
+      "x": 708,
+      "y": 594.37,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-2-2",
+      "label": "Leo",
+      "detail": "b. 994",
+      "group": "g2",
+      "x": 752,
+      "y": 641.993081830241,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-3",
+      "label": "Baldwin I",
+      "detail": "1046\u20131074",
+      "group": "g2",
+      "x": 594,
+      "y": 689.62,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-3",
+      "label": "Cecilia",
+      "detail": "b. 1025",
+      "group": "g2",
+      "x": 701,
+      "y": 689.62,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-4",
+      "label": "Roland I",
+      "detail": "1088\u20131116",
+      "group": "g2",
+      "x": 589,
+      "y": 800.37,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-89043",
+      "icon_width": 32,
+      "variant": 6
+    },
+    {
+      "id": "partner-2-4",
+      "label": "Louise",
+      "detail": "b. 1067",
+      "group": "g2",
+      "x": 696,
+      "y": 800.37,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-5",
+      "label": "Victor I",
+      "detail": "1129\u20131157",
+      "group": "g2",
+      "x": 589,
+      "y": 909.63,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-2-6",
+      "label": "Louise I",
+      "detail": "1165\u20131193",
+      "group": "g2",
+      "x": 592,
+      "y": 1003.77,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-6",
+      "label": "Edward",
+      "detail": "b. 1144",
+      "group": "g2",
+      "x": 699,
+      "y": 1003.77,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-2-6",
+      "label": "Hugh",
+      "detail": "b. 1149",
+      "group": "g2",
+      "x": 743,
+      "y": 1053.5358376695112,
+      "width": 46,
+      "style": "card",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-7",
+      "label": "Leo II",
+      "detail": "1203\u20131231",
+      "group": "g2",
+      "x": 599,
+      "y": 1103.3,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-7",
+      "label": "Eve",
+      "detail": "b. 1182",
+      "group": "g2",
+      "x": 706,
+      "y": 1103.3,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-8",
+      "label": "Martin II",
+      "detail": "1246\u20131274",
+      "group": "g2",
+      "x": 605,
+      "y": 1216.56,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-8",
+      "label": "Eleanor",
+      "detail": "b. 1225",
+      "group": "g1",
+      "x": 712,
+      "y": 1216.56,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-9",
+      "label": "Richard II",
+      "detail": "1285\u20131313",
+      "group": "g2",
+      "x": 611,
+      "y": 1320.9,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-864",
+      "icon_width": 32,
+      "variant": 11
+    },
+    {
+      "id": "partner-2-9",
+      "label": "Margaret",
+      "detail": "b. 1264",
+      "group": "g2",
+      "x": 718,
+      "y": 1320.9,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-10",
+      "label": "Stephen II",
+      "detail": "1320\u20131348",
+      "group": "g2",
+      "x": 613,
+      "y": 1413.8,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "cadet-2-10",
+      "label": "Leo",
+      "detail": "b. 1304",
+      "group": "g2",
+      "x": 764,
+      "y": 1466.1879267258037,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-11",
+      "label": "William II",
+      "detail": "1360\u20131388",
+      "group": "g2",
+      "x": 612,
+      "y": 1518.58,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-11",
+      "label": "Cecilia",
+      "detail": "b. 1339",
+      "group": "g2",
+      "x": 719,
+      "y": 1518.58,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-12",
+      "label": "Edward II",
+      "detail": "1403\u20131431",
+      "group": "g2",
+      "x": 606,
+      "y": 1631.72,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-12",
+      "label": "Louise",
+      "detail": "b. 1382",
+      "group": "g2",
+      "x": 713,
+      "y": 1631.72,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-13",
+      "label": "Rose II",
+      "detail": "1441\u20131469",
+      "group": "g2",
+      "x": 600,
+      "y": 1730.84,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-13",
+      "label": "Victor",
+      "detail": "b. 1420",
+      "group": "g2",
+      "x": 707,
+      "y": 1730.84,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-14",
+      "label": "George III",
+      "detail": "1476\u20131504",
+      "group": "g2",
+      "x": 593,
+      "y": 1825.21,
+      "width": 73,
+      "style": "plain",
+      "size": 12,
+      "icon_width": 32,
+      "variant": 16
+    },
+    {
+      "id": "partner-2-14",
+      "label": "Vera",
+      "detail": "b. 1455",
+      "group": "g2",
+      "x": 700,
+      "y": 1825.21,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-2-14",
+      "label": "Hugh",
+      "detail": "b. 1460",
+      "group": "g2",
+      "x": 744,
+      "y": 1880.0144581742497,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-15",
+      "label": "Albert III",
+      "detail": "1518\u20131546",
+      "group": "g2",
+      "x": 589,
+      "y": 1934.82,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-2-16",
+      "label": "Julian III",
+      "detail": "1560\u20131588",
+      "group": "g2",
+      "x": 589,
+      "y": 2045.26,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-16",
+      "label": "Eleanor",
+      "detail": "b. 1539",
+      "group": "g2",
+      "x": 696,
+      "y": 2045.26,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-17",
+      "label": "Henry III",
+      "detail": "1596\u20131624",
+      "group": "g2",
+      "x": 593,
+      "y": 2140.24,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-17",
+      "label": "Margaret",
+      "detail": "b. 1575",
+      "group": "g1",
+      "x": 700,
+      "y": 2140.24,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-18",
+      "label": "Arthur III",
+      "detail": "1633\u20131661",
+      "group": "g2",
+      "x": 600,
+      "y": 2238.37,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-2-18",
+      "label": "Agnes",
+      "detail": "b. 1612",
+      "group": "g2",
+      "x": 707,
+      "y": 2238.37,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-2-18",
+      "label": "Leo",
+      "detail": "b. 1617",
+      "group": "g2",
+      "x": 751,
+      "y": 2294.764002405589,
+      "width": 46,
+      "style": "card",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-19",
+      "label": "Felix III",
+      "detail": "1676\u20131704",
+      "group": "g2",
+      "x": 606,
+      "y": 2351.16,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-95998",
+      "icon_width": 32,
+      "variant": 21
+    },
+    {
+      "id": "partner-2-19",
+      "label": "Cecilia",
+      "detail": "b. 1655",
+      "group": "g2",
+      "x": 713,
+      "y": 2351.16,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-2-20",
+      "label": "Isabel III",
+      "detail": "1716\u20131744",
+      "group": "g2",
+      "x": 612,
+      "y": 2457.01,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-2-21",
+      "label": "Edmund IV",
+      "detail": "1751\u20131779",
+      "group": "g2",
+      "x": 613,
+      "y": 2550.0,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-16367",
+      "icon_width": 32,
+      "variant": 23
+    },
+    {
+      "id": "partner-2-21",
+      "label": "Elise",
+      "detail": "b. 1730",
+      "group": "g2",
+      "x": 720,
+      "y": 2550.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-0",
+      "label": "Roland I",
+      "detail": "950\u2013978",
       "group": "g3",
-      "emphasis": false
+      "x": 839,
+      "y": 438.0,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
     },
     {
-      "id": "p1-7",
-      "label": "Vero",
-      "detail": "b. 1671",
-      "row": 1,
-      "col": 7,
+      "id": "partner-3-0",
+      "label": "Matilda",
+      "detail": "b. 929",
       "group": "g3",
-      "emphasis": false
+      "x": 946,
+      "y": 438.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
     },
     {
-      "id": "p1-8",
-      "label": "Emil Elm",
-      "detail": "b. 1668",
-      "row": 1,
-      "col": 8,
+      "id": "royal-3-1",
+      "label": "Victor I",
+      "detail": "983\u20131011",
+      "group": "g3",
+      "x": 833,
+      "y": 524.59,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-111317",
+      "icon_width": 32,
+      "variant": 4
+    },
+    {
+      "id": "partner-3-1",
+      "label": "Alice",
+      "detail": "b. 962",
+      "group": "g3",
+      "x": 940,
+      "y": 524.59,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-2",
+      "label": "Charles I",
+      "detail": "1012\u20131040",
+      "group": "g3",
+      "x": 827,
+      "y": 601.43,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-2",
+      "label": "Emma",
+      "detail": "b. 991",
+      "group": "g3",
+      "x": 934,
+      "y": 601.43,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-3",
+      "label": "Leo I",
+      "detail": "1045\u20131073",
+      "group": "g3",
+      "x": 826,
+      "y": 687.81,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-3",
+      "label": "Anne",
+      "detail": "b. 1024",
+      "group": "g3",
+      "x": 933,
+      "y": 687.81,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-3-3",
+      "label": "Adele",
+      "detail": "b. 1029",
+      "group": "g3",
+      "x": 977,
+      "y": 734.6426109325985,
+      "width": 46,
+      "style": "card",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-4",
+      "label": "Clara I",
+      "detail": "1081\u20131109",
+      "group": "g3",
+      "x": 828,
+      "y": 781.48,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-3-5",
+      "label": "Richard I",
+      "detail": "1112\u20131140",
+      "group": "g3",
+      "x": 834,
+      "y": 863.73,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-5",
+      "label": "Irene",
+      "detail": "b. 1091",
+      "group": "g3",
+      "x": 941,
+      "y": 863.73,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-6",
+      "label": "Stephen I",
+      "detail": "1141\u20131169",
+      "group": "g3",
+      "x": 840,
+      "y": 941.64,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-15708",
+      "icon_width": 32,
+      "variant": 9
+    },
+    {
+      "id": "partner-3-6",
+      "label": "Rose",
+      "detail": "b. 1120",
+      "group": "g3",
+      "x": 947,
+      "y": 941.64,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-7",
+      "label": "William II",
+      "detail": "1176\u20131204",
+      "group": "g3",
+      "x": 847,
+      "y": 1032.08,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-7",
+      "label": "Adele",
+      "detail": "b. 1155",
+      "group": "g3",
+      "x": 954,
+      "y": 1032.08,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-3-7",
+      "label": "Anna",
+      "detail": "b. 1160",
+      "group": "g3",
+      "x": 998,
+      "y": 1077.8551599361601,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-8",
+      "label": "Edward II",
+      "detail": "1210\u20131238",
+      "group": "g3",
+      "x": 850,
+      "y": 1123.63,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-8",
+      "label": "Matilda",
+      "detail": "b. 1189",
+      "group": "g2",
+      "x": 957,
+      "y": 1123.63,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-9",
+      "label": "Francis II",
+      "detail": "1240\u20131268",
+      "group": "g3",
+      "x": 850,
+      "y": 1202.37,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-3-10",
+      "label": "George II",
+      "detail": "1271\u20131299",
+      "group": "g3",
+      "x": 845,
+      "y": 1283.29,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-10",
+      "label": "Emma",
+      "detail": "b. 1250",
+      "group": "g3",
+      "x": 952,
+      "y": 1283.29,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-11",
+      "label": "Eve II",
+      "detail": "1306\u20131334",
+      "group": "g3",
+      "x": 838,
+      "y": 1376.47,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-105600",
+      "icon_width": 32,
+      "variant": 14
+    },
+    {
+      "id": "partner-3-11",
+      "label": "Otto",
+      "detail": "b. 1285",
+      "group": "g3",
+      "x": 945,
+      "y": 1376.47,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-3-11",
+      "label": "Adele",
+      "detail": "b. 1290",
+      "group": "g3",
+      "x": 989,
+      "y": 1420.386216824244,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-12",
+      "label": "Julian II",
+      "detail": "1340\u20131368",
+      "group": "g3",
+      "x": 832,
+      "y": 1464.3,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-12",
+      "label": "Mary",
+      "detail": "b. 1319",
+      "group": "g3",
+      "x": 939,
+      "y": 1464.3,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-13",
+      "label": "Henry II",
+      "detail": "1369\u20131397",
+      "group": "g3",
+      "x": 827,
+      "y": 1541.26,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-13",
+      "label": "Irene",
+      "detail": "b. 1348",
+      "group": "g3",
+      "x": 934,
+      "y": 1541.26,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-14",
+      "label": "Arthur III",
+      "detail": "1401\u20131429",
+      "group": "g3",
+      "x": 826,
+      "y": 1626.36,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-3-15",
+      "label": "Felix III",
+      "detail": "1437\u20131465",
+      "group": "g3",
+      "x": 829,
+      "y": 1720.24,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-15",
+      "label": "Adele",
+      "detail": "b. 1416",
+      "group": "g3",
+      "x": 936,
+      "y": 1720.24,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-16",
+      "label": "Adrian III",
+      "detail": "1468\u20131496",
+      "group": "g3",
+      "x": 835,
+      "y": 1803.72,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-864",
+      "icon_width": 32,
+      "variant": 19
+    },
+    {
+      "id": "partner-3-16",
+      "label": "Matilda",
+      "detail": "b. 1447",
+      "group": "g3",
+      "x": 942,
+      "y": 1803.72,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-17",
+      "label": "Edmund III",
+      "detail": "1498\u20131526",
+      "group": "g3",
+      "x": 841,
+      "y": 1881.09,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-17",
+      "label": "Alice",
+      "detail": "b. 1477",
+      "group": "g2",
+      "x": 948,
+      "y": 1881.09,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-18",
+      "label": "Alice III",
+      "detail": "1531\u20131559",
+      "group": "g3",
+      "x": 847,
+      "y": 1970.45,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-18",
+      "label": "Edmund",
+      "detail": "b. 1510",
+      "group": "g3",
+      "x": 954,
+      "y": 1970.45,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-19",
+      "label": "Robert III",
+      "detail": "1566\u20131594",
+      "group": "g3",
+      "x": 850,
+      "y": 2062.81,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-3-20",
+      "label": "Philip III",
+      "detail": "1597\u20131625",
+      "group": "g3",
+      "x": 849,
+      "y": 2142.42,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-20",
+      "label": "Mary",
+      "detail": "b. 1576",
+      "group": "g3",
+      "x": 956,
+      "y": 2142.42,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-21",
+      "label": "Louis IV",
+      "detail": "1627\u20131655",
+      "group": "g3",
+      "x": 844,
+      "y": 2222.31,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-862",
+      "icon_width": 32,
+      "variant": 24
+    },
+    {
+      "id": "partner-3-21",
+      "label": "Irene",
+      "detail": "b. 1606",
+      "group": "g3",
+      "x": 951,
+      "y": 2222.31,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-22",
+      "label": "Henri IV",
+      "detail": "1662\u20131690",
+      "group": "g3",
+      "x": 838,
+      "y": 2314.88,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-22",
+      "label": "Rose",
+      "detail": "b. 1641",
+      "group": "g3",
+      "x": 945,
+      "y": 2314.88,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-23",
+      "label": "Conrad IV",
+      "detail": "1696\u20131724",
+      "group": "g3",
+      "x": 831,
+      "y": 2403.91,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-3-23",
+      "label": "Adele",
+      "detail": "b. 1675",
+      "group": "g2",
+      "x": 938,
+      "y": 2403.91,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-3-24",
+      "label": "Otto IV",
+      "detail": "1725\u20131753",
+      "group": "g3",
+      "x": 826,
+      "y": 2481.16,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "royal-3-25",
+      "label": "Helena IV",
+      "detail": "1757\u20131785",
+      "group": "g3",
+      "x": 826,
+      "y": 2565.0,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-105945",
+      "icon_width": 32,
+      "variant": 28
+    },
+    {
+      "id": "partner-3-25",
+      "label": "George",
+      "detail": "b. 1736",
+      "group": "g3",
+      "x": 933,
+      "y": 2565.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-0",
+      "label": "Martin I",
+      "detail": "940\u2013968",
       "group": "g4",
-      "emphasis": false
+      "x": 1066,
+      "y": 410.0,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
     },
     {
-      "id": "p1-9",
-      "label": "Willa",
-      "detail": "b. 1671",
-      "row": 1,
-      "col": 9,
+      "id": "partner-4-0",
+      "label": "Isabel",
+      "detail": "b. 919",
       "group": "g4",
-      "emphasis": false
+      "x": 1173,
+      "y": 410.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
     },
     {
-      "id": "p2-0",
-      "label": "Aster Alder",
-      "detail": "b. 1696",
-      "row": 2,
-      "col": 0,
-      "group": "g0",
-      "emphasis": false
+      "id": "royal-4-1",
+      "label": "Richard I",
+      "detail": "977\u20131005",
+      "group": "g4",
+      "x": 1063,
+      "y": 507.66,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
     },
     {
-      "id": "p2-1",
-      "label": "Yara",
+      "id": "partner-4-1",
+      "label": "Joanna",
+      "detail": "b. 956",
+      "group": "g4",
+      "x": 1170,
+      "y": 507.66,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-2",
+      "label": "Irene I",
+      "detail": "1015\u20131043",
+      "group": "g4",
+      "x": 1064,
+      "y": 607.49,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-2",
+      "label": "Alaric",
+      "detail": "b. 994",
+      "group": "g4",
+      "x": 1171,
+      "y": 607.49,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-3",
+      "label": "William I",
+      "detail": "1058\u20131086",
+      "group": "g4",
+      "x": 1069,
+      "y": 722.64,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-16367",
+      "icon_width": 32,
+      "variant": 7
+    },
+    {
+      "id": "royal-4-4",
+      "label": "Edward I",
+      "detail": "1100\u20131128",
+      "group": "g4",
+      "x": 1075,
+      "y": 831.66,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-4",
+      "label": "Clara",
+      "detail": "b. 1079",
+      "group": "g4",
+      "x": 1182,
+      "y": 831.66,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-4-4",
+      "label": "Hugh",
+      "detail": "b. 1084",
+      "group": "g4",
+      "x": 1226,
+      "y": 879.3029967659076,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-5",
+      "label": "Francis I",
+      "detail": "1136\u20131164",
+      "group": "g4",
+      "x": 1082,
+      "y": 926.95,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-5",
+      "label": "Diana",
+      "detail": "b. 1115",
+      "group": "g4",
+      "x": 1189,
+      "y": 926.95,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-6",
+      "label": "George I",
+      "detail": "1176\u20131204",
+      "group": "g4",
+      "x": 1087,
+      "y": 1031.9,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-6",
+      "label": "Ada",
+      "detail": "b. 1155",
+      "group": "g4",
+      "x": 1194,
+      "y": 1031.9,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-7",
+      "label": "Albert II",
+      "detail": "1220\u20131248",
+      "group": "g4",
+      "x": 1087,
+      "y": 1148.09,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-7",
+      "label": "Beatrice",
+      "detail": "b. 1199",
+      "group": "g4",
+      "x": 1194,
+      "y": 1148.09,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-8",
+      "label": "Julian II",
+      "detail": "1259\u20131287",
+      "group": "g4",
+      "x": 1084,
+      "y": 1251.73,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-111317",
+      "icon_width": 32,
+      "variant": 12
+    },
+    {
+      "id": "cadet-4-8",
+      "label": "Leo",
+      "detail": "b. 1243",
+      "group": "g4",
+      "x": 1235,
+      "y": 1299.5421207532097,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-9",
+      "label": "Beatrice II",
+      "detail": "1295\u20131323",
+      "group": "g4",
+      "x": 1077,
+      "y": 1347.35,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-9",
+      "label": "Robert",
+      "detail": "b. 1274",
+      "group": "g4",
+      "x": 1184,
+      "y": 1347.35,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-10",
+      "label": "Arthur II",
+      "detail": "1337\u20131365",
+      "group": "g4",
+      "x": 1071,
+      "y": 1457.61,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-10",
+      "label": "Sofia",
+      "detail": "b. 1316",
+      "group": "g4",
+      "x": 1178,
+      "y": 1457.61,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-11",
+      "label": "Felix II",
+      "detail": "1380\u20131408",
+      "group": "g4",
+      "x": 1065,
+      "y": 1572.1,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-11",
+      "label": "Helena",
+      "detail": "b. 1359",
+      "group": "g4",
+      "x": 1172,
+      "y": 1572.1,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-12",
+      "label": "Adrian II",
+      "detail": "1418\u20131446",
+      "group": "g4",
+      "x": 1063,
+      "y": 1670.87,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-12",
+      "label": "Clara",
+      "detail": "b. 1397",
+      "group": "g4",
+      "x": 1170,
+      "y": 1670.87,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-4-12",
+      "label": "Hugh",
+      "detail": "b. 1402",
+      "group": "g4",
+      "x": 1214,
+      "y": 1720.1622338788488,
+      "width": 46,
+      "style": "card",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-13",
+      "label": "Edmund II",
+      "detail": "1455\u20131483",
+      "group": "g4",
+      "x": 1064,
+      "y": 1769.45,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-15708",
+      "icon_width": 32,
+      "variant": 17
+    },
+    {
+      "id": "royal-4-14",
+      "label": "Hugh III",
+      "detail": "1499\u20131527",
+      "group": "g4",
+      "x": 1070,
+      "y": 1883.8,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-14",
+      "label": "Ada",
+      "detail": "b. 1478",
+      "group": "g4",
+      "x": 1177,
+      "y": 1883.8,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-15",
+      "label": "Robert III",
+      "detail": "1541\u20131569",
+      "group": "g4",
+      "x": 1076,
+      "y": 1994.28,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-15",
+      "label": "Beatrice",
+      "detail": "b. 1520",
+      "group": "g4",
+      "x": 1183,
+      "y": 1994.28,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-16",
+      "label": "Agnes III",
+      "detail": "1577\u20131605",
+      "group": "g4",
+      "x": 1083,
+      "y": 2089.99,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-16",
+      "label": "Julian",
+      "detail": "b. 1556",
+      "group": "g4",
+      "x": 1190,
+      "y": 2089.99,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-4-16",
+      "label": "Leo",
+      "detail": "b. 1561",
+      "group": "g4",
+      "x": 1234,
+      "y": 2141.6843627735307,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-17",
+      "label": "Louis III",
+      "detail": "1616\u20131644",
+      "group": "g4",
+      "x": 1087,
+      "y": 2193.38,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-17",
+      "label": "Joanna",
+      "detail": "b. 1595",
+      "group": "g3",
+      "x": 1194,
+      "y": 2193.38,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-18",
+      "label": "Henri III",
+      "detail": "1660\u20131688",
+      "group": "g4",
+      "x": 1087,
+      "y": 2309.56,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-89043",
+      "icon_width": 32,
+      "variant": 22
+    },
+    {
+      "id": "royal-4-19",
+      "label": "Conrad III",
+      "detail": "1700\u20131728",
+      "group": "g4",
+      "x": 1083,
+      "y": 2414.76,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-4-19",
+      "label": "Helena",
+      "detail": "b. 1679",
+      "group": "g4",
+      "x": 1190,
+      "y": 2414.76,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-4-20",
+      "label": "Otto III",
+      "detail": "1736\u20131764",
+      "group": "g4",
+      "x": 1076,
+      "y": 2510.0,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-862",
+      "icon_width": 32,
+      "variant": 24
+    },
+    {
+      "id": "partner-4-20",
+      "label": "Clara",
+      "detail": "b. 1715",
+      "group": "g4",
+      "x": 1183,
+      "y": 2510.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-4-20",
+      "label": "Hugh",
+      "detail": "b. 1720",
+      "group": "g4",
+      "x": 1227,
+      "y": 2555.0,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-0",
+      "label": "Vera I",
+      "detail": "966\u2013994",
+      "group": "g5",
+      "x": 1300,
+      "y": 478.0,
+      "width": 73,
+      "style": "plain",
+      "size": 12,
+      "icon_width": 32,
+      "variant": 5
+    },
+    {
+      "id": "partner-5-0",
+      "label": "Louis",
+      "detail": "b. 945",
+      "group": "g5",
+      "x": 1407,
+      "y": 478.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-1",
+      "label": "Francis I",
+      "detail": "995\u20131023",
+      "group": "g5",
+      "x": 1304,
+      "y": 556.48,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-1",
+      "label": "Agnes",
+      "detail": "b. 974",
+      "group": "g5",
+      "x": 1411,
+      "y": 556.48,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-5-1",
+      "label": "Adele",
+      "detail": "b. 979",
+      "group": "g5",
+      "x": 1455,
+      "y": 601.6416892994904,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-2",
+      "label": "George I",
+      "detail": "1030\u20131058",
+      "group": "g5",
+      "x": 1311,
+      "y": 646.8,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-5-3",
+      "label": "Albert I",
+      "detail": "1065\u20131093",
+      "group": "g5",
+      "x": 1317,
+      "y": 741.03,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-3",
+      "label": "Louise",
+      "detail": "b. 1044",
+      "group": "g5",
+      "x": 1424,
+      "y": 741.03,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-4",
+      "label": "Julian I",
+      "detail": "1096\u20131124",
+      "group": "g5",
+      "x": 1323,
+      "y": 822.41,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-4",
+      "label": "Elise",
+      "detail": "b. 1075",
+      "group": "g5",
+      "x": 1430,
+      "y": 822.41,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-5",
+      "label": "Henry I",
+      "detail": "1127\u20131155",
+      "group": "g5",
+      "x": 1324,
+      "y": 903.2,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-24684",
+      "icon_width": 32,
+      "variant": 10
+    },
+    {
+      "id": "partner-5-5",
+      "label": "Vera",
+      "detail": "b. 1106",
+      "group": "g5",
+      "x": 1431,
+      "y": 903.2,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-5-5",
+      "label": "Anna",
+      "detail": "b. 1111",
+      "group": "g5",
+      "x": 1475,
+      "y": 950.0895859362338,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-6",
+      "label": "Arthur I",
+      "detail": "1162\u20131190",
+      "group": "g5",
+      "x": 1322,
+      "y": 996.98,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-6",
+      "label": "Eve",
+      "detail": "b. 1141",
+      "group": "g5",
+      "x": 1429,
+      "y": 996.98,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-7",
+      "label": "Matilda II",
+      "detail": "1197\u20131225",
+      "group": "g5",
+      "x": 1316,
+      "y": 1088.01,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-5-8",
+      "label": "Adrian II",
+      "detail": "1227\u20131255",
+      "group": "g5",
+      "x": 1310,
+      "y": 1166.75,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-8",
+      "label": "Margaret",
+      "detail": "b. 1206",
+      "group": "g4",
+      "x": 1417,
+      "y": 1166.75,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-9",
+      "label": "Edmund II",
+      "detail": "1259\u20131287",
+      "group": "g5",
+      "x": 1303,
+      "y": 1251.41,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-9",
+      "label": "Agnes",
+      "detail": "b. 1238",
+      "group": "g5",
+      "x": 1410,
+      "y": 1251.41,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-5-9",
+      "label": "Adele",
+      "detail": "b. 1243",
+      "group": "g5",
+      "x": 1454,
+      "y": 1299.123104956133,
+      "width": 46,
+      "style": "card",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-10",
+      "label": "Hugh II",
+      "detail": "1295\u20131323",
+      "group": "g5",
+      "x": 1300,
+      "y": 1346.84,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-16367",
+      "icon_width": 32,
+      "variant": 15
+    },
+    {
+      "id": "partner-5-10",
+      "label": "Cecilia",
+      "detail": "b. 1274",
+      "group": "g5",
+      "x": 1407,
+      "y": 1346.84,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-11",
+      "label": "Robert II",
+      "detail": "1328\u20131356",
+      "group": "g5",
+      "x": 1300,
+      "y": 1433.57,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-11",
+      "label": "Louise",
+      "detail": "b. 1307",
+      "group": "g5",
+      "x": 1407,
+      "y": 1433.57,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-12",
+      "label": "Philip II",
+      "detail": "1358\u20131386",
+      "group": "g5",
+      "x": 1305,
+      "y": 1511.77,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-5-13",
+      "label": "Louis II",
+      "detail": "1391\u20131419",
+      "group": "g5",
+      "x": 1312,
+      "y": 1600.87,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-13",
+      "label": "Vera",
+      "detail": "b. 1370",
+      "group": "g5",
+      "x": 1419,
+      "y": 1600.87,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-5-13",
+      "label": "Anna",
+      "detail": "b. 1375",
+      "group": "g5",
+      "x": 1463,
+      "y": 1648.2786541652783,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-14",
+      "label": "Sofia III",
+      "detail": "1427\u20131455",
+      "group": "g5",
+      "x": 1318,
+      "y": 1695.69,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-14",
+      "label": "William",
+      "detail": "b. 1406",
+      "group": "g5",
+      "x": 1425,
+      "y": 1695.69,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-15",
+      "label": "Conrad III",
+      "detail": "1459\u20131487",
+      "group": "g5",
+      "x": 1323,
+      "y": 1778.14,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-111317",
+      "icon_width": 32,
+      "variant": 20
+    },
+    {
+      "id": "partner-5-15",
+      "label": "Eleanor",
+      "detail": "b. 1438",
+      "group": "g5",
+      "x": 1430,
+      "y": 1778.14,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-16",
+      "label": "Otto III",
+      "detail": "1489\u20131517",
+      "group": "g5",
+      "x": 1324,
+      "y": 1858.06,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-16",
+      "label": "Margaret",
+      "detail": "b. 1468",
+      "group": "g5",
+      "x": 1431,
+      "y": 1858.06,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-17",
+      "label": "Frederick III",
+      "detail": "1524\u20131552",
+      "group": "g5",
+      "x": 1321,
+      "y": 1951.0,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "cadet-5-17",
+      "label": "Adele",
+      "detail": "b. 1508",
+      "group": "g5",
+      "x": 1472,
+      "y": 1997.054019608886,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-18",
+      "label": "Alaric III",
+      "detail": "1559\u20131587",
+      "group": "g5",
+      "x": 1315,
+      "y": 2043.11,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-18",
+      "label": "Cecilia",
+      "detail": "b. 1538",
+      "group": "g5",
+      "x": 1422,
+      "y": 2043.11,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-19",
+      "label": "Baldwin III",
+      "detail": "1589\u20131617",
+      "group": "g5",
+      "x": 1309,
+      "y": 2122.42,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-19",
+      "label": "Louise",
+      "detail": "b. 1568",
+      "group": "g5",
+      "x": 1416,
+      "y": 2122.42,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-20",
+      "label": "Roland III",
+      "detail": "1621\u20131649",
+      "group": "g5",
+      "x": 1302,
+      "y": 2205.85,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-15708",
+      "icon_width": 32,
+      "variant": 25
+    },
+    {
+      "id": "partner-5-20",
+      "label": "Elise",
+      "detail": "b. 1600",
+      "group": "g5",
+      "x": 1409,
+      "y": 2205.85,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-21",
+      "label": "Elise IV",
+      "detail": "1657\u20131685",
+      "group": "g5",
+      "x": 1300,
+      "y": 2301.02,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-21",
+      "label": "Roland",
+      "detail": "b. 1636",
+      "group": "g5",
+      "x": 1407,
+      "y": 2301.02,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-5-21",
+      "label": "Anna",
+      "detail": "b. 1641",
+      "group": "g5",
+      "x": 1451,
+      "y": 2345.0337969214524,
+      "width": 46,
+      "style": "card",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-22",
+      "label": "Charles IV",
+      "detail": "1690\u20131718",
+      "group": "g5",
+      "x": 1301,
+      "y": 2389.05,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "royal-5-23",
+      "label": "Leo IV",
+      "detail": "1720\u20131748",
+      "group": "g5",
+      "x": 1306,
+      "y": 2467.17,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-5-23",
+      "label": "Eleanor",
       "detail": "b. 1699",
-      "row": 2,
-      "col": 1,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p2-2",
-      "label": "Beren Bay",
-      "detail": "b. 1696",
-      "row": 2,
-      "col": 2,
-      "group": "g1",
-      "emphasis": false
-    },
-    {
-      "id": "p2-3",
-      "label": "Zora",
-      "detail": "b. 1699",
-      "row": 2,
-      "col": 3,
-      "group": "g1",
-      "emphasis": false
-    },
-    {
-      "id": "p2-4",
-      "label": "Calla Cress",
-      "detail": "b. 1696",
-      "row": 2,
-      "col": 4,
-      "group": "g2",
-      "emphasis": false
-    },
-    {
-      "id": "p2-5",
-      "label": "Ivo",
-      "detail": "b. 1699",
-      "row": 2,
-      "col": 5,
-      "group": "g2",
-      "emphasis": false
-    },
-    {
-      "id": "p2-6",
-      "label": "Dara Dell",
-      "detail": "b. 1696",
-      "row": 2,
-      "col": 6,
-      "group": "g3",
-      "emphasis": false
-    },
-    {
-      "id": "p2-7",
-      "label": "Jorin",
-      "detail": "b. 1699",
-      "row": 2,
-      "col": 7,
-      "group": "g3",
-      "emphasis": false
-    },
-    {
-      "id": "p2-8",
-      "label": "Eris Elm",
-      "detail": "b. 1696",
-      "row": 2,
-      "col": 8,
       "group": "g4",
-      "emphasis": false
-    },
-    {
-      "id": "p2-9",
-      "label": "Kira",
-      "detail": "b. 1699",
-      "row": 2,
-      "col": 9,
-      "group": "g4",
-      "emphasis": false
-    },
-    {
-      "id": "p3-0",
-      "label": "Alden Alder",
-      "detail": "b. 1724",
-      "row": 3,
-      "col": 0,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p3-1",
-      "label": "Liora",
-      "detail": "b. 1727",
-      "row": 3,
-      "col": 1,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p3-2",
-      "label": "Briar Bay",
-      "detail": "b. 1724",
-      "row": 3,
-      "col": 2,
-      "group": "g1",
-      "emphasis": false
-    },
-    {
-      "id": "p3-3",
-      "label": "Marek",
-      "detail": "b. 1727",
-      "row": 3,
-      "col": 3,
-      "group": "g1",
-      "emphasis": false
-    },
-    {
-      "id": "p3-4",
-      "label": "Cora Cress",
-      "detail": "b. 1724",
-      "row": 3,
-      "col": 4,
-      "group": "g2",
-      "emphasis": false
-    },
-    {
-      "id": "p3-5",
-      "label": "Neri",
-      "detail": "b. 1727",
-      "row": 3,
-      "col": 5,
-      "group": "g2",
-      "emphasis": false
-    },
-    {
-      "id": "p3-6",
-      "label": "Davin Dell",
-      "detail": "b. 1724",
-      "row": 3,
-      "col": 6,
-      "group": "g3",
-      "emphasis": false
-    },
-    {
-      "id": "p3-7",
-      "label": "Opal",
-      "detail": "b. 1727",
-      "row": 3,
-      "col": 7,
-      "group": "g3",
-      "emphasis": false
-    },
-    {
-      "id": "p3-8",
-      "label": "Esme Elm",
-      "detail": "b. 1724",
-      "row": 3,
-      "col": 8,
-      "group": "g4",
-      "emphasis": false
-    },
-    {
-      "id": "p3-9",
-      "label": "Perrin",
-      "detail": "b. 1727",
-      "row": 3,
-      "col": 9,
-      "group": "g4",
-      "emphasis": false
-    },
-    {
-      "id": "p4-0",
-      "label": "Ansel Alder",
-      "detail": "b. 1752",
-      "row": 4,
-      "col": 0,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p4-1",
-      "label": "Rhea",
-      "detail": "b. 1755",
-      "row": 4,
-      "col": 1,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p4-2",
-      "label": "Bela Bay",
-      "detail": "b. 1752",
-      "row": 4,
-      "col": 2,
-      "group": "g1",
-      "emphasis": false
-    },
-    {
-      "id": "p4-3",
-      "label": "Sorin",
-      "detail": "b. 1755",
-      "row": 4,
-      "col": 3,
-      "group": "g1",
-      "emphasis": false
-    },
-    {
-      "id": "p4-4",
-      "label": "Carys Cress",
-      "detail": "b. 1752",
-      "row": 4,
-      "col": 4,
-      "group": "g2",
-      "emphasis": false
-    },
-    {
-      "id": "p4-5",
-      "label": "Tessa",
-      "detail": "b. 1755",
-      "row": 4,
-      "col": 5,
-      "group": "g2",
-      "emphasis": false
-    },
-    {
-      "id": "p4-6",
-      "label": "Demi Dell",
-      "detail": "b. 1752",
-      "row": 4,
-      "col": 6,
-      "group": "g3",
-      "emphasis": false
-    },
-    {
-      "id": "p4-7",
-      "label": "Uria",
-      "detail": "b. 1755",
-      "row": 4,
-      "col": 7,
-      "group": "g3",
-      "emphasis": false
-    },
-    {
-      "id": "p4-8",
-      "label": "Evan Elm",
-      "detail": "b. 1752",
-      "row": 4,
-      "col": 8,
-      "group": "g4",
-      "emphasis": false
-    },
-    {
-      "id": "p4-9",
-      "label": "Veda",
-      "detail": "b. 1755",
-      "row": 4,
-      "col": 9,
-      "group": "g4",
-      "emphasis": false
-    },
-    {
-      "id": "p5-0",
-      "label": "Ada Alder",
-      "detail": "b. 1780",
-      "row": 5,
-      "col": 0,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p5-1",
-      "label": "Wren",
-      "detail": "b. 1783",
-      "row": 5,
-      "col": 1,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p5-2",
-      "label": "Bram Bay",
-      "detail": "b. 1780",
-      "row": 5,
-      "col": 2,
-      "group": "g1",
-      "emphasis": false
-    },
-    {
-      "id": "p5-3",
-      "label": "Xara",
-      "detail": "b. 1783",
-      "row": 5,
-      "col": 3,
-      "group": "g1",
-      "emphasis": false
-    },
-    {
-      "id": "p5-4",
-      "label": "Ciro Cress",
-      "detail": "b. 1780",
-      "row": 5,
-      "col": 4,
-      "group": "g2",
-      "emphasis": false
-    },
-    {
-      "id": "p5-5",
-      "label": "Ysol",
-      "detail": "b. 1783",
-      "row": 5,
-      "col": 5,
-      "group": "g2",
-      "emphasis": false
-    },
-    {
-      "id": "p5-6",
-      "label": "Dena Dell",
-      "detail": "b. 1780",
-      "row": 5,
-      "col": 6,
-      "group": "g3",
-      "emphasis": false
-    },
-    {
-      "id": "p5-7",
-      "label": "Zeph",
-      "detail": "b. 1783",
-      "row": 5,
-      "col": 7,
-      "group": "g3",
-      "emphasis": false
-    },
-    {
-      "id": "p5-8",
-      "label": "Enid Elm",
-      "detail": "b. 1780",
-      "row": 5,
-      "col": 8,
-      "group": "g4",
-      "emphasis": false
-    },
-    {
-      "id": "p5-9",
-      "label": "Isla",
-      "detail": "b. 1783",
-      "row": 5,
-      "col": 9,
-      "group": "g4",
-      "emphasis": false
-    },
-    {
-      "id": "p6-0",
-      "label": "Ari Alder",
-      "detail": "b. 1808",
-      "row": 6,
-      "col": 0,
-      "group": "g0",
-      "emphasis": true
-    },
-    {
-      "id": "p6-1",
-      "label": "Jessa",
-      "detail": "b. 1811",
-      "row": 6,
-      "col": 1,
-      "group": "g0",
-      "emphasis": false
-    },
-    {
-      "id": "p6-2",
-      "label": "Bryn Bay",
-      "detail": "b. 1808",
-      "row": 6,
-      "col": 2,
-      "group": "g1",
-      "emphasis": true
-    },
-    {
-      "id": "p6-3",
-      "label": "Kelan",
-      "detail": "b. 1811",
-      "row": 6,
-      "col": 3,
-      "group": "g1",
-      "emphasis": false
-    },
-    {
-      "id": "p6-4",
-      "label": "Cleo Cress",
-      "detail": "b. 1808",
-      "row": 6,
-      "col": 4,
-      "group": "g2",
-      "emphasis": true
-    },
-    {
-      "id": "p6-5",
-      "label": "Luca",
-      "detail": "b. 1811",
-      "row": 6,
-      "col": 5,
-      "group": "g2",
-      "emphasis": false
-    },
-    {
-      "id": "p6-6",
-      "label": "Dion Dell",
-      "detail": "b. 1808",
-      "row": 6,
-      "col": 6,
-      "group": "g3",
-      "emphasis": true
-    },
-    {
-      "id": "p6-7",
-      "label": "Mina",
-      "detail": "b. 1811",
-      "row": 6,
-      "col": 7,
-      "group": "g3",
-      "emphasis": false
-    },
-    {
-      "id": "p6-8",
-      "label": "Eira Elm",
-      "detail": "b. 1808",
-      "row": 6,
-      "col": 8,
-      "group": "g4",
-      "emphasis": true
-    },
-    {
-      "id": "p6-9",
-      "label": "Nico",
-      "detail": "b. 1811",
-      "row": 6,
-      "col": 9,
-      "group": "g4",
-      "emphasis": false
-    }
-  ],
-  "unions": [
-    {
-      "id": "u0-0",
-      "partners": [
-        "p0-0",
-        "p0-1"
-      ],
-      "children": [
-        "p1-0"
-      ]
-    },
-    {
-      "id": "u0-1",
-      "partners": [
-        "p0-2",
-        "p0-3"
-      ],
-      "children": [
-        "p1-2"
-      ]
-    },
-    {
-      "id": "u0-2",
-      "partners": [
-        "p0-4",
-        "p0-5"
-      ],
-      "children": [
-        "p1-4"
-      ]
-    },
-    {
-      "id": "u0-3",
-      "partners": [
-        "p0-6",
-        "p0-7"
-      ],
-      "children": [
-        "p1-6"
-      ]
-    },
-    {
-      "id": "u0-4",
-      "partners": [
-        "p0-8",
-        "p0-9"
-      ],
-      "children": [
-        "p1-8"
-      ]
-    },
-    {
-      "id": "u1-0",
-      "partners": [
-        "p1-0",
-        "p1-1"
-      ],
-      "children": [
-        "p2-0",
-        "p2-3"
-      ]
-    },
-    {
-      "id": "u1-1",
-      "partners": [
-        "p1-2",
-        "p1-3"
-      ],
-      "children": [
-        "p2-2"
-      ]
-    },
-    {
-      "id": "u1-2",
-      "partners": [
-        "p1-4",
-        "p1-5"
-      ],
-      "children": [
-        "p2-4"
-      ]
-    },
-    {
-      "id": "u1-3",
-      "partners": [
-        "p1-6",
-        "p1-7"
-      ],
-      "children": [
-        "p2-6"
-      ]
-    },
-    {
-      "id": "u1-4",
-      "partners": [
-        "p1-8",
-        "p1-9"
-      ],
-      "children": [
-        "p2-8"
-      ]
-    },
-    {
-      "id": "u2-0",
-      "partners": [
-        "p2-0",
-        "p2-1"
-      ],
-      "children": [
-        "p3-0"
-      ]
-    },
-    {
-      "id": "u2-1",
-      "partners": [
-        "p2-2",
-        "p2-3"
-      ],
-      "children": []
-    },
-    {
-      "id": "u2-2",
-      "partners": [
-        "p2-4",
-        "p2-5"
-      ],
-      "children": [
-        "p3-4"
-      ]
-    },
-    {
-      "id": "u2-3",
-      "partners": [
-        "p2-6",
-        "p2-7"
-      ],
-      "children": [
-        "p3-6",
-        "p3-9"
-      ]
-    },
-    {
-      "id": "u2-4",
-      "partners": [
-        "p2-8",
-        "p2-9"
-      ],
-      "children": [
-        "p3-8"
-      ]
-    },
-    {
-      "id": "u3-0",
-      "partners": [
-        "p3-0",
-        "p3-1"
-      ],
-      "children": [
-        "p4-0"
-      ]
-    },
-    {
-      "id": "u3-1",
-      "partners": [
-        "p3-2",
-        "p3-3"
-      ],
-      "children": [
-        "p4-2"
-      ]
-    },
-    {
-      "id": "u3-2",
-      "partners": [
-        "p3-4",
-        "p3-5"
-      ],
-      "children": [
-        "p4-4"
-      ]
-    },
-    {
-      "id": "u3-3",
-      "partners": [
-        "p3-6",
-        "p3-7"
-      ],
-      "children": [
-        "p4-6"
-      ]
-    },
-    {
-      "id": "u3-4",
-      "partners": [
-        "p3-8",
-        "p3-9"
-      ],
-      "children": [
-        "p4-8"
-      ]
-    },
-    {
-      "id": "u4-0",
-      "partners": [
-        "p4-0",
-        "p4-1"
-      ],
-      "children": [
-        "p5-0"
-      ]
-    },
-    {
-      "id": "u4-1",
-      "partners": [
-        "p4-2",
-        "p4-3"
-      ],
-      "children": [
-        "p5-2"
-      ]
-    },
-    {
-      "id": "u4-2",
-      "partners": [
-        "p4-4",
-        "p4-5"
-      ],
-      "children": [
-        "p5-4"
-      ]
-    },
-    {
-      "id": "u4-3",
-      "partners": [
-        "p4-6",
-        "p4-7"
-      ],
-      "children": [
-        "p5-6"
-      ]
-    },
-    {
-      "id": "u4-4",
-      "partners": [
-        "p4-8",
-        "p4-9"
-      ],
-      "children": [
-        "p5-8"
-      ]
-    },
-    {
-      "id": "u5-0",
-      "partners": [
-        "p5-0",
-        "p5-1"
-      ],
-      "children": [
-        "p6-0"
-      ]
-    },
-    {
-      "id": "u5-1",
-      "partners": [
-        "p5-2",
-        "p5-3"
-      ],
-      "children": [
-        "p6-2"
-      ]
-    },
-    {
-      "id": "u5-2",
-      "partners": [
-        "p5-4",
-        "p5-5"
-      ],
-      "children": [
-        "p6-4"
-      ]
-    },
-    {
-      "id": "u5-3",
-      "partners": [
-        "p5-6",
-        "p5-7"
-      ],
-      "children": [
-        "p6-6"
-      ]
-    },
-    {
-      "id": "u5-4",
-      "partners": [
-        "p5-8",
-        "p5-9"
-      ],
-      "children": [
-        "p6-8"
-      ]
+      "x": 1413,
+      "y": 2467.17,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-5-24",
+      "label": "Martin IV",
+      "detail": "1753\u20131781",
+      "group": "g5",
+      "x": 1312,
+      "y": 2555.0,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-95998",
+      "icon_width": 32,
+      "variant": 29
+    },
+    {
+      "id": "partner-5-24",
+      "label": "Margaret",
+      "detail": "b. 1732",
+      "group": "g5",
+      "x": 1419,
+      "y": 2555.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-0",
+      "label": "Julian I",
+      "detail": "935\u2013963",
+      "group": "g6",
+      "x": 1546,
+      "y": 398.0,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-0",
+      "label": "Alice",
+      "detail": "b. 914",
+      "group": "g6",
+      "x": 1653,
+      "y": 398.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-1",
+      "label": "Henry I",
+      "detail": "971\u2013999",
+      "group": "g6",
+      "x": 1552,
+      "y": 493.0,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-6-2",
+      "label": "Arthur I",
+      "detail": "1012\u20131040",
+      "group": "g6",
+      "x": 1558,
+      "y": 600.39,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-862",
+      "icon_width": 32,
+      "variant": 8
+    },
+    {
+      "id": "partner-6-2",
+      "label": "Anne",
+      "detail": "b. 991",
+      "group": "g6",
+      "x": 1665,
+      "y": 600.39,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-6-2",
+      "label": "Hugh",
+      "detail": "b. 996",
+      "group": "g6",
+      "x": 1709,
+      "y": 649.3800809205692,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-3",
+      "label": "Felix I",
+      "detail": "1049\u20131077",
+      "group": "g6",
+      "x": 1561,
+      "y": 698.37,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-3",
+      "label": "Mary",
+      "detail": "b. 1028",
+      "group": "g6",
+      "x": 1668,
+      "y": 698.37,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-4",
+      "label": "Adrian I",
+      "detail": "1083\u20131111",
+      "group": "g6",
+      "x": 1560,
+      "y": 786.38,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-4",
+      "label": "Irene",
+      "detail": "b. 1062",
+      "group": "g6",
+      "x": 1667,
+      "y": 786.38,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-5",
+      "label": "Margaret I",
+      "detail": "1120\u20131148",
+      "group": "g6",
+      "x": 1555,
+      "y": 886.38,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-5",
+      "label": "Francis",
+      "detail": "b. 1099",
+      "group": "g6",
+      "x": 1662,
+      "y": 886.38,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-6",
+      "label": "Hugh I",
+      "detail": "1161\u20131189",
+      "group": "g6",
+      "x": 1549,
+      "y": 993.25,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "cadet-6-6",
+      "label": "Leo",
+      "detail": "b. 1145",
+      "group": "g6",
+      "x": 1700,
+      "y": 1039.8087042400723,
+      "width": 46,
+      "style": "card",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-7",
+      "label": "Robert II",
+      "detail": "1196\u20131224",
+      "group": "g6",
+      "x": 1542,
+      "y": 1086.37,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-95998",
+      "icon_width": 32,
+      "variant": 13
+    },
+    {
+      "id": "partner-6-7",
+      "label": "Matilda",
+      "detail": "b. 1175",
+      "group": "g6",
+      "x": 1649,
+      "y": 1086.37,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-8",
+      "label": "Philip II",
+      "detail": "1230\u20131258",
+      "group": "g6",
+      "x": 1537,
+      "y": 1176.15,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-8",
+      "label": "Alice",
+      "detail": "b. 1209",
+      "group": "g5",
+      "x": 1644,
+      "y": 1176.15,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-9",
+      "label": "Louis II",
+      "detail": "1270\u20131298",
+      "group": "g6",
+      "x": 1537,
+      "y": 1280.55,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-9",
+      "label": "Emma",
+      "detail": "b. 1249",
+      "group": "g6",
+      "x": 1644,
+      "y": 1280.55,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-10",
+      "label": "Henri II",
+      "detail": "1309\u20131337",
+      "group": "g6",
+      "x": 1540,
+      "y": 1384.52,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-10",
+      "label": "Anne",
+      "detail": "b. 1288",
+      "group": "g6",
+      "x": 1647,
+      "y": 1384.52,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-6-10",
+      "label": "Hugh",
+      "detail": "b. 1293",
+      "group": "g6",
+      "x": 1691,
+      "y": 1429.249686577963,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-11",
+      "label": "Conrad II",
+      "detail": "1343\u20131371",
+      "group": "g6",
+      "x": 1547,
+      "y": 1473.98,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-6-12",
+      "label": "Anne II",
+      "detail": "1379\u20131407",
+      "group": "g6",
+      "x": 1553,
+      "y": 1567.61,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-11390",
+      "icon_width": 32,
+      "variant": 18
+    },
+    {
+      "id": "partner-6-12",
+      "label": "Charles",
+      "detail": "b. 1358",
+      "group": "g6",
+      "x": 1660,
+      "y": 1567.61,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-13",
+      "label": "Frederick II",
+      "detail": "1419\u20131447",
+      "group": "g6",
+      "x": 1559,
+      "y": 1674.67,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-13",
+      "label": "Rose",
+      "detail": "b. 1398",
+      "group": "g6",
+      "x": 1666,
+      "y": 1674.67,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-14",
+      "label": "Alaric III",
+      "detail": "1457\u20131485",
+      "group": "g6",
+      "x": 1561,
+      "y": 1774.1,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-14",
+      "label": "Adele",
+      "detail": "b. 1436",
+      "group": "g6",
+      "x": 1668,
+      "y": 1774.1,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-6-14",
+      "label": "Leo",
+      "detail": "b. 1441",
+      "group": "g6",
+      "x": 1712,
+      "y": 1818.0870019182407,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-15",
+      "label": "Baldwin III",
+      "detail": "1490\u20131518",
+      "group": "g6",
+      "x": 1559,
+      "y": 1862.07,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-15",
+      "label": "Matilda",
+      "detail": "b. 1469",
+      "group": "g6",
+      "x": 1666,
+      "y": 1862.07,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-16",
+      "label": "Roland III",
+      "detail": "1528\u20131556",
+      "group": "g6",
+      "x": 1554,
+      "y": 1960.63,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "royal-6-17",
+      "label": "Victor III",
+      "detail": "1568\u20131596",
+      "group": "g6",
+      "x": 1548,
+      "y": 2067.91,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-16367",
+      "icon_width": 32,
+      "variant": 23
+    },
+    {
+      "id": "partner-6-17",
+      "label": "Emma",
+      "detail": "b. 1547",
+      "group": "g5",
+      "x": 1655,
+      "y": 2067.91,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-18",
+      "label": "Charles III",
+      "detail": "1604\u20131632",
+      "group": "g6",
+      "x": 1541,
+      "y": 2162.37,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-18",
+      "label": "Anne",
+      "detail": "b. 1583",
+      "group": "g6",
+      "x": 1648,
+      "y": 2162.37,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-6-18",
+      "label": "Hugh",
+      "detail": "b. 1588",
+      "group": "g6",
+      "x": 1692,
+      "y": 2206.881586853359,
+      "width": 46,
+      "style": "card",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-19",
+      "label": "Diana III",
+      "detail": "1638\u20131666",
+      "group": "g6",
+      "x": 1537,
+      "y": 2251.39,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-19",
+      "label": "Conrad",
+      "detail": "b. 1617",
+      "group": "g6",
+      "x": 1644,
+      "y": 2251.39,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-20",
+      "label": "Martin III",
+      "detail": "1677\u20131705",
+      "group": "g6",
+      "x": 1537,
+      "y": 2354.65,
+      "width": 77,
+      "style": "card",
+      "size": 12.2
+    },
+    {
+      "id": "partner-6-20",
+      "label": "Irene",
+      "detail": "b. 1656",
+      "group": "g6",
+      "x": 1644,
+      "y": 2354.65,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "royal-6-21",
+      "label": "Richard IV",
+      "detail": "1717\u20131745",
+      "group": "g6",
+      "x": 1541,
+      "y": 2459.67,
+      "width": 73,
+      "style": "plain",
+      "size": 12.2
+    },
+    {
+      "id": "royal-6-22",
+      "label": "Stephen IV",
+      "detail": "1751\u20131779",
+      "group": "g6",
+      "x": 1548,
+      "y": 2550.0,
+      "width": 112,
+      "style": "emblem",
+      "size": 12,
+      "icon": "museum-111317",
+      "icon_width": 32,
+      "variant": 28
+    },
+    {
+      "id": "partner-6-22",
+      "label": "Adele",
+      "detail": "b. 1730",
+      "group": "g6",
+      "x": 1655,
+      "y": 2550.0,
+      "width": 70,
+      "style": "plain",
+      "size": 10.5
+    },
+    {
+      "id": "cadet-6-22",
+      "label": "Leo",
+      "detail": "b. 1735",
+      "group": "g6",
+      "x": 1699,
+      "y": 2595.0,
+      "width": 46,
+      "style": "plain",
+      "size": 10.5
     }
   ],
   "edges": [
     {
-      "id": "uncertain-briar",
-      "source": "u2-1",
-      "target": "p3-2",
+      "id": "anc-west",
+      "source": "progenitor",
+      "target": "western-heir",
+      "kind": "descent"
+    },
+    {
+      "id": "anc-east",
+      "source": "progenitor",
+      "target": "eastern-heir",
+      "kind": "descent"
+    },
+    {
+      "id": "founding-0",
+      "source": "western-heir",
+      "target": "royal-0-0",
+      "kind": "descent",
+      "corridor_y": 365
+    },
+    {
+      "id": "parent-0-3",
+      "source": "royal-0-2",
+      "target": "royal-0-3",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-0-8",
+      "source": "royal-0-7",
+      "target": "royal-0-8",
+      "kind": "descent"
+    },
+    {
+      "id": "cadet-parent-0-8",
+      "source": "royal-0-7",
+      "target": "cadet-0-8",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-0-13",
+      "source": "royal-0-12",
+      "target": "royal-0-13",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-0-18",
+      "source": "royal-0-17",
+      "target": "royal-0-18",
+      "kind": "descent"
+    },
+    {
+      "id": "uncertain-0-21",
+      "source": "union-0-20",
+      "target": "royal-0-21",
       "kind": "uncertain"
+    },
+    {
+      "id": "parent-0-23",
+      "source": "royal-0-22",
+      "target": "royal-0-23",
+      "kind": "descent"
+    },
+    {
+      "id": "founding-1",
+      "source": "western-heir",
+      "target": "royal-1-0",
+      "kind": "descent",
+      "corridor_y": 369
+    },
+    {
+      "id": "parent-1-2",
+      "source": "royal-1-1",
+      "target": "royal-1-2",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-1-7",
+      "source": "royal-1-6",
+      "target": "royal-1-7",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-1-12",
+      "source": "royal-1-11",
+      "target": "royal-1-12",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-1-17",
+      "source": "royal-1-16",
+      "target": "royal-1-17",
+      "kind": "descent"
+    },
+    {
+      "id": "uncertain-1-20",
+      "source": "union-1-19",
+      "target": "royal-1-20",
+      "kind": "uncertain"
+    },
+    {
+      "id": "parent-1-22",
+      "source": "royal-1-21",
+      "target": "royal-1-22",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-1-27",
+      "source": "royal-1-26",
+      "target": "royal-1-27",
+      "kind": "descent"
+    },
+    {
+      "id": "founding-2",
+      "source": "western-heir",
+      "target": "royal-2-0",
+      "kind": "descent",
+      "corridor_y": 373
+    },
+    {
+      "id": "parent-2-1",
+      "source": "royal-2-0",
+      "target": "royal-2-1",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-2-6",
+      "source": "royal-2-5",
+      "target": "royal-2-6",
+      "kind": "descent"
+    },
+    {
+      "id": "cadet-parent-2-6",
+      "source": "royal-2-5",
+      "target": "cadet-2-6",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-2-11",
+      "source": "royal-2-10",
+      "target": "royal-2-11",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-2-16",
+      "source": "royal-2-15",
+      "target": "royal-2-16",
+      "kind": "descent"
+    },
+    {
+      "id": "uncertain-2-19",
+      "source": "union-2-18",
+      "target": "royal-2-19",
+      "kind": "uncertain"
+    },
+    {
+      "id": "parent-2-21",
+      "source": "royal-2-20",
+      "target": "royal-2-21",
+      "kind": "descent"
+    },
+    {
+      "id": "founding-3",
+      "source": "eastern-heir",
+      "target": "royal-3-0",
+      "kind": "descent",
+      "corridor_y": 377
+    },
+    {
+      "id": "parent-3-5",
+      "source": "royal-3-4",
+      "target": "royal-3-5",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-3-10",
+      "source": "royal-3-9",
+      "target": "royal-3-10",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-3-15",
+      "source": "royal-3-14",
+      "target": "royal-3-15",
+      "kind": "descent"
+    },
+    {
+      "id": "uncertain-3-18",
+      "source": "union-3-17",
+      "target": "royal-3-18",
+      "kind": "uncertain"
+    },
+    {
+      "id": "parent-3-20",
+      "source": "royal-3-19",
+      "target": "royal-3-20",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-3-25",
+      "source": "royal-3-24",
+      "target": "royal-3-25",
+      "kind": "descent"
+    },
+    {
+      "id": "founding-4",
+      "source": "eastern-heir",
+      "target": "royal-4-0",
+      "kind": "descent",
+      "corridor_y": 381
+    },
+    {
+      "id": "parent-4-4",
+      "source": "royal-4-3",
+      "target": "royal-4-4",
+      "kind": "descent"
+    },
+    {
+      "id": "cadet-parent-4-4",
+      "source": "royal-4-3",
+      "target": "cadet-4-4",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-4-9",
+      "source": "royal-4-8",
+      "target": "royal-4-9",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-4-14",
+      "source": "royal-4-13",
+      "target": "royal-4-14",
+      "kind": "descent"
+    },
+    {
+      "id": "uncertain-4-17",
+      "source": "union-4-16",
+      "target": "royal-4-17",
+      "kind": "uncertain"
+    },
+    {
+      "id": "parent-4-19",
+      "source": "royal-4-18",
+      "target": "royal-4-19",
+      "kind": "descent"
+    },
+    {
+      "id": "founding-5",
+      "source": "eastern-heir",
+      "target": "royal-5-0",
+      "kind": "descent",
+      "corridor_y": 385
+    },
+    {
+      "id": "parent-5-3",
+      "source": "royal-5-2",
+      "target": "royal-5-3",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-5-8",
+      "source": "royal-5-7",
+      "target": "royal-5-8",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-5-13",
+      "source": "royal-5-12",
+      "target": "royal-5-13",
+      "kind": "descent"
+    },
+    {
+      "id": "cadet-parent-5-13",
+      "source": "royal-5-12",
+      "target": "cadet-5-13",
+      "kind": "descent"
+    },
+    {
+      "id": "uncertain-5-16",
+      "source": "union-5-15",
+      "target": "royal-5-16",
+      "kind": "uncertain"
+    },
+    {
+      "id": "parent-5-18",
+      "source": "royal-5-17",
+      "target": "royal-5-18",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-5-23",
+      "source": "royal-5-22",
+      "target": "royal-5-23",
+      "kind": "descent"
+    },
+    {
+      "id": "founding-6",
+      "source": "eastern-heir",
+      "target": "royal-6-0",
+      "kind": "descent",
+      "corridor_y": 389
+    },
+    {
+      "id": "parent-6-2",
+      "source": "royal-6-1",
+      "target": "royal-6-2",
+      "kind": "descent"
+    },
+    {
+      "id": "cadet-parent-6-2",
+      "source": "royal-6-1",
+      "target": "cadet-6-2",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-6-7",
+      "source": "royal-6-6",
+      "target": "royal-6-7",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-6-12",
+      "source": "royal-6-11",
+      "target": "royal-6-12",
+      "kind": "descent"
+    },
+    {
+      "id": "uncertain-6-15",
+      "source": "union-6-14",
+      "target": "royal-6-15",
+      "kind": "uncertain"
+    },
+    {
+      "id": "parent-6-17",
+      "source": "royal-6-16",
+      "target": "royal-6-17",
+      "kind": "descent"
+    },
+    {
+      "id": "parent-6-22",
+      "source": "royal-6-21",
+      "target": "royal-6-22",
+      "kind": "descent"
+    },
+    {
+      "id": "cadet-parent-6-22",
+      "source": "royal-6-21",
+      "target": "cadet-6-22",
+      "kind": "descent"
     }
   ],
-  "reading_note": "Double lines join partners; children descend from the junction. Dashed descent is uncertain. Generations are schematic; unlinked spouses have no recorded ancestry here.",
-  "lanes": [
+  "unions": [
     {
-      "label": "House Alder",
-      "group": "g0",
-      "col": 0,
-      "span": 2
+      "id": "union-0-0",
+      "partners": [
+        "royal-0-0",
+        "partner-0-0"
+      ],
+      "children": [
+        "royal-0-1"
+      ]
     },
     {
-      "label": "House Bay",
-      "group": "g1",
-      "col": 2,
-      "span": 2
+      "id": "union-0-1",
+      "partners": [
+        "royal-0-1",
+        "partner-0-1"
+      ],
+      "children": [
+        "royal-0-2"
+      ]
     },
     {
-      "label": "House Cress",
-      "group": "g2",
-      "col": 4,
-      "span": 2
+      "id": "union-0-3",
+      "partners": [
+        "royal-0-3",
+        "partner-0-3"
+      ],
+      "children": [
+        "royal-0-4",
+        "cadet-0-4"
+      ]
     },
     {
-      "label": "House Dell",
-      "group": "g3",
-      "col": 6,
-      "span": 2
+      "id": "union-0-4",
+      "partners": [
+        "royal-0-4",
+        "partner-0-4"
+      ],
+      "children": [
+        "royal-0-5"
+      ]
     },
     {
-      "label": "House Elm",
-      "group": "g4",
-      "col": 8,
-      "span": 2
+      "id": "union-0-5",
+      "partners": [
+        "royal-0-5",
+        "partner-0-5"
+      ],
+      "children": [
+        "royal-0-6"
+      ]
+    },
+    {
+      "id": "union-0-6",
+      "partners": [
+        "royal-0-6",
+        "partner-0-6"
+      ],
+      "children": [
+        "royal-0-7",
+        "partner-1-8"
+      ]
+    },
+    {
+      "id": "union-0-8",
+      "partners": [
+        "royal-0-8",
+        "partner-0-8"
+      ],
+      "children": [
+        "royal-0-9"
+      ]
+    },
+    {
+      "id": "union-0-9",
+      "partners": [
+        "royal-0-9",
+        "partner-0-9"
+      ],
+      "children": [
+        "royal-0-10"
+      ]
+    },
+    {
+      "id": "union-0-10",
+      "partners": [
+        "royal-0-10",
+        "partner-0-10"
+      ],
+      "children": [
+        "royal-0-11"
+      ]
+    },
+    {
+      "id": "union-0-11",
+      "partners": [
+        "royal-0-11",
+        "partner-0-11"
+      ],
+      "children": [
+        "royal-0-12",
+        "cadet-0-12"
+      ]
+    },
+    {
+      "id": "union-0-13",
+      "partners": [
+        "royal-0-13",
+        "partner-0-13"
+      ],
+      "children": [
+        "royal-0-14",
+        "partner-1-17"
+      ]
+    },
+    {
+      "id": "union-0-14",
+      "partners": [
+        "royal-0-14",
+        "partner-0-14"
+      ],
+      "children": [
+        "royal-0-15"
+      ]
+    },
+    {
+      "id": "union-0-15",
+      "partners": [
+        "royal-0-15",
+        "partner-0-15"
+      ],
+      "children": [
+        "royal-0-16",
+        "cadet-0-16"
+      ]
+    },
+    {
+      "id": "union-0-16",
+      "partners": [
+        "royal-0-16",
+        "partner-0-16"
+      ],
+      "children": [
+        "royal-0-17"
+      ]
+    },
+    {
+      "id": "union-0-18",
+      "partners": [
+        "royal-0-18",
+        "partner-0-18"
+      ],
+      "children": [
+        "royal-0-19",
+        "partner-1-23"
+      ]
+    },
+    {
+      "id": "union-0-19",
+      "partners": [
+        "royal-0-19",
+        "partner-0-19"
+      ],
+      "children": [
+        "royal-0-20",
+        "cadet-0-20"
+      ]
+    },
+    {
+      "id": "union-0-20",
+      "partners": [
+        "royal-0-20",
+        "partner-0-20"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-0-21",
+      "partners": [
+        "royal-0-21",
+        "partner-0-21"
+      ],
+      "children": [
+        "royal-0-22"
+      ]
+    },
+    {
+      "id": "union-0-23",
+      "partners": [
+        "royal-0-23",
+        "partner-0-23"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-1-0",
+      "partners": [
+        "royal-1-0",
+        "partner-1-0"
+      ],
+      "children": [
+        "royal-1-1"
+      ]
+    },
+    {
+      "id": "union-1-2",
+      "partners": [
+        "royal-1-2",
+        "partner-1-2"
+      ],
+      "children": [
+        "royal-1-3"
+      ]
+    },
+    {
+      "id": "union-1-3",
+      "partners": [
+        "royal-1-3",
+        "partner-1-3"
+      ],
+      "children": [
+        "royal-1-4"
+      ]
+    },
+    {
+      "id": "union-1-4",
+      "partners": [
+        "royal-1-4",
+        "partner-1-4"
+      ],
+      "children": [
+        "royal-1-5"
+      ]
+    },
+    {
+      "id": "union-1-5",
+      "partners": [
+        "royal-1-5",
+        "partner-1-5"
+      ],
+      "children": [
+        "royal-1-6"
+      ]
+    },
+    {
+      "id": "union-1-7",
+      "partners": [
+        "royal-1-7",
+        "partner-1-7"
+      ],
+      "children": [
+        "royal-1-8"
+      ]
+    },
+    {
+      "id": "union-1-8",
+      "partners": [
+        "royal-1-8",
+        "partner-1-8"
+      ],
+      "children": [
+        "royal-1-9",
+        "partner-2-8"
+      ]
+    },
+    {
+      "id": "union-1-9",
+      "partners": [
+        "royal-1-9",
+        "partner-1-9"
+      ],
+      "children": [
+        "royal-1-10"
+      ]
+    },
+    {
+      "id": "union-1-10",
+      "partners": [
+        "royal-1-10",
+        "partner-1-10"
+      ],
+      "children": [
+        "royal-1-11"
+      ]
+    },
+    {
+      "id": "union-1-12",
+      "partners": [
+        "royal-1-12",
+        "partner-1-12"
+      ],
+      "children": [
+        "royal-1-13"
+      ]
+    },
+    {
+      "id": "union-1-13",
+      "partners": [
+        "royal-1-13",
+        "partner-1-13"
+      ],
+      "children": [
+        "royal-1-14"
+      ]
+    },
+    {
+      "id": "union-1-14",
+      "partners": [
+        "royal-1-14",
+        "partner-1-14"
+      ],
+      "children": [
+        "royal-1-15"
+      ]
+    },
+    {
+      "id": "union-1-15",
+      "partners": [
+        "royal-1-15",
+        "partner-1-15"
+      ],
+      "children": [
+        "royal-1-16"
+      ]
+    },
+    {
+      "id": "union-1-17",
+      "partners": [
+        "royal-1-17",
+        "partner-1-17"
+      ],
+      "children": [
+        "royal-1-18"
+      ]
+    },
+    {
+      "id": "union-1-18",
+      "partners": [
+        "royal-1-18",
+        "partner-1-18"
+      ],
+      "children": [
+        "royal-1-19"
+      ]
+    },
+    {
+      "id": "union-1-19",
+      "partners": [
+        "royal-1-19",
+        "partner-1-19"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-1-20",
+      "partners": [
+        "royal-1-20",
+        "partner-1-20"
+      ],
+      "children": [
+        "royal-1-21",
+        "partner-2-17"
+      ]
+    },
+    {
+      "id": "union-1-22",
+      "partners": [
+        "royal-1-22",
+        "partner-1-22"
+      ],
+      "children": [
+        "royal-1-23"
+      ]
+    },
+    {
+      "id": "union-1-23",
+      "partners": [
+        "royal-1-23",
+        "partner-1-23"
+      ],
+      "children": [
+        "royal-1-24"
+      ]
+    },
+    {
+      "id": "union-1-24",
+      "partners": [
+        "royal-1-24",
+        "partner-1-24"
+      ],
+      "children": [
+        "royal-1-25"
+      ]
+    },
+    {
+      "id": "union-1-25",
+      "partners": [
+        "royal-1-25",
+        "partner-1-25"
+      ],
+      "children": [
+        "royal-1-26"
+      ]
+    },
+    {
+      "id": "union-1-27",
+      "partners": [
+        "royal-1-27",
+        "partner-1-27"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-2-1",
+      "partners": [
+        "royal-2-1",
+        "partner-2-1"
+      ],
+      "children": [
+        "royal-2-2",
+        "cadet-2-2"
+      ]
+    },
+    {
+      "id": "union-2-2",
+      "partners": [
+        "royal-2-2",
+        "partner-2-2"
+      ],
+      "children": [
+        "royal-2-3"
+      ]
+    },
+    {
+      "id": "union-2-3",
+      "partners": [
+        "royal-2-3",
+        "partner-2-3"
+      ],
+      "children": [
+        "royal-2-4"
+      ]
+    },
+    {
+      "id": "union-2-4",
+      "partners": [
+        "royal-2-4",
+        "partner-2-4"
+      ],
+      "children": [
+        "royal-2-5"
+      ]
+    },
+    {
+      "id": "union-2-6",
+      "partners": [
+        "royal-2-6",
+        "partner-2-6"
+      ],
+      "children": [
+        "royal-2-7",
+        "partner-3-8"
+      ]
+    },
+    {
+      "id": "union-2-7",
+      "partners": [
+        "royal-2-7",
+        "partner-2-7"
+      ],
+      "children": [
+        "royal-2-8"
+      ]
+    },
+    {
+      "id": "union-2-8",
+      "partners": [
+        "royal-2-8",
+        "partner-2-8"
+      ],
+      "children": [
+        "royal-2-9"
+      ]
+    },
+    {
+      "id": "union-2-9",
+      "partners": [
+        "royal-2-9",
+        "partner-2-9"
+      ],
+      "children": [
+        "royal-2-10",
+        "cadet-2-10"
+      ]
+    },
+    {
+      "id": "union-2-11",
+      "partners": [
+        "royal-2-11",
+        "partner-2-11"
+      ],
+      "children": [
+        "royal-2-12"
+      ]
+    },
+    {
+      "id": "union-2-12",
+      "partners": [
+        "royal-2-12",
+        "partner-2-12"
+      ],
+      "children": [
+        "royal-2-13"
+      ]
+    },
+    {
+      "id": "union-2-13",
+      "partners": [
+        "royal-2-13",
+        "partner-2-13"
+      ],
+      "children": [
+        "royal-2-14",
+        "cadet-2-14",
+        "partner-3-17"
+      ]
+    },
+    {
+      "id": "union-2-14",
+      "partners": [
+        "royal-2-14",
+        "partner-2-14"
+      ],
+      "children": [
+        "royal-2-15"
+      ]
+    },
+    {
+      "id": "union-2-16",
+      "partners": [
+        "royal-2-16",
+        "partner-2-16"
+      ],
+      "children": [
+        "royal-2-17"
+      ]
+    },
+    {
+      "id": "union-2-17",
+      "partners": [
+        "royal-2-17",
+        "partner-2-17"
+      ],
+      "children": [
+        "royal-2-18",
+        "cadet-2-18"
+      ]
+    },
+    {
+      "id": "union-2-18",
+      "partners": [
+        "royal-2-18",
+        "partner-2-18"
+      ],
+      "children": [
+        "partner-3-23"
+      ]
+    },
+    {
+      "id": "union-2-19",
+      "partners": [
+        "royal-2-19",
+        "partner-2-19"
+      ],
+      "children": [
+        "royal-2-20"
+      ]
+    },
+    {
+      "id": "union-2-21",
+      "partners": [
+        "royal-2-21",
+        "partner-2-21"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-3-0",
+      "partners": [
+        "royal-3-0",
+        "partner-3-0"
+      ],
+      "children": [
+        "royal-3-1"
+      ]
+    },
+    {
+      "id": "union-3-1",
+      "partners": [
+        "royal-3-1",
+        "partner-3-1"
+      ],
+      "children": [
+        "royal-3-2"
+      ]
+    },
+    {
+      "id": "union-3-2",
+      "partners": [
+        "royal-3-2",
+        "partner-3-2"
+      ],
+      "children": [
+        "royal-3-3",
+        "cadet-3-3"
+      ]
+    },
+    {
+      "id": "union-3-3",
+      "partners": [
+        "royal-3-3",
+        "partner-3-3"
+      ],
+      "children": [
+        "royal-3-4"
+      ]
+    },
+    {
+      "id": "union-3-5",
+      "partners": [
+        "royal-3-5",
+        "partner-3-5"
+      ],
+      "children": [
+        "royal-3-6"
+      ]
+    },
+    {
+      "id": "union-3-6",
+      "partners": [
+        "royal-3-6",
+        "partner-3-6"
+      ],
+      "children": [
+        "royal-3-7",
+        "cadet-3-7"
+      ]
+    },
+    {
+      "id": "union-3-7",
+      "partners": [
+        "royal-3-7",
+        "partner-3-7"
+      ],
+      "children": [
+        "royal-3-8"
+      ]
+    },
+    {
+      "id": "union-3-8",
+      "partners": [
+        "royal-3-8",
+        "partner-3-8"
+      ],
+      "children": [
+        "royal-3-9"
+      ]
+    },
+    {
+      "id": "union-3-10",
+      "partners": [
+        "royal-3-10",
+        "partner-3-10"
+      ],
+      "children": [
+        "royal-3-11",
+        "cadet-3-11"
+      ]
+    },
+    {
+      "id": "union-3-11",
+      "partners": [
+        "royal-3-11",
+        "partner-3-11"
+      ],
+      "children": [
+        "royal-3-12"
+      ]
+    },
+    {
+      "id": "union-3-12",
+      "partners": [
+        "royal-3-12",
+        "partner-3-12"
+      ],
+      "children": [
+        "royal-3-13"
+      ]
+    },
+    {
+      "id": "union-3-13",
+      "partners": [
+        "royal-3-13",
+        "partner-3-13"
+      ],
+      "children": [
+        "royal-3-14"
+      ]
+    },
+    {
+      "id": "union-3-15",
+      "partners": [
+        "royal-3-15",
+        "partner-3-15"
+      ],
+      "children": [
+        "royal-3-16"
+      ]
+    },
+    {
+      "id": "union-3-16",
+      "partners": [
+        "royal-3-16",
+        "partner-3-16"
+      ],
+      "children": [
+        "royal-3-17"
+      ]
+    },
+    {
+      "id": "union-3-17",
+      "partners": [
+        "royal-3-17",
+        "partner-3-17"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-3-18",
+      "partners": [
+        "royal-3-18",
+        "partner-3-18"
+      ],
+      "children": [
+        "royal-3-19",
+        "partner-4-17"
+      ]
+    },
+    {
+      "id": "union-3-20",
+      "partners": [
+        "royal-3-20",
+        "partner-3-20"
+      ],
+      "children": [
+        "royal-3-21"
+      ]
+    },
+    {
+      "id": "union-3-21",
+      "partners": [
+        "royal-3-21",
+        "partner-3-21"
+      ],
+      "children": [
+        "royal-3-22"
+      ]
+    },
+    {
+      "id": "union-3-22",
+      "partners": [
+        "royal-3-22",
+        "partner-3-22"
+      ],
+      "children": [
+        "royal-3-23"
+      ]
+    },
+    {
+      "id": "union-3-23",
+      "partners": [
+        "royal-3-23",
+        "partner-3-23"
+      ],
+      "children": [
+        "royal-3-24"
+      ]
+    },
+    {
+      "id": "union-3-25",
+      "partners": [
+        "royal-3-25",
+        "partner-3-25"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-4-0",
+      "partners": [
+        "royal-4-0",
+        "partner-4-0"
+      ],
+      "children": [
+        "royal-4-1"
+      ]
+    },
+    {
+      "id": "union-4-1",
+      "partners": [
+        "royal-4-1",
+        "partner-4-1"
+      ],
+      "children": [
+        "royal-4-2"
+      ]
+    },
+    {
+      "id": "union-4-2",
+      "partners": [
+        "royal-4-2",
+        "partner-4-2"
+      ],
+      "children": [
+        "royal-4-3"
+      ]
+    },
+    {
+      "id": "union-4-4",
+      "partners": [
+        "royal-4-4",
+        "partner-4-4"
+      ],
+      "children": [
+        "royal-4-5"
+      ]
+    },
+    {
+      "id": "union-4-5",
+      "partners": [
+        "royal-4-5",
+        "partner-4-5"
+      ],
+      "children": [
+        "royal-4-6"
+      ]
+    },
+    {
+      "id": "union-4-6",
+      "partners": [
+        "royal-4-6",
+        "partner-4-6"
+      ],
+      "children": [
+        "royal-4-7",
+        "partner-5-8"
+      ]
+    },
+    {
+      "id": "union-4-7",
+      "partners": [
+        "royal-4-7",
+        "partner-4-7"
+      ],
+      "children": [
+        "royal-4-8",
+        "cadet-4-8"
+      ]
+    },
+    {
+      "id": "union-4-9",
+      "partners": [
+        "royal-4-9",
+        "partner-4-9"
+      ],
+      "children": [
+        "royal-4-10"
+      ]
+    },
+    {
+      "id": "union-4-10",
+      "partners": [
+        "royal-4-10",
+        "partner-4-10"
+      ],
+      "children": [
+        "royal-4-11"
+      ]
+    },
+    {
+      "id": "union-4-11",
+      "partners": [
+        "royal-4-11",
+        "partner-4-11"
+      ],
+      "children": [
+        "royal-4-12",
+        "cadet-4-12"
+      ]
+    },
+    {
+      "id": "union-4-12",
+      "partners": [
+        "royal-4-12",
+        "partner-4-12"
+      ],
+      "children": [
+        "royal-4-13"
+      ]
+    },
+    {
+      "id": "union-4-14",
+      "partners": [
+        "royal-4-14",
+        "partner-4-14"
+      ],
+      "children": [
+        "royal-4-15"
+      ]
+    },
+    {
+      "id": "union-4-15",
+      "partners": [
+        "royal-4-15",
+        "partner-4-15"
+      ],
+      "children": [
+        "royal-4-16",
+        "cadet-4-16"
+      ]
+    },
+    {
+      "id": "union-4-16",
+      "partners": [
+        "royal-4-16",
+        "partner-4-16"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-4-17",
+      "partners": [
+        "royal-4-17",
+        "partner-4-17"
+      ],
+      "children": [
+        "royal-4-18",
+        "partner-5-23"
+      ]
+    },
+    {
+      "id": "union-4-19",
+      "partners": [
+        "royal-4-19",
+        "partner-4-19"
+      ],
+      "children": [
+        "royal-4-20",
+        "cadet-4-20"
+      ]
+    },
+    {
+      "id": "union-4-20",
+      "partners": [
+        "royal-4-20",
+        "partner-4-20"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-5-0",
+      "partners": [
+        "royal-5-0",
+        "partner-5-0"
+      ],
+      "children": [
+        "royal-5-1",
+        "cadet-5-1"
+      ]
+    },
+    {
+      "id": "union-5-1",
+      "partners": [
+        "royal-5-1",
+        "partner-5-1"
+      ],
+      "children": [
+        "royal-5-2"
+      ]
+    },
+    {
+      "id": "union-5-3",
+      "partners": [
+        "royal-5-3",
+        "partner-5-3"
+      ],
+      "children": [
+        "royal-5-4"
+      ]
+    },
+    {
+      "id": "union-5-4",
+      "partners": [
+        "royal-5-4",
+        "partner-5-4"
+      ],
+      "children": [
+        "royal-5-5",
+        "cadet-5-5"
+      ]
+    },
+    {
+      "id": "union-5-5",
+      "partners": [
+        "royal-5-5",
+        "partner-5-5"
+      ],
+      "children": [
+        "royal-5-6"
+      ]
+    },
+    {
+      "id": "union-5-6",
+      "partners": [
+        "royal-5-6",
+        "partner-5-6"
+      ],
+      "children": [
+        "royal-5-7",
+        "partner-6-8"
+      ]
+    },
+    {
+      "id": "union-5-8",
+      "partners": [
+        "royal-5-8",
+        "partner-5-8"
+      ],
+      "children": [
+        "royal-5-9",
+        "cadet-5-9"
+      ]
+    },
+    {
+      "id": "union-5-9",
+      "partners": [
+        "royal-5-9",
+        "partner-5-9"
+      ],
+      "children": [
+        "royal-5-10"
+      ]
+    },
+    {
+      "id": "union-5-10",
+      "partners": [
+        "royal-5-10",
+        "partner-5-10"
+      ],
+      "children": [
+        "royal-5-11"
+      ]
+    },
+    {
+      "id": "union-5-11",
+      "partners": [
+        "royal-5-11",
+        "partner-5-11"
+      ],
+      "children": [
+        "royal-5-12"
+      ]
+    },
+    {
+      "id": "union-5-13",
+      "partners": [
+        "royal-5-13",
+        "partner-5-13"
+      ],
+      "children": [
+        "royal-5-14"
+      ]
+    },
+    {
+      "id": "union-5-14",
+      "partners": [
+        "royal-5-14",
+        "partner-5-14"
+      ],
+      "children": [
+        "royal-5-15"
+      ]
+    },
+    {
+      "id": "union-5-15",
+      "partners": [
+        "royal-5-15",
+        "partner-5-15"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-5-16",
+      "partners": [
+        "royal-5-16",
+        "partner-5-16"
+      ],
+      "children": [
+        "royal-5-17",
+        "cadet-5-17",
+        "partner-6-17"
+      ]
+    },
+    {
+      "id": "union-5-18",
+      "partners": [
+        "royal-5-18",
+        "partner-5-18"
+      ],
+      "children": [
+        "royal-5-19"
+      ]
+    },
+    {
+      "id": "union-5-19",
+      "partners": [
+        "royal-5-19",
+        "partner-5-19"
+      ],
+      "children": [
+        "royal-5-20"
+      ]
+    },
+    {
+      "id": "union-5-20",
+      "partners": [
+        "royal-5-20",
+        "partner-5-20"
+      ],
+      "children": [
+        "royal-5-21",
+        "cadet-5-21"
+      ]
+    },
+    {
+      "id": "union-5-21",
+      "partners": [
+        "royal-5-21",
+        "partner-5-21"
+      ],
+      "children": [
+        "royal-5-22"
+      ]
+    },
+    {
+      "id": "union-5-23",
+      "partners": [
+        "royal-5-23",
+        "partner-5-23"
+      ],
+      "children": [
+        "royal-5-24"
+      ]
+    },
+    {
+      "id": "union-5-24",
+      "partners": [
+        "royal-5-24",
+        "partner-5-24"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-6-0",
+      "partners": [
+        "royal-6-0",
+        "partner-6-0"
+      ],
+      "children": [
+        "royal-6-1"
+      ]
+    },
+    {
+      "id": "union-6-2",
+      "partners": [
+        "royal-6-2",
+        "partner-6-2"
+      ],
+      "children": [
+        "royal-6-3"
+      ]
+    },
+    {
+      "id": "union-6-3",
+      "partners": [
+        "royal-6-3",
+        "partner-6-3"
+      ],
+      "children": [
+        "royal-6-4"
+      ]
+    },
+    {
+      "id": "union-6-4",
+      "partners": [
+        "royal-6-4",
+        "partner-6-4"
+      ],
+      "children": [
+        "royal-6-5"
+      ]
+    },
+    {
+      "id": "union-6-5",
+      "partners": [
+        "royal-6-5",
+        "partner-6-5"
+      ],
+      "children": [
+        "royal-6-6",
+        "cadet-6-6"
+      ]
+    },
+    {
+      "id": "union-6-7",
+      "partners": [
+        "royal-6-7",
+        "partner-6-7"
+      ],
+      "children": [
+        "royal-6-8"
+      ]
+    },
+    {
+      "id": "union-6-8",
+      "partners": [
+        "royal-6-8",
+        "partner-6-8"
+      ],
+      "children": [
+        "royal-6-9"
+      ]
+    },
+    {
+      "id": "union-6-9",
+      "partners": [
+        "royal-6-9",
+        "partner-6-9"
+      ],
+      "children": [
+        "royal-6-10",
+        "cadet-6-10"
+      ]
+    },
+    {
+      "id": "union-6-10",
+      "partners": [
+        "royal-6-10",
+        "partner-6-10"
+      ],
+      "children": [
+        "royal-6-11"
+      ]
+    },
+    {
+      "id": "union-6-12",
+      "partners": [
+        "royal-6-12",
+        "partner-6-12"
+      ],
+      "children": [
+        "royal-6-13"
+      ]
+    },
+    {
+      "id": "union-6-13",
+      "partners": [
+        "royal-6-13",
+        "partner-6-13"
+      ],
+      "children": [
+        "royal-6-14",
+        "cadet-6-14"
+      ]
+    },
+    {
+      "id": "union-6-14",
+      "partners": [
+        "royal-6-14",
+        "partner-6-14"
+      ],
+      "children": []
+    },
+    {
+      "id": "union-6-15",
+      "partners": [
+        "royal-6-15",
+        "partner-6-15"
+      ],
+      "children": [
+        "royal-6-16"
+      ]
+    },
+    {
+      "id": "union-6-17",
+      "partners": [
+        "royal-6-17",
+        "partner-6-17"
+      ],
+      "children": [
+        "royal-6-18",
+        "cadet-6-18"
+      ]
+    },
+    {
+      "id": "union-6-18",
+      "partners": [
+        "royal-6-18",
+        "partner-6-18"
+      ],
+      "children": [
+        "royal-6-19"
+      ]
+    },
+    {
+      "id": "union-6-19",
+      "partners": [
+        "royal-6-19",
+        "partner-6-19"
+      ],
+      "children": [
+        "royal-6-20"
+      ]
+    },
+    {
+      "id": "union-6-20",
+      "partners": [
+        "royal-6-20",
+        "partner-6-20"
+      ],
+      "children": [
+        "royal-6-21"
+      ]
+    },
+    {
+      "id": "union-6-22",
+      "partners": [
+        "royal-6-22",
+        "partner-6-22"
+      ],
+      "children": []
     }
-  ]
+  ],
+  "annotations": [
+    {
+      "x": 208,
+      "y": 342,
+      "width": 137,
+      "label": "Kingdom of Alder",
+      "kind": "heading",
+      "size": 21,
+      "icon": "shield",
+      "group": "g0",
+      "variant": 0
+    },
+    {
+      "x": 130,
+      "y": 819.69,
+      "width": 106,
+      "label": "ALDER",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g0"
+    },
+    {
+      "x": 135,
+      "y": 1473.93,
+      "width": 106,
+      "label": "JUNIOR LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g0"
+    },
+    {
+      "x": 117,
+      "y": 2231.45,
+      "width": 106,
+      "label": "RESTORED LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g0"
+    },
+    {
+      "x": 445,
+      "y": 342,
+      "width": 137,
+      "label": "Kingdom of Bayeux",
+      "kind": "heading",
+      "size": 21,
+      "icon": "shield",
+      "group": "g1",
+      "variant": 1
+    },
+    {
+      "x": 356,
+      "y": 793.95,
+      "width": 106,
+      "label": "BAYEUX",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g1"
+    },
+    {
+      "x": 376,
+      "y": 1331.62,
+      "width": 106,
+      "label": "JUNIOR LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g1"
+    },
+    {
+      "x": 364,
+      "y": 1953.59,
+      "width": 106,
+      "label": "RESTORED LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g1"
+    },
+    {
+      "x": 682,
+      "y": 342,
+      "width": 137,
+      "label": "Kingdom of Corven",
+      "kind": "heading",
+      "size": 21,
+      "icon": "shield",
+      "group": "g2",
+      "variant": 2
+    },
+    {
+      "x": 589,
+      "y": 861.63,
+      "width": 106,
+      "label": "CORVEN",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g2"
+    },
+    {
+      "x": 606,
+      "y": 1583.72,
+      "width": 106,
+      "label": "JUNIOR LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g2"
+    },
+    {
+      "x": 612,
+      "y": 2409.01,
+      "width": 106,
+      "label": "RESTORED LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g2"
+    },
+    {
+      "x": 919,
+      "y": 342,
+      "width": 137,
+      "label": "Kingdom of Daleshire",
+      "kind": "heading",
+      "size": 21,
+      "icon": "shield",
+      "group": "g3",
+      "variant": 3
+    },
+    {
+      "x": 834,
+      "y": 815.73,
+      "width": 106,
+      "label": "DALESHIRE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g3"
+    },
+    {
+      "x": 832,
+      "y": 1416.3,
+      "width": 106,
+      "label": "JUNIOR LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g3"
+    },
+    {
+      "x": 849,
+      "y": 2094.42,
+      "width": 106,
+      "label": "RESTORED LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g3"
+    },
+    {
+      "x": 1156,
+      "y": 342,
+      "width": 137,
+      "label": "Kingdom of Everen",
+      "kind": "heading",
+      "size": 21,
+      "icon": "shield",
+      "group": "g4",
+      "variant": 4
+    },
+    {
+      "x": 1082,
+      "y": 878.95,
+      "width": 106,
+      "label": "EVEREN",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g4"
+    },
+    {
+      "x": 1063,
+      "y": 1622.87,
+      "width": 106,
+      "label": "JUNIOR LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g4"
+    },
+    {
+      "x": 1076,
+      "y": 2462.0,
+      "width": 106,
+      "label": "RESTORED LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g4"
+    },
+    {
+      "x": 1393,
+      "y": 342,
+      "width": 137,
+      "label": "Kingdom of Falken",
+      "kind": "heading",
+      "size": 21,
+      "icon": "shield",
+      "group": "g5",
+      "variant": 5
+    },
+    {
+      "x": 1324,
+      "y": 855.2,
+      "width": 106,
+      "label": "FALKEN",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g5"
+    },
+    {
+      "x": 1305,
+      "y": 1463.77,
+      "width": 106,
+      "label": "JUNIOR LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g5"
+    },
+    {
+      "x": 1302,
+      "y": 2157.85,
+      "width": 106,
+      "label": "RESTORED LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g5"
+    },
+    {
+      "x": 1630,
+      "y": 342,
+      "width": 137,
+      "label": "Kingdom of Rosene",
+      "kind": "heading",
+      "size": 21,
+      "icon": "shield",
+      "group": "g6",
+      "variant": 6
+    },
+    {
+      "x": 1555,
+      "y": 838.38,
+      "width": 106,
+      "label": "ROSENE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g6"
+    },
+    {
+      "x": 1553,
+      "y": 1519.61,
+      "width": 106,
+      "label": "JUNIOR LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g6"
+    },
+    {
+      "x": 1537,
+      "y": 2306.65,
+      "width": 106,
+      "label": "RESTORED LINE",
+      "kind": "pill",
+      "size": 10.7,
+      "group": "g6"
+    }
+  ],
+  "insets": [],
+  "pattern_id": "usefulcharts-dynastic-genealogy",
+  "subtitle": "Seven courts, cadet branches, and recorded family alliances",
+  "reading_note": "Double lines: partners. Children descend from the union. Dotted descent: uncertain. Vertical spacing is schematic, not a time scale."
 }

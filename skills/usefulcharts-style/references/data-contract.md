@@ -1,6 +1,6 @@
 # Renderer input contract
 
-`render_chart.py` reads one UTF-8 JSON object. The default canvas is 1600 × 2400 SVG units. Coordinates are in viewBox units; generated text stays editable. The title font is embedded from the bundle; the SVG makes no network requests and includes no external scripts or images.
+`render_chart.py` reads one UTF-8 JSON object. This reference describes the classic schematic profile and the shared semantic fields. For the intended poster aesthetic, set `design: editorial` and use [editorial-contract.md](editorial-contract.md). The classic default canvas is 1600 × 2400 SVG units. Coordinates are in viewBox units; generated text stays editable. Fonts and any bundled illustrations are embedded; the SVG makes no network requests.
 
 ## Shared fields
 

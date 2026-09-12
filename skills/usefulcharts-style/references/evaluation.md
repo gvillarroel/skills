@@ -27,7 +27,9 @@ Score each dimension 0–4: 0 absent/broken, 1 weak, 2 adequate with clear issue
 | Reference-family resemblance | Comparable silhouette, branching/interval structure, visual hierarchy, and rhythm to the chosen reference family. |
 | Fidelity and usability | All source entities/relations preserved; exact outputs; editable SVG; full-size inspection and source provenance available. |
 
-A release-quality example should score at least 24/32 with no dimension below 2, and have zero unresolved factual, label-occlusion, graph, or contrast failures. A high total cannot compensate for a wrong parent or a hidden label. Record missing capabilities (for example portraits, historical source verification, or very large intermarriage networks).
+The old 24/32 aggregate threshold was insufficient: the user rejected examples that passed it because their visual morphology was still clearly deficient. Keep the dimensions as critique prompts, but **do not average correctness into aesthetic acceptance**. Resemblance, composition, density/rhythm, and typography must each be convincing when compared beside the reference. Record visible differences, even when all technical checks pass. A high total cannot compensate for a wrong parent, hidden label, repetitive matrix, or empty poster.
+
+For a requested indistinguishable result, normalize reference and candidate to the same display width and compare both whole pages and detail crops. Record whether the reviewer can still distinguish them by layout, rhythm, emphasis, illustration texture, or chronology structure. A self-review is not a blinded panel experiment. Do not report indistinguishability from self-assigned rubric scores.
 
 ## Repair order
 

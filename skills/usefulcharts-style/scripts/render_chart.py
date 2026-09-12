@@ -626,7 +626,7 @@ class Poster:
                     for c,d in zip(second["points"], second["points"][1:]):
                         if proper_cross(a,b,c,d):
                             crossings.append([first["id"], second["id"]])
-        meta = {"schema_version": 1, "id": self.id, "mode": self.mode, "canvas": [self.w,self.h],
+        meta = {"schema_version": 1, "id": self.id, "mode": self.mode, "design": self.data.get("design","classic"), "canvas": [self.w,self.h],
                 "node_ids": list(self.nodes), "edge_ids": [r["id"] for r in self.routes],
                 "union_ids": list(self.unions), "boxes": self.boxes, "routes": self.routes,
                 "expected_text": self.expected_text, "crossings": crossings,
@@ -647,7 +647,7 @@ class Poster:
                f'<metadata id="font-license">{font_license}</metadata>\n'
                f'<metadata id="chart-data">{html.escape(json.dumps(meta,ensure_ascii=False,separators=(",",":")))}</metadata>\n'
                + "\n".join(self.parts) + "\n</svg>\n")
-        report = {"status": "pass", "id": self.id, "mode": self.mode, "canvas": meta["canvas"],
+        report = {"status": "pass", "id": self.id, "mode": self.mode, "design": meta["design"], "canvas": meta["canvas"],
                   "node_count": len(self.nodes), "edge_count": len(self.routes), "union_count": len(self.unions),
                   "node_collisions": 0, "connector_node_collisions": 0, "crossing_count": len(crossings),
                   "data_sha256": meta["data_sha256"], "visual_review": "Required; geometric preflight is not a visual quality score."}
@@ -663,7 +663,7 @@ def viewer(svg, title):
 *{{box-sizing:border-box}}body{{margin:0;background:#353833;color:#fff;font:16px Arial,sans-serif}}
 header{{position:sticky;top:0;z-index:1;background:#242720;padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}}
 header strong{{margin-right:auto}}button{{font:inherit;padding:8px 14px;cursor:pointer}}main{{overflow:auto;padding:24px;height:calc(100vh - 75px)}}
-#paper{{margin:auto;width:min(100%,1000px)}}svg{{display:block;width:100%;height:auto}}@media print{{header{{display:none}}main{{height:auto;padding:0;overflow:visible}}#paper{{width:100%}}}}
+#paper{{margin:auto;width:min(100%,1000px)}}#paper>svg{{display:block;width:100%;height:auto}}@media print{{header{{display:none}}main{{height:auto;padding:0;overflow:visible}}#paper{{width:100%}}}}
 </style><header><strong>{html.escape(title)}</strong><button id="fit">Fit page</button><button id="full">100% detail</button><button id="minus" aria-label="Zoom out">−</button><button id="plus" aria-label="Zoom in">+</button></header>
 <main><div id="paper">{svg}</div></main><script>
 const paper=document.querySelector('#paper'), art=paper.querySelector('svg');
@@ -684,7 +684,11 @@ def main():
         paths = [p.resolve() for p in (args.input,args.svg,args.html,args.report) if p]
         require(len(set(paths)) == len(paths), "Input and output paths must all be distinct.")
         data = json.loads(args.input.read_text(encoding="utf-8-sig"))
-        svg, report = Poster(data).render()
+        if data.get("design") == "editorial":
+            from editorial_poster import EditorialPoster
+            svg, report = EditorialPoster(data).render()
+        else:
+            svg, report = Poster(data).render()
         contents = [(args.svg, svg)]
         if args.html:
             contents.append((args.html, viewer(svg, data["title"])))

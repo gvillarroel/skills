@@ -36,6 +36,9 @@ def main():
     mutations.append(("wrong-relation-kind",node,"source-relation-inventory"))
     node=copy.deepcopy(original);edge=node.find(".//s:path[@data-edge-id]",ns);tokens=edge.attrib["d"].split();tokens[1]=str(float(tokens[1])+100);edge.set("d"," ".join(tokens))
     mutations.append(("detached-source",node,"detached-source"))
+    node=copy.deepcopy(original);edge=node.find(".//s:path[@data-edge-id]",ns);tokens=edge.attrib["d"].split();x,y=float(tokens[1]),float(tokens[2])
+    edge.set("d",f'M {x} {y} L {x} {y-12} L {x} {y} '+" ".join(tokens[3:]));edge.set("data-route-style","rounded")
+    mutations.append(("source-reentry",node,"edge-node-collision"))
     results=[]
     with sync_playwright() as p:
         browser=p.chromium.launch();page=browser.new_page()

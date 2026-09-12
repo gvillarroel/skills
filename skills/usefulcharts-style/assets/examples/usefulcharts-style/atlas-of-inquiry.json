@@ -2,1211 +2,3722 @@
   "id": "atlas-of-inquiry",
   "title": "AN ATLAS OF SHARED INQUIRY",
   "mode": "lineage",
+  "design": "editorial",
   "width": 1800,
-  "height": 2400,
+  "height": 2700,
+  "font_size": 12.2,
+  "imprint": [
+    "ORIGINAL STUDY",
+    "Synthetic source data",
+    "2026 \u00b7 Editable SVG"
+  ],
   "groups": [
     {
       "id": "g0",
       "label": "Astronomy",
-      "color": "#F18C79"
+      "color": "#F56550"
     },
     {
       "id": "g1",
       "label": "Navigation",
-      "color": "#77BEDB"
+      "color": "#77BDDD"
     },
     {
       "id": "g2",
       "label": "Mechanics",
-      "color": "#F4C948"
+      "color": "#F2C529"
     },
     {
       "id": "g3",
       "label": "Optics",
-      "color": "#A6C49B"
+      "color": "#98BD92"
     },
     {
       "id": "g4",
       "label": "Cartography",
-      "color": "#BE9CCB"
+      "color": "#B88BC6"
     },
     {
       "id": "g5",
       "label": "Common origins",
-      "color": "#CDC7B3"
+      "color": "#A6A18B"
     }
   ],
-  "source_note": "Synthetic study by Codex, 2026. All names, institutions, relationships, and dates are invented.",
-  "pattern_id": "usefulcharts-branching-lineage",
-  "subtitle": "A fictional history of five traditions of knowledge",
-  "columns": 10,
-  "node_width": 140,
-  "rows": [
-    "Origins",
-    "Traditions",
-    "Early schools",
-    "Branches",
-    "Workshops",
-    "Institutes",
-    "Networks",
-    "Modern schools",
-    "New directions"
-  ],
+  "source_note": "Original synthetic study \u00b7 All people, institutions, events, dates, and relationships are invented. Vector illustrations are fictional.",
   "nodes": [
     {
-      "id": "origin",
-      "label": "Common Inquiry",
-      "detail": "Observing \u2022 making \u2022 recording",
-      "row": 0,
-      "col": 4.5,
+      "id": "oral",
+      "label": "Oral calendars",
+      "detail": "",
+      "x": 900,
+      "y": 166,
+      "width": 80,
       "group": "g5",
-      "emphasis": true
+      "style": "plain",
+      "icon": null,
+      "icon_width": 32,
+      "size": 12
     },
     {
-      "id": "t0",
-      "label": "Sky Records",
-      "detail": "Early tradition",
-      "row": 1,
-      "col": 0.5,
+      "id": "craft",
+      "label": "Artisan traditions",
+      "detail": "",
+      "x": 776,
+      "y": 220,
+      "width": 84,
+      "group": "g5",
+      "style": "plain",
+      "icon": null,
+      "icon_width": 32,
+      "size": 12
+    },
+    {
+      "id": "record",
+      "label": "Written records",
+      "detail": "",
+      "x": 1012,
+      "y": 222,
+      "width": 82,
+      "group": "g5",
+      "style": "plain",
+      "icon": null,
+      "icon_width": 32,
+      "size": 12
+    },
+    {
+      "id": "measure",
+      "label": "Early measurement",
+      "detail": "c. 1080",
+      "x": 896,
+      "y": 293,
+      "width": 106,
+      "group": "g5",
+      "style": "pill",
+      "icon": null,
+      "icon_width": 32,
+      "size": 12
+    },
+    {
+      "id": "study",
+      "label": "Schools of natural study",
+      "detail": "c. 1160",
+      "x": 899,
+      "y": 370,
+      "width": 128,
+      "group": "g5",
+      "style": "pill",
+      "icon": null,
+      "icon_width": 32,
+      "size": 12
+    },
+    {
+      "id": "inquiry",
+      "label": "COMMON INQUIRY",
+      "detail": "Five branches of study",
+      "x": 899,
+      "y": 461,
+      "width": 160,
+      "group": "g5",
+      "style": "emblem",
+      "icon": "book",
+      "icon_width": 32,
+      "size": 14
+    },
+    {
+      "id": "archive",
+      "label": "The shared archive",
+      "detail": "A common scholarly record",
+      "x": 899,
+      "y": 557,
+      "width": 136,
+      "group": "g5",
+      "style": "emblem",
+      "icon": "book",
+      "icon_width": 32,
+      "size": 14
+    },
+    {
+      "id": "root-0",
+      "label": "Celestial Observatories",
+      "detail": "The founding tradition",
+      "x": 645.0,
+      "y": 728,
+      "width": 193,
       "group": "g0",
-      "emphasis": true
+      "style": "hero",
+      "icon": "star",
+      "icon_width": 41,
+      "size": 16
     },
     {
-      "id": "n2-0-0",
-      "label": "Star Tables",
-      "detail": "c. 1530",
-      "row": 2,
-      "col": 0,
+      "id": "school-0-0-0",
+      "label": "Solar Society",
+      "detail": "est. 1258",
+      "x": 259.08000000000004,
+      "y": 838.0,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "star",
+      "icon_width": 18
     },
     {
-      "id": "n2-0-1",
-      "label": "Lunar School",
-      "detail": "c. 1539",
-      "row": 2,
-      "col": 1,
+      "id": "school-0-0-1",
+      "label": "Stellar Institute",
+      "detail": "est. 1261",
+      "x": 645.0,
+      "y": 845.2743794146055,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n3-0-0",
-      "label": "Open-Sky Hall",
-      "detail": "c. 1585",
-      "row": 3,
-      "col": 0,
+      "id": "school-0-0-2",
+      "label": "Lunar College",
+      "detail": "est. 1255",
+      "x": 1030.92,
+      "y": 831.9455800375366,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n3-0-1",
-      "label": "Calendar House",
-      "detail": "c. 1594",
-      "row": 3,
-      "col": 1,
+      "id": "school-0-1-0",
+      "label": "Meridian School",
+      "detail": "est. 1305",
+      "x": 162.59999999999997,
+      "y": 950.3799598928324,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n4-0-0",
-      "label": "Meridian Circle",
-      "detail": "c. 1640",
-      "row": 4,
-      "col": 0,
+      "id": "school-0-1-1",
+      "label": "Orbital Academy",
+      "detail": "est. 1301",
+      "x": 355.56,
+      "y": 939.593734178483,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n4-0-1",
-      "label": "Night Observatory",
-      "detail": "c. 1649",
-      "row": 4,
-      "col": 1,
+      "id": "school-0-1-2",
+      "label": "Sidereal Union",
+      "detail": "est. 1299",
+      "x": 548.52,
+      "y": 936.7556773954368,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n5-0-0",
-      "label": "Orbit Institute",
-      "detail": "c. 1695",
-      "row": 5,
-      "col": 0,
+      "id": "school-0-1-3",
+      "label": "Polar Laboratory",
+      "detail": "est. 1305",
+      "x": 741.48,
+      "y": 949.9039998141978,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n5-0-1",
-      "label": "Variable Stars",
-      "detail": "c. 1704",
-      "row": 5,
-      "col": 1,
+      "id": "school-0-1-4",
+      "label": "Celestial Guild",
+      "detail": "est. 1302",
+      "x": 934.44,
+      "y": 941.7987910363055,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n6-0-0",
-      "label": "Sky Network",
-      "detail": "c. 1750",
-      "row": 6,
-      "col": 0,
+      "id": "school-0-1-5",
+      "label": "Astral Commons",
+      "detail": "est. 1299",
+      "x": 1127.4,
+      "y": 935.3963826024925,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "star",
+      "icon_width": 18
     },
     {
-      "id": "n6-0-1",
-      "label": "Deep-Sky Lab",
-      "detail": "c. 1759",
-      "row": 6,
-      "col": 1,
+      "id": "school-0-2-0",
+      "label": "Polar Institute",
+      "detail": "est. 1346",
+      "x": 162.59999999999997,
+      "y": 1047.9289600644788,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n7-0-0",
+      "id": "school-0-2-1",
+      "label": "Celestial College",
+      "detail": "est. 1342",
+      "x": 283.2,
+      "y": 1039.128605802695,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-2-2",
+      "label": "Astral Circle",
+      "detail": "est. 1348",
+      "x": 403.79999999999995,
+      "y": 1052.0558927897503,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-2-3",
+      "label": "Equatorial Observatory",
+      "detail": "est. 1347",
+      "x": 524.4,
+      "y": 1050.096947881934,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-2-4",
+      "label": "Deep Sky Foundation",
+      "detail": "est. 1342",
+      "x": 645.0,
+      "y": 1038.8000783475943,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-2-5",
+      "label": "Comet Society",
+      "detail": "est. 1347",
+      "x": 765.6,
+      "y": 1050.1613362946132,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-2-6",
+      "label": "Solar Institute",
+      "detail": "est. 1348",
+      "x": 886.2,
+      "y": 1052.002302721257,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-2-7",
+      "label": "Stellar College",
+      "detail": "est. 1342",
+      "x": 1006.8,
+      "y": 1039.1088200649635,
+      "width": 76,
+      "group": "g0",
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "wheel",
+      "icon_width": 18
+    },
+    {
+      "id": "school-0-2-8",
+      "label": "Lunar Circle",
+      "detail": "est. 1346",
+      "x": 1127.4,
+      "y": 1047.9990176773035,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-3-0",
+      "label": "Equatorial Academy",
+      "detail": "est. 1386",
+      "x": 109.0,
+      "y": 1143.3797590586792,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-3-1",
+      "label": "Deep Sky Union",
+      "detail": "est. 1390",
+      "x": 216.2,
+      "y": 1152.9209599047026,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-3-2",
+      "label": "Comet Laboratory",
+      "detail": "est. 1392",
+      "x": 323.40000000000003,
+      "y": 1157.587896900988,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-3-3",
+      "label": "Solar Guild",
+      "detail": "est. 1387",
+      "x": 430.6,
+      "y": 1144.1624339202267,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-3-4",
       "label": "Stellar Commons",
-      "detail": "c. 1805",
-      "row": 7,
-      "col": 0,
+      "detail": "est. 1389",
+      "x": 537.8000000000001,
+      "y": 1150.6694248211904,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n7-0-1",
-      "label": "Timekeeping Lab",
-      "detail": "c. 1814",
-      "row": 7,
-      "col": 1,
+      "id": "school-0-3-5",
+      "label": "Lunar School",
+      "detail": "est. 1393",
+      "x": 645.0,
+      "y": 1158.6791604441976,
+      "width": 76,
       "group": "g0",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n8-0-0",
-      "label": "Orbital Mapping",
-      "detail": "c. 1860",
-      "row": 8,
-      "col": 0,
+      "id": "school-0-3-6",
+      "label": "Meridian Academy",
+      "detail": "est. 1387",
+      "x": 752.1999999999999,
+      "y": 1145.505717261047,
+      "width": 76,
       "group": "g0",
-      "emphasis": true
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n8-0-1",
-      "label": "Night-Sky Archive",
-      "detail": "c. 1869",
-      "row": 8,
-      "col": 1,
+      "id": "school-0-3-7",
+      "label": "Orbital Union",
+      "detail": "est. 1388",
+      "x": 859.4,
+      "y": 1148.4601550522432,
+      "width": 76,
       "group": "g0",
-      "emphasis": true
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "t1",
-      "label": "Coastal Pilots",
-      "detail": "Early tradition",
-      "row": 1,
-      "col": 2.5,
+      "id": "school-0-3-8",
+      "label": "Sidereal Laboratory",
+      "detail": "est. 1393",
+      "x": 966.6,
+      "y": 1159.1746383542304,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-3-9",
+      "label": "Polar Guild",
+      "detail": "est. 1388",
+      "x": 1073.8,
+      "y": 1147.302603900316,
+      "width": 76,
+      "group": "g0",
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "globe",
+      "icon_width": 18
+    },
+    {
+      "id": "school-0-3-10",
+      "label": "Celestial Commons",
+      "detail": "est. 1388",
+      "x": 1181.0,
+      "y": 1146.469139761079,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-4-0",
+      "label": "Solar College",
+      "detail": "est. 1432",
+      "x": 109.0,
+      "y": 1253.3646760144086,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-4-1",
+      "label": "Stellar Circle",
+      "detail": "est. 1437",
+      "x": 228.1111111111111,
+      "y": 1263.5148659729869,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-4-2",
+      "label": "Lunar Observatory",
+      "detail": "est. 1432",
+      "x": 347.22222222222223,
+      "y": 1251.247831112885,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-4-3",
+      "label": "Meridian Foundation",
+      "detail": "est. 1432",
+      "x": 466.3333333333333,
+      "y": 1251.3074166559963,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-4-4",
+      "label": "Orbital Society",
+      "detail": "est. 1437",
+      "x": 585.4444444444445,
+      "y": 1263.5248588455588,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-4-5",
+      "label": "Sidereal Institute",
+      "detail": "est. 1432",
+      "x": 704.5555555555555,
+      "y": 1253.2967734666795,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-4-6",
+      "label": "Polar College",
+      "detail": "est. 1431",
+      "x": 823.6666666666666,
+      "y": 1249.5921020258265,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-4-7",
+      "label": "Celestial Circle",
+      "detail": "est. 1436",
+      "x": 942.7777777777778,
+      "y": 1262.903562005821,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-4-8",
+      "label": "Astral Observatory",
+      "detail": "est. 1433",
+      "x": 1061.888888888889,
+      "y": 1255.5291895256767,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-4-9",
+      "label": "Equatorial Foundation",
+      "detail": "est. 1430",
+      "x": 1181.0,
+      "y": 1248.355373103947,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-5-0",
+      "label": "Meridian Union",
+      "detail": "est. 1480",
+      "x": 109.0,
+      "y": 1367.5039998141979,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-5-1",
+      "label": "Orbital Laboratory",
+      "detail": "est. 1477",
+      "x": 243.0,
+      "y": 1359.3987910363055,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-5-2",
+      "label": "Sidereal Guild",
+      "detail": "est. 1474",
+      "x": 377.0,
+      "y": 1352.9963826024925,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-5-3",
+      "label": "Polar Commons",
+      "detail": "est. 1480",
+      "x": 511.0,
+      "y": 1366.430275412413,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-5-4",
+      "label": "Celestial School",
+      "detail": "est. 1478",
+      "x": 645.0,
+      "y": 1361.6517398555025,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-5-5",
+      "label": "Astral Academy",
+      "detail": "est. 1474",
+      "x": 779.0,
+      "y": 1352.1949919562549,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-5-6",
+      "label": "Equatorial Union",
+      "detail": "est. 1479",
+      "x": 913.0,
+      "y": 1364.8443189577567,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-5-7",
+      "label": "Deep Sky Laboratory",
+      "detail": "est. 1479",
+      "x": 1047.0,
+      "y": 1363.7731120247536,
+      "width": 76,
+      "group": "g0",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-0-5-8",
+      "label": "Comet Guild",
+      "detail": "est. 1474",
+      "x": 1181.0,
+      "y": 1352.0153437761649,
+      "width": 76,
+      "group": "g0",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "root-1",
+      "label": "Maritime Academies",
+      "detail": "The founding tradition",
+      "x": 1490.0,
+      "y": 800,
+      "width": 193,
       "group": "g1",
-      "emphasis": true
+      "style": "hero",
+      "icon": "ship",
+      "icon_width": 41,
+      "size": 16
     },
     {
-      "id": "n2-1-0",
-      "label": "Tidal Pilots",
-      "detail": "c. 1537",
-      "row": 2,
-      "col": 2,
+      "id": "school-1-0-0",
+      "label": "Coastal School",
+      "detail": "est. 1291",
+      "x": 1370.48,
+      "y": 916.7317678784632,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n2-1-1",
-      "label": "Bluewater School",
-      "detail": "c. 1546",
-      "row": 2,
-      "col": 3,
+      "id": "school-1-0-1",
+      "label": "Pelagic Academy",
+      "detail": "est. 1289",
+      "x": 1609.52,
+      "y": 911.128960064479,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n3-1-0",
-      "label": "Coastal Routes",
-      "detail": "c. 1592",
-      "row": 3,
-      "col": 2,
+      "id": "school-1-1-0",
+      "label": "Harbor Institute",
+      "detail": "est. 1329",
+      "x": 1324.0,
+      "y": 1007.5150498801044,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n3-1-1",
-      "label": "Ocean Workshop",
-      "detail": "c. 1601",
-      "row": 3,
-      "col": 3,
+      "id": "school-1-1-1",
+      "label": "Oceanic College",
+      "detail": "est. 1324",
+      "x": 1490.0,
+      "y": 994.907031785952,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "wheel",
+      "icon_width": 18
     },
     {
-      "id": "n4-1-0",
-      "label": "Current Institute",
-      "detail": "c. 1647",
-      "row": 4,
-      "col": 2,
+      "id": "school-1-1-2",
+      "label": "Maritime Circle",
+      "detail": "est. 1328",
+      "x": 1656.0,
+      "y": 1004.4482326319753,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n4-1-1",
-      "label": "Compass Hall",
-      "detail": "c. 1656",
-      "row": 4,
-      "col": 3,
+      "id": "school-1-2-0",
+      "label": "Compass Academy",
+      "detail": "est. 1364",
+      "x": 1324.0,
+      "y": 1089.400125492082,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n5-1-0",
-      "label": "Sea Academy",
-      "detail": "c. 1702",
-      "row": 5,
-      "col": 2,
+      "id": "school-1-2-1",
+      "label": "Estuary Union",
+      "detail": "est. 1365",
+      "x": 1490.0,
+      "y": 1093.2192214689542,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n5-1-1",
-      "label": "Harbor Network",
-      "detail": "c. 1711",
-      "row": 5,
-      "col": 3,
+      "id": "school-1-2-2",
+      "label": "Bluewater Laboratory",
+      "detail": "est. 1369",
+      "x": 1656.0,
+      "y": 1103.3694114275324,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n6-1-0",
-      "label": "Open Passage",
-      "detail": "c. 1757",
-      "row": 6,
-      "col": 2,
+      "id": "school-1-3-0",
+      "label": "Current College",
+      "detail": "est. 1403",
+      "x": 1324.0,
+      "y": 1182.5374955772552,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n6-1-1",
-      "label": "Pelagic Institute",
-      "detail": "c. 1766",
-      "row": 6,
-      "col": 3,
+      "id": "school-1-3-1",
+      "label": "Pilot Circle",
+      "detail": "est. 1408",
+      "x": 1656.0,
+      "y": 1195.685817996016,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n7-1-0",
-      "label": "Route Commons",
-      "detail": "c. 1812",
-      "row": 7,
-      "col": 2,
+      "id": "school-1-4-0",
+      "label": "Coastal Union",
+      "detail": "est. 1446",
+      "x": 1324.0,
+      "y": 1286.1649836988413,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n7-1-1",
-      "label": "Voyage Archive",
-      "detail": "c. 1821",
-      "row": 7,
-      "col": 3,
+      "id": "school-1-4-1",
+      "label": "Pelagic Laboratory",
+      "detail": "est. 1445",
+      "x": 1490.0,
+      "y": 1284.206038791025,
+      "width": 76,
       "group": "g1",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n8-1-0",
-      "label": "Current Atlas",
-      "detail": "c. 1867",
-      "row": 8,
-      "col": 2,
+      "id": "school-1-4-2",
+      "label": "Tidal Guild",
+      "detail": "est. 1441",
+      "x": 1656.0,
+      "y": 1272.9091692566853,
+      "width": 76,
       "group": "g1",
-      "emphasis": true
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n8-1-1",
-      "label": "Navigation Lab",
-      "detail": "c. 1876",
-      "row": 8,
-      "col": 3,
+      "id": "school-1-5-0",
+      "label": "Harbor Circle",
+      "detail": "est. 1486",
+      "x": 1324.0,
+      "y": 1380.0242605373514,
+      "width": 76,
       "group": "g1",
-      "emphasis": true
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "t2",
-      "label": "Practical Arts",
-      "detail": "Early tradition",
-      "row": 1,
-      "col": 4.5,
+      "id": "school-1-5-1",
+      "label": "Oceanic Observatory",
+      "detail": "est. 1480",
+      "x": 1490.0,
+      "y": 1366.5987975565902,
+      "width": 76,
+      "group": "g1",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-5-2",
+      "label": "Maritime Foundation",
+      "detail": "est. 1483",
+      "x": 1656.0,
+      "y": 1373.105788457554,
+      "width": 76,
+      "group": "g1",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-6-0",
+      "label": "Compass Laboratory",
+      "detail": "est. 1520",
+      "x": 1324.0,
+      "y": 1462.0114674765216,
+      "width": 76,
+      "group": "g1",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-6-1",
+      "label": "Estuary Guild",
+      "detail": "est. 1520",
+      "x": 1490.0,
+      "y": 1462.071053019633,
+      "width": 76,
+      "group": "g1",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-6-2",
+      "label": "Bluewater Commons",
+      "detail": "est. 1525",
+      "x": 1656.0,
+      "y": 1474.2884952091954,
+      "width": 76,
+      "group": "g1",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-7-0",
+      "label": "Current Observatory",
+      "detail": "est. 1558",
+      "x": 1324.0,
+      "y": 1552.0872916934015,
+      "width": 76,
+      "group": "g1",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-7-1",
+      "label": "Pilot Foundation",
+      "detail": "est. 1564",
+      "x": 1656.0,
+      "y": 1565.521184503322,
+      "width": 76,
+      "group": "g1",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-8-0",
+      "label": "Coastal Guild",
+      "detail": "est. 1601",
+      "x": 1324.0,
+      "y": 1655.1795181127952,
+      "width": 76,
+      "group": "g1",
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "ship",
+      "icon_width": 18
+    },
+    {
+      "id": "school-1-8-1",
+      "label": "Pelagic Commons",
+      "detail": "est. 1602",
+      "x": 1490.0,
+      "y": 1657.020484539439,
+      "width": 76,
+      "group": "g1",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-8-2",
+      "label": "Tidal School",
+      "detail": "est. 1597",
+      "x": 1656.0,
+      "y": 1644.1270018831456,
+      "width": 76,
+      "group": "g1",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-9-0",
+      "label": "Harbor Foundation",
+      "detail": "est. 1642",
+      "x": 1324.0,
+      "y": 1752.024614989652,
+      "width": 76,
+      "group": "g1",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-9-1",
+      "label": "Oceanic Society",
+      "detail": "est. 1636",
+      "x": 1490.0,
+      "y": 1738.8511718065015,
+      "width": 76,
+      "group": "g1",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-9-2",
+      "label": "Maritime Institute",
+      "detail": "est. 1638",
+      "x": 1656.0,
+      "y": 1741.8056095976976,
+      "width": 76,
+      "group": "g1",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-10-0",
+      "label": "Compass Commons",
+      "detail": "est. 1677",
+      "x": 1324.0,
+      "y": 1834.9695007394068,
+      "width": 76,
+      "group": "g1",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-10-1",
+      "label": "Estuary School",
+      "detail": "est. 1675",
+      "x": 1656.0,
+      "y": 1831.2648292985539,
+      "width": 76,
+      "group": "g1",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-11-0",
+      "label": "Current Society",
+      "detail": "est. 1713",
+      "x": 1324.0,
+      "y": 1922.1949919562549,
+      "width": 76,
+      "group": "g1",
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "ship",
+      "icon_width": 18
+    },
+    {
+      "id": "school-1-11-1",
+      "label": "Pilot Institute",
+      "detail": "est. 1719",
+      "x": 1490.0,
+      "y": 1934.8443189577567,
+      "width": 76,
+      "group": "g1",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-1-11-2",
+      "label": "Voyage College",
+      "detail": "est. 1718",
+      "x": 1656.0,
+      "y": 1933.7731120247536,
+      "width": 76,
+      "group": "g1",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "root-2",
+      "label": "Schools of Mechanical Arts",
+      "detail": "The founding tradition",
+      "x": 645.0,
+      "y": 1510,
+      "width": 193,
       "group": "g2",
-      "emphasis": true
+      "style": "hero",
+      "icon": "wheel",
+      "icon_width": 41,
+      "size": 16
     },
     {
-      "id": "n2-2-0",
-      "label": "Lever School",
-      "detail": "c. 1544",
-      "row": 2,
-      "col": 4,
+      "id": "school-2-0-0",
+      "label": "Clockwork Institute",
+      "detail": "est. 1589",
+      "x": 259.08000000000004,
+      "y": 1627.2743794146054,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n2-2-1",
-      "label": "Water Engines",
-      "detail": "c. 1553",
-      "row": 2,
-      "col": 5,
+      "id": "school-2-0-1",
+      "label": "Hydraulic College",
+      "detail": "est. 1584",
+      "x": 516.36,
+      "y": 1613.9455800375365,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n3-2-0",
-      "label": "Wheel Workshop",
-      "detail": "c. 1599",
-      "row": 3,
-      "col": 4,
+      "id": "school-2-0-2",
+      "label": "Kinetic Circle",
+      "detail": "est. 1585",
+      "x": 773.64,
+      "y": 1617.7646760144087,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n3-2-1",
-      "label": "Clockmakers",
-      "detail": "c. 1608",
-      "row": 3,
-      "col": 5,
+      "id": "school-2-0-3",
+      "label": "Engine Observatory",
+      "detail": "est. 1590",
+      "x": 1030.92,
+      "y": 1627.914865972987,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n4-2-0",
-      "label": "Motion Institute",
-      "detail": "c. 1654",
-      "row": 4,
-      "col": 4,
+      "id": "school-2-1-0",
+      "label": "Engine Academy",
+      "detail": "est. 1618",
+      "x": 162.59999999999997,
+      "y": 1695.193734178483,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "wheel",
+      "icon_width": 18
     },
     {
-      "id": "n4-2-1",
-      "label": "Engine School",
-      "detail": "c. 1663",
-      "row": 4,
-      "col": 5,
+      "id": "school-2-1-1",
+      "label": "Precision Union",
+      "detail": "est. 1617",
+      "x": 355.56,
+      "y": 1692.355677395437,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n5-2-0",
-      "label": "Power Network",
-      "detail": "c. 1709",
-      "row": 5,
-      "col": 4,
+      "id": "school-2-1-2",
+      "label": "Steam Laboratory",
+      "detail": "est. 1622",
+      "x": 548.52,
+      "y": 1705.5039998141979,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n5-2-1",
-      "label": "Precision Hall",
-      "detail": "c. 1718",
-      "row": 5,
-      "col": 5,
+      "id": "school-2-1-3",
+      "label": "Applied Guild",
+      "detail": "est. 1619",
+      "x": 741.48,
+      "y": 1697.3987910363055,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "star",
+      "icon_width": 18
     },
     {
-      "id": "n6-2-0",
-      "label": "Kinetic Lab",
-      "detail": "c. 1764",
-      "row": 6,
-      "col": 4,
+      "id": "school-2-1-4",
+      "label": "Workshop Commons",
+      "detail": "est. 1616",
+      "x": 934.44,
+      "y": 1690.9963826024925,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n6-2-1",
-      "label": "Systems College",
-      "detail": "c. 1773",
-      "row": 6,
-      "col": 5,
+      "id": "school-2-1-5",
+      "label": "Mechanical School",
+      "detail": "est. 1622",
+      "x": 1127.4,
+      "y": 1704.430275412413,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n7-2-0",
-      "label": "Open Machines",
-      "detail": "c. 1819",
-      "row": 7,
-      "col": 4,
+      "id": "school-2-2-0",
+      "label": "Applied College",
+      "detail": "est. 1649",
+      "x": 162.59999999999997,
+      "y": 1768.328605802695,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n7-2-1",
-      "label": "Mechanism Archive",
-      "detail": "c. 1828",
-      "row": 7,
-      "col": 5,
+      "id": "school-2-2-1",
+      "label": "Workshop Circle",
+      "detail": "est. 1654",
+      "x": 300.4285714285714,
+      "y": 1781.2558927897503,
+      "width": 76,
       "group": "g2",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n8-2-0",
-      "label": "Resilient Motion",
-      "detail": "c. 1874",
-      "row": 8,
-      "col": 4,
+      "id": "school-2-2-2",
+      "label": "Mechanical Observatory",
+      "detail": "est. 1653",
+      "x": 438.25714285714287,
+      "y": 1779.296947881934,
+      "width": 76,
       "group": "g2",
-      "emphasis": true
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n8-2-1",
-      "label": "Energy Workshop",
-      "detail": "c. 1883",
-      "row": 8,
-      "col": 5,
+      "id": "school-2-2-3",
+      "label": "Lever Foundation",
+      "detail": "est. 1649",
+      "x": 576.0857142857143,
+      "y": 1768.0000783475944,
+      "width": 76,
       "group": "g2",
-      "emphasis": true
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "t3",
-      "label": "Study of Light",
-      "detail": "Early tradition",
-      "row": 1,
-      "col": 6.5,
+      "id": "school-2-2-4",
+      "label": "Power Society",
+      "detail": "est. 1653",
+      "x": 713.9142857142857,
+      "y": 1779.3613362946132,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-2-5",
+      "label": "Dynamic Institute",
+      "detail": "est. 1654",
+      "x": 851.7428571428571,
+      "y": 1781.202302721257,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-2-6",
+      "label": "Clockwork College",
+      "detail": "est. 1649",
+      "x": 989.5714285714286,
+      "y": 1768.3088200649636,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-2-7",
+      "label": "Hydraulic Circle",
+      "detail": "est. 1652",
+      "x": 1127.4,
+      "y": 1777.1990176773036,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-3-0",
+      "label": "Lever Union",
+      "detail": "est. 1685",
+      "x": 109.0,
+      "y": 1855.7209599047026,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-3-1",
+      "label": "Power Laboratory",
+      "detail": "est. 1687",
+      "x": 228.1111111111111,
+      "y": 1860.387896900988,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-3-2",
+      "label": "Dynamic Guild",
+      "detail": "est. 1682",
+      "x": 347.22222222222223,
+      "y": 1846.9624339202267,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-3-3",
+      "label": "Clockwork Commons",
+      "detail": "est. 1684",
+      "x": 466.3333333333333,
+      "y": 1853.4694248211904,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-3-4",
+      "label": "Hydraulic School",
+      "detail": "est. 1688",
+      "x": 585.4444444444445,
+      "y": 1861.4791604441975,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-3-5",
+      "label": "Kinetic Academy",
+      "detail": "est. 1682",
+      "x": 704.5555555555555,
+      "y": 1848.305717261047,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-3-6",
+      "label": "Engine Union",
+      "detail": "est. 1684",
+      "x": 823.6666666666666,
+      "y": 1851.2601550522431,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-3-7",
+      "label": "Precision Laboratory",
+      "detail": "est. 1688",
+      "x": 942.7777777777778,
+      "y": 1861.9746383542304,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-3-8",
+      "label": "Steam Guild",
+      "detail": "est. 1683",
+      "x": 1061.888888888889,
+      "y": 1850.102603900316,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-3-9",
+      "label": "Applied Commons",
+      "detail": "est. 1683",
+      "x": 1181.0,
+      "y": 1849.269139761079,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-4-0",
+      "label": "Clockwork Circle",
+      "detail": "est. 1721",
+      "x": 109.0,
+      "y": 1939.914865972987,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-4-1",
+      "label": "Hydraulic Observatory",
+      "detail": "est. 1716",
+      "x": 216.2,
+      "y": 1927.6478311128851,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-4-2",
+      "label": "Kinetic Foundation",
+      "detail": "est. 1716",
+      "x": 323.40000000000003,
+      "y": 1927.7074166559964,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-4-3",
+      "label": "Engine Society",
+      "detail": "est. 1721",
+      "x": 430.6,
+      "y": 1939.924858845559,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-4-4",
+      "label": "Precision Institute",
+      "detail": "est. 1716",
+      "x": 537.8000000000001,
+      "y": 1929.6967734666796,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-4-5",
+      "label": "Steam College",
+      "detail": "est. 1715",
+      "x": 645.0,
+      "y": 1925.9921020258266,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-4-6",
+      "label": "Applied Circle",
+      "detail": "est. 1721",
+      "x": 752.1999999999999,
+      "y": 1939.303562005821,
+      "width": 76,
+      "group": "g2",
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "lens",
+      "icon_width": 18
+    },
+    {
+      "id": "school-2-4-7",
+      "label": "Workshop Observatory",
+      "detail": "est. 1717",
+      "x": 859.4,
+      "y": 1931.9291895256767,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-4-8",
+      "label": "Mechanical Foundation",
+      "detail": "est. 1714",
+      "x": 966.6,
+      "y": 1924.755373103947,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-4-9",
+      "label": "Lever Society",
+      "detail": "est. 1720",
+      "x": 1073.8,
+      "y": 1938.100467603837,
+      "width": 76,
+      "group": "g2",
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "ship",
+      "icon_width": 18
+    },
+    {
+      "id": "school-2-4-10",
+      "label": "Power Institute",
+      "detail": "est. 1718",
+      "x": 1181.0,
+      "y": 1934.1672463064629,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-5-0",
+      "label": "Engine Laboratory",
+      "detail": "est. 1750",
+      "x": 109.0,
+      "y": 2009.3987910363055,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-5-1",
+      "label": "Precision Guild",
+      "detail": "est. 1747",
+      "x": 228.1111111111111,
+      "y": 2002.9963826024925,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-5-2",
+      "label": "Steam Commons",
+      "detail": "est. 1753",
+      "x": 347.22222222222223,
+      "y": 2016.430275412413,
+      "width": 76,
+      "group": "g2",
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "globe",
+      "icon_width": 18
+    },
+    {
+      "id": "school-2-5-3",
+      "label": "Applied School",
+      "detail": "est. 1751",
+      "x": 466.3333333333333,
+      "y": 2011.6517398555025,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-5-4",
+      "label": "Workshop Academy",
+      "detail": "est. 1747",
+      "x": 585.4444444444445,
+      "y": 2002.1949919562549,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-5-5",
+      "label": "Mechanical Union",
+      "detail": "est. 1752",
+      "x": 704.5555555555555,
+      "y": 2014.8443189577567,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-5-6",
+      "label": "Lever Laboratory",
+      "detail": "est. 1752",
+      "x": 823.6666666666666,
+      "y": 2013.7731120247536,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-5-7",
+      "label": "Power Guild",
+      "detail": "est. 1747",
+      "x": 942.7777777777778,
+      "y": 2002.0153437761649,
+      "width": 76,
+      "group": "g2",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-2-5-8",
+      "label": "Dynamic Commons",
+      "detail": "est. 1751",
+      "x": 1061.888888888889,
+      "y": 2012.8724668321775,
+      "width": 76,
+      "group": "g2",
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "star",
+      "icon_width": 18
+    },
+    {
+      "id": "school-2-5-9",
+      "label": "Clockwork School",
+      "detail": "est. 1753",
+      "x": 1181.0,
+      "y": 2015.5939202532409,
+      "width": 76,
+      "group": "g2",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "root-3",
+      "label": "Colleges of Light",
+      "detail": "The founding tradition",
+      "x": 362.5,
+      "y": 2140,
+      "width": 193,
       "group": "g3",
-      "emphasis": true
+      "style": "hero",
+      "icon": "lens",
+      "icon_width": 41,
+      "size": 16
     },
     {
-      "id": "n2-3-0",
-      "label": "Mirror School",
-      "detail": "c. 1551",
-      "row": 2,
-      "col": 6,
+      "id": "school-3-0-0",
+      "label": "Spectral Academy",
+      "detail": "est. 1851",
+      "x": 179.98000000000002,
+      "y": 2251.128960064479,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n2-3-1",
-      "label": "Lens Makers",
-      "detail": "c. 1560",
-      "row": 2,
-      "col": 7,
+      "id": "school-3-0-1",
+      "label": "Prism Union",
+      "detail": "est. 1848",
+      "x": 362.5,
+      "y": 2242.3286058026947,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n3-3-0",
-      "label": "Prism Workshop",
-      "detail": "c. 1606",
-      "row": 3,
-      "col": 6,
+      "id": "school-3-0-2",
+      "label": "Wave Laboratory",
+      "detail": "est. 1853",
+      "x": 545.02,
+      "y": 2255.2558927897503,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n3-3-1",
-      "label": "Glass Institute",
-      "detail": "c. 1615",
-      "row": 3,
-      "col": 7,
+      "id": "school-3-1-0",
+      "label": "Mirror College",
+      "detail": "est. 1890",
+      "x": 134.35,
+      "y": 2342.1797590586793,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n4-3-0",
-      "label": "Spectrum Hall",
-      "detail": "c. 1661",
-      "row": 4,
-      "col": 6,
+      "id": "school-3-1-1",
+      "label": "Lens Circle",
+      "detail": "est. 1894",
+      "x": 248.425,
+      "y": 2351.7209599047023,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n4-3-1",
-      "label": "Imaging School",
-      "detail": "c. 1670",
-      "row": 4,
-      "col": 7,
+      "id": "school-3-1-2",
+      "label": "Optical Observatory",
+      "detail": "est. 1896",
+      "x": 362.5,
+      "y": 2356.387896900988,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n5-3-0",
-      "label": "Wave Institute",
-      "detail": "c. 1716",
-      "row": 5,
-      "col": 6,
+      "id": "school-3-1-3",
+      "label": "Imaging Foundation",
+      "detail": "est. 1890",
+      "x": 476.575,
+      "y": 2342.9624339202264,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n5-3-1",
-      "label": "Light Network",
-      "detail": "c. 1725",
-      "row": 5,
-      "col": 7,
+      "id": "school-3-1-4",
+      "label": "Glass Society",
+      "detail": "est. 1893",
+      "x": 590.65,
+      "y": 2349.4694248211904,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n6-3-0",
-      "label": "Photon Lab",
-      "detail": "c. 1771",
-      "row": 6,
-      "col": 6,
+      "id": "school-3-2-0",
+      "label": "Imaging Union",
+      "detail": "est. 1934",
+      "x": 109.0,
+      "y": 2447.7646760144085,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n6-3-1",
-      "label": "Visual College",
-      "detail": "c. 1780",
-      "row": 6,
-      "col": 7,
+      "id": "school-3-2-1",
+      "label": "Glass Laboratory",
+      "detail": "est. 1938",
+      "x": 210.4,
+      "y": 2457.914865972987,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n7-3-0",
-      "label": "Open Optics",
-      "detail": "c. 1826",
-      "row": 7,
-      "col": 6,
+      "id": "school-3-2-2",
+      "label": "Luminous Guild",
+      "detail": "est. 1933",
+      "x": 311.8,
+      "y": 2445.647831112885,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n7-3-1",
-      "label": "Lens Archive",
-      "detail": "c. 1835",
-      "row": 7,
-      "col": 7,
+      "id": "school-3-2-3",
+      "label": "Photon Commons",
+      "detail": "est. 1933",
+      "x": 413.2,
+      "y": 2445.7074166559964,
+      "width": 76,
       "group": "g3",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n8-3-0",
-      "label": "Coherent Light",
-      "detail": "c. 1881",
-      "row": 8,
-      "col": 6,
+      "id": "school-3-2-4",
+      "label": "Refraction School",
+      "detail": "est. 1938",
+      "x": 514.6,
+      "y": 2457.924858845559,
+      "width": 76,
       "group": "g3",
-      "emphasis": true
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n8-3-1",
-      "label": "Adaptive Imaging",
-      "detail": "c. 1890",
-      "row": 8,
-      "col": 7,
+      "id": "school-3-2-5",
+      "label": "Visible Academy",
+      "detail": "est. 1934",
+      "x": 616.0,
+      "y": 2447.6967734666796,
+      "width": 76,
       "group": "g3",
-      "emphasis": true
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "t4",
-      "label": "Land Surveys",
-      "detail": "Early tradition",
-      "row": 1,
-      "col": 8.5,
-      "group": "g4",
-      "emphasis": true
+      "id": "school-3-3-0",
+      "label": "Photon Circle",
+      "detail": "est. 1980",
+      "x": 109.0,
+      "y": 2557.503999814198,
+      "width": 76,
+      "group": "g3",
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n2-4-0",
-      "label": "Survey School",
-      "detail": "c. 1558",
-      "row": 2,
-      "col": 8,
-      "group": "g4",
-      "emphasis": false
+      "id": "school-3-3-1",
+      "label": "Refraction Observatory",
+      "detail": "est. 1977",
+      "x": 210.4,
+      "y": 2549.3987910363057,
+      "width": 76,
+      "group": "g3",
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n2-4-1",
-      "label": "Map Scribes",
-      "detail": "c. 1567",
-      "row": 2,
-      "col": 9,
-      "group": "g4",
-      "emphasis": false
+      "id": "school-3-3-2",
+      "label": "Visible Foundation",
+      "detail": "est. 1974",
+      "x": 311.8,
+      "y": 2542.9963826024928,
+      "width": 76,
+      "group": "g3",
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n3-4-0",
-      "label": "Terrain Guild",
-      "detail": "c. 1613",
-      "row": 3,
-      "col": 8,
-      "group": "g4",
-      "emphasis": false
+      "id": "school-3-3-3",
+      "label": "Spectral Society",
+      "detail": "est. 1980",
+      "x": 413.2,
+      "y": 2556.430275412413,
+      "width": 76,
+      "group": "g3",
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n3-4-1",
-      "label": "Coast Atlas",
-      "detail": "c. 1622",
-      "row": 3,
-      "col": 9,
-      "group": "g4",
-      "emphasis": false
+      "id": "school-3-3-4",
+      "label": "Prism Institute",
+      "detail": "est. 1978",
+      "x": 514.6,
+      "y": 2551.6517398555025,
+      "width": 76,
+      "group": "g3",
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n4-4-0",
-      "label": "Geodesy Hall",
-      "detail": "c. 1668",
-      "row": 4,
-      "col": 8,
-      "group": "g4",
-      "emphasis": false
+      "id": "school-3-3-5",
+      "label": "Wave College",
+      "detail": "est. 1974",
+      "x": 616.0,
+      "y": 2542.194991956255,
+      "width": 76,
+      "group": "g3",
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n4-4-1",
-      "label": "Map Institute",
-      "detail": "c. 1677",
-      "row": 4,
-      "col": 9,
+      "id": "root-4",
+      "label": "Geographical Societies",
+      "detail": "The founding tradition",
+      "x": 1227.5,
+      "y": 2160,
+      "width": 193,
       "group": "g4",
-      "emphasis": false
+      "style": "hero",
+      "icon": "globe",
+      "icon_width": 41,
+      "size": 16
     },
     {
-      "id": "n5-4-0",
-      "label": "Grid Network",
-      "detail": "c. 1723",
-      "row": 5,
-      "col": 8,
+      "id": "school-4-0-0",
+      "label": "Geodetic College",
+      "detail": "est. 1857",
+      "x": 918.98,
+      "y": 2263.9455800375367,
+      "width": 76,
       "group": "g4",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n5-4-1",
-      "label": "Relief School",
-      "detail": "c. 1732",
-      "row": 5,
-      "col": 9,
+      "id": "school-4-0-1",
+      "label": "Regional Circle",
+      "detail": "est. 1858",
+      "x": 1124.66,
+      "y": 2267.7646760144085,
+      "width": 76,
       "group": "g4",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n6-4-0",
-      "label": "Earth Lab",
-      "detail": "c. 1778",
-      "row": 6,
-      "col": 8,
+      "id": "school-4-0-2",
+      "label": "Terrain Observatory",
+      "detail": "est. 1863",
+      "x": 1330.34,
+      "y": 2277.914865972987,
+      "width": 76,
       "group": "g4",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n6-4-1",
-      "label": "Spatial College",
-      "detail": "c. 1787",
-      "row": 6,
-      "col": 9,
+      "id": "school-4-0-3",
+      "label": "Relief Foundation",
+      "detail": "est. 1858",
+      "x": 1536.02,
+      "y": 2265.647831112885,
+      "width": 76,
       "group": "g4",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n7-4-0",
-      "label": "Open Maps",
-      "detail": "c. 1833",
-      "row": 7,
-      "col": 8,
+      "id": "school-4-1-0",
+      "label": "Relief Union",
+      "detail": "est. 1896",
+      "x": 841.8499999999999,
+      "y": 2357.6890107287704,
+      "width": 76,
       "group": "g4",
-      "emphasis": false
+      "style": "plain",
+      "size": 10.0
     },
     {
-      "id": "n7-4-1",
-      "label": "Regional Archive",
-      "detail": "c. 1842",
-      "row": 7,
-      "col": 9,
+      "id": "school-4-1-1",
+      "label": "Survey Laboratory",
+      "detail": "est. 1902",
+      "x": 970.4,
+      "y": 2370.8373331475314,
+      "width": 76,
       "group": "g4",
-      "emphasis": false
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n8-4-0",
-      "label": "Shared Terrain",
-      "detail": "c. 1888",
-      "row": 8,
-      "col": 8,
+      "id": "school-4-1-2",
+      "label": "Continental Guild",
+      "detail": "est. 1898",
+      "x": 1098.95,
+      "y": 2362.732124369639,
+      "width": 76,
       "group": "g4",
-      "emphasis": true
+      "style": "card",
+      "size": 10.0
     },
     {
-      "id": "n8-4-1",
-      "label": "Living Atlas",
-      "detail": "c. 1897",
-      "row": 8,
-      "col": 9,
+      "id": "school-4-1-3",
+      "label": "Coastline Commons",
+      "detail": "est. 1896",
+      "x": 1227.5,
+      "y": 2356.3297159358262,
+      "width": 76,
       "group": "g4",
-      "emphasis": true
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-1-4",
+      "label": "Atlas School",
+      "detail": "est. 1901",
+      "x": 1356.05,
+      "y": 2369.7636087457463,
+      "width": 76,
+      "group": "g4",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-1-5",
+      "label": "Spatial Academy",
+      "detail": "est. 1899",
+      "x": 1484.6,
+      "y": 2364.985073188836,
+      "width": 76,
+      "group": "g4",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-1-6",
+      "label": "Topographic Union",
+      "detail": "est. 1895",
+      "x": 1613.15,
+      "y": 2355.5283252895883,
+      "width": 76,
+      "group": "g4",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-2-0",
+      "label": "Coastline Circle",
+      "detail": "est. 1940",
+      "x": 841.8499999999999,
+      "y": 2461.922559456417,
+      "width": 76,
+      "group": "g4",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-2-1",
+      "label": "Atlas Observatory",
+      "detail": "est. 1939",
+      "x": 938.2625,
+      "y": 2459.9636145486006,
+      "width": 76,
+      "group": "g4",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-2-2",
+      "label": "Spatial Foundation",
+      "detail": "est. 1934",
+      "x": 1034.675,
+      "y": 2448.666745014261,
+      "width": 76,
+      "group": "g4",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-2-3",
+      "label": "Topographic Society",
+      "detail": "est. 1939",
+      "x": 1131.0875,
+      "y": 2460.0280029612795,
+      "width": 76,
+      "group": "g4",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-2-4",
+      "label": "Longitude Institute",
+      "detail": "est. 1940",
+      "x": 1227.5,
+      "y": 2461.8689693879232,
+      "width": 76,
+      "group": "g4",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-2-5",
+      "label": "Field College",
+      "detail": "est. 1935",
+      "x": 1323.9125,
+      "y": 2448.97548673163,
+      "width": 76,
+      "group": "g4",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-2-6",
+      "label": "Geodetic Circle",
+      "detail": "est. 1938",
+      "x": 1420.325,
+      "y": 2457.8656843439703,
+      "width": 76,
+      "group": "g4",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-2-7",
+      "label": "Regional Observatory",
+      "detail": "est. 1941",
+      "x": 1516.7375,
+      "y": 2463.359911774955,
+      "width": 76,
+      "group": "g4",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-2-8",
+      "label": "Terrain Foundation",
+      "detail": "est. 1935",
+      "x": 1613.15,
+      "y": 2449.896903433265,
+      "width": 76,
+      "group": "g4",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-3-0",
+      "label": "Topographic Laboratory",
+      "detail": "est. 1980",
+      "x": 799.0,
+      "y": 2556.387896900988,
+      "width": 76,
+      "group": "g4",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-3-1",
+      "label": "Longitude Guild",
+      "detail": "est. 1974",
+      "x": 894.2222222222222,
+      "y": 2542.9624339202264,
+      "width": 76,
+      "group": "g4",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-3-2",
+      "label": "Field Commons",
+      "detail": "est. 1977",
+      "x": 989.4444444444445,
+      "y": 2549.4694248211904,
+      "width": 76,
+      "group": "g4",
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "ship",
+      "icon_width": 18
+    },
+    {
+      "id": "school-4-3-3",
+      "label": "Geodetic School",
+      "detail": "est. 1980",
+      "x": 1084.6666666666667,
+      "y": 2557.4791604441975,
+      "width": 76,
+      "group": "g4",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-3-4",
+      "label": "Regional Academy",
+      "detail": "est. 1975",
+      "x": 1179.888888888889,
+      "y": 2544.305717261047,
+      "width": 76,
+      "group": "g4",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-3-5",
+      "label": "Terrain Union",
+      "detail": "est. 1976",
+      "x": 1275.111111111111,
+      "y": 2547.260155052243,
+      "width": 76,
+      "group": "g4",
+      "style": "emblem",
+      "size": 10.5,
+      "icon": "globe",
+      "icon_width": 18
+    },
+    {
+      "id": "school-4-3-6",
+      "label": "Relief Laboratory",
+      "detail": "est. 1980",
+      "x": 1370.3333333333333,
+      "y": 2557.9746383542306,
+      "width": 76,
+      "group": "g4",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-3-7",
+      "label": "Survey Guild",
+      "detail": "est. 1975",
+      "x": 1465.5555555555557,
+      "y": 2546.102603900316,
+      "width": 76,
+      "group": "g4",
+      "style": "card",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-3-8",
+      "label": "Continental Commons",
+      "detail": "est. 1975",
+      "x": 1560.7777777777778,
+      "y": 2545.269139761079,
+      "width": 76,
+      "group": "g4",
+      "style": "plain",
+      "size": 10.0
+    },
+    {
+      "id": "school-4-3-9",
+      "label": "Coastline School",
+      "detail": "est. 1980",
+      "x": 1656.0,
+      "y": 2557.8348611448314,
+      "width": 76,
+      "group": "g4",
+      "style": "plain",
+      "size": 10.0
     }
   ],
   "edges": [
     {
-      "id": "root-0",
-      "source": "origin",
-      "target": "t0",
-      "kind": "branch"
-    },
-    {
-      "id": "e2-0-0",
-      "source": "t0",
-      "target": "n2-0-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e2-0-1",
-      "source": "t0",
-      "target": "n2-0-1",
-      "kind": "branch"
-    },
-    {
-      "id": "e3-0-0",
-      "source": "n2-0-0",
-      "target": "n3-0-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e3-0-1",
-      "source": "n2-0-1",
-      "target": "n3-0-1",
-      "kind": "branch"
-    },
-    {
-      "id": "e4-0-0",
-      "source": "n3-0-0",
-      "target": "n4-0-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e4-0-1",
-      "source": "n3-0-1",
-      "target": "n4-0-1",
-      "kind": "branch"
-    },
-    {
-      "id": "e5-0-0",
-      "source": "n4-0-0",
-      "target": "n5-0-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e5-0-1",
-      "source": "n4-0-1",
-      "target": "n5-0-1",
-      "kind": "branch"
-    },
-    {
-      "id": "e6-0-0",
-      "source": "n5-0-0",
-      "target": "n6-0-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e6-0-1",
-      "source": "n5-0-1",
-      "target": "n6-0-1",
-      "kind": "branch"
-    },
-    {
-      "id": "e7-0-0",
-      "source": "n6-0-0",
-      "target": "n7-0-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e7-0-1",
-      "source": "n6-0-1",
-      "target": "n7-0-1",
-      "kind": "branch"
-    },
-    {
-      "id": "e8-0-0",
-      "source": "n7-0-0",
-      "target": "n8-0-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e8-0-1",
-      "source": "n7-0-1",
-      "target": "n8-0-1",
-      "kind": "branch"
-    },
-    {
-      "id": "root-1",
-      "source": "origin",
-      "target": "t1",
-      "kind": "branch"
-    },
-    {
-      "id": "e2-1-0",
-      "source": "t1",
-      "target": "n2-1-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e2-1-1",
-      "source": "t1",
-      "target": "n2-1-1",
-      "kind": "branch"
-    },
-    {
-      "id": "e3-1-0",
-      "source": "n2-1-0",
-      "target": "n3-1-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e3-1-1",
-      "source": "n2-1-1",
-      "target": "n3-1-1",
-      "kind": "branch"
-    },
-    {
-      "id": "e4-1-0",
-      "source": "n3-1-0",
-      "target": "n4-1-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e4-1-1",
-      "source": "n3-1-1",
-      "target": "n4-1-1",
-      "kind": "branch"
-    },
-    {
-      "id": "e5-1-0",
-      "source": "n4-1-0",
-      "target": "n5-1-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e5-1-1",
-      "source": "n4-1-1",
-      "target": "n5-1-1",
-      "kind": "branch"
-    },
-    {
-      "id": "e6-1-0",
-      "source": "n5-1-0",
-      "target": "n6-1-0",
-      "kind": "branch"
-    },
-    {
-      "id": "e6-1-1",
-      "source": "n5-1-1",
-      "target": "n6-1-1",
-      "kind": "branch"
+      "id": "origin-0",
+      "source": "oral",
+      "target": "craft",
+      "kind": "branch",
+      "weight": 3.6
     },
     {
-      "id": "e7-1-0",
-      "source": "n6-1-0",
-      "target": "n7-1-0",
-      "kind": "branch"
+      "id": "origin-1",
+      "source": "oral",
+      "target": "record",
+      "kind": "branch",
+      "weight": 3.6
     },
     {
-      "id": "e7-1-1",
-      "source": "n6-1-1",
-      "target": "n7-1-1",
-      "kind": "branch"
+      "id": "origin-2",
+      "source": "craft",
+      "target": "measure",
+      "kind": "branch",
+      "weight": 3.6
     },
     {
-      "id": "e8-1-0",
-      "source": "n7-1-0",
-      "target": "n8-1-0",
-      "kind": "branch"
+      "id": "origin-3",
+      "source": "record",
+      "target": "measure",
+      "kind": "branch",
+      "weight": 3.6
     },
     {
-      "id": "e8-1-1",
-      "source": "n7-1-1",
-      "target": "n8-1-1",
-      "kind": "branch"
+      "id": "origin-4",
+      "source": "measure",
+      "target": "study",
+      "kind": "branch",
+      "weight": 3.6
     },
     {
-      "id": "root-2",
-      "source": "origin",
-      "target": "t2",
-      "kind": "branch"
+      "id": "origin-5",
+      "source": "study",
+      "target": "inquiry",
+      "kind": "branch",
+      "weight": 3.6
     },
     {
-      "id": "e2-2-0",
-      "source": "t2",
-      "target": "n2-2-0",
-      "kind": "branch"
+      "id": "origin-6",
+      "source": "inquiry",
+      "target": "archive",
+      "kind": "branch",
+      "weight": 3.6
     },
     {
-      "id": "e2-2-1",
-      "source": "t2",
-      "target": "n2-2-1",
-      "kind": "branch"
+      "id": "first-branch-0",
+      "source": "archive",
+      "target": "root-0",
+      "kind": "branch",
+      "corridor_y": 620,
+      "weight": 4.2
     },
     {
-      "id": "e3-2-0",
-      "source": "n2-2-0",
-      "target": "n3-2-0",
+      "id": "branch-school-0-0-0",
+      "source": "root-0",
+      "target": "school-0-0-0",
       "kind": "branch"
     },
     {
-      "id": "e3-2-1",
-      "source": "n2-2-1",
-      "target": "n3-2-1",
+      "id": "branch-school-0-0-1",
+      "source": "root-0",
+      "target": "school-0-0-1",
       "kind": "branch"
     },
     {
-      "id": "e4-2-0",
-      "source": "n3-2-0",
-      "target": "n4-2-0",
+      "id": "branch-school-0-0-2",
+      "source": "root-0",
+      "target": "school-0-0-2",
       "kind": "branch"
     },
     {
-      "id": "e4-2-1",
-      "source": "n3-2-1",
-      "target": "n4-2-1",
+      "id": "branch-school-0-1-0",
+      "source": "school-0-0-0",
+      "target": "school-0-1-0",
       "kind": "branch"
     },
     {
-      "id": "e5-2-0",
-      "source": "n4-2-0",
-      "target": "n5-2-0",
+      "id": "branch-school-0-1-1",
+      "source": "school-0-0-0",
+      "target": "school-0-1-1",
       "kind": "branch"
     },
     {
-      "id": "e5-2-1",
-      "source": "n4-2-1",
-      "target": "n5-2-1",
+      "id": "branch-school-0-1-2",
+      "source": "school-0-0-1",
+      "target": "school-0-1-2",
       "kind": "branch"
     },
     {
-      "id": "e6-2-0",
-      "source": "n5-2-0",
-      "target": "n6-2-0",
+      "id": "branch-school-0-1-3",
+      "source": "school-0-0-1",
+      "target": "school-0-1-3",
       "kind": "branch"
     },
     {
-      "id": "e6-2-1",
-      "source": "n5-2-1",
-      "target": "n6-2-1",
+      "id": "branch-school-0-1-4",
+      "source": "school-0-0-2",
+      "target": "school-0-1-4",
       "kind": "branch"
     },
     {
-      "id": "e7-2-0",
-      "source": "n6-2-0",
-      "target": "n7-2-0",
+      "id": "branch-school-0-1-5",
+      "source": "school-0-0-2",
+      "target": "school-0-1-5",
       "kind": "branch"
     },
     {
-      "id": "e7-2-1",
-      "source": "n6-2-1",
-      "target": "n7-2-1",
+      "id": "branch-school-0-2-0",
+      "source": "school-0-1-0",
+      "target": "school-0-2-0",
       "kind": "branch"
     },
     {
-      "id": "e8-2-0",
-      "source": "n7-2-0",
-      "target": "n8-2-0",
+      "id": "branch-school-0-2-1",
+      "source": "school-0-1-1",
+      "target": "school-0-2-1",
       "kind": "branch"
     },
     {
-      "id": "e8-2-1",
-      "source": "n7-2-1",
-      "target": "n8-2-1",
+      "id": "branch-school-0-2-2",
+      "source": "school-0-1-1",
+      "target": "school-0-2-2",
       "kind": "branch"
     },
     {
-      "id": "root-3",
-      "source": "origin",
-      "target": "t3",
+      "id": "branch-school-0-2-3",
+      "source": "school-0-1-2",
+      "target": "school-0-2-3",
       "kind": "branch"
     },
     {
-      "id": "e2-3-0",
-      "source": "t3",
-      "target": "n2-3-0",
+      "id": "branch-school-0-2-4",
+      "source": "school-0-1-2",
+      "target": "school-0-2-4",
       "kind": "branch"
     },
     {
-      "id": "e2-3-1",
-      "source": "t3",
-      "target": "n2-3-1",
+      "id": "branch-school-0-2-5",
+      "source": "school-0-1-3",
+      "target": "school-0-2-5",
       "kind": "branch"
     },
     {
-      "id": "e3-3-0",
-      "source": "n2-3-0",
-      "target": "n3-3-0",
+      "id": "branch-school-0-2-6",
+      "source": "school-0-1-4",
+      "target": "school-0-2-6",
       "kind": "branch"
     },
     {
-      "id": "e3-3-1",
-      "source": "n2-3-1",
-      "target": "n3-3-1",
+      "id": "branch-school-0-2-7",
+      "source": "school-0-1-4",
+      "target": "school-0-2-7",
       "kind": "branch"
     },
     {
-      "id": "e4-3-0",
-      "source": "n3-3-0",
-      "target": "n4-3-0",
+      "id": "branch-school-0-2-8",
+      "source": "school-0-1-5",
+      "target": "school-0-2-8",
       "kind": "branch"
     },
     {
-      "id": "e4-3-1",
-      "source": "n3-3-1",
-      "target": "n4-3-1",
+      "id": "branch-school-0-3-0",
+      "source": "school-0-2-0",
+      "target": "school-0-3-0",
       "kind": "branch"
     },
     {
-      "id": "e5-3-0",
-      "source": "n4-3-0",
-      "target": "n5-3-0",
+      "id": "branch-school-0-3-1",
+      "source": "school-0-2-0",
+      "target": "school-0-3-1",
       "kind": "branch"
     },
     {
-      "id": "e5-3-1",
-      "source": "n4-3-1",
-      "target": "n5-3-1",
+      "id": "branch-school-0-3-2",
+      "source": "school-0-2-1",
+      "target": "school-0-3-2",
       "kind": "branch"
     },
     {
-      "id": "e6-3-0",
-      "source": "n5-3-0",
-      "target": "n6-3-0",
+      "id": "branch-school-0-3-3",
+      "source": "school-0-2-2",
+      "target": "school-0-3-3",
       "kind": "branch"
     },
     {
-      "id": "e6-3-1",
-      "source": "n5-3-1",
-      "target": "n6-3-1",
+      "id": "branch-school-0-3-4",
+      "source": "school-0-2-3",
+      "target": "school-0-3-4",
       "kind": "branch"
     },
     {
-      "id": "e7-3-0",
-      "source": "n6-3-0",
-      "target": "n7-3-0",
+      "id": "branch-school-0-3-5",
+      "source": "school-0-2-4",
+      "target": "school-0-3-5",
       "kind": "branch"
     },
     {
-      "id": "e7-3-1",
-      "source": "n6-3-1",
-      "target": "n7-3-1",
+      "id": "branch-school-0-3-6",
+      "source": "school-0-2-5",
+      "target": "school-0-3-6",
       "kind": "branch"
     },
     {
-      "id": "e8-3-0",
-      "source": "n7-3-0",
-      "target": "n8-3-0",
+      "id": "branch-school-0-3-7",
+      "source": "school-0-2-6",
+      "target": "school-0-3-7",
       "kind": "branch"
     },
     {
-      "id": "e8-3-1",
-      "source": "n7-3-1",
-      "target": "n8-3-1",
+      "id": "branch-school-0-3-8",
+      "source": "school-0-2-7",
+      "target": "school-0-3-8",
       "kind": "branch"
     },
     {
-      "id": "root-4",
-      "source": "origin",
-      "target": "t4",
+      "id": "branch-school-0-3-9",
+      "source": "school-0-2-8",
+      "target": "school-0-3-9",
       "kind": "branch"
     },
     {
-      "id": "e2-4-0",
-      "source": "t4",
-      "target": "n2-4-0",
+      "id": "branch-school-0-3-10",
+      "source": "school-0-2-8",
+      "target": "school-0-3-10",
       "kind": "branch"
     },
     {
-      "id": "e2-4-1",
-      "source": "t4",
-      "target": "n2-4-1",
+      "id": "branch-school-0-4-0",
+      "source": "school-0-3-0",
+      "target": "school-0-4-0",
       "kind": "branch"
     },
     {
-      "id": "e3-4-0",
-      "source": "n2-4-0",
-      "target": "n3-4-0",
+      "id": "branch-school-0-4-1",
+      "source": "school-0-3-1",
+      "target": "school-0-4-1",
       "kind": "branch"
     },
     {
-      "id": "e3-4-1",
-      "source": "n2-4-1",
-      "target": "n3-4-1",
+      "id": "branch-school-0-4-2",
+      "source": "school-0-3-2",
+      "target": "school-0-4-2",
       "kind": "branch"
     },
     {
-      "id": "e4-4-0",
-      "source": "n3-4-0",
-      "target": "n4-4-0",
+      "id": "branch-school-0-4-3",
+      "source": "school-0-3-3",
+      "target": "school-0-4-3",
       "kind": "branch"
     },
     {
-      "id": "e4-4-1",
-      "source": "n3-4-1",
-      "target": "n4-4-1",
+      "id": "branch-school-0-4-4",
+      "source": "school-0-3-4",
+      "target": "school-0-4-4",
       "kind": "branch"
     },
     {
-      "id": "e5-4-0",
-      "source": "n4-4-0",
-      "target": "n5-4-0",
+      "id": "branch-school-0-4-5",
+      "source": "school-0-3-6",
+      "target": "school-0-4-5",
       "kind": "branch"
     },
     {
-      "id": "e5-4-1",
-      "source": "n4-4-1",
-      "target": "n5-4-1",
+      "id": "branch-school-0-4-6",
+      "source": "school-0-3-7",
+      "target": "school-0-4-6",
       "kind": "branch"
     },
     {
-      "id": "e6-4-0",
-      "source": "n5-4-0",
-      "target": "n6-4-0",
+      "id": "branch-school-0-4-7",
+      "source": "school-0-3-8",
+      "target": "school-0-4-7",
       "kind": "branch"
     },
     {
-      "id": "e6-4-1",
-      "source": "n5-4-1",
-      "target": "n6-4-1",
+      "id": "branch-school-0-4-8",
+      "source": "school-0-3-9",
+      "target": "school-0-4-8",
       "kind": "branch"
     },
     {
-      "id": "e7-4-0",
-      "source": "n6-4-0",
-      "target": "n7-4-0",
+      "id": "branch-school-0-4-9",
+      "source": "school-0-3-10",
+      "target": "school-0-4-9",
       "kind": "branch"
     },
     {
-      "id": "e7-4-1",
-      "source": "n6-4-1",
-      "target": "n7-4-1",
+      "id": "branch-school-0-5-0",
+      "source": "school-0-4-0",
+      "target": "school-0-5-0",
       "kind": "branch"
     },
     {
-      "id": "e8-4-0",
-      "source": "n7-4-0",
-      "target": "n8-4-0",
+      "id": "branch-school-0-5-1",
+      "source": "school-0-4-1",
+      "target": "school-0-5-1",
       "kind": "branch"
     },
     {
-      "id": "e8-4-1",
-      "source": "n7-4-1",
-      "target": "n8-4-1",
+      "id": "branch-school-0-5-2",
+      "source": "school-0-4-2",
+      "target": "school-0-5-2",
       "kind": "branch"
     },
     {
-      "id": "influence-n3-0-1",
-      "source": "n3-0-1",
-      "target": "n4-1-0",
+      "id": "merge-school-0-5-2",
+      "source": "school-0-4-1",
+      "target": "school-0-5-2",
       "kind": "influence"
     },
     {
-      "id": "influence-n5-2-1",
-      "source": "n5-2-1",
-      "target": "n6-3-0",
+      "id": "branch-school-0-5-3",
+      "source": "school-0-4-3",
+      "target": "school-0-5-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-0-5-4",
+      "source": "school-0-4-4",
+      "target": "school-0-5-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-0-5-5",
+      "source": "school-0-4-6",
+      "target": "school-0-5-5",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-0-5-6",
+      "source": "school-0-4-7",
+      "target": "school-0-5-6",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-0-5-7",
+      "source": "school-0-4-8",
+      "target": "school-0-5-7",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-0-5-8",
+      "source": "school-0-4-9",
+      "target": "school-0-5-8",
+      "kind": "branch"
+    },
+    {
+      "id": "first-branch-1",
+      "source": "archive",
+      "target": "root-1",
+      "kind": "branch",
+      "corridor_y": 629,
+      "weight": 4.2
+    },
+    {
+      "id": "branch-school-1-0-0",
+      "source": "root-1",
+      "target": "school-1-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-0-1",
+      "source": "root-1",
+      "target": "school-1-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-1-0",
+      "source": "school-1-0-0",
+      "target": "school-1-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-1-1",
+      "source": "school-1-0-0",
+      "target": "school-1-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-1-2",
+      "source": "school-1-0-1",
+      "target": "school-1-1-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-2-0",
+      "source": "school-1-1-0",
+      "target": "school-1-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-2-1",
+      "source": "school-1-1-1",
+      "target": "school-1-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-2-2",
+      "source": "school-1-1-2",
+      "target": "school-1-2-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-3-0",
+      "source": "school-1-2-0",
+      "target": "school-1-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-3-1",
+      "source": "school-1-2-2",
+      "target": "school-1-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-4-0",
+      "source": "school-1-3-0",
+      "target": "school-1-4-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-4-1",
+      "source": "school-1-3-0",
+      "target": "school-1-4-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-4-2",
+      "source": "school-1-3-1",
+      "target": "school-1-4-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-5-0",
+      "source": "school-1-4-0",
+      "target": "school-1-5-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-5-1",
+      "source": "school-1-4-1",
+      "target": "school-1-5-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-5-2",
+      "source": "school-1-4-2",
+      "target": "school-1-5-2",
+      "kind": "branch"
+    },
+    {
+      "id": "merge-school-1-5-2",
+      "source": "school-1-4-1",
+      "target": "school-1-5-2",
       "kind": "influence"
     },
     {
-      "id": "influence-n6-3-1",
-      "source": "n6-3-1",
-      "target": "n7-4-0",
+      "id": "branch-school-1-6-0",
+      "source": "school-1-5-0",
+      "target": "school-1-6-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-6-1",
+      "source": "school-1-5-1",
+      "target": "school-1-6-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-6-2",
+      "source": "school-1-5-2",
+      "target": "school-1-6-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-7-0",
+      "source": "school-1-6-0",
+      "target": "school-1-7-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-7-1",
+      "source": "school-1-6-2",
+      "target": "school-1-7-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-8-0",
+      "source": "school-1-7-0",
+      "target": "school-1-8-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-8-1",
+      "source": "school-1-7-0",
+      "target": "school-1-8-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-8-2",
+      "source": "school-1-7-1",
+      "target": "school-1-8-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-9-0",
+      "source": "school-1-8-0",
+      "target": "school-1-9-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-9-1",
+      "source": "school-1-8-1",
+      "target": "school-1-9-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-9-2",
+      "source": "school-1-8-2",
+      "target": "school-1-9-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-10-0",
+      "source": "school-1-9-0",
+      "target": "school-1-10-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-10-1",
+      "source": "school-1-9-2",
+      "target": "school-1-10-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-11-0",
+      "source": "school-1-10-0",
+      "target": "school-1-11-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-11-1",
+      "source": "school-1-10-0",
+      "target": "school-1-11-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-1-11-2",
+      "source": "school-1-10-1",
+      "target": "school-1-11-2",
+      "kind": "branch"
+    },
+    {
+      "id": "merge-school-1-11-2",
+      "source": "school-1-10-1",
+      "target": "school-1-11-2",
+      "kind": "influence"
+    },
+    {
+      "id": "first-branch-2",
+      "source": "school-0-5-6",
+      "target": "root-2",
+      "kind": "branch",
+      "corridor_y": 1408,
+      "weight": 4.2
+    },
+    {
+      "id": "branch-school-2-0-0",
+      "source": "root-2",
+      "target": "school-2-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-0-1",
+      "source": "root-2",
+      "target": "school-2-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-0-2",
+      "source": "root-2",
+      "target": "school-2-0-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-0-3",
+      "source": "root-2",
+      "target": "school-2-0-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-1-0",
+      "source": "school-2-0-0",
+      "target": "school-2-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-1-1",
+      "source": "school-2-0-0",
+      "target": "school-2-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-1-2",
+      "source": "school-2-0-1",
+      "target": "school-2-1-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-1-3",
+      "source": "school-2-0-2",
+      "target": "school-2-1-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-1-4",
+      "source": "school-2-0-3",
+      "target": "school-2-1-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-1-5",
+      "source": "school-2-0-3",
+      "target": "school-2-1-5",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-2-0",
+      "source": "school-2-1-0",
+      "target": "school-2-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-2-1",
+      "source": "school-2-1-1",
+      "target": "school-2-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-2-2",
+      "source": "school-2-1-1",
+      "target": "school-2-2-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-2-3",
+      "source": "school-2-1-2",
+      "target": "school-2-2-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-2-4",
+      "source": "school-2-1-3",
+      "target": "school-2-2-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-2-5",
+      "source": "school-2-1-4",
+      "target": "school-2-2-5",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-2-6",
+      "source": "school-2-1-4",
+      "target": "school-2-2-6",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-2-7",
+      "source": "school-2-1-5",
+      "target": "school-2-2-7",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-3-0",
+      "source": "school-2-2-0",
+      "target": "school-2-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-3-1",
+      "source": "school-2-2-0",
+      "target": "school-2-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-3-2",
+      "source": "school-2-2-1",
+      "target": "school-2-3-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-3-3",
+      "source": "school-2-2-2",
+      "target": "school-2-3-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-3-4",
+      "source": "school-2-2-3",
+      "target": "school-2-3-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-3-5",
+      "source": "school-2-2-4",
+      "target": "school-2-3-5",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-3-6",
+      "source": "school-2-2-5",
+      "target": "school-2-3-6",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-3-7",
+      "source": "school-2-2-6",
+      "target": "school-2-3-7",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-3-8",
+      "source": "school-2-2-7",
+      "target": "school-2-3-8",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-3-9",
+      "source": "school-2-2-7",
+      "target": "school-2-3-9",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-0",
+      "source": "school-2-3-0",
+      "target": "school-2-4-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-1",
+      "source": "school-2-3-1",
+      "target": "school-2-4-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-2",
+      "source": "school-2-3-2",
+      "target": "school-2-4-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-3",
+      "source": "school-2-3-3",
+      "target": "school-2-4-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-4",
+      "source": "school-2-3-4",
+      "target": "school-2-4-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-5",
+      "source": "school-2-3-4",
+      "target": "school-2-4-5",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-6",
+      "source": "school-2-3-5",
+      "target": "school-2-4-6",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-7",
+      "source": "school-2-3-6",
+      "target": "school-2-4-7",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-8",
+      "source": "school-2-3-7",
+      "target": "school-2-4-8",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-9",
+      "source": "school-2-3-8",
+      "target": "school-2-4-9",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-4-10",
+      "source": "school-2-3-9",
+      "target": "school-2-4-10",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-5-0",
+      "source": "school-2-4-0",
+      "target": "school-2-5-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-5-1",
+      "source": "school-2-4-1",
+      "target": "school-2-5-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-5-2",
+      "source": "school-2-4-2",
+      "target": "school-2-5-2",
+      "kind": "branch"
+    },
+    {
+      "id": "merge-school-2-5-2",
+      "source": "school-2-4-1",
+      "target": "school-2-5-2",
+      "kind": "influence"
+    },
+    {
+      "id": "branch-school-2-5-3",
+      "source": "school-2-4-3",
+      "target": "school-2-5-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-5-4",
+      "source": "school-2-4-4",
+      "target": "school-2-5-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-5-5",
+      "source": "school-2-4-6",
+      "target": "school-2-5-5",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-5-6",
+      "source": "school-2-4-7",
+      "target": "school-2-5-6",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-5-7",
+      "source": "school-2-4-8",
+      "target": "school-2-5-7",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-5-8",
+      "source": "school-2-4-9",
+      "target": "school-2-5-8",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-2-5-9",
+      "source": "school-2-4-10",
+      "target": "school-2-5-9",
+      "kind": "branch"
+    },
+    {
+      "id": "first-branch-3",
+      "source": "school-2-5-1",
+      "target": "root-3",
+      "kind": "branch",
+      "corridor_y": 2038,
+      "weight": 4.2
+    },
+    {
+      "id": "branch-school-3-0-0",
+      "source": "root-3",
+      "target": "school-3-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-0-1",
+      "source": "root-3",
+      "target": "school-3-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-0-2",
+      "source": "root-3",
+      "target": "school-3-0-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-1-0",
+      "source": "school-3-0-0",
+      "target": "school-3-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-1-1",
+      "source": "school-3-0-0",
+      "target": "school-3-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-1-2",
+      "source": "school-3-0-1",
+      "target": "school-3-1-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-1-3",
+      "source": "school-3-0-2",
+      "target": "school-3-1-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-1-4",
+      "source": "school-3-0-2",
+      "target": "school-3-1-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-2-0",
+      "source": "school-3-1-0",
+      "target": "school-3-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-2-1",
+      "source": "school-3-1-1",
+      "target": "school-3-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-2-2",
+      "source": "school-3-1-2",
+      "target": "school-3-2-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-2-3",
+      "source": "school-3-1-2",
+      "target": "school-3-2-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-2-4",
+      "source": "school-3-1-3",
+      "target": "school-3-2-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-2-5",
+      "source": "school-3-1-4",
+      "target": "school-3-2-5",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-3-0",
+      "source": "school-3-2-0",
+      "target": "school-3-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-3-1",
+      "source": "school-3-2-1",
+      "target": "school-3-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-3-2",
+      "source": "school-3-2-2",
+      "target": "school-3-3-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-3-3",
+      "source": "school-3-2-3",
+      "target": "school-3-3-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-3-4",
+      "source": "school-3-2-4",
+      "target": "school-3-3-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-3-3-5",
+      "source": "school-3-2-5",
+      "target": "school-3-3-5",
+      "kind": "branch"
+    },
+    {
+      "id": "first-branch-4",
+      "source": "school-1-11-2",
+      "target": "root-4",
+      "kind": "branch",
+      "corridor_y": 2058,
+      "weight": 4.2
+    },
+    {
+      "id": "branch-school-4-0-0",
+      "source": "root-4",
+      "target": "school-4-0-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-0-1",
+      "source": "root-4",
+      "target": "school-4-0-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-0-2",
+      "source": "root-4",
+      "target": "school-4-0-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-0-3",
+      "source": "root-4",
+      "target": "school-4-0-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-1-0",
+      "source": "school-4-0-0",
+      "target": "school-4-1-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-1-1",
+      "source": "school-4-0-0",
+      "target": "school-4-1-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-1-2",
+      "source": "school-4-0-1",
+      "target": "school-4-1-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-1-3",
+      "source": "school-4-0-1",
+      "target": "school-4-1-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-1-4",
+      "source": "school-4-0-2",
+      "target": "school-4-1-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-1-5",
+      "source": "school-4-0-3",
+      "target": "school-4-1-5",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-1-6",
+      "source": "school-4-0-3",
+      "target": "school-4-1-6",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-2-0",
+      "source": "school-4-1-0",
+      "target": "school-4-2-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-2-1",
+      "source": "school-4-1-1",
+      "target": "school-4-2-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-2-2",
+      "source": "school-4-1-1",
+      "target": "school-4-2-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-2-3",
+      "source": "school-4-1-2",
+      "target": "school-4-2-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-2-4",
+      "source": "school-4-1-3",
+      "target": "school-4-2-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-2-5",
+      "source": "school-4-1-4",
+      "target": "school-4-2-5",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-2-6",
+      "source": "school-4-1-5",
+      "target": "school-4-2-6",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-2-7",
+      "source": "school-4-1-5",
+      "target": "school-4-2-7",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-2-8",
+      "source": "school-4-1-6",
+      "target": "school-4-2-8",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-3-0",
+      "source": "school-4-2-0",
+      "target": "school-4-3-0",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-3-1",
+      "source": "school-4-2-1",
+      "target": "school-4-3-1",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-3-2",
+      "source": "school-4-2-2",
+      "target": "school-4-3-2",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-3-3",
+      "source": "school-4-2-3",
+      "target": "school-4-3-3",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-3-4",
+      "source": "school-4-2-4",
+      "target": "school-4-3-4",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-3-5",
+      "source": "school-4-2-4",
+      "target": "school-4-3-5",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-3-6",
+      "source": "school-4-2-5",
+      "target": "school-4-3-6",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-3-7",
+      "source": "school-4-2-6",
+      "target": "school-4-3-7",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-3-8",
+      "source": "school-4-2-7",
+      "target": "school-4-3-8",
+      "kind": "branch"
+    },
+    {
+      "id": "branch-school-4-3-9",
+      "source": "school-4-2-8",
+      "target": "school-4-3-9",
+      "kind": "branch"
+    },
+    {
+      "id": "exchange-0",
+      "source": "school-0-2-7",
+      "target": "school-1-4-0",
+      "kind": "influence"
+    },
+    {
+      "id": "exchange-1",
+      "source": "school-1-6-0",
+      "target": "school-2-2-7",
+      "kind": "influence"
+    },
+    {
+      "id": "exchange-2",
+      "source": "school-2-4-6",
+      "target": "root-4",
+      "kind": "influence"
+    },
+    {
+      "id": "exchange-3",
+      "source": "school-3-1-4",
+      "target": "school-4-2-0",
       "kind": "influence"
     }
   ],
-  "reading_note": "Solid paths show an institutional branch. Dotted arrows show influence between traditions. Rows are schematic stages, not a uniform measure of time."
+  "unions": [],
+  "annotations": [
+    {
+      "x": 645.0,
+      "y": 666,
+      "width": 178,
+      "label": "ASTRONOMY",
+      "kind": "pill",
+      "group": "g0",
+      "size": 13
+    },
+    {
+      "x": 645.0,
+      "y": 1001.8,
+      "width": 150,
+      "label": "THE REGIONAL SCHOOLS",
+      "kind": "pill",
+      "size": 10.5,
+      "group": "g0"
+    },
+    {
+      "x": 1490.0,
+      "y": 738,
+      "width": 178,
+      "label": "NAVIGATION",
+      "kind": "pill",
+      "group": "g1",
+      "size": 13
+    },
+    {
+      "x": 1490.0,
+      "y": 1050.4545454545455,
+      "width": 150,
+      "label": "THE REGIONAL SCHOOLS",
+      "kind": "pill",
+      "size": 10.5,
+      "group": "g1"
+    },
+    {
+      "x": 1490.0,
+      "y": 1606.818181818182,
+      "width": 150,
+      "label": "THE OPEN SOCIETIES",
+      "kind": "pill",
+      "size": 10.5,
+      "group": "g1"
+    },
+    {
+      "x": 645.0,
+      "y": 1448,
+      "width": 178,
+      "label": "MECHANICS",
+      "kind": "pill",
+      "group": "g2",
+      "size": 13
+    },
+    {
+      "x": 645.0,
+      "y": 1731.0,
+      "width": 150,
+      "label": "THE REGIONAL SCHOOLS",
+      "kind": "pill",
+      "size": 10.5,
+      "group": "g2"
+    },
+    {
+      "x": 362.5,
+      "y": 2078,
+      "width": 178,
+      "label": "OPTICS",
+      "kind": "pill",
+      "group": "g3",
+      "size": 13
+    },
+    {
+      "x": 362.5,
+      "y": 2405.0,
+      "width": 150,
+      "label": "THE REGIONAL SCHOOLS",
+      "kind": "pill",
+      "size": 10.5,
+      "group": "g3"
+    },
+    {
+      "x": 1227.5,
+      "y": 2098,
+      "width": 178,
+      "label": "CARTOGRAPHY",
+      "kind": "pill",
+      "group": "g4",
+      "size": 13
+    },
+    {
+      "x": 1227.5,
+      "y": 2411.6666666666665,
+      "width": 150,
+      "label": "THE REGIONAL SCHOOLS",
+      "kind": "pill",
+      "size": 10.5,
+      "group": "g4"
+    }
+  ],
+  "insets": [
+    {
+      "kind": "isotype",
+      "title": "Institutions in the five traditions",
+      "box": [
+        84,
+        180,
+        400,
+        423
+      ]
+    },
+    {
+      "kind": "map",
+      "title": "Illustrative regional presence",
+      "box": [
+        1225,
+        181,
+        470,
+        365
+      ],
+      "countries": {
+        "FJI": "g1",
+        "TZA": "g3",
+        "SAH": "g3",
+        "CAN": "g2",
+        "USA": "g2",
+        "KAZ": "g0",
+        "UZB": "g0",
+        "PNG": "g1",
+        "IDN": "g0",
+        "ARG": "g1",
+        "CHL": "g1",
+        "COD": "g3",
+        "SOM": "g3",
+        "KEN": "g3",
+        "SDN": "g3",
+        "TCD": "g3",
+        "HTI": "g2",
+        "DOM": "g2",
+        "RUS": "g4",
+        "BHS": "g2",
+        "FLK": "g1",
+        "NOR": "g4",
+        "GRL": "g2",
+        "ATF": "g2",
+        "TLS": "g0",
+        "ZAF": "g3",
+        "LSO": "g3",
+        "MEX": "g2",
+        "URY": "g1",
+        "BRA": "g1",
+        "BOL": "g1",
+        "PER": "g1",
+        "COL": "g1",
+        "PAN": "g2",
+        "CRI": "g2",
+        "NIC": "g2",
+        "HND": "g2",
+        "SLV": "g2",
+        "GTM": "g2",
+        "BLZ": "g2",
+        "VEN": "g1",
+        "GUY": "g1",
+        "SUR": "g1",
+        "FRA": "g4",
+        "ECU": "g1",
+        "PRI": "g2",
+        "JAM": "g2",
+        "CUB": "g2",
+        "ZWE": "g3",
+        "BWA": "g3",
+        "NAM": "g3",
+        "SEN": "g3",
+        "MLI": "g3",
+        "MRT": "g3",
+        "BEN": "g3",
+        "NER": "g3",
+        "NGA": "g3",
+        "CMR": "g3",
+        "TGO": "g3",
+        "GHA": "g3",
+        "CIV": "g3",
+        "GIN": "g3",
+        "GNB": "g3",
+        "LBR": "g3",
+        "SLE": "g3",
+        "BFA": "g3",
+        "CAF": "g3",
+        "COG": "g3",
+        "GAB": "g3",
+        "GNQ": "g3",
+        "ZMB": "g3",
+        "MWI": "g3",
+        "MOZ": "g3",
+        "SWZ": "g3",
+        "AGO": "g3",
+        "BDI": "g3",
+        "ISR": "g0",
+        "LBN": "g0",
+        "MDG": "g3",
+        "PSX": "g0",
+        "GMB": "g3",
+        "TUN": "g3",
+        "DZA": "g3",
+        "JOR": "g0",
+        "ARE": "g0",
+        "QAT": "g0",
+        "KWT": "g0",
+        "IRQ": "g0",
+        "OMN": "g0",
+        "VUT": "g1",
+        "KHM": "g0",
+        "THA": "g0",
+        "LAO": "g0",
+        "MMR": "g0",
+        "VNM": "g0",
+        "PRK": "g0",
+        "KOR": "g0",
+        "MNG": "g0",
+        "IND": "g0",
+        "BGD": "g0",
+        "BTN": "g0",
+        "NPL": "g0",
+        "PAK": "g0",
+        "AFG": "g0",
+        "TJK": "g0",
+        "KGZ": "g0",
+        "TKM": "g0",
+        "IRN": "g0",
+        "SYR": "g0",
+        "ARM": "g0",
+        "SWE": "g4",
+        "BLR": "g4",
+        "UKR": "g4",
+        "POL": "g4",
+        "AUT": "g4",
+        "HUN": "g4",
+        "MDA": "g4",
+        "ROU": "g4",
+        "LTU": "g4",
+        "LVA": "g4",
+        "EST": "g4",
+        "DEU": "g4",
+        "BGR": "g4",
+        "GRC": "g4",
+        "TUR": "g0",
+        "ALB": "g4",
+        "HRV": "g4",
+        "CHE": "g4",
+        "LUX": "g4",
+        "BEL": "g4",
+        "NLD": "g4",
+        "PRT": "g4",
+        "ESP": "g4",
+        "IRL": "g4",
+        "NCL": "g1",
+        "SLB": "g1",
+        "NZL": "g1",
+        "AUS": "g1",
+        "LKA": "g0",
+        "CHN": "g0",
+        "TWN": "g0",
+        "ITA": "g4",
+        "DNK": "g4",
+        "GBR": "g4",
+        "ISL": "g4",
+        "AZE": "g0",
+        "GEO": "g0",
+        "PHL": "g0",
+        "MYS": "g0",
+        "BRN": "g0",
+        "SVN": "g4",
+        "FIN": "g4",
+        "SVK": "g4",
+        "CZE": "g4",
+        "ERI": "g3",
+        "JPN": "g0",
+        "PRY": "g1",
+        "YEM": "g0",
+        "SAU": "g0",
+        "CYN": "g0",
+        "CYP": "g0",
+        "MAR": "g3",
+        "EGY": "g3",
+        "LBY": "g3",
+        "ETH": "g3",
+        "DJI": "g3",
+        "SOL": "g3",
+        "UGA": "g3",
+        "RWA": "g3",
+        "BIH": "g4",
+        "MKD": "g4",
+        "SRB": "g4",
+        "MNE": "g4",
+        "KOS": "g4",
+        "TTO": "g2",
+        "SDS": "g3"
+      },
+      "note": "Synthetic assignments \u00b7 Geographic outlines: Natural Earth"
+    }
+  ],
+  "pattern_id": "usefulcharts-branching-lineage",
+  "subtitle": "The fictional schools and societies of five scholarly traditions",
+  "reading_note": "Solid lines: institutional branching. Dotted arrows: influence. Vertical placement is schematic. Map colors are invented illustrative assignments."
 }

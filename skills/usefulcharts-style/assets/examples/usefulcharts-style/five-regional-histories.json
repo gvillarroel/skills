@@ -2,43 +2,51 @@
   "id": "five-regional-histories",
   "title": "FIVE REGIONS THROUGH TIME",
   "mode": "timeline",
+  "design": "editorial",
   "width": 1800,
-  "height": 2400,
+  "height": 2700,
+  "font_size": 12.2,
+  "imprint": [
+    "ORIGINAL STUDY",
+    "Synthetic source data",
+    "2026 \u00b7 Editable SVG"
+  ],
   "groups": [
     {
       "id": "g0",
       "label": "Riverlands",
-      "color": "#F18C79"
+      "color": "#F56550"
     },
     {
       "id": "g1",
       "label": "Highlands",
-      "color": "#77BEDB"
+      "color": "#77BDDD"
     },
     {
       "id": "g2",
       "label": "Coastlands",
-      "color": "#F4C948"
+      "color": "#F2C529"
     },
     {
       "id": "g3",
       "label": "Islands",
-      "color": "#A6C49B"
+      "color": "#98BD92"
     },
     {
       "id": "g4",
       "label": "Northlands",
-      "color": "#BE9CCB"
+      "color": "#B88BC6"
     }
   ],
-  "source_note": "Synthetic study by Codex, 2026. All names, institutions, relationships, and dates are invented.",
+  "source_note": "Original synthetic history \u00b7 Dates and events are invented. Public-domain museum objects are decorative collection samples, not evidence of these events.",
+  "annotations": [],
   "pattern_id": "usefulcharts-parallel-history",
-  "subtitle": "Comparing the same 1,000 years across five fictional regions",
-  "frame_color": "#575444",
+  "subtitle": "A comparative chronicle of five fictional regions, 1000\u20132000",
+  "frame_color": "#665D48",
   "time": {
     "start": 1000,
     "end": 2000,
-    "step": 100
+    "step": 25
   },
   "lanes": [
     {
@@ -64,205 +72,2445 @@
   ],
   "periods": [
     {
-      "id": "era-0-0",
-      "label": "River Settlements",
+      "id": "period-0-0-0",
+      "label": "Delta Settlements",
       "group": "g0",
       "lane": "l0",
-      "start": 1000,
-      "end": 1180
+      "start": 1000.0,
+      "end": 1081.9,
+      "offset": 12,
+      "bar_width": 21,
+      "size": 10.8
     },
     {
-      "id": "era-0-1",
-      "label": "Canal League",
+      "id": "period-0-0-1",
+      "label": "Saffron Settlements",
       "group": "g0",
       "lane": "l0",
-      "start": 1180,
-      "end": 1390
+      "start": 1085.9,
+      "end": 1220.9,
+      "offset": 21,
+      "bar_width": 24,
+      "size": 12.2
     },
     {
-      "id": "era-0-2",
-      "label": "Delta Cities",
+      "id": "period-0-0-2",
+      "label": "Canal Principalities",
       "group": "g0",
       "lane": "l0",
-      "start": 1390,
-      "end": 1580
+      "start": 1224.9,
+      "end": 1319.1,
+      "offset": 9,
+      "bar_width": 57,
+      "size": 16
     },
     {
-      "id": "era-0-3",
-      "label": "Valley Union",
+      "id": "period-0-0-3",
+      "label": "Willow Kingdom",
       "group": "g0",
       "lane": "l0",
-      "start": 1580,
-      "end": 1780
+      "start": 1332.1,
+      "end": 1430.1,
+      "offset": 24,
+      "bar_width": 21,
+      "size": 10.8
     },
     {
-      "id": "era-0-4",
-      "label": "River Republic",
+      "id": "period-0-0-4",
+      "label": "Reed League",
       "group": "g0",
       "lane": "l0",
-      "start": 1780,
-      "end": 2000
+      "start": 1434.1,
+      "end": 1559.9,
+      "offset": 17,
+      "bar_width": 31,
+      "size": 12.2
     },
     {
-      "id": "era-1-0",
-      "label": "Hill Communities",
+      "id": "period-0-0-5",
+      "label": "Vale Commonwealth",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1563.9,
+      "end": 1644.7,
+      "offset": 12,
+      "bar_width": 67,
+      "size": 16
+    },
+    {
+      "id": "period-0-0-6",
+      "label": "Estuary Union",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1657.7,
+      "end": 1787.8,
+      "offset": 21,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-0-0-7",
+      "label": "River Federation",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1791.8,
+      "end": 1876.0,
+      "offset": 9,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-0-0-8",
+      "label": "Delta Republic",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1880.0,
+      "end": 2000.0,
+      "offset": 24,
+      "bar_width": 24,
+      "size": 12.2
+    },
+    {
+      "id": "period-0-1-0",
+      "label": "Willow Settlements",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1105.0,
+      "end": 1255.7,
+      "offset": 181,
+      "bar_width": 24,
+      "size": 12.2
+    },
+    {
+      "id": "period-0-1-1",
+      "label": "Reed Principalities",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1259.7,
+      "end": 1395.2,
+      "offset": 169,
+      "bar_width": 57,
+      "size": 16
+    },
+    {
+      "id": "period-0-1-2",
+      "label": "Vale Kingdom",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1399.2,
+      "end": 1508.0,
+      "offset": 184,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-0-1-3",
+      "label": "Estuary Commonwealth",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1521.0,
+      "end": 1677.7,
+      "offset": 177,
+      "bar_width": 31,
+      "size": 12.2
+    },
+    {
+      "id": "period-0-1-4",
+      "label": "River Union",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1681.7,
+      "end": 1776.6,
+      "offset": 172,
+      "bar_width": 67,
+      "size": 16
+    },
+    {
+      "id": "period-0-1-5",
+      "label": "Delta Federation",
+      "group": "g0",
+      "lane": "l0",
+      "start": 1780.6,
+      "end": 1940.0,
+      "offset": 181,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-1-0-0",
+      "label": "Highland Settlements",
       "group": "g1",
       "lane": "l1",
-      "start": 1000,
-      "end": 1230
+      "start": 1060.0,
+      "end": 1207.8,
+      "offset": 21,
+      "bar_width": 57,
+      "size": 16
     },
     {
-      "id": "era-1-1",
-      "label": "Mountain Houses",
+      "id": "period-1-0-1",
+      "label": "Mountain Principalities",
       "group": "g1",
       "lane": "l1",
-      "start": 1230,
-      "end": 1420
+      "start": 1211.8,
+      "end": 1344.5,
+      "offset": 9,
+      "bar_width": 21,
+      "size": 10.8
     },
     {
-      "id": "era-1-2",
-      "label": "Highland Council",
+      "id": "period-1-0-2",
+      "label": "Ridge Kingdom",
       "group": "g1",
       "lane": "l1",
-      "start": 1420,
-      "end": 1660
+      "start": 1348.5,
+      "end": 1455.2,
+      "offset": 24,
+      "bar_width": 31,
+      "size": 12.2
     },
     {
-      "id": "era-1-3",
-      "label": "Ridge Federation",
+      "id": "period-1-0-3",
+      "label": "Cairn League",
       "group": "g1",
       "lane": "l1",
-      "start": 1660,
-      "end": 1840
+      "start": 1468.2,
+      "end": 1621.5,
+      "offset": 17,
+      "bar_width": 67,
+      "size": 16
     },
     {
-      "id": "era-1-4",
-      "label": "Plateau Assembly",
+      "id": "period-1-0-4",
+      "label": "Stone Commonwealth",
       "group": "g1",
       "lane": "l1",
-      "start": 1840,
-      "end": 2000
+      "start": 1625.5,
+      "end": 1718.5,
+      "offset": 12,
+      "bar_width": 21,
+      "size": 10.8
     },
     {
-      "id": "era-2-0",
-      "label": "Coastal Harbors",
+      "id": "period-1-0-5",
+      "label": "Pass Union",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1722.5,
+      "end": 1878.7,
+      "offset": 21,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-1-0-6",
+      "label": "Summit Federation",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1891.7,
+      "end": 2000.0,
+      "offset": 9,
+      "bar_width": 24,
+      "size": 12.2
+    },
+    {
+      "id": "period-1-1-0",
+      "label": "Cairn Settlements",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1000.0,
+      "end": 1116.4,
+      "offset": 169,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-1-1-1",
+      "label": "Stone Settlements",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1120.4,
+      "end": 1189.7,
+      "offset": 184,
+      "bar_width": 31,
+      "size": 12.2
+    },
+    {
+      "id": "period-1-1-2",
+      "label": "Pass Principalities",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1193.7,
+      "end": 1314.8,
+      "offset": 177,
+      "bar_width": 67,
+      "size": 16
+    },
+    {
+      "id": "period-1-1-3",
+      "label": "Summit Kingdom",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1327.8,
+      "end": 1394.2,
+      "offset": 172,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-1-1-4",
+      "label": "Plateau League",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1398.2,
+      "end": 1500.0,
+      "offset": 181,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-1-1-5",
+      "label": "Highland Commonwealth",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1504.0,
+      "end": 1606.2,
+      "offset": 169,
+      "bar_width": 24,
+      "size": 12.2
+    },
+    {
+      "id": "period-1-1-6",
+      "label": "Mountain Commonwealth",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1619.2,
+      "end": 1685.3,
+      "offset": 184,
+      "bar_width": 57,
+      "size": 11.4
+    },
+    {
+      "id": "period-1-1-7",
+      "label": "Ridge Union",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1689.3,
+      "end": 1810.5,
+      "offset": 177,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-1-1-8",
+      "label": "Cairn Federation",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1814.5,
+      "end": 1883.9,
+      "offset": 172,
+      "bar_width": 31,
+      "size": 12.2
+    },
+    {
+      "id": "period-1-1-9",
+      "label": "Stone Republic",
+      "group": "g1",
+      "lane": "l1",
+      "start": 1896.9,
+      "end": 2000.0,
+      "offset": 181,
+      "bar_width": 67,
+      "size": 16
+    },
+    {
+      "id": "period-2-0-0",
+      "label": "Coral Settlements",
       "group": "g2",
       "lane": "l2",
-      "start": 1000,
-      "end": 1160
+      "start": 1000.0,
+      "end": 1106.4,
+      "offset": 9,
+      "bar_width": 31,
+      "size": 12.2
     },
     {
-      "id": "era-2-1",
-      "label": "Maritime League",
+      "id": "period-2-0-1",
+      "label": "Harbor Settlements",
       "group": "g2",
       "lane": "l2",
-      "start": 1160,
-      "end": 1380
+      "start": 1110.4,
+      "end": 1173.3,
+      "offset": 24,
+      "bar_width": 67,
+      "size": 16
     },
     {
-      "id": "era-2-2",
-      "label": "Port Cities",
+      "id": "period-2-0-2",
+      "label": "Maritime Principalities",
       "group": "g2",
       "lane": "l2",
-      "start": 1380,
-      "end": 1620
+      "start": 1177.3,
+      "end": 1287.5,
+      "offset": 17,
+      "bar_width": 21,
+      "size": 10.8
     },
     {
-      "id": "era-2-3",
-      "label": "Coastal Union",
+      "id": "period-2-0-3",
+      "label": "Amber Kingdom",
       "group": "g2",
       "lane": "l2",
-      "start": 1620,
-      "end": 1810
+      "start": 1300.5,
+      "end": 1360.1,
+      "offset": 12,
+      "bar_width": 21,
+      "size": 10.8
     },
     {
-      "id": "era-2-4",
-      "label": "Harbor Republic",
+      "id": "period-2-0-4",
+      "label": "Pearl Kingdom",
       "group": "g2",
       "lane": "l2",
-      "start": 1810,
-      "end": 2000
+      "start": 1364.1,
+      "end": 1456.8,
+      "offset": 21,
+      "bar_width": 24,
+      "size": 12.2
     },
     {
-      "id": "era-3-0",
-      "label": "Island Villages",
+      "id": "period-2-0-5",
+      "label": "Coastal League",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1460.8,
+      "end": 1553.8,
+      "offset": 9,
+      "bar_width": 57,
+      "size": 16
+    },
+    {
+      "id": "period-2-0-6",
+      "label": "Port Commonwealth",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1566.8,
+      "end": 1626.1,
+      "offset": 24,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-2-0-7",
+      "label": "Bluewater Union",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1630.1,
+      "end": 1740.4,
+      "offset": 17,
+      "bar_width": 31,
+      "size": 12.2
+    },
+    {
+      "id": "period-2-0-8",
+      "label": "Coral Union",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1744.4,
+      "end": 1807.4,
+      "offset": 12,
+      "bar_width": 67,
+      "size": 16
+    },
+    {
+      "id": "period-2-0-9",
+      "label": "Harbor Federation",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1820.4,
+      "end": 1913.5,
+      "offset": 21,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-2-0-10",
+      "label": "Maritime Republic",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1917.5,
+      "end": 2000.0,
+      "offset": 9,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-2-1-0",
+      "label": "Amber Settlements",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1270.0,
+      "end": 1374.3,
+      "offset": 184,
+      "bar_width": 67,
+      "size": 16
+    },
+    {
+      "id": "period-2-1-1",
+      "label": "Pearl Principalities",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1378.3,
+      "end": 1541.8,
+      "offset": 177,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-2-1-2",
+      "label": "Coastal League",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1545.8,
+      "end": 1675.4,
+      "offset": 172,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-2-1-3",
+      "label": "Port Commonwealth",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1688.4,
+      "end": 1804.0,
+      "offset": 181,
+      "bar_width": 24,
+      "size": 12.2
+    },
+    {
+      "id": "period-2-1-4",
+      "label": "Bluewater Federation",
+      "group": "g2",
+      "lane": "l2",
+      "start": 1808.0,
+      "end": 1975.0,
+      "offset": 169,
+      "bar_width": 57,
+      "size": 16
+    },
+    {
+      "id": "period-3-0-0",
+      "label": "Island Settlements",
       "group": "g3",
       "lane": "l3",
-      "start": 1000,
-      "end": 1220
+      "start": 1110.0,
+      "end": 1224.9,
+      "offset": 24,
+      "bar_width": 21,
+      "size": 10.8
     },
     {
-      "id": "era-3-1",
-      "label": "Voyaging Houses",
+      "id": "period-3-0-1",
+      "label": "Voyaging Principalities",
       "group": "g3",
       "lane": "l3",
-      "start": 1220,
-      "end": 1450
+      "start": 1228.9,
+      "end": 1409.4,
+      "offset": 17,
+      "bar_width": 21,
+      "size": 10.8
     },
     {
-      "id": "era-3-2",
-      "label": "Island Council",
+      "id": "period-3-0-2",
+      "label": "Palm Kingdom",
       "group": "g3",
       "lane": "l3",
-      "start": 1450,
-      "end": 1640
+      "start": 1413.4,
+      "end": 1556.4,
+      "offset": 12,
+      "bar_width": 24,
+      "size": 12.2
     },
     {
-      "id": "era-3-3",
-      "label": "Archipelago League",
+      "id": "period-3-0-3",
+      "label": "Reef Commonwealth",
       "group": "g3",
       "lane": "l3",
-      "start": 1640,
-      "end": 1850
+      "start": 1569.4,
+      "end": 1698.0,
+      "offset": 21,
+      "bar_width": 57,
+      "size": 16
     },
     {
-      "id": "era-3-4",
-      "label": "Island Assembly",
+      "id": "period-3-0-4",
+      "label": "Cove Union",
       "group": "g3",
       "lane": "l3",
-      "start": 1850,
-      "end": 2000
+      "start": 1702.0,
+      "end": 1886.3,
+      "offset": 9,
+      "bar_width": 21,
+      "size": 10.8
     },
     {
-      "id": "era-4-0",
-      "label": "Northern Camps",
-      "group": "g4",
-      "lane": "l4",
-      "start": 1000,
-      "end": 1190
+      "id": "period-3-0-5",
+      "label": "Archipelago Federation",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1890.3,
+      "end": 2000.0,
+      "offset": 24,
+      "bar_width": 31,
+      "size": 12.2
     },
     {
-      "id": "era-4-1",
-      "label": "Forest Towns",
-      "group": "g4",
-      "lane": "l4",
-      "start": 1190,
-      "end": 1410
+      "id": "period-3-1-0",
+      "label": "Reef Settlements",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1040.0,
+      "end": 1139.5,
+      "offset": 177,
+      "bar_width": 21,
+      "size": 10.8
     },
     {
-      "id": "era-4-2",
-      "label": "Northern Council",
-      "group": "g4",
-      "lane": "l4",
-      "start": 1410,
-      "end": 1670
+      "id": "period-3-1-1",
+      "label": "Cove Settlements",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1143.5,
+      "end": 1245.3,
+      "offset": 172,
+      "bar_width": 24,
+      "size": 12.2
     },
     {
-      "id": "era-4-3",
-      "label": "Lake Federation",
-      "group": "g4",
-      "lane": "l4",
-      "start": 1670,
-      "end": 1830
+      "id": "period-3-1-2",
+      "label": "Archipelago Principalities",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1249.3,
+      "end": 1320.0,
+      "offset": 181,
+      "bar_width": 57,
+      "size": 11.4
     },
     {
-      "id": "era-4-4",
-      "label": "Northern Commons",
+      "id": "period-3-1-3",
+      "label": "Seafarer Kingdom",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1333.0,
+      "end": 1441.7,
+      "offset": 169,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-3-1-4",
+      "label": "Lagoon League",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1445.7,
+      "end": 1513.9,
+      "offset": 184,
+      "bar_width": 31,
+      "size": 12.2
+    },
+    {
+      "id": "period-3-1-5",
+      "label": "Island Commonwealth",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1517.9,
+      "end": 1623.9,
+      "offset": 177,
+      "bar_width": 67,
+      "size": 16
+    },
+    {
+      "id": "period-3-1-6",
+      "label": "Voyaging Union",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1636.9,
+      "end": 1718.6,
+      "offset": 172,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-3-1-7",
+      "label": "Palm Federation",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1722.6,
+      "end": 1801.7,
+      "offset": 181,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-3-1-8",
+      "label": "Reef Republic",
+      "group": "g3",
+      "lane": "l3",
+      "start": 1805.7,
+      "end": 1920.0,
+      "offset": 169,
+      "bar_width": 24,
+      "size": 12.2
+    },
+    {
+      "id": "period-4-0-0",
+      "label": "Northern Settlements",
       "group": "g4",
       "lane": "l4",
-      "start": 1830,
-      "end": 2000
+      "start": 1000.0,
+      "end": 1130.6,
+      "offset": 17,
+      "bar_width": 24,
+      "size": 12.2
+    },
+    {
+      "id": "period-4-0-1",
+      "label": "Forest Principalities",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1134.6,
+      "end": 1269.5,
+      "offset": 12,
+      "bar_width": 57,
+      "size": 16
+    },
+    {
+      "id": "period-4-0-2",
+      "label": "Lake Kingdom",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1273.5,
+      "end": 1367.5,
+      "offset": 21,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-4-0-3",
+      "label": "Birch League",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1380.5,
+      "end": 1527.3,
+      "offset": 9,
+      "bar_width": 31,
+      "size": 12.2
+    },
+    {
+      "id": "period-4-0-4",
+      "label": "Taiga Commonwealth",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1531.3,
+      "end": 1622.1,
+      "offset": 24,
+      "bar_width": 67,
+      "size": 16
+    },
+    {
+      "id": "period-4-0-5",
+      "label": "Fir Union",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1626.1,
+      "end": 1766.5,
+      "offset": 17,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-4-0-6",
+      "label": "Glacial Federation",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1779.5,
+      "end": 1890.9,
+      "offset": 12,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-4-0-7",
+      "label": "Frontier Republic",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1894.9,
+      "end": 2000.0,
+      "offset": 21,
+      "bar_width": 24,
+      "size": 12.2
+    },
+    {
+      "id": "period-4-1-0",
+      "label": "Birch Settlements",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1190.0,
+      "end": 1333.1,
+      "offset": 172,
+      "bar_width": 57,
+      "size": 16
+    },
+    {
+      "id": "period-4-1-1",
+      "label": "Taiga Principalities",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1337.1,
+      "end": 1417.8,
+      "offset": 181,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-4-1-2",
+      "label": "Fir Kingdom",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1421.8,
+      "end": 1562.0,
+      "offset": 169,
+      "bar_width": 31,
+      "size": 12.2
+    },
+    {
+      "id": "period-4-1-3",
+      "label": "Glacial League",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1575.0,
+      "end": 1662.7,
+      "offset": 184,
+      "bar_width": 67,
+      "size": 16
+    },
+    {
+      "id": "period-4-1-4",
+      "label": "Frontier Commonwealth",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1666.7,
+      "end": 1778.5,
+      "offset": 177,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-4-1-5",
+      "label": "Northern Union",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1782.5,
+      "end": 1911.9,
+      "offset": 172,
+      "bar_width": 21,
+      "size": 10.8
+    },
+    {
+      "id": "period-4-1-6",
+      "label": "Forest Federation",
+      "group": "g4",
+      "lane": "l4",
+      "start": 1924.9,
+      "end": 2000.0,
+      "offset": 181,
+      "bar_width": 24,
+      "size": 12.2
     }
   ],
-  "reading_note": "All intervals use one linear year scale. Matching horizontal positions in time are contemporaneous. Adjacent phases do not imply descent or political continuity."
+  "events": [
+    {
+      "lane": "l0",
+      "year": 1012.285,
+      "label": "First permanent trading ports",
+      "offset": 41,
+      "width": 113,
+      "group": "g0",
+      "size": 9.8,
+      "icon": "object-90589",
+      "art_size": 56
+    },
+    {
+      "lane": "l0",
+      "year": 1098.0500000000002,
+      "label": "A shared calendar is adopted",
+      "offset": 53,
+      "width": 101,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1166.9,
+      "label": "Founding of the great sky tower",
+      "offset": 53,
+      "width": 101,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1239.03,
+      "label": "New canals reshape farming",
+      "offset": 74,
+      "width": 80,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1346.8,
+      "label": "The first public library opens",
+      "offset": 53,
+      "width": 101,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1445.422,
+      "label": "Sea voyages link the regions",
+      "offset": 56,
+      "width": 98,
+      "group": "g0",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l0",
+      "year": 1509.58,
+      "label": "Printing brings a wider reading public",
+      "offset": 56,
+      "width": 98,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1576.02,
+      "label": "Workshops use water power",
+      "offset": 87,
+      "width": 67,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1669.409,
+      "label": "Surveyors complete the regional atlas",
+      "offset": 50,
+      "width": 104,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1735.76,
+      "label": "The first elected assembly meets",
+      "offset": 50,
+      "width": 104,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1804.43,
+      "label": "A network of public colleges opens",
+      "offset": 38,
+      "width": 116,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1890.8,
+      "label": "Shared postal and telegraph networks",
+      "offset": 56,
+      "width": 98,
+      "group": "g0",
+      "size": 9.8,
+      "icon": "object-90589",
+      "art_size": 56
+    },
+    {
+      "lane": "l0",
+      "year": 1952.0,
+      "label": "The charter of regional union",
+      "offset": 56,
+      "width": 98,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1118.563,
+      "label": "A shared calendar is adopted",
+      "offset": 213,
+      "width": 101,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1195.42,
+      "label": "Founding of the great sky tower",
+      "offset": 213,
+      "width": 101,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1271.895,
+      "label": "Guilds establish common weights",
+      "offset": 234,
+      "width": 80,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1341.0,
+      "label": "The first public library opens",
+      "offset": 234,
+      "width": 80,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1415.52,
+      "label": "Sea voyages link the regions",
+      "offset": 213,
+      "width": 101,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1535.103,
+      "label": "New tables guide sailors by the stars",
+      "offset": 216,
+      "width": 98,
+      "group": "g0",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l0",
+      "year": 1615.02,
+      "label": "Workshops use water power",
+      "offset": 216,
+      "width": 98,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1695.935,
+      "label": "Surveyors complete the regional atlas",
+      "offset": 247,
+      "width": 67,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1794.946,
+      "label": "A network of public colleges opens",
+      "offset": 210,
+      "width": 104,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l0",
+      "year": 1876.24,
+      "label": "Steam routes connect inland towns",
+      "offset": 210,
+      "width": 104,
+      "group": "g0",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1073.302,
+      "label": "First permanent trading ports",
+      "offset": 86,
+      "width": 68,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1148.68,
+      "label": "A shared calendar is adopted",
+      "offset": 86,
+      "width": 68,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1223.743,
+      "label": "New canals reshape farming",
+      "offset": 38,
+      "width": 116,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1291.42,
+      "label": "Guilds establish common weights",
+      "offset": 38,
+      "width": 116,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1364.505,
+      "label": "The first public library opens",
+      "offset": 63,
+      "width": 91,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1481.997,
+      "label": "Printing brings a wider reading public",
+      "offset": 92,
+      "width": 62,
+      "group": "g1",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l1",
+      "year": 1560.18,
+      "label": "New tables guide sailors by the stars",
+      "offset": 92,
+      "width": 62,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1639.45,
+      "label": "Surveyors complete the regional atlas",
+      "offset": 41,
+      "width": 113,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1736.558,
+      "label": "The first elected assembly meets",
+      "offset": 50,
+      "width": 104,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1816.22,
+      "label": "A network of public colleges opens",
+      "offset": 50,
+      "width": 104,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1907.945,
+      "label": "Shared postal and telegraph networks",
+      "offset": 41,
+      "width": 113,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1010.476,
+      "label": "First permanent trading ports",
+      "offset": 198,
+      "width": 116,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1069.8400000000001,
+      "label": "A shared calendar is adopted",
+      "offset": 198,
+      "width": 116,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1130.795,
+      "label": "A shared calendar is adopted",
+      "offset": 223,
+      "width": 91,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1204.599,
+      "label": "New canals reshape farming",
+      "offset": 252,
+      "width": 62,
+      "group": "g1",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l1",
+      "year": 1266.36,
+      "label": "Guilds establish common weights",
+      "offset": 252,
+      "width": 62,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1337.76,
+      "label": "The first public library opens",
+      "offset": 201,
+      "width": 113,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1413.47,
+      "label": "Sea voyages link the regions",
+      "offset": 210,
+      "width": 104,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1519.33,
+      "label": "New tables guide sailors by the stars",
+      "offset": 201,
+      "width": 113,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1629.115,
+      "label": "Workshops use water power",
+      "offset": 249,
+      "width": 65,
+      "group": "g1",
+      "size": 9.8,
+      "icon": "object-90589",
+      "art_size": 56
+    },
+    {
+      "lane": "l1",
+      "year": 1700.2079999999999,
+      "label": "The first elected assembly meets",
+      "offset": 206,
+      "width": 108,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1762.02,
+      "label": "A network of public colleges opens",
+      "offset": 206,
+      "width": 108,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1824.91,
+      "label": "Steam routes connect inland towns",
+      "offset": 211,
+      "width": 103,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l1",
+      "year": 1912.365,
+      "label": "Shared postal and telegraph networks",
+      "offset": 256,
+      "width": 58,
+      "group": "g1",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1015.96,
+      "label": "First permanent trading ports",
+      "offset": 48,
+      "width": 106,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1119.835,
+      "label": "A shared calendar is adopted",
+      "offset": 99,
+      "width": 55,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1187.2179999999998,
+      "label": "Founding of the great sky tower",
+      "offset": 46,
+      "width": 108,
+      "group": "g2",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l2",
+      "year": 1243.42,
+      "label": "New canals reshape farming",
+      "offset": 46,
+      "width": 108,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1309.44,
+      "label": "Guilds establish common weights",
+      "offset": 41,
+      "width": 113,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1378.0049999999999,
+      "label": "The first public library opens",
+      "offset": 53,
+      "width": 101,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1474.75,
+      "label": "Printing brings a wider reading public",
+      "offset": 74,
+      "width": 80,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1575.695,
+      "label": "Workshops use water power",
+      "offset": 53,
+      "width": 101,
+      "group": "g2",
+      "size": 9.8,
+      "icon": "object-90589",
+      "art_size": 56
+    },
+    {
+      "lane": "l2",
+      "year": 1640.0269999999998,
+      "label": "Surveyors complete the regional atlas",
+      "offset": 56,
+      "width": 98,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1696.28,
+      "label": "The first elected assembly meets",
+      "offset": 56,
+      "width": 98,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1753.8500000000001,
+      "label": "The first elected assembly meets",
+      "offset": 87,
+      "width": 67,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1834.365,
+      "label": "Steam routes connect inland towns",
+      "offset": 50,
+      "width": 104,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1929.875,
+      "label": "Shared postal and telegraph networks",
+      "offset": 38,
+      "width": 116,
+      "group": "g2",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l2",
+      "year": 1285.645,
+      "label": "Guilds establish common weights",
+      "offset": 259,
+      "width": 55,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1393.0149999999999,
+      "label": "Sea voyages link the regions",
+      "offset": 206,
+      "width": 108,
+      "group": "g2",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l2",
+      "year": 1476.3999999999999,
+      "label": "Printing brings a wider reading public",
+      "offset": 206,
+      "width": 108,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1557.464,
+      "label": "New tables guide sailors by the stars",
+      "offset": 201,
+      "width": 113,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1623.56,
+      "label": "Workshops use water power",
+      "offset": 201,
+      "width": 113,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1698.804,
+      "label": "The first elected assembly meets",
+      "offset": 213,
+      "width": 101,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1757.76,
+      "label": "A network of public colleges opens",
+      "offset": 213,
+      "width": 101,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1823.03,
+      "label": "A network of public colleges opens",
+      "offset": 234,
+      "width": 80,
+      "group": "g2",
+      "size": 9.8
+    },
+    {
+      "lane": "l2",
+      "year": 1908.2,
+      "label": "Steam routes connect inland towns",
+      "offset": 234,
+      "width": 80,
+      "group": "g2",
+      "size": 9.8,
+      "icon": "object-15190",
+      "art_size": 56
+    },
+    {
+      "lane": "l3",
+      "year": 1120.341,
+      "label": "A shared calendar is adopted",
+      "offset": 53,
+      "width": 101,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1178.94,
+      "label": "Founding of the great sky tower",
+      "offset": 53,
+      "width": 101,
+      "group": "g3",
+      "size": 9.8,
+      "icon": "object-60878",
+      "art_size": 56
+    },
+    {
+      "lane": "l3",
+      "year": 1245.145,
+      "label": "New canals reshape farming",
+      "offset": 46,
+      "width": 108,
+      "group": "g3",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l3",
+      "year": 1337.2,
+      "label": "Guilds establish common weights",
+      "offset": 46,
+      "width": 108,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1426.27,
+      "label": "Sea voyages link the regions",
+      "offset": 44,
+      "width": 110,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1499.2,
+      "label": "Printing brings a wider reading public",
+      "offset": 44,
+      "width": 110,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1580.9740000000002,
+      "label": "Workshops use water power",
+      "offset": 86,
+      "width": 68,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1646.56,
+      "label": "Surveyors complete the regional atlas",
+      "offset": 86,
+      "width": 68,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1718.587,
+      "label": "The first elected assembly meets",
+      "offset": 38,
+      "width": 116,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1812.58,
+      "label": "A network of public colleges opens",
+      "offset": 38,
+      "width": 116,
+      "group": "g3",
+      "size": 9.8,
+      "icon": "object-15190",
+      "art_size": 56
+    },
+    {
+      "lane": "l3",
+      "year": 1906.7549999999999,
+      "label": "Shared postal and telegraph networks",
+      "offset": 63,
+      "width": 91,
+      "group": "g3",
+      "size": 9.8,
+      "icon": "object-90589",
+      "art_size": 56
+    },
+    {
+      "lane": "l3",
+      "year": 1054.925,
+      "label": "First permanent trading ports",
+      "offset": 206,
+      "width": 108,
+      "group": "g3",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l3",
+      "year": 1158.77,
+      "label": "Founding of the great sky tower",
+      "offset": 204,
+      "width": 110,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1259.905,
+      "label": "New canals reshape farming",
+      "offset": 246,
+      "width": 68,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1349.305,
+      "label": "The first public library opens",
+      "offset": 198,
+      "width": 116,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1455.93,
+      "label": "Printing brings a wider reading public",
+      "offset": 223,
+      "width": 91,
+      "group": "g3",
+      "size": 9.8,
+      "icon": "object-90589",
+      "art_size": 56
+    },
+    {
+      "lane": "l3",
+      "year": 1533.8000000000002,
+      "label": "New tables guide sailors by the stars",
+      "offset": 252,
+      "width": 62,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1649.155,
+      "label": "Surveyors complete the regional atlas",
+      "offset": 201,
+      "width": 113,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1734.465,
+      "label": "The first elected assembly meets",
+      "offset": 210,
+      "width": 104,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l3",
+      "year": 1815.987,
+      "label": "A network of public colleges opens",
+      "offset": 201,
+      "width": 113,
+      "group": "g3",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l3",
+      "year": 1874.28,
+      "label": "Steam routes connect inland towns",
+      "offset": 201,
+      "width": 113,
+      "group": "g3",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1011.754,
+      "label": "First permanent trading ports",
+      "offset": 49,
+      "width": 105,
+      "group": "g4",
+      "size": 9.8,
+      "icon": "object-191",
+      "art_size": 56
+    },
+    {
+      "lane": "l4",
+      "year": 1078.36,
+      "label": "A shared calendar is adopted",
+      "offset": 49,
+      "width": 105,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1146.741,
+      "label": "Founding of the great sky tower",
+      "offset": 77,
+      "width": 77,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1215.54,
+      "label": "New canals reshape farming",
+      "offset": 77,
+      "width": 77,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1287.6,
+      "label": "Guilds establish common weights",
+      "offset": 50,
+      "width": 104,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1393.712,
+      "label": "Sea voyages link the regions",
+      "offset": 48,
+      "width": 106,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1468.58,
+      "label": "Printing brings a wider reading public",
+      "offset": 48,
+      "width": 106,
+      "group": "g4",
+      "size": 9.8,
+      "icon": "object-15190",
+      "art_size": 56
+    },
+    {
+      "lane": "l4",
+      "year": 1544.9199999999998,
+      "label": "New tables guide sailors by the stars",
+      "offset": 99,
+      "width": 55,
+      "group": "g4",
+      "size": 9.8,
+      "icon": "object-90589",
+      "art_size": 56
+    },
+    {
+      "lane": "l4",
+      "year": 1638.7359999999999,
+      "label": "Surveyors complete the regional atlas",
+      "offset": 46,
+      "width": 108,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1710.34,
+      "label": "The first elected assembly meets",
+      "offset": 46,
+      "width": 108,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1789.526,
+      "label": "A network of public colleges opens",
+      "offset": 41,
+      "width": 113,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1846.3400000000001,
+      "label": "Steam routes connect inland towns",
+      "offset": 41,
+      "width": 113,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1910.665,
+      "label": "Shared postal and telegraph networks",
+      "offset": 53,
+      "width": 101,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1202.879,
+      "label": "New canals reshape farming",
+      "offset": 237,
+      "width": 77,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1275.86,
+      "label": "Guilds establish common weights",
+      "offset": 237,
+      "width": 77,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1349.205,
+      "label": "The first public library opens",
+      "offset": 210,
+      "width": 104,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1434.418,
+      "label": "Sea voyages link the regions",
+      "offset": 208,
+      "width": 106,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1505.92,
+      "label": "Printing brings a wider reading public",
+      "offset": 208,
+      "width": 106,
+      "group": "g4",
+      "size": 9.8,
+      "icon": "object-15190",
+      "art_size": 56
+    },
+    {
+      "lane": "l4",
+      "year": 1588.155,
+      "label": "Workshops use water power",
+      "offset": 259,
+      "width": 55,
+      "group": "g4",
+      "size": 9.8,
+      "icon": "object-90589",
+      "art_size": 56
+    },
+    {
+      "lane": "l4",
+      "year": 1676.762,
+      "label": "Surveyors complete the regional atlas",
+      "offset": 206,
+      "width": 108,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1733.78,
+      "label": "The first elected assembly meets",
+      "offset": 206,
+      "width": 108,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1794.146,
+      "label": "A network of public colleges opens",
+      "offset": 201,
+      "width": 113,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1860.14,
+      "label": "Steam routes connect inland towns",
+      "offset": 201,
+      "width": 113,
+      "group": "g4",
+      "size": 9.8
+    },
+    {
+      "lane": "l4",
+      "year": 1936.165,
+      "label": "Shared postal and telegraph networks",
+      "offset": 213,
+      "width": 101,
+      "group": "g4",
+      "size": 9.8
+    }
+  ],
+  "map_texture": true,
+  "reading_note": "One linear year scale. Filled and dotted bridges are declared continuations, not ancestry. Decorative map: Natural Earth. Artwork provenance is embedded in the SVG.",
+  "eras": [
+    {
+      "start": 1000,
+      "end": 1200,
+      "label": "Early city states"
+    },
+    {
+      "start": 1200,
+      "end": 1450,
+      "label": "Maritime kingdoms"
+    },
+    {
+      "start": 1450,
+      "end": 1650,
+      "label": "Age of exchange"
+    },
+    {
+      "start": 1650,
+      "end": 1850,
+      "label": "Federations"
+    },
+    {
+      "start": 1850,
+      "end": 2000,
+      "label": "Modern age"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "continuation-0-0-1",
+      "source": "period-0-0-0",
+      "target": "period-0-0-1",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-0-0-2",
+      "source": "period-0-0-1",
+      "target": "period-0-0-2",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-0-0-3",
+      "source": "period-0-0-2",
+      "target": "period-0-0-3",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-0-0-4",
+      "source": "period-0-0-3",
+      "target": "period-0-0-4",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-0-0-5",
+      "source": "period-0-0-4",
+      "target": "period-0-0-5",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-0-0-6",
+      "source": "period-0-0-5",
+      "target": "period-0-0-6",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-0-0-7",
+      "source": "period-0-0-6",
+      "target": "period-0-0-7",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-0-0-8",
+      "source": "period-0-0-7",
+      "target": "period-0-0-8",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-0-1-1",
+      "source": "period-0-1-0",
+      "target": "period-0-1-1",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-0-1-2",
+      "source": "period-0-1-1",
+      "target": "period-0-1-2",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-0-1-3",
+      "source": "period-0-1-2",
+      "target": "period-0-1-3",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-0-1-4",
+      "source": "period-0-1-3",
+      "target": "period-0-1-4",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-0-1-5",
+      "source": "period-0-1-4",
+      "target": "period-0-1-5",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-1-0-1",
+      "source": "period-1-0-0",
+      "target": "period-1-0-1",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-1-0-2",
+      "source": "period-1-0-1",
+      "target": "period-1-0-2",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-1-0-3",
+      "source": "period-1-0-2",
+      "target": "period-1-0-3",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-1-0-4",
+      "source": "period-1-0-3",
+      "target": "period-1-0-4",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-1-0-5",
+      "source": "period-1-0-4",
+      "target": "period-1-0-5",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-1-0-6",
+      "source": "period-1-0-5",
+      "target": "period-1-0-6",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-1-1-1",
+      "source": "period-1-1-0",
+      "target": "period-1-1-1",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-1-1-2",
+      "source": "period-1-1-1",
+      "target": "period-1-1-2",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-1-1-3",
+      "source": "period-1-1-2",
+      "target": "period-1-1-3",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-1-1-4",
+      "source": "period-1-1-3",
+      "target": "period-1-1-4",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-1-1-5",
+      "source": "period-1-1-4",
+      "target": "period-1-1-5",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-1-1-6",
+      "source": "period-1-1-5",
+      "target": "period-1-1-6",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-1-1-7",
+      "source": "period-1-1-6",
+      "target": "period-1-1-7",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-1-1-8",
+      "source": "period-1-1-7",
+      "target": "period-1-1-8",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-1-1-9",
+      "source": "period-1-1-8",
+      "target": "period-1-1-9",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-2-0-1",
+      "source": "period-2-0-0",
+      "target": "period-2-0-1",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-2-0-2",
+      "source": "period-2-0-1",
+      "target": "period-2-0-2",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-2-0-3",
+      "source": "period-2-0-2",
+      "target": "period-2-0-3",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-2-0-4",
+      "source": "period-2-0-3",
+      "target": "period-2-0-4",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-2-0-5",
+      "source": "period-2-0-4",
+      "target": "period-2-0-5",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-2-0-6",
+      "source": "period-2-0-5",
+      "target": "period-2-0-6",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-2-0-7",
+      "source": "period-2-0-6",
+      "target": "period-2-0-7",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-2-0-8",
+      "source": "period-2-0-7",
+      "target": "period-2-0-8",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-2-0-9",
+      "source": "period-2-0-8",
+      "target": "period-2-0-9",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-2-0-10",
+      "source": "period-2-0-9",
+      "target": "period-2-0-10",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-2-1-1",
+      "source": "period-2-1-0",
+      "target": "period-2-1-1",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-2-1-2",
+      "source": "period-2-1-1",
+      "target": "period-2-1-2",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-2-1-3",
+      "source": "period-2-1-2",
+      "target": "period-2-1-3",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-2-1-4",
+      "source": "period-2-1-3",
+      "target": "period-2-1-4",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-3-0-1",
+      "source": "period-3-0-0",
+      "target": "period-3-0-1",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-3-0-2",
+      "source": "period-3-0-1",
+      "target": "period-3-0-2",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-3-0-3",
+      "source": "period-3-0-2",
+      "target": "period-3-0-3",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-3-0-4",
+      "source": "period-3-0-3",
+      "target": "period-3-0-4",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-3-0-5",
+      "source": "period-3-0-4",
+      "target": "period-3-0-5",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-3-1-1",
+      "source": "period-3-1-0",
+      "target": "period-3-1-1",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-3-1-2",
+      "source": "period-3-1-1",
+      "target": "period-3-1-2",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-3-1-3",
+      "source": "period-3-1-2",
+      "target": "period-3-1-3",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-3-1-4",
+      "source": "period-3-1-3",
+      "target": "period-3-1-4",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-3-1-5",
+      "source": "period-3-1-4",
+      "target": "period-3-1-5",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-3-1-6",
+      "source": "period-3-1-5",
+      "target": "period-3-1-6",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-3-1-7",
+      "source": "period-3-1-6",
+      "target": "period-3-1-7",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-3-1-8",
+      "source": "period-3-1-7",
+      "target": "period-3-1-8",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-4-0-1",
+      "source": "period-4-0-0",
+      "target": "period-4-0-1",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-4-0-2",
+      "source": "period-4-0-1",
+      "target": "period-4-0-2",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-4-0-3",
+      "source": "period-4-0-2",
+      "target": "period-4-0-3",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-4-0-4",
+      "source": "period-4-0-3",
+      "target": "period-4-0-4",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-4-0-5",
+      "source": "period-4-0-4",
+      "target": "period-4-0-5",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-4-0-6",
+      "source": "period-4-0-5",
+      "target": "period-4-0-6",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-4-0-7",
+      "source": "period-4-0-6",
+      "target": "period-4-0-7",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-4-1-1",
+      "source": "period-4-1-0",
+      "target": "period-4-1-1",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-4-1-2",
+      "source": "period-4-1-1",
+      "target": "period-4-1-2",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-4-1-3",
+      "source": "period-4-1-2",
+      "target": "period-4-1-3",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-4-1-4",
+      "source": "period-4-1-3",
+      "target": "period-4-1-4",
+      "kind": "succession",
+      "style": "dotted"
+    },
+    {
+      "id": "continuation-4-1-5",
+      "source": "period-4-1-4",
+      "target": "period-4-1-5",
+      "kind": "succession",
+      "style": "ribbon"
+    },
+    {
+      "id": "continuation-4-1-6",
+      "source": "period-4-1-5",
+      "target": "period-4-1-6",
+      "kind": "succession",
+      "style": "ribbon"
+    }
+  ]
 }

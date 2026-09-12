@@ -37,13 +37,15 @@ def main():
             assert zoom>initial
             page.locator("#full").click();full=page.locator("#paper").bounding_box()["width"]
             assert full==1800
+            image_sizes=page.evaluate("""()=>[...document.querySelectorAll('#paper svg svg')].map(s=>({declared:Number(s.getAttribute('width')),actual:s.getBoundingClientRect().width}))""")
+            assert all(abs(s['actual']-s['declared'])<.1 for s in image_sizes),image_sizes
             page.locator("#fit").click();assert page.locator("#paper").bounding_box()["width"]==initial
             page.screenshot(path=str(args.artifacts/f"viewer-{name}.png"))
             # Capture a dense part from the actual SVG at full resolution.
             page.goto((args.gallery/f"{name}.svg").resolve().as_uri());page.evaluate("document.fonts.ready")
-            page.set_viewport_size({"width":1800,"height":2400})
+            page.set_viewport_size({"width":1800,"height":2700})
             page.screenshot(path=str(args.artifacts/f"detail-{name}.png"),clip={"x":600,"y":700,"width":1000,"height":650})
-            checks.append({"viewer":name,"fit_width":initial,"zoom_width":zoom,"full_width":full})
+            checks.append({"viewer":name,"fit_width":initial,"zoom_width":zoom,"full_width":full,"embedded_images_checked":len(image_sizes)})
         assert not errors,errors
         browser.close()
     report={"status":"pass","checks":checks,"page_errors":errors}

@@ -1,0 +1,112 @@
+{
+  "provider": "Art Institute of Chicago",
+  "rights": "Public-domain artworks according to the museum API; museum imagery offered under CC0.",
+  "terms": "https://api.artic.edu/docs/#copyright",
+  "purpose": "Decorative collection samples for synthetic posters; their real titles and dates are preserved here. They are not evidence of invented events.",
+  "items": [
+    {
+      "id": 90589,
+      "title": "Astrolabe",
+      "date_start": 1701,
+      "date_end": 1800,
+      "is_public_domain": true,
+      "artist_title": "Islamic",
+      "image_id": "73e8e4ba-79e8-71d5-a731-05acce0d1035",
+      "file": "90589.jpg",
+      "image_url": "https://www.artic.edu/iiif/2/73e8e4ba-79e8-71d5-a731-05acce0d1035/full/200,/0/default.jpg",
+      "source": "https://www.artic.edu/artworks/90589",
+      "sha256": "68f00aafce3cdbeb7d9a0b382b2efd1970de3218b354dc7bac8ee8789431a4b9"
+    },
+    {
+      "id": 57819,
+      "title": "Wall Clock",
+      "date_start": 1735,
+      "date_end": 1740,
+      "is_public_domain": true,
+      "artist_title": "Jean Pierre Latz",
+      "image_id": "ce583554-7fac-705e-2130-ec94c1abb2e2",
+      "file": "57819.jpg",
+      "image_url": "https://www.artic.edu/iiif/2/ce583554-7fac-705e-2130-ec94c1abb2e2/full/200,/0/default.jpg",
+      "source": "https://www.artic.edu/artworks/57819",
+      "sha256": "1728f6f3b6df124ab8b330fd06697c3c5ddf79fcc1dcc35df0a331c50761a2a8"
+    },
+    {
+      "id": 246,
+      "title": "Oinochoe (Pitcher)",
+      "date_start": -300,
+      "date_end": -201,
+      "is_public_domain": true,
+      "artist_title": "Mattinata Painter",
+      "image_id": "44abac03-4d36-aac6-f44e-ffe1d57dfb03",
+      "file": "246.jpg",
+      "image_url": "https://www.artic.edu/iiif/2/44abac03-4d36-aac6-f44e-ffe1d57dfb03/full/200,/0/default.jpg",
+      "source": "https://www.artic.edu/artworks/246",
+      "sha256": "302f1c9619b9293f11a59b5b1bd7fc4b668f94270e2c550bb8bae4321fc02da3"
+    },
+    {
+      "id": 60878,
+      "title": "Jar in the Form of Ancient Bronze Vessel",
+      "date_start": 1700,
+      "date_end": 1799,
+      "is_public_domain": true,
+      "artist_title": null,
+      "image_id": "0337f32d-7237-edae-6b40-3bc0e5598cb9",
+      "file": "60878.jpg",
+      "image_url": "https://www.artic.edu/iiif/2/0337f32d-7237-edae-6b40-3bc0e5598cb9/full/200,/0/default.jpg",
+      "source": "https://www.artic.edu/artworks/60878",
+      "sha256": "b15d4bbb428593fa815d846aa4453d3324d3a0f1d246169ea3b58c36a30440a8"
+    },
+    {
+      "id": 191,
+      "title": "Mug",
+      "date_start": -460,
+      "date_end": -460,
+      "is_public_domain": true,
+      "artist_title": "Ancient Greek",
+      "image_id": "e47ce711-82da-5bfa-21e6-37b65b7170df",
+      "file": "191.jpg",
+      "image_url": "https://www.artic.edu/iiif/2/e47ce711-82da-5bfa-21e6-37b65b7170df/full/200,/0/default.jpg",
+      "source": "https://www.artic.edu/artworks/191",
+      "sha256": "b94c90ead0caa46353ffb5174391bf4fc0a3748a4f41c3e8967761911b3f014f"
+    },
+    {
+      "id": 50240,
+      "title": "Sailing Ships in Harbor near Windmill",
+      "date_start": 1653,
+      "date_end": 1707,
+      "is_public_domain": true,
+      "artist_title": "Willem van de Velde, II",
+      "image_id": "0809280a-632f-9a38-8620-828aa1da13cd",
+      "file": "50240.jpg",
+      "image_url": "https://www.artic.edu/iiif/2/0809280a-632f-9a38-8620-828aa1da13cd/full/200,/0/default.jpg",
+      "source": "https://www.artic.edu/artworks/50240",
+      "sha256": "51572f4f827a1ddeed950f6175db55b71ed32fdf9b12fcdf22e96e38224dc4e3"
+    },
+    {
+      "id": 27881,
+      "title": "Ship with Sails Furled and Arrow Pointing to the Right",
+      "date_start": 1475,
+      "date_end": 1485,
+      "is_public_domain": true,
+      "artist_title": "Master W with the Key",
+      "image_id": "a4615587-d61f-20f6-541c-7ee4a9be6cb6",
+      "file": "27881.jpg",
+      "image_url": "https://www.artic.edu/iiif/2/a4615587-d61f-20f6-541c-7ee4a9be6cb6/full/200,/0/default.jpg",
+      "source": "https://www.artic.edu/artworks/27881",
+      "sha256": "9979e5f610edd5a2753d5976160fcd81001e47ad3c934e86d37d911cc3023bd1"
+    },
+    {
+      "id": 15190,
+      "title": "The Astronomers",
+      "date_start": 1701,
+      "date_end": 1749,
+      "is_public_domain": true,
+      "artist_title": "Donato Creti",
+      "image_id": "5bd2d27f-ad6f-2446-eefd-05ace768085e",
+      "file": "15190.jpg",
+      "image_url": "https://www.artic.edu/iiif/2/5bd2d27f-ad6f-2446-eefd-05ace768085e/full/200,/0/default.jpg",
+      "source": "https://www.artic.edu/artworks/15190",
+      "sha256": "8bdefdd56112957d01ed3a876ab25ad749dca7e94fe08d2a9b3a1ce3567d87d8"
+    }
+  ]
+}

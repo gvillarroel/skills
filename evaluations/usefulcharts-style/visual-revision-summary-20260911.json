@@ -1,0 +1,66 @@
+{
+  "skill": "usefulcharts-style",
+  "date": "2026-09-11",
+  "status": "validating",
+  "runtime": {
+    "name": "usefulcharts-style",
+    "profile": "runtime",
+    "fileCount": 45,
+    "payloadSha256": "04b643f006bb57632953d51d4fc1378fcc6113d8f2c1423deb8fe06227bcddf4"
+  },
+  "unchanged_since_attempt": true,
+  "visual_review": {
+    "comparison": "unblinded author review at equal display width",
+    "indistinguishability_proven": false,
+    "prior_scores_superseded": true
+  },
+  "deterministic_tests": {
+    "classic": 26,
+    "editorial": 14,
+    "adversarial": 6
+  },
+  "examples": [
+    {
+      "id": "aurelian-families",
+      "status": "pass",
+      "node_count": 336,
+      "edge_count": 214,
+      "text_count": 725,
+      "min_contrast": 4.949075393281342,
+      "findings": []
+    },
+    {
+      "id": "atlas-of-inquiry",
+      "status": "pass",
+      "node_count": 191,
+      "edge_count": 199,
+      "text_count": 584,
+      "min_contrast": 4.949075393281342,
+      "findings": []
+    },
+    {
+      "id": "five-regional-histories",
+      "status": "pass",
+      "node_count": 78,
+      "edge_count": 68,
+      "text_count": 405,
+      "min_contrast": 4.949075393281342,
+      "findings": []
+    }
+  ],
+  "isolated_attempt": {
+    "run_id": "usefulcharts-editorial-v5-20260911-spark-1",
+    "model": "openai-codex/gpt-5.3-codex-spark",
+    "outcome": "infrastructure-blocked",
+    "reason": "Provider usage limit before first tool call",
+    "artifacts_created": 0,
+    "required_artifacts": 6,
+    "integrity": true
+  },
+  "pages": {
+    "build": "pass",
+    "catalog": "pass",
+    "responsive_viewer": "pass",
+    "url": "https://gvillarroel.github.io/skills/examples/usefulcharts-style/"
+  }
+}

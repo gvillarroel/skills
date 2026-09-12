@@ -1,5 +1,7 @@
 # UsefulCharts-style skill evaluation
 
+**Historical record, superseded for aesthetic acceptance.** The user rejected this first gallery as visually deficient. Its aggregate resemblance scores were too permissive and must not be treated as acceptance. The [visual revision and stricter comparison](visual-revision-20260911.md) records the subsequent changes, current artifacts, and remaining limits. The technical trial outcomes below remain historical evidence for their original payloads only.
+
 Date: 2026-09-11. Skill: [usefulcharts-style](../../skills/usefulcharts-style/SKILL.md). Status: **validating**.
 
 The skill and three original example posters are implemented and locally verified. The examples reproduce recognizable composition decisions from the reference family: a condensed title, a light continuous field, compact labels, stable category colors, branching or parallel spatial structure, and typed, deliberately routed relationships. They are simpler and more regular than UsefulCharts' largest illustrated posters.
