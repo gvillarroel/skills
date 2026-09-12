@@ -15,6 +15,8 @@ Input: `design: editorial`, `mode: genealogy`; nodes with stable IDs and categor
 5. For a dense tree with mechanical rows, follow [local family baselines](branch-baselines.md). Use source dates as placement preferences, separate nameplates from dates, reserve complete parental departure gutters, and keep family captions beside the people they identify.
 6. Render, audit, and zoom into every partnership junction. Check the child source is the union midpoint, not the closer partner's box.
 
+For territorial orientation inside a dense family, follow [source-bound landmarks](context-landmarks.md). Bind selected captions to actual node fields and keep original fictional devices consistent with source categories. Compose them near their own branch and review nearby competing colors; full-path clearance alone does not establish the right association.
+
 Validation: run `render_chart.py` and `audit_chart.py`; inspect every edge touching two categories. Pitfalls: repeated names without unique IDs; multiple marriages overlapping on one row; descendants connected to a sibling bar as if it were a spouse; crossing lines mistaken for junctions. Use aliases with an explicit same-person note for a deliberately repeated person; never silently duplicate identity.
 
 ## Branching institutional or idea history

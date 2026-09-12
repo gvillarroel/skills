@@ -30,6 +30,26 @@ def main():
     node=copy.deepcopy(original);metadata=node.find('.//s:metadata[@id="chart-data"]',ns)
     values=json.loads(metadata.text);values['data_sha256']='0'*64;metadata.text=json.dumps(values)
     mutations.append(('stale-source-revision',node,'source-revision-mismatch'))
+    if original.find('.//s:g[@data-annotation-kind="landmark"]',ns) is not None:
+        node=copy.deepcopy(original);landmark=node.find('.//s:g[@data-annotation-kind="landmark"]',ns)
+        node.remove(landmark);mutations.append(('deleted-landmark',node,'source-landmark-inventory'))
+        node=copy.deepcopy(original);landmark=node.find('.//s:g[@data-annotation-kind="landmark"]',ns)
+        landmark.find('s:text[@data-content-role="landmark-label"]',ns).text='Invented territory'
+        mutations.append(('changed-landmark-label',node,'source-landmark-label'))
+        for field,value in [('data-context-node','missing-record'),('data-context-group','wrong-group'),('data-source-field','label')]:
+            node=copy.deepcopy(original);node.find('.//s:g[@data-annotation-kind="landmark"]',ns).set(field,value)
+            mutations.append((f'changed-{field}',node,'source-landmark-binding'))
+        node=copy.deepcopy(original);node.find('.//s:g[@data-annotation-kind="landmark"]',ns).set('transform','translate(0 -600)')
+        mutations.append(('displaced-landmark',node,'source-landmark-position'))
+        node=copy.deepcopy(original);node.find('.//s:g[@data-annotation-kind="landmark"]/s:g[@data-artwork="heraldry"]/s:path',ns).set('fill','#0000FF')
+        mutations.append(('changed-heraldry-color',node,'source-landmark-color'))
+        for selector,name in [('data-edge-id','relationship'),('data-union-id','partnership')]:
+            node=copy.deepcopy(original);landmark=node.find('.//s:g[@data-annotation-kind="landmark"]/s:rect[@data-annotation-box]',ns)
+            x=float(landmark.get('x'))+float(landmark.get('width'))/2;y=float(landmark.get('y'))+float(landmark.get('height'))/2
+            path=node.find(f'.//s:path[@{selector}]',ns)
+            if path is not None:
+                path.set('d',f'M {x-20} {y} L {x+20} {y}')
+                mutations.append((f'{name}-through-landmark',node,'landmark-path-collision'))
     if original.find('.//s:g[@data-annotation-kind="heading"]/*[@data-artwork]',ns) is not None:
         for name,dy,expected in [('heading-art-over-text',55,'heading-art-text-collision'),
                                  ('heading-art-above-paper',-200,'heading-art-outside-paper')]:

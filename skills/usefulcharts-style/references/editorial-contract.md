@@ -38,6 +38,8 @@ Routes use rounded orthogonal corridors and preserve source/target semantics. `c
 
 Instead of `x,y`, use `node` with optional `dx,dy` to anchor an annotation to a measured node center after layout. Unknown node anchors fail.
 
+For an exact source-derived place or movement caption, use `kind: landmark`, `node`, and `field`. It reads the visible label from that node field, retains the node category, and reserves the complete serif label and optional emblem envelope. See [context landmarks](context-landmarks.md) for `eyebrow`, `art_position`, the seven fictional `heraldry` devices, local placement, limits and source-backed browser verification.
+
 `insets` contain `kind`, `title`, and `box: [x,y,width,height]`:
 
 - `isotype` derives and displays actual node counts per category. One symbol equals one record; it does not invent a population statistic. Supply `groups: ["category-id", ...]` to include small categories or choose an explicit order. Otherwise only categories with more than twelve records appear. Selected IDs must be unique and known.

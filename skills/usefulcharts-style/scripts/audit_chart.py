@@ -39,6 +39,7 @@ AUDIT = r"""() => {
   const unions=[...svg.querySelectorAll('[data-union-id]')].map(el=>({id:el.dataset.unionId,d:el.getAttribute('d')}));
   const texts=[...svg.querySelectorAll('text')].map(el=>({text:el.textContent,owner:el.dataset.owner,event:el.closest('[data-event-id]')?.dataset.eventId,box:bounds(el),font:parseFloat(getComputedStyle(el).fontSize),contrast:contrast(getComputedStyle(el).fill,el.dataset.background)}));
   const illustrations=[...svg.querySelectorAll('[data-event-id] [data-artwork]')].map(el=>({event:el.closest('[data-event-id]').dataset.eventId,kind:el.dataset.artwork,box:bounds(el)}));
+  const landmarks=[...svg.querySelectorAll('[data-annotation-kind="landmark"]')].map(el=>({id:el.dataset.annotationId,node:el.dataset.contextNode,group:el.dataset.contextGroup,field:el.dataset.sourceField,value:el.dataset.sourceValue,box:bounds(el.querySelector('[data-annotation-box]')),heraldry_fill:el.querySelector('[data-artwork="heraldry"]>path')?getComputedStyle(el.querySelector('[data-artwork="heraldry"]>path')).fill:null,label:[...el.querySelectorAll('[data-content-role="landmark-label"]')].map(t=>t.textContent).join(' ')}));
   const setEqual=(a,b)=>a.length===b.length && [...a].sort().join('\n')===[...b].sort().join('\n');
   if(!setEqual(nodes.map(n=>n.id),meta.node_ids))findings.push({type:'node-inventory'});
   if(!setEqual(edges.map(e=>e.id),meta.edge_ids))findings.push({type:'edge-inventory'});
@@ -66,6 +67,20 @@ AUDIT = r"""() => {
     }
   }
   for(let i=0;i<illustrations.length;i++)for(let j=i+1;j<illustrations.length;j++)if(intersect(illustrations[i].box,illustrations[j].box,.5))findings.push({type:'illustration-overlap',a:illustrations[i].event,b:illustrations[j].event});
+  for(const landmark of landmarks){
+    const el=svg.querySelector(`[data-annotation-id="${CSS.escape(landmark.id)}"]`);
+    if(!contained(landmark.box,{x:48,y:130,w:view.width-96,h:view.height-215},.5))findings.push({type:'landmark-outside-paper',id:landmark.id});
+    for(const child of el.querySelectorAll('text,[data-artwork]'))if(!contained(bounds(child),landmark.box,.5))findings.push({type:'landmark-content-overflow',id:landmark.id});
+    for(const node of nodes)if(intersect(landmark.box,node.box))findings.push({type:'landmark-node-collision',id:landmark.id,node:node.id});
+    for(const other of svg.querySelectorAll('[data-annotation-id]'))if(other!==el&&intersect(landmark.box,bounds(other),.5))findings.push({type:'landmark-annotation-collision',id:landmark.id,other:other.dataset.annotationId});
+    for(const path of svg.querySelectorAll('[data-edge-id],[data-union-id]')){
+      const length=path.getTotalLength(),r=landmark.box;
+      for(let at=0;at<=length;at+=2){
+        const p=path.getPointAtLength(at);
+        if(p.x>r.x&&p.x<r.x+r.w&&p.y>r.y&&p.y<r.y+r.h){findings.push({type:'landmark-path-collision',id:landmark.id,path:path.dataset.edgeId||path.dataset.unionId});break;}
+      }
+    }
+  }
   for(const rule of svg.querySelectorAll('[data-era-rule]')){
     const b=bounds(rule),r={x:b.x,y:b.y-1,w:b.w,h:2};
     for(const t of texts)if(t.owner==='page'&&intersect(r,t.box,.1))findings.push({type:'era-rule-text-collision',year:rule.dataset.eraRule,text:t.text});
@@ -112,7 +127,7 @@ AUDIT = r"""() => {
     for(const t of texts)if(t.owner==='page'&&clippedArea(poly,t.box)>1)findings.push({type:'transition-fill-text-collision',edge:fill.dataset.transitionFill,text:t.text});
     for(const art of illustrations)if(clippedArea(poly,art.box)>1)findings.push({type:'transition-fill-illustration-collision',edge:fill.dataset.transitionFill,event:art.event});
   }
-  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,nodes,edges,events,unions,texts,illustrations,metadata:meta};
+  return {status:findings.length?'fail':'pass',id:meta.id,mode:meta.mode,canvas:[view.width,view.height],node_count:nodes.length,edge_count:edges.length,event_count:events.length,text_count:texts.length,min_contrast:Math.min(...texts.map(t=>t.contrast)),findings,nodes,edges,events,unions,texts,illustrations,landmarks,metadata:meta};
 }"""
 
 
@@ -123,6 +138,29 @@ def check_source(report, data):
     if report['metadata'].get('data_sha256')!=source_hash:
         report['findings'].append({'type':'source-revision-mismatch','expected_sha256':source_hash,'rendered_sha256':report['metadata'].get('data_sha256')})
     nodes = data.get("periods", []) if data["mode"] == "timeline" else data.get("nodes", [])
+    contexts={f'annotation-{i}':a for i,a in enumerate(data.get('annotations',[])) if a.get('kind')=='landmark'}
+    actual_contexts={a['id']:a for a in report.get('landmarks',[])}
+    if sorted(contexts)!=sorted(actual_contexts):report['findings'].append({'type':'source-landmark-inventory'})
+    by_id={n['id']:n for n in nodes}
+    for aid,annotation in contexts.items():
+        actual=actual_contexts.get(aid)
+        if not actual:continue
+        source_node=by_id.get(annotation.get('node'),{});value=source_node.get(annotation.get('field'))
+        expected=(annotation.get('node'),source_node.get('group'),annotation.get('field'),value)
+        if (actual['node'],actual['group'],actual['field'],actual['value'])!=expected:
+            report['findings'].append({'type':'source-landmark-binding','id':aid})
+        if ' '.join(actual['label'].split())!=' '.join(str(value).split()):
+            report['findings'].append({'type':'source-landmark-label','id':aid})
+        if annotation.get('icon')=='heraldry':
+            paint=next((g['color'] for g in data['groups'] if g['id']==source_node.get('group')),'#000000')
+            expected_rgb=tuple(int(paint[i:i+2],16) for i in (1,3,5))
+            if tuple(int(v) for v in re.findall(r'\d+',actual.get('heraldry_fill') or ''))!=expected_rgb:
+                report['findings'].append({'type':'source-landmark-color','id':aid})
+        drawn=next((n['box'] for n in report['nodes'] if n['id']==annotation.get('node')),None)
+        if drawn:
+            x=drawn['x']+drawn['w']/2+annotation.get('dx',0);y=drawn['y']+drawn['h']/2+annotation.get('dy',0)
+            if abs(actual['box']['x']+actual['box']['w']/2-x)>.1 or abs(actual['box']['y']+actual['box']['h']/2-y)>.1:
+                report['findings'].append({'type':'source-landmark-position','id':aid})
     if sorted(n["id"] for n in nodes) != sorted(n["id"] for n in report["nodes"]):
         report["findings"].append({"type": "source-node-inventory"})
     relations = list(data.get("edges", [])) + list(data.get("transitions", []))

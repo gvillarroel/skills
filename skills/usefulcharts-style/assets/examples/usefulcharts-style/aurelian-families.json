@@ -48,7 +48,7 @@
       "color": "#EBA1BA"
     }
   ],
-  "source_note": "Original synthetic genealogy \u00b7 All names, dates, titles, and relationships are invented. Public-domain portraits are decorative art samples, not likenesses.",
+  "source_note": "Original synthetic genealogy \u00b7 All names, dates, titles, and relationships are invented. Public-domain portraits are decorative art samples, not likenesses. Heraldic devices are fictional.",
   "nodes": [
     {
       "id": "person-0-0",
@@ -12433,6 +12433,104 @@
       "icon": "crown",
       "group": "g2",
       "size": 18
+    },
+    {
+      "kind": "landmark",
+      "node": "person-6-0",
+      "field": "realm",
+      "width": 146,
+      "size": 17,
+      "icon": "heraldry",
+      "art_size": 32,
+      "art_position": "beside",
+      "variant": 0,
+      "dx": -60,
+      "dy": -112,
+      "vertical_radius": 170
+    },
+    {
+      "kind": "landmark",
+      "node": "person-11-1",
+      "field": "realm",
+      "width": 146,
+      "size": 17,
+      "icon": "heraldry",
+      "art_size": 32,
+      "art_position": "beside",
+      "variant": 1,
+      "dx": 120,
+      "dy": -108,
+      "vertical_radius": 170
+    },
+    {
+      "kind": "landmark",
+      "node": "person-19-3",
+      "field": "realm",
+      "width": 146,
+      "size": 17,
+      "icon": "heraldry",
+      "art_size": 32,
+      "art_position": "beside",
+      "variant": 2,
+      "dx": -128,
+      "dy": 124,
+      "vertical_radius": 170
+    },
+    {
+      "kind": "landmark",
+      "node": "person-28-2",
+      "field": "realm",
+      "width": 146,
+      "size": 17,
+      "icon": "heraldry",
+      "art_size": 32,
+      "art_position": "beside",
+      "variant": 3,
+      "dx": -212,
+      "dy": 48,
+      "vertical_radius": 170
+    },
+    {
+      "kind": "landmark",
+      "node": "person-33-1",
+      "field": "realm",
+      "width": 146,
+      "size": 17,
+      "icon": "heraldry",
+      "art_size": 32,
+      "art_position": "beside",
+      "variant": 4,
+      "dx": -204,
+      "dy": 96,
+      "vertical_radius": 170
+    },
+    {
+      "kind": "landmark",
+      "node": "person-35-1",
+      "field": "realm",
+      "width": 146,
+      "size": 17,
+      "icon": "heraldry",
+      "art_size": 32,
+      "art_position": "beside",
+      "variant": 5,
+      "dx": -208,
+      "dy": 116,
+      "vertical_radius": 170
+    },
+    {
+      "kind": "landmark",
+      "node": "person-27-7",
+      "field": "realm",
+      "width": 146,
+      "size": 17,
+      "icon": "heraldry",
+      "art_size": 32,
+      "art_position": "beside",
+      "variant": 6,
+      "dx": -32,
+      "dy": -128,
+      "vertical_radius": 170
     }
   ],
   "insets": [],

@@ -33,6 +33,28 @@ def unit(row,left=0,right=40,height=20):
 
 
 class BaselineTests(unittest.TestCase):
+    def test_reserved_context_keeps_records_and_routes_around_caption(self):
+        data=family();data['nodes'][2]['place']='Alder school'
+        data['annotations']=[dict(kind='landmark',node='c1',field='place',width=160,size=20,icon='heraldry',art_size=32,art_position='beside')]
+        before=copy.deepcopy(data);result,report=space_branches(data,reserve_context=True)
+        self.assertEqual(data,before);self.assertEqual(report['reserved_context_count'],1)
+        for source,node in zip(data['nodes'],result['nodes']):
+            for key,value in source.items():self.assertEqual(node[key],value)
+        self.assertEqual(result['unions'],data['unions']);self.assertEqual(result['edges'],data['edges'])
+        poster=EditorialPoster(result);svg,render=poster.render()
+        self.assertEqual(render['node_count'],5);self.assertEqual(render['edge_count'],3)
+        self.assertIn('data-context-node="c1"',svg)
+
+    def test_reserved_context_requires_a_measured_canvas(self):
+        data=family();data['width']=1400
+        with self.assertRaisesRegex(ValueError,'omit explicit page dimensions'):space_branches(data,reserve_context=True)
+
+    def test_reserved_context_rejects_multiple_captions_on_one_person(self):
+        data=family();data['nodes'][2]['place']='Alder school'
+        a=dict(kind='landmark',node='c1',field='place')
+        data['annotations']=[a,copy.deepcopy(a)]
+        with self.assertRaisesRegex(ValueError,'multiple captions|one context'):space_branches(data,reserve_context=True)
+
     def test_two_unit_projection_matches_analytic_solution(self):
         positions,report=fit_baselines({'a':unit(0),'b':unit(1)},[('a','b')],{'a':50,'b':50},0,100)
         self.assertAlmostEqual(positions['a'],31,places=4);self.assertAlmostEqual(positions['b'],69,places=4)

@@ -17,7 +17,48 @@ def symbol(kind, paint="#9A7332", variant=0):
         p.append(f'<path d="{d}" fill="{fill}" stroke="{stroke}" stroke-width="{width}" stroke-linejoin="round"/>')
     def circle(x,y,r,fill="none",stroke=ink,width=2):
         p.append(f'<circle cx="{x}" cy="{y}" r="{r}" fill="{fill}" stroke="{stroke}" stroke-width="{width}"/>')
-    if kind in ("shield","crown"):
+    if kind=='heraldry':
+        # Original fictional devices, used as consistent diagram identifiers.
+        # They are not reconstructions of a historical coat of arms.
+        outline='M18 8H82L79 53Q76 76 50 94Q24 76 21 53Z'
+        path(outline,paint,ink,2.5)
+        gold='#FFE4A3';light='#FFF9DF';v=variant%7
+        if v==0:
+            path('M49 76V30M49 56L32 39M49 47L65 31',stroke=gold,width=5)
+            for x,y in [(33,34),(42,27),(64,27),(57,49)]:
+                path(f'M{x} {y+9}C{x-12} {y+1} {x-8} {y-11} {x} {y-7}C{x+8} {y-11} {x+12} {y+1} {x} {y+9}Z',light,ink,1)
+        elif v==1:
+            for x,y in [(35,32),(65,32),(50,62)]:
+                path(f'M{x+7} {y-10}A13 13 0 1 0 {x+7} {y+10}A10 10 0 0 1 {x+7} {y-10}Z',gold,ink,1)
+        elif v==2:
+            for x,y in [(35,31),(65,31),(50,62)]:
+                points=[]
+                for i in range(10):
+                    angle=-math.pi/2+i*math.pi/5;r=13 if i%2==0 else 5.5
+                    points.append(f'{x+math.cos(angle)*r:.2f},{y+math.sin(angle)*r:.2f}')
+                p.append(f'<polygon points="{" ".join(points)}" fill="{light}" stroke="{ink}" stroke-width="1"/>')
+        elif v==3:
+            for y,w in [(28,53),(47,50),(66,34)]:
+                x=50-w/2
+                path(f'M{x} {y}Q{x+w/4} {y-6} 50 {y}T{x+w} {y}V{y+7}Q{50+w/4} {y+1} 50 {y+7}T{x} {y+7}Z',light,ink,1)
+        elif v==4:
+            path('M32 74V39H27V24H35V31H45V21H55V31H65V24H73V39H68V74Z',light,ink,1.6)
+            path('M45 74V59Q50 50 55 59V74Z',paint,ink,1)
+            for x in (38,57):path(f'M{x} 41H{x+5}V48H{x}Z',paint,ink,.7)
+            path('M32 51H68M34 66H42M58 66H67',stroke=ink,width=.7)
+        elif v==5:
+            for i in range(12):
+                a=i*math.pi/6
+                path(f'M{50+math.cos(a)*18:.2f} {48+math.sin(a)*18:.2f}L{50+math.cos(a+.07)*30:.2f} {48+math.sin(a+.07)*30:.2f}L{50+math.cos(a+.14)*18:.2f} {48+math.sin(a+.14)*18:.2f}Z',gold,ink,.8)
+            circle(50,48,16,gold,ink,1)
+            path('M44 44H45M55 44H56M45 55Q50 59 55 55',stroke=ink,width=1)
+        else:
+            for i in range(5):
+                a=-math.pi/2+i*2*math.pi/5
+                circle(round(50+math.cos(a)*14,2),round(47+math.sin(a)*14,2),11,light,ink,1)
+            circle(50,47,9,gold,ink,1.2)
+            path('M50 59V77M49 68Q34 56 34 68Q36 77 49 71M51 68Q66 56 66 68Q64 77 51 71',stroke=gold,width=3)
+    elif kind in ("shield","crown"):
         path('M23 28L77 28L75 61Q70 81 50 91Q30 81 25 61Z',paint)
         if variant%3==0:
             path('M47 30H53V87H47ZM26 48H74V55H26Z','#FAF3D3',"none")

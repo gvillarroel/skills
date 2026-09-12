@@ -1,0 +1,1799 @@
+{
+  "status": "validating",
+  "runs": [
+    {
+      "id": "usefulcharts-v21-family-landmarks-20260912-gpt55-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "acce640a75cf4ca283cc58b1bad5e4fa527cbb5343c4d21a926f9e5bc28366a3"
+      },
+      "prompt_sha256": "ea4f708630c5622902d11722b62c326c4da125996beeaa21c1776809ab340d65",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:34:03.219490+00:00",
+        "finishedAtUtc": "2026-09-12T06:39:29.807147+00:00",
+        "durationSeconds": 326.59,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 2132.78 1390",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 790.4600219726562,
+              "y": 380.75,
+              "w": 150,
+              "h": 58
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 825.0900268554688,
+              "y": 583,
+              "w": 150,
+              "h": 72
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 1516.7900390625,
+              "y": 1118.6199951171875,
+              "w": 176,
+              "h": 58
+            }
+          }
+        ]
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "build/spaced.json",
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "skills/usefulcharts-style/references/evaluation.md",
+        "skills/usefulcharts-style/references/data-contract.md"
+      ],
+      "tool_errors": [
+        "Installed 8 packages in 2.14s\n{\"status\": \"pass\", \"units\": 27, \"output\": \"build\\\\spaced.json\"}\r\nInstalled 6 packages in 1.60s\nLandmarks could not be placed: No local pocket for p05.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "Landmarks could not be placed: No local pocket for p11.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "{\"status\": \"pass\", \"units\": 27, \"output\": \"build\\\\spaced.json\"}\r\nLandmarks could not be placed: No local pocket for p11.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: A landmark covers a person or institution. Move it into a nearby open pocket.\r\n\n\nCommand exited with code 2",
+        "{\"status\": \"pass\", \"units\": 27, \"output\": \"build\\\\spaced.json\"}\r\nLandmarks could not be placed: Union u07 needs at least a 16-unit gap.\r\n\n\nCommand exited with code 2",
+        "Traceback (most recent call last):\r\n  File \"<stdin>\", line 4, in <module>\r\nKeyError: 'width'\r\n\n\nCommand exited with code 1",
+        "{\"status\": \"pass\", \"units\": 27, \"output\": \"build\\\\spaced.json\"}\r\nLandmarks could not be placed: No local pocket for p11.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "{\"status\": \"pass\", \"units\": 27, \"output\": \"build\\\\spaced.json\"}\r\nLandmarks could not be placed: No local pocket for p11.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "Landmarks could not be placed: No local pocket for p41.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "Landmarks could not be placed: No local pocket for p05.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2"
+      ],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 568068
+        },
+        {
+          "mime": "image/png",
+          "encoded_bytes": 561124
+        },
+        {
+          "mime": "image/png",
+          "encoded_bytes": 557248
+        }
+      ],
+      "visual_review": {
+        "date": "2026-09-12",
+        "reviewer": "Primary agent",
+        "method": "Direct final PNG inspection at whole-page and readable detail scale. Unblinded qualitative review, not an indistinguishability experiment.",
+        "verdict": "Readable final artifact after repair; not accepted as visual parity.",
+        "observations": [
+          "All three required place labels are visible and plausibly associated with their named records.",
+          "The very wide page leaves broad top corners and a long central band of crossing family lines.",
+          "Serif context and subordinate dates create hierarchy, but the regular rectangular names and wide corridors remain schematic."
+        ],
+        "image_inspected": true
+      },
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v21-family-landmarks-20260912-gpt55-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "acce640a75cf4ca283cc58b1bad5e4fa527cbb5343c4d21a926f9e5bc28366a3"
+      },
+      "prompt_sha256": "ea4f708630c5622902d11722b62c326c4da125996beeaa21c1776809ab340d65",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 124,
+        "piExitCode": null,
+        "timedOut": true,
+        "startedAtUtc": "2026-09-12T06:34:38.521995+00:00",
+        "finishedAtUtc": "2026-09-12T06:53:06.369556+00:00",
+        "durationSeconds": 1107.855,
+        "gates": {
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "fail",
+        "failures": [
+          "p01: changed numeric death",
+          "p02: changed numeric death",
+          "p03: changed numeric death",
+          "p04: changed numeric death",
+          "p05: changed numeric death",
+          "p06: changed numeric death",
+          "p07: changed numeric death",
+          "p08: changed numeric death",
+          "p09: changed numeric death",
+          "p10: changed numeric death",
+          "p11: changed numeric death",
+          "p12: changed numeric death",
+          "p13: changed numeric death",
+          "p14: changed numeric death",
+          "p15: changed numeric death",
+          "p16: changed numeric death",
+          "p17: changed numeric death",
+          "p18: changed numeric death",
+          "p19: changed numeric death",
+          "p20: changed numeric death",
+          "p21: changed numeric death",
+          "p22: changed numeric death",
+          "p23: changed numeric death",
+          "p24: changed numeric death",
+          "p25: changed numeric death",
+          "p26: changed numeric death",
+          "p27: changed numeric death",
+          "p28: changed numeric death",
+          "p29: changed numeric death",
+          "p30: changed numeric death",
+          "p31: changed numeric death",
+          "p32: changed numeric death",
+          "p33: changed numeric death",
+          "p34: changed numeric death",
+          "p35: changed numeric death",
+          "p36: changed numeric death",
+          "p37: changed numeric death",
+          "p38: changed numeric death",
+          "p39: changed numeric death",
+          "p40: changed numeric death",
+          "p41: changed numeric death",
+          "p42: changed numeric death",
+          "p43: changed numeric death",
+          "p44: changed numeric death",
+          "p45: changed numeric death",
+          "p46: changed numeric death",
+          "p47: changed numeric death",
+          "p48: changed numeric death"
+        ],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 47,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1470.88 1085.16",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 47,
+          "quoted_known_years": [
+            "p01.death",
+            "p02.death",
+            "p03.death",
+            "p04.death",
+            "p05.death",
+            "p06.death",
+            "p07.death",
+            "p08.death",
+            "p09.death",
+            "p10.death",
+            "p11.death",
+            "p12.death",
+            "p13.death",
+            "p14.death",
+            "p15.death",
+            "p16.death",
+            "p17.death",
+            "p18.death",
+            "p19.death",
+            "p20.death",
+            "p21.death",
+            "p22.death",
+            "p23.death",
+            "p24.death",
+            "p25.death",
+            "p26.death",
+            "p27.death",
+            "p28.death",
+            "p29.death",
+            "p30.death",
+            "p31.death",
+            "p32.death",
+            "p33.death",
+            "p34.death",
+            "p35.death",
+            "p36.death",
+            "p37.death",
+            "p38.death",
+            "p39.death",
+            "p40.death",
+            "p41.death",
+            "p42.death",
+            "p43.death",
+            "p44.death",
+            "p45.death",
+            "p46.death",
+            "p47.death",
+            "p48.death"
+          ],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 507.29998779296875,
+              "y": 283.6199951171875,
+              "w": 135,
+              "h": 58
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 238.0800018310547,
+              "y": 357.260009765625,
+              "w": 135,
+              "h": 58
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 945.6300048828125,
+              "y": 870.8400268554688,
+              "w": 165,
+              "h": 82
+            }
+          }
+        ]
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "result/source.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "build/silver_vale_spaced.json",
+        "result/poster.png"
+      ],
+      "tool_errors": [
+        "Installed 6 packages in 1.15s\nLandmarks could not be placed: No local pocket for p05.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "{\"status\": \"pass\", \"units\": 27, \"output\": \"build\\\\silver_vale_spaced.json\"}\r\nLandmarks could not be placed: No local pocket for p05.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: A landmark covers a person or institution. Move it into a nearby open pocket.\r\n\n\nCommand exited with code 2"
+      ],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 176868
+        }
+      ],
+      "visual_review": {
+        "date": "2026-09-12",
+        "reviewer": "Primary agent",
+        "method": "Direct final PNG inspection at whole-page and readable detail scale. Unblinded qualitative review, not an indistinguishability experiment.",
+        "verdict": "Visually rejected local association; timed-out attempt remains a failure.",
+        "observations": [
+          "Alder school is displaced to the left of Celia, well away from its required owner Klara; source binding alone does not make the visible association clear.",
+          "The final text is legible and the three captions are present, but Birch reading room sits beside the terminal generation as a detached note.",
+          "Broad horizontal family connections still dominate the middle."
+        ],
+        "image_inspected": true
+      },
+      "invalid_event_lines": [],
+      "expired_process_review": {
+        "run": "usefulcharts-v21-family-landmarks-20260912-gpt55-2",
+        "pid": 45236,
+        "process_created": 1789194878.5571911,
+        "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\usefulcharts-v21-family-landmarks-20260912-gpt55-2\\workspace",
+        "elapsed_seconds": 1107.7447962760925,
+        "recorded_timeout": 900,
+        "action": "terminated-after-recorded-timeout",
+        "children": [
+          {
+            "pid": 61056,
+            "name": "python.exe",
+            "created": 1789195986.248119
+          },
+          {
+            "pid": 39148,
+            "name": "python.exe",
+            "created": 1789195986.2321613
+          },
+          {
+            "pid": 36636,
+            "name": "uv.exe",
+            "created": 1789195986.210082
+          },
+          {
+            "pid": 64972,
+            "name": "python.exe",
+            "created": 1789195795.8734376
+          },
+          {
+            "pid": 40536,
+            "name": "python.exe",
+            "created": 1789195795.8546412
+          },
+          {
+            "pid": 44388,
+            "name": "bash.exe",
+            "created": 1789195795.8328705
+          },
+          {
+            "pid": 55540,
+            "name": "conhost.exe",
+            "created": 1789195795.8110487
+          },
+          {
+            "pid": 88108,
+            "name": "bash.exe",
+            "created": 1789195795.8055077
+          }
+        ]
+      }
+    },
+    {
+      "id": "usefulcharts-v21-family-landmarks-20260912-gpt55-3",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "acce640a75cf4ca283cc58b1bad5e4fa527cbb5343c4d21a926f9e5bc28366a3"
+      },
+      "prompt_sha256": "ea4f708630c5622902d11722b62c326c4da125996beeaa21c1776809ab340d65",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 124,
+        "piExitCode": null,
+        "timedOut": true,
+        "startedAtUtc": "2026-09-12T06:34:38.877040+00:00",
+        "finishedAtUtc": "2026-09-12T06:53:06.652697+00:00",
+        "durationSeconds": 1107.783,
+        "gates": {
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "fail",
+        "missing": [
+          "source.json",
+          "poster.svg",
+          "poster.html",
+          "layout.json",
+          "browser.json",
+          "poster.png"
+        ]
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "work/baseline.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "work/spacing.json"
+      ],
+      "tool_errors": [
+        "Installed 8 packages in 1.99s\n{\"status\": \"pass\", \"units\": 27, \"output\": \"work\\\\baseline.json\"}\r\nInstalled 6 packages in 1.23s\nLandmarks could not be placed: No local pocket for p05.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: A landmark covers a person or institution. Move it into a nearby open pocket.\r\n\n\nCommand exited with code 2",
+        "{\"status\": \"pass\", \"units\": 27, \"output\": \"work\\\\baseline.json\"}\r\nLandmarks could not be placed: Union u15 needs at least a 16-unit gap.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: Union u15 needs at least a 16-unit gap.\r\n\n\nCommand exited with code 2",
+        "Traceback (most recent call last):\r\n  File \"<stdin>\", line 5, in <module>\r\nKeyError: 'width'\r\n\n\nCommand exited with code 1",
+        "{\"status\": \"needs-layout\", \"message\": \"A genealogical cohort exceeds page width; widen the canvas or compose that cohort explicitly.\"}\r\n\n\nCommand exited with code 1",
+        "{\"status\": \"pass\", \"units\": 27, \"output\": \"work\\\\baseline.json\"}\r\nLandmarks could not be placed: No local pocket for p05.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "Chart could not be rendered: A landmark covers a relationship corridor. Move it without changing the source data.\r\n\n\nCommand exited with code 2",
+        "Command timed out after 180 seconds",
+        "Chart could not be rendered: A landmark covers a relationship corridor. Move it without changing the source data.\r\n\n\nCommand exited with code 2",
+        "Command timed out after 120 seconds",
+        "{\"status\": \"pass\", \"units\": 27, \"output\": \"work\\\\baseline.json\"}\r\nLandmarks could not be placed: No local pocket for p05.place; author the surrounding region or omit this optional repeated landmark, preserving its source field.\r\n\n\nCommand exited with code 2",
+        "Command timed out after 180 seconds",
+        "Command timed out after 120 seconds"
+      ],
+      "supported_image_results": [],
+      "visual_review": {
+        "date": "2026-09-12",
+        "reviewer": "Primary agent",
+        "method": "Direct final PNG inspection at whole-page and readable detail scale. Unblinded qualitative review, not an indistinguishability experiment.",
+        "verdict": "No final artifact to judge.",
+        "observations": [
+          "The attempt timed out without the six required final artifacts. Intermediate work is not substituted for a final PNG."
+        ],
+        "image_inspected": false
+      },
+      "invalid_event_lines": [],
+      "expired_process_review": {
+        "run": "usefulcharts-v21-family-landmarks-20260912-gpt55-3",
+        "pid": 69100,
+        "process_created": 1789194878.917292,
+        "cwd": "C:\\Users\\villa\\dev\\skills\\evaluations\\runs\\usefulcharts-v21-family-landmarks-20260912-gpt55-3\\workspace",
+        "elapsed_seconds": 1107.675733089447,
+        "recorded_timeout": 900,
+        "action": "terminated-after-recorded-timeout",
+        "children": [
+          {
+            "pid": 30948,
+            "name": "python.exe",
+            "created": 1789195986.583906
+          },
+          {
+            "pid": 70088,
+            "name": "python.exe",
+            "created": 1789195960.1462755
+          },
+          {
+            "pid": 34552,
+            "name": "python.exe",
+            "created": 1789195960.131621
+          },
+          {
+            "pid": 62832,
+            "name": "bash.exe",
+            "created": 1789195960.1170497
+          },
+          {
+            "pid": 91304,
+            "name": "bash.exe",
+            "created": 1789195960.0946662
+          },
+          {
+            "pid": 28808,
+            "name": "conhost.exe",
+            "created": 1789195960.0746143
+          },
+          {
+            "pid": 8400,
+            "name": "bash.exe",
+            "created": 1789195960.0688903
+          }
+        ]
+      }
+    },
+    {
+      "id": "usefulcharts-v21-landmark-contract-20260912-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "acce640a75cf4ca283cc58b1bad5e4fa527cbb5343c4d21a926f9e5bc28366a3"
+      },
+      "prompt_sha256": "c787f84683edff5f49d7ae31d356e61139e18483cf58951edd5fedcaa0dc464e",
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/placement.json",
+        "result/poster.svg",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:34:03.218955+00:00",
+        "finishedAtUtc": "2026-09-12T06:34:28.872306+00:00",
+        "durationSeconds": 25.654,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_preserved": true,
+        "placement": "pass",
+        "browser": "pass"
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "result/source.json",
+        "result/placement.json",
+        "result/layout.json",
+        "result/browser.json"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [],
+      "visual_review": "Command control only.",
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v22-family-landmarks-20260912-gpt55-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "00de5845846b515c3e46eb8c911e874c090882c8d03f4bda8d217440ee93d774"
+      },
+      "prompt_sha256": "ea4f708630c5622902d11722b62c326c4da125996beeaa21c1776809ab340d65",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:50:39.302828+00:00",
+        "finishedAtUtc": "2026-09-12T06:53:24.823783+00:00",
+        "durationSeconds": 165.522,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "fail",
+        "failures": [
+          "p48: unknown birth"
+        ],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1529.64 1290.56",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": "unknown",
+          "unknown_birth_type": "str",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 22,
+            "position": {
+              "x": 669.97998046875,
+              "y": 270.80999755859375,
+              "w": 156,
+              "h": 62.79999923706055
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 22,
+            "position": {
+              "x": 978.9199829101562,
+              "y": 463.80999755859375,
+              "w": 146,
+              "h": 62.79999923706055
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 22,
+            "position": {
+              "x": 294.9700012207031,
+              "y": 830.02001953125,
+              "w": 190,
+              "h": 102.80000305175781
+            }
+          }
+        ]
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/source.json",
+        "result/browser.json",
+        "result/layout.json"
+      ],
+      "tool_errors": [
+        "work\\draft_silver_vale.json\r\nInstalled 8 packages in 2.31s\n{\"status\": \"needs-layout\", \"message\": \"Use numeric finite source dates; do not parse dates from formatted labels.\"}\r\n\n\nCommand exited with code 1"
+      ],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 183380
+        },
+        {
+          "mime": "image/png",
+          "encoded_bytes": 183380
+        }
+      ],
+      "visual_review": {
+        "date": "2026-09-12",
+        "reviewer": "Primary agent",
+        "method": "Direct final PNG inspection at whole-page and readable detail scale. Unblinded qualitative review, not an indistinguishability experiment.",
+        "verdict": "Stronger compact development composition; visual parity not established.",
+        "observations": [
+          "All three context groups sit directly above their correct owners; the larger stacked Birch reading room remains legible.",
+          "Names and dates are readable; the invented heraldry carries the source category color.",
+          "Long horizontal crossings and the top-down family fan remain more schematic than the reference. Unknown birth is visibly preserved; its JSON representation fails the separate source contract."
+        ],
+        "image_inspected": true
+      },
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v22-family-landmarks-20260912-gpt55-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "00de5845846b515c3e46eb8c911e874c090882c8d03f4bda8d217440ee93d774"
+      },
+      "prompt_sha256": "ea4f708630c5622902d11722b62c326c4da125996beeaa21c1776809ab340d65",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:50:39.549364+00:00",
+        "finishedAtUtc": "2026-09-12T06:53:26.938106+00:00",
+        "durationSeconds": 167.39,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1533.64 1245.76",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 22,
+            "position": {
+              "x": 667.219970703125,
+              "y": 270.80999755859375,
+              "w": 164,
+              "h": 62.79999923706055
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 21,
+            "position": {
+              "x": 978.9199829101562,
+              "y": 463.80999755859375,
+              "w": 150,
+              "h": 60.400001525878906
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 21,
+            "position": {
+              "x": 295.2099914550781,
+              "y": 847.8400268554688,
+              "w": 190,
+              "h": 60.400001525878906
+            }
+          }
+        ]
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/poster.png"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 180688
+        }
+      ],
+      "visual_review": {
+        "date": "2026-09-12",
+        "reviewer": "Primary agent",
+        "method": "Direct final PNG inspection at whole-page and readable detail scale. Unblinded qualitative review, not an indistinguishability experiment.",
+        "verdict": "Acceptable compact development example; visual parity not established.",
+        "observations": [
+          "All three serif place captions have clear local ownership and remain distinct from the principal names.",
+          "The compact width, readable names and outside dates form a coherent small poster.",
+          "The strongest remaining differences are the long central route band and limited hierarchy among significant records."
+        ],
+        "image_inspected": true
+      },
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v22-family-landmarks-20260912-gpt55-3",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "00de5845846b515c3e46eb8c911e874c090882c8d03f4bda8d217440ee93d774"
+      },
+      "prompt_sha256": "ea4f708630c5622902d11722b62c326c4da125996beeaa21c1776809ab340d65",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:50:40.010865+00:00",
+        "finishedAtUtc": "2026-09-12T06:52:57.695155+00:00",
+        "durationSeconds": 137.685,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "fail",
+        "failures": [
+          "p48: unknown birth"
+        ],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1548.64 1250.56",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": "unknown",
+          "unknown_birth_type": "str",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 22,
+            "position": {
+              "x": 668.8400268554688,
+              "y": 270.80999755859375,
+              "w": 170,
+              "h": 62.79999923706055
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 22,
+            "position": {
+              "x": 978.9199829101562,
+              "y": 463.2799987792969,
+              "w": 165,
+              "h": 62.79999923706055
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 22,
+            "position": {
+              "x": 293.4800109863281,
+              "y": 849.1400146484375,
+              "w": 210,
+              "h": 62.79999923706055
+            }
+          }
+        ]
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/poster.png",
+        "result/source.json",
+        "result/layout.json",
+        "result/browser.json"
+      ],
+      "tool_errors": [
+        "Installed 8 packages in 2.64s\n{\"status\": \"needs-layout\", \"message\": \"Use numeric finite source dates; do not parse dates from formatted labels.\"}\r\n\n\nCommand exited with code 1"
+      ],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 183672
+        }
+      ],
+      "visual_review": {
+        "date": "2026-09-12",
+        "reviewer": "Primary agent",
+        "method": "Direct final PNG inspection at whole-page and readable detail scale. Unblinded qualitative review, not an indistinguishability experiment.",
+        "verdict": "Stronger compact development composition; visual parity not established.",
+        "observations": [
+          "All three source captions are readable and directly above Elin, Klara and Quinn respectively.",
+          "The uncertain line to Xavier is visibly dotted, and the unknown birth remains explicit.",
+          "Horizontal cross-family corridors still dominate the center. Unknown birth is not invented, but its final JSON representation violates the numeric-or-missing field contract."
+        ],
+        "image_inspected": true
+      },
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v22-landmark-contract-20260912-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "00de5845846b515c3e46eb8c911e874c090882c8d03f4bda8d217440ee93d774"
+      },
+      "prompt_sha256": "c787f84683edff5f49d7ae31d356e61139e18483cf58951edd5fedcaa0dc464e",
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/placement.json",
+        "result/poster.svg",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": false,
+        "returnCode": 4,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:51:10.085822+00:00",
+        "finishedAtUtc": "2026-09-12T06:51:46.410629+00:00",
+        "durationSeconds": 36.325,
+        "gates": {
+          "artifacts": true,
+          "events": false,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_preserved": true,
+        "placement": "pass",
+        "browser": "pass"
+      },
+      "read_surface_passed": false,
+      "read_paths": [
+        "draft.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "result/source.json"
+      ],
+      "tool_errors": [
+        "Installed 6 packages in 1.51s\nLandmarks could not be placed: Expecting ',' delimiter: line 1 column 708 (char 707)\r\nChart could not be rendered: [Errno 2] No such file or directory: 'result\\\\source.json'\r\nInstalled 4 packages in 288ms\nBrowser audit could not complete: Page.goto: net::ERR_FILE_NOT_FOUND at file:///C:/Users/villa/dev/skills/evaluations/runs/usefulcharts-v22-landmark-contract-20260912-spark-1/workspace/result/poster.svg\r\nCall log:\r\n  - navigating to \"file:///C:/Users/villa/dev/skills/evaluations/runs/usefulcharts-v22-landmark-contract-20260912-spark-1/workspace/result/poster.svg\", waiting until \"load\"\r\n\r\n\n\nCommand exited with code 2",
+        "Could not find the exact text in draft.json. The old text must match exactly including all whitespace and newlines."
+      ],
+      "supported_image_results": [],
+      "visual_review": "Command control only.",
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v22-reserved-contract-20260912-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "00de5845846b515c3e46eb8c911e874c090882c8d03f4bda8d217440ee93d774"
+      },
+      "prompt_sha256": "f8518dc25fd45522b072ef04d70fcdbc5ceb13abf8327664c131e64a9a4b42b2",
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/placement.json",
+        "result/poster.svg",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:50:39.327425+00:00",
+        "finishedAtUtc": "2026-09-12T06:51:02.049227+00:00",
+        "durationSeconds": 22.722,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_preserved": true,
+        "placement": "pass",
+        "browser": "pass"
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [],
+      "visual_review": "Command control only.",
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v23-family-landmarks-20260912-gpt55-1",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "4f2870dcf06dd5ff14a9e7ab0cab1611f435b7c594d34c1e48398f4299f6813c"
+      },
+      "prompt_sha256": "ea4f708630c5622902d11722b62c326c4da125996beeaa21c1776809ab340d65",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:59:49.205876+00:00",
+        "finishedAtUtc": "2026-09-12T07:02:14.950927+00:00",
+        "durationSeconds": 145.746,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1525.64 1236.16",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 669.7499999999999,
+              "y": 273.20999145507807,
+              "w": 154,
+              "h": 58
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 978.9199829101561,
+              "y": 460.6900024414062,
+              "w": 141.9999999999999,
+              "h": 57.99999999999994
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 20,
+            "position": {
+              "x": 301.8200073242187,
+              "y": 841.6400146484374,
+              "w": 178,
+              "h": 58
+            }
+          }
+        ]
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/source.json",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/poster.png"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 178076
+        }
+      ],
+      "visual_review": {
+        "date": "2026-09-12",
+        "reviewer": "Primary agent",
+        "method": "Direct final PNG inspection at whole-page and readable detail scale. Unblinded qualitative review, not an indistinguishability experiment.",
+        "verdict": "Acceptable compact development example; visual parity not established.",
+        "image_inspected": true,
+        "observations": [
+          "The three context captions are visibly associated with Elin, Klara and Quinn. Larger italic type makes them distinct from the names.",
+          "Principal versus supporting name treatments, readable outside dates, stable house paint and dotted uncertainty are visible.",
+          "The long horizontal central band and similar rectangular nameplates remain conspicuously schematic. The footer also exposes internal p32/p48 IDs; its prose would benefit from named people."
+        ]
+      },
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v23-family-landmarks-20260912-gpt55-2",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "4f2870dcf06dd5ff14a9e7ab0cab1611f435b7c594d34c1e48398f4299f6813c"
+      },
+      "prompt_sha256": "ea4f708630c5622902d11722b62c326c4da125996beeaa21c1776809ab340d65",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:59:49.284261+00:00",
+        "finishedAtUtc": "2026-09-12T07:02:50.980667+00:00",
+        "durationSeconds": 181.698,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1541.64 1245.76",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 22,
+            "position": {
+              "x": 665.6799926757812,
+              "y": 270.80999755859375,
+              "w": 172,
+              "h": 62.79999923706055
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 21,
+            "position": {
+              "x": 978.9199829101562,
+              "y": 463.80999755859375,
+              "w": 158,
+              "h": 60.400001525878906
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 21,
+            "position": {
+              "x": 295.69000244140625,
+              "y": 847.8400268554688,
+              "w": 190,
+              "h": 60.400001525878906
+            }
+          }
+        ]
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "result/poster.png",
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "result/source.json"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 180160
+        },
+        {
+          "mime": "image/png",
+          "encoded_bytes": 180160
+        }
+      ],
+      "visual_review": {
+        "date": "2026-09-12",
+        "reviewer": "Primary agent",
+        "method": "Direct final PNG inspection at whole-page and readable detail scale. Unblinded qualitative review, not an indistinguishability experiment.",
+        "verdict": "Acceptable compact development example; visual parity not established.",
+        "image_inspected": true,
+        "observations": [
+          "All three context captions have clear ownership and readable symbol/text groups. The unknown birth is explicit beside Xavier.",
+          "The measured compact page preserves readable type without isolated low-density columns.",
+          "Several central family routes stretch across most of the width, so connections compete with the names. The treatment is a useful compact development example, not evidence of parity with a dense reference."
+        ]
+      },
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v23-family-landmarks-20260912-gpt55-3",
+      "model": "gpt-5.5",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "4f2870dcf06dd5ff14a9e7ab0cab1611f435b7c594d34c1e48398f4299f6813c"
+      },
+      "prompt_sha256": "ea4f708630c5622902d11722b62c326c4da125996beeaa21c1776809ab340d65",
+      "expected_outputs": [
+        "result/source.json",
+        "result/poster.svg",
+        "result/poster.html",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:59:49.616122+00:00",
+        "finishedAtUtc": "2026-09-12T07:02:12.119238+00:00",
+        "durationSeconds": 142.504,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "failures": [],
+        "people": 48,
+        "unions": 21,
+        "relationships": 36,
+        "numeric_source_dates": 95,
+        "context": {
+          "p05": {
+            "phrase": "Cedar archive",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p11": {
+            "phrase": "Alder school",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          },
+          "p41": {
+            "phrase": "Birch reading room",
+            "anchored": false,
+            "inside_person": false,
+            "visible": true
+          }
+        },
+        "canvas": "0 0 1559.64 1238.02",
+        "browser_status": "pass",
+        "browser_findings": [],
+        "visual_review": "Required separately; these are fact and geometry checks.",
+        "date_representation": {
+          "numeric_known_years": 95,
+          "quoted_known_years": [],
+          "missing_known_fields": [],
+          "changed_known_values": [],
+          "unknown_birth_value": null,
+          "unknown_birth_type": "NoneType",
+          "numeric_year_invented_for_unknown_birth": false,
+          "unknown_wording_in_detail": true,
+          "limitation": "Supplemental diagnosis only. The existing strict numeric-or-missing source contract and its verdict are unchanged."
+        },
+        "landmarks": [
+          {
+            "node": "p05",
+            "label": "Cedar archive",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 21,
+            "position": {
+              "x": 669.22998046875,
+              "y": 272.010009765625,
+              "w": 176,
+              "h": 60.400001525878906
+            }
+          },
+          {
+            "node": "p11",
+            "label": "Alder school",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 21,
+            "position": {
+              "x": 978.9199829101562,
+              "y": 461.260009765625,
+              "w": 176,
+              "h": 60.400001525878906
+            }
+          },
+          {
+            "node": "p41",
+            "label": "Birch reading room",
+            "source_bound": true,
+            "icon": "heraldry",
+            "size": 21,
+            "position": {
+              "x": 293.4800109863281,
+              "y": 842.6300048828125,
+              "w": 210,
+              "h": 60.400001525878906
+            }
+          }
+        ]
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "skills/usefulcharts-style/assets/templates/cohorts.json",
+        "skills/usefulcharts-style/references/context-landmarks.md",
+        "skills/usefulcharts-style/references/branch-baselines.md",
+        "skills/usefulcharts-style/references/cohort-composition.md",
+        "skills/usefulcharts-style/references/data-contract.md",
+        "skills/usefulcharts-style/references/editorial-contract.md",
+        "result/poster.png",
+        "result/source.json",
+        "result/layout.json",
+        "result/browser.json"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [
+        {
+          "mime": "image/png",
+          "encoded_bytes": 181428
+        }
+      ],
+      "visual_review": {
+        "date": "2026-09-12",
+        "reviewer": "Primary agent",
+        "method": "Direct final PNG inspection at whole-page and readable detail scale. Unblinded qualitative review, not an indistinguishability experiment.",
+        "verdict": "Acceptable compact development example; visual parity not established.",
+        "image_inspected": true,
+        "observations": [
+          "The three serif captions sit above their required owners; source-category colors remain distinct despite intermarriage.",
+          "The uncertain connection to Xavier is dotted and the known/unknown date wording is legible.",
+          "The right-side connection detour above Hugo and the long central route band are still visually dominant. Foreground hierarchy is narrower than the reference."
+        ]
+      },
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v23-landmark-contract-20260912-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "4f2870dcf06dd5ff14a9e7ab0cab1611f435b7c594d34c1e48398f4299f6813c"
+      },
+      "prompt_sha256": "c787f84683edff5f49d7ae31d356e61139e18483cf58951edd5fedcaa0dc464e",
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/placement.json",
+        "result/poster.svg",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T07:03:57.209075+00:00",
+        "finishedAtUtc": "2026-09-12T07:04:22.155225+00:00",
+        "durationSeconds": 24.946,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_preserved": true,
+        "placement": "pass",
+        "browser": "pass"
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "result/source.json",
+        "result/placement.json",
+        "result/layout.json",
+        "result/browser.json"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [],
+      "visual_review": "Command control only.",
+      "invalid_event_lines": []
+    },
+    {
+      "id": "usefulcharts-v23-reserved-contract-20260912-spark-1",
+      "model": "gpt-5.3-codex-spark",
+      "payload": {
+        "name": "usefulcharts-style",
+        "profile": "runtime",
+        "fileCount": 79,
+        "payloadSha256": "4f2870dcf06dd5ff14a9e7ab0cab1611f435b7c594d34c1e48398f4299f6813c"
+      },
+      "prompt_sha256": "f8518dc25fd45522b072ef04d70fcdbc5ceb13abf8327664c131e64a9a4b42b2",
+      "expected_outputs": [
+        "draft.json",
+        "result/source.json",
+        "result/placement.json",
+        "result/poster.svg",
+        "result/layout.json",
+        "result/browser.json",
+        "result/poster.png"
+      ],
+      "strict": {
+        "passed": true,
+        "returnCode": 0,
+        "piExitCode": 0,
+        "timedOut": false,
+        "startedAtUtc": "2026-09-12T06:59:49.977796+00:00",
+        "finishedAtUtc": "2026-09-12T07:00:13.231452+00:00",
+        "durationSeconds": 23.254,
+        "gates": {
+          "artifacts": true,
+          "events": true,
+          "jsonFields": true,
+          "skillIntegrity": true
+        }
+      },
+      "independent_artifact": {
+        "status": "pass",
+        "all_facts_preserved": true,
+        "placement": "pass",
+        "browser": "pass"
+      },
+      "read_surface_passed": true,
+      "read_paths": [
+        "../prompt.md",
+        "skills/usefulcharts-style/SKILL.md",
+        "result/source.json",
+        "result/placement.json"
+      ],
+      "tool_errors": [],
+      "supported_image_results": [],
+      "visual_review": "Command control only.",
+      "invalid_event_lines": []
+    }
+  ],
+  "visual_parity": "Not established. Preserve the full dense-poster target and previous unresolved findings."
+}

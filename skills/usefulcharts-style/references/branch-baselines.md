@@ -1,10 +1,12 @@
 # Local family baselines
 
+For required local place or movement captions, first read [context landmarks](context-landmarks.md). Declare their node fields and `kind: landmark` annotations in the cohort source and add `--reserve-context` to the command below. Omit page dimensions so the full caption footprints can be measured before placement; render the reserved result directly. Later pocket search is a refinement route for existing authored graphs.
+
 Use this route when a dense genealogy looks like repeated rows of identical pairs. It refines the family-unit packing with source dates, complete label envelopes and local attachment space. It does not alter people, marriages, parentage, wording or category membership. For 30 people or fewer, start with the measured compact cohort route and use this refinement only for a visible problem.
 
 ## Prepare the data and hierarchy
 
-Start with `design: editorial`, `mode: genealogy`, `layout: cohorts`; explicit integer `row` values; normal two-person `unions`; and any supported typed edges. Add a numeric `birth` field only when the source supplies it. A missing date stays missing. Dates printed in `detail` are text, not machine-readable chronology. A different numeric field can be selected with `--date-field`.
+Start with `design: editorial`, `mode: genealogy`, `layout: cohorts`; explicit integer `row` values; normal two-person `unions`; and any supported typed edges. Store known `birth` and `death` years as JSON numbers, not quoted strings. A missing date stays missing or `null`. Preserve uncertainty wording in `detail` and optionally a separate record field: `{"birth": null, "birth_record": "unknown", "death": 1972, "detail": "birth unknown–1972"}`. Keep that representation in the final source; temporarily deleting `birth: "unknown"` and restoring it after layout violates the data contract. Dates printed in `detail` are text, not machine-readable chronology. A different numeric field can be selected with `--date-field`.
 
 Separate three useful levels of information:
 

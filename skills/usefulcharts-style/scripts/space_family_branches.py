@@ -20,6 +20,7 @@ from scipy import sparse
 from cohort_layout import place_cohorts, compact_cohort_defaults
 from editorial_poster import EditorialPoster, measured_content, cohort_key
 from render_chart import number, require, wrap, text_width
+from editorial_landmarks import landmark_content
 
 
 def fit_baselines(units, links, preferred, top, bottom, clearance=18):
@@ -65,7 +66,7 @@ def fit_baselines(units, links, preferred, top, bottom, clearance=18):
         constraints=len(pairs),max_violation=float(violation))
 
 
-def space_branches(source,date_field='birth',date_scale=None,local_labels=False):
+def space_branches(source,date_field='birth',date_scale=None,local_labels=False,reserve_context=False):
     """Preserve records and source order while resolving an authored placement."""
     require(source.get('design')=='editorial' and source.get('mode')=='genealogy' and source.get('layout')=='cohorts',
         'Start from an editorial genealogy with layout: cohorts and explicit generations.')
@@ -76,7 +77,15 @@ def space_branches(source,date_field='birth',date_scale=None,local_labels=False)
         'Use person-anchored annotations; compose fixed annotations after resolving the family branches.')
     if date_scale is not None:require(math.isfinite(date_scale) and date_scale>=0,'Date scale must be finite and nonnegative.')
     prepared=copy.deepcopy(source)
-    if len(prepared.get('nodes',[]))>30 and 'width' not in prepared and 'height' not in prepared:
+    context={};name_widths={}
+    if reserve_context:
+        require('width' not in source and 'height' not in source,'Automatic context reservation measures its own canvas; omit explicit page dimensions.')
+        for a in prepared.get('annotations',[]):
+            if a.get('kind')!='landmark':continue
+            require(a['node'] not in context,'Reserve one context landmark per person.')
+            require(sum(other.get('node')==a['node'] for other in prepared['annotations'])==1,'Compose multiple captions on one person explicitly.')
+            context[a['node']]=a
+    if (len(prepared.get('nodes',[]))>30 or context) and 'width' not in prepared and 'height' not in prepared:
         # A medium family needs the same measured typography as a small family.
         # Explicit mural dimensions retain the user's chosen scale.
         prepared.setdefault('font_size',18)
@@ -96,7 +105,17 @@ def space_branches(source,date_field='birth',date_scale=None,local_labels=False)
             if icon:node.setdefault('icon_width',icon)
             node.setdefault('width',max(64,text_width(node['label'],node['size'],True)+14+icon,
                 text_width(node.get('detail',''),node['detail_size'])+16))
-        prepared=compact_cohort_defaults(prepared,lambda n,w:measured_content(n,w,prepared['font_size']))
+        if context:
+            for node in prepared['nodes']:
+                if node['id'] not in context:continue
+                content=landmark_content(context[node['id']],node)
+                name_widths[node['id']]=node['width'];node['width']=max(node['width'],content['width'])
+            def context_measure(node,width):
+                names,details,height=measured_content(node,name_widths.get(node['id'],width),prepared['font_size'])
+                if node['id'] in context:height+=landmark_content(context[node['id']],node)['height']+24
+                return names,details,height
+            prepared=compact_cohort_defaults(prepared,context_measure)
+        else:prepared=compact_cohort_defaults(prepared,lambda n,w:measured_content(n,w,prepared['font_size']))
         if prepared.get('legend',True):
             key=cohort_key(prepared,prepared['width']);extra=max(0,key['height']-25)
             prepared['_cohort_key']=key
@@ -104,6 +123,8 @@ def space_branches(source,date_field='birth',date_scale=None,local_labels=False)
     poster=EditorialPoster(prepared);working=copy.deepcopy(poster.data)
     top=number(working.get('cohort_top',225),'cohort_top');bottom=number(working.get('cohort_bottom',poster.bottom-45),'cohort_bottom')
     nodes=place_cohorts(working,poster.node_content,poster.left,poster.right,top,bottom)
+    for node in nodes:
+        if node['id'] in name_widths:node['width']=name_widths[node['id']]
     by_id={n['id']:n for n in nodes};membership={};units={};dates=defaultdict(list)
     for union in working.get('unions',[]):
         key=union['id'];units[key]=dict(members=union['partners'],row=by_id[union['partners'][0]]['row'])
@@ -129,8 +150,14 @@ def space_branches(source,date_field='birth',date_scale=None,local_labels=False)
     annotations=copy.deepcopy(source.get('annotations',[]));moved_labels=[]
     for i,annotation in enumerate(annotations):
         require(annotation['node'] in by_id,'An annotation references an unknown person.')
-        if annotation.get('kind')!='pill':continue
         node=by_id[annotation['node']];unit=units[membership[node['id']]]
+        if reserve_context and annotation.get('kind')=='landmark':
+            content=landmark_content(annotation,node);width=content['width'];height=content['height']
+            annotation.update(dx=0,dy=-(poster.node_content(node,node.get('width',82))[2]/2+24+height/2))
+            x=node['x'];y=annotation['dy']
+            unit['parts'].append(dict(left=x-width/2,right=x+width/2,top=y-height/2,bottom=y+height/2,kind='label'))
+            moved_labels.append(i);continue
+        if annotation.get('kind')!='pill':continue
         width=number(annotation.get('width',130),'annotation.width');size=number(annotation.get('size',13),'annotation.size')
         height=len(wrap(annotation['label'],width-10,size,True))*size*1.12+7
         if local_labels:
@@ -157,6 +184,7 @@ def space_branches(source,date_field='birth',date_scale=None,local_labels=False)
         undated_units=[key for key,unit in units.items() if unit['date'] is None],moved_label_indices=moved_labels,
         shifted_units=sum(abs(positions[key]-unit['center'])>1 for key,unit in units.items()),
         max_displacement=max(abs(positions[key]-unit['center']) for key,unit in units.items()),
+        reserved_context_count=len(context),
         limitation='Dates guide schematic placement, not an exact time scale. Render, audit against this resolved source, and inspect the complete poster.')
     return result,report
 
@@ -166,11 +194,12 @@ def main():
     parser.add_argument('input',type=Path);parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--report',type=Path);parser.add_argument('--date-field',default='birth')
     parser.add_argument('--date-scale',type=float);parser.add_argument('--local-labels',action='store_true')
+    parser.add_argument('--reserve-context',action='store_true')
     args=parser.parse_args()
     try:
         paths=[path.resolve() for path in (args.input,args.output,args.report) if path]
         require(len(paths)==len(set(paths)),'Input, resolved source and report paths must be distinct.')
-        data,report=space_branches(json.loads(args.input.read_text(encoding='utf-8-sig')),args.date_field,args.date_scale,args.local_labels)
+        data,report=space_branches(json.loads(args.input.read_text(encoding='utf-8-sig')),args.date_field,args.date_scale,args.local_labels,args.reserve_context)
     except (ValueError,KeyError,osqp.OSQPException) as error:
         print(json.dumps(dict(status='needs-layout',message=str(error))));return 1
     args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

@@ -122,4 +122,12 @@ def build_genealogy(base):
     for annotation in d['annotations']:
         if annotation.get('kind')=='heading':annotation['dy']=35
     resolved,_=space_branches(d,date_scale=3,local_labels=True)
+    # Source-bound territorial orientation points, chosen after whole-page and
+    # detail review. They are not additional events or invented relationships.
+    landmarks=[('person-6-0',-60,-112),('person-11-1',120,-108),('person-19-3',-128,124),
+        ('person-28-2',-212,48),('person-33-1',-204,96),('person-35-1',-208,116),('person-27-7',-32,-128)]
+    for variant,(node,dx,dy) in enumerate(landmarks):
+        resolved['annotations'].append(dict(kind='landmark',node=node,field='realm',width=146,size=17,
+            icon='heraldry',art_size=32,art_position='beside',variant=variant,dx=dx,dy=dy,vertical_radius=170))
+    resolved['source_note']+=' Heraldic devices are fictional.'
     return resolved

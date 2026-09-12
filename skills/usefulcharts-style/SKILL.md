@@ -21,9 +21,13 @@ Use [the shared contract](references/data-contract.md) only for additional field
 
 Distinguish descent, partnership, succession, branching, influence and uncertainty. A chronological neighbor is not automatically an ancestor. Keep every supplied label, date and relationship. Mark invented demonstration data visibly as synthetic; do not manufacture records or relationships to improve visual density.
 
+Store known `birth` and `death` years as JSON numbers. For an unknown date, omit that numeric field or use `null`; preserve its wording in `detail` and, if useful, `birth_record` or `death_record`. For example, an unknown birth with a known death can use `"birth": null, "death": 1972, "detail": "birth unknown–1972"`. Never restore `"unknown"` or a quoted year into a numeric date field after layout. Keep this representation in the final editable source.
+
 Keep the source-defined category through mergers and marriages. Do not invent a blended category for descendants of two differently colored parents. Assign each person's stated branch before placing them; preserve it when relationships cross. Importance changes typography and treatment, not automatically the family color. Vary cards, plain names, family pills and selected illustrations by meaning. Give dates and explanatory consequences subordinate type. Keep explanatory prose concise rather than repeating every edge inside its target label.
 
 A short history needs a compact canvas. Reserve the portrait 2:3 wall format and dense 10–16-unit typography for substantial data. Let terminated branches release space; let large descendant groups widen. Avoid rigid persistent columns, equally weighted cards and illustrations placed at mechanical intervals. A schematic composition can have uneven gaps; a numeric time scale cannot.
+
+When supplied places, courts or movements disappear among the names, read [source-bound landmarks](references/context-landmarks.md). For a new family, declare the bound captions before layout and run the baseline helper with `--reserve-context`; render its result directly. It reserves the full caption envelopes and routes around them. Use bounded pocket placement to refine an existing authored graph. Inspect actual branch ownership in the preview and preserve every required caption.
 
 ## Render and inspect
 

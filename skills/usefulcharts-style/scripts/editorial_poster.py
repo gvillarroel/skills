@@ -18,6 +18,7 @@ from render_chart import Poster, require, number, color, ident, wrap, fmt, attr,
 from editorial_art import symbol
 from cohort_layout import place_cohorts, compact_cohort_defaults
 from story_layout import pack_stories
+from editorial_landmarks import landmark_content
 
 
 def separated_content(node,width,font):
@@ -213,7 +214,7 @@ class EditorialPoster(Poster):
             fit='xMidYMid meet' if kind.startswith('object-') else 'xMidYMin slice'
             self.add(f'<svg data-artwork="public-domain-museum-image" x="{fmt(x)}" y="{fmt(y)}" width="{fmt(w)}" height="{fmt(h)}" viewBox="0 0 100 100"><image href="data:image/jpeg;base64,{encoded}" width="100" height="100" preserveAspectRatio="{fit}"/></svg>')
             return
-        require(kind in ('shield','crown','star','sun','compass','globe','astrolabe','orbit','book','archive','wheel','gear','lens','prism','ship','anchor','tower','observatory','press','machine','obelisk','monument','leaf','branch','portrait','bust'),'Unknown original artwork type.')
+        require(kind in ('heraldry','shield','crown','star','sun','compass','globe','astrolabe','orbit','book','archive','wheel','gear','lens','prism','ship','anchor','tower','observatory','press','machine','obelisk','monument','leaf','branch','portrait','bust'),'Unknown original artwork type.')
         self.add(f'<g data-artwork="{kind}" transform="translate({fmt(x)} {fmt(y)}) scale({fmt(w/100)} {fmt(h/100)})">{symbol(kind,paint,variant)}</g>')
 
     def frame_and_key(self):
@@ -276,6 +277,15 @@ class EditorialPoster(Poster):
 
     def build_routes(self):
         seen=set();pairs=set();segments=[]
+        context_boxes={}
+        for i,annotation in enumerate(self.data.get('annotations',[])):
+            if annotation.get('kind')!='landmark':continue
+            require(annotation.get('node') in self.boxes,'A landmark requires a known person or institution anchor.')
+            anchor=self.boxes[annotation['node']];content=landmark_content(annotation,self.nodes[annotation['node']])
+            x=anchor[0]+anchor[2]/2+annotation.get('dx',0);y=anchor[1]+anchor[3]/2+annotation.get('dy',0)
+            context_boxes[f'context-{i}']=(x-content['width']/2,y-content['height']/2,content['width'],content['height'])
+            require(not any(overlaps(context_boxes[f'context-{i}'],box,4) for box in self.boxes.values()),
+                'A landmark covers a person or institution. Move it into a nearby open pocket.')
         row_bands={}
         for box in self.boxes.values():
             row=round(box[1]+box[3]/2,3)
@@ -325,6 +335,18 @@ class EditorialPoster(Poster):
                             path=compress([start]+route(a,b,nearby,bounds,segments)+[end]);break
                         except ValueError as error:last_error=error
                     require(path is not None,f'Cannot route relationship {eid}: {last_error}')
+            if any(segment_hits(p,q,box,4) for p,q in zip(path,path[1:]) for box in context_boxes.values()):
+                obstacles=self.boxes|context_boxes
+                for port,point in (('source',a),('target',b)):
+                    blocked=[nid for nid,(x,y,w,h) in obstacles.items() if x-7<point[0]<x+w+7 and y-7<point[1]<y+h+7]
+                    require(not blocked,f'Relationship {eid} has a crowded {port} port near {", ".join(blocked)}. Reserve at least 18 units at the attachment.')
+                path=None;last_error=None;world=(self.left-12,self.top-26,self.right+12,self.bottom+12)
+                for margin in (30,90,220,600,max(self.w,self.h)):
+                    bounds=(max(world[0],min(a[0],b[0])-margin),max(world[1],min(a[1],b[1])-margin),min(world[2],max(a[0],b[0])+margin),min(world[3],max(a[1],b[1])+margin))
+                    nearby=[box for box in obstacles.values() if box[0]-14<bounds[2] and box[0]+box[2]+14>bounds[0] and box[1]-14<bounds[3] and box[1]+box[3]+14>bounds[1]]
+                    try:path=compress([start]+route(a,b,nearby,bounds,segments)+[end]);break
+                    except ValueError as error:last_error=error
+                require(path is not None,f'Cannot route relationship {eid} around its context: {last_error}')
             require(not any(segment_hits(p,q,box,0) for p,q in zip(path,path[1:]) for box in self.boxes.values()),f'Relationship {eid} crosses a node, including its own source or target.')
             group=edge.get('group',self.nodes[target]['group']);paint=self.groups[group]['color']
             width=edge.get('weight',2.8 if kind in ('branch','descent') else 1.8)
@@ -386,11 +408,48 @@ class EditorialPoster(Poster):
 
     def draw_annotations(self):
         for annotation_index,a in enumerate(self.data.get('annotations',[])):
+            if a.get('kind')=='landmark':require(a.get('node') in self.nodes,'A landmark requires a known person or institution anchor.')
             if a.get('node'):
                 require(a['node'] in self.boxes,'Annotation references an unknown node.')
                 anchor=self.boxes[a['node']]
                 x,y=anchor[0]+anchor[2]/2+a.get('dx',0),anchor[1]+anchor[3]/2+a.get('dy',0)
             else:x,y=a['x'],a['y']
+            if a.get('kind')=='landmark':
+                require(a.get('node') in self.nodes,'A landmark requires a known person or institution anchor.')
+                node=self.nodes[a['node']];content=landmark_content(a,node)
+                group=a.get('group',node['group'])
+                require(group==node['group'],'A landmark must retain the category of its named source node.')
+                paint=self.groups[group]['color'];w=content['width'];h=content['height']
+                box=(x-w/2,y-h/2,w,h)
+                require(box[0]>=48 and box[0]+w<=self.w-48 and box[1]>=130 and box[1]+h<=self.h-85,
+                    'A landmark must remain inside the printable field.')
+                require(not any(overlaps(box,b,4) for b in self.boxes.values()),'A landmark covers a person or institution. Move it into a nearby open pocket.')
+                require(not any(overlaps(box,b,4) for b in self.annotation_boxes),'Landmarks and family captions require separate space.')
+                require(not any(segment_hits(p,q,box,3) for edge in self.routes for p,q in zip(edge['points'],edge['points'][1:])),
+                    'A landmark covers a relationship corridor. Move it without changing the source data.')
+                for union in self.unions.values():
+                    first,last=[self.boxes[n] for n in union['partners']]
+                    middle=first[1]+first[3]/2
+                    for offset in (-3,3):
+                        require(not segment_hits((first[0]+first[2],middle+offset),(last[0],middle+offset),box,3),'A landmark covers a partnership bar.')
+                self.annotation_boxes.append(box)
+                self.add(f'<g data-annotation-id="annotation-{annotation_index}" data-annotation-kind="landmark" data-context-node="{attr(a["node"])}" data-context-group="{attr(group)}" data-source-field="{attr(content["field"])}" data-source-value="{attr(content["label"])}">')
+                self.rect(box,'none',extra='data-annotation-box="true"')
+                top=box[1]+4
+                tx=x;art_x=x-content['art']/2;art_y=top
+                if content['art_position']=='beside':
+                    art_x=x-(content['art']+4+content['ink_width'])/2;art_y=box[1]+(h-content['art'])/2
+                    tx=art_x+content['art']+4+content['ink_width']/2 if content['art'] else x
+                    top=box[1]+(h-content['text_height'])/2
+                if content['art']:
+                    self.artwork(a['icon'],art_x,art_y,content['art'],content['art'],paint,a.get('variant',0))
+                yy=top+content['art_height']
+                for line in content['eyebrows']:
+                    self.text(tx,yy+content['eyebrow_size'],line,content['eyebrow_size'],bold=True);yy+=content['eyebrow_size']*1.2
+                if content['eyebrows']:yy+=3
+                for line in content['lines']:
+                    self.text(tx,yy+content['size'],line,content['size'],css='font-family="Georgia, serif" font-style="italic" data-content-role="landmark-label"');yy+=content['size']*1.2
+                self.add('</g>');continue
             w=a.get('width',130);size=a.get('size',13)
             paint=self.groups[a['group']]['color'] if a.get('group') else self.ink
             lines=wrap(a['label'],w-10,size,True)
