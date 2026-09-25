@@ -1,4 +1,4 @@
 interface:
   display_name: "Hierarchy Lens"
-  short_description: "Explore radial hierarchies through switchable color lenses"
-  default_prompt: "Use $hierarchy-lens to turn my hierarchy into an interactive radial map with selectable color dimensions."
+  short_description: "Explore hierarchies as radial pixel heatmaps or labeled charts"
+  default_prompt: "Use $hierarchy-lens to turn my hierarchy into a text-free interactive radial pixel heatmap with switchable color dimensions."

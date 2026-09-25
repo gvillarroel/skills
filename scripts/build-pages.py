@@ -123,8 +123,8 @@ PUBLISHED_EXAMPLE_SETS = [
         "source": "hierarchy-lens",
         "title": "Hierarchy Lens",
         "href": "examples/hierarchy-lens/",
-        "kind": "Interactive radial hierarchy",
-        "description": "Explore a fictional 1,200-person organization through stable leadership, contract, role, and AI-token color lenses, with branch focus, search, missing-data coverage, and SVG/PNG snapshots.",
+        "kind": "Radial pixel heatmap",
+        "description": "Explore a fictional 1,200-person organization as a text-free pixel-art heatmap. Switch leadership, contract, role, and AI-token colors on one fixed grid, zoom into branches, or export the image.",
     },
     {
         "id": "usefulcharts-style",

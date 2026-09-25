@@ -1,0 +1,339 @@
+{
+  "date": "2026-09-25",
+  "passed": true,
+  "cohorts": {
+    "contract": {
+      "runs": 1,
+      "passes": 1
+    },
+    "naturalistic": {
+      "runs": 3,
+      "passes": 3
+    },
+    "generalization": {
+      "runs": 3,
+      "passes": 3
+    },
+    "boundary": {
+      "runs": 1,
+      "passes": 1
+    }
+  },
+  "routing": {
+    "passed": true,
+    "cases": 8,
+    "model": "openai-codex/gpt-5.6-luna",
+    "forcedSkill": false,
+    "routing": [
+      {
+        "request": 1,
+        "useSkill": true,
+        "reason": "A reporting-line hierarchy needs a radial map with the same structure viewed through multiple categorical and numeric color lenses."
+      },
+      {
+        "request": 2,
+        "useSkill": true,
+        "reason": "This is a text-free pixel-art radial hierarchy with centered root, outward levels, and switchable categorical and numeric views."
+      },
+      {
+        "request": 3,
+        "useSkill": false,
+        "reason": "A daily-temperature line chart is not a radial hierarchy or taxonomy visualization."
+      },
+      {
+        "request": 4,
+        "useSkill": false,
+        "reason": "A dense general social graph with unrelated many-to-many edges is not a reporting hierarchy or tree-structured radial map."
+      },
+      {
+        "request": 5,
+        "useSkill": false,
+        "reason": "This is image conversion of a landscape photograph, not an interactive hierarchy visualization."
+      },
+      {
+        "request": 6,
+        "useSkill": true,
+        "reason": "Biological classifications form a radial taxonomy, and the request keeps its structure fixed while switching categorical and numeric color lenses."
+      },
+      {
+        "request": 7,
+        "useSkill": false,
+        "reason": "A ring-shaped company logo is a standalone graphic, not a radial hierarchy or taxonomy."
+      },
+      {
+        "request": 8,
+        "useSkill": true,
+        "reason": "An organizational sunburst is a radial hierarchy with branch lookup and selectable role-based coloring."
+      }
+    ]
+  },
+  "local": {
+    "pixel-final-audit": {
+      "ok": true,
+      "nodes": 1200,
+      "grid": 512,
+      "seconds": 2.78,
+      "checkCount": 44
+    },
+    "pixels-5000-audit-v2": {
+      "ok": true,
+      "nodes": 5000,
+      "grid": 2048,
+      "seconds": 18.69,
+      "checkCount": 44
+    },
+    "pixels-singleton-audit": {
+      "ok": true,
+      "nodes": 1,
+      "grid": 64,
+      "seconds": 1.22,
+      "checkCount": 30
+    },
+    "analytical-preserved-audit": {
+      "ok": true,
+      "nodes": 1200,
+      "seconds": 3.11,
+      "checkCount": 43
+    },
+    "pixel-png-oracle": {
+      "ok": true,
+      "dimensions": [
+        2048,
+        2048
+      ],
+      "logicalGrid": 512,
+      "integerScale": 4,
+      "distinctColors": 11
+    }
+  },
+  "runs": [
+    {
+      "runId": "hierarchy-pixels-boundary-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 26.159,
+      "payloadSha256": "2e522cad9db5cc2c253c60d5055832f0ddccee12972fc5deb14adaf8285363e7",
+      "runtimeFiles": 12,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "review.md",
+        "review.json"
+      ],
+      "tracePassed": true,
+      "traceFindings": []
+    },
+    {
+      "runId": "hierarchy-pixels-contract-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 30.497,
+      "payloadSha256": "2e522cad9db5cc2c253c60d5055832f0ddccee12972fc5deb14adaf8285363e7",
+      "runtimeFiles": 12,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "deliverables/build.json",
+        "deliverables/audit.json",
+        "deliverables/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 128
+    },
+    {
+      "runId": "hierarchy-pixels-generalization-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 47.807,
+      "payloadSha256": "2e522cad9db5cc2c253c60d5055832f0ddccee12972fc5deb14adaf8285363e7",
+      "runtimeFiles": 12,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/radial-pixels.md",
+        "results/build.json",
+        "results/audit.json",
+        "results/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 64
+    },
+    {
+      "runId": "hierarchy-pixels-generalization-20260925-luna-2",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 51.612,
+      "payloadSha256": "2e522cad9db5cc2c253c60d5055832f0ddccee12972fc5deb14adaf8285363e7",
+      "runtimeFiles": 12,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/radial-pixels.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "results/build.json",
+        "results/audit.json",
+        "results/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 64
+    },
+    {
+      "runId": "hierarchy-pixels-generalization-20260925-luna-3",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 47.742,
+      "payloadSha256": "2e522cad9db5cc2c253c60d5055832f0ddccee12972fc5deb14adaf8285363e7",
+      "runtimeFiles": 12,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/radial-pixels.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "results/audit.json",
+        "results/build.json",
+        "results/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 64
+    },
+    {
+      "runId": "hierarchy-pixels-naturalistic-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 34.318,
+      "payloadSha256": "2e522cad9db5cc2c253c60d5055832f0ddccee12972fc5deb14adaf8285363e7",
+      "runtimeFiles": 12,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/radial-pixels.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "deliverables/build.json",
+        "deliverables/audit.json",
+        "deliverables/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 256
+    },
+    {
+      "runId": "hierarchy-pixels-naturalistic-20260925-luna-2",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 34.299,
+      "payloadSha256": "2e522cad9db5cc2c253c60d5055832f0ddccee12972fc5deb14adaf8285363e7",
+      "runtimeFiles": 12,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/radial-pixels.md",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/overview.png",
+        "deliverables/organization.json"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 256
+    },
+    {
+      "runId": "hierarchy-pixels-naturalistic-20260925-luna-3",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 31.186,
+      "payloadSha256": "2e522cad9db5cc2c253c60d5055832f0ddccee12972fc5deb14adaf8285363e7",
+      "runtimeFiles": 12,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/radial-pixels.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "deliverables/build.json",
+        "deliverables/audit.json",
+        "deliverables/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 256
+    }
+  ],
+  "retainedLocalFailure": {
+    "path": "projects/hierarchy-lens/artifacts/reviews/pixels-5000-audit.json",
+    "classification": "validator",
+    "reason": "The first hit-test clicked a subpixel sector edge in a downscaled 2048 grid. Use the interior of the same wide branch to test hit coordinates; the unchanged renderer passes the corrected audit."
+  }
+}

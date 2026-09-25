@@ -12,7 +12,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from build_explorer import build, demo, normalize
+from build_explorer import build, demo, normalize, pixel_layout
 
 
 def fixture():
@@ -117,6 +117,35 @@ class ExplorerTests(unittest.TestCase):
         f = fixture()
         f["nodes"] = [{"id": str(i), "parentId": str(i-1) if i else None, "label": str(i)} for i in range(66)]
         with self.assertRaises(ValueError): normalize(f)
+
+    def test_pixel_layout_coverage_and_determinism(self):
+        data = normalize(fixture())
+        pixels = pixel_layout(data, 64)
+        self.assertEqual(pixels, pixel_layout(data, 64))
+        self.assertTrue(all(count > 0 for count in pixels["coverage"]))
+        self.assertEqual(sum(pixels["coverage"]), sum(run[1] for row in pixels["rows"] for run in row))
+        center = pixels["size"]//2
+        self.assertTrue(any(x <= center < x+w and owner == 0 for x, w, owner in pixels["rows"][center]))
+
+    def test_grid_refines_instead_of_dropping_records(self):
+        data = normalize(demo(1200))
+        pixels = pixel_layout(data, 64)
+        self.assertGreater(pixels["size"], 64)
+        self.assertEqual(len(pixels["coverage"]), 1200)
+        self.assertTrue(all(pixels["coverage"]))
+
+    def test_pixel_bundle_and_options(self):
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as directory:
+            a, b = Path(directory)/"a.html", Path(directory)/"b.html"
+            report = build(fixture(), a, view="pixel", pixel_grid=64, initial_lens="kind")
+            build(fixture(), b, view="pixel", pixel_grid=64, initial_lens="kind")
+            self.assertEqual(a.read_bytes(), b.read_bytes())
+            self.assertEqual(report["patternId"], "hierarchy-radial-pixels")
+            self.assertIn('<canvas id="art"', a.read_text(encoding="utf-8"))
+            for args in [{"view": "unknown"}, {"view": "pixel", "pixel_grid": 63},
+                         {"view": "pixel", "initial_lens": "absent"}]:
+                with self.subTest(args=args), self.assertRaises(ValueError):
+                    build(fixture(), a, **args)
 
 
 if __name__ == "__main__":

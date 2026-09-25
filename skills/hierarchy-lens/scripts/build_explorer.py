@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import argparse
+import bisect
 import html
 import json
 import math
@@ -209,16 +210,65 @@ def demo(size=1200):
             ], "nodes": nodes}
 
 
-def build(source, output):
+def pixel_layout(data, requested=256):
+    """Sample the partition on a square grid; refine until every record is visible."""
+    if requested not in {64, 128, 256, 512, 1024, 2048}:
+        raise ValueError("pixel-grid must be a power of two from 64 to 2048")
+    rings = [[] for _ in range(data["maxDepth"] + 1)]
+    for index, node in enumerate(data["nodes"]):
+        rings[node["depth"]].append((node["x0"], node["x1"], index))
+    starts = [[row[0] for row in ring] for ring in rings]
+    size = requested
+    while size <= 2048:
+        radius, center = size * 0.47, size / 2
+        band = radius / len(rings)
+        coverage, rows = [0] * len(data["nodes"]), []
+        for y in range(size):
+            runs, owner, beginning = [], -1, 0
+            for x in range(size + 1):
+                index = -1
+                if x < size:
+                    dx, dy = x + 0.5 - center, y + 0.5 - center
+                    distance = math.hypot(dx, dy)
+                    if distance < radius:
+                        depth = int(distance / band)
+                        angle = math.atan2(dx, -dy) % math.tau
+                        position = bisect.bisect_right(starts[depth], angle) - 1
+                        if position >= 0 and angle < rings[depth][position][1]:
+                            index = rings[depth][position][2]
+                if index != owner:
+                    if owner >= 0:
+                        runs.append([beginning, x - beginning, owner])
+                        coverage[owner] += x - beginning
+                    owner, beginning = index, x
+            rows.append(runs)
+        if all(coverage):
+            return {"size": size, "requested": requested, "rows": rows, "coverage": coverage}
+        size *= 2
+    raise ValueError("Some records have no pixel at grid 2048; simplify the hierarchy explicitly or use the analytical view")
+
+
+def build(source, output, view="analytical", pixel_grid=256, initial_lens=None):
     data = normalize(source)
-    template = (Path(__file__).resolve().parent.parent / "assets" / "templates" / "explorer.html").read_text(encoding="utf-8")
+    if view not in {"analytical", "pixel"}:
+        raise ValueError("view must be analytical or pixel")
+    if initial_lens is not None and initial_lens not in {d["key"] for d in data["dimensions"]}:
+        raise ValueError("initial-lens must name a declared dimension")
+    data["view"] = view
+    if view == "pixel":
+        data.update(patternId="hierarchy-radial-pixels", pixels=pixel_layout(data, pixel_grid),
+                    initialLens=initial_lens or next((d["key"] for d in data["dimensions"] if d["type"] == "numeric"), data["dimensions"][0]["key"]))
+    template_name = "pixels.html" if view == "pixel" else "explorer.html"
+    template = (Path(__file__).resolve().parent.parent / "assets" / "templates" / template_name).read_text(encoding="utf-8")
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":"), allow_nan=False).replace("<", "\\u003c").replace("&", "\\u0026").replace("\u2028", "\\u2028").replace("\u2029", "\\u2029")
     rendered = template.replace("__TITLE__", html.escape(data["title"])).replace("__PAYLOAD__", payload)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(rendered, encoding="utf-8")
     return {"ok": True, "output": str(output), "nodes": len(data["nodes"]), "levels": data["maxDepth"] + 1,
             "rootId": data["rootId"], "dimensions": len(data["dimensions"]), "patternId": data["patternId"],
-            "numericTotals": data["nodes"][0]["aggregates"], "bytes": output.stat().st_size}
+            "numericTotals": data["nodes"][0]["aggregates"], "view": view,
+            **({"grid": data["pixels"]["size"], "minPixelsPerRecord": min(data["pixels"]["coverage"])} if view == "pixel" else {}),
+            "bytes": output.stat().st_size}
 
 
 def main():
@@ -230,13 +280,16 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--data-output", type=Path)
     parser.add_argument("--report", type=Path)
+    parser.add_argument("--view", choices=["analytical", "pixel"], default="analytical")
+    parser.add_argument("--pixel-grid", type=int, default=256)
+    parser.add_argument("--initial-lens")
     args = parser.parse_args()
     try:
         paths = [p.resolve() for p in [args.input, args.output, args.data_output, args.report] if p]
         if len(paths) != len(set(paths)):
             raise ValueError("Input, output, data-output, and report paths must be distinct")
         source = demo(args.demo_size) if args.demo else json.loads(args.input.read_text(encoding="utf-8-sig"))
-        report = build(source, args.output)
+        report = build(source, args.output, args.view, args.pixel_grid, args.initial_lens)
         if args.data_output:
             args.data_output.parent.mkdir(parents=True, exist_ok=True)
             args.data_output.write_text(json.dumps(source, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
