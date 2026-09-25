@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PAGES_ROOT = ROOT / "dist" / "pages"
 SKILLS = ROOT / "skills"
 EXAMPLE_SOURCES = {
+    "hierarchy-lens": SKILLS / "hierarchy-lens" / "assets" / "examples" / "hierarchy-lens",
     "usefulcharts-style": SKILLS / "usefulcharts-style" / "assets" / "examples" / "usefulcharts-style",
     "ai-concept-videos": SKILLS
     / "video"
@@ -117,6 +118,14 @@ UNLISTED_EXAMPLE_SOURCES = {
     "plantuml-colorset-renderer-cs1",
 }
 PUBLISHED_EXAMPLE_SETS = [
+    {
+        "id": "hierarchy-lens",
+        "source": "hierarchy-lens",
+        "title": "Hierarchy Lens",
+        "href": "examples/hierarchy-lens/",
+        "kind": "Interactive radial hierarchy",
+        "description": "Explore a fictional 1,200-person organization through stable leadership, contract, role, and AI-token color lenses, with branch focus, search, missing-data coverage, and SVG/PNG snapshots.",
+    },
     {
         "id": "usefulcharts-style",
         "source": "usefulcharts-style",
@@ -657,6 +666,7 @@ def build_docs() -> None:
     (PAGES_ROOT / ".nojekyll").write_text("", encoding="utf-8")
     write_favicon()
 
+    copy_tree(example_source("hierarchy-lens"), PAGES_ROOT / "examples" / "hierarchy-lens")
     copy_tree(example_source("usefulcharts-style"), PAGES_ROOT / "examples" / "usefulcharts-style")
 
     copy_tree(example_source("compose-synchronized-svg"), PAGES_ROOT / "examples" / "compose-synchronized-svg")

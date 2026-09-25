@@ -1,0 +1,405 @@
+{
+  "date": "2026-09-25",
+  "passed": true,
+  "cohorts": {
+    "contract": {
+      "runs": 1,
+      "passes": 1
+    },
+    "naturalistic": {
+      "runs": 3,
+      "passes": 3
+    },
+    "generalization": {
+      "runs": 3,
+      "passes": 3
+    },
+    "boundary": {
+      "runs": 1,
+      "passes": 1
+    }
+  },
+  "routing": {
+    "passed": true,
+    "cases": 6,
+    "model": "openai-codex/gpt-5.6-luna",
+    "forcedSkill": false,
+    "routing": [
+      {
+        "request": 1,
+        "useSkill": true,
+        "reason": "This is a large organizational reporting hierarchy needing a radial map and switchable categorical and numeric color lenses."
+      },
+      {
+        "request": 2,
+        "useSkill": true,
+        "reason": "This is a portfolio hierarchy with nested branches, branch exploration, and switchable status and expenditure color views."
+      },
+      {
+        "request": 3,
+        "useSkill": false,
+        "reason": "This requests a daily temperature line chart, not a radial hierarchy with changing color lenses."
+      },
+      {
+        "request": 4,
+        "useSkill": false,
+        "reason": "This is a dense general social graph with many unrelated connections, rather than a hierarchical structure."
+      },
+      {
+        "request": 5,
+        "useSkill": false,
+        "reason": "This requests a PNG logo, not an interactive radial hierarchy."
+      },
+      {
+        "request": 6,
+        "useSkill": true,
+        "reason": "This is a biological taxonomy suited to a radial hierarchy with switchable conservation and sightings lenses while preserving positions."
+      }
+    ]
+  },
+  "runs": [
+    {
+      "runId": "hierarchy-lens-contract-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 24.183,
+      "payloadSha256": "10f8a19b125f6d0ea65610f47cf6ab562a6d519b32dab9eb6d70e3b2ce17b59c",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "deliverables/audit.json",
+        "deliverables/build.json"
+      ],
+      "tracePassed": true,
+      "traceFindings": []
+    },
+    {
+      "runId": "hierarchy-lens-contract-20260925-spark-1",
+      "passed": false,
+      "model": "gpt-5.3-codex-spark",
+      "gates": {
+        "artifacts": false,
+        "events": false,
+        "jsonFields": false,
+        "skillIntegrity": true
+      },
+      "seconds": 6.968,
+      "payloadSha256": "4ca5e5140e77750911087c99e0a8119c3d09c454cfdc8f56530c6233bdb3aa81",
+      "readPaths": [],
+      "tracePassed": true,
+      "traceFindings": [],
+      "classification": "infrastructure: provider rejected Spark before its first tool call"
+    },
+    {
+      "runId": "hierarchy-lens-naturalistic-20260925-luna-1",
+      "passed": false,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 159.893,
+      "payloadSha256": "10f8a19b125f6d0ea65610f47cf6ab562a6d519b32dab9eb6d70e3b2ce17b59c",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/radial-lenses.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/overview.png",
+        "deliverables/overview.numeric.png",
+        "deliverables/overview.focus.png"
+      ],
+      "tracePassed": false,
+      "traceFindings": [
+        {
+          "code": "tool-error",
+          "line": 1685,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "classification": "agent: hand-authored synthetic team counts failed an assertion before recovery"
+    },
+    {
+      "runId": "hierarchy-lens-naturalistic-20260925-luna-2",
+      "passed": false,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 138.33,
+      "payloadSha256": "10f8a19b125f6d0ea65610f47cf6ab562a6d519b32dab9eb6d70e3b2ce17b59c",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/radial-lenses.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/overview.png"
+      ],
+      "tracePassed": false,
+      "traceFindings": [
+        {
+          "code": "tool-error",
+          "line": 1422,
+          "tool": "bash",
+          "path": null
+        }
+      ],
+      "classification": "agent: hand-authored synthetic team counts failed an assertion before recovery"
+    },
+    {
+      "runId": "hierarchy-lens-naturalistic-20260925-luna-3",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 246.36,
+      "payloadSha256": "10f8a19b125f6d0ea65610f47cf6ab562a6d519b32dab9eb6d70e3b2ce17b59c",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/radial-lenses.md",
+        "deliverables/build.json",
+        "deliverables/audit.json",
+        "deliverables/overview.png",
+        "deliverables/overview.focus.png",
+        "deliverables/overview.numeric.png",
+        "deliverables/overview.mobile.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": []
+    },
+    {
+      "runId": "hierarchy-lens-v2-boundary-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 37.844,
+      "payloadSha256": "d4681d68f97a086ba6744ece645a3e211b4922c12310bb8cea5df0651a3e5f9e",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "review.md",
+        "review.json"
+      ],
+      "tracePassed": true,
+      "traceFindings": []
+    },
+    {
+      "runId": "hierarchy-lens-v2-contract-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 24.166,
+      "payloadSha256": "d4681d68f97a086ba6744ece645a3e211b4922c12310bb8cea5df0651a3e5f9e",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "deliverables/audit.json",
+        "deliverables/build.json"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true
+    },
+    {
+      "runId": "hierarchy-lens-v2-generalization-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 50.584,
+      "payloadSha256": "d4681d68f97a086ba6744ece645a3e211b4922c12310bb8cea5df0651a3e5f9e",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/radial-lenses.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "results/build.json",
+        "results/audit.json",
+        "results/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true
+    },
+    {
+      "runId": "hierarchy-lens-v2-generalization-20260925-luna-2",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 47.903,
+      "payloadSha256": "d4681d68f97a086ba6744ece645a3e211b4922c12310bb8cea5df0651a3e5f9e",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/radial-lenses.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "results/portfolio.json",
+        "results/audit.json",
+        "results/build.json",
+        "results/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true
+    },
+    {
+      "runId": "hierarchy-lens-v2-generalization-20260925-luna-3",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 49.574,
+      "payloadSha256": "d4681d68f97a086ba6744ece645a3e211b4922c12310bb8cea5df0651a3e5f9e",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/radial-lenses.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "results/audit.json",
+        "results/build.json",
+        "results/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true
+    },
+    {
+      "runId": "hierarchy-lens-v2-naturalistic-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 38.695,
+      "payloadSha256": "d4681d68f97a086ba6744ece645a3e211b4922c12310bb8cea5df0651a3e5f9e",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/radial-lenses.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true
+    },
+    {
+      "runId": "hierarchy-lens-v2-naturalistic-20260925-luna-2",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 37.23,
+      "payloadSha256": "d4681d68f97a086ba6744ece645a3e211b4922c12310bb8cea5df0651a3e5f9e",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/radial-lenses.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/organization.json",
+        "deliverables/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true
+    },
+    {
+      "runId": "hierarchy-lens-v2-naturalistic-20260925-luna-3",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 43.613,
+      "payloadSha256": "d4681d68f97a086ba6744ece645a3e211b4922c12310bb8cea5df0651a3e5f9e",
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/radial-lenses.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "deliverables/build.json",
+        "deliverables/audit.json",
+        "deliverables/overview.png",
+        "deliverables/organization.json"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true
+    }
+  ]
+}
