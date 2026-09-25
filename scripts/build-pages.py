@@ -123,8 +123,8 @@ PUBLISHED_EXAMPLE_SETS = [
         "source": "hierarchy-lens",
         "title": "Hierarchy Lens",
         "href": "examples/hierarchy-lens/",
-        "kind": "Radial pixel heatmap",
-        "description": "Explore a fictional 1,200-person organization as a text-free pixel-art heatmap. Switch leadership, contract, role, and AI-token colors on one fixed grid, zoom into branches, or export the image.",
+        "kind": "Compact organic pixel hierarchy",
+        "description": "Explore a fictional 1,200-person organization as one connected organic body, with a 2 × 2 pixel cell per record and switchable leadership, contract, role, and AI-token colors. Compare radial pixels and labeled charts.",
     },
     {
         "id": "usefulcharts-style",

@@ -13,6 +13,7 @@ import unittest
 from pathlib import Path
 
 from build_explorer import build, demo, normalize, pixel_layout
+from organic_layout import organic_layout, flood_shape, shape_quality
 
 
 def fixture():
@@ -146,6 +147,60 @@ class ExplorerTests(unittest.TestCase):
                          {"view": "pixel", "initial_lens": "absent"}]:
                 with self.subTest(args=args), self.assertRaises(ValueError):
                     build(fixture(), a, **args)
+
+    def test_organic_equal_squares_and_root(self):
+        data = normalize(demo(1200))
+        layout = organic_layout(data)
+        self.assertEqual(layout["size"],128)
+        self.assertEqual(layout["coverage"],[4]*1200)
+        self.assertEqual(len({(c["x"],c["y"]) for c in layout["cells"]}),1200)
+        self.assertEqual(layout["cells"][0]["tileX"],0)
+        self.assertEqual(layout["cells"][0]["tileY"],0)
+        self.assertEqual(sum(run[1] for row in layout["rows"] for run in row),4800)
+
+    def test_organic_geometry_independent_of_values(self):
+        a = normalize(fixture())
+        b = copy.deepcopy(a)
+        for n in b["nodes"]:
+            n["values"] = {"kind":"Changed","tokens":900}
+        self.assertEqual(organic_layout(a),organic_layout(b))
+        self.assertEqual(organic_layout(a,seed=42),organic_layout(a,seed=42))
+        self.assertNotEqual(organic_layout(normalize(demo(120)),seed=42)["cells"],organic_layout(normalize(demo(120)),seed=43)["cells"])
+
+    def test_organic_front_is_solid_across_counts_and_seeds(self):
+        for count in [1,7,120,1200,5000]:
+            for seed in [0,1,42,73021]:
+                with self.subTest(count=count,seed=seed):
+                    sites = flood_shape(count,seed)
+                    self.assertEqual(shape_quality((x,y) for x,y,_ in sites),(True,0))
+                    self.assertEqual([s[2] for s in sites],sorted(s[2] for s in sites))
+
+    def test_organic_generation_order_and_pathological_trees(self):
+        for kind in ['chain','star','uneven']:
+            with self.subTest(kind=kind):
+                source = fixture()
+                source['nodes'] = [{'id':str(i),'parentId':None if i==0 else str(i-1) if kind=='chain' else '0' if kind=='star' or i<5 else '1','label':str(i)} for i in range(60)]
+                data=normalize(source)
+                layout=organic_layout(data)
+                ordered=sorted(layout['cells'],key=lambda c:c['birth'])
+                self.assertEqual([data['nodes'][c['node']]['depth'] for c in ordered],sorted(n['depth'] for n in data['nodes']))
+                for size in [1,3,4]:
+                    scaled=organic_layout(data,cell_pixels=size)
+                    self.assertEqual(scaled['coverage'],[size**2]*60)
+                    root=scaled['cells'][0]
+                    self.assertTrue(root['x'] <= scaled['size']//2 < root['x']+size)
+                    self.assertTrue(root['y'] <= scaled['size']//2 < root['y']+size)
+
+    def test_organic_option_validation_and_bundle(self):
+        with tempfile.TemporaryDirectory(dir=Path.cwd()) as directory:
+            target=Path(directory)/'organic.html'
+            report=build(fixture(),target,view='organic')
+            self.assertEqual(report['patternId'],'hierarchy-organic-pixels')
+            self.assertEqual(report['minPixelsPerRecord'],4)
+            self.assertIn('id="hierarchy-organic-pixels"',target.read_text(encoding='utf-8'))
+            for options in [{'cell_pixels':0},{'cell_pixels':True},{'cell_pixels':2.0},{'cell_pixels':5},{'seed':True},{'seed':-1},{'seed':2**32}]:
+                with self.subTest(options=options),self.assertRaises(ValueError):
+                    build(fixture(),target,view='organic',**options)
 
 
 if __name__ == "__main__":

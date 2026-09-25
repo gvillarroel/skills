@@ -15,6 +15,18 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 
+def connected(points):
+    points = set(points)
+    visited, frontier = set(), [next(iter(points))]
+    while frontier:
+        x,y = frontier.pop()
+        if (x,y) in visited:
+            continue
+        visited.add((x,y))
+        frontier.extend(p for p in [(x+1,y),(x-1,y),(x,y+1),(x,y-1)] if p in points and p not in visited)
+    return len(visited) == len(points)
+
+
 def audit(path, screenshot=None):
     checks, errors, network, evidence = [], [], [], []
 
@@ -42,6 +54,7 @@ def audit(path, screenshot=None):
         data = json.loads(page.locator("#hierarchy-data").text_content())
         nodes, grid = data["nodes"], data["pixels"]
         size = grid["size"]
+        organic = grid.get("mode") == "organic"
         snapshot = lambda: page.evaluate("hierarchyPixels.snapshot()")
         image = lambda: page.locator("#art").evaluate("c=>c.toDataURL()")
         original = snapshot()
@@ -57,13 +70,29 @@ def audit(path, screenshot=None):
                 first.setdefault(owner, [x, y])
                 n = nodes[owner]
                 for col in range(x, x+width):
-                    dx, dy = col+.5-size/2, y+.5-size/2
-                    depth = int(math.hypot(dx, dy)/(size*.47)*(data["maxDepth"]+1))
-                    angle = math.atan2(dx, -dy) % math.tau
-                    correct &= depth == n["depth"] and n["x0"]-1e-10 <= angle <= n["x1"]+1e-10
+                    if organic:
+                        cell = grid["cells"][owner]
+                        correct &= cell["node"] == owner and cell["x"] <= col < cell["x"]+grid["cellPixels"] and cell["y"] <= y < cell["y"]+grid["cellPixels"]
+                    else:
+                        dx, dy = col+.5-size/2, y+.5-size/2
+                        depth = int(math.hypot(dx, dy)/(size*.47)*(data["maxDepth"]+1))
+                        angle = math.atan2(dx, -dy) % math.tau
+                        correct &= depth == n["depth"] and n["x0"]-1e-10 <= angle <= n["x1"]+1e-10
         check("exact-record-coverage", counts == grid["coverage"] and all(counts))
         check("disjoint-square-pixels", nonoverlap)
-        check("every-pixel-inside-owner-depth-and-angle", correct)
+        check("every-pixel-inside-owner-cell" if organic else "every-pixel-inside-owner-depth-and-angle", correct)
+        if organic:
+            cells = grid["cells"]
+            check("equal-area-square-records", all(c == grid["cellPixels"]**2 for c in counts))
+            check("unique-complete-cells", len(cells) == len(nodes) and len({(c["tileX"],c["tileY"]) for c in cells}) == len(nodes))
+            check("connected-body", connected((c["tileX"],c["tileY"]) for c in cells))
+            check("every-generation-connected", all(connected((c["tileX"],c["tileY"]) for c in cells if nodes[c["node"]]["depth"] <= depth) for depth in range(data["maxDepth"]+1)))
+            birth = sorted(cells,key=lambda c:c["birth"])
+            check("outward-generation-order", [c["birth"] for c in birth] == list(range(len(nodes))) and [nodes[c["node"]]["depth"] for c in birth] == sorted(n["depth"] for n in nodes))
+            occupied = {(c["tileX"],c["tileY"]) for c in cells}
+            xs,ys = zip(*occupied)
+            background = {(x,y) for x in range(min(xs)-1,max(xs)+2) for y in range(min(ys)-1,max(ys)+2)}-occupied
+            check("no-enclosed-holes", connected(background))
         check("root-at-center", page.evaluate("([x,y])=>hierarchyPixels.ownerAt(x,y)", [size//2, size//2]) == data["rootId"])
         check("native-grid-dimensions", page.locator("#art").evaluate("c=>[c.width,c.height]") == [size, size])
         check("crisp-rendering", page.locator("#art").evaluate("c=>getComputedStyle(c).imageRendering") in {"pixelated", "crisp-edges"})
@@ -119,15 +148,27 @@ def audit(path, screenshot=None):
             check("keyboard-next-record", snapshot()["state"]["selected"] == nodes[1]["id"])
             page.keyboard.press("Escape")
             check("keyboard-reset", snapshot()["state"]["selected"] == data["rootId"] and snapshot()["state"]["zoom"] == 1)
-            branch = nodes[1]
-            angle = (branch["x0"]+branch["x1"])/2
-            radius = (branch["depth"]+.5)*size*.47/(data["maxDepth"]+1)
-            x = math.floor(size/2+radius*math.sin(angle))
-            y = math.floor(size/2-radius*math.cos(angle))
+            if organic:
+                cell = grid["cells"][1]
+                x,y = cell["x"],cell["y"]
+            else:
+                branch = nodes[1]
+                angle = (branch["x0"]+branch["x1"])/2
+                radius = (branch["depth"]+.5)*size*.47/(data["maxDepth"]+1)
+                x = math.floor(size/2+radius*math.sin(angle))
+                y = math.floor(size/2-radius*math.cos(angle))
             box = page.locator("#art").bounding_box()
             page.mouse.click(box["x"]+(x+.5)*box["width"]/size, box["y"]+(y+.5)*box["height"]/size)
             check("pixel-hit-testing", snapshot()["state"]["selected"] == nodes[1]["id"], {"expected": nodes[1]["id"], "selected": snapshot()["state"]["selected"]})
             page.keyboard.press("Escape")
+        if organic:
+            page.locator("#info").click()
+            base_image = image()
+            page.locator("#pixel-size").select_option("1")
+            check("native-display-scale", math.isclose(page.locator("#art").bounding_box()["width"], size, abs_tol=.1))
+            check("display-scale-preserves-pixels", image() == base_image)
+            page.locator("#pixel-size").select_option("3")
+            page.locator("#close").click()
         page.locator("#immersive").click()
         check("image-only-mode", not page.locator(".top").is_visible() and not page.locator(".dock").is_visible() and page.locator("#art").is_visible())
         page.keyboard.press("1")
@@ -144,10 +185,13 @@ def audit(path, screenshot=None):
         check("svg-crisp-edges", svg.get("shape-rendering") == "crispEdges")
         metadata = json.loads(svg.find("{http://www.w3.org/2000/svg}metadata").text)
         check("export-data-and-context", metadata["grid"] == size and len(metadata["records"]) == len(nodes) and metadata["provenance"] == data["provenance"] and metadata["thresholds"] == snapshot()["thresholds"])
+        if organic:
+            check("export-growth-context", metadata["layout"]["cells"] == grid["cells"] and metadata["layout"]["seed"] == grid["seed"] and metadata["encodings"]["adjacency"] == "spatial packing, not reporting edges")
         with page.expect_download() as event:
             page.locator("#export-png").click()
         png = Path(event.value.path()).read_bytes()
-        check("png-2048-export", png[:8] == b"\x89PNG\r\n\x1a\n" and int.from_bytes(png[16:20], "big") == 2048 and int.from_bytes(png[20:24], "big") == 2048)
+        expected_size = size if organic else 2048
+        check("png-native-export" if organic else "png-2048-export", png[:8] == b"\x89PNG\r\n\x1a\n" and int.from_bytes(png[16:20], "big") == expected_size and int.from_bytes(png[20:24], "big") == expected_size)
         if screenshot:
             out = screenshot.with_name(screenshot.stem+".export.png")
             out.write_bytes(png)

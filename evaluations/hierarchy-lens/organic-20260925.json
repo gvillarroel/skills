@@ -1,0 +1,370 @@
+{
+  "date": "2026-09-25",
+  "passed": true,
+  "cohorts": {
+    "contract": {
+      "runs": 1,
+      "passes": 1
+    },
+    "naturalistic": {
+      "runs": 3,
+      "passes": 3
+    },
+    "generalization": {
+      "runs": 3,
+      "passes": 2
+    },
+    "boundary": {
+      "runs": 1,
+      "passes": 1
+    }
+  },
+  "routing": {
+    "passed": true,
+    "cases": 9,
+    "model": "openai-codex/gpt-5.6-luna",
+    "forcedSkill": false,
+    "routing": [
+      {
+        "request": 1,
+        "useSkill": true,
+        "reason": "It is a reporting hierarchy that needs a radial map and switchable attribute color lenses."
+      },
+      {
+        "request": 2,
+        "useSkill": true,
+        "reason": "It is a connected research hierarchy with compact cells, procedural growth, and switchable attribute colors."
+      },
+      {
+        "request": 3,
+        "useSkill": false,
+        "reason": "A daily temperature line chart is not an interactive hierarchy or supported cell-map visualization."
+      },
+      {
+        "request": 4,
+        "useSkill": false,
+        "reason": "An arbitrary many-to-many social graph is not a hierarchy and does not fit the skill's fixed hierarchical structure."
+      },
+      {
+        "request": 5,
+        "useSkill": false,
+        "reason": "Converting a landscape photograph to retro pixel art is image transformation, not hierarchical data visualization."
+      },
+      {
+        "request": 6,
+        "useSkill": true,
+        "reason": "Biological classifications form a hierarchy and the request specifies a radial heatmap with switchable attributes."
+      },
+      {
+        "request": 7,
+        "useSkill": false,
+        "reason": "A pixel-art company logo is a standalone graphic, not a hierarchy or dataset visualization."
+      },
+      {
+        "request": 8,
+        "useSkill": true,
+        "reason": "It is an organizational hierarchy requiring a labeled sunburst, branch lookup, and role-based coloring."
+      },
+      {
+        "request": 9,
+        "useSkill": false,
+        "reason": "A procedural game sprite has no hierarchy or dataset to represent."
+      }
+    ]
+  },
+  "local": {
+    "organic-final-audit": {
+      "ok": true,
+      "nodes": 1200,
+      "grid": 128,
+      "seconds": 2.24,
+      "checkCount": 53
+    },
+    "organic-5000-audit": {
+      "ok": true,
+      "nodes": 5000,
+      "grid": 256,
+      "seconds": 2.87,
+      "checkCount": 53
+    },
+    "organic-20000-audit": {
+      "ok": true,
+      "nodes": 20000,
+      "grid": 512,
+      "seconds": 6.31,
+      "checkCount": 53
+    },
+    "organic-singleton-audit": {
+      "ok": true,
+      "nodes": 1,
+      "grid": 32,
+      "seconds": 1.39,
+      "checkCount": 39
+    },
+    "organic-one-pixel-audit": {
+      "ok": true,
+      "nodes": 73,
+      "grid": 32,
+      "seconds": 1.83,
+      "checkCount": 53
+    },
+    "radial-preserved-organic-audit": {
+      "ok": true,
+      "nodes": 1200,
+      "grid": 512,
+      "seconds": 2.32,
+      "checkCount": 44
+    },
+    "analytical-preserved-organic-audit": {
+      "ok": true,
+      "nodes": 1200,
+      "seconds": 3.03,
+      "checkCount": 43
+    },
+    "organic-png-oracle": {
+      "ok": true,
+      "dimensions": [
+        128,
+        128
+      ],
+      "foregroundPixels": 4800,
+      "records": 1200,
+      "pixelsPerRecord": 4,
+      "connected": true,
+      "distinctColors": 11
+    },
+    "organic-pages-navigation": {
+      "ok": true,
+      "url": "http://127.0.0.1:49979/",
+      "errors": [],
+      "checkCount": 7
+    }
+  },
+  "runs": [
+    {
+      "runId": "hierarchy-organic-boundary-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 32.482,
+      "payloadSha256": "7d2daba3905bf0b4dabd94d3b1be9806bd115a9035e43fc86df5591665b714bf",
+      "runtimeFiles": 14,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "review.json",
+        "review.md"
+      ],
+      "tracePassed": true,
+      "traceFindings": []
+    },
+    {
+      "runId": "hierarchy-organic-contract-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 29.281,
+      "payloadSha256": "7d2daba3905bf0b4dabd94d3b1be9806bd115a9035e43fc86df5591665b714bf",
+      "runtimeFiles": 14,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "deliverables/build.json",
+        "deliverables/audit.json",
+        "deliverables/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 32
+    },
+    {
+      "runId": "hierarchy-organic-generalization-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 45.036,
+      "payloadSha256": "7d2daba3905bf0b4dabd94d3b1be9806bd115a9035e43fc86df5591665b714bf",
+      "runtimeFiles": 14,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/organic-pixels.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "results/build.json",
+        "results/audit.json",
+        "results/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 32
+    },
+    {
+      "runId": "hierarchy-organic-generalization-20260925-luna-2",
+      "passed": false,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": false,
+        "skillIntegrity": true
+      },
+      "seconds": 44.996,
+      "payloadSha256": "7d2daba3905bf0b4dabd94d3b1be9806bd115a9035e43fc86df5591665b714bf",
+      "runtimeFiles": 14,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/organic-pixels.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "results/audit.json",
+        "results/build.json",
+        "results/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "classification": "agent",
+      "failureReason": "Generalization trial 2 requested one logical pixel per record but the agent selected --cell-pixels 2, producing four pixels per record. The explicit input instruction and organic reference both support --cell-pixels 1. Strict JSON assertions correctly rejected the output. Other gates passed; the failed trial is retained and is not counted as a pass."
+    },
+    {
+      "runId": "hierarchy-organic-generalization-20260925-luna-3",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 102.947,
+      "payloadSha256": "7d2daba3905bf0b4dabd94d3b1be9806bd115a9035e43fc86df5591665b714bf",
+      "runtimeFiles": 14,
+      "readPaths": [
+        "results/build.json",
+        "results/audit.json",
+        "results/overview.png",
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/organic-pixels.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "skills/hierarchy-lens/references/data-contract.md"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 32
+    },
+    {
+      "runId": "hierarchy-organic-naturalistic-20260925-luna-1",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 37.258,
+      "payloadSha256": "7d2daba3905bf0b4dabd94d3b1be9806bd115a9035e43fc86df5591665b714bf",
+      "runtimeFiles": 14,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/organic-pixels.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "deliverables/overview.png",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/organization.json"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 128
+    },
+    {
+      "runId": "hierarchy-organic-naturalistic-20260925-luna-2",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 31.443,
+      "payloadSha256": "7d2daba3905bf0b4dabd94d3b1be9806bd115a9035e43fc86df5591665b714bf",
+      "runtimeFiles": 14,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/organic-pixels.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "deliverables/build.json",
+        "deliverables/audit.json",
+        "deliverables/organization.json",
+        "deliverables/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 128
+    },
+    {
+      "runId": "hierarchy-organic-naturalistic-20260925-luna-3",
+      "passed": true,
+      "model": "gpt-5.6-luna",
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": true,
+        "skillIntegrity": true
+      },
+      "seconds": 35.002,
+      "payloadSha256": "7d2daba3905bf0b4dabd94d3b1be9806bd115a9035e43fc86df5591665b714bf",
+      "runtimeFiles": 14,
+      "readPaths": [
+        "../prompt.md",
+        "skills/hierarchy-lens/SKILL.md",
+        "skills/hierarchy-lens/references/data-contract.md",
+        "skills/hierarchy-lens/references/organic-pixels.md",
+        "skills/hierarchy-lens/references/validation.md",
+        "deliverables/audit.json",
+        "deliverables/build.json",
+        "deliverables/overview.png"
+      ],
+      "tracePassed": true,
+      "traceFindings": [],
+      "sourceOraclePassed": true,
+      "independentBrowserPassed": true,
+      "grid": 128
+    }
+  ],
+  "deterministicRepair": "Odd cell widths are centered using size//2-cellPixels//2, keeping the central display pixel in the root. This was corrected before forward trials and covered by 1-, 3-, and 4-pixel tests."
+}

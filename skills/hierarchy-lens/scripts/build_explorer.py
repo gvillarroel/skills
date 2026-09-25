@@ -15,6 +15,8 @@ import math
 import random
 from pathlib import Path
 
+from organic_layout import organic_layout
+
 MAX_NODES = 20000
 MAX_DEPTH = 64
 
@@ -248,26 +250,30 @@ def pixel_layout(data, requested=256):
     raise ValueError("Some records have no pixel at grid 2048; simplify the hierarchy explicitly or use the analytical view")
 
 
-def build(source, output, view="analytical", pixel_grid=256, initial_lens=None):
+def build(source, output, view="analytical", pixel_grid=256, initial_lens=None, cell_pixels=2, seed=73021):
     data = normalize(source)
-    if view not in {"analytical", "pixel"}:
-        raise ValueError("view must be analytical or pixel")
+    if view not in {"analytical", "pixel", "organic"}:
+        raise ValueError("view must be analytical, pixel, or organic")
     if initial_lens is not None and initial_lens not in {d["key"] for d in data["dimensions"]}:
         raise ValueError("initial-lens must name a declared dimension")
     data["view"] = view
-    if view == "pixel":
-        data.update(patternId="hierarchy-radial-pixels", pixels=pixel_layout(data, pixel_grid),
+    if view in {"pixel", "organic"}:
+        data.update(patternId="hierarchy-organic-pixels" if view == "organic" else "hierarchy-radial-pixels",
+                    pixels=organic_layout(data,cell_pixels,seed) if view == "organic" else pixel_layout(data, pixel_grid),
                     initialLens=initial_lens or next((d["key"] for d in data["dimensions"] if d["type"] == "numeric"), data["dimensions"][0]["key"]))
-    template_name = "pixels.html" if view == "pixel" else "explorer.html"
+    template_name = "pixels.html" if view in {"pixel", "organic"} else "explorer.html"
     template = (Path(__file__).resolve().parent.parent / "assets" / "templates" / template_name).read_text(encoding="utf-8")
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":"), allow_nan=False).replace("<", "\\u003c").replace("&", "\\u0026").replace("\u2028", "\\u2028").replace("\u2029", "\\u2029")
-    rendered = template.replace("__TITLE__", html.escape(data["title"])).replace("__PAYLOAD__", payload)
+    rendered = template.replace("__TITLE__", html.escape(data["title"])).replace("__PATTERN_ID__", data["patternId"])
+    rendered = rendered.replace("__EXAMPLE_ID__", "organic-pixels" if view == "organic" else "radial-pixels").replace("__PAYLOAD__", payload)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(rendered, encoding="utf-8")
     return {"ok": True, "output": str(output), "nodes": len(data["nodes"]), "levels": data["maxDepth"] + 1,
             "rootId": data["rootId"], "dimensions": len(data["dimensions"]), "patternId": data["patternId"],
             "numericTotals": data["nodes"][0]["aggregates"], "view": view,
-            **({"grid": data["pixels"]["size"], "minPixelsPerRecord": min(data["pixels"]["coverage"])} if view == "pixel" else {}),
+            **({"grid": data["pixels"]["size"], "minPixelsPerRecord": min(data["pixels"]["coverage"]),
+                "maxPixelsPerRecord":max(data["pixels"]["coverage"])} if view in {"pixel", "organic"} else {}),
+            **({"cellPixels":cell_pixels,"seed":seed,"connected":data["pixels"]["connected"],"holes":data["pixels"]["holes"]} if view == "organic" else {}),
             "bytes": output.stat().st_size}
 
 
@@ -280,16 +286,18 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--data-output", type=Path)
     parser.add_argument("--report", type=Path)
-    parser.add_argument("--view", choices=["analytical", "pixel"], default="analytical")
+    parser.add_argument("--view", choices=["analytical", "pixel", "organic"], default="analytical")
     parser.add_argument("--pixel-grid", type=int, default=256)
     parser.add_argument("--initial-lens")
+    parser.add_argument("--cell-pixels",type=int,default=2)
+    parser.add_argument("--seed",type=int,default=73021)
     args = parser.parse_args()
     try:
         paths = [p.resolve() for p in [args.input, args.output, args.data_output, args.report] if p]
         if len(paths) != len(set(paths)):
             raise ValueError("Input, output, data-output, and report paths must be distinct")
         source = demo(args.demo_size) if args.demo else json.loads(args.input.read_text(encoding="utf-8-sig"))
-        report = build(source, args.output, args.view, args.pixel_grid, args.initial_lens)
+        report = build(source, args.output, args.view, args.pixel_grid, args.initial_lens, args.cell_pixels, args.seed)
         if args.data_output:
             args.data_output.parent.mkdir(parents=True, exist_ok=True)
             args.data_output.write_text(json.dumps(source, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
