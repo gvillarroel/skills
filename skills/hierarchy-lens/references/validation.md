@@ -1,5 +1,7 @@
 # Validation and scale
 
+For decision composition, run `audit_decisions.py` and `test_decisions.py`. Inspect priority eligibility, parent precedence, weighted scores, editable rules, exact playback prefixes, trace downloads, and deterministic restore. Color lenses keep composition fixed; policy changes may recompose it. See [decision-growth.md](decision-growth.md).
+
 Run the deterministic tests when changing the builder or aggregation contract:
 
 ```text

@@ -1,4 +1,4 @@
 interface:
   display_name: "Hierarchy Lens"
-  short_description: "Explore hierarchies as compact cell maps or radial heatmaps"
-  default_prompt: "Use $hierarchy-lens to turn my hierarchy into a compact, text-free organic pixel map with a small cell per record and switchable color dimensions."
+  short_description: "Compose pixel hierarchies with rules and replayable decisions"
+  default_prompt: "Use $hierarchy-lens to compose my hierarchy as a compact pixel image with explicit placement priorities, spatial affinity rules, step-by-step decision replay, and independent color lenses."

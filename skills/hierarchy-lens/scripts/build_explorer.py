@@ -16,6 +16,7 @@ import random
 from pathlib import Path
 
 from organic_layout import organic_layout
+from decision_layout import decision_layout, demo_composition
 
 MAX_NODES = 20000
 MAX_DEPTH = 64
@@ -250,30 +251,35 @@ def pixel_layout(data, requested=256):
     raise ValueError("Some records have no pixel at grid 2048; simplify the hierarchy explicitly or use the analytical view")
 
 
-def build(source, output, view="analytical", pixel_grid=256, initial_lens=None, cell_pixels=2, seed=73021):
+def build(source, output, view="analytical", pixel_grid=256, initial_lens=None, cell_pixels=2, seed=73021, composition=None):
     data = normalize(source)
-    if view not in {"analytical", "pixel", "organic"}:
-        raise ValueError("view must be analytical, pixel, or organic")
+    if view not in {"analytical", "pixel", "organic", "decision"}:
+        raise ValueError("view must be analytical, pixel, organic, or decision")
     if initial_lens is not None and initial_lens not in {d["key"] for d in data["dimensions"]}:
         raise ValueError("initial-lens must name a declared dimension")
     data["view"] = view
-    if view in {"pixel", "organic"}:
-        data.update(patternId="hierarchy-organic-pixels" if view == "organic" else "hierarchy-radial-pixels",
-                    pixels=organic_layout(data,cell_pixels,seed) if view == "organic" else pixel_layout(data, pixel_grid),
+    if view in {"pixel", "organic", "decision"}:
+        layout = decision_layout(data, composition or source.get("composition"), cell_pixels, seed) if view == "decision" else organic_layout(data,cell_pixels,seed) if view == "organic" else pixel_layout(data, pixel_grid)
+        data.update(patternId="hierarchy-decision-growth" if view == "decision" else "hierarchy-organic-pixels" if view == "organic" else "hierarchy-radial-pixels",
+                    pixels=layout,
                     initialLens=initial_lens or next((d["key"] for d in data["dimensions"] if d["type"] == "numeric"), data["dimensions"][0]["key"]))
-    template_name = "pixels.html" if view in {"pixel", "organic"} else "explorer.html"
-    template = (Path(__file__).resolve().parent.parent / "assets" / "templates" / template_name).read_text(encoding="utf-8")
+    template_name = "pixels.html" if view in {"pixel", "organic", "decision"} else "explorer.html"
+    templates = Path(__file__).resolve().parent.parent / "assets" / "templates"
+    template = (templates / template_name).read_text(encoding="utf-8")
+    for placeholder, asset in [("__DECISION_ENGINE__", "decision-engine.js"),("__DECISION_UI__", "decision-ui.js")]:
+        template = template.replace(placeholder, (templates / asset).read_text(encoding="utf-8") if view == "decision" else "")
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":"), allow_nan=False).replace("<", "\\u003c").replace("&", "\\u0026").replace("\u2028", "\\u2028").replace("\u2029", "\\u2029")
     rendered = template.replace("__TITLE__", html.escape(data["title"])).replace("__PATTERN_ID__", data["patternId"])
-    rendered = rendered.replace("__EXAMPLE_ID__", "organic-pixels" if view == "organic" else "radial-pixels").replace("__PAYLOAD__", payload)
+    rendered = rendered.replace("__EXAMPLE_ID__", "decision-growth" if view == "decision" else "organic-pixels" if view == "organic" else "radial-pixels").replace("__PAYLOAD__", payload)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(rendered, encoding="utf-8")
     return {"ok": True, "output": str(output), "nodes": len(data["nodes"]), "levels": data["maxDepth"] + 1,
             "rootId": data["rootId"], "dimensions": len(data["dimensions"]), "patternId": data["patternId"],
             "numericTotals": data["nodes"][0]["aggregates"], "view": view,
             **({"grid": data["pixels"]["size"], "minPixelsPerRecord": min(data["pixels"]["coverage"]),
-                "maxPixelsPerRecord":max(data["pixels"]["coverage"])} if view in {"pixel", "organic"} else {}),
-            **({"cellPixels":cell_pixels,"seed":seed,"connected":data["pixels"]["connected"],"holes":data["pixels"]["holes"]} if view == "organic" else {}),
+                "maxPixelsPerRecord":max(data["pixels"]["coverage"])} if view in {"pixel", "organic", "decision"} else {}),
+            **({"cellPixels":cell_pixels,"seed":seed,"connected":data["pixels"]["connected"],"holes":data["pixels"]["holes"]} if view in {"organic", "decision"} else {}),
+            **({"decisions":len(layout["decisions"]),"composition":layout["config"]} if view == "decision" else {}),
             "bytes": output.stat().st_size}
 
 
@@ -286,17 +292,53 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--data-output", type=Path)
     parser.add_argument("--report", type=Path)
-    parser.add_argument("--view", choices=["analytical", "pixel", "organic"], default="analytical")
+    parser.add_argument("--view", choices=["analytical", "pixel", "organic", "decision"], default="analytical")
     parser.add_argument("--pixel-grid", type=int, default=256)
     parser.add_argument("--initial-lens")
     parser.add_argument("--cell-pixels",type=int,default=2)
     parser.add_argument("--seed",type=int,default=73021)
+    parser.add_argument("--composition",type=Path,help="Explicit decision policy JSON; alternatively provide source.composition")
+    parser.add_argument("--priority",help="Decision priority dimension key")
+    parser.add_argument("--priority-direction",choices=["ascending","descending"])
+    parser.add_argument("--priority-order",nargs="+",help="Explicit categorical priority order")
+    parser.add_argument("--affinity",help="Categorical affinity key, or none")
+    parser.add_argument("--eligibility",choices=["generation","parent"])
+    parser.add_argument("--weights",nargs=4,type=float,metavar=("PARENT","AFFINITY","COMPACTNESS","RADIAL"))
+    parser.add_argument("--frontier-window",type=int)
     args = parser.parse_args()
     try:
-        paths = [p.resolve() for p in [args.input, args.output, args.data_output, args.report] if p]
+        paths = [p.resolve() for p in [args.input, args.output, args.data_output, args.report, args.composition] if p]
         if len(paths) != len(set(paths)):
             raise ValueError("Input, output, data-output, and report paths must be distinct")
         source = demo(args.demo_size) if args.demo else json.loads(args.input.read_text(encoding="utf-8-sig"))
+        if args.composition:
+            if args.view != "decision":
+                raise ValueError("--composition requires --view decision")
+            source["composition"] = json.loads(args.composition.read_text(encoding="utf-8-sig"))
+        elif args.demo and args.view == "decision":
+            source["composition"] = demo_composition(source)
+        overrides = [args.priority,args.priority_direction,args.priority_order,args.affinity,args.eligibility,args.weights,args.frontier_window]
+        if any(value is not None for value in overrides):
+            if args.view != "decision":
+                raise ValueError("Composition options require --view decision")
+            config = source.setdefault("composition", {"priority":{},"affinity":None,"eligibility":"generation",
+                                      "weights":{"parent":2,"affinity":6,"compactness":2,"radial":1},"frontierWindow":4})
+            if not isinstance(config,dict) or not isinstance(config.get("priority"),dict):
+                raise ValueError("composition and composition.priority must be JSON objects")
+            if args.priority and args.priority != config.get("priority",{}).get("key"):
+                config["priority"] = {"key":args.priority}
+            if args.priority_direction is not None:
+                config["priority"]["direction"] = args.priority_direction
+            if args.priority_order is not None:
+                config["priority"]["order"] = args.priority_order
+            if args.affinity is not None:
+                config["affinity"] = None if args.affinity == "none" else args.affinity
+            if args.eligibility is not None:
+                config["eligibility"] = args.eligibility
+            if args.weights is not None:
+                config["weights"] = dict(zip(["parent","affinity","compactness","radial"],args.weights))
+            if args.frontier_window is not None:
+                config["frontierWindow"] = args.frontier_window
         report = build(source, args.output, args.view, args.pixel_grid, args.initial_lens, args.cell_pixels, args.seed)
         if args.data_output:
             args.data_output.parent.mkdir(parents=True, exist_ok=True)

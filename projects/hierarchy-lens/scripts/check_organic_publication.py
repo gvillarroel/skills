@@ -3,7 +3,7 @@
 # requires-python = ">=3.11"
 # dependencies = ["playwright>=1.55,<2"]
 # ///
-"""Check the published catalog route and all three hierarchy deep links."""
+"""Check the published catalog route and all four hierarchy deep links."""
 
 import argparse
 import functools
@@ -42,19 +42,19 @@ def main():
             page.on("pageerror", lambda error: errors.append(str(error)))
             page.goto(base)
             card = page.locator("#example-set-hierarchy-lens")
-            checks.append({"check": "catalog-discovery", "ok": card.count() == 1 and "organic" in card.inner_text().lower()})
+            checks.append({"check": "catalog-discovery", "ok": card.count() == 1 and "composition" in card.inner_text().lower()})
             card.click()
             page.wait_for_function("document.documentElement.dataset.ready === 'true'")
-            checks.append({"check": "catalog-opens-organic", "ok": page.locator('[data-pattern-id="hierarchy-organic-pixels"]').count() == 1})
+            checks.append({"check": "catalog-opens-decision", "ok": page.locator('[data-pattern-id="hierarchy-decision-growth"]').count() == 1})
             example = base + "examples/hierarchy-lens/"
-            for pattern, target in [("hierarchy-radial-pixels", "radial.html"), ("hierarchy-radial-lenses", "analytical.html")]:
+            for pattern, target in [("hierarchy-radial-pixels", "radial.html"), ("hierarchy-radial-lenses", "analytical.html"), ("hierarchy-organic-pixels", "organic.html")]:
                 page.goto(example + "#" + pattern)
                 page.wait_for_url("**/" + target + "#" + pattern)
                 page.wait_for_function("document.documentElement.dataset.ready === 'true'")
                 checks.append({"check": pattern + "-legacy-redirect", "ok": page.locator('[data-pattern-id="' + pattern + '"]').count() == 1})
-            page.goto(example + "#hierarchy-organic-pixels")
+            page.goto(example + "#hierarchy-decision-growth")
             page.wait_for_function("document.documentElement.dataset.ready === 'true'")
-            checks.append({"check": "organic-link", "ok": page.url == example + "#hierarchy-organic-pixels"})
+            checks.append({"check": "decision-link", "ok": page.url == example + "#hierarchy-decision-growth"})
             checks.append({"check": "comparison-links", "ok": page.locator('a[href="radial.html#hierarchy-radial-pixels"]').count() == 1 and page.locator('a[href="analytical.html#hierarchy-radial-lenses"]').count() == 1})
             browser.close()
         checks.append({"check": "no-browser-errors", "ok": not errors})

@@ -86,9 +86,13 @@ def audit(path, screenshot=None):
             check("equal-area-square-records", all(c == grid["cellPixels"]**2 for c in counts))
             check("unique-complete-cells", len(cells) == len(nodes) and len({(c["tileX"],c["tileY"]) for c in cells}) == len(nodes))
             check("connected-body", connected((c["tileX"],c["tileY"]) for c in cells))
-            check("every-generation-connected", all(connected((c["tileX"],c["tileY"]) for c in cells if nodes[c["node"]]["depth"] <= depth) for depth in range(data["maxDepth"]+1)))
+            generation_order = grid.get("config", {}).get("eligibility", "generation") == "generation"
+            if generation_order:
+                check("every-generation-connected", all(connected((c["tileX"],c["tileY"]) for c in cells if nodes[c["node"]]["depth"] <= depth) for depth in range(data["maxDepth"]+1)))
             birth = sorted(cells,key=lambda c:c["birth"])
-            check("outward-generation-order", [c["birth"] for c in birth] == list(range(len(nodes))) and [nodes[c["node"]]["depth"] for c in birth] == sorted(n["depth"] for n in nodes))
+            check("complete-growth-order", [c["birth"] for c in birth] == list(range(len(nodes))))
+            if generation_order:
+                check("outward-generation-order", [nodes[c["node"]]["depth"] for c in birth] == sorted(n["depth"] for n in nodes))
             occupied = {(c["tileX"],c["tileY"]) for c in cells}
             xs,ys = zip(*occupied)
             background = {(x,y) for x in range(min(xs)-1,max(xs)+2) for y in range(min(ys)-1,max(ys)+2)}-occupied

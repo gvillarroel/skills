@@ -1,0 +1,7 @@
+{
+  "priority": {"key": "role", "order": ["Engineering", "Product", "Operations", "Sales", "Finance", "People", "Leadership"]},
+  "affinity": "role",
+  "eligibility": "generation",
+  "weights": {"parent": 2, "affinity": 6, "compactness": 2, "radial": 1},
+  "frontierWindow": 4
+}

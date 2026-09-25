@@ -123,8 +123,8 @@ PUBLISHED_EXAMPLE_SETS = [
         "source": "hierarchy-lens",
         "title": "Hierarchy Lens",
         "href": "examples/hierarchy-lens/",
-        "kind": "Compact organic pixel hierarchy",
-        "description": "Explore a fictional 1,200-person organization as one connected organic body, with a 2 × 2 pixel cell per record and switchable leadership, contract, role, and AI-token colors. Compare radial pixels and labeled charts.",
+        "kind": "Hierarchy composition engine",
+        "description": "Place 1,200 fictional records one at a time using explicit priorities, parent proximity, attribute affinity, and compactness. Replay decisions, edit rules, and switch color lenses on the resulting pixel map.",
     },
     {
         "id": "usefulcharts-style",
