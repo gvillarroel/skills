@@ -61,6 +61,7 @@ def main() -> int:
     parser.add_argument("--selector", default="svg", help="CSS selector for the SVG to capture")
     parser.add_argument("--wait-ms", type=int, default=1200, help="Extra time to wait after load")
     parser.add_argument("--timeout-ms", type=int, default=30000, help="Browser operation timeout")
+    parser.add_argument("--browser-channel", help="Installed Chromium channel, for example msedge or chrome.")
     parser.add_argument("--viewport", type=parse_viewport, default=parse_viewport("1280x720"))
     parser.add_argument("--screenshot", type=Path, help="Optional PNG screenshot of the selected SVG")
     parser.add_argument(
@@ -88,7 +89,18 @@ def main() -> int:
 
     try:
         with sync_playwright() as playwright:
-            browser = playwright.chromium.launch()
+            launch_options = {}
+            if args.browser_channel:
+                launch_options["channel"] = args.browser_channel
+            elif not Path(playwright.chromium.executable_path).exists() and sys.platform == "win32":
+                for channel, executable in (
+                    ("msedge", Path("C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")),
+                    ("chrome", Path("C:/Program Files/Google/Chrome/Application/chrome.exe")),
+                ):
+                    if executable.exists():
+                        launch_options["channel"] = channel
+                        break
+            browser = playwright.chromium.launch(**launch_options)
             page = browser.new_page(viewport={"width": width, "height": height})
             page.on("console", lambda message: console_errors.append(message.text) if message.type == "error" else None)
             page.on("pageerror", lambda error: page_errors.append(str(error)))
@@ -101,9 +113,40 @@ def main() -> int:
             info = locator.evaluate(
                 """svg => {
                     const box = svg.getBoundingClientRect();
+                    const clone = svg.cloneNode(true);
+                    const originals = [svg, ...svg.querySelectorAll('*')];
+                    const copies = [clone, ...clone.querySelectorAll('*')];
+                    const properties = ['fill', 'stroke', 'color', 'stroke-width',
+                        'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray',
+                        'font-family', 'font-size', 'font-weight', 'font-style',
+                        'text-anchor', 'dominant-baseline', 'paint-order',
+                        'opacity', 'fill-opacity', 'stroke-opacity', 'visibility', 'display'];
+                    const paint = value => {
+                        const match = value.match(/^rgb\\((\\d+),\\s*(\\d+),\\s*(\\d+)\\)$/);
+                        if (match) return '#' + match.slice(1).map(n => (+n).toString(16).padStart(2, '0')).join('');
+                        // Keep SVG fragment paints portable across file locations.
+                        if (value.startsWith('url(') && value.includes('#')) {
+                            return 'url(#' + value.split('#').pop().replace(/["')]/g, '') + ')';
+                        }
+                        return value;
+                    };
+                    originals.forEach((element, index) => {
+                        if (!(element instanceof SVGElement) || element.closest('defs')) return;
+                        const style = getComputedStyle(element);
+                        const declarations = Array.from(element.style)
+                            .filter(property => !properties.includes(property))
+                            .map(property => property + ':' + element.style.getPropertyValue(property));
+                        properties.forEach(property => {
+                            const value = style.getPropertyValue(property);
+                            if (value) declarations.push(property + ':' + paint(value));
+                        });
+                        // Raw attribute text retains canonical hex; CSSOM setters
+                        // serialize equivalent colors back to functional RGB.
+                        copies[index].setAttribute('style', declarations.join(';'));
+                    });
                     return {
                         tagName: svg.tagName.toLowerCase(),
-                        markup: svg.outerHTML,
+                        markup: clone.outerHTML,
                         width: box.width,
                         height: box.height,
                         elementCount: svg.querySelectorAll("*").length,

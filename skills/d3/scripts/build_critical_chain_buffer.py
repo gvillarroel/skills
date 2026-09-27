@@ -28,7 +28,7 @@ PANEL_H = 420
 PALETTE = {
     "red": "#9e1b32",
     "red_hover": "#6d1222",
-    "red_highlight": "#ffccd5",
+    "red_highlight": "#e7e7e7",
     "orange": "#e77204",
     "orange_highlight": "#ffe5cc",
     "green": "#45842a",

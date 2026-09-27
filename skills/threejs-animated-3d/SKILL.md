@@ -23,9 +23,10 @@ Replace the example value with the exact requested path. Do not substitute descr
    - For capture workflows, render deterministic frames from time-based animation state rather than relying on wall-clock side effects.
    - For reusable examples, expose a replay/reset function for every scene.
 3. Build each scene with a stable renderer lifecycle: fixed container aspect ratio, device-pixel-ratio cap, resize handling, camera update on resize, animation cleanup, and explicit disposal when scenes are removed.
-4. Use the repository visual tokens before capture. Keep page UI neutral, use the known primary palette for categorical materials, and reserve red for brand, risk, or emphasis.
-5. Prefer simple, inspectable geometry for examples. Use generated primitives, instanced meshes, buffer geometry, and local data before adding heavy external model assets.
-6. Verify the result in a browser. Check desktop and mobile viewports, canvas nonblank pixels, color diversity, animation movement, pointer interaction, replay controls, text fit, and console/page errors.
+4. Read `references/visual-tokens.md` before styling. Default to colorset1: neutral materials and surfaces with deliberate red emphasis. Pink is a last-resort category after usable red/neutrals, never an automatic secondary color. Use colorset2 only for explicit extended color. Use white lights so neutral objects retain their hue.
+5. Default to compact panels: 12 px padding, 8 px gaps, 4 px vertical button padding, and a 200 px stage minimum. Preserve readable fonts and touch targets; fit the full animation envelope after resizing rather than shrinking meaningful scene geometry.
+6. Prefer simple, inspectable geometry for examples. Use generated primitives, instanced meshes, buffer geometry, and local data before adding heavy external model assets.
+7. Verify the result in a browser. Check desktop and mobile viewports, canvas nonblank pixels, tonal variation, material/light palette, animation movement, pointer interaction, replay controls, text fit, and console/page errors. Grayscale shading counts as variation; do not add hues to satisfy a diversity check.
 
 ## Progressive Disclosure Map
 
@@ -40,6 +41,12 @@ Replace the example value with the exact requested path. Do not substitute descr
 
 Create a no-network runtime scene with an exact output path:
 
+The builder uses colorset1 and compact spacing by default. Pass `--colorset
+colorset2` only for an explicit extended palette; `--density comfortable` is
+available for requested larger spacing. Use `--title "Scene heading"` for the
+visible heading and `--token-count 12` for a different orbit count (1–24), reusing
+role colors as the count grows. Keep generated files outside the skill directory.
+
 ```powershell
 $OutputHtml = "scene.html"
 uv run --script skills/threejs-animated-3d/scripts/build_standalone_threejs.py $OutputHtml
@@ -50,7 +57,9 @@ Select-String -Path $OutputHtml -Pattern "https?://|//cdn|unpkg|jsdelivr|esm.sh"
 uv run --script skills/threejs-animated-3d/scripts/validate_standalone_threejs.py $OutputHtml --report scene-validation.json --screenshot scene.png
 ```
 
-Use the bundled validator instead of probing Playwright object internals or
+The validator declares Playwright dependencies: always run it with
+`uv run --script`, never bare `python`. It can reuse installed Edge/Chrome on
+Windows when managed Chromium is absent. Use the bundled validator instead of probing Playwright object internals or
 issuing an unguarded `grep` whose expected no-match exit code becomes a tool
 error. Treat its nonzero exit as the validation failure and fix the artifact.
 

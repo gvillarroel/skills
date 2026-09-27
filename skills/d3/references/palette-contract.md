@@ -29,12 +29,19 @@ Colorset1 contains 17 red-neutral tokens. Use these roles first:
 - primary `#9e1b32`
 - primary dark `#6d1222`
 - critical accent `#e8002a`
-- soft accent `#ffccd5`
+- last-resort pink `#ffccd5` (legacy `accentSoft`; outside default color assignments)
 - muted `#828282`
 - line `#cfcfcf`
 - quiet surface `#e7e7e7`
 
 Use grayscale value, stroke weight, texture, shape, position, and direct labels before adding more hue. Reserve red for the primary series, selection, change, risk, or another declared semantic role.
+
+Use white or `#e7e7e7` for secondary surfaces and subtle selection fills, with a
+red stroke or opaque mark when emphasis is needed. Do not automatically select
+pink for the second series, highlights, focus, replay, or additional nodes.
+Only introduce pink for an additional meaningful category after usable reds,
+grays, black, and white are exhausted, or when explicitly requested; record the
+reason. Reuse role colors before allocating a new token.
 
 ## Colorset2 — Extended
 

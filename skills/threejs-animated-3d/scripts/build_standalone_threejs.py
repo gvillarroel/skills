@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import base64
 import json
+from html import escape
 from pathlib import Path
 
 
@@ -25,6 +26,10 @@ CORE_IMPORT_SPECIFIER = "./three.core.min.js"
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("output", type=Path, help="Exact HTML output path.")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1", help="Red and neutrals by default; extended hues require an explicit request.")
+    parser.add_argument("--density", choices=("compact", "comfortable"), default="compact", help="Panel and control spacing; does not change object geometry.")
+    parser.add_argument("--title", default="Token Orbit", help="Visible scene heading.")
+    parser.add_argument("--token-count", type=int, default=5, help="Number of orbiting objects, 1–24; reuse role colors.")
     parser.add_argument("--force", action="store_true", help="Overwrite an existing output file.")
     return parser.parse_args()
 
@@ -51,7 +56,11 @@ def inline_runtime() -> str:
       const THREE = await import(__threeModuleUrl);"""
 
 
-def build(output: Path, *, force: bool) -> Path:
+def build(output: Path, *, force: bool, colorset: str = "colorset1", density: str = "compact", title: str = "Token Orbit", token_count: int = 5) -> Path:
+    if colorset not in {"colorset1", "colorset2"} or density not in {"compact", "comfortable"}:
+        raise ValueError("Invalid colorset or density")
+    if not 1 <= token_count <= 24:
+        raise ValueError("--token-count must be between 1 and 24")
     if not TEMPLATE_PATH.is_file():
         raise SystemExit(f"Required template is missing: {TEMPLATE_PATH}")
 
@@ -66,6 +75,8 @@ def build(output: Path, *, force: bool) -> Path:
     output.parent.mkdir(parents=True, exist_ok=True)
 
     html = template.replace(RUNTIME_MARKER, inline_runtime())
+    html = html.replace("__COLORSET__", colorset).replace("__DENSITY__", density).replace("__TITLE__", escape(title))
+    html = html.replace("__TOKEN_COUNT__", str(token_count))
     if RUNTIME_MARKER in html or 'import * as THREE from "./skills/' in html:
         raise SystemExit("Standalone HTML still contains a filesystem-relative Three.js vendor import.")
 
@@ -76,7 +87,7 @@ def build(output: Path, *, force: bool) -> Path:
 
 def main() -> int:
     args = parse_args()
-    build(args.output, force=args.force)
+    build(args.output, force=args.force, colorset=args.colorset, density=args.density, title=args.title, token_count=args.token_count)
     return 0
 
 

@@ -80,7 +80,7 @@ def build_html() -> str:
     p {{ margin: 0 0 14px; color: var(--muted); }}
     svg {{ display: block; width: 100%; height: auto; background: var(--surface); border: 1px solid var(--line); }}
     button {{ margin-top: 12px; padding: 8px 14px; border: 1px solid var(--ink); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; }}
-    button:focus-visible {{ outline: 3px solid #ffccd5; outline-offset: 2px; }}
+    button:focus-visible {{ outline: 3px solid #9e1b32; outline-offset: 2px; }}
   </style>
 </head>
 <body>

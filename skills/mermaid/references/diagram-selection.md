@@ -65,7 +65,8 @@ If two families remain equally valid and the choice changes the message, state t
 
 - `colorset1` is the standard: brand red (`#9e1b32`), dark ink (`#333e48`), white, and neutral grays. Use it when no palette mode is stated.
 - `colorset2` is extended/full-color: it retains the brand anchors and adds blue (`#007298`), orange (`#e77204`), green (`#45842a`), cyan (`#00ace6`), and purple (`#652f6c`). Use it only after an explicit extended/full-color request.
-- Use light fills with dark text. Do not use color as the only carrier of meaning; retain labels, shapes, edge text, or grouping.
+- Prefer white and gray fills with dark text; use solid brand red with white text for the primary emphasis. Pink is reserved for an explicitly needed extra category after usable red and neutral choices are exhausted, never a standard secondary role. The standard generated scales need no pink.
+- Use labels, shapes, edge text, or grouping alongside color. Reuse a semantic role for elements with the same meaning; additional nodes alone do not require more colors. See [compact composition](compact-composition.md) for native padding defaults and color priority.
 - Use semantic classes sparingly: primary path (`csPrimary`), alternative emphasis (`csAccent`), de-emphasis (`csMuted`), failure (`csCritical`), caution (`csWarning`), success (`csSuccess`), information (`csInfo`), exceptional category (`csSpecial`), and neutral structure (`csNeutral`).
 
 ## Authoring Quality

@@ -8,6 +8,7 @@ Use these patterns when implementing Three.js scenes or galleries for this repos
 - Use `BufferGeometry` for particle fields, wave surfaces, point clouds, and generated scientific or data-driven shapes.
 - Use `InstancedMesh` when repeating many similar objects with different transforms or token colors.
 - Use local generated data unless the request requires a specific model or dataset. Avoid large remote assets in acceptance fixtures.
+- For the bundled orbit, `--token-count` accepts 1–24 objects within the same motion envelope. Cycle existing role colors; do not introduce pink or new hues just because the object count exceeds the palette length. Increase the scene size or simplify trajectories when overlap obscures identity.
 
 ## Renderer Structure
 
@@ -28,12 +29,14 @@ Use a shared renderer harness for canvas setup, resizing, camera aspect updates,
 - Use `PerspectiveCamera` for depth-forward examples and keep the field of view moderate, usually 34 to 50 degrees.
 - Place the camera high enough to reveal depth without hiding labels or page UI.
 - Call `camera.updateProjectionMatrix()` after every resize.
-- Keep fixed-format scene frames stable with `aspect-ratio`, `min-height`, and `overflow: hidden`.
+- Keep fixed-format scene frames stable with `aspect-ratio`; default to a 200 px minimum stage height and compact spacing from `visual-tokens.md`. An explicit requested size takes precedence.
+- Fit camera distance to the complete animation envelope and the current horizontal/vertical field of view. Refit after aspect changes or orbit input. `overflow: hidden` is not evidence that moving objects fit; inspect their projected bounds through the cycle. The bundled orbit template samples a cylindrical motion envelope with a 12% projection margin, leaving decorative floor rings free to extend beyond the frame.
 
 ## Materials And Color
 
-- Use token colors from `references/visual-tokens.md`: red `#9e1b32`, orange `#e77204`, yellow `#f1c319`, green `#45842a`, blue `#007298`, purple `#652f6c`, black, white, and grays.
+- Follow `visual-tokens.md`: colorset1 uses red `#9e1b32`, black, white, and grays first. Pink is a last resort; colorset2's extended hues require an explicit request.
 - Use `MeshStandardMaterial` with ambient and directional lights for most scenes.
+- Keep lights neutral white, enable normal sRGB input/output conversion, and inspect final shading so red does not become a broad pink wash. Validate material colors separately from naturally shaded pixels.
 - Use `PointsMaterial` with vertex colors for particles.
 - Keep clear colors white or light neutral unless the scene requires a dark inspection environment.
 

@@ -1,0 +1,2479 @@
+{
+  "date": "2026-09-27",
+  "passed": true,
+  "modelException": "openai-codex/gpt-5.6-luna",
+  "browserComparisons": 50,
+  "independentFinalArtifacts": 16,
+  "strictFinalPasses": 14,
+  "strictFinalTotal": 16,
+  "attempts": [
+    {
+      "runId": "d3-compact-boundary-20260927-release-1",
+      "skill": "d3",
+      "case": "boundary",
+      "selected": false,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 44.682,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "57a78dd69e3b9b29bac5b57144afad929b27d98b407b0f3adf405de3445ed468"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "boundary.html",
+        "boundary.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-boundary-20260927-revised-1",
+      "skill": "d3",
+      "case": "boundary",
+      "selected": false,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 40.414,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "a4f4d4474bdf20804c914cdad6fba14a2d7aedd4f894d2f589d7d106b7a9b91e"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "boundary.html",
+        "boundary.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "boundary.svg",
+        "decision.json"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-boundary-20260927-verified-1",
+      "skill": "d3",
+      "case": "boundary",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 46.636,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "88e22fb9fa07d710659f94bd113c04f2982bce5be8791d996fee326a44f23f1a"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "boundary.html",
+        "boundary.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "decision.json",
+        "boundary.html",
+        "boundary.svg"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-contract-20260927-contract-recheck-1",
+      "skill": "d3",
+      "case": "contract",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 24.18,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "57a78dd69e3b9b29bac5b57144afad929b27d98b407b0f3adf405de3445ed468"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "flow.html",
+        "flow.svg",
+        "decision.json"
+      ],
+      "eventFindings": [
+        {
+          "code": "missing-exact-prompt-command",
+          "expectedCommands": [
+            "python skills/d3/scripts/check_self_contained_html.py flow.html\npython skills/d3/scripts/check_palette_contract.py flow.html --colorset colorset1\nuv run --script skills/d3/scripts/render_d3_svg.py flow.html --output flow.svg\npython skills/d3/scripts/check_visual_contract.py flow.svg --require-id release-flow --require-class flow-node:3 --require-class link:2 --require-class link-value:2 --require-text Draft --require-text Review --require-text Publish --require-text 12 --require-text 8"
+          ],
+          "actualCommandSamples": [
+            "python \"skills/d3/scripts/build_contract_artifact.py\" --help",
+            "python skills/d3/scripts/build_contract_artifact.py --kind flow --output flow.html --decision-output decision.json --title \"Release flow\" --description \"Three ordered release stages.\" --route flow --colorset colorset1 --pattern-id d3-flow-spine --svg-id release-flow --reason \"Ordered workflow\" --flow-node Draft --flow-node Review --flow-node Publish --link \"Draft->Review\" --link \"Review->Publish\" --link-value 12 --link-value 8",
+            "python skills/d3/scripts/check_self_contained_html.py flow.html && python skills/d3/scripts/check_palette_contract.py flow.html --colorset colorset1 && uv run --script skills/d3/scripts/render_d3_svg.py flow.html --output flow.svg && python skills/d3/scripts/check_visual_contract.py flow.svg --require-id release-flow --require-class flow-node:3 --require-class link:2 --require-class link-value:2 --require-text Draft --require-text Review --require-text Publish --require-text 12 --require-text 8"
+          ]
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-contract-20260927-exact-contract-1",
+      "skill": "d3",
+      "case": "contract",
+      "selected": false,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 31.006,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "57a78dd69e3b9b29bac5b57144afad929b27d98b407b0f3adf405de3445ed468"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "flow.html",
+        "flow.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-contract-20260927-final-1",
+      "skill": "d3",
+      "case": "contract",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 90.773,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "8e1d0498c6ac383b2f79da163c2862a173173e4418c752e0f23d10b3df2c6dc8"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "flow.html",
+        "flow.svg",
+        "decision.json"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 247,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 651,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "decision.json",
+        "flow.html",
+        "flow.html",
+        ".flow-rendered.html"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/render_d3_svg.py flow.html --output flow.svg"
+        },
+        {
+          "tool": "bash",
+          "command": "CHROME='/c/Program Files/Google/Chrome/Application/chrome.exe'; \"$CHROME\" --headless --disable-gpu --no-sandbox --dump-dom --virtual-time-budget=1000 \"file:///$(pwd)/flow.html\" > .flow-rendered.html && python -c \"from pathlib import Path; s=Path('.flow-rendered.html').read_text(encoding='utf-8'); a="
+        }
+      ]
+    },
+    {
+      "runId": "d3-compact-contract-20260927-release-1",
+      "skill": "d3",
+      "case": "contract",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 45.911,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "57a78dd69e3b9b29bac5b57144afad929b27d98b407b0f3adf405de3445ed468"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "flow.html",
+        "flow.svg",
+        "decision.json"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 436,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "decision.json"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_visual_contract.py flow.svg --require-id release-flow --require-class flow-node:3 --require-class flow-link:2 --require-attribute \"data-pattern-id=d3-flow-spine\" --require-attribute \"data-colorset=colorset1\" --require-text Draft --require-text Review --require-text Pub"
+        }
+      ]
+    },
+    {
+      "runId": "d3-compact-contract-20260927-revised-1",
+      "skill": "d3",
+      "case": "contract",
+      "selected": false,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 27.744,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "a4f4d4474bdf20804c914cdad6fba14a2d7aedd4f894d2f589d7d106b7a9b91e"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "flow.html",
+        "flow.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-contract-20260927-verified-1",
+      "skill": "d3",
+      "case": "contract",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 28.881,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "88e22fb9fa07d710659f94bd113c04f2982bce5be8791d996fee326a44f23f1a"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "flow.html",
+        "flow.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-release-1",
+      "skill": "d3",
+      "case": "generalization",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 242.743,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "57a78dd69e3b9b29bac5b57144afad929b27d98b407b0f3adf405de3445ed468"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard.svg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 7664,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 7665,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 7668,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 7900,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 8057,
+          "tool": "edit"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/layout-patterns.md",
+        "skills/d3/references/self-contained-output.md",
+        "skills/d3/assets/palettes/colorsets.json",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard/index.html",
+        "dashboard.svg",
+        "dashboard/index.html",
+        "dashboard.svg",
+        "dashboard.svg",
+        "dashboard.svg",
+        "dashboard.svg",
+        "dashboard/index.html"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_self_contained_html.py dashboard/index.html"
+        },
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_palette_contract.py dashboard/index.html --colorset colorset1"
+        },
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_palette_contract.py dashboard.svg --colorset colorset1"
+        },
+        {
+          "tool": "edit",
+          "command": ""
+        },
+        {
+          "tool": "edit",
+          "command": ""
+        }
+      ]
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-release-2",
+      "skill": "d3",
+      "case": "generalization",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 202.282,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "57a78dd69e3b9b29bac5b57144afad929b27d98b407b0f3adf405de3445ed468"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard.svg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3395,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 3396,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 7097,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/compact-composition.md",
+        "skills/d3/references/layout-patterns.md",
+        "skills/d3/references/self-contained-output.md",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard/index.html",
+        "dashboard/index.html"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_self_contained_html.py dashboard/index.html"
+        },
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_palette_contract.py dashboard/index.html --colorset colorset1"
+        },
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_palette_contract.py dashboard/index.html --colorset colorset1"
+        }
+      ]
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-release-3",
+      "skill": "d3",
+      "case": "generalization",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 234.159,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "57a78dd69e3b9b29bac5b57144afad929b27d98b407b0f3adf405de3445ed468"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard.svg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 3668,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 6488,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 6491,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 6492,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 6493,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 7018,
+          "tool": "edit"
+        },
+        {
+          "code": "tool-error",
+          "line": 7143,
+          "tool": "bash"
+        },
+        {
+          "code": "tool-error",
+          "line": 7393,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/compact-composition.md",
+        "skills/d3/references/self-contained-output.md",
+        "skills/d3/assets/palettes/colorsets.json",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard/index.html",
+        "dashboard/styles.css",
+        "dashboard/styles.css",
+        "dashboard/styles.css",
+        "dashboard/index.html",
+        "dashboard.svg",
+        "dashboard/index.html",
+        "dashboard.svg",
+        "dashboard/index.html"
+      ],
+      "toolErrors": [
+        {
+          "tool": "edit",
+          "command": ""
+        },
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_visual_contract.py dashboard.svg --require-attribute \"viewBox=0 0 1180 720\" --ordered-text \"Platform operations\" --require-class \"service-row:0\""
+        },
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_palette_contract.py dashboard.svg --colorset colorset1"
+        },
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_palette_contract.py dashboard/index.html --colorset colorset1"
+        },
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_self_contained_html.py dashboard/index.html"
+        },
+        {
+          "tool": "edit",
+          "command": ""
+        },
+        {
+          "tool": "bash",
+          "command": "uv run --script skills/d3/scripts/render_d3_svg.py dashboard/index.html --output dashboard/rendered.svg"
+        },
+        {
+          "tool": "bash",
+          "command": "python -c \"from pathlib import Path; p=Path('dashboard/index.html'); s=p.read_text(); marker='<svg width=\\\"1\\\" height=\\\"1\\\" aria-hidden=\\\"true\\\" data-colorset=\\\"colorset1\\\"><title>Platform operations</title><desc>Operations dashboard with service exposure and control posture.</desc></svg>'; s=s.repl"
+        }
+      ]
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-revised-1",
+      "skill": "d3",
+      "case": "generalization",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 57.152,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "a4f4d4474bdf20804c914cdad6fba14a2d7aedd4f894d2f589d7d106b7a9b91e"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard.svg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 303,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/user-artifact-workflow.md",
+        "dashboard/styles.css",
+        "dashboard/index.html",
+        "dashboard/NOTES.md",
+        "dashboard/data.js",
+        "dashboard.png",
+        "dashboard/index.html"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_palette_contract.py dashboard.svg --colorset colorset1"
+        }
+      ]
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-revised-2",
+      "skill": "d3",
+      "case": "generalization",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 59.325,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "a4f4d4474bdf20804c914cdad6fba14a2d7aedd4f894d2f589d7d106b7a9b91e"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard.svg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 287,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/user-artifact-workflow.md",
+        "dashboard/NOTES.md",
+        "dashboard/index.html",
+        "dashboard/styles.css",
+        "dashboard/data.js",
+        "dashboard/index.html"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_palette_contract.py dashboard.svg --colorset colorset1"
+        }
+      ]
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-revised-3",
+      "skill": "d3",
+      "case": "generalization",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 58.417,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "a4f4d4474bdf20804c914cdad6fba14a2d7aedd4f894d2f589d7d106b7a9b91e"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard.svg"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 286,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/user-artifact-workflow.md",
+        "dashboard/styles.css",
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard/NOTES.md",
+        "dashboard/index.html"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "python skills/d3/scripts/check_palette_contract.py dashboard.svg --colorset colorset1"
+        }
+      ]
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-verified-1",
+      "skill": "d3",
+      "case": "generalization",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 43.983,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "88e22fb9fa07d710659f94bd113c04f2982bce5be8791d996fee326a44f23f1a"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard.svg"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/user-artifact-workflow.md",
+        "dashboard/data.js",
+        "dashboard/index.html",
+        "dashboard/NOTES.md",
+        "dashboard/styles.css"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-verified-2",
+      "skill": "d3",
+      "case": "generalization",
+      "selected": true,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 62.619,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "88e22fb9fa07d710659f94bd113c04f2982bce5be8791d996fee326a44f23f1a"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard.svg"
+      ],
+      "eventFindings": [
+        {
+          "code": "prompt-not-read-first",
+          "firstTool": {
+            "line": 18,
+            "tool": "read",
+            "path": "skills/d3/SKILL.md",
+            "command": null,
+            "isError": false
+          }
+        }
+      ],
+      "readSurface": [
+        "skills/d3/SKILL.md",
+        "../prompt.md",
+        "skills/d3/references/user-artifact-workflow.md",
+        "dashboard/styles.css",
+        "dashboard/data.js",
+        "dashboard/NOTES.md",
+        "dashboard/index.html",
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard.png",
+        "dashboard/data.js",
+        "dashboard.png"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-verified-3",
+      "skill": "d3",
+      "case": "generalization",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 41.283,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "88e22fb9fa07d710659f94bd113c04f2982bce5be8791d996fee326a44f23f1a"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "dashboard/index.html",
+        "dashboard/data.js",
+        "dashboard/styles.css",
+        "dashboard.svg"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/user-artifact-workflow.md",
+        "dashboard/index.html",
+        "dashboard/styles.css",
+        "dashboard/NOTES.md",
+        "dashboard/data.js",
+        "dashboard/rendered.png"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-release-1",
+      "skill": "d3",
+      "case": "naturalistic",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 82.214,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "57a78dd69e3b9b29bac5b57144afad929b27d98b407b0f3adf405de3445ed468"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "process.html",
+        "process.svg",
+        "decision.json"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 530,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/compact-composition.md",
+        "decision.json",
+        "process.html",
+        "process.svg"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "python \"skills/d3/scripts/check_visual_contract.py\" process.svg --require-id \"delivery-review-flow:1\" --require-class \"flow-node:8\" --require-class \"flow-link:3\" --require-class \"link-value:3\" --require-class \"flow-node-label:4\" --require-class \"contract-title:1\" --require-tag \"title:1\" --require-ta"
+        }
+      ]
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-release-2",
+      "skill": "d3",
+      "case": "naturalistic",
+      "selected": false,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 48.538,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "57a78dd69e3b9b29bac5b57144afad929b27d98b407b0f3adf405de3445ed468"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "process.html",
+        "process.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "process.html",
+        "process.svg",
+        "decision.json"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-release-3",
+      "skill": "d3",
+      "case": "naturalistic",
+      "selected": false,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 52.506,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "57a78dd69e3b9b29bac5b57144afad929b27d98b407b0f3adf405de3445ed468"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "process.html",
+        "process.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/compact-composition.md",
+        "skills/d3/references/self-contained-output.md",
+        "skills/d3/references/pattern-selection-contracts.md",
+        "skills/d3/references/visualization-type-index.md",
+        "skills/d3/references/layout-patterns.md",
+        "decision.json",
+        "process.html",
+        "process.html",
+        "process.svg"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-revised-1",
+      "skill": "d3",
+      "case": "naturalistic",
+      "selected": false,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 49.587,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "a4f4d4474bdf20804c914cdad6fba14a2d7aedd4f894d2f589d7d106b7a9b91e"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "process.html",
+        "process.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "decision.json",
+        "process.svg"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-revised-2",
+      "skill": "d3",
+      "case": "naturalistic",
+      "selected": false,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 42.728,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "a4f4d4474bdf20804c914cdad6fba14a2d7aedd4f894d2f589d7d106b7a9b91e"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "process.html",
+        "process.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "process.svg"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-revised-3",
+      "skill": "d3",
+      "case": "naturalistic",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 53.685,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "a4f4d4474bdf20804c914cdad6fba14a2d7aedd4f894d2f589d7d106b7a9b91e"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "process.html",
+        "process.svg",
+        "decision.json"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 407,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/self-contained-output.md",
+        "skills/d3/references/compact-composition.md",
+        "decision.json",
+        "process.svg",
+        "process.html"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "python \"skills/d3/scripts/check_visual_contract.py\" process.svg --require-id process-diagram --require-attribute \"viewBox=0 0 900 180\" --require-attribute \"data-colorset=colorset1\" --require-attribute \"data-pattern-id=flow-spine\" --require-class \"g.flow-node:4\" --require-class \"rect.node:4\" --requir"
+        }
+      ]
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-verified-1",
+      "skill": "d3",
+      "case": "naturalistic",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 59.083,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "88e22fb9fa07d710659f94bd113c04f2982bce5be8791d996fee326a44f23f1a"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "process.html",
+        "process.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "skills/d3/references/compact-composition.md",
+        "skills/d3/references/self-contained-output.md",
+        "skills/d3/scripts/build_contract_artifact.py",
+        "skills/d3/scripts/build_contract_artifact.py",
+        "process.svg"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-verified-2",
+      "skill": "d3",
+      "case": "naturalistic",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 40.59,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "88e22fb9fa07d710659f94bd113c04f2982bce5be8791d996fee326a44f23f1a"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "process.html",
+        "process.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "process.svg"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-verified-3",
+      "skill": "d3",
+      "case": "naturalistic",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 42.839,
+      "payload": {
+        "name": "d3",
+        "profile": "runtime",
+        "fileCount": 282,
+        "payloadSha256": "88e22fb9fa07d710659f94bd113c04f2982bce5be8791d996fee326a44f23f1a"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "process.html",
+        "process.svg",
+        "decision.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/d3/SKILL.md",
+        "decision.json",
+        "process.svg"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "threejs-compact-boundary-20260927-release-1",
+      "skill": "threejs-animated-3d",
+      "case": "boundary",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 34.31,
+      "payload": {
+        "name": "threejs-animated-3d",
+        "profile": "runtime",
+        "fileCount": 10,
+        "payloadSha256": "424322c771e98862a8a3e637cdaaf59a4b1247299a3fc558a582166372e6e078"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "extended.html",
+        "validation.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/validation.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "skills/threejs-animated-3d/references/scene-patterns.md",
+        "validation.json"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "threejs-compact-contract-20260927-final-1",
+      "skill": "threejs-animated-3d",
+      "case": "contract",
+      "selected": false,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 31.053,
+      "payload": {
+        "name": "threejs-animated-3d",
+        "profile": "runtime",
+        "fileCount": 10,
+        "payloadSha256": "fbf6517637ea61ab5834c8e452cc60771cad9e086583614893a03846a0e21a64"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "scene.html",
+        "validation.json"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 141,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "python skills/threejs-animated-3d/scripts/validate_standalone_threejs.py scene.html --report validation.json"
+        }
+      ]
+    },
+    {
+      "runId": "threejs-compact-contract-20260927-release-1",
+      "skill": "threejs-animated-3d",
+      "case": "contract",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 38.72,
+      "payload": {
+        "name": "threejs-animated-3d",
+        "profile": "runtime",
+        "fileCount": 10,
+        "payloadSha256": "424322c771e98862a8a3e637cdaaf59a4b1247299a3fc558a582166372e6e078"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "scene.html",
+        "validation.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/validation.md",
+        "skills/threejs-animated-3d/assets/templates/self-contained-token-orbit.html",
+        "skills/threejs-animated-3d/scripts/build_standalone_threejs.py",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "validation.json"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "threejs-compact-generalization-20260927-release-1",
+      "skill": "threejs-animated-3d",
+      "case": "generalization",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 47.283,
+      "payload": {
+        "name": "threejs-animated-3d",
+        "profile": "runtime",
+        "fileCount": 10,
+        "payloadSha256": "424322c771e98862a8a3e637cdaaf59a4b1247299a3fc558a582166372e6e078"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "workers.html",
+        "validation.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/validation.md",
+        "skills/threejs-animated-3d/references/scene-patterns.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "validation.json"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "threejs-compact-generalization-20260927-release-2",
+      "skill": "threejs-animated-3d",
+      "case": "generalization",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 35.191,
+      "payload": {
+        "name": "threejs-animated-3d",
+        "profile": "runtime",
+        "fileCount": 10,
+        "payloadSha256": "424322c771e98862a8a3e637cdaaf59a4b1247299a3fc558a582166372e6e078"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "workers.html",
+        "validation.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/validation.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "skills/threejs-animated-3d/scripts/validate_standalone_threejs.py",
+        "skills/threejs-animated-3d/scripts/build_standalone_threejs.py",
+        "skills/threejs-animated-3d/assets/templates/self-contained-token-orbit.html",
+        "validation.json"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "threejs-compact-generalization-20260927-release-3",
+      "skill": "threejs-animated-3d",
+      "case": "generalization",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 32.989,
+      "payload": {
+        "name": "threejs-animated-3d",
+        "profile": "runtime",
+        "fileCount": 10,
+        "payloadSha256": "424322c771e98862a8a3e637cdaaf59a4b1247299a3fc558a582166372e6e078"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "workers.html",
+        "validation.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/scene-patterns.md",
+        "skills/threejs-animated-3d/references/validation.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "threejs-compact-naturalistic-20260927-release-1",
+      "skill": "threejs-animated-3d",
+      "case": "naturalistic",
+      "selected": true,
+      "passed": false,
+      "gates": {
+        "artifacts": true,
+        "events": false,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 43.543,
+      "payload": {
+        "name": "threejs-animated-3d",
+        "profile": "runtime",
+        "fileCount": 10,
+        "payloadSha256": "424322c771e98862a8a3e637cdaaf59a4b1247299a3fc558a582166372e6e078"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "signal.html",
+        "validation.json"
+      ],
+      "eventFindings": [
+        {
+          "code": "tool-error",
+          "line": 354,
+          "tool": "bash"
+        }
+      ],
+      "readSurface": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "skills/threejs-animated-3d/references/validation.md",
+        "skills/threejs-animated-3d/references/scene-patterns.md",
+        "artifacts/signal.png"
+      ],
+      "toolErrors": [
+        {
+          "tool": "bash",
+          "command": "rm -rf artifacts && test -f signal.html && test -f validation.json && test ! -d skills/threejs-animated-3d && printf 'root outputs present\\n'"
+        }
+      ]
+    },
+    {
+      "runId": "threejs-compact-naturalistic-20260927-release-2",
+      "skill": "threejs-animated-3d",
+      "case": "naturalistic",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 30.687,
+      "payload": {
+        "name": "threejs-animated-3d",
+        "profile": "runtime",
+        "fileCount": 10,
+        "payloadSha256": "424322c771e98862a8a3e637cdaaf59a4b1247299a3fc558a582166372e6e078"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "signal.html",
+        "validation.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/scene-patterns.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "skills/threejs-animated-3d/references/validation.md"
+      ],
+      "toolErrors": []
+    },
+    {
+      "runId": "threejs-compact-naturalistic-20260927-release-3",
+      "skill": "threejs-animated-3d",
+      "case": "naturalistic",
+      "selected": true,
+      "passed": true,
+      "gates": {
+        "artifacts": true,
+        "events": true,
+        "jsonFields": null,
+        "skillIntegrity": true
+      },
+      "durationSeconds": 39.111,
+      "payload": {
+        "name": "threejs-animated-3d",
+        "profile": "runtime",
+        "fileCount": 10,
+        "payloadSha256": "424322c771e98862a8a3e637cdaaf59a4b1247299a3fc558a582166372e6e078"
+      },
+      "model": "openai-codex/gpt-5.6-luna",
+      "outputs": [
+        "signal.html",
+        "validation.json"
+      ],
+      "eventFindings": [],
+      "readSurface": [
+        "../prompt.md",
+        "skills/threejs-animated-3d/SKILL.md",
+        "skills/threejs-animated-3d/references/validation.md",
+        "skills/threejs-animated-3d/references/scene-patterns.md",
+        "skills/threejs-animated-3d/references/visual-tokens.md",
+        "skills/threejs-animated-3d/scripts/build_standalone_threejs.py"
+      ],
+      "toolErrors": []
+    }
+  ],
+  "finalArtifactReview": [
+    {
+      "runId": "threejs-compact-boundary-20260927-release-1",
+      "library": "threejs",
+      "case": "boundary",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "colorset": "colorset2",
+          "tokenCount": 5,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#007298",
+            "#45842a",
+            "#e77204",
+            "#f1c319",
+            "#652f6c"
+          ]
+        },
+        {
+          "width": 390,
+          "colorset": "colorset2",
+          "tokenCount": 5,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#007298",
+            "#45842a",
+            "#e77204",
+            "#f1c319",
+            "#652f6c"
+          ]
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "threejs-compact-contract-20260927-release-1",
+      "library": "threejs",
+      "case": "contract",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "colorset": "colorset1",
+          "tokenCount": 5,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf"
+          ]
+        },
+        {
+          "width": 390,
+          "colorset": "colorset1",
+          "tokenCount": 5,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf"
+          ]
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "threejs-compact-generalization-20260927-release-1",
+      "library": "threejs",
+      "case": "generalization",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "colorset": "colorset1",
+          "tokenCount": 12,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f"
+          ]
+        },
+        {
+          "width": 390,
+          "colorset": "colorset1",
+          "tokenCount": 12,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f"
+          ]
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "threejs-compact-generalization-20260927-release-2",
+      "library": "threejs",
+      "case": "generalization",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "colorset": "colorset1",
+          "tokenCount": 12,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f"
+          ]
+        },
+        {
+          "width": 390,
+          "colorset": "colorset1",
+          "tokenCount": 12,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f"
+          ]
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "threejs-compact-generalization-20260927-release-3",
+      "library": "threejs",
+      "case": "generalization",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "colorset": "colorset1",
+          "tokenCount": 12,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f"
+          ]
+        },
+        {
+          "width": 390,
+          "colorset": "colorset1",
+          "tokenCount": 12,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf",
+            "#333e48",
+            "#4f4f4f"
+          ]
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "threejs-compact-naturalistic-20260927-release-1",
+      "library": "threejs",
+      "case": "naturalistic",
+      "strictPassed": false,
+      "checks": [
+        {
+          "width": 1280,
+          "colorset": "colorset1",
+          "tokenCount": 5,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf"
+          ]
+        },
+        {
+          "width": 390,
+          "colorset": "colorset1",
+          "tokenCount": 5,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf"
+          ]
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "threejs-compact-naturalistic-20260927-release-2",
+      "library": "threejs",
+      "case": "naturalistic",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "colorset": "colorset1",
+          "tokenCount": 5,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf"
+          ]
+        },
+        {
+          "width": 390,
+          "colorset": "colorset1",
+          "tokenCount": 5,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf"
+          ]
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "threejs-compact-naturalistic-20260927-release-3",
+      "library": "threejs",
+      "case": "naturalistic",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "colorset": "colorset1",
+          "tokenCount": 5,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf"
+          ]
+        },
+        {
+          "width": 390,
+          "colorset": "colorset1",
+          "tokenCount": 5,
+          "framesInBounds": 41,
+          "materials": [
+            "#9e1b32",
+            "#333e48",
+            "#4f4f4f",
+            "#828282",
+            "#1c1c1c",
+            "#cfcfcf"
+          ]
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "d3-compact-boundary-20260927-verified-1",
+      "library": "d3",
+      "case": "boundary",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "viewBox": "0 0 960 300",
+          "paints": [
+            "#333e48",
+            "#9e1b32",
+            "#ffffff"
+          ],
+          "nodes": [
+            {
+              "height": 54.27655029296875,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 17.999999046325684,
+              "fits": true
+            },
+            {
+              "height": 54.27655029296875,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 17.999999046325684,
+              "fits": true
+            },
+            {
+              "height": 54.27655029296875,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 17.999999046325684,
+              "fits": true
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "viewBox": "0 0 960 300",
+          "paints": [
+            "#333e48",
+            "#9e1b32",
+            "#ffffff"
+          ],
+          "nodes": [
+            {
+              "height": 53.035491943359375,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 18,
+              "fits": true
+            },
+            {
+              "height": 53.035491943359375,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 18,
+              "fits": true
+            },
+            {
+              "height": 53.035491943359375,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 18,
+              "fits": true
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "d3-compact-contract-20260927-verified-1",
+      "library": "d3",
+      "case": "contract",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "viewBox": "0 0 900 180",
+          "paints": [
+            "#333e48",
+            "#9e1b32",
+            "#ffffff"
+          ],
+          "nodes": [
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "viewBox": "0 0 900 180",
+          "paints": [
+            "#333e48",
+            "#9e1b32",
+            "#ffffff"
+          ],
+          "nodes": [
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-verified-1",
+      "library": "d3",
+      "case": "generalization",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "viewBox": "0 0 960 560",
+          "paints": [
+            "#000000",
+            "#333e48",
+            "#4f4f4f",
+            "#696969",
+            "#6d1222",
+            "#9e1b32",
+            "#e7e7e7",
+            "#f7f7f7",
+            "#ffffff"
+          ],
+          "nodes": [],
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "viewBox": "0 0 960 560",
+          "paints": [
+            "#000000",
+            "#333e48",
+            "#4f4f4f",
+            "#696969",
+            "#6d1222",
+            "#9e1b32",
+            "#e7e7e7",
+            "#f7f7f7",
+            "#ffffff"
+          ],
+          "nodes": [],
+          "overflow": 0
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-verified-1",
+      "library": "d3",
+      "case": "naturalistic",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "viewBox": "0 0 900 180",
+          "paints": [
+            "#333e48",
+            "#9e1b32",
+            "#ffffff"
+          ],
+          "nodes": [
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 85.91483306884766,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 87.71153259277344,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "viewBox": "0 0 900 180",
+          "paints": [
+            "#333e48",
+            "#9e1b32",
+            "#ffffff"
+          ],
+          "nodes": [
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 86.0089111328125,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 87.80537414550781,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-verified-2",
+      "library": "d3",
+      "case": "naturalistic",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "viewBox": "0 0 900 180",
+          "paints": [
+            "#333e48",
+            "#9e1b32",
+            "#ffffff"
+          ],
+          "nodes": [
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 85.91483306884766,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 87.71153259277344,
+              "font": "16px",
+              "paddingY": 6.981681823730469,
+              "fits": true
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "viewBox": "0 0 900 180",
+          "paints": [
+            "#333e48",
+            "#9e1b32",
+            "#ffffff"
+          ],
+          "nodes": [
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 86.0089111328125,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 87.80537414550781,
+              "font": "16px",
+              "paddingY": 7.480772972106934,
+              "fits": true
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "d3-compact-naturalistic-20260927-verified-3",
+      "library": "d3",
+      "case": "naturalistic",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "viewBox": "0 0 960 180",
+          "paints": [
+            "#333e48",
+            "#9e1b32",
+            "#ffffff"
+          ],
+          "nodes": [
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 6.861723899841309,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 6.861723899841309,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 86.56990814208984,
+              "font": "16px",
+              "paddingY": 6.861723899841309,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 87.56011962890625,
+              "font": "16px",
+              "paddingY": 6.861723899841309,
+              "fits": true
+            }
+          ],
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "viewBox": "0 0 960 180",
+          "paints": [
+            "#333e48",
+            "#9e1b32",
+            "#ffffff"
+          ],
+          "nodes": [
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 7.4822540283203125,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 80,
+              "font": "16px",
+              "paddingY": 7.4822540283203125,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 85.9974365234375,
+              "font": "16px",
+              "paddingY": 7.4822540283203125,
+              "fits": true
+            },
+            {
+              "height": 32,
+              "width": 87.7935791015625,
+              "font": "16px",
+              "paddingY": 7.4822540283203125,
+              "fits": true
+            }
+          ],
+          "overflow": 0
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-verified-2",
+      "library": "d3",
+      "case": "generalization",
+      "strictPassed": false,
+      "checks": [
+        {
+          "width": 1280,
+          "viewBox": "0 0 960 560",
+          "paints": [
+            "#000000",
+            "#333e48",
+            "#4f4f4f",
+            "#696969",
+            "#6d1222",
+            "#9e1b32",
+            "#e7e7e7",
+            "#f7f7f7",
+            "#ffffff"
+          ],
+          "nodes": [],
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "viewBox": "0 0 960 560",
+          "paints": [
+            "#000000",
+            "#333e48",
+            "#4f4f4f",
+            "#696969",
+            "#6d1222",
+            "#9e1b32",
+            "#e7e7e7",
+            "#f7f7f7",
+            "#ffffff"
+          ],
+          "nodes": [],
+          "overflow": 0
+        }
+      ],
+      "artifactPassed": true
+    },
+    {
+      "runId": "d3-compact-generalization-20260927-verified-3",
+      "library": "d3",
+      "case": "generalization",
+      "strictPassed": true,
+      "checks": [
+        {
+          "width": 1280,
+          "viewBox": "0 0 960 560",
+          "paints": [
+            "#000000",
+            "#333e48",
+            "#4f4f4f",
+            "#696969",
+            "#6d1222",
+            "#9e1b32",
+            "#e7e7e7",
+            "#f7f7f7",
+            "#ffffff"
+          ],
+          "nodes": [],
+          "overflow": 0
+        },
+        {
+          "width": 390,
+          "viewBox": "0 0 960 560",
+          "paints": [
+            "#000000",
+            "#333e48",
+            "#4f4f4f",
+            "#696969",
+            "#6d1222",
+            "#9e1b32",
+            "#e7e7e7",
+            "#f7f7f7",
+            "#ffffff"
+          ],
+          "nodes": [],
+          "overflow": 0
+        }
+      ],
+      "artifactPassed": true
+    }
+  ]
+}

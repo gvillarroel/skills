@@ -15,6 +15,10 @@ Use this reference when creating a new D3 visualization, SVG, or editable starte
 1. Pick the closest pattern family: `operational-dashboard`, `inline-bar-table`, `context-window-matrix`, `animated-network`, or `blank`. Use `operational-dashboard` for KPI/table/status dashboards so the agent edits data inside a fixed layout instead of inventing panel geometry.
 2. Generate a starter when shell access is available:
 
+The starter defaults to colorset1 and 12 px page padding. Use `--colorset
+colorset2` only for an explicit extended-color request. It copies the bundled D3
+runtime into the output's `vendor/` directory and works without a network.
+
 ```powershell
 uv run --script skills/d3/scripts/create_d3_svg_starter.py --pattern operational-dashboard --out output/d3/my-viz --title "My D3 visual"
 ```
@@ -40,13 +44,14 @@ Use these defaults for ordinary user deliverables when the user or target projec
 - Page background: `#f7f7f7`
 - Surface: `#ffffff`
 - Risk/emphasis red: `#9e1b32`
-- Warning orange: `#e77204`
-- Caution yellow: `#f1c319`
-- Success green: `#45842a`
-- Information blue: `#007298`
-- Soft fills: red `#ffccd5`, orange `#ffe5cc`, yellow `#fff4cc`, green `#dbffcc`, blue `#cdf3ff`
+- Supporting states: dark red `#6d1222`, ink `#333e48`, and gray `#4f4f4f`
+- Quiet fills: white `#ffffff`, `#f7f7f7`, and `#e7e7e7`
+- Extended orange, yellow, green, and blue are colorset2-only; read `palette-contract.md`.
+- Pink `#ffccd5` is reserved for a justified last-resort category after red/neutrals, or an explicit request.
 
 Keep output palettes compact and semantic. Use red only for risk, errors, negative deltas, or explicit emphasis. Use white label halos when labels sit on marks or dense backgrounds.
+Follow `compact-composition.md` for measured box padding and responsive controls;
+preserve explicit sizes, readable labels, and quantitative spacing.
 
 ## Starter Contract
 
@@ -77,7 +82,20 @@ For a direct-open HTML starter:
 
 ```powershell
 uv run --script skills/d3/scripts/render_d3_svg.py output/d3/my-viz/index.html --selector "svg" -o output/d3/my-viz.svg --screenshot output/d3/my-viz.png --wait-ms 1200
+python skills/d3/scripts/check_palette_contract.py output/d3/my-viz.svg --colorset colorset1
+python skills/d3/scripts/check_visual_contract.py output/d3/my-viz.svg --require-id visual --require-tag title --require-tag desc
 ```
+
+Use the selected colorset in the palette check. For the operational dashboard,
+also check `--require-class kpi:4 --require-class row:6` when those are the
+requested counts. The SVG capture includes computed visible paint and metadata.
+
+The directory is an offline artifact with local files. Do not apply
+`check_self_contained_html.py` to its `index.html`: that checker requires an
+inline single-file deliverable and intentionally rejects local script tags.
+Verify that all referenced local files are present, no external requests occur,
+and labels fit in the rendered SVG. If the user requires one standalone file,
+inline the data, stylesheet, and runtime before applying that single-file check.
 
 For repository validation after changing this skill:
 

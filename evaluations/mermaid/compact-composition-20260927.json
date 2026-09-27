@@ -1,0 +1,314 @@
+{
+  "date": "2026-09-27",
+  "skill": "mermaid",
+  "model": "openai-codex/gpt-5.6-luna",
+  "modelException": "Spark rejected before the first tool call; unsupported for this ChatGPT account.",
+  "runtimePayloadSha256": "9863be6b6e3f02bb0144e8ac227decd0c939abb481db2208dbfbdb6ec53333a1",
+  "deterministicTests": 41,
+  "familyRegression": {
+    "familyCount": 31,
+    "findings": [],
+    "finiteCapacityCaseCount": 25,
+    "finiteCapacitySlots": 200,
+    "mermaidVersion": "11.16.0",
+    "ok": true,
+    "renderContractCount": 11,
+    "renderSkipped": false,
+    "renderedDiagramCount": 62,
+    "styledDiagramCount": 62
+  },
+  "comparison": {
+    "passed": true,
+    "findings": [],
+    "cases": {
+      "vertical": {
+        "beforeHeight": 486,
+        "afterHeight": 324,
+        "heightReductionPercent": 33.33
+      },
+      "branching": {
+        "beforeHeight": 185.15625,
+        "afterHeight": 134.15625,
+        "heightReductionPercent": 27.54
+      },
+      "multiline": {
+        "beforeHeight": 424,
+        "afterHeight": 332,
+        "heightReductionPercent": 21.7
+      },
+      "sequence": {
+        "beforeHeight": 347,
+        "afterHeight": 265,
+        "heightReductionPercent": 23.63
+      },
+      "state": {
+        "beforeHeight": 388,
+        "afterHeight": 316,
+        "heightReductionPercent": 18.56
+      },
+      "class": {
+        "beforeHeight": 524,
+        "afterHeight": 416,
+        "heightReductionPercent": 20.61
+      },
+      "er": {
+        "beforeHeight": 470,
+        "afterHeight": 344,
+        "heightReductionPercent": 26.81
+      },
+      "roles": {
+        "beforeHeight": 902,
+        "afterHeight": 532,
+        "heightReductionPercent": 41.02
+      },
+      "indexed": {
+        "beforeHeight": 282.6055603027344,
+        "afterHeight": 277.2842102050781,
+        "heightReductionPercent": 1.88
+      }
+    }
+  },
+  "forward": [
+    {
+      "runId": "mermaid-compact-boundary-20260927-luna-final-1",
+      "strictPassed": true,
+      "summaryPassed": true,
+      "payload": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 18,
+        "payloadSha256": "9863be6b6e3f02bb0144e8ac227decd0c939abb481db2208dbfbdb6ec53333a1"
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/compact-composition.md",
+        "deliverables/manual-review.mmd",
+        "deliverables/style.json",
+        "deliverables/check.json"
+      ]
+    },
+    {
+      "runId": "mermaid-compact-contract-20260927-luna-final-1",
+      "strictPassed": true,
+      "summaryPassed": true,
+      "payload": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 18,
+        "payloadSha256": "9863be6b6e3f02bb0144e8ac227decd0c939abb481db2208dbfbdb6ec53333a1"
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/compact-composition.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "deliverables/diagrams/intake.mmd",
+        "deliverables/style.json",
+        "deliverables/check.json"
+      ]
+    },
+    {
+      "runId": "mermaid-compact-generalization-20260927-luna-final-1",
+      "strictPassed": true,
+      "summaryPassed": true,
+      "payload": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 18,
+        "payloadSha256": "9863be6b6e3f02bb0144e8ac227decd0c939abb481db2208dbfbdb6ec53333a1"
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/compact-composition.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "deliverables/style.json",
+        "deliverables/lending.mmd",
+        "deliverables/check.json"
+      ]
+    },
+    {
+      "runId": "mermaid-compact-generalization-20260927-luna-final-2",
+      "strictPassed": true,
+      "summaryPassed": true,
+      "payload": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 18,
+        "payloadSha256": "9863be6b6e3f02bb0144e8ac227decd0c939abb481db2208dbfbdb6ec53333a1"
+      },
+      "readPaths": [
+        "deliverables/check.json",
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "skills/mermaid/references/diagram-selection.md",
+        "skills/mermaid/references/compact-composition.md",
+        "deliverables/lending.mmd"
+      ]
+    },
+    {
+      "runId": "mermaid-compact-generalization-20260927-luna-final-3",
+      "strictPassed": true,
+      "summaryPassed": true,
+      "payload": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 18,
+        "payloadSha256": "9863be6b6e3f02bb0144e8ac227decd0c939abb481db2208dbfbdb6ec53333a1"
+      },
+      "readPaths": [
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "deliverables/lending.mmd",
+        "deliverables/check.json"
+      ]
+    },
+    {
+      "runId": "mermaid-compact-naturalistic-20260927-luna-final-1",
+      "strictPassed": true,
+      "summaryPassed": true,
+      "payload": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 18,
+        "payloadSha256": "9863be6b6e3f02bb0144e8ac227decd0c939abb481db2208dbfbdb6ec53333a1"
+      },
+      "readPaths": [
+        "deliverables/style-check.json",
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "skills/mermaid/references/diagram-selection.md",
+        "skills/mermaid/references/compact-composition.md",
+        "deliverables/shipment.mmd"
+      ]
+    },
+    {
+      "runId": "mermaid-compact-naturalistic-20260927-luna-final-2",
+      "strictPassed": true,
+      "summaryPassed": true,
+      "payload": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 18,
+        "payloadSha256": "9863be6b6e3f02bb0144e8ac227decd0c939abb481db2208dbfbdb6ec53333a1"
+      },
+      "readPaths": [
+        "deliverables/style-check.json",
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/compact-composition.md",
+        "skills/mermaid/references/diagram-selection.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "deliverables/shipment.mmd"
+      ]
+    },
+    {
+      "runId": "mermaid-compact-naturalistic-20260927-luna-final-3",
+      "strictPassed": true,
+      "summaryPassed": true,
+      "payload": {
+        "name": "mermaid",
+        "profile": "runtime",
+        "fileCount": 18,
+        "payloadSha256": "9863be6b6e3f02bb0144e8ac227decd0c939abb481db2208dbfbdb6ec53333a1"
+      },
+      "readPaths": [
+        "deliverables/style-check.json",
+        "../prompt.md",
+        "skills/mermaid/SKILL.md",
+        "skills/mermaid/references/diagram-selection.md",
+        "skills/mermaid/references/accessible-svg-metadata.md",
+        "skills/mermaid/references/compact-composition.md",
+        "deliverables/shipment.mmd"
+      ]
+    }
+  ],
+  "artifactValidation": {
+    "passed": true,
+    "results": [
+      {
+        "runId": "mermaid-compact-boundary-20260927-luna-final-1",
+        "case": "boundary",
+        "passed": true,
+        "findings": [],
+        "svg": "projects\\mermaid-composition\\artifacts\\forward\\mermaid-compact-boundary-20260927-luna-final-1.svg",
+        "labelsVerified": 3,
+        "relationCount": 2,
+        "viewBox": "0 -50 207.40625 434"
+      },
+      {
+        "runId": "mermaid-compact-contract-20260927-luna-final-1",
+        "case": "contract",
+        "passed": true,
+        "findings": [],
+        "svg": "projects\\mermaid-composition\\artifacts\\forward\\mermaid-compact-contract-20260927-luna-final-1.svg",
+        "labelsVerified": 3,
+        "relationCount": 2,
+        "viewBox": "0 8 139.5 188"
+      },
+      {
+        "runId": "mermaid-compact-generalization-20260927-luna-final-1",
+        "case": "generalization",
+        "passed": true,
+        "findings": [],
+        "svg": "projects\\mermaid-composition\\artifacts\\forward\\mermaid-compact-generalization-20260927-luna-final-1.svg",
+        "labelsVerified": 11,
+        "relationCount": 2,
+        "viewBox": "0 0 363.140625 369"
+      },
+      {
+        "runId": "mermaid-compact-generalization-20260927-luna-final-2",
+        "case": "generalization",
+        "passed": true,
+        "findings": [],
+        "svg": "projects\\mermaid-composition\\artifacts\\forward\\mermaid-compact-generalization-20260927-luna-final-2.svg",
+        "labelsVerified": 11,
+        "relationCount": 2,
+        "viewBox": "0 0 363.140625 369"
+      },
+      {
+        "runId": "mermaid-compact-generalization-20260927-luna-final-3",
+        "case": "generalization",
+        "passed": true,
+        "findings": [],
+        "svg": "projects\\mermaid-composition\\artifacts\\forward\\mermaid-compact-generalization-20260927-luna-final-3.svg",
+        "labelsVerified": 11,
+        "relationCount": 2,
+        "viewBox": "0 0 363.140625 369"
+      },
+      {
+        "runId": "mermaid-compact-naturalistic-20260927-luna-final-1",
+        "case": "naturalistic",
+        "passed": true,
+        "findings": [],
+        "svg": "projects\\mermaid-composition\\artifacts\\forward\\mermaid-compact-naturalistic-20260927-luna-final-1.svg",
+        "labelsVerified": 9,
+        "relationCount": 6,
+        "viewBox": "0 8 364.296875 414.90625"
+      },
+      {
+        "runId": "mermaid-compact-naturalistic-20260927-luna-final-2",
+        "case": "naturalistic",
+        "passed": true,
+        "findings": [],
+        "svg": "projects\\mermaid-composition\\artifacts\\forward\\mermaid-compact-naturalistic-20260927-luna-final-2.svg",
+        "labelsVerified": 9,
+        "relationCount": 6,
+        "viewBox": "0 8 364.296875 420.78125"
+      },
+      {
+        "runId": "mermaid-compact-naturalistic-20260927-luna-final-3",
+        "case": "naturalistic",
+        "passed": true,
+        "findings": [],
+        "svg": "projects\\mermaid-composition\\artifacts\\forward\\mermaid-compact-naturalistic-20260927-luna-final-3.svg",
+        "labelsVerified": 9,
+        "relationCount": 6,
+        "viewBox": "0 8 364.296875 420.78125"
+      }
+    ]
+  }
+}

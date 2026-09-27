@@ -21,7 +21,7 @@ TIME_TO_EXHAUST_HOURS = 4
 
 PALETTE = {
     "red": "#9e1b32",
-    "red_highlight": "#ffccd5",
+    "red_highlight": "#e7e7e7",
     "orange": "#e77204",
     "orange_highlight": "#ffe5cc",
     "yellow": "#f1c319",

@@ -1,88 +1,78 @@
 # Visual Tokens
 
-Use these tokens for D3 animated examples, replayable galleries, generated SVG assets, and standalone animation-focused artifacts.
+Use these defaults for Three.js materials, lighting, HTML panels, and controls.
+Preserve explicit user colors, spacing, and an existing scene's semantic roles.
 
-## Typography
+## Palette selection
 
-- Primary font: `"Open Sans", Arial, sans-serif`
-- Use the primary font for page text, chart labels, SVG text, controls, captions, and generated visual assets.
+Use **colorset1 by default**. Use colorset2 only for an explicit extended,
+expanded, multicolor, or full-color request; record it in `data-colorset`.
 
-## Iconography
+| Colorset1 role | Token |
+| --- | --- |
+| Page / surface | `#f7f7f7` / `#ffffff` |
+| Ink / dark ink / black | `#333e48` / `#1c1c1c` / `#000000` |
+| Main emphasis / active emphasis / critical | `#9e1b32` / `#6d1222` / `#e8002a` |
+| Gray structure, dark to light | `#363636`, `#4f4f4f`, `#696969`, `#828282`, `#9c9c9c`, `#b5b5b5`, `#cfcfcf`, `#e7e7e7` |
 
-- Primary icon font: `"Material Symbols Rounded"`
-- Use Material Symbols Rounded for system icons such as replay, reset, play, pause, download, and navigation controls.
-- Keep an accessible text label beside icon-only symbols unless the control has a clear `aria-label`.
+Start with neutral materials and use red for a declared focal object, selection,
+change, or risk. Reuse colors for objects with the same role. Use geometry,
+position, texture, outline, and direct labels before adding another hue.
 
-## Brand Colors
+Pink `#ffccd5` is a **last-resort category**, after usable reds, grays, black,
+and white cannot distinguish an additional meaningful category. It is also
+available for an explicit pink request. Record the reason; do not automatically
+use pink as the second material, a soft background, replay fill, or focus color.
+Use white or gray surfaces with an opaque red outline for selection.
 
-- Brand primary: `#9e1b32`
-- Brand neutral: `#333e48`
+Colorset2 adds blue `#007298`, orange `#e77204`, green `#45842a`, purple
+`#652f6c`, and yellow `#f1c319`. Use additions for meaningful categories.
+The standalone builder accepts `--colorset colorset2` to select this explicitly.
 
-## Primary Palette
+## Lighting and color management
 
-- Red: `#9e1b32`
-- Orange: `#e77204`
-- Yellow: `#f1c319`
-- Green: `#45842a`
-- Blue: `#007298`
-- Purple: `#652f6c`
-- Black: `#000000`
-- White: `#ffffff`
+Use neutral white lights by default, including rim lights and environment maps.
+A colored light can tint every gray material and defeat colorset1. Keep
+`THREE.ColorManagement` enabled, enter material tokens as sRGB hex colors, and
+set `renderer.outputColorSpace = THREE.SRGBColorSpace`. Use
+`THREE.NoToneMapping` for the simple baseline; review any later tone mapping,
+exposure, emissive material, bloom, or tinted environment in the rendered image.
 
-## Grays
+Lit pixels naturally differ from source hex values because of shading. Validate
+the material and light inputs, then inspect the image for hue balance, readable
+silhouettes, and washed-out red highlights. Do not demand exact palette RGB
+equality from every antialiased or lit pixel. Use an unlit material or a flat
+legend swatch where exact color identification is essential.
 
-- Gray 100: `#e7e7e7`
-- Gray 200: `#cfcfcf`
-- Gray 300: `#b5b5b5`
-- Gray 400: `#9c9c9c`
-- Gray 500: `#828282`
-- Gray 600: `#696969`
-- Gray 700: `#4f4f4f`
-- Gray 800: `#363636`
-- Gray 900: `#1c1c1c`
+Primary references: [Three.js color management](https://threejs.org/manual/pages/color-management.html)
+and [responsive design](https://threejs.org/manual/pages/responsive.html).
 
-## Interaction Colors
+## Compact layout
 
-- Red hover: `#6d1222`
-- Orange hover: `#994a00`
-- Yellow hover: `#98700c`
-- Green hover: `#294d19`
-- Blue hover: `#004d66`
-- Purple hover: `#431f47`
+| Element | Default |
+| --- | --- |
+| Page/panel padding | 12 px |
+| Toolbar gap / bottom space | 8 px / 8 px |
+| Button padding / minimum height | 4 px vertical, 10 px horizontal / 32 px |
+| Coarse-pointer button | At least 44 px high |
+| Status padding | 4 px vertical, 8 px horizontal |
+| Standalone stage | 16:9 aspect ratio, 200 px minimum height |
 
-## Highlight Colors
+Do not reduce font sizes, meaningful 3D distances, object scale, or camera
+clearance to simulate less padding. Recompute camera aspect and fit the complete
+motion envelope when the container changes. Compact panel geometry and readable
+scene framing are separate decisions. Let long headings wrap; keep status text
+inside the stage without covering focal objects. Preserve explicit dimensions.
 
-- Red highlight: `#ffccd5`
-- Orange highlight: `#ffe5cc`
-- Yellow highlight: `#fff4cc`
-- Green highlight: `#dbffcc`
-- Blue highlight: `#cdf3ff`
-- Purple highlight: `#f9ccff`
+The builder defaults to `--density compact`; `--density comfortable` retains a
+320 px stage minimum, 16 px outer spacing, and larger button padding when asked.
 
-## Status Colors
+## Typography and interaction
 
-- Error: `#e8002a`
-- Warning: `#ff9633`
-- Caution: `#ffd332`
-- Success: `#36b300`
-- Information: `#00ace6`
-- Special: `#9e00b3`
-
-## Interface Colors
-
-- Text: `#333e48`
-- Link default: `#007298`
-- Link hover: `#004d66`
-- Disabled: `#cfcfcf`
-- Page background: `#f7f7f7`
-- Footer background: `#333e48`
-- Focus indicator: `#cfcfcf`
-
-## Implementation Notes
-
-- Prefer CSS custom properties named from these tokens in galleries and standalone HTML artifacts.
-- For SVG output, set text `font-family` explicitly because extracted SVGs may not inherit page CSS.
-- Use the primary palette for categorical charts before using derived colors.
-- Use highlight colors for subtle fills, selection states, and replay-running states.
-- Use interaction colors for hover, active, and pressed states.
-- Preserve source-rendered geometry, but remap editable example palettes to these tokens when the example is not demonstrating a third-party source theme.
+- Use `"Open Sans", Arial, sans-serif`; allow the local fallback in offline HTML.
+- Use Material Symbols Rounded when already available locally; otherwise use
+  labeled controls or inline SVG icons, without network font dependencies.
+- Use dark text on light surfaces and white text on dark/red surfaces.
+- Pair interaction states with labels, outlines, or shape changes.
+- Use a visible red focus outline and an accessible name for every icon control.
+- Verify desktop/mobile framing, contrast, label fit, replay, and pointer input.

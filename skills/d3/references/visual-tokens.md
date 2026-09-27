@@ -14,6 +14,13 @@ Use `assets/palettes/colorsets.json` and `references/palette-contract.md` as the
 - Use colorset2 only after an explicit extended/full-color request and only for meaningful categorical or state separation.
 - Do not use raw D3 interpolator palettes. Build discrete ramps from the active colorset.
 - Use opacity rather than generating RGBA colors.
+- Use white and gray for secondary fills; reserve pink for a justified final category after red/neutrals. Use an opaque red focus outline.
+
+## Density
+
+Follow `compact-composition.md`: measured nodes with 6 px vertical / 10 px
+horizontal padding, 12 px panel padding, 8 px gaps, and 32 px controls (44 px for
+touch). Preserve font sizes, scales, label clearance, and explicit dimensions.
 
 ## Interaction
 

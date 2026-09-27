@@ -35,7 +35,7 @@ PALETTE = {
     "blue_highlight": "#cdf3ff",
     "orange_highlight": "#ffe5cc",
     "green_highlight": "#dbffcc",
-    "red_highlight": "#ffccd5",
+    "red_highlight": "#e7e7e7",
     "purple_highlight": "#f9ccff",
 }
 

@@ -17,10 +17,14 @@ Replace `<d3-skill>` with the exact directory containing this `SKILL.md`; do not
 
 For an evaluation or composition audit, your first command after reading this file MUST instead be `python "<d3-skill>/scripts/build_evaluation_report.py" --help` with the same exact-directory rule. Use its outputs without post-editing.
 
+For an editable KPI/service dashboard, first run `python "<d3-skill>/scripts/create_d3_svg_starter.py" --help`, then read `references/user-artifact-workflow.md`. Generate the `operational-dashboard` starter and edit its output data. This route already provides compact neutral panels, active-colorset metadata, local runtime files, and the KPI/table layout.
+
 ## Preserve the public contract
 
 - Treat every requested path, ID, class, attribute, label, value, unit, order, count, relationship, route, colorset, and pattern ID as immutable API data.
 - Use `colorset1` by default. Use `colorset2` only for an explicit extended, expanded, multicolor, or full-color request.
+- Prefer compact boxes and neutral surfaces: 6 px vertical / 10 px horizontal node padding, 12 px panel padding, and 8 px UI gaps. Read `references/compact-composition.md` when sizing nodes, panels, or controls; preserve readable text and data geometry.
+- In colorset1, use grays, black, white, and deliberate red emphasis first. Pink is a last-resort category after usable red/neutral distinctions are exhausted, never an automatic secondary color, selection fill, or focus ring.
 - Read visible paint from `assets/palettes/colorsets.json`; use exact lowercase six-digit tokens and opacity, never arbitrary colors, functional color syntax, or raw D3 chromatic scales.
 - Preserve supplied data and deterministic geometry. Seed layouts, pre-tick simulations, and make the settled frame truthful.
 - Give each SVG a stable `viewBox`, `<title>`, `<desc>`, semantic groups, readable labels, stable IDs, and active-colorset metadata.
@@ -31,6 +35,8 @@ For an evaluation or composition audit, your first command after reading this fi
 Map every public acceptance literal to a flag. Use `--kind flow` with `--svg-pattern-id` when the decision variant differs from SVG pattern metadata, and repeat `--attribute`, `--flow-node`, `--link`, and `--link-value` in contract order. Keep titles generic or include only a leading prefix of ordered data labels; never mention a later label before intervening labels. Use `--kind logo --logo-mode wedges` for radial wedges; its colorset2 sequence already covers visible accent, warning/orange, success/green, and special/purple groups.
 
 For `check_visual_contract.py`, express exact cardinality as `--require-class CLASS:COUNT` and repeat `--ordered-text` only for the data tokens whose rendered occurrences must follow that order. Quote every complete CLI value that contains whitespace, such as `--require-attribute "viewBox=0 0 960 540"`; never issue a known-invalid command as a probe. For logos emitted by `build_contract_artifact.py`, use the self-contained, palette, render, and visual-contract checks; `validate_logo_artifact.py` is only for full logo-studio outputs.
+
+Use `--require-id ID` without a count suffix. `--require-class` takes a class name, never a CSS selector: for a default four-node flow use `--require-class flow-node:4 --require-class node:4 --require-class link:3`. Only use another class when you supplied its builder flag; do not guess a `flow-link` alias.
 
 During skill maintenance, extend and test the builder when a required supported contract cannot be expressed.
 
@@ -58,21 +64,25 @@ Pass each `requiredTerms` value unchanged with repeated `--required-term`; keep 
 
 ## Palette standard
 
-- `colorset1` standard roles: background `#f7f7f7`, surface `#ffffff`, ink `#333e48`, dark ink `#1c1c1c`, primary `#9e1b32`, dark primary `#6d1222`, accent `#e8002a`, soft accent `#ffccd5`, muted `#828282`, line `#cfcfcf`, quiet `#e7e7e7`.
+- `colorset1` standard roles: background `#f7f7f7`, surface `#ffffff`, ink `#333e48`, dark ink `#1c1c1c`, primary `#9e1b32`, dark primary `#6d1222`, accent `#e8002a`, muted `#828282`, line `#cfcfcf`, quiet `#e7e7e7`. The legacy `accentSoft` token `#ffccd5` is available only for a justified last-resort category or an explicit pink request; use `quiet` for subtle fills.
 - `colorset2` extended adds blue `#007298`, dark blue `#004d66`, orange `#e77204`, green `#45842a`, purple `#652f6c`, and yellow `#f1c319`. Use additions for meaningful categories or states.
 - Embed an unchanged offline runtime inside `<script id="d3-runtime">` only when hand-authoring an unsupported form. Never reveal an author-CSS-hidden mark solely through a presentation attribute.
 
 ## Mandatory validation
 
+The commands below apply to single-file HTML. For an editable starter directory,
+follow the render/paint checks in `references/user-artifact-workflow.md`; its
+local `data.js`, stylesheet, and vendor script are part of the offline output.
+
 ```text
 python <d3-skill>/scripts/check_self_contained_html.py <artifact.html>
 python <d3-skill>/scripts/check_palette_contract.py <artifact.html> --colorset colorset1
 python <d3-skill>/scripts/check_palette_contract.py <artifact.html> --colorset colorset2 --require-extended
-python <d3-skill>/scripts/render_d3_svg.py <artifact.html> --output <settled.svg>
+uv run --script <d3-skill>/scripts/render_d3_svg.py <artifact.html> --output <settled.svg>
 python <d3-skill>/scripts/check_visual_contract.py <settled.svg> <exact-contract-flags>
 ```
 
-Run only the palette command matching the active colorset. Keep temporary checks outside deliverables. A missing tool is not a pass; use an equivalent browser/parser check. Use route-specific validators for logos, recompositions, galleries, or replication.
+Run only the palette command matching the active colorset. The renderer has declared Playwright dependencies: always invoke it with `uv run --script`, never bare `python`. It can reuse installed Edge/Chrome on Windows when managed Chromium is absent. Keep temporary checks outside deliverables. A missing tool is not a pass; use an equivalent browser/parser check. Use route-specific validators for logos, recompositions, galleries, or replication.
 
 After the applicable bundled validators pass, you MUST stop issuing tool calls and report the result. Never run `grep`, inline Python, or a second ad hoc parser to reconfirm a condition already covered by those validators; raw first-occurrence logic can disagree with rendered accessibility text.
 

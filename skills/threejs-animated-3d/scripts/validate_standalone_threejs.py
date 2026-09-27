@@ -14,6 +14,7 @@ import argparse
 import hashlib
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -76,6 +77,9 @@ def canvas_probe(page: Page) -> dict[str, Any]:
             replayCount: document.querySelectorAll('#replay').length,
             ready: window.__threeRuntimeSceneReady === true,
             runtimeApi: Boolean(window.__threeRuntimeScene),
+            composition: window.__threeRuntimeScene?.inspect?.() || null,
+            replayHeight: document.querySelector('#replay').getBoundingClientRect().height,
+            coarsePointer: matchMedia('(pointer: coarse)').matches,
             overflowX: document.documentElement.scrollWidth - innerWidth,
           };
         }"""
@@ -96,7 +100,7 @@ def inspect_viewport(
     controls: bool,
     screenshot: Path | None,
 ) -> tuple[dict[str, Any], list[str]]:
-    context = browser.new_context(viewport={"width": width, "height": height})
+    context = browser.new_context(viewport={"width": width, "height": height}, has_touch=width < 600)
     page = context.new_page()
     errors: list[str] = []
     page.on(
@@ -193,6 +197,15 @@ def main() -> int:
                 launch_options: dict[str, Any] = {"headless": True}
                 if args.browser_channel:
                     launch_options["channel"] = args.browser_channel
+                elif not Path(playwright.chromium.executable_path).exists() and sys.platform == "win32":
+                    # Reuse an installed browser when Playwright's managed build is absent.
+                    for channel, executable in (
+                        ("msedge", Path("C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")),
+                        ("chrome", Path("C:/Program Files/Google/Chrome/Application/chrome.exe")),
+                    ):
+                        if executable.exists():
+                            launch_options["channel"] = channel
+                            break
                 browser = playwright.chromium.launch(**launch_options)
                 desktop, desktop_errors = inspect_viewport(
                     browser,
@@ -226,12 +239,25 @@ def main() -> int:
         add(findings, bool(first.get("runtimeApi")), f"{name} runtime API is missing")
         add(findings, first.get("canvasCount") == 1, f"{name} canvas count is not one")
         add(findings, first.get("replayCount") == 1, f"{name} replay count is not one")
-        add(findings, first.get("colorBucketCount", 0) >= 12, f"{name} color diversity is too low")
+        add(findings, first.get("colorBucketCount", 0) >= 12, f"{name} tonal variation is too low")
         add(findings, first.get("nonwhiteSampleCount", 0) >= 40, f"{name} canvas appears blank")
         add(findings, first.get("cssWidth", 0) >= 280, f"{name} canvas is too narrow")
         add(findings, first.get("cssHeight", 0) >= 180, f"{name} canvas is too short")
         add(findings, first.get("overflowX", 0) <= 1, f"{name} page overflows horizontally")
         add(findings, bool(viewport.get("frameChanged")), f"{name} animation frame did not change")
+        add(findings, first.get("replayHeight", 0) >= (44 if first.get("coarsePointer") else 32), f"{name} replay target is too small")
+        composition = first.get("composition")
+        if composition is not None:
+            colorset = composition.get("colorset")
+            add(findings, colorset in {"colorset1", "colorset2"}, f"{name} missing active colorset")
+            add(findings, set(composition.get("lightColors", [])) == {"#ffffff"}, f"{name} default lights are not white")
+            colors = set(composition.get("materialColors", []))
+            if colorset == "colorset1":
+                allowed = {"#000000", "#1c1c1c", "#333e48", "#363636", "#4f4f4f", "#696969", "#6d1222", "#828282", "#9c9c9c", "#9e1b32", "#b5b5b5", "#cfcfcf", "#e7e7e7", "#e8002a", "#f7f7f7", "#ffffff"}
+                add(findings, bool(colors) and colors <= allowed, f"{name} default material is outside red/neutral colors")
+            else:
+                add(findings, bool(colors & {"#007298", "#e77204", "#45842a", "#652f6c", "#f1c319"}), f"{name} extended palette has no visible material")
+            add(findings, composition.get("outputColorSpace") == "srgb", f"{name} output is not sRGB")
 
     controls = evidence.get("desktop", {}).get("controls", {})
     add(findings, controls.get("replayStatus") == "Replay started.", "replay did not reset")

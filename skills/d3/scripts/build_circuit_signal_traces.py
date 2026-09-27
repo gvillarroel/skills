@@ -33,7 +33,7 @@ PALETTE = {
     "green_highlight": "#dbffcc",
     "purple_highlight": "#f9ccff",
     "orange_highlight": "#ffe5cc",
-    "red_highlight": "#ffccd5",
+    "red_highlight": "#e7e7e7",
 }
 
 NODES = [

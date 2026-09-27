@@ -34,6 +34,18 @@ PALETTE = {
 }
 
 
+def palette_for(colorset: str) -> dict[str, str]:
+    palette = dict(PALETTE)
+    if colorset == "colorset1":
+        # Preserve legacy semantic keys while choosing red/neutral paint.
+        palette.update(blue="#333e48", orange="#6d1222", green="#4f4f4f",
+                       purple="#828282", cyan="#9e1b32", gold="#b5b5b5")
+    palette.update(softRed="#e7e7e7", softOrange="#e7e7e7", softBlue="#f7f7f7", softGreen="#e7e7e7")
+    if colorset == "colorset2":
+        palette.update(softOrange="#ffe5cc", softBlue="#cdf3ff", softGreen="#dbffcc")
+    return palette
+
+
 STARTER_DATA = {
     "inline-bar-table": {
         "columns": ["Workstream", "Current", "Target", "Status"],
@@ -337,14 +349,14 @@ function renderStarter(svg, data, palette, width, height) {
     "operational-dashboard": r"""
 function renderStarter(svg, data, palette, width, height) {
   const tone = {
-    critical: { fill: palette.red, soft: "#ffccd5" },
-    watch: { fill: palette.orange, soft: "#ffe5cc" },
-    stable: { fill: palette.blue, soft: "#cdf3ff" },
-    healthy: { fill: palette.green, soft: "#dbffcc" },
-    red: { fill: palette.red, soft: "#ffccd5" },
-    orange: { fill: palette.orange, soft: "#ffe5cc" },
-    blue: { fill: palette.blue, soft: "#cdf3ff" },
-    green: { fill: palette.green, soft: "#dbffcc" }
+    critical: { fill: palette.red, soft: palette.softRed },
+    watch: { fill: palette.orange, soft: palette.softOrange },
+    stable: { fill: palette.blue, soft: palette.softBlue },
+    healthy: { fill: palette.green, soft: palette.softGreen },
+    red: { fill: palette.red, soft: palette.softRed },
+    orange: { fill: palette.orange, soft: palette.softOrange },
+    blue: { fill: palette.blue, soft: palette.softBlue },
+    green: { fill: palette.green, soft: palette.softGreen }
   };
 
   function colorFor(value) {
@@ -417,7 +429,7 @@ function renderStarter(svg, data, palette, width, height) {
     .attr("class", "row")
     .attr("transform", (d, i) => `translate(0,${table.y + i * table.rowH})`);
 
-  row.append("rect").attr("x", table.x).attr("y", 4).attr("width", table.w).attr("height", table.rowH - 8).attr("rx", 9).attr("fill", (d, i) => i % 2 === 0 ? "#fbfbfb" : palette.surface).attr("stroke", palette.gray100);
+  row.append("rect").attr("x", table.x).attr("y", 4).attr("width", table.w).attr("height", table.rowH - 8).attr("rx", 9).attr("fill", (d, i) => i % 2 === 0 ? palette.gray50 : palette.surface).attr("stroke", palette.gray100);
   row.append("text").attr("class", "row-label").attr("x", table.x + 14).attr("y", 20).text(d => shortText(d.service, 24));
   row.append("text").attr("class", "row-owner").attr("x", table.x + 14).attr("y", 34).text(d => shortText(d.owner, 26));
   row.append("rect").attr("x", barX).attr("y", 12).attr("width", table.barW).attr("height", 16).attr("rx", 8).attr("fill", palette.gray100);
@@ -431,7 +443,7 @@ function renderStarter(svg, data, palette, width, height) {
   row.append("circle").attr("cx", sparkX + sparkW).attr("cy", d => 10 + sparkScaleY(d.history[d.history.length - 1])).attr("r", 3).attr("fill", d => colorFor(d.status).fill);
 
   const side = { x: 700, y: 232, w: 216, h: 304 };
-  svg.append("rect").attr("x", side.x).attr("y", side.y).attr("width", side.w).attr("height", side.h).attr("rx", 14).attr("fill", "#fcfcfc").attr("stroke", palette.gray100);
+  svg.append("rect").attr("x", side.x).attr("y", side.y).attr("width", side.w).attr("height", side.h).attr("rx", 14).attr("fill", palette.gray50).attr("stroke", palette.gray100);
   svg.append("text").attr("class", "panel-title").attr("x", side.x + 18).attr("y", side.y + 28).text("Control posture");
   svg.append("text").attr("class", "big-score").attr("x", side.x + 18).attr("y", side.y + 110).text(data.overallScore);
   svg.append("text").attr("class", "caption").attr("x", side.x + 18).attr("y", side.y + 134).text("Weighted risk index");
@@ -512,9 +524,11 @@ HTML_TEMPLATE = r"""<!doctype html>
   __D3_SCRIPT__
   <script src="data.js"></script>
 </head>
-<body>
+<body data-colorset="__COLORSET__">
   <main class="page">
+    <div class="chart-viewport" role="region" aria-label="Chart" tabindex="0">
     <svg id="visual" role="img" aria-labelledby="visual-title visual-desc"></svg>
+    </div>
   </main>
   <script>
     const palette = __PALETTE_JSON__;
@@ -527,7 +541,8 @@ HTML_TEMPLATE = r"""<!doctype html>
       const svg = d3.select(`#${id}`);
       svg.selectAll("*").remove();
       svg
-        .attr("viewBox", `0 0 ${width} ${height}`)
+        .style("min-width", `${width}px`)
+        .attr("viewBox", `0 0 ${width} ${height}`).attr("data-colorset", "__COLORSET__")
         .attr("font-family", "Open Sans, Arial, sans-serif")
         .attr("role", "img")
         .attr("aria-labelledby", `${id}-title ${id}-desc`);
@@ -564,13 +579,23 @@ body {
 }
 
 .page {
+  box-sizing: border-box;
   min-height: 100vh;
   display: grid;
-  place-items: center;
-  padding: 24px;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-content: start;
+  padding: 12px;
+}
+
+.chart-viewport {
+  min-width: 0;
+  width: min(100%, 960px);
+  overflow-x: auto;
 }
 
 svg {
+  display: block;
   width: min(100%, 960px);
   height: auto;
   background: #ffffff;
@@ -691,7 +716,7 @@ def is_inside(path: Path, parent: Path) -> bool:
 
 
 def local_d3_source() -> Path | None:
-    candidate = skill_root() / "assets" / "examples" / "d3-animated-svg" / "node_modules" / "d3" / "dist" / "d3.min.js"
+    candidate = skill_root() / "assets" / "vendor" / "d3.v7.9.0.min.js"
     if candidate.exists():
         return candidate
     return None
@@ -707,7 +732,7 @@ def d3_script_tag(out_dir: Path) -> str:
     return '<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>'
 
 
-def write_starter(out_dir: Path, pattern: str, title: str, force: bool, allow_skill_dir: bool) -> dict:
+def write_starter(out_dir: Path, pattern: str, title: str, force: bool, allow_skill_dir: bool, colorset: str = "colorset1") -> dict:
     resolved_out = out_dir.resolve()
     if is_inside(resolved_out, skill_root()) and not allow_skill_dir:
         raise SystemExit(
@@ -718,14 +743,19 @@ def write_starter(out_dir: Path, pattern: str, title: str, force: bool, allow_sk
         raise SystemExit(f"Output directory is not empty: {resolved_out}. Pass --force to overwrite starter files.")
     resolved_out.mkdir(parents=True, exist_ok=True)
 
-    data = STARTER_DATA[pattern]
+    palette = palette_for(colorset)
+    serialized = json.dumps(STARTER_DATA[pattern])
+    for name, source_color in PALETTE.items():
+        serialized = serialized.replace(json.dumps(source_color), json.dumps(palette[name]))
+    data = json.loads(serialized)
     desc = f"Editable D3 starter using the {pattern} pattern."
     script_tag = d3_script_tag(resolved_out)
     html = (
         HTML_TEMPLATE.replace("__TITLE__", title)
         .replace("__TITLE_JSON__", json.dumps(title))
         .replace("__DESC__", desc)
-        .replace("__PALETTE_JSON__", json.dumps(PALETTE, indent=2))
+        .replace("__PALETTE_JSON__", json.dumps(palette, indent=2))
+        .replace("__COLORSET__", colorset)
         .replace("__D3_SCRIPT__", script_tag)
         .replace("__PATTERN_CODE__", PATTERN_CODE[pattern].strip())
     )
@@ -756,6 +786,7 @@ uv run --script skills/d3/scripts/render_d3_svg.py {resolved_out / "index.html"}
     manifest = {
         "pattern": pattern,
         "title": title,
+        "colorset": colorset,
         "files": ["index.html", "styles.css", "data.js", "NOTES.md"],
         "usesLocalD3": (resolved_out / "vendor" / "d3.min.js").exists(),
     }
@@ -768,6 +799,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--pattern", choices=sorted(STARTER_DATA), default="inline-bar-table")
     parser.add_argument("--out", type=Path, required=True, help="User-owned output directory for the starter files.")
     parser.add_argument("--title", default="Editable D3 SVG starter")
+    parser.add_argument("--colorset", choices=("colorset1", "colorset2"), default="colorset1")
     parser.add_argument("--force", action="store_true", help="Overwrite starter files in a non-empty output directory.")
     parser.add_argument(
         "--allow-skill-dir",
@@ -779,7 +811,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> int:
     args = build_parser().parse_args()
-    manifest = write_starter(args.out, args.pattern, args.title, args.force, args.allow_skill_dir)
+    manifest = write_starter(args.out, args.pattern, args.title, args.force, args.allow_skill_dir, args.colorset)
     print(f"Created D3 starter: {args.out.resolve()}")
     print(f"Pattern: {manifest['pattern']}")
     print("Files: " + ", ".join(manifest["files"]))

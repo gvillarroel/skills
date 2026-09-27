@@ -565,7 +565,7 @@ __CARDS__
         "__PRIMARY__": roles["primary"],
         "__PRIMARY_DARK__": roles["primaryDark"],
         "__ACCENT__": roles["accent"],
-        "__ACCENT_SOFT__": roles["accentSoft"],
+        "__ACCENT_SOFT__": roles["quiet"],
         "__SECONDARY__": roles.get("secondary", roles["primaryDark"]),
         "__TERTIARY__": roles.get("tertiary", roles["primary"]),
         "__POSITIVE__": roles.get("positive", roles["ink"]),

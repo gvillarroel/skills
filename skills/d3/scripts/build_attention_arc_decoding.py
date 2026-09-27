@@ -23,7 +23,7 @@ PALETTE = {
     "gray300": "#b5b5b5",
     "gray400": "#9c9c9c",
     "surface": "#ffffff",
-    "redHighlight": "#ffccd5",
+    "redHighlight": "#e7e7e7",
     "orangeHighlight": "#ffe5cc",
     "purpleHighlight": "#f9ccff",
     "blueHighlight": "#cdf3ff",

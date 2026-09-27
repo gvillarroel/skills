@@ -18,7 +18,7 @@ import sys
 COLORSET1 = {
     "background": "#f7f7f7", "surface": "#ffffff", "ink": "#333e48",
     "ink_dark": "#1c1c1c", "primary": "#9e1b32", "primary_dark": "#6d1222",
-    "accent": "#e8002a", "accent_soft": "#ffccd5", "muted": "#828282",
+    "accent": "#e8002a", "accent_soft": "#e7e7e7", "muted": "#828282",
     "line": "#cfcfcf", "quiet": "#e7e7e7",
 }
 COLORSET2 = {
@@ -104,10 +104,12 @@ def css_for(palette: dict[str, str]) -> str:
         f":root{{{variables}}}"
         "*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--background);"
         "color:var(--ink);font-family:Arial,Helvetica,sans-serif}"
-        "body{display:grid;place-items:center;padding:16px}"
+        "body{display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:12px}"
+        ".diagram-viewport{min-width:0;max-width:100%;width:1000px;overflow-x:auto}"
+        "svg[data-layout='flow-spine']{min-width:var(--diagram-min-width)}"
         "svg{display:block;width:min(100%,1000px);height:auto;background:var(--surface);"
         "border:1px solid var(--line)}text{fill:var(--ink);font-family:Arial,Helvetica,sans-serif}"
-        ".contract-title{font-size:24px;font-weight:700}.flow-node-label{fill:var(--surface)}"
+        ".contract-title{font-size:24px;font-weight:700}.flow-node-label{fill:var(--ink);font-size:16px}"
         ".is-focus{stroke:var(--accent);stroke-width:4}"
     )
 
@@ -121,8 +123,9 @@ def base_html(args: argparse.Namespace, description: str, attributes: dict[str, 
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{escape(args.title)}</title><style>{css_for(palette)}</style></head>
-<body data-renderer="d3" data-colorset="{args.colorset}">
+<body data-renderer="d3" data-colorset="{args.colorset}"><div class="diagram-viewport" role="region" aria-label="{escape(args.title, quote=True)}" tabindex="0" style="--diagram-min-width:{args.width}px">
 <svg {attrs} aria-label="{escape(args.title, quote=True)}"><title>{escape(args.title)}</title><desc>{escape(description)}</desc></svg>
+</div>
 <script id="d3-runtime">/* D3 v7.9.0, BSD-3-Clause */\n{runtime}</script><script>{script}</script>
 </body></html>
 """
@@ -267,25 +270,28 @@ def flow_script(args: argparse.Namespace, palette: dict[str, str]) -> str:
         "svgId": args.svg_id, "nodes": [{"id": label} for label in node_labels], "links": links,
         "nodeClass": args.node_class, "linkClass": args.link_class,
         "width": args.width, "height": args.height, "palette": palette,
+        "paddingX": getattr(args, "node_padding_x", 10), "paddingY": getattr(args, "node_padding_y", 6),
+        "title": args.title,
     }
     return """
 (()=>{const spec=__SPEC__,svg=d3.select(`#${CSS.escape(spec.svgId)}`),defs=svg.append("defs"),m={left:92,right:92};
 defs.append("marker").attr("id",`${spec.svgId}-arrow`).attr("viewBox","0 0 10 10").attr("refX",9).attr("refY",5)
-.attr("markerWidth",7).attr("markerHeight",7).attr("orient","auto").append("path").attr("d","M0,0 L10,5 L0,10 Z").attr("fill",spec.palette.ink);
+.attr("markerUnits","userSpaceOnUse").attr("markerWidth",10).attr("markerHeight",10).attr("orient","auto").append("path").attr("d","M0,0 L10,5 L0,10 Z").attr("fill",spec.palette.ink);
 const x=d3.scalePoint().domain(spec.nodes.map(d=>d.id)).range([m.left,spec.width-m.right]).padding(.25),cy=spec.height*.52;
 spec.nodes.forEach(node=>{node.x=x(node.id);node.y=cy});const byId=new Map(spec.nodes.map(node=>[node.id,node]));
-svg.append("text").attr("class","contract-title").attr("x",m.left).attr("y",48).text("Flow spine");
+const groups=svg.append("g").selectAll("g.flow-node").data(spec.nodes).join("g").attr("class","flow-node").attr("transform",d=>`translate(${d.x},${d.y})`);
+groups.append("text").attr("class","flow-node-label").attr("text-anchor","middle").attr("dy",".35em").attr("font-weight",700).text(d=>d.id)
+.each(function(d){const box=this.getBBox();d.w=Math.max(80,box.width+2*spec.paddingX);d.h=Math.max(32,box.height+2*spec.paddingY)});
+svg.append("text").attr("class","contract-title").attr("x",m.left).attr("y",42).text(spec.title);
 const links=svg.append("g").selectAll("path").data(spec.links).join("path").attr("class",spec.linkClass)
-.attr("d",d=>{const a=byId.get(d.source),b=byId.get(d.target),bend=(a.x+b.x)/2;return `M${a.x+54},${a.y}C${bend},${a.y} ${bend},${b.y} ${b.x-62},${b.y}`})
+.attr("d",d=>{const a=byId.get(d.source),b=byId.get(d.target),bend=(a.x+b.x)/2;return `M${a.x+a.w/2+2},${a.y}C${bend},${a.y} ${bend},${b.y} ${b.x-b.w/2-4},${b.y}`})
 .attr("fill","none").attr("stroke",spec.palette.ink).attr("stroke-width",d=>Math.max(3,Math.min(9,3+d.value*.35)))
 .attr("marker-end",`url(#${spec.svgId}-arrow)`).attr("opacity",.2);
 svg.append("g").selectAll("text.link-value").data(spec.links).join("text").attr("class","link-value")
 .attr("x",d=>(byId.get(d.source).x+byId.get(d.target).x)/2).attr("y",cy-24).attr("text-anchor","middle").attr("font-weight",700).text(d=>d.display);
-const groups=svg.append("g").selectAll("g.flow-node").data(spec.nodes).join("g").attr("class","flow-node").attr("transform",d=>`translate(${d.x},${d.y})`);
-const rects=groups.append("rect").attr("class",spec.nodeClass).attr("tabindex",0).attr("role","img").attr("aria-label",d=>d.id)
-.attr("x",-58).attr("y",-32).attr("width",116).attr("height",64).attr("rx",12)
-.attr("fill",spec.palette.primary).attr("stroke",spec.palette.primaryDark||spec.palette.primary_dark).attr("stroke-width",3).attr("opacity",.2);
-groups.append("text").attr("class","flow-node-label").attr("text-anchor","middle").attr("dy",5).attr("font-weight",700).text(d=>d.id);
+const rects=groups.insert("rect","text").attr("class",spec.nodeClass).attr("tabindex",0).attr("role","img").attr("aria-label",d=>d.id)
+.attr("x",d=>-d.w/2).attr("y",d=>-d.h/2).attr("width",d=>d.w).attr("height",d=>d.h).attr("rx",6)
+.attr("fill",spec.palette.surface).attr("stroke",spec.palette.primary).attr("stroke-width",2).attr("opacity",.2);
 rects.on("focus",function(){d3.select(this).classed("is-focus",true)}).on("blur",function(){d3.select(this).classed("is-focus",false)});
 links.transition().duration(360).delay((d,i)=>i*45).ease(d3.easeCubicOut).attr("opacity",1);
 rects.transition().duration(360).delay((d,i)=>80+i*55).ease(d3.easeCubicOut).attr("opacity",1);})();
@@ -325,6 +331,8 @@ svg.append("text").attr("class",spec.taglineClass).attr("x",spec.width*.48).attr
 
 
 def build(args: argparse.Namespace) -> tuple[str, dict[str, str]]:
+    if args.height is None:
+        args.height = 180 if args.kind == "flow" else 520
     palette = palette_for(args.colorset)
     attributes = checked_attributes(args.attribute)
     if args.kind == "bar":
@@ -400,7 +408,9 @@ All forms also require --output, --decision-output, --title, --description,
     parser.add_argument("--svg-id", required=True)
     parser.add_argument("--reason", required=True)
     parser.add_argument("--width", type=int, default=900)
-    parser.add_argument("--height", type=int, default=520)
+    parser.add_argument("--height", type=int, help="Canvas height; defaults to 180 for flow, 520 for other forms.")
+    parser.add_argument("--node-padding-y", type=int, default=6, help="Vertical flow-node padding in pixels.")
+    parser.add_argument("--node-padding-x", type=int, default=10, help="Horizontal flow-node padding in pixels.")
     parser.add_argument("--attribute", action="append", type=parse_pair, default=[], metavar="DATA-NAME=VALUE")
     parser.add_argument("--item", action="append", type=parse_pair, default=[], metavar="LABEL=NUMBER")
     parser.add_argument("--unit", default="Value")
@@ -427,13 +437,18 @@ All forms also require --output, --decision-output, --title, --description,
 
 
 def parse_args() -> argparse.Namespace:
-    return make_parser().parse_args()
+    args = make_parser().parse_args()
+    if args.height is None:
+        args.height = 180 if args.kind == "flow" else 520
+    return args
 
 
 def main() -> int:
     args = parse_args()
-    if args.width < 320 or args.height < 240:
-        raise SystemExit("--width and --height must be at least 320x240")
+    if args.width < 320 or args.height < (120 if args.kind == "flow" else 240):
+        raise SystemExit("--width must be at least 320; --height at least 120 for flow or 240 for other forms")
+    if min(args.node_padding_x, args.node_padding_y) < 0:
+        raise SystemExit("Node padding cannot be negative")
     if args.output.resolve() == args.decision_output.resolve():
         raise SystemExit("--output and --decision-output must differ")
     for path in (args.output, args.decision_output):

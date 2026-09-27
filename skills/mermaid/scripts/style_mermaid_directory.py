@@ -199,6 +199,21 @@ SEMANTIC_CAPACITY_LAYOUTS: dict[str, tuple[str, dict[str, int]]] = {
     ),
 }
 
+# Native geometry options: reduce box whitespace without shrinking label text.
+# Explicit family configuration takes precedence; missing block-map fields are
+# inserted separately, with generated markers, by inject_compact_layout().
+COMPACT_LAYOUTS: dict[str, tuple[str, dict[str, object]]] = {
+    "flowchart": ("flowchart", {"padding": 6, "nodeSpacing": 24, "rankSpacing": 32, "subGraphTitleMargin": {"top": 4, "bottom": 12}}),
+    "swimlane": ("flowchart", {"padding": 6, "nodeSpacing": 24, "rankSpacing": 32, "subGraphTitleMargin": {"top": 4, "bottom": 12}}),
+    "stateDiagram": ("state", {"padding": 6, "nodeSpacing": 28, "rankSpacing": 32}),
+    "classDiagram": ("class", {"padding": 6, "nodeSpacing": 28, "rankSpacing": 36}),
+    "erDiagram": ("er", {"entityPadding": 6, "diagramPadding": 6, "nodeSpacing": 60, "rankSpacing": 80}),
+    "sequenceDiagram": ("sequence", {"height": 36, "boxMargin": 6, "noteMargin": 8, "messageMargin": 28}),
+    "mindmap": ("mindmap", {"padding": 6}),
+    "block": ("block", {"padding": 6}),
+    "requirementDiagram": ("requirement", {"rect_padding": 6}),
+}
+
 CORE_THEME_KEYS = [
     "background",
     "primaryColor",
@@ -400,6 +415,7 @@ FAMILY_THEME_KEYS = {
 PALETTES = {
     "colorset1": {
         "name": "basic-red-neutral-style",
+        "black": "#000000",
         "background": "#ffffff",
         "page": "#f7f7f7",
         "surface": "#ffffff",
@@ -433,6 +449,7 @@ PALETTES = {
     },
     "colorset2": {
         "name": "full-color-style",
+        "black": "#000000",
         "background": "#ffffff",
         "page": "#f7f7f7",
         "surface": "#ffffff",
@@ -501,7 +518,7 @@ def contrast_ratio(first: str, second: str) -> float:
 
 
 def readable_text_color(fill: str, palette: dict[str, str]) -> str:
-    candidates = (palette["surface"], palette["ink"], palette["gray900"])
+    candidates = (palette["surface"], palette["ink"], palette["gray900"], palette["black"])
     return max(candidates, key=lambda candidate: contrast_ratio(fill, candidate))
 
 
@@ -534,7 +551,7 @@ def series_colors(palette: dict[str, str], extended: bool) -> list[str]:
             "gray400",
             "gray900",
             "gray300",
-            "primary_light",
+            "gray200",
         )
     )
     return [palette[role] for role in roles]
@@ -558,21 +575,21 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
         )
         if extended
         else (
-            "primary_light",
+            "surface",
             "gray100",
             "gray200",
             "gray300",
             "gray400",
+            "page",
             "gray500",
             "gray600",
-            "gray700",
         )
     )
     fill_type_colors = [p[role] for role in fill_type_roles]
     variables = {
         "THEME_COLOR_LIMIT": THEME_COLOR_LIMIT,
         "background": p["background"],
-        "primaryColor": p["primary_light"],
+        "primaryColor": p["primary_light"] if extended else p["surface"],
         "primaryTextColor": p["ink"],
         "primaryBorderColor": p["primary"],
         "secondaryColor": p["accent_light"],
@@ -583,8 +600,8 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
         "tertiaryBorderColor": p["gray400"],
         "lineColor": p["muted"],
         "textColor": p["ink"],
-        "mainBkg": p["accent_light"] if extended else p["primary_light"],
-        "nodeBkg": p["accent_light"] if extended else p["primary_light"],
+        "mainBkg": p["accent_light"] if extended else p["surface"],
+        "nodeBkg": p["accent_light"] if extended else p["surface"],
         "nodeBorder": p["primary"],
         "clusterBkg": p["gray100"],
         "clusterBorder": p["gray400"],
@@ -593,22 +610,22 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
         "noteBkgColor": p["success_light"] if extended else p["neutral_light"],
         "noteTextColor": p["ink"],
         "noteBorderColor": p["success"] if extended else p["gray400"],
-        "actorBkg": p["accent_light"] if extended else p["primary_light"],
+        "actorBkg": p["accent_light"] if extended else p["surface"],
         "actorBorder": p["accent"] if extended else p["primary"],
         "actorTextColor": p["ink"],
         "actorLineColor": p["accent"] if extended else p["primary"],
         "signalColor": p["primary"] if extended else p["muted"],
         "signalTextColor": p["ink"],
         "activationBorderColor": p["warning"] if extended else p["primary"],
-        "activationBkgColor": p["warning_light"] if extended else p["primary_light"],
+        "activationBkgColor": p["warning_light"] if extended else p["gray200"],
         "classText": p["ink"],
         "transitionColor": p["muted"],
         "stateLabelColor": p["ink"],
-        "stateBkg": p["accent_light"] if extended else p["primary_light"],
-        "labelBackgroundColor": p["accent_light"] if extended else p["primary_light"],
+        "stateBkg": p["accent_light"] if extended else p["surface"],
+        "labelBackgroundColor": p["accent_light"] if extended else p["surface"],
         "compositeBackground": p["accent_light"] if extended else p["neutral_light"],
         "altBackground": p["warning_light"] if extended else p["gray200"],
-        "compositeTitleBackground": p["accent_light"] if extended else p["primary_light"],
+        "compositeTitleBackground": p["accent_light"] if extended else p["gray100"],
         "compositeBorder": p["accent"] if extended else p["primary"],
         "labelColor": p["ink"],
         "titleColor": p["ink"],
@@ -631,13 +648,13 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
         "sectionBkgColor": p["accent_light"] if extended else p["gray100"],
         "altSectionBkgColor": p["warning_light"] if extended else p["gray200"],
         "sectionBkgColor2": p["success_light"] if extended else p["gray100"],
-        "taskBkgColor": p["accent"] if extended else p["primary_light"],
+        "taskBkgColor": p["accent"] if extended else p["gray100"],
         "taskBorderColor": p["accent"] if extended else p["primary"],
         "taskTextColor": p["surface"] if extended else p["ink"],
         "taskTextDarkColor": p["ink"],
         "taskTextLightColor": p["surface"],
         "taskTextOutsideColor": p["ink"],
-        "activeTaskBkgColor": p["warning"] if extended else p["primary_light"],
+        "activeTaskBkgColor": p["warning"] if extended else p["gray300"],
         "activeTaskBorderColor": p["warning"] if extended else p["primary"],
         "doneTaskBkgColor": p["success"] if extended else p["gray300"],
         "doneTaskBorderColor": p["success"] if extended else p["gray600"],
@@ -672,7 +689,7 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
             f"cScalePeer{index}": color
             for index, color in enumerate(scale_colors)
         },
-        "quadrant1Fill": p["success_light"] if extended else p["primary_light"],
+        "quadrant1Fill": p["success_light"] if extended else p["surface"],
         "quadrant2Fill": p["accent_light"] if extended else p["neutral_light"],
         "quadrant3Fill": p["special_light"] if extended else p["gray200"],
         "quadrant4Fill": p["warning_light"] if extended else p["gray100"],
@@ -753,7 +770,7 @@ def theme_variables(colorset: str, family: str | None = None) -> dict[str, objec
             "complexBg": p["accent_light"],
             "complicatedBg": p["neutral_light"],
             "clearBg": p["success_light"],
-            "chaoticBg": p["primary_light"],
+            "chaoticBg": p["primary_light"] if extended else p["surface"],
             "confusionBg": p["warning_light"],
             "boundaryColor": p["muted"],
             "cliffColor": p["critical"],
@@ -810,6 +827,14 @@ def class_style(colorset: str, class_name: str) -> str:
         "csSpecial": (p["special_light"], p["special"], p["ink"]),
         "csNeutral": (p["neutral_light"], p["neutral"], p["ink"]),
     }
+    if colorset == "colorset1":
+        styles.update({
+            "csPrimary": (p["primary"], p["primary_dark"], p["surface"]),
+            "csCritical": (p["surface"], p["critical"], p["ink"]),
+            "csSuccess": (p["ink"], p["ink"], p["surface"]),
+            "csInfo": (p["surface"], p["gray600"], p["ink"]),
+            "csNeutral": (p["surface"], p["neutral"], p["ink"]),
+        })
     fill, stroke, text = styles[class_name]
     return f"classDef {class_name} fill:{fill},stroke:{stroke},color:{text},stroke-width:2px;"
 
@@ -842,6 +867,22 @@ def sankey_node_colors(source: str, colorset: str) -> dict[str, str]:
     return {node: palette[index % len(palette)] for index, node in enumerate(nodes)}
 
 
+def compact_layouts(family: str | None, source: str) -> dict[str, dict[str, object]]:
+    layout = COMPACT_LAYOUTS.get(family or "")
+    if layout is None:
+        return {}
+    key, defaults = layout
+    capacity = SEMANTIC_CAPACITY_LAYOUTS.get(family or "")
+    if capacity and set(referenced_color_classes(source)) == COLOR_CLASSES:
+        # Retain the established dense ER/Swimlane spacing contract.
+        defaults = {**capacity[1], **{k: v for k, v in defaults.items() if k not in capacity[1]}}
+    result = {key: dict(defaults)}
+    if family == "stateDiagram":
+        # The pinned v2 unified renderer reads shared Flowchart geometry.
+        result["flowchart"] = {"padding": 6, "nodeSpacing": 28, "rankSpacing": 32, "subGraphTitleMargin": {"top": 4, "bottom": 12}}
+    return result
+
+
 def colorset_config(
     colorset: str,
     family: str | None = None,
@@ -853,9 +894,7 @@ def colorset_config(
         "theme": "base",
         "themeVariables": theme_variables(colorset, family),
     }
-    layout = SEMANTIC_CAPACITY_LAYOUTS.get(family or "")
-    if layout and set(referenced_color_classes(source)) == COLOR_CLASSES:
-        config_key, defaults = layout
+    for config_key, defaults in compact_layouts(family, source).items():
         if config_key not in (existing_config_keys or set()):
             config[config_key] = dict(defaults)
     if family == "sankey":
@@ -1044,10 +1083,48 @@ def existing_config_child_keys(frontmatter: str) -> set[str]:
     for line in lines[config_index + 1 : end]:
         if leading_spaces(line) != indent or line.lstrip().startswith("#"):
             continue
-        match = re.match(r"(?P<key>[A-Za-z_][A-Za-z0-9_-]*)\s*:", line.strip())
+        match = re.match(r"[\"']?(?P<key>[A-Za-z_][A-Za-z0-9_-]*)[\"']?\s*:", line.strip())
         if match:
             keys.add(match.group("key"))
     return keys
+
+
+def inject_compact_layout(lines: list[str], config_key: str, defaults: dict[str, object]) -> list[str]:
+    """Fill absent native layout fields in an existing block-style family map.
+
+    Preserve authored scalar values, comments, nested options, and zero values.
+    Leave inline maps, aliases, and YAML merge keys untouched because their
+    inherited values cannot be resolved safely by this line-preserving writer.
+    """
+    if not lines:
+        return lines
+    family_pattern = re.compile(rf"[\"']?{re.escape(config_key)}[\"']?\s*:\s*(?:#.*)?$")
+    config_indent = min((leading_spaces(line) for line in lines if line.strip() and not line.lstrip().startswith("#")), default=2)
+    for start, line in enumerate(lines):
+        if leading_spaces(line) != config_indent or not family_pattern.fullmatch(line.strip()):
+            continue
+        end = start + 1
+        while end < len(lines):
+            candidate = lines[end]
+            if candidate.strip() and not candidate.lstrip().startswith("#") and leading_spaces(candidate) <= config_indent:
+                break
+            end += 1
+        members = lines[start + 1:end]
+        if any(member.lstrip().startswith("<<:") for member in members):
+            return lines
+        indent = min((leading_spaces(member) for member in members if member.strip() and not member.lstrip().startswith("#")), default=config_indent + 2)
+        authored = set()
+        for member in members:
+            match = re.match(r"[\"']?(?P<key>[A-Za-z_][A-Za-z0-9_-]*)[\"']?\s*:", member.strip())
+            if leading_spaces(member) == indent and match:
+                authored.add(match.group("key"))
+        missing = {key: value for key, value in defaults.items() if key not in authored}
+        if missing:
+            prefix = " " * indent
+            generated = [prefix + CONFIG_BEGIN, *yaml_mapping_lines(missing, indent), prefix + CONFIG_END]
+            return lines[:end] + generated + lines[end:]
+        return lines
+    return lines
 
 
 def parse_simple_yaml_scalar(value: str) -> object:
@@ -1177,6 +1254,8 @@ def inject_colorset_frontmatter(
         end = find_mapping_end(body, config_index)
         indent = child_indent(body, config_index, end)
         cleaned_config = remove_config_style_keys(body, config_index, end, indent, family)
+        for key, defaults in compact_layouts(family, source).items():
+            cleaned_config = inject_compact_layout(cleaned_config, key, defaults)
         body = body[: config_index + 1] + cleaned_config + generated_config_lines(
             colorset,
             family,

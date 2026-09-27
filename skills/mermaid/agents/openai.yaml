@@ -1,4 +1,4 @@
 interface:
   display_name: "Mermaid"
   short_description: "Create, style, and validate Mermaid diagrams"
-  default_prompt: "Use $mermaid to choose an appropriate diagram family, preserve supplied facts, apply the requested colorset, and validate the output. For behavior-heavy or newly authored diagrams, use the relevant semantic contract and verify accessible title and description metadata."
+  default_prompt: "Use $mermaid to choose an appropriate diagram family, preserve supplied facts, apply compact boxes and the requested colorset with neutral surfaces and red emphasis by default, and validate the output. For behavior-heavy or newly authored diagrams, use the relevant semantic contract and verify accessible title and description metadata."

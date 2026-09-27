@@ -64,6 +64,10 @@ class StaticMarkupExtractor(HTMLParser):
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         lowered = tag.lower()
+        if lowered in {"animate", "animatemotion", "animatetransform", "set"}:
+            # SMIL fill controls the animation lifetime, not a paint color.
+            attrs = [(name, value) for name, value in attrs
+                     if not (name.lower() == "fill" and value in {"freeze", "remove"})]
         if lowered in {"script", "template"}:
             self._ignored_depth += 1
             if lowered == "script":
@@ -117,7 +121,7 @@ def load_colorsets(path: Path = PALETTE_PATH) -> dict[str, set[str]]:
 
 
 def static_surface(path: Path, source: str) -> tuple[str, int]:
-    if path.suffix.lower() not in {".html", ".htm"}:
+    if path.suffix.lower() not in {".html", ".htm", ".svg"}:
         return source, 0
     parser = StaticMarkupExtractor()
     parser.feed(source)

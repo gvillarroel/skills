@@ -10,12 +10,13 @@ Use browser verification for Three.js because static DOM checks cannot prove Web
 4. Verify the expected number of scene cards, canvases, and replay controls.
 5. Sample canvas pixels after rendering:
    - Nonwhite pixel count proves the canvas is not blank.
-   - Color diversity proves token-colored objects rendered instead of a flat clear color.
+   - Tonal variation proves shaded objects rendered instead of a flat clear color; neutral shading is valid and does not require extra hues.
    - Canvas bounds prove responsive sizing is usable.
 6. Sample canvas hashes before and after a delay to confirm animation changes frames.
 7. Click replay controls and confirm replay state changes without duplicating canvases or listeners.
 8. Perform a pointer drag on at least one canvas and confirm interaction state changes.
 9. Capture desktop and mobile screenshots and inspect them for framing, overlap, and text fit.
+10. Inspect actual material and light colors through `window.__threeRuntimeScene.inspect()` for builder output. Default materials must be red/neutral, lights white, and pink absent. Validate colorset2 only when selected. Inspect multiple animation phases and camera angles for clipped objects, and preserve 44 px touch targets while reducing visible panel padding.
 
 Do not probe undocumented Playwright properties to discover launch APIs. Do not
 run an expected-negative `grep` as a bare command: a correct no-match result has

@@ -16,7 +16,7 @@ Use this reference for dense diagrams whose elements consume indexed or semantic
 | Venn | 8 sets | `venn1` through `venn8` are the complete set scheme before reuse. |
 | GitGraph | 8 branches including the main branch | `git0` through `git7`, their inverse colors, and all eight branch-label colors must be configured together. |
 
-The general Mermaid theme scale contains 12 entries. Configure `cScale`, `cScaleLabel`, and `cScaleInv` for all 12 entries whenever a family consumes that scale. Treemap also consumes all 12 `cScalePeer` entries.
+The general Mermaid theme scale contains 12 entries. Configure `cScale`, `cScaleLabel`, and `cScaleInv` for all 12 entries whenever a family consumes that scale. Treemap also consumes all 12 `cScalePeer` entries. Standard colorset1 uses red and neutral grays through slot 12; it does not spend an early or terminal slot on pink. Capacity is a renderer boundary, not a recommendation to use every color in ordinary diagrams.
 
 Kanban columns and cards require stable IDs before bracketed labels. Bare multiword lines do not parse:
 
@@ -56,7 +56,7 @@ Use the assignment form that the selected grammar renders:
 - Class diagram declarations: `class ClassRole01:::csPrimary`. A separate `class ClassRole01 csPrimary` line is parsed as another class, not as styling.
 - State, ER, Requirement, and Block elements: declare the element first, then use `class R01 csPrimary`. Block diagrams do not accept the inline `:::` form reliably.
 
-At the full nine-role boundary, the styler adds compact Mermaid 11.16.0 layout defaults when no explicit family layout is present:
+The styler applies [compact native padding](compact-composition.md) to supported box families at every size. At the full nine-role boundary it also retains these Mermaid 11.16.0 layout defaults:
 
 - ER uses `config.er.minEntityWidth: 180` and `rankSpacing: 20`; keep `direction TB` for a long linear chain. This prevents nine short entity IDs from rendering as an excessively narrow column.
 - Swimlane uses `config.flowchart.nodeSpacing: 10` and `rankSpacing: 20`. Prefer `swimlane-beta TB` for three dense lanes unless left-to-right order is itself required; the compact LR form remains suitable when direction matters.

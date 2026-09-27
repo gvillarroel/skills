@@ -33,7 +33,7 @@ PALETTE = {
     "orange_highlight": "#ffe5cc",
     "green_highlight": "#dbffcc",
     "purple_highlight": "#f9ccff",
-    "red_highlight": "#ffccd5",
+    "red_highlight": "#e7e7e7",
 }
 
 ROWS = [128, 182, 236, 290]
