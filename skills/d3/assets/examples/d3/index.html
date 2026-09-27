@@ -64,9 +64,9 @@
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
-      gap: clamp(32px, 6vw, 72px);
+      gap: 24px;
       align-items: center;
-      padding: clamp(52px, 8vw, 92px) 0 44px;
+      padding: 28px 0 24px;
     }
     .eyebrow {
       margin: 0 0 12px;
@@ -80,7 +80,7 @@
       max-width: 760px;
       margin: 0;
       color: var(--ink-dark);
-      font-size: clamp(38px, 6vw, 70px);
+      font-size: clamp(32px, 4.5vw, 56px);
       line-height: .98;
       letter-spacing: -.045em;
     }
@@ -117,7 +117,7 @@
       border: 1px solid var(--line);
       border-radius: 10px;
       background: var(--surface);
-      padding: 18px;
+      padding: 12px;
       box-shadow: 0 18px 44px rgba(51, 62, 72, .08);
     }
     .hero-visual svg {
@@ -135,7 +135,7 @@
     }
     .metric {
       min-width: 0;
-      padding: 18px;
+      padding: 12px;
       border-right: 1px solid var(--line);
     }
     .metric:last-child { border-right: 0; }
@@ -152,7 +152,7 @@
       font-size: 12px;
       font-weight: 700;
     }
-    section { padding-top: 64px; }
+    section { padding-top: 28px; }
     .section-head {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(280px, .65fr);
@@ -177,11 +177,11 @@
       gap: 12px;
     }
     .capability {
-      min-height: 206px;
+      min-height: 0;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--surface);
-      padding: 18px;
+      padding: 12px;
     }
     .capability-index {
       display: inline-grid;
@@ -211,13 +211,13 @@
     }
     .gallery-link {
       display: grid;
-      min-height: 196px;
+      min-height: 0;
       align-content: space-between;
       gap: 28px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--surface);
-      padding: 20px;
+      padding: 12px;
       text-decoration: none;
       transition: border-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
     }
@@ -259,13 +259,13 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
-      padding-bottom: 72px;
+      padding-bottom: 28px;
     }
     .decision-card {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--surface);
-      padding: 22px;
+      padding: 12px;
     }
     .decision-card h3 {
       margin: 0 0 10px;
@@ -292,7 +292,7 @@
     @media (max-width: 620px) {
       .wrap { width: min(100% - 22px, 1180px); }
       .site-nav { min-height: 52px; }
-      .hero { padding-top: 38px; }
+      .hero { padding-top: 20px; }
       .hero-visual { padding: 10px; }
       .metrics { grid-template-columns: 1fr 1fr; }
       .metric { border-top: 1px solid var(--line); }
@@ -329,7 +329,7 @@
           <rect x="1" y="1" width="518" height="338" rx="8" fill="#ffffff" stroke="#cfcfcf"/>
           <g aria-label="bar chart" transform="translate(30 34)">
             <path d="M0 110H180M0 110V0" fill="none" stroke="#828282"/>
-            <rect x="18" y="62" width="26" height="48" fill="#ffccd5"/>
+            <rect x="18" y="62" width="26" height="48" fill="#cfcfcf"/>
             <rect x="56" y="24" width="26" height="86" fill="#9e1b32"/>
             <rect x="94" y="46" width="26" height="64" fill="#e8002a"/>
             <rect x="132" y="10" width="26" height="100" fill="#6d1222"/>

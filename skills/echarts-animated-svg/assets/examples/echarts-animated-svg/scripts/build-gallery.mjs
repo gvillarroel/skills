@@ -1481,10 +1481,10 @@ function roleFor(chartType, tag, attrs) {
   const hasTransform = /\stransform=/.test(attrs)
   const hasStroke = /\sstroke="(?!none)/.test(attrs)
   const pathlike = ['path', 'line', 'polyline', 'polygon'].includes(tag)
-  if (chartType === 'horizontal-bar')
-    return pathlike || tag === 'rect' ? 'scale-x' : 'fade'
   if (hasTransform)
     return 'fade'
+  if (chartType === 'horizontal-bar')
+    return pathlike || tag === 'rect' ? 'scale-x' : 'fade'
   if (['line', 'lines', 'parallel', 'tree'].includes(chartType) && pathlike && hasStroke)
     return 'draw'
   if (chartType === 'radar' && pathlike && hasStroke)
@@ -1563,13 +1563,13 @@ function pageCss() {
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--brand-background); }
-.page-shell { max-width: 1480px; margin: 0 auto; padding: 28px; }
+.page-shell { max-width: 1480px; margin: 0 auto; padding: 16px; }
 .topbar {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 22px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 h1 { margin: 0 0 6px; font-size: 32px; line-height: 1.1; letter-spacing: 0; }
 .lede { margin: 0; color: var(--brand-gray-70); max-width: 760px; line-height: 1.45; }
@@ -1582,7 +1582,8 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 9px 12px;
+  padding: 4px 10px;
+  min-height: 32px;
   font: inherit;
   font-weight: 650;
   cursor: pointer;
@@ -1599,7 +1600,7 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 16px;
+  gap: 12px;
 }
 .chart-card {
   background: #fff;
@@ -1613,15 +1614,20 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
   grid-template-columns: 1fr auto;
   gap: 12px;
   align-items: start;
-  padding: 14px 14px 10px;
+  padding: 10px 12px 8px;
   border-bottom: 1px solid var(--brand-gray-10);
 }
 .card-header h2 { margin: 0 0 4px; font-size: 17px; line-height: 1.2; letter-spacing: 0; }
 .card-header p { margin: 0; color: var(--brand-gray-60); line-height: 1.35; font-size: 13px; }
 .card-header .pattern-id { margin-top: 6px; font: 800 11px/1.2 Consolas, "Liberation Mono", "Courier New", monospace; overflow-wrap: anywhere; }
-.chart-stage { padding: 8px 10px 12px; background: #ffffff; }
+.chart-stage { padding: 6px 8px 8px; background: #ffffff; }
 .chart-stage svg { display: block; width: 100%; height: auto; overflow: visible; }
-.easv-svg .easv-mark {
+.card-actions { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; max-width: 160px; }
+.chart-stage.is-expanded { overflow: auto; max-height: 70vh; }
+.chart-stage.is-expanded svg { max-width: none; }
+@media (max-width: 500px) { .card-header { grid-template-columns: 1fr; gap: 6px; } .card-actions { max-width: none; justify-content: flex-start; } }
+.easv-svg .easv-scale-y,
+.easv-svg .easv-scale-x {
   transform-box: fill-box;
   transform-origin: center;
 }
@@ -1633,14 +1639,14 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
 }
 .chart-card.is-playing .easv-scale-y {
   opacity: 0;
-  transform: scaleY(.04);
+  scale: 1 .04;
   transform-origin: center bottom;
   animation: easv-scale-y 820ms cubic-bezier(.22, 1, .36, 1) forwards;
   animation-delay: var(--easv-delay, 0ms);
 }
 .chart-card.is-playing .easv-scale-x {
   opacity: 0;
-  transform: scaleX(.04);
+  scale: .04 1;
   transform-origin: left center;
   animation: easv-scale-x 820ms cubic-bezier(.22, 1, .36, 1) forwards;
   animation-delay: var(--easv-delay, 0ms);
@@ -1653,20 +1659,21 @@ button:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 2p
   animation-delay: var(--easv-delay, 0ms);
 }
 @keyframes easv-fade { to { opacity: 1; } }
-@keyframes easv-scale-y { to { opacity: 1; transform: scaleY(1); } }
-@keyframes easv-scale-x { to { opacity: 1; transform: scaleX(1); } }
+@keyframes easv-scale-y { to { opacity: 1; scale: 1; } }
+@keyframes easv-scale-x { to { opacity: 1; scale: 1; } }
 @keyframes easv-draw { to { stroke-dashoffset: 0; } }
 @media (max-width: 760px) {
-  .page-shell { padding: 18px; }
+  .page-shell { padding: 12px; }
   .topbar { display: block; }
   .actions { justify-content: flex-start; margin-top: 14px; }
   .gallery { grid-template-columns: 1fr; }
 }
+@media (pointer: coarse) { button { min-height: 44px; } }
 @media (prefers-reduced-motion: reduce) {
   .chart-card.is-playing .easv-mark {
     animation: none !important;
     opacity: 1 !important;
-    transform: none !important;
+    scale: 1 !important;
     stroke-dashoffset: 0 !important;
   }
 }
@@ -1691,6 +1698,20 @@ function replayCard(card) {
   card.dataset.replayCount = String(Number(card.dataset.replayCount || 0) + 1)
   card.classList.add('is-playing')
 }
+
+document.querySelectorAll('[data-expand-card]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const stage = button.closest('.chart-card').querySelector('.chart-stage')
+    const svg = stage.querySelector('svg')
+    const expanded = button.getAttribute('aria-pressed') !== 'true'
+    stage.classList.toggle('is-expanded', expanded)
+    stage.tabIndex = expanded ? 0 : -1
+    stage.setAttribute('aria-label', expanded ? 'Expanded chart; scroll to inspect' : 'Chart overview')
+    svg.style.width = expanded ? Math.max(svg.viewBox.baseVal.width, 640) + 'px' : ''
+    button.setAttribute('aria-pressed', String(expanded))
+    button.textContent = expanded ? 'Fit' : 'Expand'
+  })
+})
 
 document.querySelectorAll('[data-replay-card]').forEach((button) => {
   button.addEventListener('click', () => replayCard(button.closest('.chart-card')))
@@ -1721,7 +1742,8 @@ const cards = galleryDefinitions.map((definition) => {
           <p>${escapeHtml(definition.summary)}</p>
           <p class="pattern-id">${escapeHtml(patternId)}</p>
         </div>
-        <button type="button" data-replay-card aria-label="Replay ${escapeHtml(definition.title)} animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
+        <div class="card-actions"><button type="button" data-expand-card aria-pressed="false" aria-label="Expand ${escapeHtml(definition.title)} chart">Expand</button>
+        <button type="button" data-replay-card aria-label="Replay ${escapeHtml(definition.title)} animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button></div>
       </header>
       <div class="chart-stage">${svg}</div>
     </article>

@@ -2359,7 +2359,13 @@ function startPlayback(conceptId) {
   tick(start);
 }
 
+function fitPreview() {
+  document.documentElement.style.setProperty("--preview-scale", String(Math.min(1, window.innerWidth / 1280, window.innerHeight / 720)));
+}
+
 function init() {
+  fitPreview();
+  window.addEventListener("resize", fitPreview);
   const params = new URLSearchParams(window.location.search);
   const hashId = decodeURIComponent(window.location.hash.slice(1));
   const concept = selectConcept(params.get("concept") ?? hashId);

@@ -12,7 +12,7 @@ skinparam NoteBackgroundColor #e7e7e7
 skinparam NoteBorderColor #9c9c9c
 skinparam NoteFontColor #333e48
 
-skinparam SequenceParticipantBackgroundColor #ffccd5
+skinparam SequenceParticipantBackgroundColor #e7e7e7
 skinparam SequenceParticipantBorderColor #9e1b32
 skinparam SequenceActorBackgroundColor #ffffff
 skinparam SequenceActorBorderColor #6d1222
@@ -21,12 +21,12 @@ skinparam SequenceArrowColor #696969
 
 skinparam UsecaseBackgroundColor #ffffff
 skinparam UsecaseBorderColor #9e1b32
-skinparam ActorBackgroundColor #ffccd5
+skinparam ActorBackgroundColor #e7e7e7
 skinparam ActorBorderColor #6d1222
 
 skinparam ClassBackgroundColor #ffffff
 skinparam ClassBorderColor #9e1b32
-skinparam ClassHeaderBackgroundColor #ffccd5
+skinparam ClassHeaderBackgroundColor #e7e7e7
 skinparam ObjectBackgroundColor #ffffff
 skinparam ObjectBorderColor #6d1222
 
@@ -34,16 +34,16 @@ skinparam ActivityBackgroundColor #ffffff
 skinparam ActivityBorderColor #9e1b32
 skinparam ActivityStartColor #333e48
 skinparam ActivityEndColor #e8002a
-skinparam ActivityDiamondBackgroundColor #ffccd5
+skinparam ActivityDiamondBackgroundColor #e7e7e7
 skinparam ActivityDiamondBorderColor #6d1222
 
 skinparam ComponentBackgroundColor #ffffff
 skinparam ComponentBorderColor #9e1b32
-skinparam InterfaceBackgroundColor #ffccd5
+skinparam InterfaceBackgroundColor #e7e7e7
 skinparam InterfaceBorderColor #6d1222
 skinparam NodeBackgroundColor #e7e7e7
 skinparam NodeBorderColor #333e48
-skinparam DatabaseBackgroundColor #ffccd5
+skinparam DatabaseBackgroundColor #e7e7e7
 skinparam DatabaseBorderColor #9e1b32
 skinparam CloudBackgroundColor #e7e7e7
 skinparam CloudBorderColor #696969
@@ -64,6 +64,7 @@ skinparam LegendBorderColor #cfcfcf
 
 <style>
 root {
+  Padding 6
   FontColor #333e48
   LineColor #696969
   BackgroundColor #ffffff
@@ -82,7 +83,7 @@ header {
 node, artifact, folder, frame, rectangle, card {
   FontColor #333e48
   LineColor #9e1b32
-  BackGroundColor #ffccd5
+  BackGroundColor #e7e7e7
 }
 component, interface {
   FontColor #333e48
@@ -92,7 +93,7 @@ component, interface {
 database, storage, collections {
   FontColor #333e48
   LineColor #9e1b32
-  BackGroundColor #ffccd5
+  BackGroundColor #e7e7e7
 }
 cloud {
   FontColor #333e48
@@ -107,7 +108,7 @@ queue {
 agent, actor, participant {
   FontColor #333e48
   LineColor #6d1222
-  BackGroundColor #ffccd5
+  BackGroundColor #e7e7e7
 }
 class {
   FontColor #333e48
@@ -117,7 +118,7 @@ class {
 diamond {
   FontColor #333e48
   LineColor #6d1222
-  BackGroundColor #ffccd5
+  BackGroundColor #e7e7e7
 }
 arrow {
   FontColor #333e48
@@ -135,7 +136,7 @@ chartDiagram {
   }
   bar {
     LineColor #9e1b32
-    BackGroundColor #ffccd5
+    BackGroundColor #e7e7e7
   }
   line {
     LineColor #6d1222

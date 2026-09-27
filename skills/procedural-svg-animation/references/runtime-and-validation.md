@@ -2,6 +2,21 @@
 
 ## Embedding Modes
 
+For a browsable catalog, keep headers and card padding compact and place a long
+family directory in a native disclosure element. Keep filters and the first
+visual previews easy to reach. Preserve the SVG viewBox and motion envelope;
+reduce page chrome before shrinking or cropping the artwork. The bundled
+gallery uses 12 px card padding and 44 px controls on coarse pointers.
+
+To build a complete browsable catalog from the runtime bundle, run
+`uv run --script skills/procedural-svg-animation/scripts/build_procedural_gallery.py --output-dir gallery`.
+Use the requested output directory explicitly. The builder needs no existing
+acceptance gallery and preserves each pattern's native SVG dimensions.
+It writes artwork under `patterns/`. Validate the complete catalog by repeating the
+same command and parameters with `--check`. This rebuilds and compares the
+managed outputs; use it instead of guessing filenames or matching every URL
+as an external dependency. The standard SVG/XML namespace URLs do not fetch data.
+
 | Mode | SVG-native CSS/SMIL | Script and interaction | Use it for |
 | --- | --- | --- | --- |
 | Direct `.svg` document | yes | top-level scripts can run, but omit them for portability | deliverable and browser QA |

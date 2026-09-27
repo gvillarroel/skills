@@ -26,7 +26,7 @@
 body[data-color-set="colorset1"] {
   --accent: var(--red);
   --accent-hover: var(--red-hover);
-  --accent-highlight: #ffccd5;
+  --accent-highlight: #e7e7e7;
   --accent-ring: rgba(158, 27, 50, .24);
 }
 
@@ -46,15 +46,15 @@ body {
 .page-shell {
   width: min(1760px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 22px 0 42px;
+  padding: 16px 0 24px;
 }
 
 header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 24px;
+  gap: 12px;
   align-items: end;
-  padding: 0 0 18px;
+  padding: 0 0 12px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -167,7 +167,7 @@ h1 {
   grid-template-columns: minmax(240px, .7fr) minmax(0, 1.7fr);
   gap: 18px;
   margin-top: 18px;
-  padding: 18px;
+  padding: 12px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--surface);
@@ -216,7 +216,7 @@ h1 {
   gap: 20px;
   align-items: end;
   margin-top: 14px;
-  padding: 14px 16px;
+  padding: 10px 12px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--surface);
@@ -520,3 +520,5 @@ h2 {
     min-height: 0;
   }
 }
+
+@media (pointer: coarse) { :root button, :root select, :root input:not([type="checkbox"]):not([type="radio"]) { min-height: 44px; } }

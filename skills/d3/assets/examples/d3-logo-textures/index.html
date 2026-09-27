@@ -43,7 +43,7 @@
     button { cursor: pointer; font-weight: 700; }
     button:hover, button:focus-visible, input:focus-visible, select:focus-visible {
       border-color: #9e1b32;
-      outline: 3px solid #ffccd5;
+      outline: 3px solid #9e1b32;
       outline-offset: 2px;
     }
     input[type="range"] { accent-color: #9e1b32; padding-inline: 0; }
@@ -59,9 +59,9 @@
     .header-inner {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
+      gap: 12px;
       align-items: end;
-      padding-block: 30px 24px;
+      padding-block: 16px 12px;
     }
     h1 {
       margin: 0;
@@ -84,14 +84,14 @@
     }
     .total strong { display: block; font-size: 2rem; line-height: 1; }
     .total span { color: #e7e7e7; font-size: 0.76rem; letter-spacing: 0.09em; text-transform: uppercase; }
-    main { padding-block: 24px 64px; }
+    main { padding-block: 12px 24px; }
     .controls {
       display: grid;
       grid-template-columns: repeat(7, minmax(120px, 1fr));
       gap: 12px;
       border: 1px solid #cfcfcf;
       background: #ffffff;
-      padding: 16px;
+      padding: 12px;
     }
     .control {
       display: grid;
@@ -145,7 +145,7 @@
       background: #f7f7f7;
     }
     .texture-swatch svg { display: block; width: 100%; height: 100%; }
-    .texture-copy { display: grid; gap: 8px; padding: 13px; }
+    .texture-copy { display: grid; gap: 6px; padding: 10px; }
     .texture-copy h3 { margin: 0; font-size: 1rem; line-height: 1.2; }
     .texture-id {
       display: block;
@@ -171,6 +171,7 @@
     }
     footer > div { padding-block: 20px; }
     footer p { margin: 0; }
+    @media (pointer: coarse) { :root button, :root select, :root input { min-height: 44px; } }
     @media (max-width: 1180px) {
       .controls { grid-template-columns: repeat(4, minmax(120px, 1fr)); }
       .texture-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }

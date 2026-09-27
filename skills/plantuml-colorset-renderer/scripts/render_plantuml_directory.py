@@ -222,8 +222,9 @@ def render_with_kroki(
 
 def render_with_cli(source: str, fmt: str, output_path: Path, command: str, timeout: int) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    executable = shutil.which(command) or command
     result = subprocess.run(
-        [command, f"-t{fmt}", "-pipe"],
+        [executable, f"-t{fmt}", "-pipe"],
         input=source.encode("utf-8"),
         capture_output=True,
         timeout=timeout,

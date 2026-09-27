@@ -42,15 +42,15 @@ button {
 .page-shell {
   width: min(1500px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 24px 0 40px;
+  padding: 16px 0 24px;
 }
 
 .page-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 24px;
+  gap: 12px;
   align-items: end;
-  padding: 4px 0 18px;
+  padding: 4px 0 12px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -96,7 +96,7 @@ h1 {
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 12px;
   padding-top: 18px;
 }
 
@@ -110,8 +110,8 @@ h1 {
 }
 
 .example-header {
-  min-height: 134px;
-  padding: 16px 16px 12px;
+  min-height: 0;
+  padding: 10px 12px;
   border-bottom: 1px solid var(--line-soft);
 }
 
@@ -162,7 +162,7 @@ h2 {
 .scene-frame {
   position: relative;
   aspect-ratio: 1.2;
-  min-height: 230px;
+  min-height: 200px;
   background: var(--white);
   overflow: hidden;
 }
@@ -281,6 +281,8 @@ h2 {
   }
 
   .scene-frame {
-    min-height: 260px;
+    min-height: 200px;
   }
 }
+
+@media (pointer: coarse) { :root button, :root select, :root input:not([type="checkbox"]):not([type="radio"]) { min-height: 44px; } }

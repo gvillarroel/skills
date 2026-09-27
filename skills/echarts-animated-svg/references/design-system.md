@@ -28,6 +28,8 @@ Use these tokens when generating or restyling ECharts animated SVG examples, gal
 
 ## Implementation Notes
 
+- Use 12 px panel padding, 8–12 px gaps, and content-sized headers. Keep replay controls at least 32 px high, or 44 px for coarse pointers. Avoid fixed blank card-header rows.
+- Keep a compact chart overview and offer an expanded, scrollable view at the SVG's native dimensions when fitting would make labels too small. Adjust the wrapper rather than distorting chart coordinates, axes, or aspect ratio.
 - Put tokens in one shared constant or CSS variable block per generated artifact, then reuse them in chart options and controls.
 - Avoid reintroducing older sample palettes such as slate, Tailwind blue, Tailwind teal, or purple-only gradients.
 - Prefer icon-plus-text buttons for replay controls so the Material Symbols glyph remains clear even when the web font is still loading.

@@ -7,6 +7,12 @@ description: Render and validate PlantUML diagrams with bundled colorset themes 
 
 ## Core Contract
 
+Map exact paths before rendering: the renderer writes
+`<output-root>/<format>/<source-relative-stem>.<format>`. For
+`input/diagram.puml` and a required `rendered/svg/diagram.svg`, pass
+`--output rendered`, and use that same root in the report validator. Do not
+pass `rendered/svg` as the root. Keep the requested input filename unchanged.
+
 Preserve the user's PlantUML source semantics. Apply the requested bundled colorset theme as presentation only, then render SVG and PNG outputs with a report that records every source, output path, format, colorset, and render engine. Default to colorset2 unless the user asks for colorset1.
 
 Prefer local rendering for private diagrams. Use a remote fallback such as Kroki or PlantUML Server only when the user permits external rendering or the task is validation/example work with non-sensitive sources.
@@ -87,6 +93,13 @@ Resolve image paths from the PlantUML source or renderer working directory, pref
 
 ## Bundled Themes
 
+Both themes set native root padding to 6 without shrinking fonts. This reduces
+whitespace in supported activities, participants, and mind-map nodes; other
+families retain their native geometry. Later authored style rules override the
+theme. Inspect labels and connectors before reducing inter-node spacing; the
+theme does not impose a universal rank gap. Prefer compact preview containers
+with access to the full-size SVG for dense diagrams.
+
 Use `assets/themes/cs2.puml` for the full colorset2 palette. It maps the repository colorset2 palette to PlantUML `skinparam` and CSS-like `<style>` rules:
 
 - Primary red: `#9e1b32`
@@ -102,12 +115,22 @@ Use `assets/themes/cs1.puml` for the colorset1 red-neutral palette:
 - Primary red: `#9e1b32`
 - Red hover/emphasis: `#6d1222`
 - Critical red: `#e8002a`
-- Red highlight: `#ffccd5`
+- Neutral surface highlight: `#e7e7e7`; reserve pink for an explicit request or a last-resort category after red and neutrals.
 - Neutral ink and grays: `#333e48`, `#696969`, `#9c9c9c`, `#cfcfcf`, `#e7e7e7`
 
 Do not add semantic classes or labels to user diagrams unless the user asks. The renderer injects the theme in memory after compatible `@start...` lines and leaves the original files unchanged unless `--write-themed` is passed. It never injects theme text into `@startditaa`, `@startmath`, or `@startlatex`. Kroki Ditaa requests use the `ditaa` route.
 
 ## Output Checks
+
+Validate ordinary render batches with
+`uv run --script <skill-root>/scripts/validate_plantuml_render_report.py --report <report.json> --output <render-directory> --colorset <requested-colorset>`.
+Use the actual output paths. This handles SVG token capitalization and allows
+neutral-only colorset1 diagrams; do not add red or pink solely to satisfy a
+color-presence check. Add `--coverage-manifest` only for frozen coverage fixtures.
+The bundled validator checks artifact paths, formats, SVG/PNG validity and
+palette evidence. After it passes, do not add grep or raw regex checks for
+those same properties; the SVG serializer can uppercase hex tokens. Preserve
+the exact output paths instead of moving results to fix an incorrect root.
 
 After rendering, verify:
 
@@ -115,6 +138,6 @@ After rendering, verify:
 - `failedDiagramCount` is `0`.
 - Each arbitrary diagram result has the requested outputs. Coverage-mode fixtures have the exact formats declared in `diagram-types.json`; Ditaa is PNG-only.
 - Coverage reports contain all 28 family IDs and all 29 fixture IDs exactly once, with Chronology recorded as `expected-unavailable` and no artifact.
-- SVG outputs contain `<svg` and expected colorset tokens such as `#9e1b32`, `#007298`, or `#e77204` for colorset2, or `#9e1b32`, `#6d1222`, and `#ffccd5` for colorset1.
+- The bundled report validator passes with the requested colorset; a diagram may use only a subset of that palette.
 - PNG outputs are non-empty binary files.
 - For private source, the report uses a local endpoint or local PlantUML command rather than a public remote service.

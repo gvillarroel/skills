@@ -12,6 +12,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 
@@ -32,8 +33,30 @@ from render_plantuml_directory import (  # noqa: E402
     inject_theme,
     kroki_diagram_type_for,
     render_source,
+    render_with_cli,
     source_for_kroki,
 )
+
+
+class LocalCommandTests(unittest.TestCase):
+    def test_path_command_is_resolved_before_process_creation(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "diagram.svg"
+            payload = b'<svg xmlns="http://www.w3.org/2000/svg"/>'
+            with patch("render_plantuml_directory.shutil.which", return_value="C:/tools/plantuml.cmd") as lookup:
+                with patch("render_plantuml_directory.subprocess.run", return_value=subprocess.CompletedProcess([], 0, payload, b"")) as run:
+                    render_with_cli("@startuml\n@enduml", "svg", output, "plantuml", 10)
+            lookup.assert_called_once_with("plantuml")
+            self.assertEqual(run.call_args.args[0], ["C:/tools/plantuml.cmd", "-tsvg", "-pipe"])
+            self.assertEqual(output.read_bytes(), payload)
+
+    def test_explicit_command_path_remains_supported(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "diagram.svg"
+            with patch("render_plantuml_directory.shutil.which", return_value=None):
+                with patch("render_plantuml_directory.subprocess.run", return_value=subprocess.CompletedProcess([], 0, b"<svg/>", b"")) as run:
+                    render_with_cli("@startuml\n@enduml", "svg", output, "./local-renderer", 10)
+            self.assertEqual(run.call_args.args[0][0], "./local-renderer")
 
 
 class ManifestTests(unittest.TestCase):
@@ -190,6 +213,23 @@ class ExactReportGateTests(unittest.TestCase):
 
 
 class RenderArtifactValidationTests(unittest.TestCase):
+    def test_neutral_colorset1_activity_does_not_require_red_or_pink(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            svg = root / "activity.svg"
+            svg.write_text('<svg xmlns="http://www.w3.org/2000/svg"><rect fill="#FFFFFF" stroke="#696969"/><text fill="#333E48">Observe</text></svg>', encoding="utf-8")
+            report = root / "report.json"
+            report.write_text(json.dumps({
+                "ok": True, "colorset": "colorset1", "formats": ["svg"],
+                "failedDiagramCount": 0, "renderedDiagramCount": 1,
+                "results": [{"source": "activity.puml", "themeMode": "inject", "themeApplied": True,
+                             "expectedFormats": ["svg"], "outputs": [{"format": "svg", "path": "activity.svg"}]}],
+            }), encoding="utf-8")
+            completed = subprocess.run([sys.executable, str(SCRIPTS_DIR / "validate_plantuml_render_report.py"),
+                                        "--report", str(report), "--output", str(root), "--colorset", "colorset1"],
+                                       capture_output=True, text=True)
+            self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
+
     def test_default_black_and_white_do_not_prove_colorset_application(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

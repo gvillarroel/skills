@@ -2,9 +2,9 @@
   "ok": true,
   "colorset": "colorset1",
   "theme": "assets/themes/cs1.puml",
-  "engine": "kroki",
+  "engine": "cli",
   "serverUrl": null,
-  "krokiUrl": "https://kroki.io",
+  "krokiUrl": null,
   "formats": [
     "svg",
     "png"
@@ -56,15 +56,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/activity.svg",
-          "size_bytes": 6781,
-          "engine": "kroki"
+          "size_bytes": 6771,
+          "engine": "cli"
         }
       ]
     },
@@ -90,15 +90,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/archimate.svg",
-          "size_bytes": 4227,
-          "engine": "kroki"
+          "size_bytes": 4165,
+          "engine": "cli"
         }
       ]
     },
@@ -124,15 +124,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/chart.svg",
-          "size_bytes": 6272,
-          "engine": "kroki"
+          "size_bytes": 6282,
+          "engine": "cli"
         }
       ]
     },
@@ -158,15 +158,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/chen.svg",
-          "size_bytes": 6008,
-          "engine": "kroki"
+          "size_bytes": 5938,
+          "engine": "cli"
         }
       ]
     },
@@ -191,7 +191,7 @@
         "svg",
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": []
@@ -218,15 +218,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/class.svg",
-          "size_bytes": 5907,
-          "engine": "kroki"
+          "size_bytes": 7083,
+          "engine": "cli"
         }
       ]
     },
@@ -252,15 +252,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/component.svg",
-          "size_bytes": 6553,
-          "engine": "kroki"
+          "size_bytes": 6487,
+          "engine": "cli"
         }
       ]
     },
@@ -286,15 +286,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/deployment.svg",
-          "size_bytes": 7550,
-          "engine": "kroki"
+          "size_bytes": 7208,
+          "engine": "cli"
         }
       ]
     },
@@ -320,15 +320,15 @@
       "skippedFormats": [
         "svg"
       ],
-      "krokiDiagramType": "ditaa",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "png",
           "path": "png/ditaa.png",
-          "size_bytes": 8536,
-          "engine": "kroki"
+          "size_bytes": 8374,
+          "engine": "cli"
         }
       ]
     },
@@ -354,15 +354,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/ebnf.svg",
-          "size_bytes": 8044,
-          "engine": "kroki"
+          "size_bytes": 7983,
+          "engine": "cli"
         }
       ]
     },
@@ -388,7 +388,7 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
@@ -396,7 +396,7 @@
           "format": "svg",
           "path": "svg/files.svg",
           "size_bytes": 19897,
-          "engine": "kroki"
+          "engine": "cli"
         }
       ]
     },
@@ -422,15 +422,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/gantt.svg",
-          "size_bytes": 9505,
-          "engine": "kroki"
+          "size_bytes": 9494,
+          "engine": "cli"
         }
       ]
     },
@@ -456,15 +456,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/ie.svg",
-          "size_bytes": 5886,
-          "engine": "kroki"
+          "size_bytes": 7621,
+          "engine": "cli"
         }
       ]
     },
@@ -490,15 +490,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/json.svg",
-          "size_bytes": 4463,
-          "engine": "kroki"
+          "size_bytes": 4453,
+          "engine": "cli"
         }
       ]
     },
@@ -524,7 +524,7 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
@@ -532,7 +532,7 @@
           "format": "svg",
           "path": "svg/latex.svg",
           "size_bytes": 501,
-          "engine": "kroki"
+          "engine": "cli"
         }
       ]
     },
@@ -558,7 +558,7 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
@@ -566,7 +566,7 @@
           "format": "svg",
           "path": "svg/math.svg",
           "size_bytes": 522,
-          "engine": "kroki"
+          "engine": "cli"
         }
       ]
     },
@@ -592,15 +592,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/mindmap.svg",
-          "size_bytes": 5276,
-          "engine": "kroki"
+          "size_bytes": 5272,
+          "engine": "cli"
         }
       ]
     },
@@ -626,15 +626,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/nwdiag.svg",
-          "size_bytes": 4396,
-          "engine": "kroki"
+          "size_bytes": 4405,
+          "engine": "cli"
         }
       ]
     },
@@ -660,15 +660,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/object.svg",
-          "size_bytes": 5229,
-          "engine": "kroki"
+          "size_bytes": 5202,
+          "engine": "cli"
         }
       ]
     },
@@ -694,15 +694,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/packetdiag.svg",
-          "size_bytes": 5971,
-          "engine": "kroki"
+          "size_bytes": 5965,
+          "engine": "cli"
         }
       ]
     },
@@ -728,15 +728,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/regex.svg",
-          "size_bytes": 7597,
-          "engine": "kroki"
+          "size_bytes": 7604,
+          "engine": "cli"
         }
       ]
     },
@@ -762,15 +762,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/salt.svg",
-          "size_bytes": 3403,
-          "engine": "kroki"
+          "size_bytes": 3406,
+          "engine": "cli"
         }
       ]
     },
@@ -796,15 +796,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/sdl.svg",
-          "size_bytes": 4925,
-          "engine": "kroki"
+          "size_bytes": 4916,
+          "engine": "cli"
         }
       ]
     },
@@ -830,15 +830,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/sequence.svg",
-          "size_bytes": 10959,
-          "engine": "kroki"
+          "size_bytes": 10954,
+          "engine": "cli"
         }
       ]
     },
@@ -864,15 +864,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/state.svg",
-          "size_bytes": 6586,
-          "engine": "kroki"
+          "size_bytes": 6596,
+          "engine": "cli"
         }
       ]
     },
@@ -898,15 +898,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/timing.svg",
-          "size_bytes": 6311,
-          "engine": "kroki"
+          "size_bytes": 6313,
+          "engine": "cli"
         }
       ]
     },
@@ -932,15 +932,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/usecase.svg",
-          "size_bytes": 5761,
-          "engine": "kroki"
+          "size_bytes": 5759,
+          "engine": "cli"
         }
       ]
     },
@@ -966,15 +966,15 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
         {
           "format": "svg",
           "path": "svg/wbs.svg",
-          "size_bytes": 5656,
-          "engine": "kroki"
+          "size_bytes": 5660,
+          "engine": "cli"
         }
       ]
     },
@@ -1000,7 +1000,7 @@
       "skippedFormats": [
         "png"
       ],
-      "krokiDiagramType": "plantuml",
+      "krokiDiagramType": null,
       "ok": true,
       "error": null,
       "outputs": [
@@ -1008,7 +1008,7 @@
           "format": "svg",
           "path": "svg/yaml.svg",
           "size_bytes": 8583,
-          "engine": "kroki"
+          "engine": "cli"
         }
       ]
     }

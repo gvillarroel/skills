@@ -20,6 +20,12 @@ about 30–34 px. Increase a box for wrapping, not every box for the longest
 label. Keep diagram labels around 14–16 px at the intended display size.
 Use separate hit areas when a compact visible mark needs a larger pointer target.
 
+In an adjustable logo or illustration studio, show the preview before the
+controls on a narrow screen. Use the artwork's aspect ratio instead of a fixed
+430 px minimum viewport. Split short controls into two columns when labels fit,
+and keep an explicit expanded view for dense chart labels. A compact gallery
+thumbnail does not replace inspection at the source's native dimensions.
+
 Remove unused vertical canvas space for a short process. The contract flow
 builder defaults to a 180 px canvas and measured nodes with 6 px vertical
 padding; `--height` preserves an explicitly requested canvas, and

@@ -1,0 +1,131 @@
+{
+  "d3": {
+    "contract": {
+      "prompt": "evaluations/pi-prompts/assets-d3-contract.md",
+      "outputs": [
+        "studio.html",
+        "settled.svg"
+      ]
+    },
+    "naturalistic": {
+      "prompt": "evaluations/pi-prompts/assets-d3-naturalistic.md",
+      "outputs": [
+        "studio.html"
+      ]
+    },
+    "boundary": {
+      "prompt": "evaluations/pi-prompts/assets-d3-boundary.md",
+      "outputs": [
+        "studio.html"
+      ]
+    },
+    "generalization": {
+      "prompt": "evaluations/pi-prompts/assets-d3-generalization.md",
+      "outputs": [
+        "studio.html"
+      ]
+    }
+  },
+  "echarts-animated-svg": {
+    "contract": {
+      "prompt": "evaluations/pi-prompts/assets-echarts-animated-svg-contract.md",
+      "outputs": [
+        "input.svg",
+        "output.svg",
+        "validation.json"
+      ]
+    },
+    "naturalistic": {
+      "prompt": "evaluations/pi-prompts/assets-echarts-animated-svg-naturalistic.md",
+      "outputs": [
+        "input.svg",
+        "output.svg",
+        "validation.json"
+      ]
+    },
+    "boundary": {
+      "prompt": "evaluations/pi-prompts/assets-echarts-animated-svg-boundary.md",
+      "outputs": [
+        "input.svg",
+        "output.svg",
+        "validation.json"
+      ]
+    },
+    "generalization": {
+      "prompt": "evaluations/pi-prompts/assets-echarts-animated-svg-generalization.md",
+      "outputs": [
+        "input.svg",
+        "output.svg",
+        "validation.json"
+      ]
+    }
+  },
+  "plantuml-colorset-renderer": {
+    "contract": {
+      "prompt": "evaluations/pi-prompts/assets-plantuml-colorset-renderer-contract.md",
+      "outputs": [
+        "input/diagram.puml",
+        "rendered/svg/diagram.svg",
+        "report.json"
+      ]
+    },
+    "naturalistic": {
+      "prompt": "evaluations/pi-prompts/assets-plantuml-colorset-renderer-naturalistic.md",
+      "outputs": [
+        "input/diagram.puml",
+        "rendered/svg/diagram.svg",
+        "report.json"
+      ]
+    },
+    "boundary": {
+      "prompt": "evaluations/pi-prompts/assets-plantuml-colorset-renderer-boundary.md",
+      "outputs": [
+        "input/diagram.puml",
+        "rendered/svg/diagram.svg",
+        "report.json"
+      ]
+    },
+    "generalization": {
+      "prompt": "evaluations/pi-prompts/assets-plantuml-colorset-renderer-generalization.md",
+      "outputs": [
+        "input/diagram.puml",
+        "rendered/svg/diagram.svg",
+        "report.json"
+      ]
+    }
+  },
+  "procedural-svg-animation": {
+    "contract": {
+      "prompt": "evaluations/pi-prompts/assets-procedural-svg-animation-contract.md",
+      "outputs": [
+        "gallery/index.html",
+        "gallery/gallery.css",
+        "gallery/manifest.json"
+      ]
+    },
+    "naturalistic": {
+      "prompt": "evaluations/pi-prompts/assets-procedural-svg-animation-naturalistic.md",
+      "outputs": [
+        "gallery/index.html",
+        "gallery/gallery.css",
+        "gallery/manifest.json"
+      ]
+    },
+    "boundary": {
+      "prompt": "evaluations/pi-prompts/assets-procedural-svg-animation-boundary.md",
+      "outputs": [
+        "gallery/index.html",
+        "gallery/gallery.css",
+        "gallery/manifest.json"
+      ]
+    },
+    "generalization": {
+      "prompt": "evaluations/pi-prompts/assets-procedural-svg-animation-generalization.md",
+      "outputs": [
+        "gallery/index.html",
+        "gallery/gallery.css",
+        "gallery/manifest.json"
+      ]
+    }
+  }
+}

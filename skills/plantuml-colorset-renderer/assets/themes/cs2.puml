@@ -64,6 +64,7 @@ skinparam LegendBorderColor #cfcfcf
 
 <style>
 root {
+  Padding 6
   FontColor #333e48
   LineColor #696969
   BackgroundColor #ffffff

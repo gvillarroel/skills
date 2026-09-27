@@ -7,6 +7,17 @@ description: Create, animate, inspect, recompose, and validate D3-powered HTML a
 
 ## Mandatory first command
 
+For a complete interactive logo studio or a browsable logo catalog, first run
+`python "<d3-skill>/scripts/build_logo_studio.py" --help`. Build with that script,
+passing the requested output, brand, tagline, colorset, and optional pattern
+flags. Read `references/compact-composition.md` for page sizing. Validate the
+HTML with `validate_logo_artifact.py` and `check_self_contained_html.py`; inspect
+the live preview in a browser. Check extended colors against an exported
+settled SVG: the studio HTML creates its colored marks at runtime, so its
+static source cannot satisfy `--require-extended`. Do not assemble the studio by reading and
+substituting its large engine or catalogs. A single standalone logo follows
+the contract-builder route below.
+
 For a bar chart, horizontal lollipop, node-link network, flow spine, orbit logo, or radial-wedge logo, your first command after reading this file MUST be:
 
 ```text
@@ -70,7 +81,8 @@ Pass each `requiredTerms` value unchanged with repeated `--required-term`; keep 
 
 ## Mandatory validation
 
-The commands below apply to single-file HTML. For an editable starter directory,
+The commands below apply to single-file HTML with static SVG marks. For a logo
+studio, use its route above and check the palette on the rendered SVG. For an editable starter directory,
 follow the render/paint checks in `references/user-artifact-workflow.md`; its
 local `data.js`, stylesheet, and vendor script are part of the offline output.
 

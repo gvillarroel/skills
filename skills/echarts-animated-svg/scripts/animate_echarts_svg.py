@@ -145,7 +145,8 @@ def decorate(
 
 def animation_style(duration_ms: int) -> str:
     return f"""
-.echarts-animated-svg .easv-mark {{
+.echarts-animated-svg .easv-pop,
+.echarts-animated-svg .easv-scale-y {{
   transform-box: fill-box;
   transform-origin: center;
 }}
@@ -157,13 +158,13 @@ def animation_style(duration_ms: int) -> str:
 }}
 .echarts-animated-svg.easv-playing .easv-pop {{
   opacity: 0;
-  transform: scale(.35);
+  scale: .35;
   animation: easv-pop {duration_ms}ms cubic-bezier(.22, 1, .36, 1) forwards;
   animation-delay: var(--easv-delay, 0ms);
 }}
 .echarts-animated-svg.easv-playing .easv-scale-y {{
   opacity: 0;
-  transform: scaleY(.04);
+  scale: 1 .04;
   transform-origin: center bottom;
   animation: easv-scale-y {duration_ms}ms cubic-bezier(.22, 1, .36, 1) forwards;
   animation-delay: var(--easv-delay, 0ms);
@@ -176,14 +177,14 @@ def animation_style(duration_ms: int) -> str:
   animation-delay: var(--easv-delay, 0ms);
 }}
 @keyframes easv-fade {{ to {{ opacity: 1; }} }}
-@keyframes easv-pop {{ to {{ opacity: 1; transform: scale(1); }} }}
-@keyframes easv-scale-y {{ to {{ opacity: 1; transform: scaleY(1); }} }}
+@keyframes easv-pop {{ to {{ opacity: 1; scale: 1; }} }}
+@keyframes easv-scale-y {{ to {{ opacity: 1; scale: 1; }} }}
 @keyframes easv-draw {{ to {{ stroke-dashoffset: 0; }} }}
 @media (prefers-reduced-motion: reduce) {{
   .echarts-animated-svg.easv-playing .easv-mark {{
     animation: none !important;
     opacity: 1 !important;
-    transform: none !important;
+    scale: 1 !important;
     stroke-dashoffset: 0 !important;
   }}
 }}

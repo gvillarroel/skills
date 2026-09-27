@@ -49,7 +49,7 @@ STYLE_PROOF_TOKENS = {
     for colorset, tokens in COLORSET_TOKENS.items()
 }
 DISTINCTIVE_REPORT_TOKENS = {
-    "colorset1": {"#9E1B32", "#6D1222", "#E8002A", "#FFCCD5"},
+    "colorset1": STYLE_PROOF_TOKENS["colorset1"],
     "colorset2": {"#9E1B32", "#007298", "#E77204", "#45842A", "#00ACE6", "#652F6C", "#FFCCD5", "#CDF3FF", "#FFE5CC", "#DBFFCC", "#F9CCFF"},
 }
 

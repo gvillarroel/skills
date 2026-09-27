@@ -499,7 +499,8 @@
         <div class="example-header">
           <div class="example-header-top">
             <p class="example-kicker">${d.kicker}</p>
-            <button class="card-replay-button" type="button" data-replay="${d.id}" aria-label="Replay ${d.title} animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button>
+            <div class="card-actions"><button class="card-replay-button" type="button" data-expand="${d.id}" aria-pressed="false" aria-label="Expand ${d.title} diagram">Expand</button>
+            <button class="card-replay-button" type="button" data-replay="${d.id}" aria-label="Replay ${d.title} animation"><span class="material-symbols-rounded" aria-hidden="true">replay</span><span>Replay</span></button></div>
           </div>
           <h2>${d.title}</h2>
           <p class="example-pattern-id">${d.patternId}</p>
@@ -14775,6 +14776,22 @@
     redirectLegacyPatternHash();
     window.addEventListener("hashchange", redirectLegacyPatternHash);
     galleryElement.addEventListener("click", event => {
+      const expand = event.target.closest("[data-expand]");
+      if (expand) {
+        const card = expand.closest("article");
+        const frame = card.querySelector(".viz-frame");
+        const svg = frame.querySelector("svg");
+        const expanded = expand.getAttribute("aria-pressed") !== "true";
+        const box = svg.viewBox.baseVal;
+        frame.classList.toggle("is-expanded", expanded);
+        frame.tabIndex = expanded ? 0 : -1;
+        frame.setAttribute("aria-label", expanded ? "Expanded diagram; scroll to inspect" : "Diagram overview");
+        svg.style.width = expanded ? `${Math.max(box.width, 640)}px` : "";
+        svg.style.height = expanded ? `${Math.max(box.width, 640) * box.height / box.width}px` : "";
+        expand.setAttribute("aria-pressed", String(expanded));
+        expand.textContent = expanded ? "Fit" : "Expand";
+        return;
+      }
       const button = event.target.closest("[data-replay]");
       if (!button) return;
       replayExample(button.dataset.replay);

@@ -7,6 +7,7 @@
 3. Skip elements inside `defs`, `clipPath`, `mask`, `pattern`, `linearGradient`, and `radialGradient`.
 4. Prefer chart-type profiles over brittle DOM order. When precise ordering matters, compute order from bounding boxes in a browser or from known ECharts option data order before post-processing.
 5. Keep the original attributes intact. Add classes, CSS variables, and `pathLength` only where needed.
+6. Preserve rendered transforms during normal playback and reduced motion. A blanket CSS `transform: none` overrides SVG positioning attributes; a blanket `transform-origin: center` also moves rotated labels. Apply scale/origin rules only to scale animation roles, use the individual `scale` property, and leave translated or rotated elements on the opacity-only path. Compare screen bounds with the static source after replay and with reduced motion enabled.
 
 ## Replay Pattern
 

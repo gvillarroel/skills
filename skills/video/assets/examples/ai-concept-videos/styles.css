@@ -454,3 +454,5 @@ body.visual-only .visual-panel {
   box-shadow: none;
   height: 720px;
 }
+
+body:not([data-capture="1"]) .video-frame { zoom: var(--preview-scale, 1); }

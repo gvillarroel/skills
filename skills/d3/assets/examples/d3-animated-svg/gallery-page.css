@@ -45,22 +45,22 @@
     body[data-color-set="colorset1"] {
       --accent: var(--red);
       --accent-hover: var(--red-hover);
-      --accent-highlight: var(--red-highlight);
+      --accent-highlight: var(--line-soft);
       --accent-ring: rgba(158, 27, 50, .24);
     }
 
     .page-shell {
       width: min(1760px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 22px 0 42px;
+      padding: 16px 0 24px;
     }
 
     header {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 24px;
+      gap: 12px;
       align-items: end;
-      padding: 0 0 18px;
+      padding: 0 0 12px;
       border-bottom: 1px solid var(--line);
     }
 
@@ -192,8 +192,8 @@
     }
 
     .example-header {
-      min-height: 116px;
-      padding: 14px 14px 12px;
+      min-height: 0;
+      padding: 10px 12px;
       border-bottom: 1px solid var(--line-soft);
     }
 
@@ -349,3 +349,10 @@
         min-height: 0;
       }
     }
+
+@media (pointer: coarse) { :root button, :root select, :root input:not([type="checkbox"]):not([type="radio"]) { min-height: 44px; } }
+
+.card-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.example-header-top { flex-wrap: wrap; }
+.viz-frame.is-expanded { min-width: 0; aspect-ratio: auto; max-height: 70vh; overflow: auto; }
+.viz-frame.is-expanded svg { max-width: none; }

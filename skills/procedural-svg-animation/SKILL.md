@@ -35,6 +35,16 @@ uv run --script skills/procedural-svg-animation/scripts/validate_procedural_svg.
 
 6. Open the SVG directly in a browser. Inspect the first state, an intermediate state, the loop boundary, the reduced-motion state, and the final readable composition. Read `references/runtime-and-validation.md` for embedding modes, replay, performance, and browser checks.
 
+For a complete browsable pattern catalog, read the catalog command in
+`references/runtime-and-validation.md` and use `build_procedural_gallery.py`
+with an explicit task output directory. Validate that directory with the same
+builder arguments plus `--check`; it checks every managed file. SVG namespace
+URLs are format identifiers, not remote dependencies.
+Generated text is UTF-8, including Unicode labels in the manifest. For any
+necessary Python inspection, use `read_text(encoding="utf-8")`; the Windows
+default encoding cannot decode all catalog labels. After the managed-file
+check passes, avoid duplicate ad hoc file-count or URL-regex assertions.
+
 ## Composition Model
 
 Treat each result as a pipeline:

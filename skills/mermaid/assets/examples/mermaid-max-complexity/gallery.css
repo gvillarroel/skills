@@ -70,7 +70,7 @@ a {
 
 .hero {
   position: relative;
-  min-height: 580px;
+  min-height: 0;
   overflow: hidden;
   background: var(--ink);
   color: white;
@@ -81,7 +81,7 @@ a {
   z-index: 2;
   width: min(1180px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 88px 0 76px;
+  padding: 28px 0 24px;
 }
 
 .eyebrow,
@@ -97,7 +97,7 @@ a {
 .hero h1 {
   max-width: 850px;
   margin: 0;
-  font-size: clamp(3.2rem, 8vw, 7.4rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 780;
   letter-spacing: -0.065em;
   line-height: 0.88;
@@ -105,7 +105,7 @@ a {
 
 .hero__lede {
   max-width: 760px;
-  margin: 34px 0 0;
+  margin: 16px 0 0;
   color: #d9e0e5;
   font-size: clamp(1rem, 2vw, 1.28rem);
 }
@@ -114,12 +114,12 @@ a {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   max-width: 920px;
-  margin-top: 54px;
+  margin-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .hero__stats div {
-  padding: 22px 22px 0 0;
+  padding: 10px 12px 0 0;
 }
 
 .hero__stats strong,
@@ -182,8 +182,8 @@ footer {
 .method {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 80px;
-  padding: 92px 0;
+  gap: 24px;
+  padding: 24px 0;
 }
 
 .method .section-kicker,
@@ -194,7 +194,7 @@ footer {
 .method h2,
 .catalog h2 {
   margin: 0;
-  font-size: clamp(2rem, 5vw, 4.2rem);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
   letter-spacing: -0.055em;
   line-height: 0.96;
 }
@@ -337,7 +337,7 @@ footer {
 
 .gallery {
   display: grid;
-  gap: 26px;
+  gap: 12px;
 }
 
 .family-card {
@@ -359,7 +359,7 @@ footer {
   grid-template-columns: auto minmax(0, 1fr) auto;
   gap: 18px;
   align-items: start;
-  padding: 24px 26px 18px;
+  padding: 12px;
 }
 
 .family-card__number {
@@ -408,7 +408,7 @@ footer {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 22px;
-  padding: 0 26px 24px 82px;
+  padding: 0 12px 12px 68px;
   color: var(--ink-soft);
 }
 
@@ -417,7 +417,7 @@ footer {
 }
 
 .capacity-note {
-  padding: 14px 16px;
+  padding: 8px 10px;
   border-radius: 13px;
   background: var(--surface-soft);
   color: var(--ink);
@@ -443,7 +443,7 @@ footer {
 .variant {
   min-width: 0;
   scroll-margin-top: 122px;
-  padding: 18px;
+  padding: 12px;
 }
 
 .variant + .variant {
@@ -477,7 +477,7 @@ footer {
 
 .preview {
   display: grid;
-  min-height: 420px;
+  min-height: 160px;
   overflow: auto;
   place-items: center;
   border: 1px solid #e9e6e2;
@@ -555,7 +555,7 @@ footer {
 }
 
 .contract-grid div {
-  padding: 14px;
+  padding: 10px;
   border-radius: 12px;
   background: var(--surface-soft);
 }
@@ -631,7 +631,7 @@ footer p {
   }
 
   .preview {
-    min-height: 360px;
+    min-height: 160px;
   }
 }
 
@@ -643,11 +643,11 @@ footer p {
   }
 
   .hero__content {
-    padding: 66px 0 54px;
+    padding: 24px 0 20px;
   }
 
   .hero h1 {
-    font-size: clamp(3rem, 15vw, 5rem);
+    font-size: clamp(2rem, 8vw, 3rem);
   }
 
   .hero__stats div {
@@ -655,7 +655,7 @@ footer p {
   }
 
   .method {
-    padding: 64px 0;
+    padding: 20px 0;
   }
 
   .catalog__heading {
@@ -687,7 +687,7 @@ footer p {
 
   .family-card__header {
     grid-template-columns: auto minmax(0, 1fr);
-    padding: 20px 18px 14px;
+    padding: 12px;
   }
 
   .category-pill {
@@ -697,15 +697,15 @@ footer p {
 
   .family-card__summary {
     grid-template-columns: 1fr;
-    padding: 0 18px 20px;
+    padding: 0 12px 12px;
   }
 
   .variant {
-    padding: 14px;
+    padding: 10px;
   }
 
   .preview {
-    min-height: 310px;
+    min-height: 160px;
   }
 
   .family-card details {
@@ -739,3 +739,5 @@ footer p {
     transition-duration: 0.001ms !important;
   }
 }
+
+@media (pointer: coarse) { :root button, :root select, :root input:not([type="checkbox"]):not([type="radio"]) { min-height: 44px; } }
