@@ -1,0 +1,4 @@
+interface:
+  display_name: "Destockd Video Search"
+  short_description: "Find archival footage and download the selected clip"
+  default_prompt: "Use $destockd-video-search to find archival footage matching my description, show preview options, and download the clip I choose."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pexels Media Search"
+  short_description: "Find free Pexels photos and videos with exact downloads"
+  default_prompt: "Use $pexels-media-search to find free forest photos, show numbered previews, and download my chosen original."

@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "run": "destockd-contract-20260927-luna-1",
+      "passed": true,
+      "checks": {
+        "strict_harness": true,
+        "exact_selected_identity": true,
+        "complete_bytes": true,
+        "sha256_matches": true,
+        "full_clip_url": true,
+        "full_media_decode": true
+      }
+    },
+    {
+      "run": "destockd-boundary-20260927-luna-1",
+      "passed": true,
+      "checks": {
+        "strict_harness": true,
+        "unresolved_selection": true,
+        "no_video_download": true
+      }
+    },
+    {
+      "run": "destockd-naturalistic-20260927-luna-1",
+      "passed": true,
+      "checks": {
+        "strict_harness": true,
+        "exact_candidate_count": true,
+        "unique_shots": true,
+        "stable_options": true,
+        "identity_urls": true,
+        "gallery_identity_coverage": true,
+        "preview_separation": true,
+        "no_full_video_download": true
+      }
+    },
+    {
+      "run": "destockd-naturalistic-20260927-luna-2",
+      "passed": true,
+      "checks": {
+        "strict_harness": true,
+        "exact_candidate_count": true,
+        "unique_shots": true,
+        "stable_options": true,
+        "identity_urls": true,
+        "gallery_identity_coverage": true,
+        "preview_separation": true,
+        "no_full_video_download": true
+      }
+    },
+    {
+      "run": "destockd-naturalistic-20260927-luna-3",
+      "passed": true,
+      "checks": {
+        "strict_harness": true,
+        "exact_candidate_count": true,
+        "unique_shots": true,
+        "stable_options": true,
+        "identity_urls": true,
+        "gallery_identity_coverage": true,
+        "preview_separation": true,
+        "no_full_video_download": true
+      }
+    },
+    {
+      "run": "destockd-generalization-20260927-luna-1",
+      "passed": true,
+      "checks": {
+        "strict_harness": true,
+        "exact_candidate_count": true,
+        "unique_shots": true,
+        "stable_options": true,
+        "identity_urls": true,
+        "gallery_identity_coverage": true,
+        "preview_separation": true,
+        "exact_selected_identity": true,
+        "complete_bytes": true,
+        "sha256_matches": true,
+        "full_clip_url": true,
+        "full_media_decode": true
+      }
+    },
+    {
+      "run": "destockd-generalization-20260927-luna-2",
+      "passed": true,
+      "checks": {
+        "strict_harness": true,
+        "exact_candidate_count": true,
+        "unique_shots": true,
+        "stable_options": true,
+        "identity_urls": true,
+        "gallery_identity_coverage": true,
+        "preview_separation": true,
+        "exact_selected_identity": true,
+        "complete_bytes": true,
+        "sha256_matches": true,
+        "full_clip_url": true,
+        "full_media_decode": true
+      }
+    },
+    {
+      "run": "destockd-generalization-20260927-luna-3",
+      "passed": true,
+      "checks": {
+        "strict_harness": true,
+        "exact_candidate_count": true,
+        "unique_shots": true,
+        "stable_options": true,
+        "identity_urls": true,
+        "gallery_identity_coverage": true,
+        "preview_separation": true,
+        "exact_selected_identity": true,
+        "complete_bytes": true,
+        "sha256_matches": true,
+        "full_clip_url": true,
+        "full_media_decode": true
+      }
+    }
+  ]
+}

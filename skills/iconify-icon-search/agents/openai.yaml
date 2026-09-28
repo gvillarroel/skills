@@ -1,0 +1,4 @@
+interface:
+  display_name: "Iconify Icon Search"
+  short_description: "Find consistent free icons and download exact SVGs"
+  default_prompt: "Use $iconify-icon-search to find matching home, search and settings icons and download the selected SVGs."

@@ -1,0 +1,1539 @@
+{
+  "passed": true,
+  "date": "2026-09-27",
+  "model": "openai-codex/gpt-5.6-luna",
+  "payloads": {
+    "polyhaven": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+    "ambientcg": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+    "pexels": "10d4e387a6b757509283f05c94ddaa9ed1dda7d1f0be94c66165abfb547d8133",
+    "iconify": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+    "kenney": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834"
+  },
+  "deterministic_test_executions": 94,
+  "deterministic": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/polyhaven-asset-search/scripts/test_asset_io.py"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/projects/free-resource-skills/artifacts/reviews/release/polyhaven-test_asset_io.py.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/polyhaven-asset-search/scripts/test_polyhaven.py"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/projects/free-resource-skills/artifacts/reviews/release/polyhaven-test_polyhaven.py.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/ambientcg-material-search/scripts/test_asset_io.py"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/projects/free-resource-skills/artifacts/reviews/release/ambientcg-test_asset_io.py.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/ambientcg-material-search/scripts/test_ambientcg.py"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/projects/free-resource-skills/artifacts/reviews/release/ambientcg-test_ambientcg.py.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/pexels-media-search/scripts/test_asset_io.py"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/projects/free-resource-skills/artifacts/reviews/release/pexels-test_asset_io.py.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/pexels-media-search/scripts/test_pexels.py"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/projects/free-resource-skills/artifacts/reviews/release/pexels-test_pexels.py.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/iconify-icon-search/scripts/test_asset_io.py"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/projects/free-resource-skills/artifacts/reviews/release/iconify-test_asset_io.py.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/iconify-icon-search/scripts/test_iconify.py"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/projects/free-resource-skills/artifacts/reviews/release/iconify-test_iconify.py.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/kenney-asset-search/scripts/test_asset_io.py"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/projects/free-resource-skills/artifacts/reviews/release/kenney-test_asset_io.py.log"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "skills/kenney-asset-search/scripts/test_kenney.py"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/projects/free-resource-skills/artifacts/reviews/release/kenney-test_kenney.py.log"
+    }
+  ],
+  "cohorts": [
+    {
+      "source": "polyhaven",
+      "case": "contract",
+      "passed": 1,
+      "total": 1
+    },
+    {
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "source": "polyhaven",
+      "case": "generalization",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "source": "polyhaven",
+      "case": "boundary",
+      "passed": 1,
+      "total": 1
+    },
+    {
+      "source": "ambientcg",
+      "case": "contract",
+      "passed": 1,
+      "total": 1
+    },
+    {
+      "source": "ambientcg",
+      "case": "naturalistic",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "source": "ambientcg",
+      "case": "generalization",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "source": "ambientcg",
+      "case": "boundary",
+      "passed": 1,
+      "total": 1
+    },
+    {
+      "source": "pexels",
+      "case": "contract",
+      "passed": 1,
+      "total": 1
+    },
+    {
+      "source": "pexels",
+      "case": "naturalistic",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "source": "iconify",
+      "case": "contract",
+      "passed": 1,
+      "total": 1
+    },
+    {
+      "source": "iconify",
+      "case": "naturalistic",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "source": "iconify",
+      "case": "generalization",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "source": "iconify",
+      "case": "boundary",
+      "passed": 1,
+      "total": 1
+    },
+    {
+      "source": "kenney",
+      "case": "contract",
+      "passed": 1,
+      "total": 1
+    },
+    {
+      "source": "kenney",
+      "case": "naturalistic",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "source": "kenney",
+      "case": "generalization",
+      "passed": 3,
+      "total": 3
+    },
+    {
+      "source": "kenney",
+      "case": "boundary",
+      "passed": 1,
+      "total": 1
+    }
+  ],
+  "trials": [
+    {
+      "run_id": "free-polyhaven-contract-20260927-gallery-luna-1",
+      "source": "polyhaven",
+      "case": "contract",
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/deck.jpg.json",
+        "artifacts/review.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-gallery-luna-1",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/4-dark_planks.png",
+        "artifacts/previews/3-dark_wooden_planks.png",
+        "artifacts/previews/2-wood_planks.png",
+        "artifacts/previews/1-weathered_planks.png",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-gallery-luna-2",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/1-weathered_planks.png",
+        "artifacts/previews/4-dark_planks.png",
+        "artifacts/previews/2-wood_planks.png",
+        "artifacts/previews/3-dark_wooden_planks.png",
+        "artifacts/previews/6-planks_brown_10.png",
+        "artifacts/previews/5-wood_planks_dirt.png",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/options.html",
+        "artifacts/options.json",
+        "artifacts/shortlist.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-gallery-luna-3",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/3-dark_wooden_planks.png",
+        "artifacts/previews/1-weathered_planks.png",
+        "artifacts/previews/6-planks_brown_10.png",
+        "artifacts/previews/5-wood_planks_dirt.png",
+        "artifacts/previews/2-wood_planks.png",
+        "artifacts/previews/4-dark_planks.png",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/options.json",
+        "artifacts/options.html",
+        "artifacts/shortlist.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-final-luna-1",
+      "source": "polyhaven",
+      "case": "generalization",
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/2-rogland_sunset.png",
+        "artifacts/previews/3-kiara_8_sunset.png",
+        "artifacts/previews/1-sunset_meadow_path.png",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-final-luna-2",
+      "source": "polyhaven",
+      "case": "generalization",
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/1-sunset_meadow_path.png",
+        "artifacts/previews/3-kiara_8_sunset.png",
+        "artifacts/previews/2-rogland_sunset.png",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-final-luna-3",
+      "source": "polyhaven",
+      "case": "generalization",
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/1-sunset_meadow_path.png",
+        "artifacts/previews/2-rogland_sunset.png",
+        "artifacts/previews/3-kiara_8_sunset.png",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-polyhaven-boundary-20260927-gallery-luna-1",
+      "source": "polyhaven",
+      "case": "boundary",
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-ambientcg-contract-20260927-revised-luna-1",
+      "source": "ambientcg",
+      "case": "contract",
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "artifacts/wood.zip.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-ambientcg-naturalistic-20260927-revised-luna-1",
+      "source": "ambientcg",
+      "case": "naturalistic",
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/previews/6-Concrete031.png",
+        "artifacts/previews/1-Concrete034.png",
+        "artifacts/previews/2-Concrete048.png",
+        "artifacts/previews/5-Concrete042A.png",
+        "artifacts/previews/4-Concrete046.png",
+        "artifacts/previews/3-Concrete047A.png",
+        "artifacts/options.json",
+        "artifacts/options.html",
+        "artifacts/previews/4-Concrete046.png",
+        "artifacts/previews/2-Concrete048.png",
+        "artifacts/previews/1-Concrete034.png",
+        "artifacts/previews/3-Concrete047A.png",
+        "artifacts/options.json",
+        "artifacts/shortlist.md",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-ambientcg-naturalistic-20260927-revised-luna-2",
+      "source": "ambientcg",
+      "case": "naturalistic",
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/previews/5-Concrete042A.png",
+        "artifacts/previews/1-Concrete034.png",
+        "artifacts/previews/6-Concrete031.png",
+        "artifacts/previews/4-Concrete046.png",
+        "artifacts/previews/3-Concrete047A.png",
+        "artifacts/previews/2-Concrete048.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-ambientcg-naturalistic-20260927-revised-luna-3",
+      "source": "ambientcg",
+      "case": "naturalistic",
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/previews/2-Concrete048.png",
+        "artifacts/previews/4-Concrete046.png",
+        "artifacts/previews/1-Concrete034.png",
+        "artifacts/previews/6-Concrete031.png",
+        "artifacts/previews/5-Concrete042A.png",
+        "artifacts/previews/3-Concrete047A.png",
+        "artifacts/options.json",
+        "artifacts/options.html",
+        "artifacts/previews-final/4-Concrete046.png",
+        "artifacts/previews-final/2-Concrete048.png",
+        "artifacts/previews-final/1-Concrete034.png",
+        "artifacts/previews-final/3-Concrete047A.png"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-ambientcg-generalization-20260927-revised-luna-1",
+      "source": "ambientcg",
+      "case": "generalization",
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/previews-bricks/2-Bricks104.png",
+        "artifacts/previews-bricks/3-Bricks097.png",
+        "artifacts/previews-bricks/1-Bricks105.png",
+        "artifacts/options.json",
+        "artifacts/brick.zip.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-ambientcg-generalization-20260927-revised-luna-2",
+      "source": "ambientcg",
+      "case": "generalization",
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "artifacts/options.json",
+        "artifacts/brick.zip.json",
+        "artifacts/review.md",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-ambientcg-generalization-20260927-revised-luna-3",
+      "source": "ambientcg",
+      "case": "generalization",
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/previews/1-Ground111.png",
+        "artifacts/previews/3-Bricks097.png",
+        "artifacts/previews/2-Ground107.png",
+        "artifacts/options.json",
+        "artifacts/brick.zip.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-ambientcg-boundary-20260927-luna-1",
+      "source": "ambientcg",
+      "case": "boundary",
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-pexels-contract-20260927-luna-1",
+      "source": "pexels",
+      "case": "contract",
+      "payload_sha256": "10d4e387a6b757509283f05c94ddaa9ed1dda7d1f0be94c66165abfb547d8133",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/pexels-media-search/SKILL.md",
+        "skills/pexels-media-search/scripts/test_asset_io.py",
+        "skills/pexels-media-search/scripts/test_pexels.py",
+        "artifacts/access.json",
+        "artifacts/review.md",
+        "artifacts/access.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-pexels-naturalistic-20260927-luna-1",
+      "source": "pexels",
+      "case": "naturalistic",
+      "payload_sha256": "10d4e387a6b757509283f05c94ddaa9ed1dda7d1f0be94c66165abfb547d8133",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/pexels-media-search/SKILL.md",
+        "artifacts/access.json",
+        "artifacts/next-step.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-pexels-naturalistic-20260927-luna-2",
+      "source": "pexels",
+      "case": "naturalistic",
+      "payload_sha256": "10d4e387a6b757509283f05c94ddaa9ed1dda7d1f0be94c66165abfb547d8133",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/pexels-media-search/SKILL.md",
+        "artifacts/next-step.md",
+        "artifacts/access.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-pexels-naturalistic-20260927-luna-3",
+      "source": "pexels",
+      "case": "naturalistic",
+      "payload_sha256": "10d4e387a6b757509283f05c94ddaa9ed1dda7d1f0be94c66165abfb547d8133",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/pexels-media-search/SKILL.md",
+        "artifacts/access.json",
+        "artifacts/next-step.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-iconify-contract-20260927-luna-1",
+      "source": "iconify",
+      "case": "contract",
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "artifacts/house.svg",
+        "artifacts/house.svg.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-iconify-naturalistic-20260927-luna-1",
+      "source": "iconify",
+      "case": "naturalistic",
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/options.html",
+        "artifacts/options.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-iconify-naturalistic-20260927-luna-2",
+      "source": "iconify",
+      "case": "naturalistic",
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/up.html"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-iconify-naturalistic-20260927-luna-3",
+      "source": "iconify",
+      "case": "naturalistic",
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/options.html",
+        "artifacts/options.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-iconify-generalization-20260927-luna-1",
+      "source": "iconify",
+      "case": "generalization",
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/search.svg",
+        "artifacts/options.json",
+        "artifacts/search.svg.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-iconify-generalization-20260927-luna-2",
+      "source": "iconify",
+      "case": "generalization",
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/search.svg",
+        "artifacts/search.svg.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-iconify-generalization-20260927-luna-3",
+      "source": "iconify",
+      "case": "generalization",
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/search.svg",
+        "artifacts/options.json",
+        "artifacts/search.svg.json",
+        "artifacts/options.html",
+        "artifacts/review.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-iconify-boundary-20260927-luna-1",
+      "source": "iconify",
+      "case": "boundary",
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-kenney-contract-20260927-revised-luna-1",
+      "source": "kenney",
+      "case": "contract",
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "artifacts/patterns.zip.json"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-kenney-naturalistic-20260927-revised-luna-1",
+      "source": "kenney",
+      "case": "naturalistic",
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/4-pattern-pack-pixel.png",
+        "artifacts/previews/1-pattern-pack.png",
+        "artifacts/previews/2-pattern-pack-extra.png",
+        "artifacts/previews/3-pattern-pack-lines.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-kenney-naturalistic-20260927-revised-luna-2",
+      "source": "kenney",
+      "case": "naturalistic",
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/4-pattern-pack-pixel.png",
+        "artifacts/previews/2-pattern-pack-extra.png",
+        "artifacts/previews/3-pattern-pack-lines.png",
+        "artifacts/previews/1-pattern-pack.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-kenney-naturalistic-20260927-revised-luna-3",
+      "source": "kenney",
+      "case": "naturalistic",
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/4-pattern-pack-pixel.png",
+        "artifacts/previews/1-pattern-pack.png",
+        "artifacts/previews/2-pattern-pack-extra.png",
+        "artifacts/previews/3-pattern-pack-lines.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-kenney-generalization-20260927-final-luna-1",
+      "source": "kenney",
+      "case": "generalization",
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/3-foliage-sprites.png",
+        "artifacts/previews/2-foliage-pack.png",
+        "artifacts/previews/1-nature-kit.png",
+        "artifacts/options.json",
+        "artifacts/license-only/License.txt",
+        "artifacts/options.html",
+        "artifacts/nature.zip.json",
+        "artifacts/nature-inventory.json",
+        "artifacts/license-only/extraction.json",
+        "artifacts/review.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-kenney-generalization-20260927-final-luna-2",
+      "source": "kenney",
+      "case": "generalization",
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/2-foliage-pack.png",
+        "artifacts/previews/3-foliage-sprites.png",
+        "artifacts/previews/1-nature-kit.png"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-kenney-generalization-20260927-final-luna-3",
+      "source": "kenney",
+      "case": "generalization",
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md"
+      ],
+      "tool_errors": 0
+    },
+    {
+      "run_id": "free-kenney-boundary-20260927-luna-1",
+      "source": "kenney",
+      "case": "boundary",
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "strict_passed": true,
+      "independent_passed": true,
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md"
+      ],
+      "tool_errors": 0
+    }
+  ],
+  "explicit_trace_checks": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-polyhaven-contract-20260927-gallery-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-polyhaven-contract-20260927-gallery-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-polyhaven-naturalistic-20260927-gallery-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-polyhaven-naturalistic-20260927-gallery-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-polyhaven-naturalistic-20260927-gallery-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-polyhaven-naturalistic-20260927-gallery-luna-2/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-polyhaven-naturalistic-20260927-gallery-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-polyhaven-naturalistic-20260927-gallery-luna-3/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-polyhaven-generalization-20260927-final-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-polyhaven-generalization-20260927-final-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-polyhaven-generalization-20260927-final-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-polyhaven-generalization-20260927-final-luna-2/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-polyhaven-generalization-20260927-final-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-polyhaven-generalization-20260927-final-luna-3/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-polyhaven-boundary-20260927-gallery-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-polyhaven-boundary-20260927-gallery-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-ambientcg-contract-20260927-revised-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-ambientcg-contract-20260927-revised-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-ambientcg-naturalistic-20260927-revised-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-ambientcg-naturalistic-20260927-revised-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-ambientcg-naturalistic-20260927-revised-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-ambientcg-naturalistic-20260927-revised-luna-2/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-ambientcg-naturalistic-20260927-revised-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-ambientcg-naturalistic-20260927-revised-luna-3/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-ambientcg-generalization-20260927-revised-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-ambientcg-generalization-20260927-revised-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-ambientcg-generalization-20260927-revised-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-ambientcg-generalization-20260927-revised-luna-2/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-ambientcg-generalization-20260927-revised-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-ambientcg-generalization-20260927-revised-luna-3/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-ambientcg-boundary-20260927-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-ambientcg-boundary-20260927-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-pexels-contract-20260927-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-pexels-contract-20260927-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-pexels-naturalistic-20260927-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-pexels-naturalistic-20260927-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-pexels-naturalistic-20260927-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-pexels-naturalistic-20260927-luna-2/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-pexels-naturalistic-20260927-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-pexels-naturalistic-20260927-luna-3/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-iconify-contract-20260927-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-iconify-contract-20260927-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-iconify-naturalistic-20260927-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-iconify-naturalistic-20260927-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-iconify-naturalistic-20260927-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-iconify-naturalistic-20260927-luna-2/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-iconify-naturalistic-20260927-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-iconify-naturalistic-20260927-luna-3/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-iconify-generalization-20260927-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-iconify-generalization-20260927-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-iconify-generalization-20260927-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-iconify-generalization-20260927-luna-2/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-iconify-generalization-20260927-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-iconify-generalization-20260927-luna-3/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-iconify-boundary-20260927-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-iconify-boundary-20260927-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-kenney-contract-20260927-revised-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-kenney-contract-20260927-revised-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-kenney-naturalistic-20260927-revised-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-kenney-naturalistic-20260927-revised-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-kenney-naturalistic-20260927-revised-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-kenney-naturalistic-20260927-revised-luna-2/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-kenney-naturalistic-20260927-revised-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-kenney-naturalistic-20260927-revised-luna-3/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-kenney-generalization-20260927-final-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-kenney-generalization-20260927-final-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-kenney-generalization-20260927-final-luna-2/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-kenney-generalization-20260927-final-luna-2/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-kenney-generalization-20260927-final-luna-3/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-kenney-generalization-20260927-final-luna-3/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-kenney-boundary-20260927-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error",
+        "--require-tool-call",
+        "--require-read",
+        "../prompt.md"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-kenney-boundary-20260927-luna-1/explicit-trace-summary.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--script",
+        "scripts/summarize-pi-json-events.py",
+        "evaluations/runs/free-resources-routing-20260927-luna-1/events.jsonl",
+        "--require-model",
+        "gpt-5.6-luna",
+        "--fail-on-invalid-json",
+        "--fail-on-tool-error"
+      ],
+      "passed": true,
+      "log": "C:/Users/villa/dev/skills/evaluations/runs/free-resources-routing-20260927-luna-1/explicit-trace-summary.txt"
+    }
+  ],
+  "routing": {
+    "passed": true,
+    "correct": 15,
+    "total": 15
+  },
+  "pexels_limit": "Missing-key handling and offline contracts only; no authenticated live search/download or browser fallback trial."
+}

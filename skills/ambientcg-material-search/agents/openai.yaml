@@ -1,0 +1,4 @@
+interface:
+  display_name: "ambientCG Material Search"
+  short_description: "Find and download free ambientCG material packages"
+  default_prompt: "Use $ambientcg-material-search to find free concrete textures, show previews, and download the selected material package."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Poly Haven Asset Search"
+  short_description: "Find and download free textures, HDRIs and models"
+  default_prompt: "Use $polyhaven-asset-search to find free weathered wood materials, show preview options, and download my selection."

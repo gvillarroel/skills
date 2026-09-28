@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kenney Asset Search"
+  short_description: "Find free game packs and download selected assets"
+  default_prompt: "Use $kenney-asset-search to find free platformer packs, show previews, and download my selected pack."

@@ -1,0 +1,3044 @@
+{
+  "date": "2026-09-27",
+  "results": [
+    {
+      "run_id": "free-ambientcg-boundary-20260927-luna-1",
+      "source": "ambientcg",
+      "case": "boundary",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/reply.md",
+          "bytes": 125,
+          "sha256": "352ea37523c32dba23c1d5b62673c1226edf2cf047553e3f59eff796473b7e72"
+        }
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-contract-20260927-luna-1",
+      "source": "ambientcg",
+      "case": "contract",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "683f776b35435195ee74e8c22ffc356a16443e834fafd6788937d07aa2f1b0be",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "artifacts/wood.zip.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/wood.zip",
+          "bytes": 3882297,
+          "sha256": "04acff5a13e8ada6749b58ff5f6c49402692aadbfde87d65b06d35d70a9601d8"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 1144,
+          "sha256": "7a7f6269a0bbe115aee39ddc3e8ebc757ef9c12694a032283d39bd155d1885f7"
+        },
+        {
+          "path": "artifacts/wood.zip.json",
+          "bytes": 4867,
+          "sha256": "8a8d40cc7a392daaabf0c6d5555be046364a6868e4aab564bf67fdf366b34f35"
+        }
+      ],
+      "selected_id": "Wood095",
+      "variant": "1K-JPG/zip",
+      "zip_members": 10,
+      "decoded_maps": [
+        "Wood095_1K-JPG_Color.jpg",
+        "Wood095_1K-JPG_Displacement.jpg",
+        "Wood095_1K-JPG_NormalDX.jpg",
+        "Wood095_1K-JPG_NormalGL.jpg",
+        "Wood095_1K-JPG_Roughness.jpg",
+        "Wood095.png"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-contract-20260927-revised-luna-1",
+      "source": "ambientcg",
+      "case": "contract",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "artifacts/wood.zip.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/wood.zip",
+          "bytes": 3882297,
+          "sha256": "04acff5a13e8ada6749b58ff5f6c49402692aadbfde87d65b06d35d70a9601d8"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 1115,
+          "sha256": "c4c09d4e1448f2c7a071c02c229bcabbaa36ff102ed25a7952ef21d6034b3870"
+        },
+        {
+          "path": "artifacts/wood.zip.json",
+          "bytes": 4866,
+          "sha256": "8b48a7aaaf354f63da1cbd09260e4e6ae4d3a9eaeb6ca2a1393b8de157895d5b"
+        }
+      ],
+      "selected_id": "Wood095",
+      "variant": "1K-JPG/zip",
+      "zip_members": 10,
+      "decoded_maps": [
+        "Wood095_1K-JPG_Color.jpg",
+        "Wood095_1K-JPG_Displacement.jpg",
+        "Wood095_1K-JPG_NormalDX.jpg",
+        "Wood095_1K-JPG_NormalGL.jpg",
+        "Wood095_1K-JPG_Roughness.jpg",
+        "Wood095.png"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-generalization-20260927-luna-1",
+      "source": "ambientcg",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "683f776b35435195ee74e8c22ffc356a16443e834fafd6788937d07aa2f1b0be",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/options.html",
+        "artifacts/brick.zip.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 7963,
+          "sha256": "4237a514d7bae00fdc4f3ca4c62c5dfb795337ef2dc2da15f93bf07f353007d6"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2166,
+          "sha256": "f9e7a3fa033307383c19834d5c6536b89863a10afffd8f7f7303a962cb7dd461"
+        },
+        {
+          "path": "artifacts/brick.zip",
+          "bytes": 20511727,
+          "sha256": "0fc35f807b9e172a1874bb85292ae9a4e6ebeb4f05b800aa2a3f0a2ca4135c77"
+        },
+        {
+          "path": "artifacts/brick.zip.json",
+          "bytes": 4437,
+          "sha256": "a9d0295ed1103158cbc43be8a33cfdfc55644dfc2f0d6ba673363125cc34ecdf"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 937,
+          "sha256": "19580fce8b4e205026f9152d2526810e84df650f6a82cdfe15099974de8f1119"
+        }
+      ],
+      "option_ids": [
+        "Ground111",
+        "Ground107",
+        "Bricks097"
+      ],
+      "selected_id": "Ground107",
+      "variant": "1K-PNG/zip",
+      "zip_members": 11,
+      "decoded_maps": [
+        "Ground107_1K-PNG_AmbientOcclusion.png",
+        "Ground107_1K-PNG_Color.png",
+        "Ground107_1K-PNG_Displacement.png",
+        "Ground107_1K-PNG_NormalDX.png",
+        "Ground107_1K-PNG_NormalGL.png",
+        "Ground107_1K-PNG_Roughness.png",
+        "Ground107.png"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-generalization-20260927-luna-2",
+      "source": "ambientcg",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "683f776b35435195ee74e8c22ffc356a16443e834fafd6788937d07aa2f1b0be",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/brick.zip.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 7963,
+          "sha256": "5a527ca4bc015044883b843729a43e404c4ad0b0e65d020778548abdea14dc09"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2166,
+          "sha256": "f9e7a3fa033307383c19834d5c6536b89863a10afffd8f7f7303a962cb7dd461"
+        },
+        {
+          "path": "artifacts/brick.zip",
+          "bytes": 20511727,
+          "sha256": "0fc35f807b9e172a1874bb85292ae9a4e6ebeb4f05b800aa2a3f0a2ca4135c77"
+        },
+        {
+          "path": "artifacts/brick.zip.json",
+          "bytes": 4437,
+          "sha256": "cc0443e0b8d4142e39f47177c42f0a699b4f43f9e9a6ff85dafdd9238856228a"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 829,
+          "sha256": "b9d7cff3f8d39bb41b1121d0f75ec47e48554906a73d07c1d935b177b3ee5a21"
+        }
+      ],
+      "option_ids": [
+        "Ground111",
+        "Ground107",
+        "Bricks097"
+      ],
+      "selected_id": "Ground107",
+      "variant": "1K-PNG/zip",
+      "zip_members": 11,
+      "decoded_maps": [
+        "Ground107_1K-PNG_AmbientOcclusion.png",
+        "Ground107_1K-PNG_Color.png",
+        "Ground107_1K-PNG_Displacement.png",
+        "Ground107_1K-PNG_NormalDX.png",
+        "Ground107_1K-PNG_NormalGL.png",
+        "Ground107_1K-PNG_Roughness.png",
+        "Ground107.png"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-generalization-20260927-luna-3",
+      "source": "ambientcg",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "683f776b35435195ee74e8c22ffc356a16443e834fafd6788937d07aa2f1b0be",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/.previews/Bricks105.png",
+        "artifacts/.previews/Bricks104.png",
+        "artifacts/.previews/Bricks097.png",
+        "artifacts/options.json",
+        "artifacts/brick.zip.json",
+        "artifacts/selected.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 7698,
+          "sha256": "f6819295e6fbf2a08d95ef47b403e770baacc8951a4a78f538ca913424b2c744"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2166,
+          "sha256": "f873a9f9ca059f77deac4d22188acb318da16195dc1297359ebea02014b7fb4e"
+        },
+        {
+          "path": "artifacts/brick.zip",
+          "bytes": 9190179,
+          "sha256": "dfa477d7ffc0bb45493f3719e91d2e8c4f911e40620ab61f3ef4666d05eda1e1"
+        },
+        {
+          "path": "artifacts/brick.zip.json",
+          "bytes": 4341,
+          "sha256": "4d03510c77615388c2e49ffdc33ffc40fc430ad12e056bb4517c3197ee0d2b2b"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 825,
+          "sha256": "3345890a6a1058831407ad6d57e61ba7cf2af7eb1072af6c484d8b23a0edab01"
+        }
+      ],
+      "option_ids": [
+        "Bricks105",
+        "Bricks104",
+        "Bricks097"
+      ],
+      "selected_id": "Bricks104",
+      "variant": "1K-PNG/zip",
+      "zip_members": 11,
+      "decoded_maps": [
+        "Bricks104_1K-PNG_AmbientOcclusion.png",
+        "Bricks104_1K-PNG_Color.png",
+        "Bricks104_1K-PNG_Displacement.png",
+        "Bricks104_1K-PNG_NormalDX.png",
+        "Bricks104_1K-PNG_NormalGL.png",
+        "Bricks104_1K-PNG_Roughness.png",
+        "Bricks104.png"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-generalization-20260927-revised-luna-1",
+      "source": "ambientcg",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/previews-bricks/2-Bricks104.png",
+        "artifacts/previews-bricks/3-Bricks097.png",
+        "artifacts/previews-bricks/1-Bricks105.png",
+        "artifacts/options.json",
+        "artifacts/brick.zip.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 7698,
+          "sha256": "f73ebeda10a745fdfdf0bf1cb1f1da692702000632aa48c7a014a77e8a815c9c"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2166,
+          "sha256": "f873a9f9ca059f77deac4d22188acb318da16195dc1297359ebea02014b7fb4e"
+        },
+        {
+          "path": "artifacts/brick.zip",
+          "bytes": 9190179,
+          "sha256": "dfa477d7ffc0bb45493f3719e91d2e8c4f911e40620ab61f3ef4666d05eda1e1"
+        },
+        {
+          "path": "artifacts/brick.zip.json",
+          "bytes": 4340,
+          "sha256": "a3af9d25cb12861b4bf2e8e6e4187384af37ffd33c188f39663374a288e4de6e"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 960,
+          "sha256": "6d3deb8d11d18df7c8baed8785497ca0d0654fb668ecc4dd0ebfeff5ac64cefd"
+        }
+      ],
+      "option_ids": [
+        "Bricks105",
+        "Bricks104",
+        "Bricks097"
+      ],
+      "selected_id": "Bricks104",
+      "variant": "1K-PNG/zip",
+      "zip_members": 11,
+      "decoded_maps": [
+        "Bricks104_1K-PNG_AmbientOcclusion.png",
+        "Bricks104_1K-PNG_Color.png",
+        "Bricks104_1K-PNG_Displacement.png",
+        "Bricks104_1K-PNG_NormalDX.png",
+        "Bricks104_1K-PNG_NormalGL.png",
+        "Bricks104_1K-PNG_Roughness.png",
+        "Bricks104.png"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-generalization-20260927-revised-luna-2",
+      "source": "ambientcg",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "artifacts/options.json",
+        "artifacts/brick.zip.json",
+        "artifacts/review.md",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 7698,
+          "sha256": "de50b2624c72c419025d5f6bba1357f707e93b0e3d896a9c955d0e5ed2088fa6"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2166,
+          "sha256": "f873a9f9ca059f77deac4d22188acb318da16195dc1297359ebea02014b7fb4e"
+        },
+        {
+          "path": "artifacts/brick.zip",
+          "bytes": 9190179,
+          "sha256": "dfa477d7ffc0bb45493f3719e91d2e8c4f911e40620ab61f3ef4666d05eda1e1"
+        },
+        {
+          "path": "artifacts/brick.zip.json",
+          "bytes": 4340,
+          "sha256": "cab45a778e26c061910bf8b2f8818629111b58a4f952afab44a870073ed9f9c4"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 834,
+          "sha256": "f5e3b6fd03f38b20f969df4867c522fb9d7b688e6834164b112a33e5cb0f4945"
+        }
+      ],
+      "option_ids": [
+        "Bricks105",
+        "Bricks104",
+        "Bricks097"
+      ],
+      "selected_id": "Bricks104",
+      "variant": "1K-PNG/zip",
+      "zip_members": 11,
+      "decoded_maps": [
+        "Bricks104_1K-PNG_AmbientOcclusion.png",
+        "Bricks104_1K-PNG_Color.png",
+        "Bricks104_1K-PNG_Displacement.png",
+        "Bricks104_1K-PNG_NormalDX.png",
+        "Bricks104_1K-PNG_NormalGL.png",
+        "Bricks104_1K-PNG_Roughness.png",
+        "Bricks104.png"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-generalization-20260927-revised-luna-3",
+      "source": "ambientcg",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/previews/1-Ground111.png",
+        "artifacts/previews/3-Bricks097.png",
+        "artifacts/previews/2-Ground107.png",
+        "artifacts/options.json",
+        "artifacts/brick.zip.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 7963,
+          "sha256": "0592ed3b46fe31576c3c44239795a98c98ad25b912058299f3c999cddbf30410"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2166,
+          "sha256": "f9e7a3fa033307383c19834d5c6536b89863a10afffd8f7f7303a962cb7dd461"
+        },
+        {
+          "path": "artifacts/brick.zip",
+          "bytes": 20511727,
+          "sha256": "0fc35f807b9e172a1874bb85292ae9a4e6ebeb4f05b800aa2a3f0a2ca4135c77"
+        },
+        {
+          "path": "artifacts/brick.zip.json",
+          "bytes": 4436,
+          "sha256": "90b9d29ba30da8447bc5ac613cb99993882e9fe065ae110db4bc93d3e263b0be"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 1170,
+          "sha256": "f3d917e37064ae7d73ffc7f8ab37460a6e8478ddc97ab8179520e7406b782ff4"
+        }
+      ],
+      "option_ids": [
+        "Ground111",
+        "Ground107",
+        "Bricks097"
+      ],
+      "selected_id": "Ground107",
+      "variant": "1K-PNG/zip",
+      "zip_members": 11,
+      "decoded_maps": [
+        "Ground107_1K-PNG_AmbientOcclusion.png",
+        "Ground107_1K-PNG_Color.png",
+        "Ground107_1K-PNG_Displacement.png",
+        "Ground107_1K-PNG_NormalDX.png",
+        "Ground107_1K-PNG_NormalGL.png",
+        "Ground107_1K-PNG_Roughness.png",
+        "Ground107.png"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-naturalistic-20260927-luna-1",
+      "source": "ambientcg",
+      "case": "naturalistic",
+      "strict_passed": false,
+      "independent_passed": true,
+      "payload_sha256": "683f776b35435195ee74e8c22ffc356a16443e834fafd6788937d07aa2f1b0be",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/options.html",
+        "/tmp/ambientcg-previews/Concrete034.png",
+        "/tmp/ambientcg-previews/Concrete048.png",
+        "/tmp/ambientcg-previews/Concrete046.png",
+        "/tmp/ambientcg-previews/Concrete047A.png",
+        "/tmp/ambientcg-previews/Concrete042A.png",
+        "/tmp/ambientcg-previews/Concrete031.png",
+        "artifacts/review/Concrete047A.png",
+        "artifacts/review/Concrete031.png",
+        "artifacts/review/Concrete048.png",
+        "artifacts/review/Concrete046.png",
+        "artifacts/review/Concrete034.png",
+        "artifacts/review/Concrete042A.png",
+        "artifacts/options.html",
+        "artifacts/shortlist.md",
+        "artifacts/options.json"
+      ],
+      "tool_errors": 6,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 11176,
+          "sha256": "a65bd86863b860e9156eed204c62a80e089faa6bdca7e8d6571daff662e3c542"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2643,
+          "sha256": "7376755d4f41e9cbf69adcc2040ad7bda975d3c6a25e7b889e4d15a858e45d1b"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 3518,
+          "sha256": "2de63b6332852aa0201e48fe0af668eac227146b640f17107598649a418f8609"
+        }
+      ],
+      "option_ids": [
+        "Concrete034",
+        "Concrete048",
+        "Concrete047A",
+        "Concrete046"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-naturalistic-20260927-luna-2",
+      "source": "ambientcg",
+      "case": "naturalistic",
+      "strict_passed": false,
+      "independent_passed": true,
+      "payload_sha256": "683f776b35435195ee74e8c22ffc356a16443e834fafd6788937d07aa2f1b0be",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "/tmp/ambientcg-previews/1-Concrete034.png",
+        "/tmp/ambientcg-previews/4-Concrete046.png",
+        "/tmp/ambientcg-previews/2-Concrete048.png",
+        "/tmp/ambientcg-previews/3-Concrete047A.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 1,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 11176,
+          "sha256": "385aef99f329fda693bc16ef40330d312442ddc83827a14f8d3a2c14b5833185"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2745,
+          "sha256": "f5e58913a1d6b17cc20bc3bdaef64ba92b0d48fb50b30c536beb5e30cf314e10"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2721,
+          "sha256": "dbcd647c24f5f1ad631bdd31bfc6d0301cb8bd2039571bcee421f666b130b402"
+        }
+      ],
+      "option_ids": [
+        "Concrete034",
+        "Concrete048",
+        "Concrete047A",
+        "Concrete046"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-naturalistic-20260927-luna-3",
+      "source": "ambientcg",
+      "case": "naturalistic",
+      "strict_passed": false,
+      "independent_passed": true,
+      "payload_sha256": "683f776b35435195ee74e8c22ffc356a16443e834fafd6788937d07aa2f1b0be",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/options.html",
+        "/tmp/Concrete048.png",
+        "/tmp/Concrete034.png",
+        "/tmp/Concrete046.png",
+        "/tmp/Concrete042A.png",
+        "/tmp/Concrete047A.png",
+        "/tmp/Concrete031.png",
+        "artifacts/previews/Concrete046.png",
+        "artifacts/previews/Concrete042A.png",
+        "artifacts/previews/Concrete047A.png",
+        "artifacts/previews/Concrete031.png",
+        "artifacts/previews/Concrete048.png",
+        "artifacts/previews/Concrete034.png",
+        "artifacts/shortlist.md",
+        "artifacts/options.html",
+        "artifacts/options.json"
+      ],
+      "tool_errors": 6,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 11176,
+          "sha256": "5cb1e58662e7ae1d28aae355e63961110a18dfb920af360377464b2c751128dd"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2643,
+          "sha256": "7376755d4f41e9cbf69adcc2040ad7bda975d3c6a25e7b889e4d15a858e45d1b"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 3554,
+          "sha256": "ca934d0960509306283903843abc78dc48e45c30c1513ad8ab376acc3228b6e7"
+        }
+      ],
+      "option_ids": [
+        "Concrete034",
+        "Concrete048",
+        "Concrete047A",
+        "Concrete046"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-naturalistic-20260927-revised-luna-1",
+      "source": "ambientcg",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/previews/6-Concrete031.png",
+        "artifacts/previews/1-Concrete034.png",
+        "artifacts/previews/2-Concrete048.png",
+        "artifacts/previews/5-Concrete042A.png",
+        "artifacts/previews/4-Concrete046.png",
+        "artifacts/previews/3-Concrete047A.png",
+        "artifacts/options.json",
+        "artifacts/options.html",
+        "artifacts/previews/4-Concrete046.png",
+        "artifacts/previews/2-Concrete048.png",
+        "artifacts/previews/1-Concrete034.png",
+        "artifacts/previews/3-Concrete047A.png",
+        "artifacts/options.json",
+        "artifacts/shortlist.md",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 11176,
+          "sha256": "5f016416fc081d8cf500900b66f46da35a556f4d75468feb916b958a1d1edee4"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2643,
+          "sha256": "7376755d4f41e9cbf69adcc2040ad7bda975d3c6a25e7b889e4d15a858e45d1b"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2890,
+          "sha256": "a8d84ce257b44fbded8ad37c9c583c57b6f0f5647d69d3966d130bdf6a0c2530"
+        }
+      ],
+      "option_ids": [
+        "Concrete034",
+        "Concrete048",
+        "Concrete047A",
+        "Concrete046"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-naturalistic-20260927-revised-luna-2",
+      "source": "ambientcg",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/previews/5-Concrete042A.png",
+        "artifacts/previews/1-Concrete034.png",
+        "artifacts/previews/6-Concrete031.png",
+        "artifacts/previews/4-Concrete046.png",
+        "artifacts/previews/3-Concrete047A.png",
+        "artifacts/previews/2-Concrete048.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 11176,
+          "sha256": "e0668c8f587e1e08e32a3017824a4317c14d020ecc1f06357ec0d2734f75ad5c"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2643,
+          "sha256": "7376755d4f41e9cbf69adcc2040ad7bda975d3c6a25e7b889e4d15a858e45d1b"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2827,
+          "sha256": "060998dcbbd41ff380f27a4f3bff9a5ee1cfffd77e274613f23a909f5f4729d1"
+        }
+      ],
+      "option_ids": [
+        "Concrete034",
+        "Concrete048",
+        "Concrete047A",
+        "Concrete046"
+      ]
+    },
+    {
+      "run_id": "free-ambientcg-naturalistic-20260927-revised-luna-3",
+      "source": "ambientcg",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "db0f5c84ee2ec1e71cebb1234a595c38927653a90e005d24eb5533134234d2de",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/ambientcg-material-search/SKILL.md",
+        "skills/ambientcg-material-search/references/source-guide.md",
+        "artifacts/previews/2-Concrete048.png",
+        "artifacts/previews/4-Concrete046.png",
+        "artifacts/previews/1-Concrete034.png",
+        "artifacts/previews/6-Concrete031.png",
+        "artifacts/previews/5-Concrete042A.png",
+        "artifacts/previews/3-Concrete047A.png",
+        "artifacts/options.json",
+        "artifacts/options.html",
+        "artifacts/previews-final/4-Concrete046.png",
+        "artifacts/previews-final/2-Concrete048.png",
+        "artifacts/previews-final/1-Concrete034.png",
+        "artifacts/previews-final/3-Concrete047A.png"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 11176,
+          "sha256": "a396c0ef1f752ddbb74b08665bbba4adf46f4659a0d7182a2b70e7db431e621b"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2643,
+          "sha256": "7376755d4f41e9cbf69adcc2040ad7bda975d3c6a25e7b889e4d15a858e45d1b"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2613,
+          "sha256": "65134c891e343f2d218014044918cdc6cf581a54d1c8651d111fc8d7ac34cacc"
+        }
+      ],
+      "option_ids": [
+        "Concrete034",
+        "Concrete048",
+        "Concrete047A",
+        "Concrete046"
+      ]
+    },
+    {
+      "run_id": "free-iconify-boundary-20260927-luna-1",
+      "source": "iconify",
+      "case": "boundary",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/reply.md",
+          "bytes": 167,
+          "sha256": "d44936bc4d290c695a6d28ca798c0435892d12699f06be151f5b62f46cc500fe"
+        }
+      ]
+    },
+    {
+      "run_id": "free-iconify-contract-20260927-luna-1",
+      "source": "iconify",
+      "case": "contract",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "artifacts/house.svg",
+        "artifacts/house.svg.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/house.svg",
+          "bytes": 356,
+          "sha256": "dbebac224b9ec4789971dc2363c3f7b66088ac56e25b6c5ec3c1a170d12339c4"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 279,
+          "sha256": "64a1b4504c2ec5ca9f4270b6c3ab0d44101794f170274a7ceace18a4f37f2315"
+        },
+        {
+          "path": "artifacts/house.svg.json",
+          "bytes": 1292,
+          "sha256": "ea05da97ceab524d3d23a9b09e5f3f91adb1a752ff48568e42c7dca345a6bcaf"
+        }
+      ],
+      "selected_id": "lucide:house",
+      "variant": "svg"
+    },
+    {
+      "run_id": "free-iconify-contract-20260927-spark-1",
+      "source": "iconify",
+      "case": "contract",
+      "strict_passed": false,
+      "independent_passed": false,
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "model": "openai-codex/gpt-5.3-codex-spark",
+      "read_surface": [],
+      "tool_errors": 0,
+      "error": "FileNotFoundError: [WinError 3] The system cannot find the path specified: 'evaluations\\\\runs\\\\free-iconify-contract-20260927-spark-1\\\\workspace\\\\artifacts\\\\house.svg'"
+    },
+    {
+      "run_id": "free-iconify-generalization-20260927-luna-1",
+      "source": "iconify",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/search.svg",
+        "artifacts/options.json",
+        "artifacts/search.svg.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 2435,
+          "sha256": "27713d3b96fe89f4e6615f5ff3f2d923a31bd6797ea7009732e01deca1b59e84"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2216,
+          "sha256": "1ed561276b082cb99dc1e016054fa64b8883936f04232a8e6f542547e7b88a95"
+        },
+        {
+          "path": "artifacts/search.svg",
+          "bytes": 614,
+          "sha256": "95234b2adbbb6671eb4cbe0fb004b02db7de6446dc68e7fc05ec19f70e631e6e"
+        },
+        {
+          "path": "artifacts/search.svg.json",
+          "bytes": 1316,
+          "sha256": "10b8d9049813c8b92ca4b02d34d469b05e77f386db1dccc923e1cd97583812de"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 546,
+          "sha256": "476bdea9a8d3cd6ef5b7af8a3ee568fc6f7ad0e0f3a27f1d0759d6b4747e636e"
+        }
+      ],
+      "option_ids": [
+        "mdi:search",
+        "mdi:car-search",
+        "mdi:car-search-outline"
+      ],
+      "selected_id": "mdi:car-search",
+      "variant": "svg"
+    },
+    {
+      "run_id": "free-iconify-generalization-20260927-luna-2",
+      "source": "iconify",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/search.svg",
+        "artifacts/search.svg.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 2435,
+          "sha256": "dcb7b01fe62928aee3f596c14d9f3cbbfb8ef57379b9a17f14b2cf5d9ceb2b10"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2216,
+          "sha256": "1ed561276b082cb99dc1e016054fa64b8883936f04232a8e6f542547e7b88a95"
+        },
+        {
+          "path": "artifacts/search.svg",
+          "bytes": 614,
+          "sha256": "95234b2adbbb6671eb4cbe0fb004b02db7de6446dc68e7fc05ec19f70e631e6e"
+        },
+        {
+          "path": "artifacts/search.svg.json",
+          "bytes": 1316,
+          "sha256": "b2348f315f6b299a12c3d85ff50b2869e77308e8af58b0e2e910a2e10ccf3c90"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 530,
+          "sha256": "e38496234f9695fa9792bb2cde0e2cdd174d65cb816e856b01ede92e17a84488"
+        }
+      ],
+      "option_ids": [
+        "mdi:search",
+        "mdi:car-search",
+        "mdi:car-search-outline"
+      ],
+      "selected_id": "mdi:car-search",
+      "variant": "svg"
+    },
+    {
+      "run_id": "free-iconify-generalization-20260927-luna-3",
+      "source": "iconify",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/search.svg",
+        "artifacts/options.json",
+        "artifacts/search.svg.json",
+        "artifacts/options.html",
+        "artifacts/review.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 2435,
+          "sha256": "b58c63c084c37ff7221f06c0e5dfc5540a25a8763c1735a0eb16b1f76b54e53b"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2216,
+          "sha256": "1ed561276b082cb99dc1e016054fa64b8883936f04232a8e6f542547e7b88a95"
+        },
+        {
+          "path": "artifacts/search.svg",
+          "bytes": 614,
+          "sha256": "95234b2adbbb6671eb4cbe0fb004b02db7de6446dc68e7fc05ec19f70e631e6e"
+        },
+        {
+          "path": "artifacts/search.svg.json",
+          "bytes": 1316,
+          "sha256": "23404c9fb3b7802a66a56ab7ce4c37bcb4a74d32ae62f2f7e648793aac4eea32"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 381,
+          "sha256": "ab1d9e9491c43ac75128fc1f2b6f8f547a4458d78dc988957fc866f8bfcf4aaa"
+        }
+      ],
+      "option_ids": [
+        "mdi:search",
+        "mdi:car-search",
+        "mdi:car-search-outline"
+      ],
+      "selected_id": "mdi:car-search",
+      "variant": "svg"
+    },
+    {
+      "run_id": "free-iconify-naturalistic-20260927-luna-1",
+      "source": "iconify",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/options.html",
+        "artifacts/options.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3046,
+          "sha256": "9a041399764e70d9e2895723503cc98d6d0e91927f1b5b6d091adb7c7ac6803c"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 3293,
+          "sha256": "6023d1ab141126016d42db4918fe290a1847802de6d4c179a98690cd54956215"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 1792,
+          "sha256": "392527b9a30cbb002043c03fbcdc4e714a1e23140baaf45d726092ab0081a8ec"
+        }
+      ],
+      "option_ids": [
+        "lucide:arrow-up",
+        "lucide:arrow-down",
+        "lucide:arrow-left",
+        "lucide:arrow-right"
+      ]
+    },
+    {
+      "run_id": "free-iconify-naturalistic-20260927-luna-2",
+      "source": "iconify",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/up.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 2996,
+          "sha256": "47b97946bdcc05d426ee721e2a3df4cfc0f35d826af0b7f117e9e9be2022738d"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2864,
+          "sha256": "281a99c550736b39e49f91976565d03f7602b69925c0926af7aa1d5a8d761252"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2069,
+          "sha256": "dd7fad85621f5ce89cefcff593237825e3ba67a45166aaad09199f6248d10f27"
+        }
+      ],
+      "option_ids": [
+        "lucide:arrow-up",
+        "lucide:arrow-down",
+        "lucide:arrow-left",
+        "lucide:arrow-right"
+      ]
+    },
+    {
+      "run_id": "free-iconify-naturalistic-20260927-luna-3",
+      "source": "iconify",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "446983a41091b8505825e48dd83c1fc9948af35aca7be025a788bbd7472760bb",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/iconify-icon-search/SKILL.md",
+        "skills/iconify-icon-search/references/source-guide.md",
+        "artifacts/options.html",
+        "artifacts/options.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3143,
+          "sha256": "80342218814d85ed94224be9e01003c8fd8f0524f19046dc52faf8e1aa664333"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2649,
+          "sha256": "504b722d42f0f4c652cd2b8b8e9286f13b2a5e874201ebe0f2ccb649abfc30eb"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2661,
+          "sha256": "84b8b9485cd1936ca00bdc42c2380a8d1efb0bbbc789a8116c8b9140dd3df8df"
+        }
+      ],
+      "option_ids": [
+        "lucide:arrow-up",
+        "lucide:bow-arrow",
+        "lucide:a-arrow-up",
+        "lucide:arrow-down"
+      ]
+    },
+    {
+      "run_id": "free-kenney-boundary-20260927-luna-1",
+      "source": "kenney",
+      "case": "boundary",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/reply.md",
+          "bytes": 207,
+          "sha256": "a76c9a3c4b02a32d6836a45ac352d94a81bafac3d608a6b173648f64fc41c8e2"
+        }
+      ]
+    },
+    {
+      "run_id": "free-kenney-contract-20260927-luna-1",
+      "source": "kenney",
+      "case": "contract",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "21790e6295c621cfe06f7e6813a625642641e2e505b9f68f61a9cfd81ba73048",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "artifacts/patterns.zip.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/patterns.zip",
+          "bytes": 1224706,
+          "sha256": "903051a40a0d9a62de5e87b03992a7084305453806102d1e7b9d13c210be93ac"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 356,
+          "sha256": "4ad213969abb48ad6940b12118677ef64a09ced2cdf9b6eb003dbd1c8c0405c3"
+        },
+        {
+          "path": "artifacts/patterns.zip.json",
+          "bytes": 34052,
+          "sha256": "1414d7e0be40705280b57f45f277ca7f56d8e78f73514189f191766bb563d1ae"
+        }
+      ],
+      "selected_id": "pattern-pack",
+      "variant": "kenney_pattern-pack.zip",
+      "zip_members": 261
+    },
+    {
+      "run_id": "free-kenney-contract-20260927-revised-luna-1",
+      "source": "kenney",
+      "case": "contract",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "artifacts/patterns.zip.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/patterns.zip",
+          "bytes": 1224706,
+          "sha256": "903051a40a0d9a62de5e87b03992a7084305453806102d1e7b9d13c210be93ac"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 421,
+          "sha256": "5c73e325ab214fb40464a1003868ceda0d8dcd00f23b8a94ca092d38701ae8f9"
+        },
+        {
+          "path": "artifacts/patterns.zip.json",
+          "bytes": 34052,
+          "sha256": "bcd09124ea200509daae0dc0dce6da17804eed67ba02dfd4edd0f3e8c3258108"
+        }
+      ],
+      "selected_id": "pattern-pack",
+      "variant": "kenney_pattern-pack.zip",
+      "zip_members": 261
+    },
+    {
+      "run_id": "free-kenney-generalization-20260927-final-luna-1",
+      "source": "kenney",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/3-foliage-sprites.png",
+        "artifacts/previews/2-foliage-pack.png",
+        "artifacts/previews/1-nature-kit.png",
+        "artifacts/options.json",
+        "artifacts/license-only/License.txt",
+        "artifacts/options.html",
+        "artifacts/nature.zip.json",
+        "artifacts/nature-inventory.json",
+        "artifacts/license-only/extraction.json",
+        "artifacts/review.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 1663,
+          "sha256": "3d394cef4feca5029df717a6ff21543b4511c933718e109ecaec8abbd08e57c0"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2188,
+          "sha256": "fb43e79aab65bc8b48b3bc5afbe1441e24621c32747e4c6415ecbdd6556326cd"
+        },
+        {
+          "path": "artifacts/nature.zip",
+          "bytes": 2230956,
+          "sha256": "33bd564f2cebb6a68bee9a798650d669571a389a437b0bd601d257ca2b5e7aed"
+        },
+        {
+          "path": "artifacts/nature.zip.json",
+          "bytes": 34357,
+          "sha256": "dc6610a2f14c3e563ab4296f080daabc7db68953c72928291c3f0c898733d3af"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 107,
+          "sha256": "1c999c30ac6191bc5c203f97db130ede27efbed0be1f43e105c9f4c3a63ee4e3"
+        },
+        {
+          "path": "artifacts/license-only/extraction.json",
+          "bytes": 326,
+          "sha256": "310b5942996d2d18b90dfb01210e4ceda04e352cdde992bf0836230a796fe166"
+        }
+      ],
+      "option_ids": [
+        "nature-kit",
+        "foliage-pack",
+        "foliage-sprites"
+      ],
+      "selected_id": "foliage-pack",
+      "variant": "kenney_foliage-pack.zip",
+      "zip_members": 238
+    },
+    {
+      "run_id": "free-kenney-generalization-20260927-final-luna-2",
+      "source": "kenney",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/2-foliage-pack.png",
+        "artifacts/previews/3-foliage-sprites.png",
+        "artifacts/previews/1-nature-kit.png"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 1663,
+          "sha256": "fb09bc3ebb21444c1f189fbec95dac295abae325b408adb8e5e780fc6b774adb"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2188,
+          "sha256": "fb43e79aab65bc8b48b3bc5afbe1441e24621c32747e4c6415ecbdd6556326cd"
+        },
+        {
+          "path": "artifacts/nature.zip",
+          "bytes": 2230956,
+          "sha256": "33bd564f2cebb6a68bee9a798650d669571a389a437b0bd601d257ca2b5e7aed"
+        },
+        {
+          "path": "artifacts/nature.zip.json",
+          "bytes": 34357,
+          "sha256": "ce1cb50f7bbeba9847bccc466f9ea9318155e82243e9e3362d58ad5fd09e0f51"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 102,
+          "sha256": "8fe8f32d9280ebed32640a65916f413fb3d2b57355d7f3008a28d18efdad1479"
+        },
+        {
+          "path": "artifacts/license-only/extraction.json",
+          "bytes": 326,
+          "sha256": "310b5942996d2d18b90dfb01210e4ceda04e352cdde992bf0836230a796fe166"
+        }
+      ],
+      "option_ids": [
+        "nature-kit",
+        "foliage-pack",
+        "foliage-sprites"
+      ],
+      "selected_id": "foliage-pack",
+      "variant": "kenney_foliage-pack.zip",
+      "zip_members": 238
+    },
+    {
+      "run_id": "free-kenney-generalization-20260927-final-luna-3",
+      "source": "kenney",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 1663,
+          "sha256": "094dd98fe02462cab842901618e3410163946785a6166a115c80200e810e4c2b"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2188,
+          "sha256": "fb43e79aab65bc8b48b3bc5afbe1441e24621c32747e4c6415ecbdd6556326cd"
+        },
+        {
+          "path": "artifacts/nature.zip",
+          "bytes": 2230956,
+          "sha256": "33bd564f2cebb6a68bee9a798650d669571a389a437b0bd601d257ca2b5e7aed"
+        },
+        {
+          "path": "artifacts/nature.zip.json",
+          "bytes": 34357,
+          "sha256": "e3b825a3a6362ee739c3243f2f7c5e8fe6cff8ea8d02de7cb1bbc33bda7d72b6"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 102,
+          "sha256": "8fe8f32d9280ebed32640a65916f413fb3d2b57355d7f3008a28d18efdad1479"
+        },
+        {
+          "path": "artifacts/license-only/extraction.json",
+          "bytes": 326,
+          "sha256": "310b5942996d2d18b90dfb01210e4ceda04e352cdde992bf0836230a796fe166"
+        }
+      ],
+      "option_ids": [
+        "nature-kit",
+        "foliage-pack",
+        "foliage-sprites"
+      ],
+      "selected_id": "foliage-pack",
+      "variant": "kenney_foliage-pack.zip",
+      "zip_members": 238
+    },
+    {
+      "run_id": "free-kenney-generalization-20260927-luna-1",
+      "source": "kenney",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "21790e6295c621cfe06f7e6813a625642641e2e505b9f68f61a9cfd81ba73048",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 1663,
+          "sha256": "cc894cdf5f7e3ec0f5df7cd250dbfa150d93f22d2a9a14910589545076f74ffc"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2188,
+          "sha256": "fb43e79aab65bc8b48b3bc5afbe1441e24621c32747e4c6415ecbdd6556326cd"
+        },
+        {
+          "path": "artifacts/nature.zip",
+          "bytes": 2230956,
+          "sha256": "33bd564f2cebb6a68bee9a798650d669571a389a437b0bd601d257ca2b5e7aed"
+        },
+        {
+          "path": "artifacts/nature.zip.json",
+          "bytes": 34357,
+          "sha256": "74a220f6fdc122c768cfd0ad0232eda4f6d0607c8aae9a98f6b8170b8391e450"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 102,
+          "sha256": "8fe8f32d9280ebed32640a65916f413fb3d2b57355d7f3008a28d18efdad1479"
+        },
+        {
+          "path": "artifacts/license-only/extraction.json",
+          "bytes": 326,
+          "sha256": "310b5942996d2d18b90dfb01210e4ceda04e352cdde992bf0836230a796fe166"
+        }
+      ],
+      "option_ids": [
+        "nature-kit",
+        "foliage-pack",
+        "foliage-sprites"
+      ],
+      "selected_id": "foliage-pack",
+      "variant": "kenney_foliage-pack.zip",
+      "zip_members": 238
+    },
+    {
+      "run_id": "free-kenney-generalization-20260927-luna-2",
+      "source": "kenney",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "21790e6295c621cfe06f7e6813a625642641e2e505b9f68f61a9cfd81ba73048",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/review.md",
+        "artifacts/license-only/extraction.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 1663,
+          "sha256": "bb981463196a0dd05a901ed5df6b0c2de166f91e1fca1dd2a4b6a07f7d5f7ed1"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2188,
+          "sha256": "fb43e79aab65bc8b48b3bc5afbe1441e24621c32747e4c6415ecbdd6556326cd"
+        },
+        {
+          "path": "artifacts/nature.zip",
+          "bytes": 2230956,
+          "sha256": "33bd564f2cebb6a68bee9a798650d669571a389a437b0bd601d257ca2b5e7aed"
+        },
+        {
+          "path": "artifacts/nature.zip.json",
+          "bytes": 34357,
+          "sha256": "d8009a33797795315448c508a0bba2c094b920be3f030b488bb246d6b8cfa825"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 107,
+          "sha256": "1c999c30ac6191bc5c203f97db130ede27efbed0be1f43e105c9f4c3a63ee4e3"
+        },
+        {
+          "path": "artifacts/license-only/extraction.json",
+          "bytes": 326,
+          "sha256": "310b5942996d2d18b90dfb01210e4ceda04e352cdde992bf0836230a796fe166"
+        }
+      ],
+      "option_ids": [
+        "nature-kit",
+        "foliage-pack",
+        "foliage-sprites"
+      ],
+      "selected_id": "foliage-pack",
+      "variant": "kenney_foliage-pack.zip",
+      "zip_members": 238
+    },
+    {
+      "run_id": "free-kenney-generalization-20260927-luna-3",
+      "source": "kenney",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "21790e6295c621cfe06f7e6813a625642641e2e505b9f68f61a9cfd81ba73048",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/review.md",
+        "artifacts/license-only/extraction.json",
+        "artifacts/nature.zip.json",
+        "artifacts/options.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 1663,
+          "sha256": "7445e13e960a2e9a3144f6e3d50dcfa342e47e857dd0d03e2db86ae98249e1ca"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2188,
+          "sha256": "fb43e79aab65bc8b48b3bc5afbe1441e24621c32747e4c6415ecbdd6556326cd"
+        },
+        {
+          "path": "artifacts/nature.zip",
+          "bytes": 2230956,
+          "sha256": "33bd564f2cebb6a68bee9a798650d669571a389a437b0bd601d257ca2b5e7aed"
+        },
+        {
+          "path": "artifacts/nature.zip.json",
+          "bytes": 34357,
+          "sha256": "1e419614e12e87f283e43f8142e63a088bca9c5d64bd165f957ff2dadbefda38"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 102,
+          "sha256": "8fe8f32d9280ebed32640a65916f413fb3d2b57355d7f3008a28d18efdad1479"
+        },
+        {
+          "path": "artifacts/license-only/extraction.json",
+          "bytes": 326,
+          "sha256": "310b5942996d2d18b90dfb01210e4ceda04e352cdde992bf0836230a796fe166"
+        }
+      ],
+      "option_ids": [
+        "nature-kit",
+        "foliage-pack",
+        "foliage-sprites"
+      ],
+      "selected_id": "foliage-pack",
+      "variant": "kenney_foliage-pack.zip",
+      "zip_members": 238
+    },
+    {
+      "run_id": "free-kenney-naturalistic-20260927-luna-1",
+      "source": "kenney",
+      "case": "naturalistic",
+      "strict_passed": false,
+      "independent_passed": true,
+      "payload_sha256": "21790e6295c621cfe06f7e6813a625642641e2e505b9f68f61a9cfd81ba73048",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/options.html",
+        "artifacts/options.json",
+        "/tmp/kenney-previews/1.png",
+        "/tmp/kenney-previews/4.png",
+        "/tmp/kenney-previews/2.png",
+        "/tmp/kenney-previews/3.png",
+        "C:/Users/villa/AppData/Local/Temp/kenney-previews/4.png",
+        "C:/Users/villa/AppData/Local/Temp/kenney-previews/2.png",
+        "C:/Users/villa/AppData/Local/Temp/kenney-previews/1.png",
+        "C:/Users/villa/AppData/Local/Temp/kenney-previews/3.png"
+      ],
+      "tool_errors": 4,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 2196,
+          "sha256": "3122c85f7dc5b0a7d949496850a56d6030044dfcbe8144fdd0b4be2a06380ee5"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 3460,
+          "sha256": "858558d5815982e8098762e34c5de04c9b0b70c075e95a2e4d91b5daca75ebc9"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2246,
+          "sha256": "773d623c6dbeea25037d1ca4e2b7c67eac8863f94a2ba30e6c78f96ffd188647"
+        }
+      ],
+      "option_ids": [
+        "pattern-pack",
+        "pattern-pack-extra",
+        "pattern-pack-lines",
+        "pattern-pack-pixel"
+      ]
+    },
+    {
+      "run_id": "free-kenney-naturalistic-20260927-luna-2",
+      "source": "kenney",
+      "case": "naturalistic",
+      "strict_passed": false,
+      "independent_passed": true,
+      "payload_sha256": "21790e6295c621cfe06f7e6813a625642641e2e505b9f68f61a9cfd81ba73048",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/options.html",
+        "artifacts/options.json",
+        "/tmp/kenney-pattern-previews/1.png",
+        "/tmp/kenney-pattern-previews/3.png",
+        "/tmp/kenney-pattern-previews/2.png",
+        "/tmp/kenney-pattern-previews/4.png",
+        ".review-previews/4.png",
+        ".review-previews/1.png",
+        ".review-previews/2.png",
+        ".review-previews/3.png",
+        "artifacts/shortlist.md",
+        "artifacts/options.json"
+      ],
+      "tool_errors": 4,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 2958,
+          "sha256": "ba203e4e8c6f730c598e1b026e6a79144dd7ea548c5be81991851395ba01f732"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 3518,
+          "sha256": "b83ceea4db59344f9e3118145fa3b20789c134bdf48a6149289953914d0404a5"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2547,
+          "sha256": "a7dfe68e41d998a4d9269f162869b9966a371a77f3bb4f413992929ef45cc00c"
+        }
+      ],
+      "option_ids": [
+        "pattern-pack",
+        "pattern-pack-extra",
+        "pattern-pack-lines",
+        "pattern-pack-pixel"
+      ]
+    },
+    {
+      "run_id": "free-kenney-naturalistic-20260927-luna-3",
+      "source": "kenney",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "21790e6295c621cfe06f7e6813a625642641e2e505b9f68f61a9cfd81ba73048",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/04-pattern-pack-pixel.png",
+        "artifacts/previews/02-pattern-pack-extra.png",
+        "artifacts/previews/01-pattern-pack.png",
+        "artifacts/previews/03-pattern-pack-lines.png",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 2200,
+          "sha256": "2e3adcedaa2d8f7fb0201d787d76688cbf0226df2290529426bfaebf1edda719"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2721,
+          "sha256": "b085e827e85b16413c1edce3f2b0437963871d2dc60997a0e4f921840b200f4b"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2602,
+          "sha256": "5a7bf78f4d776adff9ebd9dee2cea2c9386c33b60453fa20e009c847ed47de5c"
+        }
+      ],
+      "option_ids": [
+        "pattern-pack",
+        "pattern-pack-extra",
+        "pattern-pack-lines",
+        "pattern-pack-pixel"
+      ]
+    },
+    {
+      "run_id": "free-kenney-naturalistic-20260927-revised-luna-1",
+      "source": "kenney",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/4-pattern-pack-pixel.png",
+        "artifacts/previews/1-pattern-pack.png",
+        "artifacts/previews/2-pattern-pack-extra.png",
+        "artifacts/previews/3-pattern-pack-lines.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 2200,
+          "sha256": "8c6c9b820dc8e9465c6955cfaa85bc127e0cc7c1b425807451452ff9e054ef46"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2721,
+          "sha256": "b085e827e85b16413c1edce3f2b0437963871d2dc60997a0e4f921840b200f4b"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 3108,
+          "sha256": "c9e094fd4bf8791ecf1755bd0e77a63c0bf779b57f648f9751f5fa5fef897995"
+        }
+      ],
+      "option_ids": [
+        "pattern-pack",
+        "pattern-pack-extra",
+        "pattern-pack-lines",
+        "pattern-pack-pixel"
+      ]
+    },
+    {
+      "run_id": "free-kenney-naturalistic-20260927-revised-luna-2",
+      "source": "kenney",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/4-pattern-pack-pixel.png",
+        "artifacts/previews/2-pattern-pack-extra.png",
+        "artifacts/previews/3-pattern-pack-lines.png",
+        "artifacts/previews/1-pattern-pack.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 2196,
+          "sha256": "734e41af6419c373166d4d9bdd1f0d850459920ecc2b83c591e859237cef13da"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2775,
+          "sha256": "43b843a6e206bd56b61f7baef304146fcc7c57a1114009ee8e21298481e84a66"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 3045,
+          "sha256": "40e7616c9c926c8cb7df621c444a317f1fcd080de5f2071b00497a158a7e933b"
+        }
+      ],
+      "option_ids": [
+        "pattern-pack",
+        "pattern-pack-extra",
+        "pattern-pack-lines",
+        "pattern-pack-pixel"
+      ]
+    },
+    {
+      "run_id": "free-kenney-naturalistic-20260927-revised-luna-3",
+      "source": "kenney",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "79fd3097b1776433062b0d8760781412ba69abc1ff6b76c3ad80b32324afb834",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/kenney-asset-search/SKILL.md",
+        "skills/kenney-asset-search/references/source-guide.md",
+        "artifacts/previews/4-pattern-pack-pixel.png",
+        "artifacts/previews/1-pattern-pack.png",
+        "artifacts/previews/2-pattern-pack-extra.png",
+        "artifacts/previews/3-pattern-pack-lines.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 2200,
+          "sha256": "5aa89b4774836af732f0e7b7b94ebe915bbfc831561bf4575b637193b57994df"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2721,
+          "sha256": "b085e827e85b16413c1edce3f2b0437963871d2dc60997a0e4f921840b200f4b"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2645,
+          "sha256": "d1c12758fcd503310aea8f7b91be4b6545e954bef66624ec40b60a6886e1ba24"
+        }
+      ],
+      "option_ids": [
+        "pattern-pack",
+        "pattern-pack-extra",
+        "pattern-pack-lines",
+        "pattern-pack-pixel"
+      ]
+    },
+    {
+      "run_id": "free-pexels-contract-20260927-luna-1",
+      "source": "pexels",
+      "case": "contract",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "10d4e387a6b757509283f05c94ddaa9ed1dda7d1f0be94c66165abfb547d8133",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/pexels-media-search/SKILL.md",
+        "skills/pexels-media-search/scripts/test_asset_io.py",
+        "skills/pexels-media-search/scripts/test_pexels.py",
+        "artifacts/access.json",
+        "artifacts/review.md",
+        "artifacts/access.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/access.json",
+          "bytes": 219,
+          "sha256": "fc2b2666d278f8960859a504e5976195cd68f66e70df9f34ba3ad7203ca38041"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 1139,
+          "sha256": "5a9e603b1f394fb9e5b6a71aed8ed88c723c1bdd3017d7103c99aa3d7e1f3f8e"
+        }
+      ],
+      "scope": "Access recovery and offline contract only; live authenticated search/download untested."
+    },
+    {
+      "run_id": "free-pexels-naturalistic-20260927-luna-1",
+      "source": "pexels",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "10d4e387a6b757509283f05c94ddaa9ed1dda7d1f0be94c66165abfb547d8133",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/pexels-media-search/SKILL.md",
+        "artifacts/access.json",
+        "artifacts/next-step.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/access.json",
+          "bytes": 219,
+          "sha256": "fc2b2666d278f8960859a504e5976195cd68f66e70df9f34ba3ad7203ca38041"
+        },
+        {
+          "path": "artifacts/next-step.md",
+          "bytes": 456,
+          "sha256": "7ff79dfda1bbd1f1fa8fe56282c96c1376c8ad37fd28758658e5e329372cf86f"
+        }
+      ],
+      "scope": "Access recovery and offline contract only; live authenticated search/download untested."
+    },
+    {
+      "run_id": "free-pexels-naturalistic-20260927-luna-2",
+      "source": "pexels",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "10d4e387a6b757509283f05c94ddaa9ed1dda7d1f0be94c66165abfb547d8133",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/pexels-media-search/SKILL.md",
+        "artifacts/next-step.md",
+        "artifacts/access.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/access.json",
+          "bytes": 219,
+          "sha256": "fc2b2666d278f8960859a504e5976195cd68f66e70df9f34ba3ad7203ca38041"
+        },
+        {
+          "path": "artifacts/next-step.md",
+          "bytes": 411,
+          "sha256": "71d555e77b8533afb4dad80e4b0df916437775e8738907b33a814a203fabf6b4"
+        }
+      ],
+      "scope": "Access recovery and offline contract only; live authenticated search/download untested."
+    },
+    {
+      "run_id": "free-pexels-naturalistic-20260927-luna-3",
+      "source": "pexels",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "10d4e387a6b757509283f05c94ddaa9ed1dda7d1f0be94c66165abfb547d8133",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/pexels-media-search/SKILL.md",
+        "artifacts/access.json",
+        "artifacts/next-step.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/access.json",
+          "bytes": 384,
+          "sha256": "755337113ceda462b7a0aa7b90a5dc275ac7ee0dc3eefc948d5d3cda236702b3"
+        },
+        {
+          "path": "artifacts/next-step.md",
+          "bytes": 572,
+          "sha256": "b5c3a6b00c365e8793b1733981869fafa7e1e882f07855e3ba2f35089531918c"
+        }
+      ],
+      "scope": "Access recovery and offline contract only; live authenticated search/download untested."
+    },
+    {
+      "run_id": "free-polyhaven-boundary-20260927-gallery-luna-1",
+      "source": "polyhaven",
+      "case": "boundary",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/reply.md",
+          "bytes": 164,
+          "sha256": "b2bc41fd4846fe99eb37c3fd80b07f15a65b98434d45904c2dce56fd5525723f"
+        }
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-boundary-20260927-luna-1",
+      "source": "polyhaven",
+      "case": "boundary",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "48acf586462a271f2b4c0b1cba19cfc3619e4419a79fcc4ac8dd0d5eda4e096e",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/reply.md",
+          "bytes": 112,
+          "sha256": "90d2524ec40eac978d1f5027ad2112636cb710824c6c5302cbb30a2326d399d1"
+        }
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-contract-20260927-gallery-luna-1",
+      "source": "polyhaven",
+      "case": "contract",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/deck.jpg.json",
+        "artifacts/review.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/deck.jpg",
+          "bytes": 925789,
+          "sha256": "1f2c623e87b0ee905f6f4ec8664dd19b4b135207c96e86198ff2919770b47166"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 402,
+          "sha256": "873b7d02b0f6c093741bcc95a1bd3d9c7f2428cd6d56c74af973cd89c6018054"
+        },
+        {
+          "path": "artifacts/deck.jpg.json",
+          "bytes": 44169,
+          "sha256": "9993efed775fbb6032d446c668104891a3909690722f8ab4674585731f31be10"
+        }
+      ],
+      "selected_id": "wood_floor_deck",
+      "variant": "Diffuse/1k/jpg",
+      "decoded_dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-contract-20260927-luna-1",
+      "source": "polyhaven",
+      "case": "contract",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "9472d04f748e4cdaada69c49107d807d0b40d1cffc2a3cad5ac403516b0aee7d",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/deck.jpg.json",
+        "artifacts/review.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/deck.jpg",
+          "bytes": 925789,
+          "sha256": "1f2c623e87b0ee905f6f4ec8664dd19b4b135207c96e86198ff2919770b47166"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 393,
+          "sha256": "ae5ae5c55683c05a50041ef7696103c0c1bcf5ed061cfc334a71eaf3a530a2fc"
+        },
+        {
+          "path": "artifacts/deck.jpg.json",
+          "bytes": 44170,
+          "sha256": "a757fa41567fd34ad108edd3063827567a1df015eee3f5548738bc375c6e66bc"
+        }
+      ],
+      "selected_id": "wood_floor_deck",
+      "variant": "Diffuse/1k/jpg",
+      "decoded_dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-contract-20260927-revised-luna-1",
+      "source": "polyhaven",
+      "case": "contract",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "48acf586462a271f2b4c0b1cba19cfc3619e4419a79fcc4ac8dd0d5eda4e096e",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/deck.jpg.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/deck.jpg",
+          "bytes": 925789,
+          "sha256": "1f2c623e87b0ee905f6f4ec8664dd19b4b135207c96e86198ff2919770b47166"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 367,
+          "sha256": "6fe7685005d3e288194ad306eef7d8bf926fea1c0b0dd4f967622c8bfc176dec"
+        },
+        {
+          "path": "artifacts/deck.jpg.json",
+          "bytes": 44169,
+          "sha256": "955648993406692384da68813891b1cf8f76d63d43bf11f181554dbdb12ad57a"
+        }
+      ],
+      "selected_id": "wood_floor_deck",
+      "variant": "Diffuse/1k/jpg",
+      "decoded_dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-final-luna-1",
+      "source": "polyhaven",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/2-rogland_sunset.png",
+        "artifacts/previews/3-kiara_8_sunset.png",
+        "artifacts/previews/1-sunset_meadow_path.png",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3847,
+          "sha256": "9421a538aaf0ddb032993f203e5da1ec1eab8da1b15acfe7c0f6e7fdcfa5161f"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2262,
+          "sha256": "597bc284c268a67dc86f4021153c860f1ba86375f1fe3badd087c40e8832677c"
+        },
+        {
+          "path": "artifacts/sunset.hdr",
+          "bytes": 1487232,
+          "sha256": "60282c7b0a78882cbdae07052132fdbeee15e4f996c413f5598b05ee8b0e2d43"
+        },
+        {
+          "path": "artifacts/sunset.hdr.json",
+          "bytes": 5663,
+          "sha256": "b3c1a0992921ea9875ee253e0e51c7d32c146ccd182e769413c91e6cc8497df2"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 776,
+          "sha256": "965b1227594bf00f94cdd0cd347a835f064da1a64f6ad733a85c5263f640727e"
+        }
+      ],
+      "option_ids": [
+        "sunset_meadow_path",
+        "rogland_sunset",
+        "kiara_8_sunset"
+      ],
+      "selected_id": "rogland_sunset",
+      "variant": "hdri/1k/hdr",
+      "hdr_dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-final-luna-2",
+      "source": "polyhaven",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/1-sunset_meadow_path.png",
+        "artifacts/previews/3-kiara_8_sunset.png",
+        "artifacts/previews/2-rogland_sunset.png",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3853,
+          "sha256": "ea7ae0c82a1bb885ce40563390662e788f971b84f603b3e8e2b04b75fe709e5d"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2262,
+          "sha256": "597bc284c268a67dc86f4021153c860f1ba86375f1fe3badd087c40e8832677c"
+        },
+        {
+          "path": "artifacts/sunset.hdr",
+          "bytes": 1487232,
+          "sha256": "60282c7b0a78882cbdae07052132fdbeee15e4f996c413f5598b05ee8b0e2d43"
+        },
+        {
+          "path": "artifacts/sunset.hdr.json",
+          "bytes": 5663,
+          "sha256": "e574555baa94725884fc1187d3c0ce1d692d1c514626bbab4b775fefb9b052dc"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 639,
+          "sha256": "a2bdd660598a1fe4036b21b6fd663646f98e96784f23c5361042fb46efe113dd"
+        }
+      ],
+      "option_ids": [
+        "sunset_meadow_path",
+        "rogland_sunset",
+        "kiara_8_sunset"
+      ],
+      "selected_id": "rogland_sunset",
+      "variant": "hdri/1k/hdr",
+      "hdr_dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-final-luna-3",
+      "source": "polyhaven",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/1-sunset_meadow_path.png",
+        "artifacts/previews/2-rogland_sunset.png",
+        "artifacts/previews/3-kiara_8_sunset.png",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3847,
+          "sha256": "0bfa96db696a9ff84685c94d795f7951a76bbcfb04adf603e5e34261f9b2a45e"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2262,
+          "sha256": "597bc284c268a67dc86f4021153c860f1ba86375f1fe3badd087c40e8832677c"
+        },
+        {
+          "path": "artifacts/sunset.hdr",
+          "bytes": 1487232,
+          "sha256": "60282c7b0a78882cbdae07052132fdbeee15e4f996c413f5598b05ee8b0e2d43"
+        },
+        {
+          "path": "artifacts/sunset.hdr.json",
+          "bytes": 5663,
+          "sha256": "4599457ff3d88640c15ac529ab7de56bcdd0bdd8960ec1727506ce1ce94eedb1"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 788,
+          "sha256": "95fe14edeff2c11d82e08540e28e5141bda21c0b7d601b8fce83457ae346a829"
+        }
+      ],
+      "option_ids": [
+        "sunset_meadow_path",
+        "rogland_sunset",
+        "kiara_8_sunset"
+      ],
+      "selected_id": "rogland_sunset",
+      "variant": "hdri/1k/hdr",
+      "hdr_dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-luna-1",
+      "source": "polyhaven",
+      "case": "generalization",
+      "strict_passed": false,
+      "independent_passed": true,
+      "payload_sha256": "9472d04f748e4cdaada69c49107d807d0b40d1cffc2a3cad5ac403516b0aee7d",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "/tmp/polyhaven-previews/option-1.png",
+        "/tmp/polyhaven-previews/option-2.png",
+        "/tmp/polyhaven-previews/option-3.png",
+        "C:\\Users\\villa\\AppData\\Local\\Temp\\polyhaven-previews\\option-2.png",
+        "C:\\Users\\villa\\AppData\\Local\\Temp\\polyhaven-previews\\option-3.png",
+        "C:\\Users\\villa\\AppData\\Local\\Temp\\polyhaven-previews\\option-1.png",
+        "artifacts/options.json",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 3,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3847,
+          "sha256": "0ccabc59e0be7f1a04958ce002528775c01804109a3474377c7d7e532d07fe1d"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2262,
+          "sha256": "597bc284c268a67dc86f4021153c860f1ba86375f1fe3badd087c40e8832677c"
+        },
+        {
+          "path": "artifacts/sunset.hdr",
+          "bytes": 1487232,
+          "sha256": "60282c7b0a78882cbdae07052132fdbeee15e4f996c413f5598b05ee8b0e2d43"
+        },
+        {
+          "path": "artifacts/sunset.hdr.json",
+          "bytes": 5664,
+          "sha256": "1ec23a687033e6291bf707da48c93384b892f1e436db61c77a4feb0a2bb2b7a0"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 692,
+          "sha256": "a6e0477d49279a0a386b0855697664d636334ce6223e4522ed800fc895ba5700"
+        }
+      ],
+      "option_ids": [
+        "sunset_meadow_path",
+        "rogland_sunset",
+        "kiara_8_sunset"
+      ],
+      "selected_id": "rogland_sunset",
+      "variant": "hdri/1k/hdr",
+      "hdr_dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-luna-2",
+      "source": "polyhaven",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "9472d04f748e4cdaada69c49107d807d0b40d1cffc2a3cad5ac403516b0aee7d",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/options.json",
+        "artifacts/options.html",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3847,
+          "sha256": "9357079994e6ced6edf053191e644233ad552833238e69c641718514078f2e9a"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2262,
+          "sha256": "597bc284c268a67dc86f4021153c860f1ba86375f1fe3badd087c40e8832677c"
+        },
+        {
+          "path": "artifacts/sunset.hdr",
+          "bytes": 1487232,
+          "sha256": "60282c7b0a78882cbdae07052132fdbeee15e4f996c413f5598b05ee8b0e2d43"
+        },
+        {
+          "path": "artifacts/sunset.hdr.json",
+          "bytes": 5664,
+          "sha256": "2d6cc83ff5c4f4a939b61184e63465b7afcec420e7601f1c94ec11001f2a6a45"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 678,
+          "sha256": "e0e24d3e7ac1a3cceddb3b748de8c0356fe250d032cf6fc59fdb4a4f86b9bb4d"
+        }
+      ],
+      "option_ids": [
+        "sunset_meadow_path",
+        "rogland_sunset",
+        "kiara_8_sunset"
+      ],
+      "selected_id": "rogland_sunset",
+      "variant": "hdri/1k/hdr",
+      "hdr_dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-luna-3",
+      "source": "polyhaven",
+      "case": "generalization",
+      "strict_passed": false,
+      "independent_passed": true,
+      "payload_sha256": "9472d04f748e4cdaada69c49107d807d0b40d1cffc2a3cad5ac403516b0aee7d",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 2,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3847,
+          "sha256": "54853a55f07cf9a79efb2f63e77ecec32884ea8083def2225d7f013f916351b2"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2262,
+          "sha256": "597bc284c268a67dc86f4021153c860f1ba86375f1fe3badd087c40e8832677c"
+        },
+        {
+          "path": "artifacts/sunset.hdr",
+          "bytes": 1487232,
+          "sha256": "60282c7b0a78882cbdae07052132fdbeee15e4f996c413f5598b05ee8b0e2d43"
+        },
+        {
+          "path": "artifacts/sunset.hdr.json",
+          "bytes": 5664,
+          "sha256": "8c614b90e526d25106592dfd540e255da6abe9998e0d5c7594c8b6b970d1053c"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 552,
+          "sha256": "e2b2bf67e64204fb337d4620aa65251a03af5141fb5fcd202e11e1d924ace79f"
+        }
+      ],
+      "option_ids": [
+        "sunset_meadow_path",
+        "rogland_sunset",
+        "kiara_8_sunset"
+      ],
+      "selected_id": "rogland_sunset",
+      "variant": "hdri/1k/hdr",
+      "hdr_dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-revised-luna-1",
+      "source": "polyhaven",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "48acf586462a271f2b4c0b1cba19cfc3619e4419a79fcc4ac8dd0d5eda4e096e",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/3-kiara_8_sunset.png",
+        "artifacts/previews/2-rogland_sunset.png",
+        "artifacts/previews/1-sunset_meadow_path.png",
+        "artifacts/options.json",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3847,
+          "sha256": "5aa8e2f362844b58493e26e7e3cdc7f66c560bef534eaf1be6ea1fa3c5c028f9"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2262,
+          "sha256": "597bc284c268a67dc86f4021153c860f1ba86375f1fe3badd087c40e8832677c"
+        },
+        {
+          "path": "artifacts/sunset.hdr",
+          "bytes": 1487232,
+          "sha256": "60282c7b0a78882cbdae07052132fdbeee15e4f996c413f5598b05ee8b0e2d43"
+        },
+        {
+          "path": "artifacts/sunset.hdr.json",
+          "bytes": 5663,
+          "sha256": "aca317c437b8d338810ce057284de9b2530ac50dcfa77dd05ef769df6886160b"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 612,
+          "sha256": "705b143c9146969d86c9959efb1562cf6f168c98d5c89285df02a24a465dbb9f"
+        }
+      ],
+      "option_ids": [
+        "sunset_meadow_path",
+        "rogland_sunset",
+        "kiara_8_sunset"
+      ],
+      "selected_id": "rogland_sunset",
+      "variant": "hdri/1k/hdr",
+      "hdr_dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-revised-luna-2",
+      "source": "polyhaven",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "48acf586462a271f2b4c0b1cba19cfc3619e4419a79fcc4ac8dd0d5eda4e096e",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/2-rogland_sunset.png",
+        "artifacts/previews/1-sunset_meadow_path.png",
+        "artifacts/previews/3-kiara_8_sunset.png",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3847,
+          "sha256": "5e48b9acd8d5e37e512406f4fa577ef251f91ebe07ed20d3ed2fd7fee290418b"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2262,
+          "sha256": "597bc284c268a67dc86f4021153c860f1ba86375f1fe3badd087c40e8832677c"
+        },
+        {
+          "path": "artifacts/sunset.hdr",
+          "bytes": 1487232,
+          "sha256": "60282c7b0a78882cbdae07052132fdbeee15e4f996c413f5598b05ee8b0e2d43"
+        },
+        {
+          "path": "artifacts/sunset.hdr.json",
+          "bytes": 5663,
+          "sha256": "e8558c3923e8bea87e9bcfd8f6a431d524fd290c59cf4cc2c234ad53c08ac5de"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 489,
+          "sha256": "04e94735b1c7b3575a4f28ba6b707a321061eaca6bd0727537206e32b6354e73"
+        }
+      ],
+      "option_ids": [
+        "sunset_meadow_path",
+        "rogland_sunset",
+        "kiara_8_sunset"
+      ],
+      "selected_id": "rogland_sunset",
+      "variant": "hdri/1k/hdr",
+      "hdr_dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-generalization-20260927-revised-luna-3",
+      "source": "polyhaven",
+      "case": "generalization",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "48acf586462a271f2b4c0b1cba19cfc3619e4419a79fcc4ac8dd0d5eda4e096e",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/3-kiara_8_sunset.png",
+        "artifacts/previews/2-rogland_sunset.png",
+        "artifacts/previews/1-sunset_meadow_path.png",
+        "artifacts/sunset.hdr.json"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 3847,
+          "sha256": "3ec6e631d805d33f6f86b4f79c753c76f01844eccba11eb7fa44bbbfd5413ff3"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2262,
+          "sha256": "597bc284c268a67dc86f4021153c860f1ba86375f1fe3badd087c40e8832677c"
+        },
+        {
+          "path": "artifacts/sunset.hdr",
+          "bytes": 1487232,
+          "sha256": "60282c7b0a78882cbdae07052132fdbeee15e4f996c413f5598b05ee8b0e2d43"
+        },
+        {
+          "path": "artifacts/sunset.hdr.json",
+          "bytes": 5663,
+          "sha256": "1375bf4066535c50f889cd6dc113371d5cd1f60b59ec6703981c02ef38f8f837"
+        },
+        {
+          "path": "artifacts/review.md",
+          "bytes": 579,
+          "sha256": "5b178b71f842542cd2e5e070b6060023fcc284c430a29e0829a0c39996679a89"
+        }
+      ],
+      "option_ids": [
+        "sunset_meadow_path",
+        "rogland_sunset",
+        "kiara_8_sunset"
+      ],
+      "selected_id": "rogland_sunset",
+      "variant": "hdri/1k/hdr",
+      "hdr_dimensions": [
+        1024,
+        512
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-gallery-luna-1",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/4-dark_planks.png",
+        "artifacts/previews/3-dark_wooden_planks.png",
+        "artifacts/previews/2-wood_planks.png",
+        "artifacts/previews/1-weathered_planks.png",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 5557,
+          "sha256": "4ff7d8fef83aabd3412024c64a33b3ec38f7fcec6869ce67cd031ad6527a55b3"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2717,
+          "sha256": "7e8168bf3756866fb4153049a55c728f4568421c9ac697bd1dfdd8ef55bd6cbe"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 3108,
+          "sha256": "36cd574611da9d78cf98af6d3b4f6e88509250c8b4fc72329407edbc44c41b58"
+        }
+      ],
+      "option_ids": [
+        "weathered_planks",
+        "wood_planks",
+        "dark_wooden_planks",
+        "dark_planks"
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-gallery-luna-2",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/1-weathered_planks.png",
+        "artifacts/previews/4-dark_planks.png",
+        "artifacts/previews/2-wood_planks.png",
+        "artifacts/previews/3-dark_wooden_planks.png",
+        "artifacts/previews/6-planks_brown_10.png",
+        "artifacts/previews/5-wood_planks_dirt.png",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/options.html",
+        "artifacts/options.json",
+        "artifacts/shortlist.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 5329,
+          "sha256": "a9f52cf80c2e8131de5cd539648c113189c7122d5590af40473b02697dac27f8"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2705,
+          "sha256": "7ec615c956745f040fc15c8f9e7bd41ae62ca14aac54bfe349dcd4f8f5b2dfb3"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2929,
+          "sha256": "ffb223d6b7aa067d1e1455754bb59b8a6c7052ddbcff92c8f0250c713ef0df04"
+        }
+      ],
+      "option_ids": [
+        "weathered_planks",
+        "wood_planks",
+        "dark_planks",
+        "wood_planks_dirt"
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-gallery-luna-3",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "1f6cb07cbec26804dfa4fccdb61f105fcdf0beeda91d1ed58b0fd4969e7bc87b",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "artifacts/previews/3-dark_wooden_planks.png",
+        "artifacts/previews/1-weathered_planks.png",
+        "artifacts/previews/6-planks_brown_10.png",
+        "artifacts/previews/5-wood_planks_dirt.png",
+        "artifacts/previews/2-wood_planks.png",
+        "artifacts/previews/4-dark_planks.png",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/options.json",
+        "artifacts/options.html",
+        "artifacts/shortlist.md"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 5234,
+          "sha256": "2ddf44c4878cfbf52a65087bd402a8fd9157d3f4334a4893221db7d6f7613b6d"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2729,
+          "sha256": "12f56de01aaf1e8ede08fae92f245cba0c4cb320bffb9d3fd2ec51333d5f01ee"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 3038,
+          "sha256": "912ac0f5a39b10d1b475b8d4af054531abfd62af4eb590830d43acd89096ad73"
+        }
+      ],
+      "option_ids": [
+        "weathered_planks",
+        "dark_planks",
+        "wood_planks_dirt",
+        "planks_brown_10"
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-luna-1",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "strict_passed": false,
+      "independent_passed": true,
+      "payload_sha256": "9472d04f748e4cdaada69c49107d807d0b40d1cffc2a3cad5ac403516b0aee7d",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "/tmp/polyhaven-previews/1.png",
+        "/tmp/polyhaven-previews/4.png",
+        "/tmp/polyhaven-previews/2.png",
+        "/tmp/polyhaven-previews/3.png",
+        "artifacts/previews/2.png",
+        "artifacts/previews/3.png",
+        "artifacts/previews/4.png",
+        "artifacts/previews/1.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 4,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 5557,
+          "sha256": "41e55e50968acf28bed2c1c22bbe8d462dfdef23d85f349912b2d2b3e3ed0939"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2717,
+          "sha256": "7e8168bf3756866fb4153049a55c728f4568421c9ac697bd1dfdd8ef55bd6cbe"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2430,
+          "sha256": "c265c72cf962eb27938d5e8556e555250929a1b3ef53a64ae17bcf8ee7e90840"
+        }
+      ],
+      "option_ids": [
+        "weathered_planks",
+        "wood_planks",
+        "dark_wooden_planks",
+        "dark_planks"
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-luna-2",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "strict_passed": false,
+      "independent_passed": true,
+      "payload_sha256": "9472d04f748e4cdaada69c49107d807d0b40d1cffc2a3cad5ac403516b0aee7d",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "/tmp/polyhaven-previews/1.png",
+        "/tmp/polyhaven-previews/4.png",
+        "/tmp/polyhaven-previews/2.png",
+        "/tmp/polyhaven-previews/3.png",
+        "C:\\Users\\villa\\AppData\\Local\\Temp\\polyhaven-previews\\4.png",
+        "C:\\Users\\villa\\AppData\\Local\\Temp\\polyhaven-previews\\1.png",
+        "C:\\Users\\villa\\AppData\\Local\\Temp\\polyhaven-previews\\3.png",
+        "C:\\Users\\villa\\AppData\\Local\\Temp\\polyhaven-previews\\2.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 4,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 5557,
+          "sha256": "61e9c2965390aadffb3dfc63956d170b9cce1998d2a0a3ff1d82e1bb9c172e7c"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2717,
+          "sha256": "7e8168bf3756866fb4153049a55c728f4568421c9ac697bd1dfdd8ef55bd6cbe"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 3502,
+          "sha256": "efa8f8a3f33377f7095401a03c2fc9a9883711317502ab8c000ee4c6f497f3db"
+        }
+      ],
+      "option_ids": [
+        "weathered_planks",
+        "wood_planks",
+        "dark_wooden_planks",
+        "dark_planks"
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-luna-3",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "9472d04f748e4cdaada69c49107d807d0b40d1cffc2a3cad5ac403516b0aee7d",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 5557,
+          "sha256": "36166f5751be1514c0e15b74d8457b6af7b506d27ac7304e6eec9f23c2057df6"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2717,
+          "sha256": "7e8168bf3756866fb4153049a55c728f4568421c9ac697bd1dfdd8ef55bd6cbe"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2527,
+          "sha256": "2fd8ee2865c145a91f03c8e796326c67fdd515e8724cf1ddd37a02d230e21ff4"
+        }
+      ],
+      "option_ids": [
+        "weathered_planks",
+        "wood_planks",
+        "dark_wooden_planks",
+        "dark_planks"
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-revised-luna-1",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "strict_passed": false,
+      "independent_passed": true,
+      "payload_sha256": "48acf586462a271f2b4c0b1cba19cfc3619e4419a79fcc4ac8dd0d5eda4e096e",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/previews/4-dark_planks.png",
+        "artifacts/previews/6-planks_brown_10.png",
+        "artifacts/previews/1-weathered_planks.png",
+        "artifacts/previews/2-wood_planks.png",
+        "artifacts/previews/5-wood_planks_dirt.png",
+        "artifacts/previews/3-dark_wooden_planks.png",
+        "artifacts/options.html",
+        "artifacts/options.json",
+        "artifacts/shortlist.md"
+      ],
+      "tool_errors": 1,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 5557,
+          "sha256": "6026edc7bd60e78fa10abae82c112874e12f9813231e1821e32f6c108d7edd94"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2717,
+          "sha256": "7e8168bf3756866fb4153049a55c728f4568421c9ac697bd1dfdd8ef55bd6cbe"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 2661,
+          "sha256": "89363831544537af02e8f123a26a2cf45dc3a3484fa7d05c3445da90c4c82ada"
+        }
+      ],
+      "option_ids": [
+        "weathered_planks",
+        "wood_planks",
+        "dark_wooden_planks",
+        "dark_planks"
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-revised-luna-2",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": true,
+      "payload_sha256": "48acf586462a271f2b4c0b1cba19cfc3619e4419a79fcc4ac8dd0d5eda4e096e",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/previews/4-dark_planks.png",
+        "artifacts/previews/3-dark_wooden_planks.png",
+        "artifacts/previews/2-wood_planks.png",
+        "artifacts/previews/1-weathered_planks.png",
+        "artifacts/options.json",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 5557,
+          "sha256": "98516d17e0a8610ef0960ef1d3ca4208b74f325cc4b0230edf54f1962dfbc500"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 2717,
+          "sha256": "7e8168bf3756866fb4153049a55c728f4568421c9ac697bd1dfdd8ef55bd6cbe"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 3765,
+          "sha256": "6d8c10d61fa4853a597f9f9fb33e12a7316a7cc787d755ef0ce5157c51904d4b"
+        }
+      ],
+      "option_ids": [
+        "weathered_planks",
+        "wood_planks",
+        "dark_wooden_planks",
+        "dark_planks"
+      ]
+    },
+    {
+      "run_id": "free-polyhaven-naturalistic-20260927-revised-luna-3",
+      "source": "polyhaven",
+      "case": "naturalistic",
+      "strict_passed": true,
+      "independent_passed": false,
+      "payload_sha256": "48acf586462a271f2b4c0b1cba19cfc3619e4419a79fcc4ac8dd0d5eda4e096e",
+      "model": "openai-codex/gpt-5.6-luna",
+      "read_surface": [
+        "../prompt.md",
+        "skills/polyhaven-asset-search/SKILL.md",
+        "skills/polyhaven-asset-search/references/source-guide.md",
+        "artifacts/previews/6-planks_brown_10.png",
+        "artifacts/previews/1-weathered_planks.png",
+        "artifacts/previews/2-wood_planks.png",
+        "artifacts/previews/3-dark_wooden_planks.png",
+        "artifacts/previews/4-dark_planks.png",
+        "artifacts/previews/5-wood_planks_dirt.png",
+        "artifacts/options.json",
+        "artifacts/options.html",
+        "artifacts/shortlist.md",
+        "artifacts/options.html"
+      ],
+      "tool_errors": 0,
+      "files": [
+        {
+          "path": "artifacts/options.json",
+          "bytes": 5869,
+          "sha256": "cc144477810b06d213933b576bce777426589f0233b2f3344c862ada880614bc"
+        },
+        {
+          "path": "artifacts/options.html",
+          "bytes": 5500,
+          "sha256": "1003d3e0831788e68e651c7af181b074bce58aa063e7834d5f56806515c3890c"
+        },
+        {
+          "path": "artifacts/shortlist.md",
+          "bytes": 1994,
+          "sha256": "3e92f46592d2d52c3cf0584a8b1ef92ebdeddd161f90db7d4f63956d4b2cbc5d"
+        }
+      ],
+      "error": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 1373: invalid start byte"
+    }
+  ]
+}
