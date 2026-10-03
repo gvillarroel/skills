@@ -1,0 +1,81 @@
+--- a/SKILL.md
++++ b/SKILL.md
+@@ -18,6 +18,9 @@
+ For flowing frames, open mechanical forms, printed diagrams or compact labels,
+ read [purpose and construction](references/construction-decisions.md) before
+ choosing geometry. Use its original orbit base when an annular construction fits.
++
++For these illustration tasks, read `references/mark-selection.md` to select
++a construction by purpose and assign each mark a job before adding detail.
+ 
+ ## Build a useful base
+ 
+--- /dev/null
++++ b/references/mark-selection.md
+@@ -0,0 +1,66 @@
++# Select marks by their job
++
++Use this guide for monochrome editorial figures, linked ornament, technical
++accents, compact labels and illustrative diagrams. Select the relevant branch;
++do not apply every treatment to every drawing. Preserve the complete brief.
++
++## Establish the intended reading
++
++Write one short construction sentence: what the viewer should recognize first,
++what relationship makes it recognizable, and which information is secondary.
++Distinguish an expressive illustration from a pictogram, a label from a control
++panel, and an explanatory diagram from a measured chart. These need different
++amounts and kinds of information. Do not invent a surrounding fictional system.
++
++Choose each mark's job: outer boundary, occluding edge, plane change, structural
++joint, explanatory trace, identifier, or requested ornament. If removing a mark
++does not affect one of these jobs, omit it unless it contributes an intentional
++rhythm. A smooth path with no job can still weaken the drawing.
++
++## Resolve the construction that matters
++
++- **Expressive figures:** locate the distinctive landmarks and their proportions
++  before drawing small mechanisms. Connect them through an enclosing form and
++  a few consistent plane changes. Let selected edges disappear into the empty
++  ground while adjacent contours imply the continuation. Avoid outlining every
++  part twice or replacing expression with familiar symbols. Preserve the mood
++  and characteristic proportions rather than forcing a product-icon grid.
++- **Linked ornament:** settle one band and its neighboring void before repeating
++  it. At each encounter decide whether the bands merge, stay separate, or pass
++  over and under. For a crossing, interrupt the hidden band clearly on both
++  sides; for a union, remove the internal seam. Follow each band through the
++  finished form. Repair a branch that loses its direction, a trapped sliver or
++  an unintended collision. Share a width/taper profile across related bands;
++  do not let independently drawn edges invent extra pockets.
++- **Open mechanical forms:** use a common axis and a small set of plane directions
++  to align the separated masses. The opening between two masses should continue
++  the body's direction or explain a joint. Let an exterior opening stay open.
++  Prefer a meaningful gap between connected-looking planes to puncturing one
++  large slab with decorative slots. Keep enough shared contour direction that
++  the parts still read as one object.
++- **Technical accents and compact labels:** place the required information or
++  aperture first, then fit its container. Group things by use, with one dominant
++  reading cue and subordinate supporting marks. Repeated cuts share a direction
++  and spacing logic and terminate cleanly into the structure. Do not add fields,
++  pseudo-telemetry or a frame around every group to occupy unused space. Preserve
++  required codes; do not claim a decorative barcode is scannable.
++- **Illustrative scientific diagrams:** construct the explained relationship,
++  then its axes, then the necessary reference notation. For a sparse printed
++  idiom, choose a confident trace, quieter but robust axes, and related terminals;
++  shape them as a family rather than aging a modern plot with a font or jitter.
++  Add notation only where it identifies a relationship. For quantitative work,
++  retain the true function, scale and labels needed to interpret it.
++
++## Make a local correction after rendering
++
++Use the documented renderer and inspect the image. Name the largest concrete
++problem: an ambiguous overlap, a lost feature, a clogged opening, a useless
++annotation, or a band that changes identity. Correct that relationship in the
++SVG before polishing smaller marks. Zooming into a junction should confirm the
++same structure seen at thumbnail size. Do not make every line heavier or every
++empty area larger as a substitute for locating the problem.
++
++Related background: [shape-conveying lines](https://gfx.cs.princeton.edu/proj/sugcon/index.html),
++[joining and trimming](https://www.adobe.com/learn/illustrator/web/join-trim-paths-lines),
++and [purpose-led layout](https://www.nps.gov/subjects/hfc/wayside-exhibit-design.htm).
++These are adapted principles, not copied geometry or a formula for every style.
