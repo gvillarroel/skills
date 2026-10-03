@@ -156,8 +156,30 @@ marker placement follows the actual painted geometry and
 
 ## Publication
 
-Source publication and an exact CI-artifact comparison are pending. Existing
-stable IDs and URLs are retained; [the main public catalog](https://gvillarroel.github.io/skills/)
-remains the entry point. Publication acceptance requires the named successful
-Pages deployment to match its source commit, authenticated artifact provenance
-and actual served bytes, including updated painter resources.
+Source commit [`cdeb5db03cf7772109c3eaa8b8f294c74dac5bea`](https://github.com/gvillarroel/skills/commit/cdeb5db03cf7772109c3eaa8b8f294c74dac5bea)
+was pushed to main and deployed successfully by
+[Pages run 37148736022](https://github.com/gvillarroel/skills/actions/runs/37148736022).
+All workflow checks and the actual Deploy Pages step pass. The authenticated
+artifact metadata, source/run identity, outer digest and extracted tar hash
+are verified; [the public byte comparison](publication-20261003.json) passes
+all 75 served files against that exact artifact, with no mismatch. This includes
+both palette galleries, changed Mermaid SVGs, PlantUML native diagrams,
+D3/Three.js assets, procedural vectors and Compose/Video painter resources.
+
+[Committed runtime comparison](committed-runtime-20261003.json) also passes:
+30 visual bundles, 9,529 files, no missing/extra/substantive change. Exactly
+270 UTF-8 text paths normalize CRLF to LF in Git; this disclosed normalization
+is not a new Pi trial. The final source, accepted local payloads and publication
+are therefore separately bound rather than assumed interchangeable.
+
+Existing stable IDs and URLs are retained. Use
+[the main public catalog](https://gvillarroel.github.io/skills/),
+[Mermaid in both palettes](https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/),
+[D3 colorset1](https://gvillarroel.github.io/skills/examples/d3-animated-svg-cs1/),
+[D3 colorset2](https://gvillarroel.github.io/skills/examples/d3-animated-svg-colorset2/),
+[ECharts](https://gvillarroel.github.io/skills/examples/echarts-animated-svg/),
+[Three.js](https://gvillarroel.github.io/skills/examples/threejs-animated-3d/)
+and [composition](https://gvillarroel.github.io/skills/examples/compose-synchronized-svg/).
+The source deployment above is the immutable publication anchor. A subsequent
+documentation commit records these completed checks without changing skill
+sources or published example inputs.
