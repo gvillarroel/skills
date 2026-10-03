@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-02",
+  "sourceCommit": "821fd79147edfc3387288e2ae171e700ee0998fd",
+  "implementationCommit": "bec5658401c9a4b66f54983a301f7c7f811e682b",
+  "passed": true,
+  "canonicalFinalGates": [
+    {
+      "command": "uv run --script scripts/validate-pattern-ids.py",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "command": "uv run --script scripts/validate-skills.py",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "command": "uv run --script scripts/test-skill-independence.py",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "command": "uv run --script scripts/check-repo-payload.py",
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "command": "uv run --script scripts/sync-local-skills.py --check",
+      "exitCode": 0,
+      "passed": true
+    }
+  ],
+  "committedRootGates": [
+    {
+      "command": "uv run --script scripts/validate-pattern-ids.py",
+      "passed": true,
+      "metric": "1222 canonical IDs; maximum46"
+    },
+    {
+      "command": "uv run --script scripts/validate-skills.py",
+      "passed": true
+    },
+    {
+      "command": "uv run --script scripts/test-skill-independence.py",
+      "passed": true
+    },
+    {
+      "command": "uv run --script scripts/check-repo-payload.py",
+      "passed": true
+    },
+    {
+      "command": "uv run --script scripts/test-colorsets.py",
+      "passed": true,
+      "cases": 12
+    },
+    {
+      "command": "uv run --script scripts/test-pi-eval-harness.py",
+      "passed": true,
+      "cases": 14
+    },
+    {
+      "command": "uv run --script scripts/validate-colorsets.py",
+      "passed": true,
+      "skills": 34,
+      "paletteCopies": 29,
+      "artifacts": 360,
+      "findings": 0
+    }
+  ],
+  "committedSkillTree": "75142acc8cd3f2e6d833ca6d3bd451ab66e96b3b",
+  "runtimeByteEvidence": "committed-payload-20261002.json",
+  "independentReview": {
+    "initialStagingPaths": 796,
+    "missingHistoricalDocumentaryInputsRestored": 13,
+    "credentialsOrUnintendedBuildArtifacts": false,
+    "originalIndexWasEmpty": true,
+    "unrelatedRootWorkExcluded": true
+  },
+  "whitespace": {
+    "fullCheckPassed": false,
+    "inheritedRuntimeFindings": 5,
+    "frozenPatchContextLines": 2,
+    "scopedCheckPassed": true,
+    "exactExcludedPaths": [
+      "skills/asciinema-real-command-video/references/tui-plan.md",
+      "skills/compose-synchronized-svg/references/compiled-plan-and-bindings.md",
+      "skills/hyperframes-explainer/assets/fonts/OFL.txt",
+      "skills/hyperframes-explainer/assets/vendor/gsap.min.js",
+      "evaluations/svg-brief-design/purpose-astra-c-20260926.patch"
+    ],
+    "reason": "Retain upstream, sealed runtime and frozen patch bytes; every other staged path passes whitespace validation."
+  },
+  "limits": "The source implementation and owning fixture tree are verified. A later documentation-only commit records this release; exact workflow verification of that final commit is part of handoff. No arbitrary future output guarantee or wider skill-status promotion.",
+  "committedDiagramPagesGates": {
+    "schemaVersion": 1,
+    "commit": "bec5658401c9a4b66f54983a301f7c7f811e682b",
+    "generatedAtUtc": "2026-10-03T03:50:52.970054+00:00",
+    "root": "C:\\Users\\villa\\dev\\skills\\projects\\colorset-audit\\artifacts\\committed-verify",
+    "checks": [
+      {
+        "name": "diagram-coverage",
+        "command": [
+          "uv",
+          "run",
+          "--script",
+          "scripts/validate-diagram-type-coverage.py",
+          "--disable-mermaid-browser-sandbox",
+          "--report",
+          "projects/colorset-audit/artifacts/committed-diagram-coverage.json"
+        ],
+        "exitCode": 0,
+        "passed": true,
+        "durationSeconds": 2.944,
+        "log": "projects\\colorset-audit\\artifacts\\committed-gates\\diagram-coverage.log",
+        "retainedCharacters": 1151,
+        "truncated": false,
+        "summary": "exitCode\": 0,\n      \"name\": \"PlantUML coverage unit tests\",\n      \"ok\": true\n    },\n    {\n      \"exitCode\": 0,\n      \"name\": \"PlantUML colorset2 artifact validation\",\n      \"ok\": true\n    },\n    {\n      \"exitCode\": 0,\n      \"name\": \"PlantUML colorset1 artifact validation\",\n      \"ok\": true\n    }\n  ],\n  \"findings\": [],\n  \"mermaid\": {\n    \"classDefFamilyCount\": 8,\n    \"currentDeclarationCount\": 40,\n    \"familyCount\": 31,\n    \"familyCoveragePercent\": 100.0,\n    \"renderableDeclarationCount\": 48,\n    \"version\": \"11.16.0\"\n  },\n  \"ok\": true,\n  \"plantuml\": {\n    \"availableFamilyCount\": 27,\n    \"availableFamilyCoveragePercent\": 100.0,\n    \"canonicalFamilyCount\": 27,\n    \"fixtureCount\": 29,\n    \"publishedFixtureCount\": 28,\n    \"releaseExtraFamilyCount\": 1,\n    \"trackedFamilyCount\": 28,\n    \"trackedFamilyCoveragePercent\": 100.0,\n    \"upstreamUnavailableFamilies\": [\n      \"chronology\"\n    ],\n    \"version\": \"1.2026.6\"\n  }\n}\nDownloading pillow (6.9MiB)\n Downloaded pillow\nInstalled 1 package in 59ms\n"
+      },
+      {
+        "name": "mermaid-gallery-hashes",
+        "command": [
+          "uv",
+          "run",
+          "--script",
+          "skills/mermaid/assets/examples/mermaid-max-complexity/scripts/validate_gallery.py"
+        ],
+        "exitCode": 0,
+        "passed": true,
+        "durationSeconds": 0.67,
+        "log": "projects\\colorset-audit\\artifacts\\committed-gates\\mermaid-gallery-hashes.log",
+        "retainedCharacters": 253,
+        "truncated": false,
+        "summary": "{\n  \"ok\": true,\n  \"familyCount\": 31,\n  \"patternCount\": 62,\n  \"checkedStaticAnimatedPairs\": 62,\n  \"sourceCount\": 62,\n  \"staticSvgCount\": 62,\n  \"animatedSvgCount\": 62,\n  \"minimumColorset1SvgColors\": 5,\n  \"minimumColorset2SvgColors\": 5,\n  \"findings\": []\n}\n"
+      },
+      {
+        "name": "diagram-palettes",
+        "command": [
+          "uv",
+          "run",
+          "--script",
+          "projects/colorset-audit/scripts/test-diagram-palettes.py"
+        ],
+        "exitCode": 0,
+        "passed": true,
+        "durationSeconds": 0.679,
+        "log": "projects\\colorset-audit\\artifacts\\committed-gates\\diagram-palettes.log",
+        "retainedCharacters": 102,
+        "truncated": false,
+        "summary": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.428s\n\nOK\n"
+      },
+      {
+        "name": "chart-contract",
+        "command": [
+          "node",
+          "--experimental-strip-types",
+          "projects/colorset-audit/scripts/test-chart-colors.ts"
+        ],
+        "exitCode": 0,
+        "passed": true,
+        "durationSeconds": 0.081,
+        "log": "projects\\colorset-audit\\artifacts\\committed-gates\\chart-contract.log",
+        "retainedCharacters": 139,
+        "truncated": false,
+        "summary": "Both independent chart templates pass named/RGB/HSL/alpha normalization, discrete scales, gradient endpoints, and data/label preservation.\n"
+      },
+      {
+        "name": "pages-boundary",
+        "command": [
+          "uv",
+          "run",
+          "--script",
+          "scripts/test-pages-output.py"
+        ],
+        "exitCode": 0,
+        "passed": true,
+        "durationSeconds": 0.372,
+        "log": "projects\\colorset-audit\\artifacts\\committed-gates\\pages-boundary.log",
+        "retainedCharacters": 101,
+        "truncated": false,
+        "summary": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.017s\n\nOK\n"
+      },
+      {
+        "name": "pages-build",
+        "command": [
+          "uv",
+          "run",
+          "--script",
+          "scripts/build-pages.py"
+        ],
+        "exitCode": 0,
+        "passed": true,
+        "durationSeconds": 118.414,
+        "log": "projects\\colorset-audit\\artifacts\\committed-gates\\pages-build.log",
+        "retainedCharacters": 16581,
+        "truncated": false,
+        "summary": "ret due to the position of the comment.\n      \u256d\u2500[ node_modules/@vueuse/core/dist/index.js:5780:23 ]\n      \u2502\n 5780 \u2502 const defaultState = (/* #__PURE__ */ {\n      \u2502                       \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \n      \u2502                              \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 comment ignored due to position\n      \u2502 \n      \u2502 Help: For more information on how to use pure annotations correctly, check the documentation: https://rolldown.rs/in-depth/dead-code-elimination#pure\n\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n\n"
+      },
+      {
+        "name": "pages-format",
+        "command": [
+          "uv",
+          "run",
+          "--script",
+          "scripts/validate-pages-pattern-format.py"
+        ],
+        "exitCode": 0,
+        "passed": true,
+        "durationSeconds": 1.299,
+        "log": "projects\\colorset-audit\\artifacts\\committed-gates\\pages-format.log",
+        "retainedCharacters": 72,
+        "truncated": false,
+        "summary": "Validated 14 published Pages entries with stable pattern-page metadata.\n"
+      }
+    ],
+    "complete": true,
+    "passed": true,
+    "trackedDiff": [],
+    "indexDiff": [],
+    "cacheAndTempRoot": "C:\\Users\\villa\\dev\\skills\\projects\\colorset-audit\\artifacts",
+    "constraints": "No tracked edits, staging, commit or push. All declared cache and temporary directories remain inside writable workspace.",
+    "metrics": {
+      "mermaidFamilies": 31,
+      "mermaidAcceptedDeclarations": 48,
+      "mermaidStaticAnimatedPairs": 62,
+      "plantumlAvailableFamilies": 27,
+      "plantumlPublishedFixtures": 28,
+      "diagramPaletteTestCount": 4,
+      "pagesBoundaryTestCount": 3,
+      "pagesFileCount": 646,
+      "pagesMiB": 45.73,
+      "publishedExampleSetCount": 14
+    },
+    "warnings": [
+      "Existing VueUse PURE-annotation comments are ignored by Rolldown during successful builds."
+    ],
+    "publicationScope": "Diagram and Pages validation of committed LF skill/fixture blobs at this exact commit. Documentary successors need their own repository/link gates; these checks do not claim a different commit was executed."
+  },
+  "livePublication": {
+    "checkedAtUtc": "2026-10-03T03:57:27.527263+00:00",
+    "expectedCommit": "821fd79147edfc3387288e2ae171e700ee0998fd",
+    "checkoutCommit": "821fd79147edfc3387288e2ae171e700ee0998fd",
+    "workflow": {
+      "id": 37094744297,
+      "head_sha": "821fd79147edfc3387288e2ae171e700ee0998fd",
+      "head_branch": "main",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/gvillarroel/skills/actions/runs/37094744297",
+      "created_at": "2026-10-03T03:54:28Z",
+      "updated_at": "2026-10-03T03:55:42Z"
+    },
+    "jobs": [
+      {
+        "id": 111122261713,
+        "name": "deploy",
+        "status": "completed",
+        "conclusion": "success",
+        "completedAt": "2026-10-03T03:55:41Z",
+        "failedSteps": []
+      }
+    ],
+    "deployment": {
+      "id": 6822939572,
+      "sha": "821fd79147edfc3387288e2ae171e700ee0998fd",
+      "environment": "github-pages",
+      "state": "success",
+      "environmentUrl": "https://gvillarroel.github.io/skills/",
+      "logUrl": "https://github.com/gvillarroel/skills/actions/runs/37094744297/job/111122261713",
+      "createdAt": "2026-10-03T03:55:42Z"
+    },
+    "httpComparisons": [
+      {
+        "path": "index.html",
+        "url": "https://gvillarroel.github.io/skills/",
+        "localPath": "projects/colorset-audit/artifacts/committed-verify/dist/pages/index.html",
+        "comparisonPolicy": "Raw bytes and UTF-8 LF normalization both reported",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "lastModified": "Sat, 03 Oct 2026 03:55:35 GMT",
+        "etag": "\"6ac07cb7-2d91\"",
+        "localBytes": 11665,
+        "remoteBytes": 11665,
+        "localSha256": "138c9d2b1f654071afd24da6fe68350b0e65678dad62503e0ac86022448b9e5d",
+        "remoteSha256": "138c9d2b1f654071afd24da6fe68350b0e65678dad62503e0ac86022448b9e5d",
+        "rawByteMatch": true,
+        "normalizedLfMatch": true,
+        "localNormalizedSha256": "138c9d2b1f654071afd24da6fe68350b0e65678dad62503e0ac86022448b9e5d",
+        "remoteNormalizedSha256": "138c9d2b1f654071afd24da6fe68350b0e65678dad62503e0ac86022448b9e5d",
+        "passed": true
+      },
+      {
+        "path": "examples/mermaid-max-complexity/svg/colorset1/flowchart.static.svg",
+        "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset1/flowchart.static.svg",
+        "localPath": "projects/colorset-audit/artifacts/committed-verify/dist/pages/examples/mermaid-max-complexity/svg/colorset1/flowchart.static.svg",
+        "comparisonPolicy": "Exact bytes required",
+        "httpStatus": 200,
+        "contentType": "image/svg+xml",
+        "lastModified": "Sat, 03 Oct 2026 03:55:35 GMT",
+        "etag": "\"6ac07cb7-67ba\"",
+        "localBytes": 26554,
+        "remoteBytes": 26554,
+        "localSha256": "59179a9eff8f4bb7df8d245e22b9be9511a19206fe1a5ab4fa664fa570bf6b5f",
+        "remoteSha256": "59179a9eff8f4bb7df8d245e22b9be9511a19206fe1a5ab4fa664fa570bf6b5f",
+        "rawByteMatch": true,
+        "normalizedLfMatch": true,
+        "localNormalizedSha256": "59179a9eff8f4bb7df8d245e22b9be9511a19206fe1a5ab4fa664fa570bf6b5f",
+        "remoteNormalizedSha256": "59179a9eff8f4bb7df8d245e22b9be9511a19206fe1a5ab4fa664fa570bf6b5f",
+        "passed": true
+      },
+      {
+        "path": "examples/mermaid-max-complexity/svg/colorset2/flowchart.static.svg",
+        "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset2/flowchart.static.svg",
+        "localPath": "projects/colorset-audit/artifacts/committed-verify/dist/pages/examples/mermaid-max-complexity/svg/colorset2/flowchart.static.svg",
+        "comparisonPolicy": "Exact bytes required",
+        "httpStatus": 200,
+        "contentType": "image/svg+xml",
+        "lastModified": "Sat, 03 Oct 2026 03:55:35 GMT",
+        "etag": "\"6ac07cb7-67b8\"",
+        "localBytes": 26552,
+        "remoteBytes": 26552,
+        "localSha256": "05d495afb6c073adf939811862b1c1a9643084dde744ff772670f744bce64449",
+        "remoteSha256": "05d495afb6c073adf939811862b1c1a9643084dde744ff772670f744bce64449",
+        "rawByteMatch": true,
+        "normalizedLfMatch": true,
+        "localNormalizedSha256": "05d495afb6c073adf939811862b1c1a9643084dde744ff772670f744bce64449",
+        "remoteNormalizedSha256": "05d495afb6c073adf939811862b1c1a9643084dde744ff772670f744bce64449",
+        "passed": true
+      },
+      {
+        "path": "examples/mermaid-max-complexity/svg/colorset1/flowchart.animated.svg",
+        "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset1/flowchart.animated.svg",
+        "localPath": "projects/colorset-audit/artifacts/committed-verify/dist/pages/examples/mermaid-max-complexity/svg/colorset1/flowchart.animated.svg",
+        "comparisonPolicy": "Exact bytes required",
+        "httpStatus": 200,
+        "contentType": "image/svg+xml",
+        "lastModified": "Sat, 03 Oct 2026 03:55:35 GMT",
+        "etag": "\"6ac07cb7-8f15\"",
+        "localBytes": 36629,
+        "remoteBytes": 36629,
+        "localSha256": "b89e0280600c0c0d3e8fb5b57d19606ffb4040a59e4d38993575ef34a1acf9d7",
+        "remoteSha256": "b89e0280600c0c0d3e8fb5b57d19606ffb4040a59e4d38993575ef34a1acf9d7",
+        "rawByteMatch": true,
+        "normalizedLfMatch": true,
+        "localNormalizedSha256": "b89e0280600c0c0d3e8fb5b57d19606ffb4040a59e4d38993575ef34a1acf9d7",
+        "remoteNormalizedSha256": "b89e0280600c0c0d3e8fb5b57d19606ffb4040a59e4d38993575ef34a1acf9d7",
+        "passed": true
+      },
+      {
+        "path": "examples/mermaid-max-complexity/svg/colorset2/flowchart.animated.svg",
+        "url": "https://gvillarroel.github.io/skills/examples/mermaid-max-complexity/svg/colorset2/flowchart.animated.svg",
+        "localPath": "projects/colorset-audit/artifacts/committed-verify/dist/pages/examples/mermaid-max-complexity/svg/colorset2/flowchart.animated.svg",
+        "comparisonPolicy": "Exact bytes required",
+        "httpStatus": 200,
+        "contentType": "image/svg+xml",
+        "lastModified": "Sat, 03 Oct 2026 03:55:35 GMT",
+        "etag": "\"6ac07cb7-8f13\"",
+        "localBytes": 36627,
+        "remoteBytes": 36627,
+        "localSha256": "efcb480454e6a7cee662fe52ea09ffc844c7b0ee671e2b951917a8d659ab219a",
+        "remoteSha256": "efcb480454e6a7cee662fe52ea09ffc844c7b0ee671e2b951917a8d659ab219a",
+        "rawByteMatch": true,
+        "normalizedLfMatch": true,
+        "localNormalizedSha256": "efcb480454e6a7cee662fe52ea09ffc844c7b0ee671e2b951917a8d659ab219a",
+        "remoteNormalizedSha256": "efcb480454e6a7cee662fe52ea09ffc844c7b0ee671e2b951917a8d659ab219a",
+        "passed": true
+      },
+      {
+        "path": "examples/plantuml-colorset-renderer-cs1/svg/sequence.svg",
+        "url": "https://gvillarroel.github.io/skills/examples/plantuml-colorset-renderer-cs1/svg/sequence.svg",
+        "localPath": "projects/colorset-audit/artifacts/committed-verify/dist/pages/examples/plantuml-colorset-renderer-cs1/svg/sequence.svg",
+        "comparisonPolicy": "Exact bytes required",
+        "httpStatus": 200,
+        "contentType": "image/svg+xml",
+        "lastModified": "Sat, 03 Oct 2026 03:55:35 GMT",
+        "etag": "\"6ac07cb7-2acb\"",
+        "localBytes": 10955,
+        "remoteBytes": 10955,
+        "localSha256": "73339e70f0210184b7b960ff4933222beef5dab6b05e3ec8c3abf434adfdedee",
+        "remoteSha256": "73339e70f0210184b7b960ff4933222beef5dab6b05e3ec8c3abf434adfdedee",
+        "rawByteMatch": true,
+        "normalizedLfMatch": true,
+        "localNormalizedSha256": "73339e70f0210184b7b960ff4933222beef5dab6b05e3ec8c3abf434adfdedee",
+        "remoteNormalizedSha256": "73339e70f0210184b7b960ff4933222beef5dab6b05e3ec8c3abf434adfdedee",
+        "passed": true
+      },
+      {
+        "path": "examples/d3-animated-svg-cs1/index.html",
+        "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg-cs1/index.html",
+        "localPath": "projects/colorset-audit/artifacts/committed-verify/dist/pages/examples/d3-animated-svg-cs1/index.html",
+        "comparisonPolicy": "Raw bytes and UTF-8 LF normalization both reported",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "lastModified": "Sat, 03 Oct 2026 03:55:35 GMT",
+        "etag": "\"6ac07cb7-87b\"",
+        "localBytes": 2171,
+        "remoteBytes": 2171,
+        "localSha256": "268f521ea24ad53dc0e71435edc0a1e268ab03899e90196225d2c71ace5bf6bc",
+        "remoteSha256": "268f521ea24ad53dc0e71435edc0a1e268ab03899e90196225d2c71ace5bf6bc",
+        "rawByteMatch": true,
+        "normalizedLfMatch": true,
+        "localNormalizedSha256": "268f521ea24ad53dc0e71435edc0a1e268ab03899e90196225d2c71ace5bf6bc",
+        "remoteNormalizedSha256": "268f521ea24ad53dc0e71435edc0a1e268ab03899e90196225d2c71ace5bf6bc",
+        "passed": true
+      },
+      {
+        "path": "examples/d3-animated-svg-colorset2/index.html",
+        "url": "https://gvillarroel.github.io/skills/examples/d3-animated-svg-colorset2/index.html",
+        "localPath": "projects/colorset-audit/artifacts/committed-verify/dist/pages/examples/d3-animated-svg-colorset2/index.html",
+        "comparisonPolicy": "Raw bytes and UTF-8 LF normalization both reported",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "lastModified": "Sat, 03 Oct 2026 03:55:35 GMT",
+        "etag": "\"6ac07cb7-88d\"",
+        "localBytes": 2189,
+        "remoteBytes": 2189,
+        "localSha256": "ddbdae8e8ab5715d07466c598579aa9ad310929fc6c382c17a6f3382b401e8f7",
+        "remoteSha256": "ddbdae8e8ab5715d07466c598579aa9ad310929fc6c382c17a6f3382b401e8f7",
+        "rawByteMatch": true,
+        "normalizedLfMatch": true,
+        "localNormalizedSha256": "ddbdae8e8ab5715d07466c598579aa9ad310929fc6c382c17a6f3382b401e8f7",
+        "remoteNormalizedSha256": "ddbdae8e8ab5715d07466c598579aa9ad310929fc6c382c17a6f3382b401e8f7",
+        "passed": true
+      },
+      {
+        "path": "examples/compose-synchronized-svg/inference-pulse.svg",
+        "url": "https://gvillarroel.github.io/skills/examples/compose-synchronized-svg/inference-pulse.svg",
+        "localPath": "projects/colorset-audit/artifacts/committed-verify/dist/pages/examples/compose-synchronized-svg/inference-pulse.svg",
+        "comparisonPolicy": "Exact bytes required",
+        "httpStatus": 200,
+        "contentType": "image/svg+xml",
+        "lastModified": "Sat, 03 Oct 2026 03:55:35 GMT",
+        "etag": "\"6ac07cb7-3dae5\"",
+        "localBytes": 252645,
+        "remoteBytes": 252645,
+        "localSha256": "cb7557150ee5b0dcaddeee517633368968e033ce40387033541956dddfa0f961",
+        "remoteSha256": "cb7557150ee5b0dcaddeee517633368968e033ce40387033541956dddfa0f961",
+        "rawByteMatch": true,
+        "normalizedLfMatch": true,
+        "localNormalizedSha256": "cb7557150ee5b0dcaddeee517633368968e033ce40387033541956dddfa0f961",
+        "remoteNormalizedSha256": "cb7557150ee5b0dcaddeee517633368968e033ce40387033541956dddfa0f961",
+        "passed": true
+      },
+      {
+        "path": "examples/compose-synchronized-svg/heatwave-tree.svg",
+        "url": "https://gvillarroel.github.io/skills/examples/compose-synchronized-svg/heatwave-tree.svg",
+        "localPath": "projects/colorset-audit/artifacts/committed-verify/dist/pages/examples/compose-synchronized-svg/heatwave-tree.svg",
+        "comparisonPolicy": "Exact bytes required",
+        "httpStatus": 200,
+        "contentType": "image/svg+xml",
+        "lastModified": "Sat, 03 Oct 2026 03:55:35 GMT",
+        "etag": "\"6ac07cb7-816a8\"",
+        "localBytes": 530088,
+        "remoteBytes": 530088,
+        "localSha256": "94633e707de2e3d06701b68e51f9b1d595ae43c0090b3f56666324111d484f11",
+        "remoteSha256": "94633e707de2e3d06701b68e51f9b1d595ae43c0090b3f56666324111d484f11",
+        "rawByteMatch": true,
+        "normalizedLfMatch": true,
+        "localNormalizedSha256": "94633e707de2e3d06701b68e51f9b1d595ae43c0090b3f56666324111d484f11",
+        "remoteNormalizedSha256": "94633e707de2e3d06701b68e51f9b1d595ae43c0090b3f56666324111d484f11",
+        "passed": true
+      }
+    ],
+    "downloadPolicy": "HTTP responses compared in memory; no downloaded SVG/media files written",
+    "workflowPassed": true,
+    "deploymentPassed": true,
+    "passed": true,
+    "state": "passed"
+  }
+}
